@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de sanal ağ kaynakları ve bağla
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482734"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366577"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hizmetinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) içinde kümeler oluşturup yönetirken, düğüm
 Bu en iyi yöntemler makalesi, küme işleçleri için ağ bağlantısı ve güvenliğine odaklanır. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * AKS 'deki Kubernetes kullanan ve Azure CNı ağ modlarını karşılaştırın
+> * AKS 'deki Kubernetes kullanan ve Azure Container Networking Interface (CNı) ağ modlarını karşılaştırın
 > * Gerekli IP adresleme ve bağlantı planlaması
 > * Yük dengeleyiciler, giriş denetleyicileri veya Web uygulaması güvenlik duvarı (WAF) kullanarak trafiği dağıtma
 > * Küme düğümlerine güvenli bir şekilde bağlanma
@@ -33,11 +33,13 @@ Sanal ağlar, uygulamalarınıza erişmek için AKS düğümlerine ve müşteril
 * **Kubernetes kullanan Networking** -Azure, küme dağıtıldığında sanal ağ kaynaklarını yönetir ve [Kubernetes kullanan][kubenet] Kubernetes eklentisini kullanır.
 * **Azure CNI ağı** -sanal bir ağda dağıtılır ve [Azure Container Network Interface (CNI)][cni-networking] Kubernetes eklentisini kullanır. IP 'Ler, diğer ağ hizmetlerine veya şirket içi kaynaklara yol alabilen ayrı IP 'Leri alır.
 
+Üretim dağıtımları için hem Kubernetes kullanan hem de Azure CNı geçerli seçeneklerdir.
+
+### <a name="cni-networking"></a>CNı ağı
+
 Kapsayıcı ağ arabirimi (CNı), kapsayıcı çalışma zamanının bir ağ sağlayıcısına istek yapmasını sağlayan satıcı tarafsız bir protokoldür. Azure CNI, IP adreslerini Pod ve düğümlere atar ve var olan Azure sanal ağlarına bağlandığınızda IP adresi yönetimi (IPAM) özellikleri sağlar. Her düğüm ve pod kaynağı, Azure sanal ağında bir IP adresi alır ve diğer kaynaklarla veya hizmetlerle iletişim kurmak için ek yönlendirmeye gerek yoktur.
 
 ![Her biri tek bir Azure VNet 'e bağlanan köprülerle iki düğüm gösteren diyagram](media/operator-best-practices-network/advanced-networking-diagram.png)
-
-Üretim dağıtımları için hem Kubernetes kullanan hem de Azure CNı geçerli seçeneklerdir.
 
 Üretim için Azure CNı ağı 'nın önemli bir avantajı, ağ modelinin, kaynakların denetimi ve yönetimi ile ayrılmasını sağlar. Bir güvenlik perspektifinden, genellikle farklı takımların bu kaynakları yönetmesini ve güvenliğini sağlamak isteyeceksiniz. Azure CNı Networking, mevcut Azure kaynaklarına, şirket içi kaynaklara veya diğer hizmetlere, her Pod 'a atanan IP adresleri aracılığıyla doğrudan bağlanmanızı sağlar.
 
@@ -47,9 +49,11 @@ Azure CNı ağı kullandığınızda, sanal ağ kaynağı AKS kümesine ayrı bi
 
 AKS hizmet sorumlusu temsilcisi hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme][sp-delegation]. Hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
 
-Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek Genişletme olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanabileceğiniz ek IP adresleri de gereklidir. Bu ek adres alanı özellikle Windows Server kapsayıcıları kullanıyorsanız önemlidir, çünkü bu düğüm havuzları en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek Genişletme olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanılabilir ek IP adresleri de gereklidir. Bu ek adres alanı özellikle Windows Server kapsayıcıları kullanıyorsanız önemlidir, çünkü bu düğüm havuzları en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
 Gerekli IP adresini hesaplamak için bkz. [AKS 'de Azure CNI ağını yapılandırma][advanced-networking].
+
+Azure CNı ağı ile bir küme oluşturduğunuzda, küme tarafından kullanılacak, Docker köprü adresi, DNS hizmeti IP 'si ve hizmet adresi aralığı gibi diğer adres aralıklarını belirtirsiniz. Genel olarak, bu adres aralıkları birbirleriyle çakışmamalıdır ve sanal ağlar, alt ağlar, şirket içi ve eşlenmiş ağlar dahil olmak üzere kümeyle ilişkili ağlarla çakışmamalıdır. Bu adres aralıkları için sınırlara ve boyutlandırmalar etrafında belirli Ayrıntılar için bkz. [AKS 'de Azure CNI ağını yapılandırma][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubenet ağı
 
@@ -58,7 +62,9 @@ Kubernetes kullanan, küme dağıtılmadan önce sanal ağları ayarlamanızı g
 * Düğümler ve düğüm 'ler farklı IP alt ağlarına yerleştirilir. Kullanıcı tanımlı yönlendirme (UDR) ve IP iletimi, trafiği ve düğümleri arasında trafiği yönlendirmek için kullanılır. Bu ek yönlendirme, ağ performansını azaltabilir.
 * Mevcut şirket içi ağlara bağlantılar veya diğer Azure sanal ağlarına eşleme karmaşık olabilir.
 
-Kubenet, AKS kümesinden ayrı olarak sanal ağ ve alt ağlar oluşturmanız gerekmiyorsa küçük geliştirme veya test iş yükleri için uygundur. Düşük trafiğe sahip basit Web siteleri veya iş yüklerini kapsayıcılara taşımak ve kaydırmak için, Kubernetes kullanan ağıyla dağıtılan AKS kümelerinin basitliğini de yararlı olabilir. Çoğu üretim dağıtımı için, Azure CNı ağını planlamanız ve kullanmanız gerekir. Ayrıca, [Kubernetes kullanan kullanarak kendı IP adresi aralıklarını ve sanal ağlarınızı yapılandırabilirsiniz][aks-configure-kubenet-networking].
+Kubenet, AKS kümesinden ayrı olarak sanal ağ ve alt ağlar oluşturmanız gerekmiyorsa küçük geliştirme veya test iş yükleri için uygundur. Düşük trafiğe sahip basit Web siteleri veya iş yüklerini kapsayıcılara taşımak ve kaydırmak için, Kubernetes kullanan ağıyla dağıtılan AKS kümelerinin basitliğini de yararlı olabilir. Çoğu üretim dağıtımı için, Azure CNı ağını planlamanız ve kullanmanız gerekir.
+
+Ayrıca, [Kubernetes kullanan kullanarak kendı IP adresi aralıklarını ve sanal ağlarınızı yapılandırabilirsiniz][aks-configure-kubenet-networking]. Azure CNı ağlarına benzer şekilde, bu adres aralıkları birbirleriyle çakışmamalıdır ve sanal ağlar, alt ağlar, şirket içi ve eşlenmiş ağlar dahil olmak üzere kümeyle ilişkili ağlarla çakışmamalıdır. Bu adres aralıklarının sınırlarına ve boyutlandırılmasına ilişkin belirli Ayrıntılar için bkz. [AKS 'de kendı IP adresi aralığınızla Kubernetes kullanan ağı kullanma][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Giriş trafiğini dağıtma
 
@@ -70,7 +76,7 @@ Azure yük dengeleyici, AKS kümenizdeki uygulamalara müşteri trafiği dağıt
 
  Giriş için iki bileşen vardır:
 
- * Giriş *kaynağı*ve
+ * Giriş *kaynağı* ve
  * Giriş *denetleyicisi*
 
 Giriş kaynağı, `kind: Ingress` trafiği AKS kümenizde çalışan hizmetlere yönlendiren konak, sertifika ve kuralları tanımlayan BIR YAML bildirimidir. Aşağıdaki örnek YAML bildirimi, *MyApp.com* için trafiği iki hizmetten birine, *blogservice* veya *StoreService*'e dağıtmaktır. Müşteri, eriştikleri URL 'ye bağlı olarak bir hizmete veya diğerine yönlendirilir.
@@ -168,7 +174,7 @@ Bu makale ağ bağlantısı ve güvenliğine odaklanılmıştır. Kubernetes 'de
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[NGINX]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik

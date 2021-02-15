@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534900"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517986"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu kavramları
 
@@ -40,13 +40,13 @@ Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardım
 
 |     |     |
 | :-- | :-- |
-| **Kimlik doğrulama ve yetkilendirme** | MySQL için Azure veritabanı sunucusu yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
+| **Kimlik doğrulaması ve yetkilendirme** | MySQL için Azure veritabanı sunucusu yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
 | **Protokol** | Hizmet MySQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
 | **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
 | **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların iznine sahip olduğunu belirtene kadar bir güvenlik duvarı kuralı, veritabanı sunucunuza tüm erişimi engeller. Bkz. [MySQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](./concepts-firewall-rules.md). |
 | **SSL** | Hizmet, uygulamalarınız ve veritabanı sunucunuz arasında SSL bağlantısı uygulanmasını destekler.  Bkz. [MySQL için Azure Veritabanına güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma](./howto-configure-ssl.md). |
 
-## <a name="stopstart-an-azure-database-for-mysql-preview"></a>MySQL için Azure veritabanı 'nı Durdur/Başlat (Önizleme)
+## <a name="stopstart-an-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nı Durdur/Başlat
 
 MySQL için Azure veritabanı, kullanımda olmadığında sunucuyu **durdurma** ve etkinlik sürdürüleceği zaman sunucuyu **başlatma** olanakları sağlar. Bu aslında, veritabanı sunucularında maliyetleri kaydetmek ve yalnızca kullanımda olduğunda kaynak için ödeme yapmak amacıyla yapılır. Bu, geliştirme ve test iş yükleri için ve yalnızca günün bir parçası için sunucuyu kullanırken daha da önemli olur. Sunucuyu durdurduğunuzda, tüm etkin bağlantılar bırakılır. Daha sonra, sunucuyu yeniden çevrimiçi duruma getirmek istediğinizde [Azure Portal](how-to-stop-start-server.md) veya [CLI](how-to-stop-start-server.md)kullanabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737210"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371558"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
@@ -92,7 +92,7 @@ Uygulama yapılandırması bölgesel bir hizmettir. Bölge başına farklı yap�
 
 ## <a name="client-applications-in-app-configuration"></a>Uygulama yapılandırmasındaki istemci uygulamaları 
 
-Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullanım ücretlerine neden olabilir. Uygulamalar, gönderdikleri isteklerin sayısını iyileştirmek için şu anda önbelleğe alma ve akıllı yenileme avantajlarından yararlanır. Bu işlem, yapılandırma deposuna doğrudan bağlantıları önleyerek, yüksek hacimli istemci uygulamalarında yansıtılmalıdır. Bunun yerine, istemci uygulamaları özel bir hizmete bağlanır ve bu hizmet yapılandırma deposuyla iletişim kurar. Bu proxy çözümü, istemci uygulamalarının yapılandırma deposundaki azaltma sınırına yaklaşımadığından emin olabilir. Daraltma hakkında daha fazla bilgi için bkz. [SSS](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullanım ücretlerine neden olabilir. Uygulamalar, gönderdikleri isteklerin sayısını iyileştirmek için şu anda önbelleğe alma ve akıllı yenileme avantajlarından yararlanır. Bu işlem, yapılandırma deposuna doğrudan bağlantıları önleyerek, yüksek hacimli istemci uygulamalarında yansıtılmalıdır. Bunun yerine, istemci uygulamaları özel bir hizmete bağlanır ve bu hizmet yapılandırma deposuyla iletişim kurar. Bu proxy çözümü, istemci uygulamalarının yapılandırma deposundaki azaltma sınırına yaklaşımadığından emin olabilir. Daraltma hakkında daha fazla bilgi için bkz. [SSS](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

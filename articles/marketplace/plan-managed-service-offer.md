@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879284"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371949"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft Commercial Market için yönetilen hizmet teklifi planlaması
 
 Bu makalede, Iş Ortağı Merkezi aracılığıyla Microsoft ticari Market 'e yönetilen hizmet teklifi yayımlama gereksinimleri tanıtılmaktadır.
 
-Yönetilen hizmetler, Azure açık Thouse ile ormanlar arası ve çok kiracılı yönetimi sağlayan Azure Marketi teklifleridir. Daha fazla bilgi edinmek için bkz. [Azure ışıklı kullanımı nedir?](../lighthouse/overview.md) Bir müşteri yönetilen bir hizmet teklifi satın aldığında, bir veya daha fazla abonelik veya kaynak grubu için temsilci seçebilirler
+Yönetilen hizmetler, Azure açık Thouse ile ormanlar arası ve çok kiracılı yönetimi sağlayan Azure Marketi teklifleridir. Daha fazla bilgi edinmek için bkz. [Azure ışıklı kullanımı nedir?](../lighthouse/overview.md) Bir müşteri yönetilen bir hizmet teklifi satın aldığında, bir veya daha fazla abonelik veya kaynak grubu için temsilci seçebilirler. Daha sonra bu kaynaklar üzerinde Azure açık Thouse 'ın [Azure Temsilcili kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md) yeteneklerini kullanarak çalışabilirsiniz.
 
 ## <a name="eligibility-requirements"></a>Uygunluk gereksinimleri
 
-Yönetilen bir hizmeti yayımlamak için bulut platformunda bir altın veya gümüş Microsoft uzmanlığına sahip olmanız gerekir. Bu uzmanlık, müşterilere uzmanlığınızı gösterir. Daha fazla bilgi için bkz. [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies).
+Yönetilen bir hizmet teklifini yayımlamak için bulut platformunda bir altın veya gümüş Microsoft uzmanlığına sahip olmanız gerekir. Bu uzmanlık, müşterilere uzmanlığınızı gösterir. Daha fazla bilgi için bkz. [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies).
 
 Teklifler, Azure Marketi 'nde yayımlanacak tüm geçerli [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies) karşılamalıdır.
 

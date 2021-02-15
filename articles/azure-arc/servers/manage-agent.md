@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662135"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368464"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -48,60 +48,17 @@ Yay etkin sunucular için, makineyi yeniden adlandırmadan önce, devam etmeden 
 > [!WARNING]
 > Makinenin bilgisayar adını yeniden adlandırmaktan kaçınmanıza ve kesinlikle gerekli olduğunda bu yordamı gerçekleştirmeniz önerilir.
 
-Aşağıdaki adımlarda bilgisayar yeniden adlandırma yordamı özetlenmektedir.
-
 1. Makinede yüklü olan VM uzantılarını denetleyin ve [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) kullanarak veya [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed)kullanarak yapılandırmalarını aklınızda edin.
 
-2. PowerShell, Azure CLı veya Azure portal kullanarak VM uzantılarını kaldırın.
+2. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)kullanarak veya [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)kullanarak [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension)yüklü VM uzantılarını kaldırın.
 
-    > [!NOTE]
-    > Azure Ilke Konuk yapılandırma ilkesini kullanarak VM'ler için Azure İzleyici (Öngörüler) Aracısı veya Log Analytics Aracısı dağıttıysanız, aracılar sonraki [değerlendirme döngüsünden](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) sonra ve yeniden adlandırılmış makine yay etkin sunucularla kaydedildikten sonra yeniden dağıtılır.
+3. Makinenin Azure Arc bağlantısını kesmek ve makine kaynağını Azure 'dan silmek için **azcmagent** aracını [Disconnect](manage-agent.md#disconnect) parametresiyle birlikte kullanın. Makinenin yay özellikli sunuculardan bağlantısının kesilmesi bağlı makine aracısını kaldırmaz ve aracıyı bu işlemin bir parçası olarak kaldırmanız gerekmez. Etkileşimli olarak oturum açtığınızda bunu el ile çalıştırabilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatikleştirin. Makineyi Azure Arc etkin sunucularla kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
 
-3. PowerShell, Azure CLı veya portaldan yararlanarak, makinenin yayın etkin sunucularla bağlantısını kesin.
+4. Makine bilgisayar adını yeniden adlandırın.
 
-4. Bilgisayarı yeniden adlandırın.
+5. Bağlı makine aracısını yay etkin sunucularla yeniden kaydedin. `azcmagent`Aracı [Connect](manage-agent.md#connect) parametresiyle çalıştırın bu adımı gerçekleştirin.
 
-5. `Azcmagent`Azure 'da yeni bir kaynak kaydettirmek ve oluşturmak için aracı kullanarak, makineyi yay etkin sunucularla bağlayın.
-
-6. Hedef makinede daha önce yüklü olan VM uzantılarını dağıtın.
-
-Bu görevi gerçekleştirmek için aşağıdaki adımları kullanın.
-
-1. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)kullanarak veya [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)kullanarak [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension)yüklü VM uzantılarını kaldırın.
-
-2. Makinenin Azure Arc bağlantısını kesmek için aşağıdaki yöntemlerden birini kullanın. Makinenin yay özellikli sunuculardan bağlantısının kesilmesi bağlı makine aracısını kaldırmaz ve aracıyı bu işlemin bir parçası olarak kaldırmanız gerekmez. Makineye dağıtılan tüm VM uzantıları bu işlem sırasında çalışmaya devam eder.
-
-    # <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
-
-    1. Tarayıcınızdan [Azure Portal](https://portal.azure.com)gidin.
-    1. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
-    1. Seçili kayıtlı yay etkin sunucusunda, Azure 'daki kaynağı silmek için üstteki çubuktan **Sil** ' i seçin.
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. Makinenin bilgisayar adını yeniden adlandırın.
-
-### <a name="after-renaming-operation"></a>İşlemi yeniden adlandırdıktan sonra
-
-Bir makine yeniden adlandırıldıktan sonra, bağlı makine aracısının yay etkin sunucularla yeniden kaydedilmesi gerekir. `azcmagent`Aracı [Connect](#connect) parametresiyle çalıştırın bu adımı gerçekleştirin.
-
-Özgün olarak dağıtılan sanal makine uzantılarını yay etkin sunuculardan yeniden dağıtın. Azure Ilke Konuk yapılandırma ilkesini kullanarak VM'ler için Azure İzleyici (Öngörüler) aracısını veya Log Analytics aracısını dağıttıysanız, aracılar bir sonraki [değerlendirme döngüsünden](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)sonra yeniden dağıtılır.
+6. Özgün olarak dağıtılan sanal makine uzantılarını yay etkin sunuculardan yeniden dağıtın. Azure ilkesi kullanarak VM'ler için Azure İzleyici (Öngörüler) Aracısı veya Log Analytics Aracısı dağıttıysanız, aracılar bir sonraki [değerlendirme döngüsünden](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)sonra yeniden dağıtılır.
 
 ## <a name="upgrading-agent"></a>Aracı yükseltiliyor
 

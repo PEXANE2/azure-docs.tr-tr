@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak PostgreSQL 'Ten veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak PostgreSQL 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416759"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384104"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,7 +31,7 @@ Bu PostgreSQL Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 PostgreSQL veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu PostgreSQL Bağlayıcısı PostgreSQL **sürüm 7,4 ve üstünü**destekler.
+Özellikle, bu PostgreSQL Bağlayıcısı PostgreSQL **sürüm 7,4 ve üstünü** destekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,7 +39,7 @@ PostgreSQL veritabanından desteklenen herhangi bir havuz veri deposuna veri kop
 
 Integration Runtime sürüm 3,7 ' den başlayarak yerleşik bir PostgreSQL sürücüsü sağlar, bu nedenle herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -56,16 +51,16 @@ PostgreSQL bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **PostgreSQL** olarak ayarlanmalıdır | Evet |
-| Dizisi | PostgreSQL için Azure veritabanı 'na bağlanmak üzere bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **PostgreSQL** olarak ayarlanmalıdır | Yes |
+| Dizisi | PostgreSQL için Azure veritabanı 'na bağlanmak üzere bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 Tipik bir bağlantı dizesi `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Servis talebi başına ayarlayabileceğiniz daha fazla özellik:
 
 | Özellik | Açıklama | Seçenekler | Gerekli |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Sürücünün sürücü ve veritabanı sunucusu arasında gönderilen verileri şifrelemek için kullandığı yöntem. Ör.,  `EncryptionMethod=<0/1/6>;`| 0 (şifreleme yok) **(varsayılan)** /1 (SSL)/6 (requestssl) | Hayır |
-| ValidateServerCertificate (VSC) | Sürücünün, SSL şifrelemesi etkinleştirildiğinde veritabanı sunucusu tarafından gönderilen sertifikayı doğrulayıp doğrulamayacağını belirler (şifreleme yöntemi = 1). Ör.,  `ValidateServerCertificate=<0/1>;`| 0 (devre dışı) **(varsayılan)** /1 (etkin) | Hayır |
+| EncryptionMethod (EM)| Sürücünün sürücü ve veritabanı sunucusu arasında gönderilen verileri şifrelemek için kullandığı yöntem. Ör.,  `EncryptionMethod=<0/1/6>;`| 0 (şifreleme yok) **(varsayılan)** /1 (SSL)/6 (requestssl) | No |
+| ValidateServerCertificate (VSC) | Sürücünün, SSL şifrelemesi etkinleştirildiğinde veritabanı sunucusu tarafından gönderilen sertifikayı doğrulayıp doğrulamayacağını belirler (şifreleme yöntemi = 1). Ör.,  `ValidateServerCertificate=<0/1>;`| 0 (devre dışı) **(varsayılan)** /1 (etkin) | No |
 
 **Örnek:**
 
@@ -94,13 +89,13 @@ Tipik bir bağlantı dizesi `Server=<server>;Database=<database>;Port=<port>;UID
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -145,7 +140,7 @@ PostgreSQL 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Postgrescollection tablosuna** ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Postgrescollection tablosuna** ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
@@ -180,7 +175,7 @@ PostgreSQL 'ten veri kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Postgrescollection kaynağına** ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Postgrescollection kaynağına** ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 > [!NOTE]

@@ -8,23 +8,23 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 983322800198246bcfaecec92fe0b2b74e587756
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bf2ff2fc20d3581a297881fbd9e6db15d825814d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952106"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519006"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
-Bu makale, genel önizlemede olan tüm özelliklerin kapsamlı bir listesidir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makale, genel önizlemede olan tüm özelliklerin kapsamlı bir listesidir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Genel kullanılabilirliğe geçiş yapan Önizleme özellikleri bu listeden kaldırılır. Bir özellik aşağıda listelenmiyorsa, genel kullanıma açık olduğunu varsayabilirsiniz. Genel kullanılabilirliğiyle ilgili duyurular için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=search) [veya yenilikler.](whats-new.md)
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
 | [**Azure Machine Learning (AML) yeteneği**](cognitive-search-aml-skill.md) | Yapay zeka zenginleştirme| Azure Machine Learning bir Inde sınırlama uç noktasını bütünleştirmek için yeni bir yetenek türü. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın. | [Arama REST API 2020-06-30-önizleme](/rest/api/searchservice/) veya 2019-05-06-önizleme kullanın. Portal 'da, Beceri tasarımında, Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtıldığı varsayıldığında de mevcuttur. |
-| [**featuresMode parametresi**](/rest/api/searchservice/search-documents#featuresmode) | İlgi (Puanlama) | Ayrıntıları dahil etmek için yakınlık puanı genişletmesi: alan başına benzerlik puanı, alan dönemi sıklığı başına ve eşleşen benzersiz belirteçlerin başına alan sayısı. Bu veri noktalarını [özel Puanlama çözümlerinde](https://github.com/Azure-Samples/search-ranking-tutorial)kullanabilirsiniz. | Bu sorgu parametresini, [arama belgeleri (REST)](/rest/api/searchservice/search-documents) kullanarak api-Version = 2020-06 -30-preview veya 2019-05-06-Preview ile ekleyin. |
+| [**featuresMode parametresi**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | İlgi (Puanlama) | Ayrıntıları dahil etmek için yakınlık puanı genişletmesi: alan başına benzerlik puanı, alan dönemi sıklığı başına ve eşleşen benzersiz belirteçlerin başına alan sayısı. Bu veri noktalarını [özel Puanlama çözümlerinde](https://github.com/Azure-Samples/search-ranking-tutorial)kullanabilirsiniz. | Bu sorgu parametresini, [arama belgeleri (REST)](/rest/api/searchservice/preview-api/search-documents) kullanarak api-Version = 2020-06 -30-preview veya 2019-05-06-Preview ile ekleyin. |
 | [**Hata ayıklama oturumları**](cognitive-search-debug-session.md) | Portal, AI zenginleştirme (beceri) | Bir beceri ile ilgili sorunları araştırmak ve çözmek için kullanılan bir oturum içi beceri Düzenleyicisi. Hata ayıklama oturumu sırasında uygulanan düzeltmeler, hizmette bir beceri kaydedilebilir. | Bir hata ayıklama oturumu açmak için genel bakış sayfasındaki orta sayfalı bağlantıları kullanarak yalnızca Portal. |
 | [**Yerel blob geçici silme**](search-howto-index-changed-deleted-blobs.md) | Dizin oluşturucular, Azure Blob 'ları| Azure Bilişsel Arama 'deki Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumdaki Blobları tanır ve dizin oluşturma sırasında ilgili arama belgesini kaldırır. | Api-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [Create Indexer (REST)](/rest/api/searchservice/create-indexer) kullanarak bu yapılandırma ayarını ekleyin. |
 | [**Özel varlık arama becerisi**](cognitive-search-skill-custom-entity-lookup.md ) | AI zenginleştirme (beceri) | Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin gibi görünen bilişsel bir yetenek. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. | Portalda beceri düzenleyicisini kullanarak bu önizleme yeteneklerine başvurun veya api-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [Beceri (REST) oluşturun](/rest/api/searchservice/create-skillset) . |

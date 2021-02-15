@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904044"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362429"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -34,7 +34,7 @@ Ayrıntılı ve belirli koşullu erişim ilkeleri oluşturmak için birden çok 
 
 ## <a name="user-risk"></a>Kullanıcı riski 
 
-[Kimlik korumasına](../identity-protection/overview-identity-protection.md)erişimi olan müşteriler için, Kullanıcı riski koşullu erişim ilkesinin bir parçası olarak değerlendirilebilirler. Kullanıcı riski, belirli bir kimlik veya hesabın güvenliğinin aşıldığına ilişkin olasılığı temsil eder. Makalelerde Kullanıcı riski hakkında daha fazla bilgi [bulabilirsiniz, risk](../identity-protection/concept-identity-protection-risks.md#user-risk) ve [nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+[Kimlik korumasına](../identity-protection/overview-identity-protection.md)erişimi olan müşteriler için, Kullanıcı riski koşullu erişim ilkesinin bir parçası olarak değerlendirilebilirler. Kullanıcı riski, belirli bir kimliğin veya hesabın güvenliğinin aşıldığına ilişkin olasılığı temsil eder. Makalelerde Kullanıcı riski hakkında daha fazla bilgi [bulabilirsiniz, risk](../identity-protection/concept-identity-protection-risks.md#user-risk) ve [nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="device-platforms"></a>Cihaz platformları
 

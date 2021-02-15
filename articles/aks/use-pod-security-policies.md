@@ -3,18 +3,18 @@ title: Azure Kubernetes Service (AKS) içinde Pod güvenlik ilkeleri kullanma
 description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanarak Pod sayede denetimini nasıl denetleyeceğinizi öğrenin
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696005"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371235"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
 > [!WARNING]
-> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve** ücretsiz olarak, [aks için Azure Ilkesi](use-pod-security-on-azure-policy.md)'nin 31 Mayıs 2021 ' den sonra kullanılamayacak. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
+> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve bu,** [aks için Azure Ilkesi için](use-pod-security-on-azure-policy.md)30 Haziran 2021 ' den sonra kullanılabilir olmayacaktır. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
 >
 > Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
 >

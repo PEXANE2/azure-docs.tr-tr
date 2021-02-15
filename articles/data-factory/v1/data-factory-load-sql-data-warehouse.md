@@ -1,23 +1,18 @@
 ---
 title: Azure SYNAPSE Analytics 'e terabayt verisi yükleme
 description: Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB veri yüklenebileceğinizi gösterir
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5acae7c90efbf178fad199177fa6e0886e497fdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457103"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371218"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleyin
 > [!NOTE]
@@ -123,7 +118,7 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
       2. Bir kaynak grubunun adını girmek için **Yeni oluştur**’u seçin.
    4. Veri fabrikası için bir **konum** seçin.
    5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.  
-   6. **Oluştur**'a tıklayın.
+   6. **Oluştur**’a tıklayın.
 4. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:
 
    ![Data factory giriş sayfası](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -202,7 +197,7 @@ Bu bölümde, `lineitem` Azure SYNAPSE Analytics veritabanında hedef: tablosunu
 
     ![Kopyalama Sihirbazı-başarılı iletişim kutusu](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>En iyi yöntemler
+## <a name="best-practices"></a>En iyi uygulamalar
 Azure SYNAPSE Analytics veritabanınızı çalıştırmaya yönelik birkaç en iyi yöntem aşağıda verilmiştir:
 
 * KÜMELENMIŞ bir COLUMNSTORE DIZININE yüklerken daha büyük bir kaynak sınıfı kullanın.

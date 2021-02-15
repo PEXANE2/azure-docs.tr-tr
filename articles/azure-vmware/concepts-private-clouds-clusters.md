@@ -3,12 +3,12 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: Azure VMware çözümü yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 960187629c5dc1120b720ec9009276fa3f313e5d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 87bd2592da681726227f89b403916a12593a9db8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538933"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391397"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
@@ -73,6 +73,7 @@ Artık Azure VMware çözümü özel bulut kavramlarını kapsadığınıza gör
 - [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
 
 <!-- LINKS - internal -->
+[concepts-networking]: ./concepts-networking.md
 
 <!-- LINKS - external-->
 [VCSA versions]: https://kb.vmware.com/s/article/2143838

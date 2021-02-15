@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d712dc0ebe91ea8815adf235e02b8945e0dea84
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912833"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518870"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Hızlı başlangıç: Databricks ile verileri analiz etme
 
@@ -76,7 +76,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 4. **Küme oluştur**' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
-Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](/azure/databricks/clusters/create).
 
 ## <a name="create-notebook"></a>Not Defteri Oluştur
 
@@ -149,7 +149,7 @@ Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerç
 
     Komut başarıyla tamamlandıktan sonra, JSON dosyasındaki tüm verileri Databricks kümesinde tablo olarak görüntüleyebilirsiniz.
 
-    `%sql` dili sihirli komutu, not defteri başka bir türde olsa bile not defterinden bir SQL kodu çalıştırmanızı sağlar. Daha fazla bilgi için bkz. [Bir not defterinde dilleri karıştırma](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook).
+    `%sql` dili sihirli komutu, not defteri başka bir türde olsa bile not defterinden bir SQL kodu çalıştırmanızı sağlar. Daha fazla bilgi için bkz. [Bir not defterinde dilleri karıştırma](/azure/databricks/notebooks/notebooks-use#mix-languages).
 
 2. Çalıştırdığınız sorguyu daha iyi anlamak için örnek JSON verilerinin bir anlık görüntüsüne bakalım. Kod hücresine aşağıdaki kod parçacığını yapıştırın ve **SHIFT + ENTER** tuşuna basın.
 
@@ -200,6 +200,6 @@ Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüşt
 > [!div class="nextstepaction"]
 >[Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
-- Diğer veri kaynaklarından Azure Databricks verileri içeri aktarmayı öğrenmek için bkz. [Spark veri kaynakları](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
+- Diğer veri kaynaklarından Azure Databricks verileri içeri aktarmayı öğrenmek için bkz. [Spark veri kaynakları](/azure/databricks/data/data-sources/).
 
-- Azure Databricks çalışma alanından Azure Data Lake Storage 2. erişmenin diğer yolları hakkında bilgi edinmek için bkz. [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
+- Azure Databricks çalışma alanından Azure Data Lake Storage 2. erişmenin diğer yolları hakkında bilgi edinmek için bkz. [Azure Data Lake Storage 2.](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).

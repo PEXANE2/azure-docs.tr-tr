@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219918"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371796"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -371,10 +371,12 @@ Bazı durumlarda, bir uygulama bir sanal ağ veya bir IP adresi kuralıyla yalı
 
 Kaynak örneğinin depolama hesabı verilerinde gerçekleştirebileceği işlem türleri, kaynak örneğinin [Azure rol atamaları](storage-auth-aad.md#assign-azure-roles-for-access-rights) tarafından belirlenir. Kaynak örnekleri, depolama hesabınızla aynı kiracıdan olmalıdır, ancak Kiracıdaki herhangi bir aboneliğe ait olabilir.
 
-Desteklenen Azure hizmetlerinin listesi, bu makalenin [sistem tarafından atanan yönetilen kimliğe dayalı olarak güvenilir erişim](#trusted-access-system-assigned-managed-identity) bölümünde görüntülenir.
+> [!NOTE]
+> Bu özellik genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde kullanılabilir.
 
 > [!NOTE]
-> Bu özellik genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde kullanılabilir. 
+> Kaynak örneği kuralları şu anda yalnızca Azure SYNAPSE için desteklenmektedir. Bu makalenin [sistem tarafından atanan yönetilen kimlik ' i temel alan güvenilir erişim](#trusted-access-system-assigned-managed-identity) bölümünde listelenen diğer Azure hizmetleri için destek, önümüzdeki haftalarda kullanıma sunulacaktır.
+
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 

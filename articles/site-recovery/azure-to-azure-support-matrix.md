@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 856d8961cbdf77fc848df41502678cb438773dbe
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78c27292a92152946ba33258d27940e3c1aea47d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550126"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391584"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -35,6 +35,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Olağanüstü durum kurtarma için Azure VM 'lerini bir abonelikten diğerine çoğaltma** | Aynı Azure Active Directory kiracısı içinde desteklenir.
 **Desteklenen coğrafi kümeler içindeki bölgeler arasında VM 'Leri geçirme (ve abonelikler arasında)** | Aynı Azure Active Directory kiracısı içinde desteklenir.
 **Aynı bölgedeki VM 'Leri geçirme** | Desteklenmez.
+**Azure ayrılmış Konakları** | Desteklenmez.
 
 ## <a name="region-support"></a>Bölge desteği
 
@@ -75,7 +76,7 @@ Sanal ağlar için Azure Storage güvenlik duvarları  | Desteklenir | Güvenlik
 
 ## <a name="replicated-machine-operating-systems"></a>Çoğaltılan makine işletim sistemleri
 
-Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azure VM 'lerinin çoğaltılmasını destekler. Zaten çoğaltılan bir makine daha sonra farklı bir ana çekirdeğe yükseltildiyse (veya indirgenirse), çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerektiğini unutmayın.
+Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azure VM 'lerinin çoğaltılmasını destekler. Zaten çoğaltılan bir makine farklı bir ana çekirdeğe yükseltildiyse (veya indirgenirse), çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerektiğini unutmayın.
 
 ### <a name="windows"></a>Windows
 
@@ -205,7 +206,7 @@ Site Recovery kullanılarak geçirilen VM 'Ler | Desteklenir | Site Recovery kul
 Azure RBAC ilkeleri | Desteklenmez | VM 'lerde Azure rol tabanlı erişim denetimi (Azure RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
 Uzantıları | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
 Yakınlık yerleştirme grupları | Desteklenir | Bir yakınlık yerleşimi grubunda bulunan sanal makineler, Site Recovery kullanılarak korunabilir.
-Etiketler  | Desteklenir | Kaynak sanal makinelere uygulanan kullanıcı tarafından oluşturulan Etiketler, test yük devretmesi veya yük devretme sonrası hedef sanal makinelerin üzerine taşınır.
+Etiketler  | Desteklenir | Kaynak sanal makinelere uygulanan kullanıcı tarafından oluşturulan Etiketler, test yük devretmesi veya yük devretme sonrası hedef sanal makinelerin üzerine taşınır. VM 'ler üzerindeki etiketler, sanal makine (ler) hedef bölgede bulunduğu sürece her 24 saatte bir çoğaltılır.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Çoğaltılan makineler-disk eylemleri
@@ -265,7 +266,7 @@ NVMe diskleri | Desteklenmez
 Azure paylaşılan diskleri | Desteklenmez
 Güvenli aktarım seçeneği | Desteklenir
 Hızlandırıcı etkinleştirilmiş diskler yazma | Desteklenmez
-Etiketler  | Kullanıcı tarafından oluşturulan Etiketler her 24 saatte bir çoğaltılır.
+Etiketler  | Desteklenir | Kullanıcı tarafından oluşturulan Etiketler her 24 saatte bir çoğaltılır.
 
 >[!IMPORTANT]
 > Performans sorunlarından kaçınmak için, [yönetilen diskler](../virtual-machines/disks-scalability-targets.md)için VM disk ölçeklenebilirliğini ve performans hedeflerini izlediğinizden emin olun. Varsayılan ayarları kullanıyorsanız, Site Recovery, kaynak yapılandırmasına göre gerekli diskleri ve depolama hesaplarını oluşturur. Kendi ayarlarınızı özelleştirip seçerseniz, kaynak sanal makinelerinize yönelik disk ölçeklenebilirlik ve performans hedeflerini izleyin.

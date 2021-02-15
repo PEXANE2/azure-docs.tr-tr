@@ -2,13 +2,13 @@
 title: Azure Service Bus için IP güvenlik duvarı kurallarını yapılandırma
 description: Belirli IP adreslerinden Azure Service Bus bağlantılara izin vermek için güvenlik duvarı kuralları kullanma.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 11a17575e65bc8878819767804d7f69f3d590ad3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426589"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516558"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Service Bus ad alanına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
@@ -37,7 +37,8 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
     > [!NOTE]
     > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
     
-    Varsayılan olarak, **Seçili ağlar** seçeneği seçilidir. Bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
+    >[!WARNING]
+    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -61,28 +62,12 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
-Bu bölümde, bir sanal ağ ve bir güvenlik duvarı kuralı oluşturan örnek bir Azure Resource Manager şablonu bulunur.
+Bu bölümde, var olan bir Service Bus ad alanına bir sanal ağ ve bir güvenlik duvarı kuralı ekleyen örnek bir Azure Resource Manager şablonu vardır.
 
+**IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CıDR gösteriminde 70.37.104.0/24, Aralık için önemli olan önek bit sayısını belirten, 70.37.104.0 ile 70.37.104.255 arasındaki 256 IPv4 adresini temsil eder.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı eklenmesini sağlar.
+Sanal ağ veya güvenlik duvarları kuralları eklerken, değerini `defaultAction` olarak ayarlayın `Deny` .
 
-Şablon parametreleri:
-
-- **IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CıDR gösteriminde 70.37.104.0/24, Aralık için önemli olan önek bit sayısını belirten, 70.37.104.0 ile 70.37.104.255 arasındaki 256 IPv4 adresini temsil eder.
-
-> [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
-> 
-> Kaynak
-> ```json
-> "defaultAction": "Allow"
-> ```
-> şöyle değiştirin:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -147,6 +132,10 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 ```
 
 Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+
+> [!IMPORTANT]
+> IP ve sanal ağ kuralları yoksa, olarak ayarlamış olsanız bile tüm trafik ad alanına akar `defaultAction` `deny` . Ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak). Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin.  
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

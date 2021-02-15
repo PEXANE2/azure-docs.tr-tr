@@ -1,7 +1,7 @@
 ---
-title: Azure Iletişim Hizmetleri telefon ve SMS çözümünüzü planlayın
+title: Azure Iletişim hizmetlerindeki telefon numarası türleri
 titleSuffix: An Azure Communication Services concept document
-description: Telefon numaraları ve telefon kullanım alanınızı etkin bir şekilde nasıl planlayacağınızı öğrenin.
+description: SMS ve telefon için farklı türlerde telefon numaralarını etkin bir şekilde kullanmayı öğrenin.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937245"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366475"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
+# <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon ağı (PSTN) ile SMS mesajları göndermek için telefon numaralarını kullanmanıza olanak sağlar. Bu belgede, Iletişim hizmetlerini kullanarak telefon ve SMS çözümünüzü planlamak için telefon numarası türlerini, yapılandırma seçeneklerini ve bölge kullanılabilirliğini gözden geçireceğiz.
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
- 
+## <a name="number-types-and-features"></a>Sayı türleri ve özellikleri
 İletişim Hizmetleri iki tür telefon numarası sunar: **Yerel** **ve ücretsiz**. 
 
 ### <a name="local-numbers"></a>Yerel numaralar
@@ -52,7 +47,7 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 | Toll-Free         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri 
+### <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir.
 ### <a name="conceptual-documentation"></a>Kavramsal belgeler
 
 - [Ses ve görüntü kavramları](../voice-video-calling/about-call-types.md)
+- [Telefon kavramları](./telephony-concept.md)
 - [Çağrı akışları](../call-flows.md)
 - [Fiyatlandırma](../pricing.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388949"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma’nın doğruluğunu değerlendime ve iyileştirme
 
@@ -33,7 +33,7 @@ Yanlış tanımlanmış kelimeler üç kategoride yer almalıdır:
 * Silme (D): varsayım dökümü 'nde algılanmayan sözcükler
 * Değiştirme (ler): başvuru ve varsayım arasında değiştirilen kelimeler
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ![Yanlış tanımlanmış sözcüklerin örneği](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -58,7 +58,7 @@ Modelleri yan yana değerlendirmek için:
 3. **Test Ekle**' ye tıklayın.
 4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 
@@ -118,7 +118,12 @@ Bu ayrıntıları göz önünde bulundurun:
 * Eğitim işleminin tamamlanması birkaç gün sürebilir. Eğitimin hızını artırmak için konuşma hizmeti aboneliğinizi eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) oluşturmayı unutmayın.
 
 > [!NOTE]
-> Tüm temel modeller ses ile eğitimi desteklemez. Bir temel model bunu desteklemiyorsa, konuşma hizmeti bu metni yalnızca dökümleri 'ten kullanır ve sesi yoksayar.
+> Tüm temel modeller ses ile eğitimi desteklemez. Bir temel model bunu desteklemiyorsa, konuşma hizmeti bu metni yalnızca dökümleri 'ten kullanır ve sesi yoksayar. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> Eğitim için kullanılan temel modeli değiştirirken ve eğitim veri kümesinde seslerinizi değiştirdiğinizde, yeni seçilen temel modelin [ses verileriyle eğitimi destekleyip desteklemediğini](language-support.md#speech-to-text) *her zaman* denetleyin. Daha önce kullanılan temel model, ses verileriyle eğitimi desteklemeiyorsa ve eğitim veri kümesi ses içeriyorsa, yeni temel modele sahip eğitim süresi büyük **ölçüde** artar ve birkaç saat ile birkaç güne ve daha fazlasına kolayca gidebilirler. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip](custom-speech-overview.md#set-up-your-azure-account) bir bölgede **değilse** bu özellikle doğrudur.
+>
+> Yukarıdaki paragrafta açıklanan sorunu ortaya çıkardıysanız, veri kümesindeki ses miktarını azaltarak veya tamamen yalnızca metni bırakarak eğitim süresini hızla azaltabilirsiniz. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) **değilse** , ikinci seçenek kesinlikle önerilir.
 
 ### <a name="add-new-words-with-pronunciation"></a>Telaffuz ile yeni sözcükler ekleme
 

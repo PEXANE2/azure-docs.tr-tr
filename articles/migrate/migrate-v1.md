@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753952"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373292"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -22,7 +22,7 @@ Bu makalede, Azure geçişi 'nin önceki sürümüyle çalışma hakkında bilgi
 Azure geçişi hizmetinin iki sürümü vardır:
 
 - **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Önceki sürüm projeleri, bu makalede klasik projeler olarak adlandırılır. Yine de önceki sürümde oluşturulan Azure geçiş projelerini kullanmanız gerekiyorsa, bu sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanıyorsanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Önceki sürüm projeleri, bu makalede klasik projeler olarak adlandırılır. Klasik Azure geçişi, Şubat 2024 ' de devre dışı bırakılıyor. Şubat 2024 ' den sonra Azure geçişi 'nin klasik sürümü artık desteklenmeyecektir ve klasik projelerdeki envanter meta verileri silinir. Klasik Azure geçiş projelerini yine de kullanmanız gerekiyorsa, bu durum sizin yapabileceğiniz ve yapameyeceğiniz bir şeydir:
     - Artık geçiş projeleri oluşturamazsınız.
     - Yeni bulmalar gerçekleştirmemenizi öneririz.
     - Mevcut projelere erişmeye devam edebilirsiniz.
@@ -219,7 +219,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 
 Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/platform/gateway.md) indirip yüklemeniz gerekir.
 
-1. Genel olarak, makineleri **Yönet**' **e** tıklayın  >  **Machines** ve gerekli makineyi seçin.
+1. Genel olarak, makineleri **Yönet**' **e** tıklayın  >  ve gerekli makineyi seçin.
 2. **Bağımlılıklar** sütununda, **aracıları yüklensin**' e tıklayın.
 3. **Bağımlılıklar** sayfasında, değerlendirmek ISTEDIĞINIZ her VM 'ye Microsoft Monitoring Agent (MMA) ve bağımlılık aracısını indirip yükleyin.
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
@@ -270,7 +270,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Bağımlılık eşleme ile bir grup oluşturma
 
-1. Aracıları yükledikten sonra portala gidin ve makineleri **Yönet**' e tıklayın  >  **Machines**.
+1. Aracıları yükledikten sonra portala gidin ve makineleri **Yönet**' e tıklayın  >  .
 2. Aracıları yüklediğiniz makineyi arayın.
 3. Makinenin **Bağımlılıklar** sütunu artık **Görünüm bağımlılıkları** olarak gösterilmelidir. Makinenin bağımlılıklarını görüntülemek için sütuna tıklayın.
 4. Makinenin bağımlılık eşlemesi aşağıdaki ayrıntıları gösterir:

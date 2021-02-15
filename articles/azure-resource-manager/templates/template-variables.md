@@ -1,28 +1,82 @@
 ---
 title: Şablonlarda değişkenler
-description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar (ARM şablonu).
+description: Azure Resource Manager şablonunda (ARM şablonu) ve Bıcep dosyasında değişkenlerin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874443"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364469"
 ---
-# <a name="variables-in-arm-template"></a>ARM şablonundaki değişkenler
+# <a name="variables-in-arm-templates"></a>ARM şablonlarındaki değişkenler
 
-Bu makalede Azure Resource Manager şablonunuzda (ARM şablonu) değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
+Bu makalede Azure Resource Manager şablonunuzda (ARM şablonunda) veya Bıcep dosyasında değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra bu değişkeni, şablonunuzun tamamında gereken şekilde kullanırsınız.
 
 Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişken şablonun herhangi bir yerinde kullanıldığında Resource Manager bu değişkenin yerine çözümlenen değeri koyar.
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>Değişken tanımla
 
-Bir değişken tanımlarken, bir [veri türüne](template-syntax.md#data-types)çözümlenen bir değer veya şablon ifadesi sağlayın. Değişkeni oluştururken bir parametre veya başka bir değişken değerini kullanabilirsiniz.
+Bir değişken tanımlarken, değişken için bir [veri türü](template-syntax.md#data-types) belirtmezsiniz. Bunun yerine bir değer veya şablon ifadesi sağlayın. Değişken türü çözümlenen değerden algılanır. Aşağıdaki örnek bir dize için bir değişken ayarlar.
 
-Değişken bildiriminde [şablon işlevlerini](template-functions.md) kullanabilirsiniz, ancak [başvuru](template-functions-resource.md#reference) işlevini veya herhangi bir [liste](template-functions-resource.md#list) işlevini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
+# <a name="json"></a>[JSON](#tab/json)
 
-Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesabı adı için bir dize değeri oluşturur. Bir parametre değeri almak için çeşitli şablon işlevleri kullanır ve onu benzersiz bir dizeye birleştirir.
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+Değişkeni oluştururken bir parametre veya başka bir değişken değerini kullanabilirsiniz.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+Değişken değerini oluşturmak için [şablon işlevlerini](template-functions.md) kullanabilirsiniz.
+
+JSON şablonlarında, [başvuru](template-functions-resource.md#reference) işlevini veya değişken bildiriminde herhangi bir [liste](template-functions-resource.md#list) işlevini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
+
+Bir bicep dosyasında değişken bildirirken başvuru ve liste işlevleri geçerlidir.
+
+Aşağıdaki örnek, depolama hesabı adı için bir dize değeri oluşturur. Bir parametre değeri almak için çeşitli şablon işlevleri kullanır ve onu benzersiz bir dizeye birleştirir.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesab�
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>Değişken kullan
 
-Şablonda, [değişkenler](template-functions-deployment.md#variables) işlevini kullanarak parametrenin değerine başvurarak. Aşağıdaki örnek, bir kaynak özelliği için değişkeninin nasıl kullanılacağını gösterir.
+Aşağıdaki örnek, bir kaynak özelliği için değişkeninin nasıl kullanılacağını gösterir.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+JSON şablonunda, [değişkenler](template-functions-deployment.md#variables) işlevini kullanarak değişkenin değerine başvurarak.
 
 ```json
 "resources": [
@@ -44,17 +110,46 @@ Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesab�
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bir bicep dosyasında, değişken adını sağlayarak değişkenin değerine başvurarak başvurabilirsiniz.
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>Örnek şablon
 
-Aşağıdaki şablon hiçbir kaynak dağıtmaz. Yalnızca değişkenleri bildirmenin bazı yollarını gösterir.
+Aşağıdaki şablon hiçbir kaynak dağıtmaz. Farklı türlerde değişkenler bildirmenin bazı yollarını gösterir.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bıcep Şu anda döngüleri desteklemiyor.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
 
 ## <a name="configuration-variables"></a>Yapılandırma değişkenleri
 
 Bir ortamı yapılandırmak için ilgili değerleri tutan değişkenler tanımlayabilirsiniz. Değişkeni değerleriyle bir nesne olarak tanımlarsınız. Aşağıdaki örnek, iki ortam için değerleri tutan bir nesne gösterir- **Test** ve **Üretim**. Dağıtım sırasında bu değerlerden birini geçirin.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

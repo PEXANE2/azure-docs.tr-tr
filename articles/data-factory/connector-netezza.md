@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Netezza 'ten veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Netezza 'tan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b12c1f24f389634004de3d487a693bc588a7241
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84216383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374363"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Netezza 'ten veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,15 +51,15 @@ Netezza bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **Netezza**olarak ayarlanmalıdır. | Evet |
-| Dizisi | Netezza 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
+| tür | **Type** özelliği **Netezza** olarak ayarlanmalıdır. | Yes |
+| Dizisi | Netezza 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |No |
 
 Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` . Aşağıdaki tabloda ayarlayabileceğiniz daha fazla özellik açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| SecurityLevel | Sürücünün veri deposuyla bağlantı için kullandığı güvenlik düzeyi. Sürücü SSL sürüm 3 kullanılarak tek yönlü kimlik doğrulamasıyla SSL bağlantılarını destekler. <br>Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (yalnızca güvenli**olmayan**): sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)**: bir SSL bağlantısı yoksa sürücü bağlanamaz. | Hayır |
+| SecurityLevel | Sürücünün veri deposuyla bağlantı için kullandığı güvenlik düzeyi. Sürücü SSL sürüm 3 kullanılarak tek yönlü kimlik doğrulamasıyla SSL bağlantılarını destekler. <br>Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (yalnızca güvenli **olmayan**): sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)**: sunucu bir seçenek sağlıyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)**: bir SSL bağlantısı yoksa sürücü bağlanamaz. | No |
 | CaCertFile | Sunucu tarafından kullanılan SSL sertifikasının tam yolu. Örnek: `CaCertFile=<cert path>;`| Evet, SSL etkinse |
 
 **Örnek**
@@ -94,13 +89,13 @@ Tipik bir bağlantı dizesi `Server=<server>;Port=<port>;Database=<database>;UID
         "type": "Netezza",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -117,11 +112,11 @@ Bu bölüm, Netezza veri kümesinin desteklediği özelliklerin bir listesini sa
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md).
 
-Netezza öğesinden veri kopyalamak için, veri kümesinin **Type** özelliğini **NetezzaTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Netezza öğesinden veri kopyalamak için, veri kümesinin **Type** özelliğini **NetezzaTable** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **NetezzaTable** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **NetezzaTable** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
@@ -153,17 +148,17 @@ Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam
 >[!TIP]
 >Veri bölümlemesini kullanarak Netezza 'tan verileri verimli bir şekilde yüklemek için, [Netezza bölümünden paralel kopyadan](#parallel-copy-from-netezza) daha fazla bilgi edinin.
 
-Netezza 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü **NetezzaSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Netezza 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü **NetezzaSource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **NetezzaSource**olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **NetezzaSource** olarak ayarlanmalıdır. | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `"SELECT * FROM MyTable"` | Hayır (veri kümesinde "tableName" belirtilmişse) |
-| partitionOptions | Netezza 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (default), **Dataslice**ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, `None` ), bir Netezza veritabanından eşzamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğinde ayarlanarak denetlenir. | Hayır |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | Hayır |
-| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı oto algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionColumnName` WHERE yan tümcesinde kanca. [Netezza from the Parallel Copy](#parallel-copy-from-netezza) bölümüne bakın. | Hayır |
-| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | Hayır |
-| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | Hayır |
+| partitionOptions | Netezza 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (default), **Dataslice** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, `None` ), bir Netezza veritabanından eşzamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğinde ayarlanarak denetlenir. | No |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | No |
+| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı oto algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionColumnName` WHERE yan tümcesinde kanca. [Netezza from the Parallel Copy](#parallel-copy-from-netezza) bölümüne bakın. | No |
+| Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | No |
+| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Netezza öğesinden paralel kopyalama](#parallel-copy-from-netezza) bölümüne bakın. | No |
 
 **Örnek:**
 

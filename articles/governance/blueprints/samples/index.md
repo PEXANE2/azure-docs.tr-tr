@@ -1,14 +1,14 @@
 ---
 title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225150"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370963"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -18,9 +18,10 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 
 | Örnek | Açıklama |
 |---------|---------|
-| [ISM İLE KORUNAN Avustralya Kamu](./ism-protected/index.md) | Avustralya kamu IZININ KORUNMASıNDAKI uyumluluk için guardrayları sağlar. |
-| [Azure Güvenlik kıyaslaması v1](./azure-security-benchmark.md) | [Azure Güvenlik kıyaslaması v1](../../../security/benchmarks/overview.md)ile uyumluluk için guardrayları sağlar. |
-| [Kanada Federal PBMM](./canada-federal-pbmm/index.md) | Kanada Federal korumalı B, Orta bütünlük, orta kullanılabilirlik (PBMM) ile uyumluluk için guardrayları sağlar. |
+| [ISM İLE KORUNAN Avustralya Kamu](./ism-protected/index.md) | ISM İLE KORUNAN Avustralya Kamu’ya uyumluluk için korkuluklar sağlar. |
+| [Azure Güvenlik Karşılaştırması](./azure-security-benchmark.md) | [Azure Güvenlik Karşılaştırması](../../../security/benchmarks/overview.md) uyumluluğu için koruma sağlar. |
+| [Azure güvenliği kıyaslama temeli](./azure-security-benchmark-foundation/index.md) | Azure Security kıyaslama Foundation 'ı dağıtır ve yapılandırır. |
+| [Kanada Federal PBMM](./canada-federal-pbmm/index.md) | Kanada Federal Tarafından Korunan B, Orta Düzeyde Bütünlük, Orta Düzeyde Kullanılabilirlik (PBMM) için uyumluluğa yönelik koruma sağlar. |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| CIS Microsoft Azure Foundations Benchmark önerileriyle uyumlu olmaya yardımcı olan bir dizi ilke sağlar. |
 | [DoD Etki Düzeyi 4](./dod-impact-level-4/index.md) | DoD Etki Düzeyi 4 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
 | [DoD Etki Düzeyi 5](./dod-impact-level-5/index.md) | DoD Etki Düzeyi 5 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |

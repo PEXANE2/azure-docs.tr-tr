@@ -1,22 +1,18 @@
 ---
 title: Amazon Simple Storage Service (S3) öğesinden veri kopyalama
 description: Azure Data Factory kullanarak Amazon Simple Storage Service (S3) kaynağından desteklenen havuz veri depolarına veri kopyalama hakkında bilgi edinin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/14/2021
-ms.openlocfilehash: 82871a09916b2b64f74e25088f5e75ac60a40678
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 2680c930bfa8451eec7dd518d3c535e0d04046cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202513"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387895"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Simple Storage Service 'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -53,7 +49,7 @@ Yazmak için Data Factory Kullanıcı arabirimini kullanıyorsanız, `s3:ListAll
 
 Amazon S3 izinlerinin tam listesi için, AWS sitesindeki [bir Ilkede Izinleri belirtme](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) konusuna bakın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
@@ -182,14 +178,14 @@ Aşağıdaki özellikler, `storeSettings` bir biçim tabanlı kopyalama kaynağ�
 | Özellik                 | Açıklama                                                  | Gerekli                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | tür                     | İçindeki **tür** özelliği `storeSettings` **AmazonS3ReadSettings** olarak ayarlanmalıdır. | Yes                                                         |
-| **_Kopyalanacak dosyaları bulun:_* _ |  |  |
-| SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen belirli bir demet veya klasör/dosya yolundan kopyalama. Bir demet veya klasörden tüm dosyaları kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `_` . |  |
+| ***Kopyalanacak dosyaları bulun:*** |  |  |
+| SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen belirli bir demet veya klasör/dosya yolundan kopyalama. Bir demet veya klasörden tüm dosyaları kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `*` . |  |
 | Seçenek 2: S3 ön eki<br>-önek | Kaynak S3 dosyalarını filtrelemek için bir veri kümesinde yapılandırılan belirtilen demet altındaki S3 anahtar adının öneki. Adları ile başlayan S3 anahtarları `bucket_in_dataset/this_prefix` seçilidir. Bir joker karakter filtresinden daha iyi performans sağlayan S3's hizmet tarafı filtresinden yararlanır.<br/><br/>Ön eki ve koruma hiyerarşisi ile dosya tabanlı havuza kopyalamayı seçtiğinizde, önekte son "/" dan sonraki alt yolun korunması gerekir. Örneğin, kaynağı vardır  `bucket/folder/subfolder/file.txt` ve ön eki olarak yapılandırın ve `folder/sub` ardından korunan dosya yolu olur `subfolder/file.txt` . | No |
 | Seçenek 3: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörleri filtrelemek için bir veri kümesinde yapılandırılan belirtilen demet altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | No                                            |
 | Seçenek 3: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen demet ve klasör yolu (veya joker karakter klasörü yolu) altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Dosya adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Yes |
 | 4. seçenek: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullandığınızda, veri kümesinde bir dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |No |
-| ***Ek ayarlar:** _ |  | |
-| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. _ *Özyinelemeli** **true** olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false** şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |No |
+| ***Ek ayarlar:*** |  | |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. **Özyinelemeli** değeri **true** olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false** şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |No |
 | deleteFilesAfterCompletion | Hedef depoya başarıyla taşıdıktan sonra, ikili dosyaların kaynak depodan silinip silinmeyeceğini gösterir. Dosya silme dosya başına yapılır, bu nedenle kopyalama etkinliği başarısız olduğunda, bazı dosyaların hedefe zaten kopyalanmış ve kaynaktan silindiği görürsünüz, diğerleri ise kaynak deposunda hala kalır. <br/>Bu özellik yalnızca ikili dosyalar kopyalama senaryosunda geçerlidir. Varsayılan değer: false. |No |
 | modifiedDatetimeStart    | Dosyalar şu özniteliğe göre filtrelenmiştir: son değiştirme. <br>Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, "2018-12-01T05:00:00Z" biçiminde bir UTC saat dilimine uygulanır. <br> Özellikler **null** olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacağı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak **null** ise, son değiştirilen özniteliği DateTime değerinden büyük veya ona eşit olan dosyalar seçilir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak **null** ise, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | No                                            |
 | modifiedDatetimeEnd      | Yukarıdakiyle aynıdır.                                               | No                                                          |

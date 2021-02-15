@@ -6,17 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: d297d215d4b0edfdd67b603ba4707bf02057ad78
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241166"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516881"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nı Durdur/Başlat
 
 > [!IMPORTANT]
-> MySQL için Azure veritabanı 'nın Durdur/Başlat işlevselliği Şu anda genel önizleme aşamasındadır.
+>  Sunucuyu **durdurduğunuzda** bir esnette sonraki 7 gün için bu durumda kalır. Bu süre içinde el ile **başlatmadıysanız** , sunucu otomatik olarak 7 gün sonunda başlatılır. Sunucuyu kullanmıyorsanız tekrar **durdurmayı** seçebilirsiniz.
 
 Bu makalede, tek sunucu durdurma ve başlatma işlemleri gerçekleştirmeye yönelik adım adım yordamlar sunulmaktadır.
 

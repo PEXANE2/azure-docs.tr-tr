@@ -1,22 +1,18 @@
 ---
 title: Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
 description: Bir bölüm listesini, Azure Data Factory ile AWS S3 üzerinde depolamak için bir dış denetim tablosu kullanarak Amazon S3 'tan verileri geçirmek üzere bir çözüm şablonu kullanmayı öğrenin.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398230"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362004"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
 
@@ -119,7 +115,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
     ![Şablon kullanılarak oluşturulan iki işlem hattını ve üç veri kümesini gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+6. "BulkCopyFromS3" ardışık düzenine gidin ve **Hata Ayıkla**' yı seçin, **parametreleri** girin. Ardından **Son**'u seçin.
 
     ![Hata ayıklamayı seçme ve son ' u seçmeden önce parametreleri girme işlemlerini gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -182,7 +178,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
     ![İşlem hattını gözden geçirme](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+6.  "DeltaCopyFromS3" ardışık düzenine gidip **Hata Ayıkla**' yı seçin ve **parametreleri** girin. Ardından **Son**'u seçin.
 
     ![* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754088"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389544"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -121,7 +121,7 @@ Kullanmaya başlamak için uzman yardımı arıyorsanız, Microsoft size rehberl
 Azure geçişi hizmetinin iki sürümü vardır.
 
 - **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümü yalnızca şirket Içi VMware VM 'lerinin değerlendirmesini destekler. Önceki sürümü kullandıysanız, artık geçerli sürümü kullanmanız gerekir. Artık önceki sürümü kullanarak Azure geçişi projelerini oluşturamazsınız. Ayrıca, bununla yeni bulmalar yapmanızı öneririz.
+- **Önceki sürüm**: klasik Azure geçişi olarak da bilinen Azure geçişi 'nin önceki sürümü yalnızca şirket Içi VMware VM 'lerinin değerlendirmesini destekler. Klasik Azure geçişi, Şubat 2024 ' de devre dışı bırakılıyor. Şubat 2024 ' den sonra Azure geçişi 'nin klasik sürümü artık desteklenmeyecektir ve klasik projelerdeki envanter meta verileri silinir. Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](create-manage-projects.md)ve buna [değerlendirme ve geçiş araçları eklemeniz](./create-manage-projects.md) gerekir. Kullanılabilir değerlendirme ve geçiş araçlarının nasıl kullanılacağını anlamak için öğreticilerini kullanın. Klasik bir projeye eklenmiş bir Log Analytics çalışma alanınız varsa, klasik projeyi sildikten sonra onu geçerli sürümün projesine ekleyebilirsiniz.
 
     Azure portal mevcut projelere erişmek için **Azure geçişi**' ni arayıp seçin. **Azure geçiş** panosu, eski Azure geçiş projelerine erişim için bir bildirime ve bağlantıya sahiptir.
 

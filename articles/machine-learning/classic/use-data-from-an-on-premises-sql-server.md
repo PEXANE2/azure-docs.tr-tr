@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): şirket içi SQL Server-Azure'
 description: Azure Machine Learning Studio (klasik) ile gelişmiş analizler gerçekleştirmek için bir SQL Server veritabanındaki verileri kullanın.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8cdf1029371e0e11c38616e7800652ca9debbba7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325694"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517408"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server veritabanı kullanarak Azure Machine Learning Studio (klasik) analiz gerçekleştirme
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Genellikle şirket içi verilerle çalışan kuruluşlar, makine öğrenimi iş yükleri için bulutun ölçeklendirilmesi ve çeviklerinden yararlanmak ister. Ancak, şirket içi verilerini buluta taşıyarak geçerli iş süreçlerini ve iş akışlarını kesintiye uğramasını istemiyor. Azure Machine Learning Studio (klasik) artık SQL Server bir veritabanından veri okumayı ve sonra bu verilerle bir modeli eğitmek ve Puanlama destekler. Artık bulut ve şirket içi sunucunuz arasında verileri el ile kopyalamanız ve eşitlemeniz gerekmez. Bunun yerine, Azure Machine Learning Studio (klasik) **veri alma** modülü artık eğitim ve Puanlama işleriniz için SQL Server veritabanından doğrudan okuyabilir.
@@ -89,10 +89,10 @@ Bu kılavuzda, bir Azure Machine Learning çalışma alanında Azure Data Factor
 5. Veri ağ geçidini Indir ve Kaydet iletişim kutusunda, ağ GEÇIDI kayıt anahtarını panoya kopyalayın.
 
     ![Veri ağ geçidini indir ve Kaydet](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>Henüz Microsoft Veri Yönetimi ağ geçidini indirip yüklemediyseniz, **veri yönetimi ağ geçidini indir** ' e tıklayın. Bu sizi, ihtiyacınız olan ağ geçidi sürümünü seçebileceğiniz, indirebileceğiniz ve yükleyebileceğiniz Microsoft Indirme Merkezi ' ne götürür. Yükleme önkoşulları, yükleme adımları ve sorun giderme ipuçları hakkında ayrıntılı bilgileri makalenin başlangıç bölümlerinde bulabilirsiniz. [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](../../data-factory/tutorial-hybrid-copy-portal.md).
-7. Ağ Geçidi yüklendikten sonra Veri Yönetimi ağ geçidi Configuration Manager açılır ve **ağ geçidi kaydet** iletişim kutusu görüntülenir. Panoya kopyaladığınız **ağ geçidi kayıt anahtarını** yapıştırın ve **Kaydet** ' e tıklayın.
-8. Zaten yüklü bir ağ geçidiniz varsa Veri Yönetimi ağ geçidi Configuration Manager çalıştırın. **Anahtarı Değiştir** ' e tıklayın, önceki adımda panoya kopyaladığınız **ağ geçidi kayıt anahtarını** yapıştırın ve **Tamam** ' a tıklayın.
-9. Yükleme tamamlandığında, Microsoft Veri Yönetimi Gateway Configuration Manager için **ağ geçidi kaydet** iletişim kutusu görüntülenir. Önceki adımda panoya kopyaladığınız ağ GEÇIDI kayıt anahtarını yapıştırın ve **Kaydet** ' e tıklayın.
+6. <span id="note-1" class="anchor"></span>Henüz Microsoft Veri Yönetimi ağ geçidini indirip yüklemediyseniz, **veri yönetimi ağ geçidini indir**' e tıklayın. Bu sizi, ihtiyacınız olan ağ geçidi sürümünü seçebileceğiniz, indirebileceğiniz ve yükleyebileceğiniz Microsoft Indirme Merkezi ' ne götürür. Yükleme önkoşulları, yükleme adımları ve sorun giderme ipuçları hakkında ayrıntılı bilgileri makalenin başlangıç bölümlerinde bulabilirsiniz. [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](../../data-factory/tutorial-hybrid-copy-portal.md).
+7. Ağ Geçidi yüklendikten sonra Veri Yönetimi ağ geçidi Configuration Manager açılır ve **ağ geçidi kaydet** iletişim kutusu görüntülenir. Panoya kopyaladığınız **ağ geçidi kayıt anahtarını** yapıştırın ve **Kaydet**' e tıklayın.
+8. Zaten yüklü bir ağ geçidiniz varsa Veri Yönetimi ağ geçidi Configuration Manager çalıştırın. **Anahtarı Değiştir**' e tıklayın, önceki adımda panoya kopyaladığınız **ağ geçidi kayıt anahtarını** yapıştırın ve **Tamam**' a tıklayın.
+9. Yükleme tamamlandığında, Microsoft Veri Yönetimi Gateway Configuration Manager için **ağ geçidi kaydet** iletişim kutusu görüntülenir. Önceki adımda panoya kopyaladığınız ağ GEÇIDI kayıt anahtarını yapıştırın ve **Kaydet**' e tıklayın.
 
     ![Ağ geçidini kaydetme](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Microsoft Veri Yönetimi Gateway Configuration Manager **giriş** sekmesinde aşağıdaki değerler ayarlandığında ağ geçidi yapılandırması tamamlanır:
@@ -144,6 +144,6 @@ Ağ geçidini ayarladıktan sonra, verileri SQL Server veritabanından veren bir
    ![Veri alma modülü özellikleri](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Denemeyi çalıştırmak için **Çalıştır** ' a tıklayın.
 
-Deneme çalışmayı bitirdiğinde, **veri alma** modülünün çıkış bağlantı noktasına tıklayıp **Görselleştir** ' i seçerek veritabanından içeri aktardığınız verileri görselleştirebilirsiniz.
+Deneme çalışmayı bitirdiğinde, **veri alma** modülünün çıkış bağlantı noktasına tıklayıp **Görselleştir**' i seçerek veritabanından içeri aktardığınız verileri görselleştirebilirsiniz.
 
 Denemenizin geliştirilmesini tamamladıktan sonra modelinizi dağıtabilir ve çalıştırabilirsiniz. Toplu yürütme hizmetini kullanarak **veri alma** modülünde yapılandırılan SQL Server veritabanındaki veriler, Puanlama için okunacak ve kullanılacaktır. Puanlama için Istek yanıtı hizmetini şirket içi veriler için kullanabilirsiniz, Microsoft bunun yerine [Excel eklentisinin](excel-add-in-for-web-services.md) kullanılmasını önerir. Şu anda, **verileri dışarı aktarma** yoluyla SQL Server veritabanına yazmak denemeleri veya yayınlanan Web hizmetlerinde desteklenmez.

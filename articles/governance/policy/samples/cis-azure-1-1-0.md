@@ -1,15 +1,15 @@
 ---
 title: CIS için yasal uyumluluk ayrıntıları Microsoft Azure kuruluş kıyaslaması
 description: CIS ayrıntıları, kıyaslama mevzuatı uyumluluğu yerleşik girişimi 'nin temelleri Microsoft Azure. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 87af2d644490170af1dba336c578af3e8ceb5639
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 02976da72027f9e5c5396148cd15e361aaf20ab0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559184"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099787"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure temel bilgiler kıyaslama mevzuatı uyumluluğu yerleşik girişimi
 
@@ -217,7 +217,7 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Depolama hesapları, ağ erişimini kısıtlıyor olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Depolama hesaplarına ağ erişimi kısıtlanmalıdır. Ağ kurallarını, yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli bir internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel İnternet IP adresi aralıklarına yönelik trafiğe erişim verilebilir |Denetim, reddetme, devre dışı |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|[Depolama hesapları, ağ erişimini kısıtlıyor olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Depolama hesaplarına ağ erişimi kısıtlanmalıdır. Ağ kurallarını, yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel İnternet IP adresi aralıklarına yönelik trafiğe erişim verilebilir |Denetim, reddetme, devre dışı |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>Depolama hesabı erişimi için ' güvenilen Microsoft Hizmetleri 'nin etkinleştirildiğinden emin olun
 
@@ -251,7 +251,7 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[SQL Server 'lar, 90 gün sonra bekletme veya daha yüksek bir denetim ile yapılandırılmalıdır.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |SQL Server 'lar, 90 gün sonra bekletme veya daha yüksek bir denetim ile yapılandırılmalıdır. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|[SQL Server 'lar, 90 gün sonra bekletme veya daha yüksek bir denetim ile yapılandırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |SQL Server 'lar, 90 gün sonra bekletme veya daha yüksek bir denetim ile yapılandırılmalıdır. |Auditınotexists, devre dışı |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
 
 ### <a name="ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>SQL Server 'da ' Gelişmiş veri güvenliği 'nin ' açık ' olarak ayarlandığından emin olun
 
@@ -391,7 +391,7 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Key Vault tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Tanılama günlüklerini etkinleştirme denetimi. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye düştüğünde araştırma amaçlarıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|[Key Vault kaynak günlüklerinin etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Kaynak günlüklerinin etkinleştirilmesi için denetim. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye düştüğünde araştırma amaçlarıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar |Auditınotexists, devre dışı |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>Ilke ataması oluşturmak için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
 

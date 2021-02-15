@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756031"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104289"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -105,7 +105,7 @@ V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliğ
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Açıklama |
+| Özellik adı  | Ek özellik adı | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -138,7 +138,7 @@ Bu Optionalclaim nesnesi, istemciye döndürülen KIMLIK belirtecinin `upn` ek a
 
 Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz.
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin. 
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> gidin. 
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
@@ -153,7 +153,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
@@ -201,7 +201,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Açıklama                                           |
+| Ad          | Tür                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -214,7 +214,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |
@@ -246,7 +246,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
@@ -259,7 +259,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları uygulama bildirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
@@ -388,7 +388,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Kullanıcı arabirimi yapılandırması:**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 
 1. **Azure Active Directory**'yi bulun ve seçin.
@@ -411,7 +411,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Bildirim yapılandırması:**
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.

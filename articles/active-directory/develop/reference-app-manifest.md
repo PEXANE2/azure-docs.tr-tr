@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583052"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103354"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -33,7 +33,7 @@ Bir uygulamanın özniteliklerini Azure portal veya [REST API](/graph/api/resour
 
 Uygulama bildirimini yapılandırmak için:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin. **Azure Active Directory** hizmetini arayıp seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> gidin. **Azure Active Directory** hizmetini arayıp seçin.
 1. **Uygulama kayıtları**’nı seçin.
 1. Yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Web tabanlı bir bildirim Düzenleyicisi açılır ve bu, portalı içindeki bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak, bildirimi yerel olarak düzenlemek için **İndir** ' i seçip uygulamanıza yeniden uygulamak Için **karşıya yükle** ' yi kullanabilirsiniz.
