@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165153"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365829"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -299,6 +299,11 @@ Y **:** Şirket ağı dışında bir parola değiştirilirse (örneğin, Azure A
 - Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar**  >  **hesaplar**  >  **erişim iş veya okul** bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
 - İOS ve Android için Microsoft Authenticator uygulama **ayarları**  >  **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
 - MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırabilir ve kaydı kaldırabilirsiniz. 
+
+Windows 10 cihazlarında, bu işlem [Workplace Join (WPJ) kaldırma aracı](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip) ile otomatikleştirilebilir
+
+> [!NOTE]
+> Bu araç cihazdaki tüm SSO hesaplarını kaldırır. Bu işlemden sonra tüm uygulamalar SSO durumunu kaybeder ve cihaz yönetim araçlarından (MDM) kaydını kaldırır ve buluttan silinir. Bir uygulama bir dahaki sefer oturum açmaya çalıştığında, kullanıcılardan hesabı eklemesi istenir.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>S: Kurumsal Windows 10 Cihazlarıma kullanıcıların ek iş hesapları (Azure AD kaydı) eklemelerini nasıl engelleyebilirim?

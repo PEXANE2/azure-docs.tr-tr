@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007406"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390411"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -26,7 +26,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videola
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>73 dilleri için OCR desteğiyle API v 3.2 genel önizlemesini okuyun
 Görüntü İşleme, bulut hizmeti ve Docker kapsayıcısı olarak sunulan Read API v 3.2 genel önizlemesi, şu güncelleştirmeleri içerir:
 * Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve Latin dilleri gibi [73 dilleri Için OCR](./language-support.md#optical-character-recognition-ocr) .
-* Metin satırı çıktısı için doğal okuma düzeni.
+* Metin satırı çıkışı için doğal okuma sırası (yalnızca Latin dilleri)
 * Metin çizgileri için el yazısı stili sınıflandırması (yalnızca Latin dilleri).
 * Yalnızca bir çok sayfalı belge için seçili sayfalar için metin ayıkla.
 * Şirket içi dağıtım için [daha az bir kapsayıcı](./computer-vision-how-to-install-containers.md?tabs=version-3-2) olarak kullanılabilir.

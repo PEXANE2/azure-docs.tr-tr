@@ -52,7 +52,11 @@
             - name: Betikleştirilmiş sürüm
               href: how-to-set-up-instance-scripted.md
         - name: Özel Bağlantı ile özel erişimi etkinleştirme
-          href: how-to-enable-private-link.md
+          items:
+            - name: Portal sürümü
+              href: how-to-enable-private-link-portal.md
+            - name: CLI sürümü
+              href: how-to-enable-private-link-cli.md
         - name: Uygulama kimlik doğrulaması kodu yazma
           href: how-to-authenticate-client.md
         - name: Uygulama kaydı oluşturma
@@ -103,12 +107,16 @@
       items:
         - name: Uç noktaları ve yolları yönetme
           items:
-            - name: API’ler ve CLI sürümü
-              href: how-to-manage-routes-apis-cli.md
             - name: Portal sürümü
               href: how-to-manage-routes-portal.md
+            - name: API’ler ve CLI sürümü
+              href: how-to-manage-routes-apis-cli.md
         - name: Yönlendirme olayları için yönetilen kimliği etkinleştirme
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: Portal sürümü
+              href: how-to-enable-managed-identities-portal.md
+            - name: CLI sürümü
+              href: how-to-enable-managed-identities-cli.md
         - name: Azure Haritalar ile tümleştirme
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights ile tümleştirme

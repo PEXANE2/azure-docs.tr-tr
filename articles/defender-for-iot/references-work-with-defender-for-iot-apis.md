@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222133"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523252"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>IoT algılayıcısı ve Yönetim Konsolu API 'Leri için Defender
 
@@ -20,7 +20,7 @@ Sensörler ve yönetim konsolları tarafından bulunan verilere erişmek ve bu v
 
 Bağlantılar SSL üzerinden güvenli hale getirilir.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Genel olarak, IoT algılayıcısı veya şirket içi yönetim konsolu için Azure Defender 'da bir dış API kullanırken, bir erişim belirteci oluşturmanız gerekir. Algılayıcı ve şirket içi yönetim konsolunda kullandığınız kimlik doğrulama API 'Leri için belirteçler gerekli değildir.
 
@@ -2232,13 +2232,13 @@ Cihazları temsil eden JSON nesneleri dizisi.
 #### <a name="response-fields"></a>Yanıt alanları
 
 
-| Ad | Tür | Null Atanabilir | Description |
+| Ad | Tür | Null Atanabilir | Açıklama |
 |--|--|--|--|
 | **içerik/hata** | Dize | Hayır | İstek başarılı olursa içerik özelliği görüntülenir. Aksi halde, Error özelliği görüntülenir. |
 
 #### <a name="possible-content-values"></a>Olası içerik değerleri
 
-| Durum kodu | İçerik değeri | Description |
+| Durum kodu | İçerik değeri | Açıklama |
 |--|--|--|
 | 200 | Uyarı güncelleştirme isteği başarıyla tamamlandı. | Güncelleştirme isteği başarıyla tamamlandı. Açıklama yok. |
 | 200 | Uyarı zaten işlendi (**tanıtıcı**). | Uyarı için bir tanıtıcı isteği alındığında uyarı zaten işlendi.<br />Uyarı **işlenmeye** devam eder. |
@@ -2422,7 +2422,7 @@ Bakım penceresi işlemlerini temsil eden JSON nesneleri dizisi.
 | **yapılarının** | Dize dizisi | - | evet |
 | **Sensorıds** | Dize dizisi | - | evet |
 | **ağlarda** | Dize dizisi | - | evet |
-| **Toplam** | Sayısal | - | evet |
+| **ttl** | Sayısal | - | evet |
 | **operationType** | Dize | Değerler şunlardır "Aç", "GÜNCELLEŞTIR" ve "Kapat" | hayır |
 
 #### <a name="curl-command"></a>Curl komutu
@@ -2654,6 +2654,6 @@ response:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-- [Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırma](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırma](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

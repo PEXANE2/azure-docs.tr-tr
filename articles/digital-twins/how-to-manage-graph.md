@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601068"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388201"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -22,7 +22,7 @@ Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](
 
 Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -115,6 +115,21 @@ Bir ikizi giden ve gelen ilişkilerini listelemek için yukarıdaki yöntemleri 
 Artık bu işlevi şu şekilde Main yönteinizde çağırabilirsiniz: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
+
+## <a name="update-relationships"></a>İlişkileri Güncelleştir
+
+İlişkiler yöntemi kullanılarak güncelleştirilir `UpdateRelationship` . 
+
+>[!NOTE]
+>Bu yöntem bir ilişkinin **özelliklerini** güncelleştirmek içindir. İlişkinin kaynak ikizi veya hedef ikizi ' i değiştirmeniz gerekiyorsa, [ilişkiyi silmeniz](#delete-relationships) ve yeni TWINS kullanarak [bir tane oluşturmanız](#create-relationships) gerekir.
+
+İstemci çağrısı için gerekli parametreler, kaynak ikizi (ilişkinin kaynaklandığı ikizi), güncelleştirilecek ilişkinin KIMLIĞI ve özellikleri ve güncelleştirmek istediğiniz yeni değerleri içeren bir [JSON yama](http://jsonpatch.com/) belgesi kimliğidir.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+
+Bu yönteme yapılan bir çağrı örneği, bir özelliği güncelleştirmek için bilgilerle bir JSON yama belgesi geçirerek bir örnektir.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
 ## <a name="delete-relationships"></a>İlişkileri Sil
 

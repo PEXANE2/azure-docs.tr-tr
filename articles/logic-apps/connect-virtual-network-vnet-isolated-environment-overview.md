@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108577"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374737"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -93,20 +93,22 @@ ISE bağlayıcıları olmayan, sanal ağınızın dışında olan veya sanal ağ
 
 ## <a name="ise-skus"></a>ISE SKU 'Ları
 
-ISE 'yi oluşturduğunuzda, geliştirici SKU 'SU veya Premium SKU 'YU seçebilirsiniz. Bu SKU 'Lar arasındaki farklar şunlardır:
+ISE 'yi oluşturduğunuzda, geliştirici SKU 'SU veya Premium SKU 'YU seçebilirsiniz. Bu SKU seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez. Bu SKU 'Lar arasındaki farklar şunlardır:
 
 * **Geliştirici**
 
-  Deneme, geliştirme ve test için kullanabileceğiniz, ancak üretim ya da performans testi için kullanabileceğiniz düşük maliyetli bir ıSE sağlar. Geliştirici SKU 'SU, sabit bir aylık fiyat için yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar ve tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı içerir. Ancak, bu SKU herhangi bir hizmet düzeyi sözleşmesi (SLA), kapasite ölçekleme seçenekleri veya geri dönüştürme sırasında, gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir.
+  Araştırma, denemeleri, geliştirme ve test için kullanabileceğiniz, ancak üretim ya da performans testi için kullanabileceğiniz düşük maliyetli bir ıSE sağlar. Geliştirici SKU 'SU, [sabit bir aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps)için yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar ve tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı içerir. 
+
+  > [!IMPORTANT]
+  > Bu SKU, geri dönüştürme sırasında bir hizmet düzeyi sözleşmesi (SLA), ölçek artırma yeteneği veya yedekliliği olmadığından gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir. Arka uç güncelleştirmeleri zaman zaman kesme hizmeti gerektirebilir.
+
+  Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. Faturanızı nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
 
 * **Premium**
 
-  Üretim için kullanabileceğiniz ve SLA desteği, yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar, tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı, kapasiteyi ölçeklendirmeye yönelik seçenekler ve sabit bir aylık fiyat için geri dönüştürme sırasında yedeklilik dahil olmak üzere bir Ise sağlar.
+  , Üretim ve performans testi için kullanabileceğiniz bir ıSE sağlar. Premium SKU; SLA desteği, yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar, tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı, ölçek artırma özelliği ve artıklığı [sabit bir aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps)için geri dönüştürme sırasında içerir.
 
-> [!IMPORTANT]
-> SKU seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
-
-Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
+  Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. Faturanızı nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
 
 <a name="endpoint-access"></a>
 

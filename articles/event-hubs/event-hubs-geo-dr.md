@@ -2,13 +2,13 @@
 title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222891"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390683"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
@@ -59,7 +59,7 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 | Standart | Standart | Yes | 
 | Standart | Ayrılmış | Yes | 
 | Ayrılmış | Ayrılmış | Yes | 
-| Ayrılmış | Standart | Hayır | 
+| Ayrılmış | Standart | No | 
 
 > [!NOTE]
 > Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
@@ -75,24 +75,27 @@ Aşağıdaki bölüm, yük devretme işlemine genel bakış ve ilk yük devretme
 Önce mevcut bir birincil ad alanını ve yeni bir ikincil ad alanını oluşturun veya kullanın, ardından ikisini eşleştirin. Bu eşleştirme size bağlanmak için kullanabileceğiniz bir diğer ad sağlar. Bir diğer ad kullandığınız için bağlantı dizelerini değiştirmeniz gerekmez. Yalnızca yeni ad alanları, yük devretme eşleştirmeye eklenebilir. 
 
 1. Birincil ad alanını oluşturun.
-1. Abonelikte ve birincil ad alanına sahip kaynak grubunda ikincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
+1. Abonelikte ve birincil ad alanı olan kaynak grubunda, ancak farklı bir bölgede ikincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
 1. Azure portal, birincil ad alanına gidin.
 1. Sol menüde **coğrafi kurtarma** ' yı seçin ve araç çubuğunda **eşleştirmeyi başlat** ' ı seçin. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Birincil ad alanından eşleştirmeyi Başlat":::    
-1. **Eşleştirmeyi başlat** sayfasında, var olan bir ikincil ad alanını seçin veya abonelikte ve birincil ad alanına sahip kaynak grubunda bir tane oluşturun. Ardından **Oluştur**’u seçin. Aşağıdaki örnekte, var olan bir ikincil ad alanı seçilidir. 
+1. **Eşleştirmeyi başlat** sayfasında, aşağıdaki adımları izleyin:
+    1. Mevcut bir ikincil ad alanını seçin veya abonelikte ve birincil ad alanına sahip kaynak grubunda bir tane oluşturun. Bu örnekte, var olan bir ad alanı seçilidir.  
+    1. **Diğer ad** için, coğrafi Dr eşleştirmesi için bir diğer ad girin. 
+    1. Ardından **Oluştur**’u seçin. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="İkincil ad alanını seçin":::        
-1. Artık birincil ad alanı için **coğrafi kurtarmayı** seçtiğinizde, aşağıdaki görüntüde olduğu gıbı **coğrafi Dr diğer ad** sayfasını görmeniz gerekir:
+1. **Coğrafi-Dr diğer adı** sayfasını görmeniz gerekir. Ayrıca, sol menüde **coğrafi kurtarma** ' yı seçerek birincil ad alanından bu sayfaya gidebilirsiniz.
 
     :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Coğrafi-DR diğer adı sayfası":::    
+1. **Coğrafi-Dr diğer adı** sayfasında, diğer ad için birincil bağlantı dizesine erişmek üzere Sol menüdeki **paylaşılan erişim ilkeleri** ' ni seçin. Bağlantı dizesini birincil/ikincil ad alanına doğrudan kullanmak yerine bu bağlantı dizesini kullanın. 
 1. Bu **genel bakış** sayfasında, aşağıdaki işlemleri yapabilirsiniz: 
     1. Birincil ve ikincil ad alanları arasındaki eşleşmeyi bölün. Araç çubuğunda **eşleştirmeyi kes** ' i seçin. 
     1. İkincil ad alanına el ile yük devretme. Araç çubuğundan **Yük devretmeyi** seçin. 
     
         > [!WARNING]
         > Yük devretme, ikincil ad alanını etkinleştirir ve birincil ad alanını Geo-Disaster kurtarma eşleştirmeden kaldırır. Yeni bir coğrafi olağanüstü durum kurtarma çiftine sahip olmak için başka bir ad alanı oluşturun. 
-1. **Coğrafi-Dr diğer adı** sayfasında, diğer ad için birincil bağlantı dizesine erişmek üzere **paylaşılan erişim ilkeleri** ' ni seçin. Bağlantı dizesini birincil/ikincil ad alanına doğrudan kullanmak yerine bu bağlantı dizesini kullanın. 
 
 Son olarak, bir yük devretmenin gerekli olup olmadığını algılamak için bazı izleme eklemelisiniz. Çoğu durumda, hizmet büyük bir ekosisteminin bir parçasıdır. bu nedenle, yük devretme işlemleri genellikle geri kalan alt sistem veya altyapıyla eşitlenmelidir.
 
@@ -133,9 +136,9 @@ Aklınızda bulundurmanız gereken aşağıdaki noktalara dikkat edin:
 
 1. Tasarım, coğrafi olağanüstü durum kurtarma Event Hubs verileri çoğaltmaz ve bu nedenle ikincil Olay Hub 'ınızdaki birincil olay hub 'ınızın eski değer değerini yeniden kullanamazsınız. Aşağıdaki yöntemlerden birini kullanarak olay alıcılarınızı yeniden başlatmanız önerilir:
 
-- *Eventposition. FromStart ()* -ikincil Olay Hub 'ınızdaki tüm verileri okumak istiyorsanız.
-- *Eventposition. FromEnd ()* -ikincil Olay Hub 'ınıza bağlantı sırasında tüm yeni verileri okumak istiyorsanız.
-- *Eventposition. FromEnqueuedTime (DateTime)* -belirli bir tarih ve saatten itibaren ikincil Olay Hub 'ınızdaki alınan tüm verileri okumak istiyorsanız.
+   - *Eventposition. FromStart ()* -ikincil Olay Hub 'ınızdaki tüm verileri okumak istiyorsanız.
+   - *Eventposition. FromEnd ()* -ikincil Olay Hub 'ınıza bağlantı sırasında tüm yeni verileri okumak istiyorsanız.
+   - *Eventposition. FromEnqueuedTime (DateTime)* -belirli bir tarih ve saatten itibaren ikincil Olay Hub 'ınızdaki alınan tüm verileri okumak istiyorsanız.
 
 2. Yük devretme planlamadaki zaman etmenini de göz önünde bulundurmanız gerekir. Örneğin, 15 ila 20 dakikaya kadar olan bağlantıyı kaybederseniz, yük devretmeyi başlatmaya karar verebilirsiniz. 
  
@@ -153,6 +156,8 @@ Event Hubs standart SKU, bir Azure bölgesi içinde hataya yalıtılmış konuml
 > Azure Event Hubs Standard için Kullanılabilirlik Alanları desteği yalnızca kullanılabilirlik bölgelerinin bulunduğu [Azure bölgelerinde](../availability-zones/az-region.md) kullanılabilir.
 
 Azure portal kullanarak yalnızca yeni ad alanlarında Kullanılabilirlik Alanları etkinleştirebilirsiniz. Event Hubs var olan ad alanlarının geçişini desteklemez. Ad alanınız üzerinde etkinleştirildikten sonra bölge yedekliliği devre dışı bırakılamıyor.
+
+Kullanılabilirlik bölgelerini kullandığınızda, hem meta veriler hem de veriler (olaylar) kullanılabilirlik bölgesindeki veri merkezlerinde çoğaltılır. 
 
 ![3][]
 

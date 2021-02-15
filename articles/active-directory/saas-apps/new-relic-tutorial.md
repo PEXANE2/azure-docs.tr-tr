@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: cd438609a4ba2c3eb025226c98eec79fd855c075
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827470"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Öğretici: hesaba göre yeni relik ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile yeni bir relik hesabını
 * Azure AD 'de hesaba göre yeni relik erişimine erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla hesaba göre otomatik olarak oturum açmaya olanak sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,24 +39,22 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Yeni relik hesabı, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Yeni relik hesabını hesap bazında yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
-
-## <a name="adding-new-relic-by-account-from-the-gallery"></a>Galeriden hesap bazında yeni relik ekleme
+## <a name="add-new-relic-by-account-from-the-gallery"></a>Galeriden yeni bir relik hesabı ekleyin
 
 Yeni relik hesabı ile Azure AD arasında tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize yeni relik hesabı ekleyerek hesap eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Yeni bir relik hesabı** yazın.
 1. Sonuçlar panelinden **Hesap bazında yeni relik** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>Yeni hesap için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-new-relic-by-account"></a>Yeni relik hesabı için Azure AD SSO 'yu yapılandırın ve test edin
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu yeni relik hesabıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında yeni relik hesabı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu yeni relik hesabıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu yeni relik hesabıyla yapılandırmak ve test etmek için aşağıdaki adımları uygulayın:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -71,18 +67,19 @@ Azure AD SSO 'yu yeni relik hesabıyla yapılandırmak ve test etmek için aşa�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Yeni hesap** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Yeni hesap** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:
 
     `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` - `acc_id` Hesaba göre yeni relik Hesap Kimliğiniz ile değiştirdiğinizden emin olun.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`rpm.newrelic.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`rpm.newrelic.com`
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -91,12 +88,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Hesaba göre yeni relik ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
-
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -108,7 +99,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -117,15 +108,9 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Hesap bazında yeni relik**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-new-relic-by-account-sso"></a>Hesap SSO 'SU ile yeni relik yapılandırma
@@ -134,15 +119,15 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 
 2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Ekran görüntüsü, hesap ayarları seçili olan karşılama sayfasını gösterir.](./media/new-relic-tutorial/ic797036.png "Hesap ayarları")
+    ![Ekran görüntüsü, hesap ayarları seçili olan karşılama sayfasını gösterir.](./media/new-relic-tutorial/settings.png "Hesap ayarları")
 
 3. **Güvenlik ve kimlik doğrulama** sekmesine tıklayın ve ardından **Çoklu oturum açma** sekmesine tıklayın.
    
-    ![Çoklu oturum açma](./media/new-relic-tutorial/ic797037.png "Çoklu Oturum Açma")
+    ![Çoklu oturum açma](./media/new-relic-tutorial/single-sign-on-tab.png "Çoklu Oturum Açma")
 
 4. SAML iletişim sayfasında, aşağıdaki adımları uygulayın:
    
-    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
+    ![SAML](./media/new-relic-tutorial/save.png "SAML")
    
     a. İndirilen Azure Active Directory sertifikanızı karşıya yüklemek için **Dosya Seç** ' e tıklayın.
 
@@ -158,15 +143,15 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 
 2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Ekran görüntüsü, hoş geldiniz sayfasından seçilen hesap ayarlarını gösterir.](./media/new-relic-tutorial/ic797040.png "Hesap ayarları")
+    ![Ekran görüntüsü, hoş geldiniz sayfasından seçilen hesap ayarlarını gösterir.](./media/new-relic-tutorial/account.png "Hesap ayarları")
 
 3. Sol taraftaki **Hesap** bölmesinde, **Özet**' e ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz Özet bölmesini gösterir.](./media/new-relic-tutorial/ic797041.png "Hesap ayarları")
+    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz Özet bölmesini gösterir.](./media/new-relic-tutorial/add.png "Hesap ayarları")
 
 4. **Etkin kullanıcılar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Etkin Kullanıcılar](./media/new-relic-tutorial/ic797042.png "Etkin Kullanıcılar")
+    ![Etkin Kullanıcılar](./media/new-relic-tutorial/user.png "Etkin Kullanıcılar")
    
     a. **E-posta** metin kutusuna, sağlamak istediğiniz geçerli bir Azure Active Directory kullanıcısının e-posta adresini yazın.
 
@@ -179,18 +164,14 @@ Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde yeni relik ölçütü hesap kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız hesaba göre otomatik olarak yeni yeniden oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz hesap oturum açma URL 'sine göre yeni relik 'a yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Hesap oturum açma URL 'sine doğrudan yeni relik 'e gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' da yeni relik ölçütü hesap kutucuğuna tıkladığınızda bu işlem, hesap oturum açma URL 'sine göre yeni relik 'e yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile yeni bir relik hesabı deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+Hesap bazında yeni relik yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

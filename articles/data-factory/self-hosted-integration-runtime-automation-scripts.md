@@ -1,29 +1,25 @@
 ---
 title: Yerel PowerShell betikleri kullanarak şirket içinde barındırılan tümleştirme çalışma zamanı yüklemesini otomatikleştirme
 description: Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesini otomatik hale getirmek için.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636978"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376216"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Yerel PowerShell betikleri kullanarak şirket içinde barındırılan tümleştirme çalışma zamanı yüklemesini otomatikleştirme
 Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesini otomatik hale getirmek için (Bunun yerine Kaynak Yöneticisi şablonundan yararlandığımız Azure sanal makineleri dışında), yerel PowerShell betiklerini kullanabilirsiniz. Bu makalede, kullanabileceğiniz iki komut dosyası tanıtılmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Yerel makinenizde PowerShell 'i başlatın. Betikleri çalıştırmak için **yönetici olarak çalıştır** ' ı seçmeniz gerekir.
+* Yerel makinenizde PowerShell 'i başlatın. Betikleri çalıştırmak için **yönetici olarak çalıştır**' ı seçmeniz gerekir.
 * Şirket içinde barındırılan tümleştirme çalışma zamanı yazılımını [indirin](https://www.microsoft.com/download/details.aspx?id=39717) . İndirilen dosyanın bulunduğu yolu kopyalayın. 
 * Şirket içinde barındırılan tümleştirme çalışma zamanını kaydetmek için bir **kimlik doğrulama anahtarına** de ihtiyacınız vardır.
 * El ile güncelleştirmelerin otomatikleştirilmesi için, önceden yapılandırılmış bir şirket içinde barındırılan tümleştirme çalışma zamanına sahip olmanız gerekir.
@@ -38,7 +34,7 @@ Yerel makinelerde şirket içinde barındırılan Integration Runtime yüklemesi
 
 * El ile güncelleştirmelerin otomatikleştirilmesi için: şirket içinde barındırılan IR düğümünü belirli bir sürümle veya en son sürüm **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** güncelleştirme-bu, otomatik güncelleştirmeyi kapatmış olmanız veya güncelleştirmeler üzerinde daha fazla denetime sahip olmanız durumunda da desteklenir. Komut dosyası, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü en son sürüme veya belirtilen daha yüksek bir sürüme (düşürme çalışmıyor) güncelleştirmek için kullanılabilir. Sürüm numarası belirtmek için bir bağımsız değişken kabul eder (örnek:-Version 3.13.6942.1). Sürüm belirtilmediğinde, her zaman kendiliğinden konak IR 'yi [indirmelerde](https://www.microsoft.com/download/details.aspx?id=39717)bulunan en son sürüme güncelleştirir.
     > [!NOTE]
-    > Yalnızca son 3 sürüm belirtilebilir. İdeal olarak, mevcut bir düğümü en son sürüme güncelleştirmek için kullanılır. **kayıtlı BIR kendı kendıne BARıNDıRıLAN IR olduğunu varsayar** . 
+    > Yalnızca son 3 sürüm belirtilebilir. İdeal olarak, mevcut bir düğümü en son sürüme güncelleştirmek için kullanılır. **kayıtlı BIR kendı kendıne BARıNDıRıLAN IR olduğunu varsayar**. 
 
 ## <a name="usage-examples"></a>Kullanım örnekleri
 

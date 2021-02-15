@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222777"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366999"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>ML modellerinin eşitliği 'i değerlendirmek için Fairlearn açık kaynak paketiyle birlikte Azure Machine Learning kullanın (Önizleme)
 
@@ -214,10 +214,15 @@ Aşağıdaki örnek, eşitliği paketinin nasıl kullanılacağını göstermekt
     1. Azure Machine Learning üzerinde çalıştırdığınız denemeleri listesini görmek için sol bölmedeki **denemeleri** öğesini seçin.
     1. Bu deneyteki tüm çalıştırmaları görüntülemek için belirli bir deneme seçin.
     1. Bir çalıştır ve sonra **eşitliği** sekmesini açıklama görselleştirme panosu olarak seçin.
+    1. **Eşitliği** sekmesine giriş olduktan sonra sağdaki menüden bir **eşitliği ID** 'ye tıklayın.
+    1. Hassas öznitelerinizi, performans ölçümünü ve eşitliği değerlendirme sayfasında yer alan ilgi çekici eşitliği ölçüsünü seçerek panonuzu yapılandırın.
+    1. Hem **ayırma** , hem de **hizmet kalitesi kalitesini** gözlemlemek için grafik türünü bir diğerine değiştirin.
 
 
-    [![Eşitliği panosu](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![Eşitliği Pano ayırması](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![Eşitliği panosu hizmet kalitesi](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **Modeller bölmesi**
     1. Önceki adımları izleyerek özgün modelinize kaydolduysanız, görüntülemek için sol bölmede **modeller** seçebilirsiniz.
     1. Açıklama görselleştirme panosunu görüntülemek için bir model ve sonra **eşitliği** sekmesini seçin.

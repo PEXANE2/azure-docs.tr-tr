@@ -1,21 +1,18 @@
 ---
 title: PowerShell kullanarak verileri artımlı olarak yükleme
 description: Bu PowerShell betiği, verileri bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalamak için Azure Data Factory nasıl kullanacağınızı gösterir.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 2024fc6c4640f79e5001472f29803c6cef1c07a1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 736403696ec340e547547458cb62e243e6e660b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636621"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389850"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak artımlı olarak veri yükleme
 

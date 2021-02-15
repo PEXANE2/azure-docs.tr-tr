@@ -1,25 +1,19 @@
 ---
 title: PowerShell ile Azure-SSIS Integration Runtime ayarlama
 description: Azure 'da SSIS paketlerini dağıtabilmeniz ve çalıştırabilmek için PowerShell ile Azure Data Factory Azure-SSIS Integration Runtime ayarlamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: e2ace9a8d7d9c0229e7e06847c2ce56bea11c138
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: a0a6e115d2b76ab3f060ee1bcb197da58f2c8fa6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555823"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391295"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell kullanarak Azure Data Factory Azure-SSIS IR ayarlama
 
@@ -45,7 +39,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Tüm betiği inceleyin.
 > * SSIS paketlerini dağıtın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

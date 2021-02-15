@@ -1,23 +1,17 @@
 ---
 title: Azure Data Factory meta veri Al etkinliği
 description: Data Factory ardışık düzeninde meta veri al etkinliğinin nasıl kullanılacağını öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297615"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385498"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -76,7 +70,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 İlgili bilgileri almak için meta verileri al etkinlik alan listesinde aşağıdaki meta veri türlerini belirtebilirsiniz:
 
-| Meta veri türü | Açıklama |
+| Meta veri türü | Description |
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
 | ItemType | Dosya veya klasörün türü. Döndürülen değer `File` veya `Folder` . |
@@ -95,7 +89,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 >[!NOTE]
 >Dosya mağazalarından meta veriler alırken ve `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ' ı yapılandırdığınızda, `childItems` yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları dahil eder. ' De alt klasörlerdeki öğeler dahil değildir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **Meta veri Al etkinliği**
 
@@ -168,10 +162,10 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Evet 
-veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Evet
-formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
-storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
+fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
+veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
+formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
+storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
 
 ## <a name="sample-output"></a>Örnek çıktı
 

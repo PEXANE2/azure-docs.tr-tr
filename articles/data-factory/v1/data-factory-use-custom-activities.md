@@ -1,24 +1,19 @@
 ---
 title: Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 description: Özel etkinlikler oluşturmayı ve bunları bir Azure Data Factory işlem hattında kullanmayı öğrenin.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606955"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393029"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -43,14 +38,14 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/) indirme ve yükleme
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda** çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar şunlardır:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.
@@ -247,7 +242,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");

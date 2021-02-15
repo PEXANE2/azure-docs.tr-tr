@@ -3,14 +3,16 @@ title: Azure Otomasyonu karma Runbook Worker sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu karma runbook çalışanları ile ortaya çıkan sorunları giderme ve çözme işlemleri açıklanır.
 services: automation
 ms.subservice: ''
-ms.date: 11/25/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388014"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -26,9 +28,7 @@ Karma Runbook Worker, çalışan, runbook işlerini alacak ve rapor durumunu kay
 
 Runbook yürütmesi başarısız olur ve aşağıdaki hata iletisini alırsınız:
 
-```error
-"The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
-```
+`The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times.`
 
 Runbook 'unuzu üç kez yürütmeyi denediğinde kısa süre sonra askıya alınır. Runbook 'un tamamlanmasını kesintiye uğratan durumlar vardır. İlgili hata iletisi herhangi bir ek bilgi içermeyebilir.
 
@@ -56,13 +56,12 @@ Açıklamasıyla ilgili bir olay için **Microsoft-SMA** olay günlüğü ' ne b
 
 Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event 15011 alır. Çalışan, [SignalR sunucusuyla](/aspnet/core/signalr/introduction)bir bağlantı açmayı denediğinde aşağıdaki hata görüntülenir.
 
-```error
-[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
+`[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
 [Uri=https://cc-jobruntimedata-prod-su1.azure-automation.net/notifications/hub][Exception=System.TimeoutException: Transport timed out trying to connect
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    at JobRuntimeData.NotificationsClient.JobRuntimeDataServiceSignalRClient.<Start>d__45.MoveNext()
-```
+`
 
 #### <a name="cause"></a>Nedeni
 
@@ -96,14 +95,13 @@ Karma Runbook Worker makinesi, 30 günden daha uzun bir süre boyunca Azure Otom
 
 Karma Runbook Worker üzerinde çalışan bir runbook şu hata iletisiyle başarısız oluyor:
 
-```error
-Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
-At line:3 char:1
-+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
-```
+`Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000`  
+`At line:3 char:1`  
+`+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...`  
+`+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`  
+`    + CategoryInfo          : CloseError: (:) [Connect-AzAccount],ArgumentException`  
+`    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand`
+
 #### <a name="cause"></a>Nedeni
 
 Bu hata, farklı çalıştır hesabı sertifikasının bulunmadığı bir karma runbook çalışanında çalışan bir runbook 'ta [Farklı Çalıştır hesabını](../automation-security-overview.md#run-as-accounts) kullanmayı denediğinizde oluşur. Karma runbook çalışanları varsayılan olarak sertifika varlığını yerel olarak içermez. Farklı Çalıştır hesabı, bu varlığın düzgün şekilde çalışmasını gerektirir.
@@ -118,9 +116,7 @@ Karma runbook çalışanınız bir Azure sanal makinesi ise bunun yerine [yönet
 
 Çalışan ilk kayıt aşaması başarısız olur ve şu hatayı alırsınız (403):
 
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
+`Forbidden: You don't have permission to access / on this server.`
 
 #### <a name="cause"></a>Nedeni
 
@@ -139,6 +135,37 @@ Aracının çalışma alanı KIMLIĞI veya çalışma alanı anahtarının yanl�
 Log Analytics çalışma alanınız ve otomasyon hesabınızın bağlı bir bölgede olması gerekir. Desteklenen bölgelerin listesi için bkz. [Azure Otomasyonu ve Log Analytics çalışma alanı eşlemeleri](../how-to/region-mappings.md).
 
 Ayrıca, bilgisayarınızın tarih veya saat dilimini güncelleştirmeniz gerekebilir. Özel bir zaman aralığı seçerseniz, aralığın UTC 'de olduğundan emin olun, bu da yerel saat diliminizden farklı olabilir.
+
+### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>Senaryo: karma Runbook Worker üzerinde Set-AzStorageBlobContent başarısız oluyor 
+
+#### <a name="issue"></a>Sorun
+
+Runbook yürütülmeye çalıştığında başarısız olur `Set-AzStorageBlobContent` ve aşağıdaki hata iletisini alırsınız:
+
+`Set-AzStorageBlobContent : Failed to open file xxxxxxxxxxxxxxxx: Illegal characters in path`
+
+#### <a name="cause"></a>Nedeni
+
+ Bu hata, UNC yolları ekleyen çağrıların uzun dosya adı davranışının oluşmasına neden olur `[System.IO.Path]::GetFullPath()` .
+
+#### <a name="resolution"></a>Çözüm
+
+Geçici bir çözüm olarak, aşağıdaki içerikle adlı bir yapılandırma dosyası oluşturabilirsiniz `OrchestratorSandbox.exe.config` :
+
+```azurecli
+<configuration>
+  <runtime>
+    <AppContextSwitchOverrides value="Switch.System.IO.UseLegacyPathHandling=false" />
+  </runtime>
+</configuration>
+```
+
+Bu dosyayı yürütülebilir dosyayla aynı klasöre yerleştirin `OrchestratorSandbox.exe` . Örneğin,
+
+`%ProgramFiles%\Microsoft Monitoring Agent\Agent\AzureAutomation\7.3.702.0\HybridAgent`
+
+>[!Note]
+> Aracıyı yükseltirseniz, bu yapılandırma dosyası silinir ve yeniden oluşturulması gerekir.
 
 ## <a name="linux"></a>Linux
 
@@ -192,7 +219,7 @@ Aracı çalışmıyorsa, hizmeti başlatmak için şu komutu çalıştırın: `s
 
 `The specified class does not exist..` **/Var/seçenek/Microsoft/omsconfig/omsconfig.log** dosyasında hata Iletisini görürseniz, Linux için Log Analytics aracısının güncelleştirilmesi gerekir. Aracıyı yeniden yüklemek için aşağıdaki komutu çalıştırın.
 
-```bash
+```Bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
@@ -267,8 +294,7 @@ Karma Runbook Worker makineniz çalışıyor, ancak çalışma alanında makine 
 
 Aşağıdaki örnek sorguda, bir çalışma alanındaki makineler ve bunların son sinyali gösterilmektedir:
 
-```loganalytics
-// Last heartbeat of each computer
+```kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by Computer
 ```
@@ -295,9 +321,7 @@ Start-Service -Name HealthService
 
 Cmdlet 'ini kullanarak bir karma Runbook Worker eklemeye çalıştığınızda aşağıdaki iletiyi alırsınız `Add-HybridRunbookWorker` :
 
-```error
-Machine is already registered
-```
+`Machine is already registered`
 
 #### <a name="cause"></a>Nedeni
 
@@ -315,15 +339,11 @@ Bu sorunu çözmek için, aşağıdaki kayıt defteri anahtarını kaldırın, y
 
 Python betiğini kullanarak bir karma Runbook Worker eklemeye çalıştığınızda şu iletiyi alırsınız `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` :
 
-```error
-Unable to register, an existing worker was found. Please deregister any existing worker and try again.
-```
+`Unable to register, an existing worker was found. Please deregister any existing worker and try again.`
 
 Ayrıca, Python betiği kullanılarak karma Runbook Worker kaydı silinmeye çalışılıyor `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` :
 
-```error
-Failed to deregister worker. [response_status=404]
-```
+`Failed to deregister worker. [response_status=404]`
 
 #### <a name="cause"></a>Nedeni
 

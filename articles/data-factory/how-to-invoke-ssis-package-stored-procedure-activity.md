@@ -1,25 +1,19 @@
 ---
 title: Saklı yordam etkinliği ile SSIS paketini çalıştırma-Azure
 description: Bu makalede, saklı yordam etkinliği kullanılarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır.
-services: data-factory
-documentationcenter: ''
 author: swinarko
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6cb3bf53db14c6c01290abea7a5c48c332a07632
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634887"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391516"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory'de Saklı Yordam etkinliğiyle bir SSIS paketi çalıştırma
 
@@ -27,7 +21,7 @@ ms.locfileid: "92634887"
 
 Bu makalede, bir Azure Data Factory Işlem hattındaki bir SSIS paketinin saklı yordam etkinliği kullanılarak nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, SSIS kataloğunu barındırmak için Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
@@ -43,7 +37,7 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 2. [Azure Portal](https://portal.azure.com)gidin. 
-3. Soldaki menüde **Yeni** , **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
+3. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
    
    ![Yeni->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
 2. **Yeni veri fabrikası** sayfasında **ad** için **ADFTutorialDataFactory** adını girin. 
@@ -56,15 +50,15 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
 4. **Kaynak grubu** için aşağıdaki adımlardan birini yapın:
      
-   - **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
-   - **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin.   
+   - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
+   - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-4. **Sürüm** için **V2** 'yi seçin.
+4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca Data Factory tarafından desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı, vb.) ve işlemler (HDInsight, vb.) başka konumlarda olabilir.
-6. **Panoya sabitle** ’yi seçin.     
-7. **Oluştur** 'a tıklayın.
-8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor** . 
+6. **Panoya sabitle**’yi seçin.     
+7. **Oluştur**’a tıklayın.
+8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
      ![veri fabrikası dağıtılıyor kutucuğu](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
@@ -75,13 +69,13 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Saklı yordam etkinliği ile işlem hattı oluşturma
 Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabirimini kullanırsınız. İşlem hattına saklı yordam etkinliği ekler ve sp_executesql saklı yordamını kullanarak SSIS paketini çalıştıracak şekilde yapılandırırsınız. 
 
-1. Başlarken sayfasında işlem **hattı oluştur** ' a tıklayın: 
+1. Başlarken sayfasında işlem **hattı oluştur**' a tıklayın: 
 
     ![Başlarken sayfası](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
-2. **Etkinlikler** araç kutusunda **genel** ' i genişletin ve **saklı yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. 
+2. **Etkinlikler** araç kutusunda **genel**' i genişletin ve **saklı yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. 
 
     ![Saklı yordam etkinliğini sürükleyip bırakma](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. Saklı yordam etkinliğinin Özellikler penceresinde **SQL hesabı** sekmesine geçin ve **+ Yeni** ' ye tıklayın. SSIS kataloğunu (SSıDB veritabanı) barındıran Azure SQL veritabanı 'nda veritabanına bir bağlantı oluşturursunuz. 
+3. Saklı yordam etkinliğinin Özellikler penceresinde **SQL hesabı** sekmesine geçin ve **+ Yeni**' ye tıklayın. SSIS kataloğunu (SSıDB veritabanı) barındıran Azure SQL veritabanı 'nda veritabanına bir bağlantı oluşturursunuz. 
    
     ![Yeni bağlı hizmet düğmesi](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
@@ -98,21 +92,21 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
         ![Yeni bir bağlı hizmet ekleme işlemini gösteren ekran görüntüsü.](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. Özellikler penceresinde, **SQL hesabı** sekmesinden **saklı yordam** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
-    1. **Düzenle** ’yi seçin. 
+    1. **Düzenle**'yi seçin. 
     2. **Saklı yordam adı** alanı için girin `sp_executesql` . 
     3. **Saklı yordam parametreleri** bölümünde **+ Yeni** ' ye tıklayın. 
     4. Parametrenin **adı** için **stmt** girin. 
     5. Parametre **türü** için **dize** girin. 
     6. Parametresinin **değeri** IÇIN aşağıdaki SQL sorgusunu girin:
 
-        SQL sorgusunda **folder_name** , **Project_Name** ve **package_name** parametrelerinin doğru değerlerini belirtin. 
+        SQL sorgusunda **folder_name**, **Project_Name** ve **package_name** parametrelerinin doğru değerlerini belirtin. 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
         ```
 
         ![Azure SQL Veritabanı bağlı hizmeti](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
-6. İşlem hattı yapılandırmasını doğrulamak için araç çubuğunda **Doğrula** ' ya tıklayın. **İşlem Hattı Doğrulama Raporu** 'nu kapatmak için **>>** seçeneğine tıklayın.
+6. İşlem hattı yapılandırmasını doğrulamak için araç çubuğunda **Doğrula** ' ya tıklayın. **İşlem Hattı Doğrulama Raporu**'nu kapatmak için **>>** seçeneğine tıklayın.
 
     ![İşlem hattını doğrulama](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Data Factory **Tümünü** Yayımla düğmesine tıklayarak ardışık düzeni yayımlayın. 
@@ -122,12 +116,12 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 ### <a name="run-and-monitor-the-pipeline"></a>İşlem hattını çalıştırma ve izleme
 Bu bölümde bir işlem hattı çalıştırması tetiklersiniz ve sonra bunu izleyebilirsiniz. 
 
-1. Bir işlem hattı çalıştırması tetiklemek için araç çubuğunda **Tetikle** ' e tıklayın ve **Şimdi Tetikle** ' ye tıklayın. 
+1. Bir işlem hattı çalıştırması tetiklemek için araç çubuğunda **Tetikle** ' e tıklayın ve **Şimdi Tetikle**' ye tıklayın. 
 
     ![Şimdi tetikle](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
-2. **İşlem Hattı Çalıştırma** penceresinde **Son** ’u seçin. 
-3. Soldaki **İzleyici** sekmesine geçin. İşlem hattı çalıştırmasını ve durumunu diğer bilgilerle birlikte (çalıştırma başlangıç saati gibi) görürsünüz. Görünümü yenilemek için **Yenile** ’ye tıklayın.
+2. **İşlem Hattı Çalıştırma** penceresinde **Son**’u seçin. 
+3. Soldaki **İzleyici** sekmesine geçin. İşlem hattı çalıştırmasını ve durumunu diğer bilgilerle birlikte (çalıştırma başlangıç saati gibi) görürsünüz. Görünümü yenilemek için **Yenile**’ye tıklayın.
 
     ![İşlem hattı çalıştırmaları](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
@@ -194,7 +188,7 @@ Aşağıdaki noktalara dikkat edin:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory örnekleri oluşturmak için, Azure'da oturum açarken kullandığınız kullanıcı hesabı **katkıda bulunan** veya **sahip** rollerinin üyesi ya da bir Azure aboneliğinin **yöneticisi** olmalıdır.
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturma
 SSIS kataloğunu barındıran veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturun. Data Factory, SSıSDB veritabanına bağlanmak için bu bağlantılı hizmette bilgileri kullanır ve bir SSIS paketini çalıştırmak için bir saklı yordam yürütür. 
@@ -216,9 +210,9 @@ SSIS kataloğunu barındıran veritabanınızı veri fabrikasına bağlamak içi
     }
     ```
 
-2. **Azure PowerShell** , **C:\adf\runssispackage** klasörüne geçin.
+2. **Azure PowerShell**, **C:\adf\runssispackage** klasörüne geçin.
 
-3. Şu bağlı hizmeti oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın: **Azuressqldatabaselinkedservice** . 
+3. Şu bağlı hizmeti oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın: **Azuressqldatabaselinkedservice**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -332,7 +326,7 @@ while ($True) {
         }
     }    
     ```
-2. **Azure PowerShell** , **C:\adf\runssispackage** klasörüne geçin.
+2. **Azure PowerShell**, **C:\adf\runssispackage** klasörüne geçin.
 3. Tetikleyiciyi oluşturan **set-AzDataFactoryV2Trigger** cmdlet 'ini çalıştırın. 
 
     ```powershell

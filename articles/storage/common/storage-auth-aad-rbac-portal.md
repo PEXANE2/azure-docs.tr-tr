@@ -6,18 +6,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d63a31eae57d09f1658f5f19c1518cb0648fa4e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854589"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373767"
 ---
-# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure portalı kullanarak blob ve kuyruk verilerine erişim için Azure rolü atama
 
 Azure Active Directory (Azure AD), [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim hakları verir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol tanımlar.
 
@@ -43,10 +43,12 @@ Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portal bu kayna
 
 Aşağıdaki bölümlerde bu adımların her biri daha ayrıntılı olarak açıklanır.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
 >
 > Veri erişimi için kendinize bir rol atamadan önce, Azure portal Azure portal aracılığıyla Depolama hesabınızdaki verilere erişebilirsiniz. bu nedenle, veri erişimi için hesap anahtarını da kullanabilir. Daha fazla bilgi için bkz. [Azure Portal blob verilerine erişimi yetkilendirmeyi seçme](../blobs/authorize-data-operations-portal.md).
+>
+> Depolama hesabı bir Azure Resource Manager salt okuma kilidi ile kilitliyse kilit, depolama hesabı kapsamındaki Azure RBAC rollerinin veya bir veri kapsayıcısının (blob kapsayıcısı veya kuyruğu) atanmasını engeller.
 
 ### <a name="assign-an-azure-built-in-role"></a>Azure yerleşik rolü atama
 

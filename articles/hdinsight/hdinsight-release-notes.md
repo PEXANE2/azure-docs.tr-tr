@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: f6b7000812f1adfe6ff7bd93711c9b8fe4ff9adc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378154"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -49,7 +49,8 @@ HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal m
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
-HDInsight, sonraki sürümde Apache Spark için .NET ilk büyük resmi sürümünü tanıtır. Spark 2.4. x ve Spark 3.0. x için diğer özelliklerle birlikte DataFrame API 'SI için bir tam sayı sağlar. Bu ana sürüm için son değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak için [Bu geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
+
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
@@ -68,4 +69,3 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
-

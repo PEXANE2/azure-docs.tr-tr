@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory tümleştirme çalışma zamanını izleme
 description: Azure Data Factory farklı tümleştirme çalışma zamanı türlerini nasıl izleyeceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862454"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377508"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -103,7 +99,7 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 | ------ | ------------------ | 
 | Çevrimiçi | Düğüm Data Factory hizmetine bağlandı. |
 | Çevrimdışı | Düğüm çevrimdışı. |
-| Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor. |
+| Yükseltme | Düğüm otomatik olarak güncelleştiriliyor. |
 | Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8060 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
 | Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır. |
 

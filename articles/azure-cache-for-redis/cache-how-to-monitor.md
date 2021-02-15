@@ -1,19 +1,19 @@
 ---
-title: Redis için Azure Cache'i izleme
+title: Redsıs için Azure önbelleğini izleme
 description: Redsıs örnekleri için Azure önbelleğinizin durumunu ve performansını nasıl izleyeceğinizi öğrenin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327347"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389714"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Redis için Azure Cache'i izleme
+# <a name="monitor-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini izleme
 
 Redsıs için Azure önbelleği, önbellek örneklerinizi izlemeye yönelik çeşitli seçenekler sunmak için [Azure izleyici](../azure-monitor/index.yml) 'yi kullanır. Ölçümleri görüntüleyebilir, ölçüm grafiklerini başlangıç panosuna sabitleyebilir, izleme grafiklerinin tarih ve saat aralığını özelleştirebilir, grafiklerden ölçümleri ekleyebilir ve kaldırabilir ve belirli koşullar karşılandığında uyarılar ayarlayabilirsiniz. Bu araçlar, Redsıs örnekleri için Azure önbelleğinizin durumunu izlemenize ve önbelleğe alma uygulamalarınızı yönetmenize yardımcı olur.
 
@@ -109,7 +109,7 @@ Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönel
 | Alınanlar |Belirtilen Raporlama aralığı sırasında önbellekten alınan alma işlemlerinin sayısı. Bu değer, redsıs Info All komutundan aşağıdaki değerlerin toplamıdır: `cmdstat_get` , `cmdstat_hget` ,, `cmdstat_hgetall` `cmdstat_hmget` , `cmdstat_mget` , `cmdstat_getbit` , ve `cmdstat_getrange` , ve Raporlama aralığı sırasında önbellek isabetlerinin ve isabetsizlik toplamına eşdeğerdir. |
 | İşlem/saniye | Belirtilen Raporlama aralığı sırasında önbellek sunucusu tarafından saniye başına işlenen komutların toplam sayısı.  Bu değer Redsıs ıNFO komutundan "instantaneous_ops_per_sec" ile eşlenir. |
 | Redsıs sunucu yükü |Reddir sunucusunun işleme meşgul olduğu ve iletiler için boşta beklememe döngülerinin yüzdesi. Bu sayaç 100 'e ulaşırsa, Redo sunucusu bir performans üst sınırına ulaştığında ve CPU çalışmayı daha hızlı işleyemez. Yüksek Redsıs sunucu yükünü görüyorsanız, zaman aşımı özel durumlarını istemcide görürsünüz. Bu durumda, verilerinizi birden çok önbellekte ölçeklendirmeyi veya Bölümlendirmeyi düşünmelisiniz. |
-| Kümeler |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik ayarlanan işlem sayısı. Bu değer, redsıs Info All komutundan aşağıdaki değerlerin toplamıdır: `cmdstat_set` , `cmdstat_hset` ,, `cmdstat_hmset` `cmdstat_hsetnx` , `cmdstat_lset` , `cmdstat_mset` , `cmdstat_msetnx` , `cmdstat_setbit` , `cmdstat_setex` ,, `cmdstat_setrange` ve `cmdstat_setnx` . |
+| Ayarlar |Belirtilen Raporlama aralığı sırasında önbelleğe yönelik ayarlanan işlem sayısı. Bu değer, redsıs Info All komutundan aşağıdaki değerlerin toplamıdır: `cmdstat_set` , `cmdstat_hset` ,, `cmdstat_hmset` `cmdstat_hsetnx` , `cmdstat_lset` , `cmdstat_mset` , `cmdstat_msetnx` , `cmdstat_setbit` , `cmdstat_setex` ,, `cmdstat_setrange` ve `cmdstat_setnx` . |
 | Toplam anahtar sayısı  | Geçmiş raporlama dönemi boyunca önbellekte bulunan en fazla anahtar sayısı. Bu sayı `keyspace` REDSıS Info komutundan öğesine eşlenir. Temel alınan ölçümler sisteminin bir sınırlaması nedeniyle, kümelemenin etkinleştirildiği önbellekler için, toplam anahtar, Raporlama aralığı sırasında en fazla sayıda anahtara sahip parça en fazla anahtar sayısını döndürür.  |
 | Toplam İşlem Sayısı |Belirtilen Raporlama aralığı sırasında önbellek sunucusu tarafından işlenen komutların toplam sayısı. Bu değer `total_commands_processed` , REDSıS Info komutundan öğesine eşlenir. Redin için Azure Cache yalnızca pub/Sub için kullanıldığında,,, veya için hiçbir ölçüm olmaz, ancak bu,,, `Cache Hits` `Cache Misses` veya için `Gets` `Sets` `Total Operations` önbellek kullanımını yansıtan ölçümler olacaktır. |
 | Kullanılan Bellek |Belirtilen Raporlama aralığı boyunca önbellekte bulunan anahtar/değer çiftleri için kullanılan önbellek bellek miktarı. Bu değer `used_memory` , REDSıS Info komutundan öğesine eşlenir. Bu değer meta veri veya parçalama içermez. |

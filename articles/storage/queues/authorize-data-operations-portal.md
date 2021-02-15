@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590758"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385022"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -28,16 +28,19 @@ Azure portal kuyruk verilerine erişimi nasıl yetkilendirmek istediğinize bağ
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
-Hesap erişim anahtarıyla kuyruk verilerine erişmek için Azure RBAC eylemini içeren size atanmış bir Azure rolüne sahip olmanız gerekir `Microsoft.Storage/storageAccounts/listkeys/action` . Bu Azure rolü yerleşik veya özel bir rol olabilir. Destekleyen yerleşik roller `Microsoft.Storage/storageAccounts/listkeys/action` şunları içerir:
+Hesap erişim anahtarıyla kuyruk verilerine erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/Action** Azure RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
 
 - Azure Resource Manager [Owner rolü](../../role-based-access-control/built-in-roles.md#owner)
 - Azure Resource Manager [katkıda bulunan rolü](../../role-based-access-control/built-in-roles.md#contributor)
 - [Depolama hesabı katılımcısı rolü](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Azure portal kuyruk verilerine erişmeye çalıştığınızda, Portal öncelikle ile bir rol atanıp atanmadığını denetler `Microsoft.Storage/storageAccounts/listkeys/action` . Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
+Azure portal kuyruk verilerine erişmeye çalıştığınızda, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action** ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
+
+> [!IMPORTANT]
+> Bir depolama hesabı Azure Resource Manager **salt okunur** bir kilit ile kilitlendiğinde, bu depolama hesabı Için [liste anahtarları](/rest/api/storagerp/storageaccounts/listkeys) işlemine izin verilmez. **Liste anahtarları** bir post işlemidir ve hesap Için **salt okunur** BIR kilit yapılandırıldığında tüm post işlemleri engellenir. Bu nedenle, hesap **salt okunur** bir kilit ile kilitlendiğinde, kullanıcıların portalda kuyruk verilerine erişmek IÇIN Azure AD kimlik bilgilerini kullanması gerekir. Azure AD ile portalda kuyruk verilerine erişme hakkında daha fazla bilgi için bkz. [Azure AD hesabınızı kullanma](#use-your-azure-ad-account).
 
 > [!NOTE]
-> Klasik abonelik yöneticisi rolleri **Hizmet Yöneticisi** ve **ortak yönetici** , Azure Resource Manager rolünün eşdeğerini içerir [`Owner`](../../role-based-access-control/built-in-roles.md#owner) . **Sahip** rolü, dahil olmak üzere tüm eylemleri içerir `Microsoft.Storage/storageAccounts/listkeys/action` , bu nedenle bu yönetim rollerinden birine sahip bir Kullanıcı kuyruk verilerine hesap anahtarıyla de erişebilirler. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Klasik abonelik yöneticisi rolleri **Hizmet Yöneticisi** ve **ortak yönetici** , Azure Resource Manager rolünün eşdeğerini içerir [`Owner`](../../role-based-access-control/built-in-roles.md#owner) . **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION** dahil olmak üzere tüm eylemleri içerir, bu nedenle bu yönetici rollerinden birine sahip bir kullanıcı da hesap anahtarıyla kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Azure AD hesabınızı kullanın
 
@@ -58,7 +61,7 @@ Kuyruk verilerinize erişimi destekleyen yerleşik roller şunlardır:
 Klasik abonelik Yöneticisi rolüne sahip sıraların listelenmesi desteklenmez. Kuyrukları listelemek için, bir kullanıcının bunlara Azure Resource Manager **okuyucu** rolüne, **depolama kuyruğu veri okuyucusu** rolüne veya **depolama kuyruğu verileri katılımcısı** rolüne atanmış olması gerekir.
 
 > [!IMPORTANT]
-> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için, içeren bir rol atanması gerekir `Microsoft.Storage/storageAccounts/listkeys/action` .
+> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action** içeren bir rol atanmalıdır.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Azure portal kuyruklara gitme
 
@@ -95,6 +98,6 @@ Hesap anahtarlarına erişiminiz yoksa kuyruklar portalda listelenmez. Azure AD 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory kullanarak Azure Blob 'larına ve kuyruklara erişim kimlik doğrulaması](../common/storage-auth-aad.md)
-- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](../common/storage-auth-aad-rbac-portal.md)
+- [Azure portalı kullanarak blob ve kuyruk verilerine erişim için Azure rolü atama](../common/storage-auth-aad-rbac-portal.md)
 - [Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma](../common/storage-auth-aad-rbac-cli.md)
 - [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure PowerShell modülünü kullanın](../common/storage-auth-aad-rbac-powershell.md)

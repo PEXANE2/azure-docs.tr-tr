@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb8533f4ca714402482c666c520c1d0bd745e8cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363279"
+ms.locfileid: "100518836"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -83,11 +83,11 @@ Bu role sahip kullanıcılar, yönetici olmayanlar ve bazı roller için herhang
 
 [Kimlik doğrulama İlkesi yönetici](#authentication-policy-administrator) rolü, her kullanıcının kaydedebileceği ve kullanabileceği yöntemleri belirleyen kiracının kimlik doğrulama yöntemi ilkesini ayarlama iznine sahiptir.
 
-| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
-| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
-| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet | Hayır | Hayır | Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır |Hayır | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
@@ -107,11 +107,11 @@ Bu role sahip kullanıcılar, kimlik doğrulama yöntemleri ilkesini, kiracı ge
 
 [Kimlik doğrulama Yöneticisi](#authentication-administrator) ve [ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rollerinin kullanıcılara kayıtlı kimlik doğrulama yöntemlerini yönetme izni vardır ve tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale getirebilirsiniz. 
 
-| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
-| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
-| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet | Hayır | Hayır | Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır | Hayır | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Bu rol, şu anda eski MFA yönetim portalındaki MFA ayarlarını yönetme yeteneğine sahip değil.
@@ -293,7 +293,7 @@ Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" 
 
 ### <a name="hybrid-identity-administrator"></a>[Karma kimlik yöneticisi](#hybrid-identity-administrator-permissions)
 
-Bu roldeki kullanıcılar, bulut sağlama ve Federasyon ayarlarını yönetme işlemlerini kullanarak AD 'den Azure AD 'ye sağlama yapılandırma kurulumu oluşturabilir, yönetebilir ve dağıtabilir. Kullanıcılar ayrıca bu rolü kullanarak günlükleri giderebilir ve izleyebilir.  
+Bu roldeki kullanıcılar, bulut sağlama ve Federasyon ayarlarını yönetme işlemlerini kullanarak AD 'den Azure AD 'ye sağlama yapılandırma kurulumu oluşturabilir, yönetebilir ve dağıtabilir. Kullanıcılar ayrıca bu rolü kullanarak günlükleri giderebilir ve izleyebilir.
 
 ### <a name="insights-administrator"></a>[Öngörüler Yöneticisi](#insights-administrator-permissions)
 Bu roldeki kullanıcılar, [M365 Insights uygulamasındaki](https://go.microsoft.com/fwlink/?linkid=2129521)tüm yönetim özelliklerine erişebilir. Bu rol, dizin bilgilerini okuyabilir, hizmet durumunu izleyebilir, dosya destek biletlerini izleyebilir ve Öngörüler yönetici ayarları yönlerini erişebilir.
@@ -336,10 +336,10 @@ Modern ticaret Kullanıcı rolüne sahip kullanıcılar genellikle diğer Micros
 
 **Modern ticaret Kullanıcı rolü ne zaman atanır?**
 
-* **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bunları Yönetim Merkezi 'nde satın almaları için modern ticaret Kullanıcı rolü atanır. Yöneticiler, [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [Self servis satın alma hakkında SSS](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
-* **Microsoft Commercial Market 'Ten satın**  alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, modern ticaret Kullanıcı rolü, genel yönetici veya faturalandırma Yöneticisi rolüne sahip olmadıkları takdirde atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bunları Yönetim Merkezi 'nde satın almaları için modern ticaret Kullanıcı rolü atanır. Yöneticiler, [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [Self servis satın alma hakkında SSS](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
+* **Microsoft Commercial Market 'Ten satın** alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, modern ticaret Kullanıcı rolü, genel yönetici veya faturalandırma Yöneticisi rolüne sahip olmadıkları takdirde atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
 * Microsoft **'un teklifleri** : teklif, Microsoft 'un Microsoft ürün ve hizmetlerini satın alması için Microsoft 'un sunduğu resmi bir tekliftir. Teklifi kabul eden kişinin Azure AD 'de Genel yönetici veya faturalama yöneticisi rolü yoksa, teklif ve yönetim merkezine erişmek için modern ticaret Kullanıcı rolünü tamamlamaya yönelik olarak hem ticari özel bir rol atanır. Yönetim merkezine erişirken yalnızca, ticari olarak verilen rolleri karşılayan özellikleri kullanabilir.
-* **Ticarete özgü roller** – bazı kullanıcılara ticari özel roller atanır. Bir Kullanıcı genel veya faturalama yöneticisi değilse, yönetim merkezine erişebilmeleri için modern ticaret Kullanıcı rolü alırlar.  
+* **Ticarete özgü roller** – bazı kullanıcılara ticari özel roller atanır. Bir Kullanıcı genel veya faturalama yöneticisi değilse, yönetim merkezine erişebilmeleri için modern ticaret Kullanıcı rolü alırlar.
 
 Modern ticaret Kullanıcı rolü bir kullanıcıdan atanmadıklarında, Microsoft 365 yönetim merkezine erişimi kaybeder. Kendileri veya kuruluşunuz için herhangi bir ürünü yönetiyorsanız, bunları yönetemezler. Bu, lisansları atama, ödeme yöntemlerinin değiştirilmesi, faturalandırların faturalandırılır veya abonelikleri yönetmek için başka görevler içerebilir.
 
@@ -389,11 +389,11 @@ Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere herhangi bir
 
 [Kimlik doğrulama İlkesi yönetici](#authentication-policy-administrator) rolü, her kullanıcının kaydedebileceği ve kullanabileceği yöntemleri belirleyen kiracının kimlik doğrulama yöntemi ilkesini ayarlama iznine sahiptir.
 
-| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |  
+| Rol | Kullanıcının kimlik doğrulama yöntemlerini yönetme | Kullanıcı başına MFA yönetme | MFA ayarlarını yönetme | Kimlik doğrulama yöntemi ilkesini Yönet | Parola koruma ilkesini Yönet |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Kimlik doğrulama Yöneticisi | Bazı kullanıcılar için Evet (yukarıya bakın) | Bazı kullanıcılar için Evet (yukarıya bakın) | Hayır | Hayır | Hayır | 
-| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet  |Hayır | Hayır  |Hayır | 
-| Kimlik doğrulama İlkesi Yöneticisi | Hayır  |Hayır | Yes | Yes | Yes | 
+| Ayrıcalıklı kimlik doğrulama Yöneticisi| Tüm kullanıcılar için Evet | Tüm kullanıcılar için Evet | Hayır | Hayır | Hayır | 
+| Kimlik doğrulama İlkesi Yöneticisi | Hayır | Hayır | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
@@ -992,7 +992,7 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 > | --- | --- |
 > | Microsoft. Directory/Groups/Approtaatamalar/güncelleştirme | Azure Active Directory groups. Approtaatamalar özelliğini güncelleştirin. |
 > | Microsoft. Directory/Groups/Atamalisansı | Azure Active Directory gruplardaki lisansları yönetin. |
-> | Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin.  |
+> | Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
 > | Microsoft. Directory/gruplar/sınıflandırma/güncelleştirme | Azure Active Directory içindeki grubun sınıflandırma özelliğini güncelleştirin. |
 > | Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
 > | Microsoft. Directory/gruplar/groupType/Update | Azure Active Directory bir grubun groupType özelliğini güncelleştirin. |
@@ -1183,69 +1183,69 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
-> | Microsoft. Commerce. faturalandırma/allEntities/okuma    | Faturalandırma 'nin tüm yönlerini okuyun. |
-> | Microsoft. Directory/Yönetimtiveunits/Basic/Read    | Azure Active Directory ' de Yönetimtiveunits üzerindeki temel özellikleri okuyun. |
-> | Microsoft. Directory/Yönetimtiveunits/Üyeler/Read    | Azure Active Directory içindeki Yönetimtiveunits. Members özelliğini okuyun. |
-> | Microsoft. Directory/uygulamalar/temel/okuma    | Azure Active Directory içindeki uygulamalarda temel özellikleri okuyun. |
-> | Microsoft. Directory/uygulamalar/sahipler/okuma    | Azure Active Directory içindeki Applications. Owners özelliğini okuyun. |
-> | Microsoft. Directory/uygulamalar/ilkeler/okuma    | Azure Active Directory içindeki Applications. Policies özelliğini okuyun. |
+> | Microsoft. Commerce. faturalandırma/allEntities/okuma | Faturalandırma 'nin tüm yönlerini okuyun. |
+> | Microsoft. Directory/Yönetimtiveunits/Basic/Read | Azure Active Directory ' de Yönetimtiveunits üzerindeki temel özellikleri okuyun. |
+> | Microsoft. Directory/Yönetimtiveunits/Üyeler/Read | Azure Active Directory içindeki Yönetimtiveunits. Members özelliğini okuyun. |
+> | Microsoft. Directory/uygulamalar/temel/okuma | Azure Active Directory içindeki uygulamalarda temel özellikleri okuyun. |
+> | Microsoft. Directory/uygulamalar/sahipler/okuma | Azure Active Directory içindeki Applications. Owners özelliğini okuyun. |
+> | Microsoft. Directory/uygulamalar/ilkeler/okuma | Azure Active Directory içindeki Applications. Policies özelliğini okuyun. |
 > | Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
-> | Microsoft. Directory/Contacts/Basic/Read    | Azure Active Directory kişilerdeki temel özellikleri okuyun. |
-> | Microsoft. Directory/kiþiler/memberOf/Read    | Azure Active Directory içinde Contacts. memberOf özelliğini okuyun. |
-> | Microsoft. Directory/sözleşmeleri/temel/okuma    | Azure Active Directory 'daki sözleşmelerdeki temel özellikleri okuyun. |
-> | Microsoft. Directory/Devices/Basic/Read    | Azure Active Directory cihazlarda temel özellikleri okuyun. |
-> | Microsoft. Directory/Devices/memberOf/Read    | Azure Active Directory içindeki Devices. memberOf özelliğini okuyun. |
-> | Microsoft. Directory/Devices/kayıt bilgileri/okuma    | Azure Active Directory içindeki Devices. Kaydedeteredowners özelliğini okuyun. |
-> | Microsoft. Directory/Devices/registeredUsers/Read    | Azure Active Directory içindeki Devices. registeredUsers özelliğini okuyun. |
-> | Microsoft. Directory/directoryRoles/Basic/Read    | Azure Active Directory 'de directoryRoles temel özelliklerini okuyun. |
-> | Microsoft. Directory/directoryRoles/eli, Lemembers/Read    | Azure Active Directory directoryRoles. Eli, Lemembers özelliğini okuyun. |
-> | Microsoft. Directory/directoryRoles/Members/Read    | Azure Active Directory içindeki directoryRoles. Members özelliğini okuyun. |
-> | Microsoft. Directory/Domains/Basic/Read    | Azure Active Directory etki alanlarında temel özellikleri okuyun. |
+> | Microsoft. Directory/Contacts/Basic/Read | Azure Active Directory kişilerdeki temel özellikleri okuyun. |
+> | Microsoft. Directory/kiþiler/memberOf/Read | Azure Active Directory içinde Contacts. memberOf özelliğini okuyun. |
+> | Microsoft. Directory/sözleşmeleri/temel/okuma | Azure Active Directory 'daki sözleşmelerdeki temel özellikleri okuyun. |
+> | Microsoft. Directory/Devices/Basic/Read | Azure Active Directory cihazlarda temel özellikleri okuyun. |
+> | Microsoft. Directory/Devices/memberOf/Read | Azure Active Directory içindeki Devices. memberOf özelliğini okuyun. |
+> | Microsoft. Directory/Devices/kayıt bilgileri/okuma | Azure Active Directory içindeki Devices. Kaydedeteredowners özelliğini okuyun. |
+> | Microsoft. Directory/Devices/registeredUsers/Read | Azure Active Directory içindeki Devices. registeredUsers özelliğini okuyun. |
+> | Microsoft. Directory/directoryRoles/Basic/Read | Azure Active Directory 'de directoryRoles temel özelliklerini okuyun. |
+> | Microsoft. Directory/directoryRoles/eli, Lemembers/Read | Azure Active Directory directoryRoles. Eli, Lemembers özelliğini okuyun. |
+> | Microsoft. Directory/directoryRoles/Members/Read | Azure Active Directory içindeki directoryRoles. Members özelliğini okuyun. |
+> | Microsoft. Directory/Domains/Basic/Read | Azure Active Directory etki alanlarında temel özellikleri okuyun. |
 > | Microsoft. Directory/entitlementManagement/allProperties/Read | Azure AD Yetkilendirme Yönetimi 'ndeki tüm özellikleri okuyun. |
-> | Microsoft. Directory/Groups/Approtaatamalar/Read    | Azure Active Directory groups. Approtaatamalar özelliğini okuyun. |
-> | Microsoft. Directory/Groups/Basic/Read    | Azure Active Directory gruplardaki temel özellikleri okuyun. |
-> | Microsoft. Directory/Groups/hiddenMembers/Read    | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
-> | Microsoft. Directory/gruplar/memberOf/Read    | Azure Active Directory groups. memberOf özelliğini okuyun. |
-> | Microsoft. Directory/gruplar/Üyeler/okuma    | Azure Active Directory gruplar. Members özelliğini okuyun. |
-> | Microsoft. Directory/gruplar/Owners/Read    | Azure Active Directory içindeki groups. Owners özelliğini okuyun. |
-> | Microsoft. Directory/Groups/Settings/Read    | Azure Active Directory içindeki groups. Settings özelliğini okuyun. |
-> | Microsoft. Directory/groupSettings/Basic/Read    | Azure Active Directory groupSettings üzerindeki temel özellikleri okuyun. |
-> | Microsoft. Directory/groupSettingTemplates/Basic/Read    | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
-> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read    | Azure Active Directory içindeki temel özellikleri okuyun oAuth2PermissionGrants. |
-> | Microsoft. Directory/kuruluş/temel/okuma    | Azure Active Directory içindeki kuruluştaki temel özellikleri okuyun. |
-> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/okuma    | Azure Active Directory içinde Organization. trustedCAsForPasswordlessAuth özelliğini okuyun. |
-> | Microsoft. Directory/policies/standart/Read    | Azure Active Directory içindeki standart ilkeleri okuyun. |
+> | Microsoft. Directory/Groups/Approtaatamalar/Read | Azure Active Directory groups. Approtaatamalar özelliğini okuyun. |
+> | Microsoft. Directory/Groups/Basic/Read | Azure Active Directory gruplardaki temel özellikleri okuyun. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
+> | Microsoft. Directory/gruplar/memberOf/Read | Azure Active Directory groups. memberOf özelliğini okuyun. |
+> | Microsoft. Directory/gruplar/Üyeler/okuma | Azure Active Directory gruplar. Members özelliğini okuyun. |
+> | Microsoft. Directory/gruplar/Owners/Read | Azure Active Directory içindeki groups. Owners özelliğini okuyun. |
+> | Microsoft. Directory/Groups/Settings/Read | Azure Active Directory içindeki groups. Settings özelliğini okuyun. |
+> | Microsoft. Directory/groupSettings/Basic/Read | Azure Active Directory groupSettings üzerindeki temel özellikleri okuyun. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Azure Active Directory içindeki temel özellikleri okuyun oAuth2PermissionGrants. |
+> | Microsoft. Directory/kuruluş/temel/okuma | Azure Active Directory içindeki kuruluştaki temel özellikleri okuyun. |
+> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/okuma | Azure Active Directory içinde Organization. trustedCAsForPasswordlessAuth özelliğini okuyun. |
+> | Microsoft. Directory/policies/standart/Read | Azure Active Directory içindeki standart ilkeleri okuyun. |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
-> | Microsoft. Directory/Roleatamalar/temel/okuma    | Azure Active Directory içindeki Roleatamalarındaki temel özellikleri okuyun. |
-> | Microsoft. Directory/roleDefinitions/temel/okuma    | Azure Active Directory içindeki roleDefinitions ' daki temel özellikleri okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Read    | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/Approtaatamalar/okuma    | Azure Active Directory Servicesorumlularını. Approtaatamalar özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlular/Basic/Read    | Azure Active Directory içindeki Servicesorumlularını temel özelliklerini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/memberOf/Read    | Azure Active Directory Servicesorumlularını. memberOf özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/oAuth2PermissionGrants/Basic/Read    | Azure Active Directory Servicesorumlularını. oAuth2PermissionGrants özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/ownedObjects/Read    | Azure Active Directory Servicesorumlularını. ownedObjects özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/Owners/Read    | Azure Active Directory içindeki Servicesorumlularını. Owners özelliğini okuyun. |
-> | Microsoft. Directory/Servicesorumlularını/ilkeleri/okuma    | Azure Active Directory içindeki Servicesorumlularını. Policies özelliğini okuyun. |
-> | Microsoft. Directory/Signınreports/allProperties/Read    | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-> | Microsoft. Directory/subscribedSkus/Basic/Read    | Azure Active Directory içindeki temel özellikleri okuyun subscribedSkus. |
-> | Microsoft. Directory/Users/Approtaatamalar/okuma    | Azure Active Directory içindeki Users. Approtaatamalar özelliğini okuyun. |
-> | Microsoft. Directory/Users/Basic/Read    | Azure Active Directory kullanıcıların temel özelliklerini okuyun. |
-> | Microsoft. Directory/Users/directReports/Read    | Azure Active Directory Users. directReports özelliğini okuyun. |
-> | Microsoft. Directory/Users/Manager/okuma    | Azure Active Directory içindeki Users. Manager özelliğini okuyun. |
-> | Microsoft. Directory/kullanıcılar/memberOf/Read    | Azure Active Directory içindeki Users. memberOf özelliğini okuyun. |
-> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read    | Azure Active Directory Users. oAuth2PermissionGrants özelliğini okuyun. |
-> | Microsoft. Directory/Users/ownedDevices/Read    | Azure Active Directory Users. ownedDevices özelliğini okuyun. |
-> | Microsoft. Directory/Users/ownedObjects/Read    | Azure Active Directory Users. ownedObjects özelliğini okuyun. |
-> | Microsoft. Directory/Users/registeredDevices/Read    | Azure Active Directory Users. registeredDevices özelliğini okuyun. |
-> | Microsoft. Directory/Users/strongAuthentication/Read    | MFA kimlik bilgileri gibi güçlü kimlik doğrulama özelliklerini okuyun. |
-> | Microsoft. office365. Exchange/allEntities/okuma    | Exchange Online 'ın tüm yönlerini okuyun. |
-> | Microsoft. office365. messageCenter/messages/okundu    | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
-> | Microsoft. office365. messageCenter/securityMessages/Read    | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
+> | Microsoft. Directory/Roleatamalar/temel/okuma | Azure Active Directory içindeki Roleatamalarındaki temel özellikleri okuyun. |
+> | Microsoft. Directory/roleDefinitions/temel/okuma | Azure Active Directory içindeki roleDefinitions ' daki temel özellikleri okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Read | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/Approtaatamalar/okuma | Azure Active Directory Servicesorumlularını. Approtaatamalar özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlular/Basic/Read | Azure Active Directory içindeki Servicesorumlularını temel özelliklerini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/memberOf/Read | Azure Active Directory Servicesorumlularını. memberOf özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/oAuth2PermissionGrants/Basic/Read | Azure Active Directory Servicesorumlularını. oAuth2PermissionGrants özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/ownedObjects/Read | Azure Active Directory Servicesorumlularını. ownedObjects özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/Owners/Read | Azure Active Directory içindeki Servicesorumlularını. Owners özelliğini okuyun. |
+> | Microsoft. Directory/Servicesorumlularını/ilkeleri/okuma | Azure Active Directory içindeki Servicesorumlularını. Policies özelliğini okuyun. |
+> | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+> | Microsoft. Directory/subscribedSkus/Basic/Read | Azure Active Directory içindeki temel özellikleri okuyun subscribedSkus. |
+> | Microsoft. Directory/Users/Approtaatamalar/okuma | Azure Active Directory içindeki Users. Approtaatamalar özelliğini okuyun. |
+> | Microsoft. Directory/Users/Basic/Read | Azure Active Directory kullanıcıların temel özelliklerini okuyun. |
+> | Microsoft. Directory/Users/directReports/Read | Azure Active Directory Users. directReports özelliğini okuyun. |
+> | Microsoft. Directory/Users/Manager/okuma | Azure Active Directory içindeki Users. Manager özelliğini okuyun. |
+> | Microsoft. Directory/kullanıcılar/memberOf/Read | Azure Active Directory içindeki Users. memberOf özelliğini okuyun. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Azure Active Directory Users. oAuth2PermissionGrants özelliğini okuyun. |
+> | Microsoft. Directory/Users/ownedDevices/Read | Azure Active Directory Users. ownedDevices özelliğini okuyun. |
+> | Microsoft. Directory/Users/ownedObjects/Read | Azure Active Directory Users. ownedObjects özelliğini okuyun. |
+> | Microsoft. Directory/Users/registeredDevices/Read | Azure Active Directory Users. registeredDevices özelliğini okuyun. |
+> | Microsoft. Directory/Users/strongAuthentication/Read | MFA kimlik bilgileri gibi güçlü kimlik doğrulama özelliklerini okuyun. |
+> | Microsoft. office365. Exchange/allEntities/okuma | Exchange Online 'ın tüm yönlerini okuyun. |
+> | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+> | Microsoft. office365. messageCenter/securityMessages/Read | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
 > | Microsoft. office365. Network/Performance/allProperties/Read | Microsoft 365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
-> | Microsoft. office365. protectionCenter/allEntities/okuma    | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
-> | Microsoft. office365. Securityzorluk Ancecenter/allEntities/Read    | Microsoft. office365. Securitykarmaşıkancecenter içindeki tüm standart özellikleri okuyun. |
-> | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
-> | Microsoft. office365. webPortal/allEntities/standart/okuma    | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
+> | Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
+> | Microsoft. office365. Securityzorluk Ancecenter/allEntities/Read | Microsoft. office365. Securitykarmaşıkancecenter içindeki tüm standart özellikleri okuyun. |
+> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+> | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
 
 ### <a name="groups-administrator-permissions"></a>Gruplar yönetici izinleri
 
@@ -1313,8 +1313,8 @@ AD 'yi Azure AD bulut sağlamasını ve Federasyon ayarlarını yönetebilir.
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 > | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-> | Microsoft. Directory/uygulamalar/hedef kitle/güncelleştirme  | Azure Active Directory 'da Applications. Audience özelliğini güncelleştirin. |
-> | Microsoft. Directory/uygulamalar/kimlik doğrulaması/güncelleştirme | Azure Active Directory güncelleştirme uygulamaları. kimlik doğrulama özelliği.  |
+> | Microsoft. Directory/uygulamalar/hedef kitle/güncelleştirme | Azure Active Directory 'da Applications. Audience özelliğini güncelleştirin. |
+> | Microsoft. Directory/uygulamalar/kimlik doğrulaması/güncelleştirme | Azure Active Directory güncelleştirme uygulamaları. kimlik doğrulama özelliği. |
 > | Microsoft. Directory/uygulamalar/temel/güncelleştirme | Azure Active Directory içindeki uygulamalarda temel özellikleri güncelleştirin. |
 > | Microsoft. Directory/uygulamalar/oluşturma | Azure Active Directory uygulamalar oluşturun. |
 > | Microsoft. Directory/uygulamalar/kimlik bilgileri/güncelleştirme | Azure Active Directory içindeki Applications. Credentials özelliğini güncelleştirin. |
@@ -1491,7 +1491,7 @@ Yalnızca Ileti merkezindeki kuruluşlarındaki iletileri ve güncelleştirmeler
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
-> | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun.  |
+> | Microsoft. office365. Network/Performance/allProperties/Read | M365 Yönetim Merkezi 'nde ağ performansı sayfalarını okuyun. |
 > | Microsoft. office365. Network/Locations/allProperties/allTasks | Her konum için ağ konumları özelliklerini okuyun ve yapılandırın. |
 
 ### <a name="office-apps-administrator-permissions"></a>Office uygulamaları yönetici izinleri
@@ -1896,7 +1896,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 > | Microsoft. office365. Sktypeınfo/allEntities/allTasks | Skype Kurumsal Çevrimiçi 'nin tüm yönlerini yönetin. |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
-> | Microsoft. office365. usageReports/allEntities/okuma    | Office 365 kullanım raporlarını okuyun. |
+> | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 > | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="teams-administrator-permissions"></a>Takımlar yönetici izinleri
@@ -2144,7 +2144,7 @@ Cihaz katılımı | Kullanım Dışı | [Kullanım dışı roller belgeleri](per
 Cihaz yöneticileri | Kullanım Dışı | [Kullanım dışı roller belgeleri](permissions-reference.md#deprecated-roles)
 Cihaz kullanıcıları | Kullanım Dışı | [Kullanım dışı roller belgeleri](permissions-reference.md#deprecated-roles)
 Dizin eşitleme hesapları | Kullanılmaması nedeniyle gösterilmez | [Dizin eşitleme hesapları belgeleri](permissions-reference.md#directory-synchronization-accounts)
-Konuk Kullanıcı | Kullanılmadığından gösterilmez  | NA
+Konuk Kullanıcı | Kullanılmadığından gösterilmez | NA
 İş ortağı katman 1 desteği | Kullanılmaması nedeniyle gösterilmez | [İş ortağı Katman1 Destek belgeleri](permissions-reference.md#partner-tier1-support)
 İş ortağı katman 2 desteği | Kullanılmaması nedeniyle gösterilmez | [İş ortağı Katman2 Destek belgeleri](permissions-reference.md#partner-tier2-support)
 Kısıtlı Konuk Kullanıcı | Kullanılmadığından gösterilmez | NA

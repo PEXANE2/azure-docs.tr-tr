@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşis
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593985"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099158"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Hızlı başlangıç: JavaScript ile bir yönetim grubu oluşturma
 
@@ -29,7 +29,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 ## <a name="application-setup"></a>Uygulama kurulumu
 
-JavaScript 'i Azure Kaynak Grafiği 'ni sorgulamak üzere etkinleştirmek için, ortamın ayarlanması gerekir. Bu kurulum, [Windows 10 üzerinde Bash](/windows/wsl/install-win10)dahil olmak üzere JavaScript 'in kullanılabileceği her yerde çalışmaktadır.
+Yönetim gruplarını yönetmek için JavaScript 'i etkinleştirmek üzere, ortamın ayarlanması gerekir. Bu kurulum, [Windows 10 üzerinde Bash](/windows/wsl/install-win10)dahil olmak üzere JavaScript 'in kullanılabileceği her yerde çalışmaktadır.
 
 1. Aşağıdaki komutu çalıştırarak yeni bir Node.js projesi ayarlayın.
 

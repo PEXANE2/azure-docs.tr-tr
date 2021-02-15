@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2884df3a9b5cb3954c1c5e57d923eff97809a745
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012774"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382183"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript V12 SDK ile Blobları yönetme
 
@@ -276,7 +276,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 Bu uygulama bir metin dizesi oluşturur ve BLOB depolamaya yükler. Örnek daha sonra kapsayıcıdaki Blobları listeler, blobu indirir ve indirilen verileri görüntüler.
 
-Konsol isteminde *BLOB-QuickStart-v12.py* dosyasını içeren dizine gidin ve `node` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
+Konsol isteminde *blob-quickstart-v12.js* dosyasını içeren dizine gidin, ardından `node` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
 
 ```console
 node blob-quickstart-v12.js

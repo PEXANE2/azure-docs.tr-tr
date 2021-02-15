@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746465"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097322"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Kbbitmq çıkış bağlamaya genel bakış
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, her 5 dakikada bir TimerTrigger tarafından tetiklendiğinde, Kbbitmq kuyruğuna bir ileti gönderen Java işlevini gösterir.
+Aşağıdaki Java işlevi, `@RabbitMQOutput` bir kbbitmq sıra çıkış bağlamasının yapılandırmasını belirtmek Için [Java Kbıbitmq türlerindeki](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) ek açıklamaları kullanır. İşlevi, her 5 dakikada bir TimerTrigger tarafından tetiklendiğinde, Kbbitmq kuyruğuna bir ileti gönderir.
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -266,7 +266,7 @@ Daha fazla ayrıntı için çıkış bağlama [örneğine](#example) bakın.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `RabbitMQ` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "Oybbitmq" olarak ayarlanmalıdır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. |

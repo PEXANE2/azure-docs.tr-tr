@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539476"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387861"
 ---
 # <a name="understanding-resource-sets"></a>Kaynak kümelerini anlama
 
@@ -86,19 +86,19 @@ Azure purview bir varlık grubuyla bir kaynak kümesi ile eşleştiğinde, katal
 
 ### <a name="example-1"></a>Örnek 1
 
-Tam ad: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+Tam ad: `https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}`
 
 Görünen ad: "Spark çıktısının adı"
 
 ### <a name="example-2"></a>Örnek 2
 
-Tam ad: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+Tam ad: `https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}`
 
 Görünen ad: "bölümlenmiş verilerim"
 
 ### <a name="example-3"></a>Örnek 3
 
-Tam ad: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+Tam ad: `https://myblob.blob.core.windows.net/sample-data/data{N}.csv`
 
 Görünen ad: "veri"
 

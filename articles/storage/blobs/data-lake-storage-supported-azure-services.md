@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0dd011d6c1ff631d537dbcadf9a77bbe6d89aa45
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879873"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518808"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen Azure hizmetleri
 
@@ -29,7 +29,7 @@ Bu tabloda Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetleri l
 |Azure hizmeti |Destek düzeyi |Azure AD |Paylaşılan Anahtar| İlgili makaleler: |
 |---------------|-------------------|---|---|---|
 |Azure Data Factory|Genel kullanıma sunuldu|Yes|Yes|[Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|Genel kullanıma sunuldu|Yes|Yes|[Azure Databricks ile kullanma](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](data-lake-storage-quickstart-create-databricks-account.md) <br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme](data-lake-storage-use-databricks-spark.md)|
+|Azure Databricks|Genel kullanıma sunuldu|Yes|Yes|[Azure Databricks ile kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](data-lake-storage-quickstart-create-databricks-account.md) <br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme](data-lake-storage-use-databricks-spark.md)|
 |Azure Event Hub|Genel kullanıma sunuldu|Hayır|Yes|[Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama](../../event-hubs/event-hubs-capture-overview.md)|
 |Azure Event Grid|Genel kullanıma sunuldu|Yes|Yes|[Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama](data-lake-storage-events.md)|
 |Azure Logic Apps|Genel kullanıma sunuldu|Hayır|Yes|[Genel Bakış-Azure Logic Apps nedir?](../../logic-apps/logic-apps-overview.md)|
