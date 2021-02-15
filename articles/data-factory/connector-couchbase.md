@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Couşbase 'den veri kopyalama (Önizleme)
 description: Bir Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Couşbase 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417434"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383662"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Couşbase 'den veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,7 +35,7 @@ Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü 
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -52,9 +47,9 @@ Aşağıdaki özellikler Couşbase bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Couşbase** olarak ayarlanmalıdır | Evet |
-| Dizisi | Couşbase 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca kimlik bilgisi dizesi Azure Key Vault yerleştirebilir ve `credString` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **Couşbase** olarak ayarlanmalıdır | Yes |
+| Dizisi | Couşbase 'e bağlanmak için bir ODBC bağlantı dizesi. <br/>Ayrıca kimlik bilgisi dizesi Azure Key Vault yerleştirebilir ve `credString` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
 
 **Örnek:**
 
@@ -83,13 +78,13 @@ Aşağıdaki özellikler Couşbase bağlı hizmeti için desteklenir:
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
-            "credString": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -104,11 +99,11 @@ Aşağıdaki özellikler Couşbase bağlı hizmeti için desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm Couşbase veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Couşbase 'den veri kopyalamak için, veri kümesinin Type özelliğini **Couşbasetable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Couşbase 'den veri kopyalamak için, veri kümesinin Type özelliğini **Couşbasetable** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Couşbasetable** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Couşbasetable** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 
@@ -135,11 +130,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="couchbasesource-as-source"></a>Kaynak olarak Couşbasesource
 
-Couşbase 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Couşbasesource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Couşbase 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Couşbasesource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Couşbasesource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Couşbasesource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

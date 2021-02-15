@@ -1,5 +1,5 @@
 ---
-title: Uyarı bilgilerini ilet
+title: Uyarı bilgilerini iletme
 description: İletme kurallarıyla çalışarak, iş ortağı sistemlerine uyarı bilgileri gönderebilirsiniz.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843562"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522742"
 ---
-# <a name="forward-alert-information"></a>Uyarı bilgilerini ilet
+# <a name="forward-alert-information"></a>Uyarı bilgilerini iletme
 
 IoT için Azure Defender, syslog sunucuları, e-posta adresleri ve daha fazlasını içeren iş ortaklarına uyarı bilgileri gönderebilirsiniz. İletme kurallarıyla çalışma, uyarı bilgilerini hızlı bir şekilde güvenlik hissedarlarına sunmanıza olanak tanır.  
 
@@ -26,7 +26,7 @@ IoT yöneticileri için Defender 'ın iletme kurallarını kullanma izni vardır
 
 ## <a name="about-forwarded-alert-information"></a>İletilen uyarı bilgileri hakkında
 
-Uyarılar, çok çeşitli güvenlik ve işletimsel olaylar hakkında bilgi sağlar. Örnek:
+Uyarılar, çok çeşitli güvenlik ve işletimsel olaylar hakkında bilgi sağlar. Örneğin:
 
   - Uyarının tarih ve saati
 
@@ -203,6 +203,6 @@ Yönetici, uyarı dışlama kuralları tanımlamış olabilir. Bu kurallar, yön
 
 Bu, tanımladığınız iletme kurallarının yöneticinizin oluşturduğu dışlama kuralları temel alınarak yoksayılacağı anlamına gelir. Dışlama kuralları, şirket içi yönetim konsolunda tanımlanmıştır.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Uyarı iş akışlarını hızlandırma](how-to-accelerate-alert-incident-response.md)

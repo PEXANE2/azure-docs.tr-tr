@@ -1,21 +1,20 @@
 ---
-title: Redsıs için Azure önbelleğini ölçeklendirme
-description: Azure portal, Azure PowerShell ve Azure CLı gibi araçları kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmeyi öğrenin.
+title: Redsıs örneği için Azure önbelleğini ölçeklendirme
+description: Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmeyi öğrenin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537856"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382404"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
-Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Redsıs örneği için Azure önbelleğini ölçeklendirme
+Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Temel, standart veya Premium bir önbellek için, oluşturulduktan sonra, uygulama gereksinimlerinize devam etmek için boyutunu ve katmanını değiştirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
 
 ## <a name="when-to-scale"></a>Ne zaman ölçeklendirme yapılmalıdır?
 Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kullanarak önbelleğinizin sistem durumunu ve performansını izleyebilir ve önbelleğin ne zaman ölçekleneceğini belirlemenize yardımcı olabilirsiniz. 
@@ -34,7 +33,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 
 ![Ölçek](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-**Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç** ' e tıklayın.
+**Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç**' e tıklayın.
 
 ![Fiyatlandırma katmanı][redis-cache-pricing-tier-blade]
 

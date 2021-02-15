@@ -7,7 +7,7 @@
     - name: En iyi uygulamalar
       href: howto-best-practices.md
     - name: SSS
-      href: faq.md
+      href: faq.yml
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

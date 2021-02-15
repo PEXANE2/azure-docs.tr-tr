@@ -1,23 +1,18 @@
 ---
 title: U-SQL betiği kullanarak verileri dönüştürme
 description: Azure Data Lake Analytics işlem hizmetinde U-SQL betikleri çalıştırarak verileri nasıl işleyeceğini veya dönüştüreceğinizi öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 94b584f0bea01754a4e955d1418a7a9a2e9aeace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014015"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373921"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics üzerinde U-SQL betikleri çalıştırarak verileri işleme 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -39,7 +34,7 @@ Aşağıdaki tabloda JSON tanımında kullanılan genel özellikler için açık
 | Özellik                 | Açıklama                              | Gerekli                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **türüyle**                 | Type özelliği: **AzureDataLakeAnalytics** olarak ayarlanmalıdır. | Yes                                      |
-| **accountName**          | Azure Data Lake Analytics hesap adı.  | Yes                                      |
+| **Adı**          | Azure Data Lake Analytics hesap adı.  | Yes                                      |
 | **Datalakeanaliz Ticsurı** | Azure Data Lake Analytics URI 'SI.           | No                                       |
 | **SubscriptionID**       | Azure abonelik KIMLIĞI                    | No                                       |
 | **resourceGroupName**    | Azure kaynak grubu adı                | No                                       |
@@ -178,7 +173,7 @@ Azure Data Lake Analytics hizmeti üzerinde çalışan işler için ardışık d
 }
 ```
 
-Bunun yerine dinamik Parametreler kullanmak mümkündür. Örnek: 
+Bunun yerine dinamik Parametreler kullanmak mümkündür. Örneğin: 
 
 ```json
 "parameters": {

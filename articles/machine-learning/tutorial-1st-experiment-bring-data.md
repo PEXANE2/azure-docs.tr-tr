@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622803"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378017"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Öğretici: kendi verilerinizi kullanın (4. bölüm)
 
@@ -82,21 +82,8 @@ optimizer = optim.SGD(
 
 Komut dosyası artık bir bağımsız değişken olarak _veri yolunu_ kabul eder. İle başlamak için, yerel olarak test edin. Öğretici dizin yapınıza adlı bir klasör ekleyin `data` . Dizin yapınız şöyle görünmelidir:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Dizin yapısı. azureml, veri ve src alt dizinlerini gösterir":::
+
 
 `train.py`Önceki öğreticide yerel olarak çalıştırmadıysanız, `data/` dizininiz olmayacaktır. Bu durumda, `torchvision.datasets.CIFAR10` yöntemini `download=True` betiğinizdeki ile yerel olarak çalıştırın `train.py` .
 

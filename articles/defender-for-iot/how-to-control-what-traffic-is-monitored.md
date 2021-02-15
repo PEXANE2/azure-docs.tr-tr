@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624693"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522402"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Hangi trafiğin izleneceğini denetleme
 
@@ -157,7 +157,7 @@ Dinamik ağlarla çalışıyorsanız, yeni IP adresleri atandığında gerçekle
 
 Her sensörde dinamik IP adreslerini tanımlamak, IP adresi değişiklikleri örneklerinde kapsamlı ve şeffaf destek sunar. Bu, her benzersiz cihaz için kapsamlı raporlama sağlar.
 
-Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örnek:
+Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örneğin:
 
 - Veri araştırma raporu ve cihaz envanteri raporu, IP adresi değişikliklerinden bağımsız olarak cihazdan öğrenilen tüm etkinlikleri tek bir varlık olarak birleştirir. Bu raporlar, hangi adreslerin DHCP adresleri olarak tanımlandığını gösterir.
 
@@ -295,7 +295,7 @@ Tarama sonuçlarını görüntülemek için:
 
 1. Tarama tamamlandığında, **Eylemler** bölmesinde, **tarama sonuçlarını görüntüle**' yi seçin. Tarama sonuçlarıyla birlikte CSV dosyası bilgisayarınıza indirilir.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bir cihaz envanterinde](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  algılayıcı algılamalarını araştırın [Cihaz eşlemesindeki algılayıcı algılamalarını araştırın](how-to-work-with-the-sensor-device-map.md)

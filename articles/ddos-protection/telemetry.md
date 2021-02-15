@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516711"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522674"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS konuma telemetrisini görüntüleme ve yapılandırma
 
@@ -37,7 +37,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) kullanılabilir. Bu ölçümler Ayrıca Tanılama ayarları aracılığıyla dışarı aktarılabilir (bkz. [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md)).
 
 
-| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Description |
+| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | Gelen bayt bırakıldı DDoS | BytesPerSecond | Maksimum | Gelen bayt bırakıldı DDoS| 
 | BytesForwardedDDoS | İletilen gelen bayt sayısı | BytesPerSecond | Maksimum | İletilen gelen bayt sayısı |
@@ -70,7 +70,7 @@ Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/p
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS koruması telemetrisini görüntüle
 
-Bir saldırının telemetrisi, Azure Izleyici aracılığıyla gerçek zamanlı olarak sağlanır. Telemetri yalnızca genel bir IP adresinin risk altında olduğu süre boyunca kullanılabilir. Bir saldırının etkilerinin azaltılmadan önce veya sonra telemetri görmezsiniz.
+Bir saldırının telemetrisi, Azure Izleyici aracılığıyla gerçek zamanlı olarak sağlanır. Telemetri yalnızca, bir genel IP adresi hafifletme kapsamında olduğunda kullanılabilir. 
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın ve DDoS koruma planınıza gidin.
 2. **İzleme** seçeneğinin altından **Ölçümler**’i seçin.

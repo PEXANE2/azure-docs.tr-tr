@@ -4,15 +4,15 @@ description: Etkinleştirme dosyalarını yönetme, yedeklemeleri gerçekleştir
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508769"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523983"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -86,7 +86,7 @@ Etkinleştirme dosyası yüklenemediğinden bir hata iletisi alırsınız. Aşa�
 
 - **Buluta bağlı sensörler için**: algılayıcı internet 'e bağlanamıyor. Algılayıcının ağ yapılandırmasını denetleyin. Sensörizin internet 'e erişmek için bir Web proxy üzerinden bağlanması gerekiyorsa, **algılayıcı ağ yapılandırması** ekranında ara sunucunuzun doğru şekilde yapılandırıldığını doğrulayın. \*. Azure-Devices.net:443 güvenlik duvarında ve/veya proxy 'de izin verildiğini doğrulayın. Joker karakterler desteklenmiyorsa veya daha fazla denetim istiyorsanız, IoT Hub için özel Defender 'ın FQDN 'SI güvenlik duvarınız ve/veya ara sunucunuzda açılmalıdır. Ayrıntılar için bkz. [başvuru IoT Hub uç noktaları](../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **Buluta bağlı sensörler için**: etkinleştirme dosyası geçerli, ancak IoT için Defender tarafından reddedildi. Bu sorunu gideremezseniz, IoT portalı için Defender 'ın **algılayıcı yönetimi** sayfasından başka bir etkinleştirme indirebilirsiniz. Bu işe yaramazsa Microsoft Desteği başvurun.
+- **Buluta bağlı sensörler için**: etkinleştirme dosyası geçerli, ancak IoT için Defender tarafından reddedildi. Bu sorunu gideremezseniz, IoT portalının Defender 'ın siteler ve algılayıcılar sayfasından başka bir etkinleştirme indirebilirsiniz. Bu işe yaramazsa Microsoft Desteği başvurun.
 
 ## <a name="manage-certificates"></a>Sertifikaları yönetme
 
@@ -114,7 +114,7 @@ IoT algılayıcısı ve şirket içi yönetim konsolu için Defender, aşağıda
  
  - Algılayıcılar ve şirket içi yönetim konsolu arasındaki iletişimin güvenliğini sağlayın. 
 
-Yüklendikten sonra gereç, web konsoluna ön erişim sağlamak için yerel bir otomatik olarak imzalanan sertifika oluşturur. Kurumsal SSL ve TLS sertifikaları [`cyberx-xsense-certificate-import`](#cli-commands) komut satırı aracı kullanılarak yüklenebilir. 
+Yüklendikten sonra gereç, web konsoluna ön erişim sağlamak için yerel bir otomatik olarak imzalanan sertifika oluşturur. Kurumsal SSL ve TLS sertifikaları [`cyberx-xsense-certificate-import`](#cli-commands) komut satırı aracı kullanılarak yüklenebilir.
 
  > [!NOTE]
  > Gereçanın istemci ve oturum başlatıcısı olduğu tümleştirmeler ve iletme kuralları için, belirli sertifikalar kullanılır ve sistem sertifikalarıyla ilgili değildir.  
@@ -363,15 +363,23 @@ Sensör buluta bağlı bir algılayıcı olarak kaydedilmişse, algılayıcı ad
 
 Adı değiştirmek için:
 
-1. IoT için Azure Defender portalında, **algılayıcı yönetimi** sayfasına gidin.
+1. IoT için Azure Defender portalında, siteler ve algılayıcılar sayfasına gidin.
 
-1. Algılayıcıyı **algılayıcı yönetimi** penceresinden silin.
+1. Algılayıcıyı siteler ve algılayıcılar sayfasından silin.
 
-1. Yeni adla yeniden kaydolun.
+1. Başlarken sayfasından **algılayıcı** Ekle seçeneğini belirleyerek yeni adla kaydolun.
 
 1. Yeni etkinleştirme dosyasını indirin.
 
-1. Sensörde oturum açın ve yeni etkinleştirme dosyasını karşıya yükleyin.
+1. IoT algılayıcısı konsolunda Defender 'da oturum açın.
+
+1. Algılayıcı konsolunda, **sistem ayarları** ' nı seçin ve yeniden **etkinleştirme**' yi seçin.
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Algılayıcıyı yeniden etkinleştirmek için etkinleştirme dosyanızı karşıya yükleyin.":::
+
+1. **Karşıya yükle** ' yi seçin ve kaydettiğiniz dosyayı seçin.
+
+1. **Etkinleştir**' i seçin.
 
 ## <a name="update-the-sensor-network-configuration"></a>Algılayıcı ağ yapılandırmasını güncelleştirme
 
@@ -387,7 +395,7 @@ Yapılandırmayı değiştirmek için:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="Ağ ayarlarınızı yapılandırın.":::
 
-3. Parametreleri aşağıdaki gibi ayarlayın:
+3. Parametreleri ayarlayın:
 
     | Parametre | Açıklama |
     |--|--|
@@ -458,7 +466,7 @@ Yedeği bir dış SMB sunucusuna kaydetmek için:
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. Düzenle `fstab` : 
+3. Düzenle `fstab` :
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Aşağıdaki yordamda, algılayıcı konsolunu kullanarak tek başına bir algı
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="Oturum açtıktan sonra görüntülenen yükseltme sürümünün ekran görüntüsü.":::
 
-## <a name="forward-sensor-failure-alerts"></a>İleri algılayıcı hatası uyarıları 
+## <a name="forward-sensor-failure-alerts"></a>İleri algılayıcı hatası uyarıları
 
 Hakkındaki ayrıntıları sağlamak için uyarıları üçüncü taraflara iletebilirsiniz:
 
@@ -562,7 +570,7 @@ Sistem özelliklerine erişmek için:
 
 3. **Genel** bölümünden **Sistem Özellikleri** ' ni seçin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Tehdit bilgileri araştırması ve paketleri](how-to-work-with-threat-intelligence-packages.md)
 

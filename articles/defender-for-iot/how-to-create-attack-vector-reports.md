@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: e22bf80cd9dbcd80a0de84fd5d044354b1fc4e2d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e9960fc2120add845be8feda9bafdef95a9b5f94
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811735"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522334"
 ---
 # <a name="attack-vector-reporting"></a>Saldırı vektörü raporlaması
 
@@ -69,7 +69,7 @@ Bir saldırı vektörü simülasyonu oluşturmak için:
 
    :::image type="content" source="media/how-to-generate-reports/sample-attack-vectors.png" alt-text="Saldırı vektörleri.":::
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Saldırı vektörü raporlaması](how-to-create-attack-vector-reports.md)
 

@@ -1,30 +1,30 @@
 ---
 title: Uyarıları görüntüleme
-description: Çeşitli kategorilere göre uyarıları görüntüleyin ve ilgilendiğiniz uyarıları bulmanıza yardımcı olması için arama özelliklerini kullanın.
+description: Çeşitli kategorilere göre uyarıları görüntüleyin ve ilgilendiğiniz uyarıları bulmanıza yardımcı olması için arama özelliklerini kullanır.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509088"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523677"
 ---
 # <a name="view-alerts"></a>Uyarıları görüntüleme
 
 Bu makalede, sensöriz tarafından tetiklenen uyarıların nasıl görüntüleneceği ve bunları uyarı araçlarıyla yönetme işlemlerinin nasıl yapılacağı açıklanır.
 
-Arşivlenmiş veya sabitlenmiş uyarılar gibi çeşitli kategorilere göre uyarıları görüntüleyebilirsiniz. Ya da bir IP veya MAC adresine dayalı uyarılar gibi ilgi uyarılarını arayabilirsiniz.  
+Arşivlenmiş veya sabitlenmiş uyarılar gibi çeşitli kategorilere göre uyarıları görüntüleyebilirsiniz. Ayrıca, bir IP veya MAC adresine dayalı uyarılar gibi ilgilendiğiniz uyarıları arayabilirsiniz.  
 
 Ayrıca, algılayıcı panosundan uyarıları görüntüleyebilirsiniz.
 
 Uyarıları görüntülemek için:
 
-- Yan menüden **Uyarılar** ' ı seçin. **Uyarılar** penceresi, sensörlerinizin algıladığı uyarıları görüntüler.
+- Yan menüden **Uyarılar** ' ı seçin. Uyarılar penceresi, sensörlerinizin algıladığı uyarıları görüntüler.
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="Uyarılar ekranının görünümü.":::
 
@@ -42,21 +42,21 @@ Uyarıları **Uyarı** ana görünümündeki çeşitli kategorilere göre görü
 
 ## <a name="search-for-alerts-of-interest"></a>İlgilendiğiniz uyarıları arayın
 
-**Uyarılar** ana görünümü, ilgilendiğiniz uyarıları bulmanıza yardımcı olmak için çeşitli arama özellikleri sağlar.
+Uyarılar ana görünümü, ilgilendiğiniz uyarıları bulmanıza yardımcı olmak için çeşitli arama özellikleri sağlar.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="Uyarılar öğrenme ekran görüntüsü.":::
 
-### <a name="text-search"></a>Metin arama 
+### <a name="text-search"></a>Metin arama
 
-Uyarıları metin, sayı veya karakter ile aramak için **ücretsiz arama** seçeneğini kullanın.
+Uyarıları metin, sayı veya karakter ile aramak için ücretsiz arama seçeneğini kullanın.
 
 Aramak için:
 
-- **Ücretsiz arama** alanına gerekli metni yazın ve klavyenizde Enter tuşuna basın.
+- Ücretsiz arama alanına gerekli metni yazın ve klavyenizde Enter tuşuna basın.
 
 Aramayı temizlemek için:
 
-- **Ücretsiz arama** alanındaki metni silin ve klavyenizde Enter tuşuna basın.
+- Ücretsiz arama alanındaki metni silin ve klavyenizde Enter tuşuna basın.
 
 ### <a name="device-group-or-device-ip-address-search"></a>Cihaz grubu veya cihaz IP adresi arama
 
@@ -100,7 +100,7 @@ Uyarı iletileri aşağıdaki eylemleri sağlar:
 
 - :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false":::Tüm uyarıları öğrenmek ve onaylamak için seçin.
 
-- :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false":::Uyarı listesini BIR CSV dosyasına aktarmak ve dışarı aktar seçeneğini belirlemek için seçin. Normal dışa aktarma-CSV seçeneği için **Uyarı dışarı aktarma** ' yı seçin. Ya da CSV dosyasındaki bir uyarıyla ilgili ek bilgiler için ayrı satırlar ekleme olasılığa yönelik **genişletilmiş uyarı dışarı aktarma** ' yı seçin.
+- :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false":::Uyarı bilgilerini bir. csv dosyasına dışarı aktarmak için seçin. Uyarı bilgilerini birden çok cihazı kaplayan her uyarı için ayrı satırlarda dışarı aktarmak için **genişletilmiş uyarı dışarı aktarma** seçeneğini kullanın.
 
 ## <a name="alert-pop-up-window-options"></a>Uyarı açılır penceresi seçenekleri
 

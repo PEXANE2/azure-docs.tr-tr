@@ -1,5 +1,5 @@
 ---
-title: IoT CLı komutları için Defender ile çalışma
+title: IoT CLI komutları için Defender ile çalışma
 description: Bu makalede, sensörlerde ve şirket içi yönetim konsollarında IoT CLı komutları için Defender açıklanır.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845256"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523150"
 ---
-# <a name="work-with-defender-for-iot-cli-commands"></a>IoT CLı komutları için Defender ile çalışma
+# <a name="work-with-defender-for-iot-cli-commands"></a>IoT CLI komutları için Defender ile çalışma
 
 Bu makalede algılayıcılar ve şirket içi yönetim konsolları için CLı komutları açıklanmaktadır. Komutlara Yöneticiler, Six kullanıcıları ve destek kullanıcıları erişilebilir.
 
@@ -103,13 +103,13 @@ Komutu içinde tanımlayabilmeniz gereken öznitelik, NTP sunucusunun IP adresid
 
 Aşağıdaki tabloda IoT için Azure Defender için ağ seçeneklerinizi yapılandırmak üzere kullanılabilecek komutlar açıklanmaktadır:
 
-|Ad|Komut|Açıklama|
+|Name|Komut|Açıklama|
 |-----------|-------|-----------|
 |Ping|`ping IP `| IoT Platformu için Defender dışındaki adreslere ping atar.|
 |Blink|`network blink`|Ağ yapılandırma parametrelerinin değiştirilmesini izin vermez.|
 |Ağı yeniden yapılandırın |`network edit-settings`| Ağ yapılandırma parametrelerinin değiştirilmesini izin vermez. |
 |Ağ ayarlarını göster |`network list`|Ağ bağdaştırıcısı parametrelerini görüntüler. |
-|Ağ yapılandırmasını doğrulama |`network validate` |Çıkış ağı ayarlarını gösterir. <br /> <br />Örnek: <br /> <br />Geçerli ağ ayarları: <br /> Arabirim: eth0 <br /> IP: 10.100.100.1 <br />alt ağ: 255.255.255.0 <br />Varsayılan ağ geçidi: 10.100.100.254 <br />DNS: 10.100.100.254 <br />arabirimleri izleme: eth1|
+|Ağ yapılandırmasını doğrulama |`network validate` |Çıkış ağı ayarlarını gösterir. <br /> <br />Örneğin: <br /> <br />Geçerli ağ ayarları: <br /> Arabirim: eth0 <br /> IP: 10.100.100.1 <br />alt ağ: 255.255.255.0 <br />Varsayılan ağ geçidi: 10.100.100.254 <br />DNS: 10.100.100.254 <br />arabirimleri izleme: eth1|
 |Sertifikayı içeri aktar |`certificate import FILE` |HTTPS sertifikasını içeri aktarır. Bir. CRT dosyasına yol gösteren tam yolu belirtmeniz gerekir \* . |
 |Tarihi göster |`date` |Ana bilgisayarda GMT biçiminde geçerli tarihi döndürür. |
 
@@ -254,7 +254,7 @@ Komutuyla aşağıdaki öznitelikleri kullanabilirsiniz `directions` :
 ## <a name="system-actions"></a>Sistem eylemleri
 Aşağıdaki tabloda, IoT için Defender içinde çeşitli sistem eylemleri gerçekleştirmek üzere kullanılabilecek komutlar açıklanmaktadır:
 
-|Ad|Kod|Açıklama|
+|Name|Kod|Açıklama|
 |----|----|-----------|
 |Konağı yeniden başlatın|`system reboot`|Konak cihazını yeniden başlatır.|
 |Konağı kapatma|`system shutdown`|Ana bilgisayarı kapatır.|
@@ -290,6 +290,6 @@ Aracı kullanırken:
 
 - DNS sunucunuz ve karşılık gelen IP adresi ile gereç etki alanı (sertifikada göründüğü gibi) ile onaylayın. 
     
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [IoT API algılayıcısı ve Yönetim Konsolu API 'Leri için Defender](references-work-with-defender-for-iot-apis.md)

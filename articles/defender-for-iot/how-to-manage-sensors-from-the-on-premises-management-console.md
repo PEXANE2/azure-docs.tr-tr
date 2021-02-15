@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624600"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523966"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Yönetim konsolundan algılayıcıları yönetme
 
@@ -72,7 +72,7 @@ Aynı anda birden fazla algılayıcıları şirket içi yönetim konsolundan gü
 
 Birkaç sensöri güncelleştirmek için:
 
-1. [Azure portalına](https://portal.azure.com/) gidin.
+1. [Azure Portal](https://portal.azure.com/) gidin.
 
 2. IoT için Azure Defender 'a gidin.
 
@@ -144,7 +144,7 @@ Bağlantısı kesilen algılayıcılar hakkında bilgi içeren üçüncü tarafl
 
 Algılayıcılar, IoT motorları için beş Defender tarafından korunur. Bağlı sensörler için altyapıları etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-| Altyapı | Description | Örnek senaryo |
+| Altyapı | Açıklama | Örnek senaryo |
 |--|--|--|
 | Protokol ihlali altyapısı | Paket yapısı veya alan değerleri protokol belirtimine uymadığında protokol ihlali oluşur. | "Geçersiz MODBUS Işlemi (Işlev kodu sıfır)" uyarısı. Bu uyarı, birincil bir cihazın bir ikincil cihaza 0 işlev koduna sahip bir istek gönderdiğini gösterir. Bu, protokol belirtimine göre kullanılamaz ve ikincil cihaz girişi doğru şekilde işleyemeyebilir. |
 | İlke ihlali altyapısı | Öğrenilen veya yapılandırılan ilkede tanımlanan taban çizgisi davranışından sapmayla bir ilke ihlali meydana gelir. | "Yetkisiz HTTP Kullanıcı Aracısı" uyarısı. Bu uyarı, ilke tarafından öğrenilen veya onaylanan bir uygulamanın bir cihazda HTTP istemcisi olarak kullanıldığını belirtir. Bu, bu cihazdaki yeni bir Web tarayıcısı veya uygulama olabilir. |
@@ -315,6 +315,6 @@ Bir SMB sunucusu ayarlamak için, bir dış sürücüye bir algılayıcı yedekl
 
 9. `Backup.shared_location`Olarak ayarlayın `<backup_folder_name_on_cyberx_server>` .
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Algılayıcıları ayrı ayrı yönetme](how-to-manage-individual-sensors.md)

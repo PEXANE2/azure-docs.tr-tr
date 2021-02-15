@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379718"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522215"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Diğer yazarlarla ve düzenleyicilerle işbirliği yapın
 
@@ -25,7 +25,7 @@ Bu Azure RBAC özelliği şunları içerir:
 * Denetim, Bilgi Bankası düzeyinde değil kaynak düzeyinde olduğundan, kaynak içindeki tüm bilgi bankalarına yazar ve düzenleyiciler hızlıca ekleyin.
 
 > [!NOTE]
-> AR aktardığınızda kaynak için özel bir alt etki alanı eklediğinizden emin olun. [Özel alt etki alanı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) varsayılan olarak bulunmalı, ancak yoksa, lütfen ekleyin
+> Kaynak için özel bir alt etki alanı eklediğinizden emin olun. [Özel alt etki alanı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) varsayılan olarak bulunmalı, ancak yoksa, lütfen ekleyin
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Erişim, tanımlı bir rol tarafından sağlanır
 

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9e4fea52f56da9f2e84746daf0121df0b4355411
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778929"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375961"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere PowerShell 'i kullanma
 
@@ -60,8 +60,10 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 Bir güvenlik sorumlusuna Azure rolü atamak için [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment) komutunu kullanın. Komutun biçimi atamanın kapsamına göre farklılık gösterebilir. Komutu çalıştırmak için, ilgili kapsamda sahip veya katkıda bulunan rolü atanmış olması gerekir. Aşağıdaki örneklerde, bir kullanıcıya çeşitli kapsamlardaki bir rol atama gösterilmektedir, ancak herhangi bir güvenlik sorumlusuna rol atamak için aynı komutu kullanabilirsiniz.
 
-> [!NOTE]
-> Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
+> [!IMPORTANT]
+> Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Veri erişimi için kendinize doğrudan bir Azure RBAC rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
+>
+> Depolama hesabı bir Azure Resource Manager salt okuma kilidi ile kilitliyse kilit, depolama hesabı kapsamındaki Azure RBAC rollerinin veya bir veri kapsayıcısının (blob kapsayıcısı veya kuyruğu) atanmasını engeller.
 
 ### <a name="container-scope"></a>Kapsayıcı kapsamı
 
@@ -141,4 +143,4 @@ New-AzRoleAssignment -SignInName <email> `
 
 - [Azure PowerShell modülünü kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md)
 - [Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma](storage-auth-aad-rbac-cli.md)
-- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](storage-auth-aad-rbac-portal.md)
+- [Azure portalı kullanarak blob ve kuyruk verilerine erişim için Azure rolü atama](storage-auth-aad-rbac-portal.md)

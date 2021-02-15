@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bfec05935b4cbe5c3c4495f7c261bd34bc0a0032
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500249"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522181"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure İzleyici iş ortağı tümleştirmeleri
 
@@ -275,6 +275,24 @@ SıGNL4-işlem ekipleri için mobil uyarı uygulaması-Azure Izleyici 'den doğr
 
 [SıGNL4 belgeleri](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
+## <a name="site24x7"></a>Site24x7
+
+![Site24x7 logosu](./media/partners/site24-7.png)
+
+Site24x7, uygulama sahiplerinin performans sorunlarını hızla algılamasına, hata çözümlemesini otomatikleştirmesine ve performanslarını en iyi hale getirmesine olanak tanımak için gelişmiş ve tam yığın Azure izleme çözümü sağlar.
+Site24x7 Azure Izleme ile şunları yapabilirsiniz:
+
+* 100 ' den fazla Azure IaaS ve PaaS hizmetini izleyin.
+* Azure Market 'ten doğrudan Azure uzantıları olan Windows ve Linux VM 'Leri için derinlemesine izleme sağlayın.
+* Azure 'daki günlüklerde Öngörüler içeren uygulamalarla ilgili sorunları giderin. Günlükleri Site24x7 'e gönderme, arama sorgularını kaydetme, sorgu tabanlı Uyarılar ayarlama ve Azure günlüklerini tek bir panodan yönetme.
+* Hizmet sistem durumu sorunlarını tespit edin ve Azure Deployment Manager (ADM) sistem durumu denetimi aracılığıyla güvenilir dağıtımlar sağlayın.
+* Bir dizi BT Otomasyonu araçlarıyla hata çözümlemesini otomatikleştirin.
+* SQL, Exchange, Active Directory, Office 365, IIS ve Hyper-V uygulamaları dahil olmak üzere tam Microsoft ekokürenin tamamını izleyin.
+* Microsoft ekipleri, Pagerharcı, Zapier ve daha fazlası gibi üçüncü taraf hizmetlerle sorunsuz bir şekilde tümleştirin.
+
+[Site 7/24 belge](https://www.site24x7.com/)
+
+
 ## <a name="solarwinds"></a>SolarWinds
 
 [SolarWinds belgeleri](https://www.solarwinds.com/topics/azure-monitoring)
@@ -323,7 +341,7 @@ Azure Izleyici 'yi Azure Olay Hub 'ına yönlendirmek için Azure Izleyici 'yi k
 | ArcSight | Hayır | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
 | Syslog sunucusu | Hayır | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
 | Logrhythd | Hayır| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
-|Logz.io | Evet | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
+|Logz.io | Yes | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c3ad521e2932ee45b557217c68be2c78efb21b5d
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 83927e04644bd07dfdf8be64c315cc6571dab13a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558057"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097624"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -19,4 +19,4 @@ ms.locfileid: "99558057"
 |[Aynı konumdaki mevcut bir kurtarma hizmetleri kasasında verilen bir etikete sahip VM 'lerde yedeklemeyi yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F345fa903-145c-4fe1-8bcd-93ec2adccde8) |Tüm sanal makineler için yedeklemeyi, sanal makineyle aynı konumdaki ve abonelikteki mevcut bir merkezi kurtarma hizmetleri kasasına yedekleyerek zorunlu tutun. Bu, kuruluşunuzda bir abonelikteki tüm kaynaklar için yedeklemeleri yönetirken merkezi bir ekip olduğunda faydalıdır. Atama kapsamını denetlemek için isteğe bağlı olarak belirtilen bir etiketi içeren sanal makineler ekleyebilirsiniz. Bakýn [https://aka.ms/AzureVMCentralBackupIncludeTag](https://aka.ms/AzureVMCentralBackupIncludeTag) |deployIfNotExists, Auditınotexists, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineWithTag_Backup_Deploy.json) |
 |[Belirtilen bir etiketi olmayan VM 'lerde yedeklemeyi varsayılan ilkeyle yeni bir kurtarma hizmetleri kasasına yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86) |Sanal makineyle aynı konuma ve kaynak grubuna bir kurtarma hizmetleri Kasası dağıtarak tüm sanal makineler için yedeklemeyi zorunlu tutun. Bu işlem, kuruluşunuzdaki farklı uygulama ekiplerine ayrı kaynak grupları tahsis edildiğinde ve kendi yedeklemelerini yönetmesi ve geri yüklemeleri gerektiğinde faydalıdır. Atamanın kapsamını denetlemek için, belirtilen bir etiketi içeren sanal makineleri isteğe bağlı olarak dışlayabilirsiniz. Bakýn [https://aka.ms/AzureVMAppCentricBackupExcludeTag](https://aka.ms/AzureVMAppCentricBackupExcludeTag) |deployIfNotExists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithOutTag.json) |
 |[Aynı konumdaki mevcut bir kurtarma hizmetleri kasasında verilen bir etiketi olmayan VM 'lerde yedeklemeyi yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F09ce66bc-1220-4153-8104-e3f51c936913) |Tüm sanal makineler için yedeklemeyi, sanal makineyle aynı konumdaki ve abonelikteki mevcut bir merkezi kurtarma hizmetleri kasasına yedekleyerek zorunlu tutun. Bu, kuruluşunuzda bir abonelikteki tüm kaynaklar için yedeklemeleri yönetirken merkezi bir ekip olduğunda faydalıdır. Atamanın kapsamını denetlemek için, belirtilen bir etiketi içeren sanal makineleri isteğe bağlı olarak dışlayabilirsiniz. Bakýn [https://aka.ms/AzureVMCentralBackupExcludeTag](https://aka.ms/AzureVMCentralBackupExcludeTag) |deployIfNotExists, Auditınotexists, devre dışı |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineBackup_Backup_DeployIfNotExists.json) |
-|[Kaynak özel kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc717fb0c-d118-4c43-ab3d-ece30ac81fb3) |Kaynağa özgü kategoriler için Log Analytics çalışma alanına akışa yönelik kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın. Kaynağa özgü kategorilerden herhangi biri etkinleştirilmemişse, yeni bir tanılama ayarı oluşturulur. |deployIfNotExists |[1.0.1-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/EnableRecoveryServiceVaultDiagnosticSetting_Backup_DeployIfNotExist.json) |
+|[Kaynak özel kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc717fb0c-d118-4c43-ab3d-ece30ac81fb3) |Kaynağa özgü kategoriler için Log Analytics çalışma alanına akışa yönelik kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın. Kaynağa özgü kategorilerden herhangi biri etkinleştirilmemişse, yeni bir tanılama ayarı oluşturulur. |deployIfNotExists |[1.0.2-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/EnableRecoveryServiceVaultDiagnosticSetting_Backup_DeployIfNotExist.json) |

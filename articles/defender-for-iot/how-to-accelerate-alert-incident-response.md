@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 14d7a0de1cd29b8c07f90c759a4d423d7186fdb9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 64e81e246ec62c8995d0e31629b4f21a2c1096b0
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841731"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522555"
 ---
 # <a name="accelerate-alert-workflows"></a>Uyarı iş akışlarını hızlandırma
 
@@ -48,7 +48,7 @@ Uyarı açıklamaları eklemek için:
 
 3. Yorum **Ekle** kutusuna açıklama metnini girin. En fazla 50 karakter kullanın. Virgüller izin verilmez.
 
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="accelerate-incident-workflows-by-using-alert-groups"></a>Uyarı gruplarını kullanarak olay iş akışlarını hızlandırma
 
@@ -70,11 +70,11 @@ Uyarı grupları, aşağıdaki iş ortağı çözümleri için iletme kuralları
 
 Uyarı grubu, desteklenen iş ortağı çözümlerinde aşağıdaki öneklerle görüntülenir:
 
-  - QRadar, Arcgörüş, syslog CEF, syslog LEEF için **kedi**
+- QRadar, Arcgörüş, syslog CEF, syslog LEEF için **kedi**
 
-  - Syslog metin iletileri için **Uyarı grubu**
+- Syslog metin iletileri için **Uyarı grubu**
 
-  - Syslog nesneleri için **alert_group**
+- Syslog nesneleri için **alert_group**
 
 Bu alanlar, uyarı grubu adını göstermek için iş ortağı çözümünde yapılandırılmalıdır. Bir uyarı grubuyla ilişkili bir uyarı yoksa, iş ortağı çözümündeki alanı **na** görüntülenir.
 
@@ -85,18 +85,36 @@ Aşağıdaki uyarı grupları otomatik olarak tanımlanmıştır:
 |--|--|--|
 | Olağan dışı iletişim davranışı | Özel uyarılar | Uzaktan erişim |
 | Olağan dışı HTTP iletişim davranışı | Bulma | Yeniden başlatma ve durdurma komutları |
-| Kimlik doğrulaması | Üretici yazılımı değişikliği | Tarama |
+| Kimlik Doğrulaması | Üretici yazılımı değişikliği | Tarama |
 | Yetkisiz iletişim davranışı | Geçersiz komutlar | Algılayıcı trafiği |
 | Bant genişliği bozukluklar | İnternet erişimi | Kötü amaçlı yazılımın şüphesi |
 | Arabellek taşması | İşlem sorunları | Kötü amaçlı şüphesi etkinliği |
 | Komut sorunları | İşletim sorunları |  |
 | Yapılandırma değişiklikleri | Program |  |
 
-Uyarı grupları önceden tanımlanmıştır. Uyarı gruplarıyla ilişkili uyarılar ve özel uyarı grupları oluşturma hakkında daha fazla bilgi için [Microsoft desteği](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)başvurun.
+Uyarı grupları önceden tanımlanmıştır. Uyarı gruplarıyla ilişkili uyarılar ve özel uyarı grupları oluşturma hakkında daha fazla bilgi için [Microsoft desteği](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099)başvurun.
 
 ## <a name="customize-alert-rules"></a>Uyarı kurallarını özelleştirme
 
-Tek tek sensörların algılamadığı bilgileri temel alarak özel uyarı kuralları ekleyebilirsiniz. Örneğin, bir algılayıcı kaynak IP, hedef IP veya komuta (bir protokol içinde) göre bir uyarı tetiklemesine yönlendiren bir kural tanımlayın. Algılayıcı kuralda tanımlanan trafiği algıladığında bir uyarı veya olay oluşturulur.
+Özellikle ilgilendiğiniz etkinlikleri daha fazla belirtmek için özel uyarı kurallarını kullanın. 
+
+Temelinde özel uyarı kuralları ekleyebilirsiniz:
+
+- Bir kategori, örneğin protokol, bağlantı noktası veya dosya.
+- Kaynak ve hedef adresleri
+- Seçilen kategoriye dayalı bir koşul, örneğin, bir protokol, bir dosya adı, bağlantı noktası veya aktarım numarası ile ilişkili bir işlev.
+- Tarih ve saat başvurusuna dayalı bir koşul, örneğin belirli bir günde veya günün belirli bir bölümünde bir algılama yapılırsa.
+
+Algılayıcı kuralda açıklanan etkinliği algılarsa, uyarı gönderilir.
+ayrı sensörların algılamadığı bilgiler. Örneğin, bir algılayıcı kaynak IP, hedef IP veya komuta (bir protokol içinde) göre bir uyarı tetiklemesine yönlendiren bir kural tanımlayın. Algılayıcı kuralda tanımlanan trafiği algıladığında bir uyarı veya olay oluşturulur.
+
+Ayrıca, Defender 'ın IoT için şunu kullanmasını istemek üzere uyarı kuralı eylemleri de kullanabilirsiniz:
+
+- Kullanıcıların uyarıdan PCAP dosyasına erişmesine izin verin.
+- Uyarı önem derecesi atayın.
+- Uyarı yerine bir olay oluşturun. Algılanan bilgiler olay zaman çizelgesinde görüntülenir.
+
+:::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="Kullanıcı tanımlı bir kural gösteren ekran görüntüsü.":::
 
 Uyarı iletisi Kullanıcı tanımlı bir kuralın uyarıyı tetiklediğini belirtir.
 
@@ -106,24 +124,24 @@ Uyarı iletisi Kullanıcı tanımlı bir kuralın uyarıyı tetiklediğini belir
 
 1. Bir sensörin yan menüsünde **özel uyarılar** ' ı seçin.
 1. **+** Bir kural oluşturmak için artı işaretini () seçin.
-
-   :::image type="content" source="media/how-to-work-with-alerts-sensor/user-defined-rule.png" alt-text="Kullanıcı tanımlı bir kural gösteren ekran görüntüsü.":::
-
 1. Bir kural adı tanımlayın.
 1. **Kategoriler** bölmesinden bir kategori veya protokol seçin.
 1. Belirli bir kaynak ve hedef IP veya MAC adresi tanımlayın veya herhangi bir adres seçin.
-1. Koşul ekleyin. Koşulların ve özelliklerinin bir listesi her kategori için benzersizdir. Her uyarı için birden fazla koşul seçebilirsiniz.
-1. Kuralın bir **alarm** veya **olay** tetikleyip tetiklemeyeceğini belirtir.
-1. Uyarıya önem düzeyi atayın.
-1. Uyarının PCAP dosyası dahil edileceğini belirtin.
+1. Bir veya birkaç kural koşulu tanımlayın. İki koşul kategorisi oluşturulabilir:
+    - Seçili Kategori ile ilişkili benzersiz değerlere dayanan koşullar. Ekle ' yi seçin ve değerleri tanımlayın.
+    - Etkinliğin ne zaman algılandığına göre koşullar. Algılamalar bölümünde, uyarının gönderilmesi için algılanabilmesi gereken zaman aralığını ve günü seçin. Etkinlik her zaman, çalışma saatleri sırasında veya sonrasında algılanırsa uyarıyı gönderilmesini seçebilirsiniz. Defender 'ı kuruluşunuz için IoT çalışma saatleri için bildirmek üzere çalışma saatlerini tanımla seçeneğini kullanın.
+1. Kural eylemlerini tanımla: 
+    - Kuralın bir **alarm** veya **olay** tetikleyip tetiklemeyeceğini belirtir.
+    - Uyarıya önem düzeyi atayın.
+    - Uyarının PCAP dosyası dahil edileceğini belirtin.
 1. **Kaydet**’i seçin.
 
 Kural, temel kural parametrelerini, kuralın en son tetiklendiği zamanı ve daha fazlasını gözden geçirebileceğiniz **özelleştirilmiş uyarı kuralları** listesine eklenir. Ayrıca, kuralı listeden etkinleştirebilir ve devre dışı bırakabilirsiniz.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/customized-alerts-screen.png" alt-text="Kullanıcı tarafından eklenen özelleştirilmiş kuralın ekran görüntüsü.":::
 
-### <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-[Uyarılarda belirtilen bilgileri görüntüle](how-to-view-information-provided-in-alerts.md)
+[Uyarlarda verilen bilgileri görüntüleme](how-to-view-information-provided-in-alerts.md)
 
 [Uyarı olayını yönetme](how-to-manage-the-alert-event.md)

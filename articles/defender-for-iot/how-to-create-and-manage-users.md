@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977022"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522351"
 ---
 # <a name="about-defender-for-iot-console-users"></a>IoT konsol kullanıcıları için Defender hakkında
 
@@ -265,7 +265,7 @@ Kullanıcının algılayıcıdaki parolasını sıfırlamak için:
 
 1. **Güncelleştir**’i seçin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 Algılayıcıyı etkinleştirme ve [ayarlama](how-to-activate-and-set-up-your-sensor.md) 
  Şirket [içi yönetim konsolunuzu](how-to-activate-and-set-up-your-on-premises-management-console.md) 

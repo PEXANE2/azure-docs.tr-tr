@@ -4,12 +4,12 @@ description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333316"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521926"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -77,9 +77,9 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     ![Ekran görüntüsü "ıbizaaiextension" öğesinden sonra virgül ekler ve "Disableipmaskeleme" ile aşağıya yeni bir satır ekler: true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Şöyle bir hata yaşarsanız: ** _kaynak grubu, şablondaki bir veya daha fazla kaynak tarafından desteklenmeyen bir konumda. Lütfen farklı bir kaynak grubu seçin._** Geçici olarak, açılan listeden farklı bir kaynak grubu seçin ve ardından hatayı çözümlemek için özgün kaynak grubunuzu yeniden seçin.
+    > Şöyle bir hata yaşarsanız: **_kaynak grubu, şablondaki bir veya daha fazla kaynak tarafından desteklenmeyen bir konumda. Lütfen farklı bir kaynak grubu seçin._** Geçici olarak, açılan listeden farklı bir kaynak grubu seçin ve ardından hatayı çözümlemek için özgün kaynak grubunuzu yeniden seçin.
 
-5. Satın **almayı kabul ediyorum**' u seçin  >  **Purchase**. 
+5. Satın **almayı kabul ediyorum**' u seçin  >  . 
 
     !["Satın al" sözcüğünün kırmızı renkle vurgulanmış bir düğmenin üzerinde kırmızı renkle vurgulanmış "kelimeyle belirtilen hüküm ve koşulları kabul ediyorum" sözcüklerini içeren onay kutusu işaretlendi.](media/ip-collection/purchase.png)
 
@@ -99,7 +99,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     
     Sonuç olarak bir özellik listesi döndürülecek. Özelliklerden biri okunmalıdır `DisableIpMasking: true` . Yeni özelliği Azure Resource Manager dağıtım öncesinde PowerShell 'i çalıştırırsanız, özellik yok.
 
-### <a name="rest-api"></a>REST API 'SI
+### <a name="rest-api"></a>Rest API
 
 Aynı değişiklikleri yapmak için [REST API](/rest/api/azure/) yükü aşağıdaki gibidir:
 
@@ -241,7 +241,7 @@ requests
 
 Yeni toplanan IP adresleri `customDimensions_client-ip` sütununda görüntülenir. Varsayılan sütunda, her `client-ip` dört sekizli de sıfırlanacaktır. 
 
-Localhost 'tan test ediliyorsa ve değeri `customDimensions_client-ip` ise `::1` , bu değer beklenen davranıştır. `::1` IPv6 'daki geri döngü adresini temsil eder. Bu `127.0.01` , IPv4 ile eşdeğerdir.
+Localhost 'tan test ediliyorsa ve değeri `customDimensions_client-ip` ise `::1` , bu değer beklenen davranıştır. `::1` IPv6 'daki geri döngü adresini temsil eder. Bu `127.0.0.1` , IPv4 ile eşdeğerdir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -216,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama
               href: azure-to-azure-replicate-after-migration.md
-            - name: Bölgeden bölgeye olağanüstü durum kurtarma
+        - name: Bölgeden bölgeye olağanüstü durum kurtarma
+          items:
+            - name: Bölge içindeki bölgeler arasında çoğaltmayı etkinleştirme
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Yönetme
           items:

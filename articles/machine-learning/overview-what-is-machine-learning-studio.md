@@ -8,12 +8,13 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+adobe-target: true
+ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677623"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374244"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -35,7 +36,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Studio, tür projesine ve kullanıcı deneyiminin düzeyine bağlı olarak birden çok yazma deneyimi sunar.
 
-+ **Notebooks**
++ **Not Defterleri**
 
   Doğrudan Studio 'da tümleştirilmiş olan yönetilen [Jupyter Notebook sunucularında](how-to-run-jupyter-notebooks.md) kendi kodunuzu yazın ve çalıştırın. 
 
@@ -87,7 +88,7 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
+| Özellik | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
 | Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](https://github.com/Azure/azureml-sdk-for-r) SDK 'leriyle tamamen tümleşik |

@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aef4ff77eb02723bcd95dcc99a55094bd10acd4c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365455"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği davetini sıfırlama
 
 Bu makalede, konuk kullanıcıların kaynaklarınızda ve iletişim kurdukları onay sürecinde erişebileceği yollar açıklanmaktadır. Konuğa bir davet e-postası gönderirseniz, davet, konuğun uygulamanıza veya portala erişim sağlamak için yararlanana bir bağlantı içerir. Davet e-postası, konuklarınızın kaynaklarınıza erişebileceği yollarla yalnızca biridir. Alternatif olarak, dizininize Konuk ekleyebilir ve paylaşmak istediğiniz portalın ya da uygulamanın doğrudan bağlantısını sağlayabilirsiniz. Konukların, kullandıkları yöntemden bağımsız olarak, bir ilk kez onay süreci aracılığıyla yapılır. Bu işlem, konukların gizlilik koşullarını kabul etmesini ve ayarlamış olduğunuz tüm [kullanım koşullarını](../conditional-access/terms-of-use.md) kabul etmesini sağlar.
 
@@ -26,7 +26,7 @@ Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının b
 
    > [!IMPORTANT]
    > - **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
-   > - Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > - Microsoft, **2021 Ekim 'Den itibaren**, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="redemption-through-the-invitation-email"></a>Davet e-postası üzerinden ödeme
 

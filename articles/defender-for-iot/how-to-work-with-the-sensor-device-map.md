@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509057"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523847"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Cihaz eşlemesindeki algılayıcı algılamalarını araştırın
 
@@ -709,6 +709,6 @@ Dışarı aktarmak için:
 
 1. Dışarı aktarma seçeneği belirleyin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bir cihaz envanterinde algılayıcı algılamalarını araştırın](how-to-investigate-sensor-detections-in-a-device-inventory.md)

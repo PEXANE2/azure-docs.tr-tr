@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508752"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523932"
 ---
 # <a name="manage-alert-events"></a>Uyarı olaylarını yönetme
 
@@ -23,7 +23,8 @@ Uyarı olaylarını yönetmek için aşağıdaki seçenekler kullanılabilir:
  | **Learn** | Algılanan olayı Yetkilendir. Daha fazla bilgi için bkz. [öğrenme ve öğrenme olayları hakkında](#about-learning-and-unlearning-events). |
  | **Kabul et** | Algılanan olay için uyarıyı bir kez gizleyin. Olay tekrar algılanırsa uyarı tekrar tetiklenir. Daha fazla bilgi için bkz. bildirimleri ele [ve geri bildirimleri kaldırma hakkında](#about-acknowledging-and-unacknowledging-events). |
  | **Mikrofon** | Aynı cihazlarla ve karşılaştırılabilir trafikle etkinlikleri sürekli olarak yoksayın. Daha fazla bilgi için bkz. for [hareketlerle ve Unmuting olayları](#about-muting-and-unmuting-events). |
-
+ 
+Uyarı bilgilerini de dışarı aktarabilirsiniz.
 ## <a name="about-learning-and-unlearning-events"></a>Öğrenme ve öğrenimi olmayan olaylar hakkında
 
 Öğrenilen ağın sapmalarını gösteren olaylar geçerli ağ değişikliklerini yansıtabilir. Örneklerde, ağa katılmış veya yetkili bir bellenim güncelleştirmesine katılmış yeni bir yetkili cihaz bulunabilir.
@@ -68,9 +69,9 @@ Bu durumlarda öğrenimi yoktur. Öğrenme gerçekleştirilemiyor ve riskleri ve
 > [!NOTE] 
 > Bir internet cihazının kaynak veya hedef olarak tanımlandığı olayları sessize alamazsınız.
 
-### <a name="what-traffic-is-muted"></a>Hangi trafik kapalı?
+### <a name="what-alert-activity-is-muted"></a>Hangi uyarı etkinliği kapalı?
 
-Kapalı bir senaryo, ağ cihazlarını ve bir olay için algılanan trafiği içerir. Uyarı başlığı, kapalı olan trafiği açıklar.
+Bir kapalı senaryo, bir olay için algılanan ağ cihazlarını ve trafiği içerir. Uyarı başlığı, kapalı olan trafiği açıklar.
 
 Kapalı durumda olan cihaz veya cihazlar, uyarıda bir görüntü olarak görüntülenir. İki cihaz gösterilirse, aralarında uyarı verilen belirli trafik kapalı olur.
 
@@ -106,6 +107,25 @@ Bir olay kapalı olduğunda, kaynağın hedefe bakılmaksızın geçersiz içeri
 
 2. Sesinin kapalı olup olmadığını görmek için bir uyarının üzerine gelin.  
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="export-alert-information"></a>Uyarı bilgilerini dışarı aktar
+
+Uyarı bilgilerini bir. csv dosyasına aktarın. Filtrelenmiş görünüme göre algılanan tüm uyarıların veya dışarı aktarma bilgilerinin bilgilerini dışarı aktarabilirsiniz. Aşağıdaki bilgiler verilir:
+
+- Kaynak adres
+- Hedef adres
+- Uyarı başlığı
+- Uyarı önem derecesi
+- Uyarı iletisi
+- Ek bilgiler
+- Onaylanan durum
+- PCAP kullanılabilirliği
+
+Dışarı aktarmak için:
+
+1. Yan menüden Uyarılar ' ı seçin.
+1. Export (Dışarı aktar) öğesini seçin.
+1. Birden çok cihazı içeren her uyarı için uyarı bilgilerini ayrı satırlarda dışarı aktarmak için genişletilmiş uyarıları dışarı aktar ' ı seçin. Genişletilmiş uyarıları dışa aktarma seçildiğinde,. csv dosyası her satırdaki benzersiz öğelerle birlikte uyarı olayının yinelenen bir satırını oluşturur. Bu seçeneğin kullanılması, dışarıya aktarılmış uyarı olaylarını araştırmanızı kolaylaştırır.
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Hangi trafiğin izleneceğini denetleme](how-to-control-what-traffic-is-monitored.md)

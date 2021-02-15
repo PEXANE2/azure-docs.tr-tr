@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625273"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364843"
 ---
 # <a name="chat-client-library-overview"></a>Sohbet istemci kitaplığına genel bakış
 
@@ -44,7 +44,7 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 |                   | Bir üye sohbet iş parçacığına etkin bir ileti yazarken yazma bildirimleri gönderme ve alma <br/> *Sohbet iş parçacığında 20 ' den fazla üye varsa kullanılamaz*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Sohbet iş parçacığında tüm iletileri al <br/> *Desteklenen Unicode emojıs*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | İleti içeriğinin bir parçası olarak emojıs gönder                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Gerçek zamanlı sinyal (özel sinyal paketiyle etkinleştirilir)| Bir Kullanıcı bir sohbet iş parçacığında bir üyesi olan yeni bir ileti aldığında bildirim alın                                     | ✔️   | ❌    | ❌  | ❌  |
+|Gerçek zamanlı sinyal (özel sinyal paketi tarafından etkin * *)| Bir Kullanıcı bir sohbet iş parçacığında bir üyesi olan yeni bir ileti aldığında bildirim alın                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Bir kullanıcının üyesi olduğu bir sohbet iş parçacığında başka bir üye tarafından bir ileti düzenlendiğinde bildirim alın                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Bir kullanıcının üyesi olduğu bir sohbet iş parçacığında başka bir üye tarafından bir ileti silindiğinde bildirim alın                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Başka bir sohbet iş parçacığı üyesi yazıldığında bildirim alın                                                             | ✔️   | ❌    | ❌    | ❌  |
@@ -53,6 +53,8 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 | İzleme        | Gönderilen ileti koşullarına göre kullanımı izleme                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Uygulamanız tarafından yapılan API isteklerinin kalitesini ve durumunu izleyin ve uyarıları Portal aracılığıyla yapılandırın                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Ek özellikler | Akıllı Özellikler *dil çevirisi 'ni, bir istemcideki gelen iletinin yaklaşım analizini &, üye kulakça bir ileti oluşturmak üzere konuşmayı metne dönüştürmeye, vb.* sağlamak için sohbet istemci kitaplığı ile birlikte [bilişsel hizmetler API'si](../../../cognitive-services/index.yml) kullanın.                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+* * Özel sinyal paketi Web Yuvaları kullanılarak uygulanır. Web Yuvaları desteklenmiyorsa uzun yoklamaya geri dönüş yapılır.
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından JavaScript chat istemci kitaplığı desteği
 

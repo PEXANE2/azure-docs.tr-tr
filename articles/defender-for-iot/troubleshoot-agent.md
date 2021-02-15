@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941083"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522963"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Güvenlik aracısı sorun giderme kılavuzu (Linux)
 
@@ -108,10 +108,4 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmetine [genel bakış](overview.md) Için Defender 'ı okuyun
-- IoT [mimarisi](architecture.md) için Defender hakkında daha fazla bilgi edinin
-- IoT [hizmeti](quickstart-onboard-iot-hub.md) Için Defender 'ı etkinleştirin
-- IoT hizmeti için Defender 'ı okuyun [SSS](resources-frequently-asked-questions.md)
-- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
-- [Önerileri](concept-recommendations.md) anlama
-- Güvenlik [uyarılarını](concept-security-alerts.md) anlama
+IoT [hizmeti Için](resources-frequently-asked-questions.md) Defender 'ı okuyun [genel bakış](overview.md) for IoT [mimarisi](architecture.md) hakkında daha fazla bilgi edinin IoT için Defender ['ı okuyun IoT hizmeti için](quickstart-onboard-iot-hub.md) Defender [](how-to-security-data-access.md) [](concept-recommendations.md) [](concept-security-alerts.md)

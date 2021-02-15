@@ -210,6 +210,8 @@
                       href: connect-zscaler.md
                 - name: 3. ADIM Bağlantıyı doğrulama
                   href: connect-cef-verify.md
+        - name: Özel Bağlayıcılar oluşturma
+          href: create-custom-connector.md
         - name: Tehdit zekasını bağlama
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
@@ -255,8 +257,6 @@
           href: hunting-with-rest-api.md
         - name: REST API ile Watchlists yönetme
           href: watchlist-with-rest-api.md
-    - name: Azure Izleyici veri başvurusu
-      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel Logic Apps bağlayıcısı
       href: /connectors/azuresentinel/
     - name: Ağ normalleştirme şeması
@@ -275,8 +275,6 @@
   items:
     - name: Yararlı kaynaklar
       href: resources.md
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
       href: /archive/blogs/azuresecurity/
     - name: Bölgesel kullanılabilirlik

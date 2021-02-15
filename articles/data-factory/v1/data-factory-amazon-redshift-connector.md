@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak Amazon Redshift 'tan veri taşıma
 description: Azure Data Factory kopyalama etkinliğini kullanarak Amazon Redshift 'tan veri taşımayı öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463079"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377559"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -38,7 +33,7 @@ Data Factory Şu anda yalnızca Amazon Redshift 'ten [desteklenen bir havuz veri
 * Verileri şirket içi veri deposuna taşıyorsanız, şirket içi bir makineye [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) yükleyebilirsiniz. Şirket içi makine IP adresini kullanarak Amazon Redshift kümesine bir ağ geçidi için erişim izni verin. Yönergeler için bkz. [kümeye erişim yetkisi verme](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Verileri bir Azure veri deposuna taşımak için, [Microsoft Azure veri merkezleri tarafından kullanılan Işlem IP adresi ve SQL aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)bakın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar ve API 'Ler kullanarak bir Amazon Redshift kaynağından veri taşımak için kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu Azure Data Factory kopyalama Sihirbazı ' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için, bkz [: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
@@ -61,12 +56,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **AmazonRedshift** olarak ayarlanmalıdır. |Evet |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| **türüyle** |Bu özellik **AmazonRedshift** olarak ayarlanmalıdır. |Yes |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
-| **parola** |Kullanıcı hesabının parolası. |Evet |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
+| **parola** |Kullanıcı hesabının parolası. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -87,7 +82,7 @@ Kopyalama etkinliği için, kaynak **AmazonRedshiftSource** türünde olduğunda
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
+| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | No |
 | **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey** türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 | **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 
@@ -339,7 +334,7 @@ Kopyalama etkinliği verileri bir Amazon Redshift türünden .NET türüne dön�
 | CHAR |Dize |
 | VARCHAR |Dize |
 | DATE |DateTime |
-| ILIŞKIN |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805674"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522521"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Algılayıcınızı etkinleştirme ve ayarlama
 
@@ -44,7 +44,7 @@ Algılayıcı konsolunda oturum açmadan önce yönetici kullanıcıların eriş
 
 Sensörizin belirli bir yönetim modunda IoT için Azure Defender eklendi:
 
-| Mod türü | Description |
+| Mod türü | Açıklama |
 |--|--|
 | **Buluta bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Uyarı bilgileri de IoT Hub 'ı aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle paylaşılabilir. |
 | **Yerel olarak bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Algılama bilgileri, algılayıcı kendisine bağlıysa şirket içi yönetim konsolu ile de paylaşılır. |
@@ -177,7 +177,7 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Gezinti** 
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 | -----------|--|--|
 | Pano | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Ağın güvenlik durumunun sezgisel bir anlık görüntüsünü görüntüleyin. |
 | Cihaz Haritası | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Bir haritadaki ağ cihazlarını, cihaz bağlantılarını ve cihaz özelliklerini görüntüleyin. Ağınızı göstermek için çeşitli yakınlaştırmaları, vurgu ve filtreleme seçenekleri mevcuttur. |
@@ -187,13 +187,13 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Çözümlemeleri**
 
-| Pencere| Simge | Description |
+| Pencere| Simge | Açıklama |
 |---|---|---|
 | Olay zaman çizelgesi | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Uyarılar, ağ olayları (bilgilendirici) ve Kullanıcı oturumu açma ve Kullanıcı silmeleri gibi kullanıcı işlemleri hakkında bilgi içeren bir zaman çizelgesi görüntüleyin.|
 
 **Gezinti**
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 |---|---|---|
 | Veri araştırma | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Çeşitli katmanlarda ağınızın cihazları hakkında kapsamlı ve ayrıntılı bilgiler oluşturun. |
 | Araştırma | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Eğilimleri ve istatistikleri geniş bir pencere öğesi aralığında görüntüleyin. |
@@ -201,7 +201,7 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Yönetici**
 
-| Pencere | Simge | Description |
+| Pencere | Simge | Açıklama |
 |---|---|---|
 | Kullanıcılar | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Farklı erişim düzeylerine sahip kullanıcıları ve rolleri tanımlayın. |
 | İletildiğinde | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | IoT için Defender ile tümleştirme, e-posta adresleri, Web kancası sunucuları ve daha fazlası için, uyarı bilgilerini iş ortaklarına ve iç kaynaklara (örneğin, Azure Sentinel) iletin. <br /> Ayrıntılar için bkz. [uyarı bilgilerini ilet](how-to-forward-alert-information-to-partners.md) . |
@@ -210,11 +210,11 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Destek**
 
-| Pencere| Simge | Description |
+| Pencere| Simge | Açıklama |
 |----|---|---|
 | Destek | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Yardım için [Microsoft desteği](https://support.microsoft.com/) başvurun. |
 
-### <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bir algılayıcı ekleme](getting-started.md#4-onboard-a-sensor)
 

@@ -108,7 +108,7 @@
     - name: Toplu test biçimi
       href: reference-tsv-format-batch-testing.md
     - name: Şifreleme
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST API Başvurusu
       items:
         - name: Soru-Cevap Oluşturma 4.0

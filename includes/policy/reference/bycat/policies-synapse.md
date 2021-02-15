@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4991bb889d4b9a099662b8d46c6d5cd5a89c1c63
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: dcd08c0635eb4a104cc945fbf4025a6807987968
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561675"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100100593"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[Azure SYNAPSE çalışma alanları, yalnızca onaylanan hedeflere giden veri trafiğine izin verir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3484ce98-c0c5-4c83-994b-c5ac24785218) |Giden veri trafiğine yalnızca onaylanan hedeflere izin vererek SYNAPSE çalışma alanınızın güvenliğini artırın. Bu, verileri göndermeden önce hedefi doğrulayarak veri alımını önlemeye yardımcı olur. |Denetim, devre dışı, reddetme |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_RestrictOutboundDataTraffic_Audit.json) |
 |[Azure SYNAPSE çalışma alanları, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Azure SYNAPSE çalışma alanlarında depolanan verilerin geri kalanında şifrelemeyi denetlemek için müşteri tarafından yönetilen anahtarları kullanın. Müşteri tarafından yönetilen anahtarlar, hizmet tarafından yönetilen anahtarlarla varsayılan şifrelemenin üzerine ikinci bir şifreleme katmanı ekleyerek Çift şifreleme sağlar. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
 |[Azure SYNAPSE çalışma alanlarında IP güvenlik duvarı kuralları kaldırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |Tüm IP Güvenlik Duvarı kurallarının kaldırılması, Azure SYNAPSE çalışma alanınızın yalnızca özel bir uç noktadan erişilebilir olmasını sağlayarak güvenliği geliştirir. Bu yapılandırma, çalışma alanında genel ağ erişimine izin veren Güvenlik Duvarı kurallarının oluşturulmasını denetler. |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |
 |[Azure SYNAPSE çalışma alanlarında yönetilen çalışma alanı sanal ağı etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Yönetilen bir çalışma alanı sanal ağını etkinleştirmek, çalışma alanınızın diğer çalışma alanlarından yalıtılmış olmasını sağlar. Bu sanal ağda dağıtılan veri tümleştirme ve Spark kaynakları, Spark etkinlikleri için Kullanıcı düzeyi yalıtımı da sağlar. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493728"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522895"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
@@ -36,7 +36,7 @@ Bu makalede aşağıdaki senaryolar incelenmelidir:
 Genel bir IP 'yi yükseltmek için, bu, herhangi bir kaynakla ilişkilendirilmemelidir (genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için [Bu sayfaya](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) bakın).
 
 >[!IMPORTANT]
->Temel bilgisayarlardan standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)alanına sahip olmaya devam eder.  Bu, bölgesel olarak yedekli olan veya bu, sunulan bölgelerde önceden belirtilmiş bir bölgeye bağlı bir Azure kaynağıyla ilişkilendirilemeyeceği anlamına gelir.
+>Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, garantili [Kullanılabilirlik alanlarına](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)sahip olmaya devam eder.  IP adresinin ilişkilendirileceği kaynakları seçerken bunun aklınızda tutulduğundan emin olun.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Temel-standart-PowerShell**](#tab/option-upgrade-powershell)

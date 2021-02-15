@@ -25,6 +25,8 @@
   items:
     - name: Güvenlik
       items:
+        - name: Microsoft 365’i şirket içi saldırılardan koruma
+          href: protect-m365-from-on-premises-attacks.md
         - name: Dış işbirliğini güvenli hale getirme
           items:
             - name: Dış erişimi güvenli hale getirmeye genel bakış
@@ -47,8 +49,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: '9 Teams, SharePoint ve OneDrive’a güvenli erişim'
               href: 9-secure-access-teams-sharepoint.md
-        - name: Microsoft 365’i şirket içi saldırılardan koruma
-          href: protect-m365-from-on-premises-attacks.md
+        - name: Güvenli hizmet hesapları
+          items:
+            - name: Şirket içi hizmet hesaplarına giriş
+              href: service-accounts-on-premises.md
+            - name: Grup MSAs güvenliğini sağlama
+              href: service-accounts-group-managed.md
+            - name: Tek başına MSAs güvenliğini sağlama
+              href: service-accounts-standalone-managed.md
+            - name: Bilgisayar hesaplarının güvenliğini sağlama
+              href: service-accounts-computer.md
+            - name: Kullanıcı tabanlı hizmet hesaplarının güvenliğini sağlama
+              href: service-accounts-user-on-premises.md
+            - name: Şirket içi hizmet hesaplarını yönetir
+              href: service-accounts-govern-on-premises.md
         - name: MFA’yı etkinleştirme
           href: concept-fundamentals-mfa-get-started.md
         - name: Güvenlik varsayılanları

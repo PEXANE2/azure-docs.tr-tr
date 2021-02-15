@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c28e2f1c24d39ceb915be9f4f6f222d70de9ee73
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509495"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522232"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Algılayıcı eğilimleri ve istatistik raporları
 
@@ -93,7 +93,7 @@ Yan menüdeki **eğilim & istatistikleri** ' ni seçin.
 
 Varsayılan olarak, sonuçlar son 7 gün içinde algılamalar için görüntülenir. Bu aralığı değiştirmek için filtre araçlarını kullanabilirsiniz. Örneğin, ücretsiz metin arama.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Risk değerlendirmesi raporlaması](how-to-create-risk-assessment-reports.md) 
  [Algılayıcı veri araştırma sorguları](how-to-create-data-mining-queries.md) 

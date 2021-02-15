@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562718"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523915"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>IoT portalı için Defender 'daki algılayıcı ekleme ve yönetme
 
@@ -52,12 +52,10 @@ Bir etkinleştirme dosyasını indirmek için:
 
 ## <a name="view-onboarded-sensors"></a>Eklendi sensörleri görüntüle
 
-[IoT Portal Için Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)'da, eklendi sensörleri hakkındaki temel bilgileri görüntüleyebilirsiniz. 
+[IoT Portal Için Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)'da, eklendi sensörleri hakkındaki temel bilgileri görüntüleyebilirsiniz.
 
 1. **Siteleri ve Algılayıcılar ' ı** seçin.
-1. **Siteler ve algılayıcılar** sayfasında, ihtiyacınız olan algılayıcı bilgilerini bulmak için filtre ve arama araçları ' nı kullanın.
-
-Kullanılabilir bilgiler şunları içerir:
+1. Gereken algılayıcı ve tehdit bilgileri bilgilerini bulmak için filtre ve arama araçlarını kullanın.
 
 - Kaç sensör eklendi
 - Buluta bağlı ve yerel olarak yönetilen sensörların sayısı
@@ -68,32 +66,40 @@ Kullanılabilir bilgiler şunları içerir:
 
 Sensörlerden ilgili yönetim görevleri için, [IoT portalı Için Defender 'ı](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) kullanın.
 
-### <a name="export"></a>Dışarı Aktarma
+Eklendi sensörleri **siteler ve algılayıcılar** sayfasında görüntülenebilir. Ayrıca, bu sayfadan algılayıcı bilgilerini düzenleyebilirsiniz.
+
+### <a name="export-sensor-details"></a>Algılayıcı ayrıntılarını dışarı aktar
 
 Eklendi algılayıcı bilgilerini dışarı aktarmak için, **siteler ve algılayıcılar** sayfasının en üstündeki **dışarı aktar** simgesini seçin.
 
-### <a name="edit"></a>Düzenle
+### <a name="edit-sensor-zone-details"></a>Algılayıcı bölgesi ayrıntılarını Düzenle
 
-Site adı, bölge ve Etiketler eklemek ve düzenlemek için **siteler ve sensör** düzenleme araçlarını kullanın.
+Algılayıcı adını ve bölgesini düzenlemek için **siteler ve algılayıcılar** düzenleme seçeneklerini kullanın.
 
-### <a name="delete"></a>Sil
+Düzenlemek için:
+
+1. Düzenlemek istediğiniz sensör için üç nokta (**...**) simgesine sağ tıklayın.
+1. Düzenle'yi seçin.
+1. Algılayıcı bölgesini güncelleştirin veya yeni bir bölge oluşturun.
+
+### <a name="delete-a-sensor"></a>Algılayıcıyı silme
 
 Buluta bağlı bir algılayıcı silerseniz, bilgiler IoT Hub 'ına gönderilmez. Artık bunlarla çalışmadığınızda, yerel olarak bağlı sensörlerden silin.
 
 Bir algılayıcıyı silmek için:
 
-1. Silmek istediğiniz algılayıcı için üç nokta (**...**) simgesini seçin. 
+1. Silmek istediğiniz algılayıcı için üç nokta (**...**) simgesini seçin.
 1. Silme işlemini onaylayın.
 
-### <a name="reactivate"></a>Yeniden etkinleştirme
+### <a name="reactivate-a-sensor"></a>Algılayıcıyı yeniden etkinleştirme 
 
-Sensörizin yönetilip yönetilme modunu güncelleştirmek isteyebilirsiniz. Örnek:
+Şunları yapmak istediğiniz için sensörinizi yeniden etkinleştirmeniz gerekebilir:
 
-- **Yerel olarak yönetilen mod yerine buluta bağlı modda çalışın**: bunu yapmak için, yerel olarak bağlı sensörizin etkinleştirme dosyasını, buluta bağlı bir algılayıcı için bir etkinleştirme dosyasıyla güncelleştirin. Yeniden etkinleştirmeyi tamamladıktan sonra, algılayıcı algılamaları hem sensör hem de [IoT Için Defender portalında](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)görüntülenir. Yeniden etkinleştirme dosyası başarıyla karşıya yüklendikten sonra, yeni algılanan uyarı bilgileri Azure 'a gönderilir.
+- **Yerel olarak yönetilen mod yerine buluta bağlı modda çalışın**: yeniden etkinleştirmeyi tamamladıktan sonra, algılayıcı algılamaları sensörde görüntülenir ve yeni algılanan uyarı bilgileri IoT Hub 'ı aracılığıyla gönderilir. Bu bilgiler, Azure Sentinel gibi diğer Azure hizmetleriyle paylaşılabilir.
 
-- **Buluta bağlı mod yerine yerel olarak bağlı modda çalışın**: bunu yapmak için, bulut bağlantılı bir algılayıcı için etkinleştirme dosyasını yerel olarak yönetilen bir algılayıcı için etkinleştirme dosyası ile güncelleştirin. Yeniden etkinleştirmeyi tamamladıktan sonra, algılayıcı algılama bilgileri yalnızca sensörde görüntülenir.
+- **Bulut bağlantılı mod yerine yerel olarak yönetilen modda çalışın**: yeniden etkinleştirmeyi tamamladıktan sonra, algılayıcı algılama bilgileri yalnızca sensörde görüntülenir.
 
-- **Algılayıcıyı yeni bir IoT Hub 'ı Ile ilişkilendirin**: bunu yapmak için yeniden kaydedin ve yeni bir etkinleştirme dosyası yükleyin.
+- **Algılayıcıyı yeni bir IoT Hub 'ı Ile ilişkilendirin**: bunu yapmak için, algılayıcıyı yeni bir hub ile yeniden kaydedin ve ardından yeni bir etkinleştirme dosyası indirin.
 
 Bir algılayıcıyı yeniden etkinleştirmek için:
 
@@ -103,20 +109,20 @@ Bir algılayıcıyı yeniden etkinleştirmek için:
 
 3. Algılayıcıyı silin.
 
-4. Yeni moddaki veya yeni bir IoT Hub ile **ekleme** sayfasından algılayıcısı yeniden ekleyin.
+4. Başlangıç sayfasından **bir algılayıcı** Ekle ' ye tıklayarak algılayıcıyı yeni modda veya yeni bir IoT Hub 'ı ile yeniden ekleyin.
 
-5. Etkinleştirme dosyasını **Indirme yükleme** sayfasından indirin.
+5. Etkinleştirme dosyasını indirin.
 
-6. IoT algılayıcısı konsolunda Defender 'da oturum açın.
+1. IoT algılayıcısı konsolunda Defender 'da oturum açın.
 
 7. Algılayıcı konsolunda, **sistem ayarları** ' nı seçin ve yeniden **etkinleştirme**' yi seçin.
 
    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Algılayıcıyı yeniden etkinleştirmek için etkinleştirme dosyanızı karşıya yükleyin.":::
 
-8. **Karşıya yükle** ' yi seçin ve kaydettiğiniz dosyayı seçin.
+8. **Karşıya yükle** ' yi seçin ve ekleme algılayıcısı sayfasından kaydettiğiniz dosyayı seçin.
 
-9. **Etkinleştir**' i seçin. 
+9. **Etkinleştir**' i seçin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Algılayıcınızı etkinleştirme ve ayarlama](how-to-activate-and-set-up-your-sensor.md)

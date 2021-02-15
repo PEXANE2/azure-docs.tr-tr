@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428597"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098087"
 ---
 # <a name="trusted-storage-for-media-services"></a>Media Services için güvenilen depolama
 
@@ -22,7 +22,11 @@ Media Services bir hesap oluşturduğunuzda, bunu bir depolama hesabıyla ilişk
 
 ## <a name="trusted-storage-with-a-firewall"></a>Güvenlik duvarıyla güvenilen depolama
 
-Ancak, depolama hesabınızı güvenli hale getirmek ve güvenilen depolamayı etkinleştirmek için bir güvenlik duvarı kullanmak istiyorsanız, [Yönetilen kimlikler](concept-managed-identities.md) kimlik doğrulaması tercih edilen seçenektir. Media Services, güvenilen depolama erişimi aracılığıyla bir güvenlik duvarı veya VNet kısıtlaması ile yapılandırılmış depolama hesabına erişmesini sağlar. Media Services, güvenilen depolama erişimi aracılığıyla bir güvenlik duvarı veya VNet kısıtlaması ile yapılandırılmış depolama hesabına erişmesini sağlar.
+Ancak, depolama hesabınızı güvenli hale getirmek ve güvenilen depolamayı etkinleştirmek için bir güvenlik duvarı kullanmak istiyorsanız, [Yönetilen kimlikler](concept-managed-identities.md) kimlik doğrulaması tercih edilen seçenektir. Media Services, güvenilen depolama erişimi aracılığıyla bir güvenlik duvarı veya VNet kısıtlaması ile yapılandırılmış depolama hesabına erişmesini sağlar.
+
+## <a name="tutorial"></a>Öğretici
+
+Güvenilen depolamayı [Media Services güvenilir depolama](tutorial-trusted-storage-rest.md) öğreticisi ile etkinleştirme hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!NOTE]
 > Media Services depolama hesabına okuyup yazabilmesi için AMS tarafından yönetilen kimlik Depolama Blobu veri katılımcısı erişimine izin vermeniz gerekir.  Genel katkıda bulunan rolünün verilmesi, veri düzleminde doğru izinleri etkinleştirmediğinden çalışmaz.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d6cee5e8d9683ca88a71608595b7dfde8261b8d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520536"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522878"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -125,11 +125,9 @@ Hayır. Bir abonelikteki [sunucular Için Azure Defender](defender-for-servers-i
 | Başlatılıyor     | VM başlatılıyor.                                                                                                                               | Faturalandırılmamış            |
 | Çalışma      | Bir VM için normal çalışma durumu                                                                                                                    | IP                |
 | Durduruluyor     | Bu, geçici bir durumdur. İşlem tamamlandığında, durduruldu olarak gösterilir.                                                                           | IP                |
-| Durduruldu      | VM, Konuk işletim sistemi içinden veya PowerOff API 'Leri kullanılarak kapatıldı. Donanım hala VM 'ye ayrıldı ve konakta kalır. | Faturalandırılan (1)            |
-| Serbest bırakılıyor | Geçiş durumu. İşlem tamamlandığında, VM serbest bırakıldı olarak gösterilir.                                                                             | Faturalandırılmamış (1)        |
+| Durduruldu      | VM, Konuk işletim sistemi içinden veya PowerOff API 'Leri kullanılarak kapatıldı. Donanım hala VM 'ye ayrıldı ve konakta kalır. | IP                |
+| Serbest bırakılıyor | Geçiş durumu. İşlem tamamlandığında, VM serbest bırakıldı olarak gösterilir.                                                                             | Faturalandırılmamış            |
 | Serbest bırakıldı  | VM başarıyla durdurulmuş ve konaktan kaldırılmış.                                                                                  | Faturalandırılmamış            |
-
-(1) diskler ve ağ gibi bazı Azure kaynakları için ücret uygulanır. Örnekteki yazılım lisansları ücret ödemez.
 
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Serbest bırakılmış bir makineyi gösteren Azure sanal makineleri":::
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yap
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944537"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521637"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma
 
@@ -121,7 +121,7 @@ Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı 
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    Örnek:
+    Dışarı aktarma komutlarıyla 3 değişken doldurduktan sonra çalıştırmanız gereken komut aşağıda verilmiştir:
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 

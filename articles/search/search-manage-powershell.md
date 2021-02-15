@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 02/09/2021
+ms.openlocfilehash: c992693bfb278ac559feb6fa82fa947086ceafbb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422493"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381146"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Bilişsel Arama hizmetinizi PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "93422493"
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](/rest/api/searchmanagement/)
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)
 
 Azure Bilişsel Arama oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](../cloud-shell/overview.md) 'de PowerShell cmdlet 'leri ve betikleri çalıştırabilirsiniz. **Az. Search** modülü, [arama yönetimi REST API 'lerine](/rest/api/searchmanagement) tam eşlik ile [Azure PowerShell](/powershell/) genişletir ve aşağıdaki görevleri gerçekleştirebilir:
 
@@ -30,9 +30,11 @@ Azure Bilişsel Arama oluşturmak ve yapılandırmak için Windows, Linux veya [
 > * [Bir abonelikte arama hizmetlerini listeleme](#list-search-services)
 > * [Hizmet bilgilerini döndür](#get-search-service-information)
 > * [Hizmet oluşturma veya silme](#create-or-delete-a-service)
+> * [Özel bir uç nokta ile hizmet oluşturma](#create-a-service-with-a-private-endpoint)
 > * [Yönetici API anahtarlarını yeniden oluştur](#regenerate-admin-keys)
 > * [Sorgu API 'si oluşturma veya silme](#create-or-delete-query-keys)
 > * [Çoğaltmalar ve bölümlerle ölçeği artırma veya azaltma](#scale-replicas-and-partitions)
+> * [Paylaşılan özel bağlantı kaynağı oluşturma](#create-a-shared-private-link-resource)
 
 Bazen, yukarıdaki listede *olmayan* görevlerle ilgili soruların sorulması istenir. Şu anda, sunucu adını, bölgeyi veya katmanını değiştirmek için **az. Search** modülünü ya da yönetim REST API kullanamazsınız. Adanmış kaynaklar bir hizmet oluşturulduğunda ayrılır. Bu nedenle, temel alınan donanımın (konum veya düğüm türü) değiştirilmesi için yeni bir hizmet gerekir. Benzer şekilde, bir hizmetten diğerine bir dizin gibi içerik aktarmaya yönelik bir araç veya API yoktur.
 
@@ -111,7 +113,7 @@ Name              : my-demo-searchapp
 ResourceGroupName : demo-westus
 ResourceType      : Microsoft.Search/searchServices
 Location          : westus
-ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
+ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="import-azsearch"></a>Al az. Search
@@ -133,17 +135,31 @@ Get-Command -Module Az.Search
 Sonuçlar aşağıdaki çıktıya benzer görünmelidir.
 
 ```
-CommandType     Name                                Version    Source
------------     ----                                -------    ------
-Cmdlet          Get-AzSearchAdminKeyPair            0.7.1      Az.Search
-Cmdlet          Get-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          Get-AzSearchService                 0.7.1      Az.Search
-Cmdlet          New-AzSearchAdminKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchService                 0.7.1      Az.Search
-Cmdlet          Remove-AzSearchQueryKey             0.7.1      Az.Search
-Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
-Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
+CommandType     Name                                               Version    Source                                                                
+-----------     ----                                               -------    ------                                                                
+Cmdlet          Get-AzSearchAdminKeyPair                           0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateLinkResource                    0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchAdminKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchPrivateEndpointConnection           0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchQueryKey                            0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchService                             0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchSharedPrivateLinkResource           0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search   
+```
+
+Paketin eski bir sürümüne sahipseniz, en son işlevselliği almak için modülü güncelleştirin.
+
+```azurepowershell-interactive
+Update-Module -Name Az.Search
 ```
 
 ## <a name="get-search-service-information"></a>Arama hizmeti bilgilerini al
@@ -173,7 +189,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 New [**-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) , [Yeni bir arama hizmeti oluşturmak](search-create-service-portal.md)için kullanılır.
 
 ```azurepowershell-interactive
-New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
+New-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3 -HostingMode Default
 ``` 
 Sonuçlar aşağıdaki çıktıya benzer görünmelidir.
 
@@ -188,6 +204,141 @@ PartitionCount    : 3
 HostingMode       : Default
 Tags
 ```     
+
+### <a name="create-a-service-with-ip-rules"></a>IP kuralları ile hizmet oluşturma
+
+Güvenlik gereksinimlerinize bağlı olarak, bir [IP güvenlik duvarı yapılandırılmış](service-configure-firewall.md)bir arama hizmeti oluşturmak isteyebilirsiniz. Bunu yapmak için önce IP kurallarını tanımlayın ve ardından bunları `IPRuleList` aşağıda gösterildiği gibi parametreye geçirin.
+
+```azurepowershell-interactive
+$ipRules = @([pscustomobject]@{Value="55.5.63.73"},
+        [pscustomobject]@{Value="52.228.215.197"},
+        [pscustomobject]@{Value="101.37.221.205"})
+
+ New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IPRuleList $ipRules
+```
+
+### <a name="create-a-service-with-a-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimliğe sahip bir hizmet oluşturma
+
+[Bir veri kaynağına bağlanmak için yönetilen kimlik kullanırken](search-howto-managed-identities-storage.md)olduğu gibi bazı durumlarda, [sistem tarafından atanan yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md)açmanız gerekir. Bu, komuta eklenerek yapılır `-IdentityType SystemAssigned` .
+
+```azurepowershell-interactive
+New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IdentityType SystemAssigned
+```
+
+## <a name="create-a-service-with-a-private-endpoint"></a>Özel bir uç nokta ile hizmet oluşturma
+
+Azure Bilişsel Arama [Özel uç noktaları](../private-link/private-endpoint-overview.md) , bir sanal ağdaki bir Istemcinin bir [özel bağlantı](../private-link/private-link-overview.md)üzerinden arama dizinindeki verilere güvenli bir şekilde erişmesini sağlar. Özel uç nokta, arama hizmetiniz için [sanal ağ adres alanından](../virtual-network/private-ip-addresses.md) bir IP adresi kullanır. İstemci ile arama hizmeti arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının üzerinde geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. Daha fazla ayrıntı için lütfen [Azure bilişsel arama özel bir uç noktası oluşturma](service-create-private-endpoint.md) belgelerine başvurun
+
+Aşağıdaki örnek, özel bir uç nokta ile bir arama hizmeti oluşturmayı gösterir.
+
+İlk olarak, olarak ayarlanmış bir arama hizmeti dağıtın `PublicNetworkAccess` `Disabled` .
+
+```azurepowershell-interactive
+$searchService = New-AzSearchService `
+    -ResourceGroupName <resource-group-name> `
+    -Name <search-service-name> `
+    -Sku Standard `
+    -Location "West US" `
+    -PartitionCount 1 -ReplicaCount 1 `
+    -HostingMode Default `
+    -PublicNetworkAccess Disabled
+```
+
+Ardından, bir sanal ağ, özel ağ bağlantısı ve özel uç nokta oluşturun.
+
+```azurepowershell-interactive
+# Create the subnet
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+    -Name <subnet-name> `
+    -AddressPrefix 10.1.0.0/24 `
+    -PrivateEndpointNetworkPolicies Disabled 
+
+# Create the virtual network
+$virtualNetwork = New-AzVirtualNetwork `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Name <virtual-network-name> `
+    -AddressPrefix 10.1.0.0/16 `
+    -Subnet $subnetConfig
+
+# Create the private network connection
+$privateLinkConnection = New-AzPrivateLinkServiceConnection `
+    -Name <private-link-name> `
+    -PrivateLinkServiceId $searchService.Id `
+    -GroupId searchService
+
+# Create the private endpoint
+$privateEndpoint = New-AzPrivateEndpoint `
+    -Name <private-endpoint-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Subnet $virtualNetwork.subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkConnection
+```
+
+Son olarak, özel bir DNS bölgesi oluşturun. 
+
+```azurepowershell-interactive
+## Create private dns zone
+$zone = New-AzPrivateDnsZone `
+    -ResourceGroupName <resource-group-name> `
+    -Name "privatelink.search.windows.net"
+
+## Create dns network link
+$link = New-AzPrivateDnsVirtualNetworkLink `
+    -ResourceGroupName <resource-group-name> `
+    -ZoneName "privatelink.search.windows.net" `
+    -Name "myLink" `
+    -VirtualNetworkId $virtualNetwork.Id
+
+## Create DNS configuration 
+$config = New-AzPrivateDnsZoneConfig `
+    -Name "privatelink.search.windows.net" `
+    -PrivateDnsZoneId $zone.ResourceId
+
+## Create DNS zone group
+New-AzPrivateDnsZoneGroup `
+    -ResourceGroupName <resource-group-name> `
+    -PrivateEndpointName <private-endpoint-name> `
+    -Name 'myZoneGroup' `
+    -PrivateDnsZoneConfig $config
+```
+
+PowerShell 'de özel uç noktalar oluşturma hakkında daha fazla bilgi için bu [özel bağlantı hızlı başlangıç](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell) bölümüne bakın
+
+### <a name="manage-private-endpoint-connections"></a>Özel uç nokta bağlantılarını yönetme
+
+Özel bir uç nokta bağlantısı oluşturmaya ek olarak,, `Get` `Set` ve bağlantısı da yapabilirsiniz `Remove` .
+
+[Get-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Get-AzSearchPrivateEndpointConnection) , özel bir uç nokta bağlantısını almak ve durumunu görmek için kullanılır.
+
+```azurepowershell-interactive
+Get-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name>
+```
+
+Bağlantıyı güncelleştirmek için [set-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Set-AzSearchPrivateEndpointConnection) kullanılır. Aşağıdaki örnek, reddedildi olarak bir özel uç nokta bağlantısı ayarlıyor:
+
+```azurepowershell-interactive
+Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
+```
+
+Özel uç nokta bağlantısını silmek için [Remove-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Remove-AzSearchPrivateEndpointConnection) kullanılır.
+
+```azurepowershell-interactive
+ Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
+```
 
 ## <a name="regenerate-admin-keys"></a>Yönetici anahtarlarını yeniden oluştur
 
@@ -247,6 +398,46 @@ PartitionCount    : 6
 HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
+
+## <a name="create-a-shared-private-link-resource"></a>Paylaşılan özel bağlantı kaynağı oluşturma
+
+Azure Bilişsel Arama API 'Leri aracılığıyla oluşturulan güvenli kaynakların özel uç noktaları, *paylaşılan özel bağlantı kaynakları* olarak adlandırılır. Bunun nedeni, [Azure özel bağlantı hizmeti](https://azure.microsoft.com/services/private-link/)ile tümleştirilmiş bir depolama hesabı gibi bir kaynağa "paylaşım" erişiminizin olması nedeniyle oluşur.
+
+Azure Bilişsel Arama 'daki verileri indekslemek için bir Dizin Oluşturucu kullanıyorsanız ve veri kaynağınız özel bir ağ üzerinde ise, verilere ulaşmak için giden [Özel uç nokta bağlantısı](../private-link/private-endpoint-overview.md) oluşturabilirsiniz.
+
+Azure Bilişsel Arama giden özel uç noktaları oluşturabileceğiniz Azure kaynaklarının tam bir listesi, ilgili **Grup Kimliği** değerleriyle birlikte [burada](search-indexer-howto-access-private.md#shared-private-link-resources-management-apis) bulunabilir.
+
+[New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) , paylaşılan özel bağlantı kaynağını oluşturmak için kullanılır. Bu komutu çalıştırmadan önce veri kaynağı için bazı yapılandırmanın gerekli olabileceğini aklınızda bulundurun.
+
+```azurepowershell-interactive
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+```
+
+[Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) , paylaşılan özel bağlantı kaynaklarını almanızı ve durumlarını görüntülemenizi sağlar.
+
+```azurepowershell-interactive
+Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
+```
+
+Kullanılmadan önce aşağıdaki komutla bağlantıyı onaylamanız gerekir.
+
+```azurepowershell-interactive
+Approve-AzPrivateEndpointConnection `
+    -Name <spl-name> `
+    -ServiceName <search-service-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Description = "Approved"
+```
+
+[Remove-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Remove-AzSearchSharedPrivateLinkResource) , paylaşılan özel bağlantı kaynağını silmek için kullanılır.
+
+```azurepowershell-interactive
+$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
+
+$job | Get-Job
+```
+
+Paylaşılan özel bağlantı kaynaklarını ayarlamayla ilgili tam Ayrıntılar için, [özel bir uç nokta aracılığıyla Dizin Oluşturucu bağlantıları yapma](search-indexer-howto-access-private.md)hakkındaki belgelere bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

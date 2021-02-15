@@ -8,12 +8,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515912"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522623"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışarı aktarma
 
@@ -168,14 +168,14 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
 ## <a name="monitor-your-export"></a>Dışarı aktarmayı izleme
 
-IoT Central ' de dışarı aktarmaların durumunu görmenin yanı sıra, dışarı aktarımlarınız üzerinden ne kadar veri alındığını izleyebilir ve Azure Izleyici veri platformunda dışarı aktarma hatalarını gözlemleyebilirsiniz. Azure portal, bir REST API ya da PowerShell veya Azure CLı 'de bulunan grafiklerde, ve cihaz sistem durumlarınıza ilişkin ölçümlere erişebilirsiniz. Şu anda Azure Izleyici 'de bu veri dışa aktarma ölçümlerini izleyebilirsiniz:
+Dışarı aktarmaların durumunu IoT Central görmeniz ek olarak, dışarı aktardığınız veri miktarını ve dışarı aktarma hatalarını görmek için [Azure izleyici](../../azure-monitor/overview.md) 'yi kullanabilirsiniz. Azure portal, REST API veya PowerShell veya Azure CLı sorguları ile grafiklerde, dışarı aktarma ve cihaz sistem durumu ölçümlerine erişebilirsiniz. Şu anda Azure Izleyici 'de aşağıdaki veri dışa aktarma ölçümlerini izleyebilirsiniz:
 
-1. Filtreler uygulanmadan önce dışarı aktarmaya gelen ileti sayısı
-2. Filtrelerle geçen ileti sayısı
-3. Hedeflere başarıyla aktarılmış ileti sayısı
-4. Karşılaşılan hata sayısı
- 
-[IoT Central ölçümlere erişme hakkında daha fazla bilgi edinin.](howto-monitor-application-health.md)
+- Filtreler uygulanmadan önce dışarı aktarmaya gelen ileti sayısı.
+- Filtrelerle geçen ileti sayısı.
+- Hedeflere başarıyla aktarılmış ileti sayısı.
+- Karşılaşılan hata sayısı.
+
+Daha fazla bilgi için bkz. [bir IoT Central uygulamasının genel sistem durumunu izleme](howto-monitor-application-health.md).
 
 ## <a name="destinations"></a>Hedefler
 

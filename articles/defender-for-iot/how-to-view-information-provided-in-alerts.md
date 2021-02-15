@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/03/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 804cdbd6266f2e77b5562d914bac089fce80f645
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842951"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523592"
 ---
 # <a name="view-information-in-alerts"></a>Uyarılardaki bilgileri görüntüleme
 
@@ -72,7 +72,7 @@ Seçili Yorumlar Uyarı iletisine kaydedilir. Açıklamalarla çalışma, bir uy
 
 Bir yönetici veya güvenlik analistinin açıklamaları önceden tanımlar. Seçilen Yorumlar, iletme kurallarında tanımlanan iş ortağı sistemlerine iletilmez.
 
-Bir uyarıdaki bilgileri gözden geçirdikten sonra, uyarı olayını yönetme konusunda size rehberlik etmek için çeşitli adli adımları gerçekleştirebilirsiniz. Örnek:
+Bir uyarıdaki bilgileri gözden geçirdikten sonra, uyarı olayını yönetme konusunda size rehberlik etmek için çeşitli adli adımları gerçekleştirebilirsiniz. Örneğin:
 
 - Son cihaz etkinliğini çözümleyin (veri araştırma raporu). 
 
@@ -90,7 +90,7 @@ Bir PCAP dosyası indirmek için :::image type="content" source="media/how-to-wo
 
 Bir uyarının **öneri** alanı, bir olayı daha iyi anlamanıza yardımcı olabilecek bilgileri görüntüler. Uyarı olayını yönetmeden veya cihaz ya da ağ üzerinde işlem yapmadan önce bu bilgileri gözden geçirin.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Uyarı iş akışlarını hızlandırma](how-to-accelerate-alert-incident-response.md)
 

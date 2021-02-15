@@ -1,21 +1,18 @@
 ---
 title: Azure portal kullanarak Azure sanal ağ 'da Hive kullanarak veri dönüştürme
 description: Bu öğretici, Azure Data Factory'de Hive etkinliğini kullanarak verileri dönüştürmeye ilişkin adım adım yönergeler sağlar.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: f6e1f80ebba0aa67cf2bab4a772ebc1765cd8298
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634377"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377967"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Azure Data Factory Azure portal kullanarak Azure sanal ağ 'da Hive etkinliğini kullanarak verileri dönüştürme
 
@@ -34,19 +31,19 @@ Bu öğreticide, Azure portalını kullanarak Azure Sanal Ağ’daki bir HDInsig
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure depolama hesabı** . Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
+- **Azure depolama hesabı**. Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
 - **Azure sanal ağı.** Bir Azure sanal ağınız yoksa [bu yönergeleri](../virtual-network/quick-create-portal.md) izleyerek bir tane oluşturun. Bu örnekte HDInsight bir Azure Sanal Ağ içindedir. Azure Sanal Ağ’ın örnek yapılandırması aşağıda verilmiştir. 
 
     ![Sanal ağ oluşturma](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight kümesi.** Bir HDInsight kümesi oluşturun ve önceki adımda oluşturduğunuz sanal ağa katmak için şu makaleyi izleyin: [Bir Azure Sanal Ağ kullanarak Azure HDInsight’ı genişletme](../hdinsight/hdinsight-plan-virtual-network-deployment.md). Bir sanal ağda HDInsight’ın örnek yapılandırması aşağıda verilmiştir. 
 
     ![Sanal ağda HDInsight](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell** . [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
-- **Bir sanal makine** . Bir Azure sanal makinesi oluşturun ve HDInsight kümenizi içeren sanal ağa ekleyin. Ayrıntılar için bkz. [Sanal makine oluşturma](../virtual-network/quick-create-portal.md#create-virtual-machines). 
+- **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
+- **Bir sanal makine**. Bir Azure sanal makinesi oluşturun ve HDInsight kümenizi içeren sanal ağa ekleyin. Ayrıntılar için bkz. [Sanal makine oluşturma](../virtual-network/quick-create-portal.md#create-virtual-machines). 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive betiğini Blob Depolama hesabınıza yükleme
 
@@ -74,7 +71,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com/)oturum açın.    
-2. Soldaki menüde **Yeni** , **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
+2. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
    
    ![Yeni->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. **Yeni veri fabrikası** sayfasında **ad** için **ADFTutorialHiveFactory** adını girin. 
@@ -87,21 +84,21 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
 4. **Kaynak grubu** için aşağıdaki adımlardan birini yapın:
      
-   - **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
-   - **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin.   
+   - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
+   - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-4. **Sürüm** için **V2** 'yi seçin.
+4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Listede yalnızca veri fabrikası oluşturma için desteklenen konumlar gösterilir.
-6. **Panoya sabitle** ’yi seçin.     
-7. **Oluştur** 'a tıklayın.
-8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor** . 
+6. **Panoya sabitle**’yi seçin.     
+7. **Oluştur**’a tıklayın.
+8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
      ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
     ![Data factory giriş sayfası](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. Azure Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede açmak için **Geliştir ve İzle** ’ye tıklayın.
+10. Azure Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede açmak için **Geliştir ve İzle**’ye tıklayın.
 11. **Başlarken** sayfasında, aşağıdaki resimde gösterildiği gibi sol bölmede bulunan **Düzenle** sekmesine geçin: 
 
     ![Düzenle sekmesi](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
@@ -109,16 +106,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 Hadoop kümesi bir sanal ağın içinde olduğundan, aynı sanal ağa şirket içinde barındırılan bir tümleştirme çalışma zamanı (IR) yüklemeniz gerekir. Bu bölümde yeni bir VM oluşturur, bu VM’yi aynı sana ağa katar ve VM’ye şirket içinde barındırılan IR yüklersiniz. Şirket içinde barındırılan IR, Data Factory hizmetinin bir sanal ağ içindeki HDInsight gibi bir işlem hizmetine işleme istekleri göndermesine imkan tanır. Ayrıca, bir sanal ağ içindeki veri depoları ile Azure arasında veri taşımanıza imkan sağlar. Veri deposu veya işlem de şirket içi bir ortamda olduğunda, şirket içinde barındırılan IR kullanırsınız. 
 
-1. Azure Data Factory kullanıcı arabiriminde, pencerenin en altından **Bağlantılar** ’a tıklayın, **Tümleştirme Çalışma Zamanları** sekmesine geçin ve araç çubuğunda **+ Yeni** düğmesine tıklayın. 
+1. Azure Data Factory kullanıcı arabiriminde, pencerenin en altından **Bağlantılar**’a tıklayın, **Tümleştirme Çalışma Zamanları** sekmesine geçin ve araç çubuğunda **+ Yeni** düğmesine tıklayın. 
 
    ![Yeni tümleştirme çalışma zamanı menüsü](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-integration-runtime-menu.png)
-2. **Tümleştirme Çalışma Zamanı Kurulumu** penceresinde **Dış işlemlere veri taşıma ve dağıtım etkinlikleri gerçekleştir** seçeneğini belirleyip **İleri** ’ye tıklayın. 
+2. **Tümleştirme Çalışma Zamanı Kurulumu** penceresinde **Dış işlemlere veri taşıma ve dağıtım etkinlikleri gerçekleştir** seçeneğini belirleyip **İleri**’ye tıklayın. 
 
    ![Veri taşıma ve dağıtım etkinlikleri gerçekleştir seçeneği](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. **Özel Ağ** seçeneğini belirleyip **İleri** ’ye tıklayın.
+3. **Özel Ağ** seçeneğini belirleyip **İleri**’ye tıklayın.
     
    ![Özel ağı seçin](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
-4. **Ad** için **MySelfHostedIR** adını girip **İleri** ’ye tıklayın. 
+4. **Ad** için **MySelfHostedIR** adını girip **İleri**’ye tıklayın. 
 
    ![Tümleştirme çalışma zamanı adını belirleyin](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
 5. Kopyala düğmesine tıklayarak tümleştirme çalışma zamanının **kimlik doğrulama anahtarını** kopyalayın ve kaydedin. Pencereyi açık tutun. Bir sanal makinede yüklü IR’yi kaydetmek için bu anahtarı kullanırsınız. 
@@ -134,16 +131,16 @@ Hadoop kümesi bir sanal ağın içinde olduğundan, aynı sanal ağa şirket i�
 2. Şirket içinde barındırılan tümleştirme çalışma zamanı başarıyla kaydedildiğinde aşağıdaki iletiyi görürsünüz. 
    
     ![Başarıyla kaydedildi](media/tutorial-transform-data-using-hive-in-vnet-portal/registered-successfully.png)
-3. **Configuration Manager'ı Başlat** ’a tıklayın. Düğüm bulut hizmetine bağlandığında şu sayfayı görürsünüz: 
+3. **Configuration Manager'ı Başlat**’a tıklayın. Düğüm bulut hizmetine bağlandığında şu sayfayı görürsünüz: 
    
     ![Düğüm bağlı](media/tutorial-transform-data-using-hive-in-vnet-portal/node-is-connected.png)
 
 ### <a name="self-hosted-ir-in-the-azure-data-factory-ui"></a>Azure Data Factory kullanıcı arabiriminde şirket içinde barındırılan IR
 
-1. **Azure Data Factory kullanıcı arabiriminde** , şirket içinde barındırılan sanal makinenin adını ve durumunu görürsünüz.
+1. **Azure Data Factory kullanıcı arabiriminde**, şirket içinde barındırılan sanal makinenin adını ve durumunu görürsünüz.
 
    ![Mevcut şirket içinde barındırılan düğümler](./media/tutorial-transform-data-using-hive-in-vnet-portal/existing-self-hosted-nodes.png)
-2. **Son** ’a tıklayarak **Tümleştirme Çalışma Zamanı** penceresini kapatın. Tümleştirme çalışma zamanları listesinde şirket içinde barındırılan IR’yi görürsünüz.
+2. **Son**’a tıklayarak **Tümleştirme Çalışma Zamanı** penceresini kapatın. Tümleştirme çalışma zamanları listesinde şirket içinde barındırılan IR’yi görürsünüz.
 
    ![Listedeki şirket içinde barındırılan IR](./media/tutorial-transform-data-using-hive-in-vnet-portal/self-hosted-ir-in-list.png)
 
@@ -152,14 +149,14 @@ Hadoop kümesi bir sanal ağın içinde olduğundan, aynı sanal ağa şirket i�
 
 Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
 - Bir Azure Depolama hesabını veri fabrikasına bağlayan **Azure depolama bağlı hizmeti** . Bu depolama, HDInsight kümeniz tarafından kullanılan birincil depolamadır. Bu durumda, Hive betiğini ve betiğin çıktısını depolamak için de bu Azure Depolama hesabını kullanırsınız.
-- Bir **HDInsight Bağlı Hizmeti** . Azure Data Factory, Hive betiğini yürütmek üzere bu HDInsight kümesine gönderir.
+- Bir **HDInsight Bağlı Hizmeti**. Azure Data Factory, Hive betiğini yürütmek üzere bu HDInsight kümesine gönderir.
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage bağlı hizmeti oluşturma
 
-1. **Bağlı Hizmetler** sekmesine geçin ve **Yeni** ’ye tıklayın.
+1. **Bağlı Hizmetler** sekmesine geçin ve **Yeni**’ye tıklayın.
 
    ![Yeni bağlı hizmet düğmesi](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
-2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama** ’yı seçip  **Devam** ’a tıklayın. 
+2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama**’yı seçip **Devam**’a tıklayın. 
 
    ![Azure Blob Depolama’yı seçin](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
@@ -167,23 +164,23 @@ Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
     1. **Ad** için **AzureStorageLinkedService** adını girin.
     2. **Tümleştirme çalışma zamanı aracılığıyla bağlan** için **MySelfHostedIR** seçeneğini belirleyin.
     3. **Depolama hesabı adı** için Azure depolama hesabınızı seçin. 
-    4. Depolama hesabı bağlantısını test etmek için **Bağlantıyı sına** ’ya tıklayın.
-    5. **Kaydet** ’e tıklayın.
+    4. Depolama hesabı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
+    5. **Kaydet**’e tıklayın.
    
         ![Azure Blob Depolama hesabını belirtme](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
 ### <a name="create-hdinsight-linked-service"></a>HDInsight bağlı hizmeti oluşturma
 
-1. Bir kere daha **Yeni** ’ye tıklayarak başka bir bağlı hizmet oluşturun. 
+1. Bir kere daha **Yeni**’ye tıklayarak başka bir bağlı hizmet oluşturun. 
     
    ![Yeni bağlı hizmet düğmesi](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
-2. **İşlem** sekmesine geçin, **Azure HDInsight** ’ı seçin ve **Devam** ’a tıklayın.
+2. **İşlem** sekmesine geçin, **Azure HDInsight**’ı seçin ve **Devam**’a tıklayın.
 
     ![Azure HDInsight’ı seçin](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
 3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureHDInsightLinkedService** adını girin.
-    2. **Kendi HDInsight’ınızı getirin** ’i seçin. 
+    2. **Kendi HDInsight’ınızı getirin**’i seçin. 
     3. **Hdi kümesi** için HDInsight kümenizi seçin. 
     4. HDInsight kümesi için **kullanıcı adını** girin.
     5. Kullanıcının **parolasını** girin. 
@@ -202,13 +199,13 @@ Bu adımda, Hive etkinliği ile bir işlem hattı oluşturacaksınız. Etkinlik,
 
 Aşağıdaki noktalara dikkat edin:
 
-- **scriptPath** , MyStorageLinkedService için kullandığınız Azure Depolama Hesabında Hive betiğinin yoluna işaret eder. Bu yol büyük/küçük harfe duyarlıdır.
-- **Çıktı** , Hive betiğinde kullanılan bir değişkendir. Azure Depolama hesabınızda var olan bir klasörü işaret etmek için `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` biçimini kullanın. Bu yol büyük/küçük harfe duyarlıdır. 
+- **scriptPath**, MyStorageLinkedService için kullandığınız Azure Depolama Hesabında Hive betiğinin yoluna işaret eder. Bu yol büyük/küçük harfe duyarlıdır.
+- **Çıktı**, Hive betiğinde kullanılan bir değişkendir. Azure Depolama hesabınızda var olan bir klasörü işaret etmek için `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` biçimini kullanın. Bu yol büyük/küçük harfe duyarlıdır. 
 
-1. Data Factory kullanıcı arabiriminde, sol bölmedeki **+ (artı)** seçeneğine tıklayıp **İşlem Hattı** ’na tıklayın. 
+1. Data Factory kullanıcı arabiriminde, sol bölmedeki **+ (artı)** seçeneğine tıklayıp **İşlem Hattı**’na tıklayın. 
 
     ![Yeni işlem hattı menüsü](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-pipeline-menu.png)
-2. **Etkinlikler** araç kutusunda **HDInsight** ’ı genişletin ve **Hive** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. 
+2. **Etkinlikler** araç kutusunda **HDInsight**’ı genişletin ve **Hive** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. 
 
     ![Hive etkinliğini sürükleyip bırakma](./media/tutorial-transform-data-using-hive-in-vnet-portal/drag-drop-hive-activity.png)
 3. Özellikler penceresinde **HDI Kümesi** sekmesine geçin ve **HDInsight Bağlı Hizmeti** için **AzureHDInsightLinkedService** hizmetini seçin.
@@ -217,21 +214,21 @@ Aşağıdaki noktalara dikkat edin:
 4. **Betikler** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
     1. **Betik Bağlı Hizmeti** için **AzureStorageLinkedService** hizmetini seçin. 
-    2. **Dosya Yolu** için **Depolamaya Gözat** ’a tıklayın. 
+    2. **Dosya Yolu** için **Depolamaya Gözat**’a tıklayın. 
  
         ![Depolamaya gözat](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. **Dosya veya klasör seçin** penceresinde **adftutorial** kapsayıcısının **hivescripts** klasörüne gidin, **hivescript.hql** dosyasını seçin ve **Son** 'a tıklayın.  
+    3. **Dosya veya klasör seçin** penceresinde **adftutorial** kapsayıcısının **hivescripts** klasörüne gidin, **hivescript.hql** dosyasını seçin ve **Son**'a tıklayın.  
         
         ![Dosya veya klasör seçme](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
     4. **Dosya Yolu** olarak **adftutorial/hivescripts/hivescript.hql** yolunu gördüğünüzü onaylayın.
 
         ![Betik ayarları](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. **Betik** sekmesinde **Gelişmiş** bölümünü genişletin. 
-    6. **Parametreler** için **Betikten otomatik olarak doldur** ’a tıklayın. 
+    6. **Parametreler** için **Betikten otomatik olarak doldur**’a tıklayın. 
     7. **Çıktı** parametresinin değerini şu biçimde girin: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Örneğin: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Betik bağımsız değişkenleri](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
-1. Yapıtları Data Factory’de yayımlamak için **Yayımla** ’ya tıklayın.
+1. Yapıtları Data Factory’de yayımlamak için **Yayımla**’ya tıklayın.
 
     ![Ekran görüntüsü bir Data Factory yayımlama seçeneğini gösterir.](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
@@ -249,8 +246,8 @@ Aşağıdaki noktalara dikkat edin:
 1. Soldaki **İzleyici** sekmesine geçin. **İşlem Hattı Çalıştırmaları** listesinde bir işlem hattı çalıştırması görürsünüz. 
 
     ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-transform-data-using-hive-in-vnet-portal/monitor-pipeline-runs.png)
-2. Listeyi yenilemek için **Yenile** ’ye tıklayın.
-4. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundan **Etkinlik çalıştırmalarını göster** ’e tıklayın. Diğer eylem bağlantıları, işlem hattının durdurulması/yeniden çalıştırılması içindir. 
+2. Listeyi yenilemek için **Yenile**’ye tıklayın.
+4. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundan **Etkinlik çalıştırmalarını göster**’e tıklayın. Diğer eylem bağlantıları, işlem hattının durdurulması/yeniden çalıştırılması içindir. 
 
     ![Etkinlik çalıştırmalarını görüntüleme](./media/tutorial-transform-data-using-hive-in-vnet-portal/view-activity-runs-link.png)
 5. İşlem hattında **HDInsightHive** türünde tek bir etkinlik olduğundan, yalnızca bir etkinlik çalıştırması görürsünüz. Önceki görünüme dönmek için üstteki **İşlem hatları** bağlantısına tıklayın.

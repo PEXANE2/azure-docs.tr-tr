@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: aa1693ba2b17c344475b96db42fa55514cf6b4db
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249644"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380585"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -27,7 +27,7 @@ Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 - Azure CLı sürüm 2.9.0 veya sonraki bir sürüme sahip olduğunuzdan emin olun
 - `EnableAzureRBACPreview`Özellik bayrağının etkinleştirildiğinden emin olun.
 - `aks-preview` [CLI uzantısının][az-extension-add] v 0.4.55 veya üzeri yüklü olduğundan emin olun
@@ -49,7 +49,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "EnableAzure
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
 ```
 
-Hazırlandığınızda, [az Provider Register] [az-Provider-Register] komutunu kullanarak *Microsoft. ContainerService* kaynak sağlayıcısı kaydını yenileyin:
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -285,3 +285,4 @@ az group delete -n MyResourceGroup
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 2222c6b020f712282a78ac5f82a87015d4cd86a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368209"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521688"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -356,7 +356,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - Performans katmanı: Şu anda yalnızca Standart katman depolama hesapları desteklenmektedir.
 - Kendi kendine Yönetim anahtar döndürme: erişim anahtarlarını depolama hesabınıza değiştirirseniz/döndürdüğünüzde NSG akış günlükleri çalışmayı durdurur. Bu sorunu onarmak için NSG akış günlüklerini devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
-**Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
+**Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Verileri süresiz olarak saklamak ve herhangi bir bekletme ilkesi uygulamak istemiyorsanız, bekletme (gün) seçeneğini 0 olarak ayarlayın. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
 **Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](../virtual-network/network-security-groups-overview.md) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı en son 2021 Mart 'ta kullanılabilir. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
 
