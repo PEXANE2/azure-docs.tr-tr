@@ -1,23 +1,18 @@
 ---
 title: Müşteri için SAP buluttan veri kopyalama
 description: Müşteri için SAP buluttan verileri desteklenen kaynak veri depolarından (veya), Data Factory kullanarak müşteri için SAP bulutuna kopyalamayı öğrenin.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 9578b87e16f418a7923cd71aa0638fa4e9279cfd
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430891"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386654"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
 
@@ -55,7 +50,7 @@ Müşteri bağlantılı hizmeti için SAP bulutu için aşağıdaki özellikler 
 | url | SAP C4C OData hizmetinin URL 'SI. | Yes |
 | username | SAP C4C bağlanmak için Kullanıcı adını belirtin. | Yes |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No |
 
 **Örnek:**
 
@@ -121,8 +116,8 @@ Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kay
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Type özelliği: **SapCloudForCustomerSource** olarak ayarlanmalıdır  | Yes |
-| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | Hayır |
-| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | Hayır |
+| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | No |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
 
 Belirli bir güne ait verileri almak için örnek sorgu: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 

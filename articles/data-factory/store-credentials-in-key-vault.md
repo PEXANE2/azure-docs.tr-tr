@@ -1,21 +1,17 @@
 ---
 title: Kimlik bilgilerini Azure Key Vault’ta depolama
 description: Azure Data Factory, çalışma zamanında otomatik olarak alabileceği bir Azure Anahtar Kasası 'nda kullanılan veri depoları için kimlik bilgilerini nasıl depolayacağınızı öğrenin.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81451695"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361902"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Kimlik bilgilerini Azure Key Vault içinde depola
 
@@ -44,8 +40,8 @@ Azure Key Vault bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Evet |
-| baseUrl | Azure Key Vault URL 'sini belirtin. | Evet |
+| tür | Type özelliği: **AzureKeyVault** olarak ayarlanmalıdır. | Yes |
+| baseUrl | Azure Key Vault URL 'sini belirtin. | Yes |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
@@ -77,14 +73,14 @@ Aşağıdaki özellikler, bağlantılı hizmette bir Anahtar Kasası gizliliğin
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Evet |
-| secretName | Azure Key Vault ' deki gizli dizi adı. | Evet |
-| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| Hayır |
-| mağaza | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Evet |
+| tür | Alanın Type özelliği: **AzureKeyVaultSecret** olarak ayarlanmalıdır. | Yes |
+| secretName | Azure Key Vault ' deki gizli dizi adı. | Yes |
+| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| No |
+| mağaza | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Yes |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
-Veri deponuza/hesaplamanıza bağlantı oluştururken gizli alanlar için **Azure Key Vault** seçin. Sağlanan Azure Key Vault bağlı hizmetini seçin ve **gizli dizi adını**sağlayın. İsteğe bağlı olarak gizli bir sürüm da sağlayabilirsiniz. 
+Veri deponuza/hesaplamanıza bağlantı oluştururken gizli alanlar için **Azure Key Vault** seçin. Sağlanan Azure Key Vault bağlı hizmetini seçin ve **gizli dizi adını** sağlayın. İsteğe bağlı olarak gizli bir sürüm da sağlayabilirsiniz. 
 
 >[!TIP]
 >Bağlı hizmette SQL Server, BLOB depolama, vb. gibi bağlantı dizesini kullanan bağlayıcılar için, yalnızca gizli alan gibi bir parola (örneğin, AKV) depolamayı ya da bağlantı dizesinin tamamını AKV 'de depolamayı seçebilirsiniz. Kullanıcı arabiriminde her iki seçeneği de bulabilirsiniz.

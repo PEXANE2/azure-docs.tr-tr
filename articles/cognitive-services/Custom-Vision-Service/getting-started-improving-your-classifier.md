@@ -1,28 +1,28 @@
 ---
-title: Sınıflandırıcınızı geliştirme-Özel Görüntü İşleme Hizmeti
+title: Modelinizi geliştirme-Özel Görüntü İşleme Hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, miktardaki, kalitede ve çeşitli verilerin Özel Görüntü İşleme hizmetinde sınıflandırıcının kalitesini nasıl iyileştirebileceğinizi öğreneceksiniz.
+description: Bu makalede, miktardaki, kalitede ve çeşitli verilerin Özel Görüntü İşleme hizmetinde modelinizin kalitesini nasıl iyileştirebileceğinizi öğreneceksiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271367"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096540"
 ---
-# <a name="how-to-improve-your-classifier"></a>Sınıflandırıcınızı geliştirme
+# <a name="how-to-improve-your-custom-vision-model"></a>Özel Görüntü İşleme modelinizi geliştirme
 
-Bu kılavuzda, Özel Görüntü İşleme Hizmeti sınıflandırıcının kalitesini nasıl iyileştireceğinizi öğreneceksiniz. Sınıflandırıcınız kalitesi, sağladığınız etiketli verilere ve genel veri kümesinin ne kadar dengeli olduğuna göre değişir. İyi bir sınıflandırıcının, sınıflandırıcının ne gönderdiklerine temsilci atanmış bir dengeli eğitim veri kümesi vardır. Böyle bir sınıflandırıcı oluşturma işlemi yinelemeli bir işlemdir; eğitimin beklenen sonuçlara ulaşabilmesi için birkaç kez bir kez daha yaygın hale gelir.
+Bu kılavuzda, Özel Görüntü İşleme Hizmeti modelinizin kalitesini geliştirmeyi öğreneceksiniz. [Sınıflandırıcınız](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) veya [nesne algılayıcısının](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) kalitesi, sağladığınız etiketli verilere ve genel veri kümesinin ne kadar dengeli olduğuna bağlıdır. İyi bir modelde, kendisine nelerin gönderilebileceklerini temsil eden bir dengeli eğitim veri kümesi vardır. Böyle bir modeli oluşturma işlemi yinelemeli bir işlemdir; eğitimin beklenen sonuçlara ulaşabilmesi için birkaç kez bir kez daha yaygın hale gelir.
 
-Aşağıda, daha doğru bir sınıflandırıcı oluşturmanıza yardımcı olacak genel bir model verilmiştir:
+Aşağıda, daha doğru bir modeli eğmenize yardımcı olacak genel bir örüntü verilmiştir:
 
 1. Birinci yuvarlama eğitimi
 1. Daha fazla görüntü ekleyin ve verileri dengeleyin; yeniden eğitme
@@ -32,15 +32,15 @@ Aşağıda, daha doğru bir sınıflandırıcı oluşturmanıza yardımcı olaca
 
 ## <a name="prevent-overfitting"></a>Fazla sığdırmayı engelle
 
-Bazen bir sınıflandırıcı, görüntülerinizin ortak olduğunu rastgele özelliklere göre tahminleri yapmayı öğrenmeyecektir. Örneğin, eller vs. Citrus için bir sınıflandırıcı oluşturuyorsanız ve beyaz levhalar üzerinde ve Citrus 'de elmalar görüntülerini kullandıysanız, sınıflandırıcı vs. Citrus yerine ellerde ve bu levhalar için önemli olmayan önem verebilir.
+Bazen, bir model, görüntülerinizin ortak olduğunu rastgele özelliklere göre tahminleri yapmayı öğrenmeyecektir. Örneğin, eller vs. Citrus için bir sınıflandırıcı oluşturuyorsanız ve beyaz levhalar üzerinde ve Citrus 'de elmalar görüntülerini kullandıysanız, sınıflandırıcı vs. Citrus yerine ellerde ve bu levhalar için önemli olmayan önem verebilir.
 
 ![Beklenmeyen sınıflandırmanın görüntüsü](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Bu sorunu düzeltmek için, daha değişen görüntülerle eğitim için aşağıdaki kılavuzu kullanın: farklı açılara, arka plana, nesne boyutuna, gruplara ve diğer çeşitlere sahip görüntüler sağlayın.
+Bu sorunu düzeltmek için, farklı açılara, arka plana, nesne boyutuna, gruplara ve diğer çeşitlere sahip görüntüler sağlayın. Aşağıdaki bölümler, bu kavramların üzerine genişletilir.
 
 ## <a name="data-quantity"></a>Veri miktarı
 
-Eğitim görüntülerinin sayısı en önemli faktördür. Başlangıç noktası olarak etiket başına en az 50 görüntü kullanmanızı öneririz. Daha az görüntü sayesinde, çok fazla ekleme riski daha yüksektir ve performans sayılarınız iyi kalite önerebilir, ancak modeliniz gerçek dünyada verilerle uğraşmaya başlayabilir. 
+Eğitim görüntülerinin sayısı, veri kümeniz için en önemli faktördür. Başlangıç noktası olarak etiket başına en az 50 görüntü kullanmanızı öneririz. Daha az görüntü sayesinde, çok fazla ekleme riski daha yüksektir ve performans sayılarınız iyi kalite önerebilir, ancak modeliniz gerçek dünyada verilerle uğraşmaya başlayabilir. 
 
 ## <a name="data-balance"></a>Veri dengesi
 
@@ -48,11 +48,11 @@ Eğitim verilerinizin göreli miktarları göz önünde bulundurmanız de öneml
 
 ## <a name="data-variety"></a>Veri çeşitleri
 
-Normal kullanım sırasında sınıflandırıcıya gönderilecek öğeleri temsil eden görüntüleri kullandığınızdan emin olun. Aksi takdirde, sınıflandırmalarınız, görüntülerinizin ortak olduğunu rastgele özelliklere göre tahmine dayalı hale getirme hakkında bilgi verebilir. Örneğin, eller vs. Citrus için bir sınıflandırıcı oluşturuyorsanız ve beyaz levhalar üzerinde ve Citrus 'de elmalar görüntülerini kullandıysanız, sınıflandırıcı vs. Citrus yerine ellerde ve bu levhalar için önemli olmayan önem verebilir.
+Normal kullanım sırasında sınıflandırıcıya gönderilecek öğeleri temsil eden görüntüleri kullandığınızdan emin olun. Aksi halde modelinize, görüntülerinizin ortak olarak sahip olduğu rastgele özelliklere göre tahminler yapmayı öğrenirsiniz. Örneğin, eller vs. Citrus için bir sınıflandırıcı oluşturuyorsanız ve beyaz levhalar üzerinde ve Citrus 'de elmalar görüntülerini kullandıysanız, sınıflandırıcı vs. Citrus yerine ellerde ve bu levhalar için önemli olmayan önem verebilir.
 
 ![Beklenmeyen sınıflandırmanın görüntüsü](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden emin olmak üzere çeşitli görüntüler ekleyin. Aşağıda, eğitim ayarlarınızı daha farklı hale getirmek için kullanabileceğiniz bazı yollar verilmiştir:
+Bu sorunu düzeltmek için, modelinizin iyi genelleştirildiğinden emin olmak için çeşitli görüntüler ekleyin. Aşağıda, eğitim ayarlarınızı daha farklı hale getirmek için kullanabileceğiniz bazı yollar verilmiştir:
 
 * __Arka plan:__ Nesnenizin görüntülerini farklı arka planların önüne girin. Doğal bağlamlardaki fotoğraflar, sınıflandırıcının daha fazla bilgi sağlaması için nötr arka planların önünde bulunan fotoğraflardan daha iyidir.
 
@@ -74,30 +74,39 @@ Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden 
 
     ![Stil örnekleri görüntüsü](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>Negatif görüntüler
+## <a name="negative-images-classifiers-only"></a>Negatif görüntüler (yalnızca sınıflandırıcılar)
 
-Projenizde bir noktada, sınıflandırıcınızı daha doğru hale getirmenize yardımcı olmak için _negatif örnekler_ eklemeniz gerekebilir. Negatif örnekler, diğer etiketlerden hiçbiriyle eşleşmeyen olanlardır. Bu görüntüleri karşıya yüklediğinizde, özel **negatif** etiketi bunlara uygulayın.
+Resim sınıflandırıcısını kullanıyorsanız, sınıflandırıcınızı daha doğru hale getirmenize yardımcı olması için _negatif örnekler_ eklemeniz gerekebilir. Negatif örnekler, diğer etiketlerden hiçbiriyle eşleşmeyen görüntülerdir. Bu görüntüleri karşıya yüklediğinizde, özel **negatif** etiketi bunlara uygulayın.
+
+Çizilmiş sınırlayıcı kutular dışında herhangi bir görüntü alanı negatif olarak kabul edildiğinden nesne algılayıcıları negatif örnekleri otomatik olarak işler.
 
 > [!NOTE]
 > Özel Görüntü İşleme Hizmeti, bazı otomatik negatif görüntü işlemeyi destekler. Örneğin, bir Grape vs. muz Sınıflandırıcısı oluşturuyorsanız ve tahmin için bir showe görüntüsü gönderirseniz, sınıflandırıcının hem Grape hem de muz için %0 ' a yakın olması gerekir.
 > 
-> Öte yandan, negatif görüntülerin yalnızca eğitiminde kullanılan görüntülerin bir çeşitlemesi olduğu durumlarda, büyük benzerlikler nedeniyle modelin negatif görüntüleri etiketli bir sınıf olarak sınıflandırmasına neden olur. Örneğin, bir turuncu vs. grapemeyve sınıflandırıcınız varsa ve bir klementin 'nin görüntüsüne akış yaparsanız, klementin 'nın birçok özelliği Portages 'lere benzediğinden, klementin bir turuncu olarak puan verebilir. Negatif görüntüleriniz bu doğası içeriyorsa, modelin bu sınıflar arasında daha iyi ayırt edilmesini sağlamak için eğitim sırasında bir veya **Other**daha fazla ek etiket oluşturmanızı ve bu etiketle negatif görüntüleri etiketlemesini öneririz.
+> Öte yandan, negatif görüntülerin yalnızca eğitiminde kullanılan görüntülerin bir çeşitlemesi olduğu durumlarda, büyük benzerlikler nedeniyle modelin negatif görüntüleri etiketli bir sınıf olarak sınıflandırmasına neden olur. Örneğin, bir turuncu vs. grapemeyve sınıflandırıcınız varsa ve bir klementin 'nin görüntüsüne akış yaparsanız, klementin 'nın birçok özelliği Portages 'lere benzediğinden, klementin bir turuncu olarak puan verebilir. Negatif görüntüleriniz bu doğası içeriyorsa, modelin bu sınıflar arasında daha iyi ayırt edilmesini sağlamak için eğitim sırasında bir veya daha fazla ek etiket oluşturmanızı ve bu etiketle negatif görüntüleri etiketlemesini öneririz.
+
+## <a name="consider-occlusion-and-truncation-object-detectors-only"></a>Kabul etmeyi ve kesme yapmayı düşünün (yalnızca nesne algılayıcıları)
+
+Nesne algılayıcısı 'nın kesilen nesneleri (nesne kısmen kesilmiş) veya occluğlu nesneleri algılamasını istiyorsanız (nesne görüntüdeki başka bir nesne tarafından kısmen engelleniyorsa), bu servis taleplerini kapsayan eğitim görüntülerini dahil etmeniz gerekir.
+
+> [!NOTE]
+> Diğer nesneler tarafından occluşmuş nesnelerin sorunu, bir derecelendirme modeli performansı için bir parametre olan **Çakışma eşiğine** göre karıştırılmamalıdır. [Özel görüntü işleme Web sitesindeki](https://customvision.ai) **Çakışma eşiği** kaydırıcısı, tahmin edilen bir sınırlayıcı kutusunun doğru olarak kabul edilmesi için doğru sınırlayıcı kutusuyla ne kadar çakışmalıdır.
 
 ## <a name="use-prediction-images-for-further-training"></a>Daha fazla eğitim için tahmin görüntülerini kullanma
 
-Tahmin uç noktasına görüntü göndererek görüntü sınıflandırıcısını kullandığınızda veya test ettiğinizde, Özel Görüntü İşleme Hizmeti bu görüntüleri depolar. Ardından, modeli geliştirmek için bunları kullanabilirsiniz.
+Tahmin uç noktasına görüntü göndererek modeli kullandığınızda veya test ettiğinizde, Özel Görüntü İşleme Hizmeti bu görüntüleri depolar. Ardından, modeli geliştirmek için bunları kullanabilirsiniz.
 
-1. Sınıflandırıcıya gönderilen görüntüleri görüntülemek için, [özel görüntü işleme Web sayfasını](https://customvision.ai)açın, projenize gidin ve __tahmin__ sekmesini seçin. Varsayılan görünüm geçerli yinelemeden resimleri gösterir. Önceki yinelemeler sırasında gönderilen görüntüleri görüntülemek için __yineleme__ açılan menüsünü kullanabilirsiniz.
+1. Modele gönderilen görüntüleri görüntülemek için, [özel görüntü işleme Web sayfasını](https://customvision.ai)açın, projenize gidin ve __tahmin__ sekmesini seçin. Varsayılan görünüm geçerli yinelemeden resimleri gösterir. Önceki yinelemeler sırasında gönderilen görüntüleri görüntülemek için __yineleme__ açılan menüsünü kullanabilirsiniz.
 
     ![tahmine dayalı sekmesinin ekran görüntüsü, görünümdeki görüntülerle birlikte](./media/getting-started-improving-your-classifier/predictions.png)
 
-2. Sınıflandırıcı tarafından tahmin edilen etiketleri görmek için bir görüntünün üzerine gelin. Görüntüler, Sınıflandırıcıların en iyi geliştirmelerini getirebileceği şekilde sıralanır. Farklı bir sıralama yöntemi kullanmak için __sıralama__ bölümünde bir seçim yapın. 
+2. Model tarafından tahmin edilen etiketleri görmek için bir görüntünün üzerine gelin. Görüntüler, modele en iyi iyileştirmeleri getirebilen bir şekilde sıralanır. Farklı bir sıralama yöntemi kullanmak için __sıralama__ bölümünde bir seçim yapın. 
 
     Mevcut eğitim verilerinize bir görüntü eklemek için görüntüyü seçin, doğru etiketleri ayarlayın ve __Kaydet ve Kapat__' a tıklayın. Görüntü __tahminlerden__ kaldırılır ve eğitim görüntüleri kümesine eklenir. Bunu, __eğitim görüntüleri__ sekmesini seçerek görüntüleyebilirsiniz.
 
     ![Etiketleme sayfasının görüntüsü](./media/getting-started-improving-your-classifier/tag.png)
 
-3. Ardından, sınıflandırıcının yeniden eğmesi için __eğitme__ düğmesini kullanın.
+3. Ardından, modeli yeniden eğitebilmeniz için __eğitme__ düğmesini kullanın.
 
 ## <a name="visually-inspect-predictions"></a>Tahmin öngörülerini görsel olarak inceleyin
 
@@ -109,7 +118,7 @@ Bazen görsel inceleme, daha fazla eğitim verisi ekleyerek veya mevcut eğitim 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, özel görüntü sınıflandırma modelinizi daha doğru hale getirmek için çeşitli teknikler öğrendiniz. Daha sonra, görüntüleri bir tahmin API 'sine göndererek programlı bir şekilde test etme hakkında bilgi edinin.
+Bu kılavuzda, özel görüntü sınıflandırma modelinizi veya nesne algılayıcı modelinizi daha doğru hale getirmek için çeşitli teknikler öğrendiniz. Daha sonra, görüntüleri bir tahmin API 'sine göndererek programlı bir şekilde test etme hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Tahmin API’sini kullanma](use-prediction-api.md)

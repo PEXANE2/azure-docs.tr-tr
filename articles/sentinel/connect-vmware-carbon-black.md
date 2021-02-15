@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e13b251c9bd95a5b52d63d8ea1bbf265c9c46fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c26931db617109c36c19b73bd3ec9263f4b40cc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023883"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096455"
 ---
 # <a name="connect-your-vmware-carbon-black-cloud-endpoint-standard-to-azure-sentinel-with-azure-function"></a>Azure Işleviyle VMware karbon siyah bulut uç noktası standardını Azure Sentinel 'e bağlama
 
@@ -47,7 +47,7 @@ Azure Işlevleri, olayları ve günlükleri doğrudan VMware karbon siyah bulut 
 Başarılı bir bağlantı kurulduktan sonra, **CarbonBlackAuditLogs_CL**, **CarbonBlackNotifications_CL** ve * * * * CarbonBlackEvents_CL * * * * tablolarında Log Analytics veriler görüntülenir.
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,23 +1,19 @@
 ---
 title: Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
 description: Azure Batch paralel işleme özelliği kullanılarak Azure Data Factory bir işlem hattındaki çok büyük miktarlarda verilerin nasıl işlenmesinin nasıl yapılacağını açıklar.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 365de79db450eda897621ccde3b92478ed93ecc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496169"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364282"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
 > [!NOTE]
@@ -193,7 +189,7 @@ Yöntemi anlamanız gereken birkaç anahtar bileşene sahiptir:
 
    örneğin: Projeyi oluşturmak için **Tamam**'ı seçin.
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
 
 1. Paket Yöneticisi konsolunda, Microsoft. Azure. Management. DataFactory 'yi içeri aktarmak için aşağıdaki komutu yürütün:
 
@@ -403,7 +399,7 @@ Yöntemi anlamanız gereken birkaç anahtar bileşene sahiptir:
 
    ![Bin\Debug klasör listesi](./media/data-factory-data-processing-using-batch/image5.png)
 
-1. ADFTutorialDataFactory **MyDotNetActivity.zip** 'ın `customactivitycontainer` kullandığı StorageLinkedService bağlı hizmetinin blob depolamadaki blob kapsayıcısına blob olarakMyDotNetActivity.zipyükleyin. Zaten mevcut değilse blob kapsayıcısını oluşturun `customactivitycontainer` .
+1. ADFTutorialDataFactory  'ın `customactivitycontainer` kullandığı StorageLinkedService bağlı hizmetinin blob depolamadaki blob kapsayıcısına blob olarakMyDotNetActivity.zipyükleyin. Zaten mevcut değilse blob kapsayıcısını oluşturun `customactivitycontainer` .
 
 #### <a name="execute-method"></a>Execute yöntemi
 Bu bölüm yürütme yöntemindeki kod hakkında daha fazla ayrıntı sağlar.
@@ -868,7 +864,7 @@ Bu adımda, dosyaları giriş klasörlerine bırakarak işlem hattını test ede
 #### <a name="data-factory-and-batch-integration"></a>Data Factory ve toplu tümleştirme
 Data Factory hizmeti Batch 'de ada sahip bir iş oluşturur `adf-poolname:job-xxx` .
 
-![Batch işleri](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+![Toplu işler](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
 Bir dilimin her etkinlik çalışması için işteki bir görev oluşturulur. 10 dilim işlenmek üzere hazırsanız, işte 10 görev oluşturulur. Havuzda birden çok işlem düğümünüz varsa, paralel olarak çalışan birden fazla dilime sahip olabilirsiniz. İşlem düğümü başına en fazla görev sayısı birden fazla olarak ayarlandıysa, aynı işlem üzerinde birden fazla dilim çalıştırılabilir.
 

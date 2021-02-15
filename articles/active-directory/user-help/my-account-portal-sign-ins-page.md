@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834158"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096081"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Oturum açma etkinliklerim sayfasından son oturum açma etkinliğinizi görüntüleyin ve arayın
 
@@ -25,6 +25,12 @@ En son iş veya okul hesabı oturum açma etkinliğinizi, **Hesabım** portalın
 - Parolanızı tahmin etmeye çalışıyorsa.
 - Bir saldırgan hesabınızda başarıyla oturum açmışsa ve bu konumdan.
 - Saldırganın erişmeye çalıştığı uygulamalar.
+
+>[!Note]
+> Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>Son oturum açma etkinliğinizi görüntüleme
 

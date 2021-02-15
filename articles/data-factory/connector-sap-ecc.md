@@ -1,22 +1,18 @@
 ---
 title: SAP ECC 'den veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak SAP ECC 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
-ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901580"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386705"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -61,9 +57,9 @@ Sürüm 7,0 veya üzeri, SAP ECC sürümü yerine SAP NetWeaver sürümüne baş
 
 Bu SAP ECC bağlayıcısını kullanmak için SAP Gateway aracılığıyla SAP ECC varlıklarını OData Hizmetleri aracılığıyla kullanıma sunabilirsiniz. Daha ayrıntılı belirtmek gerekirse:
 
-- **SAP Gateway ayarlayın** . 7,4 ' den sonraki SAP NetWeaver sürümleri olan sunucular için SAP Gateway zaten yüklüdür. Önceki sürümler için, OData Hizmetleri aracılığıyla SAP ECC verileri kullanıma sunmadan önce gömülü SAP Gateway veya SAP Gateway hub sistemini yüklemelisiniz. SAP Gateway ayarlamak için bkz. [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **SAP Gateway ayarlayın**. 7,4 ' den sonraki SAP NetWeaver sürümleri olan sunucular için SAP Gateway zaten yüklüdür. Önceki sürümler için, OData Hizmetleri aracılığıyla SAP ECC verileri kullanıma sunmadan önce gömülü SAP Gateway veya SAP Gateway hub sistemini yüklemelisiniz. SAP Gateway ayarlamak için bkz. [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **SAP OData hizmetini etkinleştirin ve yapılandırın** . Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **SAP OData hizmetini etkinleştirin ve yapılandırın**. Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -79,11 +75,11 @@ SAP ECC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapEcc` . | Evet |
-| `url` | SAP ECC OData hizmetinin URL 'SI. | Evet |
-| `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | Hayır |
-| `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | Hayır |
-| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Bir çalışma zamanı belirtmezseniz, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | Hayır |
+| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapEcc` . | Yes |
+| `url` | SAP ECC OData hizmetinin URL 'SI. | Yes |
+| `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | No |
+| `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | No |
+| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Bir çalışma zamanı belirtmezseniz, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | No |
 
 ### <a name="example"></a>Örnek
 
@@ -118,7 +114,7 @@ Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `path` | SAP ECC OData varlığının yolu. | Evet |
+| `path` | SAP ECC OData varlığının yolu. | Yes |
 
 ### <a name="example"></a>Örnek
 
@@ -151,10 +147,10 @@ Kopyalama etkinliğinin bölümünde aşağıdaki özellikler desteklenir `sourc
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Kopyalama etkinliğinin `source` bölümünün özelliği olarak ayarlanmalıdır `SapEccSource` . | Evet |
-| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
-| `sapDataColumnDelimiter` | Çıktı verilerini ayırmak için SAP RFC 'ye geçirilen sınırlayıcı olarak kullanılan tek karakter. | Hayır |
-| `httpRequestTimeout` | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | Hayır |
+| `type` | `type`Kopyalama etkinliğinin `source` bölümünün özelliği olarak ayarlanmalıdır `SapEccSource` . | Yes |
+| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `sapDataColumnDelimiter` | Çıktı verilerini ayırmak için SAP RFC 'ye geçirilen sınırlayıcı olarak kullanılan tek karakter. | No |
+| `httpRequestTimeout` | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
 
 ### <a name="example"></a>Örnek
 

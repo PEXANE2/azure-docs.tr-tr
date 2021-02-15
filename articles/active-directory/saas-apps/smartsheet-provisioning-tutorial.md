@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181454"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103592"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Smartsheet yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [Smart
 > [!NOTE]
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -75,7 +75,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Smartsheet 'i yapılandırmadan
 
     ![API erişimi olan kişisel ayarlar iletişim kutusunun ekran görüntüsü ve olarak adlandırılan yeni erişim belirteci seçenekleri oluştur.](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. API erişim belirtecinin adını tanımlayın. **Tamam** düğmesine tıklayın.
+7. API erişim belirtecinin adını tanımlayın. **Tamam**'a tıklayın.
 
     ![Adım 1 ' in ekran görüntüsü: Tamam seçeneğiyle birlikte API erişim belirteci oluşturma.](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
@@ -137,22 +137,20 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Smartsheet 'te kullanıcı
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Smartsheet 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Smartsheet içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-   |Öznitelik|Tür|
-   |---|---|
+   |Öznitelik|Tür|Filtreleme için destekleniyor|
+   |---|---|---|
+   |userName|Dize|&check;|
    |active|Boole|
    |başlık|Dize|
-   |userName|Dize|
    |name.givenName|Dize|
    |name.familyName|Dize|
    |phoneNumbers[type eq "work"].value|Dize|
    |phoneNumbers[type eq "mobile"].value|Dize|
    |phoneNumbers [tür EQ "Faks"]. değer|Dize|
+   |emails[type eq "work"].value|Dize|
    |externalId|Dize|
-   |Roller [birincil EQ "true"]. Display|Dize|
-   |Roller [birincil EQ "true"]. tür|Dize|
-   |roles[primary eq "True"].value|Dize|
    |roller|Dize|
-   urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Dize|
@@ -188,6 +186,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 ## <a name="change-log"></a>Değişiklik günlüğü
 
 * 06/16/2020-kullanıcılar için "maliyet merkezi", "bölme", "Yönetici" ve "Departman" Kurumsal uzantı özniteliklerine yönelik destek eklendi.
+* 02/10/2021-kullanıcılar için "e-posta [tür EQ" Work "]" temel özniteliklerine yönelik destek eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

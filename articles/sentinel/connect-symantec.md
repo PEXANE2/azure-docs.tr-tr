@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b32baa23a31342095e542d60745a503b81e89a9
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564924"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092715"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDX gerecinizi bağlama 
 
@@ -39,7 +39,7 @@ Symantec IDX, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dı�
 1. Microsoft Azure Sentinel (Log Analytics) ileticileri eklemek için ICDX yönetim konsolunu açın.
 2. ICDX gezinti çubuğunda **yapılandırma**' ya tıklayın. 
 3. **Yapılandırma** ekranının üst kısmında **ileticiler**' e tıklayın.
-4. **İleticiler**altında Microsoft Azure Sentinel (Log Analytics) seçeneğinin yanındaki **Ekle**' ye tıklayın. 
+4. **İleticiler** altında Microsoft Azure Sentinel (Log Analytics) seçeneğinin yanındaki **Ekle**' ye tıklayın. 
 4. **Microsoft Azure Sentinel (Log Analytics)** penceresinde **Gelişmiş göster**' e tıklayın. 
 5. Microsoft Azure Sentinel (Log Analytics) penceresinin en üstünde şunları yapın:
     -   **Ad**: 30 karakterden uzun olmayan iletici için bir ad yazın. Benzersiz ve anlamlı bir ad seçin. Bu ad, **yapılandırma** ekranındaki ileticiler listesinde ve **Pano** ekranındaki panolar ' de görünür. Örneğin: Microsoft Azure Log Analytics Doğu. Bu alan gereklidir.
@@ -59,18 +59,18 @@ Symantec IDX, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dı�
     - **Dışlanan öznitelikler**: iletilen verilerden hariç tutulacak özniteliklerin virgülle ayrılmış listesini yazın.
     - **Toplu Iş boyutu**: toplu işlem başına gönderilen olay sayısını seçin. Seçenekleriniz 10, 50, 100, 500 ve 1000.<br>Varsayılan değer 100'dür. 
     - **Hız sınırı**: olayların iletildiği oranı (saniye başına olay olarak ifade edilir) seçin. Seçenekleriniz sınırsız, 500, 1000, 5000, 10000. <br> Varsayılan değer 5000 ' dir. 
-7. **Azure hedefi**altında aşağıdakileri yapın: 
+7. **Azure hedefi** altında aşağıdakileri yapın: 
     - **Çalışma alanı kimliği**: çalışma alanı kimliğini aşağıdan yapıştırın. Bu alan gereklidir.
     - **Birincil anahtar**: birincil anahtarı aşağıdan yapıştırın. Bu alan gereklidir.
     - **Özel günlük adı**: olayları ileteceklerinizi Microsoft Azure Portal Log Analytics çalışma alanına özel günlük adını yazın. Varsayılan değer SymantecICDx ' dir. Bu alan gereklidir.
 8. İletici yapılandırmasını son vermek için *Kaydet* ' e tıklayın. 
-9. İleticiye başlamak için, **Seçenekler**altında, **daha fazla** ve ardından **Başlat**' a tıklayın.
-10. Symantec IDX olayları için Log Analytics ilgili şemayı kullanmak için, **SymantecICDx_CL**aratın.
+9. İleticiye başlamak için, **Seçenekler** altında, **daha fazla** ve ardından **Başlat**' a tıklayın.
+10. Symantec IDX olayları için Log Analytics ilgili şemayı kullanmak için, **SymantecICDx_CL** aratın.
 
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
+Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir. 
 
 
 

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak PostgreSQL 'Ten veri taşıma
 description: Azure Data Factory kullanarak PostgreSQL veritabanından veri taşıma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca8770944a12c6e0dd3e4f95d286758ebee5f9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082843"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387283"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -44,7 +39,7 @@ PostgreSQL veritabanı bir Azure IaaS VM 'sinde barındırıldığında bile ağ
 ## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
 PostgreSQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, 2.0.12 ve 3.1.9 arasında sürümü ile [PostgreSQL Için Ngpsql veri sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=282716) 'Nı veri yönetimi ağ geçidi ile aynı sistemde yükleme yapın. PostgreSQL sürüm 7,4 ve üzeri desteklenir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak şirket içi PostgreSQL veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
@@ -72,14 +67,14 @@ Aşağıdaki tabloda, PostgreSQL bağlı hizmetine özgü JSON öğeleri için a
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Evet |
-| sunucu |PostgreSQL sunucusunun adı. |Evet |
-| database |PostgreSQL veritabanının adı. |Evet |
-| schema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
-| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
-| username |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| tür |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Yes |
+| sunucu |PostgreSQL sunucusunun adı. |Yes |
+| database |PostgreSQL veritabanının adı. |Yes |
+| schema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |No |
+| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| username |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |No |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |No |
+| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
@@ -249,7 +244,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob iç
 
 **Kopyalama etkinliği içeren işlem hattı:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan ve saatlik olarak çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, PostgreSQL veritabanındaki public. usstates tablosundan verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan ve saatlik olarak çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, PostgreSQL veritabanındaki public. usstates tablosundan verileri seçer.
 
 ```json
 {

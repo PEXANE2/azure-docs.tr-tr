@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMware çözümünü kullanarak Azure 'da vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966318"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093956"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
@@ -22,7 +22,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Azure VMware çözümü özel bulutu oluşturma
 > * Özel bulutun dağıtıldığını doğrulayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri.
@@ -74,25 +74,6 @@ Kaynak grubu ve özel bulut, bir konum ve kümenin boyutu için bir ad sağlayı
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünün özel bulutunu silme
-
-Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Azure VMware çözümü özel bulutu, yalıtılmış bir ağ etki alanı, adanmış sunucu konaklarında bir veya daha fazla sağlanan vSphere kümesi ve birkaç sanal makine içerir. Özel bir bulut silindiğinde tüm sanal makineler, verileri ve kümeleri silinir. Adanmış çıplak konaklar güvenli bir şekilde temizlenir ve ücretsiz havuza döndürülür. Müşteri için sağlanan ağ etki alanı silinir.  
-
-> [!CAUTION]
-> Özel bulutun silinmesi geri alınamaz bir işlemdir. Özel bulut silindikten sonra, tüm çalışan iş yüklerini ve bileşenlerini sonlandırdığı ve genel IP adresleri dahil tüm özel bulut verilerini ve yapılandırma ayarlarını yok etmek için veriler kurtarılamaz.
-
-### <a name="prerequisites"></a>Ön koşullar
-
-Özel bir bulut silindikten sonra, sanal makineleri ve bunların verilerini kurtarmanın bir yolu yoktur. Sanal makine verileri daha sonra gerekli olacaktır, önce yönetici özel bulutu silmeden önce tüm verileri yedeklemeli olmalıdır.
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünü özel bulutu silme adımları
-
-1. Azure portal Azure VMware çözümleri sayfasına erişin.
-
-2. Silinecek özel bulutu seçin.
- 
-3. Özel bulutun adını girip **Evet**' i seçin. Birkaç saat içinde, silme işlemi tamamlanır.  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware komutları
 

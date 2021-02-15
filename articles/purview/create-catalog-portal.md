@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82b72567a0db4dc9dbff9128402d0ee9f40f3512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880042"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094160"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
@@ -115,6 +115,9 @@ Gerekirse, aboneliğinizi Azure purview 'ın aboneliğinizde çalışacak şekil
 1. Azure portal ' daki **takip hesapları** sayfasına gidin ve ardından **Ekle** ' yi seçerek yeni bir Azure purview hesabı oluşturun. Alternatif olarak, **takip eden hesaplar** için Market araması ' na gidebilir ve **Oluştur**' u seçebilirsiniz. Tek seferde yalnızca bir Azure purview hesabı ekleyebileceğinizi unutmayın.
 
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Azure portal Azure purview hesap örneğinin nasıl oluşturulacağını gösteren ekran görüntüsü.":::
+
+    > [!Note] 
+    > Azure purview, hesabı bölgeler arasında taşımayı desteklemez. Bu konuda [Azure desteklenen Hizmetler sayfasında](https://docs.microsoft.com/azure/azure-resource-manager/management/region-move-support)daha fazla bilgi edinebilirsiniz.
 
 1. **Temel bilgiler** sekmesinde şunları yapın:
     1. Bir **kaynak grubu** seçin.

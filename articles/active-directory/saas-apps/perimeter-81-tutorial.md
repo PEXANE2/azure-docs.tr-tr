@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d095c3cc7e67938120260c35376b128be73ffa8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98727029"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363895"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>Öğretici: çevre 81 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, çevre 81 Azure Active Directory (Azure AD) ile nasıl tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla çevre 81 ' de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -71,13 +71,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **çevre 81** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`urn:auth0:perimeter81:<SUBDOMAIN>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir değer yazın:`urn:auth0:perimeter81:<SUBDOMAIN>`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://auth.perimeter81.com/login/callback?connection=<SUBDOMAIN>`
 
@@ -88,9 +88,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [çevre 81 istemci destek ekibine](mailto:support@perimeter81.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+
+1. **Çevre 81 ayarlama** bölümünde uygun URL 'leri gereksinime göre kopyalayın.
+
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -117,7 +122,42 @@ Bu bölümde, çevre 81 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 ## <a name="configure-perimeter-81-sso"></a>Çevre 81 SSO 'yu yapılandırma
 
-**Çevre 81** tarafında çoklu oturum açmayı yapılandırmak için, bir **uygulama Federasyon meta veri Url 'sini** [çevresel 81 destek ekibine](mailto:support@perimeter81.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+1. Çevre 81 ' de yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, sırasıyla **çevresel 81** ' a tıkladığınızda size çevresel 81 uygulamasına yönlendirebilirsiniz. Buradan, çevre 81 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Çevre 81 'yi el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, çevre 81 şirket sitenizde yönetici olarak oturum açın.
+
+4. **Ayarlar** ' a gidin ve **kimlik sağlayıcıları**' na tıklayın.
+
+    ![Çevre 81 ayarları](./media/perimeter-81-tutorial/settings.png)
+
+5. **Sağlayıcı Ekle** düğmesine tıklayın.
+
+    ![Çevre 81 sağlayıcı ekle](./media/perimeter-81-tutorial/add-provider.png)
+
+6. **SAML 2,0 kimlik sağlayıcıları** ' nı seçin ve **devam et** düğmesine tıklayın.
+
+    ![Çevre 81 kimlik sağlayıcı ekle](./media/perimeter-81-tutorial/add-identity-provider.png)
+
+7. **SAML 2,0 kimlik sağlayıcıları** bölümünde aşağıdaki adımları uygulayın:
+
+    ![Çevre 81 SAML ayarlama](./media/perimeter-81-tutorial/setting-up-saml.png)
+
+    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+
+    b. **Etki alanı diğer adları** metin kutusunda, etki alanı diğer adı değerini girin.
+
+    c. İndirilen **sertifikayı (base64)** Azure Portal Not defteri ' nden açın ve Içeriği **x509 imza sertifikası** metin kutusuna yapıştırın.
+
+    > [!NOTE]
+    > Alternatif olarak, Azure portal 'ten indirdiğiniz **sertifikayı (base64)** karşıya yüklemek için **pek/CERT dosyasını karşıya yükle** ' ye tıklayabilirsiniz.
+    
+    d. **Bitti**’ye tıklayın.
 
 ### <a name="create-perimeter-81-test-user"></a>Çevre 81 test kullanıcısı oluşturma
 
@@ -135,7 +175,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 #### <a name="idp-initiated"></a>IDP başlatıldı:
 
-* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız çevresel 81 ' de otomatik olarak oturum açmış olmanız gerekir 
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız çevre 81 ' de otomatik olarak oturum açmış olmanız gerekir.
 
 Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki çevre 81 kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız çevre 81 ' de otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 

@@ -1,22 +1,18 @@
 ---
 title: Azure-SSIS tümleştirme çalışma zamanı için lisanslı bileşenleri yükler
 description: ISV 'nın Azure-SSIS tümleştirme çalışma zamanı için ücretli veya lisanslı özel bileşenleri nasıl geliştirebileceğinizi ve yükleyebileceğinizi öğrenin
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187632"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386297"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için ücretli veya lisanslı özel bileşenleri yükleme
 
@@ -34,7 +30,7 @@ Azure-SSIS tümleştirme çalışma zamanının doğası, özel bileşenlerin ş
 
 ## <a name="the-solution"></a>Çözüm
 
-Önceki bölümde açıklanan geleneksel lisans yöntemlerinin sınırlamaları nedeniyle Azure-SSIS IR yeni bir çözüm sağlar. Bu çözüm, üçüncü taraf bileşenlerinin lisans bağlaması ve doğrulanması için Windows ortam değişkenlerini ve SSIS sistem değişkenlerini kullanır. ISV 'Ler, küme KIMLIĞI ve küme düğümü sayısı gibi Azure-SSIS IR için benzersiz ve kalıcı bilgiler almak üzere bu değişkenleri kullanabilir. Bu bilgiyle, ISV 'Ler, bileşenlerinin lisansını *bir küme olarak*bir Azure-SSIS IR bağlayabilirler. Bu bağlama, müşteriler başlatıldığında veya durdurulduğunda, ölçek büyütme veya küçültme, ölçeği büyütme veya küçültme ya da Azure-SSIS IR her türlü şekilde yeniden yapılandırma gibi değişmeyen bir KIMLIK kullanır.
+Önceki bölümde açıklanan geleneksel lisans yöntemlerinin sınırlamaları nedeniyle Azure-SSIS IR yeni bir çözüm sağlar. Bu çözüm, üçüncü taraf bileşenlerinin lisans bağlaması ve doğrulanması için Windows ortam değişkenlerini ve SSIS sistem değişkenlerini kullanır. ISV 'Ler, küme KIMLIĞI ve küme düğümü sayısı gibi Azure-SSIS IR için benzersiz ve kalıcı bilgiler almak üzere bu değişkenleri kullanabilir. Bu bilgiyle, ISV 'Ler, bileşenlerinin lisansını *bir küme olarak* bir Azure-SSIS IR bağlayabilirler. Bu bağlama, müşteriler başlatıldığında veya durdurulduğunda, ölçek büyütme veya küçültme, ölçeği büyütme veya küçültme ya da Azure-SSIS IR her türlü şekilde yeniden yapılandırma gibi değişmeyen bir KIMLIK kullanır.
 
 Aşağıdaki diyagramda, bu yeni değişkenleri kullanan üçüncü taraf bileşenleri için tipik yükleme, etkinleştirme ve lisans bağlama ve doğrulama akışları gösterilmektedir:
 

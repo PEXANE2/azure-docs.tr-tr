@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581015"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386110"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -52,7 +52,7 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 | Bir Azure aboneliği |Azure Key Vault bir Anahtar Kasası oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. [Ücretsiz deneme Için kaydolun](https://azure.microsoft.com/pricing/free-trial/). |
 | HSM korumalı anahtarları içeri aktarmak için Key Vault Premium SKU 'SU |Azure Key Vault hizmet katmanları ve özellikleri hakkında daha fazla bilgi için bkz. [Key Vault fiyatlandırması](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Desteklenen HSMs listesinden bir HSM ve HSM satıcınız tarafından sunulan bir BYOK aracı ve yönergeleri | HSM 'nizin nasıl kullanılacağına ilişkin bir HSM ve temel bilgi için izinleriniz olmalıdır. Bkz. [desteklenen HSM](#supported-hsms)'ler. |
-| Azure CLı sürüm 2.1.0 veya üzeri | Bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli?view=azure-cli-latest).|
+| Azure CLı sürüm 2.1.0 veya üzeri | Bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).|
 
 ## <a name="supported-hsms"></a>Desteklenen HSM 'ler
 
@@ -63,9 +63,10 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 |Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Marvell BYOK aracı ve belgeleri](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK aracı ve belgeleri](https://www.cryptomathic.com/azurebyok)|
-|Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
+|Securosys SA|Üreticisini<br/>Hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>Utıco</li><li>Thales</li><li>nCipher</li></ul>[Ayrıntılar için bkz. Stormagic sitesi](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS ve Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Üretici|IBM 476x, CryptoExpress|[IBM Kurumsal anahtar yönetim altyapısı](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utıco|Üreticisini<br/>Hizmet olarak HSM|u. güven çıpası, CryptoServer|[Uıtıco BYOK aracı ve tümleştirme Kılavuzu](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 
@@ -100,7 +101,7 @@ KEK şu olmalıdır:
 > [!NOTE]
 > KEK, yalnızca izin verilen anahtar işlemi olarak ' import ' içermelidir. ' Import ' diğer tüm anahtar işlemleriyle birbirini dışlıyor.
 
-Anahtar işlemleri olarak ayarlanmış bir KEK oluşturmak için [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu kullanın `import` . `kid`Aşağıdaki komuttan döndürülen anahtar tanımlayıcısını () kaydedin. ( `kid` [Adım 3](#step-3-generate-and-prepare-your-key-for-transfer)' te bu değeri kullanacaksınız.)
+Anahtar işlemleri olarak ayarlanmış bir KEK oluşturmak için [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) komutunu kullanın `import` . `kid`Aşağıdaki komuttan döndürülen anahtar tanımlayıcısını () kaydedin. ( `kid` [Adım 3](#step-3-generate-and-prepare-your-key-for-transfer)' te bu değeri kullanacaksınız.)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -108,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>2. Adım: KEK ortak anahtarını Indirme
 
-KEK ortak anahtarını bir. ped dosyasına indirmek için [az keykasakey Download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) komutunu kullanın. İçeri aktardığınız hedef anahtar, KEK ortak anahtarı kullanılarak şifrelenir.
+KEK ortak anahtarını bir. ped dosyasına indirmek için [az keykasakey Download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) komutunu kullanın. İçeri aktardığınız hedef anahtar, KEK ortak anahtarı kullanılarak şifrelenir.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -129,7 +130,7 @@ BYOK dosyasını bağlı bilgisayarınıza aktarın.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4. Adım: anahtarınızı Azure Key Vault aktarma
 
-Anahtar içeri aktarmayı gerçekleştirmek için, anahtar aktarım paketini (bir BYOK dosyası) bağlantısı kesilen bilgisayarınızdan İnternet 'e bağlı bilgisayara aktarın. BYOK dosyasını Key Vault HSM 'ye yüklemek için [az keykasa Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) komutunu kullanın.
+Anahtar içeri aktarmayı gerçekleştirmek için, anahtar aktarım paketini (bir BYOK dosyası) bağlantısı kesilen bilgisayarınızdan İnternet 'e bağlı bilgisayara aktarın. BYOK dosyasını Key Vault HSM 'ye yüklemek için [az keykasa Key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) komutunu kullanın.
 
 Bir RSA anahtarını içeri aktarmak için aşağıdaki komutu kullanın. ----Parametresi isteğe bağlıdır ve varsayılan olarak ' RSA-HSM ' olarak ayarlanır.
 ```azurecli

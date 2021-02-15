@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582239"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104357"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -34,7 +34,7 @@ Uygulamanız Azure AD tarafından döndürülen SAML yanıtında özel roller be
 
 ## <a name="create-roles-for-an-application"></a>Bir uygulama için roller oluşturma
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>sol bölmedeki **Azure Active Directory** simgesini seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>sol bölmedeki **Azure Active Directory** simgesini seçin.
 
     ![Azure Active Directory simgesi][1]
 

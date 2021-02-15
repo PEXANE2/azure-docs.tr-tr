@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Key Vault için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 855b2759716bdda4b8da6f870edf17a6ccf3600c
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6802f65fdcedc5b5120d91c41fb11a3d7ea906de
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561024"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095197"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>Azure Key Vault için Azure Ilke mevzuat uyumluluk denetimleri
 

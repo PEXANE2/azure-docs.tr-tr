@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842898"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097203"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği oluşturma ve yönetme
 
@@ -34,19 +34,19 @@ Bu makalede şunları öğreneceksiniz:
 
 İşlem örnekleri, kuruluşların SSH bağlantı noktalarını açmasına gerek kalmadan, işleri bir [sanal ağ ortamında](how-to-secure-training-vnet.md)güvenli bir şekilde çalıştırabilir. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 * [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
-## <a name="create"></a>Oluşturma
+## <a name="create"></a>Oluştur
 
 **Tahmini süre**: yaklaşık 5 dakika.
 
-İşlem örneği oluşturma, çalışma alanınız için tek seferlik bir işlemdir. Bu işlemi bir geliştirme iş istasyonu olarak veya eğitim için bir işlem hedefi olarak yeniden kullanabilirsiniz. Çalışma alanınıza eklenmiş birden çok işlem örneği olabilir.
+İşlem örneği oluşturma, çalışma alanınız için tek seferlik bir işlemdir. İşlem geliştirme iş istasyonu olarak veya eğitim için bir işlem hedefi olarak yeniden kullanabilirsiniz. Çalışma alanınıza eklenmiş birden çok işlem örneği olabilir.
 
-VM ailesi kotası başına bölge başına adanmış çekirdekler ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota, Azure Machine Learning eğitim işlem kümesi kotasıyla birleştirilmiş ve paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır. Lütfen, işlem örneği oluşturulduktan sonra sanal makine boyutunu değiştirmek mümkün değildir.
+VM ailesi kotası başına bölge başına adanmış çekirdekler ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota, Azure Machine Learning eğitim işlem kümesi kotasıyla birleştirilmiş ve paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır. Not işlem örneği oluşturulduktan sonra, sanal makine boyutunu değiştirmek mümkün değildir.
 
 Aşağıdaki örnek, bir işlem örneğinin nasıl oluşturulacağını gösterir:
 
@@ -230,68 +230,14 @@ Oluşturduğunuz (veya sizin için oluşturduğunuz) çalışma alanınızdaki h
 
 Bu eylemler, Azure RBAC tarafından denetlenebilir:
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/okundu*
-* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Sil*
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
 
-
-## <a name="access-the-terminal-window"></a>Terminal penceresine erişin
-
-Aşağıdaki yollarla işlem örneğinizin Terminal penceresini açın:
-
-* RStudio: sol üst taraftaki **Terminal** sekmesini seçin.
-* Jupyter Laboratuvarı: Başlatıcı sekmesinde **diğer** başlığın altında bulunan **Terminal** kutucuğunu seçin.
-* Jupyter: Dosyalar sekmesinde sağ üstteki **yeni>Terminal** ' i seçin.
-* İşlem örneği oluşturulduğunda SSH erişimini etkinleştirdiyseniz makineye SSH.
-
-Paketleri yüklemek ve ek çekirdekler oluşturmak için Terminal penceresini kullanın.
-
-## <a name="install-packages"></a>Paketleri yükler
-
-Paketleri doğrudan Jupyter Notebook veya RStudio 'Ya yükleyebilirsiniz:
-
-* RStudio sağ alt köşedeki **paketler** sekmesini veya sol üstteki **konsol** sekmesini kullanın.  
-* Python: Jupyter Notebook bir hücrede Install kodu ekleyin ve yürütün.
-
-Ya da bir terminal penceresinden yükleyebilirsiniz. Python paketlerini **python 3,6-AzureML** ortamına yükler.  R paketlerini **r** ortamına yükler.
-
-> [!NOTE]
-> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe** otomatik olarak yükler.
-
-## <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
-
-> [!WARNING]
->  İşlem örneğini özelleştirirken, **azureml_py36** Conda ortamını veya **Python 3,6-azureml** çekirdeğini sildiğinizden emin olun. Bu, Jupyıter/jupen Terlab işlevselliği için gereklidir
-
-İşlem örneğine yeni bir Jupyter çekirdeği eklemek için:
-
-1. Jupyıter, Jupyıterlab veya Not defterleri bölmesinden ya da SSH 'den işlem örneğine yeni Terminal oluşturun
-2. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.  Örneğin, aşağıdaki kod oluşturulur `newenv` :
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. Yeni ortama privand ipykernel paketini yükleyip bu Conda env için bir çekirdek oluşturun
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-[Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
-
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [İşlem örneği terminaline erişin](how-to-access-terminal.md)
+* [Dosya oluşturma ve yönetme](how-to-manage-files.md)
 * [Eğitim çalışması gönder](how-to-set-up-training-targets.md)

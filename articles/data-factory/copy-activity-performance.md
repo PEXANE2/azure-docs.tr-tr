@@ -1,25 +1,20 @@
 ---
-title: Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
+title: Kopyalama etkinliği performans ve ölçeklenebilirlik kılavuzu
 description: Kopyalama etkinliğini kullandığınızda Azure Data Factory veri hareketinin performansını etkileyen anahtar faktörleri hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324459"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387674"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
+# <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik kılavuzu
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-activity-performance.md)
@@ -149,7 +144,7 @@ Azure Data Factory aşağıdaki performans iyileştirme özelliklerini sağlar:
 
 ### <a name="data-integration-units"></a>Veri Tümleştirme Birimleri
 
-Veri tümleştirme birimi (DIU), Azure Data Factory tek bir birimin gücünü temsil eden bir ölçüdür. Güç, CPU, bellek ve ağ kaynağı ayırmanın bir birleşimidir. DIU yalnızca [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-integration-runtime)için geçerlidir. DIU, [kendi kendine barındırılan tümleştirme çalışma zamanı](concepts-integration-runtime.md#self-hosted-integration-runtime)için uygulanmaz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#data-integration-units).
+Veri tümleştirme birimi (DIU), Azure Data Factory tek bir birimin gücünü temsil eden bir ölçüdür. Güç, CPU, bellek ve ağ kaynağı ayırmanın bir birleşimidir. DIU yalnızca [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-integration-runtime)için geçerlidir. DIU, [kendi kendine barındırılan tümleştirme çalışma zamanı](concepts-integration-runtime.md#self-hosted-integration-runtime)için uygulanmaz. [Burada daha fazla bilgi edinebilirsiniz](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği
 

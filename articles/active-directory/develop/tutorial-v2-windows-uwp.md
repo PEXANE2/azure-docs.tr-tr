@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584339"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102657"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -345,7 +345,7 @@ private async Task DisplayMessageAsync(string message)
 
 Şimdi, uygulamanızı kaydedin:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -356,8 +356,8 @@ private async Task DisplayMessageAsync(string message)
 
 Uygulamanız için kimlik doğrulamasını yapılandırın:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>geri döndüğünüzde, **Yönet** altında **kimlik doğrulama**  >  **Platform Ekle**' yi seçin ve ardından **mobil ve Masaüstü uygulamaları**' nı seçin.
-1. **Yeniden yönlendirme URI 'leri** bölümünde, öğesini kontrol edin **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>geri döndüğünüzde, **Yönet** altında **kimlik doğrulama**  >  **Platform Ekle**' yi seçin ve ardından **mobil ve Masaüstü uygulamaları**' nı seçin.
+1. **Yeniden yönlendirme URI 'leri** bölümünde, girin `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 1. **Yapılandır**'ı seçin.
 
 Uygulamanız için API izinlerini yapılandırın:

@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798100"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093837"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Hesabım portalındaki ayarlarınızı görüntüleyin veya değiştirin
 
 Hesap **portalından, hesap portalınızın** **Ayarlar & gizlilik** sayfasından dil veya saat dilimi gibi hesap ayarlarınızı görüntüleyebilir veya değiştirebilirsiniz.
 
+>[!Note]
+> Kişisel Microsoft hesabı oturum açarken bir hata görürseniz, kuruluşunuzun etki alanı adını (örneğin contoso.com) veya aşağıdaki URL 'Lerden birindeki kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>Dilinizi ve bölgesel ayarlarınızı görüntüleyin ve yönetin
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin. Kişisel bir Microsoft hesabı oturum açıyorsanız, kuruluşunuzun etki alanı adını (örneğin, contoso.com) veya aşağıdaki URL 'Lerden birinde yöneticinizden kuruluşunuzun **KIRACı kimliğini** kullanarak oturum açabilirsiniz:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 1. Sol gezinti bölmesinden **ayarlar & gizlilik** ' i seçin veya **Ayarlar & gizlilik** bloğunda ayarları **ve Gizlilik bağlantısını görüntüle '** yi seçin.
 

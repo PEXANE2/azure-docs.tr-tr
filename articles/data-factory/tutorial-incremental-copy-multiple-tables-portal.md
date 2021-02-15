@@ -1,22 +1,18 @@
 ---
 title: Azure portal kullanarak birden çok tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan gelen Delta verileri Azure SQL veritabanı 'ndaki bir veritabanına yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 10ebca487e8149b509935b5eb4c8d9f67ced8ade
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361139"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>SQL Server içindeki birden çok tablodan verileri, Azure portal kullanarak Azure SQL veritabanındaki bir veritabanına artımlı olarak yükleme
 

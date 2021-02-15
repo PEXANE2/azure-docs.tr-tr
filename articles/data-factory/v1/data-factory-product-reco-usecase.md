@@ -1,23 +1,18 @@
 ---
 title: Data Factory kullanım örneği-ürün önerileri
 description: Diğer hizmetlerle birlikte Azure Data Factory kullanarak uygulanan kullanım durumu hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc1e0398f98dc72d57039530dce9751af012f154
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495302"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387198"
 ---
 # <a name="use-case---product-recommendations"></a>Kullanım örneği-ürün önerileri
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Bu paket hakkındaki ayrıntılar için bkz. [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) sayfası. Bu belgede, Azure kullanıcılarının Azure Data Factory ve diğer Cortana Intelligence bileşen hizmetlerini kullanarak zaten çözmesinin ve uyguladığı yaygın bir kullanım durumu açıklanır.
@@ -53,7 +48,7 @@ Bu örnekte makine öğrenimi için kullanılan öneri sistemi, [Apache Mahout](
 
 Son olarak, kişiselleştirilmiş ürün önerileri sonuç kümesi, perakende Web sitesinin tüketimi için ilişkisel bir veri reyonuna taşınır.  Sonuç kümesine başka bir uygulama tarafından doğrudan blob depolamadan de erişilebilir veya diğer tüketiciler ve kullanım örnekleri için ek depolara taşınabilir.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 Ürün önerisi stratejisini en iyi duruma getirerek ve iş hedefleri ile hizalayarak çözüm, çevrimiçi satıcıdan Merchandising ve pazarlama hedeflerini karşıladı. Ayrıca, ürün önerisi iş akışını verimli, güvenilir ve uygun maliyetli bir şekilde kullanıma açabilir ve yönetebilir. Yaklaşım, kendi modellerini güncelleştirilmesini ve satış tıklamaları-dönüştürme başarılarına göre verimliliğine ince ayar yapılmasını kolaylaştırır. Azure Data Factory kullanarak, zaman alan ve pahalı, el ile bulut kaynak yönetimini iptal edebilir ve isteğe bağlı bulut kaynak yönetimine geçebilir. Bu nedenle, zaman ve para tasarrufu sağlayabiliyor ve çözüm dağıtımına zaman harcamaları mümkün. Data kökenini görünümleri ve işletimsel hizmet sistem durumu, Azure portal sunulan sezgisel Data Factory izleme ve yönetim kullanıcı arabirimi ile görselleştirme ve sorun giderme konusunda kolay hale geldi. Bunlar artık, tamamlanmış verilerin güvenilir bir şekilde üretilmesi ve kullanıcılara teslim edilmesi için zamanlanabilecek ve yönetilebilir ve veri ve işleme bağımlılıkları, insan müdahalesi olmadan otomatik olarak yönetilir.
 
 Bu kişiselleştirilmiş alışveriş deneyimini sunarak, çevrimiçi satıcı daha rekabet eden, ilgi çekici bir müşteri deneyimi oluşturmuş ve bu nedenle satışları ve genel müşteri memnuniyetini artırmış.
