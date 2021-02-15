@@ -1,22 +1,18 @@
 ---
 title: Uyumsuz satırları atlayarak Azure Data Factory kopyalama etkinliğine hata toleransı ekleyin
 description: Kopyalama sırasında uyumsuz satırları atlayarak Azure Data Factory kopyalama etkinliğine hata toleransı eklemeyi öğrenin
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452288"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377185"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Uyumsuz satırları atlayarak kopyalama etkinliğine hata toleransı ekleyin
 
@@ -71,10 +67,10 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| **Enableskipıncompatiblerow** | Kopya sırasında uyumsuz satırları atlamayı etkinleştir. | Doğru<br/>False (varsayılan) | Hayır |
-| **Redirectıncompatiblerowsettings** | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır |
-| **linkedServiceName** | Atlanan satırları içeren günlüğü depolamak için Azure Storage bağlı hizmeti. | Günlük dosyasını depolamak için kullanmak istediğiniz depolama örneğine başvuran bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adı. | Hayır |
-| **Yolun** | Atlanan satırları içeren günlük dosyasının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır |
+| **Enableskipıncompatiblerow** | Kopya sırasında uyumsuz satırları atlamayı etkinleştir. | Doğru<br/>False (varsayılan) | No |
+| **Redirectıncompatiblerowsettings** | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | No |
+| **linkedServiceName** | Atlanan satırları içeren günlüğü depolamak için Azure Storage bağlı hizmeti. | Günlük dosyasını depolamak için kullanmak istediğiniz depolama örneğine başvuran bir [Azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) veya [Azurestokıgesas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) bağlı hizmetinin adı. | No |
+| **Yolun** | Atlanan satırları içeren günlük dosyasının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | No |
 
 ## <a name="monitoring"></a>İzleme
 Kopyalama etkinliği çalıştırıldıktan sonra, izleme bölümünde atlanan satır sayısını görebilirsiniz:

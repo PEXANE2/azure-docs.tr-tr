@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357356"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368056"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Geçişe genel bakış: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ Her zaman açık yük devretme kümesi örnekleri ve her zaman açık kullanıla
 SQL veritabanı 'nda bulunan yüksek kullanılabilirlik mimarisinin ötesinde, yönetilen bir örnekteki veritabanlarının başka bir bölgeye çoğaltılmasını ve yük devretmesini yönetmenizi sağlayan [otomatik yük devretme grupları](../../database/auto-failover-group-overview.md) özelliği de vardır. 
 
 #### <a name="sql-agent-jobs"></a>SQL Aracısı işleri
-SQL Aracısı işleri Azure SQL veritabanı 'nda doğrudan desteklenmez ve [elastik veritabanı işlerine (Önizleme)](../../database/job-automation-overview.md#elastic-database-jobs-preview)dağıtılması gerekir.
+SQL Aracısı işleri Azure SQL veritabanı 'nda doğrudan desteklenmez ve [elastik veritabanı işlerine (Önizleme)](../../database/job-automation-overview.md)dağıtılması gerekir.
 
 #### <a name="logins-and-groups"></a>Oturum açmalar ve gruplar
 Veritabanı geçiş hizmeti 'ni (DMS) kullanarak, çevrimdışı modda SQL oturumlarını kaynak SQL Server Azure SQL veritabanı 'na taşıyın.  Oturum açma işlemlerini hedef SQL veritabanınıza geçirmek için **geçiş sihirbazındaki** **Seçili oturum açma** dikey penceresini kullanın. 
@@ -194,7 +194,7 @@ Gelişmiş Yönetim ve güvenlik özelliklerine ek olarak SQL veritabanı, [iş 
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerine yardımcı olan basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini sunar.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL veritabanı da dahil olmak üzere tüm SQL Server sürümleri üzerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|

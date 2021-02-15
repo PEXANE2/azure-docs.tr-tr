@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008563"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094007"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux’ta Azure App Service hakkında SSS
 
@@ -110,7 +110,7 @@ Evet, bir git dağıtımı sırasında kudu, bir PHP uygulaması dağıttığın
 
 **Kendi özel kapsayıcınızı kullanıyorum. Platformun bir SMB `/home/` dizinini dizine bağlamak istiyorum.**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE`Ayar **belirtilmemişse** veya *true* olarak ayarlanırsa, `/home/` Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlandığında bağlama devre dışı bırakılır.
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`Ayar **belirtilmemişse** veya *false* olarak ayarlandıysa, `/home/` Dizin ölçek örneklerinde **paylaşılmaz** ve yazılan dosyalar yeniden başlatmalar arasında **kalıcı** olmayacaktır. Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *true* olarak ayarlandığında bağlama etkinleştirilir.
 
 **Özel kapsayıcımın başlaması uzun sürer ve platformun başlaması bitmeden önce kapsayıcıyı yeniden başlatır.**
 

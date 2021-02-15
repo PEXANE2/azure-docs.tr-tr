@@ -1,22 +1,18 @@
 ---
 title: Ve Salesforce hizmeti bulutuna veri kopyalama
 description: Veri Fabrikası ardışık düzeninde kopyalama etkinliği kullanarak Salesforce hizmeti bulutlarından desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından verileri Salesforce hizmeti bulutuna kopyalamayı öğrenin.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430773"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369773"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Salesforce hizmeti bulutlarından kopyalama
 
@@ -66,12 +62,12 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür |Type özelliği **SalesforceServiceCloud** olarak ayarlanmalıdır. |Yes |
-| environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"` . <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"` . <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"` . |Hayır |
+| environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"` . <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"` . <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"` . |No |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Yes |
 | password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
-| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. <br/><br/>Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). Güvenlik belirteci yalnızca Integration Runtime IP 'sini Salesforce üzerindeki [GÜVENILIR IP adresi listesine](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) eklediğinizde atlanabilir. Azure IR kullanırken [Azure INTEGRATION RUNTIME IP adresleri](azure-integration-runtime-ip-addresses.md)' ne bakın.<br/><br/>Güvenlik belirtecini alma ve sıfırlamaya ilişkin yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Hayır |
-| apiVersion | Kullanılacak Salesforce REST/toplu API sürümünü belirtin, `48.0` ör. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır |
+| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. <br/><br/>Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). Güvenlik belirteci yalnızca Integration Runtime IP 'sini Salesforce üzerindeki [GÜVENILIR IP adresi listesine](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) eklediğinizde atlanabilir. Azure IR kullanırken [Azure INTEGRATION RUNTIME IP adresleri](azure-integration-runtime-ip-addresses.md)' ne bakın.<br/><br/>Güvenlik belirtecini alma ve sıfırlamaya ilişkin yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |No |
+| apiVersion | Kullanılacak Salesforce REST/toplu API sürümünü belirtin, `48.0` ör. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No |
 
 **Örnek: Data Factory kimlik bilgilerini depolama**
 
@@ -185,7 +181,7 @@ Salesforce hizmeti bulutundaki verileri kopyalamak için, etkinlik **kaynağın�
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource** olarak ayarlanmalıdır. | Yes |
 | sorgu |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce hizmeti bulut nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
-| readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
+| readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | No |
 
 > [!IMPORTANT]
 > Tüm özel nesneler için **API adının** "__C" kısmı gereklidir.

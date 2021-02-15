@@ -3,12 +3,12 @@ title: Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı o
 description: Azure VMware Çözüm özel bulutu 'nda VM dağıtmak için bir içerik kitaplığı oluşturun.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550547"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382013"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma
 
@@ -18,7 +18,7 @@ Bu makalede, içerik kitaplığı oluşturma yordamında izlenecek yol gösterec
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlayabilmeniz için NSX-T mantıksal anahtar segmenti ve yönetilen bir DHCP hizmeti gereklidir.  Daha fazla bilgi için [Azure VMware Çözüm MAKALESINDE DHCP 'yi yönetme](manage-dhcp.md) makalesine bakın.
+Bu öğreticiyi tamamlayabilmeniz için bir NSX-T segmenti (mantıksal anahtar) ve yönetilen bir DHCP hizmeti gereklidir.  Daha fazla bilgi için [Azure VMware Çözüm MAKALESINDE DHCP 'yi yönetme](manage-dhcp.md) makalesine bakın.
 
 ## <a name="create-a-content-library"></a>İçerik kitaplığı oluşturma
 

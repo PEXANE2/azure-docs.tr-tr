@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654838"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092137"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -34,6 +34,16 @@ Metin Analizi API'si kullanmadan önce, uygulamalarınız için anahtar ve uç n
 2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
 
 3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
+
+## <a name="change-your-pricing-tier"></a>Fiyatlandırma katmanınızı değiştirin 
+
+S0 ile S4 fiyatlandırma katmanını kullanarak mevcut bir Metin Analizi kaynağınız varsa, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)kullanmak için onu güncelleştirebilirsiniz:
+
+1. [Azure portal](https://portal.azure.com/)metin analizi kaynağına gidin.
+2. Sol gezinti menüsünde **fiyatlandırma katmanı** ' nı seçin. **Kaynak yönetiminin** altında olacaktır. 
+3. Standart fiyatlandırma katmanını seçin. Ardından **Seç**'e tıklayın.
+
+Ayrıca standart (ler) fiyatlandırma katmanıyla yeni bir Metin Analizi kaynağı oluşturabilir ve uygulamalarınızı yeni kaynak için kimlik bilgilerini kullanacak şekilde geçirebilirsiniz. 
 
 ## <a name="using-the-api-synchronously"></a>API 'YI eşzamanlı olarak kullanma
 
@@ -197,7 +207,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>İstek ayarlama 
 
-Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örnek:
+Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örneğin:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -255,7 +265,7 @@ Uç noktanız, Postman 'da (veya başka bir Web API test aracında) oluşturuldu
 5. Bazı JSON belgelerini geçerli bir biçimde yapıştırın. Yukarıdaki **API istek biçimi** bölümündeki örnekleri kullanın ve daha fazla bilgi ve örnek için aşağıdaki konulara bakın:
 
       + [Dil algılama](text-analytics-how-to-language-detection.md)
-      + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)
+      + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)
       + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md)
       + [Varlık tanıma](text-analytics-how-to-entity-linking.md)
 
@@ -266,7 +276,7 @@ API isteğini gönder. Zaman uyumlu bir uç noktaya çağrı yaptıysanız, yan�
 Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bir 202 yanıt kodu aldığınızı kontrol edin. sonuçları görüntülemek için yanıtı almanız gerekir:
 
 1. API yanıtında, `Operation-Location` API 'ye gönderdiğiniz işi tanımlayan üst bilgiden öğesini bulun. 
-2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örnek:
+2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örneğin:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 
@@ -285,7 +295,7 @@ Lütfen hem zaman uyumsuz hem de `/analyze` `/health` işlemler için yukarıdak
 Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir. Örnek yanıtlar için aşağıdaki makalelere bakın.
 
 + [Dil algılama](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -295,7 +305,7 @@ Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir
 
 Başarılı olursa, uç noktaya yönelik GET isteği `/analyze` atanan görevleri içeren bir nesne döndürür. Örneğin, `keyPhraseExtractionTasks`. Bu görevler, uygun Metin Analizi özelliğinden gelen yanıt nesnesini içerir. Daha fazla bilgi için aşağıdaki makalelere bakın.
 
-+ [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
 + [Sistem durumu için Metin Analizi](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 

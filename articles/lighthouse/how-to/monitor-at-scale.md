@@ -1,14 +1,14 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 02/02/2021
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379242"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
@@ -65,7 +65,6 @@ alertsmanagementresources
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- GitHub 'daki [etki alanı çalışma kitabına göre etkinlik günlüklerini](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) deneyin.
 - Birden çok Log Analytics çalışma alanı genelinde [güncelleştirme yönetimi günlüklerini sorgulayarak](../../automation/update-management/query-logs.md) düzeltme eki uyumluluk raporlamasını Izleyen bu [MVP tarafından oluşturulan örnek çalışma kitabını](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)keşfet. 
-- [Azure izleyici](../../azure-monitor/index.yml)hakkında bilgi edinin.
-- [Azure Izleyici günlükleri](../../azure-monitor/platform/data-platform-logs.md)hakkında bilgi edinin.
-- [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- Diğer [çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.

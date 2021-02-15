@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740100"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095146"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -28,7 +28,7 @@ Bu örneği göz önünde bulundurun: contoso, kişilerin Azure AD kuruluşunda 
 
 ## <a name="how-this-feature-works"></a>Bu özelliğin çalışması
 
-' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Microsoft 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini** sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 200 rol atanabilir grup oluşturulabilir.
+' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Microsoft 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini** sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 250 rol atanabilir grup oluşturulabilir.
 
 Grubun üyelerinin role erişiminin olmasını istemiyorsanız Azure AD Privileged Identity Management kullanabilirsiniz... Bir Azure AD rolünün uygun bir üyesi olarak bir grup atayın. Grubun her üyesi, grubun atandığı rol için atamasının etkinleştirilmesini sağlar. Daha sonra, kendi rol atamasını sabit bir süre için etkinleştirebilir.
 

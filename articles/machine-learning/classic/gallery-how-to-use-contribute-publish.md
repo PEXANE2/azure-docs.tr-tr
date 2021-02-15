@@ -3,18 +3,18 @@ title: 'ML Studio (klasik): Azure Yapay Zeka Galerisi-Azure'
 description: Azure Yapay Zeka Galerisi analiz kaynaklarını ve daha fazlasını paylaşma ve keşfetme. Diğerlerinden öğrenin ve topluluğa kendi katkılarınızı yapın.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486135"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519856"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
 
@@ -28,7 +28,7 @@ Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz �
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlar:
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu modüller şunlardır:
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.

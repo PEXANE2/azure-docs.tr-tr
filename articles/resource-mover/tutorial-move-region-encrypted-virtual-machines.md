@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982395"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361018"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Eğitim: bölgeler arasında şifrelenmiş Azure VM 'lerini taşıma
 
@@ -54,26 +54,49 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 **Hedef bölge ücretleri** | VM 'Leri taşıdığınız hedef Bölgeyle ilişkili fiyatlandırmayı ve ücretleri doğrulayın. Size yardımcı olması için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>Anahtar Kasası izinlerini doğrulama (Azure disk şifrelemesi)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Azure disk şifrelemesi (ADE) kullanarak VM 'ler için anahtar kasasında Kullanıcı izinlerini doğrulama
 
-Azure Disk Şifrelemesi etkin olan VM 'Leri taşıyorsanız, kaynak ve hedef bölgelerdeki anahtar kasalarında, şifrelenmiş sanal makinelerin beklendiği gibi çalışmasını sağlamak için izinleri doğrulayın/ayarlayın. 
+Azure disk şifrelemesi etkinleştirilmiş VM 'Leri taşıyorsanız, komut dosyasını yürüten kullanıcının uygun izinlere sahip olması için [aşağıda](#copy-the-keys-to-the-destination-key-vault) belirtilen bir betiği çalıştırmanız gerekir. Gerekli izinler hakkında bilgi edinmek için lütfen aşağıdaki tabloya bakın. İzinleri değiştirme seçenekleri Azure portal, **Ayarlar**' ın altında bulunan anahtar kasasına giderek, **erişim ilkeleri**' ni seçerek bulunabilir.
 
-1. Azure portal, kaynak bölgede anahtar kasasını açın.
-2. **Ayarlar** altında **erişim ilkeleri**' ni seçin.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Anahtar Kasası erişim ilkelerini açmak için düğme." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Anahtar Kasası erişim ilkelerini açmak için düğme." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+Kullanıcı izinleri yoksa, **erişim Ilkesi Ekle**' yi seçin ve izinleri belirtin. Kullanıcı hesabının zaten bir ilkesi varsa, **Kullanıcı** altında, izinleri aşağıdaki tabloya göre ayarlayın.
 
-3. Kullanıcı izinleri yoksa, **erişim Ilkesi Ekle**' yi seçin ve izinleri belirtin. Kullanıcı hesabının zaten bir ilkesi varsa, **Kullanıcı** altında izinleri ayarlayın.
+ADE kullanan Azure VM 'Leri aşağıdaki çeşitlere sahip olabilir ve izinlerin ilgili bileşenler için uygun şekilde ayarlanması gerekir.
+- Diskin yalnızca gizli dizileri kullanılarak şifrelendiği varsayılan seçenek
+- [Anahtar şifreleme anahtarı](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek) kullanılarak güvenlik eklendi
 
-    - Taşımak istediğiniz VM 'ler Azure disk şifrelemesi (ade) ile etkinleştirilmişse, **anahtar izinleri**  >  **ana yönetim işlemlerinde**, seçili değilse **Al** ve **Listele** seçeneğini belirleyin.
-    - Rest (sunucu tarafı şifreleme) için kullanılan disk şifreleme anahtarlarını şifrelemek için müşteri tarafından yönetilen anahtarlar (CMKS) kullanıyorsanız, **anahtar izinleri**  >  **anahtar yönetim işlemlerinde** **Al** ve **Listele**' yi seçin. Ayrıca, **şifreleme Işlemlerinde** **şifre çöz** ve **şifreleme** ' yi seçin
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="Anahtar Kasası izinlerini seçmek için aşağı açılır liste." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>Kaynak bölgesi Anahtar Kasası
 
-4. **Gizli izinler**, **gizli yönetim işlemleri** altında **Al**, **Listele** ve **Ayarla**' yı seçin. 
-5. Yeni bir kullanıcı hesabına izinler atadıysanız, **sorumlu Seç** bölümünde, izinleri atadığınız kullanıcıyı seçin.
-6. **Erişim ilkeleri**' nde, **birim şifrelemesi Için Azure disk şifrelemesi** ' nin etkinleştirildiğinden emin olun.
-7. Hedef bölgede Anahtar Kasası için yordamı tekrarlayın.
+Komut dosyasını yürüten Kullanıcı için aşağıdaki izinlerin ayarlanması gerekir 
+
+**Bileşen** | **İzin gerekiyor**
+--- | ---
+Gizli Diziler|  İzin al <br> </br> **Gizli izinler** >   **gizli yönetim işlemlerinde** **Al** ' ı seçin. 
+Anahtarlar <br> </br> Anahtar şifreleme anahtarı (KEK) kullanıyorsanız, gizli dizi özelliklerine ek olarak bu izin gerekir| İzni al ve çöz <br> </br> **Anahtar izinleri**  >  **ana yönetim işlemlerinde** **Al**' ı seçin. **Şifreleme işlemleri**' nde **şifre çöz**' ü seçin.
+
+### <a name="destination-region-keyvault"></a>Hedef bölge Anahtar Kasası
+
+**Erişim ilkeleri**' nde, **birim şifrelemesi Için Azure disk şifrelemesi** ' nin etkinleştirildiğinden emin olun. 
+
+Komut dosyasını yürüten Kullanıcı için aşağıdaki izinlerin ayarlanması gerekir 
+
+**Bileşen** | **İzin gerekiyor**
+--- | ---
+Gizli Diziler|  İzni ayarla <br> </br> **Gizli izinler** >   **gizli yönetim işlemleri**' nde **Ayarla** ' yı seçin. 
+Anahtarlar <br> </br> Anahtar şifreleme anahtarı (KEK) kullanıyorsanız, gizli dizi özelliklerine ek olarak bu izin gerekir| Get, oluşturma ve şifreleme izni <br> </br> **Anahtar izinleri**  >  **ana yönetim işlemlerinde** **Al** ve **Oluştur** ' u seçin. **Şifreleme işlemleri**' nde, **şifreleyin**' ı seçin.
+
+Yukarıdaki izinlerin yanı sıra, hedef anahtar kasasında, kaynak taşıyıcısı tarafından sizin adınıza Azure kaynaklarına erişmek için kullanılan [yönetilen sistem kimliği](./common-questions.md#how-is-managed-identity-used-in-resource-mover) için izinler eklemeniz gerekir. 
+
+1. **Ayarlar** altında **erişim ilkeleri Ekle**' yi seçin. 
+2. **Asıl seçin** bölümünde, MSI 'yi arayın. MSI adı ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+3. MSI için aşağıdaki izinleri ekleyin
+
+**Bileşen** | **İzin gerekiyor**
+--- | ---
+Gizli Diziler|  Al ve Listele izni <br> </br> **Gizli izinler** >   **gizli yönetim işlemleri** bölümünde **Al** ve **Listele** ' yi seçin. 
+Anahtarlar <br> </br> Anahtar şifreleme anahtarı (KEK) kullanıyorsanız, gizli dizi özelliklerine ek olarak bu izin gerekir| Al, Listele izni <br> </br> **Anahtar izinleri**  >  **ana yönetim işlemlerinde** **Al** ve **Listele** ' yi seçin.
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>Anahtarları hedef anahtar kasasına Kopyala

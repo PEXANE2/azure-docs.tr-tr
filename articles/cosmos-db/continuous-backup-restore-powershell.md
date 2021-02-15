@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538569"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381843"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>Sürekli yedekleme ve zaman noktası geri yükleme (Önizleme) ile yapılandırma ve yönetme-Azure PowerShell kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ Bu makalede, Azure PowerShell kullanarak sürekli yedekleme ve verileri geri yü
 
 Sürekli yedekleme ile bir hesap sağlamak için `-BackupPolicyType Continuous` normal sağlama komutuyla birlikte bir bağımsız değişken ekleyin.
 
-Aşağıdaki cmdlet, " `pitracct2` myrg" kaynak grubu altında "Batı ABD" bölgesinde sürekli yedekleme ilkesiyle oluşturulan tek bölge yazma hesabına bir örnektir:
+Aşağıdaki cmdlet, `pitracct2` *myrg* kaynak grubu altında *Batı ABD* bölgede sürekli yedekleme ilkesiyle oluşturulan tek bir bölge yazma hesabına örnektir:
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>Sürekli yedekleme ile MongoDB API hesabı sağlama
 
-Aşağıdaki cmdlet "myrg" kaynak grubu altında "Batı ABD" bölgesinde oluşturulan sürekli yedekleme hesabı "pitracct2" örneğidir:
+Aşağıdaki cmdlet, *myrg* kaynak grubu altında *Batı ABD* bölgede oluşturulan sürekli yedekleme hesabı *pitracct2* örneğidir:
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ Yanıt, geri yüklenen ve geri yüklenebilecekleri bölgeleri içeren tüm verit
   },
 ```
 
-Hesap için "CreationTime" veya "DeletionTime" gibi, bölge için de bir "CreationTime" veya "DeletionTime" vardır. Bu süreler, bu bölgeye geri yüklenecek doğru bölgeyi ve geçerli bir zaman aralığını seçmenizi sağlar.
+`CreationTime`Ya da `DeletionTime` hesabı için olduğu gibi, bölge için de bir `CreationTime` veya vardır `DeletionTime` . Bu süreler, bu bölgeye geri yüklenecek doğru bölgeyi ve geçerli bir zaman aralığını seçmenizi sağlar.
 
 **Canlı bir veritabanı hesabındaki tüm SQL veritabanlarının sürümlerini listeleyin**
 
 Veritabanlarının tüm sürümlerinin listelenmesi, veritabanının mevcut zamanının bilinmediği bir senaryoda doğru veritabanını seçmenize olanak sağlar.
 
-Veritabanlarının tüm sürümlerini listelemek için aşağıdaki PowerShell komutunu çalıştırın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. "Databaseaccountınstanceıd" ve "LocationName" parametreleri cmdlet 'inin yanıtı içindeki "ad" ve "konum" özelliklerinden elde edilir `Get-AzCosmosDBRestorableDatabaseAccount` . "Databaseaccountınstanceıd" özniteliği, geri yüklenmekte olan kaynak veritabanı hesabının "InstanceId" özelliğine başvuruyor:
+Veritabanlarının tüm sürümlerini listelemek için aşağıdaki PowerShell komutunu çalıştırın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. `DatabaseAccountInstanceId`Ve parametreleri, `LocationName` `name` `location` cmdlet 'inin yanıtı içindeki ve özelliklerinden elde edilir `Get-AzCosmosDBRestorableDatabaseAccount` . `DatabaseAccountInstanceId`Öznitelik, `instanceId` Geri yüklenmekte olan kaynak veritabanı hesabının özelliğine başvurur:
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **Canlı bir veritabanı hesabındaki bir veritabanının tüm SQL kapsayıcıları sürümlerini listeleyin.**
 
-Tüm SQL kapsayıcıları sürümlerini listelemek için aşağıdaki komutu kullanın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. "DatabaseRid" parametresi, geri yüklemek istediğiniz veritabanının "RESOURCEID" parametresidir. Bu, cmdlet 'in yanıtında bulunan "Ownerresourceıd" özniteliğinin değeridir `Get-AzCosmosdbSqlRestorableDatabase` . Yanıt Ayrıca bu veritabanının içindeki tüm kapsayıcılar üzerinde gerçekleştirilen işlemlerin bir listesini içerir.
+Tüm SQL kapsayıcıları sürümlerini listelemek için aşağıdaki komutu kullanın. Bu komut yalnızca canlı hesaplarla birlikte kullanılabilir. `DatabaseRid`Parametresi, `ResourceId` geri yüklemek istediğiniz veritabanının bir veritabanıdır. Bu, `ownerResourceid` cmdlet 'inin yanıtında bulunan özniteliğin değeridir `Get-AzCosmosdbSqlRestorableDatabase` . Yanıt Ayrıca bu veritabanının içindeki tüm kapsayıcılar üzerinde gerçekleştirilen işlemlerin bir listesini içerir.
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>MongoDB için geri yüklenebilen kaynakları listeleme
 
-Aşağıda açıklanan listeleme komutları, çeşitli zaman damgalarına geri yükleme için kullanılabilen kaynakları keşfetmenize yardımcı olur. Ayrıca, geri yüklenebilen hesap, veritabanı ve kapsayıcı kaynaklarında önemli olayların bir akışını da sağlar. Bu komutlar yalnızca canlı hesaplar için çalışır ve SQL API komutlarına benzer ancak "SQL" yerine komut adında "MongoDB" ile benzerdir.
+Aşağıda açıklanan listeleme komutları, çeşitli zaman damgalarına geri yükleme için kullanılabilen kaynakları keşfetmenize yardımcı olur. Ayrıca, geri yüklenebilen hesap, veritabanı ve kapsayıcı kaynaklarında önemli olayların bir akışını da sağlar. Bu komutlar yalnızca canlı hesaplar için çalışır ve SQL API komutlarına benzerdir, ancak `MongoDB` yerine komut adında `sql` .
 
 **Canlı bir veritabanı hesabındaki tüm MongoDB veritabanlarının sürümlerini listeleyin**
 

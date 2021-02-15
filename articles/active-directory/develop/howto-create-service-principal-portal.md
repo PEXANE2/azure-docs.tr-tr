@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581763"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104221"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -75,7 +75,7 @@ Abonelik izinlerinizi denetlemek için:
 
 Şimdi kimlik oluşturmaya doğrudan atlayalım. Bir sorunla karşılaşırsanız, hesabınızın kimlik oluşturup oluşturerişebildiğinizden emin olmak için [gerekli izinleri](#permissions-required-for-registering-an-app) denetleyin.
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>aracılığıyla Azure hesabınızda oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>aracılığıyla Azure hesabınızda oturum açın.
 1. **Azure Active Directory** seçin.
 1. **Uygulama kayıtları**’nı seçin.
 1. **Yeni kayıt** seçeneğini belirleyin.
@@ -160,7 +160,7 @@ Sertifikayı karşıya yüklemek için:
 
     ![Sertifikayı karşıya yükle ' yi seçin ve eklemek istediğiniz birini seçin](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirin.
 
@@ -181,7 +181,7 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
 ## <a name="configure-access-policies-on-resources"></a>Kaynaklarda erişim ilkeleri yapılandırma
 Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gerekir.
 
-1. <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>, anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>, anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.
 1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.
 1. Erişim ilkesini eklemek için **Ekle** ' yi seçin ve sonra değişikliklerinizi yürütmek için **kaydedin** .
     ![Erişim İlkesi Ekle](./media/howto-create-service-principal-portal/add-access-policy.png)

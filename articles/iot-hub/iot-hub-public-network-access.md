@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/12/2021
+ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85937560"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517136"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT Hub 'ınız için ortak ağ erişimini yönetme
 
@@ -28,7 +28,13 @@ Erişimi [sanal ağınızdaki IoT Hub 'ınız için yalnızca özel uç nokta](v
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Ortak ağ erişiminin kapatılacağı Azure portal gösteren resim" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-Ortak ağ erişimini açmak **için seçili ve**sonra **kaydedin**.
+Ortak ağ erişimini açmak için **tüm ağlar**' ı seçtikten sonra **kaydedin**.
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>Genel ağ erişimini devre dışı bıraktıktan sonra uç nokta, IP adresi ve bağlantı noktaları IoT Hub
+
+IoT Hub, çok kiracılı bir hizmet olarak platform (PaaS) olduğundan, farklı müşteriler aynı işlem, ağ ve depolama donanım kaynakları havuzunu paylaşır. IoT Hub ana bilgisayar adları, internet üzerinden genel olarak yönlendirilebilir bir IP adresi olan genel bir uç noktaya eşlenir. Farklı müşteriler bu IoT Hub genel uç noktasını paylaşır ve geniş alan ağlarda ve şirket içi ağlarda bulunan IoT cihazları buna erişebilir. 
+
+Genel ağ erişiminin devre dışı bırakılması, belirli bir IoT Hub kaynağında yalıtımını sağlamak için zorlanır. Hizmetin genel yolu kullanarak diğer müşteri kaynakları için etkin kalmasını sağlamak üzere, genel uç noktası çözümlenemeye devam eder, IP adresleri bulunabilir ve bağlantı noktaları açık kalır. Microsoft, kiracılar arasında tamamen yalıtımı sağlamak için birden çok güvenlik katmanını tümleştirirken, bu sorun için bir neden değildir. Daha fazla bilgi için bkz. [Azure genel bulutundaki yalıtım](../security/fundamentals/isolation-choices.md#tenant-level-isolation).
 
 ## <a name="ip-filter"></a>IP Filtresi 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 186ded90b504420a2f315d054551d97821cf8465
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778203"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385056"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN uç noktasında varlıkları önceden yükleme
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +37,7 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
 1. [Azure Portal](https://portal.azure.com), önceden yüklemek istediğiniz uç NOKTAYı içeren CDN profiline gidin. Profil bölmesi açılır.
     
 2. Listedeki uç noktaya tıklayın. Uç nokta bölmesi açılır.
-3. CDN uç noktası bölmesinden **Yükle** ' yi seçin.
+3. CDN uç noktası bölmesinden **Yükle**' yi seçin.
    
     ![CDN uç noktası bölmesi](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
@@ -47,7 +47,7 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
 4. **İçerik yolu** için, yüklemek istediğiniz her varlığın tam yolunu girin (örneğin, `/pictures/kitten.png` ).
    
    > [!TIP]
-   > Metin girmeyi başlattıktan sonra, birden fazla varlık listesi oluşturmanıza izin veren daha fazla **içerik yolu** metin kutusu görünür. Listeden varlıkları silmek için üç nokta (...) düğmesini seçin ve **Sil** ' i seçin.
+   > Metin girmeyi başlattıktan sonra, birden fazla varlık listesi oluşturmanıza izin veren daha fazla **içerik yolu** metin kutusu görünür. Listeden varlıkları silmek için üç nokta (...) düğmesini seçin ve **Sil**' i seçin.
    > 
    > Her içerik yolu, aşağıdaki [normal ifadelere](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan GÖRELI bir URL olmalıdır:  
    > - Tek bir dosya yolu yükleyin: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
    > 
    
     ![Yükleme düğmesi](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. İçerik yollarını girmeyi tamamladığınızda **Yükle** ' yi seçin.
+5. İçerik yollarını girmeyi tamamladığınızda **Yükle**' yi seçin.
    
 
 > [!NOTE]
@@ -68,5 +68,5 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN uç noktasını Temizleme](cdn-purge-endpoint.md)
-* [Azure CDN REST API başvurusu: bir uç noktada içerik önceden yükleme](/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API başvurusu: bir uç noktadan içerik Temizleme](/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN REST API başvurusu: bir uç noktada içerik önceden yükleme](/rest/api/cdn/cdn/endpoints/loadcontent)
+* [Azure CDN REST API başvurusu: bir uç noktadan içerik Temizleme](/rest/api/cdn/cdn/endpoints/purgecontent)

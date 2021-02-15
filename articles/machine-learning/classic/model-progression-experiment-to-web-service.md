@@ -3,33 +3,33 @@ title: 'ML Studio (klasik): bir model Web hizmeti haline gelir-Azure'
 description: Azure Machine Learning Studio (klasik) modelinizin bir Web hizmetine yönelik geliştirme denemenizin nasıl ilerlediğini gösteren bir genel bakış.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c92f8c74da76b2ac938892e27f3d6be9c70c3238
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507252"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518632"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (klasik) modelinin bir deneyden bir Web hizmetine nasıl ilerlemesi
 
 **Uygulama hedefi:** ![ Bu bir onay işaretidir ve bu makalenin Machine Learning Studio (klasik) için geçerli olduğu anlamına gelir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ Bu bir X ' dir ve bu makalenin Azure Machine Learning için geçerli olduğu anlamına gelir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
-Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modelini temsil eden bir **_dene__* geliştirme, çalıştırma, test etme ve yineleme yapmanızı sağlayan etkileşimli bir tuval sağlar. Şunları yapmak için kullanabileceğiniz çok çeşitli modüller mevcuttur:
+Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modelini temsil eden bir ***deneme*** geliştirmenize, çalıştırmanıza, test etmenize ve tekrarlamenize olanak sağlayan etkileşimli bir tuval sağlar. Şunları yapmak için kullanabileceğiniz çok çeşitli modüller mevcuttur:
 
-_ Denemenize veri giriş
+* Denemenize veri giriş
 * Verileri işleme
 * Makine öğrenimi algoritmaları kullanarak bir modeli eğitme
 * Modeli puanlama
 * Sonuçları değerlendirme
 * Çıkış son değerleri
 
-Denemenizin karşılanmasını tamamladıktan sonra, kullanıcıların yeni verileri gönderebilmesi ve sonuçları geri alabilmesi için bir ***klasik Azure Machine Learning Web hizmeti** _ veya _*_Yeni bir Azure Machine Learning Web hizmeti_*_ olarak dağıtabilirsiniz.
+Deneme hesabınızı karşıladıktan sonra, kullanıcıların yeni verileri gönderebilmesi ve sonuçları geri alabilmesi için bir ***klasik Azure Machine Learning Web hizmeti** _ veya _ *_yeni Azure Machine Learning Web hizmeti_* olarak dağıtabilirsiniz.
 
 Bu makalede, Machine Learning modelinizin bir geliştirme denemenizin bir operasyonel Web hizmetine nasıl ilerlediğini gösteren bir genel bakış sunuyoruz.
 
@@ -38,7 +38,7 @@ Bu makalede, Machine Learning modelinizin bir geliştirme denemenizin bir operas
 >
 >
 
-Azure Machine Learning Studio (klasik), bir _predictive analiz modeli * geliştirmenize ve dağıtmanıza yardımcı olmak üzere tasarlanırken, bir tahmine dayalı analiz modeli içermeyen bir deneme geliştirmek için Studio (klasik) kullanmak mümkündür. Örneğin, bir deneme yalnızca veri girişi, işleyebilir ve sonra sonuçların çıktısını alabilir. Tahmine dayalı analiz denemesinin olduğu gibi, bu tahmine dayalı olmayan denemeyi bir Web hizmeti olarak dağıtabilirsiniz, ancak deneme eğitim veya Puanlama bir makine öğrenimi modeli olmadığından daha basit bir işlemdir. Bu şekilde Studio 'Yu (klasik) kullanmaya yönelik tipik bir yöntem olmasa da, Studio 'Nun (klasik) nasıl çalıştığına ilişkin ayrıntılı bir açıklama verebilmemiz için bunu tartışmaya ekleyeceğiz.
+Azure Machine Learning Studio (klasik), tahmine *dayalı bir analiz modeli* geliştirmenize ve dağıtmanıza yardımcı olacak şekilde tasarlandığından, tahmine dayalı bir analiz modeli içermeyen bir deneme geliştirmek için Studio (klasik) kullanmak mümkündür. Örneğin, bir deneme yalnızca veri girişi, işleyebilir ve sonra sonuçların çıktısını alabilir. Tahmine dayalı analiz denemesinin olduğu gibi, bu tahmine dayalı olmayan denemeyi bir Web hizmeti olarak dağıtabilirsiniz, ancak deneme eğitim veya Puanlama bir makine öğrenimi modeli olmadığından daha basit bir işlemdir. Bu şekilde Studio 'Yu (klasik) kullanmaya yönelik tipik bir yöntem olmasa da, Studio 'Nun (klasik) nasıl çalıştığına ilişkin ayrıntılı bir açıklama verebilmemiz için bunu tartışmaya ekleyeceğiz.
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>Tahmine dayalı Web hizmeti geliştirme ve dağıtma
 Machine Learning Studio (klasik) kullanarak geliştirdikçe ve dağıtırken tipik bir çözümün izlediği aşamalar aşağıda verilmiştir:
@@ -48,14 +48,14 @@ Machine Learning Studio (klasik) kullanarak geliştirdikçe ve dağıtırken tip
 *Şekil 1-tipik bir tahmine dayalı analiz modelinin aşamaları*
 
 ### <a name="the-training-experiment"></a>Eğitim denemesi
-***Eğitim** denemesi _, Web hizmetinizi Machine Learning Studio (klasik) geliştirmenin ilk aşamasıdır. Eğitim denemesinin amacı, bir makine öğrenimi modeli geliştirmek, test etmek, yinelemek ve en sonunda eğitmeniz için size bir yer sağlamaktır. En iyi çözümü yazarken aynı anda birden çok modeli eğitebilirsiniz, ancak denemeye başladıktan sonra tek bir eğitilen model seçip denemeyi deneyden çıkarabilirsiniz. Tahmine dayalı analiz denemesi geliştirme hakkında bir örnek için bkz. [Azure Machine Learning Studio (klasik) üzerinde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü geliştirme](tutorial-part1-credit-risk.md).
+***Eğitim*** denemesi, Web hizmetinizi Machine Learning Studio (klasik) geliştirmenin ilk aşamasıdır. Eğitim denemesinin amacı, bir makine öğrenimi modeli geliştirmek, test etmek, yinelemek ve en sonunda eğitmeniz için size bir yer sağlamaktır. En iyi çözümü yazarken aynı anda birden çok modeli eğitebilirsiniz, ancak denemeye başladıktan sonra tek bir eğitilen model seçip denemeyi deneyden çıkarabilirsiniz. Tahmine dayalı analiz denemesi geliştirme hakkında bir örnek için bkz. [Azure Machine Learning Studio (klasik) üzerinde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü geliştirme](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Tahmine dayalı deneme
-Eğitim denemenizin deneyminde eğitilen bir model olduktan sonra, _eğitim denemenizin bir * tahmine *_dayalı_* denemesine dönüştürülmesi işlemini başlatmak için Machine Learning Studio (klasik) ' da tahmine **dayalı Web hizmeti** *' ni* seçin_. Tahmine dayalı denemenin amacı, eğitilen modelinizin yeni verileri, son olarak Azure Web hizmeti olarak kullanım açısından kullanıma hazır hale gelmesini sağlamak için kullanmaktır.
+Eğitim denemenize yönelik eğitilen bir modelden sonra, eğitim denemenizi bir tahmine **_dayalı_** denemeye dönüştürme işlemini başlatmak Için **Web hizmeti ayarla** ' ya tıklayın ve Machine Learning Studio (klasik) ' de tahmine **dayalı Web hizmeti** ' ni seçin. Tahmine dayalı denemenin amacı, eğitilen modelinizin yeni verileri, son olarak Azure Web hizmeti olarak kullanım açısından kullanıma hazır hale gelmesini sağlamak için kullanmaktır.
 
 Bu dönüştürme işlemi sizin için aşağıdaki adımlarda yapılır:
 
-_ Eğitim için kullanılan modül kümesini tek bir modüle dönüştürün ve eğitilen bir model olarak kaydedin
+* Eğitim için kullanılan modül kümesini tek bir modüle dönüştürün ve eğitilen bir model olarak kaydedin
 * Puanlama ile ilgili olmayan tüm gereksiz modülleri ortadan kaldırın
 * Nihai Web hizmetinin kullanacağı giriş ve çıkış bağlantı noktalarını ekleyin
 
@@ -97,7 +97,7 @@ Modeli değiştirmiyorsanız, ancak yalnızca Web hizmetinin verileri nasıl iş
 
 Makine öğrenimi modelinizi korumak istiyorsanız, ancak yeni verilerle yeniden eğmek istiyorsanız iki seçeneğiniz vardır:
 
-1. **Web hizmeti çalışırken modeli yeniden eğmek** istiyorsanız, tahmine dayalı Web hizmeti çalışırken modelinize yeniden eğmek isterseniz, bunu yeniden eğitim denemesi için eğitim denemenize yönelik birkaç değişiklik yaparak bunu **_retraining experiment_*bir _*_yeniden eğitme Web_ hizmeti olarak dağıtabilirsiniz**. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Machine Learning modellerini programlı olarak yeniden eğitme](./retrain-machine-learning-model.md).
+1. **Web hizmeti çalışırken modeli yeniden eğmek** istiyorsanız, tahmine dayalı Web hizmeti çalışırken modelinize yeniden eğmek isterseniz, bunu yeniden eğitim denemesi için eğitim denemenize yönelik birkaç değişiklik yaparak bunu ***bir _*_yeniden eğitme Web_ hizmeti olarak dağıtabilirsiniz**. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Machine Learning modellerini programlı olarak yeniden eğitme](./retrain-machine-learning-model.md).
 2. **Özgün eğitim denemesine dönün ve modelinizi geliştirmek için farklı eğitim verileri kullanın** . tahmine dayalı denemenizin Web hizmetiyle bağlantısı vardır, ancak eğitim denemesi bu şekilde doğrudan bağlantılı değildir. Özgün Eğitim denemesini değiştirip **Web hizmeti ayarla**' ya tıkladığınızda, dağıtıldığında *Yeni* bir Web hizmeti oluşturacak *Yeni* bir tahmine dayalı deneme oluşturulur. Yalnızca özgün Web hizmetini güncelleştirmez.
 
    Eğitim denemesini değiştirmeniz gerekiyorsa dosyayı açın ve **farklı kaydet** ' e tıklayarak bir kopyasını oluşturun. Bu, özgün eğitim denemenize, tahmine dayalı denemenize ve Web hizmetine dokunmaz. Artık, yaptığınız değişikliklerle yeni bir Web hizmeti oluşturabilirsiniz. Yeni Web hizmetini dağıttıktan sonra, önceki Web hizmetini durdurup durdurmayacağınıza veya yeni bir hizmet ile birlikte çalışmaya devam edebilirsiniz.

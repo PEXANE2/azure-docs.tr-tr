@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024968"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388592"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Ses Içeriği oluşturma aracı ile sensıs 'yi geliştirme
 
@@ -114,7 +114,7 @@ Ses çıktlarınızı inceledikten ve ayarlama ve ayarlamasıyla memnun olduktan
 2. Ayarlanmış sesinizi için çıkış biçimini seçin. Desteklenen biçimlerin ve örnek hızların listesi aşağıda verilmiştir.
 3. Görevi **dışarı aktar** sekmesinde görevin durumunu görüntüleyebilirsiniz. Görev başarısız olursa, tam bir rapor için ayrıntılı bilgi sayfasına bakın.
 4. Görev tamamlandığında ses **kitaplığı** sekmesinde Sesinizdeki indirilebilir.
-5. **İndir**'e tıklayın. Artık uygulama veya ürünleriniz için özel olarak ayarlanmış sesinizi kullanmaya hazırsınız.
+5. **İndir**’e tıklayın. Artık uygulama veya ürünleriniz için özel olarak ayarlanmış sesinizi kullanmaya hazırsınız.
 
 **Desteklenen ses biçimleri**
 
@@ -125,7 +125,7 @@ Ses çıktlarınızı inceledikten ve ayarlama ve ayarlamasıyla memnun olduktan
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Ses Içeriği oluşturma kullanıcı ekleme/kaldırma
 
-Birden fazla Kullanıcı ses Içeriği oluşturmayı kullanmak isterse, Azure hesabınızı ve parolanızı kullanıcıyla paylaşabilir ya da Azure aboneliğine ve konuşma kaynağına Kullanıcı erişimi verebilirsiniz. Bir Azure aboneliğine Kullanıcı eklerseniz, Kullanıcı Azure aboneliğindeki tüm kaynaklara erişebilir. Ancak bir konuşma kaynağına yalnızca bir Kullanıcı eklerseniz, kullanıcının yalnızca konuşma kaynağına erişimi olur ve bu Azure aboneliği kapsamındaki diğer kaynaklara erişemez. Konuşma kaynağına erişimi olan bir Kullanıcı, ses Içeriği oluşturmayı kullanabilir.
+Birden fazla Kullanıcı ses Içeriği oluşturmayı kullanmak isterse, Azure aboneliğine ve konuşma kaynağına yönelik kullanıcı erişimi verebilirsiniz. Bir Azure aboneliğine Kullanıcı eklerseniz, Kullanıcı Azure aboneliğindeki tüm kaynaklara erişebilir. Ancak bir konuşma kaynağına yalnızca bir Kullanıcı eklerseniz, kullanıcının yalnızca konuşma kaynağına erişimi olur ve bu Azure aboneliği kapsamındaki diğer kaynaklara erişemez. Konuşma kaynağına erişimi olan bir Kullanıcı, ses Içeriği oluşturmayı kullanabilir.
 
 ### <a name="add-users-to-a-speech-resource"></a>Konuşma kaynağına Kullanıcı ekleme
 
@@ -140,7 +140,7 @@ Ses Içeriği oluşturmayı kullanabilmesi için bir konuşma kaynağına Kullan
 
     :::image source="media/audio-content-creation/add-role-first.png" alt-text="Rol Ekle iletişim kutusu":::
 
-1. Eklediğiniz kullanıcılara bir davet e-postası gönderilir. Azure 'a **Accept invitation**  >  **katılması için davet kabulü** kabul et 'e tıkladıktan sonra, [ses içeriği oluşturma](https://aka.ms/audiocontentcreation)'yı kullanabilirler.
+1. Eklediğiniz kullanıcılara bir davet e-postası gönderilir. Azure 'a   >  **katılması için davet kabulü** kabul et 'e tıkladıktan sonra, [ses içeriği oluşturma](https://aka.ms/audiocontentcreation)'yı kullanabilirler.
 
 Aynı konuşma kaynağına sahip kullanıcılar, her birinin ses Içeriği oluşturma Studio 'da çalışmasını görür. Her bir kullanıcının ses Içeriği oluşturmada benzersiz ve özel çalışma alanına sahip olmasını istiyorsanız, lütfen her bir kullanıcı için [Yeni bir konuşma kaynağı oluşturun](#step-2---create-a-speech-resource) ve her kullanıcıya konuşma kaynağına benzersiz erişim verin. 
 

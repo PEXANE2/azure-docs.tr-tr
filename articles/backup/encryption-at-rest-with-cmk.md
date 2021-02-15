@@ -1,16 +1,16 @@
 ---
-title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
+title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735869"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369467"
 ---
-# <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
+# <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 
 Azure Backup, varsayılan olarak etkinleştirilen platform tarafından yönetilen anahtarlar kullanmak yerine, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize olanak tanır. Yedekleme verilerini şifrelemek için kullanılan anahtarlarınızın [Azure Key Vault](../key-vault/index.yml)' de depolanması gerekir.
 
@@ -36,6 +36,7 @@ Bu makalede aşağıdakiler ele alınmaktadır:
 - Kurtarma Hizmetleri Kasası, yalnızca **aynı bölgede** bulunan bir Azure Key Vault depolanan anahtarlarla şifrelenebilir. Ayrıca anahtarlar yalnızca **RSA 2048 anahtar** olmalıdır ve **etkin** durumda olmalıdır.
 
 - CMK şifreli kurtarma hizmetleri kasasını kaynak grupları ve abonelikler arasında taşıma Şu anda desteklenmemektedir.
+- Müşteri tarafından yönetilen anahtarlarla zaten şifrelenmiş bir kurtarma hizmetleri kasasını yeni bir kiracıya taşıdığınızda, kasasının yönetilen kimliğini ve CMK 'yi yeniden oluşturmak ve yeniden yapılandırmak için kurtarma hizmetleri kasasını güncelleştirmeniz gerekir (yeni kiracıda olması gerekir). Bu yapılmazsa, yedekleme ve geri yükleme işlemleri başarısız olur. Ayrıca, abonelik içinde ayarlanmış tüm rol tabanlı erişim denetimi (RBAC) izinlerinin yeniden yapılandırılması gerekir.
 
 - Bu özellik Azure portal ve PowerShell aracılığıyla yapılandırılabilir.
 
@@ -119,32 +120,6 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
 1. Azure Key Vault erişim ilkesinde yapılan değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
-**PowerShell ile**:
-
-Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi etkinleştirmek ve kullanılacak şifreleme anahtarını atamak veya güncelleştirmek için [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) komutunu kullanın.
-
-Örnek:
-
-```azurepowershell
-$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
-$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
-
-
-$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-$enc.encryptionProperties | fl
-```
-
-Çıkış:
-
-```output
-EncryptionAtRestType          : CustomerManaged
-KeyUri                        : testkey
-SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-LastUpdateStatus              : Succeeded
-InfrastructureEncryptionState : Disabled
-```
-
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
 
 Şifreleme anahtarınızı depolayan Azure Key Vault **, geçici silme ve Temizleme korumasını etkinleştirmeniz** gerekir. Bunu aşağıda gösterildiği gibi Azure Key Vault kullanıcı arabiriminden yapabilirsiniz. (Alternatif olarak, Key Vault oluşturulurken bu özellikler ayarlanabilir). Bu [Key Vault özellikleri hakkında](../key-vault/general/soft-delete-overview.md)daha fazla bilgi edinin.
@@ -197,7 +172,7 @@ Aşağıdaki adımları kullanarak, PowerShell aracılığıyla geçici silme ve
 
 Yukarıdaki bir kez başarılı olduktan sonra, kasanızın şifreleme anahtarını seçmeye devam edin.
 
-Anahtarı atamak için:
+#### <a name="to-assign-the-key-in-the-portal"></a>Portala anahtar atamak için
 
 1. Kurtarma Hizmetleri kasanıza gidin-> **özellikleri**
 
@@ -230,6 +205,32 @@ Anahtarı atamak için:
     Şifreleme anahtarı güncelleştirmeleri kasanın etkinlik günlüğüne de kaydedilir.
 
     ![Etkinlik günlüğü](./media/encryption-at-rest-with-cmk/activity-log.png)
+
+#### <a name="to-assign-the-key-with-powershell"></a>Anahtarı PowerShell ile atamak için
+
+Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi etkinleştirmek ve kullanılacak şifreleme anahtarını atamak veya güncelleştirmek için [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) komutunu kullanın.
+
+Örnek:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Çıkış:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 >[!NOTE]
 > Bu işlem, şifreleme anahtarını güncelleştirmek veya değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan birinden farklı) bir anahtar güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:

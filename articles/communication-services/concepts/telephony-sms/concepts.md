@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 35398d60008ac52ba16dca0a0201f8c2f2101a0f
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6f03195c801f241a79a6bf68ef9d398370b0d4c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758566"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391822"
 ---
 # <a name="sms-concepts"></a>SMS kavramları
 
@@ -45,4 +45,4 @@ Aşağıdaki belgeler sizin için ilginç olabilir:
 
 - [SMS istemci kitaplığı](../telephony-sms/sdk-features.md) hakkında bilgi edinin
 - SMS özellikli [telefon numarası](../../quickstarts/telephony-sms/get-phone-number.md) alın
-- [SMS çözümünüzü planlayın](../telephony-sms/plan-solution.md)
+- [Azure Iletişim hizmetlerindeki telefon numarası türleri](../telephony-sms/plan-solution.md)

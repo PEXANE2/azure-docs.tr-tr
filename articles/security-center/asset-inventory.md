@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920435"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393369"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Varlık envanteriyle kaynaklarınızı bulun ve yönetin
 
@@ -37,7 +37,6 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 
 
 ## <a name="availability"></a>Kullanılabilirlik
-
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Genel kullanılabilirlik (GA)|
@@ -48,33 +47,36 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Varlık envanterinin temel özellikleri nelerdir?
-
 Envanter sayfası aşağıdaki araçları sağlar:
 
-- **Özetler** -herhangi bir filtre tanımladıktan önce, envanter görünümünün en üstündeki belirgin bir değer şeridi şunları gösterir:
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure Güvenlik Merkezi 'ndeki varlık envanteri sayfasının ana özellikleri" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **Toplam kaynak**: Güvenlik Merkezi 'ne bağlı kaynakların toplam sayısı.
-    - **Sağlıksız kaynaklar**: etkin güvenlik önerilerine sahip kaynaklar. [Güvenlik önerileri hakkında daha fazla bilgi edinin](security-center-recommendations.md).
-    - **İzlenmeyen kaynaklar**: aracı izleme sorunları olan kaynaklar-Log Analytics Aracısı dağıtılır, ancak aracı veri göndermiyor veya başka sistem durumu sorunlarına sahip değildir.
 
-- **Filtreler** -sayfanın en üstündeki birden çok filtre, yanıtlamaya çalıştığınız soruya göre kaynak listesini hızlı bir şekilde iyileştirmek için bir yol sağlar. Örneğin, *' Production ' etiketiyle makinelerimin Log Analytics Aracısı eksik* olduğu sorusuna yanıt vermek istiyorsanız, aşağıdaki küçük resimde gösterildiği gibi, **Aracı izleme** filtresini **Etiketler** filtresiyle birleştirebilirsiniz:
+### <a name="1---summaries"></a>1-özetler
+Herhangi bir filtre yapılandırmadan önce, envanter görünümünün en üstündeki belirgin bir değer şeridi şunları gösterir:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="İzlenmeyen üretim kaynaklarına filtreleme":::
+- **Toplam kaynak**: Güvenlik Merkezi 'ne bağlı kaynakların toplam sayısı.
+- **Sağlıksız kaynaklar**: etkin güvenlik önerilerine sahip kaynaklar. [Güvenlik önerileri hakkında daha fazla bilgi edinin](security-center-recommendations.md).
+- **İzlenmeyen kaynaklar**: aracı izleme sorunları olan kaynaklar-Log Analytics Aracısı dağıtılır, ancak aracı veri göndermiyor veya başka sistem durumu sorunlarına sahip değildir.
+- **Kayıtlı olmayan abonelikler**: seçili kapsamdaki, henüz Azure Güvenlik Merkezi 'ne bağlı olmayan herhangi bir abonelik.
 
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
+### <a name="2---filters"></a>2-filtreler
+Sayfanın en üstündeki birden çok filtre, yanıt almaya çalıştığınız soruya göre kaynak listesini hızlı bir şekilde iyileştirmek için bir yol sağlar. Örneğin, *' Production ' etiketiyle makinelerimin Log Analytics Aracısı eksik* olduğu sorusuna yanıt vermek Istiyorsanız, **Aracı izleme** filtresini **Etiketler** filtresiyle birleştirebilirsiniz.
 
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, kusto sorgu dili (KQL) sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
+Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Stokun dışarı aktarma seçenekleri":::
+### <a name="3---export-and-asset-management-tools"></a>3-dışarı aktarma ve varlık yönetimi araçları
 
-    > [!TIP]
-    > KQL belgeleri, dil için "fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+**Dışarı aktarma seçenekleri** -envanter, seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına dışarı aktarma seçeneği içerir. Ayrıca, kusto sorgu dili (KQL) sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
 
-- **Varlık yönetimi seçenekleri** -envanter, karmaşık bulma sorguları gerçekleştirmenize olanak tanır. Sorgularınızla eşleşen kaynakları bulduğunuz stok, şu gibi işlemler için kısayollar sağlar:
+> [!TIP]
+> KQL belgeleri, dil için "fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-    - Filtrelenmiş kaynaklara Etiketler atama-etiketlemek istediğiniz kaynakların yanındaki onay kutularını seçin.
-    - Yeni sunucuları güvenlik merkezi 'ne **ekleme-Azure dışı sunucular Ekle** araç çubuğu düğmesini kullanın.
-    - Azure Logic Apps iş yüklerini otomatikleştirme-bir veya daha fazla kaynak üzerinde bir mantıksal uygulama çalıştırmak için **mantıksal uygulama tetikleme** düğmesini kullanın. Mantıksal uygulamalarınızın önceden hazırlanması ve ilgili Tetikleyici türünü (HTTP isteği) kabul etmesi gerekir. [Logic Apps hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md).
+**Varlık yönetimi seçenekleri** -envanter, karmaşık bulma sorguları gerçekleştirmenize olanak tanır. Sorgularınızla eşleşen kaynakları bulduğunuz stok, şu gibi işlemler için kısayollar sağlar:
+
+- Filtrelenmiş kaynaklara Etiketler atama-etiketlemek istediğiniz kaynakların yanındaki onay kutularını seçin.
+- Yeni sunucuları güvenlik merkezi 'ne **ekleme-Azure dışı sunucular Ekle** araç çubuğu düğmesini kullanın.
+- Azure Logic Apps iş yüklerini otomatikleştirme-bir veya daha fazla kaynak üzerinde bir mantıksal uygulama çalıştırmak için **mantıksal uygulama tetikleme** düğmesini kullanın. Mantıksal uygulamalarınızın önceden hazırlanması ve ilgili Tetikleyici türünü (HTTP isteği) kabul etmesi gerekir. [Logic Apps hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Varlık envanteri nasıl çalışır?
@@ -94,14 +96,14 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](/azure/data-explorer/kusto/query/)
 
 1. Yapmak istediğiniz belirli bir sorguyu oluşturmak için filtrelerdeki ilgili seçenekleri seçin.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Stokun filtreleme seçenekleri" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     Varsayılan olarak, kaynaklar etkin güvenlik önerisi sayısına göre sıralanır.
 
     > [!IMPORTANT]
     > Her filtredeki seçenekler şu anda seçili olan aboneliklerdeki kaynaklara **ve** diğer filtrelerdeki seçimlerinize özgüdür.
     >
     > Örneğin, yalnızca bir abonelik seçtiyseniz ve aboneliğin (0 sağlıksız kaynak) düzeltilmesi için bekleyen güvenlik önerilerine sahip hiçbir kaynağı yoksa, **öneriler** filtresi hiçbir seçeneğe sahip olmayacaktır. 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Azure Güvenlik Merkezi 'nin varlık envanterindeki filtre seçeneklerini kullanarak, izlenen üretim kaynaklarına kaynakları filtreleyin":::
 
 1. **Güvenlik bulgularını filtre içeriyor** olarak kullanmak için, etkilenen kaynaklara filtre uygulamak için bir GÜVENLIK açığının kimlik, güvenlik denetımı veya CVE adından ücretsiz metin girin:
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383594"
+ms.locfileid: "100518853"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure sanal makinelerini başka bir Azure bölgesine çoğaltma
 
@@ -54,7 +54,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
    - **Hedef depolama hesapları (kaynak VM yönetilen diskleri kullanmıyor)**: varsayılan olarak Site Recovery, kaynak VM depolama yapılandırmanızı inceleyerek yeni bir hedef depolama hesabı oluşturur. Depolama hesabı zaten mevcut olduğunda, yeniden kullanılır.
    - **Çoğaltma ile yönetilen diskler (kaynak sanal makine yönetilen diskleri kullanır)**: Site Recovery kaynak VM 'nin yönetilen diskiyle aynı depolama türüyle (Standart veya Premium) kaynak sanal makinenin yönetilen disklerini yansıtmak için hedef bölgede yeni bir çoğaltma tarafından yönetilen diskler oluşturur.
    - **Önbellek depolama hesapları**: Site Recovery, kaynak bölgede önbellek depolaması adlı ek depolama hesabı gerektirir. Kaynak VM 'lerde oluşan tüm değişiklikler, hedef konuma çoğaltılmadan önce izlenir ve önbellek depolama hesabına gönderilir. Bu depolama hesabı standart olmalıdır.
-   - **Hedef kullanılabilirlik kümeleri**: varsayılan olarak Site Recovery, kaynak bölgedeki bir kullanılabilirlik kümesinin parçası olan VM 'ler için, ad içinde "Azure Site Recovery" sonekine sahip hedef bölgede yeni bir kullanılabilirlik kümesi oluşturur. Site Recovery tarafından oluşturulan kullanılabilirlik kümesi zaten mevcutsa, yeniden kullanılır.
+   - **Hedef kullanılabilirlik kümeleri**: Site Recovery, kaynak bölgedeki bir kullanılabilirlik kümesinin parçası olan VM 'ler için, varsayılan olarak hedef bölgede "ASR" sonekine sahip yeni bir kullanılabilirlik kümesi oluşturur. Site Recovery tarafından oluşturulan kullanılabilirlik kümesi zaten mevcutsa, yeniden kullanılır.
      >[!NOTE]
      >Hedef kullanılabilirlik kümeleri yapılandırılırken, lütfen farklı boyutlardaki VM 'Ler için farklı kullanılabilirlik kümeleri yapılandırın. 
      >

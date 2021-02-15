@@ -4,13 +4,13 @@ description: Azure Site Recovery kullanarak yakınlık yerleşimi gruplarında �
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745592"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380785"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakın Yerleştirilen Gruplarda çalıştırılan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
@@ -25,21 +25,72 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 - En iyi çaba, sanal makineleri bir yakınlık yerleşimi grubuna devretmek/yeniden çalıştırmanız olacaktır. Ancak, VM yük devretme/yeniden çalışma sırasında yakınlık yerleşimi içinde getirilemeiyorsa, yük devretme/yeniden çalışma işlemi devam eder ve sanal makineler bir yakınlık yerleşimi grubu dışında oluşturulur.
--  Bir kullanılabilirlik kümesi bir yakınlık yerleşimi grubuna sabitlenmiştir ve kullanılabilirlik kümesindeki yük devretme/yeniden çalışma VM 'Leri için bir ayırma kısıtlaması varsa, sanal makineler hem kullanılabilirlik kümesi hem de yakınlık yerleşimi grubu dışında oluşturulur.
--  Yönetilmeyen diskler için Site Recovery yakınlık yerleştirme grupları desteklenmez.
+- Bir kullanılabilirlik kümesi bir yakınlık yerleşimi grubuna sabitlenmiştir ve kullanılabilirlik kümesindeki yük devretme/yeniden çalışma VM 'Leri için bir ayırma kısıtlaması varsa, sanal makineler hem kullanılabilirlik kümesi hem de yakınlık yerleşimi grubu dışında oluşturulur.
+- Yönetilmeyen diskler için Site Recovery yakınlık yerleştirme grupları desteklenmez.
 
 > [!NOTE]
 > Azure Site Recovery, Hyper-V ' d e Azure senaryolarına yönelik yönetilen disklerden yeniden çalışmayı desteklemez. Bu nedenle, Azure 'daki yakınlık yerleşimi grubundan Hyper-V ' d e yeniden çalışma desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>Portal aracılığıyla yakınlık yerleştirme gruplarındaki VM 'Ler için olağanüstü durum kurtarmayı ayarlama
+
+### <a name="azure-to-azure-via-portal"></a>Portal aracılığıyla Azure 'dan Azure 'a
+
+VM olağanüstü durum kurtarma sayfasından bir sanal makine için çoğaltmayı etkinleştirmeyi veya önceden oluşturulmuş bir kasaya gidip Site Recovery bölümüne gidip çoğaltmayı etkinleştirerek çoğaltmayı etkinleştirmenizi tercih edebilirsiniz. Her iki yaklaşımdan de bir PPG içindeki VM 'Ler için Site Recovery nasıl ayarlantığınızın bir bakalım:
+
+- IaaS VM DR dikey penceresinde çoğaltmayı etkinleştirirken DR bölgesinde PPG 'yi seçme:
+  1. Sanal makineye gidin. Sol taraftaki dikey pencerede, ' Işlemler ' altında ' olağanüstü durum kurtarma ' ' yı seçin.
+  2. ' Temel bilgiler ' sekmesinde, VM 'yi çoğaltmak istediğiniz DR bölgesini seçin. ' Gelişmiş ayarlar 'a git
+  3. Burada, sanal makinenizin yakınlık yerleşimi grubunu ve DR bölgesinde bir PPG 'yi seçme seçeneğini görebilirsiniz. Site Recovery Ayrıca, bu varsayılan seçeneği kullanmayı seçerseniz, sizin için oluşturduğu yeni bir yakınlık yerleşimi grubu kullanma seçeneği sunar. İstediğiniz yakınlık yerleşimi grubunu seçip ' gözden geçir + çoğaltmayı Başlat ' ' a gidip son olarak çoğaltmayı etkinleştirebilirsiniz.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="Çoğaltmayı etkinleştirin.":::
+
+- Kasa dikey penceresinde çoğaltmayı etkinleştirirken DR bölgesinde PPG 'yi seçme:
+  1. Kurtarma Hizmetleri kasanıza gidin ve Site Recovery sekmesine gidin
+  2. ' + Site Recovery etkinleştir ' düğmesine tıklayın ve ardından Azure sanal makineler altında ' 1: çoğaltmayı etkinleştir ' seçeneğini belirleyin (bir Azure VM 'yi çoğaltmak istediğinizde)
+  3. ' Kaynak ' sekmesinde gerekli alanları doldurup ' Ileri ' seçeneğine tıklayın
+  4. ' Sanal makineler ' sekmesinde çoğaltmayı etkinleştirmek istediğiniz VM 'lerin listesini seçin ve ' Ileri ' seçeneğine tıklayın
+  5. Burada, DR bölgesinde bir PPG seçme seçeneğini görebilirsiniz. Site Recovery Ayrıca, bu varsayılan seçeneği kullanmayı seçerseniz, sizin için oluşturduğu yeni bir PPG kullanma seçeneği sunar. İstediğiniz PPG 'yi seçip çoğaltmayı etkinleştirmeye devam edebilirsiniz.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="Kasa aracılığıyla çoğaltmayı etkinleştirin.":::
+
+VM için çoğaltma etkinleştirildikten sonra, DR bölgesindeki PPG seçimini kolayca güncelleştirebileceğinizi unutmayın.
+
+1. Sanal makineye gidin ve sol taraftaki dikey pencerede ' Işlemler ' altında ' olağanüstü durum kurtarma ' ' yı seçin.
+2. ' Işlem ve ağ ' dikey penceresine gidip sayfanın en üstündeki ' Düzenle ' seçeneğine tıklayın
+3. Hedef PPG dahil olmak üzere birden çok hedef ayarı düzenleme seçeneklerini görebilirsiniz. VM 'nin yük devretmesini istediğiniz PPG 'yi seçin ve ' Kaydet 'e tıklayın.
+
+### <a name="vmware-to-azure-via-portal"></a>Portal aracılığıyla VMware 'den Azure 'a
+
+Hedef VM için yakınlık yerleşimi grubu VM için çoğaltma etkinleştirildikten sonra ayarlanabilir. Lütfen gereksinimlerinize göre hedef bölgede PPG 'yi ayrı olarak oluşturduğunuzdan emin olun. Daha sonra, VM için çoğaltma etkinleştirildikten sonra DR bölgesindeki PPG seçimini kolayca güncelleştirebilirsiniz.
+
+1. Kasadan sanal makineyi seçin ve sol taraftaki dikey pencerede ' Işlemler ' altında ' olağanüstü durum kurtarma ' ' yı seçin.
+2. ' Işlem ve ağ ' dikey penceresine gidip sayfanın en üstündeki ' Düzenle ' seçeneğine tıklayın
+3. Hedef PPG dahil olmak üzere birden çok hedef ayarı düzenleme seçeneklerini görebilirsiniz. VM 'nin yük devretmesini istediğiniz PPG 'yi seçin ve ' Kaydet 'e tıklayın.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="PPG V2A Güncelleştir":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Portal üzerinden Azure 'da Hyper-V
+
+Hedef VM için yakınlık yerleşimi grubu VM için çoğaltma etkinleştirildikten sonra ayarlanabilir. Lütfen gereksinimlerinize göre hedef bölgede PPG 'yi ayrı olarak oluşturduğunuzdan emin olun. Daha sonra, VM için çoğaltma etkinleştirildikten sonra DR bölgesindeki PPG seçimini kolayca güncelleştirebilirsiniz.
+
+1. Kasadan sanal makineyi seçin ve sol taraftaki dikey pencerede ' Işlemler ' altında ' olağanüstü durum kurtarma ' ' yı seçin.
+2. ' Işlem ve ağ ' dikey penceresine gidip sayfanın en üstündeki ' Düzenle ' seçeneğine tıklayın
+3. Hedef PPG dahil olmak üzere birden çok hedef ayarı düzenleme seçeneklerini görebilirsiniz. VM 'nin yük devretmesini istediğiniz PPG 'yi seçin ve ' Kaydet 'e tıklayın.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="PPG H2A Güncelleştir":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>Yakınlık yerleştirme gruplarındaki VM 'Ler için PowerShell aracılığıyla olağanüstü durum kurtarmayı ayarlama
+
+### <a name="prerequisites"></a>Önkoşullar 
 
 1. Azure PowerShell az modüle sahip olduğunuzdan emin olun. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
 2. En az Azure PowerShell az sürüm 4.1.0 olmalıdır. Geçerli sürümü denetlemek için aşağıdaki komutu kullanın-
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Yakınlık yerleştirme grubundaki sanal makineler için Site Recovery ayarlama
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Yakınlık yerleştirme grubundaki sanal makineler için Site Recovery ayarlama
 
 > [!NOTE]
 > Hedef yakınlık yerleşimi grubunun benzersiz KIMLIĞINE sahip olduğunuzdan emin olun. Yeni bir yakınlık yerleşimi grubu oluşturuyorsanız, [burada](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) komutu kontrol edin ve var olan bir yakınlık yerleşimi grubunu kullanıyorsanız [buradaki](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)komutu kullanın.
@@ -165,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. Çoğaltmayı devre dışı bırakmak için [buradaki](./azure-to-azure-powershell.md#disable-replication)adımları izleyin.
 
-### <a name="vmware-to-azure"></a>Vmware’den Azure’a
+### <a name="vmware-to-azure-via-powershell"></a>PowerShell aracılığıyla VMware 'den Azure 'a
 
 1. Şirket [Içi VMware sunucularını](./vmware-azure-tutorial-prepare-on-premises.md) Azure 'a olağanüstü durum kurtarma için hazırladığınızdan emin olun.
 2. Hesabınızda oturum açın ve aboneliğinizi [burada](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)belirtilen şekilde ayarlayın.
@@ -203,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. Yük devretme testi [çalıştırın](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) .
 11. [Bu](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) adımları kullanarak Azure 'a yük devretme.
 
-### <a name="hyper-v-to-azure"></a>Hyper-V’den Azure’a
+### <a name="hyper-v-to-azure-via-powershell"></a>PowerShell aracılığıyla Hyper-V-Azure arası
 
 1. Şirket [Içi Hyper-V sunucularınızı](./hyper-v-prepare-on-premises-tutorial.md) Azure 'a olağanüstü durum kurtarma için hazırlayın.
 2. Azure ['Da oturum açın](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) .

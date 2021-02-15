@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988020"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379718"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Diğer yazarlarla ve düzenleyicilerle işbirliği yapın
 
@@ -23,6 +23,9 @@ Tüm izinler Soru-Cevap Oluşturma kaynağına yerleştirilmiş izinlerle denetl
 Bu Azure RBAC özelliği şunları içerir:
 * Azure Active Directory (AAD), sahipler ve katkıda bulunanlar için anahtar tabanlı kimlik doğrulama ile %100 geriye dönük olarak uyumludur. Müşteriler, isteklerinde anahtar tabanlı kimlik doğrulaması veya Azure RBAC tabanlı kimlik doğrulaması kullanabilir.
 * Denetim, Bilgi Bankası düzeyinde değil kaynak düzeyinde olduğundan, kaynak içindeki tüm bilgi bankalarına yazar ve düzenleyiciler hızlıca ekleyin.
+
+> [!NOTE]
+> AR aktardığınızda kaynak için özel bir alt etki alanı eklediğinizden emin olun. [Özel alt etki alanı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) varsayılan olarak bulunmalı, ancak yoksa, lütfen ekleyin
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Erişim, tanımlı bir rol tarafından sağlanır
 

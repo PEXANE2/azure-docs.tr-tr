@@ -2,19 +2,19 @@
 title: Form tanıyıcı örnek etiketleme aracını dağıtma
 titleSuffix: Azure Cognitive Services
 description: Denetimli öğrenme konusunda yardımcı olmak için form tanıyıcı örnek etiketleme aracını dağıtmanıza yönelik farklı yollar edinin.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 04/14/2020
-ms.author: pafarley
-ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/11/2021
+ms.author: lajanuar
+ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790436"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370075"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -32,7 +32,7 @@ Verileri etiketlemenin en hızlı yolu, örnek etiketleme aracını yerel olarak
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Azure Container Instances (ACI) ile dağıtma
 
-Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (acı) dağıtmanın iki yolu olduğunu unutmayın. Örnek etiketleme aracını ACI ile çalıştırmak için her iki seçenek de kullanılır: 
+Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (acı) dağıtmanın iki yolu olduğunu unutmayın. Örnek etiketleme aracını ACI ile çalıştırmak için her iki seçenek de kullanılır:
 
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI'yı kullanma](#azure-cli)
@@ -42,16 +42,16 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
 1. [Azure portalında](https://portal.azure.com/signin/index/) oturum açın.
-2. **Kaynak oluştur**’u seçin. 
-3. Ardından **Web uygulaması**' nı seçin. 
+2. **Kaynak oluştur**’u seçin.
+3. Ardından **Web uygulaması**' nı seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Web uygulaması Seç](./media/quickstarts/formre-create-web-app.png)
-   
-4. İlk olarak, **temel bilgiler** sekmesinin seçili olduğundan emin olun. Şimdi bazı bilgiler sağlamanız gerekir: 
+   > ![Web uygulaması Seç](./media/quickstarts/create-web-app.png)
+
+4. İlk olarak, **temel bilgiler** sekmesinin seçili olduğundan emin olun. Şimdi bazı bilgiler sağlamanız gerekir:
 
    > [!div class="mx-imgBorder"]
-   > ![Temelleri seçin](./media/quickstarts/formre-select-basics.png)
+   > ![Temelleri seçin](./media/quickstarts/select-basics.png)
    * Abonelik-mevcut bir Azure aboneliğini seçin
    * Kaynak grubu-var olan bir kaynak grubunu yeniden kullanabilir veya bu proje için yeni bir tane oluşturabilirsiniz. Yeni bir kaynak grubu oluşturmak önerilir.
    * Ad-Web uygulamanıza bir ad verin. 
@@ -61,49 +61,51 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
    * Linux planı-uygulama hizmetiniz için bir fiyatlandırma katmanı/planı seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Web uygulamanızı yapılandırma](./media/quickstarts/formre-select-docker-linux.png)
+   > ![Web uygulamanızı yapılandırma](./media/quickstarts/select-docker.png)
 
-5. Sonra **Docker** sekmesini seçin. 
+5. Sonra **Docker** sekmesini seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Docker 'ı seçin](./media/quickstarts/formre-select-docker.png)
+   > ![Docker 'ı seçin](./media/quickstarts/select-docker.png)
 
 6. Şimdi Docker kapsayıcınızı yapılandıralim. Aksi belirtilmediği takdirde tüm alanlar gereklidir:
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)  
-   * Seçenekler- **tek kapsayıcı** seçin
-   * Görüntü kaynağı- **özel kayıt defteri** seçme 
-   * Sunucu URL 'SI-bunu olarak ayarlayın `https://mcr.microsoft.com`
-   * Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
-   * Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
-   * Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
-   * Başlangıç komutu-bunu olarak ayarlayın `./run.sh eula=accept`
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
+
+* Seçenekler- **tek kapsayıcı** seçin
+* Görüntü kaynağı- **özel kayıt defteri** seçme 
+* Sunucu URL 'SI-bunu olarak ayarlayın `https://mcr.microsoft.com`
+* Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
+* Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
+* Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
+* Başlangıç komutu-bunu olarak ayarlayın `./run.sh eula=accept`
 
     # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1) 
-   * Seçenekler- **tek kapsayıcı** seçin
-   * Görüntü kaynağı- **özel kayıt defteri** seçme 
-   * Sunucu URL 'SI-bunu olarak ayarlayın `https://mcr.microsoft.com`
-   * Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
-   * Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
-   * Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
-   * Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
-   * Başlangıç komutu-bunu olarak ayarlayın `./run.sh eula=accept`
-    
+
+* Seçenekler- **tek kapsayıcı** seçin
+* Görüntü kaynağı- **özel kayıt defteri** seçme 
+* Sunucu URL 'SI-bunu olarak ayarlayın `https://mcr.microsoft.com`
+* Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
+* Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
+* Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
+* Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
+* Başlangıç komutu-bunu olarak ayarlayın `./run.sh eula=accept`
+
     ---
 
    > [!div class="mx-imgBorder"]
-   > ![Docker 'ı yapılandırma](./media/quickstarts/formre-configure-docker.png)
+   > ![Docker 'ı yapılandırma](./media/quickstarts/configure-docker.png)
 
 7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
 
 > [!NOTE]
-> Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir. 
+> Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir.
 
 > [!IMPORTANT]
 > Adresinde görüntülemek için Web uygulamanız için TLS 'i etkinleştirmeniz gerekebilir `https` . Web uygulamanız için TLS/SSL 'yi etkinleştirenden bir sepet kapsayıcısı ayarlamak için [TLS uç noktası etkinleştirme](../../container-instances/container-instances-container-group-ssl.md) ' deki yönergeleri izleyin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](/cli/azure/install-azure-cli)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
 
@@ -114,10 +116,10 @@ Bu komutla ilgili bilmeniz gereken birkaç nokta vardır:
 * Kaynağı oluşturmak istediğiniz yeri belirtmeniz gerekir. `<region name>`Web uygulaması için istediğiniz bölge ile değiştirin. 
 * Bu komut EULA 'Yı otomatik olarak kabul eder.
 
-Azure CLı 'da, örnek etiketleme aracı için bir Web uygulaması kaynağı oluşturmak üzere şu komutu çalıştırın: 
+Azure CLı 'da, örnek etiketleme aracı için bir Web uygulaması kaynağı oluşturmak üzere şu komutu çalıştırın:
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -131,8 +133,10 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-``` 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+`
+
+# [v2.1 preview](#tab/v2-1) 
+   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 

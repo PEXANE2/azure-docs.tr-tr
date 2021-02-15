@@ -3,12 +3,12 @@ title: Azure VMware çözümünü dağıtma ve yapılandırma
 description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
 ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760884"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382064"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -68,13 +68,13 @@ Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türe
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>VCenter ve NSX-T ' e bağlanma ve oturum açma
 
-Önceki adımda oluşturduğunuz sıçrama kutusunda oturum açın. Oturum açtıktan sonra bir Web tarayıcısı açın ve git ve NSX-T Yönetici konsoluna gidin ve oturum açın.  
+Önceki adımda oluşturduğunuz sıçrama kutusunda oturum açın. Oturum açtıktan sonra bir Web tarayıcısı açın ve git ve NSX-T Yöneticisi ' ne gidin ve oturum açın.  
 
-VCenter ve NSX-T yönetici konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan**' ı seçin. 
+VCenter ve NSX-T Manager konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan**' ı seçin. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware çözümünde bir ağ kesimi oluşturma
 
-Azure VMware Çözüm ortamınızda yeni ağ kesimleri oluşturmak için NSX-T kullanın.  Oluşturmak istediğiniz ağları [planlama bölümünde](production-ready-deployment-steps.md)tanımladınız.  Bunları tanımlamadıysanız devam etmeden önce [Planlama bölümüne](production-ready-deployment-steps.md) geri dönün.
+Azure VMware Çözüm ortamınızda yeni ağ kesimleri oluşturmak için NSX-T Yöneticisi 'Ni kullanırsınız.  Oluşturmak istediğiniz ağları [planlama bölümünde](production-ready-deployment-steps.md)tanımladınız.  Bunları tanımlamadıysanız devam etmeden önce [Planlama bölümüne](production-ready-deployment-steps.md) geri dönün.
 
 >[!IMPORTANT]
 >Tanımladığınız CıDR ağ adresi bloğunun Azure veya şirket içi ortamlarınızdaki herhangi bir şeyle çakışmadığından emin olun.  

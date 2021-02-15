@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536447"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371116"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
 
@@ -37,7 +37,7 @@ Tüm ağ geçidi desenleri aşağıdaki avantajları sağlar:
 
 * **Kenarda analiz** : buluta tam uygunlukta telemetri göndermeden aşağı akış cihazlarından gelen verileri işlemek için yerel olarak AI hizmetlerini kullanın. Öngörüleri yerel olarak bulun ve bunlara yanıt verin ve yalnızca IoT Hub bir veri alt kümesini gönderin.
 * **Aşağı akış cihaz yalıtımı** – ağ geçidi cihazı, tüm aşağı akış cihazlarının internet üzerinden etkilenmasını sağlayabilir. Bağlantısı olmayan bir işlemsel teknoloji (OT) ağı ile Web 'e erişim sağlayan bir bilgi teknolojisi (BT) ağı arasında yer alabilir. Benzer şekilde, kendi başına IoT Hub bağlanma yeteneğine sahip olmayan cihazlar bunun yerine bir ağ geçidi cihazına bağlanabilir.
-* **Bağlantı çoğullama** -IoT Edge bir ağ geçidi üzerinden IoT Hub bağlanan tüm cihazlar aynı temel bağlantıyı kullanır.
+* **Bağlantı çoğullama** -IoT Edge bir ağ geçidi üzerinden IoT Hub bağlanan tüm cihazlar aynı temel bağlantıyı kullanabilir. Bu çoğullama özelliği, IoT Edge ağ geçidinin, kendi yukarı akış protokolü olarak AMQP kullanmasını gerektirir.
 * **Trafik yumuşatma** -IoT Edge cihaz, trafiği yerel olarak kalıcı hale getiren IoT Hub trafiği kısıtlıyorsa üstel geri alma otomatik olarak uygulanır. Bu avantaj, çözümünüzü trafikte ani artışlar açısından dayanıklı hale getirir.
 * **Çevrimdışı destek** -ağ geçidi cihazı, IoT Hub teslim edilmemiş iletileri ve ikizi güncelleştirmelerini depolar.
 
@@ -45,7 +45,9 @@ Tüm ağ geçidi desenleri aşağıdaki avantajları sağlar:
 
 Saydam ağ geçidi modelinde, teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar olabilir. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT ya da AMQP protokollerini kullanarak bağlanır. Ağ geçidi basitçe cihazlarla IoT Hub arasındaki iletişimi geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam* olarak kabul edildiği anlamına gelir.
 
-<!-- 1.0.10 -->
+IoT Edge hub 'ının aşağı akış cihazları ve bulutu arasındaki iletişimi nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge cihazlar IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
@@ -72,6 +74,11 @@ IoT Edge ağ geçidini, kendisine bağlanan bir aşağı akış cihazı *alt* *�
 #### <a name="cloud-identities"></a>Bulut kimlikleri
 
 Saydam bir ağ geçidi senaryosunda tüm cihazların IoT Hub kimlik doğrulaması yapabilmesi için bulut kimliklerine ihtiyacı vardır. Bir cihaz kimliği oluşturduğunuzda veya güncelleştirdiğinizde, cihazın üst veya alt cihazlarını ayarlayabilirsiniz. Bu yapılandırma üst ağ geçidi cihazını, alt cihazlarının kimlik doğrulamasını işleyecek şekilde yetkilendirir.
+
+>[!NOTE]
+>Simetrik anahtar kimlik doğrulaması kullanan aşağı akış cihazları için isteğe bağlı bir adım olarak kullanılan IoT Hub üst cihazı ayarlama. Ancak, 1.1.0 sürümünden itibaren, her bir aşağı akış cihazının bir üst cihaza atanması gerekir.
+>
+>**AuthenticationMode** ortam değişkenini **cloudandscope** değerine ayarlayarak, IoT Edge hub 'ını önceki davranışa geri dönmek için yapılandırabilirsiniz.
 
 Alt cihazların yalnızca bir üst öğesi olabilir. Her bir üst öğe 100 adede kadar alt öğeye sahip olabilir.
 
@@ -106,7 +113,7 @@ IoT Edge mesajlaşma ardışık düzeninde çalışan tüm IoT Hub temelleri de 
 
 Ağ geçitlerinin arkasındaki cihazlara kıyasla farklı IoT Hub yeteneklerinin nasıl desteklendiğini görmek için aşağıdaki tabloyu kullanın.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 | Özellik | IoT cihazı | Bir ağ geçidinin arkasındaki IoT |

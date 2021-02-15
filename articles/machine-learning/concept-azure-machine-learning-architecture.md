@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540204"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091678"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -47,28 +47,15 @@ ms.locfileid: "94540204"
 
 Çalışma alanını başkalarıyla paylaşabilirsiniz.
 
-### <a name="create-workspace"></a>Çalışma alanı oluşturma
-
-Aşağıdaki diyagramda, çalışma alanı oluşturma iş akışı gösterilmektedir.
-
-* Desteklenen Azure Machine Learning istemcilerinden birinden (Azure CLı, Python SDK, Azure portal) Azure AD 'de oturum açıp uygun Azure Resource Manager belirtecini istemeniz gerekir.
-* Çalışma alanını oluşturmak için Azure Resource Manager çağırın. 
-* Azure Resource Manager, çalışma alanını sağlamak için Azure Machine Learning kaynak sağlayıcısıyla iletişim kurar.
-* Mevcut kaynakları belirtmezseniz, aboneliğinizde gereken ek kaynaklar oluşturulur.
-
-Gerektiğinde, bir çalışma alanına (Azure Kubernetes hizmeti veya VM 'Ler gibi) bağlı diğer işlem hedeflerini de sağlayabilirsiniz.
-
-[![Çalışma alanı iş akışı oluştur](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
-
 ## <a name="computes"></a>Karmasını
 
 <a name="compute-targets"></a>[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullandığınız herhangi bir makine veya makine kümesidir. Yerel makinenizi veya uzak bir işlem kaynağını işlem hedefi olarak kullanabilirsiniz.  İşlem hedefleri sayesinde, yerel makinenizde eğitime başlayabilir ve ardından eğitim betiğinizi değiştirmeden buluta ölçeklendirebilirsiniz.
 
 Azure Machine Learning, makine öğrenimi görevleri için yapılandırılmış iki tam olarak yönetilen bulut tabanlı sanal makine (VM) sunar:
 
-* <a name="compute-instance"></a>**İşlem örneği** : işlem örneği makine öğrenimi için yüklenen birden çok araç ve ortamı IÇEREN bir sanal makinedir. Bir işlem örneğinin birincil kullanımı geliştirme iş istasyonunuz içindir.  Örnek not defterlerini, kurulum gerekmeden çalıştırmaya başlayabilirsiniz. Bir işlem örneği, eğitim ve ınişsiz işler için işlem hedefi olarak da kullanılabilir.
+* <a name="compute-instance"></a>**İşlem örneği**: işlem örneği makine öğrenimi için yüklenen birden çok araç ve ortamı IÇEREN bir sanal makinedir. Bir işlem örneğinin birincil kullanımı geliştirme iş istasyonunuz içindir.  Örnek not defterlerini, kurulum gerekmeden çalıştırmaya başlayabilirsiniz. Bir işlem örneği, eğitim ve ınişsiz işler için işlem hedefi olarak da kullanılabilir.
 
-* **İşlem kümeleri** : işlem kümeleri, çok düğümlü ölçeklendirme özelliklerine sahip VM 'lerin bir kümesidir. Bilgi işlem kümeleri, büyük işler ve üretim için işlem hedefleri için daha uygundur.  Bir iş gönderildiğinde küme otomatik olarak ölçeklendirilir.  Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
+* **İşlem kümeleri**: işlem kümeleri, çok düğümlü ölçeklendirme özelliklerine sahip VM 'lerin bir kümesidir. Bilgi işlem kümeleri, büyük işler ve üretim için işlem hedefleri için daha uygundur.  Bir iş gönderildiğinde küme otomatik olarak ölçeklendirilir.  Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
 
 Eğitim işlem hedefleri hakkında daha fazla bilgi için bkz. [eğitim işlem hedefleri](concept-compute-target.md#train).  Dağıtım işlem hedefleri hakkında daha fazla bilgi için bkz. [dağıtım hedefleri](concept-compute-target.md#deploy).
 
@@ -126,10 +113,6 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 [Çalışma alanı](#workspace)  >  [Denemeleri](#experiments)  >  [Çalıştır](#runs)  >  **Anlık görüntü**
 
 Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
-
-Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir.
-
-[![Kod anlık görüntüsü iş akışı](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>Günlüğe Kaydetme
 
@@ -272,7 +255,7 @@ Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine
 
 Azure Machine Learning aşağıdaki izleme ve günlüğe kaydetme yeteneklerini sağlar:
 
-* __Veri bilimcileri__ için denemeleri ve günlük bilgilerinizi eğitim çalışmalarından izleyebilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+* __Veri bilimcileri__ için denemeleri ve günlük bilgilerinizi eğitim çalışmalarından izleyebilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
    * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
    * [Eğitim çalıştırmaları için günlük ölçümleri](how-to-track-experiments.md)
    * [MLflow ile denemeleri izleme](how-to-use-mlflow.md)

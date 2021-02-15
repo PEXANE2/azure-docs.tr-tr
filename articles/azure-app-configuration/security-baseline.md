@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4af00b2e0e5445ecc904f603d813d843a9c54b93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b160f6641cced1e4ea6af1eac225d92abe26a631
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735025"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380279"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için Azure Güvenlik temeli
 
@@ -437,7 +437,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 - [Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme](concept-enable-rbac.md)
 
-- [Uygulama yapılandırma veri şifrelemesi](faq.md#does-app-configuration-encrypt-my-data)
+- [Uygulama yapılandırma veri şifrelemesi](faq.yml#does-app-configuration-encrypt-my-data)
 
 - [Azure Rol Tabanlı Erişim Denetimi (RBAC)](../role-based-access-control/overview.md) 
 

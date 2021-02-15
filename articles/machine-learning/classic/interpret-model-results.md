@@ -3,17 +3,17 @@ title: 'ML Studio (klasik): model sonuçlarını yorumlama-Azure'
 description: Puan modeli çıkışlarını kullanarak bir algoritma için en uygun parametre kümesini seçme ve görselleştirme.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509502"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516133"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 
@@ -106,7 +106,7 @@ Eğitim verilerinde, el ile yazılmış mektup görüntülerinden ayıklanan 16 
 
 Şekil 6. Mektup tanıma birden çok sınıf sınıflandırması sorunu deneme
 
-Puanlama [modeli modülünün][score-model] çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir**' e tıklayarak, [Score Model][score-model] Şekil 7 ' de gösterildiği gibi içeriği görmeniz gerekir.
+Puanlama [modeli modülünün][score-model] çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir**' e tıklayarak, [][score-model] Şekil 7 ' de gösterildiği gibi içeriği görmeniz gerekir.
 
 ![Model sonuçlarını Puanlama](./media/interpret-model-results/7.png)
 

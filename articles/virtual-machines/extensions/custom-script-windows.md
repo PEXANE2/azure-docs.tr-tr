@@ -2,21 +2,21 @@
 title: Windows için Azure Özel Betik uzantısı
 description: Özel Betik uzantısını kullanarak Windows VM yapılandırma görevlerini otomatikleştirme
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258713"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390139"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -32,6 +32,7 @@ Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Mana
 ### <a name="operating-system"></a>Operating System
 
 Windows için özel Betik uzantısı, uzantı tarafından desteklenen OSs uzantısında çalışır;
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ gü
 * Uzantı, betiği yalnızca bir kez çalıştıracaktır. Betiğin her önyükleme sırasında çalıştırılmasını istiyorsanız uzantıyı kullanarak bir Windows Zamanlanmış Görevi oluşturmanız gerekir.
 * Betiğin çalıştırılacağı zamanı belirlemek istiyorsanız uzantıyı kullanarak bir Windows Zamanlanmış Görevi oluşturmanız gerekir.
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikle ilgili daha sık durum güncelleştirmesi almak isterseniz kendi çözümünüzü oluşturmanız gerekir.
-* Özel Betik uzantısı, proxy sunucularını yerel olarak desteklemez, ancak, komut dosyanız içinde, *kıvrımlı* gibi ara sunucuları destekleyen bir dosya aktarım aracı kullanabilirsiniz.
+* Özel Betik uzantısı proxy sunucularını yerel olarak desteklemez, ancak komutlarınızdaki *Invoke-WebRequest* gibi proxy sunucularını destekleyen bir dosya aktarım aracı kullanabilirsiniz
 * Betiğinizin veya komutlarınızın kullandığı varsayılan olmayan dizin konumlarına dikkat edin ve bu durumu işlemek için bir mantık oluşturun.
 * Özel Betik uzantısı LocalSystem hesabı altında çalışır
 * *StorageAccountName* ve *storageaccountkey* özelliklerini kullanmayı planlıyorsanız, bu özelliklerin *protectedsettings*'de birlikte bulunması gerekir.

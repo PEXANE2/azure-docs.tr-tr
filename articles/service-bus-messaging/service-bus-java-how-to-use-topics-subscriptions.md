@@ -3,13 +3,13 @@ title: Java ile Azure Service Bus konuları ve abonelikleri kullanma (Azure-mesa
 description: Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti göndermek ve sonra bu konuya yönelik aboneliklerden ileti almak için Azure-Messaging-ServiceBus paketini kullanarak Java kodu yazın.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
-ms.openlocfilehash: 46dc6bed7e51a5157d7eb42dac75c0240d440780
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/13/2021
+ms.openlocfilehash: c5b930fb2c87a09a1f4801365936c62a7cf79f1d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881627"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516184"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Azure Service Bus konuya ileti gönderme ve aboneliklerden konuya ileti alma (Java)
 Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti göndermek ve sonra bu konuya yönelik aboneliklerden ileti almak için Azure-Messaging-ServiceBus paketini kullanarak Java kodu yazın.
@@ -31,14 +31,41 @@ Bu bölümde, bir Java konsol projesi oluşturacak ve oluşturduğunuz konuya il
 Çakışan Küreler veya tercih ettiğiniz bir aracı kullanarak bir Java projesi oluşturun. 
 
 ### <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
-Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java istemci kitaplığı, [Maven merkezi deposunda](https://search.maven.org/search?q=a:azure-messaging-servicebus)bulunabilir. Bu kitaplığa, Maven proje dosyanızda aşağıdaki bağımlılık bildirimini kullanarak başvurabilirsiniz:
+Azure Core ve Azure Service Bus kitaplıklarına başvurular ekleyin. 
+
+Çakışan Küreler kullanıyorsanız ve Java konsol uygulaması oluşturduysanız, Java projenizi Maven 'e dönüştürün: **Paket Gezgini** penceresinde projeye sağ tıklayın,   ->  **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. Ardından, aşağıdaki örnekte gösterildiği gibi bu iki kitaplıklara de bağımlılıklar ekleyin.
 
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0</version>
-</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.myorg.sbusquickstarts</groupId>
+    <artifactId>sbustopicqs</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>15</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-messaging-servicebus</artifactId>
+            <version>7.0.2</version>
+        </dependency>
+    </dependencies>
+</project>
 ```
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>Konuya ileti göndermek için kod ekleme
@@ -46,9 +73,9 @@ Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java is
 
     ```java
     import com.azure.messaging.servicebus.*;
-    import com.azure.messaging.servicebus.models.*;
+    
+    import java.util.concurrent.CountDownLatch;
     import java.util.concurrent.TimeUnit;
-    import java.util.function.Consumer;
     import java.util.Arrays;
     import java.util.List;
     ```    
@@ -64,7 +91,7 @@ Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java is
 3. `sendMessage`Konuya bir ileti göndermek için sınıfında adlı bir yöntem ekleyin. 
 
     ```java
-        static void sendMessage()
+    static void sendMessage()
     {
         // create a Service Bus Sender client for the queue 
         ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
@@ -94,7 +121,7 @@ Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java is
     ```
 1. `sendMessageBatch`Oluşturduğunuz konuya ileti göndermek için yöntemi adlı bir yöntem ekleyin. Bu yöntem, `ServiceBusSenderClient` konusu için bir oluşturur, `createMessages` ileti listesini almak için yöntemini çağırır, bir veya daha fazla toplu işi hazırlar ve toplu işleri konuya gönderir. 
 
-```java
+    ```java
     static void sendMessageBatch()
     {
         // create a Service Bus Sender client for the topic 
@@ -139,31 +166,21 @@ Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java is
         //close the client
         senderClient.close();
     }
-```
+    ```
 
 ## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
 Bu bölümde, bir aboneliğden konuya ileti almak için kod ekleyeceksiniz. 
 
 1. `receiveMessages`Abonelikten ileti almak için adlı bir yöntem ekleyin. Bu yöntem `ServiceBusProcessorClient` , iletileri işlemek için bir işleyici ve hataları işlemek için başka bir tane belirterek abonelik için bir oluşturur. Ardından, işlemciyi başlatır, birkaç saniye bekler, alınan iletileri yazdırır ve sonra işlemciyi durdurup kapatır.
 
+    > [!IMPORTANT]
+    > `ServiceBusTopicTest` `ServiceBusTopicTest::processMessage` Kodunuzda, sınıfınızın adıyla değiştirin. 
+
     ```java
     // handles received messages
     static void receiveMessages() throws InterruptedException
     {
-        // Consumer that processes a single message received from Service Bus
-        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
-            ServiceBusReceivedMessage message = context.getMessage();
-            System.out.println("Received message: " + message.getBody().toString() + " from the subscription: " + subName);
-        };
-
-        // Consumer that handles any errors that occur when receiving messages
-        Consumer<Throwable> errorHandler = throwable -> {
-            System.out.println("Error when receiving messages: " + throwable.getMessage());
-            if (throwable instanceof ServiceBusReceiverException) {
-                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
-                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
-            }
-        };
+        CountDownLatch countdownLatch = new CountDownLatch(1);
 
         // Create an instance of the processor through the ServiceBusClientBuilder
         ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
@@ -171,8 +188,8 @@ Bu bölümde, bir aboneliğden konuya ileti almak için kod ekleyeceksiniz.
             .processor()
             .topicName(topicName)
             .subscriptionName(subName)
-            .processMessage(messageProcessor)
-            .processError(errorHandler)
+            .processMessage(ServiceBusTopicTest::processMessage)
+            .processError(context -> processError(context, countdownLatch))
             .buildProcessorClient();
 
         System.out.println("Starting the processor");
@@ -181,9 +198,55 @@ Bu bölümde, bir aboneliğden konuya ileti almak için kod ekleyeceksiniz.
         TimeUnit.SECONDS.sleep(10);
         System.out.println("Stopping and closing the processor");
         processorClient.close();        
-    }
+    }  
     ```
-2. `main` `sendMessage` , `sendMessageBatch` , Ve `receiveMessages` yöntemlerini çağırmak ve throw metodunu güncelleştirin `InterruptedException` .     
+2. `processMessage`Service Bus aboneliğinden alınan bir iletiyi işlemek için yöntemini ekleyin. 
+
+    ```java
+    private static void processMessage(ServiceBusReceivedMessageContext context) {
+        ServiceBusReceivedMessage message = context.getMessage();
+        System.out.printf("Processing message. Session: %s, Sequence #: %s. Contents: %s%n", message.getMessageId(),
+            message.getSequenceNumber(), message.getBody());
+    }    
+    ```
+3. `processError`Hata iletilerini işlemek için yöntemini ekleyin.
+
+    ```java
+    private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
+        System.out.printf("Error when receiving messages from namespace: '%s'. Entity: '%s'%n",
+            context.getFullyQualifiedNamespace(), context.getEntityPath());
+
+        if (!(context.getException() instanceof ServiceBusException)) {
+            System.out.printf("Non-ServiceBusException occurred: %s%n", context.getException());
+            return;
+        }
+
+        ServiceBusException exception = (ServiceBusException) context.getException();
+        ServiceBusFailureReason reason = exception.getReason();
+
+        if (reason == ServiceBusFailureReason.MESSAGING_ENTITY_DISABLED
+            || reason == ServiceBusFailureReason.MESSAGING_ENTITY_NOT_FOUND
+            || reason == ServiceBusFailureReason.UNAUTHORIZED) {
+            System.out.printf("An unrecoverable error occurred. Stopping processing with reason %s: %s%n",
+                reason, exception.getMessage());
+
+            countdownLatch.countDown();
+        } else if (reason == ServiceBusFailureReason.MESSAGE_LOCK_LOST) {
+            System.out.printf("Message lock lost for message: %s%n", context.getException());
+        } else if (reason == ServiceBusFailureReason.SERVICE_BUSY) {
+            try {
+                // Choosing an arbitrary amount of time to wait until trying again.
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                System.err.println("Unable to sleep for period of time");
+            }
+        } else {
+            System.out.printf("Error source %s, reason %s, message: %s%n", context.getErrorSource(),
+                reason, context.getException());
+        }
+    }  
+    ```
+1. `main` `sendMessage` , `sendMessageBatch` , Ve `receiveMessages` yöntemlerini çağırmak ve throw metodunu güncelleştirin `InterruptedException` .     
 
     ```java
     public static void main(String[] args) throws InterruptedException {        
@@ -197,12 +260,13 @@ Bu bölümde, bir aboneliğden konuya ileti almak için kod ekleyeceksiniz.
 Aşağıdaki çıktıya benzer çıktıyı görmek için programı çalıştırın:
 
 ```console
+Sent a single message to the topic: mytopic
 Sent a batch of messages to the topic: mytopic
 Starting the processor
-Received message: First message from the subscription: mysub
-Received message: Second message from the subscription: mysub
-Received message: Third message from the subscription: mysub
-Stopping and closing the processor
+Processing message. Session: e0102f5fbaf646988a2f4b65f7d32385, Sequence #: 1. Contents: Hello, World!
+Processing message. Session: 3e991e232ca248f2bc332caa8034bed9, Sequence #: 2. Contents: First message
+Processing message. Session: 56d3a9ea7df446f8a2944ee72cca4ea0, Sequence #: 3. Contents: Second message
+Processing message. Session: 7bd3bd3e966a40ebbc9b29b082da14bb, Sequence #: 4. Contents: Third message
 ```
 
 Azure portal Service Bus ad alanının **genel bakış** sayfasında **gelen** ve **giden** ileti sayısını görebilirsiniz. Bir dakika beklemeniz gerekebilir ve en son değerleri görmek için sayfayı yenilemeniz gerekebilir. 
@@ -225,7 +289,7 @@ Bu sayfada, bir abonelik seçerseniz **Service Bus abonelik** sayfasına ulaşab
 Aşağıdaki belgelere ve örneklere bakın:
 
 - [Java için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [GitHub’daki örnekler](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [GitHub 'daki örnekler](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java API'si başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 

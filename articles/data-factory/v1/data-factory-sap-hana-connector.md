@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak SAP HANA verileri taşıma
 description: Azure Data Factory kullanarak SAP HANA verileri taşıma hakkında bilgi edinin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c08aeca8e7aaa71e5a2a80cbdece762b989e28c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9c192a5f84f36fbdea0dd1d280928aa40186d4ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510150"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386994"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -38,7 +33,7 @@ SAP HANA örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenler
 - **Veri yönetimi Gateway**: Data Factory hizmeti, veri yönetimi Gateway adlı bir bileşeni kullanarak şirket içi veri depolarına (SAP HANA dahil) bağlanmayı destekler. Ağ geçidini ayarlamaya yönelik Veri Yönetimi ağ geçidi ve adım adım yönergeler hakkında bilgi edinmek için bkz. [Şirket içi veri deposu ile bulut veri deposu arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. SAP HANA bir Azure IaaS sanal makinesinde (VM) barındırıldığından bile ağ geçidi gerekir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
 - Ağ Geçidi makinesinde **ODBC sürücüsü SAP HANA** . SAP HANA ODBC sürücüsünü [SAP Software Download Center](https://support.sap.com/swdc) sayfasından indirebilirsiniz. **Windows için SAP HANA** anahtar sözcüğünü kullanarak arama yapın. 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak verileri şirket içi SAP HANA veri deposundan taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
@@ -298,7 +293,7 @@ ALHAYALI um | Dize
 Bun | Byte []
 DATE | DateTime
 TIME | TimeSpan
-ILIŞKIN | DateTime
+TIMESTAMP | DateTime
 SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar

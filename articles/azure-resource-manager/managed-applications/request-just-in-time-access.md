@@ -5,16 +5,16 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435697"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377372"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
 
-Yönetilen uygulamanızın tüketicileri, yönetilen kaynak grubuna kalıcı erişim sağlamak için yeniden bozulabilir. Bir yönetici uygulamasının yayımcısı olarak, müşterilerin yönetilen kaynaklara erişmeniz gerektiğinde tam olarak bilmesini tercih edebilirsiniz. Azure yönetilen uygulamalar, müşterilere yönetilen kaynaklara erişim verme konusunda daha fazla denetim sağlamak için tam zamanında (JıT) erişim adlı bir özellik sunar. Bu özellik şu anda önizleme sürümündedir.
+Yönetilen uygulamanızın tüketicileri, yönetilen kaynak grubuna kalıcı erişim sağlamak için yeniden bozulabilir. Yönetilen bir uygulamanın yayımcısı olarak, müşterilerin yönetilen kaynaklara erişmeniz gerektiğinde tam olarak bilmesini tercih edebilirsiniz. Azure yönetilen uygulamalar, müşterilere yönetilen kaynaklara erişim verme konusunda daha fazla denetim sağlamak için tam zamanında (JıT) erişim adlı bir özellik sunar. Bu özellik şu anda önizleme sürümündedir.
 
 JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz.
 

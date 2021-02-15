@@ -1,21 +1,18 @@
 ---
 title: PowerShell kullanarak Azure SSIS tümleştirme çalışma zamanı dağıtma
 description: Bu PowerShell betiği, bulutta SSIS paketlerini çalıştırabilirler bir Azure-SSIS tümleştirme çalışma zamanı oluşturur.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: f753de618751300cd8d10ae009a354d9892729c1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 158e2db5261ce35713e1564cd24f0dd1d563ab78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637981"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370215"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell betiği-Azure-SSIS tümleştirme çalışma zamanını dağıtma
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2021
+ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: c12ad505777111499fb354709ce606189398458f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8d6cee5e8d9683ca88a71608595b7dfde8261b8d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391956"
+ms.locfileid: "100520536"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -118,7 +118,18 @@ Uç nokta için bir Microsoft Defender lisansınız zaten varsa, Azure Defender 
 İndirimi onaylamak için, güvenlik merkezi 'nin destek ekibine başvurun ve ilgili her lisans için ilgili çalışma alanı KIMLIĞI, bölge ve lisans bilgilerini belirtin.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi? 
-Hayır. Bir abonelikteki [sunucular Için Azure Defender](defender-for-servers-introduction.md) 'ı etkinleştirdiğinizde, "serbest bırakıldı" durumunda olan tüm sunucular söz konusu durumdayken ücretlendirilmezsiniz.
+Hayır. Bir abonelikteki [sunucular Için Azure Defender](defender-for-servers-introduction.md) 'ı etkinleştirdiğinizde, serbest bırakılmış güç durumunda olan tüm makineler söz konusu durumdayken ücretlendirilmezsiniz. Makineler, aşağıdaki tabloda gösterildiği gibi güç durumlarına göre faturalandırılır:
+
+| Durum        | Açıklama                                                                                                                                      | Örnek kullanım faturalandırılıyor |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| Başlatılıyor     | VM başlatılıyor.                                                                                                                               | Faturalandırılmamış            |
+| Çalışma      | Bir VM için normal çalışma durumu                                                                                                                    | IP                |
+| Durduruluyor     | Bu, geçici bir durumdur. İşlem tamamlandığında, durduruldu olarak gösterilir.                                                                           | IP                |
+| Durduruldu      | VM, Konuk işletim sistemi içinden veya PowerOff API 'Leri kullanılarak kapatıldı. Donanım hala VM 'ye ayrıldı ve konakta kalır. | Faturalandırılan (1)            |
+| Serbest bırakılıyor | Geçiş durumu. İşlem tamamlandığında, VM serbest bırakıldı olarak gösterilir.                                                                             | Faturalandırılmamış (1)        |
+| Serbest bırakıldı  | VM başarıyla durdurulmuş ve konaktan kaldırılmış.                                                                                  | Faturalandırılmamış            |
+
+(1) diskler ve ağ gibi bazı Azure kaynakları için ücret uygulanır. Örnekteki yazılım lisansları ücret ödemez.
 
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Serbest bırakılmış bir makineyi gösteren Azure sanal makineleri":::
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247561"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099243"
 ---
 # <a name="introduction-to-listing-options"></a>Listeleme seçeneklerine giriş
 
@@ -38,7 +38,11 @@ Bu tabloda, her teklif türü için hangi liste seçeneklerinin kullanılabildi�
 
 Şimdi al listesini al seçeneği &#42;, şimdi al (ücretsiz), kendi lisansını getir (KLG), abonelik ve kullanım tabanlı fiyatlandırmayı içerir. Ayrıntılar için bkz. [Şimdi alın](#get-it-now).
 
-### <a name="free-trial"></a>Ücretsiz Deneme
+## <a name="changing-offer-type"></a>Teklif türü değiştiriliyor
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>Ücretsiz Deneme
 
 Keşfedilebilirlik artırmak ve çözümünüzün deneme deneyiminizin sağlamasını otomatik hale getirmek için ticari marketi kullanın. Bu, teklif türüne bağlı olarak, olası müşterilerin hizmet olarak yazılım (SaaS), IaaS veya Microsoft uygulama içi deneyimi için 30 günden altı aya kadar ücretsiz olarak kullanılmasını sağlar.
 
@@ -46,18 +50,18 @@ Müşteriler teklifinizi denemek için teklifinizin liste sayfasındaki _ücrets
 
 Sanal makine teklifleri için müşteriler, deneme süresi boyunca teklifin kullanımı için Azure altyapı maliyetlerinden ücretlendirilir. Deneme süresi sona erdiğinde, müşteriler deneme süresi sona ermeden önce iptal etmedikleri takdirde standart oranlar temelinde denedikleri son plana göre otomatik olarak ücretlendirilir.
 
-### <a name="test-drive"></a>Test Sürüşü
+## <a name="test-drive"></a>Test Sürüşü
 
 Müşteriler, önceden yapılandırılmış bir ortama sabit sayıda saat boyunca erişim sağlamak için teklifinizin listeleme sayfasındaki _test sürücüsü_ düğmesini kullanır. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md)
 
 > [!TIP]
 > Bir test sürücüsü, ücretsiz deneme sürümünden farklıdır. Bir sınama sürücüsü, ücretsiz deneme veya her ikisini birden sağlayabilirsiniz. Bunlar her ikisi de müşterilerinizi sabit bir süre için sağlar. Ancak bir sınama sürücüsü Ayrıca, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden kılavuzlu bir tura, gerçek hayatta bir uygulama senaryosunda gösterilmekte olan avantajlardan de sahiptir.
 
-### <a name="contact-me"></a>Benimle iletişim kurun
+## <a name="contact-me"></a>Benimle iletişim kurun
 
 Uygulamanızın veya hizmetinizin basit listesi. Müşteriler teklifiniz hakkında sizinle bağlantı kurmak istemeniz için teklifinizin liste sayfasında _benimle Iletişim kurun_ düğmesini kullanır.
 
-### <a name="get-it-now"></a>Hemen alın
+## <a name="get-it-now"></a>Hemen alın
 
 Bu liste seçeneği, transactable tekliflerini (abonelikler ve Kullanıcı tabanlı fiyatlandırma), kendi lisans tekliflerinizi getir ve şimdi al (ücretsiz) bilgilerini içerir. Transactable teklifler, ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Müşteriler teklifi almak için _Şimdi Al düğmesini_ kullanır.
 
@@ -92,28 +96,28 @@ Bu tabloda, şimdi al listesini Al seçeneğinin içerdiği ek fiyatlandırma se
 
 <sup>2</sup> saat başına fiyatlandırılır ve aylık olarak faturalandırılır.
 
-#### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
+### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
 
 Uygulamanızı ücretsiz olarak sunmak için bu liste seçeneğini kullanın. Müşteriler ücretsiz teklifinizi almak için _Şimdi al_ düğmesini kullanır.
 
 > [!NOTE]
 > Şimdi al (ücretsiz) teklifleri, transactable teklifleri için Market 'Teki avantajlar avantajlarına uygun değildir. Storefront aracılığıyla hiçbir işlem olmadığından, bunlar "deneme" olarak kategorize edilir. Aşağıdaki [Market remaronları](#marketplace-rewards) inceleyin.
 
-#### <a name="bring-your-own-license-byol"></a>Kendi Lisansını Getir (KLG)
+### <a name="bring-your-own-license-byol"></a>Kendi Lisansını Getir (KLG)
 
 Müşterilerin teklifinizi ticari Market dışında satın alınan bir lisans kullanarak dağıtmasına izin vermek için bu liste seçeneğini kullanın. Bu seçenek, Şirket içinden buluta geçişler için idealdir. Müşteriler, sizin için önceden satın alınan bir lisans kullanarak teklifinizin satın almasını sağlamak için _Şimdi al_ düğmesini kullanır.
 
 > [!NOTE]
 > KLG teklifler, transactable teklifleri için Market 'Teki avantajlar avantajlarına uygun değildir. Bunlar bir müşterinin lisansı iş ortağından almalarını gerektirdiğinden ve ticari Market storefront aracılığıyla hiçbir işlem olmadığından, bunlar "liste" olarak kategorize edilir. Aşağıdaki [Market remaronları](#marketplace-rewards) inceleyin.
 
-#### <a name="subscription"></a>Abonelik
+### <a name="subscription"></a>Abonelik
 
 Bu teklif türleri için bir sabit ücret ücreti alabilirsiniz:
 
 - Azure uygulaması (yönetilen uygulama), aylık abonelikleri destekler.
 - SaaS, hem aylık hem de yıllık abonelikleri destekler.
 
-#### <a name="usage-based-pricing"></a>Kullanım tabanlı fiyatlandırma
+### <a name="usage-based-pricing"></a>Kullanım tabanlı fiyatlandırma
 
 Aşağıdaki teklif türleri kullanım tabanlı fiyatlandırmayı destekler:
 
