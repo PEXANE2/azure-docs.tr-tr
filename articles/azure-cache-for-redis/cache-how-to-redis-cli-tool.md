@@ -1,19 +1,19 @@
 ---
 title: Redsıs için Azure Cache ile redsıs-CLI kullanma
-description: İstemci olarak Redsıs için Azure önbelleğiyle etkileşim kurmak üzere bir komut satırı aracı olarak *redis-cli.exe* kullanmayı öğrenin.
+description: İstemci olarak Redsıs için Azure önbelleğiyle etkileşim kurmak üzere bir komut satırı aracı olarak *redis-cli.exe* kullanmayı öğrenin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/22/2018
-ms.openlocfilehash: 4ca8980123240a90f73a4866c37a79800ce403d1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 3a1e1cdb7706cb284da57e10e35afe3420deaf75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538026"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375315"
 ---
-# <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Redsıs için Azure Cache ile Redsıs komut satırı aracını kullanma
+# <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Redsıs için Azure Cache ile Redsıs komut satırı aracını kullanın
 
 *redis-cli.exe* , Red, istemci olarak bir Azure önbelleğiyle etkileşim kurmaya yönelik popüler bir komut satırı aracıdır. Bu araç redde için Azure Cache ile birlikte kullanılabilir.
 
@@ -46,7 +46,7 @@ Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayıl
 
     Sunucuyu başlatmak için **Stunnel GUI başlangıcını** çalıştırın.
 
-    Stunnel sunucusu için görev çubuğu simgesine sağ tıklayın ve **günlük penceresini göster** ' e tıklayın.
+    Stunnel sunucusu için görev çubuğu simgesine sağ tıklayın ve **günlük penceresini göster**' e tıklayın.
 
     Stunnel günlük penceresi menüsünde **yapılandırma**  >  **düzenleme yapılandırması** ' na tıklayarak geçerli yapılandırma dosyasını açın.
 
@@ -61,7 +61,7 @@ Redsıs için Azure Cache ile yalnızca TLS bağlantı noktası (6380) varsayıl
 
     Yapılandırma dosyasını kaydedin ve kapatın. 
   
-    Stunnel günlüğü penceresi menüsünde, **yapılandırma**  >  **yeniden yükleme yapılandırması** ' na tıklayın.
+    Stunnel günlüğü penceresi menüsünde, **yapılandırma**  >  **yeniden yükleme yapılandırması**' na tıklayın.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Redsıs komut satırı aracını kullanarak bağlanın.
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![Önbellek bağlantınızın başarılı olduğunu gösteren ekran görüntüsü.](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-**Güvenli** olmayan TLS bağlantı noktası ile bir sınama önbelleği kullanıyorsanız, `redis-cli.exe` Test önbelleğine bağlanmak için *ana bilgisayar adınızı* , *bağlantı noktasını* ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın ve geçirin.
+**Güvenli** olmayan TLS bağlantı noktası ile bir sınama önbelleği kullanıyorsanız, `redis-cli.exe` Test önbelleğine bağlanmak için *ana bilgisayar adınızı*, *bağlantı noktasını* ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın ve geçirin.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

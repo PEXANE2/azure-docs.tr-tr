@@ -1,22 +1,18 @@
 ---
 title: PowerShell ile paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 description: Azure Data Factory ' de paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı öğrenin. böylece, tümleştirme çalışma zamanına birden çok veri fabrikası erişebilir.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 16feeb124859fa6199303d9d590fa0a286033ef9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118277"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389442"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
@@ -64,7 +60,7 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
 1. Bağlı bir tümleştirme çalışma zamanı oluşturun.
 1. Paylaşımı iptal edin.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

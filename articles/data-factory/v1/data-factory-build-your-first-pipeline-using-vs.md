@@ -1,23 +1,19 @@
 ---
 title: İlk Data Factory 'nizi derleme (Visual Studio)
 description: Bu öğreticide Visual Studio kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: b0532e75ac581bad3b5dd8669a591186dc320a86
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496577"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377457"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Öğretici: Visual Studio kullanarak veri fabrikası oluşturma
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -65,7 +61,7 @@ Bu izlenecek yolun bir parçası olarak gerçekleştireceğiniz adımlar şunlar
 3. Bilgisayarınızda şunların yüklü olması gerekir:
    * Visual Studio 2013 veya Visual Studio 2015
    * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  **Update**' na tıklayın.
+   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  ' na tıklayın.
 
 Şimdi Visual Studio 'Yu bir Azure Data Factory oluşturmak için kullanalım.
 
@@ -563,7 +559,7 @@ Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu | Açıklama |
+| Konu | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |

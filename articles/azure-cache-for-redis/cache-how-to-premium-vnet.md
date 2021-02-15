@@ -1,32 +1,27 @@
 ---
 title: Redsıs örneği için sanal ağ-Premium katmanı Azure önbelleği yapılandırma
-description: Redsıs örnekleri için Premium katmanlı Azure önbelleğiniz için sanal ağ desteği oluşturmayı ve yönetmeyi öğrenin.
+description: Redsıs örneği için Premium katmanlı Azure önbelleğiniz için sanal ağ desteği oluşturma ve yönetme hakkında bilgi edinin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833839"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375281"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium katmanlı bir Azure önbelleği için sanal ağ desteğini yapılandırma
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 
-Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Premium katmanlı Özellikler kümeleme, kalıcılık ve sanal ağ desteği içerir. Sanal ağ, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, genel olarak adreslenebilir ve yalnızca sanal ağ içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium katmanlı bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
+[Azure sanal ağ](https://azure.microsoft.com/services/virtual-network/) dağıtımı, erişimi daha fazla kısıtlamak için alt ağlar, erişim denetim ilkeleri ve diğer özelliklerle birlikte gelişmiş güvenlik ve yalıtım özellikleri sağlar. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, genel olarak adreslenebilir ve yalnızca sanal ağ içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium katmanlı bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
 
 > [!NOTE]
 > Redsıs için Azure Cache, hem klasik dağıtım modelini hem de Azure Resource Manager sanal ağları destekler.
 > 
 
-## <a name="why-virtual-network"></a>Neden sanal ağ?
-
-[Azure sanal ağ](https://azure.microsoft.com/services/virtual-network/) dağıtımı, redsıs örneği Için Azure önbelleğiniz için gelişmiş güvenlik ve yalıtımın yanı sıra alt ağlar, erişim denetim ilkeleri ve diğer özelliklerle erişimi daha fazla kısıtlamak için de sağlar.
-
-## <a name="virtual-network-support"></a>Sanal ağ desteği
+## <a name="set-up-virtual-network-support"></a>Sanal ağ desteğini ayarlama
 
 Sanal ağ desteği, önbellek oluşturma sırasında **redin bölmesi Için yeni Azure önbelleğinde** yapılandırılır.
 

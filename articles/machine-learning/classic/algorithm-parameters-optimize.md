@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): algoritmaları Iyileştirme-Azure'
 description: Azure Machine Learning Studio (klasik) ' de bir algoritma için en uygun parametre kümesini nasıl seçebileceğinizi açıklar.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: b08318d4c12fd2e6ea8055771ca6792b0fb280dd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307856"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519312"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio algoritmalarınızı iyileştirmek için parametreler seçin (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Bu konuda, Azure Machine Learning Studio (klasik) ' de bir algoritma için doğru hiper parametre kümesinin nasıl oluşturulacağı açıklanmaktadır. Çoğu makine öğrenimi algoritmalarının ayarlanması parametreleri vardır. Bir modeli eğitedığınızda, bu parametrelerin değerlerini sağlamanız gerekir. Eğitilen modelin göre etkinliğine seçtiğiniz model parametrelerine bağlıdır. En iyi parametre kümesini bulma işlemi *model seçimi* olarak bilinir.
 
@@ -28,10 +28,10 @@ Model seçimi yapmak için çeşitli yollar vardır. Machine Learning 'de, çapr
 
 En iyi parametre kümesini bulma işleminde dört adım vardır:
 
-1. **Parametre alanını tanımlayın** : algoritma için önce dikkate almak istediğiniz parametre değerlerini kesin olarak belirleyin.
-2. **Çapraz doğrulama ayarlarını tanımlayın** : veri kümesi için çapraz doğrulama katlarının nasıl seçileceğine karar verin.
-3. **Ölçüyü tanımlayın** : doğruluk, kök ortalama kare hatası, duyarlık, geri çağırma veya f puanı gibi en iyi parametre kümesini belirlemek için hangi metriğin kullanılacağına karar verin.
-4. **Eğitme, değerlendirme ve karşılaştırma** : parametre değerlerinin her benzersiz birleşimi için, çapraz doğrulama tarafından ve tanımladığınız hata ölçümüne göre yürütülür. Değerlendirme ve karşılaştırmadan sonra en iyi şekilde gerçekleştiren modeli seçebilirsiniz.
+1. **Parametre alanını tanımlayın**: algoritma için önce dikkate almak istediğiniz parametre değerlerini kesin olarak belirleyin.
+2. **Çapraz doğrulama ayarlarını tanımlayın**: veri kümesi için çapraz doğrulama katlarının nasıl seçileceğine karar verin.
+3. **Ölçüyü tanımlayın**: doğruluk, kök ortalama kare hatası, duyarlık, geri çağırma veya f puanı gibi en iyi parametre kümesini belirlemek için hangi metriğin kullanılacağına karar verin.
+4. **Eğitme, değerlendirme ve karşılaştırma**: parametre değerlerinin her benzersiz birleşimi için, çapraz doğrulama tarafından ve tanımladığınız hata ölçümüne göre yürütülür. Değerlendirme ve karşılaştırmadan sonra en iyi şekilde gerçekleştiren modeli seçebilirsiniz.
 
 Aşağıdaki görüntüde bunun Azure Machine Learning Studio (klasik) ' de nasıl elde edilebileceği gösterilmektedir.
 

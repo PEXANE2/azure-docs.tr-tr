@@ -3,18 +3,18 @@ title: 'ML Studio (klasik): yeni başlayanlar için veri bilimi-Azure'
 description: Yeni başlayanlar için veri bilimi, 5 Sorulık veri bilimi cevaplarından itibaren 5 kısa videolarda temel kavramları öğretir. Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307482"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520400"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Yeni Başlayanlar için Veri Bilimi video 1: Veri bilimiyle ilgili 5 sorunun yanıtı
 
@@ -37,7 +37,7 @@ Bu ilk videoda, veri bilimi yanıt verebilir soru türleri hakkında bilgi sağl
 * Video 5: [diğer insanların işini veri bilimi olarak kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 dakikalık 18 sn)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Döküm: 5 soruda veri bilimi yanıtları
-Merhaba! *Yeni başlayanlar için video serisi veri bilimi* 'ne hoş geldiniz.
+Merhaba! *Yeni başlayanlar için video serisi veri bilimi*'ne hoş geldiniz.
 
 Veri bilimi, bu nedenle herhangi bir denklem veya jargon ile programlama yapmadan ilgili temel bilgileri açıklayacağız.
 

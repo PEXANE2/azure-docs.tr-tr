@@ -3,22 +3,22 @@ title: 'ML Studio (klasik): Web Hizmetleri için Excel eklentisi-Azure'
 description: Herhangi bir kod yazmadan Azure Machine Learning Web hizmetlerini doğrudan Excel 'de kullanma.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: fb87afcc6edc02d241dca763aff9ecdd594e4711
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 45d9e494b9f885cfa0680bec595aefcd4074d41e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310092"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520009"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için Excel eklentisi
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Excel, herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan çağırmayı kolaylaştırır.
@@ -36,10 +36,10 @@ Excel, herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan çağ�
 2. Bu örnekte, "Titanic acil vor Predictor (Excel Eklentisi örneği) [Score]" öğesine tıklayarak Web hizmetini seçin.
    
     ![Web hizmeti seçin](./media/excel-add-in-for-web-services/image1.png)
-3. Bu sizi **tahmin** etme bölümüne götürür.  Bu çalışma kitabı zaten örnek veriler içeriyor, ancak boş bir çalışma kitabı için Excel 'de bir hücre seçip **örnek verileri kullan** ' a tıklayabilirsiniz.
+3. Bu sizi **tahmin** etme bölümüne götürür.  Bu çalışma kitabı zaten örnek veriler içeriyor, ancak boş bir çalışma kitabı için Excel 'de bir hücre seçip **örnek verileri kullan**' a tıklayabilirsiniz.
 4. Üst bilgileri olan verileri seçin ve giriş veri aralığı simgesine tıklayın.  "My Data Headers" kutusunun işaretli olduğundan emin olun.
-5. **Çıkış** ' ın altında çıktının olmasını istediğiniz hücre numarasını girin, örneğin burada "H1" yazın.
-6. **Tahmin** ' e tıklayın. "Otomatik tahmin" onay kutusunu seçerseniz seçili alanlardaki tüm değişiklikler (giriş olarak belirtilenler), tahmin düğmesine basmanız gerekmeden bir istek ve çıkış hücrelerinin güncelleştirilmesini tetikler.
+5. **Çıkış**' ın altında çıktının olmasını istediğiniz hücre numarasını girin, örneğin burada "H1" yazın.
+6. **Tahmin**' e tıklayın. "Otomatik tahmin" onay kutusunu seçerseniz seçili alanlardaki tüm değişiklikler (giriş olarak belirtilenler), tahmin düğmesine basmanız gerekmeden bir istek ve çıkış hücrelerinin güncelleştirilmesini tetikler.
    
     ![Tahmin bölümü](./media/excel-add-in-for-web-services/image1.png)
 
@@ -65,22 +65,22 @@ Web hizmetiniz için API anahtarını alın. Bu eylemi gerçekleştirdiğiniz du
 
 **Yeni bir Web hizmeti kullan**
 
-1. [Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalında **Web Hizmetleri** ' ne ve ardından Web hizmetinizi seçin. 
-2. **Tüketme** ' ye tıklayın.
+1. [Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalında **Web Hizmetleri**' ne ve ardından Web hizmetinizi seçin. 
+2. **Tüketme**' ye tıklayın.
 3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil anahtarı** ve **istek-yanıt** URL 'sini kopyalayıp kaydedin.
 
 ## <a name="steps-to-add-a-new-web-service"></a>Yeni bir Web hizmeti ekleme adımları
 
 1. Bir Web hizmeti dağıtın veya mevcut bir Web hizmetini kullanın. Web hizmeti dağıtma hakkında daha fazla bilgi için bkz. [öğretici 3: Kredi risk modeli dağıtma](tutorial-part3-credit-risk-deploy.md).
-2. **Tüketme** ' ye tıklayın.
+2. **Tüketme**' ye tıklayın.
 3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil anahtarı** ve **istek-yanıt** URL 'sini kopyalayıp kaydedin.
 4. Excel 'de **Web Hizmetleri** bölümüne gidin ( **tahmin** bölümünde yer alıyorsa, Web hizmetleri listesine gitmek için geri okuna tıklayın).
    
     ![Web hizmeti seçimine git](./media/excel-add-in-for-web-services/image3.png)
-5. **Web hizmeti Ekle** ' ye tıklayın.
+5. **Web hizmeti Ekle**' ye tıklayın.
 6. URL 'yi, **URL** etiketli Excel eklenti metin kutusuna yapıştırın.
 7. API/birincil anahtarını **API anahtarı** etiketli metin kutusuna yapıştırın.
-8. **Ekle** 'ye tıklayın.
+8. **Ekle**'ye tıklayın.
    
     ![Klasik Web hizmeti için URL ve API anahtarı.](./media/excel-add-in-for-web-services/image6.png)
 9. Web hizmetini kullanmak için, "var olan bir Web hizmetini kullanma adımları" bölümündeki yönergeleri izleyin.

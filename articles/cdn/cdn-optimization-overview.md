@@ -4,22 +4,16 @@ description: Azure Content Delivery Network 'ın, içerik türüne göre teslimi
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387929"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>İçerik teslimi türü için Azure CDN iyileştirin
 
@@ -64,7 +58,11 @@ Microsoft, teslimizin için en uygun sağlayıcıyı seçmek üzere farklı sağ
 
 ## <a name="select-and-configure-optimization-types"></a>İyileştirme türlerini seçin ve yapılandırın
 
-Bir CDN uç noktası oluşturduğunuzda, son noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. **Genel web teslimi** varsayılan seçimdir. Yalnızca Akamai bitiş noktalarından mevcut **Azure CDN Standart** için, iyileştirme seçeneğini dilediğiniz zaman güncelleştirebilirsiniz. Bu değişiklik Azure CDN teslimini kesintiye uğratmaz. 
+Bir CDN uç noktası oluşturduğunuzda, son noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. 
+
+**Genel web teslimi** varsayılan seçimdir. Akamai uç noktaları **iyileştirmesinden yalnızca Azure CDN standardını** dilediğiniz zaman güncelleştirebilirsiniz. 
+
+**Microsoft 'tan gelen Azure CDN standart** **Azure CDN Verizon** ve **Verizon 'ten Azure CDN Premium**'dan standart olarak kullanamazsınız.
 
 1. Akamai profilinden **Azure CDN Standart** bir uç nokta seçin.
 

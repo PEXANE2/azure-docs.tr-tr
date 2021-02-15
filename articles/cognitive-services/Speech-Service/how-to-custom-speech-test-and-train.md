@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8546201d21e68fbcf1e519c8fe9ba0de1dc38a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702211"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367988"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,9 +46,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | No | Yok |
 | [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-20 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+| [İlgili metin](#related-text-data-for-training) | No | Yok | Yes | 1-200 MB ilgili metin |
 
 Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir. Metinli eğitim, ses (dakika veya gün) ile eğitimlerden çok daha hızlıdır.
 
@@ -57,9 +57,17 @@ Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası o
 > [!TIP]
 > Hızlı bir şekilde başlamak için örnek verileri kullanmayı göz önünde bulundurun. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Örnek özel konuşma tanıma verileri <span class="docon docon-navigate-external x-hidden-focus"></span> </a> için bu GitHub deposuna bakın
 
+> [!NOTE]
+> Tüm temel modeller ses ile eğitimi desteklemez. Bir temel model bunu desteklemiyorsa, konuşma hizmeti bu metni yalnızca dökümleri 'ten kullanır ve sesi yoksayar. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> Eğitim için kullanılan temel modeli değiştirirken ve eğitim veri kümesinde seslerinizi değiştirdiğinizde, yeni seçilen temel modelin [ses verileriyle eğitimi destekleyip desteklemediğini](language-support.md#speech-to-text) *her zaman* denetleyin. Daha önce kullanılan temel model, ses verileriyle eğitimi desteklemeiyorsa ve eğitim veri kümesi ses içeriyorsa, yeni temel modele sahip eğitim süresi büyük **ölçüde** artar ve birkaç saat ile birkaç güne ve daha fazlasına kolayca gidebilirler. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip](custom-speech-overview.md#set-up-your-azure-account) bir bölgede **değilse** bu özellikle doğrudur.
+>
+> Yukarıdaki paragrafta açıklanan sorunu ortaya çıkardıysanız, veri kümesindeki ses miktarını azaltarak veya tamamen yalnızca metni bırakarak eğitim süresini hızla azaltabilirsiniz. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) **değilse** , ikinci seçenek kesinlikle önerilir.
+
 ## <a name="upload-data"></a>Verileri karşıya yükleme
 
-Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
+Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">konuşma Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>'ya gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
 ![Konuşma portalından ses karşıya yükleme seçeneğini vurgulayan ekran görüntüsü.](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -93,7 +101,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 
 Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüştürmek için <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kullanın. Aşağıda, bu etkinliklerin her birinin SoX komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
-| Etkinlik | Açıklama | SoX komutu |
+| Etkinlik | Description | SoX komutu |
 |----------|-------------|-------------|
 | Ses biçimini denetle | Denetlemek için bu komutu kullanın<br>ses dosyası biçimi. | `sox --i <filename>` |
 | Ses biçimini Dönüştür | Dönüştürmek için bu komutu kullanın<br>ses dosyasını tek kanala, 16 bit, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -136,14 +144,14 @@ speech03.wav    the lazy dog was not amused
 
 Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak, veriler konuşma Studio 'ya yüklenmeden önce gerçekleştirilmesi gereken bazı önemli normalleştirmeler vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra, <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklemeden önce bunları tek bir. zip dosyası olarak paketleyin. Aşağıda üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesi verilmiştir:
+Ses dosyalarınızı ve bunlara karşılık gelen düzenlemeleri topladıktan sonra, <a href="https://speech.microsoft.com/customspeech" target="_blank">konuşma Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>'ya yüklemeden önce bunları tek bir. zip dosyası olarak paketleyin. Aşağıda üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesi verilmiştir:
 
 > [!div class="mx-imgBorder"]
 > ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
 Konuşma hizmeti abonelikleriniz için önerilen bölgelerin listesi için bkz. [Azure hesabınızı ayarlama](custom-speech-overview.md#set-up-your-azure-account) . Bu bölgelerden birinde konuşma aboneliklerinin kurulması, modeli eğitmek için gereken süreyi azaltacaktır. Bu bölgelerde, eğitim, günde yaklaşık 10 saatlik ses ile diğer bölgelerde günde yalnızca 1 saat arasında işlem yapabilir. Model eğitimi bir hafta içinde tamamlanamaz, model başarısız olarak işaretlenir.
 
-Tüm temel modeller ses verileriyle eğitimi desteklemez. Temel model bunu desteklemiyorsa, hizmet sesi yoksayacak ve yalnızca döküm metniyle eğitecektir. Bu durumda, eğitim, ilgili metin ile eğitimle aynı olacaktır.
+Tüm temel modeller ses verileriyle eğitimi desteklemez. Temel model bunu desteklemiyorsa, hizmet sesi yoksayacak ve yalnızca döküm metniyle eğitecektir. Bu durumda, eğitim, ilgili metin ile eğitimle aynı olacaktır. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
 
 ## <a name="related-text-data-for-training"></a>Eğitim için ilgili metin verileri
 
@@ -154,7 +162,7 @@ Tüm temel modeller ses verileriyle eğitimi desteklemez. Temel model bunu deste
 | Cümleler (utterlere) | Ürün adlarını veya bir cümle bağlamı içindeki sektöre özel sözlüğü yapılandırırken doğruluğu geliştirir. |
 | Söylenişler | Tanımsız söylenlerdeki yaygın olmayan terimlerin, kısaltmalardan veya diğer sözcüklerin okunuşunu geliştirir. |
 
-Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklenebilir.
+Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">konuşma Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>'ya yüklenebilir.
 
 İlgili metinle eğitim genellikle birkaç dakika içinde tamamlanır.
 

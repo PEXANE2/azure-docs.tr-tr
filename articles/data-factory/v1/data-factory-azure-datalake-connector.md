@@ -1,24 +1,19 @@
 ---
 title: Azure Data Lake Storage 1. veri kopyalama
 description: Azure Data Factory kullanarak Data Lake Store veri kopyalama hakkında bilgi edinin
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 16cef1fb35efcbe12a4054304e3f354c03b37227
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637658"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379412"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory kullanarak Data Lake Storage 1. veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -52,9 +47,9 @@ Data Lake Store Bağlayıcısı bu kimlik doğrulama türlerini destekler:
 ## <a name="get-started"></a>başlarken
 Farklı araçlar/API 'Ler kullanarak bir Azure Data Lake Store veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
-Verileri kopyalamak için bir işlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik bir öğretici için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
+Verileri kopyalamak için bir işlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik bir öğretici için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -72,9 +67,9 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Data Lake Store veri
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **türüyle** | Type özelliği **AzureDataLakeStore** olarak ayarlanmalıdır. | Evet |
-| **dataLakeStoreUri** | Azure Data Lake Store hesabıyla ilgili bilgiler. Bu bilgiler aşağıdaki biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya `adl://[accountname].azuredatalakestore.net/` . | Evet |
-| **SubscriptionID** | Data Lake Store hesabının ait olduğu Azure abonelik KIMLIĞI. | Havuz için gerekli |
+| **türüyle** | Type özelliği **AzureDataLakeStore** olarak ayarlanmalıdır. | Yes |
+| **dataLakeStoreUri** | Azure Data Lake Store hesabıyla ilgili bilgiler. Bu bilgiler aşağıdaki biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya `adl://[accountname].azuredatalakestore.net/` . | Yes |
+| **subscriptionId** | Data Lake Store hesabının ait olduğu Azure abonelik KIMLIĞI. | Havuz için gerekli |
 | **resourceGroupName** | Data Lake Store hesabının ait olduğu Azure Kaynak grubu adı. | Havuz için gerekli |
 
 ### <a name="service-principal-authentication-recommended"></a>Hizmet sorumlusu kimlik doğrulaması (önerilir)
@@ -85,17 +80,17 @@ Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığ�
 
 > [!IMPORTANT]
 > Azure Data Lake Store ' de hizmet sorumlusu uygun iznini verdiğinizden emin olun:
->- **Kaynak olarak Data Lake Store kullanmak için** , bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
->- **Havuz olarak Data Lake Store kullanmak için** , klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
->- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız** , hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
+>- **Kaynak olarak Data Lake Store kullanmak için**, bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
+>- **Havuz olarak Data Lake Store kullanmak için**, klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
+>- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız**, hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
 
 Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını kullanın:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
-| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Evet |
-| **tenant** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet |
+| **Serviceprincipalıd** | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
+| **Servicesprincipalkey** | Uygulamanın anahtarını belirtin. | Yes |
+| **tenant** | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Yes |
 
 **Örnek: hizmet sorumlusu kimlik doğrulaması**
 ```json
@@ -120,14 +115,14 @@ Alternatif olarak, aşağıdaki özellikleri belirterek veya Data Lake Store kop
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Evet |
-| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Evet |
+| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Yes |
+| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Yes |
 
 > [!IMPORTANT]
 > Azure Data Lake Store ' de kullanıcıya uygun izni verdiğinizden emin olun:
->- **Kaynak olarak Data Lake Store kullanmak için** , bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
->- **Havuz olarak Data Lake Store kullanmak için** , klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
->- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız** , hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
+>- **Kaynak olarak Data Lake Store kullanmak için**, bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
+>- **Havuz olarak Data Lake Store kullanmak için**, klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
+>- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız**, hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
 
 **Örnek: Kullanıcı kimlik bilgisi kimlik doğrulaması**
 ```json
@@ -233,17 +228,17 @@ Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz
     ```
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Data Lake Store giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin **Type** özelliğini **AzureDataLakeStore** olarak ayarlarsınız. Veri kümesinin **Linkedservicename** özelliğini Data Lake Store bağlantılı hizmetin adı olarak ayarlayın. Veri kümelerini tanımlamaya yönelik JSON bölümlerinin ve özelliklerinin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı** , **kullanılabilirlik** ve **ilke** gibi JSON 'daki veri kümesinin bölümleri, tüm veri KÜMESI türleri (örneğin, Azure SQL veritabanı, Azure Blob ve Azure tablosu) için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar.
+Data Lake Store giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin **Type** özelliğini **AzureDataLakeStore** olarak ayarlarsınız. Veri kümesinin **Linkedservicename** özelliğini Data Lake Store bağlantılı hizmetin adı olarak ayarlayın. Veri kümelerini tanımlamaya yönelik JSON bölümlerinin ve özelliklerinin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı**, **kullanılabilirlik** ve **ilke** gibi JSON 'daki veri kümesinin bölümleri, tüm veri KÜMESI türleri (örneğin, Azure SQL veritabanı, Azure Blob ve Azure tablosu) için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar.
 
 **AzureDataLakeStore** türündeki bir veri kümesi Için **typeproperties** bölümü aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store kapsayıcı ve klasörün yolu. |Evet |
-| **Kısaltın** |Azure Data Lake Store içindeki dosyanın adı. **Filename** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. <br/><br/>**Dosya adı** belirtirseniz, etkinlik (kopyalama dahil) belirli dosya üzerinde çalışmaktadır.<br/><br/>**Dosya adı** belirtilmediğinde, Copy, giriş veri kümesindeki **FolderPath** içindeki tüm dosyaları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı biçimindedir `Data._Guid_.txt` . Örneğin: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Hayır |
-| **partitionedBy** |**Partitionedby** özelliği isteğe bağlıdır. Bu uygulamayı, zaman serisi verileri için dinamik bir yol ve dosya adı belirtmek üzere kullanabilirsiniz. Örneğin, **FolderPath** her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için bkz. partitionedBy özelliği. |Hayır |
-| **formatını** | Şu biçim türleri desteklenir: **TextFormat** , **jsonformat** , **avroformat** , **Orcformat** ve **parquetformat** . **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için, [Azure Data Factory makale tarafından desteklenen dosya ve sıkıştırma biçimlerinde](data-factory-supported-file-and-compression-formats.md) [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" dosyaları kopyalamak istiyorsanız, `format` hem giriş hem de çıkış veri kümesi tanımlarında bölümü atlayın. |Hayır |
-| **masıyla** | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip** , **söndür** , **bzip2** ve **zipsöndür** . Desteklenen düzeyler **en iyi** ve **en hızlardır** . Daha fazla bilgi için bkz. [Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
+| **folderPath** |Data Lake Store kapsayıcı ve klasörün yolu. |Yes |
+| **Kısaltın** |Azure Data Lake Store içindeki dosyanın adı. **Filename** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. <br/><br/>**Dosya adı** belirtirseniz, etkinlik (kopyalama dahil) belirli dosya üzerinde çalışmaktadır.<br/><br/>**Dosya adı** belirtilmediğinde, Copy, giriş veri kümesindeki **FolderPath** içindeki tüm dosyaları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı biçimindedir `Data._Guid_.txt` . Örneğin: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
+| **partitionedBy** |**Partitionedby** özelliği isteğe bağlıdır. Bu uygulamayı, zaman serisi verileri için dinamik bir yol ve dosya adı belirtmek üzere kullanabilirsiniz. Örneğin, **FolderPath** her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için bkz. partitionedBy özelliği. |No |
+| **formatını** | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **Orcformat** ve **parquetformat**. **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için, [Azure Data Factory makale tarafından desteklenen dosya ve sıkıştırma biçimlerinde](data-factory-supported-file-and-compression-formats.md) [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" dosyaları kopyalamak istiyorsanız, `format` hem giriş hem de çıkış veri kümesi tanımlarında bölümü atlayın. |No |
+| **masıyla** | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2** ve **zipsöndür**. Desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="the-partitionedby-property"></a>PartitionedBy özelliği
 **Partitionedby** özelliği, Data Factory işlevleri ve sistem değişkenleri ile zaman serisi verileri Için dinamik **FolderPath** ve **filename** özellikleri belirtebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory-işlevler ve sistem değişkenleri](data-factory-functions-variables.md) makalesi.
@@ -283,13 +278,13 @@ Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etki
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| **öz** |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |Hayır |
+| **öz** |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |No |
 
 **AzureDataLakeStoreSink** , **typeproperties** bölümünde aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| **copyBehavior** |Kopyalama davranışını belirtir. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar otomatik olarak oluşturulan adlarla oluşturulur.<br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, dosya adı otomatik olarak oluşturulur. |Hayır |
+| **copyBehavior** |Kopyalama davranışını belirtir. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar otomatik olarak oluşturulan adlarla oluşturulur.<br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, dosya adı otomatik olarak oluşturulur. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>özyinelemeli ve copyBehavior örnekleri
 Bu bölümde, özyinelemeli ve copyBehavior değerlerinin farklı birleşimleri için kopyalama işleminin ortaya çıkan davranışı açıklanmaktadır.

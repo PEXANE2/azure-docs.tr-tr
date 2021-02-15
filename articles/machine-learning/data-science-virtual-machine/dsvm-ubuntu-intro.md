@@ -2,18 +2,17 @@
 title: 'Hızlı başlangıç: Ubuntu Veri Bilimi Sanal Makinesi oluşturma'
 titleSuffix: Azure Data Science Virtual Machine
 description: Analiz ve makine öğrenimi yapmak için bir Linux (Ubuntu) Veri Bilimi Sanal Makinesi yapılandırın ve oluşturun.
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b25d9846f3bb678c182fa22d824f7b4171d2d803
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109853"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515640"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
@@ -30,7 +29,7 @@ Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğini
 
 Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımları verilmiştir:
 
-1. [Azure portalına](https://portal.azure.com) gidin. Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
+1. [Azure Portal](https://portal.azure.com) gidin. Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
 1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Ubuntu 18,04" öğesini seçerek sanal makine listesini bulun
 
 1. Sonraki pencerede **Oluştur**' u seçin.

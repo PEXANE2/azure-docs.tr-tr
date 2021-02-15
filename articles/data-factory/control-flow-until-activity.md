@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory etkinlik tarihine kadar
 description: Until etkinliği, etkinlik ile ilişkili koşul doğru olarak değerlendirilene veya zaman aşımına uğrayana kadar bir dizi etkinliği yürütür.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab3644b11273017ea6e4e5a395a7d3cc3a201217
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486037"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385379"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,11 +51,11 @@ Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı i�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | `Until`Etkinliğin adı. | Dize | Evet
-tür | To **until** olarak ayarlanmalıdır. | Dize | Evet
-ifade | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
-timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss` (veya) `hh:mm:ss` . Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
-Etkinlikler | İfadesi olarak değerlendirilene kadar yürütülen etkinlik kümesi `true` . | Etkinlik dizisi. |  Evet
+name | `Until`Etkinliğin adı. | Dize | Yes
+tür | To **until** olarak ayarlanmalıdır. | Dize | Yes
+ifade | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Yes
+timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss` (veya) `hh:mm:ss` . Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | No
+Etkinlikler | İfadesi olarak değerlendirilene kadar yürütülen etkinlik kümesi `true` . | Etkinlik dizisi. |  Yes
 
 ## <a name="example-1"></a>Örnek 1
 

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory kullanarak Teradata 'tan veri taşıma
 description: Teradata veritabanından veri taşımanızı sağlayan Data Factory hizmeti için Teradata Bağlayıcısı hakkında bilgi edinin
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387215"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,7 +37,7 @@ Teradata bir Azure IaaS VM 'sinde barındırılıyorsa bile ağ geçidi gereklid
 ## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
 Teradata veritabanına bağlanmak için Veri Yönetimi ağ geçidi için, Teradata sürüm 14 veya üzeri [için .net Veri Sağlayıcısı](https://go.microsoft.com/fwlink/?LinkId=278886) veri yönetimi ağ geçidiyle aynı sisteme yüklemeniz gerekir. Teradata sürüm 12 ve üzeri desteklenir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
@@ -302,7 +297,7 @@ Verileri Teradata 'a taşırken, Teradata türünden .NET türüne aşağıdaki 
 | Tarih |Tarih-Saat |
 | Süre |TimeSpan |
 | Saat dilimiyle saat |Dize |
-| Zaman damgası |DateTime |
+| Timestamp |DateTime |
 | Saat dilimi Ile zaman damgası |DateTimeOffset |
 | Aralık günü |TimeSpan |
 | Aralık gün-saat |TimeSpan |

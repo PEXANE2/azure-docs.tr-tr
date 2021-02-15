@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory kullanarak Office 365 ' den veri yükleme
 description: Office 365 ' den veri kopyalamak için Azure Data Factory kullanma
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459709"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370668"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
 
@@ -79,7 +74,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
 
     ![Yapılandırma Office 365 veri kümesi tablosu](./media/load-office-365-data/edit-dataset.png)
 
-8. Artık **pipeline**  >  Office 365 veri ayıklama için ek özellikler yapılandırmaya devam etmek üzere işlem hattı **kaynağı sekmesine** dönün.  Kullanıcı kapsamı ve kullanıcı kapsamı filtresi, Office 365 ' den çıkarmak istediğiniz verileri kısıtlamak için tanımlayabileceğiniz isteğe bağlı fiklardır. Bu ayarları nasıl yapılandıracağınızı öğrenmek için bkz. [Office 365 veri kümesi özellikleri](./connector-office-365.md#dataset-properties) bölümü.
+8. Artık   >  Office 365 veri ayıklama için ek özellikler yapılandırmaya devam etmek üzere işlem hattı **kaynağı sekmesine** dönün.  Kullanıcı kapsamı ve kullanıcı kapsamı filtresi, Office 365 ' den çıkarmak istediğiniz verileri kısıtlamak için tanımlayabileceğiniz isteğe bağlı fiklardır. Bu ayarları nasıl yapılandıracağınızı öğrenmek için bkz. [Office 365 veri kümesi özellikleri](./connector-office-365.md#dataset-properties) bölümü.
 
 9. Tarih filtrelerinden birini seçmeniz ve başlangıç saati ile bitiş saati değerlerini sağlamanız gerekir.
 

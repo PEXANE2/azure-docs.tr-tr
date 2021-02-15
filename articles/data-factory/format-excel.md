@@ -2,19 +2,16 @@
 title: Azure Data Factory Excel biçimi
 description: Bu konu başlığı altında, Excel biçimi Azure Data Factory nasıl ele alınacağını açıklamaktadır.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902051"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386535"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory Excel biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -74,7 +71,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="excel-as-source"></a>Kaynak olarak Excel 
 
-Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik ***\* kaynağını \**** kopyalama bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -116,7 +113,7 @@ Aşağıdaki tabloda bir Excel kaynağı tarafından desteklenen özellikler lis
 | Dosya listesi             | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır       | `true` veya `false`                                         | Si                          |
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma       | hayır       | Dize                                                    | rowUrlColumn                      |
 | Tamamlandıktan sonra          | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır       | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| Son değiştirme ölçütü   | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır       | Zaman damgası                                                 | Modıfıedafter <br> modifiedBefore |
+| Son değiştirme ölçütü   | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır       | Timestamp                                                 | Modıfıedafter <br> modifiedBefore |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="source-example"></a>Kaynak örneği

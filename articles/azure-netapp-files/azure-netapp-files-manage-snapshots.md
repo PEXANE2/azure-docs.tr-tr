@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629672"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379123"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -44,7 +44,7 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam** düğmesine tıklayın. 
+4. **Tamam**'a tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
@@ -187,13 +187,15 @@ Anlık görüntü yolunu Gizle seçeneği, bir birimin anlık görüntü yolunun
 
 Takılan birim,  `.snapshot` istemci tarafından erişilebilen (NFS istemcileri 'nde) veya `~snapshot` (SMB istemcilerinde) adlı bir anlık görüntü dizini içerir. Snapshot dizini birimin anlık görüntülerine karşılık gelen alt dizinleri içerir. Her alt dizin, anlık görüntünün dosyalarını içerir. Yanlışlıkla bir dosyayı silerseniz veya üzerine yazarsanız, dosyayı bir anlık görüntü alt dizininden oku-yaz dizinine kopyalayarak dosyayı üst okuma-yazma dizinine geri yükleyebilirsiniz. 
 
-Anlık görüntü dizinini görmüyorsanız, anlık görüntü yolunu Gizle seçeneği etkin durumda olduğundan bu gizli olabilir. [Anlık görüntü yolunu gizle seçeneğini](#edit-the-hide-snapshot-path-option) devre dışı bırakmak için düzenleyebilirsiniz.  
+Anlık görüntü [yolunu gizle seçeneğini](#edit-the-hide-snapshot-path-option)kullanarak anlık görüntü dizinlerine erişimi denetleyebilirsiniz. Bu seçenek, dizinin istemcilerinden gizlenmesi gerekip gerekmediğini denetler. Bu nedenle, anlık görüntülerle dosya ve klasörlere erişimi de denetler.  
+
+NFSv 4.1, `.snapshot` dizini ( `ls -la` ) göstermiyor. Ancak, anlık görüntü yolunu Gizle seçeneği ayarlanmamışsa, `.snapshot` `cd <snapshot-path>` istemci komut satırındaki komutunu kullanarak NFSv 4.1 aracılığıyla dizine erişmeye devam edebilirsiniz. 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS istemcisi kullanarak bir dosyayı geri yükleme 
 
 1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
 
-    Örnek:
+    Örneğin:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -208,7 +210,7 @@ Anlık görüntü dizinini görmüyorsanız, anlık görüntü yolunu Gizle seç
 
 2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
 
-    Örnek: 
+    Örneğin: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -269,4 +271,4 @@ Artık saklamak zorunda kalmayacak anlık görüntüleri silebilirsiniz.
 * [Anlık görüntü ilkelerinde sorun giderme](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Snapshot 101 videosu](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
-* [Azure uygulaması tutarlı anlık görüntü aracı nedir?](azacsnap-introduction.md)
+* [Azure Uygulamayla Tutarlı Anlık Görüntü Aracı nedir?](azacsnap-introduction.md)

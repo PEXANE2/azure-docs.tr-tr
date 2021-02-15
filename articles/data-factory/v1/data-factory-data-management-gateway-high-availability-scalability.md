@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory 'de veri yönetimi ağ geçidi ile yüksek kullanılabilirlik
 description: Bu makalede, bir düğüm üzerinde çalışabilecek eşzamanlı iş sayısını artırarak daha fazla düğüm ekleyerek ve ölçeği ölçeklendirerek bir veri yönetimi ağ geçidini nasıl ölçeklendirebileceğiniz açıklanır.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391737"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Veri Yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik (Önizleme)
 > [!NOTE]
@@ -98,7 +93,7 @@ Bu bölümde, aşağıdaki iki makale veya bu makalelerdeki kavramlarla ilgili b
         > TLS/SSL sertifikası kullanma gereksinimlerinin listesi için bkz. [TLS/SSL sertifika gereksinimleri](#tlsssl-certificate-requirements) bölümü. 
     5. Ağ Geçidi başarıyla yüklendikten sonra Configuration Manager Başlat ' a tıklayın:
     
-        ![El ile kurulum-yapılandırma yöneticisini başlatma](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![El ile kurulum-yapılandırma yöneticisini başlatma](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. bağlantı durumu, **ağ geçidi adı** ve **düğüm adı**' nı gösteren düğümde (Şirket içi Windows makinesi) veri yönetimi ağ geçidi Configuration Manager görürsünüz.  
 
         ![Veri Yönetimi ağ geçidi-yükleme başarılı](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -200,11 +195,11 @@ Rol | İki tür rol – dağıtıcı ve çalışan vardır. Tüm düğümler ça
 
 Aşağıdaki tabloda **ağ geçidi düğümünün** olası durumları verilmiştir: 
 
-Durum  | Açıklamalar/senaryolar
+Durum    | Açıklamalar/senaryolar
 :------- | :------------------
 Çevrimiçi | Data Factory hizmetine bağlı düğüm.
 Çevrimdışı | Düğüm çevrimdışı.
-Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor.
+Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir. 
 Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir. 
 

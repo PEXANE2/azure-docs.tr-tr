@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787307"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516711"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS konuma telemetrisini görüntüleme ve yapılandırma
 
@@ -37,9 +37,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) kullanılabilir. Bu ölçümler Ayrıca Tanılama ayarları aracılığıyla dışarı aktarılabilir (bkz. [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md)).
 
 
-| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama |
+| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Description |
 | --- | --- | --- | --- | --- |
-| ByteCount | Bayt sayısı | Count | Toplam | Zaman aralığı içinde aktarılan toplam bayt sayısı |
 | BytesDroppedDDoS | Gelen bayt bırakıldı DDoS | BytesPerSecond | Maksimum | Gelen bayt bırakıldı DDoS| 
 | BytesForwardedDDoS | İletilen gelen bayt sayısı | BytesPerSecond | Maksimum | İletilen gelen bayt sayısı |
 | BytesInDDoS | Gelen bayt sayısı DDoS | BytesPerSecond | Maksimum | Gelen bayt sayısı DDoS |
@@ -47,11 +46,9 @@ Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/p
 | DDO, Ggertcppackets | DDoS azaltma tetiklemeye yönelik gelen TCP paketleri | Sayaçpersaniye | Maksimum | DDoS azaltma tetiklemeye yönelik gelen TCP paketleri |
 | DDO, Ggerudppaketleri | DDoS risk azaltma tetiklenecek gelen UDP paketleri | Sayaçpersaniye | Maksimum | DDoS risk azaltma tetiklenecek gelen UDP paketleri |
 | Iunderddosattack | DDoS saldırısı altında | Count | Maksimum | DDoS saldırısı altında |
-| PacketCount | Paket Sayısı | Count | Toplam | Zaman aralığı içinde aktarılan toplam paket sayısı |
 | PacketsDroppedDDoS | DDoS bırakılan gelen paketler | Sayaçpersaniye | Maksimum | DDoS bırakılan gelen paketler |
 | PacketsForwardedDDoS | DDoS iletilen gelen paketler | Sayaçpersaniye | Maksimum | DDoS iletilen gelen paketler |
 | PacketsInDDoS | Gelen paketler DDoS | Sayaçpersaniye | Maksimum | Gelen paketler DDoS |
-| SynCount | SYN sayısı | Count | Toplam | Zaman aralığı içinde aktarılan toplam SYN paketi sayısı |
 | TCPBytesDroppedDDoS | Gelen TCP bayt bırakılan DDoS | BytesPerSecond | Maksimum | Gelen TCP bayt bırakılan DDoS |
 | TCPBytesForwardedDDoS | İletilen gelen TCP baytları | BytesPerSecond | Maksimum | İletilen gelen TCP baytları |
 | TCPBytesInDDoS | Gelen TCP bayt DDoS | BytesPerSecond | Maksimum | Gelen TCP bayt DDoS |
@@ -64,7 +61,6 @@ Azure DDoS koruma standardı için aşağıdaki [ölçümler](../azure-monitor/p
 | UDPPacketsDroppedDDoS | Gelen UDP paketleri bırakıldı | Sayaçpersaniye | Maksimum | Gelen UDP paketleri bırakıldı |
 | UDPPacketsForwardedDDoS | DDoS iletilen gelen UDP paketleri | Sayaçpersaniye | Maksimum | DDoS iletilen gelen UDP paketleri |
 | UDPPacketsInDDoS | Gelen UDP paketleri DDoS | Sayaçpersaniye | Maksimum | Gelen UDP paketleri DDoS |
-| VipAvailability | Veri Yolu Kullanılabilirliği | Count | Ortalama | Süre başına ortalama IP adresi kullanılabilirliği |
 
 ## <a name="prerequisites"></a>Ön koşullar
 

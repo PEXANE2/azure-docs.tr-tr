@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202972"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363211"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -31,9 +31,9 @@ Bir cihaz şablonu, bir [Azure IoT Central uygulamasına](concepts-app-templates
 - Fan çalışma durumunu gönderir
 - Yazılabilir fan hızı özelliği sağlar
 - Cihazı yeniden başlatmak için bir komut sağlar
-- Bir pano aracılığıyla cihazın genel görünümünü sağlar
+- Bir görünüm kullanarak cihazın genel görünümünü sağlar
 
-Bu cihaz şablonundan bir operatör gerçek fan cihazları oluşturup bağlayabilirler. Tüm bu fanların ölçümleri, özellikleri ve operatörlerin bunları izlemek ve yönetmek için kullandığı komutları vardır. İşleçler, fan cihazlarıyla etkileşim kurmak için [cihaz panoları](#add-dashboards) ve formları kullanır. Bir cihaz geliştiricisi, cihazın uygulamayla nasıl etkileşime gireceğini anlamak için şablonu kullanır. Daha fazla bilgi için bkz. [telemetri, özellik ve komut yükleri](concepts-telemetry-properties-commands.md).
+Bu cihaz şablonundan bir operatör gerçek fan cihazları oluşturup bağlayabilirler. Tüm bu fanların ölçümleri, özellikleri ve operatörlerin bunları izlemek ve yönetmek için kullandığı komutları vardır. İşleçler, fan cihazlarıyla etkileşim kurmak için [cihaz görünümlerini](#add-views) ve formlarını kullanır. Bir cihaz geliştiricisi, cihazın uygulamayla nasıl etkileşime gireceğini anlamak için şablonu kullanır. Daha fazla bilgi için bkz. [telemetri, özellik ve komut yükleri](concepts-telemetry-properties-commands.md).
 
 > [!NOTE]
 > Yalnızca oluşturucular ve yöneticiler cihaz şablonları oluşturabilir, düzenleyebilir ve silebilir. Herhangi bir Kullanıcı, mevcut cihaz şablonlarından **cihazlar** sayfasında cihaz oluşturabilir.
@@ -46,8 +46,8 @@ Bir IoT Central uygulamasında cihaz şablonu, bir cihazın yeteneklerini betiml
 > IoT Central, model deposundan bir modeli içeri aktardığınızda tam sürümü almak için "genişletilmiş" anahtar sözcüğünü kullanarak tam modeli aynı dosyada bulunan tüm başvurulan arabirimlere gerektirir.
 Örneğin. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
 
-- [Dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanarak bir cihaz modeli yazar. Visual Studio Code, DTDL modellerini yazmayı destekleyen bir uzantıya sahiptir. Daha fazla bilgi için bkz. [DTDL yazma araçlarını yüklemek ve kullanmak](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ardından modeli ortak model deposuna yayımlayın. Daha fazla bilgi için bkz. [cihaz modeli deposu](../../iot-pnp/concepts-model-repository.md). Modelden cihaz kodunuzu uygulayın ve gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz modelini sizin için ortak depodan bulur ve içeri aktarır ve bir cihaz şablonu oluşturur. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
-- DTDL 'yi kullanarak bir cihaz modeli yazar. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
+- [Dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanarak bir cihaz modeli yazar. Visual Studio Code, DTDL modellerini yazmayı destekleyen bir uzantıya sahiptir. Daha fazla bilgi için bkz. [DTDL yazma araçlarını yüklemek ve kullanmak](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ardından modeli ortak model deposuna yayımlayın. Daha fazla bilgi için bkz. [cihaz modeli deposu](../../iot-pnp/concepts-model-repository.md). Modelden cihaz kodunuzu uygulayın ve gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz modelini sizin için ortak depodan bulur ve içeri aktarır ve bir cihaz şablonu oluşturur. Daha sonra, IoT Central uygulamanızın ihtiyaçlarını cihaz şablonuna eklemek için tüm bulut özelliklerini, özelleştirmeleri ve görünümleri ekleyebilirsiniz.
+- DTDL 'yi kullanarak bir cihaz modeli yazar. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından tüm bulut özelliklerini, özelleştirmeleri ve IoT Central uygulamanızın ihtiyaçlarını görüntüler.
 
 > [!TIP]
 > IoT Central, tüm başvurulan arabirimlerin aynı dosyada tam model olmasını gerektirir. Model deposundan bir modeli içeri aktardığınızda, tam sürümü almak için *genişletilmiş* anahtar sözcüğünü kullanın.
@@ -72,8 +72,8 @@ Bir cihaz şablonu şunları içerir:
 
 - Cihazın uyguladığı telemetri, özellik ve komutları belirten bir _cihaz modeli_ . Bu yetenekler bir veya daha fazla bileşen halinde düzenlenmiştir.
 - IoT Central uygulamanızın cihazlarınızla ilgili depoladığını belirten bilgileri tanımlayan _bulut özellikleri_ . Örneğin, bir bulut özelliği bir cihazın en son hizmet verdiği tarihi kaydedebilir. Bu bilgiler hiçbir şekilde cihazla paylaşılmaz.
-- _Özelleştirmeler_ , oluşturucunun cihaz modelindeki bazı tanımları geçersiz kılmasına izin verir. Örneğin, Oluşturucu bir cihaz özelliğinin adını geçersiz kılabilir. Özellik adları IoT Central panolar ve formlarda görüntülenir.
-- _Panolar ve formlar_ , oluşturucunun uygulamanıza bağlı olan cihazları izleyip yönetmesine olanak tanıyan bir kullanıcı arabirimi oluşturmasını sağlar.
+- _Özelleştirmeler_ , oluşturucunun cihaz modelindeki bazı tanımları geçersiz kılmasına izin verir. Örneğin, Oluşturucu bir cihaz özelliğinin adını geçersiz kılabilir. Özellik adları IoT Central görünümler ve formlarda görüntülenir.
+- _Görünümler ve formlar_ , oluşturucunun uygulamanıza bağlı olan cihazları izleyip yönetmesine olanak tanıyan bir kullanıcı arabirimi oluşturmasını sağlar.
 
 IoT Central bir cihaz şablonu oluşturmak için:
 
@@ -129,7 +129,7 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan telemetri değeri için görünen ad. |
+| Görünen Ad | Görünümler ve formlarda kullanılan telemetri değeri için görünen ad. |
 | Name | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Telemetri. |
 | Anlamsal tür | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
@@ -137,7 +137,7 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Önem derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi** veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
 | Birim | Bir telemetri değeri için **mph**, **%** veya **&deg; C** gibi bir birim. |
-| Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
+| Görüntüleme birimi | Görünümler ve formlarda kullanılmak üzere bir görüntüleme birimi. |
 | Yorum | Telemetri yeteneği hakkında herhangi bir yorum. |
 | Description | Telemetri yeteneğinin açıklaması. |
 
@@ -149,7 +149,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan özellik değeri için görünen ad. |
+| Görünen Ad | Görünümler ve formlarda kullanılan özellik değeri için görünen ad. |
 | Name | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Özelliði. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
@@ -158,7 +158,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Önem derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi** veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
 | Birim | **Mph**, **%** veya **&deg; C** gibi özellik değeri için bir birim. |
-| Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
+| Görüntüleme birimi | Görünümler ve formlarda kullanılmak üzere bir görüntüleme birimi. |
 | Yorum | Özellik yeteneği hakkında herhangi bir açıklama. |
 | Description | Özellik yeteneğinin açıklaması. |
 
@@ -170,7 +170,7 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
+| Görünen Ad | Görünümler ve formlarda kullanılan komutun görünen adı. |
 | Name | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Komutundaki. |
 | Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
@@ -209,7 +209,7 @@ Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilm
 
 | Alan | Açıklama |
 | ----- | ----------- |
-| Görünen Ad | Panolar ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
+| Görünen Ad | Görünümler ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
 | Name | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi bulut özelliği veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. |
@@ -234,24 +234,24 @@ Varsayılan görünümleri oluşturmak, önemli cihaz bilgilerinizin görselleş
 
 **Varsayılan görünümleri oluştur**' u seçtikten sonra, cihaz şablonunuzun **Görünümler** bölümü altında otomatik olarak eklendiğini görürsünüz.
 
-## <a name="add-dashboards"></a>Pano ekleme
+## <a name="add-views"></a>Görünümler ekleme
 
-İşleçlerin grafikleri ve ölçümleri kullanarak bir cihazı görselleştirmesini sağlamak için bir cihaz şablonuna panolar ekleyin. Bir cihaz şablonu için birden çok panonuz olabilir.
+İşleçlerin grafikleri ve ölçümleri kullanarak bir cihazı görselleştirmesini sağlamak için bir cihaz şablonuna görünümler ekleyin. Bir cihaz şablonu için birden çok görünümünüz olabilir.
 
-Bir cihaz şablonuna Pano eklemek için:
+Bir cihaz şablonuna bir görünüm eklemek için:
 
 1. Cihaz şablonunuza gidin ve **Görünümler**' i seçin.
 1. **Cihazı görselleştirmeyi** seçin.
-1. Pano **adı** bölümünde panonuz için bir ad girin.
-1. Statik, özellik, bulut özelliği, telemetri ve komut kutucukları listesinden panonuza kutucuk ekleyin. Panonuza eklemek istediğiniz kutucukları sürükleyip bırakın.
+1. Görünüm **adında** görünüm için bir ad girin.
+1. Statik, özellik, bulut özelliği, telemetri ve komut kutucukları listesinden görünüminize kutucuk ekleyin. Görünümüne eklemek istediğiniz kutucukları sürükleyip bırakın.
 1. Tek bir grafik kutucuğunda birden çok telemetri değeri çizmek için telemetri değerlerini seçin ve ardından **Birleştir**' i seçin.
 1. Eklediğiniz her kutucuğu, verilerin nasıl görüntüleneceğini özelleştirmek için yapılandırın. Dişli simgesini seçerek veya grafik kutucuğunda **yapılandırmayı Değiştir** ' i seçerek bu seçeneğe erişin.
-1. Panonuzdaki kutucukları düzenleyin ve yeniden boyutlandırın.
+1. Görünüminizdeki kutucukları düzenleyin ve yeniden boyutlandırın.
 1. Değişiklikleri kaydedin.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Panoyu görüntülemek için Önizleme cihazını yapılandırma
+### <a name="configure-preview-device-to-view"></a>Önizleme cihazını görüntülenecek şekilde yapılandırma
 
-Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu özellik, operatörünüz yayımlandıktan sonra gördüğü panoyu görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu özelliği kullanın. Aşağıdaki seçeneklerden birini belirtebilirsiniz:
+Görünümünüzü görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu özellik, operatörünüz yayımlandıktan sonra gördüğü görünümü görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu özelliği kullanın. Aşağıdaki seçeneklerden birini belirtebilirsiniz:
 
 - Önizleme cihazı yok.
 - Cihaz şablonunuz için yapılandırdığınız gerçek test cihazı.

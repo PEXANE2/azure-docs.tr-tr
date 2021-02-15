@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: Azure Dosya Eşitleme’yi dağıtma
           href: storage-sync-files-deployment-guide.md
-        - name: Premium dosya paylaşımı oluşturma
-          href: storage-how-to-create-premium-fileshare.md
         - name: NFS paylaşımı oluşturma
           href: storage-files-how-to-create-nfs-shares.md
         - name: Premium dosya paylaşımları ile FCI SQL Server

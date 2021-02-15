@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385039"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Mevcut uygulamanızı etkilemeden Kişiselleştiriciye eğitme için Apprenlet modunu kullanın
 
@@ -63,7 +63,7 @@ Apprence modunun, aşağıdaki yollarla çevrimiçi moddan ne zaman farklılık 
 |--|--|--|
 |Kullanıcı deneyimine etkisi|Mevcut kullanıcı davranışını, **varsayılan eylediklerinizin** ne olduğunu ve elde ettiği bir şeyi gözlemleyerek (etkilenmemesini), kişiselleştirerek eğitmenize izin vererek, kişisel bir şekilde eğitme yapmak için kullanabilirsiniz. Bu, kullanıcılarınızın deneyimi ve bunların iş sonuçlarının etkilenmeyeceği anlamına gelir.|Kullanıcı davranışını etkilemek için derece çağrısından döndürülen en iyi eylemi görüntüle.|
 |Öğrenme hızı|Kişiselleştirici, çevrimiçi modda öğrenirken Apprenlet modundayken daha yavaş bilgi ediniyor. Apprenlet modu, hiçbir araştırma gerçekleştirilemediği için öğrenme hızını sınırlayan **varsayılan eyleminiz** tarafından elde edilen rekişlerinizi gözlemleyerek öğreniyor.|Her ikisi de geçerli modelden yararlanabileceğinden ve yeni eğilimleri keşfedebildiğinden daha hızlı bir şekilde öğrenir.|
-|Öğrenme verimliliği "tavan"|Kişiselleştirici, temel iş mantığınızın performansını tahmin edebilir, çok nadiren eşleştirebilir ve hiçbir şekilde hiçbir şekilde aşmaz (her bir derece çağrısının **varsayılan eylemi** ile elde edilen toplam).|Kişiselleştirmede uygulamalar taban çizgisini aşmalı ve zaman içinde, modelde iyileştirmeler almaya devam etmek için çevrimdışı değerlendirme ve özellik değerlendirmesi yapmanız gerekir. |
+|Öğrenme verimliliği "tavan"|Kişiselleştirici, temel iş mantığınızın performansını tahmin edebilir, çok nadiren eşleştirebilir ve hiçbir şekilde hiçbir şekilde aşmaz (her bir derece çağrısının **varsayılan eylemi** ile elde edilen toplam). Bu yaklaşık tavan araştırma tarafından azaltılır. Örneğin, %20 ' de araştırmayla ilgili çok büyük olasılıkla apprence modu performansı %80 ' ü aşacak ve %60%, çevrimiçi moda mezun olacak şekilde makul bir hedeftir.|Kişiselleştirmede uygulamalar taban çizgisini aşmalı ve zaman içinde, modelde iyileştirmeler almaya devam etmek için çevrimdışı değerlendirme ve özellik değerlendirmesi yapmanız gerekir. |
 |Rewarterctionıd için derecelendirme API değeri|_Rewarterctionıd_ her zaman sıralama isteğinde göndereceğiniz ilk eylem olduğundan, kullanıcıların deneyimi etkilenmez. Diğer bir deyişle, sıralama API 'SI Apprensu modu sırasında uygulamanız için hiçbir şey görünmez. Uygulamanızdaki Reward API 'Leri, bir mod ve diğeri arasında Reward API 'YI nasıl kullandığını değiştirmemelidir.|Kullanıcıların deneyimi, kişiselleştirici uygulamanız için seçtiği _Rewarterctionıd_ tarafından değiştirilir. |
 |Lerim|Kişiselleştirici, varsayılan iş mantığınızın elde edilen ödül toplamlarını bir karşılaştırmasına devam eder ve bu noktada çevrimiçi modda elde edilen toplam kişiselleştirici, daha fazla zaman oluşturur. Bu kaynak için Azure portal bir karşılaştırma kullanılabilir|Toplam yeniden çalışma kişiselleştirmesini, uygulamanın temel aldığı potansiyel depoların elde ettiği bir şekilde karşılaştırmanızı sağlayan [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)çalıştırarak kişiselleştirici verimliliğini değerlendirin.|
 

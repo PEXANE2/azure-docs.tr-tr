@@ -2,49 +2,49 @@
 title: Yay etkin Kubernetes kümesinde Gilar kullanarak Held grafikleri dağıtma (Önizleme)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Held ile Gilar kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Held, Arc, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 883eb9c152bdc8a7c0e60e999cf9decf47fb80ec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377933"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak Held grafikleri dağıtma (Önizleme)
 
-Helk, Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. APT ve yum gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
+Helm, Kubernetes uygulamalarını yüklemenize ve yaşam döngüsünü yönetmenize yardımcı olan bir açık kaynak paketleme aracıdır. APT ve yum gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
 
 Bu makalede, Azure Arc etkinleştirilmiş Kubernetes ile Held 'yi yapılandırma ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, var olan bir Azure Arc etkin Kubernetes bağlı kümesine sahip olduğunuzu varsaymaktadır. Bağlı bir kümeye ihtiyacınız varsa, [küme bağlama hızlı başlangıç](./connect-cluster.md)bölümüne bakın.
+Mevcut bir Azure Arc etkin Kubernetes bağlı kümesine sahip olduğunuzu doğrulayın. Bağlı bir kümeye ihtiyacınız varsa bkz. [Azure yay etkin Kubernetes kümesi hızlı başlangıç](./connect-cluster.md).
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes ile Gira ve Held kullanımına genel bakış
 
- Hele işleci, Held grafik sürümlerini otomatikleştiren bir Flox uzantısı sağlar. Grafik sürümü, HelmRelease adlı bir Kubernetes özel kaynağı aracılığıyla açıklanır. Flox bu kaynakları git 'ten kümeye eşitler ve Held operatörü kaynaklarda belirtilen şekilde Helu grafiklerinin serbest bırakıldığını sağlar.
+ Hele işleci, Held grafik sürümlerini otomatikleştiren bir Flox uzantısı sağlar. Helk grafik sürümü, HelmRelease adlı bir Kubernetes özel kaynağı aracılığıyla açıklanır. Flox, bu kaynakları git 'ten kümeye eşitler, ancak Held operatörü kaynaklarda belirtilen şekilde Heln grafiklerinin serbest bırakılacağını sağlar.
 
- Bu belgede kullanılan [örnek depo](https://github.com/Azure/arc-helm-demo) aşağıdaki şekilde yapılandırılmıştır:
+ Bu makalede kullanılan [örnek depo](https://github.com/Azure/arc-helm-demo) aşağıdaki şekilde yapılandırılmıştır:
 
 ```console
 ├── charts
-│   └── azure-arc-sample
-│       ├── Chart.yaml
-│       ├── templates
-│       │   ├── NOTES.txt
-│       │   ├── deployment.yaml
-│       │   └── service.yaml
-│       └── values.yaml
+│   └── azure-arc-sample
+│       ├── Chart.yaml
+│       ├── templates
+│       │   ├── NOTES.txt
+│       │   ├── deployment.yaml
+│       │   └── service.yaml
+│       └── values.yaml
 └── releases
     └── app.yaml
 ```
 
-Git deposunda, biri helk grafiği ve biri de yayınlar yapılandırmasını içeren iki diziniz var. Dizininde, `releases` `app.yaml` aşağıda gösterilen HelmRelease yapılandırmasını içerir:
+Git deposunda iki dizin vardır: biri bir helk grafiği ve biri de yayınlar yapılandırmasını içerir. Dizininde, `releases` `app.yaml` aşağıda gösterildiği HelmRelease yapılandırmasını içerir:
 
 ```yaml
 apiVersion: helm.fluxcd.io/v1
@@ -64,19 +64,21 @@ spec:
 
 HELI yayın yapılandırması aşağıdaki alanları içerir:
 
-- `metadata.name` zorunludur ve Kubernetes adlandırma kurallarını izlemesi gerekiyor
-- `metadata.namespace` isteğe bağlıdır ve yayın oluşturulduğunu belirler
-- `spec.releaseName` isteğe bağlıdır ve sağlanmazsa, sürüm adı $namespace $name
-- `spec.chart.path` , depo köküne göre belirtilen grafiği içeren dizindir
-- `spec.values` Varsayılan parametre değerlerinin grafik kendisinden olan Kullanıcı özelleştirmelerdir
+| Alan | Açıklama |
+| ------------- | ------------- | 
+| `metadata.name` | Zorunlu alan. Kubernetes adlandırma kurallarını izlemesi gerekir. |
+| `metadata.namespace` | İsteğe bağlı alan. Sürümün oluşturulduğu yeri belirler. |
+| `spec.releaseName` | İsteğe bağlı alan. Sağlanmazsa, yayın adı olacaktır `$namespace-$name` . |
+| `spec.chart.path` | Depo köküne göre verilen, grafiği içeren dizin. |
+| `spec.values` | Varsayılan parametre değerlerinin grafiğin kendisindeki Kullanıcı özelleştirmeleri. |
 
-HelmRelease spec. Values içinde belirtilen seçenekler, grafik kaynağından. YAML değerleri içinde belirtilen seçenekleri geçersiz kılar.
+HelmRelease içinde belirtilen seçenekler, `spec.values` grafik kaynağından belirtilen seçenekleri geçersiz kılar `values.yaml` .
 
-Resmi [Heli operatörü belgelerinde](https://docs.fluxcd.io/projects/helm-operator/en/stable/) HelmRelease hakkında daha fazla bilgi edinebilirsiniz
+HelmRelease hakkında daha fazla bilgi için resmi [hele işleci belgelerine bakın](https://docs.fluxcd.io/projects/helm-operator/en/stable/).
 
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
-İçin Azure CLı uzantısını kullanarak `k8sconfiguration` , bağlantılı kümemizi örnek git deposuna bağlayalim. Bu yapılandırmaya bir ad vereceğiz `azure-arc-sample` ve Flox işlecini `arc-k8s-demo` ad alanına dağıtacağız.
+İçin Azure CLı uzantısını kullanarak `k8sconfiguration` , bağlı kümenizi örnek git deposuna bağlayın. Bu yapılandırmaya ad verin `azure-arc-sample` ve Flox işlecini `arc-k8s-demo` ad alanına dağıtın.
 
 ```console
 az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
@@ -84,7 +86,7 @@ az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 
 
 ### <a name="configuration-parameters"></a>Yapılandırma parametreleri
 
-Yapılandırma oluşturmayı özelleştirmek için [kullanabileceğiniz ek parametreler hakkında bilgi edinin](./use-gitops-connected-cluster.md#additional-parameters).
+Yapılandırmanın oluşturulmasını özelleştirmek için [kullanabileceğiniz ek parametreler hakkında bilgi edinin](./use-gitops-connected-cluster.md#additional-parameters).
 
 ## <a name="validate-the-configuration"></a>Yapılandırmayı doğrulama
 

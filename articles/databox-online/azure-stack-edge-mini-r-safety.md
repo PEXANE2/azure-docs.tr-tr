@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981026"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382642"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge Mini güvenlik yönergeleri
 
@@ -161,7 +161,6 @@ Bant 5150:5250 MHz 'de işlem yalnızca, ortak kanal Mobil Uydu sistemlerine yö
 
 ![Mevzuat bilgileri uyarısı-kapılı kullanım](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 Kullanıcılara yüksek kaliteli kdarların 5250 – 5350 MHz ve 5650 – 5850 MHz bantlarından birincil kullanıcılar (öncelikli kullanıcılar) olarak ayrılması önerilir ve bu kdars, girişim ve/veya LE-LAN cihazlarına zarar verebilir.
 
 Bu ekipman, radyo frekansı enerji sağlar ve bunları kullanır ve bu yönergeye uygun olarak yüklenip kullanılmayacaksa, radyo iletişimine zararlı girişim yapılmasına neden olabilir. Ancak, belirli bir yüklemede girişim gerçekleşmeyecek bir garanti yoktur.
@@ -205,11 +204,13 @@ Her ürün için 1 g üzerinden ortalaması alınan belirli bir Masorption ücre
 
 #### <a name="european-union"></a>AVRUPA BIRLIĞI:
 
-Bu ekipman için AB bildiriminin bir kopyasını isteyin.
+Bu ekipman için AB bildiriminin bir kopyasını isteyin. [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com) adresine e-posta gönderin.
 
 Bu ekipmanla birlikte sunulan Netgear A6150 WiFi USB bağdaştırıcısı, 2014/53/AB yönergesinde ve isteğe bağlı olarak da sağlanmalıdır.
 
-> ![Uyarı simgesi 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) , bir ürün sınıfıdır. Yurtiçi bir ortamda, bu ürün radyo girişimine neden olabilir ve bu durumda kullanıcının yeterli ölçüler yapması gerekebilir.
+![Uyarı simgesi 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **Uyarı:**  
+
+Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine neden olabilir ve bu durumda kullanıcının yeterli ölçüler yapması gerekebilir.
 
 Çöp pillerinin ve elektrik ve elektronik ekipmanın elden çıkarılması:
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70bfd12b018e785e7b3b91e098c99fea1101c04
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021758"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093106"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Çevre 81 etkinlik günlüklerinizi Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki çevre 81 veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, [çevre 81 etkinlik günlükleri](https://www.perimeter81.com/) gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Çevre 81 etkinlik günlükleri Bağlayıcısı, çevre 81 verilerinizi Azure Sentinel 'e kolayca getirmenize olanak tanır; böylece, çalışma kitaplarında görüntüleyebilmeniz için, özel uyarılar oluşturmak için kullanabilir ve araştırmayı geliştirebilirsiniz.
 
@@ -52,9 +52,9 @@ Bu makalede, [çevre 81 etkinlik günlükleri](https://www.perimeter81.com/) ger
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
-Başarılı bir bağlantı kurulduktan sonra, veriler **customlogs**Perimeter81_CL altındaki **günlüklerde** görüntülenir  -  **Perimeter81_CL**.
+Başarılı bir bağlantı kurulduktan sonra, veriler **customlogs** Perimeter81_CL altındaki **günlüklerde** görüntülenir  -  .
 
-Günlüklerinizin görünene kadar 20 dakikadan ileri sürebilir.
+Günlüklerinizin görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

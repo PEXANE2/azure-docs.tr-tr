@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920514"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390836"
 ---
 # <a name="data-source-schema-reference"></a>Veri kaynağı şema başvurusu
 
@@ -37,6 +37,9 @@ Bu makalede, desteklenen Azure ve üçüncü taraf veri kaynağı şemaları, ba
 | **Ağ**                          | NSG akış günlükleri          | AzureNetworkAnalytics  | [Trafik Analizi şema ve veri toplama](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> Daha fazla bilgi için [Azure izleyici veri başvurusunun](/azure/azure-monitor/reference/)tamamına bakın.
+>
 ## <a name="3rd-party-vendor-data-sources"></a>üçüncü taraf satıcı veri kaynakları
 
 Aşağıdaki tabloda, desteklenen üçüncü taraf satıcıları ve bunların Syslog veya ortak olay biçimi (CEF) eşleme belgelerinin yanı sıra CEF alan eşlemelerini ve her bir kategori türü için örnek günlükleri içeren çeşitli desteklenen günlük türleri listelenmektedir.

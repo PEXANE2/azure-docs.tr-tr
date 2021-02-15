@@ -1,22 +1,17 @@
 ---
 title: Kopyalama etkinliğinde şema ve veri türü eşleme
 description: Azure Data Factory ' deki kopyalama etkinliğinin şemaları ve veri türlerini kaynak verilerden havuz verilerine nasıl eşlediğini öğrenin.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702228"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392791"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,17 +45,17 @@ Eşlemeyi Data Factory yazma Kullanıcı arabirimi-> kopyalama etkinliği > eşl
 | Özellik | Açıklama                                                  | Gerekli |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Kaynak veya havuz sütununun/alanının adı. Tablosal kaynak ve havuz için geçerlidir. | Yes      |
-| numarasını  | Sütun dizini. 1 ' den başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
-| path     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik kaynak ve havuz için, örneğin Cosmos DB, MongoDB veya REST bağlayıcıları için geçerlidir.<br>Kök nesnesi altındaki alanlar için JSON yolu root ile başlar `$` ; özelliği tarafından seçilen dizi içindeki alanlar IÇIN `collectionReference` JSON yolu, olmadan dizi öğesinden başlar `$` . | Hayır       |
-| tür     | Kaynak veya havuz sütununun geçici veri türü Data Factory. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
-| kültür  | Kaynak veya havuz sütununun kültürü. Tür veya olduğunda geçerlidir `Datetime` `Datetimeoffset` . Varsayılan değer: `en-us`.<br>Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
-| biçim   | Tür veya olduğunda kullanılacak biçim dizesi `Datetime` `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
+| numarasını  | Sütun dizini. 1 ' den başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | No       |
+| path     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik kaynak ve havuz için, örneğin Cosmos DB, MongoDB veya REST bağlayıcıları için geçerlidir.<br>Kök nesnesi altındaki alanlar için JSON yolu root ile başlar `$` ; özelliği tarafından seçilen dizi içindeki alanlar IÇIN `collectionReference` JSON yolu, olmadan dizi öğesinden başlar `$` . | No       |
+| tür     | Kaynak veya havuz sütununun geçici veri türü Data Factory. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
+| kültür  | Kaynak veya havuz sütununun kültürü. Tür veya olduğunda geçerlidir `Datetime` `Datetimeoffset` . Varsayılan değer: `en-us`.<br>Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
+| biçim   | Tür veya olduğunda kullanılacak biçim dizesi `Datetime` `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
 
 Aşağıdaki özellikler aşağıdakilere ek olarak desteklenir `translator` `mappings` :
 
 | Özellik            | Açıklama                                                  | Gerekli |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Hiyerarşik kaynaktaki verileri kopyalarken uygulayın, örneğin, Cosmos DB, MongoDB veya REST bağlayıcıları.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | Hayır       |
+| collectionReference | Hiyerarşik kaynaktaki verileri kopyalarken uygulayın, örneğin, Cosmos DB, MongoDB veya REST bağlayıcıları.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | No       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>Tablosal kaynaktan tablolu havuz
 
@@ -312,15 +307,15 @@ Aşağıdaki özellikler veri türü dönüştürmesi için kopyalama etkinliği
 
 | Özellik                         | Açıklama                                                  | Gerekli |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| Tür dönüştürme                   | Yeni veri türü dönüştürme deneyimini etkinleştirin. <br>Geriye dönük uyumluluk nedeniyle varsayılan değer false 'tur.<br><br>Data Factory yazma Kullanıcı arabirimi aracılığıyla, geç Haziran 2020 ' den sonra oluşturulan yeni kopyalama etkinlikleri için, bu veri türü dönüştürmesi en iyi deneyim için varsayılan olarak etkindir ve ilgili senaryolar için kopyalama etkinliği ' ne > eşleme sekmesinde aşağıdaki tür dönüştürme ayarlarını görebilirsiniz. <br>Programlı olarak işlem hattı oluşturmak için özelliği etkinleştirmek üzere açıkça `typeConversion` true olarak ayarlamanız gerekir.<br>Bu özellik yayınlanmadan önce oluşturulan mevcut kopyalama etkinlikleri için, geriye dönük uyumluluk için Data Factory yazma Kullanıcı arabirimine tür dönüştürme seçeneklerini görmezsiniz. | Hayır       |
-| typeConversionSettings           | Tür dönüştürme ayarları grubu. `typeConversion`Olarak ayarlandığında Uygula `true` . Aşağıdaki özellikler bu grubun altında bulunur. | Hayır       |
+| Tür dönüştürme                   | Yeni veri türü dönüştürme deneyimini etkinleştirin. <br>Geriye dönük uyumluluk nedeniyle varsayılan değer false 'tur.<br><br>Data Factory yazma Kullanıcı arabirimi aracılığıyla, geç Haziran 2020 ' den sonra oluşturulan yeni kopyalama etkinlikleri için, bu veri türü dönüştürmesi en iyi deneyim için varsayılan olarak etkindir ve ilgili senaryolar için kopyalama etkinliği ' ne > eşleme sekmesinde aşağıdaki tür dönüştürme ayarlarını görebilirsiniz. <br>Programlı olarak işlem hattı oluşturmak için özelliği etkinleştirmek üzere açıkça `typeConversion` true olarak ayarlamanız gerekir.<br>Bu özellik yayınlanmadan önce oluşturulan mevcut kopyalama etkinlikleri için, geriye dönük uyumluluk için Data Factory yazma Kullanıcı arabirimine tür dönüştürme seçeneklerini görmezsiniz. | No       |
+| typeConversionSettings           | Tür dönüştürme ayarları grubu. `typeConversion`Olarak ayarlandığında Uygula `true` . Aşağıdaki özellikler bu grubun altında bulunur. | No       |
 | *Altındaki `typeConversionSettings`* |                                                              |          |
-| Allowdatakesilme              | Kaynak verileri kopyalama sırasında farklı tür ile havuza dönüştürürken veri kesilmesine izin ver, örneğin Decimal 'den integer 'e, DatetimeOffset 'den TarihSaat 'e kadar. <br>True varsayılan değerdir. | Hayır       |
-| treatBooleanAsNumber             | Boolean değerlerini sayı olarak değerlendirin, örneğin, true, 1.<br>Varsayılan değer false 'dur. | Hayır       |
-| dateTimeFormat                   | Örneğin, saat dilimi boşluğu ve dizeleri olmadan tarihler arasında dönüştürme yaparken dize biçimlendirme `yyyy-MM-dd HH:mm:ss.fff` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
-| dateTimeOffsetFormat             | Saat dilimi boşluğu ve dizeleri ile tarihler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `yyyy-MM-dd HH:mm:ss.fff zzz` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
-| timeSpanFormat                   | Zaman dönemleri ve dizeler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `dd\.hh\:mm` . Ayrıntılı bilgi için [Özel TimeSpan Biçim dizelerine](/dotnet/standard/base-types/custom-timespan-format-strings) bakın. | Hayır       |
-| kültür                          | Türler dönüştürülürken kullanılacak kültür bilgileri, örneğin `en-us` veya `fr-fr` . | Hayır       |
+| Allowdatakesilme              | Kaynak verileri kopyalama sırasında farklı tür ile havuza dönüştürürken veri kesilmesine izin ver, örneğin Decimal 'den integer 'e, DatetimeOffset 'den TarihSaat 'e kadar. <br>True varsayılan değerdir. | No       |
+| treatBooleanAsNumber             | Boolean değerlerini sayı olarak değerlendirin, örneğin, true, 1.<br>Varsayılan değer false 'dur. | No       |
+| dateTimeFormat                   | Örneğin, saat dilimi boşluğu ve dizeleri olmadan tarihler arasında dönüştürme yaparken dize biçimlendirme `yyyy-MM-dd HH:mm:ss.fff` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | No       |
+| dateTimeOffsetFormat             | Saat dilimi boşluğu ve dizeleri ile tarihler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `yyyy-MM-dd HH:mm:ss.fff zzz` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | No       |
+| timeSpanFormat                   | Zaman dönemleri ve dizeler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `dd\.hh\:mm` . Ayrıntılı bilgi için [Özel TimeSpan Biçim dizelerine](/dotnet/standard/base-types/custom-timespan-format-strings) bakın. | No       |
+| kültür                          | Türler dönüştürülürken kullanılacak kültür bilgileri, örneğin `en-us` veya `fr-fr` . | No       |
 
 **Örnek:**
 
@@ -459,7 +454,7 @@ Aşağıdaki JSON bir işlem hattındaki kopyalama etkinliğini tanımlar. **Çe
 | :------------------ | :----------------------------------------------------------- | :------- |
 | tür                | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Yes      |
 | schemaMapping       | **Kaynak taraftan havuz tarafına** olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Anahtar:** kaynağı temsil eder. **Tablo kaynağı** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Değer:** havuzu temsil eder. **Tablo havuzu** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar özelliği tarafından seçilen dizi içindeki alanlar için `collectionReference` JSON yolu dizi öğesinden başlar. | Yes      |
-| collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | Hayır       |
+| collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | No       |
 
 **Örnek: MongoDB 'den Oracle 'a kopyalama:**
 

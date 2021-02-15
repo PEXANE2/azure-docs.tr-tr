@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2222c6b020f712282a78ac5f82a87015d4cd86a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878672"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368209"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -358,7 +358,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
-**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](../virtual-network/network-security-groups-overview.md) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı, Aralık 2020 ' de en son kullanılabilir şekilde zamanlanır. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
+**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](../virtual-network/network-security-groups-overview.md) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı en son 2021 Mart 'ta kullanılabilir. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 

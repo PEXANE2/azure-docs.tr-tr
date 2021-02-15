@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820611"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516847"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Şüpheli bir IoT cihazını araştırın
 
-IoT Hizmetleri uyarıları için Defender, IoT cihazlarının şüpheli etkinliklerdeki katılımın veya bir cihazın tehlikede olduğu göstergeler olduğu durumlarda açık göstergeler sağlar.
+IoT hizmeti uyarıları için Defender, IoT cihazlarının şüpheli etkinliklerdeki katılımın veya bir cihazın güvenliğinin tehlikeye girdiğinde olduğu durumlarda açık göstergeler sağlar.
 
 Bu kılavuzda, kuruluşunuza yönelik olası riskleri belirlemek için sağlanan araştırma önerilerini kullanın, daha sonra benzer saldırıları önlemenin en iyi yollarını bulun.
 
@@ -39,12 +39,12 @@ Veri depolamaya yönelik Log Analytics çalışma alanınızı bulmak için:
 1. IoT Hub 'ınızı açın,
 1. **Güvenlik** altında **Ayarlar**' ı seçin ve ardından **veri toplama**' yı seçin.
 1. Log Analytics çalışma alanı yapılandırma ayrıntılarınızı değiştirin.
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**’i seçin.
 
 Aşağıdaki yapılandırma, Log Analytics çalışma alanınızda depolanan verilere erişmek için aşağıdakileri yapın:
 
-1. IoT Hub IoT uyarısı için bir Defender ' ı seçin ve tıklayın.
-1. **Daha fazla araştırma** öğesine tıklayın.
+1. IoT Hub IoT için bir Defender uyarıyı seçin ve seçin.
+1. **Daha fazla araştırma** seçin.
 1. **Bu uyarıya hangi cihazların olduğunu görmek için seçin öğesini seçin ve DeviceID sütununu görüntüleyin**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Şüpheli IoT cihazları için araştırma adımları
@@ -55,7 +55,7 @@ Cihazınızdaki uyarıları ve etkinlikleri araştırmaya başlamak için aşağ
 
 ### <a name="related-alerts"></a>İlgili uyarılar
 
-Aynı anda başka uyarıların tetiklendiği hakkında bilgi edinmek için aşağıdaki KQL sorgusunu kullanın:
+Aşağıdaki KQL sorgusu ile aynı anda başka uyarıların tetiklenip tetiklenmeyeceğini öğrenebilirsiniz:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -182,7 +182,7 @@ Keşif yapmak için sorgu sonuçlarını kullanın:
 
 - Cihazda çalışan şüpheli işlem var mı?
 - İşlem uygun kullanıcılar tarafından yürütüldü mi?
-- Herhangi bir komut satırı yürütmeleri doğru ve beklenen bağımsız değişkenleri içeriyor mu?
+- Komut satırı yürütmeler doğru ve beklenen bağımsız değişkenleri içeriyor mu?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

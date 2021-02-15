@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678832"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391992"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -68,6 +68,11 @@ Yeni cihaz kimliğini oluşturduğunuzda, aşağıdaki bilgileri sağlayın:
 * **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
 
    ![Portalda simetrik anahtar kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >Simetrik anahtar kimlik doğrulaması kullanan aşağı akış cihazları için isteğe bağlı bir adım olarak kullanılan üst cihazı ayarlama. Ancak, IoT Edge sürümden itibaren, her aşağı akış cihazının bir üst cihaza atanması gerekir.
+   >
+   >**AuthenticationMode** ortam değişkenini **cloudandscope** değerine ayarlayarak, IoT Edge hub 'ını önceki davranışa geri dönmek için yapılandırabilirsiniz.
 
 Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) da kullanabilirsiniz. Aşağıdaki örnek, simetrik anahtar kimlik doğrulaması ile yeni bir IoT cihazı oluşturmak ve bir üst cihazı atamak için [az IoT Hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutunu kullanır:
 
@@ -201,7 +206,7 @@ Veya
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek:
+Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örneğin:
 
 ```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

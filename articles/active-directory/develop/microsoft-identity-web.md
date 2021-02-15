@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173524"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102555"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web kimlik doğrulaması kitaplığı
 
@@ -28,7 +28,7 @@ Microsoft Identity Web, Microsoft Identity platformu ile tümleştirerek Web uyg
 
 ASP.NET Core Web uygulamaları veya Web API 'Leri oluşturuyorsanız ve kimlik ve erişim yönetimi (ıAM) için Azure Active Directory (Azure AD) veya Azure AD B2C kullanmak istiyorsanız, bu senaryoların tümünde Microsoft Identity Web kullanmanızı öneririz:
 
-- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
 - [Kullanıcılara oturum açan ve kendi adına bir Web API 'SI çağıran Web uygulaması](scenario-web-app-call-api-overview.md)
 - [Yalnızca kimliği doğrulanmış kullanıcıların erişebileceği korumalı Web API 'SI](scenario-protected-web-api-overview.md)
 - [Oturum açmış kullanıcı adına başka bir (aşağı akış) Web API 'SI çağıran korumalı Web API 'SI](scenario-web-api-call-api-overview.md)
@@ -70,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-00
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web, GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">Azuread/Microsoft-Identity-Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> üzerinde barındırılan açık kaynaklı bir projem
+Microsoft Identity Web, GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">Azuread/Microsoft-Identity-Web</a> üzerinde barındırılan açık kaynaklı bir projem
 
 [Depo wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) ek belgeler içerir ve yardıma ihtiyacınız varsa veya bir hatayı buldıysanız [bir sorun](https://github.com/AzureAD/microsoft-identity-web/issues)oluşturabilirsiniz.
 
@@ -83,12 +83,12 @@ Varsayılan ASP.NET 3,1 proje şablonlarını kullanırsanız Microsoft Identity
 | Web uygulamalarında [oturum açma kullanıcıları](scenario-web-app-sign-user-app-configuration.md)             | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
 | [Web API 'Lerini koruma](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
 | Çok kiracılı uygulamalarda veren doğrulaması                                                   | Hayır                                                                   | Evet, [Tüm bulutlar](authentication-national-cloud.md) ve [Azure AD B2C](../../active-directory-b2c/index.yml) |
-| Web uygulaması/API [Microsoft Graph 'ı çağırır] [senaryo-API-Call-Graph]                             | Hayır                                                                   | Evet                                                                                                     |
-| Web uygulaması/API [çağıran Web API] [senaryo-API-Call-API]                                       | Hayır                                                                   | Evet                                                                                                     |
+| Web uygulaması/API [Microsoft Graph 'ı çağırır] [senaryo-API-Call-Graph]                             | Hayır                                                                   | Yes                                                                                                     |
+| Web uygulaması/API [çağıran Web API] [senaryo-API-Call-API]                                       | Hayır                                                                   | Yes                                                                                                     |
 | Sertifika kimlik bilgilerini destekler                                                         | Hayır                                                                   | Evet, Azure Key Vault dahil                                                                          |
 | Web uygulamalarında artımlı onay ve koşullu erişim desteği                           | Hayır                                                                   | Evet, MVC, Razor sayfaları ve Blazor                                                                    |
-| Web API 'Lerinde belirteç şifreleme sertifikaları                                                | Hayır                                                                   | Evet                                                                                                     |
-| [Kapsamlar/uygulama rolü doğrulaması] [senaryo-API-doğrulama] Web API 'Lerinde                        | Hayır                                                                   | Evet                                                                                                     |
+| Web API 'Lerinde belirteç şifreleme sertifikaları                                                | Hayır                                                                   | Yes                                                                                                     |
+| [Kapsamlar/uygulama rolü doğrulaması] [senaryo-API-doğrulama] Web API 'Lerinde                        | Hayır                                                                   | Yes                                                                                                     |
 | `WWW-Authenticate` Web API 'Lerinde üst bilgi oluşturma                                         | Hayır                                                                   | Evet                                                                                                     |
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -99,12 +99,14 @@ Microsoft Identity Web 'i çalışır durumda görmek için Blazor sunucu Öğre
 
 GitHub 'daki Microsoft Identity Web wiki, kitaplığın çeşitli yönleri için kapsamlı başvuru belgeleri içerir. Örneğin, sertifika kullanımı, artımlı izin ve koşullu erişim başvurusu şurada bulunabilir:
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Microsoft. Identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> Ile sertifikaları kullanma</a> GitHub
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Artımlı izin ve koşullu erişim <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Sertifikaları Microsoft. Identity. Web</a> (GitHub) ile kullanma
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Artımlı izin ve koşullu erişim</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->
 <!--  [miw-certs-decrypt]: microsoft-identity-web-certificates.md#decryption-certificates  -->
 <!--  [miw-inc-consent-ca-header]: microsoft-identity-web-consent-conditional-access.md#handling-incremental-consent-or-conditional-access-in-web-apis  -->
 <!--  [miw-inc-consent-ca]: microsoft-identity-web-consent-conditional-access.md  -->
-[senaryo-api-Call-API]: senaryo-Web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-SDK [senaryo-API-Call-Graph]: senaryo-Web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with--SDK [senaryo-API-doğrulama]: scenario-protected-web-api-verification-scope-app-roles.md
+[senaryo-API-Call-API]: senaryo-Web-API-Call-api-Call-API. MD # Option-1-Call-Microsoft-Graph-with-SDK  
+[senaryo-api-Call-Graph]: senaryo-Web-API-Call-api-Call-API. MD # Option-1-Call-Microsoft-Graph-with-SDK  
+[senaryo-api-doğrulama]: scenario-protected-web-api-verification-scope-app-roles.md  

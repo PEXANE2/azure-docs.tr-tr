@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: a18937d84b05159626708d577982405d79161a1a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500805"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389153"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Azure Stack Edge Pro kaynaklarında cihaz olayı uyarı bildirimlerini yönetme
 
@@ -23,7 +23,7 @@ Bu makalede, bir kaynak grubu, Azure aboneliği veya tek bir Azure Stack Edge ka
 
 Eylem kuralı, uyarı bildirimlerini tetikleyebilir veya göstermez. Eylem kuralı bir *eylem grubuna* eklenir-bir kaynak veya kaynak kümesi için farklı bağlamlarda tetiklenen uyarıları üzerinde davranması gereken kullanıcıları bilgilendirmek için kullanılan bir bildirim tercihleri kümesi.
 
-Eylem kuralları hakkında daha fazla bilgi için bkz. [eylem kuralını yapılandırma](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). Eylem grupları hakkında daha fazla bilgi için [Azure Portal eylem grupları oluşturma ve yönetme](/blob/master/articles/azure-monitor/platform/action-groups)konusuna bakın.
+Eylem kuralları hakkında daha fazla bilgi için bkz. [eylem kuralını yapılandırma](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). Eylem grupları hakkında daha fazla bilgi için [Azure Portal eylem grupları oluşturma ve yönetme](/azure/azure-monitor/platform/action-groups)konusuna bakın.
 
 > [!NOTE]
 > Eylem kuralları özelliği önizlemededir. İşlem iyileştirilme sırasında bazı ekranlar ve adımlar değişebilir.
@@ -123,8 +123,8 @@ E-posta bildirimi şuna benzer olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-<!-- - See [Create and manage action groups in the Azure portal](/blob/master/articles/azure-monitor/platform/action-groups) for guidance on creating a new action group.
+<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
 - See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - Cihaz olaylarını, donanım durumunu ve ölçüm grafiklerini gözden geçirme hakkında bilgi için bkz. [Azure Stack Edge Pro 'Yu izleme](azure-stack-edge-monitor.md) . 
 - Azure Stack Edge Pro GPU cihazları için Azure Izleyicisini en iyi duruma getirme hakkında bilgi için bkz. [Azure Izleyicisini kullanma](azure-stack-edge-gpu-enable-azure-monitor.md) .
-- Tek tek uyarıları yönetme hakkında bilgi için bkz. [Azure Izleyici bağlantı hedefini kullanarak ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](/../azure-monitor/platform/alerts-metric.md) .
+- Tek tek uyarıları yönetme hakkında bilgi için bkz. [Azure Izleyici bağlantı hedefini kullanarak ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-metric) .

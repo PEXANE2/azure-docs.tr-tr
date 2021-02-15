@@ -8,21 +8,21 @@ ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: beb58922172a045242f4f9bcaf647b3cfc8b5551
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380806"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, örnek perakende verileri Azure Cosmos DB aktarmak için yerleşik jupi Not defterlerinin nasıl kullanılacağı açıklanır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB Magic komutlarının nasıl kullanılacağını göreceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure Cosmos hesabını oluştururken Not defteri desteğini etkinleştir](enable-notebooks.md)
+* [Azure Cosmos hesabında not defterlerini etkinleştirme](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>Kaynakları oluşturma ve verileri içeri aktarma
  

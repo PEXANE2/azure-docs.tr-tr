@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937194"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391754"
 ---
 # <a name="sms-client-library-overview"></a>SMS istemci kitaplığına genel bakış
 
@@ -34,7 +34,7 @@ Aşağıdaki liste, şu anda istemci kitaplıklarımızda bulunan özellikler k�
 |                   | Tüm karakter kümeleri (dil/Unicode desteği)                                         | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Uzun mesaj desteği (en fazla 2048 karakter)                                           | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Uzun mesajların otomatik olarak eklenmesi                                                   | ✔️   | ✔️    | ✔️    | ✔️      |
-| Olaylar            | Web kancalarını gelen iletileri ve teslim raporlarını alacak şekilde yapılandırmak için Event Grid kullanın | ✔️   | ✔️    | ✔️    | ✔️      |
+| Ekinlikler            | Web kancalarını gelen iletileri ve teslim raporlarını alacak şekilde yapılandırmak için Event Grid kullanın | ✔️   | ✔️    | ✔️    | ✔️      |
 | Telefon Numarası      | Toll-Free numaraları                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Yasal        | Opt-Out Işleme                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | İzleme        | Gönderilen ve alınan iletiler için kullanımı izleme                                          | ✔️   | ✔️    | ✔️    | ✔️      |
@@ -49,4 +49,4 @@ Aşağıdaki belgeler sizin için ilginç olabilir:
 
 - Genel [SMS kavramları](../telephony-sms/concepts.md) hakkında bilgi edinin
 - SMS özellikli [telefon numarası](../../quickstarts/telephony-sms/get-phone-number.md) alın
-- [SMS çözümünüzü planlayın](../telephony-sms/plan-solution.md)
+- [Azure Iletişim hizmetlerindeki telefon numarası türleri](../telephony-sms/plan-solution.md)

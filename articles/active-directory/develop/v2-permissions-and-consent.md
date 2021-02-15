@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090196"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102487"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda izinler ve onay
 
@@ -181,7 +181,7 @@ Genel olarak, belirli bir uygulama için izinlerin statik olarak tanımlanması 
 
 Bir uygulama için statik olarak istenen izinlerin listesini yapılandırmak için:
 
-1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyiminde uygulamanıza gidin.
+1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal uygulama kayıtları</a> hızlı başlangıç deneyiminde uygulamanıza gidin.
 1. Bir uygulama seçin veya henüz yapmadıysanız bir uygulama [oluşturun](quickstart-register-app.md) .
 1. Uygulamanın **genel bakış** sayfasında, **Yönet** altında, **API izinleri**  >  **izin Ekle**' yi seçin.
 1. Kullanılabilir API 'Ler listesinden **Microsoft Graph** seçin. Ardından, uygulamanızın gerektirdiği izinleri ekleyin.

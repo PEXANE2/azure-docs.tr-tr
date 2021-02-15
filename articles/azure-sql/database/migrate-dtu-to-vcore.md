@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 05/28/2020
-ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/09/2021
+ms.openlocfilehash: 332a2273a377268a425619a0cdaa5f4780b46e73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790398"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361664"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden Azure SQL veritabanı 'nı sanal çekirdek tabanlı modele geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,24 +52,33 @@ Bu sorguyu veritabanı yerine geçirilecek veritabanının bağlamında yürüt�
 ```SQL
 WITH dtu_vcore_map AS
 (
-SELECT TOP (1) rg.slo_name,
-               CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
-                    WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
-               END AS dtu_hardware_gen,
-               s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
-               CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
+SELECT rg.slo_name,
+       DATABASEPROPERTYEX(DB_NAME(), 'Edition') AS dtu_service_tier,
+       CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG7%' THEN 'Gen5'
+       END AS dtu_hardware_gen,
+       s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
+       CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
 WHERE dtu_limit > 0
       AND
       DB_NAME() <> 'master'
+      AND
+      rg.database_id = DB_ID()
 )
 SELECT dtu_logical_cpus,
        dtu_hardware_gen,
        dtu_memory_per_core_gb,
+       dtu_service_tier,
+       CASE WHEN dtu_service_tier = 'Basic' THEN 'General Purpose'
+            WHEN dtu_service_tier = 'Standard' THEN 'General Purpose or Hyperscale'
+            WHEN dtu_service_tier = 'Premium' THEN 'Business Critical or Hyperscale'
+       END AS vcore_service_tier,
        CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus
             WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.7
        END AS Gen4_vcores,
@@ -97,7 +106,7 @@ Sanal çekirdekler (mantıksal CPU 'Lar) ve donanım oluşturma sayısının yan
 - Aynı donanım oluşturma ve sanal çekirdek veritabanları için aynı sayıda sanal çekirdek, ıOPS ve işlem günlüğü verimlilik kaynak sınırları, DTU veritabanlarının genellikle daha yüksektir. GÇ bağlantılı iş yükleri için, sanal çekirdek modelindeki sanal çekirdek sayısını, aynı performans düzeyine ulaşmak için düşürmek mümkün olabilir. Mutlak değerlerde DTU ve sanal çekirdek veritabanlarının kaynak sınırları [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde gösterilir. Bu değerleri geçirilecek DTU veritabanı ile, yaklaşık olarak eşleşen bir hizmet hedefi kullanan bir vCore veritabanı arasında karşılaştırmak, sanal çekirdek hizmeti hedefini daha kesin bir şekilde seçmenize yardımcı olur.
 - Eşleme sorgusu Ayrıca, geçirilecek DTU veritabanı veya elastik havuz için çekirdek başına bellek miktarını ve sanal çekirdek modelindeki her donanım oluşturma için de döndürür. Sanal çekirdeğe geçiş sonrasında, büyük bir bellek veri önbelleğinin veya sorgu işleme için büyük bellek izni gerektiren iş yüklerine ihtiyaç duymasını gerektiren iş yükleri için, vCore 'a geçişten sonra benzer veya daha yüksek toplam bellek sağlamak önemlidir. Gerçek performansa bağlı olarak, bu tür iş yükleri için, yeterli miktarda bellek almak üzere sanal çekirdek sayısını artırmak gerekebilir.
 - DTU veritabanının [Geçmiş kaynak kullanımı](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , sanal çekirdek hizmeti hedefi seçerken göz önünde bulundurulmalıdır. Sürekli olarak kullanılan CPU kaynaklarıyla DTU veritabanlarının, eşleme sorgusunun döndürdüğü sayıdan daha az sayıda sanal çekirdeğe ihtiyacı olabilir. Buna karşılık, tutarlı olarak yüksek CPU kullanımının yetersiz iş yükü performansına neden olduğu DTU veritabanları, sorgu tarafından döndürülenden daha fazla sanal çekirdek gerektirebilir.
-- Veritabanlarını aralıklı veya öngörülemeyen kullanım desenleriyle geçiriyorsanız [sunucusuz](serverless-tier-overview.md) işlem katmanının kullanımını göz önünde bulundurun.  Sunucusuz 'ta en fazla eş zamanlı çalışan sayısı (istek), yapılandırılan en fazla sayıda sanal çekirdek için sağlanan işlem sınırının %75 olduğunu unutmayın.  Ayrıca, sunucusuz 'ta bulunan en fazla bellek, yapılandırılan maksimum sanal çekirdek sayısına 3 GB olur; Örneğin, en fazla 40 maksimum sanal çekirdek yapılandırıldığında maksimum bellek 120 GB 'dir.   
+- Veritabanlarını aralıklı veya öngörülemeyen kullanım desenleriyle geçiriyorsanız [sunucusuz](serverless-tier-overview.md) işlem katmanının kullanımını göz önünde bulundurun. Sunucusuz 'ta en fazla eş zamanlı çalışan sayısı (istek), yapılandırılan en fazla sayıda sanal çekirdek için sağlanan işlem sınırının %75 olduğunu unutmayın. Ayrıca, sunucusuz 'ta bulunan en fazla bellek, yapılandırılan maksimum sanal çekirdek sayısına 3 GB olur; Örneğin, en fazla 40 maksimum sanal çekirdek yapılandırıldığında maksimum bellek 120 GB 'dir.   
 - Sanal çekirdek modelinde, desteklenen en büyük veritabanı boyutu, donanım oluşturmaya bağlı olarak farklılık gösterebilir. Büyük veritabanları için, [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için sanal çekirdek modelinde desteklenen en büyük boyutları denetleyin.
 - Elastik havuzlar için [DTU](resource-limits-dtu-elastic-pools.md) ve [sanal çekirdek](resource-limits-vcore-elastic-pools.md) modellerinin havuz başına desteklenen en fazla veritabanı sayısına göre farkları vardır. Bu, çok sayıda veritabanına sahip elastik havuzlar geçirilirken göz önünde bulundurulmalıdır.
 - Bazı donanım oluşturmaları, her bölgede kullanılamayabilir. [Donanım nesilleri](service-tiers-vcore.md#hardware-generations)altında kullanılabilirliği denetleyin.
@@ -130,9 +139,9 @@ Eşleme sorgusu aşağıdaki sonucu döndürür (bazı sütunlar breçekimi içi
 
 |dtu_logical_cpus|dtu_hardware_gen|dtu_memory_per_core_gb|Gen4_vcores|Gen4_memory_per_core_gb|Gen5_vcores|Gen5_memory_per_core_gb|
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
-|0,25|4. nesil|0,42|0,250|7|0,425|5,05|
+|0,25|4. nesil|0,42|0.250|7|0.425|5,05|
 
-DTU veritabanının, vCore başına 0,42 GB bellek ile 0,25 mantıksal CPU 'ların (Vçekirdekler) eşdeğeri olduğunu ve 4. nesil Hardware kullandığını görüyoruz. 4. nesil ve 5. nesil donanım nesilleri içindeki en küçük sanal çekirdek hizmet amaçları, **GP_Gen4_1** ve **GP_Gen5_2** , Standart S0 veritabanından daha fazla işlem kaynağı sağlar, bu nedenle doğrudan eşleşme mümkün değildir. 4. nesil donanımı [kullanımdan](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)olmadığından **GP_Gen5_2** seçeneği tercih edilir. Ayrıca, iş yükü [sunucusuz](serverless-tier-overview.md) işlem katmanına uygun ise, daha yakından bir eşleşme **GP_S_Gen5_1** .
+DTU veritabanının, vCore başına 0,42 GB bellek ile 0,25 mantıksal CPU 'ların (Vçekirdekler) eşdeğeri olduğunu ve 4. nesil Hardware kullandığını görüyoruz. 4. nesil ve 5. nesil donanım nesilleri içindeki en küçük sanal çekirdek hizmet amaçları, **GP_Gen4_1** ve **GP_Gen5_2**, Standart S0 veritabanından daha fazla işlem kaynağı sağlar, bu nedenle doğrudan eşleşme mümkün değildir. 4. nesil donanımı [kullanımdan](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)olmadığından **GP_Gen5_2** seçeneği tercih edilir. Ayrıca, iş yükü [sunucusuz](serverless-tier-overview.md) işlem katmanına uygun ise, daha yakından bir eşleşme **GP_S_Gen5_1** .
 
 **Premium P15 veritabanını geçirme**
 
@@ -169,12 +178,12 @@ Aşağıdaki tablo, belirli geçiş senaryoları için rehberlik sağlar:
 |---|---|---|---|
 |Standart|Genel amaçlı|Geni|Herhangi bir sırada geçirebilir, ancak yukarıda açıklanan şekilde uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir|
 |Premium|İş açısından kritik|Geni|Herhangi bir sırada geçirebilir, ancak yukarıda açıklanan şekilde uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir|
-|Standart|İş açısından kritik|Upgrade|Önce ikinciye geçirilmesi gerekiyor|
+|Standart|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
 |İş açısından kritik|Standart|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
 |Premium|Genel amaçlı|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
-|Genel amaçlı|Premium|Upgrade|Önce ikinciye geçirilmesi gerekiyor|
+|Genel amaçlı|Premium|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
 |İş açısından kritik|Genel amaçlı|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
-|Genel amaçlı|İş açısından kritik|Upgrade|Önce ikinciye geçirilmesi gerekiyor|
+|Genel amaçlı|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Yük devretme gruplarını geçirme

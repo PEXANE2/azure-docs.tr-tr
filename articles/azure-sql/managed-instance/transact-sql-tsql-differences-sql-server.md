@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626283"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378630"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - SQL Server Agent etkinleştirme ve devre dışı bırakma Şu anda SQL yönetilen örneği 'nde desteklenmiyor. SQL Server Agent sürekli çalışır.
+- Boş bir CPU 'ya dayalı iş zamanlaması tetiklemesi desteklenmiyor.
 - SQL Server Agent ayarları salt okunurdur. Yordam, `sp_set_agent_properties` SQL yönetilen örneği 'nde desteklenmiyor. 
 - İşler
   - T-SQL iş adımları desteklenir.
@@ -306,13 +307,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
   - Proxy 'ler desteklenmez.
 - EventLog desteklenmiyor.
 - SQL Aracısı işleri oluşturmak, değiştirmek veya yürütmek için kullanıcının doğrudan Azure AD sunucu sorumlusuna (oturum açma) eşlenmesi gerekir. Doğrudan eşlenmeyen kullanıcılar, örneğin, SQL Aracısı işleri oluşturma, değiştirme veya yürütme haklarına sahip olan bir Azure AD grubuna ait olan kullanıcılar bu işlemleri etkili bir şekilde gerçekleştiremez. Bunun nedeni yönetilen örnek kimliğe bürünme ve [yürütme olarak yürütme kısıtlamalarıdır](#logins-and-users).
-
-Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
-
-- Kullanıldığı
-- Boştaki bir CPU 'da iş planlama
-- Aracıyı etkinleştirme veya devre dışı bırakma
-- Uyarılar
+- Ana/hedef (MSX/TSX) işleri için çoklu sunucu yönetim özelliği desteklenmez.
 
 SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 

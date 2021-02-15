@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 18d64e2b2ac359a9036ebd548ef886cb0efd3405
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622205"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Öğretici: splunk Enterprise ve splunk Cloud ile tümleştirme Azure Active Directory
 
@@ -28,10 +28,10 @@ Bu öğreticide, splunk Enterprise ve splunk bulutu Azure Active Directory (Azur
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini splunk Enterprise ve splunk bulutu ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
-* Splunk Enterprise ve splunk bulutu çoklu oturum açma etkin aboneliği.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Splunk Enterprise ve splunk bulutu çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -63,7 +63,7 @@ Azure AD SSO 'yu splunk Enterprise ve splunk bulutu ile yapılandırmak ve test 
     1. Splunk **[Enterprise ve splunk Cloud test kullanıcısı oluşturun](#create-splunk-enterprise-and-splunk-cloud-test-user)** -splunk Enterprise ve splunk bulutu içinde, kullanıcının Azure AD gösterimine bağlı olan B. Simon 'ın bir karşılığı olacak şekilde.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
@@ -111,16 +111,15 @@ Bu bölümde, splunk Enterprise ve splunk bulutuna erişim vererek Azure çoklu 
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Splunk Enterprise ve splunk Cloud SSO 'yu yapılandırma
+## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Splunk Enterprise ve splunk Cloud SSO 'yu yapılandırma
 
   **Splunk Enterprise ve splunk bulut** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den [splunk Enterprise ve splunk bulut desteği ekibine](https://www.splunk.com/en_us/about-splunk/contact-us.html)doğru kopyalanan URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
-
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise ve splunk Cloud test kullanıcısı oluşturma
 
 Bu bölümde, splunk Enterprise ve splunk bulutu 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Splunk Enterprise ve splunk bulut platformunda kullanıcıları eklemek için [splunk Enterprise ve splunk bulut destek ekibi](https://www.splunk.com/en_us/about-splunk/contact-us.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
@@ -132,4 +131,4 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Splunk Enterprise ve splunk Cloud 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+Splunk Enterprise ve splunk Cloud 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

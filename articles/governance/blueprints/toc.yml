@@ -42,6 +42,14 @@
     - name: Azure Güvenlik Karşılaştırması
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Azure güvenliği kıyaslama temeli
+      items:
+        - name: Genel Bakış
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: Dağıtım adımları
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: ISM İLE KORUNAN Avustralya Kamu
       items:
         - name: Genel Bakış

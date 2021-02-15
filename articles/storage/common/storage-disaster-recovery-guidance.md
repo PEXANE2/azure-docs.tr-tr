@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783989"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379837"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
@@ -23,7 +23,7 @@ Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya
 
 Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz. Yük devretme, ikincil bitiş noktasını, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil uç noktaya yazmaya başlayabilir.
 
-Hesap yük devretmesi, genel amaçlı v1, genel amaçlı v2 ve Azure Resource Manager dağıtımlarıyla BLOB depolama hesabı türleri için kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz.
+Hesap yük devretme özelliği Azure Resource Manager dağıtımlarıyla genel amaçlı v1, genel amaçlı v2 ve Blob depolama hesabı türlerinde kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz.
 
 Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md).
 
@@ -55,7 +55,7 @@ Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak �
 
 - **Diskler:** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
 - **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/soft-delete-blob-overview.md) özelliğini açın veya [azcopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](storage-use-data-movement-library.md)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
-- **Dosyalar:** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](./storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanın.
+- **Dosyalar:** Dosya paylaşımlarınızı yedeklemek için [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) kullanın. Yanlışlıkla dosya paylaşımının silinmesine karşı koruma sağlamak için de [geçici silme](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) özelliğini etkinleştirin. GRS kullanılabilir olmadığında coğrafi artıklık için [AzCopy](./storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanarak dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
 - **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](./storage-use-azcopy-v10.md) kullanın.
 
 ## <a name="track-outages"></a>Kesintileri izleme

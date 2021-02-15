@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475361"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389408"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
 
@@ -24,7 +24,7 @@ Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesin
 
 Mevcut Azure uç noktaları, 13 Ağustos 2020 ' den itibaren aşamalı bir şekilde geçiyor. Yeni oluşturulan tüm Azure TLS/SSL uç noktaları, yeni kök CA 'Lara zincirleme olan güncelleştirilmiş sertifikaları içerir.
 
-Hizmete özgü ayrıntılar:
+Tüm Azure hizmetleri bu değişiklikten etkilenir. Belirli hizmetler için bazı ek ayrıntılar aşağıda verilmiştir:
 
 - [Azure Active Directory](../../active-directory/index.yml) (Azure AD) Hizmetleri, bu geçişe 7 Temmuz 2020 tarihinde başlamıştır.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](../../iot-dps/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).

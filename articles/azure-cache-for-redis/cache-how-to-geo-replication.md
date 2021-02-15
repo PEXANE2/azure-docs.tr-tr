@@ -1,24 +1,28 @@
 ---
-title: Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama | Microsoft Docs
-description: Coğrafi bölgeler arasında Redsıs örnekleri için Azure önbelleğinizi çoğaltmayı öğrenin.
+title: Redsıs örnekleri için Premium Azure önbelleği için Coğrafi çoğaltmayı yapılandırma
+description: Azure bölgelerinde Redsıs Premium örnekleri için Azure önbelleğinizi çoğaltmayı öğrenin
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536887"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386889"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Redsıs örnekleri için Premium Azure önbelleği için Coğrafi çoğaltmayı yapılandırma
 
-Coğrafi çoğaltma, Redsıs örnekleri için iki Premium katman Azure önbelleğinin bağlanmasına yönelik bir mekanizma sağlar. Birincil bağlı önbellek ve diğeri ikincil bağlantılı önbellek olarak bir önbellek seçilir. İkincil bağlantılı önbellek salt okunurdur ve birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe çoğaltılır. Birincil ve ikincil önbellek örnekleri arasındaki veri aktarımı TLS ile korunmaktadır. Coğrafi çoğaltma, iki Azure bölgesini kapsayan bir önbellek ayarlamak için kullanılabilir. Bu makale, Redsıs örnekleri için Premium katman Azure önbelleğiniz için Coğrafi çoğaltmayı yapılandırmaya yönelik bir kılavuz sağlar.
+Bu makalede, Azure portal kullanarak coğrafi olarak çoğaltılan bir Azure önbelleğinin nasıl yapılandırılacağını öğreneceksiniz.
+
+Coğrafi çoğaltma, Redsıs örnekleri için iki Premium Azure önbelleğinin yanı sıra bir veri çoğaltma ilişkisi oluşturur. Bu önbellek örnekleri genellikle farklı Azure bölgelerinde bulunur, ancak bu zorunlu değildir. Bir örnek, birincil ve diğeri ikinci olarak davranır. Birincil, okuma ve yazma isteklerini işler ve değişiklikleri ikinciye yayar. Bu işlem, iki örnek arasındaki bağlantı kaldırılana kadar devam eder.
 
 > [!NOTE]
-> Coğrafi çoğaltma, olağanüstü durum kurtarma çözümü olarak tasarlanmıştır. Varsayılan olarak, uygulamanız birincil bölgeye yazılır ve bu bölgeden okundu. Bu, isteğe bağlı olarak ikincil bölgeden okunacak şekilde yapılandırılabilir. Coğrafi çoğaltma, uygulamanızın geri kalanı birincil bölgede kalırsa bölgeler arasında eklenen ağ gecikmesinden kaynaklanan sorunlar nedeniyle otomatik yük devretme sağlamaz. İkincil önbelleğin bağlantısını kaldırarak yük devretmeyi yönetmeniz ve başlatmanız gerekir. Bu, bunu yeni birincil örnek olarak yükseltir.
+> Coğrafi çoğaltma, olağanüstü durum kurtarma çözümü olarak tasarlanmıştır.
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>Coğrafi çoğaltma önkoşulları
 

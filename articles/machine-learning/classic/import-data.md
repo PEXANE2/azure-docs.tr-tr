@@ -3,18 +3,18 @@ title: 'ML Studio (klasik): eğitim verilerini Içeri aktarma-Azure'
 description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarma. Hangi veri türlerinin ve veri biçimlerinin desteklendiğini öğrenin.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302784"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520383"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın
 
@@ -73,12 +73,12 @@ Aşağıdaki veri türleri Studio tarafından tanınır (klasik):
 * DateTime
 * TimeSpan
 
-Studio, modüller arasında veri geçirmek için ***veri tablosu** _ adlı bir iç veri türü kullanır. Veri [kümesine Dönüştür][convert-to-dataset] modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz.
+Studio, modüller arasında veri geçirmek için ***veri tablosu*** adlı bir iç veri türü kullanır. Veri [kümesine Dönüştür][convert-to-dataset] modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz.
 
 Veri tablosu dışındaki biçimleri kabul eden herhangi bir modül, verileri bir sonraki modüle geçirmeden önce sessizce veri tablosuna dönüştürür.
 
 Gerekirse, diğer dönüştürme modüllerini kullanarak veri tablosu biçimini CSV, TSV, ARFF veya SVMLight biçimine dönüştürebilirsiniz.
-Bu işlevleri gerçekleştiren modüller için modül paleti ' nin _ *veri biçimi dönüştürmeleri** bölümüne bakın.
+Bu işlevleri gerçekleştiren modüller için modül paleti ' nin **veri biçimi dönüştürmeleri** bölümüne bakın.
 
 ## <a name="data-capacities"></a>Veri kapasiteleri
 
@@ -157,7 +157,7 @@ Desteklenen çevrimiçi veri kaynakları aşağıdaki tabloda listelenir. Bu tab
 ### <a name="supported-online-data-sources"></a>Desteklenen çevrimiçi veri kaynakları
 Azure Machine Learning Studio (klasik) **veri alma** modülü aşağıdaki veri kaynaklarını destekler:
 
-| Veri Kaynağı | Açıklama | Parametreler |
+| Veri Kaynağı | Description | Parametreler |
 | --- | --- | --- |
 | HTTP aracılığıyla Web URL 'SI |HTTP kullanan herhangi bir Web URL 'sinden, virgülle ayrılmış değerler (CSV), sekmeyle ayrılmış değerler (TSV), öznitelik ilişkisi dosya biçimi (ARFF) ve destek vektör makineleri (SVM-Light) biçimleri içindeki verileri okur |<b>URL</b>: herhangi bir uzantıya sahip site URL 'si ve dosya adı da dahil olmak üzere dosyanın tam adını belirtir. <br/><br/><b>Veri biçimi</b>: desteklenen veri biçimlerinden birini BELIRTIR: CSV, TSV, arff veya SVM-Light. Verilerin bir başlık satırı varsa, sütun adlarını atamak için kullanılır. |
 | Hadoop/bir |Hadoop 'daki dağıtılmış depolama alanından verileri okur. SQL benzeri bir sorgu dili olan HiveQL kullanarak istediğiniz verileri belirtirsiniz. HiveQL, verileri toplamak ve verileri Studio 'ya (klasik) eklemeden önce veri filtrelemeyi gerçekleştirmek için de kullanılabilir. |<b>Hive veritabanı sorgusu</b>: verileri oluşturmak Için kullanılan Hive sorgusunu belirtir.<br/><br/><b>Hcatalog sunucusu URI 'si</b> : Kümenizin adı, *&lt; Kümenizin adı &gt; . azurehdinsight.net* biçimi kullanılarak belirtildi.<br/><br/><b>Hadoop Kullanıcı hesabı adı</b>: kümeyi sağlamak Için kullanılan Hadoop Kullanıcı hesabının adını belirtir.<br/><br/><b>Hadoop Kullanıcı hesabı parolası</b> : küme sağlanırken kullanılan kimlik bilgilerini belirtir. Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kümeleri oluşturma](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).<br/><br/><b>Çıkış verilerinin konumu</b>: verilerin bir Hadoop Dağıtılmış dosya sistemi 'nde mi yoksa Azure 'da mı depolandığını belirtir. <br/><ul>Çıktı verilerini bir olarak depoladığınızda,,,,, bir sunucu URI 'sini belirtin. (HDInsight kümesi adını HTTPS://ön eki olmadan kullandığınızdan emin olun). <br/><br/>Çıktı verilerinizi Azure 'da depolarsanız, Azure depolama hesabı adı, depolama erişim anahtarı ve depolama kapsayıcısı adı ' nı belirtmeniz gerekir.</ul> |

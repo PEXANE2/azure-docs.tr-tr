@@ -105,6 +105,8 @@
       items:
         - name: Eşleme veri akışlarıyla verileri dönüştürme
           items:
+            - name: 'Delte, Delta Gölü verileri dönüştürme'
+              href: tutorial-data-flow-delta-lake.md
             - name: Eşleme veri akışlarıyla verileri dönüştürme
               href: tutorial-data-flow.md
             - name: Eşleme veri akışı video öğreticileri
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: Yeni dal
           href: data-flow-new-branch.md
+        - name: Ayrıştır
+          href: data-flow-parse.md
         - name: Pivot
           href: data-flow-pivot.md
         - name: Derece
@@ -806,6 +810,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Azure İlkesi yerleşik ilkeler
+      href: policy-reference.md
 - name: Kaynaklar
   items:
     - name: Teknik incelemeler
