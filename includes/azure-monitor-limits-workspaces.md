@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356219"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529664"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "96356219"
 | Ücretsiz katmanı  | 10 | Bu sınır arttırılamıyor. |
 | Diğer tüm katmanlar | Sınır yok | Bir kaynak grubu içindeki kaynak sayısıyla ve abonelik başına kaynak grubu sayısına göre sınırlandırılırsınız. |
 
-**Azure Portal**
+**Azure portalı**
 
 | Kategori | Sınır | Yorumlar |
 |:---|:---|:---|
@@ -56,19 +56,25 @@ ms.locfileid: "96356219"
 | En fazla sorgu çalışma süresi | 10 dakika | Ayrıntılar için bkz. [zaman aşımları](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | En yüksek istek hızı | Azure AD kullanıcısı veya istemci IP adresi başına 30 saniyelik 200 istek | Ayrıntılar için [Hız sınırlarına](https://dev.loganalytics.io/documentation/Using-the-API/Limits) bakın. |
 
+**Azure İzleyici Günlükleri bağlayıcısı**
+| Kategori | Sınır | Yorumlar |
+|:---|:---|:---|
+| En fazla kayıt sayısı | 500.000 | |
+| En fazla sorgu zaman aşımı | 110 saniye | |
+| Grafikler | | Günlükler sayfasında görselleştirme ve bağlayıcı farklı grafik kitaplıkları kullanıyor ve bazı işlevler şu anda bağlayıcıda kullanılamıyor. |
+
 **Genel çalışma alanı sınırları**
 
 | Kategori | Sınır | Yorumlar |
 |:---|:---|:---|
 | Tablodaki en fazla sütun         | 500 | |
 | Sütun adı için en fazla karakter | 500 | |
-| Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
 
 **<a name="data-ingestion-volume-rate">Veri alımı birim oranı</a>**
 
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Birim hızı sınırı, çok kiracılı ortamdaki ani artış artışlarından Azure Izleyici müşterilerinin yalıtılmayı amaçlamaktadır. Çalışma alanlarında 500 MB (sıkıştırılmış) varsayılan Alım birimi hız eşiği tanımlanmıştır, bu, yaklaşık **6 GB/dak** sıkıştırılmamış değere çevrilir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Toplu hız sınırı, [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md)aracılığıyla Azure kaynaklarından alınan verilere uygulanır. Birim hız sınırına ulaşıldığında, bir yeniden deneme mekanizması 30 dakikalık bir dönemde verileri 4 kez almak ve işlem başarısız olursa onu bırakmak üzere çalışır. [Aracılardan](../articles/azure-monitor/platform/agents-overview.md) veya [Veri Toplayıcı API](../articles/azure-monitor/platform/data-collector-api.md)'sinden alınan veriler için uygulanmaz.
 
-Çalışma alanınıza gönderilen veriler, çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek bir birim hızında olduğunda, eşik aşılmaya devam edilirken 6 saatte bir bir *Operation* olay gönderilir. Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
+Çalışma alanınıza gönderilen veriler, çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek bir birim hızında olduğunda, eşik aşılmaya devam edilirken 6 saatte bir bir  olay gönderilir. Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 
 Alma sınırlarına ulaştığınızda bildirim kuralları oluşturmak üzere uyarı kuralları oluşturmak için bkz. [Azure izleyici 'de Log Analytics çalışma alanının sistem durumunu izleme](../articles/azure-monitor/platform/monitor-workspace.md) .
 

@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e4231f5c4e947f29a72e581cf461ff737c1a0c82
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956461"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529740"
 ---
-1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yayımla** ' yı seçin ve **hedefte** **Azure** ' ı seçin ve ardından **İleri**' yi seçin.
 
-1. **Hedef** bölümünde **Azure** :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-1.png" alt-text="Azure hedefi seç"::: ' i seçin.
+1. Belirli bir **hedef** Için, Windows üzerinde çalışan bir işlev uygulaması oluşturan **Azure işlev uygulaması (Windows)** öğesini seçin.
 
-1. **Belirli bir hedefte** **Azure işlev uygulaması (Windows)** öğesini seçin
+1. **Işlev örneği**' nde **Yeni bir Azure işlevi oluştur ' u seçin...** 
 
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-2.png" alt-text="Azure İşlev Uygulaması seçin":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-new-resource.png" alt-text="Yeni bir işlev uygulaması örneği oluştur":::
 
-1. **Işlev örneği**' nde **Yeni bir Azure işlevi oluştur...** öğesini seçin ve ardından aşağıdaki tabloda belirtilen değerleri kullanın:
+1. Aşağıdaki tabloda belirtilen değerleri kullanarak yeni bir örnek oluşturun:
 
     | Ayar      | Değer  | Açıklama                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,8 +36,9 @@ ms.locfileid: "97956461"
 
     ![App Service Oluştur iletişim kutusu](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-1. Azure 'da bir işlev uygulaması ve ilgili kaynakları oluşturmak için **Oluştur** ' u seçin. 
-1. **İşlevler örneğinde**, **paket dosyasından Çalıştır** ' ın işaretli olduğundan emin olun. İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, daha iyi performans ile sonuçlandığından, işlevler projeniz için önerilen dağıtım yöntemidir. 
+1. Azure 'da bir işlev uygulaması ve ilgili kaynakları oluşturmak için **Oluştur** ' u seçin. Kaynak oluşturma durumu pencerenin sol alt kısmında gösterilir. 
+
+1. **İşlevler örneğine** geri döndüğünüzde, **paket dosyasından Çalıştır** ' ın işaretli olduğundan emin olun. İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, daha iyi performans ile sonuçlandığından, işlevler projeniz için önerilen dağıtım yöntemidir. 
 
     :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Profil oluşturmayı tamamlama":::
 
