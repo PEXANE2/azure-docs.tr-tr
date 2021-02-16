@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807912"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530527"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 
@@ -67,17 +67,17 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 
 ### <a name="configure-the-log-analytics-agent"></a>Log Analytics aracısını yapılandırma
 
-1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç** bağlantısına tıklayın.
+1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanı aracıları yapılandırma >bağlantısını açın** .
 
-1. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog** öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
+1. **Aracılar yapılandırma** dikey penceresinde **Syslog** sekmesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin. **Tesis Ekle** ' yi seçin ve tesis aşağı açılan listesinden seçin.
     
     - Syslog gerecinizin günlük üst bilgilerinde içerdiği tesisleri ekleyin. 
     
     - Topladığımız verilerle anormal SSH oturum açma algılaması kullanmak istiyorsanız, **AUTH** ve **authprıv** ekleyin. Daha fazla bilgi için [aşağıdaki bölüme](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) bakın.
 
-1. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula** seçeneğini belirleyin.
+1. İzlemek istediğiniz tüm özellikleri eklediğinizde, istenen tüm önem dereceleri onay kutularının işaretlendiğinden emin olun.
 
-1. **Kaydet**’i seçin. 
+1. **Uygula**’yı seçin. 
 
 1. VM 'niz veya gerecinizde belirttiğiniz olanakları gönderdiğinizden emin olun.
 
@@ -88,7 +88,6 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 > [!NOTE]
 > **Hem düz Syslog *hem* de CEF iletilerini iletmek için aynı makineyi kullanma**
 >
->
 > Var olan [CEF günlüğü iletici makinenizi](connect-cef-agent.md) kullanarak, günlükleri düz Syslog kaynaklarından toplayıp iletebilirsiniz. Ancak, olayların çoğaltılmasıyla sonuçlanacak şekilde Azure Sentinel 'e her iki biçimdeki olayları göndermeyi önlemek için aşağıdaki adımları gerçekleştirmeniz gerekir.
 >
 >    [CEF kaynaklarınızdan veri toplamayı](connect-common-event-format.md)zaten ayarlamış ve Log Analytics aracısını yukarıdaki gibi yapılandırmış olmanız gerekir:
@@ -97,7 +96,6 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 >
 > 1. Aracının Azure Sentinel 'de Syslog yapılandırmasıyla eşitlenmesini devre dışı bırakmak için bu makinelerde aşağıdaki komutu çalıştırmanız gerekir. Bu, önceki adımda yaptığınız yapılandırma değişikliğinin üzerine yazılmamasını sağlar.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Anormal SSH oturum açma algılaması için Syslog bağlayıcısını yapılandırma
 
@@ -113,10 +111,7 @@ Azure Sentinel, anormal Secure Shell (SSH) oturum açma etkinliğini belirlemek 
  
 Bu algılama, syslog veri bağlayıcısının belirli bir yapılandırmasını gerektirir: 
 
-1. Önceki yordamdaki 5. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden emin olun. Tüm seçili olmaları için önem derecesi seçenekleri için varsayılan ayarları koruyun. Örneğin:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Anormal SSH oturum açma algılaması için gereken tesisler](./media/connect-syslog/facilities-ssh-detection.png)
+1. Yukarıdaki [Log Analytics aracısını yapılandırma](#configure-the-log-analytics-agent) bölümünde 2. adım için hem **AUTH** hem de **authprıv** 'in izlenecek tesis olarak seçildiğinden ve tüm önem dereceleri seçeneklerinin seçili olduğundan emin olun. 
 
 2. Syslog bilgilerinin toplanması için yeterli zaman kullanılmasına izin verin. Ardından, **Azure Sentinel-logs**' a gidin ve aşağıdaki sorguyu kopyalayıp yapıştırın:
     

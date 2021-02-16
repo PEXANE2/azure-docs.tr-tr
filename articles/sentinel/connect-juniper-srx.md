@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567983"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530646"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>Juniper SRX güvenlik duvarınızı Azure Sentinel 'e bağlama
 
@@ -31,7 +31,7 @@ Bu makalede Juniper SRX güvenlik duvarı gerecinizi Azure Sentinel 'e nasıl ba
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izninizin olması gerekir.
 
@@ -53,7 +53,7 @@ Syslog iletilerini Syslog Aracısı aracılığıyla Azure Sentinel çalışma a
 
     1. Toplanacak günlükleri yapılandırın
 
-        - Çalışma alanı Gelişmiş ayarları yapılandırmasındaki tesisleri ve önem derecelerine seçin
+        - Çalışma alanı aracıları yapılandırmasındaki tesisleri ve önem derecelerine seçin.
 
     1. Juniper SRX 'i yapılandırma ve bağlama
 

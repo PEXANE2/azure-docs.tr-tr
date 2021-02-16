@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6817601659c841ca98031f4e3e1590743bbed171
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507544"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530544"
 ---
 # <a name="sample-models"></a>Örnek modeller
 
@@ -26,7 +26,7 @@ Model istatistikleri:
 
 | Name | Değer |
 |-----------|:-----------|
-| [Gerekli sunucu boyutu](../how-tos/session-rest-api.md#create-a-session) | Stand |
+| [Gerekli sunucu boyutu](../reference/vm-sizes.md) | Stand |
 | Üçgen sayısı | 18.700.000 |
 | Taşınabilir parça sayısı | 2073 |
 | Malzeme sayısı | 94 |
@@ -40,4 +40,4 @@ Khronos Grubu, test için bir glTF örnek modeli kümesi tutar. ARR, hem Text (*
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hızlı başlangıç: Unity ile model Işleme](../quickstarts/render-model.md)
-* [Hızlı başlangıç: bir modeli işleme için dönüştürme](../quickstarts/convert-model.md)
+* [Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](../quickstarts/convert-model.md)

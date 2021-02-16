@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5e4785ebd403e48c4de284f196b3233c7d7434a8
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807776"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530578"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
@@ -47,7 +47,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
     | Çalışma alanı Coğrafya | Azure Sentinel-üretilen veri Coğrafya |
     | --- | --- |
-    | Birleşik Devletler<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore | Birleşik Devletler |
+    | Birleşik Devletler<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore<br>Birleşik Arap Emirlikleri | Birleşik Devletler |
     | Avrupa<br>Fransa<br>İsviçre | Avrupa |
     | Avustralya | Avustralya |
     | Birleşik Krallık | Birleşik Krallık |
@@ -63,7 +63,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
    ![Hizmet arama](./media/quickstart-onboard/search-product.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 

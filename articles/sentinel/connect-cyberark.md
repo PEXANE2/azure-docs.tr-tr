@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103130"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530510"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>Siark kurumsal parola kasasını (EPV) Azure Sentinel 'e bağlama
 
@@ -36,15 +36,15 @@ Siark Syslog Bağlayıcısı, tüm Siark güvenlik çözüm günlüklerinizi Azu
 
 Siark EPV günlükleri, kasadan Linux tabanlı bir günlük iletme sunucusuna (rsyslog veya Syslog-ng çalıştıran), günlükleri Azure Sentinel 'e aktaran Log Analytics aracı ile birlikte gönderilir. Bu tür bir günlük iletme sunucunuz yoksa, bir tane çalışır duruma getirmek için [Bu yönergelere](connect-cef-agent.md) bakın.
 
-1. Azure Sentinel portalında, **veri bağlayıcıları** ' na tıklayın, **Siark kurumsal parola Kasası (EPV) olayları ' nı (Önizleme)** seçin ve ardından **bağlayıcı sayfasını açın** .
+1. Azure Sentinel portalında, **veri bağlayıcıları**' na tıklayın, **Siark kurumsal parola Kasası (EPV) olayları ' nı (Önizleme)** seçin ve ardından **bağlayıcı sayfasını açın**.
 
-1. Günlük iletme sunucusuna Syslog verileri göndermeyi yapılandırmak için Siark EPV yönergelerini izleyin.
+1. Günlük iletme sunucusuna Syslog verileri göndermeyi yapılandırmak için [Siark EPV yönergelerini](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm) izleyin.
 
 1. Bağlantınızı doğrulayın ve [Bu yönergeleri](connect-cef-verify.md)kullanarak veri alımını doğrulayın. Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
-Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde** , **Azure Sentinel** bölümünde, *commonsecuritylog* tablosunda görünür.
+Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **Azure Sentinel** bölümünde, *commonsecuritylog* tablosunda görünür.
 
 Log Analytics Siark EPV günlüklerini sorgulamak için, `CommonSecurityLog` sorgu penceresinin üst kısmına girin.
 

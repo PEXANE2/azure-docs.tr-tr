@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: caa83b9149f39f69d0cbf44a2d6cb01fdaf29721
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 15e31b8dc5ac6db5861e3ea0fb5390ddf0a8c945
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567982"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530680"
 ---
 # <a name="connect-your-cisco-unified-computing-system-ucs-to-azure-sentinel"></a>Cisco Birleşik Bilgi Işlem sisteminizi (UCS) Azure Sentinel 'e bağlama
 
@@ -31,7 +31,7 @@ Bu makalede Cisco Birleşik Bilgi Işlem sistemi (UCS) gerecinizin Azure Sentine
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izninizin olması gerekir.
 
@@ -53,7 +53,7 @@ Syslog Aracısı aracılığıyla syslog iletilerini Azure Sentinel çalışma a
 
     1. Toplanacak günlükleri yapılandırın
 
-        - Çalışma alanı Gelişmiş ayarları yapılandırmasındaki tesisleri ve önem derecelerine seçin
+        - Çalışma alanı aracıları yapılandırmasındaki tesisleri ve önem derecelerine seçin.
 
     1. Cisco UCS 'ı yapılandırma ve bağlama
 

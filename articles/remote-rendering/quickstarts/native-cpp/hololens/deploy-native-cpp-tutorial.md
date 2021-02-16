@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594036"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530595"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Hızlı başlangıç: HoloLens 'e yerel C++ örneği dağıtma
 
@@ -81,7 +81,7 @@ Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunlar�
 Özellikle, aşağıdaki değerleri değiştirin:
 * `init.AccountId`, `init.AccountKey` ve, `init.AccountDomain` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
 * Örneğin `init.RemoteRenderingDomain` , örneğin, diğer bölgelere ait dizenin bölge bölümünü değiştirerek uzaktan işleme oturumunun nerede oluşturulacağını belirtin `westus2` `"westeurope.mixedreality.azure.com"` .
-* Ayrıca, `m_sessionOverride` var olan bir oturum kimliği ile değiştirilebilir. Oturumlar, örneğin [PowerShell betiği](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) kullanılarak veya [oturum REST API](../../../how-tos/session-rest-api.md#create-a-session) doğrudan kullanılarak bu örneğin dışında oluşturulabilir.
+* Ayrıca, `m_sessionOverride` var olan bir oturum kimliği ile değiştirilebilir. Oturumlar, örneğin [PowerShell betiği](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) kullanılarak veya [oturum REST API](../../../how-tos/session-rest-api.md) doğrudan kullanılarak bu örneğin dışında oluşturulabilir.
 Örnek dışında bir oturum oluşturmak, örneğin örnek birden çok kez çalıştırılması önerilir. Hiçbir oturum geçirilmemişse, örnek her başlatma sırasında yeni bir oturum oluşturur ve bu işlem birkaç dakika sürebilir.
 
 Artık uygulama derlenebilir.

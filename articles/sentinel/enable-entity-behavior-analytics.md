@@ -14,32 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784737"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530731"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizlerini (UEBA) etkinleştirme 
 
 > [!IMPORTANT]
 >
-> - UEBA ve varlık sayfaları özellikleri artık **_Tüm_* _ Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur.
+> - UEBA ve varlık sayfaları özellikleri artık **_Tüm_** Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği etkinleştirmek veya devre dışı bırakmak için (Bu önkoşulların özelliği kullanması gerekmez):
 
 - Kullanıcılarınız, Konuk Kullanıcı değil, kuruluşunuzun Azure Active Directory bir üyesi olmalıdır.
 
-- Kullanıcı, Azure AD 'de _ *genel yönetici** veya **Güvenlik Yöneticisi** rollerinin atanması gerekir.
+- Kullanıcı, Azure AD 'de **genel yönetici** veya **Güvenlik Yöneticisi** rollerine atanmalıdır.
 
 - Kullanıcılarınızın aşağıdaki **Azure rollerinden** en az birine atanması gerekir ([Azure RBAC hakkında daha fazla bilgi edinin](roles.md)):
     - Çalışma alanında veya kaynak grubu düzeylerinde **Azure Sentinel katılımcısı** .
     - Kaynak grubu veya abonelik düzeylerinde **katkıda bulunan Log Analytics** .
 
 - Çalışma alanınızın kendisine hiçbir Azure Kaynak kilidi uygulanmamış olması gerekir. [Azure Kaynak kilitleme hakkında daha fazla bilgi edinin](../azure-resource-manager/management/lock-resources.md).
+
+> [!NOTE]
+> Azure Sentinel 'e UEBA işlevselliği eklemek için özel bir lisans gerekmez, ancak **ek ücretler** uygulanabilir.
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>Kullanıcı ve varlık davranışı analizlerini etkinleştirme
 

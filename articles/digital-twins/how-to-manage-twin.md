@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600504"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530442"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -23,7 +23,7 @@ Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](conc
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -72,7 +72,7 @@ Yardımcı sınıfı, `BasicDigitalTwin` Özellik alanlarını doğrudan bir "ik
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örnek:
+> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örneğin:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -86,7 +86,7 @@ Aşağıdaki gibi bir yöntemi çağırarak herhangi bir dijital ikizi ayrıntı
 
 Bu çağrı, gibi kesin türü belirtilmiş nesne türü olarak ikizi verileri döndürür `BasicDigitalTwin` . `BasicDigitalTwin` , SDK 'ya dahil edilen bir serileştirme yardımcı sınıfıdır ve bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Bu, ikizi ayrıntılarını görüntülemek için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 Yöntemi ile bir ikizi aldığınızda, yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin()` .
 
@@ -130,7 +130,7 @@ Bir *ay* tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](ht
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
 * `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı.
-* Bir bölümdeki diğer özellikler `$metadata` . Bunlar:
+* Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
@@ -208,9 +208,9 @@ Bu davranış, ikizi esasına göre yapılır.
 
 Yöntemi kullanarak ikizlerini 'yi silebilirsiniz `DeleteDigitalTwin()` . Ancak, daha fazla ilişki olmadığında yalnızca bir ikizi silebilirsiniz. Bu nedenle, önce ikizi 'in gelen ve giden ilişkilerini silin.
 
-Aşağıda, TWINS ve bunların ilişkilerini silmenin bir kodu örneği verilmiştir:
+Aşağıda, TWINS ve bunların ilişkilerini silmenin kodu örneği verilmiştir. `DeleteDigitalTwin`SDK çağrısı, daha geniş örnek bağlamda nerede olduğunu açıklığa kavuşturacak şekilde vurgulanır.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>Tüm dijital TWINS 'i Sil
 

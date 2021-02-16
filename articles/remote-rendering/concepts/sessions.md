@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593714"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530561"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
@@ -39,9 +39,9 @@ Her oturum birden çok aşamaya gider.
 
 ### <a name="session-startup"></a>Oturum başlatma
 
-ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç** olarak bildirilir.
+ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç** olarak bildirilir.
 
-Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md) boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md#get-sessions-properties).
+Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md) boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md).
 
 > [!IMPORTANT]
 > *Standart* bir sunucu boyutu istemeniz durumunda istek yüksek talebe göre başarısız olursa, bu da bir *Premium* sunucu isteğinin başarısız olacağını göstermez. Bu, sizin için bir seçenek ise, bir *Premium* sunucu boyutuna geri düşmesini deneyebilirsiniz.
@@ -77,7 +77,7 @@ Her durumda, bir oturum durdurulduğunda daha fazla faturalandırılmaz.
 
 #### <a name="extend-a-sessions-lease-time"></a>Bir oturumun kira süresini genişletme
 
-Etkin bir oturumun kira süresini, daha uzun bir süre sonra da ihtiyacınız olduğunu [uzatabilir](../how-tos/session-rest-api.md#modify-and-query-session-properties) .
+Etkin bir oturumun kira süresini, daha uzun bir süre sonra da ihtiyacınız olduğunu [uzatabilir](../how-tos/session-rest-api.md) .
 
 ## <a name="example-code"></a>Örnek kod
 

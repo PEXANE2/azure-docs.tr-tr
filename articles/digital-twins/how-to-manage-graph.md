@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526792"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530459"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -49,11 +49,11 @@ Bir ilişki oluşturmak için şunu belirtmeniz gerekir:
 İlişki KIMLIĞI, belirtilen kaynak ikizi içinde benzersiz olmalıdır. Genel olarak benzersiz olması gerekmez.
 Örneğin, ikizi *foo* için, her bir özel ilişki kimliği benzersiz olmalıdır. Ancak, başka bir ikizi *çubuğu* , bir *foo* ilişkisinin aynı kimliğiyle eşleşen bir giden ilişkiye sahip olabilir.
 
-Aşağıdaki kod örneğinde, Azure dijital TWINS Örneğinizde nasıl ilişki oluşturacağınız gösterilmektedir.
+Aşağıdaki kod örneğinde, Azure dijital TWINS Örneğinizde nasıl ilişki oluşturacağınız gösterilmektedir. Daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-Ana yönteinizde artık aşağıdaki gibi bir ilişki _içeren_ bir ilişki oluşturmak için özel işlevini çağırabilirsiniz: 
+Bu özel işlev artık şöyle bir ilişki _içeren_ bir ilişki oluşturmak için çağrılabilir: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,9 +82,9 @@ Grafikteki belirli bir ikizi **giden** ilişkiler listesine erişmek için `GetR
 
 Bu, `Azure.Pageable<T>` `Azure.AsyncPageable<T>` çağrının zaman uyumlu veya zaman uyumsuz sürümünü kullanıp kullanmayacağınızı bağlı olarak bir veya döndürür.
 
-İlişkilerin bir listesini alan bir örnek aşağıda verilmiştir:
+İlişkilerin bir listesini alan bir örnek aşağıda verilmiştir. Daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
 Artık aşağıdaki gibi, TWINS 'nin giden ilişkilerini görmek için bu özel yöntemi çağırabilirsiniz:
 
@@ -96,11 +96,12 @@ Alınan ilişkileri kullanarak, grafiğinizde diğer TWINS 'ye gidebilirsiniz. B
 
 Azure dijital TWINS 'in Ayrıca belirli bir ikizi **gelen** tüm ilişkileri bulması için bir API 'si vardır. Bu, genellikle ters gezinmede veya bir ikizi silinirken yararlıdır.
 
-Önceki kod örneği, bir ikizi giden ilişkilerini bulmaya odaklanılmıştır. Aşağıdaki örnek benzer şekilde yapılandırılmıştır, ancak bunun yerine ikizi *gelen* ilişkileri bulur.
+>[!NOTE]
+> `IncomingRelationship` çağrılar, ilişkinin tam gövdesini döndürmez. Sınıfı hakkında daha fazla bilgi için `IncomingRelationship` [başvuru belgelerine](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)bakın.
 
-`IncomingRelationship`Çağrıların ilişkinin tam gövdesini döndürmediğini unutmayın.
+Önceki bölümde yer alan kod örneği, bir ikizi giden ilişkilerin bulunmasına odaklanılmıştır. Aşağıdaki örnek benzer şekilde yapılandırılmıştır, ancak bunun yerine ikizi *gelen* ilişkileri bulur. Bu örnek ayrıca, daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
 Şu şekilde, TWINS 'in gelen ilişkilerini şu şekilde görmek için bu özel yöntemi çağırabilirsiniz:
 
@@ -108,11 +109,11 @@ Azure dijital TWINS 'in Ayrıca belirli bir ikizi **gelen** tüm ilişkileri bul
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Tüm ikizi özelliklerini ve ilişkilerini listeleyin
 
-Bir ikizi giden ve gelen ilişkilerini listelemek için yukarıdaki yöntemleri kullanarak, ikizi özellikleri ve ilişkilerinin her iki türü de dahil olmak üzere tam ikizi bilgilerini yazdıran bir yöntem oluşturabilirsiniz. Bunun nasıl yapılacağını gösteren örnek bir özel yöntemi aşağıda verilmiştir.
+Bir ikizi giden ve gelen ilişkilerini listelemek için yukarıdaki yöntemleri kullanarak, ikizi özellikleri ve ilişkilerinin her iki türü de dahil olmak üzere tam ikizi bilgilerini yazdıran bir yöntem oluşturabilirsiniz. Bu amaçla Yukarıdaki özel yöntemlerin nasıl birleştirileceğini gösteren örnek bir özel yöntem aşağıda verilmiştir.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Artık bu özel işlevi şu şekilde Main yönteinizde çağırabilirsiniz: 
+Artık bu özel işlevi şu şekilde çağırabilirsiniz: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -125,7 +126,9 @@ Artık bu özel işlevi şu şekilde Main yönteinizde çağırabilirsiniz:
 
 İstemci çağrısı için gerekli parametreler, kaynak ikizi (ilişkinin kaynaklandığı ikizi), güncelleştirilecek ilişkinin KIMLIĞI ve özellikleri ve güncelleştirmek istediğiniz yeni değerleri içeren bir [JSON yama](http://jsonpatch.com/) belgesi kimliğidir.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+Bu yöntemin nasıl kullanılacağını gösteren örnek kod aşağıda verilmiştir. Bu örnek, daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
 Bu özel yönteme yapılan çağrıya bir örnek, bir JSON yama belgesini bir özelliği güncelleştirmek için bilgilerle geçirerek bir örnektir.
 
@@ -135,7 +138,9 @@ Bu özel yönteme yapılan çağrıya bir örnek, bir JSON yama belgesini bir ö
 
 İlk parametre kaynak ikizi belirtir (ilişkinin kaynaklandığı ikizi). Diğer parametre ilişki KIMLIĞIDIR. İlişki kimlikleri yalnızca bir ikizi kapsamı içinde benzersiz olduğundan, hem ikizi ID hem de ilişki KIMLIĞI gereklidir.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+Bu yöntemin nasıl kullanılacağını gösteren örnek kod aşağıda verilmiştir. Bu örnek, daha büyük bir program bağlamında görünebilen özel bir yöntemin içinde SDK çağrısını (vurgulanmış) kullanır.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
 
 Artık şöyle bir ilişki silmek için bu özel yöntemi çağırabilirsiniz:
 

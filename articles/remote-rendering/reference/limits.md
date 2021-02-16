@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 68c0c04feba2779598a500c84b2ba4a9086b104d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593967"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530255"
 ---
 # <a name="limitations"></a>Sınırlamalar
 
@@ -36,7 +36,7 @@ Birçok özellik boyut, sayı veya diğer sınırlamalara sahiptir.
 
 ### <a name="overall-number-of-polygons"></a>Toplam poligonu sayısı
 
-Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST API](../how-tos/session-rest-api.md#create-a-session)geçirilen sanal makinenin boyutuna bağlıdır:
+Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST API](../how-tos/session-rest-api.md)geçirilen sanal makinenin boyutuna bağlıdır:
 
 | Sunucu boyutu | Maksimum çokgen sayısı |
 |:--------|:------------------|

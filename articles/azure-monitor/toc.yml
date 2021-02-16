@@ -584,6 +584,8 @@
                   href: platform/itsmc-dashboard-errors.md
                 - name: ITSM Bağlayıcısını eşitleme
                   href: platform/itsmc-resync-servicenow.md
+                - name: Bağlayıcı silme
+                  href: platform/itsmc-connector-deletion.md
             - name: Güvenli Dışarı Aktarma ile tümleştirme
               items:
                 - name: Genel Bakış

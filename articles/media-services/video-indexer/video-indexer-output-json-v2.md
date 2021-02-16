@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831575"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530748"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer çıkışını inceleyin
 
@@ -104,7 +104,7 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 |yüzler/animatedCharacters|Sıfır veya daha fazla yüz içerebilir. Daha ayrıntılı bilgi için bkz. [yüzler/animatedCharacters](#facesanimatedcharacters).|
 |anahtar sözcükler|Sıfır veya daha fazla anahtar sözcük içerebilir. Daha ayrıntılı bilgi için bkz. [anahtar sözcükler](#keywords).|
 |yaklaşımları|Sıfır veya daha fazla duygu içerebilir. Daha ayrıntılı bilgi için bkz. [yaklaşımları](#sentiments).|
-|audioEffects| Sıfır veya daha fazla Audioefekt içerebilir. Daha ayrıntılı bilgi için bkz. [Audioeffects](#audioeffects).|
+|audioEffects| Sıfır veya daha fazla Audioefekt içerebilir. Daha ayrıntılı bilgi için bkz. [Audioeffects](#audioeffects-public-preview).|
 |etikete| Sıfır veya daha fazla etiket içerebilir. Daha ayrıntılı bilgi için bkz. [Etiketler](#labels).|
 |markaları| Sıfır veya daha fazla markaya sahip olabilir. Daha ayrıntılı bilgi için bkz. [markalar](#brands).|
 |girecek | Daha ayrıntılı bilgi için bkz. [İstatistikler](#statistics).|
@@ -181,7 +181,7 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 |etikete|[Etiketler](#labels) öngörüleri.|
 |görüntüleri|[Anlık görüntüleri](#shots) öngörüleri.|
 |markaları|[Markalar](#brands) öngörüleri.|
-|audioEffects|[Audioeffects](#audioeffects) öngörüleri.|
+|audioEffects|[Audioeffects](#audioeffects-public-preview) öngörüleri.|
 |yaklaşımları|Yaklaşım [öngörüleri](#sentiments) .|
 |Visualcontentdenetlemesi|[Visualcontentdenetlemesi](#visualcontentmoderation) öngörüleri.|
 |Textualcontentdenetlemesi|[Textualcontentdenetlemesi](#textualcontentmoderation) öngörüleri.|
@@ -530,7 +530,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 |Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation" öğesinin sonekidir [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |açıklama|Markalar açıklaması.|
-|tags|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
+|etiketler|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
 |güvenilirlik|Video Indexer marka algılayıcısının güvenirlik değeri (0-1).|
 |larında|Bu marka için zaman aralıklarının listesi. Her örnek bir brandType içerir ve bu marka, bu markın döküm dosyasında mi yoksa OCR 'de mi görünmediğini belirtir.|
 
@@ -590,26 +590,28 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 |SpeakerLongestMonolog|Hoparlörün en uzun monolog. Konuşmacı, monolog içinde susraysa dahil edilmiştir. Monolog 'in başındaki ve sonundaki sessizlik kaldırılır.| 
 |Hoparlörkertalktolistenratio|Hesaplama, konuşmacının monolog harcanan zamanına (arasında sessizlik olmadan), videonun toplam süresine göre bölünür. Saat, üçüncü ondalık noktaya yuvarlanır.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (Genel Önizleme)
 
-|Ad|Açıklama|
+|Ad|Açıklama
 |---|---|
-|kimlik|Ses efekti KIMLIĞI.|
-|tür|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
-|larında|Bu ses efektinin göründüğü zaman aralıklarının bir listesi.|
+|kimlik|Ses efekti KIMLIĞI|
+|tür|Ses efekti türü|
+|larında|Bu ses efektinin göründüğü zaman aralıklarının bir listesi. Her örneğin bir güvenirlik alanı vardır.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]

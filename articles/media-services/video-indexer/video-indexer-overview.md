@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783810"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530238"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
@@ -84,7 +84,7 @@ Aşağıdaki listede video ve ses modellerini Video Indexer kullanarak videolar�
 * **Konuşmacı numaralandırması**: hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır. On altı hoparlör tek bir ses dosyasında algılanabilir.
 * **Konuşmacı İstatistikleri: konuşmacının** konuşma oranları için istatistikler sağlar.
 * **Metinsel içerik moderasyonu**: Ses transkriptlerindeki müstehcen metinleri algılar.
-* **Ses efektleri**: parmaklar, konuşma ve sessizlik gibi ses efektlerini tanımlar.
+* **Ses efektleri** (Genel Önizleme): içeriğin konuşma olmayan kesimlerinde şu ses efektlerini algılar: GUNSHOT, cam Shaur, alarm, SIREN, patlama, köpek Bark, Screate, Defghter, Crowd yeniden Actions (çitlendirme, kilitlenme ve yürütme) ve sessizlik. Note: tam olay kümesi yalnızca karşıya yükleme ön kümesinde ' Gelişmiş Ses Analizi ' seçildiğinde kullanılabilir; Aksi takdirde yalnızca ' sessizlik ' ve ' Crowd Reaction ' kullanılabilir.
 * **Duygu algılama**: konuşmayı (söylemekte olan) ve ses tonısına (nasıl söylenir) göre tanımlar. Duygu tanıma, Joy, sadyeti, Anger veya korku olabilir.
 * **Çeviri**: Ses transkriptinin 54 farklı dile çevirisini oluşturur.
 
