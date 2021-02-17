@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373292"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571693"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -210,14 +210,14 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 1. Bir projeye Log Analytics çalışma alanı iliştirmek için, **genel bakış**' a, **temelleri**>, **yapılandırma gerekiyor**' a tıklayın.
 2. Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanı ekleyebilirsiniz:
   - Yeni bir çalışma alanı oluşturmak için bir ad belirtin. Çalışma alanı, geçiş projesiyle aynı [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) içindeki bir bölgede oluşturulur.
-  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
+  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
 
 > [!NOTE]
 > Bir geçiş projesiyle ilişkili çalışma alanını değiştiremezsiniz.
 
 ### <a name="download-and-install-vm-agents"></a>VM aracılarını indirme ve yükleme
 
-Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/platform/gateway.md) indirip yüklemeniz gerekir.
+Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/agents/gateway.md) indirip yüklemeniz gerekir.
 
 1. Genel olarak, makineleri **Yönet**' **e** tıklayın  >  ve gerekli makineyi seçin.
 2. **Bağımlılıklar** sütununda, **aracıları yüklensin**' e tıklayın.
@@ -238,7 +238,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics**  >  **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
-Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-options) .
+Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#installation-options) .
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Bir Linux makinesine MMA aracısını yükler
 
@@ -249,11 +249,11 @@ Aracıyı bir Linux makinesine yüklemek için:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager tarafından izlenen bir makineye MMA aracısını yükler
 
-System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için MMA aracısını yüklemek gerekmiyor. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](../azure-monitor/insights/service-map-scom.md#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
+System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için MMA aracısını yüklemek gerekmiyor. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](../azure-monitor/vm/service-map-scom.md#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
 
 ### <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 
@@ -262,8 +262,8 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Windows ve Linux işletim sistemleri için [bağımlılık Aracısı desteği](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) hakkında daha fazla bilgi edinin.
-- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) .
+- Windows ve Linux işletim sistemleri için [bağımlılık Aracısı desteği](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) hakkında daha fazla bilgi edinin.
+- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) .
 
 >[!NOTE]
 > Sistem önkoşulları ve bağımlılık aracısını dağıtma yöntemlerine genel bir bakış sağlamak için başvurulan VM'ler için Azure İzleyici makale, Hizmet Eşlemesi çözümü için de geçerlidir.
@@ -298,7 +298,7 @@ Grup oluşturulduktan sonra, aracıların tüm makinelerine yüklenmesi ve tüm 
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Azure Izleyici günlüklerinden bağımlılık verilerini sorgulama
 
-Hizmet Eşlemesi tarafından yakalanan bağımlılık verileri, Azure geçişi projenizle ilişkili Log Analytics çalışma alanında sorgulama için kullanılabilir. Azure Izleyici günlüklerinde Sorgulanacak Hizmet Eşlemesi veri tabloları hakkında [daha fazla bilgi edinin](../azure-monitor/insights/service-map.md#log-analytics-records) . 
+Hizmet Eşlemesi tarafından yakalanan bağımlılık verileri, Azure geçişi projenizle ilişkili Log Analytics çalışma alanında sorgulama için kullanılabilir. Azure Izleyici günlüklerinde Sorgulanacak Hizmet Eşlemesi veri tabloları hakkında [daha fazla bilgi edinin](../azure-monitor/vm/service-map.md#log-analytics-records) . 
 
 Kusto sorgularını çalıştırmak için:
 
@@ -308,15 +308,15 @@ Kusto sorgularını çalıştırmak için:
 4. Azure Izleyici günlüklerini kullanarak bağımlılık verilerini toplamak için sorgunuzu yazın. Sonraki bölümde örnek sorgular bulun.
 5. Çalıştır ' a tıklayarak sorgunuzu çalıştırın. 
 
-Kusto sorguları yazma hakkında [daha fazla bilgi edinin](../azure-monitor/log-query/log-analytics-tutorial.md) . 
+Kusto sorguları yazma hakkında [daha fazla bilgi edinin](../azure-monitor/logs/log-analytics-tutorial.md) . 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Örnek Azure Izleyici günlükleri sorguları
 
-Bağımlılık verilerini ayıklamak için kullanabileceğiniz örnek sorgular aşağıda verilmiştir. Tercih ettiğiniz veri noktalarını ayıklamak için sorguları değiştirebilirsiniz. Bağımlılık veri kayıtlarında alanların ayrıntılı bir listesi [burada](../azure-monitor/insights/service-map.md#log-analytics-records)bulunabilir. Daha fazla örnek sorgu [burada](../azure-monitor/insights/service-map.md#sample-log-searches)bulabilirsiniz.
+Bağımlılık verilerini ayıklamak için kullanabileceğiniz örnek sorgular aşağıda verilmiştir. Tercih ettiğiniz veri noktalarını ayıklamak için sorguları değiştirebilirsiniz. Bağımlılık veri kayıtlarında alanların ayrıntılı bir listesi [burada](../azure-monitor/vm/service-map.md#log-analytics-records)bulunabilir. Daha fazla örnek sorgu [burada](../azure-monitor/vm/service-map.md#sample-log-searches)bulabilirsiniz.
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Bir makine kümesi üzerinde gelen bağlantıları özetleme
 
-Bağlantı ölçümleri, VMConnection için tablodaki kayıtlar, bağımsız fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır. Fiziksel ağ bağlantısı verilerinin, VMConnection 'daki tek bir mantıksal kayıtta nasıl toplandığından [daha fazla bilgi edinin](../azure-monitor/insights/service-map.md#connections) . 
+Bağlantı ölçümleri, VMConnection için tablodaki kayıtlar, bağımsız fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır. Fiziksel ağ bağlantısı verilerinin, VMConnection 'daki tek bir mantıksal kayıtta nasıl toplandığından [daha fazla bilgi edinin](../azure-monitor/vm/service-map.md#connections) . 
 
 ```
 // the machines of interest

@@ -3,12 +3,12 @@ title: Karma makineleri Azure portal Azure 'a bağlama
 description: Bu makalede, Azure portal Azure Arc etkin sunucularını kullanarak aracıyı yüklemeyi ve makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97962f7fd9816e398f017555d7043cf65db00ed8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398037"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584957"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -28,11 +28,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Sunucular-Azure yay** sayfasında sol üst köşedeki **Ekle** ' yi seçin.
 
-1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur** ' u seçin.
+1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur**' u seçin.
 
 1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 
-1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları** ' nı seçin.
+1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları**' nı seçin.
 
 1. **Kaynak ayrıntıları** sayfasında, aşağıdakileri sağlayın:
 
@@ -40,13 +40,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     1. **Bölge** açılan listesinde, sunucu meta verilerini depolamak için Azure bölgesini seçin.
     1. **İşletim sistemi** açılan listesinde, betiğin üzerinde çalışmak üzere yapılandırıldığı işletim sistemini seçin.
     1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduklarında, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
-    1. **Sonraki: Etiketler** ' i seçin.
+    1. **Sonraki: Etiketler**' i seçin.
 
 1. **Etiketler** sayfasında, önerilen varsayılan **fiziksel konum etiketlerini** gözden geçirin ve bir değer girin veya standartlarınızı desteklemek için bir veya daha fazla **özel etiket** belirtin.
 
 1. **İleri ' yi seçin: betiği indir ve Çalıştır**.
 
-1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir** ' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki** ' yi seçin.
+1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Windows 'da aracıyı yükleyip doğrulama
 
@@ -74,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log* ' dir.
+    Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log*' dir.
 
 2. Makinenin bir ara sunucu üzerinden iletişim kurması gerekiyorsa, proxy sunucusu ortam değişkenini ayarlamak için aşağıdaki komutu çalıştırın:
 
@@ -107,7 +107,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. Betiği kopyaladığınız klasöre veya paylaşıma değiştirin ve betiği çalıştırarak sunucuda yürütün `./OnboardingScript.ps1` .
 
-Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log* ' dir.
+Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log*' dir.
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Linux 'ta aracıyı yükleyip doğrulama
 
@@ -166,6 +166,6 @@ Aracıyı yükledikten ve Azure Arc etkin sunucularına bağlanacak şekilde yap
 
 * Sorun giderme bilgileri, [bağlı makine Aracısı sorunlarını giderme kılavuzunda](troubleshoot-agent-onboard.md)bulunabilir.
 
-* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/vm/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
 
-* [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.
+* [Log Analytics Aracısı](../../azure-monitor/agents/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.

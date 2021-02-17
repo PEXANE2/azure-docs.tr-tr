@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579009"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
@@ -121,7 +121,7 @@ Windows makineleri eklemek için, **aracılar yönetim** sayfasında bilgilere v
 
 Bu tamamlandığında, **Microsoft İzleme Aracısı** **Denetim Masası**'nda görüntülenir. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
 
-Aracıyı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows makinelerini bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
+Aracıyı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows makinelerini bağlama](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
 ::: zone-end
 

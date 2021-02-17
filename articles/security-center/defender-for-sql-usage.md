@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 205f92d4282f0cad00c1dd136636da319e107f3f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391090"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590389"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -55,7 +55,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
     
     - **Azure yayı dağıtma** -herhangi bir Windows makinesini Güvenlik Merkezi 'ne bağlayabilirsiniz. Bununla birlikte, Azure Arc *Tüm* Azure ortamlarınız genelinde daha derin tümleştirme sağlar. Azure yay ayarlarsanız, portalda **SQL Server – Azure yay** sayfasını görürsünüz ve güvenlik uyarılarınız ilgili sayfada özel bir **güvenlik** sekmesinde görüntülenir. Bu nedenle, ilk ve önerilen seçenek, [Azure Arc 'ı konakta ayarlamaya](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ve yukarıdaki **azure Arc üzerinde SQL Server** yönergelerini izlemeye yöneliktir.
         
-    - **Windows makinesini Azure Arc olmadan bağlama** -Windows makinesinde çalışan bir SQL Server Azure yay kullanmadan bağlamayı seçerseniz, [Windows makinelerini Azure izleyici 'ye bağlama](../azure-monitor/platform/agent-windows.md)bölümündeki yönergeleri izleyin.
+    - **Windows makinesini Azure Arc olmadan bağlama** -Windows makinesinde çalışan bir SQL Server Azure yay kullanmadan bağlamayı seçerseniz, [Windows makinelerini Azure izleyici 'ye bağlama](../azure-monitor/agents/agent-windows.md)bölümündeki yönergeleri izleyin.
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Adım 2. Güvenlik Merkezi 'nin fiyatlandırma ve Ayarlar sayfasında isteğe bağlı planı etkinleştirin:
@@ -75,7 +75,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
     Plan, seçilen çalışma alanına bağlı tüm SQL Server 'lar üzerinde etkinleştirilecek. SQL Server örneğinin ilk yeniden başlatıldıktan sonra koruma tam olarak etkin olur.
 
     >[!TIP] 
-    > Yeni bir çalışma alanı oluşturmak için [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin.
+    > Yeni bir çalışma alanı oluşturmak için [Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md)bölümündeki yönergeleri izleyin.
 
 
 1. İsteğe bağlı olarak, güvenlik uyarıları için e-posta bildirimini yapılandırın. 

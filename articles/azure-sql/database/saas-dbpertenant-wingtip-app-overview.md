@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588737"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı bir SaaS uygulamasına giriş
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Wingtip SaaS uygulaması, kiracı başına veritabanı modelini kullanır. Verim
 Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki öğreticilere göz atın. Bu öğreticiler, SQL veritabanı, Azure SYNAPSE Analytics ve diğer Azure hizmetlerinin yerleşik özelliklerinden faydalanan yaygın SaaS düzenlerini keşfedebilir. Öğreticiler, ayrıntılı açıklamalar içeren PowerShell betikleri içerir. Açıklamalar, uygulamalarınızda aynı SaaS yönetimi desenlerinin anlaşılmasına ve uygulanmasını basitleştirir.
 
 
-| Eğitmen | Açıklama |
+| Öğretici | Description |
 |:--|:--|
 | [SQL Database çok kiracılı SaaS uygulaması örneği için rehberlik ve ipuçları](saas-tenancy-wingtip-app-guidance-tips.md) | Uygulamanın bölümlerini hazırlamak için PowerShell betiklerini indirip çalıştırın. |
 |[Wingtip SaaS uygulamasını dağıtma ve araştırma](./saas-dbpertenant-get-started-deploy.md)|  Azure aboneliğiniz ile Wingtip SaaS uygulamasını dağıtın ve araştırın. |
 |[Kiracılar sağlama ve Katalog](./saas-dbpertenant-provision-and-catalog.md)| Uygulamanın kiracılar için bir Katalog veritabanı kullanarak nasıl bağlanacağını ve kataloğun kiracılar verilerini nasıl eşlediğini öğrenin. |
 |[Performansı izleme ve yönetme](./saas-dbpertenant-performance-monitoring.md)| SQL Database 'in izleme özelliklerini kullanmayı ve performans eşikleri aşıldığında uyarıları ayarlamayı öğrenin. |
-|[Azure İzleyici günlükleri ile izleme](./saas-dbpertenant-log-analytics.md) | Birden çok havuzda büyük miktarlarda kaynağı izlemek için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md) nasıl kullanacağınızı öğrenin. |
+|[Azure İzleyici günlükleri ile izleme](./saas-dbpertenant-log-analytics.md) | Birden çok havuzda büyük miktarlarda kaynağı izlemek için [Azure izleyici günlüklerini](../../azure-monitor/logs/log-query-overview.md) nasıl kullanacağınızı öğrenin. |
 |[Tek bir kiracıyı geri yükleme](./saas-dbpertenant-restore-single-tenant.md)| Bir kiracı veritabanını zaman içinde önceki bir noktaya geri yüklemeyi öğrenin. Ayrıca, var olan kiracı veritabanını çevrimiçi bırakan bir paralel veritabanına nasıl geri yükleyeceğinizi öğrenin. |
 |[Kiracı veritabanı şemasını yönet](saas-tenancy-schema-management.md)| Tüm kiracı veritabanlarında şemayı güncelleştirme ve başvuru verilerini güncelleştirme hakkında bilgi edinin. |
 |[Çapraz kiracı dağıtılmış sorguları Çalıştır](saas-tenancy-cross-tenant-reporting.md) | Geçici analiz veritabanı oluşturun ve tüm kiracılar genelinde gerçek zamanlı dağıtılmış sorgular çalıştırın.  |

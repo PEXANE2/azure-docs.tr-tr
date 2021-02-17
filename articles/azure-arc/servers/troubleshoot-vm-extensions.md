@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucuları VM Uzantısı sorunlarını giderme
 description: Bu makalede, Azure Arc etkin sunucularıyla oluşan Azure VM uzantıları ile ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347458"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584677"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Yay etkin sunucu sanal makine uzantısı sorunlarını giderme
 
@@ -36,9 +36,9 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux için Log Analytics Aracısı
 
-- Log Analytics Agent sürümü 1.13.9 (karşılık gelen uzantı sürümü 1.13.15), yüklenen verileri Azure Arc etkin sunucusunun kaynak KIMLIĞIYLE doğru şekilde işaretlemez. Günlükler hizmete gönderiliyor olsa da, **günlükleri** veya **öngörüleri**seçtikten sonra seçili etkin sunucudan verileri görüntülemeye çalıştığınızda hiçbir veri döndürülmez. Azure Izleyici günlüklerinden veya çalışma alanı kapsamındaki VM'ler için Azure İzleyici 'ten sorgular çalıştırarak verilerini görüntüleyebilirsiniz.
+- Log Analytics Agent sürümü 1.13.9 (karşılık gelen uzantı sürümü 1.13.15), yüklenen verileri Azure Arc etkin sunucusunun kaynak KIMLIĞIYLE doğru şekilde işaretlemez. Günlükler hizmete gönderiliyor olsa da, **günlükleri** veya **öngörüleri** seçtikten sonra seçili etkin sunucudan verileri görüntülemeye çalıştığınızda hiçbir veri döndürülmez. Azure Izleyici günlüklerinden veya çalışma alanı kapsamındaki VM'ler için Azure İzleyici 'ten sorgular çalıştırarak verilerini görüntüleyebilirsiniz.
 
-- Bazı dağıtımlar, Linux için Log Analytics Aracısı tarafından şu anda desteklenmemektedir. Aracı, Python 2 dahil olmak üzere ek bağımlılıkların yüklenmesini gerektirir. Destek matrisini ve önkoşulları [burada](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)gözden geçirin.
+- Bazı dağıtımlar, Linux için Log Analytics Aracısı tarafından şu anda desteklenmemektedir. Aracı, Python 2 dahil olmak üzere ek bağımlılıkların yüklenmesini gerektirir. Destek matrisini ve önkoşulları [burada](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)gözden geçirin.
 
 - Durum iletisinde 52 hata kodu eksik bağımlılığı gösterir. Hangi bağımlılığın eksik olduğu hakkında daha fazla bilgi için çıktıyı ve günlükleri kontrol edin.
 

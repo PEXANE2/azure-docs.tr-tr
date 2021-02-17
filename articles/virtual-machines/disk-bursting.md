@@ -3,17 +3,17 @@ title: Yönetilen disk patlaması
 description: Azure diskleri ve Azure sanal makineleri için disk yakalaması hakkında bilgi edinin.
 author: albecker1
 ms.author: albecker
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dcdbf94e547581cb9ff885ac5896467abdf316ae
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1cedac5814d1c547a28e9b1c894f416af5a924b5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576202"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585081"
 ---
 # <a name="managed-disk-bursting"></a>Yönetilen disk patlaması
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -30,3 +30,7 @@ Bu işlemi destekleyen sanal makineler için burdıya varsayılan olarak etkindi
 Ayrıca, Azure genel, kamu ve Çin bulutlarındaki tüm bölgelerde P20 ve daha küçük disk boyutları için [Premium SSD](disks-types.md#premium-ssd) 'larımız de kullanıma sunulmuştur. Disk patlaması, bunu destekleyen disk boyutlarının tüm yeni ve mevcut dağıtımları üzerinde varsayılan olarak etkindir. 
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Elde eden kaynaklarınız hakkında fikir edinme hakkında bilgi edinmek için bkz. [disk alma ölçümleri](disks-metrics.md).

@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092924"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578331"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Özel veri kaynaklarıyla Application Insights verileri ilişkilendirme
 
@@ -31,19 +31,19 @@ Application Insights güçlü Azure Izleyici günlük platformu tarafından dest
 
 Bu bölümde, verilerinizi Azure Izleyici günlüklerine nasıl alacağınız inceleniriz.
 
-Henüz bir tane yoksa, [Bu yönergeleri](../learn/quick-collect-azurevm.md) izleyerek ve "bir çalışma alanı oluşturma" adımını dahil ederek yeni bir Log Analytics çalışma alanı sağlayın.
+Henüz bir tane yoksa, [Bu yönergeleri](../vm/quick-collect-azurevm.md) izleyerek ve "bir çalışma alanı oluşturma" adımını dahil ederek yeni bir Log Analytics çalışma alanı sağlayın.
 
 Günlük verilerini Azure Izleyici 'ye göndermeye başlamak için. Çeşitli seçenekler mevcuttur:
 
-- Zaman uyumlu bir mekanizma için doğrudan [veri TOPLAYıCı API](../platform/data-collector-api.md) 'sini çağırabilir veya Logic App bağlayıcısını kullanabilirsiniz. "Azure Log Analytics" araması yapın ve "veri Gönder" seçeneğini belirlemeniz gerekir:
+- Zaman uyumlu bir mekanizma için doğrudan [veri TOPLAYıCı API](../logs/data-collector-api.md) 'sini çağırabilir veya Logic App bağlayıcısını kullanabilirsiniz. "Azure Log Analytics" araması yapın ve "veri Gönder" seçeneğini belirlemeniz gerekir:
 
   ![Ekran görüntüsü seçme ve eylem](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Zaman uyumsuz bir seçenek için, veri toplayıcı API 'sini kullanarak bir işleme işlem hattı oluşturun. Ayrıntılar için [Bu makaleye](../platform/create-pipeline-datacollector-api.md) bakın.
+- Zaman uyumsuz bir seçenek için, veri toplayıcı API 'sini kullanarak bir işleme işlem hattı oluşturun. Ayrıntılar için [Bu makaleye](../logs/create-pipeline-datacollector-api.md) bakın.
 
 ## <a name="correlating-data"></a>Verileri ilişkilendirme
 
-Application Insights, Azure Izleyici günlük platformunu temel alır. Bu nedenle, Application Insights verilerimizi kullanarak Azure Izleyici 'ye aldığımız tüm verileri ilişkilendirmek için [çapraz kaynak birleştirmeler](../log-query/cross-workspace-query.md) kullanabiliriz.
+Application Insights, Azure Izleyici günlük platformunu temel alır. Bu nedenle, Application Insights verilerimizi kullanarak Azure Izleyici 'ye aldığımız tüm verileri ilişkilendirmek için [çapraz kaynak birleştirmeler](../logs/cross-workspace-query.md) kullanabiliriz.
 
 Örneğin, "myLA" adlı bir Log Analytics çalışma alanında laboratuvar envanterimizi ve konumlarımızı "LabLocations_CL" adlı bir tabloya alabiliriz. Bundan sonra, "myAI" adlı Application Insights uygulamada izlenen isteklerimizi gözden geçirmek ve istekleri, daha önce bahsedilen özel tabloda depolanan bu makinelerin konumlarına karşılayan makine adlarını ilişkilendirmek isterse, Application Insights veya Azure Izleyici bağlamından aşağıdaki sorguyu çalıştırabiliriz:
 
@@ -57,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Veri Toplayıcı API 'si](../platform/data-collector-api.md) başvurusunu inceleyin.
-- [Kaynak çapraz birleşimler](../log-query/cross-workspace-query.md)hakkında daha fazla bilgi için.
+- [Veri Toplayıcı API 'si](../logs/data-collector-api.md) başvurusunu inceleyin.
+- [Kaynak çapraz birleşimler](../logs/cross-workspace-query.md)hakkında daha fazla bilgi için.

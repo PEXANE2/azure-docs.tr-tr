@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389714"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584641"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini izleme
 
@@ -52,13 +52,13 @@ Redsıs ölçümlerini görüntülemek ve Azure Izleyici 'yi kullanarak özel gr
 
 ![Contoso55 sol gezinti bölmesinde ölçümler, Izleme altında bir seçenektir ve vurgulanır. Ölçümler ' de, ölçümlerin bir listesi bulunur. Önbellek İsabetleri ve önbellek isabetsizliği seçilidir.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Azure Izleyici kullanarak ölçümler ile çalışma hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/platform/data-platform.md).
+Azure Izleyici kullanarak ölçümler ile çalışma hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/data-platform.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Önbellek ölçümlerini dışarı aktar
 
-Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca depolanır](../azure-monitor/platform/data-platform-metrics.md) ve sonra silinir. Önbellek ölçümlerinizi 30 günden daha uzun bir süre boyunca kalıcı hale getirmek için [bir depolama hesabı](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) belirleyebilir ve önbellek ölçümleriniz Için bir **bekletme (gün)** ilkesi belirtebilirsiniz. 
+Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca depolanır](../azure-monitor/essentials/data-platform-metrics.md) ve sonra silinir. Önbellek ölçümlerinizi 30 günden daha uzun bir süre boyunca kalıcı hale getirmek için [bir depolama hesabı](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) belirleyebilir ve önbellek ölçümleriniz Için bir **bekletme (gün)** ilkesi belirtebilirsiniz. 
 
 Önbellek ölçümleriniz için bir depolama hesabı yapılandırmak için:
 
@@ -74,10 +74,10 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 ![Redsıs tanılama](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Önbellek ölçümlerinizi depolamaya arşivleme ek olarak, [bunları bir olay hub 'ına de bağlayabilir veya Azure izleyici günlüklerine gönderebilirsiniz](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>Önbellek ölçümlerinizi depolamaya arşivleme ek olarak, [bunları bir olay hub 'ına de bağlayabilir veya Azure izleyici günlüklerine gönderebilirsiniz](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values).
 >
 
-Ölçümlerinize erişmek için, bu makalede daha önce açıklanan Azure portal görüntüleyebilirsiniz ve [Azure Izleyici ölçümleri REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)kullanarak da erişebilirsiniz.
+Ölçümlerinize erişmek için, bu makalede daha önce açıklanan Azure portal görüntüleyebilirsiniz ve [Azure Izleyici ölçümleri REST API](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)kullanarak da erişebilirsiniz.
 
 > [!NOTE]
 > Depolama hesaplarını değiştirirseniz, daha önce yapılandırılan depolama hesabındaki veriler indirilmek üzere kullanılabilir kalır, ancak Azure portal gösterilmez.  
@@ -129,7 +129,7 @@ Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönel
 
 ![İzleme](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Uyarıları yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [uyarılara genel bakış](../azure-monitor/platform/alerts-classic-portal.md).
+Uyarıları yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [uyarılara genel bakış](../azure-monitor/alerts/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Etkinlik Günlükleri
 Etkinlik günlükleri, Redsıs örnekleri için Azure önbelleğiniz üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Daha önce "Denetim günlükleri" veya "işletimsel Günlükler" olarak bilinirdi. Etkinlik günlüklerini kullanarak, Redsıs örnekleri için Azure önbelleğiniz üzerinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" i belirleyebilirsiniz. 
@@ -140,4 +140,4 @@ Etkinlik günlükleri, Redsıs örnekleri için Azure önbelleğiniz üzerinde g
 
 Önbelleğiniz için etkinlik günlüklerini görüntülemek için **kaynak menüsünde** **etkinlik günlükleri** ' ne tıklayın.
 
-Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../azure-monitor/essentials/platform-logs-overview.md).

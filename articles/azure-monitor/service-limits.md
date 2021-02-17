@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 49a9c6663f0505d5104f54630b6925af98ec243f
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 41dcd4fb342c257777d950ee5b8cacc7e8d417c0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318089"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587022"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Izleyici hizmeti sınırları
 
@@ -48,5 +48,5 @@ Bu makalede, Azure Izleyici 'nin farklı alanlarındaki sınırlar listelenmekte
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [Azure İzleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)
-- [Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme](platform/usage-estimated-costs.md)
+- [Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme](/usage-estimated-costs.md)
 - [Application Insights için kullanımı ve maliyetleri yönetme](app/pricing.md)

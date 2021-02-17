@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucusunu Azure Sentinel 'e ekleme
 description: Azure Arc etkin sunucularınızı Azure Sentinel 'e eklemeyi ve güvenlik durumlarını önceden izlemeyi öğrenin.
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94811111"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584740"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Azure Arc etkin sunucularını Azure Sentinel 'e ekleme
 
@@ -18,7 +18,7 @@ Bu makale, Azure Arc etkin sunucunuzu [Azure Sentinel](../../sentinel/overview.m
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun:
 
-- Bir [Log Analytics çalışma alanı](../../azure-monitor/platform/data-platform-logs.md). Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../../azure-monitor/platform/design-logs-deployment.md).
+- Bir [Log Analytics çalışma alanı](../../azure-monitor/logs/data-platform-logs.md). Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../../azure-monitor/logs/design-logs-deployment.md).
 
 - Aboneliğinizde Azure Sentinel [etkin](../../sentinel/quickstart-onboard.md).
 

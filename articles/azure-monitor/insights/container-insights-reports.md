@@ -3,15 +3,15 @@ title: Kapsayıcılar için Azure Izleyici raporları
 description: Kapsayıcılar için Azure Izleyici tarafından toplanan verileri analiz etmek için kullanılabilir raporları açıklar.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907606"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582315"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici raporları
-Kapsayıcılar için Azure Izleyici raporlarında, kullanıma hazır [Azure çalışma kitapları](../platform/workbooks-overview.md)önerilir. Bu makalede, kullanılabilir farklı raporlar ve bunlara nasıl erişebileceğiniz açıklanmıştır.
+Kapsayıcılar için Azure Izleyici raporlarında, kullanıma hazır [Azure çalışma kitapları](../visualize/workbooks-overview.md)önerilir. Bu makalede, kullanılabilir farklı raporlar ve bunlara nasıl erişebileceğiniz açıklanmıştır.
 
 ## <a name="viewing-reports"></a>Raporları görüntüleme
 Azure portal **Azure izleyici** menüsünde **kapsayıcılar**' ı seçin. **İzleme** bölümünde **Öngörüler** ' i seçin, belirli bir kümeyi seçin ve ardından **raporlar (Önizleme)** sayfasını seçin. 
@@ -19,7 +19,7 @@ Azure portal **Azure izleyici** menüsünde **kapsayıcılar**' ı seçin. **İz
 [![Raporlar sayfası](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>Özel çalışma kitabı oluşturma
-Bu çalışma kitaplarından herhangi birine dayalı özel bir çalışma kitabı oluşturmak için, **çalışma kitaplarını görüntüle** açılan listesini seçin ve ardından açılan listenin altındaki **aks galerisine gidin** . Çalışma kitapları ve çalışma kitabı şablonlarını kullanma hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları](../platform/workbooks-overview.md)
+Bu çalışma kitaplarından herhangi birine dayalı özel bir çalışma kitabı oluşturmak için, **çalışma kitaplarını görüntüle** açılan listesini seçin ve ardından açılan listenin altındaki **aks galerisine gidin** . Çalışma kitapları ve çalışma kitabı şablonlarını kullanma hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları](../visualize/workbooks-overview.md)
 
 [![AKS Galerisi](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Bu çalışma kitaplarından herhangi birine dayalı özel bir çalışma kitab�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Izleyici 'deki çalışma kitapları hakkındaki ayrıntılar için bkz. [Azure Izleyici çalışma kitapları](../platform/workbooks-overview.md) .
+- Azure Izleyici 'deki çalışma kitapları hakkındaki ayrıntılar için bkz. [Azure Izleyici çalışma kitapları](../visualize/workbooks-overview.md) .

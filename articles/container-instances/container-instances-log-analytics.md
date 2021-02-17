@@ -3,12 +3,12 @@ title: Kaynak günlüklerini toplama & analiz etme
 description: Azure Izleyici günlüklerine Azure Container Instances içindeki kapsayıcı gruplarından kaynak günlükleri ve olay verileri gönderme hakkında bilgi edinin
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148644"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579319"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümlerde, günlük özellikli bir kapsayıcı grubu oluşturma 
 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 
-* [Log Analytics çalışma alanı](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics çalışma alanı](../azure-monitor/logs/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (veya [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics kimlik bilgilerini alma
@@ -37,7 +37,7 @@ Azure Container Instances, Log Analytics çalışma alanınıza veri göndermek 
 Log Analytics çalışma alanı KIMLIĞINI ve birincil anahtarı almak için:
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
-1. **Ayarlar**altında **aracılar yönetimi** ' ni seçin.
+1. **Ayarlar** altında **aracılar yönetimi** ' ni seçin.
 1. Şunları not edin:
    * **Çalışma Alanı Kimliği**
    * **Birincil anahtar**
@@ -105,7 +105,7 @@ Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portal
 Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için `ContainerInstanceLog_CL` :
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
-1. **Genel**altında **Günlükler** ' i seçin  
+1. **Genel** altında **Günlükler** ' i seçin  
 1. Aşağıdaki sorguyu yazın: `ContainerInstanceLog_CL | limit 50`
 1. **Çalıştır** 'ı seçin
 
@@ -118,7 +118,7 @@ Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak he
 Ayrıca, Azure portal kapsayıcı örnekleri için olayları görüntüleyebilirsiniz. Olaylar, örneğin oluşturulduğu ve başlatıldığı zamanı içerir. Tablodaki olay verilerini görüntülemek için `ContainerEvent_CL` :
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
-1. **Genel**altında **Günlükler** ' i seçin  
+1. **Genel** altında **Günlükler** ' i seçin  
 1. Aşağıdaki sorguyu yazın: `ContainerEvent_CL | limit 50`
 1. **Çalıştır** 'ı seçin
 
@@ -153,8 +153,8 @@ ContainerInstanceLog_CL
 
 Azure Izleyici günlüklerinde günlükleri sorgulama ve Uyarıları yapılandırma hakkında daha fazla bilgi için bkz.:
 
-* [Azure Izleyici günlüklerinde günlük aramalarını anlama](../azure-monitor/log-query/log-query-overview.md)
-* [Azure İzleyici’de birleştirilmiş uyarılar](../azure-monitor/platform/alerts-overview.md)
+* [Azure Izleyici günlüklerinde günlük aramalarını anlama](../azure-monitor/logs/log-query-overview.md)
+* [Azure İzleyici’de birleştirilmiş uyarılar](../azure-monitor/alerts/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Kapsayıcı CPU ve belleğini izleme

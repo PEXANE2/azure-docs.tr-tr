@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580993"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -128,7 +128,7 @@ Olası nedenler şunlardır:
 #### <a name="resolution"></a>Çözüm
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Yanlış yazılmış çalışma alanı KIMLIĞI veya anahtarı
-Aracının çalışma alanı KIMLIĞI veya çalışma alanı anahtarının yanlış yazılmış olup olmadığını doğrulamak için, bkz. [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/platform/agent-manage.md#windows-agent) Windows Aracısı için Windows Aracısı veya [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/platform/agent-manage.md#linux-agent) Linux Aracısı için Linux Aracısı. Azure portal tam dizeyi seçtiğinizden emin olun ve dikkatlice kopyalayıp yapıştırın.
+Aracının çalışma alanı KIMLIĞI veya çalışma alanı anahtarının yanlış yazılmış olup olmadığını doğrulamak için, bkz. [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/agents/agent-manage.md#windows-agent) Windows Aracısı için Windows Aracısı veya [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/agents/agent-manage.md#linux-agent) Linux Aracısı için Linux Aracısı. Azure portal tam dizeyi seçtiğinizden emin olun ve dikkatlice kopyalayıp yapıştırın.
 
 ##### <a name="configuration-not-downloaded"></a>Yapılandırma indirilmedi
 
@@ -169,7 +169,7 @@ Bu dosyayı yürütülebilir dosyayla aynı klasöre yerleştirin `OrchestratorS
 
 ## <a name="linux"></a>Linux
 
-Linux hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu raporlamak üzere otomasyon hesabınızla iletişim kurmak için [Linux 'un Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) bağımlıdır. Çalışan kaydı başarısız olursa, hatanın olası nedenleri aşağıda verilmiştir.
+Linux hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu raporlamak üzere otomasyon hesabınızla iletişim kurmak için [Linux 'un Log Analytics aracısına](../../azure-monitor/agents/log-analytics-agent.md) bağımlıdır. Çalışan kaydı başarısız olursa, hatanın olası nedenleri aşağıda verilmiştir.
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Senaryo: Linux karma Runbook Worker, bir runbook imzalanırken parola istemi alır
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Windows hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu raporlamak üzere otomasyon hesabınızla iletişim kurması için [Windows 'un Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) bağımlıdır. Çalışan kaydı başarısız olursa, bu bölümde bazı olası nedenler bulunur.
+Windows hibrit Runbook Worker, çalışan, runbook işlerini alacak ve durumu raporlamak üzere otomasyon hesabınızla iletişim kurması için [Windows 'un Log Analytics aracısına](../../azure-monitor/agents/log-analytics-agent.md) bağımlıdır. Çalışan kaydı başarısız olursa, bu bölümde bazı olası nedenler bulunur.
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Senaryo: Windows için Log Analytics Aracısı çalışmıyor
 
@@ -253,7 +253,7 @@ Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile
 
 #### <a name="resolution"></a>Çözüm
 
-Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandboxeson konumundaki her karma çalışan üzerinde yerel olarak depolanır. **Uygulama ve hizmetler Logs\Microsoft-SMA\Operations** ve **uygulama ve hizmetler logs\operations Manager** olay günlüklerinde bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu Günlükler, rolün Azure Otomasyonu 'nu etkinleştirmeyi etkileyen bir bağlantı veya diğer tür sorunu veya normal işlemlerde karşılaşılan bir sorunu gösterir. Log Analytics aracısıyla ilgili sorunları gidermeye yönelik ek yardım için bkz. [Log Analytics Windows Agent ile ilgili sorunları giderme](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandboxeson konumundaki her karma çalışan üzerinde yerel olarak depolanır. **Uygulama ve hizmetler Logs\Microsoft-SMA\Operations** ve **uygulama ve hizmetler logs\operations Manager** olay günlüklerinde bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu Günlükler, rolün Azure Otomasyonu 'nu etkinleştirmeyi etkileyen bir bağlantı veya diğer tür sorunu veya normal işlemlerde karşılaşılan bir sorunu gösterir. Log Analytics aracısıyla ilgili sorunları gidermeye yönelik ek yardım için bkz. [Log Analytics Windows Agent ile ilgili sorunları giderme](../../azure-monitor/agents/agent-windows-troubleshoot.md).
 
 Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj gönderme gibi runbook [çıkışlarını ve Iletileri](../automation-runbook-output-and-messages.md) Azure Otomasyonu 'na gönderir. Ayrıntılı ve Ilerleme akışlarını runbook 'lar için yaptığınız gibi etkinleştirebilirsiniz.
 

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998235"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570221"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcıları izleme
  
@@ -46,7 +46,7 @@ Aracı, Azure Izleyici günlüklerinde sorgulanabilen birkaç kapsayıcıya özg
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure izleyici günlük kapsayıcıları çözümü](../azure-monitor/insights/containers.md)hakkında daha fazla bilgi edinin.
+* [Azure izleyici günlük kapsayıcıları çözümü](../azure-monitor/containers/containers.md)hakkında daha fazla bilgi edinin.
 * Service Fabric [Service Fabric ve kapsayıcılarda](service-fabric-containers-overview.md) kapsayıcı düzenlemesi hakkında daha fazla bilgi edinin
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
-* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) kuralları ayarlamak Için Azure izleyici günlüklerini yapılandırma
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/logs/log-query-overview.md) özellikleriyle familiarized alın
+* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/alerts/alerts-overview.md) kuralları ayarlamak Için Azure izleyici günlüklerini yapılandırma

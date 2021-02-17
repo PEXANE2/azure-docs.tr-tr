@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579234"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -76,7 +76,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Orta Fransa
 - West Europe
 - Kuzey Avrupa
-- Brezilya Güney
+- Güney Brezilya
 - Batı Birleşik Krallık
 - Güney Birleşik Krallık
 - Doğu Avustralya
@@ -126,7 +126,7 @@ Evet.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Mevcut bir çalışma alanını kullanabilir miyim?
 
-Evet. Mevcut bir çalışma alanını seçerseniz, yeni sorgu diline geçirilmiş olduğundan emin olun. Çalışma alanını yükseltmek istemiyorsanız yeni bir tane oluşturmanız gerekir. Yeni sorgu dili hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri yeni günlük aramasına yükseltme](../azure-monitor/log-query/log-query-overview.md).
+Evet. Mevcut bir çalışma alanını seçerseniz, yeni sorgu diline geçirilmiş olduğundan emin olun. Çalışma alanını yükseltmek istemiyorsanız yeni bir tane oluşturmanız gerekir. Yeni sorgu dili hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri yeni günlük aramasına yükseltme](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Azure depolama Hesabım bir abonelikte yer alabilir ve Log Analytics çalışma alanım farklı bir abonelikte olabilir mi?
 
@@ -262,7 +262,7 @@ Trafik Analizi, uyarılar için yerleşik olmayan desteğe sahip değil. Ancak T
 - Trafik Analizi Log Analytics için shortlink kullanabilirsiniz. 
 - Sorgularınızı yazmak için [burada belgelenen şemayı](traffic-analytics-schema.md) kullanın 
 - Uyarıyı oluşturmak için "yeni uyarı kuralı" na tıklayın
-- Uyarı oluşturmak için [günlük uyarıları belgelerine](../azure-monitor/platform/alerts-log.md) başvurun
+- Uyarı oluşturmak için [günlük uyarıları belgelerine](../azure-monitor/alerts/alerts-log.md) başvurun
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Nasıl yaparım? hangi VM 'Lerin en çok şirket içi trafiği aldığını denetleyin.
 
@@ -403,4 +403,4 @@ Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
 - Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .
 
 ## <a name="are-classic-nsgs-supported"></a>Klasik NSG 'ler destekleniyor mu?
-Hayır, Trafik Analizi klasik NSG 'yi desteklemez. Klasik kaynaklar [kullanım dışı](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)kalacak şekilde, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçirilmesi önerilir. [Nasıl geçiş yapılacağını](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)öğrenmek için bu makaleye bakın.
+Hayır, Trafik Analizi klasik NSG 'yi desteklemez. Klasik kaynaklar [kullanım dışı](../virtual-machines/classic-vm-deprecation.md)kalacak şekilde, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçirilmesi önerilir. [Nasıl geçiş yapılacağını](../virtual-machines/migration-classic-resource-manager-overview.md)öğrenmek için bu makaleye bakın.

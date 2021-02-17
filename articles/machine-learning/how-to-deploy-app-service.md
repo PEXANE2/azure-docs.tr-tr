@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cd3e2e552376a03d98673447a1b7b29f7ae3441e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452129"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579207"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -29,7 +29,7 @@ Azure Machine Learning bir modeli Azure App Service Web uygulaması olarak nası
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
 
 * Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](../app-service/configure-authentication-provider-aad.md) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
-* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) .
+* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) .
 * İstemcilerle hizmet arasında güvenli iletişim için [TLS desteği](../app-service/configure-ssl-certificate-in-code.md) .
 
 Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi için bkz. [App Service genel bakış](../app-service/overview.md).
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Linux belgelerindeki App Service](/azure/app-service/containers/) Web uygulamanızı yapılandırmayı öğrenin.
-* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
+* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
 * [Azure App Service BIR TLS/SSL sertifikası kullanın](../app-service/configure-ssl-certificate-in-code.md).
 * [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](../app-service/configure-authentication-provider-aad.md).
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)

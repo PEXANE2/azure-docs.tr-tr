@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258686"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570154"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile performans Izleme
 
@@ -67,7 +67,7 @@ Bu şablonu, gereksinimlerinize en uygun bir küme dağıtmak için indirebilir 
 
 Artık Log Analytics aracıyı eklediğine göre, hangi performans sayaçlarını toplamak istediğinizi seçmek için Log Analytics portalına gidin.
 
-1. Azure portal, Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **Servicefabric \<nameOfLog AnalyticsWorkspace\> **' i seçin.
+1. Azure portal, Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **Servicefabric \<nameOfLog AnalyticsWorkspace\>**' i seçin.
 
 2. **Log Analytics**’i tıklayın.
 
@@ -91,6 +91,6 @@ Artık Log Analytics aracıyı eklediğine göre, hangi performans sayaçların�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İlgili [performans sayaçlarını](service-fabric-diagnostics-event-generation-perf.md)toplayın. Log Analytics aracısını belirli performans sayaçlarını toplayacak şekilde yapılandırmak için, [veri kaynaklarını yapılandırmayı](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)gözden geçirin.
-* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) ayarlamak Için Azure izleyici günlüklerini yapılandırma
+* İlgili [performans sayaçlarını](service-fabric-diagnostics-event-generation-perf.md)toplayın. Log Analytics aracısını belirli performans sayaçlarını toplayacak şekilde yapılandırmak için, [veri kaynaklarını yapılandırmayı](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources)gözden geçirin.
+* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/alerts/alerts-overview.md) ayarlamak Için Azure izleyici günlüklerini yapılandırma
 * Alternatif olarak, Azure Tanılama uzantısı aracılığıyla performans sayaçlarını toplayabilir [ve Application Insights gönderebilirsiniz](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

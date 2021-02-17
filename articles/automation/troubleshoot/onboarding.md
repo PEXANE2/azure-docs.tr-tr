@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: d7803976ad76f0b4c9da5c9c3a78932adbcee106
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008171"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581023"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtımı sorunlarını giderme
 
@@ -82,7 +82,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Nedeni
 
-Fiyatlandırma Katmanı aboneliğin faturalama modeliyle eşleşmezse bu hataya neden olmuş olabilir. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanımı ve tahmini maliyetleri izleme](../../azure-monitor/platform/usage-estimated-costs.md).
+Fiyatlandırma Katmanı aboneliğin faturalama modeliyle eşleşmezse bu hataya neden olmuş olabilir. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanımı ve tahmini maliyetleri izleme](../../azure-monitor//usage-estimated-costs.md).
 
 #### <a name="resolution"></a>Çözüm
 

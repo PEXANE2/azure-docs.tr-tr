@@ -3,12 +3,12 @@ title: IRS 1075 şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil IRS 1075 (Rev. 11-2016) şema örneği için adımları dağıtın.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: f4be1b642961b9642ea9d638521653dbc33f0334
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6df2781207c623e10daf0681865b9246be1b1f4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045215"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571914"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>IRS 1075 şema örneğini dağıtma
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |Denetim gereksinimlerini desteklemek için ıRS 1075 (Rev. 11-2016) denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
-|Denetim gereksinimlerini desteklemek için ıRS 1075 (Rev. 11-2016) denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
+|Denetim gereksinimlerini desteklemek için ıRS 1075 (Rev. 11-2016) denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 |Denetim gereksinimlerini desteklemek için ıRS 1075 (Rev. 11-2016) denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan hariç tutulması gereken kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |Denetim gereksinimlerini desteklemek için ıRS 1075 (Rev. 11-2016) denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|

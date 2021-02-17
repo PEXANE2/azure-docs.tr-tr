@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590353"
 ---
 # <a name="azure-threat-protection"></a>Azure tehdit koruması
 
@@ -89,7 +89,7 @@ Azure Izleyici günlükleri, değerli hizmetleri kendi kendine sağlamaya ek ola
 Azure Izleyici günlükleri, yazılım güncelleştirme değerlendirmesi, kötü amaçlı yazılımdan koruma değerlendirmesi ve yapılandırma temelleri de dahil olmak üzere herhangi bir ortamın genel güvenlik duruşunu hızlı ve kolay bir şekilde anlamanıza yardımcı olur. Güvenlik günlüğü verilerine, güvenlik ve uyumluluk denetim süreçlerini kolaylaştırmak için erişilebilir.
 
 ### <a name="insight-and-analytics"></a>Öngörüler ve analiz
-[Azure izleyici günlüklerinin](../../azure-monitor/log-query/log-query-overview.md) merkezinde Azure tarafından barındırılan depo vardır.
+[Azure izleyici günlüklerinin](../../azure-monitor/logs/log-query-overview.md) merkezinde Azure tarafından barındırılan depo vardır.
 
 ![Insight ve Analytics diyagramı](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Veri kaynaklarını yapılandırarak ve aboneliğinize çözümler ekleyerek ba�
 Veri kaynakları ve çözümleri, her biri kendi özellikler kümesiyle ayrı kayıt türleri oluşturur, ancak bunları depoya sorgularda yine de analiz edebilirsiniz. Çeşitli kaynaklarla toplanan çeşitli verilerle çalışmak için aynı araçları ve yöntemleri kullanabilirsiniz.
 
 Azure Izleyici günlükleri ile etkileşimlerinizin çoğu, herhangi bir tarayıcıda çalışan Azure portal ve toplanan verileri çözümlemek ve üzerinde işlem yapmak için yapılandırma ayarlarına ve birden çok araca erişmenizi sağlar. Portalından şunları kullanabilirsiniz:
-* Toplanan verileri çözümlemek için sorgular oluşturduğunuz yerde [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) .
-* En değerli aramalarınızın grafik görünümleriyle özelleştirebileceğiniz [panolar](../../azure-monitor/learn/tutorial-logs-dashboards.md).
+* Toplanan verileri çözümlemek için sorgular oluşturduğunuz yerde [günlük aramaları](../../azure-monitor/logs/log-query-overview.md) .
+* En değerli aramalarınızın grafik görünümleriyle özelleştirebileceğiniz [panolar](../../azure-monitor/visualize/tutorial-logs-dashboards.md).
 * Ek işlevsellik ve analiz araçları sağlayan [çözümler](../../azure-monitor/insights/solutions.md).
 
 Çözümler Azure Izleyici günlüklerine işlevsellik ekler. Bunlar öncelikle bulutta çalışır ve Log Analytics deposunda toplanan verilerin analizini sağlar. Çözümler ayrıca, günlük aramalarıyla çözümlenebilecek yeni kayıt türlerini veya çözümün Log Analytics panosunda sağladığı ek bir kullanıcı arabirimini kullanarak da tanımlayabilir.

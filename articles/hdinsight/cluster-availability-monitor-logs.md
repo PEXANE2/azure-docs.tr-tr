@@ -4,12 +4,12 @@ description: Küme durumunu ve kullanılabilirliğini izlemek için Azure Izleyi
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571892"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight 'ta Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -19,7 +19,7 @@ HDInsight kümeleri, sorgulanabilir ölçümler ve Günlükler ve yapılandırı
 
 Azure Izleyici günlükleri, HDInsight kümeleri gibi birden çok kaynak tarafından oluşturulan verilerin, birleştirilmiş bir izleme deneyimi elde etmek için tek bir yerde toplanmasını ve toplanmasını sağlar.
 
-Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Henüz bir tane oluşturmadıysanız, buradaki yönergeleri izleyebilirsiniz: [Log Analytics çalışma alanı oluşturun](../azure-monitor/learn/quick-create-workspace.md).
+Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Henüz bir tane oluşturmadıysanız, buradaki yönergeleri izleyebilirsiniz: [Log Analytics çalışma alanı oluşturun](../azure-monitor/logs/quick-create-workspace.md).
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Izleyici günlükleri tümleştirmesini etkinleştirme
 
@@ -81,7 +81,7 @@ Bu sorgu yalnızca sonuç olarak kullanılamayan düğümleri döndürdüğünde
 
 **Değerlendirilen temelinde** bölümünde, kullanılamayan düğümleri ne sıklıkta denetlemek istediğinize göre **dönemi** ve **sıklığı** ayarlayın.
 
-Bu uyarının amacı için **period = Frequency** olduğundan emin olmak istiyorsunuz. Period, sıklık ve diğer uyarı parametreleri hakkında daha fazla bilgi [burada](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition)bulunabilir.
+Bu uyarının amacı için **period = Frequency** olduğundan emin olmak istiyorsunuz. Period, sıklık ve diğer uyarı parametreleri hakkında daha fazla bilgi [burada](../azure-monitor/alerts/alerts-unified-log.md#alert-logic-definition)bulunabilir.
 
 Sinyal mantığını yapılandırmayı bitirdiğinizde **bitti** ' yi seçin.
 
@@ -94,7 +94,7 @@ Zaten mevcut bir eylem grubunuz yoksa, **eylem grupları** bölümünde **Yeni o
 Bu işlem, **eylem grubu Ekle**' ye açılır. Bir **eylem grubu adı**, **kısa ad**, **abonelik** ve **kaynak grubu seçin.** **Eylemler** bölümünde, **eylem adı** ' nı seçin ve **eylem türü** olarak **e-posta/SMS/Push/ses'** i seçin.
 
 > [!NOTE]
-> Bir uyarının bir Azure Işlevi, LogicApp, Web kancası, ıTSM ve Otomasyon Runbook 'u gibi bir e-posta/SMS/Push/sesden farklı olarak tetikleyebileceği birkaç başka eylem vardır. [Daha fazla bilgi edinin.](../azure-monitor/platform/action-groups.md#action-specific-information)
+> Bir uyarının bir Azure Işlevi, LogicApp, Web kancası, ıTSM ve Otomasyon Runbook 'u gibi bir e-posta/SMS/Push/sesden farklı olarak tetikleyebileceği birkaç başka eylem vardır. [Daha fazla bilgi edinin.](../azure-monitor/alerts/action-groups.md#action-specific-information)
 
 Bu, **e-posta/SMS/Push/seslendirmeyi** açar. Alıcı için bir **ad** seçin, **e-posta** kutusunu **işaretleyin** ve uyarının gönderilmesini istediğiniz e-posta adresini yazın. Eylem grubunuzu yapılandırmayı tamamlaymak için **e-posta/SMS/Push/sesde** **Tamam** ' ı ve ardından **eylem grubu Ekle** ' yi seçin.
 

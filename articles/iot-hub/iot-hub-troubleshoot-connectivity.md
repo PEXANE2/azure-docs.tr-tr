@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446400"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579266"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -82,7 +82,7 @@ IoT Hub tarafından yayılan platform ölçümleri temelinde uyarılar ayarlayab
 
 Ölçüm uyarı kurallarını, cihaz bağlantısını kesme bozuklulıkları için izlemek üzere kullanabilirsiniz. Diğer bir deyişle, önemli sayıda cihazın beklenmedik şekilde bağlantısını keser. Böyle bir oluşum algılandığında, sorunu gidermeye yardımcı olması için günlüklere bakabilirsiniz. Cihaz başına kesilen ve kritik cihazların bağlantısını izlemek için; Ancak, Event Grid kullanmanız gerekir. Event Grid Ayrıca Azure ölçümlerinden daha gerçek zamanlı bir deneyim sağlar.
 
-IoT Hub uyarılarla ilgili daha fazla bilgi için bkz. [izleyici IoT Hub uyarılar](monitor-iot-hub.md#alerts). IoT Hub uyarı oluşturma hakkında daha fazla bilgi için [ölçüm ve günlükleri kullanma öğreticisine](tutorial-use-metrics-and-diags.md)bakın. Uyarılara daha ayrıntılı bir genel bakış için bkz. Azure Izleyici belgelerindeki [Microsoft Azure uyarılara genel bakış](../azure-monitor/platform/alerts-overview.md) .
+IoT Hub uyarılarla ilgili daha fazla bilgi için bkz. [izleyici IoT Hub uyarılar](monitor-iot-hub.md#alerts). IoT Hub uyarı oluşturma hakkında daha fazla bilgi için [ölçüm ve günlükleri kullanma öğreticisine](tutorial-use-metrics-and-diags.md)bakın. Uyarılara daha ayrıntılı bir genel bakış için bkz. Azure Izleyici belgelerindeki [Microsoft Azure uyarılara genel bakış](../azure-monitor/alerts/alerts-overview.md) .
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Izleyici: bağlantı hatalarını çözümlemek için günlükleri kullanma
 

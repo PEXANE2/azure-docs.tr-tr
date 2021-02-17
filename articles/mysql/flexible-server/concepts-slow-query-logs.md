@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543026"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579198"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yavaş sorgu günlükleri (Önizleme)
 
@@ -27,10 +27,10 @@ Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Günlükleri etk
 
 Yavaş sorgu günlüğü davranışlarını denetlemek için ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time** : bir sorguyu `long_query_time` (saniye cinsinden) tamamlandıktan sonra günlüğe kaydedin. Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements** : yönetim deyimlerinin (örn.) olup olmadığını belirler. `ALTER_TABLE`, `ANALYZE_TABLE` ) günlüğe kaydedilir.
-- **log_queries_not_using_indexes** : dizinleri kullanmayan sorguların günlüğe kaydedileceğini belirler.
-- **log_throttle_queries_not_using_indexes** : yavaş sorgu günlüğüne yazılabilen dizinlenmemiş sorguların sayısını kısıtlar. Bu parametre `log_queries_not_using_indexes` *Açık* olarak ayarlandığında geçerli olur
+- **long_query_time**: bir sorguyu `long_query_time` (saniye cinsinden) tamamlandıktan sonra günlüğe kaydedin. Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements**: yönetim deyimlerinin (örn.) olup olmadığını belirler. `ALTER_TABLE`, `ANALYZE_TABLE` ) günlüğe kaydedilir.
+- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların günlüğe kaydedileceğini belirler.
+- **log_throttle_queries_not_using_indexes**: yavaş sorgu günlüğüne yazılabilen dizinlenmemiş sorguların sayısını kısıtlar. Bu parametre `log_queries_not_using_indexes` *Açık* olarak ayarlandığında geçerli olur
 
 > [!IMPORTANT]
 > Tablolarınızın dizini oluşturulmamış ise, `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` Bu dizinlenmemiş tablolarda çalışan tüm sorgular yavaş sorgu günlüğüne yazılacak olduğundan ve parametrelerini **Açık** olarak ayarlamak MySQL performansını etkileyebilir.
@@ -39,7 +39,7 @@ Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [y
 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
 
-Yavaş sorgu günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda yavaş sorgu günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için, [yavaş sorgu günlüğü portalı makalesine](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)bakın.
+Yavaş sorgu günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda yavaş sorgu günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/essentials/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için, [yavaş sorgu günlüğü portalı makalesine](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)bakın.
 
 Aşağıdaki tabloda, yavaş sorgu günlüğü çıkışı açıklanmaktadır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 

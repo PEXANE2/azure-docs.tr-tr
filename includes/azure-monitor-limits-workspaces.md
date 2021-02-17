@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 56afc81794bb18bfb7c9146eeb4ed61a0a75ea0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100529664"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587013"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -72,7 +72,7 @@ ms.locfileid: "100529664"
 
 **<a name="data-ingestion-volume-rate">Veri alımı birim oranı</a>**
 
-Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Birim hızı sınırı, çok kiracılı ortamdaki ani artış artışlarından Azure Izleyici müşterilerinin yalıtılmayı amaçlamaktadır. Çalışma alanlarında 500 MB (sıkıştırılmış) varsayılan Alım birimi hız eşiği tanımlanmıştır, bu, yaklaşık **6 GB/dak** sıkıştırılmamış değere çevrilir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Toplu hız sınırı, [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md)aracılığıyla Azure kaynaklarından alınan verilere uygulanır. Birim hız sınırına ulaşıldığında, bir yeniden deneme mekanizması 30 dakikalık bir dönemde verileri 4 kez almak ve işlem başarısız olursa onu bırakmak üzere çalışır. [Aracılardan](../articles/azure-monitor/platform/agents-overview.md) veya [Veri Toplayıcı API](../articles/azure-monitor/platform/data-collector-api.md)'sinden alınan veriler için uygulanmaz.
+Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Birim hızı sınırı, çok kiracılı ortamdaki ani artış artışlarından Azure Izleyici müşterilerinin yalıtılmayı amaçlamaktadır. Çalışma alanlarında 500 MB (sıkıştırılmış) varsayılan Alım birimi hız eşiği tanımlanmıştır, bu, yaklaşık **6 GB/dak** sıkıştırılmamış değere çevrilir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Toplu hız sınırı, [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md)aracılığıyla Azure kaynaklarından alınan verilere uygulanır. Birim hız sınırına ulaşıldığında, bir yeniden deneme mekanizması 30 dakikalık bir dönemde verileri 4 kez almak ve işlem başarısız olursa onu bırakmak üzere çalışır. [Aracılardan](../articles/azure-monitor/agents/agents-overview.md) veya [Veri Toplayıcı API](../articles/azure-monitor/platform/data-collector-api.md)'sinden alınan veriler için uygulanmaz.
 
 Çalışma alanınıza gönderilen veriler, çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek bir birim hızında olduğunda, eşik aşılmaya devam edilirken 6 saatte bir bir  olay gönderilir. Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 

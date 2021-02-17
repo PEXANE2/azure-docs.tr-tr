@@ -3,12 +3,12 @@ title: Yeni bir Azure Izleyici Application Insights çalışma alanı tabanlı k
 description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı kaynakları etkinleştirmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063375"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578334"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
@@ -23,10 +23,10 @@ Bu Ayrıca, kaynaklarınız genelinde ortak Azure rol tabanlı erişim denetimi 
 
 Çalışma alanı tabanlı Application Insights, Azure Izleyici 'nin en son özelliklerini ve aşağıdakiler dahil Log Analytics yararlanmanızı sağlar:
 
-* [Müşteri tarafından yönetilen anahtarlar (CMK)](../platform/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
-* [Azure özel bağlantı](../platform/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
+* [Müşteri tarafından yönetilen anahtarlar (CMK)](../logs/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
+* [Azure özel bağlantı](../logs/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
 * [Profil Oluşturucu Için kendi depolama alanınızı (BYOS) getirin ve Snapshot Debugger](./profiler-bring-your-own-storage.md) , bekleyen şifreleme ilkesi, ömür yönetimi ilkesi ve Application Insights Profiler ve Snapshot Debugger ilişkili tüm veriler için ağ erişimi üzerinde tam denetim sağlar. 
-* [Kapasite ayırma katmanları](../platform/manage-cost-storage.md#pricing-model) , Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf sağlar. 
+* [Kapasite ayırma katmanları](../logs/manage-cost-storage.md#pricing-model) , Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf sağlar. 
 * Log Analytics akışı alımı aracılığıyla daha hızlı veri alma.
 
 ## <a name="create-workspace-based-resource"></a>Çalışma alanı tabanlı kaynak oluştur
@@ -36,7 +36,7 @@ Bu Ayrıca, kaynaklarınız genelinde ortak Azure rol tabanlı erişim denetimi 
 > [!div class="mx-imgBorder"]
 > ![Çalışma alanı tabanlı Application Insights kaynağı](./media/create-workspace-resource/create-workspace-based.png)
 
-Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../learn/quick-create-workspace.md).
+Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../logs/quick-create-workspace.md).
 
 **Çalışma alanı tabanlı kaynaklar şu anda tüm ticari bölgelerde ve Azure Kamu 'da kullanılabilir**
 
@@ -212,5 +212,5 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ölçümleri keşfetme](../platform/metrics-charts.md)
-* [Analytics sorguları yazma](../log-query/log-query-overview.md)
+* [Ölçümleri keşfetme](../essentials/metrics-charts.md)
+* [Analytics sorguları yazma](../logs/log-query-overview.md)

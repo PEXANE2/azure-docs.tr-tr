@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797743"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590469"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Kaynak Yöneticisi için Azure Defender 'a giriş
 
@@ -28,7 +28,7 @@ Kaynak Yöneticisi için Azure Defender, kuruluşunuzdaki kaynak yönetimi işle
 |----|:----|
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**Kaynak Yöneticisi Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Kaynak Yöneticisi için Azure Defender 'ın avantajları nelerdir?
@@ -48,7 +48,7 @@ Kaynak Yöneticisi için Azure Defender tarafından sunulan uyarıların tam lis
 
 Kaynak Yöneticisi için Azure Defender 'daki güvenlik uyarıları, Azure Resource Manager işlemlerini izleyerek algılanan tehditleri temel alır. Azure Defender, Azure 'da abonelik düzeyindeki olaylar hakkında Öngörüler sağlayan bir platform günlüğü olan Azure Resource Manager iç günlük kaynaklarını ve Azure etkinlik günlüğü 'nü kullanır.
 
-[Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)hakkında daha fazla bilgi edinin.
+[Azure etkinlik günlüğü](../azure-monitor/essentials/activity-log.md)hakkında daha fazla bilgi edinin.
 
 Kaynak Yöneticisi için Azure Defender 'daki güvenlik uyarılarını araştırmak için:
 

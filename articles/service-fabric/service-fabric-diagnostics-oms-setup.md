@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258646"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570357"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Küme için Azure Izleyici günlüklerini ayarlama
 
@@ -26,11 +26,11 @@ Azure Izleyici günlükleri, küme düzeyindeki olayları izlemek için önerimi
 
 ## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Azure Marketi 'ni kullanarak Log Analytics çalışma alanı dağıtma
 
-Bir kümeyi dağıttıktan sonra bir Log Analytics çalışma alanı eklemek istiyorsanız, portalda Azure Marketi ' ne gidin ve **Service Fabric Analytics**arayın. Bu, Service Fabric özgü verileri olan Service Fabric dağıtımlar için özel bir çözümdür. Bu işlemde hem çözümü (öngörüleri görüntülemek için Pano) ve çalışma alanını (temel alınan küme verilerinin toplamı) oluşturacaksınız.
+Bir kümeyi dağıttıktan sonra bir Log Analytics çalışma alanı eklemek istiyorsanız, portalda Azure Marketi ' ne gidin ve **Service Fabric Analytics** arayın. Bu, Service Fabric özgü verileri olan Service Fabric dağıtımlar için özel bir çözümdür. Bu işlemde hem çözümü (öngörüleri görüntülemek için Pano) ve çalışma alanını (temel alınan küme verilerinin toplamı) oluşturacaksınız.
 
 1. Sol gezinti menüsünde **Yeni** ' yi seçin. 
 
-2. **Service Fabric Analytics**arayın. Görüntülenen kaynağı seçin.
+2. **Service Fabric Analytics** arayın. Görüntülenen kaynağı seçin.
 
 3. **Oluştur**’u seçin.
 
@@ -38,7 +38,7 @@ Bir kümeyi dağıttıktan sonra bir Log Analytics çalışma alanı eklemek ist
 
 4. Service Fabric Analytics oluşturma penceresinde **OMS çalışma** alanı alanı için **bir çalışma alanı seç** ' i seçin ve ardından **Yeni bir çalışma alanı oluşturun**. Gerekli girdileri doldurun. Buradaki tek gereksinim, Service Fabric kümesi için aboneliğin ve çalışma alanının aynı olduğu gereksinimdir. Girdlarınız doğrulandıktan sonra, çalışma alanınız dağıtmaya başlar. Dağıtım yalnızca birkaç dakika sürer.
 
-5. İşiniz bittiğinde Service Fabric Analytics oluşturma penceresinin alt kısmında yeniden **Oluştur** ' u seçin. Yeni çalışma alanının **OMS çalışma alanı**altında göründüğünden emin olun. Bu eylem, çözümü oluşturduğunuz çalışma alanına ekler.
+5. İşiniz bittiğinde Service Fabric Analytics oluşturma penceresinin alt kısmında yeniden **Oluştur** ' u seçin. Yeni çalışma alanının **OMS çalışma alanı** altında göründüğünden emin olun. Bu eylem, çözümü oluşturduğunuz çalışma alanına ekler.
 
 Windows kullanıyorsanız, Azure Izleyici günlüklerini küme olaylarınızın depolandığı depolama hesabına bağlamak için aşağıdaki adımlarla devam edin. 
 
@@ -47,17 +47,17 @@ Windows kullanıyorsanız, Azure Izleyici günlüklerini küme olaylarınızın 
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics çalışma alanını kümenize bağlama 
 
-1. Çalışma alanının, kümeinizden gelen tanılama verilerine bağlanması gerekir. Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **Servicefabric \<nameOfWorkspace\> ** ' i seçin ve genel bakış sayfasına gidin. Buradan çözüm ayarlarını, çalışma alanı ayarlarını değiştirebilir ve Log Analytics çalışma alanına erişebilirsiniz.
+1. Çalışma alanının, kümeinizden gelen tanılama verilerine bağlanması gerekir. Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin. **Servicefabric \<nameOfWorkspace\>** ' i seçin ve genel bakış sayfasına gidin. Buradan çözüm ayarlarını, çalışma alanı ayarlarını değiştirebilir ve Log Analytics çalışma alanına erişebilirsiniz.
 
-2. Sol gezinti menüsünde, **çalışma alanı veri kaynakları**altında, **depolama hesapları günlükleri**' ni seçin.
+2. Sol gezinti menüsünde, **çalışma alanı veri kaynakları** altında, **depolama hesapları günlükleri**' ni seçin.
 
 3. **Depolama hesabı günlükleri** sayfasında, kümenin günlüklerini çalışma alanına eklemek için en üstteki **Ekle** ' yi seçin.
 
-4. Kümenizde oluşturulan uygun hesabı eklemek için **depolama hesabı** ' nı seçin. Varsayılan adı kullandıysanız, depolama hesabı **sfdg \<resourceGroupName\> **' dir. Bunu, **Applicationdiagnosticsstorageaccountname**için kullanılan değeri denetleyerek kümenizi dağıtmak için kullanılan Azure Resource Manager şablonuyla da doğrulayabilirsiniz. Ad görünmüyorsa, aşağı kaydırın ve **daha fazla yükle**' yi seçin. Depolama hesabı adını seçin.
+4. Kümenizde oluşturulan uygun hesabı eklemek için **depolama hesabı** ' nı seçin. Varsayılan adı kullandıysanız, depolama hesabı **sfdg \<resourceGroupName\>**' dir. Bunu, **Applicationdiagnosticsstorageaccountname** için kullanılan değeri denetleyerek kümenizi dağıtmak için kullanılan Azure Resource Manager şablonuyla da doğrulayabilirsiniz. Ad görünmüyorsa, aşağı kaydırın ve **daha fazla yükle**' yi seçin. Depolama hesabı adını seçin.
 
-5. Veri türünü belirtin. **Olayları Service Fabric**olarak ayarlayın.
+5. Veri türünü belirtin. **Olayları Service Fabric** olarak ayarlayın.
 
-6. Kaynağın otomatik olarak **Wadservicefabric \* eventtable**olarak ayarlandığından emin olun.
+6. Kaynağın otomatik olarak **Wadservicefabric \* eventtable** olarak ayarlandığından emin olun.
 
 7. Çalışma alanınızı kümenizin günlüklerine bağlamak için **Tamam ' ı** seçin.
 
@@ -119,9 +119,9 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 İşiniz bittiğinde, Azure Izleyici günlüklerini uygun depolama hesabına bağlamak için yukarıdaki bölümdeki adımları izleyin.
 
-Ayrıca, PowerShell kullanarak diğer çözümleri ekleyebilir veya Log Analytics çalışma alanınızda başka değişiklikler yapabilirsiniz. Daha fazla bilgi için bkz. [PowerShell kullanarak Azure izleyici günlüklerini yönetme](../azure-monitor/platform/powershell-workspace-configuration.md).
+Ayrıca, PowerShell kullanarak diğer çözümleri ekleyebilir veya Log Analytics çalışma alanınızda başka değişiklikler yapabilirsiniz. Daha fazla bilgi için bkz. [PowerShell kullanarak Azure izleyici günlüklerini yönetme](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Performans sayaçlarını toplamak ve kapsayıcılarınız için Docker istatistiklerini ve günlüklerini toplamak için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) düğümleriniz üzerine dağıtın
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
-* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/platform/view-designer.md)
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/logs/log-query-overview.md) özellikleriyle familiarized alın
+* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/visualize/view-designer.md)

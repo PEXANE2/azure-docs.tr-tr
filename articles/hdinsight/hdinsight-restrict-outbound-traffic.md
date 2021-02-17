@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932128"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574602"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -80,7 +80,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
    ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Ağ kurallarıyla güvenlik duvarını yapılandırma
 
@@ -107,7 +107,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
     
    ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 
@@ -165,7 +165,7 @@ Günlüğe kaydetme kurulumunu tamamladıktan sonra, Log Analytics kullanıyorsa
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Azure Güvenlik Duvarı 'Nı Azure Izleyici günlükleriyle tümleştirme, ilk olarak bir uygulama çalışırken yararlıdır. Özellikle uygulama bağımlılıklarının tümünün farkında olmadığınız durumlarda. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici ['de günlük verilerini çözümleme](../azure-monitor/log-query/log-query-overview.md)
+Azure Güvenlik Duvarı 'Nı Azure Izleyici günlükleriyle tümleştirme, ilk olarak bir uygulama çalışırken yararlıdır. Özellikle uygulama bağımlılıklarının tümünün farkında olmadığınız durumlarda. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici ['de günlük verilerini çözümleme](../azure-monitor/logs/log-query-overview.md)
 
 Azure Güvenlik duvarının ölçek sınırları ve istek artışları hakkında bilgi edinmek için [Bu](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) belgeye bakın veya [SSS](../firewall/firewall-faq.yml)bölümüne bakın.
 

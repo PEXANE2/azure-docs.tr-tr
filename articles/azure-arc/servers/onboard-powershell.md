@@ -3,12 +3,12 @@ title: PowerShell kullanarak karma makineleri Azure 'a bağlama
 description: Bu makalede, Azure Arc etkin sunucularını kullanarak aracıyı yüklemeyi ve bir makineyi Azure 'a bağlamayı öğreneceksiniz. Bunu PowerShell ile yapabilirsiniz.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492950"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584933"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>PowerShell kullanarak karma makineleri Azure 'a bağlama
 
@@ -103,6 +103,6 @@ Aracıyı, Azure Arc etkin sunucularıyla kaydolmak üzere yükledikten ve yapı
 
 * Gerekirse, [bağlı makine Aracısı sorunlarını giderme kılavuzuna](troubleshoot-agent-onboard.md)bakın.
 
-* [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetme hakkında bilgi edinin. VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md)' nı kullanabilir, makinenin beklenen Log Analytics çalışma alanına rapor ettiğini ve [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirebildiğini doğrulayabilirsiniz.
+* [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetme hakkında bilgi edinin. VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md)' nı kullanabilir, makinenin beklenen Log Analytics çalışma alanına rapor ettiğini ve [VM 'lerle Azure izleyici](../../azure-monitor/vm/vminsights-enable-policy.md)ile izlemeyi etkinleştirebildiğini doğrulayabilirsiniz.
 
-* [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak veya Azure Otomasyonu runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek istediğinizde gereklidir. Bu aracı, [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak için de gereklidir.
+* [Log Analytics Aracısı](../../azure-monitor/agents/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak veya Azure Otomasyonu runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek istediğinizde gereklidir. Bu aracı, [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak için de gereklidir.

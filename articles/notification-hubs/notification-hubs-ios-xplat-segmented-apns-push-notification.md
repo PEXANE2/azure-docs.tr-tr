@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cb979491e247a4d44b9ae9ae27c433fb3f436d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530041"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579230"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletme bildirimleri gönderin
 
@@ -39,7 +39,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Cihazdan bildirim gönder
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri aracılığıyla][get-started]oluşturduğunuz uygulamayı oluşturur. Bu öğreticiye başlamadan önce, [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri][get-started]zaten tamamlanmış olmalıdır.
 
@@ -125,8 +125,6 @@ Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına an�
 
     - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
     {
-        //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
-
         NSString* templateBodyAPNS = @"{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
         [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
@@ -193,7 +191,7 @@ Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına an�
      }
     ```
 
-    Bu yöntem, uygulama çalışırken bir basit **Uıalert**görüntüleyerek alınan bildirimleri işler.
+    Bu yöntem, uygulama çalışırken bir basit **Uıalert** görüntüleyerek alınan bildirimleri işler.
 
 11. İçinde `ViewController.m` , için bir `import` ifade ekleyin `AppDelegate.h` ve aşağıdaki kodu Xcode tarafından oluşturulan `subscribe` yönteme kopyalayın. Bu kod, kullanıcının Kullanıcı arabiriminde seçtiği yeni kategori etiketlerini kullanmak için bildirim kaydını güncelleştirir.
 
@@ -369,4 +367,4 @@ Bu öğreticide, Kategoriler için kayıtlı olan belirli iOS cihazlarına yayı
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/dn530749(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [get-started]: ios-sdk-get-started.md
-[Azure portalındaki]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

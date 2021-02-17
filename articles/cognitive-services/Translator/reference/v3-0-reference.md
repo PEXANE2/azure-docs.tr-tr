@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895467"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582207"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -230,7 +230,7 @@ Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır
 | 503000| Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin. Hata devam ederse, hatayı tarih/saat ile, X-RequestId yanıt başlığından istek tanımlayıcısını ve X-Clienttraceıd istek başlığından istemci tanımlayıcısını bildirin.|
 
 ## <a name="metrics"></a>Ölçümler 
-Ölçümler, aşağıdaki ekran görüntüsünde gösterildiği gibi ölçümler bölümünde Azure portal, çevirmen kullanım ve kullanılabilirlik bilgilerini görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [veri ve platform ölçümleri](../../../azure-monitor/platform/data-platform-metrics.md).
+Ölçümler, aşağıdaki ekran görüntüsünde gösterildiği gibi ölçümler bölümünde Azure portal, çevirmen kullanım ve kullanılabilirlik bilgilerini görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [veri ve platform ölçümleri](../../../azure-monitor/essentials/data-platform-metrics.md).
 
 ![Çevirmen ölçümleri](../media/translatormetrics.png)
 

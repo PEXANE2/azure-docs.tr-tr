@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050677"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581086"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Otomasyon hesabı oluşturma
 
@@ -80,11 +80,11 @@ JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak di
 
 Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapılandırma ayrıntılarını anlamanız önemlidir. Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluşturmaya, yapılandırmaya ve kullanmaya çalıştığınızda hatalardan kaçınmanıza yardımcı olabilirler.
 
-* Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace) gözden geçirin.
+* Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) gözden geçirin.
 
 * Desteklenen bölgeleri satır içi veya bir parametre dosyasında belirtmek için [çalışma alanı eşlemelerini](how-to/region-mappings.md) gözden geçirin. Log Analytics çalışma alanını ve aboneliğinizdeki Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir.
 
-* Azure Izleyici günlüklerine yeni başladıysanız ve bir çalışma alanını henüz dağıtmadıysanız, [çalışma alanı tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md)gözden geçirmeniz gerekir. Erişim denetimi hakkında bilgi edinmenize ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerini anlamanıza yardımcı olur.
+* Azure Izleyici günlüklerine yeni başladıysanız ve bir çalışma alanını henüz dağıtmadıysanız, [çalışma alanı tasarım kılavuzunu](../azure-monitor/logs/design-logs-deployment.md)gözden geçirmeniz gerekir. Erişim denetimi hakkında bilgi edinmenize ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerini anlamanıza yardımcı olur.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508041"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590409"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -43,8 +43,8 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 - **MAKINELERDEKI SQL Server 'lar Için Azure Defender** , karma ortamları tamamen desteklemek ve Azure 'DA barındırılan SQL sunucularını (desteklenen tüm sürümleri) ve hatta şirket içi makineleri korumak için Azure Native SQL Server 'larınızın korumalarını uzatır:
     - [Sanal Makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Şirket içi SQL Server 'lar:
-        - [Azure Arc özellikli SQL Server (önizleme)](/sql/sql-server/azure-arc/overview)
-        - [Azure Arc olmadan Windows makinelerde çalışan SQL Server](../azure-monitor/platform/agent-windows.md)
+        - [Azure Arc özellikli SQL Server (önizleme)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc olmadan Windows makinelerde çalışan SQL Server](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>SQL için Azure Defender 'ın avantajları nelerdir?

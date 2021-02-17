@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576811"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
@@ -133,7 +133,7 @@ Uyumluluk, tehdit algılama, araştırma ve olay araştırması gereksinimlerini
 
 Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak günlüklerine erişim için Azure kaynaklarında kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek üzere kullanabilirsiniz. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../../security-center/security-center-enable-data-collection.md)
 
@@ -163,7 +163,7 @@ Ayrıca, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'e verileri etkinleş
 
 Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
@@ -187,7 +187,7 @@ Günlük saklama alanınızı uyumluluk, düzenleme ve iş gereksinimlerinize g�
 
 Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayabilirsiniz. Uzun süreli ve arşiv depolama için Azure depolama, Data Lake veya Log Analytics çalışma alanı hesapları kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 30328db465e0d9bf8c1ce67d92e48c688c51e043
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574611"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisiyle günlüğe kaydetme ve bağlantı yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Azure Işlevi güncelleştirilmiş yapılandırmayla dağıtıldıktan sonra, iz
 
 ### <a name="query-the-logs"></a>Günlükleri sorgulama
 
-[Azure Application Insights ' Analytics](../azure-monitor/log-query/log-query-overview.md)'te Cosmos DB Için Azure işlevleri tetikleyicisi tarafından oluşturulan günlükleri sorgulamak için aşağıdaki sorguyu çalıştırın:
+[Azure Application Insights ' Analytics](../azure-monitor/logs/log-query-overview.md)'te Cosmos DB Için Azure işlevleri tetikleyicisi tarafından oluşturulan günlükleri sorgulamak için aşağıdaki sorguyu çalıştırın:
 
 ```sql
 traces
