@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581403"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -80,10 +80,10 @@ Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Fa
 
 Denetim günlüğü toplamayı etkinleştirmek, Windows sanal masaüstü ile ilgili Kullanıcı ve yönetici etkinliğini görüntülemenize olanak sağlar. Anahtar denetim günlüklerine bazı örnekler şunlardır:
 
--   [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)
+-   [Azure Etkinlik Günlüğü](../azure-monitor/essentials/activity-log.md)
 -   [Etkinlik günlüğünü Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [Oturum Konakları](../azure-monitor/platform/agent-windows.md)
+-   [Oturum Konakları](../azure-monitor/agents/agent-windows.md)
 -   [Windows sanal masaüstü tanılama günlüğü](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault günlükleri](../key-vault/general/logging.md)
 

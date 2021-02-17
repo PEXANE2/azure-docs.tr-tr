@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323732"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583468"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights Funlarla müşterilerin uygulamanızı nasıl kullandığını öğrenin
 
-Müşteri deneyimini anlamak, işletmeniz için en önemli öneme sahiptir. Uygulamanız birden çok aşama içeriyorsa, çoğu müşterinin işlemin tamamında ilerlediğini veya işlemi bir noktada sonlandırdığını bilmeniz gerekir. Web uygulamasındaki bir dizi adımdan ilerleme, *huni*olarak bilinir. Kullanıcılarınıza Öngörüler elde etmek ve adım adım dönüştürme oranlarını izlemek için Azure Application Insights funnels 'yi kullanabilirsiniz. 
+Müşteri deneyimini anlamak, işletmeniz için en önemli öneme sahiptir. Uygulamanız birden çok aşama içeriyorsa, çoğu müşterinin işlemin tamamında ilerlediğini veya işlemi bir noktada sonlandırdığını bilmeniz gerekir. Web uygulamasındaki bir dizi adımdan ilerleme, *huni* olarak bilinir. Kullanıcılarınıza Öngörüler elde etmek ve adım adım dönüştürme oranlarını izlemek için Azure Application Insights funnels 'yi kullanabilirsiniz. 
 
 ## <a name="create-your-funnel"></a>Huni oluşturma
 Huni oluşturmadan önce yanıtlamak istediğiniz soruya karar verin. Örneğin, giriş sayfasını görüntüleme, müşteri profilini görüntüleme ve bilet oluşturma işlemlerinin kaç Kullanıcı tarafından yapıldığını öğrenmek isteyebilirsiniz. Bu örnekte, Fabrikam Fiber şirketinin sahipleri, başarıyla bir müşteri bileti oluşturan müşterilerin yüzdesini bilmesini istiyor.
@@ -23,7 +23,7 @@ Huni oluşturmadan önce yanıtlamak istediğiniz soruya karar verin. Örneğin,
 Huni oluşturmak için gereken adımlar aşağıda verilmiştir.
 
 1. Application Insights funnels aracında **Yeni**' yi seçin.
-1. **Zaman aralığı** açılan menüsünde **son 90 gün**' yı seçin. **Komik** veya **paylaşılan komik**seçeneklerinden birini belirleyin.
+1. **Zaman aralığı** açılan menüsünde **son 90 gün**' yı seçin. **Komik** veya **paylaşılan komik** seçeneklerinden birini belirleyin.
 1. **Adım 1** aşağı açılan listesinden **Dizin**' i seçin. 
 1. 2. **adım** listesinde **Müşteri**' yi seçin.
 1. 3. **adım** listesinden **Oluştur**' u seçin.
@@ -45,8 +45,8 @@ Aşağıdaki ekran görüntüsünde, funnels aracının oluşturduğu veri tür�
 ## <a name="next-steps"></a>Sonraki adımlar
   * [Kullanıma genel bakış](usage-overview.md)
   * [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
-  * [Bekletme](usage-retention.md)
-  * [Çalışma Kitapları](../platform/workbooks-overview.md)
+  * [Deposuna](usage-retention.md)
+  * [Çalışma Kitapları](../visualize/workbooks-overview.md)
   * [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
   * [Power BI’a aktarma](./export-power-bi.md)
 

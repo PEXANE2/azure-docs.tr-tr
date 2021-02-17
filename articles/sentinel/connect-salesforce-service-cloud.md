@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878927"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570531"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Salesforce hizmeti bulutunuzu Azure Sentinel 'e bağlama
 
@@ -35,7 +35,7 @@ Bu makalede Salesforce hizmeti bulut çözümünüzün Azure Sentinel 'e nasıl 
 
 - Azure Sentinel çalışma alanında okuma ve yazma izninizin olması gerekir.
 
-- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - İşlev Uygulaması oluşturmak için Azure Işlevleri üzerinde okuma ve yazma izinlerine sahip olmanız gerekir. [Azure işlevleri hakkında daha fazla bilgi edinin](../azure-functions/index.yml).
 

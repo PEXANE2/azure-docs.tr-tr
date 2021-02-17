@@ -8,12 +8,12 @@ ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582624"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -79,9 +79,9 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
-|Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Güney Brezilya     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Orta Kanada     |     S8v2, S9v2   |    1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
@@ -101,7 +101,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="europe"></a>Europe
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
@@ -111,11 +111,11 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Doğu Avustralya     |    S8v2, S9v2    |    1     |
-|Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Güneydoğu Avustralya     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |    S8v2, S9v2    |    1     |
 |Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
@@ -238,7 +238,7 @@ Power BI, Excel, Reporting Services ve üçüncü taraf araçlar gibi modern ver
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 
-Azure Analysis Services, Azure Izleyici ölçümleriyle tümleşiktir ve sunucularınızın performansını ve sistem durumunu izlemenize yardımcı olacak çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). [Kaynak platformu günlükleriyle](../azure-monitor/platform/platform-logs-overview.md)ölçümleri kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
+Azure Analysis Services, Azure Izleyici ölçümleriyle tümleşiktir ve sunucularınızın performansını ve sistem durumunu izlemenize yardımcı olacak çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). [Kaynak platformu günlükleriyle](../azure-monitor/essentials/platform-logs-overview.md)ölçümleri kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
 
 Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) kullanmayı destekler. SQL söz dizimine göre DMV’ler, sunucu örneği hakkında meta veri ve izleme bilgileri döndüren şema satır kümeleri ile arabirim oluşturur.
 

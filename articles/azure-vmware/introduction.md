@@ -3,12 +3,12 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 11/11/2020
-ms.openlocfilehash: 57edfc5786dfc95070b66eb9c8e2e038bafdcd35
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579293"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
@@ -48,12 +48,12 @@ Azure VMware çözümü aboneliğinize dağıtıldıktan sonra, [Azure izleyici 
 
 Özel bulutunuzda şunları yapabilirsiniz:
 - Her sanal makinelerinizdeki günlükleri toplayın.
-- Linux ve Windows VM 'lerine [MMA aracısını indirip yükleyin](../azure-monitor/platform/log-analytics-agent.md#installation-options) .
-- [Azure tanılama uzantısını](../azure-monitor/platform/diagnostics-extension-overview.md)etkinleştirin.
-- [Yeni sorgular oluşturun ve çalıştırın](../azure-monitor/platform/data-platform-logs.md#log-queries).
+- Linux ve Windows VM 'lerine [MMA aracısını indirip yükleyin](../azure-monitor/agents/log-analytics-agent.md#installation-options) .
+- [Azure tanılama uzantısını](../azure-monitor/agents/diagnostics-extension-overview.md)etkinleştirin.
+- [Yeni sorgular oluşturun ve çalıştırın](../azure-monitor/logs/data-platform-logs.md#log-queries).
 - Genellikle sanal makinelerinize çalıştırdığınız sorguların aynısını çalıştırın.
 
-Azure VMware çözümünün içindeki izleme desenleri, IaaS platformunda Azure VM 'lerine benzerdir. Daha fazla bilgi ve Nasıl-TOS için bkz. Azure [izleyici Ile Azure VM 'Leri izleme](../azure-monitor/insights/monitor-vm-azure.md).
+Azure VMware çözümünün içindeki izleme desenleri, IaaS platformunda Azure VM 'lerine benzerdir. Daha fazla bilgi ve Nasıl-TOS için bkz. Azure [izleyici Ile Azure VM 'Leri izleme](../azure-monitor/vm/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

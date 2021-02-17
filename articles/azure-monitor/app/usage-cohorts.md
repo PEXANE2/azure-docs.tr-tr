@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583558"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
 
@@ -131,7 +131,7 @@ Cohortalar ve filtreler farklıdır. Birleşik Krallık 'tan (önceki örnekte o
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Analytics sorgu dili](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Analytics sorgu dili](../logs/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Kullanıcılar, oturumlar, olaylar](usage-segmentation.md)
 * [Kullanıcı akışları](usage-flows.md)
 * [Kullanıma genel bakış](usage-overview.md)

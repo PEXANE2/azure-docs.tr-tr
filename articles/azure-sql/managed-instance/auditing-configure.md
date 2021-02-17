@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505674"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575472"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL yönetilen örnek denetimi 'ni kullanmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "94505674"
 
 Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırması açıklanmaktadır.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 2. Denetim günlüklerinin depolandığı bir Azure depolama **kapsayıcısı** oluşturun.
 
    1. Denetim günlüklerinizi depolamak istediğiniz Azure depolama hesabına gidin.
@@ -42,7 +42,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
       > - Depolama hesabınız bir sanal ağın veya güvenlik duvarının arkasındaysa, lütfen bkz. [bir sanal ağ üzerinden erişim verme](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network).
       > - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
 
-   1. Depolama hesabında **Genel Bakış ' a** gidin ve **Bloblar** ' a tıklayın.
+   1. Depolama hesabında **Genel Bakış ' a** gidin ve **Bloblar**' a tıklayın.
 
       ![Azure Blob pencere öğesi](./media/auditing-configure/1_blobs_widget.png)
 
@@ -50,7 +50,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
       ![Blob kapsayıcısı Oluştur simgesi](./media/auditing-configure/2_create_container_button.png)
 
-   1. Bir kapsayıcı **adı** girin, **ortak erişim düzeyini** **özel** olarak ayarlayın ve ardından **Tamam** ' a tıklayın.
+   1. Bir kapsayıcı **adı** girin, **ortak erişim düzeyini** **özel** olarak ayarlayın ve ardından **Tamam**' a tıklayın.
 
       ![Blob kapsayıcı yapılandırması oluştur](./media/auditing-configure/3_create_container_config.png)
 
@@ -61,7 +61,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
    - <a id="blobtsql"></a>**T-SQL kullanarak denetim günlükleri için blob depolamayı yapılandırma:**
 
-     1. Kapsayıcılar listesinde, yeni oluşturulan kapsayıcıya ve ardından **kapsayıcı özellikleri** ' ne tıklayın.
+     1. Kapsayıcılar listesinde, yeni oluşturulan kapsayıcıya ve ardından **kapsayıcı özellikleri**' ne tıklayın.
 
         ![Blob kapsayıcısı Özellikler düğmesi](./media/auditing-configure/4_container_properties_button.png)
 
@@ -79,16 +79,16 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
         - SAS 'yi aşağıdaki gibi yapılandırın:
 
-          - **Izin verilen hizmetler** : blob
+          - **Izin verilen hizmetler**: blob
 
-          - **Başlangıç tarihi** : saat dilimiyle ilgili sorunlardan kaçınmak için, dün tarihini kullanın
+          - **Başlangıç tarihi**: saat dilimiyle ilgili sorunlardan kaçınmak için, dün tarihini kullanın
 
-          - **Bitiş tarihi** : Bu SAS belirtecinin süresinin dolacağı tarihi seçin
+          - **Bitiş tarihi**: Bu SAS belirtecinin süresinin dolacağı tarihi seçin
 
             > [!NOTE]
             > Denetim hatalarından kaçınmak için süre dolduktan sonra belirteci yenileyin.
 
-          - **SAS Oluştur** ’a tıklayın.
+          - **SAS Oluştur**’a tıklayın.
 
             ![SAS yapılandırması](./media/auditing-configure/7_sas_configure.png)
 
@@ -126,7 +126,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
      1. Nesne Gezgini kök dekontunu genişletin.
 
-     1. **Güvenlik** düğümünü genişletin, **denetimler** düğümüne sağ tıklayın ve **Yeni denetim** ' e tıklayın:
+     1. **Güvenlik** düğümünü genişletin, **denetimler** düğümüne sağ tıklayın ve **Yeni denetim**' e tıklayın:
 
         ![Güvenlik ve denetim düğümünü Genişlet](./media/auditing-configure/10_mi_SSMS_new_audit.png)
 
@@ -138,7 +138,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
         ![Azure'da oturum açma](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Açılır listeden bir abonelik, depolama hesabı ve BLOB kapsayıcısı seçin ya da **Oluştur** ' a tıklayarak kendi kapsayıcınızı oluşturun. İşiniz bittiğinde **Tamam** ' a tıklayın:
+     1. Açılır listeden bir abonelik, depolama hesabı ve BLOB kapsayıcısı seçin ya da **Oluştur**' a tıklayarak kendi kapsayıcınızı oluşturun. İşiniz bittiğinde **Tamam**' a tıklayın:
 
         ![Azure aboneliği, depolama hesabı ve BLOB kapsayıcısı seçin](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -169,15 +169,15 @@ Yönetilen bir örnekten gelen denetim günlükleri Azure Event Hubs veya Azure 
 
 1. Yönetilen örneğe [Azure Portal](https://portal.azure.com/) gidin.
 
-2. **Tanılama ayarları** ' na tıklayın.
+2. **Tanılama ayarları**' na tıklayın.
 
-3. **Tanılamayı aç** ' a tıklayın. Tanılama zaten etkinse + bunun yerine **Tanılama ayarı Ekle** görünür.
+3. **Tanılamayı aç**' a tıklayın. Tanılama zaten etkinse + bunun yerine **Tanılama ayarı Ekle** görünür.
 
 4. Günlükler listesinde **SQLSecurityAuditEvents** öğesini seçin.
 
 5. Denetim olayları için bir hedef seçin: Event Hubs, Azure Izleyici günlükleri veya her ikisi. Her bir hedef için yapılandırma gereken parametreleri (ör. Log Analytics çalışma alanı).
 
-6. **Kaydet** ’e tıklayın.
+6. **Kaydet**’e tıklayın.
 
     ![Tanılama ayarlarını yapılandırma](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -223,7 +223,7 @@ Event Hubs denetim günlükleri verilerini kullanmak için, olayları tüketmek 
 
 Denetim günlükleri Azure Izleyici günlüklerine yazılmışsa, denetim verilerinde gelişmiş aramaları çalıştırabileceğiniz Log Analytics çalışma alanında kullanılabilir. Başlangıç noktası olarak Log Analytics çalışma alanına gidin. **Genel** bölümünde **Günlükler** ' e tıklayın ve örneğin: `search "SQLSecurityAuditEvents"` Denetim günlüklerini görüntülemek için basit bir sorgu girin.  
 
-Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../../azure-monitor/log-query/log-query-overview.md).
+Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../../azure-monitor/logs/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -3,12 +3,12 @@ title: Azure Izleyici 'de ölçümler-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Azure Event Hubs izlemek için Azure Izleme 'nin nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a53f69030e8333dfe659b163b83983615212281f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165901"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573154"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure İzleyici'deki Azure Event Hubs ölçümleri
 
@@ -18,9 +18,9 @@ Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmi
 
 ## <a name="access-metrics"></a>Erişim ölçümleri
 
-Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Log Analytics ve Event Hubs gibi çözümleme çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici tarafından toplanan verileri izleme](../azure-monitor/platform/data-platform.md).
+Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Log Analytics ve Event Hubs gibi çözümleme çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici tarafından toplanan verileri izleme](../azure-monitor/data-platform.md).
 
-Ölçümler varsayılan olarak etkinleştirilmiştir ve en son 30 güne kadar verilere erişebilirsiniz. Verileri daha uzun bir süre tutmanız gerekiyorsa, ölçüm verilerini bir Azure depolama hesabına arşivleyebilirsiniz. Bu ayar, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) ' nda yapılandırılabilir.
+Ölçümler varsayılan olarak etkinleştirilmiştir ve en son 30 güne kadar verilere erişebilirsiniz. Verileri daha uzun bir süre tutmanız gerekiyorsa, ölçüm verilerini bir Azure depolama hesabına arşivleyebilirsiniz. Bu ayar, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/essentials/diagnostic-settings.md) ' nda yapılandırılabilir.
 
 
 ## <a name="access-metrics-in-the-portal"></a>Portalda erişim ölçümleri
@@ -47,7 +47,7 @@ Aşağıdaki ölçümler, hizmetinizin sistem durumuna ilişkin bir genel bakı�
 Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrıntı düzeyi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm Event Hubs ölçümleri için desteklenen zaman aralığı 1 dakikadır.
 
 ## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs ölçümleri
-Hizmet tarafından desteklenen ölçümlerin bir listesi için bkz. [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
+Hizmet tarafından desteklenen ölçümlerin bir listesi için bkz. [Azure Event Hubs](../azure-monitor/essentials/metrics-supported.md#microsofteventhubnamespaces)
 
 > [!NOTE]
 > Bir kullanıcı hatası oluştuğunda Azure Event Hubs, **Kullanıcı hataları** ölçümünü güncelleştirir, ancak diğer tanılama bilgilerini günlüğe kaydetmez. Bu nedenle, uygulamalarınızda Kullanıcı hatalarıyla ilgili ayrıntıları yakalamanız gerekir. Ya da, iletiler gönderildiğinde veya Application Insights 'a alındığında oluşturulan Telemetriyi de dönüştürebilirsiniz. Bir örnek için bkz. [Application Insights Ile izleme](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights).
@@ -55,7 +55,7 @@ Hizmet tarafından desteklenen ölçümlerin bir listesi için bkz. [Azure Event
 ## <a name="azure-monitor-integration-with-siem-tools"></a>SıEM araçlarıyla Azure Izleyici tümleştirmesi
 İzleme verilerinizi (etkinlik günlükleri, tanılama günlükleri vb.) Azure Izleyici ile bir olay hub 'ına yönlendirmek, güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla kolayca tümleştirmenize olanak sağlar. Daha fazla bilgi için aşağıdaki makalelere/blog postalarına bakın:
 
-- [Dış bir araçla tüketim için Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [Dış bir araçla tüketim için Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)
 - [Azure Günlük Tümleştirmesi’ne giriş](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [SIEM araçlarıyla tümleştirmek için Azure İzleyici'yi kullanma](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 

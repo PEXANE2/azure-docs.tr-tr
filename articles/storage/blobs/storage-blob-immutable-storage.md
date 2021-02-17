@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979150"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581423"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>İş açısından kritik blob verilerini sabit depolama alanıyla depolama
 
@@ -46,7 +46,7 @@ Sabit depolama aşağıdaki özellikleri destekler:
 
 - **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
 
-- **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure Kaynak günlüklerinin](../../azure-monitor/platform/platform-logs-overview.md) etkinleştirilmesi ve veri düzlemi işlemlerini gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
+- **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure Kaynak günlüklerinin](../../azure-monitor/essentials/platform-logs-overview.md) etkinleştirilmesi ve veri düzlemi işlemlerini gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 

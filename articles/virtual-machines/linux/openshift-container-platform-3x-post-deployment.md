@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a28c47493f0f775c9e489daf3232371a65d4a7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016072"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581455"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
 
@@ -86,7 +86,7 @@ Azure portalında:
 
    ![Uygulama kaydı erişimi](media/openshift-post-deployment/app-registration-access.png)
 
-8. **Bitti**'yi seçin.
+8. **Bitti** seçeneğini belirleyin.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD kimlik doğrulaması için OpenShift yapılandırma
 
@@ -160,7 +160,7 @@ Log Analytics aracısını OpenShift 'e eklemenin üç yolu vardır.
 - Her OpenShift düğümünde Azure Izleyici VM uzantısını etkinleştirin
 - Log Analytics aracısını OpenShift daemon olarak kurma
 
-Daha fazla ayrıntı için tam [yönergeleri](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) okuyun.
+Daha fazla ayrıntı için tam [yönergeleri](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) okuyun.
 
 ## <a name="configure-metrics-and-logging"></a>Ölçümleri ve günlüğü yapılandırma
 

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962953"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582537"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
 
@@ -44,7 +44,7 @@ Boş bir App Service planı oluşturabilir veya uygulama oluşturmanın bir par�
 
 ## <a name="move-an-app-to-another-app-service-plan"></a>Bir uygulamayı başka bir App Service plana taşıma
 
-Kaynak planı ve hedef plan _aynı kaynak grubunda ve coğrafi bölgede_olduğu sürece, bir uygulamayı başka bir App Service planına taşıyabilirsiniz.
+Kaynak planı ve hedef plan _aynı kaynak grubunda ve coğrafi bölgede_ olduğu sürece, bir uygulamayı başka bir App Service planına taşıyabilirsiniz.
 
 > [!NOTE]
 > Azure her yeni App Service planını, dahili olarak web alanı olarak adlandırılan bir dağıtım birimine dağıtır. Her bölgede birçok webspaces bulunabilir, ancak uygulamanız yalnızca aynı Web alanında oluşturulan planlar arasında hareket edebilir. App Service Ortamı yalıtılmış bir web alanı olduğundan, uygulamalar aynı App Service Ortamı planlar arasında taşınabilir, ancak farklı App Service ortamlarında planlar arasında taşınabilirler.
@@ -82,7 +82,7 @@ Uygulamanızın çalıştırıldığı bölge, içinde bulunduğu App Service pl
 
 App Service planının fiyatlandırma katmanını ölçeklendirmek için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md).
 
-Bir uygulamanın örnek sayısını ölçeklendirmek için bkz. [Ölçek örneği sayısı el ile veya otomatik olarak](../azure-monitor/platform/autoscale-get-started.md).
+Bir uygulamanın örnek sayısını ölçeklendirmek için bkz. [Ölçek örneği sayısı el ile veya otomatik olarak](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="delete"></a>
 

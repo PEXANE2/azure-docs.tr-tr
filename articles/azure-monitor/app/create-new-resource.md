@@ -3,12 +3,12 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104595"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575624"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
    | **Kaynak modu** | `Classic` veya `Workspace-based` | Çalışma alanı tabanlı kaynaklar şu anda genel önizlemededir ve Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi sağlar. Daha fazla bilgi için [çalışma alanı tabanlı kaynaklardaki makaleye](create-workspace-resource.md)bakın.
 
 > [!NOTE]
-> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](../log-query/cross-workspace-query.md#identifying-an-application) planlıyorsanız yararlı olabilir.
+> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](../logs/cross-workspace-query.md#identifying-an-application) planlıyorsanız yararlı olabilir.
 
 Gerekli alanlara uygun değerleri girin ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -159,13 +159,13 @@ Bu komutla ilgili tam Azure CLı belgeleri için ve izleme anahtarını alma hak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tanılama Araması](./diagnostic-search.md)
-* [Ölçümleri keşfetme](../platform/metrics-charts.md)
-* [Analytics sorguları yazma](../log-query/log-query-overview.md)
+* [Ölçümleri keşfetme](../essentials/metrics-charts.md)
+* [Analytics sorguları yazma](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

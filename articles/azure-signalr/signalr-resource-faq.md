@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150953"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579307"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
@@ -54,7 +54,7 @@ Azure SignalR hizmeti, ASP.NET Core SignalR 'nin desteklediği üç aktarımı v
 
 Bu ölçümleri [Azure SignalR hizmetindeki iletilerde ve bağlantılarda](signalr-concept-messages-and-connections.md)hesapladığımız ayrıntıları bulabilirsiniz.
 
-Azure SignalR hizmeti kaynaklarının genel bakış bölmesinde, sizin için uygun toplama türünü zaten seçtik. Ölçümler bölmesine giderseniz, toplama türünü [Azure SignalR hizmetindeki mesajlar ve bağlantılar](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) ' a başvuru olarak alabilirsiniz.
+Azure SignalR hizmeti kaynaklarının genel bakış bölmesinde, sizin için uygun toplama türünü zaten seçtik. Ölçümler bölmesine giderseniz, toplama türünü [Azure SignalR hizmetindeki mesajlar ve bağlantılar](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr) ' a başvuru olarak alabilirsiniz.
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>`Default`, `Serverless` Ve `Classic` hizmet modlarının anlamı nedir? Nasıl seçebilirim?
 
@@ -79,7 +79,7 @@ Azure SignalR hizmetini kullanırken, ASP.NET SignalR 'nin bazı API 'Leri ve ö
 - `PersistentConnection`Sınıf desteklenmiyor.
 - *Süresiz çerçeve taşıması* desteklenmez.
 - Azure SignalR hizmeti, istemci çevrimdışıyken istemciye gönderilen iletileri artık yeniden oynamıyor.
-- Azure SignalR hizmetini kullanırken, bir istemci bağlantısının trafiği bağlantı süresince tek bir App Server örneğine her zaman yönlendirilir ( *yapışkan*olarak da adlandırılır).
+- Azure SignalR hizmetini kullanırken, bir istemci bağlantısının trafiği bağlantı süresince tek bir App Server örneğine her zaman yönlendirilir ( *yapışkan* olarak da adlandırılır).
 
 ASP.NET SignalR desteği uyumlulukla odaklanmıştır, bu nedenle ASP.NET Core SignalR 'tan gelen yeni özelliklerin bazıları desteklenmez. Örneğin, *MessagePack* ve *akış* yalnızca ASP.NET Core SignalR uygulamaları için kullanılabilir.
 

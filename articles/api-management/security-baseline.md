@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6f82114874c9e85e44df6684d0b0cf624903a50f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582525"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
@@ -210,9 +210,9 @@ Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetim
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure API Management dağıtımlarınızla ilişkili ağ kaynaklarında yapılan değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -238,7 +238,7 @@ Azure Izleyici 'nin yanı sıra Azure API Management bir veya birkaç Azure Appl
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf güvenlik olayına ve olay yönetimine (SıEM) isteğe bağlı olarak, etkinleştirin ve yerleşik verileri etkinleştirin.
 
-* [Tanılama ayarlarını yapılandırma](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
+* [Tanılama ayarlarını yapılandırma](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -258,7 +258,7 @@ Azure Izleyici 'nin yanı sıra Azure API Management bir veya birkaç Azure Appl
 
 Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve sorun giderme amacıyla önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Tanılama günlükleri, etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynaklarınız üzerinde gerçekleştirilen işlemler hakkında bilgi sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemler hakkında bilgi sağlar.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure API Management için tanılama ayarlarını etkinleştirme](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -278,9 +278,9 @@ Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve soru
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Günlükleri bir Azure depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Günlükleri bir Azure depolama hesabına arşivleme](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -294,9 +294,9 @@ Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve soru
 
 * [Azure API Management için günlükleri izleme ve gözden geçirme](./api-management-howto-use-azure-monitor.md)
 
-* [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+* [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
-* [Log Analytics çalışma alanını anlayın](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics çalışma alanını anlayın](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Azure Application Insights ile tümleştirme](./api-management-howto-app-insights.md)
 
@@ -314,7 +314,7 @@ Beklenmeyen bir şey olduğunda size bilgi vermek için ölçüm uyarıları olu
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure API Management için tanılama ayarlarını etkinleştirme](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -669,7 +669,7 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure işlevleri uygulamalarına ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Izleyici ve Azure etkinlik günlüğü 'Nü Azure 'da kullanma API Management](./api-management-howto-use-azure-monitor.md)
 

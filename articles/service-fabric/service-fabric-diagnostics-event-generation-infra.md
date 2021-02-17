@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9db0df9370197190c11b740f1fd1af3fb69f19c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581413"
 ---
 # <a name="monitoring-the-cluster"></a>Kümeyi izleme
 
@@ -70,7 +70,7 @@ Uygulamanızın sistem durumunu ve performansını gösterebilen herhangi bir bi
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric destek günlükleri
 
-Azure Service Fabric kümeniz hakkında yardım almak için Microsoft desteği 'ne başvurmanız gerekirse, destek günlükleri neredeyse her zaman gereklidir. Kümeniz Azure 'da barındırılıyorsa, destek günlükleri otomatik olarak yapılandırılır ve küme oluşturmanın bir parçası olarak toplanır. Günlükler, kümenizin kaynak grubundaki ayrılmış bir depolama hesabında depolanır. Depolama hesabının sabit bir adı yoktur, ancak hesapta, *yapıyla*başlayan adlara sahip blob kapsayıcıları ve tabloları görürsünüz. Tek başına küme için günlük koleksiyonları ayarlama hakkında daha fazla bilgi için, tek başına bir [Windows kümesi için](service-fabric-cluster-manifest.md) [tek başına Azure Service Fabric kümesi ve yapılandırma ayarlarını oluşturma ve yönetme](service-fabric-cluster-creation-for-windows-server.md) konusuna bakın. Tek başına Service Fabric örnekleri için, günlüklerin yerel bir dosya paylaşımında gönderilmesi gerekir. Bu günlüklere destek için sahip olmanız **gerekir** , ancak Microsoft müşteri destek ekibinin dışındaki herkes tarafından kullanılmaya yönelik değildir.
+Azure Service Fabric kümeniz hakkında yardım almak için Microsoft desteği 'ne başvurmanız gerekirse, destek günlükleri neredeyse her zaman gereklidir. Kümeniz Azure 'da barındırılıyorsa, destek günlükleri otomatik olarak yapılandırılır ve küme oluşturmanın bir parçası olarak toplanır. Günlükler, kümenizin kaynak grubundaki ayrılmış bir depolama hesabında depolanır. Depolama hesabının sabit bir adı yoktur, ancak hesapta, *yapıyla* başlayan adlara sahip blob kapsayıcıları ve tabloları görürsünüz. Tek başına küme için günlük koleksiyonları ayarlama hakkında daha fazla bilgi için, tek başına bir [Windows kümesi için](service-fabric-cluster-manifest.md) [tek başına Azure Service Fabric kümesi ve yapılandırma ayarlarını oluşturma ve yönetme](service-fabric-cluster-creation-for-windows-server.md) konusuna bakın. Tek başına Service Fabric örnekleri için, günlüklerin yerel bir dosya paylaşımında gönderilmesi gerekir. Bu günlüklere destek için sahip olmanız **gerekir** , ancak Microsoft müşteri destek ekibinin dışındaki herkes tarafından kullanılmaya yönelik değildir.
 
 ## <a name="measuring-performance"></a>Performansı ölçme
 
@@ -81,7 +81,7 @@ Service Fabric kullanırken toplanacak performans sayaçlarının listesi için,
 Kümeniz için performans verilerini toplamayı ayarlayabileceğiniz iki ortak yol aşağıda verilmiştir:
 
 * **Aracı kullanma**  
-Bu, aracıların genellikle toplanabilecek olası performans ölçümlerinin bir listesi olduğundan ve toplamak veya değiştirmek istediğiniz ölçümleri belirlemek görece daha kolay bir işlemdir ve bir makineden performansı toplamanın tercih edilen yoludur. Azure izleyici hakkında bilgi edinin Azure izleyici günlüklerini Service Fabric Azure izleyici günlükleri ile [tümleştirerek](service-fabric-diagnostics-event-analysis-oms.md) , küme VM 'leri ve dağıtılan kapsayıcılar için performans verilerini seçebilen bir izleme aracısı olan Log Analytics Aracısı hakkında daha fazla bilgi edinmek için [Log Analytics aracısını ayarlama](../azure-monitor/platform/agent-windows.md) .
+Bu, aracıların genellikle toplanabilecek olası performans ölçümlerinin bir listesi olduğundan ve toplamak veya değiştirmek istediğiniz ölçümleri belirlemek görece daha kolay bir işlemdir ve bir makineden performansı toplamanın tercih edilen yoludur. Azure izleyici hakkında bilgi edinin Azure izleyici günlüklerini Service Fabric Azure izleyici günlükleri ile [tümleştirerek](service-fabric-diagnostics-event-analysis-oms.md) , küme VM 'leri ve dağıtılan kapsayıcılar için performans verilerini seçebilen bir izleme aracısı olan Log Analytics Aracısı hakkında daha fazla bilgi edinmek için [Log Analytics aracısını ayarlama](../azure-monitor/agents/agent-windows.md) .
 
 * **Azure Tablo depolama için performans sayaçları**  
 Ayrıca, performans ölçümlerini aynı tablo depolama alanına olaylarla gönderebilirsiniz. Bunun yapılması, Azure Tanılama yapılandırmasının kümenizdeki VM 'lerden uygun performans sayaçlarını seçmesini ve herhangi bir kapsayıcı dağıtabilmeniz durumunda Docker istatistiklerini seçmesini sağlar. Performans sayacı toplamayı ayarlamak için Service Fabric 'da [WAD 'de performans sayaçlarını](service-fabric-diagnostics-event-aggregation-wad.md) yapılandırma hakkında bilgi edinin.

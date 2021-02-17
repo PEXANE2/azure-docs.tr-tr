@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2130f06e17dd2b5cf8461d4e58342ee41c14f96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002894"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575424"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -37,7 +37,7 @@ Bu olayların verileri bir depolama hesabına, bir Log Analytics çalışma alan
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Tanılama ayarlarını Log Analytics kullanma
 
-Artık, yedekleme için adanmış Log Analytics tablolarına kasa Tanılama verileri göndermek için Azure Backup kullanabilirsiniz. Bu tablolar [kaynağa özgü tablolar](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)olarak adlandırılır.
+Artık, yedekleme için adanmış Log Analytics tablolarına kasa Tanılama verileri göndermek için Azure Backup kullanabilirsiniz. Bu tablolar [kaynağa özgü tablolar](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)olarak adlandırılır.
 
 Kasa tanılama verilerinizi Log Analytics göndermek için:
 
@@ -45,7 +45,7 @@ Kasa tanılama verilerinizi Log Analytics göndermek için:
 1. Tanılama ayarına bir ad verin.
 1. **Log Analytics gönder** onay kutusunu seçin ve bir Log Analytics çalışma alanı seçin.
 1. Geçiş sırasında **kaynak** ' ı seçin ve aşağıdaki altı olayı seçin: **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage** ve **AddonAzureBackupProtectedInstance**.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    ![Kaynağa özgü mod](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 

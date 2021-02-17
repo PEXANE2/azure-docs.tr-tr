@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581546"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile olay Analizi ve görselleştirme
  Azure Izleyici günlükleri, bulutta barındırılan uygulama ve hizmetlerden Telemetriyi toplayıp analiz eder ve kullanılabilirlik ve performansını en üst düzeye çıkarmanıza yardımcı olacak analiz araçları sağlar. Bu makalede, Azure Izleyici günlüklerinde sorguların nasıl çalıştırılacağı özetlenmektedir ve kümenizde neler olduğunu gidermeye yönelik bilgiler verilmektedir. Aşağıdaki sık sorulan sorular giderilmiştir:
@@ -34,7 +34,7 @@ Azure Izleyici günlükleri tarafından veriler alındıktan sonra Azure, çok s
 
 [Azure portalında](https://portal.azure.com), Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin.
 
-Kaynak **Servicefabric \<nameOfOMSWorkspace\> **' i seçin.
+Kaynak **Servicefabric \<nameOfOMSWorkspace\>**' i seçin.
 
 İçinde `Summary` , Service Fabric için bir de dahil olmak üzere her bir çözümün etkin olduğu bir grafik biçiminde kutucuklar görürsünüz. Service Fabric Analytics çözümüne devam etmek için **Service Fabric** grafiğine tıklayın.
 
@@ -55,7 +55,7 @@ Aşağıdaki görüntüde Service Fabric Analytics çözümünün giriş sayfas�
 
 ## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Düğümlerde eylemler dahil Service Fabric olaylarını görüntüleme
 
-Service Fabric Analytics sayfasında, **Service Fabric olaylar**için grafiğe tıklayın.
+Service Fabric Analytics sayfasında, **Service Fabric olaylar** için grafiğe tıklayın.
 
 ![Service Fabric çözümü Işlem kanalı](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
@@ -74,7 +74,7 @@ Sistem hizmeti (görevadı) gibi bir çok daha fazla alanda sorgulama yapabilirs
 
 ## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Güvenilir hizmet ve aktör olaylarını görüntüleme Service Fabric
 
-Service Fabric Analytics sayfasında, **Reliable Services**grafiğine tıklayın.
+Service Fabric Analytics sayfasında, **Reliable Services** grafiğine tıklayın.
 
 ![Service Fabric çözümü Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
@@ -103,7 +103,7 @@ Kusto sorgu dili güçlü. En fazla olayı hangi düğümlerin oluşturduğunu �
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Altyapı izlemeyi etkinleştirmek için (performans sayaçlarını, [Log Analytics aracısını eklemek](service-fabric-diagnostics-oms-agent.md)için üzerine gidin. Aracı, performans sayaçlarını toplar ve bunları mevcut çalışma alanınıza ekler.
-* Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Azure izleyici günlüklerine Internet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md)konusunda daha fazla bilgi edinin.
-* Algılama ve tanılamada yardımcı olması için  [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) yapılandırma.
-* [Günlük araması ve](../azure-monitor/log-query/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama ile familiarized alın.
+* Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Azure izleyici günlüklerine Internet erişimi olmadan bilgisayarları bağlama](../azure-monitor/agents/gateway.md)konusunda daha fazla bilgi edinin.
+* Algılama ve tanılamada yardımcı olması için  [otomatik uyarı](../azure-monitor/alerts/alerts-overview.md) yapılandırma.
+* [Günlük araması ve](../azure-monitor/logs/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama ile familiarized alın.
 * Azure Izleyici günlüklerine ve neler sunduğunu daha ayrıntılı bir şekilde öğrenin, [Azure izleyici günlüklerini okuyun?](../azure-monitor/overview.md).

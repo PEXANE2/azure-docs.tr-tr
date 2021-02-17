@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632055"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570551"
 ---
 # <a name="connect-windows-security-events"></a>Windows güvenlik olaylarını bağlama 
 
@@ -56,7 +56,7 @@ Azure Sentinel 'de Windows Güvenlik olaylarınızı toplamak için:
 
 1. Bağlayıcı sayfasındaki **Önkoşullar** bölümünde açıklandığı gibi uygun izinlere sahip olduğunuzu doğrulayın.
 
-1. Azure Sentinel 'de güvenlik olaylarını akışa almak istediğiniz makinelere [Log Analytics aracısını](../azure-monitor/platform/log-analytics-agent.md) (Microsoft Monitoring Agent veya MMA olarak da bilinir) indirip yükleyin.
+1. Azure Sentinel 'de güvenlik olaylarını akışa almak istediğiniz makinelere [Log Analytics aracısını](../azure-monitor/agents/log-analytics-agent.md) (Microsoft Monitoring Agent veya MMA olarak da bilinir) indirip yükleyin.
 
     Azure sanal makineleri için:
     
@@ -73,9 +73,9 @@ Azure Sentinel 'de Windows Güvenlik olaylarınızı toplamak için:
     >
     > Gerekli internet bağlantısı olmadan Windows sistemlerine, olayları Azure Sentinel 'e akışa almaya devam etmek için, alt sağ taraftaki bağlantıyı kullanarak bir proxy görevi görecek şekilde **OMS ağ geçidini** ayrı bir makineye indirip yükleyin.  Olaylarını toplamak istediğiniz her Windows sistemine de Log Analytics aracısını yüklemeniz gerekir.
     >
-    > Bu senaryo hakkında daha fazla bilgi için [ **Log Analytics ağ geçidi** belgelerine](../azure-monitor/platform/gateway.md)bakın.
+    > Bu senaryo hakkında daha fazla bilgi için [ **Log Analytics ağ geçidi** belgelerine](../azure-monitor/agents/gateway.md)bakın.
 
-    Ek yükleme seçenekleri ve daha fazla ayrıntı için [ **Log Analytics aracı** belgelerine](../azure-monitor/platform/agent-windows.md)bakın.
+    Ek yükleme seçenekleri ve daha fazla ayrıntı için [ **Log Analytics aracı** belgelerine](../azure-monitor/agents/agent-windows.md)bakın.
 
 1. Akışa almak istediğiniz olay kümesini ([Tümü, ortak veya en az](#event-sets)) seçin.
 

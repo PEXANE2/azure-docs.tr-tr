@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: ed03e20f7a1a24d1a38e023b958959fdc6fdc326
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632682"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579347"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları 
 
@@ -29,7 +29,7 @@ Azure NetApp Files [birim çapraz bölge çoğaltma işlevini kullanma](cross-re
 
 * Bölgeler arası çoğaltma özelliği şu anda genel önizlemededir. [Azure NetApp Files çapraz bölge çoğaltma eklenebileceğinizi gönderimi sayfası](https://aka.ms/anfcrrpreviewsignup)aracılığıyla özelliğe erişmek için bir eklenebileceğinizi isteği göndermeniz gerekir. Bölgeler arası çoğaltma özelliğini kullanmadan önce Azure NetApp Files ekibinden bir resmi onay e-postası bekleyin.
 * Azure NetApp Files çoğaltma yalnızca belirli sabit bölge çiftlerinde kullanılabilir. Bkz. [desteklenen bölge çiftleri](cross-region-replication-introduction.md#supported-region-pairs). 
-* SMB birimleri NFS birimleri ile birlikte desteklenir. SMB birimlerinin çoğaltılması, kaynak ve hedef NetApp hesaplarında bir Active Directory bağlantısı gerektirir. Hedef AD bağlantısının DNS sunucularına erişimi olmalıdır veya hedef bölgedeki Temsilcili alt ağdan erişilebilen etki alanı denetleyicileri ekler. Daha fazla bilgi için bkz. [Active Directory bağlantıları gereksinimleri](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* SMB birimleri NFS birimleri ile birlikte desteklenir. SMB birimlerinin çoğaltılması, kaynak ve hedef NetApp hesaplarında bir Active Directory bağlantısı gerektirir. Hedef AD bağlantısının DNS sunucularına erişimi olmalıdır veya hedef bölgedeki Temsilcili alt ağdan erişilebilen etki alanı denetleyicileri ekler. Daha fazla bilgi için bkz. [Active Directory bağlantıları gereksinimleri](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Hedef hesap, kaynak birim bölgesinden farklı bir bölgede olmalıdır. Ayrıca, farklı bir bölgede var olan bir NetApp hesabını da seçebilirsiniz.  
 * Hedef birimi okuma ve yazma için etkinleştirmek üzere [hedef bölgeye yük devretmek](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) için çoğaltma hedefi birimi salt okunurdur. 
 * Azure NetApp Files çoğaltma şu anda birden çok aboneliği desteklemiyor; tüm çoğaltmalar tek bir abonelik altında gerçekleştirilmelidir.

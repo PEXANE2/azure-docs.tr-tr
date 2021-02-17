@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201459"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573075"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Azure Ilkesi güvenlik temeli
 
@@ -31,9 +31,9 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 **Kılavuz**: Azure ilkesi olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerecek şekilde otomatik olarak etkinleştirilen etkinlik günlüklerini kullanır.
 
-* [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
@@ -89,7 +89,7 @@ Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/pri
 
 **Kılavuz**: Azure ilkesinde değişiklik gerçekleşirken uyarı oluşturmak için etkinlik günlükleri Ile Azure izleyici 'yi kullanın.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
