@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742157"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578192"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services Azure Tanılama etkinleştirme (klasik)
 
@@ -25,7 +25,7 @@ Azure Tanılama bir arka plana [Azure tanılama genel bakış](../azure-diagnost
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Çalışan rolünde tanılamayı etkinleştirme
 Bu izlenecek yol, .NET EventSource sınıfını kullanarak telemetri verileri veren bir Azure Worker rolünün nasıl uygulanacağını açıklar. Azure Tanılama telemetri verilerini toplamak ve bir Azure depolama hesabında depolamak için kullanılır. Bir çalışan rolü oluştururken, Visual Studio, .NET 2,4 ve önceki sürümleri için Azure SDK 'larında çözümün parçası olarak tanılama 1,0 ' i otomatik olarak sunar. Aşağıdaki yönergeler, çalışan rolünü oluşturma, çözümünden tanılama 1,0 'yi devre dışı bırakma ve çalışan rolünüzde tanılama 1,2 ya da 1,3 dağıtma sürecini anlatmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu makalede bir Azure aboneliğiniz olduğunu ve Azure SDK ile Visual Studio 'Yu kullandığınızı varsaymaktadır. Azure aboneliğiniz yoksa [ücretsiz deneme sürümüne][Free Trial]kaydolabilirsiniz. [Azure PowerShell sürüm 0.8.7 veya üstünü][Install and configure Azure PowerShell version 0.8.7 or later]yüklediğinizden emin olun.
 
 ### <a name="step-1-create-a-worker-role"></a>1. Adım: çalışan rolü oluşturma
@@ -189,13 +189,13 @@ Visual Studio **Sunucu Gezgini**, WADEX, depolama hesabına gidin. Bulut hizmeti
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Yapılandırma Dosyası Şeması
-Tanılama yapılandırma dosyası, tanılama Aracısı başladığında tanılama yapılandırma ayarlarını başlatmak için kullanılan değerleri tanımlar. Geçerli değerler ve örnekler için [en son şema başvurusuna](../azure-monitor/platform/diagnostics-extension-versions.md) bakın.
+Tanılama yapılandırma dosyası, tanılama Aracısı başladığında tanılama yapılandırma ayarlarını başlatmak için kullanılan değerleri tanımlar. Geçerli değerler ve örnekler için [en son şema başvurusuna](../azure-monitor/agents/diagnostics-extension-versions.md) bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Sorun yaşıyorsanız, genel sorunlar hakkında yardım için bkz. [sorun giderme Azure tanılama](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) .
+Sorun yaşıyorsanız, genel sorunlar hakkında yardım için bkz. [sorun giderme Azure tanılama](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) .
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Topladığınız verileri değiştirmek, sorunları gidermek veya genel olarak tanılama hakkında daha fazla bilgi edinmek için [Ilgili Azure sanal makine tanılama makalelerinin listesini inceleyin](../azure-monitor/platform/diagnostics-extension-overview.md) .
+Topladığınız verileri değiştirmek, sorunları gidermek veya genel olarak tanılama hakkında daha fazla bilgi edinmek için [Ilgili Azure sanal makine tanılama makalelerinin listesini inceleyin](../azure-monitor/agents/diagnostics-extension-overview.md) .
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029289"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594503"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri ile dikey otomatik ölçeklendirme
 
 Bu makalede, Azure [sanal makine ölçek kümelerinin](https://azure.microsoft.com/services/virtual-machine-scale-sets/) yeniden sağlama ile veya yeniden sağlamaya gerek kalmadan dikey olarak ölçeklendirilmesi açıklanmaktadır. 
 
-*Ölçek* genişletme ve *ölçeği azaltma*olarak da bilinen dikey ölçekleme, bir iş yüküne yanıt olarak sanal makine (VM) boyutlarının artırılması veya azaltılması anlamına gelir. Bu davranışı, *Ölçek* genişletme ve *ölçekleme*olarak da adlandırılan [yatay ölçeklendirmeyle](virtual-machine-scale-sets-autoscale-overview.md)karşılaştırın, burada VM sayısı iş yüküne göre değiştirilir.
+*Ölçek* genişletme ve *ölçeği azaltma* olarak da bilinen dikey ölçekleme, bir iş yüküne yanıt olarak sanal makine (VM) boyutlarının artırılması veya azaltılması anlamına gelir. Bu davranışı, *Ölçek* genişletme ve *ölçekleme* olarak da adlandırılan [yatay ölçeklendirmeyle](virtual-machine-scale-sets-autoscale-overview.md)karşılaştırın, burada VM sayısı iş yüküne göre değiştirilir.
 
 Yeniden sağlama, var olan bir sanal makineyi kaldırıp yeni bir VM 'yi değiştirme anlamına gelir. Bir sanal makine ölçek kümesindeki VM 'lerin boyutunu artırdığınızda veya azaltırsanız, bazı durumlarda mevcut VM 'Leri yeniden boyutlandırmak ve verilerinizi sürdürmek istediğinizde, yeni boyuttaki yeni VM 'Leri dağıtmanız gerekir. Bu belge her iki durumu da içerir.
 
@@ -118,7 +118,7 @@ Runbook 'ları içeri aktardıktan sonra, bir sanal makine ölçek kümesinden b
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Sanal makine ölçek kümesine bir uyarı ekleyin
 
-Aşağıda, bir sanal makine ölçek kümesine nasıl uyarı ekleneceğini gösteren bir PowerShell betiği verilmiştir. Uyarının tetikleneceği ölçüm adını almak için aşağıdaki makaleye bakın: [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/platform/autoscale-common-metrics.md).
+Aşağıda, bir sanal makine ölçek kümesine nasıl uyarı ekleneceğini gösteren bir PowerShell betiği verilmiştir. Uyarının tetikleneceği ölçüm adını almak için aşağıdaki makaleye bakın: [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Uyarı oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure Izleyici PowerShell örnekleri](../azure-monitor/samples/powershell-samples.md)
-* [Azure Izleyici platformlar arası CLı örnekleri](../azure-monitor/samples/cli-samples.md)
+* [Azure Izleyici PowerShell örnekleri](../azure-monitor/powershell-samples.md)
+* [Azure Izleyici platformlar arası CLı örnekleri](../azure-monitor/cli-samples.md)
 
 ## <a name="summary"></a>Özet
 

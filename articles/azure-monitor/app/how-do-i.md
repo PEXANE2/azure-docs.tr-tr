@@ -3,12 +3,12 @@ title: Nasıl yaparım?... Azure Application Insights | Microsoft Docs
 description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319261"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584165"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -16,20 +16,20 @@ ms.locfileid: "87319261"
 Bir [kullanılabilirlik Web testi](./monitor-web-app-availability.md)ayarlayın.
 
 ### <a name="email-if-my-site-is-overloaded"></a>Sitemin aşırı yüklenmiş olması durumunda e-posta
-**Sunucu yanıt süresi**üzerinde bir [Uyarı](../platform/alerts-log.md) ayarlayın. 1 ile 2 saniye arasında bir eşik çalışmalıdır.
+**Sunucu yanıt süresi** üzerinde bir [Uyarı](../alerts/alerts-log.md) ayarlayın. 1 ile 2 saniye arasında bir eşik çalışmalıdır.
 
 ![Sunucu yanıt süresi üzerinde bir uyarının nasıl ayarlanacağını gösteren ekran görüntüsü.](./media/how-do-i/030-server.png)
 
-Uygulamanız hata kodları döndürerek zorlamaların işaretlerini de gösterebilir. **Başarısız isteklerde**bir uyarı ayarlayın.
+Uygulamanız hata kodları döndürerek zorlamaların işaretlerini de gösterebilir. **Başarısız isteklerde** bir uyarı ayarlayın.
 
-**Sunucu özel durumları**üzerinde bir uyarı ayarlamak isterseniz, verileri görmek için [bazı ek kurulum](./asp-net-exceptions.md) yapmanız gerekebilir.
+**Sunucu özel durumları** üzerinde bir uyarı ayarlamak isterseniz, verileri görmek için [bazı ek kurulum](./asp-net-exceptions.md) yapmanız gerekebilir.
 
 ### <a name="email-on-exceptions"></a>Özel durumlarla ilgili e-posta
 1. [Özel durum izlemeyi ayarlama](./asp-net-exceptions.md)
-2. Özel durum sayısı ölçümünde [bir uyarı ayarlayın](../platform/alerts-log.md)
+2. Özel durum sayısı ölçümünde [bir uyarı ayarlayın](../alerts/alerts-log.md)
 
 ### <a name="email-on-an-event-in-my-app"></a>Uygulamamda bir olay üzerinde e-posta
-Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım. Application Insights bu özelliği doğrudan sağlamaz, ancak bir [ölçüm bir eşiği aştığında uyarı gönderebilir](../platform/alerts-log.md).
+Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım. Application Insights bu özelliği doğrudan sağlamaz, ancak bir [ölçüm bir eşiği aştığında uyarı gönderebilir](../alerts/alerts-log.md).
 
 Özel etkinliklerde değil, [özel ölçümler](./api-custom-events-metrics.md#trackmetric)üzerinde de uyarı ayarlanabilir. Olay gerçekleştiğinde bir ölçümü artırmak için kod yazın:
 
@@ -51,7 +51,7 @@ Uyarıların iki durumu olduğu için, uyarıyı sonlandırdığınızda düşü
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-Alarmlarınızı görmek için [ölçüm Gezgininde](../platform/metrics-charts.md) bir grafik oluşturun:
+Alarmlarınızı görmek için [ölçüm Gezgininde](../essentials/metrics-charts.md) bir grafik oluşturun:
 
 ![Alarmlarınızı görmek için ölçüm Gezgininde bir grafik oluşturmayı gösteren ekran görüntüsü.](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ Dikkat edilmesi gereken bazı noktalar:
 * E-postalar hem "uyarı" hem de "sağlıklı" olarak gönderildiğinden, tek kararlı olayınızı iki durumlu bir koşul olarak yeniden düşünmek isteyebilirsiniz. Örneğin, bir "iş tamamlandı" olayı yerine bir işin başlangıcında ve sonunda e-posta aldığınız "devam eden iş" koşulu vardır.
 
 ### <a name="set-up-alerts-automatically"></a>Uyarıları otomatik olarak ayarlama
-[PowerShell kullanarak yeni uyarılar oluşturma](../platform/alerts-log.md)
+[PowerShell kullanarak yeni uyarılar oluşturma](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights yönetmek için PowerShell 'i kullanma
 * [Yeni kaynaklar oluşturma](./create-new-resource.md#creating-a-resource-automatically)
-* [Yeni uyarılar oluşturma](../platform/alerts-log.md)
+* [Yeni uyarılar oluşturma](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Farklı sürümlerden telemetri ayırın
 
@@ -88,7 +88,7 @@ Dikkat edilmesi gereken bazı noktalar:
 
 ## <a name="visualize-data"></a>Verileri görselleştirme
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Birden çok uygulama ölçümlerinden oluşan Pano
-* [Ölçüm Gezgini](../platform/metrics-charts.md)' nde, grafiğinizi özelleştirin ve sık kullanılan olarak kaydedin. Azure panosuna sabitleyin.
+* [Ölçüm Gezgini](../essentials/metrics-charts.md)' nde, grafiğinizi özelleştirin ve sık kullanılan olarak kaydedin. Azure panosuna sabitleyin.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Diğer kaynaklardaki ve Application Insights verileri içeren Pano
 * [Telemetriyi Power BI dışa aktarın](./export-power-bi.md).
@@ -165,6 +165,6 @@ Standart toplayıcıları devre dışı bırakabilirsiniz (örneğin, performans
 * **UNIX sunucusu**  -  [Toplanan 'yi yükler](./java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Daha fazla performans sayacı görüntüleme
-* İlk olarak, [Yeni bir grafik ekleyin](../platform/metrics-charts.md) ve sayacın sunduğumuz temel bir küme içinde olup olmadığını görün.
+* İlk olarak, [Yeni bir grafik ekleyin](../essentials/metrics-charts.md) ve sayacın sunduğumuz temel bir küme içinde olup olmadığını görün.
 * Aksi takdirde, [sayacı performans sayacı modülü tarafından toplanan kümesine ekleyin](./performance-counters.md).
 

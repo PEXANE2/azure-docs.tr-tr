@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 82edc70befb7fce95869b238d26c9154ec999c7b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0151e7b3a30cd4b00dba75b7490563923cd5b8ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966845"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580292"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows için Azure Izleyici bağımlılığı sanal makine uzantısı
 
@@ -28,7 +28,7 @@ VM'ler için Azure İzleyici Map özelliği, verileri Microsoft bağımlılık A
 
 ## <a name="operating-system"></a>İşletim sistemi
 
-Windows için Azure VM bağımlılık Aracısı uzantısı, VM'ler için Azure İzleyici dağıtım makalesinin [desteklenen işletim sistemleri](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) bölümünde listelenen desteklenen işletim sistemlerine karşı çalıştırılabilir.
+Windows için Azure VM bağımlılık Aracısı uzantısı, VM'ler için Azure İzleyici dağıtım makalesinin [desteklenen işletim sistemleri](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) bölümünde listelenen desteklenen işletim sistemlerine karşı çalıştırılabilir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 

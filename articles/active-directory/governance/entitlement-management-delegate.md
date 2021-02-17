@@ -16,16 +16,16 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515657"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577845"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
-Varsayılan olarak, genel Yöneticiler ve Kullanıcı yöneticileri Azure AD yetkilendirme yönetiminin tüm yönlerini oluşturabilir ve yönetebilir. Ancak, bu rollerdeki kullanıcılar erişim paketlerinin gerekli olduğu tüm durumları bilmiyor olabilir. Genellikle, ilgili departmanlar, takımlar ya da kim ile birlikte çalıştıkları, hangi kaynakların ve ne kadar süreyle işbirliği yaptığını bilen kullanıcılardır. Yönetici olmayanlar için kısıtlanmamış izinler vermek yerine kullanıcılara, işlerini gerçekleştirmek için ihtiyaç duydukları en düşük izinleri verebilir ve çakışan veya uygunsuz erişim hakları oluşturmaktan kaçınabilirsiniz.
+Varsayılan olarak, genel Yöneticiler ve Kullanıcı yöneticileri Azure AD yetkilendirme yönetiminin tüm yönlerini oluşturabilir ve yönetebilir. Ancak, bu rollerdeki kullanıcılar erişim paketlerinin gerekli olduğu tüm durumları bilmiyor olabilir. Genellikle, ilgili departmanlar, takımlar ya da kimin ile birlikte çalıştığının, hangi kaynakların ve ne kadar süreyle işbirliği yaptığını bilen kullanıcılar içindeki kullanıcılardır. Yönetici olmayanlar için kısıtlanmamış izinler vermek yerine kullanıcılara, işlerini yapmak için ihtiyaç duydukları en düşük izinleri verebilir ve çakışan veya uygunsuz erişim hakları oluşturmaktan kaçınabilirsiniz.
 
 Bu videoda, BT yöneticisinden yönetici olmayan kullanıcılara erişim yönetimi atama hakkında genel bakış sunulmaktadır.
 
@@ -39,7 +39,7 @@ Yetkilendirme yönetiminde erişim yönetimini nasıl temsil edebileceğinizi an
 
 BT Yöneticisi olarak, Hana her bir departmanla ilgili kişiler, örneğin, pazarlama, finans ve ali olarak, departmanın ve iş açısından kritik içeriklerinden sorumlu olan her bir departmanda kişiye aittir.
 
-Yetkilendirme Yönetimi sayesinde, bu yönetici olmayan kullanıcılar için erişim gerektiren kullanıcıları, ne kadar süreyle, ne kadar süreyle erişmesi gerektiğini bilen kişiler olduklarından, bu yönetici olmayanlar için temsilci atayabilirsiniz. Bu, doğru kişilerin departmanlarına yönelik erişimi yönetmesini sağlar.
+Yetkilendirme Yönetimi sayesinde, bu yönetici olmayan kullanıcılar için erişim gerektiren kullanıcıları, ne kadar süreyle, ne kadar süreyle erişmesi gerektiğini bilen kişiler olduklarından, bu yönetici olmayanlar için temsilci atayabilirsiniz. Yönetici olmayanlar için temsilci seçme, doğru kişilerin departmanlarının erişimini yönetmesini sağlar.
 
 Bu, Hana 'nın pazarlama, finans ve hukuk departmanlarına erişim yönetimini temsilciliğini sağlamak için kullanabileceğiniz bir yoldur.
 
@@ -47,15 +47,13 @@ Bu, Hana 'nın pazarlama, finans ve hukuk departmanlarına erişim yönetimini t
 
 1. Hana, bu grubu Katalog oluşturucuları rolüne ekler.
 
-    Mamta, Mark ve ali artık departmanları için kataloglar oluşturabilir, departmanlarının ihtiyaç duyduğu kaynakları ekleyebilirler ve Katalog içinde daha fazla temsilciyi gerçekleştirebilir.
-
-    Mamta, Mark ve ali 'nin her birinin kataloğunu göremediğini unutmayın.
+    Mamta, Mark ve ali artık departmanları için kataloglar oluşturabilir, departmanlarının ihtiyaç duyduğu kaynakları ekleyebilirler ve Katalog içinde daha fazla temsilciyi gerçekleştirebilir. Birbirlerinin kataloglarından bazıları göremez.
 
 1. Mamta, kaynakların kapsayıcısı olan bir **Pazarlama** kataloğu oluşturur.
 
 1. Mamta, pazarlama bölümünün sahip olduğu kaynakları bu kataloğa ekler.
 
-1. Mamta, departmanından Bu Kataloğun Katalog sahipleri olarak ek kişiler ekleyebilir. Bu, katalog yönetimi sorumluluklarını paylaşmanıza yardımcı olur.
+1. Mamta, departmanından diğer kişileri bu katalog için Katalog sahipleri olarak ekleyebilir ve bu da katalog yönetimi sorumluluklarını paylaşmaya yardımcı olur.
 
 1. Mamta, pazarlama kataloğundaki erişim paketlerinin oluşturulması ve yönetimi için pazarlama departmanındaki proje yöneticilerine daha fazla yetki verebilir. Bunu, erişim paketi Yöneticisi rolüne atayarak yapabilir. Erişim paketi Yöneticisi, erişim paketleri oluşturabilir ve yönetebilir. 
 
@@ -78,19 +76,19 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 | Yetkilendirme Yönetimi rolü | Description |
 | --- | --- |
-| Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
-| Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri veya kataloğun sahibi tarafından atanan bir kullanıcı. |
+| Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve daha fazla katalog sahibi ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
+| Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri ya da Katalog sahibinin seçtiği bir kullanıcı. |
 | Paket Yöneticisi 'ne erişim | Bir kataloğun içindeki tüm mevcut erişim paketlerini düzenleyin ve yönetin. |
 | Paket atama Yöneticisi 'ne erişim | Tüm mevcut erişim paketleri atamalarını düzenleyin ve yönetin. |
 
-Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
+Ayrıca, seçilmiş onaylayan ve bir erişim paketinin istek sahibi, rol olmasa da haklara sahip olmalıdır.
 
 | Sağ | Description |
 | --- | --- |
 | Onaylayan | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
 | Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
 
-Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceği görevler listelenmiştir.
+Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin yapa, görevleri listelenmiştir.
 
 | Görev | Yönetici | Katalog Oluşturucu | Katalog sahibi | Paket Yöneticisi 'ne erişim | Paket atama Yöneticisi 'ne erişim |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -118,7 +116,7 @@ Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceğ
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Kataloğa kaynak eklemek için gerekli roller
 
-Genel yönetici, bir katalogda grup (bulut tarafından oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Microsoft 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir. Bir Kullanıcı yöneticisinin, Dizin rolüne atanabilir olarak yapılandırılmış grupları içeren bir katalogdaki erişim paketlerini yönetebileceğini unutmayın.
+Genel yönetici, bir katalogda grup (bulut tarafından oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Microsoft 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir. Bir Kullanıcı yöneticisinin, Dizin rolüne atanabilir olarak yapılandırılmış grupları içeren bir katalogdaki erişim paketlerini yönetebileceğini unutmayın.  Rol atanabilir gruplar hakkında daha fazla bilgi için başvuru [Azure Active Directory bir rol atanabilir grup oluşturun](../roles/groups-create-eligible.md).
 
 Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir kataloğa gruplar, uygulamalar veya SharePoint Online siteleri eklemek üzere, bu kullanıcının hem gerekli Azure AD dizin rolüne hem *de* Katalog sahibi yetkilendirme yönetimi rolüne sahip olması gerekir. Aşağıdaki tabloda, bir kataloğa kaynak eklemek için gereken rol birleşimleri listelenmektedir. Bir katalogdan kaynakları kaldırmak için aynı rollere sahip olmanız gerekir.
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367682"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571353"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows sanal masaüstü için Azure Izleyici sorunlarını giderme (Önizleme)
 
@@ -26,9 +26,9 @@ Yapılandırma çalışma kitabı kurulumu otomatik hale getirmek için düzgün
 
 - Tanılamayı el ile etkinleştirmek veya Log Analytics çalışma alanına erişmek için bkz. [Log Analytics Için Windows sanal masaüstü tanılaması gönderme](diagnostics-log-analytics.md).
 - Log Analytics uzantısını bir konağa el ile yüklemek için, bkz. [Windows için Log Analytics sanal makine uzantısı](../virtual-machines/extensions/oms-windows.md).
-- Yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
-- Performans sayaçlarını eklemek veya kaldırmak için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/platform/data-sources-performance-counters.md).
-- Log Analytics çalışma alanı için olayları yapılandırmak için, bkz. [Log Analytics aracısıyla Windows olay günlüğü veri kaynakları toplama](../azure-monitor/platform/data-sources-windows-events.md).
+- Yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
+- Performans sayaçlarını eklemek veya kaldırmak için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
+- Log Analytics çalışma alanı için olayları yapılandırmak için, bkz. [Log Analytics aracısıyla Windows olay günlüğü veri kaynakları toplama](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Verilerim doğru görüntülenmiyor
 
@@ -44,7 +44,7 @@ Verileriniz doğru görüntülenmiyorsa, yapılandırmanızı, izinlerinizi dene
 
 - Azure Izleyici 'nin portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında giden bağlantı noktalarını açmanız gerekebilir. bkz. [giden bağlantı noktaları](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
 
-- Son etkinlikten veriler görmüyor musunuz? 15 dakika beklemek ve akışı yenilemek isteyebilirsiniz. Azure Izleyici, günlük verilerinin doldurulmasına yönelik 15 dakikalık bir gecikme süresine sahiptir. Daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük verisi alma süresi](../azure-monitor/platform/data-ingestion-time.md).
+- Son etkinlikten veriler görmüyor musunuz? 15 dakika beklemek ve akışı yenilemek isteyebilirsiniz. Azure Izleyici, günlük verilerinin doldurulmasına yönelik 15 dakikalık bir gecikme süresine sahiptir. Daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük verisi alma süresi](../azure-monitor/logs/data-ingestion-time.md).
 
 Herhangi bir bilgi eksik değilse ancak verileriniz doğru şekilde görüntülenmiyorsa, sorguda veya veri kaynaklarında bir sorun olabilir. Bilinen sorunlarınızı ve sınırlamaları gözden geçirin. 
 
@@ -52,7 +52,7 @@ Herhangi bir bilgi eksik değilse ancak verileriniz doğru şekilde görüntüle
 
 Windows sanal masaüstü için Azure Izleyici, Azure Izleyici çalışma kitaplarını kullanır. Çalışma kitapları, Windows sanal masaüstü çalışma kitabı şablonunun bir kopyasını kaydetmenizi ve kendi özelleştirmelerinizi yapmanızı sağlar.
 
-Tasarım yaparak, özel çalışma kitabı şablonları ürün grubundan güncelleştirmeleri otomatik olarak benimsemez. Daha fazla bilgi için bkz. [çalışma kitabı tabanlı Öngörüler sorunlarını giderme](../azure-monitor/insights/troubleshoot-workbooks.md) ve [çalışma kitaplarına genel bakış](../azure-monitor/platform/workbooks-overview.md).
+Tasarım yaparak, özel çalışma kitabı şablonları ürün grubundan güncelleştirmeleri otomatik olarak benimsemez. Daha fazla bilgi için bkz. [çalışma kitabı tabanlı Öngörüler sorunlarını giderme](../azure-monitor/insights/troubleshoot-workbooks.md) ve [çalışma kitaplarına genel bakış](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Verileri yorumlayamıyorum
 

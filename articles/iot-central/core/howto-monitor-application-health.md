@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577056"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Bir IoT Central uygulamasının genel sistem durumunu izleme
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515878"
 
 Bu makalede, IoT Central uygulamanıza bağlı cihazların sistem durumunu değerlendirmek ve çalışan verilerin dışarı aktarımlarının sistem durumunu değerlendirmek için IoT Central tarafından sunulan ölçüm kümesini nasıl kullanacağınızı öğreneceksiniz.
 
-Ölçümler, IoT Central uygulamanız için varsayılan olarak etkindir ve bunlara [Azure Portal](https://portal.azure.com/)erişebilirsiniz. [Azure izleyici veri platformu bu ölçümleri kullanıma sunar](../../azure-monitor/platform/data-platform-metrics.md) ve bunlarla etkileşimde bulunmak için çeşitli yollar sağlar. Örneğin, Azure portal, bir REST API veya PowerShell veya Azure CLı içindeki sorguları kullanabilirsiniz.
+Ölçümler, IoT Central uygulamanız için varsayılan olarak etkindir ve bunlara [Azure Portal](https://portal.azure.com/)erişebilirsiniz. [Azure izleyici veri platformu bu ölçümleri kullanıma sunar](../../azure-monitor/essentials/data-platform-metrics.md) ve bunlarla etkileşimde bulunmak için çeşitli yollar sağlar. Örneğin, Azure portal, bir REST API veya PowerShell veya Azure CLı içindeki sorguları kullanabilirsiniz.
 
 ### <a name="trial-applications"></a>Deneme uygulamaları
 
@@ -46,7 +46,7 @@ Azure portal ölçümlerine erişim, [Azure rol tabanlı erişim denetimi](../..
 
 ## <a name="iot-central-metrics"></a>IoT Central ölçümleri
 
-IoT Central için şu anda kullanılabilen ölçümlerin listesi için bkz. [Azure izleyici Ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
+IoT Central için şu anda kullanılabilen ölçümlerin listesi için bkz. [Azure izleyici Ile desteklenen ölçümler](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Ölçümler ve faturalar
 

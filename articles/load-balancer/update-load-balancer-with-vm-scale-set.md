@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/30/2020
+ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 0c491275f793ce2cd5e830ca6a3014dc45d6d509
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594544"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593041"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri tarafından kullanılan yük dengeleyiciyi güncelleştirme veya silme
 
@@ -83,14 +83,15 @@ az network lb inbound-nat-pool update
 
 ## <a name="delete-inbound-nat-rules"></a>Gelen NAT kurallarını Sil
 
-Bağımsız gelen NAT kuralları silinemez, ancak tüm gelen NAT kuralları kümesini silebilirsiniz.
+Bağımsız gelen NAT kuralları silinemez, ancak gelen NAT havuzunu silerek gelen NAT kuralları kümesinin tamamını silebilirsiniz.
 
-Ölçek kümesi tarafından kullanılan tüm gelen NAT kuralları kümesini silmek için önce ölçek kümesinden NAT havuzunu kaldırın. CLı kullanarak tam bir örnek burada gösterilmiştir:
-    
+NAT havuzunu silmek için önce ölçek kümesinden kaldırın. CLı kullanarak tam bir örnek burada gösterilmiştir:
+
 ```azurecli-interactive
     az vmss update
        --resource-group MyResourceGroup
        --name MyVMSS
+       --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
      az vmss update-instances 
        --instance-ids "*" 
        --resource-group MyResourceGroup

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571604"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -66,7 +66,7 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 
 
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Uygulamam yüksek CPU kullanımı veya yüksek bellek kullanımıyla karşılaşıyor
 
@@ -88,7 +88,7 @@ Daha fazla bilgi için bkz. [Azure yay bulutu Için ölçümler](spring-cloud-co
 
 Tüm örnekler çalışıyor ve çalışıyorsa, uygulama günlüklerinizi sorgulamak ve kod mantığınızı gözden geçirmek için Azure Log Analytics 'ye gidin. Bu, bunlardan herhangi birinin ölçek Bölümlendirmeyi etkileyebileceğini görmenizi sağlayacak. Daha fazla bilgi için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md).
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring uygulamanızı Azure Spring Cloud 'a dağıtmaya yönelik denetim listesi
 
@@ -163,7 +163,7 @@ Mevcut bir yay bulut tabanlı çözümünü Azure 'a geçiriyorsanız, Azure Spr
 
 Ayrıca Azure Log Analytics _hizmet kayıt defteri_ istemci günlüklerine bakabilirsiniz. Daha fazla bilgi için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md)
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Uygulamamın ortam değişkenlerini incelemek istiyorum
 
@@ -223,7 +223,7 @@ Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu 
 </dependency>
 ```
 
-Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](../azure-monitor/learn/quick-create-workspace.md)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
+Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](../azure-monitor/logs/quick-create-workspace.md)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

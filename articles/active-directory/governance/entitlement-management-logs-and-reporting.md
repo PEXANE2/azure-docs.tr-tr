@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746652"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577865"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -59,7 +59,7 @@ Azure AD denetim günlüklerini arşivleme, bir Azure aboneliğinde Azure Izleyi
 
 ## <a name="view-events-for-an-access-package"></a>Erişim paketi için olayları görüntüleme  
 
-Bir erişim paketinin olaylarını görüntülemek için, temel alınan Azure izleyici çalışma alanına erişiminizin olması gerekir (bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) ) ve aşağıdaki rollerden biri: 
+Bir erişim paketinin olaylarını görüntülemek için, temel alınan Azure izleyici çalışma alanına erişiminizin olması gerekir (bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) ) ve aşağıdaki rollerden biri: 
 
 - Genel yönetici  
 - Güvenlik yöneticisi  
@@ -128,7 +128,7 @@ Rol atamasını ayarlamak ve bir sorgu oluşturmak için aşağıdaki adımları
 
     ![Rol ataması ekleyin](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü yükleme
+### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
 Uygun rol atamasını aldıktan sonra PowerShell 'i başlatın ve [Azure PowerShell modülünü](/powershell/azure/install-az-ps?view=azps-3.3.0) (henüz yapmadıysanız), şunu yazarak yükleyebilirsiniz:
 
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar:
-- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/platform/workbooks-overview.md)
+- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/visualize/workbooks-overview.md)

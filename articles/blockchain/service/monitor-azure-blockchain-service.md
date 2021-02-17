@@ -4,12 +4,12 @@ description: Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05147f48c4cde4cc97bf6cc9cae5c8220a389ebd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594924"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
 
@@ -17,20 +17,20 @@ Müşteriler, Azure blok zinciri hizmeti 'nde (ABS) üretim sınıfı blok zinci
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 
-Azure blok zinciri hizmeti, Azure 'da tam bir yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak izleme verileri oluşturur. Bu, Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sağlar. Azure Izleyici hakkında daha fazla bilgi için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md).
+Azure blok zinciri hizmeti, Azure 'da tam bir yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak izleme verileri oluşturur. Bu, Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sağlar. Azure Izleyici hakkında daha fazla bilgi için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/essentials/monitor-azure-resource.md).
  
 
 Aşağıdaki bölümler, Azure blok zinciri hizmetinden toplanan belirli verileri açıklayarak ve veri toplamayı yapılandırmaya ve bu verileri Azure araçları ile çözümlemeye yönelik örnekler sunarak bu makaleyi oluşturur.
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Azure blok zinciri hizmeti 'nden toplanan verileri izleme  
 
-Azure blok zinciri hizmeti, Azure kaynaklarından gelen [verileri izleme](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure blok zinciri hizmeti tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure blok zinciri hizmeti veri başvurusunu izleme](#monitor-azure-blockchain-service-data-reference) .
+Azure blok zinciri hizmeti, Azure kaynaklarından gelen [verileri izleme](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure blok zinciri hizmeti tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure blok zinciri hizmeti veri başvurusunu izleme](#monitor-azure-blockchain-service-data-reference) .
 
 Her Azure blok zinciri hizmeti üye kaynağı için Azure portal genel bakış sayfası, işlenen istekler ve işlenen bloklar dahil olmak üzere işlemlerin kısa bir görünümünü içerir. Bu verilerden bazıları otomatik olarak toplanır ve Azure blok zinciri hizmeti üye kaynağını oluşturduktan sonra ek yapılandırma ile ek veri toplamayı etkinleştirebilmeniz durumunda analiz için kullanılabilir.
 
 ## <a name="diagnostic-settings"></a>Tanılama ayarları  
 
-Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md) konusuna bakın.
+Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../../azure-monitor/essentials/diagnostic-settings.md) konusuna bakın.
 
 Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Azure blok zinciri hizmeti kategorileri aşağıda listelenmiştir.
 
@@ -42,13 +42,13 @@ Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanaca
 
 ## <a name="analyze-metric-data"></a>Ölçüm verilerini çözümleme  
 
-Azure blok zinciri hizmeti için ölçümleri Ölçüm Gezgini ile analiz edebilir, ABS kaynak dikey penceresinde Izleme bölümü altında ölçümler sekmesine gidebilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Azure blok zinciri hizmeti 'nin tüm ölçümleri, Azure blok zinciri hizmeti standart ölçümleri ad alanıdır.
+Azure blok zinciri hizmeti için ölçümleri Ölçüm Gezgini ile analiz edebilir, ABS kaynak dikey penceresinde Izleme bölümü altında ölçümler sekmesine gidebilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../../azure-monitor/essentials/metrics-getting-started.md) kullanmaya başlama. Azure blok zinciri hizmeti 'nin tüm ölçümleri, Azure blok zinciri hizmeti standart ölçümleri ad alanıdır.
 
 Bir filtre eklerken veya ölçümleri bölerek **düğüm** boyutunu kullanarak, temel olarak işlem düğümleri başına ölçüm DEĞERLERI ve ABS üyesinin Doğrulayıcı düğümlerini sağlar.
 
 ## <a name="analyze-log-data"></a>Günlük verilerini analiz etme
 
-Azure blok zinciri hizmeti üyelerinizi izlemenize yardımcı olması için günlük araması çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../../azure-monitor/log-query/log-query-overview.md)çalışır.
+Azure blok zinciri hizmeti üyelerinizi izlemenize yardımcı olması için günlük araması çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../../azure-monitor/logs/log-query-overview.md)çalışır.
 
 Blok zinciri uygulama günlüklerinde hata koşullarını sorgulamak için aşağıdaki sorguyu kullanın:
 
@@ -74,14 +74,14 @@ Bu makalede, Azure blok zinciri hizmeti 'nin performansını ve kullanılabilirl
 
 ### <a name="resource-logs"></a>Kaynak günlükleri
 
-Tüm kaynak günlükleri, blok zinciri hizmetine özgü birkaç benzersiz özellik ile en üst düzey ortak bir şemayı paylaşır. [En üst düzey kaynak günlükleri şeması](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)makalesine başvurabilirsiniz, Azure blok zinciri hizmetine özgü özelliklerin ayrıntılarına aşağıda kapsanacak  
+Tüm kaynak günlükleri, blok zinciri hizmetine özgü birkaç benzersiz özellik ile en üst düzey ortak bir şemayı paylaşır. [En üst düzey kaynak günlükleri şeması](../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)makalesine başvurabilirsiniz, Azure blok zinciri hizmetine özgü özelliklerin ayrıntılarına aşağıda kapsanacak  
 
 Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure blok zinciri ara sunucu günlüklerinin özellikleri listelenmektedir.  
 
 
-| Özellik adı  | Açıklama |
+| Özellik adı  | Description |
 |:---|:---|
-| saat | İşlem gerçekleştiği tarih ve saat (UTC). |
+| time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.  |
 | category  |Azure blok zinciri hizmeti için, olası değerler **proxylogs** ve **applicationlogs**' lardır. |
 | operationName  | Bu olayla temsil edilen işlemin adı.   |
@@ -105,9 +105,9 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri listelenmektedir.
 
 
-| Özellik adı  | Açıklama |
+| Özellik adı  | Description |
 |:---|:---|
-| saat | İşlem gerçekleştiği tarih ve saat (UTC). |
+| time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.|
 | category  |Azure blok zinciri hizmeti için, mümkün olan değer **proxylogs** ve **applicationlogs**' lardır.  |
 | operationName  | Bu olayla temsil edilen işlemin adı.   |
@@ -116,7 +116,7 @@ Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri l
 | BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
 | BlockchainMessage    | Bu alan, veri düz günlükleri olan blok zinciri uygulama günlüğünü içerecektir. ABS-Quorum için, bu çekirdek günlüklerine sahip olur. Bu, bilgi, hata, uyarı ve yürütülen eylem hakkında daha fazla bilgi veren bir dize olan günlük girdisi türü hakkında bilgi içerir.   |
 | Değerine    | Azure blok zinciri hizmeti 'nin bölgeye özgü kiracısı. Bu alanın biçimi https://westlake-rp-prod . <region> . cloudapp.azure.com WHERE bölgesi, dağıtılan üyenin Azure bölgesini belirtir.       |
-| SourceSystem   | Bu durumda **Azure**olan Günlükler, sistem tarafından doldurulur.    |
+| SourceSystem   | Bu durumda **Azure** olan Günlükler, sistem tarafından doldurulur.    |
 
 
 
@@ -124,31 +124,31 @@ Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri l
 
 Aşağıdaki tablolarda, Azure blok zinciri hizmeti için toplanan platform ölçümleri listelenmektedir. Tüm ölçümler, **Azure blok zinciri hizmeti** standart ölçümleri ad alanında depolanır.
 
-Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hizmeti dahil) listesi için bkz. [Azure izleyici desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md).
+Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hizmeti dahil) listesi için bkz. [Azure izleyici desteklenen ölçümler](../../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="blockchain-metrics"></a>Blok zinciri ölçümleri
 
 Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blok zinciri ölçümlerinin listesini belirtir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Description   |
 |---|---|---|---|
-| Bekleyen Işlemler   | Sayı  |  Ortalama | Mined bekleniyor işlem sayısı.   |
-| İşlenen bloklar   | Sayı  | Sum  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
-|İşlenen Işlemler    | Sayı  | Sum  | Bir blokta işlenen işlem sayısı.    |
-|Kuyruğa alınmış Işlemler    |  Sayı | Ortalama  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
+| Bekleyen Işlemler   | Count  |  Ortalama | Mined bekleniyor işlem sayısı.   |
+| İşlenen bloklar   | Count  | Sum  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
+|İşlenen Işlemler    | Count  | Sum  | Bir blokta işlenen işlem sayısı.    |
+|Kuyruğa alınmış Işlemler    |  Count | Ortalama  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
 
 ### <a name="connection-metrics"></a>Bağlantı ölçümleri  
 
 Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenmektedir. Bunlar NGıNX ara sunucu ölçümleridir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama |
+| Ölçüm adı | Birim  |  Toplama türü| Description |
 |---|---|---|---|
-| Kabul edilen bağlantılar   | Sayı  |  Sum | Kabul edilen istemci bağlantılarının toplam sayısı.   |
-| Etkin Bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
-|İşlenmiş bağlantılar    | Sayı  | Sum  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
-|İşlenmiş Istekler     |  Sayı | Sum  | İstemci isteklerinin toplam sayısı.  |
+| Kabul edilen bağlantılar   | Count  |  Sum | Kabul edilen istemci bağlantılarının toplam sayısı.   |
+| Etkin Bağlantılar  | Count  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
+|İşlenmiş bağlantılar    | Count  | Sum  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
+|İşlenmiş Istekler     |  Count | Sum  | İstemci isteklerinin toplam sayısı.  |
 
 
 ### <a name="performance-metrics"></a>Performans Ölçümleri
@@ -156,9 +156,9 @@ Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan f
 Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri için toplanan performans ölçümleri listelenmektedir.  
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Description   |
 |---|---|---|---|
-| CPU kullanım yüzdesi   | Yüzde  |  Max | CPU kullanımının yüzdesi.     |
+| CPU kullanım yüzdesi   | Yüzde  |  En yüksek değer | CPU kullanımının yüzdesi.     |
 | GÇ okuma baytları   | KB   | Sum  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
 |GÇ Yazma baytları     | KB   | Sum  | GÇ toplamı blok zinciri üye kaynağının tüm düğümlerinde baytları yazar.     |
 |Bellek sınırı       |  Gigab   | Ortalama    | Düğüm başına blok zinciri işlemi için kullanılabilir maksimum bellek. |

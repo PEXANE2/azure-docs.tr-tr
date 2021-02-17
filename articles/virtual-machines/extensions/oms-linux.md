@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 202cdc341ce31c2347552e6fbc430c679ef28d7f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202190"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580087"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux için Log Analytics sanal makine uzantısı
 
@@ -37,7 +37,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme, 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Desteklenen Linux dağıtımları hakkında daha fazla bilgi için [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) makalesine bakın.
+Desteklenen Linux dağıtımları hakkında daha fazla bilgi için [Azure izleyici aracılarına genel bakış](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) makalesine bakın.
 
 ### <a name="agent-and-vm-extension-version"></a>Aracı ve VM Uzantısı sürümü
 Aşağıdaki tabloda, her sürüm için Log Analytics VM uzantısının ve Log Analytics Aracı paketinin sürümünün bir eşlemesi verilmiştir. Log Analytics aracı paketi sürümü için sürüm notlarına bir bağlantı dahildir. Sürüm notları, hata düzeltmeleriyle ilgili ayrıntıları ve belirli bir aracı sürümü için kullanılabilen yeni özellikleri içerir.  
@@ -76,7 +76,7 @@ Linux için Log Analytics Aracısı uzantısı, hedef sanal makinenin Internet '
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uzantı, hedef Log Analytics çalışma alanından çalışma alanı KIMLIĞI ve çalışma alanı anahtarı gerektirir; Bu değerler, Azure portal [Log Analytics çalışma alanınızda bulunabilir](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . Çalışma alanı anahtarı gizli veriler olarak değerlendirilmelidir, bu, korumalı bir ayar yapılandırmasında depolanmalıdır. Azure VM Uzantısı korumalı ayar verileri şifrelenir ve yalnızca hedef sanal makinede şifresi çözülür. Çalışma alanı **kimliği** ve **workspaceKey** büyük/küçük harfe duyarlı olduğunu unutmayın.
+Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uzantı, hedef Log Analytics çalışma alanından çalışma alanı KIMLIĞI ve çalışma alanı anahtarı gerektirir; Bu değerler, Azure portal [Log Analytics çalışma alanınızda bulunabilir](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . Çalışma alanı anahtarı gizli veriler olarak değerlendirilmelidir, bu, korumalı bir ayar yapılandırmasında depolanmalıdır. Azure VM Uzantısı korumalı ayar verileri şifrelenir ve yalnızca hedef sanal makinede şifresi çözülür. Çalışma alanı **kimliği** ve **workspaceKey** büyük/küçük harfe duyarlı olduğunu unutmayın.
 
 ```json
 {
@@ -221,7 +221,7 @@ Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 | 53 | Bu uzantı eksik veya yanlış yapılandırma parametreleri nedeniyle başarısız oldu | Sorun hakkında daha fazla bilgi için çıktıyı ve günlükleri kontrol edin. Ayrıca, çalışma alanı KIMLIĞININ doğruluğunu denetleyin ve makinenin internet 'e bağlı olduğunu doğrulayın. |
 | 55 | Azure Izleyici hizmetine bağlanılamıyor veya gerekli paketler eksik veya dpkg Paket Yöneticisi kilitli| Sistemin internet erişimi olup olmadığını ya da geçerli bir HTTP proxy 'si sağlandığını denetleyin. Ayrıca, çalışma alanı KIMLIĞININ doğruluğunu denetleyin ve kıvrımlı ve bataklık yardımcı programlarının yüklü olduğunu doğrulayın. |
 
-Ek sorun giderme bilgileri [için Log Analytics-Agent-for-Linux sorun giderme kılavuzunda](../../azure-monitor/platform/vmext-troubleshoot.md)bulabilirsiniz.
+Ek sorun giderme bilgileri [için Log Analytics-Agent-for-Linux sorun giderme kılavuzunda](../../azure-monitor/visualize/vmext-troubleshoot.md)bulabilirsiniz.
 
 ### <a name="support"></a>Destek
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739845"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585501"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Azure bulut hizmetiniz (klasik) için performans sayaçlarını toplayın
 
@@ -124,7 +124,7 @@ Cloud Services için Azure Tanılama uzantısı, hangi performans sayaçlarını
 
 Toplamak istediğiniz performans sayaçları, **Diagnostics. wadcfgx** dosyasında tanımlanmıştır. Visual Studio 'da bu dosyayı açın (rol başına tanımlanmıştır) ve **diagnosticsconfiguration**  >  **publicconfig**  >  **wadcfg**  >  **diagnosticmonitorconfiguration**  >  **PerformanceCounters** öğesini bulun. Alt öğe olarak yeni bir **PerformanceCounterConfiguration** öğesi ekleyin. Bu öğenin iki özniteliği vardır: `counterSpecifier` ve `sampleRate` . `counterSpecifier`Özniteliği, hangi sistem performans sayacı kümesinin (önceki bölümde ana hatlarıyla açıklanmıştır) toplanacağını tanımlar. `sampleRate`Değer, bu değerin ne sıklıkta sorgulandığını gösterir. Bir bütün olarak, tüm performans sayaçları üst `PerformanceCounters` öğenin öznitelik değerine göre Azure 'a aktarılır `scheduledTransferPeriod` .
 
-Şema öğesi hakkında daha fazla bilgi için `PerformanceCounters` bkz. [Azure tanılama şeması](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
+Şema öğesi hakkında daha fazla bilgi için `PerformanceCounters` bkz. [Azure tanılama şeması](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 Özniteliği tarafından tanımlanan süre, `sampleRate` performans sayacının ne sıklıkta sorgulandığını göstermek IÇIN XML Duration veri türünü kullanır. Aşağıdaki örnekte, oran olarak ayarlanır `PT3M` , yani `[P]eriod[T]ime[3][M]inutes` her üç dakikada bir.
 
@@ -294,4 +294,4 @@ Daha önce belirtildiği gibi, toplamak istediğiniz performans sayaçları **Di
 - [Azure Cloud Services için Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights 'de sistem performans sayaçları](../azure-monitor/app/performance-counters.md)
 - [Sayaç yolu belirtme](/windows/win32/perfctrs/specifying-a-counter-path)
-- [Azure Tanılama şeması-performans sayaçları](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+- [Azure Tanılama şeması-performans sayaçları](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

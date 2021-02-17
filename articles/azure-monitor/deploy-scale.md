@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993256"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573612"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
 Bazı Azure Izleyici özellikleri bir kez veya sınırlı sayıda yapılandırıldığında, izlemek istediğiniz her kaynak için diğerlerinin tekrarlanması gerekir. Bu makalede, izlemenin tüm Azure kaynaklarınız için tutarlı ve doğru şekilde yapılandırıldığından emin olmak üzere Azure Izleyici 'yi ölçekli olarak uygulamak için Azure Ilkesi kullanma yöntemleri açıklanmaktadır.
@@ -33,19 +33,19 @@ Azure Ilkesi, aşağıdaki tablodaki nesnelerden oluşur. Her birinin daha ayrı
 | Atama | Bir ilke tanımı veya girişimi bir kapsama atanıncaya kadar etkili olmaz. Örneğin, bu kaynakta oluşturulan tüm kaynaklara uygulamak için bir kaynak grubuna ilke atayın veya bu aboneliği Bu abonelikteki tüm kaynaklara uygulamak için bir aboneliğe uygulayın.  Daha ayrıntılı bilgi için bkz. [Azure ilke atama yapısı](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Izleyici için yerleşik ilke tanımları
-Azure Ilkesi, Azure Izleyici ile ilgili olarak önceden oluşturulmuş çeşitli tanımlar içerir. Bu ilke tanımlarını mevcut aboneliğinize atayabilir veya kendi özel tanımlarınızı oluşturmak için temel olarak kullanabilirsiniz. **İzleme** kategorisindeki yerleşik politiklerin tam bir listesi için bkz. Azure [ilkesi yerleşik Ilke tanımları Azure izleyici](./samples/policy-reference.md).
+Azure Ilkesi, Azure Izleyici ile ilgili olarak önceden oluşturulmuş çeşitli tanımlar içerir. Bu ilke tanımlarını mevcut aboneliğinize atayabilir veya kendi özel tanımlarınızı oluşturmak için temel olarak kullanabilirsiniz. **İzleme** kategorisindeki yerleşik politiklerin tam bir listesi için bkz. Azure [ilkesi yerleşik Ilke tanımları Azure izleyici](.//policy-reference.md).
 
 İzleme ile ilgili yerleşik ilke tanımlarını görüntülemek için aşağıdakileri yapın:
 
 1. Azure portal **Azure ilkesi** ' ne gidin.
 2. **Tanımlar**' ı seçin.
-3. **Tür**için *yerleşik* ' i seçin ve **Kategori**için *izleme*' yi seçin.
+3. **Tür** için *yerleşik* ' i seçin ve **Kategori** için *izleme*' yi seçin.
 
   ![Izleme kategorisi ve yerleşik tür için ilke tanımlarının bir listesini gösteren Azure portal içindeki Azure Ilke tanımları sayfasının ekran görüntüsü.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Tanılama ayarları
-[Tanılama ayarları](platform/diagnostic-settings.md) , Azure kaynaklarından gelen kaynak günlüklerini ve ölçümleri, genellikle [günlük sorguları](log-query/log-query-overview.md) ve [günlük uyarıları](platform/alerts-log.md)ile verileri analiz etmenize olanak tanıyan bir Log Analytics çalışma alanına kadar birden fazla konuma toplar. Her kaynak oluşturduğunuzda otomatik olarak bir tanılama ayarı oluşturmak için Ilkeyi kullanın.
+[Tanılama ayarları](essentials/diagnostic-settings.md) , Azure kaynaklarından gelen kaynak günlüklerini ve ölçümleri, genellikle [günlük sorguları](logs/log-query-overview.md) ve [günlük uyarıları](alerts/alerts-log.md)ile verileri analiz etmenize olanak tanıyan bir Log Analytics çalışma alanına kadar birden fazla konuma toplar. Her kaynak oluşturduğunuzda otomatik olarak bir tanılama ayarı oluşturmak için Ilkeyi kullanın.
 
 Her Azure Kaynak türünün, tanılama ayarında listelenmesi gereken benzersiz bir kategori kümesi vardır. Bu nedenle, her kaynak türü ayrı bir ilke tanımı gerektirir. Bazı kaynak türlerinde, değişiklik yapmadan atayabileceğiniz yerleşik ilke tanımları vardır. Diğer kaynak türleri için özel bir tanım oluşturmanız gerekir.
 
@@ -122,7 +122,7 @@ Girişim, oluşturulduğu gibi her bir sanal makine için de geçerlidir. Bir [D
 
 
 ## <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
-[VM'ler için Azure izleyici](insights/vminsights-overview.md) , sanal makineleri Izlemek Için Azure izleyici 'deki birincil araçtır. VM'ler için Azure İzleyici etkinleştirildiğinde hem Log Analytics Aracısı hem de bağımlılık Aracısı yüklenir. Bu görevleri el ile gerçekleştirmek yerine, her bir sanal makinenin oluşturduğunuz şekilde yapılandırıldığından emin olmak için Azure Ilkesini kullanın.
+[VM'ler için Azure izleyici](vm/vminsights-overview.md) , sanal makineleri Izlemek Için Azure izleyici 'deki birincil araçtır. VM'ler için Azure İzleyici etkinleştirildiğinde hem Log Analytics Aracısı hem de bağımlılık Aracısı yüklenir. Bu görevleri el ile gerçekleştirmek yerine, her bir sanal makinenin oluşturduğunuz şekilde yapılandırıldığından emin olmak için Azure Ilkesini kullanın.
 
 > [!NOTE]
 > VM'ler için Azure İzleyici, ortamınızda uyumsuz VM 'Leri keşfetmenize ve düzeltmenizi sağlayan **VM'ler için Azure izleyici Ilke kapsamı** adlı bir özellik içerir. Bu özelliği, Azure sanal makineleri için Azure Ilkesiyle ve Azure Arc ile bağlantılı karma sanal makinelerde doğrudan çalışmak yerine kullanabilirsiniz. Azure sanal makine ölçek kümeleri için, atamayı Azure Ilkesi kullanarak oluşturmanız gerekir.
@@ -139,7 +139,7 @@ VM'ler için Azure İzleyici, tam izlemeyi etkinleştirmek için her iki aracıy
 ### <a name="virtual-machines"></a>Sanal makineler
 VM'ler için Azure İzleyici, Azure Ilke arabirimini kullanarak bu girişimler için Atamalar oluşturmak yerine, her kapsamdaki sanal makine sayısını incelemenizi sağlayan bir özellik içerir ve bu da girişim uygulanıp uygulanmadığı belirlenir. Daha sonra çalışma alanını yapılandırabilir ve bu arabirimi kullanarak gerekli atamaları oluşturabilirsiniz.
 
-Bu işlemin ayrıntıları için bkz. [Azure ilkesi kullanarak VM'ler için Azure izleyici etkinleştirme](./insights/vminsights-enable-policy.md).
+Bu işlemin ayrıntıları için bkz. [Azure ilkesi kullanarak VM'ler için Azure izleyici etkinleştirme](./vm/vminsights-enable-policy.md).
 
 ![VM'ler için Azure İzleyici ilkesi](media/deploy-scale/vminsights-policy.png)
 
@@ -148,7 +148,7 @@ Sanal Makine Ölçek Kümeleri için izlemeyi etkinleştirmek üzere Azure Ilkes
 
 ![Azure portal girişim atama sayfasının ekran görüntüsü. Girişim tanımı, sanal makine ölçek kümeleri için Azure Izleyicisini etkinleştirmek üzere ayarlanır.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Verilerin gönderileceği çalışma alanını seçin. Bu çalışma alanı, bölümünde açıklandığı gibi, *Vminsıghts* çözümünün yüklü olması gerekir []() .
+Verilerin gönderileceği çalışma alanını seçin. Bu çalışma alanı, [VM'ler için Azure izleyici Için yapılandırma Log Analytics çalışma](vm/vminsights-configure-workspace.md)alanında açıklandığı şekilde, *Vminsıghts* çözümünün yüklü olması gerekir.
 
 ![Çalışma alanını seçme](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -181,4 +181,4 @@ Log Analytics aracısını yüklemek istediğiniz ancak bağımlılık aracısı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilkesi](../governance/policy/overview.md)hakkında daha fazla bilgi edinin.
-- [Tanılama ayarları](platform/diagnostic-settings.md)hakkında daha fazla bilgi edinin.
+- [Tanılama ayarları](essentials/diagnostic-settings.md)hakkında daha fazla bilgi edinin.

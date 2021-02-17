@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234010"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574787"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -292,7 +292,7 @@ App Service yüklenen Microsoft .NET sürümünü bulmanın en hızlı yolu, kud
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Otomatik ölçeklendirme beklenen şekilde çalışmıyor mu?
 
-Azure otomatik ölçeklendirme, Web uygulaması örneğinin içinde ölçeklendirilmemiş veya ölçeklendirildiği şekilde ölçeklendirmemişse, "Flama" nedeniyle sonsuz bir döngüden kaçınmak üzere kasıtlı olarak ölçeklendirmemek üzere seçtiğimiz bir senaryoya çalışıyor olabilirsiniz. Bu genellikle, ölçek genişletme ve ölçek genişletme eşikleri arasında yeterli bir kenar boşluğu olmadığında gerçekleşir. "Flatma" ve diğer otomatik ölçeklendirme en iyi uygulamaları hakkında bilgi edinmek için bkz. [Otomatik ölçeklendirme en iyi yöntemleri](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Azure otomatik ölçeklendirme, Web uygulaması örneğinin içinde ölçeklendirilmemiş veya ölçeklendirildiği şekilde ölçeklendirmemişse, "Flama" nedeniyle sonsuz bir döngüden kaçınmak üzere kasıtlı olarak ölçeklendirmemek üzere seçtiğimiz bir senaryoya çalışıyor olabilirsiniz. Bu genellikle, ölçek genişletme ve ölçek genişletme eşikleri arasında yeterli bir kenar boşluğu olmadığında gerçekleşir. "Flatma" ve diğer otomatik ölçeklendirme en iyi uygulamaları hakkında bilgi edinmek için bkz. [Otomatik ölçeklendirme en iyi yöntemleri](../azure-monitor/autoscale/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Otomatik ölçeklendirme neden bazen kısmen ölçeklenmelidir?
 

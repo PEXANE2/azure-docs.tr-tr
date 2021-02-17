@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4716679de08bbae137e42f91db5b6f93c0c96e22
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093974"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593369"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure SignalR hizmeti için Azure Güvenlik temeli
 
@@ -481,9 +481,9 @@ Ancak, Azure SignalR hizmeti, müşteri erişimi için işlediği ağ trafiğini
 
 Azure SignalR hizmeti için Azure Kaynak günlüklerini etkinleştirin. Kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek için Azure Güvenlik Merkezi 'ni ve Azure Ilkesi 'ni kullanabilirsiniz. Bu Günlükler, daha sonra güvenlik olaylarını araştırmak ve bu uygulamaların gerçekleştirilmesi için kritik öneme sahip olabilir.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure SignalR hizmeti için kaynak günlükleri](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Ayrıca, verileri Azure Sentinel 'e veya bir üçüncü taraf güvenlik bilgiler
 
 Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 

@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5de795811923c965a1473f8d91e3fd654aeef266
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309922"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574542"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun
 
-[Azure izleyici günlüklerinden](../azure-monitor/log-query/log-query-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](/azure/data-explorer/kusto/query/)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/).
+[Azure izleyici günlüklerinden](../azure-monitor/logs/log-query-overview.md) sonuçları üreten temel sorguları görüntüleyebilir ve belirli ölçütleriniz temelinde sonuçları filtreleyen sorgular oluşturabilirsiniz. Örneğin, belirli bir değişim denetim numarasına göre iletileri bulabilirsiniz. Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](/azure/data-explorer/kusto/query/)kullanır. Daha fazla bilgi için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
+* Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/logs/quick-create-workspace.md)öğrenin.
 
 * Azure Izleyici günlüğe kaydetme ile ayarlanan ve bu bilgileri bir Log Analytics çalışma alanına Gönderen bir mantıksal uygulama. [Mantıksal uygulamanız Için Azure izleyici günlüklerini ayarlamayı](../logic-apps/monitor-logic-apps.md)öğrenin.
 
@@ -45,15 +45,15 @@ ms.locfileid: "92309922"
 
 ## <a name="create-your-own-query"></a>Kendi sorgunuzu oluşturun
 
-Belirli özellikleri veya değerleri temel alarak sonuçları bulmak veya filtrelemek için, boş bir sorgudan başlatarak veya var olan bir sorguyu kullanarak kendi sorgunuzu oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md).
+Belirli özellikleri veya değerleri temel alarak sonuçları bulmak veya filtrelemek için, boş bir sorgudan başlatarak veya var olan bir sorguyu kullanarak kendi sorgunuzu oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/logs/get-started-queries.md).
 
 1. [Azure Portal](https://portal.azure.com), Log Analytics çalışma alanınızı bulun ve seçin.
 
-1. Çalışma alanı menünüzde **genel**altında **Günlükler**' i seçin.
+1. Çalışma alanı menünüzde **genel** altında **Günlükler**' i seçin.
 
 1. Boş bir sorgudan veya var olan mevcut sorgulardan başlayın.
 
-   * Mevcut sorguların mevcut olup olmadığını denetlemek için sorgu araç çubuğunda, **Samples queries**  >  Önceki sorgu çalıştırmalarının sorgularını gösteren örnek sorgu**geçmişi**' ni seçin veya önceden oluşturulmuş sorguları gösteren **sorgu Gezgini**' ni seçin.
+   * Mevcut sorguların mevcut olup olmadığını denetlemek için sorgu araç çubuğunda,   >  Önceki sorgu çalıştırmalarının sorgularını gösteren örnek sorgu **geçmişi**' ni seçin veya önceden oluşturulmuş sorguları gösteren **sorgu Gezgini**' ni seçin.
 
      Örneğin, Logic Apps B2B çözümü şu önceden oluşturulmuş sorguları sağlar:
 

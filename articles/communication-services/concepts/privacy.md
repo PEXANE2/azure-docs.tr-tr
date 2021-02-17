@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572039"
 ---
 # <a name="region-availability-and-data-residency"></a>Bölge kullanılabilirliği ve veri yerleşikliği
 
@@ -73,7 +73,7 @@ Ses ve video iletişimi, hizmet tarafından ephemersel olarak işlenir ve kaynak
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Izleyici ve Log Analytics
 
-Azure Iletişim Hizmetleri, işlemsel sistem durumunu ve hizmetin kullanımını anlamak için Azure Izleyici günlüğe kaydetme verilerine akış oluşturacak. Bu günlüklerin bazıları, Iletişim hizmeti kimliklerini ve telefon numaralarını alan verileri olarak içerir. Potansiyel olarak kişisel verileri silmek için [Bu yordamları Azure izleyici 'de kullanın](../../azure-monitor/platform/personal-data-mgmt.md). Ayrıca [, Azure izleyici için varsayılan saklama süresini](../../azure-monitor/platform/manage-cost-storage.md)yapılandırmak isteyebilirsiniz.
+Azure Iletişim Hizmetleri, işlemsel sistem durumunu ve hizmetin kullanımını anlamak için Azure Izleyici günlüğe kaydetme verilerine akış oluşturacak. Bu günlüklerin bazıları, Iletişim hizmeti kimliklerini ve telefon numaralarını alan verileri olarak içerir. Potansiyel olarak kişisel verileri silmek için [Bu yordamları Azure izleyici 'de kullanın](../../azure-monitor/logs/personal-data-mgmt.md). Ayrıca [, Azure izleyici için varsayılan saklama süresini](../../azure-monitor/logs/manage-cost-storage.md)yapılandırmak isteyebilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

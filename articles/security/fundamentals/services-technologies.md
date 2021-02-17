@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498804"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585414"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
 
@@ -35,7 +35,7 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 |--------|--------|
 |[Azure &nbsp; Güvenlik &nbsp; Merkezi](../../security-center/security-center-introduction.md)| Karma bulut iş yükleri arasında güvenlik yönetimi ve Gelişmiş tehdit koruması sağlayan bir bulut iş yükü koruma çözümüdür.|
 |[Azure Key Vault](../../key-vault/general/overview.md)| Parolalar, bağlantı dizeleri ve uygulamalarınızın çalışır durumda tutulması için gereken diğer bilgiler için güvenli bir gizli anahtar deposu. |
-|[Azure İzleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md)|Telemetri ve diğer verileri toplayan bir izleme hizmeti ve uygulamalarınız ve kaynaklarınız için operasyonel içgörüler sunmak üzere bir sorgu dili ve analiz altyapısı sağlar. , Tek başına veya güvenlik merkezi gibi diğer hizmetlerle kullanılabilir. |
+|[Azure İzleyici günlükleri](../../azure-monitor/logs/log-query-overview.md)|Telemetri ve diğer verileri toplayan bir izleme hizmeti ve uygulamalarınız ve kaynaklarınız için operasyonel içgörüler sunmak üzere bir sorgu dili ve analiz altyapısı sağlar. , Tek başına veya güvenlik merkezi gibi diğer hizmetlerle kullanılabilir. |
 |[Azure geliştirme ve test laboratuvarları](../../devtest-labs/devtest-lab-overview.md)|Geliştiricilerin ve Test edicilerin Azure 'da hızlı bir şekilde ortam oluşturmalarına yardımcı olan ve maliyeti en aza indirirken bir hizmet.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

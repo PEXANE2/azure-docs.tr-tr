@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660462"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593628"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın
 
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Analiz otomatik toplama eklentisi için [GitHub deposunu](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) ve [NPM paketini](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) inceleyin.
 - En üstteki tıklamaları analiz etmek ve kullanılabilir boyutlara göre dilimlemek için [kullanım deneyiminde olay analizini](usage-segmentation.md) kullanın.
-- [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun. Ek rehberlik için bkz. [örnek uygulama](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Tıklama verilerinin özel görselleştirmelerini oluşturmak için bir [çalışma kitabı](../platform/workbooks-overview.md) oluşturun.
+- [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun. Ek rehberlik için bkz. [örnek uygulama](https://go.microsoft.com/fwlink/?linkid=2152871) .
+- Tıklama verilerinin özel görselleştirmelerini oluşturmak için bir [çalışma kitabı](../visualize/workbooks-overview.md) oluşturun.

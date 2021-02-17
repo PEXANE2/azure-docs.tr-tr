@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595077"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -26,7 +26,7 @@ Sanal Makine Ölçek Kümeleri aracılığıyla otomatik ölçeklendirmeyi kulla
 
 * Kaynak Yöneticisi şablonlarınızı, belirtilen uygun kapasiteye dağıtmak, kullanım durumunu desteklememektedir.
      
-   El ile Ölçeklendirmeye ek olarak, [Azure Kaynak grubu dağıtım projelerini kullanarak Azure DevOps Services bir sürekli tümleştirme ve teslim işlem hattı](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)yapılandırabilirsiniz. Bu işlem hattı genellikle [Azure izleyici REST API](../azure-monitor/platform/rest-api-walkthrough.md)sorgulanan sanal makine performans ölçümlerini kullanan bir mantıksal uygulama tarafından tetiklenir. İşlem hattı, istediğiniz ölçümlere göre etkili bir şekilde otomatik olarak ölçeklendiriyor, Kaynak Yöneticisi şablonları için iyileştiriliyor.
+   El ile Ölçeklendirmeye ek olarak, [Azure Kaynak grubu dağıtım projelerini kullanarak Azure DevOps Services bir sürekli tümleştirme ve teslim işlem hattı](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)yapılandırabilirsiniz. Bu işlem hattı genellikle [Azure izleyici REST API](../azure-monitor/essentials/rest-api-walkthrough.md)sorgulanan sanal makine performans ölçümlerini kullanan bir mantıksal uygulama tarafından tetiklenir. İşlem hattı, istediğiniz ölçümlere göre etkili bir şekilde otomatik olarak ölçeklendiriyor, Kaynak Yöneticisi şablonları için iyileştiriliyor.
 * Aynı anda yalnızca bir sanal makine ölçek kümesi düğümünü yatay olarak ölçeklendirmeniz gerekir.
    
    Aynı anda üç veya daha fazla düğüm ölçeğini genişletmek için, bir [sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmelisiniz](virtual-machine-scale-set-scale-node-type-scale-out.md). Sanal makine ölçek kümelerinin tek seferde bir düğüm olarak ölçeklendirilmesi ve ölçeğini genişletmek en güvenli hale gelir.

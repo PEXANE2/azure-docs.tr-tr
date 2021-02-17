@@ -3,12 +3,12 @@ title: Azure Izleyici tarafından kullanılan IP adresleri
 description: Application Insights için gereken sunucu güvenlik duvarı özel durumları
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220811"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584152"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Izleyici tarafından kullanılan IP adresleri
 [Azure izleyici](../overview.md) birkaç IP adresi kullanır. Azure Izleyici, temel platform ölçümlerinden oluşur ve Log Analytics ve Application Insights ek olarak oturum açın. İzlemekte olduğunuz uygulama veya altyapının bir güvenlik duvarının arkasında barındırıldığı durumlarda bu adresleri bilmeniz gerekebilir.
@@ -254,21 +254,21 @@ Kaynak IP adreslerinde yapılan değişiklikleri yönetmek oldukça zaman alabil
    1. Kaynak grubu adını ekleyin ve ardından *örnek ayrıntılarını* girin.
    1. **Gözden geçir + oluştur** ' a ve ardından *Oluştur*' a tıklayın.
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="Ağ güvenlik grubu oluşturma hakkında örnek."border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="Ağ güvenlik grubu oluşturma hakkında örnek."border="true":::
 
 3. Kaynak grubu ' na gidin ve ardından oluşturduğunuz *ağ güvenlik grubu* ' na tıklayın.
 
     1. *Gelen güvenlik kuralları*' nı seçin.
     1. **Ekle**'ye tıklayın.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
 
 4. Sağ bölmede yeni bir pencere açılır.
     1.  Kaynak seçin: **hizmet etiketi**
     1.  Kaynak hizmet etiketi: **ActionGroup**
     1.  **Ekle**'ye tıklayın.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
 
 
 ## <a name="profiler"></a>Profil Oluşturucu
