@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951553"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545843"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -32,19 +32,19 @@ ms.locfileid: "98951553"
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir Weibo hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere [Weibo Geliştirici Portalında](https://open.weibo.com/)bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
+Azure Active Directory B2C (Azure AD B2C) ' de bir Weibo hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere Weibo Geliştirici Portalında bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
-1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
+1. Weibo Geliştirici Portalında Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
 1. Açılan menüde **编辑开发者信息** (geliştirici bilgilerini düzenle) öğesini seçin.
 1. Gerekli bilgileri girin ve **提交** (Gönder) seçeneğini belirleyin.
 1. E-posta doğrulama sürecini doldurun.
-1. [Kimlik doğrulama sayfasına](https://open.weibo.com/developers/identity/edit)gidin.
+1. Kimlik doğrulama sayfasına gidin.
 1. Gerekli bilgileri girin ve **提交** (Gönder) seçeneğini belirleyin.
 
 ### <a name="register-a-weibo-application"></a>Bir Weibo uygulamasını kaydetme
 
-1. [Yeni Weibo uygulaması kayıt sayfasına](https://open.weibo.com/apps/new)gidin.
+1. Yeni Weibo uygulaması kayıt sayfasına gidin.
 1. Gerekli uygulama bilgilerini girin.
 1. **创建**(Oluştur) seçeneğini belirleyin.
 1. **Uygulama anahtarı** ve **uygulama gizli** anahtarı değerlerini kopyalayın. Kimlik sağlayıcısını kiracınıza eklemek için bunların her ikisine de ihtiyacınız vardır.

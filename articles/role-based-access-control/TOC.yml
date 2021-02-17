@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: Rol atamalarını ekleme veya kaldırma
+    - name: Rolleri atama
       items:
-        - name: Rol ataması ekleme adımları
+        - name: Rol atama adımları
           href: role-assignments-steps.md
         - name: Portal
           items:
-            - name: Rol atamalarını ekleme veya kaldırma
+            - name: Rolleri atama
               href: role-assignments-portal.md
             - name: Abonelik yöneticisi
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: ARM şablonu
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Rol atamalarını kaldırma
+      href: role-assignments-remove.md
     - name: Ret atamalarını listeleme
       items:
         - name: Genel Bakış

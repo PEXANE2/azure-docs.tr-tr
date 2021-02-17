@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953946"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546797"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Hızlı başlangıç: GPU ile Azure Stack Edge Pro ile çalışmaya başlama 
 
@@ -64,7 +64,7 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 10. **Sertifikaları yapılandırma**: Cihaz adı ve/veya DNS etki alanını değiştirdiyseniz, cihazı etkinleştirmek için sertifikalar oluşturmanız veya sertifika eklemeniz gerekir. 
 
     - Üretim dışı iş yüklerini test etmek için, [sertifika oluştur seçeneğini](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)kullanın. 
-    - İmza Zinciri de dahil olmak üzere kendi sertifikalarınızı getiruyorsanız, sertifikaları uygun biçimde [ekleyin](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) . Önce imzalama zincirini karşıya yüklediğinizden emin olun. Bkz. [sertifikaları oluşturma](azure-stack-edge-j-series-create-certificates-tool.md) ve [Yerel Kullanıcı arabirimi aracılığıyla sertifika yükleme](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
+    - İmza Zinciri de dahil olmak üzere kendi sertifikalarınızı getiruyorsanız, sertifikaları uygun biçimde [ekleyin](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) . Önce imzalama zincirini karşıya yüklediğinizden emin olun. Bkz. [sertifikaları oluşturma](azure-stack-edge-gpu-create-certificates-tool.md) ve [Yerel Kullanıcı arabirimi aracılığıyla sertifika yükleme](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
 
 11. **Etkinleştir**: etkinleştirme anahtarını almak için 
 
@@ -73,7 +73,7 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 12. **Işlem yapılandırma**: Azure Portal **genel bakış > cihazına** gidin. Cihazın **çevrimiçi** olduğunu doğrulayın. Sol bölmedeki kenar işleme ' ya gidin **> Edge işlem > işlem > yapılandırma**. Var olan veya yeni bir IoT Hub hizmeti sağlayın ve işlem yapılandırması için yaklaşık 20 dakika bekleyin. Öğretici hakkında daha fazla bilgi için bkz [. Azure Stack Edge Pro GPU cihazında Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-İşlem iş yüklerini cihazınızda IoT Edge [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) [Azure Arc etkin Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)aracılığıyla veya aracılığıyla [aracılığıyla](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)dağıtmaya hazır olursunuz! Kurulum sırasında herhangi bir sorunla karşılaşırsanız [cihaz sorunlarını giderme](), [sipariş sorunları](azure-stack-edge-gpu-troubleshoot.md), [sertifika sorunları](azure-stack-edge-j-series-certificate-troubleshooting.md)veya Kubernetes sorunlarını giderme bölümüne gidin. 
+İşlem iş yüklerini cihazınızda IoT Edge [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) [Azure Arc etkin Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)aracılığıyla veya aracılığıyla [aracılığıyla](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)dağıtmaya hazır olursunuz! Kurulum sırasında herhangi bir sorunla karşılaşırsanız [cihaz sorunlarını giderme](), [sipariş sorunları](azure-stack-edge-gpu-troubleshoot.md), [sertifika sorunları](azure-stack-edge-gpu-certificate-troubleshooting.md)veya Kubernetes sorunlarını giderme bölümüne gidin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

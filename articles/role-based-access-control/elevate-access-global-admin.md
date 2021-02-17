@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091672"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557493"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme
 
@@ -80,7 +80,7 @@ Azure portal kullanarak genel yöneticiye erişimi yükseltmek için aşağıdak
 
 1. Yükseltilmiş erişim sırasında yapmanız gereken değişiklikleri yapın.
 
-    Rol atama hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md). Privileged Identity Management kullanıyorsanız bkz. [Azure Kaynak rollerini](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)yönetmek veya atamak [Için Azure kaynaklarını bulma](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) .
+    Rol atama hakkında daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](role-assignments-portal.md). Privileged Identity Management kullanıyorsanız bkz. [Azure Kaynak rollerini](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)yönetmek veya atamak [Için Azure kaynaklarını bulma](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) .
 
 1. Yükseltilmiş erişiminizi kaldırmak için aşağıdaki bölümdeki adımları uygulayın.
 
@@ -149,7 +149,7 @@ Kullanıcı erişimi yönetici rolü atamasını kendinize veya kök kapsamdaki 
 
 Azure CLı kullanarak genel yöneticiye erişimi yükseltmek için aşağıdaki temel adımları kullanın.
 
-1. Bu uç noktayı çağırmak için [az Rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) komutunu kullanın `elevateAccess` . Bu, size kök kapsamda () Kullanıcı erişimi yönetici rolü verir `/` .
+1. Bu uç noktayı çağırmak için [az Rest](/cli/azure/reference-index#az_rest) komutunu kullanın `elevateAccess` . Bu, size kök kapsamda () Kullanıcı erişimi yönetici rolü verir `/` .
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Azure CLı kullanarak genel yöneticiye erişimi yükseltmek için aşağıdaki 
 
 1. Yükseltilmiş erişim sırasında yapmanız gereken değişiklikleri yapın.
 
-    Rol atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md).
+    Rol atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure rolleri atama](role-assignments-cli.md).
 
 1. Yükseltilmiş erişiminizi kaldırmak için adımları sonraki bir bölümde gerçekleştirin.
 
@@ -213,7 +213,7 @@ REST API kullanarak genel yöneticiye erişimi yükseltmek için aşağıdaki te
 
 1. Yükseltilmiş erişim sırasında yapmanız gereken değişiklikleri yapın.
 
-    Rol atama hakkında daha fazla bilgi için, bkz. [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md).
+    Rol atama hakkında daha fazla bilgi için bkz. [REST API kullanarak Azure rolleri atama](role-assignments-rest.md).
 
 1. Yükseltilmiş erişiminizi kaldırmak için adımları sonraki bir bölümde gerçekleştirin.
 
@@ -330,4 +330,4 @@ Bir kullanıcı için tüm reddetme atamalarını kök kapsamda ( `/` ) listeley
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Farklı rolleri anlama](rbac-and-directory-admin-roles.md)
-- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
+- [REST API kullanarak Azure rolleri atama](role-assignments-rest.md)

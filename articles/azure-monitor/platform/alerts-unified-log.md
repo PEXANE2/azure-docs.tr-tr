@@ -4,14 +4,14 @@ description: Belirttiğiniz günlük sorgusu koşulu karşılandığında e-post
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 5/31/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 0f81dd14988b069931bddf5f5636cb1bab426641
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857435"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544892"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -51,7 +51,7 @@ Kuralı değerlendirmek için kullanılan [Log Analytics](../log-query/log-analy
 - [Kaynak arası sorgu](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)kullanan birden çok kaynak. 
  
 > [!IMPORTANT]
-> Uyarı sorgularında en iyi performansı ve sonuçların uygunluğunu sağlamak için kısıtlamalar vardır. [Daha fazla bilgi edinin](./alerts-log-query.md).
+> Uyarı sorgularında en iyi performansı ve sonuçların uygunluğunu sağlamak için kısıtlamalar vardır. [Burada daha fazla bilgi edinebilirsiniz](./alerts-log-query.md).
 
 > [!IMPORTANT]
 > Kaynak merkezli ve [çapraz kaynak sorgusu](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) yalnızca geçerli scheduledQueryRules API 'si kullanılarak desteklenir. Eski [Log Analytics uyarı API](api-alerts.md)'sini kullanırsanız, anahtarını değiştirmeniz gerekir. [Geçiş hakkında daha fazla bilgi edinin](./alerts-log-api-switch.md)
@@ -64,7 +64,7 @@ Log Analytics 'te olduğu gibi, zaman aralığı sorgu verilerini belirtilen ara
 
 Örneğin, bir sorgu, zaman aralığı 60 dakika olduğunda ve metin **önce (1D)** olsa bile, bir sorgu 60 dakika tarar. Zaman aralığı ve sorgu zaman filtrelemenin eşleşmesi gerekir. Örnek örnekte, **Dönem**  /  **geçersiz kılma sorgu zaman aralığını** bir güne değiştirmek beklenen şekilde çalışır.
 
-### <a name="measure"></a>Ölçü
+### <a name="measure"></a>Measure
 
 Günlük uyarıları, değerlendirilen sayısal değerlere oturum açma günlüğü kaydeder. İki farklı şeyi ölçebilirsiniz:
 
@@ -102,7 +102,7 @@ Ardından, 500 hata kodu ile biten istekler için uyarı kuralları izleyicileri
 
 ### <a name="aggregation-type"></a>Toplama türü
 
-Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örnek:
+Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örneğin:
 - **Sayı** sorgudaki kayıt sayısını döndürür
 - **Average** , tanımlanan ölçü sütun [**toplama ayrıntı**](#aggregation-granularity) düzeyinin ortalamasını döndürür.
 

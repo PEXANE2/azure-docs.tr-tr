@@ -4,20 +4,20 @@ description: Bu öğreticide, Azure API Management bir ürün oluşturup yayıml
 author: mikebudzynski
 ms.service: api-management
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993559"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545165"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Öğretici: ürün oluşturma ve yayımlama  
 
 Azure API Management, bir [*ürün*](api-management-terminology.md#term-definitions) bir veya daha fazla API ve kullanım koşulları ve kullanım koşulları içerir. Ürün yayımlandığında, geliştiriciler ürüne abone olabilir ve ürünün API'lerini kullanmaya başlayabilir.  
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ürün oluşturma ve yayımlama
@@ -34,6 +34,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="create-and-publish-a-product"></a>Ürün oluşturma ve yayımlama
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Azure portal oturum açın ve API Management örneğinize gidin.
 1. Sol gezinti bölmesinde, **Ürünler**  >  **+ Ekle**' yi seçin.
 1.  Ürün **Ekle** penceresinde, ürününüzü oluşturmak için aşağıdaki tabloda açıklanan değerleri girin.
@@ -43,20 +45,63 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
     | Ad                     | Açıklama                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Görünen ad             | [Geliştirici Portalında](api-management-howto-developer-portal.md)görünmesini istediğiniz ad.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Description              | Ürün hakkında, amacı, erişimi sağladığı API 'Ler ve diğer ayrıntılar gibi bilgiler sağlayın.                                                                                                                                               |
+    | Açıklama              | Ürün hakkında, amacı, erişimi sağladığı API 'Ler ve diğer ayrıntılar gibi bilgiler sağlayın.                                                                                                                                               |
     | Durum                    | Ürünü yayımlamak istiyorsanız **yayımlandı** ' i seçin. Bir üründeki API'lerin çağrılabilmesi için önce ürünün yayımlanması gerekir. Varsayılan olarak, yeni ürünler yayımdan kaldırılır ve yalnızca  **Yöneticiler** grubu tarafından görülebilir.                                                                                      |
     | Abonelik gerektirir    | Ürünü kullanmak için bir kullanıcının abone olması gerekiyorsa seçin.                                                                                                                                                                                                                                   |
     | Onay gerekiyor        | Yöneticinin bu ürüne yönelik abonelik denemelerini gözden geçirmesini ve kabul etmesini ya da reddetmesini istiyorsanız seçin. Seçilmezse, abonelik girişimleri otomatik olarak onaylanır.                                                                                                                         |
-    | Abonelik sayısı limiti | İsteğe bağlı olarak, birden çok eş zamanlı aboneliğin sayısını sınırlayın.                                                                                                                                                                                                                                |
+    | Abonelik sayısı limiti | İsteğe bağlı olarak birden çok eşzamanlı aboneliğin sayısını sınırlayın.                                                                                                                                                                                                                                |
     | Yasal koşullar              | Abonelerin ürünü kullanmak için kabul etmek zorunda olduğu ürün kullanım koşullarını ekleyebilirsiniz.                                                                                                                                                                                                             |
     | API'ler                     | Bir veya daha fazla API seçin. Ayrıca, ürünü oluşturduktan sonra API 'Leri ekleyebilirsiniz. Daha fazla bilgi için, bu makalede daha sonra [bir ürüne API ekleme](#add-apis-to-a-product) bölümüne bakın. |
 
 3. Yeni ürünü oluşturmak için **Oluştur** ' u seçin.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı kullanmaya başlamak için:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Bir ürün oluşturmak için [az APIM Product Create](/cli/azure/apim/product#az_apim_product_create) komutunu çalıştırın:
+
+```azurecli
+az apim product create --resource-group apim-hello-word-resource-group \
+    --product-name "Contoso product" --product-id contoso-product \
+    --service-name apim-hello-world --subscription-required true \
+    --state published --description "This is a test."
+```
+
+Ürününüz için çeşitli değerler belirtebilirsiniz:
+
+   | Parametre | Açıklama |
+   |-----------|-------------|
+   | `--product-name` | [Geliştirici Portalında](api-management-howto-developer-portal.md)görünmesini istediğiniz ad. |
+   | `--description`  | Ürün hakkında, amacı, erişimi sağladığı API 'Ler ve diğer ayrıntılar gibi bilgiler sağlayın. |
+   | `--state`        | Ürünü yayımlamak istiyorsanız **yayımlandı** ' i seçin. Bir üründeki API'lerin çağrılabilmesi için önce ürünün yayımlanması gerekir. Varsayılan olarak, yeni ürünler yayımdan kaldırılır ve yalnızca  **Yöneticiler** grubu tarafından görülebilir. |
+   | `--subscription-required` | Ürünü kullanmak için bir kullanıcının abone olması gerekiyorsa seçin. |
+   | `--approval-required` | Yöneticinin bu ürüne yönelik abonelik denemelerini gözden geçirmesini ve kabul etmesini ya da reddetmesini istiyorsanız seçin. Seçilmezse, abonelik girişimleri otomatik olarak onaylanır. |
+   | `--subscriptions-limit` | İsteğe bağlı olarak birden çok eşzamanlı aboneliğin sayısını sınırlayın.|
+   | `--legal-terms`         | Abonelerin ürünü kullanmak için kabul etmek zorunda olduğu ürün kullanım koşullarını ekleyebilirsiniz. |
+
+Geçerli ürünlerinizi görmek için [az APIM Product List](/cli/azure/apim/product#az_apim_product_list) komutunu kullanın:
+
+```azurecli
+az apim product list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+[Az APIM Product Delete](/cli/azure/apim/product#az_apim_product_delete) komutunu kullanarak bir ürünü silebilirsiniz:
+
+```azurecli
+az apim product delete --product-id contoso-product \
+    --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --delete-subscriptions true
+```
+
+---
+
 ### <a name="add-more-configurations"></a>Daha fazla yapılandırma ekleme
 
 Ürünü kaydettikten sonra yapılandırmaya devam edin. API Management Örneğinizde, **Ürünler** penceresinden ürünü seçin. Ekle veya güncelleştir:
-
 
 |Öğe   |Açıklama  |
 |---------|---------|
@@ -74,13 +119,48 @@ Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması g
 
 ### <a name="add-an-api-to-an-existing-product"></a>Mevcut bir ürüne API ekleme
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. API Management örneğinizin sol gezinti bölmesinde **Ürünler**' i seçin.
 1. Bir ürün seçin ve ardından **API 'ler**' i seçin.
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 1. Bir veya daha fazla API seçin ve ardından öğesini **seçin**.
 
 :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="Mevcut ürüne API ekleme":::
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Yönetilen API 'lerinizi görmek için [az APIM API List](/cli/azure/apim/api#az_apim_api_list) komutunu kullanın:
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+1. Ürününüzü bir API eklemek için [az APIM Product API Add](/cli/azure/apim/product/api#az_apim_product_api_add) komutunu çalıştırın:
+
+   ```azurecli
+   az apim product api add --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --product-id contoso-product \
+       --service-name apim-hello-world
+   ```
+
+1. [Az APIM Product API List](/cli/azure/apim/product/api#az_apim_product_api_list) komutunu kullanarak eklemeyi doğrulayın:
+
+   ```azurecli
+   az apim product api list --resource-group apim-hello-word-resource-group \
+       --product-id contoso-product --service-name apim-hello-world --output table
+   ```
+
+[Az APIM Product API Delete](/cli/azure/apim/product/api#az_apim_product_api_delete) komutunu kullanarak bir üründen bir API 'yi kaldırabilirsiniz:
+
+```azurecli
+az apim product api delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --product-id contoso-product \
+    --service-name apim-hello-world
+```
+
+---
 
 > [!TIP]
 > Bir kullanıcının aboneliğini, bir [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) veya PowerShell komutu aracılığıyla özel abonelik anahtarlarıyla bir ürüne oluşturabilir veya güncelleyebilirsiniz.

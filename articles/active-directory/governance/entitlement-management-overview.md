@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c9815355b26a9c14c02110e4bb5fff4f998d2105
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7efaaf9cbfdb13c80ce653c99d05da451c2b8968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032041"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547324"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -174,5 +174,6 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
+- Kaynaklara erişimi yönetmek için Azure portal kullanmayı ilgileniyorsanız, bkz. [öğretici: kaynaklara erişimi yönetme-Azure Portal](entitlement-management-access-package-first.md).
+- kaynaklara erişimi yönetmek için Microsoft Graph kullanarak ilgileniyorsanız, bkz [. Öğretici: kaynaklara erişimi yönetme-Microsoft Graph](/graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json)
 - [Genel senaryolar](entitlement-management-scenarios.md)

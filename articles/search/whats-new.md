@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104612"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535221"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -21,14 +21,14 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ## <a name="february-2021"></a>Şubat 2021
 
-|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
 | [Belgeleri Sıfırla (Önizleme)](search-howto-run-reset-indexers.md) |  Dizin Oluşturucu iş yüklerindeki ayrı ayrı seçili arama belgelerini yeniden işler. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/index-preview) |
 | [Kullanılabilirlik Alanları](search-performance-optimization.md#availability-zones)| Belirli bölgelerde bulunan iki veya daha fazla çoğaltma ile Hizmetleri arayın, [Bu makalede](search-performance-optimization.md#availability-zones)listelendiği gibi iki veya daha fazla ayrı fiziksel konumda çoğaltmalar elde ederek dayanıklılık kazanın.  | Arama hizmeti oluşturma 'nin bölgesi ve tarihi kullanılabilirliği belirlenir. Ayrıntılar için performans ayarlama belgesine bakın. |
 
 ## <a name="january-2021"></a>Ocak 2021
 
-|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
 |------------------------------|-------------|---------------|
 | [Azure Bilişsel Arama ve Soru-Cevap Oluşturma için Çözüm Hızlandırıcısı](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Belgedeki soruları ve yanıtları çeker ve en ilgili yanıtları önerin. Live demo uygulaması adresinde bulunabilir [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Açık kaynak proje (SLA yok) |
 
@@ -77,7 +77,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 |Kasım | [Metin çevirisi becerisi](cognitive-search-skill-text-translation.md) | Metin değerlendiren ve çeviren dizin oluşturma sırasında kullanılan bilişsel bir yetenek. Genel olarak kullanılabilir.|
 |Kasım | [Power BI şablonları](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Bilgi deposundaki içeriği görselleştirmeyi sağlayan şablon |
 |Kasım | [Azure Data Lake Storage 2. (Önizleme)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB GREMLIN API (önizleme)](search-howto-index-cosmosdb.md)ve [Cosmos DB Cassandra API (Önizleme)](search-howto-index-cosmosdb.md) | Yeni Dizin Oluşturucu veri kaynakları genel önizlemede. |
-|Temmuz | [Azure Kamu bulut desteği](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | Genel olarak kullanılabilir.|
+|Temmuz | [Azure Kamu bulut desteği](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Genel olarak kullanılabilir.|
 
 <a name="new-service-name"></a>
 

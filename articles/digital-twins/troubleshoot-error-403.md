@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049822"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545709"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Hizmet isteği başarısız oldu. Durum: 403 (yasak)
 
@@ -26,8 +26,6 @@ Bu hata, kimlik doğrulaması gerektiren birçok hizmet isteği türünde gerçe
 ### <a name="cause-1"></a>Neden #1
 
 Çoğu zaman bu hata, hizmet için Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerinizin doğru ayarlanmadığını gösterir. Azure dijital TWINS örneği için birçok eylem, **yönetmeye çalıştığınız örnekte** *Azure Digital TWINS veri sahibi* rolüne sahip olmanızı gerektirir. 
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Neden #2
 

@@ -7,23 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/15/2021
+ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746705"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535357"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
 [Azure bilişsel arama](search-what-is-azure-search.md) , özel uygulamalara tam metin arama deneyimi eklemek için kullanılan bir Azure kaynağıdır. Veri veya ek işlem sağlayan diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilebilir.
 
-Bu makalede, [Azure Portal](https://portal.azure.com/)arama hizmeti oluşturmayı öğrenin.
+Bu makalede ele alınan [Azure Portal](https://portal.azure.com/)kullanarak arama hizmeti oluşturabilirsiniz. [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search)veya [Azure Resource Manager bir hizmet şablonu](https://azure.microsoft.com/resources/templates/101-azure-search-create/)da kullanabilirsiniz.
 
 [![Animasyonlu GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu](https://azure.microsoft.com/resources/templates/101-azure-search-create/) kullanın. Kullanmaya başlama hakkında yardım için bkz. [PowerShell Ile Azure bilişsel arama yönetme](search-manage-powershell.md).
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -136,9 +134,9 @@ Portal tabanlı görevler için bir uç nokta ve anahtar gerekli değildir. Port
 
 Hizmetiniz sağlandıktan sonra ihtiyaçlarınızı karşılayacak şekilde ölçeklendirilebilir. Azure Bilişsel Arama hizmetiniz için standart katmanı seçerseniz, hizmetinizi iki boyutta ölçeklendirebilirsiniz: çoğaltmalar ve bölümler. Temel katmanı seçtiyseniz yalnızca çoğaltmalar ekleyebilirsiniz. Ücretsiz hizmeti sağladıysanız ölçek kullanılamaz.
 
-**_Partitions_* _ hizmetinizin daha fazla belgeyi depolayıp aramasını sağlar.
+***Bölümler***, hizmetinizin daha fazla belge depolamasına ve daha fazla belgede arama yapmasına olanak sağlar.
 
-_*_Çoğaltmalar_*_ , hizmetinizin arama sorgularının daha yüksek bir yükünü işlemesini sağlar.
+***Çoğaltmalar***, hizmetinizin daha yüksek arama sorgusu yükünü işlemesine olanak sağlar.
 
 Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/), fatura konusunda kaynak eklemenin getirdiği sonuçları anlamanıza yardımcı olabilir. Kaynakları yüke göre ayarlayabildiğinizi unutmayın. Örneğin, tam bir ilk dizin oluşturmak için kaynakları artırabilir ve ardından artımlı dizin oluşturmak için daha uygun bir düzeye indirebilirsiniz.
 
@@ -146,7 +144,7 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 > Bir hizmetin [salt okunur SLA için 2 çoğaltması ve okuma/yazma SLA’sı için 3 çoğaltması](https://azure.microsoft.com/support/legal/sla/search/v1_0/) olmalıdır.
 
 1. Azure portalında arama hizmeti sayfanıza gidin.
-2. Sol gezinti bölmesinde _ *Ayarlar** > **Ölçek**' i seçin.
+2. Sol gezinti bölmesinde **Ayarlar**  >  **Ölçek**' i seçin.
 3. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Çoğaltmalar ve bölümler aracılığıyla kapasite ekleme" border="false":::

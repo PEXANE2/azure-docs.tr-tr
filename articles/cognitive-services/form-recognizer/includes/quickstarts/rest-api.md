@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808522"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552277"
 ---
 > [!NOTE]
 > Bu kılavuz REST API çağrılarını yürütmek için kıvrımlı kullanır. GitHub 'da REST API 'Lerinin nasıl çağrılacağını gösteren [örnek kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) de vardır.
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 `200 (success)`JSON içeriğiyle bir yanıt alacaksınız.
 
-Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı basitlik için kısaltıldı. `"readResults"`Düğüm, sayfada ilgili sınırlayıcı kutusu yerleşimine sahip her metin satırını içerir. `"selectionMarks"`Düğüm (v 2.1 önizlemesi) her seçim işaretini (onay kutusu, radyo işareti) ve durumunun "seçili" veya "seçilmemiş" olup olmadığını gösterir. `"pageResults"`Bölümü ayıklanan tabloları içerir. Her tablo için metin, satır ve sütun dizini, satır ve sütun kapsayıcı, sınırlama kutusu ve daha fazlası ayıklanır.
+Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına bakın.
+* `"readResults"`Düğüm, sayfada ilgili sınırlayıcı kutusu yerleşimine sahip her metin satırını içerir. 
+* `"selectionMarks"`Düğüm (v 2.1 önizlemesi) her seçim işaretini (onay kutusu, radyo işareti) ve durumunun "seçili" veya "seçilmemiş" olup olmadığını gösterir. 
+* `"pageResults"`Bölümü ayıklanan tabloları içerir. Her tablo için metin, satır ve sütun dizini, satır ve sütun kapsayıcı, sınırlama kutusu ve daha fazlası ayıklanır.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Bir tablo içeren contoso proje beyanı belgesi.":::
+
+Bu çıktı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)bakın.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. `"readResults"`Alan, faturadan çıkarılan her metin satırını içerir, `"pageResults"` faturada çıkarılan tablolar ve seçimler işaretlerini içerir ve `"documentResults"` alan, faturanın en ilgili bölümleri için anahtar/değer bilgilerini içerir.
+`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. 
+* `"readResults"`Alan, faturadan çıkarılan her metin satırını içerir.
+* , `"pageResults"` Faturadan çıkarılan tabloları ve seçimler işaretlerini içerir.
+* `"documentResults"`Alan, faturanın en ilgili bölümlerinin anahtar/değer bilgilerini içerir.
 
-Aşağıdaki fatura belgesine ve buna karşılık gelen JSON çıktısına bakın. JSON içeriği okunabilirlik için kısaltıldı.
+Aşağıdaki fatura belgesine ve buna karşılık gelen JSON çıktısına bakın. 
 
 * [Örnek fatura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+Bu JSON içeriği okunabilirlik için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json)bakın.
 
 ```json
 {
@@ -716,7 +726,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model
 
 Etiketler olmadan eğitilen özel modellerde, anahtar/değer çifti ilişkilendirmeleri ve tabloları `"pageResults"` JSON çıktısının düğümüdür. Etiketlerle eğitilen özel modellerde, anahtar/değer çifti ilişkilendirmeleri `"documentResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğüm belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
 
-Bu örnek JSON çıktısı kolaylık sağlaması için kısaltıldı.
+Bu örnek JSON çıktısı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json)bakın.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. İlk alan, `"status"` , işlemin durumunu gösterir. İşlem tamamlandıysa, `"readResults"` alan, alış irsaliyesinden ayıklanan her metin satırını içerir ve `"documentResults"` alan, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir. İşlem tamamlanmadıysa, değeri `"status"` `"running"` veya olur `"notStarted"` ve API 'yi el ile ya da bir komut dosyası aracılığıyla tekrar çağırmanız gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. İlk alan, `"status"` , işlemin durumunu gösterir. İşlem tamamlanmadıysa, değeri `"status"` `"running"` veya olur `"notStarted"` ve API 'yi el ile ya da bir komut dosyası aracılığıyla tekrar çağırmanız gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
 
-Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı okunabilirlik için kısaltıldı.
+`"readResults"`Düğüm, tanınan metnin tamamını içerir (isteğe bağlı *ıncludetekxtdetails* parametresini olarak ayarlarsanız `true` ). Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu girişe özgü değerleri içerir. Burada, vergi, toplam, ticari adres vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+
+Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın.
 
 ![Contoso mağazasından alındı](../../media/contoso-allinone.jpg)
 
-`"readResults"`Düğüm, tanınan metnin tamamını içerir (isteğe bağlı *ıncludetekxtdetails* parametresini olarak ayarlarsanız `true` ). Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu girişe özgü değerleri içerir. Burada, vergi, toplam, ticari adres vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+Bu çıktı okunabilirlik için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)bakın.
 
 ```json
 {
@@ -1386,11 +1398,11 @@ Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. İş kartı analizi hakkında daha fazla bilgi için bkz. [iş kartları kavramsal Kılavuzu](../../concept-business-cards.md). Bir iş kartını çözümlemeye başlamak için aşağıdaki kıvrımlı komutunu kullanarak **[Iş kartını çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
-1. `{your receipt URL}`Bir makbuz RESMININ URL adresiyle değiştirin.
+1. `{your business card URL}`Bir makbuz RESMININ URL adresiyle değiştirin.
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir.
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada şirket adı, ilk adı, soyadı, telefon numarası vb. gibi yararlı iletişim bilgileri bulabilirsiniz.
+`200 (Success)`JSON çıkışıyla bir yanıt alacaksınız. 
+
+`"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada şirket adı, ilk adı, soyadı, telefon numarası vb. gibi yararlı iletişim bilgileri bulabilirsiniz.
 
 ![Contoso şirketinden bir iş kartı](../../media/business-card-english.jpg)
 
-Bu örnek, form tanıyıcı tarafından döndürülen JSON çıkışını gösterir. Okunabilirlik için kesildi.
+Bu örnek JSON çıktısı okunabilirlik için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)bakın.
 
 ```json
 {

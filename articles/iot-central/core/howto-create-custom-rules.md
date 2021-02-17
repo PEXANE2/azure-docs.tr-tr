@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 7e3292a9070e6676faad15e73d357e7f6875b5f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371708"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557578"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics, Azure İşlevleri ve SendGrid kullanarak özel kurallarla Azure IoT Central’ın kapsamını genişletme
 
@@ -119,26 +119,26 @@ Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dı�
 
 Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde görünür: 
 
-    :::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
-## <a name="define-the-function"></a>İşlevi tanımlayın
+## Define the function
 
-Bu çözüm, Stream Analytics işi durdurulmuş bir cihaz algıladığında e-posta bildirimi göndermek için bir Azure Işlevleri uygulaması kullanır. İşlev uygulamanızı oluşturmak için:
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-1. Azure portal, **Detectstoppeddevices** kaynak grubundaki **App Service** örneğine gidin.
-1. **+** Yeni bir işlev oluşturmak için seçin.
-1. **Http tetikleyicisi**' ni seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Varsayılan HTTP tetikleyici işlevinin görüntüsü"::: 
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-## <a name="edit-code-for-http-trigger"></a>HTTP tetikleyicisi için kodu Düzenle
+## Edit code for HTTP Trigger
 
-Portal **HttpTrigger1** adlı varsayılan bir işlev oluşturur:
+The portal creates a default function called **HttpTrigger1**:
 
-    :::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-1. C# kodunu şu kodla değiştirin:
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +177,50 @@ Portal **HttpTrigger1** adlı varsayılan bir işlev oluşturur:
     }
     ```
 
-    Yeni kodu kaydetene kadar bir hata iletisi görebilirsiniz.
-1. İşlevi kaydetmek için **Kaydet** ' i seçin.
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-## <a name="add-sendgrid-key"></a>SendGrid anahtarı Ekle
+## Add SendGrid Key
 
-SendGrid API anahtarınızı eklemek için aşağıdaki şekilde **Işlev Anahtarlarınıza** eklemeniz gerekir:
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-1. **Işlev anahtarlarını** seçin.
-1. **+ Yeni Işlev anahtarı**' nı seçin.
-1. Daha önce oluşturduğunuz API anahtarının *adını* ve *değerini* girin.
-1. Tamam ' a tıklayın **.**
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Sangrid anahtar ekleme ekranının ekran görüntüsü.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
 
 
-## <a name="configure-httptrigger-function-to-use-sendgrid"></a>HttpTrigger işlevini SendGrid kullanacak şekilde yapılandırma
+## Configure HttpTrigger function to use SendGrid
 
-SendGrid ile e-posta göndermek için, işlevinizin bağlamalarını aşağıdaki gibi yapılandırmanız gerekir:
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
 
-1. **Tümleştir**’i seçin.
-1. **Http ($Return)** altında **Çıkış Ekle** ' yi seçin.
-1. Sil ' i seçin **.**
-1. **+ Yeni çıkış ' ı** seçin.
-1. Bağlama türü için **SendGrid**' i seçin.
-1. SendGrid API anahtarı ayar türü için yeni ' ye tıklayın.
-1. SendGrid API anahtarınızın *adını* ve *değerini* girin.
-1. Aşağıdaki bilgileri ekleyin:
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
 
-| Ayar | Değer |
+| Setting | Value |
 | ------- | ----- |
-| İleti parametre adı | Adınızı seçin |
-| Adresine | Adresiniz adını seçin |
-| Kimden adresi | Kimden adresiniz adını seçin |
-| İleti konusu | Konu üst bilgisini girin |
-| İleti metni | Tümleştirmeden iletiyi girin |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
 
-1. **Tamam**’ı seçin.
+1. Select **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="SandGrid çıkışı ekleme ekranının ekran görüntüsü.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
 
 
-### <a name="test-the-function-works"></a>İşlevin çalışması test et
+### Test the function works
 
-İşlevi portalda test etmek için önce kod düzenleyicisinin alt kısmındaki **Günlükler** ' i seçin. Ardından kod düzenleyicisinin sağ tarafındaki **Test** ' i seçin. **İstek gövdesi** olarak aşağıdaki JSON 'ı kullanın:
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +228,9 @@ SendGrid ile e-posta göndermek için, işlevinizin bağlamalarını aşağıdak
 
 İşlev günlüğü iletileri **Günlükler** panelinde görüntülenir:
 
-    :::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-Birkaç dakika sonra **, e-posta adresi** aşağıdaki içeriğe sahip bir e-posta alır:
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -311,9 +311,11 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 
     :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Stream Analytics ekran görüntüsü.":::
 
-## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
+## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma 
 
-[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, oluşturduğunuz IoT Central uygulamasına gidin.
+
+Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
 1. **Veri dışa aktarma** sayfasına gidin, **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
 1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin: 
@@ -322,13 +324,11 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
     | ------- | ----- |
     | Görünen Ad | Event Hubs dışarı aktar |
     | Etkin | Açık |
-    | Event Hubs ad alanı | Event Hubs ad alanı adınız |
-    | Olay hub'ı | centralexport |
-    | Ölçümler | Açık |
-    | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Dışarı aktarılacak veri türü | Telemetri |
+    | Zenginleştirmeleri | İçe aktarılmış verilerin nasıl düzenlenmesini istediğinize ilişkin istenen anahtar/değeri girin | 
+    | Hedef | Yeni oluştur ve verilerin aktarılacağı konum için bilgi girin |
 
-    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Sürekli veri dışa aktarma yapılandırmasının ekran görüntüsü.":::
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Veri dışa aktarma ekran görüntüsü.":::
 
 Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 

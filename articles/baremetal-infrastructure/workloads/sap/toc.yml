@@ -9,6 +9,7 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure’da BareMetal Instance birimlerini yönetme
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: Başvuru
   items:

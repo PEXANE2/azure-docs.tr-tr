@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555912"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Azure RBAC kapsamını anlama
 
@@ -32,7 +32,7 @@ Yönetim grupları, aboneliklerin üzerindeki kapsam düzeyidir, ancak yönetim 
 
 ## <a name="scope-format"></a>Kapsam biçimi
 
-Komut satırını kullanarak rol atamaları eklerseniz, kapsamı belirtmeniz gerekir. Komut satırı araçları için kapsam, rol atamasının tam kapsamını tanımlayan potansiyel olarak uzun bir dizedir. Azure portal, bu kapsam genellikle *kaynak kimliği*olarak listelenir.
+Komut satırını kullanarak roller atarsanız, kapsamı belirtmeniz gerekir. Komut satırı araçları için kapsam, rol atamasının tam kapsamını tanımlayan potansiyel olarak uzun bir dizedir. Azure portal, bu kapsam genellikle *kaynak kimliği* olarak listelenir.
 
 Kapsam, eğik çizgi (/) karakteriyle ayrılmış bir dizi tanımlayıcıdan oluşur. Bu dizeyi, yer tutucular () olmayan metnin sabit tanımlayıcılardan oluşan aşağıdaki hiyerarşiyi ifade etmek için düşünebilirsiniz `{}` :
 
@@ -122,6 +122,6 @@ Bir yönetim grubu, abonelik veya kaynak grubu için kapsamı belirlenmesi olduk
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Rol ataması ekleme adımları](role-assignments-steps.md)
+- [Azure rolü atama adımları](role-assignments-steps.md)
 - [Azure hizmetleri için kaynak sağlayıcıları](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure yönetim grupları nedir?](../governance/management-groups/overview.md)

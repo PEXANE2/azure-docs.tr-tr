@@ -1,14 +1,14 @@
 ---
 title: Temsilci erişimini kaldırma
 description: Azure açık Thouse için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555789"
 ---
 # <a name="remove-access-to-a-delegation"></a>Temsilci erişimini kaldırma
 
@@ -21,7 +21,7 @@ Bir temsilciyi kaldırmak, Kullanıcı uygun izinlere sahip olduğu sürece mü�
 
 ## <a name="customers"></a>Müşteriler
 
-Bir abonelik için [sahip yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip olan müşteri kiracısındaki kullanıcılar, bu aboneliğe (veya söz konusu abonelikteki kaynak gruplarına) hizmet sağlayıcı erişimini kaldırabilir. Bunu yapmak için, müşterinin kiracısındaki bir Kullanıcı Azure portal [hizmet sağlayıcıları sayfasına](view-manage-service-providers.md#add-or-remove-service-provider-offers) gidebilir, **servis sağlayıcı teklifleri** ekranında teklifi bulabilir ve bu teklifin satırındaki çöp kutusu simgesini seçebilirsiniz.
+Sahibi gibi bir rolü olan müşterinin kiracısındaki kullanıcılar, `Microsoft.Authorization/roleAssignments/write` Bu aboneliğe (veya söz konusu [](../../role-based-access-control/built-in-roles.md#owner)abonelikteki kaynak gruplarına) hizmet sağlayıcı erişimini kaldırabilir. Bunu yapmak için Kullanıcı Azure portal [hizmet sağlayıcılar sayfasına](view-manage-service-providers.md#add-or-remove-service-provider-offers) gidebilir, **servis sağlayıcı teklifleri** ekranında teklifi bulabilir ve bu teklifin satırındaki çöp kutusu simgesini seçebilirsiniz.
 
 Silme işlemini onayladıktan sonra, hizmet sağlayıcısının kiracısındaki hiçbir Kullanıcı daha önce atanmış kaynaklara erişemeyecektir.
 

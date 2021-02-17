@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
-description: Azure PowerShell kullanarak bir Azure Stack Edge Pro GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
+description: Azure PowerShell kullanarak Azure Stack Edge cihazında sanal makinelerin nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802982"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546899"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
 
-Bu makalede, Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bu makale Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazları için geçerlidir.
+Bu makalede, Azure PowerShell kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bu makale Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazları için geçerlidir.
 
 ## <a name="vm-deployment-workflow"></a>VM dağıtımı iş akışı
 
-Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
+Dağıtım iş akışı şu şekilde görünür:
 
-![VM dağıtımı iş akışı](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
+![VM dağıtımı iş akışının diyagramı.](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,7 +32,7 @@ Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>Cihazda yerleşik Abonelik sorgusu
 
-Azure Resource Manager için yalnızca tek bir kullanıcı tarafından görülebilen sabit abonelik desteklenir. Bu abonelik cihaz başına benzersizdir ve abonelik adı veya abonelik KIMLIĞI değiştirilemez.
+Azure Resource Manager için, yalnızca Kullanıcı tarafından görülebilen tek bir sabit abonelik desteklenir. Bu abonelik cihaz başına benzersizdir ve abonelik adı veya abonelik KIMLIĞI değiştirilemez.
 
 Bu abonelik, VM oluşturma için gerekli olan tüm kaynakları içerir. 
 
@@ -41,13 +41,13 @@ Bu abonelik, VM oluşturma için gerekli olan tüm kaynakları içerir.
 
 Bu abonelik, VM 'Leri dağıtmak için kullanılır.
 
-1.  Bu aboneliği listelemek için şunu yazın:
+1.  Bu aboneliği listelemek için şunu girin:
 
     ```powershell
     Get-AzureRmSubscription
     ```
     
-    Örnek çıktı aşağıda gösterilmiştir.
+    Örnek bir çıktı aşağıda verilmiştir:
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,7 +59,7 @@ Bu abonelik, VM 'Leri dağıtmak için kullanılır.
     PS C:\windows\system32>
     ```
         
-3.  Cihazda çalışan kayıtlı kaynak sağlayıcılarının listesini alın. Bu liste genellikle Işlem, ağ ve depolamayı içerir.
+1. Cihazda çalışan kayıtlı kaynak sağlayıcılarının listesini alın. Bu liste genellikle işlem, ağ ve depolamayı içerir.
 
     ```powershell
     Get-AzureRMResourceProvider
@@ -68,7 +68,7 @@ Bu abonelik, VM 'Leri dağıtmak için kullanılır.
     > [!NOTE]
     > Kaynak sağlayıcıları önceden kaydedilir ve değiştirilemez veya değiştirilemez.
     
-    Örnek bir çıktı aşağıda gösterilmiştir:
+    Örnek bir çıktı aşağıda verilmiştir:
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -100,16 +100,16 @@ Bu abonelik, VM 'Leri dağıtmak için kullanılır.
     
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk ve yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 > [!IMPORTANT]
-> Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal** olarak ayarlanır.
+> Tüm kaynaklar cihazdaki aynı konumda oluşturulur ve konum **Dbelocal** olarak ayarlanır.
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-Örnek çıktı aşağıda gösterilmiştir.
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu hesap, sanal makıne için sanal disk görüntüsünü karşıya yüklemek üzere kullanılacak **yerel bir depolama hesabıdır** .
+Önceki adımda oluşturulan kaynak grubunu kullanarak yeni bir depolama hesabı oluşturun. Bu, sanal makıne için sanal disk görüntüsünü karşıya yüklemek için kullandığınız yerel bir depolama hesabıdır.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> Yalnızca yerel olarak yedekli depolama (Standard_LRS veya Premium_LRS) gibi yerel depolama hesapları Azure Resource Manager aracılığıyla oluşturulabilir. Katmanlı depolama hesapları oluşturmak için, [Azure Stack Edge Pro 'unuzdaki depolama hesaplarına bağlanma,](azure-stack-edge-j-series-deploy-add-storage-accounts.md)bkz. ekleme adımları.
+> Azure Resource Manager kullanarak, yalnızca yerel olarak yedekli depolama (Standart veya Premium) gibi yerel depolama hesapları oluşturabilirsiniz. Katmanlı depolama hesapları oluşturmak için bkz. [öğretici: Azure Stack Edge Pro GPU ile depolama hesapları aracılığıyla veri aktarma](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
-Örnek çıktı aşağıda gösterilmiştir.
+Örnek bir çıktı aşağıda verilmiştir:
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-Depolama hesabı anahtarını almak için `Get-AzureRmStorageAccountKey` komutunu çalıştırın. Bu komutun örnek bir çıktısı burada gösterilmiştir.
+Depolama hesabı anahtarını almak için `Get-AzureRmStorageAccountKey` komutunu çalıştırın. Bu komutun örnek bir çıktısı aşağıda verilmiştir:
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -175,20 +175,19 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>Ana bilgisayar dosyasına blob URI Ekle
+## <a name="add-the-blob-uri-to-the-host-file"></a>Blob URI 'sini ana bilgisayar dosyasına ekleyin
 
-Blob URI 'sini, BLOB depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosyasına, [uç nokta adı çözümlemesi için konak dosyası değiştirme](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)bölümünde zaten eklediniz. Bu giriş, blob URI 'sini eklemek için kullanıldı:
+Blob URI 'sini, [uç nokta adı çözümlemesi için konak dosyasını Değiştir](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)bölümünde Azure Blob depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosyasına eklemiş olursunuz. Bu giriş, blob URI 'sini eklemek için kullanıldı:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\>\<dnsdomain\>
 
-
 ## <a name="install-certificates"></a>Sertifikaları yükleme
 
-*Https* kullanıyorsanız, cihazınıza uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme.
+*Https* kullanıyorsanız, cihazınıza uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [Azure Stack Edge Pro GPU cihazındaki sertifikaları kullanma](azure-stack-edge-gpu-manage-certificates.md)ve yükleme.
 
 ## <a name="upload-a-vhd"></a>VHD’yi karşıya yükleme
 
-Önceki adımlarda oluşturduğunuz yerel depolama hesabındaki sayfa Bloblarında kullanılacak tüm disk görüntülerini kopyalayın. Daha önceki adımlarda oluşturduğunuz depolama hesabına VHD 'yi yüklemek için [AzCopy](../storage/common/storage-use-azcopy-v10.md) gibi bir araç kullanabilirsiniz. 
+Önceki adımlarda oluşturduğunuz yerel depolama hesabındaki sayfa Bloblarında kullanılacak tüm disk görüntülerini kopyalayın. VHD 'YI depolama hesabına yüklemek için [AzCopy](../storage/common/storage-use-azcopy-v10.md) gibi bir araç kullanabilirsiniz. 
 
 <!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
@@ -197,11 +196,11 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 ```
 
 > [!NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
+> Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -248,7 +247,8 @@ Karşıya yüklenen VHD 'den yönetilen disk oluşturun.
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-Örnek bir çıktı aşağıda gösterilmiştir: 
+Örnek bir çıktı aşağıda verilmiştir: 
+
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
+Örnek bir çıktı aşağıda verilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
+Örnek bir çıktı aşağıda verilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)sayfasına gidin.
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -317,15 +317,14 @@ Tags                 : {}
 VM 'yi oluşturup dağıtmadan önce bir sanal ağ oluşturmanız ve bir sanal ağ arabirimini ilişkilendirmeniz gerekir.
 
 > [!IMPORTANT]
-> Sanal ağ ve sanal ağ arabirimi oluştururken aşağıdaki kurallar geçerlidir:
-> - Yalnızca bir sanal ağ oluşturulabilir (kaynak grupları arasında bile) ve adres alanı açısından tam olarak mantıksal ağla eşleşmesi gerekir.
-> - VNET 'te yalnızca bir alt ağa izin verilir. Alt ağ, VNET ile tam olarak aynı adres alanı olmalıdır.
-> - VNIC oluşturma sırasında yalnızca statik ayırma yöntemine izin verilir ve kullanıcının özel bir IP adresi sağlaması gerekir.
+> Aşağıdaki kurallar geçerlidir:
+> - Kaynak grupları arasında bile yalnızca bir sanal ağ oluşturabilirsiniz. Sanal ağın tam olarak mantıksal ağla aynı adres alanı olmalıdır.
+> - Sanal ağ yalnızca bir alt ağa sahip olabilir. Alt ağ, sanal ağ ile tam olarak aynı adres alanına sahip olmalıdır.
+> - Sanal ağ arabirim kartını oluştururken, yalnızca statik ayırma yöntemini kullanabilirsiniz. Kullanıcının özel bir IP adresi sağlaması gerekir.
 
- 
-**Otomatik olarak oluşturulan VNET 'i sorgula**
+### <a name="query-the-automatically-created-virtual-network"></a>Otomatik olarak oluşturulan sanal ağı sorgula
 
-Cihazınızın yerel kullanıcı arabiriminden işlem etkinleştirdiğinizde, `ASEVNET` kaynak grubu altında sanal ağ otomatik olarak oluşturulur `ASERG` . Mevcut VNET 'i sorgulamak için aşağıdaki komutu kullanın:
+Cihazınızın yerel kullanıcı arabiriminden işlem etkinleştirdiğinizde, adlı bir sanal ağ `ASEVNET` , kaynak grubu altında otomatik olarak oluşturulur `ASERG` . Var olan sanal ağı sorgulamak için aşağıdaki komutu kullanın:
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -336,14 +335,16 @@ $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name <Subnet name> -AddressPref
 $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Name <Vnet name> -Location DBELocal -AddressPrefix <Address prefix> -Subnet $subNetId
 ```-->
 
-**VNET alt ağ KIMLIĞINI kullanarak bir vNIC oluşturma**
+### <a name="create-a-virtual-network-interface-card"></a>Sanal ağ arabirimi kartı oluşturma
+
+Sanal ağ alt ağı KIMLIĞINI kullanarak bir sanal ağ arabirim kartı oluşturma komutu aşağıda verilmiştir:
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
 $Nic = New-AzureRmNetworkInterface -Name <Nic name> -ResourceGroupName <Resource group name> -Location DBELocal -IpConfiguration $ipConfig
 ```
 
-Bu komutların örnek çıktısı aşağıda gösterilmiştir:
+Bu komutların örnek çıktısı aşağıda verilmiştir:
 
 ```powershell
 PS C:\Users\Administrator> $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name my-ase-subnet -AddressPrefix "5.5.0.0/16"
@@ -405,7 +406,7 @@ Primary                     : True
 MacAddress                  : 00155D18E432                :
 ```
 
-İsteğe bağlı olarak, bir VM için vNIC oluştururken genel IP 'yi geçirebilirsiniz. Bu örnekte, genel IP özel IP 'yi döndürür. 
+İsteğe bağlı olarak, bir VM için bir sanal ağ arabirim kartı oluştururken genel IP 'yi geçirebilirsiniz. Bu örnekte, genel IP özel IP 'yi döndürür. 
 
 ```powershell
 New-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <ResourceGroupName> -AllocationMethod Static -Location DBELocal
@@ -413,8 +414,7 @@ $publicIP = (Get-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <Re
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <ConfigName> -PublicIpAddressId $publicIP -SubnetId $subNetId
 ```
 
-
-**VM oluşturma**
+### <a name="create-a-vm"></a>VM oluşturma
 
 Artık VM görüntüsünü kullanarak bir VM oluşturabilir ve daha önce oluşturduğunuz sanal ağa iliştirebilirsiniz.
 
@@ -458,15 +458,15 @@ Windows VM 'ye bağlanmak için aşağıdaki adımları izleyin.
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
 
-<!--Connect to the VM using the private IP that you passed during the VM creation.
+<!--Connect to the VM by using the private IP that you passed during the VM creation.
 
 Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-When prompted, provide the password that you used when creating the VM.
+When you're prompted, provide the password that you used when creating the VM.
 
-If you need to provide the SSH key, use this command.
+If you need to provide the SSH key, use this command:
 
 ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
@@ -475,16 +475,16 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
+The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
-## <a name="manage-vm"></a>VM 'yi yönetme
+## <a name="manage-the-vm"></a>VM 'yi yönetme
 
-Aşağıdaki bölümde, Azure Stack Edge Pro cihazınızda oluşturacağınız sanal makine etrafındaki yaygın işlemlerden bazıları açıklanmaktadır.
+Aşağıdaki bölümlerde Azure Stack Edge Pro cihazınızda oluşturabileceğiniz bazı yaygın işlemler açıklanır.
 
 ### <a name="list-vms-running-on-the-device"></a>Cihazda çalışan VM 'Leri listeleyin
 
-Azure Stack Edge Pro cihazınızda çalışan tüm VM 'lerin bir listesini döndürmek için aşağıdaki komutu çalıştırın.
+Azure Stack Edge cihazınızda çalışan tüm VM 'lerin bir listesini döndürmek için şu komutu çalıştırın:
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -497,18 +497,16 @@ Cihazınızda çalışan bir sanal makineyi açmak için aşağıdaki cmdlet 'i 
 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-
 Bu cmdlet hakkında daha fazla bilgi için [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)' ye gidin.
 
 ### <a name="suspend-or-shut-down-the-vm"></a>VM 'yi askıya alma veya kapatma
 
-Cihazınızda çalışan bir sanal makineyi durdurmak veya kapatmak için aşağıdaki cmdlet'i çalıştırın:
+Cihazınızda çalışan bir sanal makineyi durdurmak veya kapatmak için aşağıdaki cmdlet 'i çalıştırın:
 
 
 ```powershell
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
-
 
 Bu cmdlet hakkında daha fazla bilgi için [stop-AzureRmVM cmdlet 'ine](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)gidin.
 
@@ -531,8 +529,6 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
 Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)gidin.
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

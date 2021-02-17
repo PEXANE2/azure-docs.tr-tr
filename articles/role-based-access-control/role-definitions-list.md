@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369285"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555954"
 ---
 # <a name="list-azure-role-definitions"></a>Azure rol tanımlarını listeleyin
 
@@ -27,7 +27,7 @@ Rol tanımı, okuma, yazma ve silme gibi gerçekleştirilebileceği izinlerin bi
 
 Azure Active Directory için Yönetici rollerinin listesini görmek için, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/roles/permissions-reference.md)bölümüne bakın.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 ### <a name="list-all-roles"></a>Tüm rolleri Listele
 
@@ -162,7 +162,7 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 ### <a name="list-all-roles"></a>Tüm rolleri Listele
 
@@ -476,7 +476,7 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure yerleşik rolleri](built-in-roles.md)
+- [Yerleşik Azure rolleri](built-in-roles.md)
 - [Özel Azure rolleri](custom-roles.md)
 - [Azure portal kullanarak Azure rol atamalarını listeleyin](role-assignments-list-portal.md)
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)

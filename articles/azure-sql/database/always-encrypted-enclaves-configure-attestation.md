@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733832"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555658"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL mantıksal sunucunuz için Azure kanıtlama yapılandırma
 
@@ -114,7 +114,7 @@ Kanıtlama iş akışı sırasında, veritabanınızı içeren Azure SQL mantık
 
 ### <a name="use-azure-portal-to-assign-permission"></a>İzin atamak için Azure portal kullanın
 
-Bir Azure SQL sunucusunun kimliğini kanıtlama sağlayıcısına yönelik kanıtlama okuyucusu rolüne atamak için, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)konusundaki genel yönergeleri izleyin. **Rol ataması Ekle** bölmesindeyken:
+Bir Azure SQL sunucusunun kimliğini bir kanıtlama sağlayıcısına yönelik kanıtlama okuyucusu rolüne atamak için, [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md)bölümündeki genel yönergeleri izleyin. **Rol ataması Ekle** bölmesindeyken:
 
 1. **Rol** açılır penceresinde, **kanıtlama okuyucusu** rolünü seçin.
 1. **Seç** alanına, arama yapmak IÇIN Azure SQL sunucunuzun adını girin.
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
+Daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
