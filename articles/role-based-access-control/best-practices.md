@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526424"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555566"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC için en iyi uygulamalar
 
@@ -30,7 +30,7 @@ Aşağıdaki diyagramda Azure RBAC kullanımı için önerilen bir model göster
 
 ![Azure RBAC ve en düşük ayrıcalık](./media/best-practices/rbac-least-privilege.png)
 
-Rol atamaları ekleme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md).
+Rol atama hakkında daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Abonelik sahiplerinin sayısını sınırlayın
 

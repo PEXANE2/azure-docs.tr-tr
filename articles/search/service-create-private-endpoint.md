@@ -3,17 +3,17 @@ title: Güvenli bağlantı için özel uç nokta oluşturma
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama hizmetine güvenli bağlantı için bir sanal ağda özel uç nokta ayarlayın.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779949"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545539"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -21,8 +21,10 @@ Bu makalede, Internet üzerinden erişilemeyen yeni bir Azure Bilişsel Arama hi
 
 Özel uç noktalar [Azure özel bağlantısı](../private-link/private-link-overview.md)tarafından ayrı bir hizmet olarak sağlanır. Maliyetler hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Azure Bilişsel Arama için özel uç nokta desteği, Azure portal veya [yönetim REST API 2020-03-13 sürümü](/rest/api/searchmanagement/)kullanılarak yapılandırılabilir. Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır. Portala alternatif olarak, hizmet içindeki çeşitli bileşenlerle etkileşim kurmak için [vs Code uzantısını](https://aka.ms/vscode-search) kullanabilirsiniz.
+Azure portal, bu makalede açıklandığı gibi, özel bir uç nokta oluşturabilirsiniz. Alternatif olarak, 2020-03-13, [Azure PowerShell](/powershell/module/az.search)veya [Azure CLI](/cli/azure/search) [REST API yönetim sürümünü](/rest/api/searchmanagement/)de kullanabilirsiniz.
+
+> [!NOTE]
+> Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebilirsiniz, ancak dizin, Dizin Oluşturucu ve beceri bilgileri güvenlik nedenleriyle gizlidir. Portala alternatif olarak, hizmet içindeki çeşitli bileşenlerle etkileşim kurmak için [vs Code uzantısını](https://aka.ms/vscode-search) kullanabilirsiniz.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Güvenli erişim için neden özel bir uç nokta kullanılmalıdır?
 
@@ -180,7 +182,7 @@ VM *myvm* ' yi indirip şu şekilde bağlayın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+        >   >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -218,9 +220,9 @@ Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dı
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, arama hizmeti ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
-1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından  *myresourcegroup* öğesini seçin   . 
+1.  **   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından  *myresourcegroup* öğesini seçin   . 
 1. **Kaynak grubunu sil**'i seçin. 
-1.  *myResourceGroup*   **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
+1.  **   **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, bir sanal ağ üzerinde bir VM ve özel bir uç nokta içeren bir arama hizmeti oluşturdunuz. VM 'ye internet 'ten bağlanır ve özel bağlantı kullanarak arama hizmetine güvenli bir şekilde iletilecaksınız. Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](../private-link/private-endpoint-overview.md).

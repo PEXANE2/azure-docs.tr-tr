@@ -5,37 +5,38 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788239"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544842"
 ---
 # <a name="azure-firewall-features"></a>Azure Güvenlik Duvarı özellikleri
 
-[Azure Güvenlik Duvarı](overview.md) , Azure sanal ağ kaynaklarınızı koruyan, yönetilen ve bulut tabanlı bir ağ güvenlik hizmetidir.
+[Azure Güvenlik Duvarı](overview.md) , Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir.
 
 ![Güvenlik duvarına genel bakış](media/overview/firewall-threat.png)
 
 Azure Güvenlik Duvarı aşağıdaki özellikleri içerir:
 
-- [Yerleşik yüksek kullanılabilirlik](#built-in-high-availability)
-- [Kullanılabilirlik Alanları](#availability-zones)
-- [Kısıtlanmamış bulut ölçeklenebilirliği](#unrestricted-cloud-scalability)
-- [Uygulama FQDN filtreleme kuralları](#application-fqdn-filtering-rules)
-- [Ağ trafiği filtreleme kuralları](#network-traffic-filtering-rules)
-- [FQDN etiketleri](#fqdn-tags)
-- [Hizmet etiketleri](#service-tags)
-- [Tehdit bilgileri](#threat-intelligence)
-- [Giden SNAT desteği](#outbound-snat-support)
-- [Gelen DNAT desteği](#inbound-dnat-support)
-- [Birden çok genel IP adresi](#multiple-public-ip-addresses)
-- [Azure Izleyici günlüğü](#azure-monitor-logging)
-- [Zorlamalı tünel oluşturma](#forced-tunneling)
-- [Sertifikalar](#certifications)
+- Yerleşik yüksek kullanılabilirlik
+- Kullanılabilirlik Alanları
+- Kısıtlamasız bulut ölçeklenebilirliği
+- Uygulama FQDN filtreleme kuralları
+- Ağ trafiği filtreleme kuralları
+- FQDN etiketleri
+- Hizmet etiketleri
+- Tehdit bilgileri
+- Giden SNAT desteği
+- Gelen DNAT desteği
+- Birden çok genel IP adresi
+- Azure İzleyici günlükleri
+- Zorlamalı tünel oluşturma
+- Web kategorileri (Önizleme)
+- Sertifikalar
 
 ## <a name="built-in-high-availability"></a>Yerleşik yüksek kullanılabilirlik
 
@@ -47,7 +48,7 @@ Azure Güvenlik Duvarı, daha fazla kullanılabilirlik için dağıtım sırası
 
 Ayrıca, Azure Güvenlik duvarını belirli bir bölgeye yalnızca yakınlık nedenleriyle, hizmet standardı% 99,95 SLA ile ilişkilendirebilirsiniz.
 
-Bir kullanılabilirlik alanında dağıtılan bir güvenlik duvarı için ek maliyet yoktur. Ancak, Kullanılabilirlik Alanları ilişkili gelen ve giden veri aktarımları için ek maliyetler de mevcuttur. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/).
+Bir kullanılabilirlik alanında dağıtılan bir güvenlik duvarı için ek maliyet yoktur. Ancak, Kullanılabilirlik Alanları ilişkili gelen ve giden veri aktarımları için ek maliyetler mevcuttur. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Azure Güvenlik Duvarı Kullanılabilirlik Alanları, Kullanılabilirlik Alanları destekleyen bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları destekleyen bölgeler](../availability-zones/az-region.md)
 
@@ -97,7 +98,7 @@ Güvenlik duvarınızla [birden çok genel IP adresini](deploy-multi-public-ip-p
 Bu, aşağıdaki senaryolara izin vermez:
 
 - **DNAT** -birden çok standart bağlantı noktası örneğini arka uç sunucularınıza çevirebilirsiniz. Örneğin iki genel IP adresini varsa 3389 (RDP) numaralı TCP bağlantı noktasını iki IP adresi için çevirebilirsiniz.
-- **SNAT** -giden SNAT bağlantıları için ek bağlantı noktaları kullanılabilir ve bu, SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Azure Güvenlik Duvarı şu anda bir bağlantı için kullanılacak kaynak genel IP adresini rastgele seçer. Ağınızda aşağı akış filtresi varsa güvenlik duvarınızla ilişkilendirilmiş olan tüm genel IP adreslerine izin vermeniz gerekir. Bu yapılandırmayı basitleştirmek için bir [genel IP adresi ön eki](../virtual-network/public-ip-address-prefix.md) kullanmayı düşünün.
+- **SNAT** -giden SNAT bağlantıları için daha fazla bağlantı noktası kullanılabilir ve bu, SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Azure Güvenlik Duvarı şu anda bir bağlantı için kullanılacak kaynak genel IP adresini rastgele seçer. Ağınızda aşağı akış filtresi varsa güvenlik duvarınızla ilişkilendirilmiş olan tüm genel IP adreslerine izin vermeniz gerekir. Bu yapılandırmayı basitleştirmek için bir [genel IP adresi ön eki](../virtual-network/public-ip-address-prefix.md) kullanmayı düşünün.
 
 ## <a name="azure-monitor-logging"></a>Azure İzleyici günlükleri
 
@@ -110,6 +111,24 @@ Azure Güvenlik Duvarı çalışma kitabı, Azure Güvenlik Duvarı veri analizi
 ## <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
 
 Azure Güvenlik Duvarı 'nı, Internet 'e yönelik tüm trafiği doğrudan Internet 'e gitmek yerine belirlenen bir sonraki atlamaya yönlendirmek üzere yapılandırabilirsiniz. Örneğin, Internet 'e geçirilmeden önce ağ trafiğini işlemek için şirket içi bir uç güvenlik duvarına veya diğer ağ sanal gerecine (NVA) sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md).
+
+## <a name="web-categories-preview"></a>Web kategorileri (Önizleme)
+
+Web kategorileri, yöneticilerin kumar web siteleri, sosyal medya web siteleri ve diğerleri gibi web sitesi kategorilerine Kullanıcı erişimine izin verebilir veya erişimi reddetmesini sağlar. Web kategorileri Azure Güvenlik Duvarı standardına dahildir, ancak Azure Güvenlik Duvarı Premium önizlemesinde daha ince ayarlanmıştır. Bir FQDN tabanlı kategori ile eşleşen standart SKU 'daki Web kategorileri yeteneğinin aksine, Premium SKU, hem HTTP hem de HTTPS trafiği için tüm URL 'ye göre kategori ile eşleşir. Azure Güvenlik Duvarı Premium önizleme hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Premium Önizleme özellikleri](premium-features.md).
+
+Örneğin, Azure Güvenlik Duvarı için bir HTTPS isteği alıyorsa `www.google.com/news` , aşağıdaki kategorilere ayırma beklenmektedir: 
+
+- Güvenlik Duvarı standardı – yalnızca FQDN bölümü incelenir, `www.google.com` Bu nedenle *arama altyapısı* olarak kategorilere ayrılır. 
+
+- Güvenlik Duvarı Premium – URL 'nin tamamı incelenir, bu nedenle `www.google.com/news` *haber* olarak kategorilere ayrılır.
+
+Kategoriler, **yükümlülük**, **yüksek bant genişliği**, **iş kullanımı**, **verimlilik kaybı**, **Genel gezinme** ve **kategorilere ayrılmamış** önem derecesine göre düzenlenmiştir.
+
+### <a name="category-exceptions"></a>Kategori özel durumları
+
+Web kategorisi kurallarınız için özel durumlar oluşturabilirsiniz. Kural koleksiyonu grubu dahilinde daha yüksek önceliğe sahip bir izin verme veya reddetme kuralı koleksiyonu oluşturun. Örneğin, öncelik `www.linkedin.com` 200 Ile **sosyal ağı** engelleyen bir kural koleksiyonu ile öncelik 100 ile izin veren bir kural koleksiyonu yapılandırabilirsiniz. Bu, önceden tanımlanmış **sosyal ağ** Web kategorisi için özel durum oluşturur.
+
+
 
 ## <a name="certifications"></a>Sertifikalar
 

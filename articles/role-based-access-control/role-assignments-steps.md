@@ -1,5 +1,5 @@
 ---
-title: Rol ataması ekleme adımları-Azure RBAC
+title: Azure rolü atama adımları-Azure RBAC
 description: Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere Azure rolleri atama adımlarını öğrenin.
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117257"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556046"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
+# <a name="steps-to-assign-an-azure-role"></a>Azure rolü atama adımları
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Bu makalede [Azure Portal](role-assignments-portal.md), [Azure POWERSHELL](role-assignments-powershell.md), [Azure CLI](role-assignments-cli.md)veya [REST API](role-assignments-rest.md)kullanarak rol ataması eklemek için üst düzey adımlar açıklanmaktadır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Bu makalede, Azure rollerini [Azure Portal](role-assignments-portal.md), [Azure POWERSHELL](role-assignments-powershell.md), [Azure CLI](role-assignments-cli.md)veya [REST API](role-assignments-rest.md)kullanarak atamaya yönelik üst düzey adımlar açıklanmaktadır.
 
 ## <a name="step-1-determine-who-needs-access"></a>1. Adım: kimlerin erişime ihtiyacı olduğunu belirleme
 
@@ -62,7 +62,7 @@ Yerleşik rollerin diğerleri belirli Azure kaynakları için yönetim özellikl
 
 ![Rol ataması kapsamı](./media/shared/rbac-scope.png)
 
-Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örnek:
+Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örneğin:
 
 - [Okuyucu](built-in-roles.md#reader) rolünü yönetim grubu kapsamındaki bir kullanıcıya atarsanız, bu kullanıcı yönetim grubundaki tüm aboneliklerdeki her şeyi okuyabilir.
 - [Faturalandırma okuyucusu](built-in-roles.md#billing-reader) rolünü abonelik kapsamındaki bir gruba atarsanız, o grubun üyeleri abonelikteki her kaynak grubu ve kaynak için faturalandırma verilerini okuyabilir.
@@ -79,16 +79,16 @@ Rolleri atamak için, rol atamaya çalıştığınız kapsamda [sahip](built-in-
 
 Kullanıcı hesabınızın aboneliğiniz dahilinde rol atama izni yoksa, hesabınızın "Microsoft. Authorization/Roleatamaları/Write ' işlemini gerçekleştirmek için yetkilendirmeye sahip olmadığını belirten bir hata iletisi görürsünüz. Bu durumda, sizin adınıza izinleri atayabilecekleri için aboneliğinizin yöneticilerine başvurun.
 
-## <a name="step-5-add-role-assignment"></a>5. Adım. Rol ataması ekle
+## <a name="step-5-assign-role"></a>5. Adım. Rol atama
 
-Güvenlik sorumlusunu, rolünü ve kapsamını öğrendikten sonra rolü atayabilirsiniz. Azure portal, Azure PowerShell, Azure CLı, Azure SDK 'Ları veya REST API 'Lerini kullanarak rol atamaları ekleyebilirsiniz. Her abonelikte en fazla **2000** rol ataması yapabilirsiniz. Bu sınır, abonelik, kaynak grubu ve kaynak kapsamlarındaki rol atamalarını içerir. Her bir yönetim grubunda en fazla **500** rol ataması yapabilirsiniz.
+Güvenlik sorumlusunu, rolünü ve kapsamını öğrendikten sonra rolü atayabilirsiniz. Azure portal, Azure PowerShell, Azure CLı, Azure SDK 'Ları veya REST API 'Lerini kullanarak roller atayabilirsiniz. Her abonelikte en fazla **2000** rol ataması yapabilirsiniz. Bu sınır, abonelik, kaynak grubu ve kaynak kapsamlarındaki rol atamalarını içerir. Her bir yönetim grubunda en fazla **500** rol ataması yapabilirsiniz.
 
-Rol atamaları ekleme hakkında ayrıntılı adımlar için aşağıdaki makalelere göz atın.
+Rol atama hakkında ayrıntılı adımlar için aşağıdaki makalelere göz atın.
 
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
-- [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-powershell.md)
-- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-cli.md)
-- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)
+- [Azure PowerShell kullanarak Azure rolleri atama](role-assignments-powershell.md)
+- [Azure CLı kullanarak Azure rolleri atama](role-assignments-cli.md)
+- [REST API kullanarak Azure rolleri atama](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

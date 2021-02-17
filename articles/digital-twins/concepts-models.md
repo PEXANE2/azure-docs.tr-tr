@@ -1,22 +1,22 @@
 ---
-title: Özel modeller
+title: DTDL modelleri
 titleSuffix: Azure Digital Twins
-description: Azure dijital TWINS 'in ortamınızdaki varlıkları anlatmak için Kullanıcı tanımlı modelleri nasıl kullandığını anlayın.
+description: Azure Digital TWINS 'in ortamınızdaki varlıkları anlatmak için özel modeller nasıl kullandığını anlayın.
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131398"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558148"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
+# <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins'deki ikiz modellerini anlama
 
-Azure dijital TWINS 'in temel özellikleri, kendi sözlüğünüzü tanımlayabilir ve ikizi grafınızı işletmenizin otomatik olarak tanımlanan koşullarında oluşturabilir. Bu özellik Kullanıcı tanımlı **modeller** aracılığıyla sağlanır. Modellerinizi, dünyanın bir açıklamasında adlar olarak düşünebilirsiniz. 
+Azure dijital TWINS 'in temel özellikleri, kendi sözlüğünüzü tanımlayabilir ve ikizi grafınızı işletmenizin otomatik olarak tanımlanan koşullarında oluşturabilir. Bu yetenek, Kullanıcı tarafından belirtilen **modeller** aracılığıyla sağlanır. Modellerinizi, dünyanın bir açıklamasında adlar olarak düşünebilirsiniz. 
 
 Model, nesne odaklı programlama dilindeki bir **sınıfa** benzer ve gerçek çalışma ortamınızdaki belirli bir kavram için veri şekli tanımlar. Modeller, adlara sahiptir ( *Oda* veya *sıcaklık algılayıcısı* gibi) ve ortamınızdaki bu varlık türünün neler yapabileceğini tanımlayan özellikler, telemetri/olaylar ve komutlar gibi öğeleri içerir. Daha sonra bu modelleri, bu tür açıklamasını karşılayan belirli varlıkları temsil eden [**dijital TWINS**](concepts-twins-graph.md) oluşturmak için kullanacaksınız.
 
@@ -24,7 +24,7 @@ Azure dijital TWINS modelleri, JSON-LD tabanlı **dijital Ikizi tanım dili (DTD
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Modeller için dijital Ikizi tanım dili (DTDL)
 
-Azure dijital TWINS modelleri, dijital TWINS tanım dili (DTDL) kullanılarak tanımlanmıştır. DTDL, JSON-LD ' n i n tabanlıdır ve programlama dilindeki bağımsız. DTDL, Azure dijital TWINS 'e özel değildir, ancak [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)gibi diğer IoT hizmetlerindeki cihaz verilerini göstermek için de kullanılır. 
+Azure Digital Twins modelleri, Dijital İkiz Tanımlama Dili (DTDL) kullanılarak tanımlanır. JSON-LD tabanlı bir dil olan DTDL, programlama dilinden bağımsız olarak çalışır. DTDL, Azure dijital TWINS 'e özel değildir, ancak [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)gibi diğer IoT hizmetlerindeki cihaz verilerini göstermek için de kullanılır. 
 
 Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakkında daha fazla bilgi için bkz. GitHub: [*Digital TWINS tanım dili (DTDL)-sürüm 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Azure dijital TWINS ile DTDL _Sürüm 1_ kullanımı artık kullanım dışıdır.
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakk
 
 ## <a name="elements-of-a-model"></a>Bir modelin öğeleri
 
-Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir**. Bu, modelin tamamını kapsüller ve modelin geri kalanı arabirim içinde tanımlanır. 
+Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir**. Bu tür modelin tamamını kapsüller ve modelin geri kalanı arabirim içinde tanımlanır. 
 
 Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya bir çoğunu içerebilir:
 * **Özellik** özellikleri, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi). Özellikler depolamayı yedekliyor ve herhangi bir zamanda okunabilir.
@@ -136,23 +136,31 @@ Ortamınızdaki varlıkları yansıtmak için modeller tasarlarken, geleceğe ba
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>Sektör standardı modellerle tümleştirme
+## <a name="tools-for-models"></a>Modeller için Araçlar 
 
-Endüstri standartlarına dayalı modelleri kullanma veya RDF veya OWL gibi standart ontology temsili kullanma, Azure dijital TWINS modellerinizi tasarlarken zengin bir başlangıç noktası sağlar. Endüstri modellerini kullanmak, standartlaştırma ve bilgi paylaşımıyla de yardımcı olur.
+Modellerle ve ontoloetlerden daha da kolay hale getirmek için birkaç örnek mevcuttur. Bunlar bu depoda bulunur: [dijital TWINS tanım dili (DTDL) araçları](https://github.com/Azure/opendigitaltwins-tools).
 
-Azure dijital TWINS ile kullanılmak üzere, JSON-LD tabanlı [**dijital TWINS tanım dili (DTDL)**](concepts-models.md)içinde bir model temsil etmelidir. Bu nedenle, sektör standardı bir model kullanmak için, Azure Digital TWINS 'in kullanabilmesi için önce bunu DTDL 'e dönüştürmeniz gerekir. DTDL modeli daha sonra Azure dijital TWINS içindeki modelin gerçeği kaynağı olarak görev yapar.
+Bu bölümde, geçerli örnek kümesi daha ayrıntılı olarak açıklanmaktadır.
 
-Koşulunuza bağlı olarak, sektör standardı modellerini DTDL ile tümleştirmenin iki ana yolu vardır:
-* Modellerinizi henüz oluşturmanız gerekiyorsa, bunları sektörünüz için özel dil içeren **mevcut Başlatıcı DTDL ontolozeri** etrafında tasarlayabilirsiniz.
-* Bir sektör standardını temel alan mevcut modelleriniz zaten varsa, bunları Azure dijital TWINS 'e getirmek için **DTDL 'ye dönüştürmeniz** gerekir.
+### <a name="model-uploader"></a>Model Uploader 
 
-Bu işlemlerden her ikisi hakkında daha fazla bilgi için bkz. [*nasıl yapılır: sektör standardı modellerini tümleştirme*](how-to-integrate-models.md).
+_**Azure dijital TWINS 'e model yükleme**_
+
+Modellerinizi oluşturmayı, genişletmeyi veya seçmeyi tamamladıktan sonra, çözümünüzde kullanılabilir hale getirmek için bunları Azure dijital TWINS örneğinizle karşıya yükleyebilirsiniz. Bu işlem, [*nasıl yapılır: DTDL modellerini yönetme*](how-to-manage-model.md#upload-models)bölümünde açıklandığı gibi [Azure dijital TWINS API 'leri](how-to-use-apis-sdks.md)kullanılarak yapılır.
+
+Ancak, karşıya yüklenecek çok modelleriniz varsa veya tek tek karşıya yükleme işlemlerini izleyen çok sayıda bağımlılıklar varsa, aynı anda birçok modeli karşıya yüklemek için bu örneği kullanabilirsiniz: [**Azure Digital TWINS model yükleyicisi**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Bu projeyi yapılandırmak ve kullanmak için örnek ile birlikte sunulan yönergeleri izleyin.
+
+### <a name="model-visualizer"></a>Model görselleştiricisi 
+
+_**Modelleri görselleştirme için**_
+
+Azure dijital TWINS örneğinizdeki modelleri karşıya yükledikten sonra, tüm devralma ve model ilişkileri dahil olmak üzere Azure dijital TWINS örneğinizdeki modelleri [**ADT model görselleştiricisi**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)' nı kullanarak görüntüleyebilirsiniz. Bu örnek şu anda bir taslak durumundadır. Dijital TWINS geliştirme Community 'nin örneğe genişletmesini ve katkıda bulunmasını öneririz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. Digitaltwınmodeller API 'Leriyle modelleri yönetme:
-* [*Nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)
+* Endüstri standardı ontolotem 'lar temelinde modeller oluşturma hakkında bilgi edinin: [ *ontology nedir?*](concepts-ontologies.md)
 
-Ya da dijital TWINS 'in modeller temelinde nasıl oluşturulduğuna ilişkin bilgi edinin:
-* [*Kavramlar: dijital TWINS ve ikizi grafiği*](concepts-twins-graph.md)
+* API işlemlerinde modelleri yönetmeye daha derin bakış: [ *nasıl yapılır: dtdl modellerini yönetme*](how-to-manage-model.md)
+
+* Modellerin dijital TWINS oluşturmak için nasıl kullanıldığı hakkında bilgi edinin: [ *Kavramlar: dijital TWINS ve ikizi Graf*](concepts-twins-graph.md)
 
