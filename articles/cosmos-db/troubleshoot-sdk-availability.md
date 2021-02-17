@@ -3,17 +3,17 @@ title: Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirli
 description: Çoklu bölgesel ortamlarda çalışırken Azure Cosmos SDK kullanılabilirlik davranışı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559693"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ Bu durumlarda, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma
 
 * .NET v2 SDK 'daki yanıtlarda *Requestdiagnosticsstring* özelliği.
 * .NET v3 SDK 'daki yanıtlar ve özel durumlar için *Tanılama* özelliği.
-* Java v4 SDK 'sında yanıtlar ve özel durumlar için *Getdiagnostics ()* yöntemi.
+* Java V4 SDK'sında yanıtlar ve özel durumlardaki *getDiagnostics()* yöntemi.
 
 Tercih sırasına göre sonraki bölgeyi belirlerken, SDK istemcisi, tercih edilen bölgelerin önceliklerini belirlemek için hesap bölgesi listesini kullanır (varsa).
 
@@ -83,9 +83,9 @@ Hesap tek bir yazma bölgedeyse ve bir yazma işlemi sırasında bölgesel kesin
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP protokolünde geçici bağlantı sorunları
 
-Azure Cosmos SDK istemcisinin, belirli bir istek için TCP protokolünü kullanacak şekilde yapılandırıldığı senaryolarda, ağ koşullarının belirli bir uç nokta ile iletişimi geçici olarak etkilediği durumlar olabilir. Bu geçici ağ koşulları, TCP zaman aşımları olarak yüzeysel olabilir. İstemci, isteği bir saniye boyunca aynı uç noktada yerel olarak yeniden deneyecek.
+Azure Cosmos SDK istemcisinin, belirli bir istek için TCP protokolünü kullanacak şekilde yapılandırıldığı senaryolarda, ağ koşullarının belirli bir uç nokta ile iletişimi geçici olarak etkilediği durumlar olabilir. Bu geçici ağ koşulları, TCP zaman aşımları ve hizmet kullanılamıyor (HTTP 503) hataları olarak yüzeydedir. İstemci, hataya sızmadan önce, isteği bir süre sonra aynı uç noktada yerel olarak yeniden deneyecek.
 
-Kullanıcı, birden fazla bölgeyle bir tercih edilen bölge listesi yapılandırmışsa ve Azure Cosmos hesabı birden fazla yazma bölgesi veya tek yazma bölgesidir ve işlem bir okuma isteği ise, istemci, sonraki bölgedeki tek işlemi tercih listesinden yeniden dener.
+Kullanıcı, birden fazla bölgeyle bir tercih edilen bölge listesi yapılandırmışsa ve Azure Cosmos hesabı birden fazla yazma bölgesi veya tek bir yazma bölgesidir ve işlem bir okuma isteği ise, istemci yerel hatayı algılar ve sonraki bölgede bulunan tek işlemi tercih listesinden yeniden dener.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

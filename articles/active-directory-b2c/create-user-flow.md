@@ -10,24 +10,24 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109021"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556500"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C bir Kullanıcı akışı oluşturma
 
 Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde [Kullanıcı akışları](user-flow-overview.md) oluşturabilir ve bunları gerektiği şekilde uygulamalarınızda kullanabilirsiniz. Kullanıcı akışları, uygulamalar arasında yeniden kullanılabilir.
 
 > [!IMPORTANT]
-> Kullanıcı akış sürümlerine başvurduğumuz şekilde değiştirdik. Daha önce v1 (üretime Ready) sürümleri ve V 1.1 ve v2 (Önizleme) sürümlerini sunuyoruz. Artık Kullanıcı akışlarını **Önerilen** (yeni nesil Önizleme) ve **Standart** (genel kullanıma açık) sürümler halinde birleştiriyoruz. Tüm V 1.1 ve v2 eski Preview Kullanıcı akışları **, 1 ağustos 2021 '** e kadar kullanımdan kalkmaya yönelik bir yoldur. Ayrıntılar için bkz. [Azure AD B2C Içindeki Kullanıcı akışı sürümleri](user-flow-versions.md).
+> Kullanıcı akışı sürümlerine başvuru şeklimizi değiştirdik. Daha önce V1 (üretime hazır) sürümleriyle V1.1 ve V2 (önizleme) sürümlerini sunduk. Artık Kullanıcı akışlarını **Önerilen** (yeni nesil Önizleme) ve **Standart** (genel kullanıma açık) sürümler halinde birleştiriyoruz. Tüm V 1.1 ve v2 eski Preview Kullanıcı akışları **, 1 ağustos 2021 '** e kadar kullanımdan kalkmaya yönelik bir yoldur. Ayrıntılar için bkz. [Azure AD B2C Içindeki Kullanıcı akışı sürümleri](user-flow-versions.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 - Yeni Kullanıcı akışını sınamak için kullanmak istediğiniz **uygulamayı kaydedin** . Bir örnek için bkz. [öğretici: bir Web uygulamasını Azure AD B2C kaydetme](tutorial-register-applications.md).
-- Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi sağlayıcılardan Kullanıcı oturum açmasını etkinleştirmek istiyorsanız **dış kimlik sağlayıcıları ekleyin** . Bir örnek için bkz. [öğretici: Azure AD B2C uygulamalarınıza kimlik sağlayıcıları ekleme](tutorial-add-identity-providers.md).
+- Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi sağlayıcılardan Kullanıcı oturum açmasını etkinleştirmek istiyorsanız **dış kimlik sağlayıcıları ekleyin** . Bkz. [Azure AD B2C uygulamalarınıza kimlik sağlayıcıları ekleme](add-identity-provider.md).
 - Kiracınızdaki yerel hesaplar için desteklemek istediğiniz kimlik türlerini (e-posta, Kullanıcı adı, telefon numarası) belirtmek üzere **yerel hesap kimlik sağlayıcısını yapılandırın** . Ardından, bireysel kullanıcı akışları oluştururken desteklenen bu kimlik türleri arasından seçim yapabilirsiniz. Bir Kullanıcı Kullanıcı akışını tamamladığında, Azure AD B2C dizininizde yerel bir hesap oluşturulur ve **yerel hesap** kimlik sağlayıcınız Kullanıcı bilgilerinin kimliğini doğrular. Kiracının yerel hesap kimliği sağlayıcınızı şu adımlarla yapılandırın:
 
    1. [Azure portalında](https://portal.azure.com/) oturum açın. 
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde [Kulla
 
    - **Yerel hesap**. Kullanıcıların Azure AD B2C kiracınızda yerel hesaplar oluşturmalarına izin vermek istiyorsanız, kullanmak istediğiniz tanımlayıcı türünü (örneğin, e-posta, Kullanıcı KIMLIĞI veya telefon) seçin. Yalnızca [yerel hesap kimlik sağlayıcısı](#before-you-begin) ayarlarınızda yapılandırılan kimlik türleri listelenir.
 
-   - **Sosyal kimlik sağlayıcıları**. Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi [eklediğiniz sosyal kimlik sağlayıcılarıyla](tutorial-add-identity-providers.md)Kullanıcı oturum açma izni vermek istiyorsanız, listeden sağlayıcıları seçin.
+   - **Sosyal kimlik sağlayıcıları**. Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi [eklediğiniz sosyal kimlik sağlayıcılarıyla](add-identity-provider.md)Kullanıcı oturum açma izni vermek istiyorsanız, listeden sağlayıcıları seçin.
 
 9. **Kullanıcı öznitelikleri ve talepler** için, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. **Daha fazla göster**' i seçin. Öznitelikler ve talepler ' i seçin ve ardından **Tamam**' ı seçin.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446317"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546984"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için sertifikaları GPU ile yapılandırma
 
@@ -35,10 +35,10 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
 
 * Fiziksel cihazı [yükleme Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md)' da ayrıntılı olarak yüklediniz.
 * Kendi sertifikalarınızı getirmeyi planlıyorsanız:
-    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md) ' e gidin
+    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md) ' e gidin
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Cihaz için sertifikaları yapılandırma
@@ -49,7 +49,7 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
 
         ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-2.png)
 
-    - Cihaz adı veya DNS etki alanını değiştirdiyseniz, sertifikaların durumunun **geçerli değil**olarak gösterileceğini görürsünüz. 
+    - Cihaz adı veya DNS etki alanını değiştirdiyseniz, sertifikaların durumunun **geçerli değil** olarak gösterileceğini görürsünüz. 
 
         ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
@@ -93,7 +93,7 @@ Azure Stack Edge Pro cihaz sertifikalarını yeniden oluşturmak ve indirmek iç
 
 3. Sertifikalar oluşturulduktan sonra: 
 
-    - Tüm sertifikaların durumu **geçerli**olarak gösterilir. 
+    - Tüm sertifikaların durumu **geçerli** olarak gösterilir. 
 
         ![Sertifika Oluştur ve indir 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6.png)
 
@@ -120,16 +120,16 @@ Azure Stack Edge Pro cihaz sertifikalarını yeniden oluşturmak ve indirmek iç
 
 Bu sertifikaları Ao cihazında uç noktalara erişmek için kullandığınız istemci sistemine yüklemeniz gerekir. Bu sertifikalar istemciyle cihaz arasında güven kurar.
 
-Bu sertifikaları cihaza erişmek için kullandığınız istemcide içeri ve dışarı aktarmak için, [Azure Stack Edge Pro cihazınıza erişen istemcilerde sertifikaları Içeri aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin. 
+Bu sertifikaları cihaza erişmek için kullandığınız istemcide içeri ve dışarı aktarmak için, [Azure Stack Edge Pro cihazınıza erişen istemcilerde sertifikaları Içeri aktarma](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin. 
 
 Azure Depolama Gezgini kullanıyorsanız, istemcinizi pek biçiminde yüklemeniz gerekir ve cihaz tarafından üretilen sertifikaları ped biçimine dönüştürmeniz gerekir. 
 
 > [!IMPORTANT]
 > - İndirme bağlantısı yalnızca cihaz tarafından oluşturulan sertifikalar için kullanılabilir ve kendi sertifikalarınızı getirdiğinizde değildir.
-> - Diğer sertifika gereksinimleri karşılandığında, cihaz tarafından üretilen sertifikaların bir karışımına sahip olmak ve kendi sertifikalarınızı getirmek için karar verebilirsiniz. Daha fazla bilgi için [sertifika gereksinimleri](azure-stack-edge-j-series-certificate-requirements.md)' ne gidin.
+> - Diğer sertifika gereksinimleri karşılandığında, cihaz tarafından üretilen sertifikaların bir karışımına sahip olmak ve kendi sertifikalarınızı getirmek için karar verebilirsiniz. Daha fazla bilgi için [sertifika gereksinimleri](azure-stack-edge-gpu-certificate-requirements.md)' ne gidin.
     
 
-### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getir
+### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getirme
 
 İmzalama zinciri dahil kendi sertifikalarınızı eklemek için bu adımları izleyin.
 
@@ -165,7 +165,7 @@ Azure Depolama Gezgini kullanıyorsanız, istemcinizi pek biçiminde yüklemeniz
     > Azure genel bulutu haricinde, imzalama zinciri sertifikalarının tüm bulut yapılandırmalarında (Azure Kamu veya Azure Stack) etkinleştirilmesinden önce getirilmesi gerekir.
 
 
-Cihazınız artık etkinleştirilmeye hazırdır. Başlamak ** için< geri 'yi**seçin.
+Cihazınız artık etkinleştirilmeye hazırdır. Başlamak **için< geri 'yi** seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

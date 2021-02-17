@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362866"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548650"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R ve Azure Stack Edge Mini R için güvenlik ve veri koruması
 
@@ -77,7 +77,7 @@ Seçenekleriniz şunlardır:
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>Sertifikalar aracılığıyla cihazla güven oluşturma
 
-Azure Stack Edge Rugged cihazı, kendi sertifikalarınızı getirip tüm genel uç noktalar için kullanılmak üzere bunları yüklemenize olanak sağlar. Daha fazla bilgi için [sertifikanızı karşıya yükleme](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)bölümüne gidin. Cihazınıza yüklenebilen tüm sertifikaların bir listesi için [cihazınızdaki sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin.
+Azure Stack Edge Rugged cihazı, kendi sertifikalarınızı getirip tüm genel uç noktalar için kullanılmak üzere bunları yüklemenize olanak sağlar. Daha fazla bilgi için [sertifikanızı karşıya yükleme](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)bölümüne gidin. Cihazınıza yüklenebilen tüm sertifikaların bir listesi için [cihazınızdaki sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md)' e gidin.
 
 - Cihazınızda işlem yapılandırdığınızda, bir IoT cihazı ve bir IoT Edge cihaz oluşturulur. Bu cihazlara otomatik olarak simetrik erişim anahtarları atanır. En iyi güvenlik uygulaması olarak, bu anahtarlar IoT Hub hizmeti aracılığıyla düzenli olarak döndürülür.
 

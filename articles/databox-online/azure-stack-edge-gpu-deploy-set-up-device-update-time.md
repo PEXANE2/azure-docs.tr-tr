@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976088"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546916"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro cihaz ayarlarını GPU ile yapılandırma
 
@@ -26,12 +26,12 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Ön koşullar
+> * Önkoşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 GPU ile Azure Stack Edge Pro cihazınızda cihazla ilgili ayarları yapılandırmadan önce şunları yaptığınızdan emin olun:
 
@@ -73,7 +73,7 @@ Cihazla ilgili ayarları yapılandırmak için aşağıdaki adımları izleyin:
 
 1. **Güncelleştirme** sayfasında, bundan böyle, cihazınızın güncelleştirmelerinin indirileceği konumu yapılandırabilirsiniz.  
 
-    - Güncelleştirmeleri doğrudan **Microsoft Update sunucusundan**alabilirsiniz.
+    - Güncelleştirmeleri doğrudan **Microsoft Update sunucusundan** alabilirsiniz.
 
         ![Yerel Web Kullanıcı arabirimi "güncelleştirme sunucusu" sayfası](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-2.png)
 
@@ -82,9 +82,9 @@ Cihazla ilgili ayarları yapılandırmak için aşağıdaki adımları izleyin:
         ![Yerel Web Kullanıcı arabirimi "güncelleştirme sunucusu" sayfa 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > Ayrı bir Windows Update sunucusu yapılandırıldıysa ve *https* üzerinden bağlanmayı seçerseniz ( *http*yerine), güncelleştirme sunucusuna bağlanmak için gereken imzalama zinciri sertifikaları gereklidir. Sertifika oluşturma ve karşıya yükleme hakkında daha fazla bilgi için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin. 
+        > Ayrı bir Windows Update sunucusu yapılandırıldıysa ve *https* üzerinden bağlanmayı seçerseniz ( *http* yerine), güncelleştirme sunucusuna bağlanmak için gereken imzalama zinciri sertifikaları gereklidir. Sertifika oluşturma ve karşıya yükleme hakkında daha fazla bilgi için, [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md)' e gidin. 
 
-2. **Apply** (Uygula) seçeneğini belirleyin.
+2. **Uygula**’yı seçin.
 3. Güncelleştirme sunucusu yapılandırıldıktan sonra, **İleri: Saat**' i seçin.
     
 
@@ -120,7 +120,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Ön koşullar
+> * Önkoşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır

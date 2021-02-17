@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87099849"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547205"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API Management sürümler
 
@@ -64,9 +64,13 @@ Sürümü bulunmayan bir API 'ye sürüm eklerseniz, bir sürüm `Original` otom
 
 ## <a name="how-versions-are-represented"></a>Sürümlerin nasıl temsil edildiği
 
-Azure API Management, tek bir mantıksal API için bir dizi sürümü temsil eden *sürüm kümesi*adlı bir kaynağı tutar. Sürümleri yönetmek için Azure portal kullandığınızda sürüm kümesini görmezsiniz, ancak PowerShell, Kaynak Yöneticisi şablonları veya Azure Resource Manager API 'sini kullanarak API Management hizmetinize etkileşime geçerek, sürüm kümelerini doğrudan görüntüleyebilir ve yönetebilirsiniz. Sürüm kümesi, hem sürümlü API 'nin görünen adını hem de istekleri belirtilen sürümlere yönlendirmek için [kullanılan sürüm oluşturma düzenini](#versioning-schemes) içerir.
+Azure API Management, tek bir mantıksal API için bir dizi sürümü temsil eden *sürüm kümesi* adlı bir kaynağı tutar. Sürüm kümesi, sürümlü API 'nin görünen adını ve isteklerini belirtilen sürümlere yönlendirmek için [kullanılan sürüm oluşturma düzenini](#versioning-schemes) içerir.
 
-Bir API 'nin her sürümü kendi API kaynağı olarak tutulur ve bu, daha sonra bir sürüm kümesiyle ilişkilendirilir. Bir sürüm kümesi, API 'nizin sürümleri arasında önemli değişiklikler yapabileceğiniz gerçeğini yansıtan çok farklı işlemlere veya ilkelere sahip API 'Ler içerebilir.
+Bir API 'nin her sürümü kendi API kaynağı olarak tutulur ve bu, daha sonra bir sürüm kümesiyle ilişkilendirilir. Bir sürüm kümesi, farklı işlemlere veya ilkelere sahip API 'Leri içerebilir. Bir küme içindeki sürümler arasında önemli değişiklikler yapabilirsiniz.
+
+Azure portal sizin için sürüm kümeleri oluşturur. Azure portal bir sürüm kümesinin adını ve açıklamasını değiştirebilirsiniz.
+
+[Azure CLI](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Kaynak Yöneticisi şablonları](/azure/templates/microsoft.apimanagement/service/apiversionsets)veya [Azure Resource Manager API](/rest/api/apimanagement/2020-06-01-preview/apiversionset)kullanarak doğrudan sürüm kümelerini görüntüleyebilir ve yönetebilirsiniz.
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>Sürümü olmayan bir API 'yi sürümlü API 'ye geçirme
 

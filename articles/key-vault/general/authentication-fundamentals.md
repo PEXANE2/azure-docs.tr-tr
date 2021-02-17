@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530927"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535204"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
@@ -120,7 +120,7 @@ Key Vault rol atamaları, anahtarlara, sırları ve sertifikalara erişmek için
 Key Vault için Azure RBAC hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * Key Vault için Azure RBAC [bağlantısı](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* Key Vault rolleri için Azure RBAC (Önizleme) [bağlantısı](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* Key Vault rolleri için Azure RBAC [bağlantısı](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault güvenlik duvarını yapılandırma
 

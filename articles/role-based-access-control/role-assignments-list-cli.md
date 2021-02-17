@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556918"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamalarını listeleme
 
@@ -28,7 +28,7 @@ ms.locfileid: "97964397"
 > [!NOTE]
 > Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](../cloud-shell/overview.md)
 
@@ -187,4 +187,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-cli.md)
+- [Azure CLı kullanarak Azure rolleri atama](role-assignments-cli.md)

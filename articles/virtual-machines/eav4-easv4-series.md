@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: fc370de11ca429d760ac0440d2bd6ec81044b263
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e6a4098d0b3da30448f5dd23a709b13ffebae032
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390156"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554898"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -26,7 +26,7 @@ Eav4-Series ve Easv4 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 <br>
 
@@ -52,7 +52,7 @@ Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını elde etmeye yönelik
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 <br>
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575814"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545947"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -124,8 +124,6 @@ _**AdtE2ESample**_ projesinin açık olduğu Visual Studio penceresine geri dön
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 
 İşlev uygulamasının Azure dijital TWINS 'e erişmesini sağlamak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği olarak atamak ve Azure dijital TWINS örneğinde bu kimliğe *Azure dijital TWINS veri sahibi* rolünü vermektir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md).
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın. Yer tutucuları kaynaklarınızın ayrıntıları ile birlikte girin (Azure Digital TWINS örnek URL 'nizin önünde *https://* tarafından ana bilgisayar adı olduğunu unutmayın).
 

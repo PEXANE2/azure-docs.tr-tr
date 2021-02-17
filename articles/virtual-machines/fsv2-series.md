@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7071675d4573ebee297217fe216552482cb76406
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e738a3e18d4ee16b2bbfd7edb6cc32152bb82b48
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096890"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557807"
 ---
 # <a name="fsv2-series"></a>Fsv2 serisi
 
@@ -26,7 +26,7 @@ Fsv2 serisi VM 'Ler özelliği Intel® Hyper-Threading teknolojisini.
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 <br>
 

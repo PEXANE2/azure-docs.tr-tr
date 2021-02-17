@@ -1,6 +1,6 @@
 ---
-title: Azure spot VM 'Leri dağıtmak için şablon kullanma
-description: Maliyetleri kaydetmek için spot VM 'Leri dağıtmak üzere bir şablon kullanmayı öğrenin.
+title: Azure Azure spot sanal makineleri dağıtmak için şablon kullanma
+description: Maliyetleri kazanmak için Azure spot sanal makineleri dağıtmak üzere bir şablon kullanmayı öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0cf6fc1b37064ef6193f35334711dcc5b8d01088
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 44134e73f2e654d7bfdb9119942a5c3982859c7a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200796"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557753"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak spot VM 'Leri dağıtma
+# <a name="deploy-azure-spot-virtual-machines-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure spot sanal makineleri dağıtma
 
-[Spot VM 'lerin](../spot-vms.md) kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
+[Azure spot sanal makinelerinin](../spot-vms.md) kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi yeniden sağlaması gerektiğinde Azure altyapısı, Azure spot sanal makinelerini çıkarır. Bu nedenle, Azure spot sanal makineleri toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
-Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması.
+Azure spot sanal makineleri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması.
 
-VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](../spot-vms.md#pricing).
+VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Azure spot sanal makinesi için en fazla fiyat, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece VM 'nin fiyatı, Azure spot sanal makineleri için geçerli fiyat veya standart bir VM 'nin fiyatı olacaktır. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [Azure spot sanal makineler-fiyatlandırma](../spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Şablon kullanma
 
-Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü kullanın. `priority` `evictionPolicy` Şablonunuzda, ve `billingProfile` özelliklerini ekleyin:
+Azure spot sanal makine şablonu dağıtımları için `"apiVersion": "2019-03-01"` veya sonraki bir sürümünü kullanın. `priority` `evictionPolicy` Şablonunuzda, ve `billingProfile` özelliklerini ekleyin:
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü k
 }
 ```
 
-Bir spot VM 'nin eklenen özelliklerine sahip örnek bir şablon aşağıda verilmiştir. Kaynak adlarını kendi ve `<password>` VM 'deki yerel yönetici hesabı için bir parola ile değiştirin.
+Azure spot sanal makinesi için eklenen özelliklere sahip örnek bir şablon aşağıda verilmiştir. Kaynak adlarını kendi ve `<password>` VM 'deki yerel yönetici hesabı için bir parola ile değiştirin.
 
 ```json
 {
@@ -175,7 +175,7 @@ Bir spot VM 'nin eklenen özelliklerine sahip örnek bir şablon aşağıda veri
 
 ## <a name="simulate-an-eviction"></a>Çıkargı benzetimi yap
 
-Uygulamanızın ani bir çıkarma için ne kadar iyi yanıt olacağını test etmek için bir spot VM 'nin [çıkarmasını benzedönüştürebilirsiniz](/rest/api/compute/virtualmachines/simulateeviction) . 
+Uygulamanızın ani bir çıkargı için ne kadar iyi yanıt olacağını test etmek üzere bir Azure spot sanal makinesi [çıkarması benzetimi](/rest/api/compute/virtualmachines/simulateeviction) yapabilirsiniz. 
 
 Aşağıdaki bilgilerinizi ile değiştirin: 
 
@@ -190,8 +190,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure PowerShell](../windows/spot-powershell.md) veya [Azure CLI](spot-cli.md)kullanarak bir spot VM de oluşturabilirsiniz.
+[Azure PowerShell](../windows/spot-powershell.md) veya [Azure CLI](spot-cli.md)kullanarak bir Azure spot sanal makinesi de oluşturabilirsiniz.
 
-Spot fiyatlandırması hakkında bilgi için [Azure perakende FIYATLARı API](/rest/api/cost-management/retail-prices/azure-retail-prices) 'sini kullanarak geçerli fiyatlandırma bilgilerini sorgulayın. `meterName`Ve `skuName` her ikisi de içerecektir `Spot` .
+Azure spot sanal makine fiyatlandırması hakkında bilgi için [Azure perakende fiyatları API 'sini](/rest/api/cost-management/retail-prices/azure-retail-prices) kullanarak geçerli fiyatlandırma bilgilerini sorgulayın. `meterName`Ve `skuName` her ikisi de içerecektir `Spot` .
 
 Bir hatayla karşılaşırsanız bkz. [hata kodları](../error-codes-spot.md).

@@ -1,14 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
-ms.date: 02/10/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 9abac28d982e5b33bc4952f73336810abcb44e45
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372069"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555803"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -56,7 +56,7 @@ Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Mar
 Bir müşteri teklifinizi ekledikten sonra, [bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources)sağlayacak ve bu, Azure açık eklendi. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür.
 
 > [!IMPORTANT]
-> Temsilciyi, müşterinin kiracısında, eklendi olan abonelik (veya eklendi olan kaynak gruplarını içeren) için [sahip yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Temsilcinin, izin içeren bir rolü olan `Microsoft.Authorization/roleAssignments/write` (veya eklendi olan kaynak gruplarını içeren) bir rol içeren, müşterinin kiracısında Konuk olmayan [](../../role-based-access-control/built-in-roles.md#owner)bir hesap olması gerekir. Aboneliği temsil edebilen kullanıcıları bulmak için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Müşteri bir abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak grubu) atadıktan sonra, bu abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısı kaydedilir ve kiracınızdaki kullanıcılar, teklifinizdeki Yetkilendirmelere göre Temsilcili kaynaklara erişebilir.
 

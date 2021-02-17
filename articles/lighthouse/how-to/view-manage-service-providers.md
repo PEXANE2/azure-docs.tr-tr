@@ -1,51 +1,45 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
-ms.date: 12/16/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617213"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555573"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
-Azure portal **hizmet sağlayıcıları** sayfası, müşterilere [](https://portal.azure.com) [Azure açık thouse](../overview.md)kullanan hizmet sağlayıcılarına yönelik denetim ve görünürlük sağlar. Müşteriler, hizmet sağlayıcılarına ilişkin ayrıntıları görüntüleyebilir, belirli kaynakları devredebilir, yeni hizmet sağlayıcısı tekliflerini satın alabilir, hizmet sağlayıcı erişimini kaldırabilir ve daha fazlasını yapabilir.
+Azure portal **hizmet sağlayıcıları** sayfası, müşterilere [](https://portal.azure.com) [Azure açık thouse](../overview.md)kullanan hizmet sağlayıcılarına yönelik denetim ve görünürlük sağlar. Müşteriler hizmet sağlayıcılarının ayrıntılarını görüntüleyebilir, belirli kaynakları devredebilir, yeni tekliflere bakabilir, hizmet sağlayıcı erişimini kaldırabilir ve daha fazlasını yapabilir.
 
-> [!TIP]
-> Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
-
-Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri **tüm hizmetleri** seçip **hizmet sağlayıcıları** arayabilir ve bunu seçebilirsiniz. Ayrıca, Azure portal üst tarafına yakın arama kutusuna "hizmet sağlayıcıları" veya "Azure açık Thouse" girerek da bulabilir.
+Azure portal **hizmet sağlayıcıları** sayfasını görüntülemek Için, **tüm hizmetler**' i seçin ve ardından **hizmet sağlayıcılar** ' ı arayın ve seçin. Bu sayfayı, Azure portal üst kısmındaki arama kutusuna "hizmet sağlayıcıları" veya "Azure Aydınlathouse" girerek da bulabilirsiniz.
 
 > [!NOTE]
 > **Hizmet sağlayıcıları** sayfasını görüntülemek için, müşterinin kiracısındaki bir kullanıcının [okuyucu yerleşik rolüne](../../role-based-access-control/built-in-roles.md#reader) (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
 >
-> Teklifleri eklemek veya güncelleştirmek, kaynak atamak ve teklifleri kaldırmak için, kullanıcının abonelik için [yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip olması gerekir.
+> Teklifleri eklemek veya güncelleştirmek, kaynak atamak ve teklifleri kaldırmak için, kullanıcının `Microsoft.Authorization/roleAssignments/write` [sahip](../../role-based-access-control/built-in-roles.md#owner)gibi izne sahip bir rolü olması gerekir.
 
-**Hizmet sağlayıcılar** sayfasının yalnızca, Azure açık thouse aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini unutmayın. Müşteri, müşterinin kaynaklarına erişmek için Azure Use kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcılarıyla ilgili bilgiler burada gösterilmez.
-
-> [!TIP]
-> Servis sağlayıcılar, Azure portal **müşterilerime** giderek müşterileri hakkındaki bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme](view-manage-customers.md).
+**Hizmet sağlayıcılar** sayfasının yalnızca, Azure açık thouse aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini unutmayın. Bir müşteri, Azure burthouse kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcılarıyla ilgili bilgileri burada görmezsiniz.
 
 ## <a name="view-service-provider-details"></a>Hizmet sağlayıcı ayrıntılarını görüntüle
 
-Müşteri, hizmet sağlayıcılarının ayrıntılarını görüntülemek için **hizmet sağlayıcıları** sayfasının sol tarafında **servis sağlayıcı teklifleri** ' ni seçebilir.
+Müşterinin kiracısında çalışmak üzere Azure ınthouse kullanarak geçerli hizmet sağlayıcılarının ayrıntılarını görüntülemek için, **hizmet sağlayıcıları** sayfasının sol tarafındaki **hizmet sağlayıcısı teklifleri** ' ni seçin.
 
-Müşteri, her bir servis sağlayıcısı teklifi için hizmet sağlayıcının adını ve onunla ilişkili teklifi, ekleme işlemi sırasında müşterinin girdiği adı görür.
+Her teklif için, hizmet sağlayıcısının adını ve onunla ilişkili teklifi görürsünüz. Hizmet sağlayıcısının verildiği rol atamaları dahil olmak üzere bir açıklamayı ve diğer ayrıntıları görüntülemek için bir teklif seçebilirsiniz.
 
-**Temsilciler** sütununda, müşteri, bu teklif için hizmet sağlayıcısına kaç abonelik ve/veya kaynak grubu atanmış olduğunu görür. Hizmet sağlayıcısı, bu abonelikleri ve/veya kaynak gruplarını teklifte belirtilen erişim düzeylerine göre erişebilecek ve yönetebilecektir.
+**Temsilciler** sütununda, bu teklif için hizmet sağlayıcısına kaç abonelik ve/veya kaynak grubu atanmış olduğunu görebilirsiniz. Hizmet sağlayıcısı, bu abonelikleri ve/veya kaynak gruplarını teklifte belirtilen erişim düzeylerine göre erişebilecek ve yönetebilecektir.
 
 ## <a name="add-or-remove-service-provider-offers"></a>Hizmet sağlayıcı tekliflerini ekleme veya kaldırma
 
-Müşteri, **teklif Ekle**' ye tıklayarak **hizmet sağlayıcı teklifleri** sayfasından yeni bir servis sağlayıcısı teklifi ekleyebilir. Hizmet sağlayıcısı bu müşteri için bir teklif yayımlamalıdır. Müşteri daha sonra **özel teklifler** ekranından bu teklifi seçip **Oluştur**' u seçin.
+**Hizmet sağlayıcı teklifleri** sayfasında yeni bir hizmet sağlayıcı teklifi eklemek Için **teklif Ekle**' yi seçin. Bu müşteri için bir hizmet sağlayıcının yayımladığı teklifleri görüntülemek için **özel teklifler** ' i seçin. Daha sonra **özel teklifler** ekranından bu teklifi seçebilir ve sonra **Ayarla + abone ol**' u seçebilirsiniz.
 
-Müşteri bir servis sağlayıcısı teklifini kaldırmak isterse, bu teklif için satırdaki çöp kutusu simgesini seçerek herhangi bir zamanda bunu yapabilir. Silme işlemini onayladıktan sonra, söz konusu hizmet sağlayıcının artık bu teklif için daha önce atanmış olan müşteri kaynaklarına erişimi olmayacaktır.
+Bu teklifin satırındaki çöp kutusu simgesini seçerek istediğiniz zaman bir servis sağlayıcısı teklifini kaldırabilirsiniz. Silme işlemini onayladıktan sonra, söz konusu hizmet sağlayıcının artık bu teklif için daha önce atanmış olan kaynaklara erişimi olmayacaktır.
 
 ## <a name="delegate-resources"></a>Kaynaklara temsilci atama
 
-Bir hizmet sağlayıcının bir müşterinin kaynaklarına erişebilmesi ve bunları yönetebilmesi için önce bunların temsilci olarak oluşturulması gerekir. Bir müşteri bir teklifi kabul ettiğinde ancak henüz hiç kaynak temsilcisi yoksa, **hizmet sağlayıcı teklifleri** bölümünün en üstünde bir not görür. Bu, müşterinin, servis sağlayıcı müşterinin kaynaklarına erişmeden önce eylemde bulunan bir işlem yapması gerektiğini bilmesini sağlar.
+Bir hizmet sağlayıcının bir müşterinin kaynaklarına erişebilmesi ve bunları yönetebilmesi için önce, bir veya daha fazla belirli abonelik ve/veya kaynak grubu için temsilci seçilmelidir. Bir müşteri bir teklifi kabul ettiğinde ancak henüz hiç kaynak temsilcisi yoksa, **hizmet sağlayıcı teklifleri** bölümünün en üstünde bir not görür. Bu, müşterinin, servis sağlayıcı müşterinin kaynaklarına erişmeden önce eylemde bulunan bir işlem yapması gerektiğini bilmesini sağlar.
 
 Abonelikler veya kaynak grupları atamak için:
 
@@ -57,11 +51,11 @@ Abonelikler veya kaynak grupları atamak için:
 
 ## <a name="update-service-provider-offers"></a>Hizmet sağlayıcı tekliflerini güncelleştirme
 
-Bir müşteri teklif ekledikten sonra, hizmet sağlayıcı aynı teklifin güncelleştirilmiş bir sürümünü Azure Marketi 'ne yayımlayabilir. Örneğin, yeni bir rol tanımı eklemek isteyebilir. Teklifin yeni bir sürümü yayımlandıysa, **servis sağlayıcı** teklif sayfasında bu teklif için bir "güncelleştirme" simgesi gösterilir. Müşteri, teklifin geçerli sürümü ile yeni bir arasındaki farkları görmek için bu simgeyi seçebilir.
+Bir müşteri teklif ekledikten sonra, hizmet sağlayıcı aynı teklifin güncelleştirilmiş bir sürümünü Azure Marketi 'ne yayımlayabilir. Örneğin, yeni bir rol tanımı eklemek isteyebilir. Teklifin yeni bir sürümü yayımlandıysa, **servis sağlayıcı** teklif sayfasında bu teklif için bir "güncelleştirme" simgesi gösterilir. Teklifin geçerli sürümü ile yeni bir arasındaki farkları görmek için bu simgeyi seçin.
 
  ![Teklifi Güncelleştir simgesi](../media/update-offer.jpg)
 
-Değişiklikleri gözden geçirdikten sonra müşteri yeni sürüme güncelleştirmeyi tercih edebilir. Bu yapıldıktan sonra, yeni sürümde belirtilen yetkilendirmeler ve diğer ayarlar, bu teklif için temsilci atanmış abonelikler ve/veya kaynak grupları için de geçerlidir.
+Değişiklikleri gözden geçirdikten sonra müşteri yeni sürüme güncelleştirmeyi tercih edebilir. Bu durumda, yeni sürümde belirtilen yetkilendirmeler ve diğer ayarlar, bu teklif için temsilci seçilmiş olan tüm abonelikler ve/veya kaynak grupları için de geçerlidir.
 
 ## <a name="view-delegations"></a>Temsilcileri görüntüle
 
@@ -87,3 +81,5 @@ Başka bir [yerleşik ilke tanımı](../../governance/policy/samples/built-in-po
 - [Azure ışıklı kullanım](../overview.md)hakkında daha fazla bilgi edinin.
 - [Hizmet sağlayıcı etkinliğinin nasıl denetleneceğini](view-service-provider-activity.md)öğrenin.
 - Hizmet **sağlayıcılarının, Azure Portal müşteriler sayfasında** [müşterileri nasıl görüntüleyip yönetebileceğini](view-manage-customers.md) öğrenin.
+- [Birden çok kiracıyı yöneten kuruluşların](../concepts/enterprise.md) , yönetim deneyimlerini birleştirmek için Azure athouse 'ı nasıl kullanabileceği hakkında bilgi edinin.
+

@@ -2,19 +2,19 @@
 title: Azure Arc etkin Kubernetes 'e genel bakış
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/15/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Bu makalede, Azure Arc etkin Kubernetes 'e genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 54b439d73ed5dfb0709d33dea1f588b8bdf4489f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371316"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560265"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc özellikli Kubernetes Önizlemesi nedir?
 
@@ -35,7 +35,7 @@ Azure Arc etkin Kubernetes özellikleri, aşağıdaki dağıtımlara göre yay e
 * RedHat OpenShift 4,3
 * Ranhi RKE 1.0.8
 * Kurallı Charmed Kubernetes 1,18
-* AKS altyapısı
+* AKS Engine
 * Azure Stack hub 'da AKS altyapısı
 * Azure Stack HIN üzerinde AKS
 * Küme API sağlayıcısı Azure
@@ -60,22 +60,6 @@ Azure Arc etkin Kubernetes bu senaryoları destekler:
 
 * Doğu ABD 
 * West Europe
-
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
-
-* Azure Arc etkin Kubernetes ve Azure Kubernetes hizmeti (AKS) arasındaki fark nedir?
-
-    Azure Kubernetes hizmeti (AKS), Azure tarafından yönetilen Kubernetes teklifidir. AKS, Azure 'da yönetilen bir Kubernetes kümesi dağıtmayı kolaylaştırır. AKS, sorumluluğun çoğunu Azure'a devrederek Kubernetes yönetiminin karmaşıklığını ve işlemsel yükünü azaltır. Kubernetes ana düğümler Azure tarafından yönetilir. Siz yalnızca aracı düğümlerini yönetir ve sürdürürsünüz.
-
-    Azure Arc etkin Kubernetes, Azure 'un Azure Izleyici ve Azure Ilkesi gibi yönetim özelliklerini genişletmek için Kubernetes kümelerini Azure 'a bağlamanıza olanak tanır. Temel Kubernetes kümesinin kendi kendine Bakımı sizin tarafınızdan yapılır.
-
-* Azure 'da çalışan Azure Kubernetes hizmet kümelerimi Azure 'a bağlamaya ihtiyacım var mı?
-
-    Hayır. Azure Arc 'ın Azure Izleyici gibi etkin Kubernetes özellikleri, Azure Ilkesi (Gatekeeper), Azure 'da zaten kaynak temsili olan AKS ile yerel olarak kullanılabilir.
-    
-* AKS kümemi Azure Stack HI 'ye Azure yaya bağlamanız gerekir mi? Azure Stack hub veya Azure Stack Edge üzerinde çalışan Kubernetes kümeleri nelerdir?
-
-    Evet, bu kümelerin Azure yaya bağlanması avantajlara sahiptir. Azure Resource Manager Bu Kubernetes kümeleri için bir kaynak temsili sağlar. Bu kaynak gösterimini kullanarak, küme yapılandırması, Azure Izleyici, Azure Ilkesi (Gatekeeper) gibi yetenekler bu Kubernetes kümelerine Genişletilebilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

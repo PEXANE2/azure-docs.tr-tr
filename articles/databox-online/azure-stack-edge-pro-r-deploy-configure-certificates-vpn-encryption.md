@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: fad3e5dcb0ecda82f3fb35cadf1719a62c99bd97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abea192f209b968c6842e985620c067c93990687
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468780"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548157"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-r"></a>Öğretici: Azure Stack Edge Pro R 'niz için sertifikaları yapılandırma
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R cihazınızı yapılandırmadan ve ayarlamadan önce şun
 
 * Fiziksel cihazı [yükleme Azure Stack Edge Pro R](azure-stack-edge-pro-r-deploy-install.md)' de ayrıntılı olarak yüklediniz.
 * Kendi sertifikalarınızı getirmeyi planlıyorsanız:
-    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md) ' e gidin
+    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md) ' e gidin
 
 
 
@@ -60,7 +60,7 @@ Azure Stack Edge Pro R cihazınızı yapılandırmadan ve ayarlamadan önce şun
     - Cihaz adı veya DNS etki alanını değiştirdiyseniz ve kendi sertifikalarınızı getirmediyseniz **etkinleştirme engellenir**.
 
     
-#### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getir
+#### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getirme
 
 İmzalama zinciri dahil kendi sertifikalarınızı eklemek için bu adımları izleyin.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372033"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546066"
 ---
 # <a name="machine-learning-features"></a>Makine öğrenimi özellikleri
 
@@ -104,7 +104,7 @@ Bir model özellik olarak eklendiğinde, özelliği şu şekilde ayarlayabilirsi
 
 Bu varlığın algılanması amaç için önemli olduğunda amaca bir özellik olarak bir varlık ekleyin.
 
-Örneğin, amaç, **Bookuçuş**gibi bir uçuş için kayıt yapmak için ise ve varlık bilet bilgileri (örneğin, koltuk, kaynak ve hedef sayısı gibi) ise, Bilet-bilgi varlığını bulmak, **bookuçuş** hedefini tahmin etmek için önemli bir ağırlık içermelidir.
+Örneğin, amaç, **Bookuçuş** gibi bir uçuş için kayıt yapmak için ise ve varlık bilet bilgileri (örneğin, koltuk, kaynak ve hedef sayısı gibi) ise, Bilet-bilgi varlığını bulmak, **bookuçuş** hedefini tahmin etmek için önemli bir ağırlık içermelidir.
 
 ### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>Bir varlığın başka bir varlığa özellik olarak ne zaman kullanılacağı
 
@@ -160,11 +160,9 @@ Sevkiyat Adresi (makine tarafından öğrenilen varlık)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Önceden oluşturulmuş varlıklar kullanılarak gerekli özellik
 
-Şehir, eyalet ve ülke/bölge genellikle kapalı bir liste kümesidir ve bu, zaman içinde çok değiştirmeyeceği anlamına gelir. Bu varlıklar ilgili önerilen özelliklere sahip olabilir ve bu özellikler gerekli olarak işaretlenebilir. Bu, gerekli özelliklere sahip varlıkların bulunamaması durumunda tüm sevkiyat adresinin döndürülmediği anlamına gelir.
+Şehir, eyalet ve ülke/bölge gibi önceden oluşturulmuş varlıklar genellikle kapalı bir liste kümesidir ve bu, zaman içinde çok değiştirmeyeceği anlamına gelir. Bu varlıklar ilgili önerilen özelliklere sahip olabilir ve bu özellikler gerekli olarak işaretlenebilir. Ancak, `isRequired` bayrağı yalnızca atandığı varlıkla ilgilidir ve hiyerarşiyi etkilemez. Önceden oluşturulmuş alt varlık özelliği bulunamazsa, bu, üst varlığın algılanmasını ve dönmesini etkilemez.
 
-Şehir, eyalet veya ülke/bölge, utterance 'de ise, ancak bir konumdaydı veya lusıs 'in beklemediği argo olur mu? LUID 'in düşük güvenilirlikli puanı nedeniyle varlığı çözümlemeye yardımcı olacak bazı post işlemleri sağlamak istiyorsanız, özelliği gereken şekilde işaretlemeyin.
-
-Sevkiyat adresi için gerekli bir özelliğin başka bir örneği, sokak numarasını gerekli, [önceden oluşturulmuş](luis-reference-prebuilt-entities.md) bir sayı yapmak içindir. Bu, bir kullanıcının "1 Microsoft Way" veya "bir Microsoft Way" girmesini sağlar. Her ikisi de cadde numarası alt varlığı için "1" rakamı ile çözümlenir.
+Gerekli bir özelliğe örnek olarak, adresleri algılamak istediğinizi göz önünde bulundurun. Cadde numarasını bir gereksinim yapmayı düşünebilirsiniz. Bu, bir kullanıcının "1 Microsoft Way" veya "bir Microsoft Way" girmesini sağlar ve her ikisi de cadde numarası alt varlığı için "1" rakamı olarak çözümlenir. Daha fazla bilgi için [önceden oluşturulmuş varlık ](luis-reference-prebuilt-entities.md) makalesine bakın.
 
 ### <a name="required-feature-using-list-entities"></a>Liste varlıklarını kullanan gerekli özellik
 
@@ -176,7 +174,7 @@ Bir [liste varlığı](reference-entity-list.md) , kendi eş anlamlılarıyla bi
 |--|--|
 |Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>ABD<br>0|
 
-Sohbet bot gibi bir istemci uygulaması, yardım almak için bir takip sorusu isteyebilir. Bu, müşterinin ülke/bölge seçiminin sınırlı ve *gerekli*olduğunu anlamalarına yardımcı olur.
+Sohbet bot gibi bir istemci uygulaması, yardım almak için bir takip sorusu isteyebilir. Bu, müşterinin ülke/bölge seçiminin sınırlı ve *gerekli* olduğunu anlamalarına yardımcı olur.
 
 ### <a name="required-feature-using-regular-expression-entities"></a>Normal ifade varlıklarını kullanan gerekli özellik
 
@@ -201,13 +199,13 @@ Bir nitelik veya kavramı anlatmak için birden fazla özellik kullanabilirsiniz
 
 ### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Örnek: bir seyahat uygulaması için bilet ayırma varlık özellikleri  
 
-Temel bir örnek olarak, uçuş rezervasyonu _hedefi_ ve bilet ayırma _varlığı_ile bir uçuş için bir uygulama düşünün. Bilet kayıt varlığı, bir uçak anahtarını bir ayırma sisteminde kitaba eklemek için bilgileri yakalar. 
+Temel bir örnek olarak, uçuş rezervasyonu _hedefi_ ve bilet ayırma _varlığı_ ile bir uçuş için bir uygulama düşünün. Bilet kayıt varlığı, bir uçak anahtarını bir ayırma sisteminde kitaba eklemek için bilgileri yakalar. 
 
 Bilet defterine yönelik makine öğrenme varlığı, kaynak ve hedef yakalayan iki alt varlık içerir. Özelliklerin en üst düzey varlığa değil her bir alt varlığa eklenmesi gerekir.
 
 :::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Bilet kayıt varlığı şeması":::
 
-Bilet ayırma varlığı, _kaynak_ ve _hedef_dahil olmak üzere alt varlıklar içeren bir makine öğrenimi varlıklarıdır. Bu alt Varlıklar her ikisi de coğrafi bir konum gösterir. Konumların ayıklanmasına yardımcı olmak ve _kaynak_ ile _hedef_arasında ayrım yapmak için her bir alt varlığın özelliği olmalıdır.
+Bilet ayırma varlığı, _kaynak_ ve _hedef_ dahil olmak üzere alt varlıklar içeren bir makine öğrenimi varlıklarıdır. Bu alt Varlıklar her ikisi de coğrafi bir konum gösterir. Konumların ayıklanmasına yardımcı olmak ve _kaynak_ ile _hedef_ arasında ayrım yapmak için her bir alt varlığın özelliği olmalıdır.
 
 |Tür|Kaynak alt varlık |Hedef alt varlık|
 |--|--|--|
@@ -226,7 +224,7 @@ Makine öğrenimi varlığı oluşturduktan sonra, bir amaca örnek eklemek ve a
 
 Bilet kayıt örneği için, örnekteki örnekleri `TicketBooking` varlıkla ve metinde bulunan tüm alt varlıklarla birlikte etiketleyin.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Bilet kayıt varlığı şeması":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Etiket örnek utbotları":::
 
 ### <a name="example-pizza-ordering-app"></a>Örnek: Pizza sıralama uygulaması
 
@@ -234,18 +232,18 @@ Bilet kayıt örneği için, örnekteki örnekleri `TicketBooking` varlıkla ve 
 
 Bu örnekteki makine öğrenimi varlığı, iç içe geçmiş alt varlıklar, tümcecik listeleri, önceden oluşturulmuş varlıklar ve özel varlıklarla daha karmaşıktır.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Bilet kayıt varlığı şeması":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza sırası varlık şeması":::
 
 Bu örnek, alt varlık düzeyinde ve alt varlık düzeyinin alt kısmındaki özellikleri kullanır. Bu düzey, özellik olarak hangi tür ifade listesi veya model, varlık tasarımınızın önemli bir parçasıdır.
 
 Alt varlıklarda varlığı algılamaya yardımcı olan özellikler olarak birçok ifade listesi bulunabilir, ancak her alt varlık bir özellik olarak yalnızca bir model içerir. Bu [pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)uygulamasında bu modeller birincil olarak listeler.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Bilet kayıt varlığı şeması":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Etiketlenmiş örnek utbotları ile pizza sırası amacı":::
 
 Doğru etiketlenmiş örnek, varlıkların iç içe geçmiş olduğunu göstermek için bir şekilde görüntülenir. 
 
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 

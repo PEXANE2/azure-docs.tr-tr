@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc Kubernetes (önizleme)
+title: Azure Arc özellikli Kubernetes (önizleme)
 summary: Azure Arc ile Kubernetes kümelerini yönetmeyi öğrenin
 metadata:
-  title: Azure Arc Kubernetes
+  title: Azure Arc özellikli Kubernetes
   description: Azure'da şirket içi makineleri yönetmeyi öğrenin
-  author: 
+  author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
-  ms.author: 
-  ms.openlocfilehash: 9eeddfefe451eb524484df8a1986c7ec736c4c0f
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-  ms.translationtype: HT
+  ms.date: 02/15/2021
+  ms.author: shasb
+  ms.openlocfilehash: 97343e8c23e202e70ec30bb0a522105889ea08b3
+  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97674381"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100560244"
 landingContent:
 - title: Azure Arc kullanarak Kubernetes kümelerini Azure’a bağlama
   linkLists:
@@ -22,10 +22,22 @@ landingContent:
     links:
     - text: Azure Arc özellikli Kubernetes nedir?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Aracı Mimarisi
+      url: conceptual-agent-architecture.md
+    - text: Konfigürasyonlar ve Gilar
+      url: conceptual-configurations.md
+    - text: Sık Sorulan Sorular
+      url: faq.md
+- title: başlarken
+  linkLists:
   - linkListType: quickstart
     links:
     - text: Kümeye bağlanma
       url: connect-cluster.md
+- title: Kümeleri yapılandırma, yönetme ve izleme
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: GitOps kullanarak yapılandırmaları dağıtma

@@ -11,21 +11,22 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1a9faf24c5a82b815b40afe15769480b69074dc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188458"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551646"
 ---
 Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
+* Windows 'ta, platformunuz için [Visual Studio 2019 Için yeniden dağıtılabilir Microsoft Visual C++](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) gerekir. Bunu ilk kez yüklemek için yeniden başlatma gerekebilir.
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Visual Studio projesi oluşturma ve konuşma SDK 'sını yüklemeye

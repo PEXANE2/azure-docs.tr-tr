@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126199"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558462"
 ---
 # <a name="pricing-scenarios"></a>Fiyatlandırma senaryoları
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Azure Iletişim Hizmetleri için fiyatlara genellikle Kullandıkça Öde modeli temel alınır.
+Azure Iletişim Hizmetleri için fiyatlara genellikle Kullandıkça Öde modeli temel alınır. Aşağıdaki örneklerde bulunan fiyatlar tanım amaçlıdır ve en son Azure fiyatlandırmasını yansıtmayabilir.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Ses/video çağırma ve ekran paylaşımı
 
@@ -48,9 +48,32 @@ Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için
 
 **Grup çağrısı Için toplam maliyet**: $0,48 + $0,172 = $0,652
 
+### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Fiyatlandırma örneği: Iletişim Hizmetleri JS istemci kitaplığı 'nın bir kullanıcısı, zamanlanmış bir Microsoft ekipleri toplantısı 'nı birleştirir
+
+Çiğdem, hasta, Bob ile bir doktor toplantısı. Çiğdem, takımlar masaüstü uygulamasından ziyaret eden öğesine katılacaktır. Bob, Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak toplantıya bağlanan sağlık sağlayıcısı Web sitesini kullanarak katılması için bir bağlantı gönderilir. Bob, bir Web tarayıcısı (Safari ile iPhone) kullanarak toplantıyı girmek için cep telefonuyla birlikte kullanır. Sohbet, sanal ziyaret sırasında kullanılabilir olacaktır. 
+
+- Çağrı toplam 30 dakika sürer.
+- Çiğdem ve Bob tüm çağrıya katılın. Çiğdem, çağrı başladıktan beş dakika sonra videoyu etkinleştirir ve ekranı 13 dakika boyunca paylaşır. Bob 'un tüm çağrı için videosunu sunun.
+- Çiğdem, beş ileti gönderir, Bob üç iletiyle yanıt verir.
+
+
+**Maliyet hesaplamaları**
+
+- 1 katılımcı (Bob) x 30 dakika başına katılımcı başına x $0,004 = $0,12 [video ve ses aynı hızda ücretlendirilir]
+- 1 katılımcı (çiğdem) x 30 dakikalık x $0,000/dakikada katılımcılar/$0,0 *. 
+- 1 katılımcı (Bob) x 3 Sohbet iletisi x $0,0008 = $0,0024.
+- 1 katılımcı (çiğdem) x 5 sohbet iletisi x $0,000 = $0,0 *. 
+
+* Çiğdem 'in katılımı takımlar lisanslarından alınmıştır. Azure faturanızda, ekip kullanıcılarının Iletişim Hizmetleri kullanıcılarına sahip olduğu dakika ve sohbet iletileri, ancak takımlar istemcisinden kaynaklanan bu dakikalar ve mesajlar ücretlendirilecektir.
+
+**Ziyaret Için toplam maliyet**: 
+- Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak katılan Kullanıcı: $0,12 + $0,0024 = $0,1224
+- Ekipler için Kullanıcı katılım masaüstü uygulaması: $0 (takımlar lisansı kapsamında) 
+
+
 ## <a name="chat"></a>Sohbet
 
-Iletişim hizmetleriyle, 2 veya daha fazla kullanıcı arasında sohbet iletileri gönderme ve alma özelliğiyle uygulamanızı geliştirebilirsiniz. Sohbet istemci kitaplıkları JavaScript, .NET, Python ve Java için kullanılabilir. [İstemci kitaplıkları hakkında bilgi edinmek için bu sayfaya](./sdk-options.md) bakın
+Iletişim hizmetleriyle, iki veya daha fazla kullanıcı arasında sohbet iletileri gönderme ve alma özelliğiyle uygulamanızı geliştirebilirsiniz. Sohbet istemci kitaplıkları JavaScript, .NET, Python ve Java için kullanılabilir. [İstemci kitaplıkları hakkında bilgi edinmek için bu sayfaya](./sdk-options.md) bakın
 
 ### <a name="price"></a>Fiyat
 
@@ -58,7 +81,7 @@ Gönderilen her sohbet iletisi için $0,0008 ücretlendirilirsiniz.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Fiyatlandırma örneği: iki kullanıcı arasında sohbet 
 
-Geeta, bir güncelleştirmeyi paylaşmak ve 5 ileti göndermesi için bir sohbet iş parçacığı başlatır. Sohbet, Geeta 'da 10 dakika sürer ve her biri bir adet 15 ileti gönderir.
+Geeta, bir güncelleştirmeyi paylaşmak ve 5 ileti göndermesi için bir sohbet iş parçacığı başlatır. Sohbet 10 dakika sürer. Geeta, her biri başka 15 ileti gönderiyor.
 
 **Maliyet hesaplamaları** 
 - Gönderilen ileti sayısı (5 + 15 + 15) x $0,0008 = $0,028

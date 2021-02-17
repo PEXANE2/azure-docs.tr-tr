@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585050"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546015"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
 
@@ -38,7 +38,7 @@ Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış i
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar
 
-|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | Pottype | string | Satış alındısı türü | 'Nün |  |
 | MerchantName | string | Okundu bilgisini veren satıcı adı | Contoso |  |
@@ -115,7 +115,12 @@ Form tanıyıcı alındı hizmetini denemek için çevrimiçi örnek UI aracına
 
 ### <a name="sample-json-output"></a>Örnek JSON çıkışı
 
-Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanınan metnin tamamını içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. "DocumentResults" düğümü, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi faydalı anahtar/değer çiftleri bulacaksınız.
+
+Kaynağı çözümleme sonucunu al işleminin yanıtı, ayıklanan tüm bilgiler ile girişin yapılandırılmış temsili olacaktır.  [Örnek bir makbuz dosyası](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) ve yapılandırılmış çıkış [örneği alındı çıktısı](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)için buraya bakın.
+
+Başarılı bir JSON yanıtı örneğine bakın:
+* `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. 
+* `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi faydalı anahtar/değer çiftleri bulacaksınız.
 
 ```json
 { 
