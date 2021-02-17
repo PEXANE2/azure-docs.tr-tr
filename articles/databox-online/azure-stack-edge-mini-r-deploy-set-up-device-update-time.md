@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: ee3805d128a7b6d122f93e692291db1a387cfcf5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9f4d4f4ad27081bb105cdb1698438837fc2fe02
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468876"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546678"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R için cihaz ayarlarını yapılandırma
 
@@ -85,7 +85,7 @@ Cihazla ilgili ayarları yapılandırmak için aşağıdaki adımları izleyin:
         ![Yerel Web Kullanıcı arabirimi "güncelleştirme sunucusu" sayfa 2](./media/azure-stack-edge-mini-r-deploy-set-up-device-update-time/update-server-2.png)
 
         > [!NOTE] 
-        > Ayrı bir Windows Update sunucusu yapılandırıldıysa ve *https* üzerinden bağlanmayı seçerseniz ( *http* yerine), güncelleştirme sunucusuna bağlanmak için gereken imzalama zinciri sertifikaları gereklidir. Sertifika oluşturma ve karşıya yükleme hakkında daha fazla bilgi için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin. Azure Stack Edge cihazınız, modüler veri merkezine katmanlama gibi bağlantısı kesik bir modda çalışmak için WSUS seçeneğini etkinleştirin. Etkinleştirme sırasında cihaz güncelleştirmeleri tarar ve sunucu ayarlanmamışsa, etkinleştirme başarısız olur. 
+        > Ayrı bir Windows Update sunucusu yapılandırıldıysa ve *https* üzerinden bağlanmayı seçerseniz ( *http* yerine), güncelleştirme sunucusuna bağlanmak için gereken imzalama zinciri sertifikaları gereklidir. Sertifika oluşturma ve karşıya yükleme hakkında daha fazla bilgi için, [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md)' e gidin. Azure Stack Edge cihazınız, modüler veri merkezine katmanlama gibi bağlantısı kesik bir modda çalışmak için WSUS seçeneğini etkinleştirin. Etkinleştirme sırasında cihaz güncelleştirmeleri tarar ve sunucu ayarlanmamışsa, etkinleştirme başarısız olur. 
 
 2. **Uygula**’yı seçin.
 3. Güncelleştirme sunucusu yapılandırıldıktan sonra, **İleri: Saat**' i seçin.

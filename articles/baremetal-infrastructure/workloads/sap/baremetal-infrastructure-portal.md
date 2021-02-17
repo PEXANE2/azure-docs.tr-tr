@@ -2,13 +2,13 @@
 title: Azure 'da BareMetal örnek birimleri
 description: Azure portal aracılığıyla BareMetal örnek birimlerinin nasıl tanımlanacağına ve etkileşime gireceğini öğrenin.
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/17/2021
+ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733272"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548174"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>BareMetal Örnekleri Azure portal aracılığıyla yönetme
  
@@ -17,25 +17,9 @@ Bu makalede, [Azure Portal](https://portal.azure.com/) [Baremetal örnekleri](ba
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 BareMetal örnekleri için bir Azure Kaynak sağlayıcısı, şu anda genel önizlemede olan Azure portal örneklerin görünürlüğünü sağlar. Varsayılan olarak, BareMetal örnek dağıtımları için kullandığınız Azure aboneliği *BareMetalInfrastructure* kaynak sağlayıcısını kaydeder. Dağıtılan BareMetal örnek birimlerinizi görmüyorsanız, kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir. 
 
-BareMetal örnek kaynak sağlayıcısını kaydetmek için iki yol vardır:
- 
-* [Azure CLI](#azure-cli)
- 
-* [Azure portalı](#azure-portal)
- 
-### <a name="azure-cli"></a>Azure CLI
- 
-Azure CLı aracılığıyla BareMetal örnek dağıtımı için kullandığınız Azure aboneliğinde oturum açın. BareMetalInfrastructure kaynak sağlayıcısı 'nı ile kaydedebilirsiniz:
+Azure portal veya Azure CLı kullanarak BareMetal örnek kaynak sağlayıcısını kaydedebilirsiniz.
 
-```azurecli-interactive
-az provider register --namespace Microsoft.BareMetalInfrastructure
-```
- 
-Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell).
- 
-### <a name="azure-portal"></a>Azure portal
- 
-BareMetalInfrastructure kaynak sağlayıcısını Azure portal aracılığıyla kaydedebilirsiniz.
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 Aboneliğinizi Azure portal listeetmeniz ve sonra BareMetal örnek birimlerinizi dağıtmak için kullanılan aboneliğe çift tıklamaları gerekir.
  
@@ -53,12 +37,32 @@ Aboneliğinizi Azure portal listeetmeniz ve sonra BareMetal örnek birimlerinizi
 >Kaynak sağlayıcı kayıtlı değilse, **Kaydet**' i seçin.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="Kayıtlı BareMetal örnek birimini gösteren ekran görüntüsü":::
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı kullanmaya başlamak için:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure CLı aracılığıyla BareMetal örnek dağıtımı için kullandığınız Azure aboneliğinde oturum açın. `BareMetalInfrastructure` [Az Provider Register](/cli/azure/provider#az_provider_register) komutuyla kaynak sağlayıcısını kaydedin:
+
+```azurecli
+az provider register --namespace Microsoft.BareMetalInfrastructure
+```
+
+Kullanılabilir tüm sağlayıcıları görmek için [az Provider List](/cli/azure/provider#az_provider_list) komutunu kullanabilirsiniz.
+
+---
+
+Kaynak sağlayıcıları hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md).
+
 ## <a name="baremetal-instance-units-in-the-azure-portal"></a>Azure portal BareMetal örnek birimleri
  
 Bir BareMetal örnek dağıtım isteği gönderdiğinizde, BareMetal örneklerine bağlanmakta olduğunuz Azure aboneliğini belirtirsiniz. Karemetal örnek birimlerine göre çalışarak uygulama katmanını dağıtmak için kullandığınız aboneliği kullanın.
  
 BareMetal örneklerinizin dağıtımı sırasında, dağıtım isteğinde kullandığınız Azure aboneliğinde yeni bir [Azure Kaynak grubu](../../../azure-resource-manager/management/manage-resources-portal.md) oluşturulur. Bu yeni kaynak grubu, belirli bir abonelikte dağıttığınız tüm BareMetal örnek birimlerinizi listeler.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. BareMetal aboneliğinde, Azure portal **kaynak grupları**' nı seçin.
  
@@ -75,10 +79,27 @@ BareMetal örneklerinizin dağıtımı sırasında, dağıtım isteğinde kullan
    
    >[!NOTE]
    >Aynı Azure aboneliği altında birkaç BareMetal örnek kiracılar dağıttıysanız, birden çok Azure Kaynak grubu görürsünüz.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Tüm BareMetal örneklerinizi görmek için, kaynak grubunuz için [az baremetalinstance List](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) komutunu çalıştırın:
+
+```azurecli
+az baremetalinstance list --resource-group DSM05A-T550 –output table
+```
+
+> [!TIP]
+> `--output`Parametresi, tüm komutlarda kullanılabilen genel bir parametredir. **Tablo** değeri, çıktıyı kolay bir biçimde sunar. Daha fazla bilgi için bkz. [Azure CLI komutları Için çıkış biçimleri](/cli/azure/format-output-azure-cli).
+
+---
+
 ## <a name="view-the-attributes-of-a-single-instance"></a>Tek bir örneğin özniteliklerini görüntüleme
- 
-Tek bir birimin ayrıntılarını görüntüleyebilirsiniz. BareMetal örneği listesinde, görüntülemek istediğiniz tek örneği seçin.
+
+Tek bir birimin ayrıntılarını görüntüleyebilirsiniz.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+BareMetal örneği listesinde, görüntülemek istediğiniz tek örneği seçin.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png" alt-text="Tek bir örneğin BareMetal örnek birimi özniteliklerini gösteren ekran görüntüsü" lightbox="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png":::
  
@@ -101,6 +122,18 @@ Ayrıca, sağ tarafta, dağıtılan her BareMetal örnek birimi için otomatik o
  
 >[!TIP]
 >Uygulama katmanını düzeltme 4. x ile aynı Azure veri merkezinde bulmak için bkz. [en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bir BareMetal örneğinin ayrıntılarını görmek için [az baremetalinstance Show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) komutunu çalıştırın:
+
+```azurecli
+az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
+```
+
+Örnek adından emin değilseniz, `az baremetalinstance list` yukarıda açıklanan komutu çalıştırın.
+
+---
  
 ## <a name="check-activities-of-a-single-instance"></a>Tek bir örneğin etkinliklerini denetleme
  
@@ -113,11 +146,31 @@ Ayrıca, Azure 'daki birimin meta verilerinde yapılan değişiklikler etkinlik 
 Kaydedilen başka bir etkinlik, bir örneğe etiket eklediğinizde veya bir [etiketi](../../../azure-resource-manager/management/tag-resources.md) sildiğinizde.
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>Azure etiketini bir örneğe ekleme ve silme
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 Bir BareMetal örnek birimine Azure etiketleri ekleyebilir veya bunları silebilirsiniz. Etiketlerin atanabileceği yol, sanal makinelere etiket atamaya farklılık gösterir. VM 'Lerde olduğu gibi, Etiketler Azure meta verilerinde bulunur ve BareMetal örnekleri için, sanal makinelerin etiketleriyle aynı kısıtlamalara sahiptirler.
  
 Etiketlerin silinmesi VM 'lerle aynı şekilde çalışır. Bir etiketi uygulamak ve silmek BareMetal örnek biriminin etkinlik günlüğünde listelenir.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BareMetal örneklerine etiket atamak sanal makinelerle aynı şekilde çalışacaktır. Etiketler Azure meta verilerinde bulunur ve BareMetal örnekleri için, sanal makinelerin etiketleriyle aynı kısıtlamalara sahiptirler.
+
+Bir BareMetal örnek birimine Etiketler eklemek için [az baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) komutunu çalıştırın:
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
+```
+
+Bir etiketi kaldırmak için aynı komutu kullanın:
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --remove tags.Dept
+```
+
+---
+
 ## <a name="check-properties-of-an-instance"></a>Bir örneğin özelliklerini denetleme
  
 Örnekleri aldığınızda, örneklerle ilgili toplanan verileri görüntülemek için Özellikler bölümüne gidebilirsiniz. Toplanan veriler arasında Azure bağlantısı, depolama arka ucu, ExpressRoute bağlantı hattı KIMLIĞI, benzersiz kaynak KIMLIĞI ve abonelik KIMLIĞI yer alır. Bu bilgileri destek isteklerinde veya depolama anlık görüntü yapılandırmasını ayarlarken kullanacaksınız.
@@ -127,15 +180,29 @@ Göreceğiniz diğer önemli bilgi, depolama NFS IP adresidir. BareMetal örnek 
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-properties.png" alt-text="BareMetal örnek özelliği ayarlarını gösteren ekran görüntüsü" lightbox="media/baremetal-infrastructure-portal/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-unit-through-the-azure-portal"></a>Azure portal aracılığıyla bir birimi yeniden başlatma
- 
-İşletim sisteminin, BareMetal örnek biriminin güç yeniden başlatılmasını gerektiren bir yeniden başlatmayı tamamlayamayabileceği çeşitli durumlar vardır. Birimin güç yeniden başlatılmasını doğrudan Azure portal yapabilirsiniz:
+
+İşletim sisteminin, BareMetal örnek biriminin güç yeniden başlatılmasını gerektiren bir yeniden başlatmayı tamamlayamayabileceği çeşitli durumlar vardır.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Birimin güç yeniden başlatılmasını doğrudan Azure portal yapabilirsiniz:
  
 Birimin yeniden başlatılmasını onaylamak için **Yeniden Başlat** ' ı ve ardından **Evet** ' i seçin.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-restart.png" alt-text="BareMetal örnek birimini yeniden başlatma işlemini gösteren ekran görüntüsü":::
  
 Bir BareMetal örnek birimini yeniden başlattığınızda bir gecikme yaşarsınız. Bu gecikme sırasında, güç durumu **Başlangıç** **durumundan başlangıç durumuna taşınıyor, bu** da işletim sisteminin tamamen başlatıldığı anlamına gelir. Sonuç olarak, yeniden başlatmadan sonra durum ' a geçiş yapıldıktan hemen sonra birimde oturum **açamazsınız.**
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bir BareMetal örnek birimini yeniden başlatmak için [az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) komutunu kullanın:
+
+```azurecli
+az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
+```
+
+---
+
 >[!IMPORTANT]
 >BareMetal örnek biriminizdeki bellek miktarına bağlı olarak, donanımın ve işletim sisteminin yeniden başlatılması ve yeniden başlatılması bir saate kadar sürebilir.
  

@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 06/08/2018
+ms.date: 02/09/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87103064"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545410"
 ---
 Bir birim kapsayıcısını silmek için şunları yapmanız gerekir
  - birim kapsayıcısında birimleri silin. Birim kapsayıcısının ilişkili birimleri varsa, önce bu birimleri çevrimdışına alın. [Birimi çevrimdışına alma](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)bölümündeki adımları izleyin. Birimler çevrimdışı olduktan sonra bunları silebilirsiniz. 
@@ -22,20 +22,19 @@ Bir birim kapsayıcısını silmek için şunları yapmanız gerekir
 Birim kapsayıcısının ilişkili birimleri, yedekleme ilkeleri ve bulut anlık görüntüleri yoksa, bunu silebilirsiniz. Bir birim kapsayıcısını silmek için aşağıdaki yordamı gerçekleştirin.
 
 #### <a name="to-delete-a-volume-container"></a>Bir birim kapsayıcısını silmek için
+
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazı seçip tıklatın ve ardından **ayarlar > > birim Kapsayıcılarını Yönet**' e gidin.
 
-    ![Birim kapsayıcıları dikey penceresi](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![Birim kapsayıcıları dikey penceresi](./media/storsimple-8000-delete-volume-container/create-volume-container.png)
 
 2. Birim kapsayıcılarının tablosal listesinden silmek istediğiniz birim kapsayıcısını seçin, **...** öğesine sağ tıklayın ve ardından **Sil**' i seçin.
 
-    ![Birim kapsayıcısını Sil](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
+    ![Birim kapsayıcısını Sil](./media/storsimple-8000-delete-volume-container/delete-volume-container-01.png)
 
 3. Bir birim kapsayıcısının ilişkili birimleri, yedekleme ilkeleri ve bulut anlık görüntüleri yoksa, bu durumda silinebilir. Onay istendiğinde, birim kapsayıcısını silmenin etkilerini belirten onay kutusunu işaretleyin ve seçin. Birim kapsayıcısını silmek için **Sil** ' e tıklayın.
 
-    ![Silme işlemini onaylama](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
+    ![Silme işlemini onaylama](./media/storsimple-8000-delete-volume-container/delete-volume-container-02.png)
 
 Birim kapsayıcıları listesi, silinen birim kapsayıcısını yansıtacak şekilde güncelleştirilir.
 
-![Birim kapsayıcısı sayfasının ekran görüntüsü. Birim kapsayıcılarının tablosal listesi artık silinen kapsayıcıyı içermiyor.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
-
-
+![Birim kapsayıcısı sayfasının ekran görüntüsü. Birim kapsayıcılarının tablosal listesi artık silinen kapsayıcıyı içermiyor.](./media/storsimple-8000-delete-volume-container/delete-volume-container-05.png)

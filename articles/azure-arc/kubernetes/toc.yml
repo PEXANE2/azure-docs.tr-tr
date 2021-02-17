@@ -4,6 +4,14 @@
   items:
     - name: Arc özellikli Kubernetes
       href: overview.md
+- name: Kavramlar
+  items:
+    - name: Aracı Mimarisi
+      href: conceptual-agent-architecture.md
+    - name: Konfigürasyonlar ve Gilar
+      href: conceptual-configurations.md
+    - name: Sık Sorulan Sorular
+      href: faq.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Arc’a bağlanma
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: Hizmet sorumlusu ekleme
           href: create-onboarding-service-principal.md
-    - name: Yönetme
+    - name: Senaryolar
       items:
         - name: GitOps kullanarak yapılandırmaları dağıtma
           href: use-gitops-connected-cluster.md

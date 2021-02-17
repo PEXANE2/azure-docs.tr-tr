@@ -4,16 +4,16 @@ description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı v
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524338"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559983"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ Aşağıda, dizini kullanmayan ve bir yan tümcesinde kullanıldığında her be
 | Üst/alt                         | Karşılaştırma sırasında verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Gibi bir sorgu ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` olur ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Sorgu yürütmeden önce geçerli zamanı hesaplayın ve yan tümcesinde bu dize değerini kullanın `WHERE` . |
 | Matematik işlevleri (toplamasız olmayan) | Sorgunuzda sık bir değeri hesaplamanız gerekiyorsa, değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
+
+Bu sistem işlevleri, toplamalar ile sorgularda kullanılması dışında dizinleri kullanabilir:
+
+| **Sistem işlevi**                     | **İyileştirme için fikirler**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Uzamsal sistem işlevleri                        | Sorgu sonucunu gerçek zamanlı gerçekleştirilmiş bir görünümde depolayın |
 
 `SELECT`Yan tümcesinde kullanıldığında, verimsiz sistem işlevleri sorguların dizinleri nasıl kullanabileceğinizi etkilemez.
 

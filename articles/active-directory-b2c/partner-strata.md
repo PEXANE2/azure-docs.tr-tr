@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936701"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557171"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
 
@@ -85,7 +85,7 @@ Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağı
 
 2. **Kullanıcı akışı oluşturma**: [kaydolma ve oturum açma Kullanıcı akışı](./tutorial-create-user-flows.md)oluşturma.
 
-3. **IDP ekleme**: Kullanıcı hesabını yerel bir hesap veya sosyal ya da kurumsal [IDP](./tutorial-add-identity-providers.md)ile oturum açmak için seçin.
+3. **IDP ekleme**: Kullanıcı hesabını yerel bir hesap veya sosyal ya da kurumsal [IDP](./add-identity-provider.md)ile oturum açmak için seçin.
 
 4. **Kullanıcı özniteliklerini tanımlayın**: kaydolma sırasında toplanacak öznitelikleri tanımlayın.
 

@@ -14,8 +14,10 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: İlk erişim paketinizi oluşturma
+    - name: Kaynaklara erişimi yönetme-Azure portal
       href: entitlement-management-access-package-first.md
+    - name: Kaynaklara erişimi yönetme-Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: Kavramlar
   expanded: true
   items:

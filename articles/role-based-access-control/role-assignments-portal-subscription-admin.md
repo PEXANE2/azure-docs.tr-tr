@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
-ms.openlocfilehash: b15238a4308fe055f914d1a684b79b38a2c64870
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122509"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556843"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Kullanıcıyı Azure aboneliğinin yöneticisi olarak atama
 
 Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim verme izni dahil olmak üzere abonelikteki tüm kaynaklara tam erişim sağlar. Bu adımlar diğer rol atamasıyla aynıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
@@ -89,6 +89,6 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)
 - [Azure portal kullanarak Azure rol atamalarını listeleyin](role-assignments-list-portal.md)
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md)

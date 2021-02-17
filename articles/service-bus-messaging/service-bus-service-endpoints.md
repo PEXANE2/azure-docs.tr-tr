@@ -4,12 +4,12 @@ description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktas�
 ms.topic: article
 ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516150"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559568"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Service Bus ad alanına erişime izin ver
 [Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
@@ -18,15 +18,16 @@ En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılan
 
 Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma.
 
->[!WARNING]
-> Sanal ağlar tümleştirmesini uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir. Özel durum olarak, ağ hizmeti uç noktaları etkinleştirildiğinde bile belirli güvenilen hizmetlerden Service Bus kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services).
->
-> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
-> - Azure İşlevleri
+Sanal ağlar tümleştirmesini uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir. Özel durum olarak, ağ hizmeti uç noktaları etkinleştirildiğinde bile belirli güvenilen hizmetlerden Service Bus kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services).
+
+Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
+- Azure App Service
+- Azure İşlevleri
+
+Sanal ağlar yalnızca [Premium katmanda](service-bus-premium-messaging.md) Service Bus ad alanlarında desteklenir. VNet hizmet uç noktalarını Service Bus kullanılırken, standart ve Premium katman Service Bus ad alanlarını karıştıran uygulamalarda bu uç noktaları etkinleştirmemelisiniz. Standart katmanı VNET 'leri desteklemediğinden. Uç nokta yalnızca Premium katman ad alanları ile kısıtlıdır.
 
 > [!IMPORTANT]
-> Sanal ağlar yalnızca [Premium katmanda](service-bus-premium-messaging.md) Service Bus ad alanlarında desteklenir. VNet hizmet uç noktalarını Service Bus kullanılırken, standart ve Premium katman Service Bus ad alanlarını karıştıran uygulamalarda bu uç noktaları etkinleştirmemelisiniz. Standart katmanı VNET 'leri desteklemediğinden. Uç nokta yalnızca Premium katman ad alanları ile kısıtlıdır.
+> Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin. IP ve sanal ağ kuralları yoksa, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
 
@@ -57,9 +58,6 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
     > [!NOTE]
     > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
     
-    >[!WARNING]
-    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adres aralığını kabul eden kuralla eşdeğerdir. 
@@ -69,6 +67,9 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 1. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle**' yi seçin. 
 
     ![var olan sanal ağı ekle](./media/service-endpoints/add-vnet-menu.png)
+
+    >[!WARNING]
+    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
 3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı** seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
    
    ![alt ağ seçin](./media/service-endpoints/select-subnet.png)

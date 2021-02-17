@@ -32,6 +32,12 @@
   items:
     - name: Azure Güvenlik Duvarı özellikleri
       href: features.md
+    - name: Azure Güvenlik Duvarı Premium özellikleri
+      href: premium-features.md
+    - name: Portalda Azure Güvenlik Duvarı Premium
+      href: premium-portal.md
+    - name: Azure Güvenlik Duvarı Premium sertifikaları
+      href: premium-certificates.md
     - name: FQDN etiketleri
       href: fqdn-tags.md
     - name: Altyapı FQDN'leri
@@ -91,9 +97,13 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Azure Güvenlik Duvarı Çalışma Kitabı
       href: firewall-workbook.md
+    - name: Güvenlik Duvarı Premium 'u dağıtma ve yapılandırma
+      href: premium-deploy.md
+    - name: Azure Güvenlik Duvarı Premium 'a geçiş
+      href: premium-migrate.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall

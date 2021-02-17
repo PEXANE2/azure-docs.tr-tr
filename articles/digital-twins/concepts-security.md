@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934553"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547171"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -53,11 +53,6 @@ Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#o
 | --- | --- | --- |
 | Azure dijital TWINS veri sahibi | Azure dijital TWINS kaynakları üzerinden tam erişim sağlar | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure dijital TWINS veri okuyucusu | Azure dijital TWINS kaynaklarına salt okuma erişimi verir | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
-
->[!NOTE]
-> Bu roller yakın zamanda Önizlemedeki önceki adlarından yeniden adlandırıldı:
-> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)*.
-> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)*.
 
 Rolleri iki şekilde atayabilirsiniz:
 * Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))

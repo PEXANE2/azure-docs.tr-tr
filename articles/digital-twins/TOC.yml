@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: Kavramlar
   items:
-    - name: Özel modeller
+    - name: DTDL modelleri
       href: concepts-models.md
+    - name: Ontolojileri
+      items:
+        - name: Ontology nedir?
+          href: concepts-ontologies.md
+        - name: Sektörün endüstri standardı ontoloi 'yi benimseme
+          href: concepts-ontologies-adopt.md
+        - name: Ontolobir dönüştürme
+          href: concepts-ontologies-convert.md
+        - name: Ontolololoon genişletiliyor
+          href: concepts-ontologies-extend.md
     - name: Dijital ikizler ve ikiz grafiği
       href: concepts-twins-graph.md
     - name: Sorgu dili
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: Tasarım modelleri
       items:
-        - name: Özel modelleri yönetme
+        - name: DTDL modellerini yönetme
           href: how-to-manage-model.md
-        - name: Sektör standardı modelleri tümleştirme
-          href: how-to-integrate-models.md
         - name: Modelleri ayrıştırma ve doğrulama
           href: how-to-parse-models.md
         - name: Etiket ekleme
@@ -247,8 +255,14 @@
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins gezgini (örnek)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
-        - name: DTDL doğrulayıcı (örnek)
+        - name: DTDL Doğrulayıcısı (örnek)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Model Uploader (örnek)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Model görselleştiricisi (örnek)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL Dönüştürücüsü
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: DPS ve IoT Hub tümleştirmesi örneği
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: SignalR tümleştirme örneği

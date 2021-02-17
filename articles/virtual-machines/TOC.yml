@@ -262,7 +262,7 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
-    - name: Sanal makineleri spot
+    - name: Azure spot sanal makineleri
       displayName: 'pre-empt, preempt, spot'
       items:
         - name: Genel Bakış
@@ -1143,6 +1143,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: Güvenlik
   items:
+    - name: Genel Bakış
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure Güvenlik Merkezi
       href: ../security-center/security-center-introduction.md
     - name: Güvenlik temelleri

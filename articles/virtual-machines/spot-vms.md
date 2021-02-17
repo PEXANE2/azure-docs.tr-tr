@@ -1,6 +1,6 @@
 ---
-title: Azure spot VM 'Leri kullanma
-description: Azure spot VM 'Leri kullanarak maliyetlerde tasarruf etme hakkında bilgi edinin.
+title: Azure spot sanal makinelerini kullanma
+description: Azure spot sanal makinelerini kullanarak maliyetlerde tasarruf etme hakkında bilgi edinin.
 author: JagVeerappan
 ms.author: jagaveer
 ms.service: virtual-machines
@@ -8,23 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 1e82da3bc45bc8fb88b3955bd59091372f56d292
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 460529ab6e3227a998ac04c4819171274307ff9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375468"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557815"
 ---
-# <a name="use-spot-vms-in-azure"></a>Azure 'da spot VM 'Leri kullanma
+# <a name="use-azure-spot-virtual-machines"></a>Azure spot sanal makinelerini kullanma 
 
-Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
+Azure spot sanal makinelerinin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi yeniden sağlaması gerektiğinde Azure altyapısı, Azure spot sanal makinelerini çıkarır. Bu nedenle, Azure spot sanal makineleri toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
-Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası temelinde farklılık gösterebilir. Spot VM 'Leri dağıttığınızda, kullanılabilir kapasite varsa Azure VM 'Leri ayırır, ancak bu VM 'Ler için SLA yoktur. Bir spot VM, yüksek oranda kullanılabilirlik garantisi sunar. Azure 'un kapasiteyi yeniden yapması gerektiğinde, Azure altyapısı, nokta VM 'Leri 30 saniye olarak çıkaracaktır. 
+Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası temelinde farklılık gösterebilir. Azure spot sanal makineleri dağıttığınızda, kullanılabilir kapasite varsa Azure VM 'Leri ayırır, ancak bu VM 'Ler için SLA yoktur. Azure spot sanal makinesi, yüksek oranda kullanılabilirlik garantisi sunar. Azure 'un kapasiteyi yeniden sağlaması gerektiğinde Azure altyapısı, 30 saniyelik bir şekilde Azure spot sanal makinelerini çıkaracaktır. 
 
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
-VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Bir spot VM oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
+VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Azure spot sanal makine oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
 
 *Serbest bırakma* ILKESI, VM 'nizi durdurulmuş serbest bırakılmış duruma, daha sonra yeniden dağıtmanıza olanak tanır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler kotaıza göre sayılır ve temel diskler için depolama maliyetleri ücretlendirilecektir. 
 
@@ -47,11 +47,11 @@ SANAL makinenizin çıkarıldıktan sonra silinmesini isterseniz, çıkarma ilke
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Aşağıdaki VM boyutları, spot VM 'Ler için desteklenmez:
+Aşağıdaki VM boyutları Azure spot sanal makineleri için desteklenmez:
  - B serisi
  - Her boyuttaki promosyon sürümleri (dv2, NV, NC, H promosyon boyutları gibi)
 
-Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
+Azure spot sanal makineleri, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
 
 <a name="channel"></a>
 
@@ -65,7 +65,7 @@ Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir böl
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması. 
+Azure spot sanal makineleri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması. 
 
 Ayrıca, ara fiyatlandırma hakkında bilgi için [Azure perakende FIYATLARı API](/rest/api/cost-management/retail-prices/azure-retail-prices) 'sini kullanarak fiyatlandırma bilgilerini sorgulayabilirsiniz. `meterName`Ve `skuName` her ikisi de içerecektir `Spot` .
 
@@ -87,24 +87,24 @@ Portaldaki bir bölgedeki boyut başına geçmiş fiyatlandırma ve çıkarma or
 
 ##  <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S:** Oluşturulduktan sonra, normal standart VM ile aynı bir spot VM mi?
+**S:** Oluşturulduktan sonra, düzenli standart VM ile aynı Azure spot sanal makinesi mi?
 
-Y **:** Evet, spot VM 'Ler için SLA olmaması ve herhangi bir zamanda çıkartılanlar haricinde.
+Y **:** Evet, Azure spot sanal makineler için SLA olmaması ve herhangi bir zamanda çıkartılanlar haricinde.
 
 
 **S:** Ne yapmalı, ancak yine de kapasiteye ihtiyaç duydunuz?
 
-Y **:** Kapasiteye ihtiyacınız varsa, nokta VM 'Leri yerine standart VM 'Ler kullanmanızı öneririz.
+Y **:** Kapasiteye ihtiyacınız varsa Azure spot sanal makineler yerine standart VM 'Ler kullanmanızı öneririz.
 
 
-**S:** Spot VM 'Ler için kota nasıl yönetilir?
+**S:** Azure spot sanal makineler için kota nasıl yönetilir?
 
-Y **:** Spot VM 'Lerin ayrı bir kota havuzu olacaktır. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Y **:** Azure spot sanal makinelerinin ayrı bir kota havuzu olacak. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**S:** Nokta için ek kota isteyebilir miyim?
+**S:** Azure spot sanal makineleri için ek kota isteyebilir miyim?
 
-Y **:** Evet, [Standart kota isteği işlemi](../azure-portal/supportability/per-vm-quota-requests.md)aracılığıyla spot VM 'lerle ilgili kotayı artırmak için isteği gönderebileceksiniz.
+Y **:** Evet, [Standart kota istek süreci](../azure-portal/supportability/per-vm-quota-requests.md)aracılığıyla Azure spot sanal makineleri için kotayı artırmak üzere isteği gönderebilirsiniz.
 
 
 **S:** Sorularınızı nereden gönderebilirim?
@@ -117,8 +117,8 @@ Y **:** Soru- `azure-spot` [cevap A&](/answers/topics/azure-spot.html), sorunuzu
 Y **:** Maksimum fiyatı değiştirebilmeniz için önce VM 'yi serbest bırakabilirsiniz. Ardından, VM 'nin **yapılandırma** bölümünde, portalda en fazla fiyata değişiklik yapabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Spot VM 'Leri dağıtmak için [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [ARM şablonu](./linux/spot-template.md)veya [PowerShell](./windows/spot-powershell.md) kullanın.
+Azure spot sanal makineleri dağıtmak için [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [ARM şablonu](./linux/spot-template.md)veya [PowerShell](./windows/spot-powershell.md) 'i kullanın.
 
-Ayrıca, [spot VM örnekleriyle bir ölçek kümesi](../virtual-machine-scale-sets/use-spot.md)dağıtabilirsiniz.
+Ayrıca, [Azure spot sanal makine örnekleriyle bir ölçek kümesi](../virtual-machine-scale-sets/use-spot.md)dağıtabilirsiniz.
 
 Bir hatayla karşılaşırsanız bkz. [hata kodları](./error-codes-spot.md).

@@ -26,11 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 - Kullanıcı akışları oluşturma
       href: tutorial-create-user-flows.md
-    - name: Kimlik sağlayıcıları ekleme
-      href: tutorial-add-identity-providers.md
-    - name: Kullanıcı arabirimini özelleştirme
-      href: tutorial-customize-ui.md
-    - name: Kullanıcıların kimliklerini doğrulama
+    - name: 4-kullanıcıların kimliğini doğrulama
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -41,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: API erişimi verme
+    - name: 5-API erişimi verme
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -434,20 +430,20 @@
     - name: Güvenli API Management API’si
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
-    - name: Güvenli telefon tabanlı MFA
-      href: phone-based-mfa.md
-      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: Günlükler ve izleme
       items:
         - name: Denetim günlükleri
           href: view-audit-logs.md
-          displayName: 'log, logs, logging, usage, events'
+          displayName: 'log, logs, logging, usage, events, reports, reporting'
         - name: Azure İzleyici
           href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
+          displayName: 'log, logs, logging, usage, events, reports, reporting, dashboard'
         - name: Kullanım analizi
           href: analytics-with-application-insights.md
-          displayName: 'application insights, app insights'
+          displayName: 'application insights, app insights, reports, reporting'
+        - name: Güvenli telefon tabanlı MFA
+          href: phone-based-mfa.md
+          displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: Uyumluluk
       items:
         - name: Kullanıcı erişimi

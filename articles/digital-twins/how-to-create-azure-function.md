@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: ecbf07c1a85c708d4117c83bca546cd8bd6ccd2b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701176"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546083"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -121,8 +121,6 @@ Azure CLı veya Azure portal kullanarak işlev uygulaması için güvenlik eriş
 Önceki örneklerden iskelet işlevi, Azure Digital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecinin geçirildiğinden emin olmak için, işlev uygulaması için [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
 
 Azure dijital TWINS örneğiniz için sistem tarafından yönetilen kimlik oluşturabilir ve işlev uygulamasının kimliğini _**Azure Digital TWINS veri sahibi**_ rolüne atayabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Komutları çalıştırmak için [Azure Cloud Shell](https://shell.azure.com) kullanın.
 

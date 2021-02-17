@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 02/10/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: b9e036df91eecadc701664a19905a92c142b7585
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 126ece1327fa92c9b92c587922f1b8d9335d1a01
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559289"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: Node.js SDK ve Azure Cosmos DB ile Cassandra uygulaması derleme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "97591914"
 
 Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur ve GitHub 'dan kopyalanmış olan Cassandra Node.js uygulamasını kullanarak Cassandra veritabanı ve kapsayıcısı oluşturursunuz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
@@ -66,104 +66,117 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
     ```
 
+1. Node.js bağımlılıklarını NPM ile birlikte yükler.
+
+    ```bash
+    npm install
+    ```
+
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
 Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıklarının tamamı `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` klasöründeki `uprofile.js` dosyasından alınmıştır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
-* Kullanıcı adı ve parola değerleri, Azure portalındaki bağlantı dizesi sayfası kullanılarak ayarlanmıştır. `path\to\cert` bir X509 sertifikasının yolunu sağlar. 
+* Kullanıcı adı ve parola değerleri, Azure portalındaki bağlantı dizesi sayfası kullanılarak ayarlanmıştır. 
 
    ```javascript
-   var ssl_option = {
-        cert : fs.readFileSync("path\to\cert"),
-        rejectUnauthorized : true,
-        secureProtocol: 'TLSv1_2_method'
-        };
-   const authProviderLocalCassandra = new cassandra.auth.PlainTextAuthProvider(config.username, config.password);
+    let authProvider = new cassandra.auth.PlainTextAuthProvider(
+        config.username,
+        config.password
+    );
    ```
 
 * `client`, contactPoint bilgileriyle başlatılır. ContactPoint, Azure portalından alınır.
 
     ```javascript
-    const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
+    let client = new cassandra.Client({
+        contactPoints: [`${config.contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: config.localDataCenter,
+        sslOptions: {
+            secureProtocol: "TLSv1_2_method"
+        },
+    });
     ```
 
 * `client`, Azure Cosmos DB Cassandra API’sine bağlanır.
 
     ```javascript
-    client.connect(next);
+    client.connect();
     ```
 
 * Yeni bir anahtar alanı oluşturulur.
 
     ```javascript
-    function createKeyspace(next) {
-        var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
-        client.execute(query, next);
-        console.log("created keyspace");    
+    var query =
+        `CREATE KEYSPACE IF NOT EXISTS ${config.keySpace} WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter' : '1' }`;
+    await client.execute(query);
   }
     ```
 
 * Yeni bir tablo oluşturulur.
 
    ```javascript
-   function createTable(next) {
-       var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
-        client.execute(query, next);
-        console.log("created table");
+    query =
+        `CREATE TABLE IF NOT EXISTS ${config.keySpace}.user (user_id int PRIMARY KEY, user_name text, user_bcity text)`;
+    await client.execute(query);
    },
    ```
 
 * Anahtar/değer varlıkları eklenir.
 
     ```javascript
-        function insert(next) {
-            console.log("\insert");
-            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
-            arr.forEach(element => {
-            client.execute(element);
-            });
-            next();
-        },
+    const arr = [
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (1, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (2, 'JiriK', 'Toronto')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (3, 'IvanH', 'Mumbai')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (4, 'IvanH', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (5, 'IvanaV', 'Belgaum')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (6, 'LiliyaB', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (7, 'JindrichH', 'Buenos Aires')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (8, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (9, 'JozefM', 'Seattle')`,
+    ];
+    for (const element of arr) {
+        await client.execute(element);
+    }
     ```
 
 * Tüm anahtar değerlerini almak için sorgu.
 
     ```javascript
-        function selectAll(next) {
-            console.log("\Select ALL");
-            var query = 'SELECT * FROM uprofile.user';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        },
+    query = `SELECT * FROM ${config.keySpace}.user`;
+    const resultSelect = await client.execute(query);
+
+    for (const row of resultSelect.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
     ```  
 
 * Bir anahtar-değeri almak için sorgu.
 
     ```javascript
-        function selectById(next) {
-            console.log("\Getting by id");
-            var query = 'SELECT * FROM uprofile.user where user_id=1';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        }
+    query = `SELECT * FROM ${config.keySpace}.user where user_id=1`;
+    const resultSelectWhere = await client.execute(query);
+
+    for (const row of resultSelectWhere.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
+    ```  
+
+* Bağlantıyı kapatın. 
+
+    ```javascript
+    client.shutdown();
     ```  
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
@@ -178,63 +191,42 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. `config.js` dosyasını açın. 
 
-1. Portaldan CONTACT POINT değerini 4. satırda `<FillMEIN>` üzerine yapıştırın.
+1. Portaldan alınan kışı noktası değerini `'CONTACT-POINT` 9. satırdaki üzerine yapıştırın.
 
-    Satır 4 şuna benzer şekilde görünmelidir: 
+    9. satır şuna benzer şekilde görünmelidir 
 
-    `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
+    `contactPoint: "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com",`
 
 1. Portaldan USERNAME değerini kopyalayın ve 2. satırda `<FillMEIN>` üzerine yapıştırın.
 
     Satır 2 şuna benzer şekilde görünmelidir: 
 
-    `config.username = 'cosmos-db-quickstart';`
+    `username: 'cosmos-db-quickstart',`
 
-1. Portaldan PASSWORD değerini kopyalayın ve 3. satırda `<FillMEIN>` üzerine yapıştırın.
+1. Portaldan PASSWORD değerini kopyalayın ve 8. satırda `USERNAME` üzerine yapıştırın.
 
-    Satır 3 şuna benzer şekilde görünmelidir:
+    8. satır şuna benzer şekilde görünmelidir:
 
-    `config.password = '2Ggkr662ifxz2Mg==';`
+    `password: '2Ggkr662ifxz2Mg==',`
+
+1. BÖLGEYI bu kaynağı oluşturduğunuz Azure bölgesi ile değiştirin.
 
 1. `config.js` dosyasını kaydedin.
 
-## <a name="use-the-x509-certificate"></a>X509 sertifikası kullanma
-
-1. Baltimore CyberTrust kök sertifikasını öğesinden yerel olarak indirin [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . `.cer` dosya uzantısını kullanarak dosyayı yeniden adlandırın.
-
-   Sertifika `02:00:00:b9` seri numarasına ve `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74` SHA1 parmak izine sahiptir.
-
-2. `uprofile.js` dosyasını açın ve `path\to\cert` değerini yeni sertifikanızı işaret edecek şekilde değiştirin.
-
-3. `uprofile.js` dosyasını kaydedin.
-
-> [!NOTE]
-> Sonraki adımlarda sertifikayla ilgili bir hatayla karşılaşırsanız ve bir Windows makinesinde çalışıyorsanız, bir. CRT dosyasını düzgün şekilde Microsoft. cer biçimine dönüştürme sürecini izlemediğinizden emin olun.
-> 
-> . CRT dosyasına çift tıklayarak sertifika görüntüsüne açın. 
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Sertifika penceresini gösteren ekran görüntüsü.":::
->
-> Sertifika sihirbazında Ileri ' ye basın. Base-64 kodlamalı X. 509.440 (. CER) ve ardından Ileri.
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Base-64 ile kodlanmış X. 509.440 (. CER) seçeneğini.":::
->
-> Araştır ' ı seçin (bir hedef bulmak için) ve bir dosya adı yazın.
-> Ileri ' yi ve ardından tamamlandı seçeneğini belirleyin.
->
-> Artık düzgün şekilde biçimlendirilen bir. cer dosyanız olmalıdır. İçindeki yolun `uprofile.js` Bu dosyaya işaret ettiğini doğrulayın.
 
 ## <a name="run-the-nodejs-app"></a>Node.js uygulamasını çalıştırma
 
-1. Git Terminal penceresinde, daha önce Klonladığınız örnek dizinde olduğunuzdan emin olun:
+1. Terminal penceresinde, daha önce Klonladığınız örnek dizinde olduğunuzdan emin olun:
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. `npm install`Gerekli NPM modüllerini yüklemek için ' i çalıştırın.
+1. Düğüm uygulamanızı çalıştırın:
 
-3. Node.js uygulamanızı başlatmak için `node uprofile.js` komutunu çalıştırın.
+    ```bash
+    npm start
+    ```
 
 4. Sonuçların beklendiği gibi olduğunu komut satırından kontrol edin.
 

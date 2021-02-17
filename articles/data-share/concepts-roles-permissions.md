@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558136"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -35,7 +35,7 @@ Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin �
 |Azure Blob Depolama| Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
 |Azure Data Lake Gen2 | Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
-|Azure Veri Gezgini Kümesi | Katkıda Bulunan | Katkıda Bulunan
+|Azure Veri Gezgini Kümesi | Katılımcı | Katılımcı
 |
 
 SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıyı oluşturmak için yönetici izni Azure Active Directory gereklidir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
@@ -63,7 +63,7 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri paylaşıyorsanız, [REST API kullanarak Azure rol atamaları ekleme veya kaldırma ' ya](../role-based-access-control/role-assignments-rest.md)başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)bölümüne bakın. REST API 'Leri kullanarak verileri paylaşıyorsanız, [REST API kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-rest.md)' ya başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
 SQL tabanlı kaynaklar için SQL kullanıcısının SQL veritabanı 'nda Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya Azure SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
@@ -83,7 +83,7 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
-Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rol atamaları Ekle veya Kaldır](../role-based-access-control/role-assignments-rest.md)' a başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
+Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-rest.md)' ya başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
 SQL tabanlı hedef için, SQL veritabanı Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip SQL veritabanı 'nda bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya Azure SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
@@ -107,4 +107,4 @@ Kaynak sağlayıcısı hakkında daha fazla bilgi edinmek için [Azure kaynak sa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure 'da roller hakkında daha fazla bilgi edinin- [rol tanımlarını anlayın](../role-based-access-control/role-definitions.md)
+- Azure 'da roller hakkında daha fazla bilgi edinin- [Azure rol tanımlarını anlayın](../role-based-access-control/role-definitions.md)
