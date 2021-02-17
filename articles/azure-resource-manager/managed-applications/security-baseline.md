@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090579"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588620"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Azure Güvenlik temeli
 
@@ -415,9 +415,9 @@ Azure Güvenlik Merkezi aşırı fazla sayıda başarısız kimlik doğrulaması
 
 **Kılavuz**: otomatik olarak kullanılabilen etkinlik günlükleri, yönetilen uygulama kaynaklarınız için okuma IŞLEMLERI (Get) dışında tüm yazma IŞLEMLERINI (put, Post, Delete) içerir. Etkinlik günlükleri, sorun giderirken bir hata bulmak veya kuruluşunuzdaki bir kullanıcının bir kaynağı nasıl değiştirdiğinizi izlemek için kullanılabilir.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -432,7 +432,7 @@ Ayrıca, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'e verileri etkinleş
 
 Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 **Rehberlik**: yönetilen uygulama kaynaklarınız tarafından oluşturulan günlükleri depolamak için kullanılan tüm depolama hesapları veya Log Analytics çalışma alanları, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayabilirsiniz. Uzun süreli ve arşiv depolama için Azure depolama, Data Lake veya Log Analytics çalışma alanı hesapları kullanın.
 
-- [Log Analytics çalışma alanı saklama süresini yapılandırma](../../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics çalışma alanı saklama süresini yapılandırma](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [Kaynak günlüklerini bir Azure depolama hesabında depolama](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834094"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570837"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
@@ -137,7 +137,7 @@ Uyarılar, Azure İzleyici'deki uyarı kuralları tarafından oluşturulur ve ka
 2. **Hedef seçin**'e tıklayıp hedeflemek istediğiniz kaynakları seçin. **Abonelik** öğesini seçin ve **Kaynak türü**'nü kullanmak istediğiniz Bağlantı İzleyicisine göre ayarlayın.
 
     ![hedef seçili uyarı ekranı](./media/connection-monitor/set-alert-rule.png)
-1. Hedeflemek üzere bir kaynak seçtikten sonra **Ölçüt ekle**'yi seçin. Ağ İzleyicisi, [uyarı oluşturabileceğiniz ölçümlere sahiptir](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). **Kullanılabilir sinyaller** bölümünü ProbesFailedPercent ve AverageRoundtripMs ölçümleri olarak ayarlayın:
+1. Hedeflemek üzere bir kaynak seçtikten sonra **Ölçüt ekle**'yi seçin. Ağ İzleyicisi, [uyarı oluşturabileceğiniz ölçümlere sahiptir](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). **Kullanılabilir sinyaller** bölümünü ProbesFailedPercent ve AverageRoundtripMs ölçümleri olarak ayarlayın:
 
     ![sinyaller seçili uyarı sayfası](./media/connection-monitor/set-alert-signals.png)
 1. Uyarı kuralı adı, açıklaması ve önem derecesi gibi uyarı ayrıntılarını girin. Uyarı yanıtını otomatikleştirmek ve özelleştirmek için uyarıya bir eylem grubu da ekleyebilirsiniz.

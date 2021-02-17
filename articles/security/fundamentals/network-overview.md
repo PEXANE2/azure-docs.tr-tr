@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874392"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578939"
 ---
 # <a name="azure-network-security-overview"></a>Azure ile ağ güvenliğine genel bakış
 
@@ -395,7 +395,7 @@ Daha fazla bilgi edinin:
 
 Ağ düzeyinde günlüğe kaydetme, herhangi bir ağ güvenliği senaryosu için bir anahtar işlevdir. Azure 'da, ağ düzeyinde günlüğe kaydetme bilgilerini almak için NSG 'ler için edinilen bilgileri günlüğe kaydedebilirsiniz. NSG günlüğe kaydetme sayesinde, şuradan bilgi alırsınız:
 
-* [Etkinlik günlükleri](../../azure-monitor/platform/platform-logs-overview.md). Azure aboneliklerinize gönderilen tüm işlemleri görüntülemek için bu günlükleri kullanın. Bu günlükler varsayılan olarak etkindir ve Azure portal içinde kullanılabilir. Daha önce denetim veya işlem günlükleri olarak bilinirdi.
+* [Etkinlik günlükleri](../../azure-monitor/essentials/platform-logs-overview.md). Azure aboneliklerinize gönderilen tüm işlemleri görüntülemek için bu günlükleri kullanın. Bu günlükler varsayılan olarak etkindir ve Azure portal içinde kullanılabilir. Daha önce denetim veya işlem günlükleri olarak bilinirdi.
 * Olay günlükleri. Bu Günlükler, hangi NSG kurallarının uygulandığı hakkında bilgi sağlar.
 * Sayaç günlükleri. Bu Günlükler, her NSG kuralının trafiği reddetme veya izin verme için kaç kez uygulanacağını size sağlar.
 

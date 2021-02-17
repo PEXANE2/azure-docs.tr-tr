@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299641"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578911"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Veri kaynaklarını Azure Sentinel 'e bağlamak için Logstash 'i kullanma
 
@@ -49,7 +49,7 @@ Logstash altyapısı üç bileşenden oluşur:
 Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alanınıza JSON biçimli verileri gönderir Log Analytics HTTP veri toplayıcı REST API ' nı kullanarak. Veriler özel günlüklere alınır.
 
 - [Log Analytics REST API](/rest/api/loganalytics/create-request)hakkında daha fazla bilgi edinin.
-- [Özel Günlükler](../azure-monitor/platform/data-sources-custom-logs.md)hakkında daha fazla bilgi edinin.
+- [Özel Günlükler](../azure-monitor/agents/data-sources-custom-logs.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash 'te Azure Sentinel çıkış eklentisini dağıtma
 
@@ -57,7 +57,7 @@ Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alan�
 
 Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
-- **_[Microsoft-logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
+- ***[Microsoft-logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)*** eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
    
 - Logstash sisteminizin Internet erişimi yoksa, bir çevrimdışı eklenti paketi hazırlamak ve kullanmak için Logstash [çevrimdışı eklenti yönetimi](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) belgesindeki yönergeleri izleyin. (Bu, Internet erişimi ile başka bir Logstash sistemi oluşturmanızı gerektirir.)
 
@@ -65,9 +65,9 @@ Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
 [Bir yapılandırma dosyası](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) belgesinin Logstash yapısındaki bilgileri kullanın ve aşağıdaki anahtarlar ve değerlerle Azure Sentinel çıktı eklentisini yapılandırmaya ekleyin. (Doğru yapılandırma dosyası söz dizimi tablodan sonra gösterilir.)
 
-| Alan adı | Veri türü | Açıklama |
+| Alan adı | Veri türü | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | dize | Çalışma alanı KIMLIĞI GUID 'nizi girin. _ |
+| `workspace_id` | dize | Çalışma alanı KIMLIĞI GUID 'nizi girin. * |
 | `workspace_key` | string | Çalışma alanınızın birincil anahtar GUID 'nizi girin. * |
 | `custom_log_table_name` | string | Günlüklerin alınacağı tablonun adını ayarlayın. Her çıkış eklentisi için yalnızca bir tablo adı yapılandırılabilir. Günlük tablosu, **özel Günlükler** kategorisindeki **tablolarda** bulunan **Günlükler** altında Azure Sentinel 'de, bir sonek ile görünür `_CL` . |
 | `endpoint` | string | İsteğe bağlı alan. Bu, varsayılan olarak Log Analytics uç noktasıdır. Alternatif bir uç nokta ayarlamak için bu alanı kullanın. |

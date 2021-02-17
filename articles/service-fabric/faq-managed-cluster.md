@@ -4,18 +4,18 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar dahil Servic
 ms.topic: troubleshooting
 ms.author: pepogors
 author: peterpogorski
-ms.date: 09/28/2020
+ms.date: 02/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: aa77896ba88d0ffd0a6f94a84603b5f4a1803357
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319833"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633096"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric yönetilen kümeler hakkında sık sorulan sorular
 
-Service Fabric yönetilen kümelerin (Önizleme) neler yapabileceğini ve bunların nasıl kullanılacağını gösteren çok sık sorulan sorular vardır. Bu belge, yaygın soruların ve bunların yanıtlarının çoğunu içerir.
+Service Fabric yönetilen kümeler (Önizleme) için sık sorulan bazı sorular (SSS) ve yanıtlar aşağıda verilmiştir.
 
 ## <a name="general"></a>Genel
 
@@ -29,11 +29,11 @@ Service Fabric yönetilen kümeler önizlemesi için desteklenen bölgeler,,,,, 
 
 ### <a name="can-i-do-an-in-place-migration-of-my-existing-service-fabric-cluster-to-a-managed-cluster-resource"></a>Mevcut Service Fabric Kümemin bir yönetilen küme kaynağına yerinde geçişini yapabilir miyim?
 
-Bu sırada, yeni Service Fabric yönetilen küme kaynak türünü kullanmak için yeni bir Service Fabric küme kaynağı oluşturmanız gerekir.
+Hayır. Bu sırada, yeni Service Fabric yönetilen küme kaynak türünü kullanmak için yeni bir Service Fabric küme kaynağı oluşturmanız gerekir.
 
 ### <a name="is-there-an-additional-cost-for-service-fabric-managed-clusters"></a>Service Fabric yönetilen kümeler için ek bir ücret var mı?
 
-Hayır, küme için gereken temel işlem, depolama ve ağ kaynaklarının maliyetinin ötesinde Service Fabric yönetilen bir kümeyle ilişkili ek bir maliyet yoktur.
+Hayır. Küme için gereken temel işlem, depolama ve ağ kaynaklarının maliyetinin ötesinde Service Fabric yönetilen bir kümeyle ilişkili ek bir maliyet yoktur.
 
 ### <a name="is-there-a-new-sla-introduced-by-the-service-fabric-managed-cluster-resource"></a>Service Fabric yönetilen küme kaynağı tarafından tanıtılan yeni bir SLA var mı?
 
@@ -41,33 +41,36 @@ SLA geçerli Service Fabric kaynak modelinden değişiklik yapmaz.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Temel ve standart SKU kümesi arasındaki fark nedir?
 
-Temel bir SKU kümesi, yapılandırmaların çoğunun Service Fabric kaynak sağlayıcısı tarafından sağlandığı anlamına gelir. Temel SKU kümelerinin test ve üretim öncesi ortamları için kullanılması amaçlanmıştır. Standart SKU kümesi, kullanıcıların, kendi ihtiyaçlarını karşılamak için kümeyi yapılandırmasına olanak sağlar. Daha fazla bilgi için bkz. [Service Fabric yönetilen küme SKU 'ları](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) .
+Temel bir SKU kümesi, yapılandırmaların çoğunun Service Fabric kaynak sağlayıcısı tarafından sağlandığı anlamına gelir. Temel SKU kümelerinin test ve üretim öncesi ortamları için kullanılması amaçlanmıştır. Standart SKU kümesi, kullanıcıların, kendi ihtiyaçlarını karşılamak için kümeyi yapılandırmasına olanak sağlar. Daha fazla bilgi için bkz. [yönetilen küme SKU 'ları Service Fabric](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
 
 ## <a name="cluster-deployment-and-management"></a>Küme dağıtımı ve yönetimi
 
 ### <a name="i-run-custom-script-extensions-on-my-virtual-machine-scale-set-can-i-continue-to-do-that-with-a-managed-service-fabric-resource"></a>Sanal makine ölçek kümesi 'nde özel Betik uzantıları çalıştırdım, bunu yönetilen bir Service Fabric kaynağıyla yapmaya devam edebilir miyim?
 
-Evet ' de, bir düğüm türünde VM uzantıları belirtebilirsiniz. Daha fazla bilgi için bkz. daha fazla ayrıntı için düğüm türü uzantısı örneği.
+Evet, yönetilen küme düğümü türlerinde VM uzantıları belirtebilirsiniz. Daha fazla bilgi için bkz. [Service Fabric yönetilen küme düğümü türüne ölçek kümesi uzantısı ekleme](how-to-managed-cluster-vmss-extension.md).
 
-### <a name="i-want-to-have-an-internal-only-load-balancer-is-that-possible"></a>Yalnızca iç yük dengeleyiciye sahip olmak istersem bu mümkün midir?
+### <a name="i-want-to-have-an-internal-only-load-balancer-is-that-possible"></a>Yalnızca iç yük dengeleyiciye sahip olmak istiyorum mu?
 
-Şu anda yalnızca iç yük dengeleyiciye sahip olmak mümkün değildir. İstenmeyen gelen/giden trafiği engellemek için ağ güvenlik grubu kurallarını kilitlemeyi öneririz.
+Hayır. Şu anda yalnızca iç yük dengeleyici olması mümkün değildir. İstenmeyen gelen/giden trafiği engellemek için ağ güvenlik grubu (NSG) kurallarını kilitlemeyi öneririz.
 
-### <a name="can-i-autoscale-my-cluster"></a>Kümemi otomatik ölçeklendirme yapabilir miyim? 
+### <a name="can-i-autoscale-my-cluster"></a>Kümemi otomatik ölçeklendirme yapabilir miyim?
+
 Otomatik ölçeklendirme Şu anda önizlemede kullanılamıyor.
 
-### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>Kümemi kullanılabilirlik bölgeleri arasında dağıtabilir miyim? 
+### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>Kümemi kullanılabilirlik bölgeleri arasında dağıtabilir miyim?
+
 Çapraz kullanılabilirlik bölgesi kümeleri Şu anda önizlemede yok.
 
-### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>Küme çalışma zamanı için otomatik ve el ile yükseltme arasında seçim yapabilir miyim? 
+### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>Küme çalışma zamanı için otomatik ve el ile yükseltme arasında seçim yapabilir miyim?
+
 Önizlemede, tüm çalışma zamanı yükseltmeleri otomatik olarak tamamlanır.
 
 ## <a name="applications"></a>Uygulamalar
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Service Fabric yönetilen kümeler için yerel bir geliştirme deneyimi var mı?
 
-Yerel geliştirme deneyimi, mevcut Service Fabric kümelerinden değişmeden kalır. Daha fazla bilgi için bkz. yerel geliştirme deneyimi hakkında daha fazla bilgi için bkz. [.NET uygulaması oluşturma](./service-fabric-quickstart-dotnet.md) .
+Yerel geliştirme deneyimi, mevcut Service Fabric kümelerinden değişmeden kalır. Daha fazla bilgi için, bkz. yerel geliştirme deneyimi hakkında daha fazla ayrıntı için [geliştirme ortamınızı ayarlama](./service-fabric-get-started.md) .
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Uygulamalarımı bir Azure Resource Manager kaynağı olarak dağıtabilir miyim?
 
-Önizlemede, uygulamaları Azure Resource Manager kaynak olarak dağıtamazsınız. Uygulamalar, PowerShell veya CLı aracılığıyla doğrudan kümeye bağlanarak dağıtılmalıdır. Bu işlev, Service Fabric kümeleri genel kullanıma girmeden önce eklenecektir.
+Evet. Uygulamaları Azure Resource Manager bir kaynak olarak dağıtmak için destek eklenmiştir (PowerShell ve CLı kullanarak dağıtıma ek olarak). Başlamak için bkz. [ARM şablonunu kullanarak Service Fabric yönetilen küme uygulaması dağıtma](how-to-managed-cluster-app-deployment-template.md).

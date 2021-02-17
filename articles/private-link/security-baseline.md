@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595760"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure özel bağlantısı için Azure Güvenlik temeli
 
@@ -28,9 +28,9 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../security/benchm
 
 Kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -50,7 +50,7 @@ Ayrıca kurumsal iş gereksinimlerine bağlı olarak, Azure Sentinel veya bir ü
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Özel bağlantı için günlüğe kaydetme ve izleme](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ Ayrıca kurumsal iş gereksinimlerine bağlı olarak, Azure Sentinel veya bir ü
 
 **Kılavuz**: Azure izleyici etkinlik günlüklerini etkinleştirin; Örneğin, işlemi kimin başlattığı, işlem ne zaman gerçekleştiği, işlemin durumu ve diğer yararlı denetim bilgileri gibi özel bağlantı kaynaklarında gerçekleştirilen işlem. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Özel bağlantı için günlüğe kaydetme ve Izleme](private-link-overview.md#logging-and-monitoring)
 
@@ -80,7 +80,7 @@ Ayrıca kurumsal iş gereksinimlerine bağlı olarak, Azure Sentinel veya bir ü
 
 **Kılavuz**: özel bağlantıyla ilgili Günlükler için, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun Azure izleyici içindeki uyumluluk düzenlemelerine göre ayarlayın. Günlüklerin uzun süreli/arşiv depolaması için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Diğer bir seçenek de Azure Sentinel veya üçüncü taraf bir SıEM üzerinde 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics çalışma alanını anlayın](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics çalışma alanını anlayın](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -114,7 +114,7 @@ Kurumsal iş gereksinimlerinize bağlı olarak Azure Sentinel 'e ve şirket içi
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -192,7 +192,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../azure-monitor/platform/action-groups.md)
+- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../azure-monitor/alerts/action-groups.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -318,7 +318,7 @@ Hizmetinizi diğer sanal ağlarınızdan (yalnızca Azure RBAC izinleri) tüketi
 
 - [Ağ güvenlik grubu için tanılama günlüğü](private-link-overview.md#logging-and-monitoring)
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

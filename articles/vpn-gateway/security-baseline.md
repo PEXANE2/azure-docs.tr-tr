@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8221e814b4555a75d596cec3ab00aa3b63e41a14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: caff705a03f7c4645eedc9423f6a9f9649c1167e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571281"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway için Azure Güvenlik temeli
 
@@ -78,9 +78,9 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure RB
 
 **Rehberlik**: kaynak yapılandırmasını izlemek ve sanal ağ kaynaklarınızda yapılan değişiklikleri algılamak Için Azure etkinlik günlüğü 'nü kullanın. Azure Izleyici 'de, VPN ağ geçidiniz ile ilgili kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -100,7 +100,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Rehberlik**: denetim, güvenlik ve tanılama günlüklerine erişim sağlamak için VPN Gateway kaynaklarınızın tanılama ayarlarını etkinleştirin. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -124,7 +124,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Kılavuz**: Azure izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın. 
 
-- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -140,9 +140,9 @@ Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik ve
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -158,7 +158,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -382,7 +382,7 @@ Sanal ağınızdaki geçerli kaynaklar için bekleyen ve geçişte şifreleme i�
 
 - [VPN Gateway tanılama günlüğü olayları üzerinde uyarı ayarlama](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

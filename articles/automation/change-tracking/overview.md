@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896638"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572619"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -34,9 +34,9 @@ Değişiklik İzleme ve envanter, işletim sistemi ve uygulama dosyalarını ve 
 
 Değişiklik İzleme ve envanterde bulunan tüm özelliklerin etkinleştirilmesi ek ücretlere neden olabilir. Devam etmeden önce [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/) ve [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/)gözden geçirin.
 
-Değişiklik İzleme ve envanter verileri Azure Izleyici günlüklerine iletir ve bu toplanan veriler bir Log Analytics çalışma alanında depolanır. Dosya bütünlüğü Izleme (FIM) özelliği, yalnızca **sunucular Için Azure Defender** etkinleştirildiğinde kullanılabilir. Daha fazla bilgi için bkz. Azure Güvenlik Merkezi [fiyatlandırması](../../security-center/security-center-pricing.md) . FIM, verileri Değişiklik İzleme ve envanterden depolamak için oluşturulan Log Analytics çalışma alanına yükler. Tam kullanımınızın izlenmesini sağlamak için bağlantılı Log Analytics çalışma alanınızı izlemenizi öneririz. Azure Izleyici günlüklerinin veri kullanımını çözümleme hakkında daha fazla bilgi için bkz. [kullanımı ve maliyeti yönetme](../../azure-monitor/platform/manage-cost-storage.md).
+Değişiklik İzleme ve envanter verileri Azure Izleyici günlüklerine iletir ve bu toplanan veriler bir Log Analytics çalışma alanında depolanır. Dosya bütünlüğü Izleme (FIM) özelliği, yalnızca **sunucular Için Azure Defender** etkinleştirildiğinde kullanılabilir. Daha fazla bilgi için bkz. Azure Güvenlik Merkezi [fiyatlandırması](../../security-center/security-center-pricing.md) . FIM, verileri Değişiklik İzleme ve envanterden depolamak için oluşturulan Log Analytics çalışma alanına yükler. Tam kullanımınızın izlenmesini sağlamak için bağlantılı Log Analytics çalışma alanınızı izlemenizi öneririz. Azure Izleyici günlüklerinin veri kullanımını çözümleme hakkında daha fazla bilgi için bkz. [kullanımı ve maliyeti yönetme](../../azure-monitor/logs/manage-cost-storage.md).
 
-Log Analytics çalışma alanına bağlı makineler, yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve izlenen sunuculardaki Linux Daemon 'ları değişikliklerle ilgili verileri toplamak için [Log Analytics aracısını](../../azure-monitor/platform/log-analytics-agent.md) kullanın. Veriler kullanılabilir olduğunda, aracı bunu işlenmek üzere Azure Izleyici günlüklerine gönderir. Azure Izleyici günlükleri alınan verilere mantığı uygular, kaydeder ve analiz için kullanılabilir hale getirir.
+Log Analytics çalışma alanına bağlı makineler, yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve izlenen sunuculardaki Linux Daemon 'ları değişikliklerle ilgili verileri toplamak için [Log Analytics aracısını](../../azure-monitor/agents/log-analytics-agent.md) kullanın. Veriler kullanılabilir olduğunda, aracı bunu işlenmek üzere Azure Izleyici günlüklerine gönderir. Azure Izleyici günlükleri alınan verilere mantığı uygular, kaydeder ve analiz için kullanılabilir hale getirir.
 
 > [!NOTE]
 > Değişiklik İzleme ve envanter, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](../how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki VM 'Leri yönetme özelliğini etkilemez.
@@ -48,7 +48,7 @@ Değişiklik İzleme ve stok, aşağıdaki sınırlamalara sahip değildir veya 
 - Windows kayıt defteri izleme için özyineleme
 - Ağ dosya sistemleri
 - Farklı yükleme yöntemleri
-- *Windows 'da depolanan *_. exe_* dosyaları
+- *Windows 'da depolanan **. exe** dosyaları
 - **En büyük dosya boyutu** sütunu ve değerleri geçerli uygulamada kullanılmıyor.
 - 30 dakikalık bir toplama döngüsüne 2500 'den fazla dosya toplamaya çalışırsanız, Değişiklik İzleme ve envanter performansı düşebilir.
 - Ağ trafiği yüksekse, değişiklik kayıtlarının görüntülenmesi altı saate kadar sürebilir.
@@ -58,7 +58,7 @@ Değişiklik İzleme ve stok, aşağıdaki sınırlamalara sahip değildir veya 
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Log Analytics Aracısı tarafından şu anda desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için [desteklenen işletim sistemleri](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) bölümüne bakın.
+Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Log Analytics Aracısı tarafından şu anda desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için [desteklenen işletim sistemleri](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) bölümüne bakın.
 
 TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -159,7 +159,7 @@ Aşağıdaki tabloda, Değişiklik İzleme ve envanter için makine başına izl
 |Hizmetler|250|
 |Daemon 'ları|250|
 
-Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
+Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 

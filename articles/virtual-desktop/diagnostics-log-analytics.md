@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018299"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576141"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -39,23 +39,23 @@ Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan
 Azure Izleyici, Windows sanal masaüstü verilerini analiz etmenizi ve sanal makine (VM) performans sayaçlarını aynı araç içinde incelemenizi sağlar. Bu makalede, Windows sanal masaüstü ortamınız için tanılamayı etkinleştirme hakkında daha fazla bilgi bulabilirsiniz.
 
 >[!NOTE]
->Azure 'da VM 'lerinizi izlemeyi öğrenmek için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../azure-monitor/insights/monitor-vm-azure.md). Ayrıca, oturum ana bilgisayarında kullanıcı deneyiminizi daha iyi anlamak için [performans sayacı eşiklerini gözden geçirdiğinizden](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) emin olun.
+>Azure 'da VM 'lerinizi izlemeyi öğrenmek için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../azure-monitor/vm/monitor-vm-azure.md). Ayrıca, oturum ana bilgisayarında kullanıcı deneyiminizi daha iyi anlamak için [performans sayacı eşiklerini gözden geçirdiğinizden](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) emin olun.
 
 ## <a name="before-you-get-started"></a>Başlamadan önce
 
 Log Analytics kullanabilmeniz için önce bir çalışma alanı oluşturmanız gerekir. Bunu yapmak için, aşağıdaki iki makaleden birindeki yönergeleri izleyin:
 
-- Azure portal kullanmayı tercih ediyorsanız, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
-- PowerShell 'i tercih ediyorsanız, bkz. [PowerShell ile Log Analytics çalışma alanı oluşturma](../azure-monitor/platform/powershell-workspace-configuration.md).
+- Azure portal kullanmayı tercih ediyorsanız, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
+- PowerShell 'i tercih ediyorsanız, bkz. [PowerShell ile Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/powershell-workspace-configuration.md).
 
-Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
+Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
 
 - Çalışma alanı KIMLIĞI
 - Çalışma alanınızın birincil anahtarı
 
 Bu bilgilere kurulum sürecinde daha sonra ihtiyacınız olacak.
 
-Windows sanal masaüstü ortamınızı izleyen ve koruanlar için veri erişimini etkinleştirmek üzere Azure Izleyici için izin yönetimini gözden geçirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md).
+Windows sanal masaüstü ortamınızı izleyen ve koruanlar için veri erişimini etkinleştirmek üzere Azure Izleyici için izin yönetimini gözden geçirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza gönderin
 
@@ -73,7 +73,7 @@ Yeni bir nesne için Log Analytics ayarlamak için:
 
     Tanılama Ayarları sayfasında gösterilen seçenekler, düzenlemekte olduğunuz nesne türüne göre değişir.
 
-    Örneğin, bir uygulama grubu için tanılamayı etkinleştirirken denetim noktalarını, hataları ve yönetimi yapılandırma seçeneklerini görürsünüz. Çalışma alanları için, bu kategoriler kullanıcıların uygulama listesine ne zaman abone olduğunu izlemek üzere bir akış yapılandırır. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+    Örneğin, bir uygulama grubu için tanılamayı etkinleştirirken denetim noktalarını, hataları ve yönetimi yapılandırma seçeneklerini görürsünüz. Çalışma alanları için, bu kategoriler kullanıcıların uygulama listesine ne zaman abone olduğunu izlemek üzere bir akış yapılandırır. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../azure-monitor/essentials/diagnostic-settings.md).
 
      >[!IMPORTANT]
      >İzlemek istediğiniz her bir Azure Resource Manager nesne için tanılamayı etkinleştirmeyi unutmayın. Tanılama etkinleştirildikten sonra veriler etkinlikler için kullanılabilir olacak. Bu işlem, ilk kez kurulduktan sonra birkaç saat sürebilir.
@@ -83,7 +83,7 @@ Yeni bir nesne için Log Analytics ayarlamak için:
 6. **Kaydet**’i seçin.
 
 >[!NOTE]
->Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+>Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>Log Analytics erişme
 
@@ -91,7 +91,7 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki Log Analytics erişim
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. **Log Analytics çalışma alanı** araması yapın.
 
@@ -134,9 +134,9 @@ Azure Izleyici Log Analytics Kullanıcı arabirimi aracılığıyla örnek sorgu
 1. Kullanılabilir sorguları gözden geçirmek için **Windows sanal masaüstü 'nü** seçin.
 1. Seçili sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
 
-[Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/log-query/example-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
+[Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/logs/example-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
 
-Aşağıdaki sorgu listesi, tek bir kullanıcı için bağlantı bilgilerini veya sorunları incelemenizi sağlar. Bu sorguları [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
+Aşağıdaki sorgu listesi, tek bir kullanıcı için bağlantı bilgilerini veya sorunları incelemenizi sağlar. Bu sorguları [Log Analytics sorgu düzenleyicisinde](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
 
 
 Tek bir kullanıcıya ait tüm bağlantıları bulmak için:

@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582017"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -34,7 +34,7 @@ Azure işlem kaynakları için zaman eşitlemesini yapılandırma hakkında bilg
 ### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
 **Rehberlik:** Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" belirleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -43,7 +43,7 @@ Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı h
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Azure kaynakları için denetim günlüğünü etkinleştirme
 **Rehberlik:** Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
 
-Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -54,7 +54,7 @@ Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı h
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../security-center/security-center-enable-data-collection.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes
@@ -62,9 +62,9 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 **Sorumluluk:** Müşterisi
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
-**_Rehberlik:_* Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure DevTest Labs örneklerinizin ilişkilendirildiği Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
+***Rehberlik:** Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure DevTest Labs örneklerinizin ilişkilendirildiği Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-Daha fazla bilgi için şu makaleye bakın: [günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+Daha fazla bilgi için şu makaleye bakın: [günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -75,8 +75,8 @@ Daha fazla bilgi için şu makaleye bakın: [günlük tutma parametrelerini ayar
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/diagnostic-settings.md)
-- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/diagnostic-settings.md)
+- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -85,7 +85,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
 **Rehberlik:** Azure Log Analytics çalışma alanını, Güvenlik günlüklerine ve Azure DevTest Labs ilgili olaylara yönelik anormal etkinlikleri izlemek ve uyarı almak için kullanın.
 
-Daha fazla bilgi için şu makaleye bakın: [Log Analytics günlük verilerinde uyarı](../azure-monitor/learn/tutorial-response.md) alma
+Daha fazla bilgi için şu makaleye bakın: [Log Analytics günlük verilerinde uyarı](../azure-monitor/alerts/tutorial-response.md) alma
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -109,8 +109,8 @@ Daha fazla bilgi için şu makaleye bakın: [Log Analytics günlük verilerinde 
 **Rehberlik:** Azure DevTest Labs, müşteri tarafından sahip olunan ve yönetilen Azure Işlem makineleri oluşturur. İşlem oluşturma olayını ve alanını günlüğe kaydetmek için desteklenen tüm Azure Windows sanal makinelerinde Microsoft Monitoring Agent kullanın `CommandLine` . Desteklenen Azure Linux VM 'Leri için, konsol günlüğünü her düğüm temelinde el ile yapılandırabilir ve verileri depolamak için Syslog kullanabilirsiniz. Ayrıca, Azure Izleyici Log Analytics çalışma alanını kullanarak günlükleri gözden geçirin ve Azure VM 'lerinden günlüğe kaydedilen verilerde sorgular çalıştırın.
 
 - [Azure Güvenlik Merkezinde veri toplama](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Azure Izleyici 'de özel sorgular çalıştırma](../azure-monitor/log-query/get-started-queries.md)
-- [Azure İzleyici'de Syslog veri kaynakları](../azure-monitor/platform/data-sources-syslog.md)
+- [Azure Izleyici 'de özel sorgular çalıştırma](../azure-monitor/logs/get-started-queries.md)
+- [Azure İzleyici'de Syslog veri kaynakları](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes
 
@@ -175,9 +175,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 - [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
-**Azure Güvenlik Merkezi izleme:** _ Evet
+**Azure Güvenlik Merkezi izleme:*** Evet
 
-_ *Sorumluluğu:** müşteri
+**Sorumluluk:** Müşterisi
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
@@ -353,7 +353,7 @@ Varsayılan olarak, tüm laboratuar işletim sistemi ve veri diskleri, platform 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
 **Rehberlik:** DevTest Labs örneklerine ve diğer kritik veya ilgili kaynaklara yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak için Azure Izleyici ile Azure etkinlik günlüğünü kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 - [DevTest Labs etkinlik günlüğü olayları için uyarı oluşturma](create-alerts.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -387,7 +387,7 @@ Microsoft, Azure DevTest Labs destekleyen temel kaynaklarda güvenlik açığı 
 **Sorumluluk:** Müşterisi
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: otomatik üçüncü taraf yazılım düzeltme eki yönetimi çözümünü dağıtma
-**_Rehberlik:_* _ laboratuvar yöneticisi olarak, güvenlik düzeltme ekleri ve diğer güncelleştirmeler de dahil olmak üzere laboratuvar özel görüntülerine yönelik güncelleştirmeleri otomatikleştirmek Için [DevTest Labs yapılarını](add-artifact-vm.md) kullanabilirsiniz. 
+***Rehberlik:*** Laboratuvar Yöneticisi olarak, güvenlik düzeltme ekleri ve diğer güncelleştirmeler de dahil olmak üzere laboratuar özel görüntülerinin güncelleştirmelerini otomatikleştirmek için [DevTest Labs yapılarını](add-artifact-vm.md) kullanabilirsiniz. 
 
 Tüm istenen yapılandırmalara göre düzenli olarak görüntü oluşturup dağıtan bir yapılandırma olarak yapılandırma çözümü olan [DevTest Labs görüntü fabrikası](image-factory-create.md)hakkında daha fazla bilgi edinin. 
 
@@ -396,7 +396,7 @@ Abonelik Yöneticisi olarak, DevTest Labs VM 'Leri için güncelleştirmeleri ve
 - [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/update-management/overview.md)
 - [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/overview.md)
 
-_ *Azure Güvenlik Merkezi izleme:** uygulanamaz
+**Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
 **Sorumluluk:** Müşterisi
 

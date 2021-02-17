@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201340"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572049"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services için Azure Güvenlik temeli
 
@@ -175,9 +175,9 @@ Azure 'da bir platform günlüğü olan etkinlik günlüğünden, abonelik düze
 
 Etkinlik günlüğünü Azure Izleyici 'ye, Azure Event Hubs Azure 'un dışına veya arşivleme için Azure depolama 'ya göndermek üzere bir tanılama ayarı oluşturun. Azure Cloud Services 'de kritik kaynaklar değiştirildiğinde bildirim uyarıları için Azure Izleyicisini yapılandırın. 
 
-- [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager Izleme](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Azure Cloud Services, kullanılabilirlik, performans, başarısızlık ve kullan
 
 - [Dağıtımdan önce Visual Studio 'da tanılamayı aç](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Değişiklik geçmişini görüntüle](../azure-monitor/platform/activity-log.md#view-change-history)
+- [Değişiklik geçmişini görüntüle](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure bulut hizmeti için Application Insights (klasik)](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Geçici disklerde depolanan uygulama verileri şifrelenmemiştir. Müşteri, ger
 
 Ayrıca, Application Insights kullanılabilirlik, performans, başarısızlık ve kullanım için Azure Cloud Services uygulamalarını izleyebilir. Bu, Azure Cloud Services Azure Tanılama verileri ile Application Insights SDK 'lardan Birleşik verileri kullanır.
 
-- [Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-classic-portal.md)
+- [Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Ölçüm uyarılarına genel bakış](../azure-monitor/platform/alerts-metric-overview.md) 
+- [Ölçüm uyarılarına genel bakış](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure bulut hizmeti için Application Insights (klasik)](../azure-monitor/app/cloudservices.md)
 

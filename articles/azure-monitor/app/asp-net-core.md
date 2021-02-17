@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249117"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589901"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -29,9 +29,12 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 * **IDE**: Visual Studio, vs Code veya komut satırı.
 
 > [!NOTE]
-> ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
+> ASP.NET Core 3,1 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!IMPORTANT]
+> Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1 ve 3,1. 2,0, 2,2 ve 3,0 sürümleri devre dışı bırakıldı ve artık desteklenmiyor.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).

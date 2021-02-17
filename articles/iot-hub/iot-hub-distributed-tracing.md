@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581997"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -252,7 +252,7 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve üzerinde `2` . |
-| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
+| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -260,7 +260,7 @@ Bir IoT Hub tarafından günlüğe kaydedilen tüm izlemeleri görmek için Tan�
 
 ### <a name="query-using-log-analytics"></a>Log Analytics kullanarak sorgulama
 
-[Kaynak günlükleriyle Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
+[Kaynak günlükleriyle Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)ayarladıysanız, kategoride Günlükler arayarak sorgulayın `DistributedTracing` . Örneğin, bu sorgu günlüğe kaydedilen tüm izlemeleri gösterir:
 
 ```Kusto
 // All distributed traces 
@@ -272,7 +272,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Özellikler |
+| TimeGenerated | OperationName | Kategori | Level | CorrelationId | DurationMs | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |

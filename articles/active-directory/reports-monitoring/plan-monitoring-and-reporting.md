@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362408"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577770"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
 
@@ -47,7 +47,7 @@ Azure AD izleme ile günlükleri şu şekilde yönlendirebilirsiniz:
 * splunk, SumoLogic veya QRadar gibi var olan SıEM araçlarınızla tümleştirebileceğiniz bir Azure Olay Hub 'ı.
 
 > [!NOTE]
-Yakın zamanda Log Analytics yerine Azure Izleyici günlükleri terimini kullanmaya başladık. Günlük verileri hala bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanıp çözümlenmektedir. [Azure izleyici 'de günlüklerin](../../azure-monitor/platform/data-platform.md)rolünü daha iyi yansıtacak şekilde terminolojiyi güncelleştiriyoruz. Ayrıntılar için bkz. [Azure izleyici terminolojisi değişiklikleri](../../azure-monitor/terminology.md) .
+Yakın zamanda Log Analytics yerine Azure Izleyici günlükleri terimini kullanmaya başladık. Günlük verileri hala bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanıp çözümlenmektedir. [Azure izleyici 'de günlüklerin](../../azure-monitor/data-platform.md)rolünü daha iyi yansıtacak şekilde terminolojiyi güncelleştiriyoruz. Ayrıntılar için bkz. [Azure izleyici terminolojisi değişiklikleri](../../azure-monitor/terminology.md) .
 
 [Rapor bekletme ilkeleri hakkında daha fazla bilgi edinin](./reference-reports-data-retention.md).
 
@@ -121,7 +121,7 @@ Günlükleri bir Azure depolama hesabına yönlendirerek, bunları [bekletme ilk
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerine gönder
 
-[Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md) , izleme verilerini farklı kaynaklardan birleştirir. Ayrıca, uygulamalarınızın ve kaynak kullanmanın çalışması hakkında Öngörüler sağlayan bir sorgu dili ve analiz altyapısı da sağlar. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. Verilerinizi doğrudan göndermek istediğiniz bir SıEM çözümünüz yoksa ve sorgu ve analiz yapmak istiyorsanız bu yöntemi kullanın. Verileriniz Azure Izleyici günlükleriniz olduktan sonra bunu Olay Hub 'ına ve isterseniz SıEM 'ye gönderebilirsiniz.
+[Azure izleyici günlükleri](../../azure-monitor/logs/log-query-overview.md) , izleme verilerini farklı kaynaklardan birleştirir. Ayrıca, uygulamalarınızın ve kaynak kullanmanın çalışması hakkında Öngörüler sağlayan bir sorgu dili ve analiz altyapısı da sağlar. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. Verilerinizi doğrudan göndermek istediğiniz bir SıEM çözümünüz yoksa ve sorgu ve analiz yapmak istiyorsanız bu yöntemi kullanın. Verileriniz Azure Izleyici günlükleriniz olduktan sonra bunu Olay Hub 'ına ve isterseniz SıEM 'ye gönderebilirsiniz.
 
 [Azure izleyici günlüklerine veri gönderme](./howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13515f2428b1fc95c31b04c984dd77dd316a4315
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202207"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580367"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azure Traffic Manager için Azure Güvenlik temeli
 
@@ -32,7 +32,7 @@ Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -48,9 +48,9 @@ Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure Izleyici 'de
 
 - [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -60,7 +60,7 @@ Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure Izleyici 'de
 
 **Kılavuz**: Azure izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -76,9 +76,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -96,7 +96,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -288,7 +288,7 @@ Azure Traffic Manager, kullanıcılara atanabilecek "Traffic Manager katılımc�
 
 **Rehberlik**: değişikliklerin Azure Traffic Manager ve diğer önemli veya ilgili kaynakların ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

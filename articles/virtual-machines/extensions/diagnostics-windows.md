@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 990bd7c21bec0f42034a0044b58d1589665700ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955982"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580163"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede Azure Tanılama etkinleştirmek için PowerShell 'i kullanma
 
@@ -213,4 +213,4 @@ Yapılandırmanın aşağıdakileri içermesi için güncelleştirilmesi gerekir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Sorunları gidermeye yönelik Azure Tanılama özelliğini ve diğer teknikleri kullanma hakkında ek yönergeler için bkz. [Azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Tanılama yapılandırması şeması](../../azure-monitor/platform/diagnostics-extension-versions.md) , tanılama uzantısı IÇIN çeşitli XML yapılandırması seçeneklerini açıklar.
+* [Tanılama yapılandırması şeması](../../azure-monitor/agents/diagnostics-extension-versions.md) , tanılama uzantısı IÇIN çeşitli XML yapılandırması seçeneklerini açıklar.

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589733"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights’daki günlük tabanlı ve önceden toplanmış ölçümler
 
@@ -30,12 +30,12 @@ Aynı zamanda, büyük bir telemetri hacmi üreten uygulamalar için, tüm olayl
 
 ## <a name="pre-aggregated-metrics"></a>Önceden toplanmış ölçümler
 
-Günlük tabanlı ölçümlere ek olarak, geç 2018 ' de Application Insights ekibi, zaman serisi için iyileştirilmiş özel bir depoda depolanan ölçümlerin genel bir önizlemesini sevk ediyor. Yeni ölçümler artık çok sayıda özelliği olan ayrı olaylar olarak tutulmayacaktır. Bunun yerine, önceden toplanmış zaman serisi olarak ve yalnızca anahtar boyutlarıyla depolanır. Bu, sorgu sırasında yeni ölçümlerin üstün olmasını sağlar: verilerin alınması çok daha hızlı gerçekleşir ve daha az işlem gücü gerektirir. Bu nedenle, ölçüm boyutları, daha fazla yanıt veren [panolar](./overview-dashboard.md)ve daha fazlası [hakkında neredeyse gerçek zamanlı uyarı](../platform/alerts-metric-near-real-time.md)gibi yeni senaryolar sağlanır.
+Günlük tabanlı ölçümlere ek olarak, geç 2018 ' de Application Insights ekibi, zaman serisi için iyileştirilmiş özel bir depoda depolanan ölçümlerin genel bir önizlemesini sevk ediyor. Yeni ölçümler artık çok sayıda özelliği olan ayrı olaylar olarak tutulmayacaktır. Bunun yerine, önceden toplanmış zaman serisi olarak ve yalnızca anahtar boyutlarıyla depolanır. Bu, sorgu sırasında yeni ölçümlerin üstün olmasını sağlar: verilerin alınması çok daha hızlı gerçekleşir ve daha az işlem gücü gerektirir. Bu nedenle, ölçüm boyutları, daha fazla yanıt veren [panolar](./overview-dashboard.md)ve daha fazlası [hakkında neredeyse gerçek zamanlı uyarı](../alerts/alerts-metric-near-real-time.md)gibi yeni senaryolar sağlanır.
 
 > [!IMPORTANT]
 > Hem günlük tabanlı hem de önceden toplanmış ölçümler Application Insights. İkisini de ayırt etmek için, Application Insights UX ön toplanmış ölçümler artık "standart ölçümler (Önizleme)" olarak adlandırılmaktadır, ancak olaylar için geleneksel ölçümler "günlük tabanlı ölçümler" olarak yeniden adlandırıldı.
 
-Daha yeni SDK 'lar (.NET için[Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK veya üzeri) koleksiyon sırasında ön toplama ölçümleri. Bu,  [Varsayılan olarak gönderilen standart ölçümler](../platform/metrics-supported.md#microsoftinsightscomponents) için geçerlidir; bu nedenle doğruluk örnekleme veya filtrelemeden etkilenmez. Ayrıca, [GetMetric](./api-custom-events-metrics.md#getmetric) kullanılarak gönderilen özel ölçümler için de geçerlidir ve daha az veri alımı ve daha düşük maliyetle sonuçlanır.
+Daha yeni SDK 'lar (.NET için[Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK veya üzeri) koleksiyon sırasında ön toplama ölçümleri. Bu,  [Varsayılan olarak gönderilen standart ölçümler](../essentials/metrics-supported.md#microsoftinsightscomponents) için geçerlidir; bu nedenle doğruluk örnekleme veya filtrelemeden etkilenmez. Ayrıca, [GetMetric](./api-custom-events-metrics.md#getmetric) kullanılarak gönderilen özel ölçümler için de geçerlidir ve daha az veri alımı ve daha düşük maliyetle sonuçlanır.
 
 Ön toplamayı uygulamayan SDK 'lar için (yani Application Insights SDK 'ların daha eski sürümleri veya tarayıcı araçları için) Application Insights arka ucu, Application Insights olay toplama uç noktası tarafından alınan olayları toplayarak yeni ölçümleri hala doldurur. Bu, kablo üzerinden iletilen azaltılan veri hacminin avantajlarından faydalanmadığında, önceden toplanmış ölçümleri kullanmaya devam edebilir ve koleksiyon sırasında ölçümleri önceden toplamayan SDK 'lar ile neredeyse gerçek zamanlı boyut uyarısı hakkında daha iyi performans ve destek elde edebilirsiniz.
 
@@ -81,7 +81,7 @@ Koleksiyon uç noktasının, uygulama ile birlikte kullandığınız SDK sürüm
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Grafik oluşturma ve günlük tabanlı ve standart önceden toplanmış ölçümleri keşfetme
 
-Önceden toplanmış ve günlük tabanlı ölçülerden grafikler çizmek ve panoları grafiklerle yazmak için [Azure izleyici ölçüm Gezgini](../platform/metrics-getting-started.md) kullanın. İstenen Application Insights kaynağını seçtikten sonra standart (Önizleme) ve günlük tabanlı ölçümler arasında geçiş yapmak için ad alanı seçicisini kullanın veya özel bir ölçüm ad alanı seçin:
+Önceden toplanmış ve günlük tabanlı ölçülerden grafikler çizmek ve panoları grafiklerle yazmak için [Azure izleyici ölçüm Gezgini](../essentials/metrics-getting-started.md) kullanın. İstenen Application Insights kaynağını seçtikten sonra standart (Önizleme) ve günlük tabanlı ölçümler arasında geçiş yapmak için ad alanı seçicisini kullanın veya özel bir ölçüm ad alanı seçin:
 
 ![Ölçüm ad alanı](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ Günlük tabanlı veya ön toplanmış olan Application Insights ölçümleri, [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Neredeyse gerçek zamanlı uyarı](../platform/alerts-metric-near-real-time.md)
+* [Neredeyse gerçek zamanlı uyarı](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric ve TrackValue](./api-custom-events-metrics.md#getmetric)

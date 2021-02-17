@@ -3,12 +3,12 @@ title: Danışman ile operasyonel Excel 'i geliştirme
 description: Azure abonelikleriniz için işlemsel mükemmelliği iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579956"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak işlemsel mükemmellik elde edin
 
@@ -38,7 +38,7 @@ Havuzunuz kullanım dışı bir iç bileşen kullanıyorsa, daha iyi kararlılı
 
 ## <a name="repair-invalid-log-alert-rules"></a>Geçersiz günlük uyarısı kurallarını Onar
 
-Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan uyarı kurallarını algılar. Azure Izleyici 'de günlük uyarı kuralları oluşturabilir ve bunları belirli aralıklarda analiz sorguları çalıştırmak için kullanabilirsiniz. Sorgu sonuçları, uyarıyı tetiklemenin gerekip gerekmediğini belirler. Başvurulan kaynaklarda, tablolarda veya komutlarda yapılan değişiklikler nedeniyle, analiz sorguları zaman içinde geçersiz hale gelebilir. Danışman, otomatik olarak devre dışı bırakılmasını ve Azure 'da kaynaklarınızın kapsamını izlemeyi güvence altına almak için uyarı kuralındaki sorguyu düzeltmenizi önerir. [Uyarı kuralları sorunlarını giderme hakkında daha fazla bilgi edinin.](../azure-monitor/platform/alerts-troubleshoot-log.md)
+Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan uyarı kurallarını algılar. Azure Izleyici 'de günlük uyarı kuralları oluşturabilir ve bunları belirli aralıklarda analiz sorguları çalıştırmak için kullanabilirsiniz. Sorgu sonuçları, uyarıyı tetiklemenin gerekip gerekmediğini belirler. Başvurulan kaynaklarda, tablolarda veya komutlarda yapılan değişiklikler nedeniyle, analiz sorguları zaman içinde geçersiz hale gelebilir. Danışman, otomatik olarak devre dışı bırakılmasını ve Azure 'da kaynaklarınızın kapsamını izlemeyi güvence altına almak için uyarı kuralındaki sorguyu düzeltmenizi önerir. [Uyarı kuralları sorunlarını giderme hakkında daha fazla bilgi edinin.](../azure-monitor/alerts/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Azure Ilke önerilerini kullanma
 
@@ -50,9 +50,9 @@ Azure Ilkesi, Azure 'da ilke oluşturmak, atamak ve yönetmek için kullanabilec
 
 **Dağıtımlar için izin verilen sanal makine SKU 'Larını belirtin.** Bu ilke, kuruluşunuzun dağıtabileceği bir sanal makine SKU'ları kümesi belirtmenizi sağlar.
 
-***Yönetilen disk kullanmayan VM 'Leri denetlemeyi*zorunlu tutun.**
+***Yönetilen disk kullanmayan VM 'Leri denetlemeyi* zorunlu tutun.**
 
-***Kaynak gruplarından etiket devralmayı*etkinleştirin.** Bu ilke, bir kaynak oluşturulduğunda veya güncelleştirildiğinde üst kaynak grubunda belirtilen etiketi ve değeri ekler veya değiştirir. Bir düzeltme görevi tetikleyerek mevcut kaynakları düzeltebilirsiniz.
+***Kaynak gruplarından etiket devralmayı* etkinleştirin.** Bu ilke, bir kaynak oluşturulduğunda veya güncelleştirildiğinde üst kaynak grubunda belirtilen etiketi ve değeri ekler veya değiştirir. Bir düzeltme görevi tetikleyerek mevcut kaynakları düzeltebilirsiniz.
 
 Danışman, müşterilerin en iyi yöntemleri benimseerek işlemsel mükemmellik elde etmenize yardımcı olan birkaç ayrı Azure ilkesi önerir. Bir müşteri önerilen bir ilkeyi atamaya karar verirse, öneriyi gizlenecektir. Müşteri ilkeyi daha sonra kaldırmaya karar verirse, danışman, kaldırma işleminin güçlü bir sinyal olarak yorumlandığı için öneriyi göstermeye devam eder:
 

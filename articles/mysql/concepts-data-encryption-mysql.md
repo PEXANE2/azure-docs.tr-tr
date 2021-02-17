@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518813"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596327"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -24,7 +24,7 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 > [!NOTE]
 > Bu özellik, MySQL için Azure veritabanı 'nın "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir. Diğer sınırlamalar için [sınırlandırma](concepts-data-encryption-mysql.md#limitations) bölümüne bakın.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme aşağıdaki avantajları sağlar:
 
@@ -118,7 +118,7 @@ Veritabanı durumunu izlemek ve saydam veri şifreleme koruyucusu erişiminin ka
 * [Azure Kaynak durumu](../service-health/resource-health-overview.md): müşteri anahtarına erişimi kesilen erişilemeyen bir veritabanı, veritabanına ilk bağlantı reddedildikten sonra "erişilemez" olarak gösterilir.
 * [Etkinlik günlüğü](../service-health/alerts-activity-log-service-notifications-portal.md): müşteri tarafından yönetilen Key Vault müşteri anahtarına erişim başarısız olursa, girdiler etkinlik günlüğüne eklenir. Bu olaylar için uyarı oluşturursanız, erişimi mümkün olan en kısa sürede yeniden yükleyebilirsiniz.
 
-* [Eylem grupları](../azure-monitor/platform/action-groups.md): tercihlerinize göre size bildirim ve uyarı göndermek için bu grupları tanımlayın.
+* [Eylem grupları](../azure-monitor/alerts/action-groups.md): tercihlerinize göre size bildirim ve uyarı göndermek için bu grupları tanımlayın.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault bir müşterinin yönetilen anahtarıyla geri yükleme ve çoğaltma
 

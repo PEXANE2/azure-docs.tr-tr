@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483806"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575250"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure ön kapılarında ölçümleri ve günlükleri izleme
 
@@ -29,7 +29,7 @@ Azure ön kapısını kullanarak kaynakları aşağıdaki yollarla izleyebilirsi
 
 Ölçümler, portalda performans sayaçlarını görüntülemenize olanak tanıyan belirli Azure kaynaklarına yönelik bir özelliktir. Aşağıda kullanılabilir ön kapı ölçümleri verilmiştir:
 
-| Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Açıklama |
+| Metric | Ölçüm görünen adı | Birim | Boyutlar | Description |
 | --- | --- | --- | --- | --- |
 | Istek sayısı | İstek Sayısı | Count | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
 | RequestSize | İstek boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
@@ -59,7 +59,7 @@ Etkinlik günlükleri, ön kapıda yapılan işlemler hakkında bilgi sağlar. B
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Tanılama günlükleri
 Tanılama günlükleri, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Tanılama günlükleri, etkinlik günlüklerinden farklıdır.
 
-Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere yönelik öngörüler sağlar. Tanılama günlükleri, kaynağınızın yapıldığı işlemlere ilişkin öngörüler sağlar. Daha fazla bilgi için bkz. [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md).
+Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere yönelik öngörüler sağlar. Tanılama günlükleri, kaynağınızın yapıldığı işlemlere ilişkin öngörüler sağlar. Daha fazla bilgi için bkz. [Azure izleyici tanılama günlükleri](../azure-monitor/essentials/platform-logs-overview.md).
 
 :::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Tanılama günlükleri":::
 

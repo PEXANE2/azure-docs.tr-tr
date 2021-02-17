@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: c0b773a728fed456a34d0db3a00b353147432012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805218"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589253"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Bilişsel hizmetler için Azure Güvenlik temeli
 
@@ -175,9 +175,9 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 **Kılavuz**: Azure etkinlik günlüğünü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure bilişsel hizmetler kapsayıcınıza ilişkin ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -199,7 +199,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, denetim düzlemi düzeyinde Azure bilişsel Hizmetler kapsayıcısında gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, Redsıs örnekleri için Azure önbelleğiniz için denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" ı belirleyebilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -211,7 +211,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 Ayrıca, Azure bilişsel hizmetler, analiz, uyarı ve raporlama amacıyla toplanabilecek ve kullanılabilecek tanılama olayları gönderir. Bilişsel hizmetler kapsayıcısı için tanılama ayarlarını Azure portal aracılığıyla yapılandırabilirsiniz. Bir depolama hesabına, Olay Hub 'ına veya bir Log Analytics çalışma alanına bir veya daha fazla tanılama olayı gönderebilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure bilişsel hizmetler için tanılama ayarlarını kullanma](./diagnostic-logging.md)
 
@@ -231,7 +231,7 @@ Ayrıca, Azure bilişsel hizmetler, analiz, uyarı ve raporlama amacıyla toplan
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -241,9 +241,9 @@ Ayrıca, Azure bilişsel hizmetler, analiz, uyarı ve raporlama amacıyla toplan
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Bu Günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veriler sağlar. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve Azure bilişsel hizmetler için toplanabilecek etkinlik günlüğü verilerine göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
-* [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/platform/activity-log.md)
+* [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -257,7 +257,7 @@ Bilişsel hizmetler Kapsayıcınız için tanılama ayarlarını yapılandırın
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-* [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-log.md)
+* [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -570,7 +570,7 @@ Ayrıca, müşteri tarafından yönetilen anahtarlarınızın depolanması için
 
 **Kılavuz**: Azure bilişsel hizmetler 'in üretim örneklerine ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
