@@ -3,12 +3,12 @@ title: Ortamınızı Blueprint Işleci için ayarlama
 description: Azure ortamınızı Blueprint Işleci Azure yerleşik rolüyle kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558724"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı Blueprint İşleci için yapılandırma
 
@@ -22,7 +22,7 @@ Birinci adım, şema atamak için şema **operatörü** rolünü hesaba veya gü
 
 1. Önerilen [Güvenlik grubu oluşturma ve üye ekleme](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. Hesap veya güvenlik grubuna bir **Blueprint işlecinin** [rol atamasını ekleyin](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. Hesap veya güvenlik grubuna **Blueprint Işlecinin** [Azure rolünü atama](../../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="user-assign-managed-identity"></a>Kullanıcı tarafından yönetilen kimliği atama
 
@@ -32,7 +32,7 @@ Birinci adım, şema atamak için şema **operatörü** rolünü hesaba veya gü
 
 1. Kullanıcı tarafından atanan yönetilen kimliğe, hedeflenen kapsamın şema tanımının gerektirdiği herhangi bir rol veya izin verin.
 
-1. Hesap veya güvenlik grubuna **yönetilen kimlik işlecinin** [rol atamasını ekleyin](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) . Rol atamasını Kullanıcı tarafından atanan yeni yönetilen kimliğe kapsam.
+1. **Yönetilen kimlik Işlecinin** [Azure rolünü](../../../role-based-access-control/role-assignments-portal.md) hesaba veya güvenlik grubuna atayın. Rol atamasını Kullanıcı tarafından atanan yeni yönetilen kimliğe kapsam.
 
 1. **Şema operatörü** olarak, Kullanıcı tarafından atanan yeni yönetilen kimliği kullanan [bir şema atayın](../create-blueprint-portal.md#assign-a-blueprint) .
 

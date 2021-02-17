@@ -2,52 +2,32 @@
 title: Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure yay etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392247"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560169"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Bir yay etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma (Önizleme)
 
-Kubernetes ile ilgili olarak, Giüstler, bir git deposunda Kubernetes küme yapılandırmalarının (dağıtımlar, ad alanları vb.) istenen durumunu bildirme uygulamasıdır. Bu bildirimin ardından bir işleç kullanarak bu küme yapılandırmalarının yoklaması ve çekme tabanlı dağıtımı gelir. 
-
-Bu makalede, Azure Arc etkin Kubernetes kümelerindeki Gilar iş akışlarının kurulumu ele alınmaktadır.
-
-Kümeniz ve git deposu arasındaki bağlantı, `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure Resource Manager uzantı kaynağı olarak oluşturulur. `sourceControlConfiguration`Kaynak özellikleri, Kubernetes kaynaklarının git 'ten kümenize nasıl akmasını gerektiğini temsil eder. Veriler `sourceControlConfiguration` , verilerin gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
-
-`config-agent`Kümenizde çalışan şu şekilde sorumludur:
-* `sourceControlConfiguration`Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş uzantı kaynaklarını izleme.
-* Her biri için Git deposunu izlemek üzere Flox operatörü dağıtma `sourceControlConfiguration` .
-* Herhangi bir güncelleştirme uygulanıyor `sourceControlConfiguration` . 
-
-`sourceControlConfiguration`Çoklu kiracı elde etmek için aynı Azure Arc etkin Kubernetes kümesinde birden çok kaynak oluşturabilirsiniz. Her biri farklı bir kapsamla oluşturarak, ilgili ad alanları dahilinde dağıtımları sınırlayın `sourceControlConfiguration` `namespace` .
-
-Git deposu şunları içerebilir:
-* YAML-ad alanları, ConfigMaps, dağıtımlar, DaemonSets vb. gibi geçerli bir Kubernetes kaynağını tanımlayan bildirimleri biçimlendirir. 
-* Uygulamaları dağıtmak için Held grafikleri. 
-
-Yaygın bir senaryo kümesi, kuruluşunuz için genel Azure rolleri ve bağlamaları, izleme veya günlük aracıları ya da küme genelinde hizmetler gibi temel bir yapılandırma tanımlamayı içerir.
-
-Aynı model, heterojen ortamlar arasında dağıtılabilen daha büyük bir küme koleksiyonunu yönetmek için kullanılabilir. Örneğin, tek seferde birden fazla Kubernetes kümesi için geçerli olan kuruluşunuzun temel yapılandırmasını tanımlayan bir havuzunuz vardır. [Azure ilkesi](use-azure-policy.md) , bir `sourceControlConfiguration` kapsamdaki (abonelik veya kaynak grubu) tüm Azure Arc etkin Kubernetes kaynakları üzerinde belirli bir parametre kümesiyle bir oluşturma işlemini otomatik hale getirebilir.
-
-Kapsama sahip bir yapılandırma kümesinin nasıl uygulanacağını öğrenmek için aşağıdaki adımları izleyin `cluster-admin` .
+Bu makalede, Azure Arc etkin bir Kubernetes kümesinde yapılandırmaların uygulanması gösterilmektedir. Aynı kavramsal genel bakış [burada](./conceptual-configurations.md)bulunabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Mevcut bir Azure Arc etkin Kubernetes bağlı kümesine sahip olduğunuzu doğrulayın. Bağlı bir kümeye ihtiyacınız varsa bkz. [Azure yay etkin Kubernetes kümesi hızlı başlangıç](./connect-cluster.md).
+* Mevcut bir Azure Arc etkin Kubernetes bağlı kümesine sahip olduğunuzu doğrulayın. Bağlı bir kümeye ihtiyacınız varsa bkz. [Azure yay etkin Kubernetes kümesi hızlı başlangıç](./connect-cluster.md).
+
+* Bu özelliğin avantajlarını ve mimarisini anlamak için, [Kubernetes ile Ilgili yapılandırma ve Gilar makalesini](./conceptual-configurations.md) gözden geçirin.
 
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
 Bu makalede kullanılan [örnek depo](https://github.com/Azure/arc-k8s-demo) , birkaç ad alanı sağlamak, ortak bir iş yükü dağıtmak ve takıma özgü bazı yapılandırmalar sağlamak isteyen bir küme operatörü etrafında yapılandırılmıştır. Bu depoyu kullanmak, kümenizde aşağıdaki kaynakları oluşturur:
-
 
 * **Ad alanları:** `cluster-config` , `team-a` , `team-b`
 * **Dağıtım:**`cluster-config/azure-vote`
@@ -249,7 +229,7 @@ Bir `sourceControlConfiguration` oluşturulduğunda veya güncelleştirilirken, 
 
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 
-| Aşama değişikliği | Description |
+| Aşama değişikliği | Açıklama |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` , kümeyi başarıyla yapılandırıp dağıtımı hatasız olarak dağıtabilecek `flux` . |

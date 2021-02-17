@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537788"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559472"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -94,6 +94,8 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 * [Azure NetApp Files – yedeklemeyi bulut eşitlemeyle boşaltma SAP HANA](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files kullanarak SAP HANA sistem kopyalarınızı hızlandırın](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Bulut birimleri ONTAP ve Azure NetApp Files: SAP HANA sistem geçişi kolaylaştırıldı](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [HANA N + d Scale-Out mimari-bölüm 1-Microsoft Teknik topluluğu 'ndaki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [HANA N + d Scale-Out mimarisi-Bölüm 2-Microsoft Teknik topluluğu 'ndaki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware çözümleri
 
@@ -146,6 +148,7 @@ Bu bölüm, Azure platform hizmetleri için çözümler sağlar.
 
 * [Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme](../aks/azure-netapp-files.md)
 * [Azure NetApp Files ile Azure 'da bu dünya dışı Kubernetes performansı](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp Files + Trident = Kubernetes için dinamik ve kalıcı depolama](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident-kapsayıcılar için depolama Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes hizmeti 'nde (AKS) Magento e-ticaret platformu](/azure/architecture/example-scenario/magento/magento-azure)
 

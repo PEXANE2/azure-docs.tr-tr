@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583934"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546355"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -59,7 +59,7 @@ V 1.0 kaynaklarına erişmek için MSAL.NET de mümkündür. Bkz. [bir v 1.0 uyg
 
 - ADAL.NET, bir yetkili aracılığıyla güvenlik belirteci hizmeti (STS) veya yetkilendirme sunucusu bağlantınızın temsili olarak [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) kullanır. Aksine, MSAL.NET [istemci uygulamaları](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)etrafında tasarlanmıştır. İki ayrı sınıf sağlar: `PublicClientApplication` ve `ConfidentialClientApplication`
 
-- Belirteçleri alma: ADAL.NET ve MSAL.NET aynı kimlik doğrulama çağrılarına sahiptir ( `AcquireTokenAsync` ve  `AcquireTokenSilentAsync` adal.net, ve `AcquireTokenInteractive` msal.NET için `AcquireTokenSilent` ), ancak farklı parametrelerle gereklidir. Tek fark, MSAL.NET ' de, `ClientID` her AcquireTokenXX çağrısında uygulamanızın içinde geçiş yapmak zorunda kalmayın. Aslında, `ClientID` (veya) derlerken yalnızca bir kez ayarlanır `IPublicClientApplication` `IConfidentialClientApplication` .
+- Belirteçleri alma: ADAL.NET ve MSAL.NET aynı kimlik doğrulama çağrılarına sahiptir ( `AcquireTokenAsync` ve `AcquireTokenSilentAsync` adal.net, ve `AcquireTokenInteractive` msal.NET için `AcquireTokenSilent` ), ancak farklı parametrelerle gereklidir. Tek fark, MSAL.NET ' de, `ClientID` her AcquireTokenXX çağrısında uygulamanızın içinde geçiş yapmak zorunda kalmayın. Aslında, `ClientID` (veya) derlerken yalnızca bir kez ayarlanır `IPublicClientApplication` `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>IAccount IUser değil
 
@@ -170,7 +170,7 @@ V 1.0 belirteçlerini kabul eden bir uygulama için belirteçler almak istiyorsa
 Örneğin, Kullanıcı adına, uygulama KIMLIĞI URI 'SI olan bir v 1.0 Web API 'sine erişmek için `ResourceId` şunu kullanmak isteyeceksiniz:
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Microsoft Graph API 'sini kullanarak MSAL.NET Azure Active Directory okumak ve yazmak istiyorsanız ( https://graph.microsoft.com/) Aşağıdaki kod parçacığında olduğu gibi kapsamların bir listesini oluşturursunuz:
@@ -205,7 +205,7 @@ Azure AD tarafından kullanılan mantık şunlardır:
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>İstemci kimlik bilgisi akışı/Daemon uygulaması durumunda istek yapılacak kapsamlar

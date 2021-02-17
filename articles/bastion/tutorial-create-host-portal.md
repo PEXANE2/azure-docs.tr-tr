@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 54aca389ea56594b004212c1479d5cc2568a2527
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327340"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560877"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Öğretici: bir tarayıcı aracılığıyla savunma yapılandırma ve Windows VM 'ye bağlanma
 
@@ -26,7 +26,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir sanal ağ.
 * Sanal ağdaki bir Windows sanal makinesi.
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu bölüm, VNet 'iniz üzerinde savunma nesnesi oluşturmanıza yardımcı olur. Bu, VNet 'teki bir VM ile güvenli bir bağlantı oluşturmak için gereklidir.
 
 1. **Giriş** sayfasından **+ kaynak oluştur**' u seçin.
-1. **Yeni** sayfada, arama kutusunda, giriş ' i yazın ve ardından arama sonuçlarına ulaşmak için **ENTER** **' u seçin**. Savunma nedeniyle yayımcının Microsoft **Bastion**olduğunu doğrulayın.
+1. **Yeni** sayfada, arama kutusunda, giriş ' i yazın ve ardından arama sonuçlarına ulaşmak için **ENTER** **' u seçin**. Savunma nedeniyle yayımcının Microsoft olduğunu doğrulayın.
 1. **Oluştur**’u seçin.
 1. Savunma **Oluştur** sayfasında, yeni bir savunma kaynağı yapılandırın.
 
@@ -60,20 +60,20 @@ Bu bölüm, VNet 'iniz üzerinde savunma nesnesi oluşturmanıza yardımcı olur
     * **Sanal ağ**: savunma kaynağının oluşturulacağı sanal ağ. Bu işlem sırasında portalda yeni bir sanal ağ oluşturabilir veya var olan bir sanal ağı kullanabilirsiniz. Var olan bir sanal ağı kullanıyorsanız, var olan sanal ağın savunma alt ağ gereksinimlerine uyum sağlamak için yeterli boş adres alanı olduğundan emin olun. Sanal ağınızı açılan listeden görmüyorsanız, doğru kaynak grubunu seçtiğinizden emin olun.
     * **Alt ağ**: bir sanal ağ oluşturduğunuzda veya seçtiğinizde alt ağ alanı görüntülenir. Sanal ağınızda, yeni savunma konağının dağıtılacağı alt ağ. Alt ağ, savunma ana bilgisayarına tahsis edilir. **Alt ağ yapılandırmasını Yönet** ' i seçin ve Azure savunma alt ağını oluşturun. **+ Alt ağ** ' ı seçin ve aşağıdaki yönergeleri kullanarak bir alt ağ oluşturun:
 
-         * Alt ağ **AzureBastionSubnet**olarak adlandırılmalıdır.
+         * Alt ağ **AzureBastionSubnet** olarak adlandırılmalıdır.
          * Alt ağ en az/27 veya daha büyük olmalıdır.
 
       Ek alanlar doldurmanız gerekmez. **Tamam** ' ı seçin ve ardından sayfanın üst kısmında, savunma yapılandırması sayfasına dönmek için **bir savunma oluştur** ' u seçin.
-    * **Genel IP adresi**: RDP/SSH 'ye erişilecek savunma kaynağının genel IP 'si (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır. Bu IP adresinin, bağlanmak istediğiniz VM 'lerden herhangi biriyle hiçbir şey yok. Bu, savunma ana bilgisayar kaynağı için genel IP olur.
+    * **Genel IP adresi**: RDP/SSH 'ye erişilecek savunma kaynağının genel IP 'si (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır. Bu IP adresinin, bağlanmak istediğiniz VM 'lerden herhangi biri ile ilgili hiçbir şey yok. Bu, savunma ana bilgisayar kaynağı için genel IP olur.
     * **Genel IP adresi adı**: genel IP adresi kaynağının adı. Bu öğretici için varsayılan olarak bırakabilirsiniz.
-    * **Genel IP adresi SKU 'su**: Bu ayar varsayılan olarak **Standart**olarak doldurulur. Azure savunma yalnızca standart genel IP SKU 'sunu kullanır/destekler.
-    * **Atama**: Bu ayar varsayılan olarak **statik**olarak doldurulur.
+    * **Genel IP adresi SKU 'su**: Bu ayar varsayılan olarak **Standart** olarak doldurulur. Azure savunma yalnızca standart genel IP SKU 'sunu kullanır/destekler.
+    * **Atama**: Bu ayar varsayılan olarak **statik** olarak doldurulur.
 
 1. Ayarları belirtmeyi tamamladığınızda, **gözden geçir + oluştur**' u seçin. Bu, değerleri doğrular. Doğrulama başarılı olduktan sonra savunma kaynağını oluşturabilirsiniz.
 1. **Oluştur**’u seçin.
 1. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. Savunma kaynağının oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
-## <a name="connect-to-a-vm"></a>Bir VM’ye bağlanma
+## <a name="connect-to-a-vm"></a>Sanal makineye bağlanma
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
 

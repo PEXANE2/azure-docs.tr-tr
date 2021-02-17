@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045419"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555149"
 ---
 # <a name="add-tags-to-digital-twins"></a>Dijital TWINS 'e etiket ekleme 
 
@@ -91,7 +91,7 @@ Küçük (değer etiketi) ve kırmızı olmayan tüm varlıkları almak için bi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Dijital ikizi modellerini tasarlama ve yönetme hakkında daha fazla bilgi edinin:
-* [*Nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)
+* [*Nasıl yapılır: DTDL modellerini yönetme*](how-to-manage-model.md)
 
 İkizi grafiğini sorgulama hakkında daha fazla bilgi edinin:
 * [*Nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md)

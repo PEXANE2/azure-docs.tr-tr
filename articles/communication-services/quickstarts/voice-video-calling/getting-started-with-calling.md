@@ -2,18 +2,18 @@
 title: Hızlı başlangıç-uygulamanıza sesli çağrı ekleme
 titleSuffix: An Azure Communication Services quickstart
 description: Bu hızlı başlangıçta, Azure Iletişim Hizmetleri 'ni kullanarak uygulamanıza çağırma özellikleri eklemeyi öğreneceksiniz.
-author: matthewrobertson
-ms.author: marobert
+author: GrantMeStrength
+ms.author: jken
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: e9f552d6be897b5d9fd462e9168b61fc0b934987
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 419997bf06dd951092661903f5a06ca86538de4f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761999"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548514"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>Hızlı başlangıç: uygulamanıza sesli çağrı ekleme
 

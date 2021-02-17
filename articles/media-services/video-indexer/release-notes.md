@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427675"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560502"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -67,7 +67,7 @@ Video Indexer, bilişsel hizmetler özel Vision ile tümleştirme yoluyla animas
 > [!NOTE]
 > LinkedIn ve Facebook 'a bağlı Video Indexer hesaplara 1 Mart 2021 ' den sonra erişilemeyecektir. 
 > 
-> Erişiminiz olacak şekilde, sahip olduğunuz bir Azure AD, Microsoft veya Google e-postasını Video Indexer hesabına [davet](invite-users.md) etmelisiniz.<br/>
+> Erişiminiz olacak şekilde, sahip olduğunuz bir Azure AD, Microsoft veya Google e-postasını Video Indexer hesabına [davet](invite-users.md) etmelisiniz. Daha sonra, [davet](invite-users.md)bölümünde açıklandığı gibi desteklenen sağlayıcıların ek bir sahibini ekleyebilirsiniz. <br/>
 > Alternatif olarak, ücretli bir hesap oluşturabilir ve verileri geçirebilirsiniz.
 
 ## <a name="august-2020"></a>Ağustos 2020

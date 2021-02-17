@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557911"
 ---
 # <a name="dcsv2-series"></a>DCsv2 serisi
 
@@ -21,15 +21,15 @@ DCsv2 serisi, genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizli
 
 Örnek kullanım örnekleri şunlardır: gizli multiparti veri paylaşımı, sahtekarlık algılama, para-para, blok zinciri, gizli kullanım analizi, zekası Analizi ve gizli makine öğrenimi.
 
-[Premium Depolama](premium-storage-performance.md): desteklenen *<br>
-[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
-[Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
-[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
-[VM oluşturma desteği](generation-2.md): 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Premium Depolama](premium-storage-performance.md): desteklenen *<br> 
+ [Premium depolama önbelleği](premium-storage-performance.md): desteklenen <br> 
+ [dinamik geçiş](maintenance-and-updates.md): desteklenen <br> 
+ [bellek güncelleştirmeleri](maintenance-and-updates.md): desteklenmeyen <br> 
+ [VM oluşturma desteği](generation-2.md): 2. nesil <br> 
+ [hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (* en az 4 vCPU * gerektirir) <br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 
-Standard_DC8_v2 hariç *
+Standard_DC8_v2 hariç * <br>
 
 | Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | En fazla NIC/beklenen ağ bant genişliği (MBps) | EPC belleği (MIB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

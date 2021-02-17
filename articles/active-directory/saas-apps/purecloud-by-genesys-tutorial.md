@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e31c050218e2069354d4d18f812a50f445e596f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92505757"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Öğretici: Genesys tarafından Purecg ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Genesys tarafından Purecre 'yi tümleştirmeyi öğreneceksiniz. Bunu yaptıktan sonra şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Genesys tarafından Purecre 'yi tümleştirmeyi öğreneceksiniz. Azure AD ile Poesys tarafından Purecre 'yi tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Genesys tarafından Purecgen 'a erişebilecek kullanıcıları denetlemek için Azure AD 'yi kullanın.
+* Azure AD 'de Genesys tarafından Purecre 'ye erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Genesys tarafından otomatik olarak oturum açmalarına olanak sağlar.
-* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,45 +40,45 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Genesys tarafından Purecm **, SP ve ıDP**– başlatılan SSO 'yu destekler.
 
 > [!NOTE]
-> Bu uygulamanın KIMLIĞI sabit dize değeri olduğundan, tek bir kiracıda yalnızca bir örnek yapılandırılabilir.
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>Galeriden Genesys 'e göre Purecg ekleme
+## <a name="add-purecloud-by-genesys-from-the-gallery"></a>Galeriden Genesys 'e göre Pureci ekleyin
 
-Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları izleyin:
+Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1. Bir iş veya okul hesabı kullanarak veya kişisel bir Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Bir iş veya okul hesabı kullanarak veya kişisel bir Microsoft hesabı kullanarak Azure portal oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Genesys öğesine göre purecyüksek** yazın.
 1. Sonuçlar panelinden **Genesys tarafından Purecı** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>Genesys 'e göre Porecg için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-purecloud-by-genesys"></a>Genesys tarafından Poreck için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Genesys tarafından Porecm Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Genesys ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Genesys tarafından Porecm Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Genesys ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Genesys tarafından Purecı ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Genesys tarafından üfle Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
     1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
     1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Genesys SSO 'su tarafından Purecg 'ı yapılandırın](#configure-purecloud-by-genesys-sso)** .
-    1. **[Genesys test kullanıcısına](#create-purecloud-by-genesys-test-user)** , kullanıcının Azure AD gösterimine bağlı olan Genesys 'e göre purecm 'ye kadar bir Pureck oluşturun.
+    1. **[Genesys test kullanıcısına](#create-purecloud-by-genesys-test-user)** , Maesys 'ın Azure AD gösterimine bağlı olan Genesys 'e göre purecm 'e sahip olacak şekilde
 1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **Genesys** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Genesys** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Tek bir Sign-On yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP**tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** kutusuna bölgenize karşılık gelen bir URL girin:
+    a. **Tanımlayıcı** kutusuna bölgenize karşılık gelen URL 'leri girin:
 
     ```http
     https://login.mypurecloud.com/saml
@@ -90,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     https://login.mypurecloud.au/saml
     ```
 
-    b. **Yanıt URL 'si** kutusuna bölgenize karşılık gelen bir URL girin:
+    b. **Yanıt URL 'si** kutusuna bölgenize karşılık gelen URL 'leri girin:
 
     ```http
     https://login.mypurecloud.com/saml
@@ -102,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' yı seçin ve aşağıdaki adımı uygulayın:
 
-    **Oturum açma URL 'si** kutusuna bölgenize karşılık gelen bir URL girin:
+    **Oturum açma URL 'si** kutusuna bölgenize karşılık gelen URL 'leri girin:
     
     ```http
     https://login.mypurecloud.com
@@ -118,7 +116,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. Ayrıca, Genesys uygulamasına göre Purecı, aşağıdaki tabloda gösterildiği gibi SAML yanıtına birkaç özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gerektiğinde bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | E-posta | User. UserPrincipalName |
     | OrganizationName | `Your organization name` |
@@ -145,35 +143,29 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu oturum açma 'yı kullanmak için B. Simon 'u ayarlayacaksınız.
+Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Genesys tarafından Purecı**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın altındaki **Seç** düğmesini seçin.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini seçin.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-purecloud-by-genesys-sso"></a>Genesys SSO 'SU tarafından Purecre 'yi yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Genesys tarafından yönetici olarak Purecg 'de oturum açın.
 
-1. Üstte **yönetici** ' yi seçin ve ardından **tümleştirmeler**altında **Çoklu oturum açma '** ya gidin.
+1. Üstte **yönetici** ' yi seçin ve ardından **tümleştirmeler** altında **Çoklu oturum açma '** ya gidin.
 
-    ![Ekran görüntüsü, tek oturum açma seçeneğini seçebileceğiniz Purecg yönetici penceresini gösterir.](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![Ekran görüntüsü, tek oturum açma seçeneğini seçebileceğiniz Purecg yönetici penceresini gösterir.](./media/purecloud-by-genesys-tutorial/configure-1.png)
 
 1. **ADFS/Azure AD (Premium)** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tümleştirme sayfasını gösterir.](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tümleştirme sayfasını gösterir.](./media/purecloud-by-genesys-tutorial/configure-2.png)
 
-    a. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **ADFS sertifikasına**yüklemek için **Araştır** ' ı seçin.
+    a. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **ADFS sertifikasına** yüklemek için **Araştır** ' ı seçin.
 
     b. **ADFS ıSSUER URI** kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -181,7 +173,7 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 
     d. **Bağlı olan taraf tanımlayıcı** değeri için Azure Portal gidin ve **Genesys tarafından poreck** uygulama tümleştirmesi sayfasında, **ÖZELLIKLER** sekmesini seçin ve **uygulama kimliği** değerini kopyalayın. **Bağlı olan taraf tanımlayıcısı** kutusuna yapıştırın.
 
-    ![Ekran görüntüsü, uygulama g değerini bulmak için gereken Özellikler bölmesini gösterir.](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![Ekran görüntüsü, uygulama g değerini bulmak için gereken Özellikler bölmesini gösterir.](./media/purecloud-by-genesys-tutorial/configure-6.png)
 
     e. **Kaydet**’i seçin.
 
@@ -195,15 +187,15 @@ Azure AD kullanıcılarının Genesys tarafından purecg 'de oturum açmasını 
 
 1. Üstte **yönetici** ' yi seçin ve **kişiler & izinler**' in altındaki **kişilere** gidin.
 
-    ![Ekran görüntüsü, kişiyi seçebileceğiniz Purecı yönetici penceresini gösterir.](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![Ekran görüntüsü, kişiyi seçebileceğiniz Purecı yönetici penceresini gösterir.](./media/purecloud-by-genesys-tutorial/configure-3.png)
 
 1. **Kişiler** sayfasında **kişi ekle**' yi seçin.
 
-    ![Ekran görüntüsü, kişi ekleyebileceğiniz kişiler sayfasını gösterir.](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![Ekran görüntüsü, kişi ekleyebileceğiniz kişiler sayfasını gösterir.](./media/purecloud-by-genesys-tutorial/configure-4.png)
 
 1. **Kuruluşa kişi ekle** iletişim kutusunda aşağıdaki adımları izleyin:
 
-    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz sayfayı gösterir.](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz sayfayı gösterir.](./media/purecloud-by-genesys-tutorial/configure-5.png)
 
     a. **Tam ad** kutusuna bir kullanıcının adını girin. Örneğin: **B. Simon**.
 
@@ -213,16 +205,20 @@ Azure AD kullanıcılarının Genesys tarafından purecg 'de oturum açmasını 
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde **Genesys** kutucuğunu seçtiğinizde, için SSO 'Yu ayarladığınız Genesys hesabına göre otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, giriş akışını başlatabileceğiniz Genesys oturum açma URL 'sine göre Purecg 'ye yönlendirilir.  
 
-- [ SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Genesys oturum açma URL 'sine doğrudan Purecg 'ye gidin ve oturum akışını buradan başlatın.
 
-- [Azure AD 'de uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure AD 'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Genesys tarafından otomatik olarak oturum açmış olmanız gerekir. 
 
-- [Azure AD ile Genesys tarafından Purecre 'yi deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım bölümünde Genesys kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Genesys tarafından otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Genesys tarafından Purecra 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve geri alımını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

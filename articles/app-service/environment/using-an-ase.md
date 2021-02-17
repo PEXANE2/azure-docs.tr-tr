@@ -4,15 +4,15 @@ description: App Service Ortamı uygulama oluşturmayı, yayımlamayı ve ölçe
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 5/10/2020
+ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4653419d974db2e597111487c64682c75ffc40b
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: e8cc42500b9d8bfc507683b5cc96c7b12f95909b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826014"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548463"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -165,7 +165,7 @@ Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluştur
 
 ATıCı, Ao 'daki tüm uygulamalar için 1 TB depolama alanına sahiptir. Yalıtılmış fiyatlandırma SKU 'sunda bir App Service planı 250 GB 'lik bir sınıra sahiptir. Bir Ao 'da, App Service plan başına 1 TB sınırına kadar 250 GB depolama alanı eklenir. Yalnızca dörtten fazla App Service planınıza sahip olabilirsiniz ancak 1 TB sınırının ötesinde daha fazla depolama alanı eklenmez.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Aşirinizi Azure depolama, Azure Event Hubs veya Log Analytics ile ilgili günlükleri göndermek için Azure Izleyici ile tümleştirebilirsiniz. Bu öğeler bugün günlüğe kaydedilir:
 
@@ -218,7 +218,7 @@ Kullanıyorsanız https://resources.azure.com , **upgradepreferences** değerini
 1. Resources.azure.com adresine gidin ve Azure hesabınızla oturum açın.
 1. Kaynakları aboneliklerle abonelikler \/ \[ abonelik adı \] \/ ResourceGroups \/ \[ kaynak grubu adı \] \/ sağlayıcılar \/ Microsoft. Web \/ hostingenvironments \/ \[ Ao adı \] .
 1. Üstteki **oku/yaz** seçeneğini belirleyin.
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 1. **Yükseltme tercihini** , istediğiniz üç değerden hangisinin hangisi olduğuna göre ayarlayın.
 1. **Düzeltme Eki** seçin.
 

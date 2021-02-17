@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593646"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559447"
 ---
-# <a name="call-flows"></a>Arama akışları
+# <a name="call-flow-basics"></a>Çağrı akışı temelleri
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ Grup çağrıları için varsayılan gerçek zamanlı protokol (RTP) Kullanıcı
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Iletişim Hizmetleri içindeki TCP medya işlem akışını gösteren diyagram.":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Durum 5: Iletişim Hizmetleri istemci kitaplığı ve Microsoft ekipleri zamanlanmış bir takımlar toplantısı
+
+Sinyal denetleyici üzerinden akan sinyal. Medya, medya Işlemcisi aracılığıyla akar. Sinyal denetleyicisi ve medya Işlemcisi, Iletişim Hizmetleri ve Microsoft ekipleri arasında paylaşılır. 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Zamanlanmış bir takımlar toplantısında Iletişim Hizmetleri istemci kitaplığı ve takımlar Istemcisini gösteren diyagram.":::
+
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ Aşağıdaki belgeler sizin için ilginç olabilir:
 
 - [Çağrı türleri](../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 - [İstemci-sunucu mimarisi](./client-and-server-architecture.md) hakkında bilgi edinin
+- [Çağrı akışı topolojileri](./detailed-call-flows.md) hakkında bilgi edinin

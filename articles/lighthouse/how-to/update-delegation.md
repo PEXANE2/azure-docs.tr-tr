@@ -1,14 +1,14 @@
 ---
 title: Temsilciyi güncelleştirme
 description: Azure 'da daha önce eklendi bir müşteri için bir temsilciyi güncelleştirme hakkında bilgi edinin.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791348"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555763"
 ---
 # <a name="update-a-delegation"></a>Temsilciyi güncelleştirme
 
@@ -48,7 +48,7 @@ Yalnızca yetkilendirmeleri ayarlamak için teklifi güncelleştiriyorsanız ve 
 Temsilciye erişimin kaldırılması, özgün temsilde [yönetilen hizmetler kayıt ataması silme rolü](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) verilmiş olan Kiracıdaki herhangi bir kullanıcı tarafından yapılabilir. Yönettiğiniz kiracınızda hiçbir kullanıcının bu rolü yoksa, müşteriden [Azure Portal teklifine erişimi kaldırmasını](view-manage-service-providers.md#add-or-remove-service-provider-offers)isteyebilirsiniz.
 
 > [!TIP]
-> Yukarıdaki adımları izleyerek önceki temsilciyi kaldırdıysanız ve yine de yeni ARM şablonunu dağıtmıyorsa, [kayıt tanımını tamamen kaldırmanız](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)gerekebilir. Bu, müşteri kiracısında sahip rolü olan herhangi bir kullanıcı tarafından yapılabilir.  
+> Yukarıdaki adımları izleyerek önceki temsilciyi kaldırdıysanız ve yine de yeni ARM şablonunu dağıtmıyorsa, [kayıt tanımını tamamen kaldırmanız](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)gerekebilir. Bu, sahibi gibi izne sahip bir role sahip herhangi bir kullanıcı tarafından `Microsoft.Authorization/roleAssignments/write` , müşteri kiracısında [](../../role-based-access-control/built-in-roles.md#owner)yapılabilir.  
 
 ## <a name="deploy-the-arm-template"></a>ARM şablonunu dağıtma
 
