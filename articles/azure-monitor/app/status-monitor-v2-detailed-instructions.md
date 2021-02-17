@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318989"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587376"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
 
@@ -160,7 +160,7 @@ PowerShell modülüne bağlanamazsınız herhangi bir nedenden dolayı, az. Appl
 
 1. https://www.powershellgallery.com/packages/Az.ApplicationMonitor öğesine gidin.
 2. **Sürüm geçmişi** tablosunda dosyanın en son sürümünü seçin.
-3. **Yükleme seçenekleri**altında **el ile indir**' i seçin.
+3. **Yükleme seçenekleri** altında **el ile indir**' i seçin.
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>Seçenek 1: PowerShell modülleri dizinine yüklensin
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
@@ -231,9 +231,9 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 
  Telemetrinizi görüntüleyin:
 
-- Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
+- Performansı ve kullanımı izlemek için [ölçümleri](../essentials/metrics-charts.md) bulun.
 - Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
-- Daha gelişmiş sorgular için [analiz kullanın](../log-query/log-query-overview.md) .
+- Daha gelişmiş sorgular için [analiz kullanın](../logs/log-query-overview.md) .
 - [Panolar oluşturun](./overview-dashboard.md).
 
  Daha fazla telemetri ekleyin:

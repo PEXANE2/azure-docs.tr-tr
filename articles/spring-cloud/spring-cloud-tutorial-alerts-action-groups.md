@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089987"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596147"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını izleme
 
@@ -36,19 +36,19 @@ Bir kaynak grubundan Spring Cloud örneğinize gidin. Sol bölmedeki **Uyarılar
 
 ## <a name="set-up-action-group"></a>Eylem grubunu ayarlama
 
-Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekle**' yi seçin.
+Yeni bir **eylem grubu** başlatma yordamına başlamak için **+ eylem grubu Ekle**' yi seçin.
 
 ![Ekran görüntüsü portalı eylem grubu Ekle](media/alerts-action-groups/action-1.png)
 
 **Eylem grubu Ekle** sayfasında:
 
- 1. Bir **eylem grubu adı** ve **kısa ad**belirtin.
+ 1. Bir **eylem grubu adı** ve **kısa ad** belirtin.
 
- 1. **Abonelik** ve **kaynak grubunu**belirtin.
+ 1. **Abonelik** ve **kaynak grubunu** belirtin.
 
- 1. **Eylem adını**belirtin.
+ 1. **Eylem adını** belirtin.
 
- 1. **Eylem türünü**seçin.  Bu işlem, etkinleştirme sırasında gerçekleştirilecek eylemi tanımlamak için sağdaki başka bir bölmeyi açar.
+ 1. **Eylem türünü** seçin.  Bu işlem, etkinleştirme sırasında gerçekleştirilecek eylemi tanımlamak için sağdaki başka bir bölmeyi açar.
 
  1. Sağ bölmedeki seçenekleri kullanarak eylemi tanımlayın.  Bu durum, e-posta bildirimini kullanır.
 
@@ -60,7 +60,7 @@ Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekl
 
 ## <a name="set-up-alert"></a>Uyarı ayarlama 
 
-Önceki adımlar, e-posta kullanan bir **eylem grubu** oluşturdu. Telefon bildirimi, Web kancaları ve Azure işlevleri gibi işlemler de kullanabilirsiniz. Aşağıdaki adımlar bir **Uyarı**yapılandırır.
+Önceki adımlar, e-posta kullanan bir **eylem grubu** oluşturdu. Telefon bildirimi, Web kancaları ve Azure işlevleri gibi işlemler de kullanabilirsiniz. Aşağıdaki adımlar bir **Uyarı** yapılandırır.
 
 1. **Uyarılar** sayfasına geri gidin ve **Uyarı kurallarını yönet**' e tıklayın.
 
@@ -72,11 +72,11 @@ Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekl
 
    ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3.png)
 
-1. **Kural oluştur** sayfasında, **kaynağı**belirtin.
+1. **Kural oluştur** sayfasında, **kaynağı** belirtin.
 
 1. **Koşul** ayarı, **bahar bulut** kaynaklarınızı izlemeye yönelik birçok seçenek sağlar.  **Sinyal mantığını Yapılandır** bölmesini açmak için **Ekle** ' ye tıklayın.
 
-1. Bir koşul seçin. Bu örnek, **SISTEM CPU kullanımı yüzdesini**kullanır.
+1. Bir koşul seçin. Bu örnek, **SISTEM CPU kullanımı yüzdesini** kullanır.
 
    ![Ekran görüntüsü portalı yeni uyarı kuralı 2](media/alerts-action-groups/alerts-3-1.png)
 
@@ -88,13 +88,13 @@ Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekl
 
    İzlemek için kullanılabilen koşulların ayrıntıları için bkz. [Kullanıcı Portalı ölçümleri seçenekleri](spring-cloud-concept-metrics.md#user-metrics-options).
 
-1. **Eylemler**altında **eylem grubu seç**' e tıklayın. **Eylemler** bölmesinden önceden tanımlanmış **Eylem grubunu**seçin.
+1. **Eylemler** altında **eylem grubu seç**' e tıklayın. **Eylemler** bölmesinden önceden tanımlanmış **Eylem grubunu** seçin.
 
    ![Ekran görüntüsü portalı yeni uyarı kuralı 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. Aşağı kaydırın ve **Uyarı ayrıntıları**' nın altında, uyarı kuralını adlandırın.
 
-1. **Önem derecesini**ayarlayın.
+1. **Önem derecesini** ayarlayın.
 
 1. **Uyarı kuralı oluştur**’a tıklayın.
 
@@ -113,7 +113,7 @@ Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekl
 Bu öğreticide, bir Azure yay bulutu uygulaması için uyarıları ve eylem gruplarını ayarlamayı öğrendiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure portalında eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md)
+> [Azure portalında eylem gruplarını oluşturma ve yönetme](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Eylem gruplarında SMS uyarı davranışı](../azure-monitor/platform/alerts-sms-behavior.md)
+> [Eylem gruplarında SMS uyarı davranışı](../azure-monitor/alerts/alerts-sms-behavior.md)

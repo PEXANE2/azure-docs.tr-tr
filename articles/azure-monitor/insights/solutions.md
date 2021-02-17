@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e898c6401ff9959298e5e435d68b4c4a452c4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186873"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587295"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -29,7 +29,7 @@ Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalı
 
 [![Ekran görüntüsü, çözümler bölmesinde seçili çözümlerin ve çözümlerin gösterildiği Azure portal menüsünü gösterir.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-İzleme çözümleri birden çok Azure kaynağı türü içerebilir ve bir çözüme dahil olan tüm kaynakları diğer kaynaklar gibi görüntüleyebilirsiniz. Örneğin, çözüme dahil edilen tüm günlük sorguları, [sorgu Gezgini](../log-query/log-analytics-tutorial.md)'Ndeki **çözüm sorguları** altında listelenir. [Günlük sorgularıyla](../log-query/log-query-overview.md)geçici analiz gerçekleştirirken bu sorguları kullanabilirsiniz.
+İzleme çözümleri birden çok Azure kaynağı türü içerebilir ve bir çözüme dahil olan tüm kaynakları diğer kaynaklar gibi görüntüleyebilirsiniz. Örneğin, çözüme dahil edilen tüm günlük sorguları, [sorgu Gezgini](../logs/log-analytics-tutorial.md)'Ndeki **çözüm sorguları** altında listelenir. [Günlük sorgularıyla](../logs/log-query-overview.md)geçici analiz gerçekleştirirken bu sorguları kullanabilirsiniz.
 
 ## <a name="list-installed-monitoring-solutions"></a>Yüklü izleme çözümlerini Listele
 
@@ -37,7 +37,7 @@ Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalı
 
 Aboneliğinizde yüklü izleme çözümlerini listelemek için aşağıdaki yordamı kullanın.
 
-1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler** arayın ve seçin.
+1. [Azure Portal](https://ms.portal.azure.com) gidin. **Çözümler** arayın ve seçin.
 1. Çalışma alanlarınızın tümünde yüklü olan çözümler listelenir. Çözümün adının ardından yüklendiği çalışma alanının adı gelir.
 1. Abonelik veya kaynak grubuna göre filtrelemek için ekranın üst kısmındaki açılan kutuları kullanın.
 
@@ -83,7 +83,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://azuremarketplace.microsoft.com)' nden edinebilirsiniz. Aşağıdaki yordamı kullanarak, kullanılabilir çözümleri arayabilir ve bunları yükleyebilirsiniz. Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir.
+Microsoft ve iş ortaklarından izleme çözümlerini [Azure Marketi](https://azuremarketplace.microsoft.com)' nden edinebilirsiniz. Aşağıdaki yordamı kullanarak, kullanılabilir çözümleri arayabilir ve bunları yükleyebilirsiniz. Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../logs/manage-access.md) seçmeniz gerekir.
 
 1. [Aboneliğiniz için çözümler listesinden](#list-installed-monitoring-solutions) **Ekle**' ye tıklayın.
 1. Bir çözüme gözatıp arayın. Ayrıca, [Bu arama bağlantısından](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)çözümlere da gidebilirsiniz.
@@ -141,7 +141,7 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLı ile bir çözüm yüklemesi
 
-Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
+Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../logs/manage-access.md) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
 
 İzleme çözümü yüklemek için [az Monitor Log-Analytics çözüm Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) ' i kullanın.  Köşeli parantezler içindeki parametreler isteğe bağlıdır.
 
@@ -180,7 +180,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
    - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
 
    > [!IMPORTANT]
-   > **Az. MonitoringSolutions** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden varsayılan olarak kullanılabilir.
+   > **Az. MonitoringSolutions** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
 
    ```azurepowershell-interactive
    Install-Module -Name Az.MonitoringSolutions
@@ -196,7 +196,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ### <a name="install-a-solution-with-azure-powershell"></a>Azure PowerShell bir çözüm yüklerken
 
-Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../platform/manage-access.md) seçmeniz gerekir. Azure PowerShell, [az. MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell modülündeki cmdlet 'leri kullanarak çalışma alanlarını yönetirsiniz. Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
+Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../logs/manage-access.md) seçmeniz gerekir. Azure PowerShell, [az. MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell modülündeki cmdlet 'leri kullanarak çalışma alanlarını yönetirsiniz. Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
 
 Bir izleme çözümü yüklemek için [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) cmdlet 'ini kullanın. Köşeli parantezler içindeki parametreler isteğe bağlıdır.
 
@@ -219,7 +219,7 @@ New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResource
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics çalışma alanı ve Otomasyon hesabı
 
-Tüm izleme çözümleri, çözüm tarafından toplanan verileri depolamak ve günlük aramalarını ve görünümlerini barındırmak için bir [Log Analytics çalışma alanı](../platform/manage-access.md) gerektirir. Bazı çözümler ayrıca runbook 'ları ve ilgili kaynakları içeren bir [Otomasyon hesabı](../../automation/automation-security-overview.md) gerektirir. Çalışma alanı ve hesap aşağıdaki gereksinimlere uymalıdır.
+Tüm izleme çözümleri, çözüm tarafından toplanan verileri depolamak ve günlük aramalarını ve görünümlerini barındırmak için bir [Log Analytics çalışma alanı](../logs/manage-access.md) gerektirir. Bazı çözümler ayrıca runbook 'ları ve ilgili kaynakları içeren bir [Otomasyon hesabı](../../automation/automation-security-overview.md) gerektirir. Çalışma alanı ve hesap aşağıdaki gereksinimlere uymalıdır.
 
 * Her bir çözümün yüklemesi yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı kullanabilir. Çözümü birden çok çalışma alanına ayrı olarak yükleyebilirsiniz.
 * Bir çözüm bir Otomasyon hesabı gerektiriyorsa, Log Analytics çalışma alanı ve Otomasyon hesabı bir diğeri ile bağlantılı olmalıdır. Log Analytics çalışma alanı yalnızca bir Otomasyon hesabına bağlanabilir ve bir Otomasyon hesabı yalnızca bir Log Analytics çalışma alanına bağlanabilir.
@@ -264,5 +264,5 @@ Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name W
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Microsoft 'un izleme çözümlerinin bir listesini](../monitor-reference.md)alın.
-* İzleme çözümleri tarafından toplanan verileri analiz etmek için [sorgular oluşturmayı](../log-query/log-query-overview.md) öğrenin.
+* İzleme çözümleri tarafından toplanan verileri analiz etmek için [sorgular oluşturmayı](../logs/log-query-overview.md) öğrenin.
 * [Azure izleyici için tüm Azure CLI komutlarına](/cli/azure/azure-cli-reference-for-monitor)bakın.

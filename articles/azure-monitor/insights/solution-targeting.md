@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498687"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587244"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Izleyici 'de izleme çözümlerini hedefleme (Önizleme)
 Aboneliğinize bir izleme çözümü eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır.  Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz.  Bu makalede, çözümlerinize bir kapsam uygulamanıza olanak tanıyan bir özellik olan **çözüm hedeflemesi** 'nin nasıl kullanılacağı açıklanır.
@@ -23,7 +23,7 @@ Aşağıdaki bölümlerde açıklandığı gibi bir çözümü hedeflemek için 
 
 
 ### <a name="1-create-a-computer-group"></a>1. bir bilgisayar grubu oluşturun
-Azure Izleyici 'de bir [bilgisayar grubu](../platform/computer-groups.md) oluşturarak kapsama eklemek istediğiniz bilgisayarları belirlersiniz.  Bilgisayar grubu, bir günlük sorgusuna dayalı olabilir veya Active Directory veya WSUS grupları gibi diğer kaynaklardan içeri aktarılabilir. [Aşağıda açıklandığı](#solutions-and-agents-that-cant-be-targeted)gibi, yalnızca Azure izleyici 'ye doğrudan bağlı olan bilgisayarlar kapsama dahil edilir.
+Azure Izleyici 'de bir [bilgisayar grubu](../logs/computer-groups.md) oluşturarak kapsama eklemek istediğiniz bilgisayarları belirlersiniz.  Bilgisayar grubu, bir günlük sorgusuna dayalı olabilir veya Active Directory veya WSUS grupları gibi diğer kaynaklardan içeri aktarılabilir. [Aşağıda açıklandığı](#solutions-and-agents-that-cant-be-targeted)gibi, yalnızca Azure izleyici 'ye doğrudan bağlı olan bilgisayarlar kapsama dahil edilir.
 
 Çalışma alanınızda bilgisayar grubu oluşturulduktan sonra, bir veya daha fazla çözümü uygulanabilecek bir kapsam yapılandırmasına dahil edersiniz.
  
@@ -53,7 +53,7 @@ Aşağıdaki işlemi kullanarak bir kapsam yapılandırması uygulayın.
  4. **Çalışma alanı veri kaynakları** altındaki çözüm özellikleri ' nde **çözüm hedefleme**' yi seçin.  Seçenek kullanılamıyorsa, [Bu çözüm hedeflenemez](#solutions-and-agents-that-cant-be-targeted).
  5. **Kapsam yapılandırması Ekle**' ye tıklayın.  Bu çözüme uygulanan bir yapılandırma zaten varsa, bu seçenek kullanılamaz.  Başka bir yapılandırma eklemeden önce varolan yapılandırmayı kaldırmanız gerekir.
  6. Oluşturduğunuz kapsam yapılandırmasına tıklayın.
- 7. **Başarılı**olduğunu gösterdiğinizden emin olmak Için yapılandırmanın **durumunu** izleyin.  Durum bir hata gösteriyorsa, yapılandırmanın sağındaki elipsi tıklatın ve değişiklik yapmak için **kapsam yapılandırmasını düzenle** ' yi seçin.
+ 7. **Başarılı** olduğunu gösterdiğinizden emin olmak Için yapılandırmanın **durumunu** izleyin.  Durum bir hata gösteriyorsa, yapılandırmanın sağındaki elipsi tıklatın ve değişiklik yapmak için **kapsam yapılandırmasını düzenle** ' yi seçin.
 
 ## <a name="solutions-and-agents-that-cant-be-targeted"></a>Hedeflenemez çözümler ve aracılar
 Çözüm hedefleme ile kullanılamayan aracıların ve çözümlerin ölçütleri aşağıda verilmiştir.
@@ -62,11 +62,11 @@ Aşağıdaki işlemi kullanarak bir kapsam yapılandırması uygulayın.
 - Çözüm hedefleme yalnızca Microsoft tarafından sunulan çözümler için geçerlidir.  [Kendi veya iş ortakları tarafından oluşturulan](./solutions.md)çözümlere uygulanmaz.
 - Yalnızca Azure Izleyici 'ye doğrudan bağlanan aracıları filtreleyebilirsiniz.  Çözümler, bir kapsam yapılandırmasına dahil edilip edilmeksizin bağlı Operations Manager yönetim grubunun parçası olan aracılara otomatik olarak dağıtılır.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 Çözüm hedefleme, belirtilen ölçütlere uygun olsa da aşağıdaki çözümlerle kullanılamaz.
 
 - Aracı Durumu değerlendirmesi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Çalışma alanınıza Azure Log Analytics izleme çözümleri ekleme](solutions.md)bölümünde ortamınızda yüklenebilecek çözümler dahil olmak üzere çözümleri izleme hakkında daha fazla bilgi edinin.
-- [Azure izleyici günlük sorgularının bilgisayar gruplarında](../platform/computer-groups.md)bilgisayar grupları oluşturma hakkında daha fazla bilgi edinin.
+- [Azure izleyici günlük sorgularının bilgisayar gruplarında](../logs/computer-groups.md)bilgisayar grupları oluşturma hakkında daha fazla bilgi edinin.

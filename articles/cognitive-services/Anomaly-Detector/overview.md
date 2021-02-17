@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: anomali algılama, makine öğrenimi, algoritmalar
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901377"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572091"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -38,7 +38,7 @@ Anomali algılayıcısı sayesinde, zaman serisi verileriniz genelinde veya ger�
 |Gerçek zamanlı anomali algılama. | En son birinin bir anomali olup olmadığını belirlemek için daha önce görülmüş veri noktalarını kullanarak akış verilerinizde bozukluklar algılayın. Bu işlem, göndereceğiniz veri noktalarını kullanarak bir model oluşturur ve hedef noktanın bir anomali olup olmadığını belirler. Oluşturduğunuz her yeni veri noktasıyla API çağırarak, verileri oluşturulduğu gibi izleyebilirsiniz. |
 |Veri kümesinin tamamında bir toplu iş olarak, anormallikleri tespit edin. | Verilerinizin tamamında mevcut olabilecek tüm anormallikleri algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.         |
 |Veri kümesi genelinde bir toplu iş olarak değişiklik noktalarını tespit edin. | Verilerinizde bulunan tüm eğilim değişiklik noktalarını algılamak için zaman serinizi kullanın. Bu işlem, her bir noktanın aynı modelle çözümlenme işleminde, tüm zaman serisi verilerinizi kullanarak bir model oluşturur.    |
-| Verileriniz hakkında daha fazla bilgi alın. | Verileriniz ve beklenen değerler, anomali sınırları ve pozisyonları dahil tüm gözlemlenen bozukluklar hakkında yararlı Ayrıntılar alın. |
+| Verileriniz hakkında daha fazla bilgi alın. | Beklenen değerler, anomali sınırları ve pozisyonları dahil olmak üzere verileriniz ve gözlemlenen tüm bozukluklar hakkında yararlı Ayrıntılar alın. |
 | Anomali algılama sınırlarını ayarlayın. | Anomali algılayıcı API 'SI, anomali algılama için sınırları otomatik olarak oluşturur. Bu sınırları, API 'nin veri bozuklularındaki duyarlılığını artırmak veya azaltmak için ayarlayın ve verilerinize daha iyi uyum sağlar. |
 
 ## <a name="demo"></a>Tanıtım
@@ -53,13 +53,13 @@ Anomali algılayıcı API 'sini çağırmayı öğrenmek için bu [Not defterini
 Not defterini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
 1. Geçerli bir anomali algılayıcı API 'SI abonelik anahtarı ve bir API uç noktası alın. Aşağıdaki bölümde kaydolma talimatları bulunur.
-1. Oturum açın ve sağ üst köşedeki Kopyala ' ya tıklayın.
-1. Kopyalama işlemini tamamlamadan önce iletişim kutusundaki "genel" seçeneğinin işaretini kaldırın, aksi takdirde tüm abonelik anahtarları dahil Not defteriniz herkese açık olur.
-1. **Ücretsiz işlem sırasında Çalıştır 'a** tıklayın
+1. Oturum açın ve sağ üst köşedeki Kopyala ' yı seçin.
+1. Kopyalama işlemini tamamlamadan önce iletişim kutusunda "ortak" seçeneğinin işaretini kaldırın; Aksi takdirde, tüm abonelik anahtarları dahil Not defteriniz herkese açık olur.
+1. **Ücretsiz işlem sırasında Çalıştır '** ı seçin
 1. Not defterlerinden birini seçin.
 1. Geçerli anomali algılayıcısı API abonelik anahtarınızı `subscription_key` değişkenine ekleyin.
 1. Değişkeni bitiş noktanızla değiştirin `endpoint` . Örnek: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. Üstteki menü çubuğunda **hücre**' ya ve ardından **Tümünü Çalıştır**' ı tıklatın.
+1. Üstteki menü çubuğunda **hücre**' ı seçin ve ardından **Tümünü çalıştırın**.
 
 ## <a name="workflow"></a>İş akışı
 

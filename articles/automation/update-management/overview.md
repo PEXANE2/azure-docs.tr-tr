@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007746"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587858"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
@@ -30,7 +30,7 @@ Güncelleştirme Yönetimi dağıtılmadan ve makinelerinizi yönetim için etki
 
 Güncelleştirme Yönetimi tarafından yönetilen makineler, değerlendirmesi gerçekleştirmek ve güncelleştirmeleri dağıtmak için aşağıdakileri kullanır:
 
-* Windows veya Linux için [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)
+* Windows veya Linux için [Log Analytics Aracısı](../../azure-monitor/agents/log-analytics-agent.md)
 * Linux için PowerShell İstenen Durum Yapılandırması (DSC)
 * Otomasyon karma Runbook Worker (makinede Güncelleştirme Yönetimi etkinleştirdiğinizde otomatik olarak yüklenir)
 * Windows makineleri için Microsoft Update veya [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS)
@@ -53,7 +53,7 @@ Güncelleştirme Yönetimi, makinenin ne kadar güncel olduğunu, ile eşitlenec
 
 Zamanlanmış bir dağıtım oluşturarak güncelleştirmeleri gerektiren makinelere yazılım güncelleştirmeleri dağıtabilir ve yükleyebilirsiniz. İsteğe bağlı olarak sınıflandırılan güncelleştirmeler Windows makineler için dağıtım kapsamına dahil edilmez. Dağıtım kapsamında yalnızca gerekli güncelleştirmeler bulunur.
 
-Zamanlanan dağıtım, hangi hedef makinelerin geçerli güncelleştirmeleri alacağını tanımlar. Bu, belirli makineleri açıkça belirterek ya da belirli bir makine kümesinin (ya da belirtilen ölçütlere göre dinamik olarak Azure VM 'Leri seçen bir [Azure sorgusundaki](query-logs.md) ) günlük aramalarını temel alan bir [bilgisayar grubu](../../azure-monitor/platform/computer-groups.md) seçerek gerçekleştirir. Bu gruplar, Güncelleştirme Yönetimi etkinleştirmek üzere yapılandırmayı alan makinelerin hedeflenmesini denetlemek için kullanılan [kapsam yapılandırmasından](../../azure-monitor/insights/solution-targeting.md)farklıdır. Bu, güncelleştirme uyumluluğunu gerçekleştirmenizi ve raporlamasını ve onaylanan gerekli güncelleştirmeleri yüklemenizi engeller.
+Zamanlanan dağıtım, hangi hedef makinelerin geçerli güncelleştirmeleri alacağını tanımlar. Bu, belirli makineleri açıkça belirterek ya da belirli bir makine kümesinin (ya da belirtilen ölçütlere göre dinamik olarak Azure VM 'Leri seçen bir [Azure sorgusundaki](query-logs.md) ) günlük aramalarını temel alan bir [bilgisayar grubu](../../azure-monitor/logs/computer-groups.md) seçerek gerçekleştirir. Bu gruplar, Güncelleştirme Yönetimi etkinleştirmek üzere yapılandırmayı alan makinelerin hedeflenmesini denetlemek için kullanılan [kapsam yapılandırmasından](../../azure-monitor/insights/solution-targeting.md)farklıdır. Bu, güncelleştirme uyumluluğunu gerçekleştirmenizi ve raporlamasını ve onaylanan gerekli güncelleştirmeleri yüklemenizi engeller.
 
 Bir dağıtım tanımlarken, güncelleştirmelerin yüklenebileceği bir zaman aralığını onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu döneme bakım penceresi denir. Bakım penceresinin 20 dakikalık bir yayılımı yeniden başlatmalar için ayrılmıştır, bir tane gereklidir ve uygun yeniden başlatma seçeneğini seçmiş olursunuz. Düzeltme Eki beklenenden uzun sürüyorsa ve bakım penceresinde 20 dakikadan kısa bir süre sonra yeniden başlatma gerçekleşmez.
 
@@ -82,7 +82,7 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygula
 |Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 LTS (x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
 
 > [!NOTE]
-> Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir. [Değişiklik izleme ve stoğa Azure dışı bir makine ekleme](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.
+> Güncelleştirme Yönetimi, bir Azure sanal makine ölçek kümesindeki tüm örneklerde güncelleştirme yönetimini güvenli bir şekilde otomatikleştirmenizi desteklemez. [Otomatik işletim sistemi görüntüsü yükseltmeleri](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) , ölçek kümesinde işletim sistemi görüntüsü yükseltmelerini yönetmek için önerilen yöntemdir.
 
 ### <a name="unsupported-operating-systems"></a>Desteklenmeyen işletim sistemleri
 
@@ -107,7 +107,7 @@ Yazılım gereksinimleri:
 
 Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Karma makinelerde, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak windows için Log Analytics aracısını yüklemenizi ve ardından Azure ilkesi 'ni kullanarak [Log Analytics aracısını Windows Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamanız önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
-Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir.
+Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/agents/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir.
 
 Varsayılan olarak, Azure Marketi 'nden dağıtılan Windows VM 'Leri Windows Update hizmetinden otomatik güncelleştirmeleri alacak şekilde ayarlanır. Bu davranış, çalışma alanınıza Windows VM 'Leri eklediğinizde değişmez. Güncelleştirme Yönetimi kullanarak güncelleştirmeleri etkin bir şekilde yönetmezseniz, varsayılan davranış (güncelleştirmeleri otomatik olarak uygulamak için) geçerlidir.
 
@@ -147,7 +147,7 @@ Güncelleştirme Yönetimi ve karma runbook çalışanı grup üyeliği için ay
 
 ### <a name="management-packs"></a>Yönetim paketleri
 
-Operations Manager yönetim grubunuz [bir Log Analytics çalışma alanına bağlıysa](../../azure-monitor/platform/om-agents.md), aşağıdaki yönetim paketleri Operations Manager yüklenir. Bu yönetim paketleri, doğrudan bağlı Windows makinelerinde Güncelleştirme Yönetimi için de yüklenir. Bu yönetim paketlerini yapılandırmanız veya yönetmeniz gerekmez.
+Operations Manager yönetim grubunuz [bir Log Analytics çalışma alanına bağlıysa](../../azure-monitor/agents/om-agents.md), aşağıdaki yönetim paketleri Operations Manager yüklenir. Bu yönetim paketleri, doğrudan bağlı Windows makinelerinde Güncelleştirme Yönetimi için de yüklenir. Bu yönetim paketlerini yapılandırmanız veya yönetmeniz gerekmez.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -156,7 +156,7 @@ Operations Manager yönetim grubunuz [bir Log Analytics çalışma alanına bağ
 > [!NOTE]
 > Günlük verilerini toplamak üzere yönetim grubunda yapılandırılmış aracılarla bir Log Analytics çalışma alanına bağlı Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi geçersiz kılmanız `IsAutoRegistrationEnabled` ve **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** kuralında true olarak ayarlamanız gerekir.
 
-Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../../azure-monitor/platform/om-agents.md).
+Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../../azure-monitor/agents/om-agents.md).
 
 > [!NOTE]
 > Log Analytics aracısıyla makineleri tamamen yönetmek için Güncelleştirme Yönetimi için, Windows için Log Analytics aracısına veya Linux için Log Analytics aracısına güncelleştirmeniz gerekir. Aracıyı güncelleştirme hakkında bilgi edinmek için bkz. [Operations Manager aracısını yükseltme](/system-center/scom/deploy-upgrade-agents). Operations Manager kullanan ortamlarda, System Center Operations Manager 2012 R2 UR 14 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
@@ -181,7 +181,7 @@ Güncelleştirme Yönetimi, aşağıdaki kuralları kullanarak veriler için yö
 
 * Her Linux makinesi Güncelleştirme Yönetimi her saat bir tarama yapar.
 
-Güncelleştirme Yönetimi kullanan bir makineye yönelik Azure Izleyici günlüklerinin ortalama veri kullanımı yaklaşık olarak ayda 25 MB 'tır. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Tam kullanımınızın izlenmesini sağlamak için ortamınızı izlemenizi öneririz. Azure Izleyici günlüklerinin veri kullanımını çözümleme hakkında daha fazla bilgi için bkz. [kullanımı ve maliyeti yönetme](../../azure-monitor/platform/manage-cost-storage.md).
+Güncelleştirme Yönetimi kullanan bir makineye yönelik Azure Izleyici günlüklerinin ortalama veri kullanımı yaklaşık olarak ayda 25 MB 'tır. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Tam kullanımınızın izlenmesini sağlamak için ortamınızı izlemenizi öneririz. Azure Izleyici günlüklerinin veri kullanımını çözümleme hakkında daha fazla bilgi için bkz. [kullanımı ve maliyeti yönetme](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="network-planning"></a><a name="ports"></a>Ağ planlama
 
@@ -193,7 +193,7 @@ Red Hat Linux makineleri için, gerekli uç noktalar için [rhuı içerik teslim
 
 Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma Runbook Worker için güncelleştirme yönetimi adresleri](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker).
 
-BT güvenlik ilkeleriniz ağdaki makinelerin internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) ayarlayabilir ve ardından makineyi ağ geçidinden Azure Otomasyonu ve Azure izleyici 'ye bağlanacak şekilde yapılandırabilirsiniz.
+BT güvenlik ilkeleriniz ağdaki makinelerin internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](../../azure-monitor/agents/gateway.md) ayarlayabilir ve ardından makineyi ağ geçidinden Azure Otomasyonu ve Azure izleyici 'ye bağlanacak şekilde yapılandırabilirsiniz.
 
 ## <a name="update-classifications"></a>Update classifications
 

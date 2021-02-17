@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807759"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587306"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -118,7 +118,7 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Yapılandırma değişikliklerini veya yüksek ayrıcalıklı işlemleri izlemek için yönetici etkinliklerini izleyin.
 - Kurumsal gereksinimleriniz için özelleştirilebilen, istenmeyen kullanıcı davranışını algılayıp araştırın.
 - Denetim ve uyumluluğu gösterir. Örneğin, gizli dosyalardaki dosya erişim işlemlerini, denetim ve uyumluluk sürecinde size yardımcı olabilecek şekilde izleyebilirsiniz.
-- Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
+- Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../logs/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
 ## <a name="uninstall"></a>Kaldır
@@ -473,6 +473,6 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ayrıntılı güncelleştirme verilerini görüntülemek için [Azure izleyici 'de günlük sorguları '](../log-query/log-query-overview.md) nı kullanın.
-* En sevdiğiniz Office 365 arama sorgularını göstermek için [kendi panolarınızı oluşturun](../learn/tutorial-logs-dashboards.md) .
-* Önemli Office 365 etkinliklerinden haberdar olmak için [uyarılar oluşturun](../platform/alerts-overview.md) .  
+* Ayrıntılı güncelleştirme verilerini görüntülemek için [Azure izleyici 'de günlük sorguları '](../logs/log-query-overview.md) nı kullanın.
+* En sevdiğiniz Office 365 arama sorgularını göstermek için [kendi panolarınızı oluşturun](../visualize/tutorial-logs-dashboards.md) .
+* Önemli Office 365 etkinliklerinden haberdar olmak için [uyarılar oluşturun](../alerts/alerts-overview.md) .  

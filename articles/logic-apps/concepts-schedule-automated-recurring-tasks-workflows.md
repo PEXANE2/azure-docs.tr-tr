@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/16/2021
+ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018801"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581806"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps ile yinelenen otomatik görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma
 
@@ -90,8 +90,8 @@ Mantıksal uygulama iş akışınızın herhangi bir eyleminden sonra, bir sonra
 | Başlangıç saati | Zamanlama olmadan yinelenme | Zamanlama ile yinelenme (yalnızca yineleme tetikleyicisi) |
 |------------|-----------------------------|----------------------------------------------------|
 | seçim | İlk iş yükünü anında çalıştırır. <p>Son çalışma zamanına göre gelecekteki iş yüklerini çalıştırır. | İlk iş yükünü anında çalıştırır. <p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. |
-| Geçmişteki başlangıç zamanı | **Yinelenme** tetikleyicisi: belirtilen başlangıç zamanına göre çalışma zamanlarını hesaplar ve geçen çalışma zamanlarını atar. Sonraki gelecek çalışma zamanında ilk iş yükünü çalıştırır. <p>Son çalışma zamanından hesaplamalar temelinde gelecekteki iş yüklerini çalıştırır. <p><p>**Kayan pencere** tetikleyicisi: belirtilen başlangıç zamanına göre çalışma sürelerini hesaplar ve çalışma sürelerini geçmiş olarak hesaplar. <p>Gelecekteki iş yüklerini, belirtilen başlangıç zamanından hesaplamalar temelinde çalıştırır. <p><p>Daha fazla açıklama için bu tabloyu izleyen örneğe bakın. | Başlangıç zamanından hesaplanan zamanlamaya göre başlangıç zamanından daha önce *olmayan* ilk iş yükünü çalıştırır. <p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. <p>**Note:** Zamanlama ile bir yinelenme belirtirseniz, ancak zamanlama için saat veya dakika belirtmezseniz, Logic Apps ilk çalışma zamanından sonra sırasıyla saat veya dakika kullanarak gelecekteki çalışma zamanlarını hesaplar. |
-| Şimdi veya gelecekte başlangıç zamanı | Belirtilen başlangıç zamanında ilk iş yükünü çalıştırır. <p>Son çalışma zamanından hesaplamalar temelinde gelecekteki iş yüklerini çalıştırır. | Başlangıç zamanından hesaplanan zamanlamaya göre başlangıç zamanından daha önce *olmayan* ilk iş yükünü çalıştırır. <p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. <p>**Note:** Zamanlama ile bir yinelenme belirtirseniz, ancak zamanlama için saat veya dakika belirtmezseniz, Logic Apps ilk çalışma zamanından sonra sırasıyla saat veya dakika kullanarak gelecekteki çalışma zamanlarını hesaplar. |
+| Geçmişteki başlangıç zamanı | **Yinelenme** tetikleyicisi: belirtilen başlangıç zamanına göre çalışma zamanlarını hesaplar ve geçen çalışma zamanlarını atar. <p><p>Sonraki gelecek çalışma zamanında ilk iş yükünü çalıştırır. <p><p>Son çalışma zamanına göre gelecekteki iş yüklerini çalıştırır. <p><p>**Kayan pencere** tetikleyicisi: belirtilen başlangıç zamanına göre çalışma sürelerini hesaplar ve çalışma sürelerini geçmiş olarak hesaplar. <p><p>Gelecekteki iş yüklerini belirtilen başlangıç zamanına göre çalıştırır. <p><p>Daha fazla açıklama için bu tabloyu izleyen örneğe bakın. | Başlangıç zamanından hesaplanan zamanlamaya göre başlangıç zamanından daha önce *olmayan* ilk iş yükünü çalıştırır. <p><p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. <p><p>**Note:** Zamanlama ile bir yinelenme belirtirseniz, ancak zamanlama için saat veya dakika belirtmezseniz, Logic Apps ilk çalışma zamanından sonra sırasıyla saat veya dakika kullanarak gelecekteki çalışma zamanlarını hesaplar. |
+| Şimdi veya gelecekte başlangıç zamanı | Belirtilen başlangıç zamanında ilk iş yükünü çalıştırır. <p><p>**Yinelenme** tetikleyicisi: son çalışma zamanına göre gelecekteki Iş yüklerini çalıştırır. <p><p>**Kayan pencere** tetikleyicisi: gelecekteki iş yüklerini belirtilen başlangıç zamanına göre çalıştırır. | Başlangıç zamanından hesaplanan zamanlamaya göre başlangıç zamanından daha önce *olmayan* ilk iş yükünü çalıştırır. <p><p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. <p>**Note:** Zamanlama ile bir yinelenme belirtirseniz, ancak zamanlama için saat veya dakika belirtmezseniz, Logic Apps ilk çalışma zamanından sonra sırasıyla saat veya dakika kullanarak gelecekteki çalışma zamanlarını hesaplar. |
 ||||
 
 *Son başlangıç zamanı ve yinelenme örneği, ancak zamanlama yok*

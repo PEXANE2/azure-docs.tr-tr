@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581241"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için Azure Güvenlik temeli
 
@@ -111,9 +111,9 @@ Etiketlere göre kaynakları aramak veya eylemler gerçekleştirmek için Azure 
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Web uygulaması güvenlik duvarı (WAF) dağıtımlarınızla ilgili ağ ayarları ve kaynakları için değişiklikleri tespit edin. Kritik ağ ayarlarında veya kaynaklarda değişiklik yapıldığında tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -153,9 +153,9 @@ Azure Sentinel 'de, Azure WAF 'deki güvenlik olaylarına genel bakış sağlaya
 
 - [Günlüğe kaydetmeye genel bakış](ag/ag-overview.md#logging)
 
-- [Azure Izleyici günlük sorgusuna genel bakış](../azure-monitor/log-query/log-query-overview.md)
+- [Azure Izleyici günlük sorgusuna genel bakış](../azure-monitor/logs/log-query-overview.md)
 
-- [Azure platformu günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure platformu günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -192,9 +192,9 @@ Azure Sentinel, WAF 'deki güvenlik olaylarına genel bakış sağlayan yerleşi
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını ve Azure WAF 'niz için tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve toplanan verilere göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin. WAF ölçümleri temelinde anormal etkinlikler için uyarılar oluşturun. Örneğin, engellenen istek sayısı ' X ' ile aşıldıysanız, ' Y ' yapın.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
-- [Azure 'da uyarı oluşturma](../azure-monitor/learn/tutorial-response.md)
+- [Azure 'da uyarı oluşturma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

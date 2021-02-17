@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499314"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587917"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
 
@@ -30,7 +30,7 @@ Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler, kullanımdan kaldı
 - 1 Mart 2023 ' de, Azure Resource Manager 'e geçirilmeyen abonelikler, kalan VM 'Lerin (klasik) silinmesine yönelik zaman çizelgeleriyle ilgili olarak bilgilendirilir.  
 
 Bu kullanımdan kaldırma *, aşağıdaki* Azure hizmetlerini ve işlevselliğini etkilemez: 
-- Azure Cloud Services 
+- [Azure Cloud Services (klasik)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
 - VM 'Ler *tarafından kullanılmayan depolama hesapları (* klasik) 
 - VM 'Ler *tarafından kullanılmayan sanal ağlar (* klasik) 
 - Diğer klasik kaynaklar
@@ -49,9 +49,9 @@ Azure Resource Manager için geçişinizi planlamaya hemen başlayın.
 
 1. Mevcut VM 'lerinizi üç kolay adımla geçirmek için [Platform desteği geçiş aracı](./migration-classic-resource-manager-overview.md) 'nı kullanarak planlamanın başlamasını öneririz: doğrulama, hazırlama ve tamamlama. Araç, VM 'lerinizi en düşük düzeyde kapalı kalma süresi olmadan geçirmek için tasarlanmıştır. 
 
-   1. İlk adım, Validate, mevcut dağıtımınız üzerinde hiçbir etkiye sahip değildir ve geçiş için desteklenmeyen tüm senaryoların bir listesini sağlar. 
-   1. Dağıtımınızı onarmak ve geçişe hazırlamak için [geçici çözümler listesine](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) gidin. 
-   1. İdeal olarak, tüm doğrulama hataları düzeltildikten sonra hazırlama ve tamamlama adımları sırasında herhangi bir sorunla karşılaşmamanız gerekir. Tamamlama başarılı olduktan sonra, dağıtımınız Azure Resource Manager 'ye dinamik olarak geçirilir ve daha sonra Azure Resource Manager tarafından sunulan yeni API 'Ler aracılığıyla yönetilebilir. 
+   - İlk adım, Validate, mevcut dağıtımınız üzerinde hiçbir etkiye sahip değildir ve geçiş için desteklenmeyen tüm senaryoların bir listesini sağlar. 
+   - Dağıtımınızı onarmak ve geçişe hazırlamak için [geçici çözümler listesine](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) gidin. 
+   - İdeal olarak, tüm doğrulama hataları düzeltildikten sonra hazırlama ve tamamlama adımları sırasında herhangi bir sorunla karşılaşmamanız gerekir. Tamamlama başarılı olduktan sonra, dağıtımınız Azure Resource Manager 'ye dinamik olarak geçirilir ve daha sonra Azure Resource Manager tarafından sunulan yeni API 'Ler aracılığıyla yönetilebilir. 
 
    Geçiş Aracı geçişiniz için uygun değilse, geçişe yönelik [diğer işlem tekliflerini](/azure/architecture/guide/technology-choices/compute-decision-tree) inceleyebilirsiniz. Birçok Azure işlem teklifi olduğundan ve bunlar diğerinden farklı olduğundan, bunlara platform tarafından desteklenen bir geçiş yolu sağlayamıyoruz.  
 
@@ -65,6 +65,6 @@ Azure Resource Manager için geçişinizi planlamaya hemen başlayın.
 
 - [Azure geçiş desteği](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): geçiş sırasında teknik yardım için adanmış destek ekibi.
 
-- [Microsoft hızlı izleme](https://www.microsoft.com/fasttrack): hızlı izleme, uygun müşterilere bu geçişin & yürütülmesini planlama konusunda yardımcı olabilir. [Aday](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)yapın.  
+- [Microsoft hızlı izleme](https://www.microsoft.com/fasttrack): hızlı izleme, uygun müşterilere bu geçişin & yürütülmesini planlama konusunda yardımcı olabilir. DC geçiş programı için [kendinize aday](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) yapın.  
 
 - Şirketiniz/kuruluşunuzun Microsoft ile iş ortağı varsa veya Microsoft temsilcileriyle (bulut çözümü mimarları (CSAs) veya teknik hesap yöneticileri (TAMs) gibi) çalışıyorsa, geçiş için ek kaynaklar için lütfen bunlarla çalışın.

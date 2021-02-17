@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342238"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595653"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi 'nde Kullanıcı verilerini nasıl yönetebileceğinizi gösteren bilgiler sağlanmaktadır. Kullanıcı verilerini yönetmek, verilere erişme, verileri silme veya dışa aktarma olanağını içerir.
@@ -97,4 +97,4 @@ Bir güvenlik merkezi kullanıcısı, [güvenlik iletişim verilerini](security-
 [Uyarı verileri](security-center-managing-and-responding-alerts.md) , güvenlik verileri olarak değerlendirilir ve iki yıl boyunca korunur.
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
-Güvenlik kişisinin denetim günlükleri, tam zamanında ve uyarı güncelleştirmeleri [Azure etkinlik günlüklerinde](../azure-monitor/platform/platform-logs-overview.md)saklanır.
+Güvenlik kişisinin denetim günlükleri, tam zamanında ve uyarı güncelleştirmeleri [Azure etkinlik günlüklerinde](../azure-monitor/essentials/platform-logs-overview.md)saklanır.

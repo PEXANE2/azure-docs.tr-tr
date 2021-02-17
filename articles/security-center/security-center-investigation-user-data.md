@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 88fd707d769c7aed53160a9f22fefd15cce19a4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 89d47f1fe941dad6a2450df86bfed2d25a1d8f7d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340742"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595661"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
-Bu makalede, Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerinin nasıl yönetileceği hakkında bilgi verilmektedir. Araştırma verileri [Azure izleyici günlüklerinde](../azure-monitor/log-query/log-query-overview.md) depolanır ve Güvenlik Merkezi 'nde gösterilir. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağını içerir.
+Bu makalede, Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerinin nasıl yönetileceği hakkında bilgi verilmektedir. Araştırma verileri [Azure izleyici günlüklerinde](../azure-monitor/logs/log-query-overview.md) depolanır ve Güvenlik Merkezi 'nde gösterilir. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağını içerir.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Kişisel verileri arama ve tanımlama
-Azure portal, güvenlik merkezi 'nin araştırma özelliğini kullanarak kişisel verileri arayabilirsiniz. Araştırma özelliği **güvenlik uyarıları**altında bulunabilir.
+Azure portal, güvenlik merkezi 'nin araştırma özelliğini kullanarak kişisel verileri arayabilirsiniz. Araştırma özelliği **güvenlik uyarıları** altında bulunabilir.
 
 Araştırma özelliği, **varlıklar** sekmesinde tüm varlıkları, Kullanıcı bilgilerini ve verileri gösterir.
 
@@ -57,4 +57,4 @@ Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kullanıcı verilerini yönetme hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde Kullanıcı verilerini yönetme](security-center-privacy.md).
-Azure Izleyici günlüklerinde özel verileri silme hakkında daha fazla bilgi edinmek için bkz. [özel verileri dışarı aktarma ve silme](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Azure Izleyici günlüklerinde özel verileri silme hakkında daha fazla bilgi edinmek için bkz. [özel verileri dışarı aktarma ve silme](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).

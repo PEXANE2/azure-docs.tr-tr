@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806927"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596507"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure genel IP 'si için Azure Güvenlik temeli
 
@@ -52,7 +52,7 @@ Genel IP, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanıl
 
 Bunun yerine, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ Bunun yerine, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinle
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak yapılandırma ve genel IP örneklerinizin değişikliklerini tespit edin. Denetim düzlemi dışında (örneğin, Azure portal), genel IP kendisi denetim günlükleri oluşturmaz. Genel IP, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek ya da devre dışı bırakmak için araçlar sağlar.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -74,7 +74,7 @@ Bunun yerine, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinle
 
 **Rehberlik**: kuruluşunuzun uyumluluk yükümlülüklerine göre genel IP örnekleriyle ilişkili Log Analytics çalışma alanları için günlük tutma süresi ayarlamak üzere Azure izleyici 'yi kullanın.
 
-- [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -88,7 +88,7 @@ Yapılandırmayı izlemek ve genel IP örneklerinizin değişikliklerini algıla
 
 Genel IP 'nin kendisi, denetim düzleminden farklı olan ağ trafiğiyle ilgili Günlükler oluşturmaz (örneğin, Azure portal).
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

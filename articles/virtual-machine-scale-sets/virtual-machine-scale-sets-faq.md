@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016718"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587947"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -71,15 +71,15 @@ Evet! Daha fazla bilgi için [Ölçek kümesi bölgesi belge](./virtual-machine-
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure otomatik ölçeklendirme için en iyi uygulamalar nelerdir?
 
-Otomatik ölçeklendirme için en iyi uygulamalar için bkz. [sanal makineleri otomatik ölçeklendirme Için en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
+Otomatik ölçeklendirme için en iyi uygulamalar için bkz. [sanal makineleri otomatik ölçeklendirme Için en iyi uygulamalar](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Ana bilgisayar tabanlı ölçümler kullanan otomatik ölçeklendirme için ölçüm adlarını nerede bulabilirim?
 
-Ana bilgisayar tabanlı ölçümler kullanan otomatik ölçeklendirme için ölçüm adları için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
+Ana bilgisayar tabanlı ölçümler kullanan otomatik ölçeklendirme için ölçüm adları için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Azure Service Bus konuya ve sıra uzunluğuna göre otomatik ölçeklendirme örnekleri var mı?
 
-Evet. Azure Service Bus bir konuya ve sıra uzunluğuna göre otomatik ölçeklendirme örnekleri için bkz. [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/platform/autoscale-common-metrics.md).
+Evet. Azure Service Bus bir konuya ve sıra uzunluğuna göre otomatik ölçeklendirme örnekleri için bkz. [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 Service Bus kuyruğu için aşağıdaki JSON 'u kullanın:
 
@@ -104,9 +104,9 @@ Bir depolama kuyruğu için aşağıdaki JSON 'u kullanın:
 
 Konak düzeyinde ölçümler veya Konuk işletim sistemi tabanlı ölçümler kullanmak için bir sanal makinede otomatik ölçeklendirme ayarı oluşturabilirsiniz.
 
-Desteklenen ölçümlerin listesi için bkz. [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/platform/autoscale-common-metrics.md).
+Desteklenen ölçümlerin listesi için bkz. [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
-Sanal Makine Ölçek Kümeleri için tam bir örnek için bkz. [sanal makine ölçek kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
+Sanal Makine Ölçek Kümeleri için tam bir örnek için bkz. [sanal makine ölçek kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md).
 
 Örnek, ana bilgisayar düzeyi CPU ölçümünü ve bir ileti sayısı ölçümünü kullanır.
 
@@ -114,13 +114,13 @@ Sanal Makine Ölçek Kümeleri için tam bir örnek için bkz. [sanal makine öl
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Nasıl yaparım?, bir sanal makine ölçek kümesinde uyarı kuralları mi ayarlanacak?
 
-PowerShell veya Azure CLı ile sanal makine ölçek kümeleri için ölçümler üzerinde uyarılar oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Izleyici PowerShell hızlı başlangıç örnekleri](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) ve [Azure IZLEYICI platformlar arası CLI hızlı başlangıç örnekleri](../azure-monitor/samples/cli-samples.md#work-with-alerts).
+PowerShell veya Azure CLı ile sanal makine ölçek kümeleri için ölçümler üzerinde uyarılar oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Izleyici PowerShell hızlı başlangıç örnekleri](../azure-monitor/powershell-samples.md#create-metric-alerts) ve [Azure IZLEYICI platformlar arası CLI hızlı başlangıç örnekleri](../azure-monitor/cli-samples.md#work-with-alerts).
 
 Sanal makine ölçek kümesinin Targetresourceıd 'i şöyle görünür:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Bir uyarı ayarlanacak ölçüm olarak herhangi bir VM performans sayacını seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici otomatik ölçeklendirme genel ölçümler](../azure-monitor/platform/autoscale-common-metrics.md) makalesindeki [Kaynak Yöneticisi tabanlı Windows VM 'LERI için konuk işletim sistemi ölçümleri](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) ve [Linux VM 'leri için konuk işletim sistemi](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) ölçümleri.
+Bir uyarı ayarlanacak ölçüm olarak herhangi bir VM performans sayacını seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici otomatik ölçeklendirme genel ölçümler](../azure-monitor/autoscale/autoscale-common-metrics.md) makalesindeki [Kaynak Yöneticisi tabanlı Windows VM 'LERI için konuk işletim sistemi ölçümleri](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) ve [Linux VM 'leri için konuk işletim sistemi](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms) ölçümleri.
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>PowerShell 'i kullanarak bir sanal makine ölçek kümesindeki otomatik ölçeklendirmeyi ayarlamak Nasıl yaparım?.
 

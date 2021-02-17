@@ -3,16 +3,16 @@ title: Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
 description: Hizmet durumu bildirimlerinizi Azure portal görüntüleyin. Hizmet durumu bildirimleri Azure altyapı tarafından Azure etkinlik günlüğüne yayımlanır.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f9f3e7b10d9aa0014e4e00e7bfa72c9dc66e142
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967779"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588004"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
 
-Hizmet durumu bildirimleri Azure altyapı tarafından [Azure etkinlik günlüğüne](../azure-monitor/platform/platform-logs-overview.md)yayımlanır.  Bildirimler, aboneliğinizdeki kaynaklarla ilgili bilgiler içerir. Etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır. 
+Hizmet durumu bildirimleri Azure altyapı tarafından [Azure etkinlik günlüğüne](../azure-monitor/essentials/platform-logs-overview.md)yayımlanır.  Bildirimler, aboneliğinizdeki kaynaklarla ilgili bilgiler içerir. Etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır. 
 
 Hizmet durumu bildirimleri, sınıfa bağlı olarak bilgilendirici veya işlem yapılabilir olabilir.
 
@@ -26,7 +26,7 @@ Hizmet durumu bildirimleri, sınıfa bağlı olarak bilgilendirici veya işlem y
 
     Azure Izleyici, tüm izleme ayarlarınızı ve verilerinizi tek bir birleştirilmiş görünümde birlikte getirir. İlk olarak **Etkinlik günlüğü** bölümü açılır.
 
-1. **Uyarıları**seçin.
+1. **Uyarıları** seçin.
 
     ![Uyarı seçiliyken Izleme etkinlik günlüğü ekran görüntüsü](./media/service-notifications/service-health-summary.png)
 
@@ -34,4 +34,4 @@ Hizmet durumu bildirimleri, sınıfa bağlı olarak bilgilendirici veya işlem y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Etkinlik günlüğü uyarıları](../azure-monitor/platform/activity-log-alerts.md)hakkında daha fazla bilgi edinin.
+* [Etkinlik günlüğü uyarıları](../azure-monitor/alerts/activity-log-alerts.md)hakkında daha fazla bilgi edinin.

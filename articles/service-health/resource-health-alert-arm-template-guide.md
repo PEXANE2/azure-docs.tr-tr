@@ -3,27 +3,27 @@ title: Kaynak Durumu uyarılar oluşturmak için şablon
 description: Azure kaynaklarınızın kullanım dışı olmasına göre size bildirimde bulunan uyarıları programlı bir şekilde oluşturun.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537438"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588200"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
 Bu makalede, Azure Resource Manager şablonlarını ve Azure PowerShell kullanarak programlı olarak Kaynak Durumu etkinlik günlüğü uyarılarını nasıl oluşturacağınız gösterilmektedir.
 
-Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu hakkında bilgi sahibi olmanızı önler. Azure Kaynak Durumu uyarılar, bu kaynakların sistem durumunda bir değişiklik olduğunda sizi neredeyse gerçek zamanlı olarak uyarabilirler. Kaynak Durumu uyarılar oluşturma, kullanıcıların uyarıları toplu olarak oluşturmalarına ve özelleştirmesine izin verir.
+Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu hakkında bilgi sahibi olmanızı önler. Azure Kaynak Durumu uyarıları, bu kaynakların durumunda bir değişiklik olduğunda gerçek zamanlıya yakın bir sürede size bildirim gönderebilir. Kaynak Durumu uyarılar oluşturma, kullanıcıların uyarıları toplu olarak oluşturmalarına ve özelleştirmesine izin verir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu sayfadaki yönergeleri izlemek için, önceden birkaç şey ayarlamanız gerekir:
 
 1. [Azure PowerShell modülünü](/powershell/azure/install-az-ps) yüklemeniz gerekiyor
-2. Sizi bilgilendirmek için yapılandırılmış [bir eylem grubu oluşturmanız veya yeniden kullanmanız](../azure-monitor/platform/action-groups.md) gerekir
+2. Sizi bilgilendirmek için yapılandırılmış [bir eylem grubu oluşturmanız veya yeniden kullanmanız](../azure-monitor/alerts/action-groups.md) gerekir
 
 ## <a name="instructions"></a>Yönergeler
 1. PowerShell 'i kullanarak hesabınızı kullanarak Azure 'da oturum açın ve etkileşimde bulunmak istediğiniz aboneliği seçin
@@ -452,4 +452,4 @@ Kaynak Durumu hakkında daha fazla bilgi edinin:
 
 Hizmet durumu uyarıları oluşturma:
 -  [Hizmet durumu için uyarıları yapılandırma](./alerts-activity-log-service-notifications-portal.md) 
--  [Azure etkinlik günlüğü olay şeması](../azure-monitor/platform/activity-log-schema.md)
+-  [Azure etkinlik günlüğü olay şeması](../azure-monitor/essentials/activity-log-schema.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785829"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596814"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standart Load Balancer Azure Izleyici günlükleri
 
@@ -63,7 +63,7 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
      5. **Olay Hub 'ı ilke adı Seç** aşağı açılan listesinde, adı seçin.
      6. **Tamam**’ı seçin.
 
-   * **Log Analytics gönder**. Bu işlem için oluşturulmuş ve yapılandırılmış bir Log Analytics çalışma alanınız olması gerekir. Log Analytics çalışma alanı oluşturmak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
+   * **Log Analytics gönder**. Bu işlem için oluşturulmuş ve yapılandırılmış bir Log Analytics çalışma alanınız olması gerekir. Log Analytics çalışma alanı oluşturmak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
      1. **Log Analytics’e gönder** onay kutusunu seçin.
      2. **Abonelik** açılan listesinde Log Analytics çalışma alanınızın olduğu aboneliği seçin.
      3. **Log Analytics çalışma alanı** açılır listesinde, çalışma alanını seçin.
@@ -100,10 +100,10 @@ Depolama alanına veriyorsanız depolama hesabınıza bağlanın ve olay ve duru
 > Visual Studio ve C# ' deki sabitler ve değişkenler için değer değiştirme temel kavramları hakkında bilgi sahibiyseniz, GitHub 'da bulunan [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
 ## <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
-Tanılama bilgileri bir olay hub 'ına akış yapıldığında, Azure Izleyici tümleştirmesiyle bir iş ortağı SıEM aracında Merkezi günlük analizi için bunu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+Tanılama bilgileri bir olay hub 'ına akış yapıldığında, Azure Izleyici tümleştirmesiyle bir iş ortağı SıEM aracında Merkezi günlük analizi için bunu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ## <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
-Azure 'daki kaynaklar için tanılama bilgilerini doğrudan bir Log Analytics çalışma alanına gönderebilirsiniz. Bu çalışma alanında, sorun giderme ve analiz amacıyla bilgilere karşı karmaşık sorgular çalıştırabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Azure 'daki kaynaklar için tanılama bilgilerini doğrudan bir Log Analytics çalışma alanına gönderebilirsiniz. Bu çalışma alanında, sorun giderme ve analiz amacıyla bilgilere karşı karmaşık sorgular çalıştırabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ## <a name="limitations"></a>Sınırlamalar
 Azure Load Balancer için ölçülerle günlüklere dışarı aktarma özelliği aşağıdaki sınırlamalara sahiptir:

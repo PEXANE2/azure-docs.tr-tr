@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373156"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586869"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -76,7 +76,7 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. **Kaydet**’i seçin.
 
@@ -151,7 +151,7 @@ Azure Data Factory sürüm 2 tarafından yayılan ölçülerden bazıları şunl
 | Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Count    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
 | Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
 
-Ölçümlere erişmek için [Azure izleyici veri platformundaki](../azure-monitor/platform/data-platform.md)yönergeleri doldurun.
+Ölçümlere erişmek için [Azure izleyici veri platformundaki](../azure-monitor/data-platform.md)yönergeleri doldurun.
 
 > [!NOTE]
 > Yalnızca tamamlanan, tetiklenen etkinlik ve işlem hattı çalıştırmalarının olayları yayınlanır. Devam eden ve hata ayıklama çalıştırmaları **yayılmadı** . Diğer taraftan, **Tüm** SSIS paket yürütmelerinin olayları, çağrı metotlarından bağımsız olarak, tamamlanmış ve sürmekte olanlar da dahil olmak üzere yayınlanır. Örneğin, Azure özellikli SQL Server Veri Araçları (SSDT) üzerinde paket yürütmelerini, SSMS 'de T-SQL, SQL Server Agent veya diğer belirlenmiş araçlar aracılığıyla veya ADF işlem hatlarında SSIS paket etkinliklerini yürütme veya hata ayıklama çalıştırmaları olarak çalıştırabilirsiniz.
@@ -848,7 +848,7 @@ SSIS iş yüklerinizi kaldırmak & geçiş yapmak için, [ADF 'de SSIS IR](./tut
 
 Sağlandıktan sonra, [Azure PowerShell veya ADF portalının **Monitor** hub 'ında bulunan SSIS IR işletimsel durumunu denetleyebilirsiniz](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Proje dağıtım modeliyle, SSIS paketi yürütme günlükleri SSSıSDB iç tablolarında veya görünümlerinde depolanır, bu sayede SSMS gibi tasarlanan araçları kullanarak bunları sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Paket dağıtım modeli ile, SSIS paketi yürütme günlükleri dosya sistemi veya Azure dosyalarında, sorgu, analiz etmeden ve görsel olarak kullanmadan önce diğer belirlenen araçları kullanarak ayrıştırmanız ve işlem yapmanız gereken CSV dosyaları olarak depolanabilir.
 
-Artık [Azure izleyici](../azure-monitor/platform/data-platform.md) TÜMLEŞTIRMESIYLE, SSIS IR işlemlerinden oluşturulan tüm ölçümleri ve günlükleri ve Azure Portal üzerinde SSIS paket yürütmelerini sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Ayrıca, bunlar üzerinde de uyarı oluşturabilirsiniz.
+Artık [Azure izleyici](../azure-monitor/data-platform.md) TÜMLEŞTIRMESIYLE, SSIS IR işlemlerinden oluşturulan tüm ölçümleri ve günlükleri ve Azure Portal üzerinde SSIS paket yürütmelerini sorgulayabilir, çözümleyebilir ve görsel olarak sunabilirsiniz. Ayrıca, bunlar üzerinde de uyarı oluşturabilirsiniz.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>SSIS işlemleri için tanılama ayarlarını ve çalışma alanını yapılandırma
 
@@ -856,9 +856,9 @@ SSIS IR işlemlerinden ve SSIS paket yürütmelerinin Azure Izleyici 'de oluştu
 
 ### <a name="ssis-operational-metrics"></a>SSIS işletimsel ölçümleri
 
-SSIS işletimsel [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) , SSIS IR başlatma ve durdurma işlemlerinin durumunu ve belirli bır zamanda SSIS paket yürütmelerini tanımlayan, performans sayaçları veya sayısal değerlerdir. Bunlar, [Azure izleyici 'Deki ADF ölçümlerinin](#data-factory-metrics)bir parçasıdır.
+SSIS işletimsel [ölçümleri](../azure-monitor/essentials/data-platform-metrics.md) , SSIS IR başlatma ve durdurma işlemlerinin durumunu ve belirli bır zamanda SSIS paket yürütmelerini tanımlayan, performans sayaçları veya sayısal değerlerdir. Bunlar, [Azure izleyici 'Deki ADF ölçümlerinin](#data-factory-metrics)bir parçasıdır.
 
-ADF 'niz Azure Izleyici 'de tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, _Allölçümler_ onay kutusunun BELIRLENMESI, SSIS Işletimsel ölçümlerini Azure Ölçüm Gezgini, [Azure panosu 'nda sunumu](../azure-monitor/learn/tutorial-app-dashboards.md)ve [neredeyse gerçek zamanlı uyarılar](../azure-monitor/platform/alerts-metric.md) [kullanarak etkileşimli analiz](../azure-monitor/platform/metrics-getting-started.md)için kullanılabilir hale getirir.
+ADF 'niz Azure Izleyici 'de tanılama ayarlarını ve çalışma alanını yapılandırdığınızda, _Allölçümler_ onay kutusunun BELIRLENMESI, SSIS Işletimsel ölçümlerini Azure Ölçüm Gezgini, [Azure panosu 'nda sunumu](../azure-monitor/app/tutorial-app-dashboards.md)ve [neredeyse gerçek zamanlı uyarılar](../azure-monitor/alerts/alerts-metric.md) [kullanarak etkileşimli analiz](../azure-monitor/essentials/metrics-getting-started.md)için kullanılabilir hale getirir.
 
 ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Azure portal SSIS işletimsel ölçümlerinde uyarılar yükseltmek için [Azure
 
 ### <a name="ssis-operational-logs"></a>SSIS işletimsel günlükleri
 
-SSIS işletimsel [günlükleri](../azure-monitor/platform/data-platform-logs.md) , tanımlanan herhangi bir sorun üzerinde yeterli bağlam sunan ve kök neden analizi için YARARLı olan SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri tarafından oluşturulan olaylardır. 
+SSIS işletimsel [günlükleri](../azure-monitor/logs/data-platform-logs.md) , tanımlanan herhangi bir sorun üzerinde yeterli bağlam sunan ve kök neden analizi için YARARLı olan SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri tarafından oluşturulan olaylardır. 
 
-ADF 'niz Azure Izleyicisinde tanılama ayarlarını ve çalışma alanını yapılandırdığınızda ilgili SSIS işletimsel günlüklerini seçip Azure Veri Gezgini tabanlı Log Analytics gönderebilirsiniz. Burada, [zengin sorgu dili](../azure-monitor/log-query/log-query-overview.md), [Azure panosu 'nda sunum](../azure-monitor/learn/tutorial-app-dashboards.md)ve [gerçek zamanlı uyarılar](../azure-monitor/platform/alerts-log.md)kullanılarak analiz için kullanılabilir hale getirilir.
+ADF 'niz Azure Izleyicisinde tanılama ayarlarını ve çalışma alanını yapılandırdığınızda ilgili SSIS işletimsel günlüklerini seçip Azure Veri Gezgini tabanlı Log Analytics gönderebilirsiniz. Burada, [zengin sorgu dili](../azure-monitor/logs/log-query-overview.md), [Azure panosu 'nda sunum](../azure-monitor/app/tutorial-app-dashboards.md)ve [gerçek zamanlı uyarılar](../azure-monitor/alerts/alerts-log.md)kullanılarak analiz için kullanılabilir hale getirilir.
 
 ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

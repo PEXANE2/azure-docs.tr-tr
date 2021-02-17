@@ -3,12 +3,12 @@ title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558500"
+ms.locfileid: "100580866"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -110,7 +110,7 @@ Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım K
 Linux ve Windows için bağlı makine Aracısı, TCP bağlantı noktası 443 üzerinden Azure Arc ile güvenli bir şekilde iletişim kurar. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdakileri gözden geçirin.
 
 > [!NOTE]
-> Yay özellikli sunucular, bağlı makine Aracısı için proxy olarak [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) kullanmayı desteklemez.
+> Yay özellikli sunucular, bağlı makine Aracısı için proxy olarak [Log Analytics ağ geçidi](../../azure-monitor/agents/gateway.md) kullanmayı desteklemez.
 >
 
 Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtlanıyorsa, aşağıda listelenen URL 'Lerin engellenmediğinden emin olun. Aracının hizmetle iletişim kurması için gereken IP aralıklarının veya etki alanı adlarının yalnızca, aşağıdaki hizmet etiketlerine ve URL 'Lere erişim izni vermeniz gerekir.
@@ -124,7 +124,7 @@ Hizmet Etiketleri:
 
 Adresleri
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -136,7 +136,7 @@ Adresleri
 
 Önizleme aracıları (sürüm 0,11 ve daha düşük) aşağıdaki URL 'Lere da erişim gerektirir:
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
 |`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
@@ -200,7 +200,7 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
@@ -212,7 +212,7 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki Windows Hizmetleri, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımds |Azure hibrit Instance Metadata Service |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |GCArcService |Konuk yapılandırması yay hizmeti |gc_service |Makinenin istenen durum yapılandırmasını izler.|
@@ -220,14 +220,14 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -252,7 +252,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |/var/seçenek/azcmagent/ |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |/seçenek/azcmagent/ |
@@ -264,7 +264,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki Daemon 'ları, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımdsd. hizmeti |Azure bağlı makine Aracısı hizmeti |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |gcad. servce |GC yay hizmeti |gc_linux_service |Makinenin istenen durum yapılandırmasını izler. |
@@ -272,7 +272,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -283,7 +283,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

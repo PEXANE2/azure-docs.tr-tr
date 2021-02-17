@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693741"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580473"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -81,12 +81,12 @@ Application Insights, size en fazla Kullanıcı alacağınız, uygulamanın ne k
 Kilitlenmeler, sorunlar veya performans sorunları varsa, nedeni tanılamak için telemetri verilerinde ayrıntılı arama yapabilirsiniz. Ve uygulamanızın kullanılabilirliği ve performansı üzerinde herhangi bir değişiklik olursa hizmet size e-posta gönderir. Bu nedenle, gizlilik, bütünlük ve kullanılabilirlik güvenliği Triad 'de kullanılabilirliğine yardımcı olduğundan, uygulama öngörüleri değerli bir güvenlik aracı haline gelir.
 
 ### <a name="azure-monitor"></a>Azure İzleyici
-[Azure izleyici](/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/platform/platform-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
+[Azure izleyici](/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/essentials/platform-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/essentials/platform-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
 
 ### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 [Azure izleyici günlükleri](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure kaynaklarına ek olarak hem şirket içi hem de üçüncü taraf bulut tabanlı altyapı (AWS gibi) IÇIN bir BT yönetimi çözümü sağlar. Azure Izleyici 'deki veriler doğrudan Azure Izleyici günlüklerine yönlendirilebilir, böylece tüm ortamınız için ölçümleri ve günlükleri tek bir yerde görebilirsiniz.
 
-Azure izleyici günlükleri, esnek bir sorgu yaklaşımına sahip çok sayıda güvenlikle ilgili girişi hızlı bir şekilde aramanızı sağladığından, adli ve diğer güvenlik analizinde yararlı bir araç olabilir. Ayrıca, şirket içi [güvenlik duvarı ve proxy günlükleri Azure 'a aktarılabilir ve Azure izleyici günlükleri kullanılarak analiz için kullanılabilir hale getirilebilir.](../../azure-monitor/platform/agent-windows.md)
+Azure izleyici günlükleri, esnek bir sorgu yaklaşımına sahip çok sayıda güvenlikle ilgili girişi hızlı bir şekilde aramanızı sağladığından, adli ve diğer güvenlik analizinde yararlı bir araç olabilir. Ayrıca, şirket içi [güvenlik duvarı ve proxy günlükleri Azure 'a aktarılabilir ve Azure izleyici günlükleri kullanılarak analiz için kullanılabilir hale getirilebilir.](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Danışmanı
 [Azure Danışmanı](../../advisor/index.yml) , Azure dağıtımlarınızı iyileştirmenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Kaynak yapılandırmanızı ve kullanım telemetrinizi çözümler. Daha sonra, [Genel Azure harcamalarınızı azaltmaya](../../advisor/advisor-cost-recommendations.md)yönelik fırsatları ararken kaynaklarınızın [performansını](../../advisor/advisor-performance-recommendations.md), [güvenliğini](../../advisor/advisor-security-recommendations.md)ve [yüksek oranda kullanılabilirliğini](../../advisor/advisor-high-availability-recommendations.md) artırmaya yardımcı olmak için çözümler önerir. Azure Danışmanı, Azure 'da dağıttığınız çözümler için genel güvenlik duruşunuzu önemli ölçüde iyileştirebilen güvenlik önerileri sağlar. Bu öneriler, [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) tarafından gerçekleştirilen güvenlik analizinden çizilir.
@@ -101,7 +101,7 @@ Bu bölümde, uygulama güvenliği ve bu özellikler hakkında özet bilgileri i
 ### <a name="web-application-vulnerability-scanning"></a>Web uygulaması güvenlik açığı taraması
 [App Service uygulamanızda](../../app-service/overview.md) güvenlik açıklarını test etmeye başlamak için en kolay yollarından biri, uygulamanızda tek tıklamayla bir güvenlik açığı taraması gerçekleştirmek Için [tinfoil Security ile tümleştirmeyi](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) kullanmaktır. Test sonuçlarını kolay anlaşılır bir raporda görüntüleyebilir ve adım adım yönergelerle her bir güvenlik açığını nasıl düzelteceğinizi öğrenebilirsiniz.
 
-### <a name="penetration-testing"></a>Sızma testi
+### <a name="penetration-testing"></a>Sızma Testi
 Kendi sızma testlerinizi gerçekleştirmeyi tercih ediyorsanız veya başka bir tarayıcı paketi veya sağlayıcı kullanmak istiyorsanız, [Azure sızma testi onay işlemini](./pen-testing.md) izlemeniz ve istenen Sızma testlerini gerçekleştirmek için önceki onayı edinmeniz gerekir.
 
 ### <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
