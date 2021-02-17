@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 86ac0f64a6a797b1bc702597ed30e6417f2efe14
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500980"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572266"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics için uyarı oluşturma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,9 +42,9 @@ Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilir
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 
-* [Azure portal](../../azure-monitor/platform/alerts-classic-portal.md)
-* [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Komut satırı arabirimi (CLı)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure portal](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [PowerShell](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [Komut satırı arabirimi (CLı)](../../azure-monitor/alerts/alerts-classic-portal.md)
 * [Azure İzleyici REST API'si](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
@@ -73,4 +73,4 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uyarılarda Web kancalarını yapılandırma](../../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
+* [Uyarılarda Web kancalarını yapılandırma](../../azure-monitor/alerts/alerts-webhooks.md)hakkında daha fazla bilgi edinin.

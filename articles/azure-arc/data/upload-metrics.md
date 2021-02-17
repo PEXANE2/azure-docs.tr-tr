@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356557"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575685"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Ölçümleri Azure Izleyici 'ye yükleyin
 
@@ -126,7 +126,7 @@ Azure Arc etkin SQL yönetilen örnekleriniz ve Azure Arc etkin PostgreSQL hiper
    >[!NOTE]
    >İlk karşıya yükleme için Azure Arc etkin veri örnekleri oluşturulduktan en az 30 dakika bekleyin.
    >
-   >`upload` `export` Azure izleyici, yalnızca son 30 dakikalık ölçümleri kabul ettiğinden, ölçümlerin doğru bir şekilde ayrıltığından emin olun. [Daha fazla bilgi edinin](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
+   >`upload` `export` Azure izleyici, yalnızca son 30 dakikalık ölçümleri kabul ettiğinden, ölçümlerin doğru bir şekilde ayrıltığından emin olun. [Daha fazla bilgi edinin](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Dışarı aktarma sırasında "ölçümleri almak için hata" belirten bir hata görürseniz, aşağıdaki komutu çalıştırarak veri toplamanın olarak ayarlanmış olup olmadığını denetleyin `true` :
@@ -199,7 +199,7 @@ Azure Arc etkin veri Hizmetleri üzerinde oluşturma, okuma, güncelleştirme ve
 
 Önizleme süresince bu işlem gecelik olur. Genel rehberlik, kullanımı günde yalnızca bir kez karşıya yüklemek içindir. Kullanım bilgileri aktarıldığında ve aynı 24 saatlik süre içinde birden çok kez karşıya yüklendiğinde, yalnızca kaynak envanteri Azure portal ' de güncelleştirilir ancak kaynak kullanımı değildir.
 
-Azure izleyici, ölçümleri karşıya yüklemek için yalnızca son 30 dakikalık verileri kabul eder ([daha fazla bilgi edinin](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Ölçüm Yükleme Kılavuzu, verileri dışa aktarma dosyası oluşturulduktan hemen sonra, Azure portal ' de tüm veri kümesini görüntüleyebilmeniz için, ölçümleri karşıya yüklemedir. Örneğin, ölçümleri 2:00 PM tarihinde ve 2:50 PM 'de karşıya yükle komutunu çalıştırdıysanız. Azure Izleyici yalnızca son 30 dakikalık verileri kabul ettiğinden portalda herhangi bir veri göremeyebilirsiniz. 
+Azure izleyici, ölçümleri karşıya yüklemek için yalnızca son 30 dakikalık verileri kabul eder ([daha fazla bilgi edinin](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Ölçüm Yükleme Kılavuzu, verileri dışa aktarma dosyası oluşturulduktan hemen sonra, Azure portal ' de tüm veri kümesini görüntüleyebilmeniz için, ölçümleri karşıya yüklemedir. Örneğin, ölçümleri 2:00 PM tarihinde ve 2:50 PM 'de karşıya yükle komutunu çalıştırdıysanız. Azure Izleyici yalnızca son 30 dakikalık verileri kabul ettiğinden portalda herhangi bir veri göremeyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

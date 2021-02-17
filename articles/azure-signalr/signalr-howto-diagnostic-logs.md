@@ -6,22 +6,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572253"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlükleri
 
 Bu öğreticide, Azure SignalR hizmeti için kaynak günlüklerinin, nasıl ayarlanacağı ve bunlarla ilgili sorunların nasıl giderileceği açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Kaynak günlüklerini etkinleştirmek için, günlük verilerinizi depolamak üzere bir yere ihtiyacınız vardır. Bu öğretici, Azure depolama ve Log Analytics kullanır.
 
-* [Azure depolama](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) -ilke denetimi, statik analiz veya yedekleme için kaynak günlüklerini tutar.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) -bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine izin veren esnek bir günlük araması ve Analiz Aracı.
+* [Azure depolama](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) -ilke denetimi, statik analiz veya yedekleme için kaynak günlüklerini tutar.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) -bir Azure kaynağı tarafından oluşturulan ham günlüklerin analizine izin veren esnek bir günlük araması ve Analiz Aracı.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlüklerini ayarlama
 
@@ -50,7 +50,7 @@ Kaynak günlükleri varsayılan olarak devre dışıdır. Kaynak günlüklerini 
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, **tanılama günlükleri** bölmesinde Günlükler yapılandırılan arşiv hedefinde görüntülenir.
 
-Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="resource-logs-categories"></a>Kaynak günlükleri kategorileri
 
@@ -68,7 +68,7 @@ Arşiv günlüğü JSON dizeleri aşağıdaki tablolarda listelenen öğeleri i�
 
 **Biçimlendir**
 
-Adı | Açıklama
+Ad | Açıklama
 ------- | -------
 time | Olay saatini günlüğe kaydet
 düzey | Olay düzeyini günlüğe kaydet
@@ -81,7 +81,7 @@ properties | Bu günlük olayla ilgili ayrıntılı özellikler. Daha fazla ayr�
 
 **Özellikler tablosu**
 
-Adı | Açıklama
+Ad | Açıklama
 ------- | -------
 tür | Günlük olayının türü. Şu anda Azure SignalR hizmetine bağlantı hakkında bilgi sağlıyoruz. Yalnızca `ConnectivityLogs` tür kullanılabilir
  koleksiyonu | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve `Throttling`
@@ -122,19 +122,19 @@ Kaynak günlüklerini görüntülemek için aşağıdaki adımları izleyin:
 
     ![Log Analytics menü öğesi](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. `SignalRServiceDiagnosticLogs`Kaynak günlüklerini sorgulamak için zaman aralığını girin ve seçin. Gelişmiş sorgu için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. `SignalRServiceDiagnosticLogs`Kaynak günlüklerini sorgulamak için zaman aralığını girin ve seçin. Gelişmiş sorgu için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![Log Analytics sorgu günlüğü](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
 Arşiv günlüğü sütunları aşağıdaki tabloda listelenen öğeleri içerir:
 
-Adı | Açıklama
+Ad | Açıklama
 ------- | ------- 
 TimeGenerated | Olay saatini günlüğe kaydet
 Koleksiyon | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve `Throttling`
 OperationName | Etkinliğin işlem adı
 Konum | Azure SignalR hizmetinizin konumu
-Düzey | Olay düzeyini günlüğe kaydet
+Level | Olay düzeyini günlüğe kaydet
 Callerıpaddress | Sunucunuzun/istemcinizin IP adresi
 İleti | Günlük olayının ayrıntılı iletisi
 UserId | Kullanıcının kimliği
@@ -162,7 +162,7 @@ Ve arasındaki fark `ConnectionAborted` , `ConnectionEnded` `ConnectionEnded` is
 
 Durdurma nedenleri aşağıdaki tabloda listelenmiştir:
 
-Nedeni | Açıklama
+Nedeni | Description
 ------- | ------- 
 Bağlantı sayısı sınıra ulaşır | Bağlantı sayısı geçerli fiyat katmanınızın sınırına ulaşır. Hizmet birimi ölçeğini azaltmayı göz önünde bulundurun
 Uygulama sunucusu bağlantıyı kapattı | App Server abortion tetikler. Beklenen bir abortion olarak kabul edilebilir

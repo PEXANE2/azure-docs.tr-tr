@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021c76bcd03bbe35eabec5611fe0cc1e2c7c4427
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583332"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Azure Application Insights kullanım deneyimlerini etkinleştirmek için Kullanıcı bağlamı kimlikleri gönderin
 
@@ -22,7 +22,7 @@ Application Insights, bir ürün kullanım araçları kümesi aracılığıyla k
 - [Kullanıcılar, Oturumlar, Etkinlikler](./usage-segmentation.md)
 - [Huniler](./usage-funnels.md)
 - [Bekletme](./usage-retention.md) Kohortlar
-- [Çalışma Kitapları](../platform/workbooks-overview.md)
+- [Çalışma Kitapları](../visualize/workbooks-overview.md)
 
 Kullanıcının zaman içinde ne yaptığını izlemek için, Application Insights her kullanıcı veya oturum için bir KIMLIĞE ihtiyaç duyuyor. Aşağıdaki kimlikleri her özel olay veya sayfa görünümüne ekleyin.
 
@@ -133,6 +133,6 @@ namespace MvcWebRole.Telemetry
     - [Kullanıma genel bakış](usage-overview.md)
     - [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
     - [Huniler](usage-funnels.md)
-    - [Bekletme](usage-retention.md)
-    - [Çalışma Kitapları](../platform/workbooks-overview.md)
+    - [Deposuna](usage-retention.md)
+    - [Çalışma Kitapları](../visualize/workbooks-overview.md)
 

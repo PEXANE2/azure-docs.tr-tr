@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468034"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594462"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Dağıtımınızı izlemek için Windows sanal masaüstü için Azure Izleyicisini kullanın (Önizleme)
 
@@ -96,9 +96,9 @@ Bu özelliği destekleyen Windows sanal masaüstü ortamı içindeki tüm nesnel
 
 Windows Sanal Masaüstü ortamındaki tüm nesnelerde tanılamayı etkinleştirme hakkında daha fazla bilgi edinebilirsiniz veya [Windows sanal masaüstü tanılama 'yı Log Analytics gönderme](diagnostics-log-analytics.md)sırasında Log Analytics çalışma alanına erişebilirsiniz.
 
-## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandır
+## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandırma
 
-Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamak için, izlemeyi planladığınız ortamdan veri toplamak ve çalışma kitabına sağlamak için en az bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Zaten bir ayarladıysanız, [performans sayaçlarını ayarlamaya](#set-up-performance-counters)devam edin. Windows sanal masaüstü ortamınızı içeren Azure aboneliği için yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
+Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamak için, izlemeyi planladığınız ortamdan veri toplamak ve çalışma kitabına sağlamak için en az bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Zaten bir ayarladıysanız, [performans sayaçlarını ayarlamaya](#set-up-performance-counters)devam edin. Windows sanal masaüstü ortamınızı içeren Azure aboneliği için yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
 
 >[!NOTE]
 >Log Analytics için standart veri depolama ücretleri uygulanır. Başlamak için Kullandıkça Öde modelini seçmenizi ve dağıtımınızı ölçeklendirdiğiniz ve daha fazla veri alacak şekilde ayarlamanız önerilir. Daha fazla bilgi için bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
@@ -107,7 +107,7 @@ Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamak için, iz
 
 Log Analytics çalışma alanındaki karşılık gelen örnek aralıktaki koleksiyon için belirli performans sayaçlarını etkinleştirmeniz gerekir. Bu performans sayaçları, Windows sanal masaüstünü izlemeniz için gereken tek sayaçlardır. Maliyetleri kaydetmek için diğerlerinin tümünü devre dışı bırakabilirsiniz.
 
-Performans sayaçlarınız zaten etkinse ve bunları kaldırmak istiyorsanız, performans Sayaçlarınızı yeniden yapılandırmak için [performans sayaçlarını yapılandırma](../azure-monitor/platform/data-sources-performance-counters.md) konusundaki yönergeleri izleyin. Bu makale sayaçların nasıl ekleneceğini açıklar ancak aynı konumda da kaldırabilirsiniz.
+Performans sayaçlarınız zaten etkinse ve bunları kaldırmak istiyorsanız, performans Sayaçlarınızı yeniden yapılandırmak için [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md) konusundaki yönergeleri izleyin. Bu makale sayaçların nasıl ekleneceğini açıklar ancak aynı konumda da kaldırabilirsiniz.
 
 Daha önce performans sayaçlarını ayarlamadıysanız, Windows sanal masaüstü için Azure Izleyici için nasıl yapılandırılacağı aşağıda verilmiştir:
 
@@ -128,7 +128,7 @@ Ayrıca, hizmet her güncelleştirildiğinde ilk yapılandırmadan sonra yeni pe
 >[!NOTE]
 >Giriş gecikmesi performans sayaçları yalnızca Windows 10 RS5 ve üzeri ya da Windows Server 2019 ve üzeri sürümlerle uyumludur.
 
-Koleksiyon için önceden etkinleştirilmemiş performans sayaçlarını el ile ekleme hakkında daha fazla bilgi edinmek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/platform/data-sources-performance-counters.md).
+Koleksiyon için önceden etkinleştirilmemiş performans sayaçlarını el ile ekleme hakkında daha fazla bilgi edinmek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
 
 ### <a name="set-up-windows-events"></a>Windows olaylarını ayarlama
 
@@ -171,7 +171,7 @@ Log Analytics aracısını yüklemek için:
 
 ## <a name="optional-configure-alerts"></a>İsteğe bağlı: uyarıları yapılandırma
 
-Windows sanal masaüstü için Azure Izleyici 'yi, seçtiğiniz aboneliğinizde önemli bir Azure Izleyici uyarısı gerçekleştiğinde size bildirecek şekilde yapılandırabilirsiniz. Bunu yapmak için [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/learn/tutorial-response.md)bölümündeki yönergeleri izleyin.
+Windows sanal masaüstü için Azure Izleyici 'yi, seçtiğiniz aboneliğinizde önemli bir Azure Izleyici uyarısı gerçekleştiğinde size bildirecek şekilde yapılandırabilirsiniz. Bunu yapmak için [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md)bölümündeki yönergeleri izleyin.
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 

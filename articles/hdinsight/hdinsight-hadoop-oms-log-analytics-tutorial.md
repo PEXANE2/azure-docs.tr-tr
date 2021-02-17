@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590827"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme
 
 HDInsight 'ta Hadoop kümesi işlemlerini izlemek için Azure Izleyici günlüklerini nasıl etkinleştireceğinizi öğrenin. Ve bir HDInsight izleme çözümü ekleme.
 
-[Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md) , bulutunuzu ve şirket içi ortamlarınızı Izleyen bir Azure izleyici hizmetidir. İzleme, kullanılabilirlik ve performansının bakımını sağlar. Bulutta, şirket içi ortamlarınızdaki ve diğer izleme araçlarından kaynaklar tarafından oluşturulan verileri toplar. Veriler, birden çok kaynak genelinde analiz sağlamak için kullanılır.
+[Azure izleyici günlükleri](../azure-monitor/logs/log-query-overview.md) , bulutunuzu ve şirket içi ortamlarınızı Izleyen bir Azure izleyici hizmetidir. İzleme, kullanılabilirlik ve performansının bakımını sağlar. Bulutta, şirket içi ortamlarınızdaki ve diğer izleme araçlarından kaynaklar tarafından oluşturulan verileri toplar. Veriler, birden çok kaynak genelinde analiz sağlamak için kullanılır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Log Analytics çalışma alanı. Bu çalışma alanını kendi veri deposu, veri kaynakları ve çözümleri olan benzersiz bir Azure Izleyici günlükleri ortamı olarak düşünebilirsiniz. Yönergeler için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Log Analytics çalışma alanı. Bu çalışma alanını kendi veri deposu, veri kaynakları ve çözümleri olan benzersiz bir Azure Izleyici günlükleri ortamı olarak düşünebilirsiniz. Yönergeler için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
 
 * Bir Azure HDInsight kümesi. Şu anda Azure Izleyici günlüklerini aşağıdaki HDInsight kümesi türleriyle kullanabilirsiniz:
 
@@ -144,7 +144,7 @@ Küme yeni bir küme olduğundan, rapor hiçbir etkinliği göstermez.
 
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
 
-Azure izleyici, kümenizdeki düğümlerin performans ölçümlerini toplamayı ve çözümlemeyi destekler. Daha fazla bilgi için bkz. [Azure izleyici 'de Linux performansı veri kaynakları](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters).
+Azure izleyici, kümenizdeki düğümlerin performans ölçümlerini toplamayı ve çözümlemeyi destekler. Daha fazla bilgi için bkz. [Azure izleyici 'de Linux performansı veri kaynakları](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Küme denetimi
 

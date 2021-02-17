@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258633"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570189"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 'da Linux kümesi olaylarını Service Fabric
 
@@ -26,7 +26,7 @@ Her Syslog olayında 4 bileşen vardır
 * Olanak
 * Kimlik
 * İleti
-* Önem Derecesi
+* Önem derecesi
 
 SyslogConsumer, Tesis kullanarak tüm platform olaylarını yazar `Local0` . Yapılandırma yapılandırmasını değiştirerek geçerli herhangi bir tesis için güncelleştirme yapabilirsiniz. Kullanılan kimlik `ServiceFabric` . Ileti alanı, JSON 'da serileştirilmiş tüm olayı içerir, böylece bu, çeşitli araçlarla sorgulanarak tüketilebilir. 
 
@@ -87,7 +87,7 @@ Bu çağrı için değişiklikler aşağıda verilmiştir
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Izleyici günlük tümleştirmesi
-Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında okuyabilirsiniz. Azure Marketi 'ni kullanarak bu [yönergeleri] kullanarak bir Log Analytics çalışma alanı oluşturabilirsiniz. (.. /Azure-Monitor/Learn/Quick-Create-Workspace.MD) Ayrıca bu verileri toplamak ve çalışma alanına göndermek için Log Analytics aracısını kümenize eklemeniz gerekir. Bu, performans sayaçlarını toplamak için kullanılan aracıdır. 
+Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında okuyabilirsiniz. Azure Marketi 'ni kullanarak bu [yönergeleri] kullanarak bir Log Analytics çalışma alanı oluşturabilirsiniz. (.. /Azure-Monitor/logs/Quick-Create-Workspace.MD) Ayrıca bu verileri toplamak ve çalışma alanına göndermek için Log Analytics aracısını kümenize eklemeniz gerekir. Bu, performans sayaçlarını toplamak için kullanılan aracıdır. 
 
 1. Dikey pencereye gitme `Advanced Settings`
 
@@ -113,6 +113,6 @@ Yukarıdaki örnek bir Nodebir olaydır. Olayların tam listesini [burada](servi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Performans sayaçlarını toplamak ve kapsayıcılarınız için Docker istatistiklerini ve günlüklerini toplamak için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) düğümleriniz üzerine dağıtın
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
-* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/platform/view-designer.md)
-* [Azure izleyici günlük tümleştirmesi Ile syslog ile tümleştirme](../azure-monitor/platform/data-sources-syslog.md)için başvuru.
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/logs/log-query-overview.md) özellikleriyle familiarized alın
+* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/visualize/view-designer.md)
+* [Azure izleyici günlük tümleştirmesi Ile syslog ile tümleştirme](../azure-monitor/agents/data-sources-syslog.md)için başvuru.

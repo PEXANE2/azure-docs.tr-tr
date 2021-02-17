@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184280"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586426"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager ölçümleri ve uyarıları
 
@@ -26,7 +26,7 @@ Traffic Manager, size birden çok yönlendirme yöntemi ve uç nokta izleme seç
 Traffic Manager, müşterilerin Traffic Manager kullanımını ve bu profilde uç noktalarının durumunu anlamak için kullanabileceği her profil için aşağıdaki ölçümleri sağlar.  
 
 ### <a name="queries-by-endpoint-returned"></a>Bitiş noktasına göre sorgular döndürüldü
-Bir Traffic Manager profilinin belirli bir süre boyunca işlediği sorgu sayısını görüntülemek için [Bu ölçümü](../azure-monitor/platform/metrics-supported.md) kullanın. Ayrıca, Traffic Manager bir uç noktanın sorgu yanıtlarına kaç kez döndürüldüğünü anlamanıza yardımcı olan bir uç nokta düzeyi ayrıntı düzeyiyle aynı bilgileri görüntüleyebilirsiniz.
+Bir Traffic Manager profilinin belirli bir süre boyunca işlediği sorgu sayısını görüntülemek için [Bu ölçümü](../azure-monitor/essentials/metrics-supported.md) kullanın. Ayrıca, Traffic Manager bir uç noktanın sorgu yanıtlarına kaç kez döndürüldüğünü anlamanıza yardımcı olan bir uç nokta düzeyi ayrıntı düzeyiyle aynı bilgileri görüntüleyebilirsiniz.
 
 Aşağıdaki örnekte Şekil 1 Traffic Manager profilin döndürdüğü tüm sorgu yanıtlarını görüntüler. 
 
@@ -42,7 +42,7 @@ Aşağıdaki örnekte Şekil 1 Traffic Manager profilin döndürdüğü tüm sor
 *Şekil 2: bir uç nokta başına gösterilen sorgu birimi ile bölünmüş görünüm*
 
 ## <a name="endpoint-status-by-endpoint"></a>Uç nokta tarafından uç nokta durumu
-Profildeki uç noktaların sistem durumunu anlamak için [Bu ölçümü](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) kullanın. İki değer alır:
+Profildeki uç noktaların sistem durumunu anlamak için [Bu ölçümü](../azure-monitor/essentials/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) kullanın. İki değer alır:
  - uç nokta varsa **1** kullanın.
  - uç nokta kapalıysa **0** kullanın.
 
@@ -58,11 +58,11 @@ Bu ölçüm, tüm ölçümlerin durumunu temsil eden bir toplam değer olarak g�
 
 *Şekil 4: uç nokta durum ölçümlerinin bölünmüş görünümü*
 
-Bu ölçümleri [Azure izleyici hizmetinin](../azure-monitor/platform/metrics-supported.md)portalı, [REST API](/rest/api/monitor/), [Azure CLI](/cli/azure/monitor)ve [Azure PowerShell](/powershell/module/az.applicationinsights)veya Traffic Manager Portal deneyiminin ölçümler bölümünde kullanabilirsiniz.
+Bu ölçümleri [Azure izleyici hizmetinin](../azure-monitor/essentials/metrics-supported.md)portalı, [REST API](/rest/api/monitor/), [Azure CLI](/cli/azure/monitor)ve [Azure PowerShell](/powershell/module/az.applicationinsights)veya Traffic Manager Portal deneyiminin ölçümler bölümünde kullanabilirsiniz.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager ölçümlerinde uyarılar
-Azure Izleyici, Traffic Manager ölçümleri işlemenin ve görüntülemenin yanı sıra müşterilerin bu ölçümler ile ilişkili uyarıları yapılandırmasına ve almasına olanak sağlar. Bir uyarının gerçekleşmesi, bu koşulların ne sıklıkta izlenmesi gerektiğini ve uyarıların size nasıl gönderilmesi gerektiğini belirlemek için bu ölçümlerde hangi koşulların karşılanması gerektiğini seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici uyarıları belgeleri](../azure-monitor/platform/alerts-metric.md).
+Azure Izleyici, Traffic Manager ölçümleri işlemenin ve görüntülemenin yanı sıra müşterilerin bu ölçümler ile ilişkili uyarıları yapılandırmasına ve almasına olanak sağlar. Bir uyarının gerçekleşmesi, bu koşulların ne sıklıkta izlenmesi gerektiğini ve uyarıların size nasıl gönderilmesi gerektiğini belirlemek için bu ölçümlerde hangi koşulların karşılanması gerektiğini seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici uyarıları belgeleri](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure İzleyici hizmeti](../azure-monitor/platform/metrics-supported.md) hakkında daha fazla bilgi edinin
-- [Azure izleyici kullanarak grafik oluşturmayı](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart) öğrenin
+- [Azure İzleyici hizmeti](../azure-monitor/essentials/metrics-supported.md) hakkında daha fazla bilgi edinin
+- [Azure izleyici kullanarak grafik oluşturmayı](../azure-monitor/essentials/metrics-getting-started.md#create-your-first-metric-chart) öğrenin

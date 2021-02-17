@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575755"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
@@ -42,18 +42,18 @@ Bkz. [yüklemeyi araçları](./install-client-tools.md).
 
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-Ölçümleri veya Kullanıcı verilerini Azure 'a yüklemeden önce, Azure aboneliğinizin kaynak sağlayıcısının kayıtlı olduğundan emin olmanız gerekir `Microsoft.AzureData` .
+Ölçümleri veya Kullanıcı verilerini Azure 'a yüklemeden önce, Azure aboneliğinizin kaynak sağlayıcısının kayıtlı olduğundan emin olmanız gerekir `Microsoft.AzureArcData` .
 
 Kaynak sağlayıcısını doğrulamak için şu komutu çalıştırın:
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 Kaynak sağlayıcısı şu anda aboneliğinizde kayıtlı değilse, kaydı gerçekleştirebilirsiniz. Kaydetmek için aşağıdaki komutu çalıştırın.  Bu komutun tamamlanması bir veya iki dakika kadar sürebilir.
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>Hizmet sorumlusu oluşturma
@@ -193,7 +193,7 @@ Azure Arc etkin veri Hizmetleri üzerinde oluşturma, okuma, güncelleştirme ve
 
 Önizleme süresince bu işlem gecelik olur. Genel rehberlik, kullanımı günde yalnızca bir kez karşıya yüklemek içindir. Kullanım bilgileri aktarıldığında ve aynı 24 saatlik süre içinde birden çok kez karşıya yüklendiğinde, yalnızca kaynak envanteri Azure portal ' de güncelleştirilir ancak kaynak kullanımı değildir.
 
-Azure izleyici, ölçümleri karşıya yüklemek için yalnızca son 30 dakikalık verileri kabul eder ([daha fazla bilgi edinin](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Ölçüm Yükleme Kılavuzu, verileri dışa aktarma dosyası oluşturulduktan hemen sonra, Azure portal ' de tüm veri kümesini görüntüleyebilmeniz için, ölçümleri karşıya yüklemedir. Örneğin, ölçümleri 2:00 PM tarihinde ve 2:50 PM 'de karşıya yükle komutunu çalıştırdıysanız. Azure Izleyici yalnızca son 30 dakikalık verileri kabul ettiğinden portalda herhangi bir veri göremeyebilirsiniz. 
+Azure izleyici, ölçümleri karşıya yüklemek için yalnızca son 30 dakikalık verileri kabul eder ([daha fazla bilgi edinin](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Ölçüm Yükleme Kılavuzu, verileri dışa aktarma dosyası oluşturulduktan hemen sonra, Azure portal ' de tüm veri kümesini görüntüleyebilmeniz için, ölçümleri karşıya yüklemedir. Örneğin, ölçümleri 2:00 PM tarihinde ve 2:50 PM 'de karşıya yükle komutunu çalıştırdıysanız. Azure Izleyici yalnızca son 30 dakikalık verileri kabul ettiğinden portalda herhangi bir veri göremeyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

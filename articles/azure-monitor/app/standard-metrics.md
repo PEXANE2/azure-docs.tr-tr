@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.subservice: application-insights
-ms.openlocfilehash: 8da719f399c0c49efd478f05a0114d85233c880f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0a18088fa434efa76007607c067feec107bdae57
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572350"
 ---
 # <a name="application-insights-standard-metrics"></a>Standart ölçümleri Application Insights
 
@@ -273,4 +273,4 @@ TrackTrace () Application Insights API çağrısıyla günlüğe kaydedilen izle
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Günlük tabanlı ve önceden toplanmış ölçümler](./pre-aggregated-metrics-log-metrics.md)hakkında bilgi edinin.
-* [Günlük tabanlı ölçüm sorguları ve tanımları](../platform/app-insights-metrics.md).
+* [Günlük tabanlı ölçüm sorguları ve tanımları](../essentials/app-insights-metrics.md).

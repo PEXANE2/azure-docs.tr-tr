@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183728"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575994"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Otomasyonu tarafından kullanılan Azure bölgelerinin DNS kayıtları
 
@@ -21,7 +21,7 @@ ms.locfileid: "96183728"
 * Web Kancaları
 
 >[!NOTE]
->Linux karma Runbook Worker kaydı, sürüm 1.6.10.2 veya üzeri olmadığı takdirde yeni kayıtlarla başarısız olur. Makinenin çalışan rolünün güncelleştirilmiş bir sürümünü alabilmesi ve bu yeni kayıtları kullanabilmesi için [Linux için Log Analytics aracısının](../../azure-monitor/platform/agent-linux.md) daha yeni bir sürümüne yükseltmeniz gerekir. Mevcut makineler herhangi bir sorun olmadan çalışmaya devam edecektir.  
+>Linux karma Runbook Worker kaydı, sürüm 1.6.10.2 veya üzeri olmadığı takdirde yeni kayıtlarla başarısız olur. Makinenin çalışan rolünün güncelleştirilmiş bir sürümünü alabilmesi ve bu yeni kayıtları kullanabilmesi için [Linux için Log Analytics aracısının](../../azure-monitor/agents/agent-linux.md) daha yeni bir sürümüne yükseltmeniz gerekir. Mevcut makineler herhangi bir sorun olmadan çalışmaya devam edecektir.  
 
 ## <a name="dns-records-per-region"></a>Bölge başına DNS kayıtları
 
@@ -57,7 +57,7 @@ Azure Otomasyonu 'nda [özel bağlantıyı](../../private-link/private-link-over
 | Orta Batı ABD |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | Batı ABD |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
 | Batı ABD 2 |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
-| Orta ABD |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
+| Central US |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
 | Orta Güney ABD |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | Orta Kuzey ABD |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
 | Doğu ABD |`https://<accountId>.webhook.eus.azure-automation.net`<br>`https://<accountId>.agentsvc.eus.azure-automation.net`<br>`https://<accountId>.jrds.eus.azure-automation.net` |
@@ -76,7 +76,7 @@ Azure Otomasyonu 'nda [özel bağlantıyı](../../private-link/private-link-over
 | Güney Birleşik Krallık |`https://<accountId>.webhook.uks.azure-automation.net`<br>`https://<accountId>.agentsvc.uks.azure-automation.net`<br>`https://<accountId>.jrds.uks.azure-automation.net` |
 | Orta Fransa |`https://<accountId>.webhook.fc.azure-automation.net`<br>`https://<accountId>.agentsvc.fc.azure-automation.net`<br>`https://<accountId>.jrds.fc.azure-automation.net` |
 | Güney Afrika - Kuzey |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
-| Brezilya Güney |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
+| Güney Brezilya |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
 | Kuzey Çin |`https://<accountId>.webhook.bjb.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjb.azure-automation.cn`<br>`https://<accountId>.jrds.bjb.azure-automation.cn` |
 | Çin Kuzey 2 |`https://<accountId>.webhook.bjs2.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjs2.azure-automation.cn`<br>`https://<accountId>.jrds.bjs2.azure-automation.cn` |
 | Çin Doğu 2 |`https://<accountId>.webhook.sha2.azure-automation.cn`<br>`https://<accountId>.agentsvc.sha2.azure-automation.cn`<br>`https://<accountId>.jrds.sha2.azure-automation.cn` |

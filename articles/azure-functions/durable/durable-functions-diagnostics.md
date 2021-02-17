@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168151"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584618"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'de Tanılama
 
@@ -20,7 +20,7 @@ ms.locfileid: "92168151"
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) , Azure işlevlerinde tanılama ve izleme yapmak için önerilen yoldur. Aynı Dayanıklı İşlevler için de geçerlidir. İşlev uygulamanızda Application Insights nasıl yararlanacağınızı gösteren bir genel bakış için bkz. [Azure Işlevlerini izleme](../functions-monitoring.md).
 
-Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürütülmesini izlemenize imkan tanıyan *olayları izleme* özelliği de yayar. Bu izleme olayları, Azure portal [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) Aracı kullanılarak bulunabilir ve sorgulanır.
+Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürütülmesini izlemenize imkan tanıyan *olayları izleme* özelliği de yayar. Bu izleme olayları, Azure portal [Application Insights Analytics](../../azure-monitor/logs/log-query-overview.md) Aracı kullanılarak bulunabilir ve sorgulanır.
 
 ### <a name="tracking-data"></a>İzleme verileri
 
@@ -30,12 +30,12 @@ Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayını
 * **appname**: işlev uygulamasının adı. Aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda bu alan faydalıdır.
 * **slotname**: geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](../functions-deployment-slots.md) . Bu alan, ayarlarınızı yönetmek için dağıtım yuvaları kullandığınızda yararlı olur.
 * **fonksiyonadı**: Orchestrator veya Activity işlevinin adı.
-* **FunctionType**: **Orchestrator** veya **Activity**gibi işlevin türü.
+* **FunctionType**: **Orchestrator** veya **Activity** gibi işlevin türü.
 * **InstanceId**: Orchestration ÖRNEĞININ benzersiz kimliği.
 * **durum**: Örneğin yaşam döngüsü yürütme durumu. Geçerli değerler şunlardır:
   * **Zamanlandı**: işlev yürütme için zamanlandı ancak henüz çalışmaya başlamadı.
   * **Başlatıldı**: işlev çalışmaya başladı ancak henüz beklememiş veya tamamlanmamış.
-  * **Beklenen: Orchestrator**bazı işleri zamanladı ve bunun tamamlanmasını bekliyor.
+  * **Beklenen: Orchestrator** bazı işleri zamanladı ve bunun tamamlanmasını bekliyor.
   * **Dinleme**: Orchestrator bir dış olay bildirimini dinliyor.
   * **Tamamlandı**: işlev başarıyla tamamlandı.
   * **Başarısız oldu**: işlev bir hata ile başarısız oldu.

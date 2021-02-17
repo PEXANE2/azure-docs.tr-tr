@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905613"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579490"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -28,22 +28,22 @@ Tüm ortamınız genelinde Observability kazanmak için tüm Web uygulamaların�
 - [Azure DevOps Projeleri](../devops-project/overview.md) , mevcut kodunuz ve git deponuzla ilgili Basitleştirilmiş bir deneyim sağlar veya Azure 'A sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) işlem hattı oluşturmak için örnek uygulamalardan birini tercih edebilirsiniz.
 - [DevOps yayın işlem hattınızda sürekli izleme](./app/continuous-monitoring.md) , izleme verilerine bağlı olarak dağıtımınızı geçit veya geri alma olanağı sağlar.
 - [Durum İzleyicisi](./app/monitor-performance-live-website-now.md)  , kodunuzu değiştirmeye veya yeniden dağıtmaya gerek kalmadan Windows 'da canlı bir .NET uygulamasını Azure Application Insights ile denetlemenizi sağlar.
-- Uygulamanızın koduna erişiminiz varsa, [.net](./app/asp-net.md), [.NET Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)veya [diğer programlama dillerinde](./app/platforms.md)Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](./app/app-insights-overview.md) ile tam izlemeyi etkinleştirin. Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
+- Uygulamanızın koduna erişiminiz varsa, [.net](./app/asp-net.md), [.NET Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./app/nodejs-quick-start.md)veya [diğer programlama dillerinde](./app/platforms.md)Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](./app/app-insights-overview.md) ile tam izlemeyi etkinleştirin. Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
 
 
 
 ## <a name="enable-monitoring-for-your-entire-infrastructure"></a>Tüm altyapınız için izlemeyi etkinleştirin
 Uygulamalar, temel aldığı altyapı olarak yalnızca güvenilir. Tüm altyapınızda izlemenin etkinleştirilmesini sağlamak, tam Observability elde etmenize yardımcı olur ve bir sorun ortaya çıkarsa olası bir kök nedenini bulmayı kolaylaştırır. Azure Izleyici, sanal makineler, kapsayıcılar, depolama ve ağ gibi kaynaklar da dahil olmak üzere tüm karma altyapınızın sistem durumunu ve performansını izlemenize yardımcı olur.
 
-- Azure kaynaklarınızın çoğunun yapılandırma olmadan [Platform ölçümlerini, etkinlik günlüklerini ve tanılama günlüklerini](platform/data-sources.md) otomatik olarak alırsınız.
-- [VM'ler için Azure izleyici](insights/vminsights-overview.md)olan VM 'ler için daha derin izlemeyi etkinleştirin.
--  [Kapsayıcılar Için Azure izleyici](insights/container-insights-overview.md)ile aks kümelerinin daha derin izlenmesini etkinleştirin.
+- Azure kaynaklarınızın çoğunun yapılandırma olmadan [Platform ölçümlerini, etkinlik günlüklerini ve tanılama günlüklerini](agents/data-sources.md) otomatik olarak alırsınız.
+- [VM'ler için Azure izleyici](vm/vminsights-overview.md)olan VM 'ler için daha derin izlemeyi etkinleştirin.
+-  [Kapsayıcılar Için Azure izleyici](containers/container-insights-overview.md)ile aks kümelerinin daha derin izlenmesini etkinleştirin.
 - Ortamınızdaki farklı uygulamalar ve hizmetler için [izleme çözümleri](./monitor-reference.md) ekleyin.
 
 
 [Kod olarak altyapı](/azure/devops/learn/what-is-infrastructure-as-code) , DevOps ekiplerinin kaynak kodu için kullandığı sürüm oluşturma ile, açıklayıcı bir modelde altyapının yönetimidir. Ortamınıza güvenilirlik ve ölçeklenebilirlik ekler ve uygulamalarınızı yönetmek için kullanılan benzer süreçlerden yararlanmanızı sağlar.
 
--  Büyük bir kaynak kümesi üzerinde uyarıları izlemeyi ve yapılandırmayı etkinleştirmek için [Kaynak Yöneticisi şablonlarını](./samples/resource-manager-workspace.md) kullanın.
+-  Büyük bir kaynak kümesi üzerinde uyarıları izlemeyi ve yapılandırmayı etkinleştirmek için [Kaynak Yöneticisi şablonlarını](./logs/resource-manager-workspace.md) kullanın.
 - Kaynaklarınız üzerinde farklı kurallara zorlamak için [Azure ilkesini](../governance/policy/overview.md) kullanın. Bu, bu kaynakların kurumsal standartlarınız ve hizmet düzeyi Sözleşmelerinizle uyumlu kalmasını sağlar. 
 
 
@@ -58,28 +58,28 @@ Sürekli tümleştirme/sürekli dağıtım, otomatik test sonuçlarına göre ko
 
 - Sürekli dağıtım uygulamak ve tüm işleminizi, CI/CD testleriniz temelinde üretim için kod işleme üzerinden otomatik hale getirmek için [Azure Pipelines](/azure/devops/pipelines) kullanın.
 - İzlemeyi dağıtım öncesi veya dağıtım sonrası ile bütünleştirmek için [kalite kapıları](/azure/devops/pipelines/release/approvals/gates) kullanın. Bu, uygulamalarınızın dev 'den üretime taşınması ve altyapı ortamındaki veya ölçekteki herhangi bir farklılık KPI 'larınızı olumsuz şekilde etkilemediğinden, önemli sağlık/performans ölçümlerini (KPI 'ler) karşılamanızı sağlar.
-- Geliştirme, test, Canary ve üretim gibi farklı dağıtım ortamlarınızla [ayrı izleme örnekleri saklayın](./app/separate-resources.md) . Bu, toplanan verilerin ilişkili uygulamalar ve altyapı genelinde ilgili olmasını sağlar. Ortamların genelinde veri ilişkilendirilmesi gerekiyorsa, [Ölçüm Gezgini çoklu kaynak grafikleri](./platform/metrics-charts.md) kullanabilir veya [Azure izleyici 'de çapraz kaynak sorguları](log-query/cross-workspace-query.md)oluşturabilirsiniz.
+- Geliştirme, test, Canary ve üretim gibi farklı dağıtım ortamlarınızla [ayrı izleme örnekleri saklayın](./app/separate-resources.md) . Bu, toplanan verilerin ilişkili uygulamalar ve altyapı genelinde ilgili olmasını sağlar. Ortamların genelinde veri ilişkilendirilmesi gerekiyorsa, [Ölçüm Gezgini çoklu kaynak grafikleri](./essentials/metrics-charts.md) kullanabilir veya [Azure izleyici 'de çapraz kaynak sorguları](logs/cross-workspace-query.md)oluşturabilirsiniz.
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Eylemlerle eylem yapılabilir uyarılar oluşturma
 İzlemenin kritik bir yönü, yöneticilere geçerli ve tahmin edilen sorunları önceden bildirmeye yönelik olarak bildirimde bulunur. 
 
-- Öngörülebilir hata durumlarını belirlemek için günlüklere ve ölçümlere göre [Azure izleyici 'de uyarılar](./platform/alerts-overview.md) oluşturun. Tüm uyarıları, gerçek kritik koşulları temsil ettikleri ve hatalı pozitif sonuçları azaltmak için arama yapılabilecek anlamına gelen bir amaca sahip olmanız gerekir. Kendi statik eşiklerinizi tanımlamak yerine ölçüm verilerinde temelleri otomatik olarak hesaplamak için [dinamik eşikleri](platform/alerts-dynamic-thresholds.md) kullanın. 
-- Yöneticilerinize bildirimde bulunmak için en etkili yöntemi kullanmak üzere uyarılara yönelik eylemleri tanımlayın. [Bildirim için kullanılabilir eylemler](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, e-posta, anında iletme bildirimleri veya sesli çağrılardır.
-- [Web kancaları](platform/activity-log-alerts-webhook.md)aracılığıyla [ITSM aracınız](platform/itsmc-overview.md) veya diğer uyarı yönetim sistemlerine bağlanmak için daha gelişmiş eylemler kullanın.
+- Öngörülebilir hata durumlarını belirlemek için günlüklere ve ölçümlere göre [Azure izleyici 'de uyarılar](./alerts/alerts-overview.md) oluşturun. Tüm uyarıları, gerçek kritik koşulları temsil ettikleri ve hatalı pozitif sonuçları azaltmak için arama yapılabilecek anlamına gelen bir amaca sahip olmanız gerekir. Kendi statik eşiklerinizi tanımlamak yerine ölçüm verilerinde temelleri otomatik olarak hesaplamak için [dinamik eşikleri](alerts/alerts-dynamic-thresholds.md) kullanın. 
+- Yöneticilerinize bildirimde bulunmak için en etkili yöntemi kullanmak üzere uyarılara yönelik eylemleri tanımlayın. [Bildirim için kullanılabilir eylemler](alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, e-posta, anında iletme bildirimleri veya sesli çağrılardır.
+- [Web kancaları](alerts/activity-log-alerts-webhook.md)aracılığıyla [ITSM aracınız](alerts/itsmc-overview.md) veya diğer uyarı yönetim sistemlerine bağlanmak için daha gelişmiş eylemler kullanın.
 - [Azure Otomasyonu runbook 'ları](../automation/automation-webhooks.md) veya Web kancaları kullanılarak bir uyarıdan başlatılabilen [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , uyarılarda tanımlanan durumları düzeltin. 
-- Toplanan ölçümlere göre işlem kaynaklarınızı dinamik olarak artırmak ve azaltmak için [Otomatik ölçeklendirmeyi](./learn/tutorial-autoscale-performance-schedule.md) kullanın.
+- Toplanan ölçümlere göre işlem kaynaklarınızı dinamik olarak artırmak ve azaltmak için [Otomatik ölçeklendirmeyi](./autoscale/tutorial-autoscale-performance-schedule.md) kullanın.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Panoları ve çalışma kitaplarını hazırlama
 Geliştirme ve işlemlerinizin aynı telemetri ve araçların erişimine sahip olmasını sağlamak, bunların tüm ortamınızda desenleri görüntülemesine olanak tanır ve ortalama (MTTD) ve ortalama geri yükleme süresi (MTTR) süresini en aza indirir.
 
-- Kuruluşunuzdaki farklı roller için ortak ölçümleri ve günlükleri temel alan [özel panolar](./learn/tutorial-app-dashboards.md) hazırlayın. Panolar, tüm Azure kaynaklarından verileri birleştirebilir.
-- Geliştirme ve işlemler arasında bilgi paylaşımını sağlamak için [çalışma kitaplarını](./platform/workbooks-overview.md) hazırlayın. Bunlar, ölçüm grafikleri ve günlük sorguları ile dinamik raporlar olarak hazırlanarak, geliştiriciler tarafından hazırlanan ve temel sorunları ele almak için müşterilerin destek veya işlemlerine yardımcı olan geliştiriciler tarafından hazırlanan sorun giderme kılavuzlarından de yararlanılabilir
+- Kuruluşunuzdaki farklı roller için ortak ölçümleri ve günlükleri temel alan [özel panolar](./app/tutorial-app-dashboards.md) hazırlayın. Panolar, tüm Azure kaynaklarından verileri birleştirebilir.
+- Geliştirme ve işlemler arasında bilgi paylaşımını sağlamak için [çalışma kitaplarını](./visualize/workbooks-overview.md) hazırlayın. Bunlar, ölçüm grafikleri ve günlük sorguları ile dinamik raporlar olarak hazırlanarak, geliştiriciler tarafından hazırlanan ve temel sorunları ele almak için müşterilerin destek veya işlemlerine yardımcı olan geliştiriciler tarafından hazırlanan sorun giderme kılavuzlarından de yararlanılabilir
 
 ## <a name="continuously-optimize"></a>Sürekli iyileştirme
  İzleme, popüler derleme ölçümü-öğrenme felseflarından biridir. Bu, KPI ve Kullanıcı davranışı ölçümlerinizi sürekli olarak izlemeye ve ardından bunları planlama yinelemeleri aracılığıyla iyileştirmek için daha fazla çaba öneriyor. Azure Izleyici, işinizle ilgili ölçümleri ve günlükleri toplamanıza ve sonraki dağıtımda gerekli şekilde yeni veri noktaları eklemenize yardımcı olur.
 
-- [Son Kullanıcı davranışını ve katılımı izlemek](./learn/tutorial-users.md)için Application Insights araçları kullanın.
+- [Son Kullanıcı davranışını ve katılımı izlemek](./app/tutorial-users.md)için Application Insights araçları kullanın.
 - Önemli KPI 'lere sürücü üzerinde hangi alanların odaklanacağı önceliklendirmenize yardımcı olması için [etki analizini](./app/usage-impact.md) kullanın.
 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707699"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577511"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -113,11 +113,11 @@ Network Insights çalışma kitabı, Azure Izleyici 'nin en son özelliklerini v
 
 * Hem [ölçüm](../insights/network-insights-overview.md#resource-health-and-metrics) hem de günlük verileri ile izleme ve sorun giderme için merkezi konsol.
 
-* Özel zengin [görselleştirmeler](../platform/workbooks-overview.md#visualizations)oluşturmayı desteklemek için esnek tuval.
+* Özel zengin [görselleştirmeler](../visualize/workbooks-overview.md#visualizations)oluşturmayı desteklemek için esnek tuval.
 
-* [Çalışma kitabı şablonlarını](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) daha geniş bir topluluk ile kullanabilme ve paylaşma özelliği.
+* [Çalışma kitabı şablonlarını](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) daha geniş bir topluluk ile kullanabilme ve paylaşma özelliği.
 
-Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi edinmek için kullanıma alma [çalışma kitapları-genel bakış](../platform/workbooks-overview.md)
+Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi edinmek için kullanıma alma [çalışma kitapları-genel bakış](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure ağ geçidi Analizi çözümünden Azure Izleyici çalışma kitaplarına geçiş
 
@@ -129,7 +129,7 @@ Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi e
 > [!NOTE]
 > Önceki tüm veriler, nokta tanılama ayarlarından önce çalışma kitabında zaten kullanılabilir. Veri aktarımı gerekli değildir.
 
-2. Application Gateway kaynağınız için [varsayılan Öngörüler çalışma kitabına](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) erişin. Application Gateway Analytics çözümü tarafından desteklenen tüm mevcut Öngörüler çalışma kitabında zaten mevcut olacaktır. Bu, ölçüm & günlük verilerine göre özel [görselleştirmeler](../platform/workbooks-overview.md#visualizations) ekleyerek genişletebilirsiniz.
+2. Application Gateway kaynağınız için [varsayılan Öngörüler çalışma kitabına](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) erişin. Application Gateway Analytics çözümü tarafından desteklenen tüm mevcut Öngörüler çalışma kitabında zaten mevcut olacaktır. Bu, ölçüm & günlük verilerine göre özel [görselleştirmeler](../visualize/workbooks-overview.md#visualizations) ekleyerek genişletebilirsiniz.
 
 3. Tüm ölçüm ve günlük öngörülerinizi görebildikten sonra, çalışma alanınızdan Azure Gateway Analytics çözümünü temizlemek için çözüm kaynağı sayfasından çözümü silebilirsiniz.
 
@@ -232,5 +232,5 @@ Değişiklik, yeni çözümde görüntülenmeden önce toplanan veriler görünm
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı Azure tanılama verilerini görüntülemek için [Azure izleyici 'de günlük sorguları '](../log-query/log-query-overview.md) nı kullanın.
+* Ayrıntılı Azure tanılama verilerini görüntülemek için [Azure izleyici 'de günlük sorguları '](../logs/log-query-overview.md) nı kullanın.
 

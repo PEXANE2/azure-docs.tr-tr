@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843082"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586724"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: Verilerinizi görselleştirme ve izleme
 
 
 
-[Veri kaynaklarınızı](quickstart-onboard.md)   Azure Sentinel 'e bağladıktan sonra, özel panolar oluşturma konusunda çok yönlülük sağlayan Azure izleyici çalışma kitaplarını benimseyerek Azure Sentinel benimseme kullanarak verileri görselleştirebilir ve izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/platform/workbooks-overview.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
+Veri kaynaklarınızı Azure Sentinel 'e [bağladıktan](quickstart-onboard.md) sonra, özel panolar oluşturma konusunda çok yönlülük sağlayan Azure Izleyici çalışma kitaplarını benimseyerek Azure Sentinel benimseme kullanarak verileri görselleştirebilir ve izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/visualize/workbooks-overview.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
 
 
 Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı olur.
@@ -33,7 +33,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 > * Yerleşik çalışma kitaplarını kullanma
 > * Yeni çalışma kitapları oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanının kaynak grubunda en az çalışma kitabı okuyucusu veya çalışma kitabı katılımcısı izinlerinizin olması gerekir.
 
@@ -52,7 +52,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
    > Bu, ilgili şablonu temel alan bir Azure kaynağı oluşturur ve verilerin değil, çalışma kitabının JSON dosyasını kaydeder.
 
 
-1. **Kaydedilmiş çalışma kitabını görüntüle**' yi seçin. Ardından, üstteki **Düzenle** düğmesine tıklayın. Artık çalışma kitabını düzenleyebilir ve gereksinimlerinize göre özelleştirebilirsiniz. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md).
+1. **Kaydedilmiş çalışma kitabını görüntüle**' yi seçin. Ardından, üstteki **Düzenle** düğmesine tıklayın. Şimdi çalışma kitabını düzenleyebilir ve gereksinimlerinize göre özelleştirebilirsiniz. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/visualize/workbooks-overview.md).
 ![çalışma kitaplarını görüntüleme](./media/tutorial-monitor-data/workbook-graph.png)
 1. Değişikliklerinizi yaptıktan sonra çalışma kitabını kaydedebilirsiniz. 
 
@@ -64,15 +64,15 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 1. Çalışma **kitaplarına** gidip sıfırdan yeni bir çalışma kitabı oluşturmak için **çalışma kitabı Ekle** ' yi seçin.
   ![Yeni çalışma kitabı ekranını gösteren ekran görüntüsü.](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Çalışma kitabını düzenlemek için **Düzenle**' yi seçin ve ardından gerektiğinde metin, sorgular ve parametreler ekleyin. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md). 
+1. Çalışma kitabını düzenlemek için **Düzenle**' yi seçin ve ardından gerektiğinde metin, sorgular ve parametreler ekleyin. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/visualize/workbooks-overview.md). 
 
-1. Bir sorgu oluştururken, **veri kaynağının** **Günlükler** olarak ayarlandığından emin olun ve **kaynak türü** **Log Analytics**olarak ayarlandığından ilgili çalışma alanlarını seçin. 
+1. Bir sorgu oluştururken, **veri kaynağının** **Günlükler** olarak ayarlandığından emin olun ve **kaynak türü** **Log Analytics** olarak ayarlandığından ilgili çalışma alanlarını seçin. 
 
 1. Çalışma kitabınızı oluşturduktan sonra, çalışma kitabını kaydederek Azure Sentinel çalışma alanınızın abonelik ve kaynak grubunun altına kaydettiğinizden emin olun.
 
 1. Kuruluşunuzdaki başkalarının çalışma kitabını kullanmasına izin vermek istiyorsanız, **paylaşılan raporlar**' ı seçmek **için Kaydet** ' in altında. Bu çalışma kitabının yalnızca sizin için kullanılabilir olmasını istiyorsanız, **Raporlarım**' ı seçin.
 
-1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için, **Open** ![ bir çalışma kitabı açmak için aç simgesini seçebilirsiniz. ](./media/tutorial-monitor-data/switch.png) çalışma kitabının üst bölmesinde. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
+1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için,  ![ bir çalışma kitabı açmak için aç simgesini seçebilirsiniz. ](./media/tutorial-monitor-data/switch.png) çalışma kitabının üst bölmesinde. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
 
    ![Çalışma kitaplarını değiştirme](./media/tutorial-monitor-data/switch-workbooks.png)
 

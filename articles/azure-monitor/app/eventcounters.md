@@ -4,12 +4,12 @@ description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounte
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803652"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579524"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
@@ -88,14 +88,14 @@ Aynı yaklaşım, WorkerService SDK 'Sı için de kullanılabilir, ancak aşağ�
 
 ## <a name="event-counters-in-metric-explorer"></a>Ölçüm Gezgini 'nde olay sayaçları
 
-[Ölçüm Gezgini](../platform/metrics-charts.md)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri özel kategori altında gösterilir.
+[Ölçüm Gezgini](../essentials/metrics-charts.md)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri özel kategori altında gösterilir.
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights ölçüm Gezgininde bildirilen olay sayaçları](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analiz içindeki olay sayaçları
 
-Ayrıca, **Customölçümler** tablosunda [analiz](../log-query/log-query-overview.md)' de olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
+Ayrıca, **Customölçümler** tablosunda [analiz](../logs/log-query-overview.md)' de olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
 Örneğin, hangi sayaçların toplandığını ve sorgu için kullanılabilir olduğunu görmek için aşağıdaki sorguyu çalıştırın:
 
@@ -121,7 +121,7 @@ customMetrics
 Diğer telemetri gibi, **Customölçümleri** de `cloud_RoleInstance` uygulamanızın çalıştırıldığı ana bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
+Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../alerts/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

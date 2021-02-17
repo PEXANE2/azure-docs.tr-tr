@@ -4,16 +4,16 @@ description: Application Insights ile Windows masaüstü uygulamanızın kullan�
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583327"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
 
-Şirket içinde, Azure’da ve diğer bulutlarda barındırılan tüm uygulamalar Application Insights’tan faydalanabilir. Tek sınırlama Application Insights hizmetine [iletişim izni verme](./ip-addresses.md) gerekliliğidir. Evrensel Windows Platformu (UWP) uygulamalarını izlemek için [Visual Studio App Center](../learn/mobile-center-quickstart.md)’ı öneririz.
+Şirket içinde, Azure’da ve diğer bulutlarda barındırılan tüm uygulamalar Application Insights’tan faydalanabilir. Tek sınırlama Application Insights hizmetine [iletişim izni verme](./ip-addresses.md) gerekliliğidir. Evrensel Windows Platformu (UWP) uygulamalarını izlemek için [Visual Studio App Center](../app/mobile-center-quickstart.md)’ı öneririz.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Bir Klasik Windows uygulamasından Application Insights’a telemetri göndermek için
 1. [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](./create-new-resource.md). 
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Pano oluşturma](./overview-dashboard.md)
 * [Tanılama Araması](./diagnostic-search.md)
-* [Ölçümleri keşfetme](../platform/metrics-charts.md)
-* [Analytics sorguları yazma](../log-query/log-query-overview.md)
+* [Ölçümleri keşfetme](../essentials/metrics-charts.md)
+* [Analytics sorguları yazma](../logs/log-query-overview.md)
 

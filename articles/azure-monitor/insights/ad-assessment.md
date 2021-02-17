@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318105"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577550"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure İzleyici'de Active Directory Sistem Durumu Denetimi çözümüyle Active Directory ortamınızı iyileştirme
 
@@ -46,9 +46,9 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 Değerlendirilecek etki alanının üyesi olan etki alanı denetleyicileriniz için sistem durumu denetimini gerçekleştirmek üzere, bu etki alanındaki her etki alanı denetleyicisi, aşağıdaki desteklenen yöntemlerden birini kullanarak bir aracı ve Azure Izleyici bağlantısı gerektirir:
 
-1. Etki alanı denetleyicisi System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından zaten izlenmediği takdirde [Windows için Log Analytics aracısını](../platform/agent-windows.md) yükler.
+1. Etki alanı denetleyicisi System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından zaten izlenmediği takdirde [Windows için Log Analytics aracısını](../agents/agent-windows.md) yükler.
 2. System Center 2016-Operations Manager veya Operations Manager 2012 R2 ile izleniyorsa ve yönetim grubu Azure Izleyici ile tümleşikse, etki alanı denetleyicisi, verileri toplamak ve hizmete iletmek için Azure Izleyici ile çok daha fazla erişilebilir olabilir ve yine de Operations Manager tarafından izlenebilir.  
-3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
+3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
 
 Etki alanı denetleyicinizde bir Operations Manager yönetim grubuna rapor veren, verileri toplayan, atanan yönetim sunucusuna ileten ve sonra doğrudan bir yönetim sunucusundan Azure Izleyici 'ye gönderilen aracı.  Veriler Operations Manager veritabanlarına yazılmaz.  
 
@@ -118,7 +118,7 @@ Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve 
 
     ![Sistem durumu denetimi önerilerinin görüntüsü](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. **Önerilen eylemlerde**önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe ne zaman giderildiği, daha sonraki değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artacaktır. Düzeltilen öğeler **geçirilmiş nesneler**olarak görünür.
+4. **Önerilen eylemlerde** önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe ne zaman giderildiği, daha sonraki değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artacaktır. Düzeltilen öğeler **geçirilmiş nesneler** olarak görünür.
 
 ## <a name="ignore-recommendations"></a>Önerileri yoksayma
 
@@ -215,5 +215,5 @@ Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ayrıntılı AD sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [Azure izleyici günlük sorgularını](../log-query/log-query-overview.md) kullanın.
+Ayrıntılı AD sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [Azure izleyici günlük sorgularını](../logs/log-query-overview.md) kullanın.
 

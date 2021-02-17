@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380415"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576384"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Bu makalede Azure portal ve PowerShell kullanarak işlem hatlarınızı izleme, 
 > İzleme & yönetimi uygulaması, veri işlem hatlarınızı izlemek ve yönetmek için ve sorunları gidermeye yönelik daha iyi bir destek sağlar. Uygulamayı kullanma hakkında ayrıntılı bilgi için bkz. [izleme ve yönetim uygulamasını kullanarak Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md). 
 
 > [!IMPORTANT]
-> Azure Data Factory sürüm 1 artık yeni [Azure izleyici uyarı altyapısını](../../azure-monitor/platform/alerts-metric.md)kullanıyor. Eski uyarı altyapısı kullanımdan kaldırılmıştır. Sonuç olarak, sürüm 1 veri fabrikaları için yapılandırılmış mevcut uyarılarınız artık çalışmaz. V1 veri fabrikaları için mevcut uyarılarınız otomatik olarak geçirilmez. Bu uyarıları yeni uyarı altyapısında yeniden oluşturmanız gerekir. Sürüm 1 veri fabrikalarınız için Azure portal oturum açın ve ölçümler üzerinde yeni uyarılar (başarısız çalıştırmalar veya başarılı çalıştırmalar gibi) oluşturmak için **izleyici** ' yi seçin.
+> Azure Data Factory sürüm 1 artık yeni [Azure izleyici uyarı altyapısını](../../azure-monitor/alerts/alerts-metric.md)kullanıyor. Eski uyarı altyapısı kullanımdan kaldırılmıştır. Sonuç olarak, sürüm 1 veri fabrikaları için yapılandırılmış mevcut uyarılarınız artık çalışmaz. V1 veri fabrikaları için mevcut uyarılarınız otomatik olarak geçirilmez. Bu uyarıları yeni uyarı altyapısında yeniden oluşturmanız gerekir. Sürüm 1 veri fabrikalarınız için Azure portal oturum açın ve ölçümler üzerinde yeni uyarılar (başarısız çalıştırmalar veya başarılı çalıştırmalar gibi) oluşturmak için **izleyici** ' yi seçin.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

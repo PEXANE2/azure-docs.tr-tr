@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420c62e6f8f09a2b29398590cdb4ad410e5d296
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254545"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574064"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için bulut ölçümlerini ve günlüklerini yapılandırma
 
@@ -30,7 +30,7 @@ Varsayılan olarak, şirket içinde barındırılan ağ geçidi, [buluttaki](api
 
 Özellik, `telemetry.metrics.cloud` ağ geçidi dağıtımının ConfigMap içindeki anahtar kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir yapılandırmaların bir dökümü aşağıda verilmiştir:
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
 | Telemetri. ölçümler. Cloud  | `true` | Azure Izleyici aracılığıyla günlüğe kaydetmeyi etkinleştir. Değer, olabilir `true` `false` . |
 
@@ -49,7 +49,7 @@ Varsayılan olarak, şirket içinde barındırılan ağ geçidi, [buluttaki](api
 
 Şirket içinde barındırılan ağ geçidi Şu anda Azure Izleyici aracılığıyla aşağıdaki ölçümleri yayar:
 
-| Ölçüm  | Açıklama |
+| Metric  | Açıklama |
 | ------------- | ------------- |
 | İstekler  | Dönemdeki API isteklerinin sayısı |
 | Ağ Geçidi isteklerinin süresi | Ağ geçidinin isteği aldığı andan, yanıtın tamamen gönderildiği ana kadar geçen milisaniye cinsinden süre |
@@ -59,7 +59,7 @@ Varsayılan olarak, şirket içinde barındırılan ağ geçidi, [buluttaki](api
 
 Şirket içinde barındırılan ağ geçidi Şu anda buluta [tanılama günlükleri](./api-management-howto-use-azure-monitor.md#activity-logs) göndermiyor. Ancak, otomatik olarak barındırılan ağ geçidinin dağıtıldığı [günlükleri yerel olarak yapılandırmak ve sürdürmek](how-to-configure-local-metrics-logs.md) mümkündür. 
 
-[Azure Kubernetes hizmetinde](https://azure.microsoft.com/services/kubernetes-service/)bir ağ geçidi dağıtılmışsa, kapsayıcılarınızdaki günlükleri toplamak ve bunları Log Analytics görüntülemek için [kapsayıcılar için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) 'yi etkinleştirebilirsiniz. 
+[Azure Kubernetes hizmetinde](https://azure.microsoft.com/services/kubernetes-service/)bir ağ geçidi dağıtılmışsa, kapsayıcılarınızdaki günlükleri toplamak ve bunları Log Analytics görüntülemek için [kapsayıcılar için Azure izleyici](../azure-monitor/containers/container-insights-overview.md) 'yi etkinleştirebilirsiniz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

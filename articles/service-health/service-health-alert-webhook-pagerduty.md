@@ -3,12 +3,12 @@ title: Pagerharcı ile Azure hizmet durumu uyarılarını gönderin
 description: Pagerharcı örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ae5141f33ebf4ec6e32029625af3a199a04d67b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091547"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594529"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Web kancalarını kullanarak Pagerharcı ile Azure hizmet durumu uyarıları gönderme
 
@@ -41,7 +41,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
 1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](./alerts-activity-log-service-notifications-portal.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
 
-1. **Eylem**listesinde tanımlayın:
+1. **Eylem** listesinde tanımlayın:
 
     a. **Eylem türü:** *Web kancası*
 
@@ -58,7 +58,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 
 1. Düzenlemek istediğiniz eylem grubunu bulun ve seçin.
 
-1. **Eylem**listesine ekle:
+1. **Eylem** listesine ekle:
 
     a. **Eylem türü:** *Web kancası*
 
@@ -69,7 +69,7 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 1. Eylem grubunu güncelleştirmek için işiniz bittiğinde **Kaydet** ' i seçin.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Web kancası tümleştirmenizi bir HTTP POST isteği aracılığıyla test etme
-1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yükü bulabilirsiniz.
+1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/alerts/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yükü bulabilirsiniz.
 
 1. Aşağıdaki gibi bir HTTP POST isteği oluşturun:
 
@@ -86,6 +86,6 @@ Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
-- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
+- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/alerts/activity-log-alerts-webhook.md)gözden geçirin. 
 - [Hizmet durumu bildirimleri](./service-notifications.md)hakkında bilgi edinin.
-- [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+- [Eylem grupları](../azure-monitor/alerts/action-groups.md)hakkında daha fazla bilgi edinin.

@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 219efe05b399677c60922542f3d7acd76ca37d26
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575881"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -29,7 +29,7 @@ Bu yöntem iki Runbook kullanır:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../automation-security-overview.md).
-* [Log Analytics çalışma alanı](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics çalışma alanı](../../azure-monitor/logs/design-logs-deployment.md)
 * Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
 * **Enable-AutomationSolution** runbook tarafından kullanılan iki Otomasyon varlığı. Bu runbook, Otomasyon hesabınızda zaten mevcut değilse, ilk çalıştırma sırasında **Enable-MultipleSolution** runbook tarafından otomatik olarak içeri aktarılır.
     * *Lasolutionsubscriptionıd*: Log Analytics çalışma alanının bulunduğu abonelik kimliği.

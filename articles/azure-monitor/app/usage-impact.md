@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 51f938743d8da3c9a1dea546320662701e2b88c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678390"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583514"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
 
-Etki, yük sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüştürme oranlarını nasıl etkilediğini analiz eder. Daha hassas bir şekilde koymak için, **sayfa görünümü** , **özel olay** veya **istek** için **herhangi bir boyutun** farklı bir **sayfa görünümü** veya **özel olay** kullanımını nasıl etkilediğini bulur. 
+Etki, yük sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüştürme oranlarını nasıl etkilediğini analiz eder. Daha hassas bir şekilde koymak için, **sayfa görünümü**, **özel olay** veya **istek** için **herhangi bir boyutun** farklı bir **sayfa görünümü** veya **özel olay** kullanımını nasıl etkilediğini bulur. 
 
 ![Etki aracı](./media/usage-impact/0001-impact.png)
 
@@ -65,26 +65,26 @@ Bu, Impact Aracı, [Pearson bağıntı katsayısını](https://en.wikipedia.org/
 
 Etki çözümlemenin nasıl çalıştığına ilişkin temel döküm aşağıdaki gibidir:
 
-Let _A_ = ilk açılan pencerede seçtiğiniz ana sayfa görünümü/özel olay/istek. ( **Sayfa görünümü için** ).
+Let _A_ = ilk açılan pencerede seçtiğiniz ana sayfa görünümü/özel olay/istek. (**Sayfa görünümü için**).
 
-Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay ( **kullanımını etkiler** ).
+Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay (**kullanımını etkiler**).
 
-Etki, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her bir oturum için, her _bir bir_ ' ın her oluşumunu arar.
+Etki, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her bir oturum için, her _bir bir_' ın her oluşumunu arar.
 
 Oturumlar daha sonra İki koşuldan birine göre iki farklı _alt oturum_ türüne ayrılır:
 
-- Dönüştürülen bir alt oturum, _b_ olayından biten bir oturumdan oluşur ve _b_ 'den önce oluşan _tüm olayları_ kapsar.
+- Dönüştürülen bir alt oturum, _b_ olayından biten bir oturumdan oluşur ve _b_'den önce oluşan _tüm olayları_ kapsar.
 - Dönüştürülmeyen _bir_ alt oturum, _B_ terminali olmadan meydana geldiğinde oluşur.
 
-Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğimiz temel alınarak değişir. Bir alt oturumdaki tüm _A_ içindeki ölçümler için ortalaması alınır. Yani, her _bir_ katkıda bulunan _1/N_ değerini _B_ 'ye atanan değere göre boyutlar için _n_ , alt oturumdaki _A_ 'nın sayısıdır.
+Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğimiz temel alınarak değişir. Bir alt oturumdaki tüm _A_ içindeki ölçümler için ortalaması alınır. Yani, her _bir_ katkıda bulunan _1/N_ değerini _B_ 'ye atanan değere göre boyutlar için _n_ , alt oturumdaki _A_'nın sayısıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Kullanım deneyimlerini etkinleştirmek için [özel olaylar](./api-custom-events-metrics.md#trackevent) veya [sayfa görünümleri](./api-custom-events-metrics.md#page-views)göndermeye başlayın.
 - Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
     - [Huniler](usage-funnels.md)
-    - [Bekletme](usage-retention.md)
+    - [Deposuna](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma Kitapları](../platform/workbooks-overview.md)
+    - [Çalışma Kitapları](../visualize/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
 

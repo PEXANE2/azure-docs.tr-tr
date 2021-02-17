@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590796"
 ---
 # <a name="manage-your-cache"></a>Önbelleğinizi yönetme
 
@@ -198,7 +198,7 @@ $
 
 ---
 
-## <a name="collect-diagnostics"></a>Tanılamaları toplama
+## <a name="collect-diagnostics"></a>Tanılama toplama
 
 **Tanılama topla** düğmesi, sistem bilgilerini toplama ve sorun giderme amacıyla Microsoft hizmetine yükleme sürecini el ile başlatır. Önemli bir önbellek sorunu oluşursa önbelleğiniz otomatik olarak aynı tanılama bilgilerini toplar ve yükler.
 
@@ -253,7 +253,7 @@ Genel Bakış sayfasında bazı temel önbellek istatistikleri için grafikler, 
 
 ![Örnek önbellek için yukarıda bahsedilen istatistikleri gösteren üç satırlık grafiklerin ekran görüntüsü](media/hpc-cache-overview-stats.png)
 
-Bu grafikler, Azure 'un yerleşik izleme ve analiz araçlarının bir parçasıdır. Ek araçlar ve uyarılar, Portal kenar çubuğu 'ndaki **izleme** başlığı altındaki sayfalardan kullanılabilir. [Azure izleme belgelerinin](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)Portal bölümünde daha fazla bilgi edinin.
+Bu grafikler, Azure 'un yerleşik izleme ve analiz araçlarının bir parçasıdır. Ek araçlar ve uyarılar, Portal kenar çubuğu 'ndaki **izleme** başlığı altındaki sayfalardan kullanılabilir. [Azure izleme belgelerinin](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)Portal bölümünde daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

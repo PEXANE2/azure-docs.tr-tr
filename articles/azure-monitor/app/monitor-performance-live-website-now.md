@@ -4,12 +4,12 @@ description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket 
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186312"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576443"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -40,14 +40,14 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| **Özel durumları & istekleri** |Evet |Evet |
-| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Evet |
+| **Özel durumları & istekleri** |Yes |Yes |
+| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Yes |
 | **[Bağımlılık tanılama](./asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| **[Sistem performans sayaçları](./performance-counters.md)** |Evet |Evet |
-| **[Özel telemetri için API][api]** |Evet |Hayır |
-| **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Evet |Hayır |
-| **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Evet |Hayır |
-| **Kodu yeniden derlemeniz gerekir** |Evet | Hayır |
+| **[Sistem performans sayaçları](./performance-counters.md)** |Yes |Yes |
+| **[Özel telemetri için API][api]** |Yes |Hayır |
+| **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Yes |Hayır |
+| **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Yes |Hayır |
+| **Kodu yeniden derlemeniz gerekir** |Yes | Hayır |
 
 
 
@@ -85,7 +85,7 @@ Koda Application Insights eklemeden yeniden yayımlamak istiyorsanız, dağıtı
 4. .config dosyası üzerinde yaptığınız tüm düzenlemeleri yeniden devreye sokun.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Sorun giderme
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Sorunu
 
 ### <a name="confirm-a-valid-installation"></a>Geçerli bir yüklemeyi Onayla 
 
@@ -93,7 +93,7 @@ Bunlar, yüklemenizin başarılı olduğunu onaylamak için gerçekleştirebilec
 
 - applicationInsights.config dosyasının hedef uygulama dizininde bulunduğunu ve Ikey 'nizi içerdiğini doğrulayın.
 
-- Verilerin eksik olduğundan şüphelenirseniz, şu anda telemetri gönderen tüm bulut rollerini listelemek için [Analytics](../log-query/log-analytics-tutorial.md) 'te bir sorgu çalıştırabilirsiniz.
+- Verilerin eksik olduğundan şüphelenirseniz, şu anda telemetri gönderen tüm bulut rollerini listelemek için [Analytics](../logs/log-analytics-tutorial.md) 'te bir sorgu çalıştırabilirsiniz.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -320,9 +320,9 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
 
 Telemetrinizi görüntüleyin:
 
-* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../platform/metrics-charts.md)
+* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../essentials/metrics-charts.md)
 * Sorunların tanımlanması için [Olayları ve günlükleri arayın][diagnostic]
-* Daha gelişmiş sorgular için [analiz](../log-query/log-query-overview.md)
+* Daha gelişmiş sorgular için [analiz](../logs/log-query-overview.md)
 
 Daha fazla telemetri ekleyin:
 

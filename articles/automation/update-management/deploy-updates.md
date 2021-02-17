@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632470"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575895"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -59,7 +59,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.
 
-6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md). Zamanlanmış bir güncelleştirme dağıtımında en fazla 1000 makine ekleyebilirsiniz.
+6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/logs/computer-groups.md). Zamanlanmış bir güncelleştirme dağıtımında en fazla 1000 makine ekleyebilirsiniz.
 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183609"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576021"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Izleyici günlüklerini güncelleştirme dağıtımlarını Azure portal 'ye geçirme
 
-Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/platform/oms-portal-transition.md)bırakılıyor. Güncelleştirme Yönetimi için OMS portalında sunulan tüm işlevler, Azure Izleyici günlükleri aracılığıyla Azure portal sunulmaktadır. Bu makale, Azure portal geçirmek için gereken bilgileri sağlar.
+Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/logs/oms-portal-transition.md)bırakılıyor. Güncelleştirme Yönetimi için OMS portalında sunulan tüm işlevler, Azure Izleyici günlükleri aracılığıyla Azure portal sunulmaktadır. Bu makale, Azure portal geçirmek için gereken bilgileri sağlar.
 
 ## <a name="key-information"></a>Önemli bilgiler
 
@@ -41,7 +41,7 @@ Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/
 
 ## <a name="recreate-existing-deployments"></a>Mevcut dağıtımları yeniden oluştur
 
-OMS portalında oluşturulan tüm güncelleştirme dağıtımları, var olan güncelleştirme dağıtımıyla aynı ada sahip bir bilgisayar grubu olarak da bilinen [kayıtlı bir aramaya](../azure-monitor/platform/computer-groups.md) sahiptir. Kayıtlı arama, güncelleştirme dağıtımında zamanlanan makinelerin listesini içerir.
+OMS portalında oluşturulan tüm güncelleştirme dağıtımları, var olan güncelleştirme dağıtımıyla aynı ada sahip bir bilgisayar grubu olarak da bilinen [kayıtlı bir aramaya](../azure-monitor/logs/computer-groups.md) sahiptir. Kayıtlı arama, güncelleştirme dağıtımında zamanlanan makinelerin listesini içerir.
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Ad ve sunucular alanları vurgulanmış şekilde güncelleştirme dağıtımları sayfasının ekran görüntüsü.":::
 
@@ -58,11 +58,11 @@ Kayıtlı olan bu aramayı kullanmak için şu adımları izleyin:
     | Özellik | Açıklama |
     | --- | --- |
     |Ad |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
-    |İşletim Sistemi| **Linux** veya **Windows**'u seçin.|
-    |Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select makinesi seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
+    |Operating System| **Linux** veya **Windows**'u seçin.|
+    |Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select makinesi seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/logs/computer-groups.md) |
     |Update classifications|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin. CentOS bu kutuyu desteklemiyor.|
     |Hariç tutulacak güncelleştirmeler|Dışlanacak güncelleştirmeleri girin. Windows için **KB öneki olmadan KB makalesini** girin. Linux için, paket adını girin veya bir joker karakter kullanın.  |
-    |Zamanlama ayarları|Başlatılacak saati seçin ve sonra yinelenme için **bir kez** veya tekrardan **Recurring** birini seçin. | 
+    |Zamanlama ayarları|Başlatılacak saati seçin ve sonra yinelenme için **bir kez** veya tekrardan  birini seçin. | 
     | Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan az veya 6 saatten uzun olamaz. |
     | Yeniden başlatma denetimi| Yeniden başlatmaları nasıl ele alınacağını belirler.</br>Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
 

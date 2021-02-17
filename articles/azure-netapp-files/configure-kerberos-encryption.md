@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571099"
 ---
-# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 Kerberos şifrelemesini yapılandırma
+# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv4.1 Kerberos şifrelemesini yapılandırma
 
 Azure NetApp Files, Kerberos modlarında (krb5, krb5i ve krb5p), AES-256 şifrelemesi ile NFS istemci şifrelemesini destekler. Bu makalede, bir NFSv 4.1 birimini Kerberos şifrelemesi ile kullanmak için gereken yapılandırma açıklanmaktadır.
 
@@ -57,7 +57,7 @@ Aşağıdaki gereksinimler NFSv 4.1 istemci şifrelemesi için geçerlidir:
 
 ## <a name="configure-the-azure-portal"></a>Azure portal yapılandırma 
 
-1.  [Active Directory bağlantı oluşturma](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)bölümündeki yönergeleri izleyin.  
+1.  [Active Directory bağlantı oluşturma](create-active-directory-connections.md)bölümündeki yönergeleri izleyin.  
 
     Kerberos, Active Directory ' de en az bir makine hesabı oluşturmanızı gerektirir. Sağladığınız hesap bilgileri hem SMB *hem* de nfsv 4.1 Kerberos birimlerine yönelik hesaplar oluşturmak için kullanılır. Bu makine hesap, birim oluşturma sırasında otomatik olarak oluşturulur.
 
@@ -175,5 +175,5 @@ Krb5p 'in performans etkisi:
 * [NFSv 4.1 Kerberos birimi sorunlarını giderme](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Azure NetApp Files hakkında SSS](azure-netapp-files-faqs.md)
 * [Azure NetApp Files için NFS birimi oluşturma](azure-netapp-files-create-volumes.md)
-* [Active Directory bağlantısı oluşturma](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
+* [Active Directory bağlantısı oluşturma](create-active-directory-connections.md)
 * [Azure NetApp Files için NFS istemcisini yapılandırma](configure-nfs-clients.md) 

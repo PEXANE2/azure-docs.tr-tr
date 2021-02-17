@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Azure Izleyici Application Insights ile 
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a30fb12e93058690fbd7611ae64fc0a7dd96f64
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88611339"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583444"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -27,7 +27,7 @@ Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, perfor
 Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemek için aşağıdaki adımları kullanın:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Application Insights **kaynak**  >  **yönetimi araçları**oluştur ' u seçin  >  **Application Insights**.
+1. Application Insights **kaynak**  >  **yönetimi araçları** oluştur ' u seçin  >  .
 
    > [!NOTE]
    >İlk kez bir Application Insights kaynağı oluşturuyorsanız, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -60,7 +60,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
 ## <a name="configure-application-insights-sdk"></a>SDK Application Insights yapılandırma
 
-1. **Genel bakış**  >  **temel**bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını**kopyalayın.
+1. **Genel bakış**  >  **temel** bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını** kopyalayın.
 
    ![Yeni Application Insights kaynağı formu](media/website-monitoring/instrumentation-key-001.png)
 
@@ -137,5 +137,5 @@ Ek hızlı başlangıçlarla veya öğreticilerle çalışmaya devam etmeyi plan
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Performans sorunlarını bulma ve tanılama](../log-query/log-query-overview.md)
+> [Performans sorunlarını bulma ve tanılama](../logs/log-query-overview.md)
 

@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu SSS
 description: Azure Kaynak Durumu genel bakış
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032873"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570062"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Kaynak Durumu SSS
 Azure Kaynak Durumu hakkında sık sorulan soruların yanıtlarını öğrenin.
@@ -46,7 +46,7 @@ Evet, bir kaynak kullanılamadığında Kaynak Durumu, bu kategorilerden birinde
 Portalda, Kullanıcı tarafından başlatılan eylemler mavi bir bildirim simgesiyle gösterilir, planlı ve plansız olaylar da kırmızı bir uyarı simgesi kullanılarak gösterilir. [Kaynak durumu genel bakışta](Resource-health-overview.md)daha fazla ayrıntı sağlanır.  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kaynak Durumu İzleme Araçlarıma tümleştirebilir miyim?
-Kaynak durumu, etkinlik günlüğü tabanlı uyarıları [destekler](resource-health-alert-arm-template-guide.md) . Etkinlik günlüğü uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için [eylem gruplarını](../azure-monitor/platform/action-groups.md) kullanır. Eylem grupları, e-posta, SMS, Web kancası ve ıTSM eylemleri gibi çeşitli bildirim kanallarını destekler.
+Kaynak durumu, etkinlik günlüğü tabanlı uyarıları [destekler](resource-health-alert-arm-template-guide.md) . Etkinlik günlüğü uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için [eylem gruplarını](../azure-monitor/alerts/action-groups.md) kullanır. Eylem grupları, e-posta, SMS, Web kancası ve ıTSM eylemleri gibi çeşitli bildirim kanallarını destekler.
 
 ## <a name="where-do-i-find-resource-health"></a>Kaynak Durumu nerede bulabilirim?
 Azure portal oturum açtıktan sonra, Kaynak Durumu erişmek için kullanabileceğiniz birden çok yol vardır:

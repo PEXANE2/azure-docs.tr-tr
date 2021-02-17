@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618884"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574141"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmekte
 |:---|:---|
 |Azure Storage| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](../event-hubs/event-hubs-create.md)|
-|Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](../azure-monitor/learn/quick-create-workspace.md)|
+|Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](../azure-monitor/logs/quick-create-workspace.md)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Azure portal kullanarak güvenlik denetim olaylarını etkinleştirin
 
@@ -100,7 +100,7 @@ Azure PowerShell kullanarak Azure AD DS güvenlik denetim olaylarını etkinleş
         > [!IMPORTANT]
         > Olay Hub 'ında değil, Olay Hub 'ı ad alanında yetkilendirme kuralını ayarlamış olduğunuzdan emin olun.
 
-    * **Azure log analitik çalışma alanları**  -  [Azure PowerShell bir Log Analytics çalışma alanı oluşturun](../azure-monitor/platform/powershell-workspace-configuration.md).
+    * **Azure log analitik çalışma alanları**  -  [Azure PowerShell bir Log Analytics çalışma alanı oluşturun](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 1. [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) cmdlet 'Ini kullanarak Azure AD DS yönetilen etki alanınız IÇIN kaynak kimliği alın. $Aadds adlı bir değişken oluşturun *.* Değerin tutulacağı RESOURCEID:
 
@@ -141,9 +141,9 @@ Azure PowerShell kullanarak Azure AD DS güvenlik denetim olaylarını etkinleş
 Log analitik çalışma alanları, Azure Izleyici ve kusto sorgu dilini kullanarak güvenlik denetim olaylarını görüntülemenize ve çözümlemenize olanak sağlar. Bu sorgu dili, kolay okunabilir bir sözdizimi ile Power analitik özelliklerine sahip olan salt okunurdur kullanım için tasarlanmıştır. Kusto sorgu dillerini kullanmaya başlama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure İzleyici belgeleri](../azure-monitor/index.yml)
-* [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Azure İzleyici’de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
-* [Log Analytics verilerinden pano oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Azure İzleyici’de günlük sorgularını kullanmaya başlama](../azure-monitor/logs/get-started-queries.md)
+* [Log Analytics verilerinden pano oluşturma ve paylaşma](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 Aşağıdaki örnek sorgular, Azure AD DS güvenlik denetim olaylarını çözümlemeye başlamak için kullanılabilir.
 
@@ -217,7 +217,7 @@ Azure AD DS Güvenlik denetimleri geleneksel AD DS etki alanı denetleyicileri i
 
 Aşağıdaki denetim olayı kategorileri kullanılabilir:
 
-| Denetim kategorisi adı | Açıklama |
+| Denetim kategorisi adı | Description |
 |:---|:---|
 | Hesap oturum açma|Denetimler, bir etki alanı denetleyicisindeki veya yerel bir güvenlik Hesapları Yöneticisi (SAM) hesap verilerinin kimliğini doğrulamaya çalışır.</p>Oturum açma ve oturum kapatma ilkesi ayarları ve olayları izleme belirli bir bilgisayara erişmeye çalışır. Bu kategorideki ayarlar ve olaylar, kullanılan hesap veritabanına odaklanmaktadır. Bu kategori aşağıdaki alt kategorileri içerir:<ul><li>[Kimlik Bilgisi Doğrulamayı Denetleme](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos Kimlik Doğrulaması Hizmetini Denetleme](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Kerberos Hizmet Bileti İşlemlerini Denetleme](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Diğer oturum açma/kapatma olaylarını denetleme](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Hesap Yönetimi|Kullanıcı ve bilgisayar hesapları ve gruplarındaki değişiklikleri denetler. Bu kategori aşağıdaki alt kategorileri içerir:<ul><li>[Uygulama Grubu Yönetimini Denetleme](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Bilgisayar Hesabı Yönetimini Denetleme](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Dağıtım Grubu Yönetimini Denetleme](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Diğer hesap yönetimini denetleme](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Güvenlik Grubu Yönetimini Denetleme](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Kullanıcı Hesabı Yönetimini Denetleme](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

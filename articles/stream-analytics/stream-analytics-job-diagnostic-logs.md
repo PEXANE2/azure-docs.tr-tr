@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574409"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
 
@@ -24,9 +24,9 @@ Bu, hata ayıklama ve izleme konusunda önemli ölçüde yardımcı olacağı i�
 
 Stream Analytics iki tür günlük sunar:
 
-* İşler üzerinde gerçekleştirilen işlemlere Öngörüler veren [etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) (Always on).
+* İşler üzerinde gerçekleştirilen işlemlere Öngörüler veren [etkinlik günlükleri](../azure-monitor/essentials/platform-logs-overview.md) (Always on).
 
-* İş ile gerçekleşen her şeye daha zengin Öngörüler sağlayan [kaynak günlükleri](../azure-monitor/platform/platform-logs-overview.md) (yapılandırılabilir). Kaynak günlükleri iş oluşturulduğunda başlar ve iş silindiğinde biter. Bunlar iş güncelleştirilirken ve çalışırken olayları kapsar.
+* İş ile gerçekleşen her şeye daha zengin Öngörüler sağlayan [kaynak günlükleri](../azure-monitor/essentials/platform-logs-overview.md) (yapılandırılabilir). Kaynak günlükleri iş oluşturulduğunda başlar ve iş silindiğinde biter. Bunlar iş güncelleştirilirken ve çalışırken olayları kapsar.
 
 > [!NOTE]
 > Uyumsuz verileri çözümlemek için Azure depolama, Azure Event Hubs ve Azure Izleyici günlükleri gibi hizmetleri kullanabilirsiniz. Bu hizmetlerin fiyatlandırma modeline göre ücretlendirilirsiniz.

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574164"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory Yönetim birimlerini yönetme
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için
     !["Graph Explorer için yönetici onayı verme" bağlantısını gösteren ekran görüntüsü.](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Azure AD PowerShell 'in önizleme sürümünü kullanın.
+1. [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)'i kullanın.
 
 ## <a name="add-an-administrative-unit"></a>Yönetim birimi ekleme
 
@@ -58,7 +58,7 @@ Azure portal veya PowerShell 'i kullanarak bir yönetim birimi ekleyebilirsiniz.
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 
-Aşağıdaki komutları çalıştırmayı denemeden önce Azure AD PowerShell 'i (Önizleme) yükleyebilirsiniz:
+Aşağıdaki komutları çalıştırmayı denemeden önce [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) 'i yükleyebilirsiniz:
 
 ```powershell
 Connect-AzureAD
@@ -100,7 +100,7 @@ Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 
 Belirli bir ortam için gereken şekilde, tırnak işaretleri içine alınmış değerleri değiştirebilirsiniz.
 
-### <a name="use-the-graph-api"></a>Graph API kullanın
+### <a name="use-the-graph-api"></a>Graph API’sini kullanma
 
 ```http
 HTTP request

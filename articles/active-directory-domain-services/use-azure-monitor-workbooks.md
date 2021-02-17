@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618170"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574208"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 
@@ -46,7 +46,7 @@ Azure AD DS, aşağıdaki iki çalışma kitabı şablonunu içerir:
 * Güvenliğe genel bakış raporu
 * Hesap etkinliği raporu
 
-Çalışma kitaplarını düzenleme ve yönetme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitaplarına genel bakış](../azure-monitor/platform/workbooks-overview.md).
+Çalışma kitaplarını düzenleme ve yönetme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitaplarına genel bakış](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="use-the-security-overview-report-workbook"></a>Güvenlik Genel Bakış raporu çalışma kitabını kullanma
 

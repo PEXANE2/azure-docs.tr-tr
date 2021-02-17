@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d641801b1b9a0cfaa4fd7ee11e3c55314dc53c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318088"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577520"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
 
@@ -34,13 +34,13 @@ AD Çoğaltma Durumu çözümü, tüm çoğaltma hatalarıyla ilgili Active Dire
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Aracıları etki alanı denetleyicilerine yükler
-, Değerlendirilecek etki alanının üyesi olan etki alanı denetleyicilerine aracılar yüklemelisiniz. Ya da, aracıları üye sunuculara yüklemeli ve aracıları Azure Izleyici 'ye AD Çoğaltma verileri gönderecek şekilde yapılandırmanız gerekir. Windows bilgisayarlarını Azure Izleyici 'ye bağlamayı anlamak için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../platform/agent-windows.md). Etki alanı denetleyiciniz Azure Izleyici 'ye bağlamak istediğiniz mevcut bir System Center Operations Manager ortamının zaten parçasıysa, bkz. [Azure izleyiciyi Operations Manager bağlama](../platform/om-agents.md).
+, Değerlendirilecek etki alanının üyesi olan etki alanı denetleyicilerine aracılar yüklemelisiniz. Ya da, aracıları üye sunuculara yüklemeli ve aracıları Azure Izleyici 'ye AD Çoğaltma verileri gönderecek şekilde yapılandırmanız gerekir. Windows bilgisayarlarını Azure Izleyici 'ye bağlamayı anlamak için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../agents/agent-windows.md). Etki alanı denetleyiciniz Azure Izleyici 'ye bağlamak istediğiniz mevcut bir System Center Operations Manager ortamının zaten parçasıysa, bkz. [Azure izleyiciyi Operations Manager bağlama](../agents/om-agents.md).
 
 ### <a name="enable-non-domain-controller"></a>Etki alanı olmayan Denetleyiciyi Etkinleştir
 Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye bağlanmasını istemiyorsanız, Azure Izleyici 'ye bağlı etki alanındaki başka bir bilgisayarı kullanarak AD Çoğaltma Durumu çözüm paketine yönelik verileri toplayabilir ve verileri göndermesini sağlayabilirsiniz.
 
 1. Bilgisayarın AD Çoğaltma Durumu çözümünü kullanarak izlemek istediğiniz etki alanının bir üyesi olduğunu doğrulayın.
-2. [Windows bilgisayarını Azure izleyici 'ye bağlayın](../platform/om-agents.md) veya zaten bağlı değilse [Azure izleyici 'ye mevcut Operations Manager ortamınızı kullanarak bağlayın](../platform/om-agents.md).
+2. [Windows bilgisayarını Azure izleyici 'ye bağlayın](../agents/om-agents.md) veya zaten bağlı değilse [Azure izleyici 'ye mevcut Operations Manager ortamınızı kullanarak bağlayın](../agents/om-agents.md).
 3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\adreplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ Listelerden birindeki herhangi bir öğeye tıkladığınızda, bir günlük sor
 
 ![Sorgu sonuçlarında AD çoğaltma durumu hataları](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Buradan, daha fazla filtre uygulayabilir, günlük sorgusunu değiştirebilir ve bu şekilde devam edebilirsiniz. Azure Izleyici 'de günlük sorgularını kullanma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerini çözümleme](../log-query/log-query-overview.md).
+Buradan, daha fazla filtre uygulayabilir, günlük sorgusunu değiştirebilir ve bu şekilde devam edebilirsiniz. Azure Izleyici 'de günlük sorgularını kullanma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerini çözümleme](../logs/log-query-overview.md).
 
 **HelpLink** alanı, bu belirli hata hakkında ek ayrıntıları Içeren bir TechNet sayfasının URL 'sini gösterir. Sorun giderme ve hatayı düzeltme hakkında bilgi edinmek için bu bağlantıyı kopyalayıp tarayıcı pencerenize yapıştırabilirsiniz.
 
@@ -148,12 +148,12 @@ Y: Şu anda değil.
 Y: Active Directory için normal Kullanıcı izinleri yeterlidir.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Veri toplama sorunlarını giderme
-AD Çoğaltma Durumu çözüm paketi, verileri toplamak için en az bir etki alanı denetleyicisinin Log Analytics çalışma alanınıza bağlanmasını gerektirir. Bir etki alanı denetleyicisine bağlanana kadar, **verilerin toplanmakta**olduğunu belirten bir ileti görüntülenir.
+AD Çoğaltma Durumu çözüm paketi, verileri toplamak için en az bir etki alanı denetleyicisinin Log Analytics çalışma alanınıza bağlanmasını gerektirir. Bir etki alanı denetleyicisine bağlanana kadar, **verilerin toplanmakta** olduğunu belirten bir ileti görüntülenir.
 
-Etki alanı Denetleyicilerinizden birini bağlamak için yardıma ihtiyacınız varsa, [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../platform/om-agents.md)sırasında belgeleri görüntüleyebilirsiniz. Alternatif olarak, etki alanı denetleyiciniz zaten var olan bir System Center Operations Manager ortamına bağlandıysa, [Azure izleyici 'ye System Center Operations Manager Connect (bağlantı](../platform/om-agents.md)) belgesine bakabilirsiniz.
+Etki alanı Denetleyicilerinizden birini bağlamak için yardıma ihtiyacınız varsa, [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../agents/om-agents.md)sırasında belgeleri görüntüleyebilirsiniz. Alternatif olarak, etki alanı denetleyiciniz zaten var olan bir System Center Operations Manager ortamına bağlandıysa, [Azure izleyici 'ye System Center Operations Manager Connect (bağlantı](../agents/om-agents.md)) belgesine bakabilirsiniz.
 
 Etki alanı denetleyicilerinizin herhangi birini doğrudan Azure Izleyici 'ye veya System Center Operations Manager bağlamak istemiyorsanız, bkz. [etki alanı dışı denetleyiciyi etkinleştirme](#enable-non-domain-controller).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı Active Directory çoğaltma durumu verilerini görüntülemek için [Azure izleyici 'de günlük sorgularını](../log-query/log-query-overview.md) kullanın.
+* Ayrıntılı Active Directory çoğaltma durumu verilerini görüntülemek için [Azure izleyici 'de günlük sorgularını](../logs/log-query-overview.md) kullanın.
 

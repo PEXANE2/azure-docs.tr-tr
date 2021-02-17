@@ -4,12 +4,12 @@ description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584073"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -30,7 +30,7 @@ Bu davranış, gereksiz kişisel veri toplamayı önlemeye yardımcı olmak içi
 
 Varsayılan olarak IP adreslerini toplamayın. Bu davranışı geçersiz kılma esnekliği de sunuyoruz. Ancak, koleksiyonun herhangi bir uyumluluk gereksinimini veya yerel düzenlemeleri bozmadığından emin olmanız önerilir. 
 
-Application Insights kişisel veri işleme hakkında daha fazla bilgi edinmek için [kişisel veriler kılavuzuna](../platform/personal-data-mgmt.md)bakın.
+Application Insights kişisel veri işleme hakkında daha fazla bilgi edinmek için [kişisel veriler kılavuzuna](../logs/personal-data-mgmt.md)bakın.
 
 ## <a name="storing-ip-address-data"></a>IP adresi verileri depolanıyor
 
@@ -245,6 +245,6 @@ Localhost 'tan test ediliyorsa ve değeri `customDimensions_client-ip` ise `::1`
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Application Insights 'de [kişisel veri toplama](../platform/personal-data-mgmt.md) hakkında daha fazla bilgi edinin.
+* Application Insights 'de [kişisel veri toplama](../logs/personal-data-mgmt.md) hakkında daha fazla bilgi edinin.
 
 * Application Insights içindeki [IP adresi koleksiyonunun](https://apmtips.com/posts/2016-07-05-client-ip-address/) nasıl çalıştığı hakkında daha fazla bilgi edinin. (Bu makalede mühendislerimizden biri tarafından yazılan eski bir dış blog gönderisi. IP adresinin kaydedildiği geçerli varsayılan davranışın ön tarihlerini `0.0.0.0` alır, ancak yerleşik olarak yerleşik olarak daha fazla derinliğe gider `ClientIpHeaderTelemetryInitializer` .)

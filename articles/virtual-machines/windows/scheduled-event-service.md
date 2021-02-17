@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a5e280fb562bf9bb36d0d729e5f494bd23776ec7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702279"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570127"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM 'leriniz için zamanlanmış olayları izleme
 
@@ -25,17 +25,17 @@ Bu makalede, sanal makinelerinizi etkileyen bakım olayları hakkında bildirim 
 
 Zamanlanan Olaylar, [azure Instance Metadata Service](instance-metadata-service.md)her Azure sanal makinesinde kullanılabilen bir parçası olarak kullanılabilir. Müşteriler, zamanlanmış bakım bildirimleri bulmak ve durumu kaydetme ve sanal makineyi döndürme dışında yapma gibi azaltmalar gerçekleştirmek için sanal makinelerinin uç noktasını sorgulamak üzere otomasyon yazabilir. Azure bakım olaylarının denetim günlüğüne sahip olmak için Zamanlanan Olaylar kaydetmek üzere otomasyon oluşturmanız önerilir. 
 
-Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda size kılavuzluk edeceğiz. Daha sonra, takımınızda e-posta gönderme ve sanal makinelerinizi etkileyen tüm olayların geçmiş bir görünümünü alma gibi bazı temel bildirim eylemlerini tetikleyeceğiz. Olay toplama ve otomasyon için [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)kullanacağız, ancak bu günlükleri toplamak ve Otomasyonu tetiklemek için herhangi bir izleme çözümünü kullanabilirsiniz.
+Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda size kılavuzluk edeceğiz. Daha sonra, takımınızda e-posta gönderme ve sanal makinelerinizi etkileyen tüm olayların geçmiş bir görünümünü alma gibi bazı temel bildirim eylemlerini tetikleyeceğiz. Olay toplama ve otomasyon için [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)kullanacağız, ancak bu günlükleri toplamak ve Otomasyonu tetiklemek için herhangi bir izleme çözümünü kullanabilirsiniz.
 
 ![Olay yaşam döngüsünü gösteren diyagram](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örnekte, bir [kullanılabilirlik kümesinde bir Windows sanal makinesi](tutorial-availability-sets.md)oluşturmanız gerekecektir. Zamanlanan Olaylar, kullanılabilirlik kümesi, bulut hizmeti, sanal makine ölçek kümesi veya tek başına VM 'lerdeki sanal makinelerin hiçbirini etkileyebilecek değişiklikler hakkında bildirimler sağlar. Kullanılabilirlik kümesindeki diğer tüm VM 'lerin olaylarını almak için, toplayıcı olarak görev yapacak VM 'lerden birinde zamanlanan olayları yoklayan bir [hizmet](https://github.com/microsoft/AzureScheduledEventsService) çalıştıracağız.    
 
 Öğreticinin sonunda Grup kaynak grubunu silmeyin.
 
-Ayrıca, kullanılabilirlik kümesindeki VM 'lerden bilgi toplamak için kullanacağınız [bir Log Analytics çalışma alanı oluşturmanız](../../azure-monitor/learn/quick-create-workspace.md) gerekecektir.
+Ayrıca, kullanılabilirlik kümesindeki VM 'lerden bilgi toplamak için kullanacağınız [bir Log Analytics çalışma alanı oluşturmanız](../../azure-monitor/logs/quick-create-workspace.md) gerekecektir.
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
@@ -132,7 +132,7 @@ Bu işlem, sanal makinenize [Microsoft Monitoring Agent](../extensions/oms-windo
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Azure Izleyici ile bir uyarı kuralı oluşturma 
 
 
-Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için aşağıdaki [sorguyu](../../azure-monitor/log-query/log-analytics-tutorial.md) çalıştırabilirsiniz.
+Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için aşağıdaki [sorguyu](../../azure-monitor/logs/log-analytics-tutorial.md) çalıştırabilirsiniz.
 
 1. Sayfanın üst kısmında, **Günlükler** ' i seçin ve aşağıdaki metin kutusuna yapıştırın:
 

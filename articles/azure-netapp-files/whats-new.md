@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571038"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
@@ -99,7 +99,7 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
 ## <a name="may-2020"></a>Mayıs 2020
 
-* [Yedekleme ilkesi kullanıcıları](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) (Önizleme)
+* [Yedekleme ilkesi kullanıcıları](create-active-directory-connections.md) (Önizleme)
 
     Azure NetApp Files, Azure NetApp Files birlikte kullanılmak üzere oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar eklemenizi sağlar. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz. Yedekleme ilkesi kullanıcıları özelliği şu anda önizlemededir.
 

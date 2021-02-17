@@ -3,16 +3,16 @@ title: Azure Izleyici Application Insights çalışma alanı tabanlı kaynak şe
 description: Azure Izleyici Application Insights çalışma alanı tabanlı kaynakların yeni tablo yapısı ve şeması hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385974"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575609"
 ---
 # <a name="workspace-based-resource-changes"></a>Çalışma alanı tabanlı kaynak değişiklikleri
 
-[Çalışma alanı tabanlı Application Insights kaynaklarının](create-workspace-resource.md)kullanıma sunulmasından önce Application Insights verileri Azure izleyici 'deki diğer günlük verilerinden ayrı olarak depolandı. Her ikisi de Azure Veri Gezgini tabanlıdır ve aynı kusto sorgu dilini (KQL) kullanır. Bu, [Azure izleyici 'de günlüklerde](../platform/data-platform-logs.md)açıklanmıştır.
+[Çalışma alanı tabanlı Application Insights kaynaklarının](create-workspace-resource.md)kullanıma sunulmasından önce Application Insights verileri Azure izleyici 'deki diğer günlük verilerinden ayrı olarak depolandı. Her ikisi de Azure Veri Gezgini tabanlıdır ve aynı kusto sorgu dilini (KQL) kullanır. Bu, [Azure izleyici 'de günlüklerde](../logs/data-platform-logs.md)açıklanmıştır.
 
 Çalışma alanı tabanlı Application Insights kaynak verileri, diğer izleme verileri ve uygulama verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Bu, birden çok çözüm genelinde verileri daha kolay analiz etmenize ve çalışma alanlarının özelliklerinden yararlanmasını sağlayarak yapılandırmanızı basitleştirir.
 
@@ -464,6 +464,6 @@ Eski tablo: izlemeler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ölçümleri keşfetme](../platform/metrics-charts.md)
-* [Analytics sorguları yazma](../log-query/log-query-overview.md)
+* [Ölçümleri keşfetme](../essentials/metrics-charts.md)
+* [Analytics sorguları yazma](../logs/log-query-overview.md)
 

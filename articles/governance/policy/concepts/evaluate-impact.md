@@ -3,18 +3,18 @@ title: Yeni bir Azure Ilke tanımının etkisini değerlendirin
 description: Azure ortamınıza yeni bir ilke tanımı oluştururken izlenecek işlemi anlayın.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590799"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Yeni bir Azure Ilke tanımının etkisini değerlendirin
 
 Azure Ilkesi, Azure kaynaklarınızı iş standartlarına göre yönetmek ve uyumluluk gereksinimlerini karşılamak için güçlü bir araçtır. Kişiler, süreçler veya işlem hatları kaynakları oluştururken veya güncelleştirdiklerinde, Azure Ilkesi isteği inceler. İlke tanımı efekti [değiştirme](./effects.md#modify), [append](./effects.md#deny) veya [deployifnotexists](./effects.md#deployifnotexists)olduğunda, ilke isteği değiştirir veya buna ekler. İlke tanımı efekti [Denetim](./effects.md#audit) veya [Auditınotexists](./effects.md#auditifnotexists)olduğunda, ilke yeni ve güncelleştirilmiş kaynaklar için bir etkinlik günlüğü girişinin oluşturulmasına neden olur. İlke tanımı etkin [olduğunda, ilke, isteğin](./effects.md#deny)oluşturulmasını veya değişiklik işlemini engeller.
 
-Bu sonuçlar, ilkenin doğru şekilde tanımlandığını bildiğiniz durumlarda tam olarak istenen şekilde yapılır. Bununla birlikte, yeni bir ilkenin, çalışmayı değiştirmesine veya engellemeye izin vermeden önce beklendiği gibi çalıştığını doğrulamak önemlidir. Doğrulama yalnızca amaçlanan kaynakların uyumsuz olarak belirlendiğinden ve sonuçlarda yanlış bir şekilde ( _yanlış pozitif_olarak bilinirdi) emin olunması gerekir.
+Bu sonuçlar, ilkenin doğru şekilde tanımlandığını bildiğiniz durumlarda tam olarak istenen şekilde yapılır. Bununla birlikte, yeni bir ilkenin, çalışmayı değiştirmesine veya engellemeye izin vermeden önce beklendiği gibi çalıştığını doğrulamak önemlidir. Doğrulama yalnızca amaçlanan kaynakların uyumsuz olarak belirlendiğinden ve sonuçlarda yanlış bir şekilde ( _yanlış pozitif_ olarak bilinirdi) emin olunması gerekir.
 
 Yeni bir ilke tanımını doğrulamak için önerilen yaklaşım aşağıdaki adımları takip eden bir yaklaşımdır:
 
@@ -33,12 +33,12 @@ Bu nedenle, ilke tanımlarınız sıkı bir şekilde tanımlanmalıdır ve kayna
 
 ## <a name="audit-existing-resources"></a>Mevcut kaynakları denetleme
 
-Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode) _devre dışı_ (donotenzorlamalı) kullanın. [effect](./effects.md)
+Yeni veya güncelleştirilmiş kaynakları yeni ilke tanımınızda yönetmeyi aramadan önce, bir test kaynak grubu gibi var olan kaynakların sınırlı bir alt kümesini nasıl değerlendirdiği hakkında daha iyi bir seçenektir. Tetiklemenin veya etkinlik günlüğü girişlerinin oluşturulmasını engellemek için ilke atamasındaki [zorlama modunu](./assignment-structure.md#enforcement-mode) _devre dışı_ (donotenzorlamalı) kullanın. [](./effects.md)
 
 Bu adım, iş akışını etkilemeden mevcut kaynaklardaki yeni ilkenin uyumluluk sonuçlarını değerlendirmek için bir şans sağlar. Uyumlu olmayan bir kaynağın uyumsuz (_yanlış pozitif_) olarak işaretlenip işaretlenmediğini ve uyumlu olmadığını düşündüğünüz tüm kaynakların doğru şekilde işaretlendiğinden emin olun.
 Kaynakların ilk alt kümesi beklendiği gibi doğrulandıktan sonra, tüm mevcut kaynaklarla değerlendirmeyi yavaş genişletin.
 
-Mevcut kaynakları bu şekilde değerlendirmek, yeni ilkenin tam uygulanmasıyla uyumlu olmayan kaynakları düzeltmeye yönelik bir fırsat de sağlar. Bu temizleme el ile veya ilke tanımı efekti _Deployifnotexists_ise bir [Düzeltme görevi](../how-to/remediate-resources.md) aracılığıyla yapılabilir.
+Mevcut kaynakları bu şekilde değerlendirmek, yeni ilkenin tam uygulanmasıyla uyumlu olmayan kaynakları düzeltmeye yönelik bir fırsat de sağlar. Bu temizleme el ile veya ilke tanımı efekti _Deployifnotexists_ ise bir [Düzeltme görevi](../how-to/remediate-resources.md) aracılığıyla yapılabilir.
 
 ## <a name="audit-new-or-updated-resources"></a>Yeni veya güncelleştirilmiş kaynakları denetleme
 
@@ -63,7 +63,7 @@ Kapsamda herhangi bir değişiklik olmadığından emin olmak için kapsamdaki t
 
 ## <a name="monitor-your-policy-and-compliance"></a>İlkenizi ve uyumluluğunu izleyin
 
-İlke tanımınızı uygulamak ve atamak son adım değildir. Kaynakların [Uyumluluk](../how-to/get-compliance-data.md) düzeyini yeni ilke tanımınıza sürekli olarak izleyin ve uyumlu olmayan cihazlar tanımlandığında Ilgili [Azure izleyici uyarılarını ve bildirimlerini](../../../azure-monitor/platform/alerts-overview.md) ayarlayın. İlke tanımının iş ilkesi ve uyumluluk ihtiyaçlarını karşıladığını doğrulamak için, ilke tanımını ve ilgili atamaları zamanlanan bir şekilde değerlendirmek de önerilir. Artık gerekmiyorsa ilkelerin kaldırılması gerekir. Ayrıca, temel alınan Azure kaynakları geliştikçe ve yeni özellikler ve yetenekler eklerken ilkelerin zaman zaman güncel olarak güncelleştirilmesi gerekir.
+İlke tanımınızı uygulamak ve atamak son adım değildir. Kaynakların [Uyumluluk](../how-to/get-compliance-data.md) düzeyini yeni ilke tanımınıza sürekli olarak izleyin ve uyumlu olmayan cihazlar tanımlandığında Ilgili [Azure izleyici uyarılarını ve bildirimlerini](../../../azure-monitor/alerts/alerts-overview.md) ayarlayın. İlke tanımının iş ilkesi ve uyumluluk ihtiyaçlarını karşıladığını doğrulamak için, ilke tanımını ve ilgili atamaları zamanlanan bir şekilde değerlendirmek de önerilir. Artık gerekmiyorsa ilkelerin kaldırılması gerekir. Ayrıca, temel alınan Azure kaynakları geliştikçe ve yeni özellikler ve yetenekler eklerken ilkelerin zaman zaman güncel olarak güncelleştirilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

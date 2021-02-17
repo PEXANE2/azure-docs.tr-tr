@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374805"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576350"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
@@ -35,6 +35,9 @@ Azure Batch Service ' i yeni biliyorsanız aşağıdaki makalelere bakın:
 * Azure Batch hizmetine genel bakış hakkında [temel bilgiler Azure Batch](../batch/batch-technical-overview.md) .
 * Azure Batch bir hesap oluşturmak için [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 'i, Azure portal kullanarak Azure Batch hesabı oluşturmak için [Azure Portal](../batch/batch-account-create-portal.md) . Cmdlet 'ini kullanma hakkında ayrıntılı yönergeler için [Azure Batch hesabını yönetmek üzere PowerShell kullanma](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) makalesine bakın.
 * Azure Batch havuzu oluşturmak için [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 'i.
+
+> [!IMPORTANT]
+> Yeni bir Azure Batch havuzu oluştururken ' Virtualmakineconfiguration ' kullanılmalıdır ve ' CloudServiceConfiguration ' DEĞIL. Daha fazla ayrıntı için [Azure Batch havuz geçiş kılavuzuna](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration)bakın. 
 
 ## <a name="azure-batch-linked-service"></a>Bağlı hizmet Azure Batch
 

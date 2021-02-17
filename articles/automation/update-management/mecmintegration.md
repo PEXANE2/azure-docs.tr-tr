@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223043"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575765"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Güncelleştirme Yönetimi Microsoft uç noktası ile tümleştirin Configuration Manager
 
@@ -25,7 +25,7 @@ Microsoft uç nokta Configuration Manager ' de yazılım güncelleştirme dağı
 
 * Otomasyon hesabınıza [Azure otomasyonu güncelleştirme yönetimi](overview.md) eklemiş olmanız gerekir.
 * Microsoft uç nokta Configuration Manager ortamınız tarafından şu anda yönetilen Windows sunucularının Ayrıca Güncelleştirme Yönetimi etkinleştirilmiş olan Log Analytics çalışma alanına raporlama yapması gerekir.
-* Bu özellik, güncel dal sürümü 1606 ve üzeri Configuration Manager Microsoft uç noktasında etkinleştirilmiştir. Microsoft uç nokta Configuration Manager merkezi yönetim sitesini veya tek başına birincil siteyi Azure Izleyici günlükleri ve içeri aktarma koleksiyonlarıyla bütünleştirmek için, [Azure izleyici günlüklerine bağlan Configuration Manager](../../azure-monitor/platform/collect-sccm.md)inceleyin.  
+* Bu özellik, güncel dal sürümü 1606 ve üzeri Configuration Manager Microsoft uç noktasında etkinleştirilmiştir. Microsoft uç nokta Configuration Manager merkezi yönetim sitesini veya tek başına birincil siteyi Azure Izleyici günlükleri ve içeri aktarma koleksiyonlarıyla bütünleştirmek için, [Azure izleyici günlüklerine bağlan Configuration Manager](../../azure-monitor/logs/collect-sccm.md)inceleyin.  
 * Windows aracıları, bir Windows Server Update Services (WSUS) sunucusuyla iletişim kuracak veya Microsoft uç nokta Configuration Manager güvenlik güncelleştirmeleri almadıklarında Microsoft Update erişiminizin olması gerekir.
 
 Azure IaaS 'de barındırılan istemcileri mevcut Microsoft uç nokta Configuration Manager ortamı ile yönetme, birincil olarak Azure veri merkezleri ve altyapınız arasındaki bağlantıya bağlıdır. Bu bağlantı, Microsoft uç noktası Configuration Manager altyapınızda yapmanız gerekebilecek tüm tasarım değişikliklerini etkiler ve bu gerekli değişiklikleri desteklemek için ilgili maliyettir. Devam etmeden önce değerlendirmeniz gereken planlama konularını anlamak için, [Azure’da Configuration Manager - Sık Sorulan Sorular](/configmgr/core/understand/configuration-manager-on-azure#networking)’ı gözden geçirin.

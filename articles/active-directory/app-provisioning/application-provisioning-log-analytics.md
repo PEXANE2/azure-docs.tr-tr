@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256890"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574190"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Sağlamanın Azure Izleyici günlükleriyle nasıl tümleştirildiğini anlama
 
@@ -24,7 +24,7 @@ Sağlama, Azure Izleyici günlükleri ve Log Analytics ile tümleşir. Azure izl
 
 ## <a name="enabling-provisioning-logs"></a>Sağlama günlüklerinin etkinleştirilmesi
 
-Azure izleme ve Log Analytics hakkında zaten bilgi sahibi olmanız gerekir. Aksi takdirde, hakkında bilgi edinmek için üzerine atlayın ve ardından uygulama sağlama günlükleri hakkında bilgi edinmek için geri dönün. Azure izleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyiciye genel bakış](../../azure-monitor/overview.md). Azure Izleyici günlükleri ve Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
+Azure izleme ve Log Analytics hakkında zaten bilgi sahibi olmanız gerekir. Aksi takdirde, hakkında bilgi edinmek için üzerine atlayın ve ardından uygulama sağlama günlükleri hakkında bilgi edinmek için geri dönün. Azure izleme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyiciye genel bakış](../../azure-monitor/overview.md). Azure Izleyici günlükleri ve Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/logs/log-query-overview.md).
 
 Azure izlemeyi yapılandırdıktan sonra, uygulama sağlama için günlükleri etkinleştirebilirsiniz. Seçeneği **Tanılama ayarları** sayfasında bulunur.
 
@@ -47,7 +47,7 @@ Kaynak görüntüleyicilerinin gönderdiği temel alınan veri akışı neredeys
 
 ## <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
-Azure Izleyici çalışma kitapları, veri analizi için esnek bir tuval sağlar. Ayrıca, Azure portal içinde zengin görsel raporların oluşturulmasını sağlar. Daha fazla bilgi için bkz. [Azure Izleyici çalışma kitaplarına genel bakış](../../azure-monitor/platform/workbooks-overview.md).
+Azure Izleyici çalışma kitapları, veri analizi için esnek bir tuval sağlar. Ayrıca, Azure portal içinde zengin görsel raporların oluşturulmasını sağlar. Daha fazla bilgi için bkz. [Azure Izleyici çalışma kitaplarına genel bakış](../../azure-monitor/visualize/workbooks-overview.md).
 
 Uygulama sağlama, önceden oluşturulmuş bir çalışma kitapları kümesiyle gelir. Bunları çalışma kitapları sayfasında bulabilirsiniz. Verileri görüntülemek için tüm filtrelerin (timeRange, JobId, appName) doldurulduğundan emin olmanız gerekir. Ayrıca, bir uygulamayı sağladığınızdan emin olmanız gerekir, aksi takdirde günlüklerde hiç veri olmayacaktır.
 
@@ -57,7 +57,7 @@ Uygulama sağlama, önceden oluşturulmuş bir çalışma kitapları kümesiyle 
 
 ## <a name="custom-queries"></a>Özel sorgular
 
-Özel sorgular oluşturabilir ve verileri Azure panolarında gösterebilirsiniz. Hakkında bilgi edinmek için bkz. [Log Analytics veri panoları oluşturma ve paylaşma](../../azure-monitor/log-query/get-started-queries.md). Ayrıca, [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md)' ı kullanıma aldığınızdan emin olun.
+Özel sorgular oluşturabilir ve verileri Azure panolarında gösterebilirsiniz. Hakkında bilgi edinmek için bkz. [Log Analytics veri panoları oluşturma ve paylaşma](../../azure-monitor/logs/get-started-queries.md). Ayrıca, [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/logs/log-query-overview.md)' ı kullanıma aldığınızdan emin olun.
 
 Uygulama sağlamayı kullanmaya başlamak için bazı örnekler aşağıda verilmiştir.
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Azure Izleyici, sağlama ile ilgili önemli olaylar hakkında bildirim alabilmeniz için özel uyarılar yapılandırmanıza olanak tanır. Örneğin, hatalarda ani artışlar hakkında bir uyarı almak isteyebilirsiniz. Veya belki de devre dışı bırakır veya siler. Uyarı almak isteyebileceğiniz diğer bir örnek, bir şeyin yanlış olduğunu belirten herhangi bir sağlama olmamasıdır.
 
-Uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../../azure-monitor/learn/tutorial-response.md).
+Uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../../azure-monitor/alerts/tutorial-response.md).
 
 Hatalarda ani bir artış olduğunda uyarır. JobId öğesini uygulamanızın iş kimliği ile değiştirin.
 
@@ -118,7 +118,7 @@ Uygulama sağlama sorgularına ve panolarına yönelik açık kaynaklı ve toplu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Azure Izleyici günlüklerinde sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-queries.md)
-- [Azure portal uyarı grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md)
+- [Azure Izleyici günlüklerinde sorguları kullanmaya başlama](../../azure-monitor/logs/get-started-queries.md)
+- [Azure portal uyarı grupları oluşturma ve yönetme](../../azure-monitor/alerts/action-groups.md)
 - [Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [Sağlama günlükleri API 'SI](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)
