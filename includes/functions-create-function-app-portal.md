@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 9a4bda216a91efc8139c1f87c5c350c50ae8741d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 9ec5920295117b1726a684bcd08534cd6917f7e5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100569783"
 ---
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**'u seçin.
 
@@ -27,7 +27,7 @@ ms.locfileid: "99980952"
     | **[Kaynak grubu](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşlev Uygulamasının adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler şunlardır: `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-`.  |
     |**Yayımla**| Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
-    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. Portal içi düzenlemesi yalnızca JavaScript, PowerShell, TypeScript ve C# betiği için kullanılabilir. C# sınıf kitaplığı, Java ve Python işlevleri, [localally geliştirmelidir](../articles/azure-functions/functions-develop-local.md#local-development-environments).  |
+    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. Portal içi düzenlemesi yalnızca JavaScript, PowerShell, TypeScript ve C# betiği için kullanılabilir. C# sınıf kitaplığı, Java ve Python işlevleri [yerel olarak geliştirilmelidir](../articles/azure-functions/functions-develop-local.md#local-development-environments).  |
     |**Sürüm**| Sürüm numarası | Yüklü çalışma zamanının sürümünü seçin. |
     |**Bölge**| Tercih edilen bölge | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554726"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -96,9 +96,10 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**aynı anda gönderilebilecek giden akış sayısı** |1 video + 1 ekran paylaşımı | 1 video |
-|**aynı anda işlenebilen gelen akış sayısı** |1 video + 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
+|**aynı anda gönderilebilecek giden akış sayısı** |1 ses/video veya 1 ses/ekran paylaşımı | 1 ses/video | 
+|**aynı anda işlenebilen gelen akış sayısı** |1 ses/video veya 1 ses/ekran paylaşımı| 6 ses/video veya 1 ekran paylaşımı |
 
+Grup senaryolarında, tüm ses katılımcılarını desteklemek için bir karma ses akışı kullanıldığını unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -106,6 +107,6 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 > [Çağırma ile çalışmaya başlayın](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-- Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin
+- Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin 
 - [Çağrı türleri](../voice-video-calling/about-call-types.md) hakkında bilgi edinin
 - [PSTN çözümünüzü planlayın](../telephony-sms/plan-solution.md)

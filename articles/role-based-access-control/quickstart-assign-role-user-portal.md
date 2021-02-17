@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362032"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559313"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
@@ -44,7 +44,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
    ![Yeni kaynak grubu ekleme](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. **Kaynak grubu adı**için **RBAC-Resource-Group**yazın.
+1. **Kaynak grubu adı** için **RBAC-Resource-Group** yazın.
 
 1. Bir abonelik ve bir konum seçin.
 
@@ -58,9 +58,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="grant-access"></a>Erişim verme
 
-Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun.
+Azure RBAC 'de, erişim izni vermek için bir Azure rolü atarsınız.
 
-1. **Kaynak grupları**listesinde, yeni **RBAC-kaynak grubu** kaynak grubu ' na tıklayın.
+1. **Kaynak grupları** listesinde, yeni **RBAC-kaynak grubu** kaynak grubu ' na tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
@@ -82,7 +82,7 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun.
 
 1. **Seç** listesinde kendinizi ve başka bir kullanıcıyı seçin.
 
-1. Rol atamasını oluşturmak için **Kaydet**'e tıklayın.
+1. Rolü atamak için **Kaydet**’e tıklayın.
 
    Birkaç dakika sonra, Kullanıcı sanal makine katılımcısı rolü RBAC-kaynak grubu kaynak grubu kapsamında atanır.
 
@@ -90,7 +90,7 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun.
 
 ## <a name="remove-access"></a>Erişimi kaldırma
 
-Azure RBAC 'de, erişimi kaldırmak için bir rol atamasını kaldırırsınız.
+Azure RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir.
 
 1. Rol atamaları listesinde, sanal makine katılımcısı rolüne sahip kullanıcının yanına bir onay işareti ekleyin.
 
@@ -110,7 +110,7 @@ Azure RBAC 'de, erişimi kaldırmak için bir rol atamasını kaldırırsınız.
 
    ![Kaynak grubunu silme](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. Dikey pencereyi **silmek istediğinizden emin misiniz** , kaynak grubu adı: **RBAC-Resource-Group**yazın.
+1. Dikey pencereyi **silmek istediğinizden emin misiniz** , kaynak grubu adı: **RBAC-Resource-Group** yazın.
 
 1. Kaynak grubunu silmek için **Sil** ' e tıklayın.
 

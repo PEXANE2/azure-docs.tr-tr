@@ -1,6 +1,6 @@
 ---
-title: Öğretici-erişim paketi oluşturma-Azure AD Yetkilendirme Yönetimi
-description: Azure Active Directory yetkilendirme yönetimi 'nde ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
+title: Öğretici-Azure AD Yetkilendirme Yönetimi 'nde kaynaklara erişimi yönetme
+description: Azure Active Directory yetkilendirme yönetiminde Azure portal kullanarak ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937898"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547409"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde kaynaklara erişimi yönetme
 
 Gruplar, uygulamalar ve siteler gibi çalışanların ihtiyaç duyduğu tüm kaynaklara erişimi yönetmek, kuruluşlar için önemli bir işlevdir. Çalışanlara, üretken olmaları gereken doğru erişim düzeyini vermek ve artık gerekli olmadığında erişimleri kaldırmak istiyorsunuz.
 
@@ -41,8 +41,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 İlk erişim paketinizi oluşturma da dahil olmak üzere Azure Active Directory yetkilendirme yönetimi dağıtma işleminin adım adım bir gösterimi için aşağıdaki videoyu görüntüleyin:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Ayrıca, Microsoft Graph kullanarak programlı bir şekilde erişim paketi oluşturabilirsiniz. Programlı olarak bir erişim paketi oluşturmayı gösteren bir öğretici için bkz. [Yetkilendirme yönetim API 'si](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -344,7 +344,7 @@
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md
             - name: Portal
               href: ../virtual-machines/dedicated-hosts-portal.md
-        - name: Spot örneği kullanma
+        - name: Azure spot sanal makineleri
           href: use-spot.md
     - name: Yönetme
       items:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: 54228ac0aa582d15509fbf967728364841e52453
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558582"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Sanal ağ alt ağını ekleme, değiştirme veya silme
 
@@ -63,7 +63,7 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
 | Araç | Komut |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) |
+| Azure CLI’si | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) |
 | PowerShell | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) |
 
 ## <a name="change-subnet-settings"></a>Alt ağ ayarlarını değiştir
@@ -81,7 +81,7 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
     | Ayar | Açıklama |
     | --- | --- |
     | **Adres aralığı** | Alt ağ içinde hiçbir kaynak dağıtılmamışsa, adres aralığını değiştirebilirsiniz. Alt ağda herhangi bir kaynak varsa, kaynakları başka bir alt ağa taşımanız ya da önce alt ağdan silmeniz gerekir. Bir kaynağı taşımak veya silmek için aldığınız adımlar kaynağa bağlı olarak değişir. Alt ağlardaki kaynakları taşımayı veya silmeyi öğrenmek için, bu kaynak türlerinin her biri için belgeleri okuyun. [Bir alt ağ ekleme](#add-a-subnet)adım 4 ' te **adres aralığı** kısıtlamalarına bakın. |
-    | **Kullanıcılar** | Yerleşik rolleri veya kendi özel rollerinizi kullanarak alt ağa erişimi denetleyebilirsiniz. Alt ağa erişim için rol ve kullanıcı atama hakkında daha fazla bilgi edinmek için bkz. [rol ataması ekleme](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
+    | **Kullanıcılar** | Yerleşik rolleri veya kendi özel rollerinizi kullanarak alt ağa erişimi denetleyebilirsiniz. Alt ağa erişim için rol ve kullanıcı atama hakkında daha fazla bilgi edinmek için bkz. [Azure rolleri atama](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). |
     | **Ağ güvenlik grubu** ve **Yol tablosu** | Bkz. 4. adım [alt ağ ekleme](#add-a-subnet). |
     | **Hizmet uç noktaları** | <p>[Alt ağ ekleme](#add-a-subnet)adım 4 ' te hizmet uç noktaları bölümüne bakın. Var olan bir alt ağ için bir hizmet uç noktası etkinleştirirken, alt ağdaki herhangi bir kaynakta hiçbir kritik görevin çalışmadığını doğrulayın. Hizmet uç noktaları, alt ağdaki her ağ arabirimindeki yolları geçer. Hizmet uç *noktaları, varsayılan* yolu *0.0.0.0/0* adres ön eki ve sonraki atlama türü ile birlikte kullanarak hizmetin adres öneklerine ve *virtualnetworkserviceendpoint*'in bir sonraki atlama türüne sahip yeni bir yol kullanmaktır.</p><p>Anahtar sırasında, herhangi bir açık TCP bağlantısı sonlandırılabilir. Hizmet uç noktası, tüm ağ arabirimleri için hizmete trafik akışı yeni rota ile güncelleştirilene kadar etkin değildir. Yönlendirme hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).</p> |
     | **Alt ağ temsilcisi** | [Alt ağ ekleme](#add-a-subnet)adım 4 ' te hizmet uç noktaları bölümüne bakın. Alt ağ temsilcisi, sıfır veya birden çok temsilci için etkinleştirilmiş olarak değiştirilebilir. Bir hizmetin bir kaynağı alt ağda zaten dağıtılmışsa, hizmetin tüm kaynakları kaldırılana kadar alt ağ temsili eklenemez veya kaldırılamaz. Farklı bir hizmet için temsilci seçmek istiyorsanız, **Hizmetler** listesinden yetkisini atamak istediğiniz hizmeti seçin. |
@@ -92,7 +92,7 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
 | Araç | Komut |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI’si | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="delete-a-subnet"></a>Bir alt ağı silme
@@ -113,7 +113,7 @@ Alt ağı yalnızca alt ağda kaynak yoksa silebilirsiniz. Kaynaklar alt ağdays
 
 | Araç | Komut |
 | ---- | ------- |
-| Azure CLI | [az Network VNET subnet Delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete) |
+| Azure CLI’si | [az Network VNET subnet Delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete) |
 | PowerShell | [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 
 ## <a name="permissions"></a>İzinler

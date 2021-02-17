@@ -239,13 +239,13 @@
         - name: Sertifikaları yönetme
           items:
             - name: Gereksinimler
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: Kendinizinkini getirin
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: Azure Stack Hazır Olma Denetleyicisi aracı yoluyla oluşturma
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: Sertifika hatalarını giderme
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Uç işlemini yönetme
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Edge kapsayıcı kayıt defterini yönetme
