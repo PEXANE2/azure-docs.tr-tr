@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines ile sürekli tümleştirme
 description: Azure Resource Manager şablonlarını sürekli oluşturma, test etme ve dağıtma hakkında bilgi edinin (ARM şablonları).
-ms.date: 08/24/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701720"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560908"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines ile ARM şablonlarının sürekli tümleştirilmesi
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -83,8 +83,8 @@ _Createwebapp_ klasörü, şablonun depolandığı klasördür. `pwd`Komut klas�
 
 Şablonları oluşturmak yerine şablonları indirebilir ve _Createwebapp_ klasörüne kaydedebilirsiniz.
 
-* Ana şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Bağlantılı şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Ana şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
+* Bağlantılı şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
 
 Hem klasör adı hem de dosya adları ardışık düzende oldukları için kullanılır. Bu adları değiştirirseniz, işlem hattında kullanılan adları güncelleştirmeniz gerekir.
 
@@ -105,7 +105,7 @@ _azuredeploy.js_ , yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersini
 
     LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **Main, ana daldır.**  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
 
-1. Bir tarayıcıdan GitHub deponuza gidin. URL `https://github.com/[YourAccountName]/[YourGitHubRepository]` . _Createwebapp_ klasörünü ve klasör içinde üç dosyayı görürsünüz.
+1. Bir tarayıcıdan GitHub deponuza gidin. URL `https://github.com/[YourAccountName]/[YourGitHubRepository]` . _Createwebapp_ klasörünü ve klasörün içinde iki dosyayı görürsünüz.
 1. Şablonu açmak için _linkedStorageAccount.jsaçık '_ ı seçin.
 1. **Ham** düğmesini seçin. URL ile başlar `https://raw.githubusercontent.com` .
 1. URL’nin kopyasını oluşturun. İşlem hattını öğreticide daha sonra yapılandırırken bu değeri sağlamanız gerekir.
@@ -134,7 +134,7 @@ Azure 'a projeler dağıtmak için kullanılan bir hizmet bağlantısı oluştur
 
 1. Sol menünün altından **proje ayarları** ' nı seçin.
 1. İşlem **hatları** altında **hizmet bağlantıları** ' nı seçin.
-1. **Yeni hizmet bağlantısı**' nı seçin, **Azure Resource Manager** öğesini seçin ve ardından **İleri**' yi seçin.
+1. **Hizmet bağlantısı oluştur**' u seçin, **Azure Resource Manager** seçin ve ardından **İleri**' yi seçin.
 1. **Hizmet sorumlusu**' nı seçin ve ardından **İleri**' yi seçin.
 1. Aşağıdaki değerleri girin:
 
@@ -155,7 +155,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 Şablon dağıtmak için bir adımla işlem hattı oluşturmak için:
 
 1. Sol menüden işlem **hatları** ' nı seçin.
-1. **Yeni işlem hattı**' nı seçin.
+1. İşlem **hattı oluştur**' u seçin.
 1. **Bağlan** sekmesinden **GitHub**’ı seçin. İstenirse, GitHub kimlik bilgilerinizi girin ve ardından yönergeleri izleyin. Aşağıdaki ekranı görürseniz, **yalnızca depoları Seç**' i seçin ve **& yüklemeyi Onayla**' yı seçmeden önce depolarınızın listede olduğunu doğrulayın.
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines yalnızca depoları Seç](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
@@ -183,7 +183,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     ![Ekran görüntüsü, gerekli değerler girilen ARM şablonu dağıtım sayfasını gösterir.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     Görev hakkında daha fazla bilgi için bkz. [Azure Kaynak grubu dağıtım görevi](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)ve [Azure Resource Manager şablonu Dağıtım görevi](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 

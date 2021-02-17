@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226531"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547868"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -94,6 +94,7 @@ Y **: bazı** kuruluşlar, kimlik doğrulayıcısının çoklu oturum açma ile 
 ### <a name="device-registration"></a>Cihaz kaydı
 
 **S**: cihaz kaydı nedir?
+
 Y **: Kuruluşunuz**, dosyalar ve uygulamalar gibi güvenli kaynaklara erişimi izlemek için cihazı kaydetmenizi gerektirebilir. Ayrıca, bu kaynaklara istenmeyen erişim riskini azaltmak için koşullu erişimi de açabilir. **Ayarlar** bölümünde cihazınızın kaydını silebilirsiniz, ancak Outlook 'taki e-postalara, OneDrive 'daki dosyalara erişiminizi kaybedebilirsiniz ve telefon oturum açma özelliğini kullanma imkanını kaybedersiniz.
 
 ### <a name="verification-codes-when-connected"></a>Bağlanıldığında doğrulama kodları
