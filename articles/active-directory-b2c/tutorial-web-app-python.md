@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953032"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555681"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C bir Python web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -125,7 +125,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Konsolunuzun veya terminalinizde, örneği içeren dizine geçin. Örnek:
+1. Konsolunuzun veya terminalinizde, örneği içeren dizine geçin. Örneğin:
 
     ```console
     cd ms-identity-python-webapp
@@ -185,4 +185,4 @@ Bu öğreticide, kaydolma ve oturum açma özelliği sağlamak üzere Azure AD B
 Daha sonra, Azure AD B2C göre kullanıcılarınıza gösterilecek Kullanıcı akış sayfalarının Kullanıcı arabirimini özelleştirmeyi öğrenin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure AD B2C >Kullanıcı deneyimlerinin arabirimini özelleştirme ](tutorial-customize-ui.md)
+> [Azure AD B2C >Kullanıcı deneyimlerinin arabirimini özelleştirme ](customize-ui.md)

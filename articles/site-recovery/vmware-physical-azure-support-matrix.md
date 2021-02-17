@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102266"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534694"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -328,6 +328,17 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 - Bunlar yüzde 30 G/Ç çakışmasını varsayan ortalama sayılardır.
 - Site Recovery; çakışma oranı, büyük yazma boyutları ve gerçek iş yükü G/Ç davranışına göre daha yüksek aktarım hızını işleyebilir.
 - Bu numaralar yaklaşık beş dakikalık tipik bir biriktirme listesini varsayar. Diğer bir deyişle, veriler karşıya yüklendikten sonra işlenir ve beş dakika içinde kurtarma noktası oluşturulur.
+
+## <a name="storage-account-limits"></a>Depolama hesabı sınırları
+
+Diskler üzerinde ortalama dalgalanma arttıkça, bir depolama hesabının destekleyebileceği disk sayısı azalır. Aşağıdaki tablo, sağlanması gereken depolama hesabı sayısıyla ilgili kararlar almak için bir kılavuz olarak kullanılabilir.
+ 
+**Depolama hesabı türü**    |    **Dalgalanma = disk başına 4 MBps**    |    **Dalgalanma = disk başına 8 MBps**
+---    |    ---    |    ---
+V1 depolama hesabı    |    600 disk    |    300 disk
+V2 depolama hesabı    |    1500 disk    |    750 disk
+
+Yukarıdaki limitlerin yalnızca karma DR senaryoları için geçerli olduğunu lütfen unutmayın.
 
 ## <a name="vault-tasks"></a>Kasa görevleri
 

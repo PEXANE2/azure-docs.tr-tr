@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e81ab61b04f9cca6aff57de1736eac25a871c97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c3a09242b895234c96c64d9e23449d980e47e387
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468978"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546746"
 ---
 # <a name="tutorial-configure-certificates-vpn-encryption-for-your-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'niz için sertifikaları, VPN, şifrelemeyi yapılandırma
 
@@ -38,10 +38,10 @@ Azure Stack Edge Mini R cihazınızı yapılandırmadan ve ayarlamadan önce şu
 * Fiziksel cihazı [yükleme Azure Stack Edge Mini R](azure-stack-edge-mini-r-deploy-install.md)' de ayrıntılı olarak yüklediniz.
 
 * Kendi sertifikalarınızı getirmeyi planlıyorsanız:
-    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md) ' e gidin
+    - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır. Sertifika hakkındaki ayrıntılar için, [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md) ' e gidin
 
     - Cihazınız Azure Kamu veya Azure Kamu Gizli Bilgi ya da Azure Kamu üst gizli bulutuna dağıtılmışsa, cihazınızı etkinleştirebilmeniz için bir imzalama zinciri sertifikası gerekir. 
-    Sertifika hakkındaki ayrıntılar için [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin.
+    Sertifika hakkındaki ayrıntılar için [sertifikaları Yönet](azure-stack-edge-gpu-manage-certificates.md)' e gidin.
 
 
 ## <a name="configure-certificates-for-device"></a>Cihaz için sertifikaları yapılandırma
@@ -66,7 +66,7 @@ Azure Stack Edge Mini R cihazınızı yapılandırmadan ve ayarlamadan önce şu
     - Cihaz adı veya DNS etki alanını değiştirdiyseniz ve kendi sertifikalarınızı getirmediyseniz **etkinleştirme engellenir**.
 
 
-#### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getir
+#### <a name="bring-your-own-certificates"></a>Kendi sertifikalarınızı getirme
 
 İmzalama zincirini bu cihazda daha önceki bir adımla zaten eklediniz. Artık uç nokta sertifikaları, düğüm sertifikası, yerel kullanıcı arabirimi sertifikası ve VPN sertifikası yükleyebilirsiniz. Kendi sertifikalarınızı eklemek için aşağıdaki adımları izleyin.
 

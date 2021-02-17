@@ -2,13 +2,13 @@
 title: Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 description: Havuz yapılandırmanızı en son ve önerilen yapılandırmaya güncelleştirme hakkında bilgi edinin
 ms.topic: how-to
-ms.date: 1/6/2021
-ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 2/16/2021
+ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731508"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546049"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 
@@ -36,6 +36,19 @@ Havuz yapılandırması güncelleştirilirken aşağıdakiler göz önünde bulu
    > Sanal makinelerde ve sanal makine ölçek kümelerinde olduğu gibi, her düğüm için kullanılan işletim sistemi tarafından yönetilen disk, VM maliyetine ek olarak bir maliyet doğurur. Yerel SSD düğümlerinde işletim sistemi diski oluşturulduğundan, ' cloudServiceConfiguration ' düğümleri için işletim sistemi diski maliyeti yoktur.
 
 - Havuz ve düğüm başlatma ve silme süreleri, ' cloudServiceConfiguration ' havuzları ve ' virtualMachineConfiguration ' havuzları arasında biraz farklı olabilir.
+
+## <a name="azure-data-factory-custom-activity-pools"></a>Özel etkinlik havuzlarını Azure Data Factory
+
+Azure Batch havuzları, Data Factory özel etkinlikleri çalıştırmak için kullanılabilir. Özel etkinlikleri çalıştırmak için kullanılan ' cloudServiceConfiguration ' havuzlarının silinmesi ve yeni ' virtualMachineConfiguration ' havuzlarının oluşturulması gerekir.
+
+- Yürütmelerin kesintiye uğratılmayacak emin olmak için, silme/yeniden oluşturma işleminden önce işlem hatları duraklamalıdır.
+- Bağlı hizmet yapılandırma değişikliklerinden kaçınmak için aynı havuz kimliği kullanılabilir.
+- Yeni havuzlar oluşturulduğunda işlem hatlarını sürdürür.
+
+Data Factory özel etkinlikleri çalıştırmak için Azure Batch kullanma hakkında daha fazla bilgi için:
+
+- [Bağlı hizmet Azure Batch](../data-factory/compute-linked-services.md#azure-batch-linked-service)
+- [Data Factory işlem hattının özel etkinlikleri](../data-factory/transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

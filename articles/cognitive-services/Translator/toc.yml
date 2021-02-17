@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Translator’a kaydolma
+        - name: Çevirmen kaynağı oluşturma
           href: ./translator-how-to-signup.md
         - name: V3 Metin API’sine geçiş
           href: migrate-to-v3.md

@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365234"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547262"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -76,7 +76,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1, 3,1 ve 5,0. 2,0, 2,2 ve 3,0 sürümleri devre dışı bırakıldı ve artık desteklenmiyor. Otomatik izleme çalışması için lütfen desteklenen bir .NET Core [sürümüne](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) yükseltin.
+> Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1 ve 3,1. 2,0, 2,2 ve 3,0 sürümleri devre dışı bırakıldı ve artık desteklenmiyor. Otomatik izleme çalışması için lütfen desteklenen bir .NET Core [sürümüne](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) yükseltin.
 
 ASP.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantısı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](./asp-net-core.md) , önceki senaryolardan tümünde çalışır.)
 

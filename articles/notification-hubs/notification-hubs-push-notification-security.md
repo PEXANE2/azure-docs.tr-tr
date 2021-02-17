@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76263770"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548259"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs güvenliği
 
@@ -36,7 +36,7 @@ Notification Hubs, *paylaşılan erişim imzası* (SAS) adlı bir varlık düzey
 Bir hub oluştururken, otomatik olarak iki kural oluşturulur: bir **dinleme** haklarıyla (istemci uygulamanın kullandığı) ve biri **Tüm** haklara sahip (uygulamanın arka ucu tarafından kullanılır):
 
 - **Defaultlistensharedaccesssignature**: yalnızca **dinleme** izni verir.
-- **Defaultfullsharedaccesssignature**: **dinleme**, **yönetme**ve **gönderme** izinleri verir. Bu ilke yalnızca uygulamanızın arka ucunda kullanılacaktır. Bunu istemci uygulamalarında kullanmayın; yalnızca **dinleme** erişimiyle bir ilke kullanın. Yeni bir SAS belirteciyle yeni bir özel erişim ilkesi oluşturmak için, bu makalede daha sonra [erişim ilkeleri Için SAS belirteçleri](#sas-tokens-for-access-policies) bölümüne bakın.
+- **Defaultfullsharedaccesssignature**: **dinleme**, **yönetme** ve **gönderme** izinleri verir. Bu ilke yalnızca uygulamanızın arka ucunda kullanılacaktır. Bunu istemci uygulamalarında kullanmayın; yalnızca **dinleme** erişimiyle bir ilke kullanın. Yeni bir SAS belirteciyle yeni bir özel erişim ilkesi oluşturmak için, bu makalede daha sonra [erişim ilkeleri Için SAS belirteçleri](#sas-tokens-for-access-policies) bölümüne bakın.
 
 İstemci uygulamalarından kayıt yönetimi gerçekleştirirken, bildirimler aracılığıyla gönderilen bilgiler hassas değilse (örneğin, hava durumu güncelleştirmeleri), bir Bildirim Hub 'ına erişmenin yaygın bir yolu, kuralın anahtar değerini istemci uygulamasına yalnızca dinlemesi ve kuralın anahtar değerini uygulama arka ucuna tam erişim olarak vermektir.
 
@@ -46,7 +46,7 @@ Uygulamalar anahtar değerini Windows Mağazası istemci uygulamalarına katış
 
 ## <a name="security-claims"></a>Güvenlik talepleri
 
-Diğer varlıklara benzer şekilde, Bildirim Hub 'ı işlemlerine üç güvenlik talebi için izin verilir: **dinle**, **Gönder**ve **Yönet**.
+Diğer varlıklara benzer şekilde, Bildirim Hub 'ı işlemlerine üç güvenlik talebi için izin verilir: **dinle**, **Gönder** ve **Yönet**.
 
 | İste   | Açıklama                                          | İzin verilen işlemler |
 | ------- | ---------------------------------------------------- | ------------------ |
@@ -68,10 +68,10 @@ Yeni bir güvenlik talebi oluşturmak veya mevcut SAS anahtarlarını görüntü
 2. **Tüm kaynaklar**’ı seçin.
 3. Talep oluşturmak istediğiniz Bildirim Hub 'ının adını seçin veya SAS anahtarını görüntüleyin.
 4. Sol taraftaki menüde **erişim ilkeleri**' ni seçin.
-5. Yeni bir güvenlik talebi oluşturmak için **Yeni ilke** ' yi seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Ardından **Tamam**'ı seçin.
+5. Yeni bir güvenlik talebi oluşturmak için **Yeni ilke** ' yi seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Ardından **Tamam**’ı seçin.
 6. Tam bağlantı dizesi (yeni SAS anahtarı dahil), erişim Ilkeleri penceresinde görüntülenir. Daha sonra kullanmak üzere bu dizeyi panoya kopyalayabilirsiniz.
 
-SAS anahtarını belirli bir ilkeden ayıklamak için, istediğiniz SAS anahtarını içeren ilkenin yanındaki **Kopyala** düğmesini seçin. Bu değeri geçici bir konuma yapıştırın, sonra bağlantı dizesinin SAS anahtar kısmını kopyalayın. Bu örnek, **mytestnamespace1**adlı bir Notification Hubs ad alanı ve **policy2**adlı bir ilke kullanır. SAS anahtarı, bir dizenin sonundaki, **Sharedaccesskey**tarafından belirtilen değerdir:
+SAS anahtarını belirli bir ilkeden ayıklamak için, istediğiniz SAS anahtarını içeren ilkenin yanındaki **Kopyala** düğmesini seçin. Bu değeri geçici bir konuma yapıştırın, sonra bağlantı dizesinin SAS anahtar kısmını kopyalayın. Bu örnek, **mytestnamespace1** adlı bir Notification Hubs ad alanı ve **policy2** adlı bir ilke kullanır. SAS anahtarı, bir dizenin sonundaki, **Sharedaccesskey** tarafından belirtilen değerdir:
 
 ```shell
 Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>

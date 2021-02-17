@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d54ecdac739bbc5a072426f5bf73f71ab394159
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418125"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545929"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure dijital TWINS olaylarını yönlendirme için yönetilen bir kimliği etkinleştirme (Önizleme): Azure portal
 
@@ -101,9 +101,10 @@ Kimliğe bir rol atamak için [Azure Portal](https://portal.azure.com)açarak ba
     :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="Bir olay hub 'ı için erişim denetimi (ıAM) sayfasını gösteren Azure portal ekran görüntüsü. + Ekle düğmesi vurgulanır." lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
 
 1. Aşağıdaki **rol ataması Ekle** sayfasında, değerleri girin:
-    * **Rol**: açılan menüden istediğiniz rolü seçin
-    * **Erişim ata**: **Kullanıcı, Grup veya hizmet sorumlusu ' nı** seçin
-    * Şunları **seçin**: burada, rolün atandığı Azure dijital TWINS örneğinizin yönetilen kimliğini seçersiniz. Yönetilen kimliğin adı örneğin adıyla eşleşiyorsa, Azure dijital TWINS örneğinizin adını arayın. Sonucu seçtiğinizde, örneğin kimliği **Seçilen Üyeler** bölümünde görünür.
+    * **Rol**: açılan menüden istediğiniz rolü seçin.
+    * **Erişim ata**: **sistem tarafından atanan yönetilen kimlik** altında **dijital TWINS**' i seçin.
+    * **Abonelik**: Aboneliğinizi seçin. Bu, seçilen abonelik içindeki tüm Azure dijital/WINS yönetilen kimliklerini görüntüler.
+    * Şunları **seçin**: burada, rolün atandığı Azure dijital TWINS örneğinizin yönetilen kimliğini seçersiniz. Yönetilen kimliğin adı örneğin adıyla eşleşiyorsa, Azure dijital TWINS örneğinizin adını seçin. Bunu seçtiğinizde, örneğin kimliği bölmenin alt kısmındaki **Seçili Üyeler** bölümünde görünür.
 
     :::row:::
         :::column:::

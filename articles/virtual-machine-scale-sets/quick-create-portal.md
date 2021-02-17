@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913744"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535289"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında sanal makine ölçek kümesi oluşturma
 
@@ -39,7 +39,7 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
     | ---| ---|
     | Abonelik  | Aboneliğinizi seçin.    |    
     | Kaynak grubu | **Yeni oluştur** ' u seçin ve metin kutusuna *Myvmssresourcegroup* yazın.|
-    | Ad           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Region         | **Doğu ABD**’yi seçin.       |
     | Tür          | **Genel**’i seçin.       |
     | SKU           | **Standart**' ı seçin.       |
@@ -57,7 +57,7 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
 RHEL, CentOS, Ubuntu veya SLES gibi bir Linux görüntüsü ya da Windows Server görüntüsü ile ölçek kümesi dağıtabilirsiniz.
 
 1. Arama kutusuna **Ölçek kümesi** yazın. Sonuçlarda, **Market** altında **Sanal Makine Ölçek Kümeleri**' ni seçin. Sanal makine ölçek **kümeleri** Oluştur sayfasında **Oluştur** ' u seçerek **sanal makine ölçek kümesi oluşturma** sayfasını açarsınız. 
-1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *Myvmssresourcegroup* yazın ve ardından **Tamam** ' ı seçin. 
+1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun ve kaynak grubu listesinden *myvmssresourcegroup* ' yi seçin. 
 1. Ölçek kümesi için ad olarak *myScaleSet* yazın.
 1. **Bölge**' de, bulunduğunuz alana yakın bir bölge seçin.
 1. **Görüntü** için bir market görüntüsü seçin. Bu örnekte, *Ubuntu Server 18,04 LTS*' yi seçtik.

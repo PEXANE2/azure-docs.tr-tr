@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809396"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535136"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -176,15 +176,15 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Azure Sentinel Katkıda Bulunanı](#azure-sentinel-contributor) | Azure Sentinel Katkıda Bulunanı | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Okuyucusu](#azure-sentinel-reader) | Azure Sentinel Okuyucusu | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Yanıtlayıcısı](#azure-sentinel-responder) | Azure Sentinel Yanıtlayıcısı | 3e150937-b8fe-4CFB-8069-0eaf05ecd056 |
-> | [Key Vault Yöneticisi (Önizleme)](#key-vault-administrator-preview) | Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault sertifikaları Müdürü (Önizleme)](#key-vault-certificates-officer-preview) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault Yöneticisi](#key-vault-administrator) | Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault sertifikaları müdürü](#key-vault-certificates-officer) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Katkıda bulunan Key Vault](#key-vault-contributor) | Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin vermez ve gizli dizi, anahtar veya sertifikalara erişmenize izin vermez. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault şifre Müdürü (Önizleme)](#key-vault-crypto-officer-preview) | Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 14b46e9e-c2b7-41B4-b07b-48a6ebf60603 |
-> | [Key Vault şifreleme hizmeti şifreleme kullanıcısı (Önizleme)](#key-vault-crypto-service-encryption-user-preview) | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault şifreleme kullanıcısı (Önizleme)](#key-vault-crypto-user-preview) | Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 12338af0-0e69-4776-kir7-57ae8d297424 |
-> | [Key Vault okuyucu (Önizleme)](#key-vault-reader-preview) | Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
-> | [Key Vault gizli bilgileri Müdürü (Önizleme)](#key-vault-secrets-officer-preview) | Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Key Vault gizli dizi kullanıcısı (Önizleme)](#key-vault-secrets-user-preview) | Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
+> | [Key Vault şifre müdürü](#key-vault-crypto-officer) | Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 14b46e9e-c2b7-41B4-b07b-48a6ebf60603 |
+> | [Key Vault şifreleme hizmeti şifreleme kullanıcısı](#key-vault-crypto-service-encryption-user) | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault şifrelenmiş Kullanıcı](#key-vault-crypto-user) | Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 12338af0-0e69-4776-kir7-57ae8d297424 |
+> | [Key Vault okuyucu](#key-vault-reader) | Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
+> | [Key Vault gizlilikler müdürü](#key-vault-secrets-officer) | Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault gizli dizi kullanıcısı](#key-vault-secrets-user) | Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
 > | [Yönetilen HSM Katılımcısı](#managed-hsm-contributor) | Yönetilen HSM havuzlarını yönetmenize izin verir, ancak bunlara erişimi olmaz. | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Güvenlik Yöneticisi](#security-admin) | Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Güvenlik değerlendirmesi Katılımcısı](#security-assessment-contributor) | Değerlendirmelere Güvenlik Merkezi 'ne gönderim olanağı sağlar | 612c2aa1-CB24-443B-ac28-3ab7272de6f5 |
@@ -2175,8 +2175,9 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 > | **Veri eylemleri** |  |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Delete | Bir blobu silin. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Read | Blob veya Blobların listesini döndürün. |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Move/Action | Blobu bir yoldan diğerine kaydırır |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Write | Bir bloba yazın. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Move/Action | Blobu bir yoldan diğerine kaydırır |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Add/Action | Blob içeriği ekleme sonucunu döndürür |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2200,8 +2201,9 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -4399,6 +4401,8 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/Read | Yönetilen örneklerin listesini döndürün veya belirtilen yönetilen örnek için özellikleri alır. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/azureadonlyauthentications/* |  |
 > | [Microsoft. Security/Sqlgüvenlik](resource-provider-operations.md#microsoftsecurity)açıcısı |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/TINS/Read | Yönetilen örnek yöneticilerinin bir listesini alır. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/TINS/Read | Belirli bir Azure Active Directory yönetici nesnesini alır |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4461,7 +4465,9 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7562,7 +7568,7 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Key Vault Yöneticisi (Önizleme)
+### <a name="key-vault-administrator"></a>Key Vault Yöneticisi
 
 Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesneleri (sertifikalar, anahtarlar ve gizli diziler dahil) gerçekleştirin. Anahtar Kasası kaynakları yönetemez veya rol atamaları yönetilemez. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7615,13 +7621,13 @@ Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesnele
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>Key Vault sertifikaları Müdürü (Önizleme)
+### <a name="key-vault-certificates-officer"></a>Key Vault sertifikaları müdürü
 
 İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7676,7 +7682,7 @@ Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesnele
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin verme
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>Key Vault şifre Müdürü (Önizleme)
+### <a name="key-vault-crypto-officer"></a>Key Vault şifre müdürü
 
 Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7790,13 +7796,13 @@ Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi 
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault şifreleme hizmeti şifreleme kullanıcısı (Önizleme)
+### <a name="key-vault-crypto-service-encryption-user"></a>Key Vault şifreleme hizmeti şifreleme kullanıcısı
 
 Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7839,13 +7845,13 @@ Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekle
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault şifreleme kullanıcısı (Önizleme)
+### <a name="key-vault-crypto-user"></a>Key Vault şifrelenmiş Kullanıcı
 
 Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7894,13 +7900,13 @@ Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azur
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault okuyucu (Önizleme)
+### <a name="key-vault-reader"></a>Key Vault okuyucu
 
 Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7955,13 +7961,13 @@ Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta veriler
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>Key Vault gizli bilgileri Müdürü (Önizleme)
+### <a name="key-vault-secrets-officer"></a>Key Vault gizlilikler müdürü
 
 Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -8014,13 +8020,13 @@ Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhang
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Key Vault gizli dizi kullanıcısı (Önizleme)
+### <a name="key-vault-secrets-user"></a>Key Vault gizli dizi kullanıcısı
 
 Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -8055,7 +8061,7 @@ Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi '
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

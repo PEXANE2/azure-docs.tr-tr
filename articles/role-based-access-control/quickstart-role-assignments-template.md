@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure rol ataması ekleme-Azure RBAC'
+title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure rolü atama-Azure RBAC'
 description: Azure Resource Manager şablonları ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kaynak grubu kapsamındaki bir kullanıcı için Azure kaynaklarına erişim izni verme hakkında bilgi edinin.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690451"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559274"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure rol ataması ekleme
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak bir Azure rolü atama
 
 Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu hızlı başlangıçta, bir kaynak grubu oluşturur ve kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz. Bu hızlı başlangıç, erişim izni vermek için bir Azure Resource Manager şablonu (ARM şablonu) kullanır.
 
@@ -29,11 +29,11 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Rol atamaları eklemek için şunları yapmanız gerekir:
+Azure rolleri atamak ve rol atamalarını kaldırmak için şunları yapmanız gerekir:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi izinler
-- Rol ataması eklemek için üç öğe belirtmeniz gerekir: güvenlik sorumlusu, rol tanımı ve kapsam. Bu hızlı başlangıçta, güvenlik sorumlusu sizin ya da dizininizde bulunan başka bir Kullanıcı, rol tanımı [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor)ve kapsam sizin belirttiğiniz bir kaynak grubudur.
+- Rol atamak için üç öğe belirtmeniz gerekir: güvenlik sorumlusu, rol tanımı ve kapsam. Bu hızlı başlangıçta, güvenlik sorumlusu sizin ya da dizininizde bulunan başka bir Kullanıcı, rol tanımı [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor)ve kapsam sizin belirttiğiniz bir kaynak grubudur.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 

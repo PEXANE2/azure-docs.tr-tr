@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
-ms.translationtype: HT
+ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372298"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555859"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Azure planı kapsamındaki abonelikleri bir iş ortağından diğerine aktarma (Önizleme)
 
@@ -22,7 +22,7 @@ Bu makale, Azure aboneliğinizin faturalama sahipliğini aktarmadan önce ve akt
 
 Bu geçiş, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak atanan mevcut kullanıcı, grup ve hizmet sorumlularını etkilemez. [Azure RBAC](../../role-based-access-control/overview.md) Azure kaynaklarına erişebilecek kişileri, bu kişilerin kaynaklarla yapabilecekleri işlemleri ve erişebilecekleri alanları yönetmenize yardımcı olur. Abonelik aktarımında yeni iş ortağınıza kaynaklarınıza Azure RBAC erişimi verilmez. Azure RBAC erişimi önceki iş ortağınızda kalır.
 
-Bu nedenle, Azure RBAC erişimini eski iş ortağınızdan kaldırıp yeni iş ortağınıza eklemeniz önemlidir. Yeni iş ortağınıza erişim verme hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) Önceki iş ortağınızın Azure RBAC erişimini kaldırma hakkında daha fazla bilgi için bkz. [Rol atamasını kaldırma](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
+Bu nedenle, Azure RBAC erişimini eski iş ortağınızdan kaldırıp yeni iş ortağınıza eklemeniz önemlidir. Yeni iş ortağınıza erişim verme hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md) Önceki iş ortağınızın Azure RBAC erişimini kaldırma hakkında daha fazla bilgi için bkz. [Azure rol atamalarını kaldırma](../../role-based-access-control/role-assignments-remove.md).
 
 Ayrıca, yeni iş ortağınız aboneliklerinize otomatik olarak [Yönetici Adına (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) erişimi elde etmez. AOBO, iş ortağınızın Azure aboneliklerini sizin adınıza yönetmesi için gereklidir. Azure ayrıcalıkları hakkında daha fazla bilgi için bkz. [Müşterinin hizmetini veya aboneliğini yönetme izinleri alma](/partner-center/customers-revoke-admin-privileges).
 

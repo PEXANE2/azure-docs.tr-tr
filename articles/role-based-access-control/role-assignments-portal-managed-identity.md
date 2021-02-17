@@ -1,31 +1,31 @@
 ---
-title: Yönetilen kimlik (Önizleme) için rol ataması ekleme-Azure RBAC
-description: Yönetilen kimlikle başlayarak bir rol ataması eklemeyi öğrenin ve ardından Azure portal ve Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanarak kapsamı ve rolü seçin.
+title: Azure rollerini yönetilen bir kimliğe atama (Önizleme)-Azure RBAC
+description: Yönetilen kimlikle başlayarak Azure rolleri atamayı öğrenin ve ardından Azure portal ve Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanarak kapsamı ve rolü seçin.
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122494"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556855"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) için rol ataması ekleme
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Yönetilen bir kimliğe Azure rolleri atama (Önizleme)
 
-[Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md)başlığı altında açıklandığı gibi, yönetilen bir kimlik için rol atamalarını, **ERIŞIM denetimi (IAM)** sayfasını kullanarak ekleyebilirsiniz. Erişim denetimi (ıAM) sayfasını kullandığınızda, kapsamla başlar ve ardından yönetilen kimliği ve rolü seçersiniz. Bu makalede, yönetilen bir kimlik için rol atamaları eklemenin alternatif bir yolu açıklanmaktadır. Bu adımları kullanarak, yönetilen kimlikle başlayıp kapsamı ve rolü seçersiniz.
+[Azure Portal kullanarak Azure rolleri atama](role-assignments-portal.md)bölümünde açıklandığı gibi **ERIŞIM denetimi (IAM)** sayfasını kullanarak bir rolü yönetilen kimliğe atayabilirsiniz. Erişim denetimi (ıAM) sayfasını kullandığınızda, kapsamla başlar ve ardından yönetilen kimliği ve rolü seçersiniz. Bu makalede, yönetilen bir kimlik için rol atamak için alternatif bir yol açıklanır. Bu adımları kullanarak, yönetilen kimlikle başlayıp kapsamı ve rolü seçersiniz.
 
 > [!IMPORTANT]
-> Bu alternatif adımları kullanan yönetilen bir kimlik için rol ataması eklemek Şu anda önizlemededir.
+> Bu alternatif adımları kullanarak yönetilen bir kimliğe bir rol atama şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
@@ -92,5 +92,5 @@ Yönetilen kimlikle başlayarak Kullanıcı tarafından atanan yönetilen kimli�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md)
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)
 - [Azure portal kullanarak Azure rol atamalarını listeleyin](role-assignments-list-portal.md)

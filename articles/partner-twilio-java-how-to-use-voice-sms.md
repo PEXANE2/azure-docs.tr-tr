@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652883"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548735"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java 'daki Voice ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -76,7 +76,7 @@ Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğ
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Java uygulaması oluşturma
 1. Twilio JAR 'yi edinin ve Java derleme yolunuza ve WAR dağıtım derlemenize ekleyin. [https://github.com/twilio/twilio-java][twilio_java]' De, GitHub kaynaklarını indirebilir ve kendı jar 'nizi oluşturabilir veya önceden oluşturulmuş BIR jar indirebilirsiniz (bağımlılıkları olan veya olmayan).
-2. JDK 'nin **CAcert** anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, [https://api.twilio.com][twilio_api_service] Twilio API 'lerini kullandığınızda çağrılan, hizmet için sertifika yetkilisi (CA) sertifikasıdır. JDK 'nin **CAcert** anahtar deposu 'un doğru CA sertifikasını içerdiğini sağlama hakkında bilgi için bkz. [Java CA sertifika deposuna sertifika ekleme][add_ca_cert].
+2. JDK 'nin **CAcert** anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, [https://api.twilio.com][twilio_api_service] Twilio API 'lerini kullandığınızda çağrılan, hizmet için sertifika yetkilisi (CA) sertifikasıdır.
 
 Java için Twilio istemci kitaplığı 'nı kullanmaya yönelik ayrıntılı yönergeler, [Azure 'Da Java uygulamasında Twilio kullanarak nasıl telefon araması][howto_phonecall_java]yapılacağını bulabilirsiniz.
 
@@ -217,7 +217,6 @@ Twilio hizmetinin temellerini öğrendiğinize göre artık daha fazla bilgi edi
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
 [misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message

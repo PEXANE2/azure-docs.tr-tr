@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491030"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545845"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanın
 
@@ -86,6 +86,8 @@ Bkz. [Anahtar Kasası tümleştirmesi Için Önkoşullar](#prerequisites-for-key
 
 ### <a name="add-a-plain-or-secret-value"></a>Düz veya gizli değer ekleme
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
 1. **API 'ler** altında, **adlandırılmış değerler**  >  **+ Ekle**' yi seçin.
 1. Bir **ad** tanımlayıcısı girin ve ilkelerde özelliğe başvurmak için kullanılan bir **görünen ad** girin.
@@ -95,6 +97,50 @@ Bkz. [Anahtar Kasası tümleştirmesi Için Önkoşullar](#prerequisites-for-key
 1. **Oluştur**’u seçin.
 
 Adlandırılmış değer oluşturulduktan sonra, adı seçerek düzenleyebilirsiniz. Görünen adı değiştirirseniz, adlandırılmış değere başvuruda bulunan tüm ilkeler, yeni görünen adı kullanacak şekilde otomatik olarak güncelleştirilir.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı kullanmaya başlamak için:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Adlandırılmış bir değer eklemek için [az APIM NV Create](/cli/azure/apim/nv#az_apim_nv_create) komutunu kullanın:
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+Adlandırılmış bir değer oluşturduktan sonra, [az APIM NV Update](/cli/azure/apim/nv#az_apim_nv_update) komutunu kullanarak bunu güncelleştirebilirsiniz. Tüm adlandırılmış değerlerinizi görmek için [az APIM NV List](/cli/azure/apim/nv#az_apim_nv_list) komutunu çalıştırın:
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Bu örnek için oluşturduğunuz adlandırılmış değerin ayrıntılarını görmek için [az APIM NV Show](/cli/azure/apim/nv#az_apim_nv_show) komutunu çalıştırın:
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Bu örnek gizli bir değerdir. Önceki komut değeri döndürmez. Değeri görmek için [az APIM NV Show-Secret](/cli/azure/apim/nv#az_apim_nv_show_secret) komutunu çalıştırın:
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Adlandırılmış bir değeri silmek için [az APIM NV Delete](/cli/azure/apim/nv#az_apim_nv_delete) komutunu kullanın:
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>Adlandırılmış bir değer kullan
 
