@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: Windows Masaüstü .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js elektron
+          href: quickstart-v2-nodejs-desktop.md
     - name: Daemon veya arka uç hizmeti
       items:
         - name: .NET Core konsolu (daemon)
           href: quickstart-v2-netcore-daemon.md
         - name: Python konsolu daemon
           href: quickstart-v2-python-daemon.md
+        - name: Node.js konsol arka plan programı
+          href: quickstart-v2-nodejs-console.md
         - name: Java konsol Daemon
           href: quickstart-v2-java-daemon.md
 - name: Öğreticiler
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
+        - name: Node.js Web uygulaması öğreticisi
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobil ve masaüstü
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: Android uygulamanızda paylaşılan cihaz modunu kullanma
           href: tutorial-v2-shared-device-mode.md
+        - name: Elektron masaüstü uygulaması
+          href: tutorial-v2-nodejs-desktop.md
     - name: Daemon veya arka uç hizmeti
       items:
         - name: ASP.NET daemon web uygulaması
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js konsol arka plan programı
+          href: tutorial-v2-nodejs-console.md
 - name: Örnekler
   href: sample-v2-code.md
 - name: Kavramlar

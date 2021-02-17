@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930722"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547287"
 ---
 # <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="Moclenmiş API yanıtı":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -46,18 +46,20 @@ Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir.
 
 
 1. Azure portal oturum açın ve API Management örneğinize gidin.
-1. **API 'leri**seçin  >  **+ API**  >  **boş API 'si**ekleyin.
+1. **API 'leri** seçin  >  **+ API**  >  **boş API 'si** ekleyin.
 1. **Boş BIR API oluştur** penceresinde **tam**' ı seçin.
-1. **Görünen ad**için *Test API 'si* girin.
-1. **Ürün**için **sınırsız** ' yı seçin.
+1. **Görünen ad** için *Test API 'si* girin.
+1. **Ürün** için **sınırsız** ' yı seçin.
 1. **Ağ geçitlerinde** **yönetilen** ' ın seçili olduğundan emin olun.
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Moclenmiş API yanıtı":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Boş API oluşturma":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>Test API’sine işlem ekleme
 
 Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş API 'ye bir işlem ekleyin. Bu bölümdeki adımları tamamladıktan sonra işlem çağrılırsa bir hata oluşur. [Yanıt verme sahte işlem](#enable-response-mocking) bölümünde adımları tamamladıktan sonra herhangi bir hata almaz.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Önceki adımda oluşturduğunuz API’yi seçin.
 1. **+ İşlem Ekle**’yi seçin.
@@ -77,7 +79,7 @@ Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş A
 1. **Örnek** metin kutusuna `{ "sampleField" : "test" }` girin.
 1. **Kaydet**’i seçin.
 
-:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Moclenmiş API yanıtı" border="false":::
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="API işlemi ekleme" border="false":::
 
 Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları diğer sekmelerde yapılandırılabilir; örneğin:
 
@@ -87,6 +89,39 @@ Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları di�
 |**Sorgu**     |  Sorgu parametreleri ekleyin. Bir ad ve açıklama sağlamanın yanı sıra, bir sorgu parametresine atanmış değerler sağlayabilirsiniz. Varsayılan olarak işaretlenebilecek değerlerde biri (isteğe bağlı).        |
 |**İstek**     |  İstek içerik türleri, örnekler ve şemalar tanımlayın.       |
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı kullanmaya başlamak için:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Test API 'nize bir işlem eklemek için [az APIM API Operation Create](/cli/azure/apim/api/operation#az_apim_api_operation_create) komutunu çalıştırın:
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+Bir API 'nin tüm işlemlerinizi görmek için [az APIM API Operation List](/cli/azure/apim/api/operation#az_apim_api_operation_list) komutunu çalıştırın:
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+Bir işlemi kaldırmak için [az APIM API Operation Delete](/cli/azure/apim/api/operation#az_apim_api_operation_delete) komutunu kullanın. Önceki komuttan işlem KIMLIĞINI alın.
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+Bu işlemi bu makalenin geri kalanında kullanmak üzere saklayın.
+
+---
+
 ## <a name="enable-response-mocking"></a>Sahte yanıt vermeyi etkinleştirme
 
 1. [Test API 'Si oluşturma](#create-a-test-api)bölümünde oluşturduğunuz API 'yi seçin.
@@ -94,15 +129,15 @@ Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları di�
 1. Sağdaki pencerede, **Tasarım** sekmesinin seçili olduğundan emin olun.
 1. **Gelen işlem** penceresinde **+ ilke Ekle**' yi seçin.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Moclenmiş API yanıtı" border="false":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="İşlem İlkesi Ekle" border="false":::
 
 1. Galeriden **sahte yanıtlar**  ' ı seçin.
 
-    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Moclenmiş API yanıtı" border="false":::
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Sahte yanıtlar ilke kutucuğu" border="false":::
 
 1. **API Management yanıtı** metin kutusuna **200 OK, application/json** yazın. Bu seçim, API’nizin önceki bölümde tanımladığınız yanıt örneğini döndürmesi gerektiğini gösterir.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Moclenmiş API yanıtı":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Sahte işlem yanıtını ayarla":::
 
 1. **Kaydet**’i seçin.
 
@@ -115,11 +150,11 @@ Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları di�
 1. **Test** sekmesini seçin.
 1. **Test çağrısı** API’sinin seçili olduğundan emin olun. Bir test çağrısı yapmak için **Gönder**’i seçin.
 
-   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Moclenmiş API yanıtı":::
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Sahte API’yi test etme":::
 
 1. **HTTP yanıtı**, öğreticinin ilk bölümde örnek olarak sağlanan JSON’u görüntüler.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Moclenmiş API yanıtı":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Sahte HTTP yanıtı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

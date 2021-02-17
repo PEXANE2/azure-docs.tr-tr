@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226633"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557031"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -55,7 +55,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Doğu ABD            | Kuzey Avrupa         |                     | Doğu Avustralya |
 | Doğu ABD 2          | Güney Birleşik Krallık             |                     |                |
 | Orta Güney ABD | West Europe          |                     |                |
-| US Gov Virginia * |                      |                     |                |
+| US Gov Virginia    |                      |                     |                |
 | Batı ABD 2        |                      |                     |                |
 
 

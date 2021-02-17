@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491435"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546457"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -34,16 +34,16 @@ Azure Notification Hubs iki kaynak düzeyine sahiptir: hub 'lar ve ad alanları.
 
 En son fiyatlandırma ayrıntıları [Notification Hubs fiyatlandırma] sayfasında bulunabilir. Notification Hubs ad alanı düzeyinde faturalandırılır. (Bir ad alanının tanımı için, "Notification Hubs kaynak yapısı nedir?" başlığına bakın. Notification Hubs üç katman sunar:
 
-* **Ücretsiz** : Bu katman, anında iletme özelliklerini keşfetmek için iyi bir başlangıç noktasıdır. Üretim uygulamaları için önerilmez. Hizmet düzeyi sözleşmesi (SLA) garantisi olmadan, her ay ad alanı başına 500 cihaz ve 1.000.000 gönderim edinirsiniz.
-* **Temel** : Bu katman (veya Standart katman), daha küçük üretim uygulamaları için önerilir. Bir temel olarak ayda ad alanı başına 200.000 cihaz ve 10.000.000 gönderim alırsınız.
-* **Standart** : Bu katman, orta ve büyük üretim uygulamaları için önerilir. Bir temel olarak ayda ad alanı başına 10.000.000 cihaz ve 10.000.000 gönderim alırsınız. Zengin telemetri (belirtilen gönderim durumu hakkında ek veriler) içerir.
+* **Ücretsiz**: Bu katman, anında iletme özelliklerini keşfetmek için iyi bir başlangıç noktasıdır. Üretim uygulamaları için önerilmez. Hizmet düzeyi sözleşmesi (SLA) garantisi olmadan, her ay ad alanı başına 500 cihaz ve 1.000.000 gönderim edinirsiniz.
+* **Temel**: Bu katman (veya Standart katman), daha küçük üretim uygulamaları için önerilir. Bir temel olarak ayda ad alanı başına 200.000 cihaz ve 10.000.000 gönderim alırsınız.
+* **Standart**: Bu katman, orta ve büyük üretim uygulamaları için önerilir. Bir temel olarak ayda ad alanı başına 10.000.000 cihaz ve 10.000.000 gönderim alırsınız. Zengin telemetri (belirtilen gönderim durumu hakkında ek veriler) içerir.
 
 Standart katman özellikleri:
 
-* **Zengin telemetri** : herhangi bir anında iletme isteğini izlemek platform bildirim sistemi ve hata ayıklama Için geri bildirimde bulunmak Için Ileti telemetri başına Notification Hubs kullanabilirsiniz.
-* **Çoklu kiracı** : ad alanı düzeyinde platform bildirim sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
-* **Zamanlanmış gönderim** : her zaman gönderilmek üzere bildirimler zamanlayabilirsiniz.
-* **Toplu işlemler** : kayıtları [dışarı/içeri] aktarma belgesinde açıklandığı gibi dışarı aktarma/içeri aktarma işlevlerini sunar.
+* **Zengin telemetri**: herhangi bir anında iletme isteğini izlemek platform bildirim sistemi ve hata ayıklama Için geri bildirimde bulunmak Için Ileti telemetri başına Notification Hubs kullanabilirsiniz.
+* **Çoklu kiracı**: ad alanı düzeyinde platform bildirim sistemi kimlik bilgileriyle çalışabilirsiniz. Bu seçenek, kiracıları aynı ad alanı içinde kolayca hub 'lara bölmenizin olanaklı olmasına olanak sağlar.
+* **Zamanlanmış gönderim**: her zaman gönderilmek üzere bildirimler zamanlayabilirsiniz.
+* **Toplu işlemler**: kayıtları [dışarı/içeri] aktarma belgesinde açıklandığı gibi dışarı aktarma/içeri aktarma işlevlerini sunar.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Notification Hubs SLA nedir?
 
@@ -102,6 +102,10 @@ PNS, bildirim teslim etmek için herhangi bir SLA garantisi vermez. Ancak, çoğ
 ### <a name="is-there-any-latency-guarantee"></a>Gecikme garantisi var mı?
 
 Anında iletme bildirimlerinin doğası nedeniyle (bunlar harici, platforma özgü bir PNS tarafından teslim edilir), gecikme garantisi yoktur. Genellikle, anında iletme bildirimlerinin çoğu birkaç dakika içinde dağıtılır.
+
+### <a name="where-does-azure-notification-hubs-store-data"></a>Azure Notification Hubs verileri nerede depolar?
+
+Azure Notification Hubs müşteri kayıt verilerini müşteri tarafından seçilen bölgede depolar. Notification Hubs meta veri olağanüstü durum kurtarma kapsamı (Notification Hubs adı, bağlantı dizesi ve diğer kritik bilgiler) sağlar. Brezilya Güney ve Güneydoğu Asya dışındaki tüm bölgelerde meta veri yedeklemesi, farklı bir bölgede (genellikle Azure eşleştirilmiş bölge) barındırılır. Brezilya Güney ve Güneydoğu Asya bölgelerinde yedeklemeler, bu bölgelere yönelik veri fazlalığını karşılamak için aynı bölgede depolanır.
 
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Ad alanları ve Bildirim Hub 'ları ile bir çözüm tasarlarken göz önünde bulundurmanız gerekenler nelerdir?
 
@@ -188,7 +192,7 @@ Azure Notification Hubs, özellikle bırakılan bildirimlerin en yaygın senaryo
 
 Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine izin verebilir. Ölçümlerin ayrıntıları [Notification Hubs ölçümleri] sayfasında bulunabilir.
 
-Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [.Net Ile Azure izleyici ölçümlerini alın](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Bu örnek, Kullanıcı adını ve parolayı kullanır. Bir sertifika kullanmak için, [Bu örnekte](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)gösterildiği gibi bir sertifika sağlamak üzere FromServicePrincipal metodunu aşırı yükleme. 
 - [Bir kaynak için ölçümleri ve etkinlik günlüklerini alma](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
@@ -197,7 +201,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 > [!NOTE]
 > Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, iOS ve macOS için APNs ve Android cihazlar için FCM) sağlar. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
 
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com
 [Notification Hubs fiyatlandırması]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST API 'Leri Notification Hubs]: /previous-versions/azure/reference/dn530746(v=azure.100)
@@ -209,6 +213,6 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Notification Hubs sorunlarını giderme]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs ölçümleri]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Kayıt verme/Içeri aktarma]: ./export-modify-registrations-bulk.md
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

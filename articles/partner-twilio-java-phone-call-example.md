@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: cad25990d0ba7e27f4a90adc587f0c8a0a2c551a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fdaa2eeef58599cbff8dbf7daa34f9a30f31b9cb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521079"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548769"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Azure 'da Java uygulamasında Twilio kullanarak telefon araması yapma
 Aşağıdaki örnekte, Azure 'da barındırılan bir Web sayfasından çağrı yapmak için Twilio nasıl kullanabileceğiniz gösterilmektedir. Elde edilen uygulama, aşağıdaki ekran görüntüsünde gösterildiği gibi kullanıcıdan telefon araması değerlerini ister.
@@ -32,7 +32,7 @@ Bu konudaki kodu kullanmak için aşağıdakileri yapmanız gerekir:
    Bu konudaki kod önceden oluşturulmuş TwilioJava-3.3.8-Dependencies JAR kullanılarak yazılmıştır.
 3. JAR 'yi Java derleme yolunuza ekleyin.
 4. Bu Java uygulamasını oluşturmak için çakışan küreler kullanıyorsanız, Twilio JAR 'yi, tutulma 'in dağıtım derleme özelliğini kullanarak uygulama dağıtım dosyanıza (WAR) dahil edin. Bu Java uygulamasını oluşturmak için çakışan küreler kullanmıyorsanız, Twilio JAR 'in Java uygulamanızla aynı Azure rolüne eklendiğinden ve uygulamanızın sınıf yoluna eklendiğinden emin olun.
-5. CAcert anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, [https://api.twilio.com][twilio_api_service] Twilio API 'lerini kullandığınızda çağrılan, hizmet için sertifika yetkilisi (CA) sertifikasıdır. Bu CA sertifikasını JDK 'nin CAcert deposuna ekleme hakkında daha fazla bilgi için bkz. [Java CA sertifika deposuna sertifika ekleme][add_ca_cert].
+5. CAcert anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, [https://api.twilio.com][twilio_api_service] Twilio API 'lerini kullandığınızda çağrılan, hizmet için sertifika yetkilisi (CA) sertifikasıdır.
 
 Ayrıca, [Azure Toolkit for Eclipse kullanarak Merhaba Dünya uygulama oluşturma][azure_java_eclipse_hello_world]hakkında bilgi sahibi veya Azure 'Da, çakışan küreler kullanmıyorsanız Java uygulamalarını barındırmak için kullanabileceğiniz diğer teknikler hakkında bilgi sahibi olmanız önerilir.
 
@@ -182,18 +182,17 @@ Uygulamanızı çalıştırmak için üst düzey adımlar aşağıda verilmişti
 Azure 'a dağıtmaya hazırsanız, buluta dağıtım için yeniden derleyin, Azure 'a dağıtın ve tarayıcıda http://*your_hosted_name*. cloudapp.net/TwilioCloud/callform.jsp 'yi çalıştırın ( *your_hosted_name* değerini değiştirin).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu kod, Azure 'da Java 'da Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örnek:
+Bu kod, Azure 'da Java 'da Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örneğin:
 
 * Bir Web formu kullanmak yerine, telefon numaralarını depolamak ve metin çağırmak için Azure Storage bloblarını veya SQL veritabanını kullanabilirsiniz. Java 'da Azure Storage bloblarını kullanma hakkında daha fazla bilgi için bkz. [Java 'Dan blob Storage hizmetini kullanma][howto_blob_storage_java]. 
 * Twilio hesap KIMLIĞI ve kimlik doğrulama belirtecini dağıtımınızın yapılandırma ayarlarından almak için, makecall.jsp içindeki değerleri sabit kodlamak yerine **Roleenvironment. getConfigurationSettings** kullanabilirsiniz. **Roleenvironment** sınıfı hakkında daha fazla bilgi için bkz. [JSP 'de Azure hizmeti çalışma zamanı kitaplığını kullanma][azure_runtime_jsp].
-* makecall.jsp kodu, URL değişkenine Twilio tarafından sağlanmış bir URL 'yi atar [https://twimlets.com/message][twimlet_message_url] . **Url** Bu URL, Twilio biçimlendirme dili (TwiML) yanıtını sağlar ve bu çağrı ile nasıl devam edeceğine Twilio. Örneğin, döndürülen TwiML, metnin çağrı alıcısına konuşulmasına neden **olan bir &lt; &gt; değer olan** fiil içerebilir. Twilio tarafından sağlanmış URL 'yi kullanmak yerine, Twilio 'ın isteğine yanıt vermek için kendi hizmetinizi oluşturabilirsiniz; daha fazla bilgi için bkz. [Java 'Daki Voice ve SMS özellikleri Için Twilio kullanma][howto_twilio_voice_sms_java]. TwiML hakkında daha fazla bilgi adresinde bulunabilir ve bu konuda [https://www.twilio.com/docs/api/twiml][twiml] daha fazla bilgi **&lt; &gt;** ve diğer Twilio fiilleri hakkında daha fazla bilgi bulabilirsiniz [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
+* makecall.jsp kodu, URL değişkenine Twilio tarafından sağlanmış bir URL 'yi atar [https://twimlets.com/message][twimlet_message_url] .  Bu URL, Twilio biçimlendirme dili (TwiML) yanıtını sağlar ve bu çağrı ile nasıl devam edeceğine Twilio. Örneğin, döndürülen TwiML, metnin çağrı alıcısına konuşulmasına neden **olan bir &lt; &gt; değer olan** fiil içerebilir. Twilio tarafından sağlanmış URL 'yi kullanmak yerine, Twilio 'ın isteğine yanıt vermek için kendi hizmetinizi oluşturabilirsiniz; daha fazla bilgi için bkz. [Java 'Daki Voice ve SMS özellikleri Için Twilio kullanma][howto_twilio_voice_sms_java]. TwiML hakkında daha fazla bilgi adresinde bulunabilir ve bu konuda [https://www.twilio.com/docs/api/twiml][twiml] daha fazla bilgi **&lt; &gt;** ve diğer Twilio fiilleri hakkında daha fazla bilgi bulabilirsiniz [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
 * Adresindeki Twilio güvenlik kılavuzlarını okuyun [https://www.twilio.com/docs/security][twilio_docs_security] .
 
 Twilio hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs][twilio_docs] ..
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 * [Java 'daki Voice ve SMS özellikleri için Twilio kullanma][howto_twilio_voice_sms_java]
-* [Java CA sertifika deposuna sertifika ekleme][add_ca_cert]
 
 [twilio_pricing]: https://www.twilio.com/pricing
 [try_twilio]: https://www.twilio.com/try-twilio
@@ -203,7 +202,6 @@ Twilio hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs][twilio
 [twimlet_message_url]: https://twimlets.com/message
 [twiml]: https://www.twilio.com/docs/api/twiml
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [azure_java_eclipse_hello_world]: /java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app
 [howto_twilio_voice_sms_java]: partner-twilio-java-how-to-use-voice-sms.md
 [howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/

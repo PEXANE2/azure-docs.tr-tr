@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535357"
+ms.locfileid: "100547766"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -83,22 +83,19 @@ Hizmet adı gereksinimleri:
 
 ## <a name="choose-a-location"></a>Konum seçin
 
-Azure Bilişsel Arama çoğu bölgede kullanılabilir. Desteklenen bölgelerin listesi [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulunabilir.
+Azure Bilişsel Arama, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)belgelendiği gibi çoğu bölgede kullanılabilir.
 
-> [!Note]
-> Orta Hindistan ve BAE Kuzey şu anda yeni hizmetlerde kullanılamıyor. Bu bölgelerde zaten bulunan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Kısıtlamalar geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlamalar artık uygulanmadıysa bu notun kaldırılması gerekir.
->
-> Çift şifreleme yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Çift şifreleme](search-security-overview.md#double-encryption).
+Genel olarak, birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
 
-### <a name="requirements"></a>Gereksinimler
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](../best-practices-availability-paired-regions.md#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
 
- AI zenginleştirme kullanıyorsanız, arama hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
+Aşağıdaki özellikler yalnızca belirli bölgelerde kullanılabilir:
 
- İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](../best-practices-availability-paired-regions.md#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
+* AI zenginleştirme, bilişsel hizmetlerin Azure Bilişsel Arama ile aynı bölgede olmasını gerektirir. Önce bilişsel [Hizmetler için bölgeyi](https://azure.microsoft.com/pricing/details/cognitive-services/) seçin (liste daha küçüktür) ve ardından arama hizmeti için aynı bölgeyi seçin.
 
-### <a name="recommendations"></a>Öneriler
+* Çift şifreleme yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Çift şifreleme](search-security-overview.md#double-encryption)
 
-Birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
+* Belirli bir tarihten sonra oluşturulan hizmetlerde, kullanılabilirlik alanı desteği belirli bölgelerde sunulur. Daha fazla bilgi için bkz. [performans Için ölçek içinde "kullanılabilirlik alanları"](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Fiyatlandırma katmanı seçin
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185895"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555899"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -88,7 +88,7 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -307,9 +307,9 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>Rol atamaları oluşturma
+### <a name="assign-roles"></a>Rolleri atama
 
-- Kullanıcılar, gruplar ve hizmet sorumluları için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) ' u kullanın. Daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma](role-assignments-cli.md).
+- Kullanıcılara, gruplara ve hizmet sorumlularına roller atamak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) ' u kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure rolleri atama](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
     | Sanal makine ölçek kümeleri | [Azure CLı kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Diğer hizmetler | [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Sistem tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Rolleri sistem tarafından atanan yönetilen kimliklere atamak için [az role atama Create](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
     | Sanal makine ölçek kümeleri | [Azure CLı kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Diğer hizmetler | [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Azure CLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Kullanıcı tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Kullanıcı tarafından atanan yönetilen kimliklere roller atamak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -361,7 +361,7 @@ Bu bölümde, anahtar kasalarınızı güncelleştirmek için temel adımlar aç
 
 1. Azure Data Lake Storage 1. kullanıyorsanız, uygun ACL 'Leri atayın. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. depolanan verileri güvenli hale getirme](../data-lake-store/data-lake-store-secure-data.md).
 
-1. Azure Data Lake Storage 2. kullanıyorsanız, uygun ACL 'Leri atayın. Daha fazla bilgi için [Azure Data Lake Storage 2. erişim denetimi](../storage/blobs/data-lake-storage-access-control.md)bölümüne bakın.
+1. Azure Data Lake Storage 2. kullanıyorsanız, uygun ACL 'Leri atayın. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Nesil'de erişim denetimi](../storage/blobs/data-lake-storage-access-control.md).
 
 1. Azure dosyaları kullanıyorsanız, uygun ACL 'Leri atayın.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: d4736515d8e011ce1e72c51ecb3ce1cfd2e1e1cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5c8bd335832a950385f88f13dc31eb7f6159f831
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978535"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548140"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Azure VM'ye Uzak Masaüstü ile bağlanmaya çalıştığınızda dahili hata oluşuyor
 
@@ -121,7 +121,7 @@ Başlamak için [seri konsoluna bağlanın ve bir PowerShell örneği açın](./
 
     1. Sorun yaşayan VM 'ye bağlantısı olan çalışan bir VM 'den, Microsoft Yönetim Konsolu 'Nu açmak için **Çalıştır** kutusuna **MMC** yazın.
     2. **Dosya** menüsünde, **ek bileşen Ekle/Kaldır**' ı seçin, **Sertifikalar**' ı seçin ve ardından **Ekle**' yi seçin.
-    3. **Bilgisayar hesapları**' nı seçin, **başka bir bilgisayar**seçin ve ardından sorun sanal makinesinin IP adresini ekleyin.
+    3. **Bilgisayar hesapları**' nı seçin, **başka bir bilgisayar** seçin ve ardından sorun sanal makinesinin IP adresini ekleyin.
     4. **Uzak Desktop\Certificates** klasörüne gidin, sertifikaya sağ tıklayın ve **Sil**' i seçin.
     5. Seri konsolundaki bir PowerShell örneğinde, Uzak Masaüstü yapılandırma hizmetini yeniden başlatın:
 
@@ -134,7 +134,7 @@ Başlamak için [seri konsoluna bağlanın ve bir PowerShell örneği açın](./
 3. MachineKeys klasörünün iznini sıfırlayın.
 
     ```powershell
-    remove-module psreadline icacls
+    remove-module psreadline 
 
     md c:\temp
 
@@ -266,7 +266,7 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
     ```
 
-3. Anahtar yoksa veya değeri **0**ise, aşağıdaki komut dosyalarını çalıştırarak Protokolü etkinleştirin:
+3. Anahtar yoksa veya değeri **0** ise, aşağıdaki komut dosyalarını çalıştırarak Protokolü etkinleştirin:
 
     ```console
     REM Enable TLS 1.0, TLS 1.1 and TLS 1.2

@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679096"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546661"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Öğretici: API 'nizin birden fazla sürümünü yayımlama 
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/azure-portal.png" alt-text="Azure portal gösterilen sürüm":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -87,6 +87,32 @@ Sürüm oluşturulduktan sonra API listesinde **demo Conference API** altında g
 1. **Seç**’e tıklayın.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Ürüne sürüm Ekle":::
+
+## <a name="use-version-sets"></a>Sürüm kümelerini kullanma
+
+Birden çok sürüm oluşturduğunuzda Azure portal, tek bir mantıksal API için bir sürüm kümesini temsil eden bir *sürüm kümesi* oluşturur. Birden çok sürümü olan bir API 'nin adını seçin. Azure portal, **Sürüm kümesini** görüntüler. Bir sanal küme **adını** ve **açıklamasını** özelleştirebilirsiniz.
+
+Azure CLı kullanarak doğrudan sürüm kümeleriyle etkileşim kurabilirsiniz:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Tüm sürüm kümelerinizi görmek için [az APIM API versionset List](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) komutunu çalıştırın:
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Azure portal sizin için bir sürüm kümesi oluşturduğunda, listenin **ad** sütununda görünen alfasayısal bir ad atar. Diğer Azure CLı komutlarında bu adı kullanın.
+
+Bir sürüm kümesi hakkındaki ayrıntıları görmek için [az APIM API versionset Show](/api/versionset#az_apim_api_versionset_show) komutunu çalıştırın:
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+Sürüm kümeleri hakkında daha fazla bilgi için bkz. [Azure API Management sürümler](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Sürümü görüntülemek için geliştirici portalına göz atma
 

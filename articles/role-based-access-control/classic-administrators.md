@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4c758dca9f6020fd948ad8c3a8cdf014306e8ae7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344026"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557533"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -44,7 +44,7 @@ Bu makalede Co-Administrator ve hizmet yöneticisi rollerinin nasıl ekleneceği
 
     ![Klasik yöneticileri açan ekran görüntüsü](./media/classic-administrators/classic-administrators.png)
 
-1. Ortak **Add**  >  yönetici Ekle bölmesini açmak için **ortak yönetici Ekle** ' ye tıklayın.
+1. Ortak   >  yönetici Ekle bölmesini açmak için **ortak yönetici Ekle** ' ye tıklayın.
 
     Ortak yönetici Ekle seçeneği devre dışıysa, izinleriniz yoktur.
 
@@ -71,7 +71,7 @@ Co-Administrator rolün atandığı Konuk kullanıcılar, Co-Administrator rolü
 
 B kullanıcısının her şeyi yönetebileceğini beklemeniz gerekir. Bu farkın nedeni, Microsoft hesabı aboneliğe üye kullanıcı yerine Konuk Kullanıcı olarak eklendiğine yöneliktir. Konuk kullanıcıların Azure AD 'de üye kullanıcılarla karşılaştırıldığında farklı varsayılan izinleri vardır. Örneğin, üye kullanıcılar Azure AD 'de diğer kullanıcıları okuyabilir ve Konuk kullanıcılar tarafından kullanılamaz. Üye kullanıcılar, Azure AD 'de yeni hizmet sorumlularını kaydedebilir ve Konuk kullanıcılar bu hizmetleri kullanamaz.
 
-Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk kullanıcının ihtiyacı olan belirli Azure AD rollerinin atanması olası bir çözümdür. Örneğin, önceki senaryoda, diğer kullanıcıları okumak için [Dizin okuyucuları](../active-directory/roles/permissions-reference.md#directory-readers) rolünü atayabilir ve hizmet sorumlularını oluşturabilmeniz Için [uygulama geliştirici](../active-directory/roles/permissions-reference.md#application-developer) rolünü atayabilirsiniz. Üye ve Konuk kullanıcılar ve bunların izinleri hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../active-directory/fundamentals/users-default-permissions.md). Konuk kullanıcılar için erişim verme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak dış Konuk kullanıcılar Için Azure rol atamaları ekleme veya kaldırma](role-assignments-external-users.md).
+Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk kullanıcının ihtiyacı olan belirli Azure AD rollerinin atanması olası bir çözümdür. Örneğin, önceki senaryoda, diğer kullanıcıları okumak için [Dizin okuyucuları](../active-directory/roles/permissions-reference.md#directory-readers) rolünü atayabilir ve hizmet sorumlularını oluşturabilmeniz Için [uygulama geliştirici](../active-directory/roles/permissions-reference.md#application-developer) rolünü atayabilirsiniz. Üye ve Konuk kullanıcılar ve bunların izinleri hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../active-directory/fundamentals/users-default-permissions.md). Konuk kullanıcılar için erişim verme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak dış Konuk kullanıcılara Azure rolleri atama](role-assignments-external-users.md).
 
 [Azure yerleşik rollerinin](../role-based-access-control/built-in-roles.md) [Azure AD rollerinden](../active-directory/roles/permissions-reference.md)farklı olduğunu unutmayın. Yerleşik roller Azure AD 'ye hiçbir erişim vermez. Daha fazla bilgi için bkz. [farklı rolleri anlama](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -151,5 +151,5 @@ Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Farklı rolleri anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
+* [Azure portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)
 * [Azure aboneliği yöneticileri ekleme veya değiştirme](../cost-management-billing/manage/add-change-subscription-administrator.md)

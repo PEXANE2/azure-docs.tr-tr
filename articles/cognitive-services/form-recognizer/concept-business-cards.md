@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585101"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546032"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form tanıyıcı önceden oluşturulmuş iş kartları modeli 
 
@@ -31,7 +31,7 @@ Azure form tanıyıcı, önceden oluşturulmuş iş kartları modelini kullanara
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar:
 
-|Ad| Tür | Description | Metin | 
+|Ad| Tür | Açıklama | Metin | 
 |:-----|:----|:----|:----|
 | ContactNames | nesne dizisi | İş kartından ayıklanan kişi adı | [{"FirstName": "John", "LastName": "tikan"}] |
 | FirstName | string | İlk (verilen) kişi adı | \ | 
@@ -76,7 +76,11 @@ Iş kartı API 'SI Ayrıca, Iş kartından tanınan tüm metinleri de döndüreb
 
 ### <a name="sample-json-output"></a>Örnek JSON çıkışı
 
-Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanınan metnin tamamını içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. "DocumentResults" düğümü, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi yararlı iletişim bilgileri bulabilirsiniz.
+Iş kartını çözümle sonucunu al işlemi, ayıklanan tüm bilgileri içeren iş kartının yapısal temsili olacaktır.  [Örnek bir iş kartı dosyası](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg) ve yapılandırılmış çıkış [örneği iş kartı çıkışı](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)için buraya bakın.
+
+Başarılı bir JSON yanıtı örneğine bakın:
+* `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. 
+* `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi yararlı iletişim bilgileri bulabilirsiniz.
 
 ```json
 {

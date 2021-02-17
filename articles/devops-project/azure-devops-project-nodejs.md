@@ -3,28 +3,25 @@ title: GatsbyJS ve Azure DevOps Starter ile bir PWA için CI/CD işlem hattı ol
 description: GatsbyJS ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web uygulaması (PWA) oluşturmayı öğrenin.
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856220"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556565"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter ile Node.js için Azure Pipelines bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, [Gatsbyjs](https://www.gatsbyjs.org/) ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web UYGULAMASı (PWA) oluşturacaksınız. İşiniz bittiğinde, Azure Pipelines ' de PWA 'niz için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı vardır. Azure DevOps Starter, geliştirme, dağıtma ve izleme için gerekenleri ayarlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) organizasyonu.
@@ -37,7 +34,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
    ![Azure portal Azure kaynağı oluşturma](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -51,7 +48,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
     ![Basit Node.js uygulamasını seçin](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
-1. Bu adımda sunulan dağıtım hedefleri, adım 2 ' de seçilen uygulama çerçevesi tarafından belirlenir. Bu örnekte, varsayılan dağıtım hedefi **Windows Web uygulamasıdır** . **Kapsayıcılar için Web App** kümeyi bırakın ve **İleri ' yi**seçin.
+1. Bu adımda sunulan dağıtım hedefleri, adım 2 ' de seçilen uygulama çerçevesi tarafından belirlenir. Bu örnekte, varsayılan dağıtım hedefi **Windows Web uygulamasıdır** . **Kapsayıcılar için Web App** kümeyi bırakın ve **İleri ' yi** seçin.
 
     ![Dağıtım hedefini seçin](_img/azure-devops-project-nodejs/select-web-server.png)
 
@@ -65,7 +62,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 ## <a name="managing-your-project"></a>Projenizi yönetme
 
-1. **Tüm kaynaklara** gidin ve DevOps Starter 'nizi bulun. **DevOps başlangıç**hesabınızı seçin.
+1. **Tüm kaynaklara** gidin ve DevOps Starter 'nizi bulun. **DevOps başlangıç** hesabınızı seçin.
 
     ![Kaynak listesinde Azure DevOps panosu](_img/azure-devops-project-nodejs/devops-starter-list.png)
 
@@ -73,7 +70,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
     ![Azure DevOps panosu](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Azure DevOps projenizden, ekip üyelerini işbirliği yapmak ve işinizi izlemeye başlamak için bir Kanban panosu kurmak üzere davet edebilirsiniz. Daha fazla bilgi için [buraya](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)bakın.
+1. Azure DevOps projenizden, ekip üyelerini işbirliği yapmak ve işinizi izlemeye başlamak için bir Kanban panosu kurmak üzere davet edebilirsiniz. Daha fazla bilgi için [buraya](/azure/devops/user-guide/what-is-azure-devops)bakın.
 
 ![Azure DevOps genel bakış](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -182,7 +179,7 @@ Artık sürmekte olan bir derleme görmeniz gerekir. Yaptığınız değişiklik
     git push
     ```
     
-1. Bir derleme tamamlandıktan hemen sonra başlatılır `git push` . **Azure DevOps panosundan**ilerlemeyi izleyebilirsiniz.
+1. Bir derleme tamamlandıktan hemen sonra başlatılır `git push` . **Azure DevOps panosundan** ilerlemeyi izleyebilirsiniz.
 
 3. Birkaç dakika sonra, derleme ve yayın işlem hatlarınız bitirilmeli ve PWA 'nın bir kapsayıcıya dağıtılması gerekir. Yukarıdaki panodan **uygulama uç noktası** bağlantısına tıklayın ve Bloglar Için bir Gatsby Starter projesi görmeniz gerekir.
 
@@ -195,4 +192,4 @@ Artık kaynaklara gerek duymadığınızda oluşturduğunuz Azure App Service ve
 CI/CD işleminizi yapılandırdığınızda, derleme ve yayın işlem hatları otomatik olarak oluşturulur. Bu derleme ve yayın işlem hatlarını takımınızın ihtiyaçlarını karşılayacak şekilde değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process)
