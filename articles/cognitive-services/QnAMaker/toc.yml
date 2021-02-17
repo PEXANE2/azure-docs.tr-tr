@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Soru-Cevap Oluşturma portalında Bilgi Bankası oluşturma ve sorgulama
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: İstemci kitaplıklarını veya REST API kullanarak Bilgi Bankası oluşturma ve sorgulama
-      href: Quickstarts/quickstart-sdk.md
+    - name: Bilgi Bankası oluşturma ve sorgulama
+      items:
+        - name: Soru-Cevap Oluşturma portalı
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: İstemci kitaplıkları veya REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: Bir Bilgi Bankası 'nı REST API 'lerle sorgulama
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Öğreticiler

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033927"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559339"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?
 
@@ -27,7 +27,7 @@ Bu videoda, Azure RBAC 'e hızlı bir genel bakış sunulmaktadır.
 
 >[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
 
-## <a name="what-can-i-do-with-azure-rbac"></a>Azure RBAC ile neler yapabilirim?
+## <a name="what-can-i-do-with-azure-rbac"></a>Azure RBAC ile ne yapabilirim?
 
 Azure RBAC ile yapabilecekleriniz için bazı örnekler şunlardır:
 
@@ -38,7 +38,7 @@ Azure RBAC ile yapabilecekleriniz için bazı örnekler şunlardır:
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC nasıl çalışmaktadır
 
-Azure RBAC kullanarak kaynaklara erişimi denetleme yönteminiz, rol atamaları oluşturmaktır. Bu, anlaşılması için önemli bir kavramdır. Bu, izinlerin nasıl zorlandığını öğrenin. Rol ataması üç öğeden oluşur: güvenlik sorumlusu, rol tanımı ve kapsam.
+Azure RBAC kullanarak kaynaklara erişimi denetlemenize olanak sağlamak, Azure rollerini atamadır. Bu, anlaşılması için önemli bir kavramdır. Bu, izinlerin nasıl zorlandığını öğrenin. Rol ataması üç öğeden oluşur: güvenlik sorumlusu, rol tanımı ve kapsam.
 
 ### <a name="security-principal"></a>Güvenlik sorumlusu
 
@@ -80,9 +80,9 @@ Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte Mar
 
 ![Erişim denetimi için rol ataması](./media/overview/rbac-overview.png)
 
-Rol atamalarını oluşturmak için Azure portal, Azure CLI, Azure PowerShell, Azure SDK'ları veya REST API'lerini kullanabilirsiniz.
+Azure portal, Azure CLı, Azure PowerShell, Azure SDK 'Ları veya REST API 'Lerini kullanarak roller atayabilirsiniz.
 
-Daha fazla bilgi için bkz. [rol ataması ekleme adımları](role-assignments-steps.md).
+Daha fazla bilgi için bkz. [Azure rolü atama adımları](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Çoklu rol atamaları
 
@@ -122,6 +122,6 @@ Aşağıda, Azure RBAC 'in yönetim düzleminde bir kaynağa erişiminizin olup 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)
 - [Farklı rolleri anlama](rbac-and-directory-admin-roles.md)
 - [Bulut benimseme çerçevesi: Azure 'da kaynak erişim yönetimi](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

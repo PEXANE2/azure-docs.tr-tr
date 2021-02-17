@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5f12eae9345cbb1daa4097305bb85b8ceaf0b439
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681471"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548005"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -26,9 +26,17 @@ Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, b
 
 Aboneliklerle sanal ağlarda uygulama ve ağ bağlantısı ilkelerini merkezi olarak oluşturabilir, zorlayabilir ve günlüğe alabilirsiniz. Azure Güvenlik Duvarı, dış güvenlik duvarlarının sanal ağınızdan kaynaklanan trafiği tanımlamasına olanak tanımak amacıyla sanal ağ kaynaklarınız için statik genel bir IP adresi kullanır.  Hizmet, günlük ve analiz için Azure İzleyici ile tamamen tümleşik çalışır.
 
-## <a name="features"></a>Özellikler
-
 Azure Güvenlik duvarı özellikleri hakkında bilgi edinmek için bkz. [Azure Güvenlik Duvarı Özellikleri](features.md).
+
+## <a name="azure-firewall-premium-preview"></a>Azure Güvenlik Duvarı Premium önizleme
+
+Azure Güvenlik Duvarı Premium önizleme, yüksek düzeyde hassas ve düzenlenmiş ortamlar için gereken özellikleri içeren bir sonraki nesil güvenlik duvarıdır. Bu yetenekler TLS incelemesi, ıDPS, URL filtrelemesi ve Web kategorilerini içerir.
+
+Azure Güvenlik Duvarı Premium Önizleme özellikleri hakkında bilgi edinmek için bkz. [Azure Güvenlik Duvarı Premium Önizleme özellikleri](premium-features.md).
+
+
+Güvenlik Duvarı Premium önizlemenin Azure portal nasıl yapılandırıldığını görmek için [Azure Portal Azure Güvenlik Duvarı Premium önizlemesi](premium-portal.md)' ne bakın.
+
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 
@@ -45,7 +53,7 @@ Azure Güvenlik Duvarı yenilikleri hakkında bilgi edinmek için bkz. [Azure Up
 
 Azure Güvenlik Duvarındaki bilinen sorunlar şunlardır:
 
-|Sorun  |Description  |Risk azaltma  |
+|Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
 TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları İnternet'e bağlı trafik için çalışmaz|TCP/UDP olmayan protokoller için ağ filtreleme kuralları, SNAT ile genel IP adresiniz arasında çalışmaz. TCP/UDP dışı protokoller, uç alt ağlarla sanal ağlar arasında desteklenir.|Azure Güvenlik Duvarı, [bugün IP protokolleri için SNAT desteği olmayan](../load-balancer/load-balancer-overview.md) Standart Load Balancer kullanır. Gelecekteki bir sürümde bu senaryoyu desteklemeye yönelik seçenekleri araştırıyoruz.|
 |ICMP için eksik PowerShell ve CLI desteği|Azure PowerShell ve CLı, ağ kurallarında geçerli bir protokol olarak ıCMP 'yi desteklemez.|Portal ve REST API aracılığıyla bir protokol olarak ıCMP kullanmak yine de mümkündür. PowerShell ve CLı için yakında ıCMP eklemek üzere çalışıyoruz.|
@@ -57,18 +65,18 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Kullanılabilirlik alanları yalnızca dağıtım sırasında yapılandırılabilir.|Kullanılabilirlik alanları yalnızca dağıtım sırasında yapılandırılabilir. Bir güvenlik duvarı dağıtıldıktan sonra Kullanılabilirlik Alanları yapılandıramazsınız.|Bu tasarım gereğidir.|
 |Gelen bağlantılarda SNAT|DNAT 'nin yanı sıra, güvenlik duvarı genel IP adresi (gelen) ile kurulan bağlantılar, güvenlik duvarı özel IP 'lerinden birine karşı denetlenir. Simetrik yönlendirmeyi sağlamak için bugün bu gereksinim (etkin/etkin NVA 'lar için de).|HTTP/S için özgün kaynağı korumak üzere [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) üst bilgilerini kullanmayı göz önünde bulundurun. Örneğin, [Azure ön kapısı](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) veya [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) gibi bir hizmeti güvenlik duvarının önünde kullanın. Ayrıca, Azure ön kapısının parçası olarak WAF 'yi ve güvenlik duvarını de zincirde ekleyebilirsiniz.
 |SQL FQDN filtrelemesi yalnızca Proxy modunda desteklenir (bağlantı noktası 1433)|Azure SQL veritabanı, Azure SYNAPSE Analytics ve Azure SQL yönetilen örneği için:<br><br>SQL FQDN filtrelemesi yalnızca Proxy modunda desteklenir (bağlantı noktası 1433).<br><br>Azure SQL IaaS için:<br><br>Standart olmayan bağlantı noktaları kullanıyorsanız, bu bağlantı noktalarını uygulama kurallarında belirtebilirsiniz.|SQL yeniden yönlendirme modunda (Azure içinden bağlanıyorsanız varsayılan), Azure Güvenlik Duvarı ağ kurallarının bir parçası olarak SQL hizmeti etiketini kullanarak erişimi filtreleyebilirsiniz.
-|TCP bağlantı noktası 25 ' i giden trafiğe izin verilmez| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellenir. Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için bkz. [Azure 'da gıden SMTP bağlantısı sorunlarını giderme](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Ancak, sanal makinelerden farklı olarak, Azure Güvenlik duvarında bu işlevselliği etkinleştirmek mümkün değildir. Not: kimliği doğrulanmış SMTP (bağlantı noktası 587) veya SMTP 'yi 25 dışında bir bağlantı noktası üzerinden izin vermek için, SMTP incelemesi Şu anda desteklenmediğinden bir ağ kuralı ve uygulama kuralı yapılandırmadığınızdan emin olun.|SMTP sorun giderme makalesinde belirtildiği gibi, e-posta göndermek için önerilen yöntemi izleyin. Ya da, giden SMTP erişimine gereken sanal makineyi varsayılan yönlendirinizden güvenlik duvarına dışlayın. Bunun yerine, giden erişimi doğrudan internet 'e yapılandırın.
-|SNAT bağlantı noktası kullanım ölçümü %0 gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak ölçüm kullanılması yanlış bir sonuç verir.|Bu sorun düzeltildi ve üretime dağıtımı 2020 Mayıs ' e yöneliktir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu çözer, ancak tutarlı değildir. Ara geçici çözüm olarak, durum = *düşürülmüş* durumunu aramak için yalnızca güvenlik duvarı sistem durumunu kullanın, *durum = sağlıksız* için değildir. Bağlantı noktası tükenmesi *düşürüldü* olarak görünür. *Sağlıklı değil* , güvenlik duvarı sistem durumunu etkilemek için daha fazla ölçüm olduğunda gelecekte kullanılmak üzere ayrılmıştır.
+|TCP bağlantı noktası 25 ' i giden trafiğe izin verilmez| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellenir. Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için bkz. [Azure 'da gıden SMTP bağlantısı sorunlarını giderme](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Ancak, sanal makinelerden farklı olarak, Azure Güvenlik duvarında bu işlevselliği etkinleştirmek mümkün değildir. Not: kimliği doğrulanmış SMTP (bağlantı noktası 587) veya SMTP 'nin 25 dışında bir bağlantı noktası üzerinden izin vermek için, SMTP incelemesi Şu anda desteklenmediğinden bir ağ kuralı ve uygulama kuralı yapılandırmadığınızdan emin olun.|SMTP sorun giderme makalesinde belirtildiği gibi, e-posta göndermek için önerilen yöntemi izleyin. Ya da, giden SMTP erişimine gereken sanal makineyi varsayılan yönlendirinizden güvenlik duvarına dışlayın. Bunun yerine, giden erişimi doğrudan internet 'e yapılandırın.
+|SNAT bağlantı noktası kullanım ölçümü %0 gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak ölçüm kullanılması yanlış bir sonuç verir.|Bu sorun düzeltildi ve üretime dağıtımı 2020 Mayıs ' e yöneliktir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu çözer, ancak tutarlı değildir. Ara geçici çözüm olarak, durum = *düşürülmüş* durumunu aramak için yalnızca güvenlik duvarı sistem durumunu kullanın, *durum = sağlıksız* için değildir. Bağlantı noktası tükenmesi *düşürüldü* olarak görünür. *Sağlıklı değil* , güvenlik duvarı sistem durumunu etkilemek için daha fazla ölçüm olduğunda ileride kullanılmak üzere ayrılmıştır.
 |Zorunlu tünelleme etkinken DNAT desteklenmez|Zorlamalı tünelleme etkinken dağıtılan güvenlik duvarları, asimetrik yönlendirme nedeniyle Internet 'ten gelen erişimi destekleyemez.|Asimetrik yönlendirme nedeniyle bu tasarıma sahiptir. Gelen bağlantılar için dönüş yolu, kurulan bağlantıyı görmeyen şirket içi güvenlik duvarı aracılığıyla geçer.
 |Giden Pasif FTP, FTP sunucunuzun yapılandırmasına bağlı olarak birden çok genel IP adresi ile güvenlik duvarları için çalışmayabilir.|Pasif FTP, denetim ve veri kanalları için farklı bağlantılar oluşturur. Birden çok genel IP adresine sahip bir güvenlik duvarı giden verileri gönderdiğinde, kaynak IP adresi için genel IP adreslerinden birini rastgele seçer. Veriler ve denetim kanalları, FTP sunucunuzun yapılandırmasına bağlı olarak farklı kaynak IP adresleri kullandıklarında, FTP başarısız olabilir.|Açık bir SNAT yapılandırması planlanmaktadır. Bu sırada, FTP sunucunuzu verileri kabul edecek şekilde yapılandırabilir ve farklı kaynak IP adreslerinden kanalları kontrol edebilirsiniz (bkz. [IIS için bir örnek](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Alternatif olarak, bu durumda tek bir IP adresi kullanmayı göz önünde bulundurun.|
-|Gelen Pasif FTP, FTP sunucusu yapılandırmanıza bağlı olarak çalışmayabilir |Pasif FTP, denetim ve veri kanalları için farklı bağlantılar oluşturur. Azure Güvenlik duvarında gelen bağlantılar, simetrik yönlendirmeyi sağlamak için güvenlik duvarı özel IP adresinden birine karşı yeniden yapılır. Veriler ve denetim kanalları, FTP sunucunuzun yapılandırmasına bağlı olarak farklı kaynak IP adresleri kullandıklarında, FTP başarısız olabilir.|Özgün kaynak IP adresinin korunması araştırılır. Bu sırada, FTP sunucunuzu verileri kabul edecek şekilde yapılandırabilir ve farklı kaynak IP adreslerinden kanalları kontrol edebilirsiniz.|
+|Gelen Pasif FTP, FTP sunucusu yapılandırmanıza bağlı olarak çalışmayabilir |Pasif FTP, denetim ve veri kanalları için farklı bağlantılar oluşturur. Azure Güvenlik duvarında gelen bağlantılar, simetrik yönlendirmeyi sağlamak için güvenlik duvarı özel IP adreslerinden birine yöneliktir. Veriler ve denetim kanalları, FTP sunucunuzun yapılandırmasına bağlı olarak farklı kaynak IP adresleri kullandıklarında, FTP başarısız olabilir.|Özgün kaynak IP adresinin korunması araştırılır. Bu sırada, FTP sunucunuzu verileri kabul edecek şekilde yapılandırabilir ve farklı kaynak IP adreslerinden kanalları kontrol edebilirsiniz.|
 |NetworkRuleHit ölçümünde protokol boyutu eksik|ApplicationRuleHit metrik, filtreleme tabanlı protokole izin veriyor, ancak ilgili NetworkRuleHit ölçümünde bu yetenek yok.|Bir düzelme araştırılır.|
 |64000 ve 65535 arasındaki bağlantı noktalarıyla NAT kuralları desteklenmez|Azure Güvenlik Duvarı, ağ ve uygulama kurallarında 1-65535 aralığında bulunan tüm bağlantı noktalarına izin verir, ancak NAT kuralları yalnızca 1-63999 aralığındaki bağlantı noktalarını destekler.|Bu geçerli bir kısıtlamadır.
 |Yapılandırma güncelleştirmeleri ortalama beş dakika sürebilir|Bir Azure Güvenlik Duvarı yapılandırma güncelleştirmesi ortalama üç ila beş dakika sürebilir ve paralel güncelleştirmeler desteklenmez.|Bir düzelme araştırılır.|
 |Azure Güvenlik Duvarı, HTTPS ve MSSQL trafiğini filtrelemek için SNı TLS üst bilgilerini kullanır|Tarayıcı veya sunucu yazılımı sunucu adı göstergesi (SNı) uzantısını desteklemiyorsa, Azure Güvenlik Duvarı üzerinden bağlanamazsınız.|Tarayıcı veya sunucu yazılımı SNı desteklemiyorsa, bağlantıyı bir uygulama kuralı yerine bir ağ kuralı kullanarak kontrol edebilirsiniz. SNı 'yi destekleyen yazılımlar için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication) .|
 |Özel DNS zorlamalı tünelleme ile çalışmıyor|Zorlamalı tünel etkinleştirilirse, özel DNS çalışmaz.|Bir düzelme araştırılır.|
 |Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış bir güvenlik duvarı ile çalışmıyor|Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış Azure Güvenlik Duvarı ile çalışmıyor. Zorlamalı tünel yapılandırılmış olarak Azure Güvenlik Duvarı 'Nı başlatma girişimi şu hata ile sonuçlanır:<br><br>*Set-AzFirewall: AzureFirewall FW-xx yönetim IP yapılandırması mevcut bir güvenlik duvarına eklenemiyor. Zorlamalı tünel desteğini kullanmak istiyorsanız bir yönetim IP yapılandırması ile yeniden dağıtın. <br> StatusCode: 400 <br> ReasonPhrase: Hatalı istek*|İnceleme altında.<br><br>Geçici bir çözüm olarak, mevcut güvenlik duvarını silebilir ve aynı parametrelerle yeni bir tane oluşturabilirsiniz.|
-|Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Alternatif olarak, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .|
+|Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Veya, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .|
 |IPv6 henüz desteklenmiyor|Bir kurala bir IPv6 adresi eklerseniz güvenlik duvarı başarısız olur.|Yalnızca IPv4 adreslerini kullanın. IPv6 desteği araştırma aşamasındadır.|
 
 

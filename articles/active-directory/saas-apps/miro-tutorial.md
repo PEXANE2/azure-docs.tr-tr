@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 5f445526a29b88c347daa7c68861f027e36e39f0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 90889d208d63d4dfea4f4145839ab72674aaa49e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560046"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>Öğretici: Miro 'ı Azure Active Directory ile tümleştirme
 
@@ -25,8 +25,6 @@ Bu öğreticide, mıro 'yı Azure Active Directory (Azure AD) ile tümleştirmey
 * Azure AD 'de mıro 'ya erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla, mıro 'da otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,49 +35,50 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Mıro, **SP ve ıDP** tarafından başlatılan SSO 'yu destekler ve **yalnızca zamanında** Kullanıcı sağlamayı destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. 
+* Mıro, **SP ve ıDP** tarafından başlatılan SSO 'yu destekler ve **yalnızca zamanında** Kullanıcı sağlamayı destekler.
 
-## <a name="adding-miro-from-the-gallery"></a>Galeriden mıro ekleme
+## <a name="add-miro-from-the-gallery"></a>Galeriden mıro ekleme
 
 Mıro 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden mıro 'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Miro** yazın.
 1. Sonuçlar panelinden **mıro** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-miro"></a>Mıro için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak mıro Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile mıro 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak mıro Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile mıro 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu mıro ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu mıro ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
-2. **[Mıro](#configure-miro)** 'yi uygulama tarafında SSO ayarlarını yapılandırmak için yapılandırın.
-3. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-4. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-5. Mıro 'da kullanıcının Azure AD gösterimine bağlı olan B. Simon 'un bir karşılığı olacak şekilde **[mıro test kullanıcısı oluşturun](#create-miro-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Mıro SSO 'Yu yapılandırma](#configure-miro-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Mıro 'ın, kullanıcının Azure AD gösterimine bağlı olan mıro 'da B. Simon 'a karşılık gelen bir karşılığı olması için **[Miro test kullanıcısı oluşturun](#create-miro-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **mıro** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **mıro** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    **Tanımlayıcı** metin kutusuna bir URL yazın:`https://miro.com`
+    **Tanımlayıcı** metin kutusuna URL 'yi yazın:`https://miro.com`
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://miro.com/sso/saml`
+    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://miro.com/sso/saml`
 
 1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -88,10 +87,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Mıro ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
-
-### <a name="configure-miro"></a>Mıro 'yi yapılandırma
-
-**Mıro** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' dan mıro destek ekibine uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün şekilde ayarlanmasını sağlamak üzere ayarlanmıştır
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -112,29 +107,35 @@ Bu bölümde, mıro 'ya erişim vererek Azure çoklu oturum açma özelliğini k
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Miro**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-miro-sso"></a>Mıro SSO 'yu yapılandırma
+
+**Mıro** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' dan mıro destek ekibine uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-miro-test-user"></a>Mıro test kullanıcısı oluştur
 
 Bu bölümde, mıro 'da B. Simon adlı bir Kullanıcı oluşturulur. Mıro, gereksinime göre etkinleştirilebilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı mıro 'da zaten mevcut değilse, mıro 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde mıro kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız mıro 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz mıro oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+* Mıro oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
+
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız mıro 'da otomatik olarak oturum açmış olmanız gerekir. 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki mıro kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız mıro 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Mıro 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

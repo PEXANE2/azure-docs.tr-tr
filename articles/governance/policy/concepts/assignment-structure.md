@@ -3,12 +3,12 @@ title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219575"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558456"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -67,7 +67,7 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 Bu özellik aşağıdaki değerlere sahiptir:
 
-|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Description |
+|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
 |Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
 |Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
@@ -98,7 +98,7 @@ Bir kaynağın neden ilke veya girişim tanımıyla uyumsuz olduğunu tanımlaya
 ]
 ```
 
-Atama bir girişim için ise, girişim içindeki her ilke tanımı için farklı iletiler yapılandırılabilirler. İletiler, `policyDefinitionReferenceId` girişim tanımında yapılandırılan değeri kullanır. Ayrıntılar için bkz. [özellik tanımları özellikleri](./initiative-definition-structure.md#policy-definition-properties).
+Atama bir girişim için ise, girişim içindeki her ilke tanımı için farklı iletiler yapılandırılabilirler. İletiler, `policyDefinitionReferenceId` girişim tanımında yapılandırılan değeri kullanır. Ayrıntılar için bkz. [ilke tanımları özellikleri](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

@@ -7,20 +7,19 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: 98a516e76d5e4f5c225873b934949759d7fcba8d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573254"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535340"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Bilişsel Arama için IP güvenlik duvarını yapılandırma
 
 Azure Bilişsel Arama, gelen güvenlik duvarı desteği için IP kurallarını destekler. Bu model, arama hizmetiniz için bir Azure sanal ağ güvenlik grubunda bulacağınız IP kurallarına benzer ek bir güvenlik katmanı sağlar. Bu IP kuralları ile, arama hizmetinizi yalnızca onaylanan bir makine ve/veya bulut hizmeti kümesinden erişilebilir olacak şekilde yapılandırabilirsiniz. Bu onaylanmış makine ve hizmet kümelerinden arama hizmetinize depolanan verilere erişim, çağıranın geçerli bir yetkilendirme belirteci sunmasını gerektirir.
 
-> [!Important]
-> Azure Bilişsel Arama hizmetinizde IP kuralları Azure portal veya [yönetim REST API 2020-03-13 sürümü](/rest/api/searchmanagement/)kullanılarak yapılandırılabilir.
+Azure portal IP kurallarını bu makalede açıklandığı gibi ayarlayabilirsiniz. Alternatif olarak, 2020-03-13, [Azure PowerShell](/powershell/module/az.search)veya [Azure CLI](/cli/azure/search) [REST API yönetim sürümünü](/rest/api/searchmanagement/)de kullanabilirsiniz.
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal kullanarak bir IP güvenlik duvarı yapılandırma
 

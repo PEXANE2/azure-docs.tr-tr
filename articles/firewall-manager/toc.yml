@@ -10,6 +10,9 @@
     - name: Güvenli sanal merkez - ARM şablonu
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: İlke ARM şablonuyla güvenlik duvarı dağıtma
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Öğreticiler
   items:
     - name: Sanal ağınızın güvenliğini sağlama - portal
@@ -58,7 +61,7 @@
       href: rule-hierarchy.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/azure-firewall/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy

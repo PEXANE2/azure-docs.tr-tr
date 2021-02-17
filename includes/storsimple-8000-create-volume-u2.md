@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188424"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552421"
 ---
 #### <a name="to-create-a-volume"></a>Birim oluşturmak için
-1. **Cihazlar** dikey penceresindeki tablosal cihaz listesinden cihazınızı seçin. **+ Birim ekle**’ye tıklayın.
+1. **Cihazlar** dikey penceresindeki tablosal cihaz listesinden cihazınızı seçin. **+ Birim ekle**’ye tıklayın.<!--Note to reviewer. No screen updates. Had to rename screens to be able to correct a formatting error.-->
 
-    ![Yeni birim ekleme](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
+    ![Yeni birim ekleme](./media/storsimple-8000-create-volume-u2/create-volume-01.png)
 
 2. **Birim ekle** dikey penceresinde:
    
@@ -35,10 +35,10 @@ ms.locfileid: "67188424"
        8100 cihazında 8,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 200 TB'a kadar katmanlı birim sağlayabilirsiniz. Daha büyük olan 8600 cihazında 22,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 500 TB'a kadar katmanlı birim sağlayabilirsiniz. Katmanlı birimlerin çalışma kümesini barındırmak için cihazda yerel alan gerektiğinden, yerel olarak sabitlenmiş birimlerin oluşturulması, katmanlı birimlerin sağlanması için kullanılabilecek alanı etkiler. Bu nedenle, yerel olarak sabitlenmiş birim oluşturursanız, katmanlı birimlerin oluşturulması için gereken boş alan azalır. Benzer şekilde, katmanlı birim oluşturulduysa, yerel olarak sabitlenmiş birimlerin oluşturulması için kullanılabilir alan azalır.
       
        8100 cihazınızda 8,5 TB boyutunda (izin verilen en yüksek boyut) yerel olarak sabitlenmiş bir birim sağlarsanız, cihazdaki kullanılabilir yerel alanın tümünü kullanmış olursunuz. Katmanlı birimin çalışan kümesinin barındıracak cihazda yerel alan olmadığından, bu noktadan sonra herhangi bir katmanlı birim oluşturamazsınız. Var olan katmanlı birimler kullanılabilir alanı de etkiler. Örneğin, zaten 106 TB boyutunda katmanlı birimlerin bulunduğu bir 8100 cihazınız varsa, yerel olarak sabitlenmiş birimlerin kullanabileceği yalnızca 4 TB’lık alan kalır.
-
+ 
       1. **Bağlı konaklar** alanında oka tıklayın. 
 
-         ![Bağlı konaklar](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Bağlı konaklar](./media/storsimple-8000-create-volume-u2/create-volume-02.png)
 
       1. **Bağlı konaklar** dikey penceresinde mevcut bir ACR’yi seçin veya aşağıdaki adımları gerçekleştirerek yeni ACR ekleyin:
 
@@ -47,7 +47,7 @@ ms.locfileid: "67188424"
 
       1. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
 
-         ![Oluştur’a tıklayın](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Oluştur’a tıklayın](./media/storsimple-8000-create-volume-u2/create-volume-03.png)
 
          > [!NOTE]
          > Burada oluşturduğunuz birimin korunmadığını unutmayın. Zamanlanan yedeklemeler almak için yedekleme ilkeleri oluşturmanız ve ilkeleri bu birimle ilişkilendirmeniz gerekir. 

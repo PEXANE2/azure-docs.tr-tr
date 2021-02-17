@@ -1,25 +1,29 @@
 ---
-title: Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme-Azure RBAC
+title: Azure Resource Manager şablonları kullanarak Azure rolleri atama-Azure RBAC
 description: Azure Resource Manager şablonları ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675345"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556025"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rolleri atama
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Azure PowerShell veya Azure CLı kullanmaya ek olarak, [Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)kullanarak roller atayabilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, şablonlar kullanılarak rollerin nasıl atanacağı açıklanır.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>Nesne kimliklerini al
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
+## <a name="assign-an-azure-role"></a>Azure rolü atama
 
-Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
+Azure RBAC 'de, erişim izni vermek için bir rol atarsınız.
 
 ### <a name="resource-group-scope-without-parameters"></a>Kaynak grubu kapsamı (parametresiz)
 
-Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
+Aşağıdaki şablonda rol atama için temel bir yol gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
 
 -  Bir kaynak grubu kapsamındaki Kullanıcı, Grup veya uygulamaya [okuyucu](built-in-roles.md#reader) rolü atama
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>Kaynak kapsamı
 
-Bir kaynak düzeyinde bir rol ataması eklemeniz gerekiyorsa, `scope` rol atamasında özelliğini kaynağın adına ayarlayın.
+Bir kaynak düzeyinde bir rol atamanız gerekiyorsa, `scope` rol atamasında özelliğini kaynağın adına ayarlayın.
 
 Aşağıdaki şablonda şunları gösterilmektedir:
 
@@ -369,15 +373,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sorumlusuna katkıda bulunan rolü atamasının bir örneği gösterilmektedir.
 
 ![Yeni yönetilen kimlik hizmeti sorumlusu için rol ataması](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
-
-Azure RBAC 'de, bir Azure kaynağına erişimi kaldırmak için rol atamasını kaldırırsınız. Şablon kullanarak rol atamasını kaldırmanın bir yolu yoktur. Rol atamasını kaldırmak için, gibi diğer araçları kullanmanız gerekir:
-
-- [Azure portalındaki](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

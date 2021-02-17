@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097481"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558603"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 ve Esv3 serisi
 
@@ -32,7 +32,7 @@ Ev3 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi.
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
 <br>
 
@@ -64,7 +64,7 @@ Esv3 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi.
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
 <br>
 

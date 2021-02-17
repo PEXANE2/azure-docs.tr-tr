@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2018
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ef64d857cb2215281b50617e030c634618e14dc4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Öğretici: ArcGIS Enterprise ile tümleştirme Azure Active Directory
 
-Bu öğreticide, argıs Enterprise 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-ArcGIS Enterprise 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, argıs Enterprise 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. ArcGIS Enterprise 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, argıs Enterprise 'a erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla, daha fazla kullanıcı için şirket içinde (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure AD 'de, argıs kuruluşa erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak şirket içi olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* ArcGIS Enterprise çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* ArcGIS Kurumsal Çoklu oturum açma (SSO) aboneliği etkin.
 
 > [!NOTE]
 > Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
@@ -44,75 +40,50 @@ ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıd
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* ArcGIS Enterprise **SP ve IDP** tarafından başlatılan SSO 'yu destekler
-* ArcGIS Enterprise **yalnızca zamanında** Kullanıcı sağlamasını destekler
+* ArcGIS Enterprise **, SP ve IDP** tarafından başlatılan SSO 'yu destekler.
+* ArcGIS Enterprise **, tam zamanında** Kullanıcı sağlamayı destekler.
 
-
-## <a name="adding-arcgis-enterprise-from-the-gallery"></a>Galeriden ArcGIS Enterprise ekleme
+## <a name="add-arcgis-enterprise-from-the-gallery"></a>Galeriden ArcGIS Enterprise ekleyin
 
 ArcGIS Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize argıs Enterprise eklemeniz gerekir.
 
-**Galeriden ArcGIS Enterprise eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **argıs Enterprise** yazın.
+1. Sonuçlar panelinden ArcGIS **Enterprise** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso-for-arcgis-enterprise"></a>Argıs Enterprise için Azure AD SSO 'yu yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak, ArcGIS Enterprise Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve argıs kuruluşunda ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Azure AD SSO 'yu ArcGIS Enterprise ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Argıs ENTERPRISE SSO 'Yu yapılandırma](#configure-arcgis-enterprise-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. ArcGIS **[Kurumsal test kullanıcısı oluşturma](#create-arcgis-enterprise-test-user)** -kullanıcının Azure AD gösterimine bağlı olan ArcGIS kuruluşunda B. Simon 'a karşılık gelen bir karşılığı olacak.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna, ArcGIS **Enterprise** yazın ve sonuç panelinden ArcGIS **Enterprise** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+1. Azure portal, ArcGIS **Kurumsal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-    ![Sonuçlar listesinde ArcGIS Enterprise](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak [uygulama adı] ile yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve [uygulama adı] içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Azure AD çoklu oturum açma 'yı [uygulama adı] ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Argıs Kurumsal Çoklu oturum açmayı yapılandırma](#configure-arcgis-enterprise-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. ArcGIS kurumsal **[test kullanıcısı oluşturun](#create-arcgis-enterprise-test-user)** ve kullanıcının Azure AD gösterimine bağlı olan argıs Enterprise 'Ta Britta Simon 'un bir karşılığı vardır.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), ArcGIS **Kurumsal** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
-
-    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<EXTERNAL_DNS_NAME>.portal`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -123,7 +94,31 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-arcgis-enterprise-single-sign-on"></a>Argıs Kurumsal tek Sign-On yapılandırma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
+
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, argıs Enterprise 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, ArcGIS **Enterprise**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-arcgis-enterprise-sso"></a>ArcGIS Enterprise SSO 'yu yapılandırma
 
 1. ArcGIS Enterprise içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
@@ -138,19 +133,19 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 1. **Kuruluş >Ayarları Düzenle**' yi seçin.
 
-    ![Ekran görüntüsü, düzenleme ayarları olarak adlandırılan, ArcGIS Enterprise Organization sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure1.png)
+    ![Ekran görüntüsü, düzenleme ayarları olarak adlandırılan, ArcGIS Enterprise Organization sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure-1.png)
 
 1. **Güvenlik** sekmesini seçin.
 
-    ![Ekran görüntüsü seçili güvenlik sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure2.png)
+    ![Ekran görüntüsü seçili güvenlik sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure-2.png)
 
 1. **SAML bölümü aracılığıyla kurumsal oturum açma işlemlerine** aşağı KAYDıRıN ve **Kurumsal oturum açma ayarla**' yı seçin.
 
-    ![Ekran görüntüsü, kurumsal oturum açma ayarla ' yı seçebileceğiniz SAML aracılığıyla kurumsal oturum açma Işlemlerini gösterir.](./media/arcgisenterprise-tutorial/configure3.png)
+    ![Ekran görüntüsü, kurumsal oturum açma ayarla ' yı seçebileceğiniz SAML aracılığıyla kurumsal oturum açma Işlemlerini gösterir.](./media/arcgisenterprise-tutorial/configure-3.png)
 
 1. **Kimlik sağlayıcısını ayarla** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsünde, burada açıklanan adımları gerçekleştirdiğiniz kimlik sağlayıcısını ayarlayın.](./media/arcgisenterprise-tutorial/configure4.png)
+    ![Ekran görüntüsünde, burada açıklanan adımları gerçekleştirdiğiniz kimlik sağlayıcısını ayarlayın.](./media/arcgisenterprise-tutorial/configure-4.png)
 
     a. Lütfen **ad** metin kutusuna **Test Azure Active Directory** gibi bir ad girin.
 
@@ -158,60 +153,9 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     c. **Gelişmiş ayarları göster** ' e tıklayın ve **varlık kimliği** değerini kopyalayın ve Azure Portal ' deki **argıs Enterprise etki alanı ve URL 'ler** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 
-    ![Ekran görüntüsünde, b varlığının ve güncelleştirme tanımlaması sağlayıcısının nereden alınacağını gösterir.](./media/arcgisenterprise-tutorial/configure5.png)
+    ![Ekran görüntüsünde, b varlığının ve güncelleştirme tanımlaması sağlayıcısının nereden alınacağını gösterir.](./media/arcgisenterprise-tutorial/configure-5.png)
 
     d. **KIMLIK sağlayıcısını Güncelleştir**' e tıklayın.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon** girin.
-
-    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, argıs Enterprise 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından ArcGIS **Enterprise**' ı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **argıs Enterprise** yazın ve seçin.
-
-    ![Uygulamalar listesindeki ArcGIS kurumsal bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ### <a name="create-arcgis-enterprise-test-user"></a>ArcGIS kurumsal test kullanıcısı oluşturma
 
@@ -220,16 +164,22 @@ Bu bölümde, argıs ortamında Britta Simon adlı bir Kullanıcı oluşturulur.
 > [!Note]
 > El ile bir kullanıcı oluşturmanız gerekiyorsa, ArcGIS [Kurumsal Destek ekibine](mailto:support@esri.com)başvurun.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde ArcGIS Enterprise kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ArcGIS kuruluşunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz EGIS kurumsal oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Doğrudan bir şirket oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'yu ayarladığınız ArcGIS kuruluşunda otomatik olarak oturum açmış olmanız gerekir. 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım kurumsal kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve IDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız ArcGIS kuruluşunda otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+ArcGIS Enterprise 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

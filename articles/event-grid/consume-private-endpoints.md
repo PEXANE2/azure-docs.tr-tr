@@ -3,12 +3,12 @@ title: Özel bağlantı hizmetini kullanarak olay sunma
 description: Bu makalede, özel bağlantı hizmeti kullanılarak olayları teslim edemeyecek sınırlamanın nasıl giderileceği açıklanmaktadır.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: ad6f500830383f60e0350a297d2650bfbeae2f6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418037"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548632"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Özel bağlantı hizmetini kullanarak olay sunma
 Şu anda [Özel uç noktalar](../private-link/private-endpoint-overview.md)kullanarak olay teslim etmek mümkün değildir. Diğer bir deyişle, teslim edilen olaylarınızın trafiğinden özel IP alanının olmaması gereken katı ağ yalıtımı gereksinimleriniz varsa destek yoktur. 
@@ -19,7 +19,7 @@ Bununla birlikte, gereksinimleriniz şifreli bir kanal ve gönderenin bilinen ki
 Daha sonra, Azure Işlevleri 'nde yapılandırılmış bir özel bağlantı veya sanal ağınızda dağıtılan Web kancası, olayları çekmek için kullanabilirsiniz. Örneğe bakın: [Azure işlevleri ile özel uç noktalara bağlanma](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
 
-:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.png" alt-text="Özel bağlantı hizmeti aracılığıyla teslim edin":::
+:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.svg" alt-text="Özel bağlantı hizmeti aracılığıyla teslim edin":::
 
 
 Bu yapılandırma altında trafik, Event Hubs, Service Bus veya Azure Storage 'a Event Grid karşı genel IP/internet üzerinden gider, ancak kanal şifrelenebilir ve yönetilen bir kimlik Event Grid kullanılır. Sanal ağınıza dağıtılan Azure Işlevlerinizi veya Web kancasını, özel bağlantı aracılığıyla bir Event Hubs, Service Bus veya Azure depolama alanı kullanacak şekilde yapılandırırsanız, trafiğin bu bölümü Azure 'da güvenli bir şekilde kalır.

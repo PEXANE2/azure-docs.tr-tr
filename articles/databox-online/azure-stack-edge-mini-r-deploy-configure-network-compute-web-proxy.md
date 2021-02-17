@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594459"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546780"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R için ağı yapılandırma
 
@@ -50,7 +50,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
 
 2. Sıfır gün güncelleştirme gerekiyorsa bunu, kablolu bağlantıyla bir veri bağlantı noktası yapılandırarak yapabilirsiniz. Bu cihaz için kablolu bağlantı ayarlama hakkında daha fazla yönerge için bkz. [cihazınızı kablolu](azure-stack-edge-mini-r-deploy-install.md#cable-the-device)olarak kullanma. Güncelleştirme bittikten sonra kablolu bağlantıyı kaldırabilirsiniz.
 
-3. Wi-Fi ve imzalama zinciri için sertifika oluşturun. Hem imzalama zinciri hem de Wi-Fi sertifikaları bir *. cer* dosya uzantısıyla der biçiminde olmalıdır. Yönergeler için bkz. [sertifika oluşturma](azure-stack-edge-j-series-manage-certificates.md).
+3. Wi-Fi ve imzalama zinciri için sertifika oluşturun. Hem imzalama zinciri hem de Wi-Fi sertifikaları bir *. cer* dosya uzantısıyla der biçiminde olmalıdır. Yönergeler için bkz. [sertifika oluşturma](azure-stack-edge-gpu-manage-certificates.md).
 
 4. Yerel Web Kullanıcı arabiriminde, **kullanmaya** başlayın ' a gidin. **Güvenlik** kutucuğunda **Sertifikalar** ' ı seçin ve ardından **Yapılandır**' ı seçin. 
 

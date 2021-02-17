@@ -3,17 +3,17 @@ title: Microsoft Azure haritaları oluşturucuyu yönetme (Önizleme)
 description: Bu makalede Microsoft Azure haritaları oluşturucunun (Önizleme) nasıl yönetileceğini öğreneceksiniz.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1ed3a9033f9be39774e1c52982f63259cc477d29
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906106"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559113"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>Azure haritalar oluşturucuyu yönetme (Önizleme) 
 
@@ -33,15 +33,15 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
     ![Azure haritalar Portalı giriş sayfası](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Azure haritalar hesabı sayfasından sonra **Oluşturucu** altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için  **Oluştur**  ' a tıklayın.
+3. Azure haritalar hesabı sayfasından sonra **Oluşturucu** altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için  **Oluştur**  ' u seçin.
 
     ![Azure haritalar Oluşturucu oluşturma sayfası](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Oluşturucu kaynağınız için ad ve konum girin. Şu anda, Oluşturucu yalnızca Birleşik Devletler desteklenir. **Gözden geçir ve oluştur**’a tıklayın.
+4. Oluşturucu kaynağınız için ad ve konum girin. Şu anda, Oluşturucu yalnızca Birleşik Devletler desteklenir. **Gözden geçir ve oluştur**’u seçin.
 
    ![Oluşturucu hesap bilgilerini girin sayfası](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Ayarlarınızı gözden geçirin ve **Oluştur**' a tıklayın.
+5. Ayarlarınızı gözden geçirin ve **Oluştur**' u seçin.
 
     ![Oluşturucu hesabı ayarları sayfasını Onayla](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -49,25 +49,25 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
    ![Kaynak dağıtım durumu sayfası](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. **Kaynağa git**'e tıklayın. Oluşturucu kaynak görünümü sayfanız, Oluşturucu kaynağınızın ve seçilen demografik bölgesinin durumunu gösterir.
+7. **Kaynağa git**’i seçin. Oluşturucu kaynak görünümü sayfanız, Oluşturucu kaynağınızın ve seçilen demografik bölgesinin durumunu gösterir.
 
     ![Oluşturan durum sayfası](./media/how-to-manage-creator/creator-resource-view.png)
 
    >[!NOTE]
-   >Oluşturan kaynak sayfasından, Azure Maps hesabı ' na tıklayarak ait olduğu Azure Maps hesabına geri gidebilirsiniz.
+   >Oluşturan kaynak sayfasından, Azure Maps hesabı ' nı seçerek ait olduğu Azure Maps hesabına geri gidebilirsiniz.
 
 ## <a name="delete-creator-preview-resource"></a>Oluşturucu (Önizleme) kaynağını Sil
 
-Oluşturan kaynağını silmek için Azure haritalar hesabınıza gidin. **Oluşturucu** altında **Genel Bakış ' ı** seçin. **Sil** düğmesine tıklayın.
+Oluşturan kaynağını silmek için Azure haritalar hesabınıza gidin. **Oluşturucu** altında **Genel Bakış ' ı** seçin. **Sil** düğmesini seçin.
 
 >[!WARNING]
 >Azure haritalar hesabınızın Oluşturucu kaynağını sildiğinizde, Oluşturucu Hizmetleri kullanılarak oluşturulan veri kümelerini, tilekümelerini ve özellik statesets 'leri de silersiniz.
 
 ![Sil düğmesi olan Oluşturucu sayfası](./media/how-to-manage-creator/creator-delete.png)
 
-**Sil** düğmesine tıklayın ve silme işlemini onaylamak için Oluşturucu adınızı yazın. Kaynak silindikten sonra aşağıdaki görüntüde olduğu gibi bir onay sayfası görürsünüz:
+**Sil** düğmesini seçin ve silme işlemini onaylamak için Oluşturucu adınızı yazın. Kaynak silindikten sonra aşağıdaki görüntüde olduğu gibi bir onay sayfası görürsünüz:
 
-![Silme onayı içeren Oluşturucu sayfası](./media/how-to-manage-creator/creator-confirmdelete.png)
+![Silme onayı içeren Oluşturucu sayfası](./media/how-to-manage-creator/creator-confirm-delete.png)
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -77,7 +77,7 @@ Oluşturucu kullanım verileri, Azure Haritalar kullanım grafiklerinize ve etki
 
 ## <a name="access-to-creator-services"></a>Oluşturucu hizmetlerine erişim
 
-Oluşturma hizmetleri 'ne (Önizleme) yalnızca oluşturma sırasında seçilen konumun içinden erişilebilir. Seçili konum dışından Oluşturucu Hizmetleri için çağrılar yapılırsa, bir kullanıcı hatası iletisi döndürülür. Seçilen konumun dışından çağrı yapmak için, hizmet URL 'SI Seçilen konumların coğrafi önekini içermelidir. Örneğin, Oluşturucu Birleşik Devletler oluşturulduysa, dönüştürme hizmetine yapılan tüm çağrılar ' a gönderilmelidir `us.atlas.microsoft.com/conversion/convert` .
+Oluşturan Hizmetleri (Önizleme) ve Oluşturucu 'da barındırılan verileri (örneğin, Işleme hizmeti) kullanan hizmetlere coğrafi bir URL üzerinden erişilebilir. Coğrafi URL, oluşturma sırasında seçilen konuma göre belirlenir. Örneğin, Oluşturucu Birleşik Devletler coğrafi konumunda oluşturulduysa, dönüştürme hizmetine yapılan tüm çağrılar ' a gönderilmelidir `us.atlas.microsoft.com/conversion/convert` .
 
 Ayrıca, Oluşturucu ile içeri aktarılan tüm veriler, oluşturan kaynakla aynı coğrafi konuma yüklenmelidir. Örneğin, Oluşturucu Birleşik olarak belirtilmişse, tüm ham verilerin aracılığıyla yüklenmesi gerekir `us.atlas.microsoft.com/mapData/upload` .
 

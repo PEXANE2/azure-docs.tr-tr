@@ -7,19 +7,19 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 13eb84e91e1809012a2ae1ad01397b20cb322f16
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: d983369db3fbd03c41c248439a5c1aabec14ea55
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104459"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535374"
 ---
 # <a name="defender-for-iot-glossary"></a>IoT için Defender sözlüğü
 
 Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve kavramların kısa bir açıklamasını sağlar. Sözlükteki ilgili koşullara gitmek için **daha fazla bilgi edinin** bağlantısını seçin. Bu, ürün araçlarını daha hızlı öğrenmenize ve kullanmanıza yardımcı olur.
 
 > [!Note]
-> Adında listelenen herhangi bir dönem `(AL)` , aracı tabanlı bir cihaz Oluşturucu terimidir. 
+> Adında listelenen herhangi bir dönem `(DB)` , aracı tabanlı bir cihaz Oluşturucu terimidir. 
 
 <a name="glossary-a"></a>
 
@@ -47,7 +47,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazla bilgi edinin |
 |--|--|--|
-| **CLI komutları** | IoT yönetici kullanıcıları için Defender için komut satırı arabirimi (CLı) seçenekleri. CLı komutları, IoT konsolları için Defender 'dan erişilemeyen özellikler için kullanılabilir. | - |
+| **CLı komutları** | IoT yönetici kullanıcıları için Defender için komut satırı arabirimi (CLı) seçenekleri. CLı komutları, IoT konsolları için Defender 'dan erişilemeyen özellikler için kullanılabilir. | - |
 
 
 ## <a name="d"></a>D
@@ -61,7 +61,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 | **Cihaz envanteri-algılayıcı** | Cihaz envanteri, bir IoT için Defender tarafından algılanan kapsamlı bir cihaz öznitelikleri yelpazesi görüntüler. Seçenekler kullanılabilir:<br /><br />-Filtre görüntülenmiş bilgiler.<br /><br />-Bu bilgileri bir CSV dosyasına dışarı aktarın.<br /><br />-Windows kayıt defteri ayrıntılarını içeri aktarın. | **[Grup](#g)** <br /><br />**[Cihaz envanteri-şirket içi yönetim konsolu](#d)** |
 | **Cihaz envanteri-şirket içi yönetim konsolu** | Bağlı sensörlerden cihaz bilgileri cihaz envanterindeki şirket içi yönetim konsolundan görüntülenebilir. Bu, şirket içi yönetim konsolu kullanıcılarına tüm ağ bilgilerinin kapsamlı bir görünümünü sağlar. | **[Cihaz envanteri-algılayıcı](#d) <br /> <br /> [Cihaz envanteri-veri tümleştirici](#d)** |
 | **Cihaz envanteri-veri tümleştirici** | Şirket içi yönetim konsolunun veri tümleştirme özellikleri, cihaz envanterindeki verileri diğer kurumsal kaynaklardaki bilgilerle geliştirmenize olanak sağlar. Örnek kaynaklar CMDBs, DNS, güvenlik duvarları ve Web API 'larıdır. | **[Cihaz envanteri-şirket içi yönetim konsolu](#d)** |
-| **Cihaz** ikikesi `(AL)` | Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. | [Modül Ikizi](#m) <br /> <br />[Güvenlik modülü ikizi](#s) |
+| **Cihaz** ikikesi `(DB)` | Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. | [Modül Ikizi](#m) <br /> <br />[Güvenlik modülü ikizi](#s) |
 
 ## <a name="e"></a>E
 
@@ -94,7 +94,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 | Süre | Açıklama | Daha fazla bilgi edinin |
 |--|--|--|
-| **IoT Hub’ı** `(AL)` | Bulutta barındırılan yönetilen hizmet, IoT uygulamanız ile yönettiği cihazlar arasında çift yönlü iletişim için merkezi bir ileti hub 'ı olarak görev yapar.  |   |
+| **IoT Hub’ı** `(DB)` | Bulutta barındırılan yönetilen hizmet, IoT uygulamanız ile yönettiği cihazlar arasında çift yönlü iletişim için merkezi bir ileti hub 'ı olarak görev yapar.  |   |
 | **Tümleştirmeler** | Cihaz bilgilerini iş ortağı sistemleriyle paylaşarak IoT özellikleri için Defender 'ı genişletin. Kuruluşlar, sistem genelinde yanıtları hızlandırmak ve daha hızlı risk hafifletmek için daha önce yığılıyor güvenlik, NAC, olay yönetimi ve cihaz yönetim çözümlerini köprüleyebilirler. | **[İletme kuralı](#f)** |
 | **İç alt ağ** | IoT için Defender tarafından tanımlanan alt ağ yapılandırması. Ortak aralıkları iç aralıklar olarak kullanan ortamlar gibi bazı durumlarda, Defender 'ın IoT için tüm alt ağları iç alt ağ olarak çözmelerini söyleyebilirsiniz. Alt ağlar haritada ve IoT raporlarında çeşitli Defender 'da görüntülenir. | **[Alt ağlar](#s)** |
 
@@ -108,10 +108,11 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 
 ## <a name="m"></a>M
 
+
 | Süre | Açıklama | Daha fazla bilgi edinin |
 |--|--|--|
-| **Mikro aracı**`(AL)` | IoT cihazları için güvenlik sonrası ve tehdit algılama dahil olmak üzere derinlemesine güvenlik özellikleri sağlar.  |    |
-| **Modül ikizi**`(AL)` | Modül ikizleri; meta veriler, yapılandırmalar ve koşullar gibi modül durumu bilgilerini depolayan JSON belgelerdir. | [Cihaz çifti](#d) <br /> <br />[Güvenlik modülü ikizi](#s) |
+| **Mikro aracı**`(DB)` | IoT cihazları için güvenlik sonrası ve tehdit algılama dahil olmak üzere derinlemesine güvenlik özellikleri sağlar. | |
+| **Modül ikizi**`(DB)` | Modül ikizleri; meta veriler, yapılandırmalar ve koşullar gibi modül durumu bilgilerini depolayan JSON belgelerdir. | [Cihaz çifti](#d) <br /> <br />[Güvenlik modülü ikizi](#s) |
 | **Uyarı olayını sustur** | Aynı cihazlarla ve karşılaştırılabilir trafikle etkinlikleri sürekli olarak yoksayması için Defender 'a söyleyin. | **[](#glossary-a) <br /> Uyarı <br /> [Dışlama kuralı](#e) <br /> <br /> [Uyarı olayını Onayla](#glossary-a) <br /> <br /> [Uyarı olayını öğrenin](#l)** |
 
 ## <a name="n"></a>N
@@ -147,7 +148,7 @@ Bu sözlük, IoT Platformu için Azure Defender 'a yönelik önemli hüküm ve k
 | Süre | Açıklama | Daha fazla bilgi edinin |
 |--|--|--|
 | **Güvenlik Uyarısı** | Aşırı SMB oturum açma girişimleri veya kötü amaçlı yazılım algılamaları gibi güvenlik sorunlarıyla ilgilenen uyarılar. | **[](#glossary-a) <br /> Uyarı <br /> [İşlemsel uyarı](#o)** |
-| **Güvenlik modülü ikizi**`(AL)` | İkizi güvenlik modülü, çözümünüzdeki her bir cihaz için cihaz güvenliği ile ilgili tüm bilgileri barındırır. | [Cihaz çifti](#d) <br /> <br />[Modül Ikizi](#m)  |
+| **Güvenlik modülü ikizi**`(DB)` | İkizi güvenlik modülü, çözümünüzdeki her bir cihaz için cihaz güvenliği ile ilgili tüm bilgileri barındırır. | [Cihaz çifti](#d) <br /> <br />[Modül Ikizi](#m)  |
 | **Seçmeli yoklama** | IoT için Defender, BT ve OT trafiğini büyük ölçüde inceler ve cihazlar, öznitelikleri, davranışları ve daha fazlası için ilgili bilgileri algılar. Bazı durumlarda, bazı bilgiler pasif ağ analizlerinde görünmeyebilir.<br /><br />Bu durumda, daha önce erişilemeyen cihazlarda önemli bilgileri keşfedebilmeniz için, IoT için Defender 'daki güvenli ve ayrıntılı araştırma araçlarını kullanabilirsiniz. | - |
 | **Algılayıcısı** | IoT Platformu için Defender 'ın yüklü olduğu fiziksel veya sanal makine. | **[Şirket içi yönetim konsolu](#o)** |
 | **Site** | Bir fabrika ya da başka bir varlığa ait bir konum. Site, bir algılayıcısı veya bir algılayıcı 'un yüklü olduğu birkaç bölgeyi içermelidir. | **[Bölge](#z)** |

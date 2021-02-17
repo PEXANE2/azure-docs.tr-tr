@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184272"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555885"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure rol atamaları ile ilgili sorunlar
 
-- Rol Ekle ataması Ekle seçeneği devre dışı olduğundan veya **erişim denetimi 'ne (IAM)** Azure Portal bir rol ataması ekleyemezse **Add**  >  **Add role assignment** ya da "nesne kimliği olan istemci, eylemi gerçekleştirmek için yetkilendirmeye izin vermiyor" hatası alırsanız, `Microsoft.Authorization/roleAssignments/write` rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun.
+- Rol Ekle ataması **Ekle** seçeneği devre dışı olduğundan veya **erişim denetimi (IAM)** üzerindeki Azure Portal bir rol atamadıysanız  >   veya "nesne kimliği olan istemci, eylemi gerçekleştirmek için yetkilendirmeye sahip değil" hatasını alırsanız, `Microsoft.Authorization/roleAssignments/write` rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun.
 - Rol atamak için bir hizmet sorumlusu kullanıyorsanız, "işlemi tamamlamaya yönelik ayrıcalıklar yetersiz" hatasını alabilirsiniz. Örneğin, sahip rolüne atanan bir hizmet sorumlusu olduğunu ve Azure CLı kullanarak hizmet sorumlusu olarak aşağıdaki rol atamasını oluşturmayı deneytiğinizi varsayalım:
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     Bu hatayı çözebilecek iki yol vardır. İlk yöntem, Dizin [okuyucuları](../active-directory/roles/permissions-reference.md#directory-readers) rolünü, dizindeki verileri okuyabilmesi için hizmet sorumlusuna atamanız olur.
 
-    Bu hatayı çözmek için ikinci yöntem, yerine parametresini kullanarak rol atamasını oluşturmaktır `--assignee-object-id` `--assignee` . Kullanarak `--assignee-object-id` Azure CLI, Azure AD aramasını atlar. Rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın nesne KIMLIĞINI almanız gerekir. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
+    Bu hatayı çözmek için ikinci yöntem, yerine parametresini kullanarak rol atamasını oluşturmaktır `--assignee-object-id` `--assignee` . Kullanarak `--assignee-object-id` Azure CLI, Azure AD aramasını atlar. Rolü atamak istediğiniz kullanıcı, Grup veya uygulamanın nesne KIMLIĞINI almanız gerekir. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure rolleri atama](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız h
 }
 ```
 
-Güvenlik sorumlusunun silindiği bu rol atamalarından ayrılmayan bir sorun değildir. İsterseniz, diğer rol atamalarına benzer adımları kullanarak bu rol atamalarını kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)veya [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+Güvenlik sorumlusunun silindiği bu rol atamalarından ayrılmayan bir sorun değildir. İsterseniz, diğer rol atamalarına benzer adımları kullanarak bu rol atamalarını kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure rol atamalarını kaldırma](role-assignments-remove.md).
 
 PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıdaki çıktıda hata iletisi örneği gösterilmektedir:
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>Rol atama değişiklikleri algılanamadı
 
-Azure Resource Manager bazen, performansı geliştirmek için yapılandırma ve verileri önbelleğe alır. Rol atamaları eklediğinizde veya kaldırdığınızda, değişikliklerin etkili olması 30 dakika kadar sürebilir. Azure portal, Azure PowerShell veya Azure CLı kullanıyorsanız, oturum kapatarak ve oturum açarak rol atama yaptığınız değişiklikleri yenilemeye zorlayabilirsiniz. REST API çağrılarında rol ataması değişikliği yapıyorsanız, erişim belirtecinizi yenileyerek yenilemeye zorlayabilirsiniz.
+Azure Resource Manager bazen, performansı geliştirmek için yapılandırma ve verileri önbelleğe alır. Rolleri atarken veya rol atamalarını kaldırdığınızda, değişikliklerin etkili olması 30 dakika kadar sürebilir. Azure portal, Azure PowerShell veya Azure CLı kullanıyorsanız, oturum kapatarak ve oturum açarak rol atama yaptığınız değişiklikleri yenilemeye zorlayabilirsiniz. REST API çağrılarında rol ataması değişikliği yapıyorsanız, erişim belirtecinizi yenileyerek yenilemeye zorlayabilirsiniz.
 
 Yönetim grubu kapsamında bir rol ataması ekler veya kaldırırsanız ve rol varsa `DataActions` , veri düzleminde erişim birkaç saat boyunca güncelleştirilmemiş olabilir. Bu yalnızca yönetim grubu kapsamı ve veri düzlemi için geçerlidir.
 
@@ -249,5 +249,5 @@ Bir okuyucu, **platform özellikleri** sekmesine tıklayabilir ve ardından **T�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuk kullanıcılar için sorun giderme](role-assignments-external-users.md#troubleshoot)
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](role-assignments-portal.md)
 - [Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)

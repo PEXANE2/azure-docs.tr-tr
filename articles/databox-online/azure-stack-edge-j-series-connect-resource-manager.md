@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805793"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546814"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
@@ -93,9 +93,9 @@ Azure Resource Manager bağlanmak için, imzalama zinciri ve uç nokta sertifika
 
 Yalnızca test ve geliştirme kullanımı için, yerel sisteminizde sertifika oluşturmak üzere Windows PowerShell 'i kullanabilirsiniz. İstemci için sertifikaları oluştururken şu yönergeleri izleyin:
 
-1. Önce imzalama zinciri için bir kök sertifika oluşturmanız gerekir. Daha fazla bilgi için bkz. [imzalama zinciri sertifikaları oluşturma](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate)adımları.
+1. Önce imzalama zinciri için bir kök sertifika oluşturmanız gerekir. Daha fazla bilgi için bkz. [imzalama zinciri sertifikaları oluşturma](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate)adımları.
 
-2. Blob ve Azure Resource Manager için uç nokta sertifikalarını daha sonra oluşturabilirsiniz. Bu uç noktaları, yerel Web Kullanıcı arabirimindeki **cihaz** sayfasından edinebilirsiniz. [Uç nokta sertifikaları oluşturma](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates)adımlarına bakın.
+2. Blob ve Azure Resource Manager için uç nokta sertifikalarını daha sonra oluşturabilirsiniz. Bu uç noktaları, yerel Web Kullanıcı arabirimindeki **cihaz** sayfasından edinebilirsiniz. [Uç nokta sertifikaları oluşturma](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates)adımlarına bakın.
 
 3. Tüm bu sertifikalar için, konu adı ve konu diğer adının aşağıdaki yönergelere uygun olduğundan emin olun:
 
@@ -105,26 +105,26 @@ Yalnızca test ve geliştirme kullanımı için, yerel sisteminizde sertifika ol
     |Blob depolama|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |Her iki uç nokta için birden çok SAN tek sertifika|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-Sertifikalar hakkında daha fazla bilgi için [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)sayfasına gidin.
+Sertifikalar hakkında daha fazla bilgi için [sertifikaları yönetme](azure-stack-edge-gpu-manage-certificates.md)sayfasına gidin.
 
 ### <a name="upload-certificates-on-the-device"></a>Cihaza sertifika yükleme
 
 Önceki adımda oluşturduğunuz sertifikalar, istemcinizdeki kişisel mağazada yer alır. Bu sertifikaların, daha sonra cihazınıza yüklenebilen uygun biçim dosyalarına istemcinizi aktarılması gerekir.
 
-1. Kök sertifika, *. cer* dosya uzantısına sahıp bir der biçim dosyası olarak aktarılmalıdır. Ayrıntılı adımlar için bkz [. sertifikaları. cer biçimli dosya olarak dışarı aktarma](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format).
+1. Kök sertifika, *. cer* dosya uzantısına sahıp bir der biçim dosyası olarak aktarılmalıdır. Ayrıntılı adımlar için bkz [. sertifikaları. cer biçimli dosya olarak dışarı aktarma](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format).
 
-2. Uç nokta sertifikaları, özel anahtarlara sahip *. pfx* dosyaları olarak verilmelidir. Ayrıntılı adımlar için bkz [. sertifikaları özel anahtarlarla. pfx dosyası olarak dışarı aktarma](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
+2. Uç nokta sertifikaları, özel anahtarlara sahip *. pfx* dosyaları olarak verilmelidir. Ayrıntılı adımlar için bkz [. sertifikaları özel anahtarlarla. pfx dosyası olarak dışarı aktarma](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-3. Kök ve uç nokta sertifikaları, yerel Web Kullanıcı arabirimindeki **Sertifikalar** sayfasında **+ sertifika ekle** seçeneği kullanılarak cihaza yüklenir. Sertifikaları karşıya yüklemek için, [sertifikaları karşıya yükleme](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)' deki adımları izleyin.
+3. Kök ve uç nokta sertifikaları, yerel Web Kullanıcı arabirimindeki **Sertifikalar** sayfasında **+ sertifika ekle** seçeneği kullanılarak cihaza yüklenir. Sertifikaları karşıya yüklemek için, [sertifikaları karşıya yükleme](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)' deki adımları izleyin.
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Azure PowerShell çalıştıran istemcideki sertifikaları içeri aktarın
 
 Azure Resource Manager API 'Leri çağırabileceğiniz Windows istemcisi, cihazla güven sağlamak için gereklidir. Bu uçta, önceki adımda oluşturduğunuz sertifikaların, Windows istemcinizdeki uygun sertifika deposuna aktarılması gerekir.
 
-1. *. Cer* UZANTıSıNA sahip der biçimi olarak verdiğiniz kök sertifika, artık Istemci sisteminizdeki güvenilen kök sertifika yetkililerine içeri aktarılmalıdır. Ayrıntılı adımlar için bkz [. sertifikaları Güvenilen kök sertifika yetkilileri deposuna aktarma.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. *. Cer* UZANTıSıNA sahip der biçimi olarak verdiğiniz kök sertifika, artık Istemci sisteminizdeki güvenilen kök sertifika yetkililerine içeri aktarılmalıdır. Ayrıntılı adımlar için bkz [. sertifikaları Güvenilen kök sertifika yetkilileri deposuna aktarma.](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. *. Pfx* olarak verdiğiniz uç nokta sertifikaları *. cer* olarak verilmelidir. Bu *. cer* daha sonra sisteminizdeki **Kişisel** sertifika deposuna aktarılır. Ayrıntılı adımlar için bkz. [sertifikaları Kişisel depoya alma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. *. Pfx* olarak verdiğiniz uç nokta sertifikaları *. cer* olarak verilmelidir. Bu *. cer* daha sonra sisteminizdeki **Kişisel** sertifika deposuna aktarılır. Ayrıntılı adımlar için bkz. [sertifikaları Kişisel depoya alma](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>3. Adım: PowerShell 'i istemciye yüklemeyi 
 

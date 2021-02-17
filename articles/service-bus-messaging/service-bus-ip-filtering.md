@@ -3,12 +3,12 @@ title: Azure Service Bus için IP güvenlik duvarı kurallarını yapılandırma
 description: Belirli IP adreslerinden Azure Service Bus bağlantılara izin vermek için güvenlik duvarı kuralları kullanma.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 11a17575e65bc8878819767804d7f69f3d590ad3
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516558"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560862"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Service Bus ad alanına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
@@ -16,17 +16,17 @@ Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geld
 Bu özellik, Azure Service Bus yalnızca belirli bilinen sitelerden erişilebilir olması gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route][express-route]ile Service Bus kullanıyorsanız, yalnızca şirket ıçı altyapı IP adreslerinizin veya BIR kurumsal NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
 
 > [!IMPORTANT]
-> Güvenlik duvarları ve sanal ağlar yalnızca Service Bus **Premium** katmanında desteklenir. **Premier** katmanına yükseltme bir seçenek değilse, paylaşılan erişim IMZASı (SAS) belirtecini güvenli halde tutmanızı ve yalnızca yetkili kullanıcılarla paylaşmanızı öneririz. SAS kimlik doğrulaması hakkında daha fazla bilgi için bkz. [kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md#shared-access-signature).
+> - Güvenlik duvarları ve sanal ağlar yalnızca Service Bus **Premium** katmanında desteklenir. **Premier** katmanına yükseltme bir seçenek değilse, paylaşılan erişim IMZASı (SAS) belirtecini güvenli halde tutmanızı ve yalnızca yetkili kullanıcılarla paylaşmanızı öneririz. SAS kimlik doğrulaması hakkında daha fazla bilgi için bkz. [kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md#shared-access-signature).
+> - Yalnızca belirtilen IP adreslerinden veya bir sanal ağın alt ağından gelen trafiğe izin vermek için ad alanı için en az bir IP kuralı veya sanal ağ kuralı belirtin. IP ve sanal ağ kuralları yoksa, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).  
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 IP güvenlik duvarı kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
->[!WARNING]
-> Güvenlik duvarı kuralları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir. Özel durum olarak, IP filtrelemesi etkinleştirildiğinde bile belirli güvenilen hizmetlerden Service Bus kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services). 
->
-> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
-> - Azure İşlevleri
+Güvenlik duvarı kuralları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir. Özel durum olarak, IP filtrelemesi etkinleştirildiğinde bile belirli güvenilen hizmetlerden Service Bus kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services). 
+
+Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
+- Azure App Service
+- Azure İşlevleri
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları oluşturmak üzere Azure portal nasıl kullanılacağı gösterilmektedir. 
@@ -37,9 +37,6 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
     > [!NOTE]
     > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
     
-    >[!WARNING]
-    > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adres aralığını kabul eden kuralla eşdeğerdir. 
@@ -50,8 +47,8 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
     2. **Adres aralığı** IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
     3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin** vermek isteyip istemediğinizi belirtin. 
 
-        > [!WARNING]
-        > **Seçili ağlar** seçeneğini BELIRLEYIP bir IP adresi veya adres aralığı belirtmezseniz, hizmet tüm ağlardan gelen trafiğe izin verir. 
+        >[!WARNING]
+        > **Seçili ağlar** seçeneğini belirleyin ve bu sayfada en az bir IP güvenlik duvarı kuralı veya bir sanal ağ eklememeniz durumunda, ad alanına genel İnternet üzerinden erişilebilir (erişim anahtarı kullanılarak).    
 
         ![Azure portal ağ sayfasının ekran görüntüsü. Seçili ağlardan erişime izin verme seçeneği seçilidir ve güvenlik duvarı bölümü vurgulanır.](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.

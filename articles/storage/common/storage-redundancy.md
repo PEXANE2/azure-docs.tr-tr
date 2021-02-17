@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556450"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -200,7 +200,7 @@ Aşağıdaki tabloda, her bir depolama hesabı türü tarafından hangi artıkl�
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolamayı engelle<br /> Blob depolama<br /> Dosya depolama | Genel amaçlı v2<br /> Blob depolamayı engelle<br /> Dosya depolama | Genel amaçlı v2<br /> Genel amaçlı v1<br /> Blob depolama | Genel amaçlı v2 |
+| Genel amaçlı v2<br /> Genel amaçlı v1<br /> BlockBlobStorage<br /> BlobStorage<br /> Dosya depolama | Genel amaçlı v2<br /> BlockBlobStorage<br /> Dosya depolama | Genel amaçlı v2<br /> Genel amaçlı v1<br /> BlobStorage | Genel amaçlı v2 |
 
 Tüm depolama hesaplarına ait tüm veriler, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar da dahil olmak üzere nesneler kopyalanır. Arşiv katmanı da dahil olmak üzere tüm katmanlardaki veriler kopyalanır. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 

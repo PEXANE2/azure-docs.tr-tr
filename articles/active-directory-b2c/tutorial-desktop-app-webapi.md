@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953160"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555610"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Öğretici - Azure Active Directory B2C kullanarak bir masaüstü uygulamasından Node.js web API'sine erişim izni verme
 
 Bu öğreticide, Azure AD B2C tarafından da korunan bir Windows Presentation Foundation (WPF) masaüstü uygulamasından Azure Active Directory B2C (Azure AD B2C) tarafından korunan Node.js Web API 'sinin nasıl çağrılacağını gösterir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Web API'si uygulaması ekleme
@@ -29,7 +29,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Web API 'sine izin verme
 > * Uygulamayı kullanmak için örneği güncelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticideki adımları ve önkoşulları doldurun [: yerel bir masaüstü istemcisinde kullanıcıların kimliğini doğrulama](tutorial-desktop-app.md).
 
@@ -43,7 +43,7 @@ Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar 
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-**SCOPES** `demo.read` Masaüstü uygulamasını yapılandırırken daha sonraki bir adımda kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine benzerdir `https://contosob2c.onmicrosoft.com/api/demo.read` .
+ `demo.read` Masaüstü uygulamasını yapılandırırken daha sonraki bir adımda kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine benzerdir `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
@@ -164,4 +164,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Uygulamayı kullanmak için örneği güncelleştirme
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme](tutorial-add-identity-providers.md)
+> [Azure Active Directory B2C ' deki uygulamalarınıza kimlik sağlayıcıları ekleyin](add-identity-provider.md)

@@ -9,38 +9,41 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 894f8b17c3c5e9e3147b66854a5809bf82351fb9
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 34d2a18d2e556b7eb9916d058c4d80fe0956ba55
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554739"
 ---
 # <a name="teams-interoperability"></a>Teams ile birlikte çalışabilirlik
 
 [!INCLUDE [Private Preview Notice](../includes/private-preview-include.md)]
 
-Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.
+Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video, sohbet ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.
 
-Bu birlikte çalışabilirlik, kullanıcıları takımlar toplantılarına bağlayan özel Azure uygulamaları oluşturmanıza olanak tanır. Özel uygulamalarınızın kullanıcılarının, bu özelliği denemek için Azure Active Directory kimlikleri veya takımlar lisanslarına sahip olması gerekmez. Bu, çalışanları (ekiplere tanıdık gelebilir) ve harici kullanıcıları (özel bir uygulama deneyimi kullanarak) sorunsuz bir toplantı deneyimiyle birlikte getirmek için idealdir. Bu, aşağıdakilere benzer deneyimler oluşturmanıza olanak sağlar:
+Takımlar birlikte çalışabilirliği, kullanıcıları takımlar toplantılarına bağlayan özel uygulamalar oluşturmanıza olanak tanır. Özel uygulamalarınızın kullanıcılarının, bu özelliği denemek için Azure Active Directory kimlikleri veya takımlar lisanslarına sahip olması gerekmez. Bu, çalışanları (ekiplere tanıdık gelebilir) ve harici kullanıcıları (özel bir uygulama deneyimi kullanarak) sorunsuz bir toplantı deneyimiyle birlikte getirmek için idealdir. Örneğin:
 
-1. Çalışanlar bir toplantıyı zamanlamak için takımlar kullanır
-2. Özel Iletişim Hizmetleri uygulamanız, Toplantı ayrıntılarına erişmek için Microsoft Graph API 'Lerini kullanır
-3. Toplantı ayrıntıları, özel uygulamanız aracılığıyla dış kullanıcılarla paylaşılır
-4. Dış kullanıcılar, takım toplantısına katmak için özel uygulamanızı kullanır (istemci Kitaplığı çağıran Iletişim Hizmetleri aracılığıyla)
+1. Çalışanlar bir toplantıyı zamanlamak için takımlar kullanır 
+1. Toplantı ayrıntıları, özel uygulamanız aracılığıyla dış kullanıcılarla paylaşılır.
+   * **Graph API kullanma** Özel Iletişim Hizmetleri uygulamanız, paylaşılan toplantı ayrıntılarına erişmek için Microsoft Graph API 'Lerini kullanır. 
+   * **Diğer seçenekleri kullanma** Örneğin, Toplantı bağlantınız Microsoft ekiplerinde takviminizden kopyalanabilir.
+1. Dış kullanıcılar, takım toplantısına katmak için özel uygulamanızı kullanır (Iletişim Hizmetleri çağırma ve sohbet istemci kitaplıkları aracılığıyla)
 
 Bu kullanım örneği için üst düzey mimari şöyle görünür: 
 
 ![Takımlar için mimari birlikte çalışma](./media/call-flows/teams-interop.png)
 
-Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi özellikler de yalnızca takımlar kullanıcıları tarafından kullanılabilir. özel uygulamanız, toplantının çekirdek ses, video ve ekran paylaşım özelliklerine erişebilir.
+Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi özellikler de yalnızca takımlar kullanıcıları tarafından kullanılabilir olacaktır, ancak özel uygulamanız toplantının çekirdek ses, video, sohbet ve ekran paylaşım özelliklerine erişebilir.
 
-Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran istemci kitaplığı aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır. Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
+Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran istemci kitaplığı aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır.  Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
+
+İletişim hizmetleri ekiplerinin birlikte çalışması şu anda özel önizlemededir. Genel olarak kullanılabilir olduğunda, Iletişim Hizmetleri kullanıcıları "dış erişim kullanıcıları" gibi kabul edilir. [Microsoft ekiplerinde kuruluşunuzun dışındaki kişilerle çağrı, sohbet ve işbirliği yapma](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations)hakkında daha fazla bilgi edinin.
 
 İletişim Hizmetleri kullanıcıları, [Toplantı ayarlarında](/microsoftteams/meeting-settings-in-teams)anonim birleşimler etkinleştirildiği sürece zamanlanan takımlar toplantılarına katılabilir.
 
 ## <a name="teams-in-government-clouds-gcc"></a>Kamu bulutlarındaki takımlar (GCC)
-Azure Iletişim Hizmetleri birlikte çalışabilirliğine, şu anda [Microsoft 365 kamu bulutları (GCC)](/MicrosoftTeams/plan-for-government-gcc) kullanan takımlar dağıtımı yapılmasına izin verilmez. 
+Azure Iletişim Hizmetleri birlikte çalışabilirliği, şu anda [Microsoft 365 kamu bulutları (GCC)](/MicrosoftTeams/plan-for-government-gcc) kullanılarak gerçekleştirilen takımlar dağıtımıyla uyumlu değildir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

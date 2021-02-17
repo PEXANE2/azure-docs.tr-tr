@@ -5,17 +5,17 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 10/1/2020
-ms.openlocfilehash: ce712736c25c0757f5b654e4442a4f08acdf15e2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 02/10/2021
+ms.openlocfilehash: 006b2838a4e593397f8968e53ba2364d16753a40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029796"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547069"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)-PowerShell
 
-Bu makalede, [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)için Azure PowerShell kullanarak, bulunan VMware VM 'lerini aracısız yöntemiyle nasıl geçirebileceğinizi öğreneceksiniz. 
+Bu makalede, [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)için Azure PowerShell kullanarak, bulunan VMware VM 'lerini aracısız yöntemiyle nasıl geçirebileceğinizi öğreneceksiniz.
 
 Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -32,87 +32,91 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="1-prerequisites"></a>1. ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
-1. Azure ve VMware 'yi geçiş için hazırlamak üzere [bulma öğreticisini doldurun](tutorial-discover-vmware.md) .
-2. [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz.
-3. Azure PowerShell `Az` modüle sahipsiniz. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps) izleyin
+1. Öğreticiyi doldurun: Azure ve VMware 'yi geçişe hazırlamak için [Sunucu değerlendirmesi Ile VMware VM 'Lerini bulun](tutorial-discover-vmware.md) .
+1. Öğreticiyi doldurun: VMware VM 'lerini Azure 'a geçirmeden önce [Azure VM 'lerine geçiş Için değerlendirin](./tutorial-assess-vmware-azure-vm.md) .
+1. [Az PowerShell modülünü yükler](/powershell/azure/install-az-ps)
 
-## <a name="install-azure-migrate-powershell-module"></a>Azure geçişi PowerShell modülünü yükler
+## <a name="2-install-azure-migrate-powershell-module"></a>2. Azure geçişi PowerShell modülünü yükler
 
-Azure geçişi PowerShell modülü önizlemede kullanılabilir. Aşağıdaki komutu kullanarak PowerShell modülünü yüklemeniz gerekir. 
+Azure geçişi PowerShell modülü önizlemede kullanılabilir. Aşağıdaki komutu kullanarak PowerShell modülünü yüklemeniz gerekir.
 
-```azurepowershell
-Install-Module -Name Az.Migrate 
+```azurepowershell-interactive
+Install-Module -Name Az.Migrate
 ```
 
-## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure aboneliğinizde oturum açın
+## <a name="3-sign-in-to-your-microsoft-azure-subscription"></a>3. Microsoft Azure aboneliğinizde oturum açın
 
-Cmdlet 'i ile Azure aboneliğinizde oturum açın `Connect-AzAccount` .
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ı ile Azure aboneliğinizde oturum açın.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Azure aboneliğinizi seçin. `Get-AzSubscription`Erişiminiz olan Azure aboneliklerinin listesini almak için cmdlet 'ini kullanın. Cmdlet 'ini kullanarak çalışmak için Azure geçişi projenizin bulunduğu Azure aboneliğini seçin `Set-AzContext` .
+### <a name="select-your-azure-subscription"></a>Azure aboneliğinizi seçin
 
-```azurepowershell
-Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+Erişiminiz olan Azure aboneliklerinin listesini almak için [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) cmdlet 'ini kullanın. [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 'ini kullanarak çalışmak Için Azure geçişi projenizin bulunduğu Azure aboneliğini seçin.
+
+```azurepowershell-interactive
+Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="retrieve-the-azure-migrate-project"></a>Azure geçişi projesini alma
+## <a name="4-retrieve-the-azure-migrate-project"></a>4. Azure geçişi projesini alma
 
 Değerlendirme veya geçiş yaptığınız ortamdan toplanan bulma, değerlendirme ve geçiş meta verilerini depolamak için bir Azure geçişi projesi kullanılır.
 Bir projede keşfedilen varlıkları izleyebilir, değerlendirmeleri düzenleyebilir ve geçişleri gerçekleştirebilirsiniz.
 
-Önkoşulların bir parçası olarak, zaten bir Azure geçişi projesi oluşturmuş olursunuz. `Get-AzMigrateProject`Bir Azure geçişi projesinin ayrıntılarını almak için cmdlet 'ini kullanın. Azure geçişi projesinin ( `Name` ) adını ve Azure geçişi projesinin () kaynak grubunun adını belirtmeniz gerekir `ResourceGroupName` .
+Önkoşulların bir parçası olarak, zaten bir Azure geçişi projesi oluşturmuş olursunuz. Azure geçişi projesinin ayrıntılarını almak için [Get-AzMigrateProject](/powershell/module/az.migrate/get-azmigrateproject) cmdlet 'ini kullanın. Azure geçişi projesinin ( `Name` ) adını ve Azure geçişi projesinin () kaynak grubunun adını belirtmeniz gerekir `ResourceGroupName` .
 
-```azurepowershell
+```azurepowershell-interactive
 # Get resource group of the Azure Migrate project
-$ResourceGroup = Get-AzResourceGroup -Name "MyResourceGroup"
+$ResourceGroup = Get-AzResourceGroup -Name MyResourceGroup
 
 # Get details of the Azure Migrate project
-$MigrateProject = Get-AzMigrateProject -Name "MyMigrateProject" -ResourceGroupName $ResourceGroup.ResourceGroupName
+$MigrateProject = Get-AzMigrateProject -Name MyMigrateProject -ResourceGroupName $ResourceGroup.ResourceGroupName
 
 # View Azure Migrate project details
-$MigrateProject | ConvertTo-JSON
+Write-Output $MigrateProject
 ```
 
-## <a name="retrieve-discovered-vms-in-an-azure-migrate-project"></a>Azure geçişi projesinde bulunan VM 'Leri alma
+## <a name="5-retrieve-discovered-vms-in-an-azure-migrate-project"></a>5. bulunan VM 'Leri bir Azure geçişi projesinde alma
 
 Azure geçişi basit bir [Azure geçiş](migrate-appliance-architecture.md)gereci kullanır. Önkoşulların bir parçası olarak Azure geçişi gereci bir VMware VM 'si olarak dağıttığınızı görürsünüz.
 
-Azure geçişi projesindeki belirli bir VMware VM 'sini almak için Azure geçişi projesi ( `ProjectName` ), Azure geçişi projesinin kaynak grubu ( `ResourceGroupName` ) ve VM adı () adını belirtin `DisplayName` . 
+Azure geçişi projesindeki belirli bir VMware VM 'sini almak için Azure geçişi projesi ( `ProjectName` ), Azure geçişi projesinin kaynak grubu ( `ResourceGroupName` ) ve VM adı () adını belirtin `DisplayName` .
 
-> [!NOTE]
+> [!IMPORTANT]
 > **VM Name ( `DisplayName` ) parametre değeri büyük/küçük harfe duyarlıdır**.
 
-```azurepowershell
+```azurepowershell-interactive
 # Get a specific VMware VM in an Azure Migrate project
-$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName "MyTestVM"
+$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM
 
 # View discovered server details
-$DiscoveredServer | ConvertTo-JSON
+Write-Output $DiscoveredServer
 ```
+
 Bu öğreticinin bir parçası olarak bu VM 'yi geçireceğiz.
 
-Ayrıca, ve parametrelerini kullanarak bir Azure geçişi projesindeki tüm VMware VM 'lerini de alabilirsiniz `ProjectName` `ResourceGroupName` .
+Ayrıca, **ProjectName** ve **resourcegroupname** parametrelerini kullanarak bir Azure geçişi projesindeki tüm VMware VM 'lerini de alabilirsiniz.
 
-```azurepowershell
+```azurepowershell-interactive
 # Get all VMware VMs in an Azure Migrate project
-$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName 
+$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName
 ```
-Azure geçişi projesinde birden çok gereç varsa, `ProjectName` `ResourceGroupName` `ApplianceName` belirli bir Azure geçişi gereci kullanarak bulunan tüm VM 'leri almak için, ve parametrelerini kullanabilirsiniz. 
 
-```azurepowershell
+Azure geçişi projesinde birden çok gereç varsa, belirli bir Azure geçişi gereci kullanarak bulunan tüm VM 'Leri almak için **ProjectName**, **Resourcegroupname** ve **ApplianceName** parametrelerini kullanabilirsiniz.
+
+```azurepowershell-interactive
 # Get all VMware VMs discovered by an Azure Migrate Appliance in an Azure Migrate project
-$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -ApplianceName "MyMigrateAppliance" |Format-Table DisplayName, Name, Type
+$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -ApplianceName MyMigrateAppliance
 
 ```
 
-## <a name="initialize-replication-infrastructure"></a>Çoğaltma altyapısını Başlat
+## <a name="6-initialize-replication-infrastructure"></a>6. çoğaltma altyapısını başlatma
 
 [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) , VM 'leri geçirmek için birden çok Azure kaynağı kullanır. Sunucu geçişi, proje ile aynı kaynak grubunda aşağıdaki kaynakları sağlar.
 
@@ -125,105 +129,106 @@ Azure geçişi projesindeki ilk VM 'yi çoğaltmadan önce, çoğaltma altyapıs
 
 > [!NOTE]
 > Bir Azure geçişi projesi yalnızca bir Azure bölgesine geçişleri destekler. Bu betiği çalıştırdıktan sonra, VMware VM 'lerinizi geçirmek istediğiniz hedef bölgeyi değiştiremezsiniz.
-> `Initialize-AzMigrateReplicationInfrastructure`Azure geçişi projenizde yeni bir gereç yapılandırırsanız, betiği çalıştırmanız gerekir. 
+> `Initialize-AzMigrateReplicationInfrastructure`Azure geçişi projenizde yeni bir gereç yapılandırırsanız, betiği çalıştırmanız gerekir.
 
-Bu makalede, VM 'lerimizi bölgeye geçirebilmemiz için çoğaltma altyapısını başlatacağız `Central US` . Dosyayı GitHub deposundan [indirebilir](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) veya aşağıdaki kod parçacığını kullanarak çalıştırabilirsiniz. 
+Bu makalede, VM 'lerimizi bölgeye geçirebilmemiz için çoğaltma altyapısını başlatacağız `Central US` . Dosyayı GitHub deposundan [indirebilir](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) veya aşağıdaki kod parçacığını kullanarak çalıştırabilirsiniz.
 
-```azurepowershell
-# Download the script from Azure Migrate GitHub repository 
+```azurepowershell-interactive
+# Download the script from Azure Migrate GitHub repository
 Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-migrate/migrate-at-scale-vmware-agentles/Initialize-AzMigrateReplicationInfrastructure.ps1 -OutFile .\AzMigrateReplicationinfrastructure.ps1
 
 # Run the script for initializing replication infrastructure for the current Migrate project
-.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion "CentralUS" 
+.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion CentralUS
 ```
 
-
-## <a name="replicate-vms"></a>Sanal makineleri çoğaltma
+## <a name="7-replicate-vms"></a>7. VM 'Leri çoğaltma
 
 Bulma işlemini tamamladıktan ve çoğaltma altyapısını başlattıktan sonra, VMware VM 'lerinin Azure 'a çoğaltılmasını başlatabilirsiniz. Aynı anda 300 çoğaltma gerçekleştirebilirsiniz.
 
 Çoğaltma özelliklerini aşağıdaki gibi belirtebilirsiniz.
 
-- **Hedef abonelik ve kaynak grubu** -parametresini kullanarak kaynak grubu KIMLIĞI sağlayarak VM 'nin geçirilmesi gereken aboneliği ve kaynak grubunu belirtin `TargetResourceGroupId` . 
-- **Hedef sanal ağ ve alt ağ** -Azure sanal ağının kimliğini ve `TargetNetworkId` sırasıyla ve parametrelerini kullanarak VM 'nin geçirilmesi gereken alt ağın adını belirtin `TargetSubnetName` . 
+- **Hedef abonelik ve kaynak grubu** -parametresini kullanarak kaynak grubu KIMLIĞI sağlayarak VM 'nin geçirilmesi gereken aboneliği ve kaynak grubunu belirtin `TargetResourceGroupId` .
+- **Hedef sanal ağ ve alt ağ** -Azure sanal ağının kimliğini ve `TargetNetworkId` sırasıyla ve parametrelerini kullanarak VM 'nin geçirilmesi gereken alt ağın adını belirtin `TargetSubnetName` .
 - **Hedef VM adı** -parametresini kullanarak oluşturulacak Azure VM 'nin adını belirtin `TargetVMName` .
-- **Hedef VM boyutu** -parametre kullanarak çoğaltma VM 'si Için kullanılacak Azure VM boyutunu belirtin `TargetVMSize` . Örneğin, bir VM 'yi Azure 'da D2_v2 VM 'ye geçirmek için değeri `TargetVMSize` "Standard_D2_v2" olarak belirtin.  
+- **Hedef VM boyutu** -parametre kullanarak çoğaltma VM 'si Için kullanılacak Azure VM boyutunu belirtin `TargetVMSize` . Örneğin, bir VM 'yi Azure 'da D2_v2 VM 'ye geçirmek için değeri `TargetVMSize` "Standard_D2_v2" olarak belirtin.
 - **Lisans** -etkin yazılım güvencesi veya Windows Server abonelikleri kapsamındaki Windows Server makineleriniz için Azure hibrit avantajı kullanmak için, parametre için değeri `LicenseType` "windowsserver" olarak belirtin. Aksi takdirde, parametre için değeri `LicenseType` "NoLicenseType" olarak belirtin.
 - İşletim sistemi **diski** -işletim sistemi önyükleme yükleyicisine ve yükleyiciye sahip diskin benzersiz tanımlayıcısını belirtin. Kullanılacak disk KIMLIĞI, cmdlet 'i kullanılarak alınan diskin benzersiz tanımlayıcı (UUID) özelliğidir `Get-AzMigrateServer` .
 - **Disk türü** -parametre için değeri `DiskType` aşağıdaki şekilde belirtin.
-    - Premium yönetilen diskleri kullanmak için, "Premium_LRS" parametresini parametre değeri olarak belirtin `DiskType` . 
-    - Standart SSD disklerini kullanmak için, "StandardSSD_LRS" parametresini parametre değeri olarak belirtin `DiskType` . 
-    - Standart HDD disklerini kullanmak için, "Standard_LRS" parametresini parametre değeri olarak belirtin `DiskType` . 
-- **Altyapı artıklığı** -altyapı artıklığı seçeneğini aşağıdaki şekilde belirtin. 
+    - Premium yönetilen diskleri kullanmak için, "Premium_LRS" parametresini parametre değeri olarak belirtin `DiskType` .
+    - Standart SSD disklerini kullanmak için, "StandardSSD_LRS" parametresini parametre değeri olarak belirtin `DiskType` .
+    - Standart HDD disklerini kullanmak için, "Standard_LRS" parametresini parametre değeri olarak belirtin `DiskType` .
+- **Altyapı artıklığı** -altyapı artıklığı seçeneğini aşağıdaki şekilde belirtin.
     - Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir. Kullanılabilirlik alanlarını kullanmak için, parametre için kullanılabilirlik alanı değerini belirtin `TargetAvailabilityZone` .
-    - Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Seçilen hedef kaynak grubu, bu seçeneği kullanmak için bir veya daha fazla kullanılabilirlik kümesine sahip olmalıdır. Kullanılabilirlik kümesini kullanmak için, parametre için kullanılabilirlik kümesi KIMLIĞINI belirtin `TargetAvailabilitySet` . 
+    - Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Seçilen hedef kaynak grubu, bu seçeneği kullanmak için bir veya daha fazla kullanılabilirlik kümesine sahip olmalıdır. Kullanılabilirlik kümesini kullanmak için, parametre için kullanılabilirlik kümesi KIMLIĞINI belirtin `TargetAvailabilitySet` .
 
 ### <a name="replicate-vms-with-all-disks"></a>VM 'Leri tüm disklerle çoğaltma
-Bu öğreticide, bulunan VM 'nin tüm disklerini çoğaltacak ve Azure 'da VM için yeni bir ad belirteceğiz. Bulunan sunucunun ilk diskini işletim sistemi diski olarak belirtir ve tüm diskleri Standart HDD olarak geçirin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
 
-```azurepowershell
+Bu öğreticide, bulunan VM 'nin tüm disklerini çoğaltacak ve Azure 'da VM için yeni bir ad belirteceğiz. Bulunan sunucunun ilk diskini işletim sistemi diski olarak belirtir ve tüm diskleri Standart HDD olarak geçirin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. Cmdlet 'i, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
+
+```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
-$TargetResourceGroup = Get-AzResourceGroup -Name "MyTargetResourceGroup"
+$TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
 
 # Retrieve the Azure virtual network and subnet that you want to migrate to
-$TargetVirtualNetwork = Get-AzVirtualNetwork -Name "MyVirtualNetwork"
+$TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
 
 # Start replication for a discovered VM in an Azure Migrate project
-$MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType "NoLicenseType" -OSDiskID $DiscoveredServer.Disk[0].Uuid -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -DiskType "Standard_LRS" -TargetVMName "MyMigratedTestVM" -TargetVMSize "Standard_DS2_v2"
+$MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -OSDiskID $DiscoveredServer.Disk[0].Uuid -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -DiskType Standard_LRS -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
 
 # Track job status to check for completion
-while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
 ### <a name="replicate-vms-with-select-disks"></a>VM 'Leri Select disklerle çoğaltma
-Ayrıca, cmdlet 'ini kullanarak keşfedilen VM disklerini seçmeli `New-AzMigrateDiskMapping` olarak çoğaltabilir ve `DiskToInclude` cmdlet 'teki parametreye bir girdi olarak bunu sağlayabilirsiniz `New-AzMigrateServerReplication` . Ayrıca, `New-AzMigrateDiskMapping` çoğaltılacak her bir disk için farklı hedef disk türlerini belirtmek için cmdlet 'ini de kullanabilirsiniz. 
+
+Ayrıca, [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) cmdlet 'ini kullanarak keşfedilen VM disklerini seçmeli olarak çoğaltabilir ve bunu [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) cmdlet 'inde **disktoınclude** parametresine bir girdi olarak sağlayabilirsiniz. Ayrıca, `New-AzMigrateDiskMapping` çoğaltılacak her bir disk için farklı hedef disk türlerini belirtmek için cmdlet 'ini de kullanabilirsiniz.
 
 Cmdlet 'in aşağıdaki parametreleri için değerleri belirtin `New-AzMigrateDiskMapping` .
 
-- **DiskID** -geçirilecek disk için benzersiz tanımlayıcıyı belirtin. Kullanılacak disk KIMLIĞI, cmdlet 'i kullanılarak alınan diskin benzersiz tanımlayıcı (UUID) özelliğidir `Get-AzMigrateServer` .  
+- **DiskID** -geçirilecek disk için benzersiz tanımlayıcıyı belirtin. Kullanılacak disk KIMLIĞI, cmdlet 'i kullanılarak alınan diskin benzersiz tanımlayıcı (UUID) özelliğidir `Get-AzMigrateServer` .
 - **İsosdisk** -geçirilecek disk, sanal makinenin işletim sistemi diski ise "false" olarak ayarlanırsa "true" değerini belirtin.
-- **Disktype** -Azure 'da kullanılacak disk türünü belirtin. 
+- **Disktype** -Azure 'da kullanılacak disk türünü belirtin.
 
-Aşağıdaki örnekte, bulunan VM 'nin yalnızca iki diskini çoğaltacağız. işletim sistemi diskini belirteceğiz ve çoğaltılacak her disk için farklı disk türleri kullanacağız. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
+Aşağıdaki örnekte, bulunan VM 'nin yalnızca iki diskini çoğaltacağız. İşletim sistemi diskini belirteceğiz ve çoğaltılacak her disk için farklı disk türleri kullanacağız. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
 
-```azurepowershell
+```azurepowershell-interactive
 # View disk details of the discovered server
-$DiscoveredServer.Disk | ConvertTo-JSON
+Write-Output $DiscoveredServer.Disk
 
 # Create a new disk mapping for the disks to be replicated
 $DisksToReplicate = @()
-$OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskType "StandardSSD_LRS" -IsOSDisk "true"
-$DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -DiskType "Premium_LRS" -IsOSDisk "false"
+$OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskType StandardSSD_LRS -IsOSDisk true
+$DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -DiskType Premium_LRS -IsOSDisk false
 
 $DisksToReplicate += $OSDisk
-$DisksToReplicate += $DataDisk 
+$DisksToReplicate += $DataDisk
 
 # Retrieve the resource group that you want to migrate to
-$TargetResourceGroup = Get-AzResourceGroup -Name "MyTargetResourceGroup"
+$TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
 
 # Retrieve the Azure virtual network and subnet that you want to migrate to
-$TargetVirtualNetwork = Get-AzVirtualNetwork -Name "MyVirtualNetwork"
+$TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
 
 # Start replication for the VM
-$MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType "NoLicenseType" -DiskToInclude $DisksToReplicate -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -TargetVMName "MyMigratedTestVM" -TargetVMSize "Standard_DS2_v2"
+$MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -DiskToInclude $DisksToReplicate -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
 
 # Track job status to check for completion
-while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
-## <a name="monitor-replication"></a>Çoğaltmayı izleme 
+## <a name="8-monitor-replication"></a>8. çoğaltmayı izleme
 
 Çoğaltma aşağıdaki gibi gerçekleşir:
 
@@ -231,31 +236,34 @@ Write-Output $MigrateJob.State
 - İlk çoğaltma sırasında VM anlık görüntüsü oluşturulur. Anlık görüntüdeki disk verileri, Azure 'da çoğaltma ile yönetilen disklere çoğaltılır.
 - İlk çoğaltma tamamlandıktan sonra Delta çoğaltma başlar. Şirket içi disklerde artımlı değişiklikler düzenli aralıklarla Azure 'daki çoğaltma disklerine çoğaltılır.
 
-Cmdlet 'ini kullanarak çoğaltmanın durumunu izleyin `Get-AzMigrateServerReplication` . 
+[Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) cmdlet 'ini kullanarak çoğaltmanın durumunu izleyin.
 
 > [!NOTE]
-> Bulunan VM KIMLIĞI ve çoğaltılan VM KIMLIĞI, iki farklı benzersiz tanımlayıcılardır. Bu tanımlayıcıların her ikisi de, çoğaltılan bir sunucunun ayrıntılarını almak için kullanılabilir.  
+> Bulunan VM KIMLIĞI ve çoğaltılan VM KIMLIĞI, iki farklı benzersiz tanımlayıcılardır. Bu tanımlayıcıların her ikisi de, çoğaltılan bir sunucunun ayrıntılarını almak için kullanılabilir.
 
 ### <a name="monitor-replication-using-discovered-vm-identifier"></a>Keşfedilen VM tanımlayıcısını kullanarak çoğaltmayı izleme
-```azurepowershell
+
+```azurepowershell-interactive
 # Retrieve the replicating VM details by using the discovered VM identifier
 $ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
 ```
 
 ### <a name="monitor-replication-using-replicating-vm-identifier"></a>Çoğaltma VM tanımlayıcısı kullanarak çoğaltmayı izleme
 
-```azurepowershell
+```azurepowershell-interactive
 # List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName | where MachineName -eq $DiscoveredServer.DisplayName
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
+                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
 
 # Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id 
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
 
-Çıktıda "geçiş durumu" ve "geçiş durumu açıklaması" özelliklerini izleyebilirsiniz. 
-- İlk çoğaltma için geçiş durumu ve geçiş durumu açıklama özellikleri değerleri sırasıyla "ınitialseedingınprogress" ve "Ilk çoğaltma" olacaktır. 
-- Delta çoğaltma sırasında, geçişi durum ve geçiş durumu açıklama özellikleri için değerler sırasıyla "çoğaltılıyor" ve "geçişe hazırlanıyor" olacaktır.
-- Geçişi tamamladıktan sonra, geçiş durumu ve geçiş durumu açıklama özellikleri değerleri sırasıyla "geçiş başarılı" ve "geçirilir" olacaktır.
+Çıktıda **geçiş durumunu** ve **geçiş durumu açıklama** özelliklerini izleyebilirsiniz.
+
+- İlk çoğaltma için **geçiş durumu** ve **geçiş durumu açıklama** özellikleri değerleri `InitialSeedingInProgress` ve `Initial replication` sırasıyla olur.
+- Delta çoğaltma sırasında, geçiş **durumu** ve **geçiş durumu açıklama** özellikleri değerleri `Replicating` ve `Ready to migrate` sırasıyla olur.
+- Geçişi tamamladıktan sonra, geçiş **durumu** ve **geçiş durumu açıklama** özellikleri değerleri `Migration succeeded` ve `Migrated` sırasıyla olur.
 
 ```Output
 AllowedOperation            : {DisableMigration, TestMigrate, Migrate}
@@ -288,12 +296,13 @@ Type                        : Microsoft.RecoveryServices/vaults/replicationFabri
 
 Çoğaltma ilerleme durumu hakkında daha fazla bilgi için aşağıdaki cmdlet 'i çalıştırın.
 
-```azurepowershell
-$replicatingserver.ProviderSpecificDetail | convertto-json
+```azurepowershell-interactive
+Write-Output $replicatingserver.ProviderSpecificDetail
 ```
-İlk çoğaltma ilerlemesini, çıktıda "Ilk dengeli dağıtım Ilerleme yüzdesi" özelliklerini kullanarak izleyebilirsiniz.
 
-```output
+İlk çoğaltma ilerlemesini, çıkışdaki **Ilk dengeli dağıtım Ilerleme yüzdesi** özelliklerini kullanarak izleyebilirsiniz.
+
+```Output
     "DataMoverRunAsAccountId": "/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.OffAzure/VMwareSites/xxx/runasaccounts/xxx",
     "FirmwareType":  "BIOS",
     "InitialSeedingProgressPercentage": 20,
@@ -312,107 +321,110 @@ $replicatingserver.ProviderSpecificDetail | convertto-json
 - İlk çoğaltma sırasında VM anlık görüntüsü oluşturulur. Anlık görüntüdeki disk verileri, Azure 'da çoğaltma ile yönetilen disklere çoğaltılır.
 - İlk çoğaltma tamamlandıktan sonra Delta çoğaltma başlar. Şirket içi disklerde artımlı değişiklikler düzenli aralıklarla Azure 'daki çoğaltma disklerine çoğaltılır.
 
-## <a name="retrieve-the-status-of-a-job"></a>Bir işin durumunu alma
+## <a name="9-retrieve-the-status-of-a-job"></a>9. bir işin durumunu alın
 
-Cmdlet 'ini kullanarak bir işin durumunu izleyebilirsiniz `Get-AzMigrateJob` . 
+[Get-AzMigrateJob](/powershell/module/az.migrate/get-azmigratejob) cmdlet 'ini kullanarak bir işin durumunu izleyebilirsiniz.
 
-```azurepowershell
+```azurepowershell-interactive
 # Retrieve the updated status for a job
 $job = Get-AzMigrateJob -InputObject $job
 ```
 
-## <a name="update-properties-of-a-replicating-vm"></a>Çoğaltılan bir VM 'nin özelliklerini güncelleştirme
+## <a name="10-update-properties-of-a-replicating-vm"></a>10. çoğaltılan bir VM 'nin özelliklerini güncelleştirme
 
-[Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) , çoğaltılan bir sanal makine için ad, boyut, kaynak grubu, NIC yapılandırması gibi hedef özellikleri değiştirmenize olanak sağlar. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
+[Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) , çoğaltılan bir sanal makine için ad, boyut, kaynak grubu, NIC yapılandırması gibi hedef özellikleri değiştirmenize olanak sağlar.
 
-```azurepowershell
+Aşağıdaki özellikler bir VM için güncelleştirilebilen olabilir.
+
+- **VM adı** - **targetvmname** PARAMETRESINI kullanarak oluşturulacak Azure VM 'nin adını belirtin.
+- **VM boyutu** - **targetvmsize** parametresi kullanarak çoğaltılan VM için kullanılacak Azure VM boyutunu belirtin. Örneğin, bir VM 'yi Azure 'da D2_v2 VM 'ye geçirmek için **Targetvmsize** değerini olarak belirtin `Standard_D2_v2` .
+- **Sanal ağ** - **targetnetworkıd** parametresini kullanarak VM 'Nin geçirilmesi gereken Azure sanal ağının kimliğini belirtin.
+- **Kaynak grubu** - **targetresourcegroupıd** PARAMETRESINI kullanarak kaynak grubu kimliğini sağlayarak VM 'nin GEÇIRILMESI gereken kaynak grubunun kimliğini belirtin.
+- **Ağ arabirimi** -NIC yapılandırması [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) cmdlet 'i kullanılarak belirtilebilir. Daha sonra nesne, [set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) cmdlet 'Inde **nictoupdate** parametresine bir giriş geçirilir.
+
+    - **IP ayırmayı Değiştir** -NIC için BIR statik IP belirtmek üzere, **targetnicıp** parametresini kullanarak VM için statik IP olarak kullanılacak IPv4 adresini sağlayın. Bir NIC için dinamik olarak bir IP atamak için `auto` **targetnicıp** parametresinin değeri olarak belirtin.
+    - NIC 'in `Primary` `Secondary` `DoNotCreate` birincil, IKINCIL veya geçirilen VM 'de oluşturulup oluşturulmayacağını belirtmek üzere **targetnicselectiontype** parametresi için değerleri kullanın. VM için birincil NIC olarak yalnızca bir NIC belirtilebilir.
+    - Bir NIC birincil oluşturmak için, ikincil hale getirilmeli veya geçirilen VM 'de oluşturulmayan diğer NIC 'Leri de belirtmeniz gerekir.
+    - NIC 'nin alt ağını değiştirmek için **Targetnicsubnet** parametresini kullanarak alt ağın adını belirtin.
+
+ - **Kullanılabilirlik bölgesi** -kullanılabilirlik alanlarını kullanmak Için, **Targetavailabilityzone** parametresi için kullanılabilirlik alanı değerini belirtin.
+ - **Kullanılabilirlik kümesi** kullanım için kullanılabilirlik kümesi, **Targetavailabilityset** PARAMETRESI için kullanılabilirlik kümesi kimliğini belirtin.
+
+`Get-AzMigrateServerReplication`Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
+
+```azurepowershell-interactive
 # Retrieve the replicating VM details by using the discovered VM identifier
 $ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
 
 # View NIC details of the replicating server
-Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic 
+Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
 ```
-Aşağıdaki özellikler bir VM için güncelleştirilebilen olabilir.
 
-- **VM adı** -parametresini kullanarak oluşturulacak Azure VM 'nin adını belirtin `TargetVMName` .
-- **VM boyutu** -parametre kullanarak çoğaltma VM 'si Için kullanılacak Azure VM boyutunu belirtin `TargetVMSize` . Örneğin, bir VM 'yi Azure 'da D2_v2 VM 'ye geçirmek için değeri `TargetVMSize` "Standard_D2_v2" olarak belirtin.  
-- **Sanal ağ** -PARAMETRESI kullanılarak VM 'nin geçirilmesi gereken Azure sanal ağının kimliğini belirtin `TargetNetworkId` . 
-- **Kaynak grubu** -parametresini kullanarak kaynak grubu KIMLIĞI sağlayarak VM 'nin geçirilmesi gereken kaynak grubunun kimliğini belirtin `TargetResourceGroupId` .
-- **Ağ arabirimi** -NIC yapılandırması cmdlet kullanılarak belirtilebilir `New-AzMigrateNicMapping` . Daha sonra nesnesi, `NicToUpdate` cmdlet 'teki parametresine bir giriş geçirilir `Set-AzMigrateServerReplication` . 
+Aşağıdaki örnekte, ilk NIC 'yi birincil olarak yaparak ve kendisine statik bir IP atayarak NIC yapılandırmasını güncelleştireceğiz. geçiş için ikinci NIC 'yi atacak ve hedef VM adını ve boyutunu güncelleştiririz.
 
-    - **IP ayırmayı Değiştir** -NIC IÇIN statik IP belirtmek üzere, PARAMETRESINI kullanarak VM IÇIN statik IP olarak kullanılacak IPv4 adresini sağlayın `TargetNicIP` . Bir NIC için dinamik olarak IP atamak için, parametresinin değeri olarak "Auto" sağlayın `TargetNicIP` .
-    - "Birincil", "Ikincil" veya "DoNotCreate" değerlerini `TargetNicSelectionType` , NIC 'in birincil, ikincil veya GEÇIRILEN VM 'de oluşturulup oluşturulmayacağını belirtmek için kullanın. VM için birincil NIC olarak yalnızca bir NIC belirtilebilir. 
-    - Bir NIC birincil oluşturmak için, ikincil hale getirilmeli veya geçirilen VM 'de oluşturulmayan diğer NIC 'Leri de belirtmeniz gerekir.  
-    - NIC 'nin alt ağını değiştirmek için, parametresini kullanarak alt ağın adını belirtin `TargetNicSubnet` .
-
- - **Kullanılabilirlik bölgesi** -kullanılabilirlik alanlarını kullanmak için, parametre için kullanılabilirlik alanı değerini belirtin `TargetAvailabilityZone` .
- - **Kullanılabilirlik kümesi** kullanım için kullanılabilirlik kümesi, parametre için KULLANıLABILIRLIK kümesi kimliğini belirtin `TargetAvailabilitySet` .
-
-Aşağıdaki örnekte, ilk NIC 'yi birincil olarak yaparak ve kendisine statik bir IP atayarak NIC yapılandırmasını güncelleştireceğiz. geçiş için ikinci NIC 'yi atacak ve hedef VM adını ve boyutunu güncelleştiririz. 
-
-```azurepowershell
-# Specify the NIC properties to be updated for a replicating VM. 
+```azurepowershell-interactive
+# Specify the NIC properties to be updated for a replicating VM.
 $NicMapping = @()
-$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP "xxx.xxx.xxx.xxx" -TargetNicSelectionType "Primary"
-$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType "DoNotCreate"
+$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary
+$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
 
 # Update the name, size and NIC configuration of a replicating server
-$UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize "Standard_DS13_v2" -TargetVMName "MyMigratedVM" -NicToUpdate $NicMapping
+$UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
 
 # Track job status to check for completion
-while (($UpdateJob.State -eq "InProgress") -or ($UpdateJob.State -eq "NotStarted")){
+while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
         $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
 
 Ayrıca, Azure geçişi projesindeki tüm çoğaltılan sunucuları listeleyebilir ve sonra VM özelliklerini güncelleştirmek için çoğaltma VM tanımlayıcısını kullanabilirsiniz.
 
-```azurepowershell
+```azurepowershell-interactive
 # List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName | where MachineName -eq $DiscoveredServer.DisplayName
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
+                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
 
 # Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id 
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
 
+## <a name="11-run-a-test-migration"></a>11. bir test geçişi çalıştırın
 
-## <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
+Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce VM 'Ler için bir test geçişi çalıştırabilirsiniz. Geçirmeden önce her makine için geçişi en az bir kez test etmenizi kesinlikle öneririz. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
 
-Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce VM 'Ler için bir test geçişi çalıştırabilirsiniz. Geçirmeden önce her makine için geçişi en az bir kez test etmenizi kesinlikle öneririz. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
-
-- Test geçişi çalıştırmak, geçişin beklendiği gibi çalıştığını denetler. Test geçişi, çalışır durumda olan ve çoğaltmaya devam eden şirket içi makineyi etkilemez. 
+- Test geçişi çalıştırmak, geçişin beklendiği gibi çalıştığını denetler. Test geçişi, çalışır durumda olan ve çoğaltmaya devam eden şirket içi makineyi etkilemez.
 - Test geçişi, çoğaltılan verileri kullanarak bir Azure VM oluşturarak geçişe benzetir (genellikle Azure aboneliğinizdeki bir üretim dışı VNet 'e geçiş yapar).
 - Geçişi doğrulamak, uygulama testi gerçekleştirmek ve tam geçişten önce herhangi bir sorunu gidermek için çoğaltılan test Azure VM 'yi kullanabilirsiniz.
 
-Parametresini kullanarak sanal ağın KIMLIĞINI belirterek test için kullanılacak Azure sanal ağını seçin `TestNetworkID` .
+**Testnetworkıd** parametresini kullanarak sanal ağın kimliğini belirterek test Için kullanılacak Azure sanal ağını seçin.
 
-```azurepowershell
-# Retrieve the Azure virtual network created for testing 
+```azurepowershell-interactive
+# Retrieve the Azure virtual network created for testing
 $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
 
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
 
 # Track job status to check for completion
-while (($TestMigrationJob.State -eq "InProgress") -or ($TestMigrationJob.State -eq "NotStarted")){
+while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
         $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $TestMigrationJob.State
 ```
 
-Sınama tamamlandıktan sonra cmdlet 'ini kullanarak test geçişini temizleyin `Start-AzMigrateTestMigrationCleanup` . Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
+Sınama tamamlandıktan sonra, [Start-AzMigrateTestMigrationCleanup](/powershell/module/az.migrate/start-azmigratetestmigrationcleanup) cmdlet 'ini kullanarak test geçişini temizleyin. Cmdlet 'i, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
 
-```azurepowershell
+```azurepowershell-interactive
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
 
@@ -422,57 +434,57 @@ while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrat
         sleep 10;
         $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $CleanupTestMigrationJob.State
 ```
 
-## <a name="migrate-vms"></a>VM geçirme
+## <a name="12-migrate-vms"></a>12. VM 'Leri geçirme
 
-Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra, aşağıdaki cmdlet 'i kullanarak çoğaltma sunucusunu geçirebilirsiniz. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
+Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra, aşağıdaki cmdlet 'i kullanarak çoğaltma sunucusunu geçirebilirsiniz. Cmdlet 'i, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
 
-Kaynak sunucuyu kapatmak istemiyorsanız, `TurnOffSourceServer` parametresini kullanmayın.
+Kaynak sunucuyu kapatmak istemiyorsanız, **Turnoffsourceserver** parametresini kullanmayın.
 
-```azurepowershell
+```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
-$MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer 
+$MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer
 
 # Track job status to check for completion
-while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
-## <a name="complete-the-migration"></a>Geçişi tamamlamayı
+## <a name="13-complete-the-migration"></a>13. geçişi tamamladıktan sonra
 
-1. Geçiş yapıldıktan sonra, aşağıdaki cmdlet 'i kullanarak, şirket içi makine için çoğaltmayı durdurun ve VM için çoğaltma durumu bilgilerini temizleyin. Cmdlet, işlemin durumunu izlemek için izlenebilecek bir iş döndürür. 
+1. Geçiş yapıldıktan sonra, aşağıdaki cmdlet 'i kullanarak, şirket içi makine için çoğaltmayı durdurun ve VM için çoğaltma durumu bilgilerini temizleyin. Cmdlet 'i, işlemin durumunu izlemek için izlenebilecek bir iş döndürür.
 
-```azurepowershell
-# Stop replication for a migrated server
-$StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer 
+   ```azurepowershell-interactive
+   # Stop replication for a migrated server
+   $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer
 
-# Track job status to check for completion
-while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.State -eq "NotStarted")){
-        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
-        sleep 10;
-        $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
-}
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
-Write-Output $StopReplicationJob.State
-```
+   # Track job status to check for completion
+   while (($StopReplicationJob.State -eq 'InProgress') -or ($StopReplicationJob.State -eq 'NotStarted')){
+           #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+           sleep 10;
+           $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
+   }
+   #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+   Write-Output $StopReplicationJob.State
+   ```
 
-2. Makinede Linux işletim sistemi varsa, geçirilen makinelere [Linux](../virtual-machines/extensions/agent-linux.md) aracısını yükler. Geçiş sırasında Windows VM 'Leri için VM aracısını otomatik olarak yükledik.
-3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
-4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
-5. Geçirilen Azure VM örneğine giden trafiği kesin.
-6. Yerel sanal makine envanterinizden şirket içi sanal makineleri kaldırın.
-7. Yerel yedeklemelerden şirket içi sanal makineleri kaldırın.
-8. Azure sanal makinelerinin yeni konumunu ve IP adresini göstermek için herhangi bir iç belgeyi güncelleştirin. 
+1. Makinede Linux işletim sistemi varsa, geçirilen makinelere [Linux](../virtual-machines/extensions/agent-linux.md) aracısını yükler. Geçiş sırasında Windows VM 'Leri için VM aracısını otomatik olarak yükledik.
+1. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
+1. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
+1. Geçirilen Azure VM örneğine giden trafiği kesin.
+1. Yerel sanal makine envanterinizden şirket içi sanal makineleri kaldırın.
+1. Yerel yedeklemelerden şirket içi sanal makineleri kaldırın.
+1. Azure sanal makinelerinin yeni konumunu ve IP adresini göstermek için herhangi bir iç belgeyi güncelleştirin.
 
-## <a name="post-migration-best-practices"></a>Geçiş sonrası en iyi uygulamalar
+## <a name="14-post-migration-best-practices"></a>14. geçiş sonrası en iyi uygulamalar
 
 - Daha fazla esneklik için:
     - Azure Backup hizmetini kullanarak Azure sanal makinelerini yedekleyip verileri güvende tutun. [Daha fazla bilgi edinin](../backup/quick-backup-vm-portal.md).

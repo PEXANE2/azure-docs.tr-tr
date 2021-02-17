@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180039"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558930"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
@@ -57,7 +57,6 @@ Uygulama,   ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assig
 Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
 
 * Yaklaşım analizi
-* [Yazım denetimi düzeltmesi](luis-tutorial-bing-spellcheck.md)
 * Konuşma primi
 
 Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir.
@@ -79,37 +78,6 @@ Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizm
 Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. , Ve ' nin yaklaşım etiketi `positive` `neutral` `negative` desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler.
 
 Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-reference-prebuilt-sentiment.md)
-
-## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
-
-V3 tahmin API 'si artık Bing yazım denetimi API 'sini destekliyor. İsteklerinizin üst bilgisinde Bing arama kaynağına anahtar ekleyerek uygulamanıza yazım denetimi ekleyebilirsiniz. Zaten bir tane varsa var olan bir Bing kaynağını kullanabilir veya bu özelliği kullanmak için [Yeni bir tane oluşturabilirsiniz](https://portal.azure.com/#create/Microsoft.BingSearch) . 
-
-|Üst bilgi anahtarı|Üst bilgi değeri|
-|--|--|
-|`mkt-bing-spell-check-key`|Kaynağınızın **anahtarlar ve uç nokta** dikey penceresinde bulunan anahtarlar|
-
-Yanlış yazılmış bir sorgu için tahmin çıkış örneği:
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-, Azın Kullanıcı söylenişi tahminiyle önce yazım için düzeltmeler yapılır. Yanıtta yazım denetimi de dahil olmak üzere, özgün yazıdaki tüm değişiklikleri görebilirsiniz.
 
 ## <a name="speech-priming"></a>Konuşma primi
 

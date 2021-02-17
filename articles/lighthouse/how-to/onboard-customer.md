@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 02/08/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372153"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556098"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -205,7 +205,7 @@ Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rol�
 Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki bir kullanıcının kiracı içinde Azure Resource Manager şablonu dağıtmaları gerekir. Eklemek istediğiniz her abonelik için ayrı bir dağıtım gerekir (veya eklemek istediğiniz kaynak gruplarını içeren her bir abonelik için).
 
 > [!IMPORTANT]
-> Bu dağıtım, eklendi olan abonelik için [sahip yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip olan (veya eklendi olan kaynak gruplarını içeren) müşterinin kiracısında Konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
+> Bu dağıtım, bir rolün `Microsoft.Authorization/roleAssignments/write` eklendi olması gibi (veya eklendi olan kaynak gruplarını içeren) bir role sahip olan, müşterinin kiracısında Konuk olmayan [](../../role-based-access-control/built-in-roles.md#owner)bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen kullanıcıları bulmak için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Abonelik, [bulut çözümü sağlayıcısı (CSP) programı](../concepts/cloud-solution-provider.md)aracılığıyla oluşturulduysa, hizmet sağlayıcı kiracınızda [yönetici Aracısı](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) rolüne sahip olan tüm kullanıcılar dağıtımı gerçekleştirebilir.
 

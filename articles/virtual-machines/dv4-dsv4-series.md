@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: aea0a79d1ae27d987a6a30cfefe91e875f9a8382
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: eefd0ba447340f79100772f549002f6fd8c2c01c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097515"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554867"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 ve Dsv4 serisi
 
@@ -34,7 +34,7 @@ Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
 <br>
 
@@ -58,7 +58,7 @@ Dsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzer
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
-[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir<br>
+[Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (*en az 4 vCPU gerektirir*)<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenmez <br>
 <br>
 

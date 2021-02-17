@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964341"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556897"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını listeleyin
 
@@ -92,5 +92,5 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
+- [REST API kullanarak Azure rolleri atama](role-assignments-rest.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

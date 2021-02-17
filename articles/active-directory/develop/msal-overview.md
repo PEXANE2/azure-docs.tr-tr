@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754722"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559517"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
 Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin kullanıcıların kimliğini doğrulamak ve güvenli Web API 'Lerine erişmek için Microsoft Identity platformundan [belirteçler](developer-glossary.md#security-token) almasına olanak sağlar. Microsoft Graph, diğer Microsoft API 'Leri, üçüncü taraf Web API 'Lerine veya kendi Web API 'nize güvenli erişim sağlamak için kullanılabilir. MSAL, .NET, JavaScript, Java, Python, Android ve iOS dahil birçok farklı uygulama mimarilerini ve platformunu destekler.
@@ -50,12 +50,15 @@ MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 
 | Kitaplık | Desteklenen platformlar ve çerçeveler|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Evrensel Windows Platformu|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS, Ember.js veya Durandal.js gibi JavaScript/TypeScript çerçeveleri|
 | [Android için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| Angular ve Angular.js çerçeveler içeren tek sayfalı uygulamalar|
 | [iOS ve macOS için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS ve macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| Vue.js, Ember.js veya Durandal.js gibi JavaScript/TypeScript çerçeveleri|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Evrensel Windows Platformu|
+| [MSAL düğümü](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|Express ile Web Apps, elektron özellikli masaüstü uygulamaları, platformlar arası konsol uygulamaları|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows, macOS, Linux|
+| [MSAL tepki verme](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| Tepki verme ve tepki tabanlı kitaplıklar içeren tek sayfalı uygulamalar (Next.js Gatsby.js)|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL ve MSAL arasındaki farklar
 
