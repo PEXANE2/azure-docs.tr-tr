@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655484"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652794"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -68,6 +68,10 @@ Data Box, yalnızca hedefle aynı ülke/bölge dahilinde veri alımı veya çık
 2. Data Box şirket içi veri kopyalama işlemi yapıldıktan sonra, cihazı Kanada 'daki Azure veri merkezine döndürün. Data Box bulunan veriler, sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
 
 3. Daha sonra AzCopy gibi bir araç kullanarak verileri Batı ABD bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>S. Tüm bölge başarısız olursa verilerimi nasıl kurtarabilirim?
+
+A. Önemli bir olağanüstü durum nedeniyle bölgenin kaybolduğu, Microsoft bölgesel bir yük devretme işlemi başlatabilir. Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Siparişiniz aynı ülke veya ticari sınır içindeyse yük devretme bölgesi aracılığıyla yerine getirilir. Ancak, bazı Azure bölgelerinin aynı coğrafi veya ticaret sınırında eşleştirilmiş bir bölgesi yoktur. Bu bölgelerin herhangi birinde bir olağanüstü durum varsa, kullanılabilir farklı bir bölgeden Data Box sırayı yeniden oluşturmanız ve verileri yeni bölgede Azure 'a kopyalamanız gerekir. Daha fazla bilgi için bkz. [İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri](../best-practices-availability-paired-regions.md).
 
 ### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>S. Data Box ile ilgili herhangi bir sorun yaşıyorsanız kimler iletişim kurmalıyım?
 A. Data Box herhangi bir sorun yaşıyorsanız, [Microsoft desteği başvurun](data-box-disk-contact-microsoft-support.md).
@@ -201,7 +205,7 @@ A.  Kopyalama işlemini hızlandırmak için:
 - Birden fazla veri kopyalama akışı kullanın. Örneğin, ile `Robocopy` Çoklu iş parçacıklı seçeneğini kullanın. Kullanılan komut hakkında daha fazla bilgi için [Öğretici: Azure Data Box'a veri kopyalama ve doğrulama](data-box-deploy-copy-data.md) sayfasına gidin.
 - Birden fazla oturum kullanın.
 - Ağ paylaşımının üzerine kopyalamak yerine (Ağ hızları kopyalama hızını sınırlayabilir), verileri Data Box bağlı olduğu bilgisayarda yerel olarak depolayın.
-- Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. Sunucu donanımının performansını kıyaslamaya yönelik [ `Bluestop` Fio aracını](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
+- Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. Sunucu donanımının performansını kıyaslamaya yönelik [ `Bluestop` `FIO` Aracı](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:

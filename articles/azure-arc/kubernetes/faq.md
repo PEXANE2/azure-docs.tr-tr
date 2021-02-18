@@ -2,18 +2,18 @@
 title: Azure Arc etkin Kubernetes sık sorulan sorular
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makale, Azure Arc etkin Kubernetes ile ilgili sık sorulan soruların bir listesini içerir
 keywords: Kubernetes, yay, Azure, kapsayıcılar, yapılandırma, Gilar, SSS
-ms.openlocfilehash: 237b2629b833a63552b172636f46a1ac92e321c0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561829"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652505"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Sık sorulan sorular-Azure Arc etkin Kubernetes
 
@@ -31,26 +31,26 @@ Hayır. Azure Izleyici ve Azure Ilkesi (Gatekeeper) dahil olmak üzere tüm Azur
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>AKS-HI kümesi ve Kubernetes kümelerimi Azure Stack hub 'a ve Azure Stack kenarından Azure yaya bağlamanız gerekir mi?
 
-Evet, AKS-HI kümenizi veya Kubernetes kümelerinizi Azure Stack Edge veya Azure Stack hub 'a bağlamak Azure Resource Manager ' de kaynak gösterimine sahip kümeler sağlar. Bu kaynak temsili, bağlandığınız Kubernetes kümelerine küme yapılandırması, Azure Izleyici ve Azure Ilkesi (Gatekeeper) gibi özellikleri genişletir.
+Evet, AKS-HI kümenizi veya Kubernetes kümelerinizi Azure Stack Edge veya Azure Stack hub 'a bağlamak Azure Resource Manager ' de kaynak gösterimine sahip kümeler sağlar. Bu kaynak temsili, küme yapılandırması, Azure Izleyici ve Azure Ilkesi (Gatekeeper) gibi özellikleri, bağlı Kubernetes kümelerine genişletir.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Kullanım dışı Azure Arc etkin Kubernetes kaynakları nasıl ele alınacağını?
 
-Azure Arc etkin Kuberenetes ile ilişkili yönetilen hizmet kimliği (MSI) sertifikası, 90 günlük bir süre sonu penceresine sahiptir. Bu sertifikanın süresi dolduktan sonra kaynak kabul edilir `Expired` ve yapılandırma, izleme ve ilke gibi tüm özellikler bu kümede çalışmayı durdurur. Kubernetes kümenizi Azure Arc ile birlikte çalışır şekilde almak için şu adımları izleyin:
+Azure Arc etkin Kubernetes ile ilişkili Yönetilen Hizmet Kimliği (MSI) sertifikası, 90 günlük bir süre sonu penceresine sahiptir. Bu sertifikanın süresi dolduktan sonra kaynak kabul edilir `Expired` ve tüm Özellikler (yapılandırma, izleme ve ilke gibi) bu kümede çalışmayı durdurur. Kubernetes kümenizi Azure Arc ile yeniden çalışmaya almak için:
 
-1. Kümedeki Azure Arc etkin Kubernetes kaynak ve aracılarını silme 
+1. Kümedeki Azure Arc etkin Kubernetes kaynağını ve aracılarını silin. 
 
     ```console
     az connectedk8s delete -n <name> -g <resource-group>
     ```
 
-1. Kümeye aracı dağıtarak Azure Arc etkin Kubernetes kaynağını yeniden oluşturun.
+1. Kümedeki aracıları dağıtarak Azure Arc etkin Kubernetes kaynağını yeniden oluşturun.
     
     ```console
     az connectedk8s connect -n <name> -g <resource-group>
     ```
 
 > [!NOTE]
-> `az connectedk8s delete` Ayrıca, kümenin üstündeki konfigürasyonları da siler. Çalıştıktan sonra, `az connectedk8s connect` el ile veya Azure ilkesi 'ni kullanarak kümedeki konfigürasyonları tekrar oluşturun.
+> `az connectedk8s delete` Ayrıca, kümenin üstündeki konfigürasyonları da siler. Çalıştırdıktan sonra, `az connectedk8s connect` el ile veya Azure ilkesi kullanarak kümedeki konfigürasyonları yeniden oluşturun.
 
 ## <a name="if-i-am-already-using-cicd-pipelines-can-i-still-use-azure-arc-enabled-kubernetes-and-configurations"></a>Zaten CI/CD işlem hatları kullanıyorum, Azure Arc etkinleştirilmiş Kubernetes ve konfigürasyonları kullanmaya devam edebilir miyim?
 
@@ -62,9 +62,11 @@ CI/CD işlem hattı, işlem hattı çalıştırması sırasında değişiklikler
 
 **Gilar 'ı ölçeğe göre Uygula**
 
-CI/CD işlem hatları, olayın bir git deposuna gönderim olabilecek Kubernetes kümenize olay temelli dağıtımlar için uygundur. Ancak, tüm Kubernetes kümelerinizde aynı yapılandırmanın dağıtılması CI/CD işlem hattının bu Kubernetes kümelerinin her birinin kimlik bilgileriyle el ile yapılandırılmasını gerektirir. Öte yandan, Azure Arc etkinleştirilmiş Kubernetes söz konusu olduğunda, Azure Resource Manager yapılandırmalarını yönettiğinden, bir abonelik veya kaynak grubu kapsamındaki tüm Kubernetes kümelerinde istenen yapılandırmanın uygulamasını tek bir go 'da otomatik hale getirmek için Azure Ilkesini kullanabilirsiniz. Bu özellik, ilke atamasından sonra oluşturulan Azure Arc etkin Kubernetes kaynakları için de geçerlidir.
+CI/CD işlem hatları, Kubernetes kümenize yönelik olay odaklı dağıtımlar (örneğin, bir git deposuna gönderim) için faydalıdır. Ancak, aynı yapılandırmayı Kubernetes kümelerinize dağıtmak istiyorsanız, her bir Kubernetes kümesinin kimlik bilgilerini CI/CD işlem hattına el ile yapılandırmanız gerekir. 
 
-Yapılandırma özelliği, uyumluluk ve idare gereksinimleri için Kubernetes kümelerinin tüm envanterinin tamamında ağ ilkeleri, rol bağlamaları ve pod güvenlik ilkeleri gibi temel yapılandırmaların uygulanması için kullanılır.
+Azure Resource Manager yapılandırmalarını yönettiğinden, Azure Arc etkin Kubernetes için, bir aboneliğin veya bir kaynak grubunun kapsamındaki Azure Ilkesi 'ni kullanarak tüm Azure Arc etkin Kubernetes kaynakları genelinde aynı yapılandırmanın oluşturulmasını otomatik hale getirebilirsiniz. Bu özellik, ilke atamasından sonra oluşturulan Azure Arc etkin Kubernetes kaynakları için de geçerlidir.
+
+Bu özellik, uyumluluk ve idare gereksinimlerini karşılamak üzere tüm Kubernetes kümesi envanterinde temel yapılandırma (ağ ilkeleri, rol bağlamaları ve pod güvenlik ilkeleri gibi) uygular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

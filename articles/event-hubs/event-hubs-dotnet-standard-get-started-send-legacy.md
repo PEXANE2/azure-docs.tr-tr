@@ -1,15 +1,15 @@
 ---
 title: .NET kullanarak Azure Event Hubs olay gönderme ve alma (eski)
 description: Bu makalede, Azure Event Hubs eski Microsoft. Azure. EventHubs paketini kullanarak/hizmetinden olay gönderen/alan .NET Core uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7092c3a4c32fe2ad46b71c5a796ac811e4253dbb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332170"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653100"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft. Azure. EventHubs) kullanarak Azure Event Hubs olay gönderme veya olayları alma
 Bu hızlı başlangıçta, **Microsoft. Azure. EventHubs** .NET Core kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
@@ -17,7 +17,7 @@ Bu hızlı başlangıçta, **Microsoft. Azure. EventHubs** .NET Core kitaplığ�
 > [!WARNING]
 > Bu hızlı başlangıç, eski **Microsoft. Azure. EventHubs** paketini kullanır. En son  **Azure. Messaging. EventHubs** kitaplığını kullanan bir hızlı başlangıç için bkz. [Azure. Messaging. eventhubs kitaplığını kullanarak olay gönderme ve alma](event-hubs-dotnet-standard-getstarted-send.md). Uygulamanızı eski kitaplığı kullanarak yeni bir kitaplık ile taşımak için [Microsoft. Azure. eventhubs ' den Azure. Messaging. eventhubs 'ye geçiş kılavuzu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)'na bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Event Hubs 'yi yeni kullanıyorsanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:

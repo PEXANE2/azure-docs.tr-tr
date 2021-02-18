@@ -3,12 +3,12 @@ title: Azure Service Bus abonelik kuralı SQL eylemi sözdizimi | Microsoft Docs
 description: Bu makale, SQL kuralı eylem sözdizimi için bir başvuru sağlar. Eylemler, bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742698"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652845"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Abonelik kuralı SQL eylemi sözdizimi
 
@@ -199,7 +199,8 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 `property(name)`İşlevi tarafından başvurulan özelliğin değerini döndürür `name` . `name`Değer, bir dize değeri döndüren geçerli bir ifade olabilir.  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Örnekler
+Örnekler için bkz. [Service Bus filtresi örnekleri](service-bus-filter-examples.md).
   
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 

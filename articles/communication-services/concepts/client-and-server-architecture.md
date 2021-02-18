@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886082"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653824"
 ---
 # <a name="client-and-server-architecture"></a>İstemci ve sunucu mimarisi
 
@@ -60,7 +60,7 @@ Telefon sistemi üzerinden iletişim kurmak, uygulamanızın erişim düzeyini �
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Iletişim Hizmetleri PSTN mimarisini gösteren diyagram.":::
 
-PSTN ve SMS çözümleri hakkında daha fazla bilgi için bkz. [PSTN ve SMS çözümünüzü planlayın](../concepts/telephony-sms/plan-solution.md)
+PSTN telefon numaraları hakkında daha fazla bilgi için bkz. [telefon numarası türleri](../concepts/telephony-sms/plan-solution.md)
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>Botlar ve diğer hizmetlerle iletişim kuran insanlar
 
@@ -83,7 +83,7 @@ Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrud
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Kimlik doğrulaması](../concepts/authentication.md) hakkında bilgi edinin
-- [PSTN ve SMS çözümleri](../concepts/telephony-sms/plan-solution.md) hakkında bilgi edinin
+- [Telefon numarası türleri](../concepts/telephony-sms/plan-solution.md) hakkında bilgi edinin
 
 - [Uygulamanıza sohbet ekleme](../quickstarts/chat/get-started.md)
 - [Uygulamanıza sesli arama ekleme](../quickstarts/voice-video-calling/getting-started-with-calling.md)

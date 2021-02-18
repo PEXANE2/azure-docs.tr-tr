@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9dfd950303d1cb838d44ae672fed33dd4cd7b5ec
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381911"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653457"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -38,92 +38,92 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Dil                 | Yerel ayar (BCP-47) | Özelleştirmeler  | [Dil algılama](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arapça (Bahreyn), modern standart  | `ar-BH` | Dil modeli                                   | Yes                           | 
-| Arapça (Mısır)                     | `ar-EG` | Dil modeli                                   | Yes                          |
-| Arapça (Irak)                      | `ar-IQ` | Dil modeli                                   |                           |
-| Arapça (Israil)                    | `ar-IL` | Dil modeli                                   |                           |
-| Arapça (Ürdün)                    | `ar-JO` | Dil modeli                                   |                           |
-| Arapça (Kuveyt)                    | `ar-KW` | Dil modeli                                   |                           |
-| Arapça (Lübnan)                   | `ar-LB` | Dil modeli                                   |                           |
-| Arapça (Umman)                      | `ar-OM` | Dil modeli                                   |                           |
-| Arapça (Qtor)                     | `ar-QA` | Dil modeli                                   |                           |
-| Arapça (Suudi Arabistan)              | `ar-SA` | Dil modeli                                   | Yes                          |
-| Arapça (Filistin Yönetimi devleti)        | `ar-PS` | Dil modeli                                   |                           |
-| Arapça (Suriye)                     | `ar-SY` | Dil modeli                                   | Yes                          |
-| Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Dil modeli                                   |                           |
-| Bulgarca (Bulgaristan)               | `bg-BG` | Dil modeli                                   |                           |
-| Katalanca (İspanya)                    | `ca-ES` | Dil modeli                                   | Yes                          |
-| Çince (Cantoneo, geleneksel)   | `zh-HK` | Akustik model (20201015)<br>Dil modeli                 |        Yes                   |
-| Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Akustik model (20200910)<br>Dil modeli                 |     Yes                      |
-| Çince (Taiwanese Mandarin)       | `zh-TW` | Akustik model (20190701, 20201015)<br>Dil modeli                 |           Yes                |
-| Hırvatça (Hırvatistan)                 | `hr-HR` | Dil modeli                                   |                           |
-| Çekçe (Çek Cumhuriyeti)             | `cs-CZ` | Dil modeli                                   |                           |
-| Danca (Danimarka)                   | `da-DK` | Dil modeli                                   | Yes                          |
-| Felemenkçe (Hollanda)                | `nl-NL` | Akustik model (20201015)<br>Dil modeli                                   |    Yes                       |
-| İngilizce (Avustralya)                | `en-AU` | Akustik model (20201019)<br>Dil modeli                 | Yes                          |
-| İngilizce (Kanada)                   | `en-CA` | Akustik model (20201019)<br>Dil modeli                 | Yes                          |
-| İngilizce (Hong Kong)                | `en-HK` | Dil modeli                                   |                           |
-| İngilizce (Hindistan)                    | `en-IN` | Akustik model (20200923)<br>Dil modeli                 | Yes                          |
-| İngilizce (İrlanda)                  | `en-IE` | Dil modeli                                   |                           |
-| İngilizce (Yeni Zelanda)              | `en-NZ` | Akustik model (20201019)<br>Dil modeli                 |  Yes                         |
-| İngilizce (Nijerya)                  | `en-NG` | Dil modeli                                   |                           |
-| İngilizce (Filipinler)              | `en-PH` | Dil modeli                                   |                           |
-| İngilizce (Singapur)                | `en-SG` | Dil modeli                                   |                           |
-| İngilizce (Güney Afrika)             | `en-ZA` | Dil modeli                                   |                           |
-| İngilizce (İngiltere)           | `en-GB` | Akustik model (20201019)<br>Dil modeli<br>İşi| Yes                          |
-| İngilizce (ABD)            | `en-US` | Akustik model (20201019)<br>Dil modeli<br>İşi| Yes                          |
-| Estonya dili (Estonya)                  | `et-EE` | Dil modeli                                   |                           |
-| Fince (Finlandiya)                  | `fi-FI` | Dil modeli                                   |     Yes                      |
-| Fransızca (Kanada)                    | `fr-CA` | Akustik model (20201015)<br>Dil modeli                 |     Yes                      |
-| Fransızca (Fransa)                    | `fr-FR` | Akustik model (20201015)<br>Dil modeli<br>İşi|      Yes                     |
-| Almanca (Almanya)                   | `de-DE` | Akustik model (20190701, 20200619, 20201127)<br>Dil modeli<br>İşi|  Yes                         |
-| Yunanca (Yunanistan)                     | `el-GR` | Dil modeli                                   |                           |
-| Gucerat dili (Hindistan)                  | `gu-IN` | Dil modeli                                   |                           |
-| Hintçe (Hindistan)                      | `hi-IN` | Akustik model (20200701)<br>Dil modeli                 |     Yes                      |
-| Macarca (Macaristan)                | `hu-HU` | Dil modeli                                   |                           |
-| İrlanda dili (Irlanda)                     | `ga-IE` | Dil modeli                                   |                           |
-| İtalyanca (İtalya)                    | `it-IT` | Akustik model (20201016)<br>Dil modeli<br>İşi|      Yes                     |
-| Japonca (Japonya)                   | `ja-JP` | Dil modeli                                   |      Yes                     |
-| Korece (Kore)                     | `ko-KR` | Akustik model (20201015)<br>Dil modeli                 |      Yes                     |
-| Letonca (Letonya)                   | `lv-LV` | Dil modeli                                   |                           |
-| Litvanca (Litvanya)             | `lt-LT` | Dil modeli                                   |                           |
-| Malta dili (Malta)                     | `mt-MT` | Dil modeli                                   |                           |
-| Marathi dili (Hindistan)                    | `mr-IN` | Dil modeli                                   |                           |
-| Norveççe (Bokmål, Norveç)         | `nb-NO` | Dil modeli                                   |     Yes                      |
-| Lehçe (Polonya)                    | `pl-PL` | Dil modeli                                   |       Yes                    |
-| Portekizce (Brezilya)                | `pt-BR` | Akustik model (20190620, 20201015)<br>Dil modeli<br>İşi|          Yes                 |
-| Portekizce (Portekiz)              | `pt-PT` | Dil modeli                                   |             Yes              |
-| Rumence (Romanya)                 | `ro-RO` | Dil modeli                                   |                           |
-| Rusça (Rusya)                   | `ru-RU` | Akustik model (20200907)<br>Dil modeli                 |                Yes           |
-| Slovakça (Slovakya)                  | `sk-SK` | Dil modeli                                   |                           |
-| Slovence (Slovenya)               | `sl-SI` | Dil modeli                                   |                           |
-| İspanyolca (Arjantin)                | `es-AR` | Dil modeli                                   |                           |
-| İspanyolca (Bolivya)                  | `es-BO` | Dil modeli                                   |                           |
-| İspanyolca (Şili)                    | `es-CL` | Dil modeli                                   |                           |
-| İspanyolca (Kolombiya)                 | `es-CO` | Dil modeli                                   |                           |
-| İspanyolca (Kosta Rika)               | `es-CR` | Dil modeli                                   |                           |
-| İspanyolca (Küa)                     | `es-CU` | Dil modeli                                   |                           |
-| İspanyolca (Dominik Cumhuriyeti)       | `es-DO` | Dil modeli                                   |                           |
-| İspanyolca (Ekvador)                  | `es-EC` | Dil modeli                                   |                           |
-| İspanyolca (El Salvador)              | `es-SV` | Dil modeli                                   |                           |
-| İspanyolca (Ekvator Ginesi)        | `es-GQ` | Dil modeli                                   |                           |
-| İspanyolca (Guatemala)                | `es-GT` | Dil modeli                                   |                           |
-| İspanyolca (Honduras)                 | `es-HN` | Dil modeli                                   |                           |
-| İspanyolca (Meksika)                   | `es-MX` | Akustik model (20200907)<br>Dil modeli                 |    Yes                       |
-| İspanyolca (Nikaragua)                | `es-NI` | Dil modeli                                   |                           |
-| İspanyolca (Panama)                   | `es-PA` | Dil modeli                                   |                           |
-| İspanyolca (Paraguay)                 | `es-PY` | Dil modeli                                   |                           |
-| İspanyolca (Peru)                     | `es-PE` | Dil modeli                                   |                           |
-| İspanyolca (Porto Riko)              | `es-PR` | Dil modeli                                   |                           |
-| İspanyolca (İspanya)                    | `es-ES` | Akustik model (20201015)<br>Dil modeli                 |  Yes                         |
-| İspanyolca (Uruguay)                  | `es-UY` | Dil modeli                                   |                           |
-| İspanyolca (ABD)                      | `es-US` | Dil modeli                                   |                           |
-| İspanyolca (Venezuela)                | `es-VE` | Dil modeli                                   |                           |
-| İsveççe (İsviçre)                   | `sv-SE` | Dil modeli                                   |   Yes                        |
-| Tamil dili (Hindistan)                      | `ta-IN` | Dil modeli                                   |                           |
-| Telugu dili (Hindistan)                     | `te-IN` | Dil modeli                                   |                           |
-| Tayca (Tayland)                    | `th-TH` | Dil modeli                                   |      Yes                     |
-| Türkçe (Türkiye)                   | `tr-TR` | Dil modeli                                   |                           |
+| Arapça (Bahreyn), modern standart  | `ar-BH` | Metin                                   | Yes                           | 
+| Arapça (Mısır)                     | `ar-EG` | Metin                                   | Yes                          |
+| Arapça (Irak)                      | `ar-IQ` | Metin                                   |                           |
+| Arapça (Israil)                    | `ar-IL` | Metin                                   |                           |
+| Arapça (Ürdün)                    | `ar-JO` | Metin                                   |                           |
+| Arapça (Kuveyt)                    | `ar-KW` | Metin                                   |                           |
+| Arapça (Lübnan)                   | `ar-LB` | Metin                                   |                           |
+| Arapça (Umman)                      | `ar-OM` | Metin                                   |                           |
+| Arapça (Qtor)                     | `ar-QA` | Metin                                   |                           |
+| Arapça (Suudi Arabistan)              | `ar-SA` | Metin                                   | Yes                          |
+| Arapça (Filistin Yönetimi devleti)        | `ar-PS` | Metin                                   |                           |
+| Arapça (Suriye)                     | `ar-SY` | Metin                                   | Yes                          |
+| Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Metin                                   |                           |
+| Bulgarca (Bulgaristan)               | `bg-BG` | Metin                                   |                           |
+| Katalanca (İspanya)                    | `ca-ES` | Metin                                   | Yes                          |
+| Çince (Cantoneo, geleneksel)   | `zh-HK` | Ses (20201015)<br>Metin                 |        Yes                   |
+| Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Ses (20200910)<br>Metin                 |     Yes                      |
+| Çince (Taiwanese Mandarin)       | `zh-TW` | Ses (20190701, 20201015)<br>Metin                 |           Yes                |
+| Hırvatça (Hırvatistan)                 | `hr-HR` | Metin                                   |                           |
+| Çekçe (Çek Cumhuriyeti)             | `cs-CZ` | Metin                                   |                           |
+| Danca (Danimarka)                   | `da-DK` | Metin                                   | Yes                          |
+| Felemenkçe (Hollanda)                | `nl-NL` | Ses (20201015)<br>Metin                                   |    Yes                       |
+| İngilizce (Avustralya)                | `en-AU` | Ses (20201019)<br>Metin                 | Yes                          |
+| İngilizce (Kanada)                   | `en-CA` | Ses (20201019)<br>Metin                 | Yes                          |
+| İngilizce (Hong Kong)                | `en-HK` | Metin                                   |                           |
+| İngilizce (Hindistan)                    | `en-IN` | Ses (20200923)<br>Metin                 | Yes                          |
+| İngilizce (İrlanda)                  | `en-IE` | Metin                                   |                           |
+| İngilizce (Yeni Zelanda)              | `en-NZ` | Ses (20201019)<br>Metin                 |  Yes                         |
+| İngilizce (Nijerya)                  | `en-NG` | Metin                                   |                           |
+| İngilizce (Filipinler)              | `en-PH` | Metin                                   |                           |
+| İngilizce (Singapur)                | `en-SG` | Metin                                   |                           |
+| İngilizce (Güney Afrika)             | `en-ZA` | Metin                                   |                           |
+| İngilizce (İngiltere)           | `en-GB` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
+| İngilizce (ABD)            | `en-US` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
+| Estonya dili (Estonya)                  | `et-EE` | Metin                                   |                           |
+| Fince (Finlandiya)                  | `fi-FI` | Metin                                   |     Yes                      |
+| Fransızca (Kanada)                    | `fr-CA` | Ses (20201015)<br>Metin                 |     Yes                      |
+| Fransızca (Fransa)                    | `fr-FR` | Ses (20201015)<br>Metin<br>İşi|      Yes                     |
+| Almanca (Almanya)                   | `de-DE` | Ses (20190701, 20200619, 20201127)<br>Metin<br>İşi|  Yes                         |
+| Yunanca (Yunanistan)                     | `el-GR` | Metin                                   |                           |
+| Gucerat dili (Hindistan)                  | `gu-IN` | Metin                                   |                           |
+| Hintçe (Hindistan)                      | `hi-IN` | Ses (20200701)<br>Metin                 |     Yes                      |
+| Macarca (Macaristan)                | `hu-HU` | Metin                                   |                           |
+| İrlanda dili (Irlanda)                     | `ga-IE` | Metin                                   |                           |
+| İtalyanca (İtalya)                    | `it-IT` | Ses (20201016)<br>Metin<br>İşi|      Yes                     |
+| Japonca (Japonya)                   | `ja-JP` | Metin                                   |      Yes                     |
+| Korece (Kore)                     | `ko-KR` | Ses (20201015)<br>Metin                 |      Yes                     |
+| Letonca (Letonya)                   | `lv-LV` | Metin                                   |                           |
+| Litvanca (Litvanya)             | `lt-LT` | Metin                                   |                           |
+| Malta dili (Malta)                     | `mt-MT` | Metin                                   |                           |
+| Marathi dili (Hindistan)                    | `mr-IN` | Metin                                   |                           |
+| Norveççe (Bokmål, Norveç)         | `nb-NO` | Metin                                   |     Yes                      |
+| Lehçe (Polonya)                    | `pl-PL` | Metin                                   |       Yes                    |
+| Portekizce (Brezilya)                | `pt-BR` | Ses (20190620, 20201015)<br>Metin<br>İşi|          Yes                 |
+| Portekizce (Portekiz)              | `pt-PT` | Metin                                   |             Yes              |
+| Rumence (Romanya)                 | `ro-RO` | Metin                                   |                           |
+| Rusça (Rusya)                   | `ru-RU` | Ses (20200907)<br>Metin                 |                Yes           |
+| Slovakça (Slovakya)                  | `sk-SK` | Metin                                   |                           |
+| Slovence (Slovenya)               | `sl-SI` | Metin                                   |                           |
+| İspanyolca (Arjantin)                | `es-AR` | Metin                                   |                           |
+| İspanyolca (Bolivya)                  | `es-BO` | Metin                                   |                           |
+| İspanyolca (Şili)                    | `es-CL` | Metin                                   |                           |
+| İspanyolca (Kolombiya)                 | `es-CO` | Metin                                   |                           |
+| İspanyolca (Kosta Rika)               | `es-CR` | Metin                                   |                           |
+| İspanyolca (Küa)                     | `es-CU` | Metin                                   |                           |
+| İspanyolca (Dominik Cumhuriyeti)       | `es-DO` | Metin                                   |                           |
+| İspanyolca (Ekvador)                  | `es-EC` | Metin                                   |                           |
+| İspanyolca (El Salvador)              | `es-SV` | Metin                                   |                           |
+| İspanyolca (Ekvator Ginesi)        | `es-GQ` | Metin                                   |                           |
+| İspanyolca (Guatemala)                | `es-GT` | Metin                                   |                           |
+| İspanyolca (Honduras)                 | `es-HN` | Metin                                   |                           |
+| İspanyolca (Meksika)                   | `es-MX` | Ses (20200907)<br>Metin                 |    Yes                       |
+| İspanyolca (Nikaragua)                | `es-NI` | Metin                                   |                           |
+| İspanyolca (Panama)                   | `es-PA` | Metin                                   |                           |
+| İspanyolca (Paraguay)                 | `es-PY` | Metin                                   |                           |
+| İspanyolca (Peru)                     | `es-PE` | Metin                                   |                           |
+| İspanyolca (Porto Riko)              | `es-PR` | Metin                                   |                           |
+| İspanyolca (İspanya)                    | `es-ES` | Ses (20201015)<br>Metin                 |  Yes                         |
+| İspanyolca (Uruguay)                  | `es-UY` | Metin                                   |                           |
+| İspanyolca (ABD)                      | `es-US` | Metin                                   |                           |
+| İspanyolca (Venezuela)                | `es-VE` | Metin                                   |                           |
+| İsveççe (İsviçre)                   | `sv-SE` | Metin                                   |   Yes                        |
+| Tamil dili (Hindistan)                      | `ta-IN` | Metin                                   |                           |
+| Telugu dili (Hindistan)                     | `te-IN` | Metin                                   |                           |
+| Tayca (Tayland)                    | `th-TH` | Metin                                   |      Yes                     |
+| Türkçe (Türkiye)                   | `tr-TR` | Metin                                   |                           |
 
 ## <a name="text-to-speech"></a>Metin okuma
 

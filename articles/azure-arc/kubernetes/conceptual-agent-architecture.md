@@ -2,22 +2,22 @@
 title: Azure Arc etkin Kubernetes aracı mimarisi
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes aracılarına yönelik mimari bir genel bakış sunulmaktadır
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: e1f51f066598b59501b30704cb1475dd5332160e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561808"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652573"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc etkin Kubernetes aracı mimarisi
 
-[Kubernetes](https://kubernetes.io/) , karma ve çok bulut ortamlarında Kapsayıcılı iş yüklerini tutarlı bir şekilde dağıtmak için kullanılabilir. Azure Arc etkin Kubernetes, bu heterojen ortamlarında ilke, idare ve güvenliği tutarlı bir şekilde yönetmek için merkezi bir denetim düzlemi olarak kullanılabilir. Bu makalede aşağıdakiler sunulmaktadır:
+[Kubernetes](https://kubernetes.io/) , kendi kendine karma ve çok bulut ortamlarında Kapsayıcılı iş yüklerini tutarlı bir şekilde dağıtabilir. Ancak, Azure Arc etkin Kubernetes, heterojen ortamlarında ilke, idare ve güvenliği yöneten merkezi, tutarlı bir denetim düzlemi olarak çalışmaktadır. Bu makalede aşağıdakiler sunulmaktadır:
 
 * Bir kümeyi Azure yaya bağlamaya yönelik mimari genel bakış.
 * Bağlantı deseninin ardından aracılar gelir.
@@ -25,16 +25,16 @@ ms.locfileid: "100561808"
 
 ## <a name="deploy-agents-to-your-cluster"></a>Aracıları kümenize dağıtma
 
-Çoğu şirket içi veri merkezi, ağ sınırında kullanılan güvenlik duvarında gelen iletişimi önleyen katı ağ kuralları uygular. Azure Arc etkin Kubernetes, yalnızca giden iletişim için seçmeli çıkış uç noktaları etkinleştirerek ve güvenlik duvarında gelen bağlantı noktalarını gerektirmeksizin bu kısıtlamalarla birlikte çalışmaktadır. Azure Arc etkin Kubernetes aracıları giden bağlantıları başlatır.
+Çoğu şirket içi veri merkezi, ağ sınır güvenlik duvarında gelen iletişimi önleyen katı ağ kuralları uygular. Azure Arc etkin Kubernetes, güvenlik duvarında gelen bağlantı noktalarına gerek duyulmadığından ve yalnızca giden iletişim için seçmeli çıkış uç noktalarını etkinleştirerek bu kısıtlamalarla birlikte çalışmaktadır. Azure Arc etkin Kubernetes aracıları bu giden iletişimi başlatır. 
 
 ![Mimariye genel bakış](./media/architectural-overview.png)
 
-Aşağıdaki adımları kullanarak bir kümeyi Azure yaya bağlayın:
+### <a name="connect-a-cluster-to-azure-arc"></a>Bir kümeyi Azure yaya bağlama
 
 1. Altyapınızda bir Kubernetes kümesi oluşturun (VMware vSphere, Amazon Web Services, Google Cloud Platform, vb.). 
 
     > [!NOTE]
-    > Müşteriler, Azure Arc etkinleştirilmiş Kubernetes 'in Şu anda yalnızca mevcut Kubernetes kümelerini Azure yaya eklemeyi desteklediğinden, Kubernetes kümesinin yaşam döngüsünü oluşturup yönetmesi gerekir.  
+    > Azure Arc etkin Kubernetes Şu anda yalnızca mevcut Kubernetes kümelerini Azure yaya eklemeyi desteklediğinden, müşterilerin Kubernetes kümesinin yaşam döngüsünü oluşturması ve yönetmesi gerekir.  
 
 1. Azure CLı kullanarak kümeniz için Azure Arc kaydını başlatın.
     * Azure CLı, aracı Held grafiğini kümeye dağıtmak için Held kullanır.
@@ -42,17 +42,17 @@ Aşağıdaki adımları kullanarak bir kümeyi Azure yaya bağlayın:
 
         | Aracı | Açıklama |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Azure Arc etkin Kubernetes Şu anda yalnızca [sistem tarafından atanan kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)desteklemektedir. clusterıdentityoperator, diğer aracıların Azure ile iletişim kurmak için kullandığı yönetilen hizmet kimliği (MSI) sertifikasını getirmek için gereken ilk giden iletişimi yapar. |
-        | `deployment.apps/config-agent` | Kümede ve güncelleştirmelerin uyumluluk durumunda uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler |
-        | `deployment.apps/controller-manager` | Azure Arc bileşenleri arasındaki etkileşimleri düzenleyen bir işleç operatörü |    
-        | `deployment.apps/metrics-agent` | Bu aracıların en iyi performansı sergilediğinden emin olmak için diğer yay aracılarının ölçümlerini toplar |
-        | `deployment.apps/cluster-metadata-operator` | Küme meta verilerini toplar-küme sürümü, düğüm sayısı ve Azure Arc aracı sürümü |
-        | `deployment.apps/resource-sync-agent` | Yukarıdaki belirtilen küme meta verilerini Azure 'da eşitler |
-        | `deployment.apps/flux-logs-agent` | Kaynak denetimi yapılandırmasının bir parçası olarak dağıtılan Flox işleçlerinden günlükleri toplar |
+        | `deployment.apps/clusteridentityoperator` | Azure Arc etkin Kubernetes Şu anda yalnızca [sistem tarafından atanan kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)desteklemektedir. `clusteridentityoperator` ilk giden iletişimi başlatır. Bu ilk iletişim, diğer aracıların Azure ile iletişim kurmak için kullandığı Yönetilen Hizmet Kimliği (MSI) sertifikasını getirir. |
+        | `deployment.apps/config-agent` | Kümeye uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler. Uyumluluk durumunu güncelleştirir. |
+        | `deployment.apps/controller-manager` | Azure Arc bileşenleri arasındaki etkileşimleri düzenleyen bir işleç operatörü. |    
+        | `deployment.apps/metrics-agent` | En iyi performansı doğrulamak için diğer yay aracılarının ölçümlerini toplar. |
+        | `deployment.apps/cluster-metadata-operator` | Küme sürümü, düğüm sayısı ve Azure Arc aracı sürümü gibi küme meta verilerini toplar. |
+        | `deployment.apps/resource-sync-agent` | Yukarıda belirtilen küme meta verilerini Azure 'a eşitler. |
+        | `deployment.apps/flux-logs-agent` | Kaynak denetimi yapılandırmasının bir parçası olarak dağıtılan Flox işleçlerinden günlükleri toplar. |
     
-1. Tüm Azure yayı, Kubernetes Aracısı 'nın `Running` durumunu etkinleştirmişse, kümenizin Azure yaya bağlandığını doğrulayın. Şunları görmeniz gerekir:
-    * [Azure Resource Manager](../../azure-resource-manager/management/overview.md)' de bir Azure Arc etkin Kubernetes kaynağı. Bu kaynak, gerçek Kubernetes kümesinin kendisi değil, müşteri tarafından yönetilen Kubernetes kümesinin bir projeksiyonu olarak Azure 'da izlenir.
-    * Kubernetes sürümü, aracı sürümü ve düğüm sayısı gibi küme meta verileri, Azure Arc etkinleştirilmiş Kubernetes kaynağında meta veri olarak görünür.
+1. Tüm Azure yayı etkin Kubernetes Aracısı Pod 'nin durumu olduktan sonra `Running` , kümenizin Azure yaya bağlandığını doğrulayın. Şunları görmeniz gerekir:
+    * [Azure Resource Manager](../../azure-resource-manager/management/overview.md)' de bir Azure Arc etkin Kubernetes kaynağı. Azure, bu kaynağı gerçek Kubernetes kümesinin kendisini değil, müşteri tarafından yönetilen Kubernetes kümesinin bir projeksiyonu olarak izler.
+    * Küme meta verileri (Kubernetes sürümü, aracı sürümü ve düğüm sayısı gibi), Azure Arc etkinleştirilmiş Kubernetes kaynağında meta veri olarak görünür.
 
 ## <a name="data-exchange-between-cluster-environment-and-azure"></a>Küme ortamı ve Azure arasında veri değişimi
 
@@ -68,7 +68,7 @@ Aşağıdaki adımları kullanarak bir kümeyi Azure yaya bağlayın:
 | Aracılara göre kaynak tüketimi (bellek/CPU) | Tanılama ve desteklenebilirlik | Aracı Azure 'a gönderim |
 | Tüm aracı kapsayıcıları günlükleri | Tanılama ve desteklenebilirlik | Aracı Azure 'a gönderim |
 | Aracı yükseltme kullanılabilirliği | Aracı yükseltme | Aracı Azure 'dan çeker |
-| İstenen yapılandırma-git deposu URL 'SI, Flox işleci parametreleri, özel anahtar, bilinen ana bilgisayar içeriği, HTTPS Kullanıcı adı, belirteç/parola | Yapılandırma | Aracı Azure 'dan çeker |
+| İstenen yapılandırma durumu: git deposu URL 'SI, Flox işleci parametreleri, özel anahtar, bilinen ana bilgisayar içeriği, HTTPS Kullanıcı adı, belirteç veya parola | Yapılandırma | Aracı Azure 'dan çeker |
 | Flox operatörü yüklemesinin durumu | Yapılandırma | Aracı Azure 'a gönderim |
 | Küme içinde Gatekeeper zorlanması gereken Azure Ilke atamaları | Azure İlkesi | Aracı Azure 'dan çeker |
 | Küme içi ilke için denetim ve uyumluluk durumu | Azure İlkesi | Aracı Azure 'a gönderim |
@@ -78,18 +78,18 @@ Aşağıdaki adımları kullanarak bir kümeyi Azure yaya bağlayın:
 
 | Durum | Açıklama |
 | ------ | ----------- |
-| Bağlanmada | Azure Arc etkin Kubernetes kaynağı Azure Resource Manager oluşturuldu, ancak hizmet henüz aracı sinyali almadı. |
+| Bağlanmada | Azure Arc etkin Kubernetes kaynağı Azure Resource Manager oluşturuldu, ancak hizmet aracı sinyalini henüz almadı. |
 | Bağlı | Azure Arc etkin Kubernetes hizmeti, önceki 15 dakikadan kısa bir süre içinde bir aracı sinyali aldı. |
 | Çevrimdışı | Azure Arc etkin Kubernetes kaynağı daha önce bağlandı, ancak hizmet, 15 dakika boyunca aracı sinyali almadı. |
-| Süresi doldu | Yönetilen hizmet kimliği (MSI) sertifikası, verildikten sonra 90 günlük bir süre sonu penceresine sahiptir. Bu sertifikanın süresi dolduktan sonra kaynak kabul edilir `Expired` ve yapılandırma, izleme ve ilke gibi tüm özellikler bu kümede çalışmayı durdurur. Tarihi geçen Azure Arc etkin Kubernetes kaynaklarını ele alma hakkında daha fazla bilgi [burada](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources) bulunabilir |
+| Süresi doldu | MSI sertifikası, verildikten sonra 90 günlük bir süre sonu penceresine sahiptir. Bu sertifikanın süresi dolduktan sonra kaynak kabul edilir `Expired` ve yapılandırma, izleme ve ilke gibi tüm özellikler bu kümede çalışmayı durdurur. Kullanım dışı Azure Arc etkin Kubernetes kaynaklarını ele alma hakkında daha fazla bilgi için [SSS makalesinde](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources)bulabilirsiniz. |
 
 ## <a name="understand-connectivity-modes"></a>Bağlantı modlarını anlama
 
-| Bağlantı modu | Açıklama |
+| Bağlantı modu | Description |
 | ----------------- | ----------- |
-| Tam bağlantı | Aracılar her zaman Azure 'a erişebiliyor. Bu durumda, yapılandırmaların yayılmasında (gide), ilkelerin zorlanması (Azure Ilke ve Gatekeeper) ve iş yüklerinin ölçümleri ve iş yüklerinin toplanması (Azure Izleyici 'de) için çok az gecikme olduğu için deneyim bu şekilde idealdir. |
-| Yarı bağlı | Tarafından çekilen MSI sertifikası, `clusteridentityoperator` sertifikanın süresi dolmadan en fazla 90 gün önce geçerlidir. Sertifikanın süresi dolduktan sonra, Azure Arc etkin Kubernetes kaynağı çalışmayı durduruyor. Tüm yay özelliklerinin kümede çalışmasını sağlamak için Azure Arc etkin Kubernetes kaynak ve aracılarını silin ve yeniden oluşturun. 90 gün boyunca, kullanıcılardan her 30 günde bir kümeyi en az bir kez bağlanması önerilir. |
-| Bağlantı kesildi | Azure 'a hiçbir erişimi olmayan bağlantısı kesilen ortamlardaki Kubernetes kümeleri Şu anda Azure Arc etkin Kubernetes tarafından desteklenmemektedir. Bu yetenek sizi ilgilendiği takdirde, [Azure Arc UserVoice forumuna](https://feedback.azure.com/forums/925690-azure-arc)bir fikir gönderin veya bu özelliği kullanın.
+| Tam bağlantı | Aracılar, Gilar yapılandırmalarının yaymasına, Azure Ilke ve Gatekeeper ilkelerine zorlamaya ve Azure Izleyici 'de iş yükü ölçümlerinin ve günlüklerinin toplanmasını çok kısa bir gecikmeyle Azure ile sürekli olarak iletişim kurabilir. |
+| Yarı bağlı | Tarafından çekilecek MSI sertifikası, `clusteridentityoperator` sertifikanın süresi dolmadan 90 gün önce geçerlidir. Süre dolduktan sonra, Azure Arc etkin Kubernetes kaynağı çalışmayı durduruyor. Kümedeki tüm Azure Arc özelliklerini yeniden etkinleştirmek için, Azure Arc etkin Kubernetes kaynak ve aracılarını silin ve yeniden oluşturun. 90 gün boyunca, kümeyi en az 30 günde bir bağlayın. |
+| Bağlantı kesildi | Bağlantısı kesilen ortamlardaki Kubernetes kümeleri, Azure 'a erişilemiyor Kubernetes tarafından şu anda desteklenmiyor. Bu yetenek sizi ilgilendiği takdirde, [Azure Arc UserVoice forumuna](https://feedback.azure.com/forums/925690-azure-arc)bir fikir gönderin veya bu özelliği kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

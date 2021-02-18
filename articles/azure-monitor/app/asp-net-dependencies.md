@@ -4,12 +4,12 @@ description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağım
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263938"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652012"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -109,9 +109,10 @@ ASP.NET uygulamalar için, tam SQL sorgu metni, izleme altyapısını kullanmay�
 Yukarıdaki platforma özgü adımlara ek olarak, applicationInsights.config dosyasını aşağıdaki ile değiştirerek **SQL komut toplamayı etkinleştirmek için de açıkça tercih etmeniz gerekir** :
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan SDK sürümünün `DependencyTelemetry` ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
@@ -216,7 +217,7 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Durumlar](./asp-net-exceptions.md)
+* [Özel durumlar](./asp-net-exceptions.md)
 * [Kullanıcı & sayfası verileri](./javascript.md)
 * [Kullanılabilirlik](./monitor-web-app-availability.md)
 

@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/16/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220709"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653926"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="february-2021"></a>Şubat 2021
+
+* S0 ile S4 fiyatlandırma katmanları, 8 Mart 2021 ' de kullanımdan kaldırılıyor. S0 ile S4 fiyatlandırma katmanını kullanarak mevcut bir Metin Analizi kaynağınız varsa, standart [fiyatlandırma katmanını](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)kullanmak için onu güncelleştirmeniz gerekir.
 
 ## <a name="january-2021"></a>Ocak 2021
 

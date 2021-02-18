@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737345"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653627"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
 Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal Standart S1 katmanı için bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Ana bilgisayarda Azure IoT Edge yapılandırma
 
-Uzamsal analiz kapsayıcısını ana bilgisayara dağıtmak için standart (S1) veya ücretsiz (F0) fiyatlandırma katmanını kullanarak bir [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) hizmeti örneği oluşturun. Ana bilgisayarınız Azure Stack bir kenar ise, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanın.
+Uzamsal analiz kapsayıcısını ana bilgisayara dağıtmak için standart (S1) veya ücretsiz (F0) fiyatlandırma katmanını kullanarak bir [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) hizmeti örneği oluşturun. 
 
 Azure IoT Hub 'nin bir örneğini oluşturmak için Azure CLı 'yi kullanın. Parametreleri uygun yerlerde değiştirin. Alternatif olarak, Azure IoT Hub [Azure Portal](https://portal.azure.com/)oluşturabilirsiniz.
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) sürüm 1.0.9 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
+[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) sürüm 1.0.9 yüklemeniz gerekecektir. Doğru sürümü indirmek için şu adımları izleyin:
 
 Ubuntu Server 18,04:
 ```bash
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-VM 'nizi ayarlayıp yapılandırdığınıza göre, uzamsal analiz kapsayıcısını dağıtmak için aşağıdaki adımları izleyin. 
+VM 'nizi ayarlayıp yapılandırdığınıza göre, Azure IoT Edge yapılandırmak için aşağıdaki adımları izleyin. 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>VM 'de Azure IoT Edge yapılandırma
+
+Uzamsal analiz kapsayıcısını VM 'de dağıtmak için standart (S1) veya ücretsiz (F0) fiyatlandırma katmanını kullanarak bir [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) hizmeti örneği oluşturun.
+
+Azure IoT Hub 'nin bir örneğini oluşturmak için Azure CLı 'yi kullanın. Parametreleri uygun yerlerde değiştirin. Alternatif olarak, Azure IoT Hub [Azure Portal](https://portal.azure.com/)oluşturabilirsiniz.
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) sürüm 1.0.9 yüklemeniz gerekecektir. Doğru sürümü indirmek için şu adımları izleyin:
+
+Ubuntu Server 18,04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+Oluşturulan listeyi kopyalayın.
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Microsoft GPG ortak anahtarını yükler.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Cihazınızdaki paket listelerini güncelleştirin.
+
+```bash
+sudo apt-get update
+```
+
+1.0.9 sürümünü yükler:
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+Sonra, bir [bağlantı dizesi](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)kullanarak VM 'yi IoT Hub örneğiniz IoT Edge bir cihaz olarak kaydedin.
+
+IoT Edge cihazını Azure IoT Hub bağlamanız gerekir. Bağlantı dizesini daha önce oluşturduğunuz IoT Edge cihazdan kopyalamanız gerekir. Alternatif olarak, Azure CLı 'de aşağıdaki komutu çalıştırabilirsiniz.
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+SANAL makinede  `/etc/iotedge/config.yaml` düzenlenmek üzere açın. `ADD DEVICE CONNECTION STRING HERE`Bağlantı dizesiyle değiştirin. Dosyayı kaydedin ve kapatın. VM 'de IoT Edge hizmetini yeniden başlatmak için bu komutu çalıştırın.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Uzamsal analiz kapsayıcısını VM 'de [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)'dan bir IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
+
+Azure CLı kullanarak kapsayıcıyı dağıtmak için aşağıdaki adımları kullanın.
 
 ---
 

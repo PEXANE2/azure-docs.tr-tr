@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341355"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652115"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
@@ -29,11 +29,19 @@ Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri
 
 ## <a name="managing-security-incidents"></a>Güvenlik olaylarını yönetme
 
-1. Güvenlik Merkezi Genel Bakış sayfasında **güvenlik uyarıları** kutucuğunu seçin. Olaylar ve uyarılar listelenir. Güvenlik olaylarının güvenlik uyarılarına farklı bir simgesi olduğuna dikkat edin.
+1. Güvenlik Merkezi 'nin Uyarılar sayfasında, uyarı adına göre filtrelemek için **Filtre Ekle** düğmesini kullanarak **birden çok kaynak üzerinde algılanan uyarı adı güvenlik olayına** göre filtreleme yapın. 
 
-    ![Güvenlik olaylarını görüntüle](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Azure Güvenlik Merkezi 'ndeki Uyarılar sayfasında olayları bulma":::
 
-1. Ayrıntıları görüntülemek için bir olay seçin. **Güvenlik olay** sayfasında daha fazla ayrıntı gösterilmektedir. 
+    Liste artık yalnızca olayları gösterecek şekilde filtrelenmiştir. Güvenlik olaylarının güvenlik uyarılarına farklı bir simgesi olduğuna dikkat edin.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure Güvenlik Merkezi 'ndeki Uyarılar sayfasında olayların listesi":::
+
+1. Bir olayın ayrıntılarını görüntülemek için listeden birini seçin. Olay hakkında daha fazla ayrıntı içeren bir kenar bölmesi görüntülenir.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Olayın ayrıntılarını gösteren yan bölme":::
+
+1. Daha fazla ayrıntı görüntülemek için **tüm ayrıntıları görüntüle**' yi seçin.
 
     [![Azure Güvenlik Merkezi 'nde güvenlik olaylarına yanıt verme](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

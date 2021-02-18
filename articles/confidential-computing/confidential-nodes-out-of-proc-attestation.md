@@ -1,32 +1,39 @@
 ---
-title: Azure 'da Intel SGX quote Yardımcısı DaemonSet ile işlem dışı kanıtlama desteği
+title: Azure 'da Intel SGX quote Yardımcısı Daemonset ile işlem dışı kanıtlama desteği (Önizleme)
 description: DaemonSet,, SGX uygulama işlemi dışında teklif oluşturmak için. Bu makalede, bir kapsayıcı içinde çalışan gizli iş yükleri için işlem dışı kanıtlama özelliğinin nasıl sağlandığı açıklanmaktadır.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564166"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653338"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>SGX quote yardımcı Daemon kümesi ile platform yazılım yönetimi
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>SGX quote yardımcı Daemon ayarlanmış platform yazılım yönetimi (Önizleme)
 
 Uzaktan kanıtlama gerçekleştiren [uygulamalar](confidential-computing-enclaves.md) , oluşturulan bir teklif gerektirir. Bu TEKLIF, kimliğin ve uygulamanın durumunun şifreli kanıtını ve kuşın çalıştığı ortamı sağlar. TEKLIFIN oluşturulması, Intel platformu yazılım bileşenlerinin (PSW) parçası olan güvenilir yazılım bileşenleri gerektirir.
 
 ## <a name="overview"></a>Genel Bakış
  
 Intel, teklif üretimini çalıştırmak için iki kanıtlama modunu destekler:
-- işlem **içi** : şifreleme uygulama işleminin içinde güvenilir yazılım bileşenlerini barındırır
+- işlem **içi**: şifreleme uygulama işleminin içinde güvenilir yazılım bileşenlerini barındırır
 
-- **proc dışı** : güvenilir yazılım bileşenlerini, şifreleme uygulamasının dışında barındırır.
+- **proc dışı**: güvenilir yazılım bileşenlerini, şifreleme uygulamasının dışında barındırır.
  
 Open Enclave SDK kullanılarak oluşturulan SGX uygulamaları varsayılan olarak proc kanıtlama modunu kullanır. SGX tabanlı uygulamalar işlem dışı çalışmasına izin verir ve daha fazla barındırma gerektirir ve mimari şifreleme Service Manager (AESD) gibi gerekli bileşenleri uygulamanın dışında kullanıma sunacaktı.
 
 Bu özelliğin kullanılması, Intel Platform güncelleştirmeleri veya DCAP sürücü güncelleştirmeleri sırasında, kuşve uygulamalarınızın çalışma süresini artıran bir şekilde **önerilmektedir**.
+
+Bu özelliği AKS kümesinde etkinleştirmek için lütfen, gizli bilgi işlem eklentisini etkinleştirirken Add--Enable-sgxquotehelper komutunu CLı 'ya değiştirin. Ayrıntılı CLı yönergeleri şunlardır [:](confidential-nodes-aks-get-started.md) 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Proc 'un neden ve ne avantajları vardır?
 

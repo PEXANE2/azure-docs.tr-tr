@@ -1,0 +1,113 @@
+- name: IoT cihaz ve uygulama geliştirme
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: IoT cihaz ve uygulama geliştirme nedir?
+      href: about-iot-develop.md
+    - name: Hangi SDK kullanmalıyım?
+      href: about-iot-sdks.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Cihaz uygulaması geliştirmeyi kullanmaya başlayın
+      items:
+        - name: IoT Central telemetri gönderme (Python)
+          href: quickstart-send-telemetry-python.md
+        - name: IoT Hub telemetri gönderme (Python)
+          href: quickstart-send-telemetry-cli-python.md
+        - name: IoT Hub telemetri gönderme (node)
+          href: quickstart-send-telemetry-cli-node.md
+    - name: Katıştırılmış geliştirme ile çalışmaya başlama
+      href: quickstart-device-development.md
+- name: Öğreticiler
+  items:
+    - name: IoT cihazlarını buluta güvenli bir şekilde bağlama
+      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+- name: Kavramlar
+  items:
+    - name: Cihaz geliştiricileri için bağlantı seçenekleri
+      href: concepts-overview-connection-options.md
+    - name: Cihaz türlerine genel bakış
+      href: concepts-iot-device-types.md
+- name: Başvuru
+  items:
+    - name: Azure CLI’si
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Azure PowerShell
+      href: /powershell/module/az.iothub#iothub
+    - name: C (cihaz)
+      href: /azure/iot-hub/iot-c-sdk-ref/
+    - name: Gömülü C (cihaz)
+      href: 'https://azure.github.io/azure-sdk-for-c/'
+    - name: Azure RTOS ara yazılımı (cihaz)
+      href: /azure/rtos/threadx
+    - name: .NET (Cihaz)
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: .NET (Hizmet)
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Yönetim)
+      href: /dotnet/api/overview/azure/iot/management
+    - name: Java (Cihaz)
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java (Hizmet)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Node.js (Cihaz)
+      href: /javascript/api/azure-iot-device/
+    - name: Node.js (Hizmet)
+      href: /javascript/api/azure-iothub/
+    - name: Node.js (Yönetim)
+      href: /javascript/api/overview/azure/iothub/management
+    - name: Python (Cihaz)
+      href: /python/api/azure-iot-device
+    - name: Python (Hizmet)
+      href: /python/api/azure-iot-hub
+    - name: Python (Yönetim)
+      href: /python/api/azure-mgmt-iothub
+    - name: REST (Cihaz)
+      href: /rest/api/iothub/device
+    - name: REST (Hizmet)
+      href: /rest/api/iothub/service/configuration
+    - name: REST (IoT Hub Kaynağı)
+      href: /rest/api/iothub/iothubresource
+    - name: REST (Sertifikalar)
+      href: /rest/api/iothub/certificates
+    - name: Resource Manager şablonu
+      href: /azure/templates/microsoft.devices/iothub-allversions
+- name: Kaynaklar
+  items:
+    - name: Destek ve yardım seçenekleri
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT örnekleri
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS Platformu
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: IoT için Azure Sertifikalı cihaz kataloğu
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT Geliştirici Merkezi
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT Araçları
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT Explorer aracı
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics tool
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Teknik örnek olay incelemeleri
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

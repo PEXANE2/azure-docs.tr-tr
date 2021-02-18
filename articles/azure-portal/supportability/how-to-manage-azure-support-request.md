@@ -5,16 +5,16 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504823"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653858"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure destek isteğini yönetme
 
-[Azure destek talebi](how-to-create-azure-support-request.md)oluşturduktan sonra, bu makalede ele alınan [Azure Portal](https://portal.azure.com)yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
+[Azure destek talebi](how-to-create-azure-support-request.md)oluşturduktan sonra, bu makalede ele alınan [Azure Portal](https://portal.azure.com)yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak veya [Azure CLI](/cli/azure/azure-cli-support-request)kullanarak, istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
 
 ## <a name="view-support-requests"></a>Destek isteklerini görüntüleme
 
@@ -76,7 +76,7 @@ Dosya yükleme seçeneğini kullanarak, tanılama dosyalarını veya bir destek 
 
 1. **Destek isteği** sayfasında dosyanızı bulun ve **karşıya yükle**' yi seçin. Birden çok dosya varsa, işlemi tekrarlayın.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Dosya yükleme":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Dosyayı karşıya yükle":::
 
 ### <a name="file-upload-guidelines"></a>Karşıya dosya yükleme yönergeleri
 

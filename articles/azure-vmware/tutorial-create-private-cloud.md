@@ -1,18 +1,18 @@
 ---
-title: Öğretici-Azure 'da vSphere kümesi dağıtma
-description: Azure VMware çözümünü kullanarak Azure 'da vSphere kümesi dağıtmayı öğrenin
+title: Öğretici-Azure VMware çözümü özel bulutu oluşturma ve dağıtma
+description: Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093956"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653146"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu oluşturma
 
-Azure VMware çözümü, Azure 'da bir vSphere kümesi dağıtmanıza olanak tanır. En düşük ilk dağıtım üç ana bilgisayar. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
+Bu öğreticide, bir Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğreneceksiniz. En düşük ilk ana bilgisayar dağıtımı üç. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
 
 Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter 'ünüzle yönetmenize izin vermediğinden ek yapılandırma gerekir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
 
@@ -25,13 +25,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri.
+- Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri. Abonelikte en az katkıda bulunan düzeyinde olmanız gerekir.
+- Azure VMware çözümünü dağıtmak için [planlama](production-ready-deployment-steps.md) makalesinde topladığınız bilgileri izleyin.
 - [Öğretici: ağ denetim listesi](tutorial-network-checklist.md)' nde açıklandığı şekilde yapılandırılmış uygun ağa sahip olduğunuzdan emin olun.
-
-## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- Konaklar sağlandı ve Microsoft. AVS kaynak sağlayıcısı, Istek içinde açıklandığı şekilde kaydedilir [ve Microsoft. AVS kaynak sağlayıcısı 'nı etkinleştirir](enable-azure-vmware-solution.md).
 
 ## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
@@ -41,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 

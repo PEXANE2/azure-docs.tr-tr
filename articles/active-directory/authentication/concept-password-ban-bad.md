@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743896"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652029"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Parola korumasını Azure Active Directory kullanarak kötü parolaları kaldırın
 
@@ -174,7 +174,7 @@ Aşağıdaki örneği inceleyin:
 Sonraki adım kullanıcının normalleştirilmiş yeni parolalarındaki tüm yasaklanmış parolaların örneklerini belirlemektir. Noktaları aşağıdaki ölçütlere göre atanır:
 
 1. Kullanıcının parolasıdır bulunan her yasaklanmış parolanın tek bir noktası verilir.
-1. Kalan her benzersiz karaktere bir nokta verilir.
+1. Yasaklanmış bir parolanın parçası olmayan kalan her karaktere bir nokta verilir.
 1. Parolanın kabul edilmesi için en az beş (5) Punto olması gerekir.
 
 Contoso, sonraki iki örnek senaryo için Azure AD parola korumasını kullanıyor ve özel yasaklanmış parola listesinde "contoso" içeriyor. Ayrıca "boş" öğesinin genel listede olduğunu varsayalım.

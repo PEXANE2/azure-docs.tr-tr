@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280535"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653083"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Tarifeli faturalama için anomali algılama hizmeti
 
@@ -50,32 +50,37 @@ Model, geriye dönük güven aralıkları oluşturarak işe yarar. Zaman serisi 
 
 ## <a name="anomaly-detection-notification"></a>Anomali algılama bildirimi
 
-Anomali algılama bildirimlerini haftalık olarak e-posta ile sağlıyoruz. Tüm ölçerler ve müşteriler için bu hafta algılanan tüm anormallikleri içerir. Bu e-posta, teklifi oluştururken belirtilen **mühendislik** ve **destek** kişilerine gönderilir.
+Iş Ortağı Merkezi 'nde aykırları değerlendirebilir, yönetebilir ve kabul edebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [tarifeli faturalandırma Için anomali algılama](../anomaly-detection.md).
 
-Algılanan anormalilerin gerçek sorunlar olup olmadığını araştırmanız beklenmektedir ve bu durumda, yanlış kullanımı bildirmek için Microsoft 'a başvurun (aşağıdaki destek bölümüne bakın).
+Müşterilerinizin tarifeli kullanım için fazla ücretlendirilmediğinden emin olmak için, algılanan anomali sorunlar olup olmadığını araştırmanız gerekir. Bu durumda, Iş Ortağı Merkezi 'nde yanlış kullanımı kabul edebilirsiniz.
 
-Algılanan anormalilerin normal kullanım olduğunu onaylayıp, başka bir işlem yapmanız gerekmez. Ancak, bir anomali potansiyel olarak yüksek kaliteli riski gösteriyorsa, kullanımı onaylamak için sizinle iletişim kurabiliriz.  
+Algılanan anormalilerin normal kullanım olup olmadığını onaylamanız önerilir. Bunu yaptığınızda size sağladığımız anomali verileri iyileştirecaksınız. Anomali potansiyel olarak yüksek bir mali riski gösteriyorsa, kullanımı onaylamak için sizinle iletişim kurabiliriz.
 
 ## <a name="when-and-how-to-get-support"></a>Ne zaman ve nasıl destek alınır?
 
-Microsoft 'a yanlış kullanım yaptıysanız ve bu veya müşteri üzerinden ücretlendiriliyorsa, Microsoft, müşteri tarafından bildirilen kullanım için bir fatura başlatmaz veya size bu kullanım için ödeme yapmayacaktır. Eksik raporlamadan kaynaklanan gelir kaybına katlanmanız gerekir.
+Müşteriye daha fazla ücret gönderilmesini sağlayan yanlış bir tarifeli kullanım yaptıysanız, müşteri tarafından bildirilen kullanım için bir fatura başlatmaz veya size bu kullanım için ödeme yapmayacaktır. Eksik raporlamadan kaynaklanan gelir kaybına katlanmanız gerekir.
 
-Aşağıdaki durumlardan biri geçerliyse, müşterilerinizle ilgili geri ödeme veya faturalama düzeltmesi isteğinde bulunmak için bir destek bileti açabilirsiniz:
+Aşağıdaki durumlardan biri geçerliyse, Iş ortağı merkezindeki kullanım miktarını, müşterileriniz için bir para iadesi veya faturalama ayarlamasına neden olacak şekilde ayarlayabilirsiniz:
 
-- Bulduğumuz anormalilerin gerçek bir sorun olduğunu doğrulamıştır ve yanlış kullanım müşterinin **fazla ücretlendirmesinden** kaynaklanır.
-- Bizim için yanlış kullanım gönderdik ve yanlış kullanım müşterinin **fazla ödenmesine** neden olur.
-- Müşterinizin tarifeli faturalandırma kullanımının ücreti için bir para iadesi istemek istiyorsunuz.
+- Bulduğumuz anormalilerin gerçek bir sorun olduğunu doğrulamıştır ve yanlış kullanım müşterinin sayısını açığa atmıştır.
+- Bizim için yanlış kullanım gönderdik ve yanlış kullanım müşterinin borçlandırılmasını sağlayabilir.
 
-Bilet göndermek için:
+Tarifeli faturalandırma anomali ile ilgili bir destek bileti göndermek için:
 
-1. Destek sayfasına gidin. **Sorununuzu bize bildirin kutusunda**"yanlış kullanım" yazın.
-2. Destek konularında, arama sonuçlarının açılan kutusunda aşağıdakilerden birini seçin:
-    - **Ticari Market**  >  **Ölçülen faturalandırma**  >  **Azure uygulamaları teklifi Için yanlış kullanım gönderildi**veya
-    - **Ticari Market**  >  **Ölçülen faturalandırma**  >  **SaaS teklifi Için yanlış kullanım gönderildi**
-3. Bir **sonraki adımda**, bir destek bileti göndermek Için Iş Ortağı Merkezi 'nde oturum açmak üzere yönlendirilmek üzere **çözüm gözden geçir** düğmesini seçin.
+1. İş hesabınızla iş [Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde oturum açın.
+1. Sayfanın sağ üst kısmındaki menüde, **destek** simgesini seçin. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür.
+1. Ticari Market hakkında yardım almak için **ticari Market**' i seçin.
+   ![Destek bölmesini gösterir.](../media/support/commercial-marketplace-support-pane.png)
+1. **Sorun Özeti** kutusunda, **ticari Market > tarifeli faturalandırma** girin.
+1. **Sorun türü** kutusunda aşağıdakilerden birini seçin:
+    - **Ticari Market > tarifeli faturalandırma > Azure uygulamaları teklifi için yanlış kullanım gönderildi**
+    - **Ticari Market >, SaaS teklifi için yanlış kullanım > ölçülen faturalandırmaya gönderildi**
+1. **Sonraki adımda** **çözümleri gözden geçir**' i seçin.
+1. Önerilen belgeleri gözden geçirin, varsa veya bir destek bileti göndermek için **Sorun ayrıntıları sağla** ' yı seçin.
 
 Daha fazla yayımcı desteği seçeneği için bkz. [Iş Ortağı Merkezi 'nde ticari Market programı desteği](../support.md).
 
-## <a name="next-step"></a>Sonraki adım
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Market ölçüm hizmeti API 'si](marketplace-metering-service-apis.md)hakkında bilgi edinin.
+- [Ölçülen faturalandırma için anomali algılama](../anomaly-detection.md)

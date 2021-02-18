@@ -2,17 +2,17 @@
 title: Azure VMware çözüm kaynağı sağlayıcısını kaydetme
 description: Azure VMware Çözüm kaynak sağlayıcısını kaydetme adımları.
 ms.topic: include
-ms.date: 12/24/2020
-ms.openlocfilehash: 7d24ce86f24c941c7d48d3b73576dcdfda120f51
-ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
+ms.date: 02/17/2021
+ms.openlocfilehash: 80010a232f80865b20c2e3d953dc1d9d22ece1c6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770850"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653181"
 ---
-<!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
+<!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-Azure VMware çözümünü kullanmak için, öncelikle kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.  
+Azure VMware çözümünü kullanmak için, öncelikle kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir. Kaynak sağlayıcıları hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ### <a name="azure-cli"></a>Azure CLI 
 
@@ -20,8 +20,7 @@ Azure VMware çözümünü kullanmak için, öncelikle kaynak sağlayıcısını
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
-
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
  
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 

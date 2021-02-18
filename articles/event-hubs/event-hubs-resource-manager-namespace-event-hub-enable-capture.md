@@ -1,15 +1,15 @@
 ---
 title: Yakalama etkinken bir olay hub 'ı oluşturma-Azure Event Hubs | Microsoft Docs
 description: Bir olay hub'ı ile bir Azure Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 658defcef5c9d145d499eb72ae372d1a7edfb740
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 17157e05e4ad123ba2bbdffa199c111df9f8912e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705430"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653032"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Olay hub’ı ile bir ad alanı oluşturma ve şablon kullanarak Yakalamayı etkinleştirm
 
@@ -399,7 +399,7 @@ Azure Data Lake Store’da Event Hubs Yakalama özelliğini etkinleştirmek içi
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Hedef olarak Azure Blob Depolama:
 
@@ -420,7 +420,7 @@ Event Hubs Yakalama özelliğini [Azure portalı](https://portal.azure.com) üze
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış](./event-hubs-about.md)
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md

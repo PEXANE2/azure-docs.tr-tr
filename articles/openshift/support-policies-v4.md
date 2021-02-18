@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: fced0cfb1836be0f90c606b9a9753dad4200670d
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 8de819fc5444146f40a6a052cd51e6164cdfb230
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635634"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653066"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift destek ilkesi
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift 4 kümelerine yönelik belirli yapılandırmalarda, küm
 ## <a name="cluster-configuration-requirements"></a>Küme yapılandırma gereksinimleri
 
 * Tüm OpenShift kümesi işleçleri yönetilen bir durumda kalmalıdır. Küme işleçleri listesi, çalıştırılarak döndürülür `oc get clusteroperators` .
-* Kümenin en az iki çalışan düğümü olmalıdır. Küme çalışanlarını sıfıra ölçeklendirmeyin veya düzgün bir küme kapatması yapmayı deneyin.
+* Kümenin en az iki çalışan düğümü olmalıdır. OpenShift bileşenlerinin zamanlanmasını engelleyen talitre yok. Küme çalışanlarını sıfıra ölçeklendirmeyin veya düzgün bir küme kapatması yapmayı deneyin.
 * Prometheus ve Alertmanager hizmetlerini kaldırmayın veya değiştirmeyin.
 * Service Alertmanager kurallarını kaldırmayın.
 * Ağ güvenlik gruplarını kaldırmayın veya değiştirmeyin.

@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: 4e35449f5dd34d366d0d6095830002690940e6ae
-  ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/08/2021
-  ms.locfileid: "99831476"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652641"
 landingContent:
 - title: Azure gizli bilgi işlem hakkında
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure Kubernetes Service (AKS) Gizli Bilgi İşlem Düğümleri (önizleme)
+    - text: AKS üzerinde gizli bilgi işlem düğümleri (Azure Kubernetes hizmeti)
       url: confidential-nodes-aks-overview.md
   - linkListType: concept
     links:
@@ -83,7 +83,7 @@ landingContent:
       url: confidential-nodes-aks-get-started.md
   - linkListType: sample
     links:
-    - text: Gizli Kapsayıcı Örnekleri (SGX üzerinde değiştirilmemiş kapsayıcılar)
+    - text: Gizli kapsayıcı örnekleri (SGX üzerinde değiştirilmemiş kapsayıcılar)
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: Kapanım Bilgisi Olan Kapsayıcı Örnekleri
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
@@ -105,7 +105,7 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: AKS Üzerinde Gizli Sağlık Hizmetleri Tanıtımı
+    - text: AKS üzerinde gizli sağlık hizmetleri tanıtımı
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: AKS Üzerinde Açık Kapanım ile Doğrulanan Karşılıklı TLS
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md

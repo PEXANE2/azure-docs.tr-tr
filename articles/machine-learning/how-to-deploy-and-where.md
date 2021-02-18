@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372043"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652233"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Makine öğrenimi modellerini Azure 'a dağıtma
 
@@ -325,6 +325,14 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
 > [!TIP]
 > Dağıtım sırasında, işlem hedefleri için Docker görüntüleri Azure Container Registry (ACR) ile oluşturulur ve yüklenir. Varsayılan olarak, Azure Machine Learning *temel* hizmet katmanını kullanan bir ACR oluşturur. Çalışma alanınızın ACR 'sini standart veya Premium katmana değiştirmek, görüntü oluşturma ve işlem hedeflerinize dağıtmak için geçen süreyi azaltabilir. Daha fazla bilgi için bkz. [Azure Container Registry hizmet katmanları](../container-registry/container-registry-skus.md).
+
+> [!NOTE]
+> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
+>
+> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Azure Kubernetes hizmet tanılaması](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> Bir modeli sağlıksız veya aşırı yüklenmiş bir kümeye dağıtmaya çalışıyorsanız, sorun yaşanması beklenmektedir. AKS kümesi sorunlarını gidermek için yardıma ihtiyacınız varsa lütfen AKS desteğiyle iletişime geçin.
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Toplu çıkarım
 Azure Machine Learning Işlem hedefleri Azure Machine Learning tarafından oluşturulur ve yönetilir. Bunlar, Azure Machine Learning işlem hatlarından toplu tahmin için kullanılabilirler.

@@ -4,35 +4,25 @@ description: Gizli düğümlere sahip bir AKS kümesi oluşturmayı ve Azure CL�
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 2/5/2020
+ms.date: 2/8/2020
 ms.author: amgowda
-ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 866c8340cf9c16d768f4035326aa2ec52dbf1401
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833212"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653372"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak gizli bilgi işlem düğümleri (DCsv2) ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak gizli bilgi işlem düğümleri (DCsv2) ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
-Bu hızlı başlangıç, hızlı bir şekilde bir AKS kümesi oluşturmak ve Azure 'da yönetilen Kubernetes hizmetini kullanarak uygulamaları izlemek için bir uygulama dağıtmak isteyen geliştiricilere veya küme işletmenlerine yöneliktir.
+Bu hızlı başlangıç, hızlı bir şekilde bir AKS kümesi oluşturmak ve Azure 'da yönetilen Kubernetes hizmetini kullanarak uygulamaları izlemek için bir uygulama dağıtmak isteyen geliştiricilere veya küme işletmenlerine yöneliktir. Ayrıca, kümeyi temin edebilir ve Azure portal gizli bilgi işlem düğümleri ekleyebilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesini nasıl dağıtacağınızı ve bir bir Hello World uygulamasını bir kuşakın içinde çalıştırmayı öğreneceksiniz. AKS, kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. [Burada](../aks/intro-kubernetes.md)aks hakkında daha fazla bilgi edinin.
+Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesini nasıl dağıtacağınızı ve bir kuşakın içinde basit bir Hello World uygulaması çalıştırmayı öğreneceksiniz. AKS, kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. [Burada](../aks/intro-kubernetes.md)aks hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Gizli bilgi işlem DCsv2 VM 'Leri, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlardan yararlanır. Daha fazla bilgi için bkz. [kullanılabilir SKU 'lar ve desteklenen bölgeler](virtual-machine-solutions.md)için sanal makineler sayfası.
-
-> DCsv2, Azure 'da 2. nesil sanal makinelerden yararlanır, bu 2. nesil VM 'ler AKS ile bir önizleme özelliğidir. 
-
-### <a name="deployment-pre-requisites"></a>Dağıtım ön gereksinimleri
-Bu dağıtım yönergeleri şunları varsayar:
-
-1. Etkin bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-1. Azure CLı sürüm 2.0.64 veya sonraki bir sürümü, dağıtım makinenizde yüklü ve yapılandırılmış olmalıdır ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](../container-registry/container-registry-get-started-azure-cli.md)
-1. [aks-önizleme uzantısı](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) en düşük sürüm 0.4.62 
-1. VM çekirdekleri kota kullanılabilirliği. Aboneliğinizde kullanılmak üzere en az altı **DC <x> s-v2** çekirdeği kullanılabilir. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](../azure-portal/supportability/per-vm-quota-requests.md) yönergeleri izleyin
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Gizli bilgi işlem düğümü özellikleri (DC <x> s-v2)
 
@@ -41,12 +31,21 @@ Bu dağıtım yönergeleri şunları varsayar:
 1. Şifrelenmiş sayfa önbelleği (EPC) ile Intel SGX tabanlı CPU. [Daha fazla bilgi edinin](./faq.md)
 1. Kubernetes sürüm 1.16 + desteği
 1. Intel SGX DCAP sürücüsü AKS düğümlerinde önceden yüklenmiş. [Daha fazla bilgi edinin](./faq.md)
-1. Portal tabanlı sağlama sonrası GA ile Önizleme sırasında dağıtılan CLı tabanlı destekleme.
 
+## <a name="deployment-prerequisites"></a>Dağıtım önkoşulları
+Dağıtım öğreticisi şunları gerektirir:
 
-## <a name="installing-the-cli-pre-requisites"></a>CLı ön gereksinimleri yükleniyor
+1. Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+1. Dağıtım makinenizde Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](../container-registry/container-registry-get-started-azure-cli.md)
+1. Azure [aks-önizleme uzantısı](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) en düşük sürüm 0.5.0
+1. Aboneliğinizdeki kullanım için en az altı **DC <x> s-v2** çekirdeği mevcuttur. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](../azure-portal/supportability/per-vm-quota-requests.md) yönergeleri izleyin
 
-Aks-Preview 0.4.62 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
+## <a name="cli-based-preparation-steps-required-for-add-on-in-preview---optional-but-recommended"></a>CLı tabanlı hazırlık adımları (eklenti için Önizleme-isteğe bağlı ancak önerilir)
+AKS 'de gizli bilgi işlem eklentisini etkinleştirmek için aşağıdaki yönergeleri izleyin.
+
+### <a name="step-1-installing-the-cli-prerequisites"></a>1. Adım: CLı önkoşullarını yükleme
+
+Aks-Preview 0.5.0 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -57,28 +56,9 @@ Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı k
 ```azurecli-interactive
 az extension update --name aks-preview
 ```
-### <a name="generation-2-vms-feature-registration-on-azure"></a>2. nesil VM 'nin Azure 'da özellik kaydı
-Gen2VMPreview Azure aboneliğine kaydediliyor. Bu özellik, 2. nesil sanal makineleri AKS düğüm havuzları olarak sağlamanıza olanak tanır:
-
-```azurecli-interactive
-az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
-```
-Durumun kayıtlı olarak gösterilmesi birkaç dakika sürebilir. ' Az Feature List ' komutunu kullanarak kayıt durumunu kontrol edebilirsiniz. Bu özellik kaydı, her abonelik için yalnızca bir kez yapılır. Daha önce kaydedilmişse yukarıdaki adımı atlayabilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
-```
-Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullanarak Microsoft. ContainerService kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azure 'da Azure gizli bilgi Işlem özelliği kaydı (isteğe bağlı ancak önerilir)
-AKS-ConfidentialComputingAddon Azure aboneliğine kaydediliyor. Bu özellik [, Ayrıntılar bölümünde](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)açıklandığı gibi iki daemonsets ekler:
+### <a name="step-2-azure-confidential-computing-addon-feature-registration-on-azure"></a>2. Adım: Azure 'da Azure gizli bilgi Işlem eklentisi özelliği kaydı
+AKS-ConfidentialComputingAddon Azure aboneliğine kaydediliyor. Bu özellik, [aşağıda](./confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks)AÇıKLANDıĞı gibi SGX cihaz eklentisi daemonset ekler:
 1. SGX cihaz sürücüsü eklentisi
-2. SGX kanıtlama teklif Yardımcısı
-
 ```azurecli-interactive
 az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
@@ -92,8 +72,10 @@ Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullana
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+## <a name="creating-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Gizli bilgi işlem düğümleri ve eklentisi ile yeni AKS kümesi oluşturma
+Eklenti ile gizli bilgi işlem özellikli düğümler eklemek için aşağıdaki yönergeleri izleyin.
 
-## <a name="creating-an-aks-cluster"></a>AKS kümesi oluşturma
+### <a name="step-1-creating-an-aks-cluster-with-system-node-pool"></a>1. Adım: sistem düğüm havuzuyla AKS kümesi oluşturma
 
 Yukarıdaki gereksinimleri karşılayan bir AKS kümeniz zaten varsa, yeni bir gizli bilgi işlem düğümü havuzu eklemek için [mevcut küme bölümüne atlayın](#existing-cluster) .
 
@@ -106,18 +88,21 @@ az group create --name myResourceGroup --location westus2
 Şimdi az aks Create komutunu kullanarak bir AKS kümesi oluşturun.
 
 ```azurecli-interactive
-# Create a new AKS cluster with  system node pool with Confidential Computing addon enabled
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled
 az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
 ```
-Yukarıdaki, sistem düğüm havuzu ile yeni bir AKS kümesi oluşturur. Artık AKS (DCsv2) üzerinde gizli bilgi Işlem Nodepool türünün bir Kullanıcı düğümünü eklemeye devam edin
+Yukarıdaki, eklenti etkinken sistem düğüm havuzu ile yeni bir AKS kümesi oluşturur. Artık AKS (DCsv2) üzerinde gizli bilgi Işlem Nodepool türünün bir Kullanıcı düğümünü eklemeye devam edin
 
-Aşağıdaki örnek, bir Kullanıcı nodepool için boyut olan 3 düğümleri ekler `Standard_DC2s_v2` . DCsv2 SKU 'Larının ve bölgelerin desteklenen diğer listesini [buradan](../virtual-machines/dcv2-series.md)seçebilirsiniz:
+### <a name="step-2-adding-confidential-computing-node-pool-to-aks-cluster"></a>2. Adım: AKS kümesine gizli bilgi işlem düğüm havuzu ekleme 
+
+3 düğümle bir Kullanıcı nodepool için aşağıdaki komutu çalıştırın `Standard_DC2s_v2` . DCsv2 SKU 'Larının ve bölgelerin desteklenen diğer listesini [buradan](../virtual-machines/dcv2-series.md)seçebilirsiniz:
 
 ```azurecli-interactive
-az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2 --aks-custom-headers usegen2vm=true
+az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2
 ```
-Yukarıdaki komutun **DC <x> s** ile yeni bir düğüm havuzu eklemesi gerekir-v2 bu düğüm havuzunda otomatik olarak iki daemonsets çalıştırır-([SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX quote Yardımcısı](confidential-nodes-aks-overview.md#sgx-quote))
-
+Yukarıdaki komut, **DC <x> s-v2** ile yeni bir düğüm havuzunun gizli bilgi işlem eklentisi Daemonsets ([SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin) ) ile görünebilmelidir.
+ 
+### <a name="step-3-verify-the-node-pool-and-add-on"></a>3. Adım: düğüm havuzunu ve eklentiyi doğrulama
 Az aks Get-Credentials komutunu kullanarak AKS kümeniz için kimlik bilgilerini alın:
 
 ```azurecli-interactive
@@ -130,44 +115,29 @@ $ kubectl get pods --all-namespaces
 
 output
 kube-system     sgx-device-plugin-xxxx     1/1     Running
-kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Çıkış yukarıdaki ile eşleşiyorsa, AKS kümeniz artık gizli uygulamaları çalıştırmaya hazırdır.
 
-Bir uygulamayı bir kuşta test etmek için [Enclave](#hello-world) dağıtım bölümü Merhaba Dünya gidin. Ya da, AKS 'e ek düğüm havuzları eklemek için aşağıdaki yönergeleri izleyin (AKS, SGX düğüm havuzlarını ve SGX olmayan düğüm havuzlarını karıştırmaya olanak sağlar)
+Bir uygulamayı bir kuşta test etmek için [Enclave](#hello-world) dağıtım bölümü Merhaba Dünya gidin. Veya AKS 'e ek düğüm havuzları eklemek için aşağıdaki yönergeleri izleyin (AKS, SGX düğüm havuzlarını ve SGX olmayan düğüm havuzlarını karıştırmaya olanak sağlar)
 
 ## <a name="adding-confidential-computing-node-pool-to-existing-aks-cluster"></a>Mevcut AKS kümesine gizli bilgi işlem düğüm havuzu ekleniyor<a id="existing-cluster"></a>
 
-Bu bölüm, önceden koşul bölümünde listelenen ölçütlere uyan bir AKS kümeniz olduğunu varsayar.
+Bu bölümde, önkoşul bölümünde listelenen ölçütlere uyan bir AKS kümeniz olduğu varsayılır (eklenti için geçerlidir).
 
-İlk olarak, özelliği Azure aboneliğine eklemenize olanak tanır
+### <a name="step-1-enabling-the-confidential-computing-aks-add-on-on-the-existing-cluster"></a>1. Adım: var olan kümede gizli bilgi işlem AKS eklentisini etkinleştirme
 
-```azurecli-interactive
-az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
-```
-Durumun kayıtlı olarak gösterilmesi birkaç dakika sürebilir. ' Az Feature List ' komutunu kullanarak kayıt durumunu kontrol edebilirsiniz. Bu özellik kaydı, her abonelik için yalnızca bir kez yapılır. Daha önce kaydedilmişse yukarıdaki adımı atlayabilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
-```
-Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullanarak Microsoft. ContainerService kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-Sonra, var olan kümede gizli bilgi işlem ile ilgili AKS eklentilerini etkinleştirir:
+Gizli bilgi işlem eklentisini etkinleştirmek için aşağıdaki komutu çalıştırın
 
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Şimdi kümeye bir **DC <x> s-v2** Kullanıcı düğümü havuzu ekleyin
+### <a name="step-2-add-dcxs-v2-user-node-pool-to-the-cluster"></a>2. Adım: **DC <x> s-v2** Kullanıcı düğümü havuzunu kümeye ekleme
     
 > [!NOTE]
 > Gizli bilgi işlem özelliğini kullanmak için mevcut AKS kümenizin en az bir **DC <x> s-v2** VM SKU 'su tabanlı düğüm havuzu olması gerekir. Gizli bilgi işlem DCsv2 VM SKU 'sunun [kullanılabilir SKU 'ları ve desteklenen bölgeleri](virtual-machine-solutions.md)hakkında daha fazla bilgi edinin.
     
   ```azurecli-interactive
-az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
+az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2
 
 output node pool added
 
@@ -175,6 +145,11 @@ Verify
 
 az aks nodepool list --cluster-name myAKSCluster --resource-group myResourceGroup
 ```
+Yukarıdaki komut, confcompool1 adıyla eklediğiniz en son düğüm havuzunu listelemelidir.
+
+### <a name="step-3-verify-that-daemonsets-are-running-on-confidential-node-pools"></a>3. Adım: daemonsets 'in gizli düğüm havuzlarında çalıştığını doğrulama
+
+Aşağıdaki doğrulamayı gerçekleştirmek için mevcut AKS kümenizde oturum açın. 
 
 ```console
 kubectl get nodes
@@ -186,9 +161,8 @@ $ kubectl get pods --all-namespaces
 
 output (you may also see other daemonsets along SGX daemonsets as below)
 kube-system     sgx-device-plugin-xxxx     1/1     Running
-kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
-Çıkış yukarıdaki ile eşleşiyorsa, AKS kümeniz artık gizli uygulamaları çalıştırmaya hazırdır.
+Çıkış yukarıdaki ile eşleşiyorsa, AKS kümeniz artık gizli uygulamaları çalıştırmaya hazırdır. Lütfen aşağıdaki test uygulaması dağıtımını izleyin.
 
 ## <a name="hello-world-from-isolated-enclave-application"></a>Yalıtılmış şifreleme uygulamasından Merhaba Dünya <a id="hello-world"></a>
 *Hello-World-Enclave. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu açık şifreleme tabanlı örnek uygulama kodu [Açık şifreleme projesinde](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)bulunabilir. Aşağıdaki dağıtımda "confcom" eklentisini dağıttığınız varsayılmaktadır.

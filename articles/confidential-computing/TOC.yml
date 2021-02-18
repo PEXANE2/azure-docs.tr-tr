@@ -38,7 +38,7 @@
     - name: Kapsayıcı İşlem Kaynakları
       expanded: true
       items:
-        - name: Gizli kapsayıcılar (lift-and-shift)
+        - name: Gizli kapsayıcılar
           items:
             - name: Kullanmaya başlama
               href: confidential-containers.md
@@ -58,7 +58,7 @@
       href: how-to-fortanix-enclave-manager.md
 - name: Başvurular
   items:
-    - name: SGX Teklif Yardımcısı Özelliği
+    - name: SGX quote Yardımcısı özelliği
       href: confidential-nodes-out-of-proc-attestation.md
 - name: Kaynaklar
   items:

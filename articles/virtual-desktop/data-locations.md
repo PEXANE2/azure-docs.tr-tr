@@ -3,15 +3,16 @@ title: Windows sanal masaüstü için veri konumları-Azure
 description: Windows sanal masaüstü verilerinin ve meta verilerinin hangi konumlarına depolanabileceğini kısaca inceleyin.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e626b7e729e394b1012848904f5ce12279c3ef24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ec71a86a5df5954c14097e6a0ec5c8a5138fc5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010081"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652437"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows sanal masaüstü için veriler ve meta veri konumları
 
@@ -26,6 +27,14 @@ Windows sanal masaüstü Şu anda tüm coğrafi konumlar için kullanılabilir. 
 >[!IMPORTANT]
 >Windows sanal masaüstü, bir veri merkezinde kiracı adları, ana bilgisayar havuzu adları, uygulama grubu adları ve Kullanıcı asıl adları gibi genel meta veri bilgilerini depolar. Bir müşteri bir hizmet nesnesi oluşturduğunda, hizmet nesnesi için bir konum girmeleri gerekir. Girdikleri konum, nesnenin meta verilerinin depolanacağı yeri belirler. Müşteri bir Azure bölgesi seçer ve meta veriler ilgili Coğrafya 'da depolanır. Tüm Azure bölgelerinin ve ilgili coğrafi bölgelerin listesi için bkz. [Azure geographiler](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-Şu anda, meta verileri yalnızca Birleşik Devletler (US) Azure Coğrafya 'da depolamayı destekliyoruz. Depolanan meta veriler Rest 'de şifrelenir ve coğrafi olarak yedekli yansıtmalar Coğrafya içinde tutulur. Uygulama ayarları ve Kullanıcı verileri gibi tüm müşteri verileri, müşterinin seçtiği ve hizmet tarafından yönetilmediği konumda bulunur. Hizmet büyüdükçe daha fazla coğrafi hale gelecektir.
+Şu anda meta verilerin şu coğrafi depolarda depolanmasını destekliyoruz:
+
+- Birleşik Devletler (ABD) (genel olarak kullanılabilir)
+- Avrupa (AB) (Genel Önizleme) 
+
+>[!NOTE]
+> İçinde Windows sanal masaüstü hizmeti nesneleri oluşturmak için bir bölge seçerken hem ABD hem de AB coğrafi bölümlerinin altındaki bölgeleri görürsünüz. Dağıtımınız için hangi bölgenin en iyi şekilde çalıştığını anladığınızdan emin olmak için, [Azure genel altyapı haritamıza](https://azure.microsoft.com/global-infrastructure/geographies/#geographies)göz atın.
+
+Depolanan meta veriler Rest 'de şifrelenir ve coğrafi olarak yedekli yansıtmalar Coğrafya içinde tutulur. Uygulama ayarları ve Kullanıcı verileri gibi tüm müşteri verileri, müşterinin seçtiği ve hizmet tarafından yönetilmediği konumda bulunur. Hizmet büyüdükçe daha fazla coğrafi hale gelecektir.
 
 Hizmet meta verileri olağanüstü durum kurtarma amaçları için Azure Coğrafya içinde çoğaltılır.

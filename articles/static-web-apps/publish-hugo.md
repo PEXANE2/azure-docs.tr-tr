@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900785"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652364"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
@@ -88,7 +88,7 @@ Azure statik Web Apps bağlanmak için GitHub 'da bir depoya ihtiyacınız vard�
 1. Yerel depoyu GitHub 'a iletin.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web uygulamanızı dağıtın
@@ -123,11 +123,11 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Depo_ olarak **Hugo-static-App** ' i seçin.
 
-1. _Dal_ için **ana öğe** seçin.
+1. _Dal_ için **ana** öğesini seçin.
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
 
-### <a name="build"></a>Yapı
+### <a name="build"></a>Oluşturma
 
 Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını eklersiniz. Aşağıdaki ayarlar GitHub eylemi iş akışı dosyasını yapılandırır.
 

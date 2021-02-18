@@ -4,16 +4,16 @@ description: Yardıma ihtiyacı olan müşteriler, self servis çözümlerini bu
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745596"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652403"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
-Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yönetmenize olanak sağlar. [Azure Portal](https://portal.azure.com), bu makalede ele alınan istekleri oluşturabilir ve yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
+Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yönetmenize olanak sağlar. [Azure Portal](https://portal.azure.com), bu makalede ele alınan istekleri oluşturabilir ve yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak veya [Azure CLI](/cli/azure/azure-cli-support-request)kullanarak, istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
 
 > [!NOTE]
 > Azure portal URL 'SI, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür.
@@ -64,7 +64,7 @@ Kaynak bağlamında bir destek talebi başlatmak için şu anda çalışıyorsun
 
 Sorununuz hakkında bilgi toplamak ve çözmenize yardımcı olmak için bazı adımlarda size kılavuzluk ederiz. Her adım aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 Destek isteği işleminin ilk adımı, sorununuz ve Destek planınız hakkında temel bilgileri toplar.
 

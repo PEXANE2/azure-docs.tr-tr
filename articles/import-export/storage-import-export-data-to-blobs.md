@@ -5,22 +5,22 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706798"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652964"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
 Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'ni kullanarak büyük miktarlarda verileri Azure Blob depolamaya güvenli bir şekilde aktarmak için adım adım yönergeler sağlanmaktadır. Azure Bloblarına veri aktarmak için hizmet, verilerinizi içeren şifrelenmiş disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
 Şunları yapmanız gerekir:
@@ -101,13 +101,13 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 1. Oturum açın https://portal.azure.com/ .
-2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine** gidin.
+2. **İçeri/dışarı aktarma işleri** için arama yapın.
 
-    ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![İçeri/dışarı aktarma işlerinde ara](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
+3. **+ Yeni** seçeneğini belirleyin.
 
-    ![Içeri/dışarı aktarma işi oluştur ' a tıklayın](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Yeni ' yi seçerek yeni bir ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **Temel bilgiler**:
 
@@ -118,7 +118,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
    * Bir abonelik seçin.
    * Bir kaynak grubu girin veya seçin.
 
-     ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 5. **İş için Ayrıntılar**:
 
@@ -126,7 +126,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
    * Verilerin bulunacağı hedef depolama hesabını seçin.
    * Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
 
-   ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 6. **İade gönderimi bilgileri**:
 
@@ -137,14 +137,14 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
        > [!TIP]
        > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
 
-     ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 7. **Özet**:
 
    * Özette belirtilen iş bilgilerini gözden geçirin. Disklerin Azure 'a geri sevk edilmesi için iş adı ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın. Bu bilgiler daha sonra sevkiyat etiketinde kullanılır.
    * İçeri aktarma işini oluşturmak için **Tamam** ' ı tıklatın.
 
-     ![İçeri aktarma işi oluşturma-4. adım](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![İçeri aktarma işi oluşturma-4. adım](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

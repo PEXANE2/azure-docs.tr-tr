@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0dd011d6c1ff631d537dbcadf9a77bbe6d89aa45
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 36e1a8a288e1f9b2a8d65ab966b607b594d66f4e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518808"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653610"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen Azure hizmetleri
 
@@ -29,17 +29,17 @@ Bu tabloda Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetleri l
 |Azure hizmeti |Destek düzeyi |Azure AD |Paylaşılan Anahtar| İlgili makaleler: |
 |---------------|-------------------|---|---|---|
 |Azure Data Factory|Genel kullanıma sunuldu|Yes|Yes|[Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure Databricks|Genel kullanıma sunuldu|Yes|Yes|[Azure Databricks ile kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](data-lake-storage-quickstart-create-databricks-account.md) <br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme](data-lake-storage-use-databricks-spark.md)|
+|Azure Databricks|Genel kullanıma sunuldu|Yes|Yes|[Azure Databricks ile kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) <br>[Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme](data-lake-storage-use-databricks-spark.md)|
 |Azure Event Hub|Genel kullanıma sunuldu|Hayır|Yes|[Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama](../../event-hubs/event-hubs-capture-overview.md)|
 |Azure Event Grid|Genel kullanıma sunuldu|Yes|Yes|[Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama](data-lake-storage-events.md)|
 |Azure Logic Apps|Genel kullanıma sunuldu|Hayır|Yes|[Genel Bakış-Azure Logic Apps nedir?](../../logic-apps/logic-apps-overview.md)|
 |Azure Machine Learning|Genel kullanıma sunuldu|Yes|Yes|[Azure Storage hizmetlerindeki verilere erişme](../../machine-learning/how-to-access-data.md)|
 |Azure Stream Analytics|Genel kullanıma sunuldu|Yes|Yes|[Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Azure Data Lake Gen2 çıkış](../../stream-analytics/stream-analytics-define-outputs.md)|
 |Data Box|Genel kullanıma sunuldu|Hayır|Yes|[Şirket içi bir, Azure depolama 'ya veri geçirmek için Azure Data Box kullanma](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
-|HDInsight |Genel kullanıma sunuldu|Yes|Yes|[Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage 2. ile](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md)|
+|HDInsight |Genel kullanıma sunuldu|Yes|Yes|[Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)<br>[Data Lake Storage 2. ile](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Genel kullanıma sunuldu|Yes|Yes|[Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Genel kullanıma sunuldu|Yes|Yes|[Power BI kullanarak Data Lake Storage 2. verileri çözümleme](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (eski adı SQL Veri Ambarı)|Genel kullanıma sunuldu|Yes|Yes|[Depolama hesabındaki verileri analiz etme](../../synapse-analytics/get-started-analyze-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (eski adı SQL Veri Ambarı)|Genel kullanıma sunuldu|Yes|Yes|[Depolama hesabındaki verileri analiz etme](../../synapse-analytics/get-started-analyze-storage.md)|
 |SQL Server Integration Services (SSIS)|Genel kullanıma sunuldu|Yes|Yes|[Azure depolama bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Veri Gezgini|Genel kullanıma sunuldu|Yes|Yes|[Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama](/azure/data-explorer/data-lake-query-data)|
 |Azure Bilişsel Arama|Önizleme|Yes|Yes|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../search/search-howto-index-azure-data-lake-storage.md)|

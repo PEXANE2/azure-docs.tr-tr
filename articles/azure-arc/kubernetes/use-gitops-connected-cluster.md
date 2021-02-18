@@ -2,22 +2,22 @@
 title: Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure yay etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b30ecde0e128a955967638828dcb7bec008205ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560169"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652488"
 ---
 # <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Bir yay etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma (Önizleme)
 
-Bu makalede, Azure Arc etkin bir Kubernetes kümesinde yapılandırmaların uygulanması gösterilmektedir. Aynı kavramsal genel bakış [burada](./conceptual-configurations.md)bulunabilir.
+Bu makalede, Azure Arc etkin bir Kubernetes kümesinde yapılandırmaların uygulanması gösterilmektedir. Bu işlemi bir kavramsal alma için, bkz. [Konfigürasyonlar ve Gilar-Azure Arc etkin Kubernetes makalesi](./conceptual-configurations.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -85,22 +85,22 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
   ```
 
-#### <a name="use-a-public-git-repo"></a>Ortak bir git deposu kullanma
+#### <a name="use-a-public-git-repository"></a>Ortak bir git deposu kullanma
 
 | Parametre | Biçimlendir |
 | ------------- | ------------- |
 | `--repository-url` | http [s]:/sunucu/repo [. git] veya git:/sunucu/repo [. git]
 
-#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>SSH ve Flox tarafından oluşturulan anahtarlarla özel bir git deposu kullanma
+#### <a name="use-a-private-git-repository-with-ssh-and-flux-created-keys"></a>SSH ve Flox tarafından oluşturulan anahtarlarla özel bir git deposu kullanma
 
 | Parametre | Biçimlendir | Notlar
 | ------------- | ------------- | ------------- |
 | `--repository-url` | ssh://user@server/repo[. git] veya user@server:repo [. git] | `git@` değişebilir `user@`
 
 > [!NOTE]
-> Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Anahtar Kullanıcı hesabı yerine depoya eklenirse, `git@` `user@` URL 'de yerine kullanın. Daha fazla ayrıntı için [özel git deposundan yapılandırmaya Uygula](#apply-configuration-from-a-private-git-repository) bölümüne atlayın.
+> Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Anahtar, Kullanıcı hesabı yerine depoya eklenirse, `git@` `user@` URL 'de yerine kullanın. Daha fazla ayrıntı için [özel git deposundan yapılandırmaya Uygula](#apply-configuration-from-a-private-git-repository) bölümüne atlayın.
 
-#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>SSH ve Kullanıcı tarafından sağlanmış anahtarlarla özel bir git deposu kullanma
+#### <a name="use-a-private-git-repository-with-ssh-and-user-provided-keys"></a>SSH ve Kullanıcı tarafından sağlanmış anahtarlarla özel bir git deposu kullanma
 
 | Parametre | Biçimlendir | Notlar |
 | ------------- | ------------- | ------------- |
@@ -120,9 +120,9 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | `--ssh-known-hosts-file` | yerel dosyanın tam yolu | Yerel bir dosyada bilinen ana bilgisayarlar içeriği sağlama |
 
 > [!NOTE]
-> SSH bağlantısını kurmadan önce git deposunun kimliğini doğrulamak için Flox işleci, bilinen ana bilgisayar dosyasındaki ortak git konaklarının bir listesini tutar. Yaygın olmayan bir git deposu veya kendi git ana bilgisayarınızı kullanıyorsanız, akıcı x 'in deponuzu tanımlayabilmesi için ana bilgisayar anahtarını sağlamanız gerekebilir. Known_hosts içeriğinizi doğrudan veya bir dosya içinde sağlayabilirsiniz. Kendi içeriğinizi sağlarken yukarıda açıklanan SSH anahtar senaryolarından biriyle birlikte [known_hosts içerik biçimi belirtimlerini](https://aka.ms/KnownHostsFormat) kullanın.
+> SSH bağlantısını kurmadan önce git deposunun kimliğini doğrulamak için, Flox operatörü bilinen ana bilgisayar dosyasındaki ortak git Konakları listesini tutar. Yaygın olmayan bir git deposu veya kendi git ana bilgisayarınızı kullanıyorsanız, Flox 'in deponuzu tanımlayabilmesi için ana bilgisayar anahtarını sağlamanız gerekebilir. Known_hosts içeriğinizi doğrudan veya bir dosya içinde sağlayabilirsiniz. Kendi içeriğinizi sağlarken yukarıda açıklanan SSH anahtar senaryolarından biriyle birlikte [known_hosts içerik biçimi belirtimlerini](https://aka.ms/KnownHostsFormat) kullanın.
 
-#### <a name="use-a-private-git-repo-with-https"></a>HTTPS ile özel bir git deposu kullanma
+#### <a name="use-a-private-git-repository-with-https"></a>HTTPS ile özel bir git deposu kullanma
 
 | Parametre | Biçimlendir | Notlar |
 | ------------- | ------------- | ------------- |
@@ -161,7 +161,7 @@ Aşağıdaki isteğe bağlı parametrelerle yapılandırmayı özelleştirin:
 | `--git-user`  | Git yürütmesi için Kullanıcı adı. |
 | `--git-email`  | Git yürütmesi için kullanılacak e-posta. 
 
-Flox 'in depoya yazmasını ve `--git-user` ya da `--git-email` ayarlanmamasını istemiyorsanız, `--git-readonly` otomatik olarak ayarlanır.
+Akışkan x ' in depoya yazmasını istemiyorsanız `--git-user` veya `--git-email` ayarlanmamışsa, `--git-readonly` otomatik olarak ayarlanır.
 
 Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 
@@ -229,7 +229,7 @@ Bir `sourceControlConfiguration` oluşturulduğunda veya güncelleştirilirken, 
 
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 
-| Aşama değişikliği | Açıklama |
+| Aşama değişikliği | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` , kümeyi başarıyla yapılandırıp dağıtımı hatasız olarak dağıtabilecek `flux` . |
@@ -237,7 +237,7 @@ Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum de
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Özel bir git deposundan yapılandırma Uygula
 
-Özel bir git deposu kullanıyorsanız, deponuzda SSH ortak anahtarını yapılandırmanız gerekir. SSH ortak anahtarı, akıcı x 'in oluşturduğu veya sağladığınız bir tane olacaktır. Ortak anahtarı belirli bir git deposunda veya depoya erişimi olan git kullanıcısına yapılandırabilirsiniz. 
+Özel bir git deposu kullanıyorsanız, deponuzda SSH ortak anahtarını yapılandırmanız gerekir. SSH ortak anahtarı, akıcı x 'in oluşturduğu veya sağladığınız bir tane olacaktır. Ortak anahtarı belirli git deposunda veya depoya erişimi olan git kullanıcısına yapılandırabilirsiniz. 
 
 ### <a name="get-your-own-public-key"></a>Kendi ortak anahtarınızı alın
 
@@ -276,7 +276,7 @@ Aşağıdaki seçeneklerden birini kullanın:
     7. **SSH anahtarı Ekle**' ye tıklayın.
 
 * Seçenek 2: ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin (yalnızca bu depo için geçerlidir):  
-    1. GitHub ' u açın ve depoya gidin.
+    1. GitHub ' u açın ve deponuza gidin.
     1. **Ayarlar**’a tıklayın.
     1. **Anahtarları dağıt**' a tıklayın.
     1. **Dağıtım anahtarı Ekle**' ye tıklayın.

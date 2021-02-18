@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: Telefon kavramları
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Azure Iletişim hizmetlerindeki telefon numarası türleri
+        - name: Telefon numarası türleri
           href: concepts/telephony-sms/plan-solution.md
         - name: SIP arabirimi altyapı gereksinimleri
           href: concepts/telephony-sms/sip-interface-infrastructure.md

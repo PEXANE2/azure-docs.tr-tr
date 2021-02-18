@@ -991,6 +991,8 @@
           href: managed-instance/alerts-create.md
         - name: Yönetilen örnek üzerinde el ile yük devretme başlatma
           href: managed-instance/user-initiated-failover.md
+        - name: Günlük yeniden yürütme hizmeti 'ni kullanarak veritabanını geçirme
+          href: managed-instance/log-replay-service-migrate.md
     - name: Örnekler
       items:
         - name: Azure CLI’si

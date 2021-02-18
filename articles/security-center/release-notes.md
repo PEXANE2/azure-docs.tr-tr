@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379054"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634269"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -35,11 +35,29 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 Şubat 'taki güncelleştirmeler şunları içerir:
 
+- [Genel kullanıma sunulduktan Azure portal yeni güvenlik uyarıları sayfası (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 - [Varlık envanteri sayfa iyileştirmeleri](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Genel kullanıma sunulduktan Azure portal yeni güvenlik uyarıları sayfası (GA)
+
+Azure Güvenlik Merkezi 'nin güvenlik uyarıları sayfası, şunları sağlayacak şekilde yeniden tasarlandı:
+
+- **Uyarılar Için geliştirilmiş önceliklendirme deneyimi** -uyarıları daha kolay hale getirmeye ve en ilgili tehditlere odaklanmaya yardımcı olma, listede özelleştirilebilir filtreler ve gruplama seçenekleri de bulunur.
+- **Uyarılar listesinde,** MITRE ATT&ACK Tactika gibi daha fazla bilgi.
+- **Örnek uyarılar oluşturma düğmesi** -Azure Defender özelliklerini değerlendirmek ve uyarılarınızı test etmek. Yapılandırma (SıEM tümleştirmesi, e-posta bildirimleri ve iş akışı otomasyonları için), tüm Azure Defender planlarından örnek uyarılar oluşturabilirsiniz.
+- **Azure Sentinel 'in olay deneyimiyle hizalaması** -her iki ürünü de kullanan müşteriler için, aralarında geçiş yapmak artık daha basit bir deneyimdir ve bunlardan birini öğrenmenin kolay bir deneyimi vardır.
+- Büyük uyarı listeleri için **daha iyi performans** .
+- Uyarı listesi aracılığıyla **klavye gezintisi** .
+- **Azure Kaynak grafının uyarıları** -tüm kaynaklarınızın kusto benzeri API 'Si olan Azure Kaynak Grafında uyarıları sorgulayabilirsiniz. Bu, kendi uyarı panolarınızı oluşturuyorsanız de kullanışlıdır. [Azure Kaynak Grafiği hakkında daha fazla bilgi edinin](../governance/resource-graph/index.yml).
+- **Örnek uyarılar oluşturma** -yeni uyarılar deneyiminden örnek uyarılar oluşturmak için bkz. [örnek Azure Defender uyarıları](security-center-alert-validation.md#generate-sample-azure-defender-alerts)oluşturma.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Güvenlik Merkezi 'nin güvenlik uyarıları listesi":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)
 
