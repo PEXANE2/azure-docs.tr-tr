@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499943"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592473"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Bilişsel Arama günlük verilerini toplayın ve çözümleyin
 
@@ -23,9 +23,9 @@ Tanılama günlüğü, [Azure izleyici](../azure-monitor/index.yml)ile tümleşt
 
 Tanılama günlük kaydını ayarlarken, bir depolama mekanizması belirtmeniz istenir. Aşağıdaki tabloda, verileri toplama ve kalıcı hale getirme seçenekleri numaralandırılır.
 
-| Resource | Kullanıldığı yerler |
+| Kaynak | Kullanıldığı yerler |
 |----------|----------|
-| [Log Analytics çalışma alanına gönderme](../azure-monitor/learn/tutorial-resource-logs.md) | Olaylar ve ölçümler Log Analytics çalışma alanına gönderilir ve bu, ayrıntılı bilgi döndürmek için portalda sorgulanabilir. Giriş için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md) |
+| [Log Analytics çalışma alanına gönderme](../azure-monitor/essentials/tutorial-resource-logs.md) | Olaylar ve ölçümler Log Analytics çalışma alanına gönderilir ve bu, ayrıntılı bilgi döndürmek için portalda sorgulanabilir. Giriş için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md) |
 | [BLOB depolama ile arşivleme](../storage/blobs/storage-blobs-overview.md) | Olaylar ve ölçümler bir blob kapsayıcısına arşivlenir ve JSON dosyalarında depolanır. Günlükler, belirli bir olayı araştırmak için faydalı olan ancak açık uçlu araştırma için kullanışlı olan oldukça ayrıntılı olabilir (saat/dakika). Ham günlük dosyasını görüntülemek için bir JSON düzenleyicisi kullanın veya günlük verilerini toplamak ve görselleştirmek için Power BI.|
 | [Olay Hub 'ına akış](../event-hubs/index.yml) | Olaylar ve ölçümler bir Azure Event Hubs hizmetine akışla kaydedilir. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
 
@@ -33,11 +33,11 @@ Tanılama günlük kaydını ayarlarken, bir depolama mekanizması belirtmeniz i
 
 Tanılama günlüğünü yapılandırırken bir veya daha fazla seçim yapabilmeniz için kaynakları önceden oluşturun.
 
-+ [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)
++ [Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md)
 
 + [Depolama hesabı oluşturma](../storage/common/storage-account-create.md)
 
-+ [Olay Hub 'ı oluşturma](../event-hubs/event-hubs-create.md)
++ [Olay Hub'ı oluşturma](../event-hubs/event-hubs-create.md)
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
 
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 Azure Izleyici tarafından yakalanan günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics içindeki **AzureDiagnostics** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
 
-| OperationName | Açıklama |
+| OperationName | Description |
 |---------------|-------------|
 | ServiceStats | Bu işlem, bir portala genel bakış sayfası yüklendiğinde veya yenilendiğinde, doğrudan veya örtük olarak çağrılan [hizmet Istatistiklerini almak](/rest/api/searchservice/get-service-statistics)için bir yordam çağrıdır. |
 | Query. Search |  Bir dizinde yapılan sorgu istekleri bkz. günlüğe kaydedilen sorgular hakkında bilgi için [izleyici sorguları](search-monitor-queries.md) .|

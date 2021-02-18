@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698793"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590281"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -130,17 +130,17 @@ Siber tehditler gelişiyor. VM 'lerinizi koruma, tehditleri hızlı bir şekilde
 
 Güvenlik Merkezi tehditleri etkin bir şekilde izleyebilir ve olası tehditler güvenlik uyarıları 'nda kullanıma sunulur. Bağıntılı tehditler, güvenlik olayı adlı tek bir görünümde toplanır.
 
-Güvenlik Merkezi, verileri [Azure izleyici günlüklerinde](../../azure-monitor/log-query/log-query-overview.md)depolar. Azure Izleyici günlükleri, uygulama ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlar. Veriler ayrıca [Azure izleyici](../../batch/monitoring-overview.md), yönetim çözümleri ve bulutta veya Şirket içindeki sanal makinelere yüklenen aracılardan da toplanır. Bu paylaşılan işlevsellik, ortamınızın eksiksiz bir resmini oluşturmanıza yardımcı olur.
+Güvenlik Merkezi, verileri [Azure izleyici günlüklerinde](../../azure-monitor/logs/log-query-overview.md)depolar. Azure Izleyici günlükleri, uygulama ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlar. Veriler ayrıca [Azure izleyici](../../batch/monitoring-overview.md), yönetim çözümleri ve bulutta veya Şirket içindeki sanal makinelere yüklenen aracılardan da toplanır. Bu paylaşılan işlevsellik, ortamınızın eksiksiz bir resmini oluşturmanıza yardımcı olur.
 
 VM 'Ler için güçlü güvenlik zorlaması olmayan kuruluşlar, yetkisiz kullanıcıların güvenlik denetimlerini atlamalarını sağlayan olası denemelerden haberdar olmaya devam eder.
 
 ## <a name="monitor-vm-performance"></a>VM performansını izleme
 Kaynak kötüye kullanımı, VM işlemlerinde gerekenden daha fazla kaynak tükettiği zaman bir sorun olabilir. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. Yüksek CPU veya bellek kullanımı bir hizmet reddi (DoS) saldırısı belirtebileceğinden, bu özellikle IIS veya diğer Web sunucularını barındıran VM 'Ler için önemlidir. Yalnızca bir sorun oluştuğu sırada VM erişiminin yeniden etkin olmaması, ancak normal işlem sırasında ölçülen taban çizgisi performansına karşı önlem olarak izlenmesi zorunludur.
 
-Kaynağınızın sistem durumu hakkında görünürlük elde etmek için [Azure izleyicisini](../../azure-monitor/platform/data-platform.md) kullanmanızı öneririz. Azure Izleyici özellikleri:
+Kaynağınızın sistem durumu hakkında görünürlük elde etmek için [Azure izleyicisini](../../azure-monitor/data-platform.md) kullanmanızı öneririz. Azure Izleyici özellikleri:
 
-- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/platform-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
-- [Azure tanılama uzantısı](../../azure-monitor/platform/diagnostics-extension-overview.md): Windows VM 'lerinde izleme ve tanılama özellikleri sağlar. Uzantıyı [Azure Resource Manager şablonun](../../virtual-machines/extensions/diagnostics-template.md)bir parçası olarak ekleyerek bu özellikleri etkinleştirebilirsiniz.
+- [Kaynak tanılama günlük dosyaları](../../azure-monitor/essentials/platform-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
+- [Azure tanılama uzantısı](../../azure-monitor/agents/diagnostics-extension-overview.md): Windows VM 'lerinde izleme ve tanılama özellikleri sağlar. Uzantıyı [Azure Resource Manager şablonun](../../virtual-machines/extensions/diagnostics-template.md)bir parçası olarak ekleyerek bu özellikleri etkinleştirebilirsiniz.
 
 VM performansını izleyen kuruluşlar, performans desenlerindeki belirli değişikliklerin normal veya olağan dışı olup olmadığını belirleyemez. Normalden daha fazla kaynak kullanan bir VM, bir dış kaynaktan veya VM 'de çalışan güvenliği aşılmış bir işlemden saldırı anlamına gelebilir.
 

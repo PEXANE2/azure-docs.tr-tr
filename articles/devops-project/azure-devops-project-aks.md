@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855461"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590853"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Azure DevOps Starter ile Azure Kubernetes hizmetine ASP.NET Core uygulamaları dağıtma
 
@@ -24,7 +24,7 @@ DevOps Starter ayrıca:
 * Azure Kubernetes hizmeti (AKS) gibi Azure kaynaklarını otomatik olarak oluşturur.
 * CI/CD için derleme ve yayın işlem hattı ayarlayan Azure DevOps 'da bir yayın işlem hattı oluşturur ve yapılandırır.
 * İzleme için bir Azure Application Insights kaynağı oluşturur.
-* AKS kümesindeki kapsayıcı iş yüklerinin performansını izlemek için [kapsayıcılar Için Azure izleyicisini](../azure-monitor/insights/container-insights-overview.md) sağlar
+* AKS kümesindeki kapsayıcı iş yüklerinin performansını izlemek için [kapsayıcılar Için Azure izleyicisini](../azure-monitor/containers/container-insights-overview.md) sağlar
 
 Bu öğreticide şunları yapacaksınız:
 
@@ -45,15 +45,15 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca, tercih ettiğiniz Azure aboneliğinde AKS kümesi gibi Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. **.Net**' i seçin ve ardından **İleri**' yi seçin.
 
-1. **Uygulama çerçevesi seçin**altında **ASP.NET Core** ' ı seçin ve ardından **İleri**' yi seçin.
+1. **Uygulama çerçevesi seçin** altında **ASP.NET Core** ' ı seçin ve ardından **İleri**' yi seçin.
 
 1. **Kubernetes hizmeti**' ni seçin ve ardından **İleri**' yi seçin. 
 
@@ -93,7 +93,7 @@ DevOps Starter, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomatik 
 
 1. **Durum** alanını işaret edin ve ardından üç nokta (...) simgesini seçin.  Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
@@ -125,7 +125,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın 
 

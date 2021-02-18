@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943730"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592656"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -140,7 +140,7 @@ Bütçe maliyet değerlendirmeleri, gerçek maliyeti temel alır. Amorti edilen 
 
 ## <a name="trigger-an-action-group"></a>Bir eylem grubunu tetikleme
 
-Bir abonelik veya kaynak grubu kapsamı için bütçe oluşturma veya düzenleme aşamasında eylem grubu çağıracak şekilde yapılandırabilirsiniz. Bütçe eşiğinize ulaşıldığında eylem grubu çeşitli eylemler gerçekleştirebilir. Eylem Grupları şu anda yalnızca abonelik ve kaynak grubu kapsamları için desteklenmektedir. Eylem Grupları hakkında daha fazla bilgi için bkz. [Azure portalında eylem grubu oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md). Eylem gruplarıyla bütçe tabanlı otomasyon kullanma hakkında daha fazla bilgi için bkz. [Azure bütçeleri ile maliyetleri yönetme](../manage/cost-management-budget-scenario.md).
+Bir abonelik veya kaynak grubu kapsamı için bütçe oluşturma veya düzenleme aşamasında eylem grubu çağıracak şekilde yapılandırabilirsiniz. Bütçe eşiğinize ulaşıldığında eylem grubu çeşitli eylemler gerçekleştirebilir. Eylem Grupları şu anda yalnızca abonelik ve kaynak grubu kapsamları için desteklenmektedir. Eylem Grupları hakkında daha fazla bilgi için bkz. [Azure portalında eylem grubu oluşturma ve yönetme](../../azure-monitor/alerts/action-groups.md). Eylem gruplarıyla bütçe tabanlı otomasyon kullanma hakkında daha fazla bilgi için bkz. [Azure bütçeleri ile maliyetleri yönetme](../manage/cost-management-budget-scenario.md).
 
 Eylem grubu oluşturmak veya güncelleştirmek için bütçe oluşturma veya düzenleme aşamasında **Eylem gruplarını yönet**'i seçin.
 
@@ -160,7 +160,7 @@ Aşağıdaki örnek %50, %75 ve %100 olarak ayarlanmış bütçe eşiklerini gö
 
 ![Farklı eylem grupları ve eylem türleriyle yapılandırılmış uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-Bütçelerin eylem gruplarıyla tümleştirilmesi yalnızca ortak uyarı şeması devre dışı bırakılmış olan eylem grupları için kullanılabilir. Şemayı devre dışı bırakma hakkında daha fazla bilgi için bkz. [Ortam uyarı şemasını nasıl devre dışı bırakabilirim?](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
+Bütçelerin eylem gruplarıyla tümleştirilmesi yalnızca ortak uyarı şeması devre dışı bırakılmış olan eylem grupları için kullanılabilir. Şemayı devre dışı bırakma hakkında daha fazla bilgi için bkz. [Ortam uyarı şemasını nasıl devre dışı bırakabilirim?](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>PowerShell ile bütçe oluşturma ve düzenleme
 

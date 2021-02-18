@@ -2,17 +2,17 @@
 title: Kavramlar-özel bulut güncelleştirmeleri ve yükseltmeleri
 description: Azure VMware çözümünde anahtar yükseltme işlemi ve özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006721"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635001"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware çözümü özel bulut güncelleştirmeleri ve yükseltmeleri
 
-Azure VMware çözümünün özel bulutlarının önemli avantajlarından biri, platformun sizin için korunmasını sağlar. Platform bakımı, doğrulanan Azure VMware çözümü özel bulut yazılımının en son sürümünü kullandığınızdan emin olmaya yardımcı olan, VMware tarafından doğrulanan bir yazılım paketine yönelik otomatikleştirilmiş güncelleştirmeler içerir.
+Azure VMware çözümünün özel bulutlarının bir avantajı, platformun sizin için korunabileceği bir avantajdır. Bakım, Azure VMware Çözüm özel bulut yazılımının en son sürümünü kullandığınızdan emin olmak için VMware tarafından doğrulanan bir yazılım paketine otomatik güncelleştirmeler içerir.
 
 Özellikle, bir Azure VMware çözümü özel bulutu şunları içerir:
 
@@ -22,7 +22,7 @@ Azure VMware çözümünün özel bulutlarının önemli avantajlarından biri, 
 - VSphere iş yükü VM 'Leri için VMware vSAN veri deposu  
 - İş yükü Mobility için VMware HCX  
 
-Bu bileşenlere ek olarak, Azure VMware çözümü özel bulutu, bağlantı için gerekli olan Azure ve özel bulutu çalıştırmak için gereken kaynakları içerir. Azure VMware çözümü, hem düşük düzenleme hem de VMware bileşenlerinin sistem durumunu sürekli olarak izler. Azure VMware çözümü bir hata algıladığında, başarısız olan bileşenleri onarmak için işlem gerçekleştirir. 
+Azure VMware çözümü özel bulutu Ayrıca Azure 'un bağlantı için gerekli olan kaynakları ve özel bulutu çalıştırabilmesini de içerir. Azure VMware çözümü, hem düşük düzenleme hem de VMware bileşenlerinin sistem durumunu sürekli olarak izler. Azure VMware çözümü bir hata algıladığında, başarısız olan bileşenleri onarmak için işlem gerçekleştirir. 
 
 ## <a name="what-components-get-updated"></a>Hangi bileşenler güncelleştiriliyor?   
 
@@ -42,16 +42,16 @@ Azure VMware çözümü, VMware bileşenlerine aşağıdaki güncelleştirme tü
 - Güncelleştirmeler: bir veya daha fazla VMware bileşeninin Ikincil sürüm güncelleştirmeleri. 
 - Yükseltmeler: bir veya daha fazla VMware bileşeninin ana sürüm güncelleştirmeleri.
 
-Özel bulutlarınıza düzeltme ekleri uygulandıktan önce ve sonra bildirim alınacaktır. Ayrıca, özel bulutunuzda güncelleştirmeler veya yükseltmeler uygulamadan önce bir bakım penceresi zamanlamak için sizinle birlikte çalışacağız. 
+Özel bulutlarınıza düzeltme ekleri uygulandıktan önce ve sonra size bildirim verilecektir. Ayrıca, özel bulutunuzda güncelleştirmeler veya yükseltmeler uygulamadan önce bir bakım penceresi zamanlamak için sizinle birlikte çalışacağız. 
 
 ## <a name="vmware-appliance-backup"></a>VMware gereç yedeklemesi 
 
-Azure VMware çözümü, güncelleştirme yapmanın yanı sıra bu VMware bileşenlerinin bir yapılandırma yedeklemesini alır:
+Azure VMware çözümü Ayrıca aşağıdaki VMware bileşenlerinin bir yapılandırma yedeklemesini de alır:
 
 - vCenter Server 
 - NSX-T Yöneticisi 
 
-Azure VMware çözümü, hatanın süresiyle bunları yapılandırma yedeklemesinden geri yükleyebilir. 
+Azure VMware çözümü, hatanın süresiyle bu bileşenleri yapılandırma yedeklemesinden geri yükleyebilir. 
 
 VMware yazılım sürümleri hakkında daha fazla bilgi için bkz. [özel bulutlar ve kümeler kavram makalesi](concepts-private-clouds-clusters.md) ve [SSS](faq.yml).
 

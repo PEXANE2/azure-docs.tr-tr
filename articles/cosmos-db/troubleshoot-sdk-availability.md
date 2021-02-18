@@ -8,12 +8,12 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559693"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650992"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiğ
 | Birden çok yazma bölgesi | Birincil bölge  | Birincil bölge  |
 
 > [!NOTE]
-> Birincil bölge, [Azure Cosmos hesap bölgesi listesindeki](distribute-data-globally.md) ilk bölgeyi ifade eder
+> Birincil bölge, [Azure Cosmos hesap bölgesi listesinin](distribute-data-globally.md)ilk bölgesine başvurur.
+> Bölgesel tercih olarak belirtilen değerler mevcut Azure bölgeleriyle eşleşmezse, bunlar yok sayılır. Mevcut bir bölgeyle eşleşiyorsa ancak hesap bu sunucuya çoğaltılmamışsa, istemci, veya birincil bölge ile eşleşen bir sonraki tercih edilen bölgeye bağlanır.
+
+> [!WARNING]
+> İstemci yapılandırmasında uç nokta yeniden bulmayı devre dışı bırakmak (false olarak ayarlandığında), bu belgede açıklanan tüm yük devretme ve kullanılabilirlik mantığını devre dışı bırakır.
+> Bu yapılandırmaya, her Azure Cosmos SDK 'sında aşağıdaki parametreler tarafından erişilebilir:
+>
+> * .NET v2 SDK 'daki [Connectionpolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) özelliği.
+> * Java v4 SDK 'sında [Cosmosclientbuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) yöntemi.
+> * Python SDK 'daki [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
+> * JS SDK 'daki [Cosmosclientoptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) parametresi.
 
 Normal koşullarda, SDK istemcisi tercih edilen bölgeye (bölgesel bir tercih ayarlandıysa) veya birincil bölgeye (hiçbir tercih ayarlanmamışsa) bağlanır ve aşağıdaki senaryolardan herhangi biri gerçekleşmediği takdirde işlemler bu bölgeyle sınırlandıralınacaktır.
 
@@ -59,7 +69,7 @@ Bu olaylar sırasında SLA garantisi hakkında kapsamlı bir ayrıntı için bkz
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Hesaptan bölge kaldırma
 
-Bir Azure Cosmos hesabından bölge kaldırdığınızda, hesabı etkin olarak kullanan herhangi bir SDK istemcisi, bir arka uç yanıt kodu aracılığıyla bölge kaldırma işlemini algılar. İstemci daha sonra bölgesel uç noktasını kullanılamaz olarak işaretler. İstemci geçerli işlemi yeniden dener ve gelecekteki tüm işlemler, tercih sırasına göre bir sonraki bölgeye kalıcı olarak yönlendirilir.
+Bir Azure Cosmos hesabından bölge kaldırdığınızda, hesabı etkin olarak kullanan herhangi bir SDK istemcisi, bir arka uç yanıt kodu aracılığıyla bölge kaldırma işlemini algılar. İstemci daha sonra bölgesel uç noktasını kullanılamaz olarak işaretler. İstemci geçerli işlemi yeniden dener ve gelecekteki tüm işlemler, tercih sırasına göre bir sonraki bölgeye kalıcı olarak yönlendirilir. Tercih listesinin yalnızca bir girdisi varsa (veya boşsa), ancak hesabın kullanılabilir başka bölgeleri varsa, hesap listesindeki bir sonraki bölgeye yönlendirir.
 
 ## <a name="adding-a-region-to-an-account"></a>Hesaba bölge ekleme
 

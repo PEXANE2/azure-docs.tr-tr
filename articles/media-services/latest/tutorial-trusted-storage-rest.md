@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101745"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590649"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Öğretici: güvenilen depolama Media Services
 
@@ -23,6 +23,9 @@ Bu öğreticide şunları öğreneceksiniz:
 > - Bir güvenlik duvarı ya da VPN gibi ağ erişim denetimi kullanırken bir depolama hesabına erişim için Azure hizmetleri verme
 
 2020-05-01 API 'SI ile yönetilen bir kimliği Media Services hesabıyla ilişkilendirerek güvenilen depolamayı etkinleştirebilirsiniz.
+
+>[!NOTE]
+>Güvenilen depolama yalnızca API 'de kullanılabilir ve Azure portal Şu anda etkin değil.
 
 Media Services, sistem kimlik doğrulamasını kullanarak depolama hesabınıza otomatik olarak erişebilir. Media Services, Media Services hesabının ve depolama hesabının aynı abonelikte olduğunu doğrular. Ayrıca, ilişkilendirmeyi ekleyen kullanıcının depolama hesabına Azure Resource Manager RBAC ile erişebileceğini de doğrular.
 

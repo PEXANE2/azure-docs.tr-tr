@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589524"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -86,7 +86,7 @@ Uygulamanızın veri göndereceği tüm kaynakların izleme anahtarlarına ihtiy
 ## <a name="filter-on-build-number"></a>Derleme numarasını filtrele
 Uygulamanızın yeni bir sürümünü yayımladığınızda, farklı yapılardan Telemetriyi ayırabilmek isteyeceksiniz.
 
-Uygulama sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
+Uygulama sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve [Ölçüm Gezgini](../../azure-monitor/essentials/metrics-charts.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
 
 Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
@@ -132,7 +132,7 @@ Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Bu
 </PropertyGroup>
 ```
 
-Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/platform/metrics-charts.md) sürüme göre filtreleyebilirsiniz.
+Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/essentials/metrics-charts.md) sürüme göre filtreleyebilirsiniz.
 
 Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulup oluşturulduğuna dikkat edin.
 

@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780935"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592311"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure dosyaları izleme veri başvurusu
 
@@ -36,9 +36,9 @@ Azure dosyaları, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağla
 
 #### <a name="azure-files"></a>Azure Dosyaları
 
-Bu tabloda [Azure dosya ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)gösterilmektedir.
+Bu tabloda [Azure dosya ölçümleri](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)gösterilmektedir.
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------------------- | ----------------- |
 | Dosya kapasitesi | Depolama hesabı tarafından kullanılan dosya depolama alanı miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | FileCount   | Depolama hesabındaki dosyaların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -88,4 +88,4 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - Bkz. Azure Storage izleme açıklaması için [Azure dosyalarını izleme](storage-files-monitoring-reference.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/essentials/monitor-azure-resource.md) .

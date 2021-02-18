@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745893"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582809"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için tanılama günlüklerine erişme
 Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirmeyi ve hesabınız için toplanan günlüklerin nasıl görüntüleneceğini öğrenin.
 
 Kuruluşlar, verilere erişen kullanıcıların listesi, verilere ne sıklıkta erişildiğine, hesapta ne kadar veri depolandığını vb. gibi bilgiler sağlayan veri erişim denetimi izlerini toplamak üzere Azure Data Lake Storage 1. hesabı için tanılama günlüğünü etkinleştirebilir. Etkinleştirildiğinde, tanılama ve/veya istekler en iyi çaba temelinde günlüğe kaydedilir. Hem Istekler hem de tanılama günlüğü girdileri yalnızca hizmet uç noktasına karşı yapılan istekler varsa oluşturulur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
@@ -46,7 +46,7 @@ Kuruluşlar, verilere erişen kullanıcıların listesi, verilere ne sıklıkta 
         
         * Günlük verilerinin bir Azure Olay Hub 'ına akışını sağlamak için **bir olay hub 'ına akış** seçeneğini belirleyin. Büyük olasılıkla, gelen günlükleri gerçek zamanlı olarak analiz etmek için bir aşağı akış işleme işlem hattına sahipseniz bu seçeneği kullanabilirsiniz. Bu seçeneği belirlerseniz, kullanmak istediğiniz Azure Olay Hub 'ının ayrıntılarını sağlamanız gerekir.
 
-        * Oluşturulan günlük verilerini çözümlemek için Azure Izleyici hizmetini kullanmak üzere **Log Analytics gönderme** seçeneğini belirleyin. Bu seçeneği belirlerseniz, günlük analizini gerçekleştirmek için kullanacağınız Log Analytics çalışma alanının ayrıntılarını sağlamanız gerekir. Bkz. Azure izleyici [günlükleri ile toplanan verileri görüntüleme veya çözümleme](../azure-monitor/log-query/log-analytics-tutorial.md) Azure izleyici günlüklerini kullanma hakkında ayrıntılı bilgi için arama.
+        * Oluşturulan günlük verilerini çözümlemek için Azure Izleyici hizmetini kullanmak üzere **Log Analytics gönderme** seçeneğini belirleyin. Bu seçeneği belirlerseniz, günlük analizini gerçekleştirmek için kullanacağınız Log Analytics çalışma alanının ayrıntılarını sağlamanız gerekir. Bkz. Azure izleyici [günlükleri ile toplanan verileri görüntüleme veya çözümleme](../azure-monitor/logs/log-analytics-tutorial.md) Azure izleyici günlüklerini kullanma hakkında ayrıntılı bilgi için arama.
      
    * Denetim günlüklerini veya istek günlüklerini mi yoksa her ikisini mi almak istediğinizi belirtin.
    * Verilerin korunması gereken gün sayısını belirtin. Bekletme yalnızca günlük verilerini arşivlemek için Azure Storage hesabı kullanıyorsanız geçerlidir.
@@ -115,7 +115,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 ```
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -128,7 +128,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -167,7 +167,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 ```
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -180,12 +180,12 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | StreamName |Dize |İşlemin gerçekleştirildiği yol |
 
 ## <a name="samples-to-process-the-log-data"></a>Günlük verilerini işlemek için örnekler
-Azure Data Lake Storage 1. Azure Izleyici günlüklerine Günlükler gönderirken (bkz. Azure izleyici günlükleri ile ilgili ayrıntılar için bkz. Azure izleyici günlükleri [ile toplanan verileri görüntüleme veya çözümleme](../azure-monitor/log-query/log-analytics-tutorial.md) ) aşağıdaki sorgu, Kullanıcı görünen adları, olayların zamanını ve bir görsel grafik ile olay zaman içindeki olayların sayısını içeren bir tablo döndürür. Kullanıcı GUID veya diğer öznitelikleri göstermek için kolayca değiştirilebilir:
+Azure Data Lake Storage 1. Azure Izleyici günlüklerine Günlükler gönderirken (bkz. Azure izleyici günlükleri ile ilgili ayrıntılar için bkz. Azure izleyici günlükleri [ile toplanan verileri görüntüleme veya çözümleme](../azure-monitor/logs/log-analytics-tutorial.md) ) aşağıdaki sorgu, Kullanıcı görünen adları, olayların zamanını ve bir görsel grafik ile olay zaman içindeki olayların sayısını içeren bir tablo döndürür. Kullanıcı GUID veya diğer öznitelikleri göstermek için kolayca değiştirilebilir:
 
 ```
 search *

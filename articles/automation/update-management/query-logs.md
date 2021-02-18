@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222947"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592871"
 ---
 # <a name="query-update-management-logs"></a>Güncelleştirme Yönetimi günlüklerini sorgulama
 
@@ -191,11 +191,11 @@ Heartbeat
 
 Bir Windows bilgisayarında, Azure Izleyici günlükleriyle aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
 
-1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
+1. Denetim Masası 'nda **Microsoft Monitoring Agent** açın. **Azure Log Analytics** sekmesinde, aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
 
-1. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından**olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydolduğunu ve yapılandırmayı aldığını gösterir.
+1. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından** olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydolduğunu ve yapılandırmayı aldığını gösterir.
 
-Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../../azure-monitor/learn/quick-collect-linux-computer.md).
+Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../../azure-monitor/agents/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../../azure-monitor/vm/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Linux sistemleriniz bir ara sunucu veya Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırıldıysa ve Güncelleştirme Yönetimi etkinleştirirken, `proxy.conf` aşağıdaki komutları kullanarak dosya üzerinde omıuser grubuna Okuma izni vermek için izinleri güncelleştirin:
@@ -205,7 +205,7 @@ Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güve
 
 Yeni eklenen Linux aracıları, bir değerlendirme gerçekleştirildikten sonra **güncelleştirilmiş** durumunu gösterir. Bu işlem 6 saat kadar sürebilir.
 
-Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim kurduğunu onaylamak için bkz. [Azure izleyici günlükleriyle Operations Manager tümleştirmeyi doğrulama](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim kurduğunu onaylamak için bkz. [Azure izleyici günlükleriyle Operations Manager tümleştirmeyi doğrulama](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM değerlendirme sorguları (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici günlükleri hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md).
+* Azure Izleyici günlükleri hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri](../../azure-monitor/logs/log-query-overview.md).
 * Uyarılarla ilgili yardım için bkz. [Uyarıları yapılandırma](configure-alerts.md).

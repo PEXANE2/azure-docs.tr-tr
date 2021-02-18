@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b04dacfdedded417e2557d1568e01bc9fa8f5745
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958957"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590129"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -81,7 +81,7 @@ Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor. Azure [san
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar](./sap-high-availability-architecture-scenarios.md)
 * [ASCS küme yapılandırmasında araştırma bağlantı noktası ekle](sap-high-availability-installation-wsfc-file-share.md)
 * [Bir yük devretme kümesine (A) SCS örneği yükleme](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Azure NetApp Files için SMB birimi oluşturma](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [Azure NetApp Files için SMB birimi oluşturma](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Genel Bakış
@@ -114,9 +114,9 @@ Azure NetApp Files kullanmanın hazırlanması için aşağıdaki adımları ger
 4. Azure NetApp Files kaynaklar, temsilci alt ağında bulunmalıdır. Temsilci alt ağ oluşturmak için [Azure NetApp Files için bir alt ağ Için temsilci seçme](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) bölümündeki yönergeleri izleyin.  
 
    > [!IMPORTANT]
-   > SMB birimi oluşturmadan önce Active Directory bağlantı oluşturmanız gerekir. [Active Directory bağlantıları için gereksinimleri](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)gözden geçirin.  
+   > SMB birimi oluşturmadan önce Active Directory bağlantı oluşturmanız gerekir. [Active Directory bağlantıları için gereksinimleri](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)gözden geçirin.  
 
-5. [Active Directory bağlantısı oluşturma](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) bölümünde açıklandığı gibi Active Directory bağlantı oluştur  
+5. [Active Directory bağlantısı oluşturma](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection) bölümünde açıklandığı gibi Active Directory bağlantı oluştur  
 6. SMB [birimi ekleme](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) bölümündeki yönergeleri izleyerek SMB Azure NetApp Files SMB birimi oluşturun  
 7. SMB birimini Windows sanal makinenize bağlayın.
 

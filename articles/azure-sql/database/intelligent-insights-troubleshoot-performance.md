@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589324"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler ile Azure SQL veritabanı ve Azure SQL yönetilen örnek performans sorunlarını giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](intelligent-insights-overview.md) kaynak günlüğü aracılığıyla ALGıLANAN Azure SQL yönetilen örnek performans sorunları sağlanmaktadır. Ölçümler ve kaynak günlükleri, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure depolama](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme akışla eklenebilir.
+Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](intelligent-insights-overview.md) kaynak günlüğü aracılığıyla ALGıLANAN Azure SQL yönetilen örnek performans sorunları sağlanmaktadır. Ölçümler ve kaynak günlükleri, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), [Azure depolama](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme akışla eklenebilir.
 
 > [!NOTE]
 > Akıllı İçgörüler kullanarak hızlı bir performans sorun giderme kılavuzu için, bu belgede [Önerilen sorun giderme akış](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) Akış Çizelgesine bakın.
@@ -335,4 +335,4 @@ Akıllı İçgörüler, genellikle performans sorununun kök neden analizini ger
 - [Akıllı içgörüler](intelligent-insights-overview.md) kavramları öğrenin.
 - [Akıllı içgörüler Performans Tanılama günlüğünü](intelligent-insights-use-diagnostics-log.md)kullanın.
 - [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)kullanarak izleyin.
-- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../../azure-monitor/platform/platform-logs-overview.md)kullanmayı öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../../azure-monitor/essentials/platform-logs-overview.md)kullanmayı öğrenin.

@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Uyumluluk
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: Belge çevirisi
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Belge çevirisi nedir?
+          href: document-translation/overview.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Belge çevirisi ile çalışmaya başlama
+          href: document-translation/get-started-with-document-translation.md
+        - name: SAS belirteçleri oluştur
+          href: document-translation/create-sas-tokens.md
+    - name: Başvuru
+      items:
+        - name: Belge çevirisi API 'SI başvurusu
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: Özel Çevirmen
   items:
     - name: Genel Bakış
