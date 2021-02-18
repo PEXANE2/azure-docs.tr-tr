@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f6b68ea756253a30f006983c214e287c75637278
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642561"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650788"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -98,7 +98,7 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 
 * Yeni bir Node.js projesi oluşturun.
 * Axios kitaplığını ile birlikte yükler `npm i axios` .
-* Aşağıdaki kodu kopyalamak için projenize yapıştırın.
+* Kopyala aşağıdaki kodu projenize yapıştırın.
 * Uç noktanızı, abonelik anahtarınızı ve kapsayıcı URL değerlerinizi ayarlayın.
 * Programı çalıştırın.
 
@@ -108,7 +108,7 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 * Örneklerden birindeki kodu kopyalayıp projenize yapıştırın.
 * Uç noktanızı, abonelik anahtarınızı ve kapsayıcı URL değerlerinizi ayarlayın.
 * Programı çalıştırın. Örneğin: `python translate.py`.
-  
+
 ### <a name="java"></a>[Java](#tab/java)
 
 * Projeniz için bir çalışma dizini oluşturun. Örneğin:
@@ -127,7 +127,7 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-* Java kaynak dosyaları (örneğin, _Sample. Java_) src/Main/**Java** içinde canlı.
+**Note**: Java kaynak dosyaları (örneğin, _Sample. Java_) src/Main/**Java** içinde canlı.
 
 * Kök dizininizde (örneğin, *örnek proje*), projenizi Gradle ile başlatın:
 
@@ -136,6 +136,7 @@ gradle init --type basic
 ```
 
 * Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
+
 * Dosyayı güncelleştirin `build.gradle.kts`  . Örneğe bağlı olarak güncelleştirmeniz gerektiğini aklınızda bulundurun `mainClassName` :
 
   ```java
@@ -155,7 +156,8 @@ gradle init --type basic
   ```
 
 * **Java** dizininde bir Java dosyası oluşturun ve kodu belirtilen örnekten kopyalayıp yapıştırın. Abonelik anahtarınızı ve uç noktanızı eklemeyi unutmayın.
-**Örneği kök dizinden derleyin ve çalıştırın**:
+
+* **Örneği kök dizinden derleyin ve çalıştırın**:
 
 ```powershell
 gradle build
@@ -172,7 +174,7 @@ gradle run
 * Dosyayı oluşturun, örneğin: ' Go Build example-Code. go '.
 * Dosyayı çalıştırın, örneğin: ' example-Code '.
 
----
+ ---
 
 ## <a name="make-document-translation-requests"></a>Belge çevirisi istekleri yapın
 

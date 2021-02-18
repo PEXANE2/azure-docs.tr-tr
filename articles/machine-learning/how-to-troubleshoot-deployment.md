@@ -10,16 +10,24 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071672"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651689"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Uzak model dağıtımı sorunlarını giderme 
 
 Azure Machine Learning kullanarak bir modeli Azure Container Instances (ACI) ve Azure Kubernetes hizmeti 'ne (AKS) dağıttığınızda karşılaşabileceğiniz yaygın hataları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+
+> [!NOTE]
+> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
+>
+> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Azure Kubernetes hizmet tanılaması](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> Bir modeli sağlıksız veya aşırı yüklenmiş bir kümeye dağıtmaya çalışıyorsanız, sorun yaşanması beklenmektedir. AKS kümesi sorunlarını gidermek için yardıma ihtiyacınız varsa lütfen AKS desteğiyle iletişime geçin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

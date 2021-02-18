@@ -1,5 +1,5 @@
 ---
-title: Application Insights ile Kullanıcı davranışını izleme
+title: Application Insights kullanarak Kullanıcı davranışını izleme
 titleSuffix: Azure AD B2C
 description: Application Insights Azure AD B2C Kullanıcı ilerinizden olay günlüklerini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
@@ -12,14 +12,14 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce80e3376482ef44b466757cf7e345c4bcf186ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: dfe53f67ee9c6645a6dadda58573b892b676b739
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651282"
 ---
-# <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
+# <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Application Insights kullanarak Azure AD B2C Kullanıcı davranışını izleme
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -31,23 +31,23 @@ ms.locfileid: "99218562"
 
 ::: zone pivot="b2c-custom-policy"
 
-Azure Active Directory B2C (Azure AD B2C), Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan olay verilerini [Application Insights](../azure-monitor/app/app-insights-overview.md) göndermeyi destekler. Application Insights teknik bir profille, Kullanıcı yolculukları için ayrıntılı ve özelleştirilmiş olay günlükleri edinebilirsiniz:
+Azure Active Directory B2C (Azure AD B2C) ' de, Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan olay verilerini [Application Insights](../azure-monitor/app/app-insights-overview.md) gönderebilirsiniz. Application Insights teknik bir profille, Kullanıcı yolculukları için ayrıntılı ve özelleştirilmiş olay günlükleri edinebilirsiniz:
 
-* Kullanıcı davranışında Öngörüler elde edin.
-* Geliştirme veya üretimde kendi ilkelerinizin sorunlarını giderin.
-* Ölçüm performansı.
-* Application Insights bildirimler oluşturun.
+- Kullanıcı davranışında Öngörüler elde edin.
+- Geliştirme veya üretimde kendi ilkelerinizin sorunlarını giderin.
+- Ölçüm performansı.
+- Application Insights bildirimler oluşturun.
 
 ## <a name="overview"></a>Genel Bakış
 
-Özel olay günlüklerini etkinleştirmek için bir Application Insights teknik profili eklersiniz. Teknik profilde, Application Insights izleme anahtarını, olay adını ve kaydedilecek talepleri tanımlarsınız. Bir olay göndermek için, teknik profil [Kullanıcı yolculuğunda](userjourneys.md)bir düzenleme adımı olarak eklenir.
+Özel olay günlüklerini etkinleştirmek için bir Application Insights teknik profili ekleyin. Teknik profilde, Application Insights izleme anahtarını, olay adını ve kaydedilecek talepleri tanımlarsınız. Bir olay göndermek için, teknik profili [Kullanıcı yolculuğunda](userjourneys.md)düzenleme adımı olarak ekleyin.
 
-Application Insights kullanırken, aşağıdakileri göz önünde bulundurun:
+Application Insights kullandığınızda aşağıdakileri göz önünde bulundurun:
 
-- Application Insights yeni günlüklerin kullanılabilmesi için genellikle beş dakikadan kısa bir gecikme olur.
-- Azure AD B2C, kaydedilecek talepleri seçmenizi sağlar. Kişisel verilerle talepler eklemeyin.
-- Bir Kullanıcı oturumu kaydetmek için olaylar bir bağıntı KIMLIĞI kullanılarak birleştirilmiş olabilir. 
-- Application Insights teknik profilini doğrudan bir [Kullanıcı yolculuğu](userjourneys.md) veya bir [alt gündekden](subjourneys.md)çağırın. Application Insights teknik profilini [doğrulama teknik profili](validation-technical-profile.md)olarak kullanmayın.
+- Application Insights yeni günlüklerin kullanılabilmesi için genellikle beş dakikadan kısa bir gecikme vardır.
+- Azure AD B2C hangi taleplerin kayıt için seçim yapmanıza olanak sağlar. Kişisel verilerle talepler eklemeyin.
+- Bir Kullanıcı oturumu kaydetmek için olayları birleştirme için bir bağıntı KIMLIĞI kullanabilirsiniz.
+- Application Insights teknik profilini doğrudan bir [Kullanıcı yolculuğu](userjourneys.md) veya bir [alt yolculuğa](subjourneys.md)göre çağırın. Bir Application Insights teknik profilini [doğrulama teknik profili](validation-technical-profile.md)olarak kullanmayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,77 +55,77 @@ Application Insights kullanırken, aşağıdakileri göz önünde bulundurun:
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır. Bilgi için bkz. [Application Insights kaynak oluşturma](../azure-monitor/app/create-new-resource.md)
+Azure AD B2C Application Insights kullandığınızda, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır. Bilgi için bkz. [Application Insights kaynağı oluşturma](../azure-monitor/app/create-new-resource.md).
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
-3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights** arayıp seçin.
-4. **Oluştur**’a tıklayın.
-5. Kaynak için bir **ad** girin.
-6. **Uygulama türü** için **ASP.NET Web uygulaması**' nı seçin.
-7. **Kaynak grubu** için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**’a tıklayın.
-4. Application Insights kaynağını oluşturduktan sonra açın, **temel** bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
+1. Azure aboneliğiniz olan dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure aboneliğinizi içeren dizini seçin. Bu kiracı Azure AD B2C kiracınız değil.
+1. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights** arayıp seçin.
+1. **Oluştur**’u seçin.
+1. **Ad** için kaynak için bir ad girin.
+1. **Uygulama türü** için **ASP.NET Web uygulaması**' nı seçin.
+1. **Kaynak grubu** için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
+1. **Oluştur**’u seçin.
+1. Yeni Application Insights kaynağını açın, **temel** bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
-![Application Insights genel bakış ve Izleme anahtarı](./media/analytics-with-application-insights/app-insights.png)
+![Application Insights genel bakış sekmesindeki Izleme anahtarını gösteren ekran görüntüsü.](./media/analytics-with-application-insights/app-insights.png)
 
 ## <a name="define-claims"></a>Talepleri tanımlama
 
-Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici bir şekilde depolanmasını sağlar. [Talep şeması](claimsschema.md) , taleplerinizi bildirdiğiniz yerdir.
+Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. Taleplerinizi [Claimsschema öğesinde](claimsschema.md)bildirirsiniz.
 
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
-1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
-1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
-1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin. 
+1. İlkenizin uzantıları dosyasını açın. Dosya şuna benzer görünebilir `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** .
+1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğeyi görmüyorsanız, ekleyin.
+1. **Claimsschema** öğesini bulun. Öğeyi görmüyorsanız, ekleyin.
+1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin:
 
-```xml
-<ClaimType Id="EventType">
-  <DisplayName>Event type</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="EventTimestamp">
-  <DisplayName>Event timestamp</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="PolicyId">
-  <DisplayName>Policy Id</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="Culture">
-  <DisplayName>Culture ID</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="CorrelationId">
-  <DisplayName>Correlation Id</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="federatedUser">
-  <DisplayName>Federated user</DisplayName>
-  <DataType>boolean</DataType>
-</ClaimType>
-<ClaimType Id="parsedDomain">
-  <DisplayName>Domain name</DisplayName>
-  <DataType>string</DataType>
-  <UserHelpText>The domain portion of the email address.</UserHelpText>
-</ClaimType>
-<ClaimType Id="userInLocalDirectory">
-  <DisplayName>userInLocalDirectory</DisplayName>
-  <DataType>boolean</DataType>
-</ClaimType>
-```
+   ```xml
+   <ClaimType Id="EventType">
+     <DisplayName>Event type</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="EventTimestamp">
+     <DisplayName>Event timestamp</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="PolicyId">
+     <DisplayName>Policy Id</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="Culture">
+     <DisplayName>Culture ID</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="CorrelationId">
+     <DisplayName>Correlation Id</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="federatedUser">
+     <DisplayName>Federated user</DisplayName>
+     <DataType>boolean</DataType>
+   </ClaimType>
+   <ClaimType Id="parsedDomain">
+     <DisplayName>Domain name</DisplayName>
+     <DataType>string</DataType>
+     <UserHelpText>The domain portion of the email address.</UserHelpText>
+   </ClaimType>
+   <ClaimType Id="userInLocalDirectory">
+     <DisplayName>userInLocalDirectory</DisplayName>
+     <DataType>boolean</DataType>
+   </ClaimType>
+   ```
 
 ## <a name="add-new-technical-profiles"></a>Yeni teknik profiller ekleyin
 
-Teknik profiller, özel ilkedeki işlevleri kabul edebilir. Bu tabloda, bir oturumu açmak ve olayları göndermek için kullanılan teknik profiller tanımlanmaktadır. Çözüm, [Teknik profil ekleme](technicalprofiles.md#include-technical-profile) yaklaşımını kullanır. Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profil içerir.
+Teknik profiller, özel ilkedeki işlevleri kabul edebilir. Bu işlevler teknik profil [içerme](technicalprofiles.md#include-technical-profile) yaklaşımını kullanır, burada teknik bir profil başka bir teknik profil içerir ve değişiklik ayarları veya yeni işlevsellik ekler. Aşağıdaki tabloda, bir oturumu açmak ve olayları göndermek için kullanılan teknik profiller tanımlanmaktadır.
 
 | Teknik profil | Görev |
 | ----------------- | -----|
-| AppInsights-Common | Ortak yapılandırma kümesiyle ortak teknik profil. Application Insights izleme anahtarı, kaydedilecek talepler koleksiyonu ve geliştirici modu dahildir. Aşağıdaki teknik profiller ortak teknik profili içerir ve olay adı gibi daha fazla talep ekler. |
-| AppInsights-SignInRequest | Bir `SignInRequest` oturum açma isteği alındığında bir talep kümesiyle olay kaydeder. |
-| AppInsights-UserSignUp | `UserSignUp`Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir olayı kaydeder. |
-| AppInsights-SignInComplete | `SignInComplete`Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamasının başarıyla tamamlanmasında bir olay kaydeder. |
+| AppInsights-Common | Tipik yapılandırmayla ortak teknik profil. Application Insights izleme anahtarını, kaydedilecek talepler koleksiyonunu ve Geliştirici modunu içerir. Diğer teknik profiller ortak teknik profili içerir ve olay adı gibi daha fazla talep ekler. |
+| AppInsights-SignInRequest | Bir oturum açma isteği alındığında bir talep kümesi ile **Signınrequest** olayını kaydeder. |
+| AppInsights-UserSignUp | Kullanıcı kaydolma veya oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir **Usersignup** olayını kaydeder. |
+| AppInsights-SignInComplete | Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde, başarılı kimlik doğrulamasından sonra **Signcomplete** olayını kaydeder. |
 
-Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekleyin. Bu öğeleri **Claimsproviders** öğesine ekleyin:
+*TrustFrameworkExtensions.xml* dosyasını başlangıç paketinden açın. Teknik profilleri **ClaimsProvider** öğesine ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -135,13 +135,13 @@ Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekl
       <DisplayName>Application Insights</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <!-- The ApplicationInsights instrumentation key which will be used for logging the events -->
+        <!-- The ApplicationInsights instrumentation key, which you use for logging the events -->
         <Item Key="InstrumentationKey">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</Item>
         <Item Key="DeveloperMode">false</Item>
         <Item Key="DisableTelemetry ">false</Item>
       </Metadata>
       <InputClaims>
-        <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
+        <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is the property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="EventTimestamp" PartnerClaimType="{property:EventTimestamp}" DefaultValue="{Context:DateTimeInUtc}" />
         <InputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="{property:TenantId}" DefaultValue="{Policy:TrustFrameworkTenantId}" />
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
@@ -183,75 +183,76 @@ Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekl
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Teknik profilleri düzenleme adımları olarak ekleme
 
-`AppInsights-SignInRequest`Bir oturum açma/kaydolma isteğinin alındığını izlemek için düzenleme adımı 2 olarak çağırın:
-
-```xml
-<!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="2" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
-
- `SendClaims` Düzenleme adımından hemen önce, çağıran yeni bir adım ekleyin `AppInsights-UserSignup` . Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
-
-```xml
-<!-- Handles the user clicking the sign up link in the local account sign in page -->
-<OrchestrationStep Order="8" Type="ClaimsExchange">
-  <Preconditions>
-    <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
-      <Value>newUser</Value>
-      <Action>SkipThisOrchestrationStep</Action>
-    </Precondition>
-    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-      <Value>newUser</Value>
-      <Value>false</Value>
-      <Action>SkipThisOrchestrationStep</Action>
-    </Precondition>
-  </Preconditions>
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackUserSignUp" TechnicalProfileReferenceId="AppInsights-UserSignup" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
-
-`SendClaims`Düzenleme adımından hemen sonra öğesini çağırın `AppInsights-SignInComplete` . Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
-
-```xml
-<!-- Track that we have successfully sent a token -->
-<OrchestrationStep Order="10" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AppInsights-SignInComplete" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
+Teknik profillere başvuran yeni düzenleme adımları ekleyin.
 
 > [!IMPORTANT]
 > Yeni düzenleme adımlarını ekledikten sonra, 1 ile N arasında bir tamsayı atlamadan adımları ardışık olarak yeniden numaralandırın.
 
+1. `AppInsights-SignInRequest`İkinci düzenleme adımı olarak çağırın. Bu adım bir kaydolma veya oturum açma isteğinin alındığını izler.
+
+   ```xml
+   <!-- Track that we have received a sign in request -->
+   <OrchestrationStep Order="2" Type="ClaimsExchange">
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
+
+1. `SendClaims`Düzenleme adımından önce, çağıran yeni bir adım ekleyin `AppInsights-UserSignup` . Kullanıcı kaydolma veya oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
+
+   ```xml
+   <!-- Handles the user selecting the sign-up link in the local account sign-in page -->
+   <OrchestrationStep Order="8" Type="ClaimsExchange">
+     <Preconditions>
+       <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+         <Value>newUser</Value>
+         <Action>SkipThisOrchestrationStep</Action>
+       </Precondition>
+       <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+         <Value>newUser</Value>
+         <Value>false</Value>
+         <Action>SkipThisOrchestrationStep</Action>
+       </Precondition>
+     </Preconditions>
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackUserSignUp" TechnicalProfileReferenceId="AppInsights-UserSignup" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
+
+1. `SendClaims`Düzenleme adımından sonra çağrısı yapın `AppInsights-SignInComplete` . Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
+
+   ```xml
+   <!-- Track that we have successfully sent a token -->
+   <OrchestrationStep Order="10" Type="ClaimsExchange">
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AppInsights-SignInComplete" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Dosyanızı karşıya yükleyin, ilkeyi çalıştırın ve olayları görüntüleyin
 
-*TrustFrameworkExtensions.xml* dosyasını kaydedin ve karşıya yükleyin. Ardından, bağlı olan taraf ilkesini uygulamanızdan çağırın veya Azure portal **Şimdi Çalıştır** ' ı kullanın. Bir dakika bekleyin ve olaylarınız Application Insights kullanılabilir.
+*TrustFrameworkExtensions.xml* dosyasını kaydedin ve karşıya yükleyin. Ardından, bağlı olan taraf ilkesini uygulamanızdan çağırın veya Azure portal **Şimdi Çalıştır** ' ı kullanın. Application Insights ' de olaylarınızın kullanılabilir olmasını bekleyin.
 
 1. Azure Active Directory kiracınızda **Application Insights** kaynağını açın.
-2. **Kullanım**' i seçin ve ardından **Olaylar**' ı seçin.
-3. **Son saate** **ve** **3 dakikaya** **kadar ayarlayın.**  Sonuçları görüntülemek için **Yenile** ' yi seçmeniz gerekebilir.
+1. **Kullanım** öğesini seçin ve ardından **Olaylar**' ı seçin.
+1. **Son saate** **ve** **3 dakikaya** **kadar ayarlayın.** Sonuçları görmek için pencereyi yenilemeniz gerekebilir.
 
-![Application Insights USAGE-Events Blağı](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Application Insights olay istatistiklerini gösteren ekran görüntüsü.](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="collect-more-data"></a>Daha fazla veri toplayın
 
-İşletmenizin ihtiyaçlarını karşılamak için daha fazla talep kaydetmek isteyebilirsiniz. Talep eklemek için, önce [bir talep tanımlayın](#define-claims), sonra talep giriş talep koleksiyonuna ekleyin. *Appınsights-ortak* teknik profiline eklediğiniz talepler tüm olaylarda görünür. Belirli bir teknik profile eklediğiniz talepler yalnızca o olayda görünür. Giriş talep öğesi aşağıdaki öznitelikleri içerir:
+İşletmenizin ihtiyaçlarını karşılamak için daha fazla talep kaydetmek isteyebilirsiniz. Talep eklemek için, önce [bir talep tanımlayın](#define-claims), sonra talep giriş talep koleksiyonuna ekleyin. **Appınsights-ortak** teknik profiline eklediğiniz talepler tüm olaylarda görüntülenir. Belirli bir teknik profile eklediğiniz talepler yalnızca o olayda görüntülenir. Giriş talep öğesi aşağıdaki öznitelikleri içerir:
 
-- **ClaimTypeReferenceId** -bir talep türüne başvurudur. 
-- **Partnerclaimtype** -Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}` burada, `NAME` olaya bir özellik eklenir.
-- **DefaultValue** -olay adı gibi, kaydedilecek önceden tanımlanmış bir değer. Kimlik sağlayıcısı adı gibi Kullanıcı yolculuğunda kullanılan bir talep. Talep boşsa, varsayılan değer kullanılacaktır. Örneğin, `identityProvider` talep Facebook gibi Federasyon teknik profilleri tarafından ayarlanır. Talep boşsa, kullanıcının bir yerel hesapla oturum açmasını gösterir. Bu nedenle, varsayılan değer *Yerel* olarak ayarlanır. Ayrıca, uygulama KIMLIĞI veya Kullanıcı IP adresi gibi bağlamsal bir değere sahip bir [talep çözümleyicilerine](claim-resolver-overview.md) de kaydedebilirsiniz.
+- **ClaimTypeReferenceId** , bir talep türüne başvurudur.
+- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. ' Nin sözdizimini kullanın; `{property:NAME}` burada, `NAME` olaya eklenen bir özelliktir.
+- **DefaultValue** , bir olay adı gibi, kaydedilecek önceden tanımlanmış bir değerdir. Kullanıcı yolculuğunda kullanılan bir talep boşsa, varsayılan değer kullanılır. Örneğin, `identityProvider` talep Facebook gibi Federasyon teknik profilleri tarafından ayarlanır. Talep boşsa, kullanıcının yerel hesapla oturum açmadığını gösterir. Bu nedenle, varsayılan değer **Yerel** olarak ayarlanır. Ayrıca, uygulama KIMLIĞI veya Kullanıcı IP adresi gibi bağlamsal bir değere sahip bir [talep çözümleyici](claim-resolver-overview.md) de kaydedebilirsiniz.
 
-### <a name="manipulating-claims"></a>Talepleri düzenleme
+### <a name="manipulate-claims"></a>Talepleri işleme
 
-Giriş taleplerini değiştirmek veya Application Insights göndermeden önce yeni bir tane oluşturmak için [giriş talep dönüşümlerini](custom-policy-trust-frameworks.md#manipulating-your-claims) kullanabilirsiniz. Aşağıdaki örnekte, teknik profil *Checkısadmin* giriş talepleri dönüşümünü içerir. 
+Giriş taleplerini değiştirmek veya Application Insights göndermeden önce yenilerini oluşturmak için [giriş talep dönüşümlerini](custom-policy-trust-frameworks.md#manipulating-your-claims) kullanabilirsiniz. Aşağıdaki örnekte, teknik profil, `CheckIsAdmin` giriş talep dönüşümünü içerir.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -268,7 +269,7 @@ Giriş taleplerini değiştirmek veya Application Insights göndermeden önce ye
 
 ### <a name="add-events"></a>Olay Ekle
 
-Bir olay eklemek için *Appınsights-ortak* teknik profilini içeren yeni bir teknik profil oluşturun. Ardından [Kullanıcı yolculuğuna](custom-policy-trust-frameworks.md#orchestration-steps)düzenleme adımı olarak teknik profilini ekleyin. İstediğiniz zaman olayı tetiklemek için [önkoşulu](userjourneys.md#preconditions) kullanın. Örneğin, yalnızca kullanıcılar MFA aracılığıyla çalıştırıldığında olayı rapor edin.
+Bir olay eklemek için teknik profili içeren yeni bir teknik profil oluşturun `AppInsights-Common` . Ardından yeni teknik profili, [Kullanıcı yolculuğuna](custom-policy-trust-frameworks.md#orchestration-steps)düzenleme adımı olarak ekleyin. Hazırlanıyor olayını tetiklemek için [Önkoşul](userjourneys.md#preconditions) öğesini kullanın. Örneğin, yalnızca kullanıcılar çok faktörlü kimlik doğrulaması aracılığıyla çalıştırıldığında olayı rapor edin.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">
@@ -279,7 +280,8 @@ Bir olay eklemek için *Appınsights-ortak* teknik profilini içeren yeni bir te
 </TechnicalProfile>
 ```
 
-Artık teknik bir profiliniz olduğuna göre, olayı Kullanıcı yolculuğuna ekleyin. Ardından, 1 ile N arasında bir tamsayı atlamadan adımları ardışık olarak yeniden numaralandırın.
+>[!Important]
+>Kullanıcı yolculuğuna bir olay eklediğinizde, düzenleme adımlarını sırayla yeniden numaralandırabilirsiniz unutmayın.
 
 ```xml
 <OrchestrationStep Order="8" Type="ClaimsExchange">
@@ -296,9 +298,9 @@ Artık teknik bir profiliniz olduğuna göre, olayı Kullanıcı yolculuğuna ek
 
 ## <a name="enable-developer-mode"></a>Geliştirici modunu etkinleştir
 
-Olayları tanımlamak için Application Insights kullanırken, geliştirici modunun etkin olup olmadığını belirtebilirsiniz. Geliştirici modu olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır. `false` varsayılan değerdir. Üretim ortamlarında Geliştirici modunu etkinleştirmeyin.
+Olayları tanımlamak için Application Insights kullandığınızda, geliştirici modunun etkin olup olmadığını belirtebilirsiniz. Geliştirici modu olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır. `false` varsayılan değerdir. Üretim ortamlarında Geliştirici modunu etkinleştirmeyin.
 
-Geliştirici modunu etkinleştirmek için *Appınsights-ortak* teknik profilinde `DeveloperMode` meta verileri şu şekilde değiştirin `true` : 
+Geliştirici modunu etkinleştirmek için `DeveloperMode` meta verileri `true` `AppInsights-Common` Teknik profilde değiştirin:
 
 ```xml
 <TechnicalProfile Id="AppInsights-Common">
@@ -311,7 +313,7 @@ Geliştirici modunu etkinleştirmek için *Appınsights-ortak* teknik profilinde
 
 ## <a name="disable-telemetry"></a>Telemetrisi devre dışı bırak
 
-Uygulama Insight günlüklerini devre dışı bırakmak için *Appınsights-ortak* teknik profilinde `DisableTelemetry` meta verileri şu şekilde değiştirin `true` : 
+Application Insights günlüklerini devre dışı bırakmak için `DisableTelemetry` meta verileri `true` `AppInsights-Common` Teknik profilde değiştirin:
 
 ```xml
 <TechnicalProfile Id="AppInsights-Common">
@@ -324,6 +326,6 @@ Uygulama Insight günlüklerini devre dışı bırakmak için *Appınsights-orta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Application Insights kullanarak özel KPI panoları oluşturmayı](../azure-monitor/learn/tutorial-app-dashboards.md)öğrenin. 
+[Azure Application Insights kullanarak özel KPI panoları oluşturmayı](../azure-monitor/learn/tutorial-app-dashboards.md)öğrenin.
 
 ::: zone-end

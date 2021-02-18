@@ -3,18 +3,18 @@ title: Azure Maliyet Yönetimi verilerini anlama
 description: Bu makale Azure Maliyet Yönetimi verilerini daha iyi anlamanıza ve işlenme, toplanma, gösterilme ve kapatılma sıklığı hakkında bilgi edinmenize yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
-ms.translationtype: HT
+ms.openlocfilehash: ad099fc7dfcee168186ef5229785933f4b1c5a90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964159"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650890"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -31,6 +31,7 @@ Aşağıdaki bilgiler, Azure Maliyet Yönetimi'nde desteklenen güncel [Microsof
 | **Kategori**  | **Teklif adı** | **Kota kimliği** | **Teklif numarası** | **Veri kullanım başlangıcı** |
 | --- | --- | --- | --- | --- |
 | **Azure Devlet Kurumları** | Azure Kamu Kurumsal                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Mayıs 2014<sup>1</sup> |
+| **Azure Devlet Kurumları** | Azure Kamu Kullandıkça Öde | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2 Ekim 2018<sup>2</sup> |
 | **Kurumsal Anlaşma (EA)** | Kurumsal Geliştirme ve Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Mayıs 2014<sup>1</sup> |
 | **Kurumsal Anlaşma (EA)** | Microsoft Azure Kurumsal | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Mayıs 2014<sup>1</sup> |
 | **Microsoft Müşteri Sözleşmesi** | Microsoft Azure Planı | EnterpriseAgreement_2014-09-01 | Yok | Mart 2019<sup>3</sup> |
@@ -51,7 +52,7 @@ Aşağıdaki bilgiler, Azure Maliyet Yönetimi'nde desteklenen güncel [Microsof
 
 _<sup>**1**</sup> Mayıs 2014 öncesi veriler için [Azure Enterprise Portal](https://ea.azure.com)'ı ziyaret edin._
 
-_<sup>**2**</sup> 2 Ekim 2018 öncesi veriler için [Azure Hesap Merkezi](https://account.azure.com/subscriptions)'ni ziyaret edin._
+_<sup>**2 ekim**</sup> 2018 tarihinden önceki veriler için, genel hesapların [Azure Hesap Merkezi](https://account.azure.com/subscriptions) ve Azure Kamu hesapları için [Azure Hesap Merkezi gov](https://account.windowsazure.us/subscriptions) 'yi ziyaret edin._
 
 _<sup>**3**</sup> Microsoft Müşteri Sözleşmeleri Mart 2019'da başlamıştır ve önceki dönemlere ait veri mevcut değildir._
 
@@ -62,7 +63,6 @@ Aşağıdaki teklifler henüz desteklenmiyor:
 | Kategori  | **Teklif adı** | **Kota kimliği** | **Teklif numarası** |
 | --- | --- | --- | --- |
 | **Azure Almanya** | Azure Almanya Kullandıkça Öde | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Devlet Kurumları** | Azure Kamu Kullandıkça Öde | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Bulut Çözümü Sağlayıcısı (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Bulut Çözümü Sağlayıcısı (CSP)** | Azure Kamu CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Bulut Çözümü Sağlayıcısı (CSP)** | Microsoft Bulut Almanya için CSP'de Azure Almanya   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -161,7 +161,7 @@ Maliyet ve kullanım verileri Maliyet Yönetimi ve Faturalama bölümünde yer a
 
 ### <a name="rerated-data"></a>Yeniden ücretlendirilen veriler
 
-Verileri almak için Maliyet Yönetimi API'lerini, Power BI'ı veya Azure portalı kullandığınızda fatura kapatılana kadar geçerli faturalama dönemine ait ücretler yeniden fiyatlandırılıp değişebilir.
+Veri almak için maliyet yönetimi API 'Lerini, Power BI veya Azure portal kullanıp kullanmayacağınızı, geçerli fatura döneminin ücretlendirmelerinin yeniden yönlendirilmesine beklemeniz gerekir. Ücretler, fatura kapatılana kadar değişebilir.
 
 ## <a name="cost-rounding"></a>Maliyet yuvarlama
 
@@ -175,7 +175,7 @@ Maliyet Yönetimi’nde gösterilen ücretler yuvarlanır. Sorgu API’si taraf�
 
 ## <a name="historical-data-might-not-match-invoice"></a>Geçmişe dönük veriler faturayla eşleşmeyebilir
 
-Kredi tabanlı ve önceden öde teklifleri için geçmişe dönük veriler faturanızla eşleşmeyebilir. Azure kullandıkça öde, MSDN ve Visual Studio teklifleri faturalarına Azure kredisi ve avans ödeme yansıtılabilir. Ancak Maliyet Yönetimi'nde gösterilen geçmişe dönük veriler yalnızca tahmini tüketim ücretlerinizi temel alır. Maliyet Yönetimi'ndeki geçmişe dönük verilerde ödemeler ve krediler bulunmaz. Bu nedenle aşağıdaki teklifler için gösterilen geçmişe dönük veriler, faturanızla tam olarak eşleşmeyebilir.
+Kredi tabanlı ve önceden öde teklifleri için geçmişe dönük veriler faturanızla eşleşmeyebilir. Azure kullandıkça öde, MSDN ve Visual Studio teklifleri faturalarına Azure kredisi ve avans ödeme yansıtılabilir. Maliyet yönetimi 'nde gösterilen geçmiş verileri, yalnızca tahmini tüketim ücretlerine göre belirlenir. Maliyet Yönetimi'ndeki geçmişe dönük verilerde ödemeler ve krediler bulunmaz. Aşağıdaki teklifler için gösterilen geçmiş verileri, faturanızdan tam olarak eşleşmeyebilir.
 
 - Öğrenciler için Azure (MS-AZR-0170P)
 - Open ile Azure (MS-AZR-0111P)

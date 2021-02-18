@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092137"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650737"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -37,7 +37,7 @@ Metin Analizi API'si kullanmadan önce, uygulamalarınız için anahtar ve uç n
 
 ## <a name="change-your-pricing-tier"></a>Fiyatlandırma katmanınızı değiştirin 
 
-S0 ile S4 fiyatlandırma katmanını kullanarak mevcut bir Metin Analizi kaynağınız varsa, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)kullanmak için onu güncelleştirebilirsiniz:
+S0 ile S4 fiyatlandırma katmanını kullanarak mevcut bir Metin Analizi kaynağınız varsa, standart [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)kullanmak için onu güncelleştirmeniz gerekir. S0 aracılığıyla S4 fiyatlandırma katmanları kullanımdan kaldırılacak. Kaynağınızın fiyatlandırmasını güncelleştirmek için:
 
 1. [Azure portal](https://portal.azure.com/)metin analizi kaynağına gidin.
 2. Sol gezinti menüsünde **fiyatlandırma katmanı** ' nı seçin. **Kaynak yönetiminin** altında olacaktır. 

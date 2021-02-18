@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596631"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -87,7 +87,7 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
    - **Özellikler**: sanal AĞıN kaynak kimliği ve bulunduğu Azure aboneliği dahil olmak üzere sanal ağla ilgili ayarları görüntüler.
    - **Diyagram**: diyagram, sanal ağa bağlı tüm cihazların görsel bir gösterimini sağlar. Diyagramda cihazlarla ilgili bazı önemli bilgiler bulunur. Bu görünümdeki bir cihazı yönetmek için diyagramda aygıtı seçin.
    - **Ortak Azure ayarları**: Genel Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilgilere bakın:
-     - [Etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)
+     - [Etkinlik günlüğü](../azure-monitor/essentials/platform-logs-overview.md)
      - [Erişim denetimi (IAM)](../role-based-access-control/overview.md)
      - [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

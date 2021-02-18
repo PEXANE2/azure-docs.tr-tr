@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 07/15/2020
+ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 46e5400627e4d2896265ed95410c8afcb918043b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105474"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651957"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -28,15 +28,15 @@ Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri lis
 | Ad alanı başına [bölümlenmiş konuların veya kuyrukların](../articles/service-bus-messaging/service-bus-partitioning.md) sayısı |Ad Alanı |Ad alanındaki yeni bir bölümlenmiş konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, **QuotaExceededException** özel durumu çağıran kod tarafından alınır. |Temel ve Standart katmanlar: 100.<br/><br/>Bölümlenmiş varlıklar [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) katmanda desteklenmez.<br/><br />Her bölümlenmiş kuyruk veya konu, ad alanı başına 1.000 varlık kotasına doğru sayılır. |
 | Herhangi bir mesajlaşma varlığı yolunun en büyük boyutu: kuyruk veya konu |Varlık |- |260 karakter. |
 | Herhangi bir mesajlaşma varlığı adının en büyük boyutu: ad alanı, abonelik veya abonelik kuralı |Varlık |- |50 karakter. |
-| [ILETI kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.messageid) en büyük boyutu | Varlık |- | 128 |
-| İleti [oturumu kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.sessionid) en büyük boyutu | Varlık |- | 128 |
+| İleti KIMLIĞININ en büyük boyutu | Varlık |- | 128 |
+| İleti oturumu KIMLIĞININ en büyük boyutu | Varlık |- | 128 |
 | Bir kuyruk, konu veya abonelik varlığı için ileti boyutu |Varlık |Bu kotaları aşan gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |En büyük ileti boyutu: [Standart katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)IÇIN 256 KB, [Premium katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)için 1 MB. <br /><br />Sistem yükü nedeniyle, bu sınır bu değerlerden küçüktür.<br /><br />En büyük üst bilgi boyutu: 64 KB.<br /><br />Özellik paketinde en fazla üstbilgi özelliği sayısı: **byte/int. MaxValue**.<br /><br />Özellik paketinde özelliğin en büyük boyutu: Açık sınır yok. Üst bilgi boyutuyla sınırlıdır. |
-| Bir kuyruk, konu veya abonelik varlığı için ileti özelliği boyutu |Varlık | Özel durum `SerializationException` oluşturulur. |Her özellik için en büyük ileti özelliği boyutu 32.000 ' dir. Tüm özelliklerin birikimli boyutu 64.000 ' i aşamaz. Bu sınır, hem Kullanıcı özelliklerine hem de [sıra numarası](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [ETIKET](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)ve [ileti kimliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)gibi sistem özelliklerine sahip olan [aracılı ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)üstbilgisinin tamamına uygulanır. |
+| Bir kuyruk, konu veya abonelik varlığı için ileti özelliği boyutu |Varlık | Özel durum `SerializationException` oluşturulur. |Her özellik için en büyük ileti özelliği boyutu 32.000 ' dir. Tüm özelliklerin birikimli boyutu 64.000 ' i aşamaz. Bu sınır, hem Kullanıcı özelliklerine hem de sıra numarası, etiket ve ileti KIMLIĞI gibi sistem özelliklerine sahip olan aracılı ileti üstbilgisinin tamamına uygulanır. |
 | Konu başına abonelik sayısı |Varlık |Konu için ek abonelikler oluşturmaya yönelik sonraki istekler reddedilir. Sonuç olarak, Portal üzerinden yapılandırıldıysa bir hata iletisi gösterilir. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Standart katman ve Premium katman için 2.000 konu. |
 | Konu başına SQL filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |2.000 |
 | Konu başına bağıntı filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |100.000 |
 | SQL filtrelerinin veya eylemlerinin boyutu |Ad Alanı |Ek filtrelerin oluşturulmasına yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |Maksimum filtre koşulu dizesi uzunluğu: 1.024 (1 K).<br /><br />Kural eylemi dizesinin uzunluk üst sınırı: 1.024 (1 K).<br /><br />Kural eylemi başına en fazla deyim sayısı: 32. |
-| Ad alanı, kuyruk veya konu başına [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kuralı sayısı |Varlık, ad alanı |Ek kuralların oluşturulmasına yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |Varlık türü başına en fazla kural sayısı: 12. <br /><br /> Bir Service Bus ad alanı üzerinde yapılandırılan kurallar tüm türler için geçerlidir: kuyruklar, konular. |
+| Ad alanı, kuyruk veya konu başına paylaşılan erişim yetkilendirme kuralı sayısı |Varlık, ad alanı |Ek kuralların oluşturulmasına yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |Varlık türü başına en fazla kural sayısı: 12. <br /><br /> Bir Service Bus ad alanı üzerinde yapılandırılan kurallar tüm türler için geçerlidir: kuyruklar, konular. |
 | İşlem başına ileti sayısı | İşlem | Diğer gelen iletiler reddedilir ve "tek bir işlemde 100 'den fazla ileti gönderilemiyor" belirten bir özel durum, çağıran kod tarafından alınır. | 100 <br /><br /> Hem **Send ()** hem de **sendadsync ()** işlemleri için. |
 | Sanal ağ ve IP filtresi kuralları sayısı | Ad Alanı | &nbsp; | 128 | 
 

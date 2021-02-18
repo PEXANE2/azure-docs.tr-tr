@@ -4,13 +4,13 @@ ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: dc664feac6c0ab747f3bccb3fc18f15a3aa882c3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b9bf6c1fdc6a4e8a2a74ee0fd22a847a60729184
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98947959"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651265"
 ---
-* [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](../articles/active-directory-b2c/custom-policy-get-started.md)adımlarını izleyin.
-* Henüz yapmadıysanız, [bir Web uygulamasını kaydedin](../articles/active-directory-b2c/tutorial-register-applications.md)ve [kimlik belirteci örtük izni](../articles/active-directory-b2c/tutorial-register-applications.md#enable-id-token-implicit-grant)' nı etkinleştirin.
+* [Active Directory B2C özel ilkeleri kullanmaya başlama](../articles/active-directory-b2c/custom-policy-get-started.md)bölümündeki adımları uygulayın.
+* Henüz yapmadıysanız, [bir Web uygulaması kaydedin](../articles/active-directory-b2c/tutorial-register-applications.md) ve [kimlik belirteci örtülü izni etkinleştirin](../articles/active-directory-b2c/tutorial-register-applications.md#enable-id-token-implicit-grant).
 

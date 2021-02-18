@@ -2,15 +2,14 @@
 title: Azure Otomasyonu özelliği dağıtım sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu özellikleri dağıtıldığında ortaya çıkan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
-ms.subservice: ''
-ms.date: 06/30/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: d7803976ad76f0b4c9da5c9c3a78932adbcee106
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581023"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651128"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtımı sorunlarını giderme
 

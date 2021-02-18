@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028769"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650958"
 ---
 # <a name="voice-and-video-concepts"></a>Ses ve görüntü kavramları
 
@@ -59,5 +59,5 @@ Odalar, Web sitenize veya yerel uygulamanıza ses, video, ekran paylaşımı, PS
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin
-- [PSTN çözümünüzü planlayın](../telephony-sms/plan-solution.md)
+- [Telefon numarası türleri](../telephony-sms/plan-solution.md)
 - [Çağıran istemci kitaplığı özellikleri](../voice-video-calling/calling-sdk-features.md) hakkında bilgi edinin
