@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581793"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -75,7 +75,7 @@ Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme t
 
 - VM SKU 'SU önerisi, değerlendirme özelliklerine bağlıdır.
 - Bu, sunucu değerlendirmesi: *performans tabanlı* veya *Şirket içi olarak* gerçekleştirdiğiniz değerlendirme türünden etkilenir.
-- Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca etkili kullanımı saptarken de bir konfor katsayısı ekler.
+- Sunucu Değerlendirmesi, performans tabanlı değerlendirmelerde şirket içi sanal makineleriniz için doğru hedef VM SKU'sunu saptamak üzere şirket içi VM'lerin kullanım verilerini (CPU, bellek, disk ve ağ kullanımı) dikkate alır. Ayrıca etkili kullanımı saptarken de bir konfor katsayısı ekler.
 - Şirket içi boyutlandırma için performans verileri göz önünde bulundurulmaz ve hedef SKU, şirket içi ayırmaya göre önerilir.
 
 Bunun önerileri nasıl etkileyebileceğini göstermek için bir örnek alalım:
@@ -155,17 +155,17 @@ Aracı tabanlı bağımlılık analizi, Azure Kamu 'da desteklenmez. Lütfen ara
 
 Windows VM 'Leri için:
 1. Denetim Masası 'nda MMA 'yı başlatın.
-2. **Microsoft Monitoring Agent properties**  >  **Azure Log Analytics (OMS)** Microsoft Monitoring Agent özelliklerinde, çalışma alanının **durumunun** yeşil olduğundan emin olun.
+2.   >  **Azure Log Analytics (OMS)** Microsoft Monitoring Agent özelliklerinde, çalışma alanının **durumunun** yeşil olduğundan emin olun.
 3. Durum yeşil değilse, çalışma alanını kaldırmayı ve onu yeniden eklemeyi deneyin.
 
     ![MMA durumu](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun. Daha fazla sorun giderme kılavuzuna [bakın.](../azure-monitor/insights/service-map.md#post-installation-issues)
+Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun. Daha fazla sorun giderme kılavuzuna [bakın.](../azure-monitor/vm/service-map.md#post-installation-issues)
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)ve [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) işletim sistemlerini gözden geçirin.
-- **Bağımlılık Aracısı**: desteklenen [Windows ve Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
+- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)ve [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) işletim sistemlerini gözden geçirin.
+- **Bağımlılık Aracısı**: desteklenen [Windows ve Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
 
 ## <a name="visualize-dependencies-for--hour"></a>> saat bağımlılıklarını görselleştirin
 
@@ -198,7 +198,7 @@ Azure Geçişi şu anda OMS çalışma alanı oluşturulmasını Doğu ABD, Gün
 
 Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse,  **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.

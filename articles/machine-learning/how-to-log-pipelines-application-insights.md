@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592532"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 
@@ -164,6 +164,6 @@ Aşağıdaki bazı sorgular ' customDimensions. Level ' kullanır. Bu önem düz
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Application Insights Örneğinizde günlüklerinizi aldıktan sonra, [Azure izleyici uyarılarını](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) sorgu sonuçlarına göre ayarlamak için kullanılabilirler.
+Application Insights Örneğinizde günlüklerinizi aldıktan sonra, [Azure izleyici uyarılarını](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on) sorgu sonuçlarına göre ayarlamak için kullanılabilirler.
 
-Ayrıca, ek Öngörüler için sorgulardan sonuçları bir [Azure panosuna](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) ekleyebilirsiniz.
+Ayrıca, ek Öngörüler için sorgulardan sonuçları bir [Azure panosuna](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query) ekleyebilirsiniz.

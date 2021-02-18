@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581085"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -44,7 +44,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü** kullanılarak **r
     * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
-    * [Sanal ağ](#virtual-network)
+    * [Sanal Ağ](#virtual-network)
     * [Güvenlik duvarı](#firewall)
     * [Özellikler](#properties)
     * [Kilitler](#locks)
@@ -96,7 +96,7 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
-* [Sanal ağ](#virtual-network)
+* [Sanal Ağ](#virtual-network)
 * [Güvenlik duvarı](#firewall)
 * [Özellikler](#properties)
 * [Kilitler](#locks)
@@ -341,10 +341,10 @@ Redsıs ölçümleri için Azure önbelleği temelinde uyarıları yapılandırm
 
 ### <a name="diagnostics"></a>Tanılama
 
-Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca depolanır](../azure-monitor/platform/data-platform-metrics.md) ve sonra silinir. Önbellek ölçümlerini 30 günden daha uzun süreyle kalıcı hale getirmek için, önbellek tanılamayı depolamak için kullanılan [Depolama hesabını yapılandırmak](cache-how-to-monitor.md#export-cache-metrics) üzere **Tanılamalar** ' e tıklayın.
+Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca depolanır](../azure-monitor/essentials/data-platform-metrics.md) ve sonra silinir. Önbellek ölçümlerini 30 günden daha uzun süreyle kalıcı hale getirmek için, önbellek tanılamayı depolamak için kullanılan [Depolama hesabını yapılandırmak](cache-how-to-monitor.md#export-cache-metrics) üzere **Tanılamalar** ' e tıklayın.
 
 >[!NOTE]
->Önbellek ölçümlerinizi depolamaya arşivleme ek olarak, [bunları bir olay hub 'ına de bağlayabilir veya Azure izleyici günlüklerine gönderebilirsiniz](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+>Önbellek ölçümlerinizi depolamaya arşivleme ek olarak, [bunları bir olay hub 'ına de bağlayabilir veya Azure izleyici günlüklerine gönderebilirsiniz](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 >
 >
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693621"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595501"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -94,7 +94,7 @@ Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını belirleme
 >[!Note]
 >Güvenlik Merkezi 'nde roller ve izin verilen eylemler hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde izinler](../../security-center/security-center-permissions.md).
 
-Güvenlik Merkezi Microsoft Monitoring Agent kullanır. Bu, Azure Izleyici hizmetinin kullandığı aracıdır. Bu aracıdan toplanan veriler, sanal makinenin coğrafi konumunu hesaba katarak Azure aboneliğinizle ilişkili mevcut bir Log Analytics [çalışma alanında](../../azure-monitor/platform/manage-access.md) veya yeni bir çalışma alanında depolanır.
+Güvenlik Merkezi Microsoft Monitoring Agent kullanır. Bu, Azure Izleyici hizmetinin kullandığı aracıdır. Bu aracıdan toplanan veriler, sanal makinenin coğrafi konumunu hesaba katarak Azure aboneliğinizle ilişkili mevcut bir Log Analytics [çalışma alanında](../../azure-monitor/logs/manage-access.md) veya yeni bir çalışma alanında depolanır.
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
@@ -108,23 +108,23 @@ Azure Izleyici aşağıdaki bileşenleri içerir.
 
 ### <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 
-[Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) , aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Abonelikleriniz için denetim düzlemi olaylarını bildirdiğinden, daha önce "denetim günlüğü" veya "Işletimsel günlük" olarak bilinirdi.
+[Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) , aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Abonelikleriniz için denetim düzlemi olaylarını bildirdiğinden, daha önce "denetim günlüğü" veya "Işletimsel günlük" olarak bilinirdi.
 
 ### <a name="azure-diagnostic-logs"></a>Azure tanılama günlükleri
 
-[Azure tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md) bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Bu günlüklerin içeriği kaynak türüne göre değişir.
+[Azure tanılama günlükleri](../../azure-monitor/essentials/platform-logs-overview.md) bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Bu günlüklerin içeriği kaynak türüne göre değişir.
 
 Windows olay sistemi günlükleri, VM 'Ler için bir tanılama günlüğü kategorisidir. Blob, tablo ve kuyruk günlükleri, depolama hesapları için tanılama günlüğü kategorileridir.
 
-Tanılama günlükleri [etkinlik günlüğünden](../../azure-monitor/platform/platform-logs-overview.md)farklı. Etkinlik günlüğü, aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.
+Tanılama günlükleri [etkinlik günlüğünden](../../azure-monitor/essentials/platform-logs-overview.md)farklı. Etkinlik günlüğü, aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.
 
 ### <a name="metrics"></a>Ölçümler
 
-Azure Izleyici, Azure 'da iş yüklerinizin performansına ve sistem durumuna ilişkin görünürlük sunan telemetri sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan [ölçümleridir](../../azure-monitor/platform/data-platform.md) (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
+Azure Izleyici, Azure 'da iş yüklerinizin performansına ve sistem durumuna ilişkin görünürlük sunan telemetri sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan [ölçümleridir](../../azure-monitor/data-platform.md) (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
 
 ### <a name="azure-diagnostics"></a>Azure Tanılama
 
-Azure Tanılama dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını mümkün. Tanılama uzantısını çeşitli kaynaklardan kullanabilirsiniz. Şu anda desteklenen [Azure bulut hizmeti rolleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), Microsoft Windows çalıştıran [Azure sanal makineleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) ve [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md).
+Azure Tanılama dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını mümkün. Tanılama uzantısını çeşitli kaynaklardan kullanabilirsiniz. Şu anda desteklenen [Azure bulut hizmeti rolleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), Microsoft Windows çalıştıran [Azure sanal makineleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) ve [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md).
 
 ## <a name="azure-network-watcher"></a>Azure Ağ İzleyicisi
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833176"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570896"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisinde izleyici oluşturma
 
@@ -186,7 +186,7 @@ Azure portal, bir bağlantı izleyicisine yönelik uyarılar oluşturmak için b
 
 - **Koşul adı**: Bu uyarı, `Test Result(preview)` ölçümde oluşturulur. Bağlantı İzleyicisi testinin sonucu başarısız olan bir sonuç olduğunda, uyarı kuralı harekete geçmeyecektir. 
 
-- **Eylem grubu adı**: e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](../azure-monitor/platform/action-groups.md)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Eylem grubu adı**: e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](../azure-monitor/alerts/action-groups.md)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Uyarı kuralı adı**: bağlantı izleyicisinin adı.
 

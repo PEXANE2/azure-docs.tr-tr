@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030374"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650579"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik sitenizi oluşturma
 
@@ -55,7 +55,7 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
-1. _Dal_ açılan listesinden **ana öğe** seçin
+1. _Dal_ açılan listesinden **Main** ' i seçin
 
 > [!NOTE]
 > Herhangi bir depo görmüyorsanız, GitHub 'da Azure statik Web Apps yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth uygulamaları > ayarlar > uygulamalar**' a gidip **Azure statik Web Apps**' yı seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.

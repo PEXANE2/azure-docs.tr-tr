@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 72b1bd4d46b0b04364b25a8460361d6a008d42a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250139"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650460"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye VuePress sitesi yayımlama
 
@@ -89,7 +89,7 @@ Komut satırı arabiriminden (CLı) bir VuePress uygulaması oluşturun:
 
 Azure statik Web Apps bağlanmak için GitHub 'da bir depoya ihtiyacınız vardır. Aşağıdaki adımlarda siteniz için nasıl bir depo oluşturacağınız gösterilmektedir.
 
-1. Boş bir GitHub deposu (BENIOKU oluşturma) [https://github.com/new](https://github.com/new) adlı **vuepress-static-App**öğesinden oluşturun.
+1. Boş bir GitHub deposu (BENIOKU oluşturma) [https://github.com/new](https://github.com/new) adlı **vuepress-static-App** öğesinden oluşturun.
 
 1. GitHub deposunu yerel depoya uzak olarak ekleyin. Aşağıdaki komutta yer tutucu yerine GitHub Kullanıcı adınızı eklediğinizden emin olun `<YOUR_USER_NAME>` .
 
@@ -100,7 +100,7 @@ Azure statik Web Apps bağlanmak için GitHub 'da bir depoya ihtiyacınız vard�
 1. Yerel depoyu GitHub 'a iletin.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web uygulamanızı dağıtın
@@ -117,17 +117,17 @@ Aşağıdaki adımlarda, yeni bir statik Web Apps uygulamasının nasıl oluştu
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
-1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+1. **Abonelik** için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
-1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_alanına **vuepress-static-App** girin ve **Tamam**' ı seçin.
+1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_ alanına **vuepress-static-App** girin ve **Tamam**' ı seçin.
 
 1. Ardından, **ad** kutusunda uygulamanız için bir ad. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
-1. _Bölge_için bir kullanılabilir bölge seçin.
+1. _Bölge_ için bir kullanılabilir bölge seçin.
 
-1. _SKU_için **ücretsiz**' i seçin.
+1. _SKU_ için **ücretsiz**' i seçin.
 
-   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
 
 1. **GitHub Ile oturum aç** düğmesine tıklayın.
 
@@ -135,11 +135,11 @@ Aşağıdaki adımlarda, yeni bir statik Web Apps uygulamasının nasıl oluştu
 
 1. _Depo_ olarak **vuepress-static-App** ' i seçin.
 
-1. _Dal_ için **ana öğe**seçin.
+1. _Dal_ için **ana** öğesini seçin.
 
-   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
 
-### <a name="build"></a>Yapı
+### <a name="build"></a>Oluşturma
 
 Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını eklersiniz. Aşağıdaki ayarlar GitHub eylemi iş akışı dosyasını yapılandırır.
 
@@ -147,11 +147,11 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. _Uygulama konumunu_ olarak ayarlayın **/** .
 
-1. _Uygulama yapıtı konumunu_ **. vuepress/Dist**olarak ayarlayın.
+1. _Uygulama yapıtı konumunu_ **. vuepress/Dist** olarak ayarlayın.
 
 Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
-   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Derleme ayarları":::
 
 ### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
@@ -163,7 +163,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Kaynak ekranında, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın. GitHub eyleminin tamamlanabilmesi için bir dakika veya iki dakika beklemeniz gerekebilir.
 
-   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Dağıtılan uygulama":::
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 

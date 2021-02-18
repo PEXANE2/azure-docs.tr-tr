@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347635"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579802"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -34,7 +34,7 @@ Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla özel bi
 - Herhangi bir genel ağ erişimi açmadan Azure Izleyici Log Analytics çalışma alanına özel olarak bağlanın.
 
     >[!NOTE]
-    >Automation hesabınız iş verilerini iletmek için bir Log Analytics çalışma alanına bağlanmışsa ve Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter, durum yapılandırması veya VM'leri çalışma saatleri dışında başlat/durdur gibi özellikleri etkinleştirdiğinizde Log Analytics çalışma alanınız için ayrı bir özel uç nokta gereklidir. Azure Izleyici için özel bağlantı hakkında daha fazla bilgi için bkz. Azure [özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](../../azure-monitor/platform/private-link-security.md).
+    >Automation hesabınız iş verilerini iletmek için bir Log Analytics çalışma alanına bağlanmışsa ve Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter, durum yapılandırması veya VM'leri çalışma saatleri dışında başlat/durdur gibi özellikleri etkinleştirdiğinizde Log Analytics çalışma alanınız için ayrı bir özel uç nokta gereklidir. Azure Izleyici için özel bağlantı hakkında daha fazla bilgi için bkz. Azure [özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](../../azure-monitor/logs/private-link-security.md).
 
 - Otomasyon verilerinize yalnızca yetkili özel ağlar aracılığıyla erişildiğinden emin olun.
 - Özel uç noktanızla bağlanan Azure Otomasyonu kaynağınızı tanımlayarak özel ağlarınızdan veri alımını önleyin.
@@ -46,8 +46,8 @@ Daha fazla bilgi için bkz.  [özel bağlantının önemli avantajları](../../p
 ## <a name="limitations"></a>Sınırlamalar
 
 - Özel bağlantının geçerli uygulamasında Otomasyon hesabı bulutu işleri, Özel uç nokta kullanılarak güvenliği sağlanmış Azure kaynaklarına erişemez. Örneğin, Azure Key Vault, Azure SQL, Azure depolama hesabı vb. Bunun geçici çözümü için bunun yerine [karma Runbook Worker](../automation-hybrid-runbook-worker.md) kullanın.
-- Windows veya Linux için [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md) en son sürümünü kullanmanız gerekir.
-- [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) özel bağlantıyı desteklemez.
+- Windows veya Linux için [Log Analytics aracısının](../../azure-monitor/agents/log-analytics-agent.md) en son sürümünü kullanmanız gerekir.
+- [Log Analytics ağ geçidi](../../azure-monitor/agents/gateway.md) özel bağlantıyı desteklemez.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -76,7 +76,7 @@ Sistem karma Runbook Worker, Windows ve Linux makinelerine Kullanıcı tarafınd
 
 Güncelleştirme yönetimi için yapılandırılmış makinelerinizin özel bağlantı kanalı üzerinden güvenli bir şekilde Otomasyon & Log Analytics çalışma alanına bağlanmasını istiyorsanız, özel bağlantıyla yapılandırılmış Otomasyon hesabına bağlı Log Analytics çalışma alanı için özel bağlantıyı etkinleştirmeniz gerekir.
 
-[Yapılandırma Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)' de açıklanan adımları izleyerek, bir Log Analytics çalışma alanının özel bağlantı kapsamları dışından nasıl erişilebilir olduğunu denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez.
+[Yapılandırma Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)' de açıklanan adımları izleyerek, bir Log Analytics çalışma alanının özel bağlantı kapsamları dışından nasıl erişilebilir olduğunu denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez.
 
 Kullanıcı & sistem karma çalışanları için özel bağlantıyı etkinleştirmek üzere **Dscandhyıbridworker** Target alt kaynağını kullanın.
 
@@ -113,8 +113,8 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Ad | *Privateendpoint* girin. |
-    | Bölge | **Yourregion**' ı seçin. |
+    | Name | *Privateendpoint* girin. |
+    | Region | **Yourregion**' ı seçin. |
     |||
 
 4. **Sonraki: kaynak**' ı seçin.

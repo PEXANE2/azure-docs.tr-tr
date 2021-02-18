@@ -1,34 +1,37 @@
 ---
-title: Azure Data Lake Storage 2. içindeki ACL 'Ler & için Azure CLı 'yi kullanma
-description: Hiyerarşik bir ad alanına sahip depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Azure CLı 'yi kullanın.
+title: Verileri yönetmek için Azure CLı kullanma (Azure Data Lake Storage 2.)
+description: Hiyerarşik bir ad alanına sahip depolama hesaplarındaki dizinleri ve dosyaları yönetmek için Azure CLı 'yi kullanın.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913615"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650363"
 ---
-# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
+# <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri ve dosyaları yönetme
 
-Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için [Azure Command-Line arabirimi 'nin (CLI)](/cli/azure/) nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında dizin ve dosya oluşturmak ve yönetmek için [Azure Command-Line arabirimi 'nin (CLI)](/cli/azure/) nasıl kullanılacağı gösterilmektedir.
+
+Dizinlerin ve dosyaların erişim denetim listelerini (ACL) alma, ayarlama ve güncelleştirme hakkında bilgi edinmek için bkz. [Azure Data Lake Storage 2. ACL 'leri yönetmek Için Azure CLI kullanma](data-lake-storage-acl-cli.md).
 
 [Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-> [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](../common/storage-account-create.md) yönergeleri izleyin.
-> * Azure CLı sürümü `2.6.0` veya üzeri.
+- Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+
+- Hiyerarşik ad alanı etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](create-data-lake-storage-account.md) yönergeleri izleyin.
+
+- Azure CLı sürümü `2.6.0` veya üzeri.
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Azure CLı 'nin doğru sürümünün yüklü olduğundan emin olun
 
@@ -39,6 +42,7 @@ Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dos
    ```azurecli
     az --version
    ```
+
    Azure CLı sürümünüz daha düşükse `2.6.0` , daha sonra yeni bir sürüm yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Hesaba Bağlan
@@ -64,7 +68,7 @@ Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dos
    `<subscription-id>`Yer tutucu değerini ABONELIĞINIZIN kimliğiyle değiştirin.
 
 > [!NOTE]
-> Bu makalede sunulan örnekte Azure Active Directory (AD) yetkilendirmesi gösterilmektedir. Yetkilendirme yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](./authorize-data-operations-cli.md).
+> Bu makalede sunulan örnekte Azure Active Directory (Azure AD) yetkilendirmesi gösterilmektedir. Yetkilendirme yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](./authorize-data-operations-cli.md).
 
 ## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
@@ -216,106 +220,9 @@ Bu örnek, adlı dosyayı siler `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-access-control-lists-acls"></a>Erişim denetim listelerini (ACL 'Ler) yönetme
-
-Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
-
-> [!NOTE]
-> Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](./data-lake-storage-access-control.md)' ne bakın.
-
-### <a name="get-an-acl"></a>ACL al
-
-Komutunu kullanarak bir **DIZININ** ACL 'sini alın `az storage fs access show` .
-
-Bu örnek, bir dizinin ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
-
-```azurecli
-az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Komutunu kullanarak bir **dosyanın** erişim izinlerini alın `az storage fs access show` . 
-
-Bu örnek, bir dosyanın ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
-
-```azurecli
-az storage fs access show -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Aşağıdaki görüntüde bir dizinin ACL 'SI alındıktan sonra çıkış gösterilmektedir.
-
-![ACL çıkışı al](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
-
-Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vardır. Sahip olan grubun yalnızca okuma ve yürütme izinleri vardır. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
-
-### <a name="set-an-acl"></a>ACL ayarla
-
-`az storage fs access set`Bir **dizinin** ACL 'sini ayarlamak için komutunu kullanın. 
-
-Bu örnek, ACL 'yi sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dizinde ayarlar ve ardından ACL 'yi konsola yazdırır.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dizinde *varsayılan* ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
-
-```azurecli
-az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-`az storage fs access set`Bir **dosyanın** ACL 'sini ayarlamak için komutunu kullanın. 
-
-Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dosyadaki ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Aşağıdaki görüntüde, bir dosyanın ACL 'sini ayarlamadıktan sonra çıkış gösterilmektedir.
-
-![ACL çıkışı al 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
-
-Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma izinlerine sahiptir. Diğer tüm kullanıcılar yazma ve yürütme izinlerine sahiptir. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
-
-### <a name="update-an-acl"></a>ACL güncelleştirme
-
-Bu izni ayarlamaya yönelik başka bir yol ise komutunu kullanmaktır `az storage fs access set` . 
-
-Bir `-permissions` ACL 'nin kısa biçimine parametresini ayarlayarak bir dizin veya DOSYANıN ACL 'sini güncelleştirin.
-
-Bu örnek, bir **DIZININ** ACL 'sini günceller.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Bu örnek, bir **DOSYANıN** ACL 'sini günceller.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Ayrıca, `--owner` `group` bir kullanıcının varlık kimliğine veya Kullanıcı asıl ADıNA (UPN) veya parametrelerini ayarlayarak bir dizin ya da dosya için sahip olan Kullanıcı ve grubu güncelleştirebilirsiniz. 
-
-Bu örnek, bir dizinin sahibini değiştirir. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Bu örnek, bir dosyanın sahibini değiştirir. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-
-```
-
-### <a name="set-an-acl-recursively"></a>ACL 'yi yinelemeli olarak ayarlama
-
-Bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğelerinde ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](recursive-access-control-lists.md).
-
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-* [Görüş bildirin](https://github.com/Azure/azure-cli-extensions/issues)
-* [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+- [Görüş bildirin](https://github.com/Azure/azure-cli-extensions/issues)
+- [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Azure Data Lake Storage 2. ACL 'Leri yönetmek için Azure CLı kullanma](data-lake-storage-acl-cli.md)

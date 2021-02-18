@@ -2,13 +2,13 @@
 title: Service Fabric yönetilen kümeler (Önizleme)
 description: Service Fabric yönetilen kümeler, dağıtım ve küme yönetimini kolaylaştıran Azure Service Fabric kümesi kaynak modelinin bir gelişmidir.
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410512"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635154"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric yönetilen kümeler (Önizleme)
 
@@ -62,17 +62,22 @@ Service Fabric yönetilen kümeler hem temel hem de standart SKU 'Larda kullanı
 | Düğüm türlerini Ekle/Kaldır | Hayır | Yes |
 | Bölge yedekliliği | Hayır | Yes |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Service Fabric yönetilen küme özelliği yol haritası
-Bu, Service Fabric yönetilen kümelerin erken önizleme sürümü olduğu için farkında olacak bazı boşluklar vardır. Bu özellikler gelecek sürümlerde kullanılabilir olacaktır. 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Service Fabric yönetilen kümeler için yenilikler
 
-* Uygulamaları doğrudan Visual Studio 'dan kümelere yayımlama
-* Yönetilen kimlikler 
-* ARM uygulama dağıtımları 
-* Kullanılabilirlik Alanları 
-* Ters proxy 
-* Otomatik ölçeklendirme 
-* NSG kuralları güncelleştiriliyor 
-* Otomatik işletim sistemi yükseltmeleri
+Service Fabric yönetilen kümeler önizlemesi için en son özellikler şunları destekler:
+
+* [ARM şablonları kullanarak uygulama dağıtma](how-to-managed-cluster-app-deployment-template.md)
+* [Otomatik işletim sistemi yükseltmeleri](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Disk şifrelemesi](how-to-enable-managed-cluster-disk-encryption.md)
+* [NSG kuralları uygulanıyor](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+
+Yaklaşan sürümlerde eklenecek özellikler şunlardır:
+
+* Visual Studio kullanarak uygulama dağıtma
+* Yönetilen kimlikler desteği
+* Kullanılabilirlik Alanları
+* Ters proxy
+* Otomatik ölçeklendirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

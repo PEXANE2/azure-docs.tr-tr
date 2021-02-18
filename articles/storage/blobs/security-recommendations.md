@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878096"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592361"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB depolama için güvenlik önerileri
 
@@ -71,7 +71,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | İsteklerin nasıl yetkilendirildiğini izleme | Azure depolama 'ya karşı yapılan her isteği nasıl yetkilendirdiğini izlemek için Azure depolama günlüğü 'nü etkinleştirin. Günlükler, bir isteğin bir OAuth 2,0 belirteci kullanılarak, paylaşılan anahtar kullanılarak veya paylaşılan erişim imzası (SAS) kullanılarak yapılıp yapılmadığını belirtir. Daha fazla bilgi için bkz. Azure [izleyici ile Azure Blob depolamayı izleme](monitor-blob-storage.md) veya [Klasik Izleme ile Azure depolama Analizi günlüğü](../common/storage-analytics-logging.md). | - |
-| Azure Izleyici 'de uyarıları ayarlama | Günlük uyarılarını, bir küme sıklığında kaynak günlüklerini değerlendirmek ve sonuçlara göre bir uyarı tetiklemek için yapılandırın. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md). | - |
+| Azure Izleyici 'de uyarıları ayarlama | Günlük uyarılarını, bir küme sıklığında kaynak günlüklerini değerlendirmek ve sonuçlara göre bir uyarı tetiklemek için yapılandırın. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük uyarıları](../../azure-monitor/alerts/alerts-unified-log.md). | - |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

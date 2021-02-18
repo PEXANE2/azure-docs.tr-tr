@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dbd2d6dc3034ff64ef6b5d4d36d836ce8462b154
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888802"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591402"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleriyle otomatik ölçeklendirmeye genel bakış
 Bir Azure sanal makine ölçek kümesi, uygulamanızı çalıştıran VM örneği sayısını otomatik olarak artırabilir veya azaltabilir. Bu otomatik ve esnek davranış, uygulamanızın performansını izlemek ve iyileştirmek için yönetim ek yükünü azaltır. Olumlu bir müşteri deneyimi için kabul edilebilir performansı tanımlayan kurallar oluşturun. Bu tanımlı eşikler karşılandığında, otomatik ölçeklendirme kuralları, ölçek ayarlarınızın kapasitesini ayarlamak için işlem alır. Ayrıca, ölçek kümesi kapasitesini sabit saatlerde otomatik olarak artırmak veya azaltmak için de olayları zamanlayabilirsiniz. Bu makale, hangi performans ölçümlerinin kullanılabilir olduğunu ve hangi eylemlerin otomatik ölçeklendirmeyi gerçekleştirebileceklerini bir genel bakış sağlar.
@@ -142,4 +142,4 @@ Bu genel bakış, ölçek kümesindeki sanal makine örneklerinin *sayısını* 
 
 VM örneklerinizi yönetme hakkında daha fazla bilgi için bkz. [Azure PowerShell ile sanal makine ölçek kümelerini yönetme](./virtual-machine-scale-sets-manage-powershell.md).
 
-Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/platform/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../azure-monitor/platform/alerts-log-webhook.md).
+Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/autoscale/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../azure-monitor/alerts/alerts-log-webhook.md).

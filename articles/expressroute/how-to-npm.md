@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986048"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571045"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma
 
@@ -54,7 +54,7 @@ Abonelikte ExpressRoute bağlantı hattına olan sanal ağlar içeren bir çalı
 1. [Azure Portal](https://portal.azure.com)ExpressRoute bağlantı hattınızı hedefleyen VNET 'Leri içeren aboneliği seçin. Ardından, ' Ağ Performansı İzleyicisi ' için **Market** 'teki hizmet listesinde arama yapın. Dönüş içinde **ağ performansı İzleyicisi** sayfasını açmak için tıklayın.
 
    >[!NOTE]
-   >Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanını kullanabilirsiniz. Mevcut bir çalışma alanını kullanmak istiyorsanız, çalışma alanının yeni sorgu diline geçirilmiş olduğundan emin olmanız gerekir. [Daha fazla bilgi...](../azure-monitor/log-query/log-query-overview.md)
+   >Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanını kullanabilirsiniz. Mevcut bir çalışma alanını kullanmak istiyorsanız, çalışma alanının yeni sorgu diline geçirilmiş olduğundan emin olmanız gerekir. [Daha fazla bilgi...](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ Yedeklilik için ExpressRoute bağlantısının her bir tarafına en az iki arac
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: proxy ayarlarını yapılandırma (isteğe bağlı)
 
-Internet 'e erişmek için bir Web Proxy kullanıyorsanız, Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için aşağıdaki adımları kullanın. Her sunucu için bu adımları gerçekleştirin. Yapılandırmanız gereken birden çok sunucu olması durumunda, bu işlemi otomatikleştirmek için bir betik kullanmak sizin için daha kolay olabilir. Bu durumda, [bir betik kullanarak Microsoft Monitoring Agent için proxy ayarlarını yapılandırmak için](../azure-monitor/platform/agent-windows.md)bölümüne bakın.
+Internet 'e erişmek için bir Web Proxy kullanıyorsanız, Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için aşağıdaki adımları kullanın. Her sunucu için bu adımları gerçekleştirin. Yapılandırmanız gereken birden çok sunucu olması durumunda, bu işlemi otomatikleştirmek için bir betik kullanmak sizin için daha kolay olabilir. Bu durumda, [bir betik kullanarak Microsoft Monitoring Agent için proxy ayarlarını yapılandırmak için](../azure-monitor/agents/agent-windows.md)bölümüne bakın.
 
 Denetim Masası 'nı kullanarak Microsoft Monitoring Agent proxy ayarlarını yapılandırmak için:
 

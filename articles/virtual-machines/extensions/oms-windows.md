@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046830"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580075"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
@@ -30,12 +30,12 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme �
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Desteklenen Windows işletim sistemleri hakkında daha fazla bilgi için bkz. [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) makalesine bakın.
+Desteklenen Windows işletim sistemleri hakkında daha fazla bilgi için bkz. [Azure izleyici aracılarına genel bakış](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) makalesine bakın.
 
 ### <a name="agent-and-vm-extension-version"></a>Aracı ve VM Uzantısı sürümü
 Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzantısı ve Log Analytics aracı paketi sürümünün bir eşlemesi verilmiştir. 
 
-| Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Sürüm Notları |
+| Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Release Notes (Sürüm Notları) |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | Ekim 2020   | <ul><li>Yeni Aracı sorun giderici</li><li>Aracının Azure hizmetlerinde sertifika değişikliklerini nasıl işleyeceği ile ilgilenen güncelleştirmeler</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | Ağustos 2020   | <ul><li>Azure Arc 'da bir sorunu çözer</li></ul> |
@@ -89,26 +89,26 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 ```
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek |
+| Name | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |
 | tür | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1,0 |
+| typeHandlerVersion | 1.0 |
 | çalışma alanı kimliği (ör.) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (ör.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 \* Çalışma alanı kimliği, Log Analytics API 'sinde ConsumerID olarak adlandırılır.
 
 > [!NOTE]
-> Ek özellikler için bkz. Azure [Windows bilgisayarlarını Azure 'A Bağlama İzleyicisi](../../azure-monitor/platform/agent-windows.md).
+> Ek özellikler için bkz. Azure [Windows bilgisayarlarını Azure 'A Bağlama İzleyicisi](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
 Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Log Analytics Aracısı uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. [Azure hızlı başlangıç galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)log ANALYTICS Agent VM uzantısını içeren bir örnek şablon bulunabilir. 
 
 >[!NOTE]
->Bu şablon, aracıyı birden çok çalışma alanına rapor verecek şekilde yapılandırmak istediğinizde birden fazla çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtilmesini desteklemez. Aracıyı birden çok çalışma alanına rapor verecek şekilde yapılandırmak için, bkz. [çalışma alanı ekleme veya kaldırma](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
+>Bu şablon, aracıyı birden çok çalışma alanına rapor verecek şekilde yapılandırmak istediğinizde birden fazla çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtilmesini desteklemez. Aracıyı birden çok çalışma alanına rapor verecek şekilde yapılandırmak için, bkz. [çalışma alanı ekleme veya kaldırma](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace).  
 
 Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md). 
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499280"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592718"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure portalı kullanarak Azure SQL Yönetilen Örneği için uyarılar oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilir
 * Azure runbook 'u çağırma
 * Dış anahtar kullanımı ile uyumlu bir sistem çağrısı yapın
 
-[Azure Portal, PowerShell veya Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) veya [Azure izleyici REST API](/rest/api/monitor/alertrules)kullanarak uyarı kuralları hakkında bilgi alabilirsiniz. 
+[Azure Portal, PowerShell veya Azure CLI](../../azure-monitor/alerts/alerts-classic-portal.md) veya [Azure izleyici REST API](/rest/api/monitor/alertrules)kullanarak uyarı kuralları hakkında bilgi alabilirsiniz. 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>Yönetilen örnek için kullanılabilir uyarı ölçümleri
 
@@ -50,7 +50,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilir
 
 Aşağıdaki yönetilen örnek ölçümleri uyarı yapılandırması için kullanılabilir:
 
-| Ölçüm | Açıklama | Ölçü birimi \ olası değerler |
+| Metric | Açıklama | Ölçü birimi \ olası değerler |
 | :--------- | --------------------- | ----------- |
 | Ortalama CPU yüzdesi | Seçilen dönemdeki CPU kullanımının ortalama yüzdesi. | 0-100 (yüzde) |
 | Okunan GÇ baytları | Seçilen dönemde GÇ baytları okundu. | Bayt |
@@ -113,7 +113,7 @@ Yeni uyarı kuralı birkaç dakika içinde etkin hale gelecek ve ayarlarınıza 
 ## <a name="verifying-alerts"></a>Uyarıları doğrulama
 
 > [!NOTE]
-> Gürültülü uyarıları anlamak için, bkz. [eylem kurallarını kullanarak gizleme of Alerts](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+> Gürültülü uyarıları anlamak için, bkz. [eylem kurallarını kullanarak gizleme of Alerts](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts).
 
 Bir uyarı kuralı ayarladıktan sonra, uyarı tetikleyicisinin ve sıklığının karşılandığını doğrulayın. Kullanılan depolama alanı üzerinde bir uyarı ayarlamak için bu sayfada gösterilen örnek için, uyarı seçeneğinizi e-posta ise, aşağıda gösterildiği gibi bir e-posta alabilirsiniz.
 
@@ -142,8 +142,8 @@ Var olan uyarıları görüntülemek, askıya almak, etkinleştirmek, değiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici uyarı sistemi hakkında bilgi edinin, bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/platform/alerts-overview.md)
-* Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../../azure-monitor/platform/alerts-metric-overview.md)
-* Uyarılarda bir Web kancası yapılandırma hakkında bilgi edinin, bkz. [Klasik bir ölçüm uyarısı ile Web kancası çağırma](../../azure-monitor/platform/alerts-webhooks.md)
+* Azure Izleyici uyarı sistemi hakkında bilgi edinin, bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/alerts/alerts-overview.md)
+* Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../../azure-monitor/alerts/alerts-metric-overview.md)
+* Uyarılarda bir Web kancası yapılandırma hakkında bilgi edinin, bkz. [Klasik bir ölçüm uyarısı ile Web kancası çağırma](../../azure-monitor/alerts/alerts-webhooks.md)
 * PowerShell kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinin, bkz. [Eylem kuralları](/powershell/module/az.monitor/add-azmetricalertrulev2)
 * API kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinmek için bkz. [Azure izleyici REST API başvurusu](/rest/api/monitor/)

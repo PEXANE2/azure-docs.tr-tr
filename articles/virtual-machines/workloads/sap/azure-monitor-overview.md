@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 411a95154c9ca36595dff4472e9ab8e1ae8a767e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693833"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571377"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP Çözümleri için Azure izleyici (Önizleme)
 
@@ -35,7 +35,7 @@ Desteklenen veritabanları:
 - SAP HANA Veritabanı
 - Microsoft SQL Server
 
-SAP Çözümleri için Azure Izleyici, daha fazla izleme özelliği sağlamak üzere Log Analytics ve [çalışma kitapları](../../../azure-monitor/platform/workbooks-overview.md) gibi mevcut [Azure izleyici](../../../azure-monitor/overview.md) yeteneklerinin gücünü kullanır. Müşteriler, SAP Çözümleri için Azure Izleyici tarafından sunulan varsayılan çalışma kitaplarını düzenleyerek özel bir [görselleştirme](../../../azure-monitor/platform/workbooks-overview.md#getting-started) oluşturabilir, Azure Log Analytics çalışma alanı kullanarak [özel sorgular](../../../azure-monitor/log-query/log-analytics-tutorial.md) yazabilir ve [özel uyarılar](../../../azure-monitor/learn/tutorial-response.md) oluşturabilir, [Esnek saklama süresinden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) yararlanır ve izleme verilerini bilet oluşturma sistemiyle birbirine bağlayabilirler.
+SAP Çözümleri için Azure Izleyici, daha fazla izleme özelliği sağlamak üzere Log Analytics ve [çalışma kitapları](../../../azure-monitor/visualize/workbooks-overview.md) gibi mevcut [Azure izleyici](../../../azure-monitor/overview.md) yeteneklerinin gücünü kullanır. Müşteriler, SAP Çözümleri için Azure Izleyici tarafından sunulan varsayılan çalışma kitaplarını düzenleyerek özel bir [görselleştirme](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) oluşturabilir, Azure Log Analytics çalışma alanı kullanarak [özel sorgular](../../../azure-monitor/logs/log-analytics-tutorial.md) yazabilir ve [özel uyarılar](../../../azure-monitor/alerts/tutorial-response.md) oluşturabilir, [Esnek saklama süresinden](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) yararlanır ve izleme verilerini bilet oluşturma sistemiyle birbirine bağlayabilirler.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP Çözümleri için Azure Izleyici hangi verileri toplar?
 
@@ -91,9 +91,9 @@ Mimarinin temel bileşenleri şunlardır:
    - Azure sanal makinesi: *TOPLAYıCı VM* olarak da bilinir. Bu bir Standard_B2ms VM 'dir. Bu sanal makinenin ana amacı, *Izleme yükünü* barındırmak için kullanılır. İzleme yükü, kaynak sistemlerden telemetri toplama ve toplanan verileri izleme çerçevesine aktarma mantığını ifade eder. Yukarıdaki diyagramda, izleme yükü SQL bağlantı noktası üzerinden SAP HANA veritabanına bağlanma mantığını içerir.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): Bu kaynak, SAP HANA veritabanı kimlik bilgilerini güvenli bir şekilde tutmak ve [sağlayıcılar](./azure-monitor-providers.md)hakkındaki bilgileri depolamak için dağıtılır.
    - Log Analytics çalışma alanı: Telemetri verilerinin bulunduğu hedef.
-      - Görselleştirme, [Azure çalışma kitaplarını](../../../azure-monitor/platform/workbooks-overview.md)kullanarak Log Analytics telemetri üzerine kurulmuştur. Müşteriler görselleştirmeyi özelleştirebilir. Müşteriler, çalışma kitaplarını veya çalışma kitapları içindeki belirli görselleştirmeleri, en düşük ayrıntı düzeyi olan 30 dakikalık bir şekilde Azure panosuna de sabitleyebilir.
+      - Görselleştirme, [Azure çalışma kitaplarını](../../../azure-monitor/visualize/workbooks-overview.md)kullanarak Log Analytics telemetri üzerine kurulmuştur. Müşteriler görselleştirmeyi özelleştirebilir. Müşteriler, çalışma kitaplarını veya çalışma kitapları içindeki belirli görselleştirmeleri, en düşük ayrıntı düzeyi olan 30 dakikalık bir şekilde Azure panosuna de sabitleyebilir.
       - Müşteriler, dağıtım sırasında bu seçeneği belirleyerek, mevcut çalışma alanını SAP Monitor kaynağı ile aynı abonelikte kullanabilir.
-      - Müşteriler, Log Analytics çalışma alanındaki ham tablolara karşı [sorgu](../../../azure-monitor/log-query/log-query-overview.md) çalıştırmak için kusto sorgu DILI (KQL) kullanabilir. *Özel günlüklere* bakın.
+      - Müşteriler, Log Analytics çalışma alanındaki ham tablolara karşı [sorgu](../../../azure-monitor/logs/log-query-overview.md) çalıştırmak için kusto sorgu DILI (KQL) kullanabilir. *Özel günlüklere* bakın.
 
 > [!Note]
 > Müşteriler, yönetilen kaynak grubunda dağıtılan VM 'nin düzeltme eki uygulama ve bakım yapmaktan sorumludur.

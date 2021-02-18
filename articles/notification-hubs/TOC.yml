@@ -24,9 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Tüm kayıtlara anında iletme bildirimleri gönderme (SDK sürüm 1.0.0-preview1)
+            - name: Tüm kayıtlara anında iletme bildirimleri gönderin (geçerli SDK)
               href: android-sdk.md
-            - name: Tüm kayıtlara anında iletme bildirimleri gönderme (SDK sürüm 0.6)
+            - name: Tüm kayıtlara anında iletme bildirimleri gönderin (eski SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Belirli cihazlara anında iletme bildirimleri gönderme
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -50,10 +50,10 @@
           items:
             - name: iOS öğreticileri için önkoşullar
               href: ios-sdk-get-started.md
-            - name: Objective-C (sürüm 3.0.0-önizleme1)
-              href: ios-sdk-300.md
-            - name: Objective-C (sürüm 2.0.4)
-              href: ios-sdk-204.md
+            - name: Amaç-C (geçerli SDK)
+              href: ios-sdk-current.md
+            - name: Amaç-C (eski SDK)
+              href: ios-sdk-legacy.md
         - name: Belirli cihazlara anında iletme bildirimleri gönderme
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Belirli kullanıcılara anında iletme bildirimleri gönderme

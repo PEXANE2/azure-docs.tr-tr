@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318003"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592208"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Hyper-V sanal makine kapasitesini Kapasite ve Performans çözümüyle planlayın (kullanım dışı)
 
@@ -39,12 +39,12 @@ Hyper-V sunucularınızın kapasitesini anlamanıza yardımcı olması için Izl
 
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Açıklama |
+| Bağlı Kaynak | Destek | Description |
 |---|---|---|
-| [Windows aracıları](../platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
-| [SCOM yönetim grubu](../platform/om-agents.md) | Evet |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
-| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, kapasite ve performans verilerini içermez.|
+| [Windows aracıları](../agents/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
+| [SCOM yönetim grubu](../agents/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, kapasite ve performans verilerini içermez.|
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Kapasite ve Performans çözüm güncelleştirildiği zaman, sürüm numarası değişir.
 
-Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../platform/om-agents.md).
+Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
 
@@ -117,7 +117,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve performans verilerine yönelik örnek günlük aramaları sunulmaktadır.
 
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Tüm konak belleği yapılandırması | &#124;, ObjectName = = "Kapasite ve Performans" ve CounterName = = "ana bilgisayar atanmış bellek MB" &#124; özetleme MB = AVG (CounterValue) InstanceName 'e göre |
 | Tüm VM belleği yapılandırması | Performans &#124;; ObjectName = = "Kapasite ve Performans" ve CounterName = = "VM atanan bellek MB" &#124;, InstanceName 'e göre MB = AVG (CounterValue) öğesini özetler |
@@ -129,5 +129,5 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı Kapasite ve Performans verileri görüntülemek için [Log Analytics 'de günlük aramalarını](../log-query/log-query-overview.md) kullanın.
+* Ayrıntılı Kapasite ve Performans verileri görüntülemek için [Log Analytics 'de günlük aramalarını](../logs/log-query-overview.md) kullanın.
 

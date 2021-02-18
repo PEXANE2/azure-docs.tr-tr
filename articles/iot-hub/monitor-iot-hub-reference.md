@@ -7,12 +7,12 @@ ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570967"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub veri başvurusunu izleme
 
@@ -24,25 +24,48 @@ Bu bölümde, Azure IoT Hub için otomatik olarak toplanan tüm platform ölçü
 
 Aşağıdaki alt bölümlerde, genel kategoriye göre IoT Hub platform ölçümleri kesilir ve ile Azure portal göründükleri görünen ada göre listelenir. Ayrıca, her bir alt bölümde görünen ölçümlerle ilgili bilgiler de sağlanır.
 
-Ayrıca, Azure Izleyici belgelerindeki [Microsoft. Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) altında ölçüm adına göre IoT Hub platform ölçümlerini listeleyen tek bir tablo bulabilirsiniz. Bu tabloda, bu makalede sunulan bazı ölçümler için [desteklenen toplamalar](#supported-aggregations) gibi bazı bilgiler sağlamadığının farkında olun.
+Ayrıca, Azure Izleyici belgelerindeki [Microsoft. Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs) altında ölçüm adına göre IoT Hub platform ölçümlerini listeleyen tek bir tablo bulabilirsiniz. Bu tabloda, bu makalede sunulan bazı ölçümler için [desteklenen toplamalar](#supported-aggregations) gibi bazı bilgiler sağlamadığının farkında olun.
 
-Diğer Azure hizmetleri tarafından desteklenen ölçümler hakkında bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
+Diğer Azure hizmetleri tarafından desteklenen ölçümler hakkında bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/essentials/metrics-supported.md).
 
 **Bu bölümdeki konular**
 
-- [Desteklenen toplamalar](#supported-aggregations)
-- [Buluttan cihaza komut ölçümleri](#cloud-to-device-command-metrics)
-- [Buluttan cihaza doğrudan Yöntemler ölçümleri](#cloud-to-device-direct-methods-metrics)
-- [Buluttan cihaza ikizi işlemleri ölçümleri](#cloud-to-device-twin-operations-metrics)
-- [Yapılandırma ölçümleri](#configurations-metrics)
-- [Günlük kota ölçümleri](#daily-quota-metrics)
-- [Cihaz ölçümleri](#device-metrics)
-- [Cihaz telemetri ölçümleri](#device-telemetry-metrics)
-- [Cihazdan buluta ikizi işlemler ölçümleri](#device-to-cloud-twin-operations-metrics)
-- [Olay Kılavuzu ölçümleri](#event-grid-metrics)
-- [İş ölçümleri](#jobs-metrics)
-- [Yönlendirme ölçümleri](#routing-metrics)
-- [İkizi sorgu ölçümleri](#twin-query-metrics)
+- [Azure IoT Hub veri başvurusunu izleme](#monitoring-azure-iot-hub-data-reference)
+  - [Ölçümler](#metrics)
+    - [Desteklenen toplamalar](#supported-aggregations)
+    - [Buluttan cihaza komut ölçümleri](#cloud-to-device-command-metrics)
+    - [Buluttan cihaza doğrudan Yöntemler ölçümleri](#cloud-to-device-direct-methods-metrics)
+    - [Buluttan cihaza ikizi işlemleri ölçümleri](#cloud-to-device-twin-operations-metrics)
+    - [Yapılandırma ölçümleri](#configurations-metrics)
+    - [Günlük kota ölçümleri](#daily-quota-metrics)
+    - [Cihaz ölçümleri](#device-metrics)
+    - [Cihaz telemetri ölçümleri](#device-telemetry-metrics)
+    - [Cihazdan buluta ikizi işlemler ölçümleri](#device-to-cloud-twin-operations-metrics)
+    - [Olay Kılavuzu ölçümleri](#event-grid-metrics)
+    - [İş ölçümleri](#jobs-metrics)
+    - [Yönlendirme ölçümleri](#routing-metrics)
+    - [İkizi sorgu ölçümleri](#twin-query-metrics)
+  - [Ölçüm boyutları](#metric-dimensions)
+  - [Kaynak günlükleri](#resource-logs)
+    - [Bağlantılar](#connections)
+    - [Cihaz telemetrisi](#device-telemetry)
+    - [Buluttan cihaza komutlar](#cloud-to-device-commands)
+    - [Cihaz kimliği işlemleri](#device-identity-operations)
+    - [Dosya karşıya yükleme işlemleri](#file-upload-operations)
+    - [Rotalar](#routes)
+    - [Cihazdan buluta ikizi işlemleri](#device-to-cloud-twin-operations)
+    - [Buluttan cihaza ikizi işlemleri](#cloud-to-device-twin-operations)
+    - [İkizi sorguları](#twin-queries)
+    - [İş işlemleri](#jobs-operations)
+    - [Doğrudan Yöntemler](#direct-methods)
+    - [Dağıtılmış Izleme (Önizleme)](#distributed-tracing-preview)
+      - [IoT Hub D2C (cihazdan buluta) günlükleri](#iot-hub-d2c-device-to-cloud-logs)
+      - [Giriş günlüklerini IoT Hub](#iot-hub-ingress-logs)
+      - [Çıkış günlüklerini IoT Hub](#iot-hub-egress-logs)
+    - [Yapılandırmalar](#configurations)
+    - [Cihaz akışları (Önizleme)](#device-streams-preview)
+  - [Azure Izleyici günlük tabloları](#azure-monitor-logs-tables)
+  - [Ayrıca bkz.](#see-also)
 
 ### <a name="supported-aggregations"></a>Desteklenen toplamalar
 
@@ -226,31 +249,50 @@ Azure IoT Hub, bazı yönlendirme ve olay Kılavuzu ölçümleriyle ilişkili a�
 |**Sonuç**| **Başarılı** veya **başarısız**.|
 |**Yönlendirme kaynağı**| Cihaz Iletileri<br>İkizi değişiklik olayları<br>Cihaz yaşam döngüsü olayları|
 
-Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 
-Bu bölümde, Azure IoT Hub için toplanan tüm kaynak günlüğü kategori türleri ve şemaları listelenmektedir. Tüm IoT Hub günlüklerin kaynak sağlayıcısı ve türü [Microsoft. Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
+Bu bölümde, Azure IoT Hub için toplanan tüm kaynak günlüğü kategori türleri ve şemaları listelenmektedir. Tüm IoT Hub günlüklerin kaynak sağlayıcısı ve türü [Microsoft. Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **Bu bölümdeki konular**
 
-- [Bağlantılar](#connections)
-- [Cihaz telemetrisi](#device-telemetry)
-- [Buluttan cihaza komutlar](#cloud-to-device-commands)
-- [Cihaz kimliği işlemleri](#device-identity-operations)
-- [Dosya karşıya yükleme işlemleri](#file-upload-operations)
-- [Rotalar](#routes)
-- [Cihazdan buluta ikizi işlemleri](#device-to-cloud-twin-operations)
-- [Buluttan cihaza ikizi işlemleri](#cloud-to-device-twin-operations)
-- [İkizi sorguları](#twin-queries)
-- [İş işlemleri](#jobs-operations)
-- [Doğrudan Yöntemler](#direct-methods)
-- [Dağıtılmış Izleme (Önizleme)](#distributed-tracing-preview)
-  - [IoT Hub D2C (cihazdan buluta) günlükleri](#iot-hub-d2c-device-to-cloud-logs)
-  - [Giriş günlüklerini IoT Hub](#iot-hub-ingress-logs)
-  - [Çıkış günlüklerini IoT Hub](#iot-hub-egress-logs)
-- [Yapılandırmalar](#configurations)
-- [Cihaz akışları (Önizleme)](#device-streams-preview)
+- [Azure IoT Hub veri başvurusunu izleme](#monitoring-azure-iot-hub-data-reference)
+  - [Ölçümler](#metrics)
+    - [Desteklenen toplamalar](#supported-aggregations)
+    - [Buluttan cihaza komut ölçümleri](#cloud-to-device-command-metrics)
+    - [Buluttan cihaza doğrudan Yöntemler ölçümleri](#cloud-to-device-direct-methods-metrics)
+    - [Buluttan cihaza ikizi işlemleri ölçümleri](#cloud-to-device-twin-operations-metrics)
+    - [Yapılandırma ölçümleri](#configurations-metrics)
+    - [Günlük kota ölçümleri](#daily-quota-metrics)
+    - [Cihaz ölçümleri](#device-metrics)
+    - [Cihaz telemetri ölçümleri](#device-telemetry-metrics)
+    - [Cihazdan buluta ikizi işlemler ölçümleri](#device-to-cloud-twin-operations-metrics)
+    - [Olay Kılavuzu ölçümleri](#event-grid-metrics)
+    - [İş ölçümleri](#jobs-metrics)
+    - [Yönlendirme ölçümleri](#routing-metrics)
+    - [İkizi sorgu ölçümleri](#twin-query-metrics)
+  - [Ölçüm boyutları](#metric-dimensions)
+  - [Kaynak günlükleri](#resource-logs)
+    - [Bağlantılar](#connections)
+    - [Cihaz telemetrisi](#device-telemetry)
+    - [Buluttan cihaza komutlar](#cloud-to-device-commands)
+    - [Cihaz kimliği işlemleri](#device-identity-operations)
+    - [Dosya karşıya yükleme işlemleri](#file-upload-operations)
+    - [Rotalar](#routes)
+    - [Cihazdan buluta ikizi işlemleri](#device-to-cloud-twin-operations)
+    - [Buluttan cihaza ikizi işlemleri](#cloud-to-device-twin-operations)
+    - [İkizi sorguları](#twin-queries)
+    - [İş işlemleri](#jobs-operations)
+    - [Doğrudan Yöntemler](#direct-methods)
+    - [Dağıtılmış Izleme (Önizleme)](#distributed-tracing-preview)
+      - [IoT Hub D2C (cihazdan buluta) günlükleri](#iot-hub-d2c-device-to-cloud-logs)
+      - [Giriş günlüklerini IoT Hub](#iot-hub-ingress-logs)
+      - [Çıkış günlüklerini IoT Hub](#iot-hub-egress-logs)
+    - [Yapılandırmalar](#configurations)
+    - [Cihaz akışları (Önizleme)](#device-streams-preview)
+  - [Azure Izleyici günlük tabloları](#azure-monitor-logs-tables)
+  - [Ayrıca bkz.](#see-also)
 
 ### <a name="connections"></a>Bağlantılar
 
@@ -690,4 +732,4 @@ Tüm Azure Izleyici günlükleri/Log Analytics tablolarının bir başvurusu iç
 ## <a name="see-also"></a>Ayrıca Bkz.
 
 * Bkz. Azure IoT Hub izleme açıklaması için bkz. [azure IoT Hub](monitor-iot-hub.md) izleme.
-* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .
+* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/essentials/monitor-azure-resource.md) .

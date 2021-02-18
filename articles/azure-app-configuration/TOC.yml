@@ -132,6 +132,8 @@
       href: howto-backup-config-store.md
     - name: Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Visual Studio 'da uygulama yapılandırmasını tümleştirme
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: Başvuru
   items:
     - name: Yapılandırma

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592281"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Izleyici 'de Azure AD denetim günlükleri şemasını yorumlama (Önizleme)
 
@@ -147,14 +147,14 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günl�
 
 ## <a name="field-and-property-descriptions"></a>Alan ve özellik açıklamaları
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 |------------|-------------|
-| saat       | Tarih ve saat (UTC). |
+| time       | Tarih ve saat (UTC). |
 | operationName | İşlemin adı. |
 | operationVersion | İstemci tarafından istenen REST API sürümü. |
 | category | Şu anda, *Denetim* desteklenen tek değerdir. |
 | Değerine | Günlüklerle ilişkili kiracı GUID 'SI. |
-| resultType | İşlemin sonucu. Sonuç, *başarılı* veya *başarısız*olabilir. |
+| resultType | İşlemin sonucu. Sonuç, *başarılı* veya *başarısız* olabilir. |
 | resultSignature |  Bu alan eşlenmeyecek ve güvenle yoksayabilirsiniz. | 
 | resultDescription | Sonucun ek açıklaması (kullanılabiliyorsa). | 
 | durationMs |  Bu alan eşlenmeyecek ve güvenle yoksayabilirsiniz. |
@@ -167,17 +167,17 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günl�
 
 <br>
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 |---------------|-------------|
-| AuditEventCategory | Denetim olayının türü. *Kullanıcı yönetimi*, *uygulama yönetimi*veya başka bir tür olabilir.|
-| Kimlik türü | Tür *uygulama* veya *Kullanıcı*olabilir. |
-| İşlem türü | Tür *ekleme*, *güncelleştirme*, *silme*olabilir. ya da *diğer*. |
+| AuditEventCategory | Denetim olayının türü. *Kullanıcı yönetimi*, *uygulama yönetimi* veya başka bir tür olabilir.|
+| Kimlik türü | Tür *uygulama* veya *Kullanıcı* olabilir. |
+| İşlem Türü | Tür *ekleme*, *güncelleştirme*, *silme* olabilir. ya da *diğer*. |
 | Hedef kaynak türü | İşlemin gerçekleştirildiği hedef kaynak türünü belirtir. Tür *uygulama*, *Kullanıcı*, *rol*, *ilke* olabilir | 
 | Hedef kaynak adı | Hedef kaynağın adı. Bir uygulama adı, rol adı, Kullanıcı asıl adı veya hizmet asıl adı olabilir. |
-| additionalTargets | Belirli işlemler için ek özellikleri listeler. Örneğin, bir güncelleştirme işlemi için, eski değerler ve yeni değerler *Targetupdatedproperties*altında listelenir. | 
+| additionalTargets | Belirli işlemler için ek özellikleri listeler. Örneğin, bir güncelleştirme işlemi için, eski değerler ve yeni değerler *Targetupdatedproperties* altında listelenir. | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure tanılama günlükleri](../../azure-monitor/essentials/platform-logs-overview.md)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

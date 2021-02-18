@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439559"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634711"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Dosya Bütünlüğünü İzleme (FIM) kullanarak ana hatları karşılaştırma
 
@@ -62,23 +62,22 @@ FIM temelleri, işletim sistemi ve destekleyici uygulama için bilinen iyi durum
 > [!NOTE]
 > Çeşitli işletim sistemi sürümleri tarafından desteklenen kayıt defteri ayarları hakkında daha fazla bilgi edinmek için [Grup İlkesi ayarları başvuru elektronik tablosuna](https://www.microsoft.com/download/confirmation.aspx?id=25250)bakın.
 
-*FIM 'yi kayıt defteri temellerini izleyecek şekilde yapılandırmak için:*
+FIM 'yi kayıt defteri temellerini izleyecek şekilde yapılandırmak için:
 
-1. **Değişiklik izleme Için Windows kayıt defteri Ekle** penceresinde, **Windows kayıt defteri anahtarı** metin kutusuna kayıt defteri anahtarını girin.
+1. **Değişiklik izleme Için Windows kayıt defteri Ekle** penceresinde, **Windows kayıt defteri anahtarı** metin kutusuna aşağıdaki kayıt defteri anahtarını girin:
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![Kayıt defterinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="Kayıt defterinde FIM 'yi etkinleştirme":::
 
 ## <a name="track-changes-to-windows-files"></a>Windows dosyalarındaki değişiklikleri izle
 
 1. **Değişiklik izleme Için Windows dosyası Ekle** penceresinde, **yolu girin** metin kutusuna izlemek istediğiniz dosyaları içeren klasörü girin. Aşağıdaki şekildeki örnekte **contoso Web uygulaması** d:\ konumunda bulunur. **ContosWebApp** klasör yapısı içindeki sürücü.  
 1. Ayar sınıfının bir adını sağlayarak, özyinelemeyi etkinleştirerek ve en üst klasörü bir joker karakter (*) sonekiyle belirterek özel bir Windows dosya girişi oluşturun.
 
-    ![Dosya üzerinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="Dosya üzerinde FIM 'yi etkinleştirme":::
 
 ## <a name="retrieve-change-data"></a>Değişiklik verilerini al
 

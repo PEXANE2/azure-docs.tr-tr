@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182878"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581212"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
 
@@ -22,7 +22,7 @@ Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş
 * Otomasyon hesaplarında işlerin ilişkilendirilmesi.
 * Runbook sonuçlarınızı, runbook iş durumunu ve diğer ilgili anahtar göstergelerini veya ölçümlerini görselleştirmek için özel görünümleri ve arama sorgularını kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
@@ -56,7 +56,7 @@ Belirli bir kaynak grubundan sonuçları döndürmek için `-ResourceGroupName` 
 
 Yukarıdaki komutların çıktısında birden fazla otomasyon hesabınız veya çalışma alanınız varsa, aşağıdaki işlemi gerçekleştirerek Otomasyon hesabınızın tam kaynak KIMLIĞININ bir parçası olan adı ve diğer ilgili özellikleri bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal **Otomasyon hesapları** sayfasından Otomasyon hesabınızı seçin.
 1. Seçilen Otomasyon hesabının sayfasında, **Hesap ayarları** altında **Özellikler**' i seçin.
 1. **Özellikler** sayfasında aşağıda gösterilen ayrıntıları göz önünde bulabilirsiniz.
@@ -72,7 +72,7 @@ Otomasyon Tanılama ayarları aşağıdaki platform günlüklerinin ve ölçüm 
 * DSCNodeStatus
 * Ölçümler-toplam Iş, toplam güncelleştirme dağıtım makinesi çalıştırmaları, toplam güncelleştirme dağıtımı çalıştırmaları
 
-Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için, tanılama ayarlarını platform günlüklerini gönderecek şekilde yapılandırmak üzere kullanılabilecek özellik ve yöntemleri anlamak için [tanılama ayarlarını oluşturma](../azure-monitor/platform/diagnostic-settings.md) ' yı gözden geçirin.
+Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için, tanılama ayarlarını platform günlüklerini gönderecek şekilde yapılandırmak üzere kullanılabilecek özellik ve yöntemleri anlamak için [tanılama ayarlarını oluşturma](../azure-monitor/essentials/diagnostic-settings.md) ' yı gözden geçirin.
 
 ## <a name="azure-monitor-log-records"></a>Azure Izleyici günlük kayıtları
 
@@ -140,7 +140,7 @@ Uyarı kuralı oluşturmak için, uyarıyı çağırması gereken runbook iş ka
 
    Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarlarsanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adı `Resource` , arama içindeki alanda bulunabilir `JobLogs` .
 
-3. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **Yeni uyarı kuralı** ' na tıklayın. Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure 'Da günlük uyarıları](../azure-monitor/platform/alerts-unified-log.md).
+3. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **Yeni uyarı kuralı** ' na tıklayın. Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure 'Da günlük uyarıları](../azure-monitor/alerts/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Hatalarla tamamlanan tüm işleri bul
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Arama sorguları oluşturma ve Azure Izleyici günlükleriyle Otomasyon iş günlüklerini İnceleme hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde günlük aramaları](../azure-monitor/log-query/log-query-overview.md).
+* Arama sorguları oluşturma ve Azure Izleyici günlükleriyle Otomasyon iş günlüklerini İnceleme hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde günlük aramaları](../azure-monitor/logs/log-query-overview.md).
 * Runbook 'lardan çıkış ve hata iletilerinin oluşturulmasını ve alınmasını anlamak için bkz. [runbook çıkışını izleme](automation-runbook-output-and-messages.md).
 * Runbook yürütmesi, runbook işlerini izleme ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
-* Azure Izleyici günlükleri ve veri toplama kaynakları hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerine Azure depolama verilerini toplama genel bakış](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
-* Log Analytics sorun giderme konusunda yardım için bkz. [Log Analytics artık veri toplamamasının neden olduğu sorun giderme](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
+* Azure Izleyici günlükleri ve veri toplama kaynakları hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerine Azure depolama verilerini toplama genel bakış](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
+* Log Analytics sorun giderme konusunda yardım için bkz. [Log Analytics artık veri toplamamasının neden olduğu sorun giderme](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

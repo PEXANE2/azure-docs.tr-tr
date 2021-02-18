@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185912"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650380"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -28,18 +28,20 @@ Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) 
 > [!NOTE]
 > ACL 'Ler yalnızca aynı Kiracıdaki güvenlik sorumluları için geçerlidir ve paylaşılan anahtar veya paylaşılan erişim imzası (SAS) belirteci kimlik doğrulaması kullanan kullanıcılar için de geçerlidir. Bunun nedeni, çağıran ile ilişkili bir kimlik olmadığından ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemediği için.  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>ACL 'Leri ayarlama
 
 Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden birine bakın:
 
 | Ortam | Makale |
 |--------|-----------|
-|Azure Depolama Gezgini |[Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma](data-lake-storage-explorer.md#managing-access)|
-|.NET |[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için .NET kullanın](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure Depolama Gezgini |[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure Depolama Gezgini kullanma](data-lake-storage-explorer-acl.md)|
+|.NET |[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için .NET kullanın](data-lake-storage-acl-dotnet.md)|
+|Java|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Java kullanma](data-lake-storage-acl-java.md)|
+|Python|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Python kullanma](data-lake-storage-acl-python.md)|
+|PowerShell|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için PowerShell kullanma](data-lake-storage-acl-powershell.md)|
+|Azure CLI’si|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure CLı 'yi kullanma](data-lake-storage-acl-cli.md)|
 |REST API |[Yol-Güncelleştir](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -273,7 +275,7 @@ Sistemin depolama hesabı kaynakları için yetkilendirme kararları vermesini s
 
 ### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure rol atamaları ve ACL girdileri sınırları nelerdir?
 
-Aşağıdaki tabloda, Azure RBAC kullanılırken "kaba" izinleri (depolama hesapları veya kapsayıcılar için uygulanan izinler) ve ACL 'Leri kullanarak "hassas" izinleri (dosyalar ve dizinler için uygulanan izinler) yönetmek için göz önünde bulundurmanız gereken limitlerin Özet görünümü verilmektedir. ACL atamaları için güvenlik gruplarını kullanın. Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACl girişi sayısını aşmanız daha düşüktür. 
+Aşağıdaki tabloda, Azure RBAC kullanılırken "kaba" izinleri (depolama hesapları veya kapsayıcılar için uygulanan izinler) ve ACL 'Leri kullanarak "hassas" izinleri (dosyalar ve dizinler için uygulanan izinler) yönetmek için göz önünde bulundurmanız gereken limitlerin Özet görünümü verilmektedir. ACL atamaları için güvenlik gruplarını kullanın. Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACL girişi sayısını aşmanız daha düşüktür. 
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

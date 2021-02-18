@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c18814230eda6624e8ab1040797c66108f630e30
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001329"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581749"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
@@ -238,7 +238,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve ardından **Mobil** bölümünde **Notification Hubs** ' yi seçin. Hizmet adının yanındaki yıldız simgesini seçerek hizmeti Sol menüdeki **Sık Kullanılanlar** bölümüne ekleyin. **Sık kullanılanlara** **Notification Hubs** ekledikten sonra seçin.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure portalı":::
 
 3. **Notification Hubs** sayfasında, araç çubuğunda **Ekle** ' yi seçin.
 
@@ -286,7 +286,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
    :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Yapılandır":::
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ### <a name="option-2-use-token-based-authentication"></a>Seçenek 2: belirteç tabanlı kimlik doğrulaması kullanma
 
@@ -301,7 +301,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 
 3. **Korumalı alan** seçin
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 Artık Bildirim Hub 'ınızı APNS ile yapılandırdınız. Ayrıca, uygulamanızı kaydettirmek ve anında iletme bildirimleri göndermek için gereken bağlantı dizelerine sahip olursunuz.
 
@@ -309,4 +309,4 @@ Artık Bildirim Hub 'ınızı APNS ile yapılandırdınız. Ayrıca, uygulamanı
 
 Bu öğreticide, Azure 'da bir Bildirim Hub 'ı oluşturup yapılandırdığınıza ve bu uygulamayı Apple Anında İletilen Bildirim Servisi (APNS) aracılığıyla uygulamanıza gönderilmesine izin verecek şekilde yapılandırmış olursunuz. Ardından, örnek bir iOS uygulaması oluşturacağız ve Azure Notifications hub SDK 'sını, Azure portal aracılığıyla gönderilen anında iletme bildirimleri alabilmesi için tümleştireceğiz. Tercih ettiğiniz dile göre aşağıdaki öğreticiye ilerleyin:
 
-- [Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-300.md)
+- [Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-current.md)
