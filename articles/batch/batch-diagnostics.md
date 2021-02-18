@@ -4,22 +4,22 @@ description: Havuzlar ve görevler gibi Azure Batch hesabı kaynakları için ta
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592680"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Tanılama değerlendirmesi ve izleme için toplu iş ölçümleri, uyarılar ve Günlükler
 
-Bu makalede, [Azure izleyici](../azure-monitor/overview.md)'nin özelliklerini kullanarak bir Batch hesabının nasıl izleneceği açıklanır. Azure Izleyici, Batch hesabınızdaki kaynaklar için [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) ve [tanılama günlüklerini](../azure-monitor/platform/platform-logs-overview.md) toplar. Batch hesabınızı izlemek ve sorunları tanılamak için kullanabileceğiniz çeşitli yollarla bu verileri toplayın ve kullanın. Ölçüm [uyarılarını](../azure-monitor/platform/alerts-overview.md) Ayrıca, bir ölçüm belirtilen bir değere ulaştığında bildirimler almanızı sağlayacak şekilde de yapılandırabilirsiniz.
+Bu makalede, [Azure izleyici](../azure-monitor/overview.md)'nin özelliklerini kullanarak bir Batch hesabının nasıl izleneceği açıklanır. Azure Izleyici, Batch hesabınızdaki kaynaklar için [ölçümleri](../azure-monitor/essentials/data-platform-metrics.md) ve [tanılama günlüklerini](../azure-monitor/essentials/platform-logs-overview.md) toplar. Batch hesabınızı izlemek ve sorunları tanılamak için kullanabileceğiniz çeşitli yollarla bu verileri toplayın ve kullanın. Ölçüm [uyarılarını](../azure-monitor/alerts/alerts-overview.md) Ayrıca, bir ölçüm belirtilen bir değere ulaştığında bildirimler almanızı sağlayacak şekilde de yapılandırabilirsiniz.
 
 ## <a name="batch-metrics"></a>Toplu iş ölçümleri
 
 Ölçümler, Azure kaynaklarınız tarafından yayınlanan ve Azure Izleyici hizmeti tarafından tüketilen Azure telemetri verileri (performans sayaçları da denir). Batch hesabındaki ölçümlere örnek olarak havuz oluşturma olayları, Low-Priority düğüm sayısı ve görev tamamlanma olayları verilebilir.
 
-[Desteklenen toplu iş ölçümleri listesine](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)bakın.
+[Desteklenen toplu iş ölçümleri listesine](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts)bakın.
 
 Ölçümler şunlardır:
 
@@ -68,9 +68,9 @@ Azure portal bir ölçüm uyarısı yapılandırmak için:
 5. **Uyarı kuralı ayrıntıları** bölümünde, bir **Uyarı kuralı adı** ve **açıklaması** girin ve **önem derecesini** seçin
 6. **Uyarı kuralı oluşturma**’yı seçin.
 
-Ölçüm uyarıları oluşturma hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../azure-monitor/platform/alerts-metric-overview.md) ve [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-metric.md).
+Ölçüm uyarıları oluşturma hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../azure-monitor/alerts/alerts-metric-overview.md) ve [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-metric.md).
 
-Azure Izleyici [REST API](/rest/api/monitor/)kullanarak neredeyse gerçek zamanlı bir uyarı da yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../azure-monitor/platform/alerts-overview.md). Uyarılarınızda işi, görevi veya havuza özel bilgileri eklemek için [Azure Izleyici uyarıları ile olaylara yanıt veren](../azure-monitor/learn/tutorial-response.md)arama sorguları hakkındaki bilgilere bakın.
+Azure Izleyici [REST API](/rest/api/monitor/)kullanarak neredeyse gerçek zamanlı bir uyarı da yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../azure-monitor/alerts/alerts-overview.md). Uyarılarınızda işi, görevi veya havuza özel bilgileri eklemek için [Azure Izleyici uyarıları ile olaylara yanıt veren](../azure-monitor/alerts/tutorial-response.md)arama sorguları hakkındaki bilgilere bakın.
 
 ## <a name="batch-diagnostics"></a>Batch tanılama
 
@@ -88,7 +88,7 @@ Yaygın bir senaryo, günlük hedefi olarak bir Azure depolama hesabı seçmsudu
 Alternatif olarak şunları yapabilirsiniz:
 
 - Batch tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)akış. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler.
-- Tanılama günlüklerini [Azure izleyici günlüklerine](../azure-monitor/log-query/log-query-overview.md)göndererek bunları analiz edebilir veya Power BI veya Excel 'de Analize aktarabilirsiniz.
+- Tanılama günlüklerini [Azure izleyici günlüklerine](../azure-monitor/logs/log-query-overview.md)göndererek bunları analiz edebilir veya Power BI veya Excel 'de Analize aktarabilirsiniz.
 
 > [!NOTE]
 > Azure hizmetleriyle tanılama günlüğü verilerini depolamak veya işlemek için ek ücret ödemeniz gerekebilir.
@@ -105,7 +105,7 @@ Azure portal yeni bir tanılama ayarı oluşturmak için aşağıdaki adımları
 6. **ServiceLog**, **allölçümlerini** veya her ikisini birden seçin.
 7. Tanılama ayarını oluşturmak için **Kaydet** ' i seçin.
 
-Ayrıca, [Kaynak Yöneticisi bir şablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md)kullanarak veya Azure PowerShell ya da Azure CLI ile tanılama ayarlarını yapılandırmak Için [Azure Portal Azure izleyici aracılığıyla toplamayı etkinleştirebilirsiniz](../azure-monitor/platform/diagnostic-settings.md) . Daha fazla bilgi için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+Ayrıca, [Kaynak Yöneticisi bir şablon](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)kullanarak veya Azure PowerShell ya da Azure CLI ile tanılama ayarlarını yapılandırmak Için [Azure Portal Azure izleyici aracılığıyla toplamayı etkinleştirebilirsiniz](../azure-monitor/essentials/diagnostic-settings.md) . Daha fazla bilgi için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Depolama alanındaki tanılama günlüklerine erişin
 
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Örnek:
+Örneğin:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -135,7 +135,7 @@ Bir günlük dosyasındaki bir girdinin örneği aşağıda verilmiştir `PoolRe
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Depolama hesabındaki tanılama günlüklerinin şeması hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Depolama hesabınızdaki günlüklere programlı bir şekilde erişmek için depolama API 'Lerini kullanın.
+Depolama hesabındaki tanılama günlüklerinin şeması hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Depolama hesabınızdaki günlüklere programlı bir şekilde erişmek için depolama API 'Lerini kullanın.
 
 ### <a name="service-log-events"></a>Hizmet günlüğü olayları
 

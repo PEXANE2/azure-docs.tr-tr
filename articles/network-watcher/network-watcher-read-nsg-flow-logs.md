@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898105"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593054"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG akış günlüklerini okuma
 
@@ -189,6 +189,6 @@ Bu senaryo, tüm günlüğü ayrıştırmanıza gerek kalmadan NSG akış günl�
 
 NSG akış günlüklerini görüntüleme yolları hakkında daha fazla bilgi edinmek için [elastik Stack kullanın](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Grafana kullanın](network-watcher-nsg-grafana.md)ve [gri günlük kullanın](network-watcher-analyze-nsg-flow-logs-graylog.md) . Blob 'ları doğrudan tüketmeye yönelik açık kaynaklı bir Azure Işlevi yaklaşımı ve çeşitli Log Analytics tüketicilerine yayma, burada bulunabilir: [Azure Ağ İzleyicisi NSG akış günlükleri Bağlayıcısı](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Trafik akışlarınızla ilgili Öngörüler elde etmek için [Azure Trafik Analizi](./traffic-analytics.md) kullanabilirsiniz. Trafik Analizi trafik akışınızı sorgulanabilir hale getirmek için [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) kullanır.
+Trafik akışlarınızla ilgili Öngörüler elde etmek için [Azure Trafik Analizi](./traffic-analytics.md) kullanabilirsiniz. Trafik Analizi trafik akışınızı sorgulanabilir hale getirmek için [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) kullanır.
 
 Depolama Blobları hakkında daha fazla bilgi edinmek için ziyaret edin: [Azure Işlevleri BLOB depolama bağlamaları](../azure-functions/functions-bindings-storage-blob.md)

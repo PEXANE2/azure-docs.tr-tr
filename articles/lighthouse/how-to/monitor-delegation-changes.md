@@ -3,18 +3,18 @@ title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089432"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593132"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
 Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kiracınıza [Azure ınthouse](../overview.md)aracılığıyla veya daha önce atanmış kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
 
-Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
+Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
 
 Bu konuda, kiracınıza (tüm müşterileriniz genelinde), yetkilendirme etkinliğini izlemek için gereken izinler açıklanmaktadır. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası da içerir.
 
@@ -104,7 +104,7 @@ Bu verileri sorgularken şunları göz önünde bulundurun:
 - Birden çok kaynak grubu tek bir dağıtımda Temsilcili ise, her kaynak grubu için ayrı girdiler döndürülür.
 - Önceki bir temsilciyle yapılan değişiklikler (izin yapısını güncelleştirme gibi), eklenen bir temsili olarak günlüğe kaydedilir.
 - Yukarıda belirtildiği gibi, bu kiracı düzeyindeki verilere erişebilmek için bir hesabın, kök kapsamda (/) Izleme okuyucu Azure yerleşik rolüne sahip olması gerekir.
-- Bu verileri kendi iş akışlarında ve raporlarınızda kullanabilirsiniz. Örneğin, Azure Izleyici 'de verileri bir REST API istemcisinden günlüğe kaydetmek için [http veri toplayıcı API 'sini (Genel Önizleme)](../../azure-monitor/platform/data-collector-api.md) kullanabilir ve sonra bildirim veya uyarı oluşturmak için [eylem gruplarını](../../azure-monitor/platform/action-groups.md) kullanabilirsiniz.
+- Bu verileri kendi iş akışlarında ve raporlarınızda kullanabilirsiniz. Örneğin, Azure Izleyici 'de verileri bir REST API istemcisinden günlüğe kaydetmek için [http veri toplayıcı API 'sini (Genel Önizleme)](../../azure-monitor/logs/data-collector-api.md) kullanabilir ve sonra bildirim veya uyarı oluşturmak için [eylem gruplarını](../../azure-monitor/alerts/action-groups.md) kullanabilirsiniz.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure](../concepts/azure-delegated-resource-management.md)'un nasıl kullanılacağına ilişkin müşterileri nasıl kullanacağınızı öğrenin.
-- [Azure izleyici](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md)hakkında bilgi edinin.
+- [Azure izleyici](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/essentials/platform-logs-overview.md)hakkında bilgi edinin.
 - Azure etkinlik günlüklerinin, etki alanı adına göre filtrelemeye yönelik bir seçeneğe sahip abonelikler arasında nasıl görüntüleneceğini öğrenmek için, etki alanı örnek çalışma kitabına [göre etkinlik günlüklerini](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) gözden geçirin.

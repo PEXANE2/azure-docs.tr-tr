@@ -406,6 +406,54 @@
           href: service-fabric-get-started-mac.md
         - name: Service Fabric CLI’sını ayarlama
           href: service-fabric-cli.md
+        - name: IDE içinde çalışma
+          items:
+            - name: Bir Windows/VS geliştirme ortamında çalışma
+              items:
+                - name: Visual Studio'da uygulamaları yönetme
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: Visual Studio'da güvenli bağlantı yapılandırma
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: Visual Studio’da .NET hizmetinde hata ayıklama
+                  href: service-fabric-debugging-your-application.md
+                - name: Service Fabric ve VS ile Windows kapsayıcı hatalarını ayıklama
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: Genel hatalar ve özel durumlar
+                  href: service-fabric-errors-and-exceptions.md
+                - name: Yerel olarak izleme ve tanılama
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: Windows'da Linux kümesi ayarlama
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: VS’den uzak bir Linux kümesine bir .NET Core uygulaması dağıtma
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: Bir Linux/Eclipse geliştirme ortamında çalışma
+              items:
+                - name: Java ile geliştirme için Eclipse eklentisini kullanmaya başlama
+                  href: service-fabric-get-started-eclipse.md
+                - name: Eclipse’te Java hizmeti hata ayıklaması
+                  href: service-fabric-debugging-your-application-java.md
+                - name: Yerel olarak izleme ve tanılama
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: Bir VS Code ortamında çalışma
+              items:
+                - name: VS Code'u kullanmaya başlama
+                  href: service-fabric-get-started-vs-code.md
+                - name: VS Code ile C# Service Fabric uygulamaları geliştirme
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: VS Code ile Java Service Fabric uygulamaları geliştirme
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Service Fabric yönetilen kümeleri kullanma
+      items:
+        - name: Yönetilen küme düğümü türüne sanal makine ölçek kümesi uzantısı ekleme
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: Yönetilen kümenizi yapılandırma
+          href: how-to-managed-cluster-configuration.md
+        - name: ARM şablonunu kullanarak yönetilen küme uygulamaları dağıtma
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: Yönetilen kimliğe sahip yönetilen bir küme yapılandırma
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+        - name: Yönetilen küme düğümleri için disk şifrelemeyi etkinleştir
+          href: how-to-enable-managed-cluster-disk-encryption.md
     - name: Planlama ve hazırlama
       items:
         - name: Küme kapasitesini planlama
@@ -416,6 +464,142 @@
           href: service-fabric-disaster-recovery.md
         - name: Uygulama kapasitesi planlama
           href: service-fabric-capacity-planning.md
+    - name: Küme oluşturma ve yönetme
+      items:
+        - name: Azure’da kümeler
+          items:
+            - name: Oluştur
+              items:
+                - name: Küme dağıtımını planlama
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: Azure portalda oluşturma
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Kullanılabilirlik alanlarına bir Azure Service Fabric Kümesi dağıtma
+                  href: service-fabric-cross-availability-zones.md
+                - name: Durum bilgisi olmayan düğüm türlerine sahip Azure Service Fabric kümesini dağıtma
+                  href: service-fabric-stateless-node-types.md
+                - name: Azure Active Directory kimlik doğrulamasını ayarlama
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: Özel küme şablonu oluşturma
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: Resource Manager'ı kullanarak oluşturun
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: Sertifika ortak adını kullanarak oluşturma
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Linux kümesi oluşturma
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: Ölçek
+              items:
+                - name: El ile ölçeği genişletme
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: Programlı olarak ölçeği genişletme
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: Birincil düğüm türlerinin ölçeğini artırma
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: Düğüm türü ekleme
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: Düğüm türünü kaldırma
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: Yükseltme
+              items:
+                - name: Service Fabric sürümünü yükseltme
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: Küme yapılandırmasını yükseltme
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: Küme düğümlerine yama yapma (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: Disk şifrelemesini etkinleştirme (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Disk şifrelemesini etkinleştirme (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: Erişim denetimini ayarlama
+                  href: service-fabric-cluster-security-roles.md
+                - name: Yük dengeleyicide bağlantı noktası açma
+                  href: create-load-balancer-rule.md
+                - name: Küme sertifikasını ortak ad olarak değiştirme
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: Küme sertifikalarını el ile geçirme
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: Küme sertifikalarını yönetme
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: Küme düğümü VM’sine uzaktan bağlanma
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: Tek başına kümeler
+          items:
+            - name: Oluştur
+              items:
+                - name: Şirket içi oluşturma
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: Sertifikaları kullanarak güvenli hale getirme
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Windows güvenliğini kullanarak güvenli hale getirme
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: Tek başına paketin içeriği
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: Ölçek
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: Yükseltme
+              items:
+                - name: Service Fabric sürümünü yükseltme
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: Küme yapılandırmasını yükseltme
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: Yapılandırma ayarları
+                  href: service-fabric-cluster-manifest.md
+                - name: Erişim denetimini ayarlama
+                  href: service-fabric-cluster-security-roles.md
+                - name: Küme düğümlerine yama yapma (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: Service Fabric Explorer’ı kullanarak görselleştirme
+          href: service-fabric-visualizing-your-cluster.md
+        - name: Güvenli bir kümeye bağlanma
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: İzleme ve tanılama
+      items:
+        - name: Yaygın senaryoları tanılama
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: Kod paketi hatalarını tanılama
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: Uygulamaları izleme
+          items:
+            - name: Uygulamanıza günlük bilgileri ekleme
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Application Insights ile analiz
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: EventFlow ile günlükleri toplama
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: Kapsayıcıları izleme
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Kümeleri izleme
+          items:
+            - name: Azure İzleyici günlüklerini küme olaylarını toplaması için yapılandırma
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Azure İzleyici günlükleri ile kümenizi izleme
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: Sorgu EventStore API’leri
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Windows Küme Tanılaması
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux Küme Tanılaması
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: Altyapıyı izleme
+          items:
+            - name: Log Analytics Aracısı ile performans sayaçlarını toplama
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: WAD ile performans sayaçlarını toplama
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: Sistem durumunu izleme
+          items:
+            - name: Sistem durumunu raporlama ve denetleme
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Sistem durum raporlarıyla ilgili sorunları giderme
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Sistem durumu raporlarını görüntüleme
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: Ters proxy olaylarını tanılama
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: Yerel kümenizde sorun giderme
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: İlk kez oluşturma...
       items:
         - name: Windows kapsayıcı uygulaması
@@ -434,7 +618,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Windows’da konuk tarafından yürütülebilir uygulama
           href: quickstart-guest-app.md
-    - name: Uygulama oluşturma
+    - name: Uygulama derleme
       items:
         - name: Konuk yürütülebilir hizmet oluşturma
           items:
@@ -547,52 +731,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Maven’i desteklemek için eski Java Uygulamasını geçirme
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: IDE içinde çalışma
-      items:
-        - name: Bir Windows/VS geliştirme ortamında çalışma
-          items:
-            - name: Visual Studio'da uygulamaları yönetme
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: Visual Studio'da güvenli bağlantı yapılandırma
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: Visual Studio’da .NET hizmetinde hata ayıklama
-              href: service-fabric-debugging-your-application.md
-            - name: Service Fabric ve VS ile Windows kapsayıcı hatalarını ayıklama
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: Genel hatalar ve özel durumlar
-              href: service-fabric-errors-and-exceptions.md
-            - name: Yerel olarak izleme ve tanılama
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: Windows'da Linux kümesi ayarlama
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: VS’den uzak bir Linux kümesine bir .NET Core uygulaması dağıtma
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: Bir Linux/Eclipse geliştirme ortamında çalışma
-          items:
-            - name: Java ile geliştirme için Eclipse eklentisini kullanmaya başlama
-              href: service-fabric-get-started-eclipse.md
-            - name: Eclipse’te Java hizmeti hata ayıklaması
-              href: service-fabric-debugging-your-application-java.md
-            - name: Yerel olarak izleme ve tanılama
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: Bir VS Code ortamında çalışma
-          items:
-            - name: VS Code'u kullanmaya başlama
-              href: service-fabric-get-started-vs-code.md
-            - name: VS Code ile C# Service Fabric uygulamaları geliştirme
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: VS Code ile Java Service Fabric uygulamaları geliştirme
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Cloud Services’tan geçiş
-      items:
-        - name: Cloud Services ile Service Fabric karşılaştırması
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: Service Fabric’e geçme
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: Önerilen uygulamalar
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Uygulamalarınızı modernleştirme
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Uygulama yaşam döngüsünü yönetme
       items:
         - name: Uygulamaları paketleme
@@ -651,144 +789,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: Güvenli iletişim için ters proxy ayarlarını yapılandırma
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: Küme oluşturma ve yönetme
-      items:
-        - name: Azure’da kümeler
-          items:
-            - name: Oluştur
-              items:
-                - name: Küme dağıtımını planlama
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: Azure portalda oluşturma
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: Kullanılabilirlik alanlarına bir Azure Service Fabric Kümesi dağıtma
-                  href: service-fabric-cross-availability-zones.md
-                - name: Durum bilgisi olmayan düğüm türlerine sahip Azure Service Fabric kümesini dağıtma
-                  href: service-fabric-stateless-node-types.md
-                - name: Azure Active Directory kimlik doğrulamasını ayarlama
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: Özel küme şablonu oluşturma
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: Resource Manager'ı kullanarak oluşturun
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: Sertifika ortak adını kullanarak oluşturma
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Linux kümesi oluşturma
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: Ölçek
-              items:
-                - name: El ile ölçeği genişletme
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: Programlı olarak ölçeği genişletme
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: Birincil düğüm türlerinin ölçeğini artırma
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: Düğüm türü ekleme
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: Düğüm türünü kaldırma
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: Yükseltme
-              items:
-                - name: Yönetilen küme düğümü türüne sanal makine ölçek kümesi uzantısı ekleme
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: Service Fabric sürümünü yükseltme
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: Küme yapılandırmasını yükseltme
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: Küme düğümlerine yama yapma (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: Disk şifrelemesini etkinleştirme (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Disk şifrelemesini etkinleştirme (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: Erişim denetimini ayarlama
-                  href: service-fabric-cluster-security-roles.md
-                - name: Yük dengeleyicide bağlantı noktası açma
-                  href: create-load-balancer-rule.md
-                - name: Küme sertifikasını ortak ad olarak değiştirme
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: Küme sertifikalarını el ile geçirme
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: Küme sertifikalarını yönetme
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: Küme düğümü VM’sine uzaktan bağlanma
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: Tek başına kümeler
-          items:
-            - name: Oluştur
-              items:
-                - name: Şirket içi oluşturma
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: Sertifikaları kullanarak güvenli hale getirme
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: Windows güvenliğini kullanarak güvenli hale getirme
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: Tek başına paketin içeriği
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: Ölçek
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Yükseltme
-              items:
-                - name: Service Fabric sürümünü yükseltme
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: Küme yapılandırmasını yükseltme
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: Yapılandırma ayarları
-                  href: service-fabric-cluster-manifest.md
-                - name: Erişim denetimini ayarlama
-                  href: service-fabric-cluster-security-roles.md
-                - name: Küme düğümlerine yama yapma (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: Service Fabric Explorer’ı kullanarak görselleştirme
-          href: service-fabric-visualizing-your-cluster.md
-        - name: Güvenli bir kümeye bağlanma
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: İzleme ve tanılama
-      items:
-        - name: Yaygın senaryoları tanılama
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: Kod paketi hatalarını tanılama
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: Uygulamaları izleme
-          items:
-            - name: Uygulamanıza günlük bilgileri ekleme
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Application Insights ile analiz
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: EventFlow ile günlükleri toplama
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Kapsayıcıları izleme
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: Kümeleri izleme
-          items:
-            - name: Azure İzleyici günlüklerini küme olaylarını toplaması için yapılandırma
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Azure İzleyici günlükleri ile kümenizi izleme
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: Sorgu EventStore API’leri
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Windows Küme Tanılaması
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux Küme Tanılaması
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: Altyapıyı izleme
-          items:
-            - name: Log Analytics Aracısı ile performans sayaçlarını toplama
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: WAD ile performans sayaçlarını toplama
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: Sistem durumunu izleme
-          items:
-            - name: Sistem durumunu raporlama ve denetleme
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Sistem durum raporlarıyla ilgili sorunları giderme
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Sistem durumu raporlarını görüntüleme
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: Ters proxy olaylarını tanılama
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: Yerel kümenizde sorun giderme
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Service Fabric uygulamaları için Yönetilen Kimlik kullanma
       items:
         - name: Küme kurulumu
@@ -797,8 +797,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Yeni Azure Service Fabric kümesini yönetilen kimlikle yapılandırma
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: Yönetilen bir Service Fabric kümesini yönetilen kimlikle yapılandırma
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Uygulama kurulumu
           items:
             - name: Yönetilen kimlikle uygulama dağıtma
@@ -811,12 +809,22 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: Diğer Azure kaynaklarına erişim izni verme
           href: how-to-grant-access-other-resources.md
+    - name: Cloud Services’tan geçiş
+      items:
+        - name: Cloud Services ile Service Fabric karşılaştırması
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Service Fabric’e geçme
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: Önerilen uygulamalar
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Uygulamalarınızı modernleştirme
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: Başvuru
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
-      href: /powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Azure CLI (az sf)
       href: /cli/azure/sf
     - name: Service Fabric CLI (sfctl)

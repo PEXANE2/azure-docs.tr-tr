@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d7753de473d90c45fecb20403352a594ef52dafe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807861"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586307"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service için Azure Güvenlik temeli
 
@@ -241,9 +241,9 @@ Güvenlik Merkezi 'nde, portalda veya programlı araçlar aracılığıyla ayrı
 
 Ağ kaynak yapılandırmalarının izlenmesi ve değişiklikleri hızlıca tespit etmek için otomatikleştirilmiş araçlarla bir işlem oluşturmanız önerilir.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Güvenlik uyarılarını ve önerilerini dışarı aktarma](../security-center/continuous-export.md)
 
@@ -280,7 +280,7 @@ Denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, 
 
 Ayrıca, Azure Key Vault erişim ilkeleri ve denetim geçmişi ile merkezi gizli bir yönetim sağlar. 
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Azure App Service için tanılama ayarlarını etkinleştirme](troubleshoot-diagnostic-logs.md)
 
@@ -293,7 +293,7 @@ Ayrıca, Azure Key Vault erişim ilkeleri ve denetim geçmişi ile merkezi gizli
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre App Service kaynaklarınızla ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
-- [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -309,7 +309,7 @@ Bir Web uygulaması güvenlik duvarı (WAF) dağıttıysanız, gerçek zamanlı 
 
 Çeşitli veri kaynakları ve bağlayıcılar ile tümleştirme için Azure Sentinel, ölçeklenebilir ve bulutta yerel güvenlik bilgileri olay yönetimi (SıEM) kullanın. İsteğe bağlı olarak, Azure Marketi 'nde bulunan üçüncü taraf güvenlik bilgileri olay yönetimi çözümüne ve şirket içi verileri etkinleştirin.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Application Insights etkinleştirme](../azure-monitor/app/app-insights-overview.md)
 
@@ -640,7 +640,7 @@ Yerel olarak bağlı diskler geçici depolama (örneğin, D:\Local ve% TMP%) ola
 
 **Rehberlik**: üretim App Service uygulamalarında ve diğer kritik veya ilgili kaynaklarda yapılan değişikliklerle ilgili uyarılar oluşturmak Için Azure izleyici Ile Azure etkinlik günlüğünü kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

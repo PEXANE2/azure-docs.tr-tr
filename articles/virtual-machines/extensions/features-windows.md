@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 44d071c635967e4ce3078be8419414bc9ff0c653
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580135"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -36,7 +36,7 @@ Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önk
 Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile kullanılabilir. Bazı örnekler:
 
 - PowerShell Istenen durum yapılandırmasını Windows için DSC uzantısına sahip bir VM 'ye uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](dsc-overview.md).
-- Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../azure-monitor/learn/quick-collect-azurevm.md).
+- Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../azure-monitor/vm/quick-collect-azurevm.md).
 - Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](/azure/developer/chef/windows-vm-configure).
 - Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için bkz. [Dataköpek blogu](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -55,12 +55,12 @@ Desteklenen işletim sistemleri ve yükleme yönergeleri hakkında daha fazla bi
 
 #### <a name="supported-agent-versions"></a>Desteklenen Aracı sürümleri
 
-Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)bakın.
+Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) bakın.
 
 #### <a name="supported-oses"></a>Desteklenen Işletim sistemleri
 
-Windows Konuk Aracısı birden çok OSes üzerinde çalışır, ancak uzantı çerçevesinin uzantıları bu uzantılara yönelik bir sınıra sahiptir. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
-)bakın.
+Windows Konuk Aracısı birden çok OSes üzerinde çalışır, ancak uzantı çerçevesinin uzantıları bu uzantılara yönelik bir sınıra sahiptir. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
+) bakın.
 
 Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' desteklenmeyen işletim sistemi '* verilebilir. Desteklenebilirliği için bağımsız uzantı belgelerini denetleyin.
 
@@ -141,7 +141,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension`Komut herhangi BIR VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 

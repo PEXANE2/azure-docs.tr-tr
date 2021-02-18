@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586261"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -200,7 +200,7 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 <sup>1</sup> Java SE uygulamaları için uygulama ayarlarına "$WEBSITE _AZMON_PREVIEW_ENABLED" ekleyin ve bunu 1 veya doğru olarak ayarlayın.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
-* [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Izleyici ile günlük sorgulama](../azure-monitor/logs/log-query-overview.md)
 * [Azure App Service Izleme](web-sites-monitor.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

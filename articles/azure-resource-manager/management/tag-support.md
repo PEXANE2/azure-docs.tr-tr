@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 73f58dbda0e7c073cf4a8d2e846132a102192e93
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656980"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635923"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -1543,7 +1543,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ----------- |
 > | Commitmentplanlar | Yes | Yes |
 > | Hizmetleri | Yes | Yes |
-> | Çalışma alanları | Yes | Yes |
+> | Çalışma Alanları | Yes | Yes |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -1565,6 +1565,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | çalışma alanları/modeller/sürümler | Hayır | Hayır |
 > | çalışma alanları/onlineEndpoints | Yes | Yes |
 > | çalışma alanları/onlineEndpoints/dağıtımlar | Yes | Yes |
+ 
+> [!NOTE]
+> Çalışma alanı etiketleri, işlem kümelerine ve işlem örneklerine yayılmaz. 
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
@@ -1956,7 +1959,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | Çalışma alanları | Yes | Yes |
+> | Çalışma Alanları | Yes | Yes |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 

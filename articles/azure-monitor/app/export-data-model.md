@@ -3,17 +3,17 @@ title: Azure Application Insights veri modeli | Microsoft Docs
 description: JSON 'da sürekli dışarı aktarma işleminden dışarı aktarılmış özellikleri açıklar ve filtre olarak kullanılır.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324395"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584224"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights veri modelini dışarı aktarma
 Bu tabloda, [Application Insights](./app-insights-overview.md) SDK 'lardan portala gönderilen telemetrinin özellikleri listelenmektedir.
 Bu özellikleri [sürekli dışarı aktarmanın](export-telemetry.md)veri çıkışında görürsünüz.
-Ayrıca, [Ölçüm Gezgini](../platform/metrics-charts.md) ve [Tanılama aramasında](./diagnostic-search.md)Özellik filtrelerinde görünürler.
+Ayrıca, [Ölçüm Gezgini](../essentials/metrics-charts.md) ve [Tanılama aramasında](./diagnostic-search.md)Özellik filtrelerinde görünürler.
 
 Şunlara işaret eder:
 
@@ -113,7 +113,7 @@ Tüm telemetri türlerine bir bağlam bölümü eşlik eder. Bu alanların hepsi
 | Context. Custom. ölçümler [0] |Object [] |Özel ölçümler parametresi ve Trackölçümler tarafından ayarlanan anahtar-değer çiftleri. Anahtar en fazla uzunluğu 100, değerler sayısal olabilir. |
 | Context. Data. eventTime |string |UTC |
 | Context. Data. ısyapay |boolean |İstek bir bot veya Web testinde geliyor gibi görünüyor. |
-| Context. Data. samplingRate |number |Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
+| Context. Data. samplingRate |sayı |Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
 | Context. Device |object |İstemci cihazı |
 | Context. Device. Browser |string |IE, Chrome,... |
 | Context. Device. browserVersion |string |Chrome 48,0,... |
@@ -151,7 +151,7 @@ Tüm telemetri türlerine bir bağlam bölümü eşlik eder. Bu alanların hepsi
 | internal.data.documentVersion |string | |
 | internal.data.id |string | `Unique id` Bu, bir öğe Application Insights yapıldığında atanır |
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 [Trackevent ()](./api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar.
 
 | Yol | Tür | Notlar |
@@ -162,7 +162,7 @@ Tüm telemetri türlerine bir bağlam bölümü eşlik eder. Bu alanların hepsi
 | olay [0] urlData. Base |string | |
 | olay [0] urlData. Host |string | |
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 Sunucudaki ve tarayıcıdaki [özel durumları](./asp-net-exceptions.md) raporlar.
 
 | Yol | Tür | Notlar |
@@ -211,7 +211,7 @@ TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan
 | remoteDependency bağımlılığı [0] commandName |string |Örneğin, "giriş/Dizin" |
 | remoteDependency bağımlılığı [0] sayısı |tamsayı |100/([örnekleme](./sampling.md) hızı). Örneğin 4 = &gt; %25. |
 | remoteDependency bağımlılığı [0] dependencyTypeName |string |HTTP, SQL,... |
-| remoteDependency bağımlılığı [0] durationMetric. Value |number |Çağrıya göre yanıtın tamamlanmasına yönelik çağrıdan geçen süre |
+| remoteDependency bağımlılığı [0] durationMetric. Value |sayı |Çağrıya göre yanıtın tamamlanmasına yönelik çağrıdan geçen süre |
 | remoteDependency bağımlılığı [0] `id` |string | |
 | remoteDependency bağımlılığı [0] adı |string |'Deki. Maksimum uzunluk 250. |
 | remoteDependency bağımlılığı [0] resultCode |string |HTTP bağımlılığıyla |
@@ -228,7 +228,7 @@ TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan
 | Yol | Tür | Notlar |
 | --- | --- | --- |
 | istek [0] sayısı |tamsayı |100/([örnekleme](./sampling.md) hızı). Örneğin: 4 = &gt; %25. |
-| istek [0] durationMetric. Value |number |İsteğin yanıt gelme süresi. 1E7 = = 1s |
+| istek [0] durationMetric. Value |sayı |İsteğin yanıt gelme süresi. 1E7 = = 1s |
 | istek [0] `id` |string |`Operation id` |
 | istek [0] adı |string |Al/postala + URL tabanı.  Maksimum uzunluk 250 |
 | istek [0] yanıt kodu |tamsayı |İstemciye gönderilen HTTP yanıtı |
@@ -276,12 +276,12 @@ TrackPageView () veya [Stoptrackpage](./api-custom-events-metrics.md#page-views)
 | Yol | Tür | Notlar |
 | --- | --- | --- |
 | kullanılabilirlik [0] availabilityMetric.name |string |availability |
-| kullanılabilirlik [0] Kullanılabilirbilitymetric. değer |number |1,0 veya 0,0 |
+| kullanılabilirlik [0] Kullanılabilirbilitymetric. değer |sayı |1,0 veya 0,0 |
 | kullanılabilirlik [0] sayısı |tamsayı |100/([örnekleme](./sampling.md) hızı). Örneğin 4 = &gt; %25. |
 | kullanılabilirlik [0] dataSizeMetric.name |string | |
 | kullanılabilirlik [0] dataSizeMetric. değer |tamsayı | |
 | kullanılabilirlik [0] durationMetric.name |string | |
-| kullanılabilirlik [0] durationMetric. Value |number |Test süresi. 1E7 = = 1s |
+| kullanılabilirlik [0] durationMetric. Value |sayı |Test süresi. 1E7 = = 1s |
 | kullanılabilirlik [0] ileti |string |Hata tanılama |
 | kullanılabilirlik [0] Sonuç |string |Başarılı/Başarısız |
 | kullanılabilirlik [0] runLocation |string |Http REQ coğrafi kaynağı |

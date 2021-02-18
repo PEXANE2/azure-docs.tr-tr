@@ -2,13 +2,13 @@
 title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 02/16/2021
+ms.openlocfilehash: 9f0ec1223c06b908a9aa9f3ac5c5b19ead2fe962
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595954"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
@@ -53,7 +53,7 @@ Yapılandırıldıktan sonra, ilk olaylarınızı gönderdiğinizde Event Hubs y
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs yakalama ayarlanıyor
 
-[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+[Azure Portal](https://portal.azure.com)kullanarak veya Azure Resource Manager şablonlarını kullanarak Olay Hub 'ı oluşturma sırasında yakalamayı yapılandırabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure portalını kullanarak Event Hubs Yakalama özelliğini etkinleştirme](event-hubs-capture-enable-through-portal.md)
 - [Bir olay hub'ı ile bir Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -79,13 +79,7 @@ Azure Blob depolama 'ya yerel bir destek sağlanır. Bu, belgelerde açıklandı
 
 [Apache detaylandırma: Azure Blob depolama eklentisi][Apache Drill: Azure Blob Storage Plugin]
 
-Yakalanan dosyaları kolayca sorgulamak için Azure Blob depolamaya erişmek üzere bir kapsayıcı aracılığıyla Apache detaya sahip bir VM oluşturup yürütebilirsiniz:
-
-https://github.com/yorek/apache-drill-azure-blob
-
-Eksiksiz bir uçtan uca örnek, akış üzerinde ölçek deposunda mevcuttur:
-
-[Ölçekte akış: Event Hubs yakalama]
+Yakalanan dosyaları kolayca sorgulamak için Azure Blob depolamaya erişmek üzere bir kapsayıcı aracılığıyla Apache detaya sahip bir VM oluşturup çalıştırabilirsiniz. Aşağıdaki örneğe bakın: [Event Hubs yakalama Ile ölçeklendirmeye yönelik akış](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture).
 
 ### <a name="use-apache-spark"></a>Apache Spark kullan
 
@@ -160,4 +154,4 @@ Azure portal ve Azure Resource Manager şablonunu kullanarak bu özelliği etkin
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Ölçekte akış: Event Hubs yakalama]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming at Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

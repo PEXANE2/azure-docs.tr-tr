@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594023"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
@@ -57,7 +57,7 @@ App Service ' de bir uygulama oluşturduğunuzda, bu bir App Service planına ko
 
 Bu şekilde App Service planı, App Service uygulamaların ölçek birimidir. Plan beş VM örneği çalıştıracak şekilde yapılandırıldıysa, plandaki tüm uygulamalar beş örnek üzerinde çalıştırılır. Plan otomatik ölçeklendirme için yapılandırıldıysa, plandaki tüm uygulamalar otomatik ölçeklendirme ayarlarına göre birlikte ölçeklendirilir.
 
-Bir uygulamanın ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [Ölçek örneği sayısı el ile veya otomatik olarak](../azure-monitor/platform/autoscale-get-started.md).
+Bir uygulamanın ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [Ölçek örneği sayısı el ile veya otomatik olarak](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="cost"></a>
 

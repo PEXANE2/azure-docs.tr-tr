@@ -3,12 +3,12 @@ title: Fedratin orta şeması örnek denetimleri
 description: Fedrampa orta şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 30fd8030150613e6e429501ec27d5cad5cbe2a45
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7a78ebf631d2c7eb21fea64b0b6aa307bb500e0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034807"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594701"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Fedrampa orta şema örneğinin denetim eşlemesi
 
@@ -284,7 +284,7 @@ Fedrata orta şema öğesinin denetim eşlemesini inceledikten sonra, şema ve b
 
 > [!div class="nextstepaction"]
 > [Fedrampa orta şeması-genel bakış](./index.md) 
->  [Fodramp orta şema-Deploy adımları](./deploy.md)
+>  [Fedratin orta şema-Deploy adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

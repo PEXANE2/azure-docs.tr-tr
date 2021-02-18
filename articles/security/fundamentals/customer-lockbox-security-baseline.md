@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595608"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası Azure Güvenlik temeli
 
@@ -164,7 +164,7 @@ Müşteri Kasası tarafından oluşturulan etkinlik günlüklerini Azure Sentine
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Müşteri Kasası ilişkili Log Analytics çalışma alanları için günlük tutma süresi ayarlayın.
 
-* [Günlük tutma parametrelerini ayarlama](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Günlük tutma parametrelerini ayarlama](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -186,7 +186,7 @@ Müşteri Kasası tarafından oluşturulan etkinlik günlüklerini Azure Sentine
 
 * [Müşteri Kasası içindeki denetim günlükleri](./customer-lockbox-overview.md#auditing-logs)
 
-* [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -461,9 +461,9 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 * [Müşteri Kasası içinde denetimi etkinleştirme](./customer-lockbox-overview.md)
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

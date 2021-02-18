@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916800"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590627"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -185,7 +185,7 @@ Aktarılmış veri türlerinin olay şemalarını görüntülemek için [Log Ana
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Azure Izleyici 'de, verilmiş uyarıları ve önerileri görüntüleme
 
-Ayrıca, [Azure izleyici](../azure-monitor/platform/alerts-overview.md)'de, verilmiş güvenlik uyarılarını ve/veya önerilerini görüntülemeyi de tercih edebilirsiniz. 
+Ayrıca, [Azure izleyici](../azure-monitor/alerts/alerts-overview.md)'de, verilmiş güvenlik uyarılarını ve/veya önerilerini görüntülemeyi de tercih edebilirsiniz. 
 
 Azure Izleyici, Log Analytics çalışma alanı sorgularını temel alan tanılama günlüğü, ölçüm uyarıları ve özel uyarılar dahil olmak üzere çeşitli Azure uyarıları için Birleşik bir uyarı deneyimi sağlar.
 
@@ -195,13 +195,13 @@ Azure Izleyici 'de Güvenlik Merkezi 'ndeki uyarıları ve önerileri görüntü
 
     ![Azure Izleyici 'nin uyarılar sayfası](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Kural Oluştur sayfasında, Yeni kuralınızı yapılandırın ( [Azure izleyici 'de bir günlük uyarısı kuralını](../azure-monitor/platform/alerts-unified-log.md)yapılandırdığınız şekilde):
+1. Kural Oluştur sayfasında, Yeni kuralınızı yapılandırın ( [Azure izleyici 'de bir günlük uyarısı kuralını](../azure-monitor/alerts/alerts-unified-log.md)yapılandırdığınız şekilde):
 
     * **Kaynak** için güvenlik uyarılarını ve önerilerini verdiğiniz Log Analytics çalışma alanını seçin.
 
     * **Koşul** için **özel günlük araması**' nı seçin. Görüntülenen sayfada sorguyu, geriye doğru dönemi ve sıklık dönemini yapılandırın. Log Analytics özelliğini sürekli dışarı aktarmayı etkinleştirerek, arama sorgusunda, güvenlik merkezi 'nin sürekli olarak dışa aktardığı veri türlerini sorgulamak için *Securityalert* veya *securityönerisi* yazabilirsiniz. 
     
-    * İsteğe bağlı olarak, tetiklemek istediğiniz [Eylem grubunu](../azure-monitor/platform/action-groups.md) yapılandırın. Eylem grupları e-posta gönderme, ıTSM biletleri, Web kancaları ve daha fazlasını tetikleyebilir.
+    * İsteğe bağlı olarak, tetiklemek istediğiniz [Eylem grubunu](../azure-monitor/alerts/action-groups.md) yapılandırın. Eylem grupları e-posta gönderme, ıTSM biletleri, Web kancaları ve daha fazlasını tetikleyebilir.
     ![Azure Izleyici uyarı kuralı](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Artık yeni Azure Güvenlik Merkezi uyarılarını veya önerilerini (yapılandırılmış sürekli dışarı aktarma kurallarınıza ve Azure izleyici uyarı kuralınız ' nda tanımladığınız koşula bağlı olarak) Azure Izleyici uyarıları ' nda, bir eylem grubunun otomatik tetiklenimiyle (sağlanmışsa) görürsünüz.

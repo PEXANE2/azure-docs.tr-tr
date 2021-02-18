@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c15897bd5d435503d3bef07e76a93b148971c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536286"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596866"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Logic Apps'te Azure İzleyici günlüklerini ayarlama ve B2B iletileri için tanılama verilerini toplama
 
-Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları AS2, x12 ve EDIOLGU gibi protokolleri kullanarak iletiler değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalıştığından emin olmak için, tümleştirme hesabınız için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayabilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bir [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)olayları tetikleme, çalıştırma olayları ve eylem olayları gibi çalışma zamanı verileri ve olayları hakkında verileri kaydedebilir ve kaydedebilirsiniz. İletiler için günlüğe kaydetme, şu gibi bilgiler de toplar:
+Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları AS2, x12 ve EDIOLGU gibi protokolleri kullanarak iletiler değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalıştığından emin olmak için, tümleştirme hesabınız için [Azure izleyici günlüklerini](../azure-monitor/logs/data-platform-logs.md) ayarlayabilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bir [Log Analytics çalışma alanında](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)olayları tetikleme, çalıştırma olayları ve eylem olayları gibi çalışma zamanı verileri ve olayları hakkında verileri kaydedebilir ve kaydedebilirsiniz. İletiler için günlüğe kaydetme, şu gibi bilgiler de toplar:
 
 * İleti sayısı ve durumu
 * Durum bildirimleri
 * Mesajlar ve bildirimler arasındaki bağıntılar
 * Hatalara ilişkin ayrıntılı hata açıklamaları
 
-Azure Izleyici, bu bilgileri bulmanıza ve izlemenize yardımcı olması için [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturmanızı sağlar. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi [diğer Azure hizmetleriyle de kullanabilirsiniz](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data).
+Azure Izleyici, bu bilgileri bulmanıza ve izlemenize yardımcı olması için [günlük sorguları](../azure-monitor/logs/log-query-overview.md) oluşturmanızı sağlar. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi [diğer Azure hizmetleriyle de kullanabilirsiniz](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data).
 
 Tümleştirme hesabınız için günlük kaydı ayarlamak için Azure portal [Logic Apps B2B çözümünü kurun](#install-b2b-solution) . Bu çözüm, B2B ileti olayları için toplu bilgiler sağlar. Daha sonra, bu bilgiler için günlüğe kaydetmeyi etkinleştirmek ve sorgular oluşturmak için [Azure izleyici günlüklerini](#set-up-resource-logs)ayarlayın.
 
@@ -32,7 +32,7 @@ Bu makalede, tümleştirme hesabınız için Azure Izleyici günlüğe kaydetmen
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
+* Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/logs/quick-create-workspace.md)öğrenin.
 
 * Azure Izleyici günlüğe kaydetme ile ayarlanan ve bu bilgileri bir Log Analytics çalışma alanına Gönderen bir mantıksal uygulama. [Mantıksal uygulamanız Için Azure izleyici günlüklerini ayarlamayı](../logic-apps/monitor-logic-apps.md)öğrenin.
 
@@ -48,11 +48,11 @@ Azure Izleyici günlükleri mantıksal uygulamanız için B2B iletilerini izleye
 
    !["Log Analytics çalışma alanları" i seçin](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. **Log Analytics çalışma alanları**altında, çalışma alanınızı seçin.
+1. **Log Analytics çalışma alanları** altında, çalışma alanınızı seçin.
 
    ![Log Analytics çalışma alanınızı seçin](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. Genel Bakış bölmesinde, **Get started with Log Analytics**  >  **izleme çözümlerini yapılandırma**Log Analytics kullanmaya başlama altında, **çözümleri görüntüle**' yi seçin.
+1. Genel Bakış bölmesinde,   >  **izleme çözümlerini yapılandırma** Log Analytics kullanmaya başlama altında, **çözümleri görüntüle**' yi seçin.
 
    ![Genel Bakış bölmesinde "çözümleri görüntüle" seçeneğini belirleyin.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
@@ -86,7 +86,7 @@ Azure Izleyici günlüğünü doğrudan tümleştirme hesabınızdan etkinleşti
 
    ![Tümleştirme hesabınızı bulun ve seçin](./media/monitor-b2b-messages-log-analytics/find-integration-account.png)
 
-1. Tümleştirme hesabınızın menüsünde, **izleme**altında **Tanılama ayarları**' nı seçin. **Tanılama ayarı Ekle**' yi seçin.
+1. Tümleştirme hesabınızın menüsünde, **izleme** altında **Tanılama ayarları**' nı seçin. **Tanılama ayarı ekle**’yi seçin.
 
    !["Izleme" altında "Tanılama ayarları" nı seçin.](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
 
@@ -96,11 +96,11 @@ Azure Izleyici günlüğünü doğrudan tümleştirme hesabınızdan etkinleşti
 
    1. **Log Analytics gönder**' i seçin.
 
-   1. **Abonelik**için, Log Analytics çalışma alanınız Ile ilişkili Azure aboneliğini seçin.
+   1. **Abonelik** için, Log Analytics çalışma alanınız Ile ilişkili Azure aboneliğini seçin.
 
-   1. **Log Analytics çalışma alanı**için, kullanmak istediğiniz çalışma alanını seçin.
+   1. **Log Analytics çalışma alanı** için, kullanmak istediğiniz çalışma alanını seçin.
 
-   1. **Günlük**altında, kaydetmek istediğiniz olay kategorisini belirten **ıntegrationaccounttrackingevents** kategorisini seçin.
+   1. **Günlük** altında, kaydetmek istediğiniz olay kategorisini belirten **ıntegrationaccounttrackingevents** kategorisini seçin.
 
    1. İşiniz bittiğinde **Kaydet**'i seçin.
 
@@ -116,7 +116,7 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
 1. [Azure Portal](https://portal.azure.com) arama kutusunda, Log Analytics çalışma alanınızı bulun ve açın.
 
-1. Çalışma alanınızın menüsünde, **çalışma alanı Özeti**  >  **Logic Apps B2B**seçin.
+1. Çalışma alanınızın menüsünde, **çalışma alanı Özeti**  >  **Logic Apps B2B** seçin.
 
    ![Çalışma alanı Özet bölmesi](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
@@ -127,7 +127,7 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
    ![Aralığı Değiştir](./media/monitor-b2b-messages-log-analytics/change-summary-interval.png)
 
-1. İleti durumu panosu görüntülendikten sonra, verileri tek bir güne göre gösteren belirli bir ileti türü için daha fazla ayrıntı görüntüleyebilirsiniz. **AS2**, **x12**veya **ediolgu**için kutucuğu seçin.
+1. İleti durumu panosu görüntülendikten sonra, verileri tek bir güne göre gösteren belirli bir ileti türü için daha fazla ayrıntı görüntüleyebilirsiniz. **AS2**, **x12** veya **ediolgu** için kutucuğu seçin.
 
    ![İleti durumlarını görüntüleme](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
 
@@ -163,7 +163,7 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/logs/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -182,15 +182,15 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Özellik | Açıklama |
 |----------|-------------|
-| **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
-| **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
+| **Gönderen** | **Alma ayarlarında** belirtilen Konuk iş ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
+| **Alıcı** | **Alma ayarlarında** belirtilen ana bilgisayar ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
 | **Mantıksal Uygulama** | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | AS2 ileti durumu <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. Hiçbir MDN ayarlanmadı. <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanır ve alınır ya da MDN gönderilir. <br>Failed = geçersiz bir AS2 iletisi alındı. Hiçbir MDN ayarlanmadı. <br>Bekliyor = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanmış ve MDN bekleniyor. |
 | **ONAY** | MDN ileti durumu <br>Kabul edilen = pozitif MDN alındı veya gönderildi. <br>Bekliyor = bir MDN alınması veya gönderilmesi bekleniyor. <br>Reddedildi = negatif MDN alındı veya gönderildi. <br>Gerekli değildir = MDN sözleşmede ayarlanmadı. |
 | **Yön** | AS2 ileti yönü |
 | **İzleme KIMLIĞI** | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
 | **İleti Kimliği** | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
-| **Zaman damgası** | AS2 eyleminin iletiyi işleme zamanı |
+| **İlişkin** | AS2 eyleminin iletiyi işleme zamanı |
 |||
 
 <!--
@@ -215,8 +215,8 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Özellik | Açıklama |
 |----------|-------------|
-| **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
-| **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
+| **Gönderen** | **Alma ayarlarında** belirtilen Konuk iş ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
+| **Alıcı** | **Alma ayarlarında** belirtilen ana bilgisayar ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
 | **Mantıksal Uygulama** | X12 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | X12 ileti durumu <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir x12 iletisi alındı veya gönderildi. <br>Bekliyor = geçerli bir x12 iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (997) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
@@ -225,7 +225,7 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | **İleti türü** | EDI x12 ileti türü |
 | **ICN** | X12 iletisi için değişim denetim numarası |
 | **TSCN** | X12 iletisi için Işlem kümesi denetim numarası |
-| **Zaman damgası** | X12 eyleminin iletiyi işleme zamanı |
+| **İlişkin** | X12 eyleminin iletiyi işleme zamanı |
 |||
 
 <!--
@@ -250,8 +250,8 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 
 | Özellik | Açıklama |
 |----------|-------------|
-| **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
-| **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
+| **Gönderen** | **Alma ayarlarında** belirtilen Konuk iş ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
+| **Alıcı** | **Alma ayarlarında** belirtilen ana bilgisayar ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
 | **Mantıksal Uygulama** | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | EDIOLGU iletisi durumu <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir EDıOLGU iletisi alındı veya gönderildi <br>Bekliyor = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (conı) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
@@ -260,7 +260,7 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 | **İleti türü** | EDIOLGU ileti türü |
 | **ICN** | EDIOLGU iletisi için değişim denetim numarası |
 | **TSCN** | EDIOLGU iletisi için Işlem kümesi denetim numarası |
-| **Zaman damgası** | EDIOLGU eyleminin iletiyi işleme zamanı |
+| **İlişkin** | EDIOLGU eyleminin iletiyi işleme zamanı |
 |||
 
 <!--

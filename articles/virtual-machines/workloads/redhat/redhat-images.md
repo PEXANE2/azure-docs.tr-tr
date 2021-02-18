@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737770"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635600"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -65,6 +65,9 @@ Bu görüntü sürümü karşılaştırması, değerler bir dize olarak değil, 
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 görüntü türleri
 
+>[!NOTE]
+> 30 2020 Aralık itibariyle, RHEL 6,10 yaşam sonu (EOL) olarak girilmiş. Devam eden destek için lütfen Uzatılmış yaşam döngüsü destek aşamasının bir parçası olarak, bkz. [Red Hat biçimli belgeler](./redhat-extended-lifecycle-support.md).
+
 RHEL 6. x görüntüleri için, görüntü türleri aşağıdaki tabloda gösterilmiştir.
 
 |Publisher | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
@@ -106,7 +109,15 @@ RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 |RedHat | RHEL | 8 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191023) | Bu görüntüler, standart Red Hat depolarına bağlı olan RHEL 8 LVM bölümlenmiş görüntüleridir.
 |RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](../../generation-2.md).
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL eklentileri daha uzun destekler
+## <a name="rhel-extended-support-add-ons"></a>RHEL genişletilmiş destek eklentileri
+
+### <a name="extended-life-cycle-support"></a>Uzatılmış yaşam döngüsü desteği
+
+Genişletilmiş yaşam döngüsü desteği (Tal) eklentisi, yaşam sonuna (EOL) ulaşan yayınlar için kritik ve önemli güvenlik düzeltmelerini sağlayan isteğe bağlı bir abonelikdir. RHEL EUS hakkında daha fazla bilgi, [Red Hat 'in belgelerinde](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support)bulunabilir.
+
+Bu, şu anda yalnızca RHEL 6,10 için kullanılabilir. Kullandıkça Öde görüntüleri için, [kırmızı hat, belgelerdeki](./redhat-extended-lifecycle-support.md)adımları izleyerek, farklı şekilde etkinleştirilebilir.
+
+Daha eski bir sürümde çalıştırıyorsanız, aynı şekilde etkinleştirebilmeniz için RHEL 6,10 yükseltmesi gerekir.
 
 ### <a name="extended-update-support"></a>Genişletilmiş güncelleştirme desteği
 

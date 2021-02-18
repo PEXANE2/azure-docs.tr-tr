@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055170"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585886"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Otomasyon hesabından Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -53,7 +53,7 @@ Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir. Windows veya Linux i�
 
 1. Otomasyon hesabınızdan, **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
-2. **Azure dışı makine Ekle**' ye tıklayın. Bu eylem, makinenin Değişiklik İzleme ve envanter işlemlerine raporlamaya başlayabilmesi [için Log Analytics aracısını Windows için yüklemek ve yapılandırmak üzere yönergeler](../../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
+2. **Azure dışı makine Ekle**' ye tıklayın. Bu eylem, makinenin Değişiklik İzleme ve envanter işlemlerine raporlamaya başlayabilmesi [için Log Analytics aracısını Windows için yüklemek ve yapılandırmak üzere yönergeler](../../azure-monitor/agents/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda Operations Manager tarafından yönetilen bir makine etkinleştiriyorsanız, yeni bir aracı gerekli değildir ve çalışma alanı bilgileri mevcut aracıya girilir.
 
 ## <a name="enable-machines-in-the-workspace"></a>Çalışma alanındaki makineleri etkinleştir
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83743751"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593893"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirme
 
@@ -23,18 +23,18 @@ Yeni veya mevcut bir Otomasyon hesabı ve bağlantılı Log Analytics çalışma
 ## <a name="create-resources-for-the-feature"></a>Özellik için kaynaklar oluşturma
 
 1. Azure [portalında](https://portal.azure.com)oturum açın.
-2. **Otomasyon hesaplarını**arayın ve seçin.
+2. **Otomasyon hesaplarını** arayın ve seçin.
 3. Otomasyon hesapları sayfasında, listeden Otomasyon hesabınızı seçin.
-4. Otomasyon hesabından **Ilgili kaynaklar**altında **VM Başlat/Durdur** ' u seçin. Buradan **daha fazla bilgi edinin ve çözümü etkinleştirin**. Özelliği zaten dağıttıysanız, **çözümü Yönet** ' e tıklayıp listeden bulabilirsiniz.
+4. Otomasyon hesabından **Ilgili kaynaklar** altında **VM Başlat/Durdur** ' u seçin. Buradan **daha fazla bilgi edinin ve çözümü etkinleştirin**. Özelliği zaten dağıttıysanız, **çözümü Yönet** ' e tıklayıp listeden bulabilirsiniz.
 
    ![Otomasyon hesabından etkinleştir](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > Kaynak **Oluştur ' a**tıklayarak kaynağı Azure Portal herhangi bir yerden da oluşturabilirsiniz. Market sayfasında **Başlat** veya **Başlat/Durdur**gibi bir anahtar sözcük yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. Alternatif olarak, özelliğin tam adından bir veya daha fazla anahtar sözcük yazabilir ve ardından **ENTER**tuşuna basabilirsiniz. Arama sonuçlarından **VM'leri çalışma saatleri dışında Başlat/Durdur** seçin.
+   > Kaynak **Oluştur ' a** tıklayarak kaynağı Azure Portal herhangi bir yerden da oluşturabilirsiniz. Market sayfasında **Başlat** veya **Başlat/Durdur** gibi bir anahtar sözcük yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. Alternatif olarak, özelliğin tam adından bir veya daha fazla anahtar sözcük yazabilir ve ardından **ENTER** tuşuna basabilirsiniz. Arama sonuçlarından **VM'leri çalışma saatleri dışında Başlat/Durdur** seçin.
 
 5. Seçili dağıtımın VM'leri çalışma saatleri dışında başlat/durdur sayfasında, Özet bilgilerini gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
-   ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure portalı](media/automation-solution-vm-management/azure-portal-01.png)
 
 ## <a name="configure-the-feature"></a>Özelliği yapılandırma
 
@@ -48,10 +48,10 @@ Kaynak oluşturulduğunda çözüm Ekle sayfası görüntülenir. Özelliği Oto
 
 2. Çalışma alanınız yoksa **Yeni çalışma alanı oluştur**' u seçin. Log Analytics çalışma alanı sayfasında, aşağıdaki adımları uygulayın:
 
-   - Yeni Log Analytics çalışma alanı için **Contosolaworkspace**gibi bir ad belirtin.
+   - Yeni Log Analytics çalışma alanı için **Contosolaworkspace** gibi bir ad belirtin.
    - Varsayılan seçilen değer uygun değilse, açılan listeden seçerek bağlantı için bir **abonelik** seçin.
-   - **Kaynak grubu**için, yeni bir kaynak grubu oluşturabilir veya var olan bir grup seçebilirsiniz.
-   - Bir **konum**seçin.
+   - **Kaynak grubu** için, yeni bir kaynak grubu oluşturabilir veya var olan bir grup seçebilirsiniz.
+   - Bir **konum** seçin.
    - Bir **Fiyatlandırma katmanı** seçin. **GB başına (tek başına)** seçeneğini belirleyin. Azure Izleyici günlükleri güncelleştirilmiş [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/log-analytics/) sahıptır ve GB başına katman tek seçenektir.
 
    > [!NOTE]
@@ -61,7 +61,7 @@ Kaynak oluşturulduğunda çözüm Ekle sayfası görüntülenir. Özelliği Oto
 
 ## <a name="add-automation-account"></a>Otomasyon hesabı ekle
 
-Çözüm Ekle sayfasına yeniden erişin ve **Otomasyon hesabı**' nı seçin. Zaten bir Log Analytics çalışma alanına bağlı olmayan mevcut bir Otomasyon hesabı seçebilirsiniz. Yeni bir Log Analytics çalışma alanı oluşturuyorsanız, bununla ilişkilendirilecek yeni bir Otomasyon hesabı oluşturabilirsiniz. Var olan bir Otomasyon hesabı seçin veya **Otomasyon**hesabı Ekle ' ye tıklayın ve Otomasyon hesabı Ekle sayfasında, **ad** alanındaki Otomasyon hesabının adını belirtin.
+Çözüm Ekle sayfasına yeniden erişin ve **Otomasyon hesabı**' nı seçin. Zaten bir Log Analytics çalışma alanına bağlı olmayan mevcut bir Otomasyon hesabı seçebilirsiniz. Yeni bir Log Analytics çalışma alanı oluşturuyorsanız, bununla ilişkilendirilecek yeni bir Otomasyon hesabı oluşturabilirsiniz. Var olan bir Otomasyon hesabı seçin veya **Otomasyon** hesabı Ekle ' ye tıklayın ve Otomasyon hesabı Ekle sayfasında, **ad** alanındaki Otomasyon hesabının adını belirtin.
 
 Diğer tüm seçenekler, seçili Log Analytics çalışma alanına göre otomatik olarak doldurulur. Bu seçenekleri değiştiremezsiniz. Bir Azure farklı çalıştır hesabı, özelliğe dahil edilen runbook 'lar için varsayılan kimlik doğrulama yöntemidir. 
 
@@ -82,7 +82,7 @@ Diğer tüm seçenekler, seçili Log Analytics çalışma alanına göre otomati
   
 4. Özelliği tarafından VM yönetimi için bir zamanlama seçmek üzere **zamanlama** alanını kullanın. Zamanlama için bir başlangıç tarihi ve saati seçerek, seçilen zamandan başlayarak yinelenen bir günlük zamanlama oluşturun. Farklı bir bölge seçme kullanılamıyor. Özelliği yapılandırdıktan sonra zamanlamayı belirli saat diliminize göre yapılandırmak için, bkz. [Başlangıç ve kapalı zamanlamaları değiştirme](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules).
 
-5. Bir [eylem grubundan](../azure-monitor/platform/action-groups.md)e-posta bildirimleri almak Için, **e-posta bildirimleri** alanında **Yes** varsayılan değerini kabul edin ve geçerli bir e-posta adresi sağlayın. **Hayır** ' ı seçerseniz, e-posta bildirimleri almak istediğiniz sonraki bir tarihte, virgülle ayrılmış geçerli e-posta adresleriyle oluşturulan eylem grubunu güncelleştirebilirsiniz. 
+5. Bir [eylem grubundan](../azure-monitor/alerts/action-groups.md)e-posta bildirimleri almak Için, **e-posta bildirimleri** alanında **Yes** varsayılan değerini kabul edin ve geçerli bir e-posta adresi sağlayın. **Hayır** ' ı seçerseniz, e-posta bildirimleri almak istediğiniz sonraki bir tarihte, virgülle ayrılmış geçerli e-posta adresleriyle oluşturulan eylem grubunu güncelleştirebilirsiniz. 
 
 6. Aşağıdaki uyarı kurallarını etkinleştirin:
 
@@ -92,7 +92,7 @@ Diğer tüm seçenekler, seçili Log Analytics çalışma alanına göre otomati
 
 ## <a name="create-alerts"></a>Uyarı oluşturma
 
-VM'leri çalışma saatleri dışında başlat/durdur, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere iş başarısız uyarıları oluşturmayı öğrenmek için [Azure izleyici ile günlük uyarıları oluşturma](../azure-monitor/platform/alerts-log.md) ' yı gözden geçirin.
+VM'leri çalışma saatleri dışında başlat/durdur, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere iş başarısız uyarıları oluşturmayı öğrenmek için [Azure izleyici ile günlük uyarıları oluşturma](../azure-monitor/alerts/alerts-log.md) ' yı gözden geçirin.
 
 ## <a name="deploy-the-feature"></a>Özelliği dağıtma
 
@@ -101,7 +101,7 @@ VM'leri çalışma saatleri dışında başlat/durdur, önceden tanımlanmış b
 2. **Oluştur**’a tıklayın. Tüm ayarlar doğrulandıktan sonra, özelliği aboneliğinize dağıtır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
 
     > [!NOTE]
-    > Azure bulut çözümü sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon hesabınızda, **paylaşılan kaynaklar** altındaki **değişkenlere** gidin ve [External_EnableClassicVMs](automation-solution-vm-management.md#variables) değişkenini **false**olarak ayarlayın. Bu, çözümün klasik VM kaynaklarına bakmasını engeller.
+    > Azure bulut çözümü sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon hesabınızda, **paylaşılan kaynaklar** altındaki **değişkenlere** gidin ve [External_EnableClassicVMs](automation-solution-vm-management.md#variables) değişkenini **false** olarak ayarlayın. Bu, çözümün klasik VM kaynaklarına bakmasını engeller.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
