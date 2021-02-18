@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: geçiş, Aro, OpenShift, Red Hat
-ms.openlocfilehash: d875389419e1442b942b4b42389664ffdd064ba3
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634116"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653287"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş yapın
 
@@ -100,7 +100,7 @@ Bu depolama türlerini yapılandırma hakkında daha fazla bilgi için bkz. [kal
 
 Azure Red Hat OpenShift 4, kaynak kodınızdan görüntü oluşturabilir, bunları dağıtabilir ve yaşam döngüsünü yönetebilir. Bunu etkinleştirmek için Azure Red Hat Openshıft, görüntüleri yerel olarak yönetmek için Azure Red Hat OpenShift ortamınızda dağıtılabilen 4 [dahili ve tümleşik bir kapsayıcı görüntüsü kayıt defteri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) sağlar.
 
-[Azure Container Registry](../container-registry/index.yml), [Red Hat Quay kayıt defterleri](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
+[Azure Container Registry](../container-registry/index.yml), [Red Hat Quay kayıt defterleri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)veya bir [kimlik doğrulaması etkin Red hat kayıt defteri](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)gibi dış kayıt defterleri kullanıyorsanız, kümenin depolara erişmesine izin vermek için kümeye kimlik bilgileri sağlamak için adımları izleyin.
 
 ### <a name="monitoring"></a>İzleme
 

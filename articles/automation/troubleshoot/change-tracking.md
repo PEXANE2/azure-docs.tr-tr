@@ -3,18 +3,63 @@ title: Azure Otomasyonu Değişiklik İzleme ve envanter sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Değişiklik İzleme ve envanter özelliği ile ilgili sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896554"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651174"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Değişiklik İzleme ve Stok özelliği sorunlarını giderme
 
 Bu makalede, Azure Otomasyonu Değişiklik İzleme ve envanter sorunlarını giderme ve çözme işlemleri açıklanmaktadır. Değişiklik İzleme ve envanter hakkında genel bilgi için bkz. [değişiklik izleme ve envantere genel bakış](../change-tracking/overview.md).
+
+## <a name="general-errors"></a>Genel hatalar
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Senaryo: makine farklı bir hesaba zaten kayıtlı
+
+### <a name="issue"></a>Sorun
+
+Aşağıdaki hata iletisini alırsınız:
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>Nedeni
+
+Makine Değişiklik İzleme için zaten başka bir çalışma alanına dağıtıldı.
+
+### <a name="resolution"></a>Çözüm
+
+1. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bunun nasıl doğrulanbileceğine ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
+
+1. Makinelerin Otomasyon hesabınıza bağlı Log Analytics çalışma alanında göründüğünden emin olun. Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi. Büyük olasılıkla yerel bir yapılandırma sorunu var. Log Analytics aracısını yeniden yüklemeniz gerekir.
+
+   Makineniz sorgu sonuçlarında listelenirse, çözüm özelliği altında, **şifre** listesi ' nin listelendiğini doğrulayın. Bu, Değişiklik İzleme ve envantere kaydedilmiş olduğunu doğrular. Değilse, kapsam yapılandırma sorunlarını kontrol edin. Kapsam yapılandırması, hangi makinelerin Değişiklik İzleme ve envanter için yapılandırıldığını belirler. Hedef makinenin kapsam yapılandırmasını yapılandırmak için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](../change-tracking/enable-from-automation-account.md).
+
+   Çalışma alanınızda bu sorguyu çalıştırın.
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. Bir ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota``` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesini durdurdu. Çalışma alanınızda **kullanım ve tahmini maliyetler**' e gidin. Daha fazla veri kullanmanıza izin veren yeni bir **fiyatlandırma katmanı** seçin ya da **günlük tepesine** tıklayıp Cap 'i kaldırın.
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="Kullanım ve tahmini maliyetler." lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+Sorununuz hala çözülmedi ise, Windows için karma çalışanı yeniden yüklemek üzere [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyin. Linux için,  [Linux karma runbook çalışanı dağıtma](../automation-linux-hrw-install.md)' daki adımları izleyin.
 
 ## <a name="windows"></a>Windows
 
@@ -96,11 +141,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](../../azure-monitor/platform/log-analytics-agent.md).
+Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](../../azure-monitor/agents/log-analytics-agent.md).
 
 Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırmasını doğrulayın. Bkz. [Azure izleyici 'de izleme çözümlerini hedefleme](../../azure-monitor/insights/solution-targeting.md).
 
-Bu sorunu giderme hakkında daha fazla bilgi için bkz. [sorun: herhangi bir Linux verisi görmüyorsunuz](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
+Bu sorunu giderme hakkında daha fazla bilgi için bkz. [sorun: herhangi bir Linux verisi görmüyorsunuz](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux için Log Analytics Aracısı doğru yapılandırılmamış
 

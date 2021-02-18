@@ -2,13 +2,13 @@
 title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
-ms.date: 11/20/2020
-ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 02/17/2021
+ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632893"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653892"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
 Azure Service Bus bulut hizmeti, [Gelişmiş Ileti sıraya alma Protokolü (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) ' i birincil iletişim yöntemi olarak kullanır. Microsoft, sektördeki iş ortaklarıyla, hem müşteriler hem de rekabet eden mesajlaşma aracılarında, [Oasin AMQP Technical komite](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)' de geliştirilen yeni uzantılarla, AMQP 'yi geçmiş yılda geliştirme ve geliştirme olanağı elde etti. AMQP 1,0, bir ISO ve ıEC Standard ([ıso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -84,9 +84,8 @@ Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyare
 
 * [AMQP ile .NET 'ten Service Bus kullanma]
 * [AMQP ile Java 'dan Service Bus kullanma]
-* [Azure Linux VM 'de Apache Qpid proton-C yükleniyor]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [AMQP ile .NET 'ten Service Bus kullanma]: service-bus-amqp-dotnet.md
 [AMQP ile Java 'dan Service Bus kullanma]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Azure Linux VM 'ye Apache Qpid proton-C yükleniyor]::
+

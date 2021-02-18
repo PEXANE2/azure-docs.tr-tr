@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166502"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653841"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Azure depolama hesabının varsayılan erişim katmanını yönetme
 
-Her Azure Storage hesabının, sık erişimli, seyrek erişimli veya arşiv olmak üzere bir varsayılan erişim katmanı vardır. Bir depolama hesabı oluşturduğunuzda erişim katmanını atarsınız. Varsayılan erişim katmanı etkin.
+Her Azure Storage hesabının, sık erişimli veya seyrek erişimli bir varsayılan erişim katmanı vardır. Bir depolama hesabı oluşturduğunuzda erişim katmanını atarsınız. Varsayılan erişim katmanı etkin.
 
 Depolama hesabındaki **erişim katmanı** özniteliğini ayarlayarak varsayılan hesap katmanını değiştirebilirsiniz. Hesap katmanını değiştirmek, hesapta depolanan ve açık katman kümesi olmayan tüm nesneler için geçerlidir. Hesap katmanını, yalnızca GPv2 hesaplarında ayarlanmış bir katman olmadan tüm Bloblar için sık erişimli ve seyrek erişimli bir yazma işlemi (10.000 başına), BLOB depolama ve GPv2 hesaplarındaki tüm Bloblar için hem okuma işlemleri (10.000 başına) hem de veri alma (GB başına) ücretleri olarak değiştirme.
 

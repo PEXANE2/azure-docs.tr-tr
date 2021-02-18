@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus mesajlaşma-kuyruklar, konular ve abonelikler
 description: Bu makalede, Azure Service Bus mesajlaşma varlıklarına (kuyruk, konular ve abonelikler) genel bir bakış sunulmaktadır.
-ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.topic: conceptual
+ms.date: 02/16/2021
+ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791599"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652828"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus kuyrukları, konu başlıkları ve abonelikleri
 Azure Service Bus, güvenilir Message Queuing ve dayanıklı yayımlama/abone olma iletileri dahil olmak üzere bulut tabanlı, ileti yönelimli bir ara yazılım teknolojilerini destekler. Bu Aracılı mesajlaşma özellikleri, Service Bus mesajlaşma iş yükünü kullanarak yayımlama-abone olma, zamana bağlı ayırma ve yük dengeleme senaryolarını destekleyen ayrılmış mesajlaşma özellikleri olarak düşünülebilir. Ayrılmış iletişimin birçok avantajı vardır. Örneğin, istemciler ve sunucular gerektiğinde bağlanabilir ve işlemlerini zaman uyumsuz bir biçimde gerçekleştirebilir.
@@ -26,19 +26,16 @@ Kuyruklar, bir veya daha fazla rakip tüketiciye **ilk olarak, Ilk çıkar** (FI
 [Azure Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md)veya [Kaynak Yöneticisi şablonlarını](service-bus-resource-manager-namespace-queue.md)kullanarak kuyruklar oluşturabilirsiniz. Ardından, [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md), [php](service-bus-php-how-to-use-queues.md)ve [Ruby](service-bus-ruby-how-to-use-queues.md)dilinde yazılmış istemcileri kullanarak ileti gönderin ve alın. 
 
 ### <a name="receive-modes"></a>Alma modları
-Service Bus iletileri aldığı iki farklı mod belirtebilirsiniz: **Receiveanddelete** veya **PeekLock**. [Receiveanddelete](/dotnet/api/microsoft.azure.servicebus.receivemode) modunda, Service Bus tüketiciden aldığında, iletiyi tüketildiği gibi işaretler ve tüketici uygulamasına geri döndürür. Bu mod en basit modeldir. Bir hata oluşursa uygulamanın bir iletiyi işlememesi için kabul edebildiği senaryolar için en iyi yöntem kullanılır. Bu senaryoyu anlamak için, tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlediği için, uygulama yeniden başlatma sırasında iletileri tükemeye başlar. Çökmeden önce tüketildiği iletiyi kaçırır.
+Service Bus iletileri aldığı iki farklı mod belirtebilirsiniz.
 
-[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) modunda, alma işlemi iki aşamalı olur ve bu da eksik iletileri kabul edemediği uygulamaları desteklemeye olanak sağlar. Service Bus isteği aldığında, aşağıdaki işlemleri yapar:
+- **Al ve Sil**. Bu modda, Service Bus tüketiciden aldığında, iletiyi tüketildiği gibi işaretler ve tüketici uygulamasına geri döndürür. Bu mod en basit modeldir. Bir hata oluşursa uygulamanın bir iletiyi işlememesi için kabul edebildiği senaryolar için en iyi yöntem kullanılır. Bu senaryoyu anlamak için, tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlediği için, uygulama yeniden başlatma sırasında iletileri tükemeye başlar. Çökmeden önce tüketildiği iletiyi kaçırır.
+- **Kilit Özeti**. Bu modda, alma işlemi iki aşamalı olur ve bu da eksik iletileri kabul edemediği uygulamaları desteklemeye olanak tanır. 
+    1. Kullanılacak sonraki iletiyi bulur, diğer tüketicilerin bunu almasını engellemek için bunu **kilitler** ve sonra iletiyi uygulamaya döndürür. 
+    1. Uygulama iletiyi işlemeyi tamamladıktan sonra, alma işleminin ikinci aşamasını tamamlaması için Service Bus hizmeti ister. Ardından, hizmet **iletiyi tüketildiği gibi işaretler**. 
 
-1. Tüketilen sonraki iletiyi bulur.
-1. Diğer tüketicilerin bunu almasını engellemek için onu kilitler.
-1. Ardından, iletiyi uygulamaya döndürün. 
+        Uygulama bir nedenden dolayı iletiyi işleyemez, **iletiyi bırakmak için** Service Bus hizmetine istekte bulunabilir. Service Bus, iletinin **kilidini açar** ve aynı tüketici tarafından ya da başka bir rekabet müşterisi tarafından tekrar alınabilmesini sağlar. İkinci olarak, kilitle ile ilişkili bir **zaman aşımı** vardır. Uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse, Service Bus iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
 
-Uygulama iletiyi işlemeyi tamamladıktan veya gelecekteki işlemler için güvenilir bir şekilde depoladıktan sonra, iletiyi çağırarak alma işleminin ikinci aşamasını tamamlar [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) . Service Bus, **Tamamlananteasync** isteğini aldığında, iletiyi tüketildiği gibi işaretler.
-
-Uygulama bir nedenden dolayı iletiyi işleyemez, [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) ileti üzerinde yöntemi çağırabilir (yerine [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ). Bu yöntem, Service Bus iletinin kilidini açmak ve aynı tüketici ya da başka bir rekabet tüketicisi tarafından yeniden alınmalarını sağlar. İkinci olarak, kilitle ile ilişkili bir zaman aşımı vardır. Uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse, Service Bus iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
-
-Uygulama, iletiyi tamamladıktan sonra, ancak çağrı yapmadan önce kilitlenirse [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) , Service Bus yeniden başlatıldığında iletiyi uygulamaya yeniden gönderir. Bu işlem genellikle **en az bir kez** işleme olarak adlandırılır. Diğer bir deyişle, her ileti en az bir kez işlenir. Ancak, bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme tolerans oluşturmazsa, yinelemeleri saptamak için uygulamanıza ek mantık ekleyin. İletinin [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) özelliğini kullanarak elde edebilirsiniz ve bu, teslim girişimleri arasında sabit kalır. Bu özellik **tam olarak bir kez** işlenirken bilinir.
+        Uygulama iletiyi tamamladıktan sonra kilitlenirse, ancak iletiyi tamamlamadan Service Bus hizmeti istemden önce, yeniden başlatıldığında iletiyi uygulamaya yeniden dağıtır Service Bus. Bu işlem genellikle **en az bir kez** işleme olarak adlandırılır. Diğer bir deyişle, her ileti en az bir kez işlenir. Ancak, bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme tolerans oluşturmazsa, yinelemeleri saptamak için uygulamanıza ek mantık ekleyin. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md). Bu özellik **tam olarak bir kez** işlenirken bilinir.
 
 ## <a name="topics-and-subscriptions"></a>Konular ve abonelikler
 Sıra, bir iletinin tek bir tüketici tarafından işlenmesine izin verir. Kuyrukların aksine, konular ve abonelikler, **Yayımla ve abone ol** düzeninde bire çok bir iletişim biçimi sağlar. Çok sayıda alıcıya ölçeklendirilmesi yararlı olur. Her yayımlanan ileti, konuya kayıtlı her abonelik için kullanılabilir hale getirilir. Yayımcı bir konuya bir ileti gönderir ve bir veya daha fazla abone, bu aboneliklerde ayarlanan filtre kurallarına bağlı olarak iletinin bir kopyasını alır. Abonelikler, almak istedikleri iletileri kısıtlamak için ek filtreler kullanabilir. Yayımcılar bir konuya ileti gönderdikleri şekilde bir konuya ileti gönderir. Ancak, tüketiciler doğrudan konudan ileti almaz. Bunun yerine, tüketiciler konusunun aboneliklerinden iletiler alırlar. Konu aboneliği, konuya gönderilen iletilerin kopyalarını alan bir sanal kuyruğa benzer. Tüketiciler bir aboneliğden iletileri bir kuyruktan alma yöntemiyle aynı şekilde alırlar.
@@ -55,7 +52,7 @@ Tam çalışma örneği için GitHub 'da [Topicsubscriptionwithruleoperationssam
 
 Olası filtre değerleri hakkında daha fazla bilgi için [Sqlfilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) ve [sqlruleaction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) sınıfları belgelerine bakın.
 
-## <a name="java-message-service-jms-20-entities-preview"></a>Java ileti hizmeti (JMS) 2,0 varlıkları (Önizleme)
+## <a name="java-message-service-jms-20-entities"></a>Java ileti hizmeti (JMS) 2,0 varlıkları
 Aşağıdaki varlıklara Java ileti hizmeti (JMS) 2,0 API 'SI aracılığıyla erişilebilir.
 
   * Geçici kuyruklar

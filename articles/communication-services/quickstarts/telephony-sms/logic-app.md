@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801675"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652726"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Hızlı başlangıç: Azure Iletişim hizmetleriyle Azure Logic Apps SMS mesajları gönderme
 
-[Azure Iletişim HIZMETLERI SMS](../../overview.md) bağlayıcısını ve [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md)kullanarak SMS iletileri gönderebileceği otomatik iş akışları veya *mantıksal uygulamalar*oluşturabilirsiniz. Bu hızlı başlangıçta, bir mantıksal uygulama iş akışındaki ilk adım olan bir tetikleyici olayına yanıt olarak nasıl otomatik olarak metin iletileri gönderileceğini gösterilmektedir. Tetikleyici olay, gelen bir e-posta iletisi, yineleme zamanlaması, [Azure Event Grid](../../../event-grid/overview.md) kaynak olayı veya [Azure Logic Apps tarafından desteklenen](/connectors/connector-reference/connector-reference-logicapps-connectors)başka bir tetikleyici olabilir.
+[Azure Iletişim HIZMETLERI SMS](../../overview.md) bağlayıcısını ve [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md)kullanarak SMS iletileri gönderebileceği otomatik iş akışları veya *mantıksal uygulamalar* oluşturabilirsiniz. Bu hızlı başlangıçta, bir mantıksal uygulama iş akışındaki ilk adım olan bir tetikleyici olayına yanıt olarak nasıl otomatik olarak metin iletileri gönderileceğini gösterilmektedir. Tetikleyici olay, gelen bir e-posta iletisi, yineleme zamanlaması, [Azure Event Grid](../../../event-grid/overview.md) kaynak olayı veya [Azure Logic Apps tarafından desteklenen](/connectors/connector-reference/connector-reference-logicapps-connectors)başka bir tetikleyici olabilir.
 
 :::image type="content" source="./media/logic-app/azure-communication-services-connector.png" alt-text="Mantıksal uygulama Tasarımcısı ' na açık olan Azure portal gösteren ekran görüntüsü ve Azure Iletişim Hizmetleri Bağlayıcısı için SMS gönder eylemini kullanan örnek bir mantıksal uygulama gösterir.":::
 
@@ -39,6 +39,8 @@ Bu hızlı başlangıç, bir tetikleyiciye yanıt vermek için bağlayıcının 
 
 - SMS etkin telefon numarası veya [telefon numarası alın](./get-phone-number.md).
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>SMS eylemi ekleme
 
 Azure Iletişim Hizmetleri SMS bağlayıcısını kullanarak, iş akışınıza **SMS gönder** eylemini yeni bir adım olarak eklemek için, mantıksal uygulama Tasarımcısı 'nda mantıksal uygulama iş akışınız [Azure Portal](https://portal.azure.com) aşağıdaki adımları izleyin:
@@ -47,7 +49,7 @@ Azure Iletişim Hizmetleri SMS bağlayıcısını kullanarak, iş akışınıza 
 
 1. İşlem araması **seçin** kutusunda, girin `Azure Communication Services` . Eylemler listesinden **SMS gönder**' i seçin.
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Mantıksal uygulama Tasarımcısı ' na açık olan Azure portal gösteren ekran görüntüsü ve Azure Iletişim Hizmetleri Bağlayıcısı için SMS gönder eylemini kullanan örnek bir mantıksal uygulama gösterir.":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Mantıksal uygulama Tasarımcısı 'nı ve SMS gönder eylemi seçili olan Azure Iletişim Hizmetleri bağlayıcısını gösteren ekran görüntüsü.":::
 
 1. Şimdi Iletişim Hizmetleri kaynağına bir bağlantı oluşturun.
 
@@ -57,7 +59,7 @@ Azure Iletişim Hizmetleri SMS bağlayıcısını kullanarak, iş akışınıza 
 
    1. **Oluştur**’u seçin.
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Mantıksal uygulama Tasarımcısı ' na açık olan Azure portal gösteren ekran görüntüsü ve Azure Iletişim Hizmetleri Bağlayıcısı için SMS gönder eylemini kullanan örnek bir mantıksal uygulama gösterir.":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Örnek bilgilerle SMS eylem yapılandırması Gönder ' i gösteren ekran görüntüsü.":::
 
 1. **SMS gönder** eyleminde, aşağıdaki bilgileri sağlayın: 
 
@@ -67,7 +69,7 @@ Azure Iletişim Hizmetleri SMS bağlayıcısını kullanarak, iş akışınıza 
 
    Örnek bilgiler içeren bir **SMS gönder** eylemi aşağıda verilmiştir:
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Mantıksal uygulama Tasarımcısı ' na açık olan Azure portal gösteren ekran görüntüsü ve Azure Iletişim Hizmetleri Bağlayıcısı için SMS gönder eylemini kullanan örnek bir mantıksal uygulama gösterir.":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Örnek bilgilerle SMS gönder eylemini gösteren ekran görüntüsü.":::
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -93,5 +95,5 @@ Bu hızlı başlangıçta, Azure Logic Apps ve Azure Iletişim hizmetlerini kull
 Azure Iletişim hizmetlerinde SMS hakkında daha fazla bilgi için şu makalelere bakın:
 
 - [SMS kavramları](../../concepts/telephony-sms/concepts.md)
-- [Telefon ve SMS çözümünüzü planlama](../../concepts/telephony-sms/plan-solution.md)
+- [Telefon numarası türleri](../../concepts/telephony-sms/plan-solution.md)
 - [SMS SDK](../../concepts/telephony-sms/sdk-features.md)
