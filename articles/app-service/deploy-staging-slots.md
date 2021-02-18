@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594242"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
 
-Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](./overview.md)için dağıtırken, **Standart**, **Premium**veya **yalıtılmış** App Service planı katmanında çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsiniz. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
+Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](./overview.md)için dağıtırken, **Standart**, **Premium** veya **yalıtılmış** App Service planı katmanında çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsiniz. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
 
 Uygulamanızı üretim dışı bir yuvaya dağıtmak aşağıdaki avantajlara sahiptir:
 
@@ -30,7 +30,7 @@ Uygulamanızı farklı bir katmana ölçeklendirmek için, hedef katmanın uygul
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Yuva ekleme
-Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standart**, **Premium**veya **yalıtılmış** katmanda çalışıyor olması gerekir.
+Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standart**, **Premium** veya **yalıtılmış** katmanda çalışıyor olması gerekir.
 
 
 1. [Azure Portal](https://portal.azure.com/), **uygulama hizmetleri** ' ni arayıp seçin ve uygulamanızı seçin. 
@@ -43,7 +43,7 @@ Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standa
     ![Yeni dağıtım yuvası ekleme](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Uygulama zaten **Standart**, **Premium**veya **yalıtılmış** katmanda değilse, hazırlanan yayımlamayı etkinleştirmek için desteklenen katmanları gösteren bir ileti alırsınız. Bu noktada, devam etmeden önce **Yükselt** ' i seçme ve uygulamanızın **Ölçek** sekmesine gitme seçeneğiniz vardır.
+   > Uygulama zaten **Standart**, **Premium** veya **yalıtılmış** katmanda değilse, hazırlanan yayımlamayı etkinleştirmek için desteklenen katmanları gösteren bir ileti alırsınız. Bu noktada, devam etmeden önce **Yükselt** ' i seçme ve uygulamanızın **Ölçek** sekmesine gitme seçeneğiniz vardır.
    > 
 
 3. **Yuva Ekle** iletişim kutusunda yuvaya bir ad verin ve bir uygulama yapılandırmasını başka bir dağıtım yuvasından klonlamak isteyip istemediğinizi seçin. Devam etmek için **Ekle** ' yi seçin.
@@ -185,7 +185,7 @@ Otomatik değiştirmeyi yapılandırmak için:
 
 1. Uygulamanızın kaynak sayfasına gidin. **Dağıtım yuvaları**  >  *\<desired source slot>*  >  **yapılandırma**  >  **genel ayarları**' nı seçin.
    
-2. **Otomatik takas etkin**için **Açık**seçeneğini belirleyin. Ardından, **Otomatik takas dağıtım yuvası**için istenen hedef yuvayı seçin ve komut çubuğunda **Kaydet** ' i seçin. 
+2. **Otomatik takas etkin** için **Açık** seçeneğini belirleyin. Ardından, **Otomatik takas dağıtım yuvası** için istenen hedef yuvayı seçin ve komut çubuğunda **Kaydet** ' i seçin. 
    
     ![Otomatik değiştirmeyi yapılandırmaya yönelik seçimler](./media/web-sites-staged-publishing/AutoSwap02.png)
 
@@ -212,7 +212,7 @@ Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerek
 
 Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her ikisiyle de ısınma davranışını özelleştirebilirsiniz:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer: `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. `/` varsayılan değerdir. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Isınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek olarak bir örnektir `200,202` . Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
 > [!NOTE]
@@ -222,7 +222,7 @@ Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps
 
 ## <a name="monitor-a-swap"></a>Değiştirme izleme
 
-[Değiştirme işleminin](#AboutConfiguration) tamamlanmasını uzun sürerse, [etkinlik günlüğündeki](../azure-monitor/platform/platform-logs-overview.md)değiştirme işlemi hakkında bilgi edinebilirsiniz.
+[Değiştirme işleminin](#AboutConfiguration) tamamlanmasını uzun sürerse, [etkinlik günlüğündeki](../azure-monitor/essentials/platform-logs-overview.md)değiştirme işlemi hakkında bilgi edinebilirsiniz.
 
 Portalın kaynak sayfasında, sol bölmede **etkinlik günlüğü**' nü seçin.
 
@@ -262,7 +262,7 @@ Kullanıcıların beta uygulamanızı geri almasına izin vermek için, örneği
 
 Dize, `x-ms-routing-name=self` Üretim yuvasını belirtir. İstemci tarayıcısı bağlantıya eriştiğinde, üretim yuvasına yönlendirilir. Sonraki tüm istekler, `x-ms-routing-name=self` oturumu üretim yuvasına sabiteden tanımlama bilgisine sahiptir.
 
-Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. İşte bir örnek:
+Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. Aşağıda bir örnek verilmiştir:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
@@ -274,7 +274,7 @@ Varsayılan olarak, yeni yuvalara gri olarak gösterilen bir yönlendirme kural�
 
 ## <a name="delete-a-slot"></a>Yuva silme
 
-Uygulamanızı arayın ve seçin. **Dağıtım yuvalarına**  >  *\<slot to delete>*  >  **Genel Bakış ' ı**seçin. Uygulama türü, bir dağıtım yuvası görüntülemekte olduğunuzu hatırlatmak için **App Service (yuva)** olarak gösterilir. Komut çubuğunda **Sil** ' i seçin.  
+Uygulamanızı arayın ve seçin. **Dağıtım yuvalarına**  >  *\<slot to delete>*  >  **Genel Bakış ' ı** seçin. Uygulama türü, bir dağıtım yuvası görüntülemekte olduğunuzu hatırlatmak için **App Service (yuva)** olarak gösterilir. Komut çubuğunda **Sil** ' i seçin.  
 
 ![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -398,7 +398,7 @@ Dağıtım yuvaları için [Azure CLI](https://github.com/Azure/azure-cli) komut
 
 ## <a name="troubleshoot-swaps"></a>Takas sorunlarını giderme
 
-[Yuva değiştirme](#AboutConfiguration)sırasında herhangi bir hata oluşursa, *D:\home\LogFiles\eventlog.xml*oturum açar. Ayrıca uygulamaya özgü hata günlüğüne kaydedilir.
+[Yuva değiştirme](#AboutConfiguration)sırasında herhangi bir hata oluşursa, *D:\home\LogFiles\eventlog.xml* oturum açar. Ayrıca uygulamaya özgü hata günlüğüne kaydedilir.
 
 Bazı yaygın değiştirme hataları aşağıda verilmiştir:
 
@@ -406,7 +406,7 @@ Bazı yaygın değiştirme hataları aşağıda verilmiştir:
 
 - Uygulama içeriği yerel önbellek için belirtilen yerel disk kotasını aştığında yerel önbellek başlatma başarısız olabilir. Daha fazla bilgi için bkz. [yerel önbelleğe genel bakış](overview-local-cache.md).
 
-- [Özel ısınma](#Warm-up)sırasında http istekleri dahili olarak yapılır (dış URL 'ye geçmeden). *Web.config*IÇINDEKI belirli URL yeniden yazma kurallarıyla başarısız olabilir. Örneğin, etki alanı adlarını yeniden yönlendirme veya HTTPS zorlama kuralları, uygulama koduna ulaşmasını önler. Bu sorunu geçici olarak çözmek için, aşağıdaki iki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
+- [Özel ısınma](#Warm-up)sırasında http istekleri dahili olarak yapılır (dış URL 'ye geçmeden). *Web.config* IÇINDEKI belirli URL yeniden yazma kurallarıyla başarısız olabilir. Örneğin, etki alanı adlarını yeniden yönlendirme veya HTTPS zorlama kuralları, uygulama koduna ulaşmasını önler. Bu sorunu geçici olarak çözmek için, aşağıdaki iki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
 
     ```xml
     <conditions>

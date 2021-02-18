@@ -1,5 +1,5 @@
 ---
-title: Azure Windows sanal makinelerinde yüksek CPU sorunlarını giderme
+title: Azure Windows sanal makineleri için yüksek CPU sorunlarını giderme
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 124650f4570608efabba3d8002c14ad06c4782ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571513"
 ---
-# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Azure Windows sanal makinelerinde yüksek CPU sorunlarını giderme
+# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Azure Windows sanal makineleri için yüksek CPU sorunlarını giderme
 
 ## <a name="summary"></a>Özet
 
@@ -104,19 +104,19 @@ VM dikey penceresine gidip **Performans Tanılama** seçeneğini belirleyin. Se�
 
 #### <a name="azure-portal-option-2"></a>Azure portal seçenek 2
 
-VM dikey penceresinde **sorunları tanılamak ve çözmek** için göz atın ve **VM performans sorunlarını**bulun.
+VM dikey penceresinde **sorunları tanılamak ve çözmek** için göz atın ve **VM performans sorunlarını** bulun.
 
   ![VM performans sorunlarını giderme](./media/troubleshoot-high-cpu-issues-azure-windows-vm/2-troubleshoot-vm-performance-issues.png)
 
 **Sorun giderme**' yi seçerseniz, Perfinsıghts yükleme ekranı yüklenir.
 
-**Yükleme ' yi**seçerseniz, yükleme farklı koleksiyon seçenekleri sağlar.
+**Yükleme ' yi** seçerseniz, yükleme farklı koleksiyon seçenekleri sağlar.
 
   ![Performans Analizi](./media/troubleshoot-high-cpu-issues-azure-windows-vm/3-performance-analysis.png)
 
 Ekran görüntüsündeki numaralandırılmış seçenekler aşağıdaki yorumlarla ilgilidir:
 
-1. **Yüksek CPU**seçeneği Için **Performans Analizi** veya **Gelişmiş**' i seçin.
+1. **Yüksek CPU** seçeneği Için **Performans Analizi** veya **Gelişmiş**' i seçin.
 
 2. Buraya belirti eklediğinizde, bu bilgiler rapora eklenir ve bu da Azure desteğiyle bilgi paylaşmanıza yardımcı olur.
 
@@ -176,7 +176,7 @@ Perfinsıghts raporunu açın. **Bulgular** sekmesi, tüm aykırı değerleri ka
 
   ![Etki düzeyi kaynakları](./media/troubleshoot-high-cpu-issues-azure-windows-vm/8-impact-level-resources.png)
 
-Önceki örneğe benzer şekilde, Perfinsıghts 30 dakika boyunca çalıştırıldı. Bu süre boyunca, vurgulanan işlem CPU 'nun daha yüksek bir tarafında tüketildi. Aynı işlem toplama süresi boyunca çalışıyorsa, etki düzeyi **yüksek**olarak değişir.
+Önceki örneğe benzer şekilde, Perfinsıghts 30 dakika boyunca çalıştırıldı. Bu süre boyunca, vurgulanan işlem CPU 'nun daha yüksek bir tarafında tüketildi. Aynı işlem toplama süresi boyunca çalışıyorsa, etki düzeyi **yüksek** olarak değişir.
 
 **Bulguları** olayını genişletirseniz, bazı önemli ayrıntıları görürsünüz. Bu sekmede işlemler, **Ortalama CPU** tüketimine göre azalan sırada listelenir ve işlemin sistemle, Microsoft 'a ait bir uygulamayla (SQL, IIS) veya üçüncü taraf bir işlemle ilişkili olup olmadığını gösterir.
 
@@ -204,7 +204,7 @@ Perfinsıghts, VMSlow ve gelişmiş senaryolar için bir ek günlük olarak Perf
 
 - Uzaktan toplanabilir.
 
-- **Görevler**aracılığıyla zamanlanabilir.
+- **Görevler** aracılığıyla zamanlanabilir.
 
 - Daha uzun süreler veya sürekli modda toplama özelliği kullanılarak toplanabilir.
 
@@ -227,9 +227,9 @@ Başlamak için, **Sayaç Ekle** kategorisini seçin.
 
 1. **Kullanılabilir sayaçlar**' ın altında, **işlemci bilgileri** kategorisinde **% processortime** sayacını seçin.
 
-1. Tüm Birleşik çekirdekler için istatistikleri sağlayan **_Total**seçin.
+1. Tüm Birleşik çekirdekler için istatistikleri sağlayan **_Total** seçin.
 
-1. **Ekle**’yi seçin. Pencere, **eklenen sayaçlar**altında **% processortime süresini** gösterir.
+1. **Add (Ekle)** seçeneğini belirleyin. Pencere, **eklenen sayaçlar** altında **% processortime süresini** gösterir.
 
   ![İşlemci zamanı Ekle](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 
@@ -237,7 +237,7 @@ Sayaçlar yüklendikten sonra, toplama zaman çerçevesinde çizgi eğilimi graf
 
   ![Performans Izleyicisi ayarları](./media/troubleshoot-high-cpu-issues-azure-windows-vm/12-performance-monitor-1.png)
 
-Her sayacın **Ortalama**, **En düşük**ve **en yüksek** değerleri olacaktır. Ortalama değer, veri toplama süresine bağlı olarak değişebildiğinden, hem **Ortalama** hem de **en fazla** değere odaklanın. Genel koleksiyon 40 dakika iken yüksek CPU etkinliği 10 dakika boyunca görülense, ortalama değerler çok daha düşüktür.
+Her sayacın **Ortalama**, **En düşük** ve **en yüksek** değerleri olacaktır. Ortalama değer, veri toplama süresine bağlı olarak değişebildiğinden, hem **Ortalama** hem de **en fazla** değere odaklanın. Genel koleksiyon 40 dakika iken yüksek CPU etkinliği 10 dakika boyunca görülense, ortalama değerler çok daha düşüktür.
 
 Önceki eğilim grafiğinde, **Toplam işlemcinin** yaklaşık 15 dakika boyunca yüzde 80 ' ün yakınında olduğunu gösterir.
 
@@ -257,7 +257,7 @@ Tipik bir üretim bilgisayarında yüzlerce veya işlem çalışıyor olabilir. 
 
 Bu işlemi hızlandırmak için **histogram** görünümünü kullanın ve görünüm türünü **çizgi** **iken çubuk grafik olarak değiştirin**. Bu, size bir çubuk grafik verecektir. Toplama sırasında yüksek CPU kullanımı deneyimi sunan işlemlerin kolayca görülmesini daha kolay bulacaksınız.
 
-Her zaman **Toplam**için bir çubuk olacağı için, yüksek bir tükenme oranını gösteren çubuklara odaklanın. Görünümü temizlemek için diğer çubukları silebilirsiniz. Şimdi **satır** görünümüne geri kaydır.
+Her zaman **Toplam** için bir çubuk olacağı için, yüksek bir tükenme oranını gösteren çubuklara odaklanın. Görünümü temizlemek için diğer çubukları silebilirsiniz. Şimdi **satır** görünümüne geri kaydır.
 
   ![Performans İzleyicisi göstergeleri](./media/troubleshoot-high-cpu-issues-azure-windows-vm/14-performance-monitor-2.png)
 
@@ -265,7 +265,7 @@ Her zaman **Toplam**için bir çubuk olacağı için, yüksek bir tükenme oran�
 
   ![Performans İzleyicisi sonuçları](./media/troubleshoot-high-cpu-issues-azure-windows-vm/15-performance-monitor-3.png)
 
-Kullanılabilir araçların listesi, Perfmon için performans açısından bitmez. **ProcessMonitor** (ProcMon) veya **XPerf**gibi diğer araçlara erişiminiz vardır. Gerektiğinde kullanabileceğiniz birçok üçüncü taraf araç mevcuttur.
+Kullanılabilir araçların listesi, Perfmon için performans açısından bitmez. **ProcessMonitor** (ProcMon) veya **XPerf** gibi diğer araçlara erişiminiz vardır. Gerektiğinde kullanabileceğiniz birçok üçüncü taraf araç mevcuttur.
 
 ### <a name="azure-monitoring-tools"></a>Azure izleme araçları
 
@@ -281,7 +281,7 @@ Azure Izleyici ölçümlerini etkinleştirdikten sonra, yazılım VM 'ye bir uza
 
   ![Tanılama depolama hesabı](./media/troubleshoot-high-cpu-issues-azure-windows-vm/17-diagnostics-storage-account.png)
 
-**Temel** sayaç kategorileri **varsayılan**olarak ayarlanır. Ancak, **özel** bir koleksiyon da ayarlayabilirsiniz.
+**Temel** sayaç kategorileri **varsayılan** olarak ayarlanır. Ancak, **özel** bir koleksiyon da ayarlayabilirsiniz.
 
   ![Performans sayaçları](./media/troubleshoot-high-cpu-issues-azure-windows-vm/18-performance-counters.png)
 
@@ -289,7 +289,7 @@ Ayarlar etkinleştirildikten sonra, bu **Konuk** sayaçlarını **ölçümler** 
 
   ![Ölçüm ad alanı](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Azure izleyici 'yi Azure sanal makinelerini yönetmek üzere kullanma hakkında daha fazla bilgi için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../../azure-monitor/insights/monitor-vm-azure.md).
+Azure izleyici 'yi Azure sanal makinelerini yönetmek üzere kullanma hakkında daha fazla bilgi için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../../azure-monitor/vm/monitor-vm-azure.md).
 
 ### <a name="reactive-troubleshooting"></a>Reaktif sorun giderme
 
@@ -303,7 +303,7 @@ Perfinsıghts henüz **Zamanlanmış bir çalıştırma** özelliğine sahip de�
 
 ### <a name="logman-command"></a>Logman komutu
 
-**Logman Create Counter** komutu, komut satırı aracılığıyla Perfmon koleksiyonunu çalıştırmak, **Görev Yöneticisi**aracılığıyla zamanlamak veya uzaktan çalıştırmak için kullanılır.
+**Logman Create Counter** komutu, komut satırı aracılığıyla Perfmon koleksiyonunu çalıştırmak, **Görev Yöneticisi** aracılığıyla zamanlamak veya uzaktan çalıştırmak için kullanılır.
 
 **Örnek** (uzak koleksiyon modunu içerir)
 

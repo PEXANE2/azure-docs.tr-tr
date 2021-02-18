@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085357"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587212"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Izleyici ile Surface Hub 'larını izleyerek sistem durumlarını izleyin
 
@@ -26,7 +26,7 @@ Her Surface Hub Microsoft Monitoring Agent yüklüdür. Aracı aracılığıyla 
 
 * İzlemek istediğiniz cihaz sayısını destekleyecek [Log Analytics abonelik](https://azure.microsoft.com/pricing/details/log-analytics/) düzeyi. Log Analytics fiyatlandırma, kaç cihazın kayıtlı olduğuna ve ne kadar veri işleme olduğuna bağlı olarak değişir. Surface Hub dağıtımı planlarken bunu dikkate almak isteyeceksiniz.
 
-Sonra, var olan bir Log Analytics çalışma alanını ekleyecek veya yeni bir tane oluşturacaksınız. Her iki yöntemi kullanmaya yönelik ayrıntılı yönergeler [Azure portal Log Analytics çalışma alanı oluşturur](../learn/quick-create-workspace.md). Log Analytics çalışma alanı yapılandırıldıktan sonra, Surface Hub cihazlarınızı kaydetmek için iki yol vardır:
+Sonra, var olan bir Log Analytics çalışma alanını ekleyecek veya yeni bir tane oluşturacaksınız. Her iki yöntemi kullanmaya yönelik ayrıntılı yönergeler [Azure portal Log Analytics çalışma alanı oluşturur](../logs/quick-create-workspace.md). Log Analytics çalışma alanı yapılandırıldıktan sonra, Surface Hub cihazlarınızı kaydetmek için iki yol vardır:
 
 * Intune üzerinden otomatik olarak
 * Surface Hub cihazınızdaki **Ayarlar** aracılığıyla el ile.
@@ -57,9 +57,9 @@ Ortamınızı yönetmek için Intune kullanmıyorsanız, her bir Surface Hub **a
 
 1. Surface Hub, **Ayarlar**' ı açın.
 2. İstendiğinde Cihaz Yöneticisi kimlik bilgilerini girin.
-3. **Bu cihaza**ve **izleme**' ye tıklayın **Log Analytics Ayarları Yapılandır**' a tıklayın.
+3. **Bu cihaza** ve **izleme**' ye tıklayın **Log Analytics Ayarları Yapılandır**' a tıklayın.
 4. **Izlemeyi etkinleştir**' i seçin.
-5. Log Analytics Ayarları iletişim kutusunda, Log Analytics **çalışma alanı kimliğini** yazın ve **çalışma alanı anahtarını**yazın.  
+5. Log Analytics Ayarları iletişim kutusunda, Log Analytics **çalışma alanı kimliğini** yazın ve **çalışma alanı anahtarını** yazın.  
    ![Ekran görüntüsünde, çalışma alanı KIMLIĞI ve çalışma alanı anahtarı için izlemeyi etkinleştir seçili ve metin kutularından oluşan Microsoft Operations Manager Suite ayarları gösterilmektedir.](./media/surface-hubs/settings.png)
 6. Yapılandırmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
 
@@ -74,8 +74,8 @@ Surface Hub kutucuğuna tıkladığınızda cihazınızın sistem durumu görün
 
    ![Surface Hub panosu](./media/surface-hubs/surface-hub-dashboard.png)
 
-Mevcut veya özel günlük aramalarına göre [Uyarılar](../platform/alerts-overview.md) oluşturabilirsiniz. Azure Izleyici, Surface Hub 'larınızdan toplanan verileri kullanarak, cihazlarınız için tanımladığınız koşullarda sorun ve uyarı araması yapabilirsiniz.
+Mevcut veya özel günlük aramalarına göre [Uyarılar](../alerts/alerts-overview.md) oluşturabilirsiniz. Azure Izleyici, Surface Hub 'larınızdan toplanan verileri kullanarak, cihazlarınız için tanımladığınız koşullarda sorun ve uyarı araması yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı Surface Hub verilerini görüntülemek için [Azure izleyici 'de günlük sorgularını](../log-query/log-query-overview.md) kullanın.
-* Surface Hub 'larınız ile ilgili sorunlar oluştuğunda size bildirimde bulunan [Uyarılar](../platform/alerts-overview.md) oluşturun.
+* Ayrıntılı Surface Hub verilerini görüntülemek için [Azure izleyici 'de günlük sorgularını](../logs/log-query-overview.md) kullanın.
+* Surface Hub 'larınız ile ilgili sorunlar oluştuğunda size bildirimde bulunan [Uyarılar](../alerts/alerts-overview.md) oluşturun.

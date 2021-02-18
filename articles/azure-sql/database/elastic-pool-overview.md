@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732703"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653644"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastik havuzlar Azure SQL veritabanı 'nda birden çok veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ Her satın alma modelindeki hizmet katmanları ve kaynak sınırları için bkz.
 Aşağıdaki adımlar bir havuzun tek veritabanlarından daha uygun maliyetli olup olmadığını tahmin etmenize yardımcı olabilir:
 
 1. Havuz için gereken eDTU 'ları veya sanal çekirdekleri aşağıdaki gibi tahmin edin:
-
-DTU tabanlı satın alma modeli için:
-
-En fazla (<VERITABANı başına *Toplam DBs* x *ortalama DTU kullanımı*>, <her veritabanı için *aynı anda en fazla dbs* x maksimum *DTU kullanımı*>)
-
-Sanal çekirdek tabanlı satın alma modeli için:
-
-En fazla (<VERITABANı başına *Toplam DBs* x *Ortalama sanal çekirdek kullanımı*>, <her veritabanı Için *aynı anda* *en yüksek sanal çekirdek kullanımı* sayısı>)
-
+   - DTU tabanlı satın alma modeli için:
+     - En fazla (  <&times; *veritabanı başına ortalama DTU kullanımı* sayısı>, <her veritabanı için *aynı anda* &times; *en yüksek DTU kullanımı* sayısı>)
+   - Sanal çekirdek tabanlı satın alma modeli için:
+     - En fazla ( *<* &times; *veritabanı başına ortalama ortalama sanal çekirdek kullanımı*>, <her veritabanı için *aynı anda* &times; *en yüksek sanal çekirdek kullanımı* sayısı>)
 2. Havuzdaki tüm veritabanları için gereken veri boyutunu ekleyerek havuz için gereken toplam depolama alanını tahmin edin. DTU satın alma modeli için, bu depolama miktarını sağlayan eDTU havuz boyutunu saptayın.
 3. DTU tabanlı satın alma modeli için 1. ve 2. adım 'daki eDTU tahminlerinin daha büyük bir kısmını alın. Sanal çekirdek tabanlı satın alma modeli için 1. adımdaki sanal çekirdek tahminini alın.
 4. [SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/) bakın ve 3. adımdaki tahminden daha büyük olan en küçük havuz boyutunu bulun.

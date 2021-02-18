@@ -1,16 +1,16 @@
 ---
 title: Azure Service Bus konuları ve abonelikleri ile çalışmaya başlama | Microsoft Docs
 description: Service Bus mesajlaşma konuları ve aboneliklerini kullanan bir C# .NET Core konsol uygulaması yazın.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85eb8e6cdaa8636215c5df9d81dbecdca97a2501
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819316"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652981"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus konuları ile çalışmaya başlama
 Bu öğreticide aşağıdaki adımlar yer almaktadır:
@@ -66,7 +66,7 @@ Visual Studio'yu başlatın ve yeni bir **Konsol Uygulaması (.NET Core)** proje
     static ITopicClient topicClient;
     ``` 
 
-3. Yöntemini, `Main()` **async** `Main` bir sonraki adımda ekleyeceğiniz sendmessagesasync yöntemini kullanarak zaman uyumsuz olarak ileti gönderen aşağıdaki Async yöntemiyle değiştirin. 
+3. Yöntemini, `Main()`  `Main` bir sonraki adımda ekleyeceğiniz sendmessagesasync yöntemini kullanarak zaman uyumsuz olarak ileti gönderen aşağıdaki Async yöntemiyle değiştirin. 
 
     ```csharp
     public static async Task Main(string[] args)

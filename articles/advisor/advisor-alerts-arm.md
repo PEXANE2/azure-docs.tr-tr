@@ -4,12 +4,12 @@ description: Azure Resource Manager şablonu kullanarak Azure Advisor 'dan yeni 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b10ad06e5397ab733987373a3bd18de981c8c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91629905"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590054"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak yeni önerilerle Azure Advisor uyarıları oluşturma
 
@@ -17,7 +17,7 @@ Bu makalede bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
+Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](../azure-monitor/essentials/platform-logs-overview.md)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
 
 Aşağıdaki özellikleri kullanarak öneri türlerini de belirleyebilirsiniz:
 
@@ -30,7 +30,7 @@ Ayrıca, bir uyarının tetiklendiği zaman gerçekleşecek eylemi de yapıland�
 - Mevcut bir eylem grubu seçiliyor
 - Yeni bir eylem grubu oluşturuluyor
 
-Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
+Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE]
 > Danışman uyarıları Şu anda yalnızca yüksek kullanılabilirlik, performans ve maliyet önerileri için kullanılabilir. Güvenlik önerileri desteklenmez.
@@ -42,7 +42,7 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Aşağıdaki şablon, bir e-posta hedefi olan bir eylem grubu oluşturur ve hedef abonelik için tüm hizmet durumu bildirimlerine izin vermez. Bu şablonu *CreateAdvisorAlert.js*olarak kaydedin.
+Aşağıdaki şablon, bir e-posta hedefi olan bir eylem grubu oluşturur ve hedef abonelik için tüm hizmet durumu bildirimlerine izin vermez. Bu şablonu *CreateAdvisorAlert.js* olarak kaydedin.
 
 ```json
 {
@@ -146,7 +146,7 @@ Aşağıdaki şablon, bir e-posta hedefi olan bir eylem grubu oluşturur ve hede
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**için örnek değerleri ve **emadresi** , ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
+CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu** için örnek değerleri ve **emadresi** , ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
-- [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/alerts/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
+- [Eylem grupları](../azure-monitor/alerts/action-groups.md)hakkında daha fazla bilgi edinin.

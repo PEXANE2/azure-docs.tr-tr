@@ -7,7 +7,7 @@
     - name: Mesajlaşma hizmetlerini karşılaştırma
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Java Message Service (JMS) 2.0 ile Service Bus kullanma (önizleme)
+    - name: 'Java Ileti hizmeti (JMS) 2,0 ile Service Bus kullanma'
       href: how-to-use-java-message-service-20.md
 - name: Hızlı Başlangıçlar
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: Kavramlar
   items:
+    - name: 'Kuyruklar, konu başlıkları ve abonelikler'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Konu başlığı filtreleri ve eylemleri
+      href: topic-filters.md
     - name: Premium mesajlaşma
       href: service-bus-premium-messaging.md
     - name: Azure Kuyrukları ve Service Bus kuyruklarını karşılaştırın
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: Geliştirme
       items:
+        - name: Abonelik filtrelerini ve eylemlerini ayarlama
+          href: service-bus-filter-examples.md
         - name: İleti işleme
           items:
             - name: 'Kuyruklar, konu başlıkları ve abonelikler'
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java Message Service (JMS) 2.0 varlıkları (önizleme)
+            - name: 'Java ileti hizmeti (JMS) 2,0 varlıkları'
               href: java-message-service-20-entities.md
+            - name: Java Ileti hizmeti (JMS) geliştirici guide.md
+              href: jms-developer-guide.md
             - name: 'İletiler, yükler ve serileştirme'
               href: service-bus-messages-payloads.md
             - name: 'İleti aktarımları, kilitler ve kapatma'
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: İleti süre sonu (Yaşam Süresi)
               href: message-expiration.md
-        - name: Konu başlığı filtreleri ve eylemleri
-          href: topic-filters.md
         - name: Standart’tan Premium ad alanlarına geçirme
           href: service-bus-migrate-standard-premium.md
         - name: Bölümlenmiş kuyruklar ve konular

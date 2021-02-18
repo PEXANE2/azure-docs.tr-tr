@@ -1,35 +1,27 @@
 ---
 title: Azure VMware çözümünü dağıtma ve yapılandırma
-description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
+description: Azure VMware çözümü özel bulutu 'nı dağıtmak ve yapılandırmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382064"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652743"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
-Bu makalede, Azure VMware çözümünü dağıtmak için [planlama bölümündeki](production-ready-deployment-steps.md) bilgileri kullanacaksınız. 
+Bu makalede, Azure VMware çözümünü dağıtmak ve yapılandırmak için [planlama bölümündeki](production-ready-deployment-steps.md) bilgileri kullanacaksınız. 
 
 >[!IMPORTANT]
 >Bilgileri henüz tanımlamadıysanız devam etmeden önce [Planlama bölümüne](production-ready-deployment-steps.md) geri dönün.
 
-## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturma
 
-
-## <a name="deploy-azure-vmware-solution"></a>Azure VMware Çözümü dağıtma
-
-[Azure VMware Çözüm dağıtımı planlama](production-ready-deployment-steps.md) makalesinde topladığınız bilgileri kullanın:
-
->[!NOTE]
->Azure VMware çözümünü dağıtmak için abonelikte en az katkıda bulunan düzeyinde olmanız gerekir.
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+[Azure VMware çözümü özel bulutu oluşturma](tutorial-create-private-cloud.md) öğreticisindeki önkoşulları ve adımları izleyin. [Azure Portal](tutorial-create-private-cloud.md#azure-portal) kullanarak veya [Azure CLI](tutorial-create-private-cloud.md#azure-cli)kullanarak bir Azure VMware çözümü özel bulutu oluşturabilirsiniz.  
 
 >[!NOTE]
 >Bu adıma uçtan uca genel bakış için [Azure VMware çözümü: dağıtım](https://www.youtube.com/embed/gng7JjxgayI) videosunu görüntüleyin.
@@ -60,7 +52,7 @@ Dağıtım adımında bir sanal ağ tanımlamadıysanız ve amaç Azure VMware �
 
 Geçiş kutusu, Azure VMware çözümünün ExpressRoute bağlantı hattı üzerinden bağlandığı sanal ağ üzerindedir.  Azure 'da, atbox 'ın ağ arabirimine gidin ve [geçerli yolları görüntüleyin](../virtual-network/manage-route-table.md#view-effective-routes).
 
-Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. Bu makalenin önceki bölümlerinde, [dağıtım adımı](#deploy-azure-vmware-solution) sırasında [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment) türetilmiş birden çok ağ görürsünüz.
+Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. [Özel bir bulut oluştururken](#create-an-azure-vmware-solution-private-cloud) [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment) türetilmiş birden çok ağ görürsünüz.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümünden Azure Virtual Network 'e tanıtılan ağ yollarını doğrulama" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

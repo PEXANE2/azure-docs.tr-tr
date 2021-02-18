@@ -2,23 +2,23 @@
 title: Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin bir Kubernetes kümesini Azure Arc ile bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5e2058c5128075de4c37eb9768b204532cd09ffa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 876bc15a3f4db1d12afec37c69656c431e5e6773
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558551"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652522"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
-Bu makalede, mevcut bir Kubernetes kümesinin Azure yaya bağlanmasına yönelik bir adım adım açıklanmaktadır. Aynı kavramsal genel bakış [burada](./conceptual-agent-architecture.md)bulunabilir.
+Bu makalede, var olan bir Kubernetes kümesini Azure yaya bağlama işlemi anlatılmaktadır. Kümeleri bağlama konusunda kavramsal bir alma için bkz. [Azure Arc etkinleştirilmiş Kubernetes aracı mimarisi makalesi](./conceptual-agent-architecture.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -28,12 +28,12 @@ Aşağıdaki önkoşulları hazırladığınızdan emin olun:
   * [Docker 'Da Kubernetes](https://kind.sigs.k8s.io/)kullanarak bir Kubernetes kümesi oluşturun (tür).
   * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) veya [Windows](https://docs.docker.com/docker-for-windows/#kubernetes)için Docker kullanarak bir Kubernetes kümesi oluşturun.
 * Yay etkinleştirilmiş Kubernetes aracılarının dağıtımı için kümedeki kümeye ve Küme Yöneticisi rolüne erişmek için bir kubeconfig dosyası.
-* Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. "Kubernetes kümesi-Azure yay ekleme" rolü bu izinlere sahiptir ve Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
+* İle kullanılan Kullanıcı veya hizmet sorumlusu için ' Read ' ve ' Write ' izinleri `az login` ve `az connectedk8s connect` kaynak türü üzerinde komutlar `Microsoft.Kubernetes/connectedclusters` . "Kubernetes kümesi-Azure yay ekleme" rolü bu izinlere sahiptir ve Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * Uzantıyı kullanarak küme ekleme için helb 3 `connectedk8s` . Bu gereksinimi karşılamak için [Held 3 ' ün en son sürümünü yükler](https://helm.sh/docs/intro/install) .
 * Azure Arc 'ın etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.15 +. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
-* Azure Arc etkin Kubernetes CLı uzantılarını yükler:
+* Azure Arc etkin Kubernetes CLı uzantıları:
   
-  * `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olan uzantıyı yükleyebilirsiniz:
+  * `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olması için uzantıyı yükleyebilirsiniz:
   
   ```azurecli
   az extension add --name connectedk8s
@@ -64,13 +64,13 @@ Azure Arc aracıları, aşağıdaki protokollerin/bağlantı noktalarının/gide
 * 443 numaralı bağlantı noktasında TCP: `https://:443`
 * 9418 numaralı bağlantı noktasında TCP: `git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durumu iletme ve yapılandırma bilgilerini getirme işlemi için veri düzlemi uç noktası.                                      |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager belirteçleri getirmek ve güncelleştirmek için gereklidir.                                                                                    |
 | `https://mcr.microsoft.com`                                                                            | Azure Arc aracıları için kapsayıcı görüntülerini çekmek için gereklidir.                                                                  |
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Sistem tarafından atanan yönetilen kimlik sertifikalarını çekmek için gereklidir.                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Sistem tarafından atanan Yönetilen Hizmet Kimliği (MSI) sertifikalarını çekmek için gereklidir.                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydetme
 
@@ -177,7 +177,9 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Ayrıca, bu kaynağı [Azure Portal](https://portal.azure.com/)görüntüleyebilirsiniz. Portalı tarayıcınızda açın ve komutta daha önce kullanılan kaynak adı ve kaynak grubu adı girdilerine göre kaynak grubuna ve Azure Arc etkin Kubernetes kaynağına gidin `az connectedk8s connect` .  
+Ayrıca, bu kaynağı [Azure Portal](https://portal.azure.com/)görüntüleyebilirsiniz.
+1. Portalı tarayıcınızda açın.
+1. Komutta daha önce kullanılan kaynak adı ve kaynak grubu adı girdilerine göre kaynak grubuna ve Azure Arc etkin Kubernetes kaynağına gidin `az connectedk8s connect` .  
 > [!NOTE]
 > Küme eklendikten sonra, küme meta verileri (küme sürümü, aracı sürümü, düğüm sayısı vb.) için, Azure portal 'de Azure Arc etkin Kubernetes kaynağının genel bakış sayfasında yüzey olarak 5 ila 10 dakika sürer.
 
@@ -220,7 +222,7 @@ Kümeniz giden bir proxy sunucusunun arkasında ise, Azure CLı ve Azure Arc etk
 > [!NOTE]
 > * Altında belirtme, `excludedCIDR` `--proxy-skip-range` aracılar için küme içi iletişimin kesilmemesini sağlamak açısından önemlidir.
 > * , `--proxy-http` `--proxy-https` Ve `--proxy-skip-range` çoğu giden proxy ortamları için beklenirken, `--proxy-cert` yalnızca Proxy 'den gelen güvenilen sertifikaların, aracı pods 'nin güvenilen sertifika deposuna eklenmesi gerekiyorsa gereklidir.
-> * Yukarıdaki proxy belirtimi Şu anda yalnızca Arc aracıları için uygulanabilir ve sourcecontrolconfiguration içinde kullanılan Flox pod için geçerli değildir. Azure Arc etkin Kubernetes ekibi bu özellik üzerinde etkin bir şekilde çalışıyor ve yakında kullanıma sunulacaktır.
+> * Yukarıdaki proxy belirtimi Şu anda yalnızca Azure Arc aracıları için geçerlidir ve içinde kullanılan Flox pod için değildir `sourceControlConfiguration` . Azure Arc etkin Kubernetes ekibi bu özellik üzerinde etkin bir şekilde çalışıyor.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes için Azure Arc aracıları
 

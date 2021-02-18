@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258770"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593343"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -238,9 +238,9 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
   * Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
 * Ayrıca
-  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Günlük verilerinizi denetim, statik analiz veya yedekleme için 90 günden daha uzun bir süre içinde bekletmek istiyorsanız, Azure depolama hesabına veri gönderebilirsiniz. Olaylarınızı yalnızca 90 gün veya daha az süreyle tutmanız gerekiyorsa, etkinlik günlüğü olayları 90 gün boyunca Azure platformunda tutulduğundan bir depolama hesabına arşiv ayarlamanız gerekmez. [Daha fazla bilgi edinin](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * **Log Analytics** çalışma alanına veri (örneğin, işler, ilkeler vb.) gönderebilirsiniz. Bu işlem, Azure izleyici tarafından toplanan diğer izleme verileriyle veri bağıntısını etkinleştirmek için Azure Izleyici günlüklerinin özelliklerini etkinleştirir, birden çok Azure aboneliği ve kiracısından günlük girişlerini analiz için tek bir konumda birleştirir, karmaşık analiz gerçekleştirmek ve günlük girişleri hakkında derin Öngörüler elde etmek için günlük sorgularını kullanın. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
+  * Olayları Azure dışında, örneğin bir üçüncü taraf SıEM (güvenlik bilgileri ve olay yönetimi) veya diğer Log Analytics çözümüne göndermek için Olay Hub 'ına veri gönderebilirsiniz. [Burada daha fazla bilgi edinebilirsiniz](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
+  * Günlük verilerinizi denetim, statik analiz veya yedekleme için 90 günden daha uzun bir süre içinde bekletmek istiyorsanız, Azure depolama hesabına veri gönderebilirsiniz. Olaylarınızı yalnızca 90 gün veya daha az süreyle tutmanız gerekiyorsa, etkinlik günlüğü olayları 90 gün boyunca Azure platformunda tutulduğundan bir depolama hesabına arşiv ayarlamanız gerekmez. [Daha fazla bilgi edinin](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Uyarı
 

@@ -4,12 +4,12 @@ description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza vey
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927826"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593755"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -108,7 +108,7 @@ Node.js projelerinde, `new applicationInsights.TelemetryClient(instrumentationKe
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights, özel bir *olay* , toplanan bir sayı olarak [Ölçüm Gezgini](../platform/metrics-charts.md) görüntülenebilecek ve tek tek oluşum olarak [Tanılama aramasında](./diagnostic-search.md) kullanabileceğiniz bir veri noktasıdır. (MVC veya diğer Framework "olayları" ile ilgili değildir.)
+Application Insights, özel bir *olay* , toplanan bir sayı olarak [Ölçüm Gezgini](../essentials/metrics-charts.md) görüntülenebilecek ve tek tek oluşum olarak [Tanılama aramasında](./diagnostic-search.md) kullanabileceğiniz bir veri noktasıdır. (MVC veya diğer Framework "olayları" ile ilgili değildir.)
 
 `TrackEvent`Çeşitli olayları saymak için kodunuzda çağrı ekleyin. Kullanıcıların belirli bir özelliği ne sıklıkta seçtikleri, belirli hedeflere ne sıklıkta elde ettikleri veya ne sıklıkta belirli türde hatalar gerçekleştirdikleri.
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 'te özel olaylar
 
-Telemetri `customEvents` [Application Insights Günlükler sekmesi](../log-query/log-query-overview.md) veya [kullanım deneyimi](usage-overview.md)' nde tabloda bulunur. Olaylar ' dan gelebilir `trackEvent(..)` veya [analiz otomatik koleksiyon eklentisi '](javascript-click-analytics-plugin.md)ne tıklayabilir.
+Telemetri `customEvents` [Application Insights Günlükler sekmesi](../logs/log-query-overview.md) veya [kullanım deneyimi](usage-overview.md)' nde tabloda bulunur. Olaylar ' dan gelebilir `trackEvent(..)` veya [analiz otomatik koleksiyon eklentisi '](javascript-click-analytics-plugin.md)ne tıklayabilir.
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics 'te özel ölçümler
 
-Telemetri, `customMetrics` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackMetric(..)` .
+Telemetri, `customMetrics` [Application Insights Analytics](../logs/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackMetric(..)` .
 
 * `valueSum` -Bu, ölçümlerin toplamıdır. Ortalama değeri almak için, öğesini ayırın `valueCount` .
 * `valueCount` -Bu çağrıda toplanmış ölçüm sayısı `trackMetric(..)` .
@@ -274,7 +274,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics 'te sayfa telemetrisi
 
-[Analiz](../log-query/log-query-overview.md) ' de iki tabloda, tarayıcı işlemlerinden verileri göster:
+[Analiz](../logs/log-query-overview.md) ' de iki tabloda, tarayıcı işlemlerinden verileri göster:
 
 * `pageViews`Tablo, URL ve sayfa başlığı hakkındaki verileri içerir
 * `browserTimings`Tablo, gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki verileri içerir
@@ -310,7 +310,7 @@ Ancak, istek Telemetriyi göndermek için önerilen yol, isteğin bir <a href="#
 
 ## <a name="operation-context"></a>İşlem bağlamı
 
-Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](./diagnostic-search.md) ve [analiz](../log-query/log-query-overview.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
+Telemetri öğelerini işlem bağlamıyla ilişkilendirerek ilişkilendirilebilir. Standart istek izleme modülü, bir HTTP isteği işlenirken gönderilen özel durumlar ve diğer olaylar için bunu yapar. [Arama](./diagnostic-search.md) ve [analiz](../logs/log-query-overview.md)' de, istekle ILIŞKILI tüm olayları işlem kimliğini kullanarak kolayca bulabilirsiniz.
 
 Bağıntı hakkında daha fazla bilgi için [Application Insights telemetri bağıntısını](./correlation.md) inceleyin.
 
@@ -348,7 +348,7 @@ Aramada, işlem bağlamı **Ilgili öğeler** listesini oluşturmak için kullan
 
 ### <a name="requests-in-analytics"></a>Analytics istekleri
 
-[Application Insights Analytics](../log-query/log-query-overview.md)'te, istekler `requests` tabloda gösterilir.
+[Application Insights Analytics](../logs/log-query-overview.md)'te, istekler `requests` tabloda gösterilir.
 
 [Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değer gösterir. Örneğin ItemCount = = 10, trackRequest () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İstek adlarına göre doğru istek sayısını ve ortalama süreyi almak için, şöyle bir kod kullanın:
 
@@ -361,7 +361,7 @@ requests
 
 Application Insights özel durum gönder:
 
-* Bunları, bir sorun sıklığının göstergesi olarak [saymak](../platform/metrics-charts.md)için.
+* Bunları, bir sorun sıklığının göstergesi olarak [saymak](../essentials/metrics-charts.md)için.
 * [Tek tek oluşumları incelemek](./diagnostic-search.md)için.
 
 Raporlar yığın izlemelerini içerir.
@@ -430,7 +430,7 @@ SDK 'lar birçok özel durumu otomatik olarak yakalar, bu nedenle her zaman Trac
 
 ### <a name="exceptions-in-analytics"></a>Analytics 'te özel durumlar
 
-[Application Insights Analytics](../log-query/log-query-overview.md)'te özel durumlar `exceptions` tabloda gösterilir.
+[Application Insights Analytics](../logs/log-query-overview.md)'te özel durumlar `exceptions` tabloda gösterilir.
 
 [Örnekleme](./sampling.md) işlemi ise, `itemCount` özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackException () için 10 çağrının, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel durum türüne göre bölünmüş özel durumların doğru sayısını almak için, şu gibi bir kod kullanın:
 
@@ -525,7 +525,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ### <a name="traces-in-analytics"></a>Analizler
 
-[Application Insights Analytics](../log-query/log-query-overview.md)'te, tabloda tracktrace çağrıları gösterilir `traces` .
+[Application Insights Analytics](../logs/log-query-overview.md)'te, tabloda tracktrace çağrıları gösterilir `traces` .
 
 [Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, için 10 `trackTrace()` ' un, örnekleme işleminin yalnızca birini aktardığı anlamına gelir. İzleme çağrılarının doğru sayısını almak için, bu kodu gibi bir kod kullanmanız gerekir `traces | summarize sum(itemCount)` .
 
@@ -607,7 +607,7 @@ C# ' de standart bağımlılık izleme modülünü devre dışı bırakmak için
 
 ### <a name="dependencies-in-analytics"></a>Analytics 'teki bağımlılıklar
 
-[Application Insights Analytics](../log-query/log-query-overview.md)'te, trackdependency çağrıları `dependencies` tabloda gösterilir.
+[Application Insights Analytics](../logs/log-query-overview.md)'te, trackdependency çağrıları `dependencies` tabloda gösterilir.
 
 [Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackDependency () için 10 çağrının olduğu anlamına gelir ve örnekleme işlemi bunlardan yalnızca birini iletilir. Hedef bileşene göre bölünmüş bağımlılıkların doğru sayısını almak için, şu gibi bir kod kullanın:
 
@@ -695,7 +695,7 @@ Uygulamanız kullanıcıları hesaplara gruplamadıysanız, hesap için bir tan�
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Ölçüm Gezgini](../platform/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış** ve **Kullanıcı hesaplarını** sayan bir grafik oluşturabilirsiniz.
+[Ölçüm Gezgini](../essentials/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış** ve **Kullanıcı hesaplarını** sayan bir grafik oluşturabilirsiniz.
 
 Ayrıca, belirli kullanıcı adları ve hesapları ile istemci veri noktalarını [arayabilirsiniz](./diagnostic-search.md) .
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analiz içindeki özel ölçümler ve Özellikler
 
-[Analytics](../log-query/log-query-overview.md)'te özel ölçümler ve özellikler, `customMeasurements` `customDimensions` her telemetri kaydının ve özniteliklerinde gösterilir.
+[Analytics](../logs/log-query-overview.md)'te özel ölçümler ve özellikler, `customMeasurements` `customDimensions` her telemetri kaydının ve özniteliklerinde gösterilir.
 
 Örneğin, istek telemetrinize "oyun" adlı bir özellik eklediyseniz, bu sorgu farklı "oyun" değerlerinin oluşumlarını sayar ve "Score" özel ölçüsünün ortalamasını gösterir:
 

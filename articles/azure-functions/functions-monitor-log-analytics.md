@@ -6,37 +6,37 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591070"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
 
-Azure Işlevleri, işlevleri izlemek için [Azure Izleyici günlükleriyle](../azure-monitor/platform/data-platform-logs.md) bir tümleştirme sunar. Bu makalede, Azure Işlevleri 'nin Azure Izleyici günlüklerine sistem tarafından oluşturulan ve Kullanıcı tarafından oluşturulan Günlükler göndermek için nasıl yapılandırılacağı gösterilmektedir.
+Azure Işlevleri, işlevleri izlemek için [Azure Izleyici günlükleriyle](../azure-monitor/logs/data-platform-logs.md) bir tümleştirme sunar. Bu makalede, Azure Işlevleri 'nin Azure Izleyici günlüklerine sistem tarafından oluşturulan ve Kullanıcı tarafından oluşturulan Günlükler göndermek için nasıl yapılandırılacağı gösterilmektedir.
 
-Azure Izleyici günlükleri, toplanan verileri hızlı bir şekilde almak, birleştirmek ve analiz etmek için [sorgularla](../azure-monitor/log-query/log-query-overview.md) çözümlenebileceği aynı çalışma alanındaki farklı kaynaklardan günlükleri birleştirme olanağı sağlar.  Azure portal [Log Analytics](../azure-monitor/log-query/log-query-overview.md) kullanarak sorgular oluşturup test edebilir ve ardından bu araçları kullanarak verileri doğrudan çözümleyebilir ya da [görselleştirmeler](../azure-monitor/visualizations.md) veya [Uyarı kurallarıyla](../azure-monitor/platform/alerts-overview.md)kullanılacak sorguları kaydedebilirsiniz.
+Azure Izleyici günlükleri, toplanan verileri hızlı bir şekilde almak, birleştirmek ve analiz etmek için [sorgularla](../azure-monitor/logs/log-query-overview.md) çözümlenebileceği aynı çalışma alanındaki farklı kaynaklardan günlükleri birleştirme olanağı sağlar.  Azure portal [Log Analytics](../azure-monitor/logs/log-query-overview.md) kullanarak sorgular oluşturup test edebilir ve ardından bu araçları kullanarak verileri doğrudan çözümleyebilir ya da [görselleştirmeler](../azure-monitor/visualizations.md) veya [Uyarı kurallarıyla](../azure-monitor/alerts/alerts-overview.md)kullanılacak sorguları kaydedebilirsiniz.
 
-Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sorguları için uygun olan, ayrıca toplamalar, birleşimler ve akıllı analiz gibi gelişmiş işlevleri de içeren [kusto sorgu dilinin](/azure/kusto/query/) bir sürümünü kullanır. [Birden çok ders](../azure-monitor/log-query/get-started-queries.md)kullanarak sorgu dilini hızlıca öğrenebilirsiniz.
+Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sorguları için uygun olan, ayrıca toplamalar, birleşimler ve akıllı analiz gibi gelişmiş işlevleri de içeren [kusto sorgu dilinin](/azure/kusto/query/) bir sürümünü kullanır. [Birden çok ders](../azure-monitor/logs/get-started-queries.md)kullanarak sorgu dilini hızlıca öğrenebilirsiniz.
 
 > [!NOTE]
 > Azure Izleyici günlükleri ile tümleştirme Şu anda Windows tüketim, Premium ve adanmış barındırma planlarında çalışan v2 ve v3 işlev uygulamaları için genel önizlemededir.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-1. [Azure Portal](https://portal.azure.com)Işlev uygulamanızın **izleme** bölümünden **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle** ' yi seçin.
+1. [Azure Portal](https://portal.azure.com)Işlev uygulamanızın **izleme** bölümünden **Tanılama ayarları**' nı ve ardından **Tanılama ayarı Ekle**' yi seçin.
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Tanılama ayarlarını seçin":::
 
-1. **Tanılama ayarları** sayfasında, **Kategori ayrıntıları** ve **günlüğü** altında **functionapplogs** ' u seçin.
+1. **Tanılama ayarları** sayfasında, **Kategori ayrıntıları** ve **günlüğü** altında **functionapplogs**' u seçin.
 
    **Functionapplogs** tablosu, istenen günlükleri içerir.
 
-1. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin ve sonra **Log Analytics çalışma alanınızı** seçin. 
+1. **Hedef ayrıntıları** altında **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma alanınızı** seçin. 
 
-1. Bir **Tanılama ayarları adı** girin ve ardından **Kaydet** ' i seçin.
+1. Bir **Tanılama ayarları adı** girin ve ardından **Kaydet**' i seçin.
 
    :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarı ekleme":::
 
@@ -81,11 +81,11 @@ logging.info('My app logs here.')
 
 Oluşturulan günlükleri sorgulamak için:
  
-1. İşlev uygulamanızdan **Tanılama ayarları** ' nı seçin. 
+1. İşlev uygulamanızdan **Tanılama ayarları**' nı seçin. 
 
 1. **Tanılama ayarları** listesinden, işlev günlüklerini göndermek için yapılandırdığınız Log Analytics çalışma alanını seçin. 
 
-1. **Log Analytics çalışma alanı** sayfasında **Günlükler** ' i seçin.
+1. **Log Analytics çalışma alanı** sayfasında **Günlükler**' i seçin.
 
    Azure Işlevleri, tüm günlükleri **Logmanagement** altındaki **functionapplogs** tablosuna yazar. 
 
@@ -124,5 +124,5 @@ FunctionAppLogs
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure işlevlerine genel bakış](functions-overview.md)konusunu gözden geçirin.
-- [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md)hakkında daha fazla bilgi edinin.
-- [Sorgu dili](../azure-monitor/log-query/get-started-queries.md)hakkında daha fazla bilgi edinin.
+- [Azure Izleyici günlükleri](../azure-monitor/logs/data-platform-logs.md)hakkında daha fazla bilgi edinin.
+- [Sorgu dili](../azure-monitor/logs/get-started-queries.md)hakkında daha fazla bilgi edinin.

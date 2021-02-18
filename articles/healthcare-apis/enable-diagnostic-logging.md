@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581972"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>FHıR için Azure API 'de tanılama günlüğünü etkinleştirme
 
-Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi öğrenir ve bu günlüklere yönelik bazı örnek sorguları inceleyebilirsiniz. Tanılama günlüklerine erişim, mevzuat gereksinimleriyle (HIPAA gibi) uyumluluğun gerektiği her türlü sağlık hizmeti için önemlidir. FHıR için Azure API 'sindeki özelliği, tanılama günlüklerini sağlayan, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/platform/diagnostic-settings.md) özelliktir. 
+Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi öğrenir ve bu günlüklere yönelik bazı örnek sorguları inceleyebilirsiniz. Tanılama günlüklerine erişim, mevzuat gereksinimleriyle (HIPAA gibi) uyumluluğun gerektiği her türlü sağlık hizmeti için önemlidir. FHıR için Azure API 'sindeki özelliği, tanılama günlüklerini sağlayan, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/essentials/diagnostic-settings.md) özelliktir. 
 
 ## <a name="enable-audit-logs"></a>Denetim günlüklerini etkinleştir
 1. FHıR için Azure API 'de tanılama günlüğünü etkinleştirmek üzere Azure portal için Azure API 'nizi seçin. 
@@ -45,7 +45,7 @@ Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi
 > [!Note] 
 > İlk günlüklerin Log Analytics göstermesi 15 dakika kadar sürebilir.  
  
-Tanılama günlükleri ile çalışma hakkında daha fazla bilgi için lütfen [Azure kaynak günlüğü belgelerine](../azure-monitor/platform/platform-logs-overview.md) başvurun
+Tanılama günlükleri ile çalışma hakkında daha fazla bilgi için lütfen [Azure kaynak günlüğü belgelerine](../azure-monitor/essentials/platform-logs-overview.md) başvurun
 
 ## <a name="audit-log-details"></a>Denetim günlüğü ayrıntıları
 Şu anda, FHıR hizmeti için Azure API 'SI, denetim günlüğünde aşağıdaki alanları döndürür: 

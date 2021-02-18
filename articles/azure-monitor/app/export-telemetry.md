@@ -3,12 +3,12 @@ title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674146"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584244"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -21,7 +21,7 @@ Sürekli dışarı aktarmayı ayarlamadan önce şunları göz önünde bulundur
 
 * Ölçüm veya arama sekmesinin en üstündeki dışarı aktar düğmesi, tabloları ve grafikleri bir Excel elektronik tablosuna aktarmanıza olanak tanır.
 
-* [Analytics](../log-query/log-query-overview.md) , telemetri için güçlü bir sorgu dili sağlar. Ayrıca sonuçları dışarı aktarabilir.
+* [Analytics](../logs/log-query-overview.md) , telemetri için güçlü bir sorgu dili sağlar. Ayrıca sonuçları dışarı aktarabilir.
 * [Verilerinizi Power BI araştırmak](./export-power-bi.md)istiyorsanız, bu Işlemi sürekli dışarı aktarma kullanmadan yapabilirsiniz.
 * [Veri erişimi REST API](https://dev.applicationinsights.io/) , telemetrinize programlı bir şekilde erişmenizi sağlar.
 * Ayrıca, [PowerShell aracılığıyla sürekli dışarı aktarmayı](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)ayarla ' da erişebilirsiniz.
@@ -138,7 +138,7 @@ Zaman süreleri, 10 000 ticks = 1 MS olduğunda yer işaretleri içinde bulunur.
 [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verileri işleme
-Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örnek:
+Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örneğin:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)

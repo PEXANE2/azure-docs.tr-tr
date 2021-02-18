@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805949"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653682"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede rotalar
 
@@ -51,9 +51,9 @@ Yollar dosyada _routes.js_ , özelliğindeki yol kuralları dizisi olarak tanım
 | Rule özelliği  | Gerekli | Varsayılan değer | Yorum                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | Yes      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \*_ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
-| `serve`        | Hayır       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve` değerler gerçek dosyalara işaret etmelidir.  |
-| `allowedRoles` | Hayır       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.</ul> |
-| `statusCode`   | Hayır       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
+| `serve`        | No       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve` değerler gerçek dosyalara işaret etmelidir.  |
+| `allowedRoles` | No       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.</ul> |
+| `statusCode`   | No       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
 
 ## <a name="securing-routes-with-roles"></a>Rollerle olan yolların güvenliğini sağlama
 
@@ -77,7 +77,7 @@ Dizide gerektiğinde yeni roller oluşturabilirsiniz `allowedRoles` . Bir yolu y
 }
 ```
 
-- Rol adları üzerinde tam denetiminiz vardır; rollerinizin uyması gereken ana liste yok.
+- Rol adları üzerinde tam denetiminiz vardır; rollerinizin uyması gereken hiçbir liste yok.
 - Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.
 
 ## <a name="wildcards"></a>Joker karakterler

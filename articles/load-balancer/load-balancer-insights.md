@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589112"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer izlemek ve yapılandırmak için öngörüleri kullanma
 
@@ -40,7 +40,7 @@ Standart yük dengeleyiciler için, arka uç havuzu kaynaklarınız, arka uç ha
 
 ## <a name="metrics-dashboard"></a>Ölçümler panosu
 
-Load Balancer Öngörüler dikey penceresinde, Load Balancer belirli yönleriyle ilgili ölçüm görselleri içeren önceden yapılandırılmış bir [Azure Izleyici çalışma kitabını](../azure-monitor/platform/workbooks-overview.md) görüntülemek Için daha ayrıntılı ölçümler ' i seçebilirsiniz. Bu panoda, sayfanın üst kısmında Load Balancer durum ve ilgili belgelerin bağlantıları gösterilir.
+Load Balancer Öngörüler dikey penceresinde, Load Balancer belirli yönleriyle ilgili ölçüm görselleri içeren önceden yapılandırılmış bir [Azure Izleyici çalışma kitabını](../azure-monitor/visualize/workbooks-overview.md) görüntülemek Için daha ayrıntılı ölçümler ' i seçebilirsiniz. Bu panoda, sayfanın üst kısmında Load Balancer durum ve ilgili belgelerin bağlantıları gösterilir.
 
 İlk olarak genel bakış sekmesi görüntülenir. Her birinde, Load Balancer belirli bir yönüyle ilgili görseller içeren kullanılabilir sekmelerde gezinebilirsiniz. Her birinin açık Kılavuzu, panoda her sekmenin en altında bulunur.
 
@@ -80,4 +80,4 @@ Bağlantı Izleyicileri sekmesi, yapılandırdığınız tüm [bağlantı izleme
 * Daha sonra iyileştirilen bir şey varsa panoyu gözden geçirin ve aşağıdaki bağlantıyı kullanarak geri bildirim sağlayın
 * [Her ölçümün nasıl hesaplanacağını anladığınızdan emin olmak için ölçüm belgelerini gözden geçirin](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Load Balancer için bağlantı Izleyicileri oluşturun](../network-watcher/connection-monitor.md)
-* [Kendi çalışma kitaplarınızı oluşturun](../azure-monitor/platform/workbooks-overview.md), ayrıntılı ölçüm panonuzdaki Düzenle düğmesine tıklayarak ilham alma yapabilirsiniz
+* [Kendi çalışma kitaplarınızı oluşturun](../azure-monitor/visualize/workbooks-overview.md), ayrıntılı ölçüm panonuzdaki Düzenle düğmesine tıklayarak ilham alma yapabilirsiniz

@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: IoT cihaz ve uygulama geliştirme belgeleri
+summary: Katıştırılmış cihazlar geliştirmek ve cihaz özellikli bulut uygulamaları oluşturmak için Azure IoT belgelerini inceleyin.
+metadata:
+  title: IoT cihaz ve uygulama geliştirme
+  description: Azure IoT kullanarak katıştırılmış cihaz geliştirme ve cihaz özellikli bulut uygulamaları oluşturma hakkında bilgi edinin.
+  services: iot-develop
+  ms.service: iot-develop
+  ms.topic: landing-page
+  author: timlt
+  ms.author: timlt
+  ms.date: 01/11/2021
+  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100656259"
+landingContent:
+- title: IoT cihaz ve uygulama geliştirme hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT cihaz ve uygulama geliştirme nedir?
+      url: about-iot-develop.md
+    - text: Hangi SDK kullanmalıyım?
+      url: about-iot-sdks.md
+- title: Cihaz uygulaması geliştirmeyi kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Cihaz telemetrisini IoT Central gönder
+      url: quickstart-send-telemetry-python.md
+    - text: Cihaz telemetrisini IoT Hub gönder
+      url: quickstart-send-telemetry-cli-python.md
+- title: Katıştırılmış cihaz geliştirmeye başlama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Katıştırılmış cihaz geliştirmeye başlama
+      url: quickstart-device-development.md

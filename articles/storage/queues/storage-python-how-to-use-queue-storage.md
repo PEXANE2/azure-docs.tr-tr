@@ -1,20 +1,20 @@
 ---
-title: Python 'da Azure kuyruk depolama kullanma-Azure depolama
+title: Python 'da Azure kuyruk depolama kullanma
 description: Sıraları oluşturup silmek ve iletileri eklemek, almak ve silmek için Python 'dan Azure kuyruk depolama 'yı kullanmayı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 01/19/2021
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8c30d05cf49162155f84961e1fd8a32361444ba5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600797"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653270"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Python 'da Azure kuyruk depolama kullanma
 
@@ -22,9 +22,9 @@ ms.locfileid: "98600797"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Azure kuyruk depolama hizmetini kullanan yaygın senaryolar gösterilmektedir. Kapsanan senaryolar, sıra iletilerini ekleme, göz atma, alma ve silmeyi içerir. Sıra oluşturma ve silme için kod de ele alınmıştır.
+Bu makalede, Azure kuyruk depolama hizmetini kullanan yaygın senaryolar gösterilmektedir. Kapsanan senaryolar sıra iletilerini ekleme, göz atma, alma ve silmeyi içerir. Sıra oluşturma ve silme için kod de ele alınmıştır.
 
-Bu makaledeki örnekler Python 'da yazılmıştır ve [Python Için Azure kuyruk depolama istemci kitaplığı](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue)' nı kullanır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+Bu makaledeki örnekler Python 'da yazılmıştır ve [Python Için Azure kuyruk depolama istemci kitaplığı](https://github.com/azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)' nı kullanır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -117,6 +117,26 @@ queue_service.create_queue(queue_name)
 
 ---
 
+Azure kuyruk iletileri metin olarak depolanır. İkili verileri depolamak istiyorsanız, kuyruğa bir ileti koymadan önce Base64 kodlaması ve kod çözme işlevleri ayarlayın.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+İstemci nesnesini oluştururken Base64 kodlamayı ve kod çözme işlevlerini yapılandırın.
+
+:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Kuyruk depolama nesnesinde Base64 kodlamayı ve kod çözme işlevlerini yapılandırın.
+
+```python
+# Setup Base64 encoding and decoding functions
+queue_service.encode_function = QueueMessageFormat.binary_base64encode
+queue_service.decode_function = QueueMessageFormat.binary_base64decode
+```
+
+---
+
 ## <a name="insert-a-message-into-a-queue"></a>Kuyruğa bir ileti yerleştirme
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
@@ -133,26 +153,6 @@ Bir kuyruğa ileti eklemek için, [`put_message`](/azure/developer/python/sdk/st
 message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
-```
-
----
-
-Azure kuyruk iletileri metin olarak depolanır. İkili verileri depolamak istiyorsanız, kuyruğa bir ileti koymadan önce Base64 kodlaması ve kod çözme işlevleri ayarlayın.
-
-# <a name="python-v12"></a>[Python V12](#tab/python)
-
-Sıra istemci nesnesinde Base64 kodlamayı ve kod çözme işlevlerini yapılandırın.
-
-:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
-
-# <a name="python-v2"></a>[Python v2](#tab/python2)
-
-Kuyruk depolama nesnesinde Base64 kodlamayı ve kod çözme işlevlerini yapılandırın.
-
-```python
-# Setup Base64 encoding and decoding functions
-queue_service.encode_function = QueueMessageFormat.binary_base64encode
-queue_service.decode_function = QueueMessageFormat.binary_base64decode
 ```
 
 ---

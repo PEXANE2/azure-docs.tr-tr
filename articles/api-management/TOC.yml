@@ -281,6 +281,8 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: Öğretici
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: Üretimde sorunları tanılama
+          href: diagnose-solve-problems.md
 - name: Başvuru
   items:
     - name: Azure CLI’si

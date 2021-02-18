@@ -635,20 +635,16 @@
       items:
         - name: Data Lake Storage’a giriş
           href: data-lake-storage-introduction.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Databricks ile verileri çözümleme
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: Öğreticiler
       items:
-        - name: 'Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme'
-          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Spark kullanarak Databricks ile Data Lake Storage verilerine erişme
+        - name: Databricks ve Spark ile kullanma
           href: data-lake-storage-use-databricks-spark.md
-        - name: 'Azure HDInsight üzerinde Apache Hive ile verileri ayıklama, dönüştürme ve yükleme'
+        - name: Apache Hive ve HDInsight ile kullanma
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Event Grid kullanarak Databricks Delta tablolarına veri ekleme
+        - name: Databricks Delta ve Event Grid ile kullanma
           href: data-lake-storage-events.md
+        - name: Diğer Azure hizmetleri ile kullanma
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: Kavramlar
       items:
         - name: Büyük verileri işleme
@@ -705,7 +701,7 @@
       items:
         - name: Depolama hesabı oluşturma
           href: create-data-lake-storage-account.md
-        - name: Geçiş
+        - name: Hesapları ve veri depolarını geçirme
           items:
             - name: Data Lake Storage 1. Nesil’den geçirme
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -713,31 +709,7 @@
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
             - name: Bir HDFS mağazasını çevrimiçi olarak geçirme
               href: migrate-gen2-wandisco-live-data-platform.md
-        - name: Yönetme
-          items:
-            - name: .NET
-              href: data-lake-storage-directory-file-acl-dotnet.md
-            - name: Java
-              href: data-lake-storage-directory-file-acl-java.md
-            - name: Python
-              href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
-              href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: CLI
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: Depolama Gezgini
-              href: data-lake-storage-explorer.md
-            - name: Hadoop Dosya Sistemi CLI
-              href: data-lake-storage-use-hdfs-data-lake-storage.md
-            - name: ACL’leri özyinelemeli olarak belirleme
-              href: recursive-access-control-lists.md
-        - name: Sorgu
-          items:
-            - name: Sorgu hızlandırmayla veri filtreleme
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: Aktarma
+        - name: Veri aktarma
           items:
             - name: AzCopy
               items:
@@ -761,9 +733,47 @@
               href: data-lake-storage-use-distcp.md
             - name: Veri Taşıma kitaplığıyla veri aktarma
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: İyileştirme
+        - name: Erişim denetimini yönetme
           items:
-            - name: Performansı iyileştirme
+            - name: Depolama Gezgini
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: Verilerle çalışma
+          items:
+            - name: Depolama Gezgini
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-directory-file-acl-javascript.md
+            - name: Sorgu hızlandırma
+              href: data-lake-storage-query-acceleration-how-to.md
+            - name: Hadoop Dosya Sistemi CLI
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
+        - name: Azure hizmetleriyle kullanma
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: Performansı iyileştirme
+          items:
+            - name: Performans iyileştirmesi genel bakış
               href: data-lake-storage-performance-tuning-guidance.md
             - name: HDInsight üzerinde Spark'ı iyileştirme
               href: data-lake-storage-performance-tuning-spark.md

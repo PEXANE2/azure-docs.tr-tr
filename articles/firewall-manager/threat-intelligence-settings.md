@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530650"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651735"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Güvenlik Duvarı tehdit zekası yapılandırması
 
@@ -24,21 +24,33 @@ Tehdit zekası tabanlı filtreleme 'yi yapılandırdıysanız, ilişkili kuralla
 
 ## <a name="threat-intelligence-mode"></a>Tehdit bilgileri modu
 
-Bir kural tetiklendiğinde yalnızca bir uyarıyı günlüğe kaydedebilir veya uyarı ve reddetme modunu seçebilirsiniz.
+Tehdit zekasını, aşağıdaki tabloda açıklanan üç moddan birinde yapılandırabilirsiniz. Varsayılan olarak, tehdit zekası tabanlı filtreleme, uyarı modunda etkindir.
 
-Varsayılan olarak, tehdit zekası tabanlı filtreleme, uyarı modunda etkindir.
+|Mod |Description  |
+|---------|---------|
+|`Off`     | Tehdit bilgileri özelliği güvenlik duvarınız için etkinleştirilmemiş. |
+|`Alert only`     | Güvenlik duvarınızdan veya bilinen kötü amaçlı IP adreslerinden ve etki alanlarına giden trafik için yüksek güvenilirlikli uyarılar alacaksınız. |
+|`Alert and deny`     | Trafik engellenir ve trafik algılandığında, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen güvenlik duvarınızdan veya bu bilgisayarlardan geçiş yapmaya çalışırken yüksek güvenilirlikli uyarılar alırsınız. |
 
-## <a name="allowed-list-addresses"></a>İzin verilen liste adresleri
+> [!NOTE]
+> Tehdit bilgileri modu üst ilkelerden alt ilkelere devralınır. Alt ilke, üst ilkeden aynı veya daha sıkı bir mod ile yapılandırılmalıdır.
 
-Tehdit bilgileri 'nin belirttiğiniz adreslerin, aralıkların veya alt ağların hiçbirini filtrelemesine olanak sağlamak için izin verilen IP adreslerinin bir listesini yapılandırabilirsiniz.
+## <a name="allowlist-addresses"></a>Allowlist adresleri
 
+Tehdit bilgileri hatalı pozitif sonuçlar tetikleyebilir ve gerçekten geçerli olan trafiği engeller. Tehdit bilgileri 'nin belirttiğiniz adreslerin, aralıkların veya alt ağların hiçbirini filtrelemesine olanak sağlamak için izin verilen IP adreslerinin bir listesini yapılandırabilirsiniz.  
 
+![Allowlist adresleri](media/threat-intelligence-settings/allow-list.png)
+
+Bir CSV dosyasını karşıya yükleyerek izin öğesini aynı anda birden çok girdi ile güncelleştirebilirsiniz. CSV dosyası yalnızca IP adreslerini ve aralıklarını içerebilir. Dosya başlık içeremez.
+
+> [!NOTE]
+> Tehdit bilgileri izin adresleri üst ilkelerden alt ilkelere devralınır. Bir üst ilkeye eklenen herhangi bir IP adresi veya aralığı, tüm alt ilkeler için de geçerlidir.
 
 ## <a name="logs"></a>Günlükler
 
-Aşağıdaki günlük alıntısı tetiklenen bir kural gösterir:
+Aşağıdaki günlük alıntısı, bir kötü amaçlı siteye giden trafik için tetiklenen bir kural gösterir:
 
-```
+```json
 {
     "category": "AzureFirewallNetworkRule",
     "time": "2018-04-16T23:45:04.8295030Z",

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501644"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575456"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Azure CDN için gerçek zamanlı Izleme, ölçümler ve erişim günlükleri
 Microsoft 'tan Azure CDN, sorunları gidermenize, izlemenize ve hata ayıklamanıza yardımcı olmak için aşağıdaki yollarla kaynakları izleyebilirsiniz. 
@@ -215,18 +215,18 @@ Microsoft 'tan Azure CDN, Azure Izleyici ile tümleşiktir ve sorunları izlemey
 
 Microsoft ölçülerden Azure CDN ve ölçümlerini 60 saniyelik aralıklarla gönderir. Ölçümlerin portalda görünmesi 3 dakika kadar sürebilir. 
 
-Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](../azure-monitor/platform/data-platform-metrics.md).
+Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](../azure-monitor/essentials/data-platform-metrics.md).
 
 **Microsoft 'tan Azure CDN tarafından desteklenen ölçümler**
 
-| Ölçümler  | Açıklama | Boyutlar |
+| Ölçümler  | Description | Boyutlar |
 | ------------- | ------------- | ------------- |
 | Bayt Isabet oranı * | Toplam çıkış için hesaplanan CDN önbelleğinden çıkış yüzdesi. | Uç Nokta |
 | Istek sayısı | CDN tarafından sunulan istemci isteklerinin sayısı. | Uç Nokta </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu. |
 | Yanıt boyutu | CDN kenarından istemcilere yanıt olarak gönderilen bayt sayısı. |Uç Nokta </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu. |
 | TotalLatency | **Son Yanıt BAYTı CDN 'den istemciye gönderilene kadar** CDN tarafından alınan istemci isteğinin toplam süresi. |Uç Nokta </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu. |
 
-**_Bayt Isabet sayısı = (uçtan çıkış çıkış kaynağından çıkış)/kenardan çıkış_*
+***Bayt Isabet sayısı = (uçtan çıkış çıkış kaynağından çıkış)/kenardan çıkış**
 
 Bayt isabet oranı hesaplamasında dışlanan senaryolar:
 
@@ -259,13 +259,13 @@ Bayt isabet oranı hesaplamasında dışlanan senaryolar:
 
 ### <a name="alerts"></a>Uyarılar
 
-**İzleme** uyarıları ' nı seçerek Microsoft CDN 'de uyarılar ayarlayabilirsiniz  >>  **Alerts**.
+**İzleme** uyarıları ' nı seçerek Microsoft CDN 'de uyarılar ayarlayabilirsiniz  >>  .
 
 Ölçümler bölümünde listelenen ölçümler için **Yeni uyarı kuralı** seçin:
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN uç noktası için uyarıları yapılandırın." border="true":::
 
-Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](../azure-monitor/platform/alerts-overview.md).
+Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>Ek ölçümler
 Ek bir maliyet için Azure Log Analytics ve ham günlükleri kullanarak ek ölçümler etkinleştirebilirsiniz.
@@ -299,4 +299,4 @@ Azure CDN ve bu makalede bahsedilen diğer Azure hizmetleri hakkında daha fazla
 
 * [Azure izleyici](../azure-monitor/overview.md)hakkında daha fazla bilgi edinin.
 
-* [Azure izleyici 'de Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)yapılandırın.
+* [Azure izleyici 'de Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)yapılandırın.

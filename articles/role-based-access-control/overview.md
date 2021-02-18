@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559339"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650873"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?
 
@@ -86,7 +86,7 @@ Daha fazla bilgi için bkz. [Azure rolü atama adımları](role-assignments-step
 
 ## <a name="multiple-role-assignments"></a>Çoklu rol atamaları
 
-Birden çok çakışan rol atamalarınız varsa ne olur? Azure RBAC, bir eklenebilir modeldir, bu nedenle etkili izinleriniz rol atamalarınızın toplamıdır. Bir kullanıcıya, abonelik kapsamında katkıda bulunan rolü ve bir kaynak grubundaki okuyucu rolü verildiğinde aşağıdaki örneği göz önünde bulundurun. Katkıda bulunan izinlerinin ve okuyucu izinlerinin toplamı, kaynak grubu için katkıda bulunan roldür. Bu nedenle, bu durumda okuyucu rolü atamasının hiçbir etkisi yoktur.
+Birden çok çakışan rol atamalarınız varsa ne olur? Azure RBAC, bir eklenebilir modeldir, bu nedenle etkili izinleriniz rol atamalarınızın toplamıdır. Bir kullanıcıya, abonelik kapsamında katkıda bulunan rolü ve bir kaynak grubundaki okuyucu rolü verildiğinde aşağıdaki örneği göz önünde bulundurun. Katkıda bulunan izinlerinin ve okuyucu izinlerinin toplamı, aboneliğin katkıda bulunan rolü için etkili bir roldür. Bu nedenle, bu durumda okuyucu rolü atamasının hiçbir etkisi yoktur.
 
 ![Çoklu rol atamaları](./media/overview/rbac-multiple-roles.png)
 

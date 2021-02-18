@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1c803ed24542cbc4a2f0aaaee82ac0f57559cb9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033128"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591853"
 ---
 # <a name="communication-services-logs"></a>İletişim Hizmetleri günlükleri
 
@@ -30,7 +30,7 @@ Yeni ayarlar yaklaşık on dakika içinde etkili olur. Günlükler, Iletişim Hi
 
 :::image type="content" source="./media/diagnostic-settings.png" alt-text="ACS Tanılama ayarları seçenekleri.":::
 
-Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerine](../../azure-monitor/platform/platform-logs-overview.md)genel bakış.
+Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak günlüklerine](../../azure-monitor/essentials/platform-logs-overview.md)genel bakış.
 
 ## <a name="resource-log-categories"></a>Kaynak günlüğü kategorileri
 
@@ -45,7 +45,7 @@ Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak 
 
 | Özellik | Açıklama |
 | -------- | ---------------|
-| Zaman damgası | Günlüğün oluşturulduğu zaman damgası (UTC). |
+| Timestamp | Günlüğün oluşturulduğu zaman damgası (UTC). |
 | İşlem adı | Günlük kaydıyla ilişkili işlem. |
 | İşlem sürümü | `api-version`OperationName BIR API kullanılarak gerçekleştirildiyse işlemle ilişkili. Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
 | Kategori | Etkinliğin günlük kategorisi. Kategori, belirli bir kaynaktaki günlükleri etkinleştirebilmeniz veya devre dışı bırakabilmeniz için gereken ayrıntı düzeyi. Bir olayın Özellikler blobu içinde görünen özellikler, belirli bir günlük kategorisi ve kaynak türü içinde aynıdır. |
