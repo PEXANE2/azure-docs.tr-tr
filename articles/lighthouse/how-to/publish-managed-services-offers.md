@@ -1,14 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555803"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092149"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -33,6 +33,9 @@ Aşağıdaki tablo, yönetilen bir hizmet teklifini yayımlayarak veya Azure Res
 |Azure portal müşteri kabulünü gerektirir     |Yes     |Hayır   |
 |Birden çok abonelik, kaynak grubu veya müşteri eklemek için Otomasyonu kullanabilir |Hayır     |Yes    |
 |Yeni yerleşik rollere ve Azure ışıklı kullanım özelliklerine anında erişin     |Her zaman değil (genellikle bir gecikmeden sonra kullanılabilir)         |Yes         |
+
+> [!NOTE]
+> Yönetilen hizmet teklifleri, Azure Kamu ve diğer ulusal bulutlarda kullanılamaz.
 
 ## <a name="create-your-offer"></a>Teklifinizi oluşturma
 

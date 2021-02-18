@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1c28ed90c041a65b2ff8dd08a3aac799795171eb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897468"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091215"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -306,7 +306,7 @@ Azure kaynaklarına erişime izin verildiğinde, kullanıcılara belirli bir gö
 
   > **Ne zaman kullanılır**: kullanıcılar ve gruplar için ayrıntılı erişim yönetimine ihtiyacınız olduğunda veya bir kullanıcıya abonelik sahibi yapmanız gerektiğinde.
   >
-  > **Kullanmaya** başlayın: daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+  > **Kullanmaya** başlayın: daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 - **Hizmet sorumlusu nesneleri**: Kullanıcı sorumluları ve gruplarına erişim sağlamaya birlikte, hizmet sorumlusu için de aynı erişimi verebilirsiniz.
 

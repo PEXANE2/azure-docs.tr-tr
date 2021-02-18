@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 444fbb08dfa535980c4012858b675e700ffa29d8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b0d6b083228ddab9d958bf3480b592f7ee0d892d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745100"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092647"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Yönetilen Kimlik ile PostgreSQL için Azure Veritabanı'na bağlanma
 
@@ -24,10 +24,10 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 - VM kimliğini kullanarak bir erişim belirteci alın ve bunu bir PostgreSQL için Azure veritabanı sunucusu için sorgulamak üzere kullanın
 - C# örnek uygulamasında belirteç alımı uygulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek için bkz. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma](../../articles/role-based-access-control/role-assignments-portal.md).
+- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atama ile ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek Için Azure rolleri atama](../../articles/role-based-access-control/role-assignments-portal.md)konusuna bakın.
 - Yönetilen kimlik kullanarak veritabanınıza erişmek için kullanmak istediğiniz bir Azure VM 'si (örneğin, Ubuntu Linux çalıştıran) gerekir
 - [Azure AD kimlik doğrulaması](howto-configure-sign-in-aad-authentication.md) yapılandırılmış bir PostgreSQL veritabanı sunucusu Için Azure veritabanı gerekir
 - C# örneğini izlemek için ilk olarak [c# ile bağlanma](connect-csharp.md) kılavuzunu tamamlayın

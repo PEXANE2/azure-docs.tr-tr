@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696022"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095214"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service için Node.js uygulaması yapılandırma
 
@@ -161,7 +161,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM başlangıcını Çalıştır
 
-Uygulamanızı kullanarak başlatmak için `npm start` , yalnızca bir `start` betiğin dosyada *package.js* olduğundan emin olun. Örnek:
+Uygulamanızı kullanarak başlatmak için `npm start` , yalnızca bir `start` betiğin dosyada *package.js* olduğundan emin olun. Örneğin:
 
 ```json
 {
@@ -209,7 +209,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Bir * .config.js, *. yıml veya *. YAML* kullanarak çalıştırmanız dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız Node.js uygulamanızda [Visual Studio Code](https://code.visualstudio.com/) uzaktan hata ayıklayabilirsiniz.
 
-Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız dosyadaki bir *process.js* (varsayılan veya özel) ile ÇALıŞıYORSA, `script` JSON kökünde bir özelliği olmalıdır. Örnek:
+Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız dosyadaki bir *process.js* (varsayılan veya özel) ile ÇALıŞıYORSA, `script` JSON kökünde bir özelliği olmalıdır. Örneğin:
 
 ```json
 {
@@ -239,7 +239,7 @@ process.env.NODE_ENV
 
 Varsayılan olarak, App Service derleme Otomasyonu çalıştırmaları, `npm install --production` derleme Otomasyonu etkinken git veya ZIP dağıtımı aracılığıyla dağıtılmış bir Node.js uygulaması algıladığında çalışır. Uygulamanız Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örnek:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örneğin:
 
 ```json
 "dependencies": {
@@ -342,12 +342,25 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>Application Insights ile izleme
+
+Application Insights, herhangi bir kod değişikliği yapmadan uygulamanızın performansını, özel durumlarını ve kullanımını izlemenize olanak sağlar. App Insights aracısını eklemek için portalda Web uygulamanıza gidin ve **Ayarlar** altında **Application Insights** ' yi seçin ve ardından **Application Insights aç**' ı seçin. Sonra, var olan bir App Insights kaynağını seçin veya yeni bir tane oluşturun. Son olarak, alt kısımdaki **Uygula** ' yı seçin. PowerShell kullanarak Web uygulamanızı işaretlemek için lütfen [Şu yönergelere](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell) bakın
+
+Bu aracı, sunucu tarafı Node.js uygulamanızı izler. İstemci tarafı JavaScript 'i izlemek için, [projenize JavaScript SDK 'sını ekleyin](../azure-monitor/app/javascript.md). 
+
+Daha fazla bilgi için [Application Insights uzantısı sürüm notlarına](../azure-monitor/app/web-app-extension-release-notes.md)bakın.
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Çalışan bir Node.js uygulaması App Service veya hata varsa, şunları deneyin:
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
+- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
     - *package.js* bağlı olarak, üretim modu ( `dependencies` vs.) için farklı paketler yüklenebilir `devDependencies` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
@@ -370,4 +383,3 @@ if (req.secure) {
 > [App Service Linux Hakkında SSS](faq-app-service-linux.md)
 
 ::: zone-end
-

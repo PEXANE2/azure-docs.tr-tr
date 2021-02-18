@@ -1,14 +1,14 @@
 ---
 title: Azure Market’teki Yönetilen Hizmet teklifleri
 description: Yönetilen hizmet teklifleri, Azure Market 'te müşterilere kaynak yönetimi teklifleri satmanızı sağlar.
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375553"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093001"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Market’teki Yönetilen Hizmet teklifleri
 
@@ -19,6 +19,9 @@ Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Ndeki **yö
 Yönetilen hizmet, müşterileri Azure 'un kullanımına ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir.
 
 Bundan sonra, kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre, [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde yönetim kiracının içinden çalışabilecektir. Bu işlem, erişim düzeyini tanımlayan [rollerle](tenants-users-roles.md) birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır.
+
+> [!NOTE]
+> Yönetilen hizmet teklifleri, Azure Kamu ve diğer ulusal bulutlarda kullanılamaz.
 
 ## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 
@@ -38,7 +41,7 @@ Uygunsa, hem genel hem de özel planları aynı teklifine dahil edebilirsiniz.
 
 ## <a name="publish-managed-service-offers"></a>Yönetilen hizmet tekliflerini yayımlama
 
-Yönetilen bir hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmetler teklifi yayımlama](../how-to/publish-managed-services-offers.md).
+Yönetilen hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmet teklifi yayımlama](../how-to/publish-managed-services-offers.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

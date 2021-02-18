@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9608dfd7ac4076e6cd74846c3f52ed2e3645777a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e01083b8618e4751770ed69aa4b1c20f8a072d88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956013"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092314"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLı kullanarak Event Grid Media Services olaylar oluşturma ve izleme
 
@@ -30,7 +30,7 @@ Bu makalede, Azure CLı kullanarak Azure Media Services hesabınıza yönelik ol
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-- CLı 'yi yerel olarak yükleyip kullanın, bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
+- CLı 'yi yerel olarak yükleyip kullanın, bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
     Şu anda, tüm [Media Services v3 CLI](/cli/azure/ams) komutları Azure Cloud Shell çalışmaz. CLı 'nın yerel olarak kullanılması önerilir.
 

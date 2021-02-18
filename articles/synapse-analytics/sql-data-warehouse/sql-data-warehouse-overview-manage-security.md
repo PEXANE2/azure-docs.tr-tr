@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ad19c976cceab76d6eb0dbfbea5840d9764bffec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685200"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092944"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunun (eski adıyla SQL DW) güvenliğini sağlama
 
@@ -92,7 +92,7 @@ Aşağıdaki örnek, Kullanıcı tanımlı bir şemaya okuma erişimi verir.
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Veritabanlarını ve sunucuları Azure portal veya Azure Resource Manager API 'sini kullanarak yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Veritabanlarını ve sunucuları Azure portal veya Azure Resource Manager API 'sini kullanarak yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Şifreleme
 

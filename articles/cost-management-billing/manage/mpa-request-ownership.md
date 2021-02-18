@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: HT
+ms.openlocfilehash: 0c5ecb61b5b34864aa89c1f0e760e96c383a269f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203271"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091485"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -36,16 +36,16 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 1. CSP kiracısındaki CSP Yönetici Aracısı kimlik bilgilerini kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Faturalama sahipliğini istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/search-cmb.png)
-1. Sol taraftan **Müşteriler** ’i seçin ve sonra listeden bir müşteri belirleyin.  
+1. Sol taraftan **Müşteriler**’i seçin ve sonra listeden bir müşteri belirleyin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
-1. Sol alt köşeden **Aktarım istekleri** ’ni ve ardından **Yeni istek ekle** ’yi seçin.  
+1. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.  
     [![Aktarım isteklerinin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
-1. Müşteri kuruluşunda, aktarım isteğini kabul edecek kullanıcının e-posta adresini girin. Kullanıcının bir Kurumsal Anlaşma hesap sahibi olması gerekir. **Aktarım isteği gönder** ’i seçin.  
+1. Müşteri kuruluşunda, aktarım isteğini kabul edecek kullanıcının e-posta adresini girin. Kullanıcının bir Kurumsal Anlaşma hesap sahibi olması gerekir. **Aktarım isteği gönder**’i seçin.  
     [![Aktarım isteği gönderme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
 1. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.  
     ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
 1. Kullanıcı, aktarma isteğini onaylamak için e-postadaki bağlantıyı seçer ve yönergeleri izler.  
-    [![Aktarım isteğini gözden geçirme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Kullanıcı Azure ürünlerini aktarmak istediği kaynak faturalama hesabını seçebilir. Hesap seçildiğinde aktarılabilecek uygun ürünler gösterilir. **Not:** Devre dışı bırakılmış abonelikler aktarılamaz ve varsa "Aktarılamayan Azure Ürünleri" listesinde gösterilir. Aktarılacak Azure ürünleri seçildikten sonra **Doğrula** 'yı seçin.
+    [![Aktarım isteğini gözden geçirme işlemini gösteren ekran görüntüsü](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Kullanıcı Azure ürünlerini aktarmak istediği kaynak faturalama hesabını seçebilir. Hesap seçildiğinde aktarılabilecek uygun ürünler gösterilir. **Not:** Devre dışı bırakılmış abonelikler aktarılamaz ve varsa "Aktarılamayan Azure Ürünleri" listesinde gösterilir. Aktarılacak Azure ürünleri seçildikten sonra **Doğrula**'yı seçin.
 1. **Aktarım Doğrulama Sonucu** alanında, aktarılacak Azure ürünlerinin etkisi gösterilir. Olası durumlar şunlardır:
     * **Başarılı** - Bu Azure ürününün doğrulaması başarılı oldu ve ürün aktarılabilir.
     * **Uyarı** - Seçili Azure ürünü için bir uyarı var. Ürün yine de aktarılabilir ama bunu yapmanın, düzeltme eylemleri gerçekleştirmek istemesi durumunda kullanıcının bilmesi gereken bazı etkileri olacaktır. Örneğin aktarılmakta olan Azure aboneliği bir RI avantajından yararlanıyor. Aktarımdan sonra abonelik bu avantajı alamayacak. Tasarrufları en üst düzeye çıkarmak için, RI'nin avantajlarını kullanabilecek başka bir abonelikle ilişkilendirildiğinden emin olun. Bunun yerine kullanıcı seçim sayfasına geri dönmeyi ve bu Azure aboneliğinin seçimini kaldırmayı da seçebilir.
@@ -57,10 +57,10 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Aktarım durumunu istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-1. Sol taraftan **Müşteriler** ’i seçin.  
+1. Sol taraftan **Müşteriler**’i seçin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Listeden aktarım isteğini gönderdiğiniz müşteriyi seçin.
-1. Sol alt taraftaki **Aktarım istekleri** 'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir: [![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
+1. Sol alt taraftaki **Aktarım istekleri**'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir: [![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Sütun|Tanım|
    |---------|---------|
@@ -174,4 +174,4 @@ Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure aboneliklerinin fatura sahipliği size aktarıldı. Bu aboneliklerin ücretlerini [Azure portalından](https://portal.azure.com) takip edin.
-* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [Azure Portal kullanarak Azure rolleri atayın](../../role-based-access-control/role-assignments-portal.md).

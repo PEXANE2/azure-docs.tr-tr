@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aabaad54dce52d57aaa4689f591351e290b0f9a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371261"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093691"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -36,12 +36,12 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 2. **Kaynak gruplarını** seçin
 
     ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. Aşağıdaki değerleri girin:
 
    - **Abonelik**: Azure aboneliğinizi seçin. 
    - **Kaynak grubu**: yeni bir kaynak grubu adı girin. 
-   - **Bölge**: **Orta ABD**gibi bir Azure konumu seçin.
+   - **Bölge**: **Orta ABD** gibi bir Azure konumu seçin.
 
      ![kaynak grubu oluştur](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **Gözden geçir + oluştur** ' u seçin
@@ -62,7 +62,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 ## <a name="open-resource-groups"></a>Kaynak gruplarını aç
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **Kaynak grupları**' nı seçin.
+2. **Kaynak grupları**’nı seçin.
 3. Açmak istediğiniz kaynak grubunu seçin.
 
 ## <a name="delete-resource-groups"></a>Kaynak gruplarını silme
@@ -89,7 +89,7 @@ Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak gr
 1. Kilitlemek istediğiniz kaynak grubunu açın.  Bkz. [açık kaynak grupları](#open-resource-groups).
 2. Sol bölmede, **kilitler**' ı seçin.
 3. Kaynak grubuna bir kilit eklemek için **Ekle**' yi seçin.
-4. **Kilit adı**, **Kilit türü**ve **Not**girin. Kilit türleri **salt okunurdur**ve **Delete**' i içerir.
+4. **Kilit adı**, **Kilit türü** ve **Not** girin. Kilit türleri **salt okunurdur** ve **Delete**' i içerir.
 
     ![Azure kaynak grubunu kilitle](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
@@ -105,7 +105,7 @@ Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kay
 
 ## <a name="manage-access-to-resource-groups"></a>Kaynak gruplarına erişimi yönetme
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

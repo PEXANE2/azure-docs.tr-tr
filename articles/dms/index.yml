@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: c2461fa9eb2c326141d244fbc576355226f891dd
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-  ms.translationtype: HT
+  ms.openlocfilehash: 2703c34dc56303103c682bed740a34991a6471f6
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94962714"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101092162"
 landingContent:
 - title: Azure Veritabanı Geçiş Hizmeti hakkında
   linkLists:
@@ -57,29 +57,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: SQL DB tek veritabanına geçiş - çevrimiçi
-      url: tutorial-sql-server-azure-sql-online.md
-    - text: SQL DB tek veritabanına geçiş - çevrimdışı
+    - text: Azure SQL Veritabanı'na geçiş
       url: tutorial-sql-server-to-azure-sql.md
-    - text: SQL DB yönetilen örneğine geçiş - çevrimiçi
+    - text: Azure SQL yönetilen örneği 'ne geçiş (çevrimiçi)
       url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL DB yönetilen örneğine geçiş - çevrimdışı
+    - text: SQL yönetilen örneğine (çevrimdışı) geçiş
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server’ı SQL DB tek veritabanına veya yönetilen örneğine geçirme - çevrimiçi
+    - text: RDS SQL Server Azure SQL 'e geçirme
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: Bilinen sorunlar - SQL DB tek veritabanına çevrimiçi geçiş
+    - text: Bilinen sorunlar-SQL veritabanına çevrimiçi geçiş
       url: known-issues-azure-sql-online.md
-    - text: Bilinen Sorunlar - SQL DB yönetilen örneğine çevrimiçi geçiş
+    - text: Bilinen sorunlar-SQL yönetilen örneğine çevrimiçi geçiş
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: SQL DB yönetilen örneği geçişlerinin ağ topolojileri
+    - text: SQL yönetilen örnek geçişleri için ağ topolojileri
       url: resource-network-topologies.md
-    - text: SQL Server’dan SQL DB yönetilen örneğine çevrimiçi geçişler için özel roller
+    - text: SQL Server 'den SQL tarafından yönetilen örneğe çevrimiçi geçişler için özel roller
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: SQL Server 2008’i SQL DB yönetilen örneğine geçirme
+    - text: SQL Server 2008 ' i SQL yönetilen örneğine geçir
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: Açık kaynaklı veritabanlarını Azure’a geçirme
   linkLists:

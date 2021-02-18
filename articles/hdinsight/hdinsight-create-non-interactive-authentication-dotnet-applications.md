@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946092"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094921"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
@@ -28,7 +28,7 @@ An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-li
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD uygulamasına bir rol atama
 
-Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir [rol](../role-based-access-control/built-in-roles.md)atayın. Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve içindeki kaynakları okuyabileceği anlamına gelir. Bu makalede, kapsamı kaynak grubu düzeyinde ayarlarsınız. Daha fazla bilgi için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](../role-based-access-control/role-assignments-portal.md).
+Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir [rol](../role-based-access-control/built-in-roles.md)atayın. Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve içindeki kaynakları okuyabileceği anlamına gelir. Bu makalede, kapsamı kaynak grubu düzeyinde ayarlarsınız. Daha fazla bilgi için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek Için Azure rolleri atama](../role-based-access-control/role-assignments-portal.md).
 
 **Azure AD uygulamasına sahip rolünü eklemek için**
 

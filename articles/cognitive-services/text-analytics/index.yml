@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.openlocfilehash: 322be97658752fb1fd6c775ba25fc74f4e04e50d
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98944980"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101093287"
 landingContent:
 - title: Metin Analizi API'si hakkında
   linkLists:
@@ -114,6 +114,36 @@ landingContent:
     links:
     - text: Varlık tanıma
       url: how-tos/text-analytics-how-to-entity-linking.md
+- title: Yapay zekanın sorumluluk sahibi bir biçimde kullanılması
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Metin Analizi için saydamlık notunun
+      url: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Sağlık için saydamlık notunun
+      url: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+    - text: PII için saydamlık notunun
+      url: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Yaklaşım Analizi için saydamlık notunun
+      url: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: Tümleştirme ve sorumlu kullanım
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+- title: Docker kapsayıcılarını kullanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Metin Analizi kapsayıcılarını yükleme ve çalıştırma
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: Metin Analizi kapsayıcılarını yapılandırma
+      url: text-analytics-resource-container-config.md
+    - text: Durum kapsayıcısı için Metin Analizi'ni kullanma
+      url: How-tos/text-analytics-for-health.md
+    - text: Azure’a kapsayıcı örneği dağıtma
+      url: ../containers/azure-container-instance-recipe.md
+    - text: Azure Kubernetes Service (AKS) üzerine kapsayıcı dağıtma
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: Başvuru
   linkLists:
   - linkListType: reference
@@ -134,20 +164,6 @@ landingContent:
       url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
       url: /cli/azure/cognitiveservices?view=azure-cli-latest
-- title: Docker kapsayıcılarını kullanma
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Metin Analizi kapsayıcılarını yükleme ve çalıştırma
-      url: how-tos/text-analytics-how-to-install-containers.md
-    - text: Metin Analizi kapsayıcılarını yapılandırma
-      url: text-analytics-resource-container-config.md
-    - text: Durum kapsayıcısı için Metin Analizi'ni kullanma
-      url: How-tos/text-analytics-for-health.md
-    - text: Azure’a kapsayıcı örneği dağıtma
-      url: ../containers/azure-container-instance-recipe.md
-    - text: Azure Kubernetes Service (AKS) üzerine kapsayıcı dağıtma
-      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: Yardım ve geri bildirim
   linkLists:
   - linkListType: reference

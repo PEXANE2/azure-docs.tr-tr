@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 42536480a72e8d2160064a82eee7bac11c17746c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585517"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095353"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -71,33 +71,34 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
       Central US  
       Çin Doğu 2  
       Çin Kuzey 2  
+      Doğu Asya       
    :::column-end:::
    :::column span="":::
-      Doğu Asya  
       Doğu ABD  
       Doğu ABD 2  
       EUAP Doğu ABD 2  
       Orta Fransa  
-      Doğu Japonya  
+      Almanya Orta Batı Japonya Doğu  
       Batı Japonya  
       Güney Kore - Orta  
       Güney Kore - Güney  
       Orta Kuzey ABD  
+      Kuzey Avrupa    
    :::column-end:::
    :::column span="":::
-      Kuzey Avrupa  
       Güney Afrika - Kuzey  
       Orta Güney ABD  
       Güney Hindistan  
       Güneydoğu Asya  
       İsviçre Kuzey  
       İsviçre Batı  
+      BAE Kuzey  
       Güney Birleşik Krallık  
-      Batı Birleşik Krallık  
+      Batı Birleşik Krallık   
       USGov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       USGov Virginia  
       USNat Doğu  
       USNat Batı  
@@ -143,14 +144,15 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
       İsviçre Kuzey  
       İsviçre Batı  
       BAE Orta  
+      BAE Kuzey  
       Güney Birleşik Krallık  
-      Batı Birleşik Krallık  
+      Batı Birleşik Krallık   
       USGov Arizona  
       USGov Virginia  
-      USNat Doğu  
-      USNat Batı  
+      USNat Doğu   
    :::column-end:::
    :::column span="":::
+      USNat Batı   
       USSec Doğu  
       USSec Batı  
       Orta Batı ABD  

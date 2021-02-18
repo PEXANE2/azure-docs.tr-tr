@@ -432,7 +432,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub
@@ -497,10 +497,10 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT çözüm hızlandırıcıları
-          href: ../iot-accelerators/index.yml
         - name: IoT Tak Çalıştır
           href: ../iot-pnp/index.yml
+        - name: IoT çözüm hızlandırıcıları
+          href: ../iot-accelerators/index.yml
         - name: Azure Haritalar
           href: ../azure-maps/index.yml
         - name: Time Series Insights

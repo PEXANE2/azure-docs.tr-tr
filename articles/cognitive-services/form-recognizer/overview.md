@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584575"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094378"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -27,26 +27,27 @@ Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri
 Form tanıyıcı özel belge işleme modellerden, faturalar, alındılar ve iş kartlarında ve düzen modelinin önceden oluşturulmuş modellerinden oluşur. Karmaşıklığı azaltmak ve iş akışınız veya uygulamanızla bütünleştirmek için bir REST API veya istemci kitaplığı SDK 'Ları kullanarak form tanıyıcı modellerini çağırabilirsiniz.
 
 Form tanıyıcı aşağıdaki hizmetlerden oluşur:
+
 * **[Düzen API 'si](#layout-api)** -metin, seçim işaretleri ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
 * **[Özel modeller](#custom-models)** -metin, anahtar/değer çiftleri, seçim işaretleri ve formlardan tablo verilerini ayıklar. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
 * **[Önceden oluşturulmuş modeller](#prebuilt-models)** -önceden oluşturulmuş modeller kullanarak benzersiz form türlerinden veri ayıklayın. Şu anda aşağıdaki önceden oluşturulmuş modeller mevcuttur
-    * [Faturalar](./concept-invoices.md)
-    * [Satış alındıları](./concept-receipts.md)
-    * [Kartvizitler](./concept-business-cards.md)
-
+  * [Faturalar](./concept-invoices.md)
+  * [Satış alındıları](./concept-receipts.md)
+  * [Kartvizitler](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>Deneyin
 
 Form tanıyıcı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Form tanıyıcıyı deneyin](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Form tanıyıcıyı deneyin](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Form tanıyıcıyı deneyin](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için 
 | **Okundu bilgisi** | Anahtar bilgilerini ve diğer makbuz metnini ayıklamak için bir makbuz belgesi çözümleyin.|
 | **Iş kartını çözümle** | Anahtar bilgileri ve metin ayıklamak için bir iş kartını analiz edin.|
 
+# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
-
-# <a name="v21"></a>[v2.1](#tab/v2-1)
-Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
 
 ---
 

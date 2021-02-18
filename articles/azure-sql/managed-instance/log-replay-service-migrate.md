@@ -10,17 +10,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 02/17/2021
-ms.openlocfilehash: 7892b1fe0fcad77d1fde8b44f4a8745b5c7dd334
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 07da1d5dbfd6384751e01f5becccd7b7b4c97e99
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654594"
+ms.locfileid: "101095225"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service"></a>Günlük yeniden yürütme hizmeti 'ni kullanarak SQL Server veritabanlarını SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu makalede, günlük yeniden yürütme hizmeti (LRS) kullanarak SQL Server 2008-2019 ' dan SQL yönetilen örneği 'ne veritabanı geçişini el ile yapılandırma açıklanmaktadır. Bu, kurtarma modunda SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilen bir bulut hizmetidir. LRS 'ler, daha fazla denetim gerektiğinde veya kapalı kalma süresi için çok az tolerans varsa veri geçiş hizmeti 'nin (DMS) kullanılamaz durumda kullanılması durumunda kullanılmalıdır.
+Bu makalede, günlük yeniden yürütme hizmeti (LRS) kullanarak SQL Server 2008-2019 ' dan SQL yönetilen örneği 'ne veritabanı geçişini el ile yapılandırma açıklanmaktadır. Bu, SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilen bir bulut hizmetidir. LRS 'ler, Azure Data Migration hizmeti (DMS) kullanılamadığında, daha fazla denetim gerektiğinde veya kapalı kalma süresi için çok az tolerans varken kullanılmalıdır.
 
 ## <a name="when-to-use-log-replay-service"></a>Günlük yeniden yürütme hizmeti ne zaman kullanılır?
 
@@ -34,7 +34,7 @@ Aşağıdaki bazı durumlarda LRS bulut hizmetini kullanmayı düşünmek isteye
 - Konak işletim sistemine erişim yok veya yönetici ayrıcalıklarına sahip değil
 
 > [!NOTE]
-> SQL Server veritabanlarını SQL yönetilen örneğine geçirmek için önerilen otomatik yol Azure DMS kullanmaktır. Bu hizmet, kurtarma yok modunda günlük gönderimi ile arka uçta aynı LRS bulut hizmetini kullanıyor. Azure DMS, senaryolarınızı tam olarak desteklemediğinden, geçişleri yönetmek için LRS kullanarak el ile göz önünde bulundurmanız gerekir.
+> SQL Server veritabanlarını SQL yönetilen örneğine geçirmek için önerilen otomatik yol Azure DMS kullanmaktır. Bu hizmet, günlük aktarımına NORECOVERY modunda, arka uçta aynı LRS bulut hizmetini kullanıyor. Azure DMS, senaryolarınızı tam olarak desteklemediğinden, geçişleri yönetmek için LRS kullanarak el ile göz önünde bulundurmanız gerekir.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
@@ -50,11 +50,11 @@ LRS, otomatik tamamlama veya sürekli modda başlatılabilir. Otomatik tamamlama
 
 | İşlem | Ayrıntılar |
 | :----------------------------- | :------------------------- |
-| **1. SQL Server veritabanı yedeklerini Azure Blob depolama alanına kopyalayın**. | - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanarak SQL Server 'dan Azure Blob depolama 'ya tam, değişiklik ve günlük yedeklemeleri kopyalayın. <br />-Çeşitli veritabanlarını geçirirken her veritabanı için ayrı bir klasör gerekir. |
-| **2. LRS hizmetini bulutta başlatın**. | -Hizmet, bir cmdlet seçimi ile başlatılabilir: <br /> PowerShell [Start-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_start cmdlet 'leri](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start). <br /><br />-Başlatıldıktan sonra, hizmet Azure Blob depolama alanından yedeklemeleri alacak ve bunları SQL yönetilen örneği 'ne geri yüklemeye başlayacaktır. <br /> -Başlangıçta karşıya yüklenen tüm yedeklemeler geri yüklendikten sonra hizmet, klasöre yüklenen yeni dosyaları izleyebilir ve hizmet durduruluncaya kadar, LSN zincirine göre günlükleri sürekli olarak uygular. |
+| **1. SQL Server veritabanı yedeklerini Azure Blob depolama alanına kopyalayın**. | - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanarak SQL Server 'den Azure Blob depolama kapsayıcısına tam, değişiklik ve günlük yedeklemeleri kopyalayın. <br />-Çeşitli veritabanlarını geçirirken her veritabanı için ayrı bir klasör gerekir. |
+| **2. LRS hizmetini bulutta başlatın**. | -Hizmet, bir cmdlet seçimi ile başlatılabilir: <br /> PowerShell [Start-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_start cmdlet 'leri](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start). <br /><br />-Başlatıldıktan sonra, hizmet Azure Blob depolama kapsayıcısından yedeklemeleri alacak ve bunları SQLManaged örneğine geri yüklemeye başlayacaktır. <br /> -Başlangıçta karşıya yüklenen tüm yedeklemeler geri yüklendikten sonra hizmet, klasöre yüklenen yeni dosyaları izleyebilir ve hizmet durduruluncaya kadar, LSN zincirine göre günlükleri sürekli olarak uygular. |
 | **2,1. işlem Ilerlemesini izleyin**. | -Geri yükleme işleminin ilerlemesi, veya cmdlet 'leri arasından izlenebilir: <br /> PowerShell [Get-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_show cmdlet 'leri](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show). |
 | **2,2. Stop\işlemi iptal** edin. | -Geçiş işleminin iptal edilmesi gerekebileceği durumlarda, işlem cmdlet 'leri seçimiyle durdurulabilir: <br /> PowerShell [stop-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_stop](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop) cmdlet 'leri. <br /><br />-Bu, SQL yönetilen örneği üzerinde veritabanını geri yükleme işleminin silinmesine neden olur. <br />-Bir kez durdurulduktan sonra, bir veritabanı için LRS devam ettirilemez. Geçiş işleminin sıfırdan yeniden başlatılması gerekiyor. |
-| **3. hazırlık sırasında buluta ver**. | -Tüm yedeklemeler SQL yönetilen örneğine geri yüklendikten sonra, bir API çağrısı veya cmdlet 'leri seçimiyle LRS tamamlanmış işlemini başlatarak tam geçişi ' i doldurun: <br />PowerShell [tam-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_complete](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete) cmdlet 'leri. <br /><br />-Bu, LRS hizmetinin durdurulmasına ve yönetilen örnekteki veritabanının kurtarılmasını sağlar. <br />-Uygulama bağlantı dizesinin SQL Server 'den SQL yönetilen örneği 'ne yeniden işaret edin. <br />-On işlemi tamamlanma veritabanı, bulutta R/W işlemleri için kullanılabilir. |
+| **3. hazırlık sırasında buluta ver**. | -Tüm yedeklemeler SQL mnatedınstance 'a geri yüklendikten sonra, bir API çağrısı veya cmdlet 'leri seçimiyle LRS tam işlemini başlatarak tam geçişi ' i doldurun: <br />PowerShell [tam-azsqlınstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay) <br /> CLı [az_sql_midb_log_replay_complete](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete) cmdlet 'leri. <br /><br />-Bu, LRS hizmetinin durdurulmasına ve yönetilen örnekteki veritabanının kurtarılmasını sağlar. <br />-Uygulama bağlantı dizesinin SQL Server 'den SQL yönetilen örneği 'ne yeniden işaret edin. <br />-On işlemi tamamlanma veritabanı, bulutta R/W işlemleri için kullanılabilir. |
 
 ## <a name="requirements-for-getting-started"></a>Başlangıç gereksinimleri
 
@@ -63,13 +63,13 @@ LRS, otomatik tamamlama veya sürekli modda başlatılabilir. Otomatik tamamlama
 - Veritabanlarının tam yedeklemesi (bir veya daha fazla dosya)
 - Değişiklik yedekleme (bir veya birden çok dosya)
 - Günlük yedeklemesi (işlem günlüğü dosyası için bölünmemiş)
-- **Sağlama toplamı** zorunlu olarak etkinleştirilmelidir
+- Yedekler için **sağlama toplamı etkinleştirilmelidir** (zorunlu)
 
 ### <a name="azure-side"></a>Azure tarafı
--   PowerShell az. SQL Module Version 2.16.0 veya üzeri (Azure [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/)'yi[yükler](https://www.powershellgallery.com/packages/Az.Sql/)veya kullanın)
--   CLı sürüm 2.19.0 veya üstü ([Install](https://docs.microsoft.com/cli/azure/install-azure-cli))
--   Sağlanan Azure Blob depolama alanı
--   Yalnızca BLOB depolama için oluşturulan **okuma** ve **LISTELEME** izinlerine sahip SAS güvenlik belirteci
+- PowerShell az. SQL Module Version 2.16.0 veya üzeri (Azure [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/)'yi[yükler](https://www.powershellgallery.com/packages/Az.Sql/)veya kullanın)
+- CLı sürüm 2.19.0 veya üstü ([Install](https://docs.microsoft.com/cli/azure/install-azure-cli))
+- Sağlanan Azure Blob depolama kapsayıcısı
+- Yalnızca BLOB depolama kapsayıcısı için oluşturulan **okuma** ve **LISTELEME** izinlerine sahip SAS güvenlik belirteci
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
@@ -81,7 +81,7 @@ En iyi uygulamalar olarak aşağıdakiler önerilir:
 - LRS hizmeti başlatıldığından beri geçişi 47 saat içinde tamamlamayı planlayın.
 
 > [!IMPORTANT]
-> - LRS kullanılarak geri yüklenen veritabanı, geçiş işlemi tamamlanana kadar kullanılamaz. Bunun nedeni, temeldeki teknolojinin kurtarma modunda günlük aktarma olmasından kaynaklanır.
+> - LRS kullanılarak geri yüklenen veritabanı, geçiş işlemi tamamlanana kadar kullanılamaz. Bunun nedeni, temeldeki teknolojinin hızlı bir şekilde günlük aktarma.
 > - SQL yönetilen örneği ve en son Pazar içi SQL Server sürümü arasındaki sürüm farklılıkları nedeniyle günlük aktarımı için bekleme modu LRS tarafından desteklenmez.
 
 ## <a name="steps-to-execute"></a>Yürütülecek adımlar
@@ -222,7 +222,8 @@ LRS sürekli modundaki geçiş işlemini gerçekleştirmek için aşağıdaki Po
 ```powershell
 Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
 -InstanceName "ManagedInstance01" `
--Name "ManagedDatabaseName" -LastBackupName "last_backup.bak"
+-Name "ManagedDatabaseName" `
+-LastBackupName "last_backup.bak"
 ```
 
 LRS sürekli modundaki geçiş işlemini gerçekleştirmek için aşağıdaki CLı komutunu kullanın:

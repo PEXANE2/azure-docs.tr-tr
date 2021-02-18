@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653457"
+ms.locfileid: "101091475"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -191,6 +191,7 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 | Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-SelmaNeural` <sup>Yeni</sup> | Genel |
 | Fince (Finlandiya) | `fi-FI` | Erkek | `fi-FI-HarriNeural` <sup>Yeni</sup> | Genel |
 | Fransızca (Kanada) | `fr-CA` | Kadın | `fr-CA-SylvieNeural` | Genel |
+| Fransızca (Kanada) | `fr-CA` | Erkek | `fr-CA-AntoineNeural` <sup>Yeni</sup> | Genel |
 | Fransızca (Kanada) | `fr-CA` | Erkek | `fr-CA-JeanNeural` | Genel |
 | Fransızca (Fransa) | `fr-FR` | Kadın | `fr-FR-DeniseNeural` | Genel |
 | Fransızca (Fransa) | `fr-FR` | Erkek | `fr-FR-HenriNeural` | Genel |

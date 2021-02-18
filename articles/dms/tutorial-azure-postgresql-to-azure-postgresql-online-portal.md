@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 545359cd68c18fea8bf1369a57226d024489f293
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258940"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091299"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB 'yi geçirme/yükseltme-tek sunucudan PostgreSQL için Azure VERITABANı-tek sunuculu, Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
@@ -54,7 +54,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * [PostgreSQL Için Azure veritabanı sunucusu oluşturun](../postgresql/quickstart-create-server-database-portal.md) veya veri geçirilecek hedef veritabanı sunucusu olarak [PostgreSQL için Azure veritabanı-Hyperscale (Citus) sunucusu oluşturun](../postgresql/quickstart-create-hyperscale-portal.md) .
 * Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure Sanal Ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](../virtual-network/index.yml)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
-* Sanal ağınız için ağ güvenlik grubu (NSG) kurallarının Azure veritabanı geçiş hizmeti 'ne Şu giden iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
+* Sanal ağınız için ağ güvenlik grubu (NSG) kurallarının ServiceBus, Storage ve AzureMonitor için ServiceTag giden bağlantı noktası 443 ' i engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
 * Azure veritabanı geçiş hizmeti 'nin kaynak veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı kaynağı için sunucu düzeyinde bir [güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * Azure veritabanı geçiş hizmeti 'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı hedefi için sunucu düzeyinde bir [güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * PostgreSQL için Azure DB kaynağı 'nda [mantıksal çoğaltmayı etkinleştirin](../postgresql/concepts-logical.md) . 

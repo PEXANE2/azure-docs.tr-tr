@@ -8,26 +8,26 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 2ae7b28d5e9e7a520ee8cbd090b6681d5ad7015a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422765"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095989"
 ---
 # <a name="about-keys"></a>Anahtarlar hakkında
 
-Azure Key Vault, şifreleme anahtarlarını depolamak ve yönetmek için iki tür kaynak sağlar:
+Azure Key Vault, şifreleme anahtarlarını depolamak ve yönetmek için iki tür kaynak sağlar. Kasaların yazılım korumalı ve HSM korumalı (donanım güvenlik modülü) anahtarlarını destekler. Yönetilen HSMs yalnızca HSM korumalı anahtarları destekler. 
 
 |Kaynak türü|Anahtar koruma yöntemleri|Veri düzlemi uç noktası temel URL 'SI|
 |--|--|--|
-| **Kasalar** | Yazılım korumalı<br/><br/>reservedStorageGb<br/><br/>HSM korumalı (Premium SKU ile)</li></ul> | https://{kasa-adı}. kasa. Azure. net |
-| **Yönetilen HSM havuzları** | HSM korumalı | https://{HSM-adı}. managedhsm. Azure. net |
+| **Kasalar** | Yazılım korumalı<br/><br/>ve<br/><br/>HSM korumalı (Premium SKU ile)</li></ul> | https://{kasa-adı}. kasa. Azure. net |
+| * * Yönetilen HSMs * * | HSM korumalı | https://{HSM-adı}. managedhsm. Azure. net |
 ||||
 
-- **Vaults** Kasaların kasalarına göre düşük maliyetli, kolay bir dağıtım, çok kiracılı, bölge açısından dayanıklı (kullanılabilir yerlerde), en yaygın bulut uygulaması senaryoları için uygun olan yüksek düzeyde kullanılabilir anahtar yönetimi çözümü sağlar.
+-  Kasaların kasalarına göre düşük maliyetli, kolay bir dağıtım, çok kiracılı, bölge açısından dayanıklı (kullanılabilir yerlerde), en yaygın bulut uygulaması senaryoları için uygun olan yüksek düzeyde kullanılabilir anahtar yönetimi çözümü sağlar.
 - **Yönetilen hsms** tarafından yönetilen HSM, şifreleme anahtarlarınızı depolamak ve yönetmek için tek kiracılı, bölge dayanıklı (kullanılabilir), yüksek oranda kullanılabilir HSM 'ler sağlar. Yüksek değerli anahtarları işleyen uygulamalar ve kullanım senaryoları için en uygun. Ayrıca, en sıkı güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılamanıza yardımcı olur. 
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Temel JWK/JWA belirtimleri, Azure Key Vault ve yönetilen HSM uygulamalarına ö
 HSM korumalı anahtarlar (HSM anahtarları olarak da adlandırılır) bir HSM 'de (donanım güvenlik modülü) işlenir ve her zaman HSM koruma sınırı kalır. 
 
 - Kasaların paylaşılan HSM arka uç altyapısında HSM anahtarlarını korumak için **fıps 140-2 düzey 2** doğrulanan HSM 'leri kullanın. 
-- Yönetilen HSM havuzları, anahtarlarınızı korumak için **fıps 140-2 düzey 3** doğrulanan HSM modüllerini kullanır. Her HSM havuzu, aynı donanım altyapısını paylaşan diğer tüm HSM havuzlarından tam şifreleme yalıtımı sağlayan kendi [güvenlik etki alanı](../managed-hsm/security-domain.md) ile yalıtılmış bir tek kiracılı örneğidir.
+- Yönetilen HSM, anahtarlarınızı korumak için **fıps 140-2 düzey 3** doğrulanan HSM modülleri kullanır. Her HSM havuzu, kendi [güvenlik etki alanı](../managed-hsm/security-domain.md) ile yalıtılmış bir tek kiracılı örneğidir ve aynı donanım altyapısını paylaşan diğer tüm hsms 'lerden tam şifreleme yalıtımı sağlar.
 
 Bu anahtarlar tek kiracılı HSM havuzları halinde korunur. Bir RSA, EC ve simetrik anahtarı, yumuşak biçimde veya desteklenen bir HSM cihazından dışarı aktararak içeri aktarabilirsiniz. Ayrıca HSM havuzlarında anahtarlar da oluşturabilirsiniz. HSM anahtarlarını [bYok (kendi anahtarını getir) belirtiminde](../keys/byok-specification.md)açıklanan yöntemi kullanarak içeri aktardığınızda, yönetilen HSM havuzlarına güvenli ulaşım anahtar malzemesini sunar. 
 
@@ -53,26 +53,37 @@ Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güve
 
 ## <a name="key-types-and-protection-methods"></a>Anahtar türleri ve koruma yöntemleri
 
-Key Vault RSA, EC ve simetrik anahtarları destekler. 
+Key Vault RSA ve EC anahtarlarını destekler. Yönetilen HSM, RSA, EC ve simetrik anahtarları destekler. 
 
 ### <a name="hsm-protected-keys"></a>HSM ile korunan anahtarlar
 
-|Anahtar türü|Kasa (yalnızca Premium SKU)|Yönetilen HSM havuzları|
-|--|--|--|--|
-**EC-HSM** : eliptik eğri tuşu|FIPS 140-2 düzey 2 HSM|FIPS 140-2 düzey 3 HSM
-**RSA-HSM** : RSA anahtarı|FIPS 140-2 düzey 2 HSM|FIPS 140-2 düzey 3 HSM
-**EKI HSM** : simetrik|Desteklenmez|FIPS 140-2 düzey 3 HSM
-||||
+|Anahtar türü|Kasa (yalnızca Premium SKU)|Yönetilen HSM 'ler|
+|--|--|--|
+|**EC-HSM**: eliptik eğri tuşu | Desteklenir | Desteklenir|
+|**RSA-HSM**: RSA anahtarı|Desteklenir|Desteklenir|
+|**EKI HSM**: simetrik anahtar|Desteklenmez|Desteklenir|
+|||
 
 ### <a name="software-protected-keys"></a>Yazılım korumalı anahtarlar
 
-|Anahtar türü|Kasalar|Yönetilen HSM havuzları|
-|--|--|--|--|
-**RSA** : "yazılım KORUMALı" RSA anahtarı|FIPS 140-2 düzey 1|Desteklenmez
-**EC** : "Yazılım korumalı" eliptik eğri anahtarı|FIPS 140-2 düzey 1|Desteklenmez
-||||
+|Anahtar türü|Kasalar|Yönetilen HSM 'ler|
+|--|--|--|
+**RSA**: "yazılım KORUMALı" RSA anahtarı|Desteklenir|Desteklenmez
+**EC**: "Yazılım korumalı" eliptik eğri anahtarı|Desteklenir|Desteklenmez
+|||
 
-Her anahtar türü, algoritmalar, işlemler, öznitelikler ve Etiketler hakkındaki ayrıntılar için lütfen bkz. [anahtar türleri, algoritmalar ve işlemler](about-keys-details.md) .
+### <a name="compliance"></a>Uyumluluk
+
+|Anahtar türü ve hedefi|Uyumluluk|
+|---|---|
+|Kasalardaki yazılım korumalı anahtarlar (Premium & standart SKU 'Lar) | FIPS 140-2 düzey 1|
+|Kasalardaki HSM korumalı anahtarlar (Premium SKU)| FIPS 140-2 Level 2|
+|Yönetilen HSM 'de HSM korumalı anahtarlar|FIPS 140-2 düzey 3|
+|||
+
+
+
+Her anahtar türü, algoritmalar, işlemler, öznitelikler ve Etiketler hakkındaki ayrıntılar için bkz. [anahtar türleri, algoritmalar ve işlemler](about-keys-details.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Key Vault Hakkında](../general/overview.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f8f9da1b9c0b2df4e353b90538d52d9cb9b9e241
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580367"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093918"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azure Traffic Manager için Azure Güvenlik temeli
 
@@ -114,7 +114,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir.
 
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)
 
 - [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -272,7 +272,7 @@ Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktay
 
 Azure Traffic Manager, kullanıcılara atanabilecek "Traffic Manager katılımcısı" adlı önceden tanımlanmış bir Azure rolüne sahiptir.
 
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)
 
 - [Katkıda bulunan rolü Traffic Manager](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 

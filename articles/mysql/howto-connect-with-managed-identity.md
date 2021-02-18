@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742989"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091804"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Yönetilen Kimlik ile MySQL için Azure Veritabanı'na bağlanma
 
@@ -28,10 +28,10 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > [!IMPORTANT]
 > Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek için bkz. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanma](../../articles/role-based-access-control/role-assignments-portal.md).
+- Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atama ile ilgili yardıma ihtiyacınız varsa, [Azure abonelik kaynaklarınıza erişimi yönetmek Için Azure rolleri atama](../../articles/role-based-access-control/role-assignments-portal.md)konusuna bakın.
 - Yönetilen kimlik kullanarak veritabanınıza erişmek için kullanmak istediğiniz bir Azure VM 'si (örneğin, Ubuntu Linux çalıştıran) gerekir
 - [Azure AD kimlik doğrulaması](howto-configure-sign-in-azure-ad-authentication.md) yapılandırılmış MySQL Için Azure veritabanı veritabanı sunucusu gerekir
 - C# örneğini izlemek için, ilk olarak [c# kullanarak bağlanma](connect-csharp.md) kılavuzunu tamamlayın

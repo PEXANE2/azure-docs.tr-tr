@@ -15,12 +15,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba93b9017fa75f7247bda639880415eda1d280
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9074fdbf31cdd8516b8d42f7cc13b4bc16f6634a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740321"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095729"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory 'de temsilci yönetimi
 
@@ -38,7 +38,7 @@ Bir kuruluş büyüdükçe, hangi kullanıcıların belirli yönetici rollerine 
 
 Azure AD portalında, [herhangi bir rolün tüm üyelerini görüntüleyebilir](manage-roles-portal.md), bu da dağıtım ve temsilci izinleriniz üzerinde hızlı bir şekilde denetim sağlamanıza yardımcı olabilir.
 
-Azure AD 'de Yönetim erişimi yerine Azure kaynaklarına erişim yetkisini aktarmaya ilgileniyorsanız, bkz. [Azure rolü atama](../../role-based-access-control/role-assignments-portal.md).
+Azure AD 'de Yönetim erişimi yerine Azure kaynaklarına erişim yetkisini aktarmaya ilgileniyorsanız, bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="delegation-planning"></a>Temsili planlama
 

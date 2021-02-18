@@ -6,12 +6,12 @@ ms.author: tefa
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/03/2020
-ms.openlocfilehash: 97386b18360e22b457dbcdda53c4f81e7d4ed272
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 597b69c1180ea1fb2a6812d648f8b8ad37707d66
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797594"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092600"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-azure-signalr-service"></a>Azure SignalR hizmetine erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
 Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure SignalR hizmeti ile Azure AD kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanıza gerek kalmaz. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı `https://signalr.azure.com/` . Azure AD, uygulamayı çalıştıran güvenlik sorumlusunun (bir uygulama, kaynak grubu veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure SignalR hizmet kaynaklarına yönelik istekleri yetkilendirmek için erişim belirtecini kullanabilir.
@@ -26,7 +26,7 @@ Azure SignalR hizmeti kaynaklarını yetkilendirmek için Azure AD kullanmanın 
 
 Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göstermektedir:
 
-![Uygulamaları kaydetme](./media/authenticate/app-registrations-register.png)
+![Bir uygulamayı kaydetme](./media/authenticate/app-registrations-register.png)
 
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
@@ -55,8 +55,8 @@ Ayrıca, bir istemci parolası oluşturmak yerine bir sertifikayı karşıya yü
 
 ![Sertifikayı karşıya yükle](./media/authenticate/certification.png)
 
-## <a name="add-rbac-roles-using-the-azure-portal"></a>Azure portal kullanarak RBAC rolleri ekleme  
-RBAC ve Azure portal kullanarak Azure kaynaklarına erişimi yönetme hakkında daha fazla bilgi edinmek için [Bu makaleye](..//role-based-access-control/role-assignments-portal.md)bakın. 
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atama  
+Azure RBAC ve Azure portal kullanarak Azure kaynaklarına erişimi yönetme hakkında daha fazla bilgi edinmek için [Bu makaleye](..//role-based-access-control/role-assignments-portal.md)bakın. 
 
 Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portal bu kaynağa gidin. Kaynak için erişim denetimi (ıAM) ayarlarını görüntüleyin ve rol atamalarını yönetmek için aşağıdaki yönergeleri izleyin:
 

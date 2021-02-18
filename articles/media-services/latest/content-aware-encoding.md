@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954438"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095946"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Belirli bir çözüm için en iyi bit hızı değerini bulmak için içerik algılayan kodlama ön ayarını kullanın
 
@@ -29,7 +29,7 @@ ms.locfileid: "98954438"
 
 Microsoft 'un [uyarlamalı akış](autogen-bitrate-ladder.md) önceden ayarı, kaynak videoların kalite ve çözünürlüğündeki değişkenlik sorununa kısmen yöneliktir. Müşterilerimiz, bazı 1080p, 720p ve daha az sayıda SD ve daha düşük çözünürlükte içerik karışımına sahiptir. Ayrıca, tüm kaynak içerikleri film veya TV Studios 'den yüksek kaliteli mezzanines değildir. Uyarlamalı akış önceden ayarı, bit hızı el merdivenine, giriş Mezzanine 'nin çözünürlüğü veya Ortalama bit hızını aşmamasını sağlayarak bu sorunları giderir. Ancak, bu önayar çözünürlük ve bit hızı dışında kaynak özelliklerini incelemez.
 
-## <a name="the-content-aware-encoding"></a>İçeriğe duyarlı kodlama 
+## <a name="the-content-aware-encoding"></a>İçeriğe duyarlı kodlama
 
 İçerik kullanan kodlama önceden ayarı, "Uyarlamalı bit hızı akışı" mekanizmasını genişleterek, kodlayıcının belirli bir çözüm için en iyi bit hızı değerini, ancak kapsamlı hesaplama Analizi gerektirmeksizin araymasına imkan tanıyan özel mantık ekleyerek. Bu önayar bir GOP hizalanmış MP4 'leri kümesi oluşturur. Herhangi bir giriş içeriği verildiğinde, hizmet, giriş içeriğinin ilk hafif analizini yapar ve en iyi katman sayısını, uyarlamalı akışa göre teslim etmek için uygun bit hızını ve çözüm ayarlarını belirlemede sonuçları kullanır. Bu ön ayar özellikle düşük ve orta ölçekli karmaşıklık videoları için geçerlidir. burada, çıkış dosyalarının uyarlamalı akış önayarıyla, ancak yine de görüntüleyicilere iyi bir deneyim sunan bir kaliteden daha düşük bitoranlarda olması gerekir. Çıktı, video ve ses Aralanmış ile MP4 dosyaları içerir
 
@@ -57,7 +57,7 @@ Aşağıda, bir kaynak içeriği kategorisinin sonuçları verilmiştir ve bu, k
 
 Bu önayarı kullanan dönüşümler aşağıdaki gibi oluşturulabilir. 
 
-Dönüştürün çıkışlarını kullanan öğreticiler için [sonraki adımlar](#next-steps) bölümüne bakın. Çıkış varlığı, MPEG-DASH ve HLS gibi protokollerde Media Services akış uç noktalarından (öğreticilerde gösterildiği gibi) teslim edilebilir.
+Dönüştürme çıkışları kullanan öğreticiler için [sonraki adımlar](#next-steps) bölümüne bakın. Çıkış varlığı, MPEG-DASH ve HLS gibi protokollerde Media Services akış uç noktalarından (öğreticilerde gösterildiği gibi) teslim edilebilir.
 
 > [!NOTE]
 > **Contentawareencoding** ön ayarını kullandığınızdan emin olun ContentAwareEncodingExperimental.

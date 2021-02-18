@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 66958e275a6dee13244f0f283b1ee1dbb5d40470
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761003"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093453"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -194,9 +194,9 @@ az role assignment create \
 
 Azure RBAC 'nin Azure abonelik kaynaklarınıza erişimini yönetmek için nasıl kullanılacağı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
-- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
-- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md).
+- [Azure CLı kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-cli.md)
+- [Azure portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md)
+- [Azure PowerShell kullanarak Azure rolleri atayın](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 

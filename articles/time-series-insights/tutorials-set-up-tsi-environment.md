@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56f4cb49f42936e7b9f64c2546b94c99d16bac79
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677062"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092093"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
 Bu öğretici, bir Azure Time Series Insights Gen2 *Kullandıkça Öde* (PAYG) ortamı oluşturma sürecinde size rehberlik eder.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
+* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [Azure Portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)makalesini okuyun.
 
 ## <a name="create-a-device-simulation"></a>Cihaz benzetimi oluşturma
 
@@ -91,8 +91,8 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya Azure Time Series Insights Gen2 ortam kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
     | **Konum** | Azure Time Series Insights Gen2 ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, Azure Time Series Insights Gen2 ortamınızı cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede oluşturmak en iyisidir. |
     | **Katman** |  **Gen2 (L1)** seçeneğini belirleyin. Bu, Azure Time Series Insights Gen2 ürünü için SKU 'dır. |
-    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için, **_ıothub-Connection-Device-id_* _ yazın. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md)okuyun. |
-    | _ *Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
+    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için **_ıothub-Connection-Device-ID_** girin. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md)okuyun. |
+    | **Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
     | **Depolama hesabı türü** | Yeni bir depolama hesabı için depolama türünü seçin. StorageV2 önerilir|
     | **Depolama hesabı çoğaltma** | Yeni bir depolama hesabı için depolama türünü seçin. Konum seçiminize bağlı olarak, LRS, GRS ve ZRS arasından seçim yapabilirsiniz. Bu öğretici için LRS 'yi seçebilirsiniz|
     | **Hiyerarşik ad alanı** |Bu seçenek, StorageV2 olacak depolama türünü seçtiğinizde seçilebilir. Varsayılan olarak devre dışıdır. Bu öğreticide, varsayılan *devre dışı* durumunda bırakabilirsiniz|
@@ -288,7 +288,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | --- | --- |
         | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
         | **Ülke** | **USA** girin |
-        | **Baş** | **Seattle** girin |
+        | **Şehir** | **Seattle** girin |
         | **Yapım** | **Space iğne** girin |
 
     1. **Kaydet**’i seçin.
@@ -304,7 +304,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Açıklama** | **Asansör Için örnek girin 2** |
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Baş** | **Seattle** girin |
+    | **Şehir** | **Seattle** girin |
     | **Yapım** | **Pasifik bilimi merkezini** girin |
 
     **Asansör 3 için:**
@@ -316,7 +316,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Açıklama** | **Asansör 3 Için örnek** girin |
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Baş** | **New York** girin |
+    | **Şehir** | **New York** girin |
     | **Yapım** | **Empire durum oluşturmayı** girin |
 
     [![Güncelleştirilmiş örnekleri görüntüleyin.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)

@@ -1,17 +1,17 @@
 ---
 title: Yüksek Kullanılabilirlik-MySQL için Azure veritabanı
 description: Bu makale, MySQL için Azure veritabanı 'nda yüksek kullanılabilirlik hakkında bilgi sağlar
-author: mksuni
-ms.author: sumuth
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b301946ce818559510b4e401b1f0aaf7c235d5a3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 74d6981c0465a1960e920313c1f960f0d781692b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242305"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092958"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yüksek kullanılabilirlik
 MySQL için Azure veritabanı hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/mysql) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. MySQL için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. MySQL için Azure veritabanı en kritik durumlardan hızlı bir şekilde kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -22,9 +22,9 @@ MySQL için Azure veritabanı, yüksek çalışma süresi gerektiren görev aç�
 
 | **Bileşen** | **Açıklama**|
 | ------------ | ----------- |
-| <b>MySQL veritabanı sunucusu | MySQL için Azure veritabanı, veritabanı sunucuları için güvenlik, yalıtım, kaynak korumaları ve hızlı yeniden başlatma yeteneği sağlar. Bu yetenekler, saniye cinsinden bir kesinti olduktan sonra ölçekleme ve veritabanı sunucusu kurtarma işlemi gibi işlemleri kolaylaştırır. <br/> Veritabanı sunucusundaki veri değişiklikleri genellikle bir veritabanı işlemi bağlamında meydana gelir. Tüm veritabanı değişiklikleri zaman uyumlu olarak, veritabanı sunucusuna eklenen Azure Storage 'da yazma öncesi Günlükler (ib_log) biçiminde kaydedilir. Veritabanı [denetim noktası](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html) işlemi sırasında, veritabanı sunucusu belleğinden veri sayfaları da depolamaya silinir. |
-| <b>Uzak depolama | Tüm MySQL fiziksel veri dosyaları ve günlük dosyaları, veri yedekliliği, kullanılabilirliği ve güvenilirliği sağlamak için bir bölge içinde verilerin üç kopyasını depolamak üzere Azure depolama 'da depolanır. Depolama katmanı, veritabanı sunucusundan de bağımsızdır. Bu, başarısız bir veritabanı sunucusundan ayrılabilir ve birkaç saniye içinde yeni bir veritabanı sunucusuna yeniden iliştirilebilir. Ayrıca, Azure Storage her türlü depolama hatalarını sürekli izler. Bir blok bozulması algılanırsa, yeni bir depolama kopyası örnekleyerek otomatik olarak düzeltilir. |
-| <b>Geçidinde | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
+| <b>MySQL veritabanı sunucusu | MySQL için Azure veritabanı, veritabanı sunucuları için güvenlik, yalıtım, kaynak korumaları ve hızlı yeniden başlatma yeteneği sağlar. Bu yetenekler, veritabanındaki hareketsel etkinliğe bağlı olarak 60-120 saniye içinde bir kesinti olduktan sonra ölçekleme ve veritabanı sunucusu kurtarma işlemi gibi işlemleri kolaylaştırır. <br/> Veritabanı sunucusundaki veri değişiklikleri genellikle bir veritabanı işlemi bağlamında meydana gelir. Tüm veritabanı değişiklikleri zaman uyumlu olarak, veritabanı sunucusuna eklenen Azure Storage 'da yazma öncesi Günlükler (ib_log) biçiminde kaydedilir. Veritabanı [denetim noktası](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html) işlemi sırasında, veritabanı sunucusu belleğinden veri sayfaları da depolamaya silinir. |
+| <b>Uzak depolama | Tüm MySQL fiziksel veri dosyaları ve günlük dosyaları, veri yedekliliği, kullanılabilirliği ve güvenilirliği sağlamak için bir bölge içinde verilerin üç kopyasını depolamak üzere Azure depolama 'da depolanır. Depolama katmanı, veritabanı sunucusundan de bağımsızdır. Bu, hatalı bir veritabanı sunucusundan ayrılabilir ve 60 saniye içinde yeni bir veritabanı sunucusuna yeniden iliştirilebilir. Ayrıca, Azure Storage her türlü depolama hatalarını sürekli izler. Bir blok bozulması algılanırsa, yeni bir depolama kopyası örnekleyerek otomatik olarak düzeltilir. |
+| <b>Ağ geçidi | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
 
 ## <a name="planned-downtime-mitigation"></a>Planlanmış kapalı kalma süresi hafifletme
 MySQL için Azure veritabanı, planlanan kapalı kalma işlemleri sırasında yüksek kullanılabilirlik sağlamak üzere tasarlanmıştır. 
@@ -38,12 +38,12 @@ Aşağıda bazı planlı bakım senaryoları verilmiştir:
 | <b>İşlem ölçeği artırma/azaltma | Kullanıcı işlem ölçeğini artırma/azaltma işlemi gerçekleştirdiğinde, ölçeklenmiş işlem yapılandırması kullanılarak yeni bir veritabanı sunucusu sağlanır. Eski veritabanı sunucusunda, etkin kontrol noktalarının tamamlanabilmesi için, istemci bağlantıları boşaltılır, kaydedilmeyen tüm işlemler iptal edilir ve sonra kapatılır. Depolama daha sonra eski veritabanı sunucusundan ayrılır ve yeni veritabanı sunucusuna eklenir. İstemci uygulaması bağlantıyı yeniden dener veya yeni bir bağlantı kurmaya çalıştığında, ağ geçidi bağlantı isteğini yeni veritabanı sunucusuna yönlendirir.|
 | <b>Depolama alanını ölçeklendirme | Depolama alanının ölçeği, çevrimiçi bir işlemdir ve veritabanı sunucusunu kesintiye uğratmaz.|
 | <b>Yeni yazılım dağıtımı (Azure) | Yeni özellik dağıtımı veya hata düzeltmeleri, hizmetin planlı bakımının bir parçası olarak otomatik olarak gerçekleşir. Daha fazla bilgi için [belgelere](concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
-| <b>İkincil sürüm yükseltmeleri | MySQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Bu, saniye cinsinden kısa bir kapalı kalma süresine neden olur ve veritabanı sunucusu yeni ikincil sürümle otomatik olarak yeniden başlatılır. Daha fazla bilgi için [belgelere](concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
+| <b>İkincil sürüm yükseltmeleri | MySQL için Azure veritabanı, veritabanı sunucularını otomatik olarak Azure tarafından belirlenen alt sürüme ekler. Hizmetin planlı bakım kapsamında olur. Planlı bakım sırasında, veritabanı sunucusu yeniden başlatmaları veya yük devretme işlemleri, son kullanıcılar için veritabanı sunucularının kısa bir kullanım dışı kalmasına yol açabilir. MySQL için Azure veritabanı sunucuları, veritabanı sunucusu yeniden başlatmaları genellikle hızlı, genellikle 60-120 saniye içinde tamamlanmak üzere kapsayıcılarda çalışmaktadır. Her sunucu yeniden başlatmalarının dahil olduğu tüm planlı bakım olayı, mühendislik ekibi tarafından dikkatle izlenir. Sunucu yük devretmesi süresi, veritabanı kurtarma zamanına bağlıdır. Bu, sunucuda yük devretme sırasında ağır işlem etkinliğinizi varsa veritabanının daha uzun sürmesine neden olabilir. Yeniden başlatma zamanından daha uzun bir süre önlemek için planlı bakım olayları sırasında çalışan uzun işlemleri (toplu yükleme) önlemek önerilir. Daha fazla bilgi için [belgelere](concepts-monitoring.md#planned-maintenance-notification)bakın ve ayrıca [portalınızı](https://aka.ms/servicehealthpm)kontrol edin.|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Planlanmamış kapalı kalma süresi azaltma
 
-Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil olmak üzere öngörülemeyen hataların sonucu olarak gerçekleşebilir. Veritabanı sunucusu beklenmedik şekilde kapanıyorsa, saniye cinsinden yeni bir veritabanı sunucusu otomatik olarak sağlanır. Uzak depolama, yeni veritabanı sunucusuna otomatik olarak eklenir. MySQL altyapısı, WAL ve veritabanı dosyalarını kullanarak kurtarma işlemini gerçekleştirir ve istemcilerin bağlanmasına izin vermek için veritabanı sunucusunu açar. İşlenmemiş işlemler kaybolur ve uygulama tarafından yeniden denenmeleri gerekir. Planlanmamış kapalı kalma süresini önlemeden, MySQL için Azure veritabanı, insan müdahalesine gerek kalmadan hem veritabanı sunucusunda hem de depolama katmanlarında kurtarma işlemlerini otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır. 
+Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil olmak üzere öngörülemeyen hataların sonucu olarak gerçekleşebilir. Veritabanı sunucusu beklenmedik şekilde sona uğradığında, otomatik olarak 60-120 saniye içinde yeni bir veritabanı sunucusu sağlanır. Uzak depolama, yeni veritabanı sunucusuna otomatik olarak eklenir. MySQL altyapısı, WAL ve veritabanı dosyalarını kullanarak kurtarma işlemini gerçekleştirir ve istemcilerin bağlanmasına izin vermek için veritabanı sunucusunu açar. İşlenmemiş işlemler kaybolur ve uygulama tarafından yeniden denenmeleri gerekir. Planlanmamış kapalı kalma süresini önlemeden, MySQL için Azure veritabanı, insan müdahalesine gerek kalmadan hem veritabanı sunucusunda hem de depolama katmanlarında kurtarma işlemlerini otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır. 
 
 
 :::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 'de yüksek kullanılabilirlik görünümü":::

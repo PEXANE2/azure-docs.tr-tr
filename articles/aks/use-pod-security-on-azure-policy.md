@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (aks) üzerinde Azure ilkesi ile pod güve
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34f2bfe346d7163a254e2ccecd1d7ef63ddb4194
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348534"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092627"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Azure İlkesi ile pod güvenliğini sağlama
 
@@ -60,7 +60,7 @@ Aşağıdaki genel sınırlamalar, Kubernetes kümeleri için Azure Ilke eklenti
 Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçerlidir:
 
 - Aks [Pod güvenlik ilkesi (Önizleme)](use-pod-security-policies.md) ve aks Için Azure ilke eklentisi etkinleştirilebilir. 
-- Ad alanları, değerlendirme için Azure Ilke eklentisi tarafından otomatik olarak dışlanır: _KUVE sistem_ , _Gatekeeper-System_ ve _aks-Periscope_.
+- Ad alanları, değerlendirme için Azure Ilke eklentisi tarafından otomatik olarak dışlanır: _KUVE sistem_, _Gatekeeper-System_ ve _aks-Periscope_. Kubernetes sürüm 1,20 ve üzeri ile Calıco ağ ilkesi kullanıyorsanız, _calıco-System_ ve _tıgera-operator_ olan 2 daha fazla ad alanı otomatik olarak dışlanır.
 
 ### <a name="recommendations"></a>Öneriler
 
@@ -101,14 +101,14 @@ Hem yerleşik girişimler, [Kubernetes 'in Pod güvenlik ilkesinde](https://gith
 
 |[Pod güvenlik ilkesi denetimi](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Ilke tanımı bağlantısı| [Temel girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [Kısıtlanmış girişim](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
-|Ayrıcalıklı kapsayıcıların çalıştırılmasına izin verme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Evet | Evet
-|Konak ad alanlarının paylaşılan kullanımına izin verme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Evet | Evet
-|Konak ağının ve bağlantı noktalarının tüm kullanımını kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Evet | Evet
-|Konak FileSystem 'ın herhangi bir kullanımını kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Evet | Evet
-|Linux yeteneklerini [varsayılan küme](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) ile kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Evet | Evet
+|Ayrıcalıklı kapsayıcıların çalıştırılmasına izin verme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Yes | Yes
+|Konak ad alanlarının paylaşılan kullanımına izin verme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Yes | Yes
+|Konak ağının ve bağlantı noktalarının tüm kullanımını kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Yes | Yes
+|Konak FileSystem 'ın herhangi bir kullanımını kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Yes | Yes
+|Linux yeteneklerini [varsayılan küme](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) ile kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Yes | Yes
 |Tanımlı birim türlerinin kullanımını kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Evet-izin verilen birim türleri `configMap` , `emptyDir` ,,, `projected` `downwardAPI``persistentVolumeClaim`|
-|Köke yönelik ayrıcalık yükseltme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Evet |
-|Kapsayıcının Kullanıcı ve grup kimliklerini kısıtlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Evet|
+|Köke yönelik ayrıcalık yükseltme|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
+|Kapsayıcının Kullanıcı ve grup kimliklerini kısıtlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
 |Pod birimlerine sahip bir FSGroup ayırmayı kısıtlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Evet-izin verilen kurallar,,, `runAsUser: mustRunAsNonRoot` `supplementalGroup: mustRunAs 1:65536` `fsGroup: mustRunAs 1:65535` `runAsGroup: mustRunAs 1:65535` .  |
 |Seccomp profili gerektirir|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Evet, allowedProfiles * `docker/default` veya `runtime/default` |
 
@@ -151,9 +151,9 @@ If the built-in initiatives to address pod security do not match your requiremen
 
 AKS 'ler, DNS çözümlemesi gibi kritik hizmetleri sağlamak için sistem kimliklerinin bir kümede çalıştırılmasını gerektirir. Pod işlevselliğini sınırlayan ilkeler, sistem Pod kararlılığı özelliğini etkileyebilir. Sonuç olarak, aşağıdaki ad alanları, **oluşturma, güncelleştirme ve ilke denetimi sırasında giriş istekleri sırasında ilke değerlendirmesinden çıkarılır**. Bu, bu ad alanlarına yeni dağıtımları Azure ilkelerinden hariç tutulacak şekilde zorlar.
 
-1. kuin-sistem
+1. kube-system
 1. Gatekeeper-sistem
-1. Azure-yay
+1. azure-arc
 1. aks-Periscope
 
 Oluşturma, güncelleştirme ve Denetim sırasında diğer özel ad alanları değerlendirmeden dışlanamaz. Bu Dışlamalar, tasdikli bir ad alanında çalışan ve denetim ihlallerinin tetiklenmesinden kaçınmak istediğiniz özel bir pod varsa kullanılmalıdır.
@@ -172,7 +172,7 @@ Temel girişim 'yi uygulamak için Azure portal aracılığıyla atayabiliriz.
 -->
 1. Pod güvenlik temel aldığı girişimi gözden geçirmek için [Azure Portal bu bağlantıyı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) izleyin
 1. **Kapsamı** abonelik düzeyine veya yalnızca Azure ilke eklentisi etkin olan aks kümelerini tutan kaynak grubuna ayarlayın
-1. **Parametreler** sayfasını seçin ve **Effect** `audit` `deny` temel girişimi ihlal eden yeni dağıtımları engellemek Için ' den ' a kadar etkisini güncelleştirin
+1. **Parametreler** sayfasını seçin ve  `audit` `deny` temel girişimi ihlal eden yeni dağıtımları engellemek Için ' den ' a kadar etkisini güncelleştirin
 1. Oluşturma, güncelleştirme ve Denetim sırasında değerlendirmeden dışlamak üzere ek ad alanları ekleyin, [bazı ad alanları ilke değerlendirmesinden zorla çıkarılır.](#namespace-exclusion) 
  ![ Efekt Güncelleştir](media/use-pod-security-on-azure-policy/update-effect.png)
 1. İlkeleri göndermek için **gözden geçir + oluştur** ' u seçin
@@ -252,7 +252,7 @@ spec:
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-Pod başarıyla zamanlandı. [Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un durumunu denetlediğinizde, Pod *çalışır* :
+Pod başarıyla zamanlandı. [Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un durumunu denetlediğinizde, Pod *çalışır*:
 
 ```console
 $ kubectl get pods

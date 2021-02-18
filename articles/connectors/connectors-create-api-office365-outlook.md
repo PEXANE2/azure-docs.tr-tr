@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055085"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095457"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps’i kullanarak Office 365 Outlook’ta e-postayı, kişileri ve takvimleri yönetme
 
@@ -98,7 +98,7 @@ Azure 'da oturum açmış olandan farklı bir hesap kullanarak Outlook 'a bağla
 
   1. Mantıksal uygulamanızın kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin. Diğer hesabı **katkıda** bulunan rolüyle ayarlayın. 
   
-     Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md).
+     Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md).
 
   1. Bu rolü ayarladıktan sonra, Azure portal ' de artık katkıda bulunan izinleri olan hesapla oturum açın. Outlook bağlantısını oluşturmak için artık bu hesabı kullanabilirsiniz.
 

@@ -36,6 +36,8 @@
       href: front-door-quickstart-template-samples.md
 - name: Kavramlar
   items:
+    - name: Standart/Premium SKU
+      href: standard-premium/overview.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli
@@ -96,7 +98,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

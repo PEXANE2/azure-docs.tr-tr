@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602386"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092929"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
 Bu makalede, sanal makineler (VM 'Ler) oluşturma ve bunlara yazılım yükleme dahil olmak üzere Azure 'a yükleme için bir ana sanal sabit disk (VHD) görüntüsünün nasıl hazırlanacağı açıklanmaktadır. Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
 
 >[!IMPORTANT]
->Azure görüntü Galerisi 'nden bir resim kullanmanızı öneririz. Ancak, özelleştirilmiş bir görüntü kullanmanız gerekiyorsa, cihazınızda WIndows sanal masaüstü aracısının zaten yüklü olmadığından emin olun. Windows sanal masaüstü aracısıyla özelleştirilmiş bir görüntü kullanmak görüntüyle ilgili sorunlara neden olabilir.  
+>Azure görüntü Galerisi 'nden bir resim kullanmanızı öneririz. Ancak, özelleştirilmiş bir görüntü kullanmanız gerekiyorsa, sanal makinenizde Windows sanal masaüstü aracısının zaten yüklü olmadığından emin olun. Windows sanal masaüstü Aracısı ile özelleştirilmiş bir görüntü kullanmak, görüntüde kayıt ve Kullanıcı oturumu bağlantılarını engelleme gibi sorunlara neden olabilir.  
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -216,3 +216,5 @@ Artık bir görüntünüz olduğuna göre, konak havuzları oluşturabilir veya 
 - [PowerShell ile ana bilgisayar havuzu oluşturma](create-host-pools-powershell.md)
 - [Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md)
 - [Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma](configure-host-pool-load-balancing.md)
+
+VHD görüntünüzü hazırlarken veya özelleştirirken bir bağlantı sorunuyla karşılaşırsanız yardım için [sorun giderme kılavuzuna](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) göz atın.

@@ -4,12 +4,12 @@ description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319563"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093626"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -37,7 +37,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
 
 1. Doğrudan kaynağa (veya bir alt kaynağa) atanmış bir Azure rolü olan bir kaynağı taşırsanız, rol ataması taşınmaz ve yalnız bırakılmış olur. Taşıma işleminden sonra, rol atamasını yeniden oluşturmanız gerekir. Sonuç olarak, yalnız bırakılmış rol ataması otomatik olarak kaldırılır, ancak kaynak taşınmadan önce rol atamasını kaldırmak en iyi uygulamadır.
 
-    Rol atamalarının nasıl yönetileceği hakkında daha fazla bilgi için bkz. [Azure rol atamalarını listeleme](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) ve [Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+    Rol atamalarının nasıl yönetileceği hakkında daha fazla bilgi için bkz. [Azure rol atamalarını listeleme](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) ve [Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md). Sorun türü için **Abonelik yönetimi** ' ni seçin.
 
@@ -62,7 +62,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
    * [Azure aboneliğinin sahipliğini başka bir hesaba devretme](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Azure Active Directory'ye bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Hedef abonelik, taşınan kaynağın kaynak sağlayıcısına kayıtlı olmalıdır. Aksi takdirde, **aboneliğin bir kaynak türü için kayıtlı**olmadığını belirten bir hata alırsınız. Bir kaynağı yeni bir aboneliğe taşırken bu hatayla karşılaşabilirsiniz, ancak bu abonelik bu kaynak türüyle hiç kullanılmadıysa.
+1. Hedef abonelik, taşınan kaynağın kaynak sağlayıcısına kayıtlı olmalıdır. Aksi takdirde, **aboneliğin bir kaynak türü için kayıtlı** olmadığını belirten bir hata alırsınız. Bir kaynağı yeni bir aboneliğe taşırken bu hatayla karşılaşabilirsiniz, ancak bu abonelik bu kaynak türüyle hiç kullanılmadıysa.
 
    PowerShell için, kayıt durumunu almak için aşağıdaki komutları kullanın:
 
@@ -178,11 +178,11 @@ Kaynak grubunu görüntülediğinizde, taşı seçeneği devre dışıdır.
 
 Taşıma seçeneğini etkinleştirmek için, taşımak istediğiniz kaynakları seçin. Tüm kaynakları seçmek için, listenin en üstündeki onay kutusunu seçin. Ya da kaynakları tek tek seçin. Kaynakları seçtikten sonra taşı seçeneği etkinleştirilir.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="taşıma seçeneği devre dışı":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="kaynakları seçin":::
 
 **Taşı** düğmesini seçin.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="taşıma seçeneği devre dışı":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="taşıma seçenekleri":::
 
 Bu düğme size üç seçenek sunar:
 
@@ -194,11 +194,11 @@ Kaynakları yeni bir kaynak grubuna mı yoksa yeni bir aboneliğe mi taşıdığ
 
 Hedef kaynak grubunu seçin. Bu kaynaklar için betikleri güncelleştirmeniz ve **Tamam**' ı seçmeniz gerektiğini kabul edin. Yeni bir aboneliğe taşımayı seçtiyseniz, hedef aboneliği de seçmeniz gerekir.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="taşıma seçeneği devre dışı":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="hedef seçin":::
 
 Kaynakların taşınabileceği doğrulandıktan sonra taşıma işleminin çalıştığını belirten bir bildirim görürsünüz.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="taşıma seçeneği devre dışı":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="uyarıyı":::
 
 Tamamlandığında, sonuç size bildirilir.
 

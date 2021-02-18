@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575390"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092977"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Güvenlik temeli
 
@@ -328,7 +328,7 @@ Ayrıca, izinleri ayırmak için yerleşik rolleri kullanın ve gerektiğinde ya
 
 - [Azure rol tabanlı erişim denetimi nedir (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [Azure’da RBAC’yi yapılandırma](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 

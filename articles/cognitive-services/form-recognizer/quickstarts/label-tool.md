@@ -2,22 +2,26 @@
 title: 'Hızlı başlangıç: formları etiketleme, model eğitme ve örnek etiketleme araç formu tanıyıcıyı kullanarak formları çözümleme'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, form belgelerinin el ile etiketlenmesi için form tanıyıcı örnek etiketleme aracını kullanacaksınız. Ardından, etiketli belgelerle özel bir belge işleme modeli eğtireceksiniz ve anahtar/değer çiftlerini çıkarmak için modeli kullanacaksınız.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3814eb9d71f38406533d0bcecf594bbdcd42d5b7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364804"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095802"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
 Bu hızlı başlangıçta, el ile etiketlenmiş verilerle özel bir belge işleme modelini eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Form tanıyıcı ile denetimli öğrenme hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
@@ -30,8 +34,8 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz. Eğitim dosyalarını, standart performanslı katmanlı bir Azure depolama hesabındaki bir BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
@@ -42,27 +46,28 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [Fott Web sitesine](https://fott-preview.azurewebsites.net/)gidin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Önceden oluşturulmuş modelleri deneyin](https://fott.azurewebsites.net/)
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 > [!div class="nextstepaction"]
 > [Önceden oluşturulmuş modelleri deneyin](https://fott-preview.azurewebsites.net/)
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Önceden oluşturulmuş modelleri deneyin](https://fott.azurewebsites.net/)
+
 ---
 
-Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır. 
-
+Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
 
 Örnek etiketleme aracını çalıştırmak için Docker altyapısını kullanacaksınız. Docker kapsayıcısını ayarlamak için bu adımları izleyin. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
 
 > [!TIP]
-> OCR formu etiketleme Aracı, GitHub 'da açık kaynak proje olarak da kullanılabilir. Araç, tepki verme + Redux kullanılarak oluşturulan bir TypeScript Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) deposu. Aracı çevrimiçi olarak denemek için [Fott Web sitesine](https://fott.azurewebsites.net/)gidin.   
+> OCR formu etiketleme Aracı, GitHub 'da açık kaynak proje olarak da kullanılabilir. Araç, tepki verme + Redux kullanılarak oluşturulan bir TypeScript Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) deposu. Aracı çevrimiçi olarak denemek için [Fott Web sitesine](https://fott.azurewebsites.net/)gidin.
 
-1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Bu kılavuzda, yerel bilgisayarın bir konak olarak nasıl kullanılacağı gösterilir. Azure 'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracı](../deploy-label-tool.md) nasıl yapılır Kılavuzu ' na bakın. 
+1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Bu kılavuzda, yerel bilgisayarın bir konak olarak nasıl kullanılacağı gösterilir. Azure 'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracı](../deploy-label-tool.md) nasıl yapılır Kılavuzu ' na bakın.
 
    Ana bilgisayar aşağıdaki donanım gereksinimlerini karşılamalıdır:
 
@@ -70,38 +75,43 @@ Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olar
     |:--|:--|:--|
     |Örnek etiketleme aracı|2 çekirdek, 4 GB bellek|4 çekirdek, 8 GB bellek|
 
-   İşletim sisteminiz için uygun talimatları izleyerek makinenize Docker 'yi yüklemeyin: 
+   İşletim sisteminiz için uygun talimatları izleyerek makinenize Docker 'yi yüklemeyin:
+
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-
-
 1. Komutuyla örnek etiketleme araç kapsayıcısını alın `docker pull` .
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
-    ```
-    # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
-    ```
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
-    ---
+```console
+ docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
+```
 
-1. Artık kapsayıcıyı ile çalıştırmaya hazırsınız `docker run` .
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
-    ```
-    # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
-    ```
+```console
+docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
+```
 
-    --- 
+---
+</br>
+  3. Artık kapsayıcıyı ile çalıştırmaya hazırsınız `docker run` .
+
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```console
+ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```console
+docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
+```
+
+---
 
    Bu komut, örnek etiketleme aracını bir Web tarayıcısı üzerinden kullanılabilir hale getirir. `http://localhost:3000` öğesine gidin.
 
@@ -116,10 +126,10 @@ Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olar
 
 Depolama hesabınızda CORS 'yi etkinleştirin. Azure portal depolama hesabınızı seçin ve sol bölmedeki **CORS** sekmesine tıklayın. Alt satırda aşağıdaki değerleri girin. Ardından en üstteki **Kaydet** ' e tıklayın.
 
-* İzin verilen çıkış noktaları = * 
+* İzin verilen çıkış noktaları = *
 * İzin verilen yöntemler = \[ Tümünü Seç\]
 * İzin verilen üstbilgiler = *
-* Gösterilen üstbilgiler = * 
+* Gösterilen üstbilgiler = *
 * En fazla yaş = 200
 
 > [!div class="mx-imgBorder"]
@@ -164,7 +174,7 @@ Bir proje oluşturduğunuzda veya açtığınızda, ana Etiket Düzenleyicisi pe
 
 * Kaynak bağlantıdan bir form listesinin kaydırılabilir listesini içeren bir yeniden boyutlandırılabilir Önizleme bölmesi.
 * Etiket uygulamanıza izin veren ana Düzenleyici bölmesi.
-* Kullanıcıların etiketleri değiştirmesine, kilitlemesine, yeniden sıralayabilir ve silmesine izin veren Etiketler Düzenleyicisi bölmesi. 
+* Kullanıcıların etiketleri değiştirmesine, kilitlemesine, yeniden sıralayabilir ve silmesine izin veren Etiketler Düzenleyicisi bölmesi.
 
 ### <a name="identify-text-elements"></a>Metin öğelerini tanımla
 
@@ -178,7 +188,29 @@ Ayrıca, hangi tabloların otomatik olarak ayıklandığını gösterir. Ayıkla
 
 Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin analiz etmesini istediğiniz metin öğelerine uygulayacaksınız.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın:
+   * **+** Yeni bir etiket oluşturmak için tıklayın.
+   * Etiket adını girin.
+   * Etiketi kaydetmek için ENTER tuşuna basın.
+1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 Preview. 2_ API 'sinde, anahtar değer çiftleri olarak radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
+1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
+    > [!Tip]
+    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun:
+    >
+    > * Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz.
+    > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
+    > * Etiketler sayfalara yayılamaz.
+    > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
+    > * Etiketli alanlarınıza anahtar eklemeyin &mdash; yalnızca değerleri.
+    > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
+    > * **+** Etiketlerinizi aramak, yeniden adlandırmak, yeniden sıralamak ve silmek için sağ tarafındaki düğmeleri kullanın.
+    > * Etiket kendisini silmeden uygulanan bir etiketi kaldırmak için belge görünümünde etiketli dikdörtgeni seçin ve DELETE tuşuna basın.
+    >
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
 1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
    1. **+** Yeni bir etiket oluşturmak için tıklayın.
    1. Etiket adını girin.
@@ -186,7 +218,8 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin analiz etmesin
 1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın.
 1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
     > [!Tip]
-    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
+    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun:
+    >
     > * Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz.
     > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
     > * Etiketler sayfalara yayılamaz.
@@ -195,31 +228,11 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin analiz etmesin
     > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
     > * **+** Etiketlerinizi aramak, yeniden adlandırmak, yeniden sıralamak ve silmek için sağ tarafındaki düğmeleri kullanın.
     > * Etiket kendisini silmeden uygulanan bir etiketi kaldırmak için belge görünümünde etiketli dikdörtgeni seçin ve DELETE tuşuna basın.
-
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1) 
-1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
-   1. **+** Yeni bir etiket oluşturmak için tıklayın.
-   1. Etiket adını girin.
-   1. Etiketi kaydetmek için ENTER tuşuna basın.
-1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 Preview. 2_ API 'sinde, anahtar değer çiftleri olarak radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
-1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
-    > [!Tip]
-    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
-    > * Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz.
-    > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
-    > * Etiketler sayfalara yayılamaz.
-    > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
-    > * Etiketli alanlarınıza anahtar eklemeyin &mdash; yalnızca değerleri.
-    > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
-    > * **+** Etiketlerinizi aramak, yeniden adlandırmak, yeniden sıralamak ve silmek için sağ tarafındaki düğmeleri kullanın.
-    > * Etiket kendisini silmeden uygulanan bir etiketi kaldırmak için belge görünümünde etiketli dikdörtgeni seçin ve DELETE tuşuna basın.
-
+>
 
 ---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Örnek etiketleme aracının ana düzenleyici penceresi.":::
-
 
 Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları izleyin.
 
@@ -231,35 +244,43 @@ Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları 
 > ![Örnek etiketleme aracıyla değer türü seçimi](../media/whats-new/value-type.png)
 
 Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
+
 * `string`
-    * Varsayılan, `no-whitespaces` , `alphanumeric`
+  * Varsayılan, `no-whitespaces` , `alphanumeric`
+
 * `number`
-    * varsayılanını `currency`
-* `date` 
-    * Varsayılan, `dmy` , `mdy` , `ymd`
+  * varsayılanını `currency`
+
+* `date`
+  * Varsayılan, `dmy` , `mdy` , `ymd`
+
 * `time`
 * `integer`
 * `selectionMark` – _Yeni v 2.1-Önizleme. 1!_
 
 > [!NOTE]
 > Tarih biçimlendirme için şu kurallara bakın:
-> 
+>
 > `dmy` `mdy` Tarih biçimlendirme çalışması için bir biçim (,,) belirtmeniz gerekir `ymd` .
 >
 > Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
+>
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
 >
 > Gün ve ay her biri bir veya iki rakam olarak yazılabilir ve yıl iki veya dört basamaklı olabilir:
+>
 > * 1-1-2020
 > * 1-01-20
 >
 > Bir tarih dizesinde sekiz basamak varsa sınırlayıcı isteğe bağlıdır:
+>
 > * 01012020
 > * 01 01 2020
 >
 > Ay, tam veya kısa ad olarak da yazılabilir. Ad kullanılırsa, sınırlayıcı karakterler isteğe bağlıdır. Ancak, bu biçim diğerlerinden daha az tanınmış olabilir.
+>
 > * 01/Jan/2020
 > * 01Oc2020
 > * 01 Ocak 2020
@@ -282,21 +303,22 @@ Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse,
 
 ## <a name="compose-trained-models"></a>Eğitilen modeller oluşturma
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-
-Bu özellik şu anda v 2.1 sürümünde kullanılabilir. Önizleme. 
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1) 
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
 Model Oluşturma özelliği sayesinde tek bir model kimliği altında 100 adede kadar model oluşturabilirsiniz. Oluşturduğunuz model kimliğiyle analiz gerçekleştirdiğinizde Form Tanıma hizmeti öncelikle gönderdiğiniz formu sınıflandırır, en uygun modelle eşleştirir ve ardından modele ait sonuçları döndürür. Bu, gelen formların birden çok şablondan birine ait olabileceği durumlarda faydalıdır.
 
-Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılır pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
+Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir.
+"Oluştur" düğmesine tıklayın. Açılır pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir.
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model oluşturma UX görünümü.":::
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Bu özellik şu anda v 2.1 sürümünde kullanılabilir. Önizleme.
+
 ---
 
-## <a name="analyze-a-form"></a>Formu analiz etme 
+## <a name="analyze-a-form"></a>Formu analiz etme
 
 Modelinizi test etmek için sol taraftaki tahmin (ampul) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesini karşıya yükleyin. Ardından, form için anahtar/değer tahminleri elde etmek için sağdaki **tahmin** düğmesine tıklayın. Araç etiketleri sınırlayıcı kutulara uygular ve her bir etiketin güvenirliği rapor eder.
 
@@ -311,13 +333,15 @@ Bildirilen doğrulukla bağlı olarak, modeli geliştirmek için daha fazla eği
 
 ## <a name="save-a-project-and-resume-later"></a>Projeyi kaydetme ve daha sonra yeniden başlatma
 
-Projenizi başka bir zamanda veya başka bir tarayıcıda duraklatmak için, projenizin güvenlik belirtecini kaydetmeniz ve daha sonra yeniden girmeniz gerekir. 
+Projenizi başka bir zamanda veya başka bir tarayıcıda duraklatmak için, projenizin güvenlik belirtecini kaydetmeniz ve daha sonra yeniden girmeniz gerekir.
 
 ### <a name="get-project-credentials"></a>Proje kimlik bilgilerini al
+
 Proje ayarları sayfanıza gidin (kaydırıcı simgesi) ve güvenlik belirteci adını göz önünde alın. Ardından, geçerli tarayıcı örneğinizdeki tüm güvenlik belirteçlerini gösteren uygulama ayarlarınıza (dişli simgesi) gidin. Projenizin güvenlik belirtecini bulun ve adını ve anahtar değerini güvenli bir konuma kopyalayın.
 
 ### <a name="restore-project-credentials"></a>Proje kimlik bilgilerini geri yükle
-Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları tekrarlayın. Ardından, uygulama ayarları sayfasına (dişli simgesi) gidin ve projenizin güvenlik belirtecinin orada olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve önceki adımdan belirteç adınızın ve anahtarınızın üzerine kopyalayın. Sonra Ayarları Kaydet ' e tıklayın. 
+
+Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları tekrarlayın. Ardından, uygulama ayarları sayfasına (dişli simgesi) gidin ve projenizin güvenlik belirtecinin orada olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve önceki adımdan belirteç adınızın ve anahtarınızın üzerine kopyalayın. Sonra Ayarları Kaydet ' e tıklayın.
 
 ### <a name="resume-a-project"></a>Projeyi sürdürür
 

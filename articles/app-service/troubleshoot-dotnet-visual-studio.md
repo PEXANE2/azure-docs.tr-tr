@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576591"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095725"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -28,7 +28,7 @@ Bu öğreticide, [hata ayıklama modunda](/visualstudio/debugger/) uzaktan veya 
 
 Visual Studio Ultimate sahipseniz, hata ayıklama için [IntelliTrace](/visualstudio/debugger/intellitrace) de kullanabilirsiniz. Bu öğreticide IntelliTrace kapsamında değildir.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Kaynakları
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
 
 Bu öğreticide gösterilen kod örnekleri bir C# MVC web uygulaması içindir, ancak sorun giderme yordamları Visual Basic ve Web Forms uygulamalar için aynıdır.
@@ -49,7 +49,7 @@ Visual Studio, [Azure Portal](https://go.microsoft.com/fwlink/?LinkId=529715)bul
    >
    >
 
-    Visual Studio 'dan Azure kaynaklarına bağlanma hakkında daha fazla bilgi için bkz. [hesapları, abonelikleri ve yönetici rollerini yönetme](../role-based-access-control/role-assignments-portal.md).
+    Visual Studio 'dan Azure kaynaklarına bağlanma hakkında daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md).
 2. **Sunucu Gezgini**' de **Azure** ' u genişletin ve **App Service**' ı genişletin.
 3. [Azure App Service ' de ASP.NET uygulaması oluşturma](quickstart-dotnet-framework.md)bölümünde oluşturduğunuz uygulamayı içeren kaynak grubunu genişletin ve ardından uygulama düğümüne sağ tıklayıp **ayarları görüntüle**' ye tıklayın.
 

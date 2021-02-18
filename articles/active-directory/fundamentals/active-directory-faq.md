@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860431"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094484"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -32,7 +32,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory nedir?](active-directory-wha
 **Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli Microsoft 365 veya Azure AD aboneliğiniz yoksa ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/
 ) veya ücretli bir abonelik etkinleştirmeniz gerekir.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 * [Azure aboneliklerinin Azure Active Directory ile ilişkisi](active-directory-how-subscriptions-associated-directory.md)
 
@@ -51,7 +51,7 @@ Enterprise Mobility + Security gibi Azure AD ücretli hizmetler, Microsoft 365 v
 
 Y **:** Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure kaynakları için sahip rolü atanır. Bir sahip, Azure aboneliğinin ilişkili olduğu dizinden Microsoft hesabı veya bir iş ya da okul hesabı kullanabilir.  Bu rol Azure portaldaki hizmetleri yönetme yetkisine sahiptir.
 
-Başkalarının aynı aboneliği kullanarak oturum açması ve hizmetlere erişmesi gerekiyorsa, bu kullanıcılara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)de atayabilirsiniz. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+Başkalarının aynı aboneliği kullanarak oturum açması ve hizmetlere erişmesi gerekiyorsa, bu kullanıcılara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)de atayabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye, dizin için genel yönetici rolü atanır. Genel yönetici, tüm Azure AD dizin özelliklerine erişebilir. Azure AD 'nin, dizin ve kimlikle ilgili özellikleri yönetmek için farklı bir yönetici rolü kümesi vardır. Bu yöneticiler Azure portal çeşitli özelliklere erişebilir. Yönetici rolü, Kullanıcı oluşturma veya düzenleme, başkalarına yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanlarını yönetme gibi neler yapabileceğini belirler.  Azure AD dizin yöneticileri ve rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rollerine Kullanıcı atama](active-directory-users-assign-role-azure-portal.md) ve [Azure Active Directory yönetici rolleri atama](../roles/permissions-reference.md).
 
@@ -160,7 +160,7 @@ Bu, "Password" ve "123456" öğesinin herhangi bir çeşitleri gibi genel olarak
 
 **Y:** Azure AD Premium ile istediğiniz uygulamayı ekleyip yapılandırabilirsiniz. Uygulamanızın özelliklerine ve tercihlerinize bağlı olarak SSO ve otomatik sağlamayı yapılandırabilirsiniz.  
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 * [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/configure-saml-single-sign-on.md)
 * [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ Daha fazla bilgi için bkz. [uygulamalar Için son kullanıcı deneyimleri](../m
 
 **Y:** Azure AD; SAML 2.0, OpenID Connect, OAuth 2.0 ve WS-Federasyon gibi birçok standartlaştırılmış kimlik doğrulaması ve yetkilendirme protokolünü destekler. Azure AD aynı zamanda, yalnızca form tabanlı kimlik doğrulamasını destekleyen uygulamalar için parola kasası oluşturma ve otomatik oturum açma işlevlerini de destekler.  
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 * [Azure AD için Kimlik Doğrulama Senaryoları](../develop/authentication-vs-authorization.md)
 * [Active Directory kimlik doğrulama protokolleri](/previous-versions/azure/dn151124(v=azure.100))

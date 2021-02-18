@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: c65f086fb0b7db9eb65606da73552facd8e470b0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103490"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092179"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak Kullanıcı oturumu açma ve düğüm Web uygulamasında erişim belirteci edinme
 
@@ -26,9 +26,6 @@ Bu hızlı başlangıçta, bir Node.js Web uygulamasının yetkilendirme kodu ak
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) için Microsoft kimlik doğrulama kitaplığı kullanılmaktadır.
-
-> [!IMPORTANT]
-> MSAL düğümü [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

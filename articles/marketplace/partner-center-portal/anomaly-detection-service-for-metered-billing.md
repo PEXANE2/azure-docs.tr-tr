@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653083"
+ms.locfileid: "101092409"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Tarifeli faturalama için anomali algılama hizmeti
 
@@ -50,7 +50,7 @@ Model, geriye dönük güven aralıkları oluşturarak işe yarar. Zaman serisi 
 
 ## <a name="anomaly-detection-notification"></a>Anomali algılama bildirimi
 
-Iş Ortağı Merkezi 'nde aykırları değerlendirebilir, yönetebilir ve kabul edebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [tarifeli faturalandırma Için anomali algılama](../anomaly-detection.md).
+Iş Ortağı Merkezi 'nde aykırları değerlendirebilir, yönetebilir ve kabul edebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [Iş Ortağı Merkezi 'nde tarifeli faturalandırma Bozuklularını yönetme](../anomaly-detection.md).
 
 Müşterilerinizin tarifeli kullanım için fazla ücretlendirilmediğinden emin olmak için, algılanan anomali sorunlar olup olmadığını araştırmanız gerekir. Bu durumda, Iş Ortağı Merkezi 'nde yanlış kullanımı kabul edebilirsiniz.
 
@@ -83,4 +83,4 @@ Daha fazla yayımcı desteği seçeneği için bkz. [Iş Ortağı Merkezi 'nde t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Market ölçüm hizmeti API 'si](marketplace-metering-service-apis.md)hakkında bilgi edinin.
-- [Ölçülen faturalandırma için anomali algılama](../anomaly-detection.md)
+- [Iş Ortağı Merkezi 'nde ölçülen faturalandırma bozuklularını yönetme](../anomaly-detection.md)

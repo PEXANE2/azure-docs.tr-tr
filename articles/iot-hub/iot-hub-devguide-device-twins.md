@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400937"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093039"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub cihaz ikizlerini anlama ve kullanma
 
@@ -42,6 +42,8 @@ Cihaz ikizlerini şu şekilde kullan:
 Bildirilen özellikleri, cihazdan buluta iletileri veya karşıya dosya yüklemeyi kullanma hakkında rehberlik için [cihazdan buluta iletişim kılavuzuna](iot-hub-devguide-d2c-guidance.md) bakın.
 
 İstenen özellikleri, doğrudan yöntemleri veya buluttan cihaza iletileri kullanma hakkında rehberlik için [buluttan cihaza iletişim kılavuzuna](iot-hub-devguide-c2d-guidance.md) bakın.
+
+Cihaz TWINS 'in bir Azure IoT Tak ve Kullan cihazı tarafından kullanılan cihaz modeliyle ilişkisini öğrenmek için bkz. [ıot Tak ve kullan dijital TWINS 'ı anlama](../iot-pnp/concepts-digital-twin.md).
 
 ## <a name="device-twins"></a>Cihaz ikikesi
 

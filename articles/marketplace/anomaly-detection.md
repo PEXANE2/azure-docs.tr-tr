@@ -1,20 +1,20 @@
 ---
-title: Ölçülen faturalandırma için anomali algılama | Azure Marketi
-description: Tarifeli faturalandırma için otomatik anomali algılamanın, müşterilerinizin ticari Market teklifinizin tarifeli kullanımı için doğru şekilde faturalandırılmaya nasıl yardımcı olduğunu öğrenin.
+title: Iş Ortağı Merkezi 'nde ölçülen faturalandırma bozuklularını yönetme | Azure Marketi
+description: Tarifeli faturalandırma için otomatik anomali algılamanın, müşterilerinizin ticari Market tekliflerinizin tarifeli kullanımı için doğru şekilde faturalandırılmaya nasıl yardımcı olduğunu öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/17/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653015"
+ms.locfileid: "101092514"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>Ölçülen faturalandırma için anomali algılama
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>Iş Ortağı Merkezi 'nde ölçülen faturalandırma bozuklularını yönetme
 
 Özel ölçülen faturalandırma seçeneği şu anda [hizmet olarak yazılım](plan-saas-offer.md) (SaaS) teklifleri ve yönetilen bir uygulama planına sahip [Azure uygulamaları](plan-azure-application-offer.md#types-of-plans) tarafından kullanılabilir.
 
@@ -80,3 +80,4 @@ Fazla kullanım kullanımını anomali olarak işaretledikten veya orijinal olar
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Ticari Market ölçüm hizmeti kullanılarak SaaS için ölçülen faturalandırma](./partner-center-portal/saas-metered-billing.md)
 - [Yönetilen uygulama ölçümlü faturalandırma](./partner-center-portal/azure-app-metered-billing.md)
+- [Tarifeli faturalama için anomali algılama hizmeti](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

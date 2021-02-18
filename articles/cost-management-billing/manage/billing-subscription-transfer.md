@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367206"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094135"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -66,7 +66,7 @@ Visual Studio ve Microsoft İş Ortağı Ağı abonelikleriyle ilişkili aylık 
 
 Bir Azure aboneliğinin faturalama sahipliğini kabul ettiyseniz, sonraki adımları incelemenizi öneririz:
 
-1. Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure portalını Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+1. Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 1. Bu aboneliğin hizmetleriyle ilişkili kimlik bilgilerini şu şekilde güncelleştirin:
    1. Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için yönetim sertifikası oluşturma ve karşıya yükleme](../../cloud-services/cloud-services-certs-create.md)
    1. Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md)
@@ -126,4 +126,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure portalını Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+- Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134160"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091447"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -62,7 +62,7 @@ Azure veritabanı geçiş hizmeti 'nin veritabanı geçişleri gerçekleştirirk
 Tüm desteklenen geçiş senaryolarında ortak olan Azure veritabanı geçiş hizmeti önkoşulları şunlar için gereklidir:
 
 * [ExpressRoute](../expressroute/expressroute-introduction.md) veya [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun.
-* Sanal ağ ağ güvenlik grubu kurallarınızın şu iletişim bağlantı noktalarını 443, 53, 5671-5672, 9350-9354, 445, 12000 engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
+* Sanal ağ ağ güvenlik grubu kurallarınızın ServiceBus, Storage ve AzureMonitor ServiceTags için 443 bağlantı noktasını engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
 * Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak belirli geçiş senaryolarına rekabet etmek için gereken tüm önkoşulların bir listesi için, docs.microsoft.com adresindeki Azure veritabanı geçiş hizmeti [belgelerindeki](./dms-overview.md) ilgili öğreticilere bakın.

@@ -349,5 +349,7 @@
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Fiyatlandırma
           href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+        - name: IoT için Azure Defender destek ilkeleri
+          href: support-policies.md
         - name: Videolar
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150877"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091270"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 
@@ -18,7 +18,7 @@ ms.locfileid: "92150877"
 Varsayılan işlem düğümü ayrıntılarını görüntülemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümlerini**seçin.
+1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümlerini** seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/configure-transaction-nodes/nodes.png)
 
@@ -69,13 +69,13 @@ Uç noktanıza Azure AD erişim denetimi sağlamak için:
 
     | Ayar | Eylem |
     |---------|-------------|
-    | Rol | **Sahip**, **katkıda bulunan**veya **Reader**' ı seçin.
+    | Rol | **Sahip**, **katkıda bulunan** veya **Reader**' ı seçin.
     | Şunlara erişim ata: | **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
     | Şunu seçin: | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
 
 1. Rol atamasını eklemek için **Kaydet** ' i seçin.
 
-Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
+Azure AD erişim denetimi hakkında daha fazla bilgi için bkz [. Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md)
 
 Azure AD kimlik doğrulamasını kullanarak bağlanma hakkında daha fazla bilgi için bkz. [AAD kimlik doğrulaması kullanarak düğümünüz bağlama](configure-aad.md).
 

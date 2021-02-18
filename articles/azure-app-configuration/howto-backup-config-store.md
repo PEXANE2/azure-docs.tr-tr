@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565934"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095514"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekleme
 
@@ -39,7 +39,7 @@ Bu öğreticide, bölgede `centralus` ve bölgedeki tüm diğer kaynaklarda ikin
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Azure geliştirme iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
 
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> Gerekli kaynak oluşturma ve rol yönetimini gerçekleştirmek için hesabınızın `Owner` uygun kapsamda (aboneliğiniz veya kaynak grubunuz) izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma hakkında](../role-based-access-control/role-assignments-portal.md)bilgi edinin.
+> Gerekli kaynak oluşturma ve rol yönetimini gerçekleştirmek için hesabınızın `Owner` uygun kapsamda (aboneliğiniz veya kaynak grubunuz) izinleri olması gerekir. Rol atamasıyla ilgili yardıma ihtiyacınız varsa [Azure Portal kullanarak Azure rolleri atamayı](../role-based-access-control/role-assignments-portal.md)öğrenin.
 
 İşlev uygulamanızın yönetilen kimliğine uygulama yapılandırma Depolarınıza erişim izni vermek için aşağıdaki komutları veya [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) kullanın. Şu rolleri kullan:
 - `App Configuration Data Reader`Rolü birincil uygulama yapılandırma deposuna atayın.
@@ -216,7 +216,7 @@ Her şeyin çalıştığından test etmek için, birincil depodan bir anahtar de
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-Olayı tetikledi. Birkaç dakika içinde, Event Grid olay bildirimini kuyruğunuza gönderir. *İşlevinizin bir sonraki zamanlanmış çalıştıktan sonra* , ikincil deponuzdaki yapılandırma ayarlarını görüntüleyerek, birincil depodan güncelleştirilmiş anahtar-değer olup olmadığını görebilirsiniz.
+Olayı tetikledi. Birkaç dakika içinde, Event Grid olay bildirimini kuyruğunuza gönderir. *İşlevinizin bir sonraki zamanlanmış çalıştıktan sonra*, ikincil deponuzdaki yapılandırma ayarlarını görüntüleyerek, birincil depodan güncelleştirilmiş anahtar-değer olup olmadığını görebilirsiniz.
 
 > [!NOTE]
 > Test ve sorun giderme sırasında işlevinizi, zamanlanmış Zamanlayıcı tetikleyicisi için beklemeden [el ile tetikleyebilirsiniz](../azure-functions/functions-manually-run-non-http.md) .

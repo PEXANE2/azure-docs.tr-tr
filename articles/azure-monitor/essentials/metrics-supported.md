@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 51cd3bf3349e1880d4dc9f5d98d2d9b5dc5bb228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623263"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091798"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -154,21 +154,21 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|etkin-zamanlayıcı-sayısı|Yes|System. Runtime|etkin-zamanlayıcı-sayısı|Count|Ortalama|Şu anda etkin olan zamanlayıcılar sayısı|Dağıtım, AppName, Pod|
-|ayırma oranı|Yes|System. Runtime|ayırma oranı|Bayt|Ortalama|Yönetilen yığında ayrılan bayt sayısı|Dağıtım, AppName, Pod|
+|etkin-zamanlayıcı-sayısı|Yes|etkin-zamanlayıcı-sayısı|Count|Ortalama|Şu anda etkin olan zamanlayıcılar sayısı|Dağıtım, AppName, Pod|
+|ayırma oranı|Yes|ayırma oranı|Bayt|Ortalama|Yönetilen yığında ayrılan bayt sayısı|Dağıtım, AppName, Pod|
 |AppCpuUsage|Yes|Uygulama CPU kullanımı (Önizleme)|Yüzde|Ortalama|Uygulama için son CPU kullanımı|Dağıtım, AppName, Pod|
-|derleme sayısı|Yes|System. Runtime|derleme sayısı|Count|Ortalama|Yüklenen derlemelerin sayısı|Dağıtım, AppName, Pod|
-|CPU kullanımı|Yes|System. Runtime|CPU kullanımı|Yüzde|Ortalama|işlemin CPU 'YU kullanışında%|Dağıtım, AppName, Pod|
-|geçerli istekler|Yes|Microsoft.AspNetCore.Hosting|geçerli istekler|Count|Ortalama|İşlemin ömrü boyunca işlenen isteklerin toplam sayısı|Dağıtım, AppName, Pod|
-|özel durum-sayı|Yes|System. Runtime|özel durum-sayı|Count|Toplam|Özel durum sayısı|Dağıtım, AppName, Pod|
-|başarısız-istekler|Yes|Microsoft.AspNetCore.Hosting|başarısız-istekler|Count|Ortalama|İşlemin ömrü boyunca başarısız isteklerin toplam sayısı|Dağıtım, AppName, Pod|
-|GC-yığın boyutu|Yes|System. Runtime|GC-yığın boyutu|Count|Ortalama|GC tarafından bildirilen toplam yığın boyutu (MB)|Dağıtım, AppName, Pod|
-|Gen-0-GC-Count|Yes|System. Runtime|Gen-0-GC-Count|Count|Ortalama|Gen 0 GCs sayısı|Dağıtım, AppName, Pod|
-|Gen-0-boyut|Yes|System. Runtime|Gen-0-boyut|Bayt|Ortalama|Gen 0 yığın boyutu|Dağıtım, AppName, Pod|
-|Gen-1-GC-sayısı|Yes|System. Runtime|Gen-1-GC-sayısı|Count|Ortalama|System. Runtime|Gen 1 GB sayısı|Dağıtım, AppName, Pod|
-|Gen-1-boyut|Yes|System. Runtime|Gen-1-boyut|Bayt|Ortalama|Gen 1 yığın boyutu|Dağıtım, AppName, Pod|
-|Gen-2-GC-sayım|Yes|System. Runtime|Gen-2-GC-sayım|Count|Ortalama|Gen 2 GB sayısı|Dağıtım, AppName, Pod|
-|Gen-2 boyutu|Yes|System. Runtime|Gen-2 boyutu|Bayt|Ortalama|Gen 2 yığın boyutu|Dağıtım, AppName, Pod|
+|derleme sayısı|Yes|derleme sayısı|Count|Ortalama|Yüklenen derlemelerin sayısı|Dağıtım, AppName, Pod|
+|CPU kullanımı|Yes|CPU kullanımı|Yüzde|Ortalama|işlemin CPU 'YU kullanışında%|Dağıtım, AppName, Pod|
+|geçerli istekler|Yes|geçerli istekler|Count|Ortalama|İşlemin ömrü boyunca işlenen isteklerin toplam sayısı|Dağıtım, AppName, Pod|
+|özel durum-sayı|Yes|özel durum-sayı|Count|Toplam|Özel durum sayısı|Dağıtım, AppName, Pod|
+|başarısız-istekler|Yes|başarısız-istekler|Count|Ortalama|İşlemin ömrü boyunca başarısız isteklerin toplam sayısı|Dağıtım, AppName, Pod|
+|GC-yığın boyutu|Yes|GC-yığın boyutu|Count|Ortalama|GC tarafından bildirilen toplam yığın boyutu (MB)|Dağıtım, AppName, Pod|
+|Gen-0-GC-Count|Yes|Gen-0-GC-Count|Count|Ortalama|Gen 0 GCs sayısı|Dağıtım, AppName, Pod|
+|Gen-0-boyut|Yes|Gen-0-boyut|Bayt|Ortalama|Gen 0 yığın boyutu|Dağıtım, AppName, Pod|
+|Gen-1-GC-sayısı|Yes|Gen-1-GC-sayısı|Count|Ortalama|Gen 1 GB sayısı|Dağıtım, AppName, Pod|
+|Gen-1-boyut|Yes|Gen-1-boyut|Bayt|Ortalama|Gen 1 yığın boyutu|Dağıtım, AppName, Pod|
+|Gen-2-GC-sayım|Yes|Gen-2-GC-sayım|Count|Ortalama|Gen 2 GB sayısı|Dağıtım, AppName, Pod|
+|Gen-2 boyutu|Yes|Gen-2 boyutu|Bayt|Ortalama|Gen 2 yığın boyutu|Dağıtım, AppName, Pod|
 |JVM. GC. Live. Data. size|Yes|JVM. GC. Live. Data. size|Bayt|Ortalama|Tam GC sonrasında eski nesil bellek havuzunun boyutu|Dağıtım, AppName, Pod|
 |JVM. GC. Max. Data. size|Yes|JVM. GC. Max. Data. size|Bayt|Ortalama|Eski nesil bellek havuzunun en büyük boyutu|Dağıtım, AppName, Pod|
 |JVM. GC. Memory. ayrılmış|Yes|JVM. GC. Memory. ayrılmış|Bayt|Maksimum|Bir GC 'nin bir sonraki öncesine ait olması durumunda küçük kuşak bellek havuzunun boyutunun artması için artırılır|Dağıtım, AppName, Pod|
@@ -178,15 +178,15 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |JVM. Memory. taahhüt|Yes|JVM. Memory. taahhüt|Bayt|Ortalama|JVM 'ye bayt olarak atanan bellek|Dağıtım, AppName, Pod|
 |JVM. Memory. Max|Yes|JVM. Memory. Max|Bayt|Maksimum|Bellek yönetimi için kullanılabilecek bayt cinsinden maksimum bellek miktarı|Dağıtım, AppName, Pod|
 |JVM. Memory. kullanıldı|Yes|JVM. Memory. kullanıldı|Bayt|Ortalama|Bayt cinsinden kullanılan uygulama belleği|Dağıtım, AppName, Pod|
-|Loh-boyut|Yes|System. Runtime|Loh-boyut|Bayt|Ortalama|LOH yığın boyutu|Dağıtım, AppName, Pod|
-|Monitor-Lock-çekişme-Count|Yes|System. Runtime|Monitor-Lock-çekişme-Count|Count|Ortalama|İzleyici kilidi alınmaya çalışılırken çekişme sayısı|Dağıtım, AppName, Pod|
+|Loh-boyut|Yes|Loh-boyut|Bayt|Ortalama|LOH yığın boyutu|Dağıtım, AppName, Pod|
+|Monitor-Lock-çekişme-Count|Yes|Monitor-Lock-çekişme-Count|Count|Ortalama|İzleyici kilidi alınmaya çalışılırken çekişme sayısı|Dağıtım, AppName, Pod|
 |Process. CPU. Usage|Yes|Process. CPU. Usage|Yüzde|Ortalama|JVM işlemi için son CPU kullanımı|Dağıtım, AppName, Pod|
-|saniye başına istek sayısı|Yes|Microsoft.AspNetCore.Hosting|istek hızı|Count|Ortalama|İstek hızı|Dağıtım, AppName, Pod|
+|saniye başına istek sayısı|Yes|istek hızı|Count|Ortalama|İstek hızı|Dağıtım, AppName, Pod|
 |System. CPU. Usage|Yes|System. CPU. Usage|Yüzde|Ortalama|Tüm sistem için en son CPU kullanımı|Dağıtım, AppName, Pod|
-|ThreadPool-tamamlanan-öğe sayısı|Yes|System. Runtime|ThreadPool-tamamlanan-öğe sayısı|Count|Ortalama|ThreadPool tamamlanan Iş öğesi sayısı|Dağıtım, AppName, Pod|
-|ThreadPool-kuyruk uzunluğu|Yes|System. Runtime|ThreadPool-kuyruk uzunluğu|Count|Ortalama|Iş parçacığı Iş öğeleri sıra uzunluğu|Dağıtım, AppName, Pod|
-|ThreadPool-thread-Count|Yes|System. Runtime|ThreadPool-thread-Count|Count|Ortalama|ThreadPool Iş parçacığı sayısı|Dağıtım, AppName, Pod|
-|GC zamanı|Yes|System. Runtime|GC zamanı|Yüzde|Ortalama|Son GC 'den beri GC 'de geçen süre|Dağıtım, AppName, Pod|
+|ThreadPool-tamamlanan-öğe sayısı|Yes|ThreadPool-tamamlanan-öğe sayısı|Count|Ortalama|ThreadPool tamamlanan Iş öğesi sayısı|Dağıtım, AppName, Pod|
+|ThreadPool-kuyruk uzunluğu|Yes|ThreadPool-kuyruk uzunluğu|Count|Ortalama|Iş parçacığı Iş öğeleri sıra uzunluğu|Dağıtım, AppName, Pod|
+|ThreadPool-thread-Count|Yes|ThreadPool-thread-Count|Count|Ortalama|ThreadPool Iş parçacığı sayısı|Dağıtım, AppName, Pod|
+|GC zamanı|Yes|GC zamanı|Yüzde|Ortalama|Son GC 'den beri GC 'de geçen süre|Dağıtım, AppName, Pod|
 |Tomcat. Global. Error|Yes|Tomcat. Global. Error|Count|Toplam|Tomcat genel hatası|Dağıtım, AppName, Pod|
 |Tomcat. Global. alındı|Yes|Tomcat. Global. alındı|Bayt|Toplam|Tomcat alınan toplam bayt sayısı|Dağıtım, AppName, Pod|
 |Tomcat. Global. Request. ort. saat|Yes|Tomcat. Global. Request. ort. saat|Mayacak|Ortalama|Tomcat Isteği ortalama zamanı|Dağıtım, AppName, Pod|
@@ -202,8 +202,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Tomcat. Sessions. reddedildi|Yes|Tomcat. Sessions. reddedildi|Count|Toplam|Tomcat oturumu reddedildi sayısı|Dağıtım, AppName, Pod|
 |tomcat.threads.config. Max|Yes|tomcat.threads.config. Max|Count|Toplam|Tomcat yapılandırması en fazla Iş parçacığı sayısı|Dağıtım, AppName, Pod|
 |Tomcat. Threads. Current|Yes|Tomcat. Threads. Current|Count|Toplam|Tomcat geçerli Iş parçacığı sayısı|Dağıtım, AppName, Pod|
-|toplam istek sayısı|Yes|Microsoft.AspNetCore.Hosting|toplam istek sayısı|Count|Ortalama|İşlemin ömrü boyunca toplam istek sayısı|Dağıtım, AppName, Pod|
-|çalışma kümesi|Yes|System. Runtime|çalışma kümesi|Count|Ortalama|İşlem tarafından kullanılan çalışma kümesi miktarı (MB)|Dağıtım, AppName, Pod|
+|toplam istek sayısı|Yes|toplam istek sayısı|Count|Ortalama|İşlemin ömrü boyunca toplam istek sayısı|Dağıtım, AppName, Pod|
+|çalışma kümesi|Yes|çalışma kümesi|Count|Ortalama|İşlem tarafından kullanılan çalışma kümesi miktarı (MB)|Dağıtım, AppName, Pod|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts

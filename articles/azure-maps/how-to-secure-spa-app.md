@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684081"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092730"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Etkileşimli olmayan oturum açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 
@@ -111,7 +111,7 @@ Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atay
 
 2. **Rol atamaları** sekmesinde, **rol** altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata** altında **işlev uygulaması**' yi seçin. Asıl ada göre ' yi seçin. Sonra **Kaydet**'i seçin.
 
-   * [Rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)ile ilgili ayrıntılara bakın.
+   * [Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)hakkında ayrıntılara bakın.
 
 > [!WARNING]
 > Azure Maps yerleşik rol tanımları birçok Azure haritalar REST API 'Lerine çok büyük bir yetkilendirme erişimi sağlar. API 'Lerin en düşük düzeyde erişimini kısıtlamak için bkz. [özel rol tanımı oluşturma ve sistem tarafından atanan kimliği](../role-based-access-control/custom-roles.md) özel rol tanımına atama. Bu, uygulamanın Azure Maps 'e erişmesi için gereken en düşük ayrıcalığa olanak sağlar.

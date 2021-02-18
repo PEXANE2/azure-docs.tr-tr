@@ -1,14 +1,14 @@
 ---
 title: Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Azure Security kıyaslama Foundation şeması örneği için adımları dağıtın.
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633963"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095286"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 
@@ -92,6 +92,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
      - **Ağ İzleyicisi adı**: Ağ İzleyicisi kaynağının adı
      - **Ağ İzleyicisi kaynak grubu adı**: Ağ İzleyicisi kaynak grubunun adı
      - **DDoS korumasını etkinleştir**: DDoS korumasının sanal ağda etkinleştirilip etkinleştirilmeyeceğini belirtmek için ' true ' veya ' false ' girin
+     
+    > [!NOTE] 
+    > Ağ Izleyicisi zaten etkinse, var olan ağ Izleyicisi kaynak grubunu kullanmanız önerilir. Yapıt parametresi **Ağ İzleyicisi kaynak grubu konumu** Için mevcut ağ izleyicisi kaynak grubunun konumunu da sağlamanız gerekir.
 
    - Yapıt parametreleri
 
@@ -132,8 +135,14 @@ Aşağıdaki tabloda, şema parametrelerinin bir listesi verilmiştir:
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Alt ağ adresi adları (isteğe bağlı)|Bağlı bileşen sanal ağına dağıtılacak alt ağ adları dizisi; Örneğin, "subnet1", "subnet2"|
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Alt ağ adresi önekleri (isteğe bağlı)|Bağlı bileşen sanal ağı için isteğe bağlı alt ağların IP adresi önekleri dizisi; Örneğin, "10.0.7.0/24", "10.0.8.0/24"|
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Bağlı bileşen dağıt|Atamanın mimarinin bağlı bileşen bileşenlerini dağıtmasının gerekip gerekmediğini belirtmek için ' true ' veya ' false ' girin|
-|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **konumuyla eşleşmelidir.**|
+|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi konumu|Ağ Izleyicisi kaynağı konumu|
 |Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi kaynak grubu konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **adıyla eşleşmelidir.**|
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Hatayla karşılaşırsanız `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` , şema parametresi **Ağ İzleyicisi kaynak grubu adının** var olan Ağ İzleyicisi kaynak grubu adını belirttiğinden ve yapıt parametresi **Ağ İzleyicisi kaynak grubu konumunun** var olan Ağ İzleyicisi kaynak grubu konumunu belirttiğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

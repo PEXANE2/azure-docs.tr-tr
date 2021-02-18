@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547171"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094555"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -55,7 +55,7 @@ Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#o
 | Azure dijital TWINS veri okuyucusu | Azure dijital TWINS kaynaklarına salt okuma erişimi verir | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 Rolleri iki şekilde atayabilirsiniz:
-* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))
+* Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rolleri atama*](../role-based-access-control/role-assignments-portal.md))
 * bir rol eklemek veya kaldırmak için CLı komutları aracılığıyla
 
 Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için Azure dijital TWINS [*öğreticisinde deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
