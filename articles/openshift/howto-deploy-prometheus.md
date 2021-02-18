@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift kümesinde Prometheus örneğini dağıtma
 description: Uygulamanızın ölçümlerini izlemek için bir Azure Red Hat OpenShift kümesinde bir Prometheus örneği oluşturun.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, Aro, OpenShift, ölçümler, Red Hat
-ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 974096e515401ab5e292dbad4c9beba7f1611a8a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996857"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633453"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesine tek başına Prometheus örneği dağıtma
 

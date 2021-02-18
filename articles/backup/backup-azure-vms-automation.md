@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: cbb962cd6ddde3d0ee8280c0a548067446a58d55
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: f59c18aecf577bc7f7d0b1360dd36504305af893
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633198"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -622,7 +622,7 @@ Sonuç iş ayrıntıları, sorgulanabilen ve dağıtılabilen şablon URI 'SI sa
 3. [Burada](../azure-resource-manager/templates/deploy-powershell.md)açıklandığı gibi yenı bir VM oluşturmak için şablonu dağıtın.
 
     ```powershell
-    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI
     ```
 
 ### <a name="create-a-vm-using-the-config-file"></a>Yapılandırma dosyasını kullanarak VM oluşturma

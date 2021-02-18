@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683122"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596467"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API hesaplarıyla Java SDK 'Sı v4 Azure Cosmos DB kullandığınızda karşılaşılan sorunları giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Bu listeyle başla:
 * Çözüm bulamazsanız, bu makalenin geri kalanını okuyun. Sonra bir [GitHub sorunu verin](https://github.com/Azure/azure-sdk-for-java/issues). GitHub sorununuz için etiket ekleme seçeneği varsa, *Cosmos: v4-item* etiketi ekleyin.
 
 ### <a name="retry-logic"></a>Yeniden deneme mantığı <a id="retry-logics"></a>
-Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyorsa, başarısız olan işlemi yeniden denemeye çalışır. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
+Tüm GÇ hatalarında Cosmos DB SDK'sı, SDK'da yeniden deneme uygulanabiliyorsa başarısız işlemi yeniden dener. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
 
 1. Okuma ve sorgulama GÇ arızaları, son kullanıcıya sunulmadan SDK tarafından yeniden denenir.
 2. Yazma (oluşturma, upsert, Replace, Delete) "Not" ıdempotent, bu nedenle SDK başarısız yazma işlemlerini her zaman yeniden denemeyebilir. Kullanıcının uygulama mantığının hatayı işlemesi ve yeniden denemesi gerekir.
@@ -54,7 +54,7 @@ Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyo
 En iyi performans için:
 * Uygulamanın Azure Cosmos DB hesabınızla aynı bölgede çalıştığından emin olun. 
 * Uygulamanın çalıştığı konaktaki CPU kullanımını denetleyin. CPU kullanımı yüzde 50 veya daha fazlaysa, uygulamanızı daha yüksek bir yapılandırmaya sahip bir konakta çalıştırın. Ya da yükü daha fazla makineye dağıtabilirsiniz.
-    * Uygulamanızı Azure Kubernetes hizmetinde çalıştırıyorsanız, [CPU kullanımını izlemek Için Azure İzleyicisi 'ni kullanabilirsiniz](../azure-monitor/insights/container-insights-analyze.md).
+    * Uygulamanızı Azure Kubernetes hizmetinde çalıştırıyorsanız, [CPU kullanımını izlemek Için Azure İzleyicisi 'ni kullanabilirsiniz](../azure-monitor/containers/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Bağlantı azaltma
 [Bir konak makinesindeki bağlantı sınırının] veya [Azure SNAT (Pat) bağlantı noktası tükenmesi]nedeniyle bağlantı azaltma gerçekleşecektir.
