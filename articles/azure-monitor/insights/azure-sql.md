@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe506dc3f5738f0ef639695ded980a24536993e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397088"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577460"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics kullanarak Azure SQL veritabanını izleme (Önizleme)
 
@@ -31,28 +31,28 @@ Azure SQL Analytics çözümü kullanmaya ve tipik kullanım senaryolarına yön
 
 Azure SQL Analytics, tüm Azure SQL veritabanlarınızda tanılama telemetrisi akışını destekleyen bir yalnızca bulut izleme çözümüdür. Azure SQL Analytics Azure Izleyici 'ye bağlanmak için aracıları kullanmadığından, şirket içinde veya sanal makinelerde barındırılan SQL Server izlemeyi desteklemez.
 
-| Bağlı Kaynak | Desteklenir | Açıklama |
+| Bağlı Kaynak | Desteklenir | Description |
 | --- | --- | --- |
-| [Tanılama ayarları](../platform/diagnostic-settings.md) | **Evet** | Azure ölçümü ve günlük verileri Azure Izleyici günlüklerine doğrudan Azure tarafından gönderilir. |
-| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure Izleyici, bir depolama hesabındaki verileri okuyamıyor. |
-| [Windows aracıları](../platform/agent-windows.md) | Hayır | Doğrudan Windows aracıları Azure SQL Analytics tarafından kullanılmaz. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Doğrudan Linux aracıları Azure SQL Analytics tarafından kullanılmaz. |
-| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Hayır | Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı Azure SQL Analytics tarafından kullanılmaz. |
+| [Tanılama ayarları](../essentials/diagnostic-settings.md) | **Evet** | Azure ölçümü ve günlük verileri Azure Izleyici günlüklerine doğrudan Azure tarafından gönderilir. |
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Izleyici, bir depolama hesabındaki verileri okuyamıyor. |
+| [Windows aracıları](../agents/agent-windows.md) | No | Doğrudan Windows aracıları Azure SQL Analytics tarafından kullanılmaz. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No | Doğrudan Linux aracıları Azure SQL Analytics tarafından kullanılmaz. |
+| [System Center Operations Manager yönetim grubu](../agents/om-agents.md) | No | Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı Azure SQL Analytics tarafından kullanılmaz. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics seçenekleri
 
 Aşağıdaki tabloda, biri Azure SQL veritabanı ve diğeri de Azure SQL yönetilen örnek veritabanları için Azure SQL Analytics panosunun iki sürümü için desteklenen seçenekler özetlenmektedir.
 
-| Azure SQL Analytics seçeneği | Açıklama | SQL veritabanı desteği | SQL Yönetilen Örneği desteği |
+| Azure SQL Analytics seçeneği | Description | SQL veritabanı desteği | SQL Yönetilen Örneği desteği |
 | --- | ------- | ----- | ----- |
-| Türe göre kaynak | İzlenen tüm kaynakları sayan perspektif. | Evet | Evet |
-| Insights | Akıllı İçgörüler, performans için hiyerarşik ayrıntıya gitme sağlar. | Evet | Evet |
-| Hatalar | Veritabanlarında gerçekleşen SQL hatalarına hiyerarşik ayrıntıya gitme sağlar. | Evet | Evet |
-| Zaman aşımları | Veritabanlarında gerçekleşen SQL zaman aşımları için hiyerarşik ayrıntıya gitme sağlar. | Evet | Hayır |
-| Blok | Veritabanlarında gerçekleşen SQL blokları için hiyerarşik ayrıntıya gitme sağlar. | Evet | Hayır |
-| Veritabanı bekleme süresi | Veritabanı düzeyinde SQL bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. Bekleme türü başına düşen toplam bekleme süresinin ve bekleme zamanının özetlerini içerir. |Evet | Hayır |
-| Sorgu süresi | Sorgu süresi, CPU kullanımı, veri GÇ kullanımı, günlük GÇ kullanımı gibi sorgu yürütme istatistiklerinde hiyerarşik ayrıntıya gitme sağlar. | Evet | Evet |
-| Sorgu beklemeleri | Bekleme kategorisine göre sorgu bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. | Evet | Evet |
+| Türe göre kaynak | İzlenen tüm kaynakları sayan perspektif. | Yes | Yes |
+| Insights | Akıllı İçgörüler, performans için hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
+| Hatalar | Veritabanlarında gerçekleşen SQL hatalarına hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
+| Zaman aşımları | Veritabanlarında gerçekleşen SQL zaman aşımları için hiyerarşik ayrıntıya gitme sağlar. | Yes | Hayır |
+| Blok | Veritabanlarında gerçekleşen SQL blokları için hiyerarşik ayrıntıya gitme sağlar. | Yes | Hayır |
+| Veritabanı bekleme süresi | Veritabanı düzeyinde SQL bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. Bekleme türü başına düşen toplam bekleme süresinin ve bekleme zamanının özetlerini içerir. |Yes | Hayır |
+| Sorgu süresi | Sorgu süresi, CPU kullanımı, veri GÇ kullanımı, günlük GÇ kullanımı gibi sorgu yürütme istatistiklerinde hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
+| Sorgu beklemeleri | Bekleme kategorisine göre sorgu bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -170,13 +170,13 @@ Yeni rol oluşturulduktan sonra, Azure SQL Analytics kullanmak için özel izinl
 
 ## <a name="analyze-data-and-create-alerts"></a>Verileri çözümleme ve uyarı oluşturma
 
-Azure SQL Analytics veri analizi, özel sorgulama ve raporlamanın [Log Analytics diline](../log-query/get-started-queries.md) bağlıdır. [Ölçüm ve günlüklerde](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)bulunan özel sorgulama için veritabanı kaynağından toplanan kullanılabilir verilerin açıklamasını bulun.
+Azure SQL Analytics veri analizi, özel sorgulama ve raporlamanın [Log Analytics diline](../logs/get-started-queries.md) bağlıdır. [Ölçüm ve günlüklerde](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)bulunan özel sorgulama için veritabanı kaynağından toplanan kullanılabilir verilerin açıklamasını bulun.
 
 Azure SQL Analytics otomatik uyarı, bir koşulun karşılanmasıyla ilgili uyarıyı tetikleyen bir Log Analytics sorgusunun yazılmasına bağlıdır. Azure SQL Analytics ' de uyarı ayarlantırabileceği Log Analytics sorgularda birkaç örnek aşağıda bulabilirsiniz.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Azure SQL veritabanı için uyarı oluşturma
 
-Azure SQL veritabanı kaynaklarından gelen verilerle kolayca [uyarı oluşturabilirsiniz](../platform/alerts-metric.md) . Bir günlük uyarısıyla kullanabileceğiniz bazı yararlı [günlük sorguları](../log-query/log-query-overview.md) aşağıda verilmiştir:
+Azure SQL veritabanı kaynaklarından gelen verilerle kolayca [uyarı oluşturabilirsiniz](../alerts/alerts-metric.md) . Bir günlük uyarısıyla kullanabileceğiniz bazı yararlı [günlük sorguları](../logs/log-query-overview.md) aşağıda verilmiştir:
 
 #### <a name="high-cpu"></a>Yüksek CPU
 
@@ -297,7 +297,7 @@ Azure SQL Analytics kullanımı ücretsizdir, her ay ayrılan boş veri alma bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı Azure SQL verilerini görüntülemek için Azure Izleyici 'de [günlük sorguları](../log-query/log-query-overview.md) ' nı kullanın.
-- Azure SQL verilerini gösteren [kendi panolarınızı oluşturun](../learn/tutorial-logs-dashboards.md) .
-- Belirli Azure SQL olayları gerçekleştiğinde [uyarılar oluşturun](../platform/alerts-overview.md) .
+- Ayrıntılı Azure SQL verilerini görüntülemek için Azure Izleyici 'de [günlük sorguları](../logs/log-query-overview.md) ' nı kullanın.
+- Azure SQL verilerini gösteren [kendi panolarınızı oluşturun](../visualize/tutorial-logs-dashboards.md) .
+- Belirli Azure SQL olayları gerçekleştiğinde [uyarılar oluşturun](../alerts/alerts-overview.md) .
 

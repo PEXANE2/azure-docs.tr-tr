@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b9920956a8983a1c71c1f91cd1c19a6e84be6aee
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780306"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574843"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Azure Tablo depolama izleme verileri başvurusu
 
@@ -34,11 +34,11 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Tablo depolama
 
-Bu tabloda [Tablo depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)gösterilmektedir.
+Bu tabloda [Tablo depolama ölçümleri](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices)gösterilmektedir.
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------------------- | ----------------- |
 | Tablokapasitesi | Depolama hesabı tarafından kullanılan tablo depolaması miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Tablosayısı   | Depolama hesabındaki tablo sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -80,4 +80,4 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - Bkz. Azure Storage izleme açıklaması için bkz. [Azure Tablo depolamayı izleme](monitor-table-storage.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/essentials/monitor-azure-resource.md) .

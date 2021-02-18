@@ -66,8 +66,8 @@
               href: build-enrollment-app.md
 - name: Başvuru
   items:
-    - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/face/'
+    - name: Yüz Tanıma API'si
+      href: APIReference.md
     - name: SDK’lar
       items:
         - name: .NET

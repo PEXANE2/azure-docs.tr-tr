@@ -3,12 +3,12 @@ title: Yedekleme merkezine genel bakış
 description: Bu makalede, Azure için yedekleme merkezi 'ne genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: b42fcc782eb50c061ab7617ea0ef1f3344fee4e9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 93f9e5dc064d264e0cc111d8ddb093639307c55b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592033"
 ---
 # <a name="overview-of-backup-center-preview"></a>Yedekleme merkezi 'ne genel bakış (Önizleme)
 
@@ -18,7 +18,7 @@ Yedekleme merkezi 'nin önemli avantajlarından bazıları şunlardır:
 
 * **Yedeklemeleri yönetmek Için tek bir cam bölmesi** : yedekleme merkezi, büyük ve dağıtılmış bir Azure ortamında iyi çalışmak üzere tasarlanmıştır. Birden çok iş yükü türünü, kasalarını, abonelikleri, bölgeleri ve [Azure Kathouse](../lighthouse/overview.md) kiracılarını kapsayan yedeklemeleri verimli bir şekilde yönetmek Için yedekleme merkezi 'ni kullanabilirsiniz.
 * **Veri kaynağı merkezli yönetim** – yedekleme merkezi, yedeklediğiniz veri kaynaklarında ortalanan görünümler ve filtreler sağlar (örneğin, VM 'ler ve veritabanları). Bu, bir kaynak sahibinin veya bir yedekleme yöneticisinin bir öğenin hangi kasaya yedeklenmek zorunda kalmadan öğelerin yedeklerini izlemelerine ve çalıştırabilmesine olanak sağlar. Bu tasarımın temel bir özelliği, veri kaynağı aboneliği, veri kaynağı kaynak grubu ve veri kaynağı etiketleri gibi veri kaynağına özgü özelliklerle görünümleri filtreleyebilme yeteneğidir. Örneğin, kuruluşunuz farklı departmanlara ait VM 'lere farklı Etiketler atama alıştırması yaptıysanız, yedekleme bilgilerini, kasanın etiketine odaklanmak zorunda kalmadan yedeklenmekte olan temel VM 'lerin etiketlerine göre filtrelemek için yedekleme merkezi 'ni kullanabilirsiniz.
-* **Bağlı deneyimler** – yedekleme merkezi, var olan Azure hizmetlerine, ölçekte yönetimi sağlayan yerel tümleştirmeler sağlar. Örneğin, yedekleme merkezi, yedeklemelerinizi yönetmenize yardımcı olması için [Azure ilke](../governance/policy/overview.md) deneyimini kullanır. Ayrıca, yedeklemelerdeki ayrıntılı raporları görüntülemenize yardımcı olması için [Azure çalışma kitapları](../azure-monitor/platform/workbooks-overview.md) ve [Azure izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md) de yararlanır. Bu nedenle, yedekleme merkezi 'nin sunduğu değişen özellikleri kullanmak için yeni ilkeler öğrenmeniz gerekmez.
+* **Bağlı deneyimler** – yedekleme merkezi, var olan Azure hizmetlerine, ölçekte yönetimi sağlayan yerel tümleştirmeler sağlar. Örneğin, yedekleme merkezi, yedeklemelerinizi yönetmenize yardımcı olması için [Azure ilke](../governance/policy/overview.md) deneyimini kullanır. Ayrıca, yedeklemelerdeki ayrıntılı raporları görüntülemenize yardımcı olması için [Azure çalışma kitapları](../azure-monitor/visualize/workbooks-overview.md) ve [Azure izleyici günlükleri](../azure-monitor/logs/data-platform-logs.md) de yararlanır. Bu nedenle, yedekleme merkezi 'nin sunduğu değişen özellikleri kullanmak için yeni ilkeler öğrenmeniz gerekmez.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 

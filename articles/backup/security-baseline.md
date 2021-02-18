@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805257"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572179"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -116,9 +116,9 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../sec
 
 **Rehberlik**: BIR NSG veya Azure Güvenlik Duvarı tarafından korunan bir Azure sanal makinesinde Mars Aracısı kullanıyorsanız, NSG veya güvenlik duvarının yapılandırmasını Izlemek Için Azure etkinlik günlüğü ' nu kullanın. Azure Izleyici 'de, bu kaynaklarda yapılan değişiklikler gerçekleştiği zaman tetikleyecek uyarılar oluşturabilirsiniz.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -142,7 +142,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../sec
 
 Ayrıca, Azure Backup tarafından oluşturulan güvenlik verilerini toplamak için Azure Izleyici aracılığıyla günlükleri alma. Azure Izleyici 'de, Log Analytics çalışma alanı (ler) kullanarak Analizi sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için depolama hesapları kullanın. Alternatif olarak, Azure Sentinel veya bir üçüncü taraf güvenlik olayı ve olay yönetimi (SıEM) üzerinde verileri etkinleştirebilir ve bu verilere izin verebilir.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanma](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ Ayrıca, Azure Backup tarafından oluşturulan güvenlik verilerini toplamak iç
 
 Ayrıca, Azure Backup analiz, uyarı ve raporlama amacıyla toplanabilecek ve kullanılabilecek tanılama olayları gönderir. Kurtarma Hizmetleri Kasası için tanılama ayarlarını Azure portal aracılığıyla yapılandırabilirsiniz. Bir depolama hesabına, Olay Hub 'ına veya bir Log Analytics çalışma alanına bir veya daha fazla tanılama olayı gönderebilirsiniz.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanma](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ Ayrıca, Azure Backup analiz, uyarı ve raporlama amacıyla toplanabilecek ve ku
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure kurtarma hizmetleri kasalarıyla ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-- [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -192,9 +192,9 @@ Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri
 
 - [Azure Backup iş yüklerini izleme](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/platform/activity-log.md)
+- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -212,7 +212,7 @@ Ayrıca, bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağlad
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-log.md)
+- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -518,7 +518,7 @@ MARS aracısıyla yedekleme yaparken veya müşteri tarafından yönetilen bir a
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure kurtarma hizmetleri kasalarının yanı sıra diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

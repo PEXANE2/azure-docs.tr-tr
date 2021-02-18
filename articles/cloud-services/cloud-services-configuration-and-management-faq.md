@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742599"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578228"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları (klasik): sık sorulan sorular (SSS)
 
@@ -240,9 +240,9 @@ Cloud Services için bellek ölçümlerine göre otomatik ölçeklendirme Şu an
 
 Bu sorunu geçici olarak çözmek için Application Insights kullanabilirsiniz. Otomatik ölçeklendirme, ölçüm kaynağı olarak Application Insights destekler ve "bellek" gibi Konuk ölçümüne göre rol örneği sayısını ölçeklendirebilir.  Bulut hizmeti proje paketi dosyanızdaki (*. cspkg) Application Insights yapılandırıp bu Fede uygulamak için hizmette Azure Tanılama uzantısını etkinleştirmeniz gerekir.
 
-Cloud Services otomatik ölçeklendirmeyi yapılandırmak için Application Insights aracılığıyla özel bir ölçümü kullanma hakkında daha fazla bilgi için bkz. [Azure 'da özel ölçüm ile otomatik ölçeklendirmeyi kullanmaya başlama](../azure-monitor/platform/autoscale-custom-metric.md)
+Cloud Services otomatik ölçeklendirmeyi yapılandırmak için Application Insights aracılığıyla özel bir ölçümü kullanma hakkında daha fazla bilgi için bkz. [Azure 'da özel ölçüm ile otomatik ölçeklendirmeyi kullanmaya başlama](../azure-monitor/autoscale/autoscale-custom-metric.md)
 
-Cloud Services için Application Insights Azure Tanılama tümleştirme hakkında daha fazla bilgi için bkz. [bulut hizmeti, sanal makine veya Service Fabric Tanılama verileri gönderme Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+Cloud Services için Application Insights Azure Tanılama tümleştirme hakkında daha fazla bilgi için bkz. [bulut hizmeti, sanal makine veya Service Fabric Tanılama verileri gönderme Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)
 
 Cloud Services için Application Insights etkinleştirme hakkında daha fazla bilgi için bkz. [Azure için Application Insights Cloud Services](../azure-monitor/app/cloudservices.md)
 

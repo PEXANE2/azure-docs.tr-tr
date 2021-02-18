@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202037"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578551"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Güvenlik temeli
 
@@ -196,9 +196,9 @@ Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tet
 
 Azure Izleyici günlüklerini kullanarak, bir ana bileşen bileşenleri olan kuin-apiserver ve kuin-Controller-Manager arasındaki günlükleri etkinleştirebilir ve sorgulayın. Kapsayıcı çalışma zamanı ile kubelet çalıştıran düğümleri oluşturun ve yönetin, yönetilen Kubernetes API sunucusu aracılığıyla uygulamalarını dağıtın. 
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme](view-master-logs.md)
 
@@ -240,9 +240,9 @@ Kurumsal iş gereksinimlerinize bağlı olarak bu verileri Azure Sentinel 'e vey
 
 - [Günlük rollerini içeren günlük şemasını buraya gözden geçirin](view-master-logs.md)
 
-- [Kapsayıcılar için Azure Izleyicisini anlama](../azure-monitor/insights/container-insights-overview.md)
+- [Kapsayıcılar için Azure Izleyicisini anlama](../azure-monitor/containers/container-insights-overview.md)
 
-- [Kapsayıcılar için Azure Izleyicisini etkinleştirme](../azure-monitor/insights/container-insights-onboard.md)
+- [Kapsayıcılar için Azure Izleyicisini etkinleştirme](../azure-monitor/containers/container-insights-onboard.md)
 
 - [Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, 
 
 **Kılavuz**: Azure Kubernetes hizmeti (aks) örneklerinizi Azure izleyicisine ekleme ve ilgili Azure Log Analytics çalışma alanı bekletme dönemini kuruluşunuzun uyumluluk gereksinimlerine göre ayarlama. 
 
-- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -312,7 +312,7 @@ Uygulama ve hizmetlerinizin sorunlarını gidermek için AKS ana bileşenleri ta
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -422,7 +422,7 @@ Adanmış yönetim hesaplarının kullanımı etrafında ilke ve yordamlar oluş
 
 **Rehberlik**: BIR aks kümesi için Azure Active Directory (Azure AD) tümleşik kimlik doğrulaması Ile Azure Kubernetes hizmeti (aks) için çoklu oturum açma kullanın.
 
-- [Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -518,7 +518,7 @@ Destek veya sorun giderme amacıyla kullanılan rollerden haberdar olun. Örneğ
 **Rehberlik**: Azure Kubernetes hizmeti (aks) için Kullanıcı kimlik doğrulamasını Azure Active Directory (Azure AD) ile tümleştirin. Denetim ve oturum açma günlüklerini Azure Log Analytics çalışma alanına göndererek Azure AD için Tanılama ayarları oluşturun. Azure Log Analytics çalışma alanında istenen uyarıları (devre dışı bırakılmış bir hesabın oturum açmaya çalıştığı gibi) yapılandırın.
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure Izleyici kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-log.md)
+- [Azure Izleyici kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -673,11 +673,11 @@ Düğümlerde veya kapsayıcılardaki CPU ve bellek kullanımı, tanımlanan eş
 
 AKS kümelerinizi ve ilgili kaynaklarınızı yüksek düzeyde izlemek için Azure etkinlik günlüğü 'nü kullanın. Özel uyarılar, panolar oluşturmak ve ayrıntılı analiz gerçekleştirmek için sorguları kullanarak düğümlerden ve Kubernetes tarafından toplanan uygulama ve iş yükü ölçümlerini görüntülemek için Prometheus ile tümleştirin.
 
-- [Kapsayıcılar için Azure Izleyicisini anlama](../azure-monitor/insights/container-insights-overview.md)
+- [Kapsayıcılar için Azure Izleyicisini anlama](../azure-monitor/containers/container-insights-overview.md)
 
-- [Kapsayıcılar için Azure Izleyicisini etkinleştirme](../azure-monitor/insights/container-insights-onboard.md)
+- [Kapsayıcılar için Azure Izleyicisini etkinleştirme](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

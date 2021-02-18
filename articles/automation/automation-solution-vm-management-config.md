@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b52b51133f059f028baf470515e886d17077af6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751300"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593933"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -145,7 +145,7 @@ VM'leri çalışma saatleri dışında başlat/durdur dağıtıldıktan sonra e-
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Güncelleştirilmiş örnek bir e-posta adresi gösteren e-posta/SMS/Push/ses sayfasının ekran görüntüsü.":::
 
-    Alternatif olarak, eylem grubu hakkında daha fazla bilgi edinmek için eylem grubuna ek eylemler ekleyebilirsiniz, eylem [grupları](../azure-monitor/platform/action-groups.md) konusuna bakın
+    Alternatif olarak, eylem grubu hakkında daha fazla bilgi edinmek için eylem grubuna ek eylemler ekleyebilirsiniz, eylem [grupları](../azure-monitor/alerts/action-groups.md) konusuna bakın
 
 Aşağıda, özelliği sanal makineleri kapattığında gönderilen örnek bir e-posta verilmiştir.
 

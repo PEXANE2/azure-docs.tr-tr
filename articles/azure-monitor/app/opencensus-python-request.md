@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585672"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
@@ -177,6 +177,6 @@ OpenCensus, Fastapı için bir uzantıya sahip değildir. Kendi Fastapı ara ort
 * [Uygulama Eşlemesi](./app-map.md)
 * [Kullanılabilirlik](./monitor-web-app-availability.md)
 * [Ara](./diagnostic-search.md)
-* [Log (Analytics) sorgusu](../log-query/log-query-overview.md)
+* [Log (Analytics) sorgusu](../logs/log-query-overview.md)
 * [İşlem tanılamaları](./transaction-diagnostics.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 6cf082aa33d2063982d85cf0c2fdd68d61072217
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216951"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586431"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Ağ arabirimi oluşturma, değiştirme veya silme
 
@@ -90,7 +90,7 @@ Bir ağ arabirimi oluşturulduktan sonra, çoğu ayarı görüntüleyebilir ve d
    - **Özellikler:** Ağ arabirimi hakkında, MAC adresi (ağ arabirimi bir sanal makineye bağlı değilse boş) ve içinde mevcut olan abonelik gibi anahtar ayarları görüntüler.
    - **Etkin güvenlik kuralları:**  Ağ arabirimi çalışan bir sanal makineye bağlıysa ve bir NSG ağ arabirimiyle, kendisine atanmış alt ağ veya her ikisine de ilişkiliyse güvenlik kuralları listelenir. Nelerin görüntülendikleriniz hakkında daha fazla bilgi edinmek için bkz. [etkin güvenlik kurallarını görüntüleme](#view-effective-security-rules). NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](./network-security-groups-overview.md).
    - **Geçerli rotalar:** Ağ arabirimi çalışan bir sanal makineye eklenmişse yollar listelenir. Yollar, Azure varsayılan yollarının, Kullanıcı tanımlı yolların ve ağ arabiriminin atandığı alt ağ için var olabilecek tüm BGP yollarının bir birleşimidir. Nelerin görüntülendikleriniz hakkında daha fazla bilgi edinmek için bkz. [geçerli yolları görüntüleme](#view-effective-routes). Azure varsayılan yolları ve Kullanıcı tanımlı rotalar hakkında daha fazla bilgi edinmek için bkz. [yönlendirmeye genel bakış](virtual-networks-udr-overview.md).
-Ortak Azure Resource Manager ayarları: ortak Azure Resource Manager ayarları hakkında daha fazla bilgi Için bkz. [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md), [ERIŞIM denetimi (IAM)](../role-based-access-control/overview.md), [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ve [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md).
+Ortak Azure Resource Manager ayarları: ortak Azure Resource Manager ayarları hakkında daha fazla bilgi Için bkz. [etkinlik günlüğü](../azure-monitor/essentials/platform-logs-overview.md), [ERIŞIM denetimi (IAM)](../role-based-access-control/overview.md), [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ve [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Komut**
 
@@ -182,7 +182,7 @@ Ağ arabirimi bir sanal makineye bağlıysa, portalı kullanarak bir ağ arabiri
 1. Portalın üst kısmındaki arama kutusuna, arama kutusuna *ağ arabirimleri* girin. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
 2. Bir ağ güvenlik grubunu ilişkilendirmek istediğiniz veya bir ağ güvenlik grubunun ilişkisini kaldırmak istediğiniz ağ arabirimini listeden seçin.
 3. **Ayarlar** altında **ağ güvenlik grubu** ' nu seçin.
-4. **Düzenle**’yi seçin.
+4. **Düzenle**'yi seçin.
 5. Ağ Güvenlik **grubu ' nu seçin ve ağ** arabirimiyle ilişkilendirmek istediğiniz ağ güvenlik grubunu seçin veya bir ağ güvenlik grubunun ilişkilendirmesini kaldırmak için **hiçbiri**' ni seçin.
 6. **Kaydet**’i seçin.
 

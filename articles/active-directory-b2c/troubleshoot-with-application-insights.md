@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746011"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572897"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights ile Azure Active Directory B2C günlüklerini toplayın
 
@@ -94,14 +94,14 @@ Application Insights yeni Günlükler görebilmeniz için genellikle beş dakika
 
 Günlükleri görmek için kullanabileceğiniz bir sorgu listesi aşağıda verilmiştir:
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |---------------------|--------------------|
 `traces` | Azure AD B2C tarafından oluşturulan tüm günlüklere bakın |
 `traces | where timestamp > ago(1d)` | Son gün için Azure AD B2C tarafından oluşturulan tüm günlüklere bakın
 
 Girişler uzun olabilir. Daha yakından bir görünüm için CSV 'ye aktarın.
 
-Sorgulama hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+Sorgulama hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="configure-application-insights-in-production"></a>Üretimde Application Insights yapılandırma
 

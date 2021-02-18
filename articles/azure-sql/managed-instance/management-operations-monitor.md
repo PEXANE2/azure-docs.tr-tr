@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6cdd3137798e221974dadda78dd55b6ae944bc78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782459"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589352"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini izleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Tüm yönetim işlemleri aşağıdaki gibi kategorilere ayrılabilir:
 Yönetilen örnek yönetimi işlemlerini izlemenin birkaç yolu vardır:
 
 - [Kaynak grubu dağıtımları](../../azure-resource-manager/templates/deployment-history.md)
-- [Etkinlik günlüğü](../../azure-monitor/platform/activity-log.md)
+- [Etkinlik günlüğü](../../azure-monitor/essentials/activity-log.md)
 - [Yönetilen örnek işlemleri API 'SI](#managed-instance-operations-api)
 
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda yönetim işlemi izleme seçenekleri karşılaştırılmakt
 | Seçenek | Bekletme | İptali destekler | Oluştur | Güncelleştir | Sil | İptal | Adımlar |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Kaynak grubu dağıtımları | Sonsuz<sup>1</sup> | <sup>2</sup> yok | Görünür | Görünür | Görünür değil | Görünür | Görünür değil |
-| Etkinlik günlüğü | 90 gün | Hayır | Görünür | Görünür | Görünür | Görünür |  Görünür değil |
+| Etkinlik günlüğü | 90 gün | No | Görünür | Görünür | Görünür | Görünür |  Görünür değil |
 | Yönetilen örnek işlemleri API 'SI | 24 saat | [Evet](management-operations-cancel.md) | Görünür | Görünür | Görünür | Görünür | Görünür |
 |  |  |  |  |  |  |  | |
 

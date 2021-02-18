@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052626"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585920"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -28,7 +28,7 @@ Bu yöntem iki Runbook kullanır:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../automation-security-overview.md).
-* [Log Analytics çalışma alanı](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics çalışma alanı](../../azure-monitor/logs/design-logs-deployment.md)
 * Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
 * **Enable-AutomationSolution** runbook tarafından kullanılan iki Otomasyon varlığı. Bu runbook, Otomasyon hesabınızda zaten mevcut değilse, ilk çalıştırma sırasında **Enable-MultipleSolution** runbook tarafından otomatik olarak içeri aktarılır.
     * *Lasolutionsubscriptionıd*: Log Analytics çalışma alanının bulunduğu abonelik kimliği.

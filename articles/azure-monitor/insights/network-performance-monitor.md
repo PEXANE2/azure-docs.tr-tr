@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573424"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -76,7 +76,7 @@ ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](../..
 
 ### <a name="install-and-configure-agents"></a>Aracıları yükleme ve yapılandırma 
 
-[Windows bilgisayarlarını Azure izleyici](../platform/agent-windows.md)'ye bağlama, [Linux bilgisayarlarını Azure izleyici 'ye bağlama (Önizleme)](../../virtual-machines/extensions/oms-linux.md) ve [Azure izleyici 'ye Operations Manager bağlama](../platform/om-agents.md)sırasında aracıları yüklemek için temel süreçler kullanın.
+[Windows bilgisayarlarını Azure izleyici](../agents/agent-windows.md)'ye bağlama, [Linux bilgisayarlarını Azure izleyici 'ye bağlama (Önizleme)](../../virtual-machines/extensions/oms-linux.md) ve [Azure izleyici 'ye Operations Manager bağlama](../agents/om-agents.md)sırasında aracıları yüklemek için temel süreçler kullanın.
 
 ### <a name="where-to-install-the-agents"></a>Aracıların yükleneceği konum 
 
@@ -266,13 +266,13 @@ Haritada gösterilen topoloji katman 3 topolojidir ve katman 2 cihazlarını ve 
 
 ## <a name="log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorguları
 
-Ağ Performansı İzleyicisi panosu ve detaya gitme sayfaları aracılığıyla grafiksel olarak sunulan tüm veriler, [günlük sorgularında](../log-query/log-query-overview.md)yerel olarak da kullanılabilir. Depodaki verilerin etkileşimli analizini yapabilir ve farklı kaynaklardaki verileri ilişkilendirebilir. Ayrıca, özel uyarılar ve görünümler oluşturabilir ve verileri Excel, Power BI veya paylaşılabilir bir bağlantıya aktarabilirsiniz. Panodaki **ortak sorgular** alanında, kendi sorgularınızı ve raporlarınızı oluşturmak için başlangıç noktası olarak kullanabileceğiniz bazı yararlı sorgular bulunur. 
+Ağ Performansı İzleyicisi panosu ve detaya gitme sayfaları aracılığıyla grafiksel olarak sunulan tüm veriler, [günlük sorgularında](../logs/log-query-overview.md)yerel olarak da kullanılabilir. Depodaki verilerin etkileşimli analizini yapabilir ve farklı kaynaklardaki verileri ilişkilendirebilir. Ayrıca, özel uyarılar ve görünümler oluşturabilir ve verileri Excel, Power BI veya paylaşılabilir bir bağlantıya aktarabilirsiniz. Panodaki **ortak sorgular** alanında, kendi sorgularınızı ve raporlarınızı oluşturmak için başlangıç noktası olarak kullanabileceğiniz bazı yararlı sorgular bulunur. 
 
 ## <a name="alerts"></a>Uyarılar
 
-Ağ Performansı İzleyicisi, [Azure izleyici](../platform/alerts-overview.md)'nin uyarı yeteneklerini kullanır.
+Ağ Performansı İzleyicisi, [Azure izleyici](../alerts/alerts-overview.md)'nin uyarı yeteneklerini kullanır.
 
-Bu, tüm bildirimlerin [eylem grupları](../platform/action-groups.md)kullanılarak yönetildiği anlamına gelir.  
+Bu, tüm bildirimlerin [eylem grupları](../alerts/action-groups.md)kullanılarak yönetildiği anlamına gelir.  
 
 Log Analytics aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa: 
 1. Sizi Azure portal yönlendirmenizi sağlayacak bir bağlantı görürsünüz. Portala erişmek için tıklayın.
@@ -283,7 +283,7 @@ Log Analytics aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa:
 Azure portal aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa:  
 1. E-postanızı doğrudan girmeyi veya eylem grupları aracılığıyla uyarı oluşturmayı seçebilirsiniz.
 2. E-postanızı doğrudan girmeyi seçerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur ve e-posta kimliği bu eylem grubuna eklenir.
-3. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Burada bir eylem grubu oluşturmayı öğrenebilirsiniz [.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
+3. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Burada bir eylem grubu oluşturmayı öğrenebilirsiniz [.](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. Uyarı başarıyla oluşturulduktan sonra uyarılarınızı yönetmek için Uyarıları Yönet bağlantısını kullanabilirsiniz. 
 
 Her uyarı oluşturduğunuzda, NPM Azure Izleyici 'de sorgu tabanlı bir günlük uyarı kuralı oluşturur. Bu sorgu varsayılan olarak her 5 dakikada bir tetiklenir. Azure izleyici, oluşturulan ilk 250 günlük uyarı kuralı için ücret almaz ve 250 günlük uyarı kuralları sınırının üzerindeki tüm uyarı kuralları, [Azure izleyici fiyatlandırma sayfasında uyarı başına fiyatlandırmaya](https://azure.microsoft.com/pricing/details/monitor/)göre faturalandırılır.

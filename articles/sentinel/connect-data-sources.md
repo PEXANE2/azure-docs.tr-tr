@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590259"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -151,7 +151,7 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | **Veri türü** | **Bağlanma** | **Veri Bağlayıcısı?** | **Açıklamalar** |
 |------|---------|-------------|------|
 | Awscses Izi | [AWS’yi bağlama](connect-aws.md) | &#10003; | |
-| AzureActivity | [Azure etkinliğine bağlanma](connect-azure-activity.md) ve [etkinlik günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | [Azure etkinliğine bağlanma](connect-azure-activity.md) ve [etkinlik günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Azure AD’yi bağlama](connect-azure-active-directory.md)  | &#10003; | |
 | Signınlogs | [Azure AD’yi bağlama](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure Tanılama](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | Microsoft Web uygulaması güvenlik duvarı (WAF)-(AzureDiagnostics) |[Microsoft Web uygulaması güvenlik duvarını bağlama](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Symantec 'e bağlanma](connect-symantec.md) | &#10003; | |
 | Threatıntelligenceındicator  | [Tehdit zekasını bağlama](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Izleyici hizmeti Haritası](../azure-monitor/insights/service-map.md)<br>[Azure Izleyici VM öngörüleri ekleme](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Azure Izleyici VM öngörülerini etkinleştirin](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Tek VM 'Yi görsel taslak kullanma](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [Ilke aracılığıyla görsel taslak kullanma](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM öngörüleri çalışma kitabı  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Izleyici hizmeti Haritası](../azure-monitor/vm/service-map.md)<br>[Azure Izleyici VM öngörüleri ekleme](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Azure Izleyici VM öngörülerini etkinleştirin](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Tek VM 'Yi görsel taslak kullanma](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [Ilke aracılığıyla görsel taslak kullanma](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM öngörüleri çalışma kitabı  |
 | DnsEvents | [DNS bağlama](connect-dns.md) | &#10003; | |
-| W3CIISLog | [IIS günlüklerini bağlama](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [IIS günlüklerini bağlama](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | Iletilen veri | [Kablo verilerini bağlama](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows güvenlik duvarını bağlama](connect-windows-firewall.md) | &#10003; | |
 | AADıP SecurityAlert  | [Azure AD Kimlik Koruması bağlantısı kurma](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | ASC SecurityAlert  | Azure Güvenlik Merkezi 'nden [Azure Defender uyarılarını bağlama](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security Bağlan](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (olay) | [Sysmon bağlama](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows olaylarını bağlama](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon ayrıştırıcısına ulaşın](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon koleksiyonu, sanal makinelerde varsayılan olarak yüklü değildir. Sysmon aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Sysmon](/sysinternals/downloads/sysmon). |
+| Sysmon (olay) | [Sysmon bağlama](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows olaylarını bağlama](../azure-monitor/agents/data-sources-windows-events.md) <br> [Sysmon ayrıştırıcısına ulaşın](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon koleksiyonu, sanal makinelerde varsayılan olarak yüklü değildir. Sysmon aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [VM envanterini otomatikleştirme](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [VM izlemeyi otomatikleştirin](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [F5 BIG-IP'yi bağlama](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

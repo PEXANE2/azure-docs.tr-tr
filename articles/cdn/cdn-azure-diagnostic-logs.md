@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352125"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573231"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Tanılama günlükleri-Azure Content Delivery Network
 
@@ -78,7 +78,7 @@ Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımlar�
 Günlükler için Log Analytics kullanmak için şu adımları izleyin:
 
 >[!NOTE] 
->Bu adımları gerçekleştirmek için bir Log Analytics çalışma alanı gereklidir. Daha fazla bilgi için bkz. **[Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)** .
+>Bu adımları gerçekleştirmek için bir Log Analytics çalışma alanı gereklidir. Daha fazla bilgi için bkz. **[Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md)** .
     
 1. **Tanılama ayarı adı** için tanılama günlük ayarlarınız için bir ad girin.
 
@@ -369,7 +369,7 @@ Burada *saat* , istatistiklerin bildirildiği saat sınırının başlangıç sa
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Azure tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure tanılama günlükleri](../azure-monitor/essentials/platform-logs-overview.md)
 * [Azure CDN ek Portal aracılığıyla temel analiz](./cdn-analyze-usage-patterns.md)
-* [Azure İzleyici günlükleri](../azure-monitor/log-query/log-query-overview.md)
+* [Azure İzleyici günlükleri](../azure-monitor/logs/log-query-overview.md)
 * [Azure Log Analytics REST API](/rest/api/loganalytics)

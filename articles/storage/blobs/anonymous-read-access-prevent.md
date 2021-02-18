@@ -10,12 +10,12 @@ ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0003384676f420c5ece043b1eb6120ed8ee2435
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937296"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574905"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 
@@ -35,7 +35,7 @@ Genel erişimin istemci uygulamalarını nasıl etkileyebileceğini anlamak içi
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Ölçüm Gezgini ile anonim istekleri izleme
 
-Bir depolama hesabına Anonim istekleri izlemek için Azure portal Azure Ölçüm Gezgini kullanın. Ölçüm Gezgini hakkında daha fazla bilgi için bkz. [Azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama.
+Bir depolama hesabına Anonim istekleri izlemek için Azure portal Azure Ölçüm Gezgini kullanın. Ölçüm Gezgini hakkında daha fazla bilgi için bkz. [Azure Ölçüm Gezgini](../../azure-monitor/essentials/metrics-getting-started.md)kullanmaya başlama.
 
 Anonim istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları izleyin:
 
@@ -61,7 +61,7 @@ Anonim istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları 
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Blob depolamaya yönelik toplanmış Anonim istekleri gösteren ekran görüntüsü":::
 
-Ayrıca, depolama hesabınızda belirli sayıda anonim istek yapıldığında size bildirimde bulunan bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-metric.md).
+Ayrıca, depolama hesabınızda belirli sayıda anonim istek yapıldığında size bildirimde bulunan bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>Anonim istek alma kapsayıcılarını tanımlamak için günlükleri analiz etme
 
@@ -69,7 +69,7 @@ Azure depolama günlükleri, bir isteğin nasıl yetkilendirildiği de dahil olm
 
 Anonim istekleri değerlendirmek amacıyla Azure depolama hesabınıza yönelik istekleri günlüğe kaydetmek için Azure Izleyici 'de (Önizleme) Azure depolama günlüğü 'nü kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](./monitor-blob-storage.md).
 
-Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlüğü önizlemesi yalnızca Azure genel bulutunda desteklenir. Kamu bulutları Azure Izleyici ile Azure depolama için günlüğe kaydetmeyi desteklemez.
@@ -79,7 +79,7 @@ Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek
 Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log Analytics ile analiz etmek için, önce hangi istek türlerinin ve hangi depolama hizmetlerini günlüğe kaydetmek istediğinizi belirten bir tanılama ayarı oluşturmanız gerekir. Azure portal bir tanılama ayarı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure [izleyici önizlemesinde Azure Storage günlük](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)kaydına kaydolun.
-1. Azure depolama hesabınızı içeren abonelikte yeni bir Log Analytics çalışma alanı oluşturun. Depolama hesabınız için günlüğe kaydetmeyi yapılandırdıktan sonra, Günlükler Log Analytics çalışma alanında kullanılabilir. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın.
+1. Azure depolama hesabınızı içeren abonelikte yeni bir Log Analytics çalışma alanı oluşturun. Depolama hesabınız için günlüğe kaydetmeyi yapılandırdıktan sonra, Günlükler Log Analytics çalışma alanında kullanılabilir. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../azure-monitor/logs/quick-create-workspace.md)bölümüne bakın.
 1. Azure portalda depolama hesabınıza gidin.
 1. Izleme bölümünde **Tanılama ayarları (Önizleme)** öğesini seçin.
 1. Blob depolamada yapılan istekleri günlüğe kaydetmek için **BLOB** ' u seçin.
@@ -90,7 +90,7 @@ Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log A
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="İstekleri günlüğe kaydetmek için bir tanılama ayarı oluşturmayı gösteren ekran görüntüsü":::
 
-Tanılama ayarını oluşturduktan sonra depolama hesabına yönelik istekler daha sonra bu ayara göre günlüğe kaydedilir. Daha fazla bilgi için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
+Tanılama ayarını oluşturduktan sonra depolama hesabına yönelik istekler daha sonra bu ayara göre günlüğe kaydedilir. Daha fazla bilgi için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../../azure-monitor/essentials/diagnostic-settings.md).
 
 Azure Izleyici 'de Azure depolama günlüklerinde bulunan alanların bir başvurusu için bkz. [kaynak günlükleri (Önizleme)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -106,7 +106,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-Ayrıca, bu sorguya bağlı olarak, anonim istekler hakkında bildirim almak için bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-log.md).
+Ayrıca, bu sorguya bağlı olarak, anonim istekler hakkında bildirim almak için bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-anonymous-public-access"></a>Anonim genel erişimi düzelt
 
@@ -290,13 +290,13 @@ Aşağıdaki görüntüde, reddetme etkisi olan bir ilke ortak erişime izin ver
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Genel erişime izin verme veya erişimi vermeme izinleri
 
-Depolama hesabı için **Allowblobpublicaccess** özelliğini ayarlamak için, bir kullanıcının depolama hesapları oluşturma ve yönetme izinleri olması gerekir. Bu izinleri sağlayan Azure rol tabanlı erişim denetimi (Azure RBAC) rolleri, **Microsoft. Storage/storageAccounts/Write** veya **Microsoft. Storage/storageaccounts/ \** _ eylemini içerir. Bu eylemle birlikte yerleşik roller şunlardır:
+Depolama hesabı için **Allowblobpublicaccess** özelliğini ayarlamak için, bir kullanıcının depolama hesapları oluşturma ve yönetme izinleri olması gerekir. Bu izinleri sağlayan Azure rol tabanlı erişim denetimi (Azure RBAC) rolleri, **Microsoft. Storage/storageAccounts/Write** veya **Microsoft. Storage/storageaccounts/ \*** Action ' i içerir. Bu eylemle birlikte yerleşik roller şunlardır:
 
 - Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
 - Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
 - [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) rolü
 
-Bu roller, Azure Active Directory (Azure AD) aracılığıyla bir depolama hesabındaki verilere erişim sağlamaz. Ancak, hesap erişim anahtarlarına erişim izni veren _ * Microsoft. Storage/storageAccounts/ListKeys/Action * * içerirler. Bu izinle, bir Kullanıcı, bir depolama hesabındaki tüm verilere erişmek için hesap erişim anahtarlarını kullanabilir.
+Bu roller, Azure Active Directory (Azure AD) aracılığıyla bir depolama hesabındaki verilere erişim sağlamaz. Ancak, hesap erişim anahtarlarına erişim izni veren **Microsoft. Storage/storageAccounts/ListKeys/Action** öğeleri de bulunur. Bu izinle, bir Kullanıcı, bir depolama hesabındaki tüm verilere erişmek için hesap erişim anahtarlarını kullanabilir.
 
 Rol atamaları, bir kullanıcının depolama hesabı için genel erişime izin verip vermemesine izin vermek için depolama hesabı düzeyi veya daha yüksek olmalıdır. Rol kapsamı hakkında daha fazla bilgi için bkz. [Azure RBAC kapsamını anlama](../../role-based-access-control/scope-overview.md).
 

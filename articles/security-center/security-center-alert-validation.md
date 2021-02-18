@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560110"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633606"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulama
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -36,11 +36,6 @@ Daha fazla bilgi için bkz. Güvenlik [Merkezi 'Nde güvenlik uyarıları](secur
 
 - Azure Defender 'ın değer ve yeteneklerini değerlendirin
 - Güvenlik uyarılarınız için yaptığınız tüm yapılandırmaların (SıEM tümleştirmeleri, iş akışı otomasyonu ve e-posta bildirimleri gibi) doğrulanması
-
-> [!NOTE]
-> Bu yordam, **güvenlik uyarıları** sayfasının en üstündeki başlıkta bulunan yeni (Önizleme) uyarılar deneyiminin kullanılmasını gerektirir.
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Yeni önizleme uyarıları deneyimine bağlantı içeren başlık":::
 
 Örnek uyarılar oluşturmak için:
 

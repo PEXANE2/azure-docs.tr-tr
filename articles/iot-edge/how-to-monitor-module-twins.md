@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876167"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633187"
 ---
 # <a name="monitor-module-twins"></a>Modül ikizlerini izleme
 
@@ -30,7 +30,7 @@ Benzer şekilde, deployment.jsdosyadaki özel modülleriniz için belirtilen öz
 Bu makalede Azure portal, Azure CLı ve Visual Studio Code modül TWINS 'in nasıl inceleneceğini açıklanmaktadır. Cihazlarınızın dağıtımları nasıl alacağını izleme hakkında bilgi için bkz. [Monitor IoT Edge dağıtımlarını](how-to-monitor-iot-edge-deployments.md)izleme. Modül TWINS kavramıyla ilgili genel bir bakış için bkz. [IoT Hub 'da modül TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-module-twins.md).
 
 > [!TIP]
-> Bir IoT Edge cihazının IoT Hub 'ından bağlantısı kesilirse, bir çalışma zamanı modülünün bildirilen özellikleri eski olabilir. [ping](how-to-edgeagent-direct-method.md#ping) `$edgeAgent` Bağlantının kaybolup olmadığını anlamak için modüle ping gönderebilirsiniz.
+> Bir IoT Edge cihazının IoT Hub 'ından bağlantısı kesilirse, bir çalışma zamanı modülünün bildirilen özellikleri eski olabilir. [](how-to-edgeagent-direct-method.md#ping) `$edgeAgent` Bağlantının kaybolup olmadığını anlamak için modüle ping gönderebilirsiniz.
 
 ## <a name="monitor-runtime-module-twins"></a>Çalışma zamanı modülünü izleme TWINS
 
@@ -176,7 +176,7 @@ Modülünüzün uygulama koduna bağlı olarak ikizi modülünde bildirilen öze
 
 1. İstenen özelliklerde yapılan değişiklikleri [Setdesiredpropertyupdatecallbackasync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) yöntemiyle yakalamak için bir dinleyici (geri çağırma geçirerek) oluşturun.
 
-1. Geri çağırma yönteminde, ikizi modülündeki bildirilen özellikleri [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) yöntemiyle güncelleştirin ve bu özellik değerlerinin bir TwinCollection geçirerek ayarlamak istediğiniz özellik değerlerini bir [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) geçirerek güncelleştirin.
+1. Geri çağırma yönteminde, ikizi modülündeki bildirilen özellikleri [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) yöntemiyle güncelleştirin ve bu özellik değerlerinin bir TwinCollection geçirerek ayarlamak istediğiniz özellik değerlerini bir [](/dotnet/api/microsoft.azure.devices.shared.twincollection) geçirerek güncelleştirin.
 
 ## <a name="access-the-module-twins"></a>Modül TWINS 'e erişin
 
@@ -213,7 +213,7 @@ Değişiklik yaparsanız, IoT Hub 'ınıza değişiklikleri kaydetmek için düz
 
 IoT Edge çalışıp çalışmadığını görmek için [az IoT Hub Invoke-Module-metodunu](how-to-edgeagent-direct-method.md#ping) kullanarak IoT Edge aracısına ping gönderin.
 
-[Az IoT Hub Module-ikizi](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) yapısı şu komutları sağlar:
+[Az IoT Hub Module-ikizi](/cli/azure/ext/azure-iot/iot/hub/module-twin) yapısı şu komutları sağlar:
 
 * **az IoT Hub Module-ikizi Show** -Module ikizi tanımını göster.
 * **az IoT Hub Module-ikizi Update** -Module ikizi tanımını güncelleştirin.

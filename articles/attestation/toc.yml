@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM ve VBS kanıtlama Protokolü
       href: virtualization-based-security-protocol.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

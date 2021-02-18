@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK 'lar ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592607"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Ilkesini kullanmayla ilgili sorunları giderme
 
@@ -87,7 +87,7 @@ Yinelenen ve özelleştirilmiş yerleşik ilke tanımı veya özel tanımınızd
 
 #### <a name="issue"></a>Sorun
 
-Azure Ilkesinin üzerinde çalışmasını beklediğinizi belirten bir kaynak üzerinde işlem yapılmaz ve [Azure etkinlik günlüğünde](../../../azure-monitor/platform/platform-logs-overview.md)giriş yok.
+Azure Ilkesinin üzerinde çalışmasını beklediğinizi belirten bir kaynak üzerinde işlem yapılmaz ve [Azure etkinlik günlüğünde](../../../azure-monitor/essentials/platform-logs-overview.md)giriş yok.
 
 #### <a name="cause"></a>Nedeni
 
@@ -123,7 +123,7 @@ Yeni veya güncelleştirilmiş kaynağınızın kapsamına yönelik bir ilke ata
 
 #### <a name="resolution"></a>Çözüm
 
-Bir reddetme ilke atamasından alınan hata iletisi, ilke tanımı ve ilke atama kimliklerini içerir. İletideki hata bilgileri kaçırıldığında, [etkinlik günlüğünde](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)da kullanılabilir. Bu bilgileri, kaynak kısıtlamalarını anlamak ve izin verilen değerleri eşlemek için istekteki kaynak özelliklerini ayarlamak üzere daha fazla bilgi almak için kullanın.
+Bir reddetme ilke atamasından alınan hata iletisi, ilke tanımı ve ilke atama kimliklerini içerir. İletideki hata bilgileri kaçırıldığında, [etkinlik günlüğünde](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)da kullanılabilir. Bu bilgileri, kaynak kısıtlamalarını anlamak ve izin verilen değerleri eşlemek için istekteki kaynak özelliklerini ayarlamak üzere daha fazla bilgi almak için kullanın.
 
 ## <a name="template-errors"></a>Şablon hataları
 

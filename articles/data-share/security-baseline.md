@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937176"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582034"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure veri paylaşımında Azure Güvenlik temeli
 
@@ -34,7 +34,7 @@ Alternatif olarak, bu verileri Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ Alternatif olarak, bu verileri Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 Azure veri paylaşımında tanılama günlüklerini, özellikle de MicrosoftDataShareSentShareSnapshotsLog MicrosoftDataShareReceivedShareSnapshotsLog için tanılama günlüklerini etkinleştirin &amp; . Bu Günlükler, eşitleme başlangıç zamanı, bitiş zamanı, durum ve diğer ayrıntılar gibi önemli bilgileri yakalamanıza olanak sağlar. Bu Günlükler, daha sonra güvenlik olaylarını araştırmak ve bu uygulamaların gerçekleştirilmesi için kritik öneme sahip olabilir.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -62,9 +62,9 @@ Azure veri paylaşımında tanılama günlüklerini, özellikle de MicrosoftData
 
 **Kılavuz**: Azure veri paylaşma günlüklerini depolamak için kullanılan tüm depolama hesapları veya Log Analytics çalışma alanları, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 
-- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Kaynak günlüklerini bir Azure depolama hesabında depolama](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Kaynak günlüklerini bir Azure depolama hesabında depolama](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -78,9 +78,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md) 
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md) 
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -94,7 +94,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md) 
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md) 
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -209,7 +209,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: Azure izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, önemli Azure kaynaklarında değişiklik gerçekleşirken Azure izleyici uyarıları oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md) 
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

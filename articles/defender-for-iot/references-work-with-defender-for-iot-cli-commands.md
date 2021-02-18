@@ -7,29 +7,33 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523150"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636569"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>IoT CLI komutları için Defender ile çalışma
 
-Bu makalede algılayıcılar ve şirket içi yönetim konsolları için CLı komutları açıklanmaktadır. Komutlara Yöneticiler, Six kullanıcıları ve destek kullanıcıları erişilebilir.
+Bu makalede algılayıcılar ve şirket içi yönetim konsolları için CLı komutları açıklanmaktadır. Komutlara aşağıdaki kullanıcılar erişebilir:
 
-Bakım etkinliklerini veya bir uyarı gerektirmeyen bir etkinliği planlarken dışlama kuralları tanımlayın.
+- Yönetici
+- Six 
+- Destek
+
+CLı 'de çalışmaya başlamak için bir Terminal kullanarak bağlanın. Örneğin, Terminal adı `Putty` ve `Support` Kullanıcı. 
 
 ## <a name="create-local-alert-exclusion-rules"></a>Yerel uyarı dışlama kuralları oluşturma
 
-CLı 'ya aşağıdaki komutu girerek bir dışlama kuralı oluşturabilirsiniz:
+CLı 'ya aşağıdaki komutu girerek yerel bir uyarı dışlama kuralı oluşturabilirsiniz:
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Uyarı dışlama kuralları içinde tanımlayabilmeniz gereken öznitelikler şunlardır:
+Aşağıdaki öznitelikler uyarı dışlama kurallarıyla birlikte kullanılabilir:
 
 | Öznitelik | Açıklama |
 |--|--|
@@ -42,18 +46,18 @@ Uyarı dışlama kuralları içinde tanımlayabilmeniz gereken öznitelikler şu
 
 ## <a name="append-local-alert-exclusion-rules"></a>Yerel uyarı dışlama kuralları Ekle
 
-CLı 'ya aşağıdaki komutu girerek, geçerli uyarı dışlama kurallarına yeni kurallar ekleyebilirsiniz:
+CLı içinde aşağıdaki komutu girerek yerel uyarı dışlama kurallarını ekleyebilirsiniz:
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Burada kullanılan öznitelikler, yerel uyarı dışlama kuralları oluştururken açıklanan özniteliklere benzerdir. Buradaki kullanımda, öznitelikler mevcut kurallara uygulanır.
+Burada kullanılan öznitelikler, yerel uyarı dışlama kuralları oluşturma bölümünde açıklanan özniteliklerle aynıdır. Kullanımdaki fark, burada özniteliklerin mevcut kurallara uygulandığından emin olur.
 
 ## <a name="show-local-alert-exclusion-rules"></a>Yerel uyarı dışlama kurallarını göster
 
-Var olan tüm dışlama kurallarını görüntülemek için aşağıdaki komutu girin:
+Dışlama kurallarının mevcut listesini sunmak için aşağıdaki komutu girin:
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,7 +73,7 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Uyarı dışlama kurallarıyla aşağıdaki özniteliği kullanabilirsiniz:
+Aşağıdaki öznitelik, uyarı dışlama kurallarıyla birlikte kullanılabilir:
 
 | Öznitelik | Açıklama|
 | --------- | ---------------------------------- |
@@ -77,11 +81,11 @@ Uyarı dışlama kurallarıyla aşağıdaki özniteliği kullanabilirsiniz:
 
 ## <a name="sync-time-from-the-ntp-server"></a>NTP sunucusundan eşitleme süresi
 
-Bir NTP sunucusundan zaman eşitlemesini etkinleştirebilir ve devre dışı bırakabilirsiniz.
+Belirtilen bir NTP sunucusundan zaman eşitlemesini etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 ### <a name="enable-ntp-sync"></a>NTP eşitlemesini etkinleştir
 
-Aşağıdaki komutun girilmesi, geçerli saatin belirtilen NTP sunucusundan düzenli olarak alınmasını etkinleştirir:
+Belirtilen NTP sunucusundan düzenli olarak saati almak için aşağıdaki komutu girin:
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +95,7 @@ Komutu içinde tanımlayabilmeniz gereken öznitelik, NTP sunucusunun IP adresid
 
 ### <a name="disable-ntp-sync"></a>NTP eşitlemesini devre dışı bırak
 
-Aşağıdaki komutun girilmesi, belirtilen NTP sunucusuyla zaman eşitlemesini devre dışı bırakacak:
+Belirtilen NTP sunucusuyla zaman eşitlemesini devre dışı bırakmak için aşağıdaki komutu girin:
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,15 +103,15 @@ ntp disable IP
 
 Komutu içinde tanımlayabilmeniz gereken öznitelik, NTP sunucusunun IP adresidir.
 
-## <a name="configure-the-network"></a>Ağı yapılandırma
+## <a name="network-configuration"></a>Ağ yapılandırması
 
 Aşağıdaki tabloda IoT için Azure Defender için ağ seçeneklerinizi yapılandırmak üzere kullanılabilecek komutlar açıklanmaktadır:
 
 |Name|Komut|Açıklama|
 |-----------|-------|-----------|
-|Ping|`ping IP `| IoT Platformu için Defender dışındaki adreslere ping atar.|
-|Blink|`network blink`|Ağ yapılandırma parametrelerinin değiştirilmesini izin vermez.|
-|Ağı yeniden yapılandırın |`network edit-settings`| Ağ yapılandırma parametrelerinin değiştirilmesini izin vermez. |
+|Ping|`ping IP`| IoT Platformu için Defender dışındaki bir adrese ping gönderin.|
+|Blink|`network blink`| Arabirim ışıklarının yanıp sönmesine neden olarak bir bağlantı bulun. |
+|Ağı yeniden yapılandırın |`network edit-settings`| Ağ yapılandırma parametrelerinde bir değişikliği etkinleştirin. |
 |Ağ ayarlarını göster |`network list`|Ağ bağdaştırıcısı parametrelerini görüntüler. |
 |Ağ yapılandırmasını doğrulama |`network validate` |Çıkış ağı ayarlarını gösterir. <br /> <br />Örneğin: <br /> <br />Geçerli ağ ayarları: <br /> Arabirim: eth0 <br /> IP: 10.100.100.1 <br />alt ağ: 255.255.255.0 <br />Varsayılan ağ geçidi: 10.100.100.254 <br />DNS: 10.100.100.254 <br />arabirimleri izleme: eth1|
 |Sertifikayı içeri aktar |`certificate import FILE` |HTTPS sertifikasını içeri aktarır. Bir. CRT dosyasına yol gösteren tam yolu belirtmeniz gerekir \* . |
@@ -115,7 +119,7 @@ Aşağıdaki tabloda IoT için Azure Defender için ağ seçeneklerinizi yapıla
 
 ## <a name="filter-network-configurations"></a>Ağ yapılandırmasını filtrele
 
-`network capture-filter`Komut, yöneticilerin çözümlenmesi gerekmeyen ağ trafiğini ortadan kaldırmasına olanak tanır. Bir içerme listesi veya dışlama listesi kullanarak trafiği filtreleyin.
+`network capture-filter`Komut, yöneticilerin çözümlenmesi gerekmeyen ağ trafiğini ortadan kaldırabilecekleri şekilde izin verir. Bir içerme listesi veya dışlama listesi kullanarak trafiği filtreleyebilirsiniz.
 
 ```azurecli-interactive
 network capture-filter
@@ -125,7 +129,7 @@ Komutu girdikten sonra aşağıdaki soruda istenir:
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-`Y`Aşağıdaki sözdizimine göre cihaz, kanal, bağlantı noktası ve alt küme ekleyebileceğiniz bir nano dosya açmak için seçin:
+`Y`Aşağıdaki sözdizimine göre bir cihaz, kanal, bağlantı noktası ve alt küme ekleyebileceğiniz bir nano dosya açmak için seçin:
 
 | Öznitelik | Açıklama |
 |--|--|
@@ -137,11 +141,11 @@ Bir satırı bırakarak bağımsız değişkenleri ayırın.
 
 Bir cihaz, kanal veya alt ağ eklediğinizde, algılayıcı, genellikle işlenmediği bağlantı noktaları ve trafik dahil olmak üzere bu bağımsız değişken için geçerli tüm trafiği işler.
 
-Bundan sonra şunlar istenir:
+Bundan sonra aşağıdaki sorudan sorulacaktır:
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
-`Y`Aşağıdaki sözdizimine göre cihaz, kanal, bağlantı noktası ve alt küme ekleyebileceğiniz bir nano dosya açmak için seçin:
+`Y`Aşağıdaki sözdizimine göre bir cihaz, kanal, bağlantı noktası ve alt küme ekleyebileceğiniz nano dosyayı açmak için seçin:
 
 | Öznitelik | Açıklama |
 |--|--|
@@ -173,7 +177,7 @@ UDP ve TCP bağlantı noktalarını tüm trafiğe dahil edin veya hariç tutun.
 
 ### <a name="components"></a>Bileşenler
 
-Sizden şunlar istenir:
+Şu soruyu sordunuz:
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +236,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>İstemci ve sunucu Konakları tanımlama
 
-IoT için Defender, istemci ve sunucu konaklarınızı otomatik olarak algılamadıysanız, istemci ve sunucu konaklarınızı ayarlamak için aşağıdaki komutu girin:
+IoT için Defender, istemciyi ve sunucu konaklarınızı otomatik olarak algılamazsa, istemci ve sunucu konaklarınızı ayarlamak için aşağıdaki komutu girin:
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -254,8 +258,9 @@ Komutuyla aşağıdaki öznitelikleri kullanabilirsiniz `directions` :
 ## <a name="system-actions"></a>Sistem eylemleri
 Aşağıdaki tabloda, IoT için Defender içinde çeşitli sistem eylemleri gerçekleştirmek üzere kullanılabilecek komutlar açıklanmaktadır:
 
-|Name|Kod|Açıklama|
+|Name|Kod|Description|
 |----|----|-----------|
+|Tarihi göster|`date`|Ana bilgisayarda GMT biçiminde geçerli tarihi döndürür.|
 |Konağı yeniden başlatın|`system reboot`|Konak cihazını yeniden başlatır.|
 |Konağı kapatma|`system shutdown`|Ana bilgisayarı kapatır.|
 |Sistemi yedekleme|`system backup`|Hemen bir yedekleme başlatır (zamanlanmamış bir yedekleme).|
@@ -290,6 +295,6 @@ Aracı kullanırken:
 
 - DNS sunucunuz ve karşılık gelen IP adresi ile gereç etki alanı (sertifikada göründüğü gibi) ile onaylayın. 
     
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 [IoT API algılayıcısı ve Yönetim Konsolu API 'Leri için Defender](references-work-with-defender-for-iot-apis.md)

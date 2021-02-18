@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657031"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581558"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
@@ -88,7 +88,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
 |---|---|---|---|
 | pg_qs pg_qs.query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
 | pg_qs pg_qs.max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
@@ -97,7 +97,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
 |---|---|---|---|
 | pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
 | Pgms_wait_sampling Pgms_wait_sampling.history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
@@ -178,7 +178,7 @@ Query_store Query_store.staging_data_reset () void döndürüyor
 
 
 ## <a name="azure-monitor"></a>Azure İzleyici
-PostgreSQL için Azure veritabanı, [Azure izleyici tanılama ayarlarıyla](../azure-monitor/platform/diagnostic-settings.md)tümleşiktir. Tanılama ayarları, [Azure Izleyici günlüklerine](../azure-monitor/log-query/log-query-overview.md) analiz ve uyarı, akış için Event Hubs ve arşivlenmek üzere Azure Storage günlüklerini JSON biçiminde göndermenizi sağlar.
+PostgreSQL için Azure veritabanı, [Azure izleyici tanılama ayarlarıyla](../azure-monitor/essentials/diagnostic-settings.md)tümleşiktir. Tanılama ayarları, [Azure Izleyici günlüklerine](../azure-monitor/logs/log-query-overview.md) analiz ve uyarı, akış için Event Hubs ve arşivlenmek üzere Azure Storage günlüklerini JSON biçiminde göndermenizi sağlar.
 
 >[!IMPORTANT]
 > İçin bu tanılama özelliği yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında kullanılabilir.
@@ -195,7 +195,7 @@ Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 5. **QueryStoreRuntimeStatistics** ve **Querystorewaitstatistics** günlük türlerini seçin.
 6. Ayarınızı kaydedin.
 
-Bu ayarı PowerShell, CLı veya REST API kullanarak etkinleştirmek için [Tanılama ayarları makalesini](../azure-monitor/platform/diagnostic-settings.md)ziyaret edin.
+Bu ayarı PowerShell, CLı veya REST API kullanarak etkinleştirmek için [Tanılama ayarları makalesini](../azure-monitor/essentials/diagnostic-settings.md)ziyaret edin.
 
 ### <a name="json-log-format"></a>JSON günlük biçimi
 Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğiniz çıkış uç noktasına bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
@@ -218,7 +218,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | min_time_s | En düşük sorgu yürütme süresi (milisaniye) |
 | max_time_s | En fazla sorgu yürütme süresi (milisaniye) |
 | mean_time_s | Ortalama sorgu yürütme süresi (milisaniye) |
-| ResourceGroup | Kaynak grubu | 
+| adlı yönetilen örnek, | Kaynak grubu | 
 | SubscriptionId | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |
@@ -241,7 +241,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | start_time_t | Olay başlangıç saati |
 | end_time_s | Olay bitiş zamanı | 
 | LogicalServerName_s | Postgres sunucu adı | 
-| ResourceGroup | Kaynak grubu | 
+| adlı yönetilen örnek, | Kaynak grubu | 
 | SubscriptionId | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |

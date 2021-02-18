@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590627"
+ms.locfileid: "100634077"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -210,7 +210,7 @@ Artık yeni Azure Güvenlik Merkezi uyarılarını veya önerilerini (yapıland�
 
 Uyarılar veya öneriler için bir CSV raporu indirmek için, **güvenlik uyarıları** veya **öneriler** sayfasını açın ve **CSV raporu indir** düğmesini seçin.
 
-[![Uyarı verilerini CSV dosyası olarak indir](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
+:::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="Uyarı verilerini CSV dosyası olarak indir" lightbox="./media/continuous-export/download-alerts-csv.png":::
 
 > [!NOTE]
 > Bu raporlar Şu anda seçili olan aboneliklerdeki kaynaklara yönelik uyarıları ve önerileri içerir.

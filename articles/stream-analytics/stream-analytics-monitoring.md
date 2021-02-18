@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012470"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572968"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -26,7 +26,7 @@ Bu pencere gösterildiği gibi görünür:
 ![Stream Analytics iş izleme panosu](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics için kullanılabilir ölçümler
-| Ölçüm                 | Tanım                               |
+| Metric                 | Tanım                               |
 | ---------------------- | ---------------------------------------- |
 | Biriktirme listesindeki giriş olayları       | Biriktirme listesindeki giriş olaylarının sayısı. Bu ölçüm için sıfır olmayan bir değer, işinizin gelen olay sayısıyla devam edemediğinden emin olmak anlamına gelir. Bu değer yavaş bir şekilde artarak veya sürekli olarak sıfır değilse, işinizi ölçeklendirmelisiniz. Daha fazla bilgi edinmek için öğrenme [ve akış birimlerini ayarlayın](stream-analytics-streaming-unit-consumption.md). |
 | Veri dönüştürme hataları | Beklenen çıkış şemasına dönüştürülemeyen çıkış olaylarının sayısı. Hata ilkesi, bu senaryoya ilişkin olayları bırakmak için ' Drop ' olarak değiştirilebilir. |
@@ -48,7 +48,7 @@ Bu pencere gösterildiği gibi görünür:
 [Stream Analytics işinizin performansını izlemek](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)için bu ölçümleri kullanabilirsiniz. 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Azure portal Izlemeyi özelleştirme
-Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme grafiği ayarları ' nda ayarlayabilirsiniz. Ayrıntılar için bkz. [Izlemeyi özelleştirme](../azure-monitor/platform/data-platform.md).
+Grafik türünü, gösterilen ölçümleri ve zaman aralığını düzenleme grafiği ayarları ' nda ayarlayabilirsiniz. Ayrıntılar için bkz. [Izlemeyi özelleştirme](../azure-monitor/data-platform.md).
 
   ![Sorgu İzleyicisi zaman grafiğini Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 

@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 10/18/2020
+ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b884bc72381c98af77f2f49336f3dd5762c68734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f52e8a89ec9dd78a1951836053cb2c698310bbd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859179"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645561"
 ---
 Aşağıdaki sınırlar Azure Event Grid **konular** (sistem, özel ve iş ortağı konuları) için geçerlidir. 
 
@@ -21,19 +21,19 @@ Aşağıdaki sınırlar Azure Event Grid **konular** (sistem, özel ve iş orta�
 | --- | --- |
 | Azure aboneliği başına özel konular | 100 |
 | Konu başına olay abonelikleri | 500 |
-| Özel veya iş ortağı konusu (giriş) için yayımlama oranı | 5.000 olay/sn veya 1 MB/sn (hangisi önce karşılanır) |
+| Özel veya iş ortağı konusu (giriş) için yayımlama oranı | 5.000 olay/sn veya 5 MB/sn (hangisi önce karşılanır) |
 | Olay boyutu | 1 MB  |
 | Konu başına özel uç nokta bağlantıları  | 64 | 
 | Konu başına IP güvenlik duvarı kuralları | 16 | 
 
-Azure Event Grid **etki alanları**için aşağıdaki sınırlar geçerlidir. 
+Azure Event Grid **etki alanları** için aşağıdaki sınırlar geçerlidir. 
 
 | Kaynak | Sınır |
 | --- | --- |
 | Olay etki alanı başına konu başlıkları | 100.000 |
 | Bir etki alanı içindeki Konu başına olay abonelikleri | 500 |
 | Etki alanı kapsamı olay abonelikleri | 50 |
-| Olay etki alanı (giriş) için yayımlama oranı | 5.000 olay/sn veya 1 MB/sn (hangisi önce karşılanır) |
+| Olay etki alanı (giriş) için yayımlama oranı | 5.000 olay/sn veya 5 MB/sn (hangisi önce karşılanır) |
 | Azure aboneliği başına olay etki alanları | 100 |
 | Etki alanı başına özel uç nokta bağlantıları | 64 | 
 | Etki alanı başına IP güvenlik duvarı kuralları | 16 | 

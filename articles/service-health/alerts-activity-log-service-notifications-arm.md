@@ -4,12 +4,12 @@ description: Azure hizmeti gerçekleştiğinde SMS, e-posta veya Web Kancası ar
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630228"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594952"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma
 
@@ -17,7 +17,7 @@ Bu makalede, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak hizme
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Hizmet durumu bildirimleri [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md)depolanır. Etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır.
+Hizmet durumu bildirimleri [Azure etkinlik günlüğünde](../azure-monitor/essentials/platform-logs-overview.md)depolanır. Etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır.
 
 Azure, Azure aboneliğinize hizmet durumu bildirimleri gönderdiğinde bir uyarı alabilirsiniz. Uyarıyı temel alarak yapılandırabilirsiniz:
 
@@ -34,7 +34,7 @@ Ayrıca, uyarının kime gönderileceğini de yapılandırabilirsiniz:
 - Mevcut bir eylem grubu seçin.
 - Yeni bir eylem grubu oluşturun (gelecekteki uyarılar için kullanılabilir).
 
-Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
+Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/alerts/action-groups.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -43,7 +43,7 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Aşağıdaki şablon, bir e-posta hedefi olan bir eylem grubu oluşturur ve hedef abonelik için tüm hizmet durumu bildirimlerine izin vermez. Bu şablonu *CreateServiceHealthAlert.js*olarak kaydedin.
+Aşağıdaki şablon, bir e-posta hedefi olan bir eylem grubu oluşturur ve hedef abonelik için tüm hizmet durumu bildirimlerine izin vermez. Bu şablonu *CreateServiceHealthAlert.js* olarak kaydedin.
 
 ```json
 {
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - [Azure hizmet durumu için mobil anında iletme bildirimleri ayarlamayı](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)öğrenin.
 - [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
 - [Hizmet durumu bildirimleri](service-notifications.md)hakkında bilgi edinin.
-- [Bildirim hızı sınırlaması](../azure-monitor/platform/alerts-rate-limiting.md)hakkında bilgi edinin.
-- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin.
-- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
-- [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+- [Bildirim hızı sınırlaması](../azure-monitor/alerts/alerts-rate-limiting.md)hakkında bilgi edinin.
+- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/alerts/activity-log-alerts-webhook.md)gözden geçirin.
+- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/alerts/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
+- [Eylem grupları](../azure-monitor/alerts/action-groups.md)hakkında daha fazla bilgi edinin.

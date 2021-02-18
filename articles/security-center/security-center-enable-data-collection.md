@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813624"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596159"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracıları ve uzantıları otomatik sağlama
 
@@ -38,7 +38,7 @@ Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, 
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:          | **Özellik**: otomatik sağlama genel kullanıma sunuldu (GA)<br>**Aracı ve uzantılar**: Azure VM 'ler için log ANALYTICS Aracısı GA, Microsoft bağımlılık Aracısı önizleme aşamasındadır, Kubernetes Için Ilke eklentisi GA                |
 | Fiyat                | Ücretsiz                                                                                                                                                                                                                         |
-| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![Hayır](./media/icons/no-icon.png) Azure yay makineleri<br>![Hayır](./media/icons/no-icon.png) Kubernetes düğümleri<br>![Hayır](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
+| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![No](./media/icons/no-icon.png) Azure yay makineleri<br>![No](./media/icons/no-icon.png) Kubernetes düğümleri<br>![No](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
 | Larının                 | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, Çin gov, diğer gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
@@ -83,7 +83,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
     - **Azure VM 'lerini farklı bir çalışma alanına bağlama** -açılan listeden, toplanan verileri depolamak için çalışma alanını seçin. Açılır liste tüm aboneliklerinizde tüm çalışma alanlarını içerir. Bu seçeneği, farklı aboneliklerde çalışan sanal makinelerden veri toplamak ve tüm seçtiğiniz çalışma alanınızda depolamak için kullanabilirsiniz.  
 
-        Zaten bir Log Analytics çalışma alanınız varsa, aynı çalışma alanını kullanmak isteyebilirsiniz (çalışma alanında okuma ve yazma izinleri gerekir). Bu seçenek, kuruluşunuzda merkezi bir çalışma alanı kullanıyorsanız ve onu güvenlik verileri toplama için kullanmak istiyorsanız yararlıdır. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../azure-monitor/platform/manage-access.md)konusunda daha fazla bilgi edinin.
+        Zaten bir Log Analytics çalışma alanınız varsa, aynı çalışma alanını kullanmak isteyebilirsiniz (çalışma alanında okuma ve yazma izinleri gerekir). Bu seçenek, kuruluşunuzda merkezi bir çalışma alanı kullanıyorsanız ve onu güvenlik verileri toplama için kullanmak istiyorsanız yararlıdır. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../azure-monitor/logs/manage-access.md)konusunda daha fazla bilgi edinin.
 
         Seçtiğiniz çalışma alanınızda zaten bir güvenlik veya Securitycenterücretsiz çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. Aksi takdirde, çalışma alanına bir güvenlik merkezi çözümü yüklersiniz:
 
@@ -218,7 +218,7 @@ Log Analytics aracısını el ile yüklemek için:
    - [Windows için Log Analytics aracısını yükler](../virtual-machines/extensions/oms-windows.md)
    - [Linux için Log Analytics aracısını yükler](../virtual-machines/extensions/oms-linux.md)
 
-1. Mevcut sanal [makinelerinizde aracılar dağıtmak Için Azure sanal makineleri hakkında veri toplama](../azure-monitor/learn/quick-collect-azurevm.md) ( **olay topla ve performans verileri** isteğe bağlı) bölümündeki yönergeleri izleyin.
+1. Mevcut sanal [makinelerinizde aracılar dağıtmak Için Azure sanal makineleri hakkında veri toplama](../azure-monitor/vm/quick-collect-azurevm.md) ( **olay topla ve performans verileri** isteğe bağlı) bölümündeki yönergeleri izleyin.
 
 1. Aracıları dağıtmak üzere PowerShell 'i kullanmak için, sanal makineler belgelerindeki yönergeleri kullanın:
 

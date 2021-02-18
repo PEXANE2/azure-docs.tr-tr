@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594311"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
@@ -76,7 +76,7 @@ VM 'niz için Güncelleştirme Yönetimi etkinleştirmek için:
 
 Bu VM için Güncelleştirme Yönetimi etkinleştirilip etkinleştirilmeyeceğini öğrenmek için doğrulama yapılır. Doğrulama bir Log Analytics çalışma alanı, bağlantılı Otomasyon hesabı için ve çözümün çalışma alanında olup olmadığı için denetimler içerir.
 
-Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Log Analytics](../../azure-monitor/logs/log-query-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
 Güncelleştirme gerektiren VM 'lerde ek eylemler gerçekleştirmek için Azure Otomasyonu 'nu kullanarak runbook 'ları sanal makinelere karşı çalıştırabilirsiniz. Bu tür eylemler, güncelleştirmeleri indirmeyi veya uygulamayı içerir.
 
@@ -86,7 +86,7 @@ Doğrulama işlemi ayrıca VM 'nin Microsoft Monitoring Agent (MMA) ve otomasyon
 
 Ekleme sırasında eksik olan aşağıdaki önkoşulların herhangi biri otomatik olarak eklenir:
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) çalışma alanı
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) çalışma alanı
 * [Otomasyon](../../automation/index.yml)
 * VM 'de etkin olan [karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 
@@ -113,7 +113,7 @@ VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştir
 | **Ad** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
 |**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
 | **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/update-management/configure-groups.md).|
-| **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup** veya **makineler** seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
+| **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup** veya **makineler** seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/logs/computer-groups.md) |
 |**Update classifications**|Tüm gerekli güncelleştirme sınıflandırmalarını seçin.|
 |**Güncelleştirmeleri dahil et/Dışla**|**Dahil et/hariç tut** bölmesini açmak için bu seçeneği belirleyin. Dahil edilecek güncelleştirmeler ve dışlanması gerekenler ayrı sekmelerde bulunur. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Zamanlama ayarları**|Başlatılacak saati seçin ve **bir** veya **tekrardan** birini seçin.|

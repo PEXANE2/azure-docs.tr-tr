@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950695"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585457"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
 
@@ -44,7 +44,7 @@ Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının na
 
 7. **Koşul Ekle**' yi seçin, ardından komut istemlerini izleyerek istediğiniz ölçüm ve eşiği seçin.
 
-Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?](../azure-monitor/platform/alerts-overview.md)
+Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?](../azure-monitor/alerts/alerts-overview.md)
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için log analitik kullanma
 

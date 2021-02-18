@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576677"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -347,7 +347,7 @@ Azure Resource Manager, tüm kaynak gruplarının bu kaynak grubunda dağıtıla
 
 Her uç noktanın geçerli izleme durumu, genel profilin yanı sıra Azure portal görüntülenir. Bu bilgiler ayrıca trafik Izleyicisi [REST API](/rest/api/trafficmanager/), [PowerShell cmdlet 'leri](/powershell/module/az.trafficmanager)ve [platformlar arası Azure CLI](/cli/azure/install-classic-cli)aracılığıyla da kullanılabilir.
 
-Azure Izleyici 'yi, uç noktalarınızın durumunu izlemek ve bunların görsel bir gösterimini görmek için de kullanabilirsiniz. Azure Izleyici 'yi kullanma hakkında daha fazla bilgi için bkz. [Azure izleme belgeleri](../azure-monitor/platform/data-platform.md).
+Azure Izleyici 'yi, uç noktalarınızın durumunu izlemek ve bunların görsel bir gösterimini görmek için de kullanabilirsiniz. Azure Izleyici 'yi kullanma hakkında daha fazla bilgi için bkz. [Azure izleme belgeleri](../azure-monitor/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS uç noktalarını izleyebilir miyim?
 
@@ -458,7 +458,7 @@ Uç noktanıza ulaşan Traffic Manager durum denetimi sayısı aşağıdakilere 
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?
 
-Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../azure-monitor/platform/alerts-metric.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
+Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../azure-monitor/alerts/alerts-metric.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>İç içe geçmiş profiller Traffic Manager
 

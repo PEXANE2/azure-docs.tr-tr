@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31a411cbcecab8192643f86b6b54d09ac03e7f45
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017262"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581721"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Öğretici: Firebase SDK sürümü 1.0.0-preview1 'i kullanarak Android cihazlara anında iletme bildirimleri gönderme
 
@@ -37,7 +37,7 @@ Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir.
 Ayrıca aşağıdaki öğeler de gereklidir:
 
 - [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797) en son sürümü önerilir.
-- En düşük destek API düzeyi 16 ' dır.
+- En düşük destek API düzeyi 19 ' dir.
 
 ## <a name="create-an-android-studio-project"></a>Android Studio projesi oluşturma
 
@@ -52,7 +52,7 @@ Ayrıca aşağıdaki öğeler de gereklidir:
 4. **Projenizi yapılandırın** sayfasında, aşağıdakileri yapın:
    1. Uygulama için bir ad girin.
    2. Proje dosyalarının kaydedileceği bir konum belirtin.
-   3. **Son**’u seçin.
+   3. **Son**'u seçin.
 
    :::image type="content" source="media/android-sdk/configure-project.png" alt-text="Projeyi Yapılandır":::
 
@@ -162,12 +162,8 @@ Bildirim Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde y
 1. Uygulamanın **Build. Gradle** dosyasında, bağımlılıklar bölümüne aşağıdaki satırları ekleyin:
 
    ```gradle
-   implementation 'com.microsoft.azure:notification-hubs-android-sdk:1.0.0-preview1@aar'
+   implementation 'com.microsoft.azure:notification-hubs-android-sdk-fcm:1.1.4'
    implementation 'androidx.appcompat:appcompat:1.0.0'
-
-   implementation 'com.google.firebase:firebase-messaging:20.1.5'
-
-   implementation 'com.android.volley:volley:1.1.1'
    ```
 
 2. Bağımlılıklar bölümünden sonra aşağıdaki depoyu ekleyin:
@@ -198,18 +194,23 @@ Bildirim Hub 'ınız şimdi Firebase Cloud Messaging ile çalışacak şekilde y
    public class CustomNotificationListener implements NotificationHubListener {
 
       @override
+      public void onNotificationReceived(Context context, RemoteMessage message) {
+    
+         /* The following notification properties are available. */
+         Notification notification = message.getNotification();
+         String title = notification.getTitle();
+         String body = notification.getBody();
+         Map<String, String> data = message.getData();
+    
+         if (message != null) {
+            Log.d(TAG, "Message Notification Title: " + title);
+            Log.d(TAG, "Message Notification Body: " + message);
+         }
 
-      public void onNotificationReceived(Context context, NotificationMessage message) {
-
-      /* The following notification properties are available. */
-
-      String title = message.getTitle();
-      String message = message.getMessage();
-      Map<String, String> data = message.getData();
-
-      if (message != null) {
-         Log.d(TAG, "Message Notification Title: " + title);
-         Log.d(TAG, "Message Notification Body: " + message);
+         if (data != null) {
+             for (Map.Entry<String, String> entry : data.entrySet()) {
+                 Log.d(TAG, "key, " + entry.getKey() + " value " + entry.getValue());
+             }
          }
       }
    }
@@ -268,7 +269,7 @@ Anında iletme bildirimleri normalde, uyumlu bir kitaplık kullanılarak Mobile 
 
 Bir öykünücü içinde anında iletme bildirimlerini test etmeden önce, öykünücü görüntünüzün uygulamanız için seçtiğiniz Google API düzeyini desteklediğinden emin olun. Görüntünüz yerel Google API 'Lerini desteklemiyorsa, **SERVICE_NOT_AVAILABLE** bir özel durum alabilirsiniz.
 
-Ayrıca, Google hesabınızı, **Ayarlar** hesaplar bölümünde çalışan öykünücüsünüzün içine eklediğinizden emin olun  >  **Accounts**. Aksi halde, FCM ile kaydolma denemelerinde **AUTHENTICATION_FAILED** bir özel durum oluşabilir.
+Ayrıca, Google hesabınızı, **Ayarlar** hesaplar bölümünde çalışan öykünücüsünüzün içine eklediğinizden emin olun  >  . Aksi halde, FCM ile kaydolma denemelerinde **AUTHENTICATION_FAILED** bir özel durum oluşabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

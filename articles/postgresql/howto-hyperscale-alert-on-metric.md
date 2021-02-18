@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577090"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
 
@@ -26,11 +26,11 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırın.
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure portalı](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure portalı](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portaldan bir ölçüm hakkında uyarı kuralı oluşturma
 1. [Azure Portal](https://portal.azure.com/), Izlemek Istediğiniz PostgreSQL Için Azure veritabanı sunucusu ' nu seçin.
 
 2. Kenar çubuğunun **izleme** bölümü altında gösterildiği gibi **Uyarılar** ' ı seçin:
@@ -109,5 +109,5 @@ Disk, alan sınırına yaklaşırsa, daha fazla boş alan almak için şu teknik
 CPU kullanımını izlemek, performans için bir taban çizgisi oluşturmak için kullanışlıdır. Örneğin, CPU kullanımının genellikle% 40-60 etrafında olduğunu fark edebilirsiniz. CPU kullanımı aniden %95 etrafında durmaya başlarsa bir anomali tanıyabilirsiniz. CPU kullanımı organik büyümeyi yansıtabilir, ancak aynı zamanda bir boş sorgu açığa çıkabilir. Bir CPU uyarısı oluştururken, uzun süreli bir ayrıntı düzeyini yakalamak ve kopan artışlarını yoksaymak için uzun bir toplama ayrıntı düzeyi ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Uyarılarda Web kancalarını yapılandırma](../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
-* Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](../azure-monitor/platform/data-platform.md) alın.
+* [Uyarılarda Web kancalarını yapılandırma](../azure-monitor/alerts/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
+* Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](../azure-monitor/data-platform.md) alın.
