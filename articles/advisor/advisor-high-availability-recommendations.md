@@ -3,12 +3,12 @@ title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078043"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579969"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
@@ -68,7 +68,7 @@ Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesind
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Kullanılabilirlik kümesi hata toleransı sağlayın (geçici olarak devre dışı)
 
-Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman tek bir sanal makine içeren kullanılabilirlik kümelerini tanımlar ve kendisine bir veya daha fazla sanal makine eklenmesini önerir.Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar.Bir sanal makine oluşturmayı veya var olan bir sanal makineyi kullanılabilirlik kümesine eklemeyi seçebilirsiniz.  
+Uygulamanız için artıklık sağlamak üzere, bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplandırmalarını öneririz. Danışman tek bir sanal makine içeren kullanılabilirlik kümelerini tanımlar ve kendisine bir veya daha fazla sanal makine eklenmesini önerir. Bu yapılandırma, planlı veya planlanmamış bakım sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar ve Azure sanal makine SLA 'sını karşılar. Bir sanal makine oluşturmayı veya var olan bir sanal makineyi kullanılabilirlik kümesine eklemeyi seçebilirsiniz.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Veri güvenilirliğini artırmak için yönetilen diskleri kullanma (geçici olarak devre dışı)
 
@@ -76,7 +76,7 @@ Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içer
 
 ## <a name="repair-invalid-log-alert-rules"></a>Geçersiz günlük uyarısı kurallarını Onar
 
-Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan günlük uyarısı kurallarını algılar. Azure Izleyici günlük uyarı kuralları belirtilen sıklıkta sorgu çalıştırır ve sonuçlara göre uyarı tetiklersiniz. Başvurulan kaynaklardaki, tablolardaki veya komutlarda değişiklikler nedeniyle sorgular zaman içinde geçersiz hale gelebilir. Danışman, kuralların otomatik olarak devre dışı bırakılmasını ve izleme kapsamının olmasını önlemeye yönelik uyarı sorguları için düzeltmeler önerir. Daha fazla bilgi için bkz. [Uyarı kuralları sorunlarını giderme](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
+Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan günlük uyarısı kurallarını algılar. Azure Izleyici günlük uyarı kuralları belirtilen sıklıkta sorgu çalıştırır ve sonuçlara göre uyarı tetiklersiniz. Başvurulan kaynaklardaki, tablolardaki veya komutlarda değişiklikler nedeniyle sorgular zaman içinde geçersiz hale gelebilir. Danışman, kuralların otomatik olarak devre dışı bırakılmasını ve izleme kapsamının olmasını önlemeye yönelik uyarı sorguları için düzeltmeler önerir. Daha fazla bilgi için bkz. [Uyarı kuralları sorunlarını giderme](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Azure Cosmos DB koleksiyonunuzda tutarlı dizin oluşturma modu yapılandırma
 

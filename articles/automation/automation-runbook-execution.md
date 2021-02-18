@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053916"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586043"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -85,18 +85,18 @@ Bir runbook, Azure veya üçüncü taraf sistemler için herhangi bir kaynağa e
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
-Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanır. İşlemler, bir Log Analytics çalışma alanı ve bir [Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md)gerektirir.
+Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanır. İşlemler, bir Log Analytics çalışma alanı ve bir [Log Analytics Aracısı](../azure-monitor/agents/log-analytics-agent.md)gerektirir.
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı
 
-[Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir.
+[Windows için Log Analytics Aracısı](../azure-monitor/agents/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir.
 
 >[!NOTE]
 >Windows için Log Analytics Aracısı daha önce Microsoft Monitoring Agent (MMA) olarak biliniyordu.
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux için Log Analytics Aracısı
 
-[Linux için Log Analytics Aracısı](../azure-monitor/platform/agent-linux.md) Windows için aracıya benzer bir şekilde çalışır, ancak Linux bilgisayarlarını Azure izleyici 'ye bağlar. Aracı, örneğin bir karma runbook çalışanında kök izinleri gerektiren komutların yürütülmesine izin veren bir **nxautomation** Kullanıcı hesabı ile yüklenir. **Nxautomation** hesabı, parola gerektirmeyen bir sistem hesabıdır.
+[Linux için Log Analytics Aracısı](../azure-monitor/agents/agent-linux.md) Windows için aracıya benzer bir şekilde çalışır, ancak Linux bilgisayarlarını Azure izleyici 'ye bağlar. Aracı, örneğin bir karma runbook çalışanında kök izinleri gerektiren komutların yürütülmesine izin veren bir **nxautomation** Kullanıcı hesabı ile yüklenir. **Nxautomation** hesabı, parola gerektirmeyen bir sistem hesabıdır.
 
 [Bir Linux karma Runbook Worker yüklemesi](automation-linux-hrw-install.md)sırasında karşılık gelen sudo izinleri olan **nxautomation** hesabı bulunmalıdır. Çalışanı yüklemeye çalışırsanız ve hesap yoksa veya uygun izinlere sahip değilse, yükleme başarısız olur.
 
