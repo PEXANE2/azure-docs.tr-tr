@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f28020ba431d3dfdc79c2d4a98b6e6138f563aeb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582034"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096476"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure veri paylaşımında Azure Güvenlik temeli
 
@@ -199,7 +199,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: Azure veri paylaşma kaynaklarıyla ilgili veri ve kaynaklara erişimi yönetmek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın, aksi takdirde hizmete özgü erişim denetimi yöntemlerini kullanın.
 
-- [Azure’da RBAC’yi yapılandırma](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md) 
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

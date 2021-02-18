@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650655"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093639"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı Başlangıç: Yönetilen uygulama tanımı oluşturma ve yayımlama
 
@@ -137,7 +137,7 @@ Daha fazla bilgi için bkz. [Createuıdefinition ile çalışmaya başlama](crea
 
 ## <a name="package-the-files"></a>Dosyaları paketleme
 
-_app.zip_adlı bir _. zip_ dosyasına iki dosya ekleyin. İki dosya, _. zip_ dosyasının kök düzeyinde olmalıdır. Dosyaları bir klasöre yerleştirirseniz, yönetilen uygulama tanımını oluştururken gerekli dosyaların mevcut olmadığını belirten bir hata alırsınız.
+_app.zip_ adlı bir _. zip_ dosyasına iki dosya ekleyin. İki dosya, _. zip_ dosyasının kök düzeyinde olmalıdır. Dosyaları bir klasöre yerleştirirseniz, yönetilen uygulama tanımını oluştururken gerekli dosyaların mevcut olmadığını belirten bir hata alırsınız.
 
 Paketi, tüketilebileceği erişilebilir bir konuma yükleyin. Depolama hesabı için benzersiz bir ad sağlamanız gerekir.
 
@@ -401,7 +401,7 @@ Uygulama tanımı dosyalarının, başlıklı bir kapsayıcıda belirtilen depol
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Kullanıcıların tanımınızı görebilmesini sağlama
 
-Yönetilen uygulama tanımına eriştiniz ama kuruluşunuzdaki diğer kullanıcıların da erişebildiğinden emin olmak istiyorsunuz. Onlara tanım üzerinde en azından Okuyucu rolü verin. Bu erişim düzeyini abonelikten veya kaynak grubunda devralmış olabilirler. Tanıma kimlerin erişebileceğini denetlemek ve Kullanıcı veya grup eklemek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+Yönetilen uygulama tanımına eriştiniz ama kuruluşunuzdaki diğer kullanıcıların da erişebildiğinden emin olmak istiyorsunuz. Onlara tanım üzerinde en azından Okuyucu rolü verin. Bu erişim düzeyini abonelikten veya kaynak grubunda devralmış olabilirler. Tanıma kimlerin erişebileceğini denetlemek ve Kullanıcı veya grup eklemek için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

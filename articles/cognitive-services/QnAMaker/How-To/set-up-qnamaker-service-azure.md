@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 0f03cd536d329a94ec80ef884c380c79b5687289
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592271"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096619"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -111,6 +111,8 @@ Bu yordam, Bilgi Bankası içeriğini yönetmek için gereken Azure kaynakların
       * [Tüm hizmet etiketlerinin IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=56519)indirin.
       * "Biliveservicesmanagement" öğesinin IP 'lerini seçin.
       * App Service kaynağınızın ağ bölümüne gidin ve IP 'Leri bir allowlist öğesine eklemek için "erişim kısıtlaması Yapılandır" seçeneğini tıklayın.
+
+    ![gelen bağlantı noktası özel durumları](../media/inbound-ports.png)    
 
     Ayrıca, App Service için aynı olacak otomatikleştirilmiş bir betiğimiz de vardır. GitHub 'da [bir izin yapılandırmak için PowerShell betiğini](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) bulabilirsiniz. Abonelik kimliği, kaynak grubu ve gerçek App Service adını betik parametreleri olarak girbilmeniz gerekir. Betiği çalıştırmak, IP 'Leri App Service allowlist dosyasına otomatik olarak ekler.
 

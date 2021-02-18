@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050948"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096471"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Otomasyonu farklı çalıştır hesabını yönetme
 
@@ -64,10 +64,10 @@ Farklı Çalıştır hesabı izinlerini vermeden önce, atanacak hizmet sorumlus
 
 Rol atamaları ekleme hakkında ayrıntılı adımlar için, kullanmak istediğiniz yönteme bağlı olarak aşağıdaki makalelere göz atın.
 
-* [Azure portal Azure rol atamasını ekleyin](../role-based-access-control/role-assignments-portal.md)
-* [Azure PowerShell kullanarak Azure rol ataması ekleme](../role-based-access-control/role-assignments-powershell.md)
-* [Azure CLı kullanarak Azure rol ataması ekleme](../role-based-access-control/role-assignments-cli.md)
-* [REST API kullanarak Azure rol ataması ekleme](..//role-based-access-control/role-assignments-rest.md)
+* [Azure portal kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-portal.md)
+* [Azure PowerShell kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-powershell.md)
+* [Azure CLı kullanarak Azure rolleri atama](../role-based-access-control/role-assignments-cli.md)
+* [REST API kullanarak Azure rolleri atama](..//role-based-access-control/role-assignments-rest.md)
 
 Farklı Çalıştır hesabını role atadıktan sonra, runbook 'ünüzde `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` abonelik bağlamını kullanılacak şekilde ayarlamayı belirleyin. Daha fazla bilgi için bkz. [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 

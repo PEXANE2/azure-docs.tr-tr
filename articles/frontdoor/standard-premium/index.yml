@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Azure ön kapısının Standart/Premium (Önizleme) belgeleri
+summary: Azure ön kapısının Standart/Premium (Önizleme), genel Web uygulamalarınız için ölçeklenebilir bir CDN, DSA, GLB sağlayan modern güvenli bir uygulama teslim ağ platformudur.
+metadata:
+  title: Azure ön kapısının Standart/Premium belgeleri
+  description: Azure ön kapısının Standart/Premium (Önizleme), genel Web uygulamalarınızın hızlı teslimi için ölçeklenebilir ve güvenli bir giriş noktası sağlar. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle Front Door kullanmayı öğrenin.
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: b11cf6b0fe8c0f1cdf711ee3b9ef6c92e5bc71bb
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101100978"
+landingContent:
+- title: Azure ön kapısının Standart/Premium (Önizleme) hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure ön kapısının Standart/Premium nedir (Önizleme)?
+      url: overview.md
+- title: Ön kapı profili oluşturma
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ön kapı Standart/Premium profili oluşturma
+      url: create-front-door-portal.md
+- title: Endpoint Manager 'ı yapılandırma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Uç nokta Yöneticisi
+      url: concept-endpoint-manager.md
+    - text: Yol
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: Endpoint Manager 'ı yapılandırma
+      url: how-to-configure-endpoint-manager.md
+- title: Özel etki alanları ekleme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel etki alanı ekleme
+      url: how-to-add-custom-domain.md
+- title: Kaynak gruplarınızı yönetin
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kaynak
+      url: concept-origin.md
+    - text: Durum araştırmaları
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kaynak grubu yapılandırma
+      url: how-to-create-origin.md
+- title: Bir kural kümesi yapılandırma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kural kümesi nedir?
+      url: concept-rule-set.md
+    - text: Kural kümesi eşleşme koşulları
+      url: concept-rule-set-match-conditions.md
+    - text: Kural kümesi eylemleri
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bir kural kümesi yapılandırma
+      url: how-to-configure-rule-set.md
+- title: Uygulamanızın güvenliğini sağlama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Özel Bağlantı
+      url: concept-private-link.md
+    - text: Azure ön kapısı Standart/Premium üzerinde WAF
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDoS koruması
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Özel bağlantıyı etkinleştir
+      url: how-to-enable-private-link.md
+    - text: WAF ilkesini yapılandırma
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: Raporlar, ölçümler ve Günlükler
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Raporlar
+      url: how-to-reports.md
+    - text: Ölçümleri ve Uyarıları İzleme
+      url: how-to-monitor-metrics.md
+    - text: Günlüğe Kaydetme
+      url: how-to-logs.md
+- title: Önbelleğe alma ve iyileştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Önbelleğe Alma
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: Önbellek Temizleme
+      url: how-to-cache-purge.md
+    - text: Sıkıştırma
+      url: how-to-compression.md
+- title: Azure Front Door ile ilgili sorunları giderme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yaygın yönlendirme sorunları
+      url: troubleshoot-route-issues.md
+    - text: İzin verilen sertifika yetkilileri
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Azure Front Door hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Front Door nedir?
+      url: ../front-door-overview.md

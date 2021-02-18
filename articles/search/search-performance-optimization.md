@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545590"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096424"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
 
@@ -100,6 +100,7 @@ Azure Bilişsel Arama şu anda şu bölgelerden birinde oluşturulan Standart ka
 + Avustralya Doğu (30 Ocak 2021 veya üzeri oluşturulanlar)
 + Kanada Orta (30 Ocak 2021 veya üzeri oluşturulanlar)
 + Orta ABD (4 Aralık 2020 veya üzeri)
++ Doğu ABD (27 Ocak 2021 veya üzeri oluşturulan)
 + Doğu ABD 2 (30 Ocak 2021 veya üzeri oluşturulanlar)
 + Fransa Orta (23 Ekim 2020 veya üzeri oluşturuldu)
 + Japonya Doğu (30 Ocak 2021 veya üzeri oluşturulanlar)

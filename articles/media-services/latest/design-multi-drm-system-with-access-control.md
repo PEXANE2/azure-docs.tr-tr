@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954910"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092434"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama
 
@@ -66,8 +66,8 @@ Seçiminizi yapmak için aşağıdakileri göz önünde bulundurun:
 * Widevine, her Android cihazında, Chrome 'da ve diğer bazı cihazlarda yerel olarak uygulanır. Wıdevine aynı zamanda Firefox ve Opera tarayıcılarında DASH üzerinde de desteklenir.
 * FairPlay, iOS, macOS ve tvOS üzerinde kullanılabilir.
 
-
 ## <a name="a-reference-design"></a>Başvuru tasarımı
+
 Bu bölümde, bunu uygulamak için kullanılan teknolojilerde belirsiz bir başvuru tasarımı sunulmaktadır.
 
 DRM alt sistemi aşağıdaki bileşenleri içerebilir:

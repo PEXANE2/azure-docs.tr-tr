@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: e4be3d4508d342c77507cf824fb036e32084b617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b4bda5a439b1e0b35dc6d3af99e0273e4987568
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329746"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091344"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Azure Media Services Shaka oynatıcıyı kullanma
 
@@ -33,6 +33,7 @@ Shaka oynatıcı, uyarlamalı medya için açık kaynaklı bir JavaScript kitapl
 Resmi belgeler, [Shaka Player belgelerinde](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html)bulunabilir.
 
 ## <a name="sample-code"></a>Örnek kod
+
 Bu makaleye örnek kod, [Azure-Samples/Media-Services-3rdpartisi-Player-Samples](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)adresinde bulunabilir.
 
 ## <a name="implementing-the-player"></a>Oynatıcıyı uygulama

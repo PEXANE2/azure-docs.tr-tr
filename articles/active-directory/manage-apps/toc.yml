@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: Uzak Masaüstü ile tümleştirme
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: SharePoint ile tümleştirme
+            - name: SharePoint ile tümleştirme (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: SharePoint ile tümleştirme (SAML)
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: Teams ile tümleştirme
               href: application-proxy-integrate-with-teams.md
             - name: Tableau ile tümleştirme

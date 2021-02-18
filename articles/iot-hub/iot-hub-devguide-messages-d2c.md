@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 64821819530e142eb207c001d3e3ccfe349cf917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547784"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096086"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -24,7 +24,7 @@ ms.locfileid: "92547784"
 
 İleti yönlendirme, cihazlarınızdan bulut hizmetlerine otomatik, ölçeklenebilir ve güvenilir bir şekilde ileti göndermenizi sağlar. İleti yönlendirme şu şekilde kullanılabilir: 
 
-* Cihaz **telemetri iletilerinin yanı sıra** , cihaz yaşam döngüsü olayları ve cihaz ikizi değişiklik olayları yerleşik uç nokta ve özel uç noktalara gönderilmesi. [Yönlendirme uç noktaları](#routing-endpoints)hakkında bilgi edinin.
+* Cihaz **telemetri iletilerinin yanı sıra** , cihaz yaşam döngüsü olayları, cihaz ikizi değişiklik olayları ve dijital ikizi değişiklik olayları yerleşik uç nokta ve özel uç noktalara gönderme. [Yönlendirme uç noktaları](#routing-endpoints)hakkında bilgi edinin. IoT Tak ve Kullan cihazlarından gönderilen olaylar hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan dijital TWINS 'ı anlama](../iot-pnp/concepts-digital-twin.md).
 
 * Zengin sorgular uygulayarak **verileri çeşitli uç noktalara yönlendirmeden önce verileri filtreleme** . İleti yönlendirme, ileti özellikleri ve ileti gövdesinde, Device ikizi etiketleri ve Device ikizi özellikleri ile sorgulama yapmanıza olanak sağlar. [İleti yönlendirmesinde sorguları](iot-hub-devguide-routing-query-syntax.md)kullanma hakkında daha fazla bilgi edinin.
 
@@ -34,7 +34,7 @@ IoT Hub, protokollerde birlikte çalışabilirlik için tüm cihazdan buluta mes
 
 ## <a name="routing-endpoints"></a>Yönlendirme uç noktaları
 
-IoT Hub 'ı, Event Hubs ile uyumlu bir varsayılan yerleşik uç noktaya ( **iletiler/olaylar** ) sahiptir. Aboneliğinizdeki diğer hizmetleri IoT Hub bağlayarak, iletileri yönlendirmek için [Özel uç noktalar](iot-hub-devguide-endpoints.md#custom-endpoints) oluşturabilirsiniz. 
+IoT Hub 'ı, Event Hubs ile uyumlu bir varsayılan yerleşik uç noktaya (**iletiler/olaylar**) sahiptir. Aboneliğinizdeki diğer hizmetleri IoT Hub bağlayarak, iletileri yönlendirmek için [Özel uç noktalar](iot-hub-devguide-endpoints.md#custom-endpoints) oluşturabilirsiniz. 
 
 Her ileti, yönlendirme sorguları eşleşen tüm uç noktalara yönlendirilir. Diğer bir deyişle, bir ileti birden çok uç noktaya yönlendirilebilir.
 
@@ -49,7 +49,7 @@ IoT Hub Şu anda aşağıdaki uç noktaları desteklemektedir:
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Yönlendirme uç noktası olarak yerleşik uç nokta
 
-Yerleşik uç noktadan ( **iletiler/olaylar** ) cihazdan buluta iletileri almak için standart [Event Hubs tümleştirme ve SDK](iot-hub-devguide-messages-read-builtin.md) 'lar kullanabilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar.
+Yerleşik uç noktadan (**iletiler/olaylar**) cihazdan buluta iletileri almak için standart [Event Hubs tümleştirme ve SDK](iot-hub-devguide-messages-read-builtin.md) 'lar kullanabilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar.
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Yönlendirme uç noktası olarak Azure depolama
 
@@ -120,13 +120,13 @@ Bir uç noktadan ileti okumayı öğrenmek için aşağıdaki öğreticileri kul
 
 ## <a name="fallback-route"></a>Geri dönüş yolu
 
-Geri dönüş yolu, var olan yolların herhangi birine ( **iletiler/olaylar** ) [Event Hubs](../event-hubs/index.yml)ile uyumlu olan herhangi bir mevcut Event Hubs rotadaki sorgu koşullarını karşılamayan tüm iletileri gönderir. İleti yönlendirme açıksa, geri dönüş yolu özelliğini etkinleştirebilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar. Yerleşik uç noktaya bir yol yoksa ve bir geri dönüş yolu etkinleştirilirse, yalnızca rotalardaki sorgu koşullarına uymamaları, yerleşik uç noktaya gönderilir. Ayrıca, mevcut tüm yollar silinirse, tüm verileri yerleşik uç noktada almak için geri dönüş yolunun etkinleştirilmesi gerekir.
+Geri dönüş yolu, var olan yolların herhangi birine (**iletiler/olaylar**) [Event Hubs](../event-hubs/index.yml)ile uyumlu olan herhangi bir mevcut Event Hubs rotadaki sorgu koşullarını karşılamayan tüm iletileri gönderir. İleti yönlendirme açıksa, geri dönüş yolu özelliğini etkinleştirebilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar. Yerleşik uç noktaya bir yol yoksa ve bir geri dönüş yolu etkinleştirilirse, yalnızca rotalardaki sorgu koşullarına uymamaları, yerleşik uç noktaya gönderilir. Ayrıca, mevcut tüm yollar silinirse, tüm verileri yerleşik uç noktada almak için geri dönüş yolunun etkinleştirilmesi gerekir.
 
 Azure portal >Ileti yönlendirme dikey penceresinde geri dönüş yolunu etkinleştirebilir/devre dışı bırakabilirsiniz. Ayrıca, geri dönüş yolu için özel bir uç nokta kullanmak üzere [Fallbackrouteproperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) için Azure Resource Manager de kullanabilirsiniz.
 
 ## <a name="non-telemetry-events"></a>Telemetri olmayan olaylar
 
-Cihaz telemetrisine ek olarak, ileti yönlendirme cihaz ikizi değişiklik olayları, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olaylarının gönderilmesini de sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları** olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olaylarına** ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderir. Son olarak, [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)kapsamında, bir geliştirici veri kaynağı ile **dijital ikizi değişiklik olayları** olarak ayarlanmış yollar oluşturabilir IoT Hub ve bir Digital ikizi [özelliği](../iot-pnp/iot-plug-and-play-glossary.md) ayarlandığında veya değiştirildiğinde, [dijital bir ikizi](../iot-pnp/iot-plug-and-play-glossary.md) değiştirilirse veya temeldeki cihaz ikizi için bir değişiklik olayı gerçekleştiğinde ileti gönderebilir.
+Cihaz telemetrisine ek olarak, ileti yönlendirme cihaz ikizi değişiklik olayları, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olaylarının gönderilmesini de sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları** olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olaylarına** ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderir. Son olarak, [Azure ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)'nin bir parçası olarak, bir geliştirici veri kaynağı ile **dijital ikizi değişiklik olayları** olarak ayarlanmış yollar oluşturabilir IoT Hub ve bir Digital ikizi [özelliği](../iot-pnp/iot-plug-and-play-glossary.md) ayarlandığında veya değiştirildiğinde, [dijital bir ikizi](../iot-pnp/iot-plug-and-play-glossary.md) değiştirilirse veya temeldeki cihaz ikizi için bir değişiklik olayı gerçekleştiğinde ileti gönderebilir.
 
 IoT Hub Ayrıca, bu olaylara göre gerçek zamanlı tümleştirmeleri ve iş akışlarının otomatikleştirilmesini desteklemek üzere cihaz olaylarını yayımlamak için [Azure Event Grid ile tümleşir](iot-hub-event-grid.md) . Senaryonuza en uygun olanı öğrenmek için [ileti yönlendirme ve Event Grid arasındaki önemli farklılıkları](iot-hub-event-grid-routing-comparison.md) inceleyin.
 

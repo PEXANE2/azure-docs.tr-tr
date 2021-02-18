@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790300"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096075"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault'u başka bir aboneliğe taşıma
 
@@ -47,7 +47,7 @@ Azure Key Vault ve Azure Active Directory hakkında daha fazla bilgi için bkz.
 
 Bazı hizmet sorumluları (kullanıcılar ve uygulamalar) belirli bir kiracıya bağlanır. Anahtar kasanızı başka bir Kiracıdaki bir aboneliğe taşırsanız, belirli bir hizmet sorumlusuna erişimi geri yükleyemeyeceksiniz. Anahtar kasanızı taşıdığınız kiracıda tüm gerekli hizmet sorumlularının mevcut olduğundan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği. [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)veya [PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanarak rol atayabilirsiniz.
 * [Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek. [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)veya [PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanarak rol atayabilirsiniz.
@@ -106,9 +106,9 @@ Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski eri�
 - [PowerShell kullanarak bir erişim ilkesi atama](assign-access-policy-powershell.md)
 
 Rol atamaları eklemek için bkz.:
-- [Portal kullanarak rol ataması ekleme](../../role-based-access-control/role-assignments-portal.md)
-- [Azure CLı kullanarak rol ataması ekleme](../../role-based-access-control/role-assignments-cli.md)
-- [PowerShell kullanarak rol ataması ekleme](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md)
+- [Azure CLı kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-cli.md)
+- [PowerShell kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>Yönetilen kimlikleri Güncelleştir

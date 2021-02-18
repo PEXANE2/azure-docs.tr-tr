@@ -14,33 +14,31 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897586"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093437"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-İçeriğinizi müşterilere sunarken (canlı etkinlikler veya Isteğe bağlı video akışı), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, içeriğiniz için hesap filtrelerini ve varlık filtrelerini tanımlamanızı sağlar. 
+İçeriğinizi müşterilere sunarken (canlı etkinlikler veya Isteğe bağlı video akışı), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, içeriğiniz için hesap filtrelerini ve varlık filtrelerini tanımlamanızı sağlar.
 
 Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir. 
+Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir.
 
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
-
-## <a name="define-a-filter"></a>Filtre tanımlama 
+## <a name="define-a-filter"></a>Filtre tanımlama
 
 Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımlar. Bu filtre, EC-3 olan tüm ses izlerini ve 0-1000000 aralığında bit hızına sahip video izlemelerini içerir.
 
@@ -82,7 +80,7 @@ Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımla
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-Aşağıdaki [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur. 
+Aşağıdaki [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur.
 
 Komutu, `--tracks` izleme seçimlerini temsil eden JSON içeren isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
 
@@ -130,7 +128,7 @@ Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmekted
 
 ## <a name="next-step"></a>Sonraki adım
 
-[Video akışı](stream-files-tutorial-with-api.md) 
+[Video akışı](stream-files-tutorial-with-api.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -1,0 +1,91 @@
+- name: Ön kapı Standart/Premium (Önizleme) belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure ön kapısının Standart/Premium nedir (Önizleme)?
+      href: overview.md
+    - name: Katman karşılaştırması
+      href: tier-comparison.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Ön kapı Standart/Premium Oluşturma-Portal
+      href: create-front-door-portal.md
+- name: Kavramlar
+  items:
+    - name: Front Door hakkında SSS
+      href: faq.md
+    - name: Uç nokta Yöneticisi
+      href: concept-endpoint-manager.md
+    - name: Kaynak
+      href: concept-origin.md
+    - name: Yol
+      href: concept-route.md
+    - name: Kural kümesi
+      href: concept-rule-set.md
+    - name: Kural kümesi eşleşme koşulları
+      href: concept-rule-set-match-conditions.md
+    - name: Kural kümesi eylemleri
+      href: concept-rule-set-actions.md
+    - name: URL yeniden yönlendirme ve URL yeniden yazma
+      href: concept-rule-set-url-redirect-and-rewrite.md
+    - name: Durum araştırmaları
+      href: concept-health-probes.md
+    - name: Özel Bağlantı
+      href: concept-private-link.md
+    - name: Önbelleğe Alma
+      href: concept-caching.md
+    - name: DDoS
+      href: concept-ddos.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Endpoint Manager 'ı yapılandırma
+      href: how-to-configure-endpoint-manager.md
+    - name: Kaynak gruplarını Yapılandır
+      href: how-to-create-origin.md
+    - name: Özel etki alanı ekleme
+      href: how-to-add-custom-domain.md
+    - name: Özel bir etki alanı için HTTPS'yi etkinleştirme
+      href: how-to-configure-https-custom-domain.md
+    - name: Rota Ilişkilendirmesi
+      href: how-to-configure-route.md
+    - name: Kural kümesiyle güvenlik üstbilgilerini yapılandırma
+      href: how-to-add-security-headers.md
+    - name: Önbellek Temizleme
+      href: how-to-cache-purge.md
+    - name: Sıkıştırma
+      href: how-to-compression.md
+    - name: Özel bağlantıyı etkinleştir
+      href: how-to-enable-private-link.md
+    - name: Günlüğe Kaydetme
+      href: how-to-logs.md
+    - name: İzleme ve uyarılar
+      href: how-to-monitor-metrics.md
+    - name: Raporlar
+      href: how-to-reports.md
+    - name: Sorun giderme
+      items:
+        - name: Yönlendirme sorunları
+          href: troubleshoot-route-issues.md
+        - name: İzin verilen sertifika yetkilileri
+          href: troubleshoot-allowed-certificate-authority.md
+        - name: Sıkıştırma
+          href: troubleshoot-compression.md
+        - name: Çapraz kaynak kaynak paylaşımı
+          href: troubleshoot-cross-origin-resources.md
+- name: Başvuru
+  items:
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: REST API
+      href: /rest/api/cdn/
+- name: Kaynaklar
+  items:
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=frontdoor'

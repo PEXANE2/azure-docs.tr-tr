@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895263"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093047"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
 
@@ -200,7 +200,7 @@ Kredi miktarını aşarsanız, hizmetiniz bir sonraki ay başlamadan devre dış
 
 Azure RBAC, izin atamak için kullanabileceğiniz çeşitli yerleşik roller içerir. Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](../../role-based-access-control/built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir.
 
-Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Azure portal fatura bilgilerini görüntüleme
 
@@ -304,7 +304,7 @@ Erişim vermek için kullanıcıya veya kullanıcı grubuna bir rol atarsınız.
 
 - **Depolama hesabı katılımcısı**: Bu role sahip bir Kullanıcı, depolama hesaplarını yönetebilir ancak depolama hesaplarına erişimi yönetemez.
 
-Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Sanal Makineler
 

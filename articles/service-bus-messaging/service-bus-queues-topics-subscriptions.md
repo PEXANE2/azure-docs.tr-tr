@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşma-kuyruklar, konular ve abonelikler
 description: Bu makalede, Azure Service Bus mesajlaşma varlıklarına (kuyruk, konular ve abonelikler) genel bir bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652828"
+ms.locfileid: "101096328"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus kuyrukları, konu başlıkları ve abonelikleri
 Azure Service Bus, güvenilir Message Queuing ve dayanıklı yayımlama/abone olma iletileri dahil olmak üzere bulut tabanlı, ileti yönelimli bir ara yazılım teknolojilerini destekler. Bu Aracılı mesajlaşma özellikleri, Service Bus mesajlaşma iş yükünü kullanarak yayımlama-abone olma, zamana bağlı ayırma ve yük dengeleme senaryolarını destekleyen ayrılmış mesajlaşma özellikleri olarak düşünülebilir. Ayrılmış iletişimin birçok avantajı vardır. Örneğin, istemciler ve sunucular gerektiğinde bağlanabilir ve işlemlerini zaman uyumsuz bir biçimde gerçekleştirebilir.
@@ -36,6 +36,9 @@ Service Bus iletileri aldığı iki farklı mod belirtebilirsiniz.
         Uygulama bir nedenden dolayı iletiyi işleyemez, **iletiyi bırakmak için** Service Bus hizmetine istekte bulunabilir. Service Bus, iletinin **kilidini açar** ve aynı tüketici tarafından ya da başka bir rekabet müşterisi tarafından tekrar alınabilmesini sağlar. İkinci olarak, kilitle ile ilişkili bir **zaman aşımı** vardır. Uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse, Service Bus iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
 
         Uygulama iletiyi tamamladıktan sonra kilitlenirse, ancak iletiyi tamamlamadan Service Bus hizmeti istemden önce, yeniden başlatıldığında iletiyi uygulamaya yeniden dağıtır Service Bus. Bu işlem genellikle **en az bir kez** işleme olarak adlandırılır. Diğer bir deyişle, her ileti en az bir kez işlenir. Ancak, bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme tolerans oluşturmazsa, yinelemeleri saptamak için uygulamanıza ek mantık ekleyin. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md). Bu özellik **tam olarak bir kez** işlenirken bilinir.
+
+        > [!NOTE]
+        > Bu iki mod hakkında daha fazla bilgi için bkz. [alma Işlemlerini kapatma](message-transfers-locks-settlement.md#settling-receive-operations).
 
 ## <a name="topics-and-subscriptions"></a>Konular ve abonelikler
 Sıra, bir iletinin tek bir tüketici tarafından işlenmesine izin verir. Kuyrukların aksine, konular ve abonelikler, **Yayımla ve abone ol** düzeninde bire çok bir iletişim biçimi sağlar. Çok sayıda alıcıya ölçeklendirilmesi yararlı olur. Her yayımlanan ileti, konuya kayıtlı her abonelik için kullanılabilir hale getirilir. Yayımcı bir konuya bir ileti gönderir ve bir veya daha fazla abone, bu aboneliklerde ayarlanan filtre kurallarına bağlı olarak iletinin bir kopyasını alır. Abonelikler, almak istedikleri iletileri kısıtlamak için ek filtreler kullanabilir. Yayımcılar bir konuya ileti gönderdikleri şekilde bir konuya ileti gönderir. Ancak, tüketiciler doğrudan konudan ileti almaz. Bunun yerine, tüketiciler konusunun aboneliklerinden iletiler alırlar. Konu aboneliği, konuya gönderilen iletilerin kopyalarını alan bir sanal kuyruğa benzer. Tüketiciler bir aboneliğden iletileri bir kuyruktan alma yöntemiyle aynı şekilde alırlar.

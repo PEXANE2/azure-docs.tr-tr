@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388218"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092909"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -192,7 +192,7 @@ explained_variance|Açıklanamayan Varyans, hedef değişkende varyasyon için m
 mean_absolute_error|Mutlak ortalama hatası, hedef ve tahmin arasındaki mutlak fark değerinin beklenen değeridir.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF) <br><br> Türü <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`mean_absolute_error, verilerin aralığına göre bölünür. | [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Ortalama mutlak yüzde hatası (MAPE), tahmin edilen bir değer ve gerçek değer arasındaki ortalama farkın bir ölçümüdür.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF) ||
 median_absolute_error|Ortanca mutlak hatası, hedef ve tahmin arasındaki tüm mutlak farklılıkların ortancası. Bu kayıp, aykırı değerler için sağlam.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF)<br><br>Türü <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error, verilerin aralığına göre bölünür. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R ^ 2, ortalama değeri veren bir taban çizgisi modeliyle karşılaştırıldığında, kare içinde belirleme veya yüzde azaltma yüzdesi olarak belirlenir. <br> <br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [-1, 1] <br><br> Note: R ^ 2 genellikle (-inf, 1] aralığına sahiptir, ancak otomatik ML klipleri çok hatalı modeller için-1 ' i negatif değerler.|[Hesaplama](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (belirleme katsayısı), gözlemlenen verilerin toplam varyansı ile ilişkili ortalama kare IÇINDE (MSE) orantılı azaltı ölçer. <br> <br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [-1, 1]<br><br>Note: R<sup>2</sup> genellikle aralığa sahiptir (-inf, 1]. MSE, gözlenen varyans değerinden daha büyük olabilir, bu nedenle R<sup>2</sup> verilere ve model tahminlere bağlı olarak rastgele büyük negatif değerlere sahip olabilir. Otomatik ML klipleri-1 ' de R<sup>2</sup> puanlarını raporladı, bu nedenle r<sup>2</sup> için-1 değeri büyük olasılıkla 1 ' den az olan gerçek r<sup>2</sup> puanına neden olur. Negatif bir R<sup>2</sup> puanı yorumlarken diğer ölçüm değerlerini ve verilerin özelliklerini göz önünde bulundurun.|[Hesaplama](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Kök ortalama kare hatası (RMKEN), hedef ve tahmin arasındaki beklenen kare farkının kare köküdür. Taraflı olmayan bir Estimator için, RMSE standart sapmayla eşittir.<br> <br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF)<br><br>Türü<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error, verilerin aralığına göre bölünür. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|Kök ortalama kare günlüğü hatası, beklenen kare içinde Logaritmik hatanın kare köküdür.<br><br>**Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF) <br> <br>Türü <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error, verilerin aralığına göre bölünür.  |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| Spearman bağıntısı, iki veri kümesi arasındaki ilişkinin monoton olmayan bir ölçüdür. Pearson bağıntı aksine, Spearman bağıntısı, her iki veri kümesinin de normalde dağıtıldığını varsaymaz. Diğer bağıntı katkatkatlara benzer şekilde, Spearman 0 ile 1 arasında farklılık gösterir. -1 veya 1 ' in correlations, tam monoton ilişkisini kapsıyor. <br><br> Spearman, tahmin edilen veya gerçek değerlerin derece sırasını değiştirmeseler, öngörülen veya gerçek değerlerde yapılan değişikliklerin Spearman sonucunu değiştirmeyeceği anlamına gelen bir sıralama düzeni bağıntı ölçümdür.<br> <br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [-1, 1]|[Hesaplama](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

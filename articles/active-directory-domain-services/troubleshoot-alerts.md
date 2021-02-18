@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618629"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092880"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Genel uyarılar ve çözümler
 
@@ -162,7 +162,7 @@ Bu hata kurtarılamaz. Uyarıyı çözmek için, [mevcut yönetilen etki alanın
 
 Yönetilen bir etki alanının kaynaklarını yönetmek ve oluşturmak için otomatik olarak oluşturulan bazı hizmet sorumluları kullanılır. Bu hizmet sorumlularından birine yönelik erişim izinleri değiştirilirse etki alanı kaynakları doğru bir şekilde yönetemez. Aşağıdaki adımlarda, bir hizmet sorumlusu için erişim izinlerini nasıl anlayacağınızı ve daha sonra sağlayacağınızı gösterilmektedir:
 
-1. [Rol tabanlı erişim denetimi ve Azure Portal uygulamalara erişim verme](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.
+1. [Azure rol tabanlı erişim denetimi ve Azure Portal uygulamalara erişim verme](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.
 2. KIMLIĞI *abba844e-bc0e-44b0-947a-dc74e5d09022* olan hizmet sorumlusunun sahip olduğu erişimi gözden geçirin ve daha önceki bir tarihte reddedilen erişimi verin.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: yönetilen etki alanında yeterli IP adresi yok

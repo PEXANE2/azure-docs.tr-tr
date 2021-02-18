@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 184d5c98b2b434c87e112c569ff4e8ab347344c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621643"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091188"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -120,7 +120,7 @@ Her çalışma alanı kendisiyle ilişkilendirilmiş birden çok hesap içerebil
 
 ## <a name="manage-access-using-azure-permissions"></a>Azure izinlerini kullanarak erişimi yönetme
 
-Azure izinlerini kullanarak Log Analytics çalışma alanına izin vermek için, [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](../../role-based-access-control/role-assignments-portal.md) bölümündeki adımları izleyin. Örneğin özel roller için bkz. [özel roller örneği](#custom-role-examples)
+Azure izinlerini kullanarak Log Analytics çalışma alanına erişim vermek için Azure [abonelik kaynaklarınıza erişimi yönetmek üzere Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md)' daki adımları izleyin. Örneğin özel roller için bkz. [özel roller örneği](#custom-role-examples)
 
 Azure 'da Log Analytics çalışma alanları için iki yerleşik kullanıcı rolü vardır:
 

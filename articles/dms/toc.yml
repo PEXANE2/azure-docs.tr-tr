@@ -37,10 +37,8 @@
   items:
     - name: SQL Server’ı geçirme
       items:
-        - name: Azure SQL Veritabanı’na (çevrimdışı)
+        - name: Azure SQL veritabanı 'na
           href: tutorial-sql-server-to-azure-sql.md
-        - name: Azure SQL Veritabanı’na (çevrimiçi)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: Azure SQL Yönetilen Örnek’e (çevrimdışı)
           href: tutorial-sql-server-to-managed-instance.md
         - name: Azure SQL Yönetilen Örnek’e (çevrimiçi)
