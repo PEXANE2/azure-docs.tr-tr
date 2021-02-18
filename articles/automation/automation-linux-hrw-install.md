@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183626"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581195"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -20,19 +20,19 @@ Linux hibrit Runbook Worker, runbook 'ları, yükseltme gerektiren komutları ç
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics çalışma alanı
 
-Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure Izleyici Log Analytics çalışma alanına bağlıdır. [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)aracılığıyla veya [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)aracılığıyla oluşturabilirsiniz.
+Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure Izleyici Log Analytics çalışma alanına bağlıdır. [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)aracılığıyla veya [Azure Portal](../azure-monitor/logs/quick-create-workspace.md)aracılığıyla oluşturabilirsiniz.
 
-Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
+Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/logs/design-logs-deployment.md) gözden geçirin.
 
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) gerek duyar. Azure dışında barındırılan sunucular veya makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz.
+Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analytics aracısına](../azure-monitor/agents/log-analytics-agent.md) gerek duyar. Azure dışında barındırılan sunucular veya makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz.
 
 >[!NOTE]
 >Linux için Log Analytics aracısını yükledikten sonra, `sudoers.d` klasörün veya sahip olduğu izinleri değiştirmemelisiniz. Sudo izni, karma Runbook Worker 'ın altında çalıştığı kullanıcı bağlamı olan **nxautomation** hesabı için gereklidir. İzinler kaldırılmamalıdır. Bunu belirli klasörler veya komutlarla kısıtlamak, bir değişikliğe neden olabilir.
@@ -87,11 +87,11 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 |Runbook türü | Desteklenir |
 |-------------|-----------|
-|Python 2 |Evet |
+|Python 2 |Yes |
 |PowerShell |Evet<sup>1</sup> |
-|PowerShell İş Akışı |Hayır |
-|Grafik |Hayır |
-|Grafik PowerShell Iş akışı |Hayır |
+|PowerShell İş Akışı |No |
+|Grafik |No |
+|Grafik PowerShell Iş akışı |No |
 
 <sup>1</sup> PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

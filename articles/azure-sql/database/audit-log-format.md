@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677278"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572221"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
@@ -42,11 +42,11 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan ad alanı v
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanına, `AzureDiagnostics` kategoriye sahip tabloya yazılır `SQLSecurityAuditEvents` . Log Analytics arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Log Analytics arama başvurusu](../../azure-monitor/log-query/log-query-overview.md).
+Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanına, `AzureDiagnostics` kategoriye sahip tabloya yazılır `SQLSecurityAuditEvents` . Log Analytics arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Log Analytics arama başvurusu](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Denetim günlüğü alanları
 
-| Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob türü | Event Hubs/Log Analytics türü |
+| Ad (blob) | Ad (Event Hubs/Log Analytics) | Description | Blob türü | Event Hubs/Log Analytics türü |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Eylemin KIMLIĞI | varchar (4) | string |
 | action_name | action_name_s | Eylemin adı | Yok | string |

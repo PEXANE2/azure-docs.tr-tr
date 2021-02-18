@@ -3,12 +3,12 @@ title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519108"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570564"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -21,9 +21,9 @@ Azure Izleyici, çeşitli Azure hizmetleri genelinde izleme için birleştirilmi
 
 ## <a name="access-metrics"></a>Erişim ölçümleri
 
-Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Azure izleyici günlükleri ve Event Hubs gibi çözümleme çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md).
+Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Azure izleyici günlükleri ve Event Hubs gibi çözümleme çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/essentials/data-platform-metrics.md).
 
-Ölçümler varsayılan olarak etkinleştirilmiştir ve en son 30 güne kadar verilere erişebilirsiniz. Verileri daha uzun bir süre tutmanız gerekiyorsa, ölçüm verilerini bir Azure depolama hesabına arşivleyebilirsiniz. Bu değer, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) 'nda yapılandırılır.
+Ölçümler varsayılan olarak etkinleştirilmiştir ve en son 30 güne kadar verilere erişebilirsiniz. Verileri daha uzun bir süre tutmanız gerekiyorsa, ölçüm verilerini bir Azure depolama hesabına arşivleyebilirsiniz. Bu değer, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/essentials/diagnostic-settings.md) 'nda yapılandırılır.
 
 ## <a name="access-metrics-in-the-portal"></a>Portalda erişim ölçümleri
 
@@ -100,7 +100,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 > [!NOTE] 
 > Aşağıdaki ölçümler yalnızca **Premium** katmanıyla birlikte kullanılabilir. 
 > 
-> Premium katman ad alanı için kesintileri izlemek için önemli ölçümler: ad **alanı başına CPU kullanımı** ve **ad alanı başına bellek boyutu**. Azure Izleyici 'yi kullanarak bu ölçümler için [Uyarılar ayarlayın](../azure-monitor/platform/alerts-metric.md) .
+> Premium katman ad alanı için kesintileri izlemek için önemli ölçümler: ad **alanı başına CPU kullanımı** ve **ad alanı başına bellek boyutu**. Azure Izleyici 'yi kullanarak bu ölçümler için [Uyarılar ayarlayın](../azure-monitor/alerts/alerts-metric.md) .
 > 
 > İzleyebilmeniz için kullanabileceğiniz diğer ölçüm: **Kısıtlanmış istekleriniz**. Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığında bir sorun olması gerekmez. Daha fazla bilgi için bkz. [Azure Service Bus Premium katmanında daraltma](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576136"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -333,7 +333,7 @@ Application Gateway en fazla 100 kimlik doğrulama sertifikasını destekler.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway yerel olarak Azure Key Vault tümleştirsin mi?
 
-Evet, Application Gateway v2 SKU 'SU Key Vault destekler. Daha fazla bilgi için bkz. [Key Vault sertifikalarla TLS sonlandırma](key-vault-certs.md).
+Evet, Application Gateway v2 SKU 'SU Key Vault destekler. Daha fazla bilgi için bkz. [Key Vault sertifikalarıyla TLS sonlandırma](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>. Com ve .net siteleri için HTTPS dinleyicileri yapılandırmak Nasıl yaparım?? 
 
@@ -454,7 +454,7 @@ Portalda, bir uygulama ağ geçidinin menü dikey penceresinde, denetim günlü�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Uyarıları Application Gateway ayarlayabilir miyim?
 
-Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](./application-gateway-metrics.md) ve [uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md).
+Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](./application-gateway-metrics.md) ve [uyarı bildirimleri alma](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway için trafik istatistiklerini analiz Nasıl yaparım??
 

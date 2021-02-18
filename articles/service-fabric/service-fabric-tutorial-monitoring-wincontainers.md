@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure Service Fabric 'de Windows kapsayıcıları 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840685"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588238"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Öğretici: Azure Izleyici günlüklerini kullanarak Service Fabric Windows kapsayıcılarını Izleme
 
@@ -75,7 +75,7 @@ Bu öğreticinin ilk bölümünde [sağlanan şablonu](https://github.com/Azure-
     "omsSolution": "ServiceFabric"
     ```
 
-3. Microsoft Monitoring Agent’ı sanal makine uzantısı olarak ekleyin. Sanal Makine Ölçek Kümeleri kaynağını bul: *kaynaklar*  >  *"apiversion": "[değişkenler (' vmssApiVersion ')]"*. *properties*  >  *Virtualmachineprofile*  >  *extensionprofile*  >  *Extensions*Özellikler altında, *servicefabricnode* uzantısının altına aşağıdaki uzantı açıklamasını ekleyin: 
+3. Microsoft Monitoring Agent’ı sanal makine uzantısı olarak ekleyin. Sanal Makine Ölçek Kümeleri kaynağını bul: *kaynaklar*  >  *"apiversion": "[değişkenler (' vmssApiVersion ')]"*.   >  *Virtualmachineprofile*  >  *extensionprofile*  >  *Extensions* Özellikler altında, *servicefabricnode* uzantısının altına aşağıdaki uzantı açıklamasını ekleyin: 
     
     ```json
     {
@@ -185,7 +185,7 @@ Geçerli kümenizi yükseltmek için şablonu yeni değişikliklerinizle dağıt
 
 ![Kapsayıcılar çözümü ekleme](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-*Log Analytics çalışma alanı*sorulduğunda, kaynak grubunuzda oluşturulan çalışma alanını seçin ve **Oluştur**' u seçin. Bu, Docker günlüklerini ve istatistiklerini toplamaya başlamak için şablon tarafından dağıtılan Log Analytics aracısını başlatarak çalışma alanınıza bir *kapsayıcı Izleme çözümü* ekler.
+*Log Analytics çalışma alanı* sorulduğunda, kaynak grubunuzda oluşturulan çalışma alanını seçin ve **Oluştur**' u seçin. Bu, Docker günlüklerini ve istatistiklerini toplamaya başlamak için şablon tarafından dağıtılan Log Analytics aracısını başlatarak çalışma alanınıza bir *kapsayıcı Izleme çözümü* ekler.
 
 *Kaynak grubunuza* geri dönün. Yeni eklenen izleme çözümünü burada görürsünüz. Bunu seçerseniz, giriş sayfasında, çalıştırdığınız kapsayıcı görüntülerinin sayısı gösterilir.
 
@@ -209,8 +209,8 @@ Log Analytics aracısını kullanmanın başka bir avantajı da, Azure tanılama
 
 Bu sizi Log Analytics çalışma alanınıza yönlendirir. Burada çözümlerinizi görüntüleyebilir, özel panolar oluşturabilir ve Log Analytics aracısını yapılandırabilirsiniz. 
 * Gelişmiş **Ayarlar ' ı seçerek gelişmiş** ayarlar menüsünü açın.
-* Bağlı **kaynaklar**  >  **Windows Server** ' ı seçerek *5 Windows bilgisayarının bağlı*olduğunu doğrulayın.
-* **Data**  >  Arama yapmak ve yeni performans sayaçlarını eklemek için veri**pencereleri performans sayaçlarını** seçin. Burada, Azure Izleyici günlüklerinden, toplayacağınız performans sayaçlarından ve diğer sayaçları aramak için kullanabileceğiniz önerilerin bir listesini göreceksiniz. Doğrulayın **Processor(_Total)\% İşlemci Zamanı** ve **Memory(*)\Available MBytes** sayaçlarının toplandığını doğrulayın.
+* Bağlı **kaynaklar**  >  **Windows Server** ' ı seçerek *5 Windows bilgisayarının bağlı* olduğunu doğrulayın.
+*   >  Arama yapmak ve yeni performans sayaçlarını eklemek için veri **pencereleri performans sayaçlarını** seçin. Burada, Azure Izleyici günlüklerinden, toplayacağınız performans sayaçlarından ve diğer sayaçları aramak için kullanabileceğiniz önerilerin bir listesini göreceksiniz. Doğrulayın **Processor(_Total)\% İşlemci Zamanı** ve **Memory(*)\Available MBytes** sayaçlarının toplandığını doğrulayın.
 
 Kapsayıcı İzleme Çözümünüzü birkaç dakika içinde **yenileyin**. Bunu yaptığınızda *Bilgisayar Performansı* verilerinin geldiğini görmeye başlarsınız. Bu, kaynaklarınızın nasıl kullanıldığını anlamanıza yardımcı olur. Kümenizi ölçeklendirme konusunda doğru kararlar vermek veya bir kümenin yükünüzü beklenen şekilde dengeleyip dengelemediğini doğrulamak için de bu ölçümleri kullanabilirsiniz.
 
@@ -230,6 +230,6 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Kapsayıcılı uygulamanız için izlemeyi yapılandırdığınıza göre, şunları deneyin:
 
 * Bu öğreticide benzer adımları izleyerek bir Linux kümesi için Azure Izleyici günlüklerini yapılandırma. Kaynak Yöneticisi şablonunuzda değişiklik yapmak için [bu şablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) başvurun.
-* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) ayarlamak Için Azure izleyici günlüklerini yapılandırın.
+* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/alerts/alerts-overview.md) ayarlamak Için Azure izleyici günlüklerini yapılandırın.
 * Service Fabric'in kümeleriniz için yapılandırılacak [önerilen performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) listesini keşfedin.
-* [Günlük araması ve](../azure-monitor/log-query/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama ile familiarized alın.
+* [Günlük araması ve](../azure-monitor/logs/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama ile familiarized alın.

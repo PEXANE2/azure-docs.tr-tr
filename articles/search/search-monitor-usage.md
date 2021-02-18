@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935016"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592370"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
@@ -37,7 +37,7 @@ Azure Bilişsel Arama, hizmet durumu ve sorgu ölçümlerinde raporlama için, p
 Aşağıdaki ekran görüntüsü Portalda izleme bilgilerini bulmanıza yardımcı olur. Hizmeti kullanmaya başladığınızda veriler kullanılabilir hale gelir. Portal sayfaları birkaç dakikada bir yenilenir.
 
 * **İzleme** sekmesi, ana genel bakış sayfasında sorgu hacmi, gecikme süresi ve hizmetin basınç altında olup olmadığı gösterilir.
-* Sol gezinti bölmesindeki **etkinlik günlüğü**Azure Resource Manager bağlıdır. Etkinlik günlüğü Kaynak Yöneticisi, hizmet kullanılabilirliği ve durumu, kapasiteye (çoğaltmalar ve bölümler) yapılan değişiklikler ve API tuşuyla ilgili etkinlikler üzerinde gerçekleştirilen eylemler hakkında rapor sağlar.
+* Sol gezinti bölmesindeki **etkinlik günlüğü** Azure Resource Manager bağlıdır. Etkinlik günlüğü Kaynak Yöneticisi, hizmet kullanılabilirliği ve durumu, kapasiteye (çoğaltmalar ve bölümler) yapılan değişiklikler ve API tuşuyla ilgili etkinlikler üzerinde gerçekleştirilen eylemler hakkında rapor sağlar.
 * **İzleme** ayarları, daha sonra yapılandırılabilir uyarılar, ölçümler ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
 
 ![Arama hizmetinde Azure Izleyici tümleştirmesi](./media/search-monitor-usage/azure-monitor-search.png
@@ -59,9 +59,9 @@ Portalda Izleme ve kullanım sekmelerinde bulunan bilgileri almak için aşağı
 
 ### <a name="activity-logs-and-service-health"></a>Etkinlik günlükleri ve hizmet durumu
 
-Portaldaki [**etkinlik günlüğü**](../azure-monitor/platform/activity-log.md#view-the-activity-log) sayfası, Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
+Portaldaki [**etkinlik günlüğü**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) sayfası, Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
 
-Ortak girişler, API anahtarlarına yönelik başvuruları, *yönetici anahtarı al* ve *sorgu anahtarları*al gibi genel bilgilendirme bildirimleri içerir. Bu etkinlikler, yönetici anahtarı (nesneleri oluştur veya Sil) veya sorgu anahtarı kullanılarak yapılan istekleri gösterir, ancak isteği kendisi göstermez. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
+Ortak girişler, API anahtarlarına yönelik başvuruları, *yönetici anahtarı al* ve *sorgu anahtarları* al gibi genel bilgilendirme bildirimleri içerir. Bu etkinlikler, yönetici anahtarı (nesneleri oluştur veya Sil) veya sorgu anahtarı kullanılarak yapılan istekleri gösterir, ancak isteği kendisi göstermez. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
 
 **Etkinlik günlüğüne** sol gezinti bölmesinden veya en üstteki pencere Komut çubuğundaki bildirimlerden veya **sorunları Tanıla ve çöz** sayfasından erişebilirsiniz.
 
@@ -90,7 +90,7 @@ Azure Izleyici çeşitli depolama seçenekleri sağlar ve tercih ettiğiniz veri
 * Power BI raporunda [günlük verilerini görselleştirmek](search-monitor-logs-powerbi.md) Istiyorsanız Azure Blob Depolama ' yı seçin.
 * Verileri kusto sorguları aracılığıyla araştırmak istiyorsanız Log Analytics seçin.
 
-Azure Izleyici kendi faturalandırma yapısına sahiptir ve bu bölümde başvurulan tanılama günlüklerinin ilişkili bir maliyeti vardır. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanım ve tahmini maliyetler](../azure-monitor/platform/usage-estimated-costs.md).
+Azure Izleyici kendi faturalandırma yapısına sahiptir ve bu bölümde başvurulan tanılama günlüklerinin ilişkili bir maliyeti vardır. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanım ve tahmini maliyetler](../azure-monitor//usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Kullanıcı erişimini izleme
 
@@ -107,4 +107,4 @@ Bu bilgileri $filter parametresini içeren sorgu dizesinden ayrı olarak günlü
 Azure Izleyici ile akıcı olma, Azure Bilişsel Arama gibi kaynaklar dahil olmak üzere tüm Azure hizmetleri hakkında daha fazla bakış için gereklidir. Azure Izleyici hakkında bilgi sahibi değilseniz kaynaklarla ilgili makaleleri gözden geçirme süresini göz atın. Öğreticilere ek olarak, aşağıdaki makale başlamak için iyi bir yerdir.
 
 > [!div class="nextstepaction"]
-> [Azure İzleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md)
+> [Azure İzleyici ile Azure kaynaklarını izleme](../azure-monitor/essentials/monitor-azure-resource.md)

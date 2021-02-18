@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493921"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595971"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Azure Izleyicisini etkinleştirme
 
@@ -49,7 +49,7 @@ Bir Log Analytics çalışma alanı oluşturmak için aşağıdaki adımları uy
 
         ![Log Analytics çalışma alanı için + oluşturmayı gözden geçirin](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-Daha fazla bilgi için [Azure Portal aracılığıyla Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)bölümündeki ayrıntılı adımlara bakın.
+Daha fazla bilgi için [Azure Portal aracılığıyla Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md)bölümündeki ayrıntılı adımlara bakın.
 
 
 
@@ -57,7 +57,7 @@ Daha fazla bilgi için [Azure Portal aracılığıyla Log Analytics çalışma a
 
 Çalışma alanınızda kapsayıcı öngörülerini etkinleştirmek için aşağıdaki adımları uygulayın. 
 
-1. [Azure Izleyici kapsayıcıları çözümünü ekleme](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)bölümündeki ayrıntılı adımları izleyin. Aşağıdaki şablon dosyasını kullanın `containerSolution.json` :
+1. [Azure Izleyici kapsayıcıları çözümünü ekleme](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)bölümündeki ayrıntılı adımları izleyin. Aşağıdaki şablon dosyasını kullanın `containerSolution.json` :
 
     ```yml
     {

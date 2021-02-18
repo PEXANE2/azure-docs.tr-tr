@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319006"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587531"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Izleyici Application Insights aracı API 'SI başvurusu
 
@@ -392,7 +392,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Şu komutu çalıştırın `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
+`Get-ApplicationInsightsMonitoringStatus -InspectProcess` komutunu çalıştırın:
 
 
 ```
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Sonraki adımlar
 
   Telemetrinizi görüntüleyin:
- - Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
+ - Performansı ve kullanımı izlemek için [ölçümleri](../essentials/metrics-charts.md) bulun.
 - Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
-- Daha gelişmiş sorgular için [analiz](../log-query/log-query-overview.md) kullanın.
+- Daha gelişmiş sorgular için [analiz](../logs/log-query-overview.md) kullanın.
 - [Panolar oluşturun](./overview-dashboard.md).
  
  Daha fazla telemetri ekleyin:

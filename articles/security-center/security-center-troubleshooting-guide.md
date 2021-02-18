@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 20241ad316da1c5d713617f3f371d02e2a4e6cc9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460415"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570833"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -42,7 +42,7 @@ Müşteriler, uyarı açıklaması ve ilgi düzeyiyle ilgili geri bildirimde bul
 
 ## <a name="audit-log"></a>Denetim günlüğü
 
-Güvenlik Merkezi’nde yapılan sorun giderme işlemlerinin birçoğu, öncelikle başarısız bileşenlere ilişkin [Denetim Günlüğü](../azure-monitor/platform/platform-logs-overview.md) kayıtlarına bakılarak gerçekleştirilir. Denetim günlükleri ile aşağıdakileri belirleyebilirsiniz:
+Güvenlik Merkezi’nde yapılan sorun giderme işlemlerinin birçoğu, öncelikle başarısız bileşenlere ilişkin [Denetim Günlüğü](../azure-monitor/essentials/platform-logs-overview.md) kayıtlarına bakılarak gerçekleştirilir. Denetim günlükleri ile aşağıdakileri belirleyebilirsiniz:
 
 * Hangi işlemlerin gerçekleştirildiği
 * İşlemi kimin başlattığı
@@ -81,14 +81,14 @@ Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar ürete
 
 **İzleme durumu**, Güvenlik Merkezi’nin otomatik sağlama için başlatılmış VM’leri ve bilgisayarları neden başarıyla izleyemediğini tanımlar. Aşağıdaki tabloda **İzleme durumu** değerleri, açıklamaları ve çözüm adımları gösterilmektedir.
 
-| İzleme durumu | Açıklama | Çözüm adımları |
+| İzleme durumu | Description | Çözüm adımları |
 |---|---|---|
 | Bekleyen aracı yüklemesi | Log Analytics Aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
 | Güç durumu kapalı | VM durduruldu.  Log Analytics Aracısı yalnızca çalıştıran bir VM 'ye yüklenebilir. | VM’yi yeniden başlatın. |
 | Eksik veya geçersiz Azure VM aracısı | Log Analytics Aracısı henüz yüklenmedi.  Güvenlik Merkezi’nin uzantıyı yüklemesi için geçerli bir Azure VM aracısı gereklidir. | Azure VM aracısını VM’ye yükleyin, yeniden yükleyin veya yükseltin. |
 | VM durumu yükleme için hazır değil  | VM yüklenmeye için kullanılamadığından Log Analytics Aracısı henüz yüklenmedi. VM aracısı veya VM sağlama ile ilgili bir sorun nedeniyle VM yükleme için hazır değil. | Sanal makinenizin durumunu denetleyin. Portalda **Sanal Makineler**’e geri dönün ve durum bilgisi için VM’yi seçin. |
-|Yükleme başarısız oldu - genel hata | Log Analytics Aracısı yüklendi, ancak bir hata nedeniyle başarısız oldu. | [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) veya Güvenlik Merkezi’nin yüklemeyi yeniden denemesi için uzantıyı kaldırın. |
-| Yükleme başarısız oldu - yerel aracı zaten yüklü | Aracı yüklemesi Log Analytics başarısız oldu. Güvenlik Merkezi, VM 'de zaten yüklü olan bir yerel aracı (Log Analytics veya System Center Operations Manager) tanımladı. VM 'nin iki ayrı çalışma alanına bildirdiği çok girişli yapılandırmayı önlemek için Log Analytics aracı yüklemesi durdurulur. | Çözümlemek için iki yol vardır: [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) ve istediğiniz çalışma alanına bağlayın. Veya, istediğiniz çalışma alanını varsayılan çalışma alanı olarak ayarlayın ve aracının otomatik sağlamasını etkinleştirin.  Bkz. [otomatik sağlamayı etkinleştirme](security-center-enable-data-collection.md). |
+|Yükleme başarısız oldu - genel hata | Log Analytics Aracısı yüklendi, ancak bir hata nedeniyle başarısız oldu. | [Uzantıyı el ile yükleyin](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) veya Güvenlik Merkezi’nin yüklemeyi yeniden denemesi için uzantıyı kaldırın. |
+| Yükleme başarısız oldu - yerel aracı zaten yüklü | Aracı yüklemesi Log Analytics başarısız oldu. Güvenlik Merkezi, VM 'de zaten yüklü olan bir yerel aracı (Log Analytics veya System Center Operations Manager) tanımladı. VM 'nin iki ayrı çalışma alanına bildirdiği çok girişli yapılandırmayı önlemek için Log Analytics aracı yüklemesi durdurulur. | Çözümlemek için iki yol vardır: [Uzantıyı el ile yükleyin](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) ve istediğiniz çalışma alanına bağlayın. Veya, istediğiniz çalışma alanını varsayılan çalışma alanı olarak ayarlayın ve aracının otomatik sağlamasını etkinleştirin.  Bkz. [otomatik sağlamayı etkinleştirme](security-center-enable-data-collection.md). |
 | Aracı çalışma alanına bağlanamıyor | Log Analytics Aracısı yüklendi, ancak ağ bağlantısı nedeniyle başarısız oldu.  İnternet erişiminin olduğundan veya aracı için geçerli bir HTTP ara sunucusunun yapılandırıldığından emin olun. | Bkz. Monitoring agent ağ gereksinimleri. |
 | Aracı eksik veya bilinmeyen çalışma alanına bağlandı | Güvenlik Merkezi, VM 'de yüklü Log Analytics aracısının, erişimi olmayan bir çalışma alanına bağlı olduğunu belirledi. | Bu durum iki koşulda meydana gelebilir. Çalışma alanı silindi ve artık mevcut değil. Aracıyı doğru çalışma alanıyla yeniden yükleyin veya aracıyı kaldırıp Güvenlik Merkezi’nin otomatik sağlama yüklemesini tamamlamasını bekleyin. İkinci koşul ise çalışma alanının, Güvenlik Merkezi’nin izinli olmadığı bir aboneliğe ait olmasıdır. Güvenlik Merkezi, aboneliklerin Microsoft Güvenlik Kaynak Sağlayıcısı'na erişim izni vermesini gerektirir. Etkinleştirmek için aboneliği Microsoft Güvenlik Kaynak Sağlayıcısı’na kaydedin. Bu işlem API, PowerShell, portal veya yalnızca Güvenlik Merkezi'ndeki **Genel Bakış** Panosunda abonelik filtrelenerek yapılabilir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Aracı yanıt vermiyor veya kimliği eksik | Güvenlik Merkezi, aracı yüklü olsa bile VM’den taranan güvenlik verilerini alamıyor. | Aracı, sinyal de dahil olmak üzere herhangi bir veri bildirmiyor. Aracı zarar görmüş olabilir veya trafiği engelleyen bir durum vardır. Ya da, aracı verileri raporluyor, ancak Azure Kaynak KIMLIĞI eksik olduğundan, verileri Azure VM ile eşleştirmek imkansız olabilir. Linux sorunlarını gidermek için bkz. [Linux için Log Analytics Aracısı Için sorun giderme kılavuzu](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows’da sorun gidermek için bkz. [Windows Sanal Makineleri’nde Sorun Giderme](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support). |
@@ -98,17 +98,17 @@ Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar ürete
 
 Aracıların Güvenlik Merkezi’ne bağlanması ve kaydolması için, bağlantı noktası numaraları ve etki alanı URL’leri dahil olmak üzere ağ kaynaklarına erişebilmesi gerekir.
 
-* Proxy sunucuları için, aracı ayarlarında uygun proxy sunucusu kaynaklarının yapılandırıldığından emin olmanız gerekir. [Proxy ayarlarını değiştirme](../azure-monitor/platform/agent-windows.md) hakkında daha fazla bilgi için bu makaleyi okuyun.
+* Proxy sunucuları için, aracı ayarlarında uygun proxy sunucusu kaynaklarının yapılandırıldığından emin olmanız gerekir. [Proxy ayarlarını değiştirme](../azure-monitor/agents/agent-windows.md) hakkında daha fazla bilgi için bu makaleyi okuyun.
 * İnternete erişimi kısıtlayan güvenlik duvarları için, güvenlik duvarınızı Log Analytics erişimine izin verecek şekilde yapılandırmanız gerekir. Aracı ayarlarında bir işlem yapılması gerekmez.
 
 Aşağıdaki tabloda iletişim için gereken kaynaklar gösterilmektedir.
 
 | Aracı Kaynağı | Bağlantı noktaları | HTTPS denetlemesini atlama |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Evet |
-| *.oms.opinsights.azure.com | 443 | Evet |
-| *.blob.core.windows.net | 443 | Evet |
-| *.azure-automation.net | 443 | Evet |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Aracıyla ekleme sorunları yaşarsanız, [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) makalesini okuduğunuzdan emin olun.
 

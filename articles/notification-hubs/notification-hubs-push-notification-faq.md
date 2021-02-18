@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591748"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -196,7 +196,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 
 - [.Net Ile Azure izleyici ölçümlerini alın](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Bu örnek, Kullanıcı adını ve parolayı kullanır. Bir sertifika kullanmak için, [Bu örnekte](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)gösterildiği gibi bir sertifika sağlamak üzere FromServicePrincipal metodunu aşırı yükleme. 
 - [Bir kaynak için ölçümleri ve etkinlik günlüklerini alma](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure İzleme REST API'si adım adım kılavuzu](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Azure İzleme REST API'si adım adım kılavuzu](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Başarılı bildirimler, anında iletme bildirimlerinin dış PNS 'ye teslim edildiğini (örneğin, iOS ve macOS için APNs ve Android cihazlar için FCM) sağlar. Hedef cihazlara bildirimleri teslim etmek için PNS 'nin sorumluluğundadır. Genellikle, PNS, teslim ölçümlerini üçüncü taraflara sunmaz.  
@@ -211,7 +211,7 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Notification Hubs güvenlik modeli]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Notification Hubs güvenli anında Iletme öğreticisi]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Notification Hubs sorunlarını giderme]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs ölçümleri]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs ölçümleri]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Kayıt verme/Içeri aktarma]: ./export-modify-registrations-bulk.md
 [Azure portalı]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257922"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580056"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
 
@@ -302,7 +302,7 @@ Bağlayıcılar ve hizmet, tüm yüksek oranda kullanılabilir görevleri ele al
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows olay günlükleri ve performans sayaçları
 
-Bağlayıcılar yönetici ve oturum günlüklerine sahiptir. Yönetici günlükleri, anahtar olayları ve bunların hatalarını içerir. Oturum günlükleri tüm işlemleri ve bunların işleme ayrıntılarını içerir. Günlükler ve sayaçlar Windows olay günlüklerinde bulunur daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](./application-proxy-connectors.md#under-the-hood). [Azure izleyici 'de olay günlüğü veri kaynaklarını yapılandırmak için bu öğreticiyi](../../azure-monitor/platform/data-sources-windows-events.md)izleyin.
+Bağlayıcılar yönetici ve oturum günlüklerine sahiptir. Yönetici günlükleri, anahtar olayları ve bunların hatalarını içerir. Oturum günlükleri tüm işlemleri ve bunların işleme ayrıntılarını içerir. Günlükler ve sayaçlar Windows olay günlüklerinde bulunur daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](./application-proxy-connectors.md#under-the-hood). [Azure izleyici 'de olay günlüğü veri kaynaklarını yapılandırmak için bu öğreticiyi](../../azure-monitor/agents/data-sources-windows-events.md)izleyin.
 
 ### <a name="troubleshooting-guide-and-steps"></a>Sorun giderme kılavuzu ve adımları
 

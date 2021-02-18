@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570983"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
 
@@ -35,7 +35,7 @@ Azure ekosistemi içinden ağ Izleyicisi, uyarı ve işlevleri kullanarak ağın
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure PowerShell](/powershell/azure/install-Az-ps)en son sürümü.
 * Var olan bir ağ Izleyicisi örneği. Henüz bir tane yoksa, [Ağ İzleyicisi 'nin bir örneğini oluşturun](network-watcher-create.md).
@@ -81,7 +81,7 @@ Bu senaryo şunları yapar:
     |**Kaynak Grubu**|PacketCaptureRG|İşlev uygulamasını içerecek kaynak grubu.|
     |**Barındırma Planı**|Tüketim Planı| İşlev uygulamanızın kullandığı planın türü. Seçenekler, tüketim veya Azure App Service planlardır. |
     |**Konum**|Central US| İşlev uygulamasının oluşturulacağı bölge.|
-    |**Depolama hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
+    |**Depolama Hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
 
 3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler**  >  **özel işlev**' i seçin  > **+** .
 
@@ -332,7 +332,7 @@ Aşağıdaki örnek, işlevinde kullanılabilen PowerShell kodudur. **Subscripti
 
     ![İşlev URL 'SI kopyalanıyor][2]
 
-Web kancası GÖNDERI isteği yükünde özel özellikler gerekiyorsa, [Azure ölçüm uyarısında Web kancası yapılandırma](../azure-monitor/platform/alerts-webhooks.md)konusuna bakın.
+Web kancası GÖNDERI isteği yükünde özel özellikler gerekiyorsa, [Azure ölçüm uyarısında Web kancası yapılandırma](../azure-monitor/alerts/alerts-webhooks.md)konusuna bakın.
 
 ## <a name="configure-an-alert-on-a-vm"></a>VM 'de uyarı yapılandırma
 
@@ -340,7 +340,7 @@ Uyarılar, belirli bir ölçüm kendisine atanan bir eşiğe girdiğinde bireyle
 
 ### <a name="create-the-alert-rule"></a>Uyarı kuralı oluşturma
 
-Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yapılandırma hakkında daha ayrıntılı belgeler, [Azure hizmetleri Için Azure izleyici 'de uyarı oluşturma ' da bulunabilir-Azure Portal](../azure-monitor/platform/alerts-classic-portal.md). **Uyarı kuralı** dikey penceresinde aşağıdaki değerleri girin ve **Tamam**' ı seçin.
+Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yapılandırma hakkında daha ayrıntılı belgeler, [Azure hizmetleri Için Azure izleyici 'de uyarı oluşturma ' da bulunabilir-Azure Portal](../azure-monitor/alerts/alerts-classic-portal.md). **Uyarı kuralı** dikey penceresinde aşağıdaki değerleri girin ve **Tamam**' ı seçin.
 
   |**Ayar** | **Değer** | **Ayrıntılar** |
   |---|---|---|

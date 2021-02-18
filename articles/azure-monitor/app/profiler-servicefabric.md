@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67e7765a1f46c2be5790c11687e06ea624702b9b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930290"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589564"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights ile canlı Azure Service Fabric uygulamaları profilini yayınlama
 
@@ -29,7 +29,7 @@ Ortamınızı ayarlamak için aşağıdaki işlemleri gerçekleştirin:
 
 1. Profiler .NET Framework ve .Net Core destekler. .NET Framework kullanıyorsanız, [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) veya üstünü kullandığınızdan emin olun. Dağıtılan işletim sisteminin `Windows Server 2012 R2` veya daha yeni bir sürümü olduğunu doğrulamak yeterlidir. Profiler, .NET Core 2,1 ve daha yeni uygulamaları destekler.
 
-1. Dağıtım şablonu dosyasında [Azure tanılama](../platform/diagnostics-extension-overview.md) uzantısını arayın.
+1. Dağıtım şablonu dosyasında [Azure tanılama](../agents/diagnostics-extension-overview.md) uzantısını arayın.
 
 1. Aşağıdaki `SinksConfig` bölümü öğesinin bir alt öğesi olarak ekleyin `WadCfg` . `ApplicationInsightsProfiler`Özellik değerini kendi Application Insights izleme anahtarınızla değiştirin:  
 

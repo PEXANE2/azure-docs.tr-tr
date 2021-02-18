@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202003"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591816"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Azure Güvenlik temeli
 
@@ -171,7 +171,7 @@ Alternatif olarak, bu verileri Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -185,7 +185,7 @@ Alternatif olarak, bu verileri Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 - [Azure Bilişsel Arama günlük verilerini toplama ve çözümleme](./search-monitor-logs.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -205,7 +205,7 @@ Alternatif olarak, bu verileri Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 Azure Izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın. 
 
-- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -223,9 +223,9 @@ Azure Izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics hakkında bilgi edinin](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics hakkında bilgi edinin](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -239,7 +239,7 @@ Azure Izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -532,7 +532,7 @@ Microsoft, Bilişsel Arama için temel altyapıyı yönetir ve müşteri veriler
 
 **Kılavuz**: bilişsel arama üretim örneklerine ve diğer önemli veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Bilişsel Arama etkinlikleri için uyarı oluşturma](./search-monitor-logs.md)
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542227"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591766"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>MySQL için Azure veritabanı esnek sunucusu 'nda denetim günlükleriyle veritabanı etkinliğini izleme
 
@@ -50,7 +50,7 @@ Denetim günlüğü davranışlarını denetlemek için ayarlayabileceğiniz di�
 
 ## <a name="access-audit-logs"></a>Denetim günlüklerine erişme
 
-Denetim günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](how-to-configure-audit-logs-portal.md#set-up-diagnostics)bakın.
+Denetim günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/essentials/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [Denetim günlüğü portalı makalesine](how-to-configure-audit-logs-portal.md#set-up-diagnostics)bakın.
 
 Aşağıdaki bölümlerde, olay türüne göre MySQL denetim günlüklerinin çıktısı açıklanır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 

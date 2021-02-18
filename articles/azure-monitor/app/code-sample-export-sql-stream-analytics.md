@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942419"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587746"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -61,7 +61,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
     ![Olay türlerini seçin](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
+1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../essentials/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
    
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. , Portalda, bu verileri inceleyin; **tarayıcı**' yı seçin, depolama hesabınızı seçin ve ardından veya Visual Studio 'da **kapsayıcılar** ' ı seçin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
@@ -252,7 +252,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
 

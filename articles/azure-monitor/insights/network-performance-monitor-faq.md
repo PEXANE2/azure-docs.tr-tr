@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833023"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587262"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -43,7 +43,7 @@ Linux tabanlı düğümleri kullanarak ağları izleme özelliği artık genel k
 Ağları izlemek üzere düğüm VM 'lerinde NPM çözümünü çalıştırmak için düğümlerin en az 500 MB ve bir çekirdeğe sahip olması gerekir. NPM 'yi çalıştırmak için ayrı düğümler kullanmanız gerekmez. Çözüm, üzerinde çalışan diğer iş yükleri olan düğümlerde çalıştırılabilir. Çözüm, %5 ' ten fazla CPU kullanıyorsa izleme işlemini durdurma özelliğine sahiptir.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM 'yi kullanmak için, düğümlerimi doğrudan aracı olarak veya System Center Operations Manager aracılığıyla bağlamanız gerekir mi?
-Hem performans Izleyicisi hem de hizmet bağlantısı Izleyicisi özellikleri [doğrudan aracılar olarak bağlanan](../platform/agent-windows.md) ve [Operations Manager aracılığıyla bağlanan](../platform/om-agents.md)düğümleri destekler.
+Hem performans Izleyicisi hem de hizmet bağlantısı Izleyicisi özellikleri [doğrudan aracılar olarak bağlanan](../agents/agent-windows.md) ve [Operations Manager aracılığıyla bağlanan](../agents/om-agents.md)düğümleri destekler.
 
 ExpressRoute Izleyici özelliği için Azure düğümlerinin yalnızca doğrudan aracı olarak bağlanması gerekir. Operations Manager ile bağlantılı Azure düğümleri desteklenmez. Şirket içi düğümlerde, bir ExpressRoute devresini izlemek için doğrudan aracılar ve Operations Manager aracılığıyla bağlanan düğümler desteklenir.
 
@@ -98,7 +98,7 @@ Bir atlama kırmızıysa, en az bir sağlıksız yolun parçası olduğunu belir
 NPM her ağ yoluna, ağ kesimine ve bileşen ağ atlıklarına, bir parçası oldukları sağlıksız yolların sayısına göre hata olasılıkların atanmasını sağlamak için bir dayalı mekanizması kullanır. Ağ kesimleri ve atlamaları daha fazla sağlıksız yolun parçası haline geldiği için, bunlarla ilişkili hata olasılığı artar. Bu algoritma en iyi şekilde çalışarak, hata olasılıkların hesaplanması için veri noktalarını arttığı için NPM Aracısı birbirlerine bağlı olan çok sayıda düğümünüz olduğunda bu algoritma en iyi şekilde çalışacaktır.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM 'de nasıl uyarı oluşturabilirim?
-Şu anda, NPM kullanıcı arabiriminden uyarı oluşturma, bilinen bir sorundan dolayı başarısız oluyor. Lütfen [uyarıları el ile oluşturun](../platform/alerts-log.md).
+Şu anda, NPM kullanıcı arabiriminden uyarı oluşturma, bilinen bir sorundan dolayı başarısız oluyor. Lütfen [uyarıları el ile oluşturun](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Uyarılar için varsayılan Log Analytics sorguları nelerdir?
 Performans İzleyicisi sorgusu

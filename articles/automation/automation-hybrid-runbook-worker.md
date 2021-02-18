@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896961"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581265"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -25,7 +25,7 @@ Azure Otomasyonu 'ndaki runbook 'lar, Azure bulut platformunda çalıştıkları
 |**Sistem** |, Windows ve Linux makinelerine Kullanıcı tarafından belirtilen güncelleştirmeleri yüklemek için tasarlanan Güncelleştirme Yönetimi özelliği tarafından kullanılan bir gizli runbook kümesini destekler.<br> Bu karma runbook çalışanı türü karma Runbook Worker grubunun bir üyesi değildir ve bu nedenle bir runbook worker grubunu hedefleyen runbook 'ları çalıştırmaz. |
 |**Kullanıcı** |, Bir veya daha fazla Runbook Worker grubunun üyesi olan Windows ve Linux makinesinde doğrudan çalıştırılması amaçlanan Kullanıcı tanımlı runbook 'ları destekler. |
 
-Karma Runbook Worker, Windows veya Linux işletim sistemi üzerinde çalışabilir ve bu rol, Azure Izleyici [Log Analytics çalışma alanına](../azure-monitor/platform/design-logs-deployment.md)raporlama [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) bağımlıdır. Çalışma alanı yalnızca desteklenen işletim sistemi için makineyi izlemek için değil, karma Runbook Worker 'ı yüklemek için gereken bileşenleri de indiriyordu.
+Karma Runbook Worker, Windows veya Linux işletim sistemi üzerinde çalışabilir ve bu rol, Azure Izleyici [Log Analytics çalışma alanına](../azure-monitor/logs/design-logs-deployment.md)raporlama [Log Analytics aracısına](../azure-monitor/agents/log-analytics-agent.md) bağımlıdır. Çalışma alanı yalnızca desteklenen işletim sistemi için makineyi izlemek için değil, karma Runbook Worker 'ı yüklemek için gereken bileşenleri de indiriyordu.
 
 Azure Otomasyonu [güncelleştirme yönetimi](./update-management/overview.md) etkinleştirildiğinde, Log Analytics çalışma alanınıza bağlı tüm makineler otomatik olarak bir sistem karma runbook çalışanı olarak yapılandırılır. Bir Kullanıcı Windows karma Runbook Worker olarak yapılandırmak için bkz. [Windows karma runbook çalışanı dağıtma](automation-windows-hrw-install.md) ve Linux için bkz. [Linux karma Runbook Worker dağıtımı](automation-linux-hrw-install.md).
 
@@ -62,7 +62,7 @@ Azure Otomasyonu ve Log Analytics aracısını çalıştıran makineler arasınd
 
 ### <a name="firewall-use"></a>Güvenlik duvarı kullanımı
 
-Internet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma runbook çalışanları için Log Analytics ağ geçidini yapılandırma](../azure-monitor/platform/gateway.md).
+Internet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma runbook çalışanları için Log Analytics ağ geçidini yapılandırma](../azure-monitor/agents/gateway.md).
 
 ### <a name="service-tags"></a>Hizmet etiketleri
 

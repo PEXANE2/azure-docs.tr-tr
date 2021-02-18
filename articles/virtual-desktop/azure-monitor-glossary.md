@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468035"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576631"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows sanal masaüstü için Azure Izleyici (Önizleme) sözlüğü
 
@@ -24,7 +24,7 @@ Bu makalede, Windows sanal masaüstü için Azure Izleyici (Önizleme) ile ilgil
 
 ## <a name="alerts"></a>Uyarılar
 
-Abonelikte yapılandırdığınız ve [önem derecesi 1](#severity-1-alerts) olarak sınıflandırdığınız etkin Azure Izleyici uyarıları Genel Bakış sayfasında görünür. Uyarıları ayarlamayı öğrenmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/learn/tutorial-response.md).
+Abonelikte yapılandırdığınız ve [önem derecesi 1](#severity-1-alerts) olarak sınıflandırdığınız etkin Azure Izleyici uyarıları Genel Bakış sayfasında görünür. Uyarıları ayarlamayı öğrenmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Kullanılabilir oturumlar
 
@@ -128,7 +128,7 @@ Aşağıdaki tabloda, Azure Izleyicisinin Windows sanal masaüstü için kulland
 |RemoteFX ağı ( \* ) \\ GEÇERLI TCP RTT|30 saniye|
 |RemoteFX ağı ( \* ) \\ geçerli UDP bant genişliği|30 saniye|
 
-Performans sayaçlarını okuma hakkında daha fazla bilgi için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/platform/data-sources-performance-counters.md).
+Performans sayaçlarını okuma hakkında daha fazla bilgi için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
 
 Giriş gecikmesi performans sayaçları hakkında daha fazla bilgi edinmek için bkz. [Kullanıcı girişi gecikmesi performans sayaçları](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
@@ -186,7 +186,7 @@ Aşağıdaki tabloda, Windows sanal masaüstü için Azure Izleyici için gerekl
 | Microsoft-FSLogix-Apps/Işletimsel|Hata, uyarı ve bilgi|
 |Microsoft-FSLogix-uygulamalar/yönetici|Hata, uyarı ve bilgi|
 
-Windows olayları hakkında daha fazla bilgi için bkz. [Windows olay kayıtları özellikleri](../azure-monitor/platform/data-sources-windows-events.md).
+Windows olayları hakkında daha fazla bilgi için bkz. [Windows olay kayıtları özellikleri](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

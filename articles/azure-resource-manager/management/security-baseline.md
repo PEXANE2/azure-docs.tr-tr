@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5e44515c8ca71d115ced65c9123e2b1ae3bdf23a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202377"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578231"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager için Azure Güvenlik temeli
 
@@ -31,9 +31,9 @@ Bu güvenlik temeli, Microsoft Azure Kaynak Yöneticisi [Azure Güvenlik kıyasl
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md) 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/learn/quick-collect-azurevm.md) 
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -45,9 +45,9 @@ Bu güvenlik temeli, Microsoft Azure Kaynak Yöneticisi [Azure Güvenlik kıyasl
 
 **Rehberlik**: Azure Resource Manager olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerecek şekilde otomatik olarak etkinleştirilen etkinlik günlüklerini kullanır.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -61,9 +61,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics sorguları ile çalışmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics sorguları ile çalışmaya başlama](../../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -77,7 +77,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -261,7 +261,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile kullanarak, önemli Azure kaynaklarında değişiklik yapıldığında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

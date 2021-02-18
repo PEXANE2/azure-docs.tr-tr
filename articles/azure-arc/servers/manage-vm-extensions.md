@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580860"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucularla sanal makine uzantısı yönetimi
 
@@ -27,9 +27,9 @@ Azure Arc etkin sunucuları VM uzantısı desteği aşağıdaki önemli avantajl
 
 - [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md) ' nı kullanarak yapılandırmaları merkezi olarak depolar ve DSC VM Uzantısı aracılığıyla etkinleştirilen karma bağlı makinelerin istenen durumunu koruyun.
 
-- [Azure izleyici 'de Günlükler](../../azure-monitor/platform/data-platform-logs.md) ile analizler için günlük verilerini log ANALYTICS aracı VM Uzantısı aracılığıyla toplayın. Bu, farklı türdeki kaynaklardaki veriler arasında karmaşık analizler yapmak için yararlıdır.
+- [Azure izleyici 'de Günlükler](../../azure-monitor/logs/data-platform-logs.md) ile analizler için günlük verilerini log ANALYTICS aracı VM Uzantısı aracılığıyla toplayın. Bu, farklı türdeki kaynaklardaki veriler arasında karmaşık analizler yapmak için yararlıdır.
 
-- [VM'ler için Azure izleyici](../../azure-monitor/insights/vminsights-overview.md), Windows ve Linux sanal makinelerinizin performansını analiz eder ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izler. Bu, hem Log Analytics Aracısı hem de bağımlılık Aracısı VM uzantılarını etkinleştirerek elde edilir.
+- [VM'ler için Azure izleyici](../../azure-monitor/vm/vminsights-overview.md), Windows ve Linux sanal makinelerinizin performansını analiz eder ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izler. Bu, hem Log Analytics Aracısı hem de bağımlılık Aracısı VM uzantılarını etkinleştirerek elde edilir.
 
 - Özel Betik uzantısını kullanarak karma bağlantılı makinelerde komut dosyalarını indirip yürütün. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka herhangi bir yapılandırma ya da yönetim görevi için yararlıdır.
 
@@ -55,7 +55,7 @@ Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki
 |Log Analytics aracısı |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Windows için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-windows.md)|
 |VM'ler için Azure İzleyici (Öngörüler) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Windows için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Sertifika eşitlemesini Azure Key Vault | Microsoft. Azure. Key. kasa |KeyVaultForWindows | [Windows için Key Vault sanal makine uzantısı](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux uzantıları
 
@@ -67,7 +67,7 @@ Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki
 |Log Analytics aracısı |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Linux için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-linux.md) |
 |VM'ler için Azure İzleyici (Öngörüler) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Linux için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Sertifika eşitlemesini Azure Key Vault | Microsoft. Azure. Key. kasa |KeyVaultForLinux | [Linux için sanal makine uzantısı Key Vault](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499824"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571675"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
-Bu makalede Azure [Site Recovery](site-recovery-overview.md)tarafından çoğaltılan makinelerin [Azure izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md)kullanılarak ve [Log Analytics](../azure-monitor/log-query/log-query-overview.md)nasıl izleneceği açıklanır.
+Bu makalede Azure [Site Recovery](site-recovery-overview.md)tarafından çoğaltılan makinelerin [Azure izleyici günlükleri](../azure-monitor/logs/data-platform-logs.md)kullanılarak ve [Log Analytics](../azure-monitor/logs/log-query-overview.md)nasıl izleneceği açıklanır.
 
 Azure Izleyici günlükleri, diğer izleme verileriyle birlikte etkinlik ve kaynak günlüklerini toplayan bir günlük veri platformu sağlar. Azure Izleyici günlükleri içinde, günlük sorgularını yazmak ve test etmek ve günlük verilerini etkileşimli olarak analiz etmek için Log Analytics kullanırsınız. Günlük sonuçlarını görselleştirebilir ve sorgulayabilir ve izlenen verilere göre eylemleri gerçekleştirmek için uyarıları yapılandırabilirsiniz.
 
@@ -35,8 +35,8 @@ Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure **'a** çoğaltm
 İşte gerekenler:
 
 - Bir kurtarma hizmetleri kasasında korunan en az bir makine.
-- Site Recovery günlüklerini depolamak için bir Log Analytics çalışma alanı. Çalışma alanı ayarlama [hakkında bilgi edinin](../azure-monitor/learn/quick-create-workspace.md) .
-- Log Analytics 'de günlük sorgularının nasıl yazılacağı, çalıştırılacağı ve analiz edileceği hakkında temel bir anlama. [Daha fazla bilgi edinin](../azure-monitor/log-query/log-analytics-tutorial.md).
+- Site Recovery günlüklerini depolamak için bir Log Analytics çalışma alanı. Çalışma alanı ayarlama [hakkında bilgi edinin](../azure-monitor/logs/quick-create-workspace.md) .
+- Log Analytics 'de günlük sorgularının nasıl yazılacağı, çalıştırılacağı ve analiz edileceği hakkında temel bir anlama. [Daha fazla bilgi edinin](../azure-monitor/logs/log-analytics-tutorial.md).
 
 Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) incelemenizi öneririz.
 
@@ -62,9 +62,9 @@ Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDia
 1. Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın.
 2. **Bağlı kaynaklar** sayfasına tıklayın ve **Windows Server**' ı seçin.
 3. Işlem sunucusuna Windows Agent 'ı (64 bit) indirin. 
-4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [Aracıyı TLS 1,2 kullanacak şekilde yapılandırma](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) .
+4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [Aracıyı TLS 1,2 kullanacak şekilde yapılandırma](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard) .
 7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın. **Veri** sayfasına gidin ve **Windows performans sayaçları**' na tıklayın. 
 8. Aşağıdaki iki sayacı 300 saniyelik örnek aralığıyla eklemek için **' + '** düğmesine tıklayın:
 
@@ -76,7 +76,7 @@ Dalgalanma ve karşıya yükleme hızı verileri, çalışma alanına beslemeyi 
 
 ## <a name="query-the-logs---examples"></a>Günlükleri sorgulama-örnekler
 
-[Kusto sorgu diliyle](../azure-monitor/log-query/get-started-queries.md)yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Recovery izlemek için kullanabileceğiniz yaygın sorgulara yönelik birkaç örnek verilmiştir.
+[Kusto sorgu diliyle](../azure-monitor/logs/get-started-queries.md)yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Recovery izlemek için kullanabileceğiniz yaygın sorgulara yönelik birkaç örnek verilmiştir.
 
 > [!NOTE]
 > Örneklerden bazıları **A2A** olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Uyarıları ayarlama-örnekler
 
-Azure Izleyici verilerine göre Site Recovery uyarıları ayarlayabilirsiniz. Günlük uyarılarını ayarlama hakkında [daha fazla bilgi edinin](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) . 
+Azure Izleyici verilerine göre Site Recovery uyarıları ayarlayabilirsiniz. Günlük uyarılarını ayarlama hakkında [daha fazla bilgi edinin](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) . 
 
 > [!NOTE]
 > Örneklerden bazıları **A2A** olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
