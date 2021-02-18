@@ -3,12 +3,12 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934892"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578569"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
@@ -67,11 +67,11 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 ### <a name="function-app-level-metrics"></a>İşlev uygulama düzeyi ölçümleri
 
-İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) 'ni kullanabilirsiniz.
+İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/essentials/metrics-getting-started.md) 'ni kullanabilirsiniz.
 
 #### <a name="monitor-metrics-explorer"></a>Ölçüm Gezginini izleme
 
-Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik biçiminde görüntülemek için [Azure izleyici ölçümleri Gezginini](../azure-monitor/platform/metrics-getting-started.md) kullanın. 
+Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik biçiminde görüntülemek için [Azure izleyici ölçümleri Gezginini](../azure-monitor/essentials/metrics-getting-started.md) kullanın. 
 
 1. **Arama Hizmetleri, kaynaklar ve docs** 'daki [Azure Portal] üst kısmında, `monitor` **Hizmetler**' in altında **izleme** ' yi arayın ve seçin.
 
@@ -103,7 +103,7 @@ Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu 
 
 Bu grafik `Function Execution Units` , MB cinsinden ölçülen, iki saatlik bir dönemde tüketilen toplam 1.110.000.000 sayısını gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması `1110000000 / 1024000 = 1083.98` GB-saniye tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasındaki]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 [Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
@@ -208,4 +208,4 @@ Daha önce yapmadıysanız, [işlev uygulamanızda Application Insights etkinle�
 > [İşlev uygulamalarını Izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
 
 [fiyatlandırma sayfası]:https://azure.microsoft.com/pricing/details/functions/
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

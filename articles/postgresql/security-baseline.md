@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89296b3d0ee4e4339553d22d2ae53ee470ecad31
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1ff047c44833a94ae9db0a410f501a1f23a369f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807589"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576232"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı için Azure Güvenlik temeli-tek sunucu
 
@@ -160,9 +160,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve PostgreSQL Için Azure veritabanı örnekleri ile ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -202,7 +202,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme](concepts-audit.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -220,9 +220,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure izleyici 'de, PostgreSQL Için Azure veritabanınızı tutmak üzere kullanılan Log Analytics çalışma alanı için, saklama süresini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Kaynak günlüklerini bir Azure depolama hesabında depolama](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Kaynak günlüklerini bir Azure depolama hesabında depolama](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -234,9 +234,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics hakkında daha fazla bilgi için](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics hakkında daha fazla bilgi için](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -254,7 +254,7 @@ Ayrıca, PostgreSQL için sunucu günlüklerini ve tanılama ayarlarını etkinl
 
 - [PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme](concepts-audit.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -588,7 +588,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 **Kılavuz**: Azure Izleyici 'Yi PostgreSQL Için Azure veritabanı ve diğer kritik veya ilgili kaynakların üretim örneklerine ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü ile birlikte kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

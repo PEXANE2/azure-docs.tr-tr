@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02062edd1a940bcc6588ab53457e0af91fedd9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75651754"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578269"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Yönetilen uygulamanın dağıtılan bir örneğini izleme
 
@@ -32,7 +32,7 @@ Azure aboneliğinize yönetilen bir uygulama dağıttıktan sonra, uygulamanın 
 
 ## <a name="view-alerts"></a>Uyarıları görüntüleme
 
-1. **Uyarıları**seçin.
+1. **Uyarıları** seçin.
 
    ![Uyarıları Seç](./media/monitor-managed-application-portal/select-alerts.png)
 
@@ -44,7 +44,7 @@ Azure aboneliğinize yönetilen bir uygulama dağıttıktan sonra, uygulamanın 
 
    ![Uyarı oluşturma](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Yönetilen uygulama örneğiniz veya yönetilen uygulamadaki kaynaklar için uyarılar oluşturabilirsiniz. Uyarı oluşturma hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/platform/alerts-overview.md).
+Yönetilen uygulama örneğiniz veya yönetilen uygulamadaki kaynaklar için uyarılar oluşturabilirsiniz. Uyarı oluşturma hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

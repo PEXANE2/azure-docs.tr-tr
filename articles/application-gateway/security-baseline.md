@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805369"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579756"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway için Azure Güvenlik temeli
 
@@ -188,9 +188,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Application Gateway dağıtımlarınızla ilgili ağ ayarları ve kaynakları için değişiklikleri tespit edin. Kritik ağ ayarlarında veya kaynaklarda yapılan değişiklikler gerçekleştiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -216,7 +216,7 @@ Etkinlik günlüklerine ek olarak, Azure Application Gateway dağıtımlarınız
 
 Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tümleştirme sunar. Application Insights günlük, performans ve hata verilerini toplar. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve Web uygulamalarınızın nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Verileri standart saklama süresinden daha uzun tutmak için Application Insights Telemetriyi merkezi bir konuma aktarmak üzere sürekli dışarı aktarmayı etkinleştirebilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway için tanılama ayarlarını etkinleştirme](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Etkinlik günlüklerine ek olarak, Azure Application Gateway dağıtımlarınız
 
 Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tümleştirme sunar. Application Insights günlük, performans ve hata verilerini toplar. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve Web uygulamalarınızın nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Verileri standart saklama süresinden daha uzun tutmak için Application Insights Telemetriyi merkezi bir konuma aktarmak üzere sürekli dışarı aktarmayı etkinleştirebilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway için tanılama ayarlarını etkinleştirme](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tüml
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -274,7 +274,7 @@ Azure Application Gateway 'leriniz de dahil olmak üzere tüm dağıtılan ağ k
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway için tanılama ayarlarını etkinleştirme](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Azure Application Gateway 'leriniz de dahil olmak üzere tüm dağıtılan ağ k
 
 * [Azure WAF dağıtma](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Application Gateway için tanılama ayarlarını etkinleştirme](./application-gateway-diagnostics.md)
 
 * [Ağlar için Azure Izleyicisini kullanma](../azure-monitor/insights/network-insights-overview.md)
 
-* [Azure 'da uyarı oluşturma](../azure-monitor/learn/tutorial-response.md)
+* [Azure 'da uyarı oluşturma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -591,7 +591,7 @@ Microsoft, Azure Application Gateway için temel altyapıyı yönetir ve müşte
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure Application Gateway örneklerine ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

@@ -3,12 +3,12 @@ title: Azure Application Insights 'de akıllı algılama | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve olası sorunlar hakkında sizi uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186261"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585656"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
  Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](./app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
@@ -53,11 +53,11 @@ Alternatif olarak, Azure Resource Manager şablonları kullanarak yapılandırma
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur:
 
-* [Ölçüm Gezgini](../platform/metrics-charts.md)
+* [Ölçüm Gezgini](../essentials/metrics-charts.md)
 * [Arama Gezgini](./diagnostic-search.md)
-* [Analytics-güçlü sorgu dili](../log-query/log-analytics-tutorial.md)
+* [Analytics-güçlü sorgu dili](../logs/log-analytics-tutorial.md)
 
 Akıllı algılama tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
+* [El ile yapılandırılmış ölçüm uyarıları](../alerts/alerts-log.md)
 * [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535136"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576991"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -196,9 +196,9 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | **İzleme** |  |  |
 > | [Application Insights bileşeni Katılımcısı](#application-insights-component-contributor) | Application Insights bileşenlerini yönetebilir | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [Katkıda bulunan izleniyor](#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [Katkıda bulunan izleniyor](#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [Ölçüm yayımcısını izleme](#monitoring-metrics-publisher) | Azure kaynaklarında ölçüm yayımlamaya izin vermez | 3913510d-42F4-4E42-8A64-420c390055eb |
-> | [İzleme okuyucusu](#monitoring-reader) | Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [İzleme okuyucusu](#monitoring-reader) | Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Çalışma kitabı Katılımcısı](#workbook-contributor) | , Paylaşılan çalışma kitaplarını kaydedebilir. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Çalışma kitabı okuyucusu](#workbook-reader) | , Çalışma kitaplarını okuyabilir. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Yönetim + idare** |  |  |
@@ -4774,7 +4774,7 @@ Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun
 
 ### <a name="data-purger"></a>Veri Takiger
 
-Analiz verilerini temizedebilir [daha fazla bilgi edinin](../azure-monitor/platform/personal-data-mgmt.md)
+Analiz verilerini temizedebilir [daha fazla bilgi edinin](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -4917,7 +4917,7 @@ HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir,
 
 ### <a name="log-analytics-contributor"></a>Log Analytics Katkıda Bulunan
 
-Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
+Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. [Daha fazla bilgi edinin](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -4982,7 +4982,7 @@ Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını d
 
 ### <a name="log-analytics-reader"></a>Log Analytics Okuyucusu
 
-Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
+Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. [Daha fazla bilgi edinin](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -8596,7 +8596,7 @@ Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görü
 
 ### <a name="monitoring-contributor"></a>Katkıda bulunan izleniyor
 
-Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
+Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -8742,7 +8742,7 @@ Azure kaynaklarında ölçüm yayımlamaya izin verebilir [daha fazla bilgi](../
 
 ### <a name="monitoring-reader"></a>İzleme okuyucusu
 
-Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
+Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 763e628183e5f6ad7b7bdbb8ee7ce6db572f44ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778504"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577787"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory izleme nedir?
 
@@ -79,7 +79,7 @@ Günlükleri bir Azure olay hub'ına aktarmak, Sumologic ve Splunk gibi üçünc
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerine gönder
 
-[Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md) , farklı kaynaklardan izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. [Azure izleyici günlüklerine veri gönderme](howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
+[Azure izleyici günlükleri](../../azure-monitor/logs/log-query-overview.md) , farklı kaynaklardan izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. [Azure izleyici günlüklerine veri gönderme](howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
 
 Oturum açma ve denetim etkinlikleri gibi yaygın senaryoları izlemek için önceden oluşturulmuş Azure AD etkinlik günlüklerini de görüntüleyebilirsiniz. [Azure ad etkinlik günlükleri için Log Analytics görünümlerini yüklemeyi ve kullanmayı](howto-install-use-log-analytics-views.md)öğrenin.
 
