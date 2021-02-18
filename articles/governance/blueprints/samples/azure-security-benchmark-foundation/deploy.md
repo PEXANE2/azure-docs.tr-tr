@@ -3,12 +3,12 @@ title: Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Azure Security kıyaslama Foundation şeması örneği için adımları dağıtın.
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: e1a5e011f5b53d35971fa43613914c0a43549600
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100421995"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633963"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 
@@ -132,10 +132,8 @@ Aşağıdaki tabloda, şema parametrelerinin bir listesi verilmiştir:
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Alt ağ adresi adları (isteğe bağlı)|Bağlı bileşen sanal ağına dağıtılacak alt ağ adları dizisi; Örneğin, "subnet1", "subnet2"|
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Alt ağ adresi önekleri (isteğe bağlı)|Bağlı bileşen sanal ağı için isteğe bağlı alt ağların IP adresi önekleri dizisi; Örneğin, "10.0.7.0/24", "10.0.8.0/24"|
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Bağlı bileşen dağıt|Atamanın mimarinin bağlı bileşen bileşenlerini dağıtmasının gerekip gerekmediğini belirtmek için ' true ' veya ' false ' girin|
-|Ağ Izleyicisi kaynak grubu|Kaynak grubu|Kaynak grubu adı|Kilitli-ağ Izleyicisi kaynak grubu adını kullanır|
-|Ağ Izleyicisi kaynak grubu|Kaynak grubu|Kaynak grubu konumu|Kilitli-hub konumunu kullanır|
-|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi konumu|Ağ Izleyicisi kaynağı konumu|
-|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi kaynak grubu konumu|Ağ Izleyicisi kaynak grubunun konumu|
+|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **konumuyla eşleşmelidir.**|
+|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi kaynak grubu konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **adıyla eşleşmelidir.**|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

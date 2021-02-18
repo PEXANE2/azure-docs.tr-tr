@@ -1,17 +1,17 @@
 ---
-ms.date: 01/19/2021
+ms.date: 02/16/2021
 ms.topic: reference-architecture
 author: kriation
 title: Azure yay bulut başvurusu mimarisi
 ms.author: akaleshian
 ms.service: spring-cloud
 description: Bu başvuru mimarisi, Azure Spring Cloud kullanımı için tipik bir kurumsal hub ve bağlı bileşen tasarımı kullanan bir temelidir.
-ms.openlocfilehash: 8376cbb2a0f1a7c082b9fdb1c6d606236e162600
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7d069e67e5161135b309aee3dc9c6ac921105623
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418309"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634371"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure yay bulut başvurusu mimarisi
 

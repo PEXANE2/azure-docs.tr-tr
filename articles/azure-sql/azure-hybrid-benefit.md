@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 11/13/2019
-ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/16/2021
+ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737464"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633827"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hibrit Avantajı-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -85,12 +85,12 @@ SQL Server için Azure Hibrit Avantajı, iki anahtar alanındaki lisans taşına
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server için Azure Hibrit Avantajı belirli hakları nelerdir?
 
-SQL veritabanı müşterileri, SQL Server için Azure Hibrit Avantajı ilişkili aşağıdaki haklara sahiptir:
+SQL veritabanı ve SQL yönetilen örnek müşterileri, SQL Server için Azure Hibrit Avantajı ilişkili aşağıdaki haklara sahiptir:
 
 |Lisans ayak izi|SQL Server için ne Azure Hibrit Avantajı?|
 |---|---|
 |SA ile SQL Server Enterprise sürümü çekirdek müşterileri|<li>Hiperscale, Genel Amaçlı veya İş Açısından Kritik SKU 'sunda taban ücret ödeyebilir</li><br><li>1 çekirdek şirket içi = 4 çekirdek, hiper ölçek SKU 'sunda</li><br><li>1 çekirdek şirket içi = Genel Amaçlı SKU 'da 4 çekirdek</li><br><li>1 çekirdek şirket içi = 1 çekirdek İş Açısından Kritik SKU 'da</li>|
-|SA ile SQL Server Standard sürümü çekirdek müşterileri|<li>Yalnızca hiper ölçek ve Genel Amaçlı SKU üzerinde temel ücret ödeyebilir</li><br><li>1 çekirdek şirket içi = 1 çekirdek, Hiperscale SKU 'sunda</li><br><li>1 çekirdek şirket içi = 1 çekirdek Genel Amaçlı SKU 'da</li>|
+|SA ile SQL Server Standard sürümü çekirdek müşterileri|<li>Hiperscale, Genel Amaçlı veya İş Açısından Kritik SKU 'sunda taban ücret ödeyebilir</li><br><li>1 çekirdek şirket içi = 1 çekirdek, Hiperscale SKU 'sunda</li><br><li>1 çekirdek şirket içi = 1 çekirdek Genel Amaçlı SKU 'da</li><br><li>4 çekirdek on-şirket içi = 1 çekirdek İş Açısından Kritik SKU 'da</li>|
 |||
 
 

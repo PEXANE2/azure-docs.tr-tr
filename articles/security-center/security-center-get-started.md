@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 5e39093e0472705111907e72b70446db53770012
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809556"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634502"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
 
@@ -42,7 +42,7 @@ Azure Defender 'ı bir abonelikte etkinleştirmek için abonelik sahibi, aboneli
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Azure aboneliğinizde Güvenlik Merkezi 'ni etkinleştirme
 
-1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 
 1. Portalın menüsünde **Güvenlik Merkezi**' ni seçin. 
 
@@ -88,7 +88,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 1. Uygun aboneliği seçin.
-1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık** olarak ayarlayın.
+1. **Otomatik sağlama** sayfasında, **Azure vm 'leri için Log Analytics Aracısı** durumunu **Açık** olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::

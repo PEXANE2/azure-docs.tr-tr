@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634179"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
 
@@ -60,9 +60,7 @@ Azure portal doğrudan bir kural oluşturmak için:
 
 1. Güvenlik Merkezi'nin güvenlik uyarıları sayfasından:
 
-    - Artık görmek istemediğiniz belirli uyarıyı bulun ve uyarının üç nokta menüsünden (...) **gizleme kuralı oluştur**' u seçin:
-
-        [![* * Gizleme kuralı oluştur * * seçeneği](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - Artık görmek istemediğiniz belirli uyarıyı seçin ve Ayrıntılar bölmesinden **eylem al**' ı seçin.
 
     - Ya da sayfanın üst kısmındaki **gizleme kuralları** bağlantısını ve gizleme kuralları sayfasında **Yeni gizleme kuralı oluştur**' u seçin:
 
@@ -85,9 +83,9 @@ Azure portal doğrudan bir kural oluşturmak için:
 1. Kuralı kaydedin. 
 
 
-## <a name="edit-a-suppression-rules"></a>Gizleme kurallarını Düzenle
+## <a name="edit-a-suppression-rule"></a>Gizleme kuralını Düzenle
 
-Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kullanın.
+Oluşturduğunuz bir kuralı düzenlemek için gizleme kuralları sayfasını kullanın.
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
 1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
@@ -106,20 +104,6 @@ Oluşturduğunuz bir veya daha fazla kuralı silmek için gizleme kuralları say
 1. Tek bir kuralı silmek için, kural için üç nokta menüsünü (...) açın ve **Sil**' i seçin.
 1. Birden çok kuralı silmek için, kuralların silineceği onay kutularını seçin ve **Sil**' i seçin.
     ![Bir veya daha fazla gizleme kuralını silme](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>Gizlenen Uyarıları görüntüle
-
-Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları **kapatıldı** olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz. 
-
-> [!TIP]
-> [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) , gizlenen uyarılar için olaylar oluşturmaz. Diğer Sıems 'ler için, uyarılar ' durumu (' kapatıldı ') kullanarak gizlenen uyarıları filtreleyebilirsiniz.
-
-Kurallarınız tarafından kapatılan uyarıları görüntülemek için Güvenlik Merkezi 'nin filtresini kullanın.
-
-* Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, filtre seçeneklerini açın ve **kapatıldı**' ı seçin.  
-
-   [![Kapatılan uyarıları görüntüleme](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>API ile gizleme kuralları oluşturma ve yönetme
 
