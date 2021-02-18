@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594877"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure dijital TWINS sorunlarını giderme: uyarılar
 
 Azure dijital TWINS, kaynaklarınızın durumu hakkında bilgi veren hizmet örneğiniz için [ölçümleri](troubleshoot-metrics.md) toplar. Bu ölçümleri, Azure Digital TWINS hizmetinin genel sistem durumunu ve ona bağlı kaynakları değerlendirmek için kullanabilirsiniz.
 
-**Uyarılar** , ölçüm verilerinizde önemli koşullar bulunduğunda size önceden bildirim gönderir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarılar hakkında daha fazla bilgiyi [*Microsoft Azure içindeki uyarılara genel bakış*](../azure-monitor/platform/alerts-overview.md)bölümünde bulabilirsiniz.
+**Uyarılar** , ölçüm verilerinizde önemli koşullar bulunduğunda size önceden bildirim gönderir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarılar hakkında daha fazla bilgiyi [*Microsoft Azure içindeki uyarılara genel bakış*](../azure-monitor/alerts/alerts-overview.md)bölümünde bulabilirsiniz.
 
 ## <a name="turn-on-alerts"></a>Uyarıları aç
 
@@ -26,7 +26,7 @@ Azure dijital TWINS örneğiniz için uyarıların nasıl etkinleştirileceği a
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure dijital TWINS örneğinize gidin. Bunu, adını Portal arama çubuğuna yazarak bulabilirsiniz. 
 
-2. Menüden **Uyarı** ' ı ve sonra **+ Yeni uyarı kuralı** ' nı seçin.
+2. Menüden **Uyarı** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçin.
 
 3. Aşağıdaki *Uyarı kuralı oluştur* sayfasında, koşulları, tetiklenecek eylemleri ve uyarı ayrıntılarını belirlemek için istemleri takip edebilirsiniz.     
     * **Kapsam** ayrıntıları, örneğinizin ayrıntıları ile otomatik olarak doldurulmalıdır
@@ -38,7 +38,7 @@ Azure dijital TWINS örneğiniz için uyarıların nasıl etkinleştirileceği a
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Kapsam, koşul, eylem grubu ve uyarı kuralı ayrıntılarının bölümleri ile uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-Bu alanları doldurmaya yönelik kılavuzlu bir anlatım için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/platform/alerts-overview.md). Aşağıda, adımların Azure dijital TWINS için nasıl görüneceğine ilişkin bazı örnekler verilmiştir.
+Bu alanları doldurmaya yönelik kılavuzlu bir anlatım için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/alerts/alerts-overview.md). Aşağıda, adımların Azure dijital TWINS için nasıl görüneceğine ilişkin bazı örnekler verilmiştir.
 
 ### <a name="select-conditions"></a>Koşulları seçin
 
@@ -58,6 +58,6 @@ Uyarıları ayarladıktan sonra, örneğiniz için *Uyarılar* sayfasında geri 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici ile uyarılar hakkında daha fazla bilgi için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/platform/alerts-overview.md).
+* Azure Izleyici ile uyarılar hakkında daha fazla bilgi için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/alerts/alerts-overview.md).
 * Azure dijital TWINS ölçümleri hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure izleyici ile ölçümleri görüntüleme*](troubleshoot-metrics.md).
 * Ölçümleriniz için tanılama günlüğünü etkinleştirme hakkında bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).

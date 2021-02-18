@@ -3,12 +3,12 @@ title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362242"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635345"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Toplu işleme VM görüntülerinde önceden yüklenmiş uygulamalar
 
@@ -20,7 +20,7 @@ Bazı uygulamalar yalnızca Windows 'u destekler, ancak çoğu hem Windows hem d
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>En son CentOS 7 işleme görüntüsündeki uygulamalar
 
-Aşağıdaki liste CentOS işleme görüntüsü olan sürüm 1.1.7 için geçerlidir.
+Aşağıdaki liste CentOS işleme görüntüsü olan sürüm 1.2.0 için geçerlidir.
 
 * Autodesk Maya g/ç 2020 güncelleştirme 4,6
 * Maya 2020 için Autodesk Arnold (Arnold sürüm 6.2.0.0) MtoA-4.2.0-2020

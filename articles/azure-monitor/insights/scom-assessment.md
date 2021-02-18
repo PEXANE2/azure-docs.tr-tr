@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573387"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirme
 
@@ -82,7 +82,7 @@ Devam etmeden önce farklı çalıştır hesabının aşağıdaki gereksinimleri
 4. **Genel Özellikler** sayfasında, **Farklı Çalıştır hesap türü:** listesinde **Windows** ' u seçin.
 5. **Görünen ad** metin kutusuna bir görünen ad yazın ve isteğe bağlı olarak **Açıklama** kutusuna bir açıklama yazın ve ardından **İleri**' ye tıklayın.
 6. **Dağıtım güvenliği** sayfasında **daha güvenli**' i seçin.
-7. **Oluştur**'a tıklayın.  
+7. **Oluştur**’a tıklayın.  
 
 Farklı Çalıştır hesabı oluşturuldığına göre, yönetim grubundaki yönetim sunucularını hedeflemek ve iş akışlarının kimlik bilgileri kullanılarak çalışması için önceden tanımlanmış bir Farklı Çalıştır profiliyle ilişkilendirilmesi gerekir.  
 
@@ -153,7 +153,7 @@ Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem
 
 1. Operations Manager Işletim konsolunun **yazma** çalışma alanında, **kurallar** bölmesindeki *Microsoft System Center Operations Manager sistem durumu denetimi kuralını Çalıştır* kuralını arayın.
 2. Arama sonuçlarında, metin türünü içeren bir tane seçin *: yönetim sunucusu*.
-3. Kurala sağ tıklayın ve sonra **Overrides**  >  **sınıfın belirli bir nesnesi için geçersiz kılmalar ' a tıklayın: yönetim sunucusu**.
+3. Kurala sağ tıklayın ve sonra   >  **sınıfın belirli bir nesnesi için geçersiz kılmalar ' a tıklayın: yönetim sunucusu**.
 4.  Kullanılabilir yönetim sunucuları listesinde, kuralın çalıştırılacağı yönetim sunucusunu seçin.  Bu, farklı çalıştır hesabını ile ilişkilendirmek için daha önce yapılandırdığınız yönetim sunucusu olmalıdır.
 5.  **Etkin** parametre değeri için geçersiz kılma değerini **true** olarak değiştirdiğinizden emin olun.<br><br> ![geçersiz kılma parametresi](./media/scom-assessment/rule.png)
 
@@ -229,7 +229,7 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
     ```
 
     >[!NOTE]
-    > Çalışma alanınız [yeni Log Analytics sorgu diline](../log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
+    > Çalışma alanınız [yeni Log Analytics sorgu diline](../logs/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
     ```
 
     >[!NOTE]
-    > Çalışma alanınız [yeni Log Analytics sorgu diline](../log-query/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
+    > Çalışma alanınız [yeni Log Analytics sorgu diline](../logs/log-query-overview.md)yükseltilmişse yukarıdaki sorgu aşağıdaki gibi değişir.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,5 +295,5 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı System Center Operations Manager Sistem Durumu Denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [günlüklere bakın](../log-query/log-query-overview.md) .
+- Ayrıntılı System Center Operations Manager Sistem Durumu Denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [günlüklere bakın](../logs/log-query-overview.md) .
 

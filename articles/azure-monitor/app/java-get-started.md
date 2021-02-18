@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cdad5a0ec158f216a63ae7e1e2abc10d2841b3bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593737"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı Başlangıç: Java web projesinde Application Insights'ı kullanmaya başlama
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve 
 
 Application Insights, web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Çalışan bir Java uygulaması.
@@ -168,7 +168,7 @@ Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.
 ![Belirli bir örnek görünüm detayına gitme](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analiz: Güçlü sorgu dili
-Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../log-query/log-query-overview.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
+Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../logs/log-query-overview.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
 
 ![Analizi örneği](./media/java-get-started/0025.png)
 
@@ -292,7 +292,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 * [Unix Performans sayaçlarını izleme](java-collectd.md)
 * Sayfa yükleme sürelerini, AJAX çağrılarını ve tarayıcı özel durumlarını izlemek için [web sayfalarınıza izleme ekleyin](javascript.md).
 * Tarayıcıda veya sunucuda kullanımı izlemek için [özel telemetri](./api-custom-events-metrics.md) yazın.
-* Uygulamanızdan telemetri üzerinde güçlü sorgular için  [analiz](../log-query/log-query-overview.md) kullanın
+* Uygulamanızdan telemetri üzerinde güçlü sorgular için  [analiz](../logs/log-query-overview.md) kullanın
 * Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).
 
 <!--Link references-->
@@ -302,5 +302,5 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 [availability]: ./monitor-web-app-availability.md
 [diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [usage]: javascript.md

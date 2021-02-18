@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526679"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594166"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
 
@@ -204,7 +204,7 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-Şirket içinde barındırılan ağ geçidiniz Azure Kubernetes hizmetinde dağıtılmışsa, iş yüklerinizi toplamak ve Log Analytics günlükleri görüntülemek için [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) 'yi etkinleştirebilirsiniz `stdout` `stderr` . 
+Şirket içinde barındırılan ağ geçidiniz Azure Kubernetes hizmetinde dağıtılmışsa, iş yüklerinizi toplamak ve Log Analytics günlükleri görüntülemek için [kapsayıcılar Için Azure izleyici](../azure-monitor/containers/container-insights-overview.md) 'yi etkinleştirebilirsiniz `stdout` `stderr` . 
 
 Şirket içinde barındırılan ağ geçidi,, ve gibi çeşitli protokolleri de `localsyslog` destekler `rfc5424` `journal` . Aşağıdaki tabloda desteklenen tüm seçenekler özetlenmektedir. 
 

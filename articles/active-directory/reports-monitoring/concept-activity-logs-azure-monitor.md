@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586202"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571268"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure İzleyici’de Azure AD etkinlik günlükleri
 
@@ -48,7 +48,7 @@ Azure AD denetim günlüklerini ve oturum açma günlüklerini bu özelliği kul
 > B2C ile ilgili denetim ve oturum açma işlemleri etkinlik günlükleri şu an için desteklenmemektedir.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, Kullanıcı oturum açma davranışı gibi birçok etkene 
 
 
 
-Azure Izleyici günlüklerini yönetme ile ilgili maliyetleri gözden geçirmek için bkz. [Azure izleyici günlüklerinde veri hacmi ve bekletme denetimi yaparak maliyeti yönetme](../../azure-monitor/platform/manage-cost-storage.md).
+Azure Izleyici günlüklerini yönetme ile ilgili maliyetleri gözden geçirmek için bkz. [Azure izleyici günlüklerinde veri hacmi ve bekletme denetimi yaparak maliyeti yönetme](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -180,7 +180,7 @@ Y **: yeni** bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygula
 
 **S: Hangi SIEM araçları desteklenmektedir?** 
 
-Y: **a** **: Şu** anda Azure Izleyici, [splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](./howto-integrate-activity-logs-with-arcsight.md), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Y: **a** **: Şu** anda Azure Izleyici, [splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](./howto-integrate-activity-logs-with-arcsight.md), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 ---
 

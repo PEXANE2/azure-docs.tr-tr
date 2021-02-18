@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590656"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576685"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure kuyruk depolama izleme verileri başvurusu
 
@@ -36,9 +36,9 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 #### <a name="queue-storage-metrics"></a>Kuyruk depolama ölçümleri
 
-Bu tabloda [kuyruk depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)gösterilmektedir.
+Bu tabloda [kuyruk depolama ölçümleri](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)gösterilmektedir.
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------------------- | ----------------- |
 | **QueueCapacity** | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br><br> Birim `Bytes` <br> Toplama türü: `Average` <br> Değer örneği: `1024` |
 | **QueueCount** | Depolama hesabındaki sıraların sayısı. <br><br> Birim `Count` <br> Toplama türü: `Average` <br> Değer örneği: `1024` |
@@ -80,4 +80,4 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - Bkz. Azure kuyruk depolamayı izleme açıklaması için bkz. [Azure kuyruk depolamayı izleme](monitor-queue-storage.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/essentials/monitor-azure-resource.md) .

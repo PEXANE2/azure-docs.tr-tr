@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209738"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586411"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Ortamı kullanma
 
@@ -143,7 +143,7 @@ Log Analytics ile tümleştirirseniz, asa portalından **Günlükler** seçerek 
 
 **Uyarı oluşturma**
 
-Günlüklerinizi karşılaştırarak bir uyarı oluşturmak için [Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-log.md)bölümündeki yönergeleri izleyin. Kısaca:
+Günlüklerinizi karşılaştırarak bir uyarı oluşturmak için [Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-log.md)bölümündeki yönergeleri izleyin. Kısaca:
 
 * AS portalınızdaki uyarılar sayfasını açın
 * **Yeni uyarı kuralı** Seç
@@ -206,4 +206,4 @@ ATıCı 'yi silmek için:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

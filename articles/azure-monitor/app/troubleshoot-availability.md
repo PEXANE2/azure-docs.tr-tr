@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583738"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -62,7 +62,7 @@ E-postanızı doğrudan listelendiğini doğrulamak için klasik uyarılar yapı
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Web kancası bildirimi aldım mı?
 
-Web kancası bildirimini alan uygulamanın kullanılabilir olduğundan ve Web kancası isteklerini başarıyla işlediğinden emin olun. Daha fazla [bilgi için bkz](../platform/alerts-log-webhook.md) ..
+Web kancası bildirimini alan uygulamanın kullanılabilir olduğundan ve Web kancası isteklerini başarıyla işlediğinden emin olun. Daha fazla [bilgi için bkz](../alerts/alerts-log-webhook.md) ..
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>403 yasaklanmış hata alıyorum, bu ne anlama geliyor?
 
@@ -113,7 +113,7 @@ Bu şu anda desteklenmiyor.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>(Klasik) uyarı bildirimlerini kim alıyor?
 
-Bu bölüm yalnızca, klasik uyarılar için geçerlidir ve yalnızca istediğiniz alıcıların bildirimleri almasını sağlamak için uyarı bildirimlerinizi iyileştirmenize yardımcı olur. [Klasik uyarılar](../platform/alerts-classic.overview.md)arasındaki fark hakkında daha fazla bilgi edinmek ve yeni uyarılar deneyimi hakkında daha fazla bilgi edinmek için [uyarılara genel bakış makalesine](../platform/alerts-overview.md)bakın. Yeni uyarılar deneyiminde uyarı bildirimini denetlemek için [eylem gruplarını](../platform/action-groups.md)kullanın.
+Bu bölüm yalnızca, klasik uyarılar için geçerlidir ve yalnızca istediğiniz alıcıların bildirimleri almasını sağlamak için uyarı bildirimlerinizi iyileştirmenize yardımcı olur. [Klasik uyarılar](../alerts/alerts-classic.overview.md)arasındaki fark hakkında daha fazla bilgi edinmek ve yeni uyarılar deneyimi hakkında daha fazla bilgi edinmek için [uyarılara genel bakış makalesine](../alerts/alerts-overview.md)bakın. Yeni uyarılar deneyiminde uyarı bildirimini denetlemek için [eylem gruplarını](../alerts/action-groups.md)kullanın.
 
 * Klasik uyarı bildirimleri için belirli alıcıların kullanılmasını öneririz.
 
@@ -124,7 +124,7 @@ Bu bölüm yalnızca, klasik uyarılar için geçerlidir ve yalnızca istediğin
 > [!NOTE]
 > Şu anda **toplu/grup** onay kutusu seçeneğini kullanırsanız ve devre dışı bıraktığınızda, değişikliği döndüremezsiniz.
 
-Kullanıcılara rollerine göre bildirimde bulunan yeni uyarı deneyimini veya neredeyse gerçek zamanlı uyarıları kullanın. [Eylem gruplarıyla](../platform/action-groups.md), katkıda bulunan/sahip/okuyucu rollerinin herhangi birine sahip kullanıcılar için e-posta bildirimleri yapılandırabilirsiniz (tek bir seçenek olarak birlikte birleştirilemez).
+Kullanıcılara rollerine göre bildirimde bulunan yeni uyarı deneyimini veya neredeyse gerçek zamanlı uyarıları kullanın. [Eylem gruplarıyla](../alerts/action-groups.md), katkıda bulunan/sahip/okuyucu rollerinin herhangi birine sahip kullanıcılar için e-posta bildirimleri yapılandırabilirsiniz (tek bir seçenek olarak birlikte birleştirilemez).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

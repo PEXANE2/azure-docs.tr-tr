@@ -1,23 +1,23 @@
 ---
-title: Görüntü İşleme uzamsal Analize Giriş
+title: Uzamsal Analize genel bakış
 titleSuffix: Azure Cognitive Services
 description: Bu belgede Görüntü İşleme uzamsal analiz kapsayıcısının temel kavramları ve özellikleri açıklanmaktadır.
 services: cognitive-services
-author: tchristiani
+author: nitinme
 manager: nitinme
-ms.author: terrychr
+ms.author: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: f90e4e5e187977f0ee77a565ff9143902ea3a10d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/01/2021
+ms.openlocfilehash: ad05dd59c925242baf5c2b0e36c1f51bc4fec5d4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736844"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575360"
 ---
-# <a name="introduction-to-computer-vision-spatial-analysis"></a>Görüntü İşleme uzamsal Analize Giriş
+# <a name="overview-of-computer-vision-spatial-analysis"></a>Görüntü İşleme uzamsal analizine genel bakış
 
 Görüntü İşleme uzamsal analizler, kuruluşların belirli bir alanda bulunan hareketleri ve iletişim durumunu anlamak için fiziksel alanlarının değerlerini en üst düzeye çıkarmasına yardımcı olan Azure bilişsel hizmetler 'in yeni bir özelliğidir Görüntü İşleme. CCTV veya gözetim kameralarından video almanıza, video akışlarından Öngörüler çıkarmak için AI işlemlerini çalıştırmanıza ve diğer sistemler tarafından kullanılacak olayları oluşturmanıza olanak tanır. Bir kamera akışından gelen girişler sayesinde bir AI işlemi, yüz maskesi ve sosyal distancing yönergeleri ile bir boşluk veya ölçüm uyumluluğu girme gibi şeyler yapabilir.
 
@@ -35,37 +35,9 @@ Günümüzde uzamsal çözümlemenin temel işlemleri, video al, videodaki kişi
 | Ilgilendiğiniz bölge | Bu, yapılandırmanın bir parçası olarak giriş videosunda tanımlanan bir bölge veya satırdır. Bir kişi, videonun bölgesiyle etkileşime geçtiğinde sistem bir olay oluşturur. Örneğin, PersonCrossingLine işlemi için videoda bir satır tanımlanmıştır. Bir kişi bu satırı aştığında bir olay oluşturulur. |
 | Olay | Bir olay, uzamsal çözümlemenin birincil çıktısından oluşur. Her işlem belirli bir olayı düzenli aralıklarla (örn.) yayar. dakikada bir kez veya belirli bir tetikleyici gerçekleştiğinde. Olay, giriş videosunda ne olduğu ile ilgili bilgiler içerir, ancak herhangi bir görüntü veya video içermez. Örneğin, PeopleCount işlemi, kişi sayısı (tetikleyici) veya her dakikada bir (düzenli olarak) her değiştiğinde güncelleştirilmiş sayımı içeren bir olay yayabilir. |
 
-## <a name="example-use-cases-for-spatial-analysis"></a>Uzamsal analize yönelik örnek kullanım örnekleri
+## <a name="responsible-use-of-spatial-analysis-technology"></a>Uzamsal analiz teknolojisinin sorumlu kullanımı
 
-Aşağıda, bir uzamsal analiz tasarlıyoruz ve test ettiğimiz için göz önünde bulundurmanız gereken örnek kullanım örnekleri verilmiştir.
-
-**Sosyal distancing uyumluluğu** -ofis alanında insanlar arasındaki mesafeyi ölçerek sosyal distancing uyumluluğunu izlemek için uzamsal analizler kullanan birkaç kamera bulunur. Tesisler Yöneticisi, çalışma alanını ayarlamak ve sosyal distancing kolaylaştırmak için zaman içinde sosyal distancing uyumluluğun toplam istatistiklerini gösteren ısı haritalarını 'ı kullanabilir.
-
-**Alışverişçinin Analizi** -bir Market Mağazası, merchandising değişikliklerinin mağaza trafiğinden etkisini ölçmek için ürün ekranları işaret eden kameraları kullanır. Sistem, mağaza yöneticisinin hangi yeni ürünlerin görevlendirmede en fazla değişiklik olduğunu belirlemesine izin verir.
-
-**Kuyruk yönetimi** -kullanıma alma sıralarında gösterilen kameralar, bekleme süresi çok uzun olduğunda yöneticilere uyarı sağlar ve bu da daha fazla satır açılmasına izin verir. Kuyruk bırakma sırasındaki geçmiş verileri, tüketici davranışına yönelik öngörüler sağlar.
-
-**Yüz maskesi uyumluluğu** – Retail mağazalarda, mağaza 'da yürüyen müşterilerin, güvenlik uyumluluğunu korumak ve maske kullanım eğilimleriyle ilgili Öngörüler elde etmek için toplu istatistikleri analiz etmek üzere mağaza 'dan işaret eden kameraları kullanmasını sağlayabilirsiniz. 
-
-**Doluluk & Analizi oluşturma** -bir Office derleme, ktfall ve insanların çalışma alanını nasıl kullandıkları hakkında önemli alanlara odaklanan kameraları kullanır. İçgörüler, Bina yöneticisinin, işlerinize daha iyi hizmet vermek için hizmet ve düzen ayarlamasına olanak tanır.
-
-**En düşük personel algılama** -bir veri merkezinde, kameralar sunucular etrafında etkinlik izler. Çalışanlar hassas donanımları fiziksel olarak düzeltdiklerinde, her zaman güvenlik nedeniyle onarım sırasında iki kişinin bulunması gerekir. Kameralar, bu kılavuz 'in izlendiğini doğrulamak için kullanılır.
-
-**Çalışma alanı iyileştirmesi** -hızlı bir şekilde restorana, çalışan iş akışı hakkında toplu bilgiler oluşturmak için, mutfak 'deki kameralar kullanılır. Bu, yöneticiler tarafından takım için süreçler ve eğitimi geliştirmek üzere kullanılır.
-
-## <a name="considerations-when-choosing-a-use-case"></a>Kullanım durumu seçerken dikkat edilecek noktalar
-
-**Kritik güvenlik uyarısı** verme-uzamsal analizler, kritik güvenli gerçek zamanlı uyarı için tasarlanmamıştır. Bir kişi mevcut olduğunda ağır bir makine parçasını kapatma gibi, yaralanmasını engellemek için müdahale tetiklemeye yönelik gerçek zamanlı uyarıların gerekli olduğu senaryolar için güvenmemelidir. Bu, sınırlı/yasak bir alan girme gibi riskli davranışı azaltmak için istatistikler ve müdahale kullanan risk azaltma için kullanılabilir.
-
-**İstihdam ile ilgili kararlar Için kullanmaktan kaçının** -uzamsal analizler, bir alan içindeki kişilerin konumu ve hareketiyle ilgili dayalı ölçümleri sağlar. Bu veriler, toplama işlemi geliştirmesi için yararlı olabileceğinden, veriler tek tek çalışan performansının iyi bir göstergesi değildir ve işle ilgili kararlar vermek için kullanılmamalıdır.
-
-**Sağlık hizmetleri ile ilgili kararlar Için kullanmaktan kaçının** -uzamsal analiz, kişilerin hareketlerine ilişkin dayalı ve kısmi veriler sağlar. Veriler, sistem durumu ile ilgili kararlar vermek için uygun değildir.
-
-**Korumalı alanlarda kullanmaktan kaçının** -kamera konumlarını ve konumlarını değerlendirerek, kişilerin açılarını ve bölge alanlarını belirleyerek, restrooms gibi korumalı alanları fazla görünmemek için kişilerin gizliliğini koruyun.
-
-**Okulların veya elderde dikkatli olma tesislerinde kullanımı dikkatlice göz önünde bulundurun** -uzamsal analiz, 18 yaş ve 65 yaş kapsamında olan sömürmeyi amaçlama 'ı içeren verilerle büyük ölçüde sınanmamıştır. Müşterilerin, senaryolarındaki bu yaştaki ortamlarda kendi senaryosuna yönelik hata hızlarını kapsamlı bir şekilde değerlendirmesini öneririz.
-
-**Genel alanlarda kullanımı dikkatle değerlendirin** -ortak boşluklardan gelen toplamayı en aza indirmek için kamera konumlarını ve konumlarını değerlendirin, tüm ilgi alanları ve bölge bölgelerini değerlendirin. Cadde ve Park gibi genel alanlarda aydınlatma ve hava durumu, uzamsal analiz sisteminin performansını önemli ölçüde etkiler ve ortak alanlarda etkili bir açıklama sağlamak son derece zordur.
+Uzamsal analiz teknolojisinin sorumlu olduğunu nasıl kullanacağınızı öğrenmek için bkz. [asetat notunun](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext). Microsoft 'un saydamlık notları, AI teknolojimizin nasıl çalıştığını anlamanıza yardımcı olmak üzere tasarlanmıştır. sistem sahipleri, bu durum sistem performansını ve davranışını etkilemesinin yanı sıra teknoloji, kişiler ve ortam dahil olmak üzere tüm sistem hakkında düşünmesinin önemini de kolaylaştırabilir.
 
 ## <a name="spatial-analysis-gating-for-public-preview"></a>Genel önizleme için uzamsal analiz geçişi
 
@@ -76,4 +48,4 @@ Uzamsal analiz Genel önizlemesine erişim, Microsoft 'un bu geçişli önizleme
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uzamsal analize yönelik özellikler ve sınırlamalar](/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)
+> [Uzamsal analiz kapsayıcısı ile çalışmaya başlama](spatial-analysis-container.md)

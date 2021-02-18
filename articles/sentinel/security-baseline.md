@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807216"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571660"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel için Azure Güvenlik temeli
 
@@ -37,9 +37,9 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslama sürümü 1,0](../security/bench
 
 - [Azure Sentinel 'de denetimi etkinleştirme](resources.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -73,7 +73,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslama sürümü 1,0](../security/bench
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure Sentinel çalışma alanlarınız ile ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-- [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -341,7 +341,7 @@ Ayrıca, her Sentinel çalışma kitabı bir Azure kaynağıdır ve erişimi yö
 
 **Kılavuz**: Azure Sentinel ve azure izleyici Log Analytics çalışma alanları şu anda bekleyen tüm verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. Kendi anahtarınızı getirme özelliği Sentinel için henüz tam olarak desteklenmez, ancak yakın gelecekte olacaktır.
 
-- [Azure Izleyici müşteri tarafından yönetilen anahtara genel bakış](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Azure Izleyici müşteri tarafından yönetilen anahtara genel bakış](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Azure Sentinel 'de müşteri tarafından yönetilen anahtarları anlama (Önizleme)](customer-managed-keys.md)
 

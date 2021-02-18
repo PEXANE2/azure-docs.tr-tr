@@ -3,12 +3,12 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572210"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -45,9 +45,9 @@ Aşağıdaki diyagramda Azure VMware Çözüm VM 'Leri için tümleşik izleme m
 Azure 'u yeni kullanmaya veya daha önce bahsedilen hizmetlerden herhangi birini bilmiyorsanız aşağıdaki makalelere göz atın:
 
 - [Otomasyon hesabı kimlik doğrulamasına genel bakış](../automation/automation-security-overview.md)
-- [Azure Izleyici günlükleri dağıtımını](../azure-monitor/platform/design-logs-deployment.md) ve [Azure izleyicisini](../azure-monitor/overview.md) tasarlama
+- [Azure Izleyici günlükleri dağıtımını](../azure-monitor/logs/design-logs-deployment.md) ve [Azure izleyicisini](../azure-monitor/overview.md) tasarlama
 - Azure Güvenlik Merkezi için [planlama](../security-center/security-center-planning-and-operations-guide.md) ve [Desteklenen platformlar](../security-center/security-center-os-coverage.md)
-- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](../azure-monitor/insights/vminsights-enable-overview.md)
+- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](../azure-monitor/vm/vminsights-enable-overview.md)
 - [Azure Arc etkin sunucuları nedir?](../azure-arc/servers/overview.md) [Azure Arc etkin Kubernetes nedir?](../azure-arc/kubernetes/overview.md)
 - [Güncelleştirme Yönetimine genel bakış](../automation/update-management/overview.md)
 
@@ -59,7 +59,7 @@ Azure Otomasyonu 'ndaki Azure Güncelleştirme Yönetimi, karma bir ortamda Wind
 
 1.  Log Analytics Azure Güncelleştirme Yönetimi ekleyebilmeniz için önce [bir Azure Otomasyonu hesabı oluşturmanız](../automation/automation-create-standalone-account.md)gerekir. Hesabınızı bir şablon kullanarak oluşturmayı tercih ediyorsanız, bkz. [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](../automation/quickstart-create-automation-account-template.md).
 
-2. **Log Analytics çalışma alanı** , Log Analytics Aracısı veya uzantıları kullanılarak günlük toplama ve performans sayacı toplamayı mümkün. Log Analytics çalışma alanınızı oluşturmak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md). İsterseniz, [CLI](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)veya [Azure Resource Manager şablonu](../azure-monitor/samples/resource-manager-workspace.md)aracılığıyla da bir çalışma alanı oluşturabilirsiniz.
+2. **Log Analytics çalışma alanı** , Log Analytics Aracısı veya uzantıları kullanılarak günlük toplama ve performans sayacı toplamayı mümkün. Log Analytics çalışma alanınızı oluşturmak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md). İsterseniz, [CLI](../azure-monitor/logs/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)veya [Azure Resource Manager şablonu](../azure-monitor/logs/resource-manager-workspace.md)aracılığıyla da bir çalışma alanı oluşturabilirsiniz.
 
 3. Sanal makinelerinize yönelik Azure Güncelleştirme Yönetimi etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](../automation/update-management/enable-from-automation-account.md). İşlemde, Log Analytics çalışma alanınızı Otomasyon hesabınızla bağlayacaksınız. 
  
@@ -99,22 +99,14 @@ Azure VMware Çözüm VM 'Leri, Log Analytics aracısında (Microsoft Monitoring
 
 Azure Izleyici, bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözümdür. Dağıtım gerektirmez. Azure Izleyici ile, Konuk işletim sistemi performansını izleyebilir ve Azure VMware çözümü veya şirket içi VM 'Ler için uygulama bağımlılıklarını bulabilir ve eşleyebilirsiniz.
 
-- Azure Izleyici, izlemek ve analiz etmek için farklı kaynaklardan veri toplamanıza olanak tanır. Daha fazla bilgi için bkz. [Azure izleyici için izleme verileri kaynakları](../azure-monitor/platform/data-sources.md).
+- Azure Izleyici, izlemek ve analiz etmek için farklı kaynaklardan veri toplamanıza olanak tanır. Daha fazla bilgi için bkz. [Azure izleyici için izleme verileri kaynakları](../azure-monitor/agents/data-sources.md).
 
-- Analiz, görselleştirme ve uyarı için farklı veri türleri toplayın. Daha fazla bilgi için bkz. [Azure izleyici veri platformu](../azure-monitor/platform/data-platform.md).
+- Analiz, görselleştirme ve uyarı için farklı veri türleri toplayın. Daha fazla bilgi için bkz. [Azure izleyici veri platformu](../azure-monitor/data-platform.md).
 
-- Azure Izleyicisini Log Analytics çalışma alanınıza göre yapılandırmak için, bkz. [VM'ler için Azure izleyici için Log Analytics çalışma alanını yapılandırma](../azure-monitor/insights/vminsights-configure-workspace.md).
+- Azure Izleyicisini Log Analytics çalışma alanınıza göre yapılandırmak için, bkz. [VM'ler için Azure izleyici için Log Analytics çalışma alanını yapılandırma](../azure-monitor/vm/vminsights-configure-workspace.md).
 
 - Ortamınızdaki sorunları, kaynakların yüksek kullanımı, eksik düzeltme ekleri, yetersiz disk alanı ve sanal makinelerinizin sinyali gibi konularda belirlemek için uyarı kuralları oluşturabilirsiniz. Ayrıca, bir uyarı hizmet yönetimi (ıTSM) araçlarına bir uyarı göndererek algılanan olaylara otomatik bir yanıt da ayarlayabilirsiniz. Uyarı algılama bildirimi, e-posta yoluyla da gönderilebilir. Bu tür kuralları oluşturmak için, bkz.:
-    - [Azure izleyici 'yi kullanarak ölçüm uyarıları oluşturun, görüntüleyin ve yönetin](../azure-monitor/platform/alerts-metric.md).
-    - [Azure izleyici 'yi kullanarak günlük uyarıları oluşturun, görüntüleyin ve yönetin](../azure-monitor/platform/alerts-log.md).
-    - Otomatik eylemleri ve bildirimleri ayarlamak için [Eylem kuralları](../azure-monitor/platform/alerts-action-rules.md) .
-    - [Azure 'ı BT hizmet yönetimi Bağlayıcısı kullanarak ıtssm araçlarına bağlayın](../azure-monitor/platform/itsmc-overview.md).
-    
- ## <a name="next-steps"></a>Sonraki adımlar
-
-Azure VMware Çözüm sanal makinelerinizi Azure 'un yaşam döngüsü genelinde yönetmek için Azure 'un yerel araçlarını kullanmayı tercih edersiniz. şu bilgileri öğrenmek isteyebilirsiniz:
-
-- Azure [Güvenlik Merkezi Ile Azure VMware Çözüm VM 'Lerinizi koruma](azure-security-integration.md).
-- [Azure VMware çözümü için Azure Backup sunucusu ayarlama](set-up-backup-server-for-azure-vmware-solution.md).
-- [Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme](concepts-hub-and-spoke.md).
+    - [Azure izleyici 'yi kullanarak ölçüm uyarıları oluşturun, görüntüleyin ve yönetin](../azure-monitor/alerts/alerts-metric.md).
+    - [Azure izleyici 'yi kullanarak günlük uyarıları oluşturun, görüntüleyin ve yönetin](../azure-monitor/alerts/alerts-log.md).
+    - Otomatik eylemleri ve bildirimleri ayarlamak için [Eylem kuralları](../azure-monitor/alerts/alerts-action-rules.md) .
+    - [Azure 'ı BT hizmet yönetimi Bağlayıcısı kullanarak ıtssm araçlarına bağlayın](../azure-monitor/alerts/itsmc-overview.md).

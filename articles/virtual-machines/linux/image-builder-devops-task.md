@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6090adffbab7c8c57837b62e190f90c8ffb18e3d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636433"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
 
@@ -21,7 +21,7 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 ## <a name="devops-task-versions"></a>DevOps görev sürümleri
 İki Azure VM görüntü Oluşturucu (AıB) DevOps görevi vardır:
 
-* [' Kararlı ' AıB görevi](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)bu, en son güncelleştirmeleri ve özellikleri koymamızı sağlar, bu sayede müşterilerin bunları ' kararlı ' göreve yükseltmeden önce, yaklaşık olarak 1 hafta sonra test etmesine olanak tanır. 
+* [' Stable ' AıB görevi](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), bu test edilen en son kararlı derleme ve telemetri hiçbir sorun göstermez. 
 
 
 * [' Kararsız ' bir görev](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), bu, en son güncelleştirmeleri ve özellikleri koymamızı sağlar, bu sayede müşterilerin bunları ' kararlı ' göreve yükseltmeden önce test etmesine izin verir. Bildirilen bir sorun yoksa ve telemetrimiz bir sorun olmadığını gösteriyorsa, yaklaşık 1 hafta sonra görev kodunu ' Stable ' olarak yükseltecektir. 
@@ -57,7 +57,7 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 
 **Yayın ardışık düzen**  >  **düzenlemesini** seçin
 
-Kullanıcı aracısında, Ekle ' *+* yi seçerek **Görüntü Oluşturucu**' yı arayın. **Ekle**’yi seçin.
+Kullanıcı aracısında, Ekle ' *+* yi seçerek **Görüntü Oluşturucu**' yı arayın. **Add (Ekle)** seçeneğini belirleyin.
 
 Aşağıdaki görev özelliklerini ayarlayın:
 
