@@ -4,12 +4,12 @@ description: Etkin önerileriniz için düzenli Özet alın
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c82abf3c8bea07941f860b94fcfe92954fb7641
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518088"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579820"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Öneriler için düzenli Özet yapılandırma
 
@@ -21,7 +21,7 @@ Danışman **önerisi** öngörüleri, farklı kategorilerde etkin önerileriniz
 **Öneri Özeti** oluşturma deneyimi, Özeti yapılandırmanıza yardımcı olur. Yapılandırma parametreleri için aşağıdaki parametreleri seçebilirsiniz:
 1. Kategori: maliyet, yüksek kullanılabilirlik, performans ve işlemsel üstün kullanım gibi öneriler kategorileridir. Yetenek henüz güvenlik önerileri için kullanılamaz.
 2. Özet sıklığı: Özet bildirimlerin sıklığı haftalık, iki haftada bir ve aylık olabilir.
-3. Eylem grubu: mevcut bir eylem grubunu seçebilir ya da yeni bir eylem grubu oluşturabilirsiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
+3. Eylem grubu: mevcut bir eylem grubunu seçebilir ya da yeni bir eylem grubu oluşturabilirsiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [eylem grupları oluşturma ve yönetme](../azure-monitor/alerts/action-groups.md).
 4. Özet için dil
 5. Öneri Özeti adı: daha iyi izleme ve izleme için Kullanıcı dostu bir dize kullanabilirsiniz.
 
@@ -44,11 +44,11 @@ Danışman **önerisi** öngörüleri, farklı kategorilerde etkin önerileriniz
 
    ![Öneri Özeti giriş koşulları sağlama](./media/digest-2.png)
 
-* **5. Adım:** **Eylem grubu** bölümünde, Özet için **Eylem grubunu** seçin. Buradan daha fazla bilgi edinebilirsiniz- [eylem grupları oluşturabilir ve yönetebilirsiniz](../azure-monitor/platform/action-groups.md)
+* **5. Adım:** **Eylem grubu** bölümünde, Özet için **Eylem grubunu** seçin. Buradan daha fazla bilgi edinebilirsiniz- [eylem grupları oluşturabilir ve yönetebilirsiniz](../azure-monitor/alerts/action-groups.md)
 
    ![Öneri Özeti giriş eylemi grubu sağlama](./media/digest-3.png)
 
-* **Adım 6:** **Özet ayrıntıları**için bu son bölümde, öneri özetinizdeki adı ve durumu atayabilirsiniz. Kurulumu tamamladıktan sonra **öneri Özeti oluştur** ' a basın.
+* **Adım 6:** **Özet ayrıntıları** için bu son bölümde, öneri özetinizdeki adı ve durumu atayabilirsiniz. Kurulumu tamamladıktan sonra **öneri Özeti oluştur** ' a basın.
    ![Tüm öneri Özeti oluşturma](./media/digest-4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar

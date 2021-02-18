@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997685"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578898"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstündeki (klasik) tanılama özelliği için Log Analytics kullanma
 
@@ -32,9 +32,9 @@ Azure istemcisinde, tek kullanıcılı sorun gidermeyi aşan tanılama verilerin
 
 ## <a name="before-you-get-started"></a>Başlamadan önce
 
-Tanılama özelliğiyle Log Analytics kullanabilmeniz için önce [bir çalışma alanı oluşturmanız](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)gerekir.
+Tanılama özelliğiyle Log Analytics kullanabilmeniz için önce [bir çalışma alanı oluşturmanız](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)gerekir.
 
-Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
+Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
 
 - Çalışma alanı KIMLIĞI
 - Çalışma alanınızın birincil anahtarı
