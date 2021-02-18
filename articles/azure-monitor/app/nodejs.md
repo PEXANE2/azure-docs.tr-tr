@@ -4,12 +4,12 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611024"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585759"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
@@ -383,7 +383,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Birden çok Application Insights kaynağı oluşturabilir ve bunların her birine, ilgili izleme anahtarlarını ("Ikey") kullanarak farklı veriler gönderebilirsiniz.
 
- Örnek:
+ Örneğin:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -425,7 +425,7 @@ Bu özellikler istemciye özeldir, bu sayede `appInsights.defaultClient` ile olu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Portalda telemetrinizi izleyin](./overview-dashboard.md)
-* [Telemetriniz üzerinden Analiz sorguları yazma](../log-query/log-analytics-tutorial.md)
+* [Telemetriniz üzerinden Analiz sorguları yazma](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 

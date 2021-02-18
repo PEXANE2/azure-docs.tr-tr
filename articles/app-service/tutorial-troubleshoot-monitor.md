@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183209"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586288"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Izleyici ile App Service uygulamasında sorun giderme
 
@@ -22,7 +22,7 @@ Bu öğreticide, [Azure izleyici](../azure-monitor/overview.md)kullanarak [App S
 
 [Azure izleyici](../azure-monitor/overview.md) , bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Izleyici ile bir Web uygulaması yapılandırma
@@ -33,7 +33,7 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
@@ -78,7 +78,7 @@ Tanılama ayarları, belirli Azure hizmetleri için Azure Izleyici günlüklerin
 AppServiceConsoleLogs (Standart çıkış/hata) ve AppServiceHTTPLogs (Web sunucusu günlükleri) için Tanılama ayarları oluşturmak üzere aşağıdaki komutları çalıştırın. _\<app-name>_ Ve _\<workspace-name>_ değerlerini değerlerinizle değiştirin. 
 
 > [!NOTE]
-> İlk iki komut `resourceID` ve `workspaceID` , komutta kullanılacak değişkenlerdir `az monitor diagnostic-settings create` . Bu komutla ilgili daha fazla bilgi için bkz. [Azure CLI kullanarak tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
+> İlk iki komut `resourceID` ve `workspaceID` , komutta kullanılacak değişkenlerdir `az monitor diagnostic-settings create` . Bu komutla ilgili daha fazla bilgi için bkz. [Azure CLI kullanarak tanılama ayarları oluşturma](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ Azure portal, Log Analytics çalışma alanınızı seçin.
 
 ### <a name="log-queries"></a>Günlük sorguları
 
-Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Günlük sorgularını hem AppServiceHTTPLogs hem de AppServiceConsoleLogs içindeki günlükleri tanımlamak için kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakış](../azure-monitor/log-query/log-query-overview.md) bölümüne bakın.
+Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Günlük sorgularını hem AppServiceHTTPLogs hem de AppServiceConsoleLogs içindeki günlükleri tanımlamak için kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakış](../azure-monitor/logs/log-query-overview.md) bölümüne bakın.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs 'u günlük sorgusuyla görüntüleme
 
@@ -269,6 +269,6 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 > * Web uygulaması hatalarını tanımlamak ve sorunlarını gidermek için kullanılan günlük sorguları
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
-* [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Izleyici ile günlük sorgulama](../azure-monitor/logs/log-query-overview.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

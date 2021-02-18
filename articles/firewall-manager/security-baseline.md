@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5ef40b048fbc50174afb662aecd3335d97eb0106
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 07a0aed7d1839c84ead0c3b2c5f8282a1dc228c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095981"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593220"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi için Azure Güvenlik temeli
 
@@ -403,9 +403,9 @@ Azure Güvenlik Merkezi aşırı fazla sayıda başarısız kimlik doğrulaması
 
 Şu anda güvenlik duvarı Ilke kuralı koleksiyon gruplarını çevreleyen eylemler etkinlik günlüğü tarafından desteklenmiyor, bu bilinen bir sorundur ve gelecekteki güncelleştirmelerde giderilmekte.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -421,7 +421,7 @@ Ayrıca, günlük verilerinizi Azure Sentinel 'e veya bir üçüncü taraf SıEM
 
 Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -435,7 +435,7 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 
 Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayabilirsiniz. Uzun süreli ve arşiv depolama için Azure depolama, Data Lake veya Log Analytics çalışma alanı hesaplarını kullanın.
 
-- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 - [Kaynak günlüklerini bir Azure depolama hesabında depolama](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

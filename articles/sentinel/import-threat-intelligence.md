@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807149"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574992"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Tehdit analizini Azure Sentinel’e aktarma
 
@@ -419,7 +419,7 @@ Azure Sentinel 'de sunulan tehdit bilgileri çalışma kitabını bulmayı ve ay
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Çubuk grafik":::
 
-Çalışma kitapları, Azure Sentinel 'in tüm yönlerine yönelik Öngörüler sunan güçlü etkileşimli panolar sağlar. Çalışma kitaplarıyla yapabileceğiniz bir tam nokta vardır ve sağlanan şablonlar harika bir başlangıç noktası olmakla birlikte, büyük olasılıkla bu şablonları incelemek ve özelleştirmek veya birçok farklı veri kaynağını birleştiren yeni panolar oluşturmak isteyeceksiniz, böylece verilerinizi benzersiz yollarla görselleştirebilirsiniz. Azure Sentinel çalışma kitapları Azure Izleyici çalışma kitaplarını temel aldığı için, daha fazla sayıda belge mevcuttur ve birçok şablon daha vardır. Başlamak için harika bir yer, [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturmaya](../azure-monitor/platform/workbooks-overview.md)yönelik bu makaledir. 
+Çalışma kitapları, Azure Sentinel 'in tüm yönlerine yönelik Öngörüler sunan güçlü etkileşimli panolar sağlar. Çalışma kitaplarıyla yapabileceğiniz bir tam nokta vardır ve sağlanan şablonlar harika bir başlangıç noktası olmakla birlikte, büyük olasılıkla bu şablonları incelemek ve özelleştirmek veya birçok farklı veri kaynağını birleştiren yeni panolar oluşturmak isteyeceksiniz, böylece verilerinizi benzersiz yollarla görselleştirebilirsiniz. Azure Sentinel çalışma kitapları Azure Izleyici çalışma kitaplarını temel aldığı için, daha fazla sayıda belge mevcuttur ve birçok şablon daha vardır. Başlamak için harika bir yer, [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturmaya](../azure-monitor/visualize/workbooks-overview.md)yönelik bu makaledir. 
 
 Ayrıca, GitHub üzerinde ek şablonlar indirebileceğiniz ve kendi şablonlarınıza katkıda bulunan zengin bir [Azure izleyici çalışma kitapları](https://github.com/microsoft/Application-Insights-Workbooks) vardır.
 

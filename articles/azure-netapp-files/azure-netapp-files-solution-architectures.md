@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f36a7827b9351b5565eab19abd4bfdb3d8b4a273
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559472"
+ms.locfileid: "100635413"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -94,8 +94,8 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 * [Azure NetApp Files – yedeklemeyi bulut eşitlemeyle boşaltma SAP HANA](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files kullanarak SAP HANA sistem kopyalarınızı hızlandırın](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Bulut birimleri ONTAP ve Azure NetApp Files: SAP HANA sistem geçişi kolaylaştırıldı](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
-* [HANA N + d Scale-Out mimari-bölüm 1-Microsoft Teknik topluluğu 'ndaki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
-* [HANA N + d Scale-Out mimarisi-Bölüm 2-Microsoft Teknik topluluğu 'ndaki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [HANA N + d Scale-Out mimarideki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar-1. Bölüm](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [HANA N + d Scale-Out mimarideki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar-2. Bölüm](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware çözümleri
 

@@ -3,21 +3,21 @@ title: Tanılama günlüklerini ayarlama-Azure Olay Hub 'ı | Microsoft Docs
 description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılama günlüklerini ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573166"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
 Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 
-* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
+* **[Etkinlik günlükleri](../azure-monitor/essentials/platform-logs-overview.md)**: Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
 
     ![Event Hubs ad alanı için etkinlik günlüğü](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
+* **[Tanılama günlükleri](../azure-monitor/essentials/platform-logs-overview.md)**: Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
     
     Aşağıdaki bölümde bir Event Hubs ad alanı için tanılama günlüklerinin nasıl etkinleştirileceği gösterilmektedir.
 
@@ -36,7 +36,7 @@ Tanılama günlükleri varsayılan olarak devre dışıdır. Tanılama günlükl
 
     Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, **tanılama günlükleri** bölmesinde Günlükler yapılandırılan arşiv hedefinde görüntülenir.
 
-    Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+    Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Tanılama günlükleri kategorileri
 

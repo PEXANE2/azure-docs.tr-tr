@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754258"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595147"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Geçişi projesini silme
 
@@ -26,8 +26,8 @@ Bir projeyi silmeden önce:
 - Bağımlılık analizi için sunucu değerlendirmesi aracına bir Log Analytics çalışma alanı eklediyseniz, çalışma alanını silmek istediğinize karar verin. 
     - Çalışma alanı otomatik olarak silinmez. El ile silin.
     - Silmeden önce bir çalışma alanının ne için kullanıldığını doğrulayın. Aynı Log Analytics çalışma alanı birden çok senaryo için kullanılabilir.
-    - Projeyi silmeden önce, OMS çalışma alanı altında **Azure geçişi-sunucuları**  >  **Azure geçişi-sunucu değerlendirmesi**' ndeki çalışma alanına bir bağlantı bulabilirsiniz. **OMS Workspace**
-    - Bir projeyi sildikten sonra bir çalışma alanını silmek için ilgili kaynak grubundaki çalışma alanını bulun ve [Bu yönergeleri](../azure-monitor/platform/delete-workspace.md)izleyin.
+    - Projeyi silmeden önce, OMS çalışma alanı altında **Azure geçişi-sunucuları**  >  **Azure geçişi-sunucu değerlendirmesi**' ndeki çalışma alanına bir bağlantı bulabilirsiniz. 
+    - Bir projeyi sildikten sonra bir çalışma alanını silmek için ilgili kaynak grubundaki çalışma alanını bulun ve [Bu yönergeleri](../azure-monitor/logs/delete-workspace.md)izleyin.
 
 
 ## <a name="delete-a-project"></a>Projeyi silme

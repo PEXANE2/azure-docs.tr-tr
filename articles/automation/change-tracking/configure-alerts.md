@@ -5,18 +5,18 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 275e57e5dcf173e8d5f30f262641b02698910422
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210426"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585910"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanter için uyarı oluşturma
 
 Azure 'daki uyarılar, runbook işlerinin, hizmet durumu sorunlarının veya Otomasyon hesabınızla ilgili diğer senaryolardan sonuçları size bildirir. Azure Otomasyonu önceden yapılandırılmış uyarı kuralları içermez, ancak oluşturduğu verilere bağlı olarak kendi kendinize de oluşturabilirsiniz. Bu makale, Değişiklik İzleme ve envanter tarafından tanımlanan değişikliklere dayalı olarak uyarı kuralları oluşturmaya yönelik rehberlik sağlar.
 
-Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/platform/alerts-overview.md) . Günlük sorgularını kullanan uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md).
+Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../../azure-monitor/alerts/alerts-overview.md) . Günlük sorgularını kullanan uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük uyarıları](../../azure-monitor/alerts/alerts-unified-log.md).
 
 ## <a name="create-alert"></a>Uyarı oluşturma
 
@@ -38,11 +38,11 @@ Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışm
 
 5. Uyarı mantığı ayarlandıktan sonra, uyarının tetiklenme yanıt olarak eylem gerçekleştirmek için eylem grupları atayın. Bu durumda, gönderilecek e-postaları ve oluşturulacak bir BT hizmet yönetimi (ıTSM) anahtarını ayarlıyoruz.
 
-Güncelleştirme dağıtımının durumunu bilmenizi sağlamak üzere uyarıları ayarlamak için aşağıdaki adımları izleyin. Azure uyarılarınız hakkında daha fazla bilgi için bkz. [Azure Alerts 'e genel bakış](../../azure-monitor/platform/alerts-overview.md).
+Güncelleştirme dağıtımının durumunu bilmenizi sağlamak üzere uyarıları ayarlamak için aşağıdaki adımları izleyin. Azure uyarılarınız hakkında daha fazla bilgi için bkz. [Azure Alerts 'e genel bakış](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="configure-action-groups-for-your-alerts"></a>Uyarılarınız için eylem gruplarını yapılandırma
 
-Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kullanılacak bir eylem grubu olan bir eylem grubu ayarlayabilirsiniz. Eylemler e-posta bildirimleri, runbook 'lar, Web kancaları ve çok daha fazlasını içerebilir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md).
+Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kullanılacak bir eylem grubu olan bir eylem grubu ayarlayabilirsiniz. Eylemler e-posta bildirimleri, runbook 'lar, Web kancaları ve çok daha fazlasını içerebilir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../../azure-monitor/alerts/action-groups.md).
 
 1. Bir uyarı seçin ve ardından **Yeni oluştur** **eylem grupları**' nı seçin.
 
@@ -50,7 +50,7 @@ Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kulla
 
 3. **Eylemler**' in altında, eylemi belirten bir ad girin, örneğin **e-posta bildirimi**.
 
-4. **Eylem türü**için uygun türü seçin (örneğin, **e-posta/SMS/Push/Voice**).
+4. **Eylem türü** için uygun türü seçin (örneğin, **e-posta/SMS/Push/Voice**).
 
 5. **Ayrıntıları düzenle** seçeneğini belirleyin.
 
@@ -60,14 +60,14 @@ Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kulla
 
 7. Eylem grubu ekle bölmesinde **Tamam**'ı seçin.
 
-8. Bir uyarı e-postası için e-posta konusunu özelleştirebilirsiniz. **Kural oluştur**altında **eylemleri Özelleştir** ' i seçin ve **e-posta konusu**' ı seçin
+8. Bir uyarı e-postası için e-posta konusunu özelleştirebilirsiniz. **Kural oluştur** altında **eylemleri Özelleştir** ' i seçin ve **e-posta konusu**' ı seçin
 
 9. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici 'de uyarılar](../../azure-monitor/platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
+* [Azure izleyici 'de uyarılar](../../azure-monitor/alerts/alerts-overview.md)hakkında daha fazla bilgi edinin.
 
-* Log Analytics çalışma alanından verileri almak ve analiz etmek için [günlük sorguları](../../azure-monitor/log-query/log-query-overview.md) hakkında bilgi edinin.
+* Log Analytics çalışma alanından verileri almak ve analiz etmek için [günlük sorguları](../../azure-monitor/logs/log-query-overview.md) hakkında bilgi edinin.
 
-* [Azure Izleyici günlükleri ile kullanımı ve maliyetleri](../../azure-monitor/platform/manage-cost-storage.md) yönetme, veri saklama dönemini değiştirerek maliyetlerinizi nasıl denetleyeceğinizi ve veri kullanımınızın nasıl analiz edileceğini ve uyarılanacağını açıklar.
+* [Azure Izleyici günlükleri ile kullanımı ve maliyetleri](../../azure-monitor/logs/manage-cost-storage.md) yönetme, veri saklama dönemini değiştirerek maliyetlerinizi nasıl denetleyeceğinizi ve veri kullanımınızın nasıl analiz edileceğini ve uyarılanacağını açıklar.

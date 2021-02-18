@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804997"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574438"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Ağ Izleyicisi için Azure Güvenlik temeli
 
@@ -118,9 +118,9 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure Ağ İzleyicisi 'nde yapılan değişiklikleri Izlemek Için Azure etkinlik günlüğü 'nü kullanın. Azure Izleyici 'de, değişiklikler gerçekleşirken tetiklenecek uyarılar oluşturabilirsiniz.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -142,7 +142,7 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak yapılandırma ve Azure Ağ İzleyicisi örneklerinizin değişikliklerini tespit edin. Denetim düzleminden (ör. Azure portal) farklı olan ağ Izleyicisi, ağ trafiğiyle ilgili Günlükler oluşturmaz. Ağ Izleyicisi, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek ya da devre dışı bırakmak için araçlar sağlar.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Ağ İzleyicisini anlayın](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak yapılandırma ve Azure Ağ İzleyicisi örneklerinizin değişikliklerini tespit edin. Denetim düzleminden (ör. Azure portal) farklı olarak, ağ Izleyicisi denetim günlükleri oluşturmaz. Ağ Izleyicisi, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek ya da devre dışı bırakmak için araçlar sağlar.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Ağ İzleyicisini anlayın](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure Ağ İzleyicisi ile ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-* [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -184,7 +184,7 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak yapılandırma ve Azure Ağ İzleyicisi örneklerinizin değişikliklerini tespit edin. Denetim düzleminden (ör. Azure portal) farklı olan ağ Izleyicisi, ağ trafiğiyle ilgili Günlükler oluşturmaz. Ağ Izleyicisi, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek ya da devre dışı bırakmak için araçlar sağlar.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Ağ İzleyicisini anlayın](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ Ağ Izleyicisi yeteneklerini kullanmak için, Azure 'da oturum açarken kulland�
 
 **Kılavuz**: Azure izleyici, Azure Ağ İzleyicisi 'nde yapılan değişikliklerin ve diğer önemli veya ilgili kaynakların ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü ile birlikte kullanın.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

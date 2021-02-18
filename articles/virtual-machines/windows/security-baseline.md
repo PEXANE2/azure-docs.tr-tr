@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594273"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
 
@@ -174,9 +174,9 @@ Azure Güvenlik Merkezi 'nin, sınırlı bir süre için onaylanan IP adresleriy
 
 Windows Sanal Makineleri ilişkili ağ kaynağına yönelik yapılandırmaların doğrulanması (ve/veya düzeltilmesi) için Azure Ilkesini kullanın.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -220,13 +220,13 @@ Sanal makineleriniz tarafından desteklenen uygulama ve hizmetlerin gelişmiş g
 
 Ayrıca, olay kaynağı, tarih, Kullanıcı, zaman damgası, kaynak adresleri, hedef adresler ve diğer yararlı öğeler de dahil olmak üzere denetim ve etkinlik günlüklerinize erişim için Azure Izleyicisini etkinleştirin.
 
-* [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics aracısına genel bakış](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Windows için Log Analytics sanal makine uzantısı](../extensions/oms-windows.md)
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Application Insights'a genel bakış](../../azure-monitor/app/app-insights-overview.md)
 
@@ -242,7 +242,7 @@ Kuruluşunuz, güvenlik olay günlüğü verilerini sanal makineden sürdürmek 
 
 * [Azure Güvenlik Merkezinde veri toplama](../../security-center/security-center-enable-data-collection.md)
 
-* [İzleme için Syslog verilerini yakalamak üzere Log Analytics uzantısını etkinleştirmeniz gerekir](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [İzleme için Syslog verilerini yakalamak üzere Log Analytics uzantısını etkinleştirmeniz gerekir](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -252,9 +252,9 @@ Kuruluşunuz, güvenlik olay günlüğü verilerini sanal makineden sürdürmek 
 
 **Rehberlik**: sanal makine günlüklerini depolamak için kullanılan tüm depolama hesaplarının veya Log Analytics çalışma alanlarının, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 
-* [Azure 'da sanal makineleri izleme](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Azure 'da sanal makineleri izleme](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Log Analytics çalışma alanı saklama süresini yapılandırma](../../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics çalışma alanı saklama süresini yapılandırma](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -268,15 +268,15 @@ Anormal davranış için günlükleri çözümleyin ve izleyin ve sonuçları d�
 
 Alternatif olarak, günlüklerinizi izlemek ve gözden geçirmek için Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri kullanabilirsiniz.
 
-* [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics aracısına genel bakış](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Windows için Log Analytics sanal makine uzantısı](../extensions/oms-windows.md)
 
 * [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
-* [Log Analytics çalışma alanını anlayın](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics çalışma alanını anlayın](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -292,7 +292,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 * [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -410,7 +410,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 * [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../../azure-monitor/platform/action-groups.md)
+* [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -452,13 +452,13 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 **Rehberlik**: denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına göndermek için Azure Active Directory için tanılama ayarlarını yapılandırın. Ayrıca Azure Izleyici 'yi kullanarak günlükleri gözden geçirin ve Azure sanal makinelerindeki günlük verilerinde sorgular gerçekleştirin.
 
-* [Log Analytics çalışma alanını anlayın](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics çalışma alanını anlayın](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
-* [Azure 'da sanal makineleri izleme](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Azure 'da sanal makineleri izleme](../../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -592,9 +592,9 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, değişikliklerin sanal makinelere ve ilgili kaynaklara ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Depolama analizini günlüğe kaydetme](../../storage/common/storage-analytics-logging.md)
 

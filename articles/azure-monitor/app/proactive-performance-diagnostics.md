@@ -4,12 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573734"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -70,12 +70,12 @@ Akıllı algılamalar performans bozuklukları hakkındaki e-postalar Applicatio
 * *Kendi anomali algılama kurallarımı oluşturabilir veya mevcut kuralları özelleştirebilir miyim?*
 
   * Henüz değil, ancak şunları yapabilirsiniz:
-    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](../platform/alerts-log.md) .
+    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](../alerts/alerts-log.md) .
     * [Telemetriyi](./export-telemetry.md) bir [veritabanına](./code-sample-export-sql-stream-analytics.md) veya [Power BI için](./export-power-bi.md)kendi kendinize analiz edebilirsiniz.
 * *Analiz ne sıklıkta gerçekleştirildi?*
 
   * Analizi, önceki günün telemetri gününde (UTC saat diliminde tam gün) çalıştırdık.
-* *Bunun için [ölçüm uyarıları](../platform/alerts-log.md)değiştirilsin mi?*
+* *Bunun için [ölçüm uyarıları](../alerts/alerts-log.md)değiştirilsin mi?*
   * Hayır.  Olağan dışı olarak düşünebileceğiniz her davranışı saptamak için çalışmayız.
 
 
@@ -175,10 +175,10 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 
 * [Profil Oluşturucu](profiler.md) 
 * [anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)
-* [Analiz](../log-query/log-analytics-tutorial.md)
-* [Analytics akıllı tanılama](../log-query/log-query-overview.md)
+* [Analiz](../logs/log-analytics-tutorial.md)
+* [Analytics akıllı tanılama](../logs/log-query-overview.md)
 
 Akıllı algılamalar tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
+* [El ile yapılandırılmış ölçüm uyarıları](../alerts/alerts-log.md)
 * [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)

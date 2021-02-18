@@ -3,12 +3,12 @@ title: Azure Application Insights Power BI dışa aktarma | Microsoft Docs
 description: Analiz sorguları Power BI ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187009"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584305"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights akış Power BI
 [Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](./app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
@@ -31,7 +31,7 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)'i yükler.
 
 ### <a name="export-an-analytics-query"></a>Analiz sorgusunu dışarı aktarma
-1. [Analizi açın ve sorgunuzu yazın](../log-query/log-analytics-tutorial.md).
+1. [Analizi açın ve sorgunuzu yazın](../logs/log-analytics-tutorial.md).
 2. Sonuçlardan memnun olana kadar sorguyu test edin ve daraltın. Dışarı aktarmadan önce sorgunun Analize doğru çalıştığından emin olun.
 3. **Dışarı aktar** menüsünde **Power BI (d)** öğesini seçin. Metin dosyasını kaydedin.
    
@@ -119,7 +119,7 @@ Bu yöntem, sizin için telemetri için tamamen bir pano oluşturur. İlk veri k
 
 ### <a name="get-the-adapter"></a>Bağdaştırıcıyı al
 1. [Power BI](https://app.powerbi.com/)'da oturum açın.
-2. **Get Data** ![ Sol alt köşedeki hizmetler ' in veri al ekran görüntüsünü açın ](./media/export-power-bi/001.png) . **Services**
+2.  ![ Sol alt köşedeki hizmetler ' in veri al ekran görüntüsünü açın ](./media/export-power-bi/001.png) . 
 
     ![Ekran görüntüleri Hizmetler penceresinde Al düğmesini gösterir.](./media/export-power-bi/002.png)
 
@@ -146,4 +146,4 @@ Panoyu düzenleyebilir, Application Insights grafiklerini diğer kaynaklardaki v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Power BI-öğrenme](https://www.powerbi.com/learning/)
-* [Analiz öğreticisi](../log-query/log-analytics-tutorial.md)
+* [Analiz öğreticisi](../logs/log-analytics-tutorial.md)

@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184476"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593409"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslamaları test önerileri
 
@@ -113,7 +113,7 @@ Ayrıca, ölçüm sayfasına giderek, NetApp için filtreleyerek ve ilgilendiği
 
 ### <a name="azure-monitor-api-access"></a>Azure Izleyici API erişimi
 
-REST API çağrılarını kullanarak Azure NetApp Files sayaçlarına erişebilirsiniz. Kapasite havuzları ve birimlere yönelik sayaçlar için bkz. [Azure izleyici Ile desteklenen ölçümler: Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) .
+REST API çağrılarını kullanarak Azure NetApp Files sayaçlarına erişebilirsiniz. Kapasite havuzları ve birimlere yönelik sayaçlar için bkz. [Azure izleyici Ile desteklenen ölçümler: Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) .
 
 Aşağıdaki örnekte, mantıksal birim boyutunu görüntülemek için bir GET URL 'SI gösterilmektedir:
 

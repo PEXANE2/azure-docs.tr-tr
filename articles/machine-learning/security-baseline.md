@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575088"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik temeli
 
@@ -155,9 +155,9 @@ Azure Machine Learning sanal ağınızdaki, açıklama alanını destekleyen bir
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Machine Learning ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -193,9 +193,9 @@ Azure Machine Learning sanal ağınızdaki, açıklama alanını destekleyen bir
 
 Ayrıca, güvenlik ve uyumluluk amaçları için Machine Learning hizmeti işlem günlüklerinin ilişkilendirilmesi de vardır.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Machine Learning oturum açmayı etkinleştir](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Ayrıca, güvenlik ve uyumluluk amaçları için Machine Learning hizmeti işlem
 
 Azure Machine Learning, farklı işlem kaynakları ve hatta kendi işlem kaynaklarınız arasında değişen desteğe sahiptir. Kuruluşunuzun sahip olduğu işlem kaynakları için, işletim sistemini izlemek üzere Azure Güvenlik Merkezi 'ni kullanın. 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ Azure Machine Learning, farklı işlem kaynakları ve hatta kendi işlem kaynakl
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure Machine Learning örneklerinize ilişkin Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-- [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -241,9 +241,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -257,7 +257,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Machine Learning uyarıları hakkında daha fazla bilgi için](monitor-azure-machine-learning.md#alerts)
 
-- [Log Analytics çalışma alanı günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics çalışma alanı günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -565,7 +565,7 @@ Microsoft, Machine Learning için temel altyapıyı yönetir ve müşteri verile
 
 **Kılavuz**: Azure Machine Learning üretim örneklerine ve diğer önemli veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8b3a67fc06594a4782ba55c17ab36c0bad9cf2a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624532"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574920"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus için Azure Güvenlik temeli
 
@@ -143,9 +143,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Service Bus ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -161,7 +161,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Service Bus için tanılama ayarlarını yapılandırma](service-bus-diagnostic-logs.md)
 
-- [Azure etkinlik günlüğünü anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure etkinlik günlüğünü anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
@@ -177,7 +177,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Service Bus için tanılama ayarlarını etkinleştirme](service-bus-diagnostic-logs.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -187,7 +187,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure izleyici 'de, Service Bus ilgili olayları yakalamak ve gözden geçirmek için kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın.
 
-- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -197,9 +197,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Rehberlik**: anormal davranış için günlükleri çözümleyin ve izleyin ve Service Bus varlıklarınız ile ilgili sonuçları düzenli olarak gözden geçirin. Azure Izleyici 'yi kullanarak günlükleri gözden geçirin ve Service Bus ilgili günlük verilerinde sorgular gerçekleştirin.
 
-- [Log Analytics çalışma alanı hakkında daha fazla bilgi için](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics çalışma alanı hakkında daha fazla bilgi için](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -215,7 +215,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -491,7 +491,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Kılavuz**: Azure Service Bus üretim örneklerine ve diğer önemli veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

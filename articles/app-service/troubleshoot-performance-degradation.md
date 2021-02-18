@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e048e4c17092c71a5adaf29f342546b9258837c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763817"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586236"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
 Bu makale, [Azure App Service](./overview.md)' deki yavaş uygulama performansı sorunlarını gidermenize yardımcı olur.
@@ -58,10 +58,10 @@ Uygulamanız için izlemek isteyebileceğiniz bazı ölçümler şunlardır
 
 ![uygulama performansını izleme](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 * [Azure App Service uygulamaları izleme](web-sites-monitor.md)
-* [Uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md)
+* [Uyarı bildirimleri alma](../azure-monitor/alerts/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Web uç noktası durumunu izleme
 Uygulamanızı **Standart** fiyatlandırma katmanında çalıştırıyorsanız, App Service üç coğrafi konumdan iki uç noktayı izlemenizi sağlar.

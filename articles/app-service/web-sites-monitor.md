@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509562"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586103"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](./overview.md) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -31,7 +31,7 @@ Uygulama *temel*, *Standart* veya *Premium* bir planda barındırılıyorsa, kul
 
 Ücretsiz veya paylaşılan uygulamalar için kotalar şunlardır:
 
-| Kota | Açıklama |
+| Kota | Description |
 | --- | --- |
 | **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
 | **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
@@ -136,7 +136,7 @@ CPU kullanımını yansıtan iki ölçüm vardır:
 **CPU yüzdesi**: temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
-Bir uygulama ve App Service planı için ölçümler, hizmet tarafından günlüğe kaydedilir ve toplanır ve [Bu kurallara göre saklanır](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
+Bir uygulama ve App Service planı için ölçümler, hizmet tarafından günlüğe kaydedilir ve toplanır ve [Bu kurallara göre saklanır](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal kotaları ve ölçümleri izleme
 Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden geçirmek için [Azure Portal](https://portal.azure.com)gidin.
@@ -153,14 +153,14 @@ Kotaları bulmak için, **Ayarlar**  >  **Kotalar**' ı seçin. Grafik üzerinde
 
 Bu grafiklerin herhangi birine tıkladığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri Sorgulayabileceğiniz ve çok daha birçok Ölçüm görünümü uygulanır. 
 
-Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../azure-monitor/platform/data-platform.md).
+Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../azure-monitor/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Uyarılar ve otomatik ölçeklendirme
-Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../azure-monitor/platform/alerts-classic-portal.md).
+Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../azure-monitor/alerts/alerts-classic-portal.md).
 
 Temel veya daha yüksek App Service planlarında barındırılan App Service uygulamalar otomatik ölçeklendirmeyi destekler. Otomatik ölçeklendirme ile App Service planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilen örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulamanın aşırı sağlandığı durumlarda tasarruf etmenize de yardımcı olabilir.
 
-Otomatik ölçeklendirme hakkında daha fazla bilgi için [](../azure-monitor/platform/autoscale-get-started.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
+Otomatik ölçeklendirme hakkında daha fazla bilgi için [](../azure-monitor/autoscale/autoscale-get-started.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

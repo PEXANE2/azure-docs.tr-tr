@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: e9845eaf6d84caad3ddb8c7e615cb72f71c91f3b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595589"
 ---
 # <a name="azure-database-security-checklist"></a>Azure veritabanı güvenlik denetim listesi
 
 Güvenliği artırmaya yardımcı olmak için Azure veritabanı, erişimi sınırlandırmak ve denetlemek için kullanabileceğiniz bir dizi yerleşik güvenlik denetimi içerir.
 
-Bunlar:
+Bu modüller şunlardır:
 
 -    IP adresine göre bağlantıyı sınırlayan [güvenlik duvarı kuralları](../../azure-sql/database/firewall-configure.md) oluşturmanıza olanak tanıyan bir güvenlik duvarı,
 -    Sunucu düzeyinde güvenlik duvarı Azure portal erişilebilir
@@ -44,7 +44,7 @@ Bulut bilgi işlem, birçok uygulama kullanıcısı, veritabanı yöneticileri v
 Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En Iyi Yöntemler](../../azure-sql/database/security-best-practice.md)  makalesini okumanızı öneririz. En iyi yöntemleri anladıktan sonra bu denetim listesinden en iyi şekilde yararlanabileceksiniz. Daha sonra bu denetim listesini kullanarak Azure veritabanı güvenliği 'nde önemli sorunları giderdiğinizden emin olabilirsiniz.
 
 
-|Denetim listesi kategorisi| Açıklama|
+|Denetim listesi kategorisi| Description|
 | ------------ | -------- |
 |**Verileri koruma**||
 | <br> Hareket/aktarım sırasında şifreleme| <ul><li>Veriler ağlara taşınırken veri şifreleme için [Aktarım Katmanı Güvenliği](/windows-server/security/tls/transport-layer-security-protocol).</li><li>Veritabanı, TLS üzerinden [tds (tablosal veri akışı)](/openspecs/windows_protocols/ms-tds/893fcc7e-8a39-4b3c-815a-773b7b982c50) Protokolü (Aktarım Katmanı Güvenliği) tabanlı istemcilerden güvenli iletişim gerektirir.</li></ul> |
@@ -53,7 +53,7 @@ Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En
 |<br> Veritabanı Erişimi | <ul><li>[Kimlik](../../azure-sql/database/logins-create-manage.md) doğrulama (Azure Active Directory kimlik doğrulaması) ad kimlik doğrulaması, Azure Active Directory tarafından yönetilen kimlikleri kullanır.</li><li>[Yetkilendirme](../../azure-sql/database/logins-create-manage.md) kullanıcılara gereken en düşük ayrıcalıkları verin.</li></ul> |
 |<br>Uygulama erişimi| <ul><li>[Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security) (güvenlik ilkesini kullanarak, bir kullanıcının kimliğine, rolüne veya yürütme bağlamına göre satır düzeyinde erişimi kısıtlayarak aynı zamanda).</li><li>[Dinamik veri maskeleme](../../azure-sql/database/dynamic-data-masking-overview.md) (Izin & ilkesi kullanılarak, ayrıcalıklı olmayan kullanıcılara maskeleyerek hassas veri pozlamasını kısıtlar)</li></ul>|
 |**Proaktif Izleme**||  
-| <br>& algılama izleniyor| <ul><li>[Denetim](../../azure-sql/database/auditing-overview.md) , veritabanı olaylarını izler ve bunları [Azure Depolama hesabınızdaki](../../storage/common/storage-account-create.md)bir denetim günlüğüne/etkinlik günlüğüne yazar.</li><li>Azure [Izleyici etkinlik günlüklerini](../../azure-monitor/platform/platform-logs-overview.md)kullanarak Azure veritabanı sistem durumunu izleyin.</li><li>[Tehdit algılama](../../azure-sql/database/threat-detection-configure.md) , veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar. </li></ul> |
+| <br>& algılama izleniyor| <ul><li>[Denetim](../../azure-sql/database/auditing-overview.md) , veritabanı olaylarını izler ve bunları [Azure Depolama hesabınızdaki](../../storage/common/storage-account-create.md)bir denetim günlüğüne/etkinlik günlüğüne yazar.</li><li>Azure [Izleyici etkinlik günlüklerini](../../azure-monitor/essentials/platform-logs-overview.md)kullanarak Azure veritabanı sistem durumunu izleyin.</li><li>[Tehdit algılama](../../azure-sql/database/threat-detection-configure.md) , veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar. </li></ul> |
 |<br>Azure Güvenlik Merkezi| <ul><li>[Veri izleme](../../security-center/security-center-remediate-recommendations.md) SQL ve diğer Azure hizmetleri için merkezi bir güvenlik izleme çözümü olarak Azure Güvenlik Merkezi 'ni kullanın.</li></ul>|        
 
 ## <a name="conclusion"></a>Sonuç

@@ -6,16 +6,18 @@ ms.date: 05/18/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: fb91662dfcdeb404f51f91c1fef893dc72dcac73
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4013b60a5718de6c196e806f894503f63ec9dafd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601059"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593681"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 
 > [!IMPORTANT]
+> Bu belgede açıklanan yaklaşım artık önerilmez.
+>
 > Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
 
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.

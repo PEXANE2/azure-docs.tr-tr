@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585106"
 ---
 ## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
@@ -37,7 +37,8 @@ Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:
 - **Sabit** : kaynağın trafiği tam olarak performans hedefidir.
 
 ## <a name="examples-of-bursting"></a>Burte örnek
-Aşağıdaki örneklerde, birden fazla sanal makine ve disk birleşimleriyle birlikte nasıl çalıştığı gösterilmektedir. Örneklerin daha kolay olmasını sağlamak için MB/sn 'ye odaklanacağız, ancak aynı mantık ıOPS 'ye bağımsız olarak uygulanır.
+
+Aşağıdaki örneklerde, kaç farklı VM ve disk birleşimleriyle birlikte nasıl çalıştığı gösterilmektedir. Örneklerin daha kolay olmasını sağlamak için MB/sn 'ye odaklanacağız, ancak aynı mantık ıOPS 'ye bağımsız olarak uygulanır.
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Burstable diskler içeren, bursuz sanal makine
 **VM ve disk birleşimi:** 
@@ -50,17 +51,17 @@ Aşağıdaki örneklerde, birden fazla sanal makine ve disk birleşimleriyle bir
     - Sağlanan MB/s: 100
     - En fazla patlama MB/s: 170
 
- VM önyüklendiğinde, işletim sistemi diskinden veri alır. İşletim sistemi diski, başlangıç yapan bir sanal makinenin parçası olduğundan, işletim sistemi diski, ani kredilerin sonuna kadar olacaktır. Bu krediler, aşağıda görüldüğü gibi, işletim sistemi diskinin başlatılmasını 170 MB/s saniye sonra da sağlar:
+ VM önyüklendiğinde, işletim sistemi diskinden veri alır. İşletim sistemi diski, önyükleme yapan bir sanal makinenin parçası olduğundan, işletim sistemi diski, ani kredilerin sonuna kadar olacaktır. Bu krediler, işletim sistemi diskinin başlangıç olarak 170 MB/s saniye üzerinden başlatılmasını sağlar.
 
-![Bursuz sanal makine diski başlatma](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![VM, IŞLETIM sistemi diskine 192 MB/sn aktarım hızı için bir istek gönderir; işletim sistemi diski 170 MB/s verileriyle yanıt verir.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-Önyükleme tamamlandıktan sonra, bir uygulama VM üzerinde çalışır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 15 MB/S gerektirir:
+Önyükleme tamamlandıktan sonra, bir uygulama VM üzerinde çalışır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 15 MB/S gerektirir.
 
-![Bursuz sanal makine diski boşta](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Uygulama VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-Sonra uygulamanın 192 MB/s gerektiren bir toplu işi işlemesi gerekir. 2 MB/s, işletim sistemi diski tarafından kullanılır ve REST, veri diskleri arasında eşit olarak bölünür:
+Sonra uygulamanın 192 MB/s gerektiren bir toplu işi işlemesi gerekir. 2 MB/s, işletim sistemi diski tarafından kullanılır ve REST, veri diskleri arasında eşit olarak bölünür.
 
-![Bursuz sanal makine, disk patlaması](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Uygulama, VM 'ye 192 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve isteğin toplu işini veri disklerine (95 MB/s) ve 2 MB/sn 'yi işletim sistemi diskine gönderir, veri diskleri talebi karşılayacak şekilde, bu da uygulamayı uygulamaya döndüren tüm diskler, istenen aktarım hızını sanal makineye döndürür.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Bursuz diskler içeren Burstable sanal makine
 **VM ve disk birleşimi:** 
@@ -72,11 +73,12 @@ Sonra uygulamanın 192 MB/s gerektiren bir toplu işi işlemesi gerekir. 2 MB/s,
 - 2 P10 veri diski 
     - Sağlanan MB/s: 250
 
- İlk önyüklemeden sonra, sanal makinede bir uygulama çalıştırılır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 30 MB/s gerektirir: ![ gereksiz VM diske alınmamış disk boşta](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ İlk önyüklemeden sonra, sanal makinede bir uygulama çalıştırılır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 30 MB/s gerektirir.
+![Uygulama, VM 'ye 30 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve her bir disk için 10 MB/sn isteği gönderir, sanal makine 10 MB/sn döndürür.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
-Sonra uygulamanın 600 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve ardından disklere yönelik istekler, P50 disklere eşit bir şekilde yayılmak üzere daha fazla bilgi alır:
+Sonra uygulamanın 600 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve ardından disklere yönelik istekler, P50 disklere eşit bir şekilde yayılmak üzere artışlarıyla.
 
-![Patlama sanal makinesi diske alınmamış disk](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+![Uygulama, VM 'ye 600 MB/sn aktarım isteği gönderir, VM, isteği almak ve her bir disk için bir istek olan 200 MB/s için bir istek göndermesi için, her disk, 600 MB/s 'yi uygulamaya döndürecek şekilde 200 MB/s, VM artışlarıyla döndürür.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
 ### <a name="burstable-virtual-machine-with-burstable-disks"></a>Burstable disklere sahip Burstable sanal makine
 **VM ve disk birleşimi:** 
 - Standard_L8s_v2 
@@ -89,14 +91,14 @@ Sonra uygulamanın 600 MB/s gerektiren bir toplu işi işlemesi gerekir. Standar
     - Sağlanan MB/s: 25
     - En fazla patlama MB/s: 170 
 
-VM önyüklendiğinde, işletim sistemi diskinden 1.280 MB/sn 'ye ait patlama sınırını istemek için veri bloğu, işletim sistemi diski 170 MB/s veri bloğu performansı ile yanıt verir:
+VM başlatıldığında, işletim sistemi diskinden 1.280 MB/sn 'ye ait veri bloğu sınırını istemek için veri bloğu, işletim sistemi diski ise 170 MB/s veri bloğu performansı ile yanıt verir.
 
-![Patlama sanal makinesi diski başlatma](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![Başlangıçta VM, işletim sistemi diskine 1.280 MB/sn isteği göndermek için, işletim sistemi diski artışlarıyla 'yi, 1.280 MB/s döndürür.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-Ardından, önyükleme tamamlandıktan sonra VM 'de bir uygulama çalıştırılır. Uygulamanın, tüm disklerde eşit olarak yayıldığı 15 MB/s gerektiren kritik olmayan bir iş yükü vardır:
+Başlangıçtan sonra, kritik olmayan iş yüküne sahip bir uygulama başlatabilirsiniz. Bu uygulama, tüm diskler arasında eşit olarak yayılan 15 MB/s gerektirir.
 
-![Patlama sanal makinesi diski boşta](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Uygulama VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-Sonra uygulamanın 360 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve sonra isteklerini karşılar. İşletim sistemi diski için yalnızca 20 MB/sn gerekiyor. Kalan 340 MB/s, burdıya P4 veri diskleri tarafından işlenir:  
+Sonra uygulamanın 360 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve sonra isteklerini karşılar. İşletim sistemi diski için yalnızca 20 MB/sn gerekiyor. Kalan 340 MB/s, burdıya P4 veri diskleri tarafından işlenir.
 
-![Patlama sanal makinesi disk patlaması](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![Uygulama, VM 'ye 360 MB/sn aktarım isteği gönderir, VM, isteği alıp her bir veri diskine işletim sistemi diskinden bir 170 MB/s ve 20 MB/sn isteği gönderir, her disk istenen MB/s, sanal makine burslarını, uygulamaya 360.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

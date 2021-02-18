@@ -4,15 +4,15 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920683"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573877"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
-[Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
+[Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../agents/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
@@ -32,7 +32,7 @@ Bu seçenek, uygulamanızı çalışma zamanında gererken, Web rolünüzde iste
 
 İhtiyacınız olan bu seçenek varsa, işiniz bitti demektir. 
 
-Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../log-query/log-query-overview.md) [uygulamanızdaki ölçümleri görüntülüyor](../platform/metrics-charts.md). 
+Sonraki adımlarınız, [verileri analiz ile sorgulayarak](../logs/log-query-overview.md) [uygulamanızdaki ölçümleri görüntülüyor](../essentials/metrics-charts.md). 
 
 Tarayıcıdaki performansı izlemek için, [kullanılabilirlik testlerini](./monitor-web-app-availability.md) ayarlamak ve [Web tarayıcınıza kod eklemek](./javascript.md)isteyebilirsiniz.
 
@@ -91,11 +91,11 @@ Uygulamanızı Application Insights ile izlemek için bu seçeneği ayarlayın. 
 
 Her derleme yapılandırması için ayrı bir Application Insights kaynağı kullanmaya karar verdiyseniz önce yapılandırmayı seçin.
 
-![Application Insights Yapılandır](./media/cloudservices/configure-azure-diagnostics.png)
+![Application Insights'ı Yapılandırma](./media/cloudservices/configure-azure-diagnostics.png)
 
 Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *. \* cscfg*. [Örnek kod](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
 
-Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
+Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../agents/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Her projede SDK’yı yükleyin
 Bu seçenekle, herhangi bir role özel iş telemetrisi ekleyebilirsiniz. Bu seçenek, uygulamanızın nasıl kullanıldığı ve gerçekleştirdiği hakkında daha yakından bir analiz sağlar.
@@ -167,7 +167,7 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
 
 1. Oluşturduğunuz Application Insights kaynaklarını açın.
 
-   Tek tek veri noktaları [arama][diagnostic]bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../platform/metrics-charts.md)' nde görüntülenir.
+   Tek tek veri noktaları [arama][diagnostic]bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../essentials/metrics-charts.md)' nde görüntülenir.
 
 1. Daha fazla telemetri ekleyin (sonraki bölümlere bakın) ve ardından canlı tanılama ve kullanım geri bildirimi almak için uygulamanızı yayımlayın. 
 
@@ -180,17 +180,17 @@ Veri yoksa, şunları yapın:
 Daha fazla bilgi için bkz. [Sorun giderme][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Tanılama olaylarını görüntüle
-[Azure tanılama](../platform/diagnostics-extension-overview.md) bilgilerini aşağıdaki konumlarda Application Insights bulabilirsiniz:
+[Azure tanılama](../agents/diagnostics-extension-overview.md) bilgilerini aşağıdaki konumlarda Application Insights bulabilirsiniz:
 
 * Performans sayaçları özel ölçümler olarak görüntülenir. 
 * Windows olay günlükleri izlemeler ve özel olaylar olarak gösterilir.
 * Uygulama günlükleri, ETW günlükleri ve varsa tanılama altyapısı günlükleri izlemeler olarak görünür.
 
-Performans sayaçlarını ve olay sayılarını görüntülemek için [Ölçüm Gezgini](../platform/metrics-charts.md) açın ve aşağıdaki grafiği ekleyin:
+Performans sayaçlarını ve olay sayılarını görüntülemek için [Ölçüm Gezgini](../essentials/metrics-charts.md) açın ve aşağıdaki grafiği ekleyin:
 
 ![Azure Tanılama verileri](./media/cloudservices/23-wad.png)
 
-Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](./diagnostic-search.md) veya [analiz sorgusu](../log-query/log-analytics-tutorial.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
+Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](./diagnostic-search.md) veya [analiz sorgusu](../logs/log-analytics-tutorial.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
 
 ![Azure Tanılama arama](./media/cloudservices/25-wad.png)
 
@@ -261,7 +261,7 @@ Sisteminizin genel bir resmi için, anahtar izleme grafiklerini bir [panoda](./o
 
 Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunların izleme grafiklerini de dahil edin. 
 
-İstemci mobil uygulamanız varsa, [App Center](../learn/mobile-center-quickstart.md) kullanın. [Analiz](../log-query/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
+İstemci mobil uygulamanız varsa, [App Center](../app/mobile-center-quickstart.md) kullanın. [Analiz](../logs/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
 
 ## <a name="example"></a>Örnek
 [Örnek](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), bir web rolü ve iki çalışan rolüne sahip bir hizmeti izler.
@@ -274,7 +274,7 @@ Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunlar
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Tanılama verilerinin Application Insights’a gönderimini yapılandırma](../platform/diagnostics-extension-to-application-insights.md)
+* [Azure Tanılama verilerinin Application Insights’a gönderimini yapılandırma](../agents/diagnostics-extension-to-application-insights.md)
 * [Application Insights kaynaklarını otomatik olarak oluştur](./powershell.md)
 * [Azure Tanılama Otomatikleştir](./powershell-azure-diagnostics.md)
 * [Azure İşlevleri](https://github.com/christopheranderson/azure-functions-app-insights-sample)

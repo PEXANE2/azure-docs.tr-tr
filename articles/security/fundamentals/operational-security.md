@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7380c0d9679fe74bc91eea269f53fea750922b79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575015"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 ### <a name="overview"></a>Genel Bakış
 Güvenliğin bulutta bir iş olduğunu ve Azure güvenliğiyle ilgili doğru ve güncel bilgileri nerede bulabileceğinizi biliyoruz. Uygulamalarınız ve hizmetleriniz için Azure kullanmanın en iyi nedenlerinden biri, kullanılabilir güvenlik araçları ve yetenekler dizisinin avantajlarından biridir. Bu araçlar ve yetenekler, güvenli Azure platformunda güvenli çözümler oluşturmayı olanaklı hale getirmeye yardımcı olur. Microsoft Azure, müşteri verilerinin gizliliğini, bütünlüğünü ve kullanılabilirliğini sağlamalıdır, ayrıca saydam sorumluluklığa de olanak tanır.
@@ -108,7 +108,7 @@ Azure Backup'ta korunan veriler belirli bir coğrafi bölgede yer alan bir yedek
 
 ![Yönetim Çözümleri](./media/operational-security/azure-operational-security-fig4.png)
 
-Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/update-management/overview.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
+Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/update-management/overview.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../azure-monitor/logs/log-query-overview.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
 
 Bir dağıtım oluşturduğunuzda, gerekli güncelleştirmeleri yüklemek için [Azure Otomasyonu](../../automation/automation-intro.md) 'nda runbook 'lar kullanılır. Bu işlemi baştan sona portalda yönetirsiniz ve altyapısal ayrıntılar konusunda endişelenmeniz gerekmez.
 
@@ -148,19 +148,19 @@ Güvenlik Merkezi, verilerinizin güvenlik durumunu değerlendirmek, güvenlik �
 
 Müşterilerin tehditleri önlemesine, algılamasına ve yanıt vermesine yardımcı olmak amacıyla Azure Güvenlik Merkezi, güvenlikle ilgili veriler, meta veriler, olay günlükleri, kilitlenme dökümü dosyaları ve diğer verileri toplar ve işler. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır.
 
--   **Veri ayırma** : Veriler hizmet boyunca her bir bileşende mantıksal olarak ayrı tutulur. Tüm veriler kuruluşa göre etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır.
+-   **Veri ayırma**: Veriler hizmet boyunca her bir bileşende mantıksal olarak ayrı tutulur. Tüm veriler kuruluşa göre etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır.
 
--   **Veri erişimi** : güvenlik önerileri sağlamak ve olası güvenlik tehditlerini araştırmak için Microsoft personeli, kilitlenme döküm dosyaları, işlem oluşturma OLAYLARı, VM diski anlık görüntüleri ve yapıtlar dahil olmak üzere Azure hizmetleri tarafından toplanan veya çözümlenen bilgilere erişebilir. bu durum, Istemeden müşteri verilerini veya kişisel verileri sanal makinelerinizden alabilir. Microsoft [çevrimiçi hizmet koşulları ve gizlilik bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'ne uyduk, bu durum Microsoft 'un müşteri verilerini kullanmamasından veya herhangi bir reklam veya benzer ticari amaçlar için bilgileri türettiğiniz durumdur.
+-   **Veri erişimi**: güvenlik önerileri sağlamak ve olası güvenlik tehditlerini araştırmak için Microsoft personeli, kilitlenme döküm dosyaları, işlem oluşturma OLAYLARı, VM diski anlık görüntüleri ve yapıtlar dahil olmak üzere Azure hizmetleri tarafından toplanan veya çözümlenen bilgilere erişebilir. bu durum, Istemeden müşteri verilerini veya kişisel verileri sanal makinelerinizden alabilir. Microsoft [çevrimiçi hizmet koşulları ve gizlilik bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'ne uyduk, bu durum Microsoft 'un müşteri verilerini kullanmamasından veya herhangi bir reklam veya benzer ticari amaçlar için bilgileri türettiğiniz durumdur.
 
--   **Veri kullanımı** : Microsoft önleme ve algılama özelliklerimizi geliştirmek amacıyla birden fazla kiracıda görülen modelleri ve tehdit bilgilerini kullanır; bunu [Gizlilik Bildirimi](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) belgemizde açıklanan gizlilik taahhütlerine uygun şekilde yaparız.
+-   **Veri kullanımı**: Microsoft önleme ve algılama özelliklerimizi geliştirmek amacıyla birden fazla kiracıda görülen modelleri ve tehdit bilgilerini kullanır; bunu [Gizlilik Bildirimi](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) belgemizde açıklanan gizlilik taahhütlerine uygun şekilde yaparız.
 
 ### <a name="data-location"></a>Veri konumu
 
 Azure Güvenlik Merkezi, kilitlenme döküm dosyalarının kısa ömürlü kopyalarını toplar ve açıktan yararlanma girişimlerinin ve başarılı uzlaşmaların kanıtı olarak analiz eder. Azure Güvenlik Merkezi bu analizi çalışma alanıyla aynı coğrafi bölgede gerçekleştirir ve analiz tamamlandığında kısa ömürlü kopyaları siler. Makine yapıları VM ile aynı bölgede merkezi olarak depolanır.
 
--   **Depolama hesaplarınız** : sanal makinelerin çalıştığı her bölge için bir depolama hesabı belirtilir. Bunun yapılması verileri, verilerin toplandığı sanal makine ile aynı bölgede depolamanızı sağlar.
+-   **Depolama hesaplarınız**: sanal makinelerin çalıştığı her bölge için bir depolama hesabı belirtilir. Bunun yapılması verileri, verilerin toplandığı sanal makine ile aynı bölgede depolamanızı sağlar.
 
--   **Azure Güvenlik Merkezi Depolama** : İş ortağı uyarıları, öneriler ve güvenlik durumu gibi güvenlik uyarıları hakkında bilgiler, şu anda Birleşik Devletler’de bulunan merkezde depolanmaktadır. Bu bilgiler size güvenlik uyarısı, öneri veya sistem durumu sağlamak üzere gerektiğinde sanal makinelerinizden toplanan ilgili yapılandırma bilgilerini ve güvenlik olaylarını içerebilir.
+-   **Azure Güvenlik Merkezi Depolama**: İş ortağı uyarıları, öneriler ve güvenlik durumu gibi güvenlik uyarıları hakkında bilgiler, şu anda Birleşik Devletler’de bulunan merkezde depolanmaktadır. Bu bilgiler size güvenlik uyarısı, öneri veya sistem durumu sağlamak üzere gerektiğinde sanal makinelerinizden toplanan ilgili yapılandırma bilgilerini ve güvenlik olaylarını içerebilir.
 
 
 ## <a name="azure-monitor"></a>Azure İzleyici
@@ -195,11 +195,11 @@ Bu günlükler bir kaynak tarafından dağıtılır ve bu kaynağın çalışmas
 
 Örneğin, Windows olay sistemi günlükleri VM 'Ler ve blob, tablo ve kuyruk günlükleri için bir tanılama günlüğü kategorisidir ve depolama hesapları için tanılama günlükleri kategorileridir.
 
-Tanılama günlükleri, [etkinlik günlüğünden (eski adıyla denetim günlüğü veya Işlem günlüğü olarak bilinir)](../../azure-monitor/platform/platform-logs-overview.md)farklıdır. Etkinlik günlüğü, aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemler hakkında bilgi sağlar.
+Tanılama günlükleri, [etkinlik günlüğünden (eski adıyla denetim günlüğü veya Işlem günlüğü olarak bilinir)](../../azure-monitor/essentials/platform-logs-overview.md)farklıdır. Etkinlik günlüğü, aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemler hakkında bilgi sağlar.
 
 ### <a name="metrics"></a>Ölçümler
 
-Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkında görünürlük elde etmek için telemetri kullanmanıza olanak sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu [ölçümleri](../../azure-monitor/platform/data-platform.md) yapılandırmak ve kullanmak için çeşitli yollar sağlar. Ölçümler, önemli bir telemetri kaynağıdır ve aşağıdaki görevleri yerine etkinleştirecektir:
+Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkında görünürlük elde etmek için telemetri kullanmanıza olanak sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu [ölçümleri](../../azure-monitor/data-platform.md) yapılandırmak ve kullanmak için çeşitli yollar sağlar. Ölçümler, önemli bir telemetri kaynağıdır ve aşağıdaki görevleri yerine etkinleştirecektir:
 
 -   Bir portal grafiğinde ölçümlerini ayırarak ve bu grafiği bir panoya sabitleyerek kaynağınızın (VM, Web sitesi veya mantıksal uygulama gibi) **performansını izleyin** .
 
@@ -213,7 +213,7 @@ Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkınd
 
 ### <a name="azure-diagnostics"></a>Azure Tanılama
 
-Bu, dağıtılmış bir uygulamada Tanılama verileri toplamayı sağlayan, Azure 'daki bir özelliktir. Tanılama uzantısını farklı kaynaklardan kullanabilirsiniz. Şu anda desteklenen [Azure bulut hizmeti Web ve çalışan rolleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), Microsoft Windows çalıştıran [Azure sanal makineleri](../../virtual-machines/windows/overview.md) ve [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md). Diğer Azure hizmetlerinin kendi ayrı tanılamaları vardır.
+Bu, dağıtılmış bir uygulamada Tanılama verileri toplamayı sağlayan, Azure 'daki bir özelliktir. Tanılama uzantısını farklı kaynaklardan kullanabilirsiniz. Şu anda desteklenen [Azure bulut hizmeti Web ve çalışan rolleri](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), Microsoft Windows çalıştıran [Azure sanal makineleri](../../virtual-machines/windows/overview.md) ve [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md). Diğer Azure hizmetlerinin kendi ayrı tanılamaları vardır.
 
 ## <a name="azure-network-watcher"></a>Azure Ağ İzleyicisi
 
@@ -225,7 +225,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 Ağ Izleyicisi Şu anda aşağıdaki yeteneklere sahiptir:
 
--   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Denetim günlükleri</a>** -ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir. Denetim günlükleri hakkında daha fazla bilgi için bkz. Kaynak Yöneticisi ile denetim işlemleri. Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Denetim günlükleri</a>**-ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir. Denetim günlükleri hakkında daha fazla bilgi için bkz. Kaynak Yöneticisi ile denetim işlemleri. Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
 
 
 -   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP akışı doğrulama</a>** -akış bilgileri 5 demet paket parametrelerine (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) bağlı olarak bir pakete izin verilip verilmediğini denetler. Paket bir ağ güvenlik grubu tarafından reddedilirse, paketi reddeden kural ve ağ güvenlik grubu döndürülür.

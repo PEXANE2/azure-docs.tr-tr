@@ -2,13 +2,13 @@
 title: Azure Service Bus Premium ve Standart katmanlar
 description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90966786"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636518"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 
@@ -28,7 +28,7 @@ Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 
 **Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
 
-Daha tahmin edilebilir ve kullanılabilir olmasının yanı sıra bu performans, daha hızlıdır. [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'da tanıtılan depolama altyapısında Premium mesajlaşma derlemelerini Service Bus. Premium Mesajlaşma sayesinde, en yüksek performans Standart katmanda olduğundan daha hızlıdır.
+Daha tahmin edilebilir ve kullanılabilir olmasının yanı sıra bu performans, daha hızlıdır. Premium Mesajlaşma sayesinde, en yüksek performans Standart katmanda olduğundan daha hızlıdır.
 
 ## <a name="premium-messaging-technical-differences"></a>Premium Mesajlaşmanın teknik farklılıkları
 
@@ -40,9 +40,7 @@ Bölümlenmiş kuyruklar ve konular Premium mesajlaşmada desteklenmez. Bölüml
 
 ### <a name="express-entities"></a>İfade varlıkları
 
-Premium mesajlaşma, yalıtılmış bir çalışma zamanı ortamında çalıştığından, Premium ad alanlarında Express varlıkları desteklenmez. İfade özellikleri hakkında daha fazla bilgi için [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğine bakın.
-
-Standart mesajlaşma altında çalışan bir kodunuz varsa ve Premium katmanı ile bağlantı noktası oluşturmak istiyorsanız, [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğinin **false** (varsayılan değer) olarak ayarlandığından emin olun.
+Premium mesajlaşma, yalıtılmış bir çalışma zamanı ortamında çalıştığından, Premium ad alanlarında Express varlıkları desteklenmez. Bir Express varlığı kalıcı depolamaya yazmadan önce bellekte geçici bir ileti tutar. Standart Mesajlaşma altında çalışan kodunuz varsa ve bunu Premium katmanına bağlamak istiyorsanız, Express varlık özelliğinin devre dışı olduğundan emin olun.
 
 ## <a name="premium-messaging-resource-usage"></a>Premium mesajlaşma kaynak kullanımı
 Genel olarak, bir varlıktaki herhangi bir işlem CPU ve bellek kullanımına neden olabilir. Bu işlemlerden bazıları şunlardır: 
@@ -69,8 +67,8 @@ Mimariniz için Mesajlaşma Birimi sayısına karar verirken dikkate alınması 
 
 - Ad alanınız için ayrılmış ***1 veya 2 mesajlaşma birimi*** ile başlayın.
 - Ad alanınız için [kaynak kullanım ölçümleri](service-bus-metrics-azure-monitor.md#resource-usage-metrics) içindeki CPU kullanım ölçümlerini inceleyin.
-    - CPU kullanımı ***%20***' nin altındaysa, ad alanınız için ayrılan mesajlaşma birimi sayısını ***ölçeklendirebilirsiniz*** .
-    - CPU kullanımı ***%70 üzerinde***ise, uygulamanız ad alanınız için ayrılan mesajlaşma birimlerinin sayısını ***ölçeklendirmeden*** yarar sağlar.
+    - CPU kullanımı ***%20**' nin altında ise, ad alanınız için ayrılan ileti birimi sayısı olan _ *_ölçeği_* azaltabilirsiniz.
+    - CPU kullanımı **70% _**' den fazla olursa, uygulamanız _ *_ölçeklendirmeyi yukarı_**, ad alanınız için ayrılan mesajlaşma birimi sayısı kadar yararlı olacaktır.
 
 Bir Service Bus ad alanını otomatik olarak ölçeklendirmek (ileti birimlerini artırma veya azaltma) için yapılandırma hakkında bilgi edinmek için bkz. [mesajlaşma birimlerini otomatik olarak güncelleştirme](automate-update-messaging-units.md).
 
@@ -86,7 +84,7 @@ Bir Service Bus ad alanını otomatik olarak ölçeklendirmek (ileti birimlerini
 
 ## <a name="get-started-with-premium-messaging"></a>Premium Mesajlaşmayı kullanmaya başlama
 
-Premium Mesajlaşma ile çalışmaya başlamak kolaydır ve süreç Standart Mesajlaşma ile benzerlik gösterir. [Azure Portal](https://portal.azure.com)'da [ad alanı oluşturarak](service-bus-create-namespace-portal.md) başlayın. **Fiyatlandırma katmanı**altında **Premium** ' u seçtiğinizden emin olun. Her bir katman hakkında daha fazla bilgi almak için **Fiyatlandırma ayrıntılarının tamamını görüntüle**'ye tıklayın.
+Premium Mesajlaşma ile çalışmaya başlamak kolaydır ve süreç Standart Mesajlaşma ile benzerlik gösterir. [Azure Portal](https://portal.azure.com)'da [ad alanı oluşturarak](service-bus-create-namespace-portal.md) başlayın. **Fiyatlandırma katmanı** altında **Premium** ' u seçtiğinizden emin olun. Her bir katman hakkında daha fazla bilgi almak için **Fiyatlandırma ayrıntılarının tamamını görüntüle**'ye tıklayın.
 
 ![create-premium-namespace][create-premium-namespace]
 

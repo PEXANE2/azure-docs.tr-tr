@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 387c5e70d50e53f922530cfb1fa91494fa7cc624
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376318"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585462"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -175,9 +175,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Data Factory örneklerinizin ilişkili olduğu ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -201,7 +201,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 Alternatif olarak, Azure Sentinel veya bir üçüncü taraf güvenlik olayı ve olay yönetimi (SıEM) üzerinde veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. Ayrıca, değişiklikleri izleme/denetleme ve hataları ortaya çıkaracak değişiklikleri alma özelliği gibi çeşitli kaynak denetimi avantajlarından yararlanmak için Azure Data Factory git ile tümleştirebilirsiniz.
 
-* [Tanılama ayarlarını yapılandırma](../azure-monitor/platform/diagnostic-settings.md)
+* [Tanılama ayarlarını yapılandırma](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf güvenlik olayı ve 
 
 Ölçümler ve işlem hattı gibi Azure Data Factory işlem olmayan kaynaklar için tanılama günlüklerini yapılandırmak üzere tanılama ayarlarını kullanın. Azure Data Factory depolar işlem hattı-verileri 45 gün boyunca çalıştırın. Bu verileri daha uzun süre saklamak için, tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin ve bekletme süresini gün olarak belirtin. Ayrıca günlükleri Azure Event Hubs akışa alabilir veya kayıtları analiz için bir Log Analytics çalışma alanına gönderebilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 * [Tanılama günlüklerini Azure Data Factory anlama](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf güvenlik olayı ve 
 
 Kuruluşunuzun güvenlik olay günlüğü verilerini bekletmek istiyorsanız, bir veri toplama katmanında depolanabilir ve bu noktada Log Analytics sorgulanabilir.
 
-* [Azure Izleyici 'de Azure sanal makinelerinden veri toplama](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Azure Izleyici 'de Azure sanal makinelerinden veri toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Azure Güvenlik Merkezi 'nde veri toplamayı etkinleştirme](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ Kuruluşunuzun güvenlik olay günlüğü verilerini bekletmek istiyorsanız, bi
 
 * [Azure Data Factory tanılama günlüklerini etkinleştirme](./monitor-using-azure-monitor.md)
 
-* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -263,7 +263,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 * [Log Analytics şeması](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Azure Izleyici ile Azure sanal makinesinden veri toplama](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Azure Izleyici ile Azure sanal makinesinden veri toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ Ayrıca, veri depolarınız ile ilgili hizmetler için tanılama ayarlarını et
 
 * [Azure Data Factory uyarılar](./monitor-visually.md#alerts)
 
-* [Tüm desteklenen ölçümler sayfası](../azure-monitor/platform/metrics-supported.md)
+* [Tüm desteklenen ölçümler sayfası](../azure-monitor/essentials/metrics-supported.md)
 
-* [Log Analytics çalışma alanında uyarıları yapılandırma](../azure-monitor/platform/alerts-log.md)
+* [Log Analytics çalışma alanında uyarıları yapılandırma](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -652,9 +652,9 @@ Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etk
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, Azure Data Factory ve ilgili kaynaklarda değişiklik gerçekleşirken uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Depolama analizini günlüğe kaydetme](../storage/common/storage-analytics-logging.md)
 
