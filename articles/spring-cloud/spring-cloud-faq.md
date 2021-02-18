@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 50c8a36b943abb24f2c31bfc2bc33e646a74524a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196053"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596615"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -90,9 +90,9 @@ Spring Boot 2,4 ile ilgili bir sorun tanımladık ve şu anda bu sorunu çözmek
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Yay bulutu uygulama Günlüklerimi ve ölçümlerini nereden görüntüleyebilirim?
 
-Uygulama Genel Bakış sekmesinde ve [Azure izleyici](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) sekmesinde ölçümleri bulun.
+Uygulama Genel Bakış sekmesinde ve [Azure izleyici](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer) sekmesinde ölçümleri bulun.
 
-Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
+Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/logs/data-platform-logs.md)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
 

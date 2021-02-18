@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: cde84a018d307bada6a6b6f3b5467b8addd007b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573318"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571446"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux veya Windows üzerinde Azure sanal makine performansı sorunlarını giderme
 
@@ -30,7 +30,7 @@ Bu makale, performans sorunlarını tanılamak için izlemeyi kullanma konusunda
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure ıAAS sanal makine izleme
 
-Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](../../azure-monitor/learn/tutorial-resource-logs.md). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
+Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](../../azure-monitor/essentials/tutorial-resource-logs.md). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
 
 ![İzleme etkin değil](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ Kaynak sorunları olup olmadığını belirlemek için verilerinizi gözden geç
 
 ### <a name="cpu-observe-trends"></a>CPU gözleme eğilimleri
 
-Performans sorunlarına baktığınızda eğilimleri göz önünde bulundurun ve sizi etkileyebileceğini anlayın. Sonraki bölümlerde, eğilimleri göstermek için portaldaki Izleme grafiklerini kullanacağız. Aynı zamanda aynı dönemdeki fark kaynağı davranışları arasında çapraz başvuru için de kullanışlı olabilir. Grafikleri özelleştirmek için [Azure izleyici veri platformu](../../azure-monitor/platform/data-platform.md)' na tıklayın.
+Performans sorunlarına baktığınızda eğilimleri göz önünde bulundurun ve sizi etkileyebileceğini anlayın. Sonraki bölümlerde, eğilimleri göstermek için portaldaki Izleme grafiklerini kullanacağız. Aynı zamanda aynı dönemdeki fark kaynağı davranışları arasında çapraz başvuru için de kullanışlı olabilir. Grafikleri özelleştirmek için [Azure izleyici veri platformu](../../azure-monitor/data-platform.md)' na tıklayın.
 
 Spıking – Spıking, zamanlanmış bir görevle/bilinen bir olayla ilişkili olabilir. Görevi tanımlayabiliyorsanız, görevin gerekli performans düzeyinde çalışıp çalışmadığını saptayın. Performans kabul edilebilir ise, kaynakları artırmanız gerekebilir.
 

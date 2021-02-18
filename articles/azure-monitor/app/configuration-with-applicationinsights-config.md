@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b15e39b55dfe49a3fb3c1e0e38798570efdf46bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592757"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.
@@ -121,7 +121,7 @@ Standart başlatıcıların tümü Web veya WindowsServer NuGet paketleri taraf�
 * `OperationNameTelemetryInitializer``Name`, `RequestTelemetry` `Name` `Operation` http yöntemine ve ASP.NET MVC denetleyicisinin adlarına ve isteği işlemek için çağrılan eyleme göre tüm telemetri öğelerinin bağlamı ve özelliğinin özelliğini günceller.
 * `OperationIdTelemetryInitializer` ya da `OperationCorrelationTelemetryInitializer` `Operation.Id` otomatik olarak oluşturulan bir istek işlenirken izlenen tüm telemetri öğelerinin bağlam özelliğini güncelleştirir `RequestTelemetry.Id` .
 * `SessionTelemetryInitializer``Id` `Session` `ai_session` kullanıcının tarayıcısında çalışan ApplicationInsights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değere sahip tüm telemetri öğeleri için bağlam özelliğini güncelleştirir.
-* `SyntheticTelemetryInitializer` ya da `SyntheticUserAgentTelemetryInitializer` `User` `Session` `Operation` bir kullanılabilirlik testi veya arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../platform/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
+* `SyntheticTelemetryInitializer` ya da `SyntheticUserAgentTelemetryInitializer` `User` `Session` `Operation` bir kullanılabilirlik testi veya arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../essentials/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
 
     `<Filters>`İsteklerin tanımlayıcı özelliklerini ayarla.
 * `UserTelemetryInitializer``Id` `AcquisitionDate` `User` `ai_user` kullanıcının tarayıcısında çalıştırılan Application Insights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değerler içeren tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.

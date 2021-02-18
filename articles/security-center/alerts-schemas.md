@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789225"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590575"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -24,7 +24,7 @@ Aboneliğiniz Azure Defender 'ı etkinleştirmişse Güvenlik Merkezi, kaynaklar
 
 Bu güvenlik uyarılarını Azure Güvenlik Merkezi 'nin **tehdit koruması** sayfalarında veya gibi dış araçlarla görüntüleyebilirsiniz:
 
-- [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](../azure-monitor/learn/quick-create-workspace.md) gönderir.
+- [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](../azure-monitor/logs/quick-create-workspace.md) gönderir.
 - Üçüncü taraf Sıems- [Azure Event Hubs](../event-hubs/index.yml)veri gönderme. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin. [SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)hakkında daha fazla bilgi edinin.
 - [REST API](/rest/api/securitycenter/) -uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi uyarılar API 'si belgelerine](/rest/api/securitycenter/alerts)bakın.
 
@@ -160,7 +160,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 |**durumlarına**|Value ve localizedValue alt alanları sabittir-"etkin"|
 |**Dosya**|Value ve localizedValue alt alanları boş|
 |**submissionTimestamp**|Etkinlik günlüğüne olay gönderimi UTC zaman damgası|
-|**SubscriptionID**|Güvenliği aşılmış kaynağın abonelik KIMLIĞI|
+|**subscriptionId**|Güvenliği aşılmış kaynağın abonelik KIMLIĞI|
 |**özelliklerinin**|Uyarıyla ilgili ek özelliklerin JSON paketi. Bunlar bir uyarıdan diğerine değişebilir, ancak aşağıdaki alanlar tüm uyarılarda görünür:<br>-önem derecesi: saldırının önem derecesi<br>-Compromısedentity: güvenliği aşılmış kaynağın adı<br>-Düzeltmelere Ationsteps: gerçekleştirilecek düzeltme adımları dizisi<br>-Amaç: uyarının Kill zinciri hedefi. Olası amaçlar, [amaçları tablosunda](alerts-reference.md#intentions) belgelenmiştir|
 |**relatedEvents**|Sabit boş dizi|
 |||
@@ -187,4 +187,4 @@ Dışındaki güvenlik merkezi 'nden güvenlik uyarılarına erişme yolları ha
 - [Azure Sentinel](../sentinel/index.yml) -Microsoft 'un bulutu-NATIVE SIEM
 - [Azure Event Hubs](../event-hubs/index.yml) -Microsoft 'un tam olarak yönetilen, gerçek zamanlı veri alma hizmeti
 - [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md)
-- [Log Analytics çalışma alanları](../azure-monitor/learn/quick-create-workspace.md) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar
+- [Log Analytics çalışma alanları](../azure-monitor/logs/quick-create-workspace.md) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar
