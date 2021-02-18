@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210384"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573460"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet
 
@@ -186,6 +186,6 @@ Sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorunları algılamaya yardımcı olan otomatik uyarılar ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications-portal.md) yapılandırın.
+* Sorunları algılamaya yardımcı olan otomatik uyarılar ayarlamak için [ölçüm uyarılarını](../alerts/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications-portal.md) yapılandırın.
 
-* Çalışma kitaplarının desteklediği senaryoları, raporları yazmak veya özelleştirmek ve [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu inceleyerek daha fazla bilgi edinin.
+* Çalışma kitaplarının desteklediği senaryoları, raporları yazmak veya özelleştirmek ve [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../visualize/workbooks-overview.md)konusunu inceleyerek daha fazla bilgi edinin.

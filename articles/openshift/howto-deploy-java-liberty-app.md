@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük
 description: Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük ile bir Java uygulaması dağıtın.
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493956"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633895"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -97,7 +97,7 @@ Kümeye oluşturup bağlandıktan sonra, açık serbest bağlantı Işlecini yü
 1. Kimlik bilgilerini kullanarak tarayıcınızdan OpenShift Web konsolunda oturum açın `kubeadmin` .
 2. **İşleçler**  >  **OperatorHub** ' e gidin ve **Açık serbest bir operatör işleci** arayın.
 3. Arama sonuçlarından **serbest bir Işleç açın** ' ı seçin.
-4. **Yükle**’yi seçin.
+4. **Yükle**'yi seçin.
 5. Açılan menü **Işleci oluşturma** öğesinde, **yükleme modu** için **kümedeki tüm ad alanlarını (varsayılan)** , **güncelleştirme kanalının** **Beta** ve **onay stratejisi** için **Otomatik** ' i işaretleyin:
 
    ![Açık serbest bir operatör Işleci için işleç aboneliği oluştur](./media/howto-deploy-java-liberty-app/install-operator.png)

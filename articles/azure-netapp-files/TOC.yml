@@ -77,6 +77,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: Azure NetApp Files için bir alt ağı temsilci olarak belirleme
       href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory bağlantıları oluşturma ve yönetme
+      href: create-active-directory-connections.md
     - name: NFS birimi oluşturma ve yönetme
       items:
         - name: NFS birimi oluşturma

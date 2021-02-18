@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027851"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593641"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK 'Sı için Application Insights eklentisi
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Ad    | Varsayılan | Açıklama                                                                                                    |
+| Name    | Varsayılan | Description                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geçmiş | null    | Yönlendirici geçmişini tepki verin. Daha fazla bilgi için bkz. [tepki verme yönlendiricisi paketi belgeleri](https://reactrouter.com/web/api/history). Geçmiş nesnesine bileşenler dışında nasıl erişebileceğinizi öğrenmek için bkz. [tepki verme yönlendiricisi hakkında SSS](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -226,4 +226,4 @@ const App = () => {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - JavaScript SDK 'Sı hakkında daha fazla bilgi edinmek için [Application Insights JAVASCRIPT SDK belgelerine](javascript.md)bakın.
-- Kusto sorgu dili hakkında bilgi edinmek ve Log Analytics verileri sorgulamak için [günlük sorgusuna genel bakış](../../azure-monitor/log-query/log-query-overview.md)bölümüne bakın.
+- Kusto sorgu dili hakkında bilgi edinmek ve Log Analytics verileri sorgulamak için [günlük sorgusuna genel bakış](../../azure-monitor/logs/log-query-overview.md)bölümüne bakın.

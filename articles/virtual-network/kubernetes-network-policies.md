@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222658"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594964"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ağ Ilkelerine genel bakış
 
@@ -130,7 +130,7 @@ Ayrıca, her "exec_time" özet ölçümü için bir "exec_time_count" ve "exec_t
 Ölçümler, kapsayıcılar için Azure Izleyici veya Prometheus aracılığıyla yapılandırılabilir.
 
 ### <a name="setup-for-azure-monitor"></a>Azure Izleyici için kurulum
-İlk adım, Kubernetes kümeniz için Azure Izleyicisini etkinleştirmek içindir. Adımlar [Için Azure Izleyici 'ye genel bakış](../azure-monitor/insights/container-insights-overview.md)bölümünde yer bulabilirsiniz. Kapsayıcılar için Azure Izleyici 'yi etkinleştirdikten sonra, NPM tümleştirmesini ve Prometheus NPM ölçümlerini toplamayı etkinleştirmek için [kapsayıcılar ConfigMap Için Azure izleyicisini](https://aka.ms/container-azm-ms-agentconfig) yapılandırın. Kapsayıcılar için Azure izleyici ConfigMap, ```integrations``` NPM ölçümlerini toplama ayarlarına sahip bir bölüme sahiptir. Bu ayarlar ConfigMap içinde varsayılan olarak devre dışıdır. Temel ayarı etkinleştirmek ```collect_basic_metrics = true``` , temel NPM ölçümlerini toplar. Gelişmiş ayarı etkinleştirmek ```collect_advanced_metrics = true``` , temel ölçümlere ek olarak gelişmiş ölçümler toplar. 
+İlk adım, Kubernetes kümeniz için Azure Izleyicisini etkinleştirmek içindir. Adımlar [Için Azure Izleyici 'ye genel bakış](../azure-monitor/containers/container-insights-overview.md)bölümünde yer bulabilirsiniz. Kapsayıcılar için Azure Izleyici 'yi etkinleştirdikten sonra, NPM tümleştirmesini ve Prometheus NPM ölçümlerini toplamayı etkinleştirmek için [kapsayıcılar ConfigMap Için Azure izleyicisini](https://aka.ms/container-azm-ms-agentconfig) yapılandırın. Kapsayıcılar için Azure izleyici ConfigMap, ```integrations``` NPM ölçümlerini toplama ayarlarına sahip bir bölüme sahiptir. Bu ayarlar ConfigMap içinde varsayılan olarak devre dışıdır. Temel ayarı etkinleştirmek ```collect_basic_metrics = true``` , temel NPM ölçümlerini toplar. Gelişmiş ayarı etkinleştirmek ```collect_advanced_metrics = true``` , temel ölçümlere ek olarak gelişmiş ölçümler toplar. 
 
 ConfigMap 'i düzenledikten sonra yerel olarak kaydedin ve ConfigMap 'i kümenize aşağıdaki şekilde uygulayın.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Gelişmiş ölçümler isteğe bağlıdır ve açık olması temel ölçüm toplamayı otomatik olarak etkinleştirebilir. Şu anda yalnızca dahil olan gelişmiş ölçümler `npm_ipset_counts`
 
-[Yapılandırma eşlemesindeki kapsayıcılar Için Azure izleyici koleksiyon ayarları](../azure-monitor/insights/container-insights-agent-config.md) hakkında daha fazla bilgi edinin
+[Yapılandırma eşlemesindeki kapsayıcılar Için Azure izleyici koleksiyon ayarları](../azure-monitor/containers/container-insights-agent-config.md) hakkında daha fazla bilgi edinin
 
 ### <a name="visualization-options-for-azure-monitor"></a>Azure Izleyici için görselleştirme seçenekleri
 NPM ölçüm koleksiyonu etkinleştirildikten sonra, Azure portal ölçümleri kapsayıcı öngörülerini kullanarak veya Grafana içinde görüntüleyebilirsiniz.
@@ -154,7 +154,7 @@ Azure portalını açın. Kümenizin öngörülerine bir kez "çalışma kitapla
 Çalışma kitabını (aşağıdaki resimler) görüntülemenin yanı sıra, Öngörüler bölümünde "Günlükler" içindeki Prometheus ölçümlerini de doğrudan sorgulayabilirsiniz. Örneğin, bu sorgu toplanmakta olan tüm ölçümleri döndürür.
 | Zaman üretilen > önce (5h) | Burada ad "npm_" içerir
 
-Ayrıca ölçümler için Log Analytics doğrudan sorgulama yapabilirsiniz. [Log Analytics sorguları Ile çalışmaya](../azure-monitor/insights/container-insights-log-search.md) başlama hakkında daha fazla bilgi edinin 
+Ayrıca ölçümler için Log Analytics doğrudan sorgulama yapabilirsiniz. [Log Analytics sorguları Ile çalışmaya](../azure-monitor/containers/container-insights-log-search.md) başlama hakkında daha fazla bilgi edinin 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana panosunda görüntüleme
 Grafana sunucunuzu kurun ve [burada](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)açıklandığı gibi bir Log Analytics veri kaynağı yapılandırın. Daha sonra, [Grafana panosunu Grafana Laboratuvarlarınızı Log Analytics arka ucu ile](https://grafana.com/grafana/dashboards/10956) içeri aktarın.

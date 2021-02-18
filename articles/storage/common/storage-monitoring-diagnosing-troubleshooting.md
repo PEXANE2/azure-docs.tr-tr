@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787969"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585223"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -94,7 +94,7 @@ Bu kılavuz, birincil olarak Azure depolama hizmetleri ve bu tür çevrimiçi hi
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Depolama hizmetinizi izleme
 Windows performans izleme hakkında bilgi sahibiyseniz, depolama ölçümlerini Windows performans Izleyicisi sayaçlarından oluşan bir Azure depolama ile eşdeğer olarak düşünebilirsiniz. Depolama ölçümleri ' nde, hizmet kullanılabilirliği, hizmete gönderilen toplam istek sayısı veya hizmete yönelik başarılı isteklerin yüzdesi gibi kapsamlı bir ölçüm kümesi (Windows performans Izleyicisi terminolojisinde sayaçlar) bulacaksınız. Kullanılabilir ölçümlerin tam listesi için bkz. [ölçüm tablosu şeması depolama Analizi](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema). Depolama hizmetinin ölçümleri her saat veya dakikada toplamasını isteyip istemediğinizi belirtebilirsiniz. Ölçümleri etkinleştirme ve depolama hesaplarınızı izleme hakkında daha fazla bilgi için bkz. [depolama ölçümlerini etkinleştirme ve ölçüm verilerini görüntüleme](../blobs/monitor-blob-storage.md).
 
-[Azure Portal](https://portal.azure.com) hangi saatlik ölçümleri göstermek istediğinizi seçebilir ve saatlik bir ölçüm belirli bir eşiği aştığında yöneticilere e-posta ile bildirimde bulunan kuralları yapılandırabilirsiniz. Daha fazla bilgi için bkz. [uyarı bildirimleri alma](../../azure-monitor/platform/alerts-overview.md).
+[Azure Portal](https://portal.azure.com) hangi saatlik ölçümleri göstermek istediğinizi seçebilir ve saatlik bir ölçüm belirli bir eşiği aştığında yöneticilere e-posta ile bildirimde bulunan kuralları yapılandırabilirsiniz. Daha fazla bilgi için bkz. [uyarı bildirimleri alma](../../azure-monitor/alerts/alerts-overview.md).
 
 [Depolama Için Azure Izleyicisi 'ni](../../azure-monitor/insights/storage-insights-overview.md) (Önizleme) incelemenizi öneririz. Azure Storage hizmetlerinizin performansı, kapasitesi ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlayan bir Azure Izleyici özelliğidir. Her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez ve bu ölçümleri önceden tanımlı etkileşimli grafiklerden ve diğer Görselleştirmelerde hemen görüntüleyebilirsiniz.
 

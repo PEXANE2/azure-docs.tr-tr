@@ -66,12 +66,12 @@
         - name: Olay toplama (Önizleme)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
-        - name: Güvenlik uyarıları
+        - name: IoT Hub için yerleşik uyarılar
           displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
-        - name: Özel güvenlik uyarıları
+        - name: IoT Hub için özel güvenlik uyarıları
           href: concept-customizable-security-alerts.md
-        - name: Güvenlik önerileri
+        - name: IoT Hub için güvenlik önerileri
           href: concept-recommendations.md
         - name: Klasik
           items:
@@ -94,6 +94,12 @@
             - name: Güvenlik modülü klasik olay toplama
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
+            - name: Aracı tabanlı güvenlik uyarıları
+              href: agent-based-security-alerts.md
+            - name: Aracı tabanlı güvenlik özel uyarıları
+              href: agent-based-security-custom-alerts.md
+            - name: Aracı tabanlı öneriler
+              href: agent-based-recommendations.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Kuruluşlar için Aracısız Çözüm

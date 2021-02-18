@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006692"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585288"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -35,7 +35,7 @@ Tek çalışma alanı kullanırken Azure Sentinel deneyiminin tüm avantajların
 | Veri sahipliği | Veri sahiplerinin sınırları (örneğin, yan kuruluşlar veya bağlı şirketler), ayrı çalışma alanları kullanılarak daha iyi bir şekilde ayarlanır. |  |
 | Birden çok Azure kiracısından | Azure Sentinel, Microsoft ve Azure SaaS kaynaklarından yalnızca kendi Azure Active Directory (Azure AD) kiracı sınırının içindeki veri toplamayı destekler. Bu nedenle her Azure AD kiracısına ayrı çalışma alanı gerekir. |  |
 | Ayrıntılı veri erişim denetimi | Kuruluşun, Azure Sentinel tarafından toplanan bazı verilere erişmesi için kuruluş içinde veya dışında farklı gruplara izin vermeniz gerekebilir. Örneğin:<br><ul><li>Kaynak sahiplerinin, kaynaklarıyla ilgili verilere erişimi</li><li>Bölgesel veya yan kuruluşların, kuruluşun bölümleriyle ilgili verilere erişimi</li></ul> | [Kaynak Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) veya [tablo düzeyinde Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanma |
-| Ayrıntılı saklama ayarları | Tarihsel olarak, farklı veri türleri için farklı saklama dönemleri belirlemenin tek yolu birden çok çalışma alanı vardı. Bu, daha fazla durumda, tablo düzeyinde bekletme ayarlarının tanıtımı sayesinde artık gerekli değildir. | [Tablo düzeyinde bekletme ayarlarını](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) kullan veya [veri silmeyi](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) otomatik hale getir |
+| Ayrıntılı saklama ayarları | Tarihsel olarak, farklı veri türleri için farklı saklama dönemleri belirlemenin tek yolu birden çok çalışma alanı vardı. Bu, daha fazla durumda, tablo düzeyinde bekletme ayarlarının tanıtımı sayesinde artık gerekli değildir. | [Tablo düzeyinde bekletme ayarlarını](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) kullan veya [veri silmeyi](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) otomatik hale getir |
 | Bölünmüş faturalama | Çalışma alanlarını ayrı aboneliklere yerleştirerek farklı taraflara faturalandırılabilirler. | Kullanım raporlama ve çapraz ücretlendirme |
 | Eski mimari | Birden çok çalışma alanının kullanımı, daha önce doğru olmayan önemli sınırlamalara veya en iyi uygulamalara geçen bir geçmiş tasarımdan ayrılabilir. Ayrıca Azure Sentinel'e daha iyi uyum sağlamak üzere değiştirilebilecek rastgele bir tasarım seçimi de olabilir.<br><br>Örnekler arasında şunlar yer almaktadır:<br><ul><li>Azure Güvenlik Merkezi 'Ni dağıttığınızda, abonelik başına varsayılan çalışma alanını kullanma</li><li>Ayrıntılı erişim denetimi veya bekletme ayarları için gerekenler, görece yeni olan çözümler</li></ul> | Çalışma alanlarının mimarisini yenileme |
 
@@ -81,12 +81,12 @@ Azure Sentinel, birden fazla çalışma alanında merkezi olay izlemeyi ve yöne
 
 ### <a name="cross-workspace-querying"></a>Çapraz çalışma alanı sorgulama
 
-Azure Sentinel, tek bir [sorgudaki birden fazla çalışma alanını](../azure-monitor/log-query/cross-workspace-query.md)sorgulamayı destekler, böylece tek bir sorgudaki birden çok çalışma alanındaki verileri arayabilir ve ilişkilendirmenize olanak tanır. 
+Azure Sentinel, tek bir [sorgudaki birden fazla çalışma alanını](../azure-monitor/logs/cross-workspace-query.md)sorgulamayı destekler, böylece tek bir sorgudaki birden çok çalışma alanındaki verileri arayabilir ve ilişkilendirmenize olanak tanır. 
 
-- Farklı bir çalışma alanındaki bir tabloya başvurmak için [Workspace () ifadesini](../azure-monitor/log-query/workspace-expression.md) kullanın. 
+- Farklı bir çalışma alanındaki bir tabloya başvurmak için [Workspace () ifadesini](../azure-monitor/logs/workspace-expression.md) kullanın. 
 - Birden çok çalışma alanındaki tablolar arasında bir sorgu uygulamak için, Workspace () ifadesinin yanı sıra [UNION işlecini](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) kullanın.
 
-Çalışma alanları arası sorguları basitleştirmek için, kaydedilmiş [işlevleri](../azure-monitor/log-query/functions.md) kullanabilirsiniz. Örneğin, bir çalışma alanına yönelik bir başvuru uzunsa, ifadeyi `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` adlı bir işlev olarak kaydetmek isteyebilirsiniz `SecurityEventCustomerA` . Daha sonra sorguları farklı yazabilirsiniz `SecurityEventCustomerA | where ...` .
+Çalışma alanları arası sorguları basitleştirmek için, kaydedilmiş [işlevleri](../azure-monitor/logs/functions.md) kullanabilirsiniz. Örneğin, bir çalışma alanına yönelik bir başvuru uzunsa, ifadeyi `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` adlı bir işlev olarak kaydetmek isteyebilirsiniz `SecurityEventCustomerA` . Daha sonra sorguları farklı yazabilirsiniz `SecurityEventCustomerA | where ...` .
 
 Bir işlev, yaygın olarak kullanılan bir UNION 'yi de basitleştirir. Örneğin, aşağıdaki ifadeyi adlı bir işlev olarak kaydedebilirsiniz `unionSecurityEvent` :
 

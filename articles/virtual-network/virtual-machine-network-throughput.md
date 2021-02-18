@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233874"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576158"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -55,12 +55,12 @@ Uç noktalar arasındaki veri aktarımı, veri aktarımını gerçekleştirenler
 ## <a name="flow-limits-and-active-connections-recommendations"></a>Akış sınırları ve etkin bağlantı önerileri
 
 Bugün, Azure ağ yığını bir VM için 1M toplam akışı (500k gelen ve 500k giden) destekler. Farklı senaryolarda bir VM tarafından işlenebilen toplam etkin bağlantı sayısı aşağıdaki gibidir.
-- VNET 'e ait VM 'Ler, _*_her yönde 500 bin etkin akışa_*_ sahıp tüm VM boyutları için 500 k **_etkin bağlantılar_* _ ' i işleyebilir.  
-- Ağ Geçidi, ara sunucu gibi ağ sanal gereçlerine sahip VM 'Ler (NVA 'lar), Yukarıdaki diyagramda gösterildiği gibi, yeni bağlantı kurulumunda bir sonraki atlamaya giden iletme ve ek yeni akış oluşturma nedeniyle *_her yönde_* 500 k _*_Etkin bağlantıları_*_ işleyebilir. 
+- VNET 'e ait VM 'Ler, her bir yönde 500 k _ *_etkin akışla_ tüm VM boyutları için 500k ***etkin bağlantılar** _ ' i işleyebilir.  
+- Ağ Geçidi, proxy, güvenlik duvarı gibi ağ sanal gereçlerine sahip VM 'ler, Yukarıdaki diyagramda gösterildiği gibi, yeni bağlantı kurulumunda yeni bağlantı kurulumunda bulunan 250.000 ***Etkin bağlantıları** _ 'i *_her yönde_* işleyebilir. 
 
 Bu sınıra ulaştıktan sonra ek bağlantılar bırakılır. Bağlantı kurma ve sonlandırma ücretleri ayrıca, paket işleme yordamlarına sahip bağlantı kurma ve sonlandırma paylaşımları olarak ağ performansını etkileyebilir. İş yüklerini beklenen trafik desenlerine göre kıyaslanmasını ve iş yüklerini performans ihtiyaçlarınızı karşılayacak şekilde ölçeklendirmenizi öneririz.
 
-[Azure izleyici](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
+[Azure izleyici](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
 
 ![Ekran görüntüsü, bir çizgi grafik ve gelen ve giden akışların toplamlarını içeren Azure Izleyici ölçüm sayfasını gösterir.](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 

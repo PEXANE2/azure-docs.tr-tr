@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256501"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591703"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Service Fabric kullanarak ortak kod paketi hatalarını tanılayın
 
@@ -41,7 +41,7 @@ Service Fabric, kod paketinizi pek çok nedenden dolayı sonlandırmaktan soruml
 >[!NOTE]
 > İşlem veya Kapsayıcınız aşağıdaki tablodaki kodlardan farklı bir çıkış koduyla sonlandığında Service Fabric sonlandırmaktan sorumlu değildir.
 
-Çıkış kodu | Açıklama
+Çıkış kodu | Description
 --------- | -----------
 7147 | Service Fabric, bir CTRL + C sinyali göndererek işlemi veya kapsayıcıyı düzgün şekilde kapatmadığını gösterir.
 7148 | Service Fabric işlemi veya kapsayıcıyı sonlandırdığını gösterir. Bazen, bu hata kodu, bir CTRL + C sinyali gönderdikten sonra işlemin veya kapsayıcının zamanında yanıt vermediğini ve sonlandırılması gerekiyordu.
@@ -58,5 +58,5 @@ Service Fabric, kod paketinizi pek çok nedenden dolayı sonlandırmaktan soruml
 
 * [Diğer yaygın senaryoları tanılama](service-fabric-diagnostics-common-scenarios.md)hakkında daha fazla bilgi edinin.
 * Azure izleyici günlüklerine yönelik daha ayrıntılı bir genel bakış ve [Azure izleyicisine genel bakış](../azure-monitor/overview.md)' ı okuyarak neler sundukları.
-* Algılama ve tanılama konusunda yardım için Azure Izleyici günlükleri [uyarısı](../azure-monitor/platform/alerts-overview.md) hakkında daha fazla bilgi edinin.
-* [Günlük araması ve](../azure-monitor/log-query/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama hakkında bilgi edinin.
+* Algılama ve tanılama konusunda yardım için Azure Izleyici günlükleri [uyarısı](../azure-monitor/alerts/alerts-overview.md) hakkında daha fazla bilgi edinin.
+* [Günlük araması ve](../azure-monitor/logs/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama hakkında bilgi edinin.

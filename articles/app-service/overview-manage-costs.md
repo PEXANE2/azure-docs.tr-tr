@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573373"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593993"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
 
@@ -38,7 +38,7 @@ App Service kullandığınız özelliğe bağlı olarak, aşağıdaki Maliyet ta
 - **App Service planı**  App Service uygulamasını barındırmak için gereklidir.
 - **Yalıtılmış katman**  App Service ortamı için bir [sanal ağ](../virtual-network/index.yml) gereklidir.
 - **Yedekleme**  Yedeklemeleri yapmak için bir [depolama hesabı](../storage/index.yml) gereklidir.
-- **Tanılama günlükleri**  [Depolama hesabı](../storage/index.yml) ' nı günlüğe kaydetme seçeneği olarak seçebilir veya [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)ile tümleştirebilirsiniz.
+- **Tanılama günlükleri**  [Depolama hesabı](../storage/index.yml) ' nı günlüğe kaydetme seçeneği olarak seçebilir veya [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)ile tümleştirebilirsiniz.
 - **App Service sertifikaları**  Azure 'da satın aldığınız sertifikaların [Azure Key Vault](../key-vault/index.yml)içinde tutulması gerekir.
 
 App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için [App Service fiyatlandırmasına](https://azure.microsoft.com/pricing/details/app-service/) bakın):
@@ -114,7 +114,7 @@ Düşük veya minimum maliyet tahakkuk ederken App Service veya çözümünüzü
 > [!NOTE]
 > **Premium v3** hem Windows kapsayıcıları hem de Linux kapsayıcıları destekler. 
 
-İstediğiniz fiyatlandırma katmanını seçtikten sonra, boşta kalan örnekleri en aza indirmelisiniz. Bir genişleme dağıtımında, az kullanılan işlem örnekleri üzerinde paraya yatırım yapabilirsiniz. **Standart** katmanda ve yukarıda bulunan [Otomatik ölçeklendirmeyi yapılandırmanız](../azure-monitor/platform/autoscale-get-started.md)gerekir. Ölçek Genişletme zamanlamalarının yanı sıra ölçüm tabanlı ölçek genişletme kuralları oluşturarak yalnızca, belirli bir zamanda gerçekten gereken örneklere ödeme yaparsınız.
+İstediğiniz fiyatlandırma katmanını seçtikten sonra, boşta kalan örnekleri en aza indirmelisiniz. Bir genişleme dağıtımında, az kullanılan işlem örnekleri üzerinde paraya yatırım yapabilirsiniz. **Standart** katmanda ve yukarıda bulunan [Otomatik ölçeklendirmeyi yapılandırmanız](../azure-monitor/autoscale/autoscale-get-started.md)gerekir. Ölçek Genişletme zamanlamalarının yanı sıra ölçüm tabanlı ölçek genişletme kuralları oluşturarak yalnızca, belirli bir zamanda gerçekten gereken örneklere ödeme yaparsınız.
 
 ### <a name="azure-reservations"></a>Azure Rezervasyonlar
 

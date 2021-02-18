@@ -4,12 +4,12 @@ description: Tarafından toplanan ve Azure Application Insights 'de depolanan Az
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549567"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591181"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
 
@@ -64,12 +64,12 @@ Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hata
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri** başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
-| **[Ölçümler](../azure-monitor/platform/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
+| **[Ölçümler](../azure-monitor/essentials/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
 | **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
 ## <a name="query-telemetry-data"></a>Telemetri verilerini sorgulama
 
-[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) , bir veritabanındaki tablo biçimindeki tüm telemetri verilerine erişmenizi sağlar. Analytics verileri ayıklamak, işlemek ve görselleştirmek için bir sorgu dili sağlar. 
+[Application Insights Analytics](../azure-monitor/logs/log-query-overview.md) , bir veritabanındaki tablo biçimindeki tüm telemetri verilerine erişmenizi sağlar. Analytics verileri ayıklamak, işlemek ve görselleştirmek için bir sorgu dili sağlar. 
 
 Günlüğe kaydedilen olayları incelemek veya sorgulamak için **günlükleri** seçin.
 

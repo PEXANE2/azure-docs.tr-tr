@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186227"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583810"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights aracısını dağıtma
 
@@ -67,7 +67,7 @@ Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-
   - [Get-Applicationınsisofsmonitoringstatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) cmdlet 'i, etkinleştirme başarılı olduğunu doğrulamak için kullanılabilir.
   - Uygulamanızın telemetri gönderip göndermediğine hızlı bir şekilde anlamak için [canlı ölçümleri](./live-stream.md) kullanmanızı öneririz.
 
-  - Şu anda telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics](../log-query/log-analytics-tutorial.md) de kullanabilirsiniz:
+  - Şu anda telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics](../logs/log-analytics-tutorial.md) de kullanabilirsiniz:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-
 
 Telemetrinizi görüntüleyin:
 
-* Performansı ve kullanımı izlemek için [ölçümleri](../platform/metrics-charts.md) bulun.
+* Performansı ve kullanımı izlemek için [ölçümleri](../essentials/metrics-charts.md) bulun.
 * Sorunları tanılamak için [olayları ve günlükleri arayın](./diagnostic-search.md) .
-* Daha gelişmiş sorgular için [analiz kullanın](../log-query/log-query-overview.md) .
+* Daha gelişmiş sorgular için [analiz kullanın](../logs/log-query-overview.md) .
 * [Panolar oluşturun](./overview-dashboard.md).
 
 Daha fazla telemetri ekleyin:
