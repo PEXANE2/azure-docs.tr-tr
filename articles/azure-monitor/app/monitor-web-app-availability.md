@@ -4,12 +4,12 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937417"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585952"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -151,7 +151,7 @@ Yapay kullanılabilirlik testinin başarısız olmasına neden olan sunucu taraf
 
 ![Sunucu tarafı tanılama](./media/monitor-web-app-availability/open-instance-4.png)
 
-Ham sonuçlara ek olarak, [Ölçüm Gezgini](../platform/metrics-getting-started.md)' de Iki temel kullanılabilirlik ölçümü de görebilirsiniz:
+Ham sonuçlara ek olarak, [Ölçüm Gezgini](../essentials/metrics-getting-started.md)' de Iki temel kullanılabilirlik ölçümü de görebilirsiniz:
 
 1. Kullanılabilirlik: Tüm test yürütmelerinde başarılı olan testlerin yüzdelik oranı.
 2. Test Süresi: Tüm test yürütmelerinde ortalama test süresi.
@@ -159,7 +159,7 @@ Ham sonuçlara ek olarak, [Ölçüm Gezgini](../platform/metrics-getting-started
 ## <a name="automation"></a>Otomasyon
 
 * Otomatik olarak [kullanılabilirlik testi ayarlamak için PowerShell betiklerini kullanın](./powershell.md#add-an-availability-test).
-* Bir uyarı ortaya çıktığında çağrılan bir [web kancası](../platform/alerts-webhooks.md) ayarlayın.
+* Bir uyarı ortaya çıktığında çağrılan bir [web kancası](../alerts/alerts-webhooks.md) ayarlayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

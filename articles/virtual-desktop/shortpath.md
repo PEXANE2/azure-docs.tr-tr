@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876707"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571585"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows sanal masaüstü RDP ShortPath (Önizleme)
 
@@ -151,7 +151,8 @@ Ağ güvenlik sınırları genelinde RDP Shortfılepath dinleyicisine erişime i
 Aşağıdaki parametrelerle trafiğe izin veren bir gelen güvenlik kuralı oluşturmak için [ağ güvenlik grubu belgelerini](../virtual-machines/windows/nsg-quickstart-portal.md) izleyin:
 
 * **Kaynak**  -  İstemcilerin bulunduğu **herhangi bir** veya IP aralığı
-* **Kaynak bağlantı noktası aralıkları** -* *\** _ _ **hedef**  -  **Any**
+* **Kaynak bağlantı noktası aralıkları** - **\***
+* **Hedef**  -  **Herhangi biri**
 * **Hedef bağlantı noktası aralıkları**  -  **3390**
 * **Protokol**  -  **UDP**
 * **Eylem**  -  **Izin ver**
@@ -188,7 +189,7 @@ Olası değerler şunlardır:
 * **0** -Kullanıcı bağlantısı RDP shortfılepath kullanmıyor
 * **1** -Kullanıcı bağlantısı RDP shortfılepath kullanıyor
   
-Aşağıdaki sorgu listesi, bağlantı bilgilerini incelemenizi sağlar. Bu sorguyu [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
+Aşağıdaki sorgu listesi, bağlantı bilgilerini incelemenizi sağlar. Bu sorguyu [Log Analytics sorgu düzenleyicisinde](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

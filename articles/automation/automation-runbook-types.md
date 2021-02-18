@@ -3,20 +3,20 @@ title: Azure Otomasyonu runbook türleri
 description: Bu makalede, Azure Otomasyonu 'nda kullanabileceğiniz runbook 'ların türleri ve hangi türün kullanılacağını belirleme konuları açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050978"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634898"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
 Azure Otomasyonu Işlem Otomasyonu özelliği, aşağıdaki tabloda tanımlandığı gibi çeşitli runbook türlerini destekler. İşlem otomasyonu ortamı hakkında bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
 
-| Tür | Açıklama |
+| Tür | Description |
 |:--- |:--- |
 | [Grafik](#graphical-runbooks)|Windows PowerShell 'i temel alan ve Azure portal grafik düzenleyicisinde tamamen oluşturulan ve düzenlenen grafik runbook 'u. |
 | [Grafik PowerShell Iş akışı](#graphical-runbooks)|Windows PowerShell Iş akışına dayalı grafik runbook 'u ve Azure portal içindeki grafik düzenleyicide tamamen oluşturulmuş ve düzenlenmiş. |
@@ -101,6 +101,11 @@ PowerShell Iş akışı runbook 'ları [Windows PowerShell Iş akışını](auto
 ## <a name="python-runbooks"></a>Python runbook 'ları
 
 Python runbook 'ları Python 2 ve Python 3 altında derlenir. Python 3 runbook 'ları Şu anda önizleme aşamasındadır. Azure portal metin düzenleyicisini kullanarak runbook 'un kodunu doğrudan düzenleyebilirsiniz. Ayrıca, çevrimdışı bir metin Düzenleyicisi kullanabilir ve [runbook 'U](manage-runbooks.md) Azure Otomasyonu 'na aktarabilirsiniz.
+
+Python 3 runbook 'ları aşağıdaki Azure genel altyapılarında desteklenir:
+
+* Azure genel
+* Azure Kamu
 
 ### <a name="advantages"></a>Avantajlar
 

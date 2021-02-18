@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ab2aa1df0719b685800529f32e36674bf85e57ee
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c330ce9b9eec693d7dabda55ad65d297ca78ca01
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625322"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Öğretici: LogicMonitor ile tümleştirme Azure Active Directory
 
@@ -80,7 +80,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.logicmonitor.com`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.logicmonitor.com`
-
+    
+    c. **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+  
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [LogicMonitor istemci destek ekibine](https://www.logicmonitor.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 

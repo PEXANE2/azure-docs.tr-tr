@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250173"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652382"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Gatsby sitesi yayımlama
 
@@ -75,7 +75,7 @@ Yeni bir Azure statik Web Apps kaynağı oluşturmak için GitHub 'da bir depoya
 1. Yerel deponuzu GitHub 'a iletin.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web uygulamanızı dağıtın
@@ -92,17 +92,17 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
 
-1. _Abonelik_için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+1. _Abonelik_ için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
 1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_' nda, **Gatsby-static-Web-App** girin ve **Tamam**' ı seçin.
 
 1. Ardından, **ad** kutusunda uygulamanız için bir ad. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
-1. _Bölge_için bir kullanılabilir bölge seçin.
+1. _Bölge_ için bir kullanılabilir bölge seçin.
 
-1. _SKU_için **ücretsiz**' i seçin.
+1. _SKU_ için **ücretsiz**' i seçin.
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
 
 1. **GitHub Ile oturum aç** düğmesine tıklayın.
 
@@ -110,11 +110,11 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Depo_ olarak **Gatsby-static-Web-App** ' i seçin.
 
-1. _Dal_ için **ana öğe**seçin.
+1. _Dal_ için **ana** öğesini seçin.
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
 
-### <a name="build"></a>Yapı
+### <a name="build"></a>Oluşturma
 
 Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını ekleyin.
 
@@ -122,11 +122,11 @@ Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandır
 
 1. GitHub eylemlerdeki adımın ayarlarını yapılandırmak için _uygulama konumunu_ olarak ayarlayın **/** .
 
-1. _Uygulama yapıtı konumunu_ **ortak**olarak ayarlayın.
+1. _Uygulama yapıtı konumunu_ **ortak** olarak ayarlayın.
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Derleme ayarları":::
 
 ### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
@@ -138,7 +138,7 @@ Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandır
 
 1. Kaynak ekranında, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın. GitHub eyleminin tamamlanabilmesi için bir dakika veya iki dakika beklemeniz gerekebilir.
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Portalda statik bir Web Apps (Önizleme) oluşturma":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Dağıtılan uygulama":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

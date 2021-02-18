@@ -1,59 +1,54 @@
 ---
-title: Azure Kubernetes Service (AKS) genel önizlemede gizli bilgi işlem düğümleri
+title: Azure Kubernetes Service (AKS) üzerinde gizli bilgi işlem düğümleri
 description: AKS üzerinde gizli bilgi işlem düğümleri
 services: virtual-machines
 author: agowdamsft
 ms.service: container-service
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9ca98c032a7c8bd1820a92bff77079a61c515d65
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564185"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653389"
 ---
-# <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes hizmetindeki gizli bilgi işlem düğümleri (Genel Önizleme)
+# <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetindeki gizli bilgi işlem düğümleri
 
-[Azure gizli bilgi işlem](overview.md) , önemli verilerinizi kullanımda iken korumanıza olanak sağlar. Temel alınan altyapılar, donanım tarafından desteklenen bir güvenilir yürütme kapsayıcı ortamları ile diğer uygulamalardan, yöneticilerden ve bulut sağlayıcılarından bu verileri korur.
+[Azure gizli bilgi işlem](overview.md) , önemli verilerinizi kullanımda iken korumanıza olanak sağlar. Temel alınan gizli bilgi işlem altyapısı, bu verileri, donanım tarafından desteklenen güvenilir bir yürütme kapsayıcı ortamları ile diğer uygulamalardan, yöneticilerden ve bulut sağlayıcılarından korur. Gizli bilgi işlem düğümleri eklemek, kapsayıcı uygulamasının yalıtılmış, donanım korumalı ve attestable ortamında çalışmasını hedeflemesini sağlar.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Kubernetes hizmeti (AKS), Intel SGX tarafından desteklenen [DCsv2 gizli bilgi işlem düğümlerinin](confidential-computing-enclaves.md) eklenmesini destekler. Bu düğüm çalıştırmaları, kullanıcı düzeyindeki kodun özel belleğe ayrılmasına izin vererek, kritik iş yüklerini donanım tabanlı bir güvenilir yürütme ortamı (t) içinde çalıştırabilir. Bu özel bellek bölgeleri, şifreleme olarak adlandırılır. Kuşışları, daha yüksek bir ayrıcalıkla çalışan işlemlerden kodu ve verileri korumak için tasarlanmıştır. SGX yürütme modeli, Konuk işletim sistemi, konak işletim sistemi ve hiper yönetici ara katmanlarını kaldırır. *Kapsayıcı başına yalıtılmış yürütme modeli tabanlı donanım* , uygulamaların özel bir bellek bloğunu ŞIFRELI tutarken CPU ile doğrudan yürütülmesini sağlar. Gizli bilgi işlem düğümleri, AKS 'teki kapsayıcı uygulamalarının genel güvenlik duruşunu ve derinlemesine savunma kapsayıcısı stratejisi hakkında harika bir ek yardım sağlar. 
+Azure Kubernetes hizmeti (AKS), Intel SGX tarafından desteklenen [DCsv2 gizli bilgi işlem düğümlerinin](confidential-computing-enclaves.md) eklenmesini destekler. Bu düğümler, kritik iş yüklerini donanım tabanlı bir güvenilir yürütme ortamında (t) çalıştırmanızı sağlar. T 'nin kapsayıcılardan kullanıcı düzeyindeki kodun, kodu doğrudan CPU ile yürütmek için özel bellek bölgelerini ayırmasını sağlar. Doğrudan CPU ile yürütülen bu özel bellek bölgelerine, enclaven denir. Şifreleme, aynı düğümlerde çalışan diğer işlemlerden veri gizliliğini, veri bütünlüğünü ve kod bütünlüğünü korumanıza yardımcı olur. Intel SGX yürütme modeli, Konuk işletim sistemi, ana bilgisayar IŞLETIM sistemi ve Hiper yöneticide bulunan ara katmanları da kaldırır, böylece saldırı yüzeyi alanını azaltır. Bir düğümdeki *kapsayıcı başına yalıtılmış yürütme modeli tabanlı donanım* , uygulamaların, kapsayıcı başına şifrelenmiş özel bellek bloğunu tutarken CPU ile doğrudan yürütülmesini sağlar. Gizli kapsayıcılarla gizli bilgi işlem düğümleri, sıfır güveninizin güvenlik planlaması ve derinlemesine savunma kapsayıcı stratejinize yönelik harika bir ektir.
 
 ![SGX düğümüne genel bakış](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
 ## <a name="aks-confidential-nodes-features"></a>AKS gizli düğümleri özellikleri
 
-- SGX güvenilir yürütme ortamı (t) ile donanım tabanlı ve işlem düzeyi kapsayıcı yalıtımı 
+- Intel SGX güvenilir yürütme ortamı (t) ile donanım tabanlı ve işlem düzeyi kapsayıcı yalıtımı 
 - Heterojen düğüm havuzu kümeleri (gizli ve gizli olmayan düğüm havuzlarını karıştırma)
-- Şifrelenmiş sayfa önbelleği (EPC) bellek tabanlı Pod zamanlaması
-- SGX DCAP sürücüsü önceden yüklendi
-- Intel FSGS düzeltme eki önceden yüklenmiş
-- CPU tüketimi tabanlı yatay Pod otomatik ölçeklendirmeyi ve küme otomatik ölçeklendirmeyi destekler
-- AKS daemonset aracılığıyla proc kanıtlama Yardımcısı
+- Şifrelenmiş sayfa önbelleği (EPC) bellek tabanlı Pod zamanlaması (eklenti gerektirir)
+- Intel SGX DCAP sürücüsü önceden yüklenmiş
+- CPU tüketimi tabanlı yatay Pod otomatik ölçeklendirme ve küme otomatik ölçeklendirme
 - Linux kapsayıcıları Ubuntu 18,04 Gen 2 VM çalışan düğümleri aracılığıyla desteklenir
 
-## <a name="aks-provided-daemon-sets-addon"></a>AKS tarafından sunulan Daemon kümeleri (eklenti)
+## <a name="confidential-computing-add-on-for-aks"></a>AKS için gizli bilgi Işlem eklentisi
+Eklenti özelliği, küme üzerinde gizli bilgi işlem düğüm havuzlarını çalıştırırken AKS üzerinde fazladan yetenek özelliği sunar. Bu eklenti aşağıdaki özellikleri sunar.
 
-#### <a name="sgx-device-plugin"></a>SGX cihaz eklentisi <a id="sgx-plugin"></a>
+#### <a name="azure-device-plugin-for-intel-sgx"></a>Intel SGX için Azure cihaz eklentisi <a id="sgx-plugin"></a>
 
-SGX cihaz eklentisi, EPC belleği için Kubernetes cihaz eklentisi arabirimini uygular. Etkin olarak, bu eklenti, EPC belleğini Kubernetes 'te ek bir kaynak türü yapar. Kullanıcılar, bu kaynak üzerinde diğer kaynaklar gibi sınırlar belirtebilir. Zamanlama işlevinden ayrı olarak, cihaz eklentisi gizli iş yükü kapsayıcılarına SGX cihaz sürücüsü izinleri atamaya yardımcı olur. EPC bellek tabanlı dağıtım () örneğinin örnek bir uygulamasını `kubernetes.azure.com/sgx_epc_mem_in_MiB` [burada bulabilirsiniz](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)
+Cihaz eklentisi, şifrelenmiş sayfa önbelleği (EPC) belleği için Kubernetes cihaz eklentisi arabirimini uygular ve cihaz sürücülerini düğümlerden kullanıma sunar. Bu eklenti etkin şekilde, Kubernetes 'te EPC belleğini başka bir kaynak türü olarak yapar. Kullanıcılar, bu kaynak üzerinde diğer kaynaklar gibi sınırlar belirtebilir. Zamanlama işlevinden ayrı olarak, cihaz eklentisi gizli iş yükü kapsayıcılarına Intel SGX cihaz sürücüsü izinleri atamanıza yardımcı olur. Bu eklenti geliştiricisi sayesinde, dağıtım dosyalarında Intel SGX sürücü birimlerinin takılmasını önleyebilirsiniz. EPC bellek tabanlı dağıtım () örneğinin örnek bir uygulamasını `kubernetes.azure.com/sgx_epc_mem_in_MiB` [burada bulabilirsiniz](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)
 
-#### <a name="sgx-quote-helper-service"></a>SGX quote yardımcı hizmeti <a id="sgx-quote"></a>
 
-Uzaktan kanıtlama gerçekleştiren uygulamaların bir TEKLIF oluşturması gerekir. TEKLIF, kimliğin ve uygulamanın durumunun ve içinde çalıştığı ortamın üzerinde şifreleme sağlaması sağlar. TEKLIF üretimi, SGX platformu yazılım bileşenlerinin (PSW/DCAP) bir parçası olan belirli güvenilir yazılım bileşenlerine dayanır. Bu PSW, düğüm başına çalışan bir Daemon kümesi olarak paketlenmiştir. Bu, yararlanılabilir ve uygulamalardan gelen kanıtlama teklıfı istenirken olabilir. AKS tarafından sağlanan hizmetin kullanılması, konaktaki PSW ve diğer yazılım bileşenleri arasındaki uyumluluğun daha iyi korunmasına yardımcı olur. Kullanımı ve özellik ayrıntıları hakkında [daha fazla bilgi edinin](confidential-nodes-out-of-proc-attestation.md) .
-
-## <a name="programming--application-models"></a>& uygulama modellerini programlama
+## <a name="programming-models"></a>Programlama modelleri
 
 ### <a name="confidential-containers"></a>Gizli kapsayıcılar
 
-[Gizli kapsayıcılar](confidential-containers.md) , mevcut programları ve çoğu **ortak programlama dili** çalışma zamanını (Python, Node, Java vb.), kaynak kodu değişikliği veya yeniden derleme olmadan mevcut kitaplık bağımlılıklarıyla birlikte çalıştırır. Bu model, Azure Iş ortakları & açık kaynak projelerle gizliliği sağlamak için en hızlı modeldir. Güvenli şifreleyler içinde çalışmak üzere hazırlama için hazırlanmış olan kapsayıcı görüntüleri gizli kapsayıcılar olarak adlandırılır.
+[Gizli kapsayıcılar](confidential-containers.md) , en **yaygın programlama dilleri** çalışma zamanlarının (Python, Node, Java vb.) confidentially var olan değiştirilmemiş kapsayıcı uygulamalarını çalıştırmanıza yardımcı olur. Bu paketleme modelinde hiçbir kaynak kodu değişikliği veya yeniden derleme gerekmez. Bu, standart Docker Kapsayıcılarınızı Open-Source projelerle veya Azure Iş ortağı çözümleriyle paketleyerek elde edilen gizlilik için en hızlı yöntemdir. Bu paketleme ve yürütme modelinde, kapsayıcı uygulamasının tüm parçaları güvenilir bir sınıra (Enclave) yüklenir. Bu model, genel amaçlı düğümlerde çalışmakta olan Pazar veya özel uygulamalarda bulunan raf kapsayıcısı uygulamaları için iyi çalışır.
 
 ### <a name="enclave-aware-containers"></a>Şifreleme kullanan kapsayıcılar
-
-AKS, gizli düğümlerde çalışmak üzere programlanan uygulamaları destekler ve SDK 'lar ve çerçeveler aracılığıyla sunulan **özel yönerge kümesini** kullanır. Bu uygulama modeli en düşük güvenilir bilgi Işlem tabanı (TCB) ile uygulamalarınıza en çok denetim sağlar. Şifreleme kullanan kapsayıcılar hakkında [daha fazla bilgi edinin](enclave-aware-containers.md) .
+AKS üzerinde gizli bilgi işlem düğümleri, CPU 'dan kullanılabilen **özel yönerge kümesini** kullanmak için bir kuşakda çalışmak üzere programlanan kapsayıcıları destekler. Bu programlama modeli, yürütme akışlarınızın daha sıkı denetimini sağlar ve özel SDK 'ların ve çerçevelerin kullanılmasını gerektirir. Bu programlama modeli en düşük güvenilir bilgi Işlem tabanıyla (TCB) en fazla uygulama akışı denetimini sağlar. Kuşve duyarlı kapsayıcı geliştirmesi, kapsayıcı uygulamasına güvenilmeyen ve güvenilen bölümleri içerir ve bu sayede, kuşve 'nin yürütüldüğü normal bellek ve şifrelenmiş sayfa önbelleği (EPC) belleğini yönetebilirsiniz. Şifreleme kullanan kapsayıcılar hakkında [daha fazla bilgi edinin](enclave-aware-containers.md) .
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
@@ -62,6 +57,8 @@ AKS, gizli düğümlerde çalışmak üzere programlanan uygulamaları destekler
 [Hızlı başlangıç gizli kapsayıcı örnekleri](https://github.com/Azure-Samples/confidential-container-samples)
 
 [DCsv2 SKU listesi](../virtual-machines/dcv2-series.md)
+
+[Gizli kapsayıcılar için derinlemesine savunma Web semineri](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
 <!-- LINKS - external -->
 [Azure Attestation]: ../attestation/index.yml

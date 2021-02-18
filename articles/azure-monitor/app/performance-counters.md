@@ -4,12 +4,12 @@ description: Application Insights 'de sistem ve özel .NET performans sayaçlar�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583895"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -110,7 +110,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Analytics 'te performans sayaçları
-[Analiz](../log-query/log-query-overview.md)içinde performans sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
+[Analiz](../logs/log-query-overview.md)içinde performans sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
 **PerformanceCounters** şeması, `category` `counter` `instance` her bir performans sayacının, adını ve adını gösterir.  Her uygulama için telemetri bölümünde yalnızca bu uygulama için sayaçları görürsünüz. Örneğin, hangi sayaçların kullanılabildiğini görmek için: 
 
@@ -148,7 +148,7 @@ ASP.NET Core performans sayaçları için destek sınırlıdır:
 * SDK sürümleri 2.8.0 ve üzeri, Linux 'ta CPU/bellek sayacını destekler. Linux 'ta başka bir sayaç desteklenmez. Linux 'ta (ve diğer Windows dışı ortamlarda) sistem sayaçlarını almanın önerilen yolu [Eventcounters](eventcounters.md) kullanmaktır
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir performans sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../platform/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
+Diğer ölçümler gibi, bir performans sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../alerts/alerts-log.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 

@@ -68,7 +68,7 @@
     - name: Resource Manager şablonları
       items:
         - name: Genel Bakış
-          href: /resource-manager-samples.md
+          href: resource-manager-samples.md
         - name: Aracılar
           href: agents/resource-manager-agent.md
         - name: Uyarılar
@@ -102,9 +102,9 @@
         - name: VM'ler için Azure İzleyici
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
-      href: /cli-samples.md
+      href: cli-samples.md
     - name: Azure PowerShell
-      href: /powershell-samples.md
+      href: powershell-samples.md
 - name: Kavramlar
   items:
     - name: Neleri izleyebilirsiniz?
@@ -114,7 +114,7 @@
     - name: Veri kaynakları
       href: agents/data-sources.md
     - name: Veri platformu
-      href: /data-platform.md
+      href: data-platform.md
     - name: Veri güvenliği
       items:
         - name: Günlük verileri
@@ -142,7 +142,7 @@
     - name: Verileri görselleştirme
       href: visualizations.md
     - name: İş ortağı tümleştirmeleri
-      href: /partners.md
+      href: partners.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli
@@ -169,14 +169,14 @@
     - name: Yönetme ve yapılandırma
       items:
         - name: Rol izinleri ve güvenlik
-          href: /roles-permissions-security.md
+          href: roles-permissions-security.md
         - name: IP adresleri
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
         - name: Kullanım ve maliyet
           items:
             - name: Kullanım ve tahmini maliyetler
-              href: /usage-estimated-costs.md
+              href: usage-estimated-costs.md
             - name: Uygulama kullanımı ve maliyetleri
               href: app/pricing.md
             - name: Veri kullanımı ve maliyetlerini günlüğe kaydetme
@@ -1399,7 +1399,7 @@
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
-      href: /policy-reference.md
+      href: policy-reference.md
     - name: Özellik ve API'yi Kullanımdan Kaldırma
       items:
         - name: OperationalInsights API’si

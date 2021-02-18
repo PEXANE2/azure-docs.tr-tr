@@ -3,16 +3,16 @@ title: Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 description: Geçmiş eğilimleri çözümlemeyi ve yedekleme merkezi ile yedeklemeleriniz hakkında daha derin Öngörüler elde etmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893702"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592009"
 ---
 # <a name="obtain-insights-using-backup-center-preview"></a>Yedekleme merkezi (Önizleme) kullanarak Öngörüler edinin
 
-Yedekleme merkezi, geçmiş eğilimleri analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ve [Azure çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md)kullanan [yedekleme raporları (Önizleme)](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
+Yedekleme merkezi, geçmiş eğilimleri analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](../azure-monitor/logs/data-platform-logs.md) ve [Azure çalışma kitaplarını](../azure-monitor/visualize/workbooks-overview.md)kullanan [yedekleme raporları (Önizleme)](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
 
 - Tüketilen bulut depolamasını ayırma ve tahmin etme.
 

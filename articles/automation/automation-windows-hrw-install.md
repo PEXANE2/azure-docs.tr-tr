@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006998"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651366"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
-Azure 'un [etkin](../azure-arc/servers/overview.md)olduğu sunucular da dahil olmak üzere runbook 'Ları doğrudan Azure 'Da veya Azure dışı makinede çalıştırmak Için Azure Otomasyonu 'Nun Kullanıcı karma Runbook Worker özelliğini kullanabilirsiniz. Rolü barındıran makineden veya sunucudan, bu yerel kaynakları yönetmek için Runbook 'ları doğrudan bu ve ortamdaki kaynaklara karşı çalıştırabilirsiniz.
+Azure 'da [çalışan sunucular da](../azure-arc/servers/overview.md)dahil olmak üzere runbook 'Ları doğrudan Azure 'Da veya Azure dışı bir makinede çalıştırmak Için Azure Otomasyonu 'Nun Kullanıcı karma Runbook Worker özelliğini kullanabilirsiniz. Rolü barındıran makineden veya sunucudan, bu yerel kaynakları yönetmek için Runbook 'ları doğrudan buna karşı ve ortamdaki kaynaklara karşı çalıştırabilirsiniz.
 
 Azure Otomasyonu runbook 'ları depolar ve yönetir ve ardından bunları bir veya daha fazla belirlenen makineye gönderir. Bu makalede bir Windows makinesinde Kullanıcı karma Runbook Worker dağıtımı, çalışan kaldırma ve karma Runbook Worker grubunun nasıl kaldırılacağı açıklanır.
 
@@ -26,13 +26,13 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics çalışma alanı
 
-Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure Izleyici Log Analytics çalışma alanına bağlıdır. [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)aracılığıyla veya [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)aracılığıyla oluşturabilirsiniz.
+Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure Izleyici Log Analytics çalışma alanına bağlıdır. [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)aracılığıyla veya [Azure Portal](../azure-monitor/logs/quick-create-workspace.md)aracılığıyla oluşturabilirsiniz.
 
-Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
+Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/logs/design-logs-deployment.md) gözden geçirin.
 
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Karma Runbook Worker rolü, desteklenen Windows işletim sistemi için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) gerek duyar. Azure dışında barındırılan sunucular veya makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz.
+Karma Runbook Worker rolü, desteklenen Windows işletim sistemi için [Log Analytics aracısına](../azure-monitor/agents/log-analytics-agent.md) gerek duyar. Azure dışında barındırılan sunucular veya makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz.
 
 ### <a name="supported-windows-operating-system"></a>Desteklenen Windows işletim sistemi
 

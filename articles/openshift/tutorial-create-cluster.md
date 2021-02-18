@@ -4,14 +4,14 @@ description: Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi olu
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072244"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653049"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -26,6 +26,8 @@ Bu öğreticide, üç bölümden biri olmak üzere, ortamınızı OpenShift 4 ç
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](../azure-portal/supportability/per-vm-quota-requests.md).
+
+ARO çekme gizli anahtarı, ARO için RH OpenShift lisansının maliyetini değiştirmez.
 
 ### <a name="verify-your-permissions"></a>İzinlerinizi doğrulama
 

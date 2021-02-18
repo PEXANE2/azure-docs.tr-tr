@@ -3,15 +3,16 @@ title: Windows sanal masaüstü ortamı konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539637"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652454"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -49,9 +50,21 @@ Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marke
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>Hata: uygulama gruplarında Kullanıcı atamaları göremez.
 
-Neden: Bu hata genellikle aboneliği 1 Azure Active Directory (AD) kiracısından diğerine taşıdıktan sonra oluşur. Eski atamalarınız hala eski Azure AD kiracısına bağlıysa, Azure portal bunların izini kaybeder.
+**Neden**: Bu hata genellikle aboneliği 1 Azure ACTIVE DIRECTORY (ad) kiracısından diğerine taşıdıktan sonra oluşur. Eski atamalarınız hala eski Azure AD kiracısına bağlıysa, Azure portal bunların izini kaybeder.
 
-Çözüm: kullanıcıları uygulama gruplarına yeniden atamanız gerekir.
+**Çözüm**: kullanıcıları uygulama gruplarına yeniden atamanız gerekir.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Yalnızca hizmet nesnelerim için konum ayarlarken bızı görüyorum
+
+**Neden**: Azure Şu anda Windows sanal masaüstü hizmeti için bu bölgeyi desteklemiyor. Hangi geographilerin destekleyeceğinizi öğrenmek için [veri konumlarına](data-locations.md)göz atın. Windows sanal masaüstü konumu destekliyorsa, ancak bir konum seçerken hala görünmezse, bu, kaynak sağlayıcınız henüz güncelleştirilmemiş anlamına gelir.
+
+**Çözüm**: bölgelerin en son listesini almak için kaynak sağlayıcısını yeniden kaydedin:
+
+1. **Abonelikler** ' e gidin ve ilgili aboneliği seçin.
+2. **Kaynak sağlayıcısı**' nı seçin.
+3. **Microsoft. DesktopVirtualization**' ı seçin ve ardından Eylem menüsünden **yeniden kaydet** ' i seçin.
+
+Kaynak sağlayıcısını yeniden kaydettiğinizde, belirli bir UI geri bildirimi veya güncelleştirme durumu görmezsiniz. Yeniden kayıt işlemi de mevcut ortamlarınızla karışmaz.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager şablonu hataları
 

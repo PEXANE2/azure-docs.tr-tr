@@ -4,31 +4,29 @@ description: Tarifeli faturalandırma için otomatik anomali algılamanın, mü�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/17/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989528"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653015"
 ---
 # <a name="anomaly-detection-for-metered-billing"></a>Ölçülen faturalandırma için anomali algılama
 
-Bu makalede Market ölçüm hizmeti ve ilişkili otomatik anomali algılama özelliği hakkında daha fazla bilgi sağlanır ve müşterileri tarifeli kullanım için doğru bir şekilde faturalıyoruz. Ölçülen faturalandırma seçeneği şu anda [hizmet olarak yazılım](plan-saas-offer.md) (SaaS) teklifleri ve yönetilen bir uygulama planına sahip [Azure uygulamaları](plan-azure-application-offer.md#types-of-plans) için kullanılabilir. Bu seçenek, iş ortaklarının standart olmayan birimlere göre ücretlendirilen ticari Market programında teklif oluşturmalarına olanak tanır.
+Özel ölçülen faturalandırma seçeneği şu anda [hizmet olarak yazılım](plan-saas-offer.md) (SaaS) teklifleri ve yönetilen bir uygulama planına sahip [Azure uygulamaları](plan-azure-application-offer.md#types-of-plans) tarafından kullanılabilir.
 
-SaaS ve yönetilen uygulamalar için dağıtılan özel ölçümleri olan iş ortakları, Iş Ortağı Merkezi 'nde belirli _özel_ ölçümlerle _fazla kullanım olayları_ için beklenen kullanım davranışından sapmaları görebilir. Iş Ortağı Merkezi, riski azaltmak için, normal ölçülen faturalandırma davranışını saptamak, ölçülen faturalandırma kullanımını çözümlemek ve en az Kullanıcı müdahalesiyle anormal bulmalara yönelik makine öğrenimi algoritmalarını uygulayan anomali algılama hizmetini kullanır. Ölçülen ödeme kullanım verileri kümelerinde _anomali algılama modellerini_ kullanarak, bildirilen kullanım beklenen kullanımı aştığında yayımcıyı bilgilendirmek için iş ortağı merkezi amaçlar.
+Ticari Market programında standart olmayan birimlere göre kullanım ücreti sunan teklifler oluşturmak için ölçülen faturalandırma seçeneğini kullanıyorsanız, müşterinizin beklenenden daha fazla hizmet kullandığını bilmeniz gerekir.
 
-## <a name="usability-experience"></a>Kullanılabilirlik deneyimi
+## <a name="use-the-anomaly-detection-feature"></a>Anomali algılama özelliğini kullanma
 
-Microsoft, müşteriyi Microsoft faturalarını görüntülemeden önce SaaS veya Azure tarafından yönetilen uygulama teklifleri için müşterinin fazla kullanım süresini bildirmek üzere iş ortağına bağımlıdır. Yanlış kullanım raporlandıysanız, müşteri yanlış bir fatura alabilir, Microsoft 'un ve iş ortağının güvenilirlik kazanmasına karşı daha fazla araştırma sağlayabilir.
+Microsoft, Microsoft 'tan müşteriye ait SaaS veya Azure tarafından yönetilen uygulama teklifleri için müşterilerinizin fazla kullanım süresini raporlamak üzere size bağlıdır. Yanlış kullanım raporlandıysanız, müşteri yanlış bir fatura alabilir, Microsoft 'un ve iş ortağının güvenilirlik kazanmasına karşı daha fazla araştırma sağlayabilir.
 
-Bu sorunu azaltmaya yardımcı olmak için, hem SaaS uygulamaları hem de Azure uygulama tarafından yönetilen uygulama planları için bir otomatik anomali algılama özelliği sunulmaktadır. Bu özellik, kullanımı ölçülen faturalandırmaya karşı proaktif olarak izleyen ve beklenen aralıktaki kullanım beklenen değerini tahmin eden bir makine öğrenimi modelidir. Kullanım beklenen aralığın dışındaysa, bir anomali olarak kabul edilir ve Iş Ortağı Merkezi 'nin ticari Market programındaki teklif Genel Bakış sayfasında iş ortağına bir uyarı bildirimi görüntülenir.
+Müşterilerinizin doğru şekilde faturalanmasını sağlamaya yardımcı olmak için, SaaS uygulamaları ve Azure uygulama tarafından yönetilen uygulama planları için **anomali algılama** özelliğini kullanın. Bu özellik, kullanımı ölçülen faturalandırmaya karşı izler ve beklenen aralıktaki kullanım beklenen değerini tahmin eder. Kullanım beklenen aralığın dışındaysa, bu, beklenmeyen (bir anomali) olarak değerlendirilir ve Iş Ortağı Merkezi 'nin ticari Market programındaki teklif Genel Bakış sayfasında bir uyarı bildirimi alırsınız. Belirlediğiniz her özel ölçüm boyutu için müşterilerinizin kullanım bilgilerini günlük olarak izleyebilirsiniz.
 
-Makine öğrenimi modeli analizler kullanım süresi üst. Yayımcı, her teklifin özel ölçüm boyutları için müşterilerinin fazla kullanım ömrü boyunca bildirilen tüm anormallikleri görebilir.
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>Tarifeli kullanım anormalilerini görüntüleyin ve yönetin
+## <a name="view-and-manage-metered-usage-anomalies"></a>Tarifeli kullanım anormalilerini görüntüleyin ve yönetin
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 1. Sol gezinti menüsünde **ticari Market**  >  **Analizi**' ni seçin.

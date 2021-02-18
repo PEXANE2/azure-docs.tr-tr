@@ -5,22 +5,22 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 772be332af1476975d91eb270bec24d6d241a616
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706847"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652922"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
 Bu makalede, Azure Blob depolama alanındaki büyük miktarlarda verileri güvenli bir şekilde aktarmak için Azure Içeri/dışarı aktarma hizmeti 'nin nasıl kullanılacağına ilişkin adım adım yönergeler sağlanmaktadır. Hizmet, Azure veri merkezine boş sürücüler sevk etmeniz gerekir. Hizmet, depolama hesabınızdan sürücülere veri aktarır ve sonra sürücüleri geri gönderir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
 Şunları yapmanız gerekir:
@@ -43,13 +43,13 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
 Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 1. Oturum açın <https://portal.azure.com/> .
-2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine** gidin.
+2. **İçeri/dışarı aktarma işleri** için arama yapın.
 
-    ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![İçeri/dışarı aktarma işlerini arayın](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
+3. **+ Yeni** seçeneğini belirleyin.
 
-    ![Içeri/dışarı aktarma işi ' ne tıklayın](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![Yeni ' yi oluşturmak için + yeni ' yi seçin ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **Temel bilgiler**:
 
@@ -60,7 +60,7 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
     - Bir abonelik seçin.
     - Bir kaynak grubu girin veya seçin.
 
-        ![Temel bilgiler](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![Temel bilgiler](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
 
 5. **İş için Ayrıntılar**:
 
@@ -69,17 +69,17 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
     - Depolama hesabınızdan, boş sürücünüze veya sürücülere dışarı aktarmak istediğiniz blob verilerini belirtin.
     - Depolama hesabındaki **tüm blob verilerini dışa aktarmayı** seçin.
 
-         ![Tümünü dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+         ![Tümünü dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
     - Hangi kapsayıcıları ve Blobların dışarı aktarılacağını belirtebilirsiniz.
         - **Dışarı aktarılacak bir blob belirtmek için**: **eşittir** seçiciyi kullanın. Kapsayıcının adından başlayarak, Blobun göreli yolunu belirtin. Kök kapsayıcıyı belirtmek için *$root* kullanın.
         - **Önekle başlayan tüm Blobları belirtmek için**: **ile başlar** seçiciyi kullanın. '/' Eğik çizgiyle başlayan öneki belirtin. Ön ek, kapsayıcı adının ön eki, tüm kapsayıcı adı ya da tüm kapsayıcı adı ve ardından blob adının öneki olabilir. İşlem sırasında hataları önlemek için, bu ekran görüntüsünde gösterildiği gibi BLOB yollarını geçerli biçimde sağlamanız gerekir. Daha fazla bilgi için bkz. [geçerli blob yolları örnekleri](#examples-of-valid-blob-paths).
 
-           ![Seçili kapsayıcıları ve Blobları dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+           ![Seçili kapsayıcıları ve Blobları dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
 
     - Blob listesi dosyasından dışa aktarabilirsiniz.
 
-        ![Blob listesi dosyasından dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
+        ![Blob listesi dosyasından dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
    > Dışarı aktarılacak blob veri kopyalama sırasında kullanılıyorsa, Azure Içeri/dışarı aktarma hizmeti Blobun anlık görüntüsünü alır ve anlık görüntüyü kopyalar.
@@ -320,7 +320,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Açıklama|
+    |Komut satırı parametresi|Description|
     |--------------------------|-----------------|
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|
@@ -374,7 +374,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

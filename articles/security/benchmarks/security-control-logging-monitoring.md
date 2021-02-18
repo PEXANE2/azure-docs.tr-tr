@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfa2548abb28fa6f84178a1fb5716d0c03b163f1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570717"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Güvenlik denetimi: günlüğe kaydetme ve Izleme
 
@@ -34,7 +34,7 @@ Microsoft, Azure kaynakları için zaman kaynaklarını korur, ancak işlem kayn
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 2.2 | 6,5, 6,6 | Müşteri |
+| 2,2 | 6,5, 6,6 | Müşteri |
 
 Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından oluşturulan güvenlik verilerini toplamak için Azure Izleyici aracılığıyla günlük alma. Azure Izleyici 'de, Log Analytics çalışma alanı (ler) kullanarak Analizi sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
@@ -42,9 +42,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure kaynaklarında tanılama ayarlarını etkinleştirin. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: işletim sistemlerinden güvenlik günlüklerini toplama
 
@@ -68,7 +68,7 @@ Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure kaynakların
 
 İşlem kaynağının Microsoft 'a ait olması durumunda, Microsoft bunu izlemekten sorumludur. İşlem kaynağı kuruluşunuza aitse, bunu izlemek sizin sorumluluğunuzdadır. İşletim sistemini izlemek için Azure Güvenlik Merkezi 'ni kullanabilirsiniz. İşletim sisteminden Güvenlik Merkezi tarafından toplanan veriler işletim sistemi türü ve sürümü, işletim sistemi (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açan kullanıcı içerir. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını da toplar.
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../../security-center/security-center-enable-data-collection.md)
 
@@ -80,7 +80,7 @@ Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure kaynakların
 
 Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik ve
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
-- [Log Analytics çalışma alanını anlayın](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics çalışma alanını anlayın](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: anormal etkinlikler için uyarıları etkinleştir
 
@@ -114,7 +114,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2,8: kötü amaçlı yazılımdan koruma 'yı merkezileştirme
 
@@ -148,9 +148,9 @@ Kuruluşunuzun ihtiyaç duyduğu şekilde, DNS günlüğü çözümü için Azur
 
 - [Azure Güvenlik Merkezinde veri toplama](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
-- [Azure İzleyici'de Syslog veri kaynakları](../../azure-monitor/platform/data-sources-syslog.md)
+- [Azure İzleyici'de Syslog veri kaynakları](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8ea668ab2266a1deae108542687c89f3a221568e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220982"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633317"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Çalışanı üzerinde runbook çalıştırma
 
@@ -96,7 +96,7 @@ Karma Runbook Worker grubu için bir farklı çalıştır hesabı belirtmek içi
 Azure 'da kaynak dağıtmaya yönelik Otomatikleştirilmiş derleme işleminizin bir parçası olarak, dağıtım dizinizdeki bir görevi veya bir adım kümesini desteklemek için şirket içi sistemlere erişim gerekebilir. Farklı Çalıştır hesabını kullanarak Azure 'da kimlik doğrulaması sağlamak için farklı çalıştır hesabı sertifikasını yüklemelisiniz.
 
 >[!NOTE]
->Bu PowerShell runbook Şu anda LInux makinelerinde çalıştırılmamaktadır. Yalnızca Windows makinelerinde çalışır.
+>Bu PowerShell runbook Şu anda Linux makinelerinde çalıştırılmamaktadır. Yalnızca Windows makinelerinde çalışır.
 >
 
 **Export-Runascercertificateatetohybridworker** adlı aşağıdaki PowerShell runbook 'U, Azure Otomasyonu hesabınızdan farklı çalıştır sertifikasını dışarı aktarır. Runbook, sertifikayı indirir ve aynı hesaba bağlı bir karma runbook çalışanındaki yerel makine sertifika deposuna aktarır. Bu adımı tamamladıktan sonra, runbook worker 'ın farklı çalıştır hesabını kullanarak Azure 'da başarıyla kimlik doğrulayabildiğini doğrular.

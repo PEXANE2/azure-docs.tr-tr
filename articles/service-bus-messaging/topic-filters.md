@@ -2,17 +2,17 @@
 title: Azure Service Bus konu filtreleri | Microsoft Docs
 description: Bu makalede, abonelerin filtreleri belirterek bir konudan hangi iletileri almak istediğini nasıl tanımlayabileceği açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.date: 02/17/2021
+ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742973"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651672"
 ---
 # <a name="topic-filters-and-actions"></a>Konu başlığı filtreleri ve eylemleri
 
-Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlayabilir. Bu iletiler, bir veya daha fazla adlandırılmış abonelik kuralı biçiminde belirtilir. Her kural, belirli iletileri seçen bir **filtre** koşulunu ve **isteğe bağlı olarak** seçilen iletiyi açıklama eklenen bir **eylemi** içerir. 
+Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlayabilir. Bu iletiler, bir veya daha fazla adlandırılmış abonelik kuralı biçiminde belirtilir. Her kural, belirli iletileri seçen bir **filtre koşulunu** ve **isteğe bağlı olarak** seçilen iletiyi açıklama eklenen bir **eylemi** içerir. 
 
 **Eylemleri olmayan** tüm kurallar, bir koşul kullanılarak birleştirilir `OR` ve birden çok eşleşen kuralsanız bile abonelikte **tek bir iletiyle** sonuçlanır. 
 
@@ -32,9 +32,7 @@ Yeni oluşturulan her konu aboneliğinin bir ilk varsayılan abonelik kuralı va
 Service Bus üç filtre koşulu destekler:
 
 -   *SQL filtreleri* -bir **sqlfilter** , gelen iletilerin Kullanıcı tanımlı özellikler ve sistem özelliklerine karşı ARACıDA değerlendirilen bir SQL benzeri koşullu ifade barındırır. Koşullu ifadede tüm sistem özelliklerinin ön eki olmalıdır `sys.` . [Filtre koşulları Için SQL-Language alt kümesi](service-bus-messaging-sql-filter.md) , özelliklerin ( `EXISTS` ), null-değerlerin ( `IS NULL` ), mantıksal olmayan/ve/veya ilişkisel işleçlerin, basit sayısal aritmetiğinin ve ile eşleşen basit metin deseninin varlığını sınar `LIKE` .
-
 -   *Boole filtreleri* - **truefilter** ve **yanlışfiltre** tüm gelen iletilerin (**true**) ya da abonelik için seçili olmayan iletilerin (**false**) hiçbirinin seçilmemesine neden olur. Bu iki filtre SQL filtresinden türetilir. 
-
 -   *Bağıntı filtreleri* -bir **correlationfilter** , gelen bir veya daha fazla iletinin Kullanıcı ve sistem özelliklerine göre eşleşen bir koşullar kümesi tutar. Yaygın olarak kullanılan bir kullanım, **CorrelationId** özelliğiyle eşleşmedir, ancak uygulama aşağıdaki özelliklerle eşleşmeyi de seçebilir:
 
     - **ContentType**
@@ -66,7 +64,8 @@ Bölümlendirme, çeşitli mevcut konu aboneliklerine iletileri öngörülebilir
 
 Yönlendirme, ileti aboneliklerine öngörülebilir bir şekilde ileti dağıtmak için filtreleri kullanır, ancak özel olması gerekmez. [Otomatik iletme](service-bus-auto-forwarding.md) özelliği ile birlikte, konu filtreleri bir Azure bölgesindeki ileti dağıtımı için bir Service Bus ad alanı içinde karmaşık yönlendirme grafikleri oluşturmak için kullanılabilir. Azure Service Bus ad alanları arasında bir köprü görevi gören Azure Işlevleri veya Azure Logic Apps, iş kolu uygulamalarına doğrudan tümleştirmeyle karmaşık küresel topolojiler oluşturabilirsiniz.
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Örnekler
+Örnekler için bkz. [Service Bus filtresi örnekleri](service-bus-filter-examples.md).
 
 
 

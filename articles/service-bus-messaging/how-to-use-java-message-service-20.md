@@ -4,26 +4,37 @@ description: Azure Service Bus ile Java Ileti hizmeti 'ni (JMS) kullanma
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7e4bf0ad69b6cd183296a7245ad3f720ced76c5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87801651"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652620"
 ---
-# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>Azure Service Bus Premium ile Java Ileti hizmeti 2,0 API 'SI kullanma (Önizleme)
+# <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>Azure Service Bus Premium ile Java Ileti hizmeti 2,0 API 'sini kullanma
 
 Bu makalede, gelişmiş Ileti sıraya alma Protokolü (AMQP 1,0) protokolü üzerinden Azure Service Bus etkileşimde bulunmak için popüler **Java Ileti hizmeti (JMS) 2,0** API 'sinin nasıl kullanılacağı açıklanmaktadır.
 
 > [!NOTE]
-> Java Message Service (JMS) 2,0 API desteği yalnızca **Azure Service Bus Premium katmanında** kullanılabilir ve şu anda **önizlemededir**.
+> Java Ileti hizmeti (JMS) 2,0 API desteği yalnızca **Azure Service Bus Premium katmanında** kullanılabilir.
 >
 
-## <a name="get-started-with-service-bus"></a>Service Bus’ı kullanmaya başlama
+## <a name="pre-requisites"></a>Ön koşullar
+
+### <a name="get-started-with-service-bus"></a>Service Bus’ı kullanmaya başlama
 
 Bu kılavuzda zaten bir Service Bus ad alanı olduğunu varsayılmaktadır. Bunu yapmazsanız, [Azure Portal](https://portal.azure.com)kullanarak [ad alanını ve kuyruğu oluşturabilirsiniz](service-bus-create-namespace-portal.md) . 
 
 Service Bus ad alanları ve kuyrukları oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal ile Service Bus kuyrukları kullanmaya başlama](service-bus-quickstart-portal.md).
+
+### <a name="set-up-a-java-development-environment"></a>Java geliştirme ortamı ayarlama
+
+Java uygulamaları geliştirmek için, uygun geliştirme ortamını ayarlamanız gerekir- 
+   * JDK (Java geliştirme seti) ya da JRE (Java Runtime Environment) yüklü.
+   * JDK veya JRE derleme yoluna ve uygun sistem değişkenlerine eklenir.
+   * JDK veya JRE 'yi kullanmak için bir Java IDE yüklenir. Örneğin, tutulma veya IntelliJ.
+
+Geliştirici ortamınızı Azure 'da Java için hazırlama hakkında daha fazla bilgi edinmek için [Bu kılavuzu](https://docs.microsoft.com/azure/developer/java/fundamentals/)kullanın.
 
 ## <a name="what-jms-features-are-supported"></a>Hangi JMS özellikleri destekleniyor?
 
@@ -45,7 +56,7 @@ Bağımlılıklar içeri aktarıldıktan sonra, Java uygulamaları bir JMS sağl
 
 ### <a name="connecting-to-azure-service-bus-using-jms"></a>JMS kullanarak Azure Service Bus bağlanma
 
-JMS istemcilerini kullanarak Azure Service Bus ile bağlantı kurmak için, **birincil bağlantı dizesi**altındaki [Azure Portal](https://portal.azure.com) ' paylaşılan erişim ilkeleri ' içinde bulunan **bağlantı dizesine** ihtiyacınız vardır.
+JMS istemcilerini kullanarak Azure Service Bus ile bağlantı kurmak için, **birincil bağlantı dizesi** altındaki [Azure Portal](https://portal.azure.com) ' paylaşılan erişim ilkeleri ' içinde bulunan **bağlantı dizesine** ihtiyacınız vardır.
 
 1. Şunu oluşturun `ServiceBusJmsConnectionFactorySettings`
 
@@ -72,11 +83,19 @@ JMS istemcilerini kullanarak Azure Service Bus ile bağlantı kurmak için, **bi
     JMSContext jmsContext = factory.createContext();
     ```
 
+    >[!IMPORTANT]
+    > Benzer şekilde adlandırılmış, bir JMS ' Session ' ve Service Bus ' Session ' tamamen birbirinden bağımsızdır.
+    >
+    > JMS 1,1 ' de oturum, API 'nin MessageProducer, MessageConsumer ve Iletinin kendisini oluşturmaya izin veren önemli bir yapı taşıdır. Daha ayrıntılı bilgi için [JMS API programlama modelini](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html) gözden geçirin
+    >
+    > Service Bus, oturumlarda ve aboneliklerde FıFO işlemeyi etkinleştirmek için [Oturumlar](message-sessions.md) hizmet ve istemci tarafı yapısıdır.
+    >
+
 ### <a name="write-the-jms-application"></a>JMS uygulamasını yazma
 
 `Session`Veya örneği oluşturulduktan sonra `JMSContext` uygulamanız, hem yönetim hem de veri işlemlerini gerçekleştirmek için tanıdık JMS API 'lerini kullanabilir.
 
-Bu önizlemenin bir parçası olarak hangi API 'Lerin desteklendiğini görmek için [desteklenen JMS özellikleri](how-to-use-java-message-service-20.md#what-jms-features-are-supported) listesine bakın.
+Hangi API 'Lerin desteklendiğini görmek için [desteklenen JMS özellikleri](how-to-use-java-message-service-20.md#what-jms-features-are-supported) listesine bakın.
 
 Aşağıda, JMS ile çalışmaya başlamak için bazı örnek kod parçacıkları verilmiştir.
 
@@ -134,7 +153,7 @@ Bu kılavuz, AMQP 1,0 üzerinden Java Ileti hizmeti (JMS) kullanan Java istemci 
 
 Java Ileti hizmeti (JMS) varlıklarıyla ilgili Azure Service Bus ve ayrıntılar hakkında daha fazla bilgi için aşağıdaki bağlantılara göz atın- 
 * [Service Bus-kuyruklar, konular ve abonelikler](service-bus-queues-topics-subscriptions.md)
-* [Service Bus-Java Ileti hizmeti varlıkları](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
+* [Service Bus-Java Ileti hizmeti varlıkları](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities)
 * [Azure Service Bus 'da AMQP 1,0 desteği](service-bus-amqp-overview.md)
 * [Service Bus AMQP 1,0 Geliştirici Kılavuzu](service-bus-amqp-dotnet.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c614d57002c7944d88df123d06ac63d04b288f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078767"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591142"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 'Leri için Azure Tanılama uzantısı
 
@@ -22,7 +22,7 @@ ms.locfileid: "89078767"
 
 Azure Tanılama VM uzantısı, Windows VM 'nizden performans sayaçları ve olay günlükleri gibi izleme verilerini toplamanıza olanak sağlar. Toplamak istediğiniz verileri ve bir Azure depolama hesabı ya da Azure Olay Hub 'ı gibi verilerin nereye gitmesini istediğinizi belirleyebilirsiniz. Bu verileri, Azure portal grafik oluşturmak veya ölçüm uyarıları oluşturmak için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -34,7 +34,7 @@ Azure Tanılama uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-[Azure Tanılama uzantısı şeması ve özellik değerleri bu belgede açıklanmaktadır.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Azure Tanılama uzantısı şeması ve özellik değerleri bu belgede açıklanmaktadır.](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
@@ -81,12 +81,12 @@ Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CL�
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Azure Tanılama uzantısı için daha kapsamlı bir sorun giderme kılavuzu için [Bu makaleye bakın](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) .
+Azure Tanılama uzantısı için daha kapsamlı bir sorun giderme kılavuzu için [Bu makaleye bakın](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md) .
 
 ### <a name="support"></a>Destek
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* [Azure Tanılama uzantısı hakkında daha fazla bilgi edinin](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Uzantı şemasını ve sürümlerini gözden geçirin](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Azure Tanılama uzantısı hakkında daha fazla bilgi edinin](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [Uzantı şemasını ve sürümlerini gözden geçirin](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

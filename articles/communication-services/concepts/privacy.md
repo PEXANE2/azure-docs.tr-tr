@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572039"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653474"
 ---
 # <a name="region-availability-and-data-residency"></a>Bölge kullanılabilirliği ve veri yerleşikliği
 
@@ -23,7 +23,11 @@ Azure Iletişim Hizmetleri, müşterilerimizin gizlilik ve kişisel veri gereksi
 
 ## <a name="data-residency"></a>Veri yerleşimi
 
-Bir Iletişim Hizmetleri kaynağı oluştururken bir **Coğrafya** (Azure veri merkezi değil) belirtirsiniz. Iletişim Hizmetleri tarafından REST 'te depolanan tüm veriler, Iletişim Hizmetleri tarafından dahili olarak seçilen bir veri merkezinde bu coğrafya 'da tutulur. Ancak, veriler başka coğrafi bölgelerde aktarım gösterebilir veya işlenebilse de, bu genel bitiş noktaları, konumlarına bakılmaksızın son kullanıcılara yüksek performanslı ve düşük gecikme süreli bir deneyim sağlamak için gereklidir.
+Bir Iletişim Hizmetleri kaynağı oluştururken bir **Coğrafya** (Azure veri merkezi değil) belirtirsiniz. Iletişim Hizmetleri tarafından REST 'te depolanan tüm veriler, Iletişim Hizmetleri tarafından dahili olarak seçilen bir veri merkezinde bu coğrafya 'da tutulur. Veriler başka coğrafi bölgelerde aktarım gösterebilir veya işlenebilir. Bu genel uç noktalar, son kullanıcılara konumlarına bakılmaksızın yüksek performanslı ve düşük gecikme süresine sahip bir deneyim sağlamak için gereklidir.
+
+## <a name="data-residency-and-events"></a>Veri yerleşimi ve olaylar
+
+Azure Iletişim Hizmetleri ile yapılandırılmış tüm Event Grid sistem konuları, genel bir konumda oluşturulur. Güvenilir teslimi desteklemek için, genel bir Event Grid sistem konusu, olay verilerini herhangi bir Microsoft veri merkezinde saklayabilir. Azure Iletişim Hizmetleri ile Event Grid yapılandırdığınızda, olay verilerinizi denetiminizin altındaki bir Azure kaynağı olan Event Grid olarak sunuyoruz. Azure Iletişim Hizmetleri Azure Event Grid kullanacak şekilde yapılandırılabilirken, Event Grid kaynağınızın ve içinde depolanan verilerin yönetilmesi sizin sorumluluğunuzdadır.
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>İnsanların Azure Iletişim Hizmetleri kimlikleriyle ilişkilendirilmesi
 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560502"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653317"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,33 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="multiple-account-owners"></a>Birden çok hesap sahibi 
+
+Hesap sahibi rolü Video Indexer eklendi. Kullanıcı ekleyebilir, değiştirebilir ve kaldırabilirsiniz; rolünü değiştirin. Hesap paylaşma hakkında daha fazla bilgi için bkz. [kullanıcıları davet etme](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Ses olayı algılama (Genel Önizleme)
+
+> [!NOTE]
+> Bu özellik yalnızca deneme hesaplarında kullanılabilir. 
+
+Video Indexer artık içeriğin konuşma olmayan kesimlerinde şu ses efektlerini algılar: GUNSHOT, cam shaur, alarm, SIREN, patlama, köpek Bark, screater, defghter, kitle yeniden Actions (peylü, clatıcı ve King) ve sessizlik. 
+
+Yeni eklenen ses etkileri özelliği, gelişmiş bir   ->  **Ses** Önayarı (video + ses dizin oluşturma altında) seçeneği belirlenerek dosyanızı dizinlerken kullanılabilir. Standart dizin oluşturma, yalnızca **sessizlik** ve **kitle yeniden eylemini** içerir. 
+
+Önceki ses efektleri modelinde yer alan **hareketli** olay türü, artık **kitle tepki** olay türünün bir parçasını ayıklamıştır.
+
+[Video Indexer](https://www.videoindexer.ai/) Web sitesinde videonuzun **ınsiteleri** görmeyi seçtiğinizde, sayfada ses efektleri gösterilir.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Ses olayı algılama":::
+
+### <a name="named-entities-enhancement"></a>Adlandırılmış varlık geliştirmesi  
+
+Ayıklanan kişi ve konum listesi, genel olarak genişletilmiş ve güncelleştirildi. 
+
+Ayrıca, model artık, videoda bir ' Sam ' veya ' Home ' gibi çok büyük olmayan kişiler ve konumlar da içerir. 
 
 ## <a name="january-2021"></a>Ocak 2021
 

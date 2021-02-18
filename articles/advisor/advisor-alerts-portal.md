@@ -3,18 +3,18 @@ title: Azure portal kullanarak yeni öneriler için Azure Advisor uyarıları ol
 description: Yeni öneri için Azure Advisor uyarıları oluşturma
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c51479821914ef34edcd13d8708344169f17aae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590110"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal kullanarak yeni önerilerle Azure Advisor uyarıları oluşturun 
 
 Bu makalede, Azure Advisor 'ın Azure portal kullanarak yeni öneriler için nasıl uyarı ayarlanacağı gösterilmektedir. 
 
-Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
+Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](../azure-monitor/essentials/platform-logs-overview.md)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
 
 Aşağıdaki özellikleri kullanarak öneri türlerini de belirleyebilirsiniz:
 
@@ -27,7 +27,7 @@ Ayrıca, bir uyarının tetiklendiği zaman gerçekleşecek eylemi de yapıland�
 * Mevcut bir eylem grubu seçiliyor
 * Yeni bir eylem grubu oluşturuluyor
 
-Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
+Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE] 
 > Danışman uyarıları Şu anda yalnızca yüksek kullanılabilirlik, performans ve maliyet önerileri için kullanılabilir. Güvenlik önerileri desteklenmez. 
@@ -57,11 +57,11 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 
     ![Danışman uyarı eylem grubu](./media/advisor-alerts/create6.png)
 
-7. **Eylem grupları** bölümünde, önceden oluşturduğunuz bir eylem grubunu kullanmak Için **Varolanı Ekle** ' yi seçin veya yeni bir [eylem grubu](../azure-monitor/platform/action-groups.md)ayarlamak için **Yeni oluştur** ' u seçin. 
+7. **Eylem grupları** bölümünde, önceden oluşturduğunuz bir eylem grubunu kullanmak Için **Varolanı Ekle** ' yi seçin veya yeni bir [eylem grubu](../azure-monitor/alerts/action-groups.md)ayarlamak için **Yeni oluştur** ' u seçin. 
 
     ![Danışman uyarısı varolanı Ekle](./media/advisor-alerts/create7.png)
 
-8. Uyarı ayrıntıları bölümünde, uyarıya bir ad ve kısa açıklama verin. Uyarınızın etkinleştirilmesini istiyorsanız, **oluşturma seçimi sonrasında kuralı etkinleştir** ' i **Evet**olarak ayarlayın. Ardından, uyarılarınızın kaydedileceği kaynak grubunu seçin. Bu işlem, önerinin hedefleme kapsamını etkilemez. 
+8. Uyarı ayrıntıları bölümünde, uyarıya bir ad ve kısa açıklama verin. Uyarınızın etkinleştirilmesini istiyorsanız, **oluşturma seçimi sonrasında kuralı etkinleştir** ' i **Evet** olarak ayarlayın. Ardından, uyarılarınızın kaydedileceği kaynak grubunu seçin. Bu işlem, önerinin hedefleme kapsamını etkilemez. 
 
     :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
 
@@ -169,7 +169,7 @@ Ortak şemayı kullanmıyorsanız, yükünüze aşağıdakiler gibi görünür:
 }
 ```
 
-Herhangi bir şemada, **EventSource** ve OperationName ' ı arayarak Advisor öneri olaylarını belirleyebilirsiniz `Recommendation` **operationName** `Microsoft.Advisor/recommendations/available/action` .
+Herhangi bir şemada, **EventSource** ve OperationName ' ı arayarak Advisor öneri olaylarını belirleyebilirsiniz `Recommendation`  `Microsoft.Advisor/recommendations/available/action` .
 
 Kullanmak isteyebileceğiniz diğer önemli alanlardan bazıları şunlardır: 
 
@@ -187,11 +187,11 @@ Azure Advisor 'da, öneriler uyarılarınızı düzenleyebilir, silebilir veya d
 
 1. **Portalda** **Azure Danışmanı**' nı seçin.
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure Advisor 'ın seçili olduğunu gösteren Azure portal menüsünün ekran görüntüsü.":::
 
 2. Sol menünün **izleme** bölümünde **Uyarılar**' ı seçin.
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Seçili uyarıların gösterildiği Azure portal menüsünün ekran görüntüsü.":::
 
 3. Bir uyarıyı düzenlemek için uyarı adına tıklayarak uyarıyı açın ve düzenlemek istediğiniz alanları düzenleyin.
 
@@ -199,5 +199,5 @@ Azure Advisor 'da, öneriler uyarılarınızı düzenleyebilir, silebilir veya d
  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
-- [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
+- [Etkinlik günlüğü uyarılarına genel bir bakış](../azure-monitor/alerts/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.
+- [Eylem grupları](../azure-monitor/alerts/action-groups.md)hakkında daha fazla bilgi edinin.

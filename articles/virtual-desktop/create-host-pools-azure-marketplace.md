@@ -3,15 +3,16 @@ title: Windows sanal masaüstü konak havuzu Azure portal-Azure
 description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735189"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651468"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -22,7 +23,7 @@ Konak havuzları, Windows sanal masaüstü ortamlarında bir veya daha fazla öz
 
 Bu makale, Azure portal aracılığıyla bir Windows sanal masaüstü ortamı için bir konak havuzu oluşturmaya yönelik kurulum sürecinde size yol gösterecektir. Bu yöntem, Windows sanal masaüstünde bir konak havuzu oluşturmak, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturmak, bu VM 'Leri Azure Active Directory (AD) etki alanına eklemek ve VM 'Leri Windows sanal masaüstü ile kaydettirmek için tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir konak havuzu oluşturmak için aşağıdaki parametreleri girmeniz gerekir:
 
@@ -67,6 +68,9 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 
      > [!div class="mx-imgBorder"]
      > ![Konum alanını seçili Doğu ABD konumu ile gösteren Azure portal ekran görüntüsü. Alanın yanında, "meta veriler Doğu ABD depolanır." ifadesini görürsünüz.](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > Ana bilgisayar havuzunuzu ABD dışındaki [desteklenen bir bölgede](data-locations.md) oluşturmak isterseniz, kaynak sağlayıcısını yeniden kaydetmeniz gerekir. Yeniden kaydolduktan sonra, konumu seçmek için açılan listeden diğer bölgeleri görmeniz gerekir. [Ana havuz oluşturma](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects) sorun giderme makalemize nasıl yeniden kaydolacağınızı öğrenin.
 
 8. Konak havuzu türü altında, ana bilgisayar havuzunuzun **Kişisel** mi yoksa **havuza alınmış** mı olacağını seçin.
 

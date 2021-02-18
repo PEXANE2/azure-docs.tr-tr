@@ -52,7 +52,7 @@
       href: concepts-upgrades.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure VMware Çözümü etkinleştirme
+    - name: Konak kotasını isteyin ve Azure VMware çözümünü etkinleştirin
       href: enable-azure-vmware-solution.md
     - name: Ayrılmış örnek ile maliyet tasarrufu yapma
       href: reserved-instance.md

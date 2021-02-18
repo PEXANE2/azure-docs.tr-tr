@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888734"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653790"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde olay Işleme
 
@@ -25,6 +25,9 @@ Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, öl
 Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid [Azure işlevleri](../../azure-functions/functions-overview.md) ve [Azure Logic Apps](../../azure-functions/functions-overview.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir. Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../../event-grid/overview.md).
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid olay modelini gösteren diyagram.":::
+
+> [!NOTE]
+> Verilerin olay işlemeyle nasıl ilişkili olduğu hakkında daha fazla bilgi edinmek için, [veri fazlalığını ziyaret edin kavramsal belgeler](./privacy.md)
 
 ## <a name="events-types"></a>Olay türleri
 

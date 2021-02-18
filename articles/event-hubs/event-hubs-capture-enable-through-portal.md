@@ -1,14 +1,14 @@
 ---
 title: Event Hubs-Azure portal kullanarak akış olaylarını yakala
 description: Bu makalede, Azure portal kullanılarak Azure Event Hubs aracılığıyla olayların akışını yakalamaya nasıl etkinleştireceğinizi açıklanmaktadır.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613586"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653960"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs aracılığıyla olay akışı yakalamayı etkinleştirme
 
@@ -37,7 +37,7 @@ Zaman penceresi varsayılan olarak 5 dakikadır. En düşük değer 1, en yükse
 1. Bir Azure depolama hesabı oluşturmak için [depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) makalesini izleyin. Azure Data Lake Storage Gen 2 hesabı yapmak için, **Gelişmiş** sekmesinde **hiyerarşik ad alanını** **etkin** olarak ayarlayın.
 2. Bir olay hub 'ı oluştururken aşağıdaki adımları uygulayın: 
 
-    1. **Yakalama**için **Açık** seçeneğini belirleyin. 
+    1. **Yakalama** için **Açık** seçeneğini belirleyin. 
     2. Yakalama sağlayıcısı olarak **Azure Storage** ' ı seçin. **Yakalama sağlayıcısı** için gördüğünüz **Azure Data Lake Store** seçeneği, Azure Data Lake Storage Gen 1 ' dir. Azure Data Lake Storage Gen 2 ' yi kullanmak için **Azure Storage**' ı seçin.
     2. **Kapsayıcı Seç** düğmesini seçin. 
 

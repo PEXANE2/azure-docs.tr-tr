@@ -3,12 +3,12 @@ title: Azure Service Bus abonelik kuralı SQL filtresi sözdizimi | Microsoft Do
 description: Bu makalede SQL filtresi dilbilgisinde ayrıntılar sağlanmaktadır. SQL filtresi, SQL-92 standardının bir alt kümesini destekler.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742990"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652950"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Abonelik kuralı SQL filtresi sözdizimi
 
@@ -269,8 +269,8 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 -   ,,, Ve gibi aritmetik işleçler, `+` `-` `*` `/` `%` veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Örnekler
+Örnekler için bkz. [Service Bus filtresi örnekleri](service-bus-filter-examples.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

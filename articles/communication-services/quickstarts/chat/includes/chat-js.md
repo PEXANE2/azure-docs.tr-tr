@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552839"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653580"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -88,24 +88,7 @@ Bu hızlı başlangıç için uygulama mantığını içeren **client.js** adlı
 
 Web uygulamanızda bir sohbet istemcisi oluşturmak için, Iletişim hizmeti **uç noktasını** ve önkoşul adımlarının bir parçası olarak oluşturulan **erişim belirtecini** kullanacaksınız. 
 
-Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar.
-
-##### <a name="server-vs-client-side"></a>Sunucu ve istemci tarafı karşılaştırması
-
-İstemci uygulamasına ileten bir sunucu tarafı bileşeni kullanarak erişim belirteçleri üretmenizi öneririz. Bu senaryoda, sunucu tarafı kullanıcıları oluşturup yönetmekten ve belirteçlerini yayınmaktan sorumludur. İstemci tarafı bundan sonra hizmetten erişim belirteçleri alabilir ve bunları Azure Iletişim Hizmetleri istemci kitaplıklarının kimliğini doğrulamak için kullanabilir.
-
-Belirteçler, JavaScript için Azure Iletişim yönetimi kitaplığı kullanılarak istemci tarafında da verilebilir. Bu senaryoda, istemci tarafının belirteçleri vermek için kullanıcıların farkında olması gerekir.
-
-Daha ayrıntılı [istemci ve sunucu mimarisi](../../../concepts/client-and-server-architecture.md) için aşağıdaki belgelere bakın
-
-Aşağıdaki diyagramda, istemci tarafı uygulamasının bir güvenilen hizmet katmanından bir erişim belirteci alır. Daha sonra uygulama, Iletişim Hizmetleri kitaplıklarının kimliğini doğrulamak için belirtecini kullanır. Kimlik doğrulandıktan sonra, uygulama artık diğer kullanıcılarla sohbet gibi işlemler gerçekleştirmek için Iletişim Hizmetleri istemci tarafı kitaplıklarını kullanabilir.
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
-
-##### <a name="instructions"></a>Yönergeler
-Bu tanıtım, sohbet uygulamanız için bir hizmet katmanı oluşturmayı kapsamaz. 
-
-Kullanıcıları ve bunların belirteçlerini oluşturmadınız, bunu yapmak için buradaki yönergeleri izleyin: [Kullanıcı erişim belirteci](../../access-tokens.md). Kapsamı "VoIP" değil "sohbet" olarak ayarlamayı unutmayın.
+Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz. Sohbet mimarisi ve erişim belirteçleri hakkında daha fazla bilgi için [Kullanıcı erişim belirteçleri](../../access-tokens.md) hakkında daha fazla bilgi için [sohbet kavramlarına](../../../concepts/chat/concepts.md) bakın.
 
 İçinde **client.js** JavaScript Için Azure iletişim sohbeti istemci kitaplığını kullanarak sohbet yeteneği eklemek için aşağıdaki kodda uç nokta ve erişim belirtecini kullanın.
 
