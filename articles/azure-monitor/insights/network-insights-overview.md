@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734166"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573526"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 
-Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-overview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
+Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../essentials/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-overview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
 
 Ağ için Azure Izleyici, izlemenin bu temel bileşenleri etrafında yapılandırılır:
 - [Ağ durumu ve ölçümleri](#networkhealth)
@@ -149,4 +149,4 @@ Herhangi bir kenar panelinde veya ayrıntılı ölçüm görünümünde gördü�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Ağ izleme hakkında daha fazla bilgi edinin: [Azure ağ Izleyicisi nedir?](../../network-watcher/network-watcher-monitoring-overview.md)
-- Çalışma kitaplarının destekleyecek şekilde tasarlandığını, raporların nasıl oluşturulacağını ve mevcut raporların nasıl özelleştirileceğini ve daha fazlasını öğrenin: [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)
+- Çalışma kitaplarının destekleyecek şekilde tasarlandığını, raporların nasıl oluşturulacağını ve mevcut raporların nasıl özelleştirileceğini ve daha fazlasını öğrenin: [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../visualize/workbooks-overview.md)

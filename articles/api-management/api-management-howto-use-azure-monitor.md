@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779252"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572796"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Öğretici: yayımlanan API 'Leri Izleme
 
@@ -39,7 +39,7 @@ Ayrıca, API 'nizin kullanımını ve performansını izlemek için API Manageme
 
 ## <a name="view-metrics-of-your-apis"></a>API'lerinizin ölçümlerini görüntüleme
 
-API Management [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) her dakikada sunarak API 'lerinizin durumunu ve durumunu neredeyse gerçek zamanlı görünürlük sağlar. En sık kullanılan iki ölçüm aşağıda verilmiştir. Tüm kullanılabilir ölçümlerin bir listesi için bkz. [desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
+API Management [ölçümleri](../azure-monitor/essentials/data-platform-metrics.md) her dakikada sunarak API 'lerinizin durumunu ve durumunu neredeyse gerçek zamanlı görünürlük sağlar. En sık kullanılan iki ölçüm aşağıda verilmiştir. Tüm kullanılabilir ölçümlerin bir listesi için bkz. [desteklenen ölçümler](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice).
 
 * **Kapasite** -APIM hizmetlerinizi yükseltme/eski sürüme düşürme hakkında kararlar almanıza yardımcı olur. Ölçüm, dakika başına yayılır ve raporlama zamanındaki ağ geçidi kapasitesini yansıtır. Ölçüm, CPU ile bellek kullanımı gibi ağ geçidi kaynakları temel alınarak hesaplanan 0-100 aralığında değişir.
 * **İstekler** -API Management hizmetleriniz aracılığıyla API trafiğini çözümlemenize yardımcı olur. Ölçüm, dakika başına yayılır ve yanıt kodları, konum, ana bilgisayar adı ve hatalar dahil olmak üzere boyutlara sahip ağ geçidi isteklerinin sayısını raporlar. 
@@ -62,7 +62,7 @@ API Management [ölçümleri](../azure-monitor/platform/data-platform-metrics.md
 
 ## <a name="set-up-an-alert-rule"></a>Uyarı kuralı ayarlama 
 
-Ölçümler ve etkinlik günlüklerine göre [Uyarı](../azure-monitor/platform/alerts-metric-overview.md) alabilirsiniz. Azure Izleyici, tetiklendiğinde aşağıdakileri yapmak için [bir uyarı yapılandırmanıza](../azure-monitor/platform/alerts-metric.md) olanak sağlar:
+Ölçümler ve etkinlik günlüklerine göre [Uyarı](../azure-monitor/alerts/alerts-metric-overview.md) alabilirsiniz. Azure Izleyici, tetiklendiğinde aşağıdakileri yapmak için [bir uyarı yapılandırmanıza](../azure-monitor/alerts/alerts-metric.md) olanak sağlar:
 
 * E-posta bildirimi gönderme
 * Web kancası çağırma
@@ -92,7 +92,7 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
 
 1. Uyarı kuralının adını ve açıklamasını girip önem derecesini seçin. 
 1. **Uyarı kuralı oluşturma**’yı seçin.
-1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örnek:
+1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örneğin:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
@@ -140,7 +140,7 @@ Kaynak günlüklerini yapılandırmak için:
 
    Kaynak günlüklerini, ölçümlerle birlikte bir depolama hesabına arşivleyebilirsiniz, bunları bir olay hub 'ına bağlayabilir veya bir Log Analytics çalışma alanına gönderebilirsiniz. 
 
-Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+Daha fazla bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>Azure Izleyici 'de tanılama verilerini görüntüleme
 
@@ -151,7 +151,7 @@ Log Analytics çalışma alanında GatewayLogs veya ölçümler koleksiyonunu et
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Izleme menüsündeki Günlükler öğesinin ekran görüntüsü":::
 
-Verileri görüntülemek için sorguları çalıştırın. Birkaç [örnek sorgu](../azure-monitor/log-query/example-queries.md) sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu, GatewayLogs tablosundan en son 24 saat verileri alır:
+Verileri görüntülemek için sorguları çalıştırın. Birkaç [örnek sorgu](../azure-monitor/logs/example-queries.md) sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu, GatewayLogs tablosundan en son 24 saat verileri alır:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -160,9 +160,9 @@ ApiManagementGatewayLogs
 
 API Management için kaynak günlüklerini kullanma hakkında daha fazla bilgi için bkz.:
 
-* [Azure izleyici Log Analytics kullanmaya başlayın](../azure-monitor/log-query/log-analytics-tutorial.md)veya [Log Analytics demo ortamını](https://portal.loganalytics.io/demo)deneyin.
+* [Azure izleyici Log Analytics kullanmaya başlayın](../azure-monitor/logs/log-analytics-tutorial.md)veya [Log Analytics demo ortamını](https://portal.loganalytics.io/demo)deneyin.
 
-* [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+* [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/logs/log-query-overview.md).
 
 Aşağıdaki JSON başarılı bir API isteği için GatewayLogs 'ta örnek bir giriş gösterir. Ayrıntılar için bkz. [şema başvurusu](gateway-log-schema-reference.md). 
 

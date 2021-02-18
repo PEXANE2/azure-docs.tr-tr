@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488876"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592079"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
 
 | Akıllı İçgörüler seçeneği | Azure SQL veritabanı desteği | Azure SQL Yönetilen Örneği desteği |
 | :----------------------------- | ----- | ----- |
-| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Evet | Evet |
-| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Evet | Evet |
-| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Evet | Evet |
-| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Evet | Evet |
+| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Yes | Yes |
+| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Yes | Yes |
+| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Yes | Yes |
+| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
 
 > [!NOTE]
 > Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
@@ -107,7 +107,7 @@ Aşağıdaki örnek, Azure SQL Analytics ile görüntülenen bir Akıllı İçg�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs ayarla
 
-Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, bkz. [ölçüm ve tanılama günlüğe kaydetme](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ve [Azure tanılama günlüklerini akışa alma Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, bkz. [ölçüm ve tanılama günlüğe kaydetme](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ve [Azure tanılama günlüklerini akışa alma Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 Özel izleme ve uyarı ayarlamak için Event Hubs kullanmak için, bkz. [Event Hubs ' de ölçümler ve tanılama günlükleri Ile neler yapılır](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
 

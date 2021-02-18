@@ -3,12 +3,12 @@ title: Azure Işlevleri adanmış barındırma
 description: Adanmış bir App Service barındırma planında Azure Işlevleri çalıştırmanın avantajları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937700"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591069"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Işlevleri için adanmış barındırma planları
 
@@ -33,7 +33,7 @@ Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aş�
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-App Service planı kullanarak daha fazla sanal makine örneği ekleyerek ölçeği el ile değiştirebilirsiniz. Otomatik ölçeklendirmeyi de etkinleştirebilirsiniz, ancak otomatik ölçeklendirme Premium planın esnek ölçeğinden daha yavaş olur. Daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Ayrıca, farklı bir App Service planı seçerek ölçeği genişletebilirsiniz. Daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](../app-service/manage-scale-up.md). 
+App Service planı kullanarak daha fazla sanal makine örneği ekleyerek ölçeği el ile değiştirebilirsiniz. Otomatik ölçeklendirmeyi de etkinleştirebilirsiniz, ancak otomatik ölçeklendirme Premium planın esnek ölçeğinden daha yavaş olur. Daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Ayrıca, farklı bir App Service planı seçerek ölçeği genişletebilirsiniz. Daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](../app-service/manage-scale-up.md). 
 
 > [!NOTE] 
 > JavaScript (Node.js) işlevlerini bir App Service planında çalıştırırken, daha az vCPU içeren bir plan seçmelisiniz. Daha fazla bilgi için bkz. [tek çekirdekli App Service planlarını seçme](functions-reference-node.md#choose-single-vcpu-app-service-plans). 

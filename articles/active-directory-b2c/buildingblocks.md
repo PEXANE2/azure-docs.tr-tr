@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42c1d06051c283f0e911c4cd166884ddd060f45
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201234"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633283"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -78,4 +78,4 @@ ms.locfileid: "85201234"
 
 - [Yerelleştirme](localization.md) -birden çok dili desteketmenize olanak tanır. İlkelerde yerelleştirme desteği, bir ilkede desteklenen dillerin listesini ayarlamanıza ve varsayılan bir dil seçmenizi sağlar. Dile özgü dizeler ve koleksiyonlar da desteklenir.
 
-- [Displaycontrols](display-controls.md) -sayfada gösterilecek denetimleri tanımlar. Görüntüleme denetimlerinin özel işlevleri vardır ve arka uç doğrulama teknik profilleriyle etkileşime geçin. Görüntüleme denetimleri şu anda **Önizleme**aşamasındadır.
+- [Displaycontrols](display-controls.md) -sayfada gösterilecek denetimleri tanımlar. Görüntüleme denetimlerinin özel işlevleri vardır ve arka uç doğrulama teknik profilleriyle etkileşime geçin. 

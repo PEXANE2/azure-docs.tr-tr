@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500334"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571331"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için güvenlik önerileri
 
@@ -56,7 +56,7 @@ Azure Güvenlik Merkezi hakkında genel bilgi için bkz. [Azure Güvenlik Merkez
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| VM 'lerinizi izleyin. | Azure VM 'lerinizin ve sanal makine ölçek kümelerinin durumunu izlemek için [VM'ler için Azure izleyici](../azure-monitor/insights/vminsights-overview.md) kullanabilirsiniz. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. | - |
+| VM 'lerinizi izleyin. | Azure VM 'lerinizin ve sanal makine ölçek kümelerinin durumunu izlemek için [VM'ler için Azure izleyici](../azure-monitor/vm/vminsights-overview.md) kullanabilirsiniz. Bir VM ile ilgili performans sorunları, hizmetin kesintiye uğramasına neden olabilir ve bu da kullanılabilirliği güvenlik ilkesini ihlal eder. | - |
 
 ## <a name="networking"></a>Ağ
 

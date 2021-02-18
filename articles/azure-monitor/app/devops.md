@@ -3,12 +3,12 @@ title: Web uygulaması performans izleme-Azure Application Insights
 description: Application Insights devOps döngüsüne nasıl uyar
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324497"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579562"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights ile ayrıntılı web uygulaması ve hizmet tanılama
 ## <a name="why-do-i-need-application-insights"></a>Neden Application Insights gerekir?
@@ -110,7 +110,7 @@ Uygulama eşleme, dağıtılmış ortamınızdaki performans sorunlarını ve so
 ![Uygulama Eşlemesi](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analizi
-[Analiz](../log-query/log-query-overview.md)sayesinde, güçlü bir SQL benzeri dilde rastgele sorgular yazabilirsiniz.  Birçok perspektifin birbirine bağlanması, tüm uygulama yığınının tamamında tanılanması kolaydır ve hizmet performansını Iş ölçümleri ve müşteri deneyimiyle ilişkilendirmek için doğru soruları sorabilirsiniz. 
+[Analiz](../logs/log-query-overview.md)sayesinde, güçlü bir SQL benzeri dilde rastgele sorgular yazabilirsiniz.  Birçok perspektifin birbirine bağlanması, tüm uygulama yığınının tamamında tanılanması kolaydır ve hizmet performansını Iş ölçümleri ve müşteri deneyimiyle ilişkilendirmek için doğru soruları sorabilirsiniz. 
 
 Portalda depolanan tüm telemetri örneğinizi ve ölçüm ham verilerini sorgulayabilirsiniz. Dil, filtre, birleştirme, toplama ve diğer işlemleri içerir. Alanları hesaplayabilir ve istatistiksel çözümlemeler yapabilirsiniz. Tablosal ve grafik görselleştirmeler vardır.
 

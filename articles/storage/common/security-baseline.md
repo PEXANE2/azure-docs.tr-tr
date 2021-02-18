@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195730"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591562"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -158,7 +158,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -180,7 +180,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Rehberlik**: uç noktalar cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından oluşturulan güvenlik verilerini toplamak Için Azure izleyici aracılığıyla günlükleri alma. Azure Izleyici 'de analiz sorgulamak ve gerçekleştirmek için Log Analytics çalışma alanlarını kullanın ve isteğe bağlı olarak, sabit depolama ve zorlanan bekletme gibi güvenlik özellikleriyle uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -210,7 +210,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](./storage-monitor-storage-account.md#configure-logging)
 
-- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -238,7 +238,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Depolama analizini günlüğe kaydetme](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Ayrıca, Microsoft Hizmetleri ve Azure ARM için Azure AD Privileged Identity Ma
 
 - [Azure AD risk algılamalarını anlama](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../../azure-monitor/platform/action-groups.md)
+- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -572,7 +572,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile kullanarak, değişikliklerin depolama hesabı kaynaklarına ne zaman gerçekleştiği hakkında uyarılar oluşturun. Ayrıca, Azure depolama 'ya karşı yapılan her isteği nasıl yetkilendirdiğini izlemek için Azure depolama günlüğünü de etkinleştirebilirsiniz. Günlükler, bir isteğin bir OAuth 2,0 belirteci kullanılarak, paylaşılan anahtar kullanılarak veya paylaşılan erişim imzası (SAS) kullanılarak yapılıp yapılmadığını belirtir. Ayrıca, anonim kimlik doğrulama koşulunu kullanarak depolama hesaplarına yönelik anonim erişim hakkında uyarı almak için Azure Izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Depolama analizini günlüğe kaydetme](./storage-analytics-logging.md)
 

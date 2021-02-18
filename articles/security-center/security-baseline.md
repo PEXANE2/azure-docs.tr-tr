@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 195c264eca0c40712816495a09e1387fcaa2c910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202258"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572927"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Güvenlik Merkezi için Azure Güvenlik temeli
 
@@ -30,7 +30,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../security/benchm
 
 - [Ağ güvenlik grubuyla Filer ağ trafiği](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Azure özel bağlantısını anlama](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, rol atam
 
 - [Azure Güvenlik Merkezinde veri toplama](security-center-enable-data-collection.md)
 
-- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 - [Azure Güvenlik Merkezinde veri toplama](security-center-enable-data-collection.md)
 
-- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Log Analytics aracısını kullanmaya yönelik güvenlik duvarı gereksinimleri](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak kaynak yapılandırmasını Izleyin ve Azure Güvenlik Merkezi ile ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik kaynaklardaki değişiklikler gerçekleşirken size bildirimde bulunan Azure Izleyici 'de uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -112,9 +112,9 @@ Alternatif olarak, Güvenlik Merkezi tarafından üretilen verileri Azure Sentin
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ Alternatif olarak, Güvenlik Merkezi tarafından üretilen verileri Azure Sentin
 
 **Kılavuz**: Azure izleyici etkinlik günlükleri otomatik olarak kullanılabilir, bu Günlükler, Azure Güvenlik Merkezi gibi, kaynak için tüm işlemler, kimin hangi işlemleri başlattıkları ve ne zaman meydana getirildikleri gibi tüm yazma işlemlerini içerir. Azure etkinlik günlüklerinizi, günlük birleştirme ve daha fazla bekletme için bir Log Analytics çalışma alanına gönderin.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Log Analytics çalışma alanına etkinlik günlükleri gönderme](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [Log Analytics çalışma alanına etkinlik günlükleri gönderme](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -140,7 +140,7 @@ Alternatif olarak, Güvenlik Merkezi tarafından üretilen verileri Azure Sentin
 
 **Kılavuz**: Azure izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın. 
 
-- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -156,9 +156,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -174,11 +174,11 @@ Alternatif olarak, Azure Güvenlik Merkezi tarafından Azure Sentinel 'e ilişki
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel’de otomatik tehdit yanıtlarını ayarlama](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Azure Izleyici 'de günlük uyarıları](../azure-monitor/platform/alerts-unified-log.md)
+- [Azure Izleyici 'de günlük uyarıları](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -368,7 +368,7 @@ Varsayılan olarak, Azure Güvenlik Merkezi verileri, güvenlik merkezi arka uç
 
 Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın. 
 
-- [Log Analytics verileri güvenli bir şekilde gönderme](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [Log Analytics verileri güvenli bir şekilde gönderme](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Kılavuz**: Azure Güvenlik Merkezi, oluşturduğu verileri, uyarıları ve önerileri depolamak için yapılandırılmış bir Log Analytics çalışma alanı kullanır. Güvenlik Merkezi veri toplama için yapılandırdığınız çalışma alanı için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırın. CMK, çalışma alanına kaydedilen veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulan ve size ait bir Azure Key Vault anahtarla şifrelenmesini sağlar. 
 
-- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -404,7 +404,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Kılavuz**: Azure Güvenlik Merkezi ile Ilgili kritik Azure kaynaklarında değişiklik yapıldığında uyarılar oluşturmak Için Azure izleyici 'yi kullanın. Bu değişiklikler, güvenlik merkezi ile ilgili, uyarıların veya önerilerin devre dışı bırakılması ya da veri depolarının güncelleştirilmesi ya da silinmesi gibi yapılandırmaların değiştirileceği herhangi bir eylem içerebilir.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -596,7 +596,7 @@ Abonelikler içindeki kaynakları sorgulamak ve bulmak için Azure Kaynak Grafı
 
 **Kılavuz**: Azure Güvenlik Merkezi, oluşturduğu verileri, uyarıları ve önerileri depolamak için yapılandırılmış bir Log Analytics çalışma alanı kullanır. Güvenlik Merkezi veri toplama için yapılandırdığınız çalışma alanı için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırın. CMK, çalışma alanına kaydedilen veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulan ve size ait bir Azure Key Vault anahtarla şifrelenmesini sağlar. 
 
-- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -656,7 +656,7 @@ Abonelikler içindeki kaynakları sorgulamak ve bulmak için Azure Kaynak Grafı
 
 **Rehberlik**: Azure Resource Manager desteklenen şablon dosyalarını kullanarak düzenli aralıklarla geri yükleme gerçekleştirme olanağı sağlayın. Yedeklenen müşteri tarafından yönetilen anahtarların test geri yüklemesi.
 
-- [Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme](../azure-monitor/samples/resource-manager-workspace.md)
+- [Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

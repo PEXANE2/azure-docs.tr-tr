@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c4dbeae0cfb76063fdca70b3ad1d264b59f9ace
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571604"
+ms.locfileid: "100634252"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -212,7 +212,7 @@ Adlı alt düğümü arayın `systemEnvironment` .  Bu düğüm, uygulamanızın
 
 Uygulama durumlarının _çalıştığından_ ve _en güncel_ olduğundan emin olmak için **uygulama yönetimi** 'ne gidin.
 
-Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu özellik yapılandırma özelliği ile etkinleştirilebilir `spring.jmx.enabled=true` .  
+Uygulama paketinizdeki _JMX_ 'in etkinleştirilip etkinleştirilmediğini denetleyin. Bu özellik yapılandırma özelliği ile etkinleştirilebilir `spring.jmx.enabled=true` .  
 
 `spring-boot-actuator`Bağımlılığın uygulama paketinizdeki etkinleştirilip etkinleştirilmediğini ve başarıyla önyükleme yapıp görmediğini denetleyin.
 

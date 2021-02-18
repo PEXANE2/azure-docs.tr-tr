@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807437"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590242"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub sanal makinelerini Azure Sentinel 'e bağlama
 
@@ -50,9 +50,9 @@ Azure Stack hub 'ınızda çalışan sanal makinelere **Azure izleyici, güncell
 
 1. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı** olarak gösterilir. Sanal makinenin Azure Sentinel portalında görünmesi bir saate kadar sürebilir.
 
-Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
+Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
-Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/platform/agent-linux-troubleshoot.md).
+Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/agents/agent-linux-troubleshoot.md).
 
 Azure üzerinde Azure Sentinel portalında, **sanal makineler** altında, tüm VM 'lere ve bilgisayarlara ilişkin bir genel bakışa sahip olursunuz. 
 

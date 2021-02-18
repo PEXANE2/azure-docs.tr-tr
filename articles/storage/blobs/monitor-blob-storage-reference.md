@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584915"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571620"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob depolama izleme verileri başvurusu
 
@@ -36,7 +36,7 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 #### <a name="blob-storage"></a>Blob depolama
 
-Bu tabloda [BLOB depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
+Bu tabloda [BLOB depolama ölçümleri](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
 
 | Metric | Açıklama |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - Bkz. Azure Storage izleme açıklaması için bkz. [Azure Storage](monitor-blob-storage.md) 'ı izleme.
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/essentials/monitor-azure-resource.md) .

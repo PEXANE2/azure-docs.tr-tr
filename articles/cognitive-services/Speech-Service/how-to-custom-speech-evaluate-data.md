@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3f0d191157fbabeab2b6f08a9d0a9b3bf1a35250
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388949"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591891"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma’nın doğruluğunu değerlendime ve iyileştirme
 
@@ -109,12 +109,13 @@ Yeni bir özel modeli eğitedığınızda, etki alanına özgü sözcüklerin ve
 
 Bu ayrıntıları göz önünde bulundurun:
 
-* Özel Konuşma Tanıma, ekleme veya silme hatalarını değil, değiştirme hatalarını azaltmak için yalnızca kelime bağlamını yakalayabilir.
+* Ses ile eğitim sayesinde ses, insanların anlaşılması zor olursa en avantajlara sahip olur. Çoğu durumda, yalnızca ilgili metni kullanarak eğitime başlamanız gerekir.
+* ABD Ingilizcesi gibi en çok kullanılan dillerden birini kullanırsanız, ses verileriyle eğitmenize gerek kalmaz. Bu tür diller için, temel modeller çoğu senaryoda zaten çok iyi bir tanıma sonuçları sunar; büyük olasılıkla ilgili metinle eğecek kadar fazla.
+* Özel Konuşma Tanıma değiştirme hatalarını azaltmak, ekleme veya silme hatalarını azaltmak için yalnızca sözcük bağlamını yakalayabilir.
 * Döküm hataları içeren örneklerden kaçının, ancak ses kalitesi çeşitliliğe sahiptir.
 * Sorun etki alanınız ile ilgili olmayan cümlelerden kaçının. İlişkisiz cümleler modelinize zarar verebilir.
 * Döküm kalitesi farklılık gösterir, ağırlığın artması için, hariç tutulan ve çok iyi cümleler (anahtar tümceleri içeren harika döküm gibi) çoğaltabilirsiniz.
 * Konuşma hizmeti, ilgili metin olarak eklendikleri gibi, etki alanına özgü sözcüklerin ve tümceciklerin tanınmasını geliştirmek için otomatik olarak dökümünü kullanacaktır.
-* Ses ile eğitim sayesinde ses, insanların anlaşılması zor olursa en avantajlara sahip olur. Çoğu durumda, yalnızca ilgili metni kullanarak eğitime başlamanız gerekir.
 * Eğitim işleminin tamamlanması birkaç gün sürebilir. Eğitimin hızını artırmak için konuşma hizmeti aboneliğinizi eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) oluşturmayı unutmayın.
 
 > [!NOTE]

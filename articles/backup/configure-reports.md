@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897284"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591987"
 ---
 # <a name="configure-azure-backup-reports-preview"></a>Azure Backup raporlarını yapılandırma (Önizleme)
 
@@ -18,7 +18,7 @@ Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan veri
 - Yedeklemeler ve geri yüklemeler denetimi.
 - Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
-Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/log-analytics-tutorial.md) ve [Azure çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
+Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/logs/log-analytics-tutorial.md) ve [Azure çalışma kitaplarını](../azure-monitor/visualize/workbooks-overview.md)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -41,9 +41,9 @@ Raporları kullanmaya başlamak için bu adımları izleyin.
 
 Yedekleme raporlama verilerinizi depolamak için bir veya daha fazla Log Analytics çalışma alanı ayarlayın. Bu Log Analytics çalışma alanının oluşturulabildiği konum ve abonelik, kasalarınızın bulunduğu konumdan ve aboneliğin bağımsızdır.
 
-Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
+Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
 
-Varsayılan olarak, bir Log Analytics çalışma alanındaki veriler 30 gün boyunca tutulur. Daha uzun bir süre için verileri görmek üzere Log Analytics çalışma alanının saklama süresini değiştirin. Saklama süresini değiştirmek için bkz. [Azure izleyici günlükleri ile kullanımı ve maliyetleri yönetme](../azure-monitor/platform/manage-cost-storage.md).
+Varsayılan olarak, bir Log Analytics çalışma alanındaki veriler 30 gün boyunca tutulur. Daha uzun bir süre için verileri görmek üzere Log Analytics çalışma alanının saklama süresini değiştirin. Saklama süresini değiştirmek için bkz. [Azure izleyici günlükleri ile kullanımı ve maliyetleri yönetme](../azure-monitor/logs/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. kasalarınız için tanılama ayarlarını yapılandırın
 

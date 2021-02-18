@@ -3,15 +3,15 @@ title: Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 description: Microsoft Azure Red Hat OpenShift kümenizdeki uygulamaları test etmeye yönelik bir Azure AD güvenlik grubu ve Kullanıcı oluşturmayı öğrenin.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220712"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633334"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
@@ -48,8 +48,8 @@ Küme Yöneticisi erişimi sağlamak için bir Azure AD güvenlik grubundaki Üy
 1. [Azure Active Directory grupları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) dikey penceresini açın.
 2. **+ Yeni Grup**' a tıklayın.
 3. Bir grup adı ve açıklama sağlayın.
-4. **Grup türünü** **güvenlik**olarak ayarlayın.
-5. **Üyelik türünü** **atandı**olarak ayarlayın.
+4. **Grup türünü** **güvenlik** olarak ayarlayın.
+5. **Üyelik türünü** **atandı** olarak ayarlayın.
 
     Önceki adımda oluşturduğunuz Azure AD kullanıcısını bu güvenlik grubuna ekleyin.
 
@@ -60,7 +60,7 @@ Küme Yöneticisi erişimi sağlamak için bir Azure AD güvenlik grubundaki Üy
     Grup KIMLIĞI değerini yazın.
 
 9. Grup oluşturulduğunda, bu dosyayı tüm gruplar listesinde görürsünüz. Yeni gruba tıklayın.
-10. Görüntülenen sayfada, **nesne kimliğini**kopyalayın. `GROUPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
+10. Görüntülenen sayfada, **nesne kimliğini** kopyalayın. `GROUPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
 
 > [!IMPORTANT]
 > Bu grubu OSA-müşteri-Yöneticiler OpenShift grubuyla eşitlemek için Azure CLı kullanarak kümeyi oluşturun. Azure portal Şu anda bu grubu ayarlamak için bir alan eksik.
@@ -75,7 +75,7 @@ Kuruluşunuzda hizmet sorumlusu olarak kullanılacak bir Azure Active Directory 
 2. **Uygulama kaydetme** bölmesinde, uygulama kaydınız için bir ad girin.
 3. **Desteklenen hesap türleri** altında **yalnızca bu kuruluş dizinindeki hesapların** seçili olduğundan emin olun. Bu en güvenli seçenektir.
 4. Kümenin URI 'sini öğrendikten sonra yeniden yönlendirme URI 'SI ekleyeceğiz. Azure AD uygulama kaydını oluşturmak için **Kaydet** düğmesine tıklayın.
-5. Görüntülenen sayfada, **uygulama (istemci) kimliğini**kopyalayın. `APPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
+5. Görüntülenen sayfada, **uygulama (istemci) kimliğini** kopyalayın. `APPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
 
 ![Uygulama nesnesi sayfasının ekran görüntüsü](./media/howto-create-tenant/get-app-id.png)
 
@@ -85,7 +85,7 @@ Azure Active Directory için uygulamanızın kimliğini doğrulamak için bir is
 
 1. Uygulama kayıtları sayfasının **Yönet** bölümünde **Sertifikalar & parolaları**' na tıklayın.
 2. **Sertifikalar & gizlilikler** bölmesinde **+ yeni istemci parolası**' na tıklayın.  **İstemci gizli dizisi Ekle** bölmesi görüntülenir.
-3. Bir **Açıklama**girin.
+3. Bir **Açıklama** girin.
 4. **Zaman aşımı** süresini tercih ettiğiniz süre (örneğin **2 yıl**) olarak ayarlayın.
 5. **Ekle** ' ye tıkladıktan sonra, sayfanın **istemci gizli** dizileri bölümünde anahtar değeri görünür.
 6. Anahtar değerini kopyalayın. `SECRET` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
@@ -106,15 +106,15 @@ Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz.
 
 3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. oku** iznini etkinleştirin. **Kullanıcı. Read** varsayılan olarak etkinleştirilmişse, **kullanıcı. Read** **Azure Active Directory Graph** iznine sahip olduğundan emin olun.
 4. Yukarı kaydırın ve **Uygulama izinleri**' ni seçin.
-5. Aşağıdaki listede yer alan **dizini** genişletin ve **Directory. ReadAll**öğesini etkinleştirin.
+5. Aşağıdaki listede yer alan **dizini** genişletin ve **Directory. ReadAll** öğesini etkinleştirin.
 6. Değişiklikleri kabul etmek için **Izin Ekle** ' ye tıklayın.
-7. API izinleri panelinde artık *User. Read* ve *Directory. ReadAll*gösterilmelidir. Lütfen *Directory. ReadAll*' ın yanındaki **yönetici onayı gerekli** sütununda uyarı ' yı unutmayın.
-8. *Azure abonelik yöneticisiyseniz*, aşağıdaki ** *abonelik adı* için yönetici onayı ver** ' e tıklayın. *Azure abonelik Yöneticisi*değilseniz, yöneticinizden onay isteyin.
+7. API izinleri panelinde artık *User. Read* ve *Directory. ReadAll* gösterilmelidir. Lütfen *Directory. ReadAll*' ın yanındaki **yönetici onayı gerekli** sütununda uyarı ' yı unutmayın.
+8. *Azure abonelik yöneticisiyseniz*, aşağıdaki ***abonelik adı* için yönetici onayı ver** ' e tıklayın. *Azure abonelik Yöneticisi* değilseniz, yöneticinizden onay isteyin.
 
 ![API izinleri bölmesinin ekran görüntüsü. User. Read ve Directory. ReadAll izinleri eklendi, dizin için yönetici onayı gerekli. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> Küme yöneticileri grubunun eşitlenmesi, yalnızca onay verildikten sonra çalışır. *Yönetici onayı gerekli* sütununda onay işareti olan yeşil bir daire ve " *abonelik adı*için verildi" iletisi görüntülenir.
+> Küme yöneticileri grubunun eşitlenmesi, yalnızca onay verildikten sonra çalışır. *Yönetici onayı gerekli* sütununda onay işareti olan yeşil bir daire ve " *abonelik adı* için verildi" iletisi görüntülenir.
 
 Yöneticileri ve diğer rolleri yönetme hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](../cost-management-billing/manage/add-change-subscription-administrator.md).
 

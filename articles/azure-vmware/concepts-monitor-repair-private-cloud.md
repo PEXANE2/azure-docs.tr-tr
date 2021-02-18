@@ -3,13 +3,13 @@ title: Kavramlar-Azure VMware Çözüm özel bulutlarını Izleme ve onarma
 description: Azure VMware çözümünün bir Azure VMware çözümü özel bulutundaki VMware ESXi sunucularını nasıl izlediğini ve onarmadığını öğrenin.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538967"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633147"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware Çözüm özel bulutlarını izleme ve onarma
 
@@ -17,7 +17,7 @@ Azure VMware çözümü, Azure VMware çözümü özel bulutundaki VMware ESXi s
 
 ## <a name="what-azure-vmware-solution-monitors"></a>Azure VMware çözümünün izleyicileri
 
-Azure VMware çözümü konaktaki hata koşulları için aşağıdakini izler:  
+Azure VMware çözümü, konakta aşağıdaki koşulları izler:  
 
 - İşlemci durumu 
 - Bellek durumu 
@@ -37,9 +37,9 @@ Azure VMware çözümü konaktaki hata koşulları için aşağıdakini izler:
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Azure VMware Çözüm ana bilgisayar düzeltmesi  
 
-Azure VMware çözümü, kiracının özel bulutundaki bir Azure VMware Çözüm düğümünde düşme veya başarısızlık algıladığında, ana bilgisayar düzeltme sürecini tetikler. Ana bilgisayar düzeltmesi hatalı düğümü yeni bir sağlıklı düğümle değiştirmeyi içerir.  
+Azure VMware çözümü bir Azure VMware Çözüm düğümünde düşme veya başarısızlık algıladığında, ana bilgisayar düzeltme sürecini tetikler. Ana bilgisayar düzeltmesi hatalı düğümü yeni bir sağlıklı düğümle değiştirmeyi içerir.  
 
-Ana bilgisayar düzeltme süreci, kümeye yeni bir sağlıklı düğüm eklenerek başlatılır. Daha sonra, mümkün olduğunda, hatalı ana bilgisayar VMware vSphere bakım moduna konur. VMware vMotion, VM 'Leri hatalı ana bilgisayardan kümedeki diğer kullanılabilir sunuculara taşımak için kullanılır ve bu da iş yüklerinin sıfır kapalı kalma süresi dinamik geçişi için izin verebilir. Hatalı konağın bakım moduna yerleştirilebileceği senaryolarda, konak kümeden kaldırılır.
+Ana bilgisayar düzeltmesi, kümeye yeni bir sağlıklı düğüm eklenerek başlar. Daha sonra, mümkün olduğunda, hatalı ana bilgisayar VMware vSphere bakım moduna konur. VMware vMotion, VM 'Leri hatalı ana bilgisayardan kümedeki diğer kullanılabilir sunuculara hareket ettirir ve bu da iş yüklerinin dinamik geçişi için sıfır kapalı kalma süresine izin verebilir. Hatalı ana bilgisayar bakım moduna yerleştirilemez, konak kümeden kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

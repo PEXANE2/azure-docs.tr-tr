@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621904"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633980"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
 
@@ -366,8 +366,8 @@ TLS 'i etkinleştirmek için, bağlantı noktasının MQTT Aracısı tarafından
 
 Telemetri verilerinin IoT Hub gönderilmesi Kullanıcı tanımlı bir konu üzerinde yayımlamaya benzer, ancak belirli bir IoT Hub konusunu kullanmaktır:
 
-- Bir cihaz için telemetri şu konuya gönderilir: `devices/<device_name>/messages/events`
-- Bir modül için telemetri şu konuya gönderilir: `devices/<device_name>/<module_name>/messages/events`
+- Bir cihaz için telemetri şu konuya gönderilir: `devices/<device_name>/messages/events/`
+- Bir modül için telemetri şu konuya gönderilir: `devices/<device_name>/<module_name>/messages/events/`
 
 Ayrıca, `FROM /messages/* INTO $upstream` IoT Edge MQTT aracılarından IoT Hub 'ına telemetri göndermek için gibi bir yol oluşturun. Yönlendirme hakkında daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes).
 

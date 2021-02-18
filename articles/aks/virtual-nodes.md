@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmetleri (AKS) ile sanal düğüm kullanma konusuna genel bakış
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684783"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634456"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -45,7 +45,6 @@ Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekild
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğümlere Pod dağıtmayacak
 * Sanal düğümler, Linux pods zamanlamasını destekler. Açık kaynak [sanal Kubelet aci](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını, Windows Server kapsayıcılarını acı 'ye zamanlamak için el ile yükleyebilirsiniz.
 * Sanal düğümler, Azure CNı ağı ile AKS kümeleri gerektirir.
-* Özel kümelerin bulunduğu sanal düğümler.
 * AKS için API sunucusu yetkilendirilmiş IP aralıklarını kullanma.
 * Toplu bağlama Azure dosya paylaşma [genel amaçlı v1](../storage/common/storage-account-overview.md#types-of-storage-accounts)desteği. [Azure dosyaları paylaşımıyla birim](azure-files-volume.md) bağlama yönergelerini izleyin
 * IPv6 kullanmak desteklenmez.

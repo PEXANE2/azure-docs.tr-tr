@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231121"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592302"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Izleyici 'de Azure AD oturum açma günlüğü şemasını yorumlama
 
@@ -143,15 +143,15 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 
 ## <a name="field-descriptions"></a>Alan açıklamaları
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 |------------|-------------|
-| Süre | Tarih ve saat, UTC olarak. |
+| Saat | Tarih ve saat, UTC olarak. |
 | ResourceId | Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz.  |
 | OperationName | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
 | OperationVersion | İstemci tarafından istenen REST API sürümü. |
-| Kategori | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
+| Kategori | Oturum açma işlemleri için bu değer her zaman *oturum* açadır. | 
 | TenantId | Günlüklerle ilişkili kiracı GUID 'SI. |
-| ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
+| ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız* olabilir. | 
 | ResultSignature | Varsa, oturum açma işlemi için hata kodunu içerir. |
 | ResultDescription | Oturum açma işlemi için hata açıklaması sağlar. |
 | riskDetail | riskDetail | Riskli bir kullanıcının, oturum açmanın veya risk algılamanın arkasındaki ' neden ' durumunu sağlar. Olası değerler şunlardır:,,,,, `none` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` `aiConfirmedSigninSafe` , `userPassedMFADrivenByRiskBasedPolicy` , `adminDismissedAllRiskForUser` , `adminConfirmedSigninCompromised` , `unknownFutureValue` . Değer, `none` Kullanıcı veya şimdiye kadar oturum açma işlemleri için hiçbir eylem gerçekleştirilmediği anlamına gelir. <br>**Note:** Bu özelliğe ilişkin ayrıntılar Azure AD Premium P2 lisansı gerektirir. Diğer lisanslar değeri döndürür `hidden` . |
@@ -163,11 +163,11 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 | Callerıpaddress | İsteği yapan istemcinin IP adresi. | 
 | CorrelationId | İstemci tarafından geçirilen isteğe bağlı GUID. Bu değer, istemci tarafı işlemlerini sunucu tarafı işlemleriyle ilişkilendirmenize yardımcı olabilir ve hizmetleri kapsayan günlükleri izlerken yararlıdır. |
 | Kimlik | İsteği yaptığınızda sunulan belirtecin kimliği. Bu bir kullanıcı hesabı, sistem hesabı veya hizmet sorumlusu olabilir. |
-| Düzey | İleti türünü sağlar. Denetim için her zaman *bilgilendirme amaçlıdır*. |
+| Level | İleti türünü sağlar. Denetim için her zaman *bilgilendirme amaçlıdır*. |
 | Konum | Oturum açma etkinliğinin konumunu sağlar. |
 | Özellikler | Oturum açma işlemleri ile ilişkili tüm özellikleri listeler. Daha fazla bilgi için bkz. [MICROSOFT Graph API başvurusu](/graph/api/resources/signin?view=graph-rest-beta). Bu şema, okunabilirlik için oturum açma kaynağıyla aynı öznitelik adlarını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure platformu günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure platformu günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/essentials/platform-logs-overview.md)

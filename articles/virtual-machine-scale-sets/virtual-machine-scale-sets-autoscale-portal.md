@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb4084a7ee0d9d719a88c077fa8c63803aa6934
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080599"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591360"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal bir sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır.
@@ -31,13 +31,13 @@ Uygulamanızın talebi artarsa, ölçek kümenizdeki sanal makine örneklerinde 
 
 1. Azure portal açın ve panonun sol tarafındaki menüden **kaynak grupları** ' nı seçin.
 2. Ölçek kümesini içeren kaynak grubunu seçin ve ardından kaynak listesinden ölçek kümesini seçin.
-3. Ölçek kümesi penceresinin sol tarafındaki menüden **ölçeklendirin** ' ı seçin. **Otomatik ölçeklendirmeyi etkinleştirmek**için düğmeyi seçin:
+3. Ölçek kümesi penceresinin sol tarafındaki menüden **ölçeklendirin** ' ı seçin. **Otomatik ölçeklendirmeyi etkinleştirmek** için düğmeyi seçin:
 
     ![Azure portal otomatik ölçeklendirmeyi etkinleştir](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. Ayarlarınıza *Otomatik ölçeklendirme*gibi bir ad girin, sonra **kural ekleme**seçeneğini belirleyin.
+4. Ayarlarınıza *Otomatik ölçeklendirme* gibi bir ad girin, sonra **kural ekleme** seçeneğini belirleyin.
 
-5. Ortalama CPU yükü 10 dakikalık bir dönemde %70 ' den büyük olduğunda bir ölçek kümesindeki sanal makine örneği sayısını artıran bir kural oluşturalım. Kural tetiklendiğinde, sanal makine örneklerinin sayısı %20 oranında artırılır. Az sayıda sanal makine örneği olan ölçek kümelerinde, **işlemi** *sayı ile artırmak* Için ayarlayabilir ve ardından *örnek sayısı*olarak *1* veya *2* değerini belirtebilirsiniz. Çok sayıda VM örneğiyle ölçek kümelerinde %10 veya %20 sanal makine örneği daha uygun olabilir.
+5. Ortalama CPU yükü 10 dakikalık bir dönemde %70 ' den büyük olduğunda bir ölçek kümesindeki sanal makine örneği sayısını artıran bir kural oluşturalım. Kural tetiklendiğinde, sanal makine örneklerinin sayısı %20 oranında artırılır. Az sayıda sanal makine örneği olan ölçek kümelerinde, **işlemi** *sayı ile artırmak* Için ayarlayabilir ve ardından *örnek sayısı* olarak *1* veya *2* değerini belirtebilirsiniz. Çok sayıda VM örneğiyle ölçek kümelerinde %10 veya %20 sanal makine örneği daha uygun olabilir.
 
     Kuralınız için aşağıdaki ayarları belirtin:
     
@@ -70,7 +70,7 @@ Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süre
     
     | Parametre              | Açıklama                                                                                                          | Değer          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *İşleç*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
+    | *Operatör*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
     | *Eşik*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 30             |
     | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                         | Yüzdeyi azalt |
     | *Örnek sayısı*       | Kural tetiklendiğinde değiştirilmesi gereken sanal makine örneklerinin yüzdesi.                                             | 20             |
@@ -103,11 +103,11 @@ VM örneklerinin sayısını ve durumunu görmek için ölçek kümesi penceresi
 
     ![Varolan otomatik ölçeklendirme kurallarını Sil](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
 
-2. **Ölçek koşulu eklemeyi**seçin. Kural adı ' nın yanındaki kurşun kalem simgesini seçin ve *her iş gününde ölçeği*genişletme gibi bir ad sağlayın.
+2. **Ölçek koşulu eklemeyi** seçin. Kural adı ' nın yanındaki kurşun kalem simgesini seçin ve *her iş gününde ölçeği* genişletme gibi bir ad sağlayın.
 
     ![Varsayılan otomatik ölçeklendirme kuralını yeniden adlandır](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
 
-3. **Belirli bir örnek sayısına ölçeklendirmek**için radyo düğmesini seçin.
+3. **Belirli bir örnek sayısına ölçeklendirmek** için radyo düğmesini seçin.
 4. Örnek sayısını ölçeklendirmek için örnek sayısı olarak *10* girin.
 5. Zamanlama türü için **belirli günleri Yinele** ' **yi** seçin.
 6. Pazartesi 'den Cuma 'Ya kadar tüm iş günlerini seçin.
@@ -121,8 +121,8 @@ Otomatik ölçeklendirme kurallarınızın nasıl uygulandığını görmek içi
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, ölçek kümesindeki sanal makine örneklerinin *sayısını* yatay olarak ölçeklendirmek ve azaltmak için otomatik ölçeklendirme kurallarını nasıl kullanacağınızı öğrendiniz. Ayrıca, sanal makine örnek *boyutunu*artırmak veya azaltmak için dikey olarak ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri Ile dikey otomatik ölçeklendirme](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+Bu makalede, ölçek kümesindeki sanal makine örneklerinin *sayısını* yatay olarak ölçeklendirmek ve azaltmak için otomatik ölçeklendirme kurallarını nasıl kullanacağınızı öğrendiniz. Ayrıca, sanal makine örnek *boyutunu* artırmak veya azaltmak için dikey olarak ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri Ile dikey otomatik ölçeklendirme](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 VM örneklerinizi yönetme hakkında daha fazla bilgi için bkz. [Azure PowerShell ile sanal makine ölçek kümelerini yönetme](./virtual-machine-scale-sets-manage-powershell.md).
 
-Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/platform/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../azure-monitor/platform/alerts-log-webhook.md).
+Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/autoscale/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../azure-monitor/alerts/alerts-log-webhook.md).

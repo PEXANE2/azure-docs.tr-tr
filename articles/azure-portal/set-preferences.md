@@ -4,12 +4,12 @@ description: Kendi tercihlerinizi karşılamak için Azure portal varsayılan ay
 keywords: ayarlar, zaman aşımı, dil, bölgesel
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588796"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal ayarlarını ve tercihlerini yönetme
 
@@ -71,7 +71,7 @@ Geçerli oturumunuz sırasında alınan tüm bildirimleri okumak için genel üs
 
 ![Bildirimleri vurgulanan Azure portal genel üstbilgiyi gösteren ekran görüntüsü](./media/set-preferences/read-notifications.png)
 
-Önceki oturumlardaki bildirimleri okumak istiyorsanız, etkinlik günlüğündeki olayları arayın. Daha fazla bilgi için bkz. [etkinlik günlüğünü görüntüleme](../azure-monitor/platform/activity-log.md#view-the-activity-log). 
+Önceki oturumlardaki bildirimleri okumak istiyorsanız, etkinlik günlüğündeki olayları arayın. Daha fazla bilgi için bkz. [etkinlik günlüğünü görüntüleme](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>Etkin olmama zaman aşımı ayarını değiştir
 

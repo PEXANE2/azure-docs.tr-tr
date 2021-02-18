@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634303"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ Etkin coğrafi çoğaltma, aynı veya farklı veri merkezi (bölge) içindeki bi
 
 > [!NOTE]
 > Etkin coğrafi çoğaltma, Azure SQL yönetilen örneği tarafından desteklenmiyor. SQL yönetilen örneği örneklerinin coğrafi yük devretmesi için [otomatik yük devretme grupları](auto-failover-group-overview.md)kullanın.
+
+> [!NOTE]
+> Etkin coğrafi çoğaltma kullanarak SQL veritabanlarını Azure Almanya 'dan geçirmek için bkz. [etkin coğrafi çoğaltma kullanarak SQL veritabanı geçirme](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication).
 
 Etkin coğrafi çoğaltma, uygulamanın bölgesel bir olağanüstü durum veya büyük ölçekli bir kesinti olması durumunda bireysel veritabanlarının hızlı olağanüstü durum kurtarması gerçekleştirmesini sağlayan bir iş sürekliliği çözümü olarak tasarlanmıştır. Coğrafi çoğaltma etkinse, uygulama farklı bir Azure bölgesindeki ikincil bir veritabanına yük devretme başlatabilir. Aynı veya farklı bölgelerde en fazla dört ikincil desteklenir ve ikincil öğeler de salt okuma erişim sorguları için kullanılabilir. Yük devretme, uygulama veya Kullanıcı tarafından el ile başlatılmalıdır. Yük devretmeden sonra yeni birincil, farklı bir bağlantı uç noktasına sahiptir.
 
@@ -292,6 +295,9 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 | [Çoğaltma bağlantıları-veritabanına göre liste](/rest/api/sql/replicationlinks/listbydatabase) | Coğrafi çoğaltma ortaklığında belirli bir veritabanı için tüm çoğaltma bağlantılarını alır. Sys.geo_replication_links katalog görünümünde görünen bilgileri alır. |
 | [Çoğaltma bağlantısını sil](/rest/api/sql/replicationlinks/delete) | Bir veritabanı çoğaltma bağlantısını siler. Yük devretme sırasında gerçekleştirilemez. |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

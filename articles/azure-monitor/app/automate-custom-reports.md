@@ -4,12 +4,12 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680459"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590042"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -31,7 +31,7 @@ Her kuruluşun benzersiz raporlama ihtiyaçları vardır, örneğin:
 
 Bir zamanlamaya göre özel raporlar oluşturmak için [programlı olarak Application Insights verileri sorgulayabilirsiniz](https://dev.applicationinsights.io/) . Aşağıdaki seçenekler hızla başlamanıza yardımcı olabilir:
 
-* [Power otomatikleştirmede raporları otomatikleştirin](../platform/logicapp-flow-connector.md)
+* [Power otomatikleştirmede raporları otomatikleştirin](../logs/logicapp-flow-connector.md)
 * [Raporları Logic Apps otomatikleştirin](automate-with-logic-apps.md)
 * Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](../../azure-functions/functions-get-started.md) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
 
@@ -150,7 +150,7 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Analiz sorguları](../log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+* [Analiz sorguları](../logs/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 * [Application Insights verileri programlı](https://dev.applicationinsights.io/) bir şekilde sorgulama hakkında daha fazla bilgi edinin
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 * [Microsoft Power otomatikleştir](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
