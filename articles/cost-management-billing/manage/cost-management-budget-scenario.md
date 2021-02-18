@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131471"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593396"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
 
 Maliyet denetimi, buluttaki yatırımınızın değerini en üst düzeye çıkarmak için kritik bir bileşendir. Maliyet görünürlüğü, raporlama ve maliyet tabanlı düzenlemenin devam eden işletme operasyonları için kritik öneme sahip olduğu çeşitli senaryolar vardır. [Azure Maliyet Yönetimi API’leri](/rest/api/consumption/), bu senaryoların her birini desteklemek için bir dizi API sağlar. API’ler kullanım ayrıntılarını sağlayarak örnek düzeyinde maliyetlerinizi ayrıntılı olarak görüntülemenize olanak tanır.
 
-Bütçeler genellikle maliyet denetiminin bir parçası olarak kullanılır. Bütçelerin kapsamı Azure’da belirlenebilir. Örneğin, bütçe görünümünüzü abonelik, kaynak grupları veya kaynak koleksiyonu temelinde daraltabilirsiniz. Bütçe eşiğine ulaşıldığında e-posta yoluyla bildirim almak için bütçeler API'sinin yanı sıra, bir bütçe olayının sonucu olarak, düzenlenmiş bir dizi eylemi tetiklemek için [Azure İzleyici eylem gruplarını](../../azure-monitor/platform/action-groups.md) kullanabilirsiniz.
+Bütçeler genellikle maliyet denetiminin bir parçası olarak kullanılır. Bütçelerin kapsamı Azure’da belirlenebilir. Örneğin, bütçe görünümünüzü abonelik, kaynak grupları veya kaynak koleksiyonu temelinde daraltabilirsiniz. Bütçe eşiğine ulaşıldığında e-posta yoluyla bildirim almak için bütçeler API'sinin yanı sıra, bir bütçe olayının sonucu olarak, düzenlenmiş bir dizi eylemi tetiklemek için [Azure İzleyici eylem gruplarını](../../azure-monitor/alerts/action-groups.md) kullanabilirsiniz.
 
 Kritik olmayan iş yükü çalıştıran bir müşteriye yönelik yaygın bir bütçe senaryosu, müşteri, iş yükünü bütçeye göre yönetmek ve aynı zamanda aylık faturaya bakarken öngörülebilir bir maliyete ulaşmak istediğinde gerçekleşebilir. Bu senaryo, Azure ortamının bir parçası olan kaynakların maliyet tabanlı düzenlemesini gerektirir. Bu senaryoda, abonelik için 1000 ABD doları aylık bütçe ayarlanır. Ayrıca, bildirim eşikleri birkaç düzenlemeyi tetikleyecek şekilde ayarlanır. Bu senaryo, **İsteğe Bağlı** kaynak grubundaki tüm VM’leri durduracak olan %80’lik maliyet eşiği ile başlar. Ardından, %100 maliyet eşiğine ulaşıldığında tüm VM örnekleri durdurulur.
 

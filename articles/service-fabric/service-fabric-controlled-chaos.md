@@ -1,17 +1,15 @@
 ---
 title: Service Fabric kümelerinde endüce Chaos
 description: Kümedeki Chaos 'yi yönetmek için hata ekleme ve küme analizi hizmeti API 'Lerini kullanma.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 727e0c8a738258434036652dd3df1f686f7433bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ff3c88b7f86294badb76ec1e8dde0c34b942509
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546389"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588984"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric kümelerinde ı, kontrollü Chaos
 Bulut altyapıları gibi büyük ölçekli dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilerin güvenilir olmayan bir altyapının üzerine güvenilir dağıtılmış hizmetler yazmasını sağlar. Güvenilir olmayan bir altyapının üzerine sağlam dağıtılmış hizmetler yazmak için, geliştiricilerin hizmetin kararlılığını test edebilmeleri gerekir, çünkü temeldeki güvenilir olmayan altyapı hatalar nedeniyle karmaşık durum geçişleri ile devam edebilir.

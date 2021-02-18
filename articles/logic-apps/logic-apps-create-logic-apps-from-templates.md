@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593107"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Önceden oluşturulmuş şablonlardan mantıksal uygulama iş akışları oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "87066233"
 
 Bazı Şablon kategorileri şunlardır:
 
-| Şablon türü | Açıklama | 
+| Şablon türü | Description | 
 | ------------- | ----------- | 
 | Kurumsal bulut şablonları | Azure blob, Dynamics CRM, Salesforce, Box ve Kurumsal bulut gereksinimleriniz için diğer bağlayıcılar dahil olmak üzere. Örneğin, bu şablonları iş adaylarını düzenlemek veya kurumsal dosya verilerinizi yedeklemek için kullanabilirsiniz. | 
 | Kişisel üretkenlik şablonları | Günlük anımsatıcıları ayarlayarak, önemli iş öğelerini Yapılacaklar listelerine açıp uzun görevleri tek bir Kullanıcı onay adımına otomatik hale getirerek kişisel verimliliği artırın. | 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="create-logic-apps-from-templates"></a>Şablonlardan mantıksal uygulamalar oluşturma
 
-1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure portal")oturum açın.
+1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure portalı")oturum açın.
 
 2. Ana Azure menüsünden **kaynak oluştur**  >  **kurumsal tümleştirme**  >  **mantıksal uygulama**' yı seçin.
 
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
    | **Abonelik** | *your-Azure-subscription-name* | Kullanmak istediğiniz Azure aboneliğini seçin. | 
    | **Kaynak grubu** | *Azure-kaynak-grubunuzun-adı* | Bu mantıksal uygulama için bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun veya seçin ve bu uygulamayla ilişkili tüm kaynakları düzenleyin. | 
    | **Konum** | *Azure-veri-merkezi-bölgeniz* | Batı ABD gibi mantıksal uygulamanızın dağıtılacağı veri merkezi bölgesini seçin. | 
-   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlüklerini](../azure-monitor/log-query/log-query-overview.md)kullanarak mantıksal uygulamanız için [tanılama günlüğü](../logic-apps/monitor-logic-apps-log-analytics.md) ayarlayın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
+   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlüklerini](../azure-monitor/logs/log-query-overview.md)kullanarak mantıksal uygulamanız için [tanılama günlüğü](../logic-apps/monitor-logic-apps-log-analytics.md) ayarlayın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
    |||| 
 
 4. Hazır olduğunuzda **Panoya sabitle**'yi seçin. Bu şekilde mantıksal uygulamanız otomatik olarak Azure panonuzda görüntülenir ve dağıtımdan sonra açılır. **Oluştur**' a tıklayın.
@@ -61,7 +61,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
    Azure mantıksal uygulamanızı dağıttıktan sonra Logic Apps Tasarımcısı açılır ve tanıtım videosu bulunan bir sayfa görüntülenir. 
    Videonun altında sık kullanılan mantıksal uygulama desenlerine ait şablonları bulabilirsiniz. 
 
-5. Tanıtım videosunu ve ortak Tetikleyicileri **şablonlara**göre kaydırın. Önceden oluşturulmuş bir şablon seçin. Örneğin:
+5. Tanıtım videosunu ve ortak Tetikleyicileri **şablonlara** göre kaydırın. Önceden oluşturulmuş bir şablon seçin. Örneğin:
 
    ![Mantıksal uygulama şablonu seçin](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
@@ -99,13 +99,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="update-logic-apps-with-templates"></a>Mantıksal uygulamaları şablonlarla güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com "Azure portal"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
+1. [Azure Portal](https://portal.azure.com "Azure portalı"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
 
 2. Tasarımcı araç çubuğunda **Şablonlar**' ı seçin. Bu eylem kaydedilmemiş değişiklikleri atar, bu nedenle devam etmek istediğinizi doğrulayabilmeniz için bir uyarı iletisi görüntülenir. Onaylamak için **Tamam**' ı seçin. Örneğin:
 
    !["Şablonlar" ı seçin](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Tanıtım videosunu ve ortak Tetikleyicileri **şablonlara**göre kaydırın. Önceden oluşturulmuş bir şablon seçin. Örneğin:
+3. Tanıtım videosunu ve ortak Tetikleyicileri **şablonlara** göre kaydırın. Önceden oluşturulmuş bir şablon seçin. Örneğin:
 
    ![Mantıksal uygulama şablonu seçin](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 

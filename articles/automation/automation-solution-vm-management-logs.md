@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83827565"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593848"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğinden sorgu günlükleri
 
-Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu makalede, Azure Izleyici 'de [sorgu](../azure-monitor/log-query/log-query-overview.md) için kullanılabilen veriler incelenir.
+Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu makalede, Azure Izleyici 'de [sorgu](../azure-monitor/logs/log-query-overview.md) için kullanılabilen veriler incelenir.
 
 ## <a name="job-logs"></a>İş günlükleri
 
@@ -34,8 +34,8 @@ Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına
 |RunbookName | Runbook’un adını belirtir.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır|
 |StreamType | Olay türünü belirtir. Olası değerler şunlardır:<br>- Ayrıntılı<br>- Çıktı<br>- Hata<br>- Uyarı|
-|kaynak grubundaki | İşin abonelik kimliğini belirtir.
-|Süre | Runbook işinin yürütüldüğü tarih ve saat.|
+|SubscriptionId | İşin abonelik kimliğini belirtir.
+|Saat | Runbook işinin yürütüldüğü tarih ve saat.|
 
 ## <a name="job-streams"></a>İş akışları
 
@@ -54,15 +54,15 @@ Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına
 |RunbookName | Runbook’un adı.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır.|
 |StreamType | İş akışı türü. Olası değerler şunlardır:<br>-İlerleme durumu<br>- Çıktı<br>- Uyarı<br>- Hata<br>- Hata ayıklama<br>- Ayrıntılı|
-|Süre | Runbook işinin yürütüldüğü tarih ve saat.|
+|Saat | Runbook işinin yürütüldüğü tarih ve saat.|
 
-**Joblogs** veya **jobstreams**kategorisi kayıtlarını döndüren bir günlük araması gerçekleştirdiğinizde, arama tarafından döndürülen güncelleştirmeleri özetleyen bir kutucuk kümesi görüntüleyen **joblogs** veya **jobstreams** görünümünü seçebilirsiniz.
+**Joblogs** veya **jobstreams** kategorisi kayıtlarını döndüren bir günlük araması gerçekleştirdiğinizde, arama tarafından döndürülen güncelleştirmeleri özetleyen bir kutucuk kümesi görüntüleyen **joblogs** veya **jobstreams** görünümünü seçebilirsiniz.
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 
 Aşağıdaki tabloda, VM'leri çalışma saatleri dışında başlat/durdur tarafından toplanan iş kayıtlarına yönelik örnek günlük aramaları sunulmaktadır.
 
-|Sorgu | Açıklama|
+|Sorgu | Description|
 |----------|----------|
 |Başarıyla tamamlanan runbook ScheduledStartStop_Parent işleri bulun | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Runbook ScheduledStartStop_Parent başarıyla tamamlanmamış olan işleri bulun | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
@@ -72,5 +72,5 @@ Aşağıdaki tabloda, VM'leri çalışma saatleri dışında başlat/durdur tara
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Özelliği ayarlamak için, bkz. [çalışma saatleri dışında VM 'Leri durdurmayı/başlatmayı yapılandırma](automation-solution-vm-management-config.md).
-* Özellik dağıtımı sırasında günlük uyarıları hakkında daha fazla bilgi için bkz. [Azure izleyici ile günlük uyarıları oluşturma](../azure-monitor/platform/alerts-log.md).
+* Özellik dağıtımı sırasında günlük uyarıları hakkında daha fazla bilgi için bkz. [Azure izleyici ile günlük uyarıları oluşturma](../azure-monitor/alerts/alerts-log.md).
 * Özellik hatalarını çözümlemek için bkz. [sorun giderme VM'leri çalışma saatleri dışında Başlat/Durdur sorunları](troubleshoot/start-stop-vm.md).

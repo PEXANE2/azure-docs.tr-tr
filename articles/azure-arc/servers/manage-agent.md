@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368464"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587627"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -312,7 +312,7 @@ Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planl�
 Aracıyı bir ara sunucu aracılığıyla hizmetle iletişim kuracak şekilde yapılandırmak veya dağıtımdan sonra bu yapılandırmayı kaldırmak için ya da bu görevi gerçekleştirmek için aşağıdaki yöntemlerden birini kullanın.
 
 > [!NOTE]
-> Yay özellikli sunucular, bağlı makine Aracısı için proxy olarak [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) kullanmayı desteklemez.
+> Yay özellikli sunucular, bağlı makine Aracısı için proxy olarak [Log Analytics ağ geçidi](../../azure-monitor/agents/gateway.md) kullanmayı desteklemez.
 >
 
 ### <a name="windows"></a>Windows
@@ -355,6 +355,6 @@ sudo azcmagent_proxy remove
 
 * Sorun giderme bilgileri, [bağlı makine Aracısı sorunlarını giderme kılavuzunda](troubleshoot-agent-onboard.md)bulunabilir.
 
-* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/vm/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
 
-* [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.
+* [Log Analytics Aracısı](../../azure-monitor/agents/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.

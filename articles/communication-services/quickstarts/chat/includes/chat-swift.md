@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7833656b9b9be45aa3a0f0a8aa45cd70f925ce73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d006168de89a2709ed607568f36cacf5f924efcb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379701"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653555"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -120,6 +120,10 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 
 `<ACS_RESOURCE_ENDPOINT>`ACS kaynağınızın bitiş noktasıyla değiştirin.
 `<ACCESS_TOKEN>`Geçerli BIR ACS erişim belirteciyle değiştirin.
+
+Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz, ancak önerilir. Daha ayrıntılı [sohbet mimarisi](../../../concepts/chat/concepts.md) için aşağıdaki belgelere bakın
+
+[Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="object-model"></a>Nesne modeli 
 Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Iletişim Hizmetleri sohbet istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.

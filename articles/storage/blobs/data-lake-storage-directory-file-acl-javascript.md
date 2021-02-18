@@ -1,33 +1,36 @@
 ---
-title: Azure Data Lake Storage 2. & ACL 'Leri için JavaScript kullanma
-description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için JavaScript için Azure depolama Data Lake istemci kitaplığı 'nı kullanın.
+title: Azure Data Lake Storage 2. verileri yönetmek için JavaScript kullanın
+description: Hiyerarşik ad alanı etkinleştirilmiş depolama hesaplarındaki dizinleri ve dosyaları yönetmek için, JavaScript için Azure Storage Data Lake istemci kitaplığı 'nı kullanın.
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: a929fcbc87a1ce11b226e9def46354c24a151a0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913377"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650176"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için JavaScript kullanın
+# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri ve dosyaları yönetmek için JavaScript kullanın
 
-Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için JavaScript 'In nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında dizin ve dosya oluşturmak ve yönetmek için JavaScript 'In nasıl kullanılacağı gösterilir.
+
+Dizinlerin ve dosyaların erişim denetim listelerini (ACL) alma, ayarlama ve güncelleştirme hakkında bilgi edinmek için bkz. [Azure Data Lake Storage 2. ACL 'leri yönetmek Için JavaScript kullanma](data-lake-storage-acl-javascript.md).
 
 [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues) bulunun
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-> [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](../common/storage-account-create.md) yönergeleri izleyin.
-> * Bu paketi bir Node.js uygulamasında kullanıyorsanız, Node.js 8.0.0 veya daha yüksek bir sürüme sahip olmanız gerekir.
+- Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+
+- Hiyerarşik ad alanı etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](create-data-lake-storage-account.md) yönergeleri izleyin.
+
+- Bu paketi bir Node.js uygulamasında kullanıyorsanız, Node.js 8.0.0 veya daha yüksek bir sürüme sahip olmanız gerekir.
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
@@ -67,10 +70,11 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 }      
 
 ```
-> [!NOTE]
-> Bu yetkilendirme yöntemi yalnızca Node.js uygulamalar için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, Azure Active Directory (AD) kullanarak yetkilendirme yapabilirsiniz. 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory kullanarak bağlanma (AD)
+> [!NOTE]
+> Bu yetkilendirme yöntemi yalnızca Node.js uygulamalar için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, Azure Active Directory (Azure AD) kullanarak yetkilendirme yapabilirsiniz.
+
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Azure Active Directory kullanarak bağlanma (Azure AD)
 
 Uygulamanızın kimliğini Azure AD ile doğrulamak için [Azure Identity Client Library for js](https://www.npmjs.com/package/@azure/identity) ' i kullanabilirsiniz.
 
@@ -166,8 +170,6 @@ async function DeleteDirectory(fileSystemClient) {
 }
 ```
 
-
-
 ## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
 İlk olarak bir dosya okuyun. Bu örnek Node.js modülünü kullanır `fs` . Ardından, bir **fileclient** örneği oluşturup, sonra **fileclient. Create** metodunu çağırarak hedef dizinde bir dosya başvurusu oluşturun. **Fileclient. Append** metodunu çağırarak bir dosyayı karşıya yükleyin. **Fileclient. Flush** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
@@ -201,7 +203,7 @@ async function UploadFile(fileSystemClient) {
 İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Filesystemclient** örneği oluşturun. Dosyayı okumak için **Filesystemclient. Read** metodunu kullanın. Sonra dosyayı yazın. Bu örnek `fs` bunu yapmak için Node.js modülünü kullanır. 
 
 > [!NOTE]
-> Dosya indirme yöntemi yalnızca Node.js uygulamalar için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, bunu bir tarayıcıda nasıl yapacağınızı gösteren bir örnek için bkz. [JavaScript için istemci kitaplığı Data Lake Azure Storage dosyası](https://www.npmjs.com/package/@azure/storage-file-datalake) . 
+> Dosya indirme yöntemi yalnızca Node.js uygulamalar için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, bunu bir tarayıcıda nasıl yapacağınızı gösteren bir örnek için bkz. [JavaScript için istemci kitaplığı Data Lake Azure Storage dosyası](https://www.npmjs.com/package/@azure/storage-file-datalake) .
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -253,125 +255,8 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="manage-access-control-lists-acls"></a>Erişim denetim listelerini (ACL 'Ler) yönetme
-
-Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
-
-> [!NOTE]
-> Erişimi yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](./data-lake-storage-access-control.md)' ne bakın.
-
-### <a name="manage-a-directory-acl"></a>Dizin ACL 'sini yönetme
-
-Bu örnek, adlı bir dizinin ACL 'sini alır ve ayarlar `my-directory` . Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
-
-> [!NOTE]
-> Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](./data-lake-storage-access-control.md)' ne bakın.
-
-```javascript
-async function ManageDirectoryACLs(fileSystemClient) {
-
-    const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
-    const permissions = await directoryClient.getAccessControl();
-
-    console.log(permissions.acl);
-
-    const acl = [
-    {
-      accessControlType: "user",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "group",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: false,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "other",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: false
-      }
-
-    }
-
-  ];
-
-  await directoryClient.setAccessControl(acl);
-}
-```
-
-Ayrıca, bir kapsayıcının kök dizininin ACL 'sini de alabilir ve ayarlayabilirsiniz. Kök dizini almak için `/` **Datalakefilesystemclient. getdirectoryclient** metoduna boş bir dize () geçirin.
-
-### <a name="manage-a-file-acl"></a>Dosya ACL 'sini yönetme
-
-Bu örnek, adlı bir dosyanın ACL 'sini alır ve ayarlar `upload-file.txt` . Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
-
-> [!NOTE]
-> Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](./data-lake-storage-access-control.md)' ne bakın.
-
-```javascript
-async function ManageFileACLs(fileSystemClient) {
-
-  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt"); 
-  const permissions = await fileClient.getAccessControl();
-
-  console.log(permissions.acl);
-
-  const acl = [
-  {
-    accessControlType: "user",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "group",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: false,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "other",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: false
-    }
-
-  }
-
-];
-
-await fileClient.setAccessControl(acl);        
-}
-```
-
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)
-* [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-* [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-java/issues)
+- [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+- [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+- [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-java/issues)

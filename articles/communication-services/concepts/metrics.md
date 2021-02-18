@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251106"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572060"
 ---
 # <a name="metrics-overview"></a>Ölçümlere genel bakış
 
-Azure Iletişim Hizmetleri şu anda sohbet ve SMS için ölçümler sunmaktadır. [Azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md) , kendi grafiklerinizi çizmek, ölçüm değerlerinizde yer alan anormallikleri araştırmak ve sohbet ve SMS isteklerinin yayılacağı ölçüm VERILERINI kullanarak API trafiğinizi anlamak için kullanılabilir.
+Azure Iletişim Hizmetleri şu anda sohbet ve SMS için ölçümler sunmaktadır. [Azure Ölçüm Gezgini](../../azure-monitor/essentials/metrics-getting-started.md) , kendi grafiklerinizi çizmek, ölçüm değerlerinizde yer alan anormallikleri araştırmak ve sohbet ve SMS isteklerinin yayılacağı ölçüm VERILERINI kullanarak API trafiğinizi anlamak için kullanılabilir.
 
 ## <a name="where-to-find-metrics"></a>Ölçümlerin nerede bulunacağı
 
@@ -30,7 +30,7 @@ Iletişim Hizmetleri ölçümleri içinde temsil edilen iki tür istek vardır: 
 
 Hem sohbet hem de SMS API istek ölçümleri, ölçüm verilerinizi filtrelemek için kullanabileceğiniz üç boyut içerir. Bu boyutlar toplama türü kullanılarak birlikte toplanabilir ve,, `Count` ve dahil tüm standart Azure toplama zaman serisini destekler `Sum` `Average` `Min` `Max` .
 
-Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla bilgi için [Azure Ölçüm Gezgini gelişmiş özellikleri](../../azure-monitor/platform/metrics-charts.md#aggregation) bulunabilir
+Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla bilgi için [Azure Ölçüm Gezgini gelişmiş özellikleri](../../azure-monitor/essentials/metrics-charts.md#aggregation) bulunabilir
 
 - **İşlem** -ACS sohbet ağ geçidinde çağrılabilecek tüm işlemler veya rotalar.
 - **Durum kodu** -istekten sonra gönderilen durum kodu yanıtı.
@@ -90,4 +90,4 @@ Kimlik doğrulama API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Veri platformu ölçümleri](../../azure-monitor/platform/data-platform-metrics.md) hakkında daha fazla bilgi edinin
+- [Veri platformu ölçümleri](../../azure-monitor/essentials/data-platform-metrics.md) hakkında daha fazla bilgi edinin

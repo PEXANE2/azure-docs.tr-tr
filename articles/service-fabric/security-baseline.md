@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805487"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582635"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric için Azure Güvenlik temeli
 
@@ -178,9 +178,9 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Service Fabric dağıtımlarınızla ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -224,7 +224,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 * [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics günlük aramaları](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics günlük aramaları](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -240,7 +240,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 * [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -256,7 +256,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 * [Log Analytics aracısını düğümleriniz üzerine dağıtma](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -266,7 +266,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure Service Fabric günlüklerini sorgulamak için Azure Log Analytics çalışma alanı sorgularını kullanın.
 
-* [Log Analytics günlük aramaları](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics günlük aramaları](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -278,7 +278,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 * [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -586,7 +586,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, önemli Azure kaynaklarına yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

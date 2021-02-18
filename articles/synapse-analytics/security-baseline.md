@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807844"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585113"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -167,9 +167,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve adanmış SQL havuzunuza ilişkin ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -237,7 +237,7 @@ Denetim hem veritabanı hem de sunucu düzeyinde etkinleştirilebilir ve belirli
 
 * [Azure Blob depolama yaşam döngüsünü yönetme](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Log Analytics çalışma alanında günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics çalışma alanında günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Event Hubs akış olaylarını yakala](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Yetkilendirme, Kullanıcı hesabınızın veritabanı rolü üyelikleri ve nesne
 
 Ayrıca, Azure portal kullanarak SQL SYNAPSE havuzunuzdaki veritabanları için uyarılar ayarlayabilirsiniz. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure SQL SYNAPSE için uyarılar oluşturma](../azure-sql/database/alerts-insights-configure-portal.md)
 

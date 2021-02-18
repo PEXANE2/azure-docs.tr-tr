@@ -3,12 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979180"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584336"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -28,7 +28,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 1. [Azure Portal](https://portal.azure.com)aboneliğinizde bir "klasik" depolama hesabı oluşturun.
    
    ![Azure portal ' de yeni, veri, depolama ' yı seçin.](./media/export-stream-analytics/030.png)
-2. Bir kapsayıcı oluşturma
+2. Kapsayıcı oluşturma
    
     ![Yeni depolama alanında kapsayıcılar ' ı seçin, kapsayıcılar kutucuğuna tıklayın ve ardından Ekle](./media/export-stream-analytics/040.png)
 3. Depolama erişim anahtarını kopyalama
@@ -55,7 +55,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 
     ![Olay türlerini seçin](./media/export-stream-analytics/080.png)
 
-1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../platform/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
+1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../essentials/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
    
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. Aktarılmış verileri inceleyin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
@@ -98,7 +98,7 @@ Yol ön eki deseninin, Stream Analytics depolama alanındaki giriş dosyaların�
 Bu örnekte:
 
 * `webapplication27` Application Insights kaynağın adı **tüm küçük bir durumdur**.
-* `1234...` Application Insights kaynağın izleme anahtarıdır ve **tireler hariç**olur. 
+* `1234...` Application Insights kaynağın izleme anahtarıdır ve **tireler hariç** olur. 
 * `PageViews` , çözümlemek istediğiniz veri türüdür. Kullanılabilir türler, sürekli dışarı aktarma sırasında ayarladığınız filtreye bağlıdır. Dışarı aktarılmış verileri inceleyerek diğer kullanılabilir türleri görüntüleyin ve [veri aktarma modelini](export-data-model.md)görüntüleyin.
 * `/{date}/{time}` , harfine yazılmış bir örüntü.
 

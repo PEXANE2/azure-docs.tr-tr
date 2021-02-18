@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963304"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594363"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makinelerin yaşam döngüsü ve durumları
 
@@ -108,7 +108,7 @@ Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek k
    :::column-end:::
    :::column span="":::
 
-   Bu, geçici bir durumdur. İşlem tamamlandığında, **durduruldu**olarak gösterilir.
+   Bu, geçici bir durumdur. İşlem tamamlandığında, **durduruldu** olarak gösterilir.
 
    ```json
    "statuses": [
@@ -164,7 +164,7 @@ Aşağıdaki tabloda her örnek durumunun açıklaması verilmiştir ve örnek k
    :::column-end:::
    :::column span="":::
 
-   Geçiş durumu. İşlem tamamlandığında, VM **serbest bırakıldı**olarak gösterilir.
+   Geçiş durumu. İşlem tamamlandığında, VM **serbest bırakıldı** olarak gösterilir.
 
    ```json
    "statuses": [
@@ -267,7 +267,7 @@ Platform Kullanıcı tarafından başlatılan bir eylemi kabul ettikten sonra, g
 :::row:::
    :::column span="":::
 
-   **Bilen**
+   **Güncelleştirme**
 
    :::column-end:::
    :::column span="2":::
@@ -424,8 +424,8 @@ Azure Kaynak Gezgini, VM çalıştırma durumunu görüntülemek için basit bir
 
 Sağlama durumları VM özellikleri ve örnek görünümünde görülebilir. Güç durumları VM 'nin örnek görünümünde kullanılabilir.
 
-Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true* olarak ayarlanmış şekilde kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'nizi izleme hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineleri izleme](../azure-monitor/insights/monitor-vm-azure.md).
+VM 'nizi izleme hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineleri izleme](../azure-monitor/vm/monitor-vm-azure.md).

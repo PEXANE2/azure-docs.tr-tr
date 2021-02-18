@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 6f83df22465a2dc5fb871ae4e2c6dedd75e00075
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834230"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588556"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -44,7 +44,7 @@ Standart Load Balancer, uygulamalarınızı ölçeklendirebilir ve yüksek orand
 
 Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar şunlardır:
 
-- Azure sanal makinelerine **[iç](./quickstart-load-balancer-standard-internal-portal.md)** ve **[dış](./tutorial-load-balancer-standard-manage-portal.md)** trafik yükünü dengeleyin.
+- Azure sanal makinelerine **[iç](./quickstart-load-balancer-standard-internal-portal.md)** ve **[dış](./quickstart-load-balancer-standard-public-portal.md)** trafik yükünü dengeleyin.
 
 - **[Kaynakları bölgeler](./tutorial-load-balancer-standard-public-zonal-portal.md)** arasında ve bölgeler **[arasında](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** dağıtarak kullanılabilirliği artırın.
 

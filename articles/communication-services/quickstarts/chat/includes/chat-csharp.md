@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1db7eeb61bc4ded2d7015baecaacd974d7767812
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645574"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653556"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -60,7 +60,11 @@ Aşağıdaki sınıflar, C# için Azure Iletişim Hizmetleri sohbeti istemci kit
 
 ## <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
-Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient` `Administration` Kullanıcı oluşturmak ve sohbet istemcinize geçirilecek bir belirteç vermek için istemci kitaplığındaki sınıfını kullanmanız gerekir. [Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
+Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient` `Administration` Kullanıcı oluşturmak ve sohbet istemcinize geçirilecek bir belirteç vermek için istemci kitaplığındaki sınıfını kullanmanız gerekir.
+
+[Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
+
+Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz, ancak önerilir. [Sohbet mimarisi](../../../concepts/chat/concepts.md) hakkında daha fazla bilgi edinin
 
 ```csharp
 using Azure.Communication.Identity;

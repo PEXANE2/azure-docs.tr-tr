@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 822a4249b6ed054f36605d0367803da68bab090b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524544"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652267"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi Özel Görüntü İşleme
 
@@ -24,15 +24,6 @@ Azure Özel Görüntü İşleme, verileri buluta kalıcı hale geldiğinde otoma
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarlar yalnızca 11 Mayıs 2020 ' den sonra oluşturulan kullanılabilir kaynaklardır. CMK 'yi Özel Görüntü İşleme kullanmak için yeni bir Özel Görüntü İşleme kaynağı oluşturmanız gerekir. Kaynak oluşturulduktan sonra, yönetilen kimliğinizi ayarlamak için Azure Key Vault kullanabilirsiniz.
-
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Müşteri tarafından yönetilen anahtarlar Şu anda şu bölgelerde kullanılabilir:
-
-* ABD Orta Güney
-* Batı ABD 2
-* Doğu ABD
-* US Gov Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

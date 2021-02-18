@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 6e1d9b8a53eaf69c2294ab42dc0718863e6c1837
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804946"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596428"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı ile Azure Sentinel kullanma
 
@@ -82,4 +82,4 @@ Her kaynak için Log Analytics 'i etkinleştirmek üzere tek bir Azure ön kapı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Sentinel hakkında daha fazla bilgi edinin](../sentinel/overview.md)
-- [Azure Izleyici çalışma kitapları hakkında daha fazla bilgi edinin](../azure-monitor/platform/workbooks-overview.md)
+- [Azure Izleyici çalışma kitapları hakkında daha fazla bilgi edinin](../azure-monitor/visualize/workbooks-overview.md)

@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 6bb787084d4396737d3002bb98fe50e283c5764a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582889"
+ms.locfileid: "100635498"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
 Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMB3 birimi oluşturma konusu gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
-Zaten bir kapasite havuzu ayarlamış olmalısınız.   
-[Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)   
-Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
-[Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)
+
+* Zaten bir kapasite havuzu ayarlamış olmalısınız. Bkz. [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md).     
+* Azure NetApp Files için bir alt ağ atanmış olmalıdır. [Azure NetApp Files için bir alt ağ temsilcisine](azure-netapp-files-delegate-subnet.md)bakın.
 
 ## <a name="configure-active-directory-connections"></a>Active Directory bağlantıları yapılandırma 
 

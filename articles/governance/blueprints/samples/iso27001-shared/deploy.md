@@ -3,12 +3,12 @@ title: ISO 27001 paylaşılan hizmetleri dağıtma şema örneği
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere ISO 27001 paylaşılan hizmetleri şeması örneği için adımları dağıtın.
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627807"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577324"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğini dağıtma
 
@@ -110,7 +110,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |İzin verilen kaynak türleri|İlke ataması|İzin verilen kaynak türleri|Dağıtılmasına izin verilen kaynak türleri listesi. Bu liste, paylaşılan hizmetlerde dağıtılan tüm kaynak türlerinden oluşur.|
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Ları|İzin verilen tanılama günlüğü depolama hesabı SKU 'Larının listesi. Varsayılan değer _["Standard_LRS"]_ değeridir.|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Dağıtılmasına izin verilen sanal makine SKU 'Larının listesi. Varsayılan değer _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
-|ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlüklerini denetlemek için kaynak türleri|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
+|ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlüklerini denetlemek için kaynak türleri|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 |Log Analytics kaynak grubu|Kaynak grubu|Name|**Kilitli** -  `-sharedsvsc-log-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |Log Analytics kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Log Analytics şablonu|Resource Manager şablonu|Hizmet katmanı|Log Analytics çalışma alanının katmanını ayarlar. Varsayılan değer _PerNode_ değeridir.|
