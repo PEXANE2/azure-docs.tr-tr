@@ -2,13 +2,13 @@
 title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219171"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570462"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 Microsoft Azure Service Bus, ileti kuyrukları ve yayımlama-abone ol konuları ile tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
@@ -118,11 +118,10 @@ Bir kuyruk veya abonelik istemcisi daha sonra alınan bir iletinin alınmasını
 İşlem iki veya daha fazla işlemi bir *yürütme kapsamında* gruplandırır. Service Bus, tek bir işlemin kapsamındaki birden çok mesajlaşma varlıklarına karşı işlemleri gruplamaya olanak sağlar. İleti varlığı bir kuyruk, konu veya abonelik olabilir. Daha fazla bilgi için bkz. [Service Bus işlem Işlemeye genel bakış](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Boşta üzerinde oto silme
-
-Boştayken otomatik silme, bir kuyruk veya konu aboneliğinin otomatik olarak silineceği bir boşta kalma aralığı belirtmenize olanak sağlar. En düşük süre 5 dakikadır. Daha fazla bilgi için, bkz. [Queuedescription. oto Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Boştayken otomatik silme, bir kuyruk veya konu aboneliğinin otomatik olarak silineceği bir boşta kalma aralığı belirtmenize olanak sağlar. En düşük süre 5 dakikadır. 
 
 ### <a name="duplicate-detection"></a>Yineleme algılama
-Yinelenen saptama özelliği, gönderenin aynı iletiyi yeniden göndermesini ve aracının olası bir yinelemeyi bırakması için izin sağlar. Yinelenen algılama, `message-id` bir iletinin özelliğinin izlenmesini temel alır, yani uygulamanın iletiyi yeniden gönderirken aynı değeri kullanması gerekir ve bu da uygulamaya özgü bazı bağlamdan doğrudan türetilebilir. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md).
+Yinelenen saptama özelliği, gönderenin aynı iletiyi yeniden göndermesini ve aracının olası bir yinelemeyi bırakması için izin sağlar. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 

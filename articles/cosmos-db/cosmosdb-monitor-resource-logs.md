@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684867"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595351"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure 'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure 'daki Tanılama ayarları, kaynak günlüklerini toplamak için kullanılır. Azure Kaynak günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Bu Günlükler istek başına yakalanır ve ayrıca "veri düzlemi günlükleri" olarak anırlar. Veri düzlemi işlemlerine bazı örnekler silme, ekleme ve readFeed içerir. Bu günlüklerin içeriği kaynak türüne göre değişir.
+Kaynak günlüklerini toplamak için Azure'daki tanılama ayarları kullanılır. Azure Kaynak günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Bu Günlükler istek başına yakalanır ve ayrıca "veri düzlemi günlükleri" olarak anırlar. Veri düzlemi işlemlerine bazı örnekler silme, ekleme ve readFeed içerir. Bu günlüklerin içeriği kaynak türüne göre değişir.
 
 Platform ölçümleri ve etkinlik günlükleri otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Aşağıdaki adımları kullanarak Azure Cosmos hesapları için tanılama ayarını açabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 
 1. Azure Cosmos hesabınıza gidin. **Tanılama ayarları** bölmesini açın ve ardından **Tanılama ayarı Ekle** seçeneğini belirleyin.
 
@@ -103,7 +103,7 @@ Platform ölçümleri ve etkinlik günlükleri otomatik olarak toplanır, ancak 
 
 * **İstekler**: Azure Cosmos DB ' dan alınan ölçüm verilerini tanılama ayarındaki hedeflere toplamak için bu seçeneği belirleyin. Bu, Azure ölçümlerinde otomatik olarak toplanan verileri de aynı şekilde toplamıştır. Her iki veri türünü birlikte analiz etmek ve ölçüm verilerini Azure Izleyici dışında göndermek için kaynak günlükleriyle ölçüm verileri toplayın.
 
-Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Azure makalesinde platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md) .
+Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Azure makalesinde platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../azure-monitor/essentials/diagnostic-settings.md) .
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Tanılama sorgularıyla ilgili sorunları giderme

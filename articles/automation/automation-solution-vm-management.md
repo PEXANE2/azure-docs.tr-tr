@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007015"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593830"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
-VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir.
+VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/alerts/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir. 
 
 Bu özellik, VM 'Leri başlatmak için [Start-AzVm](/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](/powershell/module/az.compute/stop-azvm) kullanır.
 

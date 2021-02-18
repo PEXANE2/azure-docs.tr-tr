@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607883"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594216"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service için PremiumV3 katmanını yapılandırma
 
@@ -96,7 +96,7 @@ Preview Premium kapsayıcı SKU 'SU kullanan bir uygulamanız varsa ve yeni Prem
 
 [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/)kullanarak **PremiumV3** katmanında uygulama oluşturmayı otomatik hale getirebilirsiniz.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki komut _P1V3_ içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri `--sku` P1V3, _P2V3_ ve _P3V3_' dir.
 
@@ -124,4 +124,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 Azure 'da bir [uygulamayı ölçeklendirme](manage-scale-up.md) 
- [Örnek sayısını el ile veya otomatik olarak Ölçeklendir](../azure-monitor/platform/autoscale-get-started.md)
+ [Örnek sayısını el ile veya otomatik olarak Ölçeklendir](../azure-monitor/autoscale/autoscale-get-started.md)

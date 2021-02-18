@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879957"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588333"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure purview ölçümleri
 
@@ -24,7 +24,7 @@ Azure purview yöneticileri, purview hesabının işletimsel durumunu izlemek i�
 
 ## <a name="aggregated-metrics"></a>Toplu ölçümler
 
-Ölçümlere, bir purview hesabı için Azure portal erişilebilir. Ölçümlere erişim, purview hesabının rol ataması tarafından denetlenir. Ölçümleri görmek için kullanıcıların Azure purview 'daki "Izleme okuyucu" rolünün bir parçası olması gerekir. Rol erişim düzeyleri hakkında daha fazla bilgi edinmek için [Izleme okuyucu rolü izinlerine](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles) göz atın.
+Ölçümlere, bir purview hesabı için Azure portal erişilebilir. Ölçümlere erişim, purview hesabının rol ataması tarafından denetlenir. Ölçümleri görmek için kullanıcıların Azure purview 'daki "Izleme okuyucu" rolünün bir parçası olması gerekir. Rol erişim düzeyleri hakkında daha fazla bilgi edinmek için [Izleme okuyucu rolü izinlerine](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles) göz atın.
 
 Purview hesabını oluşturan kişi, ölçümleri görüntüleme izinlerini otomatik olarak alır. Başka herkes ölçümleri görmek istiyorsa, aşağıdaki adımları izleyerek bunları **Izleme okuyucu** rolüne ekleyin:
 
@@ -58,7 +58,7 @@ Azure purview kullanıcıları ayrıca ölçümler sayfasına doğrudan Azure pu
 
 ### <a name="available-metrics"></a>Mevcut ölçümler
 
-Azure portal ölçüm bölümünün nasıl kullanılacağına ilişkin familiarized almak için aşağıdaki iki belgeyi önceden okuyun. Ölçüm Gezgini ve [Gelişmiş Özellikler](../azure-monitor/platform/metrics-charts.md)Ölçüm Gezgini [ile çalışmaya](../azure-monitor/platform/metrics-getting-started.md) başlama.
+Azure portal ölçüm bölümünün nasıl kullanılacağına ilişkin familiarized almak için aşağıdaki iki belgeyi önceden okuyun. Ölçüm Gezgini ve [Gelişmiş Özellikler](../azure-monitor/essentials/metrics-charts.md)Ölçüm Gezgini [ile çalışmaya](../azure-monitor/essentials/metrics-getting-started.md) başlama.
 
 Aşağıdaki tablo, Azure portal araştırmak için kullanılabilen ölçümlerin listesini içerir:
 
@@ -75,7 +75,7 @@ Ham telemetri olayları Azure Izleyici 'ye dağıtılır. Olaylar, daha fazla an
 
 Azure purview hesabınız için bir tanılama ayarı oluşturma adımlarını izleyin.
 
-1. Şu makaleyi izleyerek platform günlüklerini ve ölçümlerini toplamak için yeni bir tanılama ayarı oluşturun: [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md). Hedefi yalnızca Azure Storage hesabı olarak seçin.
+1. Şu makaleyi izleyerek platform günlüklerini ve ölçümlerini toplamak için yeni bir tanılama ayarı oluşturun: [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları oluşturma](../azure-monitor/essentials/diagnostic-settings.md). Hedefi yalnızca Azure Storage hesabı olarak seçin.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Tanılama günlüğü oluşturmayı gösteren ekran görüntüsü." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 

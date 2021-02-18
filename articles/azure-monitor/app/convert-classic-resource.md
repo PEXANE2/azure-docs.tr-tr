@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights klasik kaynağını çalışma alanı
 description: Azure monitörünüzü Application Insights klasik kaynağınızı yeni çalışma alanı tabanlı modele yükseltmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584255"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynaklarına geçirin
 
@@ -22,21 +22,21 @@ Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı
 
 Çalışma alanı tabanlı Application Insights, Azure Izleyici 'nin tüm en son özellikleri ve Log Analytics aşağıdakiler de dahil olmak üzere, şu özelliklerden yararlanmanızı sağlar:
 
-* [Müşteri tarafından yönetilen anahtarlar (CMK)](../platform/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
-* [Azure özel bağlantı](../platform/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
+* [Müşteri tarafından yönetilen anahtarlar (CMK)](../logs/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
+* [Azure özel bağlantı](../logs/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
 * [Profil Oluşturucu Için kendi depolama alanınızı (BYOS) getirin ve Snapshot Debugger](./profiler-bring-your-own-storage.md) , bekleyen şifreleme ilkesi, ömür yönetimi ilkesi ve Application Insights Profiler ve Snapshot Debugger ilişkili tüm veriler için ağ erişimi üzerinde tam denetim sağlar. 
-* [Kapasite ayırma katmanları](../platform/manage-cost-storage.md#pricing-model) , Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf sağlar. 
+* [Kapasite ayırma katmanları](../logs/manage-cost-storage.md#pricing-model) , Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf sağlar. 
 * Log Analytics akışı alımı aracılığıyla daha hızlı veri alma.
 
 ## <a name="migration-process"></a>Geçiş süreci
 
 Çalışma alanı tabanlı bir kaynağa geçiş yaptığınızda, klasik kaynağınızın depolamadan yeni çalışma alanı tabanlı depolamaya veri aktarılmaz. Geçiş yapmak için seçilirse, klasik kaynak verilerinize erişimi korurken yeni verilerin bir Log Analytics çalışma alanına yazıldığı konum değiştirilir. 
 
-Klasik kaynak verileriniz devam eder ve klasik Application Insights kaynağınızın bekletme ayarlarına tabidir. Tüm yeni veri taşıma sonrası geçiş, ilişkili Log Analytics çalışma alanının [bekletme ayarlarına](../platform/manage-cost-storage.md#change-the-data-retention-period) tabi olacaktır, bu da [veri türüne göre farklı saklama ayarlarını](../platform/manage-cost-storage.md#retention-by-data-type)destekler.
+Klasik kaynak verileriniz devam eder ve klasik Application Insights kaynağınızın bekletme ayarlarına tabidir. Tüm yeni veri taşıma sonrası geçiş, ilişkili Log Analytics çalışma alanının [bekletme ayarlarına](../logs/manage-cost-storage.md#change-the-data-retention-period) tabi olacaktır, bu da [veri türüne göre farklı saklama ayarlarını](../logs/manage-cost-storage.md#retention-by-data-type)destekler.
 Geçiş işlemi **kalıcıdır ve** geri alınamaz. Bir kaynağı çalışma alanı tabanlı Application Insights geçirdiğinizde, her zaman çalışma alanı tabanlı bir kaynak olur. Ancak, geçiş yaptıktan sonra, hedef çalışma alanını gereken sıklıkta değiştirebilirsiniz. 
 
 > [!NOTE]
-> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu [Log Analytics çalışma alanı üzerinden faturalandırılır](../platform/manage-cost-storage.md) . Geçiş işleminden önce klasik Application Insights kaynağına alınan veriler üzerinde 90 günden daha fazla veri bekletme seçtiyseniz, veri saklama bu Application Insights kaynağı üzerinden faturalandırılmaya devam edecektir. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
+> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu [Log Analytics çalışma alanı üzerinden faturalandırılır](../logs/manage-cost-storage.md) . Geçiş işleminden önce klasik Application Insights kaynağına alınan veriler üzerinde 90 günden daha fazla veri bekletme seçtiyseniz, veri saklama bu Application Insights kaynağı üzerinden faturalandırılmaya devam edecektir. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
 
 Var olan bir kaynağı geçirmeniz gerekmiyorsa ve bunun yerine yeni bir çalışma alanı tabanlı Application Insights kaynak oluşturmak istiyorsanız, [çalışma alanı tabanlı kaynak oluşturma kılavuzunu](create-workspace-resource.md)kullanın.
 
@@ -44,12 +44,12 @@ Var olan bir kaynağı geçirmeniz gerekmiyorsa ve bunun yerine yeni bir çalı�
 
 - Erişim denetimi modundaki bir Log Analytics çalışma alanı ayarı olarak ayarlanır **`use resource or workspace permissions`** . 
 
-    - Çalışma alanı tabanlı Application Insights kaynakları, adanmış ayara ayarlanmış çalışma alanlarıyla uyumlu değildir **`workspace based permissions`** . Log Analytics çalışma alanı erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../platform/manage-access.md#configure-access-control-mode)
+    - Çalışma alanı tabanlı Application Insights kaynakları, adanmış ayara ayarlanmış çalışma alanlarıyla uyumlu değildir **`workspace based permissions`** . Log Analytics çalışma alanı erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../logs/manage-access.md#configure-access-control-mode)
 
-    - Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../learn/quick-create-workspace.md).
+    - Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../logs/quick-create-workspace.md).
     
 - Çalışma alanı tabanlı kaynaklar için sürekli dışarı aktarma desteklenmez ve devre dışı bırakılmalıdır.
-Geçiş işlemi tamamlandıktan sonra, bir depolama hesabına veya Azure Olay Hub 'ına akış olarak veri arşivlemeyi yapılandırmak için [tanılama ayarlarını](../platform/diagnostic-settings.md) kullanabilirsiniz.  
+Geçiş işlemi tamamlandıktan sonra, bir depolama hesabına veya Azure Olay Hub 'ına akış olarak veri arşivlemeyi yapılandırmak için [tanılama ayarlarını](../essentials/diagnostic-settings.md) kullanabilirsiniz.  
 
 -   >  Log Analytics çalışma alanınız için genel **kullanım altında ve tahmini maliyet**  >  **veri saklama** ' nın altında bulunan geçerli bekletme ayarlarını denetleyin. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler. Şu anda varsayılan 90 günden daha uzun bir süre için Application Insights verileri depoluuyorsanız ve bu daha büyük saklama süresini saklamak istiyorsanız çalışma alanı bekletme ayarlarınızı ayarlamanız gerekebilir.
 
@@ -209,7 +209,7 @@ Application Insights kaynak bölmesinde **Özellikler**  >  **çalışma alanın
 
 **Hata iletisi:** *Seçili çalışma alanı, çalışma alanı tabanlı erişim moduyla yapılandırıldı. Bazı APM özellikleri etkilenebilir. Başka bir çalışma alanı seçin veya çalışma alanı ayarlarında kaynak tabanlı erişime izin verin. CLı kullanarak bu hatayı geçersiz kılabilirsiniz.* 
 
-Çalışma alanı tabanlı Application Insights kaynağınızın düzgün çalışması için, hedef Log Analytics çalışma alanınızın erişim denetimi modunu **kaynak veya çalışma alanı izinleri** ayarına değiştirmeniz gerekir. Bu ayar, **Özellikler**  >  **erişim denetimi modu** altında Log Analytics çalışma alanı kullanıcı arabiriminde bulunur. Ayrıntılı yönergeler için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../platform/manage-access.md#configure-access-control-mode). Erişim denetimi modiniz özel **çalışma alanı izinleri** ayarı olarak ayarlandıysa, portal geçiş deneyimi aracılığıyla geçiş engellenmeye devam eder.
+Çalışma alanı tabanlı Application Insights kaynağınızın düzgün çalışması için, hedef Log Analytics çalışma alanınızın erişim denetimi modunu **kaynak veya çalışma alanı izinleri** ayarına değiştirmeniz gerekir. Bu ayar, **Özellikler**  >  **erişim denetimi modu** altında Log Analytics çalışma alanı kullanıcı arabiriminde bulunur. Ayrıntılı yönergeler için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../logs/manage-access.md#configure-access-control-mode). Erişim denetimi modiniz özel **çalışma alanı izinleri** ayarı olarak ayarlandıysa, portal geçiş deneyimi aracılığıyla geçiş engellenmeye devam eder.
 
 Erişim denetimi modunu geçerli hedef çalışma alanınızın güvenlik nedenleriyle değiştirememek için, geçiş için kullanmak üzere yeni bir Log Analytics çalışma alanı oluşturmanızı öneririz. 
 
@@ -229,7 +229,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 - Devre dışı bırak ' ı seçtikten sonra, geçiş Kullanıcı arabirimine geri gidebilirsiniz. Sürekli dışarı aktarmayı Düzenle sayfası, ayarlarınızın kaydedilmesini isterse, sürekli dışarı aktarmayı devre dışı bırakma/etkinleştirme ile ilgili olmadığından bu istem için Tamam ' ı seçebilirsiniz.
 
-- Application Insights kaynağınızı çalışma alanı tabanlı olarak başarıyla geçirdikten sonra, sağlamak üzere sürekli dışarı aktarmanın kullanıldığı işlevselliği değiştirmek için tanılama ayarlarını kullanabilirsiniz. Application Insights kaynağınız içinden **tanılama ayarlarını**  >  **Tanılama ayarı Ekle** ' yi seçin. Bir depolama hesabına arşivlemek veya bir Azure Olay Hub 'ına akış yapmak için tüm tabloları veya tabloların bir alt kümesini seçebilirsiniz. Tanılama ayarları hakkında ayrıntılı yönergeler için [Azure izleyici Tanılama ayarları kılavuzuna](../platform/diagnostic-settings.md)bakın.
+- Application Insights kaynağınızı çalışma alanı tabanlı olarak başarıyla geçirdikten sonra, sağlamak üzere sürekli dışarı aktarmanın kullanıldığı işlevselliği değiştirmek için tanılama ayarlarını kullanabilirsiniz. Application Insights kaynağınız içinden **tanılama ayarlarını**  >  **Tanılama ayarı Ekle** ' yi seçin. Bir depolama hesabına arşivlemek veya bir Azure Olay Hub 'ına akış yapmak için tüm tabloları veya tabloların bir alt kümesini seçebilirsiniz. Tanılama ayarları hakkında ayrıntılı yönergeler için [Azure izleyici Tanılama ayarları kılavuzuna](../essentials/diagnostic-settings.md)bakın.
 
 ### <a name="retention-settings"></a>Bekletme ayarları
 
@@ -241,5 +241,5 @@ Geçirmeden önce herhangi bir değişiklik yapmanız gerekmez, ancak bu ileti g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ölçümleri keşfetme](../platform/metrics-charts.md)
-* [Analytics sorguları yazma](../log-query/log-query-overview.md)
+* [Ölçümleri keşfetme](../essentials/metrics-charts.md)
+* [Analytics sorguları yazma](../logs/log-query-overview.md)

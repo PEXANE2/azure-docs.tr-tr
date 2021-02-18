@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 723b556a2e5fd1fae32d50a382c99025ad726bff
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20cc67d5c6436d7c0f44071509e13af324a88eea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977366"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578861"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 'da sanal ağlar ve sanal makineler 
 
@@ -47,7 +47,7 @@ Bu tabloda bir ağ arabirimi oluşturmak için kullanabileceğiniz yöntemler li
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| Azure portal | Azure portalında bir VM oluşturduğunuzda, sizin için otomatik olarak bir ağ arabirimi oluşturulur (ayrı olarak oluşturduğunuz bir NIC’yi kullanamazsınız). Portal yalnızca tek NIC’li bir VM oluşturur. Birden fazla NIC içeren bir VM oluşturmak istiyorsanız VM’yi farklı bir yöntemle oluşturmanız gerekir. |
+| Azure portalı | Azure portalında bir VM oluşturduğunuzda, sizin için otomatik olarak bir ağ arabirimi oluşturulur (ayrı olarak oluşturduğunuz bir NIC’yi kullanamazsınız). Portal yalnızca tek NIC’li bir VM oluşturur. Birden fazla NIC içeren bir VM oluşturmak istiyorsanız VM’yi farklı bir yöntemle oluşturmanız gerekir. |
 | [Azure PowerShell](./windows/multiple-nics.md) | Daha önce oluşturduğunuz genel IP adresinin tanımlayıcısını sağlamak için [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) ile **-publicıpaddressid** parametresini kullanın. |
 | [Azure CLI](./linux/multiple-nics.md) | Daha önce oluşturduğunuz genel IP adresinin tanımlayıcısını sağlamak için [az Network Nic Create](/cli/azure/network/nic) ' i **--Public-IP-Address** parametresiyle birlikte kullanın. |
 | [Şablon](../virtual-network/template-samples.md) | Bir şablon kullanarak ağ arabirimi dağıtmak için [Genel IP Adresli bir Sanal Ağda Ağ Arabirimi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) konusunu bir kılavuz olarak kullanın. |
@@ -135,19 +135,19 @@ Bu tabloda İnternet’e yönelik bir yük dengeleyici oluşturmak için kullana
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| Azure portal |  [Azure Portal kullanarak, sanal makinelere internet trafiği dengeleyebilirsiniz](../load-balancer/tutorial-load-balancer-standard-manage-portal.md). |
-| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | Daha önce oluşturduğunuz genel IP adresinin tanımlayıcısını sağlamak için [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) komutunu **-publicıpaddress** parametresiyle birlikte kullanın. Arka uç adres havuzunun yapılandırmasını oluşturmak için [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) komutunu kullanın. Oluşturduğunuz ön uç IP yapılandırmasıyla ilişkili gelen NAT kuralları oluşturmak için [New-Azloadbalancerınboundnatrutaconfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) komutunu kullanın. İhtiyacınız olan araştırmaları oluşturmak için [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) komutunu kullanın. Yük dengeleyici yapılandırmasını oluşturmak için [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) komutunu kullanın. Yük dengeleyiciyi oluşturmak için [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) ' i kullanın.|
+| Azure portalı |  [Azure Portal kullanarak, sanal makinelere internet trafiği dengeleyebilirsiniz](../load-balancer/quickstart-load-balancer-standard-public-portal.md). |
+| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | Daha önce oluşturduğunuz genel IP adresinin tanımlayıcısını sağlamak için [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) komutunu **-publicıpaddress** parametresiyle birlikte kullanın. Arka uç adres havuzunun yapılandırmasını oluşturmak için [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) komutunu kullanın. Oluşturduğunuz ön uç IP yapılandırmasıyla ilişkili gelen NAT kuralları oluşturmak için [New-Azloadbalancerınboundnatrutaconfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) komutunu kullanın. İhtiyacınız olan araştırmaları oluşturmak için [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) komutunu kullanın. Yük dengeleyici yapılandırmasını oluşturmak için [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) komutunu kullanın. Yük dengeleyiciyi oluşturmak için [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) ' i kullanın.|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | İlk yük dengeleyici yapılandırmasını oluşturmak için [az network lb create](/cli/azure/network/lb) komutunu kullanın. Daha önce oluşturduğunuz genel IP adresini eklemek için [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) komutunu kullanın. Arka uç adres havuzunun yapılandırmasını eklemek için [az network lb address-pool create](/cli/azure/network/lb/address-pool) komutunu kullanın. NAT kuralları eklemek için [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) komutunu kullanın. Yük dengeleyici kurallarını eklemek için [az network lb rule create](/cli/azure/network/lb/rule) komutunu kullanın. Araştırmaları eklemek için [az network lb probe create](/cli/azure/network/lb/probe) komutunu kullanın. |
-| [Şablon](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Bir şablon kullanarak yük dengeleyici dağıtmak için [Bir Yük Dengeleyici’de 2 VM ve LB’de NAT kuralları yapılandırma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) konusunu kılavuz olarak kullanın. |
+| [Şablon](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Bir Load Balancer bir şablon kullanarak yük dengeleyici dağıtmak için kılavuz olarak [bir 3 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) kullanın. |
     
 Bu tabloda bir iç yük dengeleyici oluşturmak için kullanabileceğiniz yöntemler listelenmiştir.
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| Azure portal | [Azure Portal bir yük dengeleyici ile iç trafik yükünü dengeleyebilirsiniz](../load-balancer/quickstart-load-balancer-standard-internal-portal.md). |
+| Azure portalı | [Azure Portal bir yük dengeleyici ile iç trafik yükünü dengeleyebilirsiniz](../load-balancer/quickstart-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | Ağ alt ağında özel bir IP adresi sağlamak için [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) komutunu **-privateıpaddress** parametresiyle birlikte kullanın. Arka uç adres havuzunun yapılandırmasını oluşturmak için [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) komutunu kullanın. Oluşturduğunuz ön uç IP yapılandırmasıyla ilişkili gelen NAT kuralları oluşturmak için [New-Azloadbalancerınboundnatrutaconfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) komutunu kullanın. İhtiyacınız olan araştırmaları oluşturmak için [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) komutunu kullanın. Yük dengeleyici yapılandırmasını oluşturmak için [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) komutunu kullanın. Yük dengeleyiciyi oluşturmak için [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) ' i kullanın.|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | İlk yük dengeleyici yapılandırmasını oluşturmak için [az network lb create](/cli/azure/network/lb) komutunu kullanın. Özel IP adresini tanımlamak için [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) komutunu **--private-ip-address** parametresiyle birlikte kullanın. Arka uç adres havuzunun yapılandırmasını eklemek için [az network lb address-pool create](/cli/azure/network/lb/address-pool) komutunu kullanın. NAT kuralları eklemek için [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) komutunu kullanın. Yük dengeleyici kurallarını eklemek için [az network lb rule create](/cli/azure/network/lb/rule) komutunu kullanın. Araştırmaları eklemek için [az network lb probe create](/cli/azure/network/lb/probe) komutunu kullanın.|
-| [Şablon](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Bir şablon kullanarak yük dengeleyici dağıtmak için [Bir Yük Dengeleyici’de 2 VM ve LB’de NAT kuralları yapılandırma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) konusunu kılavuz olarak kullanın. |
+| [Şablon](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Bir Load Balancer bir şablon kullanarak yük dengeleyici dağıtmak için kılavuz olarak [bir 2 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) kullanın. |
 
 ### <a name="virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri
 

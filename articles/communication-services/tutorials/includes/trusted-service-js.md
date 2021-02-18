@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633480"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645511"
 ---
 ## <a name="download-code"></a>Kodu indir
 
@@ -74,13 +74,13 @@ module.exports = async function (context, req) {
 
 ### <a name="install-communication-services-libraries"></a>İletişim Hizmetleri kitaplıklarını yükler
 
-`Administration`Oluşturmak için kitaplığı kullanacağız `User Access Tokens` .
+`Identity`Oluşturmak için kitaplığı kullanacağız `User Access Tokens` .
 
 `npm install`JavaScript Için Azure Communication Services yönetim istemcisi kitaplığını yüklemek için komutunu kullanın.
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ npm install @azure/communication-administration --save
 Dosyasının en üstünde, `index.js``CommunicationIdentityClient`
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>Erişim belirteci oluşturma
@@ -136,7 +136,7 @@ Tarayıcınızda URL 'YI açın ve belirteç için Iletişim Kullanıcı KIMLIĞ
 
 Azure Işlevinizi dağıtmak için [adım adım yönergeleri](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure) izleyebilirsiniz.
 
-Genellikle şunları yapmanız gerekir:
+Özet bölümünde şunları yapmanız gerekir:
 1. Visual Studio 'dan Azure 'da oturum açın
 2. Projenizi Azure hesabınızda yayımlayın. Burada, mevcut bir aboneliği seçmeniz gerekir.
 3. Visual Studio Sihirbazı 'nı kullanarak yeni bir Azure Işlevi kaynağı oluşturun veya var olan bir kaynağı kullanın. Yeni bir kaynak için, bunu istediğiniz bölge, çalışma zamanı ve benzersiz tanımlayıcı olarak yapılandırmanız gerekecektir.

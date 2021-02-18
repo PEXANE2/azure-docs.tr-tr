@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737244"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593308"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
 
@@ -142,7 +142,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 - [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
-- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -200,7 +200,7 @@ Gerekirse, yerel işletim sistemi günlüklerine erişmek için güvenli kabuk (
 
 - [Azure Batch izlemeyi ve günlüğe kaydetmeyi yapılandırma](monitoring-overview.md)
 
-- [Azure Log Analytics çalışma alanı bekletme dönemini yapılandırma](../azure-monitor/platform/manage-cost-storage.md)
+- [Azure Log Analytics çalışma alanı bekletme dönemini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -514,7 +514,7 @@ Azure disk şifrelemesi, kurumsal güvenlik ve uyumluluk taahhütlerini karşıl
 
 Havuz verilerine karşı tüm CRUD işlemlerini izlemek ve günlüğe kaydetmek için Azure Batch havuzuyla ilişkili depolama hesapları için tanılama ayarlarını yapılandırın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure depolama hesabı için ek günlüğe kaydetme/denetim özelliğini etkinleştirme](../storage/common/storage-monitor-storage-account.md)
 

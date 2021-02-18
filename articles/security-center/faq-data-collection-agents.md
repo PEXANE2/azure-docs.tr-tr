@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444521"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595769"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -43,7 +43,7 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlan
 
 ## <a name="what-is-the-log-analytics-agent"></a>Log Analytics Aracısı nedir?
 
-Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) bağlıdır. Bu, Azure İzleyici hizmeti tarafından kullanılan aracıdır. 
+Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için [Log Analytics aracısına](../azure-monitor/agents/log-analytics-agent.md) bağlıdır. Bu, Azure İzleyici hizmeti tarafından kullanılan aracıdır. 
 
 Aracı bazen Microsoft Monitoring Agent (veya "MMA") olarak adlandırılır. 
 
@@ -51,9 +51,9 @@ Aracı, bağlantılı makinelerden güvenlikle ilgili çeşitli yapılandırma a
 
 Aşağıdaki sayfalarda açıklandığı gibi makinelerinizin aracının desteklenen işletim sistemlerinden birini çalıştırdığından emin olun:
 
-* [Windows tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Windows tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Linux tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Linux tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 [Log Analytics Aracısı tarafından toplanan veriler](security-center-enable-data-collection.md)hakkında daha fazla bilgi edinin.
 
@@ -255,7 +255,7 @@ Azure aboneliğiniz için veri toplamayı güvenlik ilkesinde etkinleştirebilir
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Veri toplama etkinleştirildiğinde ne olur?
 
-Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi, desteklenen tüm Azure VM 'lerde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar. Otomatik sağlama önerilir, ancak el ile aracı yüklemesi de kullanılabilir. [Log Analytics Aracısı uzantısını yüklemeyi öğrenin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi, desteklenen tüm Azure VM 'lerde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar. Otomatik sağlama önerilir, ancak el ile aracı yüklemesi de kullanılabilir. [Log Analytics Aracısı uzantısını yüklemeyi öğrenin](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Aracı, işlem oluşturma olayı 4688 ve olay 4688 ' nin içindeki *commandLine* alanı ' na izin vermez. VM üzerinde oluşturulan yeni süreçler, olay günlüğü tarafından kaydedilir ve Güvenlik Merkezi 'nin algılama hizmetleri tarafından izlenir. Her yeni işlem için kaydedilen ayrıntılar hakkında daha fazla bilgi için bkz. [4688 içindeki açıklama alanları](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Aracı Ayrıca, VM 'de oluşturulan 4688 olayını toplar ve bunları arama halinde depolar.
 
@@ -267,7 +267,7 @@ Güvenlik Merkezi, VM 'de şüpheli etkinlik algıladığında, [güvenlik ileti
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Güvenlik Merkezi, bir OMS ağ geçidi kullanarak çalışacak mı?
 
 Evet. Azure Güvenlik Merkezi, Azure sanal makinelerinden ve sunuculardan veri toplamak için Log Analytics aracısını kullanarak Azure Izleyicisi 'ni kullanır.
-Verileri toplamak için, her VM ve sunucunun HTTPS kullanarak Internet 'e bağlanması gerekir. Bağlantı, bir proxy kullanılarak veya [OMS ağ geçidi](../azure-monitor/platform/gateway.md)aracılığıyla doğrudan olabilir.
+Verileri toplamak için, her VM ve sunucunun HTTPS kullanarak Internet 'e bağlanması gerekir. Bağlantı, bir proxy kullanılarak veya [OMS ağ geçidi](../azure-monitor/agents/gateway.md)aracılığıyla doğrudan olabilir.
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Izleme Aracısı sunucularım performansını etkiler mi?

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575075"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -23,7 +23,7 @@ Azure Machine Learning çalışma alanınızdan Azure Izleyici tarafından topla
 
 ## <a name="metrics"></a>Ölçümler
 
-Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Bu ölçümler için kaynak sağlayıcısı, [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Bu ölçümler için kaynak sağlayıcısı, [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modelleme**
 
@@ -74,7 +74,7 @@ Eğitim çalıştırmaları hakkında bilgiler.
 
 ## <a name="metric-dimensions"></a>Ölçüm boyutları
 
-Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 Azure Machine Learning, ölçümleriyle ilişkili aşağıdaki boyutlara sahiptir.
 
@@ -117,7 +117,7 @@ Aşağıdaki tabloda, etkinlik günlüğünde oluşturulabilecek Azure Machine L
 
 Bu bölümde, Azure Machine Learning çalışma alanı için toplayacağınız kaynak günlüklerinin türleri listelenmektedir.
 
-Kaynak sağlayıcısı ve tür: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+Kaynak sağlayıcısı ve tür: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategori | Görünen Ad |
 | ----- | ----- |
@@ -232,4 +232,4 @@ Aşağıdaki şemalar Azure Machine Learning tarafından kullanılıyor
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - İzleme Azure Machine Learning açıklaması için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/essentials/monitor-azure-resource.md) .

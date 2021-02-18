@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f5304e7634cfb7b4d5c3c05036c0606ba03295ae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492000"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589049"
 ---
 # <a name="dependency-analysis"></a>Bağımlılık Analizi
 
@@ -34,7 +34,7 @@ Bağımlılık analizini dağıtmaya yönelik iki seçenek vardır
 **Seçenek** | **Ayrıntılar** | **Genel bulut** | **Azure Devlet Kurumları**
 ----  |---- | ---- 
 **Aracısız** | VSphere API 'Lerini kullanarak VMware VM 'Lerinden verileri yoklar.<br/><br/> Sanal makinelere aracılar yüklemeniz gerekmez.<br/><br/> Bu seçenek şu anda yalnızca VMware VM 'Leri için önizleme aşamasındadır. | Destekleniyor. | Destekleniyor.
-**Aracı tabanlı analiz** | , Bağımlılık görselleştirmesini ve analizini etkinleştirmek için Azure Izleyici 'de [hizmet eşlemesi çözümünü](../azure-monitor/insights/service-map.md) kullanır.<br/><br/> Çözümlemek istediğiniz her şirket içi makineye aracılar yüklemeniz gerekir. | Desteklenir | Desteklenmez.
+**Aracı tabanlı analiz** | , Bağımlılık görselleştirmesini ve analizini etkinleştirmek için Azure Izleyici 'de [hizmet eşlemesi çözümünü](../azure-monitor/vm/service-map.md) kullanır.<br/><br/> Çözümlemek istediğiniz her şirket içi makineye aracılar yüklemeniz gerekir. | Desteklenir | Desteklenmez.
 
 
 ## <a name="agentless-analysis"></a>Aracısız analiz
@@ -58,7 +58,7 @@ Bağımlılık verilerinin bulunması başladıktan sonra yoklama başlar:
 
 ## <a name="agent-based-analysis"></a>Aracı tabanlı analiz
 
-Sunucu değerlendirmesi, aracı tabanlı analizler için Azure Izleyici 'de [hizmet eşlemesi](../azure-monitor/insights/service-map.md) çözümünü kullanır. Çözümlemek istediğiniz her makineye [Microsoft Monitoring Agent/Log Analytics aracısını](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ve [bağımlılık aracısını](../azure-monitor/platform/agents-overview.md#dependency-agent)yüklersiniz.
+Sunucu değerlendirmesi, aracı tabanlı analizler için Azure Izleyici 'de [hizmet eşlemesi](../azure-monitor/vm/service-map.md) çözümünü kullanır. Çözümlemek istediğiniz her makineye [Microsoft Monitoring Agent/Log Analytics aracısını](../azure-monitor/agents/agents-overview.md#log-analytics-agent) ve [bağımlılık aracısını](../azure-monitor/agents/agents-overview.md#dependency-agent)yüklersiniz.
 
 ### <a name="dependency-data"></a>Bağımlılık verileri
 
@@ -78,7 +78,7 @@ Aracısız görselleştirme ve aracı tabanlı görselleştirme arasındaki fark
 --- | --- | ---
 **Destek** | Yalnızca VMware VM 'Leri için önizleme aşamasındadır. Desteklenen işletim sistemlerini [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) . | Genel kullanılabilirlik (GA).
 **Aracısı** | Çözümlemek istediğiniz makinelerde aracı gerekmez. | Çözümlemek istediğiniz her şirket içi makinede aracılar gereklidir.
-**Log Analytics** | Gerekli değildir. | Azure geçişi, bağımlılık analizi için [Azure izleyici günlüklerinde](../azure-monitor/log-query/log-query-overview.md) [hizmet eşlemesi](../azure-monitor/insights/service-map.md) çözümünü kullanır.<br/><br/> Bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz. Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)bir bölgede olması gerekir.
+**Log Analytics** | Gerekli değildir. | Azure geçişi, bağımlılık analizi için [Azure izleyici günlüklerinde](../azure-monitor/logs/log-query-overview.md) [hizmet eşlemesi](../azure-monitor/vm/service-map.md) çözümünü kullanır.<br/><br/> Bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz. Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)bir bölgede olması gerekir.
 **İşleme** | TCP bağlantı verilerini yakalar. Bulmadan sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklenen Hizmet Eşlemesi aracılar, her bir işlem için TCP işlemleri ve gelen/giden bağlantılar hakkında veri toplar.
 **Veriler** | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme süresi ve veri aktarımı bilgilerinin toplanması ve Log Analytics sorguları için kullanılabilir olması. 
 **Görselleştirme** | Tek bir sunucunun bağımlılık eşlemesi, bir saat ile 30 güne kadar bir süre içinde görüntülenebilir. | Tek bir sunucunun bağımlılık eşlemesi.<br/><br/> Bir sunucu grubunun bağımlılık eşlemesi.<br/><br/>  Eşleme, yalnızca bir saat boyunca görüntülenebilir.<br/><br/> Harita görünümünden bir gruptaki sunucuları ekleyin ve kaldırın.

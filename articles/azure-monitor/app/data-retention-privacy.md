@@ -4,12 +4,12 @@ description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263921"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579574"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
 
@@ -56,7 +56,7 @@ Ana Kategoriler şunlardır:
 * [Özel durumlar](./asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id` , CPU türü. 
 * [Bağımlılıklar](./asp-net-dependencies.md) -Rest, SQL, AJAX gibi harici hizmetlere yapılan çağrılar. URI veya bağlantı dizesi, süre, başarı, komut.
 * [Kullanılabilirlik testleri](./monitor-web-app-availability.md) -test ve adımların süresi, yanıtlar.
-* [Trace logs](./asp-net-trace-logs.md) [custom telemetry](./api-custom-events-metrics.md)  -  **Günlüklere veya telemetrinize kodlarınızın her şeyi**izlemek için izleme günlükleri ve özel telemetri.
+* [](./asp-net-trace-logs.md) [](./api-custom-events-metrics.md)  -  **Günlüklere veya telemetrinize kodlarınızın her şeyi** izlemek için izleme günlükleri ve özel telemetri.
 
 [Daha fazla ayrıntı](#data-sent-by-application-insights).
 
@@ -120,7 +120,7 @@ Evet, bir uç noktaya ulaşılırsa bazı telemetri kanalları verileri yerel ol
 
 Yerel depolamayı kullanan telemetri kanalları TEMP veya APPDATA dizinlerinde, uygulamanızı çalıştıran belirli hesapla kısıtlanan geçici dosyalar oluşturur. Bu, bir uç noktanın geçici olarak kullanılamadığı veya azaltma sınırına ulaştığınızda meydana gelebilir. Bu sorun çözümlendikten sonra telemetri kanalı, tüm yeni ve kalıcı verileri göndermeye devam eder.
 
-Bu kalıcı veriler yerel olarak şifrelenmez. Bu sorun varsa, verileri gözden geçirin ve özel verileri toplamayı kısıtlayın. (Daha fazla bilgi için bkz. [özel verileri dışarı aktarma ve silme](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
+Bu kalıcı veriler yerel olarak şifrelenmez. Bu sorun varsa, verileri gözden geçirin ve özel verileri toplamayı kısıtlayın. (Daha fazla bilgi için bkz. [özel verileri dışarı aktarma ve silme](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Bir müşterinin bu dizini belirli güvenlik gereksinimleriyle yapılandırması gerekiyorsa, bu, Framework başına yapılandırılabilir. Lütfen uygulamanızı çalıştıran işlemin bu dizine yazma erişimi olduğundan emin olun, ancak Ayrıca bu dizinin, istenmeyen kullanıcılar tarafından okunmasını önlemek için bu dizinin korunduğundan emin olun.
 
@@ -199,7 +199,7 @@ AzureLogHandler(
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Nasıl yaparım? TLS 1,2 kullanarak Application Insights verileri gönderiyor musunuz?
 
-Application Insights uç noktalarına geçiş sırasındaki verilerin güvenliğini sağlamak için, müşterilerin uygulamasını en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmasını kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bu sürümler **önerilmez**ve sektör bu eski protokoller için destek vermeyi hızla taşır. 
+Application Insights uç noktalarına geçiş sırasındaki verilerin güvenliğini sağlamak için, müşterilerin uygulamasını en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmasını kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bu sürümler **önerilmez** ve sektör bu eski protokoller için destek vermeyi hızla taşır. 
 
 [PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , TLS/SSL 'nin eski sürümlerini devre dışı bırakmak ve daha güvenli protokollere yükseltmek Için [30 Haziran 2018 ' nin son tarihini](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) ayarladı. Azure eski desteği düşürdüğünde, uygulamanız/istemcileriniz en az TLS 1,2 üzerinden iletişim kuramıyorsa, Application Insights veri gönderemeyebilirsiniz. Uygulamanızın TLS desteğini test etmek ve doğrulamak için gereken yaklaşım, işletim sistemine/platforma ve uygulamanızın kullandığı dil/çerçeveye bağlı olarak değişir.
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights depolanan kişisel veriler
 
-[Application Insights kişisel veri makalemiz](../platform/personal-data-mgmt.md) bu sorunu ayrıntılı bir şekilde ele almaktadır.
+[Application Insights kişisel veri makalemiz](../logs/personal-data-mgmt.md) bu sorunu ayrıntılı bir şekilde ele almaktadır.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kullanıcılarım Application Insights kapatabilir mi?
 Doğrudan değil. Kullanıcılarınızın Application Insights kapatmak için çalıştırabilmesini sağlayacak bir anahtar sağlamayız.
@@ -254,14 +254,14 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
-| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
+| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
 | SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
@@ -277,13 +277,13 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Sunucubağlamı |Makine adı, yerel ayar, işletim sistemi, cihaz, Kullanıcı oturumu, Kullanıcı bağlamı, işlem |
 | Temsilc |IP adresi, zaman damgası, işletim sistemi, tarayıcıdan coğrafi konum |
 | Ölçümler |Ölçüm adı ve değeri |
-| Olaylar |Olay adı ve değeri |
+| Ekinlikler |Olay adı ve değeri |
 | PageViews |URL ve sayfa adı ya da ekran adı |
 | İstemci perf |URL/sayfa adı, tarayıcı yükleme süresi |
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
 | Çökme |`Process id`, `parent process id` ,, `crash thread id` Uygulama Düzeltme Eki, `id` , derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |
@@ -293,7 +293,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 [Bazı verileri düzenleyerek ApplicationInsights.config][config] yapabilirsiniz
 
 > [!NOTE]
-> İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../platform/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](./ip-collection.md) , seçenekleriniz boyunca size yol gösterir.
+> İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../logs/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](./ip-collection.md) , seçenekleriniz boyunca size yol gösterir.
 
 ## <a name="credits"></a>Krediler
 Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 verilerini içerir [https://www.maxmind.com](https://www.maxmind.com) .

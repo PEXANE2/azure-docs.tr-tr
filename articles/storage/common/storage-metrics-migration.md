@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ff4c3c5ae8629879fca6e9e683a9c77d0e2f144b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781932"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596118"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
@@ -35,7 +35,7 @@ Azure Izleyici 'de ölçümlere geçiş yapmak için aşağıdaki yaklaşımı �
    > [!NOTE]
    > Azure Izleyici 'de ölçümler varsayılan olarak etkindir, bu nedenle ölçümleri yakalamaya başlamak için yapmanız gereken bir şey yoktur. Bununla birlikte, bu ölçümleri görüntülemek için grafikler veya panolar oluşturmanız gerekir. 
  
-5. Klasik depolama ölçümlerini temel alan uyarı kuralları oluşturduysanız, Azure Izleyici 'de ölçümleri temel alan [Uyarı kuralları oluşturun](../../azure-monitor/platform/alerts-overview.md) . 
+5. Klasik depolama ölçümlerini temel alan uyarı kuralları oluşturduysanız, Azure Izleyici 'de ölçümleri temel alan [Uyarı kuralları oluşturun](../../azure-monitor/alerts/alerts-overview.md) . 
 
 6. Azure Izleyici 'de tüm ölçümlerinizi görebildikten sonra, klasik günlüğe kaydetmeyi devre dışı bırakabilirsiniz. 
 
@@ -53,7 +53,7 @@ Klasik ölçümler bir Azure depolama hesabında gönderilir ve depolanır. Azur
 
 Hesabınızdaki etkinlik bir ölçümü tetikleyemezse, klasik ölçümler söz konusu ölçüm için sıfır (0) değerini gösterir. Azure Izleyici 'de ölçümler, verileri tamamen yok sayacak ve bu da temizleyici raporlara yol açar. Örneğin, klasik ölçümler ile sunucu zaman aşımı hatası bildirilmezse, `ServerTimeoutError` ölçümler tablosundaki değer 0 olarak ayarlanır. Boyut eşittir ile ölçüm değerini sorgulayıp Azure Izleyici hiçbir veri döndürmez `Transactions` `ResponseType` `ServerTimeoutError` . 
 
-Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../../azure-monitor/platform/data-platform-metrics.md).
+Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../../azure-monitor/essentials/data-platform-metrics.md).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 

@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 0c083f4576e123ea14d837ed3915c56d18d84623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8451067ae86e95269c0c2f22554e1654ac64c1e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207572"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593789"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>Sanal makinelerinize hangi yazılımın yüklendiğini öğrenin
 
@@ -46,9 +46,9 @@ Bu öğreticide ilk yapmanız gereken Değişiklik İzleme ve Stok özelliklerin
 >[!NOTE]
 >Alanlar gri ise, VM için başka bir Otomasyon özelliği etkinleştirilir ve aynı çalışma alanını ve otomasyon hesabını kullanmanız gerekir.
 
-1. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi**altında **Envanter** veya **değişiklik izleme** ' yi seçin.
+1. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi** altında **Envanter** veya **değişiklik izleme** ' yi seçin.
 
-2. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) çalışma alanını seçin. Bu çalışma alanı, Değişiklik İzleme ve envanter gibi özellikler tarafından oluşturulan verileri toplar. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+2. [Log Analytics](../azure-monitor/logs/log-query-overview.md) çalışma alanını seçin. Bu çalışma alanı, Değişiklik İzleme ve envanter gibi özellikler tarafından oluşturulan verileri toplar. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -66,7 +66,7 @@ Kurulum sırasında VM, Windows için Log Analytics Aracısı ve [karma Runbook 
 
 ## <a name="add-an-azure-vm-to-change-tracking-and-inventory"></a>Değişiklik İzleme ve envantere bir Azure VM ekleme
 
-1. Otomasyon hesabınızda, **yapılandırma yönetimi**altında **Stok** veya **değişiklik izleme** ' ye gidin.
+1. Otomasyon hesabınızda, **yapılandırma yönetimi** altında **Stok** veya **değişiklik izleme** ' ye gidin.
 
 2. **+ Azure VM Ekle**' yi seçin.
 
@@ -80,9 +80,9 @@ Kurulum sırasında VM, Windows için Log Analytics Aracısı ve [karma Runbook 
 
 Özelliği için Azure dışı makineleri etkinleştirmek üzere:
 
-1. İşletim sisteminize bağlı olarak, [Windows için Log Analytics aracısını](../azure-monitor/platform/agent-windows.md) veya [Linux için Log Analytics aracısını](automation-linux-hrw-install.md)yükler. 
+1. İşletim sisteminize bağlı olarak, [Windows için Log Analytics aracısını](../azure-monitor/agents/agent-windows.md) veya [Linux için Log Analytics aracısını](automation-linux-hrw-install.md)yükler. 
 
-2. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi**altında **Stok** veya **değişiklik izleme** ' ye gidin. 
+2. Otomasyon hesabınıza gidin ve **yapılandırma yönetimi** altında **Stok** veya **değişiklik izleme** ' ye gidin. 
 
 3. **Makineleri Yönet**' e tıklayın. Log Analytics çalışma alanınıza rapor veren ve Değişiklik İzleme ve envanterin etkinleştirildiği makinelerin listesini görürsünüz. Ortamınız için uygun seçeneği belirleyin:
 
@@ -96,7 +96,7 @@ Kurulum sırasında VM, Windows için Log Analytics Aracısı ve [karma Runbook 
 
 Değişiklik İzleme ve envanter özelliği etkinleştirildikten sonra, sonuçları envanter sayfasında görüntüleyebilirsiniz.
 
-1. Otomasyon hesabınızda, **yapılandırma yönetimi**altında **Stok** ' u seçin.
+1. Otomasyon hesabınızda, **yapılandırma yönetimi** altında **Stok** ' u seçin.
 
 2. Stok sayfasında **Yazılım** sekmesine tıklayın.
 
@@ -107,7 +107,7 @@ Değişiklik İzleme ve envanter özelliği etkinleştirildikten sonra, sonuçla
 4. Yazılım kaydının özelliklerini ve bu yazılımın yüklü olduğu makinelerin adlarını görüntülemek için satırlardan birine tıklayın.
 
 5. Belirli bir yazılımı veya yazılım grubunu aramak için yazılım listesinin üstünde yer alan metin kutusundan arama yapabilirsiniz.
-Filtre yazılım adı, sürümü veya yayımcı ile arama yapmanızı sağlar. Örneğin, **contoso** araması, **contoso**içeren bir ad, yayımcı veya sürüm ile tüm yazılımları döndürür.
+Filtre yazılım adı, sürümü veya yayımcı ile arama yapmanızı sağlar. Örneğin, **contoso** araması, **contoso** içeren bir ad, yayımcı veya sürüm ile tüm yazılımları döndürür.
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Yüklü olan yazılımların stok günlüklerinde arama yapma
 
@@ -122,11 +122,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Azure Izleyici günlüklerinde günlük dosyalarını çalıştırma ve arama hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md).
+Azure Izleyici günlüklerinde günlük dosyalarını çalıştırma ve arama hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlükleri](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="see-the-software-inventory-for-a-single-machine"></a>Tek bir makine için yazılım envanterini inceleyin
 
-Tek bir makinenin yazılım envanterini görmek için, Azure VM kaynak sayfasından envantere erişebilir veya Azure Izleyici günlüklerini kullanarak ilgili makineye filtre uygulayabilirsiniz. Aşağıdaki örnek Log Analytics sorgu, **Contosovm**adlı bir makine için yazılım listesini döndürür.
+Tek bir makinenin yazılım envanterini görmek için, Azure VM kaynak sayfasından envantere erişebilir veya Azure Izleyici günlüklerini kullanarak ilgili makineye filtre uygulayabilirsiniz. Aşağıdaki örnek Log Analytics sorgu, **Contosovm** adlı bir makine için yazılım listesini döndürür.
 
 ```loganalytics
 ConfigurationData

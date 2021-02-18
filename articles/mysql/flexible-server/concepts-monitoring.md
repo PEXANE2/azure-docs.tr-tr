@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538672"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595166"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Yerleşik ölçümler ile MySQL için Azure veritabanı esnek sunucularını izleme
 
@@ -24,14 +24,14 @@ Bu makalede, esnek sunucunuz için, sunucunuzun davranışına ilişkin Öngör�
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 
-MySQL için Azure veritabanı esnek sunucu, iş yükünüzün nasıl çalıştığını ve bu verileri temel alarak, sunucu ve uygulamanızın etkisini anlayabilmeniz için çeşitli ölçümler sunar. Örneğin, esnek sunucu 'da, bir performans etkisi olduğunu belirlemek için **ana bilgisayar CPU 'su yüzdesini** , **Etkin bağlantıları** , **GÇ yüzdesini** ve **ana bilgisayar belleğini** izleyebilirsiniz. Buradan, iş yükünüzü en uygun hale getirmenize, işlem katmanlarını değiştirerek veya okuma çoğaltması kullanarak yatay olarak ölçeklendirmeniz gerekebilir.
+MySQL için Azure veritabanı esnek sunucu, iş yükünüzün nasıl çalıştığını ve bu verileri temel alarak, sunucu ve uygulamanızın etkisini anlayabilmeniz için çeşitli ölçümler sunar. Örneğin, esnek sunucu 'da, bir performans etkisi olduğunu belirlemek için **ana bilgisayar CPU 'su yüzdesini**, **Etkin bağlantıları**, **GÇ yüzdesini** ve **ana bilgisayar belleğini** izleyebilirsiniz. Buradan, iş yükünüzü en uygun hale getirmenize, işlem katmanlarını değiştirerek veya okuma çoğaltması kullanarak yatay olarak ölçeklendirmeniz gerekebilir.
 
-Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](./how-to-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../../azure-monitor/platform/data-platform.md).
+Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Adım adım yönergeler için bkz. [uyarıları ayarlama](./how-to-alert-on-metric.md). Diğer görevler otomatik eylemleri ayarlamayı, gelişmiş analiz gerçekleştirmeyi ve arşivleme geçmişini içerir. Daha fazla bilgi için bkz. [Azure ölçümlerine genel bakış](../../azure-monitor/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 
-|Ölçüm görünen adı|Ölçüm|Birim|Açıklama|
+|Ölçüm görünen adı|Metric|Birim|Description|
 |---|---|---|---|
 |Ana bilgisayar CPU 'SU yüzdesi|cpu_percent|Yüzde|Hem müşteri iş yüklerinden hem de Azure MySQL işlemlerinden CPU kullanımı dahil olmak üzere, sunucudaki CPU kullanımının yüzdesi|
 |Konak ağı |network_bytes_ingress|Bayt|Hem müşteri veritabanından gelen trafik hem de çoğaltma, izleme, Günlükler gibi Azure MySQL özellikleri dahil olmak üzere, sunucudaki gelen ağ trafiği.|

@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930569"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584197"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET ve .NET Core 'da özel ölçüm koleksiyonu
 
@@ -109,7 +109,7 @@ Günlükler (Analiz) deneyiminde Application Insights kaynağını inceliyoruz, 
 > [!NOTE]
 > Ham telemetri öğesi bir açık Sum özelliği/alanı içermediği sırada sizin için bir tane oluşturuyoruz. Bu durumda, `value` ve `valueSum` özelliği aynı şeyi temsil eder.
 
-Ayrıca, portalın [_ölçümler_](../platform/metrics-charts.md) bölümünde özel ölçüm telemetrinize de erişebilirsiniz. Hem [günlük tabanlı hem de özel ölçüm](pre-aggregated-metrics-log-metrics.md)olarak. (Aşağıdaki ekran görüntüsü, günlük tabanlı bir örnektir.) ![Ölçüm Gezgini görünümü](./media/get-metric/metrics-explorer.png)
+Ayrıca, portalın [_ölçümler_](../essentials/metrics-charts.md) bölümünde özel ölçüm telemetrinize de erişebilirsiniz. Hem [günlük tabanlı hem de özel ölçüm](pre-aggregated-metrics-log-metrics.md)olarak. (Aşağıdaki ekran görüntüsü, günlük tabanlı bir örnektir.) ![Ölçüm Gezgini görünümü](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Yüksek aktarım hızı kullanımı için önbelleğe alma ölçümü başvurusu
 
@@ -188,7 +188,7 @@ Varsayılan olarak, Ölçüm Gezgini deneyimi içindeki çok boyutlu ölçümler
 
 ### <a name="enable-multi-dimensional-metrics"></a>Çok boyutlu ölçümleri etkinleştir
 
-Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler**  >  **özel ölçümler**' i seçin  >  **özel ölçüm boyutlarında uyarı ' ı etkinleştirin**  >  **OK**. Bu konuda daha fazla ayrıntı için [burada](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bulunabilir.
+Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler**  >  **özel ölçümler**' i seçin  >  **özel ölçüm boyutlarında uyarı ' ı etkinleştirin**  >  . Bu konuda daha fazla ayrıntı için [burada](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bulunabilir.
 
 Bu değişikliği yaptıktan ve yeni çok boyutlu telemetri gönderdikten sonra, **bölmeyi uygulayacaksınız**.
 
@@ -221,7 +221,7 @@ computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 
 Ölçümler, `TelemetryClient` bunlara erişmek için kullanılan telemetri bağlamını kullanmaz. sınıfta sabitler olarak kullanılabilen özel boyut adları, `MetricDimensionNames` Bu sınırlamaya yönelik en iyi çözümdür.
 
-Aşağıdaki "özel Işlem Isteği boyutu" tarafından gönderilen ölçüm toplamaları-ölçüm **not** `Context.Operation.Name` "özel işlem" olarak ayarlanmayacak. Öte yandan `TrackMetric()` veya diğer bir TrackXXX (), `OperationName` "özel işlem" olarak ayarlanır.
+Aşağıdaki "özel Işlem Isteği boyutu" tarafından gönderilen ölçüm toplamaları-ölçüm  `Context.Operation.Name` "özel işlem" olarak ayarlanmayacak. Öte yandan `TrackMetric()` veya diğer bir TrackXXX (), `OperationName` "özel işlem" olarak ayarlanır.
 
 ``` csharp
         //...
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * Çalışan hizmeti uygulamalarını izleme hakkında [daha fazla bilgi edinin ](./worker-service.md).
 * [Günlük tabanlı ve önceden toplanmış ölçümler](./pre-aggregated-metrics-log-metrics.md)hakkında daha fazla bilgi için.
-* [Ölçüm Gezgini](../platform/metrics-getting-started.md)
+* [Ölçüm Gezgini](../essentials/metrics-getting-started.md)
 * [ASP.NET Core uygulamalar](asp-net-core.md) için Application Insights etkinleştirme
 * [ASP.NET uygulamaları](asp-net.md) için Application Insights etkinleştirme

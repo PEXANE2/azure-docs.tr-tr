@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045771"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573439"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
 
@@ -46,9 +46,9 @@ Kaynak grubu öngörüleri sayfası, sorunları tanılamanıza yardımcı olacak
 
    |         |          |
    | ---------------- |:-----|
-   | [**Uyarılar**](../platform/alerts-overview.md)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
-   | [**Ölçümler**](../platform/data-platform.md) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |
-   | [**Etkinlik günlükleri**](../platform/platform-logs-overview.md) | Azure 'da oluşan abonelik düzeyindeki olaylar.  |
+   | [**Uyarılar**](../alerts/alerts-overview.md)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
+   | [**Ölçümler**](../data-platform.md) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |
+   | [**Etkinlik günlükleri**](../essentials/platform-logs-overview.md) | Azure 'da oluşan abonelik düzeyindeki olaylar.  |
    | [**Uygulama eşlemesi**](../app/app-map.md) | Performans sorunlarını veya hata etkin noktalarını belirlemek için dağıtılmış uygulamanızın topolojisine gidin. |
 
 ## <a name="failures-and-performance"></a>Başarısızlıklar ve performans
@@ -117,6 +117,6 @@ Kaynak grupları için Azure Izleyici, uyarı durumunu almak için Azure Izleyic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici çalışma kitapları](../platform/workbooks-overview.md)
+- [Azure Izleyici çalışma kitapları](../visualize/workbooks-overview.md)
 - [Azure Kaynak Durumu](../../service-health/resource-health-overview.md)
-- [Azure İzleyici Uyarıları](../platform/alerts-overview.md)
+- [Azure İzleyici Uyarıları](../alerts/alerts-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0a7a5b9e19436deaed45382fe23063fa61edadf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587256"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
 
@@ -44,9 +44,9 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 SQL Server sunucularınızda sistem durumu denetimini gerçekleştirmek için, aşağıdaki desteklenen yöntemlerden birini kullanarak bir aracı ve Azure Izleyici bağlantısı gerekir:
 
-1. Sunucu zaten System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından izlenmediği takdirde, [Microsoft Monitoring Agent (MMA) ' i (MMA)](../platform/agent-windows.md) ' i (
+1. Sunucu zaten System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından izlenmediği takdirde, [Microsoft Monitoring Agent (MMA) ' i (MMA)](../agents/agent-windows.md) ' i (
 2. System Center 2016-Operations Manager veya Operations Manager 2012 R2 ile izleniyorsa ve yönetim grubu Azure Izleyici ile tümleştirilmediğinde, sunucu, veri toplamak ve hizmete iletmek ve yine de Operations Manager tarafından izlenmekte olan Log Analytics ile birden çok bağlı olabilir.  
-3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
+3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
 
 SQL Server, Operations Manager bir yönetim grubuna rapor veren, verileri toplayan, atanan yönetim sunucusuna ileten ve daha sonra doğrudan bir yönetim sunucusundan Azure Izleyici 'ye gönderilen aracı.  Veriler Operations Manager veritabanlarına yazılmaz.  
 
@@ -77,7 +77,7 @@ SQL sistem durumu denetimi için Operations Manager farklı çalıştır hesabı
 >
 
 1. Operations Manager, Işletim konsolunu açın ve ardından **Yönetim**' e tıklayın.
-2. **Farklı Çalıştır Yapılandırması**altında, **profiller**' e tıklayın ve **Farklı Çalıştır profili SQL değerlendirmesi**açın.
+2. **Farklı Çalıştır Yapılandırması** altında, **profiller**' e tıklayın ve **Farklı Çalıştır profili SQL değerlendirmesi** açın.
 3. **Farklı Çalıştır Hesapları** sayfasında **Ekle**’ye tıklayın.
 4. SQL Server için gereken kimlik bilgilerini içeren bir Windows farklı çalıştır hesabı seçin veya bir tane oluşturmak için **Yeni** ' ye tıklayın.
 
@@ -161,7 +161,7 @@ Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve 
 4. **Genel bakış** sayfasında **SQL sistem durumu denetim** kutucuğuna tıklayın.
 5. **Sistem durumu denetimi** sayfasında, odak alanı Dikey penceresinde bulunan Özet bilgilerini gözden geçirin ve ardından bu odak alanı önerilerini görüntülemek için bir tane tıklatın.
 6. Odak alanı sayfalarında, ortamınız için yapılan öncelikli önerileri görüntüleyebilirsiniz. Önerinin neden yapıldığına ilişkin ayrıntıları görüntülemek için **etkilenen nesneler** altında bir öneriye tıklayın.<br><br> ![SQL sistem durumu denetimi önerilerinin görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. **Önerilen eylemlerde**önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe giderildiği zaman, daha sonra değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artar. Düzeltilen öğeler **geçirilmiş nesneler**olarak görünür.
+7. **Önerilen eylemlerde** önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe giderildiği zaman, daha sonra değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artar. Düzeltilen öğeler **geçirilmiş nesneler** olarak görünür.
 
 ## <a name="ignore-recommendations"></a>Önerileri yoksayma
 Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme sonuçlarınızda görünmesini engellemek için kullanacağı bir metin dosyası oluşturabilirsiniz.
@@ -257,5 +257,5 @@ Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabil
 * Evet, bkz. Yukarıdaki [önerileri yoksay](#ignore-recommendations) bölümü.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı SQL sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [sorguları günlüğe kaydedin](../log-query/log-query-overview.md) .
+* Ayrıntılı SQL sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [sorguları günlüğe kaydedin](../logs/log-query-overview.md) .
 

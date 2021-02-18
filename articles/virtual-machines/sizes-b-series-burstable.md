@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097699"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594396"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -109,7 +109,7 @@ Y **:%** 135, VM boyutunu oluşturan 8 vCPU arasında paylaşılır. Örneğin, 
 
 Y: **KREDI** ölçümü, sanal makinenizin kaç kredinin bankaya ve **TÜKETIM kredisi** ölçümünün, sanal makinenizin bankadan kaç tane kaç tane tükettiğini görmenizi sağlar.    Bu ölçümleri portalda ölçümler bölmesinden veya Azure Izleyici API 'Leri aracılığıyla programlı bir şekilde görüntüleyebileceksiniz.
 
-Azure için ölçüm verilerine erişme hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/platform/data-platform.md).
+Azure için ölçüm verilerine erişme hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/data-platform.md).
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>S: krediler nasıl birikmiş ve tüketildi?
 

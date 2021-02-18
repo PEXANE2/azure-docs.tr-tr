@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393063"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648612"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı geri yüklemek için izinleri yönetme
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -61,7 +61,7 @@ Sürekli yedekleme modu hesapları için geri yükleme ile ilgili farklı etkinl
 |İzin  |Etki  |En düşük kapsam  |En yüksek kapsam  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Bu izinler, geri yüklenen hesabı oluşturmak için ARM şablon dağıtımı için gereklidir. Bu rolün nasıl ayarlanacağı için aşağıdaki örnek izin [Restokıbleaction](#custom-restorable-action) bölümüne bakın. | Uygulanamaz | Uygulanamaz  |
-|Microsoft.DocumentDB/databaseAccounts/Write | Bu izin, bir hesabı bir kaynak grubuna geri yüklemek için gereklidir | Geri yüklenen hesabın oluşturulduğu kaynak grubu. | Geri yüklenen hesabın oluşturulduğu abonelik |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Bu izin, bir hesabı bir kaynak grubuna geri yüklemek için gereklidir | Geri yüklenen hesabın oluşturulduğu kaynak grubu. | Geri yüklenen hesabın oluşturulduğu abonelik |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Bu izin, geri yükleme eylemlerinin üzerinde gerçekleştirilmesine izin vermek için kaynak yeniden yüklenebilen veritabanı hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>* | Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Bu izin, geri yüklenebilen veritabanı hesaplarını listelemek için kaynak restozlenebilir veritabanı hesabı kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>*| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Bu izin, geri yüklenebilen bir hesaba yönelik veritabanları ve kapsayıcılar listesi gibi geri yüklenebilen kaynakların okunmasına izin vermek için kaynak yeniden yüklenebilen hesap kapsamında gereklidir.  | Geri yüklenmekte olan kaynak hesaba ait olan *Restooybledatabaseaccount* kaynağı. Bu değer, geri `ID` yüklenebilen veritabanı hesabı kaynağının özelliği tarafından da verilir. Geri yüklenebilen hesap örneği */Subscriptions/SubscriptionID/Providers/Microsoft.DocumentDB/Locations/regionName/Restokbledatabaseaccounts/<GUID-ınstanceıd>*| Geri yüklenebilen veritabanı hesabını içeren abonelik. Kaynak grubu kapsam olarak seçilemez. |

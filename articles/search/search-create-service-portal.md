@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547766"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573055"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -27,9 +27,9 @@ Bu makalede ele alınan [Azure Portal](https://portal.azure.com/)kullanarak aram
 
 Aşağıdaki hizmet özellikleri, hizmetin kullanım ömrü boyunca düzeltilir; bunlardan herhangi birini değiştirmek yeni bir hizmet gerektirir. Düzeltildiklerinden, her bir özelliği doldururken kullanım etkilerini göz önünde bulundurun:
 
-* Hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
-* [Hizmet katmanı](search-sku-tier.md) , faturalandırmayı etkiler ve kapasite üzerinde yukarı bir sınır ayarlar. Ücretsiz katmanda bazı özellikler kullanılamaz.
-* Hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. [Yüksek güvenlik özellikleri](search-security-overview.md) veya [AI zenginleştirmesi](cognitive-search-concept-intro.md)gerekiyorsa, diğer hizmetlerle aynı bölgede veya söz konusu özelliği sağlayan bölgelerde Azure bilişsel arama oluşturmanız gerekir. 
++ Hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
++ [Hizmet katmanı](search-sku-tier.md) , faturalandırmayı etkiler ve kapasite üzerinde yukarı bir sınır ayarlar. Ücretsiz katmanda bazı özellikler kullanılamaz.
++ Hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. [Yüksek güvenlik özellikleri](search-security-overview.md) veya [AI zenginleştirmesi](cognitive-search-concept-intro.md)gerekiyorsa, diğer hizmetlerle aynı bölgede veya söz konusu özelliği sağlayan bölgelerde Azure bilişsel arama oluşturmanız gerekir. 
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 
@@ -72,30 +72,30 @@ Zaman içinde, geçerli ve öngörülen maliyetleri tamamen izleyebilir veya tek
 
 Hizmet adı gereksinimleri:
 
-* search.windows.net ad alanı içinde benzersiz olmalıdır
-* Uzunluğu 2 ile 60 karakter arasında olmalıdır
-* Küçük harf, rakam veya kısa çizgi ("-") kullanmanız gerekir
-* İlk 2 karakterde veya son tek karakter olarak tire ("-") kullanmayın
-* Her yerde ardışık çizgiler ("--") kullanamazsınız
++ search.windows.net ad alanı içinde benzersiz olmalıdır
++ Uzunluğu 2 ile 60 karakter arasında olmalıdır
++ Küçük harf, rakam veya kısa çizgi ("-") kullanmanız gerekir
++ İlk 2 karakterde veya son tek karakter olarak tire ("-") kullanmayın
++ Her yerde ardışık çizgiler ("--") kullanamazsınız
 
 > [!TIP]
 > Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Bilişsel Arama Batı ABD ve aynı zamanda Batı ABD de başka hizmetleriniz varsa, gibi bir ad, `mysearchservice-westus` kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
 
 ## <a name="choose-a-location"></a>Konum seçin
 
-Azure Bilişsel Arama, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)belgelendiği gibi çoğu bölgede kullanılabilir.
+Azure Bilişsel Arama, [bölgeye göre kullanılabilen ürünlerde](https://azure.microsoft.com/global-infrastructure/services/?products=search)belgelendiği gibi çoğu bölgede kullanılabilir. Genel olarak, birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
 
-Genel olarak, birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
++ [AI zenginleştirme](cognitive-search-concept-intro.md) , bilişsel hizmetlerin Azure bilişsel arama ile aynı fiziksel bölgede olmasını gerektirir. Bu nedenle, birkaç bölge her iki özelliği de sağlamaz. [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=search) sayfası iki yığılmış onay işareti göstererek çift kullanılabilirliği gösterir. Kullanılamayan bir birleşimin onay işareti yok:
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](../best-practices-availability-paired-regions.md#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Bölgesel kullanılabilirlik" border="true":::
 
-Aşağıdaki özellikler yalnızca belirli bölgelerde kullanılabilir:
++ [Bölgesel çiftlerde](../best-practices-availability-paired-regions.md#azure-regional-pairs)birden çok arama hizmeti oluşturularak iş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimleri karşılanmalıdır. Örneğin, Kuzey Amerika çalıştırıyorsanız, her arama hizmeti için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
 
-* AI zenginleştirme, bilişsel hizmetlerin Azure Bilişsel Arama ile aynı bölgede olmasını gerektirir. Önce bilişsel [Hizmetler için bölgeyi](https://azure.microsoft.com/pricing/details/cognitive-services/) seçin (liste daha küçüktür) ve ardından arama hizmeti için aynı bölgeyi seçin.
+Birkaç özelliğin bölgelere göre sınırlı kullanılabilirliği vardır. Kısıtlamalar, özellik belgelerinde özetlenmiştir:
 
-* Çift şifreleme yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Çift şifreleme](search-security-overview.md#double-encryption)
++ [Çift şifreleme](search-security-overview.md#double-encryption)
 
-* Belirli bir tarihten sonra oluşturulan hizmetlerde, kullanılabilirlik alanı desteği belirli bölgelerde sunulur. Daha fazla bilgi için bkz. [performans Için ölçek içinde "kullanılabilirlik alanları"](search-performance-optimization.md#availability-zones).
++ [Performans Için ölçekte "kullanılabilirlik alanları"](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Fiyatlandırma katmanı seçin
 
@@ -121,7 +121,7 @@ Portalı kullanmıyorsanız, yeni hizmetinize programlı erişim, URL uç noktas
 
 1. **Genel bakış** sayfasında, sayfanın sağ tarafındaki URL uç noktasını bulup kopyalayın.
 
-2. **Anahtarlar** sayfasında, yönetici anahtarlarından birini (eşdeğerdir) kopyalayın. Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir. Buna karşılık sorgu anahtarları, Dizin içeriğine okuma erişimi sağlar.
+1. **Anahtarlar** sayfasında, yönetici anahtarlarından birini (eşdeğerdir) kopyalayın. Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir. Buna karşılık sorgu anahtarları, Dizin içeriğine okuma erişimi sağlar.
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="URL uç noktası ile hizmete genel bakış sayfası" border="false":::
 
@@ -141,8 +141,8 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 > Bir hizmetin [salt okunur SLA için 2 çoğaltması ve okuma/yazma SLA’sı için 3 çoğaltması](https://azure.microsoft.com/support/legal/sla/search/v1_0/) olmalıdır.
 
 1. Azure portalında arama hizmeti sayfanıza gidin.
-2. Sol gezinti bölmesinde **Ayarlar**  >  **Ölçek**' i seçin.
-3. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
+1. Sol gezinti bölmesinde **Ayarlar**  >  **Ölçek**' i seçin.
+1. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Çoğaltmalar ve bölümler aracılığıyla kapasite ekleme" border="false":::
 
