@@ -3,12 +3,12 @@ title: Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluştu
 description: Bu belge, TimerTrigger işlevinde verilen yapılandırmaya göre düzenli olarak çalışacak TrackAvailability () ile bir Azure Işlevi oluşturmayı kapsar. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bölgenizde yoksa bir kullanılabilirlik testi oluşturmanızı sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945660"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589933"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 
@@ -175,7 +175,7 @@ Her şeyi olduğu gibi çalıştırdıysanız (iş mantığı eklemeden), testin
 
 ## <a name="query-in-logs-analytics"></a>Günlüklerde sorgulama (Analiz)
 
-Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını görüntülemek için günlükleri (Analiz) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [günlük sorgusuna genel bakış](../log-query/log-query-overview.md)sayfasını ziyaret edin.
+Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını görüntülemek için günlükleri (Analiz) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [günlük sorgusuna genel bakış](../logs/log-query-overview.md)sayfasını ziyaret edin.
 
 >[!div class="mx-imgBorder"]
 >![Kullanılabilirlik sonuçları](media/availability-azure-functions/availabilityresults.png)

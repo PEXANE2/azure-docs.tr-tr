@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632801"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591382"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights veri başvurusunu izleme
 
@@ -23,12 +23,12 @@ Azure Time Series Insights ortamınızdan Azure Izleyici tarafından toplanan ve
 
 ## <a name="metrics"></a>Ölçümler
 
-Bu bölümde, Azure Time Series Insights için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Tüm Azure Izleyici desteği ölçümlerinin bir listesi (Azure Time Series Insights dahil) için bkz. [Azure izleyici desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md). Bu ölçümler için kaynak sağlayıcısı [Microsoft. Timeseriesınsights/ortamlar/EventSources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) ve [Microsoft. timeseriesınsights/ortamlarıdır](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+Bu bölümde, Azure Time Series Insights için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Tüm Azure Izleyici desteği ölçümlerinin bir listesi (Azure Time Series Insights dahil) için bkz. [Azure izleyici desteklenen ölçümler](../azure-monitor/essentials/metrics-supported.md). Bu ölçümler için kaynak sağlayıcısı [Microsoft. Timeseriesınsights/ortamlar/EventSources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) ve [Microsoft. timeseriesınsights/ortamlarıdır](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Giriş
  
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|
+|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|
 |---|---|---|---|---|
 |Alınan baytlar|Alınan bayt sayısı|Bayt|Toplam|Olay kaynağından okunan bayt sayısı|
 |Inressreceiveınvalidmessages|Giriş geçersiz Iletiler aldı|Count|Toplam|Olay kaynağından okunan geçersiz ileti sayısı|
@@ -40,7 +40,7 @@ Bu bölümde, Azure Time Series Insights için toplanan otomatik olarak toplanan
 
 ### <a name="storage"></a>Depolama
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|
+|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|Isınma depolama en yüksek özellikleri|Count|Maksimum|S1/S2 SKU 'SU için ortam tarafından izin verilen en fazla özellik sayısı ve PAYG SKU 'SU için ısınma tarafından izin verilen en fazla özellik sayısı|
 |WarmStorageUsedProperties|Sıcak depolama kullanılan özellikler |Count|Maksimum|S1/S2 SKU 'SU için ortam tarafından kullanılan özellik sayısı ve PAYG SKU 'SU için sıcak mağaza tarafından kullanılan özellik sayısı|

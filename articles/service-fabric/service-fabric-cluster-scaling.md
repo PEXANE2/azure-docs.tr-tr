@@ -4,12 +4,12 @@ description: Azure Service Fabric kümelerini içinde veya dışarı ve yukarı 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610c43f64f9073aefe8008473209039122cf36d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610209"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591795"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric kümelerini ölçeklendirme
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Kümeler potansiyel binlerce düğüm içerebilir. Service Fabric kümesi oluşturduktan sonra, kümeyi yatay olarak ölçeklendirebilirsiniz (düğüm sayısını değiştirebilir) veya dikey (düğümlerin kaynaklarını değiştirebilirsiniz).  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -40,7 +40,7 @@ Birçok senaryoda, [bir kümeyi el ile veya otomatik ölçeklendirme kurallarıy
 - El ile ölçekleme, oturum açmanızı ve açıkça ölçekleme işlemlerine istek yapmanızı gerektirir. Ölçeklendirme işlemleri sıklıkla veya öngörülemeyen zamanlarda gerekliyse, bu yaklaşım iyi bir çözüm olmayabilir.
 - Otomatik ölçeklendirme kuralları bir sanal makine ölçek kümesinden bir örneği kaldırdıklarında, düğüm türünün gümüş veya altın bir dayanıklılık düzeyi yoksa, ilgili Service Fabric kümesinden o düğümün bilgisini otomatik olarak kaldırmaz. Otomatik ölçeklendirme kuralları ölçek kümesi düzeyinde çalıştığından (Service Fabric düzeyi yerine), otomatik ölçeklendirme kuralları Service Fabric düğümleri düzgün şekilde kapatmadan kaldırabilir. Bu işlenmemiş düğüm kaldırma işlemi, ölçeklendirme işlemlerinden sonra ' hayalet ' Service Fabric düğüm durumunun arkasına bırakılır. Bir bireyin (veya bir hizmetin) Service Fabric kümesinde kaldırılan düğüm durumunu düzenli aralıklarla temizlemesi gerekir.
 - Dayanıklılık düzeyi Gold veya gümüş olan bir düğüm türü kaldırılan düğümleri otomatik olarak temizler, bu nedenle ek temizleme gerekmez.
-- Otomatik ölçeklendirme kuralları tarafından desteklenen [çok sayıda ölçüm](../azure-monitor/platform/autoscale-common-metrics.md) olsa da, hala sınırlı bir küme vardır. Senaryonuz, bu küme kapsamında olmayan bazı metriyi temel alarak ölçeklendirmeyi çağırırsa, otomatik ölçeklendirme kuralları iyi bir seçenek olmayabilir.
+- Otomatik ölçeklendirme kuralları tarafından desteklenen [çok sayıda ölçüm](../azure-monitor/autoscale/autoscale-common-metrics.md) olsa da, hala sınırlı bir küme vardır. Senaryonuz, bu küme kapsamında olmayan bazı metriyi temel alarak ölçeklendirmeyi çağırırsa, otomatik ölçeklendirme kuralları iyi bir seçenek olmayabilir.
 
 Service Fabric ölçeklendirmeye nasıl yaklaşımınız, senaryonuza bağlıdır. Ölçeklendirmenin bir yaygın olması durumunda, el ile düğüm ekleme veya kaldırma olanağı muhtemelen yeterlidir. Daha karmaşık senaryolar için, programlama yoluyla ölçeklendirme olanağı sunan otomatik ölçeklendirme kuralları ve SDK 'Ları, güçlü alternatifler sunmaktadır.
 

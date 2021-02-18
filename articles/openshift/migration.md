@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift 3.11’den Azure Red Hat OpenShift 4’e geçme
 description: Azure Red Hat OpenShift 3.11’den Azure Red Hat OpenShift 4’e geçme
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: geçiş, Aro, OpenShift, Red Hat
-ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: d875389419e1442b942b4b42389664ffdd064ba3
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071044"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634116"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş yapın
 
@@ -106,7 +106,7 @@ Azure Red Hat OpenShift 4, kaynak kodınızdan görüntü oluşturabilir, bunlar
 
 Azure Red Hat OpenShift, Prometheus açık kaynak projesine ve daha geniş ekonomik sisteme dayalı, önceden yapılandırılmış, önceden yüklenmiş ve kendi kendini güncelleştiren bir izleme yığını içerir. Küme bileşenlerinin izlenmesini sağlar ve küme yöneticisine her türlü sorun ve bir Grafana Pano kümesi hakkında anında bildirim gönderir. Küme izleme yığını yalnızca Azure Red Hat OpenShift kümelerini izlemek için desteklenir. Daha fazla bilgi için bkz. [Azure Red Hat OpenShift Için küme izleme](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
-Azure [Red Hat openshift 3,11 Için kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-azure-redhat-setup.md)'yi kullandıysanız, [Azure Red Hat OpenShift 4 kümelerinin](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) kapsayıcıları için Azure izleyicisini da etkinleştirebilir ve aynı Log Analytics çalışma alanını kullanmaya devam edebilirsiniz.
+Azure [Red Hat openshift 3,11 Için kapsayıcılar Için Azure izleyici](../azure-monitor/containers/container-insights-azure-redhat-setup.md)'yi kullandıysanız, [Azure Red Hat OpenShift 4 kümelerinin](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) kapsayıcıları için Azure izleyicisini da etkinleştirebilir ve aynı Log Analytics çalışma alanını kullanmaya devam edebilirsiniz.
 
 ## <a name="move-your-dns-or-load-balancer-configuration-to-the-new-cluster"></a>DNS veya yük dengeleyici yapılandırmanızı yeni kümeye taşıma
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572955"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Uyarıları bir SıEM, SOAR veya BT hizmet yönetimi çözümüne akış
 
@@ -63,22 +63,22 @@ Bu API 'yi, **kiracınızdaki** (ve diğer birçok Microsoft Güvenlik ürünün
 - **Power BI**  -  [Power BI Desktop Microsoft Graph GÜVENLIK API 'Sine bağlanın](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [ServiceNow mağazasından Microsoft Graph SECURITY API uygulamasını yüklemek ve yapılandırmak için yönergeleri izleyin](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [Azure Güvenlik Merkezi için MICROSOFT Graph API aracılığıyla IBM 'Nin cihaz destek modülü](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks** , **anomali** , **gevlül** , **ıNSPARK** ve daha fazla [Microsoft Graph güvenlik API 'si](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Palo Alto Networks**, **anomali**, **gevlül**, **ıNSPARK** ve daha fazla [Microsoft Graph güvenlik API 'si](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [Microsoft Graph güvenlik API 'si hakkında daha fazla bilgi edinin](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Azure Izleyici ile uyarı akışı 
 
-Bildirimleri **arcgözetimi** , **splunk** , **SumoLogic** , syslog sunucuları, **Logrhythm** , **Logz.io Cloud Observability platform** ve diğer izleme çözümleriyle akışa almak için. Azure Event Hubs ile Güvenlik Merkezi 'ni Azure izleyici ile bağlama:
+Bildirimleri **arcgözetimi**, **splunk**, **SumoLogic**, syslog sunucuları, **Logrhythm**, **Logz.io Cloud Observability platform** ve diğer izleme çözümleriyle akışa almak için. Azure Event Hubs ile Güvenlik Merkezi 'ni Azure izleyici ile bağlama:
 
 1. Güvenlik Merkezi uyarılarını, abonelik düzeyinde adanmış bir Azure Olay Hub 'ına akışa almak için [sürekli dışarı aktarmayı](continuous-export.md) etkinleştirin. 
     > [!TIP]
     > Bunu Azure Ilkesi kullanarak yönetim grubu düzeyinde yapmak için bkz. [ölçekteki sürekli dışarı aktarma Otomasyonu yapılandırması oluşturma](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies)
 
-1. Azure [izleyici 'nin yerleşik bağlayıcılarını kullanarak Azure Olay Hub 'ını tercih ettiğiniz çözümünüze bağlayın](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+1. Azure [izleyici 'nin yerleşik bağlayıcılarını kullanarak Azure Olay Hub 'ını tercih ettiğiniz çözümünüze bağlayın](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
-1. İsteğe bağlı olarak, ham günlükleri Azure Olay Hub 'ına akış ve tercih ettiğiniz çözüme bağlama. [Kullanılabilir izleme verileri](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available)hakkında daha fazla bilgi edinin.
+1. İsteğe bağlı olarak, ham günlükleri Azure Olay Hub 'ına akış ve tercih ettiğiniz çözüme bağlama. [Kullanılabilir izleme verileri](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available)hakkında daha fazla bilgi edinin.
 
 > [!TIP]
 > Aktarılmış veri türlerinin olay şemalarını görüntülemek için, [Olay Hub 'ı olay şemaları](https://aka.ms/ASCAutomationSchemas)' nı ziyaret edin.

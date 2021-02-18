@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017721"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650397"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetimi modeli
 
@@ -35,7 +35,7 @@ Bu makale, Azure RBAC ve ACL 'Lere odaklanılır ve depolama hesabı kaynakları
 
 Azure RBAC, [güvenlik sorumlularına](../../role-based-access-control/overview.md#security-principal)izin kümelerini uygulamak için rol atamaları kullanır. Güvenlik sorumlusu, Azure Active Directory (AD) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir. Bir izin kümesi, bir depolama hesabındaki **Tüm** verilere veya bir kapsayıcıdaki **Tüm** verilere okuma veya yazma erişimi gibi bir güvenlik sorumlusuna "kaba bir" erişim düzeyi verebilir. 
 
-Aşağıdaki roller, bir güvenlik sorumlusunun bir depolama hesabındaki verilere erişmesine izin verir. 
+Aşağıdaki roller, bir güvenlik sorumlusunun bir depolama hesabındaki verilere erişmesine izin verir.
 
 |Rol|Açıklama|
 |--|--|
@@ -85,12 +85,12 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 |                          |   Yok                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt Sil          |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
-|                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | YOK    |
-|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | YOK    |
+|                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | Yok    |
+|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | Yok    |
 | Data.txt oluştur          |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
-|                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | YOK    |
-|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | YOK    |
+|                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | Yok    |
+|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | Yok    |
 | Listele                   |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
@@ -102,7 +102,7 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 | Liste/Oregon/Portland/   |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
-|                          |   Yok                           | `--X`    | `--X`    | `R-X`     | YOK    |
+|                          |   Yok                           | `--X`    | `--X`    | `R-X`     | Yok    |
 
 
 > [!NOTE] 

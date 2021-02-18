@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450407"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587169"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
 
@@ -33,7 +33,7 @@ Azure Izleyici 'deki VMware İzleme çözümü, büyük VMware günlükleri içi
 vSphere ESXi ana bilgisayarı 5,5, 6,0 ve 6,5
 
 #### <a name="prepare-a-linux-server"></a>Linux sunucusu hazırlama
-ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistemi VM 'si oluşturun. [Log Analytics Linux Aracısı](../learn/quick-collect-linux-computer.md) , tüm ESXi ana bilgisayar Syslog verileri için koleksiyon noktasıdır. Aşağıdaki örnekte olduğu gibi, günlükleri tek bir Linux sunucusuna iletmek için birden çok ESXi ana bilgisayarı kullanabilirsiniz.
+ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistemi VM 'si oluşturun. [Log Analytics Linux Aracısı](../vm/quick-collect-linux-computer.md) , tüm ESXi ana bilgisayar Syslog verileri için koleksiyon noktasıdır. Aşağıdaki örnekte olduğu gibi, günlükleri tek bir Linux sunucusuna iletmek için birden çok ESXi ana bilgisayarı kullanabilirsiniz.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -42,7 +42,7 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
 ### <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
 1. VSphere için Syslog iletmeyi ayarlayın. Syslog iletmeyi ayarlamaya yardımcı olacak ayrıntılı bilgiler için, bkz. [ESXi 5,0 ve üzeri için Syslog yapılandırma (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). **ESXi ana bilgisayar yapılandırması**  >  **yazılım**  >  **Gelişmiş ayarlar**  >  **Syslog**' a gidin.
    ![vspburconfig](./media/vmware/vsphere1.png)  
-1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514` olabilir.
+1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514* numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514` olabilir.
 1. Syslog için ESXi ana bilgisayar güvenlik duvarını açın. **ESXi ana bilgisayar yapılandırması**  >  **Yazılım**  >  **Güvenlik profili**  >  **Güvenlik duvarı** ve açık **Özellikler**.  
 
     ![vsizefw](./media/vmware/vsphere2.png)  
@@ -64,7 +64,7 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Azure portal için bir günlük sorgusu gerçekleştirin `VMware_CL` . Azure Izleyici Syslog verilerini toplarken Syslog biçimini korur. Portalda, *ana bilgisayar* adı ve *ProcessName*gibi bazı belirli alanlar yakalanır.  
+1. Azure portal için bir günlük sorgusu gerçekleştirin `VMware_CL` . Azure Izleyici Syslog verilerini toplarken Syslog biçimini korur. Portalda, *ana bilgisayar* adı ve *ProcessName* gibi bazı belirli alanlar yakalanır.  
 
     ![Ekran görüntüsü, zaman damgamış bir sonuçla Type = VMware_CL için bir günlük sorgusu gösterir.](./media/vmware/type.png)  
 
@@ -122,7 +122,7 @@ VMware kutucuğu Log Analytics çalışma alanınızda görünür. Hatalara ili�
 
 Dikey pencereye özgü ayrıntılı bilgileri gösteren Log Analytics arama bölmesini açmak için herhangi bir dikey pencere ' ya tıklayın.
 
-Buradan, belirli bir şeyi değiştirmek için günlük sorgusunu düzenleyebilirsiniz. Günlük sorguları oluşturma hakkında ayrıntılı bilgi için bkz. [Azure izleyici 'de günlük sorgularını kullanarak veri bulma](../log-query/log-query-overview.md).
+Buradan, belirli bir şeyi değiştirmek için günlük sorgusunu düzenleyebilirsiniz. Günlük sorguları oluşturma hakkında ayrıntılı bilgi için bkz. [Azure izleyici 'de günlük sorgularını kullanarak veri bulma](../logs/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi ana bilgisayar olaylarını bul
 Tek bir ESXi ana bilgisayarı, işlemlerine bağlı olarak birden çok günlük oluşturur. VMware İzleme çözümü onları merkezileştirir ve olay sayılarını özetler. Bu merkezi görünüm, hangi ESXi konağının yüksek hacimde olaylara sahip olduğunu ve ortamınızda en sık hangi olayların meydana geldiklerinizi anlamanıza yardımcı olur.
@@ -151,12 +151,12 @@ Ek ESXi konak VM oluşturma verilerini görmek isterseniz, bir ESXi ana bilgisay
 
 
 #### <a name="save-queries"></a>Sorguları kaydet
-Günlük sorgularını kaydetmek, Azure Izleyici 'de standart bir özelliktir ve faydalı bulduğunuz sorguları korumanıza yardımcı olabilir. Faydalı bulduğunuz bir sorgu oluşturduktan sonra **Sık Kullanılanlar**' a tıklayarak bunu kaydedin. Kayıtlı bir sorgu daha sonra kendi özel panolarınızı oluşturabileceğiniz [Pano](../learn/tutorial-logs-dashboards.md) sayfasından daha sonra kolayca yeniden kullanmanıza olanak tanır.
+Günlük sorgularını kaydetmek, Azure Izleyici 'de standart bir özelliktir ve faydalı bulduğunuz sorguları korumanıza yardımcı olabilir. Faydalı bulduğunuz bir sorgu oluşturduktan sonra **Sık Kullanılanlar**' a tıklayarak bunu kaydedin. Kayıtlı bir sorgu daha sonra kendi özel panolarınızı oluşturabileceğiniz [Pano](../visualize/tutorial-logs-dashboards.md) sayfasından daha sonra kolayca yeniden kullanmanıza olanak tanır.
 
 ![Ekran görüntüsü, geri al, dışarı aktar, uyar, Kaydet, Sık Kullanılanlar ve geçmiş simgelerle günlük araması etiketli özel panonun bir parçasını gösterir.](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Sorgulardan uyarı oluşturma
-Sorgularınızı oluşturduktan sonra, belirli olaylar oluştuğunda sizi uyarmak için sorguları kullanmak isteyebilirsiniz. Uyarı oluşturma hakkında bilgi için bkz. [Log Analytics Uyarıları](../platform/alerts-overview.md) . Uyarı sorgularının ve diğer sorgu örneklerinin örnekleri için bkz. Log Analytics Web günlüğü gönderisini [kullanarak VMware 'Yi izleme](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) .
+Sorgularınızı oluşturduktan sonra, belirli olaylar oluştuğunda sizi uyarmak için sorguları kullanmak isteyebilirsiniz. Uyarı oluşturma hakkında bilgi için bkz. [Log Analytics Uyarıları](../alerts/alerts-overview.md) . Uyarı sorgularının ve diğer sorgu örneklerinin örnekleri için bkz. Log Analytics Web günlüğü gönderisini [kullanarak VMware 'Yi izleme](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) .
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>ESXi ana bilgisayar ayarında ne yapmam gerekir? Geçerli ortammda hangi etkileri olacaktır?
@@ -197,7 +197,7 @@ Birden çok neden olabilir:
      d. Dosya yoksa veya Kullanıcı ve Grup ayarı yanlışsa, [bir Linux sunucusunu hazırlarken](#prepare-a-linux-server)düzeltici işlem gerçekleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı VMware konak verilerini görüntülemek için Log Analytics 'de [günlük sorgularını](../log-query/log-query-overview.md) kullanın.
-* VMware konak verilerini gösteren [kendi panolarınızı oluşturun](../learn/tutorial-logs-dashboards.md) .
-* Belirli VMware ana bilgisayar olayları gerçekleştiğinde [uyarı oluştur](../platform/alerts-overview.md) .
+* Ayrıntılı VMware konak verilerini görüntülemek için Log Analytics 'de [günlük sorgularını](../logs/log-query-overview.md) kullanın.
+* VMware konak verilerini gösteren [kendi panolarınızı oluşturun](../visualize/tutorial-logs-dashboards.md) .
+* Belirli VMware ana bilgisayar olayları gerçekleştiğinde [uyarı oluştur](../alerts/alerts-overview.md) .
 

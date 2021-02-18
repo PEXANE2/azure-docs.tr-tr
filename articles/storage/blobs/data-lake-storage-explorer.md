@@ -5,19 +5,19 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 5ccef241a37e63467b681d5fd12c65072cb92e58
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626496"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652284"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri ve dosyaları yönetmek için Azure Depolama Gezgini kullanın
 
-Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve erişim denetimi listeleri (ACL 'Ler) oluşturmak ve yönetmek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) nasıl kullanılacağı gösterilmektedir.
+Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizin ve dosya oluşturmak ve yönetmek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -26,6 +26,9 @@ Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin
 - Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](../common/storage-account-create.md) yönergeleri izleyin.
 
 - Yerel bilgisayarınızda yüklü Azure Depolama Gezgini. Windows, Macintosh veya Linux işletim sisteminde Azure Depolama Gezgini’ni yüklemek için bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/).
+
+> [!NOTE]
+> Depolama Gezgini, Azure Data Lake Storage 2. ile çalışırken hem blob (blob) & Data Lake Storage 2. (DFS) [uç noktalarını](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) kullanır. Azure Data Lake Storage 2. erişimi özel uç noktalar kullanılarak yapılandırıldıysa, depolama hesabı için iki özel uç noktanın oluşturulduğundan emin olun: hedef alt kaynak `blob` ve diğeri hedef alt kaynakla `dfs` .
 
 ## <a name="sign-in-to-storage-explorer"></a>Depolama Gezgini oturum açın
 
@@ -77,41 +80,9 @@ Yüklenecek dosyaları veya klasörü seçin.
 
 **Azure Depolama Gezgini** kullanarak dosyaları indirmek için, bir dosya seçiliyken şeritten **İndir** ' i seçin. Açılan dosya iletişim kutusuna dosya adı girebilirsiniz. Yerel konuma bir dosyanın indirilmesini başlatmak için **Kaydet** ' i seçin.
 
-<a id="managing-access"></a>
-
-## <a name="manage-acls"></a>ACL 'Leri yönetme
-
-Kapsayıcıya, dizine veya dosyaya sağ tıklayın ve ardından **Access Control listelerini yönet**' e tıklayın.  Aşağıdaki ekran görüntüsünde, bir dizine sağ tıkladığınızda görüntülenen menü gösterilmektedir.
-
-> [!div class="mx-imgBorder"]
-> ![Azure Depolama Gezgini bir dizine sağ tıklayın](./media/data-lake-storage-explorer/manage-access-control-list-option.png)
-
-**Erişimi yönet** iletişim kutusu, sahip ve sahipler grubu için izinleri yönetmenizi sağlar. Ayrıca, izinleri yönetebilmeniz için erişim denetim listesine yeni kullanıcılar ve gruplar eklemenize olanak tanır.
-
-> [!div class="mx-imgBorder"]
-> ![Erişimi Yönet iletişim kutusu](./media/data-lake-storage-explorer/manage-access-dialog-box.png)
-
-Erişim denetim listesine yeni bir kullanıcı veya grup eklemek için **Ekle** düğmesini seçin. Ardından, listeye eklemek istediğiniz karşılık gelen Azure Active Directory (AAD) girişini girin ve **Ekle**' yi seçin.  Kullanıcı veya grup artık **Kullanıcılar ve gruplar:** alanında görünür ve bu da izinlerini yönetmeye başlamanızı sağlar.
-
-> [!NOTE]
-> AAD 'de bir güvenlik grubu oluşturmak ve tek kullanıcılar yerine grupta izinleri sürdürmek için en iyi uygulamadır ve önerilir. Bu öneriye ilişkin ayrıntılar ve diğer en iyi yöntemler için [Azure Data Lake Storage 2. ' de erişim denetimi modeli](data-lake-storage-access-control-model.md)' ne bakın.
-
-Erişim ve varsayılan ACL 'Leri ayarlamak için onay kutusu denetimlerini kullanın. Bu ACL türleri arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [ACL türleri](data-lake-storage-access-control.md#types-of-acls).
-
-<a id="apply-acls-recursively"></a>
-
-## <a name="apply-acls-recursively"></a>ACL 'Leri yinelemeli olarak Uygula
-
-Bu değişiklikleri her alt öğe için ayrı ayrı yapmak zorunda kalmadan, ACL girişlerini bir üst dizinin varolan alt öğelerine yinelemeli olarak uygulayabilirsiniz.
-
-ACL girdilerini yinelemeli olarak uygulamak için kapsayıcıya veya bir dizine sağ tıklayın ve **Access Control listeleri yay**' e tıklayın.  Aşağıdaki ekran görüntüsünde, bir dizine sağ tıkladığınızda görüntülenen menü gösterilmektedir.
-
-> [!div class="mx-imgBorder"]
-> ![Dizine sağ tıklayıp erişimi yay denetim ayarını seçme](./media/data-lake-storage-explorer/propagate-access-control-list-option.png)
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Lake Storage 2. erişim denetim listelerine öğrenin.
+Erişim denetim listeleri (ACL 'Ler) ayarlayarak dosya ve Dizin iznini yönetmeyi öğrenin
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage 2. Nesil'de Erişim Denetimi](./data-lake-storage-access-control.md)
+> [Azure Data Lake Storage 2. ACL 'Leri yönetmek için Azure Depolama Gezgini kullanma](./data-lake-storage-explorer-acl.md)

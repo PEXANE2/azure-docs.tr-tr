@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0605780651e1a3c54ae53d13a3f99e1124fa76db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080429"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585007"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux ölçek kümesi şablonunda Konuk ölçümleri kullanarak otomatik ölçeklendirme
 
 Azure 'da VM 'Ler ve ölçek kümelerinden toplanan iki kapsamlı ölçüm türü vardır: konak ölçümleri ve konuk ölçümleri. Yüksek düzeyde, Standart CPU, disk ve ağ ölçümleri kullanmak isterseniz, ana bilgisayar ölçümleri iyi bir uyum sağlar. Ancak, daha büyük bir ölçüm seçimine ihtiyaç duyuyorsanız, Konuk ölçümlerinin bakımış olması gerekir.
 
-Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirmez, ancak Konuk ölçümler [Windows Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-template.md) veya [Linux Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-linux.md) Konuk VM 'ye yüklemenizi gerektirir. Konuk ölçümlerinin tek bir yaygın nedeni, ana bilgisayar ölçümlerinin yerine Konuk ölçümlerinin daha büyük bir kullanımını konak ölçümlerine göre sağlar. Bu tür bir örnek, yalnızca Konuk ölçümler aracılığıyla kullanılabilen bellek tüketim ölçümleridir. Desteklenen konak ölçümleri [burada](../azure-monitor/platform/metrics-supported.md)listelenir ve yaygın olarak kullanılan Konuk ölçümler [burada](../azure-monitor/platform/autoscale-common-metrics.md)listelenir. Bu makalede, Linux ölçek kümelerinin Konuk ölçümlerine göre otomatik ölçeklendirme kurallarını kullanmak için [temel uygun ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirileceği gösterilmektedir.
+Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirmez, ancak Konuk ölçümler [Windows Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-template.md) veya [Linux Azure tanılama uzantısını](../virtual-machines/extensions/diagnostics-linux.md) Konuk VM 'ye yüklemenizi gerektirir. Konuk ölçümlerinin tek bir yaygın nedeni, ana bilgisayar ölçümlerinin yerine Konuk ölçümlerinin daha büyük bir kullanımını konak ölçümlerine göre sağlar. Bu tür bir örnek, yalnızca Konuk ölçümler aracılığıyla kullanılabilen bellek tüketim ölçümleridir. Desteklenen konak ölçümleri [burada](../azure-monitor/essentials/metrics-supported.md)listelenir ve yaygın olarak kullanılan Konuk ölçümler [burada](../azure-monitor/autoscale/autoscale-common-metrics.md)listelenir. Bu makalede, Linux ölçek kümelerinin Konuk ölçümlerine göre otomatik ölçeklendirme kurallarını kullanmak için [temel uygun ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirileceği gösterilmektedir.
 
 ## <a name="change-the-template-definition"></a>Şablon tanımını değiştirme
 
@@ -105,7 +105,7 @@ Sonra, ölçek kümesini `extensionProfile` Tanılama uzantısını içerecek ş
        }
 ```
 
-Son olarak, `autoscaleSettings` Bu ölçümlere göre otomatik ölçeklendirmeyi yapılandırmak için bir kaynak ekleyin. Bu kaynak, ölçek kümesinin `dependsOn` Otomatik ölçeklendirmeyi denemeden önce mevcut olduğundan emin olmak için ölçek kümesine başvuran bir yan tümcesine sahiptir. Otomatik ölçeklendirme için farklı bir ölçüm seçerseniz, ' yi `counterSpecifier` Otomatik ölçeklendirme yapılandırmasındaki olarak tanılama uzantısı yapılandırmasından kullanırsınız `metricName` . Otomatik ölçeklendirme yapılandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme en iyi uygulamaları](../azure-monitor/platform/autoscale-best-practices.md) ve [Azure izleyici REST API başvuru belgeleri](/rest/api/monitor/autoscalesettings).
+Son olarak, `autoscaleSettings` Bu ölçümlere göre otomatik ölçeklendirmeyi yapılandırmak için bir kaynak ekleyin. Bu kaynak, ölçek kümesinin `dependsOn` Otomatik ölçeklendirmeyi denemeden önce mevcut olduğundan emin olmak için ölçek kümesine başvuran bir yan tümcesine sahiptir. Otomatik ölçeklendirme için farklı bir ölçüm seçerseniz, ' yi `counterSpecifier` Otomatik ölçeklendirme yapılandırmasındaki olarak tanılama uzantısı yapılandırmasından kullanırsınız `metricName` . Otomatik ölçeklendirme yapılandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme en iyi uygulamaları](../azure-monitor/autoscale/autoscale-best-practices.md) ve [Azure izleyici REST API başvuru belgeleri](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

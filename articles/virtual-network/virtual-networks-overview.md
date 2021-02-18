@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218544"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635957"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
 Azure sanal ağı (VNet), Azure 'daki özel ağınız için temel yapı taşdır. VNet, Azure sanal makineler (VM) gibi birçok Azure Kaynak türünün birbirleriyle güvenli bir şekilde iletişim kurmasına olanak sağlar, internet ve şirket içi ağlar. VNet, kendi veri merkezinizde işlemenizi sağlayan geleneksel bir ağa benzer, ancak Azure 'un ölçek, kullanılabilirlik ve yalıtım gibi ek avantajlarından yararlanıyor.
 
 ## <a name="why-use-an-azure-virtual-network"></a>Azure sanal ağını neden kullanmalısınız?
-Azure sanal ağ, Azure kaynaklarının birbirleriyle, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasına olanak sağlar. Bir sanal ağı gerçekleştirebileceğiniz önemli senaryolar; internet ile Azure kaynaklarıyla iletişim, Azure kaynakları arasında iletişim, şirket içi kaynaklarla iletişim, ağ trafiğini filtreleme, ağ trafiğini filtreleme ve Azure hizmetleriyle tümleştirme.
+Azure sanal ağ, Azure kaynaklarının birbirleriyle, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasına olanak sağlar. Bir sanal ağ ile gerçekleştirebileceğiniz önemli senaryolar; internet ile Azure kaynaklarıyla iletişim, Azure kaynakları arasında iletişim, şirket içi kaynaklarla iletişim, ağ trafiğini filtreleme, ağ trafiği yönlendirme ve Azure hizmetleriyle tümleştirme.
 
 ### <a name="communicate-with-the-internet"></a>İnternet ile iletişim kurma
 

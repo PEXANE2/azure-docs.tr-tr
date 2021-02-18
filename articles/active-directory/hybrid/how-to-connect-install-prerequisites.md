@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15e5aba2bad4cd7ae63ceb9c9f67f7e653a82a91
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368974"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650159"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -167,6 +167,17 @@ Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı sunucusu ile Azure AD aras�
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. Eşitleme altyapısı sunucusu ve uzak SQL Server arasında TLS 1,2 ' i etkinleştirmek istiyorsanız, [Microsoft SQL Server Için tls 1,2 desteği](https://support.microsoft.com/kb/3135244)için gerekli sürümlerin yüklü olduğundan emin olun.
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>Eşitleme sunucusunda DCOM önkoşulları
+Eşitleme hizmetinin yüklenmesi sırasında, Azure AD Connect aşağıdaki kayıt defteri anahtarının varlığını denetler:
+
+- HKEY_LOCAL_MACHINE: Software\Microsoft\Ole
+
+Bu kayıt defteri anahtarı altında Azure AD Connect aşağıdaki değerlerin mevcut ve bozuk olup olmadığını kontrol eder: 
+
+- [MachineAccessRestriction](https://docs.microsoft.com/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](https://docs.microsoft.com/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](https://docs.microsoft.com/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Federasyon yükleme ve yapılandırma önkoşulları
 ### <a name="windows-remote-management"></a>Windows Uzaktan Yönetimi

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965128"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576979"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.
@@ -40,7 +40,7 @@ Kuruluşunuzun büyüklüğüne ve yapısına bağlı olarak birçok kişi ve ek
 
 ![Roller](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örnek:
+Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örneğin:
 
 **Cem (İş Yükü Sahibi)**
 
@@ -135,7 +135,7 @@ Azure Güvenlik Merkezi, Azure Izleyici hizmeti tarafından kullanılan aracı, 
 
 ### <a name="agent"></a>Aracı
 
-Güvenlik ilkesinde otomatik sağlama etkinleştirildiğinde, desteklenen tüm Azure VM 'lerine ve oluşturulan tüm yeni sanal makinelere Log Analytics Aracısı ( [Windows](../azure-monitor/platform/agent-windows.md) veya [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)için) yüklenir. VM veya bilgisayarda Log Analytics Aracısı zaten yüklüyse, Azure Güvenlik Merkezi geçerli yüklü aracıyı kullanacaktır. Aracının işlemi, bir arada olmayan ve VM performansı üzerinde çok az etkiye sahip olacak şekilde tasarlanmıştır.
+Güvenlik ilkesinde otomatik sağlama etkinleştirildiğinde, desteklenen tüm Azure VM 'lerine ve oluşturulan tüm yeni sanal makinelere Log Analytics Aracısı ( [Windows](../azure-monitor/agents/agent-windows.md) veya [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)için) yüklenir. VM veya bilgisayarda Log Analytics Aracısı zaten yüklüyse, Azure Güvenlik Merkezi geçerli yüklü aracıyı kullanacaktır. Aracının işlemi, bir arada olmayan ve VM performansı üzerinde çok az etkiye sahip olacak şekilde tasarlanmıştır.
 
 Windows için Log Analytics Aracısı, 443 numaralı TCP bağlantı noktasını kullanmalıdır. Daha fazla bilgi için [Sorun giderme makalesine](security-center-troubleshooting-guide.md) bakın.
 

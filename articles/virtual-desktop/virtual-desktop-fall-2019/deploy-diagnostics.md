@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515646"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587959"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 
@@ -116,7 +116,7 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
     -   İşlemci bilgileri ( \* ) \\ İşlemci Zamanı
     -   Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi
 
-[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/platform/data-sources-performance-counters.md)performans sayaçları hakkında daha fazla bilgi edinin.
+[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/agents/data-sources-performance-counters.md)performans sayaçları hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 >Yapılandırdığınız tüm ek sayaçlar, Tanılama Aracı 'nda gösterilmez. Tanılama aracında görünmesini sağlamak için aracın yapılandırma dosyasını yapılandırmanız gerekir. Bunu gelişmiş yönetimle birlikte nasıl yapacağınız hakkında yönergeler, daha sonraki bir tarihte GitHub 'da kullanılabilir.
@@ -199,7 +199,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 Tanılama aracını kullanıcılarınız için kullanılabilir hale gelmeden önce, aşağıdaki izinlere sahip olduklarından emin olun:
 
-- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../../azure-monitor/platform/roles-permissions-security.md).
+- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../../azure-monitor/roles-permissions-security.md).
 -  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'Nde temsilci erişimi](delegated-access-virtual-desktop-2019.md).
 
 Kullanıcılarınıza aşağıdaki bilgileri de vermeniz gerekir:

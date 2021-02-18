@@ -3,12 +3,12 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586770"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -53,7 +53,7 @@ Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | VaultUniqueId_s |Metin |Uyarıyla ilişkili korumalı kasasının benzersiz tanıtıcısı |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Verilerin toplandığı kaynak için benzersiz tanımlayıcı. Örneğin, bir kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -83,7 +83,7 @@ Bu tablo, yedekleme öğesiyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | Kaynak |Metin |Verilerin toplandığı kaynak (örneğin, kurtarma hizmetleri Kasası adı) |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan verilerin kaynak KIMLIĞI, örneğin kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Toplanan veriler için kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Toplanan veriler için kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Toplanan veriler için kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Toplanmakta olan veriler için kaynak türü, örneğin Kasakasaları |
@@ -108,7 +108,7 @@ Bu tablo, çeşitli varlıklarla yedekleme öğesi ilişkilendirmeleri hakkında
 | VaultUniqueId_s |Metin |Yedekleme öğesini içeren kasanın benzersiz tanımlayıcısı |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü, örneğin kasa |
@@ -127,7 +127,7 @@ Bu tablo, çeşitli varlıklarla yedekleme öğesi ilişkilendirmeleri hakkında
 |BackupManagementServerUniqueId_s     |Metin         |Yedekleme yönetim sunucusunu benzersiz olarak tanımlamak için alan       |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü, örneğin kasa |
@@ -163,7 +163,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 | RecoveryJobRPLocation_s |Metin | Kurtarılan kurtarma noktasının depolandığı konum|
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI|
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -172,7 +172,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -204,14 +204,14 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | YearlyRetentionDaysOfTheMonth_s |Metin ||Yıllık bekletme için seçilen ayın tarihleri |
 | SynchronisationFrequencyPerDay_s |Tam Sayı |v2|SC DPM ve MABS için bir dosya yedeklemesinin eşitlendiği gün sayısı |
 | DiffBackupFormat_s |Metin |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemelerinin biçimi |
-| DiffBackupTime_s |Süre |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi|
+| DiffBackupTime_s |Saat |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi|
 | DiffBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri bekletme süresi|
 | LogBackupFrequency_s |Ondalık Sayı |v2|SQL için günlük yedeklemeleri sıklığı|
 | LogBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için günlük yedeklemeleri bekletme süresi|
 | DiffBackupDaysofTheWeek_s |Metin |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri için haftanın günleri|
 | SourceSystem |Metin ||Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin ||Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin ||Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -220,7 +220,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo, çeşitli varlıklarla ilke ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -234,7 +234,7 @@ Bu tablo, çeşitli varlıklarla ilke ilişkilendirmeleri hakkında ayrıntılar
 | BackupManagementServerUniqueId_s |Metin |v2 |Yedekleme yönetim sunucusunu benzersiz şekilde tanımlamak için alan, varsa yedekleme öğesi tarafından korunur        |
 | SourceSystem |Metin ||Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin ||Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin ||Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -277,7 +277,7 @@ Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | VaultUniqueId_s |Metin |Depolama kasasının benzersiz KIMLIĞI hesaplanır |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -318,7 +318,7 @@ Bu tablo, kasala ilgili alanlarla ilgili ayrıntıları sağlar.
 | StorageReplicationType_s |Metin |Kasa için depolama çoğaltma türü (örneğin, Geoyedekli) |
 | SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
 | ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
-| kaynak grubundaki |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | adlı yönetilen örnek, |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
 | ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
 | ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
@@ -349,7 +349,7 @@ Bu tablo, bir birimin ilişkilendirildiği iş yüklerini belirtir.
 
 Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
-| Alan | Veri Türü |Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü |Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler için yedekleme öğesini tanımlamak üzere kullanılan benzersiz KIMLIK|
 | ProtectedContainerUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler hariç her şey için korunan kapsayıcıyı tanımlamak üzere kullanılan benzersiz KIMLIK|
@@ -462,7 +462,7 @@ Aşağıda Azure Tanılama tablosunda yer alan Azure Backup verilerine sorgu yaz
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 şeması vs v2 şeması
 
-Daha önce, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri ***v1 şeması***olarak adlandırılan bir şemadaki Azure tanılama tabloya gönderilmiştir. Daha sonra, diğer senaryoları ve iş yüklerini desteklemek için yeni sütunlar eklenmiştir ve Tanılama verileri ***v2 şeması***olarak adlandırılan yeni bir şemaya itildi.  
+Daha önce, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri ***v1 şeması** _ olarak adlandırılan bir şemadaki Azure tanılama tabloya gönderilmiştir. Daha sonra, diğer senaryoları ve iş yüklerini desteklemek için yeni sütunlar eklenmiştir ve Tanılama verileri _ *_v2 şeması_* * olarak adlandırılan yeni bir şemaya itildi.  
 
 Geriye dönük uyumluluk nedenleriyle, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri şu anda hem v1 hem de v2 şemasında Azure Tanılama tabloya gönderilmiştir (artık kullanımdan kaldırma yolunda v1 şeması ile). Günlük sorgularınızda SchemaVersion_s = = "v1" kayıtlarını filtreleyerek Log Analytics v1 şemasında hangi kayıtların olduğunu belirleyebilirsiniz.
 
@@ -495,4 +495,4 @@ V1 şeması kullanımdan kaldırma yolunda olduğu için, Azure Backup tanılama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri modelini gözden geçirdikten sonra, kendi panonuzu oluşturmak için Azure Izleyici günlüklerinde [özel sorgular oluşturmaya](../azure-monitor/learn/tutorial-logs-dashboards.md) başlayabilirsiniz.
+Veri modelini gözden geçirdikten sonra, kendi panonuzu oluşturmak için Azure Izleyici günlüklerinde [özel sorgular oluşturmaya](../azure-monitor/visualize/tutorial-logs-dashboards.md) başlayabilirsiniz.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747315"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585366"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -34,7 +34,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -70,7 +70,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 >
 > Bu günlük iletici makinesini, [syslog iletilerini](connect-syslog.md) ve CEF 'yi iletmek için kullanmayı planlıyorsanız, olayların Syslog ve CommonSecurityLog tablolarına çoğaltılmasını önlemek için:
 >
-> 1. CEF biçiminde ileticiye günlük gönderen her kaynak makinede, CEF iletilerini göndermek için kullanılan tesisleri kaldırmak için Syslog yapılandırma dosyasını düzenlemeniz gerekir. Bu şekilde, CEF 'de gönderilen tesisler Syslog 'da da gönderilmeyecektir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için bkz. [Linux aracısında Syslog yapılandırma](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. CEF biçiminde ileticiye günlük gönderen her kaynak makinede, CEF iletilerini göndermek için kullanılan tesisleri kaldırmak için Syslog yapılandırma dosyasını düzenlemeniz gerekir. Bu şekilde, CEF 'de gönderilen tesisler Syslog 'da da gönderilmeyecektir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için bkz. [Linux aracısında Syslog yapılandırma](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. Aracının Azure Sentinel 'de Syslog yapılandırmasıyla eşitlenmesini devre dışı bırakmak için bu makinelerde aşağıdaki komutu çalıştırmanız gerekir. Bu, önceki adımda yaptığınız yapılandırma değişikliğinin üzerine yazılmamasını sağlar.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

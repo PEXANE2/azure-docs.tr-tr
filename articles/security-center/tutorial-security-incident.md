@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635583"
 ---
-# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: güvenlik uyarılarını önceliklendirme, araştırın ve yanıtlayın
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: Güvenlik uyarılarını önceliklendirme, araştırma ve yanıtlama
 Güvenlik Merkezi, bulut kaynaklarınızda potansiyel olabilecek kötü amaçlı etkinlikler hakkında sizi uyarmak için gelişmiş analiz ve tehdit bilgilerini kullanarak hibrit bulut iş yüklerinizi sürekli çözümler. Ayrıca, uyarıları diğer güvenlik ürünleri ve hizmetlerinden Güvenlik Merkezi 'ne tümleştirebilirsiniz. Bir uyarı oluşturulduktan sonra olası güvenlik sorununu araştırmak ve düzeltmek için Swift eylemi gerekir. 
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide ele alınan özellikler arasında ilerlemek için Azure Defender 'ın etkinleştirilmiş olması gerekir. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Güvenlik Merkezi](security-center-get-started.md) 'ni kullanmaya başlama hızlı başlangıç, nasıl yükselteceğiniz konusunda size yol gösterir.
 
 
@@ -42,7 +42,7 @@ Güvenlik Merkezi, tüm güvenlik uyarılarının birleşik bir görünümünü 
 
 Uyarıları **güvenlik uyarıları** sayfasından önceliklendirin:
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Güvenlik uyarıları listesi sayfası" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Güvenlik Merkezi 'nin güvenlik uyarıları listesi":::
 
 Öncelikle hangi uyarının araştırılacağını belirlemek için ortamınızdaki etkin güvenlik uyarılarını gözden geçirmek için bu sayfayı kullanın.
 
@@ -60,7 +60,7 @@ Güvenlik uyarılarını önceliklendirme sırasında, uyarıları daha yüksek 
 1. Uyarı Genel Bakış sayfasında, ilk olarak araştırılacağı kaynağı seçin.
 1. Sol bölmeden, güvenlik uyarısıyla ilgili üst düzey bilgileri gösteren araştırmanıza başlayın.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Güvenlik uyarıları listesi sayfası":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Uyarı Ayrıntıları sayfasının, üst düzey bilgileri vurgulayan sol bölmesi":::
 
     Bu bölme şunları gösterir:
     - Uyarı önem derecesi, durum ve etkinlik süresi
@@ -80,7 +80,7 @@ Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenl
 
 1.  Önerilen yanıtları görmek için **eylem al** sekmesini açın.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Güvenlik uyarıları listesi sayfası" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Güvenlik uyarıları eylem al sekmesi" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  Sorunu azaltmak için gereken el ile araştırma adımları için **tehdit riskini azaltma** bölümünü gözden geçirin.
 1.  Kaynaklarınızın güvenliğini sağlamak ve bu türden gelecek saldırıları engellemek için, **gelecekteki saldırıları engelleme** bölümündeki güvenlik önerilerini düzeltin.
@@ -89,7 +89,7 @@ Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenl
 
 1.  Uyarı araştırmasını tamamlayıp uygun şekilde yanıtladığınızda, durumu **kapatıldı** olarak değiştirin.
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Güvenlik uyarıları listesi sayfası":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Uyarının durumunu ayarlama":::
 
     Bu, uyarıyı ana uyarılar listesinden kaldırır. **Kapatılan** durum ile tüm uyarıları görüntülemek için uyarılar listesi sayfasından filtreyi kullanabilirsiniz.
 
@@ -97,7 +97,7 @@ Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenl
     1. Uyarı **yararlı** veya **faydalı** olarak işaretleniyor.
     1. Bir neden seçin ve açıklama ekleyin.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Güvenlik uyarıları listesi sayfası":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Bir uyarının yararlılığı hakkında Microsoft 'a geri bildirim sağlama":::
 
     > [!TIP]
     > Algoritmalarınızı geliştirmek ve daha iyi güvenlik uyarıları sağlamak için geri bildirimlerinizi gözden geçiririz.
@@ -108,11 +108,11 @@ Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı ba�
 
 Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bırakmak istiyorsanız:
 
-1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar** ' ı seçin.
+1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar**' ı seçin.
 1. Uygun aboneliği seçin.
-1. Düşürme için **Azure Defender kapalı** ' yı seçin.
+1. Düşürme için **Azure Defender kapalı**' yı seçin.
 1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı** olarak ayarlayın.
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, zaten aracısına sahip olan Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
@@ -123,4 +123,4 @@ Bu öğreticide, bir güvenlik uyarısını yanıtlarken kullanılacak güvenlik
 
 - [Key Vault için Azure Defender uyarılarına yanıt verme](defender-for-key-vault-usage.md)
 - [Güvenlik uyarıları - başvuru kılavuzu](alerts-reference.md)
-- [Azure Defender 'a giriş](azure-defender.md)
+- [Azure Defender'a giriş](azure-defender.md)

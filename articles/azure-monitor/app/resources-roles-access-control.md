@@ -4,12 +4,12 @@ description: Kuruluşunuzun öngörülerinin sahipleri, katkıda bulunanlar ve o
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076693"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589605"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights içindeki kaynaklar, roller ve erişim denetimi
 
@@ -76,7 +76,7 @@ Uygun olduğunda, ilişkili resmi başvuru belgelerine bağlantı veriyoruz.
 | [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) |, Herhangi bir şeyi görüntüleyebilir ancak değiştiremez. |
 | [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Kullanıcıya Application Insights Snapshot Debugger özelliklerini kullanma izni verir. Bu rolün sahip veya katkıda bulunan rollerinin ne olduğunu unutmayın. |
 | Azure hizmet dağıtımı Release Management Katılımcısı | Azure hizmet dağıtımı aracılığıyla hizmet dağıtımı için katkıda bulunan rolü. |
-| [Veri Takiger](../../role-based-access-control/built-in-roles.md#data-purger) | Kişisel verileri temizlemek için özel rol. Daha fazla bilgi için [kişisel verilere yönelik kılavuzumuza](../platform/personal-data-mgmt.md) bakın.   |
+| [Veri Takiger](../../role-based-access-control/built-in-roles.md#data-purger) | Kişisel verileri temizlemek için özel rol. Daha fazla bilgi için [kişisel verilere yönelik kılavuzumuza](../logs/personal-data-mgmt.md) bakın.   |
 | ExpressRoute Yöneticisi | Hızlı yollar silme ve yönetme oluşturabilir.|
 | [Log Analytics Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma.  |
 | [Log Analytics Okuyucusu](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. |

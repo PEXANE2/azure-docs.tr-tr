@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572642"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -35,7 +35,7 @@ Dosya ve klasör/dizinlerdeki değişiklikleri izlemek için Değişiklik İzlem
 
 Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Automation Hesapları**’nı seçin.
 
@@ -167,7 +167,7 @@ Değişiklik kayıtları için Azure Izleyici günlüklerinde çeşitli aramalar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [Limit değişiklik izleme and Inventory Deployment Scope](manage-scope-configurations.md).
-* Azure Izleyici günlüklerinde depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure Izleyici günlüklerinde günlük aramaları](../../azure-monitor/log-query/log-query-overview.md).
+* Azure Izleyici günlüklerinde depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure Izleyici günlüklerinde günlük aramaları](../../azure-monitor/logs/log-query-overview.md).
 * Dağıtımlar ile tamamlandıysa, bkz. [değişiklik izleme ve envanteri kaldırma](remove-feature.md).
 * VM 'lerinizi Değişiklik İzleme ve envanterden silmek için bkz. [VM 'leri değişiklik izleme ve envanterden kaldırma](remove-vms-from-change-tracking.md).
 * Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](../troubleshoot/change-tracking.md).

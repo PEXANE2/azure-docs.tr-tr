@@ -7,12 +7,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5e9f6ecc733eccf317e3013752ee2f5b0586ea78
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d3a89e7733cc033792056b8de5232232b8327025
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540762"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580395"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>Sanal makine ve disk performansı
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance.md)]
@@ -22,6 +22,3 @@ Hem Premium Depolama hem de Premium depolama önbelleği için etkinleştirilen 
 
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-2.md)]
 
-Bu sanal makine ve GÇ etkinliği oluşturan disk birleşimi üzerinde bir sınama testi çalıştıralım. Azure 'da depolama GÇ 'yi kıyaslama hakkında bilgi edinmek için bkz. [Azure disk depolama uygulamanızı kıyaslama](disks-benchmarks.md). Sınama aracı ' ndan, VM ve disk birleşiminin 22.800 ıOPS ile elde olduğunu görebilirsiniz:
-
-[!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-3.md)]

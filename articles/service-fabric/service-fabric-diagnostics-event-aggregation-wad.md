@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076139"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588376"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ Ardından, `VirtualMachineProfile` Uzantılar dizisine aşağıdaki kodu ekleyer
 }
 ```
 
-Dosyadaki template.jsaçıklandığı gibi değiştirdikten sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın. Şablon aktarılmışsa, deploy.ps1 dosyayı çalıştırmak şablonu tekrar yayımlayan. Dağıttıktan sonra, **Provisioningstate** 'in **başarılı**olduğundan emin olun.
+Dosyadaki template.jsaçıklandığı gibi değiştirdikten sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın. Şablon aktarılmışsa, deploy.ps1 dosyayı çalıştırmak şablonu tekrar yayımlayan. Dağıttıktan sonra, **Provisioningstate** 'in **başarılı** olduğundan emin olun.
 
 > [!TIP]
 > Kümelerinize kapsayıcılar dağıtacaksanız WAD 'yi **Wadcfg > DiagnosticMonitorConfiguration** bölümüne ekleyerek Docker istatistiklerini seçmesini etkinleştirin.
@@ -346,7 +346,7 @@ Kaynak Yöneticisi şablonunun "WadCfg" bölümünde, aşağıdaki iki değişik
 
 Yukarıdaki kod parçacıklarında, havuzu anlatmak için "ApplicationInsights" adı kullanılmıştır. Bu bir gereksinim değildir ve havuz adı "Havuzlar" a dahil olduğu sürece, adı herhangi bir dizeye ayarlayabilirsiniz.
 
-Şu anda, kümedeki Günlükler Application Insights ' günlük görüntüleyicisinde **izleme** olarak görünür. Platformdan gelen izlemelerin çoğu "bilgilendirme" düzeyine sahip olduğundan, havuz yapılandırmasını yalnızca "uyarı" veya "hata" türünde Günlükler gönderecek şekilde değiştirmeyi de düşünebilirsiniz. Bu, [Bu makalede](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)gösterildiği gibi, havuzunuzu "Kanallar" eklenerek yapılabilir.
+Şu anda, kümedeki Günlükler Application Insights ' günlük görüntüleyicisinde **izleme** olarak görünür. Platformdan gelen izlemelerin çoğu "bilgilendirme" düzeyine sahip olduğundan, havuz yapılandırmasını yalnızca "uyarı" veya "hata" türünde Günlükler gönderecek şekilde değiştirmeyi de düşünebilirsiniz. Bu, [Bu makalede](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)gösterildiği gibi, havuzunuzu "Kanallar" eklenerek yapılabilir.
 
 >[!NOTE]
 >Portalda veya Kaynak Yöneticisi şablonunuzda yanlış bir Application Insights anahtarı kullanırsanız, anahtarı el ile değiştirmeniz ve kümeyi güncelleştirmeniz/yeniden dağıtmanız gerekir.

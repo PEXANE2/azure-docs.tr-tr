@@ -4,16 +4,16 @@ description: Etkinlik günlükleri aracılığıyla kaynak olaylarını nasıl a
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: c5c84891187c540c0b24162cf5c8c7f96e9e731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20028a4f84dae9d292cf855a1e164bd69864909
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962307"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574038"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Azure App Service kaynak olaylarını al
 
-Azure App Service kaynaklarınızın durumunu ve sistem durumunu izlemek için yerleşik araçlar sağlar. Kaynak olayları, temel Web uygulaması kaynaklarınız üzerinde yapılan tüm değişiklikleri anlamanıza yardımcı olur ve gerekli işlemleri gerçekleştirin. Olay örnekleri şunlardır: örneklerin ölçeklendirilmesi, uygulama ayarlarına yönelik güncelleştirmeler, Web uygulamasının yeniden başlatılması ve çok daha fazlası. Bu makalede, [Azure etkinlik günlüklerini](../azure-monitor/platform/activity-log.md#view-the-activity-log) görüntülemeyi ve App Service Web uygulamanız ile ilgili kaynak olaylarını izlemek için [Event Grid](../event-grid/index.yml) etkinleştirmeyi öğreneceksiniz.
+Azure App Service kaynaklarınızın durumunu ve sistem durumunu izlemek için yerleşik araçlar sağlar. Kaynak olayları, temel Web uygulaması kaynaklarınız üzerinde yapılan tüm değişiklikleri anlamanıza yardımcı olur ve gerekli işlemleri gerçekleştirin. Olay örnekleri şunlardır: örneklerin ölçeklendirilmesi, uygulama ayarlarına yönelik güncelleştirmeler, Web uygulamasının yeniden başlatılması ve çok daha fazlası. Bu makalede, [Azure etkinlik günlüklerini](../azure-monitor/essentials/activity-log.md#view-the-activity-log) görüntülemeyi ve App Service Web uygulamanız ile ilgili kaynak olaylarını izlemek için [Event Grid](../event-grid/index.yml) etkinleştirmeyi öğreneceksiniz.
 
 > [!NOTE]
 > Event Grid ile tümleştirme App Service **önizlemededir**. [Daha fazla ayrıntı için duyuruyu görüntüleyin.](https://aka.ms/app-service-event-grid-announcement)
@@ -33,7 +33,7 @@ Azure etkinlik günlükleri gibi App Service Ayrıntılar için:
 
 Azure etkinlik günlükleri Azure portal, PowerShell, REST API veya CLı kullanılarak sorgulanabilir. Günlükleri bir depolama hesabına, Olay Hub 'ına ve Log Analytics gönderebilirsiniz. Ayrıca, bunları Power BI analiz edebilir veya kaynak olaylarında güncel kalmasını sağlamak için uyarılar oluşturabilirsiniz.
 
-[Azure etkinlik günlüğü olaylarını görüntüleyin ve alın.](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+[Azure etkinlik günlüğü olaylarını görüntüleyin ve alın.](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 ## <a name="ship-activity-logs-to-event-grid"></a>Etkinlik günlüklerini Event Grid gönder
 
@@ -44,7 +44,7 @@ Ayrıca Event Grid’i Logic Apps ile birlikte kullanarak kod yazmadan her yerde
 [Azure App Service olaylar için özellikleri ve şemayı görüntüleyin.](../event-grid/event-schema-app-service.md)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
-* [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Izleyici ile günlük sorgulama](../azure-monitor/logs/log-query-overview.md)
 * [Azure App Service Izleme](web-sites-monitor.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

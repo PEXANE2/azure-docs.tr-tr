@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591850"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub işlemler izlemeden Azure Izleyici kaynak günlüklerine geçirme
 
-IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, Azure izleyici 'nin bir özelliği olan [Azure izleyici kaynak günlüklerine](../azure-monitor/platform/platform-logs-overview.md)bu iş akışını geçirebilir. Kaynak günlükleri birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
+IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, Azure izleyici 'nin bir özelliği olan [Azure izleyici kaynak günlüklerine](../azure-monitor/essentials/platform-logs-overview.md)bu iş akışını geçirebilir. Kaynak günlükleri birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
 
 **IoT Hub işlemler izleme işlevi kullanım dışıdır** ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden Azure Izleyici kaynak günlüklerine taşımaya yönelik adımlar sağlanmaktadır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
@@ -49,9 +49,9 @@ Azure portal IoT Hub güncelleştirmek için, önce bir tanılama ayarı oluştu
 
 1. Ayarları kaydetmek için **Kaydet**’i seçin.
 
-Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, Günlükler yapılandırılmış hedefte görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](../azure-monitor/platform/platform-logs-overview.md)kullanma.
+Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, Günlükler yapılandırılmış hedefte görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](../azure-monitor/essentials/platform-logs-overview.md)kullanma.
 
-PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma hakkında daha ayrıntılı bilgi için bkz. Azure Izleyici belgelerindeki [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) .
+PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma hakkında daha ayrıntılı bilgi için bkz. Azure Izleyici belgelerindeki [Tanılama ayarları](../azure-monitor/essentials/diagnostic-settings.md) .
 
 ### <a name="turn-off-operations-monitoring"></a>İşlem izlemeyi kapat
 

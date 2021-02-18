@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582207"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650771"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -35,7 +35,7 @@ Microsoft Translator, birden çok veri merkezi konumundan kullanıma sunulur. Ş
 
 * **Kuzey:** Doğu ABD, Orta Güney ABD, Orta Batı ABD ve Batı ABD 2 
 * **Asya Pasifik:** Kore Güney, Japonya Doğu, Güneydoğu Asya ve Avustralya Doğu
-* **Avrupa:** Kuzey Avrupa ve Batı Avrupa
+* **Avrupa:** Kuzey Avrupa, Batı Avrupa, İsviçre Kuzey <sup>1, 2</sup>ve İsviçre Batı <sup>1, 2</sup>
 
 Microsoft Translator 'a yönelik istekler, isteğin kaynaklandığı yere en yakın veri merkezi tarafından işlenen çoğu durumda bulunur. Bir veri merkezi arızası durumunda, istek Azure Coğrafya dışında yönlendirilebilir.
 
@@ -47,6 +47,17 @@ Microsoft Translator 'a yönelik istekler, isteğin kaynaklandığı yere en yak
 |Azure|Birleşik Devletler|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Avrupa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asya Pasifik|    api-apc.cognitive.microsofttranslator.com|
+
+İsviçre Kuzey veya İsviçre Batı bulunan bir kaynağa sahip <sup>1</sup> müşteri, metin API isteklerinin İsviçre içinde sunulmasını sağlayabilir. İsteklerin Isviçre 'de işlenmesini sağlamak için, ' ' İsviçre Kuzey ' veya ' İsviçre Batı ' kaynak bölgesinde çevirmen kaynağını oluşturun, sonra API isteklerinizin kaynak özel uç noktasını kullanın. Örneğin: ' İsviçre Kuzey ' olarak ' kaynak Bölgesi ' ile Azure portal bir Translator kaynağı oluşturursanız ve kaynak adınız ' My-ch-n ' ise, Özel uç noktanız " https://my-ch-n.cognitiveservices.azure.com " olur. Ve çevrilecek örnek bir istek şunlardır:
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> Özel çevirici Şu anda Isviçre 'de kullanılamıyor.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 

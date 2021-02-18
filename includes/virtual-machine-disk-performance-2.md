@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808514"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580399"
 ---
 ![D s v 3 belirtimlerini gösteren grafik.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -117,57 +117,3 @@ Bu durumda, Standard_D8s_v3 bir sanal makinede çalışan uygulama 25.000 ıOPS 
 - Konak önbelleğe alma kullanan üç disk, 16.000 olan önbelleğe alınmış limitlerin içinde olduğundan, bu istekler başarıyla tamamlanır. Depolama performansı dönüşü gerçekleşmez.
 - Konak önbelleğe alma kullanmayan iki disk, 12.800 sınırının önbelleğe alınmamış sınırları dahilinde olduğundan, bu istekler de başarıyla tamamlanır. Hiçbir kafes gerçekleşmez.
 
-## <a name="disk-performance-metrics"></a>Disk performans ölçümleri
-
-Azure 'da sanal makinelerinizin ve disklerinizin nasıl çalıştığı hakkında öngörü sağlayan ölçümler sunuyoruz. Bu ölçümler Azure portal aracılığıyla görüntülenebilir. Ayrıca, bir API çağrısıyla de alınabilir. Ölçümler, bir dakikalık aralıklar üzerinden hesaplanır. VM ve disk GÇ ve ayrıca üretilen iş performansı hakkında bilgi almak için aşağıdaki ölçümler mevcuttur:
-
-- **Işletim sistemi diski sıra derinliği**: işletim sistemi diskine okunmayı bekleyen veya bir işletim sistemi diskine yazılan mevcut bekleyen GÇ isteklerinin sayısı.
-- **Işletim sistemi diski okuma bayt/sn**: işletim sistemi diskinden saniye cinsinden okunan bayt sayısı.
-- **Işletim sistemi diski okuma işlemi/sn**: işletim sistemi diskinden saniye cinsinden okunan giriş işlemlerinin sayısı.
-- **Işletim sistemi diski yazma bayt/sn**: işletim sistemi diskinden saniye olarak yazılan bayt sayısı.
-- **Işletim sistemi diski yazma işlemi/sn**: işletim sistemi diskinden saniye olarak yazılan çıkış işlemlerinin sayısı.
-- **Veri diski sıra derinliği**: okuma veya veri diskine yazma için bekleyen mevcut bekleyen GÇ isteklerinin sayısı.
-- **Veri diski okuma bayt/sn**: veri disklerinin saniye cinsinden okunan bayt sayısı.
-- **Veri diski okuma işlemi/sn**: saniye başına veri diskinden okunan giriş işlemlerinin sayısı.
-- **Veri diski yazma bayt/sn**: veri disklerden saniye olarak yazılan bayt sayısı.
-- **Veri diski yazma işlemi/sn**: bir saniyede veri diskinden yazılan çıkış işlemlerinin sayısı.
-- **Disk okuma bayt/sn**: bir VM 'ye bağlı tüm disklerden saniye cinsinden okunan toplam bayt sayısı.
-- **Disk okuma işlemi/sn**: bir VM 'ye bağlı tüm disklerden saniye cinsinden okunan giriş işlemlerinin sayısı.
-- **Disk yazma bayt/sn**: bir VM 'ye bağlı tüm disklerden saniye cinsinden yazılan bayt sayısı.
-- **Disk yazma işlemi/sn**: bir VM 'ye bağlı tüm disklerden saniye içinde yazılan çıkış işlemlerinin sayısı.
-
-## <a name="storage-io-utilization-metrics"></a>Depolama GÇ kullanım ölçümleri
-Aşağıdaki ölçümler, sanal makinenizde ve disk birleşiminizdeki performans sorunlarını tanılamaya yardımcı olur. Bu ölçümler yalnızca Premium etkin VM kullanılırken kullanılabilir. Bu ölçümler, Ultra hariç tüm disk türleri için kullanılabilir. 
-
-Disk GÇ dönüşü tanılamaya yardımcı olan ölçümler:
-
-- **Veri DISKI IOPS tüketilen yüzde**: VERI diski IOPS 'si tarafından hesaplanan yüzde, sağlanan VERI diski IOPS üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız veri diskinizin ıOPS sınırından itibaren GÇ 'dir.
-- **Kullanılan veri diski bant genişliği yüzdesi**: sağlanan veri diski verimlilik üzerinden tamamlanan veri diski işleme tarafından hesaplanan yüzde. Bu miktar %100 ise, çalışan uygulamanız, veri diskinizin bant genişliği sınırından GÇ 'dir.
-- **Işletim sistemi DISK IOPS tüketilen yüzde**: işletim sistemi diski IOPS 'si tarafından hesaplanan yüzde, sağlanan işletim SISTEMI disk IOPS üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız, işletim sistemi diskinizin ıOPS sınırından itibaren GÇ 'dir.
-- **Işletim sistemi diski kullanılan bant genişliği yüzdesi**: işletim sistemi disk aktarım hızı tarafından hesaplanan yüzde, sağlanan işletim sistemi disk aktarım hızı üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız, işletim sistemi diskinizin bant genişliği sınırından GÇ olarak çalışır.
-
-VM GÇ dönüşü tanılamaya yardımcı olan ölçümler:
-
-- **VM önbelleğe ALıNAN IOPS yüzde yüzdesi**: Toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmış maksimum sanal makine IOPS sınırı üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış ıOPS sınırından itibaren GÇ 'dir.
-- **VM önbelleğe alınan bant genişliği yüzdesi**: toplam disk işleme tarafından hesaplanan yüzde, önbelleğe alınmış maksimum sanal makine üretilen iş üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış bant genişliği sınırından itibaren GÇ 'dir.
-- **VM önbelleğe ALıNMAMıŞ IOPS yüzde yüzdesi**: bir sanal MAKINEDEKI toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmamış maksimum sanal makine IOPS sınırı üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış ıOPS sınırından itibaren GÇ 'dir.
-- **VM önbelleğe alınmamış bant genişliği yüzdesi**: bir sanal makinedeki toplam disk işleme tarafından hesaplanan yüzde, sağlanan en yüksek sanal makine aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış bant genişliği sınırından itibaren GÇ 'dir.
-
-## <a name="storage-io-utilization-metrics-example"></a>Storage ıO kullanım ölçümleri örneği
-
-Bu yeni depolama GÇ kullanım ölçümlerini kullanarak hata ayıklamamıza yardımcı olması için bu yeni depolama ıO kullanım ölçümlerinin nasıl kullanılacağına ilişkin bir örnek üzerinden çalıştırılalım. Sistem Kurulumu Önceki örnekle aynıdır, ancak bu süre, ekli işletim sistemi *diski önbelleğe alınmaz* .
-
-**Yapısı**
-
-- Standard_D8s_v3
-  - Önbelleğe alınan ıOPS: 16.000
-  - Önbelleğe alınmamış ıOPS: 12.800
-- P30 işletim sistemi diski
-  - IOPS: 5.000
-  - Konak önbelleğe alma: **devre dışı**
-- İki P30 veri diski × 2
-  - IOPS: 5.000
-  - Konak önbelleğe alma: **okuma/yazma**
-- İki P30 veri diski × 2
-  - IOPS: 5.000
-  - Konak önbelleğe alma: **devre dışı**

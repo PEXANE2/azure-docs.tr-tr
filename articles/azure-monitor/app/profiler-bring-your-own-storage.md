@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202547"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589666"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
 
@@ -21,9 +21,9 @@ Application Insights Profiler veya Snapshot Debugger kullandığınızda, uygula
 Kendi depolama alanınızı getir ile, bu yapılar denetlediğiniz bir depolama hesabına yüklenir. Bu, bekleyen şifreleme ilkesini, ömür yönetimi ilkesini ve ağ erişimini kontrol ettiğiniz anlamına gelir. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz.
 
 > [!NOTE]
-> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](../platform/private-link-security.md)
+> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](../logs/private-link-security.md)
 >
-> Customer-Managed anahtarlarını etkinleştirirseniz kendi depolama alanınızı getirin. Application Insights Customer-Managed anahtarları hakkında daha fazla bilgi için [belgelerine bakın.](../platform/customer-managed-keys.md)
+> Customer-Managed anahtarlarını etkinleştirirseniz kendi depolama alanınızı getirin. Application Insights Customer-Managed anahtarları hakkında daha fazla bilgi için [belgelerine bakın.](../logs/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Depolama hesabımın erişim sıklığı nedir?
 1. Sanal makinelerinizde veya App Service çalışan aracılar, hesabınızdaki blob kapsayıcılarına yapıtları (profiller, anlık görüntüler ve semboller) karşıya yükleyecek. Bu işlem, depolama hesabınızda yeni bir blob 'a SAS (paylaşılan erişim Imzası) belirteci almak için Application Insights Profiler veya Snapshot Debugger hizmetine başvurmayı içerir.

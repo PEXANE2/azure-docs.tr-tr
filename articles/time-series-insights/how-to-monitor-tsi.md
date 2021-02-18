@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879553"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587980"
 ---
 # <a name="monitoring-time-series-insights"></a>İzleme Time Series Insights
 
@@ -29,7 +29,7 @@ Her Time Series Insights ortamı için Azure portal **genel bakış** sayfası, 
 
 Time Series Insights, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](../azure-monitor/overview.md)'yi kullanarak izleme verileri oluşturur.
 
-Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md)makalesini başlatın:
+Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını izleme](../azure-monitor/essentials/monitor-azure-resource.md)makalesini başlatın:
 
 - Azure İzleyici nedir?
 - İzleme ile ilişkili maliyetler
@@ -40,11 +40,11 @@ Aşağıdaki kavramları açıklayan Azure [izleyici Ile Azure kaynaklarını iz
 Aşağıdaki bölümler, Azure Time Series Insights için toplanan belirli verileri açıklayarak bu makalede derleme oluşturur. Bu bölümler, veri toplamayı yapılandırmak ve bu verileri Azure araçlarıyla çözümlemek için örnekler de sağlar.
 
 > [!TIP]
-> Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmini maliyetler](../azure-monitor/platform/usage-estimated-costs.md). Verilerinizin Azure Izleyici 'de görünmesi için geçen süreyi anlamak için bkz. [günlük verisi alma süresi](../azure-monitor/platform/data-ingestion-time.md).
+> Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmini maliyetler](../azure-monitor//usage-estimated-costs.md). Verilerinizin Azure Izleyici 'de görünmesi için geçen süreyi anlamak için bkz. [günlük verisi alma süresi](../azure-monitor/logs/data-ingestion-time.md).
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Azure Time Series Insights verileri izleme
 
-Azure Time Series Insights, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. 
+Azure Time Series Insights, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. 
 
 Toplayacağınız günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Time Series Insights izleme verileri başvurusu](how-to-monitor-tsi-reference.md) .
 
@@ -53,7 +53,7 @@ Toplayacağınız günlüklere ve ölçümlere ilişkin ayrıntılı bir başvur
 Platform ölçümleri otomatik olarak toplanır ve depolanır, ancak bir tanılama ayarı kullanılarak başka konumlara yönlendirilebilir.
 
 Kaynak günlükleri, bir tanılama ayarı oluşturup bunları bir veya daha fazla konuma yönlendirene kadar toplanmaz ve depolanmaz.
-Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md) konusuna bakın. Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz.
+Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../azure-monitor/essentials/diagnostic-settings.md) konusuna bakın. Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz.
 
 Azure Time Series Insights için aşağıdaki kategorilerden günlükleri toplayabilirsiniz:
 
@@ -80,7 +80,7 @@ Kaynak günlüklerine bir depolama hesabında blob olarak, olay verileri olarak 
 
 Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır.
 
-Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)özetlenmiştir. Azure Time Series Insights için toplanan kaynak günlüklerinin türlerinin bir listesi için, bkz. [Azure Time Series Insights izleme veri başvurusu](how-to-monitor-tsi-reference.md#resource-logs).
+Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)özetlenmiştir. Azure Time Series Insights için toplanan kaynak günlüklerinin türlerinin bir listesi için, bkz. [Azure Time Series Insights izleme veri başvurusu](how-to-monitor-tsi-reference.md#resource-logs).
 
 Azure Time Series Insights, verileri aşağıdaki tablolarda depolar.
 
@@ -122,4 +122,4 @@ Platform ölçümlerini temel alan bir uyarı kuralı oluştururken, sayı birim
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * Azure Time Series Insights tarafından oluşturulan günlüklerin ve ölçümlerin bir başvurusu için bkz. [Azure Time Series Insights izleme verileri başvurusu](how-to-monitor-tsi-reference.md) .
-* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .
+* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/essentials/monitor-azure-resource.md) .
