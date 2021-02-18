@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595464"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 
@@ -34,7 +34,7 @@ Linux tabanlı, syslog destekleyen makinelerden veya gereçlerden, Linux için L
 
 **Syslog** , Linux için ortak olan bir olay günlüğü protokolüdür. **Linux için Log Analytics ARACıSı** sanal makinenize veya gerecinize yüklendiğinde, yükleme yordamı, iletileri TCP bağlantı noktası 25224 ' deki aracıya iletmek Için yerel Syslog arka plan programını yapılandırır. Aracı daha sonra iletiyi HTTPS üzerinden Log Analytics çalışma alanınıza gönderir ve burada **Azure Sentinel > günlüklerinde** Syslog tablosunda bir olay günlüğü girişi olarak ayrıştırılır.
 
-Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azure-monitor/platform/data-sources-syslog.md).
+Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
 
@@ -83,7 +83,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 
 1. **Günlüklerde** Syslog günlük verilerini sorgulamak için, `Syslog` sorgu penceresine yazın.
 
-1. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan sorgu parametrelerini kullanabilirsiniz. Sonra sorguyu yeni bir Log Analytics işlevi olarak kaydedebilir ve yeni bir veri türü olarak kullanabilirsiniz.
+1. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/logs/functions.md) bölümünde açıklanan sorgu parametrelerini kullanabilirsiniz. Sonra sorguyu yeni bir Log Analytics işlevi olarak kaydedebilir ve yeni bir veri türü olarak kullanabilirsiniz.
 
 > [!NOTE]
 > **Hem düz Syslog *hem* de CEF iletilerini iletmek için aynı makineyi kullanma**
@@ -92,7 +92,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 >
 >    [CEF kaynaklarınızdan veri toplamayı](connect-common-event-format.md)zaten ayarlamış ve Log Analytics aracısını yukarıdaki gibi yapılandırmış olmanız gerekir:
 >
-> 1. CEF biçiminde günlük gönderen her makinede, CEF iletilerini göndermek için kullanılan tesisleri kaldırmak için Syslog yapılandırma dosyasını düzenlemeniz gerekir. Bu şekilde, CEF 'de gönderilen tesisler Syslog 'da da gönderilmeyecektir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için bkz. [Linux aracısında Syslog yapılandırma](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. CEF biçiminde günlük gönderen her makinede, CEF iletilerini göndermek için kullanılan tesisleri kaldırmak için Syslog yapılandırma dosyasını düzenlemeniz gerekir. Bu şekilde, CEF 'de gönderilen tesisler Syslog 'da da gönderilmeyecektir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için bkz. [Linux aracısında Syslog yapılandırma](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. Aracının Azure Sentinel 'de Syslog yapılandırmasıyla eşitlenmesini devre dışı bırakmak için bu makinelerde aşağıdaki komutu çalıştırmanız gerekir. Bu, önceki adımda yaptığınız yapılandırma değişikliğinin üzerine yazılmamasını sağlar.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349965"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650698"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
@@ -61,7 +61,7 @@ Daha sonra, uygulamanın API 'SI olarak bir Azure Işlevleri projesi oluştururs
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Ekran görüntüsünde bir P I klasörü ve Seç düğmesi gösterilir.":::
 
-1. İstemlere aşağıdaki bilgileri sağlayın:
+1. İstemlerde aşağıdaki bilgileri sağlayın:
 
     - _Dil seçin_: **JavaScript** seçin
     - _Projenizin ilk işlevi için bir şablon seçin_: **http tetikleyicisi** seçin
@@ -234,7 +234,7 @@ Sonra uygulamaya özgü ayarları ekleyin.
 1. **GitHub ile Oturum Aç** düğmesine tıklayın ve GitHub ile kimliğinizi doğrulayın
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-Vanilla-API** ' yi seçin
-1. _Dal_ açılan listesinden **ana öğe** seçin
+1. _Dal_ açılan listesinden **Main** ' i seçin
 1. Yapı _ön ayarları_ açılır listesinden yapı yapılandırması için tercih ettiğiniz çerçeveyi seçin
 
  > Bu alanlar, uygulama türünün varsayılan proje yapısını yansıtır. Değerleri uygulamanıza uyacak şekilde değiştirin.

@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: da2e20e333fe499998fff72b175442650f5f1e28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595314"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçüm ekleme
 
@@ -31,14 +31,14 @@ Cloudyn, Azure VM'lerin kaynakları hakkında ayrıntılı bilgiler sunmak için
 Örneğin Azure VM'lerinizin CPU ve Bellek yüzdesini izlemek isteyebilirsiniz. Azure ölçümleri, _CPU Yüzdesi_ ve _\Bellek\% Kullanımdaki Kaydedilmiş Baytlar_ değerlerini verir.
 
 > [!NOTE]
-> Genişletilmiş ölçüm veri koleksiyonu yalnızca Azure konuk seviyesinde izleme için desteklenir. Cloudyn, [Log Analytics aracısıyla](../../azure-monitor/platform/agents-overview.md) uyumlu değildir.
+> Genişletilmiş ölçüm veri koleksiyonu yalnızca Azure konuk seviyesinde izleme için desteklenir. Cloudyn, [Log Analytics aracısıyla](../../azure-monitor/agents/agents-overview.md) uyumlu değildir.
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümlerin etkin olup olmadığını belirleme
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Sanal makineler** 'in altında bir VM seçtikten sonra **İzleme** bölümünde **Ölçümler** 'i seçin. Kullanılabilir ölçümlerin listesi gösterilir.
+2. **Sanal makineler**'in altında bir VM seçtikten sonra **İzleme** bölümünde **Ölçümler**'i seçin. Kullanılabilir ölçümlerin listesi gösterilir.
 3. Ölçümlerden birkaç tanesini seçtiğinizde veriler grafik biçiminde görüntülenir.  
     ![Örnek ölçüm - ana bilgisayar CPU yüzdesi](./media/azure-vm-extended-metrics/metric01.png)
 
@@ -54,13 +54,13 @@ Hem Windows hem de Linux konuk düzeyinde izleme için depolama hesabı gerekti�
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Mevcut VM'lerde konuk düzeyinde izlemeyi etkinleştirme
 
-1. **Sanal Makineler** 'de VM listenizi görüntüleyin ve VM'lerden birini seçin.
-2. **İzleme** bölümünde **Tanılama ayarları** 'nı seçin.
-3. Tanılama ayarları sayfasında **Konuk düzeyinde izlemeyi etkinleştir** 'e tıklayın.  
+1. **Sanal Makineler**'de VM listenizi görüntüleyin ve VM'lerden birini seçin.
+2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
+3. Tanılama ayarları sayfasında **Konuk düzeyinde izlemeyi etkinleştir**'e tıklayın.  
     ![Genel Bakış sayfasındaki Konuk düzeyinde izlemeyi etkinleştir seçeneği](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Birkaç dakika içinde VM'ye Azure tanılama aracısı yüklenir. Temel ölçüm kümesi eklenir. Sayfayı yenileyin. Eklenen performans sayaçları Genel Bakış sekmesinde görünür.
-5. İzleme'nin altında **Ölçümler** 'i seçin.
-6. **Ölçüm Ad Alanı** 'nın altındaki ölçümler grafiğinde **Konuk (Klasik)** seçimini yapın.
+5. İzleme'nin altında **Ölçümler**'i seçin.
+6. **Ölçüm Ad Alanı**'nın altındaki ölçümler grafiğinde **Konuk (Klasik)** seçimini yapın.
 7. Ölçüm listesinde konuk VM'nin kullanılabilir performans sayaçlarının tümünü görüntüleyebilirsiniz.  
     ![örnek genişletilmiş ölçümler listesi](./media/azure-vm-extended-metrics/extended-metrics.png)
 

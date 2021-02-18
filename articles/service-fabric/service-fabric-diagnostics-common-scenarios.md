@@ -3,12 +3,12 @@ title: Azure Service Fabric genel senaryoları tanılayın
 description: Azure Service Fabric uygulamalarında yaygın izleme ve tanılama senaryolarıyla ilgili sorun giderme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3083348948ce97ae9d99098896878d79081a15f0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257736"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580485"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile yaygın senaryoları tanılayın
 
@@ -133,9 +133,9 @@ Güvenilir [Hizmetler](service-fabric-reliable-serviceremoting-diagnostics.md) v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ortak kod paketi etkinleştirme hatalarını ara](./service-fabric-diagnostics-code-package-errors.md)
-* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/platform/alerts-log.md)
+* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/alerts/alerts-log.md)
 * [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak üzere AI 'ye gönderilen telemetrinin proaktif analizini yapar
-* Algılama ve tanılama konusunda yardımcı olması için Azure Izleyici günlükleri [uyarısı](../azure-monitor/platform/alerts-overview.md) hakkında daha fazla bilgi edinin.
-* Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Internet erişimi olmadan bilgisayarları Azure izleyici günlüklerine bağlama](../azure-monitor/platform/gateway.md) konusunda daha fazla bilgi edinin
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
+* Algılama ve tanılama konusunda yardımcı olması için Azure Izleyici günlükleri [uyarısı](../azure-monitor/alerts/alerts-overview.md) hakkında daha fazla bilgi edinin.
+* Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Internet erişimi olmadan bilgisayarları Azure izleyici günlüklerine bağlama](../azure-monitor/agents/gateway.md) konusunda daha fazla bilgi edinin
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/logs/log-query-overview.md) özellikleriyle familiarized alın
 * Azure Izleyici günlüklerine ve bu günlüklere yönelik daha ayrıntılı bir genel bakış edinin, [Azure izleyici günlüklerini](../azure-monitor/overview.md) okuyun.

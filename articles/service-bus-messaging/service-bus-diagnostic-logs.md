@@ -3,12 +3,12 @@ title: Tanılama günlüklerini Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Service Bus için kullanılabilen tüm işletimsel ve tanılama günlüklerine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064443"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585266"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus için tanılama günlüklerini etkinleştirme
 
@@ -27,10 +27,10 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 | Ad | Açıklama |
 | ------- | ------- |
-| Etkinlik kimliği | Belirtilen etkinliği tanımlamak için kullanılan iç KIMLIK |
+| ActivityId | Belirtilen etkinliği tanımlamak için kullanılan iç KIMLIK |
 | EventName | İşlem adı |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
-| kaynak grubundaki | Abonelik Kimliği |
+| SubscriptionId | Abonelik Kimliği |
 | EventTimeString | İşlem süresi |
 | EventProperties | İşlem özellikleri |
 | Durum | İşlem durumu |
@@ -76,7 +76,7 @@ Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır:
 
 İşletimsel Günlükler varsayılan olarak devre dışıdır. Tanılama günlüklerini etkinleştirmek için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com), Azure Service Bus ad alanına gidin ve ardından **izleme**altında **Tanılama ayarları**' nı seçin.
+1. [Azure Portal](https://portal.azure.com), Azure Service Bus ad alanına gidin ve ardından **izleme** altında **Tanılama ayarları**' nı seçin.
 
    !["Tanılama ayarları" bağlantısı](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -101,7 +101,7 @@ Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır:
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama günlükleri** bölmesindeki yapılandırılan arşiv hedefinde görüntülenir.
 
-Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

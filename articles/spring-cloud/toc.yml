@@ -59,7 +59,7 @@
   items:
     - name: Geliştirme
       items:
-        - name: Java Spring uygulamasını dağıtım için hazırlama
+        - name: Uygulamayı dağıtıma hazırlama
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Yapılandırma Sunucusunu ayarlama
           href: spring-cloud-tutorial-config-server.md

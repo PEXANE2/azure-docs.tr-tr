@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d8940d791920daca6ef0af186a4bb5e17009637b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586107"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Application Gateway yüksek trafik desteği
 
@@ -23,7 +23,7 @@ Web uygulamalarınızdaki trafiği yönetmenin ölçeklenebilir ve güvenli bir 
 
 Application Gateway, trafiğiniz veya ani artışlar için hazırlanabilmeniz ve bu durumda, QoS 'de sahip olabileceği etkiyi en aza indirmek için, trafiğinizi ve arabelleğin bir bitini göre ölçeklendirmeniz önemlidir. Aşağıdaki öneriler, ek trafiği işlemek için WAF ile Application Gateway ayarlamanıza yardımcı olur.
 
-Application Gateway tarafından sunulan ölçümlerin tüm listesi için lütfen [ölçüm belgelerini](./application-gateway-metrics.md) denetleyin. Ölçüm uyarılarını ayarlama hakkında bilgi için Azure portal ve [Azure izleyici belgelerindeki](../azure-monitor/platform/alerts-metric.md) [ölçümleri görselleştirin](./application-gateway-metrics.md#metrics-visualization) .
+Application Gateway tarafından sunulan ölçümlerin tüm listesi için lütfen [ölçüm belgelerini](./application-gateway-metrics.md) denetleyin. Ölçüm uyarılarını ayarlama hakkında bilgi için Azure portal ve [Azure izleyici belgelerindeki](../azure-monitor/alerts/alerts-metric.md) [ölçümleri görselleştirin](./application-gateway-metrics.md#metrics-visualization) .
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>Application Gateway v1 SKU 'SU için ölçeklendirme (Standart/WAF SKU 'SU)
 
@@ -35,7 +35,7 @@ Bir v1 SKU ağ geçidi kullanıyorsanız, ölçeklendirmeyi ölçeklendirmek iç
 ### <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Otomatik ölçeklendirme özellikleri ve performans avantajları için v1 üzerinde v2 SKU 'SU kullanın
 V2 SKU 'SU, Application Gateway trafik artışına göre ölçeklenebilmesini sağlamak için otomatik ölçeklendirme olanağı sunar. Ayrıca,/v1 ile karşılaştırıldığında, 5x daha iyi TLS yük boşaltma performansı, daha hızlı dağıtım ve güncelleştirme süreleri, bölge artıklığı ve daha fazlası gibi önemli performans avantajları da sunar. Daha fazla bilgi için, [v2 belgelerimize](./application-gateway-autoscaling-zone-redundant.md) bakın ve mevcut v1 SKU ağ geçitlerini v2 SKU 'suna nasıl geçirebileceğinizi öğrenmek için v1 sürüm [geçiş belgelerini](./migrate-v1-v2.md) inceleyin. 
 
-## <a name="autoscaling-for-application-gateway-v2-sku-standard_v2waf_v2-sku"></a>Application Gateway v2 SKU 'SU için otomatik ölçeklendirme (Standard_v2/WAF_v2 SKU)
+## <a name="autoscaling-for-application-gateway-v2-sku-standard_v2waf_v2-sku"></a>Application Gateway v2 SKU'su (Standard_v2/WAF_v2 SKU) için otomatik ölçeklendirme
 
 ### <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>En fazla örnek sayısını mümkün olan en yüksek sayıya ayarla (125)
  
@@ -65,7 +65,7 @@ Son bir ay için Işlem birimi ölçümünüzün olup olmadığını denetleyin.
 
 ## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
 
-Herhangi bir trafik veya kullanım anormalileri hakkında bildirim almak için, belirli ölçümler üzerinde uyarılar ayarlayabilirsiniz. Application Gateway tarafından sunulan ölçümlerin tüm listesi için bkz. [ölçüm belgeleri](./application-gateway-metrics.md) . Ölçüm uyarılarını ayarlama hakkında bilgi için Azure portal ve [Azure izleyici belgelerindeki](../azure-monitor/platform/alerts-metric.md) [ölçümleri görselleştirin](./application-gateway-metrics.md#metrics-visualization) .
+Herhangi bir trafik veya kullanım anormalileri hakkında bildirim almak için, belirli ölçümler üzerinde uyarılar ayarlayabilirsiniz. Application Gateway tarafından sunulan ölçümlerin tüm listesi için bkz. [ölçüm belgeleri](./application-gateway-metrics.md) . Ölçüm uyarılarını ayarlama hakkında bilgi için Azure portal ve [Azure izleyici belgelerindeki](../azure-monitor/alerts/alerts-metric.md) [ölçümleri görselleştirin](./application-gateway-metrics.md#metrics-visualization) .
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>Application Gateway v1 SKU 'SU (Standart/WAF) için uyarılar
 

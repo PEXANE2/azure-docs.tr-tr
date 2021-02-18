@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855082"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589552"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 | Application Insights SDK | Uyarlamalı örnekleme destekleniyor | Sabit hızlı örnekleme destekleniyor | Alım örnekleme destekleniyor |
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
 | Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
@@ -478,7 +478,7 @@ Diğer örnekleme formlarını kullanma koşulları geçerli değilse, uyarlamal
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Örneklemenin çalışıp çalışmadığını öğrenme
 
-Gerçek örnekleme oranını nerede uygulandığını fark etmeksizin öğrenmek için, şöyle bir [analiz sorgusu](../log-query/log-query-overview.md) kullanın:
+Gerçek örnekleme oranını nerede uygulandığını fark etmeksizin öğrenmek için, şöyle bir [analiz sorgusu](../logs/log-query-overview.md) kullanın:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -557,7 +557,7 @@ Yaklaşık büyük ölçüde doğruluk, yapılandırılan örnekleme yüzdesine 
 
 *Her zaman görmek istediğim bazı nadir olaylar vardır. Örnekleme modülünü nasıl geçmiş bir şekilde alabilirim?*
 
-* Bunu gerçekleştirmenin en iyi yolu, [TelemetryInitializer](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) `SamplingPercentage` aşağıda gösterildiği gibi, korunmayı istediğiniz telemetri öğesinde 100 olarak ayarlayan özel bir telemetryınitializer yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar. Özel telemetri başlatıcıları, ASP.NET SDK, ASP.NET Core SDK, JavaScript SDK ve Java SDK ' da kullanılabilir. Örneğin, ASP.NET SDK kullanarak bir telemetri başlatıcısı yapılandırabilirsiniz:
+* Bunu gerçekleştirmenin en iyi yolu, [](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) `SamplingPercentage` aşağıda gösterildiği gibi, korunmayı istediğiniz telemetri öğesinde 100 olarak ayarlayan özel bir telemetryınitializer yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar. Özel telemetri başlatıcıları, ASP.NET SDK, ASP.NET Core SDK, JavaScript SDK ve Java SDK ' da kullanılabilir. Örneğin, ASP.NET SDK kullanarak bir telemetri başlatıcısı yapılandırabilirsiniz:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

@@ -3,12 +3,12 @@ title: Avustralya kamu ile korunan şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Avustralya kamu ile korunan şema örneği için adımları dağıtın.
 ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 354d010442f896728ef9af1e3f372c2abbc58ef3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 97dd983ef3188cad7d36459197e57e4e0f3c4e8f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682287"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577337"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya kamu ile korunan şema örneğini dağıtma
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
-|\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici kaynak günlükleri kategorilerinde](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici kaynak günlükleri kategorilerinde](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type)bulunabilir.|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan hariç tutulması gereken kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : LINUX VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
@@ -158,7 +158,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|İşlev Uygulaması yalnızca HTTPS v2 üzerinden erişilebilir olmalıdır  |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir  |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Azure aboneliklerinin etkinlik günlüğü için bir günlük profili olmalıdır  |İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
-|\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici kaynak günlükleri kategorilerinde](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici kaynak günlükleri kategorilerinde](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type)bulunabilir.|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Makinelerinize sistem güncelleştirmeleri yüklenmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|App Service için en son TLS sürümü kullanılmalıdır|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek Için Avustralya kamu Ile korunan denetimleri denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md).|

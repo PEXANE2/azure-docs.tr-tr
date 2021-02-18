@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591463"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -219,12 +219,12 @@ Bazı özellikler şablona aktarılmayacağından onları yeni depolama hesabın
 
 Aşağıdaki tabloda bu özelliklerin yanı sıra bunları yeni depolama hesabınıza ekleme konusunda yönergeler verilmiştir.
 
-| Öne çıkan özelliği    | Rehber    |
+| Özellik    | Rehber    |
 |--------|-----------|
 | **Yaşam döngüsü yönetim ilkeleri** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statik web siteleri** | [Azure depolama 'da statik bir Web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |
 | **Olay abonelikleri** | [Blob depolama olaylarına yanıt verme](../blobs/storage-blob-event-overview.md) |
-| **Uyarılar** | [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md) |
+| **Uyarılar** | [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [HTTPS üzerinden özel etki alanlarıyla bloblara erişmek için Azure CDN kullanma](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 

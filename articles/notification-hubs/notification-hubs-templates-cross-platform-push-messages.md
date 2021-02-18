@@ -5,23 +5,21 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 02/16/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c4c1c247d8fb248c5e6d548dd04af1c3d08a4e76
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ee42512a468f4ff86ad7ba273d3971fd124779e2
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588319"
+ms.locfileid: "100635651"
 ---
 # <a name="notification-hubs-templates"></a>Notification Hubs şablonları
 
@@ -32,7 +30,7 @@ ms.locfileid: "100588319"
 - İstemci sürümü bağımsızlık
 - Kolay yerelleştirme
 
-Bu bölümde, tüm cihazlarınızı platformlar arasında hedefleyen ve her cihaza yayınlama bildirimini kişiselleştirmek için şablonların nasıl kullanılacağına ilişkin iki derinlemesine örnek verilmiştir.
+Bu bölümde, tüm cihazlarınızı platformlar arasında hedefleme ve her bir cihaza yayın bildirimlerini kişiselleştirmek için şablonların nasıl kullanılacağına ilişkin iki derinlemesine örnek verilmiştir.
 
 ## <a name="using-templates-cross-platform"></a>Şablonları platformlar arası kullanma
 
@@ -58,9 +56,9 @@ MPNS (Windows Phone) ve FCM (Android) platformları için benzer yükleri oluşt
 
 Bu gereksinim, uygulama arka ucunu her platform için farklı yük oluşturacak şekilde zorlar ve uygulamanın sunum katmanının bir parçası olan arka ucu etkili bir şekilde gerçekleştirir. Bazı kaygılar, yerelleştirme ve grafik düzenlerini (özellikle de çeşitli döşeme türleri için bildirimleri içeren Windows Mağazası uygulamaları için) içerir.
 
-Notification Hubs şablonu özelliği, bir istemci uygulamanın, Etiketler kümesine ek olarak, şablon kayıtları olarak adlandırılan özel kayıtlar oluşturmalarına olanak sağlar. Notification Hubs şablonu özelliği, Yüklemeler (tercih edilen) veya kayıtlarla çalışırken, bir istemci uygulamanın cihazları şablonlar ile ilişkilendirmesine olanak sağlar. Önceki yük örnekleri söz konusu olduğunda, tek platformla bağımsız bilgiler gerçek uyarı iletisidir (Merhaba!). Şablon, ilgili istemci uygulamasının kaydı için platforma bağımsız bir iletiyi biçimlendirme hakkında bildirim hub 'ı için bir yönergeler kümesidir. Yukarıdaki örnekte, platformdan bağımsız ileti tek bir özelliktir: `message = Hello!` .
+Notification Hubs şablonu özelliği, bir istemci uygulamanın, Etiketler kümesine ek olarak, şablon kayıtları olarak adlandırılan özel kayıtlar oluşturmalarına olanak sağlar. Notification Hubs şablonu özelliği, Yüklemeler (tercih edilen) veya kayıtlarla çalışırken, bir istemci uygulamanın cihazları şablonlar ile ilişkilendirmesine olanak sağlar. Önceki yük örnekleri söz konusu olduğunda, tek platformla bağımsız bilgiler gerçek uyarı iletisidir (**Merhaba!**). Şablon, ilgili istemci uygulamasının kaydı için platforma bağımsız bir iletiyi biçimlendirme hakkında bildirim hub 'ı için bir yönergeler kümesidir. Yukarıdaki örnekte, platformdan bağımsız ileti tek bir özelliktir: `message = Hello!` .
 
-Aşağıdaki resimde işlem gösterilmektedir:
+Aşağıdaki şekilde işlem gösterilmektedir:
 
 ![Şablonları platformlar arası kullanma sürecini gösteren diyagram](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -82,7 +80,7 @@ Windows Mağazası istemci uygulaması için karşılık gelen şablon:
 </toast>
 ```
 
-Gerçek iletinin $ (ileti) ifadesinin yerine konduğuna dikkat edin. Bu ifade, Bildirim Hub 'ına, bu belirli kayda bir ileti gönderdiğinde, onu izleyen bir ileti ve ortak değerde anahtarlar oluşturmak üzere bildirir.
+Gerçek iletinin ifade için yerine konduğuna dikkat edin `$(message)` . Bu ifade, Bildirim Hub 'ına bu belirli kayda bir ileti gönderdiğinde, izleyen bir ileti oluşturmak ve ortak değeri eklemek için yönlendirir.
 
 Yükleme modeliyle çalışıyorsanız, yükleme "Şablonlar" anahtarı birden çok şablon içeren bir JSON içerir. Kayıt modeliyle çalışıyorsanız, istemci uygulaması birden çok şablon kullanmak için birden çok kayıt oluşturabilir; Örneğin, uyarı iletileri için bir şablon ve kutucuk güncelleştirmeleri için bir şablon. İstemci uygulamaları, yerel kayıtları da (şablon içermeyen kayıtlar) ve şablon kayıtlarını karıştırabilir.
 
@@ -108,16 +106,12 @@ Santigrat sıcaklıklar ile tek günlük tahmine yönelik şablon aşağıdaki g
 
 Bildirim Hub 'ına gönderilen ileti aşağıdaki özellikleri içerir:
 
-<table border="1">
+| day1_image | day2_image | day3_image | day4_image | day5_image |
+|------------|------------|------------|------------|------------|
+| day1_tempC | day2_tempC | day3_tempC | day4_tempC | day5_tempC |
+| day1_tempF | day2_tempF | day3_tempF | day4_tempF | day5_tempF |
 
-<tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
-
-<tr><td>day1_tempC</td><td>day2_tempC</td><td>day3_tempC</td><td>day4_tempC</td><td>day5_tempC</td></tr>
-
-<tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
-</table><br/>
-
-Bu model kullanılarak, arka uç yalnızca uygulama kullanıcıları için belirli kişiselleştirme seçeneklerini depolamak zorunda kalmadan tek bir ileti gönderir. Aşağıdaki resimde bu senaryo gösterilmektedir:
+Bu model kullanılarak, arka uç yalnızca uygulama kullanıcıları için belirli kişiselleştirme seçeneklerini depolamak zorunda kalmadan tek bir ileti gönderir. Aşağıdaki şekilde bu senaryo gösterilmektedir:
 
 ![Arka ucun her platforma yalnızca tek bir ileti gönderdiğini gösteren diyagram.](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
@@ -127,17 +121,17 @@ Yükleme modelini (tercih edilen) veya kayıt modelini kullanarak şablonlara ka
 
 ## <a name="template-expression-language"></a>Şablon ifadesi dili
 
-Şablonlar XML veya JSON belge biçimleriyle sınırlıdır. Ayrıca, yalnızca belirli yerlere ifade koyabilirsiniz; Örneğin, düğüm öznitelikleri veya XML için değerler, JSON için dize özelliği değerleri.
+Şablonlar XML veya JSON belge biçimleriyle sınırlıdır. Ayrıca, yalnızca belirli yerlere ifade yerleştirebilirsiniz; Örneğin, düğüm öznitelikleri veya XML için değerler, JSON için dize özelliği değerleri.
 
 Aşağıdaki tabloda şablonlarda izin verilen dil gösterilmektedir:
 
 | İfade       | Açıklama |
 | ---------------- | --- |
 | $ (Prop)          | Verilen ada sahip bir olay özelliğine başvuru. Özellik adları büyük/küçük harfe duyarlı değildir. Bu ifade özelliğin metin değerine veya özelliği yoksa boş bir dizeye çözümleniyor. |
-| $ (prop, n)       | Yukarıdaki gibi, ancak metin n karakter olarak açıkça kırpıldı, örneğin $ (başlık, 20), title özelliğinin içeriğini 20 karakter olarak kırpar. |
-| . (prop, n)       | Yukarıdaki gibi, ancak metin, kırpıldığı için üç noktayla sondakini sabitlenmiştir. Kırpılan dizenin ve sonekin toplam boyutu n karakteri aşamaz. . (başlık, 20) bir giriş özelliği olan "This başlık çizgisi", **Bu durum başlıktır...** |
+|$ (prop, n)       | Yukarıdaki gibi, ancak metin n karakter olarak açıkça kırpıldı, örneğin $ (başlık, 20), title özelliğinin içeriğini 20 karakter olarak kırpar. |
+| . (prop, n)      | Yukarıdaki gibi, ancak metin, kırpıldığı için üç noktayla sondakini sabitlenmiştir. Kırpılan dizenin ve sonekin toplam boyutu n karakteri aşamaz. (başlık, 20) bir giriş özelliği olan "This başlık çizgisi", **Bu durum başlıktır...** |
 | % (Prop)          | Çıktının URI kodlamalı olması dışında $ (Name) ile benzerdir. |
-| # (Prop)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında kullanılması dışında (örneğin, Apple şablonları), daha önce belirtilen $ (Prop) ile aynı şekilde çalışır. Bu durumda, bu işlev "{', '}" (örneğin, ' myJsonProperty ': ' # (Name) ') ile çevreleniyorsa ve JavaScript biçiminde bir sayı olarak değerlendirilir (örneğin, RegExp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) ( \.&#91;0-9&#93;+)? ( (e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, ardından JSON çıktısı bir sayıdır.<br><br>Örneğin, ' # (Name) ', ' rozet ': 40 (' 40 ' değil) olur. |
+| # (Prop)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında kullanılması dışında (örneğin, Apple şablonları), daha önce belirtilen ' $ (Prop) ' ile tamamen aynı şekilde çalışır. Bu durumda, bu işlev "{', '}" (örneğin, ' myJsonProperty ': ' # (Name) ') ile çevreleniyorsa ve JavaScript biçiminde bir sayı olarak değerlendirilir (örneğin, RegExp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) ( \.&#91;0-9&#93;+)? ( (e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, ardından JSON çıktısı bir sayıdır.<br><br>Örneğin, ' # (Name) ', ' rozet ': 40 (' 40 ' değil) olur. |
 | ' text ' veya "Text" | Değişmez değer. Değişmez değerler, tek veya çift tırnak içine alınmış rastgele metni içerir. |
 | expr1 + expr2    | Birleştirme işleci iki ifadeye tek bir dizeye katılıyor. |
 

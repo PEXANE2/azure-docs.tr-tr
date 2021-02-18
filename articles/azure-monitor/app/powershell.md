@@ -3,18 +3,18 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186295"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589803"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu makalede, Azure Kaynak Yönetimi kullanılarak [Application Insights](./app-insights-overview.md) kaynaklarının otomatik olarak oluşturulmasını ve güncelleştirilmesini nasıl otomatikleştirebileceğiniz gösterilmektedir. Örneğin, bir yapı sürecinin bir parçası olarak bunu yapabilirsiniz. Temel Application Insights kaynağıyla birlikte, [kullanılabilirlik Web testleri](./monitor-web-app-availability.md)oluşturabilir, [uyarıları](../platform/alerts-log.md)ayarlayabilir, [fiyatlandırma şemasını](pricing.md)ayarlayabilir ve diğer Azure kaynaklarını oluşturabilirsiniz.
+Bu makalede, Azure Kaynak Yönetimi kullanılarak [Application Insights](./app-insights-overview.md) kaynaklarının otomatik olarak oluşturulmasını ve güncelleştirilmesini nasıl otomatikleştirebileceğiniz gösterilmektedir. Örneğin, bir yapı sürecinin bir parçası olarak bunu yapabilirsiniz. Temel Application Insights kaynağıyla birlikte, [kullanılabilirlik Web testleri](./monitor-web-app-availability.md)oluşturabilir, [uyarıları](../alerts/alerts-log.md)ayarlayabilir, [fiyatlandırma şemasını](pricing.md)ayarlayabilir ve diğer Azure kaynaklarını oluşturabilirsiniz.
 
 Bu kaynakları oluşturmaya yönelik anahtar, [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md)için JSON şablonlarıdır. Temel yordam: mevcut kaynakların JSON tanımlarını indirin; adlar gibi bazı değerleri parametreleştirin; ardından, yeni bir kaynak oluşturmak istediğiniz her seferinde şablonu çalıştırın. Çeşitli kaynakları tek bir şekilde paketleyebilir, örneğin, sürekli dışa aktarma için kullanılabilirlik testleri, uyarılar ve depolama ile bir uygulama izleyicisine sahip olabilirsiniz. Burada açıklayacağımız bazı parametreler için bazı alt değişkenler vardır.
 
@@ -404,12 +404,12 @@ Bu, günlük üst sınırı 200 GB/gün olarak ayarlar, günlük uç sıfırlama
 
 ## <a name="add-a-metric-alert"></a>Ölçüm uyarısı Ekle
 
-Ölçüm uyarılarının oluşturulmasını otomatik hale getirmek için [ölçüm uyarıları şablonu makalesine](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) başvurun
+Ölçüm uyarılarının oluşturulmasını otomatik hale getirmek için [ölçüm uyarıları şablonu makalesine](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) başvurun
 
 
 ## <a name="add-an-availability-test"></a>Bir kullanılabilirlik testi ekleyin
 
-Kullanılabilirlik testlerini otomatikleştirmek için [ölçüm uyarıları şablonu makalesine](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)başvurun.
+Kullanılabilirlik testlerini otomatikleştirmek için [ölçüm uyarıları şablonu makalesine](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)başvurun.
 
 ## <a name="add-more-resources"></a>Daha fazla kaynak ekleyin
 
@@ -469,6 +469,6 @@ Azure, kaynakları katı sırayla ayarlamalıdır. Bir kurulumun bir sonraki ba�
 Diğer otomasyon makaleleri:
 
 * Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](./create-new-resource.md#creating-a-resource-automatically) .
-* [Web testleri oluşturma](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
+* [Web testleri oluşturma](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Azure Tanılama verilerini Application Insights’a gönderme](powershell-azure-diagnostics.md)
 * [Sürüm ek açıklamaları oluştur](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
