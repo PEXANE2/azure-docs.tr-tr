@@ -2,21 +2,25 @@
 title: 'Hızlı başlangıç: Java için form tanıyıcı istemci kitaplığı'
 description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için Java için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 02/12/2021
 ms.custom: devx-track-java
-ms.author: pafarley
-ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b801838a4db4d95d5d492d50d6b67cf474d95963
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584676"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102878"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
@@ -28,10 +32,9 @@ ms.locfileid: "99584676"
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
 * [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
-
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -51,34 +54,14 @@ gradle init --type basic
 
 Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
-
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
 Bu hızlı başlangıç, Gradle bağımlılık yöneticisini kullanır. İstemci kitaplığını ve diğer bağımlılık yöneticilerinin bilgilerini [Maven merkezi deposunda](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)bulabilirsiniz.
 
 Projenizin *Build. Gradle. kts* dosyasında, `implementation` gerekli eklentiler ve ayarlarla birlikte, istemci kitaplığını bir ifade olarak dahil edin.
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-```kotlin
-plugins {
-    java
-    application
-}
-application {
-    mainClass.set("FormRecognizer")
-}
-repositories {
-    mavenCentral()
-}
-dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
-}
-```
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
-> [!NOTE]
-> Form tanıyıcı 3.0.0 SDK, API sürüm 2,0 ' i yansıtır
-
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
 ```kotlin
 plugins {
     java
@@ -97,6 +80,27 @@ dependencies {
 
 > [!NOTE]
 > Form tanıyıcı 3.1.0 SDK, API sürüm 2,1 Önizleme 'YI yansıtır
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
+}
+```
+
+> [!NOTE]
+> Form tanıyıcı 3.0.0 SDK, API v 2.0 'ı yansıtır
 
 ---
 
@@ -133,40 +137,41 @@ Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntem
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 * Sınanacak bir formun URL 'sini almak için yukarıdaki adımları kullanarak blob depolamada tek bir belgenin SAS URL 'sini alabilirsiniz. Ya da başka bir yerde bulunan bir belgenin URL 'sini alın.
 * Bir makbuz görüntüsünün URL 'sini de almak için yukarıdaki yöntemi kullanın.
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
 
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
+
 ---
 
+## <a name="object-model"></a>Nesne modeli
 
-
-## <a name="object-model"></a>Nesne modeli 
-
-Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `FormRecognizerClient` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `FormTrainingClient` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
+Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `FormRecognizerClient` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `FormTrainingClient` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır.
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
 `FormRecognizerClient` için işlem sağlar:
 
-- Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
-- Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [Çözümleme düzeni](#analyze-layout).
-- Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma.  Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnekleri [analiz alındıları](#analyze-receipts).
+* Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
+* Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [Çözümleme düzeni](#analyze-layout).
+* Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma.  Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnekleri [analiz alındıları](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
 
 `FormTrainingClient` için işlem sağlar:
 
-- Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme.  `CustomFormModel`Modelin analiz edileceği form türlerini ve her form türü için ayıklanacak alanları gösteren bir döndürülür.
-- Özel formlarınızı etiketleyerek belirttiğiniz belirli alanları ve değerleri çözümlemek için özel modeller eğitimi yapın.  , `CustomFormModel` Modelin ayıklanacağı alanları ve her bir alan için tahmini doğruluğu belirten bir döndürülür.
-- Hesabınızda oluşturulan modelleri yönetme.
-- Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
+* Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme.  `CustomFormModel`Modelin analiz edileceği form türlerini ve her form türü için ayıklanacak alanları gösteren bir döndürülür.
+* Özel formlarınızı etiketleyerek belirttiğiniz belirli alanları ve değerleri çözümlemek için özel modeller eğitimi yapın.  , `CustomFormModel` Modelin ayıklanacağı alanları ve her bir alan için tahmini doğruluğu belirten bir döndürülür.
+* Hesabınızda oluşturulan modelleri yönetme.
+* Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
 
 > [!NOTE]
 > Modeller ayrıca [form tanıyıcı etiketleme aracı](../../quickstarts/label-tool.md)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
@@ -174,15 +179,9 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu kod parçacıkları, Java için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
+<!-- markdownlint-disable MD001 -->
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Düzeni çözümle](#analyze-layout)
-* [Alındıları analiz etme](#analyze-receipts)
-* [Özel bir modeli eğitme](#train-a-custom-model)
-* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
-* [Özel modellerinizi yönetin](#manage-your-custom-models)
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Düzeni çözümle](#analyze-layout)
 * [Alındıları analiz etme](#analyze-receipts)
@@ -191,6 +190,16 @@ Bu kod parçacıkları, Java için form tanıyıcı istemci kitaplığı ile aş
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
+* [Özel bir modeli eğitme](#train-a-custom-model)
+* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
+* [Özel modellerinizi yönetin](#manage-your-custom-models)
+
 
 ---
 
@@ -233,15 +242,9 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-
 ## <a name="analyze-invoices"></a>Faturaları analiz etme
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. Fatura analizi hakkında daha fazla bilgi için bkz. [Fatura kavramsal Kılavuzu](../../concept-invoices.md).
 
@@ -250,11 +253,16 @@ Bir URL 'den faturaları çözümlemek için `beginRecognizeInvoicesFromUrl` yö
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> Yerel faturaları da analiz edebilirsiniz. Bkz. **Beginrecognizeınices** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Yerel faturaları da analiz edebilirsiniz. Bkz. **Beginrecognizeınices** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur: belgedeki her fatura için bir tane. Aşağıdaki kod, belirtilen URI 'de faturayı işler ve ana alanları ve değerleri konsola yazdırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
 
 ---
 
@@ -270,7 +278,6 @@ Bu bölümde, bir modelin kendi verilerinize nasıl eğulacağı gösterilmekted
 Eğitim belgelerini el ile etiketlemeden özel formlarınızda bulunan tüm alanları ve değerleri çözümlemek için özel modeller eğitme.
 
 Aşağıdaki yöntem, belirli bir belge kümesi üzerinde bir model TRAIN ve modelin durumunu konsola yazdırır. 
-
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
@@ -378,7 +385,7 @@ Bir URI 'den alındıları çözümlemek için **beginRecognizeReceiptsFromUrl**
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan bir **Recognizedmakbuz** nesneleri koleksiyonudur: Sonraki kod bloğu, alındılar boyunca yinelenir ve ayrıntılarını konsola yazdırır.
 
@@ -407,12 +414,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. İş kartı analizi hakkında daha fazla bilgi için bkz. [iş kartları kavramsal Kılavuzu](../../concept-business-cards.md).
 
@@ -421,11 +423,16 @@ Bir URL 'den iş kartlarını çözümlemek için `beginRecognizeBusinessCardsFr
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> Ayrıca, yerel iş kartı görüntülerini çözümleyebilirsiniz. Bkz. **Beginrecognizebusinesscarlar** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel iş kartı görüntülerini çözümleyebilirsiniz. Bkz. **Beginrecognizebusinesscarlar** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur: belgedeki her kart için bir tane. Aşağıdaki kod, belirtilen URI 'de iş kartını işler ve ana alanları ve değerleri konsola yazdırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
 
 ---
 
@@ -481,8 +488,6 @@ Field Accuracy: 1.00
 Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_delete)]
-
-
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

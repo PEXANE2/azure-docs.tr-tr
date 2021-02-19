@@ -2,20 +2,24 @@
 title: 'Hızlı başlangıç: form tanıyıcı REST API'
 description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için REST API formu tanıyıcı ' i kullanın.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
-ms.author: pafarley
-ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.author: lajanuar
+ms.openlocfilehash: 08026ea04e7f997ae75f6bdb2cea09e1f41e26a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552277"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102861"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!NOTE]
 > Bu kılavuz REST API çağrılarını yürütmek için kıvrımlı kullanır. GitHub 'da REST API 'Lerinin nasıl çağrılacağını gösteren [örnek kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) de vardır.
 
@@ -25,12 +29,11 @@ ms.locfileid: "100552277"
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Bir makbuz görüntüsünün URL 'SI. Bu hızlı başlangıç için [örnek bir görüntü](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) kullanabilirsiniz.
 * Bir iş kartının görüntüsünün URL 'SI. Bu hızlı başlangıç için [örnek bir görüntü](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) kullanabilirsiniz.
 * Bir faturanın görüntüsünün URL 'SI. Bu hızlı başlangıç için bir [örnek belge](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) kullanabilirsiniz.
-
 
 ## <a name="analyze-layout"></a>Düzeni çözümle
 
@@ -40,18 +43,18 @@ Bir modeli eğmenize gerek kalmadan, belgelerde tablo, seçim işareti, metin ve
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `\"{your-document-url}`Örnek URL 'lerden biriyle değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
+```bash
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-
-```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
-```
 ---
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, sonraki dize `analyzeResults/` Işlem kimliğidir.
@@ -67,18 +70,20 @@ https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/analyzeResults/54f
 1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `{resultId}`Önceki adımdaki Işlem kimliğiyle değiştirin.
+<!-- markdownlint-disable MD024 -->
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)  
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 ### <a name="examine-the-results"></a>Sonuçları inceleme
@@ -92,111 +97,10 @@ Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Bir tablo içeren contoso proje beyanı belgesi.":::
 
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 Bu çıktı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)bakın.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-08-20T20:36:52Z",
-    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
-    "analyzeResult": {
-        "version": "2.0.0",
-        "readResults": [
-            {
-                "page": 1,
-                "language": "en",
-                "angle": 0,
-                "width": 8.5,
-                "height": 11,
-                "unit": "inch",
-                "lines": [
-                    {
-                        "boundingBox": [
-                            0.5826,
-                            0.4411,
-                            2.3387,
-                            0.4411,
-                            2.3387,
-                            0.7969,
-                            0.5826,
-                            0.7969
-                        ],
-                        "text": "Contoso, Ltd.",
-                        "words": [
-                            {
-                                "boundingBox": [
-                                    0.5826,
-                                    0.4411,
-                                    1.744,
-                                    0.4411,
-                                    1.744,
-                                    0.7969,
-                                    0.5826,
-                                    0.7969
-                                ],
-                                "text": "Contoso,",
-                                "confidence": 1
-                            },
-                            {
-                                "boundingBox": [
-                                    1.8448,
-                                    0.4446,
-                                    2.3387,
-                                    0.4446,
-                                    2.3387,
-                                    0.7631,
-                                    1.8448,
-                                    0.7631
-                                ],
-                                "text": "Ltd.",
-                                "confidence": 1
-                            }
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ],
-        "pageResults": [
-            {
-                "page": 1,
-                "tables": [
-                    {
-                        "rows": 5,
-                        "columns": 5,
-                        "cells": [
-                            {
-                                "rowIndex": 0,
-                                "columnIndex": 0,
-                                "text": "Training Date",
-                                "boundingBox": [
-                                    0.5133,
-                                    4.2167,
-                                    1.7567,
-                                    4.2167,
-                                    1.7567,
-                                    4.4492,
-                                    0.5133,
-                                    4.4492
-                                ],
-                                "elements": [
-                                    "#/readResults/0/lines/14/words/0",
-                                    "#/readResults/0/lines/14/words/1"
-                                ]
-                            },
-                            ...
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ]
-    }
-}
-```
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)   
 ```json
 {
     "status": "succeeded",
@@ -314,27 +218,124 @@ Bu çıktı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek ç
         ]
     }
 }
-``` 
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Bu çıktı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)bakın.
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-08-20T20:36:52Z",
+    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
+    "analyzeResult": {
+        "version": "2.0.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.5826,
+                            0.4411,
+                            2.3387,
+                            0.4411,
+                            2.3387,
+                            0.7969,
+                            0.5826,
+                            0.7969
+                        ],
+                        "text": "Contoso, Ltd.",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5826,
+                                    0.4411,
+                                    1.744,
+                                    0.4411,
+                                    1.744,
+                                    0.7969,
+                                    0.5826,
+                                    0.7969
+                                ],
+                                "text": "Contoso,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8448,
+                                    0.4446,
+                                    2.3387,
+                                    0.4446,
+                                    2.3387,
+                                    0.7631,
+                                    1.8448,
+                                    0.7631
+                                ],
+                                "text": "Ltd.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 5,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Training Date",
+                                "boundingBox": [
+                                    0.5133,
+                                    4.2167,
+                                    1.7567,
+                                    4.2167,
+                                    1.7567,
+                                    4.4492,
+                                    0.5133,
+                                    4.4492
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/14/words/0",
+                                    "#/readResults/0/lines/14/words/1"
+                                ]
+                            },
+                            ...
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ]
+    }
+}
+```
 
 ---
 
-
-
 ## <a name="analyze-invoices"></a>Faturaları analiz etme
 
-# <a name="version-20"></a>[sürüm 2,0](#tab/v2-0)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-# <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/v2-1)
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
 Bir faturayı çözümlemeye başlamak için aşağıdaki kıvrımlı komutunu kullanın. Fatura analizi hakkında daha fazla bilgi için bkz. [Fatura kavramsal Kılavuzu](../../concept-invoices.md). Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `{your invoice URL}`Fatura BELGESININ URL adresiyle değiştirin.
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
-
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
@@ -525,6 +526,11 @@ Bu JSON içeriği okunabilirlik için kısaltıldı. [GitHub 'da tam örnek çı
 }
 ```
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
 ---
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
@@ -547,18 +553,19 @@ Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek i
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
-```
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
----
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+---
 
 `201 (Success)`Bir **konum** üst bilgisine sahip bir yanıt alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR.
 
@@ -574,17 +581,19 @@ Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
-```
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
 ```
 
----
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+```
+
+---
 
 `201 (Success)`Bir **konum** üst bilgisine sahip bir yanıt alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR.
 
@@ -596,16 +605,18 @@ Eğitme işlemini başlattıktan sonra, eğitim durumunu denetlemek için yeni b
 1. `{subscription key}`Abonelik anahtarınızla değiştirin
 1. `{model ID}`Önceki adımda aldığınız model kimliğiyle değiştirin
 
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-    
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 `200 (Success)`Aşağıdaki biçimde BIR JSON gövdesi ile yanıt alacaksınız. Alanına dikkat edin `"status"` . `"ready"`Eğitim tamamlandıktan sonra bu değer olacaktır. Modelde eğitim bitmiyor ise, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
@@ -687,20 +698,19 @@ Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, an
 1. `{SAS URL}`Azure Storage 'daki dosyanız için BIR SAS URL 'si ile değiştirin. Eğitim bölümündeki adımları izleyin, ancak tüm blob kapsayıcısı için bir SAS URL 'SI almak yerine, çözümlemek istediğiniz belirli dosya için bir tane alın.
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
-```
-    
 ---
-
-
 
 `202 (Success)` **İşlem konumu** üst bilgisi olan bir yanıt alacaksınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullandığınız bir sonuç KIMLIĞI içerir. Sonraki adım için bu sonuç KIMLIĞINI kaydedin.
 
@@ -712,14 +722,18 @@ curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model I
 1. `{result ID}`Önceki bölümde ALDıĞıNıZ kimlik ile değiştirin.
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 `200 (Success)`Aşağıdaki biçimde BIR JSON gövdesi ile yanıt alacaksınız. Çıktı basitlik için kısaltıldı. `"status"`En alttaki alana dikkat edin. `"succeeded"`Analiz işlemi tamamlandığında bu değer olacaktır. Çözümle işlemi tamamlanmadıysa, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
@@ -728,134 +742,8 @@ Etiketler olmadan eğitilen özel modellerde, anahtar/değer çifti ilişkilendi
 
 Bu örnek JSON çıktısı kolaylık sağlaması için kısaltıldı. [GitHub 'da tam örnek çıkışa](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json)bakın.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 ```JSON
 {
   "status": "succeeded",
@@ -997,7 +885,137 @@ Bu örnek JSON çıktısı kolaylık sağlaması için kısaltıldı. [GitHub 'd
     "errors": []
   }
 }
-``` 
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```  
+
 ---
 
 ### <a name="improve-results"></a>Sonuçları geliştirme
@@ -1012,17 +1030,18 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 1. `{your receipt URL}`Bir makbuz RESMININ URL adresiyle değiştirin.
 1. `{subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
-```
 ---
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, sonraki dize `operations/` Işlem kimliğidir.
@@ -1039,14 +1058,18 @@ https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operatio
 1. `{operationId}`Önceki adımdaki Işlem kimliğiyle değiştirin.
 1. `{subscription key}` değerini abonelik anahtarınızla değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)  
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
@@ -1388,12 +1411,7 @@ Bu çıktı okunabilirlik için kısaltıldı. [GitHub 'da tam örnek çıkışa
 
 ## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)  
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)  
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. İş kartı analizi hakkında daha fazla bilgi için bkz. [iş kartları kavramsal Kılavuzu](../../concept-business-cards.md). Bir iş kartını çözümlemeye başlamak için aşağıdaki kıvrımlı komutunu kullanarak **[Iş kartını çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
@@ -1548,6 +1566,11 @@ Bu örnek JSON çıktısı okunabilirlik için kısaltıldı. [GitHub 'da tam ö
 
 Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderilecek yanıtları yazdırır.
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
 ---
 
 ## <a name="manage-custom-models"></a>Özel modelleri yönetme
@@ -1559,18 +1582,20 @@ Aboneliğinize ait olan tüm özel modellerin bir listesini döndürmek için a�
 1. `{Endpoint}`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?op=full"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 `200`Aşağıdaki gıbı JSON verileri ile başarılı bir yanıt alırsınız. `"modelList"`Öğesi, oluşturulan tüm modellerinizi ve bunların bilgilerini içerir.
@@ -1602,17 +1627,18 @@ Belirli bir özel model hakkında ayrıntılı bilgi almak için aşağıdaki ko
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `{modelId}`Aramak istediğiniz özel MODELIN kimliğiyle değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 `200`Aşağıdaki gıbı JSON verileri ile başarılı bir yanıt alırsınız.
@@ -1663,21 +1689,21 @@ Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kom
 1. `{subscription key}`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `{modelId}`Aramak istediğiniz özel MODELIN kimliğiyle değiştirin.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
 curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
-
-```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 `204`Modelinizin silinmek üzere işaretlenip işaretlenmediğini belirten bir başarı yanıtı alacaksınız. Model yapıtları 48 saat içinde kaldırılacak.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

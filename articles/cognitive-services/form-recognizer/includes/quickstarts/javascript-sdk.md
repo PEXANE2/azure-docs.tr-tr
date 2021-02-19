@@ -2,22 +2,27 @@
 title: 'Hızlı başlangıç: JavaScript için form tanıyıcı istemci kitaplığı'
 description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için JavaScript için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: ebbf04db36b20420ae6de9d61837bcc4e664036e
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584675"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102912"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](../../index.yml)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
@@ -28,8 +33,8 @@ ms.locfileid: "99584675"
 * [Node.js](https://nodejs.org/) geçerli sürümü
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -61,7 +66,6 @@ Adlı bir dosya oluşturun `index.js` , açın ve aşağıdaki kitaplıkları i�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_imports)]
 
-
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js)'da bulabilirsiniz.
 
@@ -74,18 +78,20 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
-## <a name="object-model"></a>Nesne modeli 
+## <a name="object-model"></a>Nesne modeli
 
 Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `FormRecognizerClient` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `FormTrainingClient` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `FormRecognizerClient` için işlem sağlar:
 
- * Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıma. Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` .
- * Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma. Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` .
- * Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak, genel alanları Makbuzlardan tanıyor. Bu alanlar ve meta veriler bir koleksiyonunda döndürülür `RecognizedReceipt` .
+* Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıma. Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` .
+* Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma. Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` .
+* Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak, genel alanları Makbuzlardan tanıyor. Bu alanlar ve meta veriler bir koleksiyonunda döndürülür `RecognizedReceipt` .
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
+
 `FormTrainingClient` için işlem sağlar:
 
 * Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme. `CustomFormModel`Modelin analiz edileceği form türlerini ve her form türü için ayıklanacak alanları gösteren bir döndürülür. Eğitim veri kümesi oluşturma hakkında daha ayrıntılı bir açıklama için, [etiketli model eğitiminde hizmetin belgelerine](#train-a-model-without-labels) bakın.
@@ -95,7 +101,6 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
 > [!NOTE]
 > Modeller ayrıca [form tanıyıcı etiketleme aracı](../../quickstarts/label-tool.md)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
-
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -307,7 +312,7 @@ Bir URI 'den alındıları çözümlemek için `beginRecognizeReceiptsFromUrl` y
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest&preserve-view=true ) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -326,7 +331,7 @@ First receipt:
 
 ## <a name="manage-your-custom-models"></a>Özel modellerinizi yönetin
 
-Bu bölümde, hesabınızda depolanan özel modellerin nasıl yönetileceği gösterilmektedir. Aşağıdaki kod, örnek olarak tek bir işlevde tüm model yönetimi görevlerini yapar. 
+Bu bölümde, hesabınızda depolanan özel modellerin nasıl yönetileceği gösterilmektedir. Aşağıdaki kod, örnek olarak tek bir işlevde tüm model yönetimi görevlerini yapar.
 
 ### <a name="get-number-of-models"></a>Model sayısını Al
 
@@ -334,13 +339,11 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli model sayısını alır.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_count)]
 
-
 ### <a name="get-list-of-models-in-account"></a>Hesaptaki modellerin listesini al
 
 Aşağıdaki kod bloğu, hesabınızdaki kullanılabilir modellerin tam listesini, modelin ne zaman oluşturulduğu ve geçerli durumu hakkında bilgi içerir.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
-
 
 ### <a name="output"></a>Çıktı
 
@@ -381,7 +384,6 @@ Bu kod bloğu model ve model kimliklerinin sayfalandırılmış bir listesini sa
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_listpages)]
 
-
 ### <a name="output"></a>Çıktı
 
 ```console
@@ -396,13 +398,11 @@ Aşağıdaki işlev bir model KIMLIĞI alır ve eşleşen model nesnesini alır.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_getmodel)]
 
-
 ### <a name="delete-a-model-from-the-resource-account"></a>Kaynak hesabındaki bir modeli silme
 
 Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu işlev, belirtilen KIMLIĞE sahip modeli siler. Bu işlev varsayılan olarak çağrılmaz.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_delete)]
-
 
 ### <a name="output"></a>Çıktı
 
@@ -431,7 +431,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Bu kitaplığı kullanırken hata ayıklama günlüklerini görmek için aşağıdaki ortam değişkenini ayarlayabilirsiniz.
 
-```
+```console
 export DEBUG=azure*
 ```
 

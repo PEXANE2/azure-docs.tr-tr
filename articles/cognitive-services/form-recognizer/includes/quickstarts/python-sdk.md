@@ -2,21 +2,26 @@
 title: 'Hızlı başlangıç: Python için form tanıyıcı istemci kitaplığı'
 description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için Python için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
-ms.openlocfilehash: d0c26a4b0cc860b959afc6703ee3e709c606f209
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: 5e7197208289e03502368c0988676bf3d2016070
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584670"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102929"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -27,8 +32,8 @@ ms.locfileid: "99584670"
 * [Python 3.x](https://www.python.org/)
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -36,23 +41,23 @@ ms.locfileid: "99584670"
 
 Python yükledikten sonra, form tanıyıcı istemci kitaplığı 'nın en son sürümünü ile yükleyebilirsiniz:
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-> [!NOTE]
-> En son form tanıyıcı API sürüm 2,0 ' i yansıtır
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Form tanıyıcı önizleme SDK 'sı API sürüm 2,1 Önizleme 'yi yansıtır
+> Form tanıyıcı 3.1.0 SDK, API sürüm 2,1 Önizleme 'YI yansıtır
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+> [!NOTE]
+> Form tanıyıcı 3.0.0 SDK, API v 2.0 'ı yansıtır
 
 ---
 
@@ -65,24 +70,24 @@ Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşt
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)'da bulabilirsiniz.
 
-
 Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
-
-## <a name="object-model"></a>Nesne modeli 
+## <a name="object-model"></a>Nesne modeli
 
 Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `form_recognizer_client` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `form_training_client` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `form_recognizer_client` için işlem sağlar:
 
- * Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıma. 
- * Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma. 
- * Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak, genel alanları Makbuzlardan tanıyor.
+* Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıma.
+* Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.
+* Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak, genel alanları Makbuzlardan tanıyor.
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
+
 `form_training_client` için işlem sağlar:
 
 * Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme. Eğitim veri kümesi oluşturma hakkında daha ayrıntılı bir açıklama için, [etiketli model eğitiminde hizmetin belgelerine](#train-a-model-without-labels) bakın.
@@ -96,23 +101,24 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
-
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Düzeni çözümle](#analyze-layout)
-* [Alındıları analiz etme](#analyze-receipts)
-* [Özel bir modeli eğitme](#train-a-custom-model)
-* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
-* [Özel modellerinizi yönetin](#manage-your-custom-models)
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Düzeni çözümle](#analyze-layout)
 * [Alındıları analiz etme](#analyze-receipts)
 * [İş kartlarını çözümle](#analyze-business-cards)
 * [Faturaları analiz etme](#analyze-invoices)
+* [Özel bir modeli eğitme](#train-a-custom-model)
+* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
+* [Özel modellerinizi yönetin](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
@@ -125,10 +131,10 @@ Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak iki i
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
 
-
 ## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
 Eğitim ve test verileriniz için URL 'lere başvuru eklemeniz gerekir.
+
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
@@ -171,22 +177,21 @@ Confidence score: 1.0
 
 ```
 
-
 ## <a name="analyze-invoices"></a>Faturaları analiz etme
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. Fatura analizi hakkında daha fazla bilgi için bkz. [Fatura kavramsal Kılavuzu](../../concept-invoices.md). Bir URL 'den faturaları çözümlemek için `begin_recognize_invoices_from_url` yöntemini kullanın. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Yerel fatura görüntülerini da analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_invoices` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Yerel fatura görüntülerini da analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) yöntemlerine bakın `begin_recognize_invoices` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
 
 ---
 
@@ -329,7 +334,7 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_receipts` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) yöntemlerine bakın `begin_recognize_receipts` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 ### <a name="output"></a>Çıktı
 
@@ -353,22 +358,21 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-
 ## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. İş kartı analizi hakkında daha fazla bilgi için bkz. [iş kartları kavramsal Kılavuzu](../../concept-business-cards.md). Bir URL 'den iş kartlarını çözümlemek için `begin_recognize_business_cards_from_url` yöntemini kullanın. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Ayrıca, yerel iş kartı görüntülerini çözümleyebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_business_cards` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+> Ayrıca, yerel iş kartı görüntülerini çözümleyebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) yöntemlerine bakın `begin_recognize_business_cards` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
 
 ---
 

@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: REST ile temel ses dönüşümü oluşturma
           href: how-to-create-basic-audio-transform.md
+        - name: Küçük resim oluşturma
+          href: how-to-create-thumbnail-sprites.md
         - name: REST ile bir copyAllBitrateNonInterleaved dönüşümü oluşturma
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: REST ile kodlama olmadan video kopyalama
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: Bölgesel kod adları ve uç noktalar
       href: azure-regions-code-names.md
-    - name: Belge güncelleştirmeleri
-      href: docs-release-notes.md

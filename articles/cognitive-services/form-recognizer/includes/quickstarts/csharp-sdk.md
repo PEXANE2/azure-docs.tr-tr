@@ -2,20 +2,21 @@
 title: 'Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı'
 description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için .NET için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 10/06/2020
-ms.author: pafarley
-ms.openlocfilehash: e85a6ad4619897a6c655874b43e6a6b1a7723d3a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.author: lajanuar
+ms.openlocfilehash: 1054bec0daee55bac8892869a5f928b600e84d1e
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584672"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102895"
 ---
+<!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
@@ -27,12 +28,12 @@ ms.locfileid: "99584672"
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz.
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+  * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+  * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -54,20 +55,11 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
 Uygulama dizini içinde, aşağıdaki komutla .NET için form tanıyıcı istemci Kitaplığı ' nı yükleyeceksiniz:
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-```console
-dotnet add package Azure.AI.FormRecognizer --version 3.0.0
-```
-
-> [!NOTE]
-> Form tanıyıcı 3.0.0 SDK, API sürüm 2,0 ' i yansıtır
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
@@ -75,6 +67,15 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 > [!NOTE]
 > Form tanıyıcı 3.1.0 SDK, API sürüm 2,1 Önizleme 'YI yansıtır
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```console
+dotnet add package Azure.AI.FormRecognizer --version 3.0.0
+```
+
+> [!NOTE]
+> Form tanıyıcı 3.0.0 SDK, API v 2.0 'ı yansıtır
 
 ---
 
@@ -96,10 +97,14 @@ Uygulamanın **Program** sınıfında, kaynağınızın anahtarı ve uç noktas�
 
 Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan zaman uyumsuz görevlere bir çağrı ekleyin. Bunları daha sonra uygulayacaksınız.
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
+
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
 
 ---
 
@@ -112,18 +117,18 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
 `FormRecognizerClient` için işlem sağlar:
 
- - Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
- - Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [Çözümleme düzeni](#analyze-layout).
- - Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma. Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnekleri [analiz alındıları](#analyze-receipts).
+* Özel formlarınızı çözümlemek için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
+* Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [Çözümleme düzeni](#analyze-layout).
+* Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma. Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnekleri [analiz alındıları](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
 
 `FormTrainingClient` için işlem sağlar:
 
-- Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme.  `CustomFormModel`Modelin analiz edileceği form türlerini ve her form türü için ayıklanacak alanları gösteren bir döndürülür.
-- Özel formlarınızı etiketleyerek belirttiğiniz belirli alanları ve değerleri çözümlemek için özel modeller eğitimi yapın.  , `CustomFormModel` Modelin ayıklanacağı alanları ve her bir alan için tahmini doğruluğu belirten bir döndürülür.
-- Hesabınızda oluşturulan modelleri yönetme.
-- Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
+* Özel modellerinizde bulunan tüm alanları ve değerleri çözümlemek için özel modelleri eğitme.  `CustomFormModel`Modelin analiz edileceği form türlerini ve her form türü için ayıklanacak alanları gösteren bir döndürülür.
+* Özel formlarınızı etiketleyerek belirttiğiniz belirli alanları ve değerleri çözümlemek için özel modeller eğitimi yapın.  , `CustomFormModel` Modelin ayıklanacağı alanları ve her bir alan için tahmini doğruluğu belirten bir döndürülür.
+* Hesabınızda oluşturulan modelleri yönetme.
+* Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
 
 [Bir modeli eğitme](#train-a-custom-model) ve [özel modelleri yönetme](#manage-custom-models)örneklerine bakın.
 
@@ -133,23 +138,24 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
+<!-- markdownlint-disable MD001 -->
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Düzeni çözümle](#analyze-layout)
-* [Alındıları analiz etme](#analyze-receipts)
-* [Özel bir modeli eğitme](#train-a-custom-model)
-* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
-* [Özel modellerinizi yönetin](#manage-your-custom-models)
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Düzeni çözümle](#analyze-layout)
 * [Alındıları analiz etme](#analyze-receipts)
 * [İş kartlarını çözümle](#analyze-business-cards)
 * [Faturaları analiz etme](#analyze-invoices)
+* [Özel bir modeli eğitme](#train-a-custom-model)
+* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
+* [Özel modellerinizi yönetin](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
@@ -179,15 +185,17 @@ Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerek
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 * Ardından, BLOB depolama kapsayıcısında tek bir belgenin SAS URL 'sini almak için yukarıdaki adımları tekrarlayın. Geçici bir konuma da kaydedin.
-* Son olarak, aşağıda yer alan örnek görüntünün URL 'sini kaydedin ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)üzerinde de mevcuttur). 
+* Son olarak, aşağıda yer alan örnek görüntünün URL 'sini kaydedin ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)üzerinde de mevcuttur).
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
+
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
----
+#### <a name="v20"></a>[v2.0](#tab/ga)
 
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
+
+---
 
 ## <a name="analyze-layout"></a>Düzeni çözümle
 
@@ -239,15 +247,9 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-
 ## <a name="analyze-invoices"></a>Faturaları analiz etme
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Bu özellik seçili API sürümünde kullanılamaz.
-
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. Fatura analizi hakkında daha fazla bilgi için bkz. [Fatura kavramsal Kılavuzu](../../concept-invoices.md).
 
@@ -256,14 +258,18 @@ Bir URL 'den faturaları çözümlemek için `StartRecognizeInvoicesFromUriAsync
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Yerel fatura görüntülerini da analiz edebilirsiniz. **Startrecognizeınices** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Yerel fatura görüntülerini da analiz edebilirsiniz. **Startrecognizeınices** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her fatura için bir tane. Aşağıdaki kod, belirtilen URI 'de faturayı işler ve ana alanları ve değerleri konsola yazdırır.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
----
+#### <a name="v20"></a>[v2.0](#tab/ga)
 
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
+---
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 
@@ -355,7 +361,6 @@ Döndürülen, `CustomFormModel` modelin ayıklayabileceğiniz alanları, her bi
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels_response)]
 
-
 ### <a name="output"></a>Çıktı
 
 Bu yanıt okunabilirlik için kesildi.
@@ -415,7 +420,6 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
-
 
 ### <a name="output"></a>Çıktı
 
@@ -487,7 +491,7 @@ Bir URL 'den alındıları çözümlemek için `StartRecognizeReceiptsFromUri` y
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **StartRecognizeReceipts** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **StartRecognizeReceipts** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedReceipt` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, belirtilen URI 'de alış irsaliyesini işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -539,13 +543,12 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
-#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/ga)
 
 > [!IMPORTANT]
 > Bu özellik seçili API sürümünde kullanılamaz.
 
-#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
-
+#### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl analiz edileceği ve ayıklanacağı gösterilmektedir. İş kartı analizi hakkında daha fazla bilgi için bkz. [iş kartları kavramsal Kılavuzu](../../concept-business-cards.md).
 
@@ -554,7 +557,7 @@ Bir URL 'den iş kartlarını çözümlemek için `StartRecognizeBusinessCardsFr
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **Startrecognizebusinesscarlar** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini analiz edebilirsiniz. **Startrecognizebusinesscarlar** gibi [Formrecognizerclient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: belgedeki her kart için bir tane. Aşağıdaki kod, belirtilen URI 'de iş kartını işler ve ana alanları ve değerleri konsola yazdırır.
 
