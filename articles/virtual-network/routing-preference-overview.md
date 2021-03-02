@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539079"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101601336"
 ---
-# <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
+# <a name="what-is-routing-preference"></a>Yönlendirme tercihi nedir?
 
 Azure yönlendirme tercihi, trafiğinizin Azure ile Internet arasında nasıl yönlendirdiğini seçmenizi sağlar. Trafiği Microsoft ağı aracılığıyla ya da ISS ağı (genel İnternet) aracılığıyla yönlendirmeyi seçebilirsiniz. Bu seçenekler aynı zamanda *soğuk patates* yönlendirme ve *sık erişimli yönlendirme* olarak da adlandırılır. Çıkış veri aktarımı fiyatı, yönlendirme seçimine göre farklılık gösterir. Genel IP adresi oluştururken yönlendirme seçeneğini belirleyebilirsiniz. Genel IP adresi, sanal makine, sanal makine ölçek kümeleri, internet 'e yönelik yük dengeleyici vb. gibi kaynaklarla ilişkilendirilebilir. Blob, dosya, Web ve Azure Veri Gölü gibi Azure depolama kaynakları için yönlendirme tercihini de ayarlayabilirsiniz. Varsayılan olarak, trafik tüm Azure hizmetleri için Microsoft Global ağı aracılığıyla yönlendirilir.
-
-> [!IMPORTANT]
-> Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Microsoft Global ağı aracılığıyla yönlendirme
 
@@ -70,13 +67,13 @@ Depolama için birincil uç noktalar her zaman **Microsoft Global ağını** kul
 * Azure DataLake
 
 ## <a name="pricing"></a>Fiyatlandırma
-Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fiyatlandırmasına yansıtılır. **Microsoft Global Network** veri aktarımı fiyatı üzerinden yönlendirme, geçerli internet çıkış fiyatıyla aynı. En son fiyatlandırma bilgileri için [Azure bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/) ziyaret edin. 
+Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fiyatlandırmasına yansıtılır. **Microsoft Global Network** veri aktarımı fiyatı üzerinden yönlendirme, geçerli internet çıkış fiyatıyla aynı. En son fiyatlandırma bilgileri için [Azure bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/) ziyaret edin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
+* Yönlendirme tercihi şu anda Avustralya Orta, Avustralya Central2, Kanada Doğu, Brezilya Güney, Kore Orta ve Kore Güney içinde desteklenmemektedir.
 * Yönlendirme tercihi yalnızca bölge yedekli standart IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.
 * Yönlendirme tercihi şu anda yalnızca IPv4 Genel IP adreslerini desteklemektedir. IPv6 genel IP adresleri desteklenmez.
-* Birden çok NIC içeren sanal makineler yalnızca bir yönlendirme tercihi türüne sahip olabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
