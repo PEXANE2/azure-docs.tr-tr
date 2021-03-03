@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 61b3b3abace5c7a1cd846c1e3c1e7ac166efd5c7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475701"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682426"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 **Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, bir grup çağırma deneyimi oluşturmak için Web istemcisi kitaplığı 'Nı çağıran iletişim hizmetlerinin nasıl kullanılabileceğini gösterir.
 
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
@@ -29,7 +27,7 @@ Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communic
 
 ## <a name="overview"></a>Genel Bakış
 
-Örnekte hem istemci tarafı uygulaması hem de sunucu tarafı uygulaması vardır. **İstemci tarafı uygulama** , Microsoft 'un akıcı Kullanıcı arabirimi çerçevesini kullanan bir yanıt veren/Redux Web uygulamasıdır. Bu uygulama, istemci tarafı uygulamanın Azure 'a bağlanmasına yardımcı olan bir ASP.NET Core **sunucu tarafı uygulamasına** istek gönderir. 
+Örnekte hem istemci tarafı uygulaması hem de sunucu tarafı uygulaması vardır. **İstemci tarafı uygulama** , Microsoft 'un akıcı Kullanıcı arabirimi çerçevesini kullanan bir yanıt veren/Redux Web uygulamasıdır. Bu uygulama, istemci tarafı uygulamanın Azure 'a bağlanmasına yardımcı olan bir ASP.NET Core **sunucu tarafı uygulamasına** istek gönderir.
 
 Örnek şöyle görünür:
 
@@ -91,7 +89,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:

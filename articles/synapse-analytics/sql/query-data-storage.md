@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735390"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675043"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu ile depolama dosyalarını sorgulama
 
 Sunucusuz SQL havuzu, Data Lake 'unuzdaki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
-- [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) yüzeyi alanı.
+- [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) yüzeyi alanı.
 - SELECT ([Cetas](develop-tables-cetas.md)) olarak dış tablo oluşturma bir [dış tablo](develop-tables-external-tables.md) oluşturur ve ardından Transact-SQL SELECT ifadesinin sonuçlarını Azure Storage 'a aktarır.
 
 Vs. ile ilgili daha fazla bilgi için, şu anda desteklenmeyen [sunucusuz SQL havuzuna genel bakış](on-demand-workspace-overview.md) makalesini veya aşağıdaki makaleleri okuyun:
@@ -184,21 +184,21 @@ Varsayılan olarak, `OPENROWSET` IşLEVI WITH yan tümcesinde belirtilen sütun 
 - İşlev, Iç Içe geçmiş tür grubunda olmayan tüm Parquet türleri için, belirtilen öğeden ve belirtilen yoldaki int, Decimal ve varchar gibi bir skaler değer döndürür.
 - Yol, Iç Içe geçmiş bir türün bir öğesini işaret ediyorsa, işlev belirtilen yoldaki en üstteki öğeden başlayarak bir JSON parçası döndürür. JSON parçası varchar (8000) türündedir.
 - Özellik belirtilen column_name bulunamazsa, işlev bir hata döndürür.
-- Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
+- Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
 
 Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#read-properties-from-nested-object-columns) makalesindeki iç içe geçmiş sütunlarda bulunan erişim öğeleri bölümünü gözden geçirin.
 
 #### <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Bir dizi veya haritanın bir öğesi gibi yinelenen bir sütundan öğelere erişmek için, proje yapmanız ve sağlamanız gereken her skalar öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
+Bir dizi veya haritanın bir öğesi gibi yinelenen bir sütundan öğelere erişmek için, proje yapmanız ve sağlamanız gereken her skalar öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
 
 - İlk parametre olarak iç içe veya yinelenen sütun
-- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)
 
-Yinelenen bir sütundan skalar olmayan öğelere erişmek için, proje yapmanız ve sağlamanız gereken skalar olmayan her öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
+Yinelenen bir sütundan skalar olmayan öğelere erişmek için, proje yapmanız ve sağlamanız gereken skalar olmayan her öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
 
 - İlk parametre olarak iç içe veya yinelenen sütun
-- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)
 
 Aşağıdaki sözdizimi parçasını inceleyin:
 

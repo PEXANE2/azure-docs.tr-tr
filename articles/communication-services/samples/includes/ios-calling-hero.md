@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 618efc8d2c3784a487c302661f35d5a284c68178
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475694"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682419"
 ---
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -74,8 +74,8 @@ Tanıtım amacıyla bu örnek, varsayılan olarak bir Azure Iletişim Hizmetleri
 Ek yapılandırma ile bu örnek, uygulamanın bir Azure Iletişim Hizmetleri belirtecini getirmesi için Kullanıcı oturum açması gereken **Azure Active Directory** (Azure AD) korumalı bir uç noktaya bağlanmayı destekler. Aşağıdaki adımlara bakın:
 
 1. Uygulamanızda Azure Active Directory kimlik doğrulamasını etkinleştirin.  
-   - [Uygulamanızı Azure Active Directory altına kaydetme (iOS/macOS platform ayarlarını kullanarak)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-ios) 
-    - [App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+   - [Uygulamanızı Azure Active Directory altına kaydetme (iOS/macOS platform ayarlarını kullanarak)](../../../active-directory/develop/tutorial-v2-ios.md) 
+    - [App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../../../app-service/configure-authentication-provider-aad.md)
 2. Azure Active Directory uygulama kayıtları altında kayıtlı uygulamanıza genel bakış sayfasına gidin. , `Application (client) ID` ,, `Directory (tenant) ID``Application ID URI`
 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure portal Yapılandırma Azure Active Directory.":::
