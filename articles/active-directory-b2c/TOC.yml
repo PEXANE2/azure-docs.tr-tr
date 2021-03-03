@@ -121,10 +121,14 @@
           href: add-sign-up-and-sign-in-policy.md
         - name: Oturum açma ilkesi
           href: add-sign-in-policy.md
-        - name: Parola sıfırlama ilkesi
-          href: add-password-reset-policy.md
-        - name: Parola değiştirme ilkesi
-          href: add-password-change-policy.md
+        - name: Parola sıfırlama ilkeleri
+          items:
+            - name: Self servis parola sıfırlama
+              href: add-password-reset-policy.md
+            - name: Self servis parola değiştirme
+              href: add-password-change-policy.md
+            - name: Parola sıfırlamayı zorla
+              href: force-password-reset.md
         - name: Profil düzenleme ilkesi
           href: add-profile-editing-policy.md
         - name: Kaynak sahibinin parola kimlik bilgileri ilkesi
@@ -520,4 +524,4 @@
       href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: Videolar
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

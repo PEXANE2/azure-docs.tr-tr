@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834400"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735871"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -219,7 +219,7 @@ Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denet
 
 Uyarlamalı uygulama denetimlerinizi program aracılığıyla 'yi yönetmek için REST API kullanın. 
 
-Tam API belgesi [burada](/rest/api/securitycenter/adaptiveapplicationcontrols)bulunur.
+İlgili API belgeleri, [Güvenlik Merkezi 'nın API belgelerinin Uyarlamalı uygulama denetimleri bölümünde](/rest/api/securitycenter/adaptiveapplicationcontrols)bulunur.
 
 REST API kullanılabilen işlevlerden bazıları:
 

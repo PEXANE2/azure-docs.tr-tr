@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094959"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732590"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Yaygın Windows sanal masaüstü Aracısı sorunlarını giderme
 
@@ -21,6 +21,14 @@ Windows sanal masaüstü Aracısı, birden çok etken nedeniyle bağlantı sorun
    - Aracı yüklemesi sırasında yüklemeyle ilgili sorunlar, oturum ana bilgisayarına bağlantıyı kesintiye uğraşır.
 
 Bu makale, bu yaygın senaryolara yönelik çözümler ve bağlantı sorunlarının nasıl ele alınacağını size kılavuzluk eder.
+
+>[!NOTE]
+>Oturum bağlantısı ve Windows sanal masaüstü Aracısı ile ilgili sorunları gidermek için, **Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasındaki** olay günlüklerini incelemenizi öneririz. Sorununuzu belirlemek için aşağıdaki kaynaklardan birine sahip olan olayları arayın:
+>
+>- WVD-Agent
+>- WVD-Agent-Güncelleştirici
+>- Rdavgentönyükleme yükleyicisi
+>- Msiınstaller
 
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>Hata: Rdadgentönyükleme yükleyicisi ve/veya uzak masaüstü Aracısı yükleyicisi çalışmayı durdurdu
 
@@ -63,9 +71,9 @@ Bu sorunu çözmek için geçerli bir kayıt belirteci oluşturun:
    > [!div class="mx-imgBorder"]
    > ![Ikaydettirilen 1 ekran görüntüsü](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>Hata: aracı INVALID_FORM veya NOT_FOUND ile aracıya bağlanamıyor. URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>Hata: aracı INVALID_FORM ile aracıya bağlanamıyor
 
-**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. KIMLIĞI 3277 olan bir olay görürseniz **INVALID_FORM** veya **NOT_FOUND diyor. Açıklamada URL** , aracı ve aracı arasındaki iletişimde bir sorun oluştu. Aracı aracıya bağlanamıyor ve belirli bir URL 'ye ulaşamıyor. Bunun nedeni, güvenlik duvarınız veya DNS ayarlarınız olabilir.
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. Açıklamada "INVALID_FORM" belirten bir 3277 olay görürseniz, aracı ile aracı arasındaki iletişimde bir sorun oluştu. Aracı, belirli bir güvenlik duvarı veya DNS ayarları nedeniyle aracıya bağlanamıyor veya belirli bir URL 'ye ulaşamıyor.
 
 Bu sorunu çözmek için, BrokerURI ve BrokerURIGlobal öğesine ulaşabilseniz denetleyin:
 1. Kayıt defteri düzenleyicisini açın. 
@@ -100,13 +108,43 @@ Bu sorunu çözmek için, BrokerURI ve BrokerURIGlobal öğesine ulaşabilseniz 
 8. Ağ Bu URL 'Leri engelliyorsa, gerekli URL 'Lerin engellemesini kaldırmanız gerekecektir. Daha fazla bilgi için bkz. [gereklı URL listesi](safe-url-list.md).
 9. Bu sorunu çözmezse, şifrelemeleri olan ve aracının aracı bağlantısını engelleyecek bir grup ilkesi olmadığından emin olun. Windows sanal masaüstü, [Azure ön kapısının](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door)kullandığı TLS 1,2 şifrelemeleri kullanır. Daha fazla bilgi için bkz. [bağlantı güvenliği](network-connectivity.md#connection-security).
 
-## <a name="error-3703-or-3019"></a>Hata: 3703 veya 3019
+## <a name="error-3703"></a>Hata: 3703
 
-**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. KIMLIĞI 3703 olan bir olay görürseniz **RD Ağ Geçidi URL: erişilebilir değil** veya açıklamada kimliği 3019 olan herhangi bir olay görürseniz, aracı ağ geçidi URL 'lerine veya Web yuva Aktarım URL 'lerine erişemez. Oturum ana bilgisayarınıza başarıyla bağlanmak ve bu uç noktalara yönelik ağ trafiğinin kısıtlamaları atlamasına izin vermek için [gereklı URL listesinden](safe-url-list.md)URL 'lerin engellemesini kaldırmanız gerekir. Ayrıca güvenlik duvarınızın veya ara sunucu ayarlarınızın bu URL 'Leri engellemediğinden emin olun. Windows sanal masaüstü 'Nü kullanmak için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir.
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. Açıklamasında, "RD Ağ Geçidi URL: erişilebilir değil" 3703 adlı bir olay görürseniz, aracı ağ geçidi URL 'Lerine erişemez. Oturum ana bilgisayarınıza başarıyla bağlanmak ve bu uç noktalara yönelik ağ trafiğinin kısıtlamaları atlamasına izin vermek için [gereklı URL listesinden](safe-url-list.md)URL 'lerin engellemesini kaldırmanız gerekir. Ayrıca güvenlik duvarınızın veya ara sunucu ayarlarınızın bu URL 'Leri engellemediğinden emin olun. Windows sanal masaüstü 'Nü kullanmak için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir.
 
 Bu sorunu çözmek için güvenlik duvarınızın ve/veya DNS ayarlarınızın bu URL 'Leri engellemediğinden emin olun:
 1. [Windows sanal masaüstü dağıtımlarını korumak Için Azure Güvenlik Duvarı 'Nı kullanın.](../firewall/protect-windows-virtual-desktop.md)
 2. [Azure Güvenlik DUVARı DNS ayarlarınızı](../firewall/dns-settings.md)yapılandırın.
+
+## <a name="error-3019"></a>Hata: 3019
+
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. KIMLIĞI 3019 olan bir olay görürseniz, bu, aracının Web soketi aktarım URL 'Lerine ulaşamamasıdır. Oturum ana bilgisayarınıza başarıyla bağlanmak ve ağ trafiğinin bu kısıtlamaları atlamasına izin vermek için [gereklı URL listesinde](safe-url-list.md)listelenen URL 'lerin engellemesini kaldırmanız gerekir. Güvenlik duvarınızın, ara sunucunuzun ve DNS ayarlarınızın bu URL 'Leri engellemediğinden emin olmak için Azure ağ ekibi ile çalışın. Windows sanal masaüstü hizmetinin nerede engelleneceğini belirlemek için ağ izleme günlüklerinizi de denetleyebilirsiniz. Bu belirli sorun için bir destek isteği açarsanız, ağ izleme günlüklerinizi isteğe iliştirdiğinizden emin olun.
+
+## <a name="error-installationhealthcheckfailedexception"></a>Hata: ınstalyüklehealthcheckfailedexception
+
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. Açıklamada "ınstalhealthcheckfailedexception" yazan 3277 KIMLIKLI bir olay görürseniz, bu, Terminal sunucusu yığın dinleyicisi için kayıt defteri anahtarını taşıdığından yığın dinleyicisinin çalışmadığı anlamına gelir.
+
+Bu sorunu çözmek için:
+1. [Yığın dinleyicisinin çalışıp çalışmadığını](#error-stack-listener-isnt-working-on-windows-10-2004-vm)denetleyin.
+2. Yığın dinleyicisi çalışmıyorsa, [yığın bileşenini el ile kaldırın ve yeniden yükleyin](#error-vms-are-stuck-in-unavailable-or-upgrading-state).
+
+## <a name="error-endpoint_not_found"></a>Hata: ENDPOINT_NOT_FOUND
+
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. Açıklamada "ENDPOINT_NOT_FOUND" belirten bir 3277 olay görürseniz, aracının ile bağlantı kurmak için bir uç nokta bulamadığı anlamına gelir. Bu bağlantı sorunu, aşağıdakilerden biri nedeniyle oluşabilir:
+
+- Konak havuzunuzdaki VM yok
+- Konak havuzunuzdaki VM 'Ler etkin değil
+- Konak Havuzunuzdaki tüm VM 'Ler maksimum oturum sınırını aştı
+- Konak havuzunuzdaki VM 'lerden hiçbiri üzerinde aracı hizmeti çalışmıyor
+
+Bu sorunu çözmek için:
+
+1. VM 'nin açık olduğundan ve konak havuzundan kaldırılmadığından emin olun.
+2. VM 'nin en fazla oturum sınırını aşmadığından emin olun.
+3. [Aracı hizmetinin çalıştığından](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) ve [yığın dinleyicisinin çalıştığından](#error-stack-listener-isnt-working-on-windows-10-2004-vm)emin olun.
+4. Aracının aracıya [bağlanabildiğinizden](#error-agent-cannot-connect-to-broker-with-invalid_form)emin olun.
+5. [VM 'nizin geçerli bir kayıt belirtecine sahip](#error-invalid_registration_token)olduğundan emin olun.
+6. [VM kayıt belirtecinin süresinin dolmadığından](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)emin olun. 
 
 ## <a name="error-installmsiexception"></a>Hata: ınstallmsıexception
 
@@ -176,23 +214,32 @@ Bu sorunu çözmek için:
 8. **Clustersettings** altında **sessiondirectorylistener** bulun ve veri değerinin **RDP-sxs olduğundan emin olun...**.
 9. **Sessiondirectorylistener** , **RDP-sxs...** olarak ayarlanmamışsa, önce aracıyı, önyükleme yükleyicisini ve yığın bileşenlerini kaldırmak ve sonra [aracıyı ve önyükleme yükleyicisini yeniden yüklemek](#step-4-reinstall-the-agent-and-boot-loader)için [Aracı ve önyükleme yükleyicisini kaldırma](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) bölümündeki adımları izlemeniz gerekir. Bu işlem, yan yana yığını yeniden yükler.
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>Hata: kullanıcıların oturum konaklarından bağlantısı kesilmeleri devam eden
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Hata: kullanıcıların oturum konaklarından bağlantısı kesilme tutmasına neden olan sinyal sorunu
 
-**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. KIMLIĞI 0 olan ve/veya kullanıcıların oturum konaklarından bağlantısı **kesildiğini belirten bir** olay görürseniz, sunucunuz Windows sanal masaüstü hizmetinden bir sinyal çekmez.
+Sunucunuz Windows sanal masaüstü hizmetinden bir sinyal çekmezse sinyal eşiğini değiştirmeniz gerekir. Aşağıdaki senaryolardan biri veya daha fazlası size uygunsa, bu bölümdeki yönergeleri izleyin:
 
-Bu sorunu çözmek için sinyal eşiğini değiştirin:
+- Bir **CheckSessionHostDomainIsReachableAsync** hatası alıyorsunuz
+- Bir **ConnectionBrokenMissedHeartbeatThresholdExceeded** hatası alıyorsunuz
+- Bir **connectionconnection: UnexpectedNetworkDisconnect** hatası alıyorsunuz
+- Kullanıcı istemcilerinin bağlantısı kesik olarak kalsın
+- Kullanıcıların oturum konaklarından bağlantısı kesilmelerini koruyun
+
+Sinyal eşiğini değiştirmek için:
 1. Komut isteinizi yönetici olarak açın.
 2. **Qwinsta** komutunu girin ve çalıştırın.
 3. İki yığın bileşeni görüntülenmelidir: **RDP-TCP** ve **RDP-sxs**. 
-   - Kullanmakta olduğunuz işletim sisteminin sürümüne bağlı olarak, **RDP-sxs** tarafından izlenen yapı numarası gelebilir. Varsa, daha sonra bu numarayı daha sonra yazmak istediğinizden emin olun.
+   - Kullanmakta olduğunuz işletim sisteminin sürümüne bağlı olarak, **RDP-sxs** tarafından izlenen yapı numarası gelebilir. Varsa, daha sonra bu sayıyı yazdığınızdan emin olun.
 4. Kayıt Defteri Düzenleyicisi'ni açın.
 5. **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **winistasyonlara** gidin.
-6. **Winistasyonların** altında farklı yığın sürümleri için birkaç klasör görebilirsiniz. 3. adımdaki sürüm numarasıyla eşleşen klasörü seçin.
+6. **Winistasyonlarda**, farklı yığın sürümleri için birkaç klasör görebilirsiniz. 3. adımdaki sürüm numarasıyla eşleşen klasörü seçin.
 7. Kayıt defteri düzenleyicisine sağ tıklayıp **Yeni**  >  **DWORD (32-bit) değeri**' ni seçerek yeni bir kayıt defteri DWORD oluşturun. DWORD öğesini oluşturduğunuzda, aşağıdaki değerleri girin:
    - HeartbeatInterval: 10000
    - HeartbeatWarnCount: 30 
    - HeartbeatDropCount: 60 
 8. Sanal makineyi yeniden başlatın.
+
+>[!NOTE]
+>Sinyal eşiğini değiştirmek sorununuzu gidermezse, hakkında Azure ağ ekibiyle iletişim kurmanız gereken temel bir ağ sorununuz olabilir.
 
 ## <a name="error-downloadmsiexception"></a>Hata: DownloadMsiException
 
@@ -202,6 +249,11 @@ Bu sorunu çözmek için diskinizde yer açın:
    - Artık Kullanıcı olmayan dosyaları silme
    - VM 'nizin depolama kapasitesini artırma
 
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Hata: aracı MissingMethodException ile güncelleştiremedi
+
+**Olay Görüntüleyicisi**  >  **Windows günlükleri**  >  **uygulamasına** gidin. Açıklamada "MissingMethodException: Yöntem bulunamadı" yazan 3389 KIMLIKLI bir olay görürseniz, bu, Windows sanal masaüstü aracısının başarıyla güncelleştirmediği ve önceki bir sürüme geri döndürülmediği anlamına gelir. Bunun nedeni, VM 'lerinize Şu anda yüklü olan .NET Framework sürüm numarasının 4.7.2 ' den daha düşük olması olabilir. Bu sorunu çözmek için [.NET Framework belgelerindeki](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)yükleme yönergelerini izleyerek .net ' i 4.7.2 veya sonraki bir sürüme yükseltmeniz gerekir.
+
+
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Hata: VM 'Ler kullanılamıyor veya yükseltme durumunda takılmış
 
 Yönetici olarak bir PowerShell penceresi açın ve aşağıdaki cmdlet 'i çalıştırın:
@@ -210,7 +262,7 @@ Yönetici olarak bir PowerShell penceresi açın ve aşağıdaki cmdlet 'i çal�
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-Konak havuzunuzdaki oturum ana bilgisayarı veya konaklar için listelenen durum her zaman **kullanılamıyor** ya da **yükseltme** durumunda olduğunda, aracı veya yığın yüklemesi başarısız olmuş olabilir
+Konak havuzunuzdaki oturum ana bilgisayarı veya konaklar için listelenen durum her zaman "kullanılamıyor" veya "yükseltme" olarak ayarlanırsa, aracı veya yığın başarıyla yüklenmedi.
 
 Bu sorunu çözmek için, yan yana yığını yeniden yükleyin:
 1. Yönetici olarak bir komut istemi açın.
@@ -253,7 +305,7 @@ VM 'nizin adı zaten kayıtlı ve muhtemelen yineleniyor.
 Bu sorunu çözmek için:
 1. [Konak havuzundan oturum konağını kaldırma](#step-2-remove-the-session-host-from-the-host-pool) bölümündeki adımları izleyin.
 2. [Başka BIR VM oluşturun](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal). Bu VM için benzersiz bir ad seçtiğinizden emin olun.
-3. Azure portal] sayfasına gidin ( https://portal.azure.com) ve VM 'nizin bulunduğu konak havuzu Için **genel bakış** sayfasını açın. 
+3. [Azure Portal](https://portal.azure.com) gıdın ve VM 'nizin bulunduğu konak havuzu Için **genel bakış** sayfasını açın. 
 4. **Oturum Konakları** sekmesini açın ve tüm oturum ana bilgisayarlarının bu konak havuzunda bulunduğundan emin olun.
 5. Oturum Ana bilgisayar durumunun **kullanılabilir** olması için 5-10 dakika bekleyin.
 
@@ -320,12 +372,12 @@ VM 'nizi konak havuzuna ve hizmetine yeniden kaydetmek için kullanılan yeni bi
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>4. Adım: aracıyı ve önyükleme yükleyicisini yeniden yükleme
 
 Aracı ve önyükleme yükleyicisinin en güncel sürümünü yeniden yükleyerek, yan yana yığın ve Geneva izleme Aracısı da otomatik olarak yüklenir. Aracıyı ve önyükleme yükleyicisini yeniden yüklemek için:
-1. VM 'niz üzerinde yönetici olarak oturum açın ve **Windows sanal masaüstü aracısını** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisine** Indirmek için [sanal makineleri kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) bölümündeki yönergeleri izleyin.
+1. VM 'niz üzerinde yönetici olarak oturum açın ve sanal makinenizin hangi Windows sürümüne bağlı olarak dağıtımınız için aracı yükleyicisi 'nin doğru sürümünü kullanın. Bir Windows 10 sanal makineniz varsa, **Windows sanal masaüstü aracısını** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisine** Indirmek için [sanal makineleri kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) bölümündeki yönergeleri izleyin. Windows 7 sanal makineniz varsa, **Windows sanal masaüstü aracısını** ve **Windows sanal masaüstü Aracısı yöneticisini** Indirmek için [sanal makineleri kaydetme](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) bölümündeki 13-14 adımlarını izleyin.
 
    > [!div class="mx-imgBorder"]
    > ![Aracının ve önyükleme yükleyicisinden indirme sayfasının ekran görüntüsü](media/download-agent.png)
 
-2. Az önce indirdiğiniz aracıya ve önyükleme yükleyicisi yükleyicilerine sağ tıklayın.
+2. İndirdiğiniz aracıya ve önyükleme yükleyicisi yükleyicilerine sağ tıklayın.
 3. **Özellikler**’i seçin.
 4. **Engellemeyi kaldır**' ı seçin.
 5. **Tamam**'ı seçin.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 33f7ed21ee20f78bae6803fab10fbb151995345f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708127"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure İzleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -20,7 +20,7 @@ Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz oldu�
 > Bu makale Azure Izleyici kullanan tüm Azure hizmetleri için geçerlidir. VM 'Ler ve App Service dahil işlem kaynakları, burada açıklanan izleme verilerinin aynısını oluşturur ve ayrıca Günlükler ve ölçümler oluşturabilen bir konuk işletim sistemine sahiptir. Bu verilerin toplanması ve çözümlenmesi hakkında ayrıntılı bilgi edinmek için bu hizmetlere ilişkin izleme belgelerine bakın.
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
-Azure Izleyici, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan tam bir yığın izleme hizmetidir. [Azure izleyici veri platformu](../platform/data-platform.md) , tüm izleme araçları kümesi kullanılarak analiz edilebilecekleri [günlüklere](../platform/data-platform-logs.md) ve [ölçümlere](../essentials/data-platform-metrics.md) veri toplar. Azure izleyici tarafından [izlenen](../monitor-reference.md)Azure izleyici tarafından izlenebilecekleri uygulamaların ve hizmetlerin tüm listesini görün.
+Azure Izleyici, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan tam bir yığın izleme hizmetidir. [Azure izleyici veri platformu](../data-platform.md) , tüm izleme araçları kümesi kullanılarak analiz edilebilecekleri [günlüklere](../logs/data-platform-logs.md) ve [ölçümlere](../essentials/data-platform-metrics.md) veri toplar. Azure izleyici tarafından [izlenen](../monitor-reference.md)Azure izleyici tarafından izlenebilecekleri uygulamaların ve hizmetlerin tüm listesini görün.
 
 Bir Azure kaynağı oluşturandan itibaren Azure Izleyici etkinleştirilir ve [Azure Portal görüntüleyip çözümleyebilmeniz](#monitoring-in-the-azure-portal)gereken ölçümleri ve etkinlik günlüklerini toplamaya başlar. Bazı yapılandırmalar ile ek izleme verileri toplayabilir ve ek özellikleri etkinleştirebilirsiniz. Yapılandırma gereksinimleriyle ilgili ayrıntılı bilgi için aşağıdaki [Izleme verilerini](#monitoring-data) inceleyin.
 
@@ -46,15 +46,15 @@ Aşağıdakiler ile ilişkili Azure Izleyici maliyeti olabilir. Bkz. [Azure izle
 - API aracılığıyla ölçümlere erişme.
 
 ## <a name="monitoring-data"></a>Verileri izleme
-Azure 'daki kaynaklar, aşağıdaki diyagramda gösterilen [Günlükler](../platform/data-platform-logs.md) ve [ölçümler](../essentials/data-platform-metrics.md) oluşturur. Oluşturdukları belirli veriler ve sağladıkları tüm ek çözümler veya içgörüler için her bir Azure hizmeti için belgelere bakın.
+Azure 'daki kaynaklar, aşağıdaki diyagramda gösterilen [Günlükler](../logs/data-platform-logs.md) ve [ölçümler](../essentials/data-platform-metrics.md) oluşturur. Oluşturdukları belirli veriler ve sağladıkları tüm ek çözümler veya içgörüler için her bir Azure hizmeti için belgelere bakın.
 
 ![Genel Bakış](media/monitor-azure-resource/logs-metrics.png)
 
 
 
 - [Platform ölçümleri](../essentials/data-platform-metrics.md) -düzenli aralıklarla otomatik olarak toplanan ve belirli bir zamanda kaynağın bazı yönlerini tanımlayan sayısal değerlerdir. 
-- [Kaynak günlükleri](../platform/platform-logs-overview.md) -bir Azure kaynağı içinde (veri düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma. Kaynak günlüklerinin içeriği ve yapısı, Azure hizmeti ve kaynak türüne göre farklılık gösterir.
-- [Etkinlik günlüğü](../platform/platform-logs-overview.md) -abonelik içindeki her bir Azure kaynağında (Yönetim düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar (örneğin, yeni bir kaynak oluşturma veya bir sanal makine başlatma). Bu, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ne zaman, kim ve ne zaman alındığını öğrenin.
+- [Kaynak günlükleri](./platform-logs-overview.md) -bir Azure kaynağı içinde (veri düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma. Kaynak günlüklerinin içeriği ve yapısı, Azure hizmeti ve kaynak türüne göre farklılık gösterir.
+- [Etkinlik günlüğü](./platform-logs-overview.md) -abonelik içindeki her bir Azure kaynağında (Yönetim düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar (örneğin, yeni bir kaynak oluşturma veya bir sanal makine başlatma). Bu, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ne zaman, kim ve ne zaman alındığını öğrenin.
 
 
 ## <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
@@ -63,11 +63,11 @@ Azure 'daki kaynaklar, aşağıdaki diyagramda gösterilen [Günlükler](../plat
 Bazı izleme verileri otomatik olarak toplanır, ancak gereksinimlerinize bağlı olarak bazı yapılandırmalar yapmanız gerekebilir. Her bir izleme verileri türü için belirli bilgiler için aşağıdaki bilgilere bakın.
 
 - [Platform ölçümleri](../essentials/data-platform-metrics.md) -platform ölçümleri, hiçbir yapılandırma gerekmeden [Azure izleyici ölçümlerine](../essentials/data-platform-metrics.md) otomatik olarak toplanır. Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
-- [Kaynak günlükleri](../platform/platform-logs-overview.md) -kaynak günlükleri Azure kaynakları tarafından otomatik olarak oluşturulur ancak bir tanılama ayarı olmadan toplanmaz.  Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
-- [Etkinlik günlüğü](../platform/platform-logs-overview.md) -etkinlik günlüğü, yapılandırma gerekmeden otomatik olarak toplanır ve Azure Portal görüntülenebilir. Azure Izleyici günlüklerine kopyalamak veya bunları Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
+- [Kaynak günlükleri](./platform-logs-overview.md) -kaynak günlükleri Azure kaynakları tarafından otomatik olarak oluşturulur ancak bir tanılama ayarı olmadan toplanmaz.  Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
+- [Etkinlik günlüğü](./platform-logs-overview.md) -etkinlik günlüğü, yapılandırma gerekmeden otomatik olarak toplanır ve Azure Portal görüntülenebilir. Azure Izleyici günlüklerine kopyalamak veya bunları Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
 
 ### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
-Azure Izleyici günlüklerine veri toplanması Log Analytics çalışma alanı gerektirir. Yeni bir çalışma alanı oluşturarak hizmetinizi hızlı bir şekilde izlemeye başlayabilirsiniz, ancak diğer hizmetlerden veri toplayan bir çalışma alanı kullanmanın bir değeri olabilir. Gereksinimleriniz için en iyi çalışma alanı tasarımını belirlemenize yardımcı olmak üzere bir çalışma alanı oluşturma ve [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) hakkında bilgi için bkz. [Azure Portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md) . Kuruluşunuzda var olan bir çalışma alanını kullanıyorsanız, [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../platform/manage-access.md)bölümünde açıklandığı gibi uygun izinlere ihtiyacınız olacaktır. 
+Azure Izleyici günlüklerine veri toplanması Log Analytics çalışma alanı gerektirir. Yeni bir çalışma alanı oluşturarak hizmetinizi hızlı bir şekilde izlemeye başlayabilirsiniz, ancak diğer hizmetlerden veri toplayan bir çalışma alanı kullanmanın bir değeri olabilir. Gereksinimleriniz için en iyi çalışma alanı tasarımını belirlemenize yardımcı olmak üzere bir çalışma alanı oluşturma ve [Azure Izleyici günlükleri dağıtımınızı tasarlama](../logs/design-logs-deployment.md) hakkında bilgi için bkz. [Azure Portal Log Analytics çalışma alanı oluşturma](../logs/quick-create-workspace.md) . Kuruluşunuzda var olan bir çalışma alanını kullanıyorsanız, [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../logs/manage-access.md)bölümünde açıklandığı gibi uygun izinlere ihtiyacınız olacaktır. 
 
 
 
@@ -76,11 +76,11 @@ Azure Izleyici günlüklerine veri toplanması Log Analytics çalışma alanı g
 ## <a name="diagnostic-settings"></a>Tanılama ayarları
 Tanılama ayarları, belirli bir kaynağın kaynak günlüklerinin ve ölçümlerinin nereye gönderileceğini tanımlar. Olası hedefler şunlardır:
 
-- Güçlü günlük sorguları ve ayrıca günlük uyarıları ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için, Azure Izleyici tarafından toplanan diğer izleme verileriyle verileri analiz etmenizi sağlayan [Log Analytics çalışma alanı](../platform/resource-logs.md#send-to-log-analytics-workspace) . 
-- Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışı için [Olay Hub 'ları](../platform/resource-logs.md#send-to-azure-event-hubs) . 
-- Denetim, statik analiz veya yedekleme için yararlı olan [Azure depolama hesabı](../platform/resource-logs.md#send-to-azure-storage) .
+- Güçlü günlük sorguları ve ayrıca günlük uyarıları ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için, Azure Izleyici tarafından toplanan diğer izleme verileriyle verileri analiz etmenizi sağlayan [Log Analytics çalışma alanı](./resource-logs.md#send-to-log-analytics-workspace) . 
+- Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışı için [Olay Hub 'ları](./resource-logs.md#send-to-azure-event-hubs) . 
+- Denetim, statik analiz veya yedekleme için yararlı olan [Azure depolama hesabı](./resource-logs.md#send-to-azure-storage) .
 
-Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek için [Azure 'da platform günlükleri ve ölçümleri toplamak üzere tanılama oluştur](../essentials/diagnostic-settings.md) bölümündeki yordamı izleyin. Bir şablonda tanımlamak ve bir kaynağın oluşturulduğu sırada tüm izlemeyi etkinleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](../samples/resource-manager-diagnostic-settings.md) konusuna bakın.
+Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek için [Azure 'da platform günlükleri ve ölçümleri toplamak üzere tanılama oluştur](../essentials/diagnostic-settings.md) bölümündeki yordamı izleyin. Bir şablonda tanımlamak ve bir kaynağın oluşturulduğu sırada tüm izlemeyi etkinleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](./resource-manager-diagnostic-settings.md) konusuna bakın.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure portal izleme
@@ -100,9 +100,9 @@ Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüs
 ![Azure portal içgörüler](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Ölçümler
-Ölçüm [Gezgini](../platform/metrics-getting-started.md) 'ni kullanarak Azure Portal ölçümleri analiz ederek, çoğu hizmet için **ölçümler** menü öğesinden kullanılabilir. Bu araç, bağıntıları ve eğilimleri belirlemek için bireysel ölçümlerle çalışmanıza veya birden çok birleştirme yapmanıza olanak sağlar. 
+Ölçüm [Gezgini](./metrics-getting-started.md) 'ni kullanarak Azure Portal ölçümleri analiz ederek, çoğu hizmet için **ölçümler** menü öğesinden kullanılabilir. Bu araç, bağıntıları ve eğilimleri belirlemek için bireysel ölçümlerle çalışmanıza veya birden çok birleştirme yapmanıza olanak sağlar. 
 
-- Ölçüm Gezgini 'ni kullanmanın temelleri için bkz. [Azure Ölçüm Gezgini](../platform/metrics-getting-started.md) kullanmaya başlama.
+- Ölçüm Gezgini 'ni kullanmanın temelleri için bkz. [Azure Ölçüm Gezgini](./metrics-getting-started.md) kullanmaya başlama.
 - Birden çok ölçüm kullanma ve filtre uygulama ve bölme gibi Ölçüm Gezgini 'nin gelişmiş özellikleri için [Azure Ölçüm Gezgini gelişmiş özelliklerine](../essentials/metrics-charts.md) bakın.
 
 ![Azure portal Ölçüm Gezgini](media/monitor-azure-resource/metrics.png)
@@ -119,11 +119,11 @@ Geçerli kaynağa ilk filtresi ayarlanmış Azure portal etkinlik günlüğünde
 ### <a name="azure-monitor-logs"></a>Azure İzleyici Günlükleri
 Azure Izleyici günlükleri, güçlü bir sorgu aracıyla analizler için birden çok hizmetten ve diğer veri kaynaklarından günlükleri ve ölçümleri birleştirir. Yukarıda açıklandığı gibi, Azure Izleyici 'deki bir Log Analytics çalışma alanında platform ölçümleri, etkinlik günlüğü ve kaynak günlüklerini toplamak için bir tanılama ayarı oluşturun.
 
-[Log Analytics](../log-query/log-analytics-tutorial.md) , tam özellikli bir sorgu dili kullanarak günlük verilerinin gelişmiş analizini gerçekleştirmenize olanak tanıyan, Azure izleyici 'nin güçlü bir özelliği olan [günlük sorgularıyla](../log-query/log-query-overview.md)çalışmanıza olanak sağlar. [Sorgu kapsamı](../log-query/scope.md#query-scope)olarak kaynağı kullanarak günlük sorgularıyla çalışmak Için bir Azure kaynağının **izleme** menüsündeki **günlüklerden** Log Analytics açın. Bu, yalnızca söz konusu kaynak için birden çok tablo genelinde verileri analiz etmenizi sağlar. Tüm kaynaklar için günlüklere erişmek üzere Azure Izleyici menüsünden **günlükleri** kullanın. 
+[Log Analytics](../logs/log-analytics-tutorial.md) , tam özellikli bir sorgu dili kullanarak günlük verilerinin gelişmiş analizini gerçekleştirmenize olanak tanıyan, Azure izleyici 'nin güçlü bir özelliği olan [günlük sorgularıyla](../logs/log-query-overview.md)çalışmanıza olanak sağlar. [Sorgu kapsamı](../logs/scope.md#query-scope)olarak kaynağı kullanarak günlük sorgularıyla çalışmak Için bir Azure kaynağının **izleme** menüsündeki **günlüklerden** Log Analytics açın. Bu, yalnızca söz konusu kaynak için birden çok tablo genelinde verileri analiz etmenizi sağlar. Tüm kaynaklar için günlüklere erişmek üzere Azure Izleyici menüsünden **günlükleri** kullanın. 
 
-- Günlük sorgularını yazmak için kullanılan sorgu dilini kullanma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../log-query/get-started-queries.md) .
-- Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../platform/resource-logs.md#send-to-log-analytics-workspace) .
-- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs.md#send-to-log-analytics-workspace) .
+- Günlük sorgularını yazmak için kullanılan sorgu dilini kullanma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../logs/get-started-queries.md) .
+- Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](./resource-logs.md#send-to-log-analytics-workspace) .
+- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](./resource-logs.md#send-to-log-analytics-workspace) .
 - Azure Izleyici günlüklerinde tablosu hakkındaki ayrıntılar için her bir Azure hizmetine yönelik belgelere bakın.
 
 ![Azure portal Log Analytics](media/monitor-azure-resource/logs.png)
@@ -139,11 +139,11 @@ Bir komut satırından kaynağından toplanan izleme verilerine erişebilir veya
 ## <a name="monitoring-from-rest-api"></a>REST API izleme
 REST API kullanarak özel bir uygulamaya kaynağından toplanan izleme verilerini dahil edin.
 
-- Azure Izleyici REST API ölçümlere erişme hakkında daha fazla bilgi için bkz. [Azure izleme REST API](../platform/rest-api-walkthrough.md) Kılavuzu.
+- Azure Izleyici REST API ölçümlere erişme hakkında daha fazla bilgi için bkz. [Azure izleme REST API](./rest-api-walkthrough.md) Kılavuzu.
 - Azure PowerShell günlük sorgusu kullanarak Azure Izleyici günlük verilerine erişme hakkında bilgi için bkz. [azure Log Analytics REST API](https://dev.loganalytics.io/) .
 
 ## <a name="alerts"></a>Uyarılar
-[Uyarılar](../platform/alerts-overview.md) , izleme verilerinizde önemli koşullar bulunduğunda sizi etkili bir şekilde bilgilendirir ve işlem yapabilirsiniz. Uyarı için bir hedef tanımlayan bir uyarı kuralı, bir uyarı oluşturulup oluşturulmayacağını belirten koşullar ve yanıt almak için herhangi bir eylemin oluşturulması gerekir.
+[Uyarılar](../alerts/alerts-overview.md) , izleme verilerinizde önemli koşullar bulunduğunda sizi etkili bir şekilde bilgilendirir ve işlem yapabilirsiniz. Uyarı için bir hedef tanımlayan bir uyarı kuralı, bir uyarı oluşturulup oluşturulmayacağını belirten koşullar ve yanıt almak için herhangi bir eylemin oluşturulması gerekir.
 
 Farklı türlerde izleme verileri farklı tür uyarı kuralları için kullanılır.
 
@@ -160,4 +160,4 @@ Uyarıları görüntülemek ve bu kaynakla ilgili uyarı kurallarını yönetmek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) .
+* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](./resource-logs-schema.md) .

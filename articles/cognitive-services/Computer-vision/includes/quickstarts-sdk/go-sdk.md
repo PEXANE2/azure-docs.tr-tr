@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: df171b74014179c36466a2683a8d0d7c0c3b5e90
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 37c1b81f2396eff1613a6af604b2490b18b93ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750090"
 ---
 <a name="HOLTop"></a>
 
@@ -89,7 +89,7 @@ Ayrıca, betiğinizin kökünde bir bağlam bildirin. Görüntü İşleme işlev
 Daha sonra, farklı Görüntü İşleme işlemleri gerçekleştirmek için kod eklemeye başlayacaksınız.
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -120,7 +120,7 @@ Bir `main` işlev oluşturun ve uç noktanıza ve anahtarınıza sahip bir istem
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -214,7 +214,7 @@ Aşağıdaki işlev, &mdash; küçük resim veya çizgi çizimi gibi görüntü 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
@@ -246,7 +246,7 @@ Alınan metin verilerini ayrıştırmak ve göstermek için aşağıdaki kodu ek
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_display)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -257,7 +257,7 @@ go run sample-app.go
 ```
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -267,7 +267,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

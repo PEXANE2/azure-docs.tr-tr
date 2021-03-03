@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738948"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -63,7 +63,7 @@ App Service, DevOps göz önünde bulundurularak tasarlanmıştır. Yayımlama v
 
 Hizmet olarak altyapı (IaaS) sağlayıcısı olarak Azure, uygulamanızı Windows veya Linux VM 'lerine dağıtmanıza veya geçirmenize olanak sağlar. Azure sanal ağ ile birlikte Azure sanal makineleri, Windows veya Linux VM 'lerinin Azure 'a dağıtımını destekler. VM 'Ler ile makinenin yapılandırması üzerinde toplam denetiminiz vardır. VM 'Leri kullanırken tüm sunucu yazılımı yükleme, yapılandırma, bakım ve işletim sistemi düzeltme ekleri sizin sorumluluğunuzdadır.
 
-VM 'lerle sahip olduğunuz denetim düzeyi nedeniyle, Azure 'da PaaS modeline sığmayan çok çeşitli sunucu iş yüklerini çalıştırabilirsiniz. Bu iş yükleri, veritabanı sunucularını, Windows Server Active Directory ve Microsoft SharePoint 'i içerir. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/linux/index.yml) veya [Windows](../../virtual-machines/windows/index.yml)için sanal makineler belgeleri.
+VM 'lerle sahip olduğunuz denetim düzeyi nedeniyle, Azure 'da PaaS modeline sığmayan çok çeşitli sunucu iş yüklerini çalıştırabilirsiniz. Bu iş yükleri, veritabanı sunucularını, Windows Server Active Directory ve Microsoft SharePoint 'i içerir. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/index.yml) veya [Windows](../../virtual-machines/index.yml)için sanal makineler belgeleri.
 
 > **Ne zaman kullanılır**: uygulama altyapınız üzerinde tam denetim yapmak veya şirket içi uygulama iş yüklerini değişiklik yapmadan Azure 'a geçirmek Istediğinizde sanal makineleri kullanın.
 >

@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722679"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Visual Studio kullanarak bir Azure bulut hizmeti (genişletilmiş destek) oluşturma ve dağıtma
 
@@ -63,7 +63,7 @@ Visual Studio Azure projesinde, çözümdeki rol projeleriyle ilişkiler vardır
 - **Hizmet tanımı dosyası** -uygulamanız için gerekli olan, uç noktaların ve sanal makine boyutu dahil olmak üzere çalışma zamanı ayarlarını tanımlar.
 - **Hizmet yapılandırma dosyası** -bir rolün kaç örneğinin çalıştırılacağını ve bir rol için tanımlanan ayarların değerlerini yapılandırır.
 
-Bu dosyalar hakkında daha fazla bilgi için bkz. [Visual Studio Ile Azure bulut hizmeti Için rolleri yapılandırma](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
+Bu dosyalar hakkında daha fazla bilgi için bkz. [Visual Studio Ile Azure bulut hizmeti Için rolleri yapılandırma](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="publish-a-cloud-service"></a>Bulut hizmeti yayımlama
 
@@ -75,7 +75,7 @@ Bu dosyalar hakkında daha fazla bilgi için bkz. [Visual Studio Ile Azure bulut
 
 1. **Hesap** -hesap açılır listesinden bir hesap seçin veya hesap **Ekle** ' yi seçin.
 
-1. **Aboneliğinizi seçin** -dağıtımınız için kullanılacak aboneliği seçin. Cloud Services dağıtmak için kullandığınız aboneliğin (genişletilmiş destek) rol tabanlı erişim denetimi (RBAC) ile atanmış sahip veya katkıda bulunan rolleri olması gerekir. Aboneliğiniz bu rollerden herhangi birine sahip değilse, daha fazla devam etmeden önce bu rolü eklemek için [rol ataması ekleme adımlarına](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps) bakın.
+1. **Aboneliğinizi seçin** -dağıtımınız için kullanılacak aboneliği seçin. Cloud Services dağıtmak için kullandığınız aboneliğin (genişletilmiş destek) rol tabanlı erişim denetimi (RBAC) ile atanmış sahip veya katkıda bulunan rolleri olması gerekir. Aboneliğiniz bu rollerden herhangi birine sahip değilse, daha fazla devam etmeden önce bu rolü eklemek için [rol ataması ekleme adımlarına](../role-based-access-control/role-assignments-steps.md) bakın.
 
 1. **Ayarlar** sayfasına gitmek için **İleri ' yi** seçin.
 
@@ -105,7 +105,7 @@ Bu dosyalar hakkında daha fazla bilgi için bkz. [Visual Studio Ile Azure bulut
 
    ![Tanılama ayarları](./media/diagnostics-settings.png)
 
-   Tanılama, bir Azure bulut hizmetinde (veya Azure sanal makinesinde) sorun gidermenize olanak sağlar. Tanılama hakkında daha fazla bilgi için bkz. [Azure Cloud Services ve sanal makineler Için tanılamayı yapılandırma](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Application Insights hakkında daha fazla bilgi için bkz. [Application Insights nedir?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview).
+   Tanılama, bir Azure bulut hizmetinde (veya Azure sanal makinesinde) sorun gidermenize olanak sağlar. Tanılama hakkında daha fazla bilgi için bkz. [Azure Cloud Services ve sanal makineler Için tanılamayı yapılandırma](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Application Insights hakkında daha fazla bilgi için bkz. [Application Insights nedir?](../azure-monitor/app/app-insights-overview.md).
 
 1. **Özet** sayfasına geçmek için **İleri ' yi** seçin.
 
@@ -126,4 +126,4 @@ Bu öğreticiyi izleyerek oluşturduğunuz Azure kaynaklarını temizlemek için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Yayımla** ekranında **Yapılandır** düğmesini kullanarak sürekli tümleştirme (CI) ayarlayın. Daha fazla bilgi için bkz. [Azure Pipelines belgeleri](https://docs.microsoft.com/azure/devops/pipelines).
+**Yayımla** ekranında **Yapılandır** düğmesini kullanarak sürekli tümleştirme (CI) ayarlayın. Daha fazla bilgi için bkz. [Azure Pipelines belgeleri](/azure/devops/pipelines).

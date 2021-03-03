@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 kimlik yönetimi
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698612"
 ---
 # <a name="security-control-v2-identity-management"></a>Güvenlik denetimi v2: kimlik yönetimi
 
 Kimlik yönetimi, Azure Active Directory kullanarak güvenli bir kimlik ve erişim denetimleri kurmaya yönelik denetimleri ele alır. Bu, uygulamalar, koşullu erişim ve hesap bozuklukları izleme için çoklu oturum açma, güçlü kimlik doğrulamaları, Yönetilen kimlikler (ve hizmet ilkeleri) kullanımını içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: kimlik yönetimi](../../governance/policy/samples/azure-security-benchmark#identity-management)
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Azure Active Directory'yi standart merkezi kimlik ve kimlik doğrulaması sistemi haline getirin
 
@@ -24,12 +26,12 @@ Kimlik yönetimi, Azure Active Directory kullanarak güvenli bir kimlik ve eriş
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, ıA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD), Azure 'un varsayılan kimlik ve erişim yönetimi hizmetidir. Kuruluşunuzun şu kaynaklarda kimlik ve erişim yönetimini idare etmek için Azure AD’yi standartlaştırmanız gerekir:
+Azure Active Directory (Azure AD), Azure 'un varsayılan kimlik ve erişim yönetimi hizmetidir. ' De kuruluşunuzun kimlik ve erişim yönetimini yönetmek için Azure AD 'de standartlaşmanız gerekir:
 - Microsoft bulut kaynakları. Örneğin Azure portal, Azure Depolama, Azure Sanal Makineler (Linux ve Windows), Azure Key Vault, PaaS ve SaaS uygulamaları.
 
 - Kuruluşunuzun kaynakları. Örneğin Azure’daki uygulamalar veya kurumsal ağ kaynaklarınız.
 
-Kuruluşunuzun bulut güvenliği uygulamasında Azure AD’nin güvenliğini sağlamaya yüksek öncelik verilmelidir. Microsoft’un en iyi yöntem önerilerine göre kendi kimlik güvenliği duruşunuzu değerlendirmenize yardımcı olmak için Azure AD bir kimlik güvenliği puanı sağlar. Bu puanı kullanarak yapılandırmanızın en iyi yöntem önerileriyle ne kadar uyumlu olduğunu ölçebilir ve güvenlik duruşunuzda geliştirmeler yapabilirsiniz.
+Azure AD 'nin güvenliğini sağlamak, kuruluşunuzun bulut güvenlik pratikte yüksek öncelikli olmalıdır. Azure AD, Microsoft 'un en iyi yöntem önerilerine göre kimlik güvenliğini değerlendirmenize yardımcı olacak bir kimlik güvenli puanı sağlar. Bu puanı kullanarak yapılandırmanızın en iyi yöntem önerileriyle ne kadar uyumlu olduğunu ölçebilir ve güvenlik duruşunuzda geliştirmeler yapabilirsiniz.
 
 Not: Azure AD dış kimlik sağlayıcılarını desteklediğinden, Microsoft hesabı olmayan kullanıcıların dış kimlikleriyle uygulamalarında ve kaynaklarında oturum açmasına izin verir.
 
@@ -37,7 +39,7 @@ Not: Azure AD dış kimlik sağlayıcılarını desteklediğinden, Microsoft hes
 
 - [Azure AD örneği oluşturma ve yapılandırma](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure AD kiracılarını tanımlama](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Azure AD kiracılarını tanımlama](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [Bir uygulama için dış kimlik sağlayıcılarını kullanma](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Not: Azure AD dış kimlik sağlayıcılarını desteklediğinden, Microsoft hes
 
 Hizmetler veya Otomasyon gibi insan dışı hesaplar için, kaynaklara erişmek veya kod yürütmek üzere daha güçlü bir insan hesabı oluşturmak yerine Azure Yönetilen kimlikler ' i kullanın. Azure Yönetilen kimlikler, Azure hizmetleri ve Azure AD kimlik doğrulamasını destekleyen kaynaklar için kimlik doğrulaması yapabilir. Kimlik doğrulaması, önceden tanımlanmış erişim verme kuralları aracılığıyla etkinleştirilir ve kaynak kodunda veya yapılandırma dosyalarında sabit kodlu kimlik bilgileri önlenir. 
 
-Yönetilen kimlikleri desteklemeyen hizmetler için, bunun yerine kaynak düzeyinde kısıtlanmış izinlerle bir hizmet sorumlusu oluşturmak için Azure AD 'yi kullanın.  Hizmet sorumlularını sertifika kimlik bilgileriyle yapılandırmanız ve istemci gizliliklerinin geri dönmesi önerilir. Her iki durumda da, Azure Key Vault çalışma zamanı ortamının (bir Azure işlevi gibi) anahtar kasasından kimlik bilgilerini alabilmesi için Azure tarafından yönetilen kimliklerle birlikte kullanılabilir.
+Yönetilen kimlikleri desteklemeyen hizmetler için, bunun yerine kaynak düzeyinde kısıtlanmış izinlerle bir hizmet sorumlusu oluşturmak için Azure AD 'yi kullanın. Hizmet sorumlularını sertifika kimlik bilgileriyle yapılandırmanız ve istemci gizliliklerinin geri dönmesi önerilir. Her iki durumda da, Azure Key Vault çalışma zamanı ortamının (bir Azure işlevi gibi) anahtar kasasından kimlik bilgilerini alabilmesi için Azure tarafından yönetilen kimliklerle birlikte kullanılabilir.
 
 - [Azure Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -111,16 +113,17 @@ Azure AD, Azure kaynaklarına, bulut uygulamalarına ve şirket içi uygulamalar
 |--|--|--|--|
 | IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, ıA-2, ıA-4 |
 
-Azure AD, Multi-Factor Authentication (MFA) ve güçlü parolasız yöntemler aracılığıyla güçlü kimlik doğrulama denetimlerini destekler.  
-- Multi-Factor Authentication: Azure AD MFA 'yı etkinleştirin ve MFA kurulumlarınız için Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. MFA, tüm kullanıcılar, kullanıcılar veya oturum açma koşulları ve risk faktörleri temelinde Kullanıcı başına düzeyinde zorlanabilir. 
+Azure AD, Multi-Factor Authentication (MFA) ve güçlü parolasız yöntemler aracılığıyla güçlü kimlik doğrulama denetimlerini destekler.
 
-- Passwordless kimlik doğrulaması: üç adet passwordless kimlik doğrulama seçeneği mevcuttur: Iş için Windows Hello, Microsoft Authenticator uygulaması ve akıllı kartlar gibi şirket içi kimlik doğrulama yöntemleri. 
+- Multi-Factor Authentication: Azure AD MFA 'yı etkinleştirin ve MFA kurulumlarınız için Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. MFA, tüm kullanıcılar, kullanıcılar veya oturum açma koşulları ve risk faktörleri temelinde Kullanıcı başına düzeyinde zorlanabilir.
+
+- Passwordless kimlik doğrulaması: üç adet passwordless kimlik doğrulama seçeneği mevcuttur: Iş için Windows Hello, Microsoft Authenticator uygulaması ve akıllı kartlar gibi şirket içi kimlik doğrulama yöntemleri.
 
 Yönetici ve ayrıcalıklı kullanıcılar için, güçlü kimlik doğrulama yönteminin en yüksek düzeyinin kullanıldığından emin olun ve ardından uygun güçlü kimlik doğrulama ilkesini diğer kullanıcılara teslim edin.
 
-Azure AD kimlik doğrulaması için eski parola tabanlı kimlik doğrulaması kullanılmaya devam ediyorsa, lütfen yalnızca bulutta bulunan hesapların (doğrudan Azure 'da oluşturulan kullanıcı hesaplarının) varsayılan bir temel parola ilkesine sahip olduğunu unutmayın. Ve karma hesaplar (Şirket içi Active Directory gelen Kullanıcı hesapları) Şirket içi parola ilkelerini izler. Azure AD, parola tabanlı kimlik doğrulaması kullanırken kullanıcıların tahmin edilmesi kolay parolalar ayarlamamasını engelleyen bir parola koruma yeteneği sağlar. Microsoft, telemetri temelinde güncellenen yasaklanmış parolaların küresel bir listesini sağlar ve müşteriler bu listeyi gereksinimlerine göre artırabilir (örn. marka, kültürel başvuruları, vb.). Bu parola koruması, yalnızca bulut ve karma hesaplar için kullanılabilir. 
+Azure AD kimlik doğrulaması için eski parola tabanlı kimlik doğrulaması kullanılmaya devam ediyorsa, lütfen yalnızca bulutta bulunan hesapların (doğrudan Azure 'da oluşturulan kullanıcı hesaplarının) varsayılan bir temel parola ilkesine sahip olduğunu unutmayın. Ve karma hesaplar (Şirket içi Active Directory gelen Kullanıcı hesapları) Şirket içi parola ilkelerini izler. Azure AD, parola tabanlı kimlik doğrulaması kullanırken kullanıcıların tahmin edilmesi kolay parolalar ayarlamamasını engelleyen bir parola koruma yeteneği sağlar. Microsoft, telemetri temelinde güncellenen yasaklanmış parolaların küresel bir listesini sağlar ve müşteriler listeyi gereksinimlerine göre artırabilir (marka, kültürel başvuruları vb.). Bu parola koruması, yalnızca bulut ve karma hesaplar için kullanılabilir.
 
-Note: tek başına parola kimlik bilgileri tabanlı kimlik doğrulaması popüler saldırı yöntemlerine açıktır. Daha yüksek güvenlik için MFA ve güçlü bir parola ilkesi gibi güçlü kimlik doğrulaması kullanın. Varsayılan parolalara sahip olabilecek üçüncü taraf uygulamalar ve Market Hizmetleri için, bunları ilk hizmet kurulumu sırasında değiştirmelisiniz. 
+Note: tek başına parola kimlik bilgileri tabanlı kimlik doğrulaması popüler saldırı yöntemlerine açıktır. Daha yüksek güvenlik için MFA ve güçlü bir parola ilkesi gibi güçlü kimlik doğrulaması kullanın. Varsayılan parolalara sahip olabilecek üçüncü taraf uygulamalar ve Market Hizmetleri için, bunları ilk hizmet kurulumu sırasında değiştirmelisiniz.
 
 - [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -155,7 +158,7 @@ Azure AD aşağıdaki veri kaynaklarını sağlar:
 
 -   Riskli oldukları belirlenen kullanıcılar - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir.
 
-Bu veri kaynakları Azure İzleyici, Azure Sentinel veya üçüncü taraf SIEM sistemleriyle tümleştirilebilir.
+Bu veri kaynakları Azure Izleyici, Azure Sentinel veya üçüncü taraf SıEM sistemleriyle tümleştirilebilir.
 
 Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama girişimi ve abonelikteki kullanım dışı hesaplar gibi bazı şüpheli etkinlikler üzerinde de uyarı verebilir. 
 
@@ -175,7 +178,7 @@ Azure Gelişmiş tehdit koruması (ATP), gelişmiş tehditleri, güvenliği aş�
 
 - [Azure AD Kimlik Koruması verileri bağlama](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Gelişmiş Tehdit Koruması](/azure-advanced-threat-protection/what-is-atp)
+- [Kimlik için Microsoft Defender](/azure-advanced-threat-protection/what-is-atp)
 
 **Sorumluluk**: Müşteri
 
@@ -219,7 +222,7 @@ Belirli IP aralıklarından MFA 'yı kullanmak için Kullanıcı oturumu açma g
 
 Kod içindeki kimlik bilgilerini belirlemek için Azure DevOps kimlik bilgisi tarayıcısını uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenli konumlara taşınmasını da önerir.
 
-GitHub için yerel gizli dizi tarama özelliğini kullanarak kod içindeki kimlik bilgilerini veya diğer gizli dizileri bulabilirsiniz.
+GitHub için, kod içindeki kimlik bilgilerini veya diğer gizli dizileri belirlemek için yerel gizli anahtar tarama özelliğini kullanabilirsiniz.
 
 - [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -241,9 +244,9 @@ GitHub için yerel gizli dizi tarama özelliğini kullanarak kod içindeki kimli
 
 Eski uygulamalar için modern erişim denetimlerine ve oturum izlemeye sahip olduğunuzdan ve depotıkları ve işledikleri veriler olduğundan emin olun. VPN 'Ler, eski uygulamalara erişmek için yaygın olarak kullanıldığında, genellikle yalnızca temel erişim denetimi ve sınırlı oturum izleme olur.
 
-Azure AD Uygulama Ara Sunucusu, uzak kullanıcıların ve cihazların Azure AD koşullu erişimiyle güvenilirliğini açıkça doğrulayarak, çoklu oturum açma (SSO) ile uzak kullanıcılara eski şirket içi uygulamaları yayımlamanıza olanak sağlar. 
+Azure AD Uygulama Ara Sunucusu, uzak kullanıcıların ve cihazların Azure AD koşullu erişimiyle güvenilirliğini açıkça doğrulayarak, çoklu oturum açma (SSO) ile uzak kullanıcılara eski şirket içi uygulamaları yayımlamanıza olanak sağlar.
 
-Alternatif olarak Microsoft Cloud App Security, bir kullanıcının uygulama oturumlarını ve engelleme eylemlerini izleme (Şirket içi uygulamalar ve hizmet olarak yazılım (SaaS) uygulamaları için) denetimleri sağlayabilen bir bulut erişim güvenlik Aracısı (CASB) hizmetidir. 
+Alternatif olarak Microsoft Cloud App Security, bir kullanıcının uygulama oturumlarını ve engelleme eylemlerini izleme (Şirket içi uygulamalar ve hizmet olarak yazılım (SaaS) uygulamaları için) denetimleri sağlayabilen bir bulut erişim güvenlik Aracısı (CASB) hizmetidir.
 
 - [Azure AD Uygulama Ara Sunucusu](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

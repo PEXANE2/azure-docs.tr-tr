@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: a2f57fd6a369fba4a78799f768eb3fd2f3d27050
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6f4e43efeb1882f52bd335d83a3660a94040ab8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729224"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için Azure Cosmos DB tetikleyicisi
 
@@ -163,7 +163,7 @@ _run.ps1_ dosyasında, işlevi parametresini kullanarak tetikleyen belgeye eriş
 ```powershell
 param($Documents, $TriggerMetadata) 
 
-Write-Host "First document Id modified : $($Documents[0].id)" 
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -249,7 +249,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `cosmosDBTrigger` . |
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu parametre, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**name** | yok | Değişiklik içeren belge listesini temsil eden işlev kodunda kullanılan değişken adı. |
+|**ada** | yok | Değişiklik içeren belge listesini temsil eden işlev kodunda kullanılan değişken adı. |
 |**connectionStringSetting**|**ConnectionStringSetting** | İzlenmekte olan Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesini içeren uygulama ayarının adı. |
 |**Dosyasında**|**Dosyasında**  | İzlenen koleksiyonun Azure Cosmos DB veritabanının adı. |
 |**Ma** |**CollectionName** | İzlenen koleksiyonun adı. |

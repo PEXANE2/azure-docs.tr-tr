@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: mvc
-ms.openlocfilehash: 1505366d9a91eac596b21804f93abb8245a84605
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 009244322b7c6625523bf46382a170577593f4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718378"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,9 +104,7 @@ Giriş trafiği ile başlamak için, bkz. [HTTP uygulama yönlendirmesi][aks-htt
 
 Kubernetes, AKS ile sorunsuz şekilde çalışan bir geliştirme ve yönetim araçları zengin ekosistemine sahiptir. Bu araçlar, Visual Studio Code için helk ve Kubernetes uzantısını içerir. Bu araçlar, AKS ile sorunsuz bir şekilde çalışır.  
 
-Ayrıca, Azure, Azure Dev Spaces ve DevOps Starter gibi Kubernetes 'i kolaylaştırmaya yardımcı olan çeşitli araçlar sunar.  
-
-Azure Dev Spaces, ekiplere yönelik hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sunar. Minimum yapılandırma ile AKS içinde kapsayıcıları çalıştırabilir ve kapsayıcıların hatasını ayıklayabilirsiniz. Başlamak için, bkz. [Azure Dev Spaces][azure-dev-spaces].
+Ayrıca, Azure, DevOps Starter gibi Kubernetes 'i kolaylaştırmaya yardımcı olan çeşitli araçlar sağlar.  
 
 DevOps Starter, mevcut kod ve Git depolarını Azure 'a getirmek için basit bir çözüm sunar. DevOps başlangıç otomatik:
 * Azure kaynakları (örneğin, AKS) oluşturur; 
@@ -157,7 +155,7 @@ Azure CLı hızlı başlangıç ile AKS dağıtma ve yönetme hakkında daha faz
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../azure-monitor/containers/container-insights-overview.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac

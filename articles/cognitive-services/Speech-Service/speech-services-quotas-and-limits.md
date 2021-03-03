@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699989"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -104,7 +104,7 @@ Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . 
 Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 
 >[!NOTE]
->Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez. Ancak, konuşma kapsayıcılarının hesaba alınması gereken kendi kapasite sınırlamaları vardır. *"Şirket Içi konuşmadan metin kapsayıcıları için kapasite planlaması ve maliyet tahmini konusunda yardımcı olabilir* " sorusuna bakın. [konuşma kapsayıcıları hakkında SSS bölümüne bakın](speech-container-faq.md).
+>Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez. Ancak, konuşma kapsayıcılarının hesaba alınması gereken kendi kapasite sınırlamaları vardır. *"Şirket Içi konuşmadan metin kapsayıcıları için kapasite planlaması ve maliyet tahmini konusunda yardımcı olabilir* " sorusuna bakın. [konuşma kapsayıcıları hakkında SSS bölümüne bakın](./speech-container-howto.md).
 
 #### <a name="have-the-required-information-ready"></a>Gerekli bilgileri hazırlayın:
 - **Taban model** için:
@@ -205,4 +205,3 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
   - Daha [önce topladığınız](#prepare-the-required-information) Azure Kaynak bilgileri 
   - Gerekli bilgileri girmeyi ve *gözden geçir + oluştur* sekmesinde *Oluştur* düğmesine tıklayın
   - Azure portal bildirimlerde destek istek numarasını aklınızda edin. Daha fazla işlem için kısa bir süre önce sizinle iletişim kurulacaksınız
-

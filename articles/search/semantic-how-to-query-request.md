@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 0af868f62f9bc62ee6b4b2a10d16f8eed632b6d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693654"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Bilişsel Arama anlam sorgusu oluşturma
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>İsteği formül altına yaz
 
-1. "QueryType" öğesini "anlam" ve "queryLanguage" olarak "en-US" olarak ayarlayın. Her iki parametre de gereklidir.
+1. **`"queryType"`**"Anlam" ve **`"queryLanguage"`** "en-US" olarak ayarlayın. Her iki parametre de gereklidir.
 
    QueryLanguage, dizin şemasında alan tanımlarına atanan [dil Çözümleyicileri](index-add-language-analyzers.md) ile tutarlı olmalıdır. QueryLanguage "en-US" ise, herhangi bir dil Çözümleyicileri de Ingilizce bir varyant ("en. Microsoft" veya "en. Lucene") olmalıdır. Anahtar sözcük veya basit gibi dilden bağımsız çözümleyiciler, queryLanguage değerleriyle çelişmez.
 
@@ -90,7 +90,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    Bir arama dizinindeki içerik birden çok dilde birleştirileken, sorgu girişi büyük olasılıkla birdir. Arama altyapısı, queryLanguage, Language Analyzer ve içeriğin oluştuğu dilin uyumluluğunu kontrol etmez, bu nedenle yanlış sonuçlar üretmemek için sorguları uygun şekilde kapsamdığınızdan emin olun.
 
-1. İsteğe bağlı ancak önerilir, "searchFields" ayarlayın.
+<a name="searchfields"></a>
+
+1. Ayarla **`"searchFields"`** (isteğe bağlı, ancak önerilir).
 
    Bir anlam sorgusunda, "searchFields" içindeki alanların sırası, semantik derecelendirlıklarla alanın önceliğini veya göreli önemini yansıtır. Yalnızca üst düzey dize alanları (tek başına veya bir koleksiyondaki) kullanılacaktır. SearchFields 'in basit ve tam Lucene sorgularında başka davranışları olduğundan (örtülü öncelik sırası yoksa), dize olmayan tüm alanlar ve alt alanlar bir hatayla sonuçlanmaz, ancak aynı zamanda semantik derecelendirmeden kullanılmamalıdır.
 
@@ -104,9 +106,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    + Hiçbir alan belirtilmemişse, belgelerin anlam derecelendirmesi için tüm aranabilir alanlar dikkate alınır. Ancak, arama dizininizden en iyi sonuçları sağlayamadığından bu önerilmez.
 
-1. Mevcut bir istekte mevcutsa, "orderBy" yan tümcelerini kaldırın. Anlamsal puan sonuçları sıralamak için kullanılır ve açık sıralama mantığı eklerseniz bir HTTP 400 hatası döndürülür.
+1. **`"orderBy"`** Mevcut bir istekte varsa, yan tümceleri kaldırın. Anlamsal puan sonuçları sıralamak için kullanılır ve açık sıralama mantığı eklerseniz bir HTTP 400 hatası döndürülür.
 
-1. İsteğe bağlı olarak, "extractive" olarak ayarlanmış "yanıtlar" ekleyin ve 1 ' den fazla istiyorsanız yanıt sayısını belirtin.
+1. İsteğe bağlı olarak, **`"answers"`** "extractive" olarak ayarla ' yı ekleyin ve 1 ' den fazla istiyorsanız yanıt sayısını belirtin.
 
 1. İsteğe bağlı olarak, açıklamalı alt yazıların uygulanan vurgu stilini özelleştirebilirsiniz. Açıklamalı alt yazılar, yanıtı özetleyen belgedeki anahtar paslar üzerinde vurgu biçimlendirme uygular. Varsayılan değer: `<em>`. Biçimlendirme türünü (örneğin, sarı arka plan) belirtmek istiyorsanız, highlightPreTag ve highlightPostTag ' i ayarlayabilirsiniz.
 

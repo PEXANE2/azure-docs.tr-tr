@@ -2,13 +2,13 @@
 title: Şablonlarda değişkenler
 description: Azure Resource Manager şablonunda (ARM şablonu) ve Bıcep dosyasında değişkenlerin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700346"
 ---
 # <a name="variables-in-arm-templates"></a>ARM şablonlarındaki değişkenler
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 Değişken değerini oluşturmak için [şablon işlevlerini](template-functions.md) kullanabilirsiniz.
 
-JSON şablonlarında, [başvuru](template-functions-resource.md#reference) işlevini veya değişken bildiriminde herhangi bir [liste](template-functions-resource.md#list) işlevini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
-
-Bir bicep dosyasında değişken bildirirken başvuru ve liste işlevleri geçerlidir.
-
 Aşağıdaki örnek, depolama hesabı adı için bir dize değeri oluşturur. Bir parametre değeri almak için çeşitli şablon işlevleri kullanır ve onu benzersiz bir dizeye birleştirir.
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+JSON şablonlarında, [başvuru](template-functions-resource.md#reference) işlevini veya değişken bildiriminde herhangi bir [liste](template-functions-resource.md#list) işlevini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
+
+Bıcep dosyalarında, bir değişken bildirirken başvuru ve liste işlevleri geçerlidir.
+
 ## <a name="use-variable"></a>Değişken kullan
 
 Aşağıdaki örnek, bir kaynak özelliği için değişkeninin nasıl kullanılacağını gösterir.
@@ -101,6 +101,9 @@ Aşağıdaki örnek, bir kaynak özelliği için değişkeninin nasıl kullanıl
 JSON şablonunda, [değişkenler](template-functions-deployment.md#variables) işlevini kullanarak değişkenin değerine başvurarak.
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ JSON şablonunda, [değişkenler](template-functions-deployment.md#variables) i�
 Bir bicep dosyasında, değişken adını sağlayarak değişkenin değerine başvurarak başvurabilirsiniz.
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

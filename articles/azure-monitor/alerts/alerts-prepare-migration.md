@@ -4,22 +4,22 @@ description: Web kancaları, Logic Apps ve Runbook 'larınızı gönüllü geçi
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c88d0b8595434298eb564034a44665c5375457c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622027"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701051"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
 
 > [!NOTE]
-> [Daha önce duyurulduğu](../platform/monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda. Bu uyarıların devre dışı bırakılması tarihi daha fazla genişletildi. Yeni bir tarih yakında duyurulacak.
+> [Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılır, ancak yine de **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 >
 
-Klasik uyarı kurallarınızı yeni uyarı kurallarına göre gönüllü olarak geçirmeyi tercih ederseniz, iki sistem arasında bazı farklılıklar olduğunu unutmayın. Bu makalede bu farklılıklar ve değişikliğe nasıl hazırlanacağı açıklanmaktadır.
+Klasik uyarı kurallarınızı yeni uyarı kurallarına göre gönüllü olarak geçirmeyi seçerseniz, iki sistem arasında bazı farklılıklar vardır. Bu makalede bu farklılıklar ve değişikliğe nasıl hazırlanacağı açıklanmaktadır.
 
 ## <a name="api-changes"></a>API değişiklikleri
 
@@ -30,13 +30,13 @@ Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabiriml
 | Dağıtım betiği türü | Klasik uyarılar | Yeni ölçüm uyarıları |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI’si     | [az Monitor Alert](/cli/azure/monitor/alert)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert)        |
+|Azure CLI     | [az Monitor Alert](/cli/azure/monitor/alert)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [Başvuru](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager şablonu | [Klasik uyarılar için](./alerts-enable-template.md)|[Yeni ölçüm uyarıları için](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Bildirim yükü değişiklikleri
 
-Bildirim yükü biçimi, [Klasik uyarı kuralları](../platform/alerts-webhooks.md) ve [yeni ölçüm uyarıları](alerts-metric-near-real-time.md#payload-schema)arasında biraz farklıdır. Klasik uyarı kuralları tarafından tetiklenen bir Web kancası, mantıksal uygulama veya Runbook eylemleriniz varsa, bu bildirim uç noktalarını yeni ölçüm uyarılarının yük biçimini kabul edecek şekilde güncelleştirmeniz gerekir.
+Bildirim yükü biçimi, [Klasik uyarı kuralları](alerts-webhooks.md) ve [yeni ölçüm uyarıları](alerts-metric-near-real-time.md#payload-schema)arasında biraz farklıdır. Web kancası, mantıksal uygulama veya Runbook eylemleriyle klasik uyarı kurallarınızı varsa, yeni yük biçimini kabul etmek için hedefleri güncelleştirmeniz gerekir.
 
 Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşağıdaki tabloyu kullanın:
 
@@ -153,13 +153,13 @@ Bir uyarı tetiklendiğinde bir sanal makineyi durduran runbook 'un tam bir örn
 
 ## <a name="partner-integration-via-webhooks"></a>Web kancaları aracılığıyla iş ortağı tümleştirmesi
 
-[Klasik uyarılarla tümleştirilen iş ortaklarımızın](../platform/partners.md) çoğu, tümleştirmelerine göre zaten yeni ölçüm uyarılarını desteklemektedir. Yeni ölçüm uyarıları ile zaten çalışan bilinen tümleştirmeler şunlardır:
+[Klasik uyarılarla tümleştirilen iş ortaklarımızın](../partners.md) çoğu, tümleştirmelerine göre zaten yeni ölçüm uyarılarını desteklemektedir. Yeni ölçüm uyarıları ile zaten çalışan bilinen tümleştirmeler şunlardır:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Sıgnl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Burada listelenmeyen bir iş ortağı tümleştirmesi kullanıyorsanız, tümleştirme sağlayıcısı 'nın yeni ölçüm uyarıları ile çalıştığından emin olun.
+Burada listelenmeyen bir iş ortağı tümleştirmesi kullanıyorsanız, sağlayıcıya yeni ölçüm uyarıları ile çalıştığını doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

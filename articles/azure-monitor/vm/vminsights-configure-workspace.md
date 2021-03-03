@@ -1,29 +1,29 @@
 ---
-title: VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
-description: VM'ler için Azure İzleyici tarafından kullanılan Log Analytics çalışma alanının nasıl oluşturulduğunu ve yapılandırılacağını açıklar.
+title: VM öngörüleri için Log Analytics çalışma alanını yapılandırma
+description: VM öngörüleri tarafından kullanılan Log Analytics çalışma alanının nasıl oluşturulduğunu ve yapılandırılacağını açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: b84f9cae848d53cf04e1b77810b347786e122c5b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dc7e6c42837ccaa56c7a211deb646c934ec137a4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717137"
 ---
-# <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
-VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
+# <a name="configure-log-analytics-workspace-for-vm-insights"></a>VM öngörüleri için Log Analytics çalışma alanını yapılandırma
+VM öngörüleri, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM öngörüleri için yapılandırılacak.
 
 ## <a name="overview"></a>Genel Bakış
 Tek bir abonelik, gereksinimlerinize bağlı olarak istediğiniz sayıda çalışma alanını kullanabilir. Çalışma alanının tek gereksinimi, desteklenen bir konumda konumlandırılabilir ve *Vminsıghts* çözümü ile yapılandırılmalıdır.
 
-Çalışma alanı yapılandırıldıktan sonra, gerekli aracıları sanal makineye ve sanal makine ölçek kümesine yüklemek için kullanılabilir seçeneklerden herhangi birini kullanabilir ve bunların verilerini gönderebilmesi için bir çalışma alanı belirtebilirsiniz. VM'ler için Azure İzleyici, aboneliğindeki herhangi bir yapılandırılmış çalışma alanından veri toplar.
+Çalışma alanı yapılandırıldıktan sonra, gerekli aracıları sanal makineye ve sanal makine ölçek kümesine yüklemek için kullanılabilir seçeneklerden herhangi birini kullanabilir ve bunların verilerini gönderebilmesi için bir çalışma alanı belirtebilirsiniz. VM öngörüleri, aboneliğindeki herhangi bir yapılandırılmış çalışma alanından veri toplar.
 
 > [!NOTE]
-> Tek bir sanal makinede veya Azure portal kullanarak sanal makine ölçek kümesinde VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
+> VM öngörülerini tek bir sanal makinede veya Azure portal kullanarak sanal makine ölçek kümesinde etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
 
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
@@ -35,16 +35,16 @@ Tek bir abonelik, gereksinimlerinize bağlı olarak istediğiniz sayıda çalı�
 
 [![Anlytiği çalışma alanlarını günlüğe kaydet](media/vminsights-configure-workspace/log-analytics-workspaces.png)](media/vminsights-configure-workspace/log-analytics-workspaces.png#lightbox)
 
-Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics çalışma alanı oluşturabilirsiniz. Ortamınızda kullanmanız gereken çalışma alanı sayısını ve erişim stratejisini nasıl tasarlayacağınızı belirlemek için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) .
+Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics çalışma alanı oluşturabilirsiniz. Ortamınızda kullanmanız gereken çalışma alanı sayısını ve erişim stratejisini nasıl tasarlayacağınızı belirlemek için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../logs/design-logs-deployment.md) .
 
 
-* [Azure portalı](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Resource Manager](../samples/resource-manager-workspace.md)
+* [Azure portalı](../logs/quick-create-workspace.md)
+* [Azure CLI](../logs/quick-create-workspace-cli.md)
+* [PowerShell](../logs/powershell-workspace-configuration.md)
+* [Azure Resource Manager](../logs/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
-VM'ler için Azure İzleyici, aşağıdakiler dışında [Log Analytics tarafından desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) Log Analytics bir çalışma alanını destekler:
+VM öngörüleri aşağıdakiler hariç [Log Analytics tarafından desteklenen bölgelerin](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) herhangi birinde bir Log Analytics çalışma alanını destekler:
 
 - Almanya Orta Batı
 - Güney Kore - Orta
@@ -53,10 +53,10 @@ VM'ler için Azure İzleyici, aşağıdakiler dışında [Log Analytics tarafın
 >Azure VM 'Leri herhangi bir bölgede izleyebilirsiniz. VM 'Ler, Log Analytics çalışma alanı tarafından desteklenen bölgelerle sınırlı değildir.
 
 ## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
-VM'ler için Azure İzleyici özellikleri etkinleştirmek ve bu özelliklere erişmek için, çalışma alanında [Log Analytics katkıda bulunan rolüne](../platform/manage-access.md#manage-access-using-azure-permissions) sahip olmanız gerekir. Performansı, sistem durumunu ve eşleme verilerini görüntülemek için, Azure VM için [izleme okuyucu rolüne](../platform/roles-permissions-security.md#built-in-monitoring-roles) sahip olmanız gerekir. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../platform/manage-access.md).
+VM öngörülerinin özelliklerini etkinleştirmek ve bu özelliklere erişmek için, çalışma alanında [Log Analytics katkıda bulunan rolüne](../logs/manage-access.md#manage-access-using-azure-permissions) sahip olmanız gerekir. Performansı, sistem durumunu ve eşleme verilerini görüntülemek için, Azure VM için [izleme okuyucu rolüne](../roles-permissions-security.md#built-in-monitoring-roles) sahip olmanız gerekir. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../logs/manage-access.md).
 
 ## <a name="add-vminsights-solution-to-workspace"></a>Çalışma alanına Vminsıghts çözümü ekleme
-Bir Log Analytics çalışma alanının VM'ler için Azure İzleyici ile kullanılabilmesi için önce *Vminsıghts* çözümünün yüklü olması gerekir. Çalışma alanını yapılandırma yöntemleri aşağıdaki bölümlerde açıklanmıştır.
+Bir Log Analytics çalışma alanının VM öngörüleri ile kullanılabilmesi için, *Vminsıghts* çözümünün yüklü olması gerekir. Çalışma alanını yapılandırma yöntemleri aşağıdaki bölümlerde açıklanmıştır.
 
 > [!NOTE]
 > *Vminsıghts* çözümünü çalışma alanına eklediğinizde, çalışma alanına bağlı olan tüm mevcut sanal makineler, verileri ınsightsölçümlerini gönderecek şekilde başlayacaktır. Diğer veri türleri için veriler, çalışma alanına bağlı mevcut sanal makinelere Dependency Agent ekleyene kadar toplanmaz.
@@ -73,13 +73,13 @@ Birden çok çalışma alanını yapılandırmak için Azure portal **Monitor** 
 [![Çalışma alanı yapılandırması](../vm/media/vminsights-enable-policy/workspace-configuration.png)](../vm/media/vminsights-enable-policy/workspace-configuration.png#lightbox)
 
 
-Tek bir sanal makinede veya Azure portal kullanarak sanal makine ölçek kümesinde VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
+VM öngörülerini tek bir sanal makinede veya Azure portal kullanarak sanal makine ölçek kümesinde etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
 
 [![Portalda tek VM 'yi etkinleştirme](../vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)](../vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png#lightbox)
 
 
 ### <a name="resource-manager-template"></a>Resource Manager şablonu
-VM'ler için Azure İzleyici için Azure Resource Manager şablonları, [GitHub deponuzdan indirebileceğiniz](https://aka.ms/VmInsightsARMTemplates)bir arşiv dosyasında (. zip) verilmiştir. Bu, VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandıran **configureworkspace** adlı bir şablon içerir. Aşağıdaki örnek PowerShell ve CLı komutları dahil olmak üzere standart yöntemlerden birini kullanarak bu şablonu dağıtabilirsiniz: 
+VM öngörüleri için Azure Resource Manager şablonları, [GitHub deponuzdan indirebileceğiniz](https://aka.ms/VmInsightsARMTemplates)bir arşiv dosyasında (. zip) verilmiştir. Bu, VM öngörüleri için bir Log Analytics çalışma alanı yapılandıran **configureworkspace** adlı bir şablon içerir. Aşağıdaki örnek PowerShell ve CLı komutları dahil olmak üzere standart yöntemlerden birini kullanarak bu şablonu dağıtabilirsiniz: 
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -99,5 +99,5 @@ New-AzResourceGroupDeployment -Name ConfigureWorkspace -ResourceGroupName my-res
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Aracılardan VM'ler için Azure İzleyici bağlamak için [VM'ler için Azure izleyici aracıları](vminsights-enable-overview.md) ekleme bölümüne bakın.
+- Aracıları VM öngörülerine bağlamak için bkz. [VM öngörülerine](vminsights-enable-overview.md) aracılar ekleme.
 - Bir çözümünden çalışma alanına gönderilen veri miktarını sınırlamak için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](../insights/solution-targeting.md) .

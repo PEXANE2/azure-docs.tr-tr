@@ -1,22 +1,10 @@
 ---
-title: Yerelleştirme-Azure Active Directory B2C
-description: Azure Active Directory B2C bir özel ilkenin yerelleştirme öğesini belirtin.
-services: active-directory-b2c
-author: msmimart
-manager: celestedg
-ms.service: active-directory
-ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
-ms.author: mimart
-ms.subservice: B2C
-ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108639"
+Başlık: yerelleştirme-Azure Active Directory B2C Description: Azure Active Directory B2C özel bir ilkenin yerelleştirme öğesini belirtin.
+Hizmetler: Active-Directory-B2C Yazar: msmımsanat Manager: celestedg
+
+MS. Service: Active-Directory MS. Workload: Identity MS. Topic: başvuru MS. Date: 10/15/2020 MS. Yazar: mimart MS. subservice: B2C MS. Custom: "B2C-support"
 ---
+
 # <a name="localization-element"></a>Yerelleştirme öğesi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -56,7 +44,7 @@ ms.locfileid: "97108639"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Evet | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
+| DefaultLanguage | Yes | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
 | MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll`Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
@@ -73,7 +61,7 @@ ms.locfileid: "97108639"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Evet | Yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. |
+| Id | Yes | Yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. |
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
@@ -96,9 +84,9 @@ ms.locfileid: "97108639"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Evet | İlke dosyasında bir ClaimType öğesine veya bir kullanıcı arabirimi öğesine başvurur. |
-| ElementID | Evet | **ElementType** bir ClaimType olarak ayarlandıysa kullanılan ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içeren bir dize. |
-| TargetCollection | Evet | Hedef koleksiyon. |
+| ElementType | Yes | İlke dosyasında bir ClaimType öğesine veya bir kullanıcı arabirimi öğesine başvurur. |
+| ElementID | Yes | **ElementType** bir ClaimType olarak ayarlandıysa kullanılan ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içeren bir dize. |
+| TargetCollection | Yes | Hedef koleksiyon. |
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
@@ -110,8 +98,8 @@ ms.locfileid: "97108639"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Evet | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
-| Değer | Evet | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
+| Metin | Yes | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
+| Değer | Yes | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
 | SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
 Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de, bir öğenin **kısıtlama** koleksiyonunu `Gender` İngilizce ve İspanyolca için bir öğe listesiyle ayarlayın.
@@ -146,9 +134,9 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Evet | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [getlocalizedstringstransformationclaimtype](#getlocalizedstringstransformationclaimtype), [koşul](#predicate), [ınputvalidation](#inputvalidation)veya [uxelement](#uxelement).   | 
-| ElementID | Evet | **ElementType** , veya olarak ayarlandıysa `ClaimType` , `Predicate` `InputValidation` Bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
-| StringID | Evet | **ElementType** olarak ayarlandıysa `ClaimType` , bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName` , `AdminHelpText` , veya `PatternHelpText` . `DisplayName`Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText`Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText`Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak ayarlandıysa `UxElement` , bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak ayarlandıysa `ErrorMessage` , bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) `UxElement` .|
+| ElementType | Yes | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [getlocalizedstringstransformationclaimtype](#getlocalizedstringstransformationclaimtype), [koşul](#predicate), [ınputvalidation](#inputvalidation)veya [uxelement](#uxelement).   | 
+| ElementID | Yes | **ElementType** , veya olarak ayarlandıysa `ClaimType` , `Predicate` `InputValidation` Bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
+| StringID | Yes | **ElementType** olarak ayarlandıysa `ClaimType` , bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName` , `AdminHelpText` , veya `PatternHelpText` . `DisplayName`Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText`Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText`Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak ayarlandıysa `UxElement` , bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak ayarlandıysa `ErrorMessage` , bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) `UxElement` .|
 
 ## <a name="elementtype"></a>ElementType
 
@@ -335,14 +323,14 @@ UxElement değeri, Kullanıcı arabirimi öğelerinden birini yerelleştirmek i�
 
 ### <a name="displaycontrol"></a>DisplayControl
 
-DisplayControl değeri, [görüntüleme denetimi](display-controls.md) Kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Aşağıdaki örnek, gönder ve Doğrula düğmelerinin nasıl yerelleştirileceğini gösterir. 
+DisplayControl değeri, [görüntüleme denetimi](display-controls.md) Kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Etkinleştirildiğinde, görüntüleme denetimi localizedStrings, **ver_but_send**, **ver_but_edit**, **Ver_but_resend** ve **ver_but_verify** gibi _ *uxelement** strıngııd 'lerden bazıları üzerinde ***önceliği** _ alır. Aşağıdaki örnek, gönder ve Doğrula düğmelerinin nasıl yerelleştirileceğini gösterir. 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
 ```
 
-Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurulan ContentDefinition 'ın DataUri 'nin [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri olarak ayarlanmış olması gerekir. Örneğin:
+Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurulan ContentDefinition 'ın DataUri 'nin [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri olarak ayarlanmış olması gerekir. Örnek:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">

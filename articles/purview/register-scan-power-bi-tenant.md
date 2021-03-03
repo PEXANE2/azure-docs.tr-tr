@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695762"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -98,11 +98,13 @@ Artık Power BI kiracınızın yönetim API 'sine bağlanmak için, yönetilen k
     > Power BI için veri kaynağı kaydına ve taramaya yalnızca bir örnek için izin verilir.
 
 
-4. Taramaya bir ad verin. Desteklenen tek kimlik doğrulama yönteminin **yönetilen kimlik** olduğunu unutmayın.
+4. Taramaya bir ad verin. Ardından kişisel çalışma alanlarını dahil etme veya dışlama seçeneğini belirleyin. Desteklenen tek kimlik doğrulama yönteminin **yönetilen kimlik** olduğunu unutmayın.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Power BI tarama kurulumunu gösteren resim":::
 
-    Tarama adı 3-63 karakter uzunluğunda olmalıdır ve yalnızca harf, sayı, alt çizgi ve kısa çizgi içermelidir.  Boşluklara izin verilmez.
+    > [!Note]
+    > * Kişisel çalışma alanını dahil etmek veya hariç tutmak için taramanın yapılandırmasını değiştirmek, PowerBI kaynağının tam taramasını tetikler
+    > * Tarama adı 3-63 karakter uzunluğunda olmalıdır ve yalnızca harf, sayı, alt çizgi ve kısa çizgi içermelidir. Boşluklara izin verilmez.
 
 5. Bir tarama tetikleyicisi ayarlayın. Seçenekleriniz **her 7 günde** bir ve **30 günde** **bir**.
 

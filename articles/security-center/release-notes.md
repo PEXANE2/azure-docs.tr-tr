@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727099"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -37,9 +37,10 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 - [Genel kullanıma sunulduktan Azure portal yeni güvenlik uyarıları sayfası (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes iş yükü koruma önerileri genel kullanıma sunuldu (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Azure Defender ile Endpoint Integration için Microsoft Defender artık Windows Server 2019 ve Windows 10 sanal masaüstü (WVD) desteklemektedir (önizlemede)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
-- [İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde yapılan değişikliklere göre tetiklenebilir (önizlemede)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [Varlık envanteri sayfa iyileştirmeleri](#asset-inventory-page-enhancements)
 
 
@@ -75,6 +76,17 @@ Kubernetes için Azure Ilke eklentisi, Azure Kubernetes Service (AKS) kümenize 
 > Öneriler önizlemede olduğundan, AKS küme kaynağını sağlıksız bir şekilde işlemedik ve güvenli puanınızın hesaplamalarına dahil etmiyordu. Bu GA duyurusu ile bunlar puan hesaplamasına dahil edilir. Zaten düzeltilmediyse, bu durum güvenli puanınızda küçük bir etkiye neden olur. [Azure Güvenlik Merkezi 'ndeki önerileri](security-center-remediate-recommendations.md)düzeltme bölümünde açıklandığı gibi, mümkün olan yerlerde bunları düzeltin.
 
 
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Azure Defender ile Endpoint Integration için Microsoft Defender artık Windows Server 2019 ve Windows 10 sanal masaüstü (WVD) desteklemektedir (önizlemede)
+
+Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir uç nokta güvenlik çözümüdür. Bu, risk tabanlı güvenlik açığı yönetimi ve değerlendirmesi ve uç nokta algılama ve yanıt (EDR) sağlar. Defender for Endpoint for the Azure Security Center ile birlikte kullanmanın avantajlarından tam bir listesi için bkz. [Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruma: uç nokta Için Microsoft Defender](security-center-wdatp.md).
+
+Windows Server 'da sunucular için Azure Defender 'ı etkinleştirdiğinizde, plana uç nokta için bir Defender lisansı dahildir. Sunucular için Azure Defender 'ı zaten etkinleştirdiyseniz ve aboneliğinizde Windows 2019 sunucularınız varsa, bu güncelleştirme ile otomatik olarak Defender for Endpoint alırlar. El ile eylem gerekli değildir. 
+
+Windows Server 2019 ve [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)dahil etmek için destek artık genişletildi.
+
+> [!NOTE]
+> Windows Server 2019 makinesinde Endpoint için Defender 'ı etkinleştirdiğinizden, [Endpoint Integration Için Microsoft Defender 'ı etkinleştirme](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)konusunda açıklanan önkoşulları karşıladığından emin olun.
+
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı
 
 Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilkeyi görmeniz yararlı olur. Bir ilke tarafından desteklenen her öneri için, öneri ayrıntıları sayfasından yeni bir bağlantı vardır:
@@ -91,9 +103,12 @@ Bir önerinin ayrıntılarını gözden geçirirken genellikle temel alınan ilk
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL veri sınıflandırması önerisi artık güvenli puanınızı etkilemesiz
 **SQL veritabanlarınızdaki önerinin hassas verileri** , artık güvenli puanınızı etkilememelidir. Bu, denetim artık 0 ' ın güvenli bir puan değerine sahip olması için **veri sınıflandırması** güvenlik denetimindeki tek öneriden oluşur.
 
+Güvenlik Merkezi 'ndeki tüm güvenlik denetimlerinin puanlarını ve her bir içindeki önerilerin listesini içeren tam bir liste için bkz. [güvenlik denetimleri ve önerileri](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde (Önizleme) yapılan değişikliklerle tetiklenebilir
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>İş akışı tahminleri, mevzuat uyumluluk değerlendirmelerinde yapılan değişikliklere göre tetiklenebilir (önizlemede)
 İş akışı otomasyonuna yönelik tetikleyici seçeneklerine üçüncü bir veri türü ekledik: mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikler.
+
+[Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatik hale getirmek için](workflow-automation.md)iş akışı Otomasyon araçlarını nasıl kullanacağınızı öğrenin.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu tetiklemek için mevzuat uyumluluk değerlendirmelerinde yapılan değişiklikleri kullanma" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
@@ -187,7 +202,7 @@ Güvenli puan sayfası artık abonelik düzeyine ek olarak yönetim gruplarını
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Güvenli puan API 'SI genel kullanıma sunuldu (GA)
 
-Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin:
+Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örnek:
 
 - belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanma
 - güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini kullanın
@@ -672,7 +687,7 @@ Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartl
 
 Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
 
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örneğin:
+Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
 
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz

@@ -7,20 +7,20 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686402"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak Azure Arc veri denetleyicisi oluşturma
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -175,16 +175,27 @@ Gerektiğinde aşağıdakileri düzenleyin:
 **GÖZDEN GEÇIRMENIZ VE MUHTEMELEN VARSAYıLANLARı DEĞIŞTIRMENIZ ÖNERILIR**
 - **depolama.. className**: veri denetleyicisi verileri ve günlük dosyaları için kullanılacak depolama sınıfı.  Kubernetes kümenizdeki kullanılabilir depolama sınıflarından emin değilseniz, şu komutu çalıştırabilirsiniz: `kubectl get storageclass` .  Varsayılan değer, `default` var olan ve `default`  varsayılan olan bir depolama sınıfı olan adlı bir depolama sınıfı olduğunu varsaymaktadır.  Note: veri için bir tane olmak üzere istenen depolama sınıfına ayarlanacak iki className ayarı vardır.
 - **serviceType**: bir LoadBalancer kullanmıyorsanız, hizmet türünü olarak değiştirin `NodePort` .  Note: değiştirilmesi gereken iki serviceType ayarı vardır.
+- Azure Red Hat OpenShift veya Red Hat OpenShift kapsayıcı platformunda, veri denetleyicisini oluşturmadan önce güvenlik bağlamı kısıtlamasını uygulamanız gerekir. [OpenShift üzerinde Azure Arc etkin veri Hizmetleri için bir güvenlik bağlamı kısıtlaması uygulama](how-to-apply-security-context-constraint.md)konusundaki yönergeleri izleyin.
+- **Güvenlik** Azure Red Hat OpenShift veya Red Hat OpenShift kapsayıcı platformu için, `security:` ayarları Data Controller YAML dosyasındaki aşağıdaki değerlerle değiştirin. 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **SEÇIM**
 - **ad**: veri denetleyicisinin varsayılan adı, `arc` ancak isterseniz bunu değiştirebilirsiniz.
 - **DisplayName**: bunu, dosyanın en üstündeki ad özniteliğiyle aynı değere ayarlayın.
 - **kayıt defteri**: Microsoft Container Registry varsayılandır.  Microsoft Container Registry görüntüleri çekiliyor ve [bunları özel bir kapsayıcı kayıt defterine](offline-deployment.md)alıyorsa, kayıt defterinizin IP ADRESINI veya DNS adını buraya girin.
 - **Dockerregistry**: gerekirse özel bir kapsayıcı kayıt defterinden görüntüleri çekmek için kullanılacak görüntü çekme gizli dizisi.
-- **Depo**: Microsoft Container Registry varsayılan depo `arcdata` .  Özel bir kapsayıcı kayıt defteri kullanıyorsanız, Azure ARR özellikli veri Hizmetleri kapsayıcı görüntülerini içeren klasör/deponun yolunu girin.
+- **Depo**: Microsoft Container Registry varsayılan depo `arcdata` .  Özel bir kapsayıcı kayıt defteri kullanıyorsanız, Azure Arc etkin veri Hizmetleri kapsayıcı görüntülerini içeren klasör/deponun yolunu girin.
 - **ImageTag**: geçerli en son sürüm etiketi şablonda varsayılan olarak ayarlanır, ancak eski bir sürümü kullanmak istiyorsanız bunu değiştirebilirsiniz.
 
-Tamamlanan veri denetleyicisi YAML dosyası örneği:
+Aşağıdaki örnek, tamamlanmış bir Data Controller YAML dosyasını göstermektedir. Gereksinimlerinize ve yukarıdaki bilgilere göre ortamınızın örneğini güncelleştirin.
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always

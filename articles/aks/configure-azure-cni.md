@@ -4,12 +4,13 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: afb98acf903f90ead137c9b372d33ce82b89f7b5
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.custom: references_regions
+ms.openlocfilehash: 4286b3ea8f41ac5c4c494039c5d45c2332c72226
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062226"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742101"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -22,7 +23,7 @@ Bu makalede, bir AKS kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 ## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
-* Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı, Pod adres aralığı veya küme sanal ağ adresi aralığı için kullanılamıyor olabilir. 
+* Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı, Pod adres aralığı veya küme sanal ağ adresi aralığı için kullanılamıyor olabilir.
 * AKS kümesi tarafından kullanılan hizmet sorumlusu, sanal ağınızdaki alt ağda en az bir [ağ katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) iznine sahip olmalıdır. Yerleşik ağ katılımcısı rolünü kullanmak yerine [özel bir rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -38,10 +39,10 @@ Pod ve kümenin düğümlerine ait IP adresleri, sanal ağ içindeki belirtilen 
 > [!IMPORTANT]
 > Gerekli IP adresi sayısı, yükseltme ve ölçeklendirme işlemlerine yönelik hususlar içermelidir. IP adresi aralığını yalnızca sabit sayıda düğümü destekleyecek şekilde ayarlarsanız, kümenizi yükseltemez veya ölçeklendirebilirsiniz.
 >
-> - AKS kümenizi **yükselttiğinizde** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar ve eski bir düğüm kümeden kaldırılır. Bu sıralı yükseltme işlemi, en az bir IP adresi bloğunun kullanılabilir olmasını gerektirir. Düğüm sayıınız daha sonra `n + 1` .
->   - Windows Server düğüm havuzlarını kullandığınızda bu durum özellikle önemlidir. AKS 'deki Windows Server düğümleri, düğüm havuzunda bir yükseltme gerçekleştirmeniz yerine otomatik olarak Windows güncelleştirmelerini uygulamaz. Bu yükseltme, son Windows Server 2019 temel düğüm görüntüsü ve güvenlik düzeltme ekleriyle yeni düğümleri dağıtır. Bir Windows Server düğüm havuzunu yükseltme hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+> * AKS kümenizi **yükselttiğinizde** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar ve eski bir düğüm kümeden kaldırılır. Bu sıralı yükseltme işlemi, en az bir IP adresi bloğunun kullanılabilir olmasını gerektirir. Düğüm sayıınız daha sonra `n + 1` .
+>   * Windows Server düğüm havuzlarını kullandığınızda bu durum özellikle önemlidir. AKS 'deki Windows Server düğümleri, düğüm havuzunda bir yükseltme gerçekleştirmeniz yerine otomatik olarak Windows güncelleştirmelerini uygulamaz. Bu yükseltme, son Windows Server 2019 temel düğüm görüntüsü ve güvenlik düzeltme ekleriyle yeni düğümleri dağıtır. Bir Windows Server düğüm havuzunu yükseltme hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 >
-> - Bir AKS kümesini **ölçeklendirirseniz** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar. IP adresi aralığınızı, kümenizin destekleyebileceği düğüm sayısını ve sınırları nasıl ölçeklendirmek istediğinizi göz önünde bulundurmanız gerekir. Yükseltme işlemleri için bir ek düğüm da dahil edilmelidir. Düğüm sayıınız daha sonra `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
+> * Bir AKS kümesini **ölçeklendirirseniz** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar. IP adresi aralığınızı, kümenizin destekleyebileceği düğüm sayısını ve sınırları nasıl ölçeklendirmek istediğinizi göz önünde bulundurmanız gerekir. Yükseltme işlemleri için bir ek düğüm da dahil edilmelidir. Düğüm sayıınız daha sonra `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
 
 Düğümlerinizin maksimum sayıda pods çalıştırmasını ve düzenli olarak dizin oluşturup dağıtımını bekleliyorsanız, düğüm başına bazı ek IP adreslerini de çarpanlara katmalısınız. Bu ek IP adresleri, bir hizmetin silinmesi ve yeni bir hizmetin dağıtılması ve adresi edinmeniz için birkaç saniye sürebilir.
 
@@ -53,7 +54,7 @@ AKS kümesi için IP adresi planı bir sanal ağ, düğümler ve düğüm için 
 | Alt ağ | , Kümenizde sağlanmış olabilecek düğümlerin, yığınların ve tüm Kubernetes ve Azure kaynaklarına uyum sağlayacak kadar büyük olmalıdır. Örneğin, dahili bir Azure Load Balancer dağıtırsanız, ön uç IP 'Leri genel IP 'Ler değil, küme alt ağından ayrılır. Alt ağ boyutu ayrıca hesap yükseltme işlemlerini veya gelecekteki ölçekleme ihtiyaçlarını da almalıdır.<p />Yükseltme işlemleri için ek bir düğüm dahil *Minimum* alt ağ boyutunu hesaplamak için: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 düğüm kümesi örneği: `(51) + (51  * 30 (default)) = 1,581` (/21 veya daha büyük)<p/>Ek 10 düğümleri ölçeklendirmek için sağlama de içeren 50 düğümlü bir küme için örnek: `(61) + (61 * 30 (default)) = 1,891` (/21 veya daha büyük)<p>Kümenizi oluştururken düğüm başına en fazla sayıda Pod belirtmezseniz, düğüm başına en fazla düğüm sayısı *30* olarak ayarlanır. Gerekli olan en az IP adresi sayısı bu değere göre belirlenir. En az IP adresi gereksinimlerinizi farklı bir maksimum değer üzerinde hesaplarsanız, kümenizi dağıtırken bu değeri ayarlamak için [düğüm başına en fazla sayıda Pod 'yi yapılandırma](#configure-maximum---new-clusters) bölümüne bakın. |
 | Kubernetes hizmeti adres aralığı | Bu Aralık, bu sanal ağ üzerinde herhangi bir ağ öğesi tarafından kullanılmamalıdır veya bu sanal ağa bağlı olmamalıdır. CıDR hizmet adresi/12 ' den küçük olmalıdır. Bu aralığı farklı AKS kümelerinde yeniden kullanabilirsiniz. |
 | Kubernetes DNS hizmeti IP adresi | Küme hizmeti bulma tarafından kullanılacak Kubernetes hizmeti adres aralığı içindeki IP adresi. Adres aralığınızı. 1 gibi ilk IP adresini kullanmayın. Alt ağ aralığınızı ilk adres *Kubernetes. default. svc. Cluster. Local* adresi için kullanılır. |
-| Docker köprüsü adresi | Docker köprüsü ağ adresi, tüm Docker yüklemelerinde bulunan varsayılan *docker0* köprüsü ağ adresini temsil eder. *Docker0* Bridge, aks kümeleri veya Pod tarafından kullanılmadığından, aks kümesi içindeki *Docker derlemesi* gibi senaryoları desteklemeye devam etmek için bu adresi ayarlamanız gerekir. Docker köprü ağ adresi için bir CıDR seçmeniz gerekir, aksi takdirde Docker diğer Cıdrs ile çakışabilecek bir alt ağ seçer. Kümenin hizmet CıDR ve pod CıDR dahil olmak üzere ağlarınızdaki CIO 'nun geri kalanı ile çakışmayan bir adres alanı seçmelisiniz. Varsayılan değer 172.17.0.1/16. Bu aralığı farklı AKS kümelerinde yeniden kullanabilirsiniz. |
+| Docker köprüsü adresi | Docker köprüsü ağ adresi, tüm Docker yüklemelerinde bulunan varsayılan *docker0* köprüsü ağ adresini temsil eder. *Docker0* Bridge, aks kümeleri veya Pod tarafından kullanılmadığından, aks kümesi içindeki *Docker derlemesi* gibi senaryoları desteklemeye devam etmek için bu adresi ayarlamanız gerekir. Docker köprü ağ adresi için bir CıDR seçmeniz gerekir, aksi takdirde Docker otomatik olarak bir alt ağ seçip diğer Cıdrs ile çakışabilecek. Kümenin hizmet CıDR ve pod CıDR dahil olmak üzere ağlarınızdaki CIO 'nun geri kalanı ile çakışmayan bir adres alanı seçmelisiniz. Varsayılan değer 172.17.0.1/16. Bu aralığı farklı AKS kümelerinde yeniden kullanabilirsiniz. |
 
 ## <a name="maximum-pods-per-node"></a>Düğüm başına maksimum Pod
 
@@ -61,7 +62,7 @@ AKS kümesindeki düğüm başına en fazla düğüm sayısı 250 ' dir. Düğü
 
 | Dağıtım yöntemi | Kubenet varsayılanı | Azure CNı varsayılan | Dağıtımda yapılandırılabilir |
 | -- | :--: | :--: | -- |
-| Azure CLI’si | 110 | 30 | Evet (250 'e kadar) |
+| Azure CLI | 110 | 30 | Evet (250 'e kadar) |
 | Resource Manager şablonu | 110 | 30 | Evet (250 'e kadar) |
 | Portal | 110 | 110 (düğüm havuzları sekmesinde yapılandırılır) | Hayır |
 
@@ -99,7 +100,7 @@ Bir AKS kümesi oluşturduğunuzda, aşağıdaki parametreler Azure CNı ağı i
 
 **Azure ağ eklentisi**: Azure ağ eklentisi kullanıldığında, aks kümesine ait olmayan clusterCIDR IÇINDEKI bir IP 'ye sahip VM 'Lerden "ExternalTrafficPolicy = Local" Iç yük dengeleyici hizmetine erişilemez.
 
-**Kubernetes hizmeti adres aralığı**: Bu, Kubernetes 'in kümenizdeki iç [hizmetlere][services] atadığı sanal IP kümesidir. Aşağıdaki gereksinimleri karşılayan herhangi bir özel adres aralığını kullanabilirsiniz:
+**Kubernetes hizmeti adres aralığı**: Bu parametre, Kubernetes 'in kümenizdeki iç [hizmetlere][services] atadığı sanal IP 'ler kümesidir. Aşağıdaki gereksinimleri karşılayan herhangi bir özel adres aralığını kullanabilirsiniz:
 
 * Kümenizin sanal ağ IP adresi aralığı içinde olmaması gerekir
 * Küme sanal ağ eşlerinin bulunduğu diğer sanal ağlarla çakışmamalıdır
@@ -145,7 +146,130 @@ az aks create \
 
 Azure portal aşağıdaki ekran görüntüsünde, AKS kümesi oluşturma sırasında bu ayarları yapılandırmanın bir örneği gösterilmektedir:
 
-![Azure portal gelişmiş ağ yapılandırması][portal-01-networking-advanced]
+! [Azure portal gelişmiş ağ yapılandırması] [Portal-01-ağ-Gelişmiş]
+
+## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>IP 'lerin dinamik ayırması ve gelişmiş alt ağ desteği (Önizleme)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+> [!NOTE] 
+> Bu önizleme özelliği şu anda aşağıdaki bölgelerde kullanılabilir:
+>
+> * Orta Batı ABD
+
+Geleneksel CNı ile bir dezavantajı, AKS kümesi büyüdükçe Pod IP adreslerinin tükenmesi olduğundan, tüm kümeyi daha büyük bir alt ağda yeniden oluşturma gereksinimiyle sonuçlanır. Azure CNı 'deki yeni dinamik IP ayırma özelliği, AKS kümesini barındıran alt ağdan ayrı bir alt ağdan farklı pod IP 'Leri ayırarak bu sorunu çözer.  Aşağıdaki avantajları sunar:
+
+* **Daha ıyı IP kullanımı: IP**'Ler, Pod alt ağından küme yığınlarından dinamik olarak ayrılır. Bu, kümedeki IP 'lerin geleneksel CNı çözümüne kıyasla, her düğüm için IP 'lerin statik olarak ayrılmasını sağlayan, daha iyi bir şekilde kullanımına yol açar.  
+
+* **Ölçeklenebilir ve esnek**: düğüm ve pod alt ağları bağımsız olarak ölçeklendirilebilir. Tek bir pod alt ağı, bir kümenin birden çok düğüm havuzunda veya aynı VNet 'te dağıtılan birden çok AKS kümesi arasında paylaşılabilir. Ayrıca, bir düğüm havuzu için ayrı bir pod alt ağı da yapılandırabilirsiniz.  
+
+* **Yüksek performans**: Pod sanal ağ IP 'leri atandığından, sanal ağ üzerindeki diğer küme Pod ve kaynaklarına doğrudan bağlantı sağlar. Çözüm, performansı azalmadan çok büyük kümeleri destekler.
+
+* **Pod için ayrı VNET ilkeleri**: bir alt ağa sahip olduğundan, düğüm ilkelerinden farklı olan ayrı VNET ilkeleri yapılandırabilirsiniz. Bu, yalnızca düğümler için internet bağlantısına izin verme, VNet ağ NAT kullanarak düğüm havuzunda pod için kaynak IP 'yi düzeltme ve düğüm havuzları arasındaki trafiği filtrelemek için NSG 'ler kullanma gibi birçok yararlı senaryoyu sağlar.  
+
+* **Kubernetes ağ ilkeleri**: hem Azure ağ ilkeleri hem de Calıco bu yeni çözümle çalışır.  
+
+### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview`Azure CLI 'yı yükler
+
+*Aks-Preview* Azure CLI uzantısına ihtiyacınız olacaktır. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükler. Veya [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir tüm güncelleştirmeleri yükler.
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="register-the-podsubnetpreview-preview-feature"></a>`PodSubnetPreview`Önizleme özelliğini kaydetme
+
+Özelliği kullanmak için `PodSubnetPreview` aboneliğinizdeki Özellik bayrağını da etkinleştirmeniz gerekir.
+
+`PodSubnetPreview`Aşağıdaki örnekte gösterildiği gibi, [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "PodSubnetPreview"
+```
+
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSubnetPreview')].{Name:name,State:properties.state}"
+```
+
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="additional-prerequisites"></a>Ek önkoşullar
+
+Azure CNı için zaten listelenen Önkoşullar hala geçerlidir ancak bazı ek sınırlamalar vardır:
+
+* Yalnızca Linux düğüm kümeleri ve düğüm havuzları desteklenir.
+* AKS altyapısı ve DIY kümeleri desteklenmez.
+
+### <a name="planning-ip-addressing"></a>IP adresini planlama
+
+Bu özellik kullanılırken, planlama çok daha basittir. Düğümler ve düğüm birbirinden bağımsız olarak ölçeklendirildiğinden, adres alanları ayrı olarak da planlanabilecek. Pod alt ağları bir düğüm havuzunun ayrıntı düzeyine yapılandırılabileceğinizden, müşteriler düğüm havuzu eklerken her zaman yeni bir alt ağ ekleyebilirler. Bir küme/düğüm havuzundaki sistem IP 'Leri Pod alt ağından de IP alır, bu nedenle bu davranışın için de hesap oluşturulması gerekir.
+
+K8S Hizmetleri ve Docker Köprüsü için IP planlaması değişmeden kalır.
+
+### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>IP 'lerin ve gelişmiş alt ağ desteğinin dinamik olarak ayrılması ile bir kümede düğüm başına maksimum Pod
+
+IP 'lerin dinamik olarak ayrılması ile Azure CNı kullanılırken düğüm başına düşen düğüm değerleri geleneksel CNı davranışından biraz değişmiş:
+
+|SEÇENEĞIYLE CNı kullanan|Dağıtım yöntemi|Varsayılan|Dağıtımda yapılandırılabilir|
+|--|--| :--: |--|
+|Geleneksel Azure CNı|Azure CLI|30|Evet (250 'e kadar)|
+|IP 'lerin dinamik ayırması ile Azure CNı|Azure CLI|110|Evet (250 'e kadar)|
+
+Pod başına en fazla düğüm yapılandırması ile ilgili diğer tüm rehberlik aynı kalır.
+
+### <a name="additional-deployment-parameters"></a>Ek dağıtım parametreleri
+
+Yukarıda açıklanan dağıtım parametreleri, tek bir özel durumla hala geçerlidir:
+
+* **Alt ağ** parametresi artık kümenin düğümleriyle ilgili alt ağa başvurur.
+* IP adresleri dinamik olarak pods 'ye ayrılabilen alt ağı belirtmek için, bir ek parametre **Pod alt ağı** kullanılır.
+
+### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Ağ iletişimi-CLı 'yı, IP 'lerin ve gelişmiş alt ağ desteğinin dinamik ayırması ile yapılandırma
+
+Kümenizde IP 'lerin dinamik olarak ayrılması ve gelişmiş alt ağ desteğinin kullanılması, bir küme Azure CNı yapılandırma için varsayılan yönteme benzerdir. Aşağıdaki örnek, düğümler için bir alt ağ ile yeni bir sanal ağ oluşturma ve IP 'lerin dinamik olarak ayrılması ve gelişmiş alt ağ desteği içeren Azure CNı kullanan bir küme oluşturmak için İzlenecek yol gösterir. Değişkenlerini kendi değerlerinizle değiştirdiğinizden emin olun `$subscription` :
+
+İlk olarak, sanal ağı iki alt ağ ile oluşturun:
+
+```azurecli-interactive
+$resourceGroup="myResourceGroup"
+$vnet="myVirtualNetwork"
+
+# Create our two subnet network 
+az network vnet create -g $rg --name $vnet --address-prefixes 10.0.0.0/8 -o none 
+az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
+az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
+```
+
+Daha sonra, kullanarak düğüm alt ağına `--vnet-subnet-id` ve pod alt ağını kullanarak bir küme oluşturun `--pod-subnet-id` :
+
+```azurecli-interactive
+$clusterName="myAKSCluster"
+$location="eastus"
+$subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
+
+az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
+```
+
+#### <a name="adding-node-pool"></a>Düğüm havuzu ekleniyor
+
+Düğüm havuzu eklerken, kullanarak düğüm alt ağına `--vnet-subnet-id` ve pod alt ağını başvuru yapın `--pod-subnet-id` . Aşağıdaki örnek, yeni bir düğüm havuzunun oluşturulmasında başvurulan iki yeni alt ağ oluşturur:
+
+```azurecli-interactive
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name pod2subnet --address-prefixes 10.243.0.0/16 -o none 
+
+az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepool --max-pods 250 --node-count 2 --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet --no-wait 
+```
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -157,7 +281,7 @@ Aşağıdaki sorular ve yanıtlar **Azure CNI** ağ yapılandırması için geç
 
 * *Dış sistemler hangi kaynak IP olarak etkindir bir Azure CNı özellikli Pod 'da kaynaklı trafik için bkz?*
 
-  AKS kümesiyle aynı sanal ağdaki sistemler, Pod 'un herhangi bir trafiği için kaynak adresi olarak Pod IP 'si ' ne bakın. AKS kümesi sanal ağı dışındaki sistemler, Pod 'un herhangi bir trafiği için kaynak adresi olarak düğüm IP 'sini inceleyin. 
+  AKS kümesiyle aynı sanal ağdaki sistemler, Pod 'un herhangi bir trafiği için kaynak adresi olarak Pod IP 'si ' ne bakın. AKS kümesi sanal ağı dışındaki sistemler, Pod 'un herhangi bir trafiği için kaynak adresi olarak düğüm IP 'sini inceleyin.
 
 * *Pod başına ağ ilkelerini yapılandırabilir miyim?*
 
@@ -177,28 +301,42 @@ Aşağıdaki sorular ve yanıtlar **Azure CNI** ağ yapılandırması için geç
 
   Önerilmez, ancak bu yapılandırma mümkündür. Hizmet adres aralığı, Kubernetes 'in kümenizdeki iç hizmetlere atadığı bir sanal IP (VIP) kümesidir. Azure ağ Iletişimi, Kubernetes kümesinin hizmet IP aralığında görünürlüğe sahip değildir. Kümenin hizmet adres aralığında görünürlük olmaması nedeniyle, küme sanal ağında hizmet adresi aralığıyla örtüşen yeni bir alt ağ oluşturmak mümkündür. Bu tür bir çakışma oluşursa Kubernetes, bir hizmet için alt ağdaki başka bir kaynak tarafından zaten kullanımda olan bir IP atayabilir ve öngörülemeyen davranışlara veya hatalara neden olur. Kümenin sanal ağı dışında bir adres aralığı kullanmanızı sağlayarak bu çakışma riskini önleyebilirsiniz.
 
-## <a name="next-steps"></a>Sonraki adımlar
+### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>IP adreslerinin dinamik ayırması ve gelişmiş alt ağ desteği SSS
 
-Aşağıdaki makalelerde AKS 'de ağ oluşturma hakkında daha fazla bilgi edinin:
+Aşağıdaki sorular ve yanıtlar, **IP adreslerinin dinamik olarak ayrılması ve gelişmiş alt ağ desteğinin kullanılması sırasında Azure CNI ağ yapılandırması** için geçerlidir.
 
-- [Azure Kubernetes Service (AKS) yük dengeleyicisiyle bir statik IP adresi kullanın](static-ip.md)
-- [Azure Container Service (AKS) ile iç yük dengeleyici kullanma](internal-lb.md)
+* *Bir küme/düğüm havuzuna birden çok Pod alt ağı atayabilir miyim?*
 
-- [Dış ağ bağlantısı ile temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
-- [HTTP uygulama yönlendirme eklentisini etkinleştirin][aks-http-app-routing]
-- [İç, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturun][aks-ingress-internal]
-- [Dinamik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-tls]
-- [Statik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-static-tls]
+  Bir kümeye veya düğüm havuzuna yalnızca bir alt ağ atanabilir. Ancak, birden çok küme veya düğüm havuzu tek bir alt ağ paylaşabilir.
 
-### <a name="aks-engine"></a>AKS Engine
+* *Farklı bir VNet 'ten Pod alt ağlarını tamamen atayabilir miyim?*
+
+  Pod alt ağı, kümeyle aynı VNet 'ten olmalıdır.  
+
+* *Bir kümedeki bazı düğüm havuzlarının geleneksel CNı kullanabilmesi, diğerleri ise yeni CNı kullanıyor mu?*
+
+  Tüm küme yalnızca bir CNı türü kullanmalıdır.
+
+## <a name="aks-engine"></a>AKS Engine
 
 [Azure Kubernetes hizmet altyapısı (AKS motoru)][aks-engine] , Azure 'Da Kubernetes kümelerini dağıtmak için kullanabileceğiniz Azure Resource Manager şablonlar üreten bir açık kaynaklı projem projesidir.
 
 Aks motoru ile oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kubenet] hem de [Azure CNI][cni-networking] eklentilerini destekler. Bu nedenle, her iki ağ senaryosu da AKS altyapısı tarafından desteklenir.
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+Aşağıdaki makalelerde AKS 'de ağ oluşturma hakkında daha fazla bilgi edinin:
+
+* [Azure Kubernetes Service (AKS) yük dengeleyicisiyle bir statik IP adresi kullanın](static-ip.md)
+* [Azure Container Service (AKS) ile iç yük dengeleyici kullanma](internal-lb.md)
+
+* [Dış ağ bağlantısı ile temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
+* [HTTP uygulama yönlendirme eklentisini etkinleştirin][aks-http-app-routing]
+* [İç, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturun][aks-ingress-internal]
+* [Dinamik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-tls]
+* [Statik bir genel IP ile giriş denetleyicisi oluşturun ve otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi yapılandırın][aks-ingress-static-tls]
 <!-- IMAGES -->
-[advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
-[portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
+[Gelişmiş-ağ-diyagram-01]:./Media/Networking-Overview/advanced-networking-diagram-01.png [Portal-01-Networking-Advanced]:./Media/Networking-Overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine
@@ -217,6 +355,11 @@ Aks motoru ile oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kuben
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[az-extension-add]: https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-feature-register]: https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true#az_feature_register
+[az-feature-list]: https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true#az_feature_list
+[az-provider-register]: https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest&preserve-view=true#az_provider_register
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models

@@ -272,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Güncelleştirme uygulama
               href: azure-stack-edge-gpu-install-update.md
+            - name: 'Cihazı sıfırlama, yeniden etkinleştirme'
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: Cihazın iade edilmesi
               href: azure-stack-edge-return-device.md
             - name: Cihazı değiştirme

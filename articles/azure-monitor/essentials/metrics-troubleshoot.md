@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731502"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
@@ -62,7 +62,7 @@ Bazı kaynaklar ölçümlerini sürekli göstermez. Örneğin Azure durdurulan s
 
 Panonuz daha sonra kullanım dışı bırakılan ve Azure'dan kaldırılan bir ölçümle oluşturulduğunda bu hata oluşabilir. Durum olduğunu doğrulamak için kaynağınızın **ölçümler** sekmesini açın ve ölçüm seçicideki kullanılabilir ölçümleri denetleyin. Ölçüm gösterilmiyorsa Azure'dan kaldırılmış demektir. Genellikle bir ölçüm kullanım dışı bırakıldığında kaynak durumuyla ilgili benzer bir perspektif sağlayan yeni ve daha iyi bir ölçüm vardır.
 
-**Çözüm:** Panodaki grafik için alternatif bir ölçüm seçerek başarısız kutucuğu güncelleştirin. [Azure hizmetleri için kullanılabilir ölçümlerin listesini gözden geçirebilirsiniz](../platform/metrics-supported.md).
+**Çözüm:** Panodaki grafik için alternatif bir ölçüm seçerek başarısız kutucuğu güncelleştirin. [Azure hizmetleri için kullanılabilir ölçümlerin listesini gözden geçirebilirsiniz](./metrics-supported.md).
 
 ## <a name="chart-shows-dashed-line"></a>Grafik kesikli çizgi gösteriyor
 
@@ -104,5 +104,5 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
 
 * [Ölçüm Gezgini 'ni kullanmaya başlama hakkında bilgi edinin](metrics-getting-started.md)
 * [Ölçüm Gezgini 'nin gelişmiş özellikleri hakkında bilgi edinin](../essentials/metrics-charts.md)
-* [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](../platform/metrics-supported.md)
+* [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](./metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](../essentials/metric-chart-samples.md)

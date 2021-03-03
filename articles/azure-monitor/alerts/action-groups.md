@@ -3,15 +3,15 @@ title: Azure portalında eylem gruplarını oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 02/25/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8905c3e4dfa1053646ede5c0b62149844e21ee7d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623605"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701170"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -118,6 +118,8 @@ Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](.
 Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
 
 ### <a name="azure-app-push-notifications"></a>Azure Uygulama anında Iletme bildirimleri
+Azure mobil uygulaması yapılandırırken hesap KIMLIĞINIZ olarak kullandığınız e-posta adresini girerek [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/) anında iletme bildirimleri etkinleştirin.
+
 Bir eylem grubunda sınırlı sayıda Azure uygulama eylemi olabilir.
 
 ### <a name="email"></a>E-posta
@@ -139,11 +141,11 @@ Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
 2. Tüm kullanıcılar ' a (sol bölmede) tıklayın, Kullanıcı listesini (sağ bölmede) görürsünüz.
 3. *Birincil e-posta* bilgilerini gözden geçirmek istediğiniz kullanıcıyı seçin.
 
-  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Kullanıcı profilini İnceleme hakkında örnek."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Kullanıcı profilini İnceleme hakkında örnek." border="true":::
 
 4. "E-posta" sekmesi boş ise, Iletişim bilgileri altındaki Kullanıcı profili ' nde, üstteki *Düzenle* düğmesine tıklayın ve *birincil e-postanızı* ekleyin ve en üstteki *Kaydet* düğmesine basın.
 
-  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Birincil e-postanın nasıl ekleneceği hakkında örnek."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Birincil e-postanın nasıl ekleneceği hakkında örnek." border="true":::
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
@@ -153,7 +155,7 @@ Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sını
 Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
 
 ### <a name="itsm"></a>ITSM
-ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](../platform/itsmc-overview.md)oluşturmayı öğrenin.
+ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](./itsmc-overview.md)oluşturmayı öğrenin.
 
 Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir. 
 
@@ -191,7 +193,7 @@ Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (W
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
     
 # This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+$myAzureADApplicationObjectId = "<the Object ID of your Azure AD Application>"
     
 # This is the Action Groups Azure AD AppId
 $actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
@@ -334,7 +336,7 @@ Lütfen kaynak IP adresi aralıkları için [eylem grubu IP adresleri](../app/ip
 ## <a name="next-steps"></a>Sonraki adımlar
 * [SMS uyarı davranışı](./alerts-sms-behavior.md)hakkında daha fazla bilgi edinin.  
 * [Etkinlik günlüğü uyarısı Web kancası şemasının anlaşılmasını](./activity-log-alerts-webhook.md)elde edin.  
-* [ITSM Bağlayıcısı](../platform/itsmc-overview.md)hakkında daha fazla bilgi edinin.
+* [ITSM Bağlayıcısı](./itsmc-overview.md)hakkında daha fazla bilgi edinin.
 * Uyarıların [hız sınırlaması](./alerts-rate-limiting.md) hakkında daha fazla bilgi edinin.
-* [Etkinlik günlüğü uyarılarına genel bir bakış](../platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.  
+* [Etkinlik günlüğü uyarılarına genel bir bakış](./alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.  
 * [Bir hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../service-health/alerts-activity-log-service-notifications-portal.md)öğrenin.

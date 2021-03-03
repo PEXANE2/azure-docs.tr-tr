@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720146"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Öğretici: iç kapak eşlemeleri oluşturmak için Oluşturucu (Önizleme) kullanın
 
@@ -116,6 +116,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
     >[!IMPORTANT]
     > Bu belgedeki API URL 'lerinin, Oluşturucu kaynağınızın konumuna göre ayarlanması gerekebilir. Daha fazla ayrıntı için bkz. [creator hizmetlerine erişim (Önizleme) ](how-to-manage-creator.md#access-to-creator-services).
+    > Kodla ilgili bir hata alırsanız `"RequiresCreatorResource"` , Azure Maps hesabınızda [bir Azure Maps Creator kaynağı](how-to-manage-creator.md) sağladığınızdan emin olun.
 
 3. **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin ve **konum** anahtarını bulun. Dönüştürme isteği için olan **konum** anahtarının değerini kopyalayın `status URL` . Bunu bir sonraki adımda kullanacaksınız.
 
@@ -314,7 +315,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde**, ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki stilleri sağlayın `occupied` `temperature` . İşiniz bittiğinde **Gönder**' e tıklayın.
+3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde**, ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki ham JSON stillerini sağlayın `occupied` `temperature` . İşiniz bittiğinde **Gönder**' e tıklayın.
 
     ```json
     {

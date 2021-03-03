@@ -3,20 +3,20 @@ title: Azure Ilkesini kullanarak AKS Izleme eklentisini etkinleştirme
 description: Azure özel Ilkesi kullanılarak AKS Izleme eklentisini etkinleştirmeyi açıklar.
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713907"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Azure Ilkesini kullanarak AKS izleme eklentisini etkinleştirme
 Bu makalede, Azure özel Ilkesi kullanılarak AKS Izleme eklentisi 'nin nasıl etkinleştirileceği açıklanır. İzleme eklentisi özel Ilkesi, abonelik ya da kaynak grubu kapsamında atanabilir. Azure Log Analytics çalışma alanı ve AKS kümesi farklı aboneliklerdeyse, ilke ataması tarafından kullanılan yönetilen kimliğin hem aboneliklerde hem de en azından Log Analytics çalışma alanının kaynağında gerekli rol izinleri olması gerekir. Benzer şekilde, ilke kaynak grubu kapsamınse, çalışma alanı seçili kaynak grubu kapsamında değilse, yönetilen kimliğin Log Analytics çalışma alanında gerekli rol izinlerine sahip olması gerekir.
 
 İzleme eklentisi, Azure Ilkesi tarafından kullanılan yönetilen kimlik üzerinde aşağıdaki rolleri gerektirir:
 
- - [Azure-Kubernetes-servis katılımcısı-rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [Log Analytics-katkıda bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [Azure-Kubernetes-servis katılımcısı-rol](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [Log Analytics-katkıda bulunan](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Azure portal kullanarak ilke tanımı oluşturma ve atama
 
@@ -79,6 +79,5 @@ Bu makalede, Azure özel Ilkesi kullanılarak AKS Izleme eklentisi 'nin nasıl e
 
 - [Azure ilkesi](../../governance/policy/overview.md)hakkında daha fazla bilgi edinin.
 - [Düzeltme güvenliğinin nasıl çalıştığını](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works)öğrenin.
-- [Kapsayıcılar Için Azure izleyici](../insights/container-insights-overview.md)hakkında daha fazla bilgi edinin.
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'yı yükler.
-
+- [Kapsayıcı öngörüleri](./container-insights-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure CLI](/cli/azure/install-azure-cli)'yı yükler.

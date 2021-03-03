@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391465"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686691"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
+Bu makalede, Azure Arc etkin veri Hizmetleri için kısa süre önce yayınlanan veya geliştirilmiş özellikleri, özellikleri ve geliştirmeleri vurgular. 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="new-capabilities-and-features"></a>Yeni özellikler ve Özellikler
+
+Azure Data CLı ( `azdata` ) sürüm numarası: 20.3.1. Adresinden indirin [https://aka.ms/azdata](https://aka.ms/azdata) . `azdata` [Azure Data CLI ( `azdata` ) uygulamasını yükleyebilirsiniz](/sql/azdata/install/deploy-install-azdata).
+
+Ek güncelleştirmeler şunlardır:
+
+- Azure Arc özellikli SQL Yönetilen Örneği
+   - Always on kullanılabilirlik grupları ile yüksek kullanılabilirlik
+
+- Azure yay etkin PostgreSQL hiper ölçek Azure Data Studio: 
+   - Genel Bakış sayfası artık düğüm başına listelenen sunucu grubunun durumunu gösterir
+   - Yeni bir Özellikler sayfası artık sunucu grubuyla ilgili daha fazla ayrıntı göstermek için kullanılabilir
+   - **Düğüm parametreleri** sayfasından Postgres motoru parametrelerini yapılandırma
+
+Bu sürümle ilişkili sorunlar için bkz. [bilinen sorunlar-Azure Arc etkin veri Hizmetleri (Önizleme)](known-issues.md)
 
 ## <a name="january-2021"></a>Ocak 2021
 
 ### <a name="new-capabilities-and-features"></a>Yeni özellikler ve Özellikler
 
 Azure Data CLı ( `azdata` ) sürüm numarası: 20.3.0. Adresinden indirin [https://aka.ms/azdata](https://aka.ms/azdata) . `azdata` [Azure Data CLI ( `azdata` ) uygulamasını yükleyebilirsiniz](/sql/azdata/install/deploy-install-azdata).
-
 
 Ek güncelleştirmeler şunlardır:
 - Yerelleştirilmiş Portal 17 yeni dil için kullanılabilir

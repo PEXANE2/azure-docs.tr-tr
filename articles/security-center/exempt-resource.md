@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756781"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709385"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Güvenli puanınızdan kaynakları ve önerileri muaf tutma 
 
@@ -110,9 +110,9 @@ Bu sayfada daha önce anlatıldığı gibi istisna kuralları, aboneliklerinizde
 
 Kullanıcılarınızın bu yeteneği nasıl kullandığını izlemek için, bir istisna oluşturulduğunda size bildirimde bulunan bir Logic App PlayBook 'u ve gerekli tüm API bağlantılarını dağıtan bir Azure Resource Manager (ARM) şablonu oluşturduk.
 
-- PlayBook hakkında daha fazla bilgi edinmek için bkz. [Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) bu gönderi
+- PlayBook hakkında daha fazla bilgi edinmek için bkz. Tech Community blog gönderisi [Azure Güvenlik Merkezi 'Nde kaynak muafiyetlerini izleme](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - ARM şablonunu [Azure Güvenlik Merkezi GitHub deposunda](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption) bulacaksınız
-- Gerekli tüm bileşenleri dağıtmak için [buraya](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) tıklayabilirsiniz 
+- Tüm gerekli bileşenleri dağıtmak için [Bu otomatik işlemi kullanın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Azure Kaynak Grafını kullanarak muafiyetle öneriler bulma

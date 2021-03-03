@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691935"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, müşterilerin SQL veritabanı 'NıN hangi TLS sürümünü kullandığını seçmesine olanak sağlar.
 
-Şu anda TLS 1.0, 1.1 ve 1.2’yi destekliyoruz. En düşük TLS sürümünü ayarlamak, daha yeni TLS sürümlerinin desteklendiğinden emin olmanızı sağlar. Örneğin 1.1’den büyük bir TLS sürümü seçmek, yalnızca TLS 1.1 ve 1.2 ile bağlantıların kabul edileceği ve TLS 1.0 ile bağlantıların reddedileceği anlamına gelir. Uygulamalarınızın desteklediğini test edip onayladıktan sonra, en düşük TLS sürümü olarak 1.2’yi ayarlamanızı öneririz. Bu sürüm önceki sürümlerdeki güvenlik açıklarının düzeltmelerini içerir ve Azure SQL Veritabanı’nda desteklenen en yüksek TLS sürümüdür.
+Şu anda TLS 1.0, 1.1 ve 1.2’yi destekliyoruz. En düşük TLS sürümünü ayarlamak, daha yeni TLS sürümlerinin desteklendiğinden emin olmanızı sağlar. Örneğin, TLS sürüm 1,1 seçilmesi yalnızca TLS 1,1 ve 1,2 ile bağlantı kabul edilir ve TLS 1,0 ile kurulan bağlantılar reddedilir. Uygulamalarınızın desteklediğini test edip onayladıktan sonra, en düşük TLS sürümü olarak 1.2’yi ayarlamanızı öneririz. Bu sürüm önceki sürümlerdeki güvenlik açıklarının düzeltmelerini içerir ve Azure SQL Veritabanı’nda desteklenen en yüksek TLS sürümüdür.
 
 > [!IMPORTANT]
 > En az TLS sürümü için varsayılan değer tüm sürümlere izin verdir. Bir TLS sürümünü zorladıktan sonra, varsayılana dönmek mümkün değildir.

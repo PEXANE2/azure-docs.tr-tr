@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Öğretici: SAP Fiori ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -146,7 +146,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![meta veri dosyası seçin](common/browse-upload-metadata.png)
 
-    c. Meta veri dosyası başarıyla karşıya yüklendiğinde, **tanımlayıcı** ve **yanıt URL 'SI** değerleri **temel SAML yapılandırması** bölmesine otomatik olarak doldurulur. **Oturum açma URL 'si** kutusunda, aşağıdaki düzene sahıp bir URL girin: `https:\//\<your company instance of SAP Fiori\>` .
+    c. Meta veri dosyası başarıyla karşıya yüklendiğinde, **tanımlayıcı** ve **yanıt URL 'SI** değerleri **temel SAML yapılandırması** bölmesine otomatik olarak doldurulur. **Oturum açma URL 'si** kutusunda, aşağıdaki düzene sahıp bir URL girin: `https://<your company instance of SAP Fiori>` .
 
     > [!NOTE]
     > Bazı müşteriler yanlış yapılandırılmış **yanıt URL** değerleriyle ilgili hataları raporlar. Bu hatayı görürseniz, örneğiniz için doğru yanıt URL 'sini ayarlamak için aşağıdaki PowerShell betiğini kullanabilirsiniz:
@@ -247,11 +247,11 @@ Bu bölümde, SAP Fiori 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![SAP 'de kimlik doğrulama gereksinimleri seçenekleri ve son seçeneği](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. **Güvenilen sağlayıcı**  >  **kimliği Federasyonu** (sayfanın alt kısmında) seçeneğini belirleyin. **Düzenle**’yi seçin.
+1. **Güvenilen sağlayıcı**  >  **kimliği Federasyonu** (sayfanın alt kısmında) seçeneğini belirleyin. **Düzenle**'yi seçin.
 
     ![SAP 'deki güvenilen sağlayıcı ve Kimlik Federasyonu sekmeleri](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Kimlik Federasyonu sekmesindeki Ekle seçeneği](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 

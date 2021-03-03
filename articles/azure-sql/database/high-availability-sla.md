@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690592"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Genel amaçlı hizmet katmanının bölge yedekli yapılandırması, [](../../av
 
 Genel amaçlı katmanın bölge yedekli yapılandırması iki katmana sahiptir:  
 
-- ZRS PFS 'de depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı (bölgesel olarak yedekli [depolama Premium dosya paylaşımında](../../storage/files/storage-how-to-create-premium-fileshare.md)). Bölgesel olarak [yedekli depolamayı](../../storage/common/storage-redundancy.md) kullanarak, veri ve günlük dosyaları, fiziksel olarak yalıtılmış üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak kopyalanır.
+- ZRS PFS 'de depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı (bölgesel olarak yedekli [depolama Premium dosya paylaşımında](../../storage/files/storage-how-to-create-file-share.md)). Bölgesel olarak [yedekli depolamayı](../../storage/common/storage-redundancy.md) kullanarak, veri ve günlük dosyaları, fiziksel olarak yalıtılmış üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak kopyalanır.
 - sqlservr.exe sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, sqlservr.exe Başlatan, düğümün sistem durumunu denetleyen ve gerekirse başka bir düğüme yük devretme gerçekleştiren Azure Service Fabric tarafından çalıştırılır. Bölgesel olarak yedekli genel amaçlı veritabanlarında, yedek kapasiteye sahip düğümler diğer Kullanılabilirlik Alanları yük devretme için kullanıma hazırdır.
 
 Genel amaçlı hizmet katmanı için yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagramda gösterilmiştir:

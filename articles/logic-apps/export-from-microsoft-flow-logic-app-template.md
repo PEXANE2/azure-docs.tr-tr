@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699105"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
-> 2020 Ekim 'den sonra oluşturulan akışlar için artık Power otomatikleştirmede dışa ve dağıtım Azure Logic Apps.
-
 Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [Power otomatikleştirmede](https://flow.microsoft.com) [Azure Logic Apps](../logic-apps/logic-apps-overview.md)geçirebilirsiniz. Akışınızı bir mantıksal uygulama için bir Azure Resource Manager şablonu olarak dışa aktarabilir, bu mantıksal uygulama şablonunu bir Azure Kaynak grubuna dağıtabilir ve ardından mantıksal uygulama tasarımcısında bu mantıksal uygulamayı açabilirsiniz.
 
-> [!NOTE]
-> Azure Logic Apps ' de tüm güç otomatikleştirme bağlayıcıları kullanılamaz. Yalnızca Azure Logic Apps içindeki eşit bağlayıcılara sahip güç otomatikleştirme akışlarını geçirebilirsiniz. Örneğin, düğme tetikleyicisi, onay Bağlayıcısı ve bildirim Bağlayıcısı, Power otomatikleştirmek için özeldir. Şu anda, mantıksal uygulama şablonları olarak dışa aktarma ve dağıtım için Power otomatikleştirmede OpenAPI tabanlı akışlar desteklenmez.
->
-> * Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
->
-> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](/connectors/connector-reference/connector-reference-logicapps-connectors).
+> [!IMPORTANT]
+> Logic Apps 'e aktarma, 2020 Ağustos 'Tan sonra oluşturulan güç Otomasyonu akışları için kullanılamaz. 2020 Ekim 'de Power, [Openapı 2,0 protokolünde](https://swagger.io/specification/v2/)standart yeni akış oluşturmayı otomatikleştirin. Bu protokole dayanan yeni akışlar Logic Apps iş akışlarıyla uyumsuzdur, bu nedenle bu akışların Logic Apps dışarı aktarılması devre dışı bırakıldı. Bunun yerine, bu akışlar için [mantıksal uygulamaları](quickstart-create-first-logic-app-workflow.md) el ile oluşturmanız gerekir.
+
+Azure Logic Apps ' de tüm güç otomatikleştirme bağlayıcıları kullanılamaz. Yalnızca Azure Logic Apps içindeki eşit bağlayıcılara sahip güç otomatikleştirme akışlarını geçirebilirsiniz. Örneğin, düğme tetikleyicisi, onay Bağlayıcısı ve bildirim Bağlayıcısı, Power otomatikleştirmek için özeldir. 
+
+* Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
+
+* Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * Power otomatikleştirmede dışarı aktarmak istediğiniz akış
 
@@ -78,7 +78,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
       | <*bağlantı adı*> | Mantıksal uygulamanın yeniden kullanabilmesi için önceden oluşturulmuş herhangi bir bağlantı için bir veya daha fazla ad <p><p>**Note**: Bu mantıksal uygulama ilk kez ise, tüm bağlantılar yeni olarak oluşturulur, böylece varsayılan adları kabul edebilirsiniz. Aksi takdirde, daha önce oluşturulan bağlantıların adlarını belirtebilirsiniz. Bu, birden çok Logic Apps genelinde kullanabileceğiniz bir ad olabilir. |
       |||
 
-      Örneğin:
+      Örnek:
 
       ![Şablon için giriş parametrelerini belirtin](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -158,7 +158,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Dağıtım parametrelerini Düzenle](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örneğin:
+   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örnek:
 
    ![Çıktı penceresi](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

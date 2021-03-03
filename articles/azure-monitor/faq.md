@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6840abe507543c4e03448401f091b6caa0a466c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717460"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -54,7 +54,7 @@ Aracıların ve diğer dış kaynakların Azure Izleyici 'ye erişmesi için ger
 Azure Izleyici, Azure platformu ve kaynakları, özel uygulamalar ve sanal makinelerde çalışan aracılardan Günlükler ve ölçümler de dahil olmak üzere çeşitli kaynaklardan veri toplar. Azure Güvenlik Merkezi ve ağ Izleyicisi gibi diğer hizmetler, Azure Izleyici verileriyle çözümlenebilmesi için bir Log Analytics çalışma alanına veri toplar. Günlükler veya ölçümler için REST API kullanarak Azure Izleyici 'ye özel veriler de gönderebilirsiniz. Bkz. [Azure izleyici için izleme verileri kaynakları](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Azure Izleyici hangi verileri toplamıştır? 
-Azure Izleyici çeşitli kaynaklardaki verileri [Günlükler](logs/data-platform-logs.md) veya [ölçümler](essentials/data-platform-metrics.md)halinde toplar. Her bir veri türü kendi göreli avantajlarına sahiptir ve her biri Azure Izleyici 'de belirli bir özellik kümesini destekler. Her bir Azure aboneliği için tek bir ölçüm veritabanı bulunur, ancak gereksinimlerinize bağlı olarak günlükleri toplamak için birden çok Log Analytics çalışma alanı oluşturabilirsiniz. Bkz. [Azure izleyici veri platformu](/data-platform.md).
+Azure Izleyici çeşitli kaynaklardaki verileri [Günlükler](logs/data-platform-logs.md) veya [ölçümler](essentials/data-platform-metrics.md)halinde toplar. Her bir veri türü kendi göreli avantajlarına sahiptir ve her biri Azure Izleyici 'de belirli bir özellik kümesini destekler. Her bir Azure aboneliği için tek bir ölçüm veritabanı bulunur, ancak gereksinimlerinize bağlı olarak günlükleri toplamak için birden çok Log Analytics çalışma alanı oluşturabilirsiniz. Bkz. [Azure izleyici veri platformu](data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Azure Izleyici 'de toplayadığım maksimum veri miktarı var mı?
 Toplayacağınız Ölçüm verisi miktarına yönelik bir sınır yoktur, ancak bu veriler en fazla 93 gün boyunca depolanır. [Ölçüm bekletme](essentials/data-platform-metrics.md#retention-of-metrics)konusuna bakın. Toplayacağınız günlük verisi miktarı için bir sınır yoktur, ancak Log Analytics çalışma alanı için seçtiğiniz fiyatlandırma katmanından etkilenebilir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/monitor/)bakın.
@@ -86,7 +86,7 @@ p
 Veriler, [bekletme dönemine](logs/manage-cost-storage.md#change-the-data-retention-period)göre çalışma alanından kaldırılır. Gizlilik veya uyumluluk nedenleriyle belirli verileri silebilirsiniz. Daha fazla bilgi için bkz. [özel verileri dışarı ve silme](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
 ### <a name="is-log-analytics-storage-immutable"></a>Log Analytics depolama alanı sabit mi?
-Veritabanı depolamadaki veriler bir kez alındıktan sonra değiştirilemez, ancak [özel verileri silmek için *Temizleme* API 'si](platform/personal-data-mgmt.md#delete)yoluyla silinebilirler. Veriler değiştirilemeyeceği halde, bazı sertifikalar verilerin sabit tutulmasını gerektirir ve depolamada değiştirilemez veya silinemez. Veri imlebilirlik, [Sabit depolama](../storage/blobs/storage-blob-immutability-policies-manage.md)olarak yapılandırılmış bir depolama hesabına [veri aktarma](platform/logs-data-export.md) kullanılarak sağlanabilir.
+Veritabanı depolamadaki veriler bir kez alındıktan sonra değiştirilemez, ancak [özel verileri silmek için *Temizleme* API 'si](./logs/personal-data-mgmt.md#delete)yoluyla silinebilirler. Veriler değiştirilemeyeceği halde, bazı sertifikalar verilerin sabit tutulmasını gerektirir ve depolamada değiştirilemez veya silinemez. Veri imlebilirlik, [Sabit depolama](../storage/blobs/storage-blob-immutability-policies-manage.md)olarak yapılandırılmış bir depolama hesabına [veri aktarma](./logs/logs-data-export.md) kullanılarak sağlanabilir.
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Log Analytics çalışma alanı nedir?
 Azure Izleyici tarafından toplanan tüm günlük verileri Log Analytics çalışma alanında depolanır. Çalışma alanı aslında çeşitli kaynaklardan günlük verilerinin toplandığı bir kapsayıcıdır. Tüm izleme verileriniz için tek bir Log Analytics çalışma alanınız olabilir veya birden çok çalışma alanı için gereksinimlere sahip olabilirsiniz. Bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](logs/design-logs-deployment.md).
@@ -607,7 +607,7 @@ Opentelemetri toplayıcısı, [GitHub Benioku](https://github.com/open-telemetry
 [Opencensus](https://opencensus.io/) , [opentelemetri](https://opentelemetry.io/)için precurcursor. Microsoft, dünya için tek bir Observability standardı olan Opentelemetri oluşturmak için [Opentracing](https://opentracing.io/) ve OpenCensus 'i birlikte getirmeye yardımcı oldu. Azure Izleyici 'nin geçerli [üretimi-önerilen Python SDK 'sı](app/opencensus-python.md) , OpenCensus 'a dayalıdır, ancak sonunda tüm Azure Izleyicisinin SDK 'Ları opentelemetri temelinde olacaktır.
 
 
-## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
+## <a name="container-insights"></a>Kapsayıcı öngörüleri
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Düğüm görünümü altında *diğer süreçler* ne gösterir?
 
@@ -676,11 +676,11 @@ Her kapsayıcı günlük satırı için bu özellikler için koleksiyonu yeniden
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana ' de toplanan ölçümleri görüntüleyebilir miyim?
 
-Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
+Kapsayıcı öngörüleri, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>AKS-Engine kümenizi kapsayıcılar için Azure Izleyici ile izleyebilir miyim?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>AKS-Engine kümenizi kapsayıcı öngörüleri ile izleyebilir miyim?
 
-Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan AKS-Engine (eski adıyla ACS-Engine) kümeleri için dağıtılan kapsayıcı iş yüklerini izlemeyi destekler. Bu senaryoya yönelik izlemeyi etkinleştirmek için gereken adımlara ilişkin daha fazla bilgi ve bir genel bakış için bkz. [AKS-Engine için kapsayıcılar Için Azure Izleyicisini kullanma](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+Kapsayıcı öngörüleri, Azure 'da barındırılan AKS-Engine (eski adıyla ACS-Engine) kümeleri için dağıtılan kapsayıcı iş yüklerini izlemeyi destekler. Bu senaryoya yönelik izlemeyi etkinleştirmek için gereken adımlara ilişkin daha fazla bilgi ve bir genel bakış için bkz. [AKS-Engine Için kapsayıcı öngörülerini kullanma](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Neden Log Analytics çalışma alanım 'da veri görmüyorum?
 
@@ -696,11 +696,11 @@ Containerınventory tablosu, hem durdurulan hem de çalışan kapsayıcılar hak
 
 ### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Kubernetes RBAC etkinleştirilmiş AKS kümeleri için destek var mı?
 
-Kapsayıcı Izleme çözümü Kubernetes RBAC 'yi desteklemez, ancak kapsayıcılar için Azure Izleyici ile desteklenir. Çözüm ayrıntıları sayfası, bu kümelerin verilerini gösteren dikey pencerelerde doğru bilgileri göstermez.
+Kapsayıcı Izleme çözümü, Kubernetes RBAC 'yi desteklemez, ancak kapsayıcı öngörüleri ile desteklenir. Çözüm ayrıntıları sayfası, bu kümelerin verilerini gösteren dikey pencerelerde doğru bilgileri göstermez.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Nasıl yaparım?, KUIN-System ad alanındaki kapsayıcılar için günlük toplamayı Held aracılığıyla etkinleştirmek istiyor musunuz?
 
-Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan olarak devre dışıdır. Omsagent üzerinde bir ortam değişkeni ayarlanarak günlük toplama etkinleştirilebilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici](https://aka.ms/azuremonitor-containers-helm-chart) GitHub sayfası. 
+Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan olarak devre dışıdır. Omsagent üzerinde bir ortam değişkeni ayarlanarak günlük toplama etkinleştirilebilir. Daha fazla bilgi için bkz. [kapsayıcı öngörüleri](https://aka.ms/azuremonitor-containers-helm-chart) GitHub sayfası. 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Omsagent 'ı yayınlanan en son sürüme güncelleştirmek Nasıl yaparım? mı?
 
@@ -708,7 +708,7 @@ Aracıyı yükseltmeyi öğrenmek için bkz. [Aracı yönetimi](containers/conta
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Çok satırlı günlüğe kaydetme etkinleştirilsin mi Nasıl yaparım??
 
-Şu anda kapsayıcılar için Azure Izleyici çok satırlı günlüğe kaydetmeyi desteklemez, ancak kullanılabilir geçici çözümler vardır. Tüm hizmetleri JSON biçiminde yazacak şekilde yapılandırabilir ve ardından Docker/Moby, bunları tek bir satır olarak yazar.
+Şu anda kapsayıcı öngörüleri çok satırlı günlüğü desteklemez, ancak kullanılabilir geçici çözümler vardır. Tüm hizmetleri JSON biçiminde yazacak şekilde yapılandırabilir ve ardından Docker/Moby, bunları tek bir satır olarak yazar.
 
 Örneğin, bir örnek node.js uygulaması için aşağıdaki örnekte gösterildiği gibi, günlüğlerinizi bir JSON nesnesi olarak kaydırabilirsiniz:
 
@@ -732,30 +732,30 @@ Soruna ilişkin ayrıntılı bir bakış için aşağıdaki [GitHub bağlantıs�
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Canlı günlükleri etkinleştirdiğimde Azure AD hatalarını Nasıl yaparım? çözün misiniz? 
 
-Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' <uygulama kimliği \> '**. Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı verilerinin gerçek zamanlı olarak nasıl görüntüleneceği](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
+Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' <uygulama kimliği \> '**. Çözümü çözecek çözüm, Container [Insights ile gerçek zamanlı olarak kapsayıcı verilerini görüntüleme](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Ekleme işleminden sonra kümeyi neden yükseltemiyorum?
 
-Bir AKS kümesi için Azure Izleyicisini etkinleştirdikten sonra, kümenin verilerini gönderdiği Log Analytics çalışma alanını sildiğinizde, kümeyi yükseltmeye çalışırken başarısız olur. Bu sorunu geçici olarak çözmek için, izlemeyi devre dışı bırakmanız ve ardından aboneliğinizdeki farklı bir geçerli çalışma alanına başvuruda bulunan yeniden etkinleştirmeniz gerekir. Küme yükseltmesini yeniden gerçekleştirmeye çalıştığınızda, başarıyla işlemeli ve tamamlanmalıdır.  
+Bir AKS kümesi için kapsayıcı öngörüleri etkinleştirdikten sonra, kümeyi yükseltmeye çalışırken kümenin verilerini gönderdiği Log Analytics çalışma alanını silersiniz. Bu sorunu geçici olarak çözmek için, izlemeyi devre dışı bırakmanız ve ardından aboneliğinizdeki farklı bir geçerli çalışma alanına başvuruda bulunan yeniden etkinleştirmeniz gerekir. Küme yükseltmesini yeniden gerçekleştirmeye çalıştığınızda, başarıyla işlemeli ve tamamlanmalıdır.  
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Aracı için hangi bağlantı noktalarına ve etki alanlarına açık/izin vermem gerekir?
 
 Azure, Azure ABD kamu ve Azure Çin 21Vianet bulutları ile Kapsayıcılı aracı için gereken ara sunucu ve güvenlik duvarı yapılandırma bilgileri için [ağ güvenlik duvarı gereksinimlerine](containers/container-insights-onboard.md#network-firewall-requirements) bakın.
 
 
-## <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
+## <a name="vm-insights"></a>VM öngörüleri
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Mevcut bir çalışma alanına ekleyebilir miyim?
-Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, VM'ler için Azure İzleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz, ancak [desteklenen bölgelerden](vm/vminsights-configure-workspace.md#supported-regions)birinde bulunur.
+Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlı ise, bu çalışma alanını [desteklenen bölgelerden](vm/vminsights-configure-workspace.md#supported-regions)bırınde olan VM öngörülerine ekleme sırasında kullanmaya devam edebilirsiniz.
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Yeni bir çalışma alanına ekleyebilir miyim? 
-VM 'niz Şu anda mevcut bir Log Analytics çalışma alanına bağlı değilse, verilerinizi depolamak için yeni bir çalışma alanı oluşturmanız gerekir. Azure portal üzerinden VM'ler için Azure İzleyici için tek bir Azure VM yapılandırırsanız, yeni bir varsayılan çalışma alanı oluşturma otomatik olarak yapılır.
+VM 'niz Şu anda mevcut bir Log Analytics çalışma alanına bağlı değilse, verilerinizi depolamak için yeni bir çalışma alanı oluşturmanız gerekir. Azure portal aracılığıyla VM öngörüleri için tek bir Azure VM yapılandırırsanız, yeni bir varsayılan çalışma alanı oluşturma otomatik olarak yapılır.
 
-Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak VM'ler için Azure izleyici etkinleştir](./vm/vminsights-enable-powershell.md) makalesinde ele alınmıştır. 
+Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak VM öngörülerini etkinleştirme](./vm/vminsights-enable-powershell.md) makalesinde ele alınmıştır. 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM 'im mevcut bir çalışma alanına zaten bildirildiğimde ne yapmam gerekiyor?
-Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM'ler için Azure İzleyici önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM'ler için Azure İzleyici içine yükleyemezsiniz.  Ek bölgeleri desteklemek için etkin bir şekilde çalışıyoruz.
+Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Bu çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM öngörülerini önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM öngörülerine yükleyemezsiniz.  Ek bölgeleri desteklemek için etkin bir şekilde çalışıyoruz.
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Sanal makinem neden eklenemedi?
@@ -763,7 +763,7 @@ Azure portal bir Azure VM 'si eklenirken aşağıdaki adımlar oluşur:
 
 * Bu seçenek işaretliyse, varsayılan bir Log Analytics çalışma alanı oluşturulur.
 * Log Analytics Aracısı, gerekli olduğunu tespit ederseniz bir VM uzantısı kullanılarak Azure VM 'lerine yüklenir.  
-* VM'ler için Azure İzleyici Map bağımlılık Aracısı, gerekli olduğunu tespit ederseniz bir uzantı kullanılarak Azure VM 'lerine yüklenir. 
+* VM öngörüleri eşleme bağımlılığı Aracısı, gerekli olduğunu tespit ederseniz bir uzantı kullanılarak Azure VM 'lerine yüklenir. 
 
 Ekleme işlemi sırasında, portalda size bir bildirim durumu döndürmek için yukarıdaki her bir durumu denetliyoruz. Çalışma alanının yapılandırması ve aracı yüklemesi genellikle 5 ila 10 dakika sürer. Portalda izleme verilerini görüntülemek için 5 ila 10 dakika sürer.  
 
@@ -776,10 +776,10 @@ Performans Grafiklerimiz, *ınsightsölçümlerini* tablosunda depolanan veriler
 Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](./vm/vminsights-enable-powershell.md)çalıştırın.
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>VM'ler için Azure İzleyici eşleme özelliği Hizmet Eşlemesi nasıl farklıdır?
-VM'ler için Azure İzleyici Map özelliği Hizmet Eşlemesi tabanlıdır, ancak aşağıdaki farklılıklara sahiptir:
+### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>VM öngörüleri eşleme özelliği Hizmet Eşlemesi 'den farklı?
+VM öngörüleri eşleme özelliği Hizmet Eşlemesi tabanlıdır, ancak aşağıdaki farklılıklara sahiptir:
 
-* Harita görünümüne VM dikey penceresinden ve Azure Izleyici altındaki VM'ler için Azure İzleyici erişilebilir.
+* Harita görünümüne VM dikey penceresinden ve Azure Izleyici altındaki VM öngörülerine erişilebilir.
 * Haritadaki bağlantılar artık tıklatılabilir ve seçili bağlantı için yan bölmede bağlantı ölçüm verilerinin bir görünümünü görüntüler.
 * Daha karmaşık haritaları daha iyi destekleyecek şekilde eşlemeler oluşturmak için kullanılan yeni bir API vardır.
 * İzlenen VM 'Ler artık istemci grubu düğümüne dahildir ve halka grafik gruptaki izlenen ve izlenmeyen sanal makinelerin oranını gösterir.  Grup genişletildiğinde makine listesini filtrelemek için de kullanılabilir.
@@ -787,19 +787,19 @@ VM'ler için Azure İzleyici Map özelliği Hizmet Eşlemesi tabanlıdır, ancak
 * Harita stili, Application Insights 'tan uygulama haritası ile daha tutarlı olacak şekilde güncelleştirilmiştir.
 * Yan paneller güncelleştirilmiştir ve Hizmet Eşlemesi-Güncelleştirme Yönetimi, Değişiklik İzleme, güvenlik ve hizmet masası 'nda desteklenen tam tümleştirme kümesine sahip değildir. 
 * Eşlenecek grupları ve makineleri seçme seçeneği güncelleştirildi ve artık abonelikleri, kaynak gruplarını, Azure sanal makine ölçek kümelerini ve bulut hizmetlerini desteklemektedir.
-* VM'ler için Azure İzleyici Map özelliğinde yeni Hizmet Eşlemesi makine grupları oluşturamazsınız.  
+* VM öngörüleri eşleme özelliğinde yeni Hizmet Eşlemesi makine grupları oluşturamazsınız.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Performans grafiklerim neden noktalı çizgiler gösteriyor?
 Bu, birkaç nedenden dolayı oluşabilir.  Veri koleksiyonunda bir boşluk olduğu durumlarda, satırları noktalı olarak belirledik.  Performans sayaçları etkin için veri örnekleme sıklığını değiştirdiyseniz (varsayılan ayar, her 60 saniyede bir veri toplamaktır), grafik için bir dar zaman aralığı seçerseniz ve örnekleme sıklığınızdan grafik için kullanılan demet boyutundan daha az olduğunda (örneğin, örnekleme sıklığı 10 dakikada bir ve grafikteki her demet 5 dakika olduğunda) grafikte noktalı çizgileri görebilirsiniz.  Görüntülenecek daha geniş bir zaman aralığı seçilmesi, grafik çizgilerinin bu durumda nokta yerine düz çizgiler olarak görünmesine neden olmalıdır.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Gruplar VM'ler için Azure İzleyici destekleniyor mu?
+### <a name="are-groups-supported-with-vm-insights"></a>Gruplar VM öngörüleri ile destekleniyor mu?
 Evet, bağımlılık aracısını yükledikten sonra abonelikleri, kaynak grubunu, sanal makine ölçek kümelerini ve bulut hizmetlerini temel alan grupları göstermek için VM 'lerden bilgi topladık.  Hizmet Eşlemesi kullanıyorsanız ve makine grupları oluşturduysanız, bunlar da görüntülenir.  Siz görüntülemekte olduğunuz çalışma alanı için oluşturduysanız, bilgisayar grupları gruplar filtresinde da görünür. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Nasıl yaparım? toplam Performans grafiklerinde 95. yüzdebirlik satırını neyin yönlendirdiğini görmek için ayrıntılara bakın.
 Varsayılan olarak, liste, en düşük 5 ' lik değere sahip makineleri gösteren kullanılabilir bellek grafiği dışında, seçili ölçüm için en yüksek 95. yüzdebirlik değerini içeren VM 'Leri gösterecek şekilde sıralanır.  Grafiğe tıklandığında, uygun ölçüm seçili olan **Ilk N liste**  görünümü açılır.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Harita özelliği farklı VNET 'lerde ve alt ağlarda yinelenen IP 'Leri nasıl işler?
-IP aralıklarını VM 'Ler veya alt ağlar ve sanal makine ölçek kümeleri arasında çoğaltdıysanız, VM'ler için Azure İzleyici eşlemenin yanlış bilgileri görüntülemesine neden olabilir. Bu bilinen bir sorundur ve bu deneyimi geliştirme seçeneklerini araştırıyoruz.
+IP aralıklarını VM 'Ler veya alt ağlar ve sanal makine ölçek kümeleri arasında çoğaltdıysanız, VM Öngörüler Haritalarınızın yanlış bilgileri görüntülemesine neden olabilir. Bu bilinen bir sorundur ve bu deneyimi geliştirme seçeneklerini araştırıyoruz.
 
 ### <a name="does-map-feature-support-ipv6"></a>Harita özelliği IPv6 'Yı destekliyor mu?
 Map özelliği şu anda yalnızca IPv4 'Ü destekliyor ve IPv6 desteğini araştırıyoruz. IPv6 içinde tünel oluşturulan IPv4 de destekliyoruz.
@@ -809,7 +809,7 @@ Büyük ve karmaşık yapılandırmaların işlenmesi amacıyla haritada gelişt
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Performans sekmesindeki ağ grafiği neden Azure VM 'ye Genel Bakış sayfasındaki ağ grafiğinden farklı görünüyor?
 
-Bir Azure VM 'ye ilişkin genel bakış sayfası, konağın Konuk VM 'deki etkinlik ölçüsünün bulunduğu grafikleri görüntüler.  Azure VM 'de ağ grafiğine genel bakış için yalnızca faturalandırılacak ağ trafiği görüntülenir.  Bu, sanal ağlar arası trafiği içermez.  VM'ler için Azure İzleyici için gösterilen veriler ve grafikler, Konuk VM 'deki verileri temel alır ve ağ grafiği, sanal ağlar dahil olmak üzere bu VM 'ye gelen ve giden tüm TCP/IP trafiğini görüntüler.
+Bir Azure VM 'ye ilişkin genel bakış sayfası, konağın Konuk VM 'deki etkinlik ölçüsünün bulunduğu grafikleri görüntüler.  Azure VM 'de ağ grafiğine genel bakış için yalnızca faturalandırılacak ağ trafiği görüntülenir.  Bu, sanal ağlar arası trafiği içermez.  VM öngörüleri için gösterilen veriler ve grafikler, Konuk VM 'deki verileri temel alır ve ağ grafiği, sanal ağlar dahil olmak üzere bu VM 'ye gelen ve giden tüm TCP/IP trafiğini görüntüler.
 
 ### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Yanıt süresi, VMConnection 'da depolanan ve bağlantı panelinde ve çalışma kitaplarında görüntülenmekte olan veriler için nasıl ölçülür?
 
@@ -818,9 +818,9 @@ Yanıt süresi yaklaşık bir değer. Uygulamanın kodunu işaretlemediğimiz i�
 Bu yaklaşık, istek/yanıt tabanlı protokollerde iyi sonuç verir: tek bir istek bağlantı üzerinde geçer ve tek bir yanıt ulaşır. Bu, HTTP (S) için (ardışık düzen olmadan), ancak diğer protokollerin karşılanmadığı durumdur.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics ücretsiz fiyatlandırma plansın varsa sınırlamalar var mı?
-*Ücretsiz* fiyatlandırma katmanını kullanarak Azure izleyici 'yi bir Log Analytics çalışma alanıyla yapılandırdıysanız, VM'ler için Azure izleyici eşleme özelliği yalnızca çalışma alanına bağlı beş bağlı makineyi destekler. Ücretsiz bir çalışma alanına bağlı beş VM varsa, VM 'lerden birinin bağlantısını kesip daha sonra yeni bir VM 'yi bağladığınızda yeni VM izlenmiyor ve harita sayfasında yansıtılmaz.  
+*Ücretsiz* fiyatlandırma katmanını kullanarak Azure izleyici 'yi bir Log Analytics çalışma alanıyla YAPıLANDıRDıYSANıZ, VM öngörüleri eşleme özelliği yalnızca çalışma alanına bağlı beş bağlı makineyi destekleyecektir. Ücretsiz bir çalışma alanına bağlı beş VM varsa, VM 'lerden birinin bağlantısını kesip daha sonra yeni bir VM 'yi bağladığınızda yeni VM izlenmiyor ve harita sayfasında yansıtılmaz.  
 
-Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol bölmedeki **Öngörüler** ' i seçtiğinizde **Şimdi dene** seçeneği istenir.  Ancak, bu VM VM'ler için Azure İzleyici için eklendi değilse, genellikle bu sanal makine için bir seçenek istenmez. 
+Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol bölmedeki **Öngörüler** ' i seçtiğinizde **Şimdi dene** seçeneği istenir.  Ancak, bu VM, VM öngörülerine eklendi değilse, genellikle bu sanal makine için bir seçenek istenmez. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

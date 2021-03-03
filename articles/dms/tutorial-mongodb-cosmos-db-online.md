@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715675"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Öğretici: DMS kullanarak MongoDB 'yi Azure Cosmos DB için MongoDB online 'a geçirme
 
@@ -36,7 +36,7 @@ Bu öğreticide, MongoDB verilerini Azure Cosmos DB geçirmek için Azure verita
 > * Azure Cosmos DB verileri doğrulayın. 
 > * Hazırsanız geçişi doldurun. 
 
-Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak Azure sanal makinesinde barındırılan MongoDB 'deki bir veri kümesini en az kapalı kalma süresiyle Azure Cosmos DB. Zaten bir MongoDB kaynağınız yoksa, [Azure 'Da WINDOWS VM 'de MongoDB 'Yi kurma ve yapılandırma](../virtual-machines/windows/install-mongodb.md)makalesine bakın.
+Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak Azure sanal makinesinde barındırılan MongoDB 'deki bir veri kümesini en az kapalı kalma süresiyle Azure Cosmos DB. Zaten bir MongoDB kaynağınız yoksa, [Azure 'Da WINDOWS VM 'de MongoDB 'Yi kurma ve yapılandırma](/previous-versions/azure/virtual-machines/windows/install-mongodb)makalesine bakın.
 
 > [!NOTE]
 > Çevrimiçi bir geçiş gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanılması, Premium fiyatlandırma katmanını temel alan bir örnek oluşturulmasını gerektirir.

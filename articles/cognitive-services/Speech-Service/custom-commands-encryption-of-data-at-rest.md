@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021907"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716593"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Bekleyen verinin Özel Komutlarla şifrelenmesi
 
 Özel komutlar, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Özel komutlar hizmeti şifrelemesi, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
 
 > [!NOTE]
-> Özel komutlar hizmeti, uygulamanızla ilişkili LUSıS kaynakları için şifrelemeyi otomatik olarak etkinleştirmez. Gerekirse, LUSıS kaynağınız için şifrelemeyi [buradan](./../LUIS/luis-encryption-of-data-at-rest.md)etkinleştirmeniz gerekir.
+> Özel komutlar hizmeti, uygulamanızla ilişkili LUSıS kaynakları için şifrelemeyi otomatik olarak etkinleştirmez. Gerekirse, LUSıS kaynağınız için şifrelemeyi [buradan](../luis/encrypt-data-at-rest.md)etkinleştirmeniz gerekir.
 
 ## <a name="about-cognitive-services-encryption"></a>Bilişsel hizmetler şifreleme hakkında
 [Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak koruma altındadır ve şifrelemeden yararlanmak için kodunuzu veya uygulamalarınızı değiştirmenize gerek yoktur.

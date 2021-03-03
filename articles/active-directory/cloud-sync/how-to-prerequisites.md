@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614153"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689326"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect bulut eşitleme önkoşulları
 Bu makale, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut eşitlemesini bağlama ve kullanma hakkında rehberlik sağlar.
@@ -26,16 +26,16 @@ Bulut eşitlemesini Azure AD Connect kullanmak için aşağıdakiler gerekir:
 
 - Aracı hizmetini çalıştırmak için Azure AD Connect Cloud Sync gMSA (grup yönetilen hizmet hesabı) oluşturmak için etki alanı yöneticisi veya kuruluş yöneticisi kimlik bilgileri. 
 - Azure AD kiracınız için konuk kullanıcı olmayan bir karma kimlik yöneticisi hesabı.
-- Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
+- Windows 2016 veya üzerini içeren sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
 ## <a name="group-managed-service-accounts"></a>Grup Tarafından Yönetilen Hizmet Hesapları
 Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi destekler ve aracıyı çalıştırmak için gMSA kullanır.  Bu hesabı oluşturmak için kurulum sırasında yönetici kimlik bilgileri istenir.  Hesap (domain\provAgentgMSA $) olarak görünür.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>GMSA önkoşulları:
-1.  GMSA etki alanı ormanındaki Active Directory şemasının Windows Server 2012 ' e güncelleştirilmesi gerekir
+1.  GMSA etki alanı ormanındaki Active Directory şemasının Windows Server 2012 ' e güncelleştirilmesi gerekir.
 2.  Bir etki alanı denetleyicisindeki [POWERSHELL RSAT modülleri](/windows-server/remote/remote-server-administration-tools)
-3.  Etki alanındaki en az bir etki alanı denetleyicisinin Windows Server 2012 çalıştırması gerekir.
+3.  Etki alanındaki en az bir etki alanı denetleyicisinin Windows Server 201 çalıştırması gerekir.
 4.  Aracının yüklenmekte olduğu etki alanına katılmış bir sunucunun Windows Server 2012 veya üzeri olması gerekir.
 
 ### <a name="custom-gmsa-account"></a>Özel gMSA hesabı
@@ -65,7 +65,7 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
-1. En az 4 GB RAM ve .NET 4.7.1 + çalışma zamanı ile Windows Server 2012 R2 veya üstünü çalıştıran etki alanına katılmış bir konak sunucusu belirler.
+1. En az 4 GB RAM ve .NET 4.7.1 + çalışma zamanı ile Windows Server 2016 veya üstünü çalıştıran etki alanına katılmış bir konak sunucusu belirler.
 
 2. Yerel sunucudaki PowerShell yürütme ilkesinin tanımsız veya RemoteSigned olarak ayarlanması gerekir.
 

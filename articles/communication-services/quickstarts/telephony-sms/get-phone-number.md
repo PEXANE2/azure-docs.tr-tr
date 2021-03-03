@@ -9,15 +9,16 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: a4a569a11561671febf31b037c499b6f32b44d48
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690456"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Telefon numarası satın almak için Azure portal kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
@@ -39,15 +40,15 @@ Kaynak menüsündeki **telefon numaraları** dikey penceresine gidin.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Iletişim Hizmetleri kaynağının telefon sayfasını gösteren ekran görüntüsü.":::
 
-Sihirbazı başlatmak için **Al** düğmesine basın. **Telefon numaraları** dikey penceresindeki sihirbaz, senaryonuza en uygun telefon numarasını seçmenize yardımcı olacak bir dizi soru boyunca size yol gösterir.
+Sihirbazı başlatmak için **Al** düğmesine basın. **Telefon numaraları** dikey penceresindeki sihirbaz, senaryonuza en uygun telefon numarasını seçmenize yardımcı olacak bir dizi soru boyunca size yol gösterir. 
 
-İlk olarak, telefon numarasını sağlamak istediğiniz **ülkeyi/bölgeyi** seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, gereksinimlerinizi en iyi şekilde karşılayacak **kullanım durumunu** seçmeniz gerekir.
+İlk olarak, telefon numarasını sağlamak istediğiniz **ülkeyi/bölgeyi** seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, gereksinimlerinizi en iyi şekilde karşılayacak **kullanım durumunu** seçmeniz gerekir. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Telefon numaralarını al görünümünü gösteren ekran görüntüsü.":::
 
 ### <a name="select-your-phone-number-features"></a>Telefon numaranız özelliklerinizi seçin
 
-Telefon numaranızı yapılandırmak iki adımda bölünmüştür:
+Telefon numaranızı yapılandırmak iki adımda bölünmüştür: 
 
 1. [Sayı türünün](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) seçimi
 2. [Sayı özelliklerinin](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) seçimi
@@ -116,7 +117,9 @@ Kullanılabilir seçeneklerden özellikleri seçin, sonra Seçiminizi uygulamak 
 
 Yaygın sorular ve sorunlar:
 
-- Şu anda telefon numaralarının satın alınması için yalnızca US desteklenir. Bu, kaynağın ilişkilendirildiği aboneliğin fatura adresini temel alır. Şu anda bir kaynağı başka bir aboneliğe taşıyamazsınız.
+- Satın alma telefonu yalnızca ABD 'de desteklenmektedir. Telefon numaralarını satın almak için şunları doğrulayın:
+  - İlişkili Azure aboneliği faturalandırma adresi Birleşik Devletler bulunmaktadır. Şu anda bir kaynağı başka bir aboneliğe taşıyamazsınız.
+  - Iletişim Hizmetleri kaynağınız Birleşik Devletler veri konumunda sağlanır. Kaynağı şu anda başka bir veri konumuna taşıyamazsınız.
 
 - Telefon numarası bırakıldığında, telefon numarası serbest bırakılır veya faturalandırma döngüsünün sonuna kadar yeniden kullanılamaz.
 

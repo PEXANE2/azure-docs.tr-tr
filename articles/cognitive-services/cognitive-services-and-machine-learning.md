@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710473"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -97,7 +97,7 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Yüz Tanıma](./Face/Overview.md)|x|x||
 |[Form Tanıma](./form-recognizer/overview.md)||x||
 |[Tam Ekran Okuyucu](./immersive-reader/overview.md)|x|||
-|[Mürekkep Tanıma](./Ink-recognizer/overview.md)|x|x||
+|[Mürekkep Tanıma](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Kişiselleştirme](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
 |[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
@@ -127,9 +127,9 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 
 |Bilişsel hizmet|Model bilgileri|
 |--|--|
-|[Özel Görüntü İşleme](./custom-vision-service/overview.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
+|[Özel Görüntü İşleme](./custom-vision-service/overview.md)|Android için TensorFlow için [dışarı aktarma](./custom-vision-service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/concept-deep-learning-vs-machine-learning.md)

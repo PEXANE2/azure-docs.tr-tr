@@ -158,9 +158,6 @@
           href: batch-sig-images.md
         - name: Yönetilen görüntü kaynağıyla havuz oluşturma
           href: batch-custom-images.md
-        - name: Kullanılabilirlik Alanları arasında havuz oluşturma
-          displayName: 'region, zonal policy'
-          href: create-pool-availability-zones.md
         - name: Disk şifrelemesi etkinleştirilmiş havuz oluşturma
           href: disk-encryption.md
         - name: Sanal ağ içinde havuz oluşturma
@@ -172,8 +169,6 @@
         - name: Genel IP adresleri olmadan havuz oluşturma
           displayName: private
           href: batch-pool-no-public-ip-address.md
-        - name: Havuzlarla uzantıları kullanma
-          href: create-pool-extensions.md
         - name: Yönetilen kimlikleri yapılandırma
           displayName: user-assigned
           href: managed-identity-pools.md
@@ -277,7 +272,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094555"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730516"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -92,7 +92,7 @@ Azure iki tür yönetilen kimliği destekler: sistem tarafından atanan ve Kulla
 
 [Özel tanımlanmış bir uç noktada](concepts-route-events.md#create-an-endpoint)kimlik doğrulaması yapmak Için Azure dijital örneğiniz için sistem tarafından atanan yönetilen bir kimlik kullanabilirsiniz. Azure dijital TWINS, [Olay Hub](../event-hubs/event-hubs-about.md) 'ı ve [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)hedeflerine yönelik uç noktalara   ve atılacak Ileti olayları için bir [Azure depolama kapsayıcısı](../storage/blobs/storage-blobs-introduction.md)   uç noktasına [](concepts-route-events.md#dead-letter-events)sistem tarafından atanan kimlik tabanlı kimlik doğrulamasını destekler. [Event Grid](../event-grid/overview.md)   uç noktalar şu anda yönetilen kimlikler için desteklenmiyor.
 
-Azure dijital TWINS için sistem tarafından yönetilen bir kimliğin nasıl etkinleştirileceği ve olayları yönlendirmek için nasıl kullanılacağı hakkında yönergeler için bkz. [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](how-to-enable-managed-identities.md).
+Azure dijital TWINS için sistem tarafından yönetilen bir kimliğin nasıl etkinleştirileceği ve olayları yönlendirmek için nasıl kullanılacağı hakkında yönergeler için bkz. [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](./how-to-enable-managed-identities-portal.md).
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Azure özel bağlantısı ile özel ağ erişimi (Önizleme)
 
@@ -106,7 +106,7 @@ Benzer şekilde, sanal Ağınızdaki istemcilerin özel bağlantı üzerinden ö
 
 Azure dijital TWINS örneğiniz için özel bir uç nokta yapılandırmak, Azure dijital TWINS örneğinizi güvenli hale getirmenizi ve genel pozlamayı ortadan kaldırmanıza ve sanal ağınızdan veri alımını önlemenize olanak sağlar.
 
-Azure dijital TWINS için özel bağlantı ayarlama hakkında yönergeler için bkz. [*nasıl yapılır: özel bağlantı ile özel erişimi etkinleştirme (Önizleme)*](how-to-enable-private-link.md).
+Azure dijital TWINS için özel bağlantı ayarlama hakkında yönergeler için bkz. [*nasıl yapılır: özel bağlantı ile özel erişimi etkinleştirme (Önizleme)*](./how-to-enable-private-link-portal.md).
 
 ### <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler 
 

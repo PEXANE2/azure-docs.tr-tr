@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692819"
 ---
 # <a name="maintenance-window-preview"></a>Bakım penceresi (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Bakım olayları hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı ve
 
 Azure, temel alınan donanım, temel işletim sistemi (OS) gibi yazılımlar ve SQL altyapısı dahil olmak üzere Azure SQL veritabanı ve SQL yönetilen örnek kaynakları üzerinde düzenli olarak planlı bakım güncelleştirmeleri gerçekleştirir. Bakım güncelleştirmesi sırasında kaynaklar tamamen kullanılabilir ve erişilebilir durumdadır, ancak bakım güncelleştirmelerinin bazıları, bakım güncelleştirmelerinin uygulanması için kısa bir süre (ortalama süre içinde sekiz saniye) uygulamak üzere örnekleri çevrimdışı duruma getirmek için yük devretme gerektirir.  Planlı bakım güncelleştirmeleri ortalama olarak her 35 günde bir gerçekleşir. Bu, müşterinin her bir Azure SQL veritabanı veya SQL yönetilen örneği başına aylık bir planlanmış bakım olayı beklemesine ve yalnızca müşteri tarafından seçilen bakım penceresi yuvaları sırasında gerçekleşmesine yol açabilir.   
 
-Bakım penceresi, varsayılan pencere sırasında planlı bakım olaylarının sonucunda ortaya çıkabilecek olası bağlantı kesintilerine duyarlı olan iş yükleri için tasarlanmıştır.  
+Bakım penceresi, planlı bakım olaylarının sonucunda ortaya çıkan, aralıklı bağlantı sorunlarına dayanıklı olmayan iş yükleri için tasarlanmıştır.
 
 Bakım penceresi Azure portal, PowerShell, CLı veya Azure API 'SI kullanılarak yapılandırılabilir. Bu, oluşturma sırasında veya mevcut SQL veritabanları ve SQL yönetilen örnekleri için yapılandırılabilir.
 
@@ -37,15 +37,15 @@ Bakım penceresi Azure portal, PowerShell, CLı veya Azure API 'SI kullanılarak
 Varsayılan olarak, tüm Azure SQL veritabanları ve yönetilen örnek veritabanları, en yüksek iş saatleri kesintilerini önlemek için günlük olarak yalnızca 5 PM ile 8:00:00 yerel kez güncelleştirilir. Yerel saat, kaynağı barındıran [Azure bölgesi](https://azure.microsoft.com/global-infrastructure/geographies/) tarafından belirlenir. İki ek bakım penceresi yuvası arasından seçim yaparak, bakım güncelleştirmelerini veritabanınıza uygun bir zamana ayarlayabilirsiniz:
 
 * **Varsayılan** pencere, 5 pm-8:00:00 yerel saat Pazartesi-Pazar 
-* Hafta içi pencere, 10PM-6:00:00 yerel saat Pazartesi – Perşembe: **müşterinin kabul etmesini gerektirir** 
-* Hafta sonu penceresi, 10:00-00 yerel saat Cuma-Pazar: **müşterinin kabul etmesini gerektirir**  
+* Hafta içi pencere, 10PM-6:00:00 yerel saat Pazartesi – Perşembe
+* Hafta sonu penceresi, 10:00-00 yerel saat Cuma-Pazar
 
 Bakım penceresi seçimi yapıldıktan sonra, tüm planlı bakım güncelleştirmeleri yalnızca sizin tercih ettiğiniz pencerede gerçekleşmeyecektir.   
 
 > [!Note]
 > Planlı bakım güncelleştirmelerine ek olarak, nadir koşullarda planlanmamış bakım olayları kullanılamaz duruma neden olabilir. 
 
-### <a name="cost"></a>Maliyet
+### <a name="cost-and-eligibility"></a>Maliyet ve uygunluk
 
 Bir bakım penceresinin seçilmesi şu abonelik [teklifi türleri](https://azure.microsoft.com/support/legal/offer-details/)için ücretsizdir: Kullandıkça öde, bulut çözümü sağlayıcısı (CSP), Microsoft Enterprise veya Microsoft Müşteri Sözleşmesi.
 

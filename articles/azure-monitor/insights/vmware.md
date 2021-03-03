@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de çözüm VMware İzleme | Microsoft Docs
 description: VMware İzleme çözümünün günlükleri yönetmeye nasıl yardımcı olabileceğini ve ESXi konaklarının izlenmesini nasıl sağlayabileceğini öğrenin.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587169"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704370"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
 
@@ -50,14 +49,14 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
     ![vsbu efwproperties](./media/vmware/vsphere3.png)  
 1. Syslog 'ın düzgün şekilde ayarlandığını doğrulamak için vSphere konsolunu denetleyin. **1514** numaralı bağlantı noktasının yapılandırıldığını ESXi ana bilgisayarında doğrulayın.
 1. Linux sunucusuna Linux için Log Analytics Aracısı indirin ve yükleyin. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısına yönelik belgeler](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Linux için Log Analytics aracısı yüklendikten sonra,/etc/seçenek/Microsoft/omsagent/sysconf/omsagent.exe \ dizinine gidin ve vmware_esxi. conf dosyasını/etc/seçenek/Microsoft/omsagent/conf/omsagent.exe dizinine kopyalayın ve dosyanın sahibini/grubunu ve izinlerini değiştirin. Örneğin:
+1. Linux için Log Analytics aracısı yüklendikten sonra,/etc/seçenek/Microsoft/omsagent/sysconf/omsagent.exe \ dizinine gidin ve vmware_esxi. conf dosyasını/etc/seçenek/Microsoft/omsagent/conf/omsagent.exe dizinine kopyalayın ve dosyanın sahibini/grubunu ve izinlerini değiştirin. Örnek:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. Çalıştırarak Linux için Log Analytics aracısını yeniden başlatın `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-1. ESXi konağındaki komutunu kullanarak Linux sunucusu ile ESXi Konağı arasındaki bağlantıyı test edin `nc` . Örneğin:
+1. ESXi konağındaki komutunu kullanarak Linux sunucusu ile ESXi Konağı arasındaki bağlantıyı test edin `nc` . Örnek:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514

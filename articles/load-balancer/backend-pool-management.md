@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 65a00cd898ef63dd3194e48ad6dd3fb73a211d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709878"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -255,8 +255,16 @@ Yük dengeleyici ve sanal makineler dağıtmak ve ağ arabirimi aracılığıyla
 
 Tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde doğrudan arka uç havuzu nesnesi üzerinde yapılır.
 
-  >[!IMPORTANT] 
-  >Bu özellik şu anda önizleme sürümündedir. Lütfen bu özelliğin geçerli sınırları için [sınırlamalar bölümüne](#limitations) bakın.
+### <a name="limitations"></a>Sınırlamalar
+IP adresi tarafından yapılandırılan bir arka uç havuzu aşağıdaki sınırlamalara sahiptir:
+  * Yalnızca standart yük dengeleyiciler için kullanılabilir
+  * Arka uç havuzunda 100 IP adresi sınırı
+  * Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
+  * IP tabanlı arka uç havuzundaki bir Load Balancer özel bağlantı hizmeti olarak çalışamaz
+  * Bu özellik şu anda Azure portal desteklenmiyor
+  * ACI kapsayıcıları Şu anda bu özellik tarafından desteklenmiyor
+  * Yük dengeleyiciler tarafından konulan yük dengeleyiciler veya hizmetler yük dengeleyicinin arka uç havuzuna yerleştirilemez
+  * Gelen NAT kuralları IP adresi ile belirtilemiyor
 
 ### <a name="powershell"></a>PowerShell
 Yeni arka uç havuzu oluştur:
@@ -517,17 +525,6 @@ JSON Istek gövdesi:
   }
 }
 ```
-
-## <a name="limitations"></a>Sınırlamalar
-IP adresi tarafından yapılandırılan bir arka uç havuzu aşağıdaki sınırlamalara sahiptir:
-  * Yalnızca standart yük dengeleyici
-  * Arka uç havuzunda 100 IP adresi sınırı
-  * Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
-  * IP tabanlı arka uç havuzundaki bir Load Balancer özel bağlantı hizmeti olarak çalışamaz
-  * Bu özellik şu anda Azure portal desteklenmiyor
-  * ACI kapsayıcıları Şu anda bu özellik tarafından desteklenmiyor
-  * Yük dengeleyiciler tarafından konulan yük dengeleyiciler veya hizmetler yük dengeleyicinin arka uç havuzuna yerleştirilemez
-  * Gelen NAT kuralları IP adresi ile belirtilemiyor
   
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede Azure Load Balancer arka uç havuzu yönetimi ve IP adresi ve sanal ağ ile arka uç havuzu yapılandırma hakkında bilgi edindiniz.

@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 641d7eeef96af84f0f058aebd19d795083e3567f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cfd378ae621192cd98b482b66c85c3dcd3ca454
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721948"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Öğretici: PowerShell kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 
 Bu öğretici, PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute devresi için Yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Ortak eşleme](about-public-peering.md)
@@ -41,12 +41,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Devre için Microsoft eşlemesini yapılandırma, güncelleştirme ve silme
 > - Devre için Azure özel eşlemesini yapılandırma, güncelleştirme ve silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yapılandırmaya başlamadan önce aşağıdaki sayfaları gözden geçirdiğinizden emin olun:
     * [Önkoşullar](expressroute-prerequisites.md) 
     * [Yönlendirme gereksinimleri](expressroute-routing.md)
-    * [İş akışları](expressroute-workflows.md)
+    * [İş Akışları](expressroute-workflows.md)
 * Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute](expressroute-howto-circuit-arm.md) bağlantı hattı oluşturma ve bağlantı sağlayıcınız için devre dışı bırakma yönergelerini izleyin. Bu makaledeki cmdlet 'leri çalıştırmanız için ExpressRoute bağlantı hattının sağlanması ve etkinleştirilmesi durumunda olması gerekir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -163,6 +163,11 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapılandırmasını oluşturmanıza, almanıza, güncelleştirmenize ve silmenize yardımcı olur.
 
+> [!IMPORTANT]
+> Özel eşleme için IPv6 desteği şu anda **genel önizlemededir**. 
+> 
+> 
+
 ### <a name="to-create-azure-private-peering"></a>Azure özel eşlemesi oluşturmak için
 
 1. ExpressRoute için PowerShell modülünü içeri aktarın.
@@ -233,8 +238,10 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
    ```
 4. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlarla devam etmeden önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-   * Birincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
-   * İkincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
+   * Sanal ağlar için ayrılan herhangi bir adres alanının parçası olmayan bir alt ağ çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız. Bu alt ağ çifti için üç seçeneğiniz vardır:
+       * IPv4: Iki/30 alt ağı.
+       * IPv6: Iki/126 alt ağı.
+       * Her ikisi: Iki/30 alt ağ ve iki/126 alt ağı.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. Bu eşleme için özel bir AS numarası kullanabilirsiniz. 65515 kullandığınızdan emin olun.
    * İsteğe bağlı:
@@ -245,6 +252,8 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
 
+   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "3FFE:FFFF:0:CD30::/126" -SecondaryPeerAddressPrefix "3FFE:FFFF:0:CD30::4/126" -VlanId 200 -PeerAddressType IPv6
+
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
@@ -252,6 +261,8 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
+
+   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "3FFE:FFFF:0:CD30::/126" -SecondaryPeerAddressPrefix "3FFE:FFFF:0:CD30::4/126" -VlanId 200 -PeerAddressType IPv6 -SharedKey "A1B2C3D4"
    ```
 
    > [!IMPORTANT]
@@ -271,10 +282,10 @@ Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 
 ### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>Azure özel eşleme yapılandırmasını güncelleştirmek için
 
-Aşağıdaki örneği kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN KIMLIĞI 100 ' den 500 ' e güncelleştiriliyor.
+Aşağıdaki örneği kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN KIMLIĞI 200 ' den 500 ' e güncelleştiriliyor.
 
 ```azurepowershell-interactive
-Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
+Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 500
 
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```

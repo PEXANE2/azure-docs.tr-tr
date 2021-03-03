@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b1403b12c05420c6296cbafd0d4ee0bc02f8dd4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 665137688a000433a9101a77342fa6f9350d7141
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714332"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile günlük uyarısı oluşturma
 
-Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](../platform/action-groups.md)kullanarak bir veya daha fazla eylemi çalıştırmayı tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](../platform/alerts-unified-log.md).
+Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../logs/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi çalıştırmayı tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](./alerts-unified-log.md).
 
-Bu makalede, Azure Izleyici 'de [günlük uyarılarını](../platform/alerts-unified-log.md) yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Günlük uyarıları `Microsoft.Insights/scheduledQueryRules` kaynak sağlayıcıda oluşturulur. Bkz. [zamanlanan sorgu KURALLARı API](/rest/api/monitor/scheduledqueryrules/)'SI için API başvurusu.
+Bu makalede, Azure Izleyici 'de [günlük uyarılarını](./alerts-unified-log.md) yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Günlük uyarıları `Microsoft.Insights/scheduledQueryRules` kaynak sağlayıcıda oluşturulur. Bkz. [zamanlanan sorgu KURALLARı API](/rest/api/monitor/scheduledqueryrules/)'SI için API başvurusu.
 
 Temel adımlar aşağıdaki gibidir:
 
@@ -26,15 +26,15 @@ Temel adımlar aşağıdaki gibidir:
 4. Herhangi bir dağıtım yöntemini kullanarak şablonu dağıtın.
 
 > [!NOTE]
-> [Log Analytics çalışma alanındaki](../log-query/log-analytics-tutorial.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](../platform/alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](../platform/alerts-metric-logs.md).
+> [Log Analytics çalışma alanındaki](../logs/log-analytics-tutorial.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](./alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](./alerts-metric-logs.md).
 
 > [!NOTE]
-> Eski [Log Analytics uyarı API 'si](../platform/api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions.md)eski şablonları kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](alerts-log-api-switch.md).
+> Eski [Log Analytics uyarı API 'si](./api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions.md)eski şablonları kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](alerts-log-api-switch.md).
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>Basit şablon (API sürüm 2018-04-16 ' e kadar)
 
-[Zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) şablonu [sonuç günlüğü uyarısı](../platform/alerts-unified-log.md#count-of-the-results-table-rows) (örnek veri kümesi değişken) temelinde:
+[Zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) şablonu [sonuç günlüğü uyarısı](./alerts-unified-log.md#count-of-the-results-table-rows) (örnek veri kümesi değişken) temelinde:
 
 ```json
 {
@@ -109,7 +109,7 @@ Bu JSON, [Azure portal Azure Resource Manager](../../azure-resource-manager/temp
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>Çapraz kaynak sorgusuna sahip şablon (API sürüm 2018-04-16 ' e kadar)
 
-[Çapraz kaynakları](../log-query/cross-workspace-query.md) sorgulayan [ölçüm ölçüsüne](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) dayalı olarak [zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) şablonu (örnek veri kümesi değişken olarak ayarlanır):
+[Çapraz kaynakları](../logs/cross-workspace-query.md) sorgulayan [ölçüm ölçüsüne](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) dayalı olarak [zamanlanan sorgu kuralları oluşturma](/rest/api/monitor/scheduledqueryrules/createorupdate) şablonu (örnek veri kümesi değişken olarak ayarlanır):
 
 ```json
 {
@@ -432,7 +432,7 @@ Bu JSON, [Azure portal Azure Resource Manager](../../azure-resource-manager/temp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlük uyarıları](../platform/alerts-unified-log.md) hakkında bilgi edinin
-* [Günlük uyarılarını yönetme](../platform/alerts-log.md) hakkında bilgi edinin
-* [Günlük uyarıları için Web kancası eylemlerini](../platform/alerts-log-webhook.md) anlama
-* [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+* [Günlük uyarıları](./alerts-unified-log.md) hakkında bilgi edinin
+* [Günlük uyarılarını yönetme](./alerts-log.md) hakkında bilgi edinin
+* [Günlük uyarıları için Web kancası eylemlerini](./alerts-log-webhook.md) anlama
+* [Günlük sorguları](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.

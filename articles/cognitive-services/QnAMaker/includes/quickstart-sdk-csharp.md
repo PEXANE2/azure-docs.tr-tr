@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplı�
 description: Bu hızlı başlangıçta, .NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 18d8dbc59d1c43961cd665a3ea98d1041516afb7
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d14c137150b802c734a0386536fbe32a6917cd92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731010"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
@@ -153,7 +153,7 @@ Uygulamanın `Main` yönteminde, bu hızlı başlangıçtaki ortak görevleri ku
 > [!IMPORTANT]
 > Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır. 
 
-Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v1#keys-in-qna-maker)izleyin.
+Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker)izleyin.
 
 - Bu değerleri depolamak için QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT ve QNA_MAKER_RUNTIME_ENDPOINT adlı ortam değişkenleri oluşturun.
 - QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
@@ -167,7 +167,7 @@ Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı ha
 > [!IMPORTANT]
 > Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır. 
 
-Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v2#keys-in-qna-maker)izleyin.
+Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)izleyin.
 
 - Bu değerleri depolamak için QNA_MAKER_SUBSCRIPTION_KEY ve QNA_MAKER_ENDPOINT adlı ortam değişkenleri oluşturun.
 - QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
@@ -184,7 +184,7 @@ Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı ha
 
 [Soru-cevap oluşturma](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker) iki farklı nesne modeli kullanır:
 * **[Qnamakerclient](#qnamakerclient-object-model)** , Bilgi Bankası oluşturmak, yönetmek, yayımlamak ve indirmek için kullanılan nesnedir.
-* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../concepts/active-learning-suggestions.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
+* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../how-to/use-active-learning.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/version-2)
 

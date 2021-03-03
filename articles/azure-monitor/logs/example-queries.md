@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e1b6ba22c41e2061acfdf33351619512f9d7f424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708042"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de örnek sorgular Log Analytics
 Log Analytics kendi sorgularınız için kendi içinde çalıştırabileceğiniz veya bir başlangıç noktası olarak kullanabileceğiniz örnek sorgu kümesi sunar. Bu makalede örnek sorgular ve bunların nasıl kullanılacağı açıklanmaktadır.
@@ -109,5 +109,4 @@ Kullanıcı tarafından oluşturulan sorguları kaydetme ve paylaşma için sorg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[KQL sorgularını kullanmaya başlama](../log-query/get-started-queries.md)
-
+[KQL sorgularını kullanmaya başlama](./get-started-queries.md)

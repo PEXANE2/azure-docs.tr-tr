@@ -3,12 +3,12 @@ title: Azure Işlevleri adanmış barındırma
 description: Adanmış bir App Service barındırma planında Azure Işlevleri çalıştırmanın avantajları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704574"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Işlevleri için adanmış barındırma planları
 
@@ -41,7 +41,7 @@ App Service planı kullanarak daha fazla sanal makine örneği ekleyerek ölçe�
 
 ## <a name="app-service-environments"></a>App Service ortamları
 
-[App Service ortamı](../app-service/environment/intro.md) (ASA), işlevlerinizi tamamen yalıtmanıza ve bir App Service planından daha fazla sayıda örnek avantajına sahip olmanızı sağlar. Başlamak için bkz..
+App Service Ortamı (ASA), işlevlerinizi tamamen yalıtmanıza ve bir App Service planından daha fazla sayıda örnek avantajına sahip olmanızı sağlar. Başlamak için bkz. [App Service ortamlarına giriş](../app-service/environment/intro.md).
 
 Yalnızca işlev uygulamanızı bir sanal ağda çalıştırmak istiyorsanız, bunu [Premium planı](functions-premium-plan.md)kullanarak yapabilirsiniz. Daha fazla bilgi için bkz. [Azure işlevleri özel site erişimi oluşturma](functions-create-private-site-access.md). 
 

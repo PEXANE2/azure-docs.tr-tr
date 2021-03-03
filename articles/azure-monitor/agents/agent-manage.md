@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: e8ee45a1bf6a45be1fd976d3fb1b8aba60d2b989
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734970"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve bakımını yapma
 
@@ -164,7 +164,7 @@ Aşağıdaki adımlarda, farklı bir çalışma alanına kaydolmaya veya bir ça
 Değişikliklerin etkili olabilmesi için Aracı hizmetinin yeniden başlatılması gerekmez.
 
 ## <a name="update-proxy-settings"></a>Ara sunucu ayarlarını Güncelleştir
-Aracıyı, dağıtımdan sonra bir ara sunucu veya [ağ geçidi Log Analytics](../platform/gateway.md) aracılığıyla hizmetle iletişim kuracak şekilde yapılandırmak için, bu görevi gerçekleştirmek için aşağıdaki yöntemlerden birini kullanın.
+Aracıyı, dağıtımdan sonra bir ara sunucu veya [ağ geçidi Log Analytics](./gateway.md) aracılığıyla hizmetle iletişim kuracak şekilde yapılandırmak için, bu görevi gerçekleştirmek için aşağıdaki yöntemlerden birini kullanın.
 
 ### <a name="windows-agent"></a>Windows aracısı
 

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 31a034a7f52efd915b7a07e1abb953a14839892e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718072"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Izleyici 'de dinamik eşiklerle ölçüm uyarıları
 
@@ -22,7 +22,7 @@ Görüşlerinizi duymak için sevdiğimiz için seveceğiz <azurealertsfeedback@
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Neden ve ne zaman dinamik koşul türünü kullanıyor önerilir?
 
-1. **Ölçeklenebilir** uyarı – dinamik eşik uyarı kuralları, tek seferde yüzlerce ölçüm serisi için özel eşikler oluşturabilir, ancak tek bir ölçüm üzerinde bir uyarı kuralı tanımlama kolaylığını sağlar. Oluşturma ve yönetme konusunda daha az uyarı verir. Bunları oluşturmak için Azure portal ya da Azure Resource Manager API 'sini kullanabilirsiniz. Ölçeklenebilir yaklaşım özellikle ölçüm boyutları ile ilgilenirken veya tüm abonelik kaynakları gibi birden fazla kaynağa uygulanırken yararlıdır.  [Şablonları kullanarak dinamik eşiklerle ölçüm uyarılarını yapılandırma hakkında daha fazla bilgi edinin](../platform/alerts-metric-create-templates.md).
+1. **Ölçeklenebilir** uyarı – dinamik eşik uyarı kuralları, tek seferde yüzlerce ölçüm serisi için özel eşikler oluşturabilir, ancak tek bir ölçüm üzerinde bir uyarı kuralı tanımlama kolaylığını sağlar. Oluşturma ve yönetme konusunda daha az uyarı verir. Bunları oluşturmak için Azure portal ya da Azure Resource Manager API 'sini kullanabilirsiniz. Ölçeklenebilir yaklaşım özellikle ölçüm boyutları ile ilgilenirken veya tüm abonelik kaynakları gibi birden fazla kaynağa uygulanırken yararlıdır.  [Şablonları kullanarak dinamik eşiklerle ölçüm uyarılarını yapılandırma hakkında daha fazla bilgi edinin](./alerts-metric-create-templates.md).
 
 1. **Akıllı ölçüm deseni tanıma** – ml teknolojimizi kullanarak, ölçüm düzenlerini otomatik olarak tespit edebilir ve zaman içinde ölçüm değişikliklerine uyarlayabilirsiniz, bu da genellikle mevsimsellik (saatlik/günlük/haftalık) içerebilir. Her ölçüm için "sağ" eşiğini bilmenin yükünü sizi maliyetinden kurtarır, kendi örüntüsünün ölçülerine göre zaman içindeki davranışa ve uyarı hedefine uyarlamak. Dinamik eşikte kullanılan ML algoritması, beklenen bir kalıbı olmayan gürültülü (düşük duyarlılık) veya geniş (düşük geri çağırma) eşiklerini engellemek için tasarlanmıştır.
 
@@ -61,7 +61,7 @@ Aşağıdaki üç koşuldan birini izleyerek tetiklenecek uyarıyı seçebilirsi
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Dinamik Eşikteki Gelişmiş ayarlar ne anlama geliyor?
 
-**Başarısız dönemler** -dinamik eşikler Ayrıca "uyarıyı tetiklemek için sayı ihlalleri", sistemin bir uyarı oluşturması için belirli bir zaman penceresi içinde gerekli olan en az sayıda sapmaları yapılandırmanıza olanak tanır (varsayılan zaman penceresi 20 dakika içinde dört sapdır). Kullanıcı başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne uyarılmak istediğinizi seçebilir. Bu özellik, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örneğin:
+**Başarısız dönemler** -dinamik eşikler Ayrıca "uyarıyı tetiklemek için sayı ihlalleri", sistemin bir uyarı oluşturması için belirli bir zaman penceresi içinde gerekli olan en az sayıda sapmaları yapılandırmanıza olanak tanır (varsayılan zaman penceresi 20 dakika içinde dört sapdır). Kullanıcı başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne uyarılmak istediğinizi seçebilir. Bu özellik, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örnek:
 
 Sorun 20 dakika boyunca sürekli olduğunda bir uyarı tetiklemek için, belirli bir dönemde 5 dakikalık gruplandırmada 4 kez, aşağıdaki ayarları kullanın:
 
@@ -75,7 +75,7 @@ Daha **önce verileri yoksay** -kullanıcılar Ayrıca isteğe bağlı olarak, s
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Dinamik Eşik uyarısının neden tetiklendiğini nasıl bulabilirim?
 
-Uyarı görünümünü, Azure portal uyarı görünümünü görmek için e-posta veya kısa mesaj veya tarayıcıdaki bağlantıya tıklayarak, uyarılar görünümünde inceleyebilirsiniz. [Uyarılar görünümü hakkında daha fazla bilgi edinin](../platform/alerts-overview.md#alerts-experience).
+Uyarı görünümünü, Azure portal uyarı görünümünü görmek için e-posta veya kısa mesaj veya tarayıcıdaki bağlantıya tıklayarak, uyarılar görünümünde inceleyebilirsiniz. [Uyarılar görünümü hakkında daha fazla bilgi edinin](./alerts-overview.md#alerts-experience).
 
 Uyarı görünümü şunu görüntüler:
 
@@ -188,4 +188,4 @@ Aşağıda, bir ölçümü, dinamik eşik sınırlarını ve değer izin verilen
 - **Siyah daire olan kırmızı nokta** -izin verilen aralıktan ilk ölçüm değerini gösterir. Bu değer, bir ölçüm uyarısını harekete geçirir ve bunu etkin bir duruma getirir.
 - **Kırmızı noktalar**-izin verilen aralığın dışında diğer ölçülen değerleri gösterir. Bunlar ek ölçüm uyarıları tetiketmez, ancak uyarı etkin kalır.
 - **Kırmızı alan** -ölçüm değerinin izin verilen aralığın dışında olduğu zamanı gösterir. Sonraki ölçülen değerler izin verilen aralığın dışında olduğu sürece, uyarı etkin durumda kalır, ancak yeni bir uyarı tetiklenmez.
-- **Red alanının sonu** -mavi çizgi izin verilen değerlerin içinde olduğunda, Red alanı duraklar ve ölçülen değer çizgisi maviyi kapatır. Siyah anahatlı kırmızı nokta sırasında tetiklenen ölçüm uyarısının durumu Çözüldü olarak ayarlanır. 
+- **Red alanının sonu** -mavi çizgi izin verilen değerlerin içinde olduğunda, Red alanı duraklar ve ölçülen değer çizgisi maviyi kapatır. Siyah anahatlı kırmızı nokta sırasında tetiklenen ölçüm uyarısının durumu Çözüldü olarak ayarlanır.

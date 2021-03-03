@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784486"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703193"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı döndürün
 
@@ -30,26 +30,16 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="erase-data-from-the-device"></a>Cihazdan verileri silme
 
-Cihazınızın veri disklerinin verilerini silmek için cihazınızı sıfırlamanız gerekir. Yerel Web Kullanıcı arabirimini veya PowerShell arabirimini kullanarak cihazınızı sıfırlayabilirsiniz.
+Cihazınızın veri disklerinin verilerini silmek için cihazınızı sıfırlamanız gerekir.
 
-Sıfırlamadan önce, gerekirse, cihazdaki yerel verilerin bir kopyasını oluşturun. Cihazdan verileri bir Azure depolama kapsayıcısına kopyalayabilirsiniz.
+Sıfırlamadan önce, gerekirse, cihazdaki yerel verilerin bir kopyasını oluşturun. Cihazdan verileri bir Azure depolama kapsayıcısına kopyalayabilirsiniz. 
 
-Cihaz sıfırlanmadan önce, cihazın dönmesini başlatabilirsiniz. 
+Cihaz sıfırlanmadan önce, cihazın dönmesini başlatabilirsiniz.
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı sıfırlamak için aşağıdaki adımları uygulayın.
+Cihazınızı yerel Web Kullanıcı arabiriminde veya PowerShell 'de sıfırlayabilirsiniz. PowerShell yönergeleri için bkz. [cihazınızı sıfırlama](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > cihaz sıfırlaması**' na gidin.
-2. **Cihazı Sıfırla**' yı seçin.
 
-    ![Cihaz sıfırlama](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. Onay istendiğinde, uyarıyı gözden geçirin ve devam etmek için **Evet** ' i seçin.
-
-    ![Sıfırlamayı Onayla](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-Sıfırlama, verileri cihaz veri disklerinin dışına siler. Bu işlem, cihazınızdaki veri miktarına bağlı olarak yaklaşık 30-40 dakika sürer.
-
-Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve `Reset-HcsAppliance` veri disklerinden verileri silmek için cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [cihazınızı sıfırlama](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+[! Ekle] [cihazdan veri sıfırlama](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - Yeni bir cihaza değiş tokuş yapıyorsanız veya yükseltiyorsanız, Cihazınızı yalnızca yeni cihazı aldıktan sonra sıfırlamanız önerilir.
@@ -67,15 +57,15 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
     1. Cihazın seri numarasını belirtin. Cihaz seri numarasını almak için, cihazın yerel Web Kullanıcı arabirimine gidin ve **genel bakış**' a gidin.  
     
-    ![Cihaz seri numarası 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![Cihaz seri numarası 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. Cihazınız için benzersiz olan beş veya daha fazla karakter tanımlayıcısı olan hizmet etiketi numarasını girin. Hizmet etiketi, cihazın sağ alt köşesinde bulunur (cihazı hissettiden başlayarak). Bilgi etiketini çekin (bir slayt etiketi bölmesi olur). Bu panel, hizmet etiketi, NIC, MAC adresi vb. gibi sistem bilgilerini içerir. 
+    2. Hizmet etiket numarasını girin. Hizmet etiket numarası, cihazınız için benzersiz olan beş veya daha fazla karakterli bir tanıtıcıdır. Hizmet etiketi, cihazın sağ alt köşesinde bulunur (cihazı hissettiden başlayarak). Bilgi etiketini çekin (bir slayt etiketi bölmesi olur). Bu panel, hizmet etiketi, NIC, MAC adresi vb. gibi sistem bilgilerini içerir. 
     
-    ![Hizmet etiketi numarası 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![Hizmet etiketi numarası 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. Açılan listeden, dönüş için bir neden seçin.
 
-    ![Cihaz dön 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![Cihaz dön 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. **Gönderim ayrıntıları**:
 
@@ -84,7 +74,7 @@ Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
 
     ![Geri dönüş cihazı 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. **Gizlilik koşullarını** gözden geçirin ve gözden geçirdiğinize ve gizlilik koşullarını kabul etmiş olduğunuz nota karşı onay kutusunu seçin.
+4. **Gizlilik koşullarını** gözden geçirin ve gözden geçirdiğinize ve gizlilik koşullarını kabul etmiş olduğunuz NotDan onay kutusunu seçin.
 
 5. **Döndürmeyi Başlat**' ı seçin.
 
@@ -109,7 +99,7 @@ Bir toplama zamanlamak için aşağıdaki adımları uygulayın.
 
     1. Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
     2. Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.
-    3. İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
+    3. İzleme numarası tırnak işareti yoksa, UPS çekme sırasında ek ücret ödemeniz gerekir.
 
     Toplama zamanlamak yerine, en yakın bırakma konumundaki Azure Stack Edge Pro 'Yu da kapatabilirsiniz.
 
@@ -123,8 +113,8 @@ Cihaz Azure veri merkezinde alındıktan sonra, cihaz hasar veya herhangi bir de
 
 Azure portal cihazı silebilirsiniz:
 
-- Siparişi yerleştirdikten ve cihaz Microsoft tarafından hazırlanmadan önce.
-- Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel İnceleme ve Azure Stack Edge Pro Operations Team çağrılarını, cihazın döndürüldüğünü doğrulamak üzere geçirir.
+- Sipariş ettikten sonra ve cihaz Microsoft tarafından hazırlanmadan önce.
+- Bir cihazı Microsoft 'a döndürdüyseniz ve Azure Stack Edge Pro işlemler ekibi, cihazın döndürüldüğünü onaylamak için çağırılır. Döndürülen cihaz, Azure veri merkezinde fiziksel incelemeyi geçirene kadar işlemler ekibi çağrı yapmaz.
 
 Cihazı başka bir abonelik veya konuma karşı etkinleştirdiyseniz, Microsoft siparişinizi bir iş günü içinde yeni abonelik veya konuma taşır. Sipariş taşındıktan sonra bu kaynağı silebilirsiniz.
 

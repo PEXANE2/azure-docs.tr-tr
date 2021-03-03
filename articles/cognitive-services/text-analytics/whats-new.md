@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/23/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736653"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -24,7 +24,12 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 
 ## <a name="february-2021"></a>Şubat 2021
 
+* `2021-01-15` [Adlandırılmış varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md) v 3.1-Preview. x içindeki PII uç noktasının model sürümü 
+  * 9 yeni dil için genişletilmiş destek
+  * Desteklenen diller için adlandırılmış varlık kategorilerinin AI kalitesi geliştirildi.
 * S0 ile S4 fiyatlandırma katmanları, 8 Mart 2021 ' de kullanımdan kaldırılıyor. S0 ile S4 fiyatlandırma katmanını kullanarak mevcut bir Metin Analizi kaynağınız varsa, standart [fiyatlandırma katmanını](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)kullanmak için onu güncelleştirmeniz gerekir.
+* [Dil algılama kapsayıcısı](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment) artık genel kullanıma sunulmuştur.
+* API 'nin v 2.1 kullanımdan kaldırılıyor. 
 
 ## <a name="january-2021"></a>Ocak 2021
 
@@ -256,7 +261,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 * [Metin Analizi API'si nedir?](overview.md)  
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
-* [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
 * [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

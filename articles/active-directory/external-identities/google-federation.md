@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687830"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -46,13 +46,7 @@ Bir Google kullanıcısı davetinizi bir daha hazırlarsa, bu deneyim, Google 'd
 
 ## <a name="sign-in-endpoints"></a>Oturum açma uç noktaları
 
-Google Guest kullanıcıları artık [ortak bir uç nokta](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (diğer bir deyişle, kiracı bağlamınızı içermeyen genel bir uygulama URL 'si) kullanarak çok kiracılı veya Microsoft ilk taraf uygulamalarınızda oturum açabilir. Aşağıda, yaygın uç noktaların örnekleri verilmiştir:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-Oturum açma işlemi sırasında, Konuk Kullanıcı **oturum açma seçeneklerini** seçer ve ardından **bir kuruluşta oturum açmayı** seçer. Ardından Kullanıcı kuruluşunuzun adını yazıp Google kimlik bilgilerini kullanarak oturum açmaya devam eder.
+Google Guest kullanıcıları artık [ortak bir uç nokta](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (diğer bir deyişle, kiracı bağlamınızı içermeyen genel bir uygulama URL 'si) kullanarak çok kiracılı veya Microsoft ilk taraf uygulamalarınızda oturum açabilir. Oturum açma işlemi sırasında, Konuk Kullanıcı **oturum açma seçeneklerini** seçer ve ardından **bir kuruluşta oturum açmayı** seçer. Ardından Kullanıcı kuruluşunuzun adını yazıp Google kimlik bilgilerini kullanarak oturum açmaya devam eder.
 
 Google Guest kullanıcıları, kiracı bilgilerinizi içeren uygulama uç noktalarını da kullanabilir, örneğin:
 

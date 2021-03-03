@@ -3,12 +3,12 @@ title: Service Bus üzerinde veri işlemleri gerçekleştirmek için Azure Servi
 description: Bu makalede, Azure Service Bus verilerine erişmek için portal tabanlı Azure Service Bus Gezginini kullanma hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092226"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738965"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Gezginini Kullanma (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Service Bus Gezgini, yönetim işlemlerinin ötesinde, abonelik, konu baş
 > [!NOTE]
 > Bu makalede, Azure portal bulunan Azure Service Bus gezgin 'in işlevleri vurgulanmıştır.
 >
-> Azure Service Bus gezgin Aracı, topluluğun sahip olduğu OSS aracı [Service Bus gezgin](https://github.com/paolosalvatori/ServiceBusExplorer)**değildir**.
+> Azure Service Bus Explorer aracı, topluluğa ait olan OSS aracı [Service Bus gezgin](https://github.com/paolosalvatori/ServiceBusExplorer) ***değildir*** .
 >
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -37,18 +37,18 @@ Service Bus Explorer aracını kullanmak için aşağıdaki görevleri gerçekle
     - [Hızlı başlangıç-kuyruklar oluşturma](service-bus-quickstart-portal.md)
     - [Hızlı başlangıç-konu oluşturma](service-bus-quickstart-topics-subscriptions-portal.md)
 - Ad alanındaki bu rollerden birinin üyesi olduğunuzdan emin olun: 
-    - [Service Bus veri sahibi](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
-    - [Katkıda Bulunan](/azure/role-based-access-control/built-in-roles#contributor) 
-    - [Sahibi](/azure/role-based-access-control/built-in-roles#owner)
+    - [Service Bus veri sahibi](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Katkıda Bulunan](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Sahibi](../role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Service Bus Gezginini Kullanma
 
 Azure Service Bus Gezginini kullanmak için, gönderme, göz atma ve alma işlemlerini gerçekleştirmek istediğiniz Service Bus ad alanına gitmeniz gerekir.
 
-Bir sıraya karşı işlem gerçekleştirmek istiyorsanız, gezinti menüsünden _ *' kuyruklar '** seçeneğini belirleyin. Bir konuya (ve ilgili aboneliklerine) yönelik işlemler gerçekleştirmek istiyorsanız **konuları** seçin. 
+Bir sıraya karşı işlemler gerçekleştirmek istiyorsanız, gezinti menüsünden **' kuyruklar '** seçeneğini belirleyin. Bir konuya (ve ilgili aboneliklerine) yönelik işlemler gerçekleştirmek istiyorsanız **konuları** seçin. 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Varlık seçimi":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="Varlık seçimi":::
 
 **' Kuyruklar '** veya **' konular '** seçeneğini belirledikten sonra, belirli kuyruğu veya konuyu seçin.
 
@@ -58,11 +58,11 @@ Sol gezinti menüsünden **' Service Bus Gezgini 'ni (Önizleme) '** seçin
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Kuyruğa veya konuya ileti gönderme
 
-Bir **kuyruğa** veya **konuya** bir ileti göndermek için, Service Bus Gezgini ' nde **_Gönder_* _ sekmesine tıklayın.
+Bir **kuyruğa** veya **konuya** bir Ileti göndermek için Service Bus Gezgini ' nde **_Gönder_** sekmesine tıklayın.
 
 Burada bir ileti oluşturmak için 
 
-1. _ *Içerik türünü** ' text/plain ', ' Application/XML ' veya ' Application/JSON ' olacak şekilde seçin.
+1. **Içerik türünü** ' text/plain ', ' Application/XML ' veya ' Application/JSON ' olacak şekilde seçin.
 2. İleti **içeriğini** ekleyin. Daha önce ayarlanan **Içerik türü** ile eşleştiğinden emin olun.
 3. **Gelişmiş özellikleri** ayarlama (isteğe bağlı)-Bu, bağıntı kimliği, ileti kimliği, etiket, ReplyTo, yaşam SÜRESI (TTL) ve zamanlanan sıraya alma süresi (zamanlanan iletiler için) içerir.
 4. **Özel özellikleri** ayarlama-bir sözlük anahtarına göre ayarlanmış herhangi bir Kullanıcı özelliği olabilir.
@@ -86,23 +86,23 @@ Gönderme işlemi başarıyla tamamlandığında,
 Service Bus Gezgini 'ndeki Receive işlevi aynı anda tek bir ileti almaya izin verir. Alma işlemi, **Receiveanddelete** modu kullanılarak gerçekleştirilir.
 
 > [!IMPORTANT]
-> Lütfen Service Bus gezgin tarafından gerçekleştirilen alma işleminin bir **_bozucu alma_* _ olduğunu, yani Ileti Service Bus gezgin aracında görüntülendiğinde kuyruktan kaldırıldığını unutmayın.
+> Service Bus gezgin tarafından gerçekleştirilen alma işleminin ***bozucu bir alım*** olduğunu unutmayın, yani ileti, Service Bus Gezgini aracında görüntülendiğinde kuyruktan kaldırılır.
 >
-> Sıradan kaldırmadan iletilere gözatmak için, göz _*_atma_*_ işlevini kullanmayı göz önünde bulundurun.
+> Sıradan kaldırmadan iletilere gözatmak için, göz ***atma*** işlevini kullanmayı göz önünde bulundurun.
 >
 
 Kuyruktan (veya sahipsiz alt sıradan) ileti almak için 
 
-1. Service Bus Gezgini 'ndeki _*_Al_*_ sekmesine tıklayın.
-2. _ *Etkin iletiler** veya alma Için **atılacak ileti** olup olmadığını görmek için ölçümleri denetleyin.
+1. Service Bus Gezgini 'ndeki ***Al*** sekmesine tıklayın.
+2. **Etkin mesajlar** veya alma Için **atılacak iletiler** olup olmadığını görmek için ölçümleri denetleyin.
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Queueaftersendölçümleri":::
 
-3. **_Queue_* _ veya _*_sahipsiz_*_ alt sıra arasında seçim yapın.
+3. * Queue _ veya _ *_Deadletter_** alt **sırası** arasında seçim yapın.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. _*_Al_*_ düğmesine ve ardından ' al ve Sil ' işlemini onaylamak için _*_Evet_*_ ' e tıklayın.
+4. ' Al ve Sil ' işlemini onaylamak için ***Al** _ düğmesine ve ardından _ *_Yes_** ' e tıklayın.
 
 
 Alma işlemi başarılı olduğunda ileti ayrıntıları kılavuzda aşağıda gösterildiği gibi görüntülenir. Ayrıntılarını göstermek için kılavuzdan iletiyi seçebilirsiniz.
@@ -114,19 +114,19 @@ Alma işlemi başarılı olduğunda ileti ayrıntıları kılavuzda aşağıda g
 
 Göz atma işleviyle, Service Bus gezginini kullanarak bir kuyruktaki en üstteki 32 iletileri veya sahipsiz sırayı görüntüleyebilirsiniz.
 
-1. Kuyruktaki iletiye gözatmak için Service Bus Gezgini ' nde _*_Peek_*_ sekmesine tıklayın.
+1. Kuyruktaki iletiye gözatmak için Service Bus Gezgini ' nde ***Peek*** sekmesine tıklayın.
 
     :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-2. Gözatmak üzere _ *etkin iletiler** veya **atılacak ileti** olup olmadığını görmek için ölçümleri denetleyin.
+2. Gözatmak üzere **etkin mesajlar** veya **atılacak iletiler** olup olmadığını görmek için ölçümleri denetleyin.
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Queueaftersendölçümleri":::
 
-3. Sonra **_Queue_* _ veya _*_sahipsiz_*_ alt sıra arasında seçim yapın.
+3. Sonra * Queue _ veya _ *_Deadletter_** alt **sırası** arasında seçim yapın.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. _*_Göz at_*_ düğmesine tıklayın. 
+4. ***Göz at*** düğmesine tıklayın. 
 
 Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıda gösterildiği gibi görünecektir. Belirli bir iletinin ayrıntılarını görüntülemek için kılavuzdan seçin. 
 
@@ -134,28 +134,28 @@ Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıd
 
 > [!NOTE]
 >
-> Peek bir bozucu işlem olmadığından, from iletisi *kuyruktan kaldırılacak.*
+> Peek bir bozucu işlem **olmadığından ileti kuyruktan** kaldırılmaz.
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>Abonelikten ileti alma
 
-Bir kuyrukla tıpkı, **_Receive_* _ işlemi bir abonelik (veya sahipsiz varlık) için de gerçekleştirilebilir. Ancak, bir abonelik konu bağlamı içinde bulunduğundan alma işlemi, belirli bir konu için Service Bus Gezgini 'ne gidilerek gerçekleştirilir.
+Bir kuyrukla tıpkı, ***alma*** işlemi bir abonelik (veya sahipsiz varlık) için de gerçekleştirilebilir. Ancak, bir abonelik konu bağlamı içinde bulunduğundan alma işlemi, belirli bir konu için Service Bus Gezgini 'ne gidilerek gerçekleştirilir.
 
 > [!IMPORTANT]
-> Service Bus gezgin tarafından gerçekleştirilen alma işleminin _*_bozucu bir alım_*_ olduğunu unutmayın, yani ileti, Service Bus Gezgini aracında görüntülendiğinde kuyruktan kaldırılır.
+> Service Bus gezgin tarafından gerçekleştirilen alma işleminin ***bozucu bir alım*** olduğunu unutmayın, yani ileti, Service Bus Gezgini aracında görüntülendiğinde kuyruktan kaldırılır.
 >
-> Sıradan kaldırmadan iletilere gözatmak için, göz _*_atma_*_ işlevini kullanmayı göz önünde bulundurun.
+> Sıradan kaldırmadan iletilere gözatmak için, göz ***atma*** işlevini kullanmayı göz önünde bulundurun.
 >
 
-1. _*_Al_*_ sekmesine tıklayın ve açılan seçicideki belirli bir _*_aboneliği_*_ seçin.
+1. ***Al** _ sekmesine tıklayın ve açılan seçicideki belirli _ *_aboneliği_** öğesini seçin.
 
     :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. _*_Abonelik_*_ veya _*_sahipsiz_*_ alt varlık arasında seçim yapın.
+2. ***Subscription** _ veya _ *_deadmektup_** alt varlık arasında seçim yapın.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonelik Orden büyük harf":::
 
-3. _*_Al_*_ düğmesine ve ardından ' al ve Sil ' işlemini onaylamak için _*_Evet_*_ ' e tıklayın.
+3. ' Al ve Sil ' işlemini onaylamak için ***Al** _ düğmesine ve ardından _ *_Yes_** ' e tıklayın.
 
 Alma işlemi başarılı olduğunda, alınan ileti aşağıda gösterildiği gibi kılavuzda görüntülenecektir. İleti ayrıntılarını görüntülemek için iletiye tıklayın.
 
@@ -163,17 +163,17 @@ Alma işlemi başarılı olduğunda, alınan ileti aşağıda gösterildiği gib
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Bir abonelikten bir iletiye göz atma
 
-Bir abonelikteki iletilere veya sahipsiz alt varlığına gözatmak için, abonelik üzerinde _*_göz atma_*_ işlevi de kullanılabilir.
+Bir abonelikteki iletilere veya sahipsiz alt varlığına gözatmak için, abonelik üzerinde ***göz atma*** işlevi de kullanılabilir.
 
-1. _*_Göz at_*_ sekmesine tıklayın ve açılan seçicideki belirli bir _*_aboneliği_*_ seçin.
+1. ***Peek** _ sekmesine tıklayın ve açılır seçicideki belirli _ *_abonelik_** öğesini seçin.
 
     :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. _*_Abonelik_*_ veya _*_sahipsiz_*_ alt varlık arasında seçim yapın.
+2. ***Subscription** _ veya _ *_deadmektup_** alt varlığı arasında seçim yapın.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonelik Orden büyük harf":::
 
-3. _*_Göz at_*_ düğmesine tıklayın.
+3. ***Göz at*** düğmesine tıklayın.
 
 Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıda gösterildiği gibi görünecektir. Belirli bir iletinin ayrıntılarını görüntülemek için kılavuzdan seçin. 
 
@@ -181,7 +181,7 @@ Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıd
 
 > [!NOTE]
 >
-> Peek bir bozucu işlem olmadığından, from iletisi *kuyruktan kaldırılacak.*
+> Peek bir bozucu işlem **olmadığından ileti kuyruktan** kaldırılmaz.
 >
 
 ## <a name="next-steps"></a>Sonraki Adımlar

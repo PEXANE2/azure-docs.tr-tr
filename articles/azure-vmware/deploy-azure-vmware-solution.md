@@ -4,12 +4,12 @@ description: Azure VMware çözümü özel bulutu 'nı dağıtmak ve yapılandı
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703871"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -62,7 +62,14 @@ Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türe
 
 Önceki adımda oluşturduğunuz sıçrama kutusunda oturum açın. Oturum açtıktan sonra bir Web tarayıcısı açın ve git ve NSX-T Yöneticisi ' ne gidin ve oturum açın.  
 
-VCenter ve NSX-T Manager konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan**' ı seçin. 
+VCenter ve NSX-T Manager konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçin ve ardından   >  **kimliği** yönetin.
+
+>[!TIP]
+>Yeni vCenter ve NSX-T parolaları oluşturmak için **Yeni bir parola oluştur** ' u seçin.
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware çözümünde bir ağ kesimi oluşturma
 

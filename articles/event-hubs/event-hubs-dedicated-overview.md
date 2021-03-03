@@ -3,12 +3,12 @@ title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Do
 description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1a15206fc35f0d536c7105aa73dfdcfc9967124d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358873"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715624"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
@@ -52,7 +52,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Bölümler | Olay Hub 'ı başına 32 | Olay Hub 'ı başına 1024<br/>CU başına 2000 |
 | Tüketici grupları | Olay Hub 'ı başına 20 | Her saniyedeki limit yok, Olay Hub 'ı başına 1000 |
 | Aracılı bağlantılar | 1.000 dahil, en fazla 5.000 | 100 K dahil ve maks |
-| İleti bekletme | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahildir |
+| [Olay saklama](event-hubs-features.md#event-retention) | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahildir |
 | Yakalama | Saat başına ödeme | Dahil |
 
 Daha fazla kota ve sınır için bkz. [Event Hubs kotalar ve sınırlar](event-hubs-quotas.md)

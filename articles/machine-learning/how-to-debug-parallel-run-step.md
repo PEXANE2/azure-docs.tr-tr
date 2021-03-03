@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: a907bf61cb7ccb8b6d287840c12a00451cad782f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690286"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep sorunlarını giderme
 
@@ -119,7 +119,7 @@ Betiği, ortam yapılandırması ve parametreleri kullanarak ParallelRunStep ö�
 - `parallel_run_config`: `ParallelRunConfig` Daha önce tanımlanan bir nesne.
 - `inputs`: Bir veya daha fazla tek tür veri kümesi paralel işleme için bölümlenecek Azure Machine Learning.
 - `side_inputs`: Bir veya daha fazla başvuru verisi veya yan giriş olarak kullanılan veri kümelerinin bölümlenmiş olması gerekmez.
-- `output`: `OutputDatasetConfig` `PipelineData` Çıkış dizinine karşılık gelen bir veya nesnesi.
+- `output`: `OutputFileDatasetConfig` Çıkış verilerinin depolanacağı dizin yolunu temsil eden nesne.
 - `arguments`: Kullanıcı betiğine geçirilen bağımsız değişkenlerin bir listesi. Giriş betiğinizi (isteğe bağlı) almak için unknown_args kullanın.
 - `allow_reuse`: Adımın, aynı ayarlarla/girişlerle çalıştırıldığında önceki sonuçları yeniden kullanıp kullanmayacağını belirtir. Bu parametre ise `False` , işlem hattı yürütmesi sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. (isteğe bağlı; varsayılan değer `True` .)
 

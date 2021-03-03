@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791433"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709912"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -41,7 +41,7 @@ Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](../../role-ba
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault)<br>[Hızlı Başlangıç](quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/)|[Başvuru](/azure/templates/microsoft.keyvault/vaults)<br>[Hızlı Başlangıç](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Başvuru](/dotnet/api/microsoft.azure.management.keyvault)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Başvuru](/java/api/com.microsoft.azure.management.keyvault)|[Başvuru](/javascript/api/@azure/arm-keyvault)|
+|[Başvuru](/cli/azure/keyvault)<br>[Hızlı Başlangıç](quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/)|[Başvuru](/azure/templates/microsoft.keyvault/vaults)<br>[Hızlı Başlangıç](./vault-create-template.md)|[Başvuru](/dotnet/api/microsoft.azure.management.keyvault)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Başvuru](/java/api/com.microsoft.azure.management.keyvault)|[Başvuru](/javascript/api/@azure/arm-keyvault)|
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 

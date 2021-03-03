@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727949"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory Azure purview 'a bağlanma (Önizleme)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Azure purview hesabını Data Factory 'a kaydettikten sonra Azure Data Factory p
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Bir purview hesabı kaydetme etiketlerinin ekran görüntüsü.":::
 
-2. Data Factory bir Azure purview hesabı kaydetmeye izin verilip verilmediğini denetleyin. Bkz. [bağlanma Azure Data Factory ve Azure purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+2. Data Factory bir Azure purview hesabı kaydetmeye izin verilip verilmediğini denetleyin. Bkz. [bağlanma Azure Data Factory ve Azure purview](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)
 
 ### <a name="register-data-factory-in-azure-purview"></a>Azure purview 'da Data Factory kaydetme
-Data Factory Azure purview ' de nasıl kaydedeceğinizi öğrenmek için bkz. [bağlanma Azure Data Factory ve Azure purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
+Data Factory Azure purview ' de nasıl kaydedeceğinizi öğrenmek için bkz. [bağlanma Azure Data Factory ve Azure purview](../purview/how-to-link-azure-data-factory.md). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Kökenini verilerini Azure purview 'a raporla
 Müşteriler Azure Data Factory ' de kopyalama, veri akışı veya SSIS paketi yürütme etkinliğini çalıştırdığınızda, müşteriler bağımlılık ilişkisini alabilir ve veri kaynakları ve hedef arasındaki tüm iş akışı işlemine ilişkin üst düzey bir genel bakışa sahip olabilir.

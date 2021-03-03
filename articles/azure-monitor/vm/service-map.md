@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624235"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717154"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -26,7 +26,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 * Windows bilgisayara veya Linux sunucusuna yüklenmiş [bağımlılık Aracısı](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../vm/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms)bölümüne bakın.
+>Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine öngörülerine ait haritalarınızı da görüntüleyebilirsiniz. Bu, VM sistem durumunu ve performansını izlemek için ek özellikler içerir. Daha fazla bilgi için bkz. [VM öngörülerine genel bakış](../vm/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM öngörüleri eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms)bölümüne bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -154,7 +154,7 @@ Grup listesindeki Grup adının yanındaki üç nokta menüsüne tıklayın.
 
 Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama sunucuları, veritabanı vb. Bir işlemin veya sunucunun oynadığı rolü bir bakışta belirlemesine yardımcı olmak için rol simgeleriyle birlikte hizmet eşlemesi açıklıyor süreci ve makine kutuları.
 
-| Rol simgesi | Description |
+| Rol simgesi | Açıklama |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
 | ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
@@ -241,7 +241,7 @@ Hizmet Eşlemesi, seçili zaman aralığında seçili sunucu için tüm kullanı
 
 ## <a name="service-desk-integration"></a>Hizmet Masası tümleştirmesi
 
-Hizmet Eşlemesi BT Hizmet Yönetimi Bağlayıcısı tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak oluşturulur. Hizmet Eşlemesi tümleştirme "Service Desk" olarak etiketlenir. Daha fazla bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı kullanarak ITSM iş öğelerini merkezi olarak yönetme](../platform/itsmc-overview.md).
+Hizmet Eşlemesi BT Hizmet Yönetimi Bağlayıcısı tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak oluşturulur. Hizmet Eşlemesi tümleştirme "Service Desk" olarak etiketlenir. Daha fazla bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı kullanarak ITSM iş öğelerini merkezi olarak yönetme](../alerts/itsmc-overview.md).
 
 **Makine hizmeti** bölmesi bölmesi seçilen zaman aralığında seçili sunucu IÇIN tüm BT hizmet yönetimi olaylarını listeler. Sunucu, geçerli öğeler varsa ve makine hizmeti bölmesi bölmesi tarafından listeleniyorsa bir simge görüntüler.
 
@@ -304,7 +304,7 @@ Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma ala
 
 ## <a name="log-analytics-records"></a>Log Analytics kayıtları
 
-Hizmet Eşlemesi bilgisayar ve işlem envanter verileri Log Analytics [arama](../log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+Hizmet Eşlemesi bilgisayar ve işlem envanter verileri Log Analytics [arama](../logs/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; bir işlem veya bilgisayar başlatıldığında ya da Hizmet Eşlemesi eklenmediyse üzerinde olduğunda oluşturulan kayıtlara ek olarak. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
 
@@ -550,7 +550,7 @@ Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Ser
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
+Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../logs/log-query-overview.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -571,7 +571,7 @@ Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı k
 
 Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
-| Kod | Description | Çözüm |
+| Kod | Açıklama | Çözüm |
 |:--|:--|:--|
 | 0x17 | Kitaplık yükleyicisi, henüz yüklenmemiş bir Windows güncelleştirmesine ihtiyaç duyuyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır gelmesi, `Error 0x80240017: Failed to execute MSU package,` KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows'da Evrensel C Çalışma Zamanı](https://support.microsoft.com/kb/2999226) makalesinin önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update'i çalıştırmanız ve sistemi birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722322"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için ses örneklerini kaydetme
 
@@ -29,9 +29,9 @@ Birçok küçük ancak önemli ayrıntıların profesyonel bir ses kaydı oluşt
 > Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Kayıt betiğinizi hazırlarken aşağıdaki tümceyi eklediğinizden emin olun. 
 
 > "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
-Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](https://aka.ms/CNV-data-privacy) hakkında daha fazla bilgi edinmek için buraya bakın.
+Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) hakkında daha fazla bilgi edinmek için buraya bakın.
 
-> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
+> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
 
 > [!TIP]
 > En yüksek kaliteli sonuçlar için, özel sesinizi geliştirmeye yardımcı olmak üzere Microsoft 'a göz önünde bulundurun. Microsoft, Cortana ve Office dahil olmak üzere kendi ürünleri için yüksek kaliteli sesler üreten kapsamlı bir deneyimle sahiptir.
@@ -112,7 +112,7 @@ Telif hakkı yasaları kapsamında, bir aktörün, telif haklı metinlerin okunm
 
 Neyse ki, bu sorunlardan tamamen kaçınmak mümkündür. İzin veya lisans olmadan kullanabileceğiniz birçok metin kaynağı vardır.
 
-|Metin kaynağı|Description|
+|Metin kaynağı|Açıklama|
 |-|-|
 |[CMU arctik yapı](http://festvox.org/cmu_arctic/)|Telif hakkı dışında çalışarak, özellikle konuşma seniş projelerinde kullanılmak üzere 1100 tümce hakkında. Harika bir başlangıç noktası.|
 |Artık işe yarar<br>Telif hakkı altında|Genellikle 1923 ' dan önce yayımlanır. Ingilizce için [Project Gutenberg](https://www.gutenberg.org/) , bu tür binlerce çalışma sunar. Dil modern Ingilizce 'ye yakın olacağı için daha yeni bir işe odaklanmak isteyebilirsiniz.|

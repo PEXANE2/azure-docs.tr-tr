@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699700"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Ayrılmış kapasite Azure Data Factory veri akışları olan kaynaklar için maliyetleri kaydetme
 
@@ -21,12 +21,12 @@ Kullandıkça Öde fiyatlarıyla karşılaştırıldığında işlem kaynakları
 
 Ayırmayı belirli bir fabrika veya tümleştirme çalışma zamanına atamanız gerekmez. Mevcut fabrikalar veya yeni dağıtılan fabrikalar otomatik olarak avantajı alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için veri akışı işlem maliyetlerine yönelik kullanıma de kayıt yapılır. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. 
 
-[Ayrılan kapasiteyi](https://portal.azure.com) [ön ödemeli veya aylık ödemeler](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md)' i seçerek satın alabilirsiniz. Ayrılmış kapasite satın almak için:
+[Ayrılan kapasiteyi](https://portal.azure.com) [ön ödemeli veya aylık ödemeler](../cost-management-billing/reservations/prepare-buy-reservation.md)' i seçerek satın alabilirsiniz. Ayrılmış kapasite satın almak için:
 
 - Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir. Ayrılmış kapasite.
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkında daha fazla bilgi için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkında daha fazla bilgi için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 > [!NOTE]
 > Satın alma ayrılmış kapasitesi, kullanımınız için belirli altyapı kaynaklarını (sanal makineler veya kümeler) önceden ayırmaz veya ayırmaz.
@@ -49,7 +49,7 @@ Ayırma boyutu, aynı işlem katmanını kullanan mevcut veya hemen dağıtılm�
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 

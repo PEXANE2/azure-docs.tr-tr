@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/01/2021
-ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6c4d63862f4e02f3fd525021921b02cde6d10f61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699343"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
@@ -24,7 +24,7 @@ ms.locfileid: "99259025"
 
 - Azure 'da bir FHıR uç noktası. Azure için, FHıR için yönetilen Azure API 'sini veya açık kaynaklı FHıR sunucusunu kullanarak bu ayarı yapabilirsiniz. [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)veya [Azure CLI](fhir-paas-cli-quickstart.md)kullanarak FHıR için yönetilen Azure API 'sini ayarlayın.
 - FHıR hizmetine erişmek için kullanacağınız bir  [istemci uygulaması](register-confidential-azure-ad-client-app.md) .
-- İstemci uygulamasına FHıR hizmetine erişmek için "FHıR veri katılımcısı" gibi izinleri vermiş olursunuz. Daha fazla bilgi [Için Azure RBAC 'YI FHıR 'ye yapılandırma](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)
+- İstemci uygulamasına FHıR hizmetine erişmek için "FHıR veri katılımcısı" gibi izinleri vermiş olursunuz. Daha fazla bilgi [Için Azure RBAC 'YI FHıR 'ye yapılandırma](./configure-azure-rbac.md)
 - Postman yüklendi. Buradan edinebilirsiniz [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHıR sunucusu ve kimlik doğrulaması ayrıntıları

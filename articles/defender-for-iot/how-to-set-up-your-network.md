@@ -4,15 +4,15 @@ description: IoT gereçlerinde Azure Defender ile çalışacak şekilde ağını
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526519"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733253"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>IoT Ağ kurulumu için Azure Defender hakkında
 
@@ -22,7 +22,7 @@ IoT için Azure Defender, sürekli ICS tehdit izleme ve cihaz bulma özellikleri
 
 **IoT şirket içi yönetim konsolu Için Defender**: şirket içi yönetim konsolu tüm ağ cihazlarının birleştirilmiş bir görünümünü sağlar. Tüm tesisleriniz genelinde anahtar OT ve IoT risk göstergelerinin ve uyarılarının gerçek zamanlı bir görünümünü sunar. SOC iş akışlarınızla ve PlayBook 'lar ile sıkı bir şekilde tümleştirilmiş, risk azaltma etkinliklerinin ve siteler arası tehditlerin kolay bir şekilde önceliklendirilmesini sunar. 
 
-**IoT portalında IoT Için Defender:** IoT için Defender uygulaması, çözüm gereçlerini satın almanıza, yazılım yüklemenize ve güncelleştirmenize ve TI paketlerini güncelleştirmenize yardımcı olabilir. 
+**IoT portalı Için Defender:** IoT için Defender uygulaması, çözüm gereçlerini satın almanıza, yazılım yüklemenize ve güncelleştirmenize ve TI paketlerini güncelleştirmenize yardımcı olabilir. 
 
 Bu makalede, IoT gereçlerine yönelik Defender ile çalışacak şekilde ağınızı başarıyla ayarlamanıza yardımcı olacak çözüm mimarisi, ağ hazırlama, ön koşullar ve daha fazlası hakkında bilgi sağlanır. Bu makaledeki bilgilerle çalışan okuyucular, işletim sistemlerinde ve bu durumda OT ve IoT ağlarının yönetilmesi ile karşılaşılmalıdır. Otomasyon mühendisleri, tesis yöneticileri, OT ağ altyapısı hizmet sağlayıcıları, siber güvenlik ekipleri, Cıos veya Cıos örnekleri sayılabilir.
 
@@ -563,7 +563,7 @@ Site dağıtımından önce bu listeyi gözden geçirin:
 
 Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT donatımı için uygun konumu tanımlamanızı sağlayacak.
 
-1.  Endüstriyel OT ortamının genel bir ağ diyagramını görüntüleyin. Örneğin:
+1.  Endüstriyel OT ortamının genel bir ağ diyagramını görüntüleyin. Örnek:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Küresel ağ için endüstriyel OT ortamının diyagramı.":::
 
@@ -605,7 +605,7 @@ Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT dona
 
     İlkeleri nelerdir? __________________________________ 
 
-    Örneğin:
+    Örnek:
 
     - Siemens
 

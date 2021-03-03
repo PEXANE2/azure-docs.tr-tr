@@ -5,27 +5,48 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718508"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
-Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Windows veya Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
+Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, nesne depolama ölçeğinde ve fiyatlarında Linux dosya sistemi uyumluluğu sağlar ve Windows veya Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
 
 > [!NOTE]
 > Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu. Şu bölgelerde Standart katman performansına sahip GPV2 Storage hesaplarını destekler: Avustralya Doğu, Kore Orta ve Orta Güney ABD. Önizleme Ayrıca tüm genel bölgelerde Premium performans katmanıyla Blok Blobu destekler.
 
+Bulutta yüksek performanslı bilgi Işlem (HPC) gibi büyük ölçekli eski iş yüklerini çalıştırmak her zaman bir zorluk olmuştur. Bunun nedeni, uygulamaların verilere erişmek için genellikle NFS veya sunucu Ileti bloğu (SMB) gibi geleneksel dosya protokollerini kullanlarıdır. Ayrıca, yerel bulut depolama hizmetleri, hiyerarşik bir ad alanı ve verimli meta veri işlemleri sağlayan dosya sistemleri yerine düz bir ad alanı ve kapsamlı meta veriler içeren nesne depolamasına odaklanır. 
+
+Blob Storage artık hiyerarşik bir ad alanını destekliyor ve NFS 3,0 protokol desteğiyle birleştirildiğinde, Azure eski uygulamaları büyük ölçekli bulut nesne depolama alanının üzerinde çalıştırmanızı çok daha kolay hale getiriyor. 
+
+## <a name="applications-and-workloads-suited-for-this-feature"></a>Bu özellik için uygun uygulamalar ve iş yükleri
+
+NFS 3,0 protokol özelliği, yüksek aktarım hızı, yüksek ölçekli, medya işleme, risk benzetimleri ve Genomiks sıralaması gibi yoğun iş yüklerinin işlenmesine en uygun seçenektir. Birden çok okuyucu ve çok sayıda iş parçacığı kullanan diğer iş yükü türleri için bu özelliği kullanmayı göz önünde bulundurmanız gerekir, bu da yüksek bant genişliği gerektirir. 
+
+## <a name="nfs-30-and-the-hierarchical-namespace"></a>NFS 3,0 ve hiyerarşik ad alanı
+
+NFS 3,0 protokol desteği, Blobların hiyerarşik bir ad alanında düzenlenmesini gerektirir. Bir depolama hesabı oluşturduğunuzda hiyerarşik bir ad alanını etkinleştirebilirsiniz. Hiyerarşik ad alanı kullanma özelliği Azure Data Lake Storage 2. tarafından sunulmuştur. Nesneleri (dosyaları), bilgisayarınızdaki dosya sisteminin organize olduğu şekilde bir dizin ve alt dizin hiyerarşisine düzenler.  Hiyerarşik ad alanı doğrusal olarak ölçeklenir ve veri kapasitesini veya performansını düşürür. Farklı protokoller hiyerarşik ad alanından genişletilir. NFS 3,0 protokolü, bu kullanılabilir protokollerden biridir.   
+
+> [!div class="mx-imgBorder"]
+> ![hiyerarşik ad alanı](./media/network-protocol-support/hierarchical-namespace-and-nfs-support.png)
+  
+## <a name="data-stored-as-block-blobs"></a>Blok Blobları olarak depolanan veriler
+
+NFS 3,0 protokol desteğini etkinleştirirseniz, Depolama hesabınızdaki tüm veriler blok Bloblar olarak depolanır. Blok Blobları, büyük miktarlarda okuma ağır verileri verimli bir şekilde işlemek için iyileştirilmiştir. Blok Blobları bloklardan oluşur. Her blok bir blok KIMLIĞIYLE tanımlanır. Blok Blobu, en fazla 50.000 blok içerebilir. Bir blok Blobun içindeki her bir blok, hesabınızın kullandığı hizmet sürümü için izin verilen en büyük boyuta kadar farklı bir boyut olabilir.
+
+Uygulamanız NFS 3,0 protokolünü kullanarak bir istek yaptığında, bu istek Blok Blobu işlemlerinin birleşimine çevrilir. Örneğin, NFS 3,0 okuma uzak yordam çağrısı (RPC) istekleri [BLOB al](/rest/api/storageservices/get-blob) işlemine çevrilir. NFS 3,0 yazma RPC istekleri, [Get bloğu listesi](/rest/api/storageservices/get-block-list), [PUT bloğu](/rest/api/storageservices/put-block)ve [PUT bloğu listesi](/rest/api/storageservices/put-block-list)birleşimine çevrilir.
+
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Genel iş akışı: depolama hesabı kapsayıcısı bağlama
 
-Bir depolama hesabı kapsayıcısını bağlamak için bu işlemleri yapmanız gerekir.
+Windows veya Linux istemcileriniz, BLOB depolama alanına bir kapsayıcıyı bir Azure sanal makinesinden (VM) veya şirket içi bir bilgisayardan bağlayabilir. Bir depolama hesabı kapsayıcısını bağlamak için bu işlemleri yapmanız gerekir.
 
 1. Aboneliğiniz ile NFS 3,0 protokol özelliğini kaydedin.
 
@@ -58,7 +79,7 @@ Bir istemci ortak veya [özel bir uç nokta](../common/storage-private-endpoints
 
 - Depolama hesabınız için yapılandırdığınız VNet. 
 
-  Bu makalenin amacı doğrultusunda bu sanal ağa *birincil VNET* olarak başvuracağız. Daha fazla bilgi için bkz. [bir sanal ağ üzerinden erişim verme](../common/storage-network-security.md#grant-access-from-a-virtual-network).
+  Bu makalede, bu VNet 'e *birincil VNET* olarak başvuracağız. Daha fazla bilgi için bkz. [bir sanal ağ üzerinden erişim verme](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
 - Birincil VNet ile aynı bölgedeki eşlenmiş bir sanal ağ.
 
@@ -97,7 +118,7 @@ Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez
 
 - Ağ kilitleme Yöneticisi (NLM) ile dosyaları kilitleme. Mount komutları `-o nolock` parametresini içermelidir.
 
-- Alt dizinleri bağlama. Kök dizinini (kapsayıcı) yalnızca bağlayabilirsiniz.
+- Alt dizinler bağlanıyor. Kök dizinini (kapsayıcı) yalnızca bağlayabilirsiniz.
 
 - Bağlama listeleme (örneğin: komutunu kullanarak `showmount -a` )
 
@@ -115,4 +136,6 @@ Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
+- Başlamak için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
+
+- Performansı iyileştirmek için bkz. [Azure Blob depolamada (Önizleme) ağ dosya sistemi (NFS) 3,0 performans konuları](network-file-system-protocol-support-performance.md).

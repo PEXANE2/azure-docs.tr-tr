@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: API kullanarak davetleri özelleştirme
               href: customize-invitation-api.md
-        - name: Dış kimlik sağlayıcılarıyla federasyona ekleme
+        - name: Kimlik sağlayıcıları
           items:
+            - name: Microsoft hesabı (Önizleme)
+              href: microsoft-account.md
             - name: Google federasyonu
               href: google-federation.md
             - name: Facebook federasyonu

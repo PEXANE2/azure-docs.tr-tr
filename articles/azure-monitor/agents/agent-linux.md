@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9e0d9162c497ff035438b5a65c6f4500ce834860
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621433"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734936"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics aracısını yükleme
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
 
 * GitHub 'da barındırılan [bir sarmalayıcı betiği kullanarak Linux için aracıyı yükler](#install-the-agent-using-wrapper-script) . Bu, bilgisayarın Internet bağlantısı olduğunda (doğrudan veya bir proxy sunucusu aracılığıyla) aracıyı yüklemek ve yükseltmek için önerilen yöntemdir.
-* Aracıyı [el ile indirip yükleyin](#install-the-agent-manually) . Bu, Linux bilgisayarın Internet erişimi olmadığında ve [Log Analytics ağ geçidi](../platform/gateway.md)aracılığıyla Azure Izleyici veya Azure Otomasyonu ile iletişim kurdukları durumlarda gereklidir. 
+* Aracıyı [el ile indirip yükleyin](#install-the-agent-manually) . Bu, Linux bilgisayarın Internet erişimi olmadığında ve [Log Analytics ağ geçidi](./gateway.md)aracılığıyla Azure Izleyici veya Azure Otomasyonu ile iletişim kurdukları durumlarda gereklidir. 
 
 >[!IMPORTANT]
-> Bu makalede açıklanan yükleme yöntemleri genellikle şirket içi veya diğer bulutlardaki sanal makineler için kullanılır. Azure sanal makineleri için kullanabileceğiniz daha verimli seçenekler için bkz. [yükleme seçenekleri](../platform/log-analytics-agent.md#installation-options) .
+> Bu makalede açıklanan yükleme yöntemleri genellikle şirket içi veya diğer bulutlardaki sanal makineler için kullanılır. Azure sanal makineleri için kullanabileceğiniz daha verimli seçenekler için bkz. [yükleme seçenekleri](./log-analytics-agent.md#installation-options) .
 
 
 
@@ -32,7 +32,7 @@ Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi i
 >OpenSSL 1.1.0 yalnızca x86_x64 platformlarında desteklenir (64-bit) ve OpenSSL, 1. x ' den önceki bir platformda desteklenmez.
 
 >[!NOTE]
->Kapsayıcılarda Log Analytics Linux aracısının çalıştırılması desteklenmez. Kapsayıcıları izlemeniz gerekiyorsa lütfen Docker konakları için [kapsayıcı izleme çözümünü](../insights/containers.md) veya Kubernetes için [kapsayıcılar için Azure izleyicisini](../insights/container-insights-overview.md) kullanın.
+>Kapsayıcılarda Log Analytics Linux aracısının çalıştırılması desteklenmez. Kapsayıcıları izlemeniz gerekiyorsa, lütfen Docker konakları veya Kubernetes için [kapsayıcı öngörüleri](../containers/container-insights-overview.md) Için [kapsayıcı izleme çözümünü](../containers/containers.md) kullanın.
 
 2018 Ağustos 'Tan sonra yayınlanan sürümlerle başlayarak, destek modelimiz için aşağıdaki değişiklikleri yapıyoruz:  
 
@@ -87,7 +87,7 @@ Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için dest
 
 Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
 
-|Gerekli paket |Description |En düşük sürüm |
+|Gerekli paket |Açıklama |En düşük sürüm |
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |
@@ -100,7 +100,7 @@ Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#s
 >Syslog iletilerini toplamak için rsyslog veya Syslog-ng gerekir. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümünün (sysklog) sürüm 5 ' te bulunan varsayılan Syslog Daemon, Syslog olay koleksiyonu için desteklenmez. Bu dağıtımların bu sürümünden Syslog verileri toplamak için rsyslog arka plan programı yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
-Linux aracısının ağ gereksinimleri için bkz. [Log Analytics aracısına genel bakış](../platform/log-analytics-agent.md#network-requirements) .
+Linux aracısının ağ gereksinimleri için bkz. [Log Analytics aracısına genel bakış](./log-analytics-agent.md#network-requirements) .
 
 ## <a name="agent-install-package"></a>Aracı yüklemesi paketi
 
@@ -190,7 +190,7 @@ Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir b
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örneğin: 
+    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

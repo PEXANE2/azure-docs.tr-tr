@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726419"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir
 | API kategorisi | Nedeni | Geçici çözüm |
 | ------------ | ------ | ---------- |
 | Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET 'teki [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) özelliğini, `currentUtcDateTime` JavaScript 'teki API 'yi veya `current_utc_datetime` Python 'da API 'yi kullanarak yeniden yürütme için güvenli olan bir API 'yi kullanın. |
-| GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | Rastgele GUID 'Leri güvenle oluşturmak için .NET veya JavaScript 'te [NEWGUID](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) kullanın `newGuid` . |
+| GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | [](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) `newGuid` `new_guid` Rastgele GUID 'leri güvenle oluşturmak için .net ' te, JavaScript 'Te ve Python 'da NEWGUID kullanın. |
 | Rastgele sayılar | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele sayılar döndüren API 'Ler belirleyici değildir. | Bir düzenleme için rastgele sayılar döndürmek üzere bir etkinlik işlevi kullanın. Etkinlik işlevlerinin dönüş değerleri her zaman yeniden yürütme için güvenlidir. |
 | Bağlamalar | Giriş ve çıkış bağlamaları genellikle g/ç ve belirleyici olmayan bir şekilde yapılır. Orchestrator işlevinin [düzenleme istemcisi](durable-functions-bindings.md#orchestration-client) ve [varlık istemci](durable-functions-bindings.md#entity-client) bağlamaları bile doğrudan kullanılması gerekir. | İstemci veya etkinlik işlevleri içindeki giriş ve çıkış bağlamalarını kullanın. |
 | Ağ | Ağ çağrıları dış sistemler içerir ve belirleyici değildir. | Ağ çağrıları yapmak için etkinlik işlevlerini kullanın. Orchestrator işlevinizden bir HTTP çağrısı yapmanız gerekiyorsa, [DAYANıKLı HTTP API 'lerini](durable-functions-http-features.md#consuming-http-apis)de kullanabilirsiniz. |

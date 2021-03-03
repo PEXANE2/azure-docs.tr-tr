@@ -1,27 +1,27 @@
 ### YamlMime:Landing
-title: IoT cihaz ve uygulama geliştirme belgeleri
-summary: Katıştırılmış cihazlar geliştirmek ve cihaz özellikli bulut uygulamaları oluşturmak için Azure IoT belgelerini inceleyin.
+title: IoT cihaz geliştirme belgeleri
+summary: Buluta bağlı katıştırılmış cihazlar ve cihaz uygulamaları geliştirmeye yönelik Azure IoT belgelerini inceleyin.
 metadata:
-  title: IoT cihaz ve uygulama geliştirme
-  description: Azure IoT kullanarak katıştırılmış cihaz geliştirme ve cihaz özellikli bulut uygulamaları oluşturma hakkında bilgi edinin.
+  title: IoT cihaz geliştirme
+  description: Azure IoT kullanarak buluta bağlı katıştırılmış cihazlar ve cihaz uygulamaları geliştirme hakkında bilgi edinin.
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100656259"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721455"
 landingContent:
-- title: IoT cihaz ve uygulama geliştirme hakkında
+- title: IoT cihaz geliştirme hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure IoT cihaz ve uygulama geliştirme nedir?
+    - text: Azure IoT cihaz geliştirme nedir?
       url: about-iot-develop.md
     - text: Hangi SDK kullanmalıyım?
       url: about-iot-sdks.md

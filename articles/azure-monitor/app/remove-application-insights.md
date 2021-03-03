@@ -3,12 +3,12 @@ title: Visual Studio 'da Application Insights kaldırma-Azure Izleyici
 description: Visual Studio 'da ASP.NET ve ASP.NET Core için Application Insights SDK 'Yı kaldırma.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981476"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704319"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio 'da Application Insights kaldırma
 
@@ -27,7 +27,7 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
     > [!NOTE]
     > İzleme koleksiyonu etkinse, öncelikle Microsoft. ApplicationInsights. TraceListener ' i kaldırmanız gerekir. `Uninstall-package Microsoft.ApplicationInsights.TraceListener`Daha sonra Microsoft. ApplicationInsights. Web ' i kaldırmak için aşağıdaki adımları izleyin.
 
-1. Aşağıdaki komutu girin: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Aşağıdaki komutu girin: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     Komutu girdikten sonra, Application Insights paketi ve tüm bağımlılıkları projeden kaldırılır.
     
@@ -39,17 +39,17 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
 
     ![Üstteki menüde Araçlar > NuGet Paket Yöneticisi > Paket Yöneticisi Konsolu ' na tıklayın.](./media/remove-application-insights/package-manager.png)
 
-1. Aşağıdaki komutu girin: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Aşağıdaki komutu girin: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     Komutu girdikten sonra, Application Insights paketi ve tüm bağımlılıkları projeden kaldırılır.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Visual Studio NuGet Kullanıcı arabirimini kullanarak kaldırma
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Visual Studio NuGet Kullanıcı arabirimini kullanarak kaldırma
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. Sağdaki *Çözüm Gezgini*    **çözüme**sağ tıklayın   ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
+1. Sağdaki *Çözüm Gezgini* **çözüme** sağ tıklayın ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
 
     Bundan sonra, projenin parçası olan tüm NuGet paketlerini düzenlemenize olanak tanıyan bir ekran görürsünüz.
     
@@ -57,26 +57,26 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
 
     > [!NOTE]
     > İzleme koleksiyonu etkinse, önce bağımlılıkları kaldırmadan Microsoft. ApplicationInsights. TraceListener ' ı kaldırmanız ve ardından aşağıdaki adımları izleyerek Microsoft. ApplicationInsights. Web 'i Kaldır seçili bir şekilde kaldırmanız gerekir.
-    
-1. "Microsoft. ApplicationInsights. Web" paketine tıklayın.Sağ tarafta, tüm projeler ' i seçmek için *Proje*' nin yanındaki onay kutusunu işaretleyin   .
-    
-1. Kaldırma sırasında tüm bağımlılıkları kaldırmak için, **Options**   projeyi seçtiğiniz bölümün altında bulunan seçenekler açılan düğmesini seçin.
 
-     *Kaldırma seçenekleri*altında *bağımlılıkları kaldır*' ın yanındaki onay kutusunu işaretleyin.
+1. **Microsoft. ApplicationInsights. Web** paketine tıklayın. Sağ tarafta, tüm projeler ' i seçmek için **Proje** ' nin yanındaki onay kutusunu işaretleyin.
+
+1. Kaldırma sırasında tüm bağımlılıkları kaldırmak için, projeyi seçtiğiniz bölümün altında bulunan **Seçenekler** açılan düğmesini seçin.
+
+    *Kaldırma seçenekleri* altında *bağımlılıkları kaldır*' ın yanındaki onay kutusunu işaretleyin.
 
 1. **Kaldır**'ı seçin.
     
     ![Ekran görüntüsü, bağımlılıkları kaldır işaretli ve kaldırılmış şekilde Microsoft. ApplicationInsights. Web penceresini gösterir.](./media/remove-application-insights/uninstall-framework.png)
 
-    Uygulamadan kaldırılacak tüm bağımlılıkları gösteren bir iletişim kutusu görüntülenir.Kaldırmak için **Tamam ' ı**seçin   .
+    Uygulamadan kaldırılacak tüm bağımlılıkları gösteren bir iletişim kutusu görüntülenir. Kaldırmak için **Tamam ' ı** seçin.
     
     ![Ekran görüntüsünde, kaldırılacak bağımlılıkları olan bir iletişim kutusu gösterilir.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights.config" ve "AiHandleErrorAttribute.cs" görünmeye devam edebilir.İki dosyayı el ile silebilirsiniz.
+1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights.config" ve "AiHandleErrorAttribute.cs" görünmeye devam edebilir. İki dosyayı el ile silebilirsiniz.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. Sağdaki *Çözüm Gezgini*    **çözüme**sağ tıklayın   ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
+1. Sağdaki *Çözüm Gezgini* **çözüme** sağ tıklayın ve **çözüm için NuGet Paketlerini Yönet**' i seçin.
 
     Bundan sonra, projenin parçası olan tüm NuGet paketlerini düzenlemenize olanak tanıyan bir ekran görürsünüz.
 

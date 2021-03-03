@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715165"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -47,7 +47,7 @@ Yeni eklenen ses etkileri özelliği, gelişmiş bir   ->  **Ses** Önayarı (vi
 
 Önceki ses efektleri modelinde yer alan **hareketli** olay türü, artık **kitle tepki** olay türünün bir parçasını ayıklamıştır.
 
-[Video Indexer](https://www.videoindexer.ai/) Web sitesinde videonuzun **ınsiteleri** görmeyi seçtiğinizde, sayfada ses efektleri gösterilir.
+[Video Indexer](https://www.videoindexer.ai/) Web sitesinde videonuzun **öngörülerini** görmeyi seçtiğinizde, sayfada ses efektleri gösterilir.
 
 :::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Ses olayı algılama":::
 

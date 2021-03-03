@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: Kavramlar
   items:
+    - name: Yapılandırma
+      href: configuration.md
+      displayName: Routing
     - name: Azure İşlevleri'yle API desteği
       href: apis.md
     - name: Yollar
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: Ön uç çerçevelerini ve kitaplıklarını yapılandırma
       href: front-end-frameworks.md
+    - name: Dağıtım belirteçlerini Sıfırla
+      href: deployment-token-management.md
 - name: Öğreticiler
   items:
     - name: Statik bir site oluşturucusundan yayımlama

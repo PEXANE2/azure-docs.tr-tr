@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d93e3ec08ff16a1fcca0c914b9e817d4ca89d60
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707957"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps ve güç otomatikleştirme için Azure Izleyici günlükleri Bağlayıcısı
 [Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
@@ -125,6 +125,6 @@ Mantıksal uygulama tamamlandığında, belirttiğiniz alıcının postasını k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure izleyici 'de günlük sorguları](./log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Logic Apps](../../logic-apps/index.yml) hakkında daha fazla bilgi edinin
 - [Güç otomatikleştirme](https://flow.microsoft.com)hakkında daha fazla bilgi edinin.

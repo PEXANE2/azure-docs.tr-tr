@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 620afb0ca5de7c6a89db107fb4616748473f0809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701663"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -481,21 +481,10 @@ Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa olu
 
 - Başarılı istekler
 - Zaman aşımı, azaltma, ağ, yetkilendirme hatalarını ve diğer hataları içeren başarısız istekler
-- Başarısız ve başarılı istekler dahil, paylaşılan erişim imzası (SAS) veya OAuth kullanan istekler
-- Analiz verilerine yönelik istekler ( **$logs** kapsayıcısı içindeki klasik günlük verileri ve **$Metric** tablolarındaki sınıf ölçüm verileri)
+- Başarısız ve başarılı istekler dahil olmak üzere Kerberos, NTLM veya paylaşılan erişim imzası (SAS) kullanan istekler
+- Analiz verileri istekleri ( **$logs** kapsayıcısında klasik günlük verileri ve **$Metric** tablolarındaki klasik ölçüm verileri)
 
 Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gibi bir istek günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
-
-### <a name="log-anonymous-requests"></a>Anonim istekleri günlüğe kaydet
-
- Aşağıdaki anonim istek türleri günlüğe kaydedilir:
-
-- Başarılı istekler
-- Sunucu hataları
-- Hem istemci hem de sunucuya yönelik zaman aşımı hataları
-- 304 hata koduyla başarısız olan istekler ALıNAMADı (değiştirilmedi)
-
-Tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Depolama hesabındaki günlüklere erişme
 
@@ -631,13 +620,12 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
    > [!NOTE]
    > Yanıt türleri **boyut değerleri** açılan listesinde listelenmemişse, kaynağın kısıtlanmayacağı anlamına gelir. Boyut değerlerini eklemek için, **boyut değerleri** açılan listesinin yanındaki **özel değer Ekle**' yi seçin, bir yönlü bir tür girin (örneğin, başarılı bir şekilde **daraltma**), **Tamam**' ı seçin ve ardından dosya paylaşımınız için geçerli tüm yanıt türlerini eklemek üzere bu adımları tekrarlayın.
 
-8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
-9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
-
+8. **Premium dosya paylaşımları** için **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşımı**' nı seçin. **Standart dosya paylaşımları** için **#10 adıma** atlayın.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımı standart bir dosya paylaşımındaysa, paylaşım başına ölçümler standart dosya paylaşımları için kullanılabilir olmadığından **Dosya** paylaşımı boyutu dosya paylaşımlarını listeetmez. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
+9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 
     > [!TIP]
@@ -654,12 +642,12 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
 4. Koşul eklemek için **Koşul Ekle** ' ye tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **dosya kapasitesi** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
-7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
+6. **Premium dosya paylaşımları** için **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşımı**' nı seçin. **Standart dosya paylaşımları** için **#8 adıma** atlayın.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımı standart bir dosya paylaşımındaysa, paylaşım başına ölçümler standart dosya paylaşımları için kullanılabilir olmadığından **Dosya** paylaşımı boyutu dosya paylaşımlarını listeetmez. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
+7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 8. **Eşik değerini** bayt cinsinden girin. Örneğin, dosya paylaşımının boyutu 100 TiB ise ve dosya paylaşımının boyutu kapasitenin %80 olduğunda bir uyarı almak istiyorsanız, bayt cinsinden eşik değeri 87960930222080.
 9. **Uyarı parametrelerinin** geri kalanını tanımlayın (toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 10. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya **eylem grubu** (e-posta, SMS vb.) eklemek için **eylem grupları Ekle** ' ye tıklayın.
@@ -673,12 +661,12 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
 4. Koşul eklemek için **Koşul Ekle** ' ye tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **Çıkış** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
-7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
+6. **Premium dosya paylaşımları** için **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşımı**' nı seçin. **Standart dosya paylaşımları** için **#8 adıma** atlayın.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımı standart bir dosya paylaşımındaysa, paylaşım başına ölçümler standart dosya paylaşımları için kullanılabilir olmadığından **Dosya** paylaşımı boyutu dosya paylaşımlarını listeetmez. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
+7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 8. Eşik değeri için **536870912000** bayt girin. 
 9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat**' i seçin.
 10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın**.

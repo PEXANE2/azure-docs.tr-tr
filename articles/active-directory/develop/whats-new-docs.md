@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225488"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687337"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform belgeleri: yenilikler
 
 Microsoft Identity platform belgelerindeki yenilikler 'e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir.
+
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Hızlı başlangıç: bir erişim belirteci alın ve bir elektron masaüstü uygulamasından Microsoft Graph API 'sini çağırın](quickstart-v2-nodejs-desktop.md)
+- [Öğretici: kullanıcılar oturum açıp bir elektron masaüstü uygulamasında Microsoft Graph API 'sini çağırma](tutorial-v2-nodejs-desktop.md)
+- [Hızlı başlangıç: uygulamanın kimliğini kullanarak bir Node.js konsol uygulamasından belirteç alma ve Microsoft Graph API 'SI çağırma](quickstart-v2-nodejs-console.md)
+- [Öğretici: Node.js konsol uygulamasında Microsoft Graph API 'sini çağırma](tutorial-v2-nodejs-console.md)
+- [Öğretici: Node.js & Express web uygulamasında oturum açma kullanıcıları](tutorial-v2-nodejs-webapp-msal.md)
+- [Geliştirdiğiniz uygulamalarda FIDO2 anahtarlarıyla passwordless kimlik doğrulamasını destekleme](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Kimlik doğrulaması yenilikleri nelerdir?](reference-breaking-changes.md)
+- [Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma](msal-net-aad-b2c-considerations.md)
+- [Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)](sample-v2-code.md)
+- [Microsoft kimlik platformu videoları](identity-videos.md)
+- [Hızlı Başlangıç: Kiracıyı ayarlama](quickstart-create-new-tenant.md)
+- [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
+- [Hızlı başlangıç: uygulamanın kimliğini kullanarak bir Java konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>Ocak 2021
 
@@ -66,17 +87,3 @@ Microsoft Identity platform belgelerindeki yenilikler 'e hoş geldiniz. Bu makal
 - [Microsoft Identity platform erişim belirteçleri](access-tokens.md)
 - [Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>Kasım 2020
-
-### <a name="new-articles"></a>Yeni makaleler
-
-- [Uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'Leri kullanma](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Microsoft Identity platform erişim belirteçleri](access-tokens.md)
-- [Uygulama yapılandırma seçenekleri (MSAL)](msal-client-application-configuration.md)
-- [Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama](active-directory-optional-claims.md)
-- [Uygulamanızı Azure AD uygulama galerisine yayımlayın](v2-howto-app-gallery-listing.md)
-- [Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma](howto-add-app-roles-in-azure-ad-apps.md)

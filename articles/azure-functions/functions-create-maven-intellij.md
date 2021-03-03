@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: ed8948ddeddf25272355cd1dc06d4e95c52f7f62
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035266"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708824"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>IntelliJ kullanarak Azure 'da ilk Java işlevinizi oluşturma
 
@@ -56,13 +56,13 @@ IntelliJ kullanarak Azure 'da Java işlevleri oluşturup yayımlamak için aşa�
 
    ![Cihaz oturumu tarayıcısı][intellij-azure-link-ms-account]
 
-6. **Abonelik Seç** iletişim kutusunda kullanmak istediğiniz abonelikleri seçin ve sonra **Tamam**’a tıklayın.
+6. **Abonelik Seç** iletişim kutusunda, kullanmak istediğiniz abonelikleri seçin ve ardından **Seç**' e tıklayın.
 
    ![Abonelik Seç iletişim kutusu][intellij-azure-login-select-subs]
    
 ## <a name="create-your-local-project"></a>Yerel projenizi oluşturma
 
-Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit for IntelliJ kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız. 
+Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit for IntelliJ kullanırsınız. Bu makalenin ilerleyen bölümlerinde işlev kodunu Azure'da yayımlayacaksınız. 
 
 1. IntelliJ karşılama iletişim kutusunu açın, yeni *proje oluştur* ' u seçerek yeni bir proje Sihirbazı açın, *Azure işlevleri*' ni seçin.
 

@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d6731673c2b9918b3b19d14f45d51a6424ef86f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c43d1e4dda10cca6b868ef814ec8298d6e21fd0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624913"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736976"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Veri analizi ve Azure portal içinde zengin görsel raporların oluşturulması için esnek bir tuval sağlamak üzere çalışma kitaplarına geçirilir. Bu makale, görünüm tasarımcısından çalışma kitaplarına geçiş yapmanıza yardımcı olur. 
 
 
 ## <a name="workbooks-overview"></a>Çalışma kitaplarına genel bakış
-[Çalışma kitapları](../insights/vminsights-workbooks.md) metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Aynı Azure kaynaklarına erişimi olan ekip üyeleri, çalışma kitaplarını da düzenleyebilir.
+[Çalışma kitapları](../vm/vminsights-workbooks.md) metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Aynı Azure kaynaklarına erişimi olan ekip üyeleri, çalışma kitaplarını da düzenleyebilir.
 
 Çalışma kitapları şu senaryolar için yararlıdır:
 

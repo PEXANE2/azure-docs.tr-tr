@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713346"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -46,13 +46,6 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | Hata İletisi      | <span style="font-weight:normal">Belirtilen SAP HANA işlemi desteklenmiyor</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez (Studio/kokpit/DBA kokpiti) |
-| **Önerilen eylem** | Daha fazla bilgi için [buraya](./sap-hana-backup-support-matrix.md#scenario-support)bakın. |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>Usererrorhanapoya Notsupportbackuptype
-
-| Hata İletisi      | <span style="font-weight:normal">Bu SAP HANA veritabanı istenen yedekleme türünü desteklemiyor</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Olası nedenler**    | Azure Backup, anlık görüntüleri kullanarak artımlı yedekleme ve yedeklemeyi desteklemez |
 | **Önerilen eylem** | Daha fazla bilgi için [buraya](./sap-hana-backup-support-matrix.md#scenario-support)bakın. |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure

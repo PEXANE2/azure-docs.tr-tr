@@ -4,21 +4,21 @@ description: Daha önce uyarılar altında Azure portal gösterildiği gibi, kla
 author: yanivlavi
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 02/14/2021
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5fe33fc85768bec53bfb2c998c2e0518f79b2236
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a862e54b5e1eddce5fcabf050eba1cfa1f103e30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734766"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 
-Azure Izleyici artık kaynakların tamamında ' tek ölçüm ' ve ' bir uyarı ' desteği sunan birleştirilmiş bir tam yığın izleme hizmeti haline geldi; daha fazla bilgi için [yeni Azure izleyici 'de blog gönderimize](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)bakın. Yeni Azure izleme ve uyarı platformları daha hızlı, daha akıllı ve genişletilebilir olacak şekilde geliştirilmiştir; bulut bilgi işlem ve Microsoft Akıllı bulut felseonuna göre daha fazla bilgi almak üzere tasarlanmıştır.
+Azure Izleyici, Azure kaynakları arasında ' tek ölçüm ' ve ' bir uyarı ' desteği sunan Birleşik bir izleme yığınıdır. Bu [blog gönderisine](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)daha fazla bilgi görüntüleyin. Yeni Azure izleme ve uyarı platformları daha hızlı, daha akıllı ve genişletilebilir olacak şekilde geliştirilmiştir; bulut bilgi işlem ve Microsoft Akıllı bulut felseonuna göre daha fazla bilgi almak üzere tasarlanmıştır.
 
-Yeni Azure izleme ve uyarı platformu sayesinde, Azure Izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılır, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda. Bu uyarıların devre dışı bırakılması tarihi daha fazla genişletildi. Kalan uyarılar geçişi, [Azure Kamu Bulutu](../../azure-government/documentation-government-welcome.md)ve [Azure Çin 21Vianet](https://docs.azure.cn/)için yakında yeni bir tarih duyurulacaktır.
+Yeni Azure izleme ve uyarı platformu sayesinde, Azure Izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılır, ancak yine de **31 mayıs 2021** tarihine kadar sınırlı kullanımda olabilir. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 
  ![Azure portal 'de klasik uyarı](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
@@ -27,20 +27,10 @@ Başlamanızı ve yeni platformda uyarılarınızı yeniden oluşturmayı öneri
 > [!IMPORTANT]
 > Etkinlik günlüğünde oluşturulan klasik uyarı kuralları kullanım dışı olmayacaktır veya geçirilmez. Etkinlik günlüğünde oluşturulan tüm klasik uyarı kuralları, yeni Azure Izleyici-uyarılarından olduğu gibi erişilebilir ve kullanılabilir. Daha fazla bilgi için bkz. [Azure izleyici kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](./alerts-activity-log.md). Benzer şekilde, hizmet durumundaki uyarılara erişilebilir ve yeni hizmet durumu bölümünde olduğu gibi kullanılabilirler. Ayrıntılar için bkz. [hizmet durumu bildirimleri uyarıları](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
-## <a name="unified-metrics-and-alerts-in-application-insights"></a>Application Insights 'daki birleştirilmiş ölçümler ve uyarılar
+## <a name="unified-metrics-and-alerts-for-azure-resources"></a>Azure kaynakları için birleştirilmiş ölçümler ve uyarılar
 
-Azure Izleyici 'nin daha yeni ölçüm platformu, şimdi Application Insights 'tan geliyor. Bu taşıma Işlemi, yalnızca önceki e-posta ve Web kancası çağrılarından çok daha fazla seçeneğe izin veren Application Insights eylem gruplarına kanca anlamına gelir. Uyarılar artık ServiceNow ve Automation runbook 'Ları gibi sesli aramalar, Azure Işlevleri, Logic Apps, SMS ve ıTSM araçları tetiklenebilir. Neredeyse gerçek zamanlı izleme ve uyarı sayesinde yeni platform, Application Insights kullanıcıların diğer Azure kaynakları genelinde izlemeyi ve Microsoft ürünlerinin izlenmesini yeniden dağıtmalarını sağlar.
+Mart 2018 ' de, Azure kaynakları için yeni nesil uyarı yayımladık. Daha yeni ölçüm platformu ve uyarı daha hızlıdır ve boyutlar kullanılarak daha ayrıntı düzeyi sağlar. Boyutlar, belirli bir değer birleşimine, koşula veya işleme dilimlemenize ve filtrelemenize izin verir. Daha yeni ölçüm uyarıları, daha fazla bildirim ve otomasyon eylemine izin veren eylem gruplarını kullanır. [Azure izleyici kullanarak ölçüm uyarılarını yönetme](./alerts-metric.md)hakkında daha fazla bilgi için bkz..
 
-Application Insights için yeni Birleşik Izleme ve uyarı şu şekilde alınacaktır:
-
-- **Application Insights platform ölçümleri** : Application Insights üründen popüler ön derlenmiş ölçümler sağlar. Daha fazla bilgi için, [yeni Azure izleyici Application Insights Için platform ölçümlerini](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)kullanma hakkında bu makaleye bakın.
-- **Application Insights kullanılabilirliği ve Web testi** , Web uygulamanızın veya sunucunuzun yanıt hızını ve kullanılabilirliğini değerlendirmenizi sağlar. Daha fazla bilgi için, [yeni Azure izleyici Application Insights kullanılabilirlik testlerini ve uyarılarını](../app/monitor-web-app-availability.md)kullanma hakkında bu makaleye bakın.
-- İzleme ve uyarılar için kendi ölçümlerini tanımlamanızı ve yaymanızı sağlayan **özel ölçümler Application Insights** . Daha fazla bilgi için, [yeni Azure izleyici Application Insights Için özel ölçüm](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)kullanma hakkında bu makaleye bakın.
-- **Application Insights hata bozukluileri (akıllı algılama 'nın parçası)** : Web UYGULAMANıZ başarısız http istekleri veya bağımlılık çağrıları ücretlerinde anormal bir artış yaşıyorsa sizi gerçek zamanlı olarak neredeyse gerçek zamanlı olarak bildirir. Daha fazla bilgi için [akıllı algılama-hata Anormallarını](../app/proactive-failure-diagnostics.md)kullanma hakkında bu makaleye bakın.
-
-## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Diğer Azure kaynakları için birleştirilmiş ölçümler ve uyarılar
-
-Mart 2018 ' den itibaren Azure kaynakları için bir sonraki nesil uyarı ve çok boyutlu izleme kullanılabilirliği vardır. Artık yeni ölçüm platformu ve uyarı, neredeyse gerçek zamanlı yetenekler sayesinde daha hızlıdır. Daha da önemlisi, daha yeni platform, belirli bir değer birleşimine, koşula veya işleme dilimlemenize ve filtrelemenize olanak sağlayan boyutlar seçeneğini içerdiği için daha yeni ölçüm platformu uyarıları daha fazla ayrıntı sağlar. Yeni Azure Izleyici 'deki tüm uyarılar gibi, daha yeni ölçüm uyarıları ActionGroups kullanımı ile daha geniştir. bildirimler, e-posta veya Web kancasının ötesinde SMS, Voice, Azure Işlevi, Otomasyon Runbook 'U ve daha fazlasını genişletmeye olanak tanır. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](./alerts-metric.md).
 Azure kaynakları için yeni ölçümler şu şekilde kullanılabilir:
 
 - **Azure Izleyici standart platform ölçümleri** : çeşitli Azure hizmetlerinden ve ürünlerinden daha önceden doldurulan popüler ölçümler sağlar. Daha fazla bilgi için [Azure izleyici 'de desteklenen ölçümler](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) ve [Azure izleyici 'de ölçüm uyarılarını destekleme](./alerts-metric-overview.md#supported-resource-types-for-metric-alerts)hakkında bu makaleye bakın.
@@ -48,24 +38,20 @@ Azure kaynakları için yeni ölçümler şu şekilde kullanılabilir:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Klasik izleme ve uyarı platformunun kullanımdan kaldırılması
 
-Daha önce belirtildiği gibi, eski klasik izleme ve uyarı genel bulut kullanıcıları için devre dışı bırakılır; ilgili API 'lerin kapatılmasını, Azure portal arabirimi ve Hizmetleri, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda de dahil olmak üzere. Özellikle, bu özellikler kullanım dışı olacaktır:
+Daha önce belirtildiği gibi, eski klasik izleme ve uyarı genel bulut kullanıcıları için devre dışı bırakıldı. Bu, ilgili API 'lerin, Azure portal arabiriminin ve hizmetlerin kapatılmasını içerir, ancak yine de **31 mayıs 2021** tarihine kadar sınırlı kullanımda olur. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 
-- Azure kaynakları için daha eski (klasik) ölçümler ve uyarılar Azure portal, [Uyarılar (klasik) bölümünde](./alerts-classic.overview.md) Şu anda kullanılabilir; [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules) kaynağı olarak erişilebilir
-- Application Insights için eski (klasik) platform ve özel ölçümler, Azure portal [Uyarılar (klasik) bölümünde](./alerts-classic.overview.md) Şu anda kullanılabilir olarak ve [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules) kaynağı olarak erişilebilir olarak uyarma
-- Daha eski (klasik) hata anomali uyarısı Şu anda Azure portal [Application Insights Içinde akıllı algılama](../app/proactive-diagnostics.md) olarak sunulmaktadır; Azure portal [Uyarılar (klasik) bölümünde](./alerts-classic.overview.md) gösterilen uyarılarla yapılandırılır
+Özellikle, devre dışı bırakma kapsamı, Azure portal [Uyarılar (klasik) bölümünde](./alerts-classic.overview.md) bulunan ve [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules) kaynakları olarak erişilebilen klasik ölçümlere yöneliktir.
 
 Diğer bir deyişle:
 
 - Klasik izleme ve uyarılar hizmeti kullanımdan kaldırılacak ve yeni uyarı kuralları oluşturmak için artık kullanılamayacak.
 - Uyarılarda (klasik) devam eden herhangi bir uyarı kuralı, bildirimler yürütülmeye ve tetiklenmesine devam edecektir.
-- Klasik izleme & uyarılarındaki uyarı kuralları, taşınabilecek bir şekilde Microsoft tarafından, birkaç hafta yayılan aşamalarda yeni Azure izleyici platformunda eşdeğer bir şekilde otomatik olarak taşınır. İşlem herhangi bir kesinti olmadan sorunsuz olacaktır ve müşterilerin izleme kapsamında hiçbir kaybı olmayacaktır.
-- Yeni uyarılar platformuna geçirilen uyarı kuralları, izleme kapsamını daha önce olduğu gibi sağlar, ancak yeni yüklerle bildirim tetikleyecektir. Klasik uyarı kuralıyla ilişkili herhangi bir e-posta adresi, Web kancası uç noktası veya mantıksal uygulama bağlantısı, geçirildiğinde ileri taşınır, ancak uyarı yükü yeni platformda farklı olacak şekilde çalışmayabilir.
-- [Otomatik olarak geçirilemeyen](../alerts/alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts) ve kullanıcılardan el ile eylem gerektiren bazı klasik uyarı kuralları çalışmaya devam edecektir.
+- En klasik uyarı kuralları geçirilecek. İşlem herhangi bir kesinti olmadan sorunsuz olacaktır ve müşterilerin izleme kapsamında hiçbir kaybı olmayacaktır.
+- Tetiklenen bildirimler, yeni yük yapısını içerir. Hedefin Yeni yapıyla çalışması için uyarlanmasını gerekecektir.
+- [Otomatik olarak geçirilemeyen bazı klasik uyarı kuralları](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts) ve kullanıcılardan çalışmaya devam etmesi için el ile gerçekleştirilen eylem gerekir.
 
 > [!IMPORTANT]
-> Microsoft Azure Izleyicisi, bazı bilgisayarlarda klasik uyarı kurallarını yeni platforma yakında [geçirmek için aşamalar aracında](../alerts/alerts-using-migration-tool.md) kullanıma alındı. Ve, hala var olan ve geçirilebilecek olan tüm klasik uyarı kurallarını zorlayarak çalıştırın. Müşterilerin, klasik uyarı kurallarının Application Insights veya [Birleşik ölçümler ve uyarılarından](#unified-metrics-and-alerts-for-other-azure-resources)oluşan [Birleşik ölçümler ve](#unified-metrics-and-alerts-in-application-insights) uyarılardan yeni yükü işlemek için, klasik uyarı kuralı yükünün otomatikleştirilmesini sağlamak için uyarlanmasını sağlamak gerekecektir. Daha fazla bilgi için bkz. [Klasik uyarı kuralı geçişine hazırlanma](../alerts/alerts-prepare-migration.md)
-
-Bu makale yeni Azure izleme & uyarı işlevselliğiyle ilgili ayrıntıların & ayrıntılarla ve kullanıcılara yeni Azure Izleyici platformunu benimseme konusunda yardımcı olan araçların kullanılabilirliğine yönelik bağlantılarla birlikte sürekli olarak güncelleştirilecektir.
+> Azure Izleyici, klasik uyarı kurallarını yeni platforma gönüllü [olarak geçirmek için bir araç](alerts-using-migration-tool.md) aldı. Hizmet devre dışı bırakıldıktan sonra, kalan kurallar otomatik olarak geçirilir. Müşterilerin klasik uyarı kuralları geçişten sonra, klasik uyarı kuralı yükünün otomatikleştirilmesini, [diğer Azure kaynaklarına yönelik Birleşik ölçümler ve uyarılardan](#unified-metrics-and-alerts-for-azure-resources)yeni yükü işlemek için uyarlanmasını sağlamak gerekecektir. Daha fazla bilgi için bkz. [Klasik uyarı kuralı geçişine hazırlanma](alerts-prepare-migration.md).
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Geçirilen uyarı kuralları fiyatlandırması
 
@@ -83,5 +69,4 @@ Aşağıda, uyarı kuralınız için ücret ödemeniz gereken durumların örnek
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Yeni Birleşik Azure İzleyicisi](../overview.md)hakkında bilgi edinin.
-* Yeni [Azure uyarıları](../platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
-
+* Yeni [Azure uyarıları](./alerts-overview.md)hakkında daha fazla bilgi edinin.

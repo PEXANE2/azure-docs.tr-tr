@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698748"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -105,7 +105,7 @@ Canlı video analizi, IoT Edge cihazında bir IoT Edge modülü olarak dağıtı
 * **İlke ihlali nedeniyle şablon dağıtımı başarısız oldu.**
     * Bu sorunu geçebilmeniz için lütfen BT yöneticinizle birlikte çalışarak SSH kimlik doğrulamasını engellemeyi atlamak için sanal makine oluşturmak üzere yapılan çağrı (ler) in olduğundan emin olun. Azure kaynaklarıyla iletişim kurmak için Kullanıcı adı ve parola gerektiren bir güvenli Savunma Ağı kullandığımızda bu gerekli olmayacaktır. Bu kimlik bilgileri, sanal makine başarıyla oluşturulduğunda, dağıtıldıktan ve IoT Hub eklendikten sonra Cloud Shell **~/CloudDrive/LVA-Sample/vm-edge-device-credentials.txt** dosyasında depolanır.
 * Kurulum betiği, hizmet sorumlusu ve/veya Azure kaynakları oluşturamaz.
-    * Bu sorunu daha fazla almak için lütfen aboneliğinizin ve Azure kiracınızın en yüksek hizmet sınırlarına ulaşmadığını kontrol edin. [Azure ad hizmeti sınırları ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) ile [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) hakkında daha fazla bilgi edinin.
+    * Bu sorunu daha fazla almak için lütfen aboneliğinizin ve Azure kiracınızın en yüksek hizmet sınırlarına ulaşmadığını kontrol edin. [Azure ad hizmeti sınırları ve kısıtlamaları](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) ile [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md) hakkında daha fazla bilgi edinin.
 
 > [!TIP]
 > Yardım etmeniz gerekebilecek ek sorunlar varsa, lütfen **[günlükleri toplayın ve bir destek bileti gönderebilirsiniz](#collect-logs-for-submitting-a-support-ticket)**. Bize e-posta göndererek bize de ulaşabilirsiniz **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .

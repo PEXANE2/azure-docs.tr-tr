@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737066"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -45,15 +45,23 @@ Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevel
 
 Belirli bir günlüğe kaydetme bildiriminin günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılayıp karşılamadığını öğrenmenin en iyi yolu, normal uygulama günlüğinizde (ör. dosya veya konsol) görüntülendiğini doğrulamadır.
 
+Ayrıca, günlükçü için bir özel durum geçirilirse, günlük iletisinin (ve özel durumun) tablo yerine tablonun altında Azure portal gösterileceğini unutmayın `exceptions` `traces` .
+
 Daha fazla ayrıntı için [Otomatik toplanan günlük yapılandırmasına](./java-standalone-config.md#auto-collected-logging) bakın.
 
 ## <a name="import-ssl-certificates"></a>SSL sertifikalarını içeri aktarma
 
 Bu bölüm, Java Aracısı kullanılırken SSL sertifikalarıyla ilgili özel durumları gidermenize ve muhtemelen düzeltmenize yardımcı olur.
 
-Bu sorunu gidermek için iki farklı yol vardır.
+Bu sorunu çözmek için aşağıdaki iki farklı yol vardır:
+* Varsayılan bir Java anahtar deposu kullanılıyorsa
+* Özel bir Java anahtar deposu kullanılıyorsa
 
-### <a name="if-using-a-default-java-keystore"></a>Varsayılan bir Java keystore kullanılıyorsa:
+Hangi yolun izleyeceğinizi bilmiyorsanız, bir JVM bağımsız değişkeni olup olmadığını kontrol edin `-Djavax.net.ssl.trustStore=...` .
+Bu tür bir JVM bağımsız _değişkeni yoksa,_ muhtemelen varsayılan Java keystore ' u kullanıyorsunuz demektir.
+Böyle bir JVM bağımsız _değişkeni varsa,_ büyük olasılıkla özel bir keystore kullanıyorsunuz ve JVM bağımsız değişkeni sizi özel keystore 'a işaret edecektir.
+
+### <a name="if-using-the-default-java-keystore"></a>Varsayılan Java keystore kullanılıyorsa:
 
 Genellikle varsayılan Java anahtar deposu, tüm CA kök sertifikalarına zaten sahip olur. Ancak, alma uç noktası sertifikası farklı bir kök sertifika tarafından imzalanabilir gibi bazı özel durumlar da olabilir. Bu nedenle, bu sorunu çözmek için aşağıdaki üç adımı öneririz:
 

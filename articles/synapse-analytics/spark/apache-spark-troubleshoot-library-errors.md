@@ -8,17 +8,17 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670622"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694929"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Kitaplık yükleme hatalarını giderme 
 Üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, bir kitaplığı sunucusuz Apache Spark havuzlarınızdan birine yükleyebilirsiniz. requirements.txt dosyasında listelenen paketler, havuz başlatma sırasında PyPi 'den indirilir. Bu gereksinimler dosyası, bu Spark havuzundan bir Spark örneği oluşturulduğu her seferinde kullanılır. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
 
-Bazı durumlarda, yüklemeye çalıştığınız kitaplığın Apache Spark havuzunuzdaki görünmediğinden emin olabilirsiniz. Bu durum genellikle, sağlanmış requirements.txt veya belirtilen kitaplıklarda bir hata olduğunda gerçekleşir. Kitaplık yükleme işleminde bir hata olduğunda, Apache Spark havuzu SYNAPSE temel çalışma zamanında belirtilen kitaplıklara geri döndürülür.
+Bazı durumlarda, Apache Spark havuzunuzdaki bir kitaplığın görünmediğinden emin olabilirsiniz. Bu durum genellikle, belirtilen requirements.txt veya belirtilen kitaplıklarda bir hata olduğunda meydana gelir. Kitaplık yükleme işleminde bir hata oluştuğunda, Apache Spark havuzu SYNAPSE temel çalışma zamanında belirtilen kitaplıklara geri döndürülür.
 
 Bu belgenin amacı, yaygın sorunları sağlamaktır ve kitaplık yükleme hatalarını ayıklamanıza yardımcı olur.
 
@@ -28,6 +28,19 @@ Apache Spark havuzunuzdaki kitaplıkları güncelleştirdiğinizde, havuz yenide
 **Yeni ayarları zorlama** seçeneğini belirleyerek değişiklikleri uygulamaya zorlayabilirsiniz. Bu ayar, seçili Spark havuzunun tüm geçerli oturumlarını sonlandıracaktır. Oturumlar sona erdikten sonra, havuzun yeniden başlatılmasını beklemeniz gerekir. 
 
 ![Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Python kitaplıklarını ekleme")
+
+## <a name="track-installation-progress"></a>Yükleme ilerlemesini izleme
+Bir havuzun yeni bir kitaplık kümesiyle güncelleştirildiği her seferinde sistem tarafından ayrılmış Spark işi başlatılır. Bu Spark işi, kitaplık yüklemesinin durumunu izlemeye yardımcı olur. Yükleme, kitaplık çakışmaları veya diğer sorunlar nedeniyle başarısız olursa Spark havuzu önceki veya varsayılan durumuna geçer. 
+
+Ayrıca, kullanıcılar bağımlılık çakışmalarını belirlemek için yükleme günlüklerini inceleyebilir veya havuz güncelleştirmesi sırasında hangi kitaplıkların yüklü olduğunu görebilirler.
+
+Bu günlükleri görüntülemek için:
+1. **İzleyici** sekmesinde Spark uygulamaları listesine gidin. 
+2. Havuz güncelunuza karşılık gelen System Spark uygulama işini seçin. Bu sistem işleri *Systemreservedjob-LibraryManagement* başlığı altında çalışır.
+   ![Sisteme ayrılan kitaplık işinin vurgualdığı ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job.png "Sistem kitaplığı işini görüntüle")
+3. **Sürücü** ve **stdout** günlüklerini görüntülemek için geçiş yapın. 
+4. Sonuçlar içinde, paketlerinizin yüklenmesiyle ilgili günlükleri görürsünüz.
+    ![Sisteme ayrılan kitaplık işi sonuçlarının vurgualdığı ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job-results.png "Sistem kitaplığı işinin ilerlemesini görüntüleme")
 
 ## <a name="validate-your-permissions"></a>İzinlerinizi doğrulayın
 Kitaplıkları yüklemek ve güncelleştirmek için, Azure SYNAPSE Analytics çalışma alanına bağlı birincil Azure Data Lake Storage 2. depolama hesabında **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** izinlerine sahip olmanız gerekir.
@@ -58,22 +71,14 @@ Bir hata alırsanız gerekli izinleriniz muhtemelen eksik olabilir. Gerekli izin
 
 Ayrıca, bir işlem hattı çalıştırıyorsanız, çalışma alanı MSI, Depolama Blobu veri sahibine veya Depolama Blobu veri katılımcısı izinlerine de sahip olmalıdır. Çalışma alanı kimliğinizi bu izin olarak verme hakkında bilgi edinmek için, bkz. [çalışma alanı yönetilen kimliği için Izin verme](../security/how-to-grant-workspace-managed-identity-permissions.md).
 
-## <a name="check-the-requirements-file"></a>Gereksinimler dosyasını denetleyin
-Sanal ortamı yükseltmek için bir ***requirements.txt*** dosyası (PIP dondurma komutundan çıkış) kullanılabilir. Bu dosya, [PIP dondurma](https://pip.pypa.io/en/stable/reference/pip_freeze/) başvuru belgelerinde açıklanan biçime uyar.
+## <a name="check-the-environment-configuration-file"></a>Ortam yapılandırma dosyasını denetleyin
+Conda ortamını yükseltmek için bir ortam yapılandırma dosyası kullanılabilir. Python havuzu yönetimi için kabul edilebilir bu dosya biçimleri [burada](./apache-spark-manage-python-packages.md)listelenmiştir.
 
 Aşağıdaki kısıtlamalara dikkat etmek önemlidir:
-   -  Pypı paket adı, tam bir sürümle birlikte listelenmiş olmalıdır. 
    -  Gereksinimler dosyasının içeriği ek boş satırlar veya karakterler içermemelidir. 
-   -  [SYNAPSE çalışma zamanı](apache-spark-version-support.md) , her sunucusuz Apache Spark havuzuna önceden yüklenmiş bir kitaplıklar kümesi içerir. Temel çalışma zamanına önceden yüklenmiş olarak gelen paketler düşürülemez. Paketler yalnızca eklenebilir veya yükseltilebilir.
+   -  [SYNAPSE çalışma zamanı](apache-spark-version-support.md) , her sunucusuz Apache Spark havuzuna önceden yüklenmiş bir kitaplıklar kümesi içerir. Temel çalışma zamanına önceden yüklenmiş olarak gelen paketler kaldırılamaz veya kaldırılamaz.
    -  PySpark, Python, Scala/Java, .NET veya Spark sürümünün değiştirilmesi desteklenmez.
-
-Aşağıdaki kod parçacığında gereksinimler dosyası için gerekli biçim gösterilmektedir.
-
-```
-absl-py==0.7.0
-adal==1.2.1
-alabaster==0.7.10
-```
+   -  Python oturumu kapsamlı kitaplıklar yalnızca bir YıML uzantılı dosyaları kabul eder.
 
 ## <a name="validate-wheel-files"></a>Tekerlek dosyalarını doğrula
 SYNAPSE sunucusuz Apache Spark havuzları, Linux dağıtımını temel alınır. Tekerlek dosyalarını doğrudan PyPI 'dan indirip yüklerken, Linux üzerinde oluşturulmuş ve Spark havuzuyla aynı Python sürümünde çalışan sürümü seçtiğinizden emin olun.
@@ -95,6 +100,9 @@ Ortamı yeniden oluşturmak ve güncelleştirmelerinizi doğrulamak için:
     ```
    
  3. ``pip install -r <provide your req.txt file>``Sanal ortamı belirtilen paketleriniz ile güncelleştirmek için kullanın. Yükleme bir hatayla sonuçlandıysa, SYNAPSE temel çalışma zamanına önceden yüklenmiş olan ve belirtilen gereksinimler dosyasında belirtilen özellikler arasında bir çakışma olabilir. Bu bağımlılık çakışmalarının, sunucusuz Apache Spark havuzunuzdaki güncelleştirilmiş kitaplıkları almak için çözümlenmelidir.
+
+>[!IMPORTANT]
+>PIP ve Conda birlikte kullanırken sorunlar Arrise olabilir. PIP ve Conda birleştirilirken, [Önerilen en iyi yöntemleri](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment)izlemek en iyisidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Varsayılan kitaplıkları görüntüleme: [Apache Spark sürüm desteği](apache-spark-version-support.md)

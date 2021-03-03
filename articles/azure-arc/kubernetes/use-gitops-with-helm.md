@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması için Held ile Gilar kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Held, Arc, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0176d614a6bf44e2bf20cc7935521a6387a3b574
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647651"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687303"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Bir yay etkin bir Kubernetes kümesinde Gilar kullanarak Held grafikleri dağıtma
 
@@ -81,7 +81,7 @@ HelmRelease hakkında daha fazla bilgi için resmi [hele işleci belgelerine bak
 İçin Azure CLı uzantısını kullanarak `k8s-configuration` , bağlı kümenizi örnek git deposuna bağlayın. Bu yapılandırmaya ad verin `azure-arc-sample` ve Flox işlecini `arc-k8s-demo` ad alanına dağıtın.
 
 ```console
-az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-chart-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Yapılandırma parametreleri

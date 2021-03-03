@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737554"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portalla MSIX uygulama iliştirmeyi ayarlama
 
@@ -36,6 +36,7 @@ Bu makalede, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'y
 - Bir dosya paylaşımında karşıya yüklenen bir MSIX görüntüde genişletilen, MSIX paketlenmiş bir uygulama.
 - Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir dosya paylaşımıdır.
 - MSIX görüntüsünü karşıya yüklediğiniz dosya paylaşımının konak havuzundaki tüm sanal makineler (VM) için de erişilebilir olması gerekir. Kullanıcılar görüntüye erişmek için salt okuma izinlerine sahip olacaktır.
+- Sertifikaya genel olarak güvenilmiyorsa, [sertifikaları Install](app-attach.md#install-certificates)' daki yönergeleri izleyin.
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>MSIX uygulama iliştirme uygulamaları için otomatik güncelleştirmeleri kapat
 

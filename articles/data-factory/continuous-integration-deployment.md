@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716537"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory’de sürekli tümleştirme ve teslim
 
@@ -20,9 +20,9 @@ ms.locfileid: "100383611"
 
 ## <a name="overview"></a>Genel Bakış
 
-Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme yöntemidir. Sürekli teslim, sürekli tümleştirme sırasında gerçekleşen testi izler ve bir hazırlama veya üretim sistemine değişiklikleri gönderir.
+Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme yöntemidir. Sürekli teslim, sürekli tümleştirme sırasında yapılan testleri izler ve değişiklikleri hazırlama veya üretim sistemine gönderir.
 
-Azure Data Factory, sürekli tümleştirme ve teslim (CI/CD), Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
+Azure Data Factory'de sürekli tümleştirme ve sürekli teslim (CI/CD) Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
 
 -    Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) tümleştirme kullanılarak otomatik dağıtım
 -    Azure Resource Manager ile Data Factory UX tümleştirmesi kullanarak Kaynak Yöneticisi şablonunu el ile karşıya yükleyin.
@@ -199,7 +199,7 @@ Data Factory ekibi, bu makalenin alt kısmında bulunan [örnek bir ön ve dağ�
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager şablonuyla özel parametreler kullanma
 
-Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak veya dışarı aktararak oluşturulan Kaynak Yöneticisi şablonunun varsayılan Kaynak Yöneticisi şablonu parametrelerini geçersiz kılabilirsiniz. Bu senaryolarda varsayılan parameterleştirme şablonunu geçersiz kılmak isteyebilirsiniz:
+Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak veya dışarı aktararak oluşturulan Kaynak Yöneticisi şablonunun varsayılan Kaynak Yöneticisi şablonu parametrelerini geçersiz kılabilirsiniz. Bu senaryolarda varsayılan Kaynak Yöneticisi parametre yapılandırmasını geçersiz kılmak isteyebilirsiniz:
 
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
@@ -210,11 +210,14 @@ Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak
     * Parametreleri azaltmak için veri akışındaki mantığı yeniden düzenleyin, örneğin, işlem hattı parametrelerinin hepsi aynı değere sahiptir, bunun yerine yalnızca genel parametreleri kullanabilirsiniz.
     * Bir veri fabrikasını birden çok veri akışına ayırın.
 
-Varsayılan parameterleştirme şablonunu geçersiz kılmak için yönetim merkezine gidin ve kaynak denetimi bölümünde **Parametreleştirme şablonu** ' nu seçin. Parametreleştirme şablonu kod düzenleyicisini açmak için **Şablonu Düzenle** ' yi seçin. 
+Varsayılan Kaynak Yöneticisi parametre yapılandırmasını geçersiz kılmak için, hub 'ı **Yönet** ' e gidin ve "kaynak denetimi" bölümünde **ARM şablonu** ' nu seçin. **ARM parametre yapılandırması** bölümünde, Kaynak Yöneticisi parametresi yapılandırma kodu düzenleyicisini açmak için "parametre yapılandırmasını düzenle" içinde **Düzenle** simgesi ' ne tıklayın.
 
 ![Özel parametreleri Yönet](media/author-management-hub/management-hub-custom-parameters.png)
 
-Özel bir parameterleştirme şablonu oluşturmak git dalınızın kök klasöründe **arm-template-parameters-definition.js** adlı bir dosya oluşturur. Bu tam dosya adını kullanmanız gerekir.
+> [!NOTE]
+> **ARM parametre yapılandırması** yalnızca "gıt modunda" etkindir. Şu anda "canlı modda" veya "Data Factory" modunda devre dışı bırakılmıştır.
+
+Özel bir Kaynak Yöneticisi parametre yapılandırması oluşturmak git dalınızın kök klasöründe **arm-template-parameters-definition.js** adında bir dosya oluşturur. Bu tam dosya adını kullanmanız gerekir.
 
 ![Özel parametreler dosyası](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ Data Factory, işbirliği dalından yayımlarken, bu dosyayı okur ve hangi öze
 Bir Kaynak Yöneticisi şablonu dışarı aktarırken, Data Factory, bu dosyayı, üzerinde çalışmakta olduğunuz daldan, işbirliği dalını değil, bu dosyayı okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz.
 
 > [!NOTE]
-> Özel bir parameterleştirme şablonu, 256 ARM şablon parametresi sınırını değiştirmez. Parametreli özellik sayısını seçmenizi ve azaltmanızı sağlar.
+> Özel bir Kaynak Yöneticisi parametre yapılandırması, 256 ARM şablon parametresi sınırını değiştirmez. Parametreli özellik sayısını seçmenizi ve azaltmanızı sağlar.
 
 ### <a name="custom-parameter-syntax"></a>Özel parametre sözdizimi
 
@@ -244,7 +247,7 @@ Aşağıda, **arm-template-parameters-definition.js** özel parametre dosyasın�
  
 ### <a name="sample-parameterization-template"></a>Örnek Parametreleştirme şablonu
 
-Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirsiniz:
+Kaynak Yöneticisi parametre yapılandırmasının nasıl görünebileceğini aşağıda görebilirsiniz:
 
 ```json
 {

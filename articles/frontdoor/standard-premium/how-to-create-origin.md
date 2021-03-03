@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
-ms.openlocfilehash: 47134712bb953d9194bd943e228bae681877dcaa
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741897"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Azure ön kapısının Standart/Premium (Önizleme) kaynağını ayarlama
 
@@ -60,16 +60,16 @@ Bir Azure ön kapısı Standart/Premium kaynağı oluşturabilmeniz için önce 
     > [!IMPORTANT]
     > Yapılandırma sırasında, kaynak ön kapı ortamlarından erişilemezse API 'Ler doğrulanmaz. Ön kapısının kaynağınıza ulaşabildiğinizden emin olun.
 
-1. Yeni kaynak oluşturmak için **Ekle** ' yi seçin. Oluşturulan kaynak, grupla birlikte kaynak listesinde görünmelidir
+1. Yeni kaynak oluşturmak için **Ekle** ' yi seçin. Oluşturulan kaynak, grupla birlikte kaynak listesinde görünmelidir.
   
-    :::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Kaynak Ekle sayfasının ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-create-origin/origin-list-view.png" alt-text="Liste görünümündeki kaynak ekran görüntüsü.":::
 
 1. Kaynak grubunu geçerli uç noktaya eklemek için **Ekle** ' yi seçin. Kaynak grubu, kaynak grup paneli içinde görünmelidir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Artık ihtiyaç kalmadığında bir kaynak grubunu silmek için **.** .. öğesine tıklayın ve ardından açılan listeden **Sil** ' i seçin.
 
-:::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Kaynak grubunun nasıl silineceğini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/how-to-create-origin/delete-origin-group.png" alt-text="Kaynak grubunun nasıl silineceğini gösteren ekran görüntüsü.":::
 
 Artık ihtiyaç kalmadığında bir kaynağı silmek için **.** .. öğesine tıklayın ve ardından açılan listeden **Sil** ' i seçin. 
 

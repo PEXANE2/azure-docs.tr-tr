@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704353"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100624463"
 >
 >Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir.  OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları kaldırmak için PowerShell 'i kullanma konusunda bir betik için aşağıdaki [PowerShell ile bağlayıcıyı kaldırma](#removing-the-connector-with-powershell) bölümüne bakın.
 >
->Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](../log-query/unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](../platform/oms-portal-transition.md).
+>Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](./unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](./oms-portal-transition.md).
 >
 > 
 
@@ -42,12 +42,12 @@ Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tan�
 
 Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından Application Insights Bağlayıcısı için toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure 'dan gelir.
 
-| Bağlı Kaynak | Desteklenir | Description |
+| Bağlı Kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| [Windows aracıları](./../agents/agent-windows.md) | No | Çözüm Windows aracılarından bilgi toplamaz. |
-| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No | Çözüm, Linux aracılarından bilgi toplamaz. |
-| [SCOM yönetim grubu](../agents/om-agents.md) | No | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
-| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Çözüm, Azure Storage 'dan bilgi toplamaz. |
+| [Windows aracıları](./../agents/agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
+| [SCOM yönetim grubu](../agents/om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](../log-query/log-query-overview.md) 'nı kullanın.
-
+- Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](./log-query-overview.md) 'nı kullanın.

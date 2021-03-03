@@ -2,16 +2,16 @@
 title: Şablonlarda Azure Key Vault kullanma
 description: Azure Resource Manager şablonu (ARM şablonu) dağıtımı sırasında güvenli parametre değerlerini geçirmek için Azure Key Vault nasıl kullanacağınızı öğrenin.
 author: mumian
-ms.date: 04/23/2020
+ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703894"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: Azure Key Vault'u ARM şablonunuzun dağıtımıyla tümleştirme
 
@@ -93,7 +93,14 @@ KIMLIĞI kopyalayıp yapıştırdığınızda, birden çok satıra ayrılabilir.
 Dağıtımı doğrulamak için, parolayı şifresiz metin olarak almak için aynı kabuk bölmesinde aşağıdaki PowerShell komutunu çalıştırın. Komutu, `$keyVaultName` önceki PowerShell betiğinden tanımlanan değişkenini kullandığından, yalnızca aynı kabuk oturumunda çalışacaktır.
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 Artık bir anahtar kasası ve gizli anahtarı hazırladınız. Aşağıdaki bölümlerde, dağıtım sırasında gizli anahtarı almak için mevcut bir şablonu nasıl özelleştireceğiniz gösterilmektedir.
@@ -141,7 +148,7 @@ Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişikl
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }

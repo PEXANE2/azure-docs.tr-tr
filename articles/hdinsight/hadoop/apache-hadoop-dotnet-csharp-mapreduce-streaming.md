@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946639"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699394"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop on MapReduce streaming Ile C# kullanma
 
@@ -20,7 +20,7 @@ Apache Hadoop akışı, MapReduce işlerini bir betik veya yürütülebilir dosy
 
 ## <a name="net-on-hdinsight"></a>HDInsight üzerinde .NET
 
-HDInsight kümeleri [mono kullanır ( https://mono-project.com) ](https://mono-project.com) .NET uygulamalarını çalıştırmak için). Tek bir sürüm 4.2.1, HDInsight sürüm 3,6 ' ye dahildir. HDInsight 'ta bulunan mono sürümü hakkında daha fazla bilgi için bkz. [farklı HDInsight sürümleriyle kullanılabilen Apache Hadoop bileşenleri](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+HDInsight kümeleri [mono kullanır ( https://mono-project.com) ](https://mono-project.com) .NET uygulamalarını çalıştırmak için). Tek bir sürüm 4.2.1, HDInsight sürüm 3,6 ' ye dahildir. HDInsight 'ta bulunan mono sürümü hakkında daha fazla bilgi için bkz. [HDInsight sürümleriyle sunulan Apache Hadoop bileşenleri](../hdinsight-component-versioning.md).
 
 .NET Framework sürümleriyle mono uyumluluğu hakkında daha fazla bilgi için bkz. [mono uyumluluk](https://www.mono-project.com/docs/about-mono/compatibility/).
 

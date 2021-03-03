@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738149"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
-Tüm 70 + metin çevirisi dillerinden ve bunlardan birine dönüştürmek için çeviriciyi kullanın. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda varsayılan olarak v3 of Translator kullanılarak kullanılabilir.
+90 metin çeviri dili ve diatilerinden herhangi birine dönüştürmek için çeviriciyi kullanın. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda varsayılan olarak v3 of Translator kullanılarak kullanılabilir.
 
 Ayrıca, kendi iş ve sektöründe kullanılan terminolojiyi anlayan sinir çeviri sistemleri oluşturmak ve uygulamanıza konuşma çevirisi eklemek için Microsoft konuşma hizmeti ile birlikte çeviriciyi de kullanabilirsiniz.
 
@@ -37,8 +37,12 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Dil | Dil kodu |
 |:-|:-:|
 | Afrikaner | `af` |
+| Arnavutça | `sq` |
+| Amhara Dili | `am` |
 | Arapça | `ar` |
+| Ermenice | `hy` |
 | Assam | `as` |
+| Dili | `az` |
 | Bangla | `bn` |
 | Boşnakça (Latin) | `bs` |
 | Bulgarca | `bg` |
@@ -74,11 +78,13 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Japonca | `ja` |
 | Kannada dili | `kn` |
 | Kazakça | `kk` |
+| Khmer | `km` |
 | Klingon | `tlh-Latn` |
 | Klingon (plqaD) | `tlh-Piqd` |
 | Korece | `ko` |
 | Kürtçe (orta) | `ku` |
 | Kürtçe (Kuzey) | `kmr` |
+| Laos | `lo` |
 | Letonca | `lv` |
 | Litvanca | `lt` |
 | Malgaşça | `mg` |
@@ -87,6 +93,8 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Maltaca | `mt` |
 | Maori dili | `mi` |
 | Marathi | `mr` |
+| Myanmar | `my` |
+| Nepal Dili | `ne` |
 | Norveççe | `nb` |
 | Odia | `or` |
 | Peştuca | `ps` |
@@ -110,6 +118,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Tamil dili | `ta` |
 | Telugu dili | `te` |
 | Tayca | `th` |
+| Tigrinya dili | `ti` |
 | Tonga dili | `to` |
 | Türkçe | `tr` |
 | Ukraynaca | `uk` |
@@ -130,6 +139,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Dil | Dil kodu |
 |:-|:-:|
 | Afrikaner | `af` |
+| Arnavutça | `sq` |
 | Arapça | `ar` |
 | Bulgarca | `bg` |
 | Katalanca | `ca` |
@@ -152,6 +162,7 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 | Macarca | `hu` |
 | İzlandaca | `is` |
 | Endonezce | `id` |
+| Dili | `iu` |
 | İrlandaca | `ga` |
 | İtalyanca | `it` |
 | Japonca | `ja` |

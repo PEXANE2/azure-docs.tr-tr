@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549872"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715573"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -80,7 +80,20 @@ Kategoriler, **yükümlülük**, **yüksek bant genişliği**, **iş kullanımı
 
 #### <a name="category-exceptions"></a>Kategori özel durumları
 
-Web kategorisi kurallarınız için özel durumlar oluşturabilirsiniz. Kural koleksiyonu grubu dahilinde daha yüksek önceliğe sahip bir izin verme veya reddetme kuralı koleksiyonu oluşturun. Örneğin, öncelik `www.linkedin.com` 200 Ile **sosyal ağı** engelleyen bir kural koleksiyonu ile öncelik 100 ile izin veren bir kural koleksiyonu yapılandırabilirsiniz. Bu, önceden tanımlanmış **sosyal ağ** Web kategorisi için özel durum oluşturur. 
+Web kategorisi kurallarınız için özel durumlar oluşturabilirsiniz. Kural koleksiyonu grubu dahilinde daha yüksek önceliğe sahip bir izin verme veya reddetme kuralı koleksiyonu oluşturun. Örneğin, öncelik `www.linkedin.com` 200 Ile **sosyal ağı** engelleyen bir kural koleksiyonu ile öncelik 100 ile izin veren bir kural koleksiyonu yapılandırabilirsiniz. Bu, önceden tanımlanmış **sosyal ağ** Web kategorisi için özel durum oluşturur.
+
+#### <a name="categorization-change"></a>Kategori değişikliği
+
+Şunları yaparsanız bir kategori değişikliği isteyebilirsiniz:
+
+ - bir FQDN veya URL 'nin farklı bir kategori altında olması gerektiğini düşünün 
+ 
+veya 
+
+- kategorilere ayrılmamış bir FQDN veya URL için önerilen kategorili
+
+' De bir istek göndermek için hoş geldiniz [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
+ 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -98,6 +111,7 @@ Güvenilmeyen müşteri tarafından imzalanan sertifikalar|Bir intranet tabanlı
 |HTTP için ıDPS ile ilgili uyarılarda yanlış kaynak IP adresi (TLS denetimi olmadan).|Düz metin HTTP trafiği kullanımda olduğunda ve ıDPS yeni bir uyarı yayınlar ve hedef bir IP adresi ise, görünen kaynak IP adresi yanlış olur (özgün IP adresi yerine iç IP adresi görüntülenir).|GA için zamanlanan düzelme.|
 |Sertifika yayma|Güvenlik duvarında bir CA sertifikası uygulandıktan sonra, sertifikanın etkili olması 5-10 dakika sürebilir.|GA için zamanlanan düzelme.|
 |IDPS atlama|IDPS atlama, TLS ile sonlandırılan trafik için çalışmaz ve kaynak IP adresi ve kaynak IP grupları desteklenmez.|GA için zamanlanan düzelme.|
+|TLS 1,3 desteği|TLS 1,3 kısmen desteklenir. İstemciden güvenlik duvarına olan TLS tüneli, TLS 1,2 ' i temel alır ve güvenlik duvarındaki dış Web sunucusuna TLS 1,3 ' i temel alır.|Güncelleştirmeler araştırılmaktadır.|
 
 
 

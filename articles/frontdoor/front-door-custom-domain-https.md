@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368341"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740792"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmalı ve en az bir özel etki alanı eklemelisiniz. Daha fazla bilgi için bkz. [Öğretici: Front Door’unuza özel etki alanı ekleme](front-door-custom-domain.md).
 
@@ -84,7 +84,7 @@ HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz
 > [!WARNING]
 > Azure ön kapısı şu anda yalnızca ön kapı yapılandırmasıyla aynı abonelikteki Key Vault hesaplarını desteklemektedir. Front Door’dan farklı bir abonelik altındaki Key Vault’un seçilmesi hatayla sonuçlanır.
 
-2. Azure Key Vault sertifikaları: Zaten bir sertifikanız varsa, bu sertifikayı doğrudan Azure Key Vault hesabınıza yükleyebilir veya doğrudan Azure Key Vault’un tümleştirildiği iş ortağı CA'lardan birinin Azure Key Vault’u üzerinden yeni bir sertifika oluşturabilirsiniz. Sertifikanızı **gizli**değil bir **sertifika** nesnesi olarak karşıya yükleyin.
+2. Azure Key Vault sertifikaları: Zaten bir sertifikanız varsa, bu sertifikayı doğrudan Azure Key Vault hesabınıza yükleyebilir veya doğrudan Azure Key Vault’un tümleştirildiği iş ortağı CA'lardan birinin Azure Key Vault’u üzerinden yeni bir sertifika oluşturabilirsiniz. Sertifikanızı **gizli** değil bir **sertifika** nesnesi olarak karşıya yükleyin.
 
 > [!NOTE]
 > Kendi TLS/SSL sertifikanız için, ön kapı EC şifreleme algoritmalarına sahip sertifikaları desteklemez.
@@ -133,12 +133,7 @@ Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapısın
     Azure ön kapısı aşağıdaki bilgileri listeler: 
     - Abonelik kimliğiniz için anahtar kasası hesapları. 
     - Seçilen anahtar kasası altındaki sertifikalar (gizli diziler). 
-    - Kullanılabilir sertifika sürümleri. 
-
-> [!NOTE]
-> Sertifika sürümünün boş bırakılması şu şekilde olur:
-> - Sertifikanın en son sürümü seçili.
-> - Key Vault sertifikanın daha yeni bir sürümü kullanılabilir olduğunda, sertifikaların otomatik olarak en son sürüme dönmesi.
+    - Kullanılabilir sertifika sürümleri.
  
 5. Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez. [Yayılma için bekleme](#wait-for-propagation) adımına geçin.
 
@@ -280,7 +275,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 * Bir etki alanını doğrulayın.
 * Özel etki alanınız için HTTPS 'yi etkinleştirin.
 
-Ön kapıya yönelik coğrafi filtreleme ilkesi ayarlamayı öğrenmek için bir sonraki öğreticiye geçin.
+Ön kapılarınız için coğrafi filtreleme ilkesi ayarlamayı öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Coğrafi filtreleme ilkesi ayarlama](front-door-geo-filtering.md)

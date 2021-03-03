@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702581"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
@@ -102,6 +102,6 @@ Genel olarak, bir nesne (bir Anahtar Kasası veya bir anahtar veya gizli dizi) s
 
 Aşağıdaki iki kılavuz, geçici silme kullanmaya yönelik birincil kullanım senaryolarını sunmaktadır.
 
-- [Portal ile Key Vault geçici silme kullanma](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal)
+- [Portal ile Key Vault geçici silme kullanma](./key-vault-recovery.md?tabs=azure-portal)
 - [Key Vault geçici silmeyi PowerShell ile kullanma](./key-vault-recovery.md) 
 - [Key Vault geçici silmeyi CLI ile kullanma](./key-vault-recovery.md)

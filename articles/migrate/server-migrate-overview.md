@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895637"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715131"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -28,7 +28,7 @@ Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu s
 **Ayar** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
 **Azure izinleri** | Azure geçişi projesi oluşturma ve Azure geçiş gereci dağıtırken oluşturulan Azure AD uygulamalarını kaydetme izinlerine sahip olmanız gerekir. | Azure aboneliğinde katkıda bulunan izinlerine sahip olmanız gerekir. 
-**Çoğaltma** | VCenter Server en fazla 300 VM aynı anda çoğaltılabilir.<br/> Geçiş için 50 ' den fazla VM varsa, birden çok VM toplu işi oluşturun.<br/> Tek seferde daha fazla çoğaltma performansı etkiler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.| Çoğaltma gereci ölçeklendirerek çoğaltma kapasitesi artar.
+**Çoğaltma** | VCenter Server en fazla 500 VM aynı anda çoğaltılabilir. Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.| Çoğaltma gereci ölçeklendirerek çoğaltma kapasitesi artar.
 **Gereç dağıtımı** | [Azure geçişi](migrate-appliance.md) gereci şirket içinde dağıtılır. | [Azure geçişi çoğaltma](migrate-replication-appliance.md) gereci şirket içinde dağıtılır.
 **Site Recovery uyumluluğu** | Uyumluluk. | Site Recovery kullanarak bir makine için çoğaltma ayarladıysanız Azure geçişi sunucu geçişi ile çoğaltamaz.
 **Hedef disk** | Yönetilen diskler | Yönetilen diskler

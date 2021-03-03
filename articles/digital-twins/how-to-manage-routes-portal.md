@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715726"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -76,7 +76,7 @@ Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS u
 1. _Kaydet_' i seçerek uç noktanızı oluşturmayı tamamlayın.
 
 >[!IMPORTANT]
-> Uç noktanız için kimlik tabanlı kimlik doğrulamasını başarılı bir şekilde kullanabilmek için, [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](how-to-enable-managed-identities.md)bölümündeki adımları izleyerek örneğiniz için bir yönetilen kimlik oluşturmanız gerekir.
+> Uç noktanız için kimlik tabanlı kimlik doğrulamasını başarılı bir şekilde kullanabilmek için, [*nasıl yapılır: yönlendirme olayları için yönetilen kimliği etkinleştirme (Önizleme)*](./how-to-enable-managed-identities-portal.md)bölümündeki adımları izleyerek örneğiniz için bir yönetilen kimlik oluşturmanız gerekir.
 
 Uç noktanızı oluşturduktan sonra, üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz: 
 

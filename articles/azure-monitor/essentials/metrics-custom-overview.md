@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 9fba5b7636bcef68b55528350ea63ce9d386bb16
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1e61d0b8eb8312c78acabbd087208bb64a2d0d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734460"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
-Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](../platform/metrics-supported.md)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. 
+Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](./metrics-supported.md)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. 
 
 Daha derin Öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz. Bu **özel** ölçümler, uygulama Telemetriniz, Azure kaynaklarınızda çalışan bir aracı, hatta dışarıdan bir izleme sistemi ve doğrudan Azure izleyici 'ye gönderilebilir. Azure Izleyici 'de yayımlandıktan sonra, Azure tarafından oluşturulan standart ölçümleri kullanarak Azure kaynaklarınızın ve uygulamalarınızın özel ölçümlerine gözatabilir, bunları sorgulayabilir ve uyarı verebilirsiniz.
 
@@ -223,5 +223,3 @@ Farklı hizmetlerden özel ölçümler kullanın:
  - [Telegraf aracısını kullanan Linux sanal makinesi](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST API](./metrics-store-custom-rest-api.md)
  - [Klasik Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)
- 
-

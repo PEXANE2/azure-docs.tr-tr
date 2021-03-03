@@ -31,6 +31,8 @@
       items:
         - name: Bağlı Makine aracısına genel bakış
           href: agent-overview.md
+        - name: Ölçekli dağıtım için plan
+          href: plan-at-scale-deployment.md
         - name: Makineleri Azure portalından Azure Arc’a bağlama
           href: onboard-portal.md
         - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama

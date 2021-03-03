@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596159"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729870"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracıları ve uzantıları otomatik sağlama
 
@@ -38,7 +38,7 @@ Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, 
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:          | **Özellik**: otomatik sağlama genel kullanıma sunuldu (GA)<br>**Aracı ve uzantılar**: Azure VM 'ler için log ANALYTICS Aracısı GA, Microsoft bağımlılık Aracısı önizleme aşamasındadır, Kubernetes Için Ilke eklentisi GA                |
 | Fiyat                | Ücretsiz                                                                                                                                                                                                                         |
-| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![No](./media/icons/no-icon.png) Azure yay makineleri<br>![No](./media/icons/no-icon.png) Kubernetes düğümleri<br>![No](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
+| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![Hayır](./media/icons/no-icon.png) Azure yay makineleri<br>![Hayır](./media/icons/no-icon.png) Kubernetes düğümleri<br>![Hayır](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
 | Larının                 | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, Çin gov, diğer gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
@@ -85,7 +85,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
         Zaten bir Log Analytics çalışma alanınız varsa, aynı çalışma alanını kullanmak isteyebilirsiniz (çalışma alanında okuma ve yazma izinleri gerekir). Bu seçenek, kuruluşunuzda merkezi bir çalışma alanı kullanıyorsanız ve onu güvenlik verileri toplama için kullanmak istiyorsanız yararlıdır. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../azure-monitor/logs/manage-access.md)konusunda daha fazla bilgi edinin.
 
-        Seçtiğiniz çalışma alanınızda zaten bir güvenlik veya Securitycenterücretsiz çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. Aksi takdirde, çalışma alanına bir güvenlik merkezi çözümü yüklersiniz:
+        Seçtiğiniz çalışma alanınızda zaten "güvenlik" veya "SecurityCenterFree" çözümü etkinse, fiyatlandırma otomatik olarak ayarlanır. Aksi takdirde, çalışma alanına bir güvenlik merkezi çözümü yüklersiniz:
 
         1. Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları**' nı açın.
         1. Aracıları bağlanacağınız çalışma alanını seçin.
@@ -235,7 +235,7 @@ Aşağıdaki kullanım örnekleri, zaten bir aracı veya uzantının yüklü old
 
 - **Log Analytics Aracısı makineye yüklendi, ancak uzantı olarak değil (doğrudan aracı)** -Log Analytics ARACıSı doğrudan VM 'ye (Azure uzantısı olarak değil) yüklenirse, güvenlik merkezi Log Analytics aracı uzantısını yükler ve Log Analytics aracısını en son sürüme yükseltebilirler.
 Yüklü aracı zaten yapılandırılmış çalışma alanına (ler) rapor etmeye devam eder ve ek olarak güvenlik merkezi 'nde yapılandırılan çalışma alanına rapor eder (Windows makinelerde çoklu barındırma desteklenir).
-Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (Güvenlik Merkezi 'nin varsayılan çalışma alanı değil), bu çalışma alanına raporlama yapan VM 'Ler ve bilgisayarlardan gelen olayları işlemeye başlamak için Güvenlik Merkezi 'nin "güvenlik/" securityFree "çözümünü yüklemeniz gerekir.
+Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (Güvenlik Merkezi 'nin varsayılan çalışma alanı değil), bu çalışma alanına raporlama yapan VM 'Ler ve bilgisayarlardan gelen olayları işlemeye başlamak için Güvenlik Merkezi 'nin "güvenlik" veya "SecurityCenterFree" çözümünü yüklemeniz gerekir.
 
     Linux makineler için, aracı çoklu barındırma henüz desteklenmiyor. bu nedenle, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama gerçekleşmez ve makinenin yapılandırması değiştirilmez.
 
@@ -244,8 +244,8 @@ Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (G�
 - **System Center Operations Manager Aracısı makineye yüklendi** -güvenlik merkezi, Log Analytics aracı uzantısını mevcut Operations Manager yan yana yükleyecek. Mevcut Operations Manager Aracısı normal olarak Operations Manager sunucusuna rapor etmeye devam edecektir. Operations Manager Aracısı ve Log Analytics Aracısı, bu işlem sırasında en son sürüme güncellenecek ortak çalışma zamanı kitaplıklarını paylaşır. Operations Manager Agent 2012 sürümü **yüklüyse, otomatik sağlamayı etkinleştirmeyin.**
 
 - **Önceden var olan BIR VM uzantısı var**:
-    - Izleme Aracısı bir uzantı olarak yüklendiğinde, uzantı yapılandırması raporlamaya yalnızca tek bir çalışma alanına izin verir. Güvenlik Merkezi, mevcut kullanıcı çalışma alanları bağlantılarını geçersiz kılmaz. Güvenlik Merkezi, "güvenlik" veya "securityFree" çözümünün yüklenmiş olması şartıyla, zaten bağlı olan çalışma alanındaki VM 'den güvenlik verilerini depolar. Güvenlik Merkezi bu işlemdeki en son sürüme uzantı sürümünü yükseltebilir.  
-    - Var olan uzantının hangi çalışma alanına veri gönderdiğini görmek için, [Azure Güvenlik Merkezi ile bağlantıyı doğrulamak](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)üzere testi çalıştırın. Alternatif olarak, Log Analytics çalışma alanlarını açabilir, bir çalışma alanı seçebilir, sanal makineyi seçebilir ve Log Analytics Aracı bağlantısına bakabilirsiniz. 
+    - Izleme Aracısı bir uzantı olarak yüklendiğinde, uzantı yapılandırması raporlamaya yalnızca tek bir çalışma alanına izin verir. Güvenlik Merkezi, mevcut kullanıcı çalışma alanları bağlantılarını geçersiz kılmaz. Güvenlik Merkezi, "güvenlik" veya "SecurityCenterFree" çözümünün yüklenmiş olduğu bir çalışma alanındaki VM 'den güvenlik verilerini depolar. Güvenlik Merkezi bu işlemdeki en son sürüme uzantı sürümünü yükseltebilir.
+    - Var olan uzantının hangi çalışma alanına veri gönderdiğini görmek için, [Azure Güvenlik Merkezi ile bağlantıyı doğrulamak](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)üzere testi çalıştırın. Alternatif olarak, Log Analytics çalışma alanlarını açabilir, bir çalışma alanı seçebilir, sanal makineyi seçebilir ve Log Analytics Aracı bağlantısına bakabilirsiniz.
     - Log Analytics aracısının istemci iş istasyonlarında yüklü olduğu bir ortamınız varsa ve var olan bir Log Analytics çalışma alanına raporlama yaptıysanız, işletim sisteminizin desteklendiğinden emin olmak için [Azure Güvenlik Merkezi tarafından desteklenen işletim sistemlerinin](security-center-os-coverage.md) listesini gözden geçirin. Daha fazla bilgi için bkz. [var olan Log Analytics müşterileri](./faq-azure-monitor-logs.md).
  
 

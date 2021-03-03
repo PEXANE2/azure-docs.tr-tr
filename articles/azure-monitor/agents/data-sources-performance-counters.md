@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711561"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerini toplamaya ek olarak neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla Log Analytics aracılarından performans sayaçlarını toplayabilir.
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](../platform/log-analytics-agent.md) performans verilerinin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](./log-analytics-agent.md) performans verilerinin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
 
 ![Performans sayaçları](media/data-sources-performance-counters/overview.png)
 
@@ -28,7 +28,7 @@ Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını il
 
 Windows performans sayaçları için her performans sayacı için belirli bir örnek seçebilirsiniz. Linux performans sayaçları için, seçtiğiniz her sayacın örneği, üst sayacın tüm alt sayaçları için geçerlidir. Aşağıdaki tabloda hem Linux hem de Windows performans sayaçları için kullanılabilen ortak örnekler gösterilmektedir.
 
-| Örnek adı | Description |
+| Örnek adı | Açıklama |
 | --- | --- |
 | \_Toplam |Tüm örneklerin toplamı |
 | \* |Tüm örnekler |
@@ -77,7 +77,7 @@ Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma
 
 Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
-| Parametreler | Description |
+| Parametreler | Açıklama |
 |:--|:--|
 | nesne \_ adı | Koleksiyonun nesne adı. |
 | örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
@@ -205,7 +205,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 ## <a name="log-queries-with-performance-records"></a>Performans kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | Perf |Tüm performans verileri |
 | Perf &#124; Computer = = "Bilgisayarım" |Belirli bir bilgisayardaki tüm performans verileri |
@@ -224,5 +224,5 @@ Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının far
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * MySQL ve Apache HTTP sunucusu dahil [Linux uygulamalarından performans sayaçlarını toplayın](data-sources-linux-applications.md) .
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
-* Toplanan verileri, ek görselleştirmeler ve analizler için [Power BI](../platform/powerbi.md) dışa aktarın.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.  
+* Toplanan verileri, ek görselleştirmeler ve analizler için [Power BI](../visualize/powerbi.md) dışa aktarın.

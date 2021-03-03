@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734137"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
-Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
+Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](./log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -135,5 +135,4 @@ Active Directory veya WSUS 'tan oluşturulan her bilgisayar grubu üyeliğinin L
 | `TimeGenerated` |Bilgisayar grubunun oluşturulduğu veya güncelleştirildiği tarih ve saat. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
-
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](./log-query-overview.md) hakkında bilgi edinin.

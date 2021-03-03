@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651978"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690813"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,12 +187,12 @@ Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST
 
 ## <a name="faq---advanced-classification-capabilities"></a>SSS-gelişmiş sınıflandırma özellikleri
 
-**Soru**: [Azure PURVIEW](https://docs.microsoft.com/azure/purview/overview) , SQL veri bulma & sınıflandırmasının yerini alacak veya SQL veri bulma & sınıflandırması yakında kullanımdan kalkacaktır mi?
-**Cevap**: SQL veri bulma & sınıflandırmasını desteklemeye devam ediyoruz ve gelişmiş sınıflandırma özelliklerini ve veri yönetimini sağlamak için daha zengin özellikleri olan [Azure purview](https://docs.microsoft.com/azure/purview/overview) 'ı benimsemenizi öneririz. Herhangi bir hizmeti, özelliği, API 'yi veya SKU 'yu devre dışı bırakmaya karar verirse, bir geçiş veya geçiş yolu da dahil olmak üzere ön bildirim alırsınız. Buradan Microsoft yaşam döngüsü ilkeleri hakkında daha fazla bilgi edinin.
+**Soru**: [Azure PURVIEW](../../purview/overview.md) , SQL veri bulma & sınıflandırmasının yerini alacak veya SQL veri bulma & sınıflandırması yakında kullanımdan kalkacaktır mi?
+**Cevap**: SQL veri bulma & sınıflandırmasını desteklemeye devam ediyoruz ve gelişmiş sınıflandırma özelliklerini ve veri yönetimini sağlamak için daha zengin özellikleri olan [Azure purview](../../purview/overview.md) 'ı benimsemenizi öneririz. Herhangi bir hizmeti, özelliği, API 'yi veya SKU 'yu devre dışı bırakmaya karar verirse, bir geçiş veya geçiş yolu da dahil olmak üzere ön bildirim alırsınız. Buradan Microsoft yaşam döngüsü ilkeleri hakkında daha fazla bilgi edinin.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 
 - Sınıflandırılan gizli verilerinize erişimi izlemek ve denetlemek için [Azure SQL denetimini](../../azure-sql/database/auditing-overview.md) yapılandırmayı düşünün.
 - Veri bulma & sınıflandırması içeren bir sunum için bkz. [SQL verilerini koruma, sınıflandırma ve etiketleme & | Veriler kullanıma sunuldu](https://www.youtube.com/watch?v=itVi9bkJUNc).
-- T-SQL komutlarını kullanarak Azure SQL veritabanlarınızı ve Azure SYNAPSE analizlerinizi Azure purview etiketleriyle sınıflandırmak için bkz. Azure [purview etiketlerini kullanarak Azure SQL verilerinizi sınıflandırın](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels).
+- T-SQL komutlarını kullanarak Azure SQL veritabanlarınızı ve Azure SYNAPSE analizlerinizi Azure purview etiketleriyle sınıflandırmak için bkz. Azure [purview etiketlerini kullanarak Azure SQL verilerinizi sınıflandırın](../../sql-database/scripts/sql-database-import-purview-labels.md).

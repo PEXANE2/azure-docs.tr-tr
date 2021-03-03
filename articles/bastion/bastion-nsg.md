@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700227"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
 
@@ -32,11 +32,15 @@ Bu diyagramda:
 
 Bu bölümde, Kullanıcı ve Azure savunma arasındaki ağ trafiği ve sanal ağınızdaki VM 'Leri hedeflemek için:
 
+> [!IMPORTANT]
+> Azure savunma kaynağınız ile bir NSG kullanmayı seçerseniz, aşağıdaki giriş ve çıkış trafiği kurallarını da oluşturmanız **gerekir** . NSG 'inizdeki aşağıdaki kuralların herhangi birini dışarıda bırakmak, Azure savunma kaynağınızın gelecekte gerekli güncelleştirmeleri almasını engeller ve bu nedenle kaynağınızı gelecekteki güvenlik açıklarına karşı açın.
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure savunma özellikle ***AzureBastionSubnet** _ öğesine dağıtılır.
+Azure savunma, özellikle ***AzureBastionSubnet***'e dağıtılır.
 
-_ Giriş **trafiği:**
+* **Giriş trafiği:**
 
    * **Genel İnternet 'ten gelen trafik:** Azure savunma, giriş trafiği için genel IP üzerinde bağlantı noktası 443 ' ün etkin olmasını gerektiren bir genel IP oluşturur. 3389/22 numaralı bağlantı noktası, AzureBastionSubnet açık olması gerekmez.
    * **Azure savunma denetim düzleminin giriş trafiği:** Denetim düzlemi bağlantısı için **Gatewaymanager** hizmet etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, denetim düzlemi, diğer bir deyişle, ağ geçidi yöneticisinin Azure ile iletişim kurabilmesine olanak sağlar.

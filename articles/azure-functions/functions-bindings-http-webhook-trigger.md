@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054966"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726402"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -547,7 +547,7 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
@@ -751,7 +751,7 @@ Aşağıdaki yapılandırma, `{id}` parametresinin bağlamaya nasıl geçtiğini
 
 Yol parametreleri kullandığınızda, `invoke_URL_template` işleviniz için bir otomatik olarak oluşturulur. İstemcileriniz, URL 'sini kullanarak işlevinizi çağırırken URL 'de geçmesi gereken parametreleri anlamak için URL şablonunu kullanabilir. [Azure Portal](https://portal.azure.com) http ile tetiklenen işlevlerinizin birine gidin ve **Işlev URL 'sini al**' ı seçin.
 
-`invoke_URL_template` [List Işlevleri](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) veya [Get Işlevi](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)için Azure Resource Manager API 'lerini kullanarak programlı olarak öğesine erişebilirsiniz.
+`invoke_URL_template` [List Işlevleri](/rest/api/appservice/webapps/listfunctions) veya [Get Işlevi](/rest/api/appservice/webapps/getfunction)için Azure Resource Manager API 'lerini kullanarak programlı olarak öğesine erişebilirsiniz.
 
 ## <a name="working-with-client-identities"></a>İstemci kimlikleriyle çalışma
 

@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691952"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -159,7 +159,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
 
     1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denetliyor. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
-        Ek &nbsp; yapılandırma|Description|&nbsp;Öğretici için &nbsp; değer
+        Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
         En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
@@ -187,6 +187,30 @@ Aşağıdakiler, seçili modelin özelliklerini, ölçümlerini ve performans gr
 
 ![Yineleme ayrıntısı Çalıştır](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
+## <a name="model-explanations"></a>Model açıklamaları
+
+Modellerin tamamlanmasını beklerken, model açıklamalarını gözden geçirebilir ve hangi veri özelliklerinin (ham ya da Mühendislik) belirli bir modelin tahminlerini etkileme şeklini görebilirsiniz. 
+
+Bu model açıklamaları isteğe bağlı olarak oluşturulabilir ve **açıklamalar (Önizleme)** sekmesinin bir parçası olan model açıklamaları panosunda özetlenir.
+
+Model açıklamalarını oluşturmak için 
+ 
+1. **Modeller** ekranına geri gitmek için en üstteki **1. Çalıştır** ' ı seçin. 
+1. **Modeller** sekmesini seçin.
+1. Bu öğretici için ilk **Maxabsscaler, LightGBM** modelini seçin.
+1. Üstteki **açıkla modeli** düğmesini seçin. Sağ tarafta, **açıkla modeli** bölmesi görüntülenir. 
+1. Daha önce oluşturduğunuz **oto ml-COMPUTE** ' ı seçin. Bu işlem kümesi, model açıklamalarını oluşturmak için bir alt çalışma başlatır.
+1. Alt kısımdaki **Oluştur** ' u seçin. Ekranınızın tepesine doğru yeşil bir başarı iletisi görüntülenir. 
+    >[!NOTE]
+    > Explainability çalıştırmasının tamamlanabilmesi yaklaşık 2-5 dakika sürer.
+1. **Açıklamalar (Önizleme)** düğmesini seçin. Bu sekme, explainability çalıştırması tamamlandıktan sonra doldurulur.
+1. Sol taraftaki bölmeyi genişletin ve **Özellikler** altında **RAW** belirten satırı seçin. 
+1. Sağdaki **Toplam özellik önem** sekmesini seçin. Bu grafik, seçilen modelin tahminlerini etkileyen veri özelliklerini gösterir. 
+
+    Bu örnekte, *süre* bu modelin tahminlerinin en çok etkisi olan şekilde görünür.
+    
+    ![Model açıklama panosu](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
+
 ## <a name="deploy-the-best-model"></a>En iyi modeli dağıtma
 
 Otomatik makine öğrenimi arabirimi, birkaç adımda Web hizmeti olarak en iyi modeli dağıtmanıza olanak tanır. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. 
@@ -211,7 +235,7 @@ Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yakl
     Dağıtım açıklaması| İlk otomatik makine öğrenimi deneme dağıtımı
     İşlem türü | Azure Işlem örneği (acı) seçin
     Kimlik doğrulamayı etkinleştir| Dıı. 
-    Özel dağıtımlar kullanın| Dıı. Varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının yeniden oluşturulmasına izin verir. 
+    Özel dağıtımlar kullanın| Dıı. Varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının otomatik olarak oluşturulmasına izin verir. 
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
 

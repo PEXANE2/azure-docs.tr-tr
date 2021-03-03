@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622393"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725875"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Izleyici ölçümleri ölçüm toplamı ve görüntüleme açıklanmaktadır
 
@@ -101,7 +101,7 @@ En kısa zaman aralığı 1 dakikadır, ancak temel alınan sistem, ölçüme g�
 
 Ölçüm Gezgini 'nde bir ölçümü grafikleyerek, grafiği bir boyuta göre "bölme" seçeneğiniz vardır.  Bir grafiği bölmek, daha fazla ayrıntı için temel alınan verilere baktığınız ve Ölçüm Gezgini 'nde verilerin görülendiğini veya filtrelendiğini görmenizi sağlayan anlamına gelir.
 
-Örneğin, [Microsoft. Apimanayönetimi/hizmeti](../platform/metrics-supported.md#microsoftapimanagementservice) birçok ölçüm için bir boyut olarak *konum* içerir. 
+Örneğin, [Microsoft. Apimanayönetimi/hizmeti](./metrics-supported.md#microsoftapimanagementservice) birçok ölçüm için bir boyut olarak *konum* içerir. 
 
 - **Kapasite** , bu tür bir ölçümdür. *Konum* boyutunun olması, temeldeki sistemin toplam miktar için değil, her bir konumun kapasitesi için bir ölçüm kaydı depoladığını gösterir. Daha sonra bu bilgileri bir ölçüm grafiğinde alabilir veya ayırabilirsiniz.  
 
@@ -109,7 +109,7 @@ En kısa zaman aralığı 1 dakikadır, ancak temel alınan sistem, ölçüme g�
 
 - Daha esnek **ölçülerden** biri olan istekler 7 farklı boyuta sahiptir. 
  
-Her ölçüm ve kullanılabilir boyutlar hakkındaki ayrıntılar için Azure Izleyici [ölçümleri destekleniyor](../platform/metrics-supported.md) makalesine bakın. Bunlara ek olarak, her bir kaynak sağlayıcısı ve türü için belgeler, Boyutlar ve ölçüledikleri özellikler hakkında ek bilgiler sağlayabilir.
+Her ölçüm ve kullanılabilir boyutlar hakkındaki ayrıntılar için Azure Izleyici [ölçümleri destekleniyor](./metrics-supported.md) makalesine bakın. Bunlara ek olarak, her bir kaynak sağlayıcısı ve türü için belgeler, Boyutlar ve ölçüledikleri özellikler hakkında ek bilgiler sağlayabilir.
 
 Bir sorunu gidermek için bölme ve filtreleme işlemlerini birlikte kullanabilirsiniz. Aşağıda, bir kaynak grubundaki bir VM grubu için *Ortalama Disk yazma baytlarının* gösterildiği bir grafik örneği verilmiştir. Bu ölçüme sahip tüm VM 'lerin topladığımızda, ancak 6:00'DA ilgili en yüksek dünyada gerçekten sorumlu olduğunu görmek istiyoruz. Aynı makineli mı? Kaç makine katıldı?  
 

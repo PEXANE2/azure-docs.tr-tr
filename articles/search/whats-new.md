@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694606"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,7 +23,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Açıklama | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
-| [Anlamsal arama](semantic-search-overview.md) | Daha ilgili sonuçlar oluşturmak için arama sonuçlarını değiştiren sorgu ile ilgili özelliklerin bir koleksiyonu. Arama isteğinde küçük değişikliklerle, mevcut dizinlerde bu özellikleri deneyebilirsiniz.</br></br>[Anlamsal sorgu](semantic-how-to-query-request.md) , derecelendirmeyi geliştirmek için doğal dil işlemede ilerlendirme sağlayan yeni bir sorgu türüdür ve yanıt, açıklamalı alt yazı ve anlam vurgulamaları sağlamak için sorgu hedefini anlayın.</br></br>[Anlamsal sıralama ve yanıtlar (yanıtlar, açıklamalı alt yazılar ve vurgular)](semantic-how-to-query-response.md) , anlam sorgusu ve yanıtın yapısına yönelik algoritmaya başvurur. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
+| [Anlamsal arama](semantic-search-overview.md) | Arama sonuçlarının çok az çabayla uygunluğunu artıran sorgu ile ilgili özelliklerin bir koleksiyonu. Arama isteğinde küçük değişikliklerle, mevcut dizinlerde bu özellikleri deneyebilirsiniz.</br></br>[Anlamsal sorgu](semantic-how-to-query-request.md) , derecelendirmeyi geliştirmek için doğal dil işlemede ilerlendirme sağlayan yeni bir sorgu türüdür ve yanıt, açıklamalı alt yazı ve anlam vurgulamaları sağlamak için sorgu hedefini anlayın.</br></br>[Anlamsal derecelendirme ve yanıtlar (yanıtlar, açıklamalı alt yazılar ve vurgular)](semantic-how-to-query-response.md) sonuçları değerlendiren modele ve modelin yanıta yapı eklemesine olanak tanır. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
 | [Yazım denetimi sorgu terimleri](speller-how-to-add.md) | Sorgu terimleri arama altyapısına ulaşmadan önce, yazım hatalarını denetlebilirler. `speller`Seçeneği herhangi bir sorgu türü (basit, tam veya anlamsal) ile birlikte kullanılır. |  Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme|
 | [SharePoint Online Dizin Oluşturucu](search-howto-index-sharepoint-online.md) | Bu Dizin Oluşturucu, bir belge kitaplığından içerik dizini oluşturabilmeniz için sizi bir SharePoint Online sitesine bağlar. | Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
 
@@ -46,7 +46,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 | Ay | Özellik | Açıklama |
 |-------|---------|-------------|
 | Kasım | [Müşteri tarafından yönetilen anahtar şifrelemesi (genişletilmiş)](search-security-manage-encryption-keys.md) | Müşteri tarafından yönetilen şifrelemeyi, bir arama hizmeti tarafından oluşturulan ve yönetilen tüm varlık aralığı üzerinde genişletir. Genel olarak kullanılabilir.|
-| Eylül | [Azure Bilişsel Arama için Visual Studio Code uzantısı](search-get-started-vs-code.md) | Dizinler, Dizin oluşturucular, veri kaynakları ve becerileri oluşturmak için bir çalışma alanı, gezinti, IntelliSense ve şablonlar ekler. | Genel Önizleme |
+| Eylül | [Azure Bilişsel Arama için Visual Studio Code uzantısı](search-get-started-vs-code.md) | Dizinler, Dizin oluşturucular, veri kaynakları ve becerileri oluşturmak için bir çalışma alanı, gezinti, IntelliSense ve şablonlar ekler. Bu özellik şu anda genel önizleme aşamasındadır.| 
 | Eylül | [Yönetilen hizmet kimliği (Dizin oluşturucular)](search-howto-managed-identities-data-sources.md) | Genel olarak kullanılabilir.  |
 | Eylül | [Özel bağlantı kullanan giden istekler](search-indexer-howto-access-private.md) | Genel olarak kullanılabilir.  |
 | Eylül | [Yönetim REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Genel olarak kullanılabilir. |

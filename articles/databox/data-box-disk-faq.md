@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f1924ce19ccb0f48aa1a7c9a0515fa89505dae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724838"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -48,7 +49,7 @@ A. Data Box disklerin fiyatı hakkında daha fazla bilgi için [fiyatlandırma s
 A.  Azure Data Box diskleri almak için Azure portal oturum açın ve diskler için bir Data Box sırası oluşturun. İletişim bilgilerinizi ve bildirim ayrıntılarını girin. Sipariş verdikten sonra kullanılabilirlik durumuna göre diskler 10 gün içinde gönderilir.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>S. Data Box Disklerine tek seferde en fazla ne kadar veri aktarabilirim?
-A. Her biri 8 TB kapasiteye sahip 5 disk için (7 TB kullanılabilir kapasite), kullanılabilir maksimum kapasite 35 TB 'tır. Bu nedenle, tek bir örnekteki 35 TB veri aktarabilirsiniz. Daha fazla veri aktarmak için daha fazla disk sipariş etmeniz gerekir.
+A. Her biri 8 TB 'lik kapasiteye (7 TB kullanılabilir kapasite) sahip beş disk için kullanılabilir maksimum kapasite 35 TB 'tır. Bu nedenle, tek bir örnekteki 35 TB veri aktarabilirsiniz. Daha fazla veri aktarmak için daha fazla disk sipariş etmeniz gerekir.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>S. Data Box Disklerinin bulunduğum bölgede kullanılabilir durumda olup olmadığını nasıl kontrol edebilirim? 
 A.  Data Box disklerinin Şu anda kullanılabilir olduğunu görmek için [bölgenin kullanılabilirliğine](data-box-disk-overview.md#region-availability)gidin.  
@@ -72,6 +73,18 @@ A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alım
 2. Şirket içi sunucunuzdaki veriler disklere kopyalandıktan sonra, Microsoft tarafından sunulan döndürülen etiketleri kullanarak bunları Kanada 'daki Azure veri merkezine döndürün. Data Box Disk bulunan veriler, ardından sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
 
 3. Daha sonra AzCopy gibi bir araç kullanarak verileri Batı ABD bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box Disk faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
+
+#### <a name="q-does-data-box-disk-store-any-customer-data-outside-of-the-service-region"></a>S. Data Box Disk tüm müşteri verilerini hizmet bölgesi dışında mı depolar?
+
+A. Hayır. Data Box Disk, hiçbir müşteri verisini hizmet bölgesinin dışında depolamaz. Müşteri, verilerinin tam sahipliğine sahiptir ve verileri, sipariş oluşturma sırasında seçtikleri depolama hesabına göre belirtilen bir konuma kaydedebilir.  
+
+Müşteri verilerine ek olarak, meta verileri ve izleme günlüklerini içeren Data Box Disk veriler vardır. Tüm bölgelerde (Brezilya Güney ve Güneydoğu Asya dışında), veri kaybına karşı korunmak için verileri Data Box Disk bir coğrafi olarak yedekli depolama hesabı aracılığıyla [eşlenmiş bir bölgede](../best-practices-availability-paired-regions.md) depolanır ve çoğaltılır.  
+
+Brezilya Güney ve Güneydoğu Asya 'daki [veri](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) yerleşimi nedeniyle Data Box disk veriler, tek bir bölgede yer alması için bölge yedekli bir depolama (ZRS) hesabında depolanır. Güneydoğu Asya için tüm Data Box Disk veriler Singapur 'da depolanır ve Brezilya Güney için veriler Brezilya 'da depolanır. 
+
+Brezilya Güney ve Güneydoğu Asya 'da hizmet kesintisi varsa, müşteriler başka bir bölgeden yeni siparişler oluşturabilir. Yeni siparişler, oluşturuldukları bölgeden ve müşterilerin Data Box disk ve testten sevkiyatlarından sorumlu olarak sunulur.
+
+
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>S. Tüm bölge başarısız olursa verilerimi nasıl kurtarabilirim?
 
@@ -110,7 +123,7 @@ Bu sağlama süreleri *tahminlerdir*. Her sipariş işleme aşamasına ilişkin 
 ## <a name="configure-and-connect"></a>Yapılandırma ve bağlanma
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>S. Siparişteki Data Box Diski sayısını seçebilir miyim?
-A.  Hayır. Veri boyutunuza ve disklerin kullanılabilirliğine bağlı olarak 8 TB disk (en fazla 5 disk) alırsınız.  
+A.  Hayır. Veri boyutunuza ve disklerin kullanılabilirliğine bağlı olarak 8 TB diskler (en fazla beş disk) alırsınız.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>S. Data Box Disklerinin kilidini nasıl açabilirim? 
 A.  Azure portalda Data Box Disk siparişinize gidin ve **Cihaz ayrıntıları**'na gidin. Geçiş anahtarını kopyalayın. İşletim sisteminiz için Azure portaldan Data Box kilidi açma aracını indirip açın. Aracı, disklere kopyalamak istediğiniz verileri içeren bilgisayarda çalıştırın. Disklerin kilidini açmak için geçiş anahtarını girin. Aynı geçiş anahtarı tüm disklerin kilidini açar. 

@@ -3,12 +3,12 @@ title: IoT Edge SSS-Azure 'da canlı video analizi
 description: Bu makalede, IoT Edge üzerinde canlı video analizi hakkında sıkça sorulan sorular yanıtlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702258"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge SSS üzerinde canlı video analizi
 
@@ -230,7 +230,7 @@ Evet. Prometheus ölçümlerini kullanabilir ve bunları olay kılavuzunuzda yay
 
 **Bulutta veya kenarda medya grafiklerimin sistem durumunu, ölçümlerini ve performansını görüntülemek için Azure Izleyicisini kullanabilir miyim?**
 
-Evet, bu yaklaşımı destekliyoruz. Daha fazla bilgi için bkz. [Azure Izleyici ölçümlerine genel bakış](../../azure-monitor/platform/data-platform-metrics.md).
+Evet, bu yaklaşımı destekliyoruz. Daha fazla bilgi için bkz. [Azure Izleyici ölçümlerine genel bakış](../../azure-monitor/essentials/data-platform-metrics.md).
 
 **Media Services IoT Edge modülünü izlemeyi kolaylaştırmak için herhangi bir araç var mı?**
 

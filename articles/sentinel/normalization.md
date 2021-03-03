@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729785"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 'te normalleştirme
 
@@ -130,7 +130,7 @@ Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve 
 > Arama ve algılama sorguları dahil olmak üzere herhangi bir sorguda Azure Sentinel tabloları yerine kaydedilmiş işlevlerinizi kullanabilirsiniz. Daha fazla bilgi için bkz.
 >
 > - [Azure Sentinel 'de veri normalleştirme](normalization.md#parsers)
-> - [Azure Izleyici günlüklerinde metin ayrıştırma](/azure/azure-monitor/log-query/parse-text)
+> - [Azure Izleyici günlüklerinde metin ayrıştırma](../azure-monitor/logs/parse-text.md)
 >
 #### <a name="customizing-parsers"></a>Çözümleyicileri özelleştirme
 

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563237"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722288"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
 Metin Analizi API'si, metin madenciliği ve metin analizi için doğal dil Işleme (NLP) özellikleri sağlayan bulut tabanlı bir hizmettir: yaklaşım analizi, bakım madenciliği, anahtar tümceciği ayıklama, dil algılama ve adlandırılmış varlık tanıma.
 
-API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](../index.yml)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/client-libraries-rest-api.md)birlikte kullanabilirsiniz.
+API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](../index.yml)'in bir parçasıdır. Bu özellikleri, REST API [sürüm 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) veya [sürüm 3,1-Önizleme](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)veya [istemci kitaplığı](quickstarts/client-libraries-rest-api.md)ile kullanabilirsiniz.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 

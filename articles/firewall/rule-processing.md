@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741370"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Güvenlik duvarı kurallarını yapılandırma
 Azure Güvenlik duvarında NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kural koleksiyonları, kural türüne göre öncelik sırasına göre işlenir ve 100 ' den 65.000 ' ye kadar daha yüksek sayılara daha düşük sayılar. Bir kural koleksiyonu adı yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. En büyük ad uzunluğu 80 karakterdir.
@@ -38,7 +38,7 @@ Ağ kuralları **TCP**, **UDP**, **ICMP** veya **herhangi bir** IP protokolü i�
 
 ### <a name="nat-rules"></a>NAT kuralları
 
-Gelen Internet bağlantısı [, öğretici: Azure Güvenlik Duvarı ile gelen trafiği Azure Portal kullanarak](tutorial-firewall-dnat.md)hedef ağ adresi çevirisi (DNAT) yapılandırılarak etkinleştirilebilir. NAT kuralları ağ kurallarından önce öncelik olarak uygulanır. Bir eşleşme bulunursa, çevrilmiş trafiğe izin veren örtülü olarak karşılık gelen bir ağ kuralı eklenir. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz.
+Gelen Internet bağlantısı [, öğretici: Azure Güvenlik Duvarı ile gelen trafiği Azure Portal kullanarak](tutorial-firewall-dnat.md)hedef ağ adresi çevirisi (DNAT) yapılandırılarak etkinleştirilebilir. NAT kuralları ağ kurallarından önce öncelik olarak uygulanır. Bir eşleşme bulunursa, çevrilmiş trafiğe izin veren örtülü olarak karşılık gelen bir ağ kuralı eklenir. Güvenlik nedenleriyle önerilen yaklaşım, ağ için DNAT erişimine izin vermek ve joker karakter kullanmaktan kaçınmak üzere belirli bir internet kaynağı eklemektir.
 
 Uygulama kuralları gelen bağlantılar için uygulanmıyor. Bu nedenle, gelen HTTP/S trafiğini filtrelemek istiyorsanız, Web uygulaması güvenlik duvarını (WAF) kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı nedir?](../web-application-firewall/overview.md)
 

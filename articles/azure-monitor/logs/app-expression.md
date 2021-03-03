@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: cbfc9c8a32eb5345cfc69f51f40e0634e05bd978
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4789594cef0f7e900582dd9aad231b81547d3b3e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728425"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Izleyici sorgusunda App () ifadesi
 
@@ -73,6 +73,5 @@ union
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bkz. bir Log Analytics çalışma alanına başvurmak için [çalışma alanı ifadesi](../logs/workspace-expression.md) .
-- [Azure izleyici verilerinin](../log-query/log-query-overview.md) nasıl depolandığı hakkında bilgi edinin.
+- [Azure izleyici verilerinin](./log-query-overview.md) nasıl depolandığı hakkında bilgi edinin.
 - [Kusto sorgu dili](/azure/kusto/query/)için tam belgelere erişin.
-

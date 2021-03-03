@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde çıkış trafiği için 
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726555"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki *temel* SKU yük dengeleyiciye çıkış trafiği için statik BIR genel IP adresi kullanın
 
@@ -24,7 +24,7 @@ Bu makalede, Azure temel Load Balancer kullandığınızı varsaymaktadır.  [Az
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 > [!IMPORTANT]
 > Bu makalede, tek düğümlü havuz ile *temel* SKU yük dengeleyici kullanılmaktadır. *Temel* SKU yük dengeleyici birden çok düğüm havuzlarıyla desteklenmediğinden, bu yapılandırma birden çok düğüm havuzu için kullanılamaz. *Standart* SKU yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes SERVICE (aks) Içinde genel standart Load Balancer kullanma][slb] .
@@ -33,11 +33,11 @@ Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış ol
 
 Bir AKS kümesinden giden trafik [Azure Load Balancer kuralları][outbound-connections]izler. Türündeki ilk Kubernetes hizmeti oluşturulmadan önce `LoadBalancer` , BIR AKS kümesindeki aracı düğümleri hiçbir Azure Load Balancer havuzunun parçası değildir. Bu yapılandırmada, düğümlerin örnek düzeyi genel IP adresi yok. Azure, giden akışı, yapılandırılamaz veya belirleyici olmayan bir ortak kaynak IP adresine çevirir.
 
-Türü bir Kubernetes hizmeti oluşturulduktan sonra `LoadBalancer` , aracı düğümleri bir Azure Load Balancer havuzuna eklenir. Giden akış için, Azure onu yük dengeleyicide yapılandırılan ilk genel IP adresine çevirir. Bu genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes LoadBalancer hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
+Türü bir Kubernetes hizmeti oluşturulduktan sonra `LoadBalancer` , aracı düğümleri bir Azure Load Balancer havuzuna eklenir. Load Balancer temel, dış akışlar için birden çok (genel) IP ön uçları aday olduğunda giden akışlar için kullanılacak tek bir ön uç seçer. Bu seçim yapılandırılamaz ve seçim algoritmasını rastgele olacak şekilde göz önünde bulundurmanız gerekir. Bu genel IP adresi yalnızca söz konusu kaynağın kullanım ömrü için geçerlidir. Kubernetes LoadBalancer hizmetini silerseniz ilişkili yük dengeleyici ve IP adresi de silinir. Belirli bir IP adresi atamak veya yeniden dağıtılan Kubernetes Hizmetleri için bir IP adresi korumak istiyorsanız statik bir genel IP adresi oluşturabilir ve kullanabilirsiniz.
 
 ## <a name="create-a-static-public-ip"></a>Statik genel IP oluşturma
 
-[Az aks Show][az-aks-show] komutuyla kaynak grubu adını alın ve `--query nodeResourceGroup` sorgu parametresini ekleyin. Aşağıdaki örnek, *Myresourcegroup*kaynak grubu adı altında *Myakscluster* adlı aks kümesi için düğüm kaynak grubunu alır:
+[Az aks Show][az-aks-show] komutuyla kaynak grubu adını alın ve `--query nodeResourceGroup` sorgu parametresini ekleyin. Aşağıdaki örnek, *Myresourcegroup* kaynak grubu adı altında *Myakscluster* adlı aks kümesi için düğüm kaynak grubunu alır:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -45,7 +45,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Şimdi [az Network public IP Create][az-network-public-ip-create] komutuyla bir STATIK genel IP adresi oluşturun. Önceki komutta elde edilen düğüm kaynak grubu adını ve sonra da *Myakspublicıp*gibi IP adresi kaynağı için bir ad belirtin:
+Şimdi [az Network public IP Create][az-network-public-ip-create] komutuyla bir STATIK genel IP adresi oluşturun. Önceki komutta elde edilen düğüm kaynak grubu adını ve sonra da *Myakspublicıp* gibi IP adresi kaynağı için bir ad belirtin:
 
 ```azurecli-interactive
 az network public-ip create \

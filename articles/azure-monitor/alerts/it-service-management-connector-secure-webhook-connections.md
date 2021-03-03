@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728986"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Güvenli dışarı aktarma kullanarak Azure 'dan ıTSM araçlarına bağlanma
 
 Bu makalede, güvenli dışarı aktarma kullanarak BT hizmet yönetimi (ıTSM) ürün veya hizmeti arasındaki bağlantının nasıl yapılandırılacağı gösterilir.
 
-Güvenli dışarı aktarma [BT hizmet yönetimi Bağlayıcısı (ıSMC)](../platform/itsmc-overview.md)güncelleştirilmiş bir sürümüdür. Her iki sürüm de Azure Izleyici uyarı gönderdiğinde bir ITSM aracında iş öğeleri oluşturmanızı sağlar. Bu işlevsellik ölçüm, günlük ve etkinlik günlüğü uyarılarını içerir.
+Güvenli dışarı aktarma [BT hizmet yönetimi Bağlayıcısı (ıSMC)](./itsmc-overview.md)güncelleştirilmiş bir sürümüdür. Her iki sürüm de Azure Izleyici uyarı gönderdiğinde bir ITSM aracında iş öğeleri oluşturmanızı sağlar. Bu işlevsellik ölçüm, günlük ve etkinlik günlüğü uyarılarını içerir.
 
 ISMC Kullanıcı adı ve parola kimlik bilgilerini kullanıyor. Güvenli dışarı aktarmanın Azure Active Directory (Azure AD) kullandığından daha güçlü kimlik doğrulaması vardır. Azure AD, Microsoft'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Kullanıcıların oturum açıp iç veya dış kaynaklara erişmesine yardımcı olur. ITSM ile Azure AD 'nin kullanılması, dış sisteme gönderilen Azure uyarılarını (Azure AD uygulama KIMLIĞI aracılığıyla) belirlemenize yardımcı olur.
 
@@ -55,4 +55,4 @@ Tümleştirmenin başlıca avantajları şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure uyarılarından ıTSM iş öğeleri oluşturma](../platform/itsmc-overview.md)
+* [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-overview.md)

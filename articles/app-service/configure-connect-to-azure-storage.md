@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736213"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720248"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Azure depolamaya (Önizleme) App Service bir kapsayıcıdan ağ paylaşma olarak erişin
 
 ::: zone pivot="container-windows"
 
-Bu kılavuzda, Azure depolama dosyalarının App Service bir Windows kapsayıcısına ağ paylaşımının nasıl ekleneceği gösterilmektedir. Yalnızca [Azure dosya paylaşımları](../storage/files/storage-how-to-use-files-cli.md) ve [Premium dosya paylaşımları](../storage/files/storage-how-to-create-premium-fileshare.md) desteklenir. Avantajlar güvenli içerik, içerik taşınabilirlik, birden çok uygulamaya erişim ve birden çok aktarım yöntemi içerir.
+Bu kılavuzda, Azure depolama dosyalarının App Service bir Windows kapsayıcısına ağ paylaşımının nasıl ekleneceği gösterilmektedir. Yalnızca [Azure dosya paylaşımları](../storage/files/storage-how-to-use-files-cli.md) ve [Premium dosya paylaşımları](../storage/files/storage-how-to-create-file-share.md) desteklenir. Avantajlar güvenli içerik, içerik taşınabilirlik, birden çok uygulamaya erişim ve birden çok aktarım yöntemi içerir.
 
 > [!NOTE]
 >App Service 'de Azure depolama, **Önizleme** aşamasındadır ve **Üretim senaryolarında** **desteklenmez** .
@@ -33,7 +33,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="container-windows"
 

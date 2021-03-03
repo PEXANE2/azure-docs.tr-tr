@@ -7,12 +7,12 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6897a863a0fd399d3c963d876404680026682dd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654605"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735429"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile Azure hizmetlerini kullanan öğreticiler
 
@@ -22,6 +22,7 @@ Bu makale, Data Lake Storage 2. ile çeşitli Azure hizmetlerini nasıl kullanac
 
 | Azure hizmeti | Adım adım kılavuz | 
 |---------------|-------------------|
+| Azure Synapse Analytics | [Azure SYNAPSE Analytics 'i kullanmaya başlama](../../synapse-analytics/get-started.md) |
 | Azure Data Factory | [Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 | Azure Databricks | [Azure Databricks ile kullanma](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) |
 | Azure Databricks | [Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
@@ -29,7 +30,6 @@ Bu makale, Data Lake Storage 2. ile çeşitli Azure hizmetlerini nasıl kullanac
 | Azure Event Grid | [Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama](data-lake-storage-events.md) |
 | Azure Machine Learning | [Azure Storage hizmetlerindeki verilere erişme](../../machine-learning/how-to-access-data.md) |
 | Azure Data Box | [Şirket içi bir, Azure depolama 'ya veri geçirmek için Azure Data Box kullanma](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
-| Azure Synapse Analytics | [Azure SYNAPSE Analytics 'i kullanmaya başlama](../../synapse-analytics/get-started.md) |
 | HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [Power BI kullanarak Data Lake Storage 2. verileri çözümleme](/power-query/connectors/datalakestorage) |

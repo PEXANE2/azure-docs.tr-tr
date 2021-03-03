@@ -3,22 +3,22 @@ title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danielsollondon
 ms.author: danis
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693875"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
-Azure Image Builder, görüntü Oluşturucu hizmetine bilgi geçirmek için bir. JSON dosyası kullanır. Bu makalede, JSON dosyasının bölümlerine gidecektir, bu sayede kendinizinkini oluşturabilirsiniz. Tam. JSON dosyaları örneklerini görmek için bkz. [Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Azure Image Builder, görüntü Oluşturucu hizmetine bilgi geçirmek için bir. JSON dosyası kullanır. Bu makalede, JSON dosyasının bölümlerine gidecektir, bu sayede kendinizinkini oluşturabilirsiniz. Tam. JSON dosyaları örneklerini görmek için bkz. [Azure görüntü Oluşturucu GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 
 Bu, temel şablon biçimidir:
 
@@ -249,7 +249,7 @@ Kullanırken `customize` :
 - Bir Özelleştirici başarısız olursa, tüm özelleştirme bileşeni başarısız olur ve bir hatayı geri bildirir.
 - Bir şablonda kullanmadan önce betiği iyice sınamanız önemle tavsiye edilir. Kendi sanal makinenizde betik hata ayıklaması daha kolay olacaktır.
 - Gizli verileri betiklerine yerleştirmeyin. 
-- [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanmadığınız durumlar dışında, betik konumlarının herkese açık bir şekilde erişilebilir olması gerekir.
+- [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)kullanmadığınız durumlar dışında, betik konumlarının herkese açık bir şekilde erişilebilir olması gerekir.
 
 ```json
         "customize": [
@@ -697,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder)'da farklı senaryolar için Sample. JSON dosyaları vardır.
+[Azure görüntü Oluşturucu GitHub](https://github.com/azure/azvmimagebuilder)'da farklı senaryolar için Sample. JSON dosyaları vardır.

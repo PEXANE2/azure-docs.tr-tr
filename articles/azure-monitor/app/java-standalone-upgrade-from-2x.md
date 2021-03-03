@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d815c919c2b2d63b093c4290a661cbf508c56012
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601076"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704438"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
 
@@ -220,3 +220,16 @@ Yine, bazı uygulamalar için, önceki bağımlılık adları tarafından sağla
 Daha önce 2. x SDK 'sında, istek telemetride işlem adı bağımlılık telemetrisi üzerinde de ayarlanmıştır.
 Application Insights Java 3,0, bağımlılık telemetrisi üzerinde işlem adını artık doldurmayacak.
 Bağımlılık telemetrinin üst öğesi olan istek için işlem adını görmek isterseniz, bağımlılık tablosundan istek tablosuna katmak üzere bir günlük (kusto) sorgusu yazabilirsiniz.
+
+## <a name="2x-sdk-logging-appenders"></a>2. x SDK günlüğü uygulama
+
+3,0 Aracısı, günlük kaydını yapılandırmaya gerek kalmadan [günlüğü otomatik olarak toplar](./java-standalone-config#auto-collected-logging) .
+2. x SDK günlük kaydı kullanıyorsanız, bunlar yine de 3,0 Aracısı tarafından bastırılacak şekilde kaldırılabilirler.
+
+## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK Spring Boot Starter
+
+3,0 Spring Boot Starter yok.
+3,0 aracı kurulumu ve yapılandırması, Spring Boot ' ı kullanıp kullanmayacağınızı de aynı [basit adımları](./java-in-process-agent.md#quickstart) izler.
+
+2. x SDK Spring Boot Starter 'dan yükseltirken, bulut rolü adının artık varsayılan olarak olmadığını unutmayın `spring.application.name` .
+JSON yapılandırması veya ortam değişkeni aracılığıyla 3,0 ' de bulut rolü adını ayarlamak için [3,0 yapılandırma belgelerine](./java-standalone-config.md#cloud-role-name) bakın.

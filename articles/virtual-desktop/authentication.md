@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/26/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a4366bfee6b1d9c5f52d649910163269962684
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709266"
 ---
 # <a name="supported-authentication-methods"></a>Desteklenen kimlik doğrulama yöntemleri
 
@@ -21,14 +21,14 @@ Bu makalede, Windows sanal masaüstü 'nde kullanabileceğiniz hangi kimlik doğ
 
 ## <a name="session-host-authentication"></a>Oturum Ana bilgisayar kimlik doğrulaması
 
-Windows sanal masaüstü, oturum ana bilgisayar kimlik doğrulaması için hem NT LAN Manager (NTLM) hem de Kerberos destekler. Ancak, Kerberos kullanmak için istemcinin, etki alanı denetleyicisinde çalışan bir Anahtar Dağıtım Merkezi (KDC) hizmetinden Kerberos güvenlik biletleri alması gerekir. Bilet almak için, istemcinin etki alanı denetleyicisine doğrudan bir görüş satırı olması gerekir. Şirket ağınızı kullanarak doğrudan bir görüş satırı edinebilirsiniz. Ayrıca kurumsal ağınıza bir VPN bağlantısı da kullanabilirsiniz.
+Windows sanal masaüstü, oturum ana bilgisayar kimlik doğrulaması için hem NT LAN Manager (NTLM) hem de Kerberos destekler. Ancak, Kerberos kullanmak için istemcinin, etki alanı denetleyicisinde çalışan bir Anahtar Dağıtım Merkezi (KDC) hizmetinden Kerberos güvenlik biletleri alması gerekir. Bilet almak için, istemcinin etki alanı denetleyicisine doğrudan bir görüş satırı olması gerekir. Şirket ağınızı kullanarak doğrudan bir görüş satırı edinebilirsiniz. Ayrıca, kurumsal ağınıza bir VPN bağlantısı kullanabilir veya bir [KDC ara sunucusu](key-distribution-center-proxy.md)kurabilirsiniz.
 
 Bunlar şu anda desteklenen oturum açma yöntemleridir:
 
 - Windows Masaüstü istemcisi
     - Kullanıcı adı ve parola
     - Kart
-    - Windows Hello
+    - Iş için Windows Hello (yalnızca sertifika güveni)
 - Windows Mağazası istemcisi
     - Kullanıcı adı ve parola
 - Web istemcisi
@@ -37,11 +37,11 @@ Bunlar şu anda desteklenen oturum açma yöntemleridir:
     - Kullanıcı adı ve parola
 - iOS
     - Kullanıcı adı ve parola
-- macOS
+- Mac OS
     - Kullanıcı adı ve parola
 
 >[!NOTE]
->Akıllı kart ve Windows Hello, oturum açmak için yalnızca Kerberos kullanabilir. Kerberos ile oturum açmak için etki alanı denetleyicisine bir görüş satırı gerekir.
+>Akıllı kart ve Iş için Windows Hello yalnızca Kerberos kullanarak oturum açabilir. Kerberos ile oturum açmak için etki alanı denetleyicisine veya bir [KDC ara sunucusuna](key-distribution-center-proxy.md)yönelik bir görüş satırı gerekir.
 
 ## <a name="hybrid-identity"></a>Karma kimlik
 

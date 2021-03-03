@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736194"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure 'da doğru MySQL sunucusu seçeneğini belirleyin
 
@@ -19,7 +19,7 @@ Azure ile MySQL Server iş yükleriniz, barındırılan bir sanal makine altyap�
 
 Kararlarınızı yaparken aşağıdaki iki seçeneği göz önünde bulundurun:
 
-- **MySQL Için Azure veritabanı** . Bu seçenek, MySQL Community Edition 'ın kararlı sürümünü temel alan tam olarak yönetilen bir MySQL veritabanı altyapısıdır. Azure bulut platformunda barındırılan, hizmet olarak bu ilişkisel veritabanı (DBaaS) PaaS sektör kategorisine denk gelir.
+- **MySQL Için Azure veritabanı**. Bu seçenek, MySQL Community Edition 'ın kararlı sürümünü temel alan tam olarak yönetilen bir MySQL veritabanı altyapısıdır. Azure bulut platformunda barındırılan, hizmet olarak bu ilişkisel veritabanı (DBaaS) PaaS sektör kategorisine denk gelir.
 
   Azure 'da MySQL 'in yönetilen bir örneği sayesinde, otomatik düzeltme eki uygulama, yüksek kullanılabilirlik, otomatik yedeklemeler, elastik ölçekleme, kurumsal düzeyde güvenlik, uyumluluk ve idare, izleme ve uyarı özelliklerini kullanarak, MySQL Server şirket içinde veya bir Azure VM 'sinde geniş bir yapılandırma gerektiren yerleşik özellikleri kullanabilirsiniz. Bir hizmet olarak MySQL kullanırken, kesintiye uğramaması durumunda daha fazla denetim için ölçeği büyütme veya daraltma seçenekleri ile Kullandıkça Öde ile ödeme yaparsınız.
   
@@ -35,7 +35,7 @@ Kararlarınızı yaparken aşağıdaki iki seçeneği göz önünde bulundurun:
   - Bölge yedekli yüksek kullanılabilirlik
   - Yönetilen bakım pencereleri
 
-- **Azure VM 'Lerde MySQL** . Bu seçenek IaaS sektör kategorisine denk gelir. Bu hizmetle, MySQL Server 'ı Azure bulut platformunda yönetilen bir sanal makine içinde çalıştırabilirsiniz. MySQL 'in tüm son sürümleri sanal makineye yüklenebilir.
+- **Azure VM 'Lerde MySQL**. Bu seçenek IaaS sektör kategorisine denk gelir. Bu hizmetle, MySQL Server 'ı Azure bulut platformunda yönetilen bir sanal makine içinde çalıştırabilirsiniz. MySQL 'in tüm son sürümleri sanal makineye yüklenebilir.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>Azure 'da MySQL dağıtım seçeneklerini karşılaştırma
 
@@ -43,17 +43,19 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 
 | Öznitelik          | MySQL için Azure Veritabanı<br/>Tek sunucu |MySQL için Azure Veritabanı<br/>Esnek sunucu  |Azure VM 'lerinde MySQL                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| MySQL sürüm desteği | 5,6, 5,7 & 8,0| 5.7 | Herhangi bir sürüm|
+| MySQL sürüm desteği | 5,6, 5,7 & 8,0| 5,7 & 8,0 | Herhangi bir sürüm|
 | İşlem ölçekleme | Desteklenir (ve temel katmandan ölçekleme desteklenmez)| Desteklenir | Desteklenir|
 | Depolama boyutu | 5 GiB ile 16 TiB| 5 GiB ile 16 TiB | 32 GiB 'den 32.767 GiB 'ye|
 | Çevrimiçi depolama Ölçeklendirmesi | Desteklenir| Desteklenir| Desteklenmez|
 | Otomatik depolama Ölçeklendirmesi | Desteklenir| Önizlemede desteklenmez| Desteklenmez|
+| Ek IOPS Ölçeklendirmesi | Desteklenmiyor| Desteklenir| Desteklenmez|
 | Ağ bağlantısı | -Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Özel bağlantı desteğiyle özel erişim.|-Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Sanal ağ tümleştirmesiyle özel erişim.| -Sunucu güvenlik duvarıyla ortak uç noktalar.<br/> -Özel bağlantı desteğiyle özel erişim.|
 | Hizmet düzeyi sözleşmesi (SLA) | % 99,99 kullanılabilirlik SLA 'Sı |Önizlemede SLA yok| Kullanılabilirlik Alanları kullanarak% 99,99|
 | İşletim sistemi düzeltme eki uygulama| Automatic  | Özel bakım penceresi denetimiyle otomatik | Son kullanıcılar tarafından yönetiliyor |
 | MySQL düzeltme eki uygulama     | Automatic  | Özel bakım penceresi denetimiyle otomatik | Son kullanıcılar tarafından yönetiliyor |
 | Yüksek kullanılabilirlik | Tek kullanılabilirlik bölgesi içinde yerleşik HA| Kullanılabilirlik alanları içinde ve genelinde yerleşik HA | Kümeleme, çoğaltma vb. kullanarak özel yönetilen|
 | Bölge yedekliliği | Desteklenmez | Desteklenir | Desteklenir|
+| Bölge yerleşimi | Desteklenmez | Desteklenir | Desteklenir|
 | Karma senaryolar | [Gelen verileri çoğaltma](./concepts-data-in-replication.md) ile desteklenir| Önizlemede yok | Son kullanıcılar tarafından yönetiliyor |
 | Okuma amaçlı çoğaltmalar | Desteklenir (en fazla 5 çoğaltma)| Desteklenir (10 çoğaltmaya kadar)| Son kullanıcılar tarafından yönetiliyor |
 | Backup | 7-35 gün bekletme ile otomatik | 1-35 gün bekletme ile otomatik | Son kullanıcılar tarafından yönetiliyor |
@@ -74,7 +76,7 @@ MySQL veritabanlarınızı barındırmak için PaaS veya IaaS seçme kararların
 
 Maliyet azaltma genellikle veritabanlarınızı barındırmak için en iyi çözümü belirleyen birincil noktadır. Bu, sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirkette çok az nakit veya ekip ile bir başlangıç yaptığınız için geçerlidir. Bu bölümde, Azure VM 'lerde MySQL ve MySQL için Azure veritabanı 'na uygulanan Azure 'da faturalandırma ve lisanslama temelleri açıklanmaktadır.
 
-#### <a name="billing"></a>Faturalama
+#### <a name="billing"></a>Faturalandırma
 
 MySQL için Azure veritabanı şu anda birkaç katmanda kaynaklar için farklı fiyatlarla bir hizmet olarak sunulmaktadır. Tüm kaynaklar, saatlik olarak sabit bir fiyat üzerinden faturalandırılır. Şu anda desteklenen hizmet katmanları, işlem boyutları ve depolama miktarları hakkında en son bilgiler için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mysql/). Hizmet katmanlarını ve işlem boyutlarını, uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlayabilirsiniz. Giden Internet trafiği için düzenli [veri aktarımı fiyatları](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden faturalandırılırsınız.
 

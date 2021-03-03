@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393760"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727966"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -162,7 +162,7 @@ Son olarak, dağıtımlar için ADF işlem hattını yayımlamanın yalnızca bi
 
 #### <a name="resolution"></a>Çözüm
 
-CI/CD işlemi geliştirilmiştir. **Otomatik yayımlama** ÖZELLIĞI, ADF UX 'deki tüm Azure Resource Manager (ARM) şablonu özelliklerini doğrular ve dışarı aktarır. Genel kullanıma açık bir NPM paketi aracılığıyla mantıksal tüketilebilir hale gelir [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Bu, ADF Kullanıcı arabirimine gidip bir düğme tıklamasına gerek kalmadan, bu eylemleri programlı bir şekilde tetiklemeniz sağlar. Bu, CI/CD işlem hatlarınızı **gerçek** bir sürekli tümleştirme deneyimi sağlar. Ayrıntılar için lütfen [ADF CI/CD yayımlama geliştirmelerini](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) izleyin. 
+CI/CD işlemi geliştirilmiştir. **Otomatik yayımlama** ÖZELLIĞI, ADF UX 'deki tüm Azure Resource Manager (ARM) şablonu özelliklerini doğrular ve dışarı aktarır. Genel kullanıma açık bir NPM paketi aracılığıyla mantıksal tüketilebilir hale gelir [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Bu, ADF Kullanıcı arabirimine gidip bir düğme tıklamasına gerek kalmadan, bu eylemleri programlı bir şekilde tetiklemeniz sağlar. Bu, CI/CD işlem hatlarınızı **gerçek** bir sürekli tümleştirme deneyimi sağlar. Ayrıntılar için lütfen [ADF CI/CD yayımlama geliştirmelerini](./continuous-integration-deployment-improvements.md) izleyin. 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4mb ARM şablon sınırı nedeniyle yayımlanamıyor  
 
@@ -176,7 +176,45 @@ Azure Resource Manager şablon boyutunu 4mb olarak kısıtlar. Şablonunuzun boy
 
 #### <a name="resolution"></a>Çözüm
 
-Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Lütfen [bağlı ve Iç Içe Şablonlar kullanma](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)konusunda en iyi uygulamaları izleyin.
+Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Lütfen [bağlı ve Iç Içe Şablonlar kullanma](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)konusunda en iyi uygulamaları izleyin.
+
+### <a name="cannot-connect-to-git-enterprise"></a>GIT Enterprise 'a bağlanılamıyor 
+
+##### <a name="issue"></a>Sorun
+
+İzin sorunları nedeniyle GIT Enterprise 'a bağlanamazsınız. **422-Proceslabilen varlık** gibi bir hata görebilirsiniz.
+
+#### <a name="cause"></a>Nedeni
+
+ADF için OAuth yapılandırmadı. URL 'niz yanlış yapılandırılmış.
+
+##### <a name="resolution"></a>Çözüm
+
+İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. ADF hizmeti ilk olarak yeniden deneyeceğinden, yapılandırma müşteri kuruluşuna ayarlanmalıdır... https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ve başarısız olur. Ardından, çalışır https://hostname/api/v3/orgs/ <vaorg> / <repo> ve başarılı olur. 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>Silinen bir veri fabrikasından kurtar
+
+#### <a name="issue"></a>Sorun
+Müşteri tarafından silinen veri fabrikası veya Data Factory içeren kaynak grubu. Silinen bir veri fabrikasını geri yüklemeyi öğrenmek ister misiniz?
+
+#### <a name="cause"></a>Nedeni
+
+Data Factory yalnızca müşterinin yapılandırılmış kaynak denetimi varsa (DevOps veya git) kurtarılması mümkündür. Bu, yayımlanan en son kaynağı getirir ve yayımlanmamış işlem hattını, veri kümesini ve bağlı hizmeti geri **yüklenmeyecektir** .
+
+Kaynak denetimi yoksa, hizmet silinen komutu aldığından, örnek silindiğinden ve hiçbir yedekleme depolanmadığı için arka uçta silinen Data Factory kurtarma mümkün değildir.
+
+#### <a name="resoloution"></a>Resoloution
+Kaynak denetimine sahip Silinen Data Factory kurtarmak için aşağıdaki adımları izleyin:
+
+ * Yeni bir Azure Data Factory oluşturun.
+
+ * Git 'i aynı ayarlarla yeniden yapılandırın, ancak mevcut Data Factory kaynaklarını seçili depoya Içeri aktarıp yeni dal ' ı seçin.
+
+ * İşbirliği dalında yapılan değişiklikleri birleştirmek ve yayımlamak için bir çekme isteği oluşturun.
+
+ * Müşterinin, silinen ADF 'de şirket içinde barındırılan bir Integration Runtime varsa, yeni ADF 'de yeni bir örnek oluşturması, ayrıca örneği de yeni bir anahtar ile kendi şirket içi makinesinde/VM 'de yüklemesi ve yeniden yüklenmesi gerekecektir. IR kurulumu tamamlandıktan sonra, müşteri bağlantılı hizmeti yeni IR 'ye işaret edecek şekilde değiştirmek ve bağlantıyı test etmek zorunda kalacak ve hata **geçersiz başvurusuyla** başarısız olur.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

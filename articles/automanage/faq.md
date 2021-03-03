@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688017"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetimi hakkında sık sorulan sorular
 
@@ -80,7 +80,7 @@ Azure oto yönetimi, genel önizleme aşamasında ek ücret ödemeden kullanıla
 
 **Azure ilkesi aracılığıyla bir oto Yönet uygulayabilir miyim?**
 
-Evet, otomatik olarak tanımlanan kapsamdaki tüm VM 'lere otomatik Yönet uygulayacak yerleşik bir ilkemiz var. Ayrıca, yapılandırma profilini (DevTest veya üretim), sizin de oto Yönet hesabınızla birlikte belirtmeniz gerekir. [Burada](virtual-machines-policy-enable.md)Azure Ilkesi aracılığıyla oto yönetimi etkinleştirme hakkında daha fazla bilgi edinin.
+Evet, otomatik olarak tanımlanan kapsamdaki tüm VM 'lere otomatik Yönet uygulayacak yerleşik bir ilkemiz var. Ayrıca, ortam yapılandırmasını (DevTest veya üretim), sizin de oto Yönet hesabınızla birlikte belirtmeniz gerekir. [Burada](virtual-machines-policy-enable.md)Azure Ilkesi aracılığıyla oto yönetimi etkinleştirme hakkında daha fazla bilgi edinin.
 
 
 **Bir oto Yönet hesabı nedir?**
@@ -93,9 +93,9 @@ Otomatikmanage hesabı, güvenlik bağlamını sağlayan bir MSI (Yönetilen Hiz
 VM 'niz mevcut bir Log Analytics çalışma alanına bağlıysa, bu çözümleri uygulamak için bu çalışma alanını yeniden kullanacağız: Değişiklik İzleme, envanter ve Güncelleştirme Yönetimi. Bu çalışma alanına bağlı tüm VM 'Ler, bu çözümlerin etkinleştirilmesini sağlar.
 
 
-**VM 'nin yapılandırma profilini değiştirebilir miyim?**
+**VM 'nin ortamını değiştirebilir miyim?**
 
-Şu anda, bu VM için, bu sanal makine için yeniden Yönet 'i devre dışı bırakmanız ve ardından, istenen yapılandırma profili ve tercihleriyle, tekrar yönetmeyi yeniden etkinleştirmeniz gerekir.
+Şu anda, bu VM için, bu sanal makine için, oto yönetimini devre dışı bırakmanız ve ardından, istenen ortam ve tercihlerle birlikte, yeniden etkinleştirmeniz gerekir.
 
 
 **VM 'im, Güncelleştirme Yönetimi gibi bir hizmet için zaten yapılandırılmışsa otomatik yönetilecek yeniden yapılandırılacak mi?**

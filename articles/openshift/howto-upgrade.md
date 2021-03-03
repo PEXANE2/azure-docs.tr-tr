@@ -7,12 +7,12 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634984"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720894"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Azure Red Hat OpenShift (ARO) kümesini yükseltme
 
@@ -20,7 +20,7 @@ ARO kümesi yaşam döngüsünün bir parçası, en son OpenShift sürümüne d�
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, Azure CLı sürüm 2.0.65 daha sonra çalıştırıyor olmanız gerekir. Geçerli sürümünüzü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli)
+Bu makalede, Azure CLı sürüm 2.0.65 daha sonra çalıştırıyor olmanız gerekir. Geçerli sürümünüzü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli)
 
 Bu makalede, mevcut bir Azure Red Hat OpenShift kümesine, ayrıcalıkları olan bir kullanıcı olarak erişiminiz olduğunu varsaymaktadır `admin` .
 
@@ -39,4 +39,3 @@ Güncelleştirilecek bir sürüm seçin ve **Güncelleştir**' i seçin. Güncel
 ## <a name="next-steps"></a>Sonraki adımlar
 - [OC CLı kullanarak bir ARO kümesini yükseltmeyi öğrenin](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - Kullanılabilir OpenShift kapsayıcı platformu Danışma belgeleri ve güncelleştirmeleriyle ilgili bilgileri müşteri portalının [erkıta bölümünde](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) bulabilirsiniz.
-  

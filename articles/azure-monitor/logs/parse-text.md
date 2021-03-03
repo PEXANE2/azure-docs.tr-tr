@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 29393126f94d77dbced0ef896616b945443184fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625261"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733950"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde metin verilerini ayrıştırma
 Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../agents/data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.
@@ -188,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](./log-query-overview.md) hakkında bilgi edinin.

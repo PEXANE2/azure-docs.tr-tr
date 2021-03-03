@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688476"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
 
@@ -26,7 +26,8 @@ Bu makalede, B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik do
 ![E-posta bir kerelik geçiş kodu genel bakış Diyagramı](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **2021 Ekim 'e başlayarak**, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu özelliğin otomatik olarak kullanılmasına izin vermek istemiyorsanız, devre dışı bırakabilirsiniz. Bkz. [e-posta bir kerelik geçiş kodunu devre dışı bırakma](#disable-email-one-time-passcode) .
+> - **2021 Ekim 'e başlayarak**, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu özelliğin otomatik olarak kullanılmasına izin vermek istemiyorsanız, devre dışı bırakabilirsiniz. Bkz. [e-posta bir kerelik geçiş kodunu devre dışı bırakma](#disable-email-one-time-passcode) .
+> - E-posta bir kerelik geçiş kodu ayarları, **dış işbirliği ayarlarından** Azure Portal **tüm kimlik sağlayıcılarına** taşınmıştır.
 
 > [!NOTE]
 > Bir kerelik geçiş kodu kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı söz konusu olduğunda `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin, kullanarak `https://myapps.microsoft.com` , `https://portal.azure.com` bir hataya neden olur.
@@ -83,27 +84,50 @@ Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrik
 
 2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 
-3. **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
+3. **Dış kimlikler**  >  **tüm kimlik sağlayıcıları**' nı seçin.
 
-4. **Konuklar için bir kerelik parola geçiş kodu** altında, **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırak** seçeneğini belirleyin
+4. **E-posta bir kerelik geçiş kodu** seçin ve ardından **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırak** seçeneğini
 
    > [!NOTE]
-   > E-posta bir kerelik geçiş kodu seçeneği yerine aşağıdaki iki durumlu düğmeyi görürseniz, bu, daha önce etkin, devre dışı veya özelliğin önizlemesini kabul ettiğiniz anlamına gelir. Özelliği devre dışı bırakmak için **Hayır** ' ı seçin.
+   > E-posta bir kerelik geçiş kodu ayarları, **dış işbirliği ayarlarından** Azure Portal **tüm kimlik sağlayıcılarına** taşınmıştır.
+   > E-posta bir kerelik geçiş kodu seçeneği yerine bir geçiş görürseniz, bu, daha önce etkin, devre dışı veya özelliğin önizlemesini kabul ettiğiniz anlamına gelir. Özelliği devre dışı bırakmak için **Hayır** ' ı seçin.
    >
-   >![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
+   >![E-posta tek seferlik geçiş kodu devre dışı](media/one-time-passcode/enable-email-otp-disabled.png)
 
 5. **Kaydet**’i seçin.
 
 ## <a name="note-for-public-preview-customers"></a>Genel Önizleme müşterileri için göz önünde
 
-Daha önce bir kerelik geçiş kodu genel önizlemesine sahipseniz, otomatik özellik etkinleştirme için 2021 Ekim tarihi sizin için uygun değildir, bu nedenle ilgili iş işlemleriniz etkilenmez. Ayrıca, Azure portal **Guests için tek seferlik parola geçiş kodu** altında, **2021 Ekim 'de Konuklar için tek seferlik bir geçiş kodunu otomatik olarak etkinleştirme** seçeneğini görmezsiniz. Bunun yerine, aşağıdaki **Evet** veya **Hayır** biçimini görürsünüz:
+Daha önce bir kerelik geçiş kodu genel önizlemesine sahipseniz, otomatik özellik etkinleştirme için 2021 Ekim tarihi sizin için uygun değildir, bu nedenle ilgili iş işlemleriniz etkilenmez. Ayrıca, Azure portal, **Konuklar için tek seferlik bir geçiş kodu** altında, **2021 Ekim 'e başlayan konuklarda e-posta geçiş kodunu otomatik olarak etkinleştirme** seçeneğini görmezsiniz. Bunun yerine, aşağıdaki **Evet** veya **Hayır** biçimini görürsünüz:
 
-![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
+![E-posta bir kerelik geçiş kodu kabul edildi](media/one-time-passcode/enable-email-otp-opted-in.png)
 
 Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve BT 'nin 2021 Ekim 'de otomatik olarak etkinleştirilmesini istiyorsanız, Microsoft Graph API [e-posta kimlik doğrulama yöntemi yapılandırma kaynak türünü](/graph/api/resources/emailauthenticationmethodconfiguration)kullanarak varsayılan ayarlara geri döndürebilirsiniz. Varsayılan ayarlara döndükten sonra, **Konuklar için bir kerelik geçiş kodu** altında aşağıdaki seçenekler kullanılabilir:
 
-- **Ekim 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, 2021 Ekim 'de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
+![E-posta bir kerelik geçiş kodunu etkinleştir](media/one-time-passcode/email-otp-options.png)
+
+- **2021 Ekim 'e başlayan Konuklar için tek seferlik parola geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, 2021 Ekim tarihinde başlayacak şekilde otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
 
 - **Şimdi geçerli olan konuklar için tek seferlik geçiş kodunu etkinleştirin**. Kiracınız için bir kerelik geçiş kodu özelliğini etkinleştirir.
 
 - **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin 2021 Ekim 'de açılmasını önler.
+
+## <a name="note-for-azure-us-government-customers"></a>Azure ABD kamu müşterileri için göz önünde bulunun
+
+E-posta bir kerelik geçiş kodu özelliği, Azure ABD kamu bulutunda varsayılan olarak devre dışıdır.  
+
+ ![E-posta bir kerelik geçiş kodu devre dışı](media/one-time-passcode/enable-email-otp-disabled.png)
+
+Azure ABD kamu bulutunda e-posta bir kerelik geçiş kodu özelliğini etkinleştirmek için:
+
+1. [Azure Portal](https://portal.azure.com) Azure AD Genel Yöneticisi olarak oturum açın.
+2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+3. **Kurumsal ilişki** ayarları ' nı seçin   >  ****.
+
+   > [!NOTE]
+   > - **Kuruluş ilişkilerini** görmüyorsanız, üstteki arama çubuğunda "dış kimlikler" araması yapın.
+
+4. **E-posta bir kerelik geçiş kodu** seçin ve ardından **Evet**' i seçin.
+5. **Kaydet**’i seçin.
+
+Geçerli sınırlamalar hakkında daha fazla bilgi için bkz. [Azure ABD kamu bulutları](current-limitations.md#azure-us-government-clouds).

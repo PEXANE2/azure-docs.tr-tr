@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724362"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel özel bağlayıcıları oluşturma kaynakları
 
@@ -36,10 +36,10 @@ Aşağıdaki tabloda, bu makalede açıklanan özel bağlayıcılar oluşturmak 
 
 |Yöntem açıklaması  |Özellik | Sunucusuz    |Karmaşıklık  |
 |---------|---------|---------|---------|
-|**[Log Analytics Aracısı](#connect-with-the-log-analytics-agent)** <br>Şirket içi ve IaaS kaynaklarından dosya toplamak için idealdir   | Yalnızca dosya koleksiyonu  |   No      |Düşük         |
+|**[Log Analytics Aracısı](#connect-with-the-log-analytics-agent)** <br>Şirket içi ve IaaS kaynaklarından dosya toplamak için idealdir   | Yalnızca dosya koleksiyonu  |   Hayır      |Düşük         |
 |**[Logstash](#connect-with-logstash)** <br>Şirket içi ve IaaS kaynakları için en iyisi, bir eklentinin kullanılabildiği herhangi bir kaynak ve Logstash ile zaten tanıdık olan kuruluşlar  | Kullanılabilir eklentiler, ayrıca özel eklenti, yetenekler önemli esneklik sağlar.   |   Eşleşen çalıştırmak için bir VM veya VM kümesi gerektirir           |   Zayıf eklentilerle birçok senaryoyu destekler      |
 |**[Logic Apps](#connect-with-logic-apps)** <br>Yüksek maliyetli; yüksek hacimli verilerden kaçının <br>Düşük hacimli bulut kaynakları için en iyisi  | Codeless programlama, algoritma uygulama desteği olmadan sınırlı esneklik sağlar.<br><br> Gereksinimlerinizi zaten destekleyen kullanılabilir bir eylem yoksa, özel bir eylem oluşturmak karmaşıklık ekleyebilir.    |    Yes         |   Zayıf basit, kodsuz kullanacaksınız geliştirme      |
-|**[PowerShell](#connect-with-powershell)** <br>Prototip ve dönemsel dosya yüklemeleri için en iyisi | Dosya koleksiyonu için doğrudan destek. <br><br>PowerShell, daha fazla kaynak toplamak için kullanılabilir, ancak kodlama ve betiği hizmet olarak yapılandırmaya gerek duyar.      |No               |  Düşük       |
+|**[PowerShell](#connect-with-powershell)** <br>Prototip ve dönemsel dosya yüklemeleri için en iyisi | Dosya koleksiyonu için doğrudan destek. <br><br>PowerShell, daha fazla kaynak toplamak için kullanılabilir, ancak kodlama ve betiği hizmet olarak yapılandırmaya gerek duyar.      |Hayır               |  Düşük       |
 |**[Log Analytics API 'SI](#connect-with-the-log-analytics-api)** <br>Tümleştirme uygulayan ISV 'Ler ve benzersiz koleksiyon gereksinimleri için en iyisi   | Kod ile kullanılabilen tüm özellikleri destekler.  | Uygulamaya bağlıdır           |     Yüksek    |
 |**[Azure işlevleri](#connect-with-azure-functions)** Yüksek hacimli bulut kaynakları ve benzersiz koleksiyon gereksinimleri için en iyisi  | Kod ile kullanılabilen tüm özellikleri destekler.  |  Yes             |     Geniş programlama bilgisi gerektirir    |
 |     |         |                |
@@ -55,9 +55,9 @@ Aşağıdaki tabloda, bu makalede açıklanan özel bağlayıcılar oluşturmak 
 
 Veri kaynağınız dosyalardaki olayları sunmızda, özel bağlayıcınızı oluşturmak için Azure Izleyici Log Analytics aracısını kullanmanızı öneririz.
 
-- Daha fazla bilgi için bkz. [Azure izleyici 'de özel Günlükler toplama](/azure/azure-monitor/platform/data-sources-custom-logs).
+- Daha fazla bilgi için bkz. [Azure izleyici 'de özel Günlükler toplama](../azure-monitor/agents/data-sources-custom-logs.md).
 
-- Bu yöntemin bir örneği için bkz. [Azure izleyici 'de Linux için Log Analytics aracısıyla özel JSON veri kaynakları toplama](/azure/azure-monitor/platform/data-sources-json).
+- Bu yöntemin bir örneği için bkz. [Azure izleyici 'de Linux için Log Analytics aracısıyla özel JSON veri kaynakları toplama](../azure-monitor/agents/data-sources-json.md).
 
 ## <a name="connect-with-logstash"></a>Logstash ile bağlanma
 
@@ -83,7 +83,7 @@ Faydalı Logstash eklentileri örnekleri için bkz.:
 
 ## <a name="connect-with-logic-apps"></a>Logic Apps bağlanma
 
-Azure Sentinel için sunucusuz, özel bağlayıcı oluşturmak üzere bir [Azure mantıksal uygulaması](/azure/logic-apps/) kullanın.
+Azure Sentinel için sunucusuz, özel bağlayıcı oluşturmak üzere bir [Azure mantıksal uygulaması](../logic-apps/index.yml) kullanın.
 
 > [!NOTE]
 > Logic Apps kullanarak sunucusuz Bağlayıcılar oluştururken, bağlayıcılarınız için Logic Apps kullanılması çok büyük miktarlarda veri için uygun maliyetli olabilir.
@@ -93,14 +93,14 @@ Azure Sentinel için sunucusuz, özel bağlayıcı oluşturmak üzere bir [Azure
 
 1. **Logic Apps başlatmak için aşağıdaki tetikleyicilerden birini kullanın**:
 
-    |Tetikleyici  |Description  |
+    |Tetikleyici  |Açıklama  |
     |---------|---------|
-    |**Yinelenen bir görev**     |   Örneğin, mantıksal uygulamanızı belirli dosyalardan, veritabanlarından veya dış API 'lerden düzenli olarak verileri almak için zamanlayın. <br>Daha fazla bilgi için, bkz. [Azure Logic Apps yinelenen görevleri ve iş akışlarını oluşturma, zamanlama ve çalıştırma](/azure/connectors/connectors-native-recurrence).      |
-    |**İsteğe bağlı tetikleme**     | El ile veri toplama ve test için mantıksal uygulamanızı isteğe bağlı olarak çalıştırın. <br>Daha fazla bilgi için bkz.  [https uç noktaları kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar](/azure/logic-apps/logic-apps-http-endpoint).        |
-    |**HTTP/S uç noktası**     |  Akış için önerilir ve kaynak sistem veri aktarımını başlatabilirler. <br>Daha fazla bilgi için bkz. [http veya https üzerinden hizmet uç noktalarını çağırma](/azure/connectors/connectors-native-http).       |
+    |**Yinelenen bir görev**     |   Örneğin, mantıksal uygulamanızı belirli dosyalardan, veritabanlarından veya dış API 'lerden düzenli olarak verileri almak için zamanlayın. <br>Daha fazla bilgi için, bkz. [Azure Logic Apps yinelenen görevleri ve iş akışlarını oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md).      |
+    |**İsteğe bağlı tetikleme**     | El ile veri toplama ve test için mantıksal uygulamanızı isteğe bağlı olarak çalıştırın. <br>Daha fazla bilgi için bkz.  [https uç noktaları kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md).        |
+    |**HTTP/S uç noktası**     |  Akış için önerilir ve kaynak sistem veri aktarımını başlatabilirler. <br>Daha fazla bilgi için bkz. [http veya https üzerinden hizmet uç noktalarını çağırma](../connectors/connectors-native-http.md).       |
     |     |         |
 
-1. **Olaylarınızı almak için bilgileri okuyan mantıksal uygulama bağlayıcılarından herhangi birini kullanın**. Örneğin:
+1. **Olaylarınızı almak için bilgileri okuyan mantıksal uygulama bağlayıcılarından herhangi birini kullanın**. Örnek:
 
     - [REST API bağlanma](/connectors/custom-connectors/)
     - [SQL Server bağlanma](/connectors/sql/)
@@ -112,9 +112,9 @@ Azure Sentinel için sunucusuz, özel bağlayıcı oluşturmak üzere bir [Azure
 
 1. **Almak istediğiniz bilgileri hazırlayın**.
 
-    Örneğin, JSON içeriğindeki özelliklere erişmek için [JSON 'u Ayrıştır eylemini](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action) kullanın ve mantıksal uygulamanız için giriş belirttiğinizde bu özellikleri dinamik içerik listesinden seçmenizi sağlar.
+    Örneğin, JSON içeriğindeki özelliklere erişmek için [JSON 'u Ayrıştır eylemini](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) kullanın ve mantıksal uygulamanız için giriş belirttiğinizde bu özellikleri dinamik içerik listesinden seçmenizi sağlar.
 
-    Daha fazla bilgi için bkz. [Azure Logic Apps veri Işlemlerini gerçekleştirme](/azure/logic-apps/logic-apps-perform-data-operations).
+    Daha fazla bilgi için bkz. [Azure Logic Apps veri Işlemlerini gerçekleştirme](../logic-apps/logic-apps-perform-data-operations.md).
 
 1. **Log Analytics verileri yazın**.
 
@@ -174,14 +174,14 @@ Log Analytics veri toplayıcı API 'sini kullanarak doğrudan bir yeniden bekley
 
 Daha fazla programlama gerektiren bir yeniden bir uç noktanın çağrılması de daha fazla esneklik sağlar.
 
-Daha fazla bilgi için, [Log Analytics veri toplayıcı API 'sine](/azure/azure-monitor/platform/data-collector-api), özellikle de aşağıdaki örneklere bakın:
+Daha fazla bilgi için, [Log Analytics veri toplayıcı API 'sine](../azure-monitor/logs/data-collector-api.md), özellikle de aşağıdaki örneklere bakın:
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>Azure Işlevleri ile bağlanma
 
-Azure Işlevleri 'ni, daha az bir özel bağlayıcı oluşturmak için, Resttedbir API ve [PowerShell](/azure/azure-functions/functions-reference-powershell)gibi çeşitli kodlama dilleri ile birlikte kullanın.
+Azure Işlevleri 'ni, daha az bir özel bağlayıcı oluşturmak için, Resttedbir API ve [PowerShell](../azure-functions/functions-reference-powershell.md)gibi çeşitli kodlama dilleri ile birlikte kullanın.
 
 Bu yöntemin örnekleri için bkz.:
 
@@ -189,7 +189,7 @@ Bu yöntemin örnekleri için bkz.:
 - [Azure Işleviyle okta tek Sign-On Azure Sentinel 'e bağlama](connect-okta-single-sign-on.md)
 - [Azure Işleviyle Azure Sentinel 'e dokunarak, yazım noktanızı bağlayın](connect-proofpoint-tap.md)
 - [Qualys VM 'nizi Azure Işlevi ile Azure Sentinel 'e bağlama](connect-qualys-vm.md)
-- [XML, CSV veya diğer veri biçimlerini geri ödeme](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [XML, CSV veya diğer veri biçimlerini geri ödeme](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Azure Sentinel Ile yakınlaştırmayı izleme](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blog)
 - [Office 365 YÖNETIM API verilerini Azure Sentinel 'e almak için bir işlev uygulaması dağıtma](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure Sentinel GitHub topluluğu)
 
@@ -197,7 +197,7 @@ Bu yöntemin örnekleri için bkz.:
 
 İlgili bilgileri ayıklamak ve Azure Sentinel 'de ilgili alanları doldurmak için özel bağlayıcıınızın yerleşik ayrıştırma tekniğini kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 - **Logstash kullandıysanız**, verilerinizi ayrıştırmak Için [grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) filtresi eklentisini kullanın.
 - **Bir Azure işlevi kullandıysanız**, verilerinizi kodla ayrıştırın. Daha fazla bilgi için bkz. [çözümleyiciler](normalization.md#parsers).

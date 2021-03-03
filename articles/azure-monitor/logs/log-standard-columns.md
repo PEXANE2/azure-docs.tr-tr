@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704132"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart sütunlar
 Azure Izleyici günlüklerindeki veriler, her biri benzersiz bir sütun kümesine sahip belirli bir veri türüne sahip bir [Log Analytics çalışma alanında veya Application Insights uygulamasında bir kayıt kümesi olarak depolanır](../logs/data-platform-logs.md). Birçok veri türü, birden çok tür genelinde ortak olan standart sütunlara sahip olacaktır. Bu makale, bu sütunları açıklar ve bunları sorgularda nasıl kullanabileceğinizi gösteren örnekler sağlar.
@@ -20,6 +20,10 @@ Application Insights içindeki çalışma alanı tabanlı uygulamalar, verilerin
 
 > [!NOTE]
 > Standart sütunlardan bazıları Log Analytics şema görünümünde veya IntelliSense 'de gösterilmez ve çıktıda açıkça bir sütun belirtmediğiniz takdirde sorgu sonuçlarında gösterilmez.
+> 
+
+## <a name="tenantid"></a>TenantId
+**Tenantıd** sütunu, Log Analytics çalışma alanı için çalışma alanı kimliğini barındırır.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated ve zaman damgası
 **TimeGenerated** (Log Analytics çalışma alanı) ve **zaman damgası** (Application Insights uygulaması) sütunları, kaydın veri kaynağı tarafından oluşturulduğu tarih ve saati içerir. Daha fazla ayrıntı için bkz. [Azure izleyici 'de günlük verisi alma süresi](../logs/data-ingestion-time.md) .
@@ -49,6 +53,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_Timerecelmiş
 **\_ Timerectitim** sütunu, Azure bulutundaki Azure izleyici alma noktası tarafından kaydın alındığı tarih ve saati içerir. Bu, veri kaynağı ve bulut arasındaki gecikme sorunlarını belirlemek için yararlı olabilir. Bir örneğin, bir aracıdan alınan verilerle gecikmeye neden olan bir ağ sorunu olabilir. Daha fazla ayrıntı için bkz. [Azure izleyici 'de günlük verisi alma süresi](../logs/data-ingestion-time.md) .
+
+> [!NOTE]
+> Zaman **\_ damgası** sütunu her kullanıldığında hesaplama yapılır. Bu işlem kaynak açısından yoğun bir işlemdir. Çok sayıda kaydı filtrelemek için bu uygulamayı kullanmayı daraltın. Bu işlevin kullanılması, daha fazla sorgu yürütme süresine yol açabilir.
+
 
 Aşağıdaki sorgu, bir aracıdan gelen olay kayıtları için saate göre ortalama gecikme süresini verir. Bu, aracıdan buluta kadar olan süreyi ve kayıt sorgularının günlük sorguları için kullanılabilir olması için toplam süreyi içerir.
 
@@ -238,6 +246,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici günlük verilerinin nasıl depolandığı](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-- [Günlük sorgularını yazarken](../log-query/get-started-queries.md)bir ders alın.
+- [Azure izleyici günlük verilerinin nasıl depolandığı](./log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Günlük sorgularını yazarken](./get-started-queries.md)bir ders alın.
 - [Günlük sorgularında tabloları birleştirme](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)konusunda bir ders alın.

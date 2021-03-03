@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Azure nesne bağlantıları belgeleri
+summary: Nesne bağlayıcıları fiziksel dünyadaki bir nesneyi algılamak ve bu nesnenin 3B modeli verilen 6 DoF pozlarını tahmin etmek için kullanılabilir.
+metadata:
+  title: Azure nesne bağlantıları belgeleri
+  description: Fiziksel dünyadaki bir nesneyi tespit etmek ve bu nesnenin 3B modeli verilen 6 DoF pozlarını tahmin etmek için Azure nesne tutturucularını kullanın.
+  services: azure-object-anchors
+  ms.service: azure-object-anchors
+  ms.topic: landing-page
+  author: craigktreasure
+  ms.author: crtreasu
+  ms.date: 04/01/2020
+  ms.openlocfilehash: 84ef8d771f4471c11dd77422444a5be98d5c8212
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749176"
+landingContent:
+- title: Azure nesne bağlayıcıları hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure nesne bağlayıcıları nedir?
+      url: overview.md
+    - text: Sürüm notlarını GitHub’da görüntüleyin
+      url: https://github.com/Azure/azure-object-anchors/releases
+- title: Temel kavramları öğrenin
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SDK’ya genel bakış
+      url: ./concepts/sdk-overview.md
+- title: Hızlı Başlangıçlar
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Model dönüştürme
+      url: ./quickstarts/get-started-model-conversion.md
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: MRTK ile Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens-mrtk.md
+    - text: HoloLens DirectX
+      url: ./quickstarts/get-started-hololens-directx.md

@@ -4,12 +4,12 @@ description: Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yara
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622124"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738676"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Ortak uyarı şemasını Logic Apps ile tümleştirme
 
@@ -23,8 +23,8 @@ Bu makalede, tüm uyarılarınızı işlemek için ortak uyarı şemasının kul
 ## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makalede, okuyucunun öğrenildiği varsayılmaktadır 
-* Uyarı kurallarını ayarlama ([ölçüm](../alerts/alerts-metric.md), [günlük](../platform/alerts-log.md), [etkinlik günlüğü](../platform/alerts-activity-log.md))
-* [Eylem gruplarını](../platform/action-groups.md) ayarlama
+* Uyarı kurallarını ayarlama ([ölçüm](../alerts/alerts-metric.md), [günlük](./alerts-log.md), [etkinlik günlüğü](./alerts-activity-log.md))
+* [Eylem gruplarını](./action-groups.md) ayarlama
 * Eylem gruplarının içinden [ortak uyarı şemasının](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) etkinleştirilmesi
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Ortak uyarı şemasından yararlanan bir mantıksal uygulama oluşturma
@@ -137,5 +137,5 @@ Bu makalede, okuyucunun öğrenildiği varsayılmaktadır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Eylem grupları hakkında daha fazla bilgi edinin](../platform/action-groups.md).
+* [Eylem grupları hakkında daha fazla bilgi edinin](./action-groups.md).
 * [Ortak uyarı şeması hakkında daha fazla bilgi edinin](./alerts-common-schema.md).

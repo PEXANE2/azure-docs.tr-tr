@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738166"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -26,6 +26,8 @@ Başlamak için şunlar gerekir:
 * Bir [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) hizmet kaynağı (**bilişsel** hizmetler kaynağı değil). 
 
 * [**Azure Blob depolama hesabı**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Tüm Azure depolama erişimi bir depolama hesabı üzerinden gerçekleşir.
+
+* Azure aboneliğinizin yeni belge çevirisi özelliğini kullanmasını sağlamak için tamamlanmış bir [**belge çevirisi (Önizleme) formu**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) .
 
 > [!NOTE]
 > Belge çevirisi şu anda **bilişsel** hizmetler (çok hizmet) kaynağında değil yalnızca çevirmen (tek hizmet) kaynağında destekleniyor.
@@ -64,7 +66,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 ## <a name="create-your-azure-blob-storage-containers"></a>Azure Blob depolama Kapsayıcılarınızı oluşturma
 
-Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolama hesabınızda**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) [**kapsayıcı oluşturmanız**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) gerekir.
+Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolama hesabınızda**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) [**kapsayıcı oluşturmanız**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) gerekir.
 
 * **Kaynak kapsayıcısı**. Bu kapsayıcı, dosyalarınızı çeviri için yüklediğiniz yerdir (gerekli).
 * **Hedef kapsayıcı**. Bu kapsayıcı, çevrilmiş dosyalarınızın depolanacağı (gerekli).  
@@ -111,7 +113,7 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 
 ### <a name="java"></a>[Java](#tab/java)
 
-* Projeniz için bir çalışma dizini oluşturun. Örneğin:
+* Projeniz için bir çalışma dizini oluşturun. Örnek:
 
 ```powershell
 mkdir sample-project
@@ -184,7 +186,7 @@ Bir Batch belge çevirisi isteği, bir POST isteği aracılığıyla Translator 
 
 Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
-|HTTP üstbilgisi|Description|
+|HTTP üstbilgisi|Açıklama|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Gerekli**: değer, çevirmen veya bilişsel hizmetler kaynağınız için Azure abonelik anahtarıdır.|
 |İçerik Türü|**Gerekli**: yükün içerik türünü belirtir. Kabul edilen değerler Application/JSON veya charset = UTF-8 ' dir.|
@@ -201,26 +203,7 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 >[!NOTE]
 > Hedefte aynı ada sahip bir dosya zaten varsa, üzerine yazılır.
 
-### <a name="post-a-translation-request"></a>Çeviri isteği gönder
-
-> [!IMPORTANT]
->
-> * Aşağıdaki kod örnekleri için, işleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
-
->> [!div class="checklist"]
->>
->> * `endpoint`
->> * `subscriptionKey`
->> * `sourceURL`
->> * `targetURL`
->> * `glossaryURL`
->> * `id`  (iş KIMLIĞI)
->>
-> * İşi `id`  Post yönteminin yanıt üst bilgisi `Operation-Location`  URL 'si değerinde bulabilirsiniz. URL 'nin son parametresi işlemin işdir **`id`** .  
-> * Bir belge çevirisi işlemi için işi almak üzere bir Işleri Al isteği de kullanabilirsiniz `id`  .
-> * Aşağıdaki örnekler için, anahtarı ve uç noktanızı belirtilen yerde sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  
->
-> Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+## <a name="post-a-translation-request"></a>Çeviri isteği gönder
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="post-request-body-without-optional-glossaryurl"></a>İsteğe bağlı bir ışaryurl 'Si olmadan istek gövdesini GÖNDERIN
@@ -286,7 +269,26 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 }
 ```
 
-## <a name="_post-document-translation_-request-code-samples"></a>_Belge çevirisi_ , istek kodu örneklerini gönder
+> [!IMPORTANT]
+>
+> Aşağıdaki kod örnekleri için, işleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
+>>>
+>> * `endpoint`
+>> * `subscriptionKey`
+>> * `sourceURL`
+>> * `targetURL`
+>> * `glossaryURL`
+>> * `id`  (iş KIMLIĞI)
+>>
+> Değerin nerede bulunacağı `id` :
+> * İşi `id`  Post yönteminin yanıt üst bilgisi `Operation-Location`  URL 'si değerinde bulabilirsiniz. URL 'nin son parametresi işlemin işdir **`id`** .  
+> * Bir belge çevirisi işlemi için işi almak üzere bir Işleri Al isteği de kullanabilirsiniz `id`  .
+>
+> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  
+>
+> Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+
+## <a name="_post-document-translation_-request"></a>_Belge çevirisi Isteği gönder_
 
 Çeviri hizmetine toplu belge çevirisi isteği gönderme.
 
@@ -519,7 +521,7 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_-code-samples"></a>_Dosya biçimlerini al_ kod örnekleri
+## <a name="_get-file-formats_"></a>_Dosya biçimlerini al_ 
 
 Desteklenen dosya biçimlerinin bir listesini alın. Başarılı olursa, bu yöntem bir `200 OK` yanıt kodu döndürür.
 
@@ -696,7 +698,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_-code-samples"></a>_İş durum_ kodu örneklerini al
+## <a name="_get-job-status_"></a>_İş durumunu al_ 
 
 Tek bir iş için geçerli durumu ve bir belge çevirisi isteğindeki tüm işlerin özetini alın. Başarılı olursa, bu yöntem bir `200 OK` yanıt kodu döndürür.
 <!-- markdownlint-disable MD024 -->
@@ -875,7 +877,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_-code-samples"></a>_Belge durum_ kodu örneklerini al
+## <a name="_get-document-status_"></a>_Belge durumunu al_
 
 ### <a name="brief-overview"></a>Kısa genel bakış
 
@@ -1055,7 +1057,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_-code-samples"></a>_İş_ kodu örneklerini Sil
+## <a name="_delete-job_"></a>_İşi SIL_ 
 
 ### <a name="brief-overview"></a>Kısa genel bakış
 
@@ -1254,7 +1256,7 @@ Aşağıdaki tabloda belge çevirisine göndereceğiniz verilerin sınırları l
 
 * [Translator v3 API başvurusu](../reference/v3-0-reference.md)
 * [Dil desteği](../language-support.md)
-* [Azure API Management abonelikler](/azure/api-management/api-management-subscriptions).
+* [Azure API Management abonelikler](../../../api-management/api-management-subscriptions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

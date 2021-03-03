@@ -6,14 +6,14 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585457"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709895"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
 
@@ -32,7 +32,7 @@ Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının na
 4. İstediğiniz ölçümü seçin. 
    <br />Şu anda DPS için üç ölçüm vardır:
 
-    | Ölçüm Adı | Description |
+    | Ölçüm Adı | Açıklama |
     |-------|------------|
     | Kanıtlama denemeleri | Cihaz sağlama hizmeti ile kimlik doğrulamaya çalıştı cihaz sayısı|
     | Kayıt denemeleri | Başarılı kimlik doğrulamasından sonra IoT Hub kaydolmaya çalışılan cihazların sayısı|
@@ -44,7 +44,7 @@ Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının na
 
 7. **Koşul Ekle**' yi seçin, ardından komut istemlerini izleyerek istediğiniz ölçüm ve eşiği seçin.
 
-Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?](../azure-monitor/alerts/alerts-overview.md)
+Daha fazla bilgi için bkz. [Azure izleyici 'de uyarılar](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için log analitik kullanma
 
@@ -58,7 +58,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 
 5. İstenen günlüklerin toplanmasını sağlar.
 
-    | Günlük Adı | Description |
+    | Günlük Adı | Açıklama |
     |-------|------------|
     | DeviceOperations Işlemleri | Cihaz bağlantı olaylarıyla ilgili Günlükler |
     | ServiceOperations | Service SDK kullanımıyla ilgili olay günlükleri (ör. kayıt grupları oluşturma veya güncelleştirme)|
@@ -75,7 +75,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 ## <a name="common-error-codes"></a>Genel hata kodları
 Sık karşılaşılan hataları anlamak ve çözmek için bu tabloyu kullanın.
 
-| Hata Kodu| Description | HTTP durum kodu |
+| Hata Kodu| Açıklama | HTTP durum kodu |
 |-------|------------|------------|
 | 400 | İsteğin gövdesi geçerli değil; Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor.| 400 Hatalı biçim |
 | 401 | Yetkilendirme belirteci doğrulanamıyor; Örneğin, zaman aşımına uğradı veya isteğin URI 'SI için uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | 401 Yetkisiz|

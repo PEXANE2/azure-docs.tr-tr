@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706767"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
@@ -54,7 +54,7 @@ Bu örnek aşağıdaki adımları uygulayın:
 |Bir bilgisayar almak istiyorum, nasıl gidebilirim?|
 |Bir bilgisayar ne zaman olabilir?|
 
-Buradaki temel terim, "bilgisayar" olarak farklılık gösterir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUU bağlamdaki Eşanlamlı sözcükleri akıllıca çıkarabilir, ancak eğitim için utumslar oluştururken bunları değiştirmek her zaman daha iyidir.
+Burada temel terim, *bilgisayar*, değişken değildir. Masaüstü bilgisayar, dizüstü bilgisayar, iş istasyonu veya hatta yalnızca makine gibi alternatifleri kullanın. LUU bağlamdaki Eşanlamlı sözcükleri akıllıca çıkarabilir, ancak eğitim için utumslar oluştururken bunları değiştirmek her zaman daha iyidir.
 
 ## <a name="example-utterances-in-each-intent"></a>Her amaç için örnek söylenme
 

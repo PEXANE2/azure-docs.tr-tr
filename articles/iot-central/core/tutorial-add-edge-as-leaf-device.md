@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724889"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme
 
@@ -53,13 +53,16 @@ IoT Edge bildiriminden bir cihaz şablonu oluşturmak için:
 
 1. **Şablon türü seç** sayfasında **Azure IoT Edge** kutucuğunu seçin. Ardından **İleri: Özelleştir**' i seçin.
 
-1. **Azure IoT Edge dağıtım bildirimini karşıya yükle** sayfasında, cihaz şablonu adı olarak *çevresel algılayıcı Edge cihazını* girin. Ardından, daha önce indirdiğinizEnvironmentalSensorManifest.jskarşıya yüklemek için, **Gözden** geçirme ** '** yi seçin. Sonra Ileri ' yi seçin **: İnceleme**.
+1. **Azure IoT Edge dağıtım bildirimini karşıya yükle** sayfasında, cihaz şablonu adı olarak *çevresel algılayıcı Edge cihazını* girin. Ardından, daha önce indirdiğinizEnvironmentalSensorManifest.jskarşıya yüklemek için, **Gözden** geçirme **'** yi seçin. Sonra Ileri ' yi seçin **: İnceleme**.
 
 1. **İnceleme** sayfasında **Oluştur**' u seçin.
 
 1. Bildirimde tanımlanan iki özelliği görüntülemek için **SimulatedTemperatureSensor** modülündeki **Yönet** arabirimini seçin:
 
 :::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+
+> [!TIP]
+> Bu dağıtım bildirimi, bağlantı için herhangi bir kimlik bilgisi gerektirmeyen Azure Container Registry deposundan modül görüntülerini çeker. Modül görüntülerini özel bir depodan kullanmak istiyorsanız, bildirimde kapsayıcı kayıt defteri kimlik bilgilerini ayarlayın.
 
 ### <a name="add-telemetry-to-manifest"></a>Bildirime telemetri Ekle
 
@@ -83,23 +86,23 @@ Telemetri tanımlarını cihaz şablonuna eklemek için:
 
 1. **Çevresel algılayıcı Edge cihaz** şablonunda **Yönet** arabirimini seçin.
 
-1. **+ Özellik Ekle**' yi seçin. **Görüntü adı** olarak *makine* girin ve **yetenek türünün** **telemetri**olduğundan emin olun.
+1. **+ Özellik Ekle**' yi seçin. **Görüntü adı** olarak *makine* girin ve **yetenek türünün** **telemetri** olduğundan emin olun.
 
 1. Şema türü olarak **nesne** ' yi seçin ve ardından **Tanımla**' yı seçin. Nesne tanımı sayfasında, **Double** türünden öznitelik olarak *sıcaklık* ve *basınç* ekleyin ve ardından **Uygula**' yı seçin.
 
-1. **+ Özellik Ekle**' yi seçin. **Görüntü adı** olarak *ortam* girin ve **yetenek türünün** **telemetri**olduğundan emin olun.
+1. **+ Özellik Ekle**' yi seçin. **Görüntü adı** olarak *ortam* girin ve **yetenek türünün** **telemetri** olduğundan emin olun.
 
 1. Şema türü olarak **nesne** ' yi seçin ve ardından **Tanımla**' yı seçin. Nesne tanımı sayfasında, **Double** türü öznitelikleri olarak *sıcaklık* ve *nem* ekleyin ve ardından **Uygula**' yı seçin.
 
-1. **+ Özellik Ekle**' yi seçin. **Görünen ad** olarak *TimeCreated* yazın ve **yetenek türünün** **telemetri**olduğundan emin olun.
+1. **+ Özellik Ekle**' yi seçin. **Görünen ad** olarak *TimeCreated* yazın ve **yetenek türünün** **telemetri** olduğundan emin olun.
 
 1. Şema türü olarak **DateTime** öğesini seçin.
 
 1. Şablonu güncelleştirmek için **Kaydet** ' i seçin.
 
-**Manage** Interface artık **Machine**, **Ambient**ve **TimeCreated** telemetri türlerini içerir:
+**Manage** Interface artık **Machine**, **Ambient** ve **TimeCreated** telemetri türlerini içerir:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Makine ve ortam telemetri türleri ile arabirim":::
 
 ### <a name="add-views-to-template"></a>Şablona görünümler ekleme
 
@@ -109,13 +112,13 @@ Cihaz şablonunda, bir işlecin IoT Edge cihazdan Telemetriyi görmesini sağlay
 
 1. **Yeni bir görünüm eklemek Için seçin** sayfasında, cihaz kutucuğunu **görselleştirmeyi** seçin.
 
-1. Görünüm adını *IoT Edge cihaz telemetrisini görüntülemek*için değiştirin.
+1. Görünüm adını *IoT Edge cihaz telemetrisini görüntülemek* için değiştirin.
 
 1. **Çevresel** ve **makine** telemetri türlerini seçin. Ardından **kutucuk Ekle**' yi seçin.
 
 1. **Görünüm IoT Edge cihaz telemetrisi** görünümünü kaydetmek için **Kaydet** ' i seçin.
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Telemetri görünümü ile cihaz şablonu":::
 
 ### <a name="publish-the-template"></a>Şablonu yayımlama
 
@@ -123,7 +126,7 @@ Cihaz şablonunda, bir işlecin IoT Edge cihazdan Telemetriyi görmesini sağlay
 
 **Ortam algılayıcı Edge cihaz** şablonuna gidin ve **Yayımla**' yı seçin. **Bu cihaz şablonunu uygulama panelinde Yayımla** ' ya tıklayın, şablonu yayımlamak için **Yayımla** ' yı seçin:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Cihaz şablonunu yayımlama":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge cihaz ekle
 
@@ -133,9 +136,9 @@ Artık **çevresel algılayıcı Edge cihaz** şablonunu yayımladınız, IoT Ce
 
 1. Şablondan yeni bir cihaz eklemek için **+ Yeni** ' yi seçin. **Yeni cihaz oluştur** sayfasında **Oluştur**' u seçin.
 
-Artık **kayıtlı**durumda olan yeni bir cihazınız var:
+Artık **kayıtlı** durumda olan yeni bir cihazınız var:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Yeni, kayıtlı cihaz":::
 
 ### <a name="get-the-device-credentials"></a>Cihaz kimlik bilgilerini al
 
@@ -143,9 +146,9 @@ IoT Edge cihazını Bu öğreticide daha sonra dağıtırken, cihazın IoT Centr
 
 1. **Cihaz** sayfasında, oluşturduğunuz aygıtı seçin.
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan**’ı seçin.
 
-1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı**, **cihaz kimliği**ve **birincil anahtarı**bir yere unutmayın. Bu değerleri daha sonra kullanırsınız.
+1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı**, **cihaz kimliği** ve **birincil anahtarı** bir yere unutmayın. Bu değerleri daha sonra kullanırsınız.
 
 1. **Kapat**’ı seçin.
 
@@ -161,11 +164,11 @@ Bu öğreticide, bir IoT Edge cihazının benzetimini yapmak için Azure 'da olu
 
 1. Azure aboneliğinizi seçin.
 
-1. *Orta kenar-RG*adlı yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin.
+1. *Orta kenar-RG* adlı yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin.
 
 1. Size yakın bir bölge seçin.
 
-1. *Contoso-orta-uç*gibi benzersiz bir **DNS etiketi öneki** ekleyin.
+1. *Contoso-orta-uç* gibi benzersiz bir **DNS etiketi öneki** ekleyin.
 
 1. Sanal makine için bir Yönetici Kullanıcı adı seçin.
 
@@ -181,7 +184,7 @@ Bu öğreticide, bir IoT Edge cihazının benzetimini yapmak için Azure 'da olu
 
 1. Seçimlerinizi gözden geçirin ve ardından **Oluştur**' u seçin:
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge VM oluşturma":::
 
 Dağıtımın tamamlanabilmesi birkaç dakika sürer. Dağıtım tamamlandığında, Azure portal **Merkezi-Edge-RG** kaynak grubuna gidin.
 
@@ -265,19 +268,19 @@ Sanal makinede IoT Edge yapılandırmak için, IoT Central uygulamanıza kaydolm
     > [!TIP]
     > Tüm modüllerin çalışmaya başlamasını beklemeniz gerekebilir.
 
-## <a name="view-the-telemetry"></a>Telemetriyi görüntüleme
+## <a name="view-the-telemetry"></a>Telemetri verilerini görüntüleme
 
 Sanal IoT Edge cihaz artık VM 'de çalışıyor. IoT Central uygulamanızda cihaz durumu artık **cihazlar** sayfasında **sağlanıyor** :
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="IoT Edge cihaz sağlandı":::
 
 Cihaz Telemetriyi **görüntüleme IoT Edge cihaz telemetrisi** sayfasında görebilirsiniz:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Cihaz telemetrisi":::
 
 **Modüller** sayfası, cihazdaki IoT Edge modüllerinin durumunu gösterir:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="IoT Edge bildiriminden oluşturulan cihaz şablonu":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Cihaz modülü durumu":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

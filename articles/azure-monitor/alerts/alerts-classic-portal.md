@@ -4,21 +4,21 @@ description: Azure portal, CLı veya PowerShell kullanarak klasik ölçüm uyar�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.openlocfilehash: 015a84ab6f81875407f460c4a45423f3f5e22b7f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714383"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme
 
 > [!WARNING]
-> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../platform/alerts-overview.md)desteklemektedir. Klasik uyarılar, genel bulut kullanıcıları için [devre](../platform/monitoring-classic-retirement.md) dışı bırakılsa da, henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda olabilir.
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar, genel bulut kullanıcıları için [devre](./monitoring-classic-retirement.md) dışı bırakılsa da hala **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 >
 
-Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe girdiğinde bildirim almanın bir yolunu sağlar. Klasik ölçüm uyarıları yalnızca boyutlu olmayan ölçümlerde uyarı vermeyi sağlayan eski bir işlevdir. Klasik ölçüm uyarıları üzerinde geliştirilmiş işlevlere sahip ölçüm uyarıları adlı yeni bir işlev vardır. [Ölçüm uyarılarına genel bakış](../platform/alerts-metric-overview.md)bölümünde yeni ölçüm uyarıları işlevselliği hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, Azure portal, Azure CLı ve PowerShell aracılığıyla klasik ölçüm uyarısı kurallarını oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz.
+Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe girdiğinde bildirim almanın bir yolunu sağlar. Klasik ölçüm uyarıları yalnızca boyutlu olmayan ölçümlerde uyarı vermeyi sağlayan eski bir işlevdir. Klasik ölçüm uyarıları üzerinde geliştirilmiş işlevlere sahip ölçüm uyarıları adlı yeni bir işlev vardır. [Ölçüm uyarılarına genel bakış](./alerts-metric-overview.md)bölümünde yeni ölçüm uyarıları işlevselliği hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, Azure portal, Azure CLı ve PowerShell aracılığıyla klasik ölçüm uyarısı kurallarını oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz.
 
 ## <a name="with-azure-portal"></a>Azure portal ile
 
@@ -134,6 +134,5 @@ Bu bölümlerde, klasik ölçüm uyarılarını oluşturma, görüntüleme ve y�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kaynak Yöneticisi şablonuyla klasik bir ölçüm uyarısı oluşturun](../platform/alerts-enable-template.md).
-- [Klasik bir ölçüm uyarısına sahip bir Web kancası kullanarak Azure olmayan bir sisteme bildirme](../platform/alerts-webhooks.md).
-
+- [Kaynak Yöneticisi şablonuyla klasik bir ölçüm uyarısı oluşturun](./alerts-enable-template.md).
+- [Klasik bir ölçüm uyarısına sahip bir Web kancası kullanarak Azure olmayan bir sisteme bildirme](./alerts-webhooks.md).

@@ -1,26 +1,26 @@
 ---
-title: Cihaz modeli deposunun kavramlarını anlayın | Microsoft Docs
-description: Bir çözüm geliştiricisi veya BT uzmanı olarak, cihaz modeli deposunun temel kavramları hakkında bilgi edinin.
+title: Cihaz modelleri deposunun kavramlarını anlayın | Microsoft Docs
+description: Bir çözüm geliştiricisi veya BT uzmanı olarak, cihaz modelleri deposunun temel kavramları hakkında bilgi edinin.
 author: rido-min
 ms.author: rmpablos
 ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920551"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742152"
 ---
-# <a name="device-model-repository"></a>Cihaz modeli deposu
+# <a name="device-models-repository"></a>Cihaz modelleri deposu
 
-Cihaz modeli deposu (DMR), cihaz oluşturucuların IoT Tak ve Kullan cihaz modellerini yönetmesine ve paylaşmasına olanak sağlar. Cihaz modelleri, [dijital TWINS modelleme dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)KULLANıLARAK tanımlanan JSON ld belgelerdir.
+Cihaz modelleri deposu (DMR), cihaz oluşturucuların IoT Tak ve Kullan cihaz modellerini yönetmesine ve paylaşmasına olanak sağlar. Cihaz modelleri, [dijital TWINS modelleme dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)KULLANıLARAK tanımlanan JSON ld belgelerdir.
 
 DMR, DTDL arabirimlerini cihaz ikizi modeli tanımlayıcısı (DTMı) temelinde bir klasör yapısına depolamak için bir model tanımlar. DTMı 'yi göreli bir yola dönüştürerek DMR 'de bir arabirim bulabilirsiniz. Örneğin, `dtmi:com:example:Thermostat;1` dtmı öğesine çevrilir `/dtmi/com/example/thermostat-1.json` .
 
-## <a name="public-device-model-repository"></a>Ortak cihaz modeli deposu
+## <a name="public-device-models-repository"></a>Ortak cihaz modelleri deposu
 
 Microsoft, şu özelliklerle genel bir DMR barındırır:
 
@@ -28,7 +28,7 @@ Microsoft, şu özelliklerle genel bir DMR barındırır:
 - Değiştirilemezlik.  Yayımlandıktan sonra bir arabirim güncelleştirilemiyor.
 - Hiper ölçek. Microsoft, cihaz modellerini yayımlayabileceğiniz ve kullanabileceğiniz güvenli, ölçeklenebilir bir uç nokta oluşturmak için gerekli altyapıyı sağlar.
 
-## <a name="custom-device-model-repository"></a>Özel cihaz modeli deposu
+## <a name="custom-device-models-repository"></a>Özel cihaz modelleri deposu
 
 Yerel dosya sistemi veya özel HTTP Web sunucuları gibi herhangi bir depolama ortamında özel bir DMR oluşturmak için aynı DMR modelini kullanın. Özel DMR 'den cihaz modellerini genel DMR 'den aynı şekilde, DMR 'e erişmek için kullanılan temel URL 'YI değiştirerek alabilirsiniz.
 
@@ -37,9 +37,9 @@ Yerel dosya sistemi veya özel HTTP Web sunucuları gibi herhangi bir depolama o
 
 ## <a name="public-models"></a>Ortak modeller
 
-Model deposunda depolanan ortak cihaz modelleri, herkesin uygulamalarında kullanması ve tümleştirilmesi için kullanılabilir. Ortak cihaz modelleri, cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına olanak sağlayan açık bir ekonomik sistem sağlar.
+Modeller deposunda depolanan ortak cihaz modelleri, herkesin uygulamalarında kullanması ve tümleştirilmesi için kullanılabilir. Ortak cihaz modelleri, cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına olanak sağlayan açık bir ekonomik sistem sağlar.
 
-Model deposunda model yayımlama hakkında yönergeler için model [Yayımlama](#publish-a-model) bölümüne bakın.
+Model oluşturma bölümünde model yayımlama hakkında yönergeler için [model yayımlama](#publish-a-model) bölümüne bakın.
 
 Kullanıcılar resmi [GitHub deposundan](https://github.com/Azure/iot-plugandplay-models)ortak arabirimlere gözatabilir, arama yapabilir ve görüntüleyebilir.
 

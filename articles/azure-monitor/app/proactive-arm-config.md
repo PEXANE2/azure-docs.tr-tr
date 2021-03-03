@@ -4,14 +4,14 @@ description: Azure Resource Manager şablonlarıyla Azure Application Insights a
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890522"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726130"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -21,8 +21,8 @@ Bu yöntem, Azure Resource Manager otomasyonu ile yeni Application Insights kayn
 ## <a name="smart-detection-rule-configuration"></a>Akıllı algılama kuralı yapılandırması
 
 Akıllı algılama kuralı için aşağıdaki ayarları yapılandırabilirsiniz:
-- Kural etkinse (varsayılan değer **true** 'dur.)
-- E-postaların, aboneliğin [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](../../role-based-access-control/built-in-roles.md#monitoring-contributor) gerekir (varsayılan değer **true** 'dur.)
+- Kural etkinse (varsayılan değer **true**'dur.)
+- E-postaların, aboneliğin [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) ile ilişkili kullanıcılara gönderilmesi ve bir algılama bulunduğunda [katkıda bulunan rollerinin izlenmesi](../../role-based-access-control/built-in-roles.md#monitoring-contributor) gerekir (varsayılan değer **true**'dur.)
 - Bir algılama bulunduğunda bildirim alması gereken ek e-posta alıcıları.
     -  _Önizleme_ olarak Işaretlenen akıllı algılama kuralları için e-posta yapılandırması kullanılamaz.
 
@@ -152,7 +152,7 @@ Aşağıda, portalda göründükleri şekilde, Azure Resource Manager şablonund
 
 ### <a name="failure-anomalies-alert-rule"></a>Hata bozuklukları uyarı kuralı
 
-Bu Azure Resource Manager şablonu, önem derecesi 2 olan bir hata anomali uyarı kuralını yapılandırmayı gösterir. Hata Anoparçaları uyarı kuralının bu yeni sürümü, yeni Azure uyarı platformunun bir parçasıdır ve [Klasik uyarı](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)kullanımdan kaldırma işleminin bir parçası olarak kullanımdan kaldırılan klasik sürümü değiştirir.
+Bu Azure Resource Manager şablonu, önem derecesi 2 olan bir hata anomali uyarı kuralını yapılandırmayı gösterir.
 
 > [!NOTE]
 > Hata bozuklukları küresel bir hizmettir, bu nedenle genel konumda kural konumu oluşturulur.

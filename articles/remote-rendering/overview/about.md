@@ -5,18 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6001fff54b86b7c18684092aad6c7fdf64f81990
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729955"
 ---
 # <a name="about-azure-remote-rendering"></a>Azure Remote Rendering hakkında
-
-> [!IMPORTANT]
-> **Azure uzaktan işleme** Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 *Azure uzaktan işleme* (ARR), bulutta yüksek kaliteli ve Etkileşimli 3B içerik işlemenizi ve bunu HoloLens 2 gibi cihazlara gerçek zamanlı olarak göndermenizi sağlayan bir hizmettir.
 
@@ -32,7 +28,7 @@ Azaltılmış model yaklaşık 200.000 üçgenden oluşur (ayrıntılı iç par�
 
 ## <a name="hybrid-rendering"></a>Karma işleme
 
-Çoğu uygulamada, yalnızca karmaşık bir modeli işlemek yeterli değildir. Kullanıcıya işlevsellik sağlamak için özel kullanıcı arabirimine de ihtiyacınız vardır. Azure uzaktan Işleme, *karma işlemeyi*desteklemek yerine ADANMıŞ bir UI çerçevesini kullanmaya zorlamaz. Bu,, [mrtk](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)gibi tercih ettiğiniz yöntemi kullanarak cihazdaki öğeleri işleyebileceğiniz anlamına gelir.
+Çoğu uygulamada, yalnızca karmaşık bir modeli işlemek yeterli değildir. Kullanıcıya işlevsellik sağlamak için özel kullanıcı arabirimine de ihtiyacınız vardır. Azure uzaktan Işleme, *karma işlemeyi* desteklemek yerine ADANMıŞ bir UI çerçevesini kullanmaya zorlamaz. Bu,, [mrtk](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)gibi tercih ettiğiniz yöntemi kullanarak cihazdaki öğeleri işleyebileceğiniz anlamına gelir.
 
 Bir çerçevenin sonunda Azure uzaktan Işleme, yerel olarak işlenmiş içeriğinizi uzak görüntüyle otomatik olarak birleştirir. Bu, doğru occluson ile de yapabiliyor.
 

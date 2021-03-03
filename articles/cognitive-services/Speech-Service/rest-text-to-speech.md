@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733457"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -76,7 +76,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Description | Gerekli/Isteğe bağlı |
+| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -211,7 +211,7 @@ Bu bölgeler REST API kullanarak metinden konuşmaya için desteklenir. Abonelik
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Description | Gerekli/Isteğe bağlı |
+| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 | `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer: `application/ssml+xml` . | Gerekli |
@@ -279,5 +279,5 @@ HTTP durumu ise `200 OK` , yanıt gövdesi istenen biçimde bir ses dosyası iç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-- [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Uzun biçimli ses için zaman uyumsuz sensıs](./long-audio-api.md)
 - [Özel Ses’i kullanmaya başlama](how-to-custom-voice.md)

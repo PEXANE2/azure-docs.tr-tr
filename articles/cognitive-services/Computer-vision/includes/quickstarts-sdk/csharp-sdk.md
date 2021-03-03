@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bb0c8e58c7b5eb1a0ba8a8ca4006ef04b2e2423
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: a00ea22ee0d9125588f2bb97505d7a4c0ba9a1ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750776"
 ---
 <a name="HOLTop"></a>
 
@@ -106,7 +106,7 @@ Uygulamanın `Main` yönteminde, bu hızlı başlangıçta kullanılan yöntemle
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -136,7 +136,7 @@ Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -238,7 +238,7 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 

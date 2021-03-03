@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524524"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703380"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -60,7 +60,7 @@ Düşük telaffuz puanlarla veya kötü bir sinyal gürültüsü oranlarına sah
 
 > [!NOTE]
 > Özel sinir Voice kullanıyorsanız, ses tatatçinizi **Ses tatatmi** sekmesine kaydetmeniz gerekir. Kayıt betiğinizi hazırlarken, bir TTS ses modeli oluşturmak ve yapay konuşma oluşturmak için ses verilerini kullanmaya yönelik ses tatatsyon alındı bildirimini edinmek üzere aşağıdaki cümleyi eklediğinizden emin olun. "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
-Bu cümle, eğitim veri kümelerinizde bulunan kayıtların onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Verilerinizin nasıl işleneceği hakkında daha fazla bilgi edinmek ve ses tatatçinizi doğrulamanın burada nasıl yapılacağını](https://aka.ms/CNV-data-privacy)öğrenin. 
+Bu cümle, eğitim veri kümelerinizde bulunan kayıtların onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Verilerinizin nasıl işleneceği hakkında daha fazla bilgi edinmek ve ses tatatçinizi doğrulamanın burada nasıl yapılacağını](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)öğrenin. 
 
 ## <a name="build-your-custom-voice-model"></a>Özel ses modelinizi oluşturma
 
@@ -87,7 +87,7 @@ Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kul
 5. Sonraki adımda **eğitim yöntemini** seçin. 
 
     > [!NOTE]
-    > Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
+    > Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
     
     Bu sayfada, komut dosyanızı test için karşıya yüklemeyi de seçebilirsiniz. Sınama betiği, 1 MB 'tan küçük bir txt dosyası olmalıdır. Desteklenen kodlama biçimi ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE veya UTF-16-of içerir. Söylenişi 'in her paragrafında ayrı bir ses elde edilir. Tüm cümleleri tek bir ses halinde birleştirmek istiyorsanız, bunları tek bir paragrafta yapın. 
 
@@ -126,7 +126,7 @@ Her eğitim, modeli test etmenize yardımcı olmak için otomatik olarak 100 ör
 
 3.  Model ayrıntısı sayfasında, örnek ses dosyalarını **Test** sekmesi altında bulabilirsiniz. 
 
-Sesin kalitesi, eğitim verilerinin boyutu, kayıt kalitesi, döküm dosyasının doğruluğu, eğitim verilerinde kaydedilen sesin amaçlanan kullanım durumu için tasarlanan sesin kişiliğine ne kadar iyi eşleştiğini ve daha fazlasını içeren bir dizi etkene bağlıdır. [Teknolojimizin özellikleri ve limitleri hakkında daha fazla bilgi edinmek ve model kalitesini geliştirmek için en iyi uygulama hakkında daha fazla bilgi için buraya bakın](https://aka.ms/CNV-limits). 
+Sesin kalitesi, eğitim verilerinin boyutu, kayıt kalitesi, döküm dosyasının doğruluğu, eğitim verilerinde kaydedilen sesin amaçlanan kullanım durumu için tasarlanan sesin kişiliğine ne kadar iyi eşleştiğini ve daha fazlasını içeren bir dizi etkene bağlıdır. [Teknolojimizin özellikleri ve limitleri hakkında daha fazla bilgi edinmek ve model kalitesini geliştirmek için en iyi uygulama hakkında daha fazla bilgi için buraya bakın](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Özel bir ses uç noktası oluşturma ve kullanma
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 53fc01839ef522afaffe52cd8a3126e40ba94a05
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e32b9c690db70baeda7dec2f9f1270f82c6881bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809950"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733304"
 ---
 # <a name="configure-azure-defender-for-iot-agent-based-solution"></a>IoT Aracısı tabanlı çözüm için Azure Defender 'ı yapılandırma  
 
@@ -87,7 +87,7 @@ Yapılandırma sonrasında Log Analytics çalışma alanınızdaki uyarıların�
 
 1. **Log Analytics çalışma alanında önerileri Araştır '** ı seçin. 
  
-Log Analytics verileri sorgulama hakkında daha fazla bilgi için bkz. [Log Analytics sorguları kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md). 
+Log Analytics verileri sorgulama hakkında daha fazla bilgi için bkz. [Log Analytics sorguları kullanmaya başlama](../azure-monitor/logs/get-started-queries.md). 
 
 ## <a name="turn-off-defender-for-iot"></a>IoT için Defender 'ı kapat 
 
@@ -99,4 +99,4 @@ Belirli bir IoT Hub IoT hizmetine yönelik bir Defender 'ı etkinleştirmek veya
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-[Çözümünüzü yapılandırmak](quickstart-configure-your-solution.md)için sonraki makaleye ilerleyin. 
+[Çözümünüzü yapılandırmak](quickstart-configure-your-solution.md)için sonraki makaleye ilerleyin.

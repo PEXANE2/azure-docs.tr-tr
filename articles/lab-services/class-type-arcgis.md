@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373717"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740121"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Arcmap\argıs Masaüstü için laboratuvar ayarlama
 
@@ -24,7 +24,7 @@ Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar he
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Aşağıdaki tabloda açıklandığı gibi laboratuvar hesabı ayarlarınızı etkinleştirin.  Azure Marketi görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Azure Marketi görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images).
+Aşağıdaki tabloda açıklandığı gibi laboratuvar hesabı ayarlarınızı etkinleştirin.  Azure Marketi görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Azure Marketi görüntülerini belirtme](./specify-marketplace-images.md).
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Aşağıdaki tabloda açıklandığı gibi laboratuvar hesabı ayarlarınızı e
 
 Masaüstü tarafından sunulan bir lisans türü, [Eşzamanlı Kullanım lisanslarından](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm)biridir.  Bu, lisans sunucunuza argıs Lisans Yöneticisi 'Ni yüklemenizi gerektirir.  Lisans Yöneticisi, yazılımın aynı anda çalıştırılabilen kopyalarının sayısını izler.  Sunucunuzda lisans yöneticisini ayarlama hakkında daha fazla bilgi için, bkz. [Lisans Yöneticisi Kılavuzu](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm).
 
-Lisans sunucusu genellikle şirket içi ağınızda bulunur veya bir Azure sanal ağı içindeki bir Azure sanal makinesinde barındırılır.  Lisans sunucunuz kurulduktan sonra, sanal ağı [Laboratuvar hesabınızla](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account) [eşetmeniz](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network) gerekir.  Laboratuvar sanal makinelerinizin lisans sunucusuna erişebilmesi ve tam tersi şekilde laboratuvar oluşturmadan önce ağ eşlemesini yapmanız gerekir.
+Lisans sunucusu genellikle şirket içi ağınızda bulunur veya bir Azure sanal ağı içindeki bir Azure sanal makinesinde barındırılır.  Lisans sunucunuz kurulduktan sonra, sanal ağı [Laboratuvar hesabınızla](./tutorial-setup-lab-account.md) [eşetmeniz](./how-to-connect-peer-virtual-network.md) gerekir.  Laboratuvar sanal makinelerinizin lisans sunucusuna erişebilmesi ve tam tersi şekilde laboratuvar oluşturmadan önce ağ eşlemesini yapmanız gerekir.
 
 Daha fazla bilgi için bkz. [bir lisans sunucusunu paylaşılan kaynak olarak ayarlama](how-to-create-a-lab-with-shared-resource.md).
 

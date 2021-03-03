@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd521e9798b09f7930b43ab95c7cd7ef9e693d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91297241"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737928"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini Azure portal ile ayarlama
 
@@ -25,11 +25,12 @@ Bu hızlı başlangıçta, aşağıdaki adımlarla cihazlarınızı sağlamak i�
 * IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
 * IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu makaleyle başlamak için bir Azure aboneliğine sahip olmanız gerekir. Henüz yapmadıysanız ücretsiz bir [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturabilirsiniz.
 
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -38,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **+ Kaynak oluştur** düğmesini yeniden seçin.
 
-2. **Cihaz sağlama hizmeti**için *Market 'te arama* yapın. **IoT Hub cihaz sağlama hizmeti** ' ni seçin ve **Oluştur** düğmesine basın. 
+2. **Cihaz sağlama hizmeti** için *Market 'te arama* yapın. **IoT Hub cihaz sağlama hizmeti** ' ni seçin ve **Oluştur** düğmesine basın. 
 
 3. Yeni cihaz sağlama hizmeti örneğiniz için aşağıdaki bilgileri sağlayın ve **Oluştur**' a basın.
 

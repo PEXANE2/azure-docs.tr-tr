@@ -4,12 +4,12 @@ description: Service Fabric, sanal makineler, Web Apps ve bulut hizmetlerinde ku
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711408"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
@@ -24,14 +24,14 @@ Otomatik Ölçeklendirme hizmeti, hangi ölçeklendirme eylemlerinin oluştuğun
   
 ## <a name="autoscale-metrics"></a>Otomatik ölçeklendirme ölçümleri
 
-Otomatik ölçeklendirme, işlemini anlamak için size [dört ölçüm](../platform/metrics-supported.md#microsoftinsightsautoscalesettings) sağlar. 
+Otomatik ölçeklendirme, işlemini anlamak için size [dört ölçüm](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings) sağlar. 
 
 - **Gözlemlenen ölçüm değeri** -otomatik ölçeklendirme altyapısı tarafından görüldüğü veya hesaplanarak ölçekleme eylemini gerçekleştirmek için seçtiğiniz ölçümün değeri. Tek bir otomatik ölçeklendirme ayarı birden çok kurala ve bu nedenle birden çok ölçüm kaynağına sahip olabileceğinden, bir boyut olarak "ölçüm kaynağı" kullanarak filtre uygulayabilirsiniz.
 - **Ölçüm eşiği** -ölçekleme eylemini gerçekleştirmek için ayarladığınız eşik. Tek bir otomatik ölçeklendirme ayarı birden çok kurala ve bu nedenle birden çok ölçüm kaynağına sahip olabileceğinden, bir boyut olarak "ölçüm kuralı" kullanarak filtre uygulayabilirsiniz.
 - **Gözlemlenen kapasite** -otomatik ölçeklendirme motoru tarafından görülen hedef kaynağın etkin örnek sayısı.
 - **Başlatılan Ölçeklendirme Eylemleri**: Otomatik ölçeklendirme altyapısı tarafından başlatılan ölçeği genişletme ve ölçeği daraltma eylemlerinin sayısıdır. Ölçek Genişletme ile, eylemlerde ölçeğe göre filtreleyebilirsiniz.
 
-Yukarıdaki ölçümleri tek bir yerde grafik olarak eklemek için [Ölçüm Gezgini](../platform/metrics-getting-started.md) kullanabilirsiniz. Grafik şunları göstermelidir:
+Yukarıdaki ölçümleri tek bir yerde grafik olarak eklemek için [Ölçüm Gezgini](../essentials/metrics-getting-started.md) kullanabilirsiniz. Grafik şunları göstermelidir:
 
   - gerçek ölçüm
   - Otomatik ölçeklendirme motoru tarafından görülen/hesaplanan ölçüm
@@ -87,7 +87,7 @@ En alttaki grafik birkaç değeri gösterir.
  - **Gözlenen kapasite** (mor), otomatik ölçeklendirme motoru tarafından görülen örnek sayısını gösterir. 
  - **Ölçüm eşiği** (açık yeşil) 10 olarak ayarlanır. 
 
-Birden fazla ölçeklendirme eylemi kuralı varsa, belirli bir kaynak veya kurala göre ölçüm bölümüne bakmak için ölçüm Gezgini grafiğinde bölme veya **Filtre Ekle** seçeneğini kullanabilirsiniz. Ölçüm grafiğinin bölünmesi hakkında daha fazla bilgi için bkz. [ölçüm grafiklerinin gelişmiş özellikleri-bölme](../platform/metrics-charts.md#apply-splitting)
+Birden fazla ölçeklendirme eylemi kuralı varsa, belirli bir kaynak veya kurala göre ölçüm bölümüne bakmak için ölçüm Gezgini grafiğinde bölme veya **Filtre Ekle** seçeneğini kullanabilirsiniz. Ölçüm grafiğinin bölünmesi hakkında daha fazla bilgi için bkz. [ölçüm grafiklerinin gelişmiş özellikleri-bölme](../essentials/metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Örnek 3-otomatik ölçeklendirme olaylarını anlama
 
@@ -97,13 +97,13 @@ Otomatik ölçeklendirme ayarı ekranında, en son ölçeklendirme eylemlerini g
 
 ## <a name="autoscale-resource-logs"></a>Kaynak günlüklerini otomatik ölçeklendirme
 
-Otomatik Ölçeklendirme hizmeti, diğer Azure kaynakları ile aynı şekilde [kaynak günlükleri](../platform/platform-logs-overview.md)sağlar. İki günlük kategorisi vardır.
+Otomatik Ölçeklendirme hizmeti, diğer Azure kaynakları ile aynı şekilde [kaynak günlükleri](../essentials/platform-logs-overview.md)sağlar. İki günlük kategorisi vardır.
 
 - **Otomatik ölçeklendirme değerlendirmeleri** -otomatik ölçeklendirme altyapısı her bir denetim her seferinde her bir koşul değerlendirmesi için günlük girişlerini kaydeder.  Giriş, ölçümlerin gözlemlenen değerleriyle ilgili ayrıntıları, değerlendirilen kuralları ve değerlendirme bir ölçeklendirme eylemiyle sonuçlanmış olduğunu içerir.
 
 - **Otomatik ölçeklendirme ölçeklendirme eylemleri** -motor, otomatik ölçeklendirme hizmeti tarafından başlatılan ölçeklendirme eylemi olaylarını ve bu ölçeklendirme eylemlerinin sonuçlarını (başarılı, başarısız ve otomatik ölçeklendirme hizmeti tarafından görüldüğü için ne kadar ölçeklendirme oluştuğunu) kaydeder.
 
-Azure Izleyici desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri yönlendirmek için [tanılama ayarlarını](../platform/diagnostic-settings.md) kullanabilirsiniz:
+Azure Izleyici desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri yönlendirmek için [tanılama ayarlarını](../essentials/diagnostic-settings.md) kullanabilirsiniz:
 
 - ayrıntılı analiz için Log Analytics çalışma alanınıza
 - Azure dışı araçlara Event Hubs ve ardından
@@ -206,4 +206,4 @@ Otomatik ölçeklendirme eylemleri veya arızaları hakkında bildirim almak iç
 Daha fazla bilgi için bkz. [Otomatik ölçeklendirme kaynak günlükleri](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Otomatik ölçeklendirme en iyi yöntemleri](autoscale-best-practices.md)hakkında bilgi edinin. 
+[Otomatik ölçeklendirme en iyi yöntemleri](autoscale-best-practices.md)hakkında bilgi edinin.

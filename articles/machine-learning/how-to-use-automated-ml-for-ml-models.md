@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692428"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -132,7 +132,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
-    Ek yapılandırmalar|Description
+    Ek yapılandırmalar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#primary-metric).
     En iyi modeli açıkla | Önerilen en iyi modelin açıklamalarını göstermek için etkinleştirmek veya devre dışı bırakmak için seçin. <br> Bu işlev, [belirli tahmin algoritmaları](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)için şu anda kullanılamıyor. 
@@ -180,6 +180,21 @@ Denemenizi çalıştırmak için **son** ' u seçin. Denemeyi hazırlama işlemi
 
 [![Yineleme ayrıntıları](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+## <a name="model-explanations"></a>Model açıklamaları
+
+Modelinizi daha iyi anlamak için, hangi veri özelliklerinin (ham veya uygulanan) model açıklamaları panosundan modelin tahmine göre etkilendiğinin nasıl etkilenebileceğini görün. 
+
+Model açıklamaları panosu, eğitilen modelin, tahminleri ve açıklamalarıyla birlikte genel bir analizini sağlar. Ayrıca, bireysel bir veri noktasına ve tek tek özelliklerine göz katmanıza imkan tanır. [Açıklama panosu görselleştirmeleri ve belirli çizimler hakkında daha fazla bilgi edinin](how-to-machine-learning-interpretability-aml.md#visualizations).
+
+Belirli bir modelin açıklamalarını almak için 
+
+1. **Modeller** sekmesinde, kullanmak istediğiniz modeli seçin. 
+1. **Model açıkla** düğmesini seçin ve açıklamaları oluşturmak için kullanılabilecek bir işlem belirtin.
+1. Durum için **alt çalıştırmalar** sekmesini kontrol edin. 
+1. Tamamlandıktan sonra, açıklamalar panosunu içeren **açıklamalar (Önizleme)** sekmesine gidin. 
+
+    ![Model açıklama panosu](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
+
 ## <a name="deploy-your-model"></a>Modelinizi dağıtın
 
 En iyi modeli belirledikten sonra yeni verilerle ilgili tahminde bulunmak için web hizmeti olarak dağıtabilirsiniz.
@@ -202,7 +217,7 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
     Alan| Değer
     ----|----
     Ad| Dağıtımınız için benzersiz bir ad girin.
-    Description| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
+    Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
     Kimlik doğrulamayı etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.

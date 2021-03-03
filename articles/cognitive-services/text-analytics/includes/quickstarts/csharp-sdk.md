@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6e71d9b4006d0353b094306424ba0fe99c581279
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 12838eb2cd8437b2c3b3c225651b51991625fd78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090770"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750813"
 ---
 <a name="HOLTop"></a>
 
@@ -25,10 +25,6 @@ ms.locfileid: "99090770"
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 [v3 başvuru belgeleri](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet)  |  [v3 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [V3 paketi (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
-
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-[v2 başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -58,13 +54,6 @@ Visual Studio IDE 'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturu
 
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)bulabilirsiniz. 
-
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan paket yöneticisinde, **Araştır** ' ı seçin ve arama yapın `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` . Üzerine tıklayın ve sonra **uygulamasını**. [Paket Yöneticisi konsolunu](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
-
-> [!TIP]
-> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)bulabilirsiniz. 
 
 ---
 
@@ -146,25 +135,6 @@ static void Main(string[] args)
 }
 ```
 
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-*Program.cs* dosyasını açın ve aşağıdaki `using` yönergeleri ekleyin:
-
-[!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
-
-Uygulamanın `Program` sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun. 
-
-[!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
-
-```csharp
-private static readonly string key = "<replace-with-your-text-analytics-key-here>";
-private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
-```
-
-Uygulamanın `Main` yöntemini değiştirin. Burada, daha sonra çağrılan yöntemleri tanımlayacaksınız.
-
-[!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
-
 ---
 
 ## <a name="object-model"></a>Nesne modeli
@@ -175,7 +145,7 @@ Hizmetin sürümünü kullanıyorsanız `3.x` , `TextAnalyticsClientOptions` ist
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [Yaklaşım analizi](#sentiment-analysis)
 * [Görüşün madenciliği](#opinion-mining)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık Tanıma](#named-entity-recognition-ner)
@@ -199,16 +169,6 @@ Daha önce gelen ana yönteminizin bitiş noktanız ve kimlik bilgilerinizle yen
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
-
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-`ApiKeyServiceClientCredentials`Kimlik bilgilerini depolamak ve istemcinin isteklerine eklemek için yeni bir sınıf oluşturun. Bunun içinde anahtarınızı üstbilgiye ekleyen için bir geçersiz kılma oluşturun `ProcessHttpRequestAsync()` `Ocp-Apim-Subscription-Key` .
-
-[!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
-
-Uç noktanız ve anahtarınızı içeren bir nesne ile [TextAnalyticsClient](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient) nesnesini başlatmak için bir yöntem oluşturun `ApiKeyServiceClientCredentials` .
-
-[!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
 ---
 
@@ -381,18 +341,6 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-`SentimentAnalysisExample()`Daha önce oluşturduğunuz istemciyi alan çağrılan ve [Sentiment ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment) işlevini çağıran yeni bir işlev oluşturun. Döndürülen [Sentimentresult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult) nesnesi `Score` başarılı olursa yaklaşım ve bir if ifadesi içerir `errorMessage` . 
-
-0 ' a yakın olan bir puan negatif bir yaklaşımı gösterir, 1 ' e yakın bir puan pozitif bir yaklaşımı gösterir.
-
-[!code-csharp[Sentiment analysis](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=sentiment)]
-
-```console
-Sentiment Score: 0.87
-```
-
 ---
 
 ## <a name="language-detection"></a>Dil algılama
@@ -445,20 +393,6 @@ Language:
         French, ISO-6391: fr
 ```
 
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-`languageDetectionExample()`Daha önce oluşturduğunuz istemciyi alıp [DetectLanguage ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağıran adlı yeni bir işlev oluşturun. Döndürülen [LanguageResult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult) nesnesi, başarılı olursa ' de algılanan dillerin listesini içerir `DetectedLanguages` ve bunu `errorMessage` değildir. İlk döndürülen dili yazdır.
-
-> [!Tip]
-> Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. `countryHint`Parametresini 2 harfli bir ülke/bölge kodu belirtmek için kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz `countryHint = ""` .
-
-[!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
-
-### <a name="output"></a>Çıktı
-
-```console
-Language: English
-```
 
 ---
 
@@ -723,15 +657,6 @@ Linked Entities:
                 Score: 0.33
 ```
 
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-> [!NOTE]
-> Sürüm 2,1 ' de, varlık bağlama, NER yanıtına dahil edilir.
-
-`RecognizeEntitiesExample()`Daha önce oluşturduğunuz istemciyi alan adlı yeni bir işlev oluşturun ve [varlıklarını ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Sonuçlar arasında yineleme yapın. Döndürülen [Entitiesresult](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult) nesnesi, başarılı olursa ' de algılanan varlıkların listesini içerir `Entities` ve bunu `errorMessage` değildir. Algılanan her varlık için, türünü, alt türünü, Viseı adını (varsa) ve özgün metindeki konumları yazdırın.
-
-[!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
-
 --- 
 
 
@@ -782,21 +707,6 @@ static void KeyPhraseExtractionExample(TextAnalyticsClient client)
     }
 }
 ```
-
-### <a name="output"></a>Çıktı
-
-```console
-Key phrases:
-    cat
-    veterinarian
-```
-
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-`KeyPhraseExtractionExample()`Daha önce oluşturduğunuz istemciyi alıp [KeyPhrases ()](/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağıran adlı yeni bir işlev oluşturun. Sonuç, başarılı olursa ' de algılanan anahtar tümceciklerin listesini içerir `KeyPhrases` ve bunu `errorMessage` değildir. Algılanan tüm anahtar tümceleri yazdır.
-
-[!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
-
 
 ### <a name="output"></a>Çıktı
 
@@ -898,9 +808,5 @@ PII ve anahtar tümceciği ayıklamayı algılamak için Çözümle işlemini de
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 Bu özellik 3,0 sürümünde kullanılamaz.
-
-# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-Bu özellik 2,1 sürümünde kullanılamaz.
 
 ---

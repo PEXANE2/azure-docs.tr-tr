@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d8ef3efcda55868abec188c10ef904ae40a56722
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728153"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
 
@@ -140,7 +140,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Batch havuzlarınızla ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
 - [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
@@ -516,7 +516,7 @@ Havuz verilerine karşı tüm CRUD işlemlerini izlemek ve günlüğe kaydetmek 
 
 - [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Azure depolama hesabı için ek günlüğe kaydetme/denetim özelliğini etkinleştirme](../storage/common/storage-monitor-storage-account.md)
+- [Azure depolama hesabı için ek günlüğe kaydetme/denetim özelliğini etkinleştirme](../storage/common/manage-storage-analytics-logs.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 

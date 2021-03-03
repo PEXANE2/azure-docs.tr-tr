@@ -1,20 +1,20 @@
 ---
-title: IoT portalı için Defender 'daki algılayıcı ekleme ve yönetme
+title: IoT portalı için Defender 'da algılayıcılar ve abonelikler ekleme ve yönetme
 description: IoT portalı için Defender 'da sensöri ekleme, görüntüleme ve yönetme hakkında bilgi edinin.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526883"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733270"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>IoT portalı için Defender 'daki algılayıcı ekleme ve yönetme
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>IoT portalı için Defender 'da algılayıcılar ve abonelikler ekleme ve yönetme
 
 Bu makalede, [IoT portalı Için Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)'da algılayıcıları ekleme, görüntüleme ve yönetme işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -78,8 +78,8 @@ Algılayıcı adını ve bölgesini düzenlemek için **siteler ve algılayıcı
 
 Düzenlemek için:
 
-1. Düzenlemek istediğiniz sensör için üç nokta (**...**) simgesine sağ tıklayın.
-1. Düzenle'yi seçin.
+1. Düzenlemek istediğiniz algılayıcı için **üç nokta** (**...**) simgesini seçin.
+1. **Düzenle**'yi seçin.
 1. Algılayıcı bölgesini güncelleştirin veya yeni bir bölge oluşturun.
 
 ### <a name="delete-a-sensor"></a>Algılayıcıyı silme
@@ -122,6 +122,24 @@ Bir algılayıcıyı yeniden etkinleştirmek için:
 8. **Karşıya yükle** ' yi seçin ve ekleme algılayıcısı sayfasından kaydettiğiniz dosyayı seçin.
 
 9. **Etkinleştir**' i seçin.
+
+## <a name="offboard-a-subscription"></a>Abonelik çıkarma
+
+Abonelikler aylık olarak yönetilir. Bir aboneliği boşaltdığınızda, ayın sonuna kadar bu abonelik için faturalandırılırsınız. 
+
+Aboneliği boşaltmadan önce abonelikle ilişkili tüm algılayıcıları kaldırın. Algılayıcıyı silme hakkında daha fazla bilgi için bkz. [algılayıcı silme](#delete-a-sensor). 
+
+Bir aboneliği bırakmak için:
+
+1. **Fiyatlandırma** sayfasına gidin.
+1. Aboneliği seçin ve ardından **Sil** simgesini seçin :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
+1. Onay açılan penceresinde, abonelikle ilişkili tüm algılayıcıları sildiğini onaylamak için onay kutusunu işaretleyin.
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Onay kutusunu seçin ve sensöriz için kapalı Pano ' yı seçin.":::
+
+1. **Kapalı panosunu** seçin. 
+
+Şirket içi ortam etkilenmez, ancak ilgili verilerin şirket içi yönetim konsoluna akmasını engellemek için algılayıcıyı şirket içi ortamdan kaldırmanız veya algılayıcıyı başka bir aboneliğe yeniden atamanız gerekir. 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

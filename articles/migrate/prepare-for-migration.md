@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753935"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724498"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -35,7 +35,7 @@ Tablo, Azure geçişi için bulma, değerlendirme ve geçiş sınırlarını öz
 
 **Senaryo** | **Project** | **Bulma/değerlendirme** | **Geçiş**
 --- | --- | --- | ---
-**VMware Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | VMware için tek bir [Azure geçişi](common-questions-appliance.md) gereci ile en fazla 10.000 VMware VM bulun. | **Aracısız geçiş**: en fazla 300 VM 'yi eşzamanlı olarak çoğaltabilirsiniz. En iyi performansı elde etmek için 50 'den daha fazla sanal makine oluşturmanız önerilir.<br/><br/> **Aracı tabanlı geçiş**: büyük sayıda VM çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
+**VMware Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | VMware için tek bir [Azure geçişi](common-questions-appliance.md) gereci ile en fazla 10.000 VMware VM bulun. | **Aracısız geçiş**: her bir vCenter Server eşzamanlı olarak en fazla 500 VM çoğaltabilirsiniz. **Aracı tabanlı geçiş**: büyük sayıda VM çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
 **Hyper-V Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | Tek bir Azure geçişi gereci ile 5.000 adede kadar Hyper-V VM 'lerini keşfetme | Hyper-V geçişi için bir gereç kullanılmaz. Bunun yerine, Hyper-V çoğaltma sağlayıcısı her Hyper-V konağında çalışır.<br/><br/> Çoğaltma kapasitesi, sanal makine karmaşıklığı gibi performans faktörlerine göre etkilenerek çoğaltma verileri için bant genişliğini karşıya yükler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
 **Fiziksel makineler** | Tek bir Azure geçişi projesinde en fazla 35.000 makine bulun ve değerlendirin. | Fiziksel sunucular için tek bir Azure geçişi gereci ile 250 adede kadar fiziksel sunucu bulun. | Çok sayıda sunucuyu çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
 
@@ -116,7 +116,7 @@ Azure geçişi bu işlemleri bu sürümler için otomatik olarak tamamlar
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
 - Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
-- 8, 7
+- 9, 8, 7
 - Oracle Linux 7,7, 7,7-CI
 
 Diğer sürümler için, makineleri tabloda özetlenen şekilde hazırlayın.  
@@ -137,12 +137,12 @@ Aşağıdaki tabloda, yukarıda listelenen işletim sistemleri için otomatik ol
 
 | Eylem                                      | Aracı \- tabanlı VMware geçişi | Aracısız VMware geçişi | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
-| Hyper \- V Linux Tümleştirme Hizmetleri 'ni yükler | Evet                           | Evet                        | Gerekli değil |
-| Azure seri konsol günlüğünü etkinleştirme         | Evet                           | Evet                        | Hayır         |
-| Cihaz eşleme dosyasını güncelleştir                      | Evet                           | Hayır                         | Hayır         |
-| Fstab girdilerini Güncelleştir                        | Evet                           | Evet                        | Hayır         |
-| Uıdev kuralını kaldır                            | Evet                           | Evet                        | Hayır         |
-| Ağ arabirimlerini Güncelleştir                   | Evet                           | Evet                        | Hayır         |
+| Hyper \- V Linux Tümleştirme Hizmetleri 'ni yükler | Yes                           | Yes                        | Gerekli değil |
+| Azure seri konsol günlüğünü etkinleştirme         | Yes                           | Yes                        | Hayır         |
+| Cihaz eşleme dosyasını güncelleştir                      | Yes                           | Hayır                         | Hayır         |
+| Fstab girdilerini Güncelleştir                        | Yes                           | Yes                        | Hayır         |
+| Uıdev kuralını kaldır                            | Yes                           | Yes                        | Hayır         |
+| Ağ arabirimlerini Güncelleştir                   | Yes                           | Yes                        | Hayır         |
 | SSH 'yi etkinleştirme                                  | Hayır                            | Hayır                         | Hayır         |
 
 [Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.

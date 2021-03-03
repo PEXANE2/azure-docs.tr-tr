@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724957"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
@@ -37,7 +37,7 @@ Azure Batch Service ' i yeni biliyorsanız aşağıdaki makalelere bakın:
 * Azure Batch havuzu oluşturmak için [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 'i.
 
 > [!IMPORTANT]
-> Yeni bir Azure Batch havuzu oluştururken ' Virtualmakineconfiguration ' kullanılmalıdır ve ' CloudServiceConfiguration ' DEĞIL. Daha fazla ayrıntı için [Azure Batch havuz geçiş kılavuzuna](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration)bakın. 
+> Yeni bir Azure Batch havuzu oluştururken ' Virtualmakineconfiguration ' kullanılmalıdır ve ' CloudServiceConfiguration ' DEĞIL. Daha fazla ayrıntı için [Azure Batch havuz geçiş kılavuzuna](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)bakın. 
 
 ## <a name="azure-batch-linked-service"></a>Bağlı hizmet Azure Batch
 
@@ -103,15 +103,15 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 | Özellik              | Açıklama                              | Gerekli |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | İşlem hattındaki etkinliğin adı     | Yes      |
-| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | No       |
+| açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
 | tür                  | Özel etkinlik için etkinlik türü **Custom** olur. | Yes      |
 | linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Yes      |
 | command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, `cmd /c dir` Windows Batch havuzu düğümü tarafından yerel olarak desteklenen olan komutu belirtebilirsiniz. | Yes      |
 | Resourcelınkedservice | Özel uygulamanın depolandığı depolama hesabına Azure Storage bağlı hizmeti | &#42; yok       |
 | folderPath            | Özel uygulamanın klasörünün yolu ve tüm bağımlılıkları<br/><br/>Alt klasörlerde depolanan bağımlılıklarınız varsa-diğer bir deyişle, *FolderPath* altındaki hiyerarşik bir klasör yapısında, dosyalar Azure Batch kopyalanırken klasör yapısı şu anda düzleştirilir. Diğer bir deyişle, tüm dosyalar alt klasörleri olmayan tek bir klasöre kopyalanır. Bu davranışa geçici bir çözüm bulmak için, dosyaları sıkıştırmayı, sıkıştırılmış dosyayı kopyalamayı ve sonra istenen konumdaki özel kodla bir daha fazla ping işlemi yapmayı göz önünde bulundurun. | &#42; yok       |
-| referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | No       |
-| extendedProperties    | Özel kodunuzun ek özelliklere başvurabilmesi için JSON biçiminde özel uygulamaya geçirilebilecek Kullanıcı tanımlı özellikler | No       |
-| retentionTimeInDays | Özel etkinlik için gönderilen dosyalar için bekletme süresi. Varsayılan değer 30 gündür. | No |
+| referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | Hayır       |
+| extendedProperties    | Özel kodunuzun ek özelliklere başvurabilmesi için JSON biçiminde özel uygulamaya geçirilebilecek Kullanıcı tanımlı özellikler | Hayır       |
+| retentionTimeInDays | Özel etkinlik için gönderilen dosyalar için bekletme süresi. Varsayılan değer 30 gündür. | Hayır |
 
 Özellikleri &#42; `resourceLinkedService` ve her `folderPath` ikisi de belirtilmelidir ya da her ikisi de atlanmalıdır.
 
@@ -301,7 +301,7 @@ Activity Error section:
 Aşağı akış etkinliklerindeki stdout.txt içeriğini kullanmak istiyorsanız, " \@ Activity (' MyCustomActivity") ifadesinde stdout.txt dosyasının yolunu alabilirsiniz. çıktı. çıktılar [0] ".
 
 > [!IMPORTANT]
-> - Üzerinde activity.js, linkedServices.jsve datasets.js, Batch görevinin çalışma zamanı klasöründe saklanır. Bu örnekte, üzerinde activity.js, linkedServices.jsve datasets.js, `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` yolunda depolanır. Gerekirse, bunları ayrı olarak temizlemeniz gerekir.
+> - Üzerinde activity.js, linkedServices.jsve datasets.js, Batch görevinin çalışma zamanı klasöründe saklanır. Bu örnekte, üzerinde activity.js, linkedServices.jsve datasets.js, `https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` yolunda depolanır. Gerekirse, bunları ayrı olarak temizlemeniz gerekir.
 > - Self-Hosted Integration Runtime kullanan bağlı hizmetler için, anahtar veya parola gibi hassas bilgiler, müşteri tanımlı özel ağ ortamında kimlik bilgilerinin kalmasını sağlamak için Self-Hosted Integration Runtime tarafından şifrelenir. Özel uygulama kodunuz tarafından bu şekilde başvuruluyorsa bazı hassas alanlar eksik olabilir. Gerekirse, bağlantılı hizmet başvurusunu kullanmak yerine, SecureString 'i extendedProperties içinde kullanın.
 
 ## <a name="pass-outputs-to-another-activity"></a>Çıkışları başka bir etkinliğe geçirme
@@ -310,7 +310,7 @@ Aşağı akış etkinliklerindeki stdout.txt içeriğini kullanmak istiyorsanız
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString çıkışlarını al
 
-Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString* türü olarak atanan hassas özellik değerleri, Data Factory Kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Ancak gerçek işlem hattı yürütmesinde, bir *SecureString* özelliği `activity.json` dosya içinde düz metin olarak JSON olarak serileştirilir. Örneğin:
+Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString* türü olarak atanan hassas özellik değerleri, Data Factory Kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Ancak gerçek işlem hattı yürütmesinde, bir *SecureString* özelliği `activity.json` dosya içinde düz metin olarak JSON olarak serileştirilir. Örnek:
 
 ```json
 "extendedProperties": {

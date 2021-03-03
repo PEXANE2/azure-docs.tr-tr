@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736551"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -174,7 +174,7 @@ Aşağıdaki bilgileri kullanarak, [*Olay Hub 'ı oluşturma*](../event-hubs/eve
 
 ### <a name="create-an-azure-function"></a>Azure işlevi oluşturma
 
-Sonra, bir işlev uygulaması içinde Event Hubs tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize. 
+Şimdi işlev uygulaması içinde Event Hubs tarafından tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)) veya kendi kendinize. 
 
 Event hub tetikleyicinizi *lifecycleevents* olarak adlandırın ve Olay Hub 'ı tetikleyicisini önceki adımda oluşturduğunuz Olay Hub 'ına bağlayın. Farklı bir olay hub 'ı adı kullandıysanız, bunu aşağıdaki tetikleyici adı ile eşleşecek şekilde değiştirin.
 
@@ -223,7 +223,7 @@ Kullanımdan kaldırma işleminin tetiklenmesi için cihazı IoT Hub el ile silm
 
 [Bu makalenin ilk yarısında](#auto-provision-device-using-device-provisioning-service)IoT Hub ve karşılık gelen dijital ikizi bir cihaz oluşturdunuz. 
 
-Şimdi IoT Hub gidin ve cihazı silin (bunu bir [Azure CLI komutuyla](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) veya [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)' de yapabilirsiniz). 
+Şimdi IoT Hub gidin ve cihazı silin (bunu bir [Azure CLI komutuyla](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) veya [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)' de yapabilirsiniz). 
 
 Cihaz Azure dijital TWINS 'den otomatik olarak kaldırılacak. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 727b0ee1d16528df3becbda10206d85a9b10e59c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: f977585a16e1ad3f8eba0a589c603f0125d46fd5
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918232"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721115"
 ---
 # <a name="create-a-copyallbitratenoninterleaved-transform"></a>Copyallbitarttenonaralanmış dönüşümü oluşturma
 
@@ -27,17 +27,16 @@ ms.locfileid: "94918232"
 
 Bu makalede bir dönüşümün nasıl oluşturulacağı gösterilmektedir `CopyAllBitrateNonInterleaved` .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir varlık oluşturmak için gerekli Media Services hesabı ve kaynak grubunu oluşturmak üzere [Media Services hesabı oluşturma](./create-account-howto.md) bölümündeki adımları izleyin.
 
 ## <a name="methods"></a>Yöntemler
 
-### <a name="using-the-rest-api"></a>REST API’sini kullanma
+### <a name="using-the-rest-api"></a>REST API’yi kullanma
 
 [!INCLUDE [task-create-copyallbitratenoninterleaved.md](./includes/task-create-copyallbitratenoninterleaved.md)]
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services genel bakış](media-services-overview.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

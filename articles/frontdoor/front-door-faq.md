@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741863"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -97,9 +97,9 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
     > [!WARNING]
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
 
--    API sürümü veya üzeri ile ön kapıda bir GET işlemi gerçekleştirin `2020-01-01` . API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın değerine göre değer ile gönderilen filtre uygulayın `frontdoorID` . Ayrıca, `Front Door ID` ön kapı portalı sayfasından genel bakış bölümünde değeri de bulabilirsiniz. 
+- `Front Door ID`Ön kapı portalı sayfasındaki genel bakış bölümünde bulunan değeri arayın. Bundan sonra, yalnızca kendi özel ön kapısının izin verildiğinden emin olmak için bu değere ön kapıdan arka uca gönderilen '**X-Azure-FDıD**' gelen başlığına filtre uygulayabilirsiniz (yukarıdaki IP aralıkları diğer müşterilerin diğer ön kapı örnekleriyle paylaşıldığından).
 
-- Trafiği, ortaya çıkan ' X-Azure-FDıD ' üst bilgi değerine göre kısıtlamak için arka uç Web sunucunuza kural filtrelemesi uygulayın.
+- Trafiği, ortaya çıkan ' X-Azure-FDıD ' üst bilgi değerine göre kısıtlamak için arka uç Web sunucunuza kural filtrelemesi uygulayın. Azure App Service gibi bazı hizmetlerde bu [üst bilgi tabanlı filtreleme](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) özelliğini, uygulamanızı veya ana bilgisayarınızı değiştirmeye gerek kalmadan sunmadığını unutmayın.
 
   İşte [Microsoft Internet Information Services (IIS)](https://www.iis.net/)için bir örnek:
 

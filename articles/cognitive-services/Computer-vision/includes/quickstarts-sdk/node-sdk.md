@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 13017424c1b9f0406ad60dc25f61f198f3655323
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6753b9e50ec8304c85f4079cf917339b6beac42f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948275"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750048"
 ---
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -116,7 +116,7 @@ Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri �
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -232,7 +232,7 @@ Yardımcı işlevi tanımlayın `describeType` :
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
@@ -266,7 +266,7 @@ Ardından, `printRecText` okuma işlemlerinin sonuçlarını konsola yazdıran y
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -277,7 +277,7 @@ node index.js
 ```
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -287,7 +287,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

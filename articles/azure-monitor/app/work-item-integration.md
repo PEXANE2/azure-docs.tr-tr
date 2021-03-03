@@ -3,12 +3,12 @@ title: Çalışma öğesi tümleştirmesi (Önizleme)-Application Insights
 description: GitHub 'da veya Azure DevOps 'da ekli Application Insights verilerle iş öğeleri oluşturmayı öğrenin.
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101626"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731927"
 ---
 # <a name="work-item-integration-preview"></a>Çalışma öğesi tümleştirmesi (Önizleme)
 
@@ -53,7 +53,7 @@ ms.locfileid: "100101626"
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" Kalem simgesini Düzenle simgesi seçili olan iş öğesi sekmesinin ekran görüntüsü.":::
 
-![ ](./media/work-item-integration/edit-icon.png) Şablonu düzenlemeye başlamak için üstteki düzenleme Düzenle simgesini seçin. İş öğesi şablonları, [Azure Izleyici çalışma kitaplarını](../platform/workbooks-overview.md)temel alır. İş öğesi bilgileri anahtar sözcük sorgu dili kullanılarak oluşturulur. Ekibinize daha fazla bağlam eklemek için sorguları değiştirebilirsiniz. Düzenlemeden sonra, ![ üstteki araç çubuğunda Kaydet simgesini Kaydet simgesini seçerek çalışma kitabını kaydedin ](./media/work-item-integration/save-icon.png) .
+![ ](./media/work-item-integration/edit-icon.png) Şablonu düzenlemeye başlamak için üstteki düzenleme Düzenle simgesini seçin. İş öğesi şablonları, [Azure Izleyici çalışma kitaplarını](../visualize/workbooks-overview.md)temel alır. İş öğesi bilgileri anahtar sözcük sorgu dili kullanılarak oluşturulur. Ekibinize daha fazla bağlam eklemek için sorguları değiştirebilirsiniz. Düzenlemeden sonra, ![ üstteki araç çubuğunda Kaydet simgesini Kaydet simgesini seçerek çalışma kitabını kaydedin ](./media/work-item-integration/save-icon.png) .
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Düzenleme modundaki çalışma öğesi şablonu çalışma kitabının ekran görüntüsü." lightbox="./media/work-item-integration/edit-workbook.png":::
 

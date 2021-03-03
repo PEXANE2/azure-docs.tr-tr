@@ -1,26 +1,26 @@
 ---
-title: VM'ler için Azure İzleyici Konuk sistem durumu (Önizleme)
-description: Sanal makinelerinizin durumunu nasıl görüntüleyekullanabileceğinizi ve bir sanal makine sağlıksız hale geldiğinde uyarılar alabilmeniz dahil VM'ler için Azure İzleyici sistem durumu özelliğine genel bakış.
+title: VM öngörüleri Konuk durumu (Önizleme)
+description: Sanal makinelerinizin durumunu nasıl görüntüleyekullanabileceğinizi ve bir sanal makine sağlıksız hale geldiğinde uyarılar alabilmeniz dahil olmak üzere VM öngörülerinin sistem durumu özelliğine genel bakış.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707464"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>VM'ler için Azure İzleyici Konuk sistem durumu (Önizleme)
-VM'ler için Azure İzleyici Konuk sistem durumu, Konuk işletim sisteminden düzenli aralıklarla örneklendiği performans ölçümlerinin bir kümesini temel alarak sanal makinelerin sistem durumunu görüntülemenizi sağlar. Bir abonelik veya kaynak grubundaki tüm sanal makinelerin sistem durumunu hızlı bir şekilde denetleyebilir, belirli bir sanal makinenin ayrıntılı durumunu ayrıntılandırıp bir sanal makine sağlıksız hale geldiğinde önceden bildirimde bulunabilir. 
+# <a name="vm-insights-guest-health-preview"></a>VM öngörüleri Konuk durumu (Önizleme)
+VM öngörüleri Konuk durumu, Konuk işletim sisteminden düzenli aralıklarla örneklendiği performans ölçümlerinin bir kümesini temel alarak sanal makinelerin sistem durumunu görüntülemenizi sağlar. Bir abonelik veya kaynak grubundaki tüm sanal makinelerin sistem durumunu hızlı bir şekilde denetleyebilir, belirli bir sanal makinenin ayrıntılı durumunu ayrıntılandırıp bir sanal makine sağlıksız hale geldiğinde önceden bildirimde bulunabilir. 
 
 ## <a name="enable-virtual-machine-health"></a>Sanal makine sistem durumunu etkinleştir
-Konuk sistem durumu özelliğinin ve ekleme sanal makinelerinin etkinleştirilmesi hakkındaki ayrıntılar için bkz. [VM'ler için Azure izleyici Konuk sistem durumunu etkinleştirme (Önizleme)](vminsights-health-enable.md) .
+Konuk sistem durumu özelliğinin ve ekleme sanal makinelerinin etkinleştirilmesi hakkındaki ayrıntılar için bkz. [VM öngörüleri Konuk sistem durumunu etkinleştirme (Önizleme)](vminsights-health-enable.md) .
 
 ## <a name="pricing"></a>Fiyatlandırma
-Konuk sistem durumu özelliği için doğrudan maliyet yoktur, ancak Log Analytics çalışma alanında sistem durumu verilerinin alımı ve depolanması için bir maliyet mevcuttur. Tüm veriler *Healthstatechangeevent* tablosunda depolanır. Fiyatlandırma modelleri ve maliyetler hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](../platform/manage-cost-storage.md) .
+Konuk sistem durumu özelliği için doğrudan maliyet yoktur, ancak Log Analytics çalışma alanında sistem durumu verilerinin alımı ve depolanması için bir maliyet mevcuttur. Tüm veriler *Healthstatechangeevent* tablosunda depolanır. Fiyatlandırma modelleri ve maliyetler hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](../logs/manage-cost-storage.md) .
 
 ## <a name="view-virtual-machine-health"></a>Sanal makine durumunu görüntüle
 **Başlarken** SAYFASıNDAKI **Konuk VM sistem durumu** sütunu, belirli bir abonelik veya kaynak grubundaki her bir sanal makinenin sistem durumunun hızlı bir görünümünü sağlar. Her bir sanal makinenin geçerli durumu görüntülenir, her bir grubun simgeleri o gruptaki her durumda o anda sanal makine sayısını gösterir.
@@ -35,7 +35,7 @@ Konuk sistem durumu özelliği için doğrudan maliyet yoktur, ancak Log Analyti
 
 Aşağıdaki tabloda, her bir sanal makine için şu anda kullanılabilen toplam ve birim izleyicileri listelenmektedir. 
 
-| İzleyici | Tür | Description |
+| İzleyici | Tür | Açıklama |
 |:---|:---|:---|
 | CPU kullanımı | Birim | İşlemcinin yüzde kullanımı. |
 | Dosya sistemleri | Toplama | Linux VM 'de tüm dosya sistemlerinin toplam durumunu toplayın. |
@@ -53,7 +53,7 @@ Her monitörün geriye doğru izleme penceresi bulunur ve bu süre içinde topla
 
 İzleyicilerin her biri, aşağıdaki tabloda yer aldığı olası sistem durumlarına sahiptir ve belirli bir zamanda tek bir ve yalnızca biri olacaktır. Bir izleyici başlatıldığında sağlıklı bir durumda başlar.
 
-| Sistem Durumu | Description |
+| Sistem Durumu | Açıklama |
 |:---|:---|
 | Sağlam  | İzleyici Şu anda uyarı veya kritik eşiği aşmıyor. |
 | Uyarı  | İzleyici, uyarı eşiğini (tanımlanmışsa) aştı. |
@@ -66,7 +66,7 @@ Her monitörün geriye doğru izleme penceresi bulunur ve bu süre içinde topla
 
 Aşağıdaki tabloda gösterildiği gibi iki tür izleyici vardır.
 
-| İzleyici | Description |
+| İzleyici | Açıklama |
 |:---|:---|
 | Birim izleyicisi | Bir kaynağın veya uygulamanın bazı özelliklerini ölçer. Bu kapsamda kaynağın performansını veya kullanılabilirliğini belirlemek için bir performans sayacı denetlenebilir. |
 | Toplam Değer İzleyicisi | Birden çok izleyiciyi gruplayarak tek ve toplu bir sistem durumu bilgisi sağlar. Bir toplam değer izleyicisinde bir veya daha fazla birim izleyicisi ve diğer toplam değer izleyicileri bulunabilir. |
@@ -95,7 +95,7 @@ Aşağıdaki sekmeleri içeren ayrıntılarını görüntülemek için bir izley
 [![İzleme ayrıntıları geçmişi](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>Yapılandırma
-Seçili VM için izleyicinin yapılandırmasını görüntüleyin ve değiştirin. Ayrıntılar için bkz. [VM'ler için Azure izleyici Konuk sistem durumu 'nda Izlemeyi yapılandırma (Önizleme)](vminsights-health-enable.md) .
+Seçili VM için izleyicinin yapılandırmasını görüntüleyin ve değiştirin. Ayrıntılar için bkz. [VM öngörüleri Konuk durumu 'nda Izlemeyi yapılandırma (Önizleme)](vminsights-health-enable.md) .
 
 [![İzleme ayrıntıları yapılandırması](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +104,6 @@ Seçili VM için izleyicinin yapılandırmasını görüntüleyin ve değiştiri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM'ler için Azure İzleyici ve aracılarda Konuk sistem durumunu etkinleştirin.](vminsights-health-enable.md)
+- [VM öngörüleri ve aracı ekleme aracılarında Konuk sistem durumunu etkinleştirin.](vminsights-health-enable.md)
 - [Azure portal kullanarak izleyicileri yapılandırın.](vminsights-health-configure.md)
 - [Veri toplama kurallarını kullanarak izleyicileri yapılandırın.](vminsights-health-configure-dcr.md)

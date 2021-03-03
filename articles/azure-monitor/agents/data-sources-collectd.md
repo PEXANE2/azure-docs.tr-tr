@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: a0efeaa3df0ecc69fa29dcb2cbb50874c4ab486a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6848b4e0463be803fb4f41797d933386cb575a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623462"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732114"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
 [Collectd](https://collectd.org/) , uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak performans ölçümlerini toplayan açık kaynaklı bir Linux Daemon. Örnek uygulamalar Java Sanal Makinesi (JVM), MySQL Server ve NGINX ' i içerir. Bu makalede, Azure Izleyici 'de CollectD 'den performans verilerinin toplanması hakkında bilgi sağlanır.
@@ -132,5 +132,5 @@ Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçüm
 | `values[]` | Onay değeri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
-* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](../platform/custom-fields.md) kullanın.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin. 
+* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](../logs/custom-fields.md) kullanın.

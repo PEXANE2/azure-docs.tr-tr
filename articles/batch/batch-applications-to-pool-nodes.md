@@ -2,13 +2,13 @@
 title: Uygulamaları ve verileri havuz düğümlerine kopyalama
 description: Uygulama ve verileri havuz düğümlerine kopyalamayı öğrenin.
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378511"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703656"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Uygulamaları ve verileri havuz düğümlerine kopyalama
 
@@ -33,10 +33,6 @@ Havuz üzerinde çalışan her iş, önce bir. msi dosyası ile yüklenmesi gere
 Havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için [uygulama paketlerini](batch-application-packages.md)kullanmayı göz önünde bulundurun. Uygulama paketiyle ilişkili bir Install komutu yoktur, ancak herhangi bir Install komutunu çalıştırmak için bir başlangıç görevi kullanabilirsiniz. Uygulamanız yükleme gerektirmiyorsa veya çok sayıda dosya içeriyorsa, bu yöntemi kullanabilirsiniz.
 
 Uygulama paketleri çok sayıda dosyanız olduğunda faydalıdır, çünkü birçok dosya başvurusu küçük bir yükte birleştirebilirler. Tek bir görevde 100 ' den fazla ayrı kaynak dosyası eklemeyi denerseniz, Batch hizmeti tek bir görevde iç sistem sınırlamalarına karşı gelebilir. Aynı uygulamanın birçok farklı sürümüne sahipseniz ve aralarında seçim yapmanız gerektiğinde uygulama paketleri de kullanışlıdır.
-
-## <a name="extensions"></a>Uzantıları
-
-[Uzantılar](create-pool-extensions.md) , sağlama sonrası yapılandırmayı ve toplu işlem düğümlerinde kurulumunu kolaylaştıran küçük uygulamalardır. Bir havuz oluşturduğunuzda, sağlama sırasında işlem düğümlerine yüklenmek üzere desteklenen bir uzantı seçebilirsiniz. Bundan sonra uzantı amaçlanan işlemini gerçekleştirebilir.
 
 ## <a name="job-preparation-task-resource-files"></a>İş hazırlama görevi kaynak dosyaları
 

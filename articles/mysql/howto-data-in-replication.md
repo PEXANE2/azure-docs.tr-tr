@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250541"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709555"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>MySQL için Azure veritabanı 'nı yapılandırma Gelen Verileri Çoğaltma
 
@@ -80,7 +80,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
       ping <output of step 2b>
       ```
 
-      Örneğin:
+      Örnek:
 
       ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
@@ -101,9 +101,23 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
    ```
 
    Değişken [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" değeriyle döndürülürse, sunucunuzda ikili günlük etkin olur.
-
-   `log_bin`"Off" değeri ile döndürülürse, My. CNF Dosyanızı düzenleyerek ikili günlüğü açın `log_bin=ON` ve değişikliğin etkili olması için sunucunuzu yeniden başlatın.
-
+   
+   `log_bin`"Off" değeri ile döndürülürse, 
+   1. Kaynak sunucuda MySQL yapılandırma dosyanızı (My. CNF) bulun. Örneğin:/etc/mypst CNF
+   2. Düzenlemek için yapılandırma dosyasını açın ve dosyadaki **mysqld** bölümünü bulun.
+   3.  Mysqld bölümünde aşağıdaki satırı ekleyin
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. Değişikliklerin etkili olması için MySQL kaynak sunucusunu yeniden başlatın.
+   5. Sunucu yeniden başlatıldıktan sonra, önceki ile aynı sorguyu çalıştırarak ikili günlüğün etkinleştirildiğini doğrulayın:
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. Kaynak sunucu ayarları
 
    Gelen Verileri Çoğaltma, parametrenin `lower_case_table_names` kaynak ve çoğaltma sunucuları arasında tutarlı olmasını gerektirir. Bu parametre, MySQL için Azure veritabanı 'nda varsayılan olarak 1 ' dir.

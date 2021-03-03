@@ -6,12 +6,16 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-dotnetcore-uiex
+ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701646"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -107,7 +111,7 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 1. **Barındırma planı: Yeni oluştur** iletişim kutusunda, aşağıdaki tabloda belirtilen değerleri girin:
 
-   | Ayar  | Önerilen Değer | Description |
+   | Ayar  | Önerilen Değer | Açıklama |
    | -------- | --------------- | ----------- |
    | **Barındırma Planı**  | *myFirstAzureWebAppPlan* | App Service planının adı. |
    | **Konum**      | *West Europe* | Web uygulamasının barındırıldığı veri merkezi. |
@@ -187,7 +191,7 @@ Bir .NET Core uygulaması oluşturmayı ve bir SQL veritabanına bağlamayı ö�
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[Linux’ta App Service](overview.md#app-service-on-linux) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde App Service’te [.NET Core](/aspnet/core/) uygulaması oluşturma gösterilmektedir. Uygulamayı [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak oluşturur ve .NET Core kodunu uygulamaya dağıtmak için git 'i kullanırsınız.
+[Linux’ta App Service](overview.md#app-service-on-linux) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, bir [.NET Core](/aspnet/core/) uygulamasının nasıl oluşturulacağı ve [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanılarak Linux tarafından barındırılan bir App Service nasıl dağıtılacağı gösterilmektedir.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -258,7 +262,7 @@ az login
 Şu komutu kullanarak kodu yerel klasörünüzde (*hellodotnetcore*) dağıtın `az webapp up` :
 
 ```azurecli
-az webapp up --sku F1 --name <app-name> --os-type linux
+az webapp up --sku F1 --name <app-name>
 ```
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.

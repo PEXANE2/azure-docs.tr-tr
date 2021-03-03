@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730720"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınız için GPU VM 'Leri
 
@@ -110,8 +110,8 @@ Cihazınızda GPU VM 'Leri dağıtımında şu adımları izleyin:
 1. VM oluşturulduktan sonra uzantı şablonunu kullanarak GPU uzantısı dağıtın. Linux VM 'Ler için bkz. [Linux IÇIN GPU uzantısı](#gpu-extension-for-linux) ve Windows VM 'leri için bkz. [Windows Için GPU uzantısını yüklemeyi](#gpu-extension-for-windows).
 
 1. GPU uzantısının yüklenmesini doğrulamak için GPU VM 'ye bağlanın:
-    1. Windows VM kullanıyorsanız, [WINDOWS VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm)bölümündeki adımları izleyin. [Yüklemeyi doğrulayın](#verify-windows-driver-installation).
-    1. Linux VM kullanıyorsanız, [LINUX VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)bölümündeki adımları izleyin. [Yüklemeyi doğrulayın](#verify-linux-driver-installation).
+    1. Windows VM kullanıyorsanız, [WINDOWS VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)bölümündeki adımları izleyin. [Yüklemeyi doğrulayın](#verify-windows-driver-installation).
+    1. Linux VM kullanıyorsanız, [LINUX VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)bölümündeki adımları izleyin. [Yüklemeyi doğrulayın](#verify-linux-driver-installation).
 
 1. Gerekirse, işlem ağını, ihtiyacınız olan her şey için geri geçirebilirsiniz. 
 
@@ -545,7 +545,7 @@ Uzantı yürütme çıkışı şu dosyaya kaydedilir: `/var/log/azure/nvidia-vme
 
 Sürücü yüklemeyi doğrulamak için aşağıdaki adımları izleyin:
 
-1. GPU VM 'ye bağlanın. [LINUX VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)bölümündeki yönergeleri izleyin. 
+1. GPU VM 'ye bağlanın. [LINUX VM 'ye bağlanma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)bölümündeki yönergeleri izleyin. 
 
     Örnek çıktı aşağıdaki gibidir:
 

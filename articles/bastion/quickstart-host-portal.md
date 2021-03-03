@@ -6,20 +6,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 10/15/2020
+ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707178"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Hızlı başlangıç: özel IP adresi aracılığıyla bir tarayıcı aracılığıyla güvenli bir şekilde VM 'ye bağlanma
 
 Azure portal ve Azure savunma kullanarak tarayıcınız aracılığıyla bir sanal makineye (VM) bağlanabilirsiniz. Bu hızlı başlangıç makalesinde, Azure savunma 'yı VM ayarlarınıza göre yapılandırma ve ardından Portal üzerinden sanal makinenize bağlama işlemi gösterilmektedir. VM 'nin genel IP adresi, istemci yazılımı, Aracısı veya özel bir yapılandırmaya sahip olması gerekmez. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prereq"></a>Kaynakları
 
 * Etkin aboneliği olan bir Azure hesabı. Yoksa, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Savunma kullanarak bir VM 'ye tarayıcı aracılığıyla bağlanabilme için, Azure portal oturum açabiliyor olmanız gerekir.
 
@@ -46,21 +46,21 @@ Bu yapılandırmayı oluştururken aşağıdaki örnek değerleri kullanabilir v
 |**Ad** | **Değer** |
 | --- | --- |
 | Sanal makine| TestVM |
-| Kaynak grubu | TestRG |
+| Kaynak grubu | TestRG1 |
 | Region | Doğu ABD |
-| Sanal ağ | TestVNet1 |
-| Adres alanı | 10.0.0.0/16 |
-| Alt ağlar | Ön uç: 10.0.0.0/24 |
+| Sanal ağ | VNet1 |
+| Adres alanı | 10.1.0.0/16 |
+| Alt ağlar | Ön uç: 10.1.0.0/24 |
 
 **Azure savunma değerleri:**
 
 |**Ad** | **Değer** |
 | --- | --- |
-| Name | TestVNet1-savunma |
+| Name | VNet1-savunma |
 | + Alt ağ adı | AzureBastionSubnet |
-| AzureBastionSubnet adresleri | VNet adres alanınızda/27 alt ağ maskesiyle bir alt ağ. Örneğin, 10.0.1.0/27.  |
+| AzureBastionSubnet adresleri | VNet adres alanınızda/27 alt ağ maskesiyle bir alt ağ. Örneğin, 10.1.1.0/27.  |
 | Genel IP adresi |  Yeni oluştur |
-| Genel IP adresi adı | VNet1BastionPIP  |
+| Genel IP adresi adı | VNet1-IP  |
 | Genel IP adresi SKU 'SU |  Standart  |
 | Atama  | Statik |
 
@@ -71,42 +71,42 @@ Bir savunma konağını yapılandırmanın birkaç farklı yolu vardır. Aşağ�
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Bağlanmak istediğiniz VM 'ye gidin ve ardından **Bağlan**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/vm-settings.png" alt-text="sanal makine ayarları" lightbox="./media/quickstart-host-portal/vm-settings.png":::
+   :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="Sanal makine ayarlarının ekran görüntüsü." lightbox="./media/quickstart-host-portal/vm-connect.png":::
 1. Açılan menüden, savunma ' **yı seçin.**
+
+   :::image type="content" source="./media/quickstart-host-portal/bastion.png" alt-text="Savunma açılan listesinin ekran görüntüsü." lightbox="./media/quickstart-host-portal/bastion.png":::
 1. **Testvm 'de | Bağlan sayfasında**, **kullan**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Savunma seçin" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Kullanım ekranının ekran görüntüsü.":::
 
-1. Savunma sayfasında **,** aşağıdaki ayarlar alanlarını doldurun:
+1. Azure savunma **kullanarak bağlan** sayfasında, değerleri yapılandırın.
 
-   * **Ad**: savunma konağını adlandırın.
-   * **Alt ağ**: Bu, savunma kaynağının dağıtılacağı sanal ağ adres alanıdır. Alt ağın **AzureBastionSubnet** adıyla oluşturulması gerekir. En az/27 veya daha büyük (/27,/26,/25 vb.) bir alt ağ kullanın.
-   * **Alt ağ yapılandırmasını Yönet**' i seçin.
-1. **Alt ağlar** sayfasında, **+ alt ağ**' ı seçin.
+   * **1. Adım:** , Savunma konağını doğrudan sanal bilgisayarınızdan oluşturduğunuz için değerler önceden doldurulur.
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ Alt ağ":::
-    
-1. **Alt ağ ekle** sayfasında, **ad** için **AzureBastionSubnet** yazın.
-   * Alt ağ adres aralığı için, sanal ağ adres alanınızda bulunan bir alt ağ adresi seçin.
-   * Diğer ayarları ayarlamamayın. Alt ağ değişikliklerini kabul etmek ve kaydetmek için **Tamam ' ı** seçin.
+   * **2. Adım:** Adres alanı, önerilen bir adres alanı ile önceden doldurulur. AzureBastionSubnet adres alanı/27 veya daha büyük (/26,/25 vb.) olmalıdır.
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="Alt ağ ekleme":::
-1. Savunma **sayfasına dönmek** için tarayıcınızda geri düğmesine tıklayın ve değerleri belirtmeye devam edin.
-   * **Genel IP adresi**: **Yeni oluştur** olarak bırakın.
-   * **Genel IP adresi adı**: genel IP adresi kaynağının adı.
-   * **Atama**: varsayılan değer static ' tir. Azure savunma için dinamik bir atama kullanamazsınız.
+   :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Savunma alt ağını oluşturma ekran görüntüsü.":::
+
+1. AzureBastionSubnet oluşturmak için **alt ağ oluştur** ' a tıklayın.
+1. Alt ağ oluşturulduktan sonra sayfa **Adım 3**' e otomatik olarak ilerler. 3. adım için aşağıdaki değerleri kullanın:
+
+   * **Ad:** Savunma konağını adlandırın.
+   * **Genel IP adresi:****Yeni oluştur**'u seçin.
+   * **Genel IP adresi adı:** Genel IP adresi kaynağının adı.
+   * **Genel IP adresi SKU 'su:** **Standart** olarak önceden yapılandırılmış
+   * **Atama:** **Statik** olarak önceden yapılandırılmış. Azure savunma için dinamik bir atama kullanamazsınız.
    * **Kaynak grubu**: VM ile aynı kaynak grubu.
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="Savunma konağını oluşturma":::
-1. Savunma konağını oluşturmak için **Oluştur** ' u seçin. Azure ayarlarınızı doğrular ve ardından Konağı oluşturur. Ana bilgisayar ve kaynakları, oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
+   :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="3. adım ekran görüntüsü.":::
+1. Değerleri tamamladıktan sonra **Varsayılanları kullanarak Azure savunma oluştur**' u seçin. Azure ayarlarınızı doğrular ve ardından Konağı oluşturur. Ana bilgisayar ve kaynakları, oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
-## <a name="connect"></a><a name="connect"></a>Bağlan
+## <a name="connect"></a><a name="connect"></a>Bağlanabilmeniz
 
 Sanal ağa bağlantı dağıtıldıktan sonra ekran bağlan sayfasına dönüşür.
 
 1. Sanal makineniz için Kullanıcı adını ve parolayı yazın. Ardından **Bağlan**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="Ekran görüntüsü Azure savunma kullanarak bağlan iletişim kutusunu gösterir.":::
+   :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="Ekran görüntüsü Azure savunma kullanarak bağlan iletişim kutusunu gösterir.":::
 1. Bu sanal makineyle RDP bağlantısı, 443 numaralı bağlantı noktasını ve savunma hizmetini kullanarak doğrudan Azure portal (HTML5 üzerinden) açılır.
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP bağlantısı":::

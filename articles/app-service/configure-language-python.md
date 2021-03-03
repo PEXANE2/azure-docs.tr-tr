@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709096"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -140,7 +140,7 @@ Docgo Web uygulamanız statik ön uç dosyaları içeriyorsa, önce Docgo belgel
 
 App Service için aşağıdaki değişiklikleri yapın:
 
-1. Docgo ve değişkenlerini dinamik olarak ayarlamak için ortam değişkenlerini (yerel geliştirme için) ve uygulama ayarlarını (buluta dağıtıldığında) kullanmayı düşünün `STATIC_URL` `STATIC_ROOT` . Örneğin:    
+1. Docgo ve değişkenlerini dinamik olarak ayarlamak için ortam değişkenlerini (yerel geliştirme için) ve uygulama ayarlarını (buluta dağıtıldığında) kullanmayı düşünün `STATIC_URL` `STATIC_ROOT` . Örnek:    
 
     ```python
     STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
@@ -372,6 +372,7 @@ Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
 - [Uygulama görünmez-varsayılan uygulama gösterilir](#app-doesnt-appear)
 - [Uygulama görünmüyor-"hizmet kullanılamıyor" iletisi](#service-unavailable)
 - [Setup.py veya requirements.txtbulunamadı ](#could-not-find-setuppy-or-requirementstxt)
+- [Modulenotfounbir başlangıç](#modulenotfounderror-when-app-starts)
 - [Parola yazıldığında SSH oturumunda görünmez](#other-issues)
 - [SSH oturumundaki komutlar kesilmiş görünüyor](#other-issues)
 - [Statik varlıklar bir Docgo uygulamasında görünmüyor](#other-issues)
@@ -404,6 +405,10 @@ Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
 - **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "**: Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
 
     - [SSH](#open-ssh-session-in-browser) aracılığıyla Web uygulamasının kapsayıcısına bağlanın ve *requirements.txt* doğru şekilde adlandırıldığını ve doğrudan *site/Wwwroot* altında mevcut olduğunu doğrulayın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
+
+#### <a name="modulenotfounderror-when-app-starts"></a>Uygulama başladığında Modulenotfoun,
+
+Gibi bir hata görürseniz `ModuleNotFoundError: No module named 'example'` , bu, Python 'un uygulama başladığında bir veya daha fazla modülden fazlasını bulamamasıdır. Bu en sık, sanal ortamınızı kodunuzla dağıtırsanız oluşur. Sanal ortamlar taşınabilir değildir, bu nedenle bir sanal ortam, uygulama kodunuzla birlikte dağıtılmamalıdır. Bunun yerine, bir uygulama ayarı oluşturup, ve olarak ayarlayarak, sanal ortam oluşturma ve paketlerinizi web uygulamasına yüklemeye izin verin `SCM_DO_BUILD_DURING_DEPLOYMENT` `1` . Bu, App Service ' a dağıtırken paketlerinizi yüklemeye zorlaştıracaktır. Daha fazla bilgi için lütfen [sanal ortam taşınabilirliği ' nde bu makaleye](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)bakın.
 
 #### <a name="other-issues"></a>Diğer sorunlar
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556352"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712938"
 ---
 # <a name="create-a-translator-resource"></a>Çevirmen kaynağı oluşturma
 
@@ -57,7 +57,7 @@ Başlamak için etkin bir [**Azure hesabınız**](https://azure.microsoft.com/fr
 
 1. **Kaynak Grubu**. Seçtiğiniz Azure Kaynak grubu, yeni kaynağınız için bir sanal kapsayıcı olarak görev yapar. Yeni bir kaynak grubu oluşturabilir veya kaynağınızı aynı yaşam döngüsünü, izinleri ve ilkeleri paylaşan önceden var olan bir kaynak grubuna ekleyebilirsiniz.
 
-1. **Kaynak bölgesi**. İşiniz veya uygulamanız için belirli bir bölge gerekmiyorsa **genel** ' i seçin. Çevirmen, bölgesel olmayan bir hizmettir; belirli bir Azure bölgesinin bağımlılığı yoktur. *Bkz* . [Azure 'da bölgeler ve kullanılabilirlik alanları](/azure/availability-zones/az-overview).
+1. **Kaynak bölgesi**. İşiniz veya uygulamanız için belirli bir bölge gerekmiyorsa **genel** ' i seçin. Çevirmen, bölgesel olmayan bir hizmettir; belirli bir Azure bölgesinin bağımlılığı yoktur. *Bkz* . [Azure 'da bölgeler ve kullanılabilirlik alanları](../../availability-zones/az-overview.md).
 
 1. **Ad**. Kaynağınız için seçtiğiniz adı girin. Seçtiğiniz ad Azure içinde benzersiz olmalıdır.
 

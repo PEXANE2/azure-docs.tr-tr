@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735514"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı, IIS tabanlı web uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -60,16 +60,16 @@ Bu makaledeki örneklerde, Windows Server 2012 R2 Enterprise üzerinde IIS 7,5 i
 
 Senaryo | İkincil siteye | Azure’a
 --- | --- | ---
-Hyper-V | Evet | Evet
-VMware | Evet | Evet
-Fiziksel sunucu | Hayır | Evet
+Hyper-V | Yes | Yes
+VMware | Yes | Yes
+Fiziksel sunucu | Hayır | Yes
 Azure|NA|Yes
 
 ## <a name="replicate-virtual-machines"></a>Sanal makineleri çoğaltma
 
 Tüm IIS Web grubu sanal makinelerini Azure 'a Çoğaltmaya başlamak için [Site Recovery 'de Azure 'a yük devretme testi](site-recovery-test-failover-to-azure.md)' nde yer alan yönergeleri izleyin.
 
-Statik bir IP adresi kullanıyorsanız, sanal makinenin geçirmesine istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **hedef IP**sayfasına gidin.
+Statik bir IP adresi kullanıyorsanız, sanal makinenin geçirmesine istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **hedef IP** sayfasına gidin.
 
 ![Site Recovery Işlem ve ağ bölmesinde hedef IP 'nin nasıl ayarlanacağını gösteren ekran görüntüsü](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -118,14 +118,14 @@ Her site bağlama bilgilerinden oluşur. Bağlama bilgileri, bağlamanın türü
 
 > [!NOTE]
 >
-> Site bağlamayı **atanmamış**olarak ayarlarsanız, bu bağlama sonrası yük devretmeyi güncelleştirmeniz gerekmez. Ayrıca, bir siteyle ilişkilendirilmiş IP adresi yük devretme sonrası değiştirildiyse, site bağlamayı güncelleştirmeniz gerekmez. (IP adresini bekletme, birincil ve kurtarma sitelerine atanan ağ mimarisine ve alt ağlara bağlıdır. Bunları güncelleştirmek, kuruluşunuz için uygun olmayabilir.)
+> Site bağlamayı **atanmamış** olarak ayarlarsanız, bu bağlama sonrası yük devretmeyi güncelleştirmeniz gerekmez. Ayrıca, bir siteyle ilişkilendirilmiş IP adresi yük devretme sonrası değiştirildiyse, site bağlamayı güncelleştirmeniz gerekmez. (IP adresini bekletme, birincil ve kurtarma sitelerine atanan ağ mimarisine ve alt ağlara bağlıdır. Bunları güncelleştirmek, kuruluşunuz için uygun olmayabilir.)
 
 ![TLS/SSL bağlamasını ayarlamayı gösteren ekran görüntüsü](./media/site-recovery-iis/sslbinding.png)
 
-IP adresini bir siteyle ilişkilendirdiyseniz, tüm site bağlamalarını yeni IP adresiyle güncelleştirin. Site bağlamalarını değiştirmek için kurtarma planında Grup 3 ' den sonra bir [IIS Web katmanı güncelleştirme betiği](https://aka.ms/asr-web-tier-update-runbook-classic) ekleyin.
+IP adresini bir siteyle ilişkilendirdiyseniz, tüm site bağlamalarını yeni IP adresiyle güncelleştirin. Site bağlamalarını değiştirmek için kurtarma planında Grup 3 ' den sonra bir [IIS Web katmanı güncelleştirme betiği](/samples/browse/?redirectedfrom=TechNet-Gallery) ekleyin.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Yük dengeleyici IP adresini güncelleştirme
-Bir ARR sanal makineniz varsa, IP adresini güncelleştirmek için, Grup 4 ' den sonra bir [IIS ARR yük devretme betiği](https://aka.ms/asr-iis-arrtier-failover-script-classic) ekleyin.
+Bir ARR sanal makineniz varsa, IP adresini güncelleştirmek için, Grup 4 ' den sonra bir [IIS ARR yük devretme betiği](/samples/browse/?redirectedfrom=TechNet-Gallery) ekleyin.
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>HTTPS bağlantısı için TLS/SSL sertifikası bağlama
 Web sitesi, Web sunucusu ile kullanıcının tarayıcısı arasında güvenli bir iletişim sağlamaya yardımcı olan ilişkili bir TLS/SSL sertifikasına sahip olabilir. Web sitesinde bir HTTPS bağlantısı varsa ve aynı zamanda bir TLS/SSL sertifikası bağlaması olan IIS sunucusunun IP adresine ilişkili bir HTTPS site bağlaması varsa, sertifika için IIS sanal makinesinin IP adresine yönelik yeni bir site bağlaması eklemeniz gerekir.

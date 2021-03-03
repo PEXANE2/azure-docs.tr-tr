@@ -1,8 +1,8 @@
-- name: IoT cihaz ve uygulama geliştirme
+- name: IoT cihaz geliştirme
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: IoT cihaz ve uygulama geliştirme nedir?
+    - name: IoT cihaz geliştirme nedir?
       href: about-iot-develop.md
     - name: Hangi SDK kullanmalıyım?
       href: about-iot-sdks.md
@@ -22,7 +22,7 @@
 - name: Öğreticiler
   items:
     - name: IoT cihazlarını buluta güvenli bir şekilde bağlama
-      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+      href: /learn/paths/securely-connect-iot-devices/
 - name: Kavramlar
   items:
     - name: Cihaz geliştiricileri için bağlantı seçenekleri
@@ -31,7 +31,7 @@
       href: concepts-iot-device-types.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

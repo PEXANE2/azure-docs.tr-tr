@@ -68,6 +68,12 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: GCP örneklerini geçirme
           href: tutorial-migrate-gcp-virtual-machines.md
+    - name: Kapsayıcılı hale getirme
+      items:
+        - name: ASP.NET uygulamaları kapsayıklaın ve AKS 'e geçiş
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: Java Web uygulamalarını kapsayıklaın ve AKS 'e geçirin
+          href: tutorial-containerize-java-kubernetes.md
 - name: Kavramlar
   items:
     - name: Genel
@@ -180,6 +186,8 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: Geçişi ölçeklendirme
           items:
+            - name: Aracısız çoğaltma yöntemini kullanarak VMware VM 'lerini ölçekte geçirme
+              href: how-to-scale-out-for-migration.md
             - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
               href: how-to-migrate-at-scale.md
             - name: VMware geçişini otomatikleştirme

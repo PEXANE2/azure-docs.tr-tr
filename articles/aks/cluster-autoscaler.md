@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9caf56545efc6aefae525e28614d39705c00c21e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742577"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir kümeyi uygulama taleplerini karşılayacak şekilde otomatik olarak ölçeklendirme
 
@@ -157,7 +157,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -174,7 +174,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks create \
@@ -288,7 +288,7 @@ Bu makalede, AKS düğümlerinin sayısını otomatik olarak ölçeklendirirsini
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
+[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show

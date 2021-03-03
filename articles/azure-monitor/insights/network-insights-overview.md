@@ -1,17 +1,16 @@
 ---
 title: Ağlar için Azure İzleyici
 description: Hiçbir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlayan ağlar için Azure Izleyicisine genel bakış.
-ms.subservice: ''
 ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717477"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 

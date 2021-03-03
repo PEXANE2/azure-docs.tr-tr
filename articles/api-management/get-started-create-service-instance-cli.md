@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-CLı kullanarak Azure API Management örneği oluşturma (Önizleme)
+title: Hızlı başlangıç-CLı kullanarak Azure API Management örneği oluşturma
 description: Azure CLı kullanarak yeni bir Azure API Management hizmet örneği oluşturun.
 author: dlepow
 ms.service: api-management
@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688085"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak yeni bir Azure API Management hizmet örneği oluşturma
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yeni bir Azure API Management hizmet örneği oluşturma
 
 Azure API Management (APIM), kuruluşların kendi veri ve hizmet potansiyellerini ortaya çıkarmak üzere API’leri dış, iş ortağı ve iç geliştiricilere yayımlamalarına yardımcı olur. API Management; geliştirici katılımı, iş öngörüleri, analizler, güvenlik ve koruma aracılığıyla başarılı bir API programı yürütmeye ilişkin temel uzmanlıklar sağlar. APıM, her yerde barındırılan mevcut arka uç hizmetleri için modern API ağ geçitleri oluşturmanıza ve yönetmenize olanak sağlar. Daha fazla bilgi için bkz. [Genel Bakış](api-management-key-concepts.md).
 
-Bu hızlı başlangıçta, Azure CLI 'de [az APIM](/cli/azure/apim) komutlarını kullanarak yeni bir API Management örneği oluşturma adımları açıklanmaktadır. `az apim`Komut grubundaki komutlar Şu anda önizlemededir ve gelecekteki bir sürümde değiştirilebilir veya kaldırılabilir.
+Bu hızlı başlangıçta, Azure CLI 'de [az APIM](/cli/azure/apim) komutlarını kullanarak yeni bir API Management örneği oluşturma adımları açıklanmaktadır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

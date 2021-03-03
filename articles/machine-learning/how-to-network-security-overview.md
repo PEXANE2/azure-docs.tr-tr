@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980584"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691833"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -71,7 +71,7 @@ Sonraki beş bölümde yukarıda açıklanan ağ senaryosunun güvenliğini sağ
 1. VNet ve çalışma alanınız arasında iletişimi etkinleştirmek için [özel bir bağlantı etkin çalışma alanı](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) oluşturun.
 1. Bir [hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md) veya [Özel uç nokta](../key-vault/general/private-link-service.md)ile sanal ağa Azure Key Vault ekleyin. Key Vault ["Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver"](how-to-secure-workspace-vnet.md#secure-azure-key-vault)olarak ayarlayın.
 1. Azure depolama hesabınızı sanal ağa bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [özel bir uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)ile ekleyin.
-1. [Azure Container Registry özel bir uç nokta kullanacak şekilde yapılandırın](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) ve [Azure Container Instances alt ağ temsilcisini etkinleştirin](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
+1. [Azure Container Registry özel bir uç nokta kullanacak şekilde yapılandırın](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 ![Çalışma alanının ve ilişkili kaynakların, hizmet uç noktaları veya VNet 'in içindeki özel uç noktalar üzerinden nasıl iletişim kurduğunu gösteren mimari diyagramı](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

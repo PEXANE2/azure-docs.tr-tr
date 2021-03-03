@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 73f58dbda0e7c073cf4a8d2e846132a102192e93
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635923"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722900"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -1768,7 +1768,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressRouteServiceProviders | Hayır | Hayır |
 > | firewallPolicies | Yes | Yes |
 > | frontkapıların | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | No |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Hayır |
 > | frontdoorWebApplicationFirewallPolicies | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
 > | getDnsResourceReference | Hayır | Hayır |
 > | ınternalnotify | Hayır | Hayır |
@@ -2265,6 +2265,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ManagedInstances/anahtarlar | Hayır | Hayır |
 > | ManagedInstances/Restokbledroppeddatabases/backupShortTermRetentionPolicies | Hayır | Hayır |
 > | ManagedInstances/ | Hayır | Hayır |
+> | longtermRetentionManagedInstance/longtermRetentionDatabase/longtermRetentionBackup | Hayır | Hayır |
 > | larý | Yes | Yes |
 > | sunucular/Yöneticiler | Hayır | Hayır |
 > | sunucular/communicationLinks | Hayır | Hayır |
@@ -2275,6 +2276,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/Restokbledroppeddatabases | Hayır | Hayır |
 > | Sunucu/hizmet hedefleri | Hayır | Hayır |
 > | sunucular/tdeCertificates | Hayır | Hayır |
+> | longtermRetentionServer/longtermRetentionDatabase/longtermRetentionBackup | Hayır | Hayır |
 > | Virtualkümeler | Hayır | Hayır |
 
 <a id="sqlnote"></a>

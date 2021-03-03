@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 8e2217c04f5c39ad93185273d537324f4b56e456
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f6c43f943bb12e8230772f2d195589ecc4543030
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099549"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705322"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
 
@@ -32,7 +32,7 @@ Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma pak
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Açıklama
 SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı sektörde şunları sağlar:
 
 * C++ ' ta Kesintisiz Akış taşıma paketi kaynağı 
@@ -46,7 +46,7 @@ SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı s
   * donanım A/V kod çözücüleriyle etkileşim için programlama arabirimleri (kod çözme, oluşturma)
 * Dijital Rights Management (DRM) arabirimi 
   * DRM soyutlama katmanı (DAL) aracılığıyla DRM işlemeye yönelik programlama arabirimleri
-  * Microsoft PlayReady taşıma kiti ayrı olarak dağıtılır ancak bu arabirim aracılığıyla tümleştirilir. Microsoft PlayReady cihaz lisanslama hakkında daha fazla bilgi için [buraya](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)tıklayın.
+  * Microsoft PlayReady taşıma kiti ayrı olarak dağıtılır ancak bu arabirim aracılığıyla tümleştirilir. [Microsoft PlayReady cihaz lisanslama hakkında daha fazla bilgi Için bkz](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)..
 * Uygulama örnekleri 
   * Linux için örnek PAL uygulamasının
   * GStreamer için örnek HAL uygulama
@@ -148,6 +148,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 * Kıenzhen ufuk, dijital teknoloji Co., Ltd
 * Sichuan Changhong Elektrik Co., Ltd.
 * Skardın Endüstriyel Corp.
+* Gök CP Ltd
 * Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV KÜRESEL SAS
 * SoftAtHome

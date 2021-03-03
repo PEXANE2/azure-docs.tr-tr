@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702224"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -88,11 +88,11 @@ Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://gith
 
 1. *Src/buluttan cihaza-Console-App* klasörüne gidin. Burada dosya ve diğer birkaç dosya *appsettings.js* görürsünüz:
 
-    * ***C2D-Console-App. csproj** _-Visual Studio Code için proje dosyası.
-    _ ***operations.json** _-programın çalıştırmasını istediğiniz işlemlerin listesi.
-    _ ***Program.cs** _-örnek program kodu. Bu kod:
+    * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
+    * ***operations.js*** , programın çalıştırmasını istediğiniz işlemlerin bir listesi.
+    * ***Program.cs*** -örnek program kodu. Bu kod:
 
-        _ Uygulama ayarlarını yükler.
+        * Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
         * Program çıkışını **TERMINAL** penceresinde Incelemenize ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemenize olanak tanıyan duraklar.
         * Kaynakları temizlemek için doğrudan yöntemleri çağırır.
@@ -117,7 +117,7 @@ Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://gith
 
     ![IoT Edge dağıtım bildirimi oluştur](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    Bildirim dosyasındaki *deployment.yolov3.amd64.js* *src/Edge/config* klasöründe oluşturulur.
+    Bildirim dosyasındaki *deployment.openvino.amd64.js* *src/Edge/config* klasöründe oluşturulur.
 
 1. [Hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıcı ' nı tamamlayıp bu adımı atlayın. 
 

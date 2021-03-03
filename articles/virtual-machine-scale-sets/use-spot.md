@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694997"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot sanal makineleri 
 
@@ -68,13 +68,56 @@ Bu yeni platform düzeyi özelliği, hedef örnek sayısını korumak için otom
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 & geri yükleme avantajlarını deneyin:
-- Bir ölçek kümesine Azure spot sanal makinesi dağıtıldığında varsayılan olarak etkindir.
 - Kapasite nedeniyle çıkarılan Azure spot sanal makinelerini geri yükleme girişimleri.
 - Geri yüklenen Azure spot sanal makinelerinin, daha uzun bir süre boyunca bir kapasite tetikleme çıkarmasının daha düşük bir olasılığı olması beklenir.
 - , Bir Azure spot sanal makinesinin kullanım süresini iyileştirir, böylelikle iş yükleri daha uzun bir süre çalışır.
 - , Sanal makine ölçek kümelerinin, Kullandıkça Öde VM 'Leri için zaten mevcut olan hedef sayısı özelliğini koruyun 'e benzer şekilde, Azure spot sanal makinelerinin hedef sayısını korumasına yardımcı olur.
 
 [Otomatik ölçeklendirme](virtual-machine-scale-sets-autoscale-overview.md)kullanan ölçek kümelerinde & geri yükleme işlemi devre dışı bırakıldı. Ölçek kümesindeki sanal makinelerin sayısı otomatik ölçeklendirme kuralları tarafından çalıştırılır.
+
+### <a name="register-for-try--restore"></a>TRY & restore için kaydolun
+
+& geri yüklemeyi dene özelliğini kullanabilmeniz için aboneliğinizi önizleme için kaydetmeniz gerekir. Kaydın tamamlanması birkaç dakika sürebilir. Özellik kaydını gerçekleştirmek için Azure CLı veya PowerShell kullanabilirsiniz.
+
+
+**CLI’yi kullanma**
+
+Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [az Feature Register](/cli/azure/feature#az-feature-register) kullanın. 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Özellik kaydı 15 dakikaya kadar sürebilir. Kayıt durumunu denetlemek için: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun. 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**PowerShell kullanma** 
+
+Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 'ini kullanın. 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Özellik kaydı 15 dakikaya kadar sürebilir. Kayıt durumunu denetlemek için: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun. 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>Yerleştirme grupları
 

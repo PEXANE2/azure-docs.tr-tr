@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690541"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure altyapısı gelişdiğinde, Microsoft, olası en iyi müşteri deneyimini sağlamamızı sağlamak için donanımı düzenli olarak yenileyecek. Önümüzdeki aylarda, daha yeni donanım oluşturma, trafiği geçirme ve son olarak bazı bölgelerde daha eski donanımlar üzerinde oluşturulmuş ağ geçitlerinin yetkisini alma planlıyoruz.  
 
-Müşteriler, her bölgede kullanılabilir olan ağ geçitlerine yapılan herhangi bir değişikliğe göre hizmet durumu bildirimleri aracılığıyla bilgilendirilir. Müşteriler [, etkinlik günlüğü uyarılarını ayarlamak için Azure Portal kullanabilir](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal).
+Müşteriler, her bölgede kullanılabilir olan ağ geçitlerine yapılan herhangi bir değişikliğe göre hizmet durumu bildirimleri aracılığıyla bilgilendirilir. Müşteriler [, etkinlik günlüğü uyarılarını ayarlamak için Azure Portal kullanabilir](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](connectivity-architecture.md#gateway-ip-addresses) tablosunda tutulacaktır.
 

@@ -1,24 +1,24 @@
 ---
-title: Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)
-description: Aboneliğinizdeki VM'ler için Azure İzleyici Konuk durumunun nasıl etkinleştirileceğini ve VM 'Lerin nasıl ekleneceğini açıklar.
+title: VM öngörüleri Konuk durumunu etkinleştirme (Önizleme)
+description: Aboneliğinizdeki VM öngörüleri Konuk sistem durumunun nasıl etkinleştirileceğini ve VM 'Lerin nasıl ekleneceğini açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623498"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733729"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)
-VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
+# <a name="enable-vm-insights-guest-health-preview"></a>VM öngörüleri Konuk durumunu etkinleştirme (Önizleme)
+VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
-VM'ler için Azure İzleyici Konuk sistem durumu, genel önizlemede aşağıdaki sınırlamalara sahiptir:
+VM öngörüleri Konuk durumu, genel önizlemede aşağıdaki sınırlamalara sahiptir:
 
 - Şu anda yalnızca Azure sanal makineleri desteklenmektedir. Sunucular için Azure Arc şu anda desteklenmemektedir.
 
@@ -36,19 +36,25 @@ Sanal makinenin aşağıdaki bölgelerden birinde bulunması gerekir:
 - Orta Avustralya
 - Doğu Avustralya
 - Güneydoğu Avustralya
+- Orta Kanada
 - Orta Hindistan
 - Central US
 - Doğu Asya
 - Doğu ABD
 - Doğu ABD 2
 - EUAP Doğu ABD 2
+- Orta Fransa
 - Almanya Orta Batı
 - Doğu Japonya
+- Güney Kore - Orta
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Orta Güney ABD
+- Güney Afrika - Kuzey
 - Güneydoğu Asya
+- İsviçre Kuzey
 - Güney Birleşik Krallık
+- Batı Birleşik Krallık
 - Orta Batı ABD
 - West Europe
 - Batı ABD
@@ -57,24 +63,36 @@ Sanal makinenin aşağıdaki bölgelerden birinde bulunması gerekir:
 
 Log Analytics çalışma alanı aşağıdaki bölgelerden birinde bulunmalıdır:
 
+- Orta Avustralya
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- Orta Kanada
+- Kanada Hindistan
 - Central US
+- Doğu Asya
 - Doğu ABD
 - Doğu ABD 2
 - EUAP Doğu ABD 2
+- Orta Fransa
+- Doğu Japonya
+- Orta Kuzey ABD
 - Kuzey Avrupa
+- Orta Güney ABD
 - Güneydoğu Asya
+- İsviçre Kuzey
 - Güney Birleşik Krallık
 - Batı Avrupa Bölgesi
+- Batı ABD
 - Batı ABD 2
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Sanal makinenin VM'ler için Azure İzleyici için eklendi olması gerekir.
+- Sanal makine, VM öngörülerine eklendi olmalıdır.
 - Ekleme adımlarının yürütüldüğü kullanıcının, sanal makine ve veri toplama kuralının bulunduğu aboneliğe en az katkıda bulunan düzeyinde erişimi olmalıdır.
 - Gerekli Azure Kaynak sağlayıcılarının aşağıdaki bölümde açıklandığı gibi kayıtlı olması gerekir.
 
 ## <a name="register-required-azure-resource-providers"></a>Gerekli Azure Kaynak sağlayıcılarını kaydetme
-Aşağıdaki Azure kaynak sağlayıcıları, VM'ler için Azure İzleyici Konuk sistem durumunu etkinleştirmek üzere aboneliğiniz için kaydedilir. 
+VM öngörüleri Konuk sistem durumunu etkinleştirmek üzere aboneliğiniz için aşağıdaki Azure kaynak sağlayıcıları kaydedilir. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Azure portalını kullanarak sanal makineyi etkinleştirme
 Sanal makine için konuk durumunu etkinleştirme amacıyla Azure portalını kullandığınızda gerekli tüm yapılandırma adımları sizin yerinize tamamlanır. Bu, veri toplama kuralının oluşturulmasını, sanal makineye konuk sistem durumu uzantısının yüklenmesini ve veri toplama kuralıyla bir ilişki oluşturmayı içerir.
 
-VM'ler için Azure İzleyici ' deki **Başlarken** görünümünden, bir sanal makine için yükseltme iletisinin yanındaki bağlantıya tıklayın ve ardından **Yükselt** düğmesine tıklayın. İsterseniz birden çok sanal makineyi seçip bunları aynı anda yükseltebilirsiniz.
+VM öngörüleri içindeki **Başlarken** görünümünden, bir sanal makine için yükseltme iletisinin yanındaki bağlantıya tıklayın ve ardından **Yükselt** düğmesine tıklayın. İsterseniz birden çok sanal makineyi seçip bunları aynı anda yükseltebilirsiniz.
 
 ![Sanal makinede sağlık özelliğini etkinleştir](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ Azure Resource Manager kullanarak sanal makinelerin etkinleştirilmesi için ger
 > [!NOTE]
 > Bir sanal makineyi Azure portal kullanarak etkinleştirirseniz, burada açıklanan veri toplama kuralı sizin için oluşturulur. Bu durumda, bu adımı gerçekleştirmeniz gerekmez.
 
-VM'ler için Azure İzleyici Konuk durumundaki izleyicilerin yapılandırması, [veri toplama kurallarında (DCR)](../agents/data-collection-rule-overview.md)depolanır. Konuk sistem durumu uzantısına sahip her sanal makinenin bu kuralla bir ilişkilendirilmesi gerekir.
+VM öngörüleri Konuk sistem durumu 'nda izleyicilerin yapılandırması, [veri toplama kurallarında (DCR)](../agents/data-collection-rule-overview.md)depolanır. Konuk sistem durumu uzantısına sahip her sanal makinenin bu kuralla bir ilişkilendirilmesi gerekir.
 
 > [!NOTE]
-> İzleyicilerin varsayılan yapılandırmasını, [VM'ler için Azure izleyici Konuk durumunda Izlemeyi yapılandırma (Önizleme)](vminsights-health-configure.md)bölümünde açıklandığı şekilde değiştirmek için ek veri toplama kuralları oluşturabilirsiniz.
+> İzleyicilerin varsayılan yapılandırmasını, [VM öngörüleri Konuk sistem durumu 'nda Izlemeyi yapılandırma (Önizleme)](vminsights-health-configure.md)bölümünde açıklandığı gibi değiştirmek için ek veri toplama kuralları oluşturabilirsiniz.
 
 Şablon aşağıdaki parametreler için değer gerektirir:
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM'ler için Azure İzleyici tarafından etkinleştirilen izleyicileri Özelleştir](vminsights-health-configure.md)
+- [VM öngörüleri tarafından etkinleştirilen izleyicileri özelleştirme](vminsights-health-configure.md)

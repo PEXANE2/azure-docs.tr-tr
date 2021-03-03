@@ -1,24 +1,24 @@
 ---
-title: VM'ler için Azure İzleyici ile performansı grafik oluşturma
-description: Performans, Windows ve Linux sistemlerinde uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen VM'ler için Azure İzleyici bir özelliğidir. Bu makalede, çeşitli senaryolarda nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
+title: VM öngörüleri ile performansı grafikle
+description: Performans, Windows ve Linux sistemlerinde uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir VM öngörüleri özelliğidir. Bu makalede, çeşitli senaryolarda nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c69ea3da71063d7e20ebf31ae2eb3df9a51e2c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725450"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici ile performansı grafik oluşturma
+# <a name="how-to-chart-performance-with-vm-insights"></a>VM öngörüleri ile performansı grafikle
 
-VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans gösterdiğini belirlemenize yardımcı olmak üzere birkaç ana performans göstergelerini (KPI) hedefleyen bir performans grafikleri kümesi içerir. Grafikler, kaynak kullanımını her bir süre içinde gösterir; böylece, seçili ölçüm temelinde kaynak kullanımını görüntülemek için her bir makinenin bir perspektifine geçiş yapabilirsiniz. Performansla ilgilenirken göz önünde bulundurmanız gereken çok sayıda öğe olsa da, VM'ler için Azure İzleyici işlemci, bellek, ağ bağdaştırıcısı ve disk kullanımı ile ilgili anahtar işletim sistemi performans göstergelerini izler. Performans, sistem durumu izleme özelliğini tamamlar ve olası sistem bileşeni başarısızlığını belirten sorunları açığa çıkarır, verimlilik elde etmek için ayarlama ve iyileştirmeyi destekler veya Kapasite planlamasını destekler.  
+VM öngörüleri, bir sanal makinenin ne kadar iyi çalıştığını belirlemenize yardımcı olmak üzere birkaç ana performans göstergelerini (KPI) hedefleyen bir performans grafikleri kümesi içerir. Grafikler, kaynak kullanımını her bir süre içinde gösterir; böylece, seçili ölçüm temelinde kaynak kullanımını görüntülemek için her bir makinenin bir perspektifine geçiş yapabilirsiniz. Performansla ilgilenirken göz önünde bulundurmanız gereken çok sayıda öğe olsa da, VM öngörüleri işlemci, bellek, ağ bağdaştırıcısı ve disk kullanımı ile ilgili anahtar işletim sistemi performans göstergelerini izler. Performans, sistem durumu izleme özelliğini tamamlar ve olası sistem bileşeni başarısızlığını belirten sorunları açığa çıkarır, verimlilik elde etmek için ayarlama ve iyileştirmeyi destekler veya Kapasite planlamasını destekler.  
 
 ## <a name="limitations"></a>Sınırlamalar
-VM'ler için Azure İzleyici ile performans toplama sınırlamaları aşağıda verilmiştir.
+Aşağıda, VM öngörülerine sahip performans toplama sınırlamaları verilmiştir.
 
 - Red Hat Linux (RHEL) 6 çalıştıran sanal makinelerde **kullanılabilir bellek** yok. Bu ölçüm, [çekirdek sürümü 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html)' de tanıtılan **memavailable** öğesinden hesaplanır.
 - Ölçümler yalnızca XFS FileSystem veya EXT dosya sistemi ailesi (EXT2, EXT3, EXT4) kullanan Linux sanal makinelerinde veri diskleri için kullanılabilir.
@@ -33,7 +33,7 @@ Azure Izleyici 'den performans özelliği, aboneliklerinizde veya ortamınızda 
 
 ![VM Insights performansı üst N liste görünümü](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-**Ilk N grafik** sekmesinde, birden fazla Log Analytics çalışma alanınız varsa, sayfanın üst kısmındaki **çalışma alanı** seçicisindeki çözümle birlikte etkin çalışma alanını seçin. **Grup** Seçicisi, bu sayfadaki grafiklerde ve diğer sayfalarda sunulan sonuçları daha fazla filtrelemek için kullanabileceğiniz seçili çalışma alanıyla ilgili abonelikler, kaynak grupları, [bilgisayar grupları](../platform/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca performans özelliği için geçerlidir ve sistem durumu veya eşleme üzerinde kalmaz.  
+**Ilk N grafik** sekmesinde, birden fazla Log Analytics çalışma alanınız varsa, sayfanın üst kısmındaki **çalışma alanı** seçicisindeki çözümle birlikte etkin çalışma alanını seçin. **Grup** Seçicisi, bu sayfadaki grafiklerde ve diğer sayfalarda sunulan sonuçları daha fazla filtrelemek için kullanabileceğiniz seçili çalışma alanıyla ilgili abonelikler, kaynak grupları, [bilgisayar grupları](../logs/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca performans özelliği için geçerlidir ve sistem durumu veya eşleme üzerinde kalmaz.  
 
 Varsayılan olarak, grafikler son 24 saati gösterir. **Timerange** seçiciyi kullanarak, performansın geçmişte nasıl arandığı hakkında en fazla 30 gün geçmiş zaman aralıklarını sorgulama yapabilirsiniz.
 
@@ -45,7 +45,7 @@ Sayfada gösterilen beş kapasite kullanımı grafiği şunlardır:
 * Gönderilen bayt oranı-en yüksek ortalama bayt gönderilen beş makineyi gösterir 
 * Bayt alma hızı-en yüksek ortalama bayt alınan beş makineyi gösterir 
 
-Beş grafiğin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, son görüntülediğiniz son Azure panosuna sabitedilir.  Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodan grafik seçilmesi, sizi VM'ler için Azure İzleyici ve doğru kapsamı ve görünümü yüklemek için yönlendirir.  
+Beş grafiğin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, son görüntülediğiniz son Azure panosuna sabitedilir.  Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodan grafik seçilirse, sizi VM öngörülerine yönlendirir ve doğru kapsamı ve görünümü yüklemeniz gerekir.  
 
 Beş grafikten birindeki sabitleme simgesinin solunda bulunan simgeye tıkladığınızda, **üstteki N liste** görünümü açılır.  Burada, bu performans ölçüsünün kaynak kullanımını bir liste görünümünde tek bir VM tarafından ve hangi makinenin en yüksek düzeyde son olduğunu görürsünüz.  
 
@@ -104,7 +104,7 @@ Aşağıdaki kapasite kullanım grafikleri verilmiştir:
 * Gönderilen bayt sayısı-varsayılan değer gönderilen ortalama bayt 
 * Bayt alma oranı-alınan ortalama bayt sayısını gösteren varsayılanlar
 
-Grafiklerin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, görüntülediğiniz son Azure panosuna sabitindedir. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi, sanal makine için performans ayrıntısı görünümünü VM'ler için Azure İzleyici ve yükler.  
+Grafiklerin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, görüntülediğiniz son Azure panosuna sabitindedir. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi, sanal makine öngörülerini yönlendirir ve VM için performans ayrıntısı görünümünü yükler.  
 
 ![VM Insights performansını doğrudan VM görünümünden](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
@@ -117,7 +117,7 @@ Doğrudan bir Azure sanal makine ölçek kümesinden erişmek için aşağıdaki
 
 Bu sayfa, seçilen ölçek kümesine kapsamındaki Azure Izleyici performans görünümünü yükler. Bu, ölçek kümesinde izlenen ölçümler kümesi genelinde Ilk N örneği görmenizi, ölçek kümesi genelinde toplam performansı görüntülemenizi ve ölçek kümesinin tek tek örnekleri genelinde seçili ölçümler için eğilimleri görmenizi sağlar. Liste görünümünden bir örnek seçmek, bu örneğin eşlemesini yüklemenize veya bu örnek için ayrıntılı bir performans görünümüne gitmenizi sağlar.
 
-Grafiklerin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, görüntülediğiniz son Azure panosuna sabitindedir. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi, sanal makine için performans ayrıntısı görünümünü VM'ler için Azure İzleyici ve yükler.  
+Grafiklerin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seçili grafik, görüntülediğiniz son Azure panosuna sabitindedir. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi, sanal makine öngörülerini yönlendirir ve VM için performans ayrıntısı görünümünü yükler.  
 
 ![VM öngörüleri performansını doğrudan sanal makine ölçek kümesi görünümünden](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
@@ -128,6 +128,6 @@ Grafiklerin sağ üst köşesindeki sabitleme simgesine tıkladığınızda seç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Performans ve ağ ölçümlerini daha fazla analiz etmek için VM'ler için Azure İzleyici eklenen [çalışma kitaplarını](vminsights-workbooks.md) nasıl kullanacağınızı öğrenin.  
+- Performans ve ağ ölçümlerini daha fazla analiz etmek için VM öngörülerine dahil olan [çalışma kitaplarını](vminsights-workbooks.md) nasıl kullanacağınızı öğrenin.  
 
-- Bulunan uygulama bağımlılıkları hakkında bilgi edinmek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
+- Bulunan uygulama bağımlılıkları hakkında bilgi edinmek için bkz. [VM Insights haritasını görüntüleme](vminsights-maps.md).

@@ -3,16 +3,27 @@ title: Visual Studio Code-Azure Işlevleri kullanarak bir Java işlevi oluşturm
 description: Java işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlayın.
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: 36516abd8b50c0b0b7d72e6bae0b67701509ca65
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./create-first-function-vs-code-java-uiex
+ms.openlocfilehash: 10ac677fb65428e8b8855c43b319bbebe7bbbb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701441"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Java işlevi oluşturma
 
-[!INCLUDE [functions-language-selector-quickstart-vs-code](../../includes/functions-language-selector-quickstart-vs-code.md)]
+> [!div class="op_single_selector" title1="İşlev dilinizi seçin: "]
+> - [Java](create-first-function-vs-code-java.md)
+> - [Python](create-first-function-vs-code-python.md)
+> - [C#](create-first-function-vs-code-csharp.md)
+> - [JavaScript](create-first-function-vs-code-node.md)
+> - [PowerShell](create-first-function-vs-code-powershell.md)
+> - [TypeScript](create-first-function-vs-code-typescript.md)
+> - [Diğer (Go/Rust)](create-first-function-vs-code-other.md)
 
 Bu makalede, HTTP isteklerine yanıt veren bir Java işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
 

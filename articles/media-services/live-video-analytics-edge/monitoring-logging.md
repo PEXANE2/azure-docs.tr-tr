@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme ve günlüğe kaydetme konusunda genel bir bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507831"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730255"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -305,27 +305,70 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
      `AZURE_CLIENT_SECRET`: Kullanılacak uygulama gizli dizesini belirtir.  
      
      >[!TIP]
-     > Hizmet sorumlusu ' **nı Izleme ölçümleri yayımcısı** rolüne verebilirsiniz. Hizmet sorumlusu oluşturmak ve rolü atamak için **[hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** bölümündeki adımları izleyin.
+     > Hizmet sorumlusu ' **nı Izleme ölçümleri yayımcısı** rolüne verebilirsiniz. Hizmet sorumlusu oluşturmak ve rolü atamak için **[hizmet sorumlusu oluşturma](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** bölümündeki adımları izleyin.
 
 1. Modüller dağıtıldıktan sonra, ölçümler tek bir ad alanı altında Azure Izleyici 'de görüntülenir. Ölçüm adları, Prometheus tarafından yayıldıklarınızla eşleşir. 
 
    Bu durumda, Azure portal IoT Hub 'ına gidin ve sol bölmedeki **ölçümler** ' i seçin. Ölçümleri burada görmeniz gerekir.
 
-[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)Ile Prometheus 'ı kullanarak, kullanım yüzdesi, MemoryUsedPercent vb. gibi ölçümleri oluşturabilir ve [izleyebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) . Kusto sorgu dilini kullanarak sorguları aşağıda gösterildiği gibi yazabilir ve IoT Edge modülleri tarafından kullanılan CPU yüzdesini edinebilirsiniz.
-```kusto
-let cpu_metrics = promMetrics_CL
-| where Name_s == "edgeAgent_used_cpu_percent"
-| extend dimensions = parse_json(Tags_s)
-| extend module_name = tostring(dimensions.module_name)
-| where module_name in ("lvaEdge","yolov3","tinyyolov3")
-| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
-cpu_metrics
-| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
-| extend module_name = "Total"
-| union cpu_metrics
-```
+### <a name="log-analytics-metrics-collection"></a>Log Analytics ölçümleri koleksiyonu
+[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)birlikte [Prometheus uç noktasını](https://prometheus.io/docs/practices/naming/) kullanarak, kullanılan Cpupercent, memoryusedpercent gibi ölçümleri oluşturabilir ve [izleyebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) .   
 
-[![Kusto sorgusu kullanan ölçümleri gösteren diyagram.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+> [!NOTE]
+> Aşağıdaki yapılandırma günlükleri toplamaz, **yalnızca ölçümler**. Ayrıca, günlükleri toplamak ve karşıya yüklemek için toplayıcı modülünü genişletmek uygulanabilir.
+
+[![Log Analytics kullanarak ölçüm koleksiyonunu gösteren diyagram.](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+
+1. [Ölçümleri nasıl toplayacağınızı](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector) öğrenin
+1. Docker CLı komutlarını kullanarak [Docker dosyasını](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux) oluşturun ve görüntüyü Azure Container Registry 'nize yayımlayın.
+    
+   Docker CLı kullanarak bir kapsayıcı kayıt defterine gönderim hakkında daha fazla bilgi için bkz. [Push ve pull Docker görüntüleri](../../container-registry/container-registry-get-started-docker-cli.md). Azure Container Registry hakkında diğer bilgiler için [belgelerine](../../container-registry/index.yml)bakın.
+
+1. Azure Container Registry gönderme işlemi tamamlandıktan sonra, dağıtım bildirimine aşağıdakiler eklenir:
+    ```json
+    "azmAgent": {
+      "settings": {
+        "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_METRICS_COLLECTOR}"
+      },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": {
+        "LogAnalyticsWorkspaceId": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_ID}" },
+        "LogAnalyticsSharedKey": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_SECRET}" },
+        "LogAnalyticsLogType": { "value": "IoTEdgeMetrics" },
+        "MetricsEndpointsCSV": { "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics,http://lvaEdge:9600/metrics" },
+        "ScrapeFrequencyInSecs": { "value": "30 " },
+        "UploadTarget": { "value": "AzureLogAnalytics" }
+      }
+    }
+    ```
+    > [!NOTE]
+    > Modüller `edgeHub` `edgeAgent` ve `lvaEdge` Dağıtım bildirim dosyasında tanımlanan modüllerin adlarıdır. Lütfen modüllerin adlarının eşleştiğinden emin olun.   
+
+    Aşağıdaki adımları izleyerek, `LogAnalyticsWorkspaceId` ve `LogAnalyticsSharedKey` değerlerinizi alabilirsiniz:
+    1. Azure portal git
+    1. Log Analytics çalışma alanlarınızı arayın
+    1. Log Analytics çalışma alanınızı bulduktan sonra `Agents management` sol gezinti bölmesindeki seçeneğe gidin.
+    1. Çalışma alanı KIMLIĞINI ve kullanabileceğiniz gizli anahtarları bulacaksınız.
+
+1. Ardından, `Workbooks` sol gezinti bölmesindeki sekmeye tıklayarak bir çalışma kitabı oluşturun.
+1. Kusto sorgu dilini kullanarak sorgular yazıp IoT Edge modüller tarafından kullanılan CPU yüzdesini alabilirsiniz.
+    ```kusto
+    let cpu_metrics = IoTEdgeMetrics_CL
+    | where Name_s == "edgeAgent_used_cpu_percent"
+    | extend dimensions = parse_json(Tags_s)
+    | extend module_name = tostring(dimensions.module_name)
+    | where module_name in ("lvaEdge","yolov3","tinyyolov3")
+    | summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+    cpu_metrics
+    | summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+    | extend module_name = "Total"
+    | union cpu_metrics
+    ```
+
+    [![Kusto sorgusu kullanan ölçümleri gösteren diyagram.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>Günlüğe Kaydetme
 
 Diğer IoT Edge modüllerinde olduğu gibi, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgileri [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özelliklerini kullanarak yapılandırabilirsiniz:

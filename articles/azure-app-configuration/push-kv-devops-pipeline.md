@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718191"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Ayarları Azure Pipelines ile uygulama yapılandırmasına gönderme
 
@@ -80,7 +80,7 @@ Aşağıdaki parametreler uygulama yapılandırma gönderme görevi tarafından 
 
 - **Azure aboneliği**: kullanılabilir Azure hizmeti bağlantılarınızı içeren bir açılır liste. Kullanılabilir Azure hizmeti bağlantıları listenizi güncelleştirmek ve yenilemek için, TextBox 'ın sağ tarafındaki **Azure aboneliğini yenile** düğmesine basın.
 - **Uygulama yapılandırma adı**: seçili abonelik altında kullanılabilir yapılandırma depolarınızı yükleyen bir açılan liste. Kullanılabilir yapılandırma depoları listenizi güncelleştirmek ve yenilemek için, TextBox 'ın sağ tarafındaki **uygulama yapılandırma adını Yenile** düğmesine basın.
-- **Yapılandırma dosyası yolu**: yapılandırma dosyanızın yolu. Yapılandırma dosyası seçmek için yapı yapıtına göz atabilirsiniz. ( `...` TextBox 'ın sağ tarafındaki düğme).
+- **Yapılandırma dosyası yolu**: yapılandırma dosyanızın yolu. Yapılandırma dosyası seçmek için yapı yapıtına göz atabilirsiniz. ( `...` TextBox 'ın sağ tarafındaki düğme). Desteklenen dosya biçimleri şunlardır: YAML, JSON, Özellikler.
 - **Ayırıcı**:. JSON ve. yml dosyalarını düzleştirmek için kullanılan ayırıcı.
 - **Derinlik**:. JSON ve. yml dosyalarının ne kadar düzleştirilmesini sağlayacak derinlik.
 - **Ön ek**: uygulama yapılandırma deposuna gönderilen her bir anahtarın başlangıcına eklenen bir dize.

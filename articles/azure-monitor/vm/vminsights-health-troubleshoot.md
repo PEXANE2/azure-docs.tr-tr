@@ -1,20 +1,20 @@
 ---
-title: VM'ler için Azure İzleyici Konuk sistem durumu sorunlarını giderme (Önizleme)
-description: VM'ler için Azure İzleyici sistem durumu ile ilgili sorunlar yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımlarını açıklar.
+title: VM Insights Konuk durumu sorunlarını giderme (Önizleme)
+description: VM öngörüleri sistem durumu ile ilgili sorunlar yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımlarını açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: da8097341f8499be4e28fa37c06d963d057966ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703928"
 ---
-# <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>VM'ler için Azure İzleyici Konuk sistem durumu sorunlarını giderme (Önizleme)
-Bu makalede, VM'ler için Azure İzleyici sistem durumu ile ilgili sorunlar yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımları açıklanmaktadır.
+# <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM Insights Konuk durumu sorunlarını giderme (Önizleme)
+Bu makalede, VM Insights sistem durumu ile ilgili sorun yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımları açıklanmaktadır.
 
 ## <a name="error-message-that-no-data-is-available"></a>Kullanılabilir veri yok iletisi 
 
@@ -34,7 +34,7 @@ Azure Izleyici Aracısı uzantısının ve konuk VM sistem durumu aracısının 
 ![VM uzantıları](media/vminsights-health-troubleshoot/extensions.png)
 
 ### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Sanal makinede sistem tarafından atanan kimliğin etkinleştirildiğini doğrulayın
-Sistem tarafından atanan kimliğin sanal makinede etkinleştirildiğini doğrulayın. Azure portal sanal makinenin menüsünden **kimlik** ' i seçin. 
+Sistem tarafından atanan kimliğin sanal makinede etkinleştirildiğini doğrulayın. Azure portal sanal makinenin menüsünden **kimlik** ' i seçin. Kullanıcı tarafından yönetilen kimlik etkinleştirilirse, sistem tarafından yönetilen kimliğin durumu ne olursa olsun, Azure Izleyici Aracısı Yapılandırma hizmetiyle iletişim kuramaz ve konuk sistem durumu uzantısı çalışmaz.
 
 ![Sistem tarafından atanan kimlik](media/vminsights-health-troubleshoot/system-identity.png)
 
@@ -48,4 +48,4 @@ Bu hata, **Microsoft. WorkloadMonitor** kaynak sağlayıcısı 'nın abonelikte 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM'ler için Azure İzleyici Konuk sistem durumu özelliğine genel bakış alın](vminsights-health-overview.md)
+- [VM öngörülerinin Konuk sistem durumu özelliğine bir genel bakış elde edin](vminsights-health-overview.md)

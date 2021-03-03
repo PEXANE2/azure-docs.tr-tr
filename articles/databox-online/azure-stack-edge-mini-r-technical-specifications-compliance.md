@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467988"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727490"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini Teknik özellikleri
 
@@ -80,9 +80,9 @@ Aşağıdaki tabloda güç kaynağı birimi belirtimleri gösterilmektedir:
 
 ## <a name="included-battery"></a>Dahil edilen pil
 
-Azure Stack Edge Mini R cihazı, güç kaynağı tarafından ücretlendirilen bir yerleşik pili de içerir. 
+Azure Stack Edge Mini R cihazı, güç kaynağı tarafından ücretlendirilen bir yerleşik pili de içerir.
 
-Ek bir 2590 pili, kart ücretleri arasında kullanımı genişletmek için yerleşik pille birlikte kullanılabilir. Bu pil, kullanım ülkesinde geçerli olan tüm güvenlik, ulaşım ve çevresel yönetmelikleriyle uyumlu olmalıdır.
+Ek bir [2590 pili](https://www.bren-tronics.com/bt-70791ck.html) , kart ücretleri arasında kullanımı genişletmek için yerleşik pille birlikte kullanılabilir. Bu pil, kullanım ülkesinde geçerli olan tüm güvenlik, ulaşım ve çevresel yönetmelikleriyle uyumlu olmalıdır.
 
 
 | Belirtim           | Değer                      |

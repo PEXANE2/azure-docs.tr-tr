@@ -3,15 +3,15 @@ title: Azure kaynaklarını yönetmek ve izlemek için otomasyon görevleri olu�
 description: Azure Logic Apps çalışan iş akışları oluşturarak Azure kaynaklarını yönetmenize ve maliyetleri izlemenize yardımcı olan otomatikleştirilmiş görevleri ayarlayın.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719058"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Otomasyon görevleri (Önizleme) oluşturarak Azure kaynaklarını yönetme ve maliyetleri izleme
 
@@ -71,13 +71,15 @@ Azure Otomasyonu, karşılaştırmaya göre Azure ve Azure dışı ortamlarını
 
    ![Araç çubuğunun "Ekle" seçiliyken depolama hesabı "görevler" bölmesini gösteren ekran görüntüsü](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. **Görev Ekle** bölmesinde, **şablon seç**' in altında, oluşturmak istediğiniz görevin şablonunu seçin ve **İleri: kimlik doğrulaması**' nı seçin.
+1. **Görev Ekle** bölmesinde, **şablon seç**' in altında, oluşturmak istediğiniz görevin şablonunu seçin. Sonraki sayfa görünmezse, **İleri: kimlik doğrulaması**' nı seçin.
 
    Bu örnek, **kaynak için aylık maliyet gönder** görev şablonu seçilerek devam eder.
 
    !["Kaynak için aylık maliyet gönder" ve "Ileri: kimlik doğrulaması" seçimlerini gösteren ekran görüntüsü](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. **Kimlik**doğrulama ' nın altında, **Bağlantılar** bölümünde her bağlantı için **Oluştur** ' u seçerek bu bağlantı için kimlik doğrulama kimlik bilgilerini sağlayabiliriz. Her görevdeki bağlantı türleri, göreve göre farklılık gösterir.
+1. **Kimlik doğrulama**' nın altında, **Bağlantılar** bölümünde, tüm bağlantılarda kimlik doğrulama kimlik bilgilerini sağlayabilmeniz için görevde görüntülenen her bağlantı için **Oluştur** ' u seçin. Her görevdeki bağlantı türleri, göreve göre farklılık gösterir.
+
+   Bu örnek, bu görev için gereken bağlantılardan yalnızca birini gösterir.
 
    ![Azure Resource Manager bağlantısı için seçili "Oluştur" seçeneğini gösteren ekran görüntüsü](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,9 +91,9 @@ Azure Otomasyonu, karşılaştırmaya göre Azure ve Azure dışı ortamlarını
 
    ![Başarıyla oluşturulan bağlantıyı gösteren ekran görüntüsü](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. Tüm gerekli bağlantıların kimliklerini doğruladıktan sonra, **İleri: yapılandırma**' yı seçin.
+1. Tüm bağlantıların kimliklerini doğruladıktan sonra, ileri ' yi seçin. sonraki sayfada görünmüyorsa **yapılandırma** ' ya tıklayın.
 
-1. **Yapılandırma**altında, görev için bir ad ve görev için gereken diğer bilgileri girin. İşiniz bittiğinde **Oluştur**'u seçin.
+1. **Yapılandırma** altında, görev için bir ad ve görev için gereken diğer bilgileri girin. İşiniz bittiğinde **Oluştur**'u seçin.
 
    > [!NOTE]
    > Oluşturulduktan sonra görev adını değiştiremezsiniz, bu nedenle [temel alınan iş akışını düzenlerseniz](#edit-task-workflow)hala geçerli olan bir ad düşünün. Temel alınan iş akışında yaptığınız değişiklikler, görev şablonunu değil, yalnızca sizin oluşturduğunuz göreve uygulanır.
@@ -182,7 +184,7 @@ Bir görevi değiştirmek için şu seçeneklere sahipsiniz:
 
 1. [Azure Portal](https://portal.azure.com), güncelleştirmek istediğiniz görevin bulunduğu kaynağı bulun.
 
-1. Kaynağın menüsünde, **Otomasyon**altında **Görevler**' i seçin.
+1. Kaynağın menüsünde, **Otomasyon** altında **Görevler**' i seçin.
 
 1. Görevler listesinde, güncelleştirmek istediğiniz görevi bulun. Görevin üç nokta (**...**) menüsünü açın ve **satır içi Düzenle**' yi seçin.
 
@@ -213,7 +215,7 @@ Otomasyon görevi için temel alınan iş akışını değiştirdiğinizde deği
 
 1. [Azure Portal](https://portal.azure.com), güncelleştirmek istediğiniz görevin bulunduğu kaynağı bulun.
 
-1. Kaynağın menüsünde, **Otomasyon**altında **Görevler**' i seçin.
+1. Kaynağın menüsünde, **Otomasyon** altında **Görevler**' i seçin.
 
 1. Görevler listesinde, güncelleştirmek istediğiniz görevi bulun. Görevin üç nokta (**...**) menüsünü açın ve **Logic Apps aç**' ı seçin.
 
@@ -237,7 +239,7 @@ Otomasyon görevi için temel alınan iş akışını değiştirdiğinizde deği
 
    1. Mantıksal uygulama oluşturma bölmesinde, **ad**' ın altında, kopyalanmış mantık uygulaması iş akışınız için yeni bir ad girin.
 
-      **Mantıksal uygulama durumu**dışında, diğer özellikler düzenlenmek üzere kullanılamaz. 
+      **Mantıksal uygulama durumu** dışında, diğer özellikler düzenlenmek üzere kullanılamaz. 
       
    1. **Mantıksal uygulama durumu**' nun altında, kopyalanmış iş akışının değişikliklerinizi yaparken çalışması Için **devre dışı** ' yı seçin. Değişikliklerinizi test etmeye hazırsanız iş akışını etkinleştirebilirsiniz.
 
@@ -263,9 +265,9 @@ Otomasyon görevi için temel alınan iş akışını değiştirdiğinizde deği
 
 1. Görevin çalışmaya devam edebilmesi için iş akışını devre dışı bırakmak için, bkz. [Azure Portal Logic Apps 'ı yönetme](../logic-apps/manage-logic-apps-with-azure-portal.md).
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
-Görüşlerinizi öğrenmek istiyoruz! Hataları raporlamak, geri bildirim sağlamak veya bu önizleme özelliğiyle ilgili soru sormak için [Azure Logic Apps ekibine başvurun](mailto:logicapps@microsoft.com).
+Görüşlerinizi öğrenmek istiyoruz! Hataları raporlamak, geri bildirim sağlamak veya bu önizleme özelliğiyle ilgili soru sormak için [Azure Logic Apps ekibine başvurun](mailto:logicappspm@microsoft.com).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

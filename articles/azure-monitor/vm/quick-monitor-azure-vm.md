@@ -7,34 +7,34 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa0360d6730293f3817d63e31b24464a0e4950ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725484"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure sanal makinesini Izleme
-[Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. Daha sonra VM 'niz için [VM'ler için Azure izleyici](../vm/vminsights-overview.md) ETKINLEŞTIREREK, sanal makine üzerindeki aracıların süreçler ve bunların bağımlılıkları dahil Konuk işletim sisteminden veri toplayıp analiz etmesine olanak sağlar.
+[Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. VM 'niz için VM [öngörülerini](../vm/vminsights-overview.md) etkinleştirerek VM 'deki aracıları, süreçler ve bunların bağımlılıkları dahil Konuk işletim sistemindeki verileri toplayıp analiz edecek şekilde etkinleştirin.
 
 Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılmaktadır. Aksi takdirde, bir [Windows sanal makinesi](../../virtual-machines/windows/quick-create-portal.md) OLUŞTURABILIR veya VM hızlı başlangıçlarımızı takip eden BIR [Linux sanal](../../virtual-machines/linux/quick-create-cli.md) makinesi oluşturabilirsiniz.
 
-Azure kaynaklarından toplanan izleme verilerinin daha ayrıntılı açıklamaları için bkz. Azure [izleyici Ile Azure sanal makinelerini izleme](../insights/monitor-vm-azure.md).
+Azure kaynaklarından toplanan izleme verilerinin daha ayrıntılı açıklamaları için bkz. Azure [izleyici Ile Azure sanal makinelerini izleme](./monitor-vm-azure.md).
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Azure Kaynak hızlı başlangıç Izleyicisini doldurun.
-Genel Bakış sayfasını, etkinlik günlüğünü ve aboneliğinizdeki bir VM 'nin ölçümlerini görüntülemek için Azure [izleyici ile bir Azure kaynağının tamamını izleyin](../learn/quick-monitor-azure-resource.md) . Azure VM 'Leri, diğer Azure kaynakları ile aynı izleme verilerini toplar, ancak bu yalnızca konak VM için geçerlidir. Bu hızlı başlangıç, Konuk işletim sistemini ve iş yüklerini izlemeye odaklanacaktır.
+Genel Bakış sayfasını, etkinlik günlüğünü ve aboneliğinizdeki bir VM 'nin ölçümlerini görüntülemek için Azure [izleyici ile bir Azure kaynağının tamamını izleyin](../essentials/quick-monitor-azure-resource.md) . Azure VM 'Leri, diğer Azure kaynakları ile aynı izleme verilerini toplar, ancak bu yalnızca konak VM için geçerlidir. Bu hızlı başlangıç, Konuk işletim sistemini ve iş yüklerini izlemeye odaklanacaktır.
 
 
-## <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
-Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işletim sisteminden ve onun iş yüklerinden izleme verileri toplamak ve analiz etmek için bir aracıya ve bazı yapılandırmaya ihtiyacınız vardır. VM'ler için Azure İzleyici, bu aracıları yükleyip sanal makinelerinizi izlemeye yönelik ek güçlü özellikler sunar.
+## <a name="enable-vm-insights"></a>VM öngörülerini etkinleştir
+Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işletim sisteminden ve onun iş yüklerinden izleme verileri toplamak ve analiz etmek için bir aracıya ve bazı yapılandırmaya ihtiyacınız vardır. VM öngörüleri bu aracıları yükleyerek sanal makinelerinizi izlemeye yönelik ek güçlü özellikler sunar.
 
 1. Sanal makinenizin menüsüne gidin.
 2. **Genel bakış** sayfasında kutucuktan **Öngörüler 'e git ' e** tıklayın veya **izleme** menüsünden **Öngörüler** ' e tıklayın.
 
     ![Genel bakış sayfası](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Sanal makine için VM'ler için Azure İzleyici henüz etkinleştirilmemişse **Etkinleştir**' e tıklayın. 
+3. Sanal makine için VM öngörüleri henüz etkinleştirilmemişse **Etkinleştir**' e tıklayın. 
 
     ![Öngörüleri etkinleştir](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +42,7 @@ Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işl
 
     ![Çalışma alanını seçme](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Uzantılar etkinleştirildiğinden ve aracılar sanal makinenizde yüklü olduğundan, ekleme birkaç dakika sürer. Bu tamamlandığında, öngörülerin başarıyla dağıtıldığını belirten bir ileti alırsınız. VM'ler için Azure İzleyici açmak için **Azure İzleyicisi** ' ne tıklayın.
+5. Uzantılar etkinleştirildiğinden ve aracılar sanal makinenizde yüklü olduğundan, ekleme birkaç dakika sürer. Bu tamamlandığında, öngörülerin başarıyla dağıtıldığını belirten bir ileti alırsınız. VM öngörülerini açmak için **Azure İzleyicisi** ' ne tıklayın.
 
     ![Azure Izleyici 'yi açın](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -104,7 +104,7 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, bir sanal makine için VM'ler için Azure İzleyici etkinleştirdi ve Log Analytics çalışma alanını Konuk işletim sistemine yönelik olayları toplayacak şekilde yapılandırdınız. Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
+Bu hızlı başlangıçta, sanal makine için VM öngörülerini etkinleştirdi ve Log Analytics çalışma alanını Konuk işletim sisteminin olaylarını toplayacak şekilde yapılandırmış olursunuz. Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/log-analytics-tutorial.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../logs/log-analytics-tutorial.md)

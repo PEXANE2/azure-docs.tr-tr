@@ -1,18 +1,18 @@
 ---
 title: Azure CLı ve şablonuyla kaynak dağıtma
-description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
+description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar bir Kaynak Yöneticisi şablonunda veya bir Bıcep dosyasında tanımlanır.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/02/2021
+ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378681"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741132"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
-Bu makalede, Azure CLı 'yi Azure 'a dağıtmak için Azure Resource Manager şablonlar (ARM şablonları) ile birlikte nasıl kullanacağınız açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md).
+Bu makalede, Azure CLı 'yi Azure 'a dağıtmak için Azure Resource Manager şablonları (ARM şablonları) veya Bıcep dosyası ile Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md) veya [bıcep genel bakış](bicep-overview.md).
 
 Azure CLı sürüm 2.2.0 'de dağıtım komutları değişmiştir. Bu makaledeki örneklerde Azure CLı sürüm 2.2.0 veya üzeri gerekir.
 
@@ -27,13 +27,13 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 * Bir **kaynak grubuna** dağıtmak için [az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)kullanın:
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
 * Bir **aboneliğe** dağıtmak için [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)kullanın:
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template>
+  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
@@ -41,7 +41,7 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 * Bir **yönetim grubuna** dağıtmak için [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)şunu kullanın:
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template>
+  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
@@ -49,14 +49,14 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 * Bir **kiracıya** dağıtmak için [az Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)kullanın:
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template>
+  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Kiracı düzeyinde dağıtımlar hakkında daha fazla bilgi için bkz. [kiracı düzeyinde kaynak oluşturma](deploy-to-tenant.md).
 
-Her kapsam için, şablonu dağıtan kullanıcının kaynak oluşturmak için gerekli izinlere sahip olması gerekir.
+Her kapsam için, şablonu veya Bıcep dosyasını dağıtan Kullanıcı, kaynak oluşturmak için gerekli izinlere sahip olmalıdır.
 
-## <a name="deploy-local-template"></a>Yerel şablonu dağıtma
+## <a name="deploy-local-template-or-bicep-file"></a>Yerel şablon veya Bıcep dosyası dağıtma
 
 Yerel makinenizden veya dışarıdan depolanan bir şablonu dağıtabilirsiniz. Bu bölümde yerel bir şablon dağıtımı açıklanmaktadır.
 
@@ -66,13 +66,13 @@ Mevcut olmayan bir kaynak grubuna dağıtıyorsanız, kaynak grubunu oluşturun.
 az group create --name ExampleGroup --location "Central US"
 ```
 
-Yerel bir şablon dağıtmak için `--template-file` dağıtım komutundaki parametresini kullanın. Aşağıdaki örnek ayrıca, şablondan gelen bir parametre değerinin nasıl ayarlanacağını gösterir.
+Yerel bir şablon veya Bıcep dosyası dağıtmak için `--template-file` dağıtım komutundaki parametresini kullanın. Aşağıdaki örnekte ayrıca bir parametre değerinin nasıl ayarlanacağı gösterilmektedir.
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file azuredeploy.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,6 +83,9 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuc
 ```
 
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
+
+> [!NOTE]
+> Azure CLı Şu anda bicep dosyalarını kaldırma hizmetini desteklemiyor.
 
 ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. İsterseniz kuruluşunuzda paylaşılan erişim sağlamak için bir Azure depolama hesabı kullanabilirsiniz.
 
@@ -144,6 +147,9 @@ Eşzamanlı dağıtımlar ile çakışmalardan kaçınmak ve dağıtım geçmiş
 
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
+> [!NOTE]
+> Azure CLı Şu anda Bıcep dosyaları sağlayarak şablon özelliklerinin oluşturulmasını desteklemez. Ancak, bir şablon belirtimini dağıtmak için [Microsoft. resources/templatespec](/azure/templates/microsoft.resources/templatespecs) kaynağı Ile bir ARM şablonu veya Bıcep dosyası oluşturabilirsiniz. İşte bir [örnek](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+
 Yerel veya uzak şablon dağıtmak yerine, bir [şablon belirtimi](template-specs.md)oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir ARM şablonu içeren bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 
 Aşağıdaki örneklerde, bir şablon belirtiminin nasıl oluşturulacağı ve dağıtılacağı gösterilmektedir.
@@ -186,7 +192,7 @@ Satır içi parametreleri geçirmek için içindeki değerleri sağlayın `param
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -197,7 +203,7 @@ Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır içi bir parametre
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -236,7 +242,7 @@ Nesnesine geçirmek istediğiniz JSON etrafında çift tırnak işareti kullanı
 
 ### <a name="parameter-files"></a>Parametre dosyaları
 
-Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametre değerlerini içeren bir JSON dosyası kullanmak daha kolayınıza gelebilir. Parametre dosyası yerel bir dosya olmalıdır. Dış parametre dosyaları Azure CLı ile desteklenmez.
+Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametre değerlerini içeren bir JSON dosyası kullanmak daha kolayınıza gelebilir. Parametre dosyası yerel bir dosya olmalıdır. Dış parametre dosyaları Azure CLı ile desteklenmez. Hem ARM şablonu hem de bicep dosyası JSON parametre dosyalarını kullanır.
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Resource Manager parametre dosyası oluşturma](parameter-files.md).
 
@@ -252,7 +258,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işle
 
-Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satırlı dizeler veya yorumlarla bir şablon dağıtmak için anahtarını kullanmanız gerekir `--handle-extended-json-format` .  Örneğin:
+Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satırlı dizeler veya yorumlarla bir şablon dağıtmak için anahtarını kullanmanız gerekir `--handle-extended-json-format` .  Örnek:
 
 ```json
 {
@@ -274,7 +280,7 @@ Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
-- Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
-- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-- Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).
+* Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
+* Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
+* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).

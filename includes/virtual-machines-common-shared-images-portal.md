@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750609"
 ---
 ## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma
 
@@ -93,10 +93,7 @@ Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir.
 
 Görüntü Galerisi düzeyinde erişimi paylaşmanızı öneririz. Aşağıda, az önce oluşturduğunuz galerinin paylaşılması adım adım gösterilmektedir.
 
-1. [Azure portalını](https://portal.azure.com) açın.
-1. Soldaki menüde **kaynak grupları**' nı seçin. 
-1. Kaynak grupları listesinde **Mygallerrg** öğesini seçin. Kaynak grubunuz için dikey pencere açılır.
-1. **Mygallerrg** sayfasının solundaki menüde **ERIŞIM denetimi (IAM)** seçeneğini belirleyin. 
+1. Yeni görüntü galerinizin sayfasında, soldaki menüde, **erişim denetimi (IAM)** seçeneğini belirleyin. 
 1. **Rol ataması Ekle** altında **Ekle**' yi seçin. **Rol Ekleme atama** bölmesi açılır. 
 1. **Rol** altında **okuyucu**' yı seçin.
 1. **Erişim ata**' nın altında, varsayılan **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı bırakın.

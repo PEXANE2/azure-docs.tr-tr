@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728119"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Gerekli hizmet yapılandırma (. cscfg) dosya güncelleştirmeleri
 
 ### <a name="1-virtual-network"></a>1) sanal ağ
-Bulut hizmeti (genişletilmiş destek) dağıtımları bir sanal ağda olmalıdır. Sanal ağ [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) veya [ARM şablonu](https://docs.microsoft.com/azure/virtual-network/quick-create-template)aracılığıyla oluşturulabilir. Sanal ağ ve alt ağlara, [NetworkConfiguration](schema-cscfg-networkconfiguration.md) bölümünde hizmet yapılandırması 'nda (. cscfg) de başvurulmalıdır. 
+Bulut hizmeti (genişletilmiş destek) dağıtımları bir sanal ağda olmalıdır. Sanal ağ [Azure Portal](../virtual-network/quick-create-portal.md), [POWERSHELL](../virtual-network/quick-create-powershell.md), [Azure CLI](../virtual-network/quick-create-cli.md) veya [ARM şablonu](../virtual-network/quick-create-template.md)aracılığıyla oluşturulabilir. Sanal ağ ve alt ağlara, [NetworkConfiguration](schema-cscfg-networkconfiguration.md) bölümünde hizmet yapılandırması 'nda (. cscfg) de başvurulmalıdır. 
 
 Bulut hizmeti ile aynı kaynak grubuna ait olan sanal ağlar için, yalnızca hizmet yapılandırma (. cscfg) dosyasındaki sanal ağ adına başvurulmaya yeterlidir. Sanal ağ ve bulut hizmeti iki farklı kaynak grubunda yer alıyorsa, sanal ağın tüm Azure Resource Manager KIMLIĞININ hizmet yapılandırma (. cscfg) dosyasında belirtilmesi gerekir.
  
@@ -103,7 +103,7 @@ Aşağıdaki boyutlar Azure Resource Manager kullanım dışıdır. Ancak, bunla
  Örneğin, `<WorkerRole name="WorkerRole1" vmsize="Medium"` olur `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` .
  
 > [!NOTE]
-> Kullanılabilir boyutların bir listesini almak için bkz. [kaynak SKU 'ları-Listele](https://docs.microsoft.com/rest/api/compute/resourceskus/list) ve aşağıdaki filtreleri Uygula: <br>
+> Kullanılabilir boyutların bir listesini almak için bkz. [kaynak SKU 'ları-Listele](/rest/api/compute/resourceskus/list) ve aşağıdaki filtreleri Uygula: <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,7 +120,7 @@ Eski uzak masaüstü eklentilerini kullanan dağıtımlar, modüllerin hizmet ta
 
 ## <a name="key-vault-creation"></a>Key Vault oluşturma 
 
-Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir. Key Vault, [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)ve  [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)aracılığıyla oluşturulabilir. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir. Key Vault, [Azure Portal](../key-vault/general/quick-create-portal.md)ve  [PowerShell](../key-vault/general/quick-create-powershell.md)aracılığıyla oluşturulabilir. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).

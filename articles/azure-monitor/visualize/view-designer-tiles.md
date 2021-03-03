@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: abcd95a0c433b59df6e7a564e5db948ea2a9eaf5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717222"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı kutucuklarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel Görünümleriniz için kullanılabilen kutucukların ayarlarına yönelik bir başvuru kılavuzudur.
@@ -24,7 +24,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucukları aşağıdaki tabloda açıklanmıştır:  
 
-| Kutucuk | Description |
+| Kutucuk | Açıklama |
 |:--- |:--- |
 | [Sayı](#number-tile) |Bir sorgudaki kayıt sayısı. |
 | [İki sayı](#two-numbers-tile) |İki farklı sorgudan kayıt sayısı. |
@@ -36,7 +36,7 @@ Kullanılabilir görünüm Tasarımcısı kutucukları aşağıdaki tabloda aç�
 Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açıklanır.
 
 > [!NOTE]
-> Görünümlerindeki kutucuklar Log Analytics çalışma alanınızdaki [günlük sorgularını](../log-query/log-query-overview.md) temel alır. Bunlar şu anda Application Insights verileri almak için [çapraz kaynak sorgularını](../log-query/cross-workspace-query.md) desteklemezler.
+> Görünümlerindeki kutucuklar Log Analytics çalışma alanınızdaki [günlük sorgularını](../logs/log-query-overview.md) temel alır. Bunlar şu anda Application Insights verileri almak için [çapraz kaynak sorgularını](../logs/cross-workspace-query.md) desteklemezler.
 
 ## <a name="number-tile"></a>Sayı kutucuğu
 **Sayı** kutucuğu, bir günlük sorgusundan kayıt sayısını ve bir etiketi görüntüler.
@@ -46,7 +46,7 @@ Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açı
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -64,7 +64,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **İlk kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -85,7 +85,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Halka** | |
 | Sorgu |Halka için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. |
 | **Halka** |**> Merkezi** |
@@ -109,7 +109,7 @@ Bu kutucuk, zaman içinde günlük sorgusundan birden çok seriyi görüntüleye
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> Y ekseni** |
@@ -130,7 +130,7 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> belirtme çizgisi** |
@@ -155,7 +155,7 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Description |Kutucuk adının altında görüntülenen metin. |
+| Açıklama |Kutucuk adının altında görüntülenen metin. |
 | İlk grafik | |
 | Gösterge |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
 | Renk |İlk serideki sütunlar için kullanılan renk. |
@@ -173,5 +173,5 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Kutucuklarındaki sorguları destekleyecek [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Kutucuklarındaki sorguları destekleyecek [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.
 * [Görselleştirme parçalarını](view-designer-parts.md) özel görünümverilerinize ekleyin.

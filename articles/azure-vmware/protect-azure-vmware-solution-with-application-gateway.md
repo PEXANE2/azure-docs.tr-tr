@@ -3,12 +3,12 @@ title: Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Ap
 description: Azure VMware çözümünde çalışan Web uygulamalarınızı güvenli bir şekilde sunmak için Azure Application Gateway 'i yapılandırın.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733593"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 
@@ -35,7 +35,7 @@ Diyagramda, Azure VMware Çözüm Web uygulamalarıyla Application Gateway doğr
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Çözüm Web uygulamalarıyla Application Gateway doğrulamak için kullanılan test senaryosunu gösteren diyagram." border="false":::
 
-Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılır. Azure genel IP adresine sahiptir. Sanal ağ için standart DDoS korumasının etkinleştirilmesi önerilir. Web sunucusu, NSX T0 ve T1 ağ geçitlerinin arkasındaki bir Azure VMware çözümü özel bulutu üzerinde barındırılır. Azure VMware çözümü, hub ve şirket içi sistemlerle iletişimi etkinleştirmek için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
+Application Gateway örnek, Hub üzerinde ayrılmış bir alt ağda dağıtılır. Azure genel IP adresine sahiptir. Sanal ağ için [Azure DDoS koruma standardının](../ddos-protection/ddos-protection-overview.md) etkinleştirilmesi önerilir. Web sunucusu, NSX T0 ve T1 ağ geçitlerinin arkasındaki bir Azure VMware çözümü özel bulutu üzerinde barındırılır. Azure VMware çözümü, hub ve şirket içi sistemlerle iletişimi etkinleştirmek için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -193,3 +193,4 @@ Azure VMware çözümünde çalışan bir Web uygulamasını korumak için Appli
 - [Azure Application Gateway farklı senaryolar Için yapılandırma](../application-gateway/configuration-overview.md).
 - [Azure VMware Çözüm iş yüklerini dengelemek için Traffic Manager dağıtma](deploy-traffic-manager-balance-workloads.md).
 - [Azure NetApp Files Azure VMware Çözüm tabanlı iş yükleri Ile tümleştirme](netapp-files-with-azure-vmware-solution.md).
+- [Sanal ağlarda Azure kaynaklarını koruma](../ddos-protection/ddos-protection-overview.md)

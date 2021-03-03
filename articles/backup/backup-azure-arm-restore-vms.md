@@ -4,12 +4,12 @@ description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722696"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -160,7 +160,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
 İkinci bölge geri yükleme kullanıcı deneyimi, birincil bölge geri yükleme kullanıcı deneyimiyle benzerdir. Geri yüklemeyi yapılandırmak için geri yükleme yapılandırma bölmesindeki Ayrıntılar yapılandırılırken yalnızca ikincil bölge parametreleri sağlamanız istenir.
 
-Şu anda, [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) çoğaltması 15 dakika olsa da, Ikincil bölge [RPO 'su](azure-backup-glossary.md#rpo-recovery-point-objective) birincil bölgeden 12 saate kadar sürer.
+Şu anda, [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) çoğaltması 15 dakika olsa da, Ikincil bölge [RPO 'su](azure-backup-glossary.md#rpo-recovery-point-objective) birincil bölgeden 12 saate kadar sürer.
 
 ![Geri yüklenecek VM 'yi seçin](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 >- Çapraz bölge geri yükleme özelliği, bir CMK etkin kurtarma hizmetleri kasasında yedeklenmeyen ve ikincil bölgedeki CMK özellikli VM 'Ler olarak yedeklenen CMK (müşteri tarafından yönetilen anahtarlar) etkin Azure VM 'lerini geri yükler.
 >- İkincil bölgeye geri yüklemek için gereken Azure rolleri, birincil bölgeyle aynı olanlardır.
 
-[Azure Zone sabitlenmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) , aynı bölgenin tüm [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) geri yüklenebilir.
+[Azure Zone sabitlenmiş VM 'ler](../virtual-machines/windows/create-portal-availability-zone.md) , aynı bölgenin tüm [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md) geri yüklenebilir.
 
 Geri yükleme sürecinde, seçenek **kullanılabilirlik bölgesi** ' ni görürsünüz. Önce varsayılan bölgeyi görürsünüz. Farklı bir bölge seçmek için istediğiniz bölgenin numarasını seçin. Sabitlenmiş bölge kullanılamıyorsa, yedeklenen veriler bölge dışı olarak çoğaltılmadığından verileri başka bir bölgeye geri yükleyemezsiniz.
 

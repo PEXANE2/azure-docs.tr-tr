@@ -152,8 +152,6 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: İş yükü sanal makinelerini Özel Buluta geçirme
               href: migrate-workloads.md
-            - name: Azure Data Box kullanarak geçiş
-              href: migration-using-azure-data-box.md
             - name: Azure'da VMware içinde Uygulama yüksek kullanılabilirliğini sağlama
               href: ensuring-high-availability.md
             - name: Bir yük dengeleme çözümü seçin

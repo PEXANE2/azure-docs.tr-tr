@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988556"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705662"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
@@ -34,7 +34,7 @@ HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu 
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md)edin.
 
 #### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
 HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -62,7 +62,7 @@ HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu 
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#supported-hdinsight-versions)edin.
 
 #### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
 HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -77,7 +77,7 @@ Gelecek sürümlerde aşağıdaki değişiklikler olur.
 HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğüm boyutunu özelleştirmeyi desteklemez. Bu, ücretsiz olarak sunulan A2_v2/a2 sanal makine boyutlarını varsayılan olarak alır. Yaklaşan sürümde, senaryonuza en uygun Zookeeper sanal makine boyutunu seçebilirsiniz. Sanal makine boyutu A2_v2/a2 dışındaki Zookeeper düğümleri ücretlendirilecektir. A2_v2 ve a2 sanal makineler ücretsiz olarak sunulur.
 
 #### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
-2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
+2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [Desteklenen sürümler](./hdinsight-component-versioning.md#supported-hdinsight-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
 
 #### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -103,7 +103,7 @@ HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu 
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü, destek 'in ara 31 2020 ' de sona bitecektir. Müşteriler bundan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü, destek 'in ara 31 2020 ' de sona bitecektir. Müşteriler bundan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#supported-hdinsight-versions)edin.
 
 ### <a name="behavior-changes"></a>Davranış değişiklikleri
 Bu yayın için davranış değişikliği yok.

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706104"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Öğretici: dağıtıma hazırlanma Azure Data Box Gateway
 
@@ -65,7 +65,7 @@ Sanal cihazı dağıtmadan önce şunlardan emin olun:
 - Konak sistemi, Data Box sanal cihazınızı sağlamak için aşağıdaki kaynakları ayırabilir:
   
   - En az 4 sanal işlemci.
-  - En az 8 GB RAM.
+  - En az 8 GB RAM. En az 16 GB RAM kullanmanızı öneririz.
   - Bir ağ arabirimi.
   - 250 GB işletim sistemi diski.
   - Sistem verileri için 2 TB sanal disk.
@@ -122,7 +122,7 @@ Bir Data Box Gateway kaynağı oluşturmak için Azure portal aşağıdaki adım
     |Ayar  |Değer  |
     |---------|---------|
     |Ad   |Kaynağı tanımlamak için kolay bir ad.<br>Ad, harf, sayı ve kısa çizgi içeren 2 ila 50 karakter arasındadır. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir. |
-    |Bölge  |Kaynağı dağıtmak istediğiniz bölgeyi seçin. Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. <br> Veri tabanlı ağ geçidi/Azure Stack Edge kaynaklarının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). <br> Azure Kamu 'da, [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/) listelenen tüm kamu bölgeleri kullanılabilir.|
+    |Region  |Kaynağı dağıtmak istediğiniz bölgeyi seçin. Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. <br> Veri tabanlı ağ geçidi/Azure Stack Edge kaynaklarının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). <br> Azure Kamu 'da, [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/) listelenen tüm kamu bölgeleri kullanılabilir.|
 
    Ardından, siparişinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 

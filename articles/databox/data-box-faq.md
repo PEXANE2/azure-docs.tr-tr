@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652794"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730584"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -68,6 +69,16 @@ Data Box, yalnızca hedefle aynı ülke/bölge dahilinde veri alımı veya çık
 2. Data Box şirket içi veri kopyalama işlemi yapıldıktan sonra, cihazı Kanada 'daki Azure veri merkezine döndürün. Data Box bulunan veriler, sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
 
 3. Daha sonra AzCopy gibi bir araç kullanarak verileri Batı ABD bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
+
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>S. Data Box tüm müşteri verilerini hizmet bölgesi dışında mı depolar?
+
+A. Hayır. Data Box, hiçbir müşteri verisini hizmet bölgesinin dışında depolamaz. Müşteri, verilerinin tam sahipliğine sahiptir ve verileri, sipariş oluşturma sırasında seçtikleri depolama hesabına göre belirtilen bir konuma kaydedebilir.  
+
+Müşteri verilerine ek olarak, cihazla ilgili güvenlik yapıtları, cihaz ve hizmet için günlükleri ve hizmetle ilgili meta verileri içeren Data Box veriler vardır. Tüm bölgelerde (Brezilya Güney ve Güneydoğu Asya dışında), veri kaybına karşı korumak için verileri Data Box bir coğrafi olarak yedekli depolama hesabı aracılığıyla eşleştirilmiş bölgede depolanır ve çoğaltılır.  
+
+Brezilya Güney ve Güneydoğu Asya 'daki [veri](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) yerleşimi nedeniyle Data Box veriler, tek bir bölgede yer alması için bölge yedekli bir depolama (ZRS) hesabında depolanır. Güneydoğu Asya için tüm Data Box veriler Singapur 'da depolanır ve Brezilya Güney için veriler Brezilya 'da depolanır. 
+
+Brezilya Güney ve Güneydoğu Asya 'da hizmet kesintisi varsa, müşteriler başka bir bölgeden yeni siparişler oluşturabilir. Yeni siparişler, oluşturuldukları bölgeden ve Data Box cihazının to ve testten sevkiyatından sorumlu olarak sunulur.
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>S. Tüm bölge başarısız olursa verilerimi nasıl kurtarabilirim?
 

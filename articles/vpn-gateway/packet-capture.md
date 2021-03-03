@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: paket yakalamayı yapılandırma'
 description: Bir sorunun nedenini daraltmaya yardımcı olması için VPN Gateway 'lerde kullanabileceğiniz paket yakalama işlevselliği hakkında bilgi edinin.
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726623"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamayı yapılandırma
 
@@ -27,6 +27,7 @@ Gereksinimlerinize bağlı olarak, ağ geçidinde veya belirli bir bağlantıda 
 Yüksek hacimli trafikte sorunları yalıtdığınızda beş demet filtresi (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanılması yararlı olur.
 
 Aşağıdaki JSON ve bir JSON şeması örnekleri her bir özelliğin açıklamalarını sağlar. Paket yakalamalarını çalıştırdığınızda aklınızda bulundurmanız gereken bazı sınırlamalar şunlardır:
+
 - Burada gösterilen şemada, filtre bir dizidir, ancak şu anda yalnızca bir filtre kullanılabilir.
 - Aynı anda birden çok ağ geçidi genelinde paket yakalamalarını çalıştıramazsınız.
 - Tek bir bağlantıda birden çok paket yakalama aynı anda çalıştırılamaz. Farklı bağlantılarda aynı anda birden çok paket yakalamalarını çalıştırabilirsiniz.
@@ -317,7 +318,13 @@ Aşağıdaki JSON ve bir JSON şeması örnekleri her bir özelliğin açıklama
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
+## <a name="packet-capture---portal"></a>Paket yakalama-Portal
+
+Azure portal paket yakalamayı ayarlayabilirsiniz.
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="Portalda paket yakalama ekran görüntüsü." lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>Paket yakalama-PowerShell
 
 Aşağıdaki örneklerde, paket yakalamalarını başlatan ve durduran PowerShell komutları gösterilmektedir. Parametre seçenekleri hakkında daha fazla bilgi için bkz. [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 

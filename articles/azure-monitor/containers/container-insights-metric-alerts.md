@@ -1,22 +1,22 @@
 ---
-title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları
-description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
+title: Kapsayıcı öngörülerinin ölçüm uyarıları
+description: Bu makalede, kapsayıcı öngörülerine genel önizlemede sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 59c8d7b58809c981130d2ce92406fb5b1ce146ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728901"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
+# <a name="recommended-metric-alerts-preview-from-container-insights"></a>Kapsayıcı öngörülerinin önerilen ölçüm uyarıları (Önizleme)
 
-Azure izleyici günlüklerinde depolanan performans verilerine dayalı olarak, en üst düzey talep ve kapasite neredeyse kapasiteye sahip oldukları sırada sistem kaynak sorunları hakkında uyarı almak için bir günlük uyarısı oluşturursunuz. Kapsayıcılar için Azure Izleyici artık AKS ve Azure Arc etkin Kubernetes kümesi için genel önizlemede olan önceden yapılandırılmış ölçüm uyarısı kuralları içerir.
+Kapsayıcı öngörüleri ile, en üst düzey talep ve yakın kapasiteye sahip oldukları sırada sistem kaynak sorunları hakkında uyarı almak için, Azure Izleyici günlüklerinde depolanan performans verilerine dayalı bir günlük uyarısı oluşturursunuz. Kapsayıcı öngörüleri artık AKS ve Azure Arc etkin Kubernetes kümesi için genel önizlemede olan önceden yapılandırılmış ölçüm uyarısı kuralları içerir.
 
 Bu makale, deneyimi inceler ve bu uyarı kurallarını yapılandırma ve yönetme hakkında rehberlik sağlar.
 
-Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md) . Ölçüm uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçüm uyarıları](../alerts/alerts-metric-overview.md).
+Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../alerts/alerts-overview.md) . Ölçüm uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçüm uyarıları](../alerts/alerts-metric-overview.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,13 +31,13 @@ Başlamadan önce, aşağıdakileri onaylayın:
     * Şu komutu çalıştırın: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . Döndürülen durum ' da, çıkışın *kapsayıcılar* bölümünde omsagent için **görüntü** altındaki değeri aklınızda edin. 
     * **Düğümler** sekmesinde, küme düğümünü seçin ve sağdaki **Özellikler** bölmesinde, **Aracı görüntüsü etiketi** altındaki değeri aklınızda edin.
 
-    AKS için gösterilen değer Version **ciprod05262020** veya üzeri olmalıdır. Azure Arc etkin Kubernetes kümesi için gösterilen değer Version **ciprod09252020** veya üzeri olmalıdır. Kümenizin daha eski bir sürümü varsa, en son sürümü alma adımları için bkz. [kapsayıcılar Için Azure izleyici aracısını yükseltme](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) .
+    AKS için gösterilen değer Version **ciprod05262020** veya üzeri olmalıdır. Azure Arc etkin Kubernetes kümesi için gösterilen değer Version **ciprod09252020** veya üzeri olmalıdır. Kümenizin daha eski bir sürümü varsa, en son sürümü almak için bkz. [kapsayıcı öngörüleri aracısını yükseltme](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) adımları.
 
     Aracı sürümü ile ilgili daha fazla bilgi için bkz. [Aracı yayınlama geçmişi](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Ölçümlerin toplandığını doğrulamak için, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, devam edebilir ve uyarıları ayarlamaya başlayabilirsiniz. Toplanan ölçümleri görmüyorsanız, küme hizmeti sorumlusu veya MSI 'nin gerekli izinleri yoktur. SPN veya MSI 'ın **Izleme ölçümleri yayımcı** rolünün bir üyesi olduğunu doğrulamak için, rol atamasını onaylamak ve ayarlamak üzere [Azure CLI kullanarak küme başına yükseltme](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) bölümünde açıklanan adımları izleyin.
 
 ## <a name="alert-rules-overview"></a>Uyarı kurallarına genel bakış
 
-Önemli şeyler hakkında uyarı almak için, kapsayıcılar için Azure Izleyici, AKS ve Azure Arc etkin Kubernetes kümelerine yönelik aşağıdaki ölçüm uyarılarını içerir:
+Kapsayıcı öngörüleri, ne kadar önemli olduğunu uyarmak için AKS ve Azure Arc etkin Kubernetes kümelerine yönelik aşağıdaki ölçüm uyarılarını içerir:
 
 |Ad| Açıklama |Varsayılan eşik |
 |----|-------------|------------------|
@@ -108,15 +108,15 @@ Azure portal Azure Izleyici 'de ölçüm uyarılarını etkinleştirmek için bu
 
 ### <a name="from-the-azure-portal"></a>Azure portalından
 
-Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için Azure Izleyici 'nin etkinleştirilmesi gösterilmektedir.
+Bu bölümde, Azure portal kapsayıcı öngörüleri ölçüm uyarısını (Önizleme) etkinleştirme adımları gösterilmektedir.
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Kapsayıcılar için Azure Izleyici ölçümleri Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
+2. Kapsayıcı öngörüleri ölçüm Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
 
 3. Komut çubuğundan **Önerilen uyarılar**' ı seçin.
 
-    ![Kapsayıcılar için Azure Izleyici 'de önerilen uyarılar seçeneği](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
+    ![Kapsayıcı öngörüleri içinde önerilen uyarılar seçeneği](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
 4. **Önerilen uyarılar** özellik bölmesi otomatik olarak sayfanın sağ tarafında görüntülenir. Varsayılan olarak, listedeki tüm uyarı kuralları devre dışıdır. **Etkinleştir**' i seçtikten sonra, uyarı kuralı oluşturulur ve kural adı, uyarı kaynağına bir bağlantı içerecek şekilde güncelleştirilir.
 
@@ -198,7 +198,7 @@ Temel adımlar aşağıdaki gibidir:
 
 ## <a name="edit-alert-rules"></a>Uyarı kurallarını Düzenle
 
-Kapsayıcılar için Azure Izleyici uyarı kurallarını görüntüleyebilir ve yönetebilir, eşiğini düzenleyebilir veya AKS kümeniz için bir [eylem grubu](../alerts/action-groups.md) yapılandırabilirsiniz. Azure portal ve Azure CLı 'den bu işlemleri gerçekleştirebilmeniz mümkün olsa da, kapsayıcılar için Azure Izleyici 'deki AKS kümenizdeki doğrudan de yapılabilir.
+Kendi eşiğini düzenlemek veya AKS kümeniz için bir [eylem grubu](../alerts/action-groups.md) yapılandırmak Için, kapsayıcı öngörüleri uyarı kurallarını görüntüleyebilir ve yönetebilirsiniz. Bu eylemleri Azure portal ve Azure CLı 'dan gerçekleştirebilmeniz mümkün olsa da, doğrudan kapsayıcı öngörülerinde AKS kümenizdeki de yapılabilir.
 
 1. Komut çubuğundan **Önerilen uyarılar**' ı seçin.
 

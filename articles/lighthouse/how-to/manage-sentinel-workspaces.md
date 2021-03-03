@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702530"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -80,9 +80,9 @@ Azure ['Da Azure Izleyici çalışma kitapları](../../sentinel/overview.md#work
 
 Otomasyonu, birden çok Azure Sentinel çalışma alanını yönetmek ve [sorguları](../../sentinel/hunting.md), PlayBook 'ları ve çalışma kitaplarını yapılandırmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Otomasyon kullanarak çapraz çalışma alanı yönetimi](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
-## <a name="manage-security-of-office-365-environments"></a>Office 365 ortamlarının güvenliğini yönetme
+## <a name="monitor-security-of-office-365-environments"></a>Office 365 ortamlarının güvenliğini izleme
 
-Kiracılar genelinde Office 365 ortamlarının güvenliğini yönetmek için Azure ve Azure Sentinel ile birlikte Azure birlikte kullanımı 'nı kullanın. İlk, kullanıma hazır Office 365 veri bağlayıcıları, Exchange ve SharePoint 'teki Kullanıcı ve yönetici Etkinlikleri (OneDrive dahil) hakkındaki bilgilerin yönetilen Kiracıdaki bir Azure Sentinel çalışma alanına dahil edilmesi için [yönetilen kiracı 'da etkinleştirilmelidir](../../sentinel/connect-office-365.md) . Bu, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları ve posta kutusu işlemlerinde değişiklikler ve bu eylemleri gerçekleştiren kullanıcılar hakkında bilgiler içerir. [Office 365 DLP uyarıları](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) , yerleşik Office 365 bağlayıcısının bir parçası olarak da desteklenir.
+Kiracılar genelinde Office 365 ortamlarının güvenliğini izlemek için Azure ve Azure Sentinel ile birlikte Azure birlikte kullanımı 'nı kullanın. İlk, kullanıma hazır Office 365 veri bağlayıcıları, Exchange ve SharePoint 'teki Kullanıcı ve yönetici Etkinlikleri (OneDrive dahil) hakkındaki bilgilerin yönetilen Kiracıdaki bir Azure Sentinel çalışma alanına dahil edilmesi için [yönetilen kiracı 'da etkinleştirilmelidir](../../sentinel/connect-office-365.md) . Bu, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları ve posta kutusu işlemlerinde değişiklikler ve bu eylemleri gerçekleştiren kullanıcılar hakkında bilgiler içerir. [Office 365 DLP uyarıları](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) , yerleşik Office 365 bağlayıcısının bir parçası olarak da desteklenir.
 
 [Microsoft Cloud App Security (MCAS) bağlayıcısını](../../sentinel/connect-cloud-app-security.md) , uyarıları ve Cloud Discovery günlüklerini Azure Sentinel 'e akışa almak için etkinleştirebilirsiniz. Bu, bulut uygulamalarına yönelik görünürlük elde etmenizi, siber tehditleri belirleyip işlemenize yönelik gelişmiş analizler almanızı ve verilerin nasıl hareket edebilirliğini denetlemenizi sağlar. MCAS için etkinlik günlükleri [ortak olay biçimi (CEF) kullanılarak tüketilebilir](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 

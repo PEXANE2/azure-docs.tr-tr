@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ca6185d829e5941145905e1bc63cc2fb9ac781e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731655"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -36,7 +36,7 @@ Tüm ortamınız genelinde Observability kazanmak için tüm Web uygulamaların�
 Uygulamalar, temel aldığı altyapı olarak yalnızca güvenilir. Tüm altyapınızda izlemenin etkinleştirilmesini sağlamak, tam Observability elde etmenize yardımcı olur ve bir sorun ortaya çıkarsa olası bir kök nedenini bulmayı kolaylaştırır. Azure Izleyici, sanal makineler, kapsayıcılar, depolama ve ağ gibi kaynaklar da dahil olmak üzere tüm karma altyapınızın sistem durumunu ve performansını izlemenize yardımcı olur.
 
 - Azure kaynaklarınızın çoğunun yapılandırma olmadan [Platform ölçümlerini, etkinlik günlüklerini ve tanılama günlüklerini](agents/data-sources.md) otomatik olarak alırsınız.
-- [VM'ler için Azure izleyici](vm/vminsights-overview.md)olan VM 'ler için daha derin izlemeyi etkinleştirin.
+- [VM öngörüleri](vm/vminsights-overview.md)Içeren VM 'ler için daha derin izlemeyi etkinleştirin.
 -  [Kapsayıcılar Için Azure izleyici](containers/container-insights-overview.md)ile aks kümelerinin daha derin izlenmesini etkinleştirin.
 - Ortamınızdaki farklı uygulamalar ve hizmetler için [izleme çözümleri](./monitor-reference.md) ekleyin.
 

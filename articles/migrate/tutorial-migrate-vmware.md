@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: a858bcc0e6f6364a1eb5c37d555f5f1e7064b650
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702207"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -57,7 +57,7 @@ Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonr
 
 Gereci ayarladıktan ve bulmayı tamamladıktan sonra, VMware VM 'lerinin Azure 'a çoğaltılmasını başlatabilirsiniz. 
 
-- Aynı anda 300 çoğaltma gerçekleştirebilirsiniz.
+- Aynı anda 500 çoğaltma gerçekleştirebilirsiniz.
 - Portalda, geçiş için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek için bunları 10 toplu iş gruplarına ekleyin.
 
 Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
@@ -88,9 +88,10 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 9. **Disk şifreleme türü**' nde şunları seçin:
     - Platform tarafından yönetilen anahtar ile bekleyen şifreleme
     - Müşteri tarafından yönetilen anahtarla bekleyen şifreleme
+    - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
 
    > [!NOTE]
-   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
   
 10. **Azure Hibrit Avantajı**’nda:
 

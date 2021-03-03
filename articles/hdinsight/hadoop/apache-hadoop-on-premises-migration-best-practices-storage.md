@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89a2a659e195afcae336c930a101ed0c0b470cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715420"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme
 
@@ -31,7 +31,7 @@ Azure depolama, coğrafi olarak çoğaltılabilir. Coğrafi çoğaltma coğrafi 
 
 Azure depolama 'da depolanan verilere erişmek için aşağıdaki biçimlerden biri kullanılabilir:
 
-|Veri erişim biçimi |Description |
+|Veri erişim biçimi |Açıklama |
 |---|---|
 |`wasb:///`|Şifrelenmemiş iletişim kullanarak varsayılan depolamaya erişin.|
 |`wasbs:///`|Şifrelenmiş iletişim kullanarak varsayılan depolamaya erişin.|
@@ -75,7 +75,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md)
 - [Microsoft Azure Depolama Performansı ve Ölçeklenebilirlik Onay Listesi](../../storage/blobs/storage-performance-checklist.md)
 - [Microsoft Azure Depolama izleme, tanılama ve sorun giderme](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
-- [Azure portalında depolama hesabını izleme](../../storage/common/storage-monitor-storage-account.md)
+- [Azure portalında depolama hesabını izleme](../../storage/common/manage-storage-analytics-logs.md)
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
@@ -153,7 +153,7 @@ HDInsight, varsayılan olarak, kümeyle ilişkili Azure depolama hesaplarında b
 
 1. [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) dosyasını açın ve aşağıdaki değerleri değiştirin:
 
-    |Belirteç özelliği|Description|
+    |Belirteç özelliği|Açıklama|
     |---|---|
     |policy_name|Oluşturulacak saklı ilke için kullanılacak ad.|
     |storage_account_name|Depolama hesabınızın adı.|
@@ -202,7 +202,7 @@ Azure depolama, yerel olarak yedekli depolama (LRS) sağlar, ancak önemli veril
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Azure depolama çoğaltma](../../storage/common/storage-redundancy.md)
+- [Azure Depolama çoğaltması](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage 1. (ADLS) için olağanüstü durum Kılavuzu](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Kümeye ek Azure depolama hesapları iliştirme

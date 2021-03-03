@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 482a0ba4051fb8b5d1705e0f951a9e075f40bbdb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717409"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -25,7 +25,7 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 
 * Veri depolama için coğrafi bir konum.
 * Önerilen tasarım stratejilerimizden birini izleyerek farklı kullanıcılara erişim hakları vererek veri yalıtımı.
-* [Fiyatlandırma katmanı](../platform/manage-cost-storage.md#changing-pricing-tier), [bekletme](../platform/manage-cost-storage.md#change-the-data-retention-period)ve [veri dönüşü](../platform/manage-cost-storage.md#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
+* [Fiyatlandırma katmanı](./manage-cost-storage.md#changing-pricing-tier), [bekletme](./manage-cost-storage.md#change-the-data-retention-period)ve [veri dönüşü](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
 
 Çalışma alanları fiziksel kümeler üzerinde barındırılır. Varsayılan olarak, sistem bu kümeleri oluşturuyor ve yönetiyor. 4 TB 'den fazla/günden fazla alan müşterilerin çalışma alanları için kendi adanmış kümelerini oluşturması beklenir; bu sayede daha iyi denetim ve daha yüksek alım oranı sağlanır.
 
@@ -64,12 +64,12 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde kullanıcılara yaln�
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Faktör | Description |
+| Faktör | Açıklama |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
-| [İzinler](../platform/manage-access.md) | Çalışma alanı veya kaynak için bir kişiye veya kullanıcı grubuna uygulanan izinler. Kullanıcının erişimi olacak verileri tanımlar. |
-| [Tablo düzeyinde Azure RBAC](../platform/manage-access.md#table-level-azure-rbac) | Erişim modundan veya erişim denetimi modundan bağımsız olarak tüm kullanıcılara uygulanan isteğe bağlı ayrıntılı izinler. Bir kullanıcının erişebileceği veri türlerini tanımlar. |
+| [İzinler](./manage-access.md) | Çalışma alanı veya kaynak için bir kişiye veya kullanıcı grubuna uygulanan izinler. Kullanıcının erişimi olacak verileri tanımlar. |
+| [Tablo düzeyinde Azure RBAC](./manage-access.md#table-level-azure-rbac) | Erişim modundan veya erişim denetimi modundan bağımsız olarak tüm kullanıcılara uygulanan isteğe bağlı ayrıntılı izinler. Bir kullanıcının erişebileceği veri türlerini tanımlar. |
 
 ## <a name="access-mode"></a>Erişim modu
 
@@ -91,7 +91,7 @@ Kullanıcılara verilere erişim için iki seçenek vardır:
     > - Service Fabric
     > - Application Insights
     >
-    > Bir sorgu çalıştırıp ilgilendiğiniz kayıtları inceleyerek günlüklerin kaynakları ile düzgün bir şekilde ilişkilendiriliyorsa test edebilirsiniz. Doğru kaynak KIMLIĞI [_ResourceId](../platform/log-standard-columns.md#_resourceid) özellikte ise, veriler kaynak merkezli sorgular tarafından kullanılabilir.
+    > Bir sorgu çalıştırıp ilgilendiğiniz kayıtları inceleyerek günlüklerin kaynakları ile düzgün bir şekilde ilişkilendiriliyorsa test edebilirsiniz. Doğru kaynak KIMLIĞI [_ResourceId](./log-standard-columns.md#_resourceid) özellikte ise, veriler kaynak merkezli sorgular tarafından kullanılabilir.
 
 Azure Izleyici, günlük aramasını gerçekleştirdiğiniz bağlama göre otomatik olarak doğru modu belirler. Kapsam her zaman Log Analytics en sol üst bölümünde sunulur.
 
@@ -102,8 +102,8 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 | Sorun | Çalışma alanı bağlamı | Kaynak bağlamı |
 |:---|:---|:---|
 | Her bir model kim içindir? | Yönetim Merkezi. Veri toplamayı ve çok çeşitli kaynaklara erişmesi gereken kullanıcıları yapılandırması gereken yöneticiler. Şu anda Azure dışındaki kaynaklar için günlüklere erişmesi gereken kullanıcılar için de gereklidir. | Uygulama takımları. İzlenmekte olan Azure kaynaklarının yöneticileri. |
-| Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. [Çalışma alanı izinlerini kullanarak erişimi yönetme](../platform/manage-access.md#manage-access-using-workspace-permissions)Içindeki **çalışma alanı izinlerine** bakın. | Kaynağa yönelik okuma erişimi. Bkz. [Azure izinleri kullanarak erişimi yönetme](../platform/manage-access.md#manage-access-using-azure-permissions)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |
-| İzinlerin kapsamı nedir? | Alanında. Çalışma alanına erişimi olan kullanıcılar, çalışma alanındaki tüm günlükleri izinleri olan tablolardan sorgulayabilir. Bkz. [tablo erişim denetimi](../platform/manage-access.md#table-level-azure-rbac) | Azure kaynağı. Kullanıcı herhangi bir çalışma alanından erişimi olan belirli kaynaklar, kaynak grupları veya abonelikler için günlükleri sorgulayabilir, ancak diğer kaynakların günlüklerini sorgulayamaz. |
+| Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. [Çalışma alanı izinlerini kullanarak erişimi yönetme](./manage-access.md#manage-access-using-workspace-permissions)Içindeki **çalışma alanı izinlerine** bakın. | Kaynağa yönelik okuma erişimi. Bkz. [Azure izinleri kullanarak erişimi yönetme](./manage-access.md#manage-access-using-azure-permissions)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |
+| İzinlerin kapsamı nedir? | Alanında. Çalışma alanına erişimi olan kullanıcılar, çalışma alanındaki tüm günlükleri izinleri olan tablolardan sorgulayabilir. Bkz. [tablo erişim denetimi](./manage-access.md#table-level-azure-rbac) | Azure kaynağı. Kullanıcı herhangi bir çalışma alanından erişimi olan belirli kaynaklar, kaynak grupları veya abonelikler için günlükleri sorgulayabilir, ancak diğer kaynakların günlüklerini sorgulayamaz. |
 | Kullanıcı günlüklere nasıl erişebilir? | <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> | <ul><li>Azure kaynağı menüsündeki **günlükleri** Başlat</li></ul> <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Erişim denetimi modu
@@ -125,7 +125,7 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
     > [!NOTE]
     > Bir kullanıcının çalışma alanında yalnızca kaynak izinleri varsa, çalışma alanına yalnızca çalışma alanı erişim modunun **kaynak veya çalışma alanı Izinlerini kullanacak** şekilde ayarlandığını varsayarak kaynak bağlam modunu kullanarak erişebilirler.
 
-Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu yapılandırma](../platform/manage-access.md#configure-access-control-mode).
+Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu yapılandırma](./manage-access.md#configure-access-control-mode).
 
 ## <a name="scale-and-ingestion-volume-rate-limit"></a>Ölçek ve Alım birimi hız sınırı
 
@@ -133,7 +133,7 @@ Azure Izleyici, her ay büyüyen bir hızda petabaytlarca veri gönderen binlerc
 
 Azure izleyici müşterilerini ve arka uç altyapısını korumak ve yalıtmak için, ani ve (sel durumlarından korunmak üzere tasarlanan bir varsayılan alım oranı sınırı vardır. Varsayılan hız sınırı **6 GB/dakika** 'tır ve normal alımı etkinleştirmek üzere tasarlanmıştır. Alma birimi sınır ölçümü hakkında daha fazla bilgi için bkz. [Azure izleyici hizmet limitleri](../service-limits.md#data-ingestion-volume-rate).
 
-4 TB/gün 'tan az alan müşteriler genellikle bu limitleri karşılamaz. Daha yüksek birimler alan veya normal işlemlerinin bir parçası olarak ani artışlar olan müşteriler, alım oranı sınırının gerçekleştiği [adanmış kümelere](../log-query/logs-dedicated-clusters.md) geçmeyi düşünmelidir.
+4 TB/gün 'tan az alan müşteriler genellikle bu limitleri karşılamaz. Daha yüksek birimler alan veya normal işlemlerinin bir parçası olarak ani artışlar olan müşteriler, alım oranı sınırının gerçekleştiği [adanmış kümelere](./logs-dedicated-clusters.md) geçmeyi düşünmelidir.
 
 Alma hızı limiti sınırı etkinleştirildiğinde veya eşiğin %80 ' ine ulaşıldığında, çalışma alanınızdaki *işlem* tablosuna bir olay eklenir. İzlemeniz ve bir uyarı oluşturmanız önerilir. Veri alımı ile daha fazla ayrıntı için bkz. [birim oranı](../service-limits.md#data-ingestion-volume-rate).
 
@@ -144,7 +144,7 @@ Alma hızı limiti sınırı etkinleştirildiğinde veya eşiğin %80 ' ine ula�
 
 Bu senaryo, BT kuruluşunuzun aboneliğindeki veri egemenliği veya mevzuata uyumluluğuyla sınırlandırılmamış ya da kaynaklarınızın dağıtıldığı bölgelerle eşleşmesi gereken tek bir çalışma alanı tasarımını ele almaktadır. Kuruluşunuzun güvenliğine ve BT yöneticisine, Azure erişim yönetimi ve daha güvenli erişim denetimi ile geliştirilmiş tümleştirmeden yararlanma olanağı sağlar.
 
-Farklı ekipler tarafından tutulan Application Insights ve VM'ler için Azure İzleyici gibi tüm kaynaklar, izleme çözümleri ve Öngörüler, toplanan günlük verilerini BT kuruluşunun merkezi paylaşılan çalışma alanına iletecek şekilde yapılandırılmıştır. Her ekipte bulunan kullanıcılara, erişimi verilen kaynaklar için günlüklere erişim verilir.
+Farklı ekipler tarafından tutulan altyapı ve uygulamaları destekleyen tüm kaynaklar, izleme çözümleri ve Application Insights Öngörüler, toplanan günlük verilerini BT kuruluşunun merkezi paylaşılan çalışma alanına iletecek şekilde yapılandırılmıştır. Her ekipte bulunan kullanıcılara, erişimi verilen kaynaklar için günlüklere erişim verilir.
 
 Çalışma alanı mimarinizi dağıttıktan sonra Azure [ilkesi](../../governance/policy/overview.md)ile Azure kaynakları üzerinde bunu zorunlu kılabilirsiniz. Bu, ilke tanımlamak ve Azure kaynaklarınızla uyumluluğu sağlamak için bir yol sağlar, böylece tüm kaynak günlüklerini belirli bir çalışma alanına gönderir. Örneğin, Azure sanal makineler veya sanal makine ölçek kümeleri ile, çalışma alanı uyumluluğunu ve rapor sonuçlarını değerlendiren mevcut ilkeleri kullanabilir veya uyumlu değil olarak düzeltmek için özelleştirebilirsiniz.  
 
@@ -159,8 +159,8 @@ Bu modele geçişinizi planlarken, aşağıdakileri göz önünde bulundurun:
 * Üretim ortamında uygulamadan önce, uygulama ekipleriniz için kaynaklara verilen erişimi ve bir geliştirme ortamında test edin.
 * Çalışma alanını, **kaynak veya çalışma alanı Izinlerini kullanacak** şekilde yapılandırın.
 * Çalışma alanını okumak ve sorgulamak için uygulama ekiplerinin iznini kaldırın.
-* Tüm izleme çözümlerini, kapsayıcılar için Azure Izleyici ve/veya VM'ler için Azure İzleyici, Otomasyon hesabınız ve Güncelleştirme Yönetimi, başlatma/durdurma VM 'Leri gibi yönetim çözümleriniz ve özgün çalışma alanında dağıtılan yönetim çözümleri için etkinleştirin ve yapılandırın.
+* Tüm izleme çözümlerini, kapsayıcı öngörüleri ve/veya VM'ler için Azure İzleyici, Otomasyon hesaplarınız ve Güncelleştirme Yönetimi, başlangıç/durdurma VM 'Leri gibi yönetim çözümleriniz ve özgün çalışma alanında dağıtılan yönetim çözümleri için etkinleştirin ve yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda önerilen güvenlik izinlerini ve denetimleri uygulamak için [günlüklere erişimi yönet](../platform/manage-access.md)' i gözden geçirin.
+Bu kılavuzda önerilen güvenlik izinlerini ve denetimleri uygulamak için [günlüklere erişimi yönet](./manage-access.md)' i gözden geçirin.

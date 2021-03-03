@@ -8,42 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: af7c3f85a75cfb425003b0da2af268fbba1d1d10
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736619"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
 #### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment-analysis)
 
-| Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü başlatılıyor: |              Notlar |
-|:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Basitleştirilmiş Çince    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` Ayrıca kabul edildi |
-| Geleneksel Çince   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
-| Danca               |     `da`      |     ✓      |            |                            |                    |
-| Felemenkçe                 |     `nl`      |     ✓      |            |                            |                    |
-| İngilizce               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Fince               |     `fi`      |     ✓      |            |                            |                    |
-| Fransızca                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Almanca                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Yunanca                 |     `el`      |     ✓      |            |                            |                    |
-| Hintçe                 |     `hi`      |            |      ✓     |          2020-04-01        |                    |
-| İtalyanca               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Japonca              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Korece                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |         2020-07-01         |                    |
-| Lehçe                |     `pl`      |     ✓      |            |                            |                    |
-| Portekizce (Brezilya)   |    `pt-BR`    |            |     ✓      |         2020-04-01         |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` Ayrıca kabul edildi |
-| Rusça               |     `ru`      |     ✓      |            |                            |                    |
-| İspanyolca               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| İsveççe               |     `sv`      |     ✓      |            |                            |                    |
-| Türkçe               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
+| Dil              | Dil kodu | v3 desteği | V3 model sürümü başlatılıyor: |              Notlar |
+|:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
+| Basitleştirilmiş Çince    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` Ayrıca kabul edildi |
+| Geleneksel Çince   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
+| İngilizce               |     `en`      |     ✓      |         2019-10-01         |                    |
+| Fransızca                |     `fr`      |     ✓      |         2019-10-01         |                    |
+| Almanca                |     `de`      |     ✓      |         2019-10-01         |                    |
+| İtalyanca               |     `it`      |     ✓      |         2019-10-01         |                    |
+| Japonca              |     `ja`      |     ✓      |         2019-10-01         |                    |
+| Korece                |     `ko`      |    ✓      |         2019-10-01         |                    |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` Ayrıca kabul edildi |
+| İspanyolca               |     `es`      |     ✓      |         2019-10-01         |                    |
+| Türkçe               |     `tr`      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Görüşme madenciliği (v 3.1-yalnızca Önizleme)
 
@@ -85,31 +77,46 @@ ms.locfileid: "99092593"
 
 #### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
-| Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |       Notlar        |
-|:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
-| Danca                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
-| Felemenkçe                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| İngilizce               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Fince               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Fransızca                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Almanca                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| İtalyanca               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Japonca              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Korece                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2020-07-01                 | `nb` Ayrıca kabul edildi |
-| Lehçe                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
-| Rusça               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| İspanyolca               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| İsveççe               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Dil              | Dil kodu |  v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |       Notlar        |
+|:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
+| Danca                |     `da`      |     ✓     |                2019-10-01                 |                    |
+| Felemenkçe                 |     `nl`      |     ✓      |                2019-10-01                 |                    |
+| İngilizce               |     `en`      |     ✓      |                2019-10-01                 |                    |
+| Fince               |     `fi`      |     ✓      |                2019-10-01                 |                    |
+| Fransızca                |     `fr`      |     ✓      |                2019-10-01                 |                    |
+| Almanca                |     `de`      |     ✓      |                2019-10-01                 |                    |
+| İtalyanca               |     `it`      |     ✓      |                2019-10-01                 |                    |
+| Japonca              |     `ja`      |     ✓      |                2019-10-01                 |                    |
+| Korece                |     `ko`      |     ✓      |                2019-10-01                 |                    |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |                2020-07-01                 | `nb` Ayrıca kabul edildi |
+| Lehçe                |     `pl`      |    ✓      |                2019-10-01                 |                    |
+| Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |                2019-10-01                 |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |    ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
+| Rusça               |     `ru`      |     ✓      |                2019-10-01                 |                    |
+| İspanyolca               |     `es`      |     ✓      |                2019-10-01                 |                    |
+| İsveççe               |     `sv`      |     ✓      |                2019-10-01                 |                    |
 
 #### <a name="entity-linking"></a>[Varlık bağlama](#tab/entity-linking)
 
-| Dil | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: | Notlar |
-|:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
-| İngilizce  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
-| İspanyolca  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Dil | Dil kodu |  v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: | Notlar |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| İngilizce  |     `en`      |     ✓      |                2019-10-01                 |       |
+| İspanyolca  |     `es`      |    ✓      |                2019-10-01                 |       |
+
+#### <a name="personally-identifiable-information-pii"></a>[Kişisel olarak tanımlanabilen bilgiler (PII)](#tab/pii)
+
+| Dil               | Dil kodu | v3 desteği | V3 modeli sürümünden itibaren: |       Notlar        |
+|:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
+| Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` Ayrıca kabul edildi |
+| İngilizce                |     `en`      |     ✓      |               2020-07-01        |                    |
+| Fransızca                 |     `fr`      |     ✓      |               2021-01-15        |                    |
+| Almanca                 |     `de`      |     ✓      |               2021-01-15        |                    |
+| İtalyanca               |     `it`      |     ✓       |               2021-01-15        |                    |
+| Japonca              |     `ja`      |     ✓       |               2021-01-15        |                    |
+| Korece                |     `ko`      |     ✓       |               2021-01-15        |                    |
+| Portekizce (Brezilya)   |    `pt-BR`    |     ✓       |               2021-01-15        |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓       |               2021-01-15        | `pt` Ayrıca kabul edildi |
+| İspanyolca               |     `es`      |     ✓       |               2020-04-01        |                    |
 
 #### <a name="language-detection"></a>[Dil Algılama](#tab/language-detection)
 
@@ -222,6 +229,7 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 |Dili|`bo`|✓|2021-01-05|
 |Tigrinya dili|`ti`|✓|2021-01-05|
 |Tonga dili|`to`|✓|2020-09-01|
+|Türkçe|`tr`|✓|2021-01-05|
 |Türkmence|`tk`|✓|2021-01-05|
 |Zosa dili|`xh`|✓|2021-01-05|
 |Dili|`yo`|✓|2021-01-05|

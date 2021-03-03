@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e87899010660eac11166275bdfd61151bb12c10f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686946"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışlarına koşullu erişim ekleme
 
@@ -37,7 +37,7 @@ Koşullu erişim, Kullanıcı akışlarının en son sürümlerinde desteklenir.
 
 Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-identity-protection-overview.md) hakkında daha fazla bilgi edinin veya [nasıl ayarlanacağını](conditional-access-identity-protection-setup.md)öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Riskli oturum açma ilkeleri oluşturmak için Azure AD B2C Premium 2 gereklidir. Premium P1 kiracılar konum, uygulama veya grup tabanlı ilkeler oluşturabilir.
 - Sınama amacıyla, [](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 
@@ -129,6 +129,8 @@ Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu eri�
 ## <a name="add-conditional-access-to-your-policy"></a>İlkenize koşullu erişim ekleme
 
 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)'da koşullu erişim ilkesi örneğini bulabilirsiniz.
+
+Ayrıca, [bir özel Ilkede koşullu erişim teknik profili tanımlama](conditional-access-technical-profile.md)hakkında daha fazla bilgi edinebilirsiniz.
 
 ::: zone-end
 

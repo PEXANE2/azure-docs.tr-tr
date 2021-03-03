@@ -1,26 +1,23 @@
 ---
-title: Azure 'da bir Linux VM 'ye uzak masaüstü 'Nü kullanma
+title: Linux ile xrdp kullanma
 description: Grafik araçlarını kullanarak Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü (xrdp) yüklemeyi ve yapılandırmayı öğrenin
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196393"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695184"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Linux VM ile uzak masaüstü kullanmak için xrdp 'yi yükleyip yapılandırın
+
 Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](http://xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
 
 
@@ -32,6 +29,7 @@ Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bi
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux sanal makinenize masaüstü ortamı yükler
+
 Azure 'daki Linux VM 'lerinin çoğunda varsayılan olarak bir masaüstü ortamı yüklü değildir. Linux VM 'Ler, masaüstü ortamı yerine genellikle SSH bağlantıları kullanılarak yönetilir. Linux 'ta seçebileceğiniz çeşitli masaüstü ortamları vardır. Masaüstü ortamınız seçiminize bağlı olarak, bir ila 2 GB disk alanı tüketebilir ve gerekli tüm paketleri yüklemek ve yapılandırmak için 5 ila 10 dakika sürebilir.
 
 Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir ( `yum` Örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` kuralları yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux VM 'nizi uzak masaüstü istemcisiyle bağlama
-Yerel Uzak Masaüstü istemcinizi açın ve Linux sanal makinenizin IP adresine veya DNS adına bağlanın. VM 'nizin Kullanıcı hesabı için Kullanıcı adını ve parolayı şu şekilde girin:
 
-![Uzak Masaüstü istemcinizi kullanarak xrdp 'ye bağlanma](./media/use-remote-desktop/remote-desktop-client.png)
+Yerel Uzak Masaüstü istemcinizi açın ve Linux sanal makinenizin IP adresine veya DNS adına bağlanın. 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="Uzak Masaüstü istemcisinin ekran görüntüsü.":::
+
+VM 'nizin Kullanıcı hesabı için Kullanıcı adını ve parolayı şu şekilde girin:
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Xrdp oturum açma ekranının ekran görüntüsü.":::
 
 Kimlik doğrulamasından sonra, Xfce masaüstü ortamı yüklenir ve aşağıdaki örneğe benzer şekilde görünür:
 

@@ -3,50 +3,41 @@ title: MariaDB için Azure veritabanı sertifika dönüşü
 description: MariaDB için Azure veritabanı 'nı etkileyecek kök sertifika değişikliklerinin yakında değişiklikler hakkında bilgi edinin
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 66db443c4c52e4994e62a9f83f8a624319b349ab
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98659895"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699003"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda kök CA değişikliği değişikliklerini anlama
 
-MariaDB için Azure veritabanı, SSL ile etkinleştirilen istemci uygulaması/sürücüsü için kök sertifikayı değiştiriyor, [veritabanı sunucusuna bağlanmak](concepts-connectivity-architecture.md)için kullanın. Şu anda kullanılabilir kök sertifika, standart bakım ve güvenlik en iyi uygulamalarının bir parçası olarak 15 Şubat 2021 (02/15/2021) tarihinde dolacak şekilde ayarlanmıştır. Bu makale, yaklaşan değişiklikler hakkında daha fazla ayrıntıyı, etkilenecek kaynakları ve uygulamanızın veritabanı sunucunuza bağlantıyı korumasından emin olmak için gerekli adımları sağlar.
-
->[!NOTE]
-> Müşterilerin geri bildirimlerine bağlı olarak, var olan Baltidaha fazla kök CA 'nın 11 Ekim 2021 ' den itibaren 2020 ' ye kadar kök sertifikayı kullanımdan kaldırabiliyoruz. Bu uzantının, kullanıcılarımız etkilendiklerinde istemci değişikliklerini uygulaması için yeterli sağlama süresi sağlamasını umuyoruz.
+MariaDB için Azure veritabanı, standart bakım ve güvenlik en iyi uygulamalarının bir parçası olarak **15 şubat 2021 (02/15/2021)** tarihinde kök sertifika değişikliğini başarıyla tamamladı. Bu makalede, değişiklikler hakkında daha fazla ayrıntı, etkilenen kaynaklar ve uygulamanızın veritabanı sunucunuza bağlantıyı korumasından emin olmak için gereken adımlar verilmektedir.
 
 > [!NOTE]
 > Bu makale, Microsoft 'un artık kullandığı bir terim olan _bağımlı_ dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+>
 
-## <a name="what-update-is-going-to-happen"></a>Hangi güncelleştirme gerçekleşecektir?
+## <a name="why-root-certificate-update-is-required"></a>Kök sertifika güncelleştirmesi neden gereklidir?
 
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası kullanır. Şu anda müşteriler yalnızca bir MariaDB sunucusu için Azure veritabanı 'na bağlanmak üzere önceden tanımlanmış sertifikayı kullanabilir, [burada](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)yer alır. Bununla birlikte, [sertifika yetkilisi (CA) tarayıcı Forumu](https://cabforum.org/),   CA satıcıları tarafından verilen birden çok sertifikanın uyumsuz olması için en son yayımlanmış raporlar.
+MariaDB kullanıcıları için Azure veritabanı, [burada](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)bulunan MariaDB sunucusu Için Azure veritabanı 'na bağlanmak üzere yalnızca önceden tanımlanmış sertifikayı kullanabilir. Bununla birlikte, [sertifika yetkilisi (CA) tarayıcı Forumu](https://cabforum.org/),   CA satıcıları tarafından verilen birden çok sertifikanın uyumsuz olması için en son yayımlanmış raporlar.
 
-Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Lar için CA sertifikalarını iptal etmeyi, sunucuların uyumlu CA 'lar tarafından verilen sertifikaları kullanmalarını ve bu uyumlu CA 'lardan CA sertifikaları kullanmasını gerektirir. MariaDB için Azure veritabanı şu anda bu uyumlu olmayan sertifikalardan birini kullandığından, istemci uygulamalarının SSL bağlantılarını doğrulamak için kullandığı, MariaDB sunucularınız için olası etkiyi en aza indirmek için uygun eylemlerin (aşağıda açıklanmıştır) yapıldığından emin olmamız gerekir.
+Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Lar için CA sertifikalarını iptal etmeyi, sunucuların uyumlu CA 'lar tarafından verilen sertifikaları kullanmalarını ve bu uyumlu CA 'lardan CA sertifikaları kullanmasını gerektirir. MariaDB için Azure veritabanı bu uyumlu olmayan sertifikalardan birini kullandığından, MySQL sunucularınızda olası tehdidi en aza indirmek için sertifikayı uyumlu sürüme döndürmemiz gerekiyordu.
 
-Yeni sertifika 15 Şubat 2021 tarihinden itibaren kullanılacaktır (02/15/2021). Bir MySQL istemcisinden bağlanırken (sslmode = Verify-CA veya sslmode = Verify-Full), CA doğrulaması veya sunucu sertifikasının tam doğrulamasını kullanırsanız, uygulama yapılandırmanızı 15 Şubat 2021 tarihinden önce güncelleştirmeniz gerekir (02/15/2021).
+Yeni sertifika alınır ve 15 Şubat 2021 (02/15/2021) tarihinden itibaren geçerli olur. 
 
-## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Nasıl yaparım? Veritabanımın etkilenip etkilenmediğini öğrensin mi?
+## <a name="what-change-was-performed-on-february-15-2021-02152021"></a>15 Şubat 2021 ' de hangi değişiklik yapıldı (02/15/2021)?
 
-SSL/TLS kullanan tüm uygulamalar ve kök sertifikanın kök sertifikayı güncelleştirmesi gerekir. Bağlantı dizenizi inceleyerek bağlantılarınızın kök sertifikayı doğrulayıp doğrulamayıp belirleyemeyeceğini belirleyebilirsiniz.
+15 Şubat 2021 ' de, [baltimorecerbertrustroot kök](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) sertifikası aynı [baltimorecerbertrustroot kök sertifikası](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ile değiştirilmiştir ve bu da mevcut müşterilerin sunucu bağlantılarının hiçbir etkisi olmadığından emin olun.  Bu değişiklik sırasında, [Baltimorecyıbertrustroot kök sertifikası](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ile **değiştirilmez** ve bu değişiklik, müşterilerin değişikliği yapmasına daha fazla zaman tanımak için ertelenir.
 
-- Bağlantı dizeniz veya içeriyorsa `sslmode=verify-ca` `sslmode=verify-identity` , sertifikayı güncelleştirmeniz gerekir.
-- Bağlantı dizeniz,, `sslmode=disable` veya içerdiğinde, `sslmode=allow` `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez.
-- Bağlantı dizeniz sslmode 'u belirtmezse, sertifikaları güncelleştirmeniz gerekmez.
+## <a name="do-i-need-to-make-any-changes-on-my-client-to-maintain-connectivity"></a>Bağlantıyı sürdürmek için istemcimde herhangi bir değişiklik yapmam gerekiyor mu?
 
-Bağlantı dizesini soyutlayan bir istemci kullanıyorsanız, sertifikaları doğrulayıp doğrulamadığını anlamak için istemci belgelerini gözden geçirin.
-MariaDB sslmode için Azure veritabanı 'nı anlamak için [SSL modu açıklamalarını](concepts-ssl-connection-security.md#default-settings)gözden geçirin.
+İstemci tarafında bir değişiklik yapılması gerekmez. Aşağıdaki önceki önerimizi izlediyseniz, **Baltimorecyıbertrustroot sertifikası** birleştirilmiş CA sertifikasından kaldırılmadığı sürece yine de bağlanmaya devam edersiniz. **Bağlantıyı sürdürmeye yönelik daha fazla bildirimde bulununcaya kadar, birleştirilmiş CA sertifikanızdan Baltimorecyıbertrustroot 'yi kaldırmadık.**
 
-Sertifikaların beklenmedik şekilde iptal edilmesinden veya bir sertifikanın güncelleştirilmesi nedeniyle uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için, [**"bağlantıyı sürdürmek Için ne yapmam gerekir"**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) bölümüne bakın.
-
-## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Bağlantıyı sürdürmek için ne yapmam gerekir?
-
-Sertifikaların beklenmedik şekilde iptal edildiği veya bir sertifikayı güncelleştirme, iptal edilmiş olması nedeniyle uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için aşağıdaki adımları izleyin. Bu düşünce, geçerli sertifikayı ve yeni birini birleştiren yeni bir *. pem* dosyası oluşturmak ve izin verilen değerler KULLANıLDıKTAN sonra SSL sertifikası doğrulama işlemi için kullanılır. Aşağıdaki adımlara bakın:
+### <a name="previous-recommendation"></a>Önceki öneri
 
 - Aşağıdaki bağlantılardan **baltimorecybertrustroot**  &  **DigiCertGlobalRootG2** CA 'sını indirin:
 
@@ -90,15 +81,15 @@ Sertifikaların beklenmedik şekilde iptal edildiği veya bir sertifikayı günc
 - Özgün kök CA ped dosyasını birleştirilmiş kök CA dosyası ile değiştirin ve uygulamanızı/istemcinizi yeniden başlatın.
 - Daha sonra, yeni sertifika sunucu tarafında dağıtıldıktan sonra, CA PEI dosyanızı DigiCertGlobalRootG2. CRT. ped olarak değiştirebilirsiniz.
 
-## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Sertifikayı güncelleştirmeden ne etkisi olabilir?
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>15 Şubat 2021 ' de bu değişiklik sırasında Baltimorecyıbertrustroot sertifikası neden DigiCertGlobalRootG2 ile değiştirilmedi?
 
-Burada belgelendiği gibi, MariaDB için Azure veritabanı verilen sertifikayı kullanıyorsanız, veritabanının ulaşılamamasından bu yana uygulamanızın kullanılabilirliği kesintiye uğramış olabilir. Uygulamanıza bağlı olarak, aşağıdakiler dahil ancak bunlarla sınırlı olmamak üzere çeşitli hata iletileri alabilirsiniz:
+Bu değişiklik için müşteri hazırlığını değerlendirdik ve çok sayıda müşteri bu değişikliği yönetmek için ek sağlama süresi arıyor. Müşterilere hazırlık sağlamak için daha fazla müşteri adayı süresi sunmanın yanı sıra, müşterilere ve son kullanıcılara yeterli sağlama süresi sağlayan en az bir yılda sertifika değişikliğini DigiCertGlobalRootG2 olarak ertelemenizi karardık. 
 
-- Geçersiz sertifika/iptal edilmiş sertifika
-- Bağlantı zaman aşımına uğradı
+Kullanıcılara yönelik önerilerimiz, birleştirilmiş bir sertifika oluşturmak ve sunucunuza bağlanmak için bir iletişim gönderene kadar Baltimoreconbertrustroot sertifikasını kaldırmayın. 
 
-> [!NOTE]
-> Lütfen sertifika değişikliği yapılıncaya kadar **Baltidaha fazla sertifikayı** kaldırmayın veya değiştirmeyin. Değişiklik yapıldıktan sonra, Baltidaha fazla sertifikayı bırakması için güvenli olacak şekilde bir iletişim göndereceğiz.
+## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Baltimorecyıbertrustroot sertifikasını kaldırdık ne olursa?
+
+MariaDB sunucusu için Azure veritabanınıza bağlanılırken bağlantı hatalarıyla başlayacaksınız. Bağlantıyı sürdürmek için [Baltimorecyıbertrustroot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) SERTIFIKASı ile [SSL 'yi yapılandırmanız](howto-configure-ssl.md) gerekir.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -110,16 +101,22 @@ SSL/TLS kullanmıyorsanız hiçbir eylem gerekmez.
 
 Hayır, yeni sertifikayı kullanmaya başlamak için veritabanı sunucusunu yeniden başlatmanız gerekmez. Sertifika güncelleştirme, istemci tarafı değişikdir ve gelen istemci bağlantılarının veritabanı sunucusuna bağlanabildiklerinden emin olmak için yeni sertifikayı kullanması gerekir.
 
-### <a name="3-what-will-happen-if-i-dont-update-the-root-certificate-before-february-15-2021-02152021"></a>3. kök sertifikayı 15 Şubat 2021 ' den önce güncelleştirdiğimde ne olur? (02/15/2021)?
+### <a name="3-how-do-i-know-if-im-using-ssltls-with-root-certificate-verification"></a>3. Nasıl yaparım? kök sertifika doğrulaması ile SSL/TLS kullanıp kullandığımı öğrenin.
 
-Kök sertifikayı 15 Şubat 2021 (02/15/2021) tarihinden önce güncelleştirmemeniz durumunda, SSL/TLS aracılığıyla bağlanan ve kök sertifika için doğrulama yapan uygulamalarınız, MariaDB veritabanı sunucusuyla iletişim kuramaz ve uygulama, MariaDB veritabanı sunucunuza bağlantı sorunlarıyla karşılaşacaktır.
+Bağlantı dizenizi inceleyerek bağlantılarınızın kök sertifikayı doğrulayıp doğrulamayıp belirleyemeyeceğini belirleyebilirsiniz.
+
+- Bağlantı dizeniz veya içeriyorsa `sslmode=verify-ca` `sslmode=verify-identity` , sertifikayı güncelleştirmeniz gerekir.
+- Bağlantı dizeniz,, `sslmode=disable` veya içerdiğinde, `sslmode=allow` `sslmode=prefer` `sslmode=require` sertifikaları güncelleştirmeniz gerekmez.
+- Bağlantı dizeniz sslmode 'u belirtmezse, sertifikaları güncelleştirmeniz gerekmez.
+
+Bağlantı dizesini soyutlayan bir istemci kullanıyorsanız, sertifikaları doğrulayıp doğrulamadığını anlamak için istemci belgelerini gözden geçirin.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. MariaDB için Azure veritabanı ile App Service kullanılıyorsa etkisi nedir?
 
 Azure Uygulama Hizmetleri için, MariaDB için Azure veritabanı 'na bağlanırken, uygulamanızla birlikte SSL kullanma yönteminize bağlı olarak iki olası senaryo vardır.
 
-- Bu yeni sertifika platform düzeyinde App Service eklendi. Uygulamanızdaki App Service platforma dahil olan SSL sertifikalarını kullanıyorsanız hiçbir işlem gerekmez.
-- Kodunuzda SSL sertifika dosyasının yolunu açıkça dahil ediyorsanız, yeni sertifikayı indirmeniz ve kodu yeni sertifikayı kullanacak şekilde güncelleştirmeniz gerekir. Bu senaryonun iyi bir örneği, [App Service belgelerinde](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress) paylaşıldığından App Service özel kapsayıcılar kullandığınızda oluşur
+- Bu yeni sertifika platform düzeyinde App Service eklendi. Uygulamanızdaki App Service platforma dahil olan SSL sertifikalarını kullanıyorsanız hiçbir işlem gerekmez. En yaygın senaryo budur. 
+- Kodunuzda SSL sertifika dosyasının yolunu açıkça dahil ediyorsanız, yeni sertifikayı indirmeniz ve kodu yeni sertifikayı kullanacak şekilde güncelleştirmeniz gerekir. Bu senaryonun iyi bir örneği, [App Service belgelerinde](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)paylaşıldığından App Service özel kapsayıcılar kullandığınızda oluşur. Bu, yaygın olmayan bir senaryodur ancak bunu kullanan bazı kullanıcıları gördük.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. MariaDB için Azure veritabanı ile Azure Kubernetes Hizmetleri (AKS) kullanılıyorsa etkisi nedir?
 
@@ -135,23 +132,19 @@ Bağlayıcı Azure Integration Runtime kullanan bağlayıcı için Azure 'da bar
 
 Hayır. Buradaki değişiklik yalnızca istemci tarafında veritabanı sunucusuna bağlanmak için olduğundan, bu değişiklik için veritabanı sunucusu için gerekli bakım kapalı kalma süresi yoktur.
 
-### <a name="8--what-if-i-cant-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. bu değişiklik için 15 Şubat 2021 tarihinden önce zamanlanan kapalı kalma süresi (02/15/2021) yoksa ne olur?
+### <a name="8-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>8.15 Şubat 2021 (02/15/2021) sonrasında yeni bir sunucu oluştururum, bundan etkilenecek mıyım?
 
-Sunucuya bağlanmak için kullanılan istemcilerin, [buradaki](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)çözüm bölümünde açıklandığı gibi sertifika bilgilerini güncelleştirmesi gerektiğinden, bu durumda sunucu için kapalı kalma süresine gerek kalmaz.
+15 Şubat 2021 (02/15/2021) ' den sonra oluşturulan sunucular için, uygulamalarınızın SSL kullanarak bağlanması için [Baltimorecyıbertrustroot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 'yi kullanmaya devam edersiniz.
 
-### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9.15 Şubat 2021 (02/15/2021) sonrasında yeni bir sunucu oluştururum, bundan etkilenecek mıyım?
+### <a name="9-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>9. Microsoft sertifikalarını ne sıklıkla güncelleştiriyor veya süre sonu ilkesi nedir?
 
-15 Şubat 2021 (02/15/2021) ' den sonra oluşturulan sunucular için, SSL kullanarak bağlanmak üzere uygulamalarınız için yeni verilen sertifikayı kullanabilirsiniz.
+MariaDB için Azure veritabanı tarafından kullanılan bu sertifikalar, güvenilen sertifika yetkilileri (CA) tarafından sağlanır. Bu nedenle, bu sertifikaların desteklenmesi CA tarafından bu sertifikaların desteğine bağlıdır. [Baltimorecerbertrustroot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) sertifikası 2025 ' de sona ermek üzere zamanlandı. bu nedenle, Microsoft 'un süre sonu öncesinde bir sertifika değişikliği gerçekleştirmesi gerekir. Ayrıca, bu önceden tanımlanmış sertifikalarda öngörülemeyen hatalar varsa, Microsoft 'un her zaman güvenli ve uyumlu olduğundan emin olmak için, 15 Şubat 2021 ' de gerçekleştirilen değişikliğe benzer şekilde Microsoft 'un sertifika döndürmesini yapması gerekir.
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft sertifikalarını ne sıklıkla güncelleştiriyor veya süre sonu ilkesi nedir?
-
-MariaDB için Azure veritabanı tarafından kullanılan bu sertifikalar, güvenilen sertifika yetkilileri (CA) tarafından sağlanır. Bu nedenle, MariaDB için Azure veritabanı 'nda bu sertifikaların desteklenmesi, CA tarafından bu sertifikaların desteğine bağlıdır. Bununla birlikte, bu örnekte olduğu gibi, önceden tanımlanmış bu sertifikalarda, en erken düzeltilmelidir.
-
-### <a name="11-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. okuma çoğaltmaları kullanıyorsam, bu güncelleştirmeyi yalnızca kaynak sunucuda veya okuma çoğaltmalarıyla gerçekleştirmem gerekir mi?
+### <a name="10-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>10. okuma çoğaltmaları kullanıyorsam, bu güncelleştirmeyi yalnızca kaynak sunucuda veya okuma çoğaltmalarıyla gerçekleştirmem gerekir mi?
 
 Bu güncelleştirme istemci tarafı değişikliği olduğundan, istemci Çoğaltma sunucusundan veri okumak için kullanılıyorsa, bu istemciler için değişiklikleri de uygulamanız gerekir.
 
-### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. veri çoğaltma 'yı kullanıyorsam herhangi bir eylem gerçekleştirmem gerekir mi?
+### <a name="11-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>11. veri çoğaltma 'yı kullanıyorsam herhangi bir eylem gerçekleştirmem gerekir mi?
 
 - Veri çoğaltma bir sanal makineden (Şirket içi veya Azure sanal makinesi) MySQL için Azure veritabanı 'na ait ise, çoğaltmayı oluşturmak için SSL 'nin kullanıldığını denetlemeniz gerekir. **BAĞıMLı durumu göster** ' i çalıştırın ve aşağıdaki ayarı denetleyin.
 
@@ -177,18 +170,18 @@ MySQL için Azure veritabanı 'na bağlanmak üzere [veri çoğaltma](concepts-d
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
 
-  CA_file, SSL_Cert ve SSL_Key için sertifika sağlandığını görürseniz, [yeni sertifikayı](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)ekleyerek dosyayı güncelleştirmeniz gerekir.
+  CA_file, SSL_Cert ve SSL_Key için sertifika sağlandığını görürseniz, [yeni sertifikayı](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ekleyerek ve birleştirilmiş bir sertifika dosyası oluşturarak dosyayı güncelleştirmeniz gerekir.
 
 - Veri çoğaltma, MySQL için iki Azure veritabanı arasındaysa, **çağrı MySQL.az_replication_change_master** yürüterek çoğaltmayı sıfırlamanız ve yeni çift kök sertifikayı son parametre [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)olarak sağlamanız gerekir.
 
-### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. SSL 'nin kullanıldığını doğrulamak için sunucu tarafı sorgumuz var mı?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. SSL 'nin kullanıldığını doğrulamak için sunucu tarafı sorgumuz var mı?
 
 Sunucuya bağlanmak için SSL bağlantısı kullanıp kullandığınızı doğrulamak için [SSL doğrulaması](howto-configure-ssl.md#verify-the-ssl-connection)' na başvurun.
 
-### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. sertifika dosyasında DigiCertGlobalRootG2 zaten varsa, gerekli bir eylem var mı?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. sertifika dosyasında DigiCertGlobalRootG2 zaten varsa gerekli bir eylem var mı?
 
 Hayır. Sertifika dosyanızda zaten **DigiCertGlobalRootG2** varsa herhangi bir işlem yapmanız gerekmez.
 
-### <a name="15-what-if-i-have-further-questions"></a>15. daha fazla sorunuz varsa ne yapmalıyım?
+### <a name="14-what-if-i-have-further-questions"></a>14. daha fazla sorunuz varsa ne yapmalıyım?
 
 Sorularınız varsa, [Microsoft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com)'daki topluluk uzmanlarının yanıtlarını alın. Destek planınız varsa ve teknik yardıma ihtiyacınız varsa [bizimle iletişime geçin](mailto:AzureDatabaseformariadb@service.microsoft.com).

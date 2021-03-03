@@ -9,14 +9,16 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e5a2114d09ac2a81d4a12c69a64ce806fd502100
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f09dbb7fa8d7c88dce3c0af32e3fee21656da7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691306"
 ---
 # <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde düzenlenir. Bazı alanlarda tamamen açık kaynaklı istemci kitaplıkları vardır. Çağıran istemci kitaplığı, özel ağ arabirimlerini kullanır ve şu anda kapalı kaynaklı ve sohbet kitaplığı kapalı kaynaklı bir bağımlılık içeriyor. [Azure Iletişim Hizmetleri GitHub](https://github.com/Azure/communication)deposunda, istemci kitaplıkları için örnekler ve ek teknik ayrıntılar yayımlanır.
 
@@ -26,25 +28,26 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Aç            | Azure. ResourceManager. Communication | Iletişim Hizmetleri kaynaklarını sağlama ve yönetme             |
 | Common                 | REST | Aç               | Azure. Communication. Common          | Diğer istemci kitaplıkları için temel türleri sağlar |
-| Kimlik         | REST | Aç               | Azure. Communication. Identity  | Kullanıcıları yönetme, belirteçleri erişim |
+| Kimlik         | REST | Aç               | Azure. Communication. Identity  | Kullanıcıları ve erişim belirteçlerini yönetme |
 | Sohbet                   | Özel sinyalle REST | Kapalı kaynak sinyal paketiyle aç    | Azure. Communication. sohbet            | Uygulamalarınıza gerçek zamanlı metin tabanlı sohbet ekleyin  |
 | SMS                    | REST | Aç              | Azure. Communication. SMS             | SMS iletileri gönderme ve alma |
 | Events                | Özel aktarım | Kapatıldı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |
 
-Azure Resource Manager, kimlik ve SMS istemci kitaplıklarının hizmet tümleştirilmesine odaklandığına ve birçok durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet istemci kitaplıkları hizmet ve istemci uygulamaları için uygundur. Çağıran istemci kitaplığı, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir istemci kitaplığı geliştirmede.
+Azure Resource Manager, yönetim ve SMS istemci kitaplıklarının hizmet tümleştirilmesine odaklandığına ve birçok durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet istemci kitaplıkları hizmet ve istemci uygulamaları için uygundur. Çağıran istemci kitaplığı, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir istemci kitaplığı geliştirmede.
 
 ### <a name="languages-and-publishing-locations"></a>Diller ve yayımlama konumları
 
-Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayrıntılı olarak verilmiştir.
+Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayrıntılı olarak verilmiştir. 
 
 | Alan           | JavaScript | .NET | Python | Java SE | iOS | Android | Diğer                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [Pypı](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub aracılığıyla git](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Yok      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
-| Kimlik | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [Pypı](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
+| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Yok      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Yönetim | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [Pypı](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| Kimlik | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.identity)    | [Pypı](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
 | Sohbet           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [Pypı](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [Pypı](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
-| Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
 | Başvuru Belgeleri     | [belgeler](https://azure.github.io/azure-sdk-for-js/communication.html)         | [belgeler](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [belgeler](http://azure.github.io/azure-sdk-for-java/communication.html)     | [belgeler](/objectivec/communication-services/calling/)      | [belgeler](/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
 
 ## <a name="rest-apis"></a>REST API'leri
@@ -92,10 +95,10 @@ Arama dışında, Iletişim Hizmetleri paketleri .NET Standard 2,0 hedef, aşağ
 | Bir grup çağrısı zaman aşımı için 1:1 çağrısını yükseltin | 115 |
 
 
-## <a name="api-stability-expectations"></a>API kararlılık beklentileri
+## <a name="api-stability-expectations"></a>API kararlılık beklentileri 
 
 > [!IMPORTANT]
-> Bu bölüm, REST API 'Ler ve istemci kitaplıkları için **kararlı** olarak işaretlenmiş yönergeler sağlar. Yayın öncesi, önizleme veya beta olarak işaretlenen API 'Ler, **bildirimde bulunulmadan** değiştirilebilir veya kullanım dışı bırakılmış olabilir.
+> Bu bölüm, REST API 'Ler ve istemci kitaplıkları için **kararlı** olarak işaretlenmiş yönergeler sağlar. Yayın öncesi, önizleme veya beta olarak işaretlenen API 'Ler, **bildirimde bulunulmadan** değiştirilebilir veya kullanım dışı bırakılmış olabilir. Şu anda Azure Iletişim Hizmetleri **genel önizlemede** ve API 'ler bu şekilde işaretlenir.
 
 Gelecekte Iletişim Hizmetleri istemci kitaplıklarının sürümlerini devre dışı bırakabiliriz ve REST API 'lerimiz ve sunulan istemci kitaplıklarında önemli değişiklikler sunabiliriz. Azure iletişim hizmetleri, hizmet sürümlerinin kullanımdan kaldırılması için *genellikle* iki desteklenebilirlik ilkesi izler:
 

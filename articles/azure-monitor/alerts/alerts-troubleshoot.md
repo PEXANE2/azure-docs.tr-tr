@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621944"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717868"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme
 
 Bu makalede, Azure Izleyici uyarı ve bildirimlerinde yaygın sorunlar ele alınmaktadır.
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarı hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md).
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarı hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](./alerts-overview.md).
 
 Uyarı tetiklenmesi veya beklendiğinde tetiklemeden sorun yaşıyorsanız, aşağıdaki makalelere bakın. Azure portal "harekete geçirilir" uyarıları görebilirsiniz.
 
@@ -36,7 +36,7 @@ Azure portalında tetiklenen bir uyarı görebiliyorsanız ama bu konuda yapıla
 
 1. **E-posta bir [eylem kuralı](../alerts/alerts-action-rules.md)tarafından gizlendi** mu?
 
-    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](../platform/action-groups.md) için geçmiş sekmesine bakın:
+    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](./action-groups.md) için geçmiş sekmesine bakın:
 
     ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Portalda tetiklenen bir uyarı görebiliyorsanız ama bu konuda yapılandırdı�
 
 1. **Eylem bir [eylem kuralı](../alerts/alerts-action-rules.md)tarafından gizlendi mu?**
 
-    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](../platform/action-groups.md) için geçmiş sekmesine bakın: 
+    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](./action-groups.md) için geçmiş sekmesine bakın: 
 
     ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Portalda tetiklenmiş bir uyarı görebiliyorsanız ama uyarının yapılandır�
 
 1. **Eylem bir eylem kuralı tarafından gizlendi mu?**
 
-    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](../platform/action-groups.md) için geçmiş sekmesine bakın:
+    Portalda tetiklenen uyarıya tıklayarak denetleyin ve gizlenen [eylem grupları](./action-groups.md) için geçmiş sekmesine bakın:
 
     ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -133,15 +133,15 @@ Portalda tetiklenmiş bir uyarı görebiliyorsanız ama uyarının yapılandır�
 
 1. **Web kancası tetiklenemedi mi?**
 
-    1. **Kaynak IP adresleri engellensin mi?**
+    1. **Kaynak IP adresleri engellendi mi?**
     
-       Web kancasının çağrıldığı [IP adreslerini](../platform/action-groups.md#action-specific-information) izin verilenler listenize ekleyin.
+       Web kancasının çağrıldığı [IP adreslerini](./action-groups.md#action-specific-information) izin verilenler listenize ekleyin.
 
-    1. **Web kancası uç noktası düzgün çalışıyor mu?**
+    1. **Web kancası uç noktanız düzgün çalışıyor mu?**
 
        Yapılandırdığınız web kancası uç noktasının doğru olduğunu ve uç noktanın düzgün çalıştığını onaylayın. Web kancası günlüklerinizi denetleyin veya inceleyebilmek için kodunu izleyin (örneğin gelen yükü günlüğe kaydedin).
 
-    1. **Bolluk veya Microsoft ekipleri mı arıyorsunuz?**  
+    1. **Slack veya Microsoft Teams çağrısı mı yapıyorsunuz?**  
     Bu uç noktalardan her biri belirli bir JSON biçimi bekler. Onun yerine [bu yönergeleri](../alerts/action-groups-logic-app.md) izleyerek bir mantıksal uygulama eylemi yapılandırın.
 
     1. **Web kancası yanıt vermiyor veya hata verdi mı?** 
@@ -180,12 +180,12 @@ Uyarıyı aldıysanız ancak bazı alanlarının eksik veya hatalı olduğunu d�
 
     Eylem düzeyinde belirtilen biçimin beklediğiniz şey olup olmadığını kontrol edin. Örneğin belirli bir biçimdeki uyarılara (web kancası, işlev, mantıksal uygulama vb.) yanıt veren bir kod geliştirmiş olabilirsiniz ancak eylemin ilerleyen bölümlerinde başka bir kişi (veya siz) farklı bir biçim belirtmiş olabilir.  
 
-    Ayrıca [etkinlik günlüğü uyarıları](../alerts/activity-log-alerts-webhook.md), [günlük araması uyarıları](../alerts/alerts-log-webhook.md) (Application Insights ve günlük analizi), [ölçüm uyarıları](alerts-metric-near-real-time.md#payload-schema), [ortak uyarı şeması](../alerts/alerts-common-schema-definitions.md) ve kullanım dışı olan [klasik ölçüm uyarıları](../platform/alerts-webhooks.md) için yük biçimini (JSON) kontrol edin.
+    Ayrıca [etkinlik günlüğü uyarıları](../alerts/activity-log-alerts-webhook.md), [günlük araması uyarıları](../alerts/alerts-log-webhook.md) (Application Insights ve günlük analizi), [ölçüm uyarıları](alerts-metric-near-real-time.md#payload-schema), [ortak uyarı şeması](../alerts/alerts-common-schema-definitions.md) ve kullanım dışı olan [klasik ölçüm uyarıları](./alerts-webhooks.md) için yük biçimini (JSON) kontrol edin.
 
  
 1. **Etkinlik günlüğü uyarıları: etkinlik günlüğünde bilgiler var mı?** 
 
-    [Etkinlik günlüğü uyarıları](../platform/activity-log-alerts.md) Azure etkinlik günlüğüne yazılan olayları temel alan uyarılardır; Azure kaynaklarını oluşturma, güncelleştirme veya silme, hizmet durumu ve kaynak sistem durumu olayları veya Azure Danışmanı Ile Azure ilkesinden bulguları gibi olaylar. Etkinlik günlüğünü temel alan bir uyarı aldıysanız ancak ihtiyacınız olan bazı alanlar eksik veya hatalıysa öncelikle etkinlik günlüğündeki olayları kontrol edin. Azure, aradığınız alanları etkinlik günlüğü olayına yazmadıysa bu alanlar ilgili uyarıda da mevcut olmayacaktır. 
+    [Etkinlik günlüğü uyarıları](./activity-log-alerts.md) Azure etkinlik günlüğüne yazılan olayları temel alan uyarılardır; Azure kaynaklarını oluşturma, güncelleştirme veya silme, hizmet durumu ve kaynak sistem durumu olayları veya Azure Danışmanı Ile Azure ilkesinden bulguları gibi olaylar. Etkinlik günlüğünü temel alan bir uyarı aldıysanız ancak ihtiyacınız olan bazı alanlar eksik veya hatalıysa öncelikle etkinlik günlüğündeki olayları kontrol edin. Azure, aradığınız alanları etkinlik günlüğü olayına yazmadıysa bu alanlar ilgili uyarıda da mevcut olmayacaktır. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Eylem grubu beklendiği gibi çalışmıyor 
 
@@ -250,4 +250,4 @@ Bir [eylem kuralı](../alerts/alerts-action-rules.md)oluşturmaya, güncelleşti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Günlük uyarısı kullanılıyorsa, bkz. [sorun giderme günlüğü uyarıları](./alerts-troubleshoot-log.md).
-- Yukarıdaki kılavuzdan sorununuzu çözmişseniz olup olmadığınızı denetlemek için [Azure Portal](https://portal.azure.com) geri dönün 
+- Yukarıdaki kılavuzdan sorununuzu çözmişseniz olup olmadığınızı denetlemek için [Azure Portal](https://portal.azure.com) geri dönün

@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: ef6e31968f85407e8055315becdc1337b474ad70
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dbe51930ec92ec4f89738dc5d543003f45acebf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733831"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
-[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için ortamınızdaki doğrudan fiziksel veya sanal Linux bilgisayarlarınızdaki verileri bir Log Analytics çalışma alanına toplayabilir. [Log Analytics aracısının](../agents/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla Linux sunucunuzdaki verilerin nasıl yapılandırılacağı ve toplanacağı gösterilmektedir. Azure Linux VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](../learn/quick-collect-azurevm.md).  
+[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için ortamınızdaki doğrudan fiziksel veya sanal Linux bilgisayarlarınızdaki verileri bir Log Analytics çalışma alanına toplayabilir. [Log Analytics aracısının](../agents/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla Linux sunucunuzdaki verilerin nasıl yapılandırılacağı ve toplanacağı gösterilmektedir. Azure Linux VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](./quick-collect-azurevm.md).  
 
 Desteklenen yapılandırmayı anlamak için bkz. [desteklenen işletim sistemleri](../agents/agents-overview.md#supported-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../agents/log-analytics-agent.md#network-requirements).
  
@@ -166,4 +166,4 @@ Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştı
 Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/log-analytics-tutorial.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../logs/log-analytics-tutorial.md)

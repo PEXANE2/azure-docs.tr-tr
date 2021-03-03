@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 19f051320aaa675ebe5ff148fb6580c2a5d8770c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719143"
 ---
 # <a name="features"></a>Özellikler
 
@@ -35,7 +35,7 @@ Desteklenen en son sürüm: `4.0.1`
 | iyimser kilitleme ile güncelleştirme | Yes       | Yes       | Yes       |                                                     |
 | Güncelleştirme (koşullu)           | Yes       | Yes       | Yes       |                                                     |
 | düzeltmesi                          | Hayır        | Hayır        | Hayır        |                                                     |
-| silme                         | Yes       | Yes       | Yes       |                                                     |
+| delete                         | Yes       | Yes       | Yes       |  Aşağıya göz atın                                                   |
 | Sil (koşullu)           | Hayır        | Hayır        | Hayır        |                                                     |
 | geçmiş                        | Yes       | Yes       | Yes       |                                                     |
 | oluşturmaya                         | Yes       | Yes       | Yes       | Her iki GÖNDERI/PUT desteği                               |
@@ -48,6 +48,9 @@ Desteklenen en son sürüm: `4.0.1`
 | işlem                    | Hayır        | Yes       | Hayır        |                                                     |
 | Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self` ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
+
+> [!Note]
+> FHıR belirtimi tarafından tanımlanan silme, silindikten sonra, bir kaynağın sonraki sürüme özgü olmayan okumalarının bir 410 HTTP durum kodu döndürdüğünden ve kaynak artık arama yoluyla bulunamamasına gerek duyar. FHıR için Azure API 'SI Ayrıca, kaynağı tamamen silmenizi (tüm geçmiş dahil) sağlar. Kaynağı tamamen silmek için bir parametre ayarlarını `hardDelete` true () değerine geçirebilirsiniz `DELETE {server}/{resource}/{id}?hardDelete=true` . Bu parametreyi geçirmezseniz veya `hardDelete` false olarak ayarlarsanız, kaynağın geçmiş sürümleri kullanılabilir olmaya devam edecektir.
 
 ## <a name="search"></a>Arayın
 
@@ -89,7 +92,7 @@ Tüm arama parametresi türleri desteklenir.
 | `_list`                 | Yes       | Yes       | Yes       |         |
 | `_type`                 | Yes       | Yes       | Yes       | Sorun [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Yes       | Yes       | Yes       |         |
-| `_profile`              | Kısmi   | Kısmi   | Kısmi   | Yalnızca STU3 sürümünde desteklenir, R4 'de destek yoktur |
+| `_profile`              | Kısmi   | Kısmi   | Kısmi   | STU3 içinde desteklenir. Veritabanınızı 20 Mart 2021 ' **den sonra** oluşturduysanız, R4 'de de destek sahibi olursunuz. 20 Şubat 2021 ' den önce oluşturulan veritabanlarında _profile etkinleştirmek için çalışıyoruz. |
 | `_text`                 | Hayır        | Hayır        | Hayır        |         |
 | `_content`              | Hayır        | Hayır        | Hayır        |         |
 | `_has`                  | Hayır        | Hayır        | Hayır        |         |
@@ -99,7 +102,7 @@ Tüm arama parametresi türleri desteklenir.
 | Arama sonucu parametreleri | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | Yes       | Yes       | Yes       | Sorun [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Yes       | Yes       | Yes       | `_count` 100 karakterle sınırlıdır. 100 'den yüksek olarak ayarlandıysa, yalnızca 100 döndürülür ve pakete bir uyarı döndürülür. |
+| `_count`                | Yes       | Yes       | Yes       | `_count` 1000 karakterle sınırlıdır. 1000 'den yüksek olarak ayarlandıysa, yalnızca 1000 döndürülür ve pakete bir uyarı döndürülür. |
 | `_include`              | Yes       | Yes       | Yes       |Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları içermez: yineleme desteği.|
 | `_revinclude`           | Yes       | Yes       | Yes       | Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları [içermez: yineleme desteği](https://github.com/microsoft/fhir-server/issues/1313). Sorun [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count` desteklenir |

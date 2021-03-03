@@ -1,19 +1,19 @@
 ---
-title: Kapsayıcılar için Azure Izleyici dağıtımlarını görüntüleme (Önizleme) | Microsoft Docs
-description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanılmadan Kubernetes dağıtımlarının gerçek zamanlı görünümü açıklanır.
+title: Container Insights dağıtımlarını görüntüleme (Önizleme) | Microsoft Docs
+description: Bu makalede, kapsayıcı öngörülerine kubectl kullanmadan Kubernetes dağıtımlarının gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713924"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Dağıtımı (Önizleme) gerçek zamanlı görüntüleme
 
-Kapsayıcılar için Azure Izleyici ile, görünüm dağıtımları (Önizleme) özelliği, ve komutlarını ortaya çıkaran gerçek zamanlı olarak Kubernetes dağıtım nesnelerine doğrudan erişim sağlar `kubeclt get deployments` `kubectl describe deployment {your deployment}` .
+Kapsayıcı öngörüleri ile, görünüm dağıtımları (Önizleme) özelliği, ve komutlarını ortaya çıkaran gerçek zamanlı olarak Kubernetes dağıtım nesnelerine doğrudan erişim `kubeclt get deployments` sağlar `kubectl describe deployment {your deployment}` .
 
 >[!NOTE]
 >Bu özellikle [özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen aks kümeleri desteklenmez. Bu özellik tarayıcınızdan bir ara sunucuyla doğrudan Kubernetes API'sine erişime bağlıdır. Ağ güvenliğini etkinleştirip bu ara sunucudan Kubernetes API'sinin engellenmesi bu trafiği engeller.
@@ -56,7 +56,7 @@ Listeden bir dağıtım seçtiğinizde, sayfanın sağ tarafında otomatik olara
 
 Dağıtım ayrıntılarını gözden geçirdikten sonra, kapsayıcı günlüklerini ve olayları gerçek zamanlı olarak görebilirsiniz. Canlı günlük verilerini sürekli bir akışta görüntüleyebileceğiniz dağıtım verileri kılavuzunun altında **canlı konsol göster** ve Canlı veriler (Önizleme) konsolu ' nu seçin. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir.
 
-Ayrıca, ad alanı veya küme düzeyindeki olaylara göre filtreleyebilirsiniz. Konsolunda verileri gerçek zamanlı görüntüleme hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar Için Azure izleyici Ile canlı verileri görüntüleme (Önizleme)](container-insights-livedata-overview.md).
+Ayrıca, ad alanı veya küme düzeyindeki olaylara göre filtreleyebilirsiniz. Konsolunda verileri gerçek zamanlı görüntüleme hakkında daha fazla bilgi edinmek için bkz. [Container Insights Ile canlı verileri görüntüleme (Önizleme)](container-insights-livedata-overview.md).
 
 ![Dağıtımlar konsolundaki canlı verileri görüntüleme](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

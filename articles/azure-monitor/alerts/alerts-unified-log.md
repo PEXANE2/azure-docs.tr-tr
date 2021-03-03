@@ -6,33 +6,33 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 88643663c2f14cb7d8883eb1210bdee07b00eece
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5e7909725f5e390f4e42a7d62e80f90f897c840f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621913"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714162"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
 ## <a name="overview"></a>Genel Bakış
 
-Günlük uyarıları, [Azure uyarıları](../platform/alerts-overview.md)'nda desteklenen uyarı türlerinden biridir. Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](../platform/action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir.
+Günlük uyarıları, [Azure uyarıları](./alerts-overview.md)'nda desteklenen uyarı türlerinden biridir. Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../logs/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir.
 
 > [!NOTE]
-> [Log Analytics çalışma alanındaki](../log-query/log-analytics-tutorial.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md).
+> [Log Analytics çalışma alanındaki](../logs/log-analytics-tutorial.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md).
 
 > [!NOTE]
 > Şu anda API sürümü `2020-05-01-preview` ve kaynak merkezli günlük uyarıları için ek ücret alınmaz.  Önizlemede olan özellikler için fiyatlandırma, gelecekte duyurulacak ve faturalandırma başlamadan önce bir bildirim sunulacaktır. Bildirim döneminden sonra yeni API sürümü ve kaynak merkezli günlük uyarılarını kullanmaya devam etmeyi tercih etmeniz gerekir, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Günlük uyarıları Log Analytics verilerde sorgu çalıştırır. İlk olarak, [günlük verilerini toplamaya](../platform/resource-logs.md) başlamanız ve günlük verilerini sorun için sorgulamanızı gerekir. [Kendi sorgunuzu yazmaya](../log-query/log-analytics-tutorial.md)ne bulabileceğinizi veya başladığınızı anlamak için Log Analytics [Uyarı sorgu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz.
+Günlük uyarıları Log Analytics verilerde sorgu çalıştırır. İlk olarak, [günlük verilerini toplamaya](../essentials/resource-logs.md) başlamanız ve günlük verilerini sorun için sorgulamanızı gerekir. [Kendi sorgunuzu yazmaya](../logs/log-analytics-tutorial.md)ne bulabileceğinizi veya başladığınızı anlamak için Log Analytics [Uyarı sorgu örnekleri konusunu](../logs/example-queries.md) kullanabilirsiniz.
 
-[Azure Izleme katılımcısı](../platform/roles-permissions-security.md) , günlük uyarılarını oluşturmak, değiştirmek ve güncelleştirmek için gereken ortak bir roldür. Kaynak günlükleri için erişim & sorgu yürütme hakları da gereklidir. Kaynak günlüklerine kısmi erişim sorguları başarısız olabilir veya kısmi sonuçlar döndürebilir. [Azure 'da günlük uyarılarını yapılandırma hakkında daha fazla bilgi edinin](./alerts-log.md).
+[Azure Izleme katılımcısı](../roles-permissions-security.md) , günlük uyarılarını oluşturmak, değiştirmek ve güncelleştirmek için gereken ortak bir roldür. Kaynak günlükleri için erişim & sorgu yürütme hakları da gereklidir. Kaynak günlüklerine kısmi erişim sorguları başarısız olabilir veya kısmi sonuçlar döndürebilir. [Azure 'da günlük uyarılarını yapılandırma hakkında daha fazla bilgi edinin](./alerts-log.md).
 
 > [!NOTE]
-> Eski [Log Analytics uyarı API 'si](../platform/api-alerts.md)kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](../alerts/alerts-log-api-switch.md).
+> Eski [Log Analytics uyarı API 'si](./api-alerts.md)kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](../alerts/alerts-log-api-switch.md).
 
 ## <a name="query-evaluation-definition"></a>Sorgu değerlendirmesi tanımı
 
@@ -44,17 +44,17 @@ Günlük arama kuralları koşul tanımının başladığı yer:
 Aşağıdaki bölümlerde, Yukarıdaki mantığı ayarlamak için kullanabileceğiniz farklı parametreler açıklanır.
 
 ### <a name="log-query"></a>Günlük sorgusu
-Kuralı değerlendirmek için kullanılan [Log Analytics](../log-query/log-analytics-tutorial.md) sorgusu. Bu sorgu tarafından döndürülen sonuçlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Sorgunun kapsamı şunları içerebilir:
+Kuralı değerlendirmek için kullanılan [Log Analytics](../logs/log-analytics-tutorial.md) sorgusu. Bu sorgu tarafından döndürülen sonuçlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Sorgunun kapsamı şunları içerebilir:
 
 - Sanal makine gibi belirli bir kaynak.
 - Abonelik veya kaynak grubu gibi bir at ölçeği kaynağı.
-- [Kaynak arası sorgu](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)kullanan birden çok kaynak. 
+- [Kaynak arası sorgu](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)kullanan birden çok kaynak. 
  
 > [!IMPORTANT]
 > Uyarı sorgularında en iyi performansı ve sonuçların uygunluğunu sağlamak için kısıtlamalar vardır. [Burada daha fazla bilgi edinebilirsiniz](./alerts-log-query.md).
 
 > [!IMPORTANT]
-> Kaynak merkezli ve [çapraz kaynak sorgusu](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) yalnızca geçerli scheduledQueryRules API 'si kullanılarak desteklenir. Eski [Log Analytics uyarı API](../platform/api-alerts.md)'sini kullanırsanız, anahtarını değiştirmeniz gerekir. [Geçiş hakkında daha fazla bilgi edinin](./alerts-log-api-switch.md)
+> Kaynak merkezli ve [çapraz kaynak sorgusu](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) yalnızca geçerli scheduledQueryRules API 'si kullanılarak desteklenir. Eski [Log Analytics uyarı API](./api-alerts.md)'sini kullanırsanız, anahtarını değiştirmeniz gerekir. [Geçiş hakkında daha fazla bilgi edinin](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>Sorgu zaman aralığı
 
@@ -102,7 +102,7 @@ Ardından, 500 hata kodu ile biten istekler için uyarı kuralları izleyicileri
 
 ### <a name="aggregation-type"></a>Toplama türü
 
-Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örneğin:
+Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örnek:
 - **Sayı** sorgudaki kayıt sayısını döndürür
 - **Average** , tanımlanan ölçü sütun [**toplama ayrıntı**](#aggregation-granularity) düzeyinin ortalamasını döndürür.
 
@@ -154,7 +154,7 @@ Azure Kaynak KIMLIĞI sütununa göre bölme işlemi, birden fazla Azure kaynağ
 Bu kural, bir sanal makinede son 15 dakika içinde hata olayları varsa izler. Her sanal makine ayrı olarak izlenir ve eylemleri ayrı ayrı tetikler.
 
 > [!NOTE]
-> Uyarı boyutlarına göre bölme yalnızca geçerli scheduledQueryRules API 'SI için kullanılabilir. Eski [Log Analytics uyarı API](../platform/api-alerts.md)'sini kullanırsanız, anahtarını değiştirmeniz gerekir. [Geçiş hakkında daha fazla bilgi edinin](./alerts-log-api-switch.md). Ölçekteki kaynak merkezli uyarı yalnızca API sürümünde `2020-05-01-preview` ve üzerinde desteklenir.
+> Uyarı boyutlarına göre bölme yalnızca geçerli scheduledQueryRules API 'SI için kullanılabilir. Eski [Log Analytics uyarı API](./api-alerts.md)'sini kullanırsanız, anahtarını değiştirmeniz gerekir. [Geçiş hakkında daha fazla bilgi edinin](./alerts-log-api-switch.md). Ölçekteki kaynak merkezli uyarı yalnızca API sürümünde `2020-05-01-preview` ve üzerinde desteklenir.
 
 ## <a name="alert-logic-definition"></a>Uyarı mantıksal tanımı
 
@@ -197,17 +197,17 @@ Fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında](https://az
 
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam kaynak adıyla gösterilen Application Insights uyarıları günlüğe kaydedin.
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam kaynak adıyla gösterilen Log Analytics Uyarıları günlüğe kaydedin; [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)kullanılarak oluşturulduğunda.
-- [Eski log ANALYTICS API](../platform/api-alerts.md) 'den oluşturulan günlük uyarıları, [Azure kaynaklarını](../../azure-resource-manager/management/overview.md) izlenemez ve benzersiz kaynak adları zorlanmaz. Bu uyarılar hala `microsoft.insights/scheduledqueryrules` Bu kaynak adlandırma yapısına sahip gizli kaynaklar olarak oluşturulur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Eski API 'deki günlük uyarıları, kaynak grubu ve uyarı özellikleriyle birlikte gizli kaynak adıyla birlikte gösterilir.
+- [Eski log ANALYTICS API](./api-alerts.md) 'den oluşturulan günlük uyarıları, [Azure kaynaklarını](../../azure-resource-manager/management/overview.md) izlenemez ve benzersiz kaynak adları zorlanmaz. Bu uyarılar hala `microsoft.insights/scheduledqueryrules` Bu kaynak adlandırma yapısına sahip gizli kaynaklar olarak oluşturulur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Eski API 'deki günlük uyarıları, kaynak grubu ve uyarı özellikleriyle birlikte gizli kaynak adıyla birlikte gösterilir.
 
 > [!NOTE]
 > Gibi desteklenmeyen kaynak karakterleri `<, >, %, &, \, ?, /` `_` , gizli kaynak adlarında ile değiştirilir ve bu, fatura bilgilerinde de yansıtılacaktır.
 
 > [!NOTE]
-> Eski [Log Analytics uyarı API 'si](../platform/api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions.md)eski şablonları kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](../alerts/alerts-log-api-switch.md). Herhangi bir uyarı kuralı yönetiminin, geçiş kararı verinceye ve gizli kaynakları kullanmayabilmeniz için [eski log ANALYTICS API](../platform/api-alerts.md) kullanılarak yapılması gerekir.
+> Eski [Log Analytics uyarı API 'si](./api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions.md)eski şablonları kullanılarak yönetilmek üzere kullanılan Log Analytics için günlük uyarıları. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](../alerts/alerts-log-api-switch.md). Herhangi bir uyarı kuralı yönetiminin, geçiş kararı verinceye ve gizli kaynakları kullanmayabilmeniz için [eski log ANALYTICS API](./api-alerts.md) kullanılarak yapılması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure 'da günlük uyarılarında oluşturma](./alerts-log.md)hakkında bilgi edinin.
 * [Azure 'da günlük uyarılarında Web kancalarını](../alerts/alerts-log-webhook.md)anlayın.
-* [Azure uyarıları](../platform/alerts-overview.md)hakkında bilgi edinin.
-* [Log Analytics](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+* [Azure uyarıları](./alerts-overview.md)hakkında bilgi edinin.
+* [Log Analytics](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706291"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
@@ -24,7 +24,7 @@ Azure bilişsel hizmetler, kullanıcılarınızı görmenizi, duymasını, konu�
 Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamalar içermez.
 
 * [Anomali Algılayıcısı (Önizleme)](./anomaly-detector/index.yml)
-* [Özel Görüntü İşleme](./Custom-Vision-Service/index.yml)
+* [Özel Görüntü İşleme](./custom-vision-service/index.yml)
 * [Yüz Tanıma](./face/index.yml)
 * [Kişiselleştirme](./personalizer/index.yml)
 
@@ -32,7 +32,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 
 * [Görüntü İşleme](./computer-vision/language-support.md)
 * [Form Tanıma (Önizleme)](./form-recognizer/language-support.md)
-* [Mürekkep Tanıma (Önizleme)](./ink-recognizer/language-support.md)
+* [Mürekkep Tanıma (Önizleme)](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
 * [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Dil
@@ -49,7 +49,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Konuşma hizmeti: metinden konuşmaya](./speech-service/language-support.md#text-to-speech)
 * [Konuşma hizmeti: konuşma çevirisi](./speech-service/language-support.md#speech-translation)
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 * [Bing Özel Arama](./bing-custom-search/language-support.md)
 * [Bing Resim Arama](./bing-image-search/language-support.md)

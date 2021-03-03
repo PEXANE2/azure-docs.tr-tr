@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d9db845bfa4a7c0c117220b8932b370eb230f6dc
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686895"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -57,7 +57,7 @@ MSAL, uygulamanızın ihtiyaç duymaması için, erişim belirteçlerini önbell
 
 Bu kılavuzda aşağıdaki NuGet paketleri kullanılmaktadır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft kimlik doğrulama kitaplığı (MSAL.NET)|
 
@@ -141,6 +141,7 @@ Bu adımda, belirteçleri işleme gibi MSAL ile etkileşimi işlemek için bir s
         {
             _clientApp = PublicClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
+                .WithDefaultRedirectUri()
                 .Build();
         }
 

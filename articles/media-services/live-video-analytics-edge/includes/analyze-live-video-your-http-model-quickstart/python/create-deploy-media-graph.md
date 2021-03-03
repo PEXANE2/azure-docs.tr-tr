@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 7b9ed5dda925793eff4f85408c5eb494f5ac0925
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: cd3c615a296934d8e06a062125a72c322d05dd7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750512"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
 
@@ -69,10 +69,10 @@ ms.locfileid: "99569615"
         > Yukarıdaki adımlar, kurulum betiği tarafından oluşturulan sanal makineyi kullandığınızı kabul ediyor. Bunun yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için Edge cihazınıza gidin ve **yönetici haklarıyla** aşağıdaki komutları çalıştırın:  
         
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * Görüntülere görüntü getiren ve birden çok nesne türü sınıfını döndüren YOLOv3 nesne algılama modeli olan **yolov3** modülü.
  

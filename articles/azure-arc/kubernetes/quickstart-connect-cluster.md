@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/24/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, yay, Azure, küme
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689258"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Hızlı başlangıç: mevcut bir Kubernetes kümesini Azure yaya bağlama 
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Azure Arc 'ın, Kubernetes 'in avantajlarından yarar
 
 * Şunları doğrulayın:
     * Çalışır duruma bir Kubernetes kümesi.
-    * Bir `kubeconfig` dosya.
+    * `kubeconfig`Azure yaya bağlamak istediğiniz kümeye işaret eden bir dosya.
     * Kullanıcı veya hizmet sorumlusu için ' Read ' ve ' Write ' izinleri, Azure Arc etkin Kubernetes kaynak türü ( `Microsoft.Kubernetes/connectedClusters` ) oluşturuluyor.
 * [Held 3 ' ün en son sürümünü](https://helm.sh/docs/intro/install)yükler.
 * Aşağıdaki Azure Arc etkin Kubernetes CLı uzantılarını yükler >= 1.0.0:
@@ -68,16 +68,6 @@ Bu hızlı başlangıçta, Azure Arc 'ın, Kubernetes 'in avantajlarından yarar
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager belirteçleri getirmek ve güncelleştirmek için gereklidir.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Azure Arc aracıları için kapsayıcı görüntülerini çekmek için gereklidir.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Sistem tarafından atanan Yönetilen Hizmet Kimliği (MSI) sertifikalarını çekmek için gereklidir.                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>Azure Arc etkin Kubernetes CLı uzantılarını kurma
-
-Aşağıdaki komutları girin:  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydetme
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> Yukarıdaki konum parametresi olmadan Yukarıdaki komut, Azure Arc etkin Kubernetes kaynağını kaynak grubuyla aynı konumda oluşturur. Azure Arc etkin Kubernetes kaynağını farklı bir konumda oluşturmak için, komutunu ya da `--location <region>` `-l <region>` komutunu çalıştırırken belirtin `az connectedk8s connect` .
 
 ## <a name="verify-cluster-connection"></a>Küme bağlantısını doğrulama
 

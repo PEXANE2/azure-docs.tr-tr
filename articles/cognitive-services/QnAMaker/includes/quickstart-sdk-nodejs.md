@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Node.js için Soru-Cevap Oluşturma iste
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e76acd0f7b776ccad69b0616846988c5ba816a2d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8e42a7cfe0eacf72d1e59e695ac871368a7a9731
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730980"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
@@ -151,7 +151,7 @@ Kaynağınızın Azure anahtarı ve kaynak adı için bir değişken oluşturun.
 
 [Soru-cevap oluşturma](/javascript/api/@azure/cognitiveservices-qnamaker/) iki farklı nesne modeli kullanır:
 * **[Qnamakerclient](#qnamakerclient-object-model)** , Bilgi Bankası oluşturmak, yönetmek, yayımlamak ve indirmek için kullanılan nesnedir.
-* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../concepts/active-learning-suggestions.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
+* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../how-to/use-active-learning.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/version-2)
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736755"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
@@ -41,7 +41,7 @@ Form tanıyıcı fatura hizmetini denemek için bir Azure aboneliğine ([ücrets
 
 ### <a name="input-requirements"></a>Giriş gereksinimleri 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>Fatura çözümleme işlemi
 
@@ -74,14 +74,14 @@ JSON çıktısı 3 bölümden oluşur:
 
 Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkış yanıtında bir faturadan ayıklanan alanlar aşağıda verilmiştir (aşağıdaki çıktı bu [örnek faturayı](./media/sample-invoice.jpg)kullanır)  
 
-|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | Faturalandırılmakta olan müşteri | Microsoft Corp |  |
 | CustomerId | string | Müşterinin başvuru KIMLIĞI | CıD-12345 |  |
 | PurchaseOrder | string | Bir satınalma siparişi başvuru numarası | PO-3333 | |  |
 | InvoiceId | string | Bu belirli faturaya ait KIMLIK (genellikle "fatura numarası") | INV-100 | |  |
-| InvoiceDate | date | Faturanın verildiği tarih | 11/15/2019 | 
-| DueDate | date | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Faturanın verildiği tarih | 11/15/2019 | 2019-11-15 |
+| DueDate | date | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 |
 | SatıcıAdı | string | Bu faturayı oluşturan satıcı | CONTOSO LTD. | |
 | VendorAddress | string | Satıcının posta adresi | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | string | VendorAddress ile ilişkili ad | Contoso yönetim merkezleri | |

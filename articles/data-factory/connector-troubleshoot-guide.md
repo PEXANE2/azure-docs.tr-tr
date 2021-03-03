@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727830"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: BLOB depolama işlemiyle ilgili bir sorun.
 
-- **Öneri**: hata ayrıntılarını denetlemek için bkz. [BLOB Storage hata kodları](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes). Daha fazla yardım için BLOB depolama ekibine başvurun.
+- **Öneri**: hata ayrıntılarını denetlemek için bkz. [BLOB Storage hata kodları](/rest/api/storageservices/blob-service-error-codes). Daha fazla yardım için BLOB depolama ekibine başvurun.
 
 
 ### <a name="invalid-property-during-copy-activity"></a>Kopyalama etkinliği sırasında geçersiz özellik
@@ -164,7 +164,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
   | Çözümleme nedeni                                               | Öneri                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Azure Data Lake Storage 2. bir işlemin başarısız olduğunu belirten bir hata oluşturursa.| Azure Data Lake Storage 2. tarafından oluşturulan ayrıntılı hata iletisini denetleyin. Hata geçici bir hata ise işlemi yeniden deneyin. Daha fazla yardım için Azure depolama desteği 'ne başvurun ve hata iletisinde istek KIMLIĞI sağlayın. |
-  | Hata iletisi "yasak" dizesini içeriyorsa, kullandığınız hizmet sorumlusu veya yönetilen kimlik Azure Data Lake Storage 2. erişmek için yeterli izne sahip olmayabilir. | Bu hatayı gidermek için [Azure Data Factory kullanarak Azure Data Lake Storage 2. verileri kopyalama ve dönüştürme](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)bölümüne bakın. |
+  | Hata iletisi "yasak" dizesini içeriyorsa, kullandığınız hizmet sorumlusu veya yönetilen kimlik Azure Data Lake Storage 2. erişmek için yeterli izne sahip olmayabilir. | Bu hatayı gidermek için [Azure Data Factory kullanarak Azure Data Lake Storage 2. verileri kopyalama ve dönüştürme](./connector-azure-data-lake-storage.md#service-principal-authentication)bölümüne bakın. |
   | Hata iletisi "ınternalservererror" dizesini içeriyorsa hata Azure Data Lake Storage 2. tarafından döndürülür. | Hatanın nedeni geçici bir hata olabilir. Başarısız durumdaysa işlemi yeniden deneyin. Sorun devam ederse, Azure depolama desteği 'ne başvurun ve hata iletisinden istek KIMLIĞINI sağlayın. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Azure Data Lake Storage 2. hesabı isteği bir zaman aşımı hatasına neden oldu
@@ -204,7 +204,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: Azure Files Storage işlemiyle ilgili bir sorun.
 
-- **Öneri**: hata ayrıntılarını denetlemek için bkz. [Azure dosyaları yardımı](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes). Daha fazla yardım için Azure dosyaları ekibine başvurun.
+- **Öneri**: hata ayrıntılarını denetlemek için bkz. [Azure dosyaları yardımı](/rest/api/storageservices/file-service-error-codes). Daha fazla yardım için Azure dosyaları ekibine başvurun.
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure SYNAPSE Analytics, Azure SQL veritabanı ve SQL Server
@@ -216,12 +216,12 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
     | Çözümleme nedeni                                               | Öneri                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Azure SQL için, hata iletisi "SqlErrorNumber = 47073" dizesini içeriyorsa, bağlantı ayarında genel ağ erişiminin reddedildiği anlamına gelir. | Azure SQL güvenlik duvarında **ortak ağ erişimini reddet** seçeneğini *Hayır* olarak ayarlayın. Daha fazla bilgi için bkz. [Azure SQL bağlantı ayarları](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
-    | Azure SQL için, hata iletisi "SqlErrorNumber = [ErrorCode]" gibi bir SQL hata kodu içeriyorsa Azure SQL sorun giderme kılavuzu 'na bakın. | Öneri için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
-    | 1433 bağlantı noktasının güvenlik duvarı izin verilenler listesinde olup olmadığını denetleyin. | Daha fazla bilgi için bkz. [SQL Server tarafından kullanılan bağlantı noktaları](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
-    | Hata iletisi "SqlException" dizesini içeriyorsa, SQL veritabanı hata belirli bir işlemin başarısız olduğunu gösterir. | Daha fazla bilgi için, [veritabanı altyapısı HATALARıNDA](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)SQL hata kodu ile arama yapın. Daha fazla yardım için Azure SQL desteği ile iletişime geçin. |
-    | Bu geçici bir sorun (örneğin, bir Instable ağ bağlantısı) varsa, azaltma için etkinlik ilkesine yeniden dene ekleyin. | Daha fazla bilgi için bkz. [Azure Data Factory Işlem hatları ve etkinlikleri](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
-    | Hata iletisi "IP adresi olan Istemci" dizesini içeriyorsa... ' sunucusuna erişime izin verilmiyor "ve Azure SQL veritabanı 'na bağlanmaya çalışıyorsunuz, hata genellikle bir Azure SQL veritabanı güvenlik duvarı sorunundan kaynaklanır. | Azure SQL Server güvenlik duvarı yapılandırmasında, **Azure hizmetlerine ve kaynaklarına bu sunucuya erişmesine Izin ver** seçeneğini etkinleştirin. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    | Azure SQL için, hata iletisi "SqlErrorNumber = 47073" dizesini içeriyorsa, bağlantı ayarında genel ağ erişiminin reddedildiği anlamına gelir. | Azure SQL güvenlik duvarında **ortak ağ erişimini reddet** seçeneğini *Hayır* olarak ayarlayın. Daha fazla bilgi için bkz. [Azure SQL bağlantı ayarları](../azure-sql/database/connectivity-settings.md#deny-public-network-access). |
+    | Azure SQL için, hata iletisi "SqlErrorNumber = [ErrorCode]" gibi bir SQL hata kodu içeriyorsa Azure SQL sorun giderme kılavuzu 'na bakın. | Öneri için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme](../azure-sql/database/troubleshoot-common-errors-issues.md). |
+    | 1433 bağlantı noktasının güvenlik duvarı izin verilenler listesinde olup olmadığını denetleyin. | Daha fazla bilgi için bkz. [SQL Server tarafından kullanılan bağlantı noktaları](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Hata iletisi "SqlException" dizesini içeriyorsa, SQL veritabanı hata belirli bir işlemin başarısız olduğunu gösterir. | Daha fazla bilgi için, [veritabanı altyapısı HATALARıNDA](/sql/relational-databases/errors-events/database-engine-events-and-errors)SQL hata kodu ile arama yapın. Daha fazla yardım için Azure SQL desteği ile iletişime geçin. |
+    | Bu geçici bir sorun (örneğin, bir Instable ağ bağlantısı) varsa, azaltma için etkinlik ilkesine yeniden dene ekleyin. | Daha fazla bilgi için bkz. [Azure Data Factory Işlem hatları ve etkinlikleri](./concepts-pipelines-activities.md#activity-policy). |
+    | Hata iletisi "IP adresi olan Istemci" dizesini içeriyorsa... ' sunucusuna erişime izin verilmiyor "ve Azure SQL veritabanı 'na bağlanmaya çalışıyorsunuz, hata genellikle bir Azure SQL veritabanı güvenlik duvarı sorunundan kaynaklanır. | Azure SQL Server güvenlik duvarı yapılandırmasında, **Azure hizmetlerine ve kaynaklarına bu sunucuya erişmesine Izin ver** seçeneğini etkinleştirin. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları](../azure-sql/database/firewall-configure.md). |
     
 ### <a name="error-code-sqloperationfailed"></a>Hata kodu: SqlOperationFailed
 
@@ -231,9 +231,9 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
     | Çözümleme nedeni                                               | Öneri                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Hata iletisi "SqlException" dizesini içeriyorsa SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur. | SQL hatası net değilse, veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. Daha fazla bilgi için [belgelere](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat) bakın. <br/> SQL sorunlarını giderme hakkında daha fazla bilgi için, [veritabanı altyapısı HATALARıNDA](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)SQL hata kodu ile arama yapın. Daha fazla yardım için Azure SQL desteği ile iletişime geçin. |
+    | Hata iletisi "SqlException" dizesini içeriyorsa SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur. | SQL hatası net değilse, veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. Daha fazla bilgi için [belgelere](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat) bakın. <br/> SQL sorunlarını giderme hakkında daha fazla bilgi için, [veritabanı altyapısı HATALARıNDA](/sql/relational-databases/errors-events/database-engine-events-and-errors)SQL hata kodu ile arama yapın. Daha fazla yardım için Azure SQL desteği ile iletişime geçin. |
     | Hata iletisi "PdwManagedToNativeInteropException" dizesini içeriyorsa, genellikle kaynak ve havuz sütun boyutları arasında uyuşmazlık olur. | Hem kaynak hem de havuz sütunlarının boyutunu denetleyin. Daha fazla yardım için Azure SQL desteği ile iletişime geçin. |
-    | Hata iletisi "InvalidOperationException" dizesini içeriyorsa, genellikle geçersiz giriş verileri olur. | Bu sorunla karşılaşan satırı belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Daha fazla bilgi için [Azure Data Factory kopyalama etkinliğinin hata toleransı](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)bölümüne bakın. |
+    | Hata iletisi "InvalidOperationException" dizesini içeriyorsa, genellikle geçersiz giriş verileri olur. | Bu sorunla karşılaşan satırı belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Daha fazla bilgi için [Azure Data Factory kopyalama etkinliğinin hata toleransı](./copy-activity-fault-tolerance.md)bölümüne bakın. |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>Hata kodu: SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: toplu kopyalama programı (bcp) istemcisinden geçersiz bir sütun uzunluğu aldığından SQL toplu kopyalama başarısız oldu.
 
-- **Öneri**: hangi satırın sorunla karşılaşdığını belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yönlendirebilir. Daha fazla bilgi için [Azure Data Factory kopyalama etkinliğinin hata toleransı](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)bölümüne bakın.
+- **Öneri**: hangi satırın sorunla karşılaşdığını belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yönlendirebilir. Daha fazla bilgi için [Azure Data Factory kopyalama etkinliğinin hata toleransı](./copy-activity-fault-tolerance.md)bölümüne bakın.
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>Hata kodu: Sqlconnectionısclosed
@@ -470,7 +470,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **İleti**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Neden**: hata ILETISI "SQLSTATE = 51002 SQLCODE =-805" dizesini içeriyorsa, [Azure Data Factory kullanarak DB2 'den veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties)içindeki "ipucu" nu izleyin.
+- **Neden**: hata ILETISI "SQLSTATE = 51002 SQLCODE =-805" dizesini içeriyorsa, [Azure Data Factory kullanarak DB2 'den veri kopyalama](./connector-db2.md#linked-service-properties)içindeki "ipucu" nu izleyin.
 
 - **Öneri**: özelliğindeki "nullıd" ayarlamaya çalışın `packageCollection`  .
 
@@ -647,7 +647,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: Parquet biçimi Azure Data Factory desteklenmiyor.
 
-- **Öneri**: [Azure Data Factory etkinliği tarafından desteklenen dosya biçimlerine ve sıkıştırma codec larına](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)giderek kaynak verileri iki kez kontrol edin.
+- **Öneri**: [Azure Data Factory etkinliği tarafından desteklenen dosya biçimlerine ve sıkıştırma codec larına](./supported-file-formats-and-compression-codecs.md)giderek kaynak verileri iki kez kontrol edin.
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Hata kodu: ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: veriler eşlemeler. Source içinde belirtilen türe dönüştürülemiyor.
 
-- **Öneri**: kaynak verileri iki kez kontrol edin veya kopyalama etkinliği sütun eşlemesinde bu sütun için doğru veri türünü belirtin. Daha fazla bilgi için, bkz. [Azure Data Factory etkinlik kopyalama tarafından desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Öneri**: kaynak verileri iki kez kontrol edin veya kopyalama etkinliği sütun eşlemesinde bu sütun için doğru veri türünü belirtin. Daha fazla bilgi için, bkz. [Azure Data Factory etkinlik kopyalama tarafından desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Hata kodu: ParquetDataCountNotMatchColumnCount
@@ -831,7 +831,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
     Özel anahtar içeriği anahtar kasanızdan ise, doğrudan SFTP bağlantılı hizmetine yüklerseniz özgün anahtar dosyası çalışabilir.
 
-    Daha fazla bilgi için bkz. [Azure Data Factory kullanarak SFTP sunucusundan verileri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication). Özel anahtar içeriği Base64 kodlamalı SSH özel anahtar içeridir.
+    Daha fazla bilgi için bkz. [Azure Data Factory kullanarak SFTP sunucusundan verileri kopyalama](./connector-sftp.md#using-ssh-public-key-authentication). Özel anahtar içeriği Base64 kodlamalı SSH özel anahtar içeridir.
 
     *Tüm* özgün özel anahtar dosyasını Base64 kodlaması ile kodlayın ve kodlanmış dizeyi anahtar kasanıza depolayın. Özgün özel anahtar dosyası, dosyadan **karşıya yükle** ' yi seçerseniz SFTP bağlantılı hizmetinde çalışabileceğiniz bir dosyadır.
 
@@ -902,7 +902,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
     Düşük aktarım hızını yükseltmek istiyorsanız, eş zamanlı bağlantı sayısı sınırını artırmak için SFTP yöneticinizle iletişime geçin veya aşağıdakilerden birini yapabilirsiniz:
 
     * Şirket içinde barındırılan IR kullanıyorsanız, şirket içinde barındırılan IR makinesinin IP 'sini izin verilenler listesine ekleyin.
-    * Azure IR kullanıyorsanız [Azure INTEGRATION RUNTIME IP adreslerini](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)ekleyin. SFTP sunucusu izin verilenler listesine bir IP aralığı eklemek istemiyorsanız, bunun yerine kendinden konak IR kullanın.
+    * Azure IR kullanıyorsanız [Azure INTEGRATION RUNTIME IP adreslerini](./azure-integration-runtime-ip-addresses.md)ekleyin. SFTP sunucusu izin verilenler listesine bir IP aralığı eklemek istemiyorsanız, bunun yerine kendinden konak IR kullanın.
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online listesi
 
@@ -961,7 +961,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: Şirket IÇINDE barındırılan IR Java çalışma zamanı 'nı bulamıyor. Belirli kaynakları okumak için Java çalışma zamanı gereklidir.
 
-- **Öneri**: Tümleştirme çalışma zamanı ortamınızı denetleyin, bkz. [şirket Içinde barındırılan Integration Runtime kullanma](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime).
+- **Öneri**: Tümleştirme çalışma zamanı ortamınızı denetleyin, bkz. [şirket Içinde barındırılan Integration Runtime kullanma](./format-parquet.md#using-self-hosted-integration-runtime).
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>Hata kodu: Yavaya Cardpathsinyatsupported

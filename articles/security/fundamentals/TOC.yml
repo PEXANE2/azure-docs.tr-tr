@@ -10,8 +10,6 @@
   items:
     - name: Güvenliğe yönelik teknik özellikler
       href: technical-capabilities.md
-    - name: Yerleşik güvenlik denetimleri
-      href: security-controls.md
 - name: Azure platformu ve altyapısı
   items:
     - name: Altyapı güvenliği

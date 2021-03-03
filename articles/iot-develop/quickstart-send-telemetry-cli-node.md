@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: 895b49779a202b817af1ede5082a11a5b1736afd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6e0264bc0d1bea91a6094f90c4cb41f071e17dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654998"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712592"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme (Node.js)
 
@@ -73,7 +73,7 @@ Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Node.
     export DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
 
-1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
+1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -191,12 +191,12 @@ Bu hızlı başlangıçta oluşturulan Azure kaynaklarına artık ihtiyacınız 
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
 Bir kaynak grubunu adıyla silmek için:
-1. [Az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu çalıştırın. Bu komut, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
+1. [Az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutunu çalıştırın. Bu komut, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kaynak grubunun silindiğini onaylamak için [az Group List](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) komutunu çalıştırın.  
+1. Kaynak grubunun silindiğini onaylamak için [az Group List](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-list) komutunu çalıştırın.  
 
     ```azurecli
     az group list
@@ -208,4 +208,4 @@ Bu hızlı başlangıçta, bir cihazı buluta güvenli bir şekilde bağlamak ve
 
 Sonraki adım olarak, uygulama örnekleri aracılığıyla Azure IoT Node.js SDK 'sını keşfedebilirsiniz.
 
-- [Daha fazla Node.js örnek](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples): Bu dizin, IoT Hub senaryoları göstermek IÇIN Node.js SDK deposundan daha fazla örnek içerir. 
+- [Daha fazla Node.js örnek](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples): Bu dizin, IoT Hub senaryoları göstermek IÇIN Node.js SDK deposundan daha fazla örnek içerir.

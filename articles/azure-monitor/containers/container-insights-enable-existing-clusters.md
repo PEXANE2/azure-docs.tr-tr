@@ -1,23 +1,23 @@
 ---
 title: Dağıtılmış bir Azure Kubernetes hizmeti (AKS) kümesini izleme | Microsoft Docs
-description: Azure Kubernetes hizmeti (AKS) kümesini aboneliğinizde zaten dağıtılan kapsayıcılar için Azure Izleyici ile izlemeyi nasıl etkinleştireceğinizi öğrenin.
+description: Aboneliğinizde zaten dağıtılan bir Azure Kubernetes hizmeti (AKS) kümesinin izlenmesini nasıl etkinleştireceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717681"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
-Bu makalede, aboneliğinizde zaten dağıtılmış olan [Azure Kubernetes hizmetinde](../../aks/index.yml) barındırılan yönetilen Kubernetes kümesini izlemek için kapsayıcılar Için Azure izleyici 'nin nasıl ayarlanacağı açıklanır.
+Bu makalede, aboneliğinizde zaten dağıtılmış olan [Azure Kubernetes hizmetinde](../../aks/index.yml) barındırılan yönetilen Kubernetes kümesini Izlemek için kapsayıcı öngörülerinin nasıl ayarlanacağı açıklanır.
 
 Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz:
 
-* Azure CLI’si
+* Azure CLI
 * Terraform
 * [Azure Izleyici 'den](#enable-from-azure-monitor-in-the-portal) veya Azure Portal [doğrudan aks kümesinden](#enable-directly-from-aks-cluster-in-the-portal)
 * [Azure Resource Manager şablonuyla](#enable-using-an-azure-resource-manager-template) , Azure PowerShell cmdlet 'Ini `New-AzResourceGroupDeployment` veya Azure CLI ile birlikte.
@@ -113,13 +113,13 @@ Azure Izleyici Azure portal AKS kümenizi izlemeyi etkinleştirmek için aşağ�
 
 4. İzlenmeyen kümeler listesinden, listeden kapsayıcıyı bulun ve **Etkinleştir**' e tıklayın.
 
-5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.
+5. Kapsayıcı içgörüleri **ekleme** sayfasında, kümeyle aynı abonelikte bulunan bir Log Analytics çalışma alanınız varsa, bunu aşağı açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
 
     ![AKS kapsayıcı öngörüleri izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../logs/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -137,13 +137,13 @@ Azure portal doğrudan AKS kümelerinizin birinden izlemeyi etkinleştirmek içi
 
 5. Kubernetes hizmetine genel bakış sayfasında, **izleme-Öngörüler**' i seçin.
 
-6. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte var olan bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.
+6. Kapsayıcı içgörüleri **ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
 
     ![AKS kapsayıcı durumu izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../logs/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, AKS kapsayıcısının dağıtıldığı aynı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için işletimsel verileri görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -158,7 +158,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
 >Şablonun, kümeyle aynı kaynak grubunda dağıtılması gerekir.
 >
 
-Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../samples/resource-manager-workspace.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../logs/resource-manager-workspace.md), [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../logs/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
 Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilseniz, bkz:
 
@@ -380,4 +380,4 @@ Birkaç dakika sonra komut tamamlanır ve çözüm hakkında JSON biçimli bilgi
 
 * Çözümü oluşturmaya çalışırken sorunlarla karşılaşırsanız, [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin
 
-* İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
+* İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcı öngörülerini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.

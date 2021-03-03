@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: Bir VPN ağ geçidi bağlantısını doğrulama
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: Bir VPN ağ geçidini sıfırlama
+        - name: VPN ağ geçidini veya bağlantısını sıfırlama
           href: reset-gateway.md
         - name: VPN ağ geçidi silme
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune - VPN istemcisi profili dağıtma
               href: vpn-profile-intune.md
+        - name: Birden çok kimlik doğrulama türü
+          items:
+            - name: Azure portalı
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: OpenVPN tüneli türünü yapılandırma
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP tanılama
+          href: bgp-diagnostics.md
         - name: Zorlamalı tünel yapılandırma
           items:
             - name: Azure PowerShell

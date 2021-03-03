@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 02/18/2021
 ms.author: b-juche
-ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571099"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740571"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv4.1 Kerberos şifrelemesini yapılandırma
 
@@ -89,7 +89,7 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 
 2. Yönergeleri göstermek için birimden **bağlama yönergeleri** ' ni seçin.
 
-    Örneğin: 
+    Örnek: 
 
     ![Kerberos birimleri için bağlama yönergeleri](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
@@ -112,66 +112,11 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 
 ## <a name="performance-impact-of-kerberos-on-nfsv41"></a><a name="kerberos_performance"></a>NFSv 4.1 üzerinde Kerberos 'un performans etkisi 
 
-Bu bölüm, NFSv 4.1 üzerinde Kerberos 'un performans etkisini anlamanıza yardımcı olur.
-
-### <a name="available-security-options"></a>Kullanılabilir güvenlik seçenekleri 
-
-Şu anda NFSv 4.1 birimleri için kullanılabilir olan güvenlik seçenekleri şunlardır: 
-
-* **sec = sys** , NFS işlemlerinin kimliğini doğrulamak için AUTH_SYS kullanarak yerel UNIX UID 'Leri ve GID 'leri kullanır.
-* **sec = krb5** , kullanıcıların kimliğini doğrulamak IÇIN yerel UNIX uid 'Leri ve GID 'Ler yerine Kerberos V5 kullanır.
-* **sec = krb5i** , Kullanıcı kimlik doğrulaması Için Kerberos V5 kullanır ve verilerin değiştirilmesini engellemek için güvenli sağlama TOPLAMı kullanarak NFS işlemlerinin bütünlük denetimini gerçekleştirir.
-* **sec = krb5p** Kullanıcı kimlik doğrulaması ve bütünlük denetimi Için Kerberos V5 kullanır. Trafik algılaması 'nı engellemek için NFS trafiğini şifreler. Bu seçenek en güvenli ayardır, ancak aynı zamanda en fazla performans yükünden de oluşur.
-
-### <a name="performance-vectors-tested"></a>Performans vektörlerini test edildi
-
-Bu bölümde çeşitli seçeneklerin tek istemci tarafı performans etkisi açıklanmaktadır `sec=*` .
-
-* Performans etkisi iki düzeyde test edildi: düşük eşzamanlılık (düşük yük) ve yüksek eşzamanlılık (g/ç ve aktarım hızı üst sınırı).  
-* Üç tür iş yükü test edilmiştir:  
-    * Küçük işlem rastgele okuma/yazma (FIO kullanarak)
-    * Büyük işlem sıralı okuma/yazma (FIO kullanarak)
-    * Git gibi uygulamalar tarafından oluşturulan meta veriler ağır iş yükü
-
-### <a name="expected-performance-impact"></a>Beklenen performans etkisi 
-
-İki odak alanı vardır: açık yük ve üst sınır. Aşağıdaki listede güvenlik ayarı ve senaryo tarafından senaryoya göre performans etkisi güvenlik ayarı açıklanır. Tüm karşılaştırmalar güvenlik parametresine göre yapılır `sec=sys` . Test, tek bir istemci kullanılarak tek bir birimde gerçekleştirildi. 
-
-Krb5 'in performans etkisi:
-
-* Düşük eşzamanlılık (r/w):
-    * Sıralı gecikme artan 0,3 MS.
-    * Rastgele g/ç gecikme süresi arttı 0,2 ms.
-    * Meta veri g/ç gecikme süresi 0,2 ms.
-* Yüksek eşzamanlılık (r/w): 
-    * En fazla sıralı üretilen iş krb5 tarafından etkilenmedi.
-    * İş yükü saf yazma 'ya kaydıkça, tamamen etkinin sıfıra düşürüldüğü, saf okuma iş yükleri için en yüksek rastgele g/ç değeri %30 oranında azaltılır. 
-    * Maksimum meta veri iş yükü %30 oranında azaltıldı.
-
-Krb5i 'in performans etkisi: 
-
-* Düşük eşzamanlılık (r/w):
-    * Sıralı gecikme artan 0,5 ms.
-    * Rastgele g/ç gecikme süresi arttı 0,2 ms.
-    * Meta veri g/ç gecikme süresi 0,2 ms.
-* Yüksek eşzamanlılık (r/w): 
-    * İş yükü karışımından bağımsız olarak en fazla sıralı üretilen iş yükü %70 oranında azaltılır.
-    * İş yükü saf yazmaya kaydıkça, saf okuma iş yükleri için %50 oranında en yüksek rastgele g/ç azaltılır. 
-    * Maksimum meta veri iş yükü %30 oranında azaltıldı.
-
-Krb5p 'in performans etkisi:
-
-* Düşük eşzamanlılık (r/w):
-    * Sıralı gecikme artan 0,8 MS.
-    * Rastgele g/ç gecikme süresi arttı 0,2 ms.
-    * Meta veri g/ç gecikme süresi 0,2 ms.
-* Yüksek eşzamanlılık (r/w): 
-    * İş yükü karışımından bağımsız olarak en fazla sıralı üretilen iş yükü %85 oranında azaltılır. 
-    * İş yükü saf yazmaya kaydıkça, saf okuma 43 iş yükleri için %65 oranında en yüksek rastgele g/ç azalır. 
-    * Maksimum meta veri iş yükü %30 oranında azaltıldı.
+NFSv 4.1 birimleri için kullanılabilen güvenlik seçeneklerini, sınanan performans vektörlerini ve Kerberos 'un beklenen performans etkisini anlamanız gerekir. Ayrıntılar için [NFSv 4.1 birimlerinde Kerberos 'un performans etkisi](performance-impact-kerberos.md) konusuna bakın.  
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
+* [NFSv 4.1 birimlerinde Kerberos 'un performans etkisi](performance-impact-kerberos.md)
 * [NFSv 4.1 Kerberos birimi sorunlarını giderme](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Azure NetApp Files hakkında SSS](azure-netapp-files-faqs.md)
 * [Azure NetApp Files için NFS birimi oluşturma](azure-netapp-files-create-volumes.md)

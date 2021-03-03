@@ -248,7 +248,7 @@
         - name: PremiumV3 katmanını yapılandırma
           href: app-service-configure-premium-tier.md
         - name: Ölçeği birden fazla örneğe genişletme
-          href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: Yüksek yoğunluklu barındırma
           href: manage-scale-per-app.md
     - name: Uygulama izleme

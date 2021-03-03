@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692411"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
-
 
 Bu makalede, bir Azure Machine Learning işlem hattındaki adımlar arasında veri alma, dönüştürme ve taşıma kodu sağlanmaktadır. Verilerin Azure Machine Learning nasıl çalıştığına ilişkin genel bakış için bkz. [Azure Storage hizmetlerindeki verilere erişme](how-to-access-data.md). Azure Machine Learning işlem hatlarının avantajları ve yapısı için bkz. [Azure Machine Learning işlem hatları nedir?](concept-ml-pipelines.md).
 
@@ -29,7 +28,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - `Dataset`Verileri, eğitim ve doğrulama alt kümeleri gibi alt kümelere bölme
 - `OutputFileDatasetConfig`Sonraki işlem hattı adımına veri aktarmak için nesne oluşturma
 - İşlem `OutputFileDatasetConfig` hattı adımlarına girdi olarak nesneleri kullanma
-- `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `OutputFileDatasetConfig`
+- `Dataset` `OutputFileDatasetConfig` Wisƒh devam etmek için size yeni nesneler oluşturma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -64,10 +63,12 @@ Nesneleri oluşturmak ve kaydettirmek için birçok yol vardır `Dataset` . Tabl
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 Farklı seçeneklere ve farklı kaynaklara sahip veri kümeleri oluşturma, bunları kaydetme ve Azure Machine Learning Kullanıcı arabiriminde gözden geçirme, veri boyutunun işlem kapasitesiyle nasıl etkileşime gireceğini anlama ve bunların sürümü oluşturma hakkında daha fazla seçenek için bkz. [Azure Machine Learning veri kümeleri oluşturma](how-to-create-register-datasets.md). 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 İlk işlem hattı adımı, yola bazı veriler yazar `OutputFileDatasetConfig` ve bu ilk adımın çıktısı haline gelirse, sonraki bir adımda giriş olarak kullanılabilir. 
 
-Aşağıdaki kodda, 
+Aşağıdaki kodda: 
 
 * `step1_output_data` PythonScriptStep çıktısının, `step1` `my_adlsgen2` karşıya yükleme erişim modunda ADLS Gen 2 veri deposuna yazıldığını belirtir. ADLS Gen 2 veri depolarına geri veri yazmak için [rol izinlerini ayarlama](how-to-access-data.md#azure-data-lake-storage-generation-2) hakkında daha fazla bilgi edinin. 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>`OutputFileDatasetConfig`Artık gerekli olmadığında içerikleri Sil
+
+Azure, ile yazılmış ara verileri otomatik olarak silmez `OutputFileDatasetConfig` . Çok sayıda gereksiz veri için depolama ücretlerinden kaçınmak için şunlardan birini yapmalısınız:
+
+* İşlem hattı çalıştırmasının sonunda, artık gerekli olmadığında ara verileri program aracılığıyla silme
+* Ara veriler için kısa vadeli depolama ilkesiyle BLOB depolama kullanma (bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Daha uzun süre gerekli olmayan verileri düzenli olarak gözden geçirin ve silin
+
+Daha fazla bilgi için bkz. [Azure Machine Learning için maliyetleri planlayın ve yönetin](concept-plan-manage-cost.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

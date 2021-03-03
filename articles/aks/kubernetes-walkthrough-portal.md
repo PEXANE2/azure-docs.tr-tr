@@ -1,17 +1,17 @@
 ---
-title: Portalda AKS kümesi oluşturma
+title: 'Hızlı başlangıç: Azure portal kullanarak AKS kümesi dağıtma'
 titleSuffix: Azure Kubernetes Service
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, bir uygulamayı dağıtmayı ve Azure portal kullanarak Azure Kubernetes hizmeti 'nde (AKS) performansı izlemenizi öğrenin.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 7f59924b2a50f29e01d46e12389e5ca52769225d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 443c9e0cebe2a45386b63b3a0bc4a813d243e49e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714570"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -47,7 +47,7 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 4. **Düğüm havuzları** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
-    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu alana ulaşırsanız, azaltma için lütfen [buraya](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) gidin.
+    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu duruma ulaşırsanız, azaltma için [Genel Azure Kubernetes hizmet sorunlarını giderme](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) makalesini ziyaret edin.
 
 5. **Kimlik Doğrulaması** sayfasında aşağıdaki seçenekleri yapılandırın:
     - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu** olarak bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir hizmet sorumlusunu kullanmak için *Hizmet sorumlusu yapılandır*’ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
@@ -78,7 +78,7 @@ Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [k
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
+Kümenizin bağlantısını doğrulamak için `kubectl get` komutunu kullanarak küme düğümlerinin bir listesini döndürün.
 
 ```console
 kubectl get nodes
@@ -93,7 +93,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki [Kubernetes dağıtımı][kubernetes-deployment] vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki [Kubernetes hizmeti][kubernetes-service] de oluşturulur; redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
+Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki Kubernetes dağıtımı vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki Kubernetes hizmeti de oluşturulur; Redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
 
 Cloud Shell, veya gibi adlı bir dosya oluşturmak için bir düzenleyici kullanın `azure-vote.yaml` `code azure-vote.yaml` `nano azure-vote.yaml` `vi azure-vote.yaml` . Ardından aşağıdaki YAML tanımına kopyalayın:
 
@@ -185,7 +185,7 @@ spec:
     app: azure-vote-front
 ```
 
-[Kubectl Apply][kubectl-apply] komutunu kullanarak uygulamayı dağıtın ve YAML bildiriminizde adı belirtin:
+Komutunu kullanarak uygulamayı dağıtın `kubectl apply` ve YAML bildirimin adını belirtin:
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -204,7 +204,7 @@ service "azure-vote-front" created
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
-İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu bağımsız değişkeniyle birlikte kullanın `--watch` .
+İlerlemeyi izlemek için `kubectl get service` komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -267,7 +267,7 @@ Bu hızlı başlangıçta, bir Kubernetes dağıtımı oluşturmak için öncede
 
 Bu hızlı başlangıçta, bir Kubernetes kümesi dağıtıp ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız.
 
-AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklaması için Kubernetes küme öğreticisine geçin.
+Bir uygulama oluşturma, Azure Container Registry dağıtma, çalışan bir uygulamayı güncelleştirme ve kümenizin ölçeklendirilmesi ve yükseltilmesi dahil olmak üzere eksiksiz bir örnek aracılığıyla AKS hakkında daha fazla bilgi edinmek için Kubernetes küme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [AKS öğreticisi][aks-tutorial]
@@ -288,6 +288,3 @@ AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklamas�
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: ../dev-spaces/index.yml
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services

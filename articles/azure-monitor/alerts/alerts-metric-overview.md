@@ -4,16 +4,16 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723614"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
-Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine çalışır. Bu ölçümler, [Platform ölçümleri](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [özel ölçümler](../platform/metrics-custom-overview.md), [Azure izleyici 'deki popüler Günlükler ölçüm](./alerts-metric-logs.md) ve Application Insights ölçümlerine dönüştürülebilir. Ölçüm uyarıları, bir veya daha fazla ölçüm zaman serisinde koşulların doğru olup olmadığını denetlemek için düzenli aralıklarla değerlendirilir ve değerlendirmelere uyulduğunda bildirim alın. Ölçüm uyarıları durum bilgisi olur, diğer bir deyişle, yalnızca durum değiştiğinde bildirimleri gönderir.
+Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine çalışır. Bu ölçümler, [Platform ölçümleri](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [özel ölçümler](../essentials/metrics-custom-overview.md), [Azure izleyici 'deki popüler Günlükler ölçüm](./alerts-metric-logs.md) ve Application Insights ölçümlerine dönüştürülebilir. Ölçüm uyarıları, bir veya daha fazla ölçüm zaman serisinde koşulların doğru olup olmadığını denetlemek için düzenli aralıklarla değerlendirilir ve değerlendirmelere uyulduğunda bildirim alın. Ölçüm uyarıları durum bilgisi olur, diğer bir deyişle, yalnızca durum değiştiğinde bildirimleri gönderir.
 
 ## <a name="how-do-metric-alerts-work"></a>Ölçüm uyarıları nasıl çalışır?
 
@@ -26,7 +26,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: statik
-- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](../platform/metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
+- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](../essentials/metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -43,7 +43,7 @@ Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluştur
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: dinamik
-- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](../platform/metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
+- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](../essentials/metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -141,7 +141,7 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 
 | Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
-| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | No |
+| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
 | SQL Server elastik havuzlar | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |
@@ -180,9 +180,8 @@ Desteklenen kaynak türlerinin tam listesini bu [makalede](./alerts-metric-near-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da ölçüm uyarılarını oluşturma, görüntüleme ve yönetme hakkında bilgi edinin](../alerts/alerts-metric.md)
-- [Azure montior Ölçüm Gezgini içinde uyarı oluşturma hakkında bilgi edinin](../platform/metrics-charts.md#alert-rules)
+- [Azure montior Ölçüm Gezgini içinde uyarı oluşturma hakkında bilgi edinin](../essentials/metrics-charts.md#alert-rules)
 - [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](./alerts-metric-create-templates.md)
-- [Eylem grupları hakkında daha fazla bilgi edinin](../platform/action-groups.md)
+- [Eylem grupları hakkında daha fazla bilgi edinin](./action-groups.md)
 - [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](../alerts/alerts-dynamic-thresholds.md)
 - [Ölçüm uyarılarında sorun giderme sorunları hakkında daha fazla bilgi edinin](alerts-troubleshoot-metric.md)
-

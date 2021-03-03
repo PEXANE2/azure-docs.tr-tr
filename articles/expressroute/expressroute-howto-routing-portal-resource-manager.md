@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721914"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure portal kullanarak Azure Resource Manager ExpressRoute ba�
 
 ExpressRoute bağlantı hattı için özel eşleme ve Microsoft eşlemesi yapılandırabilirsiniz (Azure genel eşleme yeni devreler için kullanım dışıdır). Eşlemeler, seçtiğiniz herhangi bir sırada yapılandırılabilir. Ancak, her eşlemenin yapılandırmasını birer birer tamamladığınızdan emin olmanız gerekir. Yönlendirme etki alanları ve eşlemeler hakkında daha fazla bilgi için bkz. [ExpressRoute yönlendirme etki alanları](expressroute-circuit-peerings.md). Ortak eşleme hakkında daha fazla bilgi için bkz. [ExpressRoute genel eşleme](about-public-peering.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Devre için Microsoft eşlemesini yapılandırma, güncelleştirme ve silme
 > - Devre için Azure özel eşlemesini yapılandırma, güncelleştirme ve silme
@@ -75,14 +75,17 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
 
 2. Bağlantı hattı için Microsoft eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 
-   * Size ait olan ve bir RıR/IÇ_VERIM_ORANı 'ye kayıtlı bir çift/30 alt ağı. Bunların geçerli ortak IPv4 önekleri olması gerekir. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız.
-   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar aynı VLAN KIMLIĞINI kullanmanız gerekir.
+   * Size ait ve bir RıR/IÇ_VERIM_ORANı 'ye kayıtlı bir alt ağ çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız. Bu alt ağ çifti için üç seçeneğiniz vardır:
+       * IPv4: Iki/30 alt ağı. Bunların geçerli ortak IPv4 önekleri olması gerekir.
+       * IPv6: Iki/126 alt ağı. Bunlar geçerli genel IPv6 ön ekleri olmalıdır.
+       * Her ikisi: Iki/30 alt ağ ve iki/126 alt ağı.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar için aynı VLAN KIMLIĞINI kullanmanız gerekir.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
    * Tanıtılan ön ekler: BGP oturumunda tanıtmayı planladığınız tüm ön eklerin bir listesini sağlarsınız. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi gönderilmesini planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.
    * **Isteğe bağlı-** Müşteri ASN: eşdeğer olarak eşleme kayıtlı olmayan ön ekler varsa, birlikte kaydettirildikleri AS numarasını belirtebilirsiniz.
    * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
    * **Isteğe bağlı-** Kullanmayı seçerseniz bir MD5 karma değeri.
-3. Yapılandırmak istediğiniz eşlemeyi aşağıdaki örnekte gösterildiği gibi seçebilirsiniz. Microsoft eşleme satırını seçin.
+1. Yapılandırmak istediğiniz eşlemeyi aşağıdaki örnekte gösterildiği gibi seçebilirsiniz. Microsoft eşleme satırını seçin.
 
    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="Microsoft eşleme satırını seçin":::
 
@@ -120,6 +123,11 @@ Değiştirmek istediğiniz eşlemenin satırını seçip eşleme özelliklerini 
 
 Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapılandırmasını oluşturmanıza, almanıza, güncelleştirmenize ve silmenize yardımcı olur.
 
+> [!IMPORTANT]
+> Özel eşleme için IPv6 desteği şu anda **genel önizlemededir**. Sanal ağınızı IPv6 tabanlı özel eşleme ile bir ExpressRoute devresine bağlamak istiyorsanız, lütfen sanal ağınızın ikili bir yığın olduğundan ve [burada](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)açıklanan yönergeleri izlediğinden emin olun.
+> 
+> 
+
 ### <a name="to-create-azure-private-peering"></a>Azure özel eşlemesi oluşturmak için
 
 1. ExpressRoute bağlantı hattını yapılandırın. Devam etmeden önce bağlantı sağlayıcı tarafından bağlantı hattının tam olarak sağlandığından emin olun. 
@@ -136,8 +144,11 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
 2. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlarla devam etmeden önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-   * Size ait bir/30 alt ağı çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız.
-   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar aynı VLAN KIMLIĞINI kullanmanız gerekir.
+   * Sanal ağlar için ayrılan herhangi bir adres alanının parçası olmayan bir alt ağ çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız. Bu alt ağ çifti için üç seçeneğiniz vardır:
+       * IPv4: Iki/30 alt ağı.
+       * IPv6: Iki/126 alt ağı.
+       * Her ikisi: Iki/30 alt ağ ve iki/126 alt ağı.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar için aynı VLAN KIMLIĞINI kullanmanız gerekir.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. 65515 ile 65520 arasında (ikisi de dahil olmak üzere), bu eşleme için özel bir AS numarası kullanabilirsiniz.
    * Özel eşlemeyi yapılandırırken şirket içi kenar yönlendiricinizin yollarını BGP aracılığıyla Azure 'a duyurmanız gerekir.
    * **Isteğe bağlı-** Kullanmayı seçerseniz bir MD5 karma değeri.

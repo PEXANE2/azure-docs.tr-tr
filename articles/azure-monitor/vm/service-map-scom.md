@@ -1,29 +1,29 @@
 ---
-title: VM'ler için Azure İzleyici haritasını Operations Manager ile tümleştirin | Microsoft Docs
-description: VM'ler için Azure İzleyici Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager ' de otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için harita özelliğinin kullanılması anlatılmaktadır.
+title: VM Insights haritasını Operations Manager ile tümleştirin | Microsoft Docs
+description: VM öngörüleri Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager ' de otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için harita özelliğinin kullanılması anlatılmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725501"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>VM öngörüleri eşleme özelliği ile System Center Operations Manager tümleştirme
 
-VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. Eşleme özelliği ve System Center Operations Manager arasındaki bu tümleştirmeyle, VM'ler için Azure İzleyici içindeki dinamik bağımlılık haritalarını temel alan Operations Manager otomatik olarak dağıtılmış uygulama diyagramları oluşturabilirsiniz. Bu makalede, System Center Operations Manager yönetim grubunuzun bu özelliği destekleyecek şekilde nasıl yapılandırılacağı açıklanmaktadır.
+VM öngörüleri ' nde, bulunan uygulama bileşenlerini Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM) görüntüleyebilirsiniz. Eşleme özelliği ve System Center Operations Manager arasındaki bu tümleştirmeyle, sanal makine öngörülerinde dinamik bağımlılık haritalarını temel alan Operations Manager otomatik olarak dağıtılmış uygulama diyagramları oluşturabilirsiniz. Bu makalede, System Center Operations Manager yönetim grubunuzun bu özelliği destekleyecek şekilde nasıl yapılandırılacağı açıklanmaktadır.
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../vm/vminsights-overview.md).
+>Daha önce Hizmet Eşlemesi dağıttıysanız, sanal makine öngörülerini, VM sistem durumunu ve performansını izlemek için ek özellikler içeren VM içgörüler ' de görüntüleyebilirsiniz. VM öngörülerinin harita özelliği, tek başına Hizmet Eşlemesi çözümünü değiştirme amaçlıdır. Daha fazla bilgi için bkz. [VM öngörülerine genel bakış](../vm/vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * System Center Operations Manager yönetim grubu (2012 R2 veya üzeri).
-* VM'ler için Azure İzleyici desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.
+* VM öngörülerini desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.
 * Operations Manager tarafından izlenen bir veya daha fazla Windows ve Linux sanal makinesi veya fiziksel bilgisayar Log Analytics çalışma alanınıza veri gönderiyor. Bir Operations Manager yönetim grubuna raporlayan Linux sunucularının Azure Izleyici 'ye doğrudan bağlanacak şekilde yapılandırılması gerekir. Daha fazla bilgi için [Log Analytics aracısıyla günlük verilerini toplama](../agents/log-analytics-agent.md)bölümündeki genel bakışı gözden geçirin.
 * Log Analytics çalışma alanıyla ilişkili Azure aboneliğine erişimi olan bir hizmet sorumlusu. Daha fazla bilgi için [hizmet sorumlusu oluşturma](#create-a-service-principal)bölümüne gidin.
 
@@ -43,7 +43,7 @@ Hizmet Eşlemesi yönetim paketini yükledikten sonra, **hizmet eşlemesi** yeni
 >[!NOTE]
 >[Operations Management Suite, Log Analytics dahil olan hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) . artık [Azure izleyici](../overview.md)'nin bir parçasıdır.
 
-VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aşağıdakileri yapın:
+VM öngörüleri eşleme tümleştirmesini yapılandırmak için şunları yapın:
 
 1. Yapılandırma Sihirbazı 'nı açmak için **hizmet eşlemesi genel bakış** bölmesinde **çalışma alanı Ekle**' ye tıklayın.  
 
@@ -66,7 +66,7 @@ VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aş
     Bir sunucu için dağıtılmış uygulama diyagramı oluşturmak amacıyla tümleştirme için sunucu şu şekilde olmalıdır:
 
    * Operations Manager tarafından izlenen
-   * VM'ler için Azure İzleyici ile yapılandırılan Log Analytics çalışma alanına raporlamak için yapılandırılır
+   * VM öngörüleri ile yapılandırılan Log Analytics çalışma alanına raporlamak için yapılandırılır
    * Hizmet Eşlemesi Servers grubunda listelenmiştir
 
      ![Operations Manager yapılandırma grubu](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ Hizmet Eşlemesi klasörü dört düğüme sahiptir:
   >[!NOTE]
   >Bu uyarılar Operations Manager ile eşitlenen Log Analytics uyarıları değil, Hizmet Eşlemesi yönetim paketinde tanımlanan iş akışlarına göre yönetim grubunda oluşturulur.
 
-* **Sunucular**: VM'ler için Azure izleyici eşleme özelliğinden eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
+* **Sunucular**: VM öngörüleri eşleme özelliğinden eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
 
     ![Operations Manager Izleme sunucuları bölmesi](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanı yapılandır
 
 ## <a name="configure-rules-and-overrides"></a>Kuralları ve geçersiz kılmaları yapılandırma
 
-Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval** parametresi için değiştirebilirsiniz.
+Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenlı aralıklarla VM öngörüleri eşleme özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval** parametresi için değiştirebilirsiniz.
 
 ![Operations Manager Özellikler penceresi geçersiz kılınır](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ Bir kural, *Microsoft.SystemCenter. Servicemapımport. Rule*, düzenli aralıkla
 Geçerli tasarımda aşağıdaki sorunlar ve sınırlamalar sunulmaktadır:
 
 * Yalnızca tek bir Log Analytics çalışma alanına bağlanabilirsiniz.
-* **Yazma** bölmesi aracılığıyla hizmet eşlemesi Servers grubuna el ile sunucu ekleyebilseniz de, bu sunucuların haritaları hemen eşitlenmez. Bir sonraki eşitleme çevrimi sırasında VM'ler için Azure İzleyici Map özelliğinden eşitlenir.
-* Yönetim paketi tarafından oluşturulan dağıtılmış uygulama diyagramlarında herhangi bir değişiklik yaparsanız, bu değişikliklerin büyük olasılıkla VM'ler için Azure İzleyici bir sonraki eşitlemede üzerine yazılır.
+* **Yazma** bölmesi aracılığıyla hizmet eşlemesi Servers grubuna el ile sunucu ekleyebilseniz de, bu sunucuların haritaları hemen eşitlenmez. Bir sonraki eşitleme çevrimi sırasında VM öngörüleri eşleme özelliğinden eşitlenecek.
+* Yönetim paketi tarafından oluşturulan dağıtılmış uygulama diyagramlarında herhangi bir değişiklik yaparsanız, bu değişikliklerin büyük olasılıkla VM öngörülerine sahip bir sonraki eşitlemede üzerine yazılır.
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -144,5 +144,5 @@ Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
 
 ### <a name="suggestions"></a>Öneriler
 
-VM'ler için Azure İzleyici Map özelliği veya bu belgeler ile tümleştirme hakkında bizimle ilgili geri bildiriminiz var mı? Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
+VM öngörüleri eşleme özelliği veya bu belgeler hakkında bizimle ilgili geri bildiriminiz var mı? Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
 

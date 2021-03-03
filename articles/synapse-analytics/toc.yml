@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Spark iş tanımlarını görnderme
           href: ./spark/apache-spark-job-definitions.md
+        - name: Azure SYNAPSE Spark uygulama düzeyi ölçümlerini bağlama ve izleme
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Prometheus ve Grafana ile uygulama düzeyi ölçümlerini izleyin Apache Spark
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: Kavramlar
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: Notebooks
           href: ./spark/apache-spark-notebook-concept.md
+        - name: Paket yönetimi
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: İzleme araçları
           href: monitoring/how-to-monitor-spark-applications.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Delta Lake ile çalışma
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Kitaplıkları yönetme
+        - name: Paketleri yönetme
           items:
-            - name: Kitaplıkları ekleme ve yönetme
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: Kitaplık yükleme hatalarını giderme
+            - name: Python paketlerini Yönet
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Scala paketlerini Yönet
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Python paketi yükleme hatalarını giderme
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Not defterlerini ve IDE araçlarını kullanma
           items:

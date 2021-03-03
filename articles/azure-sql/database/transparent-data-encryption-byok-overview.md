@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691255"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,7 +187,7 @@ Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürül
 
 Sunucu için yapılandırılmış coğrafi yedeklilik olmadığında bile, sunucuyu aynı anahtar malzemesine sahip iki farklı bölgede iki farklı Anahtar Kasası kullanacak şekilde yapılandırmak kesinlikle önerilir. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmemiştir. Birincil anahtar kasasını etkileyen bir kesinti varsa ve bu durumda, sistem varsa ikincil anahtar kasasında aynı parmak izine sahip diğer bağlantılı anahtara otomatik olarak geçiş yapar. Bu anahtar, iptal edilen erişim haklarından dolayı TDE koruyucusu erişilemediğinde veya anahtar ya da Anahtar Kasası silindiği için, müşterinin bir sunucunun anahtara erişimini kasıtlı olarak kısıtlayabileceğinden bu anahtarın gerçekleşmeyeceğini unutmayın. Farklı bölgelerde iki Anahtar Kasası için aynı anahtar malzemesini sağlamak, anahtar kasasının dışında anahtar oluşturarak ve bunları her iki Anahtar Kasası içine aktararak yapılabilir. 
 
-Alternatif olarak, sunucu ile aynı bölgede yer alan ve anahtarı farklı bir Azure bölgesindeki anahtar kasasında klonlanan birincil anahtar kasası kullanılarak anahtar oluşturarak gerçekleştirilebilir. Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için [Backup-azkeyvaultkey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 'ini kullanın ve ardından [restore-azkeyvaultkey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Anahtar yedekleme/geri yükleme işlemine yalnızca aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki anahtar kasaları arasında izin verilir.  
+Alternatif olarak, sunucu ile aynı bölgede yer alan ve anahtarı farklı bir Azure bölgesindeki anahtar kasasında klonlanan birincil anahtar kasası kullanılarak anahtar oluşturarak gerçekleştirilebilir. Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için [Backup-azkeyvaultkey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 'ini kullanın ve ardından [restore-azkeyvaultkey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Anahtar yedekleme/geri yükleme işlemine yalnızca aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki anahtar kasaları arasında izin verilir.  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

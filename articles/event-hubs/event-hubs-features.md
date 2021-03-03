@@ -2,13 +2,13 @@
 title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739084"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -47,7 +47,12 @@ Event Hubs, bölüm anahtarı değerini paylaşan tüm olayların birlikte depol
 
 ### <a name="event-retention"></a>Olay saklama
 
-Yayımlanan olaylar yapılandırılabilir, süreli tabanlı bir bekletme ilkesine göre bir olay hub 'ından kaldırılır. Varsayılan değer ve mümkün olan en kısa saklama süresi 1 gündür (24 saat). Event Hubs standart için maksimum saklama süresi 7 gündür. Event Hubs Ayrılmış için maksimum saklama süresi 90 gündür.
+Yayımlanan olaylar yapılandırılabilir, süreli tabanlı bir bekletme ilkesine göre bir olay hub 'ından kaldırılır. İşte birkaç önemli nokta:
+
+- **Varsayılan** değer ve mümkün olan **en kısa** saklama süresi **1 gündür (24 saat)**.
+- Event Hubs **Standart** için maksimum saklama süresi **7 gündür**. 
+- **Adanmış** Event Hubs için maksimum saklama süresi **90 gündür**.
+- Saklama süresini değiştirirseniz, zaten Olay Hub 'ında bulunan iletiler dahil tüm iletiler için geçerlidir. 
 
 > [!NOTE]
 > Event Hubs gerçek zamanlı bir olay akış altyapısıdır ve bir veritabanı ve/veya sonsuz olay akışları için kalıcı bir mağaza olarak kullanılmak üzere tasarlanmamıştır. 
@@ -117,6 +122,9 @@ Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 *Denetim noktası oluşturma*, okuyucuların bir bölüm olay dizisindeki konumlarını işaretledikleri veya uyguladıkları bir işlemdir. Denetim noktası oluşturma, tüketicinin sorumluluğundadır ve bir tüketici grubunda bölüm başına temelinde gerçekleşir. Bu sorumluluk, her bir tüketici grubu için her bölüm okuyucusunun geçerli konumunu olay akışında izlemesi gerektiği ve veri akışının tamamlandığını düşündüğünde hizmeti bilgilendirebileceği anlamına gelir.
 
 Bir okuyucunun bölüm bağlantısı kesilirse yeniden bağlandığında ilgili tüketici grubundaki o bölümün son okuyucusu tarafından daha önce gönderilen denetim noktasında okumaya başlar. Okuyucu bağlandığı zaman, okumayı başlatacak konumu belirtmek için Olay Hub 'ına geçişi geçirir. Bu şekilde, denetim noktası oluşturma özelliğini hem aşağı akış uygulamaları ile olayları "tamamlandı" olarak işaretlemek hem de farklı makinelerde çalışan okuyucular arasında bir yük devretme oluşması durumunda esneklik sağlamak amacıyla kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. Bu mekanizmayla denetim noktası oluşturma özelliği hem yük devretme esnekliği hem de olay akışı yeniden yürütmesi sağlar.
+
+> [!IMPORTANT]
+> Uzaklıklar Event Hubs hizmeti tarafından sağlanır. Olay işlendiği için tüketicinin denetim noktası sorumluluğundadır.
 
 > [!NOTE]
 > Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 

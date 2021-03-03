@@ -1,17 +1,16 @@
 ---
 title: Azure Tanılama uzantısına genel bakış
 description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme, bulut hizmetlerinde trafik analizi, sanal makineler ve Service Fabric
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: f3cde32178449169b07f57d4abbc346d8ca89df4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623660"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726232"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantısına genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](../agents/agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
@@ -33,8 +32,8 @@ Azure Izleyici 'deki Log Analytics Aracısı, sanal makinelerin Konuk işletim s
 Dikkate alınması gereken önemli farklılıklar şunlardır:
 
 - Azure Tanılama uzantısı yalnızca Azure sanal makineler ile kullanılabilir. Log Analytics Aracısı, Azure 'da, diğer bulutlarda ve Şirket içindeki sanal makinelerle birlikte kullanılabilir.
-- Azure Tanılama uzantısı, verileri Azure depolama 'ya, [Azure Izleme ölçümlerine](../platform/data-platform-metrics.md) (yalnızca Windows) ve Event Hubs gönderir. Log Analytics Aracısı verileri [Azure Izleyici günlüklerine](../platform/data-platform-logs.md)toplar.
-- Log Analytics Aracısı, [Azure Güvenlik Merkezi](../../security-center/index.yml)gibi [çözümler](../monitor-reference.md#insights-and-core-solutions), [VM'ler için Azure izleyici](../insights/vminsights-overview.md)ve diğer hizmetler için gereklidir.
+- Azure Tanılama uzantısı, verileri Azure depolama 'ya, [Azure Izleme ölçümlerine](../essentials/data-platform-metrics.md) (yalnızca Windows) ve Event Hubs gönderir. Log Analytics Aracısı verileri [Azure Izleyici günlüklerine](../logs/data-platform-logs.md)toplar.
+- Log Analytics Aracısı, [çözümler](../monitor-reference.md#insights-and-core-solutions), [VM öngörüleri](../vm/vminsights-overview.md)ve [Azure Güvenlik Merkezi](../../security-center/index.yml)gibi diğer hizmetler için gereklidir.
 
 ## <a name="costs"></a>Maliyetler
 Azure tanılama uzantısı için bir maliyet yoktur, ancak alınan veriler için ücret ödemeniz gerekebilir. Veri topladığınız hedef için [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/) denetleyin.
@@ -44,7 +43,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Veri Kaynağı | Description |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | Windows olay günlükleri   | Windows olay günlüğü 'nden olaylar. |
 | Performans sayaçları | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -59,7 +58,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 
-| Veri Kaynağı | Description |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | Syslog | Linux olay günlüğü sistemine gönderilen olaylar.   |
 | Performans sayaçları  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -72,9 +71,9 @@ Diğer ek hedeflere veri göndermek için bir veya daha fazla *veri havuzları* 
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Hedef | Description |
+| Hedef | Açıklama |
 |:---|:---|
-| Azure İzleyici Ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](../platform/collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure İzleyici Ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. Bkz. [akış Azure Tanılama verileri Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
 | Application Insights | Diğer uygulama izlemeyle tümleştirilecek Application Insights için sanal makinenizde çalışan uygulamalardan veri toplayın. Bkz. [Application Insights Tanılama verileri gönderme](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +84,11 @@ Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azur
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 LAD, verileri Azure depolama 'daki tablolara yazar. Aşağıdaki tabloda yer aldığı havuzları destekler.
 
-| Hedef | Description |
+| Hedef | Açıklama |
 |:---|:---|
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. |
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
-| Azure İzleyici Ölçümleri | Telegraf aracısını, LAD 'ya ek olarak yükleme. Bkz. [etkileyen bir LINUX VM için özel ölçümleri toplama telegraf Aracısı](../platform/collect-custom-metrics-linux-telegraf.md).
+| Azure İzleyici Ölçümleri | Telegraf aracısını, LAD 'ya ek olarak yükleme. Bkz. [etkileyen bir LINUX VM için özel ölçümleri toplama telegraf Aracısı](../essentials/collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma

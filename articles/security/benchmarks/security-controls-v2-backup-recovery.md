@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 yedekleme ve kurtarma
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368894"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724430"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Güvenlik denetimi v2: yedekleme ve kurtarma
 
 Yedekleme ve kurtarma, farklı hizmet katmanlarındaki veri ve yapılandırma yedeklemelerinin gerçekleştirilmesini, doğrulanmasını ve korunmasını sağlamak için denetimleri ele alır.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: yedekleme ve kurtarma](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: düzenli otomatik yedeklemeler sağlayın
 
@@ -26,9 +28,9 @@ Yedekleme ve kurtarma, farklı hizmet katmanlarındaki veri ve yapılandırma ye
 
 Beklenmeyen bir olaydan sonra iş sürekliliği sağlamak için sistemleri ve verileri yedeklemediğinizden emin olun. Bu, kurtarma noktası hedefi (RPO) ve kurtarma süresi hedefi (RTO) için herhangi bir amaç tarafından tanımlanmalıdır.
 
-Azure Backup etkinleştirin ve yedekleme kaynağını (örn. Azure VM 'Leri, SQL Server, HANA veritabanları veya dosya paylaşımları) ve istenen sıklık ve bekletme süresini yapılandırın.  
+Azure Backup etkinleştirin ve yedekleme kaynağını (Azure VM 'Leri, SQL Server, HANA veritabanları veya dosya paylaşımları gibi) ve istenen sıklık ve bekletme süresini yapılandırın.
 
-Daha yüksek düzeyde koruma için, coğrafi olarak yedekli depolama seçeneğini etkinleştirerek yedek verileri ikincil bir bölgeye çoğaltabilir ve çapraz bölge geri yükleme kullanarak kurtarabilirsiniz.
+Daha yüksek düzeyde koruma için, coğrafi olarak yedekli depolama seçeneğini, yedek verileri ikincil bir bölgeye çoğaltmak ve çapraz bölge geri yükleme kullanarak kurtarmak için etkinleştirebilirsiniz.
 
 - [Kurumsal ölçekli iş sürekliliği ve olağanüstü durum kurtarma](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
@@ -54,15 +56,15 @@ Daha yüksek düzeyde koruma için, coğrafi olarak yedekli depolama seçeneğin
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
-Yedeklemelerinizin saldırılara karşı korunduğundan emin olun. Bu, gizlilik kaybına karşı korunmak için yedeklemelerin şifrelenmesini içermelidir.   
+Yedeklemelerinizin saldırılara karşı korunduğundan emin olun. Bu, gizlilik kaybına karşı korunmak için yedeklemelerin şifrelenmesini içermelidir.
 
-Azure Backup kullanarak şirket içi yedeklemeler için, sağladığınız parola kullanılarak bekleyen şifreleme sağlanır. Normal Azure hizmet yedeklemeleri için, yedekleme verileri Azure platformu tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Yedeklemeleri, müşteri tarafından yönetilen anahtarı kullanarak şifrelemeyi seçebilirsiniz. Bu durumda, anahtar kasasındaki müşterinin yönettiği anahtarın de yedekleme kapsamında olduğundan emin olun. 
+Azure Backup kullanarak şirket içi yedeklemeler için, sağladığınız parola kullanılarak bekleyen şifreleme sağlanır. Normal Azure hizmet yedeklemeleri için, yedekleme verileri Azure platformu tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Yedeklemeleri, müşteri tarafından yönetilen anahtarı kullanarak şifrelemeyi seçebilirsiniz. Bu durumda, anahtar kasasındaki müşterinin yönettiği anahtarın de yedekleme kapsamında olduğundan emin olun.
 
 Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azure Backup, Azure Key Vault veya diğer kaynaklarda Azure rol tabanlı erişim denetimi kullanın. Ayrıca, yedeklemelerin değiştirilemeyeceği veya silinebilmesi için gelişmiş güvenlik özelliklerinin MFA gerektirmesini sağlayabilirsiniz.
 
 - [Azure Backup güvenlik özelliklerine genel bakış](../../backup/security-overview.md)
 
-- [Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi](../../backup/encryption-at-rest-with-cmk.md) 
+- [Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme](../../backup/encryption-at-rest-with-cmk.md) 
 
 - [Azure 'da Key Vault anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -82,7 +84,7 @@ Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azu
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
-| BR-3 | 10,3 | CP-4, CP-9 |
+| BR-3 | 10.3 | CP-4, CP-9 |
 
 Yedeklemeniz düzenli aralıklarla veri geri yükleme işlemini gerçekleştirin. Yedeklenen müşteri tarafından yönetilen anahtarları geri yüklemek için emin olun.
 
@@ -104,7 +106,7 @@ Yedeklemeniz düzenli aralıklarla veri geri yükleme işlemini gerçekleştirin
 |--|--|--|--|
 | BR-4 | 10,4 | CP-9 |
 
-Anahtar kaybını engellemek ve kurtarmak için ölçülerde yer aldığından emin olun. Anahtarları yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için Azure Key Vault'ta geçici silme ve temizleme koruması özelliklerini etkinleştirin.  
+Anahtar kaybını engellemek ve kurtarmak için ölçülerde yer aldığından emin olun. Anahtarları yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için Azure Key Vault'ta geçici silme ve temizleme koruması özelliklerini etkinleştirin.
 
 - [Key Vault'ta geçici silme ve temizleme koruması özelliklerini etkinleştirme](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

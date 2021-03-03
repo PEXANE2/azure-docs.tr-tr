@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710881"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
@@ -24,7 +24,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda açıklanmıştır:
 
-| Görünüm türü | Description |
+| Görünüm türü | Açıklama |
 |:--- |:--- |
 | [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. |
 | [Sayı ve liste](#number-and-list-part) |Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
@@ -39,7 +39,7 @@ Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda 
 Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açıklanır.
 
 > [!NOTE]
-> Görünümlerdeki parçalar Log Analytics çalışma alanınızdaki [günlük sorgularını](../log-query/log-query-overview.md) temel alır. Bunlar şu anda Application Insights verileri almak için [çapraz kaynak sorgularını](../log-query/cross-workspace-query.md) desteklemezler.
+> Görünümlerdeki parçalar Log Analytics çalışma alanınızdaki [günlük sorgularını](../logs/log-query-overview.md) temel alır. Bunlar şu anda Application Insights verileri almak için [çapraz kaynak sorgularını](../logs/cross-workspace-query.md) desteklemezler.
 
 ## <a name="list-of-queries-part"></a>Sorgu listesi bölümü
 Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. Görünüm, varsayılan olarak tek bir sorgu içerir ve ek sorgular eklemek için **+ sorgu** seçeneğini belirleyebilirsiniz.
@@ -318,7 +318,7 @@ Ad ve değer ayırıcısı, metin özelliğini bir liste sorgusundan birden çok
 Örneğin, *Redmond-building 41* ve *Bellevue-derleniyor* gibi değerleri içeren *konum* adlı bir özellik düşünün. Ad ve değer ayırıcısı ve ad için *şehir oluşturma* için bir tire (-) belirtebilirsiniz. Bu yaklaşım her değeri *City* ve *Building* adlı iki özelliğe ayrıştırır.
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Tıklama gezintisi
-Tıklama gezinmesi, bir görünümdeki üstbilgiye veya liste öğesine tıkladığınızda hangi eylemin yapılacağını tanımlar.  Bu, [Log Analytics](../log-query/log-query-overview.md) bir sorgu açar ya da başka bir görünüm başlatır.
+Tıklama gezinmesi, bir görünümdeki üstbilgiye veya liste öğesine tıkladığınızda hangi eylemin yapılacağını tanımlar.  Bu, [Log Analytics](../logs/log-query-overview.md) bir sorgu açar ya da başka bir görünüm başlatır.
 
 Aşağıdaki tabloda tıklama gezintisi için ayarlar açıklanmaktadır.
 
@@ -357,4 +357,4 @@ Aşağıdaki tabloda eşiklerin ayarları açıklanmaktadır:
 | Renk |Eşik değerini gösteren renk. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Görselleştirme kısımlarındaki sorguları destekleyecek [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Görselleştirme kısımlarındaki sorguları destekleyecek [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.

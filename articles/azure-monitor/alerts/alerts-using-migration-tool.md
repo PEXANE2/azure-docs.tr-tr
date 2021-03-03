@@ -4,29 +4,20 @@ description: Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş a
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644346c7355df581843fa8a838eea50cfeccefd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729105"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş aracını kullanın
 
-[Daha önce duyurulduğu](../platform/monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda. Azure portal bir geçiş aracı, klasik uyarı kuralları kullanan ve geçiş yapmak isteyen müşterilere yönelik olarak sunulmaktadır. Bu makalede, daha fazla duyuru bekleyen uyarılar için de kullanılacak olan geçiş aracının nasıl kullanılacağı açıklanmaktadır.
+[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılır, ancak yine de **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 
-## <a name="benefits-of-new-alerts"></a>Yeni uyarıların avantajları
-
-Klasik uyarılar, Azure Izleyici 'de yeni ve birleştirilmiş uyarı ile değiştiriliyor. Yeni uyarılar platformunda aşağıdaki avantajlar bulunur:
-
-- [Birçok Azure hizmeti](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)için çeşitli çok boyutlu ölçümler üzerinde uyarı alabilirsiniz.
-- Yeni ölçüm uyarıları, birçok kuralı yönetme yükünü önemli ölçüde azaltan [çok kaynak uyarı kurallarını](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) destekler.
-- Şunları destekleyen Birleşik bildirim mekanizması:
-  - Tüm yeni uyarı türleriyle (ölçüm, günlük ve etkinlik günlüğü) birlikte çalışarak bir modüler bildirim mekanizması olan [eylem grupları](../platform/action-groups.md).
-  - SMS, Voice ve ITSM Bağlayıcısı gibi yeni bildirim mekanizmaları.
-- [Birleşik uyarı deneyimi](../platform/alerts-overview.md) , tüm uyarıları farklı sinyallere (ölçüm, günlük ve etkinlik günlüğü) tek bir yerde getirir.
+Bir geçiş aracı, klasik uyarı kuralları kullanan ve geçiş yapmak isteyen müşterilere Azure portal kullanılabilir. Bu makalede geçiş aracının nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="before-you-migrate"></a>Geçirmeden önce
 
@@ -83,7 +74,7 @@ Bir abonelik geçişe hazır hale geldiğinde, aboneliğin sahibi aracın kullan
 
 ### <a name="who-can-trigger-the-migration"></a>Geçişi kimlerin tetikleyebilen?
 
-Abonelik düzeyinde kendisine atanmış Izleme katılımcısı rolü olan kullanıcılar geçişi tetikleyebiliyor. [Geçiş işlemi Için Azure rol tabanlı erişim denetimi hakkında daha fazla bilgi edinin](alerts-understand-migration.md#who-can-trigger-the-migration).
+Abonelik düzeyinde kendisine atanmış Izleme katılımcısı rolü olan kullanıcılar geçişi tetikleyebilir. [Geçiş işlemi Için Azure rol tabanlı erişim denetimi hakkında daha fazla bilgi edinin](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Geçiş ne kadar sürer?
 

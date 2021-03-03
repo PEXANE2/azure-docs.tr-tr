@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: edb881b10db1d617e1b1f6b1167c014d6d51020e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cfdd1595ffb21b0f567f5299ebd6257b3462b671
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730994"
 ---
 Ruby için Soru-Cevap Oluşturma istemci kitaplığını kullanın:
 
@@ -68,7 +68,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
 Soru-Cevap Oluşturma iki farklı nesne modeli kullanır:
 * **[Qnamakerclient](#qnamakerclient-object-model)** , Bilgi Bankası oluşturmak, yönetmek, yayımlamak ve indirmek için kullanılan nesnedir.
-* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../concepts/active-learning-suggestions.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
+* **[Qnamakerruntime](#qnamakerruntimeclient-object-model)** , Bilgi Bankası 'Nı GENERATEANSWER API 'siyle sorgulayan ve EĞIT API 'yi ( [etkin öğrenme](../how-to/use-active-learning.md)kapsamında) kullanarak önerilen yeni soruları gönderen nesnedir.
 
 [!INCLUDE [Get KBinformation](./quickstart-sdk-cognitive-model.md)]
 
@@ -78,7 +78,7 @@ Authoring Soru-Cevap Oluşturma Client, anahtarınızı içeren MsRest:: Service
 
 İstemci oluşturulduktan sonra, bilgi bankasını oluşturmak, yönetmek ve yayımlamak için istemcinin bilgi [Bankası özelliğinin yöntemlerini](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb) kullanın.
 
-Anında işlemler için bir yöntem genellikle, varsa sonucu döndürür. Uzun süre çalışan işlemler için yanıt bir [işlem](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) nesnesidir. [operations.get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) `operation.operation_id` [İsteğin durumunu](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb)öğrenmek için Operations.get_details yöntemini değeriyle çağırın.
+Anında işlemler için bir yöntem genellikle, varsa sonucu döndürür. Uzun süre çalışan işlemler için yanıt bir [işlem](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) nesnesidir. [](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) `operation.operation_id` [İsteğin durumunu](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb)öğrenmek için Operations.get_details yöntemini değeriyle çağırın.
 
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient nesne modeli
 

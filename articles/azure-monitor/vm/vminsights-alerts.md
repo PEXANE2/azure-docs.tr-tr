@@ -1,36 +1,36 @@
 ---
-title: VM'ler için Azure İzleyici uyarılar
-description: VM'ler için Azure İzleyici tarafından toplanan performans verilerinden uyarı kuralları oluşturmayı açıklar.
+title: VM öngörülerinin uyarıları
+description: VM öngörüleri tarafından toplanan performans verilerinden uyarı kurallarının nasıl oluşturulacağını açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704064"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici uyarılar oluşturma
-[Azure izleyici 'Deki uyarılar](../platform/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM'ler için Azure İzleyici önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verilere göre kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.
+# <a name="how-to-create-alerts-from-vm-insights"></a>VM öngörülerine uyarı oluşturma
+[Azure izleyici 'Deki uyarılar](../alerts/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM öngörüleri, önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verileri temel alarak kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.
 
 > [!IMPORTANT]
-> Bu makalede açıklanan uyarılar, VM'ler için Azure İzleyici toplanan verilerden günlük sorgularını temel alır. Bu, şu anda genel önizlemede olan bir özellik olan [VM Konuk sistem durumu Için Azure izleyici](vminsights-health-overview.md) tarafından oluşturulan uyarılardan farklıdır. Bu özellik genel kullanılabilirliği yaklaştığında, uyarı için rehberlik birleştirilir.
+> Bu makalede açıklanan uyarılar, veri toplanan VM öngörülerinin günlük sorgularını temel alır. Bu, şu anda genel önizlemede olan bir özellik olan [VM Konuk sistem durumu Için Azure izleyici](vminsights-health-overview.md) tarafından oluşturulan uyarılardan farklıdır. Bu özellik genel kullanılabilirliği yaklaştığında, uyarı için rehberlik birleştirilir.
 
 
 ## <a name="alert-rule-types"></a>Uyarı kuralı türleri
-Azure Izleyici, uyarı oluşturmak için kullanılan verileri temel alan [farklı tür uyarı kuralları](../platform/alerts-overview.md#what-you-can-alert-on) içerir. VM'ler için Azure İzleyici tarafından toplanan tüm veriler, [günlük uyarılarını](../alerts/alerts-log.md)destekleyen Azure izleyici günlüklerinde depolanır. Veriler Azure Izleyici ölçümlerine toplanmadığından, şu anda [ölçüm uyarılarını](../alerts/alerts-log.md) VM'ler için Azure izleyici tarafından toplanan performans verileriyle kullanamazsınız. Ölçüm uyarıları için veri toplamak üzere Windows VM 'Ler için [Tanılama uzantısını](../agents/diagnostics-extension-overview.md) veya Linux sanal makineleri için [telegraf aracısını](../platform/collect-custom-metrics-linux-telegraf.md) , performans verilerini ölçümlere toplamak üzere yükler.
+Azure Izleyici, uyarı oluşturmak için kullanılan verileri temel alan [farklı tür uyarı kuralları](../alerts/alerts-overview.md#what-you-can-alert-on) içerir. VM öngörüleri tarafından toplanan tüm veriler, [günlük uyarılarını](../alerts/alerts-log.md)destekleyen Azure izleyici günlüklerinde depolanır. Veriler Azure Izleyici ölçümlerine toplanmadığından, şu anda VM öngörülerinden toplanan performans verileriyle [ölçüm uyarılarını](../alerts/alerts-log.md) kullanamazsınız. Ölçüm uyarıları için veri toplamak üzere Windows VM 'Ler için [Tanılama uzantısını](../agents/diagnostics-extension-overview.md) veya Linux sanal makineleri için [telegraf aracısını](../essentials/collect-custom-metrics-linux-telegraf.md) , performans verilerini ölçümlere toplamak üzere yükler.
 
 Azure Izleyici 'de iki tür günlük uyarısı vardır:
 
 - Sorgu en az belirtilen sayıda kayıt döndürdüğünde, [sonuç uyarıları sayısı](../alerts/alerts-unified-log.md#count-of-the-results-table-rows) tek bir uyarı oluşturur. Bunlar, [Log Analytics Aracısı](../agents/log-analytics-agent.md) tarafından toplanan sayısal olmayan veriler ve Windows ve Syslog olayları için veya birden çok bilgisayardaki performans eğilimlerini analiz etmek için idealdir.
-- [Ölçüm ölçüm uyarıları](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , uyarı kuralında tanımlanan bir eşiği aşan bir değer içeren bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturduklarında VM'ler için Azure İzleyici tarafından toplanan performans verileri için idealdir.
+- [Ölçüm ölçüm uyarıları](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , uyarı kuralında tanımlanan bir eşiği aşan bir değer içeren bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturduklarında, VM öngörüleri tarafından toplanan performans verileri için idealdir.
 
 
 ## <a name="alert-rule-walkthrough"></a>Uyarı kuralı Kılavuzu
-Bu bölüm, VM'ler için Azure İzleyici performans verilerini kullanarak bir ölçüm ölçümü uyarı kuralının oluşturulmasını açıklar. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz.
+Bu bölümde, VM öngörülerine ait performans verilerini kullanarak bir ölçüm ölçümü uyarı kuralının oluşturulması gösterilmektedir. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz.
 
 [Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../alerts/alerts-log.md)bölümündeki yordamı izleyerek yeni bir uyarı kuralı oluşturarak başlayın. **Kaynak** Için, Azure izleyici VM 'lerinin aboneliğinizde kullandığı Log Analytics çalışma alanını seçin. Günlük uyarısı kuralları için hedef kaynak her zaman bir Log Analytics çalışma alanı olduğundan, günlük sorgusunun belirli sanal makineler veya sanal makine ölçek kümeleri için herhangi bir filtre içermesi gerekir. 
 
@@ -44,7 +44,7 @@ Bölüm **temelinde değerlendirilen** , sorgunun ne sıklıkta çalıştırıla
 ![Ölçüm ölçümü uyarı kuralı](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>Örnek uyarı sorguları
-Aşağıdaki sorgular, VM'ler için Azure İzleyici tarafından toplanan performans verilerini kullanan bir ölçüm ölçümü uyarı kuralıyla birlikte kullanılabilir. Her biri, eşiği aşan bir değere sahip her bilgisayar için bir uyarının oluşturulması için verileri bilgisayara göre özetler.
+Aşağıdaki sorgular, VM öngörüleri tarafından toplanan performans verilerini kullanan bir ölçüm ölçümü uyarı kuralıyla birlikte kullanılabilir. Her biri, eşiği aşan bir değere sahip her bilgisayar için bir uyarının oluşturulması için verileri bilgisayara göre özetler.
 
 ### <a name="cpu-utilization"></a>CPU kullanımı
 
@@ -200,5 +200,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici 'de uyarılar](../platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
-- [VM'ler için Azure izleyici verileri kullanarak günlük sorguları](vminsights-log-search.md)hakkında daha fazla bilgi edinin.
+- [Azure izleyici 'de uyarılar](../alerts/alerts-overview.md)hakkında daha fazla bilgi edinin.
+- [VM öngörülerine ait verileri kullanarak günlük sorguları](vminsights-log-search.md)hakkında daha fazla bilgi edinin.

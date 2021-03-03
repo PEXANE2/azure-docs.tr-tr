@@ -7,23 +7,30 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
-author: CaitlinV39
-ms.date: 02/03/2021
-ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+author: zxue
+ms.date: 02/24/2021
+ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581972"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712785"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>FHıR için Azure API 'de tanılama günlüğünü etkinleştirme
 
 Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi öğrenir ve bu günlüklere yönelik bazı örnek sorguları inceleyebilirsiniz. Tanılama günlüklerine erişim, mevzuat gereksinimleriyle (HIPAA gibi) uyumluluğun gerektiği her türlü sağlık hizmeti için önemlidir. FHıR için Azure API 'sindeki özelliği, tanılama günlüklerini sağlayan, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/essentials/diagnostic-settings.md) özelliktir. 
 
+## <a name="view-and-download-fhir-metrics-data"></a>FHıR ölçüm verilerini görüntüleyin ve Indirin
+
+Izleme kapsamında ölçümleri görüntüleyebilirsiniz | Portaldan ölçümler. Ölçümler, Istek sayısını, ortalama gecikme süresini, hata sayısını, veri boyutunu, ru kullanılan, kapasiteyi aşan istek sayısını ve kullanılabilirliği (%) içerir. Aşağıdaki ekran görüntüsünde, son 7 gün içinde çok az etkinlik içeren örnek bir ortam için kullanılan ru gösterilmektedir. Verileri JSON biçiminde indirebilirsiniz.
+
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Portaldan FHıR ölçümleri için Azure API" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+
 ## <a name="enable-audit-logs"></a>Denetim günlüklerini etkinleştir
 1. FHıR için Azure API 'de tanılama günlüğünü etkinleştirmek üzere Azure portal için Azure API 'nizi seçin. 
-2. **Tanılama ayarları**  
- ![ Tanılama Ayarları ' na gidin](media/diagnostic-logging/diagnostic-settings-screen.png) 
+2. **Tanılama ayarlarına** gidin 
+
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Azure FHıR tanılama ayarlarını ekleyin." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. **+ Tanılama ayarı Ekle** ' yi seçin
 
@@ -35,7 +42,7 @@ Bu makalede, FHıR için Azure API 'de tanılama günlüğünü etkinleştirmeyi
     2. Üçüncü taraf bir hizmet veya özel analitik çözüm tarafından giriş için **Olay Hub 'ına akış** . Bu adımı yapılandırmadan önce bir olay hub 'ı ad alanı ve Olay Hub 'ı ilkesi oluşturmanız gerekir.
     3. Azure Izleyici 'de Log Analytics çalışma alanına **akış** . Bu seçeneği seçmeden önce günlüklerinizi analiz çalışma alanınızı oluşturmanız gerekecektir.
 
-6. **Auditlogs** ve/veya **allölçümler**' i seçin. Ölçümler hizmet adı, kullanılabilirlik, veri boyutu, toplam gecikme, toplam istek, toplam hata ve zaman damgası içerir.
+6. **Auditlogs** ve/veya **allölçümler**' i seçin. Ölçümler hizmet adı, kullanılabilirlik, veri boyutu, toplam gecikme, toplam istek, toplam hata ve zaman damgası içerir. [Desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)hakkında daha fazla ayrıntı bulabilirsiniz. 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHıR Tanılama ayarları. AuditLogs ve/veya Allölçümler ' i seçin." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

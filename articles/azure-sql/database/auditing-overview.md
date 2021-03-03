@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691527"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -46,7 +46,9 @@ SQL veritabanı denetimini kullanarak şunları yapabilirsiniz:
 
 - **Premium Depolama** Şu anda **desteklenmiyor**.
 - **Azure Data Lake Storage 2. depolama hesabı** için **hiyerarşik ad alanı** Şu anda **desteklenmiyor**.
-- Duraklatılmış bir **Azure SYNAPSE** üzerinde denetim etkinleştirilmesi desteklenmez. Denetimi etkinleştirmek için Azure SYNAPSE ' ı yeniden edin.
+- Duraklatılmış bir **Azure SYNAPSE** üzerinde denetim etkinleştirilmesi desteklenmez. Denetimi etkinleştirmek için Azure Synapse'i sürdürün.
+- **Azure SYNAPSE SQL havuzları** için Denetim **yalnızca** varsayılan denetim eylemi gruplarını destekler.
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Sunucu düzeyinde ve veritabanı düzeyinde denetim ilkesini tanımlayın
 
@@ -73,9 +75,9 @@ Bir denetim ilkesi, belirli bir veritabanı için veya Azure 'da varsayılan [su
 - Sunucu veya veritabanı düzeyinde denetim olayları için bir sabit günlük deposu yapılandırmak için, [Azure depolama tarafından sunulan yönergeleri](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)izleyin. Sabit blob depolamayı yapılandırırken **ek ekler 'e Izin ver** ' i seçtiğinizden emin olun.
 - Denetim günlüklerini, VNet veya güvenlik duvarının arkasındaki bir Azure depolama hesabına yazabilirsiniz. Belirli yönergeler için bkz. [VNET ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma](audit-write-storage-account-behind-vnet-firewall.md).
 - Günlük biçimi, depolama klasörü ve adlandırma kurallarının hiyerarşisi hakkında daha fazla bilgi için bkz. [BLOB denetim günlüğü biçim başvurusu](./audit-log-format.md).
-- [Salt okuma Çoğaltmalarından](read-scale-out.md) denetim otomatik olarak etkinleştirilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](audit-log-format.md).
+- [Salt Okuma Çoğaltmalarında](read-scale-out.md) denetim otomatik olarak etkinleştirilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](audit-log-format.md).
 - Azure AD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
-- Oturum açmalar, ağ geçidi tarafından veritabanının bulunduğu belirli örneğe yönlendirilir.  AAD oturum açmaları durumunda, istenen veritabanında oturum açmak için bu kullanıcıyı kullanmaya çalışmadan önce kimlik bilgileri doğrulanır.  Hata durumunda, istenen veritabanına hiçbir şekilde erişilmez, dolayısıyla denetim gerçekleşmez.  SQL oturum açmaları durumunda, kimlik bilgileri istenen verilerde doğrulanır, bu nedenle bu durumda denetlenebilir.  Veritabanına açıkça ulaşan başarılı oturum açma işlemleri her iki durumda da denetlenir.
+- Oturum açma işlemleri ağ geçidi tarafından veritabanının bulunduğu belirli örneğe yönlendirilir.  AAD oturum açma işlemleri söz konusu olduğunda, bu kullanıcıyla istenen veritabanında oturum açmayı denemeden önce kimlik bilgileri doğrulanır.  Başarısız olması durumunda istenen veritabanına hiçbir şekilde erişilemez ve dolayısıyla hiçbir denetim gerçekleştirilmez.  SQL oturum açmaları durumunda, kimlik bilgileri istenen verilerde doğrulanır, bu nedenle bu durumda denetlenebilir.  Her iki durumda da, veritabanına ulaştığı açıkça görülen başarılı oturum açma işlemleri denetlenir.
 - Denetim ayarlarınızı yapılandırdıktan sonra, yeni tehdit algılama özelliğini açıp e-postaları güvenlik uyarılarını alacak şekilde yapılandırabilirsiniz. Tehdit algılama 'yı kullandığınızda, olası güvenlik tehditlerini gösterebilen anormal veritabanı etkinliklerinde proaktif uyarılar alırsınız. Daha fazla bilgi için bkz. [tehdit algılamayı kullanmaya başlama](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Sunucunuz için denetim ayarlama
@@ -175,7 +177,7 @@ Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 Denetim günlüklerini Olay Hub 'ına yazmayı seçtiyseniz:
 
 - Olay Hub 'ından denetim günlükleri verilerini kullanmak için, olayları tüketmek ve bunları bir hedefe yazmak üzere bir akış ayarlamanız gerekir. Daha fazla bilgi için bkz. [Azure Event Hubs belgeleri](../index.yml).
-- Olay Hub 'ındaki denetim günlükleri [Apache avro](https://avro.apache.org/) olaylarının gövdesinde YAKALANıR ve UTF-8 KODLAMASı ile JSON biçimlendirme kullanılarak depolanır. Denetim günlüklerini okumak için, bu biçimi işleyen [avro araçları](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) veya benzer araçları kullanabilirsiniz.
+- Olay Hub 'ındaki denetim günlükleri [Apache avro](https://avro.apache.org/) olaylarının gövdesinde YAKALANıR ve UTF-8 KODLAMASı ile JSON biçimlendirme kullanılarak depolanır. Denetim günlüklerini okumak için [Avro Araçları](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools)'nı veya bu biçimi işleyebilen benzer araçları kullanabilirsiniz.
 
 Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günlükleri görüntülemek için kullanabileceğiniz çeşitli yöntemler vardır:
 

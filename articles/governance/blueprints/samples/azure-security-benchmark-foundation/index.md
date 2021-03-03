@@ -3,16 +3,16 @@ title: Azure Güvenlik kıyaslaması temel şeması örnek genel bakış
 description: Genel bakış ve Azure Security kıyaslama Foundation şema örneği mimarisi.
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741880"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure Security kıyaslama Foundation şema örneğine genel bakış
 
-Azure Güvenlik kıyaslaması temel şeması örneği, güvenli ve uyumlu bir Azure ortamı oluşturmanıza yardımcı olacak bir dizi temel altyapı deseni sağlar. Şema, acalacaklı veya uyumluluk gereksinimlerine sahip senaryolara çözüm sunan bulut tabanlı bir mimari dağıtmanıza yardımcı olur. Bu temel şema örneği, [Azure Güvenlik kıyaslaması örnek şema](../azure-security-benchmark/index.md)'in bir uzantısıdır. Ağ sınırlarını, izlemeyi ve diğer kaynakları, [Azure Güvenlik kıyaslamasında](../../../../security/benchmarks/index.yml)tanımlanan ilkeler ve diğer guardraylarla birlikte dağıtır ve yapılandırır.
+Azure Güvenlik kıyaslaması temel şeması örneği, güvenli ve uyumlu bir Azure ortamı oluşturmanıza yardımcı olacak bir dizi temel altyapı deseni sağlar. Şema, acalacaklı veya uyumluluk gereksinimlerine sahip senaryolara çözüm sunan bulut tabanlı bir mimari dağıtmanıza yardımcı olur. Bu temel şema örneği, [Azure Güvenlik kıyaslaması örnek şema](../azure-security-benchmark.md)'in bir uzantısıdır. Ağ sınırlarını, izlemeyi ve diğer kaynakları, [Azure Güvenlik kıyaslamasında](../../../../security/benchmarks/index.yml)tanımlanan ilkeler ve diğer guardraylarla birlikte dağıtır ve yapılandırır.
 
 ## <a name="architecture"></a>Mimari
 
@@ -23,7 +23,7 @@ Bu şema örneği tarafından oluşturulan temel ortam, bir [hub ve bağlı bile
 
 Bu şema, güvenli, izlenen, kurumsal özellikli bir temel sağlamak için çeşitli Azure hizmetleri dağıtır. Bu ortam şunlardan oluşur:
 
-- Kaynak günlüklerinin, etkinlik günlüklerinin, ölçümlerin ve ağların trafik akışlarının, kolay sorgulama, analiz, arşivleme ve uyarı için merkezi bir konumda depolandığından emin olmak için [Azure Izleyici günlükleri](../../../../azure-monitor/platform/data-platform-logs.md) ve bir Azure depolama hesabı.
+- Kaynak günlüklerinin, etkinlik günlüklerinin, ölçümlerin ve ağların trafik akışlarının, kolay sorgulama, analiz, arşivleme ve uyarı için merkezi bir konumda depolandığından emin olmak için [Azure Izleyici günlükleri](../../../../azure-monitor/logs/data-platform-logs.md) ve bir Azure depolama hesabı.
 - Azure kaynakları için tehdit koruması sağlamak üzere [Azure Güvenlik Merkezi](../../../../security-center/security-center-introduction.md) (Standart sürüm).
 - Hub 'daki [Azure sanal ağı](../../../../virtual-network/virtual-networks-overview.md) , bir şirket içi ağa bağlantı için alt ağları, Internet bağlantısı için//için bir giriş ve çıkış yığınını ve ek yönetim veya yönetim hizmetlerinin dağıtılması için isteğe bağlı alt ağları destekler. Sanal Ağa gelen bağlı bileşen, uygulama iş yüklerini barındırmak için alt ağlar içerir. İlgili senaryoları desteklemek için gerektiğinde dağıtımdan sonra ek alt ağlar oluşturulabilir.
 - Tüm giden internet trafiğini yönlendirmek ve gelen internet trafiğini geçiş kutusu aracılığıyla etkinleştirmek için [Azure Güvenlik Duvarı](../../../../firewall/overview.md) . (Varsayılan güvenlik duvarı kuralları, tüm internet gelen ve giden trafiği engelle ve kural, varsa dağıtımdan sonra yapılandırılması gerekir.)

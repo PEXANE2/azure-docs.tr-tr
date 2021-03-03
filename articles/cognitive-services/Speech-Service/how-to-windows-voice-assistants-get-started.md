@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713057"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar ile çalışmaya başlama
 
 Bu kılavuz, Windows üzerinde bir ses Yardımcısı geliştirmeye başlama adımlarında size yol gösterecektir.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
 Windows için bir ses Yardımcısı geliştirmeye başlamak için uygun geliştirme ortamınıza sahip olduğunuzdan emin olmanız gerekir.
 
@@ -34,7 +34,7 @@ Windows için bir ses Yardımcısı geliştirmeye başlamak için uygun gelişti
 
 Windows üzerinde tamamen özelleştirilmiş bir ses Aracısı için gereken bazı kaynaklar, Microsoft kaynakları gerektirir. [UWP Voice Yardımcısı örneği](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) , ilk geliştirme ve test için bu kaynakların örnek sürümlerini sağlar; bu nedenle ilk geliştirme için bu bölüm gereksizdir.
 
-- **Anahtar sözcük modeli:** Ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası "contoso" anahtar sözcüğü üzerinde eğitilir.
+- **Anahtar sözcük modeli:** Ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası *contoso* anahtar sözcüğü üzerinde eğitilir.
 - **Sınırlı erişim özelliği belirteci:** Konuşma seslerine mikrofon seslerine erişim sağlanması nedeniyle, bu dosyalar sınırlı erişim özelliği kısıtlamalarına göre korunur. Sınırlı bir erişim özelliğini kullanmak için, Microsoft 'tan uygulamanızın paket kimliğine bağlanmış sınırlı bir erişim özelliği belirteci edinmeniz gerekir.
 
 ## <a name="establish-a-dialog-service"></a>İletişim hizmeti oluşturma

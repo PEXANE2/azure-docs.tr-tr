@@ -4,12 +4,12 @@ description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gi
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651119"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686232"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -57,7 +57,7 @@ Bağlı makineyle ilgili aşağıdaki meta veri bilgileri, Azure Arc makine kayn
 
 ### <a name="supported-environments"></a>Desteklenen ortamlar
 
-Yay özellikli sunucular, Azure *dışında* barındırılan fiziksel sunucuların ve sanal makinelerin yönetimini destekler. VM 'Leri barındıran karma bulut ortamlarının desteklendiği belirli Ayrıntılar için bkz. [Agent-Overview. MD # Supported-ortamlar].
+Yay özellikli sunucular, Azure *dışında* barındırılan fiziksel sunucuların ve sanal makinelerin yönetimini destekler. VM 'Leri barındıran karma bulut ortamlarının desteklendiği belirli Ayrıntılar için bkz. [bağlı makine Aracısı önkoşulları](agent-overview.md#supported-environments).
 
 > [!NOTE]
 > Yay özellikli sunucular, Azure 'da çalışan sanal makinelerin yönetimini etkinleştirmek için tasarlanmamıştır veya desteklenmez.

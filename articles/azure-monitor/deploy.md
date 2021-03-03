@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573575"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708263"
 ---
 # <a name="deploy-azure-monitor"></a>Azure İzleyici’yi dağıtma
 Azure izleyici 'nin tüm Azure kaynaklarınızın izlenmesini sağlamak için Azure izleyici bileşenleri yapılandırma ve Azure Izleyici 'nin toplanacak izleme verilerini oluşturmak için Azure kaynaklarını yapılandırma bir birleşimidir. Bu makalede, Azure aboneliğinizdeki tüm kaynakları izlemek için ortak bir yapılandırma kullanarak Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımlar açıklanmaktadır. Her adımın temel açıklamaları, ayrıntılı yapılandırma gereksinimleri için diğer belgelerin bağlantılarıyla birlikte sağlanır.
@@ -22,7 +22,7 @@ Azure izleyici 'nin tüm Azure kaynaklarınızın izlenmesini sağlamak için Az
 ## <a name="configuration-goals"></a>Yapılandırma hedefleri
 Azure Izleyici 'nin tamamen uygulamanın hedefi, tüm bulut kaynaklarınızın ve uygulamalarınızın tüm kullanılabilir verilerini toplamaktır ve bu verilere bağlı olarak Azure Izleyici 'de çok sayıda özelliği etkinleştirir.
 
-Azure Izleyici tarafından toplanan veriler, [Azure Izleyici ölçümlerine](essentials/data-platform-metrics.md) veya [Azure izleyici günlüklerine](logs/data-platform-logs.md)gönderilir. Her biri farklı türdeki verileri depolar ve farklı analiz ve uyarı türlerini sunar. Farklı uyarı türlerinin açıklaması için [Microsoft Azure ' deki uyarılara](alerts/alerts-overview.md) ilişkin Iki ve genel bakış karşılaştırması için bkz. [Azure Izleyici ölçümlerini ve günlüklerini karşılaştırın](/data-platform.md) . 
+Azure Izleyici tarafından toplanan veriler, [Azure Izleyici ölçümlerine](essentials/data-platform-metrics.md) veya [Azure izleyici günlüklerine](logs/data-platform-logs.md)gönderilir. Her biri farklı türdeki verileri depolar ve farklı analiz ve uyarı türlerini sunar. Farklı uyarı türlerinin açıklaması için [Microsoft Azure ' deki uyarılara](alerts/alerts-overview.md) ilişkin Iki ve genel bakış karşılaştırması için bkz. [Azure Izleyici ölçümlerini ve günlüklerini karşılaştırın](data-platform.md) . 
 
 Bazı veriler, farklı özellikler kullanılarak kullanabilmesi için hem ölçümler hem de günlüklere gönderilebilir. Bu durumlarda, her birini ayrı ayrı yapılandırmanız gerekebilir. Örneğin, ölçüm verileri Azure kaynakları tarafından Ölçüm Gezgini ve ölçüm uyarılarını destekleyen ölçümlere otomatik olarak gönderilir. Aynı ölçüm verilerini günlüklere göndermek için her kaynak için bir tanılama ayarı oluşturmanız gerekir. Bu, Log Analytics kullanarak performans eğilimlerini diğer günlük verileriyle analiz etmenizi sağlar. Aşağıdaki bölümler, verilerin nereye gönderileceğini belirler ve tüm olası konumlara veri göndermek için gereken her adımı içerir.
 
@@ -84,32 +84,32 @@ Azure izleyici 'de kullanılabilir Öngörüler ve çözümlerin listesi için b
 
 Sanal makineler diğer Azure kaynakları gibi benzer veriler oluşturur, ancak Konuk işletim sisteminden veri toplamak için bir aracıya ihtiyacınız vardır. Azure Izleyici tarafından kullanılan aracıların karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](agents/agents-overview.md) . 
 
-[VM'ler için Azure izleyici](vm/vminsights-overview.md) , sanal makinelerin Konuk işletim sisteminden veri toplamak için Log Analytics Aracısı ve bağımlılık Aracısı 'nı kullanır, bu nedenle bu aracıları bu öngörü uygulamasının bir parçası olarak dağıtabilirsiniz. Bu, Azure Güvenlik Merkezi gibi diğer hizmetler için Log Analytics aracısına izin vermez.
+[VM öngörüleri](vm/vminsights-overview.md) , sanal makinelerin Konuk işletim sisteminden veri toplamak için Log Analytics Aracısı ve bağımlılık aracısını kullanır, bu sayede bu aracıları bu öngörü uygulamasının bir parçası olarak dağıtabilirsiniz. Bu, Azure Güvenlik Merkezi gibi diğer hizmetler için Log Analytics aracısına izin vermez.
 
 
 [![Azure VM ](media/deploy/deploy-azure-vm.png) dağıtma](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici çalışma alanını yapılandırma
-VM'ler için Azure İzleyici, genellikle diğer Azure kaynaklarından veri toplamak için oluşturulan ile aynı olacak bir Log Analytics çalışma alanı gerektirir. Herhangi bir sanal makineyi etkinleştirmeden önce, VM'ler için Azure İzleyici için gereken çözümü çalışma alanına eklemeniz gerekir.
+### <a name="configure-workspace-for-vm-insights"></a>VM öngörüleri için çalışma alanını yapılandırma
+VM öngörüleri, genellikle diğer Azure kaynaklarından veri toplamak için oluşturulan ile aynı olacak bir Log Analytics çalışma alanı gerektirir. Herhangi bir sanal makineyi etkinleştirmeden önce, VM öngörüleri için gereken çözümü çalışma alanına eklemeniz gerekir.
 
-VM'ler için Azure İzleyici için Log Analytics çalışma alanınızı yapılandırma hakkında ayrıntılı bilgi için bkz. [VM'ler için Azure İzleyici Log Analytics çalışma alanını yapılandırma](vm/vminsights-configure-workspace.md) .
+VM öngörüleri için Log Analytics çalışma alanınızı yapılandırma hakkında ayrıntılı bilgi için bkz. [VM öngörüleri için Log Analytics çalışma alanını yapılandırma](vm/vminsights-configure-workspace.md)
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>Her sanal makinede VM'ler için Azure İzleyici etkinleştir
-Bir çalışma alanı yapılandırıldıktan sonra, Log Analytics Aracısı ve bağımlılık aracısını yükleyerek her bir sanal makineyi etkinleştirebilirsiniz. Azure Ilkesi de dahil olmak üzere bu aracıları yüklemek için birden çok yöntem vardır. Bu, her sanal makineyi oluşturma sırasında otomatik olarak yapılandırmanıza olanak tanır. VM'ler için Azure İzleyici tarafından toplanan performans verileri ve işlem ayrıntıları Azure Izleyici günlüklerinde saklanır.
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>Her sanal makinede VM öngörülerini etkinleştirin
+Bir çalışma alanı yapılandırıldıktan sonra, Log Analytics Aracısı ve bağımlılık aracısını yükleyerek her bir sanal makineyi etkinleştirebilirsiniz. Azure Ilkesi de dahil olmak üzere bu aracıları yüklemek için birden çok yöntem vardır. Bu, her sanal makineyi oluşturma sırasında otomatik olarak yapılandırmanıza olanak tanır. VM öngörüleri tarafından toplanan performans verileri ve işlem ayrıntıları Azure Izleyici günlüklerinde depolanır.
 
-Aracıları sanal makinelerinize dağıtmak ve bunları izlemeye etkinleştirmek için seçenekler için bkz. [VM'ler için Azure izleyici genel bakış](vm/vminsights-enable-overview.md) .
+Aracıları sanal makinelerinize dağıtma ve bunları izlemeye etkinleştirme seçenekleri için bkz. [VM öngörülerine genel bakış sağlama](vm/vminsights-enable-overview.md) .
 
 ### <a name="configure-workspace-to-collect-events"></a>Olayları toplamak için çalışma alanını yapılandırma
-VM'ler için Azure İzleyici, her bir sanal makinenin Konuk işletim sistemindeki performans verilerini ve işlemlerin ayrıntılarını ve bağımlılıklarını toplar. Log Analytics Aracısı Ayrıca, Windows 'daki olay günlüğü ve Linux 'tan Syslog gibi konuktaki günlükleri de toplayabilir. Bu günlüklerin yapılandırmasını, bağlandığı Log Analytics çalışma alanından alır. Çalışma alanını yalnızca bir kez yapılandırmanız gerekir ve bir aracı her bağlanışında yapılandırma değişikliklerini indirir. 
+VM öngörüleri, her bir sanal makinenin Konuk işletim sistemindeki performans verilerini ve işlemlerin ayrıntılarını ve bağımlılıklarını toplar. Log Analytics Aracısı Ayrıca, Windows 'daki olay günlüğü ve Linux 'tan Syslog gibi konuktaki günlükleri de toplayabilir. Bu günlüklerin yapılandırmasını, bağlandığı Log Analytics çalışma alanından alır. Çalışma alanını yalnızca bir kez yapılandırmanız gerekir ve bir aracı her bağlanışında yapılandırma değişikliklerini indirir. 
 
 Aracı sanal makinelerinizden ek veriler toplamak üzere Log Analytics çalışma alanınızı yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure izleyici 'de aracı veri kaynakları](agents/agent-data-sources.md) .
 
 > [!NOTE]
-> Ayrıca, çalışma alanını performans sayaçlarını toplayacak şekilde yapılandırabilirsiniz, ancak bu durum büyük olasılıkla VM'ler için Azure İzleyici tarafından toplanan performans verileriyle yedekli olacaktır. Çalışma alanı tarafından toplanan performans verileri, VM'ler için Azure İzleyici tarafından toplanan performans verileri *ınsightsölçümlerini* tablosunda depolandığından *performans tablosunda depolanır* . Çalışma alanındaki performans toplamayı yalnızca, zaten VM'ler için Azure İzleyici tarafından toplanmamış olan sayaçlara ihtiyacınız varsa yapılandırın.
+> Ayrıca, çalışma alanını performans sayaçlarını toplayacak şekilde yapılandırabilirsiniz, ancak bu durum büyük olasılıkla VM öngörüleri tarafından toplanan performans verileriyle yedekli olacaktır. Çalışma alanı tarafından toplanan performans verileri *perf* tablosunda depolanır, ancak VM öngörüleri tarafından toplanan performans verileri *ınsightsölçümlerini* tablosunda depolanır. Yalnızca VM öngörüleri tarafından toplanmayan sayaçlar varsa, performans toplamayı çalışma alanında yapılandırın.
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>Tanılama uzantısı ve telegraf Aracısı
-VM'ler için Azure İzleyici, performans verilerini bir Log Analytics çalışma alanına Gönderen ancak Azure Izleyici ölçümlerine değil Log Analytics aracısını kullanır. Bu verilerin ölçümlere gönderilmesi, Ölçüm Gezgini ile çözümlenme ve ölçüm uyarıları ile birlikte kullanılmasına olanak tanır. Bu, Linux üzerinde Windows ve telegraf Aracısı için tanılama uzantısı gerektirir.
+VM öngörüleri, performans verilerini bir Log Analytics çalışma alanına Gönderen ancak Azure Izleyici ölçümlerine yönelik olmayan Log Analytics aracısını kullanır. Bu verilerin ölçümlere gönderilmesi, Ölçüm Gezgini ile çözümlenme ve ölçüm uyarıları ile birlikte kullanılmasına olanak tanır. Bu, Linux üzerinde Windows ve telegraf Aracısı için tanılama uzantısı gerektirir.
 
 Bu aracıları yükleme ve yapılandırma hakkında ayrıntılı bilgi için, bkz. [Windows Azure tanılama uzantısı 'nı (WAD) yükleme ve yapılandırma](agents/diagnostics-extension-windows-install.md) ve [etkileyen bir Linux sanal makinesi için etkileyen telegraf aracı](essentials/collect-custom-metrics-linux-telegraf.md) .
 

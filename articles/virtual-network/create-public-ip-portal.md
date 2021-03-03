@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 5c5650d896442f10846e16903a1231010d032a44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694878"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi oluşturma
 
@@ -74,7 +74,6 @@ Bu bölümde, **Mybasicpublicıp** adlı temel BIR genel IP adresi oluşturun.
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Temel** seçin         |
     | Name                    | *Mybasicpublicıp* girin          |
-    | Yönlendirme tercihi      | Varsayılan **Microsoft ağı**' nı bırakın. </br> Yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi (Önizleme) nedir?](./routing-preference-overview.md). |
     | IP adresi ataması   | **Statik** öğesini seçin (aşağıdaki nota bakın)                                     |
     | Boşta kalma zaman aşımı (dakika)  | Varsayılan olarak **4**' i bırakın.       |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -82,7 +81,7 @@ Bu bölümde, **Mybasicpublicıp** adlı temel BIR genel IP adresi oluşturun.
     | Kaynak grubu          | **Yeni oluştur**' u seçin, **myresourcegroup** girin. </br> **Tamam**’ı seçin. |
     | Konum                | **Doğu ABD 2** seçin      |
 
-:::image type="content" source="./media/create-public-ip-portal/create-standard-ip.png" alt-text="Azure portal standart IP adresi oluşturma" border="false":::
+:::image type="content" source="./media/create-public-ip-portal/create-basic-ip.png" alt-text="Azure portal standart IP adresi oluşturma" border="false":::
 
 IP adresinin zaman içinde değiştirilmesi kabul edilebilir ise, **dinamik** IP ataması seçilebilir.
 

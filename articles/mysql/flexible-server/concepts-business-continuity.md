@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 4f9cc8321d5d1d19dbcb8294ad6205b01337ee72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715063"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-esnek sunucu (Önizleme)
 
@@ -27,7 +27,7 @@ Aşağıdaki tabloda esnek sunucu tarafından sunulan özellikler gösterilmekte
 | **Yedekleme & kurtarma** | Esnek sunucu, veritabanı dosyalarınızın günlük yedeklemesini otomatik olarak gerçekleştirir ve işlem günlüklerini sürekli olarak yedekler. Yedeklemeler, 1 ila 35 gün arasında herhangi bir süre korunabilir. Veritabanı sunucunuzu, yedekleme bekletme süreniz içinde herhangi bir zaman noktasına geri yükleyebileceksiniz. Kurtarma süresi, geri yüklenecek verilerin boyutuna, günlük kurtarma gerçekleştirme zamanına göre değişir. Daha fazla ayrıntı için [bkz. kavramlar-yedekleme ve geri yükleme](./concepts-backup-restore.md) . |Yedekleme verileri bölge içinde kalır |
 | **Yerel yedekli yedekleme** | Esnek sunucu yedeklemeleri, bir bölge içinde ve aynı Kullanılabilirlik bölgesinde yerel olarak yedekli bir depolama alanında otomatik olarak ve güvenli bir şekilde depolanır. Yerel olarak yedekli yedeklemeler, sunucu yedekleme veri dosyalarını birincil bölgedeki tek bir fiziksel konum içinde üç kez çoğaltır. Yerel olarak yedekli yedekleme depolaması, belirli bir yıl boyunca en az% 99,999999999 (11 nines) nesne dayanıklılığı sağlar. Daha fazla ayrıntı için [bkz. kavramlar-yedekleme ve geri yükleme](./concepts-backup-restore.md) .| Tüm bölgelerde geçerlidir |
 | **Bölge yedekli yüksek kullanılabilirlik** | Esnek sunucu, bir bölgedeki iki farklı kullanılabilirlik bölgesinde birincil ve bekleme sunucularını dağıtan yüksek kullanılabilirlik modunda dağıtılabilir. Bu, bölge düzeyindeki hatalardan korur ve planlanmış ve planlanmamış kapalı kalma süresi olayları sırasında uygulamanın kapalı kalma süresini azaltmaya yardımcı olur. Birincil sunucudan alınan veriler, eşzamanlı çoğaltmaya zaman uyumlu olarak çoğaltılır. Herhangi bir kesinti süresi boyunca, veritabanı sunucusu otomatik olarak bekleme çoğaltmaya devredildi. Daha fazla ayrıntı için [Kavramlar-yüksek kullanılabilirlik](./concepts-high-availability.md) bölümüne bakın. | Genel amaçlı ve bellek için iyileştirilmiş işlem katmanlarında desteklenir. Yalnızca birden fazla bölgenin kullanılabildiği bölgelerde kullanılabilir.|
-| **Premium dosya paylaşımları** | Veritabanı dosyaları, otomatik veri kurtarma özellikleri ile bir kullanılabilirlik alanında depolanan çoğaltmanın üç kopyası ile veri artıklığı sağlayan, yüksek oranda dayanıklı ve güvenilir bir Azure Premium dosya paylaşımlarında saklanır. Daha fazla ayrıntı için [Premium dosya paylaşımlarına](../../storage/files/storage-how-to-create-premium-fileshare.md) bakın. | Bir kullanılabilirlik alanı içinde depolanan veriler |
+| **Premium dosya paylaşımları** | Veritabanı dosyaları, otomatik veri kurtarma özellikleri ile bir kullanılabilirlik alanında depolanan çoğaltmanın üç kopyası ile veri artıklığı sağlayan, yüksek oranda dayanıklı ve güvenilir bir Azure Premium dosya paylaşımlarında saklanır. Daha fazla ayrıntı için [Premium dosya paylaşımlarına](../../storage/files/storage-how-to-create-file-share.md) bakın. | Bir kullanılabilirlik alanı içinde depolanan veriler |
 
 > [!IMPORTANT]
 > Önizleme dönemi boyunca çalışma süresi, RTO ve RPO SLA 'Sı sunulmaz. Yalnızca bilgi ve planlama amaçlarıyla bu sayfada sunulan ayrıntılar.

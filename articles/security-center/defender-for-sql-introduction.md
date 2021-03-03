@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702020"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -43,7 +43,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 - **MAKINELERDEKI SQL Server 'lar Için Azure Defender** , karma ortamları tamamen desteklemek ve Azure 'DA barındırılan SQL sunucularını (desteklenen tüm sürümleri) ve hatta şirket içi makineleri korumak için Azure Native SQL Server 'larınızın korumalarını uzatır:
     - [Sanal Makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Şirket içi SQL Server 'lar:
-        - [Azure Arc özellikli SQL Server (önizleme)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc özellikli SQL Server (önizleme)](/sql/sql-server/azure-arc/overview)
         - [Azure Arc olmadan Windows makinelerde çalışan SQL Server](../azure-monitor/agents/agent-windows.md)
 
 

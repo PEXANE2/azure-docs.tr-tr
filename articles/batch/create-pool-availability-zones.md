@@ -3,12 +3,12 @@ title: Kullanılabilirlik alanları arasında havuz oluşturma
 description: Hatalara karşı korumaya yardımcı olmak için, bölgesel ilkesiyle bir Batch havuzu oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725297"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>Kullanılabilirlik Alanları genelinde Azure Batch havuzu oluşturma
 
@@ -22,7 +22,7 @@ Batch, Kullanılabilirlik Alanları destekleyici Azure ile eşlik sağlar. Bölg
 
 Toplu Iş havuzunuzun kullanılabilirlik alanları arasında ayrılması için, havuzun oluşturulduğu Azure bölgesinin, istenen VM SKU 'sunu birden fazla bölgede desteklemesi gerekir. [Kaynak SKU 'Ları LISTE API](/rest/api/compute/resourceskus/list) 'sini çağırarak ve [Resourcesku](/rest/api/compute/resourceskus/list#resourcesku)'ın **LocationInfo** alanını denetleyerek bunu doğrulayabilirsiniz. İstenen VM SKU 'SU için birden fazla bölgenin desteklendiğinden emin olun.
 
-[Kullanıcı aboneliği modu Batch hesapları](accounts.md#batch-accounts)için, havuzunuzu oluşturmakta olduğunuz aboneliğin, istenen VM SKU 'sunda bir bölge teklif kısıtlaması olmadığından emin olun. Bunu onaylamak için [kaynak SKU 'Ları LISTE API](/rest/api/compute/resourceskus/list) 'sini çağırın ve [resourceskurestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions)kontrol edin. Bir bölge kısıtlaması varsa, bölge kısıtlamasını kaldırmak için bir [destek bileti](../azure-portal/supportability/sku-series-unavailable.md) gönderebilirsiniz.
+[Kullanıcı aboneliği modu Batch hesapları](accounts.md#batch-accounts)için, havuzunuzu oluşturmakta olduğunuz aboneliğin, istenen VM SKU 'sunda bir bölge teklif kısıtlaması olmadığından emin olun. Bunu onaylamak için [kaynak SKU 'Ları LISTE API](/rest/api/compute/resourceskus/list) 'sini çağırın ve [resourceskurestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions)kontrol edin. Bir bölge kısıtlaması varsa, bölge kısıtlamasını kaldırmak için bir [destek bileti](/troubleshoot/azure/general/region-access-request-process) gönderebilirsiniz.
 
 Ayrıca, düğüm içi iletişimin etkin olması ve [InfiniBand 'yi destekleyen bir VM SKU 'su](../virtual-machines/workloads/hpc/enable-infiniband.md)kullanması durumunda bölgesel ilkesiyle bir havuz oluşturmayacağınızı unutmayın.
 
@@ -83,4 +83,3 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 - [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
 - Bir [Azure sanal ağının alt ağında havuz oluşturma](batch-virtual-network.md)hakkında bilgi edinin.
 - [Genel IP adresleri olmayan Azure Batch havuzu oluşturma](./batch-pool-no-public-ip-address.md)hakkında bilgi edinin.
-

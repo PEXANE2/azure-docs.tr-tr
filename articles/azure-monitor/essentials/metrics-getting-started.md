@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734426"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -29,7 +29,7 @@ Azure Izleyici Ölçüm Gezgini, grafikleri çizdirme, eğilimleri görsel olara
 
 Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azure Izleyici görünümünden **ölçümler** sekmesini açın ve şu adımları izleyin:
 
-1. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Kaynak menüsünden Ölçüm Gezgini 'ni açtıysanız kaynak zaten doldurulmalıdır. Birden çok kaynak arasında ölçümleri görüntülemeyi öğrenmek için [Bu makaleyi okuyun](../platform/metrics-dynamic-scope.md).
+1. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Kaynak menüsünden Ölçüm Gezgini 'ni açtıysanız kaynak zaten doldurulmalıdır. Birden çok kaynak arasında ölçümleri görüntülemeyi öğrenmek için [Bu makaleyi okuyun](./metrics-dynamic-scope.md).
     > ![Bir kaynak seçin](./media/metrics-getting-started/scope-picker.png)
 
 2. Bazı kaynaklar için bir ad alanı seçmelisiniz. Ad alanı, ölçümleri kolayca bulabilmeniz için, ölçümleri düzenlemenin bir yoludur. Örneğin, depolama hesaplarının dosya, tablo, blob 'Lar ve sıra ölçümlerini depolamak için ayrı ad alanları vardır. Birçok kaynak türünün yalnızca bir ad alanı vardır.
@@ -72,7 +72,7 @@ Grafik stilini, başlığı özelleştirebilir ve gelişmiş grafik ayarlarını
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ölçüm Gezgini gelişmiş özellikleri hakkında bilgi edinin](../essentials/metrics-charts.md)
-* [Ölçüm Gezgini birden çok kaynağı görüntüleme](../platform/metrics-dynamic-scope.md)
+* [Ölçüm Gezgini birden çok kaynağı görüntüleme](./metrics-dynamic-scope.md)
 * [Ölçüm Gezgini sorunlarını giderme](metrics-troubleshoot.md)
-* [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](../platform/metrics-supported.md)
+* [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](./metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](../essentials/metric-chart-samples.md)

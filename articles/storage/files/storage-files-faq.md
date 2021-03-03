@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492140"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737622"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -73,7 +73,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="tier-options"></a>
   **Azure dosyalarında hangi depolama katmanları desteklenir?**  
-    Azure dosyaları iki depolama katmanını destekler: Premium ve standart. Standart dosya paylaşımları genel amaçlı olarak oluşturulur (GPv1 veya GPv2) depolama hesapları ve Premium dosya paylaşımları, FileStorage depolama hesaplarında oluşturulur. [Standart dosya paylaşımları](storage-how-to-create-file-share.md) ve [Premium dosya paylaşımları](storage-how-to-create-premium-fileshare.md)oluşturma hakkında daha fazla bilgi edinin. 
+    Azure dosyaları iki depolama katmanını destekler: Premium ve standart. Standart dosya paylaşımları genel amaçlı olarak oluşturulur (GPv1 veya GPv2) depolama hesapları ve Premium dosya paylaşımları, FileStorage depolama hesaplarında oluşturulur. [Standart dosya paylaşımları](storage-how-to-create-file-share.md) ve [Premium dosya paylaşımları](./storage-how-to-create-file-share.md)oluşturma hakkında daha fazla bilgi edinin. 
     
     > [!NOTE]
     > BLOB depolama hesaplarından veya *Premium* genel amaçlı (GPv1 veya GPv2) depolama hesaplarından Azure dosya paylaşımları oluşturamazsınız. Standart Azure dosya paylaşımlarının yalnızca *Standart* genel amaçlı hesaplarda oluşturulması gerekir ve Premium Azure dosya paylaşımları yalnızca dosya depolama depolama hesaplarında oluşturulmalıdır. *Premium* genel amaçlı (GPv1 ve GPv2) depolama hesapları yalnızca Premium sayfa Blobları içindir. 

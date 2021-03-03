@@ -3,15 +3,15 @@ title: Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı ol
 description: Azure 'da SSIS paketlerini dağıtıp çalıştırmak için Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanı oluşturmayı öğrenin.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389425"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739427"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -147,15 +147,21 @@ Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağım
    
       Seçili veritabanı sunucusuna bağlı olarak, SSıSDB örneği, elastik havuzun bir parçası olarak veya yönetilen bir örnekte sizin adınıza tek bir veritabanı olarak oluşturulabilir. Bu, genel bir ağda veya bir sanal ağa katılarak erişilebilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
 
-      SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma]().
+      SSD 'yi barındırmak için IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek içeren bir Azure SQL veritabanı sunucusu seçerseniz veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katılmanız gerekir. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](./join-azure-ssis-integration-runtime-virtual-network.md).
 
    1. Veritabanı sunucunuzun SSıSDB 'yi barındıracak kimlik doğrulama yöntemini seçmek için, **ADF 'niz için yönetilen kimlikle Azure AD kimlik doğrulamasını kullan** onay kutusunu seçin. Veri fabrikanızın yönetilen kimliğiyle SQL kimlik doğrulaması ya da Azure AD kimlik doğrulaması ' nı seçersiniz.
 
-      Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma]().
+      Onay kutusunu seçerseniz, veritabanı sunucunuza erişim izinleri olan bir Azure AD grubuna veri fabrikanızın yönetilen kimliğini eklemeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasını bir Azure-SSIS IR Için etkinleştirme](./enable-aad-authentication-azure-ssis-ir.md).
    
    1. **Yönetici Kullanıcı adı** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
 
    1. **Yönetici parolası** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
+
+   1. İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek yük devretme grubuyla eşitlenmiş olarak çalıştırılan bir çift hazır bekleyen Azure SSIS IR çifti yapılandırmak için **SSSıSDB yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullanın** onay kutusunu seçin.
+   
+      Onay kutusunu seçerseniz, **çift bekleme çifti adı** metin kutusunda birincil ve ikincil Azure-SSIS IRS çiftini tanımlayacak bir ad girin. Birincil ve ikincil Azure-SSIS IRS 'nizi oluştururken aynı çift adı girmeniz gerekir.
+
+      Daha fazla bilgi için bkz. [BCDR için Azure-SSIS IR yapılandırma](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. **Katalog veritabanı hizmet katmanı** IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
 

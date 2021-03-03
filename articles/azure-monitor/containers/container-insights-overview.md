@@ -1,18 +1,18 @@
 ---
-title: Kapsayıcılar için Azure Izleyicisine genel bakış | Microsoft Docs
-description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcılar için Azure Izleyici ve AKS kümelerinizin sistem durumunu ve Azure 'daki Container Instances izleyerek sunduğu değer açıklanmaktadır.
+title: Kapsayıcı öngörülerine genel bakış | Microsoft Docs
+description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcı öngörüleri ve AKS kümelerinizin sistem durumunu izleyerek Azure 'daki Container Instances tarafından teslim edilen değer açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: a9b9e155884b20c19b9b82994a3b9b1bdf53f27a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723393"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılar için Azure İzleyici’ye genel bakış
+# <a name="container-insights-overview"></a>Kapsayıcı öngörülerine genel bakış
 
-Kapsayıcılar için Azure Izleyici, ' ye dağıtılan kapsayıcı iş yüklerinin performansını izlemek için tasarlanmış bir özelliktir:
+Kapsayıcı öngörüleri, ' ye dağıtılan kapsayıcı iş yüklerinin performansını izlemek için tasarlanmış bir özelliktir:
 
 - [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) üzerinde barındırılan yönetilen Kubernetes kümeleri
 - [Aks altyapısı](https://github.com/Azure/aks-engine) kullanılarak Azure üzerinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
@@ -21,17 +21,17 @@ Kapsayıcılar için Azure Izleyici, ' ye dağıtılan kapsayıcı iş yüklerin
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure Arc etkin Kubernetes](../../azure-arc/kubernetes/overview.md) (Önizleme)
 
-Kapsayıcılar için Azure Izleyici, Linux ve Windows Server 2019 işletim sistemi çalıştıran kümeleri destekler. Desteklediği kapsayıcı çalışma zamanları Docker, Moby ve CRı-O ve ContainerD gibi tüm CRı uyumlu çalışma zamanı.
+Kapsayıcı öngörüleri, Linux ve Windows Server 2019 işletim sistemi çalıştıran kümeleri destekler. Desteklediği kapsayıcı çalışma zamanları Docker, Moby ve CRı-O ve ContainerD gibi tüm CRı uyumlu çalışma zamanı.
 
 Kapsayıcılarınızın izlenmesi, özellikle de bir üretim kümesini birden çok uygulamayla birlikte çalışırken kritik öneme sahiptir.
 
-Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğüne sahip olmanızı sağlar. Kapsayıcı günlükleri de toplanır.  Kubernetes kümelerinden izlemeyi etkinleştirdikten sonra, ölçümler ve Günlükler, Linux için Log Analytics aracısının kapsayıcılı bir sürümü aracılığıyla sizin için otomatik olarak toplanır. Ölçümler ölçüm deposuna yazılır ve günlük verileri [Log Analytics](../log-query/log-query-overview.md) çalışma alanıyla ilişkili Günlükler deposuna yazılır.
+Kapsayıcı öngörüleri, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğü sağlar. Kapsayıcı günlükleri de toplanır.  Kubernetes kümelerinden izlemeyi etkinleştirdikten sonra, ölçümler ve Günlükler, Linux için Log Analytics aracısının kapsayıcılı bir sürümü aracılığıyla sizin için otomatik olarak toplanır. Ölçümler ölçüm deposuna yazılır ve günlük verileri [Log Analytics](../logs/log-query-overview.md) çalışma alanıyla ilişkili Günlükler deposuna yazılır.
 
-![Kapsayıcılar için Azure Izleyici mimarisi](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Kapsayıcı öngörüleri mimarisi](./media/container-insights-overview/azmon-containers-architecture-01.png)
 
-## <a name="what-does-azure-monitor-for-containers-provide"></a>Kapsayıcılar için Azure Izleyici ne sağlar?
+## <a name="what-does-container-insights-provide"></a>Kapsayıcı öngörüleri neler sağlar?
 
-Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sağlar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemi ve kapsayıcı iş yüklerini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu anlamanıza olanak tanır. Kapsayıcılar için Azure İzleyici ile yapabilecekleriniz:
+Kapsayıcı öngörüleri, Azure Izleyici 'nin farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sağlar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemi ve kapsayıcı iş yüklerini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu anlamanıza olanak tanır. Kapsayıcı öngörüleri ile şunları yapabilirsiniz:
 
 * Düğüm üzerinde çalışan AKS kapsayıcılarını ve bunların ortalama işlemci ve bellek kullanımını belirler. Bu bilgi, kaynak performans sorunlarını belirlemenize yardımcı olabilir.
 * Kapsayıcı gruplarının ve Azure Container Instances barındırılan kapsayıcılarının işlemci ve bellek kullanımını belirler.
@@ -56,19 +56,18 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan izlemedek
 - Docker ortamları değil yalnızca Pod ortamları izlenir.
 - Önizleme sürümü ile en fazla 30 Windows Server kapsayıcısı desteklenir. Bu sınırlama, Linux kapsayıcıları için geçerlidir.
 
-AKS kümenizi kapsayıcılar için Azure Izleyici ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.
+AKS kümenizi kapsayıcı öngörüleri ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.
 
-> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+> [!VIDEO https://youtu.be/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>Bu özelliğe erişmek Nasıl yaparım??
 
-Azure izleyici 'yi Azure Izleyici 'den veya doğrudan seçilen AKS kümesinden iki yolla kapsayıcılar için Azure Izleyicisine erişebilirsiniz. Azure Izleyici 'den, izlenen ve olmayan tüm kapsayıcılardan oluşan küresel bir perspektife sahipsiniz, bu, abonelikleriniz ve kaynak gruplarınız üzerinde arama ve filtreleme olanağı sağlar ve ardından seçili kapsayıcıdan kapsayıcılar için Azure Izleyici 'ye gidebilir.  Aksi takdirde, özelliğe doğrudan, AKS sayfasından seçilen bir AKS kapsayıcısından erişebilirsiniz.
+Azure Izleyici 'den veya doğrudan seçilen AKS kümesinden kapsayıcı öngörülerine iki şekilde erişebilirsiniz. Azure Izleyici 'den, izlenen ve olmayan tüm kapsayıcılardan oluşan genel bir perspektife sahipsiniz, bu, abonelikleriniz ve kaynak gruplarınız üzerinde arama ve filtreleme olanağı sağlar ve ardından seçili kapsayıcıdan kapsayıcı öngörülerine gidebilirsiniz.  Aksi takdirde, özelliğe doğrudan, AKS sayfasından seçilen bir AKS kapsayıcısından erişebilirsiniz.
 
-![Kapsayıcılar için Azure Izleyicisine erişme yöntemlerine genel bakış](./media/container-insights-overview/azmon-containers-experience.png)
+![Kapsayıcı öngörülerine erişim yöntemlerine genel bakış](./media/container-insights-overview/azmon-containers-experience.png)
 
-Yapılandırma, denetim ve kaynak kullanımını görüntülemek için AKS dışında çalışan Docker ve Windows kapsayıcı konaklarınızı izlemeye ve yönetmeye ilgileniyorsanız, bkz. [kapsayıcı izleme çözümü](../insights/containers.md).
+Yapılandırma, denetim ve kaynak kullanımını görüntülemek için AKS dışında çalışan Docker ve Windows kapsayıcı konaklarınızı izlemeye ve yönetmeye ilgileniyorsanız, bkz. [kapsayıcı izleme çözümü](./containers.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcılar Için Azure Izleyicisini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin.
-
+Kubernetes kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcı öngörülerini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin.

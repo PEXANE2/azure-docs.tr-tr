@@ -5,30 +5,81 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/27/2020
+ms.date: 02/12/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750631"
 ---
-## <a name="common-scenarios"></a>Genel senaryolar
-Aşağıdaki senaryolar büyük ölçüde patlanabilir:
-- **Önyükleme zamanlarını iyileştirme**  : tekrarlaması sayesinde, örneğiniz önemli ölçüde daha hızlı bir hızda önyüklenecektir. Örneğin, Premium etkin VM 'Ler için varsayılan işletim sistemi diski, 120 ıOPS ve 25 MB/sn için sağlanan bir performans olan P4 disktir. Patlama ile P4, bir önyükleme süresinin 6X ile hızlanmasına izin veren 3500 ıOPS ve 170 MB/sn 'ye kadar sürebilir.
-- **Toplu Işleri işleme** – bazı uygulamaların iş yükleri doğası açısından döngüsel olur ve çoğu zaman için bir temel performans gerektirir ve kısa bir süre için daha yüksek performans gerektirir. Bu işlemin bir örneği, az miktarda disk trafiği gerektiren işlemleri günlük olarak işleyen bir muhasebe programıdır. Daha sonra ayın sonunda, çok daha yüksek miktarda disk trafiğine ihtiyacı olan raporların uzlaştırılıyor.
-- **Trafik ani artışları Için hazırlık** : Web sunucuları ve uygulamaları, her zaman trafik dalgalanmalarına karşılaşabilir. Web sunucunuz, patlama kullanılarak VM 'Ler veya diskler tarafından desteklenmişse, sunucular trafik artışlarını işlemek için daha iyi şekilde donatılmıştır. 
+## <a name="disk-level-bursting"></a>Disk düzeyinde burdıya
+
+### <a name="on-demand-bursting-preview"></a>İsteğe bağlı (Önizleme)
+
+İsteğe bağlı disk miktarını kullanan diskler, en fazla patlama hedefine kadar iş yüklerine göre gereken ilk sağlanmış hedefleri aşacak şekilde veri bloğu oluşturabilir. Örneğin, 1-TiB P30 diskinde sağlanan ıOPS, 5000 ıOPS olur. Bu diskte disk patlaması etkinleştirildiğinde, iş yükleriniz, 30.000 ıOPS ve 1.000 MBps olan en fazla patlama performansına kadar bu diske IOs verebilir.
+
+İş yüklerinizin sağlanan performans hedefinin ötesinde sıklıkla çalışmasını bekleliyorsanız, disk patlaması uygun maliyetli olmayacaktır. Bu durumda, daha iyi temel performans için diskinizin performans katmanını [daha yüksek bir katmana](../articles/virtual-machines/disks-performance-tiers.md) değiştirmenizi öneririz. Faturalandırma ayrıntılarınızı gözden geçirin ve iş yüklerinizin trafik düzenine karşı değerlendirin.
+
+İsteğe bağlı okeyi etkinleştirmeden önce aşağıdakileri anlayın:
+
+[!INCLUDE [managed-disk-bursting-regions-limitations](managed-disk-bursting-regions-limitations.md)]
+
+#### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+
+[!INCLUDE [managed-disk-bursting-availability](managed-disk-bursting-availability.md)]
+
+#### <a name="billing"></a>Faturalandırma
+
+İsteğe bağlı bir patlama modelini kullanan diskler, saatlik bir patlama için sabit ücret ve işlem maliyetleri, sağlanan hedefin ötesinde tüm veri bloğu işlemleri için geçerlidir. İşlem maliyetleri, sağlanan hedefleri aşan okuma ve yazma işlemleri de dahil olmak üzere, önbelleğe alınmamış disk IOs temel alınarak Kullandıkça Öde modeli kullanılarak ücretlendirilir. Aşağıda, bir faturalama saati üzerinde disk trafiği desenlerinin bir örneği verilmiştir:
+
+Disk yapılandırması: Premium SSD – 1 TiB (P30), disk patlaması etkin.
+
+- 00:00:00 – 00:10:00 disk ıOPS, 5.000 ıOPS 'nin sağlanmış hedefi 
+- 00:10:01 – 00:10:10 uygulama, disk ıOPS 'nin 10 saniye boyunca 6.000 ıOPS 'de patlaması için bir Batch işi verdi 
+- 00:10:11 – 00:59:00 disk ıOPS, 5.000 ıOPS 'nin sağlanmış hedefi 
+- 00:59:01 – 01:00:00 uygulaması başka bir Batch işi verdi. bu nedenle, disk ıOPS 'nin 60 saniye boyunca 7.000 
+
+Bu Faturalandırma saati ' nde, burdıma maliyeti iki ücretden oluşur:
+
+İlk ücret, $X (bölgenize göre belirlenir) sabit kullanım masrafına yönelik bir patlama. Bu düz ücret her zaman disk üzerinde ücretlendirilir. 
+
+İkincisi, veri bloğu işlem maliyetidir. İki zaman yuvalarında disk patlaması gerçekleşti. 00:10:01 – 00:10:10 ' den, birikmiş patlama işlemi (6.000 – 5.000) X 10 = 10.000. 00:59:01 – 01:00:00 ' den, birikmiş patlama işlemi (7.000 – 5.000) X 60 = 120.000. Toplam patlama işlemleri 10.000 + 120.000 = 130.000. Veri bloğu işlem maliyeti, 13 10.000 işlem tarihine (bölgesel fiyatlandırmaya göre) göre $Y üzerinden ücretlendirilir.
+
+Bu şekilde, bu faturalandırma saati ile birlikte disk üzerindeki toplam maliyet $X + $Y eşittir. Aynı hesaplama, MB/sn 'nin sağlanan hedefinin üzerine patlama için geçerlidir. MB/ç miktarı, 256 KB GÇ boyutuyla işlem için fazla. Disk trafiğiniz hem sağlanan ıOPS hem de MBps hedefini aşarsa, veri bloğu işlemlerini hesaplamak için aşağıdaki örneğe başvurabilirsiniz. 
+
+Disk yapılandırması: Premium SSD – 1 TB (P30), disk patlaması etkin.
+
+- 00:00:01 – 00:00:05 uygulama bir Batch işi verdi ve beş saniye boyunca disk ıOPS 'nin 10.000 ıOPS ve 300 MBps hızında veri bloğu olmasına neden oldu.
+- 00:00:06 – 00:00:10 uygulaması, bir kurtarma işi verdi ve beş saniye boyunca disk ıOPS 'nin 6.000 ıOPS ve 600 MBps hızında veri bloğu olmasına neden oldu.
+
+Veri bloğu işlemi, ıOPS 'den veya MB/sn 'ye kadar olan en fazla işlem sayısı olarak hesaba katılmaz. 00:00:01 – 00:00:05 ' den, birikmiş patlama işlemi Max ((10.000 – 5.000), (300-200) * 1024/256)) * 5 = 25.000 işlemleri. 00:00:06 – 00:00:10 ' den, birikmiş patlama işlemi Max ((6.000 – 5.000), (600-200) * 1024/256)) * 5 = 8.000 işlemleri. Bunun üzerine, isteğe bağlı tabanlı disk patlaması sağlamak için toplam maliyeti almak üzere veri bloğu etkinleştirme düz ücretini dahil edersiniz. 
+
+Fiyatlandırma hakkında ayrıntılı bilgi edinmek için [yönetilen diskler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/managed-disks/) başvurabilirsiniz ve iş yükünüz için değerlendirme yapmak üzere [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=storage) ' yı kullanabilirsiniz. 
+
+### <a name="credit-based-bursting"></a>Kredi tabanlı patlama
+
+Azure genel, kamu ve Çin bulutlarındaki tüm bölgelerde P20 ve daha küçük bir disk boyutu için kredi tabanlı burdıal sunulmaktadır. Varsayılan olarak, disk patlaması desteklenen disk boyutlarının tüm yeni ve var olan dağıtımlarında etkindir. VM düzeyinde burdıya yalnızca kredi tabanlı patlama kullanır.
+
+### <a name="virtual-machine-level-bursting"></a>Sanal makine düzeyinde patlama
+VM düzeyinde burdıya açma desteği, bu desteklenen boyutlarda genel buluttaki tüm bölgelerde etkindir: 
+- [Lsv2 serisi](../articles/virtual-machines/lsv2-series.md)
+
+VM düzeyi patlaması, aşağıdaki desteklenen boyutlar için Orta Batı ABD de kullanılabilir:
+- [Dv3 ve Dsv3 serisi](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Ev3 ve Esv3 serisi](../articles/virtual-machines/ev3-esv3-series.md)
+
+Varsayılan olarak, bu özelliği destekleyen sanal makineler için burdıya etkin hale gelir.
 
 ## <a name="bursting-flow"></a>Patlama akışı
-Gereksiz kredi sistemi, hem sanal makine düzeyinde hem de disk düzeyinde aynı şekilde geçerlidir. Kaynağınız, bir VM ya da disk, tamamen stoksiz kredilerle başlar. Bu krediler, en fazla patlama hızında 30 dakika boyunca veri bloğu yapmanıza olanak sağlayacak. Patlama kredileri, kaynağınız performans disk depolama sınırları altında çalışırken biriktirir. Kaynağınızın, kaynağın altında kullandığı tüm ıOPS ve MB/sn 'ler için kredileri biriktirmek için başlarsınız. Kaynağınız, patlama için kullanılmak üzere tahakkuk eden krediler içeriyorsa ve iş yükünüzün ek performansa ihtiyacı varsa, kaynağınız bu kredileri kullanarak, talebi karşılamak için ihtiyaç duyması gereken disk GÇ performansını sağlamak için bu kredilerin performans sınırınızı üzerine gidebilirler.
 
+Hakeyi kredi sistemi, hem VM düzeyinde hem de disk düzeyinde aynı şekilde geçerlidir. Kaynağınız, bir VM ya da disk, kendi veri bloğu demetini içinde tamamen Stokdaki kredilerle başlar. Bu krediler, en fazla patlama hızında 30 dakikaya kadar veri bloğu yapmanıza olanak sağlar. Kaynağın ıOPS veya MB/sn, kaynağın performans hedefinin altında kullanıldığı her seferinde krediler birikir. Kaynağınız, yatırım kredisi tahakkuk etmiştir ve iş yükünüz ek performansa ihtiyaç duyuyorsa, kaynağınız bu kredileri kullanarak performans sınırlarının üzerine gidebilir ve iş yükü taleplerini karşılamak için performansını artırabilir.
 
+![Yer demet diyagramı.](media/managed-disks-bursting/bucket-diagram.jpg)
 
-![Patlama demeti diyagramı](media/managed-disks-bursting/bucket-diagram.jpg)
-
-Bu, 30 dakikalık bir burtayı nasıl kullanmak istediğinize bağlıdır. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tam kredilerle kullanıma sunulur ve kredilerin tam olarak tamamen stoklanması için bir günden daha az zaman alır. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
+Kullanılabilir kredilerinizi size nasıl harcadığını öğrenin. 30 dakikalık patlama kredilerinizi günde bir arka arkaya veya spora üzerinden kullanabilirsiniz. Kaynaklar dağıtıldığında, kredilerin tam tahsisatına sahip olurlar. Bu gün sonra, yeniden stoklama için bir günden daha az zaman alır. Kredilerin, kaynakların patlaması için, patlama demetini 'nin tam olması gerekmez. Veri bloğu birikmesi, kullanılmayan ıOPS 'yi ve performans hedeflerinin altında MB/s 'yi temel aldığı için her kaynağa bağlı olarak farklılık gösterir. Daha yüksek temel performans kaynakları, ani kredilerin en düşük temel performanslı kaynakları daha hızlı bir şekilde tahakkuk edebilir. Örneğin, bir P1 disk kimliği saniyede 120 ıOPS tahakkuk eder, ancak bir Idling P20 diski saniyede 2.300 ıOPS olarak ücretlendirilir.
 
 ## <a name="bursting-states"></a>Gereksiz durumlar
 Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:
@@ -36,7 +87,7 @@ Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:
 - **Burdımı** : kaynağın trafiği performans hedefinden daha fazla kullanılıyor. Veri bloğu trafiği ıOPS 'den veya bant genişliğinden bağımsız olarak kredileri kullanacaktır.
 - **Sabit** : kaynağın trafiği tam olarak performans hedefidir.
 
-## <a name="examples-of-bursting"></a>Burte örnek
+## <a name="bursting-examples"></a>Patlama örnekleri
 
 Aşağıdaki örneklerde, kaç farklı VM ve disk birleşimleriyle birlikte nasıl çalıştığı gösterilmektedir. Örneklerin daha kolay olmasını sağlamak için MB/sn 'ye odaklanacağız, ancak aynı mantık ıOPS 'ye bağımsız olarak uygulanır.
 
@@ -53,15 +104,15 @@ Aşağıdaki örneklerde, kaç farklı VM ve disk birleşimleriyle birlikte nas�
 
  VM önyüklendiğinde, işletim sistemi diskinden veri alır. İşletim sistemi diski, önyükleme yapan bir sanal makinenin parçası olduğundan, işletim sistemi diski, ani kredilerin sonuna kadar olacaktır. Bu krediler, işletim sistemi diskinin başlangıç olarak 170 MB/s saniye üzerinden başlatılmasını sağlar.
 
-![VM, IŞLETIM sistemi diskine 192 MB/sn aktarım hızı için bir istek gönderir; işletim sistemi diski 170 MB/s verileriyle yanıt verir.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![VM, IŞLETIM sistemi diskine 192 MB/sn aktarım hızı için bir istek gönderir; işletim sistemi diski 170 MB/s verileriyle yanıt verir.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-startup.jpg)
 
 Önyükleme tamamlandıktan sonra, bir uygulama VM üzerinde çalışır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 15 MB/S gerektirir.
 
-![Uygulama VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Uygulama VM 'ye 15 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve disklerin her birini 5 MB/sn için bir istek gönderir, sanal makine 5 MB/sn döndürür; VM, uygulamaya 15 MB/s döndürür.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-idling.jpg)
 
 Sonra uygulamanın 192 MB/s gerektiren bir toplu işi işlemesi gerekir. 2 MB/s, işletim sistemi diski tarafından kullanılır ve REST, veri diskleri arasında eşit olarak bölünür.
 
-![Uygulama, VM 'ye 192 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve isteğin toplu işini veri disklerine (95 MB/s) ve 2 MB/sn 'yi işletim sistemi diskine gönderir, veri diskleri talebi karşılayacak şekilde, bu da uygulamayı uygulamaya döndüren tüm diskler, istenen aktarım hızını sanal makineye döndürür.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Uygulama, VM 'ye 192 MB/sn aktarım hızı isteği gönderir, VM isteği alır ve isteğin toplu işini veri disklerine (95 MB/s) ve 2 MB/sn 'yi işletim sistemi diskine gönderir, veri diskleri talebi karşılayacak şekilde, bu da uygulamayı uygulamaya döndüren tüm diskler, istenen aktarım hızını sanal makineye döndürür.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Bursuz diskler içeren Burstable sanal makine
 **VM ve disk birleşimi:** 

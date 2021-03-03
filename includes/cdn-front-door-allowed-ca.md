@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: multiple
-author: sharad4u
+author: duongau
 ms.service: multiple
 ms.topic: include
 ms.date: 10/30/2020
-ms.author: sharadag
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: eb3cc6a37e9116b2a28b72fc7a3779aafb2a1e21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750377"
 ---
 Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 
@@ -54,6 +54,7 @@ Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 - GlobalSign kök CA
 - Go Daddy kök sertifika yetkilisi-G2
 - Go Daddy güvenli sertifika yetkilisi-G2
+- Hongkong kök sertifika yetkilisi 1
 - Yetkili x3 'yi şifreleyelim
 - Mikro sn e-Szigno kök CA 2009
 - Quovadsıs root CA2 G3
@@ -61,6 +62,7 @@ Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 - Güvenlik Iletişimi RootCA1
 - Güvenlik Iletişimi RootCA2
 - Güvenlik Iletişimi RootCA3
+- Staat der Nederlanden EV kök CA
 - Symantec Class 3 EV SSL CA-G3
 - Symantec Class 3 güvenli sunucu CA-G4
 - Microsoft için Symantec Enterprise Mobile Root

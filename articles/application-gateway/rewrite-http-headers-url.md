@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216683"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726521"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
@@ -60,9 +60,9 @@ Azure portal kullanarak URL 'YI Application Gateway yeniden yazmayı öğrenmek 
 Yeniden yazma işlemlerini, yeniden yazmak istediğiniz URL 'yi, istek üstbilgilerini veya yanıt üstbilgilerini ve bunları yeniden yazmak istediğiniz yeni değeri belirtmek için kullanabilirsiniz. URL veya yeni ya da var olan bir üst bilginin değeri bu tür değerlere ayarlanabilir:
 
 * Metin
-* İstek üst bilgisi. Bir istek üst bilgisi belirtmek için {http_req_*HeaderName*} sözdizimini kullanmanız gerekir
-* Yanıt üst bilgisi. Yanıt üst bilgisi belirtmek için {http_resp_*HeaderName*} sözdizimini kullanmanız gerekir
-* Sunucu değişkeni. Sunucu değişkeni belirtmek için {var_*Servervariable*} sözdizimini kullanmanız gerekir. Desteklenen sunucu değişkenlerinin listesini görüntüleyin
+* İstek üst bilgisi. Bir istek üst bilgisi belirtmek için {http_req_ *HeaderName*} sözdizimini kullanmanız gerekir
+* Yanıt üst bilgisi. Yanıt üst bilgisi belirtmek için {http_resp_ *HeaderName*} sözdizimini kullanmanız gerekir
+* Sunucu değişkeni. Sunucu değişkeni belirtmek için {var_ *Servervariable*} sözdizimini kullanmanız gerekir. Desteklenen sunucu değişkenlerinin listesini görüntüleyin
 * Metin, istek üst bilgisi, yanıt üst bilgisi ve sunucu değişkeni birleşimi. 
 
 ## <a name="rewrite-conditions"></a>Yeniden yazma koşulları
@@ -100,7 +100,7 @@ Tüm değeri kullanmak istiyorsanız, bu sayıdan bahsetmemelidir. {Http_req_hea
 
 ## <a name="server-variables"></a>Sunucu değişkenleri
 
-Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli istek hakkındaki yararlı bilgileri depolamak için sunucu değişkenlerini kullanır. Depolanan bilgilere örnek olarak istemcinin IP adresi ve Web tarayıcı türü dahildir. Sunucu değişkenleri dinamik olarak değişir; Örneğin, yeni bir sayfa yüklendiğinde veya bir form gönderildiğinde. Yeniden yazma koşullarını değerlendirmek ve üstbilgileri yeniden yazmak için bu değişkenleri kullanabilirsiniz. Üst bilgileri yeniden yazmak için sunucu değişkenlerinin değerini kullanmak için, {var_*serverVariableName*} sözdiziminde bu değişkenleri belirtmeniz gerekir.
+Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli istek hakkındaki yararlı bilgileri depolamak için sunucu değişkenlerini kullanır. Depolanan bilgilere örnek olarak istemcinin IP adresi ve Web tarayıcı türü dahildir. Sunucu değişkenleri dinamik olarak değişir; Örneğin, yeni bir sayfa yüklendiğinde veya bir form gönderildiğinde. Yeniden yazma koşullarını değerlendirmek ve üstbilgileri yeniden yazmak için bu değişkenleri kullanabilirsiniz. Üst bilgileri yeniden yazmak için sunucu değişkenlerinin değerini kullanmak için, {var_ *serverVariableName*} sözdiziminde bu değişkenleri belirtmeniz gerekir.
 
 Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 
@@ -114,7 +114,7 @@ Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 | client_tcp_rtt            | İstemci TCP bağlantısıyla ilgili bilgiler. TCP_INFO yuva seçeneğini destekleyen sistemlerde kullanılabilir. |
 | client_user               | HTTP kimlik doğrulaması kullanıldığında, kimlik doğrulaması için sağlanan Kullanıcı adı. |
 | konak                      | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ana bilgisayar değeri şu şekilde olacaktır: `contoso.com` |
-| cookie_*adı*             | *Ad* tanımlama bilgisi.                                           |
+| cookie_ *adı*             | *Ad* tanımlama bilgisi.                                           |
 | http_method               | URL isteğini yapmak için kullanılan yöntem. Örneğin, GET veya POST. |
 | http_status               | Oturum durumu. Örneğin, 200, 400 veya 403.           |
 | http_version              | İstek Protokolü. Genellikle HTTP/1.0, HTTP/1.1 veya HTTP/2.0. |
@@ -164,7 +164,7 @@ Bir arka uç uygulaması yeniden yönlendirme yanıtı gönderdiğinde, istemciy
 
 App Service çok kiracılı bir hizmet olduğundan, isteği doğru uç noktaya yönlendirmek için istekteki ana bilgisayar üst bilgisini kullanır. Uygulama Hizmetleri, Application Gateway 'in etki alanı adından (deyin contoso.com) farklı olan *. azurewebsites.net (deyin contoso.azurewebsites.net) varsayılan etki alanı adına sahiptir. İstemciden gelen özgün istek ana bilgisayar adı olarak uygulama ağ geçidinin etki alanı adına (contoso.com) sahip olduğundan, Application Gateway ana bilgisayar adını contoso.azurewebsites.net olarak değiştirir. Bu değişiklik, App Service 'in isteği doğru uç noktaya yönlendirebilmesi için yapar.
 
-App Service bir yeniden yönlendirme yanıtı gönderdiğinde, uygulamanın konum üstbilgisindeki ana bilgisayar adını uygulama ağ geçidinden aldığı istekte olduğu gibi kullanır. Bu nedenle, istemci, uygulama ağ geçidi (contoso.com/path2) boyunca değil, isteği doğrudan contoso.azurewebsites.net/path2 'a yapar. Application Gateway 'i atlamak istenmez.
+App Service bir yeniden yönlendirme yanıtı gönderdiğinde, uygulamanın konum üstbilgisindeki ana bilgisayar adını uygulama ağ geçidinden aldığı istekte olduğu gibi kullanır. Bu nedenle, istemci, `contoso.azurewebsites.net/path2` uygulama ağ geçidi () boyunca değil, isteği doğrudan bir hale getirir `contoso.com/path2` . Application Gateway 'i atlamak istenmez.
 
 Konum üstbilgisindeki ana bilgisayar adını Application Gateway 'in etki alanı adına ayarlayarak bu sorunu çözebilirsiniz.
 
@@ -211,15 +211,15 @@ Arka uç havuzunu bir üstbilginin değerine, URL 'nin bir bölümüne veya iste
 
 * Üçüncü kural, *category = aksesuarları* için *query_string* değişkenini denetleyen ve URL yolunu/*listing3* 'e yeniden veren ve **yol haritasını yeniden değerlendiren** bir eyleme sahip olan bir koşula sahiptir
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL yeniden yazma senaryosu 1-2.":::
 
  
 
 **2. adım (b):** Bu yeniden yazma kümesini yukarıdaki yol tabanlı kuralın varsayılan yoluyla ilişkilendirin
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL yeniden yazma senaryosu 1-3.":::
 
-Artık Kullanıcı *contoso.com/Listing?category=any*isterse, yol haritadaki yol desenlerinden hiçbiri (/listing1,/listing2,/listing3) eşleşmesinden bu yana varsayılan yol ile eşleştirilir. Yukarıdaki yeniden yazma kümesini bu yol ile ilişkilendirdikten sonra, bu yeniden yazma kümesi değerlendirilecek. Sorgu dizesi bu yeniden yazma kümesindeki 3 yeniden yazma kuralındaki koşulla eşleşmediğinden, yeniden yazma eylemi gerçekleşmeyecek ve bu nedenle, istek varsayılan yol ( *GenericList*) ile ilişkili arka uca değişmeden yönlendirilir.
+Artık Kullanıcı *contoso.com/Listing?category=any* isterse, yol haritadaki yol desenlerinden hiçbiri (/listing1,/listing2,/listing3) eşleşmesinden bu yana varsayılan yol ile eşleştirilir. Yukarıdaki yeniden yazma kümesini bu yol ile ilişkilendirdikten sonra, bu yeniden yazma kümesi değerlendirilecek. Sorgu dizesi bu yeniden yazma kümesindeki 3 yeniden yazma kuralındaki koşulla eşleşmediğinden, yeniden yazma eylemi gerçekleşmeyecek ve bu nedenle, istek varsayılan yol ( *GenericList*) ile ilişkili arka uca değişmeden yönlendirilir.
 
  Kullanıcı *contoso.com/Listing?category=Shoes isterse,* varsayılan yol eşleştirilir. Ancak, bu durumda, ilk kuraldaki koşul eşleşmeyecektir ve bu nedenle, koşulla ilişkili eylem, URL yolunu/*listing1*  olarak yeniden yazıp yol eşlemesini yeniden değerlendilecektir. Path-Map yeniden değerlendirildiğinde, istek artık, */listing1* düzeniyle ilişkili yol ile eşleşir ve Istek, Showeslistbackendpool olan bu Düzenle ilişkili olan arka uca yönlendirilir
 
@@ -234,11 +234,11 @@ Bu durumda Application Gateway URL 'den parametreleri yakalayabilir ve URL 'lerd
 
 **Koşul** -sunucu değişkeni `uri_path` , modele eşitse `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL yeniden yazma senaryosu 2-1.":::
 
 **Eylem** -URL yolunu `buy.aspx` ve sorgu dizesini ayarla `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL yeniden yazma senaryosu 2-2.":::
 
 Yukarıda açıklanan senaryoya ulaşmak için adım adım kılavuz için bkz. [Azure Portal kullanarak URL 'yi Application Gateway yeniden yazma](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ URL yeniden yazma durumunda, istek arka uca gönderilmeden önce URL 'YI yeniden
 
 URL yeniden yönlendirme durumunda, Application Gateway istemciye yeni URL ile yeniden yönlendirme yanıtı gönderir. Bu durumda, istemcinin isteğini yeniden yönlendirmeye sunulan yeni URL 'ye yeniden göndermesi gerekir. Kullanıcının tarayıcıda gördüğü URL yeni URL 'ye güncelleştirilecek
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL yeniden yazma senaryosu 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Vs yeniden yönlendirmeyi yeniden yazın.":::
 
 ## <a name="limitations"></a>Sınırlamalar
 

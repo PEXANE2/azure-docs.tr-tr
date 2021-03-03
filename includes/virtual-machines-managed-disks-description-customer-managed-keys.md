@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792449"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750638"
 ---
 Şifrelemeyi, her yönetilen disk düzeyinde, kendi anahtarlarınız ile yönetmeyi tercih edebilirsiniz. Müşteri tarafından yönetilen anahtarlarla yönetilen diskler için sunucu tarafı şifreleme, Azure Key Vault ile tümleşik bir deneyim sunar. [RSA anahtarlarınızı](../articles/key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz. 
 
@@ -43,3 +43,7 @@ Aşağıdaki listede diyagram daha ayrıntılı olarak açıklanmaktadır:
 1. Yönetilen diskler verileri okumak veya yazmak için, verileri şifrelemeyi ve şifre çözmeyi gerçekleştirmek üzere veri şifreleme anahtarını şifrelemek (sarmalamak) ve şifresini çözmek (kaydırmak) için Azure Key Vault istek gönderir. 
 
 Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [PowerShell](/powershell/module/azurerm.keyvault/) ve [Azure Key Vault CLI](/cli/azure/keyvault)Azure Key Vault. Erişimi iptal etmek, şifreleme anahtarına Azure depolama tarafından erişilemediğinden, depolama hesabındaki tüm verilere erişimi etkin bir şekilde engeller.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Müşteri tarafından yönetilen anahtarların otomatik anahtar dönüşü (Önizleme)
+
+En son anahtar sürümüne otomatik anahtar döndürmeyi etkinleştirmeyi seçebilirsiniz. Disk, disk şifreleme kümesi aracılığıyla bir anahtara başvurur. Bir disk şifrelemesi kümesi için Otomatik döndürmeyi etkinleştirdiğinizde sistem, disk şifreleme kümesine başvuran tüm yönetilen diskleri, anlık görüntüleri ve görüntüleri bir saat içinde anahtarın yeni sürümünü kullanacak şekilde otomatik olarak güncelleştirir. Bu özellik şu anda önizleme aşamasında olan sınırlı bölgelerde kullanılabilir. Bölgesel kullanılabilirlik için [Desteklenen bölgeler](#supported-regions) bölümüne bakın.

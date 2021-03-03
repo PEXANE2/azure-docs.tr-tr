@@ -5,23 +5,23 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692139"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Bu makale, Azure Cosmos DB Jeo uzamsal işlevselliğe giriş niteliğindedir. Şu anda Jeo uzamsal verileri depolama ve bunlara erişme yalnızca SQL API hesapları Azure Cosmos DB desteklenir. Jeo-uzamsal dizin oluşturma hakkındaki belgelerimizi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
+Bu makale, Azure Cosmos DB Jeo uzamsal işlevselliğe giriş niteliğindedir. Jeo-uzamsal dizin oluşturma hakkındaki belgelerimizi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
 * Uzamsal verileri Azure Cosmos DB depolamak Nasıl yaparım??
-* SQL ve LINQ 'te Azure Cosmos DB Jeo uzamsal verileri nasıl sorgulayabilirim?
+* SQL ve LINQ 'te Azure Cosmos DB uzamsal verileri nasıl sorgulayabilir miyim?
 * Azure Cosmos DB uzamsal dizin oluşturmayı etkinleştirmek veya devre dışı bırakmak Nasıl yaparım??
 
 ## <a name="spatial-data-use-cases"></a>Uzamsal veri kullanım örnekleri
@@ -121,9 +121,9 @@ Azure Cosmos DB, WGS-84 başvuru sistemine göre gösterilen koordinatları yoru
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }

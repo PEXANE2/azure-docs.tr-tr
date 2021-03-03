@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588742"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691238"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -70,7 +70,7 @@ Yüksek alan kullanımıyla karşılaşdığınızda, risk azaltma seçenekleri 
 - Veritabanının veya elastik havuzun en büyük boyutunu artırma veya daha fazla depolama alanı ekleme. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
 - Veritabanı elastik bir havuztasa alternatif olarak, depolama alanı diğer veritabanlarıyla paylaşılmaması için veritabanı havuzun dışına taşınabilir.
 - Kullanılmayan alanı geri kazanmak için bir veritabanını daraltın. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).
-- Yüksek alan kullanımının, kalıcı sürüm deposu (PVS) boyutundaki bir ani süre olup olmadığını denetleyin. PVS, her veritabanının bir parçasıdır ve  [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md)uygulamak için kullanılır. Geçerli PVS boyutunu anlamak için bkz. [PVS sorunlarını giderme](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Büyük PVS boyutunun yaygın bir nedeni, uzun bir süre (saat) açık bir işlemdir ve PVS 'de eski sürümlerin temizlenmesini önler.
+- Yüksek alan kullanımının, kalıcı sürüm deposu (PVS) boyutundaki bir ani süre olup olmadığını denetleyin. PVS, her veritabanının bir parçasıdır ve  [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md)uygulamak için kullanılır. Geçerli PVS boyutunu anlamak için bkz. [PVS sorunlarını giderme](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Büyük PVS boyutunun yaygın bir nedeni, uzun bir süre (saat) açık bir işlemdir ve PVS 'de eski sürümlerin temizlenmesini önler.
 
 ### <a name="sessions-and-workers-requests"></a>Oturumlar ve çalışanlar (istekler)
 
@@ -97,7 +97,7 @@ Yetersiz bellek hatalarıyla karşılaşdığınızda, risk azaltma seçenekleri
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
 - Bellek kullanımını azaltmak için sorguları ve yapılandırmayı en iyi duruma getirme. Ortak çözümler aşağıdaki tabloda açıklanmıştır.
 
-|Çözüm|Description|
+|Çözüm|Açıklama|
 | :----- | :----- |
 |Bellek izin verdiği boyutu azaltma|Bellek onayları hakkında daha fazla bilgi için bkz. [SQL Server belleği vermeyi anlama](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blog gönderisi. Aşırı büyük bellek onayları önlemeye yönelik yaygın bir çözüm, [İstatistikleri](/sql/relational-databases/statistics/statistics) güncel tutmaktan sorumludur. Bu, sorgu altyapısı tarafından bellek tüketiminin daha doğru tahminlerine neden olur, böylece gereksiz büyük bellek onayları önlenir.</br></br>Uyumluluk düzeyi 140 ve üzeri kullanan veritabanlarında veritabanı altyapısı, [toplu iş modu bellek verme geri bildirimi](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)'ni kullanarak bellek verme boyutunu otomatik olarak ayarlayabilir. Uyumluluk düzeyi 150 ve üstünü kullanan veritabanlarında, veritabanı altyapısı benzer şekilde daha yaygın satır modu sorguları için [satır modu bellek verme geri bildirimi](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)kullanır. Bu yerleşik işlevsellik, gereksiz büyük bellek izni nedeniyle yetersiz bellek hatalarından kaçınmaya yardımcı olur.|
 |Sorgu planı önbelleğinin boyutunu küçültün|Veritabanı altyapısı, her sorgu yürütmesi için bir sorgu planı derlenmesini önlemek üzere sorgu planlarını bellekte önbelleğe alır. Yalnızca bir kez kullanılan önbelleğe alma planlarını nedeniyle sorgu planı önbelleği blobunun neden olduğu bir engel olmak için, [veritabanı kapsamındaki OPTIMIZE_FOR_AD_HOC_WORKLOADS yapılandırmasını](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)etkinleştirin.|

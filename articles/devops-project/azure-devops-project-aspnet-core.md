@@ -12,17 +12,17 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733196"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter ile .NET için bir CI/CD işlem hattı oluşturma
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter ile .NET için CI/CD işlem hattı oluşturma
 
 DevOps Starter ile .NET Core veya ASP.NET uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) yapılandırın. DevOps Starter, Azure Pipelines bir derleme ve serbest bırakma işlem hattının başlangıç yapılandırmasını basitleştirir.
 
@@ -43,7 +43,9 @@ DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Az
 1. **.NET** örnek uygulamasını seçin. .NET örnekleri açık kaynaklı ASP.NET çerçevesi ya da çoklu platform .NET Core çerçevesi seçeneklerinden birini içerir.
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > DevOps Starter 'ı ayarlamaya yönelik varsayılan seçenek **GitHub** ile yapılır, ancak bu ayar sihirbazdan değiştirilebilir.
 2. Bu örnek bir ASP.NET Core MVC uygulamasıdır. **.NET Core** uygulama çerçevesini seçip **İleri**' yi seçin.    
     
 3. Dağıtım hedefi olarak **Windows Web uygulaması** ' nı seçin ve ardından **İleri**' yi seçin. İsteğe bağlı olarak, dağıtımınız için diğer Azure hizmetlerini seçebilirsiniz. Daha önce seçtiğiniz uygulama çerçevesi, burada bulunan Azure hizmet dağıtım hedefinin türünü belirler.
@@ -88,7 +90,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturdu. Depoyu g�
 
 1. Üç nokta (...) simgesini seçin.  Bu eylem, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli etkinlikleri başlatabileceğiniz bir menü açar.
 
-1. **Düzenle**’yi seçin.
+1. **Düzenle**'yi seçin.
 
     ![Derleme işlem hattı](_img/azure-devops-project-aspnet-core/builddef.png)
 

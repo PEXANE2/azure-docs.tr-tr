@@ -7,12 +7,12 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3f81ae72af48ec934d1c2c2567ebdd212d8e0499
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 735ad7ad9ded6baded59ab3f08e239d1c8376b74
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702734"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>V2 IoT Central uygulamanızı v3 'e geçirin
 
@@ -104,7 +104,7 @@ Taşıma tamamlandıktan sonra, Yeni v3 uygulamasına bağlandıklarından emin 
 Yeni v3 uygulamanızda her şeyin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra, eski v2 uygulamanızı silin. Bu adım, artık kullandığınız bir uygulama için faturalandırılmamasını sağlar.
 
 > [!Note]
-> Bir uygulamayı silmek için, uygulamayı oluştururken seçtiğiniz Azure aboneliğindeki kaynakları silme izninizin olması gerekir. Daha fazla bilgi edinmek için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol tabanlı erişim denetimi kullanma](../../active-directory/role-based-access-control-configure.md).
+> Bir uygulamayı silmek için, uygulamayı oluştururken seçtiğiniz Azure aboneliğindeki kaynakları silme izninizin olması gerekir. Daha fazla bilgi edinmek için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol tabanlı erişim denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
 
 1. V2 uygulamanızda, menüdeki **Yönetim** sekmesini seçin
 2. IoT Central uygulamanızı kalıcı olarak silmek için **Sil** ' i seçin. Bu seçenek, bu uygulamayla ilişkili tüm verileri kalıcı olarak siler.

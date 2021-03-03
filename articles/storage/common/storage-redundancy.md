@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726845"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -87,10 +87,11 @@ Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersini
 
 Azure depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek sunar:
 
-- **Coğrafi olarak yedekli depolama (GRS)**, LRS kullanarak verilerinizi birincil bölge içindeki tek bir fiziksel konumda eşzamanlı olarak üç kez kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar.
-- **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar.
+- **Coğrafi olarak yedekli depolama (GRS)**, LRS kullanarak verilerinizi birincil bölge içindeki tek bir fiziksel konumda eşzamanlı olarak üç kez kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar. İkincil bölge içinde, verileriniz LRS kullanılarak eşzamanlı olarak üç kez kopyalanır.
+- **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar. İkincil bölge içinde, verileriniz LRS kullanılarak eşzamanlı olarak üç kez kopyalanır.
 
-GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil bölge içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
+> [!NOTE]
+> GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil bölge içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
 
 GRS veya GZRS ile ikincil bölgedeki veriler, ikincil bölgede bir yük devretme işlemi olmadıkça okuma veya yazma erişimi için kullanılamaz. İkincil bölgeye okuma erişimi için, depolama hesabınızı Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [İkincil bölgedeki verilere okuma erişimi](#read-access-to-data-in-the-secondary-region).
 

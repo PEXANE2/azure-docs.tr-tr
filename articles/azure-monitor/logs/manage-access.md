@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bc03d8cdcaf0079ef15e648d16fd5656d9da368c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725688"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -162,7 +162,7 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 Log Analytics katkıda bulunan rolü aşağıdaki Azure eylemlerini içerir:
 
-| İzin | Description |
+| İzin | Açıklama |
 | ---------- | ----------- |
 | `*/read`     | Tüm kaynakların ve kaynak yapılandırmalarının görüntülenmesine imkan sağlar. Aşağıdakileri görüntülemeyi içerir: <br> Sanal makine uzantısı durumu <br> Kaynaklarda Azure tanılamalarının yapılandırması <br> Tüm kaynakların tüm özellikleri ve ayarları. <br> Çalışma alanları için, tam Kısıtlanmamış izinlerin çalışma alanı ayarını okumasına ve verilerde sorgu gerçekleştirmesine izin verir. Daha ayrıntılı seçeneklere bakın. |
 | `Microsoft.Automation/automationAccounts/*` | Runbook'ları ekleme ve düzenleme dahil olmak üzere Azure Otomasyonu hesapları oluşturma ve yapılandırma olanağı |
@@ -189,7 +189,7 @@ Doğru erişim denetimini güvence altına almak için kaynak düzeyinde (çalı
 
 Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından günlükleri sorgularsa, kaynak üzerinde aşağıdaki izinlere sahip olurlar:
 
-| İzin | Description |
+| İzin | Açıklama |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
@@ -285,7 +285,7 @@ Yukarıdaki örnekler, izin verilen tabloların bir listesini tanımlar. Bu örn
 
 ### <a name="custom-logs"></a>Özel günlükler
 
- Özel Günlükler ve HTTP Veri Toplayıcı API 'SI gibi veri kaynaklarından özel günlükler oluşturulur. Günlük türünü belirlemenin en kolay yolu, [günlük şemasında özel Günlükler](../log-query/log-analytics-tutorial.md#table-schema)altında listelenen tabloları denetlemede olur.
+ Özel Günlükler ve HTTP Veri Toplayıcı API 'SI gibi veri kaynaklarından özel günlükler oluşturulur. Günlük türünü belirlemenin en kolay yolu, [günlük şemasında özel Günlükler](./log-analytics-tutorial.md#table-schema)altında listelenen tabloları denetlemede olur.
 
  Tek tek özel günlüklere erişim izni verilemez, ancak tüm özel günlüklere erişim izni verebilirsiniz. Tüm özel günlüklere erişimi olan bir rol oluşturmak için aşağıdaki eylemleri kullanarak özel bir rol oluşturun:
 
@@ -312,4 +312,4 @@ Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynak
 
 * Veri merkezinizdeki veya diğer bulut Ortamınızdaki bilgisayarlardan veri toplamak için [Log Analytics aracısına genel bakış](../agents/log-analytics-agent.md) konusuna bakın.
 
-* Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../learn/quick-collect-azurevm.md) .
+* Azure VM 'lerinden veri toplamayı yapılandırmak için bkz. [Azure sanal makineler hakkında veri toplama](../vm/quick-collect-azurevm.md) .

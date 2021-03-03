@@ -10,16 +10,16 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733219"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Öğretici: yeni bir alt DNS bölgesi oluşturma
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz: 
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz: 
 
 > [!div class="checklist"]
 > * Azure portalında oturum açma.
@@ -29,7 +29,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı.  Hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Mevcut üst Azure DNS bölgesi.  
@@ -81,7 +81,8 @@ Ayrıca, üst bölgeye genel bakış sayfasından **alt bölge** düğmesini kul
 1.  Ileri ' yi seçin **: Etiketler** ve sonra **İleri: İnceleme + oluştur**.
 1.  **Gözden geçir + oluştur** sekmesinde, Özeti gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Seçili alt bölge ekran görüntüsü" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Seçili alt bölge ekran görüntüsü" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>Alt DNS bölgesini doğrula
 Artık yeni bir alt DNS bölge *subdomain.contoso.com* oluşturmuş olduğunuza göre. Temsilcinin doğru şekilde gerçekleştiğini doğrulamak için, alt bölgeniz için nameserver (NS) kayıtlarının, aşağıda açıklandığı gibi üst bölgede olduğunu kontrol etmek isteyeceksiniz.  
 

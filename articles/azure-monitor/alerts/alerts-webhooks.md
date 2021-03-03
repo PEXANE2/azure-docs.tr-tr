@@ -4,19 +4,19 @@ description: Azure ölçüm uyarılarını diğer Azure dışı sistemlere yenid
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ead28618582ff670aca048bb92803d61c6ca938
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723529"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Izleyici 'de klasik ölçüm uyarısıyla bir Web kancası çağırma
 
 > [!WARNING]
-> Bu makalede, klasik eski ölçüm uyarılarının nasıl kullanılacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../platform/alerts-overview.md)desteklemektedir. Klasik uyarılar, genel bulut kullanıcıları için [devre](../platform/monitoring-classic-retirement.md) dışı bırakılsa da, henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda olabilir.
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl kullanılacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](./alerts-overview.md)desteklemektedir. Klasik uyarılar, genel bulut kullanıcıları için [devre](./monitoring-classic-retirement.md) dışı bırakılsa da hala **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 >
 
 Web kancalarını kullanarak, işlem sonrası veya özel eylemler için bir Azure uyarı bildirimini diğer sistemlere yönlendirebilirsiniz. Uyarı üzerinde bir Web kancasını SMS iletileri gönderen hizmetlere yönlendirmek, hataları günlüğe kaydetmek, sohbet veya mesajlaşma hizmetleri aracılığıyla bir takıma bildirmek veya diğer çeşitli eylemler için kullanabilirsiniz. 
@@ -30,7 +30,7 @@ Web kancası URI 'sini eklemek veya güncelleştirmek için, [Azure Portal](http
 
 ![Uyarı kuralı bölmesi Ekle](./media/alerts-webhooks/Alertwebhook.png)
 
-Ayrıca, [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../samples/cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](/rest/api/monitor/alertrules)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
+Ayrıca, [Azure PowerShell cmdlet](../powershell-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](/rest/api/monitor/alertrules)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
 Web kancası, belirteç tabanlı yetkilendirme kullanarak kimlik doğrulaması yapabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir. Örnek: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

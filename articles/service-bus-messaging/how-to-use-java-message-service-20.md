@@ -4,12 +4,12 @@ description: Azure Service Bus ile Java Ileti hizmeti 'ni (JMS) kullanma
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b7e4bf0ad69b6cd183296a7245ad3f720ced76c5
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 894821444f74248b73578595df943cb3a0025360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698408"
 ---
 # <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>Azure Service Bus Premium ile Java Ileti hizmeti 2,0 API 'sini kullanma
 
@@ -34,7 +34,7 @@ Java uygulamaları geliştirmek için, uygun geliştirme ortamını ayarlamanız
    * JDK veya JRE derleme yoluna ve uygun sistem değişkenlerine eklenir.
    * JDK veya JRE 'yi kullanmak için bir Java IDE yüklenir. Örneğin, tutulma veya IntelliJ.
 
-Geliştirici ortamınızı Azure 'da Java için hazırlama hakkında daha fazla bilgi edinmek için [Bu kılavuzu](https://docs.microsoft.com/azure/developer/java/fundamentals/)kullanın.
+Geliştirici ortamınızı Azure 'da Java için hazırlama hakkında daha fazla bilgi edinmek için [Bu kılavuzu](/azure/developer/java/fundamentals/)kullanın.
 
 ## <a name="what-jms-features-are-supported"></a>Hangi JMS özellikleri destekleniyor?
 

@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 41c2432c3c80be7d28e8f33372dea44ba108c5d3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b22387272ebeae7a7db8f0e0940841415e345279
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734222"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure İzleme REST API'si adım adım kılavuzu
 
@@ -462,9 +462,9 @@ Kullanılabilir Ölçüm tanımları bilindikten sonra ilgili ölçüm değerler
 >
 >
 
-**Yöntem**: Get
+**Yöntem**: `GET`
 
-**İstek URI 'si**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**İstek URI 'si**: `https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}`
 
 Örneğin, belirli bir zaman aralığı ve 1 saatlik zaman dilimi için RunsSucceeded ölçüm veri noktalarını almak için, istek aşağıdaki gibi olacaktır:
 
@@ -652,7 +652,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı kullanarak bir Azure depolama hesabının kaynak KIMLIĞINI almak için `az storage account show` Aşağıdaki örnekte gösterildiği gibi komutunu yürütün:
 
@@ -734,7 +734,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Izlemeye genel bakış](../overview.md)konusunu gözden geçirin.
-* [Azure izleyici Ile desteklenen ölçümleri](../platform/metrics-supported.md)görüntüleyin.
+* [Azure izleyici Ile desteklenen ölçümleri](./metrics-supported.md)görüntüleyin.
 * [Microsoft Azure Monitor REST API başvurusunu](/rest/api/monitor/)gözden geçirin.
 * [Azure Yönetim Kitaplığı](/previous-versions/azure/reference/mt417623(v=azure.100))' nı gözden geçirin.
-

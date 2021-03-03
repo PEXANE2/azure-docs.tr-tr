@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 12/21/2020
+ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223117"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692071"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Machine Learning sorumlu nedir? (önizleme)
 
@@ -42,7 +42,7 @@ Yapay zeka ve özerk sistemler topluluğu dokusuna daha fazlasını tümleştirm
 
 Sistem geliştiricileri, düzenleyiciler, kullanıcılar ve iş karar mekanizmalarının, sistemlerin neden belirli kararlar vermesini anlayabilmesi için zor olan sistemler, sistem geliştiricileri, düzenleyiciciler, kullanıcılar ve iş karar mekanizmaları gibi paydaşların sorun oluşturabileceğinden sorunlu olabilir. Bazı AI sistemleri diğerlerinden daha explainable ve bazı durumlarda, daha yüksek doğruluk ve daha fazla explainable olan bir sistem arasında bir zorunluluğunu getirir.
 
-Intertable AI sistemleri oluşturmak için, Microsoft tarafından oluşturulan açık kaynaklı bir paket olan [ınterbir](https://github.com/interpretml/interpret)Package kullanın. Inter, [otomatik makine öğrenimi modelleri](how-to-machine-learning-interpretability-automl.md)de dahil olmak üzere [makine öğrenimi modellerinizi yorumlamak ve açıklamak](how-to-machine-learning-interpretability-aml.md)için, [Azure Machine Learning içinde yorumbir şekilde kullanılabilir](how-to-machine-learning-interpretability.md) .
+Intertable AI sistemleri oluşturmak için, Microsoft tarafından oluşturulan açık kaynaklı bir paket olan [ınterbir](https://github.com/interpretml/interpret)Package kullanın. Internıbu Package, SHapley Topladıtıve açıklamaları (SHAP), taklit açıklama ve permütasyon özelliği önem derecesi (PFI) gibi çok çeşitli yorumlu teknikleri destekler.  Inter, [otomatik makine öğrenimi modelleri](how-to-machine-learning-interpretability-automl.md)de dahil olmak üzere [makine öğrenimi modellerinizi yorumlamak ve açıklamak](how-to-machine-learning-interpretability-aml.md)için, [Azure Machine Learning içinde yorumbir şekilde kullanılabilir](how-to-machine-learning-interpretability.md) .
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>Makine öğrenimi modellerinde eşitliği 'i azaltma
 

@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/04/2020
-ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699768"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -39,9 +39,9 @@ Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışı
 
 ## <a name="cluster-status"></a>Küme durumu
 
-Küme hata ayıklamaya hazırlanışında tasarım yüzeyinin en üstündeki küme durumu göstergesi yeşil olur. Kümeniz zaten ısınma olursa yeşil gösterge neredeyse anında görünür. Hata ayıklama moduna girdiğinizde kümeniz zaten çalışmıyorsa, kümenin dönmesi için 5-7 dakika beklemeniz gerekir. Gösterge, başlamaya kadar dönmesini sağlayacak.
+Küme hata ayıklamaya hazırlanışında tasarım yüzeyinin en üstündeki küme durumu göstergesi yeşil olur. Kümeniz zaten ısınma olursa yeşil gösterge neredeyse anında görünür. Hata ayıklama moduna girdiğinizde kümeniz zaten çalışmıyorsa, Spark kümesi soğuk bir önyükleme yapar. Bu gösterge, ortam etkileşimli hata ayıklama için hazırlanana kadar dönmesini sağlar.
 
-Hata ayıklamanız ile işiniz bittiğinde, Azure Databricks kümenizin sonlanabilir olması için hata ayıklama anahtarını kapatın ve artık hata ayıklama etkinliği için faturalandırılırsınız.
+Hata ayıklamanız ile işiniz bittiğinde, Spark kümenizin sonlanabilir olması için hata ayıklama anahtarını kapatın ve artık hata ayıklama etkinliği için faturalandırılırsınız.
 
 ## <a name="debug-settings"></a>Hata ayıklama ayarları
 
@@ -50,6 +50,8 @@ Hata ayıklama modunu etkinleştirdikten sonra, veri akışı verilerinin nasıl
 ![Hata ayıklama ayarları](media/data-flow/debug-settings.png "Hata ayıklama ayarları")
 
 Veri akışınızda veya başvurulan veri kümelerinde parametrelere sahipseniz, **Parametreler** sekmesini seçerek hata ayıklama sırasında kullanılacak değerleri belirtebilirsiniz.
+
+Kaynak veri kümelerinizi değiştirmek zorunda kalmaması için örnek dosyaları veya örnek veri tablolarını işaret etmek üzere buradaki örnekleme ayarlarını kullanın. Burada örnek bir dosya veya tablo kullanarak, veri alt kümesiyle test edilirken veri akışınızda aynı mantık ve özellik ayarlarını koruyabilirsiniz.
 
 ![Hata ayıklama ayarları parametreleri](media/data-flow/debug-settings2.png "Hata ayıklama ayarları parametreleri")
 

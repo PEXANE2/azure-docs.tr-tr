@@ -4,45 +4,34 @@ description: Data Factory ardışık düzeninde meta veri al etkinliğinin nası
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385498"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710235"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory ' deki herhangi bir verinin meta verilerini almak için meta veri al etkinliğini kullanabilirsiniz. Bu etkinliği aşağıdaki senaryolarda kullanabilirsiniz:
+Azure Data Factory ' deki herhangi bir verinin meta verilerini almak için meta veri al etkinliğini kullanabilirsiniz. Doğrulama gerçekleştirmek veya sonraki etkinliklerde meta verileri tüketmek için koşullu ifadelerde meta verileri al etkinliğinden çıktıyı kullanabilirsiniz.
 
-- Verilerin meta verilerini doğrulayın.
-- Veriler hazır/kullanılabilir olduğunda bir işlem hattı tetikleyin.
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Aşağıdaki işlev Denetim akışında mevcuttur:
-
-- Doğrulama gerçekleştirmek için koşullu ifadelerde meta verileri al etkinliğinden çıktıyı kullanabilirsiniz.
-- Döngüye göre do aracılığıyla bir koşul karşılandığında bir işlem hattı tetikleyebilirsiniz.
-
-## <a name="capabilities"></a>Özellikler
-
-Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgilerini çıkış olarak döndürür. Şu anda, aşağıdaki bağlayıcılar ve karşılık gelen alınabilir meta veriler desteklenir. Döndürülen meta verilerin en büyük boyutu 4 MB 'tır.
-
->[!NOTE]
->Şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde meta veri al etkinliğini çalıştırırsanız, sürüm 3,6 veya sonraki sürümlerde en son yetenekler desteklenir.
+Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgilerini çıkış olarak döndürür. Şu anda, aşağıdaki bağlayıcılar ve karşılık gelen alınabilir meta veriler desteklenir. Döndürülen meta verilerin en büyük boyutu **4 MB**'tır.
 
 ### <a name="supported-connectors"></a>Desteklenen bağlayıcılar
 
 **Dosya depolama**
 
-| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | boyut<br>dosyasýný | yaratıl<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | yapı<br/>dosyasýný | columnCount<br>dosyasýný | bulunur<br>(dosya/klasör) |
+| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | boyut<br>dosyasýný | yaratıl<br>(dosya/klasör) | lastModified<sup>1</sup><br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | yapı<sup>2</sup><br/>dosyasýný | columnCount<sup>2</sup><br>dosyasýný | var<sup>3</sup><br>(dosya/klasör) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Blob Depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Dosyaları](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -50,12 +39,23 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- Bir klasöre karşı meta veri al etkinliğini kullanırken, verilen klasöre yönelik LıST/EXECUTE izninizin olduğundan emin olun.
-- Amazon S3 ve Google Cloud Storage için `lastModified` demet ve anahtar için geçerlidir ancak sanal klasöre uygulanmaz; `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
+<sup>1</sup> meta veri `lastModified` :
+- Amazon S3 ve Google Cloud Storage için `lastModified` demet ve anahtar için geçerlidir ancak sanal klasöre uygulanmaz; `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz. 
 - Azure Blob depolama için `lastModified` kapsayıcı ve BLOB için geçerlidir ancak sanal klasöre uygulanmaz.
-- `lastModified` Filtre Şu anda alt öğeleri filtrelemek için geçerlidir ancak belirtilen klasör/dosyanın kendisi için geçerli değildir.
+
+<sup></sup> `structure` `columnCount` IKILI, JSON veya XML dosyalarından meta veriler alınırken 2 meta veriler ve desteklenmez.
+
+<sup>3</sup> meta veri `exists` : Amazon S3 ve Google Cloud Storage için `exists` demet ve anahtar için geçerlidir ancak önek veya sanal klasöre uygulanmaz.
+
+Şunlara dikkat edin:
+
+- Bir klasöre karşı meta veri al etkinliğini kullanırken, verilen klasöre yönelik LıST/EXECUTE izninizin olduğundan emin olun.
 - Klasörler/dosyalar üzerinde joker karakter filtresi, meta veri Al etkinliği için desteklenmiyor.
-- `structure``columnCount`ikili, JSON veya XML dosyalarından meta veriler alınırken desteklenmez.
+- `modifiedDatetimeStart` ve `modifiedDatetimeEnd` bağlayıcının filtre kümesi:
+
+    - Bu iki özellik, bir klasörden meta verileri alırken alt öğeleri filtrelemek için kullanılır. Dosyadan meta veriler alınırken uygulanmaz.
+    - Bu tür bir filtre kullanıldığında, `childItems` Çıkış çıkışı yalnızca belirtilen Aralık içinde değiştirilen ancak klasörler değil dosyaları içerir.
+    - Bu tür bir filtre uygulamak için GetMetadata etkinliği belirtilen klasördeki tüm dosyaları numaralandırır ve değiştirme süresini kontrol eder. Beklenen tam dosya sayısı küçük olsa bile, çok sayıda dosya içeren bir klasöre işaret etmemeye özen gösterin. 
 
 **İlişkisel veritabanı**
 
@@ -70,7 +70,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 İlgili bilgileri almak için meta verileri al etkinlik alan listesinde aşağıdaki meta veri türlerini belirtebilirsiniz:
 
-| Meta veri türü | Description |
+| Meta veri türü | Açıklama |
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
 | ItemType | Dosya veya klasörün türü. Döndürülen değer `File` veya `Folder` . |
@@ -85,9 +85,6 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 >[!TIP]
 >Bir dosya, klasör veya tablonun var olduğunu doğrulamak istediğinizde `exists` meta verileri al etkinlik alanı listesini belirtin. Ardından, `exists: true/false` etkinlik çıkışında sonucu kontrol edebilirsiniz. `exists`Alan listesinde belirtilmemişse, nesne bulunamazsa meta verileri Al etkinliği başarısız olur.
-
->[!NOTE]
->Dosya mağazalarından meta veriler alırken ve `modifiedDatetimeStart` veya `modifiedDatetimeEnd` ' ı yapılandırdığınızda, `childItems` yalnızca belirtilen aralıktaki son değiştirme zamanına sahip olan verilen yoldaki dosyaları dahil eder. ' De alt klasörlerdeki öğeler dahil değildir.
 
 ## <a name="syntax"></a>Syntax
 
@@ -164,8 +161,8 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 -------- | ----------- | --------
 fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
 veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
-formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
-storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
+formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
+storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 
 ## <a name="sample-output"></a>Örnek çıktı
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724277"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure depolama uyumluluk teklifleri
 
 Kuruluşların veri verilerini toplama ve kullanma hakkında ulusal, bölgesel ve sektöre özgü gereksinimlere uyum sağlamak için Microsoft Azure & Azure Storage, herhangi bir bulut hizmeti sağlayıcısının en kapsamlı sertifika ve belirlediğimizi karşıladığımızı kümesini sunar.
 
-Azure Storage hizmetini kullanarak hizmetinizin düzenlenmiş olmasını sağlamak için, Azure depolama 'da aşağıdaki uyumluluk tekliflerini bulabilirsiniz. Bunlar, şu Azure depolama teklifleri için geçerlidir: Bloblar, dosyalar, kuyruklar, tablolar, diskler, seyrek erişimli depolama ve Premium Depolama.
+Azure Storage hizmetini kullanarak hizmetinizin düzenlenmiş olmasını sağlamak için, Azure depolama 'da aşağıdaki uyumluluk tekliflerini bulabilirsiniz. Bunlar, şu Azure depolama teklifleri için geçerlidir: Bloblar (ADLS 2.), dosyalar, kuyruklar, tablolar, diskler, seyrek erişimli depolama ve Premium Depolama.
 
 ## <a name="global"></a>Genel
 

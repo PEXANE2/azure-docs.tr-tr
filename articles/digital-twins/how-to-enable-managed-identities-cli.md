@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 32cbe31f95c03f9b0b5eb1a31a28033dce18b112
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716134"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Azure dijital TWINS olaylarını yönlendirme için yönetilen bir kimliği etkinleştirme (Önizleme): Azure CLı
 
@@ -87,8 +87,7 @@ Azure dijital TWINS 'de yönlendirme için desteklenen uç noktalar, rotalar ve 
 
 ### <a name="assign-the-role"></a>Rolü ata
 
->[!NOTE]
-> Bu bölüm, Azure kaynaklarına Kullanıcı erişimini yönetme izinlerine sahip bir Azure kullanıcısı tarafından tamamlanmalıdır (izin verme ve temsilci atama dahil). Bu gereksinimi karşılayan ortak roller, *sahip*, *Hesap Yöneticisi* veya *Kullanıcı erişimi Yöneticisi* ile *katkıda bulunan* birleşimidir. Azure dijital TWINS rollerinin izin gereksinimleri hakkında daha fazla bilgi için bkz. [*nasıl yapılır: örneği ve kimlik doğrulamasını ayarlama*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 `--scopes` `az dt create` Kimliği, belirtilen bir role sahip bir veya daha fazla kapsam için atamak üzere komutuna ekleyebilirsiniz. Bu, örneği ilk oluştururken veya daha sonra zaten var olan bir örneğin adına geçirerek kullanılabilir.
 
@@ -102,7 +101,7 @@ Bu komutla rol atamalarından daha fazla örnek için, bkz. daha [ **az DT Creat
 
 Alternatif olarak, rolleri oluşturmak ve yönetmek için [**az role atama**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) komut grubunu da kullanabilirsiniz. Bu, Create komutuyla rol atamasını gruplandırmak istemediğiniz ek senaryoları desteklemek için kullanılabilir.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Kimlik tabanlı yetkilendirmeyle bir uç nokta oluşturma
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulaması ile bir uç nokta oluşturma
 
 Azure dijital TWINS örneğiniz için sistem tarafından yönetilen bir kimlik ayarlayıp uygun rol (ler) atadıktan sonra, kimlik doğrulaması için kimliği kullanabilen Azure dijital TWINS [uç noktaları](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) oluşturabilirsiniz. Bu seçenek yalnızca Olay Hub 'ı ve Service Bus türü uç noktaları için kullanılabilir (Event Grid için desteklenmez).
 

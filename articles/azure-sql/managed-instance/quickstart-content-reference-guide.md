@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690976"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile çalışmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ Aşağıdaki hızlı başlangıçlarda hızlı bir şekilde bir SQL yönetilen �
   > - Ayrıca, yerel ağınızdan Express Route veya siteden siteye bağlantı kullanabilirsiniz, ancak bu yaklaşımlar bu hızlı başlangıçların kapsamındadır.
   > - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
 
-SQL yönetilen örneği 'nin el ile oluşturulmasına alternatif olarak, bu işlemi betik ve otomatikleştirebilmek için [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Kaynak Yöneticisi şablonuyla POWERSHELL](scripts/create-powershell-azure-resource-manager-template.md)veya [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) kullanabilirsiniz.
+SQL yönetilen örneği 'nin el ile oluşturulmasına alternatif olarak, bu işlemi betik ve otomatikleştirebilmek için [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Kaynak Yöneticisi şablonuyla POWERSHELL](./create-template-quickstart.md)veya [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) kullanabilirsiniz.
 
 ### <a name="migrate-your-databases"></a>Veritabanlarınızı geçirin
 

@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739343"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -48,7 +48,7 @@ Data Factory, veri tümleştirmesi için gerekli olan ve zamanlamaya göre veya 
     - Döngü kapsayıcıları:
         * Foreach etkinliği, bir döngüde belirtilen bir etkinlik koleksiyonu üzerinde yinelenecek. 
 - Tetikleyici tabanlı akışlar:
-    - İşlem hatları talep üzerine veya duvar saati zamanına göre tetiklenebilir.
+    - İşlem hatları, isteğe bağlı olarak, duvar saati zamanına göre veya Event Grid tarafından yönlendirilmeye yanıt olarak tetiklenebilir
 - Delta akışları:
     - Parametreler, verileri Gölü yüklemek için şirket içinde veya bulutta bulunan bir ilişkisel depodan boyut ya da başvuru tablolarını taşırken Delta kopyası için yüksek su işaretini tanımlamak üzere kullanılabilir.
 

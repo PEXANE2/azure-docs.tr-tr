@@ -1,6 +1,6 @@
 ---
-title: Microsoft 365 Defender ham verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Microsoft 365 Defender 'dan Azure Sentinel 'e Ham olay verilerini nasıl alabileceğinizi öğrenin.
+title: Microsoft 365 Defender verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+description: Microsoft 365 Defender 'dan Azure Sentinel 'e olayları, uyarıları ve Ham olay verilerini nasıl alabileceğinizi öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709351"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender 'dan Azure Sentinel 'e veri bağlama
 
@@ -31,56 +31,85 @@ ms.locfileid: "94655588"
 >
 > Eski adların bir süre içinde hala kullanımda olduğunu görebilirsiniz.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
-Yeni [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) Bağlayıcısı, bir dizi Ham olay verilerinin Azure Sentinel 'e Microsoft 365 Defender **'a akışını sağlamanıza** olanak tanır. 
+Azure Sentinel 'in olay tümleştirmesi ile [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) Bağlayıcısı, tüm M365D olaylarını ve uyarılarını Azure Sentinel 'e akışını ve olayların her iki Portal arasında eşitlenmiş olmasını sağlar. M365D olayları, tüm uyarılarını, varlıklarını ve diğer ilgili bilgileri içerir ve M365D's Bileşen Hizmetleri **Microsoft Defender for Endpoint**, **kimlik için** microsoft Defender, **Office 365 için** Microsoft Defender ve **Microsoft Cloud App Security**.
 
-[Uç nokta Için Microsoft Defender 'ın (MDADTP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) Microsoft 365 Defender güvenliği şemsiye tümleştirmesiyle, artık Microsoft Defender 'ı, Microsoft 365 Defender bağlayıcısını kullanarak uç nokta [Gelişmiş](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) arama olayları Için toplayabilir ve bunları Azure Sentinel çalışma alanınızdaki yeni amaç tarafından oluşturulan tablolarda doğrudan akışla aktarabilirsiniz. Bu tablolar Microsoft 365 Defender portalında kullanılan şemaya kurulmuştur. böylece, gelişmiş arama günlüklerinin tamamına tam erişim sağlar ve şunları yapabilirsiniz:
+Bağlayıcı Ayrıca, Microsoft Defender uç noktası için **Gelişmiş** arama olaylarını Azure Sentinel 'e aktarmanızı sağlar. böylece, ek Öngörüler sağlamak için MDE gelişmiş arama sorgularını Azure Sentinel 'e, MDE Ham olay verileriyle birlikte zengin Sentinel uyarılara kopyalayabilir ve Log Analytics daha fazla bekletme ile günlüğe kaydedebilirsiniz.
 
-- Mevcut Microsoft Defender ATP gelişmiş hunme sorgularınızı kolayca Azure Sentinel 'e kopyalayın.
-
-- Uyarılarınız için ek Öngörüler sağlamak ve Azure Sentinel 'de ek veri kaynaklarından gelen verilerle ilişkilendirmek için ham olay günlüklerini kullanın.
-
-- Uç nokta veya Microsoft 365 Defender 'ın 30 günlük varsayılan saklama süresini aşan, daha fazla bekletme ile günlükleri depolayın. Bunu, çalışma alanınızın bekletmesini yapılandırarak veya Log Analytics göre her tablo için tutmayı yapılandırarak yapabilirsiniz.
+Olay tümleştirme hakkında daha fazla bilgi için bkz. [Azure Sentinel ile Microsoft 365 Defender tümleştirmesi](microsoft-365-defender-sentinel-integration.md).
 
 > [!IMPORTANT]
 >
-> Microsoft 365 Defender Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Microsoft 365 Defender Bağlayıcısı Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Uç nokta [dağıtımı Için Microsoft Defender 'ı ayarlama](/windows/security/threat-protection/microsoft-defender-atp/licensing)bölümünde açıklandığı gibi, uç nokta Için Microsoft Defender için geçerli bir lisansa sahip olmanız gerekir. 
+- Microsoft 365 Defender için [Microsoft 365 Defender önkoşulları](/microsoft-365/security/mtp/prerequisites)bölümünde açıklandığı gibi geçerli bir lisansa sahip olmanız gerekir. 
 
-- Kullanıcıya Kiracıdaki genel yönetici rolü atanmalıdır (Azure Active Directory).
+- Azure Active Directory bir **genel yönetici** veya **Güvenlik Yöneticisi** olmanız gerekir.
 
 ## <a name="connect-to-microsoft-365-defender"></a>Microsoft 365 Defender 'a bağlanma
 
-Uç nokta için Microsoft Defender dağıtılırsa ve verileriniz geri alıyorsa, olay günlükleri kolayca Azure Sentinel 'e akışla eklenebilir.
-
 1. Azure Sentinel 'de **veri bağlayıcıları**' nı seçin, Galeriden **Microsoft 365 Defender (Önizleme)** öğesini seçin ve **bağlayıcı sayfasını aç**' ı seçin.
 
-1. Aşağıdaki olay türleri ilgili gelişmiş hunme tablolarından toplanabilir. Toplamak istediğiniz olay türlerinin onay kutularını işaretleyin:
+1. Yapılandırma **olayları & uyarıları** bölümünde **yapılandırma** altında **olayları Bağlan & uyarılar** düğmesine tıklayın.
 
-    | Olay türü | Tablo adı |
-    |-|-|
-    | Makine bilgileri (işletim sistemi bilgileri dahil) | DeviceInfo |
-    | Makinelerin ağ özellikleri | Devicenetworkınfo |
-    | İşlem oluşturma ve ilgili olaylar | DeviceProcessEvents |
-    | Ağ bağlantısı ve ilgili olaylar | DeviceNetworkEvents |
-    | Dosya oluşturma, değiştirme ve diğer dosya sistemi olayları | DeviceFileEvents |
-    | Kayıt defteri girişlerini oluşturma ve değiştirme | DeviceRegistryEvents |
-    | Oturum açma işlemleri ve diğer kimlik doğrulama olayları | DeviceLogonEvents |
-    | DLL yükleme olayları | Deviceımageloadevents |
-    | Ek olay türleri | DeviceEvents |
-    |
+1. Olayların çoğaltılmasını önlemek için, **Bu ürünlerin tüm Microsoft olay oluşturma kurallarını** kapat etiketli onay kutusunu işaretlemeniz önerilir.
 
-1. **Değişiklikleri Uygula**' ya tıklayın. 
+    > [!NOTE]
+    > Microsoft 365 Defender bağlayıcısını etkinleştirdiğinizde, tüm M365D Components bağlayıcıları (Bu makalenin başlangıcında bahsedilen) otomatik olarak arka plana bağlanır. Bileşenlerin bağlayıcılarından birinin bağlantısını kesmek için öncelikle Microsoft 365 Defender bağlayıcısının bağlantısını kesmeniz gerekir.
 
-1. Log Analytics gelişmiş hunmiş tabloları sorgulamak için, sorgu penceresinde yukarıdaki listeden tablo adını girin.
+1. M365 Defender olay verilerini sorgulamak için sorgu penceresinde aşağıdaki ifadeyi kullanın:
+    ```kusto
+    SecurityIncident
+    | where ProviderName == "Microsoft 365 Defender"
+    ```
+
+1. Uç nokta için Microsoft Defender 'dan gelişmiş arama olayları toplamak istiyorsanız, ilgili gelişmiş arama tablolarından aşağıdaki olay türleri toplanabilir.
+
+    1. Tabloların onay kutularını toplamak istediğiniz olay türleriyle işaretleyin:
+
+       | Tablo adı | Olay türü |
+       |-|-|
+       | DeviceInfo | Makine bilgileri (işletim sistemi bilgileri dahil) |
+       | Devicenetworkınfo | Makinelerin ağ özellikleri |
+       | DeviceProcessEvents | İşlem oluşturma ve ilgili olaylar |
+       | DeviceNetworkEvents | Ağ bağlantısı ve ilgili olaylar |
+       | DeviceFileEvents | Dosya oluşturma, değiştirme ve diğer dosya sistemi olayları |
+       | DeviceRegistryEvents | Kayıt defteri girişlerini oluşturma ve değiştirme |
+       | DeviceLogonEvents | Oturum açma işlemleri ve diğer kimlik doğrulama olayları |
+       | Deviceımageloadevents | DLL yükleme olayları |
+       | DeviceEvents | Ek olay türleri |
+       | Devicefilecertificateınfo | İmzalı dosyaların sertifika bilgileri |
+       |
+
+    1. **Değişiklikleri Uygula**' ya tıklayın.
+
+    1. Log Analytics gelişmiş hunmiş tabloları sorgulamak için, sorgu penceresinde yukarıdaki listeden tablo adını girin.
 
 ## <a name="verify-data-ingestion"></a>Veri alımını doğrulama
 
-Bağlayıcı sayfasındaki veri grafiği, verileri iade ettiğiniz anlamına gelir. Tüm etkin tablolarda olay birimini toplayan tek bir satır gösterdiğine dikkat edin. Bağlayıcıyı etkinleştirdikten sonra, tek bir tablo için bir olay birimi için benzer bir grafik oluşturmak üzere aşağıdaki KQL sorgusunu kullanabilirsiniz ( *Deviceevents* tablosunu seçtiğiniz gerekli tabloyla değiştirin):
+Bağlayıcı sayfasındaki veri grafiği, verileri iade ettiğiniz anlamına gelir. Olayların, uyarıların ve olayların her biri için bir satır gösterdiğine ve olaylar hattının, etkin olan tüm tablolardaki olay hacmi toplamı olduğunu fark edeceksiniz. Bağlayıcıyı etkinleştirdikten sonra, daha belirli grafikler oluşturmak için aşağıdaki KQL sorgularını kullanabilirsiniz.
+
+Gelen M365 Defender olaylarını grafik için aşağıdaki KQL sorgusunu kullanın:
+
+```kusto
+let Now = now(); 
+(range TimeGenerated from ago(14d) to Now-1d step 1d 
+| extend Count = 0 
+| union isfuzzy=true ( 
+    SecurityIncident
+    | where ProviderName == "Microsoft 365 Defender"
+    | summarize Count = count() by bin_at(TimeGenerated, 1d, Now) 
+) 
+| summarize Count=max(Count) by bin_at(TimeGenerated, 1d, Now) 
+| sort by TimeGenerated 
+| project Value = iff(isnull(Count), 0, Count), Time = TimeGenerated, Legend = "Events") 
+| render timechart 
+```
+
+Tek bir tabloya yönelik bir olay birimi grafiği oluşturmak için aşağıdaki KQL sorgusunu kullanın ( *Deviceevents* tablosunu seçtiğiniz gerekli tabloyla değiştirin):
 
 ```kusto
 let Now = now();
@@ -96,9 +125,11 @@ let Now = now();
 | render timechart
 ```
 
-**Sonraki adımlar** sekmesinde, eklenen birkaç örnek sorgu bulacaksınız. Bunları leke üzerinde çalıştırabilir veya değiştirebilir ve kaydedebilirsiniz.
+**Sonraki adımlar** sekmesinde, eklenen bazı yararlı çalışma kitapları, örnek sorgular ve analiz kuralı şablonları bulacaksınız. Bunları bir şekilde çalıştırabilir veya değiştirebilir ve kaydedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Microsoft 365 Defender bağlayıcısını kullanarak uç nokta için Microsoft Defender 'dan Azure Sentinel 'e Ham olay verileri almayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
+Bu belgede, Microsoft 365 Defender bağlayıcısını kullanarak Microsoft 365 Defender olaylarını tümleştirme ve uç nokta için Microsoft Defender 'daki olay verilerini Azure Sentinel 'e yönelik gelişmiş bir şekilde ele alma hakkında öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

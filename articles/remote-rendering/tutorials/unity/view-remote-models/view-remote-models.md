@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: ef2d0eb409cbef2fdd3579ae5e8b409e24bdda2f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735973"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Öğretici: uzaktan işlenmiş bir modeli görüntüleme
 
@@ -55,43 +55,9 @@ Bu örnekte, projenin **RemoteRendering** adlı bir klasörde oluşturulduğunu 
 
 ## <a name="include-the-azure-remote-rendering-package"></a>Azure uzaktan Işleme paketini dahil et
 
-`Packages/manifest.json`Unity proje klasörünüzde bulunan dosyasını değiştirmeniz gerekir. Dosyayı bir metin düzenleyicisinde açın ve bildirimin en üstüne aşağıdaki satırları ekleyin:
+Azure uzaktan Işleme paketini bir Unity projesine ekleme [yönergelerini izleyin](../../../how-tos/unity/install-remote-rendering-unity-package.md) .
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-Bildirimi değiştirdikten ve kaydettikten sonra Unity otomatik olarak yenilenir. *Proje* penceresinde paketlerin yüklendiğini onaylayın:
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="paket içeri aktarmaları Onayla":::
-
-Paketleriniz yüklenmemesi halinde Unity konsolunuza hata olup olmadığını denetleyin. Herhangi bir hata yoksa ve **paketler** klasörü altında herhangi bir paket görmüyorsanız, paket görünürlüğü değiştirme düğmesini işaretleyin. \
-![Paket görünürlüğü değiştirme düğmesine işaret eden bir ok ile ekran görüntüsü.](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Paketin en son sürümüne sahip olduğunuzdan emin olun
-
-Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümünü kullandığından emin olabilirsiniz.
-
-1. Unity düzenleyicisinin en üst menüsünde, *Window->Package Manager*' ı açın.
-1. **Uzaktan işleme Microsoft Azure** paketi seçin.
-1. **Microsoft Azure uzaktan işleme** paketinin Paket Yöneticisi sayfasında, **Güncelleştir** düğmesinin kullanılabilir olup olmadığını görün. Varsa, paketi mevcut en son sürüme güncelleştirmek için tıklayın: \
-![Paket yöneticisinde ARR paketi](./media/package-manager.png)
-1. Paketin güncelleştirilmesi, bazen konsol hatalarına neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
-1. Paket güncel olduğunda, paket yöneticisinin güncelleştirme düğmesi yerine güncel **olarak** gösterilmesi gerekir. \
-![Güncel paket](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>Kamerayı yapılandırma
 
 1. **Ana kamera** düğümünü seçin.

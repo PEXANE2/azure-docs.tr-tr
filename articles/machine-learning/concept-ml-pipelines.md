@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/12/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8b5e74d12af92b5d300e638bee27020a5af5383c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690388"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -95,22 +95,27 @@ experiment = Experiment(ws, 'MyExperiment')
 
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
+prepped_data_path = OutputFileDatasetConfig(name="output_path")
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
-    compute_target=cluster,
-    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
-    )
-output_data = OutputFileDatasetConfig()
-input_named = input_data.as_named_input('input')
-
-steps = [ PythonScriptStep(
-    script_name="train.py",
-    arguments=["--input", input_named.as_download(), "--output", output_data],
+    source_directory="prep_src",
     compute_target=compute_target,
-    source_directory="myfolder"
-) ]
+    arguments=["--prepped_data_path", prepped_data_path],
+    inputs=[input_dataset.as_named_input('raw_data').as_mount() ]
+    )
+
+prepped_data = prepped_data_path.read_delimited_files()
+
+train_step = PythonScriptStep(
+    name="train",
+    script_name="train.py",
+    compute_target=compute_target,
+    arguments=["--prepped_data", prepped_data],
+    source_directory="train_src"
+)
+steps = [ dataprep_step, train_step ]
 
 pipeline = Pipeline(workspace=ws, steps=steps)
 
@@ -118,9 +123,13 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Kod parçacığı, ortak Azure Machine Learning nesneleri, a `Workspace` , a `Datastore` , [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)ve ile başlar `Experiment` . Daha sonra kod, ve tutulacak nesneleri oluşturur `input_data` `output_data` . , `input_data` [Filedataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) 'in bir örneğidir ve `output_data` bir  [outputfiledatasetconfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)örneğidir. `OutputFileDatasetConfig`Varsayılan davranış için çıktıyı `workspaceblobstore` yolun altındaki veri deposuna kopyalama `/dataset/{run-id}/{output-name}` , burada `run-id` çalıştırma kimliği ve `output-name` Geliştirici tarafından belirtilmemişse otomatik olarak oluşturulan bir değer.
+Kod parçacığı, ortak Azure Machine Learning nesneleri, a `Workspace` , a `Datastore` , [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)ve ile başlar `Experiment` . Daha sonra kod, ve tutulacak nesneleri oluşturur `input_data` `prepped_data_path` . , `input_data` [Filedataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) 'in bir örneğidir ve `prepped_data_path` bir  [outputfiledatasetconfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)örneğidir. `OutputFileDatasetConfig`Varsayılan davranış için çıktıyı `workspaceblobstore` yolun altındaki veri deposuna kopyalama `/dataset/{run-id}/{output-name}` , burada `run-id` çalıştırma kimliği ve `output-name` Geliştirici tarafından belirtilmemişse otomatik olarak oluşturulan bir değer.
 
-Dizi, `steps` `PythonScriptStep` veri nesnelerini kullanacak ve üzerinde çalışacak olan tek bir öğesi barındırır `compute_target` . Daha sonra, kod `Pipeline` nesnenin kendisini başlatır, çalışma alanı ve Steps dizisine geçer. `experiment.submit(pipeline)`Azure ML işlem hattı çalıştırmasını Başlatan çağrı. `wait_for_completion()`İşlem hattı bitene kadar blokların çağrısı. 
+Veri hazırlama kodu (gösterilmez), ayrılmış dosyaları öğesine yazar `prepped_data_path` . Veri hazırlama adımındaki bu çıktılar eğitim adımına olarak geçirilir `prepped_data` . 
+
+Dizi, `steps` `PythonScriptStep` ve ' nin ikisini de `dataprep_step` barındırır `train_step` . Azure Machine Learning, ' nin veri bağımlılığını analiz eder `prepped_data` ve daha `dataprep_step` önce çalışır `train_step` . 
+
+Daha sonra, kod `Pipeline` nesnenin kendisini başlatır, çalışma alanı ve Steps dizisine geçer. `experiment.submit(pipeline)`Azure ML işlem hattı çalıştırmasını Başlatan çağrı. `wait_for_completion()`İşlem hattı bitene kadar blokların çağrısı. 
 
 İşlem hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için [Azure Machine Learning makaleleri veri erişimi](concept-data.md) ' ne bakın ve [verileri ml ardışık düzen adımları (Python) arasında ve arasında hareket ettirin](how-to-move-data-in-out-of-pipelines.md). 
 
@@ -136,7 +145,7 @@ Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluştur
 
 Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
 
-|Önemli avantaj|Description|
+|Önemli avantaj|Açıklama|
 |:-------:|-----------|
 |**Katılımsız &nbsp; çalıştırmalar**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
 |**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde bireysel ardışık düzen adımlarını çalıştırarak kullanılabilir işlem kaynaklarının verimli bir şekilde kullanılmasını sağlayın.|

@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710609"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -176,9 +176,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 Yanıt size iş adı verecektir. Bu iş adı, [az Backup Job Show](/cli/azure/backup/job#az-backup-job-show) cmdlet 'ini kullanarak iş durumunu izlemek için kullanılabilir.
 
 >[!NOTE]
->Tam veya değişiklik yedeklemesi zamanlamaya ek olarak, şu anda el ile de tetiklenebilir. Günlük yedeklemeleri, SAP HANA tarafından dahili olarak otomatik olarak tetiklenir ve yönetilir.
->
-> Artımlı yedeklemeler Şu anda Azure Backup tarafından desteklenmemektedir.
+>Günlük yedeklemeleri, SAP HANA tarafından dahili olarak otomatik olarak tetiklenir ve yönetilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

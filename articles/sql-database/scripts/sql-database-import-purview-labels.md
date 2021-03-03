@@ -10,12 +10,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
-ms.openlocfilehash: d202a931e7af1dc212e3ab688580fd38c64dbdcb
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2eab7c535ff0c68da772e8a45ead12420734279c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714910"
 ---
 # <a name="classify-your-azure-sql-data-using-azure-purview-labels"></a>Azure purview etiketlerini kullanarak Azure SQL verilerinizi sınıflandırın
 [!INCLUDE[appliesto-sqldb-asa](../../azure-sql/includes/appliesto-sqldb-asa.md)]
@@ -254,6 +254,6 @@ foreach ($referredEntity in $referredEntities.psobject.Properties.GetEnumerator(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).
 
-Azure purview hakkında daha fazla bilgi için bkz. [Azure purview belgeleri](https://docs.microsoft.com/azure/purview/).
+Azure purview hakkında daha fazla bilgi için bkz. [Azure purview belgeleri](../../purview/index.yml).

@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: 3ca776a1869874042a6a97cdd59dc00d3a917d33
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717885"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Eylem gruplarında SMS uyarı davranışı
 
@@ -30,7 +30,7 @@ Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir
 * Bu uyarının gönderildiği eylem grubunun ShortName 'ı
 * Uyarının başlığı
 
-| YANITLA | Description |
+| YANITLA | Açıklama |
 | ----- | ----------- |
 | Dıı `<Action Group Short name>` | Eylem grubundan daha fazla SMS 'yi devre dışı bırakır |
 | ETKINLEŞTIREBILIR `<Action Group Short name>` | Eylem grubundan SMS 'yi yeniden etkinleştirilir |
@@ -42,7 +42,6 @@ Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir
 >Bir kullanıcı SMS uyarılarından aboneliği kaldırırsa, ancak yeni bir eylem grubuna eklenirse; Bu yeni eylem grubu için SMS uyarıları alırlar, ancak önceki tüm eylem gruplarından abone olunmayacak şekilde kalır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[Etkinlik günlüğü uyarılarına genel bir bakış](../platform/alerts-overview.md) edinin ve nasıl uyarı alabileceğinizi öğrenin  
+[Etkinlik günlüğü uyarılarına genel bir bakış](./alerts-overview.md) edinin ve nasıl uyarı alabileceğinizi öğrenin  
 [SMS hız sınırlaması](alerts-rate-limiting.md) hakkında daha fazla bilgi edinin  
-[Eylem grupları](../platform/action-groups.md) hakkında daha fazla bilgi edinin
-
+[Eylem grupları](./action-groups.md) hakkında daha fazla bilgi edinin

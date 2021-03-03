@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713669"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -30,7 +30,7 @@ Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımlar�
 
 - [Azure PowerShell](/powershell/azure) yüklemiş olmanız veya [Azure Cloud Shell](../../cloud-shell/overview.md)kullanmanız gerekir. 
 
-- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](../platform/metrics-custom-overview.md#supported-regions)olması gerekir.
+- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](./metrics-custom-overview.md#supported-regions)olması gerekir.
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Izleyiciyi bir veri havuzu olarak ayarlama 
 Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönlendirmek için **veri havuzları** adlı bir özellik kullanır. Aşağıdaki adımlarda, yeni Azure Izleyici veri havuzunu kullanarak bir VM dağıtmak için Kaynak Yöneticisi şablonu ve PowerShell 'in nasıl kullanılacağı gösterilmektedir. 
@@ -252,7 +252,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
    ```
 
    > [!NOTE]  
-   > Özel ölçümler için etkinleştirilen bir Azure bölgesi kullanmayı unutmayın. [Özel ölçümler için etkinleştirilen bir Azure bölgesi](../platform/metrics-custom-overview.md#supported-regions)kullanmayı unutmayın.
+   > Özel ölçümler için etkinleştirilen bir Azure bölgesi kullanmayı unutmayın. [Özel ölçümler için etkinleştirilen bir Azure bölgesi](./metrics-custom-overview.md#supported-regions)kullanmayı unutmayın.
  
 1. VM 'yi dağıtmak için aşağıdaki komutları çalıştırın:  
 
@@ -292,4 +292,4 @@ Ayrıca, bu ölçümdeki boyutları belirli bir VM için grafik olarak veya öl�
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Özel ölçümler](../platform/metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
+- [Özel ölçümler](./metrics-custom-overview.md)hakkında daha fazla bilgi edinin.

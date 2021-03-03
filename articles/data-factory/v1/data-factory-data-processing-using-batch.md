@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364282"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730873"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
 > [!NOTE]
@@ -575,9 +575,7 @@ Bu adımda, Batch hesabınız için, Data Factory özel etkinliğini çalıştı
    d. **Batchuri** JSON özelliği IÇIN Batch URI 'sini girin.
 
       > [!IMPORTANT]
-      > **Batch hesabı** DIKEY penceresindeki URL şu biçimdedir: \<accountname\> . \<region\> . batch.azure.com. JSON betiğinin **Batchuri** özelliği için, A88 "AccountName" öğesini kaldırmanız gerekir. * * URL 'den. `"batchUri": "https://eastus.batch.azure.com"` bunun bir örneğidir.
-      >
-      >
+      > **Batch hesabı** dikey penceresinin URL 'si şu biçimdedir: `<accountname>.<region>.batch.azure.com` . `batchUri`JSON betiğinin özelliği IÇIN `<accountname>.` URL 'den kaldırmanız gerekir. `"batchUri": "https://eastus.batch.azure.com"` bunun bir örneğidir.
 
       ![Batch hesabı dikey penceresi](./media/data-factory-data-processing-using-batch/image9.png)
 

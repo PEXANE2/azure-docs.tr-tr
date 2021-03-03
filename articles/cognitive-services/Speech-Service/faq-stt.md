@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388626"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738200"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -138,7 +138,9 @@ Y **: Evet**. Kendiniz düzenleyebilir veya profesyonel bir döküm hizmeti kull
 
 Y: bir modeli ses verileriyle eğitmek **uzun bir işlem** olabilir. Veri miktarına bağlı olarak, özel bir model oluşturmak birkaç gün sürebilir. Bir hafta içinde bitirilemez servis, eğitim işlemini durdurabilir ve modeli başarısız olarak rapor edebilir.
 
-Daha hızlı sonuçlar için, Özel donanımın eğitim için kullanılabildiği [bölgelerden](custom-speech-overview.md#set-up-your-azure-account) birini kullanın. Genellikle hizmet, bu tür donanımlara sahip bölgelerde günde yaklaşık 10 saat ses verisi işler. Bu, diğer bölgelerde günde yalnızca 1 saat ses verisi işleyebilir. [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)kullanarak, tamamen eğitilen modeli başka bir bölgeye kopyalayabilirsiniz. Yalnızca metin ile eğitim çok daha hızlıdır ve genellikle dakikalar içinde tamamlanır.
+Eğitim için adanmış donanımın kullanılabildiği [bölgelerden](custom-speech-overview.md#set-up-your-azure-account) birini kullanın. Konuşma hizmeti, bu bölgelerde eğitim için en fazla 20 saatlik ses kullanacaktır. Diğer bölgelerde, yalnızca 8 saate kadar sürer.
+
+Genel olarak, hizmet adanmış donanıma sahip bölgelerde günde yaklaşık 10 saat ses verisi işler. Bu, diğer bölgelerde günde yalnızca 1 saat ses verisi işleyebilir. [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)kullanarak, tamamen eğitilen modeli başka bir bölgeye kopyalayabilirsiniz. Yalnızca metin ile eğitim çok daha hızlıdır ve genellikle dakikalar içinde tamamlanır.
 
 Bazı temel modeller ses verileriyle özelleştirilemez. Bu hizmet için, bakım için yalnızca eğitim ve ses verilerini yok Sayın metnini kullanır. Daha sonra eğitim daha hızlı tamamlanır ve sonuçlar yalnızca metin ile eğitimle aynı olacaktır. Ses verileriyle eğitimi destekleyen temel modellerin listesi için bkz. [dil desteği](language-support.md#speech-to-text) .
 

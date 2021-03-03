@@ -4,12 +4,12 @@ description: Ortak uyarı şemasını anlama, neden kullanılması gerekir ve na
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622082"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737299"
 ---
 # <a name="common-alert-schema"></a>Ortak uyarı şeması
 
@@ -52,7 +52,7 @@ Eylem grupları aracılığıyla, hem portalda hem de REST API aracılığıyla 
 > 1. Aşağıdaki uyarı türleri varsayılan olarak ortak şemayı destekler (zorunlu kabul etme gerekmez):
 >     * Akıllı algılama uyarıları
 > 1. Aşağıdaki uyarı türleri şu anda ortak şemayı desteklemiyor:
->     * [VM'ler için Azure izleyici](../insights/vminsights-overview.md) tarafından oluşturulan uyarılar
+>     * [VM öngörüleri](../vm/vminsights-overview.md) tarafından oluşturulan uyarılar
 >     * [Azure maliyet yönetimi](../../cost-management-billing/manage/cost-management-budget-scenario.md) tarafından oluşturulan uyarılar
 
 ### <a name="through-the-azure-portal"></a>Azure portal aracılığıyla

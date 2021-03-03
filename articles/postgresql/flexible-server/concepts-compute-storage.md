@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519397"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712224"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu
 
@@ -120,6 +120,9 @@ G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyeb
 
 , İle işaretlendiğinde \* , IOPS SEÇTIĞINIZ VM türüyle sınırlıdır. Aksi takdirde ıOPS, seçilen depolama boyutuyla sınırlıdır.
 
+>[!NOTE]
+> Disk düzeyinde burdıya nedeniyle ölçümlerde daha yüksek ıOPS görebilirsiniz. Daha fazla ayrıntı için lütfen [belgelere](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) bakın. 
+
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Yapılandırmanız için en fazla g/ç bant genişliği (MIB/sn)
 
 |SKU adı            |Depolama boyutu, GiB                             |32 |64 |128 |256 |512  |1.024|2.048|4.096|8,192 |16.384|
@@ -147,7 +150,7 @@ G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyeb
 
 Bir \* g/ç bant genişliği ile işaretlendiğinde, SEÇTIĞINIZ VM türüyle sınırlı olur. Aksi takdirde g/ç bant genişliği seçili depolama boyutuyla sınırlıdır.
 
-### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
+### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşma
 
 Depolama sınırına ulaştığınızda, sunucu hataları döndürbaşlayacaktır ve diğer değişiklikleri engeller. Bu da yedeklemeler ve WAL Arşivi gibi diğer işletimsel etkinliklerle ilgili sorunlara neden olabilir.
 

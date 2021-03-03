@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 3f8e23fdeb0a05d2c19f131cf79a079426a9b494
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726504"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
@@ -142,6 +142,7 @@ Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların 
 
 * Bir runbook bir modülden bir cmdlet istediğinde.
 * Bir runbook, modülü [Import-Module](/powershell/module/microsoft.powershell.core/import-module) cmdlet 'i ile açıkça içeri aktardığında.
+* Bir runbook, modülü [using Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using?view=powershell-7.1#module-syntax) ifadesiyle açıkça içeri aktardığında. Using deyimleri Windows PowerShell 5,0 ile başlayarak desteklenir ve sınıfları ve sabit listesi türü içeri aktarmayı destekler.
 * Bir runbook başka bir bağımlı modülü içeri aktardığında.
 
 Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülünü değil, yalnızca ihtiyacınız olan az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.

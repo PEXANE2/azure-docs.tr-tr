@@ -1,26 +1,26 @@
 ---
-title: VM'ler için Azure İzleyici (GA) sık sorulan sorular | Microsoft Docs
-description: VM'ler için Azure İzleyici Azure 'da, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak bulan ve aralarındaki iletişimi eşleyen bir çözümdür. Bu makalede, GA sürümü hakkında sık sorulan sorular yanıtlanmaktadır.
+title: VM öngörüleri (GA) sık sorulan sorular | Microsoft Docs
+description: VM öngörüleri, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak keşfederek ve aralarındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, GA sürümü hakkında sık sorulan sorular yanıtlanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 1958c5fcdac4ae2a080dd8a43178c204ba5fadd6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710762"
 ---
-# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
+# <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>VM öngörüleri genel kullanıma sunuldu (GA) sık sorulan sorular
 Bu genel kullanılabilirlik SSS, S4 2019 ' de yapılan değişiklikleri ve GA için hazırlandığımız şekilde 2020 ' i içerir.
 
-## <a name="updates-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için güncelleştirmeler
-VM'ler için Azure İzleyici Ocak 2020 ' de, GA duyurduğumuz yeni bir sürümünü yayınladık. VM'ler için Azure İzleyici etkinleştiren müşteriler artık GA sürümünü alacak, ancak S4 2019 ve öncesiyle VM'ler için Azure İzleyici sürümünü kullanan mevcut müşterilerin yükseltilmesi istenecektir. Bu SSS, birden çok çalışma alanı genelinde büyük dağıtımlarınız varsa, bir yükseltmeyi ölçekte gerçekleştirmeye yönelik rehberlik sunar.
+## <a name="updates-for-vm-insights"></a>VM öngörüleri için güncelleştirmeler
+2020 Ocak 'ta yeni VM öngörülerinin yeni bir sürümünü, GA duyurumuzdan önce yayımladık. VM öngörülerini etkinleştiren müşteriler artık GA sürümünü alacak, ancak S4 2019 ve öncesi VM öngörülerinin sürümünü kullanan mevcut müşterilerin yükseltilmesi istenecektir. Bu SSS, birden çok çalışma alanı genelinde büyük dağıtımlarınız varsa, bir yükseltmeyi ölçekte gerçekleştirmeye yönelik rehberlik sunar.
 
 
-Bu yükseltme ile VM'ler için Azure İzleyici performans verileri, [kapsayıcılar Için Azure izleyici](../insights/container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
+Bu yükseltme ile, VM'ler için Azure İzleyici performans verileri [kapsayıcı öngörüleri](../containers/container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
 
 Performans görünümlerimiz artık *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanıyor.  Çalışma alanınızda en son Vminsıghts çözümünü kullanmak için henüz yükseltmemiş olmanız durumunda, grafiklerinizde artık bilgi görüntülenmeyecektir.  Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızı yükseltebilirsiniz.
 
@@ -28,13 +28,13 @@ Performans görünümlerimiz artık *ınsightsölçümlerini* tablosunda depolad
 ## <a name="what-is-changing"></a>Ne değişiyor?
 Veri toplamaya yönelik ek yetenekler ve bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum içeren Vminsıghts adlı yeni bir çözüm yayımladık. 
 
-Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri, kapsayıcılar için Azure Izleyici tarafından da kullanılan *ınsightsölçümlerini* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
+Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri kapsayıcı öngörüleri tarafından da kullanılan *ınsightsölçümler* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
 
 Performans grafiklerimizi, *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanacak şekilde güncelleştirdik. Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızda bulunan *ınsightsölçümlerini* tablosunu kullanmak için yükseltebilirsiniz.
 
 
 ## <a name="how-do-i-upgrade"></a>Nasıl yaparım? yükseltmesi yapılsın mı?
-Bir Log Analytics çalışma alanı Azure Izleyici 'nin en son sürümüne sanal makinelere yükseltildiğinde, bu çalışma alanına eklenen her VM 'nin bağımlılık aracısını yükseltir. Yükseltme gerektiren her VM, Azure portal VM'ler için Azure İzleyici **başlama** sekmesinde belirlenir. Bir VM 'yi yükseltmeyi seçtiğinizde, bu sanal makine için çalışma alanını, bu çalışma alanına bağlı diğer VM 'lerle birlikte yükseltilecektir. Tek bir VM veya birden çok VM, kaynak grubu veya abonelik seçebilirsiniz. 
+Bir Log Analytics çalışma alanı Azure Izleyici 'nin en son sürümüne sanal makinelere yükseltildiğinde, bu çalışma alanına eklenen her VM 'nin bağımlılık aracısını yükseltir. Yükseltme gerektiren her VM, Azure portal VM öngörülerinin **Başlangıç** sekmesinde belirlenir. Bir VM 'yi yükseltmeyi seçtiğinizde, bu sanal makine için çalışma alanını, bu çalışma alanına bağlı diğer VM 'lerle birlikte yükseltilecektir. Tek bir VM veya birden çok VM, kaynak grubu veya abonelik seçebilirsiniz. 
 
 PowerShell kullanarak bir çalışma alanını yükseltmek için aşağıdaki komutu kullanın:
 
@@ -44,7 +44,7 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-nam
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Vminsıghts çözümünü yüklediğimde çalışma alanım 'daki performans sayaçlarından ne yapmam gerekir?
 
-VM'ler için Azure İzleyici çalışma alanınızda kullanılan performans sayaçlarını etkinleştirme için önceki yöntem. Geçerli sürüm, bu verileri adlı bir tabloda depolar `InsightsMetrics` . Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans sayaçlarını devre dışı bırakmayı tercih edebilirsiniz. 
+VM öngörülerini etkinleştirme yönteminin çalışma alanınızda performans sayaçlarını kullandık. Geçerli sürüm, bu verileri adlı bir tabloda depolar `InsightsMetrics` . Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans sayaçlarını devre dışı bırakmayı tercih edebilirsiniz. 
 
 >[!NOTE]
 >Tablodaki bu sayaçlara başvuran uyarı kurallarınız varsa `Perf` , tabloda depolanan yeni verilere başvurmak için onları güncelleştirmeniz gerekir `InsightsMetrics` . Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.
@@ -66,11 +66,11 @@ Topladığımız makine düzeyindeki performans verileri aynı, tabloda depolad�
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>Yalnızca Hizmet Eşlemesi kullanmak istersem ne yapmalıyım?
 
-Bu çok uygundur. Yaklaşan güncelleştirme hakkında VM'ler için Azure İzleyici görüntülerken Azure portal istemler görürsünüz. Yayımlandıktan sonra, yeni sürüme güncelleştirmenizi isteyen bir istem alırsınız. Yalnızca [haritalar](vminsights-maps.md) özelliğini kullanmayı tercih ediyorsanız, yükseltmemeyi seçebilirsiniz ve VM'ler için Azure izleyici ve çalışma alanınız veya Pano kutucuğundan erişilen hizmet eşlemesi çözümünde Haritalar özelliğini kullanmaya devam edebilirsiniz.
+Bu çok uygundur. Yaklaşan güncelleştirme hakkında VM öngörülerini görüntülerken Azure portal istemleri görürsünüz. Yayımlandıktan sonra, yeni sürüme güncelleştirmenizi isteyen bir istem alırsınız. Yalnızca [haritalar](vminsights-maps.md) özelliğini kullanmayı tercih ediyorsanız, yükseltmemeyi seçebilirsiniz ve sanal makine öngörülerinde Haritalar özelliğini ve çalışma alanınızdan ya da Pano kutucuğundan erişilen hizmet eşlemesi çözümünü kullanmaya devam edebilirsiniz.
 
-Çalışma alanınızdaki performans sayaçlarını el ile etkinleştirmeyi seçerseniz, bazı performans grafiklerimizden Azure Izleyici 'den görüntülenen verileri görebilirsiniz. Yeni çözüm yayımlandıktan sonra, tabloda depolanan verileri sorgulamak için performans grafiklerimizi güncelleştireceğiz `InsightsMetrics` . Bu grafiklerde bu tablodaki verileri görmek isterseniz, VM'ler için Azure İzleyici yeni sürümüne yükseltmeniz gerekir.
+Çalışma alanınızdaki performans sayaçlarını el ile etkinleştirmeyi seçerseniz, bazı performans grafiklerimizden Azure Izleyici 'den görüntülenen verileri görebilirsiniz. Yeni çözüm yayımlandıktan sonra, tabloda depolanan verileri sorgulamak için performans grafiklerimizi güncelleştireceğiz `InsightsMetrics` . Bu grafiklerde bu tablodaki verileri görmek isterseniz, VM öngörülerinin yeni sürümüne yükseltmeniz gerekir.
 
-Ve ' dan veri taşıma değişiklikleri `ServiceMapComputer_CL` `ServiceMapProcess_CL` , Hizmet Eşlemesi ve VM'ler için Azure izleyici etkileyecektir, bu nedenle yine de bu güncelleştirme için plan yapmanız gerekir.
+Ve ' dan veri taşıma değişiklikleri `ServiceMapComputer_CL` `ServiceMapProcess_CL` , hem hizmet eşlemesi hem de VM öngörülerini etkileyecektir, bu nedenle bu güncelleştirme için plan yapmanız gerekir.
 
 **Vminsıghts** çözümüne yükseltmemeyi seçerseniz, tablodaki verilere başvuran performans çalışma kitaplarımızın eski sürümlerini sağlamaya devam edeceğiz `Perf` .  
 
@@ -78,7 +78,7 @@ Ve ' dan veri taşıma değişiklikleri `ServiceMapComputer_CL` `ServiceMapProce
 
 Her iki çözüm de kullanırsanız veri kümeleri yinelenmez. Her iki teklif de içinde depolanacak veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL ServiceMapProcess_CL), `VMProcess` `VMConnection` ve `VMBoundPort` topladığımız harita veri kümelerini depolamak için tabloları paylaşır.  
 
-`InsightsMetrics`Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM'ler için Azure izleyici ve VM öngörüleri çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü tabloda veri toplamaz veya depolamaz `InsightsMetrics` .
+`InsightsMetrics`Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM öngörülerini ve VM Öngörüler çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü tabloda veri toplamaz veya depolamaz `InsightsMetrics` .
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Çalışma alanım 'da Hizmet Eşlemesi ve Vminsıghts çözümlerini varsa, Double olarak ücretlendirilecektir mıyım?
 
@@ -94,7 +94,7 @@ VM sağlık özelliği kümesiyle ilgili olarak müşterilerden çok sayıda ger
 
 Bu değişikliklerin yeni müşterilere etkilerini en aza indirmek için bu özelliği **sınırlı bir genel önizlemeye** taşıdık. Bu güncelleştirme 2019 Ekim 'de gerçekleşti.
 
-VM'ler için Azure İzleyici GA ' de olduktan sonra bu sistem durumu özelliğini 2020 ' de yeniden başlatmayı planlıyoruz.
+VM öngörüleri GA olduktan sonra, bu sistem durumu özelliğini 2020 ' de yeniden başlatmayı planlıyoruz.
 
 ## <a name="how-do-existing-customers-access-the-health-feature"></a>Mevcut müşteriler sistem durumu özelliğine nasıl erişir?
 
@@ -112,4 +112,4 @@ Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve yeni bir da�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makinelerinizi izlemenize yardımcı olan gereksinimleri ve yöntemleri anlamak için [VM'ler için Azure izleyici dağıt](../insights/vminsights-enable-overview.md)' ı inceleyin.
+Sanal makinelerinizi izlemenize yardımcı olan gereksinimleri ve yöntemleri anlamak için [VM öngörülerini dağıtma](./vminsights-enable-overview.md)konusunu gözden geçirin.

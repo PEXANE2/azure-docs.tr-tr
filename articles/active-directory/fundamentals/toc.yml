@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: Güvenli hizmet hesapları
           items:
+            - name: Azure hizmet hesaplarına giriş
+              href: service-accounts-introduction-azure.md
+            - name: Yönetilen kimliklerin güvenliğini sağlama
+              href: service-accounts-managed-identities.md
+            - name: Hizmet sorumlularının güvenliğini sağlama
+              href: service-accounts-principal.md
+            - name: Azure hizmet hesaplarını yöneten
+              href: service-accounts-governing-azure.md
             - name: Şirket içi hizmet hesaplarına giriş
               href: service-accounts-on-premises.md
             - name: Grup MSAs güvenliğini sağlama

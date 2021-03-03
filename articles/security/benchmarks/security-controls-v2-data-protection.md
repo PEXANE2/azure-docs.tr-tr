@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 veri koruma
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368877"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735769"
 ---
 # <a name="security-control-v2-data-protection"></a>Güvenlik denetimi v2: veri koruma
 
 Veri koruma, bekleyen veri koruma denetimini, geçiş sırasında ve yetkili erişim mekanizmaları aracılığıyla ele alır. Bu, erişim denetimi, şifreleme ve Azure 'da oturum açma kullanarak hassas veri varlıklarını bulma, sınıflandırma, koruma ve izleme içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişimi: veri koruma](../../governance/policy/samples/azure-security-benchmark#data-protection)
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Hassas verileri bulun, sınıflandırın ve etiketleyin
 
@@ -24,9 +26,9 @@ Veri koruma, bekleyen veri koruma denetimini, geçiş sırasında ve yetkili eri
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
-Hassas bilgilerin depolanmasını, işlenmesini ve kuruluşun teknoloji sistemleri tarafından güvenli bir şekilde aktarılmasını sağlamak üzere uygun denetimleri tasarlayabilmeniz için hassas verilerinizi bulun, sınıflandırın ve etiketleyin. 
+Hassas bilgilerin depolanmasını, işlenmesini ve kuruluşun teknoloji sistemleri tarafından güvenli bir şekilde aktarılmasını sağlamak üzere uygun denetimleri tasarlayabilmeniz için hassas verilerinizi bulun, sınıflandırın ve etiketleyin.
 
-Azure’daki, şirket içindeki, Office 365’teki ve diğer konumlardaki hassas bilgiler için Azure Information Protection’ı (ve ilişkili tarama aracını) kullanın. 
+Azure’daki, şirket içindeki, Office 365’teki ve diğer konumlardaki hassas bilgiler için Azure Information Protection’ı (ve ilişkili tarama aracını) kullanın.
 
 Azure SQL Information Protection’ı kullanarak Azure SQL Veritabanlarında depolanan bilgilerin sınıflandırılmasına ve etiketlenmesine yardımcı olabilirsiniz.
 
@@ -38,7 +40,7 @@ Azure SQL Information Protection’ı kullanarak Azure SQL Veritabanlarında dep
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Veri güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Azure Information Protection (AIP) sınıflandırılmış ve etiketlenmiş bilgi
 
 Veri kaybı önleme (DLP) uyumluluğu için gerekirse, veri sızdırmayı önlemeye yönelik algılama ve/veya koruma denetimlerini zorunlu tutmak üzere konak tabanlı bir DLP çözümü kullanabilirsiniz.
 
-- [Azure SQL ATP’yi Etkinleştirme](../../azure-sql/database/threat-detection-overview.md)
+- [SQL için Azure Defender](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Azure Depolama ATP’yi Etkinleştirme](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Depolama için Azure Defender](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Sorumluluk**: Paylaşılan
 
@@ -102,13 +104,13 @@ Veri kaybı önleme (DLP) uyumluluğu için gerekirse, veri sızdırmayı önlem
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
-| DP-4 | 14,4 | SC-8 |
+| DP-4 | 14.4 | SC-8 |
 
-Erişim denetimlerini tamamlamak için, yoldaki verilerin verileri kolayca okuyamadığından veya değiştiremeyeceği için şifreleme kullanılarak ' bant dışı ' saldırılarına (örn. trafik yakalama) karşı korunması gerekir. 
+Erişim denetimlerini tamamlamak için, saldırganların verileri kolayca okuyamadığından veya değiştirememesini sağlamak üzere şifreleme kullanılarak "bant dışı" saldırılarına (trafik yakalama gibi) karşı korunması gerekir.
 
-Bu, özel ağlardaki trafik için isteğe bağlı olsa da, bu, dış ve genel ağlardaki trafik için önemlidir. HTTP trafiği için, Azure kaynaklarınıza bağlanan istemcilerin TLS v 1.2 veya üzerini anlaştığınızdan emin olun. Uzaktan Yönetim için şifrelenmemiş bir protokol yerine SSH (Linux için) veya RDP/TLS (Windows için) kullanın. Kullanımdan çıkarıldı SSL, TLS ve SSH sürümleri ve protokolleri ve zayıf şifrelemeler devre dışı bırakılmalıdır.  
+Bu, özel ağlardaki trafik için isteğe bağlı olsa da, bu, dış ve genel ağlardaki trafik için önemlidir. HTTP trafiği için, Azure kaynaklarınıza bağlanan istemcilerin TLS v 1.2 veya üzerini anlaştığınızdan emin olun. Uzaktan Yönetim için şifrelenmemiş bir protokol yerine SSH (Linux için) veya RDP/TLS (Windows için) kullanın. Kullanımdan çıkarıldı SSL, TLS ve SSH sürümleri ve protokolleri ve zayıf şifrelemeler devre dışı bırakılmalıdır.
 
-Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki veriler için şifreleme sağlar. 
+Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki veriler için şifreleme sağlar.
 
 - [Azure ile iletim sırasında şifrelemeyi anlama](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -132,7 +134,7 @@ Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki ver
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
-| DP-5 | 14,8 | SC-28, SC-12 |
+| DP-5 | 14.8 | SC-28, SC-12 |
 
 Erişim denetimlerini tamamlamak için, Rest 'teki verilerin şifreleme kullanılarak ' bant dışı ' saldırılarına (temeldeki depolamaya erişme gibi) karşı korunması gerekir. Bu, saldırganların verileri kolayca okuyabilmesini veya değiştirememesini sağlamaya yardımcı olur. 
 

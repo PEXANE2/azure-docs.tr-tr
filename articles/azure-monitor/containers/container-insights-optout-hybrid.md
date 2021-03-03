@@ -1,18 +1,18 @@
 ---
 title: Karma Kubernetes kümenizi izlemeyi durdurma | Microsoft Docs
-description: Bu makalede, kapsayıcı için Azure Izleyici ile karma Kubernetes kümenizi izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
+description: Bu makalede, karma Kubernetes kümenizi kapsayıcı öngörüleri ile izlemenin nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625988"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713703"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Karma kümenizi izlemeyi durdurma
 
-Kubernetes kümenizi izlemeyi etkinleştirdikten sonra, artık izlemek istememeye karar verirseniz, kapsayıcıyı kapsayıcılar için Azure Izleyici ile izlemeyi durdurabilirsiniz. Bu makalede, aşağıdaki ortamlar için bunun nasıl yapılacağı gösterilmektedir:
+Kubernetes kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz, kapsayıcıyı kapsayıcı öngörüleri ile izlemeyi durdurabilirsiniz. Bu makalede, aşağıdaki ortamlar için bunun nasıl yapılacağı gösterilmektedir:
 
 - Azure ve Azure Stack AKS altyapısı
 - OpenShift sürüm 4 ve üzeri
@@ -25,7 +25,7 @@ Aşağıdaki adımlar aşağıdaki ortamlar için geçerlidir:
 - Azure ve Azure Stack AKS altyapısı
 - OpenShift sürüm 4 ve üzeri
 
-1. Kümenizde yüklü olan kapsayıcıların Helm grafik sürümünün Azure Izleyicisini belirlemek için aşağıdaki Helm komutunu çalıştırın.
+1. Kümenizde yüklü olan Container Insights Held grafik sürümünü ilk olarak tanımlamak için aşağıdaki HELI komutunu çalıştırın.
 
     ```
     helm list
@@ -38,7 +38,7 @@ Aşağıdaki adımlar aşağıdaki ortamlar için geçerlidir:
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *Azmon-kapsayıcılar-Release-1* kapsayıcılar Için Azure izleyici için Helm grafik sürümünü temsil eder.
+    *Azmon-kapsayıcılar-Release-1* kapsayıcı öngörüleri için Helu grafik sürümünü temsil eder.
 
 2. Grafik sürümünü silmek için aşağıdaki Held komutunu çalıştırın.
 
@@ -96,7 +96,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Örneğin:
+Örnek:
 
 ```powershell
 \disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
@@ -149,7 +149,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Örneğin:
+Örnek:
 
 ```bash
 bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../platform/delete-workspace.md).
+Log Analytics çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../logs/delete-workspace.md).

@@ -1,26 +1,26 @@
 ---
-title: VM'ler için Azure İzleyici için Kaynak Yöneticisi şablonu örnekleri
-description: VM 'Ler için yeniden dağıtım ve yapılandırma için örnek Azure Resource Manager şablonları.
+title: VM öngörüleri için şablon örnekleri Kaynak Yöneticisi
+description: VM öngörülerini dağıtmak ve vermek için örnek Azure Resource Manager şablonları.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 91c8396795a85cd63fa502c4b091b7ca9a42865b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627959"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733763"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Kaynak Yöneticisi şablonu örnekleri
-Bu makale, sanal makinelerde VM'ler için Azure İzleyici etkinleştirmek için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+# <a name="resource-manager-template-samples-for-vm-insights"></a>VM öngörüleri için şablon örnekleri Kaynak Yöneticisi
+Bu makale, sanal makinelerde VM öngörülerini etkinleştirmek için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
-Aşağıdaki örnek, bir Log Analytics çalışma alanı için VM'ler için Azure İzleyici sunar.
+Aşağıdaki örnek, Log Analytics çalışma alanı için VM öngörülerini mümkün bir şekilde sunar.
 
 
 ### <a name="template-file"></a>Şablon dosyası
@@ -98,7 +98,7 @@ Aşağıdaki örnek, bir Log Analytics çalışma alanı için VM'ler için Azur
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>Azure sanal makinesini ekleme
-Aşağıdaki örnek VM'ler için Azure İzleyici için bir Azure sanal makinesi ekler.
+Aşağıdaki örnek, VM öngörülerine bir Azure sanal makinesi ekler.
 
 
 ### <a name="template-file"></a>Şablon dosyası
@@ -219,7 +219,7 @@ Aşağıdaki örnek VM'ler için Azure İzleyici için bir Azure sanal makinesi 
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>Azure sanal makine ölçek kümesi ekleme
-Aşağıdaki örnek, VM'ler için Azure İzleyici için bir Azure sanal makine ölçek kümesi ekler.
+Aşağıdaki örnek, VM öngörülerine bir Azure sanal makine ölçek kümesi ekler.
 
 
 ### <a name="template-file"></a>Şablon dosyası
@@ -340,5 +340,5 @@ Aşağıdaki örnek, VM'ler için Azure İzleyici için bir Azure sanal makine �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici için diğer örnek şablonları alın](../samples/resource-manager-samples.md).
-* [VM'ler için Azure izleyici hakkında daha fazla bilgi edinin](../vm/vminsights-overview.md).
+* [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
+* [VM öngörüleri hakkında daha fazla bilgi edinin](vminsights-overview.md).

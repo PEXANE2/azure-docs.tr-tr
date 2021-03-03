@@ -1,28 +1,28 @@
 ---
-title: Kapsayıcılar Aracısı için Azure Izleyicisini yönetme | Microsoft Docs
-description: Bu makalede, kapsayıcılar için Azure Izleyici tarafından kullanılan Kapsayıcılı Log Analytics aracısıyla en yaygın bakım görevlerinin yönetilmesi açıklanmaktadır.
+title: Kapsayıcı öngörüleri aracısını yönetme | Microsoft Docs
+description: Bu makalede, kapsayıcı öngörüleri tarafından kullanılan Kapsayıcılı Log Analytics aracısıyla en yaygın bakım görevlerinin yönetilmesi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625279"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713805"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Kapsayıcılar aracısının Azure Izleyicisini yönetme
+# <a name="how-to-manage-the-container-insights-agent"></a>Kapsayıcı öngörüleri aracısını yönetme
 
-Kapsayıcılar için Azure Izleyici, Linux için Log Analytics aracısının kapsayıcılı bir sürümünü kullanır. İlk dağıtımdan sonra, yaşam döngüsü boyunca gerçekleştirmeniz gerekebilecek rutin veya isteğe bağlı görevler vardır. Bu makalede, aracıyı el ile yükseltme ve belirli bir kapsayıcıdan ortam değişkenlerinin toplanmasını devre dışı bırakma hakkında ayrıntılı bilgiler yer alır. 
+Kapsayıcı öngörüleri, Linux için Log Analytics aracısının kapsayıcılı bir sürümünü kullanır. İlk dağıtımdan sonra, yaşam döngüsü boyunca gerçekleştirmeniz gerekebilecek rutin veya isteğe bağlı görevler vardır. Bu makalede, aracıyı el ile yükseltme ve belirli bir kapsayıcıdan ortam değişkenlerinin toplanmasını devre dışı bırakma hakkında ayrıntılı bilgiler yer alır. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Kapsayıcılar aracısının Azure Izleyicisini yükseltme
+## <a name="how-to-upgrade-the-container-insights-agent"></a>Kapsayıcı öngörüleri aracısını yükseltme
 
-Kapsayıcılar için Azure Izleyici, Linux için Log Analytics aracısının kapsayıcılı bir sürümünü kullanır. Aracının yeni bir sürümü bırakıldığında, aracı Azure Kubernetes Service (AKS) ve Azure Red Hat OpenShift sürüm 3. x üzerinde barındırılan yönetilen Kubernetes kümelerinizde otomatik olarak yükseltilir. Karma bir [Kubernetes kümesi](container-insights-hybrid-setup.md) ve Azure Red Hat OpenShift sürüm 4. x için, aracı yönetilmez ve aracıyı el ile yükseltmeniz gerekir.
+Kapsayıcı öngörüleri, Linux için Log Analytics aracısının kapsayıcılı bir sürümünü kullanır. Aracının yeni bir sürümü bırakıldığında, aracı Azure Kubernetes Service (AKS) ve Azure Red Hat OpenShift sürüm 3. x üzerinde barındırılan yönetilen Kubernetes kümelerinizde otomatik olarak yükseltilir. Karma bir [Kubernetes kümesi](container-insights-hybrid-setup.md) ve Azure Red Hat OpenShift sürüm 4. x için, aracı yönetilmez ve aracıyı el ile yükseltmeniz gerekir.
 
 AKS veya Azure Red Hat OpenShift sürüm 3. x üzerinde barındırılan bir kümede aracı yükseltmesi başarısız olursa, bu makalede aracıyı el ile yükseltme işlemi de açıklanmaktadır. Yayınlanan sürümleri izlemek için bkz. [Aracı Sürüm duyuruları](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 ### <a name="upgrade-agent-on-aks-cluster"></a>AKS kümesinde aracıyı yükseltme
 
-AKS kümelerinde aracıyı yükseltme işlemi iki düz ileri doğru adımdan oluşur. İlk adım, Azure CLı kullanan kapsayıcılar için Azure Izleyici ile izlemeyi devre dışı bırakmlarıdır. [Izlemeyi devre dışı bırakma](container-insights-optout.md?#azure-cli) makalesinde açıklanan adımları izleyin. Azure CLı kullanmak, çözümü ve çalışma alanında depolanan ilgili verileri etkilemeden aracıyı kümedeki düğümlerden kaldırmamızı sağlar. 
+AKS kümelerinde aracıyı yükseltme işlemi iki düz ileri doğru adımdan oluşur. İlk adım, Azure CLı kullanarak kapsayıcı öngörüleri ile izlemeyi devre dışı bırakmada olur. [Izlemeyi devre dışı bırakma](container-insights-optout.md?#azure-cli) makalesinde açıklanan adımları izleyin. Azure CLı kullanmak, çözümü ve çalışma alanında depolanan ilgili verileri etkilemeden aracıyı kümedeki düğümlerden kaldırmamızı sağlar. 
 
 >[!NOTE]
 >Bu bakım etkinliğini gerçekleştirirken, kümedeki düğümler toplanan verileri iletmez ve performans görünümleri aracıyı kaldırdığınız zamanla yeni sürümü yüklerken verileri göstermez. 
@@ -97,7 +97,7 @@ Bu komutla hizmet sorumlusu kullanma hakkında ayrıntılı bilgi için bkz. [Az
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Bir kapsayıcıda ortam değişkeni toplamayı devre dışı bırakma
 
-Kapsayıcılar için Azure Izleyici, Pod içinde çalışan kapsayıcılardan ortam değişkenlerini toplar ve bunları **kapsayıcılar** görünümünde seçilen kapsayıcının Özellik bölmesinde sunar. Bu davranışı, Kubernetes kümesinin dağıtımı sırasında veya *AZMON_COLLECT_ENV* ortam değişkenini ayarlayarak, belirli bir kapsayıcı için koleksiyonu devre dışı bırakarak denetleyebilirsiniz. Bu özellik, aracı sürümü – ciprod11292018 ve üzeri sürümlerde kullanılabilir.  
+Kapsayıcı öngörüleri bir pod içinde çalışan kapsayıcılardan ortam değişkenlerini toplar ve bunları **kapsayıcılar** görünümünde seçilen kapsayıcının Özellik bölmesinde görüntüler. Bu davranışı, Kubernetes kümesinin dağıtımı sırasında veya *AZMON_COLLECT_ENV* ortam değişkenini ayarlayarak, belirli bir kapsayıcı için koleksiyonu devre dışı bırakarak denetleyebilirsiniz. Bu özellik, aracı sürümü – ciprod11292018 ve üzeri sürümlerde kullanılabilir.  
 
 Ortam değişkenlerinin koleksiyonunu yeni veya mevcut bir kapsayıcıda devre dışı bırakmak için, **AZMON_COLLECT_ENV** değişkenini Kubernetes Deployment YAML yapılandırma dosyanızda **false** değeriyle ayarlayın. 
 
@@ -114,7 +114,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 Bu, varsayılan metin düzenleyicinizi açar. Değişkeni ayarladıktan sonra dosyayı düzenleyicide kaydedin.
 
-Yapılandırma değişikliğinin geçerli olduğunu doğrulamak için kapsayıcılar için Azure Izleyici 'de **kapsayıcılar** görünümünde bir kapsayıcı seçin ve özellik panelinde **ortam değişkenleri**' ni genişletin.  Bölüm yalnızca daha önce oluşturulan **AZMON_COLLECT_ENV = false** değişkenini göstermelidir. Diğer tüm kapsayıcılar için, ortam değişkenleri bölümü bulunan tüm ortam değişkenlerini listelemelidir.
+Yapılandırma değişikliğinin geçerli olduğunu doğrulamak için, kapsayıcı öngörüleri içindeki **kapsayıcılar** görünümünde bir kapsayıcı seçin ve özellik panelinde **ortam değişkenleri**' ni genişletin.  Bölüm yalnızca daha önce oluşturulan **AZMON_COLLECT_ENV = false** değişkenini göstermelidir. Diğer tüm kapsayıcılar için, ortam değişkenleri bölümü bulunan tüm ortam değişkenlerini listelemelidir.
 
 Ortam değişkenlerinin bulunmasını yeniden etkinleştirmek için, aynı işlemi daha önce uygulayın ve değeri **false** iken **true** olarak değiştirin ve ardından `kubectl` kapsayıcıyı güncelleştirmek için komutu yeniden çalıştırın.  
 

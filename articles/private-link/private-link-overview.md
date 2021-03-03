@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712190"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -54,7 +54,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     | Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir | GA <br/> [PostgreSQL için Azure veritabanı için özel uç nokta oluşturmayı öğrenin.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  MySQL için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri      |  | GA <br/> [MySQL için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](../mysql/concepts-data-access-security-private-link.md)     |
 |  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     |  | GA <br/> [MariaDB için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure Digital Twins         | Azure dijital TWINS tarafından desteklenen tüm ortak bölgeler     |  | Önizleme <br/> [Azure dijital TWINS için özel bir uç nokta oluşturmayı öğrenin.](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure Digital Twins         | Azure dijital TWINS tarafından desteklenen tüm ortak bölgeler     |  | Önizleme <br/> [Azure dijital TWINS için özel bir uç nokta oluşturmayı öğrenin.](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri      |  | GA   <br/> [Azure Key Vault için özel uç nokta oluşturmayı öğrenin.](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes hizmeti-Kubernetes API 'SI | Tüm ortak bölgeler      |  | GA   <br/> [Azure Kubernetes hizmeti için özel bir uç nokta oluşturmayı öğrenin.](../aks/private-clusters.md)   |
 |Azure Search | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri | Özel modda hizmet ile desteklenir | GA   <br/> [Azure Search için özel uç nokta oluşturmayı öğrenin.](../search/service-create-private-endpoint.md)    |

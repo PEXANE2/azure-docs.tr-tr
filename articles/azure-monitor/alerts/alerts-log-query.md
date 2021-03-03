@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717987"
 ---
 # <a name="optimizing-log-alert-queries"></a>Günlük uyarısı sorgularını iyileştirme
-Bu makalede, en iyi performansı elde etmek için [günlük uyarısı](../platform/alerts-unified-log.md) sorgularının nasıl yazılacağı ve dönüştürüleceği açıklanır. İyileştirilmiş sorgular, sıklıkla çalışan uyarıları ve uyarı yükünü azaltır.
+Bu makalede, en iyi performansı elde etmek için [günlük uyarısı](./alerts-unified-log.md) sorgularının nasıl yazılacağı ve dönüştürüleceği açıklanır. İyileştirilmiş sorgular, sıklıkla çalışan uyarıları ve uyarı yükünü azaltır.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Uyarı günlüğü sorgusu yazmaya başlama
 
-Uyarı sorguları, sorunu belirten [Log Analytics günlük verilerini sorgulamadan](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) başlar. Neleri keşfedebileceğinizi anlamak için [Uyarı sorgu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz. [Kendi sorgunuzu yazmaya de başlamanızı](../log-query/log-analytics-tutorial.md)sağlayabilirsiniz. 
+Uyarı sorguları, sorunu belirten [Log Analytics günlük verilerini sorgulamadan](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) başlar. Neleri keşfedebileceğinizi anlamak için [Uyarı sorgu örnekleri konusunu](../logs/example-queries.md) kullanabilirsiniz. [Kendi sorgunuzu yazmaya de başlamanızı](../logs/log-analytics-tutorial.md)sağlayabilirsiniz. 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>Uyarı değil, sorunu belirten sorgular
 
@@ -44,7 +44,7 @@ Sorguya uyarı mantığı eklemeniz ve bu durum bile sorunlara neden olabilir. Y
 `limit` `take` Sorgular zaman içinde tutarlı olmadığından, ve sorguları içinde kullanmak, gecikme süresini ve uyarıları artırabilir. Bunu yalnızca gerektiğinde kullanmanız tercih edilir.
 
 ## <a name="log-query-constraints"></a>Günlük sorgusu kısıtlamaları
-[Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md) bir tablo, [`search`](/azure/kusto/query/searchoperator) ya da [`union`](/azure/kusto/query/unionoperator) işleçle başlar.
+[Azure izleyici 'de günlük sorguları](../logs/log-query-overview.md) bir tablo, [`search`](/azure/kusto/query/searchoperator) ya da [`union`](/azure/kusto/query/unionoperator) işleçle başlar.
 
 Günlük uyarı kuralları sorguları, hem sorgu performansını hem de sonuçların uygunluğunu artıran bir açık kapsam tanımlamak için her zaman bir tabloyla başlamalıdır. Uyarı kurallarındaki sorgular sıklıkla çalışır; bu nedenle, ve ' ı kullanarak `search` `union` birden çok tablo üzerinde tarama gerektirdiği için, uyarıya gecikme süresini fazla yüke neden olabilir. Bu işleçler ayrıca uyarı hizmeti 'nin sorguyu en uygun hale getirme yeteneğini de azaltır.
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-Çapraz kaynak sorguları, [](../log-query/cross-workspace-query.md) `union` sorgu kapsamını belirli kaynaklarla sınırlayan bir türü kullandığından, çapraz kaynak sorgularını kullanan günlük uyarı kuralları bu değişiklikten etkilenmez. Aşağıdaki örnek geçerli günlük uyarı sorgusu olacaktır:
+Çapraz kaynak sorguları, [](../logs/cross-workspace-query.md) `union` sorgu kapsamını belirli kaynaklarla sınırlayan bir türü kullandığından, çapraz kaynak sorgularını kullanan günlük uyarı kuralları bu değişiklikten etkilenmez. Aşağıdaki örnek geçerli günlük uyarı sorgusu olacaktır:
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> Yeni [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sinde [çapraz kaynak sorguları](../log-query/cross-workspace-query.md) desteklenir. Günlük uyarıları oluşturmak için [eski Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanmaya devam ediyorsanız, [buradan](../alerts/alerts-log-api-switch.md)geçiş yapmayı öğrenebilirsiniz.
+> Yeni [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sinde [çapraz kaynak sorguları](../logs/cross-workspace-query.md) desteklenir. Günlük uyarıları oluşturmak için [eski Log Analytics uyarı API](./api-alerts.md) 'sini kullanmaya devam ediyorsanız, [buradan](../alerts/alerts-log-api-switch.md)geçiş yapmayı öğrenebilirsiniz.
 
 ## <a name="examples"></a>Örnekler
 Aşağıdaki örnekler, ve kullanan günlük sorgularını içerir `search` `union` ve bu sorguları uyarı kurallarında kullanılmak üzere değiştirmek için kullanabileceğiniz adımları sağlar.
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure Izleyici 'de [günlük uyarıları](alerts-log.md) hakkında bilgi edinin.
-- [Günlük sorguları](../log-query/log-query-overview.md)hakkında bilgi edinin.
+- [Günlük sorguları](../logs/log-query-overview.md)hakkında bilgi edinin.

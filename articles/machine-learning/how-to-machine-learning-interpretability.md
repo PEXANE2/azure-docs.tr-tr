@@ -10,20 +10,20 @@ ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: 6784361dde67d7dcc1423d9edbcc92ec513ff6d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222641"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690218"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 
 
-## <a name="overview-of-model-interpretability"></a>Model yorumlenebilirliğini genel bakış
+## <a name="model-interpretability-overview"></a>Model yorumlenebilirliği genel bakış
 
-Yönetmelebilirlik, şirket ilkeleri, sektör standartları ve kamu yönetmelikleriyle uyumluluğu sağlamak için veri bilimcileri, denetçiler ve iş karar mekanizmaları için önemlidir:
+Şirket ilkeleri, sektör standartları ve kamu yönetmelikleri ile uyumluluğu sağlamak için veri bilimcileri, denetçiler ve iş karar mekanizmaları için model yorumuyumluluğu önemlidir:
 
 + Veri bilimcileri, modellerini Yöneticiler ve hissedarlar için açıklayabilme olanağı sağlar, bu sayede bulgularının değer ve doğruluğunu anlayabilirler. Ayrıca, modellerinde hata ayıklamak ve bunların nasıl geliştirileceğine ilişkin bilinçli kararlar almak için yorumlarla birlikte 
 
@@ -31,15 +31,15 @@ Yönetmelebilirlik, şirket ilkeleri, sektör standartları ve kamu yönetmelikl
 
 + İş karar mekanizmalarının, son kullanıcılar için saydamlık sağlayabilme olanağı sunarak rahat bir fikir sahibi olması gerekir. Bu, güvenliklerini kazanmalarını sağlar.
 
-
 Bir makine öğrenimi modelinin açıklanması özelliğinin etkinleştirilmesi, model geliştirmenin iki ana aşaması sırasında önemlidir:
+
 + Eğitim aşamasında, model tasarımcıları ve değerlendiricileri, hipotezleri ve paydaşlarla derlemeyi doğrulamak için bir modelin yorum çıktısını kullanabilir. Ayrıca, hata ayıklama için modellerle ilgili öngörüleri, model davranışının hedeflerini doğrulamak ve model unfairness veya önemli özellikleri denetlemek için de kullanılır.
 
 + Dağıtım aşamasında, dağıtılmış modeller etrafında saydamlığın olması, yöneticilerin nasıl çalıştığını ve kararlarının gerçek hayatta nasıl davrandığını ve etkilenmediğini anlamalarına olanak sağlar. 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile yorumlenebilirlik
 
-Yorumlenebilirlik sınıfları şu SDK paketiyle kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)öğrenin)
+Model yorumsıuyumluluk sınıfları şu SDK paketiyle kullanılabilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)öğrenin)
 
 * `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içerir.
 
@@ -52,11 +52,7 @@ SDK 'daki sınıfları ve yöntemleri kullanarak şunları yapabilirsiniz:
 + Eğitim ve çıkarım sırasında ölçekli gerçek dünyada veri kümelerinde model yorumlaşmasını elde edin.
 + Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri saptamak için etkileşimli bir görselleştirme panosu kullanın
 
-
 Machine Learning 'de **Özellikler** , hedef veri noktasını tahmin etmek için kullanılan veri alanlarıdır. Örneğin, kredi riskini tahmin etmek için yaş, hesap boyutu ve hesap yaşı için veri alanları kullanılıyor olabilir. Bu durumda, yaş, hesap boyutu ve hesap yaşı **özelliklerdir**. Özellik önemi, her bir veri alanının modelin tahminlerini nasıl etkilediğine bildirir. Örneğin, yaş, hesap boyutu ve yaş tahmin değerlerini önemli ölçüde etkilemediğinden, tahminde yoğun bir şekilde kullanılıyor olabilir. Bu işlem, veri bilimcilerinin ortaya çıkan tahminleri açıklamasına olanak tanır. bu sayede, paydaşların modelde en önemli özellikleri görmek için görünürlüğe sahip olması gerekir.
-
-Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modelleri ve desteklenen çalıştırma ortamları hakkında bilgi edinin.
-
 
 ## <a name="supported-interpretability-techniques"></a>Desteklenen yorumlenebilirlik teknikleri
 
@@ -70,9 +66,6 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 |SHAP Kernel açıklama| SHAP 'nin Kernel açıklama, **herhangi bir model** için Shap değerlerini tahmin etmek üzere özel ağırlıklı bir yerel doğrusal regresyon kullanır.|Model belirsiz|
 |Taklit açıklama (genel yedek)| Benzeme açıklama, kara kutu modellerini taklit etmek için [genel yedek modellerine](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrini temel alır. Genel yedek modeli, **herhangi bir siyah kutu modelinin** tahmin edilebilmesini mümkün olduğunca doğru şekilde tahmin etmek için eğitilen bir doğası gereği ınterbox modelidir. Veri bilimcileri, siyah kutu modeli hakkında ekibinizle çizmek için yedek modeli yorumlayabilir. Aşağıdaki yorumlu modellerden birini yedek modeliniz olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), doğrusal regresyon (LinearExplainableModel), Stochastic gradyan Descent explainable model (SGDExplainableModel) ve karar ağacı (DecisionTreeExplainableModel).|Model belirsiz|
 |Permütasyon özelliği önem açıklama (PFı)| Permütasyon özelliği önem derecesi, [Breiman 'Nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur. PFı, **temel alınan tüm modelin** genel davranışını açıklayabilir, ancak bireysel tahminleri açıklamaz. |Model belirsiz|
-
-
-
 
 Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı başka bir SHAP tabanlı açıklama destekliyoruz `TabularExplainer` . Modele bağlı olarak, `TabularExplainer` desteklenen SHAP explainers birini kullanır:
 

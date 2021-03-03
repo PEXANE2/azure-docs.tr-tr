@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: fe98ef297c6bed5ef3d982ed09db361244f75216
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695524"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -1057,47 +1057,17 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
    az login
    ```
 
-1. VM 'de System-Assigned yönetilen bir kimliği etkinleştirmek için Azure [CLI kullanarak Azure VM 'de Azure için yönetilen kimlikleri yapılandırma][qs-configure-cli-windows-vm] makalesindeki adımları izleyin. User-Assigned Yönetilen kimlikler, SAP için VM uzantısı tarafından desteklenmez. Ancak, sistem tarafından atanan ve Kullanıcı tarafından atanan bir kimlik olmak üzere her ikisini de etkinleştirebilirsiniz.
-
-   Örnek:
+1. Azure CLı AEM uzantısını yükler. En az sürüm 0.2.0 veya üstünü kullandığınızdan emin olun.
+  
    ```azurecli
-   az vm identity assign -g <resource-group-name> -n <vm name>
+   az extension add --name aem
    ```
-
-1. Yönetilen kimlik erişimini, sanal makinenin kaynak grubuna veya tüm ağ arabirimlerine, yönetilen disklere ve VM 'ye, [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama][howto-assign-access-cli] bölümünde açıklandığı gibi atayın
-
-    Örnek:
-
-    ```azurecli
-    # Azure CLI on Linux
-    spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
-    rgId=$(az group show -g <resource-group-name> --query id --out tsv)
-    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
-
-    # Azure CLI on Windows/PowerShell
-    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
-    $rgId=az group show -g <resource-group-name> --query id --out tsv
-    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
-    ```
-
-1. SAP için Azure uzantısı 'nı yüklemek için aşağıdaki Azure CLı komutunu çalıştırın.
-    Uzantı şu anda yalnızca Azurecyüksek 'te destekleniyor. Azure Çin 21Vianet, Azure Kamu veya diğer özel ortamların hiçbiri henüz desteklenmiyor.
-
-    ```azurecli
-    # Azure CLI on Linux
-    ## For Linux machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-
-    ## For Windows machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
-
-    # Azure CLI on Windows/PowerShell
-    ## For Linux machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
-
-    ## For Windows machines
-    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
-    ```
+  
+1. Yeni uzantıyı ile birlikte yükler
+  
+   ```azurecli
+   az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
+   ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Denetimler ve sorun giderme
 

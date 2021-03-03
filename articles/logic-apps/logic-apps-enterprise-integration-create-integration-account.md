@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705611"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps'te B2B kurumsal tümleştirmeleri için tümleştirme hesabı oluşturma ve yönetme
 
@@ -21,21 +21,29 @@ ms.locfileid: "96000071"
 
 Örneğin, ticari iş ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar ve toplu iş konfigürasyonları gibi B2B yapıtları oluşturabilir, saklayabilir ve yönetebilirsiniz. Ayrıca, mantıksal uygulamanızın bu yapıtlar ile çalışabilmesi ve Logic Apps B2B bağlayıcılarını kullanabilmesi için, [tümleştirme hesabınızı](#link-account) mantıksal uygulamanıza bağlamanız gerekir. Tümleştirme hesabınız ve mantıksal uygulamanız *aynı* konumda veya bölgede bulunmalıdır.
 
-> [!TIP]
-> [Tümleştirme hizmeti ortamında](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)bir tümleştirme hesabı oluşturmak için, bkz. [bir Ise tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
+> [!IMPORTANT]
+> Seçtiğiniz tümleştirme hesabı türüne bağlı olarak, bir tümleştirme hesabı oluşturmak maliyet doğurur. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma ve faturalandırma modelleri](logic-apps-pricing.md#integration-accounts) ve [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 Bu konu başlığı altında, bu görevlerin nasıl gerçekleştirileceği gösterilmektedir:
 
 * Tümleştirme hesabınızı oluşturun.
+
+  > [!TIP]
+  > [Tümleştirme hizmeti ortamında](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)bir tümleştirme hesabı oluşturmak için, bkz. [bir Ise tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
+
 * Tümleştirme hesabınızı bir Logic App 'e bağlayın.
+
 * Tümleştirme hesabınız için fiyatlandırma katmanını değiştirin.
+
 * Tümleştirme hesabınızın mantıksal bir uygulamayla bağlantısını kaldırın.
+
 * Tümleştirme hesabınızı başka bir Azure Kaynak grubuna veya aboneliğine taşıyın.
+
 * Tümleştirme hesabınızı silin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Tümleştirme hesabı oluşturma
 
@@ -64,7 +72,7 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
    | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
    | **Fiyatlandırma Katmanı** | Yes | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Konum** | Yes | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
-   | **Log Analytics** | No | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
+   | **Log Analytics** | Hayır | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
    |||||
 
 1. İşiniz bittiğinde **Oluştur**' u seçin.

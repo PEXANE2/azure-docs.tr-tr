@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711425"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web uygulamaları için SDK yükleme hatası giderme
 
@@ -68,7 +68,7 @@ Aralıklı ağ bağlantısı başarısızlığını en aza indirmek için, tüm 
  
 ## <a name="application-insights-cdn-outage"></a>CDN kesintisi Application Insights
 
-CDN uç noktasına doğrudan tarayıcıdan (örneğin, https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) kuruluşunuzun bu etki alanını engellemediğini varsayarak) (örneğin, son kullanıcılarınızla farklı bir konumdan) erişmeye çalışan bir APPLICATION INSIGHTS CDN kesintisi olup olmadığını doğrulayabilirsiniz.
+CDN uç noktasına doğrudan tarayıcıdan (örneğin, https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js https://js.monitor.azure.com/scripts/b/ai.2.min.js) son kullanıcılarınızın büyük bir bir konumdan) (örneğin, kuruluşunuzun bu etki alanını engellemediğini varsayarak) erişimi deneyerek BIR Application Insights CDN kesintisi olup olmadığını doğrulayabilirsiniz.
 
 Bir kesinti olduğunu onaylamak için [Yeni bir destek bileti oluşturabilir](https://azure.microsoft.com/support/create-ticket/) veya SDK 'yı indirmek için kullanılan URL 'yi değiştirmeyi deneyebilirsiniz.
 
@@ -106,7 +106,7 @@ SDK komut dosyasında (örneğin ai.2.min.js) bildirilen özel durumlar varsa, b
 
 Hatalı yapılandırmayı denetlemek için, kod parçacığına geçirilen yapılandırmayı değiştirin (henüz yoksa) ve yalnızca izleme anahtarınızı bir dize değeri olarak içerecek şekilde değiştirin.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > ınstrumentationkey: "INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ Hala başlatılamıyorsa, ```enableDebug``` yapılandırma ayarını etkinleşti
 > [!WARNING]
 > Bu yalnızca geliştirici ayarıdır ve Telemetriyi yitideceğinizi tam bir üretim ortamında hıç etkinleştirilmemelidir.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > ınstrumentationkey: "INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />

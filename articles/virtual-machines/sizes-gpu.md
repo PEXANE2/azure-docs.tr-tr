@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 58987523d86b0e3acb63d3dc220f68753501830e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b88cc2d70d38d84436beaff41b5b40b9c06debca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695558"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU için iyileştirilmiş sanal makine boyutları
 
@@ -43,7 +43,7 @@ Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için NV
 
 - N serisi VM 'Ler yalnızca Kaynak Yöneticisi dağıtım modelinde dağıtılabilir.
 
-- N serisi VM 'Ler, diskleri için destekledikleri Azure Storage türünde farklılık gösterir. NC ve NV VM 'Ler yalnızca standart Disk Depolama (HDD) tarafından desteklenen VM disklerini destekler. NCv2, NCv3, ND, NDv2 ve NVv2 VM 'Ler yalnızca Premium Disk Depolama (SSD) tarafından desteklenen VM disklerini destekler.
+- N serisi VM 'Ler, diskleri için destekledikleri Azure Storage türünde farklılık gösterir. NC ve NV VM 'Ler yalnızca standart Disk Depolama (HDD) tarafından desteklenen VM disklerini destekler. Diğer tüm GPU VM 'Leri, Standart Disk Depolama ve Premium Disk Depolama (SSD) tarafından desteklenen VM disklerini destekler.
 
 - Birkaç tane N serisi VM dağıtmak istiyorsanız, Kullandıkça Öde aboneliğine veya diğer satın alma seçeneklerine göz önünde bulundurun. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) kullanıyorsanız, yalnızca sınırlı sayıda Azure işlem çekirdeği kullanabilirsiniz.
 

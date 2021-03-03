@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700006"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak form verilerini toplu olarak ayıklama
 
@@ -30,7 +30,7 @@ Ayrıca, müşterilerimiz genellikle birçok istemci ve müşterisi tarafından 
 
 Azure form tanıyıcı sayesinde kuruluşların verilerini, işlemleri otomatikleştirmesini (fatura ödemeleri, vergi işleme vb.), paradan ve zamandan tasarruf etmesini ve daha iyi veri doğruluğu tadını çıkardık.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Formlarınızı depolamak için Azure Data Lake ayarlama
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Databricks Not defteri kullanarak form verilerinizi ayıklama
 > * Azure Data Factory ile form eğitimini ve ayıklamayı otomatikleştirin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git**' i seçin.
@@ -65,7 +65,7 @@ Azure Databricks Not defteri daha sonra, form verilerini ayıklamak için eğiti
 
 Form kapsamınız şirket içi ortamınızda veya bir FTP sunucusunda olabilir. Bu öğretici Azure Data Lake Gen 2 depolama hesabındaki formları kullanır. Dosyalarınızı Azure Data Factory, Azure Depolama Gezgini veya AzCopy kullanarak aktarabilirsiniz. Eğitim ve Puanlama veri kümeleri farklı kapsayıcılarda olabilir, ancak tüm form türleri için eğitim veri kümelerinin aynı kapsayıcıda olması gerekir (ancak farklı klasörlerde yer alabilir).
 
-Yeni bir Data Lake oluşturmak için, [Azure Data Lake Storage 2. birlikte kullanmak üzere depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account)bölümündeki yönergeleri izleyin.
+Yeni bir Data Lake oluşturmak için, [Azure Data Lake Storage 2. birlikte kullanmak üzere depolama hesabı oluşturma](../../storage/blobs/create-data-lake-storage-account.md)bölümündeki yönergeleri izleyin.
 
 ## <a name="create-a-parameterization-table"></a>Parametreleştirme tablosu oluşturma
 
@@ -89,7 +89,7 @@ Tabloda aşağıdaki alanlar kullanılacaktır:
 
 ### <a name="create-the-table"></a>Tabloyu oluşturma
 
-[Bir Azure SQL veritabanı oluşturun](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)ve ardından gerekli tabloyu oluşturmak için [sorgu DÜZENLEYICISI](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal) 'nde aşağıdaki SQL betiğini çalıştırın.
+[Bir Azure SQL veritabanı oluşturun](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)ve ardından gerekli tabloyu oluşturmak için [sorgu DÜZENLEYICISI](../../azure-sql/database/connect-query-portal.md) 'nde aşağıdaki SQL betiğini çalıştırın.
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ Azure portal [bir Azure Databricks kaynağı oluşturun](https://ms.portal.azure
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault tarafından desteklenen gizli bir kapsam oluşturun
 
-Yukarıda oluşturduğumuz Azure Key Vault sırlara başvurmak için Databricks içinde gizli bir kapsam oluşturmanız gerekir. [Azure Key Vault ile desteklenen gizli dizi kapsamı oluşturma](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)bölümündeki adımları izleyin.
+Yukarıda oluşturduğumuz Azure Key Vault sırlara başvurmak için Databricks içinde gizli bir kapsam oluşturmanız gerekir. [Azure Key Vault ile desteklenen gizli dizi kapsamı oluşturma](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)bölümündeki adımları izleyin.
 
 ### <a name="create-a-databricks-cluster"></a>Databricks kümesi oluşturma
 
@@ -461,7 +461,7 @@ Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterine benzer şe
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Eğitim ve Puanlama Azure Data Factory ile otomatikleştirin
 
-Kalan tek adım, eğitim ve Puanlama işlemlerini otomatikleştirmek için Azure Data Factory (ADF) hizmetini ayarlamanıza olanak sağlar. İlk olarak, [Veri Fabrikası oluşturma](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)bölümündeki adımları izleyin. ADF kaynağını oluşturduktan sonra üç işlem hattı oluşturmanız gerekir: bir eğitim için biri ve skor için iki (aşağıda açıklanmıştır).
+Kalan tek adım, eğitim ve Puanlama işlemlerini otomatikleştirmek için Azure Data Factory (ADF) hizmetini ayarlamanıza olanak sağlar. İlk olarak, [Veri Fabrikası oluşturma](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)bölümündeki adımları izleyin. ADF kaynağını oluşturduktan sonra üç işlem hattı oluşturmanız gerekir: bir eğitim için biri ve skor için iki (aşağıda açıklanmıştır).
 
 ### <a name="training-pipeline"></a>Eğitim işlem hattı
 

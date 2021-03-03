@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707583"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
@@ -138,7 +138,7 @@ Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi ö
 - Sorgular, yanıt boyutu ile 8MB ve sorgu yürütme süresi olarak 110 saniye sınırlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure izleyici tarafından toplanan veriler](/data-platform.md)hakkında bilgi edinin.
+- [Azure izleyici tarafından toplanan veriler](data-platform.md)hakkında bilgi edinin.
 - [Azure panoları](../azure-portal/azure-portal-dashboards.md)hakkında bilgi edinin.
 - [Ölçüm Gezgini](essentials/metrics-getting-started.md) hakkında bilgi edinin
 - [Çalışma kitapları](./visualize/workbooks-overview.md)hakkında bilgi edinin.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dada52dcf66db2f0d0e40f3dbf6d1a16560c2754
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8915d780e79fa219428c54bad5458ab5966df6c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515039"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688510"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Replicon tümleştirme
 
@@ -55,7 +55,7 @@ Replicon 'un Azure AD ile tümleştirilmesini yapılandırmak için, galerinizde
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Replicon ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Replılicon bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Replicon ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Replılicon bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Replicon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -91,9 +91,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![İmzalama algoritması](common/signing-algorithm.png)
 
-    1. **Imza seçeneği**olarak **SAML onaylama imzasını imzala** ' yı seçin.
+    1. **Imza seçeneği** olarak **SAML onaylama imzasını imzala** ' yı seçin.
 
-    1. **Imzalama algoritması**olarak **SHA-256** ' ı seçin.
+    1. **Imzalama algoritması** olarak **SHA-256** ' ı seçin.
 
 1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -109,7 +109,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Enablesaml Authentication2** iletişim kutusunu göstermek için, aşağıdaki URL 'nize şirketinizin anahtarınızı ekleyin:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Aşağıda, URL 'nin tamamının şeması gösterilmektedir: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Aşağıda, URL 'nin tamamının şeması gösterilmektedir: `https://na2.replicon.com/<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. **+** **V20Configuration** bölümünü genişletmek için öğesine tıklayın.
 
@@ -174,13 +174,13 @@ Bu bölümün amacı, Replicon 'da B. Simon adlı bir Kullanıcı oluşturmaktı
     > [!NOTE]
     > Oturum açma adının, Azure AD 'de kullanıcının e-posta adresiyle eşleşmesi gerekir
 
-    b. **Kimlik doğrulama türü**olarak **SSO**' yı seçin.
+    b. **Kimlik doğrulama türü** olarak **SSO**' yı seçin.
 
     c. Kimlik doğrulama KIMLIĞINI oturum açma adı ile aynı değere ayarla (kullanıcının Azure AD e-posta adresi)
 
     d. **Bölüm** metin kutusuna kullanıcının departmanını yazın.
 
-    e. **Çalışan türü**olarak **yönetici**' yi seçin.
+    e. **Çalışan türü** olarak **yönetici**' yi seçin.
 
     f. **Kullanıcı profilini kaydet**' e tıklayın.
 

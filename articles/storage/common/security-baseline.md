@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714723"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -190,7 +190,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Rehberlik**: Azure depolama Analizi Bloblar, kuyruklar ve tablolar için Günlükler sağlar. Hesabınız için hangi günlüklerin kaydedildiğini yapılandırmak üzere Azure portal kullanabilirsiniz. 
 
-- [Azure depolama hesabınız için izlemeyi yapılandırma](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Azure depolama hesabınız için izlemeyi yapılandırma](./manage-storage-analytics-logs.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -208,7 +208,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Kılavuz**: Azure depolama hesabında veya Log Analytics çalışma alanında güvenlik olay günlüklerini depolarken, saklama ilkesini kuruluşunuzun gereksinimlerine göre ayarlayabilirsiniz. 
 
-- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](./storage-monitor-storage-account.md#configure-logging)
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ Kullanıcı hesabı erişiminin şüpheli olma riskini azaltmak için etkili bir
 
 - [Kapsayıcılara ve blob’lara anonim okuma erişimini yönetme](../blobs/anonymous-read-access-configure.md)
 
-- [Azure portalında depolama hesabını izleme](./storage-monitor-storage-account.md)
+- [Azure portalında depolama hesabını izleme](./manage-storage-analytics-logs.md)
 
 - [Depolama hesabı erişim anahtarlarını yönetme](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](./storage-monitor-storage-account.md)
+- [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](./manage-storage-analytics-logs.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -576,7 +576,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Azure Depolama analizini günlüğe kaydetme](./storage-analytics-logging.md)
 
-- [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](./storage-monitor-storage-account.md)
+- [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](./manage-storage-analytics-logs.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 49762b1844aec85ff55ae2a16243a231414b263f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: aca6981e2214b9dbd03e6808e77c26fcd67c13cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071587"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711578"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için giriş bağlamasını Azure Cosmos DB
 
@@ -1211,24 +1211,24 @@ Cosmos DB girişi bağlama öncelikle işlevin yapılandırma dosyasında buluna
 
 ```json
 {
-  "name": "InputDocumentIn",
-  "type": "cosmosDB",
-  "databaseName": "MyDatabase",
-  "collectionName": "MyCollection",
-  "id" : "{queueTrigger_payload_property}",
-  "partitionKey": "{queueTrigger_payload_property}",
-  "connectionStringSetting": "CosmosDBConnection",
-  "direction": "in"
+  "name": "InputDocumentIn",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id": "{queueTrigger_payload_property}",
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "in"
 },
 {
-  "name": "InputDocumentOut",
-  "type": "cosmosDB",
-  "databaseName": "MyDatabase",
-  "collectionName": "MyCollection",
-  "createIfNotExists": false,
-  "partitionKey": "{queueTrigger_payload_property}",
-  "connectionStringSetting": "CosmosDBConnection",
-  "direction": "out"
+  "name": "InputDocumentOut",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": false,
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "out"
 }
 ```
 
@@ -1655,7 +1655,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |---------|---------|----------------------|
 |**türüyle**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
 |**Görünüm**     | yok | Olarak ayarlanmalıdır `in` .         |
-|**name**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
+|**ada**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
 |**Dosyasında** |**Dosyasında** |Belgeyi içeren veritabanı.        |
 |**Ma** |**CollectionName** | Belgeyi içeren koleksiyonun adı. |
 |**id**    | **Numarasını** | Alınacak belgenin KIMLIĞI. Bu özellik [bağlama ifadelerin](./functions-bindings-expressions-patterns.md)kullanılmasını destekler. Hem hem de `id` **SQLQuery** özelliklerini ayarlama. Bunlardan birini ayarlamazsanız, tüm koleksiyon alınır. |

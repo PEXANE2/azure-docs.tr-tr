@@ -235,3 +235,11 @@
   items:
     - name: ASB ve CIS kıyaslaması arasında eşleme
       href: v2-cis-benchmark.md
+    - name: Azure Güvenliğinin Temelleri
+      href: ../fundamentals/index.yml
+    - name: Bulutta paylaşılan sorumluluk
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Güvenlik Merkezi
+      href: ../../security-center/index.yml
+    - name: Azure Güvenlik kıyaslama altyapısı şeması örneği
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml

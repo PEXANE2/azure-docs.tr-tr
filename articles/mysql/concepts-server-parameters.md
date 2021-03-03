@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539493"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720962"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -21,7 +21,7 @@ Bu makalede, MySQL için Azure veritabanı 'nda sunucu parametrelerini yapıland
 
 MySQL altyapısı, altyapının davranışını yapılandırmak ve ayarlamak için kullanılabilecek birçok farklı sunucu değişkeni/parametresi sağlar. Bazı parametreler, çalışma zamanında dinamik olarak ayarlanabilir, diğerleri ise "statik" olarak ayarlanabilir, bu da bir sunucu yeniden başlatılmasını gerektirir.
 
-MySQL için Azure veritabanı, iş yükünüzün ihtiyaçlarına uygun [Azure Portal](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md)ve [PowerShell](./howto-configure-server-parameters-using-powershell.md) kullanarak çeşitli MySQL Server parametrelerinin değerini değiştirme özelliğini kullanıma sunar.
+MySQL için Azure Veritabanı [Azure portal](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md) ve [PowerShell](./howto-configure-server-parameters-using-powershell.md) kullanarak çeşitli MySQL sunucu parametrelerini iş yükünüzün gereksinimlerine uyacak şekilde değiştirme olanağı sunar.
 
 ## <a name="configurable-server-parameters"></a>Yapılandırılabilir sunucu parametreleri
 
@@ -272,7 +272,7 @@ Ayrıca, gelişmiş performansın sunucu için daha uzun başlangıç zamanı ha
 Sunucu kapatılmadan önce ayarlanan sunucu parametresi için arabellek havuzunun durumunu kaydetmek için `innodb_buffer_pool_dump_at_shutdown` `ON` . Benzer şekilde, sunucu `innodb_buffer_pool_load_at_startup` `ON` başlatma sırasında arabellek havuzu durumunu geri yüklemek için sunucu parametresini olarak ayarlayın. Başlangıç/yeniden başlatma üzerindeki etkiyi, sunucu parametresinin değerini indirerek ve ince ayar yaparak, `innodb_buffer_pool_dump_pct` Varsayılan olarak, bu parametrenin olarak ayarlandığını kontrol edebilirsiniz `25` .
 
 > [!Note]
-> InnoDB arabellek havuzu ısınma parametreleri yalnızca 16 TB 'a kadar depolama alanı bulunan genel amaçlı depolama sunucularında desteklenir. [MySQL Için Azure veritabanı depolama seçenekleri](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)hakkında daha fazla bilgi edinin.
+> InnoDB arabellek havuzu ısınma parametreleri yalnızca 16 TB 'a kadar depolama alanı bulunan genel amaçlı depolama sunucularında desteklenir. [MySQL Için Azure veritabanı depolama seçenekleri](./concepts-pricing-tiers.md#storage)hakkında daha fazla bilgi edinin.
 
 ### <a name="time_zone"></a>time_zone
 

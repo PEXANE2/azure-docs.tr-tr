@@ -4,12 +4,12 @@ description: Log Analytics uyarı REST API, Log Analytics bir parçası olan Log
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625802"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717817"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
 
@@ -21,7 +21,7 @@ Log Analytics uyarı REST API Log Analytics uyarı oluşturmanıza ve yönetmeni
 Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan  [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../log-query/log-query-overview.md) bakabilirsiniz.
+Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../logs/log-query-overview.md) bakabilirsiniz.
 
 ## <a name="schedules"></a>Zamanlamalar
 Kayıtlı aramada bir veya daha fazla zamanlama olabilir. Zamanlama, aramanın ne sıklıkla çalıştırılacağını ve ölçütlerin tanımlandığı zaman aralığını tanımlar.
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Uyarı eylemleri
 Zamanlamanın bir ve yalnızca bir uyarı eylemi olması gerekir.  Uyarı eylemleri aşağıdaki tabloda yer aldığı bir veya daha fazla bölümden oluşur.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
 
-| Section | Description | Kullanım |
+| Section | Açıklama | Kullanım |
 |:--- |:--- |:--- |
 | Eşik |Eylemin çalıştırılacağı ölçüt.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
 | Önem derecesi |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Log Analytics ' de [günlük aramalarını gerçekleştirmek için REST API](../log-query/log-query-overview.md) kullanın.
+* Log Analytics ' de [günlük aramalarını gerçekleştirmek için REST API](../logs/log-query-overview.md) kullanın.
 * [Azure izleyici 'de günlük uyarıları](./alerts-unified-log.md) hakkında bilgi edinin
 * [Azure izleyici 'de günlük uyarı kuralları oluşturma, düzenleme veya yönetme](./alerts-log.md)
-

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715216"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -38,7 +38,7 @@ Bu genel bakışta aşağıdaki alanlarda yer verilmiştir:
 
 * [Azure Logic Apps Önizlemedeki sınırlar](#limits).
 
-Daha fazla bilgi için şu diğer makalelere göz atın:
+Daha fazla bilgi için şu diğer konuları gözden geçirin:
 
 * [Azure Logic Apps her yerde çalıştırma-çalışma zamanı derinlemesine bakış](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
@@ -50,7 +50,7 @@ Daha fazla bilgi için şu diğer makalelere göz atın:
 
 Azure Logic Apps Preview çalışma zamanı, [Azure işlevleri](../azure-functions/functions-overview.md) genişletilebilirliği kullanır ve Azure işlevleri çalışma zamanı 'nda bir uzantı olarak barındırılır. Bu mimari, yeni mantıksal uygulama türünü Azure Işlevlerinin çalıştığı her yerde çalıştırabilmeniz anlamına gelir. Azure Logic Apps Preview çalışma zamanını istediğiniz neredeyse her türlü ağ topolojisinde barındırabilir ve iş akışınız için gereken gerekli iş yükünü işlemek için kullanılabilir işlem boyutunu seçebilirsiniz. Azure Işlevleri genişletilebilirliği hakkında daha fazla bilgi için bkz. [WebJobs SDK: özel giriş ve çıkış bağlamaları oluşturma](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-Bu yeni yaklaşımla, Azure Logic Apps Preview çalışma zamanı ve iş akışlarınız uygulamanızın bir parçası olarak birlikte paketleyebilir. Bu özellik, yalnızca yapıları barındırma ortamına kopyalayarak ve uygulamanızı başlatarak iş akışlarınızı dağıtmanıza ve çalıştırmanıza olanak tanır. Bu yaklaşım ayrıca, üretim ortamlarında değişiklik dağıtmadan önce gerekli testleri ve doğrulamaları çalıştırmaya yönelik iş akışı projelerinin çevresinde DevOps işlem hatları oluşturmaya yönelik daha standartlaştırılmış bir deneyim sağlar. Daha fazla bilgi için bkz. [Azure Logic Apps her yerde çalıştırma-çalışma zamanı derinlemesine](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)bakış.
+Bu yeni yaklaşımla, Azure Logic Apps Preview çalışma zamanı ve iş akışlarınız uygulamanızın bir parçası olarak birlikte paketleyebilir. Bu özellik, yalnızca yapıları barındırma ortamına kopyalayarak ve uygulamanızı başlatarak iş akışlarınızı dağıtmanıza ve çalıştırmanıza olanak tanır. Bu yaklaşım ayrıca, üretim ortamlarında değişiklik dağıtmadan önce gerekli testleri ve doğrulamaları çalıştırmaya yönelik iş akışı projelerinin çevresinde dağıtım işlem hatları oluşturmak için daha standartlaştırılmış bir deneyim sağlar. Daha fazla bilgi için bkz. [Azure Logic Apps her yerde çalıştırma-çalışma zamanı derinlemesine](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)bakış.
 
 Aşağıdaki tabloda, çalıştığı ortama göre iş akışlarının kaynakları paylaşma yöntemiyle ilgili farklılıklar kısaca özetlenmektedir. Limitlere yönelik farklılıklar için [Azure Logic Apps önizlemede sınırlara](#limits)bakın.
 
@@ -139,10 +139,17 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
 * Azure aboneliğiniz ve mantıksal uygulama ayarlarınız tarafından desteklenerek [Application Insights](../azure-monitor/app/app-insights-overview.md) kullanarak mantıksal uygulamanız için tanılama günlüğü ve izleme özelliklerini etkinleştirin.
 
+* Azure [Işlevleri Premium planını](../azure-functions/functions-premium-plan.md)kullanarak mantıksal uygulamalarınızı oluştururken ve dağıtırken Azure işlevlerine benzer şekilde, Azure sanal ağlarla özel olarak bağlanma ve tümleştirme gibi erişim ağı özellikleri. Daha fazla bilgi için şu konuları gözden geçirin:
+
+  * [Azure İşlevleri ağ seçenekleri](../azure-functions/functions-networking-options.md)
+
+  * [Azure Logic Apps önizlemesiyle her yerde ağ olasılıklarını çalıştırmak Azure Logic Apps](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * **Mantıksal uygulama (Önizleme)** kaynağında bireysel iş akışları tarafından kullanılan yönetilen bağlantılar için erişim anahtarlarını yeniden oluşturun. Bu görev için, mantıksal uygulama kaynak düzeyi değil, [ **Logic Apps** kaynağı için aynı adımları izleyin](logic-apps-securing-a-logic-app.md#regenerate-access-keys).
 
-> [!NOTE]
-> Bilinen güncel sorunlar hakkında daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
+* Önizleme tasarlayıcı olmayan tasarımcı ile aynı adımları izleyerek yeni tasarımcıya paralel dallar ekleyin.
+ 
+Daha fazla bilgi için bkz. GitHub 'daki [değişen, sınırlı, kullanılamayan ve desteklenmeyen yetenekler](#limited-unavailable-unsupported) ve [Logic Apps genel önizleme bilinen sorunlar sayfası](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
 
 * **Işletim sistemi desteği**: şu anda Visual Studio Code TASARıMCı Linux işletim sisteminde çalışmıyor, ancak yine de Linux tabanlı sanal makinelere Logic Apps Preview çalışma zamanını kullanan Logic Apps dağıtımı yapabilirsiniz. Şimdilik, Logic Apps 'i Windows veya macOS üzerinde Visual Studio Code oluşturabilir ve ardından Linux tabanlı bir sanal makineye dağıtabilirsiniz.
 
-* **Tetikleyiciler ve eylemler**: kayan pencere ve toplu iş gibi bazı yerleşik Tetikleyiciler kullanılamaz. İş akışınızı başlatmak için [yerleşik yinelenme, istek, http, http Web kancası, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Yerleşik Tetikleyiciler ve eylemler Azure Logic Apps Önizleme çalışma zamanında yerel olarak çalışır, ancak yönetilen bağlayıcılar Azure 'da dağıtılır. Tasarımcıda yerleşik Tetikleyiciler ve eylemler **yerleşik** sekmesinde görünür, ancak yönetilen bağlayıcı Tetikleyicileri ve eylemler **Azure** sekmesinin altında görüntülenir.
+* **Tetikleyiciler ve eylemler**: yerleşik Tetikleyiciler ve eylemler Azure Logic Apps Önizleme çalışma zamanında yerel olarak çalışır, ancak yönetilen bağlayıcılar Azure 'da dağıtılır. Bazı yerleşik Tetikleyiciler, kayan pencere ve toplu Işlem gibi kullanılamaz.
+
+  İş akışınızı başlatmak için [yerleşik yinelenme, istek, http, http Web kancası, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Tasarımcıda yerleşik Tetikleyiciler ve eylemler **yerleşik** sekmesinde görünür, ancak yönetilen bağlayıcı Tetikleyicileri ve eylemler **Azure** sekmesinin altında görüntülenir.
 
   > [!NOTE]
   > Visual Studio Code yerel olarak çalıştırmak için, Web kancası tabanlı tetikleyiciler ve eylemler ek kurulum gerektirir. Daha fazla bilgi için, bkz. [Visual Studio Code durum bilgisi olan ve durumsuz iş akışları oluşturma](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
@@ -199,11 +208,11 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
 
       * Satır içi kod Işlemleri eylemleri artık bir tümleştirme hesabı gerektirmez.
 
-      * MacOS veya Linux kullanıyorsanız, Visual Studio Code ' de Azure Logic Apps (Önizleme) uzantısını kullandığınızda **satır Içi kod işlemleri** Şu anda kullanılamaz.
+      * MacOS ve Linux için, Visual Studio Code ' de Azure Logic Apps (Önizleme) uzantısını kullandığınızda **satır Içi kod işlemleri** artık desteklenmektedir.
 
-      * Satır Içi kod Işlemleri eyleminde değişiklik yaparsanız, mantıksal uygulamanızı yeniden başlatmanız gerekir.
+      * Artık **satır Içi kod işlemleri** eyleminde değişiklik yaparsanız mantıksal uygulamanızı yeniden başlatmanız gerekmez.
 
-      * Satır içi kod Işlemleri eylemlerinin [sınırlamaları güncelleştirildi](logic-apps-overview-preview.md#inline-code-limits).
+      * **Satır Içi kod işlemleri** eylemlerinin [sınırlamaları güncelleştirildi](logic-apps-overview-preview.md#inline-code-limits).
 
     * [Tümleştirme hesapları için bazı YERLEŞIK B2B Tetikleyicileri ve eylemleri](../connectors/apis-list.md#integration-account-connectors) kullanılamaz, örneğin, **düz dosya** kodlama ve kod çözme eylemleri.
 
@@ -211,17 +220,15 @@ Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda s�
 
 * **Barındırma planı kullanılabilirliği**: Azure portal veya Visual Studio Code dağıtım için yeni bir **mantıksal uygulama (Önizleme)** kaynak türü oluşturup, Azure 'da yalnızca Premium veya App Service barındırma planını kullanabilirsiniz. Tüketim barındırma planları bu kaynak türünü dağıtmak için kullanılamaz ve desteklenmez. Visual Studio Code bir Docker kapsayıcısına dağıtabilirsiniz, ancak bir [tümleştirme hizmeti ortamına (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)ekleyebilirsiniz.
 
-* **Paralel dallar**: Şu anda, yeni tasarımcı deneyimi aracılığıyla paralel dallar ekleyemezsiniz. Ancak, bu dalları özgün tasarımcı deneyimi aracılığıyla eklemeye devam edebilir ve yeni tasarımcıda görünmesini sağlayabilirsiniz.
-
-  1. Tasarımcının en altında yeni bir **tuval** denetimi seçerek yeni deneyimi devre dışı bırakın.
-
-  1. Paralel dalları iş akışınıza ekleyin.
-
-  1. Yeni **tuval** denetimini yeniden seçerek yeni deneyimi etkinleştirin.
+* **Visual Studio Code kesme noktası hata ayıklaması**: bir iş akışı için dosyada **workflow.js** içinde kesme noktaları ekleyip kullanabilmenize karşın, kesme noktaları yalnızca şu anda eylemler için desteklenir, tetiklerdir. Daha fazla bilgi için, bkz. [Visual Studio Code durum bilgisi olan ve durumsuz iş akışları oluşturma](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
 * **Yakınlaştırma denetimi**: yakınlaştırma denetimi şu anda tasarımcıda kullanılamıyor.
 
-* **Visual Studio Code kesme noktası hata ayıklaması**: bir iş akışı için dosyada **workflow.js** içinde kesme noktaları ekleyip kullanabilmenize karşın, kesme noktaları yalnızca şu anda eylemler için desteklenir, tetiklerdir. Daha fazla bilgi için, bkz. [Visual Studio Code durum bilgisi olan ve durumsuz iş akışları oluşturma](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Tetikleyici geçmişi ve çalışma geçmişi**: **mantıksal uygulama (Önizleme)** kaynak türü için Azure Portal tetikleyici geçmişi ve çalıştırma geçmişi, mantıksal uygulama düzeyi değil iş akışı düzeyinde görünür. Bu geçmiş verileri bulmak için şu adımları izleyin:
+
+   * Çalıştırma geçmişini görüntülemek için, mantıksal uygulamanızda iş akışını açın. İş akışı menüsünde, **Geliştirici** altında, **izleme**' yi seçin.
+
+   * Tetikleyici geçmişini gözden geçirmek için, mantıksal uygulamanızda iş akışını açın. İş akışı menüsünde, **Geliştirici** altında **tetikleyici geçmişi**' ni seçin.
 
 <a name="limits"></a>
 

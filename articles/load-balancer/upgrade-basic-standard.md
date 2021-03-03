@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987722"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718990"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus).
@@ -23,7 +23,7 @@ Bir yükseltmede iki aşama vardır:
 2. Yükseltme ve trafik geçişini gerçekleştirmek için PowerShell betiğini çalıştırın.
 
 > [!IMPORTANT]
-> Betik şu anda bakımda. Genel IP adreslerini temel SKU ve standart SKU 'dan nasıl yükselteceğiniz hakkında [buradaki](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) yönergelere başvurabilirsiniz.
+> Betik şu anda bakımda. Genel IP adreslerini temel SKU ve standart SKU 'dan nasıl yükselteceğiniz hakkında [buradaki](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) yönergelere başvurabilirsiniz.
 
 ## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
 

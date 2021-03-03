@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689241"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Öğretici: Azure Arc etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma 
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Arc etkin bir Kubernetes kümesinde Gilar kullanarak yap�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun] (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Mevcut bir Azure Arc, Kubernetes bağlı kümesini etkinleştirdi.
     - Henüz bir küme bağlanamadıysanız, [Azure Arc özellikli bir Kubernetes kümesi hızlı başlangıç](quickstart-connect-cluster.md)' i inceleyin.
 - Bu özelliğin avantajları ve mimarisi hakkında bilgiler. Yapılandırmalarda daha fazla bilgi edinin [ve Azure Arc etkin Kubernetes makalesini](conceptual-configurations.md)okuyun.
@@ -152,7 +152,7 @@ Aşağıdaki isteğe bağlı parametrelerle yapılandırmayı özelleştirin:
 | ------------- | ------------- |
 | `--enable-helm-operator`| Hele grafik dağıtımları desteğini etkinleştirmek için geçiş yapın. |
 | `--helm-operator-params` | Hele işleci için grafik değerleri (etkinse). Örneğin, `--set helm.versions=v3`. |
-| `--helm-operator-version` | Hele işlecinin grafik sürümü (etkinse). 1.2.0 + sürümünü kullanın. Varsayılan: ' 1.2.0 '. |
+| `--helm-operator-chart-version` | Hele işlecinin grafik sürümü (etkinse). 1.2.0 + sürümünü kullanın. Varsayılan: ' 1.2.0 '. |
 | `--operator-namespace` | İşleç ad alanının adı. Varsayılan: ' default '. En fazla: 23 karakter. |
 | `--operator-params` | İşleç parametreleri. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'``` 
 

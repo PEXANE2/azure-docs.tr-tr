@@ -1,22 +1,21 @@
 ---
 title: Ağ Performansı İzleyicisi çözümü hizmet bağlantısı-Azure Log Analytics
 description: Açık bir TCP bağlantı noktası olan herhangi bir uç noktaya ağ bağlantısını izlemek için Ağ Performansı İzleyicisi ' deki hizmet bağlantısı Izleyicisi özelliğini kullanın.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: a980c0987106a80751a98c48dfc5780708e6f889
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734171"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
 
 > [!IMPORTANT]
-> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Açık bir TCP bağlantı noktası olan herhangi bir uç noktaya ağ bağlantısını izlemek için [ağ performansı İzleyicisi](network-performance-monitor.md) ' deki hizmet bağlantısı İzleyicisi özelliğini kullanabilirsiniz. Bu uç noktalar, Web siteleri, SaaS uygulamaları, PaaS uygulamaları ve SQL veritabanlarını içerir. 
 
@@ -137,4 +136,3 @@ ABD kamu Virginia bölgesi için yalnızca DOD URL 'Leri yerleşik NPM ' dir. GC
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../logs/log-query-overview.md) yapın.
-

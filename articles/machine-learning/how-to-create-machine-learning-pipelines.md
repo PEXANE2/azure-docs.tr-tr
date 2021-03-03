@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 12/10/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 75d241840ecfc8520989342d9def8186de922c0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659656"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691867"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
-Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) oluşturmayı ve çalıştırmayı öğreneceksiniz. Çeşitli ML aşamalarını biraraya uygulayan bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın. Ardından, daha sonra erişmek veya başkalarıyla paylaşmak için bu işlem hattını yayımlayın. Modelinizin gerçek dünyada nasıl çalıştığını görmek ve veri kayması 'nı algılamak için ML işlem hatlarını izleyin. ML işlem hatları, çeşitli hesaplar kullanılarak, yeniden çalıştırmak yerine adımları yeniden kullanarak ve diğer kişilerle ML iş akışlarını paylaşarak Batch Puanlama senaryolarında idealdir.
+Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) oluşturmayı ve çalıştırmayı öğreneceksiniz. Çeşitli ML aşamalarını biraraya uygulayan bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın. Ardından, daha sonra erişmek veya başkalarıyla paylaşmak için bu işlem hattını yayımlayın. Modelinizin gerçek dünyada nasıl çalıştığını görmek ve veri kayması 'nı algılamak için ML işlem hatlarını izleyin. ML işlem hatları, çeşitli hesaplar kullanılarak, bunları yeniden çalıştırmak yerine adımları yeniden kullanarak ve diğer kişilerle ML iş akışlarını paylaşarak Batch Puanlama senaryolarında idealdir.
 
 Bu makale bir öğretici değildir. İlk işlem hattınızı oluşturma hakkında yönergeler için bkz. [öğretici: Batch Puanlama için Azure Machine Learning işlem hattı oluşturma](tutorial-pipeline-batch-scoring-classification.md) veya [Python 'da Azure Machine Learning ARDıŞıK düzeninde otomatik ml kullanma](how-to-use-automlstep-in-pipelines.md). 
 
@@ -53,16 +53,13 @@ ML işlem hattı çalıştırmak için gereken kaynakları oluşturma:
 
 * İşlem hattı adımlarında gereken verilere erişmek için kullanılan bir veri deposu ayarlayın.
 
-* Bir `Dataset` nesnesi, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `PipelineData` hattı adımları arasında geçirilen geçici veriler için bir nesne yapılandırın. 
-
-    > [!TIP]
-    > Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfında bulunabilir  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) .  Bu sınıf, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
+* Bir `Dataset` nesnesi, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `OutputFileDatasetConfig` hattı adımları arasında geçirilen geçici veriler için bir nesne yapılandırın. 
 
 * Ardışık düzen adımlarınızın çalıştırılacağı [işlem hedeflerini](concept-azure-machine-learning-architecture.md#compute-targets) ayarlayın.
 
 ### <a name="set-up-a-datastore"></a>Veri deposu ayarlama
 
-Bir veri deposu, işlem hattının erişim için verileri depolar. Her çalışma alanının varsayılan bir veri deposu vardır. Ek veri depolarını kaydedebilirsiniz. 
+Bir veri deposu, işlem hattının erişim için verileri depolar. Her çalışma alanının varsayılan bir veri deposu vardır. Daha fazla veri deposu kaydedebilirsiniz. 
 
 Çalışma alanınızı oluşturduğunuzda, [Azure dosyaları](../storage/files/storage-files-introduction.md) ve [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) alanı çalışma alanına eklenir. Azure Blob depolamaya bağlanmak için varsayılan bir veri deposu kaydedilir. Daha fazla bilgi edinmek için bkz. [Azure dosyaları, Azure Blob 'ları veya Azure diskleri ne zaman kullanılacağına karar verme](../storage/common/storage-introduction.md). 
 
@@ -80,10 +77,9 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 Adımlar genellikle verileri kullanır ve çıkış verileri oluşturur. Bir adım, model gibi verileri, model ve bağımlı dosyaları içeren bir dizini veya geçici verileri oluşturabilir. Bu veriler daha sonra işlem hattının ilerleyen adımları için kullanılabilir. İşlem hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için [verilere erişme ve veri](how-to-access-data.md) [kümelerini kaydetme](how-to-create-register-datasets.md)makalelerine bakın. 
 
-### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>`Dataset`Ve nesneleriyle veri yapılandırma `PipelineData`
+### <a name="configure-data-with-dataset-and-outputfiledatasetconfig-objects"></a>`Dataset`Ve nesneleriyle veri yapılandırma `OutputFileDatasetConfig`
 
 Bir işlem hattına veri sağlamanın tercih edilen yolu bir [veri kümesi](/python/api/azureml-core/azureml.core.dataset.Dataset) nesnesidir. Nesne, veya bir veri `Dataset` deposundan veya Web URL 'sinde erişilebilir olan verileri işaret eder. `Dataset`Sınıf soyuttur, bu nedenle bir veya daha fazla dosyaya başvuruda bulunan bir veya `FileDataset` `TabularDataset` daha fazla veri içeren bir veya daha fazla dosyadan oluşturulan bir örneğini (bir veya daha fazla dosyaya başvuran) oluşturacaksınız.
-
 
 `Dataset` [From_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) veya [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)gibi bir using yöntemleri oluşturursunuz.
 
@@ -93,20 +89,21 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData` adımlar arasında bir veri bağımlılığı sunar ve ardışık düzende bir örtük yürütme sırası oluşturur. Bu nesne daha sonra işlem hattı adımları oluşturulurken kullanılacaktır.
+Ara veriler (veya bir adımın çıktısı) bir [Outputfiledatasetconfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir. İsteğe bağlı olarak, bu veriler çağırarak bir veri kümesi olarak kaydedilebilir `register_on_complete` . Tek bir adımda oluşturun `OutputFileDatasetConfig` ve bunu başka bir adıma giriş olarak kullanırsanız, adımlar arasındaki veri bağımlılığı işlem hattında örtük bir yürütme sırası oluşturur.
+
+`OutputFileDatasetConfig` nesneler bir dizin döndürür ve varsayılan olarak çıktıyı çalışma alanının varsayılan veri deposuna yazar.
 
 ```python
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
-output_data1 = PipelineData(
-    "output_data1",
-    datastore=def_blob_store,
-    output_name="output_data1")
+output_data1 = OutputFileDatasetConfig(destination = (datastore, 'outputdataset/{run-id}'))
+output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_data')
 
 ```
 
-> [!TIP]
-> Genel Önizleme sınıfı ile ardışık düzen adımları arasında kalıcı ara verileri de mümkündür [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Sınıfını kullanan bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+> [!IMPORTANT]
+> Kullanılarak depolanan ara veri `OutputFileDatasetConfig` , Azure tarafından otomatik olarak silinmez.
+> İşlem hattı çalıştırmasının sonunda ara verileri program aracılığıyla silmeniz, kısa veri saklama ilkesiyle bir veri deposu kullanmanız veya el ile temizlemeniz düzenli olarak yapmanız gerekir.
 
 > [!TIP]
 > Yalnızca elinizde işe uygun dosyaları karşıya yükleyin. Veri dizinindeki dosyalardaki herhangi bir değişiklik, yeniden kullanım sırasında işlem hattının bir sonraki çalıştırılışında bu adımı yeniden çalıştırma nedeni olarak görülür. 
@@ -121,7 +118,7 @@ Azure Machine Learning, __işlem__ (veya __işlem hedefi__) terimi, Machine Lear
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
 
-Adımlarınızı çalıştırmak için bir Azure Machine Learning işlem oluşturabilirsiniz. Diğer işlem hedeflerine yönelik kod, türe bağlı olarak biraz farklı parametrelerle çok benzerdir. 
+Adımlarınızı çalıştırmak için bir Azure Machine Learning işlem oluşturabilirsiniz. Diğer işlem hedeflerine yönelik kod, türe bağlı olarak biraz farklı parametrelerle benzerdir. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -177,7 +174,7 @@ else:
         pin_sdk_version=False)
 ```
 
-Yukarıdaki kodda bağımlılıkları işlemek için iki seçenek gösterilmektedir. , İle gösterildiği gibi `USE_CURATED_ENV = True` , yapılandırma, seçkin bir ortama dayalıdır. Seçkin ortamlar, ortak bağımlı kitaplıklar ile "önceden kullanıma hazır" olur ve çevrimiçi hale getirmek için önemli ölçüde daha hızlı olabilir. Seçkin ortamlar [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)önceden oluşturulmuş Docker görüntülerine sahiptir. Daha fazla bilgi için bkz. [Azure Machine Learning seçkin ortamlar](resource-curated-environments.md).
+Yukarıdaki kodda bağımlılıkları işlemek için iki seçenek gösterilmektedir. , İle gösterildiği gibi `USE_CURATED_ENV = True` , yapılandırma, seçkin bir ortama dayalıdır. Seçkin ortamlar, ortak bağımlı kitaplıklar ile "önceden kullanıma hazır" olur ve çevrimiçi hale getirmek için daha hızlı olabilir. Seçkin ortamlar [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)önceden oluşturulmuş Docker görüntülerine sahiptir. Daha fazla bilgi için bkz. [Azure Machine Learning seçkin ortamlar](resource-curated-environments.md).
 
 Olarak değiştirirseniz gerçekleştirilecek yol, `USE_CURATED_ENV` `False` bağımlılıklarınızı açıkça ayarlamaya yönelik bir model gösterir. Bu senaryoda, yeni bir özel Docker görüntüsü oluşturulur ve kaynak grubunuzda bir Azure Container Registry kaydedilir (bkz. [Azure 'da özel Docker kapsayıcısı kayıt defterlerine giriş](../container-registry/container-registry-intro.md)). Bu görüntünün oluşturulması ve kaydedilmesi birkaç dakika sürer.
 
@@ -197,8 +194,6 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
-    inputs=[ds_input],
-    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -207,9 +202,7 @@ data_prep_step = PythonScriptStep(
 
 Yukarıdaki kodda tipik bir ilk işlem hattı adımı gösterilmektedir. Veri hazırlama kodunuz bir alt dizinde (Bu örnekte, `"prepare.py"` dizininde `"./dataprep.src"` ) bulunur. İşlem hattı oluşturma sürecinin bir parçası olarak, bu dizin sıkıştırıldı ve ' a yüklenir `compute_target` ve bu adımda, için değer olarak belirtilen betiği çalıştırılır `script_name` .
 
-`arguments`, `inputs` Ve değerleri, `outputs` adımın giriş ve çıkışları belirtir. Yukarıdaki örnekte, taban çizgisi verileri veri kümesidir `my_dataset` . Kod, olarak belirttiğinden karşılık gelen veriler işlem kaynağına indirilir `as_download()` . Komut dosyası, `prepare.py` veri dönüştürme görevlerinin her şey için uygun olduğunu ve bu verileri `output_data1` türüne göre çıkış yapar `PipelineData` . Daha fazla bilgi için bkz. [ml ardışık düzen adımlarına ve arasında veri taşıma (Python)](how-to-move-data-in-out-of-pipelines.md). 
-
-Bu adım, yapılandırma kullanılarak tarafından tanımlanan makinede çalıştırılır `compute_target` `aml_run_config` . 
+`arguments`Değerler, adımın giriş ve çıkışları belirler. Yukarıdaki örnekte, taban çizgisi verileri veri kümesidir `my_dataset` . Kod, olarak belirttiğinden karşılık gelen veriler işlem kaynağına indirilir `as_download()` . Komut dosyası, `prepare.py` veri dönüştürme görevlerinin her şey için uygun olduğunu ve bu verileri `output_data1` türüne göre çıkış yapar `OutputFileDatasetConfig` . Daha fazla bilgi için bkz. [ml ardışık düzen adımlarına ve arasında veri taşıma (Python)](how-to-move-data-in-out-of-pipelines.md). Bu adım, yapılandırma kullanılarak tarafından tanımlanan makinede çalıştırılır `compute_target` `aml_run_config` . 
 
 `allow_reuse`Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran önceki sonuçların () yeniden kullanılması, işbirliği yapılan bir ortamda işlem hattı kullanılırken anahtardır. Script_name, girişleri ve bir adımın parametreleri aynı kaldığında, yeniden kullanım varsayılan davranıştır. Yeniden kullanım izni verildiğinde, önceki çalıştırmanın sonuçları hemen sonraki adıma gönderilir. `allow_reuse`Olarak ayarlanırsa `False` , işlem hattı yürütmesi sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır.
 
@@ -219,9 +212,8 @@ Tek bir adımla işlem hattı oluşturmak mümkündür, ancak neredeyse her zama
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = PipelineData(name = "training_results", 
-                                datastore=def_blob_store,
-                                output_name="training_results")
+training_results = OutputFileDatasetConfig(name = "training_results",
+    destination = def_blob_store)
 
     
 train_step = PythonScriptStep(
@@ -234,11 +226,9 @@ train_step = PythonScriptStep(
 )
 ```
 
-Yukarıdaki kod, veri hazırlama adımı için çok benzerdir. Eğitim kodu, veri hazırlama kodundan ayrı bir dizindir. `PipelineData`Veri hazırlama adımının çıktısı, `output_data1` eğitim adımında _giriş_ olarak kullanılır. `PipelineData` `training_results` Sonraki karşılaştırma veya dağıtım adımının sonuçlarını tutmak için yeni bir nesne oluşturulur. 
+Yukarıdaki kod, veri hazırlama adımındaki koda benzerdir. Eğitim kodu, veri hazırlama kodundan ayrı bir dizindir. `OutputFileDatasetConfig`Veri hazırlama adımının çıktısı, `output_data1` eğitim adımında _giriş_ olarak kullanılır. `OutputFileDatasetConfig` `training_results` Sonraki karşılaştırma veya dağıtım adımının sonuçlarını tutmak için yeni bir nesne oluşturulur. 
 
-
-> [!TIP]
-> İyileştirilmiş bir deneyim ve işlem hattı çalıştırınızdaki sonunda ara verileri veri depolarına geri yazma özelliği için genel önizleme sınıfını kullanın [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Kod örnekleri için bkz. [bir adım ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb) ve [çalışma tamamlandıktan sonra verileri veri depolarına geri yazma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
+Diğer kod örnekleri için bkz. [bir adım ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb) ve [çalışma tamamlandıktan sonra verileri veri depolarına geri yazma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
 
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
@@ -255,26 +245,12 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
-### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python ortamları işlem hattı parametreleriyle nasıl çalışır?
-
-Daha önce [eğitim çalıştırmasının ortamını yapılandırma](#configure-the-training-runs-environment)bölümünde anlatıldığı gibi, ortam durumu ve Python kitaplığı bağımlılıkları bir nesnesi kullanılarak belirtilir `Environment` . Genellikle, var olan `Environment` adı ve isteğe bağlı olarak bir sürümü belirterek mevcut bir ad belirtebilirsiniz:
-
-```python
-aml_run_config = RunConfiguration()
-aml_run_config.environment.name = 'MyEnvironment'
-aml_run_config.environment.version = '1.0'
-```
-
-Ancak, işlem `PipelineParameter` hattı adımlarınız için çalışma zamanında değişkenleri dinamik olarak ayarlamak üzere nesneleri kullanmayı seçerseniz, varolan bir başvuru için bu tekniği kullanamazsınız `Environment` . Bunun yerine, nesneleri kullanmak istiyorsanız `PipelineParameter` `environment` , ' ın alanını `RunConfiguration` bir nesnesine ayarlamanız gerekir `Environment` . Bu tür bir, `Environment` bunun, dış Python paketlerinin bağımlılıklarını doğru şekilde ayarlamış olduğundan emin olmak sizin sorumluluğunuzdadır.
-
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma 
 
-Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py), [databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py)veya belirli bir veri deposuna veri yazmak isterseniz, [pipelinedata](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)kullanın. 
+Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py), [databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py)öğesine yazabilir veya belirli bir veri deposuna veri yazmak Istiyorsanız [outputfiledatasetconfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)komutunu kullanın. 
 
 > [!IMPORTANT]
-> Yalnızca Azure Blob ve Azure dosya paylaşımında veri depoları için, çıkış verilerinin bir veri deposuna geri yazılması desteklenir. 
->
-> Çıktı verilerini Azure Blob 'a geri yazmak için Azure dosya paylaşma, ADLS Gen 1 ve ADLS Gen 2 veri depoları genel önizleme sınıfını kullanır [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) .
+> Kullanılarak bir veri deposuna çıkış verileri yazmak `OutputFileDatasetConfig` yalnızca Azure blob, Azure dosya paylaşımında, ADLS Gen 1 ve Gen 2 veri depolarında desteklenir. 
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -345,7 +321,7 @@ Bir işlem hattını ilk kez çalıştırdığınızda Azure Machine Learning:
 * Proje anlık görüntüsünü, çalışma alanıyla ilişkili blob depolamadan işlem hedefine indirir.
 * İşlem hattının her adımına karşılık gelen bir Docker görüntüsü oluşturur.
 * Her adım için Docker görüntüsünü kapsayıcı kayıt defterinden işlem hedefine indirir.
-* `Dataset`Ve nesnelerine erişimi yapılandırır `PipelineData` . `as_mount()`Erişim modu olarak, sanal erişim sağlamak IÇIN sigorta kullanılır. Bağlama desteklenmiyorsa veya Kullanıcı farklı erişim olarak belirtilmişse `as_download()` , veriler bunun yerine işlem hedefine kopyalanır.
+* `Dataset`Ve nesnelerine erişimi yapılandırır `OutputFileDatasetConfig` . `as_mount()`Erişim modu için, sigorta, sanal erişim sağlamak için kullanılır. Bağlama desteklenmiyorsa veya Kullanıcı farklı erişim olarak belirtilmişse `as_upload()` , veriler bunun yerine işlem hedefine kopyalanır.
 
 * Adımı adım tanımında belirtilen işlem hedefi içinde çalıştırır. 
 * Adım tarafından belirtilen Günlükler, STDOUT ve STDERR, ölçümler ve çıkış gibi yapıtlar oluşturur. Bu yapıtlar daha sonra karşıya yüklenir ve kullanıcının varsayılan veri deposunda tutulur.
@@ -355,6 +331,31 @@ Bir işlem hattını ilk kez çalıştırdığınızda Azure Machine Learning:
 Daha fazla bilgi için bkz. [deneme sınıfı](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) başvurusu.
 
 ## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>Çıkarımı zamanında değişen bağımsız değişkenler için işlem hattı parametrelerini kullanma
+
+Bazen, bir işlem hattındaki tek adımlarla ilgili bağımsız değişkenler geliştirme ve eğitim dönemiyle ilgilidir: eğitim fiyatları ve itici güç gibi şeyler veya veri ya da yapılandırma dosyalarının yolları. Bir model dağıtıldığında, Inse olduğunuz bağımsız değişkenleri dinamik olarak geçirmek isteyeceksiniz (diğer bir deyişle, modeli yanıtlamak için yapılandırdığınız sorgu!). Bu tür bağımsız değişken işlem hattı parametreleri yapmalısınız. Bunu Python 'da yapmak için, `azureml.pipeline.core.PipelineParameter` Aşağıdaki kod parçacığında gösterildiği gibi sınıfını kullanın:
+
+```python
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="pipeline_arg", default_value="default_val")
+train_step = PythonScriptStep(script_name="train.py",
+                            arguments=["--param1", pipeline_param],
+                            target=compute_target,
+                            source_directory=project_folder)
+```
+
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python ortamları işlem hattı parametreleriyle nasıl çalışır?
+
+Daha önce, [eğitim çalıştırmasının ortamını yapılandırma](#configure-the-training-runs-environment)bölümünde anlatıldığı gibi, ortam durumu ve Python kitaplığı bağımlılıkları bir nesnesi kullanılarak belirtilir `Environment` . Genellikle, var olan `Environment` adı ve isteğe bağlı olarak bir sürümü belirterek mevcut bir ad belirtebilirsiniz:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Ancak, işlem `PipelineParameter` hattı adımlarınız için çalışma zamanında değişkenleri dinamik olarak ayarlamak üzere nesneleri kullanmayı seçerseniz, varolan bir başvuru için bu tekniği kullanamazsınız `Environment` . Bunun yerine, nesneleri kullanmak istiyorsanız `PipelineParameter` `environment` , ' ın alanını `RunConfiguration` bir nesnesine ayarlamanız gerekir `Environment` . Bu tür bir, `Environment` bunun, dış Python paketlerinin bağımlılıklarını doğru şekilde ayarlamış olduğundan emin olmak sizin sorumluluğunuzdadır.
+
 
 ## <a name="view-results-of-a-pipeline"></a>İşlem hattının sonuçlarını görüntüleme
 

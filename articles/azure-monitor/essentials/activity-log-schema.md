@@ -7,21 +7,21 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a050e9832537dd9b6690c7f9409bfbb5b795af2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2cea95dba3be02b9db584b0650761cb2d640283
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621401"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728782"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
-[Azure etkinlik günlüğü](../platform/platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
+[Azure etkinlik günlüğü](./platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
 
 Bu şema, günlüğe nasıl eriştiğinize bağlı olarak farklılık gösterir:
  
 - Bu makalede açıklanan şemalar, [REST API](/rest/api/monitor/activitylogs)etkinlik günlüğüne eriştiğinizde yapılır. Bu Ayrıca, Azure portal bir olayı görüntülerken **JSON** seçeneğini belirlediğinizde kullanılan şemadır.
-- Etkinlik günlüğünü Azure depolama 'ya veya Azure Event Hubs göndermek için bir [Tanılama ayarı](../platform/diagnostic-settings.md) kullandığınızda, şema için [depolama hesabından ve Olay Hub](#schema-from-storage-account-and-event-hubs) 'larından son bölüm şemasına bakın.
-- Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir [Tanılama ayarı](../platform/diagnostic-settings.md) kullandığınızda şema için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/) .
+- Etkinlik günlüğünü Azure depolama 'ya veya Azure Event Hubs göndermek için bir [Tanılama ayarı](./diagnostic-settings.md) kullandığınızda, şema için [depolama hesabından ve Olay Hub](#schema-from-storage-account-and-event-hubs) 'larından son bölüm şemasına bakın.
+- Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir [Tanılama ayarı](./diagnostic-settings.md) kullandığınızda şema için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/) .
 
 ## <a name="severity-level"></a>Önem Düzeyi
 Etkinlik günlüğündeki her girdinin önem düzeyi vardır. Önem düzeyi aşağıdaki değerlerden birine sahip olabilir:  
@@ -36,7 +36,7 @@ Etkinlik günlüğündeki her girdinin önem düzeyi vardır. Önem düzeyi aşa
 Her kaynak sağlayıcının devloı, kaynak girişlerinin önem düzeylerini seçer. Sonuç olarak, gerçek önem derecesi uygulamanızın nasıl oluşturulduğuna bağlı olarak farklılık gösterebilir. Örneğin, yalıtımda alınan belirli bir kaynağa "kritik" olan öğeler, Azure uygulamanıza merkezi bir kaynak türünde "hatalar" olarak önemli olmayabilir. Hangi olayların uyarılacak olduğuna karar verirken bu olguyu göz önünde bulundurun.  
 
 ## <a name="categories"></a>Kategoriler
-Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Portal, PowerShell, CLı ve REST API etkinlik günlüğüne eriştiğinizde, her kategori ve şema hakkında daha fazla ayrıntı için aşağıdaki bölümlere bakın. [Depolama veya Event Hubs etkinlik günlüğünü akışındaki](../platform/resource-logs.md#send-to-azure-event-hubs)şema farklı olur. , Makalenin son bölümünde, [kaynak günlükleri şemasına](../platform/resource-logs-schema.md) yönelik özelliklerin bir eşlemesi sağlanır.
+Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Portal, PowerShell, CLı ve REST API etkinlik günlüğüne eriştiğinizde, her kategori ve şema hakkında daha fazla ayrıntı için aşağıdaki bölümlere bakın. [Depolama veya Event Hubs etkinlik günlüğünü akışındaki](./resource-logs.md#send-to-azure-event-hubs)şema farklı olur. , Makalenin son bölümünde, [kaynak günlükleri şemasına](./resource-logs-schema.md) yönelik özelliklerin bir eşlemesi sağlanır.
 
 | Kategori | Açıklama |
 |:---|:---|
@@ -141,7 +141,7 @@ Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluştu
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | yetkilendirme |Etkinliğin Azure RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. |
@@ -288,7 +288,7 @@ Bu kategori, Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu o
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | lardan | Her zaman "Yönetici, Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -381,7 +381,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/alertRules |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -407,7 +407,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 Özellikler alanı, uyarı olayının kaynağına göre farklı değerler içerecektir. İki ortak uyarı olay sağlayıcısı, etkinlik günlüğü uyarıları ve ölçüm uyarılarıdır.
 
 #### <a name="properties-for-activity-log-alerts"></a>Etkinlik günlüğü uyarıları özellikleri
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | Properties. SubscriptionID | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan abonelik KIMLIĞI. |
 | Properties. Eventdataıd | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan olay veri KIMLIĞI. |
@@ -418,7 +418,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 | Properties. Status | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan durum.|
 
 #### <a name="properties-for-metric-alerts"></a>Ölçüm uyarıları özellikleri
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | özelliklerinin. RuleUri | Ölçüm uyarı kuralının kaynak KIMLIĞI. |
 | özelliklerinin. RuleName | Ölçüm uyarı kuralının adı. |
@@ -491,7 +491,7 @@ Bu kategori, aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarla
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/oto Scalesettings |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -581,7 +581,7 @@ Bu kategori, Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kayd�
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -662,7 +662,7 @@ Bu kategori, hizmetleriniz için oluşturulan tüm yeni önerilerin kaydını i�
 
 ```
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -772,7 +772,7 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 ### <a name="policy-event-property-descriptions"></a>İlke olayı Özellik açıklamaları
 
-| Öğe Adı | Description |
+| Öğe Adı | Açıklama |
 | --- | --- |
 | yetkilendirme | Etkinliğin Azure RBAC özellikleri dizisi. Yeni kaynaklar için bu işlem, değerlendirmeyi tetikleyen isteğin bir sonucudur. Mevcut kaynaklar için, eylem "Microsoft. resources/Checkpolicyuyumluluk/Read" olur. |
 | yapana | Yeni kaynaklar için, bir dağıtımı Başlatan kimlik. Mevcut kaynaklar için Microsoft Azure Policy Insights RP 'nin GUID 'SI. |
@@ -804,10 +804,10 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Depolama hesabı ve Olay Hub 'larının şeması
-Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akışta, veriler [kaynak günlüğü şemasını](../platform/resource-logs-schema.md)izler. Aşağıdaki tabloda, yukarıdaki şemalardan kaynak günlükleri şemasına yönelik özelliklerin bir eşlemesi verilmiştir.
+Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akışta, veriler [kaynak günlüğü şemasını](./resource-logs-schema.md)izler. Aşağıdaki tabloda, yukarıdaki şemalardan kaynak günlükleri şemasına yönelik özelliklerin bir eşlemesi verilmiştir.
 
 > [!IMPORTANT]
-> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](../platform/resource-logs-blob-format.md) .
+> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](./resource-logs-blob-format.md) .
 
 
 | Kaynak günlükleri şema özelliği | Etkinlik günlüğü REST API şeması özelliği | Notlar |
@@ -894,5 +894,5 @@ Aşağıda bu şemayı kullanan bir olay örneği verilmiştir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../platform/platform-logs-overview.md)
-* [Log Analytics çalışma alanına, Azure depolama 'ya veya Olay Hub 'larına etkinlik günlüğü göndermek için bir tanılama ayarı oluşturun](../platform/diagnostic-settings.md)
+* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](./platform-logs-overview.md)
+* [Log Analytics çalışma alanına, Azure depolama 'ya veya Olay Hub 'larına etkinlik günlüğü göndermek için bir tanılama ayarı oluşturun](./diagnostic-settings.md)

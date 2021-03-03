@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709521"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Açık kaynaklı araçlar kullanarak sanal makinelerinizden gelen ve giden ağ trafiği düzenlerini görselleştirin
 
@@ -47,7 +47,7 @@ Ağ Izleyicisi, bir sanal makinede trafiği izlemek için paket yakalamanızı s
 
 CapAnalysis için bir bağlantı sağlarken, Depolama Blobu URL 'sine bir SAS belirteci eklemediğinizden emin olun.  Bunu yapmak için depolama hesabından paylaşılan erişim imzası ' na gidin, izin verilen izinleri belirleyin ve bir belirteç oluşturmak için SAS Oluştur düğmesine basın. Daha sonra, SAS belirtecini paket yakalama Depolama Blobu URL 'sine ekleyebilirsiniz.
 
-Elde edilen URL aşağıdaki URL 'ye benzer bir şekilde görünür: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Elde edilen URL aşağıdaki URL 'ye benzer bir şekilde görünür: `http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Paket yakalamaları çözümleniyor

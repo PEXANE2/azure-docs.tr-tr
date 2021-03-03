@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 01/13/2021
-ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/18/2021
+ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702496"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -282,7 +282,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün. |
 | [çıkışı](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
 | [parametrelere](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan parametre için değeri döndürün. |
-| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | , Ve gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerin girişlerini ve çıkışlarını döndürün `For_each` `Until` `Scope` . |
+| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | En üst düzey eylemlerden giriş ve çıkışları,, ve gibi belirtilen kapsamlı eylem içinde döndürün `For_each` `Until` `Scope` . |
 | [Tetikleyicinin](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca bkz. [Triggerçıktılar](#triggerOutputs) ve [triggerbody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | `body`Çalışma zamanında tetikleyicinin çıkışını döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *Form-Data* veya *form kodlu* tetikleyici çıktılarında anahtar adı ile eşleşen tek bir değer döndürür. |
@@ -682,7 +682,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
 | <*özelliði*> | Evet | Dize | Eklenecek özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Özelliğin değeri |
+| <*deeri*> | Yes | Herhangi biri | Özelliğin değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -701,7 +701,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
 | <*Parent-Property*> | Evet | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
 | <*alt özellik*> | Evet | Dize | Eklenecek alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1129,7 +1129,7 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi bir | Boole değerine dönüştürülecek değer. |
+| <*deeri*> | Yes | Herhangi biri | Boole değerine dönüştürülecek değer. |
 |||||
 
 `bool()`Bir nesneyle kullanıyorsanız, nesnesinin değeri Boolean 'a dönüştürülebileceği bir dize veya tamsayı olmalıdır.
@@ -1169,7 +1169,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ilk-null olmayan öğe*> | Herhangi bir | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
+| <*ilk-null olmayan öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
 ||||
 
 *Örnek*
@@ -1887,7 +1887,7 @@ first([<collection>])
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Birinci koleksiyon-öğe*> | Herhangi bir | Koleksiyondaki ilk öğe |
+| <*Birinci koleksiyon-öğe*> | Herhangi biri | Koleksiyondaki ilk öğe |
 ||||
 
 *Örnek*
@@ -2294,13 +2294,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*ifadesini*> | Yes | Boole | Denetlenecek ifade |
-| <*valueIfTrue*> | Yes | Herhangi bir | İfade true olduğunda döndürülecek değer |
-| <*valueIfFalse*> | Yes | Herhangi bir | İfade false olduğunda döndürülecek değer |
+| <*valueIfTrue*> | Yes | Herhangi biri | İfade true olduğunda döndürülecek değer |
+| <*valueIfFalse*> | Yes | Herhangi biri | İfade false olduğunda döndürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Belirtilen-Return-Value*> | Herhangi bir | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
+| <*Belirtilen-Return-Value*> | Herhangi biri | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
 ||||
 
 *Örnek*
@@ -2387,7 +2387,7 @@ item()
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*geçerli dizi öğesi*> | Herhangi bir | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
+| <*geçerli dizi öğesi*> | Herhangi biri | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
 ||||
 
 *Örnek*
@@ -2416,7 +2416,7 @@ items('<loopName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*maddesinin*> | Herhangi bir | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
+| <*maddesinin*> | Herhangi biri | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
 ||||
 
 *Örnek*
@@ -3235,7 +3235,7 @@ parameters('<parameterName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*parametre-değer*> | Herhangi bir | Belirtilen parametrenin değeri |
+| <*parametre-değer*> | Herhangi biri | Belirtilen parametrenin değeri |
 ||||
 
 *Örnek*
@@ -3451,7 +3451,12 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 ### <a name="result"></a>sonuç
 
-,, Veya eylemi gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerin girişlerini ve çıkışlarını döndürün `For_each` `Until` `Scope` . Bu işlev, özel durumları tanılamanıza ve işleyebilmeniz için başarısız bir eylemden sonuçları döndürmektir. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+En üst düzey eylemlerden sonuçları,, veya eylem gibi belirtilen kapsamlı eylemde döndürün `For_each` `Until` `Scope` . `result()`İşlevi, kapsamın adı olan tek bir parametreyi kabul eder ve bu kapsamdaki ilk düzey eylemlerden bilgi içeren bir dizi döndürür. Bu eylem nesneleri, `actions()` işlevin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi işlev tarafından döndürülenlerle aynı öznitelikleri içerir.
+
+> [!NOTE]
+> Bu işlev, anahtar veya koşul eylemleri gibi daha derin iç içe geçmiş eylemlerden değil, *yalnızca* kapsamlı eylemde bulunan ilk düzey eylemlerden bilgileri döndürür.
+
+Örneğin, özel durumları tanılamanıza ve işleyebilmeniz için, başarısız eylemlerden sonuçları almak için bu işlevi kullanabilirsiniz. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -3459,17 +3464,17 @@ result('<scopedActionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*Scopedadctionname*> | Evet | Dize | Tüm iç eylemlerdeki girişlerin ve çıktıların döndürüleceği kapsamlı eylemin adı |
+| <*Scopedadctionname*> | Evet | Dize | Bu kapsamdaki en üst düzey eylemlerden gelen giriş ve çıkışları istediğiniz kapsama sahip eylemin adı |
 ||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsamlı eylem içinde görünen her bir eylemden giriş ve çıkış dizilerini içeren bir dizi |
+| <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsam içindeki her üst düzey eylemden giriş ve çıkış dizilerini içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, eylem içindeki işlevini kullanarak bir döngü içindeki içindeki HTTP eyleminin her yinelemesinden gelen giriş ve çıkışları döndürür `For_each` `result()` `Compose` :
+Bu örnek, `For_each` Eylemdeki işlevini kullanarak bir döngüde içindeki BIR http eyleminin her yinelemesinden gelen giriş ve çıkışları döndürür `result()` `Compose` :
 
 ```json
 {
@@ -3582,7 +3587,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
 | <*özelliði*> | Evet | Dize | Ayarlanacak mevcut veya yeni özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 Alt nesne içindeki alt özelliği ayarlamak için, bunun yerine iç içe geçmiş bir `setProperty()` çağrı kullanın. Aksi takdirde, işlev yalnızca çıkış olarak alt nesneyi döndürür.
@@ -3596,7 +3601,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
 | <*Parent-Property*> | Evet | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
 | <*alt özellik*> | Evet | Dize | Ayarlanacak alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3880,7 +3885,7 @@ string(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi bir | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
+| <*deeri*> | Yes | Herhangi biri | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4677,7 +4682,7 @@ variables('<variableName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*değişken değer*> | Herhangi bir | Belirtilen değişkenin değeri |
+| <*değişken değer*> | Herhangi biri | Belirtilen değişkenin değeri |
 ||||
 
 *Örnek*
@@ -4784,14 +4789,14 @@ xpath('<xml>', '<xpath>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*'sini*> | Yes | Herhangi bir | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
-| <*XPath*> | Yes | Herhangi bir | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
+| <*'sini*> | Yes | Herhangi biri | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
+| <*XPath*> | Yes | Herhangi biri | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
 | <*XML düğümü*> | XML | Belirtilen XPath ifadesiyle yalnızca tek bir düğüm eşleştiğinde bir XML düğümü |
-| <*deeri*> | Herhangi bir | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
+| <*deeri*> | Herhangi biri | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
 | [<*XML-düğüm1*>, <*xml-Düğüm2*>,...] </br>-veya- </br>[<*değer1*>, <*değer2*>,...] | Dizi | XML düğümleri veya belirtilen XPath ifadesiyle eşleşen değerler içeren bir dizi |
 ||||
 

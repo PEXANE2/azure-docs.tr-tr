@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 55f433786ed9dd40b08bb64395a6bbc50800add4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e07abdda805205701a10ca3bf295b7b0d2e71766
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623029"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718038"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Eski Log Analytics uyarı API 'sindeki geçerli günlük uyarıları API 'sine yükselt
 
@@ -19,23 +19,23 @@ ms.locfileid: "100623029"
 > Bu makale yalnızca Azure Kamu ile ilgilidir (Azure Kamu veya Azure Çin bulutuna **değil** ).
 
 > [!NOTE]
-> Kullanıcı tercihi geçerli [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) 'sine geçirmeyi seçerse, eski [eskı Log Analytics uyarı API](../platform/api-alerts.md)'sine geri dönmek mümkün değildir.
+> Kullanıcı tercihi geçerli [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules) 'sine geçirmeyi seçerse, eski [eskı Log Analytics uyarı API](./api-alerts.md)'sine geri dönmek mümkün değildir.
 
-Geçmişte, kullanıcılar günlük uyarı kurallarını yönetmek için [eski Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullandı. Geçerli çalışma alanları [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)kullanır. Bu makalede, eski API 'den geçerli API 'ye geçme avantajları ve işlemleri açıklanmaktadır.
+Geçmişte, kullanıcılar günlük uyarı kurallarını yönetmek için [eski Log Analytics uyarı API](./api-alerts.md) 'sini kullandı. Geçerli çalışma alanları [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)kullanır. Bu makalede, eski API 'den geçerli API 'ye geçme avantajları ve işlemleri açıklanmaktadır.
 
 ## <a name="benefits"></a>Avantajlar
 
 - Uyarı kurallarının oluşturulması için tek şablon (daha önce üç ayrı şablon gereklidir).
 - Log Analytics çalışma alanları veya Application Insights kaynakları için tek API.
-- [PowerShell cmdlet 'leri desteği](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- [PowerShell cmdlet 'leri desteği](./alerts-log.md#managing-log-alerts-using-powershell).
 - Diğer tüm uyarı türleriyle birlikte, diğer tüm uyarı türleriyle hizalama.
-- Log Analytics çalışma alanları veya Application Insights kaynakları gibi çeşitli dış kaynakları kapsayan [çapraz çalışma alanı günlüğü uyarısı](../log-query/cross-workspace-query.md) oluşturma yeteneği.
+- Log Analytics çalışma alanları veya Application Insights kaynakları gibi çeşitli dış kaynakları kapsayan [çapraz çalışma alanı günlüğü uyarısı](../logs/cross-workspace-query.md) oluşturma yeteneği.
 - Kullanıcılar, ' toplama açık ' parametresini kullanarak uyarıların bölüneceği boyutları belirtebilir.
 - Günlük uyarıları, iki güne kadar veri (daha önce bir güne sınırlı) kadar uzatılmış bir süreye sahiptir.
 
 ## <a name="impact"></a>Etki
 
-- Tüm yeni kurallar geçerli API ile oluşturulmalıdır/düzenlenmelidir. Bkz. [Azure kaynak şablonu aracılığıyla örnek kullanım](alerts-log-create-templates.md) ve [PowerShell aracılığıyla örnek kullanım](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- Tüm yeni kurallar geçerli API ile oluşturulmalıdır/düzenlenmelidir. Bkz. [Azure kaynak şablonu aracılığıyla örnek kullanım](alerts-log-create-templates.md) ve [PowerShell aracılığıyla örnek kullanım](./alerts-log.md#managing-log-alerts-using-powershell).
 - Kurallar geçerli API 'de izlenen kaynaklar Azure Resource Manager ve benzersiz olması gerekir, kurallar kaynak KIMLIĞI bu yapıya dönüşür: `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Uyarı kuralının görünen adları değişmeden kalır.
 
 ## <a name="process"></a>İşleme
@@ -104,7 +104,7 @@ Log Analytics çalışma alanı geçmediyse, yanıt şu şekilde olur:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici-günlük uyarıları](../platform/alerts-unified-log.md)hakkında bilgi edinin.
+- [Azure izleyici-günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
 - [API kullanarak günlük uyarılarınızı yönetmeyi](alerts-log-create-templates.md)öğrenin.
-- [PowerShell kullanarak günlük uyarılarını yönetmeyi](../platform/alerts-log.md#managing-log-alerts-using-powershell)öğrenin.
-- [Azure uyarıları deneyimi](../platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
+- [PowerShell kullanarak günlük uyarılarını yönetmeyi](./alerts-log.md#managing-log-alerts-using-powershell)öğrenin.
+- [Azure uyarıları deneyimi](./alerts-overview.md)hakkında daha fazla bilgi edinin.

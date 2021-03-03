@@ -2,54 +2,43 @@
 title: Azure Monitor klasik uyarılarınız için otomatik geçiş işleminin nasıl çalıştığını anlayın
 description: Otomatik geçiş işleminin nasıl çalıştığını öğrenin.
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 14118b69b46bafa76889f53152438e2cb2ab4e96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65409a1710a2b4c6b6d5a52c5129ec3e82dc7cc2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625844"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734868"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Klasik uyarı kurallarınız için otomatik geçiş işlemini anlayın
 
-[Daha önce duyurulduğu](../platform/monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda. Kullanımdan kaldırma işleminin bir parçası olarak, müşterilerin geçişi tetikleyebilmesi için Azure portal [bir geçiş aracı](alerts-using-migration-tool.md) vardır.
-Bu makale, otomatik geçiş sürecinde size yol gösterir ve karşılaşabileceğiniz tüm sorunları çözmenize yardımcı olur.
+[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar, genel bulut kullanıcıları için devre dışı bırakılır, ancak yine de **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 
-  > [!NOTE]
-  > Bu makale yalnızca Azure genel bulutu için geçerlidir. Azure için kullanımdan kaldırma işlemi Azure Kamu bulutundaki klasik uyarılar ve Azure Çin 21Vianet, gelecekteki tarihte duyurulacaktır.
-
-## <a name="what-will-happen-during-the-automatic-migration-process"></a>Otomatik geçiş işlemi sırasında ne olur?
-
-- Müşteriler, **1 eylül 2019**' den itibaren [belirli ölçümler](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)dışında yeni bir klasik uyarı kuralı oluşturamayacak.
-- Müşteriler özel durumlar için yeni klasik uyarı kuralları oluşturmaya ve daha fazla duyuru yapılıncaya kadar klasik uyarılarını kullanmaya devam edebilir.
-- Klasik uyarıların geçirilmesi, **1 eylül 2019**' den itibaren klasik uyarılara sahip müşteriler için toplu olarak tetiklenecektir.
-- Gönüllü geçiş aracında olduğu gibi, geçirilip geçirilemeyeceğini denetleyin olmayan bazı klasik uyarı kuralları oldukları gibi kalır. Bu klasik uyarı kuralları, daha fazla duyuru yapılıncaya kadar desteklenmeye devam edecektir. Ancak, tüm geçersiz klasik uyarı kuralları işlevsel olmadıkları için silinir.
-Silinen hedef kaynakları izleyen ve [artık desteklenmeyen ölçümlerde](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) bulunan tüm klasik uyarı kuralları geçersiz olarak kabul edilir.
-- Aboneliğiniz için geçiş başladıktan sonra herhangi bir sorun olmadıkça, geçiş bir saat içinde tamamlanmalıdır. Müşteriler, [Azure izleyici 'deki geçiş dikey](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)penceresinde geçişin durumunu izleyebilir.
-- Abonelik sahipleri, geçişin başarıyla tamamlandığını bir e-posta alacak.
-- Geçiş sırasında herhangi bir sorun varsa, abonelik sahipleri bunlara aynı şekilde bir e-posta gönderilir. Müşteriler, sorunun tüm ayrıntılarını görmek için geçiş dikey penceresini kullanabilir.
-- Müşterilerin bir kaynak kilidini geçici olarak devre dışı bırakmak veya bir ilke atamasını değiştirmek gibi bir eyleme ihtiyaç duyulmanız durumunda, müşterilerin bu sorunları çözmesi gerekir. Sorunlar daha sonra çözülemezse, klasik uyarılarınızın başarılı geçirilmesi garanti edilemez.
-
-    > [!NOTE]
-    > Otomatik geçiş işleminin başlamasını beklemek istemiyorsanız geçiş aracını kullanarak geçiş işlemini yine de tetikleyebilirsiniz.
+Müşterilerin geçişi tetikleyebilmesi için Azure portal [bir geçiş aracı](alerts-using-migration-tool.md) vardır. Bu makalede, 31 Mayıs 2021 ' den sonra başlatılacak olan genel buluttaki otomatik geçiş işlemi açıklanmaktadır. Ayrıca, çalıştırabileceğiniz sorun ve çözümlerin ayrıntılarını da ayrıntılarıyla görebilirsiniz.
 
 ## <a name="important-things-to-note"></a>Dikkat edilmesi gereken önemli noktalar
 
 Geçiş işlemi, klasik uyarı kurallarını yeni, denk uyarı kurallarına dönüştürür ve eylem gruplarını oluşturur. Hazırlık bölümünde aşağıdaki noktalara dikkat edin:
 
-- Yeni uyarı kuralları için bildirim yükü biçimleri, daha fazla özelliği desteklediklerinden, klasik uyarı kurallarından farklıdır. Klasik uyarı kuralı tarafından tetiklenen Logic Apps, runbook 'lar veya Web kancaları varsa, bildirim yüklerindeki farklılıklar nedeniyle, geçiş işlemi tamamlandıktan sonra beklendiği gibi çalışmayı durdurabilir. [Geçişe hazırlanma hakkında bilgi edinin](alerts-prepare-migration.md).
+- Yeni uyarı kuralları için bildirim yükü biçimleri, daha fazla özelliği desteklediklerinden, klasik uyarı kurallarının yüklerden farklıdır. Logic Apps, runbook 'lar veya Web kancaları içeren klasik bir uyarı kuralınız varsa, yükteki farklılıklar nedeniyle geçişten sonra beklendiği gibi çalışmayı durdurabilir. [Geçişe hazırlanma hakkında bilgi edinin](alerts-prepare-migration.md).
 
 - Bazı klasik uyarı kuralları araç kullanılarak geçirilemez. [Hangi kuralların geçirilemeyeceğini ve bunlarla ne yapılacağını öğrenin](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
+## <a name="what-will-happen-during-the-automatic-migration-process-in-public-cloud"></a>Genel buluttaki otomatik geçiş işlemi sırasında ne olur?
+
+- 31 Mayıs 2021 ' den itibaren yeni bir klasik uyarı kuralı oluşturamayacaksınız ve klasik uyarıların geçişi toplu olarak tetiklenecektir.
+- Silinen hedef kaynakları izleyen ve [artık desteklenmeyen ölçümlerde](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) bulunan tüm klasik uyarı kuralları geçersiz olarak kabul edilir.
+- Geçersiz olan klasik uyarı kuralları, 31 Mayıs 2021 ' den sonra kaldırılacaktır.
+- Aboneliğiniz için geçiş başladıktan sonra bir saat içinde tamamlanmalıdır. Müşteriler, [Azure izleyici 'deki geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)geçiş durumunu izleyebilir.
+- Abonelik sahipleri, başarılı veya geçiş başarısızlığından bir e-posta alır.
+
     > [!NOTE]
-    > Geçiş işlemi, klasik uyarı kurallarınızın değerlendirmesini etkilemez. Bunlar geçirilmeden ve yeni uyarı kuralları etkinleşene kadar uyarıları çalıştırmaya ve gönderilmeye devam ederler.
+    > Otomatik geçiş işleminin başlamasını beklemek istemiyorsanız geçiş aracını kullanarak geçiş işlemini yine de tetikleyebilirsiniz.
 
 ## <a name="what-if-the-automatic-migration-fails"></a>Otomatik geçiş başarısız olursa ne olur?
 
-Otomatik geçiş işlemi başarısız olduğunda, abonelik sahipleri sorunu bildiren bir e-posta alır. Sorunun tüm ayrıntılarını görmek için Azure Izleyici 'deki geçiş dikey penceresini kullanabilirsiniz.
-
-Geçiş sırasında karşılaşabileceğiniz sorunlar hakkında yardım almak için [sorun giderme kılavuzuna](alerts-understand-migration.md#common-problems-and-remedies) bakın.
+Otomatik geçiş işlemi başarısız olduğunda, abonelik sahipleri sorunu bildiren bir e-posta alır. Sorunun tüm ayrıntılarını görmek için Azure Izleyici 'de geçiş aracı 'nı kullanabilirsiniz. Geçiş sırasında karşılaşabileceğiniz sorunlar hakkında yardım almak için [sorun giderme kılavuzuna](alerts-understand-migration.md#common-problems-and-remedies) bakın.
 
   > [!NOTE]
   > Müşterilerin bir kaynak kilidini geçici olarak devre dışı bırakmak veya bir ilke atamasını değiştirmek gibi bir eyleme ihtiyaç duyulmanız durumunda, müşterilerin bu sorunları çözmesi gerekir. Sorunlar daha sonra çözülemezse, klasik uyarılarınızın başarılı geçirilmesi garanti edilemez.

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694147"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Veri ayıklanmasıyla koruma etkin bir çalışma alanı oluşturma
 Bu makalede, veri alma koruması etkin olan bir çalışma alanı oluşturma ve bu çalışma alanı için onaylanan Azure AD kiracılarının nasıl yönetileceği açıklanır.
@@ -50,7 +50,7 @@ Azure AD kiracılarında bulunan Azure kaynaklarına bağlanmak için, bir çal�
 >Çalışma alanının kiracısından başka kiracılardaki kaynakların, SQL havuzlarının bunlara bağlanabilmesi için yerinde güvenlik duvarı kuralları engellenmemelidir. Çalışma alanının yönetilen sanal ağı içindeki Spark kümeleri gibi kaynaklar, güvenlik duvarı korumalı kaynaklara yönetilen özel bağlantılar üzerinden bağlanabilir.
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
-Kullanıcılar, PyPI gibi genel depolardan Python paketlerini yüklemek için bir ortam yapılandırma dosyası sağlayabilir. Veri ayıklanma korumalı çalışma alanlarında, giden depolara bağlantılar engellenir. Sonuç olarak, PyPI gibi genel depolardan yüklenen Python kitaplığı desteklenmez. 
+Kullanıcılar, PyPI gibi genel depolardan Python paketlerini yüklemek için bir ortam yapılandırma dosyası sağlayabilir. Veri ayıklanma korumalı çalışma alanlarında, giden depolara bağlantılar engellenir. Sonuç olarak, PyPI gibi genel depolardan yüklenen Python kitaplığı desteklenmez. Alternatif olarak, kullanıcılar birincil Azure Data Lake Storage hesabı içinde özel bir kanal oluşturabilir ve kendi Conda ortamı yapılandırma dosyası içinde bu başvuruları içerebilir. 
   
 ## <a name="next-steps"></a>Sonraki adımlar
 

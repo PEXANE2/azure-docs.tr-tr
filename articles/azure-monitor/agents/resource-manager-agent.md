@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737350"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure Izleyici 'de aracıların Kaynak Yöneticisi şablon örnekleri
-Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](../platform/log-analytics-agent.md) ve [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](./log-analytics-agent.md) ve [Tanılama uzantısını](./diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ Aşağıdaki örnek, bir Linux Azure sanal makinesine Log Analytics aracısını
 Bu bölümdeki örnekler, tanılama uzantısını Azure 'daki Windows ve Linux sanal makinelerine yükler ve veri toplama için yapılandırır.
 
 ### <a name="windows"></a>Windows
-Aşağıdaki örnek, bir Windows Azure sanal makinesinde tanılama uzantısının etkinleştirilir ve yapılandırır. Yapılandırma hakkında ayrıntılı bilgi için bkz. [Windows Tanılama uzantısı şeması](../platform/diagnostics-extension-schema-windows.md).
+Aşağıdaki örnek, bir Windows Azure sanal makinesinde tanılama uzantısının etkinleştirilir ve yapılandırır. Yapılandırma hakkında ayrıntılı bilgi için bkz. [Windows Tanılama uzantısı şeması](./diagnostics-extension-schema-windows.md).
 
 #### <a name="template-file"></a>Şablon dosyası
 
@@ -807,6 +807,6 @@ Aşağıdaki örnek, bir Linux Azure sanal makinesinde tanılama uzantısını s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici için diğer örnek şablonları alın](../samples/resource-manager-samples.md).
-* [Log Analytics Aracısı hakkında daha fazla bilgi edinin](../platform/log-analytics-agent.md).
-* [Tanılama uzantısı hakkında daha fazla bilgi edinin](../platform/diagnostics-extension-overview.md).
+* [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
+* [Log Analytics Aracısı hakkında daha fazla bilgi edinin](./log-analytics-agent.md).
+* [Tanılama uzantısı hakkında daha fazla bilgi edinin](./diagnostics-extension-overview.md).

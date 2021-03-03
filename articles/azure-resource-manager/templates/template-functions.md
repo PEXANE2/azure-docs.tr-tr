@@ -3,12 +3,12 @@ title: Şablon işlevleri
 description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707328"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
 
@@ -34,6 +34,10 @@ Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](t
 <a id="take" aria-hidden="true"></a>
 <a id="union" aria-hidden="true"></a>
 
+## <a name="any-function"></a>Any işlevi
+
+[Herhangi bir işlev](template-functions-any.md) , Bıcep ' de, veri türü uyarıları etrafındaki sorunları çözmeye yardımcı olmak için kullanılabilir.
+
 ## <a name="array-functions"></a>Dizi işlevleri
 
 Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
@@ -47,11 +51,11 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 * [imin](template-functions-array.md#intersection)
 * [soyadına](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [Min](template-functions-array.md#min)
+* [dk](template-functions-array.md#min)
 * [Biçimlendir](template-functions-array.md#max)
 * [aralığı](template-functions-array.md#range)
 * [Şimdilik](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
+* [almanız](template-functions-array.md#take)
 * [birleşim](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -130,7 +134,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [Min](template-functions-numeric.md#min)
+* [dk](template-functions-numeric.md#min)
 * [Biçimlendir](template-functions-numeric.md#max)
 * [alma](template-functions-numeric.md#mod)
 * [MUL](template-functions-numeric.md#mul)
@@ -239,7 +243,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [startsWith](template-functions-string.md#startswith)
 * [string](template-functions-string.md#string)
 * [dizeden](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
+* [almanız](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [kırpma](template-functions-string.md#trim)

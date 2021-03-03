@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f1fe99cab46f8d3b87a5c1ef8397cf5f305b11c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ae65cc8799fd507952120129ecef83655a465b7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750152"
 ---
 <a name="HOLTop"></a>
 
@@ -68,7 +68,7 @@ Daha sonra, kaynağınızın Azure uç noktası ve anahtarı için değişkenler
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](../../../../key-vault/general/overview.md).
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -95,7 +95,7 @@ Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızl
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -173,7 +173,7 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
@@ -195,7 +195,7 @@ Ardından, **okuma** çağrısından döndürülen işlem kimliğini alın ve bu
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -206,7 +206,7 @@ python quickstart-file.py
 ```
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -216,7 +216,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
+> [Bir sorunla karşılaşdığım](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

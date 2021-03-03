@@ -1,20 +1,20 @@
 ---
-title: VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)
-description: Azure portal kullanarak VM'ler için Azure İzleyici Konuk sistem durumu (Önizleme) için varsayılan izlemenin nasıl değiştirileceğini açıklar.
+title: VM öngörüleri Konuk sistem durumu 'nda izlemeyi yapılandırma (Önizleme)
+description: Azure portal kullanarak VM öngörüleri Konuk sistem durumu (Önizleme) için varsayılan izlemenin nasıl değiştirileceğini açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719602"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)
-VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, Azure portal kullanarak varsayılan izlemenin nasıl değiştirileceği açıklanır. Ayrıca, [bir veri toplama kuralı kullanarak izlemeyi yapılandırmak](vminsights-health-configure-dcr.md)için gereken izleyicilerin temel kavramlarını açıklar.
+# <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>VM öngörüleri Konuk sistem durumu 'nda izlemeyi yapılandırma (Önizleme)
+VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bu makalede, Azure portal kullanarak varsayılan izlemenin nasıl değiştirileceği açıklanır. Ayrıca, [bir veri toplama kuralı kullanarak izlemeyi yapılandırmak](vminsights-health-configure-dcr.md)için gereken izleyicilerin temel kavramlarını açıklar.
 
 ## <a name="open-monitor-configuration"></a>İzleyici yapılandırmasını aç
 İzleyici yapılandırma depo Azure portal açın ve ardından **yapılandırma** sekmesini seçin.

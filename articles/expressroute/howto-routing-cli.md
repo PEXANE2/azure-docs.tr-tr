@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735096"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715539"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Öğretici: CLı kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 
 Bu öğreticide, CLı kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute bağlantı hattı için Yönlendirme yapılandırması/eşlemesi oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Ortak eşleme](about-public-peering.md)
@@ -29,12 +29,12 @@ Bu öğreticide, CLı kullanarak Kaynak Yöneticisi dağıtım modelinde bir Exp
 > * [PowerShell (klasik)](expressroute-howto-routing-classic.md)
 > 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Devre için Microsoft eşlemesini yapılandırma, güncelleştirme ve silme
 > - Devre için Azure özel eşlemesini yapılandırma, güncelleştirme ve silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Başlamadan önce, CLI komutlarının en son sürümünü (2.0 veya üzeri) yükleyin. CLI komutlarını yükleme hakkında bilgi için bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 * Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimlerini](expressroute-routing.md)ve [iş akışı](expressroute-workflows.md) sayfalarını gözden geçirdiğinizden emin olun.
@@ -243,8 +243,10 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
 1. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlarla devam etmeden önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-   * Birincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
-   * İkincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
+   * Sanal ağlar için ayrılan herhangi bir adres alanının parçası olmayan bir alt ağ çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız. Bu alt ağ çifti için üç seçeneğiniz vardır:
+       * IPv4: Iki/30 alt ağı.
+       * IPv6: Iki/126 alt ağı.
+       * Her ikisi: Iki/30 alt ağ ve iki/126 alt ağı.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. Bu eşleme için özel bir AS numarası kullanabilirsiniz. 65515 kullandığınızdan emin olun.
    * **Isteğe bağlı-** Kullanmayı seçerseniz bir MD5 karma değeri.

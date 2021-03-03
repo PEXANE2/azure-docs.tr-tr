@@ -3,18 +3,18 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707311"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
 Bir kuruluştaki bir yedeklemenin veya uyumluluk yöneticisinin temel sorumluluklarıyla biri, iş açısından kritik tüm makinelerin uygun saklama ile yedeklenmesini sağlamaktır.
 
-Günümüzde Azure Backup, Azure sanal makinelerinizin yedekleme için yapılandırılmasını otomatik olarak sağlamanıza yardımcı olmak üzere çeşitli yerleşik ilkeler ( [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/overview)kullanarak) sağlar. Yedekleme takımlarınızın ve kaynaklarınızın nasıl düzenlendiğini bağlı olarak, aşağıdaki ilkelerden birini kullanabilirsiniz:
+Günümüzde Azure Backup, Azure sanal makinelerinizin yedekleme için yapılandırılmasını otomatik olarak sağlamanıza yardımcı olmak üzere çeşitli yerleşik ilkeler ( [Azure ilkesi](../governance/policy/overview.md)kullanarak) sağlar. Yedekleme takımlarınızın ve kaynaklarınızın nasıl düzenlendiğini bağlı olarak, aşağıdaki ilkelerden birini kullanabilirsiniz:
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>İlke 1-aynı konumdaki mevcut bir kurtarma hizmetleri kasasında verilen bir etiketi olmayan VM 'lerde yedeklemeyi yapılandırma
 
@@ -29,7 +29,7 @@ Uygulamaları adanmış kaynak gruplarında organize ederseniz ve aynı kasa tar
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>İlke 4-[Önizleme] belirli bir etikete sahip VM 'lerde yedeklemeyi varsayılan ilkeyle yeni bir kurtarma hizmetleri kasasına yapılandırma
 Bu ilke, bu ilkenin kapsamında belirli bir etiketi içeren VM 'leri **dahil** etmek için bu ilkeyi kullanmanın tek farkı Ile yukarıdaki ilke 3 ile aynı şekilde çalışmaktadır. 
 
-Yukarıdaki Azure Backup Ayrıca, [yalnızca bir denetim](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) ilkesi sağlar- **Azure Backup sanal makineler için etkinleştirilmelidir**. Bu ilke, hangi sanal makinelerin yedeklenmediğini belirtir, ancak bu VM 'Ler için otomatik olarak yedeklemeleri yapılandırmaz. Bu, yalnızca VM 'lerin genel uyumluluğunu değerlendirmek ve hemen işlem yapmak için arama yapmak istediğinizde yararlıdır.
+Yukarıdaki Azure Backup Ayrıca, [yalnızca bir denetim](../governance/policy/concepts/effects.md#audit) ilkesi sağlar- **Azure Backup sanal makineler için etkinleştirilmelidir**. Bu ilke, hangi sanal makinelerin yedeklenmediğini belirtir, ancak bu VM 'Ler için otomatik olarak yedeklemeleri yapılandırmaz. Bu, yalnızca VM 'lerin genel uyumluluğunu değerlendirmek ve hemen işlem yapmak için arama yapmak istediğinizde yararlıdır.
 
 ## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4026bd9c5b4d73953509617fe4a8623987d22341
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686606"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Öğretici: Azure AD için BlueJeans ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure AD için şema Azure Active Directory (Azure AD) ile nas�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -63,7 +63,7 @@ Azure AD 'de BlueJeans 'ın Azure AD 'ye tümleştirilmesini yapılandırmak iç
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Azure AD için şema için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Azure AD için şema ile yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure AD 'de bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Azure AD için şema ile yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure AD 'de bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Azure AD için şema ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -156,7 +156,7 @@ Bu bölümde, Azure AD 'ye yönelik şema erişimi vererek Azure çoklu oturum a
 
     ![SAML çoklu oturum açma](./media/bluejeans-tutorial/ic785869.png "SAML çoklu oturum açma")
 
-    a. **SAML çoklu oturum açma**seçeneğini belirleyin.
+    a. **SAML çoklu oturum açma** seçeneğini belirleyin.
 
     b. **Otomatik sağlamayı etkinleştir**' i seçin.
 
@@ -201,9 +201,9 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
     ![Ekran görüntüsü, bu adımda açıklanan bilgileri girebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/bluejeans-tutorial/ic785886.png "Kullanıcı Ekleme")
 
-    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    a. **Ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
     c. **Azure AD Kullanıcı adı için bir şema seçin** metin kutusuna, **Brittasıon** gibi kullanıcının Kullanıcı adını girin
 
@@ -211,7 +211,7 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
     e. **Şirket** metin kutusuna şirketinizi girin.
 
-    f. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin `b.simon\@contoso.com` .
+    f. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin `b.simon@contoso.com` .
 
     örneğin: **Azure AD toplantısı için şema oluşturma ı. D** metin kutusuna toplantı kimliğinizi girin.
 

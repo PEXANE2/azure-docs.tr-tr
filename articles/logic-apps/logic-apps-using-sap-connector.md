@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575492"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712462"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
-Bu makalede [SAP bağlayıcısını](https://docs.microsoft.com/connectors/sap/)kullanarak Logic Apps SAP kaynaklarınıza nasıl erişebileceğiniz açıklanır.
+Bu makalede [SAP bağlayıcısını](/connectors/sap/)kullanarak Logic Apps SAP kaynaklarınıza nasıl erişebileceğiniz açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -547,14 +547,14 @@ Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulam
 
 Logic Apps için bir şirket [içi veri ağ geçidi](../logic-apps/logic-apps-gateway-install.md)KULLANıYORSANıZ, SAP Bağlayıcısı için bir Genişletilmiş günlük dosyası yapılandırabilirsiniz. Windows için olay Izleme (ETW) olaylarını, ağ geçidinizin günlüğü. zip dosyalarına dahil edilen günlük dosyalarına yönlendirmek için şirket içi veri ağ geçidinizi kullanabilirsiniz. 
 
-Ağ [geçidinizin yapılandırma ve hizmet günlüklerinizi](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) ağ geçidi uygulamasının ayarlarından bir. zip dosyasına dışarı aktarabilirsiniz.
+Ağ [geçidinizin yapılandırma ve hizmet günlüklerinizi](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) ağ geçidi uygulamasının ayarlarından bir. zip dosyasına dışarı aktarabilirsiniz.
 
 > [!NOTE]
 > Genişletilmiş günlük kaydı, her zaman etkinleştirildiğinde mantıksal uygulamalarınızın performansını etkileyebilir. Bir sorunu çözümleme ve sorun giderme ile işiniz bittiğinde Genişletilmiş günlük dosyalarını kapatmak en iyi uygulamadır.
 
 #### <a name="capture-etw-events"></a>ETW olaylarını yakala
 
-İsteğe bağlı olarak, gelişmiş kullanıcılar ETW olaylarını doğrudan yakalayabilir. Daha sonra [Event Hubs Azure tanılama verilerinizi kullanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) veya [verilerinizi Azure izleyici günlüklerine toplayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). Daha fazla bilgi için bkz. [veri toplama ve depolama için en iyi uygulamalar](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Elde edilen ETL dosyalarıyla çalışmak için [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) kullanabilirsiniz veya kendi programınızı yazabilirsiniz. Bu izlenecek yol PerfView kullanır:
+İsteğe bağlı olarak, gelişmiş kullanıcılar ETW olaylarını doğrudan yakalayabilir. Daha sonra [Event Hubs Azure tanılama verilerinizi kullanabilir](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) veya [verilerinizi Azure izleyici günlüklerine toplayabilirsiniz](/azure/azure-monitor/agents/diagnostics-extension-logs). Daha fazla bilgi için bkz. [veri toplama ve depolama için en iyi uygulamalar](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Elde edilen ETL dosyalarıyla çalışmak için [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) kullanabilirsiniz veya kendi programınızı yazabilirsiniz. Bu izlenecek yol PerfView kullanır:
 
 1. PerfView menüsünde, olayları yakalamak için **Collect topla ' yı seçin** &gt;  .
 
@@ -729,7 +729,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
 1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama ayarlamak](#receive-message-from-sap)için bu konudaki önceki adımları izleyin.
 
-   Örneğin:
+   Örnek:
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -1336,7 +1336,7 @@ BAPı 'un çağrı eylemini kullanma hakkında ayrıntılı örnekler için bkz.
 
 ### <a name="send-idoc-action"></a>IDoc eylemi gönder
 
-[Send IDoc ( `SendIDoc` )](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) işlemi, IDoc iletisini SAP sunucunuza gönderir.
+[Send IDoc ( `SendIDoc` )](/connectors/sap/) işlemi, IDoc iletisini SAP sunucunuza gönderir.
 
 Çağrlarınız ile aşağıdaki parametreleri kullanmanız gerekir: 
 

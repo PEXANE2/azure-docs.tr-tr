@@ -3,78 +3,277 @@ title: Azure IoT Edge ve Azure IoT Central | Microsoft Docs
 description: Azure IoT Edge IoT Central bir uygulamayla nasıl kullanacağınızı anlayın.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 02/19/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9a7c886ba4dd6e7ab4bd62700f5437855a16a5ad
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733026"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını Azure IoT Central uygulamasına bağlama
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
+Azure IoT Edge, bulut analizlerini ve özel iş mantığını cihazlara taşırken, kuruluşunuzun veri yönetimi yerine iş öngörülerine odaklanmasını sağlar. İş mantığınızı standart kapsayıcılara paketleyerek IoT çözümünüzü ölçeklendirin, bu kapsayıcıları cihazlarınıza dağıtın ve buluttan izleyin.
+
+Bu makalede şunları açıklanmaktadır:
+
+* IoT Edge cihazların bir IoT Central uygulamasına bağlanması.
+* IoT Edge cihazlarınızı yönetmek için IoT Central kullanma.
+
+IoT Edge hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge nedir?](../../iot-edge/about-iot-edge.md)
+
+## <a name="iot-edge"></a>IoT Edge
+
 IoT Edge üç bileşenden oluşur:
 
-* **IoT Edge modüller** , Azure Hizmetleri, iş ortağı hizmetleri veya kendi kodunuzla çalışan kapsayıcılardır. Modüller IoT Edge cihazlara dağıtılır ve bu cihazlarda yerel olarak çalıştırılır.
-* **IoT Edge çalışma zamanı** her bir IoT Edge cihazında çalışır ve her cihaza dağıtılan modülleri yönetir.
-* **Bulut tabanlı bir arabirim** , IoT Edge cihazları uzaktan izlemenize ve yönetmenize olanak sağlar. IoT Central bulut arabirimidir.
+* *IoT Edge modüller* , Azure Hizmetleri, iş ortağı hizmetleri veya kendi kodunuzla çalışan kapsayıcılardır. Modüller IoT Edge cihazlara dağıtılır ve bu cihazlarda yerel olarak çalıştırılır. Daha fazla bilgi için bkz. [Azure IoT Edge modüllerini anlama](../../iot-edge/iot-edge-modules.md).
+* *IoT Edge çalışma zamanı* her bir IoT Edge cihazında çalışır ve her cihaza dağıtılan modülleri yönetir. Çalışma zamanı iki IoT Edge modülünden oluşur: *IoT Edge Aracısı* ve *IoT Edge hub 'ı*. Daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](../../iot-edge/iot-edge-runtime.md).
+* *Bulut tabanlı bir arabirim* , IoT Edge cihazları uzaktan izlemenize ve yönetmenize olanak sağlar. IoT Central, bulut arabirimine bir örnektir.
 
-**Azure IoT Edge** cihaz, IoT Edge cihazına bağlanan aşağı akış cihazları ile bir ağ geçidi cihazı olabilir. Bu makale, aşağı akış cihaz bağlantısı desenleri hakkında daha fazla bilgi paylaşır.
+IoT Edge bir cihaz şu olabilir:
 
-**Cihaz şablonu** , cihazınızın ve IoT Edge modüllerinizin yeteneklerini tanımlar. Özellikler modülün gönderdiği Telemetriyi, modül özelliklerini ve bir modülün yanıt verdiği komutları içerir.
+* Modüllerden oluşan tek başına bir cihaz.
+* Bir *ağ geçidi cihazı* ile bağlantı aşağı akış cihazları.
 
-## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Ağ geçidi ve modüllerle aşağı akış cihaz ilişkileri
+## <a name="iot-edge-as-a-gateway"></a>Ağ geçidi olarak IoT Edge
 
-Aşağı akış cihazları modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlanabilir `$edgeHub` . Bu IoT Edge cihaz, bu senaryoda saydam bir ağ geçidi haline gelir.
+IoT Edge cihaz, ağdaki diğer aşağı akış cihazları ve IoT Central uygulamanız arasında bağlantı sağlayan bir ağ geçidi olarak çalışabilir.
 
-![Saydam ağ geçidi diyagramı](./media/concepts-iot-edge/gateway-transparent.png)
+İki ağ geçidi deseni vardır:
 
-Aşağı akış cihazları, özel bir modül aracılığıyla bir IoT Edge Gateway cihazına da bağlanabilir. Aşağıdaki senaryoda, aşağı akış cihazları bir Modbus özel modülü aracılığıyla bağlanır.
+* *Saydam ağ geçidi* modelinde IoT Edge hub modülü IoT Central gibi davranır ve IoT Central kayıtlı cihazlardan gelen bağlantıları işler. İletiler, aralarında ağ geçidi olmadığı gibi, aşağı akış cihazlarından IoT Central geçer.
 
-![Özel modül bağlantısının diyagramı](./media/concepts-iot-edge/gateway-module.png)
+* *Çeviri ağ geçidi* modelinde, kendi başına IoT Central bağlanamadıkları cihazlar bunun yerine özel bir IoT Edge modülüne bağlanır. IoT Edge cihazdaki modül gelen aşağı akış cihaz iletilerini işler ve sonra bunları IoT Central iletir.
 
-Aşağıdaki diyagramda her iki tür modül aracılığıyla bir IoT Edge ağ geçidi cihazına bağlantı gösterilmektedir (özel ve `$edgeHub` ).  
+Saydam ve çeviri ağ geçidi desenleri birbirini dışlanmamış. Tek bir IoT Edge cihaz hem saydam bir ağ geçidi hem de çeviri ağ geçidi olarak çalışabilir.
 
-![Her iki bağlantı modülü ile bağlanma diyagramı](./media/concepts-iot-edge/gateway-module-transparent.png)
+IoT Edge ağ geçidi desenleri hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceği](../../iot-edge/iot-edge-as-gateway.md).
 
-Son olarak, aşağı akış cihazları birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve modülle bağlanan aşağı akış cihazları gösterilmektedir `$edgeHub` . 
+### <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Ağ geçidi ve modüllerle aşağı akış cihaz ilişkileri
 
-![Birden çok özel modül aracılığıyla bağlantı diyagramı](./media/concepts-iot-edge/gateway-module2-transparent.png)
+Aşağı akış cihazları, *IoT Edge hub*  modülü aracılığıyla bir IoT Edge Gateway cihazına bağlanabilir. Bu senaryoda, IoT Edge cihaz saydam bir ağ geçididir:
 
-## <a name="deployment-manifests-and-device-templates"></a>Dağıtım bildirimleri ve cihaz şablonları
+:::image type="content" source="media/concepts-iot-edge/gateway-transparent.png" alt-text="Saydam ağ geçidi diyagramı" border="false":::
 
-IoT Edge, iş mantığını modül biçiminde dağıtabilir ve yönetebilirsiniz. IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Hizmetleri (Azure Stream Analytics gibi) veya kendi çözüme özgü kodunuzla bulunabilir. Modüllerin nasıl geliştirildiğini, dağıtıldığını ve yapıldığını anlamak için bkz. [IoT Edge modüller](../../iot-edge/iot-edge-modules.md).
+Aşağı akış cihazları, özel bir modül aracılığıyla bir IoT Edge Gateway cihazına da bağlanabilir. Aşağıdaki senaryoda, aşağı akış cihazları bir *Modbus* özel modülü aracılığıyla bağlanır. Bu senaryoda, IoT Edge cihaz bir çeviri ağ geçididir:
 
-Yüksek düzeyde bir dağıtım bildirimi, istenen özellikleriyle yapılandırılmış bir modül TWINS listesidir. Dağıtım bildirimi, hangi modüllerin yükleneceğini ve bunların nasıl yapılandırılacağını bir IoT Edge cihazına (veya bir cihaz grubuna) bildirir. Dağıtım bildirimleri, her modül için istenen özellikleri içerir ikizi. IoT Edge cihazlar her bir modülün bildirilen özelliklerini geri bildirir.
+:::image type="content" source="media/concepts-iot-edge/gateway-module.png" alt-text="Özel modül bağlantısının diyagramı" border="false":::
 
-Dağıtım bildirimi oluşturmak için Visual Studio Code kullanın. Daha fazla bilgi için bkz. [Visual Studio Code Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Aşağıdaki diyagramda her iki tür modül aracılığıyla bir IoT Edge ağ geçidi cihazına yönelik bağlantılar gösterilmektedir. Bu senaryoda IoT Edge cihaz hem saydam hem de çeviri ağ geçididir:
 
-Azure IoT Central, bir cihaz şablonu oluşturmak için dağıtım bildirimini içeri aktarabilirsiniz. Aşağıdaki akış çizelgesinde IoT Central bir dağıtım bildirimi yaşam döngüsü gösterilmektedir.
+:::image type="content" source="media/concepts-iot-edge/gateway-module-transparent.png" alt-text="Her iki bağlantı modülünü kullanarak bağlanma diyagramı" border="false":::
 
-![Dağıtım bildirimi yaşam döngüsü akış çizelgesi](./media/concepts-iot-edge/dmflow.png)
+Aşağı akış cihazları, birden çok özel modülle bir IoT Edge ağ geçidi cihazına bağlanabilir. Aşağıdaki diyagramda, bir Modbus özel modülü, uyumlu olmayan özel bir modül ve *IoT Edge hub*  modülü aracılığıyla bağlanan aşağı akış cihazları gösterilmektedir:
 
-IoT Edge bir cihazı aşağıdaki şekilde modeller IoT Central:
+:::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="Birden çok özel modül kullanılarak bağlantı diyagramı" border="false":::
 
-* Her IoT Edge cihaz şablonunda bir cihaz modeli vardır.
-* Dağıtım bildiriminde listelenen her özel modül için bir modül yetenek modeli oluşturulur.
-* Her modül yetenek modeli ve bir cihaz modeli arasında bir ilişki oluşturulur.
-* Modül yetenek modeli modül arabirimlerini uygular.
-* Her modül arabirimi telemetri, Özellikler ve komutlar içerir.
+<!-- To do: add link to how to configure gateway article? -->
 
-![IoT Edge modelleme diyagramı](./media/concepts-iot-edge/edgemodelling.png)
+## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge cihazlar ve IoT Central
+
+IoT Edge cihazlar, IoT Central kimlik doğrulamak için *paylaşılan erişim imza* belirteçlerini veya X. 509.952 sertifikalarını kullanabilir. IoT Edge cihazlarınızı ilk kez bağlanmadan önce IoT Central el ile kaydedebilir veya kayıt işlemini işlemek için cihaz sağlama hizmetini kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Central 'ye bağlanma](concepts-get-connected.md).
+
+IoT Central cihaz [şablonlarını](concepts-device-templates.md) kullanarak IoT Central bir cihazla nasıl etkileşime gireceğini tanımlar. Örneğin, bir cihaz şablonu şunları belirtir:
+
+* Bir cihazın gönderdiği telemetri ve özellik türleri, IoT Central onları yorumlayabilmesi ve görselleştirmeler oluşturabilmesini sağlayacak.
+* Bir cihazın yanıt verdiği komutlar, IoT Central komutları çağırmak için kullanılacak bir operatör için Kullanıcı arabirimi gösterebilir.
+
+IoT Edge cihaz telemetri gönderebilir, özellik değerlerini eşitleyebilir ve komutlara standart bir cihazla aynı şekilde yanıt verebilir. Bu nedenle, bir IoT Edge cihazının IoT Central bir cihaz şablonuna ihtiyacı vardır.
+
+### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge dağıtım bildirimleri ve IoT Central cihaz şablonları
+
+IoT Edge, iş mantığını modül biçiminde dağıtır ve yönetirsiniz. IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Stream Analytics gibi Azure hizmetlerini ya da çözümünüze özgü kodu içerebilir.
+
+IoT Edge *dağıtım bildiriminde* , cihaza dağıtılacak IoT Edge modülleri ve bunların nasıl yapılandırılacağı listelenmektedir. Daha fazla bilgi edinmek için bkz. [IoT Edge modül dağıtmayı ve yolları oluşturmayı öğrenin](../../iot-edge/module-composition.md).
+
+Azure IoT Central 'de, IoT Edge cihaz için bir cihaz şablonu oluşturmak üzere bir dağıtım bildirimi içeri aktarırsınız.
+
+Aşağıdaki kod parçacığı bir örnek IoT Edge dağıtım bildirimi gösterir:
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {}
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0.9",
+              "createOptions": "{}"
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0.9",
+              "createOptions": "{}"
+            }
+          }
+        },
+        "modules": {
+          "SimulatedTemperatureSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          }
+        }
+      }
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+            "route": "FROM /* INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
+      }
+    },
+    "SimulatedTemperatureSensor": {
+      "properties.desired": {
+           "SendData": true,
+           "SendInterval": 10
+      }
+    }
+  }
+}
+```
+
+Önceki kod parçacığında şunları görebilirsiniz:
+
+* Üç modül vardır. *IoT Edge Aracısı* ve *IoT Edge hub* sistem modülleri her dağıtım bildiriminde bulunur. Özel **SimulatedTemperatureSensor** modülü.
+* Ortak modül görüntüleri, bağlanmak için herhangi bir kimlik bilgisi gerektirmeyen bir Azure Container Registry deposundan çekilir. Özel modül görüntüleri için, `registryCredentials` *IoT Edge Aracısı* modülü ayarında kullanılacak kapsayıcı kayıt defteri kimlik bilgilerini ayarlayın.
+* Özel **SimulatedTemperatureSensor** modülünün iki özelliği `"SendData": true` ve `"SendInterval": 10` .
+
+Bu dağıtım bildirimini bir IoT Central uygulamasına aktardığınızda, aşağıdaki cihaz şablonunu oluşturur:
+
+:::image type="content" source="media/concepts-iot-edge/device-template.png" alt-text="Dağıtım bildiriminden oluşturulan cihaz şablonunu gösteren ekran görüntüsü.":::
+
+Önceki ekran görüntüsünde şunları görebilirsiniz:
+
+* **SimulatedTemperatureSensor** adlı bir modül. *IoT Edge Aracısı* ve *IoT Edge hub* sistem modülleri şablonda görünmüyor.
+* **SendData** ve **sendınterval** adlı iki yazılabilir özelliği içeren **Yönetim** adlı bir arabirim.
+
+Dağıtım bildirimi, **SimulatedTemperatureSensor** modülünün gönderdiği Telemetriyi veya yanıt verdiği komutları içermez. Bu tanımları yayımlamadan önce cihaz şablonuna el ile ekleyin.
+
+Daha fazla bilgi edinmek için bkz. [öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme](tutorial-add-edge-as-leaf-device.md).
+
+### <a name="update-a-deployment-manifest"></a>Dağıtım bildirimini güncelleştirme
+
+Cihaz şablonunun yeni bir [sürümünü](howto-version-device-template.md) oluşturursanız dağıtım bildirimini yeni bir sürümle değiştirebilirsiniz:
+
+Dağıtım bildirimini değiştirdiğinizde, tüm bağlı IoT Edge cihazları yeni bildirimi indirir ve modüllerini güncelleştirir. Ancak IoT Central, cihaz şablonundaki arabirimleri modül yapılandırmasındaki değişikliklerle güncelleştirmez. Örneğin, önceki kod parçacığında gösterilen bildirimi aşağıdaki bildirimle değiştirirseniz, cihaz şablonundaki **Yönetim** arabirimindeki **sendunits** özelliğini otomatik olarak görmezsiniz. Yeni özelliği, IoT Central tanımak üzere **Yönetim** arabirimine el ile ekleyin:
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {}
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0.9",
+              "createOptions": "{}"
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0.9",
+              "createOptions": "{}"
+            }
+          }
+        },
+        "modules": {
+          "SimulatedTemperatureSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          }
+        }
+      }
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+            "route": "FROM /* INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
+      }
+    },
+    "SimulatedTemperatureSensor": {
+      "properties.desired": {
+           "SendData": true,
+           "SendInterval": 10,
+           "SendUnits": "Celsius"
+      }
+    }
+  }
+}
+```
+
+## <a name="deploy-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını dağıtma
+
+IoT Edge çalışma zamanını nerede çalıştırabileceğinizi öğrenmek için bkz. [Azure IoT Edge desteklenen sistemler](../../iot-edge/support.md).
+
+IoT Edge çalışma zamanını aşağıdaki ortamlara da yükleyebilirsiniz:
+
+* [Linux için Azure IoT Edge yükleme veya kaldırma](../../iot-edge/how-to-install-iot-edge.md)
+* [Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)](../../iot-edge/how-to-install-iot-edge-on-windows.md)
+* [Azure 'da Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma](../../iot-edge/how-to-install-iot-edge-ubuntuvm.md)
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge ağ geçidi cihazları
 
 Bir IoT Edge cihazını ağ geçidi cihazı olacak şekilde seçtiyseniz, ağ geçidi cihazına bağlanmak istediğiniz cihazların cihaz modellerine aşağı akış ilişkileri ekleyebilirsiniz.
 
+<!-- TODO - add link to Edge Gateway how-to -->
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir cihaz geliştiricisiyseniz, önerilen bir sonraki adım [IoT Central ağ geçidi cihaz türleri](./tutorial-define-gateway-device-type.md)hakkında bilgi ediniyoruz.
+Bir cihaz geliştiricisiyseniz, önerilen bir sonraki adım [kendi IoT Edge modüllerinizi geliştirmeyi](../../iot-edge/module-development.md)öğrenmektir.

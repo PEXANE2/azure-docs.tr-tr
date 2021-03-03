@@ -1,187 +1,119 @@
 ---
 title: Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 description: HDInsight 3,6 ' de Apache Hive iş yüklerini HDInsight 4,0 ' ye geçirmeyi öğrenin.
-author: msft-tacox
-ms.author: tacox
+author: kevxmsft
+ms.author: kevx
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 11/13/2019
-ms.openlocfilehash: 93dc565055c6eb413a0c277a9891e5fcfab50345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 11/4/2020
+ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742203"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
-Bu belgede HDInsight 3,6 ' de Apache Hive ve LLAP iş yüklerinin HDInsight 4,0 ' ye nasıl geçirileceği gösterilmektedir. HDInsight 4,0, gerçekleştirilmiş görünümler ve sorgu sonucu önbelleği gibi daha yeni Hive ve LLAP özellikleri sağlar. İş yüklerinizi HDInsight 4,0 ' e geçirdiğinizde, Hive 3 ' ün HDInsight 3,6 ' de kullanılamayan daha yeni özelliklerinden yararlanabilirsiniz.
+HDInsight 4,0, HDInsight 3,6 ' den fazla avantaj sunar. [Hdınsight 4,0 ' deki yenilikler hakkında genel bir bakış](../hdinsight-version-release.md)aşağıda verilmiştir.
 
-Bu makalede aşağıdaki konular ele alınmaktadır:
+Bu makalede, Hive iş yüklerini HDInsight 3,6 ' den 4,0 ' e geçirme adımları ele alınmaktadır.
 
-* Hive meta verilerinin HDInsight 'a geçirilmesi 4,0
-* ACID ve ACID olmayan tabloların güvenli geçişi
-* HDInsight sürümleri arasında Hive güvenlik ilkelerinin korunması
-* HDInsight 3,6 ' den HDInsight 4,0 ' den sorgu yürütme ve hata ayıklama
+* Hive meta veri deposu kopyalama ve şema yükseltmesi
+* ACID uyumluluğu için güvenli geçiş
+* Hive güvenlik ilkelerinin korunması
 
-Hive 'nin bir avantajı, meta verileri bir dış veritabanına dışarı aktarma (Hive meta veri deposu olarak adlandırılır) özelliğidir. **Hive meta** veri tablosu, tablo depolama konumu, sütun adları ve tablo dizini bilgileri de dahil olmak üzere tablo istatistiklerini depolamaktan sorumludur. HDInsight 3,6 ve HDInsight 4,0 farklı meta veri deposu şemaları gerektirir ve tek bir meta veri deposu paylaşamaz. Hive meta veri deposu güvenli bir şekilde yükseltmek için önerilen yol, geçerli üretim ortamında orijinal yerine bir kopyasını yükseltmenizde. Bu belge, özgün ve yeni kümelerin aynı depolama hesabına erişmesini gerektirir. Bu nedenle, başka bir bölgeye veri geçişini kapsamaz.
+Yeni ve eski HDInsight kümelerinin aynı depolama hesaplarına erişimi olmalıdır.
 
-## <a name="migrate-from-external-metastore"></a>Dış meta veri deposu 'ndan geçiş
+Hive tablolarının yeni bir depolama hesabına geçirilmesi ayrı bir adım olarak yapılmalıdır. Bkz. [depolama hesapları arasında Hive geçişi](./hive-migration-across-storage-accounts.md).
 
-### <a name="1-run-major-compaction-on-acid-tables-in-hdinsight-36"></a>1. HDInsight 'ta ACID tablolarında büyük sıkıştırmayı çalıştırın 3,6
+## <a name="steps-to-upgrade"></a>Yükseltme adımları
 
-HDInsight 3,6 ve HDInsight 4,0 ACID tabloları ACID değişimleri 'ı farklı şekilde anlayın. Geçişten önce gereken tek eylem, 3,6 kümesindeki her bir ACID tablosuna göre ' Ana ' sıkıştırmayı çalıştırmak içindir. Düzenleme hakkındaki ayrıntılar için [Hive dilinde el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) bakın.
+### <a name="1-prepare-the-data"></a>1. verileri hazırlama
 
-### <a name="2-copy-sql-database"></a>2. SQL veritabanı 'nı kopyalayın
-Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış bir meta veri deposu kullanıyorsanız, meta veri deposu 'nun bir kopyasını oluşturmanın güvenli ve kolay yöntemlerinden biri işlevi kullanarak veritabanını farklı bir adla [geri yüklemektir](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) `RESTORE` .  HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) .
+* HDInsight 3,6 varsayılan olarak ACID tablolarını desteklemez. Ancak ACID tabloları mevcutsa, bunlara ' Ana ' sıkıştırmayı çalıştırın. Düzenleme hakkındaki ayrıntılar için [Hive dilinde el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) bakın.
 
-### <a name="3-upgrade-metastore-schema"></a>3. meta veri deposu şemasını yükselt
-Meta veri **kopyalama** işlemi tamamlandıktan sonra, yeni meta veri deposunu Hive 3 şemasına yükseltmek Için mevcut HDInsight 3,6 kümesindeki [komut dosyası eyleminde](../hdinsight-hadoop-customize-cluster-linux.md) bir şema yükseltme betiği çalıştırın. (Bu adım, yeni meta veri deposunu bir kümeye bağlanmasını gerektirmez.) Bu, veritabanının HDInsight 4,0 meta veri deposu olarak eklenmesini sağlar.
+* [Azure Data Lake Storage 1.](../overview-data-lake-storage-gen1.md)kullanıyorsanız, Hive tablo konumları büyük olasılıkla kümenin ıseconfigurations yapılandırmasına bağımlıdır. Bu konumları diğer kümelere taşınabilir hale getirmek için aşağıdaki betik eylemini çalıştırın. [Çalışan bir küme Için betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)' ne bakın.
 
-Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`Hive meta veri deposu **kopyası** için boşluklarla ayırarak uygun değerlerle değiştirin. SQL Server adını belirtirken ". database.windows.net" eklemeyin.
+    |Özellik | Değer |
+    |---|---|
+    |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxhivemigrationv01/hive-adl-expand-location-v01.sh`|
+    |Düğüm türleri|Head|
+    |Parametreler||
 
-|Özellik | Değer |
-|---|---|
-|Betik türü|-Özel|
-|Name|Hive yükseltmesi|
-|Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Düğüm türleri|Head|
-|Parametreler|SQLSERVERNAME DATABASENAME KULLANıCı ADı PAROLASı|
+### <a name="2-copy-the-sql-database"></a>2. SQL veritabanını kopyalayın
 
-> [!Warning]  
-> HDInsight 3,6 meta veri şemasını HDInsight 4,0 şemasına dönüştüren yükseltme, geri alınamaz.
+* Küme varsayılan bir Hive meta veri deposu kullanıyorsa, meta verileri dış bir meta yüklemeye aktarmak için bu [Kılavuzu](./hive-default-metastore-export-import.md) izleyin. Ardından, yükseltme için dış meta veri deposu 'nın bir kopyasını oluşturun.
 
-Veritabanında aşağıdaki SQL sorgusunu çalıştırarak yükseltmeyi doğrulayabilirsiniz:
+* Küme bir dış Hive meta veri deposu kullanıyorsa, bir kopyasını oluşturun. Seçenekler [içeri/dışarı aktarma](../../azure-sql/database/database-export.md) ve [zaman içindeki bir noktaya geri yükleme](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)içerir.
 
-```sql
-select * from dbo.version
-```
+### <a name="3-upgrade-the-metastore-schema"></a>3. meta veri deposu şemasını yükseltin
+
+Bu adım, [`Hive Schema Tool`](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool) meta veri deposu şemasını yükseltmek Için hdınsight 4,0 ' den yararlanır.
+
+> [!Warning]
+> Bu adım geri alınamaz. Bunu yalnızca meta veri deposu kopyasında çalıştırın.
+
+1. 4,0 Hive 'e erişmek için geçici bir HDInsight 4,0 kümesi oluşturun `schematool` . Bu adım için [varsayılan Hive meta veri deposu](../hdinsight-use-external-metadata-stores.md#default-metastore) kullanabilirsiniz.
+
+1. HDInsight 4,0 kümesinden, `schematool` hedef hdınsight 3,6 meta öğesini yükseltmek için yürütün:
+
+    ```sh
+    SERVER='servername.database.windows.net'  # replace with your SQL Server
+    DATABASE='database'  # replace with your 3.6 metastore SQL Database
+    USERNAME='username'  # replace with your 3.6 metastore username
+    PASSWORD='password'  # replace with your 3.6 metastore password
+    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+    /usr/hdp/$STACK_VERSION/hive/bin/schematool -upgradeSchema -url "jdbc:sqlserver://$SERVER;databaseName=$DATABASE;trustServerCertificate=false;encrypt=true;hostNameInCertificate=*.database.windows.net;" -userName "$USERNAME" -passWord "$PASSWORD" -dbType "mssql" --verbose
+    ```
+
+    > [!NOTE]
+    > Bu yardımcı program `beeline` IÇINDEKI SQL betiklerini yürütmek için istemcisini kullanır `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` .
+    >
+    > Bu betiklerdeki SQL sözdizimi diğer istemci araçlarıyla uyumlu değildir. Örneğin, [Azure portalında](../../azure-sql/database/connect-query-portal.md) [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve sorgu Düzenleyicisi `GO` her komuttan sonra anahtar sözcük gerektirir.
+    >
+    > Kaynak kapasitesi veya işlem zaman aşımları nedeniyle herhangi bir betik başarısız olursa, SQL veritabanını ölçeklendirin.
+
+1. Son sürümü Query ile doğrulayın `select schema_version from dbo.version` .
+
+    Çıktı, HDInsight 4,0 kümesinden aşağıdaki Bash komutuyla eşleşmelidir.
+
+    ```bash
+    grep . /usr/hdp/$(hdp-select --version)/hive/scripts/metastore/upgrade/mssql/upgrade.order.mssql | tail -n1 | rev | cut -d'-' -f1 | rev
+    ```
+
+1. Geçici HDInsight 4,0 kümesini silin.
 
 ### <a name="4-deploy-a-new-hdinsight-40-cluster"></a>4. yeni bir HDInsight 4,0 kümesi dağıtın
 
-1. Yükseltilen meta veri deposunu yeni kümenin Hive meta veri deposu olarak belirtin.
+[Yükseltilen Hive meta veri deposu](../hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation) ve aynı depolama hesaplarını seçerek yeni bir HDInsight 4,0 kümesi oluşturun.
 
-1. Ancak tablolardaki gerçek veriler, kümenin gerekli depolama hesaplarına erişimi olana kadar erişilebilir değildir.
-HDInsight 3,6 kümesindeki Hive tablolarının depolama hesaplarının, yeni HDInsight 4,0 kümesinin birincil veya ikincil depolama hesapları olarak belirtildiğinden emin olun.
-HDInsight kümelerine depolama hesapları ekleme hakkında daha fazla bilgi için bkz. [HDInsight 'a ek depolama hesapları ekleme](../hdinsight-hadoop-add-storage.md).
+* Yeni küme, aynı varsayılan dosya sistemine sahip olmasını gerektirmez.
 
-### <a name="5-complete-migration-with-a-post-upgrade-tool-in-hdinsight-40"></a>5. HDInsight 'ta yükseltme sonrası bir araçla geçişi tam olarak yapın 4,0
+* Meta veri deposu birden çok depolama hesabında bulunan tablolar içeriyorsa, bu tablolara erişmek için bu depolama hesaplarını yeni kümeye eklemeniz gerekir. Bkz. [HDInsight 'a ek depolama hesapları ekleme](../hdinsight-hadoop-add-storage.md).
 
-Yönetilen tablolar, HDInsight 4,0 ' de varsayılan olarak ACID uyumlu olmalıdır. Meta veri geçişini tamamladıktan sonra, daha önce ACID olmayan yönetilen tabloları HDInsight 4,0 kümesiyle uyumlu hale getirmek için yükseltme sonrası bir araç çalıştırın. Bu araç aşağıdaki dönüştürmeyi uygular:
+* Depolama alanı erişilebilirliği nedeniyle Hive işleri başarısız olursa, tablo konumunun kümeye eklenmiş bir depolama hesabında olduğunu doğrulayın.
 
-|3.6 |4.0 |
-|---|---|
-|Dış tablolar|Dış tablolar|
-|ACID olmayan yönetilen tablolar|' External. Table. temizlemeyi ' = ' true ' özelliğine sahip dış tablolar|
-|ACID yönetilen tabloları|ACID yönetilen tabloları|
+    Tablo konumunu tanımlamak için aşağıdaki Hive komutunu kullanın:
 
-SSH kabuğu 'nu kullanarak HDInsight 4,0 kümesinden Hive yükseltme sonrası aracı 'nı yürütün:
-
-1. SSH kullanarak küme baş düğümüne 'a bağlanın. Yönergeler için bkz. [SSH kullanarak HDInsight 'A bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Şunu çalıştırarak bir oturum açma kabuğunu Hive kullanıcısı olarak açın `sudo su - hive`
-1. Kabuktan aşağıdaki komutu yürütün.
-
-    ```bash
-    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
-    /usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+    ```sql
+    SHOW CREATE TABLE ([db_name.]table_name|view_name);
     ```
 
-Araç tamamlandıktan sonra, Hive ambarınız HDInsight 4,0 için hazırlanacaktır.
+### <a name="5-convert-tables-for-acid-compliance"></a>5. ACID uyumluluğu için tabloları dönüştürün
 
-## <a name="migrate-from-internal-metastore"></a>İç meta veri deposu 'ndan geçiş
+Yönetilen tablolar HDInsight 4,0 ' de ACID uyumlu olmalıdır. `strictmanagedmigration`Tüm ACID olmayan yönetilen tabloları özelliği olan dış tablolara dönüştürmek Için hdınsight 4,0 üzerinde çalıştırın `'external.table.purge'='true'` . Headnode 'dan yürütün:
 
-HDInsight 3,6 kümeniz bir iç Hive meta veri deposu kullanıyorsa, meta veri deposu 'ndan nesne tanımlarını dışarı aktarmak için Hive sorguları üreten bir betiği çalıştırmak için aşağıdaki adımları izleyin.
-
-HDInsight 3,6 ve 4,0 kümelerinin aynı depolama hesabını kullanması gerekir.
-
-> [!NOTE]
->
-> * ACID tablolarında, tablonun altındaki verilerin yeni bir kopyası oluşturulur.
->
-> * Bu betik yalnızca Hive veritabanlarının, tablolarının ve bölümlerinin geçirilmesini destekler. Görünümler, UDF 'ler ve tablo kısıtlamaları gibi diğer meta veri nesnelerinin el ile kopyalanması beklenmektedir.
->
-> * Bu komut dosyası tamamlandıktan sonra, eski kümenin betikte başvuruda bulunulan tablolara veya veritabanlarına erişmek için artık kullanılmayacak olduğu varsayılır.
->
-> * Tüm yönetilen tablolar, HDInsight 4,0 ' de işlem yapılabilir hale gelir. İsteğe bağlı olarak, verileri ' External. Table. temizlemeyi ' = ' true ' özelliğine sahip bir dış tabloya aktararak tabloyu işlem dışı tutun. Örneğin,
->
->    ```SQL
->    create table tablename_backup like tablename;
->    insert overwrite table tablename_backup select * from tablename;
->    create external table tablename_tmp like tablename;
->    insert overwrite table tablename_tmp select * from tablename;
->    alter table tablename_tmp set tblproperties('external.table.purge'='true');
->    drop table tablename;
->    alter table tablename_tmp rename to tablename;
->    ```
-
-1. [Secure Shell (SSH) istemcisi](../hdinsight-hadoop-linux-use-ssh-unix.md)kullanarak HDInsight 3,6 kümesine bağlanın.
-
-1. Açık SSH oturumunda, **alltables. HQL** adlı bir dosya oluşturmak için aşağıdaki betik dosyasını indirin.
-
-    ```bash
-    wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
-    chmod 755 exporthive_hdi_3_6.sh
-    ```
-
-    * Normal bir HDInsight kümesi için, ESP olmadan yalnızca yürütün `exporthive_hdi_3_6.sh` .
-
-    * ESP içeren bir küme için, kinıt ve bağımsız değişkenleri Beeline ile değiştirin: Azure AD kullanıcısına yönelik kullanıcı ve etkı ALANıNı tam Hive izinleriyle tanımlayarak aşağıdakileri çalıştırın.
-
-        ```bash
-        USER="USER"  # replace USER
-        DOMAIN="DOMAIN"  # replace DOMAIN
-        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
-        kinit "$USER@$DOMAIN_UPPER"
-        ```
-
-        ```bash
-        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
-        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
-        ./exporthive_hdi_3_6.sh "$BEE_CMD"
-        ```
-
-1. SSH oturumundan çıkın. Sonra **alltables. HQL** 'i yerel olarak indirmek için bir SCP komutu girin.
-
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
-    ```
-
-1. **Alltables. HQL** ' i *Yeni* HDInsight kümesine yükleyin.
-
-    ```bash
-    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
-    ```
-
-1. Ardından, *Yeni* HDInsight 4,0 kümesine bağlanmak için SSH kullanın. Aşağıdaki kodu bir SSH oturumundan bu kümeye çalıştırın:
-
-    ESP olmadan:
-
-    ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -f alltables.hql
-    ```
-
-    ESP ile:
-
-    ```bash
-    USER="USER"  # replace USER
-    DOMAIN="DOMAIN"  # replace DOMAIN
-    DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
-    kinit "$USER@$DOMAIN_UPPER"
-    ```
-
-    ```bash
-    hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
-    beeline -u "jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http" -n "$USER@$DOMAIN" -f alltables.hql
-    ```
-
-3,6 HDInsight 'tan ACID yönetilmeyen tabloları, HDInsight 4,0 ' deki ACID tarafından yönetilen tablolara dönüştürülemediğinden, dış meta veri geçişi için yükseltme sonrası aracı burada uygulanmaz.
-
-> [!Important]  
-> HDInsight 4,0 ' deki yönetilen tablolara (3,6 ' den geçirilen tablolar dahil) HDInsight 3,6 kümeleri de dahil olmak üzere diğer hizmetler veya uygulamalar tarafından erişilmemelidir.
+```bash
+sudo su - hive
+STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+/usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+```
 
 ## <a name="secure-hive-across-hdinsight-versions"></a>HDInsight sürümleri arasında güvenli Hive
 
-HDInsight 3,6 ' den itibaren HDInsight, HDInsight Kurumsal Güvenlik Paketi (ESP) kullanarak Azure Active Directory tümleştirilir. ESP, küme içindeki belirli kaynakların izinlerini yönetmek için Kerberos ve Apache Ranger kullanır. HDInsight 3,6 ' de Hive 'e karşı dağıtılan Ranger ilkeleri, aşağıdaki adımlarla HDInsight 4,0 ' e geçirilebilir:
+HDInsight, isteğe bağlı olarak HDInsight Kurumsal Güvenlik Paketi (ESP) kullanarak Azure Active Directory tümleştirilir. ESP, küme içindeki belirli kaynakların izinlerini yönetmek için Kerberos ve Apache Ranger kullanır. HDInsight 3,6 ' de Hive 'e karşı dağıtılan Ranger ilkeleri, aşağıdaki adımlarla HDInsight 4,0 ' e geçirilebilir:
 
 1. HDInsight 3,6 kümenizdeki Ranger Service Manager paneline gidin.
 2. **HIVE** adlı ilkeye gidin ve ilkeyi bir JSON dosyasına dışarı aktarın.
@@ -189,29 +121,17 @@ HDInsight 3,6 ' den itibaren HDInsight, HDInsight Kurumsal Güvenlik Paketi (ESP
 4. HDInsight 4,0 kümenizdeki **Ranger Service Manager** paneline gidin.
 5. **HIVE** adlı ilkeye gidin ve adım 2 ' den Ranger ilkesi JSON 'sini içeri aktarın.
 
-## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>Uyumluluğu denetle ve kodları test uygulaması 'nda gerektiği şekilde değiştir
+## <a name="hive-changes-in-hdinsight-40-that-may-require-application-changes"></a>HDInsight 4,0 ' de uygulama değişiklikleri gerektirebilecek Hive değişiklikleri
 
-Mevcut programlar ve sorgular gibi iş yüklerini geçirirken, lütfen sürüm notlarını ve değişiklikleri denetleyin ve değişiklikleri gerekli şekilde uygulayın. HDInsight 3,6 kümeniz paylaşılan bir Spark ve Hive meta veri deposu kullanıyorsa, [Hive ambarı bağlayıcısı kullanılarak ek yapılandırma](./apache-hive-warehouse-connector.md) gerekir.
+* ACID tabloları için Spark ve Hive arasında meta tablo paylaşmak üzere [Hive ambarı bağlayıcısını kullanarak ek yapılandırma](./apache-hive-warehouse-connector.md) konusuna bakın.
 
-## <a name="deploy-new-app-for-production"></a>Üretim için yeni uygulama dağıtma
+* HDInsight 4,0, [depolama tabanlı yetkilendirme](https://cwiki.apache.org/confluence/display/Hive/Storage+Based+Authorization+in+the+Metastore+Server)kullanır. Dosya izinlerini değiştirir veya, Hive 'den farklı bir kullanıcı olarak klasör oluşturursanız, büyük olasılıkla depolama izinlerine göre Hive hatalarına ulaşırsınız. Onarmak için `rw-` kullanıcıya erişim izni verin. Bkz. [Gupermissions Kılavuzu](https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
 
-Yeni kümeye geçmek için, örneğin yeni bir istemci uygulaması yükleyebilir ve yeni bir üretim ortamı olarak kullanabilir ya da mevcut istemci uygulamanızı yükseltebilir ve HDInsight 4,0 ' e geçebilirsiniz.
+* `HiveCLI` ile değiştirilmiştir `Beeline` .
 
-## <a name="switch-hdinsight-40-to-the-production"></a>HDInsight 4,0 ' i üretime değiştirme
+Ek değişiklikler için [hdınsight 4,0 duyurusuna](../hdinsight-version-release.md) bakın.
 
-Test sırasında meta veri deposu 'nda farklılıklar oluşturulmuşsa, geçiş yapmadan önce değişiklikleri güncelleştirmeniz gerekir. Bu durumda, dışarı aktarabilir & meta veri deposunu içeri aktarabilir ve sonra yeniden yükseltebilirsiniz.
-
-## <a name="remove-the-old-production"></a>Eski üretimi kaldır
-
-Yayının tamamlandığını ve tamamen çalıştığını doğruladıktan sonra 3,6 sürümünü ve önceki meta veri deposunu kaldırabilirsiniz. Lütfen ortamı silmeden önce her şeyin geçirildiğinden emin olun.
-
-## <a name="query-execution-across-hdinsight-versions"></a>HDInsight sürümleri arasında sorgu yürütme
-
-HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayıklamanın iki yolu vardır. HiveCLI, bir komut satırı deneyimi sağlar ve [tez görünümü/Hive görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md) GUI tabanlı bir iş akışı sağlar.
-
-HDInsight 4,0 ' de HiveCLI, Beeline ile değiştirilmiştir. Tez görünümü/Hive görünümü GUI tabanlı bir iş akışı sağlar. HiveCLI, Hiveserver 1 için bir Thrift istemcsahiptir ve Beeline, Hiveserver 2 ' ye erişim sağlayan bir JDBC istemcidedir. Beeline Ayrıca, diğer bir JDBC uyumlu veritabanı uç noktasına bağlanmak için kullanılabilir. Beline, herhangi bir yükleme gerekmeden HDInsight 4,0 ' de kullanıma sunulmuştur.
-
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="further-reading"></a>Daha fazla bilgi
 
 * [HDInsight 4,0 duyurusu](../hdinsight-version-release.md)
 * [HDInsight 4,0 derin bakış](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: b5becd8ddaf74ab2acd059054a095ce9d21c178f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 49ec43e59989f3fdad8f5731867953cc7cbb5757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699717"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Sürekli tümleştirme ve teslim için otomatik yayımlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "100366849"
 
 Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak test etme ve olası sürekli dağıtım, sürekli tümleştirme sırasında gerçekleşen teste ve bir hazırlama veya üretim sistemine yapılan değişiklikleri geri gönderme yöntemidir.
 
-Azure Data Factory, sürekli tümleştirme ve teslim (CI/CD), Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
+Azure Data Factory'de sürekli tümleştirme ve sürekli teslim (CI/CD) Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
 
 - Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)tümleştirme kullanılarak otomatik dağıtım.
 - Azure Resource Manager ile Data Factory UX tümleştirmesi kullanarak Kaynak Yöneticisi şablonunu el ile karşıya yükleyin.
@@ -119,7 +119,7 @@ Başlamak için aşağıdaki adımları izleyin:
             "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
         },
         "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.2"
+            "@microsoft/azure-data-factory-utilities":"^0.1.3"
         }
     } 
     ```

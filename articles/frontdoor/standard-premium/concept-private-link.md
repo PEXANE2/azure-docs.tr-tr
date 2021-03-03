@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: dead60b9d8e0872f3d46b1f223ccf5e6697cbd90
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100522"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715522"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Azure ön kapı Standart/Premium 'daki özel bağlantıyla başlangıç sürecinizi güvenli hale getirme (Önizleme)
 
@@ -30,7 +30,7 @@ ms.locfileid: "101100522"
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure ön kapısı Premium SKU 'SU, özel bağlantı hizmetini kullanarak başlangıç kaynağınıza bağlanabilir. Uygulamalarınız özel sanal ağınızda veya bir PaaS hizmetinin arkasında barındırılabilir, genel Internet 'ten erişilemez.
+Azure ön kapı Premium SKU 'SU, özel bağlantı hizmeti 'ni kullanarak Web uygulaması ve depolama hesabı arkasındaki kaynak kaynağınıza bağlanabilir ve kaynağınıza genel olarak erişilebilmesini sağlar.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Ön kapı özel uç noktaları mimarisi":::
 
@@ -38,7 +38,8 @@ Azure ön kapısı Premium yapılandırmasında özel bağlantı noktasını etk
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="Özel uç noktayı etkinleştir":::
 
-Azure ön kapı Premium, çeşitli kaynak türlerini destekler. Kaynağınız özel ağınızdaki bir sanal makine kümesinde barındırılıyorsa, önce bir iç standart yük dengeleyici oluşturmanız, özel bağlantı hizmetinin standart yük dengeleyiciye etkinleştirilmesi ve ardından özel kaynak türü seçmeniz gerekir. Özel bağlantı yapılandırması için, kaynak türü olarak "Microsoft. Network/PrivateLinkServices" i seçin. Azure Web uygulaması ve depolama hesabı gibi PaaS hizmetleri için, özel bağlantı hizmetini önce karşılık gelen hizmetlerden etkinleştirebilir ve Microsoft. Web uygulaması için Web/siteleri ve depolama hesabı özel bağlantı hizmeti türleri için Microsoft. Storage/StorageAccounts ' ı seçebilirsiniz.
+> [!NOTE]
+> Özel bağlantı kaynağını etkinleştirdikten ve özel uç nokta onayını onayladıktan sonra, bağlantının kurulması birkaç dakika sürer. Bu süre boyunca, kaynağa yönelik istekler bir ön kapı hata iletisi alır. Bağlantı kurulduktan sonra hata iletisi açılır.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -50,6 +51,5 @@ Azure ön kapı özel uç noktaları, platform tarafından ve Azure ön kapısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure ön kapı Premium 'u özel bağlantı hizmeti kullanarak sanal makinelere bağlamak için bkz. [Özel uç nokta oluşturma](../../private-link/create-private-endpoint-portal.md).
 * Azure ön kapı Premium 'u özel bağlantı hizmeti aracılığıyla Web uygulamanıza bağlamak için bkz. [özel bir uç nokta kullanarak Web uygulamasına bağlanma](../../private-link/tutorial-private-endpoint-webapp-portal.md).
 * Azure ön kapı Premium 'u özel bağlantı hizmeti aracılığıyla depolama hesabınıza bağlamak için bkz. [Özel uç nokta kullanarak depolama hesabına bağlanma](../../private-link/tutorial-private-endpoint-storage-portal.md).

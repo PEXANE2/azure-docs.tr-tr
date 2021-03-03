@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380245"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726436"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-Özellik bayraklarınız içinde filtreler kullanıyorsanız, [Microsoft. FeatureManagement. featurefilters](/dotnet/api/microsoft.featuremanagement.featurefilters) ad alanını dahil etmeniz ve yöntemin genel türü olarak kullanmak istediğiniz filtrenin tür adını belirten [addfeaturefilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) öğesine bir çağrı eklemeniz gerekir. İşlevselliği dinamik olarak etkinleştirmek ve devre dışı bırakmak için özellik filtrelerini kullanma hakkında daha fazla bilgi için bkz. [hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştirme](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core).
+Özellik bayraklarınız içinde filtreler kullanıyorsanız, [Microsoft. FeatureManagement. featurefilters](/dotnet/api/microsoft.featuremanagement.featurefilters) ad alanını dahil etmeniz ve yöntemin genel türü olarak kullanmak istediğiniz filtrenin tür adını belirten [addfeaturefilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) öğesine bir çağrı eklemeniz gerekir. İşlevselliği dinamik olarak etkinleştirmek ve devre dışı bırakmak için özellik filtrelerini kullanma hakkında daha fazla bilgi için bkz. [hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştirme](./howto-targetingfilter-aspnet-core.md).
 
 Aşağıdaki örnek, adlı yerleşik bir özellik filtresinin nasıl kullanılacağını gösterir `PercentageFilter` :
 
@@ -211,14 +211,14 @@ Kurala göre, `FeatureManagement` Bu JSON belgesinin bölümü Özellik bayrağ�
 
 * `FeatureA`*Açık*.
 * `FeatureB`*kapalıdır*.
-* `FeatureC` özelliği olan adlı bir filtre belirtir `Percentage` `Parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağın *Açık* olması için yüzde 50 olasılık değerini belirtir. Özellik filtrelerini kullanma hakkında nasıl yapılır Kılavuzu için bkz. [koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanma](/azure/azure-app-configuration/howto-feature-filters-aspnet-core).
+* `FeatureC` özelliği olan adlı bir filtre belirtir `Percentage` `Parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağın *Açık* olması için yüzde 50 olasılık değerini belirtir. Özellik filtrelerini kullanma hakkında nasıl yapılır Kılavuzu için bkz. [koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanma](./howto-feature-filters-aspnet-core.md).
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Ieaturemanager 'a erişmek için bağımlılık ekleme 'yi kullanma 
 
-Özellik bayrağı değerlerini el ile denetleme gibi bazı işlemlerde, [Ifeaturemanager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)'ın bir örneğini almanız gerekir. ASP.NET Core MVC 'de, bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz `IFeatureManager` . Aşağıdaki örnekte, `IFeatureManager` bir denetleyicinin oluşturucusunun imzasına bir tür bağımsız değişkeni eklenir. Çalışma zamanı başvuruyu otomatik olarak çözer ve oluşturucuyu çağırırken bir arabirim sağlar. Denetleyicinin zaten oluşturucuda bir veya daha fazla bağımlılık ekleme bağımsız değişkenine sahip olduğu bir uygulama şablonu kullanıyorsanız (gibi) `ILogger` , yalnızca `IFeatureManager` ek bir bağımsız değişken olarak ekleyebilirsiniz:
+Özellik bayrağı değerlerini el ile denetleme gibi bazı işlemlerde, [Ifeaturemanager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)'ın bir örneğini almanız gerekir. ASP.NET Core MVC 'de, bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz `IFeatureManager` . Aşağıdaki örnekte, `IFeatureManager` bir denetleyicinin oluşturucusunun imzasına bir tür bağımsız değişkeni eklenir. Çalışma zamanı başvuruyu otomatik olarak çözer ve oluşturucuyu çağırırken bir arabirim sağlar. Denetleyicinin zaten oluşturucuda bir veya daha fazla bağımlılık ekleme bağımsız değişkenine sahip olduğu bir uygulama şablonu kullanıyorsanız (gibi) `ILogger` , yalnızca `IFeatureManager` ek bir bağımsız değişken olarak ekleyebilirsiniz:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     
@@ -285,7 +285,7 @@ public static class MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin ortak bir özelliği, bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme ve bu durumda kodun bir bölümünü çalıştırma. Örneğin:
+Özellik yönetiminin ortak bir özelliği, bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme ve bu durumda kodun bir bölümünü çalıştırma. Örnek:
 
 ```csharp
 IFeatureManager featureManager;

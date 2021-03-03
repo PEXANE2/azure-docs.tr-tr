@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737312"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686487"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure portal Azure Arc veri denetleyicisi oluşturma
 
@@ -48,6 +48,10 @@ Azure portal ve Azure Data Studio kullanarak Azure Arc veri denetleyicisi oluşt
 1. Bir dağıtım yapılandırma profili seçin.
 1. **Azure Studio 'Da aç** düğmesine tıklayın.
 1. Bir sonraki ekranda, seçimlerinizin ve oluşturulan bir not defterinizin özetini görürsünüz.  Not defterini indirmek için **sağlama Not defterini indir** düğmesine tıklayabilirsiniz.
+
+   > [!IMPORTANT]
+   > Azure Red Hat OpenShift veya Red Hat OpenShift kapsayıcı platformunda, veri denetleyicisini oluşturmadan önce güvenlik bağlamı kısıtlamasını uygulamanız gerekir. [OpenShift üzerinde Azure Arc etkin veri Hizmetleri için bir güvenlik bağlamı kısıtlaması uygulama](how-to-apply-security-context-constraint.md)konusundaki yönergeleri izleyin.
+
 1. Azure Data Studio bölümünde Not defterini açın ve üstteki **Tümünü Çalıştır** düğmesine tıklayın.
 1. Veri denetleyicisi oluşturma işleminin tamamlanabilmesi için Not defteri 'ndeki komut istemlerini ve yönergeleri izleyin.
 

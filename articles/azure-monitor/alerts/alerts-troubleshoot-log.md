@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738659"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
 Bu makalede, Azure Izleyici 'de günlük uyarılarla ilgili yaygın sorunları nasıl giderecağınızı gösterilmektedir. Ayrıca, günlük uyarılarının işlevleri ve yapılandırmasıyla ilgili sık karşılaşılan sorunlara çözümler sağlar.
 
-Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](../platform/action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
+Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../logs/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
 
 > [!NOTE]
 > Bu makalede, Azure portal tetiklenen bir uyarı kuralı gösterdiği ve ilişkili bir eylem grubu tarafından bir bildirim gerçekleştirilmediği durumlar dikkate almaz. Bu gibi durumlarda [, sorun giderme](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)hakkındaki ayrıntılara bakın.
@@ -26,7 +26,7 @@ Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıkl
 
 ### <a name="data-ingestion-time-for-logs"></a>Günlükler için veri alımı süresi
 
-Azure Izleyici, [günlük alma gecikmesi](../platform/data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
+Azure Izleyici, [günlük alma gecikmesi](../logs/data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
 
 Günlüklerde yarı yapılandırılmış veriler ve doğal olarak ölçülerden daha fazla bilgi verilir. Tetiklenen uyarılarda 4 dakikalık bir gecikme yaşıyorsanız, [ölçüm uyarılarını](alerts-metric-overview.md)kullanmayı göz önünde bulundurmanız gerekir. [Günlükler için ölçüm uyarılarını](alerts-metric-logs.md)kullanarak günlüklerden ölçüm deposuna veri gönderebilirsiniz.
 
@@ -60,7 +60,7 @@ Geçerli ScheduledQueryRules API 'SI, beklenen şekilde çalışacak şekilde [�
 
 ### <a name="alert-triggered-by-partial-data"></a>Kısmi verilerin tetiklediği uyarı
 
-Azure Izleyici, [günlük alma gecikmesi](../platform/data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
+Azure Izleyici, [günlük alma gecikmesi](../logs/data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
 
 Günlüklerde yarı yapılandırılmış veriler ve doğal olarak ölçülerden daha fazla bilgi verilir. Tetiklenen uyarılarda çok sayıda hatalı ateşlenir, [ölçüm uyarılarını](alerts-metric-overview.md)kullanmayı göz önünde bulundurmanız gerekir. [Günlükler için ölçüm uyarılarını](alerts-metric-logs.md)kullanarak günlüklerden ölçüm deposuna veri gönderebilirsiniz.
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 Sorguya uyarı mantığı eklemeniz ve bu durum bile sorunlara neden olabilir. Yukarıdaki örnekte, sorgunuza eklerseniz, `count` Uyarı hizmeti ' nin yapamasından bu yana her zaman değeri 1 ' de olur `count` `count` .
 
-En iyi duruma getirilmiş sorgu, günlük uyarı hizmetinin çalıştığı şeydir. Değiştirilen sorguyu Log Analytics [portalında](../log-query/log-query-overview.md) veya [API](/rest/api/loganalytics/)'de çalıştırabilirsiniz.
+En iyi duruma getirilmiş sorgu, günlük uyarı hizmetinin çalıştığı şeydir. Değiştirilen sorguyu Log Analytics [portalında](../logs/log-query-overview.md) veya [API](/rest/api/loganalytics/)'de çalıştırabilirsiniz.
 
 Çalışma alanları ve Application Insights için, koşul bölmesinde **yürütülecek sorgu** olarak adlandırılır. Diğer tüm kaynak türlerinde, koşul sekmesinde **son uyarı sorgusunu göster** ' i seçin.
 
@@ -108,7 +108,7 @@ Azure Izleyici sürekli olarak başarısız olursa bir hafta sonra günlük uyar
 Bir günlük uyarı kuralı oluşturulduğunda, sorgu doğru sözdizimi için onaylanır. Ancak bazen, günlük uyarı kuralında belirtilen sorgu başarısız olabilir. Bazı yaygın nedenler şunlardır:
 
 - Kurallar API aracılığıyla oluşturuldu ve Kullanıcı tarafından doğrulama atlandı.
-- Sorgu [birden fazla kaynak üzerinde çalışır](../log-query/cross-workspace-query.md) ve bir veya daha fazla kaynak silinmiş veya taşınmış.
+- Sorgu [birden fazla kaynak üzerinde çalışır](../logs/cross-workspace-query.md) ve bir veya daha fazla kaynak silinmiş veya taşınmış.
 - Sorgu şu nedenle [başarısız olur](https://dev.loganalytics.io/documentation/Using-the-API/Errors) :
     - Günlüğe kaydetme çözümü [çalışma alanına dağıtılmadı](../insights/solutions.md#install-a-monitoring-solution), bu nedenle tablolar oluşturulmadı.
     - Veriler 30 gün boyunca sorgudaki bir tabloya akan şekilde durdu.
@@ -219,5 +219,5 @@ Sorgu yedi gün boyunca sürekli başarısız olursa, Azure Izleyici günlük uy
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
-- [Günlük uyarılarını yapılandırma](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-- [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Günlük uyarılarını yapılandırma](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Günlük sorguları](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.

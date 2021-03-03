@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987785"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703690"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -105,7 +105,7 @@ Backint aracılığıyla sunulan SAP HANA Azure VM 'lerinde yedeklemeler (log ve
 
 HANA 'nın geri dönüş bileşeni, veritabanı dosyalarının bulunduğu temel disklere bağlı olan, daha sonra Azure Backup hizmeti tarafından okunan ve Azure kurtarma hizmetleri kasasından taşınan temel disklere bağlanan ' kanallar ' (bir kanal ve yazılacak bir kanal) sağlar. Azure Backup hizmeti, biriktirme listesi yerel doğrulama denetimlerine ek olarak akışları doğrulamak için de bir sağlama toplamı gerçekleştirir. Bu doğrulamalar, Azure kurtarma hizmetleri kasasında bulunan verilerin gerçekten güvenilir ve kurtarılabilir olmasını sağlayacaktır.
 
-Akışlar öncelikli olarak disklerle ilgilendiğinden, yedekleme ve geri yükleme performansını ölçmek için disk performansını anlamanız gerekir. Azure VM 'lerinde disk aktarım hızını ve performansını derinlemesine anlamak için [Bu makaleye](https://docs.microsoft.com/azure/virtual-machines/disks-performance) bakın. Bunlar yedekleme ve geri yükleme performansı için de geçerlidir.
+Akışlar öncelikli olarak disklerle ilgilendiğinden, yedekleme ve geri yükleme performansını ölçmek için disk performansını anlamanız gerekir. Azure VM 'lerinde disk aktarım hızını ve performansını derinlemesine anlamak için [Bu makaleye](../virtual-machines/disks-performance.md) bakın. Bunlar yedekleme ve geri yükleme performansı için de geçerlidir.
 
 **Azure Backup hizmeti, günlük olmayan yedeklemeler (örneğin, tam, türev ve artımlı) ve Hana için günlük yedeklemeleri için 100 MB/sn 'ye kadar ~ 420 Mbps elde etme girişiminde bulunur**. Yukarıda belirtildiği gibi, bunlar garantili hızlardır ve aşağıdaki faktörlere bağlı olarak değişir:
 
@@ -267,8 +267,8 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
    ![Değişiklik yedekleme ilkesi](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Artımlı yedeklemeler artık genel önizlemede kullanılabilir. Günlük yedekleme olarak bir fark veya artımlı seçebilirsiniz, ancak ikisini birden kullanamazsınız.
-   >
+   >Günlük yedekleme olarak bir fark veya artımlı seçebilirsiniz, ancak ikisini birden kullanamazsınız.
+
 7. **Artımlı yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
     * En çok, günde bir artımlı yedekleme tetikleyebilirsiniz.
     * Artımlı yedeklemeler en fazla 180 gün boyunca korunabilir. Daha uzun süre bekletmeniz gerekiyorsa tam yedekleme ilkesini kullanmanız gerekir.

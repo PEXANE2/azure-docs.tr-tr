@@ -5,17 +5,26 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 02/18/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 241a2be834d7828cdb56f59313c0c1a9c478ff77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7151c110fd50f7485aa0b130832aace4f3143ad9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750164"
 ---
 - Bu özellik şu anda yalnızca Premium SSD 'Ler için destekleniyor.
 - Diskin katmanını değiştirmeden önce VM 'nizi serbest bırakabilir veya diski çalışan bir VM 'den ayırmanız gerekir.
 - P60, P70 ve P80 performans katmanları yalnızca 4.096 GiB 'den büyük diskler tarafından kullanılabilir.
 - Diskin performans katmanı 12 saatte bir yalnızca bir kez indirgenir.
+
+## <a name="change-performance-tier-without-downtime-preview"></a>Kesinti olmadan performans katmanını değiştirme (Önizleme)
+
+Normalde, VM 'nizi serbest bırakmak veya performans katmanınızı değiştirmek için diskinizin bağlantısını ayırmanız gerekir. Ancak bu önizleme özelliğini etkinleştirirseniz, sanal makineyi serbest bırakmak veya katmanı değiştirmek için diskinizi ayırmanız gerekmez. Önizlemeye [buradan](https://aka.ms/liveperftiersignup)kaydolabilirsiniz.
+
+Önizleme aşağıdaki sınırlamalara sahiptir:
+- Yalnızca EastUS2EUAP bölgesinde kullanılabilir.
+- Şu anda paylaşılan diskler için kullanılamıyor
+- `2020-12-01`Performans katmanlarını kapalı kalma süresi olmadan değiştirmek için API ile birlikte Azure Resource Manager şablonları kullanılmalıdır.

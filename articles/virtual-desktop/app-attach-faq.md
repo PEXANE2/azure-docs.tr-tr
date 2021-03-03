@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738710"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX uygulama iliştirme SSS
 
@@ -61,7 +61,7 @@ MSIX uygulama iliştirme kullanan bir konak havuzundaki tüm sanal makinelerin (
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>HTTP veya HTTPs için MSIX uygulama iliştirmeyi kullanabilir miyim?
 
-MSIX uygulama iliştirme kullanan bir konak havuzunun parçası olan tüm sanal makinelerin, MSIX görüntülerinin depolandığı dosya paylaşımında okuma izinleri olmalıdır. Azure dosyaları kullanılıyorsa RBAC ve NTFS izinlerinin verilmesi gerekir.
+HTTP veya HTTPs üzerinden MSIX uygulama iliştirme kullanımı Şu anda desteklenmiyor.
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Aynı MALTıLıK uygulamayı yeniden alabilir miyim?
 
@@ -69,7 +69,7 @@ Evet. Zaten restaged olan uygulamaları daha sonra hatalara neden olmaz.
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>MSIX uygulaması iliştirme otomatik olarak imzalanan sertifikaları destekliyor mu?
 
-HTTP veya HTTPs üzerinden MSIX uygulama iliştirme kullanımı Şu anda desteklenmiyor.
+Evet. Otomatik olarak imzalanan sertifikayı barındırmak için MSIX uygulama eklemenin kullanıldığı tüm oturum ana bilgisayar VM 'lerine otomatik olarak imzalanan sertifikayı yüklemeniz gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

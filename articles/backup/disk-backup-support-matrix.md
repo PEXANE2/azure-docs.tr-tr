@@ -4,12 +4,12 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707226"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
 
@@ -58,7 +58,7 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
 - Şu anda (Önizleme sırasında), diskleri yedeklemeyi ve geri yüklemeyi yapılandırmak için PowerShell ve Azure CLı kullanımı desteklenmez.
 
-- Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
+- Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](../virtual-machines/disks-incremental-snapshots.md#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
 
 - Başarılı yedekleme ve geri yükleme işlemleri için, yedekleme kasasının yönetilen kimliği için rol atamaları gereklidir. Yalnızca belgelerde verilen rol tanımlarını kullanın. Sahip, katkıda bulunan vb. gibi diğer rollerin kullanılması desteklenmez. Rolleri atadıktan sonra yedekleme veya geri yükleme işlemlerini yapılandırmaya başladıysanız izin sorunları yaşayabilirsiniz. Bunun nedeni, rol atamalarının etkili olması birkaç dakika sürer.
 

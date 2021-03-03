@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692836"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -105,7 +105,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
    ![giriş/çıkış numaraları](./media/connect-application-instance/ingress-egress-numbers.png)
 
-- İstemci makinesinin (VPN istemcisini çalıştıran) erişmeniz gereken tüm sanal ağlar için rota girişlerine sahip olup olmadığını denetleyin. Yollar içinde depolanır `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
+- İstemci makinesinin (VPN istemcisini çalıştıran) erişmeniz gereken tüm sanal ağlar için rota girişlerine sahip olup olmadığını denetleyin. Yollar içinde depolanır `%AppData%\Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![route.txt](./media/connect-application-instance/route-txt.png)
 

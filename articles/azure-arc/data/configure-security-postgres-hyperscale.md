@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273209"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687983"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubunuz için güvenliği yapılandırma
 
@@ -23,6 +23,7 @@ Bu belgede, sunucu grubunuzun güvenliği ile ilgili çeşitli yönleri açıkla
 - Kullanıcı yönetimi
    - Genel Perspektifler
    - _Postgres_ yönetici kullanıcısının parolasını değiştirme
+- Denetim
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -35,7 +36,7 @@ Azure Arc etkin veri Hizmetleri kurulumlarınız tarafından kullanılan diskler
 - LUKS `cryptsetup` şifreleme komutu (Linux) ile disk şifrelemesi ( https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) özellikle Azure Arc etkin veri Hizmetleri sağladığınız fiziksel altyapıda çalıştığından, altyapının güvenliğini sağlamaya yönelik olursunuz.
 
 ### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>Yazılım: sunucu grubunuzda PostgreSQL `pgcrypto` uzantısını kullanın
-Azure Arc kurulumunuzu barındırmak için kullanılan diskleri şifrelemeye ek olarak, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunuzu, uygulamalarınızın veritabanınızdaki verileri şifrelemek için kullanabileceği mekanizmaları ortaya çıkarmak için yapılandırabilirsiniz. `pgcrypto`Uzantı, `contrib` Postgres uzantılarının bir parçasıdır ve Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunda bulunur. Uzantı hakkındaki ayrıntıları burada bulabilirsiniz `pgcrypto` . [here](https://www.postgresql.org/docs/current/pgcrypto.html)
+Azure Arc kurulumunuzu barındırmak için kullanılan diskleri şifrelemeye ek olarak, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunuzu, uygulamalarınızın veritabanınızdaki verileri şifrelemek için kullanabileceği mekanizmaları ortaya çıkarmak için yapılandırabilirsiniz. `pgcrypto`Uzantı, `contrib` Postgres uzantılarının bir parçasıdır ve Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunda bulunur. Uzantı hakkındaki ayrıntıları burada bulabilirsiniz `pgcrypto` . [](https://www.postgresql.org/docs/current/pgcrypto.html)
 Özet ' de, aşağıdaki komutlarla uzantıyı etkinleştirir, oluşturur ve bunu kullanırsınız:
 
 
@@ -117,7 +118,7 @@ select * from mysecrets;
 - Kullanıcı adı: Ben
 - USERpassword: $1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
 
-Uygulamam ile bağlandığımda ve bir parola geçirdiğimde, bu, `mysecrets` tabloya bakar ve uygulamaya sunulan parola ile tabloda depolanan parolalar arasında bir eşleşme varsa kullanıcının adını döndürür. Örneğin:
+Uygulamam ile bağlandığımda ve bir parola geçirdiğimde, bu, `mysecrets` tabloya bakar ve uygulamaya sunulan parola ile tabloda depolanan parolalar arasında bir eşleşme varsa kullanıcının adını döndürür. Örnek:
 
 - Yanlış parolayı geçirdim:
    ```console
@@ -159,13 +160,14 @@ Parolasının değiştirileceği komutun genel biçimi:
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-Burada--Admin-Password, AZDATA_PASSWORD **oturumunun**ortam değişkeninde bir değerin varlığı ile ilişkili bir Boole değerdir.
-AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa ve bir değere sahipse yukarıdaki komutun çalıştırılması, Postgres kullanıcısının parolasını bu ortam değişkeninin değerine ayarlar.
+`--admin-password`, AZDATA_PASSWORD **oturum** ortamı değişkeninde bir değerin varlığına ilişkin bir Boole değeri.
+AZDATA_PASSWORD **oturum** ortamı değişkeni varsa ve bir değere sahipse yukarıdaki komutun çalıştırılması, Postgres kullanıcısının parolasını bu ortam değişkeninin değerine ayarlar.
 
-AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa, ancak değer yoksa veya AZDATA_PASSWORD **oturumunun**ortam değişkeni yoksa, yukarıdaki komutun çalıştırılması kullanıcıdan etkileşimli olarak parola girmesini ister
+AZDATA_PASSWORD **oturum** ortamı değişkeni varsa, ancak değer yoksa veya AZDATA_PASSWORD **oturum** ortamı değişkeni yoksa, yukarıdaki komutun çalıştırılması kullanıcıdan etkileşimli olarak parola girmesini ister
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Postgres yönetici kullanıcısının parolasını etkileşimli bir şekilde değiştirme:
-1. AZDATA_PASSWORD **oturumunun**ortam değişkenini silme veya değerini silme
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Postgres yönetici kullanıcısının parolasını etkileşimli bir şekilde değiştirme
+
+1. AZDATA_PASSWORD **oturum** ortam değişkenini silme veya değerini silme
 2. Şu komutu çalıştırın:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa, ancak değer yoksa veya A
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>AZDATA_PASSWORD **oturumunun**ortam değişkenini kullanarak Postgres yönetici kullanıcısının parolasını değiştirme:
-1. AZDATA_PASSWORD **oturumunun**ortam değişkeninin değerini parola eklemek istediğiniz şekilde ayarlayın.
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>AZDATA_PASSWORD **oturum** ortamı değişkenini kullanarak Postgres yönetici kullanıcısının parolasını değiştirin:
+1. AZDATA_PASSWORD **oturum** ortamı değişkeninin değerini, parola eklemek istediğiniz şekilde ayarlayın.
 2. Şu komutu çalıştırın:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa, ancak değer yoksa veya A
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Denetim
+
+Denetim senaryolarında lütfen sunucu grubunuzu, `pgaudit` Postgres uzantılarını kullanacak şekilde yapılandırın. Daha ayrıntılı bilgi için `pgaudit` bkz. [ `pgAudit` GitHub projesi](https://github.com/pgaudit/pgaudit/blob/master/README.md). `pgaudit`Sunucu grubunuzda uzantıyı etkinleştirmek Için [PostgreSQL uzantılarını kullanın](using-extensions-in-postgresql-hyperscale-server-group.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bu `pgcrypto` uzantının ayrıntılarını [buradan](https://www.postgresql.org/docs/current/pgcrypto.html)okuyun.
-- Postgres uzantılarının nasıl kullanılacağına ilişkin ayrıntıları [burada](using-extensions-in-postgresql-hyperscale-server-group.md)bulabilirsiniz.
+- [ `pgcrypto` Uzantıya](https://www.postgresql.org/docs/current/pgcrypto.html) bakın
+- Bkz. [PostgreSQL uzantılarını kullanma](using-extensions-in-postgresql-hyperscale-server-group.md)
 

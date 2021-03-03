@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827462"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714502"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -44,10 +44,10 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 * Yedekleme ve geri yükleme özelliği, App Service planının **Standart**, **Premium** veya **yalıtılmış** katmanda olmasını gerektirir. App Service planınızı daha yüksek bir katman kullanmak üzere ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md). **Premium** ve **yalıtılmış** katmanlar, **Standart** katmandan daha fazla sayıda günlük arka UPS sağlar.
 * Yedeklemek istediğiniz uygulamayla aynı abonelikte bir Azure depolama hesabına ve kapsayıcısına ihtiyacınız vardır. Azure depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
 * Yedeklemeler 10 GB 'a kadar uygulama ve veritabanı içeriği olabilir. Yedekleme boyutu bu sınırı aşarsa bir hata alırsınız.
-* MySQL için Azure veritabanı 'nın yedekleri etkinleştirilmiş olması desteklenmiyor. Bir yedekleme yapılandırılmışsa, başarısız yedeklemeler alırsınız.
-* PostgreSQL için Azure veritabanı, TLS özellikli yedeklemeler desteklenmez. Bir yedekleme yapılandırılmışsa, başarısız yedeklemeler alırsınız.
+* MySQL için Azure veritabanı 'nın yedekleri etkinleştirilmiş olması desteklenmiyor. Bir yedekleme yapılandırılmışsa, yedekleme hatalarıyla karşılaşırsınız.
+* PostgreSQL için Azure veritabanı, TLS özellikli yedeklemeler desteklenmez. Bir yedekleme yapılandırılmışsa, yedekleme hatalarıyla karşılaşırsınız.
 * Uygulama içi MySQL veritabanları, herhangi bir yapılandırma olmadan otomatik olarak yedeklenir. Uygulama içi MySQL veritabanları için bağlantı dizeleri ekleme gibi el ile ayarları yaparsanız yedeklemeler düzgün çalışmayabilir.
-* Yedeklemeleriniz için hedef olarak Güvenlik Duvarı etkin bir depolama hesabı kullanılması desteklenmez. Bir yedekleme yapılandırılmışsa, başarısız yedeklemeler alırsınız.
+* Yedeklemeleriniz için hedef olarak Güvenlik Duvarı etkin bir depolama hesabı kullanılması desteklenmez. Bir yedekleme yapılandırılmışsa, yedekleme hatalarıyla karşılaşırsınız.
 
 
 <a name="manualbackup"></a>
@@ -70,18 +70,18 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 
 3. **Yedekleme yapılandırması** sayfasında depolama hesabı yapılandırmak için **yapılandırılmamış** ' a tıklayın.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Yedekleme ve geri yükleme özelliğine erişmek üzere App Service planını yükseltmek için ileti içeren bir başlığın ekran görüntüsü.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Depolama Yapılandırılmadı ayarı seçiliyken yedekleme depolama bölümünün ekran görüntüsü.":::
 
-4. Bir **depolama hesabı** ve **kapsayıcı**seçerek yedekleme hedefini seçin. Depolama hesabı, yedeklemek istediğiniz uygulamayla aynı aboneliğe ait olmalıdır. İsterseniz, ilgili sayfalarda yeni bir depolama hesabı veya yeni bir kapsayıcı oluşturabilirsiniz. İşiniz bittiğinde **Seç**' e tıklayın.
+4. Bir **depolama hesabı** ve **kapsayıcı** seçerek yedekleme hedefini seçin. Depolama hesabı, yedeklemek istediğiniz uygulamayla aynı aboneliğe ait olmalıdır. İsterseniz, ilgili sayfalarda yeni bir depolama hesabı veya yeni bir kapsayıcı oluşturabilirsiniz. İşiniz bittiğinde **Seç**' e tıklayın.
 
-5. Hala açık olan **yedekleme yapılandırması** sayfasında, **yedekleme veritabanını**yapılandırabilir ve ardından yedeklemelere eklemek Istediğiniz veritabanlarını (SQL veritabanı veya MySQL) seçip **Tamam**' a tıklayın.
+5. Hala açık olan **yedekleme yapılandırması** sayfasında, **yedekleme veritabanını** yapılandırabilir ve ardından yedeklemelere eklemek Istediğiniz veritabanlarını (SQL veritabanı veya MySQL) seçip **Tamam**' a tıklayın.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Yedekleme ve geri yükleme özelliğine erişmek üzere App Service planını yükseltmek için ileti içeren bir başlığın ekran görüntüsü.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Yedekleme seçimine dahil olan yedekleme veritabanı bölümünün ekran görüntüsü.":::
 
     > [!NOTE]
     > Bu listede bir veritabanının görünmesi için, uygulamanızın **uygulama ayarları** sayfasının **bağlantı dizeleri** bölümünde bağlantı dizesinin bulunması gerekir. 
     >
-    > Uygulama içi MySQL veritabanları, herhangi bir yapılandırma olmadan otomatik olarak yedeklenir. Uygulama içi MySQL veritabanları için bağlantı dizeleri ekleme gibi el ile ayarları yaparsanız yedeklemeler düzgün çalışmayabilir.
+    > Uygulama içi MySQL veritabanları, herhangi bir yapılandırma olmadan otomatik olarak yedeklenir. Uygulama içi MySQL veritabanlarının ayarlarını bağlantı dizeleri ekleme gibi el ile yaparsanız yedeklemeler düzgün çalışmayabilir.
     > 
     > 
 
@@ -97,7 +97,7 @@ Depolama hesabı ve kapsayıcısı yapılandırıldıktan sonra dilediğiniz zam
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Otomatik yedeklemeleri yapılandırma
-1. **Yedekleme yapılandırması** sayfasında, **Zamanlanmış yedeklemeyi** **Açık**olarak ayarlayın. 
+1. **Yedekleme yapılandırması** sayfasında, **Zamanlanmış yedeklemeyi** **Açık** olarak ayarlayın. 
 
     ![Otomatik yedeklemeleri etkinleştir](./media/manage-backup/scheduled-backup.png)
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723852"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Otomasyon hesabından VM'leri çalışma saatleri dışında başlat/durdur kaldır
 
@@ -94,7 +94,7 @@ Bilgiler doğrulanırken ve hesap silinirken, menüden seçili olan **Bildirimle
 
 ## <a name="delete-the-feature"></a>Özelliği silme
 
-Otomasyon hesabınızdan VM'leri çalışma saatleri dışında başlat/durdur silmek için aşağıdaki adımları gerçekleştirin. Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası olarak silinmez. Log Analytics çalışma alanını korumak istemiyorsanız, el ile silmeniz gerekir. Çalışma alanınızı silme hakkında daha fazla bilgi için bkz. [Azure Log Analytics çalışma alanını silme ve kurtarma](../azure-monitor/platform/delete-workspace.md).
+Otomasyon hesabınızdan VM'leri çalışma saatleri dışında başlat/durdur silmek için aşağıdaki adımları gerçekleştirin. Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası olarak silinmez. Log Analytics çalışma alanını korumak istemiyorsanız, el ile silmeniz gerekir. Çalışma alanınızı silme hakkında daha fazla bilgi için bkz. [Azure Log Analytics çalışma alanını silme ve kurtarma](../azure-monitor/logs/delete-workspace.md).
 
 1. Otomasyon hesabınıza gidin ve **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 

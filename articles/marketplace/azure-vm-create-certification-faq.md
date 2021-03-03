@@ -4,15 +4,15 @@ description: Azure Marketi için sanal makine (VM) görüntülerini test etme ve
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721166"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -594,8 +594,37 @@ Sonra, teklifi yeniden yayımlayın.
 
 Yayımlama işlemini gerçekleştirmek için bkz. [teklifleri inceleme ve yayımlama](review-publish-offer.md).
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>Sınırlı erişimi olan veya özel şablonlar gerektiren VM görüntüleri
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>Kilitlenmiş (veya) SSH devre dışı teklifi
+
+  SSH devre dışı bırakılmış (Linux için) veya RDP devre dışı (Windows için) ile yayınlanan görüntüler, kilitli VM 'Ler olarak kabul edilir. Hangi yayımcıların yalnızca birkaç kullanıcı için sınırlı erişime izin verdiğiyle ilgili özel iş senaryoları vardır. Doğrulama denetimleri sırasında, kilitli VM 'Ler belirli sertifika komutlarının yürütülmesine izin vermiyor olmayabilir.
+
+
+#### <a name="custom-templates"></a>Özel şablonlar
+
+   Genel olarak, tek VM 'ler kapsamında yayınlanan tüm görüntüler dağıtım için standart ARM şablonunu izler. Ancak, VM 'Leri dağıtmada (örn. birden çok NIC (), örneğin, yapılandırılacak bir özelleştirme gerektiren senaryolar vardır.
+    
+   Aşağıdaki senaryolara (ayrıntılı olmayan) bağlı olarak, yayımcılar VM dağıtmak için özel şablonlar kullanır:
+
+   * VM ek ağ alt ağları gerektirir.
+   * ARM şablonuna eklenecek ek meta veriler.
+   * ARM şablonunun yürütülmesi için önkoşul olan komutlar.
+
+### <a name="vm-extensions"></a>VM uzantıları   
+
+   Azure sanal makine (VM) uzantıları, dağıtım sonrası yapılandırma ve Azure VM'lerinde otomasyon görevleri sunan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir. 
+
+   Linux VM Uzantısı doğrulamaları görüntünün bir parçası olmasını gerektirir:
+* Azure Linux Aracısı daha büyük 2.2.41
+* 2,8 üzerinde Python sürümü 
+
+
+Daha fazla bilgi için lütfen [VM uzantısını](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)ziyaret edin.
+     
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [VM teklifi özelliklerini yapılandırma](azure-vm-create-properties.md)
 - [Etkin Market 'teki ödüller](partner-center-portal/marketplace-rewards.md)
 - Geliştirme için sorularınız veya geri bildiriminiz varsa, [Iş Ortağı Merkezi desteğiyle](https://aka.ms/marketplacepublishersupport)iletişim kurun.
+ 

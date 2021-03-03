@@ -7,18 +7,25 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e56142dfc68767945cd0d08c87f14e19551a156e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741472"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Öğretici-MQTT kullanarak IoT Tak ve Kullan cihaz istemcisi geliştirme
 
 Her olabiliyorsa IoT Tak ve Kullan cihaz istemcilerinizi oluşturmak için Azure IoT cihaz SDK 'Lardan birini kullanmanız gerekir. Ancak, bellek kısıtlanmış bir cihaz kullanma gibi senaryolarda IoT Hub 'ınız ile iletişim kurmak için bir MQTT kitaplığı kullanmanız gerekebilir.
 
 Bu öğreticideki örnek, [ıssquıto](http://mosquitto.org/) MQTT kitaplığı ve Visual Studio 'Da Çakışan Küreler kullanır. Bu öğreticideki adımlarda geliştirme makinenizde Windows kullandığınızı varsayalım.
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Tutulma mosquıto kitaplığı indirin ve derleyin.
+> * C tabanlı MQTT örnek kodunu değiştirerek cihazı IoT Tak ve Kullan cihazı haline getirin.
+> * IoT Tak ve Kullan cihazının kullandığı MQTT konularını belirler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

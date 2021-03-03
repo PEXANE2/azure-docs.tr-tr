@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712615"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure İçeri/Dışarı Aktarma için sistem gereksinimleri
 
@@ -43,7 +43,10 @@ Azure Içeri/dışarı aktarma hizmeti aşağıdaki depolama hesabı türlerini 
 
 - Standart Genel Amaçlı v2 depolama hesapları (çoğu senaryo için önerilir)
 - Blob Depolama Hesapları
-- Genel Amaçlı v1 depolama hesapları (klasik veya Azure Resource Manager dağıtımları),
+- Genel Amaçlı v1 depolama hesapları (klasik veya Azure Resource Manager dağıtımları)
+
+> [!IMPORTANT]
+> Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği Azure Içeri/dışarı aktarma ile desteklenmiyor.
 
 Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Storage hesaplarına genel bakış](../storage/common/storage-account-overview.md).
 
@@ -59,7 +62,7 @@ Aşağıdaki Depolama türleri listesi Azure Içeri/dışarı aktarma hizmeti il
 
 |İş  |Depolama hizmeti |Desteklenir  |Desteklenmez  |
 |---------|---------|---------|---------|
-|İçeri Aktar     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
+|İçeri Aktarma     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
 |Dışarı Aktarma     |   Azure Blob depolama       | Blok Blobları, sayfa Blobları ve ekleme Blobları desteklenir         | Azure dosyaları desteklenmiyor
 
 

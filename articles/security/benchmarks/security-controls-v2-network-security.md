@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması V2 ağ güvenliği
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fbe71b0ae7bf711d740cbba38c84b68de553f031
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698561"
 ---
 # <a name="security-control-v2-network-security"></a>Güvenlik denetimi v2: ağ güvenliği
 
 Ağ güvenliği, Azure ağlarını güvenli hale getirmeye ve korumanıza yönelik denetimleri ele alır. Bu, sanal ağların güvenliğini sağlamayı, özel bağlantılar oluşturmayı, dış saldırıları engellemeyi ve azaltıcı ve DNS güvenliğini içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: ağ güvenliği](../../governance/policy/samples/azure-security-benchmark#network-security)
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: iç trafik için güvenlik uygulama
 
@@ -24,9 +26,9 @@ Ağ güvenliği, Azure ağlarını güvenli hale getirmeye ve korumanıza yönel
 |--|--|--|--|
 | NS-1 | 9,2, 9,4, 14,1, 14,2, 14,3 | AC-4, CA-3, SC-7 |
 
-Tüm Azure sanal ağlarının, iş risklerine göre bir kurumsal kesimleme ilkesini izlediğinden emin olun. Kuruluş için daha yüksek risk doğurabilecek tüm sistemleri kendi sanal ağı içinde yalıtılmalı ve bir ağ güvenlik grubu (NSG) ve/veya Azure güvenlik duvarıyla yeterince güvenli hale gelmelidir. 
+Tüm Azure sanal ağlarının, iş risklerine göre bir kurumsal kesimleme ilkesini izlediğinden emin olun. Kuruluş için daha yüksek risk doğurabilecek tüm sistemleri kendi sanal ağı içinde yalıtılmalı ve bir ağ güvenlik grubu (NSG) ve/veya Azure güvenlik duvarıyla yeterince güvenli hale gelmelidir.
 
-Uygulamalarınız ve kurumsal segmentasyon stratejinize bağlı olarak, ağ güvenlik grubu kurallarına göre iç kaynaklar arasındaki trafiği kısıtlayın veya buna izin verin. Belirli bir iyi tanımlanmış uygulamalarda (3 katmanlı bir uygulama gibi), bu, yüksek güvenlikli bir "varsayılan olarak Reddet, özel duruma izin ver" yaklaşımına sahip olabilir. Birbirleriyle etkileşim kuran çok sayıda uygulamanız ve uç noktalarınız varsa, bu durum düzgün ölçeklenmeyebilir. Azure Güvenlik Duvarı 'nı, çok sayıda kurumsal segment veya bağlı bileşen (hub/uç topolojisi) üzerinde merkezi yönetim 'in gerekli olduğu koşullarda da kullanabilirsiniz. 
+Uygulamalarınız ve kurumsal segmentasyon stratejinize bağlı olarak, ağ güvenlik grubu kurallarına göre iç kaynaklar arasındaki trafiği kısıtlayın veya buna izin verin. Belirli bir iyi tanımlanmış uygulamalarda (3 katmanlı bir uygulama gibi), bu, yüksek güvenlikli bir "varsayılan olarak Reddet, özel duruma izin ver" yaklaşımına sahip olabilir. Birbirleriyle etkileşim kuran çok sayıda uygulamanız ve uç noktalarınız varsa, bu durum düzgün ölçeklenmeyebilir. Azure Güvenlik Duvarı 'nı, çok sayıda kurumsal segment veya bağlı bileşen (hub/uç topolojisi) üzerinde merkezi yönetim 'in gerekli olduğu koşullarda da kullanabilirsiniz.
 
 Bağlantı noktalarını ve kaynak IP 'Leri dış ağ trafiği kurallarına göre sınırlayan ağ güvenlik grubu yapılandırmalarının kullanılmasını önermek için Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma kullanın.
 
@@ -44,9 +46,9 @@ SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Imzasız LDAP bağlamaları ve zayıf şif
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)     
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -58,9 +60,9 @@ SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Imzasız LDAP bağlamaları ve zayıf şif
 
 Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar oluşturmak için Azure ExpressRoute veya Azure sanal özel ağ (VPN) kullanın. ExpressRoute bağlantıları, genel İnternet üzerinden geçmez ve tipik İnternet bağlantılarına göre daha fazla güvenilirlik, daha hızlı hız ve daha düşük gecikme süresi sunar. Noktadan siteye VPN ve siteden siteye VPN için, bu VPN seçeneklerinin ve Azure ExpressRoute 'un herhangi bir birleşimini kullanarak şirket içi cihazları veya ağları bir sanal ağa bağlayabilirsiniz.
 
-İki veya daha fazla sanal ağı Azure 'da birlikte bağlamak için sanal ağ eşlemesi veya özel bağlantı kullanın. Eşlenen sanal ağlar arasındaki ağ trafiği özeldir ve Azure omurga ağında tutulur. 
+İki veya daha fazla sanal ağı Azure 'da birlikte bağlamak için sanal ağ eşlemesi veya özel bağlantı kullanın. Eşlenen sanal ağlar arasındaki ağ trafiği özeldir ve Azure omurga ağında tutulur.
 
-- [ExpressRoute bağlantı modelleri nelerdir?](../../expressroute/expressroute-connectivity-models.md) 
+- [ExpressRoute bağlantı modelleri nelerdir?](../../expressroute/expressroute-connectivity-models.md)
 
 - [Azure VPN 'ye Genel Bakış](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
@@ -72,21 +74,21 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure hizmetlerine özel ağ erişimi sağlayın
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
-| NS-3 | 14,1 | AC-4, CA-3, SC-7 |
+| NS-3 | 14.1 | AC-4, CA-3, SC-7 |
 
-İnternet 'ten çıkmadan sanal ağlarınızdan Azure hizmetlerine özel erişimi etkinleştirmek için Azure özel bağlantısı 'nı kullanın. Azure özel bağlantısının henüz kullanılamadığı durumlarda Azure sanal ağ hizmet uç noktalarını kullanın.  Azure sanal ağ hizmet uç noktaları, Azure omurga ağı üzerinden iyileştirilmiş bir yol aracılığıyla hizmetlere güvenli erişim sağlar.  
+İnternet 'ten çıkmadan sanal ağlarınızdan Azure hizmetlerine özel erişimi etkinleştirmek için Azure özel bağlantısı 'nı kullanın. Azure özel bağlantısının henüz kullanılamadığı durumlarda Azure sanal ağ hizmet uç noktalarını kullanın. Azure sanal ağ hizmet uç noktaları, Azure omurga ağı üzerinden iyileştirilmiş bir yol aracılığıyla hizmetlere güvenli erişim sağlar.
 
-Özel erişim, Azure hizmetleri tarafından sunulan kimlik doğrulama ve trafik güvenliğine ek olarak ayrıntılı bir savunma ölçümüdür. 
+Özel erişim, Azure hizmetleri tarafından sunulan kimlik doğrulama ve trafik güvenliğine ek olarak ayrıntılı bir savunma ölçümüdür.
 
 - [Azure özel bağlantısını anlama](../../private-link/private-link-overview.md)
 
@@ -96,9 +98,9 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -111,10 +113,10 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırılar ve istenmeyen ve potansiyel olarak kötü amaçlı internet trafiği dahil olmak üzere dış ağlardan gelen saldırılara karşı Azure kaynaklarını koruyun. Azure, bunun için yerel özellikleri içerir:
 -   Uygulamaları ve Hizmetleri Internet 'ten ve diğer dış konumlardan gelen kötü amaçlı olabilecek trafiğe karşı korumak için Azure Güvenlik Duvarı 'nı kullanın. 
 
--   Uygulamalarınızı, hizmetlerinizi ve API 'lerinizi uygulama katmanı saldırılarına karşı korumak için Azure Application Gateway, Azure ön kapısında ve Azure Content Delivery Network (CDN) Web uygulaması güvenlik duvarı (WAF) yeteneklerini kullanın. 
+-   Uygulamalarınızı, hizmetlerinizi ve API 'lerinizi uygulama katmanı saldırılarına karşı korumak için Azure Application Gateway, Azure ön kapısında ve Azure Content Delivery Network (CDN) Web uygulaması güvenlik duvarı (WAF) yeteneklerini kullanın.
 
--   Azure sanal ağlarınızda DDoS standart korumasını etkinleştirerek varlıklarınızı DDoS saldırılarına karşı koruyun. 
--   Yukarıdaki ile ilgili yanlış yapılandırma risklerini algılamak için Azure Güvenlik Merkezi 'ni kullanın. 
+-   Azure sanal ağlarınızda DDoS standart korumasını etkinleştirerek varlıklarınızı DDoS saldırılarına karşı koruyun.
+-   Yukarıdaki ile ilgili yanlış yapılandırma risklerini algılamak için Azure Güvenlik Merkezi 'ni kullanın.
 
 - [Azure Güvenlik Duvarı belgeleri](../../firewall/index.yml)
 
@@ -128,7 +130,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -138,25 +140,25 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 |--|--|--|--|
 | NS-5 | 12,6, 12,7 | SI-4 |
 
-Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme kullanarak, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen ve giden trafiği engelleme ve/veya engelleyin. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır. Yük incelemesi gerektiğinde, üçüncü taraf bir izinsiz giriş algılama/izinsiz giriş dağıtımı, Azure Marketi 'nden yük İnceleme özelliklerine sahip olan sistemleri (KIMLIKLER/IP 'ler) engelleyebilir. Alternatif olarak, ağ tabanlı KIMLIKLER/IP 'ler yerine veya ile birlikte ana bilgisayar tabanlı KIMLIKLERI/IP 'leri veya ana bilgisayar tabanlı bir uç nokta algılama ve yanıt (EDR) çözümünü kullanabilirsiniz.  
+Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme kullanarak, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen ve giden trafiği engelleme ve/veya engelleyin. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır. Yük incelemesi gerektiğinde, yük İnceleme özelliklerine sahip Azure Marketi 'nden bir üçüncü taraf yetkisiz giriş algılama/yetkisiz erişim önleme sistemi (ıDS/IP 'ler) dağıtabilirsiniz. Alternatif olarak, ağ tabanlı KIMLIKLER/IP 'ler yerine veya ile birlikte ana bilgisayar tabanlı KIMLIKLERI/IP 'leri veya ana bilgisayar tabanlı bir uç nokta algılama ve yanıt (EDR) çözümünü kullanabilirsiniz.
 
 Note: KIMLIKLER/IP 'ler için bir yasal veya diğer gereksinimleriniz varsa, SıEM çözümünüz için yüksek kaliteli uyarılar sağlamak üzere her zaman ayarlanmış olduğundan emin olun. 
 
 - [Azure Güvenlik duvarını dağıtma](../../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Marketi, üçüncü taraf KIMLIKLERI özelliklerini içerir](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
+- [Azure Marketi, üçüncü taraf KIMLIKLER özelliklerini içerir](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [Microsoft Defender ATP EDR özelliği](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+- [Uç nokta için Microsoft Defender özelliği](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: ağ güvenlik kurallarını basitleştirme
 
@@ -164,7 +166,7 @@ Note: KIMLIKLER/IP 'ler için bir yasal veya diğer gereksinimleriniz varsa, Sı
 |--|--|--|--|
 | NS-6 | 1,5 | IA-4 |
 
-Hizmet etiketlerinden ve uygulama güvenlik gruplarından (ASIG 'ler) yararlanarak ağ güvenlik kurallarını kolaylaştırın. 
+Hizmet etiketlerinden ve uygulama güvenlik gruplarından (ASIG 'ler) yararlanarak ağ güvenlik kurallarını kolaylaştırın.
 
 Ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın kaynak veya hedef alanında hizmet etiketi adını belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
@@ -178,9 +180,9 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -190,9 +192,9 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 |--|--|--|--|
 | NS-7 | Yok | SC-20, SC-21 |
 
-DNS güvenliği, DNS yükseltme saldırıları, DNS kirletme ve aldatmacası gibi yaygın saldırılara karşı hafifletmek için DNS güvenliği için en iyi uygulamaları izleyin. 
+DNS güvenliği, DNS yükseltme saldırıları, DNS kirletme ve aldatmacası gibi yaygın saldırılara karşı hafifletmek için DNS güvenliği için en iyi uygulamaları izleyin.
 
-Yetkili DNS hizmetiniz olarak Azure DNS kullanıldığında, DNS bölgelerinin ve kayıtlarının Azure RBAC ve kaynak kilitleri kullanılarak yanlışlıkla veya kötü amaçlı bir değişiklikten korunmasını sağlayın. 
+Yetkili DNS hizmetiniz olarak Azure DNS kullanıldığında, DNS bölgelerinin ve kayıtlarının Azure RBAC ve kaynak kilitleri kullanılarak yanlışlıkla veya kötü amaçlı bir değişiklikten korunmasını sağlayın.
 
 - [Azure DNS genel bakış](../../dns/dns-overview.md)
 
@@ -204,8 +206,8 @@ Yetkili DNS hizmetiniz olarak Azure DNS kullanıldığında, DNS bölgelerinin v
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

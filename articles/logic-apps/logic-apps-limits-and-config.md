@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/05/2021
-ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b80c5cb469f881ee0950d618c3bae5fa1fc1e026
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388541"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699054"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -139,7 +139,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 | Name | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Eylem: 5 dakika başına yürütme sayısı | 100.000 varsayılan sınırıdır, ancak 300.000 en yüksek limit olur. | Mantıksal uygulamanız için varsayılan sınırı en üst sınıra yükseltmek için, önizleme aşamasında olan [yüksek aktarım hızı modunda çalıştır](#run-high-throughput-mode)' a bakın. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) . |
+| Eylem: 5 dakikalık toplama aralığı başına yürütme sayısı | -100.000 yürütmeler (varsayılan) <p><p>-300.000 yürütmeler (yüksek aktarım hızı modunda en fazla)  | Mantıksal uygulamanız için varsayılan sınırı en yüksek sınıra yükseltmek için, önizleme aşamasında olan [yüksek aktarım hızı modunda çalıştır](#run-high-throughput-mode)' a bakın. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) . |
 | Eylem: eşzamanlı giden çağrılar | Yaklaşık 2.500 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
 | Çalışma zamanı uç noktası: eşzamanlı gelen çağrılar | ~ 1.000 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
 | Çalışma zamanı uç noktası: 5 dakikada okuma çağrısı sayısı  | 60.000 | Bu sınır, mantıksal uygulama çalıştırma geçmişinden gelen ham giriş ve çıkışları alan çağrılar için geçerlidir. İş yükünü, gereken şekilde birden fazla uygulama arasında dağıtabilirsiniz. |
@@ -151,7 +151,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 #### <a name="run-in-high-throughput-mode"></a>Yüksek aktarım hızı modunda çalıştır
 
-Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemlerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Mantıksal uygulamanız için varsayılan sınırı en üst sınıra yükseltmek üzere, önizleme aşamasında olan yüksek verimlilik modunu etkinleştirebilirsiniz. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) .
+Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemlerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Varsayılan sınırı üç kez olan mantıksal uygulamanızın [en üst sınırına](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) (varsayılan sınırı) yükseltmek için önizleme aşamasında olan yüksek aktarım hızı modunu etkinleştirebilirsiniz. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) .
 
 1. Azure portal, mantıksal uygulama menünüzde **Ayarlar**' ın altında, **iş akışı ayarları**' nı seçin.
 

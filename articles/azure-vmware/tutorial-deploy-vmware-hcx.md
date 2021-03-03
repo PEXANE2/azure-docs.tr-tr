@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357900"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728238"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -76,12 +76,15 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="VMware HCX IP adresinin ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1.   >  Parolayı tanımlamak için **kimliği** Yönet ' i ve **vCenter yönetici parolası** ' nı seçin.
+1. **Manage**  >  **Identity** öğesini seçin. 
+
+   Özel bulut vCenter ve NSX-T Manager için URL 'Ler ve Kullanıcı kimlik bilgileri görüntülenir.
 
    > [!TIP]
-   > VCenter parolası, özel bulutu ayarlarken tanımlanmıştır. Azure VMware Solution HCX Manager 'da oturum açmak için kullandığınız parola aynı.
+   > VCenter parolası, özel bulutu ayarlarken tanımlanmıştır. Azure VMware Solution HCX Manager 'da oturum açmak için kullandığınız parola aynı. Yeni vCenter ve NSX-T parolaları oluşturmak için **Yeni bir parola oluştur** seçeneğini belirleyebilirsiniz.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="HCX parolasını bulun." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+
 
 1. Bir tarayıcı penceresi açın, 443 numaralı bağlantı noktasındaki Azure VMware Solution HCX Manager 'da `https://x.x.x.9` **cloudadmin \@ vSphere** ile oturum açın. Yerel Kullanıcı kimlik bilgileri
 

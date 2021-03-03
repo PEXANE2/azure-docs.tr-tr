@@ -4,12 +4,12 @@ description: Tarafından toplanan ve Azure Application Insights 'de depolanan Az
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591181"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729377"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
 
@@ -60,7 +60,7 @@ Application Insights kullanma hakkında daha fazla bilgi için [Application Insi
 
 Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
 
-| Araştır | Description |
+| Araştır | Açıklama |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri** başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
@@ -142,14 +142,14 @@ Aşağıdaki telemetri sorguları, tüketim planında çalışan işlevlerin mal
 
 ## <a name="azure-monitor-metrics"></a>Azure Izleyici ölçümleri
 
-Application Insights tarafından toplanan telemetri verilerine ek olarak, [Azure Izleyici ölçümlerinden](../azure-monitor/platform/data-platform-metrics.md)işlev uygulamasının nasıl çalıştığı hakkında da veri alabilirsiniz. [App Service uygulamalar için kullanılabilen olağan ölçümlerle](../app-service/web-sites-monitor.md#understand-metrics)birlikte, ilgilendiğiniz işlevlere özgü iki ölçüm vardır:
+Application Insights tarafından toplanan telemetri verilerine ek olarak, [Azure Izleyici ölçümlerinden](../azure-monitor/essentials/data-platform-metrics.md)işlev uygulamasının nasıl çalıştığı hakkında da veri alabilirsiniz. [App Service uygulamalar için kullanılabilen olağan ölçümlerle](../app-service/web-sites-monitor.md#understand-metrics)birlikte, ilgilendiğiniz işlevlere özgü iki ölçüm vardır:
 
 | Metric | Açıklama |
 | ---- | ---- |
 | **Işlev yürütme sayısı** | İşlev yürütme sayısı, işlev uygulamanızın kaç kez yürütüldüğünü belirtir. Bu, bir işlevin uygulamanızda kaç kez çalışacağını de sağlar. Bu ölçüm Şu anda Linux üzerinde çalışan Premium ve adanmış (App Service) planlar için desteklenmemektedir. |
 | **FunctionExecutionUnits** | İşlev yürütme birimleri, yürütme süresi ve bellek kullanımınızın bir birleşimidir.  Bellek verileri şu anda Azure Izleyici aracılığıyla kullanılabilen bir ölçüm değildir. Ancak, uygulamanızın bellek kullanımını iyileştirmek isterseniz, Application Insights tarafından toplanan performans sayacı verilerini kullanabilir. Bu ölçüm Şu anda Linux üzerinde çalışan Premium ve adanmış (App Service) planlar için desteklenmemektedir.|
 
-Application Insights verileri kullanarak bir tüketim planının maliyetlerini hesaplama hakkında daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme. Ölçümleri görüntülemek için Izleyici Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama.
+Application Insights verileri kullanarak bir tüketim planının maliyetlerini hesaplama hakkında daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme. Ölçümleri görüntülemek için Izleyici Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure Ölçüm Gezgini](../azure-monitor/essentials/metrics-getting-started.md)kullanmaya başlama.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -158,4 +158,3 @@ Azure Işlevlerini izleme hakkında daha fazla bilgi edinin:
 
 + [Azure İşlevlerini İzleme](functions-monitoring.md)
 + [Azure Işlevleri için izlemeyi yapılandırma](configure-monitoring.md)
-

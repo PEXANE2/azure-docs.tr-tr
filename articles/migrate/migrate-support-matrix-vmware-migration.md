@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703878"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705220"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -29,8 +29,8 @@ Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-ov
 
 ## <a name="migration-limitations"></a>Geçiş sınırlamaları
 
-- Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın.
-- VMware aracısız geçiş için aynı anda en fazla 300 çoğaltma çalıştırabilirsiniz.
+- Azure portal aracılığıyla çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın. PowerShell cmdlet 'leri aracılığıyla çoğaltılabilen VM sayısı için bir sınır yoktur. En iyi performansı sağlamak için, tek bir vCenter 'dan PowerShell aracılığıyla bir kerede 500 ' den fazla VM 'yi çoğaltma önerimiz.
+- VMware aracısız geçişi için, her bir vCenter Server eşzamanlı olarak 500 çoğaltma gerçekleştirebilirsiniz.
 
 ## <a name="agentless-migration"></a>Aracısız geçiş 
 
@@ -56,7 +56,7 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 --- | ---
 **Desteklenen işletim sistemleri** | Azure tarafından desteklenen [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](../virtual-machines/linux/endorsed-distros.md) işletim sistemlerini geçirebilirsiniz.
 **Azure 'da Windows VM 'Leri** | Geçişten önce VM 'lerde [bazı değişiklikler yapmanız](prepare-for-migration.md#verify-required-changes-before-migrating) gerekebilir. 
-**Azure 'da Linux VM 'Leri** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir.<br/><br/> Linux için Azure geçişi, değişiklikleri bu işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Sent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Diğer işletim sistemleri için [gerekli değişiklikleri](prepare-for-migration.md#verify-required-changes-before-migrating) el ile yaparsınız.
+**Azure 'da Linux VM 'Leri** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir.<br/><br/> Linux için Azure geçişi, değişiklikleri bu işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Sent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8, 9 <br/> Oracle Linux 7,7, 7,7-CI<br/> Diğer işletim sistemleri için [gerekli değişiklikleri](prepare-for-migration.md#verify-required-changes-before-migrating) el ile yaparsınız.
 **Linux önyüklemesi** | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir.
 **UEFı önyüklemesi** | Destekleniyor. UEFı tabanlı VM 'Ler, Azure 2. nesil VM 'lerine geçirilir. 
 **Disk boyutu** | 2 TB işletim sistemi diski;  veri diskleri için 32 TB.
@@ -72,7 +72,7 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
 **IPv6** | Desteklenmez.
 **Hedef disk** | VM 'Ler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
-**Eşzamanlı çoğaltma** | vCenter Server başına 300 VM. Daha fazlasına sahipseniz, bunları 300 toplu işlem halinde geçirin.
+**Eşzamanlı çoğaltma** | vCenter Server başına 500 VM. Daha fazlasına sahipseniz, bunları 500 toplu işlem halinde geçirin.
 **Azure VM Aracısı 'nın otomatik yüklemesi (Windows Aracısı)** | Windows Server 2008 R2 sürümleri için desteklenir.
 
 ### <a name="appliance-requirements-agentless"></a>Gereç gereksinimleri (aracısız)

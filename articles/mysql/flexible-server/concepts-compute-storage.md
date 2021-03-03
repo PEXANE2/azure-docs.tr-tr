@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581457"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720945"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
 
@@ -72,7 +72,7 @@ Kullanılabilir sunucu türlerinin ayrıntılı özellikleri şunlardır:
 Kullanılabilir işlem serisi hakkında daha fazla bilgi edinmek için bkz. [Burstable (B-serisi)](../../virtual-machines/sizes-b-series-burstable.md), [genel amaçlı (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)ve [bellek için iyileştirilmiş (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md)için Azure VM belgeleri.
 
 >[!NOTE]
->Sanal makine başlatılmış/durdurulmuş ya da yeniden başlatılırsa, [Burstable (B-serisi) işlem katmanı](../../virtual-machines/sizes-b-series-burstable.md) için krediler kaybolmuş olabilir. Daha fazla bilgi için bkz. [Burstable (B serisi) SSS](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Sanal makine başlatılmış/durdurulmuş ya da yeniden başlatılırsa, [Burstable (B-serisi) işlem katmanı](../../virtual-machines/sizes-b-series-burstable.md) için krediler kaybolmuş olabilir. Daha fazla bilgi için bkz. [Burstable (B serisi) SSS](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Depolama
 
@@ -83,7 +83,7 @@ Sağladığınız depolama alanı, esnek sunucunuz için kullanılabilen depolam
 
 Depolama alanı kullanımınızı, depolama sınırı, depolama yüzdesi ve depolama kullanılan ölçümleri kullanarak Azure portal (Azure Izleyici ile) izleyebilirsiniz. Ölçümler hakkında bilgi edinmek için [İzleme makalesine](./concepts-monitoring.md) bakın. 
 
-### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
+### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşma
 
 Sunucuda tüketilen depolama alanı sağlanan sınıra ulaşılmaya yakın olduğunda, sunucu üzerinde kayıp yazma işlemlerini korumak için sunucu salt okuma moduna konur. 100 GiB 'tan daha az kaynak sağlanmış depolama alanı, sağlanan depolama boyutunun %5 ' inden daha az olduğunda salt okunurdur olarak işaretlenir. 100 ' den fazla GiB tarafından sağlanan depolama alanı, boş depolama 5 GiB 'den az olduğunda salt yazılır olarak işaretlenir.
 

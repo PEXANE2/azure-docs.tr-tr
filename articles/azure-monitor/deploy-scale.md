@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573612"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731774"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
 Bazı Azure Izleyici özellikleri bir kez veya sınırlı sayıda yapılandırıldığında, izlemek istediğiniz her kaynak için diğerlerinin tekrarlanması gerekir. Bu makalede, izlemenin tüm Azure kaynaklarınız için tutarlı ve doğru şekilde yapılandırıldığından emin olmak üzere Azure Izleyici 'yi ölçekli olarak uygulamak için Azure Ilkesi kullanma yöntemleri açıklanmaktadır.
@@ -121,34 +121,34 @@ Girişim, oluşturulduğu gibi her bir sanal makine için de geçerlidir. Bir [D
 ![Girişim düzeltmesi](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
-[VM'ler için Azure izleyici](vm/vminsights-overview.md) , sanal makineleri Izlemek Için Azure izleyici 'deki birincil araçtır. VM'ler için Azure İzleyici etkinleştirildiğinde hem Log Analytics Aracısı hem de bağımlılık Aracısı yüklenir. Bu görevleri el ile gerçekleştirmek yerine, her bir sanal makinenin oluşturduğunuz şekilde yapılandırıldığından emin olmak için Azure Ilkesini kullanın.
+## <a name="vm-insights"></a>VM öngörüleri
+[VM öngörüleri](vm/vminsights-overview.md) , sanal makineleri Izlemek Için Azure izleyici 'deki birincil araçtır. VM öngörülerini etkinleştirmek, hem Log Analytics Aracısı hem de bağımlılık Aracısı 'nı etkinleştirir. Bu görevleri el ile gerçekleştirmek yerine, her bir sanal makinenin oluşturduğunuz şekilde yapılandırıldığından emin olmak için Azure Ilkesini kullanın.
 
 > [!NOTE]
-> VM'ler için Azure İzleyici, ortamınızda uyumsuz VM 'Leri keşfetmenize ve düzeltmenizi sağlayan **VM'ler için Azure izleyici Ilke kapsamı** adlı bir özellik içerir. Bu özelliği, Azure sanal makineleri için Azure Ilkesiyle ve Azure Arc ile bağlantılı karma sanal makinelerde doğrudan çalışmak yerine kullanabilirsiniz. Azure sanal makine ölçek kümeleri için, atamayı Azure Ilkesi kullanarak oluşturmanız gerekir.
+> VM öngörüleri, ortamınızdaki uyumsuz VM 'Leri keşfetmenizi ve düzeltmenizi sağlayan **VM Insights Ilke kapsamı** adlı bir özellik içerir. Bu özelliği, Azure sanal makineleri için Azure Ilkesiyle ve Azure Arc ile bağlantılı karma sanal makinelerde doğrudan çalışmak yerine kullanabilirsiniz. Azure sanal makine ölçek kümeleri için, atamayı Azure Ilkesi kullanarak oluşturmanız gerekir.
  
 
-VM'ler için Azure İzleyici, tam izlemeyi etkinleştirmek için her iki aracıyı de yükleyen aşağıdaki yerleşik girişimleri içerir. 
+VM öngörüleri, tam izlemeyi etkinleştirmek için her iki aracıyı de yükleyen aşağıdaki yerleşik girişimleri içerir. 
 
 |Ad |Açıklama |
 |:---|:---|
-|VM'ler için Azure İzleyici etkinleştir | Azure sanal makinelerine ve Azure Arc ile bağlantılı karma VM 'Lere Log Analytics aracısını ve bağımlılık aracısını yükleme. |
+|VM öngörülerini etkinleştir | Azure sanal makinelerine ve Azure Arc ile bağlantılı karma VM 'Lere Log Analytics aracısını ve bağımlılık aracısını yükleme. |
 |Sanal Makine Ölçek Kümeleri için Azure Izleyicisini etkinleştir | Azure sanal makine ölçek kümesine Log Analytics aracısını ve bağımlılık aracısını yükleme. |
 
 
 ### <a name="virtual-machines"></a>Sanal makineler
-VM'ler için Azure İzleyici, Azure Ilke arabirimini kullanarak bu girişimler için Atamalar oluşturmak yerine, her kapsamdaki sanal makine sayısını incelemenizi sağlayan bir özellik içerir ve bu da girişim uygulanıp uygulanmadığı belirlenir. Daha sonra çalışma alanını yapılandırabilir ve bu arabirimi kullanarak gerekli atamaları oluşturabilirsiniz.
+Azure Ilke arabirimini kullanarak bu girişimler için Atamalar oluşturmak yerine, VM öngörüleri, girişim uygulanıp uygulanmadığı anlamak için her kapsamdaki sanal makine sayısını incelemenize olanak tanıyan bir özellik içerir. Daha sonra çalışma alanını yapılandırabilir ve bu arabirimi kullanarak gerekli atamaları oluşturabilirsiniz.
 
-Bu işlemin ayrıntıları için bkz. [Azure ilkesi kullanarak VM'ler için Azure izleyici etkinleştirme](./vm/vminsights-enable-policy.md).
+Bu işlemin ayrıntıları için bkz. [Azure ilkesi kullanarak VM öngörülerini etkinleştirme](./vm/vminsights-enable-policy.md).
 
-![VM'ler için Azure İzleyici ilkesi](media/deploy-scale/vminsights-policy.png)
+![VM öngörüleri ilkesi](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri
 Sanal Makine Ölçek Kümeleri için izlemeyi etkinleştirmek üzere Azure Ilkesini kullanmak için, izlemek istediğiniz kaynaklarınızın kapsamına bağlı olarak **Sanal Makine Ölçek Kümeleri Için Azure Izleyicisini etkinleştirme** girişimi ' ni bir Azure yönetim grubuna, aboneliğine veya kaynak grubuna atayın. [Yönetim grubu](../governance/management-groups/overview.md) özellikle, kuruluşunuzda birden çok abonelik varsa, özellikle ilke kapsamı için yararlıdır.
 
 ![Azure portal girişim atama sayfasının ekran görüntüsü. Girişim tanımı, sanal makine ölçek kümeleri için Azure Izleyicisini etkinleştirmek üzere ayarlanır.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Verilerin gönderileceği çalışma alanını seçin. Bu çalışma alanı, [VM'ler için Azure izleyici Için yapılandırma Log Analytics çalışma](vm/vminsights-configure-workspace.md)alanında açıklandığı şekilde, *Vminsıghts* çözümünün yüklü olması gerekir.
+Verilerin gönderileceği çalışma alanını seçin. Bu çalışma alanı, [VM öngörüleri için Log Analytics çalışma alanı yapılandırma](vm/vminsights-configure-workspace.md)bölümünde açıklandığı gibi, *Vminsıghts* çözümünün yüklü olması gerekir.
 
 ![Çalışma alanını seçme](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,7 +157,7 @@ Bu ilkeye atanması gereken sanal makine ölçek kümesine sahipseniz bir düzel
 ![Düzeltme görevi](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
-Log Analytics aracısını yüklemek istediğiniz ancak bağımlılık aracısını değil senaryolar olabilir. Yalnızca aracı için yerleşik girişim yoktur, ancak VM'ler için Azure İzleyici tarafından sunulan yerleşik ilke tanımlarına göre kendi kendinize de oluşturabilirsiniz.
+Log Analytics aracısını yüklemek istediğiniz ancak bağımlılık aracısını değil senaryolar olabilir. Yalnızca aracı için yerleşik girişim yoktur, ancak VM öngörüleri tarafından sunulan yerleşik ilke tanımlarına göre kendi uygulamanızı oluşturabilirsiniz.
 
 > [!NOTE]
 > Log Analytics aracısının verileri Azure Izleyici 'ye teslim etmesini gerektirdiğinden, bağımlılık aracısının kendi kendine dağıtılması bir neden olmaz.

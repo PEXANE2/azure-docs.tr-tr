@@ -11,23 +11,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3be8682b3a12f06aa83db1791cb0ed125bbcee7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719245"
 ---
 # <a name="test-through-simulations"></a>Simülasyonlar aracılığıyla test etme
 
 Düzenli benzetimler sunarak hizmetlerinizin bir saldırıya nasıl yanıt vereceğini gösteren varsayımları test etmek iyi bir uygulamadır. Sınama sırasında, hizmetlerinizin veya uygulamalarınızın beklenen şekilde çalışmaya devam etmesini ve kullanıcı deneyiminin kesintiye uğramaması gerektiğini doğrulayın. Hem teknoloji hem de süreç açısından boşlukları belirleyip DDoS yanıt stratejisinden dahil edin. Üretim ortamına etkisini en aza indirmek için, hazırlama ortamlarında veya yoğun olmayan saatlerde bu tür testleri gerçekleştirmenizi öneririz.
 
-Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak uç noktalara karşı trafik oluşturabileceği bir arabirim oluşturmak için, bir self servis trafik Oluşturucu olan [BreakingPoint bulutu](https://www.ixiacom.com/products/breakingpoint-cloud)ile ortaklıyoruz. Benzetimi şu şekilde kullanabilirsiniz:
+Azure müşterilerinin simülasyonlar için DDos Koruması etkinleştirilmiş olan genel uç noktalara trafik üretebileceği bir arabirim oluşturmak üzere, self servis bir trafik oluşturucu olan [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) ile birlikte çalıştık. Simülasyonu kullanarak:
 
-- Azure DDoS korumasının Azure kaynaklarınızı DDoS saldırılarına karşı korumanıza nasıl yardımcı olduğunu doğrulayın.
-- DDoS saldırısı altındayken olay yanıt sürecinizi iyileştirin.
-- DDoS uyumluluğunu belgeleyin.
-- Ağ Güvenlik ekiplerinizi eğitme.
+- Azure DDoS Koruması'nın Azure kaynaklarınızı DDoS saldırılarına karşı korumanıza nasıl yardımcı olduğunu doğrulayabilirsiniz.
+- DDoS saldırısı altındayken olay yanıt sürecinizi iyileştirebilirsiniz.
+- DDoS uyumluluğunu belgeleyebilirsiniz.
+- Ağ güvenlik ekiplerinizi eğitebilirsiniz.
+
+> [!NOTE]
+> BreakingPoint bulutu yalnızca genel bulut için kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

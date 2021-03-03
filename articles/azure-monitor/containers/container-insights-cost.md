@@ -1,22 +1,22 @@
 ---
-title: Kapsayıcılar için Azure Izleyici izleme maliyeti | Microsoft Docs
-description: Bu makalede, müşterilerin kullanımını ve ilişkili maliyetlerini yönetmesine yardımcı olmak üzere kapsayıcılar için Azure Izleyici tarafından toplanan ölçüm verileri & ölçümleri için izleme maliyeti açıklanmaktadır.
+title: Kapsayıcı öngörüleri için izleme maliyeti | Microsoft Docs
+description: Bu makalede, müşterilerin kullanımını ve ilişkili maliyetlerini yönetmesine yardımcı olmak üzere kapsayıcı öngörüleri tarafından toplanan ölçüm verileri & ölçümleri için izleme maliyeti açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625310"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728918"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de izleme maliyetlerini anlama
+# <a name="understand-monitoring-costs-for-container-insights"></a>Kapsayıcı öngörüleri için izleme maliyetlerini anlama
 
-Bu makale, aşağıdakileri anlamanıza yardımcı olmak üzere kapsayıcılar için Azure Izleyici için fiyatlandırma kılavuzu sağlar:
+Bu makalede, aşağıdaki bilgileri anlamanıza yardımcı olacak kapsayıcı öngörüleri için fiyatlandırma Kılavuzu sunulmaktadır:
 
 * Bu öngörüyü etkinleştirmeden önce maliyetleri önceden tahmin etme
 
-* Kapsayıcılar için Azure Izleyici bir veya daha fazla kapsayıcı için etkinleştirildikten sonra maliyetleri ölçme
+* Bir veya daha fazla kapsayıcı için kapsayıcı öngörüleri etkinleştirildikten sonra maliyetleri ölçme
 
 * Verilerin toplanmasını denetleme ve maliyet indirimleri yapma
 
@@ -27,7 +27,7 @@ Azure Izleyici fiyatlandırma modeli, öncelikle Log Analytics çalışma alanı
 >[!NOTE]
 >Tüm boyutlar ve fiyatlandırma yalnızca örnek tahmine yöneliktir. Azure Izleyici Log Analytics fiyatlandırma modelinizi ve Azure bölgenizi temel alan en son fiyatlandırma için lütfen Azure Izleyici [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) sayfasına bakın.
 
-Aşağıda, bir Kubernetes kümesinden, maliyeti etkileyen kapsayıcılar için Azure Izleyici ve kullanımınıza göre özelleştirilebilecek veri türlerinin bir özeti verilmiştir:
+Aşağıda, bir Kubernetes kümesinden, maliyeti etkileyen ve kullanımınıza bağlı olarak özelleştirilebilen kapsayıcı öngörüleri içeren veri türlerinin bir özeti verilmiştir:
 
 - Bu, kümedeki her Kubernetes ad alanındaki izlenen her kapsayıcıdan stdout, stderr kapsayıcısı kaydeder
 
@@ -37,11 +37,11 @@ Aşağıda, bir Kubernetes kümesinden, maliyeti etkileyen kapsayıcılar için 
 
 - Prometheus ölçümlerinin etkin koruması
 
-- AKS kümenizdeki Kubernetes ana düğüm günlüklerinin, *kuas-apiserver* ve *kuin-Controller-Manager* gibi ana bileşenler tarafından oluşturulan günlük verilerini analiz etmek için [tanılama günlüğü](../../aks/view-master-logs.md) .
+- AKS kümenizdeki Kubernetes ana düğüm günlüklerinin, *kuas-apiserver* ve *kuin-Controller-Manager* gibi ana bileşenler tarafından oluşturulan günlük verilerini analiz etmek için [tanılama günlüğü](../../aks/view-control-plane-logs.md) .
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Kubernetes kümelerinden toplanan özellikler
 
-Kapsayıcılar için Azure Izleyici, Log Analytics çalışma alanınızda günlük verileri olarak yazılmış, önceden tanımlanmış bir ölçüm kümesi ve toplanan envanter öğeleri içerir. Aşağıda listelenen tüm ölçümler, her dakikada varsayılan olarak toplanır.
+Kapsayıcı öngörüleri, Log Analytics çalışma alanınızda günlük verileri olarak yazılmış, önceden tanımlanmış bir dizi ölçüm ve envanter öğesi içerir. Aşağıda listelenen tüm ölçümler, her dakikada varsayılan olarak toplanır.
 
 ### <a name="node-metrics-collected"></a>Toplanan düğüm ölçümleri
 
@@ -194,10 +194,10 @@ Bu değişikliklerden bir veya daha fazlasını ConfigMaps 'larınıza uyguladı
 
 - Scraping sıklığının en iyi şekilde ayarlandığından emin olun (varsayılan değer 60 saniyedir). Sıklığı 15 saniyeye artırabilmenize karşın, korbir ölçüdeki ölçümlerin bu sıklıkta yayınlanarak emin olmanız gerekir. Aksi halde, veri alımı ve bekletme maliyetlerine ekleme ve daha az değere sahip olan aralıklarda Log Analytics çalışma alanınıza gönderilen çok sayıda yinelenen ölçüm olur. 
 
-- Kapsayıcılar için Azure Izleyici, ölçü adına göre dışlama & ekleme listelerini destekler. Örneğin, kümenizde **kubedns** ölçümleri varsa, varsayılan olarak gönderideki 'i alan yüzlerce, ancak büyük olasılıkla yalnızca bir alt küme ile ilgileniyor olabilirsiniz. Verilerin ıskartaya çıkarılması için bir ölçüm listesi belirtdiğini veya veri alma hacminde tasarruf etmeniz dışında diğerlerini dışlamamayı onaylayın. Bu ölçümlerin çoğunu yalnızca Log Analytics faturanızda ek ücretler ekleyecek şekilde etkinleştirmek ve bu ölçümleri kullanmak kolaydır.
+- Kapsayıcı öngörüleri, ölçüm adına göre dışlama & ekleme listelerini destekler. Örneğin, kümenizde **kubedns** ölçümleri varsa, varsayılan olarak gönderideki 'i alan yüzlerce, ancak büyük olasılıkla yalnızca bir alt küme ile ilgileniyor olabilirsiniz. Verilerin ıskartaya çıkarılması için bir ölçüm listesi belirtdiğini veya veri alma hacminde tasarruf etmeniz dışında diğerlerini dışlamamayı onaylayın. Bu ölçümlerin çoğunu yalnızca Log Analytics faturanızda ek ücretler ekleyecek şekilde etkinleştirmek ve bu ölçümleri kullanmak kolaydır.
 
 - Pod ek açıklamalarını kullanarak korlama yaparken, kullanmazsınız (örneğin, **dev-test** ad alanı), Pod ölçümlerinin srapı ölçümlerini dışarıda bırakmanız için ad alanına göre filtrelemenizi sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Izleyici kapsayıcılar için toplanan verilerden en son kullanım desenlerine bağlı olarak maliyetlerin nasıl anlaşıldığını anlama hakkında daha fazla bilgi için bkz. [kullanımı yönetme ve maliyetleri tahmin](../platform/manage-cost-storage.md)etme.
+Bir maliyetin, kapsayıcı öngörüleri ile toplanan verilerden en son kullanım desenlerine dayanma olasılığını anlama hakkında daha fazla bilgi için bkz. [kullanımınızı yönetme ve maliyetleri tahmin](../logs/manage-cost-storage.md)etme.

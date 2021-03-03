@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 3f858067d8a44b1d8c46b04b9912df9bbcf17b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0085dc1cd7afa1fd8f557db27d30fd76ca05fac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526713"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732743"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
@@ -65,6 +65,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Container Registry (Microsoft. ContainerRegistry/kayýt defterleri)/kayıt defteri | privatelink.azurecr.io | azurecr.io |
 | Azure Uygulama yapılandırması (Microsoft. AppConfiguration/Configurationmağazaları)/configurationStore | privatelink.azconfig.io | azconfig.io |
 | Azure Backup (Microsoft. RecoveryServices/Vaults)/kasa | Privatelink. {Region}. yedekleme. windowsazure. com | {Region}. yedekleme. windowsazure. com |
+| Azure Site Recovery (Microsoft. RecoveryServices/Vaults)/kasa | {Region}. Privatelink. sıterecoçok. windowsazure. com | {Region}. hypervrecoverymanager. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. ServiceBus/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure IoT Hub (Microsoft. Devices/ıothubs)/ıothub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
@@ -73,7 +74,6 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Event Grid (Microsoft. EventGrid/Domains)/etki alanı | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Web Apps (Microsoft. Web/siteler)/siteler | privatelink.azurewebsites.net | azurewebsites.net |
 | Azure Machine Learning (Microsoft. MachineLearningServices/Workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>aznbcontent.net |
-| IoT Hub (Microsoft. Devices/IotHubs)/ıothub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (Microsoft. SignalRService/SignalR)/signalR | privatelink.service.signalr.net | service.signalr.net |
 | Azure Izleyici (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Bilişsel hizmetler (Microsoft. Bilitivehizmetleri/hesapları)/hesabı | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711952"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -24,7 +24,7 @@ Site Recovery, şunları yapabilirsiniz:
 
 [Azure Site Recovery](site-recovery-overview.md)kullanarak SAP NetWeaver uygulama dağıtımlarını koruyabilirsiniz. Bu makalede, Site Recovery kullanarak başka bir Azure veri merkezine çoğalttığınızda Azure 'da üç katmanlı SAP NetWeaver dağıtımını korumaya yönelik en iyi uygulamalar ele alınmaktadır. Makalesinde desteklenen senaryolar ve Konfigürasyonlar ve yük devretme testi (olağanüstü durum kurtarma detayları) ve gerçek yük devretme işlemleri açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
@@ -119,7 +119,7 @@ Tüm SAP uygulaması sanal makinelerini Azure olağanüstü durum kurtarma veri 
 
 ## <a name="networking-configuration"></a>Ağ yapılandırması
 
-Statik bir IP adresi kullanırsanız, sanal makinenin kullanmasını istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **ağ arabirimi kartına**gidin.
+Statik bir IP adresi kullanırsanız, sanal makinenin kullanmasını istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **ağ arabirimi kartına** gidin.
 
 ![Site Recovery ağ arabirimi kartı bölmesinde özel IP adresi ayarlamayı gösteren ekran görüntüsü](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -167,5 +167,5 @@ Daha fazla bilgi için bkz. [Azure 'a yük devretmeyi test etme Site Recovery](s
 Daha fazla bilgi için bkz. [Site Recovery 'de yük devretme](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Site Recovery kullanarak SAP NetWeaver dağıtımları için olağanüstü durum kurtarma çözümü oluşturma hakkında daha fazla bilgi edinin. Bkz. indirilebilir Teknik İnceleme [SAP NetWeaver: Site Recovery Ile olağanüstü durum kurtarma çözümü oluşturma](https://aka.ms/asr_sap). Teknik İnceleme, çeşitli SAP mimarilerine yönelik öneriler ele alınmaktadır. Azure 'da SAP için desteklenen uygulamaları ve VM türlerini görebilirsiniz. Ayrıca olağanüstü durum kurtarma çözümünüzü test etmek için plan seçenekleri de vardır.
+* Site Recovery kullanarak SAP NetWeaver dağıtımları için olağanüstü durum kurtarma çözümü oluşturma hakkında daha fazla bilgi edinin. Bkz. indirilebilir Teknik İnceleme [SAP NetWeaver: Site Recovery Ile olağanüstü durum kurtarma çözümü oluşturma](/samples/browse/?redirectedfrom=TechNet-Gallery). Teknik İnceleme, çeşitli SAP mimarilerine yönelik öneriler ele alınmaktadır. Azure 'da SAP için desteklenen uygulamaları ve VM türlerini görebilirsiniz. Ayrıca olağanüstü durum kurtarma çözümünüzü test etmek için plan seçenekleri de vardır.
 * Site Recovery kullanarak [diğer iş yüklerini çoğaltma](site-recovery-workload.md) hakkında daha fazla bilgi edinin.

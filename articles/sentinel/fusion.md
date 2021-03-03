@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724294"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
 
-
 > [!IMPORTANT]
-> Azure Sentinel 'teki bazı Fusion özellikleri şu anda **genel önizlemededir**.
-> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bazı Fusion algılamalar (aşağıda belirtildiği gibi bkz.) Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 Azure Sentinel, makine öğrenimine göre Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu arada, sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışların ve şüpheli etkinliklerin birleşimlerini tanımlayarak otomatik olarak kullanılabilir. Bu bulmalar temelinde, Azure Sentinel, aksi takdirde yakalamak zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği kapsar. Tasarım yaparak, bu olaylar düşük hacimse, yüksek uygunlukta ve yüksek öneme sahiptir.
 
@@ -60,12 +58,12 @@ Yukarıda belirtildiği gibi, Fusion gelişmiş çok aşamalı saldırıları al
 Bu Fusion destekli saldırı algılama senaryolarına olanak tanımak için, listelenen tüm veri kaynakları ilişkili Azure Sentinel veri bağlayıcıları kullanılarak alınmalıdır.
 
 > [!NOTE]
-> Bu senaryolardan bazıları **genel önizlemede**. Bu şekilde belirtilecektir.
+> Bu senaryolardan bazıları **önizlemededir**. Bu şekilde belirtilecektir.
 
 ## <a name="compute-resource-abuse"></a>İşlem kaynağı kötüye kullanımı
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Şüpheli Azure Active Directory oturum açma sonrasında birden çok VM oluşturma etkinliği
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, etki 
 
@@ -214,7 +212,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Şüpheli gelen kutusu düzenleme kuralları aşağıdaki şüpheli Azure AD oturum açma kurallarını ayarlar
 Bu senaryo, bu listedeki iki tehdit sınıflandırmalarına aittir: **veri ayıklanma** ve yan yana **taşıma**. Netlik açısından, her iki bölümde de görünür.
 
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, yan yana hareket, Exfilsyon
 
@@ -235,7 +233,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 - **Sızdırılan kimlik bilgileri ile şüpheli gelen kutusu işleme kuralına sahip kullanıcıdan oturum açma olayı**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında birden çok Power BI raporu paylaşma etkinliği 
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, exfiltration 
 
@@ -256,7 +254,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 - **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından birden çok Power BI rapor paylaşım etkinliğine yönelik oturum açma etkinliği**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Şüpheli Power BI rapor paylaşımı şüpheli Azure AD oturum açma
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, exfiltration 
 
@@ -299,7 +297,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 - **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası silinmeye birlikte oturum açma etkinliği**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında şüpheli e-posta silme etkinliği
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, etki 
 
@@ -322,7 +320,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ## <a name="denial-of-service"></a>Hizmet reddi
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Şüpheli Azure AD oturum açma sonrasında birden çok VM silme etkinliği
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, etki
 
@@ -367,7 +365,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Şüpheli gelen kutusu düzenleme kuralları aşağıdaki şüpheli Azure AD oturum açma kurallarını ayarlar
 Bu senaryo, bu listedeki iki tehdit sınıflandırmalarına aittir: **yan yana hareket** ve **veri taşalımı**. Netlik açısından, her iki bölümde de görünür.
 
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, yan yana hareket, Exfilsyon
 
@@ -412,7 +410,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ## <a name="malicious-execution-with-legitimate-process"></a>Yasal işlemle kötü amaçlı yürütme
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell şüpheli bir ağ bağlantısı yaptı ve bu, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenebilir.
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** Yürütme
 
@@ -423,7 +421,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 **Açıklama:** Bu türün Fusion olayları, bir PowerShell komutu aracılığıyla giden bir bağlantı isteğinin yapıldığını ve bu, Palo Alto Networks güvenlik duvarı tarafından anormal gelen etkinliğinin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığı ve kötü amaçlı işlemler gerçekleştirmeye çalıştığı hakkında bir gösterge sağlar. Bu kalıbı izleyen PowerShell tarafından yapılan bağlantı girişimleri, kötü amaçlı yazılım komutu ve denetim etkinliği, ek kötü amaçlı yazılımların İndirilme istekleri veya bir saldırgan uzaktan etkileşimli erişim sağlayan bir bildirim olabilir. Tüm "Land kapalı" saldırılarıyla birlikte bu etkinlik, PowerShell 'in meşru bir kullanımı olabilir. Bununla birlikte, şüpheli gelen güvenlik duvarı etkinliğinin ardından gelen PowerShell komut yürütmesi, PowerShell 'in kötü amaçlı olarak kullanıldığı güveni artırır ve daha fazla araştırılması gerekir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Şüpheli uzak WMI yürütme, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** Yürütme, bulma
 
@@ -456,7 +454,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ## <a name="malware-c2-or-download"></a>Kötü amaçlı yazılım C2 veya indirme
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Anonim olarak çalışan hizmeti olan ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir.
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** Komut ve denetim
 
@@ -467,7 +465,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 **Açıklama:** Bu türün Fusion olayları, Tor 'ın anonimleştirme hizmetine giden bir bağlantı isteğinin yapıldığını ve bu, Palo Alto Networks güvenlik duvarı tarafından anormal gelen etkinliğinin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığını ve eylemlerini ve amacını gizleme denediğinin bir göstergesidir. Bu kalıbı izleyen TOR ağı bağlantıları, kötü amaçlı yazılım komutu ve denetim etkinliği, ek kötü amaçlı yazılımların indirileceği veya bir saldırganın uzaktan etkileşimli erişim kurma istekleri hakkında bir gösterge olabilir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** Komut ve denetim
 
@@ -502,7 +500,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 ## <a name="remote-exploitation"></a>Uzaktan yararlanma
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Palo Alto Networks güvenlik duvarı tarafından bayrak eklenmiş anormal trafik tarafından izlenen saldırı çerçevesinin şüpheli kullanımı
-Bu senaryo şu anda **genel önizlemededir**.
+Bu senaryo şu anda **Önizleme** aşamasındadır.
 
 **Mitre ATT&CK tactika:** İlk erişim, yürütme, yan yana taşıma, ayrıcalık yükseltme
 

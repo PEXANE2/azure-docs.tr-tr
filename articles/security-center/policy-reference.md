@@ -7,20 +7,20 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ab6556bc391eb3136fa8c4ba40f5a5d71da956e7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093057"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729933"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Güvenlik Merkezi için Azure İlkesi yerleşik tanımları
 
 Bu sayfa, Azure Güvenlik Merkezi ile ilgili [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Aşağıdaki ilke tanımlarının gruplandırmaları kullanılabilir:
 
-- [Girişimler](#azure-security-center-initiatives) grubu, ' Güvenlik Merkezi ' kategorisindeki Azure ilke girişim tanımlarını listeler.
+- [Girişimler](#azure-security-center-initiatives) grubu, "Güvenlik Merkezi" kategorisindeki Azure ilke girişim tanımlarını listeler.
 - [Varsayılan girişim](#azure-security-center-initiatives) grubu, güvenlik merkezi 'nin varsayılan girişim, [Azure Güvenlik kıyaslamalarından](../security/benchmarks/introduction.md)oluşan tüm Azure ilke tanımlarını listeler. Bu Microsoft tarafından yazılmış, yaygın olarak kullanılan kıyaslanmalar, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
-- [Kategori](#azure-security-center-category) grubu ' Güvenlik Merkezi ' kategorisindeki tüm Azure ilke tanımlarını listeler.
+- [Kategori](#azure-security-center-category) grubu, "Güvenlik Merkezi" kategorisindeki tüm Azure ilke tanımlarını listeler.
 
 Güvenlik ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](./tutorial-security-policy.md). Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
@@ -32,7 +32,7 @@ Güvenlik Merkezi tarafından izlenen yerleşik girişimler hakkında bilgi edin
 
 [!INCLUDE [azure-policy-reference-policyset-security-center](../../includes/policy/reference/bycat/policysets-security-center.md)]
 
-## <a name="azure-security-center-default-initiative"></a>Azure Güvenlik Merkezi varsayılan girişimi
+## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Güvenlik Merkezi 'nin varsayılan girişimi (Azure Güvenlik kıyaslaması)
 
 Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek için aşağıdaki tabloya bakın:
 

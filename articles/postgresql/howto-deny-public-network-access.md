@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e195c005676df27385e5e00736b04bdb689fafc5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240333"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727116"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı 'nda genel ağ erişimini reddetme
 
@@ -21,7 +21,7 @@ Bu makalede, bir PostgreSQL için Azure veritabanı 'nı tüm genel yapılandır
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
-* [PostgreSQL Için Azure veritabanı tek sunucu](quickstart-create-server-database-portal.md)
+* Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanı ile [PostgreSQL Için Azure veritabanı tek sunucu](quickstart-create-server-database-portal.md) .
 
 ## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
 
@@ -31,11 +31,11 @@ PostgreSQL için tek sunuculu ortak ağ erişimini reddet ' i ayarlamak için ş
 
 1. PostgreSQL tek sunucusu sayfasında, **Ayarlar** altında bağlantı **güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
 
-1. **Ortak ağ erişimini engelle** ' de, PostgreSQL tek sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
+1. **Ortak ağ erişimini engelle**' de, PostgreSQL tek sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
     :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="PostgreSQL için Azure veritabanı tek sunucu ağ erişimini reddet":::
 
-1. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 

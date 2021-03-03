@@ -6,23 +6,23 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 255de7d6739691c479e1ae98e37bc6d3e01a6710
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100643640"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713023"
 ---
 # <a name="what-is-document-translation-preview"></a>Belge çevirisi nedir (Önizleme)?
 
-Belge çevirisi, [Azure Translator](../translator-info-overview.md) hizmetinin bulut tabanlı bir özelliğidir ve Azure bilişsel HIZMET ailesinin REST API 'lerinin bir parçasıdır. Belge çevirisi API 'SI, belge yapısını ve veri biçimini korurken, belgeleri 70 ' den fazla dile dönüştürür.
+Belge çevirisi, [Azure Translator](../translator-info-overview.md) hizmetinin bulut tabanlı bir özelliğidir ve Azure bilişsel HIZMET ailesinin REST API 'lerinin bir parçasıdır. Belge çevirisi API 'si, belge yapısını ve veri biçimini koruyarak 90 dil ve diyalektler belgelerini dönüştürür.
 
 ## <a name="document-translation-key-features"></a>Belge çevirisi anahtar özellikleri
 
 | Özellik | Açıklama |
 | ---------| -------------|
 | **Büyük dosyaları çevir**| Tüm belgeleri zaman uyumsuz olarak çevirin.|
-|**Çok sayıda dosyayı çevir**|Birden çok dosyayı 70 ' den fazla dile veya daha fazla dilde çevirin.|
+|**Çok sayıda dosyayı çevir**|Birden çok dosyayı 90 dil ve diatlerin içine ve içine çevirin.|
 |**Kaynak dosya sunumunu koru**| Özgün düzen ve biçimi koruyarak dosyaları çevirin.|
 |**Özel çeviri Uygula**| Genel ve [özel çeviri](../customization.md#custom-translator) modellerini kullanarak belgeleri çevirin.|
 |**Özel ışları Uygula**|Özel ışları kullanarak belgeleri çevirin.|
@@ -38,7 +38,7 @@ Nasıl yapılır kılavuzumuzdan, belge çeviricisini kullanmaya hızlı bir şe
 
 Aşağıdaki belge dosyası türleri belge çevirisi tarafından desteklenir:
 
-| Dosya türü| Dosya uzantısı|Description|
+| Dosya türü| Dosya uzantısı|Açıklama|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat taşınabilir belge biçimi|
 |HTML|.html|Hiper metin biçimlendirme dili.|
@@ -55,7 +55,7 @@ Aşağıdaki belge dosyası türleri belge çevirisi tarafından desteklenir:
 
 Aşağıdaki sözlük dosyası türleri belge çevirisi tarafından desteklenir:
 
-| Dosya türü| Dosya uzantısı|Description|
+| Dosya türü| Dosya uzantısı|Açıklama|
 |---|---|--|
 |Yerelleştirme değişim dosyası biçimi|. xlf. , XLIFF| Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.|
 |Sekmeyle ayrılmış değerler/sekme|. tsv/. Tab| elektronik tablo programları tarafından kullanılan sekmeyle ayrılmış ham veri dosyası.|

@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 varlık yönetimi
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735820"
 ---
 # <a name="security-control-v2-asset-management"></a>Güvenlik denetimi v2: varlık yönetimi
 
 Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve idare sağlamak için denetimleri ele alır. Bu, güvenlik personeli izinleri, varlık envanterine güvenlik erişimi ve hizmet ve kaynaklar için onayları yönetme (envanter, izleme ve düzeltme) konularında öneriler içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: ağ güvenliği](../../governance/policy/samples/azure-security-benchmark#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Güvenlik ekibinin varlıklarla ilgili riskleri görebildiğinden emin olun
 
@@ -24,13 +26,13 @@ Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve id
 |--|--|--|--|
 | ÖÖ-1 | 1,1, 1,2 | CM-8, PM-5 |
 
-Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini izleyebilmek için güvenlik Ekiplerinizde Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun. 
+Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini izleyebilmek için güvenlik Ekiplerinizde Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun.
 
-Güvenlik ekibi sorumluluklarının yapılandırmasına bağlı olarak, güvenlik risklerinin izlenmesi merkezi güvenlik ekibinin veya yerel bir ekibin sorumluluğunda olabilir. Gerçi güvenlik içgörüleri ve risklerinin kuruluş içinde her zaman merkezi bir konumda toplanması gerekir. 
+Güvenlik ekibinin sorumluluklarına bağlı olarak, güvenlik risklerini izlemek, merkezi bir güvenlik ekibinin veya yerel ekibin sorumluluğunda olabilir. Gerçi güvenlik içgörüleri ve risklerinin kuruluş içinde her zaman merkezi bir konumda toplanması gerekir. 
 
 Güvenlik Okuyucusu izinleri kiracının tamamına (Kök Yönetim Grubu) geniş kapsamlı olarak uygulanabileceği gibi, izinlerin kapsamı yönetim gruplarıyla veya belirli aboneliklerle de sınırlanabilir. 
 
-Not: İş yükleri ve hizmetlerin görünürlüğünü elde etmek için ek izinler gerekebilir. 
+Not: İş yükleri ve hizmetlerin görünürlüğünü elde etmek için ek izinler gerekebilir.
 
 - [Güvenlik Okuyucusu Rolüne Genel Bakış](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -52,9 +54,9 @@ Not: İş yükleri ve hizmetlerin görünürlüğünü elde etmek için ek izinl
 
 Güvenlik ekiplerinin Azure 'daki varlıkların sürekli güncelleştirilmiş envanterini erişimi olduğundan emin olun. Güvenlik ekipleri genellikle kuruluşlarının ortaya çıkabilecek risklerden olası etkilenme durumunu değerlendirmek ve sürekli güvenlik geliştirmelerine yönelik giriş sağlamak için bu envantere ihtiyaç duyar. 
 
-Azure Güvenlik Merkezi envanter özelliği ve Azure Kaynak Grafiği, aboneliklerinizde Azure Hizmetleri, uygulamalar ve ağ kaynakları dahil tüm kaynakları sorgulayabilir ve bulabilir.  
+Azure Güvenlik Merkezi envanter özelliği ve Azure Kaynak Grafiği, aboneliklerinizde Azure Hizmetleri, uygulamalar ve ağ kaynakları dahil tüm kaynakları sorgulayabilir ve bulabilir.
 
-Azure'daki etiketleri ve diğer meta verileri (ad, açıklama ve kategori) kullanarak varlıkları kuruluşunuzun sınıflandırma uygulamalarına göre mantıksal olarak düzenleyin.  
+Etiketleri ve Azure 'daki diğer meta verileri (ad, açıklama ve kategori) kullanarak kuruluşunuzun sınıflandırışına göre mantıksal olarak düzenleyin.
 
 - [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Azure'daki etiketleri ve diğer meta verileri (ad, açıklama ve kategori) kulla
 |--|--|--|--|
 | ÖÖ-3 | 2,3, 2,4 | CM-7, CM-8 |
 
-Kullanıcılarınızın ortamınızda sağlayabileceği hizmetleri denetlemek ve kısıtlamak için Azure İlkesi'ni kullanın. Abonelikler içindeki kaynakları sorgulamak ve bulmak için Azure Kaynak Grafı'nı kullanın.  Ayrıca Azure İzleyici'yi kullanarak onaylanmamış hizmetler algılandığında uyarı tetikleme amacıyla kurallar oluşturabilirsiniz.
+Kullanıcılarınızın ortamınızda sağlayabileceği hizmetleri denetlemek ve kısıtlamak için Azure İlkesi'ni kullanın. Abonelikler içindeki kaynakları sorgulamak ve bulmak için Azure Kaynak Grafı'nı kullanın. Ayrıca Azure İzleyici'yi kullanarak onaylanmamış hizmetler algılandığında uyarı tetikleme amacıyla kurallar oluşturabilirsiniz.
 
 - [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Kullanıcılarınızın ortamınızda sağlayabileceği hizmetleri denetlemek ve
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>VY-4: Varlık yaşam döngüsü yönetiminin güvenliğini sağlama
 
@@ -110,7 +112,7 @@ Artık gerekmeyen Azure kaynaklarını kaldırın.
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Artık gerekmeyen Azure kaynaklarını kaldırın.
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Uygulama izin verilenler listesini bulup oluşturmak için Azure Güvenlik Merke
 
 Windows ve Linux VM 'lerinizin envanter bilgilerinin toplanmasını otomatikleştirmek için Azure Otomasyonu Değişiklik İzleme ve envanterini kullanın. Yazılım adı, sürüm, yayımcı ve yenileme süresi Azure portal kullanılabilir. Yazılım Yükleme tarihini ve diğer bilgileri almak için, Konuk düzeyinde tanılamayı etkinleştirin ve Windows olay günlüklerini Log Analytics çalışma alanına yönlendirin.
 
-Betiklerin türüne bağlı olarak, kullanıcıların Azure işlem kaynaklarında betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanabilirsiniz. 
+Betiklerin türüne bağlı olarak, kullanıcıların Azure işlem kaynaklarında betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanabilirsiniz.
 
 Onaylanmamış yazılımları bulup belirlemek için bir üçüncü taraf çözümü de kullanabilirsiniz.
 
@@ -160,6 +162,6 @@ Onaylanmamış yazılımları bulup belirlemek için bir üçüncü taraf çöz�
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705781"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -34,7 +34,7 @@ IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşa
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-1. IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)emin olun.
+1. IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](../iot-edge/how-to-register-device.md#register-a-new-device)emin olun.
 
 1. IoT Edge modülü için Defender, IoT Edge cihazında [Auditd çerçevesinin](https://linux.die.net/man/8/auditd) yüklü olmasını gerektirir.
 
@@ -179,7 +179,7 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
 
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
 
-   | Ad | GÖRÜNTÜ |
+   | Name | GÖRÜNTÜ |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

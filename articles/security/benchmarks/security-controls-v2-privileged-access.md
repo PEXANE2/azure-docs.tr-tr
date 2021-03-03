@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslama v2 ayrıcalıklı erişim
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720588"
 ---
 # <a name="security-control-v2-privileged-access"></a>Güvenlik denetimi v2: ayrıcalıklı erişim
 
 Ayrıcalıklı erişim, Azure kiracınıza ve kaynaklarınıza ayrıcalıklı erişimi korumaya yönelik denetimleri ele alır. Bu, yönetim modelinizi, yönetim hesaplarınızı ve ayrıcalıklı erişim İş istasyonlarınızı bilinçli ve yanlışlıkla riske karşı korumak için bir denetim aralığı içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: ayrıcalıklı erişim](../../governance/policy/samples/azure-security-benchmark#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Yüksek ayrıcalıklı kullanıcıları koruyun ve sınırlayın
 
@@ -30,7 +32,7 @@ Yüksek ayrıcalıklı kullanıcı hesabı sayısını sınırlayın ve bu hesap
 
 - Ayrıcalıklı rol yöneticisi: Bu role sahip olan kullanıcılar, Azure AD 'de rol atamalarını ve Azure AD Privileged Identity Management (PıM) içinde yönetebilir. Ayrıca, bu rol, PıM ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
 
-Note: özel rolleri atanmış belirli ayrıcalıklı izinlerle kullanıyorsanız, yönetilmelidir başka kritik rolleriniz olabilir. Ayrıca, önemli iş varlıklarının yönetici hesabına de benzer denetimler uygulamak isteyebilirsiniz.  
+Note: özel rolleri atanmış belirli ayrıcalıklı izinlerle kullanıyorsanız, yönetilmelidir başka kritik rolleriniz olabilir. Ayrıca, önemli iş varlıklarının yönetici hesabına de benzer denetimler uygulamak isteyebilirsiniz.
 
 Azure AD Privileged Identity Management’ı (PIM) kullanarak Azure kaynaklarına ve Azure AD’ye tam zamanında (JIT) ayrıcalıklı erişimi etkinleştirebilirsiniz. JIT yalnızca kullanıcıların ihtiyacı olduğunda ayrıcalıklı görevler gerçekleştirmeleri için geçici izinler verir. Azure AD kuruluşunuzda güvenli olmayan veya şüpheli etkinlikler olduğunda da PIM güvenlik uyarıları oluşturabilir.
 
@@ -155,11 +157,11 @@ Erişim atamaları, incelemeler ve süre sonu dahil olmak üzere, erişim isteğ
 |--|--|--|--|
 | PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve kritik hizmet işleçleri gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. Yönetim görevleri için yüksek düzeyde güvenli Kullanıcı iş istasyonları ve/veya Azure savunma kullanın. Yönetim görevlerine yönelik güvenli ve yönetilen bir kullanıcı iş istasyonu dağıtmak için Azure Active Directory, Microsoft Defender Gelişmiş Tehdit Koruması (ATP) ve/veya Microsoft Intune hizmetlerini kullanın. Güvenli iş istasyonları, güçlü kimlik doğrulaması, yazılım ve donanım temelleri ve kısıtlı mantıksal ve ağ erişimi gibi güvenli yapılandırmayı zorlamak için merkezi olarak yönetilebilir. 
+Güvenli, yalıtılmış iş istasyonları, yönetici, geliştirici ve kritik hizmet operatörü gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. Yönetim görevleri için yüksek düzeyde güvenli Kullanıcı iş istasyonları ve/veya Azure savunma kullanın. Yönetim görevlerine yönelik güvenli ve yönetilen bir kullanıcı iş istasyonu dağıtmak için Azure Active Directory, Microsoft Defender Gelişmiş Tehdit Koruması (ATP) ve/veya Microsoft Intune hizmetlerini kullanın. Güvenli iş istasyonları, güçlü kimlik doğrulaması, yazılım ve donanım temelleri ve kısıtlı mantıksal ve ağ erişimi gibi güvenli yapılandırmayı zorlamak için merkezi olarak yönetilebilir. 
 
-- [Ayrıcalıklı erişim iş istasyonlarını anlama](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Ayrıcalıklı erişim iş istasyonlarını anlama](/security/compass/privileged-access-deployment)
 
-- [Ayrıcalıklı erişim iş istasyonu dağıtma](/security/compass/privileged-access-deployment)
+- [Ayrıcalıklı erişim iş istasyonu dağıtma](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Sorumluluk**: Müşteri
 
@@ -178,7 +180,8 @@ Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve krit
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynak erişimini rol atamaları aracılığıyla yönetmenizi sağlar. Kullanıcılara, Grup hizmeti sorumlularına ve yönetilen kimliklere bu rolleri atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell ve Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. Azure RBAC aracılığıyla kaynaklara atadığınız ayrıcalıklar, her zaman roller için gerekdiklere göre sınırlandırılmalıdır. Sınırlı ayrıcalıklar Azure AD Privileged Identity Management (PıM) tam zamanında (JıT) yaklaşımını tamamlar ve bu ayrıcalıkların düzenli olarak gözden geçirilmesi gerekir.
-Yerleşik rolleri kullanarak izin verin ve yalnızca gerektiğinde özel rol oluşturun. 
+
+İzinleri ayırmak için yerleşik rolleri kullanın ve gerektiğinde yalnızca özel roller oluşturun.
 
 - [Azure rol tabanlı erişim denetimi nedir (Azure RBAC)](../../role-based-access-control/overview.md)
 
@@ -192,9 +195,9 @@ Yerleşik rolleri kullanarak izin verin ve yalnızca gerektiğinde özel rol olu
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

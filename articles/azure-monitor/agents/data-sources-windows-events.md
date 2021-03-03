@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622574"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719874"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Windows olay günlüğü veri kaynaklarını toplama
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından, Windows sanal makinelerinde Log Analytics aracıları için en yaygın [veri kaynaklarından](../agents/agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](../platform/log-analytics-agent.md) Windows olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](./log-analytics-agent.md) Windows olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
 
 ![Windows Olayları](media/data-sources-windows-events/overview.png)     
 
@@ -63,7 +63,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 ## <a name="log-queries-with-windows-events"></a>Windows olaylarıyla sorguları günlüğe kaydet
 Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:---|:---|
 | Olay |Tüm Windows olayları. |
 | Olay &#124; EventLevelName = = "Error" |Hata önem derecesine sahip tüm Windows olayları. |
@@ -73,5 +73,5 @@ Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının f
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Analiz için diğer [veri kaynaklarını](../agents/agent-data-sources.md) toplamak üzere Log Analytics yapılandırın.
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.  
 * Windows aracılarınızın [performans sayaçlarını toplamayı](data-sources-performance-counters.md) yapılandırın.

@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691493"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning olan bir modeli hiper parametre olarak ayarlama
 
@@ -25,7 +25,7 @@ Azure Machine Learning [Hyperdrive paketini](/python/api/azureml-train-core/azur
 1. Parametre arama alanını tanımlayın
 1. İyileştirmek için bir birincil ölçüm belirtin  
 1. Düşük performanslı çalıştırmalar için erken sonlandırma ilkesini belirtin
-1. Kaynakları Ayır
+1. Kaynak oluşturma ve atama
 1. Tanımlı yapılandırma ile bir deneme başlatın
 1. Eğitim çalıştırmalarını görselleştirin
 1. Modeliniz için en iyi yapılandırmayı seçin
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 [Grid örneklemesi](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) ayrık hiper parametreleri destekler. Arama alanı üzerinde göreli arama yapmak üzere bütçelerseniz, kılavuz örneklemesi kullanın. Düşük performanslı çalışmaların erken sonlandırılmasını destekler.
 
-Tüm olası değerler üzerinde basit bir kılavuz araması gerçekleştirir. Grid örneklemesi yalnızca hyperparameters ile kullanılabilir `choice` . Örneğin, aşağıdaki boşluk altı örneğe sahiptir:
+Izgara örnekleme, tüm olası değerler üzerinde basit bir kılavuz arar. Grid örneklemesi yalnızca hyperparameters ile kullanılabilir `choice` . Örneğin, aşağıdaki boşluk altı örneğe sahiptir:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayes örneklemesi
 
-[Bayeme örneklemesi](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) , bayeme iyileştirme algoritmasını temel alır. Bu, önceki örneklerin nasıl gerçekleştirildiğiyle ilgili örnekleri, yeni örneklerin ise birincil ölçüyü iyileştirmesine göre seçer.
+[Bayeme örneklemesi](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) , bayeme iyileştirme algoritmasını temel alır. Bu, önceki örneklerin ne olduğu ile ilgili örnekler, yeni örneklerin ise birincil ölçüyü iyileştirmesine göre seçer.
 
 Hyperparameter alanını keşfetmeye yetecek kadar bütçeniz varsa bayeme örneklemesi önerilir. En iyi sonuçları elde etmek için, ayarlanan hiper parametrelerin sayısının en fazla 20 katına eşit veya daha büyük çalışan sayısını öneririz. 
 
@@ -203,7 +203,7 @@ Azure Machine Learning, aşağıdaki erken sonlandırma ilkelerini destekler:
 
 ### <a name="bandit-policy"></a>Bandıt ilkesi
 
-[Bandıt ilkesi](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) , bolluk faktörünü/bolluk tutarını ve değerlendirme aralığını temel alır. Bandıt, birincil ölçümün, en iyi çalışan çalıştırmaya kıyasla belirtilen bolluk faktörü/bolluk miktarı içinde olmadığı çalıştırmaları sonlandırır.
+[Bandıt ilkesi](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) , bolluk faktörünü/bolluk tutarını ve değerlendirme aralığını temel alır. Birincil ölçüm, en başarılı çalıştırmanın belirtilen bolluk faktörü/bolluk miktarı içinde olmadığında bandıt uçları çalıştırılır.
 
 > [!NOTE]
 > Bayema örneklemesi erken sonlandırmayı desteklemez. Bayeme örneklemesi kullanılırken, ayarlayın `early_termination_policy = None` .
@@ -226,7 +226,7 @@ Bu örnekte, ilk sonlandırma ilkesi, ölçümler raporlanırken, değerlendirme
 
 ### <a name="median-stopping-policy"></a>Ortanca ilke durduruluyor
 
-[Ortanca durdurma](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) , çalıştırmalar tarafından bildirilen birincil ölçümlerin çalışma ortalamaları temelinde erken sonlandırma ilkesidir. Bu ilke, tüm eğitim çalıştırmaları genelinde ortalama ortalamaları hesaplar ve birincil ölçüm değerleriyle birlikte çalışmayı, ortalamalar ortalarından daha kötüden sonlandırır.
+[Ortanca durdurma](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) , çalıştırmalar tarafından bildirilen birincil ölçümlerin çalışma ortalamaları temelinde erken sonlandırma ilkesidir. Bu ilke, tüm eğitim çalıştırmaları genelinde ortalama ortalamaları hesaplar ve birincil ölçüm değeri ortalamaları ortanminden daha zayıf olan çalıştırmaları durduruyor.
 
 Bu ilke aşağıdaki yapılandırma parametrelerini alır:
 * `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-Bu örnekte, erken sonlandırma ilkesi, değerlendirme aralığı 5 ' te başlayarak her aralıkta uygulanır. En iyi birincil ölçümü, 5. aralıkta, tüm eğitim çalışmalarından 1:5 ' ten fazla süre boyunca çalışan ortalamaları daha kötüdür.
+Bu örnekte, erken sonlandırma ilkesi, değerlendirme aralığı 5 ' te başlayarak her aralıkta uygulanır. En iyi birincil ölçümü, tüm eğitim çalışmalarından 1:5 ' ten fazla süre boyunca çalışan ortalamaları 'nın ortanminden daha kötüse, bir çalıştırma 5 Aralık tarihinde durdurulur.
 
 ### <a name="truncation-selection-policy"></a>Kesme seçim ilkesi
 
@@ -271,7 +271,7 @@ policy=None
 * Taahhüt işlerini sonlandırmadan tasarruf sağlayan bir koruyucu ilke için 1 ile 5 arasında bir ortanca durdurma Ilkesi düşünün `evaluation_interval` `delay_evaluation` . Bunlar, birincil ölçümde (değerlendirme Verilerimize göre) bir kayıp olmadan yaklaşık %25 %35 tasarruf sağlayabilen bir koruyucu ayarlardır.
 * Daha fazla ısrarlı tasarruf için, daha büyük bir kesme yüzdesine sahip daha küçük bir izin verilen bolluk veya kesme seçim Ilkesiyle bandıt Ilkesini kullanın.
 
-## <a name="allocate-resources"></a>Kaynakları Ayır
+## <a name="create-and-assign-resources"></a>Kaynak oluşturma ve atama
 
 Maksimum eğitim çalıştırması sayısını belirterek kaynak bütçenize kontrol edin.
 
@@ -302,18 +302,28 @@ Bu kod, tek seferde dört yapılandırmayı çalıştıran en fazla 20 toplam ç
 * Erken sonlandırma ilkeniz
 * Birincil ölçüm
 * Kaynak ayırma ayarları
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 ScriptRunConfig, Örneklenmiş hiper parametrelerle çalışacak eğitim betiğleridir. İş başına kaynakları (tek veya çok düğümlü) ve kullanılacak işlem hedefini tanımlar.
 
 > [!NOTE]
->İçinde belirtilen işlem hedefinin `src` eşzamanlılık düzeyinizi karşılamak için yeterli kaynak olması gerekir. ScriptRunConfig hakkında daha fazla bilgi için bkz. [eğitim çalıştırmalarını yapılandırma](how-to-set-up-training-targets.md).
+>İçinde kullanılan işlem hedefinin `script_run_config` eşzamanlılık düzeyinizi karşılamak için yeterli sayıda kaynağı olmalıdır. ScriptRunConfig hakkında daha fazla bilgi için bkz. [eğitim çalıştırmalarını yapılandırma](how-to-set-up-training-targets.md).
 
 Hyperparameter ayarlama denemenizi yapılandırın:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+, `HyperDriveConfig` Öğesine geçirilen parametreleri ayarlar `ScriptRunConfig script_run_config` . `script_run_config`, Sırasıyla, eğitim betiğine parametreler geçirir. Yukarıdaki kod parçacığı, örnek Not defteri [eğimiyle, hiper parametre ayarlanandan alınır ve PyTorch ile dağıtılır](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). Bu örnekte, `learning_rate` ve `momentum` parametreleri ayarlanır. Çalıştırmanın erken durdurulması `BanditPolicy` , birincil ölçümü `slack_factor` (bkz. [banditpolicy sınıfı başvurusu](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)) dışında kalan bir çalıştırmayı durduran bir tarafından belirlenir. 
+
+Örnekteki aşağıdaki kod, yapılacak değerlerin nasıl alındığını, ayrıştırılmasını ve eğitim betiğinin işlevine geçtiğini gösterir `fine_tune_model` :
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> Her hyperparameter çalıştırması, modeli ve _tüm veri yükleyicilerini_ yeniden oluşturma dahil olmak üzere sıfırdan eğitime yeniden başlatır. Eğitim çalıştırılmadan önce mümkün olduğunca çok veri hazırlığı yapmak için bir Azure Machine Learning işlem hattı veya el ile işlem kullanarak bu maliyeti en aza indirmenize olanak sağlayabilirsiniz. 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Hyperparameter ayarlama denemesi gönder
 
@@ -335,7 +375,6 @@ hyperdrive_run = experiment.submit(hd_config)
 ## <a name="warm-start-hyperparameter-tuning-optional"></a>Isınma hiper parametre ayarlamayı başlatma (isteğe bağlı)
 
 Modeliniz için en iyi hiper parametre değerlerini bulma işlemi yinelemeli bir işlem olabilir. Hiper parametre ayarlamayı hızlandırmak için önceki beş çalıştırmaların bilgisini yeniden kullanabilirsiniz.
-
 
 Örnekleme yöntemine bağlı olarak, normal başlatma farklı şekilde işlenir:
 - **Bayeduyma örnekleme**: önceki çalıştırmadan deneme sürümleri, yeni örnekler seçmek ve birincil ölçümü geliştirmek için önceden bilgi olarak kullanılır.
@@ -368,7 +407,7 @@ Hyperparameter ayarlama denemenizi önceki bir deneyden başlatmaya veya isteğe
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

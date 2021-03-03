@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739067"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Öğretici: PowerShell kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
 > [!div class="op_single_selector"]
@@ -53,6 +53,11 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
 | Tür | *ExpressRoute* |
 | Ağ Geçidi genel IP adı  | *gwpıp* |
 
+> [!IMPORTANT]
+> Özel eşleme için IPv6 desteği şu anda **genel önizlemededir**. Sanal ağınızı IPv6 tabanlı özel eşleme ile bir ExpressRoute devresine bağlamak istiyorsanız, lütfen sanal ağınızın ikili bir yığın olduğundan ve [burada](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)açıklanan yönergeleri izlediğinden emin olun.
+> 
+> 
+
 ## <a name="add-a-gateway"></a>Ağ geçidi ekleme
 
 1. Azure ile bağlantı kurmak için çalıştırın `Connect-AzAccount` .
@@ -77,6 +82,11 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
    ```
+    Çift yığın sanal ağı kullanıyorsanız ve ExpressRoute üzerinden IPv6 tabanlı özel eşleme kullanmayı planlıyorsanız, bunun yerine bir çift yığın ağ geçidi alt ağı oluşturun.
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
+   ```
 1. Yapılandırmayı ayarlayın.
 
    ```azurepowershell-interactive
@@ -97,11 +107,15 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-1. Ağ geçidini oluşturun. Bu adımda **-gatewaytype** özellikle önemlidir. **ExpressRoute**değerini kullanmanız gerekir. Bu cmdlet 'leri çalıştırdıktan sonra ağ geçidinin oluşturulması 45 dakika veya daha fazla sürebilir.
+1. Ağ geçidini oluşturun. Bu adımda **-gatewaytype** özellikle önemlidir. **ExpressRoute** değerini kullanmanız gerekir. Bu cmdlet 'leri çalıştırdıktan sonra ağ geçidinin oluşturulması 45 dakika veya daha fazla sürebilir.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> ExpressRoute üzerinden IPv6 tabanlı özel eşleme kullanmayı planlıyorsanız, **-gatewaysku** IÇIN az SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) seçtiğinizden emin olun.
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>Ağ geçidinin oluşturulduğunu doğrulayın
 Ağ geçidinin oluşturulduğunu doğrulamak için aşağıdaki komutları kullanın:

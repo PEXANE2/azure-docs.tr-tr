@@ -1,20 +1,20 @@
 ---
-title: Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme
-description: Azure Ilkesi kullanarak birden çok Azure sanal makinesi veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirebileceğinizi açıklar.
+title: Azure Ilkesini kullanarak VM öngörülerini etkinleştirme
+description: Azure Ilkesi kullanarak birden çok Azure sanal makinesi veya sanal makine ölçek kümesi için VM öngörülerini nasıl etkinleştirebileceğinizi açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625153"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707549"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme
-Bu makalede, Azure Policy kullanılarak Azure sanal makineler veya Azure Arc (Önizleme) ile bağlantılı karma sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Azure Ilkesi, Azure ortamınızda VM'ler için Azure İzleyici için gerekli aracıları yükleyen ve her sanal makine oluşturulduğu sürece VM 'Ler için izlemeyi otomatik olarak etkinleştiren ilke tanımlarını atamanıza olanak tanır. VM'ler için Azure İzleyici, ortamınızdaki uyumsuz VM 'Leri keşfetmenizi ve düzeltmenizi sağlayan bir özellik sunar. Doğrudan Azure Ilkesiyle çalışmak yerine bu özelliği kullanın.
+# <a name="enable-vm-insights-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM öngörülerini etkinleştirme
+Bu makalede, Azure Ilkesi kullanılarak Azure sanal makineleri veya Azure Arc (Önizleme) ile bağlantılı karma sanal makine için VM öngörülerinin nasıl etkinleştirileceği açıklanır. Azure Ilkesi, Azure ortamınızda VM öngörüleri için gerekli aracıları yükleyen ve her bir sanal makine oluşturulduğu sürece VM 'Ler için izlemeyi etkinleştiren ilke tanımlarını atamanızı sağlar. VM öngörüleri, ortamınızdaki uyumsuz VM 'Leri keşfetmenizi ve düzeltmenizi sağlayan bir özellik sunar. Doğrudan Azure Ilkesiyle çalışmak yerine bu özelliği kullanın.
 
 Azure Ilkesi hakkında bilgi sahibi değilseniz Azure [ilkesi 'ni kullanarak Azure izleyici 'yi ölçeğe göre dağıtma](../deploy-scale.md)konusuna kısa bir giriş alın.
 
@@ -22,15 +22,15 @@ Azure Ilkesi hakkında bilgi sahibi değilseniz Azure [ilkesi 'ni kullanarak Azu
 > Azure Ilkesini Azure sanal makine ölçek kümeleri ile kullanmak veya Azure sanal makinelerini etkinleştirmek üzere doğrudan Azure Ilkesiyle çalışmak için bkz. Azure [ilkesini kullanarak Azure izleyici 'yi ölçekli olarak dağıtma](../deploy-scale.md#azure-monitor-for-vms).
 
 ## <a name="prerequisites"></a>Önkoşullar
-- [Log Analytics çalışma alanı oluşturun ve yapılandırın](../insights/vminsights-configure-workspace.md).
-- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](../insights/vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
+- [Log Analytics çalışma alanı oluşturun ve yapılandırın](./vminsights-configure-workspace.md).
+- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](./vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>VM'ler için Azure İzleyici girişim
-VM'ler için Azure İzleyici, Azure sanal makinelerine Log Analytics aracısını ve bağımlılık aracısını yüklemek için yerleşik ilke tanımları sağlar. Girişim **etkinleştir VM'ler için Azure izleyici** , bu ilke tanımlarının her birini içerir. Aracıları bu kapsamdaki herhangi bir Windows veya Linux Azure sanal makinesine otomatik olarak yüklemek için bu girişimi bir yönetim grubuna, aboneliğe veya kaynak grubuna atayın.
+## <a name="vm-insights-initiative"></a>VM öngörüleri girişimi
+VM öngörüleri, Azure sanal makinelerine Log Analytics aracısını ve bağımlılık aracısını yüklemek için yerleşik ilke tanımları sağlar. Bu ilke tanımlarının her birini **etkinleştirerek GIRIŞIM VM öngörülerini etkinleştirin** . Aracıları bu kapsamdaki herhangi bir Windows veya Linux Azure sanal makinesine otomatik olarak yüklemek için bu girişimi bir yönetim grubuna, aboneliğe veya kaynak grubuna atayın.
 
 ## <a name="open-policy-coverage-feature"></a>Ilke kapsamı özelliğini aç
-**VM'ler için Azure izleyici Ilke kapsamına** erişmek için, Azure Portal **Azure izleyici** menüsündeki **sanal makinelere** gidin. **Diğer ekleme seçeneklerini** belirleyin ve **ilkeyi kullanarak etkinleştir**' in altında **etkinleştirin** .
+**VM öngörüleri Ilke kapsamına** erişmek Için Azure Portal **Azure izleyici** menüsündeki **sanal makinelere** gidin. **Diğer ekleme seçeneklerini** belirleyin ve **ilkeyi kullanarak etkinleştir**' in altında **etkinleştirin** .
 
 [![VM 'lerden Azure Izleyici Başlarken sekmesi](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ Henüz bir atamanız yoksa, **Ilke ata**' ya tıklayarak yeni bir tane oluşturu
 
 [![Atama oluştur](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-Bu, seçtiğiniz kapsamla ve **Enable VM'ler için Azure izleyici** girişim tanımıyla birlikte kodlanması dışında, Azure ilkesinde bir girişim atamak için aynı sayfasıdır. İsteğe bağlı olarak **atama adını** değiştirebilir ve bir **Açıklama** ekleyebilirsiniz. Kapsama bir dışlama sağlamak istiyorsanız **Dışlamalar** ' ı seçin. Örneğin, kapsamınız bir yönetim grubu olabilir ve bu yönetim grubunda atamadan dışlanacak bir abonelik belirtebilirsiniz.
+Bu, seçtiğiniz kapsama ve **VM öngörülerini etkinleştir** girişim tanımıyla birlikte kodlanması dışında, Azure ilkesinde bir girişim atamak için aynı sayfasıdır. İsteğe bağlı olarak **atama adını** değiştirebilir ve bir **Açıklama** ekleyebilirsiniz. Kapsama bir dışlama sağlamak istiyorsanız **Dışlamalar** ' ı seçin. Örneğin, kapsamınız bir yönetim grubu olabilir ve bu yönetim grubunda atamadan dışlanacak bir abonelik belirtebilirsiniz.
 
 [![Girişim ata](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -48,14 +48,14 @@ Bu, seçtiğiniz kapsamla ve **Enable VM'ler için Azure izleyici** girişim tan
    > [!NOTE]
    > Çalışma alanı atama kapsamının ötesinde, ilke atamasının asıl KIMLIĞINE *Log Analytics katkıda bulunan* izinleri verin. Bunu yapmazsanız, şunun gibi bir dağıtım hatası görebilirsiniz: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
-[![Çalışma alanı](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
+[![Alanında](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
 
 Oluşturmak için **Oluştur** ' a tıklamadan önce atama ayrıntılarını gözden geçirmek Için **gözden geçir + oluştur** ' a tıklayın. Mevcut sanal makineleri etkinleştirmek için büyük olasılıkla birden çok düzeltme görevi olması gerekeceğinden, bu noktada bir düzeltme görevi oluşturmayın. Bkz. [uyumluluk sonuçlarını](#remediate-compliance-results) aşağıdaki şekilde düzeltin.
 
 ## <a name="review-compliance"></a>Uyumluluğu gözden geçir
-Bir atama oluşturulduktan sonra yönetim gruplarınız ve aboneliklerinizde **VM'ler için Azure izleyici girişim etkinleştirme** kapsamını gözden geçirebilir ve yönetebilirsiniz. Bu, yönetim gruplarının veya aboneliklerinin her birinde kaç tane sanal makinenin mevcut olduğunu ve bunların uyumluluk durumlarını gösterir.
+Atama oluşturulduktan sonra yönetim gruplarınız ve abonelikleriniz genelinde **VM öngörülerini etkinleştirme** girişimi kapsamını gözden geçirebilir ve yönetebilirsiniz. Bu, yönetim gruplarının veya aboneliklerinin her birinde kaç tane sanal makinenin mevcut olduğunu ve bunların uyumluluk durumlarını gösterir.
 
-[![VM'ler için Azure İzleyici Ilke sayfasını yönet](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![VM Insights Ilke sayfasını yönet](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 Aşağıdaki tabloda bu görünümdeki bilgilerin açıklaması verilmiştir.
@@ -105,11 +105,11 @@ Düzeltme görevini oluşturmak için **Düzelt** ' e tıklayın ve ardından ba
 [![Ekran görüntüsü Izleme için Ilke Düzeltme bölmesini gösterir | Sanal makineler.](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-Düzeltme görevleri tamamlandıktan sonra, sanal makinelerinizin VM'ler için Azure İzleyici için yüklü ve etkinleştirilmiş aracıların uyumlu olması gerekir. 
+Düzeltme görevleri tamamlandıktan sonra, sanal makinelerinizin VM öngörüleri için yüklü ve etkinleştirilmiş aracıların uyumlu olması gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir. 
+Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM öngörüleri ile analiz edilmek üzere kullanılabilir. 
 
-- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md). 
-- VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md). 
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM Insights haritasını görüntüleme](vminsights-maps.md). 
+- VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).

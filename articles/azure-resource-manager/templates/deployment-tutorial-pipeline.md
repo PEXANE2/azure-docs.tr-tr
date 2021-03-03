@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines ile sürekli tümleştirme
 description: Azure Resource Manager şablonlarını sürekli oluşturma, test etme ve dağıtma hakkında bilgi edinin (ARM şablonları).
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722813"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines ile ARM şablonlarının sürekli tümleştirilmesi
 
@@ -83,8 +83,8 @@ _Createwebapp_ klasörü, şablonun depolandığı klasördür. `pwd`Komut klas�
 
 Şablonları oluşturmak yerine şablonları indirebilir ve _Createwebapp_ klasörüne kaydedebilirsiniz.
 
-* Ana şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* Bağlantılı şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* Ana şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Bağlantılı şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Hem klasör adı hem de dosya adları ardışık düzende oldukları için kullanılır. Bu adları değiştirirseniz, işlem hattında kullanılan adları güncelleştirmeniz gerekir.
 
@@ -106,7 +106,7 @@ _azuredeploy.js_ , yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersini
     LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **Main, ana daldır.**  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
 
 1. Bir tarayıcıdan GitHub deponuza gidin. URL `https://github.com/[YourAccountName]/[YourGitHubRepository]` . _Createwebapp_ klasörünü ve klasörün içinde iki dosyayı görürsünüz.
-1. Şablonu açmak için _linkedStorageAccount.jsaçık '_ ı seçin.
+1. Şablonu açmak için _azuredeploy.jsaçık '_ ı seçin.
 1. **Ham** düğmesini seçin. URL ile başlar `https://raw.githubusercontent.com` .
 1. URL’nin kopyasını oluşturun. İşlem hattını öğreticide daha sonra yapılandırırken bu değeri sağlamanız gerekir.
 
@@ -174,10 +174,10 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
     * **Eylem**: **kaynak grubunu oluştur veya Güncelleştir** eylemini seçin 2 eylem-1. Yeni bir kaynak grubu adı sağlanmışsa, bir kaynak grubu oluşturun; iki. belirtilen şablonu dağıtın.
     * **Kaynak grubu**: yeni bir kaynak grubu adı girin. Örneğin, **Azurermpipeline-RG**.
     * **Konum**: kaynak grubu için bir konum seçin, örneğin **Orta ABD**.
-    * **Şablon konumu**: **bağlı yapıt**' yi seçin, bu, görevin şablon dosyasını doğrudan bağlı depodan aramasını gösterir.
-    * **Şablon**: _createwebapp/azuredeploy.js_ girin. Klasör adını ve dosya adını değiştirdiyseniz, bu değeri değiştirmeniz gerekir.
-    * **Şablon parametreleri**: bu alanı boş bırakın. Parametre değerlerini **geçersiz kılma şablonu parametrelerinde** belirtirsiniz.
-    * **Şablon parametrelerini geçersiz kıl**: girin `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` . Proje adını ve bağlantılı şablon URL 'sini değiştirin. Bağlı şablon URL 'SI, [GitHub deposu oluşturma](#create-a-github-repository)sonunda yazdığınız şeydir. İle başlar `https://raw.githubusercontent.com` .
+    * **Şablon konumu**: **dosyanın URL**'sini seçin; Bu, görevin URL 'yi kullanarak şablon dosyası için aradığı anlamına gelir. _RelativePath_ ana şablonda kullanıldığından ve _RELATIVEPATH_ yalnızca URI tabanlı dağıtımlarda desteklendiğinden, burada URL 'yi kullanmanız gerekir.
+    * **Şablon bağlantısı**: [GitHub deposunu hazırlama](#prepare-a-github-repository) bölümünün sonunda aldığınız URL 'yi girin. İle başlar `https://raw.githubusercontent.com` .
+    * **Şablon parametreleri bağlantısı**: bu alanı boş bırakın. Parametre değerlerini **geçersiz kılma şablonu parametrelerinde** belirtirsiniz.
+    * **Şablon parametrelerini geçersiz kıl**: girin `-projectName [EnterAProjectName]` .
     * **Dağıtım modu**: **artımlı**' i seçin.
     * **Dağıtım adı**: **Deploypipelinetemplate** girin. **Dağıtım adını** görebilmeniz için **Gelişmiş** ' i seçin.
 

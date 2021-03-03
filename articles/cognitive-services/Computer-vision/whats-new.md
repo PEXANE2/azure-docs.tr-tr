@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738234"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -50,8 +50,8 @@ Yeni bir özellik kümesiyle, [uzamsal analiz kapsayıcısının](spatial-analys
 * **Son değişiklik**: *personzoneevent* olayı, *Personzoneenterexitevent* olarak yeniden adlandırıldı. Bu olay, bir kişi bölgeden girdiğinde ya da çıktığında ve çapraz bölgenin numaralı tarafıyla açıklamalı bilgi sağlayan, *personcrossingçokgen* işlemi tarafından tetiklenir.
 * Video URL 'SI, tüm işlemlerde "özel parametre/karıştırılmış" olarak belirtilebilir. Gizleme şimdi isteğe bağlıdır ve yalnızca `KEY` ve `IV` ortam değişkenleri olarak sağlanmışsa çalışır.
 * Ayar, tüm işlemler için varsayılan olarak etkindir. Öğesini `do_calibration: false` devre dışı bırakmak için ayarlayın.
-* Parametresi aracılığıyla otomatik düzeltme (varsayılan olarak devre dışı) için destek eklendi `enable_recalibration` , Ayrıntılar için lütfen [uzamsal analiz işlemlerine](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) bakın
-* İçin kamera ayarlama parametreleri `DETECTOR_NODE_CONFIG` . Ayrıntılar için [uzamsal analiz işlemlerine](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) bakın.
+* Parametresi aracılığıyla otomatik düzeltme (varsayılan olarak devre dışı) için destek eklendi `enable_recalibration` , Ayrıntılar için lütfen [uzamsal analiz işlemlerine](./spatial-analysis-operations.md) bakın
+* İçin kamera ayarlama parametreleri `DETECTOR_NODE_CONFIG` . Ayrıntılar için [uzamsal analiz işlemlerine](./spatial-analysis-operations.md) bakın.
 
 
 ## <a name="october-2020"></a>Ekim 2020

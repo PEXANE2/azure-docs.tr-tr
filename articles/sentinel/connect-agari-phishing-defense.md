@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806995"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724447"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Agari kimlik avlama savunması ve marka koruma Çözümlerinizi Azure Sentinel 'e bağlama
 
@@ -39,7 +39,7 @@ Agari 'nin kimlik avı savunması ve marka koruma çözümlerini Azure Sentinel 
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinleri.
 
-- Çalışma alanı için paylaşılan anahtarların okuma izinleri. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Çalışma alanı için paylaşılan anahtarların okuma izinleri. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - İşlev Uygulaması oluşturmak için Azure Işlevleri üzerinde okuma ve yazma izinleri. [Azure işlevleri hakkında daha fazla bilgi edinin](../azure-functions/index.yml).
 

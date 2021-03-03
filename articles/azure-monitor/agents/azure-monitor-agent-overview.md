@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711544"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -19,9 +19,9 @@ Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izl
 ## <a name="relationship-to-other-agents"></a>Diğer aracılarla ilişki
 Azure Izleyici Aracısı, şu anda Azure Izleyici tarafından sanal makinelerden gelen Konuk verileri toplamak için kullanılan aşağıdaki aracıların yerini alır:
 
-- [Log Analytics Aracısı](../platform/log-analytics-agent.md) -verileri Log Analytics çalışma alanına gönderir ve VM'ler için Azure izleyici ve izleme çözümlerini destekler.
-- [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) -Azure Izleyici ölçümlerine (yalnızca Windows), Azure Event Hubs ve Azure Storage 'a veri gönderir.
-- [Telegraf Agent](../platform/collect-custom-metrics-linux-telegraf.md) -verileri Azure Izleyici ölçümlerine gönderir (yalnızca Linux).
+- [Log Analytics Aracısı](./log-analytics-agent.md) -verileri Log Analytics çalışma alanına GÖNDERIR ve VM öngörülerini ve izleme çözümlerini destekler.
+- [Tanılama uzantısı](./diagnostics-extension-overview.md) -Azure Izleyici ölçümlerine (yalnızca Windows), Azure Event Hubs ve Azure Storage 'a veri gönderir.
+- [Telegraf Agent](../essentials/collect-custom-metrics-linux-telegraf.md) -verileri Azure Izleyici ölçümlerine gönderir (yalnızca Linux).
 
 Azure Izleyici Aracısı, bu işlevselliği tek bir aracıda birleştirmenin yanı sıra mevcut aracılar üzerinde aşağıdaki avantajları sağlar:
 
@@ -52,7 +52,7 @@ Azure izleyici Aracısı, Azure izleyici [için genel kullanıma sunulan aracıl
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 Azure Izleyici aracısının genel önizlemesi sırasında aşağıdaki sınırlamalar geçerlidir:
 
-- Azure Izleyici Aracısı, VM'ler için Azure İzleyici ve Azure Güvenlik Merkezi gibi çözümleri ve öngörüleri desteklemez. Şu anda desteklenen tek senaryo, yapılandırdığınız veri toplama kurallarını kullanarak veri topluyor. 
+- Azure Izleyici Aracısı, VM öngörüleri ve Azure Güvenlik Merkezi gibi çözümleri ve öngörüleri desteklemez. Şu anda desteklenen tek senaryo, yapılandırdığınız veri toplama kurallarını kullanarak veri topluyor. 
 - Veri toplama kurallarının, hedef olarak kullanılan Log Analytics çalışma alanıyla aynı bölgede oluşturulması gerekir.
 - Azure sanal makineleri, sanal makine ölçek kümeleri ve Azure Arc etkin sunucuları şu anda desteklenmektedir. Azure Kubernetes hizmeti ve diğer işlem kaynağı türleri şu anda desteklenmemektedir.
 - Sanal makinenin aşağıdaki HTTPS uç noktalarına erişimi olmalıdır:
@@ -64,7 +64,7 @@ Azure Izleyici aracısının genel önizlemesi sırasında aşağıdaki sınırl
 ## <a name="coexistence-with-other-agents"></a>Diğer aracılarla birlikte bulunma
 Azure Izleyici Aracısı mevcut aracılarla birlikte çalışabilir, böylece değerlendirme veya geçiş sırasında mevcut işlevlerini kullanmaya devam edebilirsiniz. Bu özellikle, var olan çözümleri destekleme genel önizlemesindeki sınırlamalar nedeniyle önemlidir. Bu, sorgu sonuçlarını çarpıtabileceğinden ve verilerin alımı ve saklanması için ek ücretler elde edilmesine neden olduğundan yinelenen verileri toplamayla ilgili dikkatli olmanız gerekir.
 
-Örneğin VM'ler için Azure İzleyici, performans verilerini bir Log Analytics çalışma alanına göndermek için Log Analytics aracısını kullanır. Ayrıca, çalışma alanını aracılardan Windows olaylarını ve Syslog olaylarını toplayacak şekilde yapılandırmış olabilirsiniz. Azure Izleyici aracısını yükler ve aynı olaylar ve performans verileri için bir veri toplama kuralı oluşturursanız, bu yinelenen verilerin oluşmasına neden olur.
+Örneğin, VM öngörüleri, performans verilerini bir Log Analytics çalışma alanına göndermek için Log Analytics aracısını kullanır. Ayrıca, çalışma alanını aracılardan Windows olaylarını ve Syslog olaylarını toplayacak şekilde yapılandırmış olabilirsiniz. Azure Izleyici aracısını yükler ve aynı olaylar ve performans verileri için bir veri toplama kuralı oluşturursanız, bu yinelenen verilerin oluşmasına neden olur.
 
 
 ## <a name="costs"></a>Maliyetler
@@ -76,7 +76,7 @@ Aşağıdaki tabloda, veri toplama kurallarını kullanarak şu anda Azure Izley
 
 Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izleyici günlüklerini destekleyen bir Log Analytics çalışma alanına gönderir.
 
-| Veri Kaynağı | Hedefler | Description |
+| Veri Kaynağı | Hedefler | Açıklama |
 |:---|:---|:---|
 | Performans        | Azure İzleyici Ölçümleri<br>Log Analytics çalışma alanı | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | Windows olay günlükleri | Log Analytics çalışma alanı | Windows olay günlüğü sistemine gönderilen bilgiler. |

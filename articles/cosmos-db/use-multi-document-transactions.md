@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664082"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692479"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'de çok belgeli işlemler kullanma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ MongoDB için Azure Cosmos DB API 'sinde, tek bir belgedeki işlemler atomik bir
 
 ## <a name="requirements"></a>Gereksinimler
 
-Çoklu belge işlemleri, sürüm 4,0 ' deki parçalara ayrılmamış bir koleksiyon içinde desteklenir. Çoklu belge işlemleri koleksiyonlar veya parçalı koleksiyonlar arasında desteklenmez.
+Çok belgeli işlemler, API sürüm 4,0 ' deki bir parçalı bir koleksiyon içinde desteklenir. Çoklu belge işlemleri koleksiyonlar genelinde veya 4,0 sürümündeki parçalı koleksiyonlar arasında desteklenmez. İşlemler için zaman aşımı sabit 5 saniyedir.
 
 Tel Protokolü sürüm 4,0 veya üstünü destekleyen tüm sürücüler, MongoDB çok belgeli işlemler için Azure Cosmos DB API 'YI destekleyecektir.
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>MongoDB kabuğu 'nda çok belgeli işlemler çalıştırma
+> [!Note]
+> Bu örnek, MongoDB pusula içinde Embedded MongoSH Beta (Shell) içinde çalışmaz.
 
 1. Bir komut istemi açın, Mongo kabuğu sürüm 4,0 ve üzeri sürümünün yüklü olduğu dizine gidin:
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715046"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -51,7 +51,7 @@ Azure için Microsoft kötü amaçlı yazılımdan koruma, uygulamalar ve kirac�
 Sanal makinelerinizi korumaya yardımcı olmak için kötü amaçlı yazılımdan koruma yazılımları hakkında daha fazla bilgi
 
 * [Azure Sanal Makinelerinde Kötü Amaçlı Yazılıma Karşı Koruma Çözümleri Dağıtma](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](../../virtual-machines/extensions/trend.md)
+* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](../../virtual-machines/extensions/symantec.md)
 * [Azure Marketi 'nde güvenlik çözümleri](https://azure.microsoft.com/marketplace/?term=security)
 

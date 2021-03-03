@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733984"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS portalı Azure 'a taşınıyor
 
@@ -64,7 +64,7 @@ Her iki durumda da yöneticinizin aşağıdaki tablodan uygun rolü el ile atama
  
 
 ## <a name="new-workspaces"></a>Yeni çalışma alanları
-Artık OMS portalını kullanarak yeni çalışma alanları oluşturamayacaksınız. Azure portal yeni bir çalışma alanı oluşturmak için [Azure portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md) bölümündeki yönergeleri izleyin.
+Artık OMS portalını kullanarak yeni çalışma alanları oluşturamayacaksınız. Azure portal yeni bir çalışma alanı oluşturmak için [Azure portal Log Analytics çalışma alanı oluşturma](./quick-create-workspace.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="changes-to-alerts"></a>Uyarılardaki değişiklikler
 
@@ -73,9 +73,9 @@ Artık OMS portalını kullanarak yeni çalışma alanları oluşturamayacaksın
 Uyarılar, var olan uyarılar OMS portalında listelenmeye devam edecek [Azure Portal](../alerts/alerts-unified-log.md) , ancak yalnızca Azure Portal yönetebilirsiniz. Uyarılara Log Analytics uyarı REST API veya Log Analytics uyarı kaynağı şablonunu kullanarak programlı bir şekilde eriştiğinizde, API aramalarınızdan, Azure Resource Manager şablonlarındaki ve PowerShell komutlarında eylemler yerine eylem gruplarını kullanmanız gerekir.
 
 ### <a name="alert-management-solution"></a>Uyarı yönetimi çözümü
-Önceki duyurudan bir değişiklik olarak, [uyarı yönetimi çözümü](../platform/alert-management-solution.md) Azure Portal kullanılabilir olmaya devam eder ve tam olarak desteklenir. Çözümü Azure Marketi 'nden yüklemeye devam edebilirsiniz.
+Önceki duyurudan bir değişiklik olarak, [uyarı yönetimi çözümü](../insights/alert-management-solution.md) Azure Portal kullanılabilir olmaya devam eder ve tam olarak desteklenir. Çözümü Azure Marketi 'nden yüklemeye devam edebilirsiniz.
 
-Uyarı yönetimi çözümü kullanılabilir olmaya devam ederken Azure [izleyici 'nin Birleşik uyarı arabirimini](../platform/alerts-overview.md) kullanarak Azure 'daki tüm uyarıları görselleştirin ve yönetebilirsiniz. Bu yeni deneyim, Azure 'daki birden fazla kaynaktan gelen uyarıları Log Analytics ' den gelen günlük uyarılarını yerel olarak toplar. Azure Izleyici 'nin Birleşik uyarı arabirimini kullanıyorsanız, uyarı yönetimi çözümü yalnızca, uyarıların System Center Operation Manager 'dan Azure 'a tümleştirilmesini etkinleştirmek için gereklidir. Azure Izleyici 'nin Birleşik uyarı arabiriminde, uyarılarınızın dağıtımlarını görebilir, akıllı gruplar aracılığıyla ilgili uyarıların otomatik olarak gruplanmasından yararlanabilir ve zengin filtreler uygularken birden çok aboneliğe ilişkin uyarıları görüntüleyebilirsiniz. Uyarı yönetiminde gelecekte yapılacak ilerleme, bu yeni deneyimden öncelikli olarak sunulacaktır. 
+Uyarı yönetimi çözümü kullanılabilir olmaya devam ederken Azure [izleyici 'nin Birleşik uyarı arabirimini](../alerts/alerts-overview.md) kullanarak Azure 'daki tüm uyarıları görselleştirin ve yönetebilirsiniz. Bu yeni deneyim, Azure 'daki birden fazla kaynaktan gelen uyarıları Log Analytics ' den gelen günlük uyarılarını yerel olarak toplar. Azure Izleyici 'nin Birleşik uyarı arabirimini kullanıyorsanız, uyarı yönetimi çözümü yalnızca, uyarıların System Center Operation Manager 'dan Azure 'a tümleştirilmesini etkinleştirmek için gereklidir. Azure Izleyici 'nin Birleşik uyarı arabiriminde, uyarılarınızın dağıtımlarını görebilir, akıllı gruplar aracılığıyla ilgili uyarıların otomatik olarak gruplanmasından yararlanabilir ve zengin filtreler uygularken birden çok aboneliğe ilişkin uyarıları görüntüleyebilirsiniz. Uyarı yönetiminde gelecekte yapılacak ilerleme, bu yeni deneyimden öncelikli olarak sunulacaktır. 
 
 Uyarı yönetimi çözümü tarafından toplanan veriler (uyarı türüne sahip kayıtlar), çözüm çalışma alanı için yüklendiği sürece Log Analytics devam eder. 
 
@@ -83,7 +83,7 @@ Uyarı yönetimi çözümü tarafından toplanan veriler (uyarı türüne sahip 
 OMS mobil uygulaması, OMS portalı ile birlikte sunacaktır. OMS mobil uygulaması yerine, BT altyapınız, panolarınız ve kayıtlı sorgularla ilgili bilgilere erişmek için, mobil cihazınızda doğrudan tarayıcınızdan Azure portal erişebilirsiniz. Uyarıları almak için, [Azure eylem GRUPLARıNı](../alerts/action-groups.md) SMS veya sesli çağrı biçiminde bildirimleri alacak şekilde yapılandırmanız gerekir
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Bağlayıcısı ve çözüm
-[Application Insights Bağlayıcısı](../logs/app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını görüntüleyebilmenin](../log-query/unify-app-resource-data.md)yanı sıra [çapraz kaynak sorguları](../logs/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde Application Insights kaynaklarınızdan verileri çoğaltmaya ve Log Analytics gönderilmeye gerek yoktur. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
+[Application Insights Bağlayıcısı](../logs/app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını görüntüleyebilmenin](./unify-app-resource-data.md)yanı sıra [çapraz kaynak sorguları](../logs/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde Application Insights kaynaklarınızdan verileri çoğaltmaya ve Log Analytics gönderilmeye gerek yoktur. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
 
 Bu nedenle, Application Insights Bağlayıcısı kullanım dışı bırakılmıştır ve Azure Marketi 'nden, OMS portalı 30 Mart 2019 ' de kullanımdan kaldırılmıştır. Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir. OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Bu, Ocak 2019 ' de kullanıma sunulan REST API kullanılarak desteklenecektir ve [Azure güncelleştirmelerinde](https://azure.microsoft.com/updates/)bir bildirim gönderilir. 
 

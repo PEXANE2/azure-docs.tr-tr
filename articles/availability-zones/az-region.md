@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701459"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -106,6 +106,8 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 |     Sanal makineler: Dv3-Series                              | : large_blue_diamond:  |
 |     Sanal makineler: ESv3-Series                             | : large_blue_diamond:  |
 |     Sanal makineler: Ev3-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: F serisi                                | : large_blue_diamond:  |
+|     Sanal makineler: FS-Series                               | : large_blue_diamond:  |
 |     Sanal ağ                                           | : large_blue_diamond:  |
 |     VPN Gateway                                                 | : large_blue_diamond:  |
 
@@ -129,11 +131,18 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Azure Özel Bağlantı                              |      : large_blue_diamond:  |
 | Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
 | Azure Site Recovery                             |      : large_blue_diamond:  |
+| Azure SQL: sanal makine                      |      : large_blue_diamond:  |
+| Azure Search                                    |      : large_blue_diamond:  |
+| Azure Web Uygulaması Güvenlik Duvarı                  |      : large_blue_diamond:  |
+| Bilişsel hizmetler: Metin Analizi              |      : large_blue_diamond:  |
 | Container Registry                              |      : large_blue_diamond:  |
 | Event Grid                                      |      : large_blue_diamond:  |
 | Ağ İzleyicisi                                 |      : large_blue_diamond:  |
+| Ağ Izleyicisi: Trafik Analizi              |      : large_blue_diamond:  |
 | Power BI Embedded                               |      : large_blue_diamond:  |
 | Premium blob depolaması                            |      : large_blue_diamond:  |
+| Depolama: Azure Premium dosyaları                    |      : large_blue_diamond:  |
+| Sanal makineler: Azure adanmış ana bilgisayar          |      : large_blue_diamond:  |
 | Sanal makineler: Ddsv4-Series                  |      : large_blue_diamond:  |
 | Sanal makineler: Ddv4-Series                   |      : large_blue_diamond:  |
 | Sanal makineler: Dsv4-Series                   |      : large_blue_diamond:  |
@@ -145,6 +154,9 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Sanal makineler: Fsv2-Series                   |      : large_blue_diamond:  |
 | Sanal makineler: a serisi                      |      : large_blue_diamond:  |
 | Sanal WAN                                     |      : large_blue_diamond:  |
+| Sanal WAN: ExpressRoute                       |      : large_blue_diamond:  |
+| Sanal WAN: Noktadan siteye VPN Gateway          |      : large_blue_diamond:  |
+| Sanal WAN: siteden siteye VPN Gateway           |      : large_blue_diamond:  |
 
 
 **Bölgesel olmayan**
@@ -153,21 +165,30 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 |-----------------------------------------------|:-------------------:|
 |     Azure DNS                                 |     : globe_with_meridians:             |
 |     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Gelişmiş Tehdit Koruması          |     : globe_with_meridians:             |
 |     Azure Danışmanı                             |     : globe_with_meridians:             |
+|     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Hizmetleri                        |     : globe_with_meridians:             |
 |     IoT için Azure Defender                  |     : globe_with_meridians:             |
+|     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |
 |     Azure hafif kullanım                        |     : globe_with_meridians:             |
 |     Azure yönetilen uygulamalar              |     : globe_with_meridians:             |
 |     Azure Haritalar                                |     : globe_with_meridians:             |
 |     Azure İlkesi                              |     : globe_with_meridians:             |
 |     Azure Kaynak Grafiği                    |     : globe_with_meridians:             |
+|     Azure Sentinel                            |     : globe_with_meridians:             |
 |     Azure Stack                               |     : globe_with_meridians:             |
 |     Azure Stack uç                        |     : globe_with_meridians:             |
 |     Cloud Shell                               |     : globe_with_meridians:             |
+|     Content Delivery Network                  |     : globe_with_meridians:             |
+|     Maliyet Yönetimi                           |     : globe_with_meridians:             |
 |     Microsoft Azure için Müşteri Kasası    |     : globe_with_meridians:             |
+|     Intune                                    |     : globe_with_meridians:             |
 |     Microsoft Azure eşleme hizmeti         |     : globe_with_meridians:             |
 |     Microsoft Azure portal                  |     : globe_with_meridians:             |
+|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
+|     Microsoft Graph                           |     : globe_with_meridians:             |
 |     Güvenlik Merkezi                         |     : globe_with_meridians:             |
 |     Traffic Manager                         |     : globe_with_meridians:             |
 

@@ -1,11 +1,13 @@
 - name: IoT için Azure Defender belgeleri
   href: index.yml
 - name: Genel Bakış
+  displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
     - name: Yenilikler
       href: release-notes.md
     - name: Aracısız çözüm mimarisi
+      displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: Aracı tabanlı çözüm mimarisi
       href: architecture-agent-based.md
@@ -15,8 +17,10 @@
     - name: Kuruluşlar için Aracısız Çözüm
       items:
         - name: Sistem önkoşulları
+          displayName: 'firewall, proxy, open ports'
           href: quickstart-system-prerequisites.md
         - name: IoT için Azure Defender’ı kullanmaya başlama
+          displayName: 'getting started, registration, onboarding'
           href: getting-started.md
     - name: Cihaz oluşturucular için aracı tabanlı çözüm
       items:
@@ -110,7 +114,7 @@
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
             - name: Yazılımı yükleme
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
               href: how-to-install-software.md
             - name: Ağınızı kurma
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
@@ -118,15 +122,15 @@
         - name: Algılayıcılarınızı hazırlama
           items:
             - name: Algılayıcı ekleme
-              displayName: 'onboard, cloud, register, activate'
+              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Algılayıcınızı etkinleştirme ve ayarlama
-              displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              displayName: 'onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
               href: how-to-activate-and-set-up-your-sensor.md
         - name: Şirket içi yönetim konsolunuzu hazırlama
           items:
             - name: Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama
-              displayName: 'activate, certificate, sign in, login, setup, initial, committed'
+              displayName: 'activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: Yüksek kullanılabilirliği ayarlama
               displayName: 'primary, secondary, failover, failback fail, recovery'
@@ -147,11 +151,11 @@
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: Algılayıcıları ayrı ayrı yönetme
           href: how-to-manage-individual-sensors.md
-          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, timezone time zone, backup, sync, restore, software update, failure'
         - name: Bulutta algılayıcıları yönetme
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Şirket içi yönetim konsolunu yönetme
-          displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
+          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
           href: how-to-manage-the-on-premises-management-console.md
         - name: Tehdit analizi paketleriyle çalışma
           href: how-to-work-with-threat-intelligence-packages.md
@@ -162,10 +166,10 @@
               displayName: classification
             - name: Bir cihaz envanterinde algılayıcı algılamalarını araştırma
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
-              displayName: 'classification, Windows registry'
+              displayName: 'classification, Windows registry, asset, device, firmware, import'
         - name: Algılayıcı cihaz eşlemesiyle çalışma
           href: how-to-work-with-the-sensor-device-map.md
-          displayName: 'connections, Purdue, zoom'
+          displayName: 'connections, Purdue, zoom, delete device'
         - name: Bir algılayıcı tarafından algılanan uyarılarla çalışma
           items:
             - name: Algılayıcınızda uyarıyla çalışma
@@ -183,7 +187,7 @@
               displayName: 'custom, alerts, comments, groups'
             - name: Uyarı bilgilerini iletme
               href: how-to-forward-alert-information-to-partners.md
-              displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
+              displayName: 'integration, 3rd party, partners, vendor, Syslog server, NetWitness, CEF, LEEF, email, SOC, SIEM, SOAR, incident response'
         - name: 'Küresel, bölgesel ve yerel tehditlere yönelik içgörü elde etme'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
           displayName: 'site, business unit, region, map'
@@ -193,10 +197,12 @@
           items:
             - name: Risk değerlendirmesi raporları oluşturma
               href: how-to-create-risk-assessment-reports.md
-              displayName: 'vulnerability, security score, score'
+              displayName: 'vulnerability, security score, score, CVE'
             - name: Saldırı vektör raporları oluşturma
               href: how-to-create-attack-vector-reports.md
+              displayName: 'Attack surface, prediction,simulation'
             - name: Veri araştırma raporları oluşturma
+              displayName: 'CVE, activity'
               href: how-to-create-data-mining-queries.md
             - name: Eğilimler ve istatistik raporları oluşturma
               href: how-to-create-trends-and-statistics-reports.md
@@ -204,7 +210,7 @@
         - name: Cihaz bilgilerini zenginleştirme
           items:
             - name: Cihaz bildirimleri ile çalışma
-              displayName: 'notifications, operating systems, enrich, device information, classification'
+              displayName: 'notifications, operating systems, enrich, device information, classification, delete devices'
               href: how-to-work-with-device-notifications.md
             - name: Bağlantı noktası ve VLAN ad çözümlemesini geliştirme
               displayName: 'port, VLAN'

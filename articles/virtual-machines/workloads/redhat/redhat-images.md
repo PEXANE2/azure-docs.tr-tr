@@ -7,13 +7,14 @@ ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694691"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -108,6 +109,8 @@ RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191023) | Bu görüntüler, standart Red Hat depolarına bağlı olan RHEL 8 LVM bölümlenmiş görüntüleridir.
 |RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](../../generation-2.md).
+|RedHat | RHEL | RHEL-SAP-APPS | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.1.2021012201) | Bu görüntüler, SAP uygulamaları görüntüleri için RHEL ' dir. SAP uygulamaları depolarına ve temel RHEL depolarına erişim hakkına sahiptir.
+|RedHat | RHEL | RHEL-SAP-HA | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.1.2021010602) | Bu görüntüler, yüksek kullanılabilirlik ve güncelleştirme hizmetleri görüntüleriyle SAP için RHEL ' dir. Bu kişiler SAP çözümlerine ve uygulama depolarına ve yüksek kullanılabilirlik depolarına ve RHEL E4S depoları 'na erişim hakkına sahiptir. Faturalandırma, temel işlem ücretinin en üstünde RHEL Premium, SAP Premium ve yüksek kullanılabilirliğe sahip Premium içerir.
 
 ## <a name="rhel-extended-support-add-ons"></a>RHEL genişletilmiş destek eklentileri
 

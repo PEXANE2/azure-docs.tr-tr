@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709827"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standart Load Balancer Azure Izleyici günlükleri
 
@@ -74,7 +74,7 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
 
 ## <a name="view-and-analyze-the-activity-log"></a>Etkinlik günlüğünü görüntüleme ve analiz etme
 
-Etkinlik günlüğü varsayılan olarak oluşturulur. [Bu makaledeki yönergeleri izleyerek](../azure-monitor/platform/activity-log.md), aboneliği bir abonelik düzeyinde aktarılacak şekilde yapılandırabilirsiniz. [Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md) makalesindeki bu Günlükler hakkında daha fazla bilgi edinin makalesini okuyun.
+Etkinlik günlüğü varsayılan olarak oluşturulur. [Bu makaledeki yönergeleri izleyerek](../azure-monitor/essentials/activity-log.md), aboneliği bir abonelik düzeyinde aktarılacak şekilde yapılandırabilirsiniz. [Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md) makalesindeki bu Günlükler hakkında daha fazla bilgi edinin makalesini okuyun.
 
 Aşağıdaki yöntemlerden birini kullanarak, etkinlik günlüğü verilerini görüntüleyebilir ve çözümleyebilirsiniz:
 
@@ -113,4 +113,4 @@ Azure Load Balancer için ölçülerle günlüklere dışarı aktarma özelliği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Yük dengeleyiciniz için kullanılabilir ölçümleri gözden geçirin](./load-balancer-standard-diagnostics.md)
-* [Azure Izleyici yönergelerini izleyerek sorgular oluşturma ve test etme](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Izleyici yönergelerini izleyerek sorgular oluşturma ve test etme](../azure-monitor/logs/log-query-overview.md)

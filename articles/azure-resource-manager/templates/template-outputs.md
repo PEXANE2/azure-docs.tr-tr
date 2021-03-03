@@ -2,13 +2,13 @@
 title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda (ARM şablonu) ve Bıcep dosyasında çıkış değerlerinin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/19/2021
+ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703843"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM şablonlarındaki çıktılar
 
@@ -35,7 +35,21 @@ JSON için, `outputs` bölümü şablona ekleyin. Çıkış değeri, genel bir I
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bıcep için `output` anahtar sözcüğünü kullanın.
+
+Aşağıdaki örnekte, `publicIP` Bıcep dosyasında dağıtılan bir genel IP adresinin tanımlayıcısıdır. Çıkış değeri, genel IP adresi için tam etki alanı adını alır.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
 Adında bir kısa çizgi olan bir özelliğin çıktısını almanız gerekiyorsa, adın etrafında nokta gösterimi yerine köşeli ayraç kullanın. Örneğin, yerine kullanın  `['property-name']` `.property-name` .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -58,16 +72,6 @@ Adında bir kısa çizgi olan bir özelliğin çıktısını almanız gerekiyors
 ```
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Bıcep için `output` anahtar sözcüğünü kullanın.
-
-Aşağıdaki örnekte, `publicIP` Bıcep dosyasında dağıtılan bir genel IP adresinin sembolik adıdır. Çıkış değeri, genel IP adresi için tam etki alanı adını alır.
-
-```bicep
-output hostname string = publicIP.properties.dnsSettings.fqdn
-```
-
-Adında bir kısa çizgi olan bir özelliğin çıktısını almanız gerekiyorsa, adın etrafında nokta gösterimi yerine köşeli ayraç kullanın. Örneğin, yerine kullanın  `['property-name']` `.property-name` .
 
 ```bicep
 var user = {
@@ -99,9 +103,7 @@ JSON 'da, `condition` çıktının döndürülüp döndürülmeyeceğini tanıml
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Koşullu çıkış Şu anda Bıcep için kullanılamıyor.
-
-Ancak, `?` bir koşula bağlı olarak iki değerden birini döndürmek için işlecini kullanabilirsiniz.
+Bıcep 'de koşullu çıkış belirtmek için `?` işlecini kullanın. Aşağıdaki örnek, bir koşula bağlı olarak bir uç nokta URL 'SI ya da boş bir dize döndürür.
 
 ```bicep
 param deployStorage bool = true

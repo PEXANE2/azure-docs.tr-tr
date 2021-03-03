@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742611"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -35,7 +35,7 @@ Azure Standart Load Balancer, coğrafi olarak yedekli HA senaryolarına olanak s
 * Öğrenme eğrisi olmadan [mevcut yük dengeleyici çözümünde derleme](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> Bölgeler arası yük dengeleyici Şu anda önizleme aşamasındadır ve portalda dağıtılabilir. **https://preview.portal.azure.com** Özelliği görüntülemek ve dağıtmak için oturum açın... </br> </br>
+> Çapraz bölge yük dengeleyici Şu anda önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bölgeler arası yük dengeleme, bölgesel standart yük dengeleyici olarak yüksek performanslı ve düşük gecikme süreleriyle aynı avantajları sunar. 
@@ -79,7 +79,7 @@ Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırm
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Tek bir uç noktanın arkasında ölçeği artırma/azaltma yeteneği
 
-Bir çapraz bölge yük dengeleyicinin küresel uç noktasını müşterilere kullanıma sunana zaman, küresel bir uç noktanın arkasında müşteri etkisi olmadan bölgesel dağıtımlar ekleyebilir veya kaldırabilirsiniz. 
+Bir çapraz bölge yük dengeleyicinin küresel uç noktasını müşterilere kullanıma sunana zaman, genel uç noktanın arkasında kesinti olmadan bölgesel dağıtımlar ekleyebilir veya kaldırabilirsiniz. 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -94,7 +94,7 @@ Bölgeler arası yük dengeleyicinin arka uç havuzu bir veya daha fazla bölges
 
 Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük dengeleyici dağıtımlarınızı çapraz bölge yük dengeleyiciye ekleyin.
 
-**Ana bölge** , bölgeler arası yük dengeleyicinin dağıtıldığı yerdir. Bu bölge trafiğin nasıl yönlendirildiğini etkilemez. Bir giriş bölgesi kapanıyorsa trafik akışını etkilemez.
+**Ana bölge** , bölgeler arası yük dengeleyicinin dağıtıldığı yerdir. Bu bölge trafiğin nasıl yönlendirildiğini etkilemez. Bir giriş bölgesi aşağı gittiğinde trafik akışı etkilenmez.
 
 ### <a name="home-regions"></a>Giriş bölgeleri
 * Doğu ABD 2
@@ -137,13 +137,13 @@ Bölgeler arası yük dengeleyici, trafiği uygun bölgesel yük dengeleyiciye y
 
 * Bölgeler arası ön uç IP yapılandırması yalnızca genel kullanıma açıktır. Bir iç ön uç Şu anda desteklenmiyor.
 
-* Çapraz bölgesel yük dengeleyicinin arka uç havuzuna özel veya iç yük dengeleyici eklenemiyor 
+* Bir çapraz bölgedeki yük dengeleyicinin arka uç havuzuna özel veya iç yük dengeleyici eklenemiyor 
 
 * Çapraz bölge IPv6 ön uç IP yapılandırması desteklenmez. 
 
 * Bir sistem durumu araştırması Şu anda yapılandırılamaz. Varsayılan bir sistem durumu araştırması, bölgesel yük dengeleyici ile ilgili kullanılabilirlik bilgilerini her 20 saniyede bir otomatik olarak toplar. 
 
-* Azure Kubernetes hizmeti (AKS) Şu anda çapraz bölge Load Balancer tümleştirilemez. AKS ile dağıtılan bir genel Load Balancer önünde bir çapraz bölge Load Balancer ayarlarken bağlantı kaybı beklenmelidir.
+* Azure Kubernetes hizmeti (AKS) ile tümleştirme Şu anda kullanılamıyor. AKS ortak yük dengeleyicisiyle bir çapraz bölge yük dengeleyici dağıtıldığında bağlantı kaybı oluşur.
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 Bölgeler arası yük dengeleyici, standart yük dengeleyicinin [SLA 'sını](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) paylaşır.

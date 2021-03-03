@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687558"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLı (azdata veya kubectl) kullanarak PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini artırma ve azaltma
 
@@ -180,6 +180,21 @@ Sunucu grubunun yeni tanımını gösterir:
 ## <a name="scale-down-the-server-group"></a>Sunucu grubunun ölçeğini azaltma
 
 Sunucu grubunun ölçeğini genişletmek için aynı komutu yürütür, ancak ölçeklendirmek istediğiniz ayarlar için daha az değer ayarlayın. İstekleri ve/veya sınırları kaldırmak için değerini boş dize olarak belirtin.
+
+## <a name="reset-to-default-values"></a>Varsayılan değerlere sıfırla
+Çekirdek/bellek sınırlarını/istekleri parametrelerini varsayılan değerlerine sıfırlamak için, onları düzenleyin ve gerçek bir değer yerine boş bir dize geçirin. Örneğin, çekirdek sınırı (CL) parametresini sıfırlamak istiyorsanız aşağıdaki komutları çalıştırın:
+- bir Linux istemcisinde:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- bir Windows istemcisinde: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

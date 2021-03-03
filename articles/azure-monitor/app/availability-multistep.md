@@ -2,13 +2,13 @@
 title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719857"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -65,7 +65,6 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 |Ayar| Açıklama
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
-|**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
 |**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,   =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
 
 ## <a name="configuration"></a>Yapılandırma
@@ -106,7 +105,7 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 
 **SAML kimlik doğrulaması**
 
-|Özellik adı| Description|
+|Özellik adı| Açıklama|
 |----|-----|
 | Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
 | Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |

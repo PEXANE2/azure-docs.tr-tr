@@ -2,20 +2,20 @@
 title: Azure Key Vault güvenlik duvarlarını ve sanal ağları Yapılandırma-Azure Key Vault
 description: Key Vault güvenlik duvarlarını ve sanal ağları yapılandırmak için adım adım yönergeler
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742645"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -39,7 +39,7 @@ Kullanmaya çalıştığınız bir hizmetin güvenilir hizmet listesinde olup ol
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault Güvenlik Duvarı etkin (IPv4 adresleri ve aralıkları-statik IP 'Ler)
 
-Key Vault güvenlik duvarı aracılığıyla anahtar kasasına erişmek üzere belirli bir hizmeti yetkilendirmek isterseniz, Anahtar Kasası güvenlik duvarı izin verilenler listesine IP adresini ekleyebilirsiniz. Bu yapılandırma, statik IP adresleri veya iyi bilinen aralıklar kullanan hizmetler için idealdir.
+Key Vault güvenlik duvarı aracılığıyla anahtar kasasına erişmek üzere belirli bir hizmeti yetkilendirmek isterseniz, Anahtar Kasası güvenlik duvarı izin verilenler listesine IP adresini ekleyebilirsiniz. Bu yapılandırma, statik IP adresleri veya iyi bilinen aralıklar kullanan hizmetler için idealdir. Bu durum için 1000 CıDR aralıklarının bir sınırı vardır.
 
 Bir Web uygulaması veya mantıksal uygulama gibi bir Azure kaynağının IP adresine veya aralığına izin vermek için aşağıdaki adımları gerçekleştirin.
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Kubernetes dağıtımları için Arc doğrulama programını açıklar
 keywords: Kubernetes, yay, Azure, K8s, doğrulama
-ms.openlocfilehash: ad87fe3f11c97524595a517b17bb52fa1b771c9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663782"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689224"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc doğrulama programı
 
@@ -32,11 +32,11 @@ Aşağıdaki sağlayıcılar ve ilgili Kubernetes dağıtımları, Azure Arc etk
 
 | Sağlayıcı adı | Dağıtım adı | Sürüm |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift Kapsayıcı Platformu](https://www.openshift.com/products/container-platform) | [4,6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html) |
+| RedHat       | [OpenShift Kapsayıcı Platformu](https://www.openshift.com/products/container-platform) | [4,5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html), [4,6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html), [4,7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes Kılavuzu](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes sürümü: v 1.17.5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1,19](https://ubuntu.com/kubernetes/docs/1.19/components) |
-| Ranhi      | [Ranhi Kubernetes altyapısı](https://rancher.com/products/rke/) | RKE CLı sürümü: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes sürümleri: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
-| Nutanx      | [Karbon](https://www.nutanix.com/products/karbon)    | Yayın sürümü: [2,0](https://www.nutanix.com/blog/introducing-nutanix-karbon-2-kubernetes-simplicity-upgraded); Kubernetes sürümü: [1.17.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.0) |
+| SUSE Ranrahi      | [Ranhi Kubernetes altyapısı](https://rancher.com/products/rke/) | RKE CLı sürümü: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes sürümleri: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
+| Nutanx      | [Karbon](https://www.nutanix.com/products/karbon)    | Sürüm 2.2.1 |
 
 Azure Arc ekibi, uyumluluk testlerini ve doğrulanan Azure Arc etkin Kubernetes senaryolarını aşağıdaki genel bulut sağlayıcıları üzerinde de çalıştırdı:
 

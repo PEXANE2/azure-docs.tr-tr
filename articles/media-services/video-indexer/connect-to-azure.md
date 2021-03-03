@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576287"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727269"
 ---
 # <a name="create-a-video-indexer-account"></a>Video Indexer hesabı oluşturma
 
@@ -201,7 +201,7 @@ Hesap oluşturma işleminin otomatik hale getirmek için iki adımdan oluşan bi
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>Azure Kamu 'ya bağlanma önkoşulları
 
--   [Azure Kamu](https://docs.microsoft.com/azure/azure-government/)'da Azure aboneliği.
+-   [Azure Kamu](../../azure-government/index.yml)'da Azure aboneliği.
 - Azure Kamu 'da Azure AD hesabı.
 - Yukarıdaki [Azure 'a bağlanma önkoşulları](#prerequisites-for-connecting-to-azure)bölümünde açıklandığı gibi, izinlerin ve kaynakların tüm ön gereksinimleri.
 
@@ -222,7 +222,7 @@ Video Indexer portalı aracılığıyla ücretli bir hesap oluşturmak için:
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Azure Kamu 'da API aracılığıyla yeni hesap oluşturma
 
-Azure Kamu 'da ücretli bir hesap oluşturmak için, [Create-ücretli hesap](/azure/media-services/video-indexer/connect-to-azure)' daki yönergeleri izleyin. Bu API uç noktası yalnızca kamu bulut bölgelerini içerir.
+Azure Kamu 'da ücretli bir hesap oluşturmak için, [Create-ücretli hesap]()' daki yönergeleri izleyin. Bu API uç noktası yalnızca kamu bulut bölgelerini içerir.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure Kamu 'daki Video Indexer sınırlamaları
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108516"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720282"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
@@ -136,3 +136,7 @@ Azure Dıthouse, Windows sanal masaüstü ortamlarını yönetmeyi tam olarak de
 Ayrıca, CSP Sandbox aboneliklerini Windows sanal masaüstü hizmetiyle birlikte kullanamazsınız. Daha fazla bilgi için bkz. [Integration Sandbox hesabı](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Son olarak, CSP sahip hesabından kaynak sağlayıcısını etkinleştirdiyseniz, CSP müşteri hesapları kaynak sağlayıcıyı değiştiremez.
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Kayıt sorunlarını engellemek için VM 'lerimi ne sıklıkta kapatmalıyım?
+
+Bir VM 'yi Windows sanal masaüstü hizmeti içindeki bir konak havuzuna kaydettikten sonra, sanal makine etkin olduğunda aracı sanal makinenin belirtecini düzenli olarak yeniler. Kayıt belirtecinin sertifikası 90 gün için geçerlidir. Bu 90 günlük sınır nedeniyle sanal makinelerinizi her 90 günde bir başlatmanız önerilir. SANAL makinenizin bu süre içinde açık olması, kayıt belirtecinin süresinin dolmasını veya geçersiz hale gelmesini engelleyecek. VM 'nizi 90 gün sonra başlattıysanız ve kayıt sorunları yaşıyorsanız, VM 'yi konak havuzundan kaldırmak için [Windows sanal masaüstü Aracısı sorun giderme kılavuzu](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) 'ndaki yönergeleri izleyin, aracıyı yeniden yükleyin ve havuza kaydedin.

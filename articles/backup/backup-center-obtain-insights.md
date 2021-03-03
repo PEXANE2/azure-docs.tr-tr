@@ -3,16 +3,16 @@ title: Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 description: Geçmiş eğilimleri çözümlemeyi ve yedekleme merkezi ile yedeklemeleriniz hakkında daha derin Öngörüler elde etmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719466"
 ---
-# <a name="obtain-insights-using-backup-center-preview"></a>Yedekleme merkezi (Önizleme) kullanarak Öngörüler edinin
+# <a name="obtain-insights-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak Öngörüler edinin
 
-Yedekleme merkezi, geçmiş eğilimleri analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](../azure-monitor/logs/data-platform-logs.md) ve [Azure çalışma kitaplarını](../azure-monitor/visualize/workbooks-overview.md)kullanan [yedekleme raporları (Önizleme)](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
+Yedekleme merkezi, geçmiş eğilimlerini analiz etmek ve yedeklemelerinize daha derin Öngörüler elde etmek için [Azure Izleyici günlüklerini](../azure-monitor/logs/data-platform-logs.md) ve [Azure çalışma kitaplarını](../azure-monitor/visualize/workbooks-overview.md)kullanan [yedekleme raporları](configure-reports.md)için bir arabirim sağlar. Yedekleme raporları aşağıdaki özellikleri sunar:
 
 - Tüketilen bulut depolamasını ayırma ve tahmin etme.
 
@@ -24,7 +24,7 @@ Yedekleme merkezi, geçmiş eğilimleri analiz etmek ve yedeklemelerinize daha d
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-- Yedekleme raporları (Önizleme) Şu anda PostgreSQL için Azure veritabanı sunucu yedeklemesi için kullanılamıyor.
+- Yedekleme raporları Şu anda PostgreSQL için Azure veritabanı sunucu yedeklemesi için kullanılamıyor.
 
 - Desteklenen ve desteklenmeyen senaryoların ayrıntılı bir listesi için [destek matrisine](backup-center-support-matrix.md) bakın.
 
@@ -53,6 +53,8 @@ Kullanılabilen görünümler şunlardır:
 1. **İlkeler** -bu sekmeyi, ilişkili öğe sayısı ve belirli bir ilke altında yedeklenen öğeler tarafından tüketilen toplam bulut depolama alanı gibi tüm etkin ilkeleriniz hakkındaki bilgileri görüntülemek için kullanın. [Daha fazla bilgi edinin](./configure-reports.md#policies)
 
 1. **En Iyi duruma** getirme-yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgili görünürlük elde etmek için bu sekmeyi kullanın. [Daha fazla bilgi edinin](./configure-reports.md#optimize)
+
+1. **İlke bağlılığı** -her yedekleme örneğinin günde en az bir başarılı yedeklemeye sahip olup olmadığına dair görünürlük elde etmek için bu sekmeyi kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

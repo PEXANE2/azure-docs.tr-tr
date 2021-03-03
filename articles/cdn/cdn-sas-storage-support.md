@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725331"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
 
@@ -32,14 +32,14 @@ SAS ile başlangıç ve sona erme zamanları, izinler (okuma/yazma) ve IP aralı
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Depolama SAS ile çalışmak için Azure CDN ayarlama
 Azure CDN ile SAS kullanımı için aşağıdaki üç seçenek önerilir. Tüm seçenekler zaten bir çalışma SAS oluşturmuş olduğunu varsayar (bkz. Önkoşullar). 
  
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures).
 
 Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyanıza erişebilirsiniz `?sv=<SAS token>` . Bu URL aşağıdaki biçimdedir: 
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
-Örneğin:
+Örnek:
  ```
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
@@ -52,7 +52,7 @@ Parametreleri ayarlama hakkında daha fazla bilgi için bkz. [SAS parametresi ko
 
 Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir SAS belirtecini kullanır.
  
-1. Bir uç nokta seçin, **önbelleğe alma kuralları** ' nı seçin, sonra **sorgu dizesi önbellek** listesinden **her benzersiz URL 'yi** seçin.
+1. Bir uç nokta seçin, **önbelleğe alma kuralları**' nı seçin, sonra **sorgu dizesi önbellek** listesinden **her benzersiz URL 'yi** seçin.
 
     ![CDN önbelleğe alma kuralları](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
@@ -60,7 +60,7 @@ Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir
    
    Elde edilen CDN uç noktası URL 'SI aşağıdaki biçime sahiptir: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
-   Örneğin:   
+   Örnek:   
    ```
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -80,7 +80,7 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
    Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo* adlı bir uç nokta içeren bir normal ifade modelini kullanır:
    
    Kaynak:   
-   `(container1\/.*)`
+   `(container1/.*)`
 
 
    Hedef:   
@@ -92,7 +92,7 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
 
 2. Yeni kural etkin olduktan sonra herkes, URL 'de bir SAS belirteci kullanıp kullanmadıklarından bağımsız olarak, CDN uç noktasındaki belirtilen kapsayıcıdaki dosyalara erişebilir. Biçim şöyledir: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   Örneğin:   
+   Örnek:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -107,7 +107,7 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
    Bir güvenlik belirteci uç noktası URL 'SI şu biçimdedir:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   Örneğin:   
+   Örnek:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -119,7 +119,7 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
    Aşağıdaki örnek URL yeniden yazma kuralı bir yakalama grubu ve *sasstoragedemo* adlı bir uç nokta içeren bir normal ifade modelini kullanır:
    
    Kaynak:   
-   `(container1\/.*)`
+   `(container1/.*)`
    
    Hedef:   
    ```

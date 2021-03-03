@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709181"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows sanal masaüstü için Azure Izleyici sorunlarını giderme (Önizleme)
 
@@ -42,7 +42,7 @@ Verileriniz doğru görüntülenmiyorsa, yapılandırmanızı, izinlerinizi dene
     - Windows sanal masaüstü oturumu konaklarınızı tutan aboneliğin kaynak gruplarına okuma erişimi 
     - Log Analytics çalışma alanına okuma erişimi
 
-- Azure Izleyici 'nin portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında giden bağlantı noktalarını açmanız gerekebilir. bkz. [giden bağlantı noktaları](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+- Azure Izleyici 'nin portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında giden bağlantı noktalarını açmanız gerekebilir. bkz. [giden bağlantı noktaları](../azure-monitor/app/ip-addresses.md). 
 
 - Son etkinlikten veriler görmüyor musunuz? 15 dakika beklemek ve akışı yenilemek isteyebilirsiniz. Azure Izleyici, günlük verilerinin doldurulmasına yönelik 15 dakikalık bir gecikme süresine sahiptir. Daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük verisi alma süresi](../azure-monitor/logs/data-ingestion-time.md).
 
@@ -62,8 +62,8 @@ Tasarım yaparak, özel çalışma kitabı şablonları ürün grubundan güncel
 
 Daha fazla performans sayacını veya olayını izlemek isterseniz, bu kullanıcıların Log Analytics çalışma alanınıza gönderilmesini ve bunları konak Tanılama: konak tarayıcısı 'nda izlemenizi sağlayabilirsiniz. 
 
-- Performans sayaçlarını eklemek için bkz. [performans sayaçlarını yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)
-- Windows olayları eklemek için bkz. [Windows olay günlüklerini yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+- Performans sayaçlarını eklemek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
+- Windows olayları eklemek için bkz. [Windows olay günlüklerini yapılandırma](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
 
 Bir sorunu tanılamaya yardımcı olmak için bir veri noktası bulunamıyor musunuz? Bize geri bildirim gönderin!
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 213437e68efb27c483c8013d209261408ab9d4ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736959"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
-Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](../log-query/log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  
+Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](./log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  
 
-Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](../log-query/get-started-queries.md) ilerleyin.
+Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](./get-started-queries.md) ilerleyin.
 
 ## <a name="events"></a>Ekinlikler
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Kullanım
 
-`Usage`Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](../platform/manage-cost-storage.md#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
+`Usage`Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](./manage-cost-storage.md#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](./manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
 
 #### <a name="data-volume-by-solution"></a>Çözüme göre veri hacmi
 
@@ -438,4 +438,4 @@ Update
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Dil hakkındaki ayrıntılar için [kusto dil başvurusuna](/azure/kusto/query) bakın.
-- [Azure izleyici 'de günlük sorguları yazma konusunda bir dersi](../log-query/get-started-queries.md)adım adım inceleyin.
+- [Azure izleyici 'de günlük sorguları yazma konusunda bir dersi](./get-started-queries.md)adım adım inceleyin.

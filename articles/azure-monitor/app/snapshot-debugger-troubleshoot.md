@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731961"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz.
@@ -35,9 +35,10 @@ Bu sorunu çözmezse, aşağıdaki el ile sorun giderme adımlarına bakın.
 
 Yayımlanmış uygulamanızda doğru izleme anahtarını kullandığınızdan emin olun. Genellikle, izleme anahtarı ApplicationInsights.config dosyasından okunurdur. Değerin portalda gördüğünüz Application Insights kaynağı için izleme anahtarıyla aynı olduğunu doğrulayın.
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL istemci ayarlarını denetle (ASP.NET)
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>TLS/SSL istemci ayarlarını denetle (ASP.NET)
 
 Bir sanal makinede Azure App Service veya IIS 'de barındırılan bir ASP.NET uygulamanız varsa, uygulamanız eksik bir SSL güvenlik protokolü nedeniyle Snapshot Debugger hizmetine bağlanamaz.
+
 [Snapshot Debugger uç noktası TLS sürüm 1,2 gerektirir](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). SSL güvenlik protokolleri kümesi, web.config System. Web bölümündeki httpRuntime targetFramework değeri tarafından etkinleştirilen olağandışı bir bölümdür. HttpRuntime targetFramework 4.5.2 veya düşükse, varsayılan olarak TLS 1,2 dahil değildir.
 
 > [!NOTE]
@@ -64,6 +65,10 @@ Ayarı denetlemek için web.config dosyanızı açın ve System. Web bölümün�
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>Tanılama Hizmetleri site uzantısının durum sayfasını denetleyin
 Snapshot Debugger portalda [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aracılığıyla etkinleştirildiyse, tanılama Hizmetleri site uzantısı tarafından etkinleştirilmiştir.
+
+> [!NOTE]
+> Application Insights Snapshot Debugger birlikte yükleme, .NET Core destek ilkesini izler.
+> Desteklenen çalışma zamanları hakkında daha fazla bilgi için bkz. [.NET Core destek ilkesi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Aşağıdaki URL 'ye giderek bu uzantının durum sayfasını kontrol edebilirsiniz: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

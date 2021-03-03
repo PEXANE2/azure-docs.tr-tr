@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719279"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Kubernetes iş yükü yönetimi
 
@@ -54,6 +54,17 @@ Azure Stack Edge Pro cihazında uygulama dağıtmak için şu adımları izleyin
 - **Azure Arc etkin Kubernetes dağıtımı**: Azure Arc etkin Kubernetes, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. İle Azure Stack Edge Pro cihazınızdan Kubernetes kümesine bağlanırsınız `azure-arc namespace` . Bu ad alanında dağıtılan aracılar Azure bağlantısının sorumluluğundadır. Dağıtım yapılandırmasını, Gilar tabanlı yapılandırma yönetimini kullanarak uygularsınız. 
     
     Azure Arc etkin Kubernetes, kümenizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyicisini kullanmanıza da imkan tanır. Daha fazla bilgi için, [Azure Arc etkin Kubernetes nedir?](../azure-arc/kubernetes/overview.md)bölümüne bakın.
+    
+    2021 Mart 'tan itibaren, Azure Arc etkin Kubernetes, kullanıcılar ve standart kullanım ücretleri için genel kullanıma sunulacaktır. Değerli bir önizleme müşterisi olarak, Azure Arc etkin Kubernetes Azure Stack Edge cihazları için ücretsiz olarak kullanılabilir. Önizleme teklifini Kulln etmek için bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturun:
+
+    1. **Sorun türü** altında **Faturalandırma**’yı seçin.
+    2. **Abonelik** bölümünde aboneliğinizi seçin.
+    3. **Hizmet** altında **Hizmetlerim**' i seçin ve ardından **Azure Stack Edge**' i seçin.
+    4. **Kaynak** altında, kaynağınızı seçin.
+    5. **Özet** altında, sorununuzun açıklamasını yazın.
+    6. **Sorun türü** altında **beklenmeyen ücretler**' i seçin.
+    7. **Sorun alt türü**' nün altında **ücretsiz denememe ilişkin ücretleri anladım**' ı seçin.
+
 
 ## <a name="choose-the-deployment-type"></a>Dağıtım türünü seçin
 

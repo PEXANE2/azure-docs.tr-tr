@@ -236,7 +236,7 @@
         - name: İzleme (klasik)
           items:
             - name: Azure portalında izleme (klasik)
-              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/manage-storage-analytics-logs.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Sorun giderme
       items:
         - name: Gecikme sorunları

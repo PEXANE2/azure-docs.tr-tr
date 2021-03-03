@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: ee4436d2b8445f2a1d368fb6c76e04d1ec790d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700584"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -34,7 +34,7 @@ ms.locfileid: "100625693"
 
 ## <a name="metrics"></a>Ölçümler
 
-Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçümleri](../platform/data-platform-metrics.md) yayar. Ölçümlere, hedef kaynakları, istenen ölçümleri ve bunların toplamasını belirtmenize olanak tanıyan özelleştirilmiş bir denetim aracılığıyla çalışma kitaplarından erişilebilir. Bu veriler daha sonra grafiklerde veya kılavuzlarda çizilebilirler.
+Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçümleri](../essentials/data-platform-metrics.md) yayar. Ölçümlere, hedef kaynakları, istenen ölçümleri ve bunların toplamasını belirtmenize olanak tanıyan özelleştirilmiş bir denetim aracılığıyla çalışma kitaplarından erişilebilir. Bu veriler daha sonra grafiklerde veya kılavuzlarda çizilebilirler.
 
 ![CPU kullanımının çalışma kitabı ölçüm grafiklerinin ekran görüntüsü](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -145,6 +145,6 @@ Bu sağlayıcı [Jsonpath](workbooks-jsonpath.md)'i destekliyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](../platform/workbooks-overview.md#visualizations) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](../platform/workbooks-access-control.md) ve paylaşma.
-* [Log Analytics sorgu iyileştirme ipuçları](../log-query/query-optimization.md)
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](./workbooks-overview.md#visualizations) .
+* Çalışma kitabı kaynaklarınıza erişimi [denetleme](./workbooks-access-control.md) ve paylaşma.
+* [Log Analytics sorgu iyileştirme ipuçları](../logs/query-optimization.md)

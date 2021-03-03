@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457648"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Öğretici: Katılım yönetimi hizmetleriyle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Katılımcı yönetimi hizmetlerini Azure AD ile tümleştirmek aşağıdaki ava
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Katılım yönetimi hizmetleriyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Katılım yönetimi hizmetlerinin tümleştirmesini Azure AD 'ye göre yapıland
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **katılım Yönetim Hizmetleri**yazın, sonuç panelinden **katılım Yönetim Hizmetleri** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **katılım Yönetim Hizmetleri** yazın, sonuç panelinden **katılım Yönetim Hizmetleri** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuçlar listesinde katılım Yönetim Hizmetleri](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre katılımcı yönetimi hizmetleriyle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre katılımcı yönetimi hizmetleriyle yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve katılım Yönetim Hizmetleri 'ndeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, katılımcı yönetimi hizmetleriyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,7 +142,7 @@ Azure AD çoklu oturum açmayı Katılım yönetimi hizmetleriyle yapılandırma
 
     d. Azure AD 'den indirdiğiniz sertifikayı karşıya yüklemek için **Dosya Seç** ' e tıklayın.
 
-    e. **Parola kimlik doğrulamasını devre dışı bırak**seçeneğini belirleyin.
+    e. **Parola kimlik doğrulamasını devre dışı bırak** seçeneğini belirleyin.
 
     f. **Kayıt** öğesine tıklayın
 
@@ -162,7 +162,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -216,7 +216,7 @@ Azure AD kullanıcılarının Katılım yönetimi hizmetlerinde oturum açmasın
 
     ![Ekran görüntüsü, açıklanan görevleri gerçekleştirebileceğiniz pencereyi gösterir.](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. **Obcıd** metin kutusuna kullanıcının e-postasını yazın `BrittaSimon\@contoso.com` .
+    a. **Obcıd** metin kutusuna kullanıcının e-postasını yazın `BrittaSimon@contoso.com` .
 
     b. **Parola** metin kutusuna kullanıcının parolasını yazın.
 

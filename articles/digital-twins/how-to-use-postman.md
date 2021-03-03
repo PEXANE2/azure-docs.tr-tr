@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715709"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Lerine istek göndermek için Postman kullanma
 
@@ -25,7 +25,7 @@ Bu makalede, [Postman Rest Istemcisinin](https://www.getpostman.com/) Azure diji
 1. Bir Postman koleksiyonu kurun ve Postman REST istemcisini, kimlik doğrulaması için taşıyıcı belirtecinizi kullanacak şekilde yapılandırın.
 1. Azure dijital TWINS API 'Lerine bir istek oluşturmak ve göndermek için yapılandırılmış Postman 'ı kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dijital TWINS API 'Lerine erişmek için Postman kullanmaya devam etmek için bir Azure dijital TWINS örneği ayarlamanız ve Postman 'yı indirmeniz gerekir. Bu bölümün geri kalanında bu adımlarda adım adım gösterilmektedir.
 
@@ -140,7 +140,7 @@ Azure dijital TWINS API 'Lerinden birine bir Postman isteği yapmak için API 'n
 1. *Üst bilgiler* sekmesindeki istek için gösterilen üst bilgilerin, başvuru belgelerinde açıklananlarla eşleştiğinden emin olun. Bu istek için, birkaç üst bilgi otomatik olarak doldurulmuştur. Sorgu API 'SI için üst bilgi seçeneklerinden hiçbiri gerekli değildir, bu nedenle bu adım yapılır.
 1. *Gövde* sekmesindeki istek için gösterilen gövdenin, başvuru belgelerinde açıklanan gereksinimle eşleşip eşleşmediğini denetleyin. Sorgu API 'SI için, sorgu metnini sağlamak üzere bir JSON gövdesi gerekir. İşte, örnekteki tüm dijital TWINS sorgularını sorgulayan bu istek için örnek bir gövde:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Yeni isteğin ayrıntılarında gövde sekmesi gösterilir. ' SELECT * FROM DIGITALTWıNS ' sorgusuyla bir ham JSON gövdesi içerir."lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Yeni isteğin ayrıntılarında gövde sekmesi gösterilir. ' SELECT * FROM DIGITALTWıNS ' sorgusuyla bir ham JSON gövdesi içerir." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Azure dijital TWINS sorguları oluşturma hakkında daha fazla bilgi için bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 

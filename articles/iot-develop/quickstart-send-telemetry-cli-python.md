@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: 0d791ebedd1b03bd50150170ad1b36a08371c9ae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ccf7f272069516d53732b10ec1af5bb4841f1208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654985"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730431"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Hızlı başlangıç: cihazdan Azure IoT Hub 'a (Python) telemetri gönderme
 
@@ -69,7 +69,7 @@ Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Pytho
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
 
-1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
+1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -130,12 +130,12 @@ Bu hızlı başlangıçta oluşturulan Azure kaynaklarına artık ihtiyacınız 
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun.
 
 Bir kaynak grubunu adıyla silmek için:
-1. [Az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
+1. [Az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kaynak grubunun silindiğini onaylamak için [az Group List](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) komutunu çalıştırın.  
+1. Kaynak grubunun silindiğini onaylamak için [az Group List](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-list) komutunu çalıştırın.  
 
     ```azurecli
     az group list

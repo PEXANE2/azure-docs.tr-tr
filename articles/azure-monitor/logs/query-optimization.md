@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722968"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde arttırırken, sorgu performansınızı ciddi ölçüde iyileştirebileceğiniz bazı durumlar vardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -322,7 +322,7 @@ Azure Izleyici günlüklerindeki tüm Günlükler, **TimeGenerated** sütununa g
 
 15 günden daha uzun süre aralığına sahip sorgu aşırı kaynak tüketen bir sorgu olarak kabul edilir. 90 günden fazla zaman aralığına sahip sorgu, bir rahatsız edici sorgu olarak değerlendirilir ve kısıtlanmış olabilir.
 
-Zaman aralığı, [Azure izleyici Log Analytics günlük sorgusu kapsamı ve zaman aralığı](../log-query/scope.md#time-range)bölümünde açıklandığı gibi Log Analytics ekranındaki zaman aralığı Seçicisi kullanılarak ayarlanabilir. Bu, seçili zaman aralığı, sorgu meta verileri kullanılarak arka uca geçirildiği için önerilen yöntemdir. 
+Zaman aralığı, [Azure izleyici Log Analytics günlük sorgusu kapsamı ve zaman aralığı](./scope.md#time-range)bölümünde açıklandığı gibi Log Analytics ekranındaki zaman aralığı Seçicisi kullanılarak ayarlanabilir. Bu, seçili zaman aralığı, sorgu meta verileri kullanılarak arka uca geçirildiği için önerilen yöntemdir. 
 
 Alternatif bir yöntem, sorguda her **zaman** bir [WHERE](/azure/kusto/query/whereoperator) koşulunu açıkça içermelidir. Bu yöntemi, sorgu farklı bir arabirimden kullanıldığında bile zaman aralığının düzeltildiğinden emin olmak için kullanmanız gerekir.
 Sorgunun tüm bölümlerinin **TimeGenerated** filtrelerine sahip olduğundan emin olmanız gerekir. Bir sorguda çeşitli tablolardan veya aynı tablodan veri getirilirken alt sorgular olduğunda, her birinin kendi [WHERE](/azure/kusto/query/whereoperator) koşulunu içermesi gerekir.
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Bir hata oluşması durumunda, en son oluşumu bulmak için [arg_max ()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında oluşan yaygın bir durumdur. Örneğin:
+Bir hata oluşması durumunda, en son oluşumu bulmak için [arg_max ()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında oluşan yaygın bir durumdur. Örnek:
 
 ```Kusto
 Perf

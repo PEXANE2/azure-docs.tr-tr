@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732879"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>MySQL için Azure veritabanı sürüm oluşturma ilkesi
 
@@ -20,13 +20,18 @@ Bu sayfada MySQL için Azure veritabanı sürüm oluşturma ilkesi açıklanmakt
 
 ## <a name="supported--mysql-versions"></a>Desteklenen MySQL sürümleri
 
-MySQL için Azure veritabanı aşağıdaki veritabanı sürümlerini destekler.
+MySQL için Azure veritabanı, InnoDB depolama altyapısı kullanılarak [MySQL Community Edition](https://www.mysql.com/products/community/)'dan geliştirilmiştir. Hizmet, topluluk tarafından desteklenen tüm geçerli ana sürümü destekler, burada MySQL 5,6, 5,7 ve 8,0. MySQL, X 'in ana sürüm olan X. Y. Z adlandırma şemasını kullanır, Y ise ikincil sürümdür ve Z hata çözme sürümüdür. Düzen hakkında daha fazla bilgi için [MySQL belgelerine](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)bakın.
 
-| Sürüm | Tek sunucu | Esnek Sunucu (Önizleme) |
-| ----- | :------: | :----: |
-| MySQL 8 | X |  | 
-| MySQL 5,7 | X | X |
-| MySQL 5,6| X |  |
+> [!NOTE]
+> Tek sunuculu dağıtım seçeneğinde, sunucu örneklerine bağlantıları yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra, MySQL istemcisi MySQL sunucu örneğinizde çalışan gerçek sürümü değil ağ geçidinde belirlenen MySQL sürümünü görüntüler. MySQL sunucu örneğinizin sürümünü öğrenmek için MySQL komut isteminde `SELECT VERSION();` komutunu kullanın.
+
+MySQL için Azure veritabanı şu anda MySQL 'in aşağıdaki büyük ve küçük sürümlerini desteklemektedir:
+
+| Sürüm | Tek sunucu <br/> Geçerli ikincil sürüm |Esnek Sunucu (Önizleme) <br/> Geçerli ikincil sürüm  |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|
+|MySQL sürüm 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Desteklenmez|
+|MySQL sürüm 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL sürüm 8,0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 
 ## <a name="major-version-support"></a>Ana sürüm desteği
@@ -50,7 +55,7 @@ Aşağıdaki tabloda MySQL ana sürümleri için kullanımdan kaldırma ayrınt�
 Her MySQL veritabanı sürümü için kullanımdan kaldırma tarihinden sonra, kullanımdan kaldırılan sürümü çalıştırmaya devam ederseniz aşağıdaki kısıtlamalara göz önünde bulabilirsiniz:
 - Topluluk başka hata düzeltmeleri veya güvenlik düzeltmelerinin serbest bırakılmayacak, MySQL için Azure veritabanı, herhangi bir hata veya güvenlik sorunu için kullanımdan kaldırılan veritabanı altyapısına düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısından kaynaklanan güvenlik önlemleri almaz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
 - Karşılaşabileceğiniz herhangi bir destek sorunu MySQL veritabanıyla ilgili olarak size destek sunamayacak olabilir. Bu gibi durumlarda, size herhangi bir destek sağlayabilmesi için veritabanınızı yükseltmeniz gerekir.
-- Kullanımdan kaldırılan sürüm için yeni veritabanı sunucuları oluşturabileceksiniz. Bununla birlikte, mevcut sunucularınız için zaman içinde kurtarmalar gerçekleştirebilir ve okuma çoğaltmaları oluşturabilirsiniz.
+<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
 - MySQL için Azure veritabanı tarafından geliştirilen yeni hizmet özellikleri yalnızca desteklenen veritabanı sunucusu sürümleri için kullanılabilir olabilir.
 - Çalışma süresi SLA 'Ları yalnızca MySQL hizmeti ile ilgili sorunlar için Azure veritabanı 'na, veritabanı altyapısından kaynaklanan hataların neden olması için geçerlidir.  
 - Kullanımdan kaldırılmış olan veritabanı sürümünde tanımlanan MySQL veritabanı altyapısı güvenlik açığından kaynaklanan, hizmette ciddi bir tehdit olması durumunda Azure, önce hizmeti güvenli hale getirmek için veritabanı sunucunuzun işlem düğümünü durdurmayı tercih edebilir. Sunucuyu çevrimiçi duruma getirmeden önce sunucuyu yükseltmeniz istenir. Yükseltme işlemi sırasında, verileriniz her zaman, istenirse eski sürüme geri yüklemek için kullanılabilecek otomatik yedeklemeler kullanılarak korunur. 

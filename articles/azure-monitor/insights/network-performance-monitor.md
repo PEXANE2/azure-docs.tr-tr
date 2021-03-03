@@ -1,24 +1,23 @@
 ---
 title: Azure 'da Ağ Performansı İzleyicisi çözümü | Microsoft Docs
 description: Azure 'daki Ağ Performansı İzleyicisi, ağların performansını neredeyse gerçek zamanlı olarak izlemenize ve ağ performansı performans sorunlarını tespit etmenize yardımcı olur.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573424"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711136"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
 ![Ağ Performansı İzleyicisi simgesi](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Ağ Performansı İzleyicisi, ağ altyapınızın çeşitli noktaları arasındaki ağ performansını izlemenize yardımcı olan bulut tabanlı bir karma ağ izleme çözümüdür. Ayrıca hizmet ve uygulama uç noktalarına yapılan ağ bağlantısını izlemenize ve Azure ExpressRoute’un performansını izlemenize yardımcı olur. 
 
@@ -301,4 +300,4 @@ Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing
 * **Kohortu Imize katılarak:** Her zaman yeni müşterilerin kohortu 'e katılıyoruz. Bunun bir parçası olarak, yeni özelliklere erken erişim ve Ağ Performansı İzleyicisi iyileştirmemize yardımcı olacak bir fırsat edinirsiniz. Katılımını ilgileniyorsanız, bu [hızlı anketi](https://aka.ms/npmcohort)doldurun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-[Performans İzleyicisi](network-performance-monitor-performance-monitor.md), [hizmet bağlantı Izleyicisi](network-performance-monitor-performance-monitor.md)ve [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md)hakkında daha fazla bilgi edinin. 
+[Performans İzleyicisi](network-performance-monitor-performance-monitor.md), [hizmet bağlantı Izleyicisi](network-performance-monitor-performance-monitor.md)ve [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md)hakkında daha fazla bilgi edinin.

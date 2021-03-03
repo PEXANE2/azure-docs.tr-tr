@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622424"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731706"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
 
@@ -28,7 +28,7 @@ Günümüzün bulut ve şirket içi hizmetlere dayalı dağıtılmış uygulamal
 ## <a name="observability-data-in-azure-monitor"></a>Azure Izleyici 'de verileri Observability
 Ölçümler, Günlükler ve dağıtılmış izlemeler, yaygın olarak Observability 'in üç paragraf adı olarak adlandırılır. Bunlar, izlenen bir sistemin yeterli Observability sağlamak için bir izleme aracının toplaması ve analiz edilmesi gereken farklı veri türleridir. Observability birden çok ve daha fazla şekilde verilerle ilişkilendirerek ve izlenen tüm kaynak kümesi genelinde veri toplanarak elde edilebilir. Azure Izleyici birden fazla kaynaktaki verileri birlikte depoladığından, veriler ortak bir araç kümesi kullanılarak bağıntılı ve analiz edilebilir. Ayrıca, diğer hizmetlere yönelik verilerin barındırılmasına ek olarak, verileri birden çok Azure aboneliği ve kiracılar arasında da ilişkilendirir.
 
-Azure kaynakları, önemli miktarda izleme verisi üretir. Azure Izleyici, bu verileri diğer kaynaklardaki izleme verileriyle birlikte ölçüm veya günlük platformu olarak birleştirir. Her biri belirli izleme senaryoları için iyileştirilmiştir ve her biri Azure Izleyici 'de farklı özellikleri destekler. Veri analizi, görselleştirmeler veya uyarı gibi özellikler, gerekli senaryonuzu en verimli ve ekonomik şekilde uygulayabilmeniz için farkları anlamanız gerekir. [Application Insights](app/app-insights-overview.md) veya [VM'ler için Azure izleyici](vm/vminsights-overview.md) gibi Azure izleyici içgörüleri, iki veri türü arasındaki farklılıkları anlamak zorunda kalmadan belirli izleme senaryosuna odaklanabilmenize olanak tanıyan analiz araçlarına sahiptir. 
+Azure kaynakları, önemli miktarda izleme verisi üretir. Azure Izleyici, bu verileri diğer kaynaklardaki izleme verileriyle birlikte ölçüm veya günlük platformu olarak birleştirir. Her biri belirli izleme senaryoları için iyileştirilmiştir ve her biri Azure Izleyici 'de farklı özellikleri destekler. Veri analizi, görselleştirmeler veya uyarı gibi özellikler, gerekli senaryonuzu en verimli ve ekonomik şekilde uygulayabilmeniz için farkları anlamanız gerekir. [Application Insights](app/app-insights-overview.md) veya [VM öngörüleri](vm/vminsights-overview.md) gibi Azure izleyici içgörüleri, iki veri türü arasındaki farklılıkları anlamak zorunda kalmadan belirli izleme senaryosuna odaklanabilmenizi sağlayan analiz araçlarına sahiptir. 
 
 
 ### <a name="metrics"></a>Ölçümler

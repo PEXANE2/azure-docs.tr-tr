@@ -6,17 +6,14 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab719b47245f3adc2fba610f9c0473868889a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711459"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
-
-> [!CAUTION]
-> Azure App Service üzerinde ASP.NET Core uygulamalar için Profil Oluşturucu çalıştıran bir hata var. Bir düzeltireceğiz, ancak dünya genelinde dağıtımı birkaç hafta sürecek. Aşağıdaki yönergelerden Application Insights SDK 'sını uygulamanıza ekleyerek hataya geçici bir [çözüm bulabilirsiniz.](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Genel sorun giderme
 
@@ -67,6 +64,7 @@ Genellikle, bir bekleme durumuna hızlıca giden iş parçacığı yalnızca di�
 Portalda bir destek bileti gönderme. Hata iletisinden bağıntı KIMLIĞINI eklediğinizden emin olun.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Azure App Service profil oluşturucu sorunlarını giderme
+
 Profil oluşturucunun düzgün çalışması için:
 * Web App Service planınız temel katman veya daha yüksek olmalıdır.
 * Web uygulamanızda Application Insights etkinleştirilmiş olması gerekir.
@@ -95,6 +93,10 @@ Profil Oluşturucu sizin için çalışmıyorsa, günlüğü indirebilir ve yard
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>Tanılama Hizmetleri site uzantısının durum sayfasını denetleyin
 Profil Oluşturucu portalda [Application Insights bölmesi](profiler.md) aracılığıyla etkinleştirildiyse, tanılama Hizmetleri site uzantısı tarafından etkinleştirilmiştir.
+
+> [!NOTE]
+> Codeless Application Insights Profiler yüklemesi .NET Core destek ilkesini izler.
+> Desteklenen çalışma zamanları hakkında daha fazla bilgi için bkz. [.NET Core destek ilkesi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Aşağıdaki URL 'ye giderek bu uzantının durum sayfasını kontrol edebilirsiniz: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
@@ -140,7 +142,7 @@ Web uygulamanızı Profiler özellikli bir Web Apps kaynağına yeniden dağıt�
 
 *Dizin boş değil: \\ ana \\ site \\ Wwwroot \\ App_Data \\ işleri '*
 
-Bu hata, komut dosyalarından veya Azure Pipelines Web Dağıtımı çalıştırırsanız oluşur. Çözüm, Web Dağıtımı görevine aşağıdaki ek dağıtım parametrelerini eklemektir:
+Bu hata, komut dosyalarından veya Azure Pipelines Web Dağıtımı çalıştırırsanız oluşur. Çözüm, Web Dağıtımı görevine aşağıdaki dağıtım parametrelerini eklemektir:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

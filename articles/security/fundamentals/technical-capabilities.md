@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735786"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
 
 ## <a name="azure-platform"></a>Azure platformu
 
-[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) , Microsoft 'un genel bulut veri merkezlerinde barındırılan, tümleşik veri Hizmetleri ve gelişmiş analizler ve geliştirici araçları ve Hizmetleri ile altyapı ve uygulama hizmetlerinden oluşan bir bulut platformudur. Müşteriler, temel işlem, ağ ve depolama 'dan, mobil ve Web App Services 'e kadar birçok farklı kapasite ve senaryo için Azure 'u, Nesnelerin İnterneti gibi tam bulut senaryolarına ve açık kaynaklı teknolojilerle birlikte kullanılabilir ve hibrit bulut olarak dağıtılabilir veya bir müşterinin veri merkezinde barınabilir. Azure, şirketlerin maliyet tasarrufu, yenilik yapın hızlı ve sistem yönetimini kolaylaştırmak için derleme blokları olarak bulut teknolojisi sağlar. Üzerinde derleme yaptığınızda veya BT varlıklarını bir bulut sağlayıcısına geçirdiğinizde, uygulama ve verilerinizi hizmetler ve bulut tabanlı varlıklarınızın güvenliğini yönetmek için sağladıkları denetimlerle korumak için bu kuruluşun yeteneklerine bağlı olursunuz.
+[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) , Microsoft 'un genel bulut veri merkezlerinde barındırılan, tümleşik veri Hizmetleri ve gelişmiş analizler ve geliştirici araçları ve Hizmetleri ile altyapı ve uygulama hizmetlerinden oluşan bir bulut platformudur. Müşteriler, temel işlem, ağ ve depolama, mobil ve Web App Services 'e kadar birçok farklı kapasite ve senaryo için Azure 'u, Nesnelerin İnterneti gibi tam bulut senaryolarına ve açık kaynaklı teknolojilerle birlikte kullanılabilir ve hibrit bulut olarak dağıtılabilir veya bir müşterinin veri merkezinde barınabilir. Azure, şirketlerin maliyet tasarrufu, yenilik yapın hızlı ve sistem yönetimini kolaylaştırmak için derleme blokları olarak bulut teknolojisi sağlar. Üzerinde derleme yaptığınızda veya BT varlıklarını bir bulut sağlayıcısına geçirdiğinizde, uygulama ve verilerinizi hizmetler ve bulut tabanlı varlıklarınızın güvenliğini yönetmek için sağladıkları denetimlerle korumak için bu kuruluşun yeteneklerine bağlı olursunuz.
 
 Microsoft Azure, güvenli bir şekilde sunan tek bulut bilgi işlem sağlayıcısıdır ekiplerin farklı bulut becerileri ve proje karmaşıklıklarında çalışması, tümleşik veri Hizmetleri ve analizler, hem Microsoft hem de Microsoft dışı platformlarda, şirket içi veri merkezlerinde Azure bulut hizmetleri 'ni dağıtmak için, hem Microsoft hem de Microsoft olmayan platformlarda, bulut ve araçları açar. Müşteriler, Microsoft 'un güvendiği bulutun bir parçası olarak sektördeki kuruluşların desteklenmesi için sektör lideri güvenlik, güvenilirlik, uyumluluk, gizlilik ve çok sayıda kişi, iş ortağı ve süreç ağı için Azure 'u kullanır.
 
@@ -37,7 +37,7 @@ Microsoft Azure, şunları yapabilirsiniz:
 
 - İşletmelerini koruyun.
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>Sorumluluğu karşılamak için güvenlik teknik özellikleri
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>Sorumluluğu karşılamak için güvenlik teknik özellikleri
 
 Microsoft Azure, güvenlik, gizlilik ve uyumluluk gereksinimlerinizi karşılamanıza yardımcı olan hizmetler sağlar. Aşağıdaki resimde, endüstri standartlarına dayalı güvenli ve uyumlu bir uygulama altyapısı oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerinin açıklanmasına yardımcı olur.
 
@@ -184,7 +184,7 @@ Yoldaki verilerin korunması, veri koruma stratejinizin önemli bir parçası ol
 
 Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services/expressroute/)gibi adanmış bir yüksek hızlı WAN bağlantısı üzerinden taşınabilir. ExpressRoute kullanmayı seçerseniz, verileri uygulama düzeyinde [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) veya ek koruma için diğer protokolleri kullanarak da şifreleyebilirsiniz.
 
-Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](/rest/api/storageservices/) de kullanılabilir.
+Azure depolama ile Azure portal aracılığıyla etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](/rest/api/storageservices/) de kullanılabilir.
 
 Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)), [gizlice dinleme](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar gizli verilere erişim kazanmanın ilk adımı olabilir.
 
@@ -194,7 +194,7 @@ Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](/pr
 
 [Azure RMS](/azure/information-protection/what-is-azure-rms) , dosyalarınızın ve e-postanızı güvenli hale getirmeye yardımcı olmak için şifreleme, kimlik ve yetkilendirme ilkeleri kullanır. Azure RMS, hem kuruluşunuzda hem de kuruluşunuzun dışında tutarak telefon, tablet ve bilgisayar gibi birden çok cihazda çalışmaktadır. Bu özellik, Azure RMS kuruluşunuzun sınırlarını terk ettiğinde bile verilerle kalan bir koruma düzeyi eklediğinden mümkündür.
 
-Dosyalarınızı korumak için Azure RMS kullandığınızda, endüstri standardı şifrelemeyi, [fıps 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf)tam desteğiyle kullanıyorsunuz demektir. Veri koruma için Azure RMS özelliğinden yararlanarak, bir bulut depolama hizmeti gibi, denetimi altında olmayan bir depolama alanına kopyalansa bile, korumanın dosyayla birlikte kalması güvencesi vardır. Aynı durum, e-posta ile paylaşılan dosyalar için de aynıdır, dosya bir e-posta iletisi eki olarak korunur ve bu da korumalı ekin nasıl açılacağı hakkında yönergeler sağlar.
+Dosyalarınızı korumak için Azure RMS kullandığınızda, endüstri standardı şifrelemeyi, [fıps 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf)tam desteğiyle kullanıyorsunuz demektir. Veri koruma için Azure RMS kullandığınızda, bir bulut depolama hizmeti gibi, denetimi altında olmayan depolama alanına kopyalansa bile, korumanın dosyayla birlikte kalması güvencesi vardır. Aynı durum, e-posta ile paylaşılan dosyalar için de aynıdır, dosya bir e-posta iletisi eki olarak korunur ve bu da korumalı ekin nasıl açılacağı hakkında yönergeler sağlar.
 Azure RMS benimseme planlaması sırasında aşağıdakiler önerilir:
 
 - [RMS Sharing uygulamasını](/azure/information-protection/rms-client/sharing-app-windows)yükler. Bu uygulama, kullanıcıların dosyaları doğrudan kolayca koruyabilmesi için bir Office eklentisi yükleyerek Office uygulamalarıyla tümleşir.
@@ -278,6 +278,8 @@ Azure ağ iletişimi, Azure sanal ağlarınızdaki ağ trafiği için yönlendir
 
 Azure, şirket içi ağınız ve [ExpressRoute](../../expressroute/expressroute-introduction.md)Ile bir Azure sanal ağı IÇIN adanmış WAN bağlantısı bağlantısını destekler. Azure ile siteniz arasındaki bağlantı, genel Internet üzerinden gitmeyecek özel bir bağlantı kullanır. Azure uygulamanız birden çok veri merkezinde çalışıyorsa, kullanıcılardan gelen istekleri uygulama örnekleri arasında akıllıca yönlendirmek için [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) kullanabilirsiniz. Internet 'ten erişilebiliyorsa, trafiği Azure 'da çalıştırmayan hizmetlere de yönlendirebilirsiniz.
 
+Azure, Azure [özel bağlantısı](https://docs.microsoft.com/azure/private-link/private-link-overview)Ile Azure sanal ağınızdan gelen PaaS kaynaklarınıza (örneğin, Azure depolama ve SQL veritabanı) özel ve güvenli bağlantıları da destekler. PaaS kaynağı, sanal ağınızdaki [özel bir uç nokta](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ile eşleştirilir. Sanal ağınızdaki özel uç nokta ile PaaS kaynağınız arasındaki bağlantı Microsoft omurga ağını kullanır ve genel Internet üzerinden geçmez. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Azure özel bağlantı ' nu Ayrıca, sanal ağınızdaki Azure ile barındırılan müşteri ve iş ortağı hizmetlerine erişmek için de kullanabilirsiniz.  Ayrıca, Azure özel bağlantısı, sanal ağınızda kendi [özel bağlantı hizmetinizi](https://docs.microsoft.com/azure/private-link/private-link-service-overview) oluşturmanızı ve bunları kendi sanal ağlarında özel olarak müşterilerinize sunmanıza olanak sağlar. Azure özel bağlantısını kullanarak kurulum ve tüketim, Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
+
 ## <a name="virtual-machine-security"></a>Sanal makine güvenliği
 
 [Azure sanal makineleri](../../virtual-machines/index.yml) , çok çeşitli bilgi işlem çözümlerini çevik bir şekilde dağıtmanıza olanak tanır. Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP ve Azure BizTalk Services desteğiyle, her türlü iş yükünü ve herhangi bir dili neredeyse tüm işletim sistemlerinde dağıtabilirsiniz.
@@ -304,7 +306,7 @@ Ayrıca, denetim listesi:
 
 - Bulut benimseme işleminin başlangıcında karar verme mekanizmaları için önemli tartışma konuları sunar.
 
-- Yönetmelikler ve kuruluşun gizlilik, kişisel bilgiler (PII) ve veri güvenliği amaçları hakkında kapsamlı iş tartışmalarını destekler.
+- Yönetmelikler ve kuruluşun gizlilik, kişisel bilgi ve veri güvenliği amaçları hakkında kapsamlı iş tartışmalarını destekler.
 
 - Kuruluşların bir bulut projesini etkileyebilecek olası sorunları belirlemesine yardımcı olur.
 

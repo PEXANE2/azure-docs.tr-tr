@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718531"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 
@@ -132,6 +132,8 @@ Key Vault tümleştirme için gereken iki paket vardır:
 * Azure. Core, `IKeyEncryptionKey` ve `IKeyEncryptionKeyResolver` arabirimlerini içerir. .NET için depolama istemci kitaplığı zaten bir bağımlılık olarak tanımlıyor.
 * Azure. Security. Keykasası. Keys (v4. x) Key Vault REST istemcisinin yanı sıra istemci tarafı şifrelemesiyle kullanılan şifreleme istemcilerini içerir.
 
+Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault başına azaltma limitleri bu şekilde göz önünde bulundurularak tasarlanır. Azure. Security. Keykasa. Keys 4.1.0 itibariyle `IKeyEncryptionKeyResolver` anahtar önbelleğe almayı destekleyen bir uygulama değildir. Daraltma nedeniyle önbelleğe alma gerekli hale gelmelidir, [Bu örneğe](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) örnek olarak bir önbelleğe alma katmanı eklenebilir `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` .
+
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Üç Key Vault paketi vardır:
@@ -140,15 +142,15 @@ Key Vault tümleştirme için gereken iki paket vardır:
 * Microsoft. Azure. Keykasası (v3. x) Key Vault REST istemcisini içerir.
 * Microsoft. Azure. Keykasası. Extensions (v3. x), şifreleme algoritmalarının ve bir RSAKey ve bir SymmetricKey uygulamalarının bulunduğu uzantı kodunu içerir. Çekirdek ve Anahtar Kasası ad alanlarına bağlıdır ve bir toplama Çözümleyicisi (kullanıcılar birden çok anahtar sağlayıcı kullanmak istediğinizde) ve bir önbelleğe alma anahtar çözümleyici tanımlamak için işlevsellik sağlar. Depolama istemci kitaplığı bu pakete doğrudan bağlı olmasa da, kullanıcılar anahtarlarını depolamak için Azure Key Vault kullanmak veya yerel ve bulut şifreleme sağlayıcılarını kullanmak için Key Vault uzantıları kullanmak istediklerinde, bu pakete ihtiyacı vardır.
 
-V11 ' de Key Vault kullanımı ile ilgili daha fazla bilgi [v11 şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulunabilir.
-
----
-
 Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault başına azaltma limitleri bu şekilde göz önünde bulundurularak tasarlanır. Key Vault ile istemci tarafı şifreleme gerçekleştirirken tercih edilen model, Key Vault gizli dizi olarak depolanan ve yerel olarak önbelleğe alınan simetrik ana anahtarları kullanmaktır. Kullanıcıların aşağıdakileri yapması gerekir:
 
 1. Çevrimdışı bir gizli dizi oluşturun ve Key Vault yükleyin.
 2. Şifreleme için geçerli gizli sürümü çözümlemek ve bu bilgileri yerel olarak önbelleğe almak için bir parametre olarak gizli dizi temel tanımlayıcısını kullanın. Önbelleğe alma için CachingKeyResolver kullanın; Kullanıcıların kendi önbelleğe alma mantığını uygulaması beklenmez.
 3. Şifreleme ilkesi oluştururken bir giriş olarak önbelleğe alma Çözümleyicisi 'ni kullanın.
+
+V11 ' de Key Vault kullanımı ile ilgili daha fazla bilgi [v11 şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulunabilir.
+
+---
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

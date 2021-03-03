@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707651"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -34,7 +34,7 @@ Küme oluşturulduktan sonra, yapılandırılabilir ve onunla bağlantılı çal
 
 Adanmış kümelere alınan veriler iki kez şifrelenir: Microsoft tarafından yönetilen anahtarlar veya [müşteri tarafından yönetilen anahtar](../logs/customer-managed-keys.md)kullanılarak hizmet düzeyinde bir kez ve altyapı düzeyinde iki farklı şifreleme algoritması ve iki farklı anahtar kullanan bir kez. [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder. Adanmış küme ayrıca verilerinizi [kasa](../logs/customer-managed-keys.md#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar.
 
-Küme düzeyindeki tüm işlemler `Microsoft.OperationalInsights/clusters/write` kümede eylem iznini gerektirir. Bu izin, eylemi içeren sahip veya katkıda bulunan veya `*/write` eylemi içeren Log Analytics katkıda bulunan rolü aracılığıyla verilebilir `Microsoft.OperationalInsights/*` . Log Analytics izinler hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../platform/manage-access.md). 
+Küme düzeyindeki tüm işlemler `Microsoft.OperationalInsights/clusters/write` kümede eylem iznini gerektirir. Bu izin, eylemi içeren sahip veya katkıda bulunan veya `*/write` eylemi içeren Log Analytics katkıda bulunan rolü aracılığıyla verilebilir `Microsoft.OperationalInsights/*` . Log Analytics izinler hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](./manage-access.md). 
 
 
 ## <a name="cluster-pricing-model"></a>Küme fiyatlandırma modeli
@@ -77,7 +77,7 @@ Aşağıdaki özellikler belirtilmelidir:
 - **Clustername**: yönetimsel amaçlar için kullanılır. Kullanıcılar bu ada gösterilmez.
 - **Resourcegroupname**: tüm Azure kaynakları için, kümeler bir kaynak grubuna aittir. Kümeler genellikle kuruluştaki birçok ekip tarafından paylaşıldığından, merkezi bir BT kaynak grubu kullanmanızı öneririz. Daha fazla tasarım konusunda dikkat edilmesi gereken noktalar için [Azure Izleyici günlüklerinin dağıtımını tasarlama](../logs/design-logs-deployment.md) konusunu inceleyin
 - **Konum**: bir küme, belirli bir Azure bölgesinde bulunur. Yalnızca bu bölgede bulunan çalışma alanları bu kümeyle bağlantılı olabilir.
-- **Skucapacity**: bir *küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* DÜZEYI 1.000 gb Ila 3.000 GB arasında olabilir. Bunu, daha sonra gerekirse 100 adımlarında güncelleştirebilirsiniz. Gün başına 3.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . Küme maliyetleri hakkında daha fazla bilgi için bkz. [Log Analytics kümeleri Için maliyetleri yönetme](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **Skucapacity**: bir *küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* DÜZEYI 1.000 gb Ila 3.000 GB arasında olabilir. Bunu, daha sonra gerekirse 100 adımlarında güncelleştirebilirsiniz. Gün başına 3.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . Küme maliyetleri hakkında daha fazla bilgi için bkz. [Log Analytics kümeleri Için maliyetleri yönetme](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 *Küme* kaynağını oluşturduktan sonra, *SKU*, * Keyvaultproperties veya *billingtype* gibi ek özellikleri düzenleyebilirsiniz. Daha fazla ayrıntı için aşağıya bakın.
 
@@ -300,7 +300,7 @@ Authorization: Bearer <token>
 - **Keyvaultproperties** -Azure Key Vault anahtarı güncelleştirir. Bkz. [anahtar tanımlayıcı ayrıntıları ile küme güncelleştirme](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details). Şu parametreleri içerir: *Keyvaulturi*, *KeyName*, *keyversion*. 
 - **billingtype** - *billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
   - **Küme** (varsayılan)-kümeniz Için kapasite ayırma maliyetleri, *küme* kaynağına atanır.
-  - **Çalışma alanları** -bu, günün Toplam alınan verileri kapasite rezervasyonunun altındaysa *, kümeniz için* kapasite ayırma maliyetleri kümedeki çalışma alanlarıyla orantılı olarak atanır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
+  - **Çalışma alanları** -bu, günün Toplam alınan verileri kapasite rezervasyonunun altındaysa *, kümeniz için* kapasite ayırma maliyetleri kümedeki çalışma alanlarıyla orantılı olarak atanır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](./manage-cost-storage.md#log-analytics-dedicated-clusters) . 
 
 > [!NOTE]
 > *Billingtype* özelliği PowerShell 'de desteklenmez.
@@ -573,5 +573,5 @@ Kümeyi silmek için aşağıdaki REST çağrısını kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics adanmış küme faturalaması](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) hakkında bilgi edinin
+- [Log Analytics adanmış küme faturalaması](./manage-cost-storage.md#log-analytics-dedicated-clusters) hakkında bilgi edinin
 - [Log Analytics çalışma alanlarının doğru tasarımı](../logs/design-logs-deployment.md) hakkında bilgi edinin

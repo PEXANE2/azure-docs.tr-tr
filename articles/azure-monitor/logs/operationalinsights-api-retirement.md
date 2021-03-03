@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623744"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723121"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Operationalınsights API sürümü kullanımdan kaldırma
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için API 'YI devre dışı bırakma konusunda en az 12 ay önceden bildirim sağlar. **Operationalınsights** kaynak sağlayıcısı API 'leri için yeni bir sürüm (2020-08-01) yayımladık ve 29 Şubat 2024 TARIHINDE önceki API sürümlerini devre dışı bırakacağız.
 
-[Adanmış küme](../log-query/logs-dedicated-clusters.md), [müşteri tarafından yönetilen anahtarlar](../logs/customer-managed-keys.md), [özel bağlantı](./private-link-security.md) ve [veri dışa aktarma](./logs-data-export.md)gibi yeni işlevlerin avantajlarından yararlanmak için şimdi 2020-08-01 sürümünü kullanmaya başlamanız önerilir. Ayrıca, yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli API 'ye eklenir.
+[Adanmış küme](./logs-dedicated-clusters.md), [müşteri tarafından yönetilen anahtarlar](../logs/customer-managed-keys.md), [özel bağlantı](./private-link-security.md) ve [veri dışa aktarma](./logs-data-export.md)gibi yeni işlevlerin avantajlarından yararlanmak için şimdi 2020-08-01 sürümünü kullanmaya başlamanız önerilir. Ayrıca, yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli API 'ye eklenir.
 
 29 Şubat 2024 tarihinden sonra Azure Izleyici, artık 2020-08-01 ' den önceki API sürümlerini desteklemezler. Yükseltmemeyi tercih ediyorsanız, önceki sürümlerden gönderilen istekler, 29 Şubat 2024 ' e kadar Azure Izleyici hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 

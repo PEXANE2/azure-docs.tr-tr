@@ -1,22 +1,21 @@
 ---
 title: Azure Log Analytics Ağ Performansı İzleyicisi çözümü | Microsoft Docs
 description: Azure ExpressRoute üzerinden şubeleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için Ağ Performansı İzleyicisi ExpressRoute Izleyici özelliğini kullanın.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725705"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
 
 > [!IMPORTANT]
-> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Azure ExpressRoute üzerinden, şube ofisleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için [ağ performansı İzleyicisi](network-performance-monitor.md) Azure ExpressRoute izleyici özelliğini kullanabilirsiniz. Temel avantajlar şunlardır: 
 
@@ -112,7 +111,7 @@ Ağ Performansı İzleyicisi, birkaç devre bağlantı sorununu tanılamanıza y
 
 Bildirim kodlarını görebilir ve **günlüğe Loganalytics** aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
 
-| Bildirim kodu (Günlükler) | Description |
+| Bildirim kodu (Günlükler) | Açıklama |
 | --- | --- |
 | 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçiş yapılamıyor |
 | 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapılamıyor |
@@ -144,4 +143,3 @@ Bildirim kodlarını görebilir ve **günlüğe Loganalytics** aracılığıyla 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../logs/log-query-overview.md) yapın.
-

@@ -818,6 +818,8 @@
               href: enable-notebooks.md
             - name: Not defterlerini GitHub’dan içeri aktarma
               href: import-github-notebooks.md
+            - name: Not defterlerini galeriye Yayımla
+              href: publish-notebook-gallery.md
             - name: Yerleşik Python not defteri komutlarını kullanma
               href: use-python-notebook-features-and-commands.md
             - name: Yerleşik C# not defteri komutlarını kullanma

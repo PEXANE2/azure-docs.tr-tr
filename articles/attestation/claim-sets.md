@@ -7,18 +7,18 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704812"
 ---
 # <a name="claim-sets"></a>Talep kümeleri
 
 Microsoft Azure kanıtlama kullanan kuşışları ele geçirme sürecinde oluşturulan talepler aşağıdaki kategorilere ayrılabilir:
 
-- **Gelen talepler**: kanıtlama bulgusu ayrıştırdıktan sonra Microsoft Azure kanıtlama tarafından oluşturulan talepler ve ilke yazarları tarafından özel bir ilkede yetkilendirme kuralları tanımlamak için kullanılabilir
+- **Gelen talepler**: kanıtlama kanıtını ayrıştırdıktan sonra Microsoft Azure kanıtlama tarafından oluşturulan talepler ve ilke yazarları tarafından özel bir ilkede yetkilendirme kuralları tanımlamak için kullanılabilir
 
 - **Giden talepler**: Azure kanıtlama tarafından oluşturulan ve kanıtlama belirtecinde biten tüm talepler içeren talepler
 
@@ -26,7 +26,8 @@ Microsoft Azure kanıtlama kullanan kuşışları ele geçirme sürecinde oluşt
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>Tüm kanıtlama türlerinde ortak gelen talepler
 
-Aşağıdaki talepler Azure kanıtlama tarafından oluşturulmuştur ve bir özel ilkede yetkilendirme kurallarını tanımlamak için kullanılabilir:
+Aşağıdaki talepler Azure kanıtlama tarafından oluşturulmuştur ve ilke yazarları tarafından, tüm kanıtlama türleri için özel bir ilkede yetkilendirme kuralları tanımlamak üzere kullanılabilir.
+
 - **x-MS-ver**: JWT şema sürümü ("1,0" olması bekleniyor)
 - **x-MS-kanıtlama-türü**: kanıtlama türünü temsil eden dize değeri 
 - **x-MS-Policy-Hash**: BASE64URL olarak hesaplanan Azure kanıtlama değerlendirme ilkesi KARMASı (SHA256 (UTF8 (BASE64URL (UTF8 (ilke metni)))))
@@ -44,7 +45,9 @@ policy_signer | x-MS-Policy-imzalayan
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>Tüm kanıtlama türlerinde ortak giden talepler
 
-[IETF JWT](https://tools.ietf.org/html/rfc7519) tarafından tanımlanan ve yanıt nesnesinde Azure kanıtlama tarafından kullanılan talepler aşağıda verilmiştir:
+Aşağıdaki talepler, hizmet tarafından tüm kanıtlama türleri için kanıtlama belirtecine dahildir.
+
+Kaynak: [IETF JWT](https://tools.ietf.org/html/rfc7519) tarafından tanımlanan şekilde
 
 - **"JTI" (JWT KIMLIĞI) talebi**
 - **"ISS" (veren) talebi**
@@ -52,10 +55,12 @@ policy_signer | x-MS-Policy-imzalayan
 - **"exp" (sona erme saati) talebi**
 - **"NBF" (önüne değil) talebi**
 
-[IETF yemek](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) tarafından tanımlanan ve yanıt nesnesinde Azure kanıtlama tarafından kullanılan talepler aşağıda verilmiştir:
+Kaynak: [IETF yemek](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) tarafından tanımlandığı şekilde
+
 - **"Nonce talebi" (nonce)**
 
-Aşağıdaki talepler, gelen taleplere göre varsayılan olarak oluşturulur
+Aşağıdaki talepler, gelen taleplere göre varsayılan olarak kanıtlama belirtecine dahil edilmiştir:
+
 - **x-MS-ver**: JWT şema sürümü ("1,0" olması bekleniyor)
 - **x-MS-kanıtlama-türü**: kanıtlama türünü temsil eden dize değeri 
 - **x-MS-Policy-Hash**: BASE64URL tarafından hesaplanan Ilke metninin SHA256 karmasını içeren dize DEĞERI (SHA256 (UTF8 (BASE64URL (UTF8 (ilke metni))))
@@ -65,7 +70,8 @@ Aşağıdaki talepler, gelen taleplere göre varsayılan olarak oluşturulur
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>SGX kanıtlama için özel gelen talepler
 
-Aşağıdaki talepler, hizmet tarafından SGX kanıtlama için oluşturulur ve bir özel ilkede yetkilendirme kurallarını tanımlamak için kullanılabilir:
+Aşağıdaki talepler Azure kanıtlama tarafından oluşturulmuştur ve ilke yazarları tarafından, bir SGX kanıtlama için özel ilkede yetkilendirme kuralları tanımlamak üzere kullanılabilir.
+
 - **x-MS-SGX-,-hata ayıklanabilir**: bir Boolean değeri, kuşmanın hata ayıklamasının etkin olup olmadığını belirtir
 - **x-MS-SGX-ürün kimliği**
 - **x-MS-SGX-mrimzalayan**: teklifin "mrimzalayan" alanının onaltılık kodlanmış değeri
@@ -74,7 +80,8 @@ Aşağıdaki talepler, hizmet tarafından SGX kanıtlama için oluşturulur ve b
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>SGX kanıtlama için özel giden talepler
 
-Aşağıdaki talepler hizmet tarafından oluşturulur ve SGX kanıtlama için yanıt nesnesine dahil edilmiştir:
+Aşağıdaki talepler oluşturulup SGX kanıtlama için hizmet tarafından kanıtlama belirtecine eklenmiştir.
+
 - **x-MS-SGX-,-hata ayıklanabilir**: bir Boolean değeri, kuşmanın hata ayıklamasının etkin olup olmadığını belirtir
 - **x-MS-SGX-ürün kimliği**
 - **x-MS-SGX-mrimzalayan**: teklifin "mrimzalayan" alanının onaltılık kodlanmış değeri

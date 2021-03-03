@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 518baa47fd16d69bf935cd3253f5bebeb413b513
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695252"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak rota sunucusu oluşturma ve yapılandırma 
 
@@ -33,7 +33,23 @@ Bu makale, Azure CLı kullanarak sanal ağınızdaki ağ sanal gereçlerine (NVA
 
 ###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin. 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)] 
+Yapılandırmanızı başlatmak için Azure hesabınızda oturum açın. "TRY It" Cloud Shell kullanırsanız, otomatik olarak oturum açtınız. Bağlanmanıza yardımcı olması için aşağıdaki örnekleri kullanın:
+
+```azurecli-interactive
+az login
+```
+
+Hesapla ilişkili abonelikleri kontrol edin.
+
+```azurecli-interactive
+az account list
+```
+
+ExpressRoute bağlantı hattı oluşturmak istediğiniz aboneliği seçin.
+
+```azurecli-interactive
+az account set --subscription "<subscription ID>"
+```
 
 ### <a name="create-a-resource-group-and-virtual-network"></a>Kaynak grubu ve sanal ağ oluşturma 
 

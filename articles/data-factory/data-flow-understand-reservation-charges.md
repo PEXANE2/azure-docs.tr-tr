@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716304"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>Bir rezervasyon iskontosunun Azure Data Factory veri akışlarına nasıl uygulandığı
 
@@ -32,7 +32,7 @@ Aşağıdaki örneklerde, ADF veri akışı ayrılmış kapasite iskontosunun, s
 - Senaryo 1: bellek için iyileştirilmiş işlem türü miktarı olarak 80 ' i girerek 1 saat 80 çekirdekli bellek için en iyi duruma getirilmiş işlem için ADF veri akışı ayırması satın alabilirsiniz. Bir saat için en iyileştirilmiş 144 çekirdek bellek olarak ayarlanmış bir Azure tümleştirme çalışma zamanı ile veri akışı çalıştırırsınız. Bir saat boyunca veri akışı kullanımının 64 çekirdekleri için Kullandıkça Öde fiyatı üzerinden ücretlendirilirsiniz. Bellek için iyileştirilmiş kullanım için bir saatlik 80 çekirdeğe yönelik rezervasyon indirimi elde edersiniz.
 - Senaryo 2: genel amaçlı işlem türü miktarı olarak 32 ' i girerek 1 saatlik 32 çekirdeğe yönelik bir ADF veri akışı ayırması satın alabilirsiniz. Genel işlem Azure tümleştirme çalışma zamanının 32 çekirdeğini kullanarak 1 saat boyunca veri akışlarınızın hatalarını ayıklayın. Tüm kullanım saati için rezervasyon indirimi elde edersiniz.
 
-Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea).
+Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
@@ -42,4 +42,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Azure ayırmaları hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)

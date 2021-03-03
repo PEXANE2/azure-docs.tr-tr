@@ -4,15 +4,15 @@ description: Şirket içi proxy ve güvenlik duvarı ayarlarını Azure Dosya E�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729649"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -50,6 +50,30 @@ uygulamaya özgü ara sunucu ayarlarını yapılandırmaya yönelik PowerShell k
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
+Örneğin, proxy sunucunuz kimlik doğrulaması gerektiriyorsa, Kullanıcı adı ve parola ile aşağıdaki PowerShell komutlarını çalıştırın:
+
+```powershell
+# IP address or name of the proxy server.
+$Address="127.0.0.1"  
+
+# The port to use for the connection to the proxy.
+$Port=8080
+
+# The user name for a proxy.
+$UserName="user_name" 
+
+# Please type or paste a string with a password for the proxy.
+$SecurePassword = Read-Host -AsSecureString
+
+$Creds = New-Object System.Management.Automation.PSCredential ($UserName, $SecurePassword)
+
+# Please verify that you have entered the password correctly.
+Write-Host $Creds.GetNetworkCredential().Password
+
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+
+Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
 ```
 Sunucunun tüm trafiği proxy üzerinden yönlendirilirken, **makine genelindeki proxy ayarları** Azure dosya eşitleme aracısına saydamdır.
 
@@ -99,8 +123,8 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | Genel uç nokta URL 'sini kullanın. | Bu URL 'ye, Azure Dosya Eşitleme sunucusu kayıt Kullanıcı arabiriminin yönetici 'de oturum açmak için kullandığı Active Directory kimlik doğrulaması kitaplığı tarafından erişilir. |
 | **Azure Depolama** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Sunucu bir dosyayı indirdiğinde, sunucu bu veri hareketini depolama hesabındaki Azure dosya paylaşımından doğrudan görüşüp daha verimli bir şekilde gerçekleştirir. Sunucuda yalnızca hedeflenen dosya paylaşımında erişime izin veren bir SAS anahtarı vardır. |
 | **Azure Dosya Eşitleme** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | İlk sunucu kaydından sonra, sunucu, bu bölgedeki Azure Dosya Eşitleme hizmet örneği için bölgesel bir URL alır. Sunucu, eşitlemesini işleme örneği ile doğrudan ve verimli bir şekilde iletişim kurmak için URL 'YI kullanabilir. |
-| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL 'SI kullanılır. Bir sertifikanın durumunu denetlemek için OCSP URL 'SI kullanılır. |
-| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Azure Dosya Eşitleme aracısı yüklendikten sonra, Microsoft Update URL 'Leri Azure Dosya Eşitleme Aracısı güncelleştirmelerini indirmek için kullanılır. |
+| **Microsoft PKI** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL 'SI kullanılır. Bir sertifikanın durumunu denetlemek için OCSP URL 'SI kullanılır. |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Azure Dosya Eşitleme aracısı yüklendikten sonra, Microsoft Update URL 'Leri Azure Dosya Eşitleme Aracısı güncelleştirmelerini indirmek için kullanılır. |
 
 > [!Important]
 > . Afs.azure.net trafiğine izin verirken &ast; trafik yalnızca eşitleme hizmeti için mümkündür. Bu etki alanını kullanan başka bir Microsoft hizmeti yok.
@@ -110,11 +134,11 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı küresel olarak yedekli (GRS) depolama hesabında belirtmiş olabilirsiniz. Böyle bir durum söz konusu ise, Azure dosya paylaşımlarınız, coğrafi bölge kesintisi durumunda eşleştirilmiş bölgeye yük devreder. Azure Dosya Eşitleme depolama ile aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitleme eşleştirilmiş bölge ile iletişim kurmasına izin vermek için ek URL 'Ler etkinleştirmeniz gerekir. Aşağıdaki tablo bu "eşleştirilmiş bölgeyi" çağırır. Ayrıca, aynı zamanda etkinleştirilmesi gereken bir Traffic Manager profil URL 'SI vardır. Bu, ağ trafiğinin yük devretme olayında eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini ve aşağıdaki tabloda "keşif URL 'SI" olarak adlandırılmasına olanak sağlar.
 
-| Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
+| Bulut  | Region | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
-| Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Avustralya Güneydoğu | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
-| Genel |Avustralya Güneydoğu | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
-| Genel | Brezilya Güney | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
+| Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Güneydoğu Avustralya | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
+| Genel |Güneydoğu Avustralya | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
+| Genel | Güney Brezilya | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
 | Genel | Orta Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.Microsoft.com | Doğu Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.Microsoft.com |
 | Genel | Doğu Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.Microsoft.com | Orta Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.Microsoft.com |
 | Genel | Orta Hindistan | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |

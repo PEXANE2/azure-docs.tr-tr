@@ -1,21 +1,21 @@
 ---
-title: VM'ler için Azure İzleyici bağımlılık aracısını yükseltme
-description: Bu makalede komut satırı, Kurulum Sihirbazı ve diğer yöntemleri kullanarak VM'ler için Azure İzleyici bağımlılık aracısının nasıl yükseltileceği açıklanır.
+title: VM Insights bağımlılık aracısını yükseltme
+description: Bu makalede, komut satırı, Kurulum Sihirbazı ve diğer yöntemler kullanılarak sanal makine öngörüleri bağımlılık aracısının nasıl yükseltileceği açıklanır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722917"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>VM'ler için Azure İzleyici bağımlılık aracısını yükseltme
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>VM Insights bağımlılık aracısını yükseltme
 
-VM'ler için Azure İzleyici bağımlılık aracısının ilk dağıtımından sonra, hata düzeltmeleri veya yeni özellik ya da işlevsellik desteği içeren güncelleştirmeler serbest bırakılır.  Bu makale, kullanılabilir yöntemleri ve yükseltmenin el ile veya Otomasyon aracılığıyla nasıl gerçekleştirileceğini anlamanıza yardımcı olur.
+VM Insights bağımlılık aracısının ilk dağıtımından sonra, hata düzeltmeleri veya yeni özellik ya da işlevsellik desteği içeren güncelleştirmeler serbest bırakılır.  Bu makale, kullanılabilir yöntemleri ve yükseltmenin el ile veya Otomasyon aracılığıyla nasıl gerçekleştirileceğini anlamanıza yardımcı olur.
 
 ## <a name="upgrade-options"></a>Yükseltme seçenekleri 
 
@@ -70,4 +70,4 @@ Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için gü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'lerinizi bir süre izlemeyi durdurmak veya VM'ler için Azure İzleyici tamamen kaldırmak istiyorsanız, bkz. [VM'ler için Azure izleyici sanal makinelerinizin Izlenmesini devre dışı bırakma](../vm/vminsights-optout.md).
+Sanal makinelerinizi bir süre için izlemeyi durdurmak veya VM öngörülerini tamamen kaldırmak istiyorsanız, bkz. [VM 'nizin Izlenmesini devre dışı bırakma VM öngörüleri](../vm/vminsights-optout.md).

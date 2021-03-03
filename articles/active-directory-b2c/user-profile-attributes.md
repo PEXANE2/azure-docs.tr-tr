@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688561"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 - Öznitelik bir Kullanıcı akışında kullanılıyorsa
 - Öznitelik, özel bir ilkede [Azure AD teknik profilinde](active-directory-technical-profile.md) ve bu bölümde ( &lt; ınputclaim &gt; , &lt; outputclaim &gt; veya &lt; PersistedClaims &gt; ) kullanılabilir
 
-|Ad     |Tür     |Description|Azure portal|Kullanıcı akışları|Özel ilke|
+|Ad     |Tür     |Açıklama|Azure portalı|Kullanıcı akışları|Özel ilke|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boole|Kullanıcı hesabının etkin mi yoksa devre dışı mı olduğunu: hesap etkinse **doğru** , aksi takdirde **yanlış** olur.|Yes|Hayır|Kalıcı, çıkış|
 |ageGroup        |Dize|Kullanıcının yaş grubu. Olası değerler: null, tanımsız, küçük, Yetişkin, NotAdult.|Yes|Hayır|Kalıcı, çıkış|
@@ -64,7 +64,7 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 |Mobil (mobilePhone) |Dize|Kullanıcının birincil cep telefonu numarası. Maksimum uzunluk 64.|Yes|Hayır|Kalıcı, çıkış|
 |NetID           |Dize|Ağ KIMLIĞI.|Hayır|Hayır|Kalıcı, çıkış|
 |objectId        |Dize|Kullanıcının benzersiz tanımlayıcısı olan bir genel benzersiz tanımlayıcı (GUID). Örnek: 12345678-9ABC-def0-1234-56789abcde. Salt okuma, sabit.|Salt okunur|Yes|Giriş, kalıcı, çıkış|
-|Diğer postalar      |Dize koleksiyonu|Kullanıcı için diğer e-posta adreslerinin listesi. Örnek: [" bob@contoso.com ", " Robert@fabrikam.com "].|Evet (alternatif e-posta)|No|Kalıcı, çıkış|
+|Diğer postalar      |Dize koleksiyonu|Kullanıcı için diğer e-posta adreslerinin listesi. Örnek: [" bob@contoso.com ", " Robert@fabrikam.com "].|Evet (alternatif e-posta)|Hayır|Kalıcı, çıkış|
 |password        |Dize|Kullanıcı oluşturma sırasında yerel hesabın parolası.|Hayır|Hayır|Kalıcı|
 |passwordPolicies     |Dize|Parolanın ilkesi. Bu, virgülle ayrılmış farklı ilke adından oluşan bir dizedir. Örneğin, "Disablepasswordexpiasyon, DisableStrongPassword".|Hayır|Hayır|Kalıcı, çıkış|
 |physicalDeliveryOfficeName (officeLocation)|Dize|Kullanıcının iş yerinde Office konumu. Maksimum uzunluk 128.|Yes|Hayır|Kalıcı, çıkış|
@@ -84,7 +84,7 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 |telephoneNumber (ilk departman girişi)|Dize|Kullanıcının iş yeri için birincil telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
 |userPrincipalName    |Dize|Kullanıcının kullanıcı asıl adı (UPN). UPN, Internet standart RFC 822 ' i temel alan Kullanıcı için Internet stili bir oturum açma adıdır. Etki alanının, kiracının doğrulanmış etki alanları koleksiyonunda mevcut olması gerekir. Bir hesap oluşturulduğunda bu özellik gereklidir. Değişmez.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |usageLocation   |Dize|Ülkelerde/bölgelerde hizmetlerin kullanılabilirliğini kontrol etmek için yasal gereksinim nedeniyle lisanslar atanacak kullanıcılar için gereklidir. Null yapılabilir değil. İki harfli ülke/bölge kodu (ISO standart 3166). Örnekler: "US", "JP" ve "GB".|Yes|Hayır|Kalıcı, çıkış|
-|userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|No|Kalıcı, çıkış|
+|userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|Hayır|Kalıcı, çıkış|
 |userState (externalUserState)<sup>3</sup>|Dize|Yalnızca Azure AD B2B hesabı için, davetin Pendingkabulünü veya kabul edilip edilmediğini belirtir.|Hayır|Hayır|Kalıcı, çıkış|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState özelliği için en son değişikliğin zaman damgasını gösterir.|Hayır|Hayır|Kalıcı, çıkış|
 
@@ -105,7 +105,7 @@ Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. 
 
 Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity] [Graph-Objectıdentity] türündeki Kullanıcı özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
 
-| Ad   | Tür |Description|
+| Ad   | Tür |Açıklama|
 |:---------------|:--------|:----------|
 |Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir  `federated` .|
 |yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için  `federated` değer verenin adıdır, örneğin `facebook.com`|
@@ -137,7 +137,7 @@ Federal kimlikler için, kimlik sağlayıcısına bağlı olarak, **ıssueratand
 
 ## <a name="password-profile-property"></a>Parola profili özelliği
 
-Yerel bir kimlik için **Passwordprofile** özniteliği gereklidir ve kullanıcının parolasını içerir. `forceChangePasswordNextSignIn`Özniteliğin olarak ayarlanması gerekir `false` .
+Yerel bir kimlik için **Passwordprofile** özniteliği gereklidir ve kullanıcının parolasını içerir. `forceChangePasswordNextSignIn`Özniteliği, bir kullanıcının bir sonraki oturum açma sırasında parolayı sıfırlaması gerekip gerekmediğini gösterir. Zorunlu parola sıfırlamayı işlemek için [zorlanan parola sıfırlama akışı ayarlayın](force-password-reset.md).
 
 Bir federal (sosyal) kimlik için **Passwordprofile** özniteliği gerekli değildir.
 

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692275"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB, işlem ve analitik iş yükleri arasında performans yalıtım�
 Evet seçeneği, yönetilen bir [Özel uç nokta](analytical-store-private-endpoints.md) yapılandırabilir ve analitik depolama alanının ağ erişimini Azure SYNAPSE yönetilen sanal ağına kısıtlayabilir. Yönetilen özel uç noktalar, analitik deponuza özel bir bağlantı kurar. Bu özel uç nokta Ayrıca diğer Azure veri Hizmetleri arasında işlem deposuna yazma erişimini kısıtlar.
 
 Azure SYNAPSE Analytics çalışma alanındaki aynı Azure Cosmos DB hesabına hem işlem deposu hem de analitik mağaza özel uç noktaları ekleyebilirsiniz. Yalnızca analitik sorgular çalıştırmak istiyorsanız, yalnızca analitik özel uç noktasını eşlemek isteyebilirsiniz.
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitik mağaza ile müşteri tarafından yönetilen anahtarları kullanabilir miyim?
+
+Aynı müşteri tarafından yönetilen anahtarları otomatik ve saydam bir şekilde kullanarak işlem ve analitik mağazalardaki verileri sorunsuzca şifreleyebilirsiniz. Azure Cosmos DB analitik depo ile müşteri tarafından yönetilen anahtarların kullanılması şu anda hesabınızda ek yapılandırma gerektirir. Ayrıntılar için lütfen [Azure Cosmos DB ekibine](mailto:azurecosmosdbcmk@service.microsoft.com)  başvurun.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>, Analitik depoya yansıtılan işlem deposunda silme ve güncelleştirme işlemleri mi var?
 

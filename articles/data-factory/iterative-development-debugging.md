@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory 'de yinelemeli geliştirme ve hata ayıklama
 description: ADF UX 'te yinelemeli olarak Data Factory işlem hatlarını geliştirmeyi ve hata ayıklamanızı öğrenin
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712972"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Veri akışlarını eşleme, ölçeklendirerek çalışan kod içermeyen veri d�
 **İzleyici** deneyiminde etkin veri akışı hata ayıklama oturumlarını bir fabrika genelinde izleyebilirsiniz.
 
 ![Veri akışı hata ayıklama oturumlarını görüntüle](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+Veri akışı Tasarımcısı 'nda veri önizlemesi ve veri akışlarının işlem hattı hata ayıklaması, küçük verilerle en iyi şekilde çalışacak şekilde tasarlanmıştır. Ancak, mantığınızı büyük miktarlarda verilere karşı bir işlem hattı veya veri akışında test etmeniz gerekiyorsa, hata ayıklama oturumunda kullanılan Azure Integration Runtime boyutunu daha fazla çekirdeğe ve en az genel amaçlı işlem ile artırın.
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Veri akışı etkinliğiyle işlem hattında hata ayıklama
 
@@ -83,7 +88,7 @@ Mevcut bir hata ayıklama oturumunun kullanılması, küme zaten çalışırken 
 Etkinlik çalışma zamanının kullanılması, her bir veri akışı etkinliğinin tümleştirme çalışma zamanı 'nda belirtilen ayarları kullanarak yeni bir küme oluşturur. Bu, her bir işin yalıtılmasını sağlar ve karmaşık iş yükleri veya performans testi için kullanılmalıdır. Ayrıca, hata ayıklama için kullanılan küme kaynaklarının ek iş isteklerine hizmeti sağlamak üzere bu süre için kullanılabilir olacağı şekilde, Azure IR TTL 'yi de kontrol edebilirsiniz.
 
 > [!NOTE]
-> Paralel olarak yürütülen veri akışları ile bir işlem hattına sahipseniz, Data Factory veri akışı etkinliğinizdeki seçtiğiniz Integration Runtime kullanabilmesi için "etkinlik çalışma zamanını kullan" ı seçin. Bu, veri akışlarının birden fazla kümede yürütülmesine izin verir ve paralel veri akışı yürütmelerine uyum sağlayabilir.
+> Büyük veri kümeleriyle test olması gereken paralel veya veri akışlarında yürütülen veri akışları ile bir işlem hattına sahipseniz, Data Factory veri akışı etkinliğinizdeki seçtiğiniz Integration Runtime kullanabilmesi için "etkinlik çalışma zamanını kullan" seçeneğini belirleyin. Bu, veri akışlarının birden fazla kümede yürütülmesine izin verir ve paralel veri akışı yürütmelerine uyum sağlayabilir.
 
 ![Veri akışı ile işlem hattı çalıştırma](media/iterative-development-debugging/iterative-development-dataflow.png)
 

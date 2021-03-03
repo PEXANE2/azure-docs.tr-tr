@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625742"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708875"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki işlevleri kullanma
 
@@ -35,7 +35,7 @@ Başka bir sorguyla bir günlük sorgusu kullanmak için, bunu bir işlev olarak
 Diğer bir sorguya diğer adını ekleyerek bir işlev kullanın. Diğer tablolar gibi kullanılabilir.
 
 ## <a name="function-parameters"></a>İşlev parametreleri 
-Bir işleve parametreler ekleyerek belirli değişkenler için değer sağlayabilmenizi sağlayabilirsiniz. Şu anda parametrelere sahip bir işlev oluşturmanın tek yolu Kaynak Yöneticisi şablonunu kullanmaktır. Bir örnek için bkz. [Azure izleyici 'de günlük sorguları için Kaynak Yöneticisi şablonu örnekleri](../samples/resource-manager-log-queries.md#parameterized-function) .
+Bir işleve parametreler ekleyerek belirli değişkenler için değer sağlayabilmenizi sağlayabilirsiniz. Şu anda parametrelere sahip bir işlev oluşturmanın tek yolu Kaynak Yöneticisi şablonunu kullanmaktır. Bir örnek için bkz. [Azure izleyici 'de günlük sorguları için Kaynak Yöneticisi şablonu örnekleri](./resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Örnek
 Aşağıdaki örnek sorgu, son gün içinde bildirilen tüm eksik güvenlik güncelleştirmelerini döndürür. Bu sorguyu, _security_updates_last_day_ diğer adıyla bir işlev olarak kaydedin. 

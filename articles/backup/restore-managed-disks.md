@@ -3,12 +3,12 @@ title: Azure yönetilen disklerini geri yükleme
 description: Azure portal Azure yönetilen disklerini nasıl geri yükleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703758"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini geri yükleme (önizlemede)
 
@@ -66,7 +66,7 @@ Geri yükleme işlemi gerçekleştirmek için aşağıdaki önkoşulların olmas
     >
     >Zamanlanmış yedeklemeler veya isteğe bağlı yedekleme işlemi sırasında, Azure Backup disk yedeklemesini yapılandırma sırasında belirtilen anlık görüntü kaynak grubundaki disk Artımlı anlık görüntülerini depolar. Azure Backup, geri yükleme işlemi sırasında bu artımlı anlık görüntüleri kullanır. Anlık görüntüler, anlık görüntü kaynak grubundan silinir veya taşınabilir veya anlık görüntü kaynak grubundaki Yedekleme Kasası rolü atamaları iptal edildiğinde, geri yükleme işlemi başarısız olur.
 
-1. Geri yüklenecek disk, [müşteri tarafından yönetilen anahtarlarla (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) şifrelendiyse veya [platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar kullanılarak Çift şifreleme](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kullanıyorsa, bu durumda, **disk şifreleme kümesi** kaynağındaki yedekleme kasasının yönetilen kimliğine **okuyucu** rolü iznini atayın.
+1. Geri yüklenecek disk, [müşteri tarafından yönetilen anahtarlarla (CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) şifrelendiyse veya [platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar kullanılarak Çift şifreleme](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md)kullanıyorsa, bu durumda, **disk şifreleme kümesi** kaynağındaki yedekleme kasasının yönetilen kimliğine **okuyucu** rolü iznini atayın.
 
 Önkoşullar karşılandığında, geri yükleme işlemini gerçekleştirmek için aşağıdaki adımları izleyin.
 

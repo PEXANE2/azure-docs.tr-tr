@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 2e6f79643493457a587f907f2649c7ab50b963f4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710507"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,9 +46,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | No | Yok |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
 | [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-20 saat ses |
-| [İlgili metin](#related-text-data-for-training) | No | Yok | Yes | 1-200 MB ilgili metin |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
 
 Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir. Metinli eğitim, ses (dakika veya gün) ile eğitimlerden çok daha hızlıdır.
 
@@ -64,6 +64,8 @@ Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası o
 > Eğitim için kullanılan temel modeli değiştirirken ve eğitim veri kümesinde seslerinizi değiştirdiğinizde, yeni seçilen temel modelin [ses verileriyle eğitimi destekleyip desteklemediğini](language-support.md#speech-to-text) *her zaman* denetleyin. Daha önce kullanılan temel model, ses verileriyle eğitimi desteklemeiyorsa ve eğitim veri kümesi ses içeriyorsa, yeni temel modele sahip eğitim süresi büyük **ölçüde** artar ve birkaç saat ile birkaç güne ve daha fazlasına kolayca gidebilirler. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip](custom-speech-overview.md#set-up-your-azure-account) bir bölgede **değilse** bu özellikle doğrudur.
 >
 > Yukarıdaki paragrafta açıklanan sorunu ortaya çıkardıysanız, veri kümesindeki ses miktarını azaltarak veya tamamen yalnızca metni bırakarak eğitim süresini hızla azaltabilirsiniz. Konuşma hizmeti aboneliğiniz eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) **değilse** , ikinci seçenek kesinlikle önerilir.
+>
+> Eğitim için adanmış donanım olan bölgelerde, konuşma hizmeti eğitim için en fazla 20 saatlik ses kullanacaktır. Diğer bölgelerde, en fazla 8 saat ses kullanacaktır.
 
 ## <a name="upload-data"></a>Verileri karşıya yükleme
 
@@ -101,7 +103,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 
 Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüştürmek için <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kullanın. Aşağıda, bu etkinliklerin her birinin SoX komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
-| Etkinlik | Description | SoX komutu |
+| Etkinlik | Açıklama | SoX komutu |
 |----------|-------------|-------------|
 | Ses biçimini denetle | Denetlemek için bu komutu kullanın<br>ses dosyası biçimi. | `sox --i <filename>` |
 | Ses biçimini Dönüştür | Dönüştürmek için bu komutu kullanın<br>ses dosyasını tek kanala, 16 bit, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -127,9 +129,9 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 > [!NOTE]
 > Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Yalnızca *tek* bir veri kümesinden test edebilirsiniz, bunu uygun dosya boyutunda tutmanız yeterlidir. Ayrıca, her eğitim dosyası 60 saniye aşılamaz, aksi takdirde hata dışarı kalır.
 
-Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 20 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
+Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, 1 ila 20 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Ancak, 30 dakikalık bir süre içinde, tanınma sonuçlarının iyileştirilmesine yardımcı olabilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-Örneğin:
+Örnek:
 
 <!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
 

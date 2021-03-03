@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715471"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
 İç yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -68,7 +68,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Createıntlbqs-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Batı Avrupa** seçin |
+    | Region           | Seç **(Avrupa) Batı Avrupa** |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -106,16 +106,17 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
 ## <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
-1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
-
-2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin: 
+1. **Kaynak oluştur**’u seçin. 
+2. Arama kutusuna **yük dengeleyici** girin. Arama sonuçlarında **Yük dengeleyiciyi** seçin.
+3. **Yük dengeleyici** sayfasında **Oluştur**' u seçin.
+4. **Yük dengeleyici oluştur** sayfasında girin veya aşağıdaki bilgileri seçin: 
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
     | Name                   | **Myloadbalancer** girin                                   |
-    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
+    | Region         | **(Avrupa) Batı Avrupa** seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -228,7 +229,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Createıntlbqs-RG** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Bölge | **Batı Avrupa** seçin |
+    | Region | Seç **(Avrupa) Batı Avrupa** |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik bölgelerini** seçin |
     | Kullanılabilirlik alanı | **1** seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
@@ -303,7 +304,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Createıntlbqs-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Batı Avrupa** seçin |
+    | Region           | Seç **(Avrupa) Batı Avrupa** |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -350,7 +351,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
     | Name                   | **Myloadbalancer** girin                                   |
-    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
+    | Region         | **(Avrupa) Batı Avrupa** seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Temel** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -389,7 +390,7 @@ Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Myb
     | Sanal ağ | **Myvnet**' i seçin. |
     | İlişkili olduğu öğe | **Sanal makineleri** seçin |
 
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
@@ -472,7 +473,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Createıntlbqs-RG** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Bölge | **Batı Avrupa** seçin |
+    | Region | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik kümesi**’ni seçin |
     | Kullanılabilirlik kümesi | **Yeni oluştur**’u seçin. </br> Ada **myAvailabilitySet** girin . </br> **Tamam**'ı seçin |
     | Görüntü | **Windows Server 2019 Datacenter** |
@@ -524,7 +525,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 5. **MyVM1**, **myVM2** ve **myVM3**' nin yanındaki kutuları seçin.
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
 7. **Kaydet**’i seçin.
 ---
@@ -544,7 +545,7 @@ Bu bölümde, **Mytestvm** adlı bir sanal makine oluşturacaksınız.  Bu VM, y
     | Kaynak Grubu | **Createıntlbqs-RG** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Mytestvm** girin |
-    | Bölge | **Batı Avrupa** seçin |
+    | Region | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
     | Azure Spot örneği | **Hayır** seçin |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734749"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ISMC panosundaki bağlayıcı durumu hataları
 
@@ -56,7 +56,9 @@ Aşağıdaki bölümlerde, panonun bağlayıcı durumu bölümünde görünen ya
 
 ## <a name="invalid-refresh-token"></a>Geçersiz yenileme belirteci
 
-**Hata**: "accesstoken ve refreshtoken geçersiz. Kullanıcının yeniden kimlik doğrulaması yapması gerekiyor. "
+**Hata**: 
+  * "AccessToken ve RefreshToken geçersiz. Kullanıcının yeniden kimlik doğrulaması yapması gerekiyor. "
+  * "Olay, uyarı, olay için şablon yapılandırması eşitlenemedi. Daha fazla ayrıntı için bkz. özel durum Iletisi. "
 
 **Neden**: yenileme belirtecinin zaman aşımına uğradı.
 

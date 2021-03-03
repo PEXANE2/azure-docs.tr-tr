@@ -3,12 +3,12 @@ title: Azure Service Bus-ileti süre sonu
 description: Bu makalede Azure Service Bus iletilerinin yaşam süresi ve yaşam süresi hakkında bilgi verilmektedir. Bu süre dolduktan sonra ileti artık teslim alınmaz.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: a2a568f04c2607832a1fa2a8e32bc6ce8331da4d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698374"
 ---
 # <a name="message-expiration-time-to-live"></a>İleti süre sonu (Yaşam Süresi)
 Bir iletideki yük veya bir iletinin alıcıyı ileten bir komut ya da sorgulama, neredeyse her zaman bir uygulama düzeyi sona erme tarihi biçimine tabidir. Bu süre sonunda, içerik artık teslim edilmemiş veya istenen işlem artık yürütülmemiş.
@@ -20,6 +20,8 @@ Her bir ileti için süre sonu, göreli bir süre belirten **yaşam süresi** si
 UTC 'den **süresi dolan** anlık iletiler, geri alma için uygun hale gelir. Süre sonu, şu anda teslim için kilitli iletileri etkilemez. Bu iletiler normal olarak yine de işlenir. Kilidin süresi dolarsa veya ileti durdurulmadığında, süre sonu hemen yürürlüğe girer.
 
 İleti kilit altındayken uygulama, süresi sona ermemiş bir iletinin elinde olabilir. Uygulamanın işleme devam edip etmeyeceğini veya iletiyi bırakmaya izin verip uygulamamayı tercih edin.
+
+İleti üzerinde **yaşam süresi** değerini saat veya gün olarak ayarlamanızı öneririz. Bunu saniye veya milisaniye cinsinden düşük bir değere ayarlarsanız, tüketicilerin bu uygulamayı tüketmesi için önce süresi dolacak. 
 
 ## <a name="entity-level-expiration"></a>Varlık düzeyi süre sonu
 Bir sıraya veya konuya gönderilen tüm iletiler, varlık düzeyinde ayarlanan varsayılan bir süre sonuna tabidir. Ayrıca, oluşturma sırasında portalda ayarlanabilir ve daha sonra ayarlanabilir. Varsayılan süre sonu, varlığa gönderilen sürenin açık olarak ayarlandığı, varlığa gönderilen tüm iletiler için kullanılır. Varsayılan süre sonu Ayrıca yaşam süresi değeri için tavan olarak çalışır. Varsayılan değerden daha uzun bir yaşam süresi dolduktan sonra, varsayılan değerin kuyruğa alınmadan önce varsayılan ileti yaşam süresi değerine sessizce ayarlanır.

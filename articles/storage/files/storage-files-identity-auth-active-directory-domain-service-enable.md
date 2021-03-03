@@ -8,16 +8,16 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705118"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
-[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti arasında sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: şirket içi Active Directory Domain Services (AD DS) ve Azure Active Directory Domain Services (Azure AD DS). Kimlik doğrulaması için doğru etki alanı hizmetini seçmek üzere [nasıl çalıştığını](./storage-files-active-directory-overview.md#how-it-works) incelemenizi önemle öneririz. Kurulum farklı, seçtiğiniz etki alanı hizmetine bağlıdır. Bu makale, Azure dosya paylaşımları ile kimlik doğrulaması için Azure AD DS etkinleştirme ve yapılandırma konusunda odaklanır.
+[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti arasında sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: şirket içi Active Directory Domain Services (AD DS) ve Azure Active Directory Domain Services (Azure AD DS). Kimlik doğrulaması için doğru etki alanı hizmetini seçmek üzere [nasıl çalıştığını](./storage-files-active-directory-overview.md#how-it-works) incelemenizi önemle öneririz. Kurulum, seçtiğiniz etki alanı hizmetine göre farklılık açmış. Bu makale, Azure dosya paylaşımları ile kimlik doğrulaması için Azure AD DS etkinleştirme ve yapılandırma konusunda odaklanır.
 
 Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale serisini okumadan önce [planlama kılavuzumuzu](storage-files-planning.md) okumanızı öneririz.
 

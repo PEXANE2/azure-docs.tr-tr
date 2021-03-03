@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 21b84a40621f5a529c09dc0c03e024c4ea6d5c95
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 98a3965160e7ab6c86ba8c6d3a4dfd75af4c6dbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531932"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750693"
 ---
 Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
@@ -36,10 +36,10 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     1. **Ağ arabirimi** -bu, bir Azure sanal makinesinin Internet, Azure ve diğer kaynaklarla iletişim kurmasını sağlar.
     1. Savunma **bağlantısı** -bu, tarayıcınızı ve Azure Portal kullanarak sanal makinenize bağlanmanızı sağlar.
     1. **Genel IP adresi** -bu, Azure kaynaklarının Internet ve genel kullanıma yönelik Azure hizmetleriyle iletişim kurmasını sağlar
-    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) hakkında daha fazla bilgi
+    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](../../../../../virtual-network/virtual-networks-overview.md) hakkında daha fazla bilgi
     1. **IoT Hub** -bu, IoT uygulamanız, IoT Edge modülleriniz ve yönettiği cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür.
     1. **Medya hizmeti hesabı** -bu, Azure 'da medya içeriğini yönetmeye ve akışa yardımcı olur.
-    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](../../../../latest/storage-account-concept.md).
     1. **Kapsayıcı kayıt defteri** -bu, özel Docker kapsayıcı görüntülerinizi ve ilgili yapıtlarınızı depolamaya ve yönetmeye yardımcı olur.
 1. Betik tamamlandıktan sonra, klasör yapısını göstermek için süslü ayraçları seçin. *~/CloudDrive/LVA-Sample* dizininde birkaç dosya görürsünüz. Bu hızlı başlangıçta ilgilendiğiniz:
 

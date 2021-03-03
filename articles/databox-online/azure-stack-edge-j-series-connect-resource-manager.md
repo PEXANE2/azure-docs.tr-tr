@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722101"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
@@ -130,7 +130,7 @@ Azure Resource Manager API 'Leri çağırabileceğiniz Windows istemcisi, cihazl
 
 Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
 
-1. PowerShell sürüm 5,0 ' i çalıştırın. PowerShell sürüm 5,0 veya sonraki bir sürümü olmalıdır. Sisteminizdeki PowerShell sürümünü denetlemek için aşağıdaki cmdlet 'i çalıştırın:
+1. PowerShell sürüm 5,0 ' i çalıştırın. PowerShell sürümü 5,0 olmalıdır. PowerShell Core desteklenmiyor. Sisteminizdeki PowerShell sürümünü denetlemek için aşağıdaki cmdlet 'i çalıştırın:
 
     ```powershell
     $PSVersionTable.PSVersion

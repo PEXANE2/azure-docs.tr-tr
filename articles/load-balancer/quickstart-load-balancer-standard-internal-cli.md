@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: iç yük dengeleyici oluşturma-Azure CLı'
 titleSuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta, Azure CLı kullanarak iç yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir
+description: Bu hızlı başlangıçta, Azure CLı kullanarak iç yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: edf893f1f6ba0691da5764420017282d7a8bde84
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 10ac477bed97d2a48344aa8ef9b570d2b6203345
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562820"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "101702632"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
+# <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak iç yük dengeleyici oluşturma
 
 İç yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullanarak Azure Load Balancer kullanmaya başlayın.
 
@@ -30,16 +30,16 @@ ms.locfileid: "98562820"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
-- Bu hızlı başlangıç, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
+Bu hızlı başlangıç, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
+
+>[!NOTE]
+>Azure Load Balancer standart, üretim iş yükleri için önerilen seçenektir. Bu makale, Azure Load Balancer standart ve temel Azure Load Balancer hakkında bilgiler içerir. SKU 'Lar hakkında daha fazla bilgi için bkz. [Azure Load Balancer SKU 'lar](skus.md).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz mantıksal bir kapsayıcıdır.
 
-[Az Group Create](/cli/azure/group#az_group_create)ile bir kaynak grubu oluşturun:
-
-* Adlandırılmış **Createıntlbqs-RG**. 
-* **Eastus** konumunda.
+[az group create](/cli/azure/group#az_group_create) ile bir kaynak grubu oluşturun. **Createıntlbqs-RG** kaynak grubunu adlandırın ve konumu **eastus** olarak belirtin.
 
 ```azurecli-interactive
   az group create \
@@ -47,35 +47,27 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
     --location eastus
 
 ```
----
 
-# <a name="standard-sku"></a>[**Standart SKU**](#tab/option-1-create-load-balancer-standard)
+## <a name="azure-load-balancer-standard"></a>Azure Load Balancer standart
 
->[!NOTE]
->Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'Lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
-
-Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
-
-Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
-
-Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
 
-## <a name="configure-virtual-network---standard"></a>Sanal ağ yapılandırma-standart
+### <a name="configure-the-virtual-network"></a>Sanal ağı yapılandırma
 
 VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+#### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)kullanarak bir sanal ağ oluşturun:
+[Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)kullanarak bir sanal ağ oluşturun. Aşağıdakileri belirtin:
 
-* **Myvnet** adında.
-* **10.1.0.0/16** adres ön eki.
-* **Mybackendsubnet** adlı alt ağ.
-* **10.1.0.0/24** alt ağ ön eki.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumu.
+* Adlandırılmış **Myvnet**
+* **10.1.0.0/16** adres ön eki
+* **Mybackendsubnet** adlı alt ağ
+* **10.1.0.0/24** alt ağ öneki
+* **Createıntlbqs-RG** kaynak grubunda
+* **Eastus** konumu
 
 ```azurecli-interactive
   az network vnet create \
@@ -87,12 +79,12 @@ VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sana
     --subnet-prefixes 10.1.0.0/24
 ```
 
-### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
+#### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın:
+Azure savunma ana bilgisayarı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın. Aşağıdakileri belirtin:
 
-* **Mybastionıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
-* **Createıntlbqs-RG** içinde.
+* **Mybastionıp** adlı standart bölge-YEDEKLI genel IP adresi oluşturma
+* **Createıntlbqs-RG** içinde
 
 ```azurecli-interactive
 az network public-ip create \
@@ -100,14 +92,14 @@ az network public-ip create \
     --name myBastionIP \
     --sku Standard
 ```
-### <a name="create-a-bastion-subnet"></a>Savunma alt ağı oluşturma
+#### <a name="create-an-azure-bastion-subnet"></a>Azure savunma alt ağı oluşturma
 
-Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın:
+Alt ağ oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın. Aşağıdakileri belirtin:
 
-* **AzureBastionSubnet** adlı.
-* **10.1.1.0/24** adres ön eki.
-* Sanal ağ **\** sanal ağı 'nda.
-* **Createıntlbqs-RG** kaynak grubunda.
+* **AzureBastionSubnet** adlı
+* **10.1.1.0/24** adres ön eki
+* Sanal ağ **\ VNET** 'te
+* **Createıntlbqs-RG** kaynak grubunda
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -117,15 +109,15 @@ az network vnet subnet create \
     --address-prefixes 10.1.1.0/24
 ```
 
-### <a name="create-bastion-host"></a>Savunma Konağı oluştur
+#### <a name="create-an-azure-bastion-host"></a>Azure Bastion konağı oluşturma
 
-Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az-network-bastion-create) kullanın:
+Bir konak oluşturmak için [az ağ savunma oluştur](/cli/azure/network/bastion#az-network-bastion-create) seçeneğini kullanın. Aşağıdakileri belirtin:
 
-* Adlandırılmış **Mybastionhost**.
-* **Createıntlbqs-RG** içinde.
-* Genel IP **Mybastionıp** ile ilişkilendirildi.
-* Sanal ağ **Myvnet** ile ilişkilendirildi.
-* **Eastus** konumunda.
+* Adlandırılmış **Mybastionhost**
+* **Createıntlbqs-RG** içinde
+* Ortak IP ile ilişkili **Myeltionıp**
+* Sanal ağ **Myvnet** ile ilişkili
+* **Eastus** konumunda
 
 ```azurecli-interactive
 az network bastion create \
@@ -138,15 +130,12 @@ az network bastion create \
 
 Azure savunma konağının dağıtılması birkaç dakika sürebilir.
 
+#### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
+Standart yük dengeleyici için, sanal makinelerinizin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olduğundan emin olun. [Az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun. Aşağıdakileri belirtin:
 
-Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olması gerekir. 
-
-[Az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
-
-* **Mynsg** adlı adlandırılmış.
-* **Createıntlbqs-RG** kaynak grubunda.
+* Adlandırılmış **Mynsg**
+* **Createıntlbqs-RG** kaynak grubunda
 
 ```azurecli-interactive
   az network nsg create \
@@ -154,20 +143,20 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNSG
 ```
 
-### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
+#### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
 
-[Az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun. Aşağıdakileri belirtin:
 
-* **Mynsgrutahttp** adında.
-* Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Protokol **(*)**.
-* Yön **gelen**.
-* Kaynak **(*)**.
-* Hedef **(*)**.
-* Hedef bağlantı noktası **80**.
-* Erişime **Izin ver**.
-* Öncelik **200**.
+* Adlandırılmış **Mynsgrutahttp**
+* Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**
+* **Createıntlbqs-RG** kaynak grubunda
+* Protokol **(*)**
+* Yön **geliş**
+* Kaynak **(*)**
+* Hedef **(*)**
+* Hedef bağlantı noktası **80**
+* Erişime **Izin ver**
+* Öncelik **200**
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -184,22 +173,22 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --priority 200
 ```
 
-## <a name="create-backend-servers---standard"></a>Arka uç sunucuları oluşturma-standart
+### <a name="create-back-end-servers"></a>Arka uç sunucuları oluşturma
 
 Bu bölümde şunları oluşturursunuz:
 
 * Sanal makineler için üç ağ arabirimi.
-* Yük Dengeleyici için arka uç sunucular olarak kullanılacak üç sanal makine.
+* Yük Dengeleyici için sunucu olarak kullanılacak üç sanal makine.
 
-### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
+#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
 
-[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)ile üç ağ arabirimi oluşturun:
+[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)ile üç ağ arabirimi oluşturun. Aşağıdakileri belirtin:
 
-* Adlandırılmış **myNicVM1**, **myNicVM2** ve **myNicVM3**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
+* Adlandırılmış **myNicVM1**, **myNicVM2** ve **myNicVM3**
+* **Createıntlbqs-RG** kaynak grubunda
+* Sanal ağ **\ VNET** 'te
+* Alt ağda **Mybackendsubnet**
+* Ağ güvenlik grubu ' nda **Mynsg**
 
 ```azurecli-interactive
   array=(myNicVM1 myNicVM2 myNicVM3)
@@ -214,15 +203,15 @@ Bu bölümde şunları oluşturursunuz:
   done
 ```
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+#### <a name="create-the-virtual-machines"></a>Sanal makineleri oluşturma
 
-[Az VM Create](/cli/azure/vm#az-vm-create)ile sanal makineler oluşturun:
+[az vm create](/cli/azure/vm#az-vm-create) komutunu kullanarak sanal makineleri oluşturun. Aşağıdakileri belirtin:
 
-* Adlandırılmış **myVM1**, **myVM2** ve **myVM3**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimine iliştirilir.
-* Sanal makine görüntüsü **win2019datacenter**.
-* **Bölge 1**, **bölge 2** ve **Bölge 3**.
+* Adlandırılmış **myVM1**, **myVM2** ve **myVM3**
+* **Createıntlbqs-RG** kaynak grubunda
+* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimine eklendi
+* Sanal makine görüntüsü **win2019datacenter**
+* **Bölge 1**, **bölge 2** ve **Bölge 3**
 
 ```azurecli-interactive
   array=(1 2 3)
@@ -241,24 +230,24 @@ Bu bölümde şunları oluşturursunuz:
 
 VM 'Lerin dağıtılması birkaç dakika sürebilir.
 
-## <a name="create-standard-load-balancer"></a>Standart yük dengeleyici oluştur
+### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
 
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+* Yük dengeleyicide gelen ağ trafiğini alan bir IP Havuzu.
+* İlk havuzun yük dengeli ağ trafiğini gönderdiği ikinci bir IP Havuzu.
+* VM örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
+* Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
 
-### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
+#### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
 
-[Az Network lb Create](/cli/azure/network/lb#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+[Az Network lb Create](/cli/azure/network/lb#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun. Aşağıdakileri belirtin:
 
-* **Myloadbalancer** adlı.
-* **Myön uç** adlı bir ön uç Havuzu.
-* **Mybackendpool** adlı bir arka uç Havuzu.
-* Sanal ağ **Myvnet** ile ilişkili.
-* **Mybackendsubnet** arka uç ağıyla ilişkili.
+* Adlandırılmış **Myloadbalancer**
+* **Myön uç** adlı bir havuz
+* **Mybackendpool** adlı bir havuz
+* Sanal ağ **Myvnet** ile ilişkili
+* **Mybackendsubnet** alt ağıyla ilişkili
 
 ```azurecli-interactive
   az network lb create \
@@ -271,18 +260,16 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
     --backend-pool-name myBackEndPool
 ```
 
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
+#### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
 
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
+Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
 
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
+[Az Network lb araştırması Create](/cli/azure/network/lb/probe#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun. Aşağıdakileri belirtin:
 
-[Az Network lb araştırması Create](/cli/azure/network/lb/probe#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
-
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
+* Sanal makinelerin sistem durumunu izler
+* Adlandırılmış **Myhealtharaştırması**
+* Protokol **TCP**
+* İzleme **bağlantı noktası 80**
 
 ```azurecli-interactive
   az network lb probe create \
@@ -293,23 +280,23 @@ Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden k
     --port 80
 ```
 
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
+#### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
 Yük dengeleyici kuralı şunları tanımlar:
 
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
+* Gelen trafik için IP yapılandırması.
+* Trafiği alacak IP Havuzu.
 * Gerekli kaynak ve hedef bağlantı noktası. 
 
-[Az Network lb Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdakileri belirtin:
 
 * Adlandırılmış **Myhttprule**
-* Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP**.
-* **15 dakikalık** boşta zaman aşımı.
-* TCP sıfırlamayı etkinleştirin.
+* **Myön uç** havuzundaki **80 numaralı bağlantı noktasını** dinleme
+* **80 numaralı bağlantı noktasını** kullanarak **mybackendpool** adres havuzuna yük dengeli ağ trafiği gönderiliyor 
+* Sistem durumu araştırması **Myhealtharaştırması** kullanma
+* Protokol **TCP**
+* **15 dakikalık** boşta zaman aşımı
+* TCP sıfırlamayı etkinleştir
 
 ```azurecli-interactive
   az network lb rule create \
@@ -326,14 +313,14 @@ Yük dengeleyici kuralı şunları tanımlar:
     --enable-tcp-reset true
 ```
 
-### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
+#### <a name="add-vms-to-the-load-balancer-pool"></a>Yük dengeleyici havuzuna VM ekleme
 
-[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin. Aşağıdakileri belirtin:
 
-* Arka uç adres havuzunda **Mybackendpool**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimiyle ilişkili.
-* Yük dengeleyici **Myloadbalancer** ile ilişkili.
+* Adres havuzunda **Mybackendpool**
+* **Createıntlbqs-RG** kaynak grubunda
+* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimiyle ilişkili
+* Yük dengeleyici **Myloadbalancer** ile ilişkili
 
 ```azurecli-interactive
   array=(VM1 VM2 VM3)
@@ -349,33 +336,26 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 ```
 
-# <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
+## <a name="azure-load-balancer-basic"></a>Azure Load Balancer temel
 
->[!NOTE]
->Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'LAR hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
-Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıç için oluşturulan temel yük dengeleyici kaynakları." border="false":::
 
-Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
-
-Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
-
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
-
-## <a name="configure-virtual-network---basic"></a>Sanal ağı yapılandırma-temel
+### <a name="configure-the-virtual-network"></a>Sanal ağı yapılandırma
 
 VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+#### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
+[Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun. Aşağıdakileri belirtin:
 
-* **Myvnet** adında.
-* **10.1.0.0/16** adres ön eki.
-* **Mybackendsubnet** adlı alt ağ.
-* **10.1.0.0/24** alt ağ ön eki.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumu.
+* Adlandırılmış **Myvnet**
+* **10.1.0.0/16** adres ön eki
+* **Mybackendsubnet** adlı alt ağ
+* **10.1.0.0/24** alt ağ öneki
+* **Createıntlbqs-RG** kaynak grubunda
+* **Eastus** konumu
 
 ```azurecli-interactive
   az network vnet create \
@@ -387,12 +367,12 @@ VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sana
     --subnet-prefixes 10.1.0.0/24
 ```
 
-### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
+#### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın:
+Azure savunma ana bilgisayarı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın. Aşağıdakileri belirtin:
 
-* **Mybastionıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
-* **Createıntlbqs-RG** içinde.
+* **Mybastionıp** adlı standart bölge-YEDEKLI genel IP adresi oluşturma
+* **Createıntlbqs-RG** içinde
 
 ```azurecli-interactive
 az network public-ip create \
@@ -400,14 +380,14 @@ az network public-ip create \
     --name myBastionIP \
     --sku Standard
 ```
-### <a name="create-a-bastion-subnet"></a>Savunma alt ağı oluşturma
+#### <a name="create-an-azure-bastion-subnet"></a>Azure savunma alt ağı oluşturma
 
-Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın:
+Alt ağ oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın. Aşağıdakileri belirtin:
 
-* **AzureBastionSubnet** adlı.
-* **10.1.1.0/24** adres ön eki.
-* Sanal ağ **\** sanal ağı 'nda.
-* **Createıntlbqs-RG** kaynak grubunda.
+* **AzureBastionSubnet** adlı
+* **10.1.1.0/24** adres ön eki
+* Sanal ağ **\ VNET** 'te
+* **Createıntlbqs-RG** kaynak grubunda
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -417,15 +397,15 @@ az network vnet subnet create \
     --address-prefixes 10.1.1.0/24
 ```
 
-### <a name="create-bastion-host"></a>Savunma Konağı oluştur
+#### <a name="create-an-azure-bastion-host"></a>Azure Bastion konağı oluşturma
 
-Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az-network-bastion-create) kullanın:
+Bir konak oluşturmak için [az ağ savunma oluştur](/cli/azure/network/bastion#az-network-bastion-create) seçeneğini kullanın. Aşağıdakileri belirtin:
 
-* Adlandırılmış **Mybastionhost**.
-* **Createıntlbqs-RG** içinde.
-* Genel IP **Mybastionıp** ile ilişkilendirildi.
-* Sanal ağ **Myvnet** ile ilişkilendirildi.
-* **Eastus** konumunda.
+* Adlandırılmış **Mybastionhost**
+* **Createıntlbqs-RG** içinde
+* Ortak IP ile ilişkili **Myeltionıp**
+* Sanal ağ **Myvnet** ile ilişkili
+* **Eastus** konumunda
 
 ```azurecli-interactive
 az network bastion create \
@@ -438,14 +418,12 @@ az network bastion create \
 
 Azure savunma konağının dağıtılması birkaç dakika sürebilir.
 
-### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
+#### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olması gerekir. 
+Standart yük dengeleyici için, sanal makinelerinizin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olduğundan emin olun. [Az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun. Aşağıdakileri belirtin:
 
-[Az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
-
-* **Mynsg** adlı adlandırılmış.
-* **Createıntlbqs-RG** kaynak grubunda.
+* Adlandırılmış **Mynsg**
+* **Createıntlbqs-RG** kaynak grubunda
 
 ```azurecli-interactive
   az network nsg create \
@@ -453,20 +431,20 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNSG
 ```
 
-### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
+#### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
 
-[Az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun. Aşağıdakileri belirtin:
 
-* **Mynsgrutahttp** adında.
-* Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Protokol **(*)**.
-* Yön **gelen**.
-* Kaynak **(*)**.
-* Hedef **(*)**.
-* Hedef bağlantı noktası **80**.
-* Erişime **Izin ver**.
-* Öncelik **200**.
+* Adlandırılmış **Mynsgrutahttp**
+* Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**
+* **Createıntlbqs-RG** kaynak grubunda
+* Protokol **(*)**
+* Yön **geliş**
+* Kaynak **(*)**
+* Hedef **(*)**
+* Hedef bağlantı noktası **80**
+* Erişime **Izin ver**
+* Öncelik **200**
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -483,23 +461,23 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --priority 200
 ```
 
-## <a name="create-backend-servers---basic"></a>Arka uç sunucuları oluşturma-temel
+### <a name="create-back-end-servers"></a>Arka uç sunucuları oluşturma
 
 Bu bölümde şunları oluşturursunuz:
 
 * Sanal makineler için üç ağ arabirimi.
-* Sanal makineler için kullanılabilirlik kümesi
-* Yük Dengeleyici için arka uç sunucular olarak kullanılacak üç sanal makine.
+* Sanal makineler için kullanılabilirlik kümesi.
+* Yük Dengeleyici için sunucu olarak kullanılacak üç sanal makine.
 
-### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
+#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
 
-[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)ile üç ağ arabirimi oluşturun:
+[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)ile üç ağ arabirimi oluşturun. Aşağıdakileri belirtin:
 
-* Adlandırılmış **myNicVM1**, **myNicVM2** ve **myNicVM3**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
+* Adlandırılmış **myNicVM1**, **myNicVM2** ve **myNicVM3**
+* **Createıntlbqs-RG** kaynak grubunda
+* Sanal ağ **\ VNET** 'te
+* Alt ağda **Mybackendsubnet**
+* Ağ güvenlik grubu ' nda **Mynsg**
 
 ```azurecli-interactive
   array=(myNicVM1 myNicVM2 myNicVM3)
@@ -514,13 +492,13 @@ Bu bölümde şunları oluşturursunuz:
   done
 ```
 
-### <a name="create-availability-set-for-virtual-machines"></a>Sanal makineler için kullanılabilirlik kümesi oluştur
+#### <a name="create-the-availability-set-for-the-virtual-machines"></a>Sanal makineler için kullanılabilirlik kümesi oluşturma
 
-Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create)ile oluşturun:
+Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create)ile oluşturun. Aşağıdakileri belirtin:
 
-* **MyAvailabilitySet** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Konum **eastus**.
+* **MyAvailabilitySet** adlı
+* **Createıntlbqs-RG** kaynak grubunda
+* Konum **eastus**
 
 ```azurecli-interactive
   az vm availability-set create \
@@ -530,15 +508,15 @@ Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](/cli/azure/vm/avail
     
 ```
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+#### <a name="create-the-virtual-machines"></a>Sanal makineleri oluşturma
 
-[Az VM Create](/cli/azure/vm#az-vm-create)ile sanal makineler oluşturun:
+[az vm create](/cli/azure/vm#az-vm-create) komutunu kullanarak sanal makineleri oluşturun. Aşağıdakileri belirtin:
 
-* Adlandırılmış **myVM1**, **myVM2** ve **myVM3**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimine iliştirilir.
-* Sanal makine görüntüsü **win2019datacenter**.
-* **MyAvailabilitySet** içinde.
+* Adlandırılmış **myVM1**, **myVM2** ve **myVM3**
+* **Createıntlbqs-RG** kaynak grubunda
+* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimine eklendi
+* Sanal makine görüntüsü **win2019datacenter**
+* **MyAvailabilitySet** içinde
 
 
 ```azurecli-interactive
@@ -557,24 +535,24 @@ Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](/cli/azure/vm/avail
 ```
 VM 'Lerin dağıtılması birkaç dakika sürebilir.
 
-## <a name="create-basic-load-balancer"></a>Temel yük dengeleyici oluşturma
+### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
 
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+* Yük dengeleyicide gelen ağ trafiğini alan bir IP Havuzu.
+* İlk havuzun yük dengeli ağ trafiğini gönderdiği ikinci bir IP Havuzu.
+* VM örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
+* Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
 
-### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
+#### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
 
-[Az Network lb Create](/cli/azure/network/lb#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+[Az Network lb Create](/cli/azure/network/lb#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun. Aşağıdakileri belirtin:
 
-* **Myloadbalancer** adlı.
-* **Myön uç** adlı bir ön uç Havuzu.
-* **Mybackendpool** adlı bir arka uç Havuzu.
-* Sanal ağ **Myvnet** ile ilişkili.
-* **Mybackendsubnet** arka uç ağıyla ilişkili.
+* Adlandırılmış **Myloadbalancer**
+* **Myön uç** adlı bir havuz
+* **Mybackendpool** adlı bir havuz
+* Sanal ağ **Myvnet** ile ilişkili
+* **Mybackendsubnet** alt ağıyla ilişkili
 
 ```azurecli-interactive
   az network lb create \
@@ -587,18 +565,16 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
     --backend-pool-name myBackEndPool
 ```
 
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
+#### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
 
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
+Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
 
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
+[Az Network lb araştırması Create](/cli/azure/network/lb/probe#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun. Aşağıdakileri belirtin:
 
-[Az Network lb araştırması Create](/cli/azure/network/lb/probe#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
-
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
+* Sanal makinelerin sistem durumunu izler
+* Adlandırılmış **Myhealtharaştırması**
+* Protokol **TCP**
+* İzleme **bağlantı noktası 80**
 
 ```azurecli-interactive
   az network lb probe create \
@@ -609,22 +585,22 @@ Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden k
     --port 80
 ```
 
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
+#### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
 Yük dengeleyici kuralı şunları tanımlar:
 
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
+* Gelen trafik için IP yapılandırması.
+* Trafiği alacak IP Havuzu.
 * Gerekli kaynak ve hedef bağlantı noktası. 
 
-[Az Network lb Rule Create](/cli/azure/network/lb/rule#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) komutuyla bir yük dengeleyici kuralı oluşturun. Aşağıdakileri belirtin:
 
 * Adlandırılmış **Myhttprule**
-* Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP**.
-* **15 dakikalık** boşta zaman aşımı.
+* **Myön uç** havuzundaki **80 numaralı bağlantı noktasını** dinleme
+* **80 numaralı bağlantı noktasını** kullanarak **mybackendpool** adres havuzuna yük dengeli ağ trafiği gönderiliyor 
+* Sistem durumu araştırması **Myhealtharaştırması** kullanma
+* Protokol **TCP**
+* **15 dakikalık** boşta zaman aşımı
 
 ```azurecli-interactive
   az network lb rule create \
@@ -639,14 +615,14 @@ Yük dengeleyici kuralı şunları tanımlar:
     --probe-name myHealthProbe \
     --idle-timeout 15 
 ```
-### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
+#### <a name="add-vms-to-the-load-balancer-pool"></a>Yük dengeleyici havuzuna VM ekleme
 
-[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin. Aşağıdakileri belirtin:
 
-* Arka uç adres havuzunda **Mybackendpool**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimiyle ilişkili.
-* Yük dengeleyici **Myloadbalancer** ile ilişkili.
+* Adres havuzunda **Mybackendpool**
+* **Createıntlbqs-RG** kaynak grubunda
+* **MyNicVM1**, **myNicVM2** ve **myNicVM3** ağ arabirimiyle ilişkili
+* Yük dengeleyici **Myloadbalancer** ile ilişkili
 
 ```azurecli-interactive
   array=(VM1 VM2 VM3)
@@ -661,19 +637,16 @@ Yük dengeleyici kuralı şunları tanımlar:
   done
 
 ```
----
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-### <a name="create-test-virtual-machine"></a>Test sanal makinesi oluştur
+[Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)komutuyla ağ arabirimini oluşturun. Aşağıdakileri belirtin:
 
-Ağ arabirimini [az ağ NIC Create](/cli/azure/network/nic#az-network-nic-create)ile oluşturun:
-
-* **Mynictestvm** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
+* Adlandırılmış **Mynictestvm**
+* **Createıntlbqs-RG** kaynak grubunda
+* Sanal ağ **\ VNET** 'te
+* Alt ağda **Mybackendsubnet**
+* Ağ güvenlik grubu ' nda **Mynsg**
 
 ```azurecli-interactive
   az network nic create \
@@ -683,12 +656,12 @@ Ağ arabirimini [az ağ NIC Create](/cli/azure/network/nic#az-network-nic-create
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-Sanal makineyi [az VM Create](/cli/azure/vm#az-vm-create)ile oluşturun:
+[Az VM Create](/cli/azure/vm#az-vm-create)ile sanal makineyi oluşturun. Aşağıdakileri belirtin:
 
-* **Mytestvm** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Mynictestvm** ağ arabirimine eklendi.
-* Sanal makine görüntüsü **Win2019Datacenter**.
+* **Mytestvm** adlı adlandırılmış
+* **Createıntlbqs-RG** kaynak grubunda
+* Ağ arabirimine eklendi **Mynictestvm**
+* Sanal makine görüntüsü **Win2019Datacenter**
 
 ```azurecli-interactive
   az vm create \
@@ -699,7 +672,7 @@ Sanal makineyi [az VM Create](/cli/azure/vm#az-vm-create)ile oluşturun:
     --admin-username azureuser \
     --no-wait
 ```
-Sanal makinenin dağıtılması birkaç dakika sürebilir.
+Sanal makinenin dağıtılması için birkaç dakika beklemeniz gerekebilir.
 
 ## <a name="install-iis"></a>IIS yükleme
 
@@ -720,31 +693,31 @@ Sanal makinelere IIS yüklemek ve varsayılan Web sitesini bilgisayar adına aya
 
 ```
 
-### <a name="test"></a>Test
+### <a name="test"></a>Test etme
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 
-2. **Genel bakış** ekranında yük DENGELEYICININ özel IP adresini bulun. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından **myloadbalancer**' ı seçin.
+2. **Genel bakış** sayfasında, yük dengeleyici IÇIN özel IP adresini bulun. Sol taraftaki menüden **tüm hizmetler**  >  **tüm kaynaklar**  >  **myloadbalancer**' ı seçin.
 
-3. **Myloadbalancer** **genel** görünümünde, **özel IP adresi** ' nin yanındaki bir yere göz atın veya adresi kopyalayın.
+3. **Myloadbalancer** genel görünümünde adresı **özel IP adresi**' nin yanına kopyalayın.
 
-4. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **createıntlbqs-RG** kaynak grubunda bulunan **mytestvm** ' yi seçin.
+4. Soldaki menüden **tüm hizmetler**  >  **tüm kaynaklar**' ı seçin. Kaynaklar listesinde, **Createıntlbqs-RG** kaynak grubunda, **mytestvm**' yi seçin.
 
-5. **Genel bakış** sayfasında **Bağlan** **' ı ve** sonra da ' yi seçin.
+5. **Genel bakış** sayfasında, **Bağlan**' ı seçin  >  .
 
-6. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
+6. VM oluştururken girdiğiniz kullanıcı adını ve parolayı girin.
 
-7. **Mytestvm**'de **Internet Explorer** 'ı açın.
+7. **Mytestvm**'de **Internet Explorer**'ı açın.
 
-8. Önceki adımdan, tarayıcının adres çubuğuna IP adresini girin. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
+8. Önceki adımdan, tarayıcının adres çubuğuna IP adresini girin. IIS Web sunucusunun varsayılan sayfası tarayıcıda gösterilir.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standart iç yük dengeleyici oluşturma" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Tarayıcının adres çubuğundaki IP adresinin ekran görüntüsü." border="true":::
    
-Yük dengeleyicinin trafiği üç VM 'ye dağıtmasını görmek için, her bir sanal makinenin IIS Web sunucusunun varsayılan sayfasını özelleştirebilir ve sonra Web tarayıcınızı istemci makinesinden yenileyebilirsiniz.
+Yük dengeleyicinin trafiği üç VM 'ye dağıtmasını görmek için, her bir sanal makinenin IIS Web sunucusunun varsayılan sayfasını özelleştirebilirsiniz. Daha sonra, Web tarayıcınızı istemci makinesinden el ile yenileyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları kaldırın.
+Kaynaklarınızın artık gerekli olmadığı durumlarda, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları kaldırın.
 
 ```azurecli-interactive
   az group delete \
@@ -753,13 +726,6 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta:
-
-* Standart veya genel yük dengeleyici oluşturdunuz
-* Bağlı sanal makineler. 
-* Yük dengeleyici trafik kuralı ve sistem durumu araştırması yapılandırıldı.
-* Yük dengeleyici test edildi.
-
-Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin:
+Artık Azure Load Balancer’a genel bakış bilgilerini edinin.
 > [!div class="nextstepaction"]
 > [Azure Load Balancer nedir?](load-balancer-overview.md)

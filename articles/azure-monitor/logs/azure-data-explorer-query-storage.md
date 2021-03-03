@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5a26e5d045be78772ee5dc940fcfecd3cfde9dc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f24947eba71588d8b97afafea35f9a0bcab33c86
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624367"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711017"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'den aktarılmış verileri sorgulama (Önizleme)
 Azure Izleyici 'den bir Azure depolama hesabına veri aktarma, düşük maliyetli bekletme ve günlükleri farklı bölgelere yeniden tahsis etme olanağı sağlar. Log Analytics çalışma alanlarınızdan aktarılmış verileri sorgulamak için Azure Veri Gezgini kullanın. Yapılandırıldıktan sonra, çalışma alanlarınızdan bir Azure depolama hesabına gönderilen desteklenen tablolar Azure Veri Gezgini için bir veri kaynağı olarak kullanılabilir.
@@ -30,9 +30,9 @@ Azure Izleyici 'den bir Azure depolama hesabına veri aktarma, düşük maliyetl
 ## <a name="send-data-to-azure-storage"></a>Azure Storage 'a veri gönderme
 Azure Izleyici günlükleri, aşağıdaki seçeneklerden herhangi biri kullanılarak bir Azure depolama hesabına aktarılabilir.
 
-- Log Analytics çalışma alanınızdan tüm verileri Azure depolama hesabına veya Olay Hub 'ına aktarmak için Azure Izleyici günlüklerinin Log Analytics çalışma alanı verileri dışarı aktarma özelliğini kullanın. Bkz. [Log Analytics çalışma alanı verilerini dışarı aktarma Azure izleyici (Önizleme)](../platform/logs-data-export.md)
-- Mantıksal uygulama kullanılarak günlük sorgusundan zamanlanan dışarı aktarma. Bu, veri dışa aktarma özelliğine benzerdir, ancak filtrelenmiş veya toplanmış verileri Azure depolama 'ya göndermenizi sağlar. Bu yöntem, [günlük sorgusu sınırlarına](../service-limits.md#log-analytics-workspaces)  tabidir, [Logic App kullanarak Log Analytics çalışma alanındaki arşiv verilerini Azure depolama 'ya](../platform/logs-export-logic-app.md)görün.
-- Bir mantıksal uygulama kullanarak bir kerelik dışarı aktarma. [Logic Apps ve güç otomatikleştirme için bkz. Azure Izleyici günlükleri Bağlayıcısı](../platform/logicapp-flow-connector.md).
+- Log Analytics çalışma alanınızdan tüm verileri Azure depolama hesabına veya Olay Hub 'ına aktarmak için Azure Izleyici günlüklerinin Log Analytics çalışma alanı verileri dışarı aktarma özelliğini kullanın. Bkz. [Log Analytics çalışma alanı verilerini dışarı aktarma Azure izleyici (Önizleme)](./logs-data-export.md)
+- Mantıksal uygulama kullanılarak günlük sorgusundan zamanlanan dışarı aktarma. Bu, veri dışa aktarma özelliğine benzerdir, ancak filtrelenmiş veya toplanmış verileri Azure depolama 'ya göndermenizi sağlar. Bu yöntem, [günlük sorgusu sınırlarına](../service-limits.md#log-analytics-workspaces)  tabidir, [Logic App kullanarak Log Analytics çalışma alanındaki arşiv verilerini Azure depolama 'ya](./logs-export-logic-app.md)görün.
+- Bir mantıksal uygulama kullanarak bir kerelik dışarı aktarma. [Logic Apps ve güç otomatikleştirme için bkz. Azure Izleyici günlükleri Bağlayıcısı](./logicapp-flow-connector.md).
 - PowerShell betiği kullanılarak yerel makineye bir kerelik dışarı aktarma. Bkz. [Invoke-Azoperationalınsightsqueryexport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 > [!TIP]

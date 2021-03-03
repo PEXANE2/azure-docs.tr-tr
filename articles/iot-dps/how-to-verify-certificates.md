@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0326eef86b42fa8b06c336bbf2b1c6f2f9df0bcf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730363"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Cihaz sağlama hizmeti ile X. 509.440 CA sertifikaları için birlikte kullanma
 
@@ -72,14 +72,4 @@ Belgelerde ve SDK 'larda verilen PowerShell ve Bash betikleri [OpenSSL](https://
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Portal 'ın bir kayıt grubu oluşturmak üzere nasıl kullanılacağı hakkında bilgi edinmek için bkz. [Azure Portal cihaz kayıtlarını yönetme](how-to-manage-enrollments.md).
-- Hizmet SDK 'larının bir kayıt grubu oluşturmak için nasıl kullanılacağı hakkında bilgi edinmek için bkz. [cihaz kayıtlarını hizmet SDK 'ları Ile yönetme](how-to-manage-enrollments-sdks.md).
-
-
-
-
-
-
-
-
-
-
+- Hizmet SDK 'larının bir kayıt grubu oluşturmak için nasıl kullanılacağı hakkında bilgi edinmek için bkz. [cihaz kayıtlarını hizmet SDK 'ları Ile yönetme](./quick-enroll-device-x509-java.md).

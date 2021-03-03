@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure IoT Edge IoT Edge cihaz Machine Learning yapılandırma'
+title: 'Öğretici: IoT Edge üzerinde Azure IoT Edge cihaz-makine öğrenimi yapılandırma'
 description: Bu öğreticide, Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ geçidi olarak davranan Azure IoT Edge bir cihaz olarak yapılandıracaksınız.
 author: kgremban
 manager: philmea
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121099"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721438"
 ---
-# <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
+# <a name="tutorial-configure-an-azure-iot-edge-device"></a>Öğretici: Azure IoT Edge cihaz yapılandırma
 
-Bu makalede, Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ geçidi olarak davranan IoT Edge bir cihaz olacak şekilde yapılandıracağız. Saydam bir ağ geçidi yapılandırması, cihazların ağ geçidinin var olduğunu bilmeksizin ağ geçidi üzerinden Azure IoT Hub bağlanmasına olanak sağlar. Aynı zamanda, Azure IoT Hub cihazlarıyla etkileşim kuran bir kullanıcı ara ağ geçidi cihazının farkında değildir. Sonuç olarak, saydam ağ geçidine IoT Edge modüller ekleyerek sistemimize Edge Analizi ekleyeceğiz.
+Bu makalede, Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ geçidi olarak davranan Azure IoT Edge bir cihaz olacak şekilde yapılandıracağız. Saydam bir ağ geçidi yapılandırması, cihazların ağ geçidinin var olduğunu bilmeksizin ağ geçidi üzerinden Azure IoT Hub bağlanmasına olanak sağlar. Aynı zamanda, IoT Hub ' deki cihazlarla etkileşim kuran bir kullanıcı ara ağ geçidi cihazını farkında değildir. Sonuç olarak, saydam ağ geçidine IoT Edge modüller ekleyerek sistemimize Edge Analizi ekleyeceğiz.
 
 Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
 
@@ -30,48 +30,47 @@ Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekle
 > * IoT Edge bir cihaz oluşturun.
 > * IoT Edge cihazınızın benzetimini yapmak için bir Azure sanal makinesi oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
+Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleye](tutorial-machine-learning-edge-01-intro.md) bakın.
 
 ## <a name="create-certificates"></a>Sertifika oluşturma
 
-Bir cihazın bir ağ geçidi olarak çalışması için, aşağı akış cihazlarına güvenli bir şekilde bağlanabilme ihtiyacı vardır. Azure IoT Edge, cihazlar arasında güvenli bağlantı kurmak için ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, bir aşağı akış IoT cihazının saydam bir ağ geçidi görevi gören bir IoT Edge cihazına bağlanmasına izin veriyoruz. Makul güvenliği korumak için aşağı akış cihazı IoT Edge cihazının kimliğini onaylamasını sağlamalıdır. IoT Edge cihazların sertifikaları kullanma hakkında daha fazla bilgi için bkz. [Azure IoT Edge sertifikası kullanım ayrıntıları](iot-edge-certs.md).
+Bir cihazın ağ geçidi olarak çalışması için, aşağı akış cihazlarına güvenli bir şekilde bağlanması gerekir. IoT Edge, cihazlar arasında güvenli bağlantılar ayarlamak için ortak anahtar altyapısı (PKI) kullanabilirsiniz. Bu durumda, bir aşağı akış IoT cihazının saydam bir ağ geçidi görevi gören bir IoT Edge cihazına bağlanmasına izin veriyoruz. Makul güvenliği korumak için aşağı akış cihazı IoT Edge cihazının kimliğini onaylamasını sağlamalıdır. IoT Edge cihazların sertifikaları kullanma hakkında daha fazla bilgi için bkz. [Azure IoT Edge sertifikası kullanım ayrıntıları](iot-edge-certs.md).
 
-Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullanarak otomatik olarak imzalanan sertifikalar oluşturacağız. Windows geliştirme makinesinde sertifika oluşturmak için gereken adım sayısını önemli ölçüde azalttığından, bu adımı tamamlamaya yönelik bir Docker görüntüsü kullanmayı seçtik. Docker görüntüsü ile otomatik olarak neler olduğunu anlamak için [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma](how-to-create-test-certificates.md) konusuna bakın.
+Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullanarak otomatik olarak imzalanan sertifikalar oluşturacağız. Windows geliştirme makinesinde sertifika oluşturmak için gereken adım sayısını azalttığından, bu adımı tamamlamaya yönelik bir Docker görüntüsü kullanmayı seçtik. Docker görüntüsü ile otomatik olarak neler olduğunu anlamak için bkz. [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma](how-to-create-test-certificates.md).
 
 1. Geliştirme sanal makinenizde oturum açın.
+1. Yolu ve adı **C:\edgecercertificate** olan yeni bir klasör oluşturun.
 
-2. Yolu ve adı ile yeni bir klasör oluşturun `c:\edgeCertificates` .
+1. Zaten çalışmıyorsa, Windows Başlat menüsünden **Docker for Windows** başlatın.
 
-3. Zaten çalışmıyorsa, Windows Başlat menüsünden **Docker for Windows** başlatın.
+1. Visual Studio Code’u açın.
 
-4. Visual Studio Code’u açın.
+1. **Dosya**  >  **Aç klasörünü** ve ardından **C: \\ kaynak \\ ıotedgeandmlsample \\ createcertificates** öğesini seçin.
 
-5. **Dosya**  >  **klasörü aç...** öğesini seçin ve **C: \\ kaynak \\ ıotedgeandmlsample \\ createcertificates** öğesini seçin.
+1. **Gezgin** bölmesinde **dockerfile** öğesine sağ tıklayın ve **görüntü oluştur**' u seçin.
 
-6. Gezgin bölmesinde, **dockerfile** ' a sağ tıklayın ve **görüntü oluştur**' u seçin.
+1. İletişim kutusunda, görüntü adı ve etiketi için varsayılan değeri kabul edin: **createcertificates: latest**.
 
-7. İletişim kutusunda, görüntü adı ve etiketi için varsayılan değeri kabul edin: **createcertificates: latest**.
+    ![Visual Studio Code sertifika oluşturmayı gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
-    ![Visual Studio Code sertifika oluşturma](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
-
-8. Oluşturma işleminin tamamlanmasını bekleyin.
+1. Oluşturma işleminin tamamlanmasını bekleyin.
 
     > [!NOTE]
-    > Eksik bir ortak anahtar hakkında bir uyarı görebilirsiniz. Bu uyarıyı yoksaymak güvenlidir. Benzer şekilde, bu görüntüde göz ardı etmeniz güvenli olan görüntinizdeki izinleri gözden geçirmenizi/sıfırlamayı öneren bir güvenlik uyarısı görürsünüz.
+    > Eksik bir ortak anahtarla ilgili bir uyarı görebilirsiniz. Bu uyarıyı yoksaymak güvenlidir. Benzer şekilde, bu görüntüde göz ardı etmeniz güvenli olan görüntinizdeki izinleri denetlemeyi veya sıfırlamayı öneren bir güvenlik uyarısı görürsünüz.
 
-9. Visual Studio Code Terminal penceresinde createcertificates kapsayıcısını çalıştırın.
+1. Visual Studio Code Terminal penceresinde createcertificates kapsayıcısını çalıştırın.
 
     ```cmd
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker, **c: \\** sürücüsüne erişim isteyecek. **Paylaşma** seçeneğini belirleyin.
+1. Docker, **c: \\** sürücüsüne erişim isteyecek. **Paylaşma** seçeneğini belirleyin.
 
-11. İstendiğinde kimlik bilgilerinizi sağlayın.
+1. İstendiğinde kimlik bilgilerinizi sağlayın.
 
-12. Kapsayıcı çalışmayı tamamladıktan sonra, **c: \\ edgecercertificate** içinde aşağıdaki dosyaları denetleyin:
+1. Kapsayıcı çalışmayı tamamladıktan sonra, **c: \\ edgecercertificate** içinde aşağıdaki dosyaları denetleyin:
 
     * c: \\ edgecercertificate \\ sertifikaları \\ Azure-iot-test-only. root. ca. cert. pem
     * c: \\ edgecercertificate \\ sertifikaları \\ New-Edge-Device-Full-Chain. cert. pem
@@ -81,51 +80,55 @@ Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullan
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Sertifikaları Azure Key Vault yükleme
 
-Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX 'yi, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizileri olarak değerlendireceğiz. [Jupyıter not defterlerini](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning çalışma alanıyla ilişkili Key Vault kullanacağız.
+Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX dosyasını, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizi olarak kabul edeceğiz. [Jupyıter not defterlerini](tutorial-machine-learning-edge-04-train-model.md#run-the-jupyter-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning çalışma alanıyla ilişkili Key Vault örneğini kullanacağız.
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınıza gidin.
 
-2. Azure Machine Learning çalışma alanının Genel Bakış sayfasında, **Key Vault** adını bulun.
+1. Machine Learning çalışma alanının Genel Bakış sayfasında, **Key Vault** adını bulun.
 
-    ![Anahtar Kasası adını Kopyala](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
+    ![Anahtar Kasası adının kopyalanmasını gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
-3. Geliştirme makinenizde Key Vault için sertifikaları karşıya yükleyin. **\<subscriptionId\>** Ve yerine **\<keyvaultname\>** kaynak bilgilerinizi koyun.
+1. Geliştirme makinenizde Key Vault için sertifikaları karşıya yükleyin. **\<subscriptionId\>** Ve yerine **\<keyvaultname\>** kaynak bilgilerinizi koyun.
 
     ```powershell
     c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
     ```
 
-4. İstenirse Azure 'da oturum açın.
+1. İstenirse Azure 'da oturum açın.
 
-5. Komut dosyası, yeni Key Vault girdilerini listeleyen çıkışlarla birkaç dakika çalışır.
+1. Komut dosyası, yeni Key Vault girdilerini listeleyen çıktı ile birkaç dakika çalışır.
 
-    ![Key Vault betiği çıkışı](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
+    ![Key Vault betiği çıktısını gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
-## <a name="create-iot-edge-device"></a>IoT Edge cihazı oluşturma
+## <a name="create-an-iot-edge-device"></a>IoT Edge cihazı oluşturma
 
-Bir Azure IoT Edge cihazını IoT Hub 'ına bağlamak için önce hub 'da cihaz için bir kimlik oluşturacağız. Bağlantı dizesini buluttaki cihaz kimliğinden alıp IoT Edge cihazımızda çalışma zamanını yapılandırmak için kullanacaksınız. Yapılandırılmış bir cihaz hub 'a bağlandıktan sonra modülleri dağıtabilecek ve ileti gönderebiliyoruz. Ayrıca, IoT Hub 'da karşılık gelen cihaz kimliğini değiştirerek fiziksel IoT Edge cihazının yapılandırmasını da değiştirebiliriz.
+Bir Azure IoT Edge cihazını IoT Hub 'ına bağlamak için önce hub 'da cihaz için bir kimlik oluşturacağız. Bağlantı dizesini buluttaki cihaz kimliğinden alıp IoT Edge cihazımızda çalışma zamanını yapılandırmak için kullanacaksınız. Yapılandırılmış bir cihaz hub 'a bağlandıktan sonra, modüller dağıtabilir ve ileti gönderebiliriz. Ayrıca, IoT Hub içindeki karşılık gelen cihaz kimliğini değiştirerek fiziksel IoT Edge cihazının yapılandırmasını da değiştirebiliriz.
 
 Bu öğreticide, Visual Studio Code kullanarak yeni cihaz kimliğini oluşturacağız. Ayrıca, Azure portal veya Azure CLı kullanarak bu adımları tamamlayabilirsiniz.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 
-2. Visual Studio Code Gezgini görünümünden **Azure IoT Hub** çerçevesini genişletin.
+1. Visual Studio Code **Gezgini** görünümünden **Azure IoT Hub** çerçevesini genişletin.
 
-3. Üç nokta simgesine tıklayın ve **IoT Edge cihaz oluştur**' u seçin.
+1. Üç noktayı seçin ve **IoT Edge cihaz oluştur**' u seçin.
 
-4. Cihaza bir ad verin. Kolaylık olması için **Aaturbofanedgedevice** adlı adı, listelenen cihazların en üst kısmına göre sıralanır.
+1. Cihaza bir ad verin. Kolaylık olması için **Aaturbofanedgedevice** adında listelenen cihazların en üstüne bir sıralama olacak şekilde kullanıyoruz.
 
-5. Yeni cihaz, cihaz listesinde görünür.
+1. Yeni cihaz, cihaz listesinde görüntülenir.
 
-    ![VS Code Explorer 'da yeni aaTurbofanEdgeDevice 'ı görüntüle](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
+    ![Visual Studio Code Explorer 'da cihazın görünümünü gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
 
-## <a name="deploy-azure-virtual-machine"></a>Azure sanal makinesini dağıtma
+## <a name="deploy-an-azure-virtual-machine"></a>Azure sanal makinesini dağıtma
 
-Bu öğretici için IoT Edge cihazımızı oluşturmak üzere Azure Marketi 'ndeki [Ubuntu görüntüsündeki Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) kullanırız. Ubuntu görüntüsündeki Azure IoT Edge, en son Azure IoT Edge çalışma zamanını ve bu grubun bağımlılıklarını başlangıçta kurar. VM 'yi bir PowerShell betiği, `Create-EdgeVM.ps1` bir kaynak yöneticisi şablonu ve bir kabuk betiği kullanarak dağıttık `IoTEdgeVMTemplate.json` `install packages.sh` .
+Bu öğretici için IoT Edge cihazımızı oluşturmak üzere Azure Marketi 'ndeki [Ubuntu görüntüsündeki Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) kullanırız. Ubuntu görüntüsündeki Azure IoT Edge, en son IoT Edge çalışma zamanını ve bu grubun bağımlılıklarını başlangıçta kurar. Kullanarak VM 'yi dağıyoruz:
+
+- Bir PowerShell betiği, `Create-EdgeVM.ps1` .
+- Azure Resource Manager şablonu `IoTEdgeVMTemplate.json` .
+- Bir kabuk betiği, `install packages.sh` .
 
 ### <a name="enable-programmatic-deployment"></a>Programlı dağıtımı etkinleştir
 
-Bir komut dosyası dağıtımında marketten görüntü kullanmak için görüntü için programlı dağıtımı etkinleştirmemiz gerekir.
+Azure Marketi 'ndeki görüntüyü betikleştirilmiş bir dağıtımda kullanmak için, görüntü için programlı dağıtımı etkinleştirmemiz gerekir.
 
 1. Azure portalında oturum açın.
 
@@ -137,13 +140,13 @@ Bir komut dosyası dağıtımında marketten görüntü kullanmak için görünt
 
 1. Programlı olarak dağıtmak üzere **Başlarken** köprüsünü seçin.
 
-1. **Etkinleştir** düğmesini seçin ve **kaydedin**.
+1. **Etkinleştir** düğmesini seçin ve ardından **Kaydet**' i seçin.
 
-    ![VM için programlı dağıtımı etkinleştir](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
+    ![Bir sanal makine için programlı dağıtımı etkinleştirmeyi gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
 1. Bir başarı bildirimi görürsünüz.
 
-### <a name="create-virtual-machine"></a>Sanal makine oluşturma
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 Sonra, IoT Edge cihazınız için sanal makineyi oluşturmak üzere betiği çalıştırın.
 
@@ -153,56 +156,56 @@ Sonra, IoT Edge cihazınız için sanal makineyi oluşturmak üzere betiği çal
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
     ```
 
-2. Sanal makineyi oluşturmak için betiği çalıştırın.
+1. Sanal makineyi oluşturmak için betiği çalıştırın.
 
     ```powershell
     .\Create-EdgeVm.ps1
     ```
 
-3. İstendiğinde, her bir parametre için değerler sağlayın. Abonelik, kaynak grubu ve konum için, bu öğreticide tüm kaynaklarla aynı şekilde kullanmanızı öneririz.
+1. İstendiğinde, her bir parametre için değerler sağlayın. Abonelik, kaynak grubu ve konum için, bu öğreticide tüm kaynaklar için sahip olduğunuz değerleri kullanmanızı öneririz.
 
-    * **Azure ABONELIK kimliği**: Azure Portal bulundu
-    * **Kaynak grubu adı**: Bu öğreticide kaynakları gruplandırmak için hatırlayabileceğiniz ad
+    * **Azure ABONELIK kimliği**: Azure Portal bulundu.
+    * **Kaynak grubu adı**: Bu öğreticide kaynakları gruplandırmak için hatırlayabileceğiniz ad.
     * **Konum**: sanal makinenin oluşturulacağı Azure konumu. Örneğin, westus2 veya northeurope. Daha fazla bilgi için bkz. tüm [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **AdminUserName**: sanal makinede oturum açmak için kullanacağınız yönetici hesabının adı
-    * **AdminPassword**: sanal makinede AdminUserName için ayarlanacak parola
+    * **AdminUserName**: sanal makinede oturum açmak için kullanacağınız yönetici hesabının adı.
+    * **AdminPassword**: sanal makinede Yönetici Kullanıcı adı için ayarlanacak parola.
 
-4. Betiğin VM 'yi ayarlayabilmesi için, kullanmakta olduğunuz Azure aboneliğiyle ilişkili kimlik bilgileriyle Azure 'da oturum açmanız gerekir.
+1. VM 'yi ayarlamak için betik için, kullanmakta olduğunuz Azure aboneliğiyle ilişkili kimlik bilgileriyle Azure 'da oturum açın.
 
-5. Betik, sanal makinenizin oluşturulmasına ilişkin bilgileri onaylar. Devam etmek için **y** veya **ENTER** ' ı seçin.
+1. Betik, sanal makinenizin oluşturulmasına ilişkin bilgileri onaylar. Devam etmek için **y** veya **ENTER** ' ı seçin.
 
-6. Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
+1. Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
 
-    * Zaten mevcut değilse kaynak grubunu oluşturun
-    * Sanal makineyi oluşturma
-    * 22 (SSH), 5671 (AMQP), 5672 (AMPQ) ve 443 (TLS) bağlantı noktaları için sanal makine için NSG özel durumları ekleyin
-    * [Azure CLI](/cli/azure/install-azure-cli-apt) 'yı yükler
+    * Zaten mevcut değilse kaynak grubunu oluşturur
+    * Sanal makineyi oluşturur
+    * 22 (SSH), 5671 (AMQP), 5672 (AMPQ) ve 443 (TLS) bağlantı noktaları için VM için NSG özel durumları ekler
+    * [Azure CLI](/cli/azure/install-azure-cli-apt) 'yı yükleme
 
-7. Betik, sanal makineye bağlanmak için SSH bağlantı dizesini çıktı. Sonraki adım için bağlantı dizesini kopyalayın.
+1. Betik, sanal makineye bağlanmak için SSH bağlantı dizesini çıktı. Sonraki adım için bağlantı dizesini kopyalayın.
 
-    ![VM için SSH bağlantı dizesini Kopyala](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+    ![Bir sanal makine için SSH bağlantı dizesinin kopyalanmasını gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
 ## <a name="connect-to-your-iot-edge-device"></a>IoT Edge cihazınıza bağlanma
 
 Sonraki birkaç bölüm oluşturduğumuz Azure sanal makinesini yapılandırır. İlk adım, sanal makineye bağlandır.
 
-1. Komut istemi açın ve betik çıktısından kopyaladığınız SSH bağlantı dizesini yapıştırın. Önceki bölümde yer alan PowerShell betiğine verdiğiniz değerlere göre Kullanıcı adı, sonek ve bölge için kendi bilgilerinizi girin.
+1. Bir komut istemi açın ve betik çıktısından kopyaladığınız SSH bağlantı dizesini yapıştırın. Önceki bölümde yer alan PowerShell betiğine verdiğiniz değerlere göre Kullanıcı adı, sonek ve bölge için kendi bilgilerinizi girin.
 
     ```cmd
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Konağın orijinalliğini doğrulamanız istendiğinde, **Evet** yazın ve **ENTER**' u seçin.
+1. Konağın orijinalliğini doğrulamanız istendiğinde, **Evet** girin ve **ENTER**' u seçin.
 
-3. İstendiğinde parolanızı girin.
+1. İstendiğinde parolanızı girin.
 
-4. Ubuntu bir hoş geldiniz iletisi görüntüler ve ardından bir istem görmeniz gerekir `<username>@<machinename>:~$` .
+1. Ubuntu bir hoş geldiniz iletisi görüntüler ve ardından gibi bir istem görmeniz gerekir `<username>@<machinename>:~$` .
 
 ## <a name="download-key-vault-certificates"></a>Key Vault sertifikaları indirin
 
 Bu makalenin önceki kısımlarında, IoT Edge cihazımızda ve yaprak cihazımızda kullanılabilir hale getirmek için Key Vault sertifikaları karşıya yükledik. Yaprak cihaz, IoT Hub iletişim kurmak için bir ağ geçidi olarak IoT Edge cihazını kullanan bir aşağı akış aygıtıdır.
 
-Öğreticinin ilerleyen kısımlarında yer alacak yaprak cihazımız ile ilgileneceğiz. Bu bölümde, sertifikaları IoT Edge cihaza indirin.
+Öğreticinin ilerleyen kısımlarında yer aldığı yaprak cihazla ilgileneceğiz. Bu bölümde, sertifikaları IoT Edge cihaza indirin.
 
 1. Linux sanal makinesindeki SSH oturumunda Azure CLı ile Azure 'da oturum açın.
 
@@ -210,7 +213,7 @@ Bu makalenin önceki kısımlarında, IoT Edge cihazımızda ve yaprak cihazım�
     az login
     ```
 
-1. İçin bir tarayıcı açmanız <https://microsoft.com/devicelogin> ve benzersiz bir kod sağlamanız istenecektir. Bu adımları yerel makinenizde gerçekleştirebilirsiniz. Kimlik doğrulamayı bitirdiğinizde tarayıcı penceresini kapatın.
+1. Bir [Microsoft cihaz oturum açma](https://microsoft.com/devicelogin) sayfasında tarayıcı açmanız ve benzersiz bir kod sağlamanız istenecektir. Bu adımları yerel makinenizde gerçekleştirebilirsiniz. Kimlik doğrulamayı bitirdiğinizde tarayıcı penceresini kapatın.
 
 1. Kimlik doğrulaması başarılı olduğunda, Linux VM oturum açıp Azure aboneliklerinizi listelecektir.
 
@@ -226,7 +229,7 @@ Bu makalenin önceki kısımlarında, IoT Edge cihazımızda ve yaprak cihazım�
     sudo mkdir /edgeMlCertificates
     ```
 
-1. Anahtar kasasında depoladığınız sertifikaları indirin: New-Edge-Device-Full-Chain. cert. pek, New-Edge-Device. Key. pek ve Azure-iot-test-only. root. ca. cert. ped
+1. Anahtar kasasında depoladığınız sertifikaları indirin: New-Edge-Device-Full-Chain. cert. pek, New-Edge-Device. Key. pek ve Azure-iot-test-only. root. ca. cert. ped.
 
     ```azurecli
     key_vault_name="<key vault name>"
@@ -237,25 +240,25 @@ Bu makalenin önceki kısımlarında, IoT Edge cihazımızda ve yaprak cihazım�
 
 ## <a name="update-the-iot-edge-device-configuration"></a>IoT Edge cihaz yapılandırmasını güncelleştirme
 
-IoT Edge çalışma zamanı, `/etc/iotedge/config.yaml` yapılandırmasını kalıcı hale getirmek için dosyasını kullanır. Bu dosyada üç bilgi parçasını güncelleştirmemiz gerekiyor:
+IoT Edge çalışma zamanı, yapılandırmasını sürdürmek için/etc/iotedge/config.exe dosyasını kullanır. Bu dosyada üç bilgi parçasını güncelleştirmemiz gerekiyor:
 
 * **Cihaz bağlantı dizesi**: Bu cihazın kimliğinden gelen bağlantı dizesi IoT Hub
-* **Sertifikalar:** aşağı akış cihazlarıyla yapılan bağlantılarda kullanılacak sertifikalar
-* **Ana bilgisayar adı:** VM IoT Edge cihazın tam etki alanı adı (FQDN).
+* **Sertifikalar**: aşağı akış cihazlarıyla yapılan bağlantılarda kullanılacak sertifikalar
+* **Ana bilgisayar** adı: VM IoT Edge cihazın tam etki alanı adı (FQDN)
 
-IoT Edge sanal makinesini oluşturmak için kullandığımız *Ubuntu görüntüsündeki Azure IoT Edge* , bağlantı dizesiyle config. YAML 'yi güncelleştiren bir kabuk betiği ile birlikte gelir.
+IoT Edge sanal makinesini oluşturmak için kullandığımız Ubuntu görüntüsündeki Azure IoT Edge, config. YAML dosyasını bağlantı dizesiyle güncelleştiren bir kabuk betiği ile birlikte gelir.
 
-1. Visual Studio Code IoT Edge cihazına sağ tıklayıp **Cihaz bağlantı dizesini Kopyala**' yı seçin.
+1. Visual Studio Code, IoT Edge cihazına sağ tıklayın ve ardından **Cihaz bağlantı dizesini Kopyala**' yı seçin.
 
-    ![Bağlantı dizesini Visual Studio Code Kopyala](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
+    ![Visual Studio Code bağlantı dizesinin kopyalanmasını gösteren ekran görüntüsü.](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 
-2. SSH oturumunuzda, config. YAML dosyasını cihaz bağlantı dizeniz ile güncelleştirmek için komutunu çalıştırın.
+1. SSH oturumunuzda, config. YAML dosyasını cihaz bağlantı dizeniz ile güncelleştirmek için komutunu çalıştırın.
 
     ```bash
     sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
     ```
 
-Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve ana bilgisayar adını güncelleştireceğiz.
+Daha sonra, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve ana bilgisayar adını güncelleştireceğiz.
 
 1. Config. YAML dosyasını açın.
 
@@ -263,7 +266,7 @@ Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve an
     sudo nano /etc/iotedge/config.yaml
     ```
 
-2. Baştaki `#` ' ı kaldırarak ve yolu aşağıdaki örnekteki gibi görünecek şekilde, config. YAML 'nin sertifikalar bölümünü güncelleştirin:
+1. Baştaki **#** ' ı kaldırarak ve yolu aşağıdaki örnekteki gibi görünecek şekilde ayarlayarak config. YAML dosyasının sertifikalar bölümünü güncelleştirin:
 
     ```yaml
     certificates:
@@ -274,42 +277,42 @@ Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve an
 
     **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe sertifikaların her birinin iki boşlukla girintilendiğinden emin olun.
 
-    Nano 'da sağ tıklama, panonuzun içeriğini geçerli imleç konumuna yapıştırır. Dizeyi değiştirmek için, değiştirmek istediğiniz dizeye gitmek üzere klavye oklarını kullanın, dizeyi silin ve sonra arabellekten yapıştırmak için sağ tıklayın.
+    Nano 'da sağ tıklama, panonuzun içeriğini geçerli imleç konumuna yapıştırır. Dizeyi değiştirmek için, değiştirmek istediğiniz dizeye gitmek üzere klavye oklarınızı kullanın, dizeyi silin ve sonra arabellekten yapıştırmak için sağ tıklayın.
 
-3. Azure portal sanal makinenize gidin. **Genel bakış** bölümünden DNS adını (makinenin FQDN 'si) kopyalayın.
+1. Azure portal sanal makinenize gidin. **Genel bakış** bölümünden DNS adını (makinenin FQDN 'si) kopyalayın.
 
-4. FQDN 'yi config. yıml öğesinin hostname bölümüne yapıştırın. Adın tümüyle küçük olduğundan emin olun.
+1. FQDN 'yi config. yıml dosyasının hostname bölümüne yapıştırın. Adın tümüyle küçük olduğundan emin olun.
 
     ```yaml
     hostname: '<machinename>.<region>.cloudapp.azure.com'
     ```
 
-5. Dosyayı kaydedin ve kapatın ( `Ctrl + X` , `Y` , `Enter` ).
+1. **CTRL + X**, **Y** ve **ENTER**' ı seçerek dosyayı kaydedin ve kapatın.
 
-6. İotedge cini yeniden başlatın.
+1. IoT Edge arka plan programını yeniden başlatın.
 
     ```bash
     sudo systemctl restart iotedge
     ```
 
-7. IoT Edge Daemon 'ın durumunu denetleyin (komuttan sonra, çıkmak için ": q" yazın).
+1. IoT Edge Daemon 'ın durumunu denetleyin. Komuttan sonra çıkmak için **: q** yazın.
 
     ```bash
     systemctl status iotedge
     ```
 
-8. \[ \] Ayrıntılı hata bilgileri Için durum Inceleme günlüklerini inceleyin ("hata" önekini içeren renkli metin) hatasını görürseniz.
+1. Durum durumunda hata ("hata" önekli renkli metin \[ \] ) görürseniz, ayrıntılı hata bilgileri için Daemon günlüklerini inceleyin.
 
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Son öğreticiyi tamamlamadan tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VM 'yi Azure IoT Edge saydam ağ geçidi olarak yapılandırmayı tamamladık. Azure Key Vault için karşıya yüklemediğimiz test sertifikalarını oluşturarak başladık. Daha sonra, Azure Marketi 'nden "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" görüntüsüyle VM 'yi dağıtmak için bir betik ve Kaynak Yöneticisi şablonu kullandık. VM, SSH aracılığıyla bağlandığımız sanal makine ile Azure 'da oturum açdık ve Key Vault 'ten indirilen sertifikalar ile oturum açmamız gerekir. Config. YAML dosyasını güncelleştirerek IoT Edge çalışma zamanının yapılandırmasında birkaç güncelleştirme yaptık.
+Azure VM 'yi IoT Edge saydam bir ağ geçidi olarak yapılandırmayı tamamladık. Key Vault için karşıya yüklemediğimiz test sertifikalarını oluşturarak başladık. Ardından, Azure Marketi 'nden Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime görüntüsüyle VM 'yi dağıtmak için bir betik ve Kaynak Yöneticisi şablonu kullandık. VM çalışır ve çalışır duruma göre SSH aracılığıyla bağlandık. Daha sonra Azure 'da oturum açıyoruz ve Key Vault sertifikalar indirilir. Config. YAML dosyasını güncelleştirerek IoT Edge çalışma zamanının yapılandırmasında birkaç güncelleştirme yaptık.
 
 IoT Edge modülleri derlemek için sonraki makaleye geçin.
 

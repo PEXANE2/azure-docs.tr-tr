@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588556"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705509"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -56,7 +56,7 @@ Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar
 
 - **[IPv6](../virtual-network/ipv6-overview.md)** **[Yük Dengelemesi](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** için desteği etkinleştirin.
 
-- Standart Load Balancer, [Azure izleyici](../azure-monitor/overview.md)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar. [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) içgörüler, bu ölçümler için kullanışlı görselleştirmelerle önceden yapılandırılmış bir pano sunar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
+- Standart Load Balancer, [Azure izleyici](../azure-monitor/overview.md)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar. [Azure Load Balancer](./load-balancer-insights.md) içgörüler, bu ölçümler için kullanışlı görselleştirmelerle önceden yapılandırılmış bir pano sunar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
 
 - **[Birden çok bağlantı noktası, birden çok IP adresi veya her ikisinde](./load-balancer-multivip-overview.md)** Yük Dengeleme Hizmetleri.
 

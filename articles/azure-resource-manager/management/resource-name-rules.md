@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220862"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700482"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -110,7 +110,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -397,6 +397,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | actionGroups | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/&%\?` <br><br>Boşluk veya nokta ile bitemez.  |
 > | bileşenleri | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`%&\?/` <br><br>Boşluk veya nokta ile bitemez.  |
+> | scheduledQueryRules | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`*<>%{}&:\\?/#` <br><br>Boşluk veya nokta ile bitemez.  |
+> | metricAlerts | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`*#&+:<>?@%{}\/` <br><br>Boşluk veya nokta ile bitemez.  |
+> | activityLogAlerts | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`<>*%{}&:\\?+/#` <br><br>Boşluk veya nokta ile bitemez.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 

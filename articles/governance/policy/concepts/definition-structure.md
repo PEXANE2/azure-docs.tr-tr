@@ -1,19 +1,18 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 10/22/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699428"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
-Azure Ilkesi, kaynaklar için kurallar oluşturur. İlke tanımları, kaynak uyumluluk [koşullarını](#conditions) ve bir koşul karşılanırsa gerçekleştirilecek etkiyi tanımlar. Bir koşul, kaynak özellik [alanını](#fields) veya [değeri](#value) gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına [diğer adlar](#aliases)kullanılarak erişilir. Kaynak özelliği alanı bir dizi olduğunda, tüm dizi üyelerinden değerleri seçmek ve her birine bir koşul uygulamak için özel bir [dizi diğer adı](#understanding-the--alias) kullanılabilir.
-[Koşullar](#conditions)hakkında daha fazla bilgi edinin.
+Azure Ilkesi, kaynaklar için kurallar oluşturur. İlke tanımları, kaynak uyumluluk [koşullarını](#conditions) ve bir koşul karşılanırsa gerçekleştirilecek etkiyi tanımlar. Bir koşul, kaynak özellik [alanını](#fields) veya [değeri](#value) gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına [diğer adlar](#aliases)kullanılarak erişilir. Kaynak özelliği alanı bir dizi olduğunda, tüm dizi üyelerinden değerleri seçmek ve her birine bir koşul uygulamak için özel bir [dizi diğer adı](#understanding-the--alias) kullanılabilir. [Koşullar](#conditions)hakkında daha fazla bilgi edinin.
 
 Kuralları tanımlayarak, maliyetlerinizi denetleyebilir ve kaynaklarınızı daha kolay yönetebilirsiniz. Örneğin, yalnızca belirli türlerdeki sanal makinelere izin verileceğini belirtebilirsiniz. Ya da kaynakların belirli bir etiketi olmasını isteyebilirsiniz. İlke atamaları alt kaynaklar tarafından devralınır. Bir kaynak grubuna bir ilke ataması uygulanmışsa, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
 
@@ -118,7 +117,7 @@ Aşağıdaki kaynak sağlayıcısı modları Şu anda **Önizleme** olarak deste
 
 ## <a name="metadata"></a>Meta veri
 
-İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
+İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır. Her `metadata` özelliğin 1024 karakterlik bir sınırı vardır.
 
 ### <a name="common-metadata-properties"></a>Ortak meta veri özellikleri
 
@@ -148,7 +147,7 @@ Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
   - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
   - `displayName`: Parametre için portalda gösterilen kolay ad.
   - `strongType`: (İsteğe bağlı) Portal üzerinden ilke tanımı atanırken kullanılır. Bağlama duyarlı bir liste sağlar. Daha fazla bilgi için bkz. [Strongtype](#strongtype).
-  - `assignPermissions`: (İsteğe bağlı) ilke ataması sırasında rol atamaları oluşturmak Azure portal için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerin her biri için rol tanımı). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
+  - `assignPermissions`: (İsteğe bağlı) ilke ataması sırasında rol atamaları oluşturmak Azure portal için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerde rol tanımına göre). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
 - `defaultValue`: (İsteğe bağlı) değer verilmezse bir atamadaki parametresinin değerini ayarlar.
   Atanan mevcut bir ilke tanımı güncelleştirilirken gereklidir.
 - `allowedValues`: (İsteğe bağlı), atama sırasında parametrenin kabul ettiği bir değer dizisi sağlar.
@@ -286,15 +285,13 @@ Bir koşul, bir değerin belirli ölçütlere uyup uymadığını değerlendirir
 
 **Daha az**, **lessotalals**, **büyüktür** ve **greaterOrEquals** için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak yapılır `InvariantCultureIgnoreCase` .
 
-**LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter sağlarsınız `*` .
-Değer birden fazla joker karakter içermelidir `*` .
+**LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter sağlarsınız `*` . Değer birden fazla joker karakter içermelidir `*` .
 
 **Match** ve **notmatch** koşullarını kullanırken, bir `#` harf için, bir `?` harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Match** ve **notmatch** büyük/küçük harfe duyarlı olsa da, bir _StringValue_ 'yi değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur.
 
 ### <a name="fields"></a>Alanlar
 
-Kaynak isteği yükünde özelliklerin değerlerinin belirli ölçütlere uyup uymadığını değerlendiren koşullar, bir **alan** ifadesi kullanılarak oluşturulabilir.
-Aşağıdaki alanlar desteklenir:
+Kaynak isteği yükünde özelliklerin değerlerinin belirli ölçütlere uyup uymadığını değerlendiren koşullar, bir **alan** ifadesi kullanılarak oluşturulabilir. Aşağıdaki alanlar desteklenir:
 
 - `name`
 - `fullName`
@@ -324,8 +321,7 @@ Aşağıdaki alanlar desteklenir:
 > `tags.<tagName>`, `tags[tagName]` ve, `tags[tag.with.dots]` bir Etiketler alanı bildirmek için kabul edilebilir yollar. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
 
 > [!NOTE]
-> **\[ \* \] Diğer ada** başvuran **alan** ifadelerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir.
-> Daha fazla bilgi için bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+> **\[ \* \] Diğer ada** başvuran **alan** ifadelerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir. Daha fazla bilgi için bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Parametrelerle etiketleri kullanma
 
@@ -472,6 +468,7 @@ Aşağıdaki özellikler **alan sayısıyla** kullanılır:
 Azure Ilkesinde dizi özellikleriyle çalışma hakkında daha fazla bilgi için, **alan sayısı** ifadesinin nasıl değerlendirildiğinin ayrıntılı açıklaması dahil olmak üzere bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="value-count"></a>Değer sayısı
+
 Bir dizinin kaç üyesinin bir koşulu karşılayıp karşılamadığını say. Dizi bir sabit dize veya [dizi parametresine bir başvuru](#using-a-parameter-value)olabilir. **Değer sayısı** ifadelerinin yapısı:
 
 ```json
@@ -648,7 +645,7 @@ Aşağıdaki sınırlar zorlanır:
 }
 ```
 
-Örnek 2: kaynak adının verilen ad desenlerinden herhangi biriyle eşleşip eşleşmediğini denetleyin. `current()`İşlev bir dizin adı belirtmiyor. Sonuç, önceki örnekte de aynıdır.
+Örnek 2: kaynak adının verilen ad desenlerinden herhangi biriyle eşleşip eşleşmediğini denetleyin. `current()`İşlev bir dizin adı belirtmiyor. Sonuç, önceki örnekle aynıdır.
 
 ```json
 {
@@ -769,7 +766,7 @@ Azure Ilkesi aşağıdaki efekt türlerini destekler:
 - **Reddet**: etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
 - **Deployifnotexists**: zaten yoksa ilgili bir kaynak dağıtır
 - **Devre dışı**: kaynakları ilke kuralına uyum için değerlendirmez
-- **Değiştir**: bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
+- **Değiştir**: bir kaynaktan veya abonelikte tanımlı Etiketler ekler, güncelleştirir veya kaldırır
 - **Enforceopaconstraint** (kullanım dışı): Azure 'da kendi kendine yönetilen Kubernetes kümeleri için, açık ilke aracısı sayede denetleyicisini Gatekeeper v3 ile yapılandırır
 - **Enforceregopolicy** (kullanım dışı): Azure Kubernetes hizmetinde Gatekeeper v2 ile açık ilke aracısı sayede denetleyiciyi yapılandırır
 
@@ -822,18 +819,18 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
   ```
 
 - `ipRangeContains(range, targetRange)`
-    - **Aralık**: [gerekli] dize-bir IP adresi aralığı belirten dize.
-    - **targetRange**: [gerekli] dize-bir IP adresi aralığı belirten dize.
+  - **Aralık**: [gerekli] dize-bir IP adresi aralığı belirten dize.
+  - **targetRange**: [gerekli] dize-bir IP adresi aralığı belirten dize.
 
-    Verilen IP adresi aralığının hedef IP adresi aralığını içerip içermediğini döndürür. Boş aralıklar veya IP aileleri arasında karıştırma yapılmasına izin verilmez ve değerlendirme hatasına neden olur.
+  Verilen IP adresi aralığının hedef IP adresi aralığını içerip içermediğini döndürür. Boş aralıklar veya IP aileleri arasında karıştırma yapılmasına izin verilmez ve değerlendirme hatasına neden olur.
 
-    Desteklenen biçimler:
-    - Tek IP adresi (örnekler: `10.0.0.0` , `2001:0DB8::3:FFFE` )
-    - CıDR aralığı (örnekler: `10.0.0.0/24` , `2001:0DB8::/110` )
-    - Başlangıç ve bitiş IP adresleri tarafından tanımlanan Aralık (örnekler: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+  Desteklenen biçimler:
+  - Tek IP adresi (örnekler: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+  - CıDR aralığı (örnekler: `10.0.0.0/24` , `2001:0DB8::/110` )
+  - Başlangıç ve bitiş IP adresleri tarafından tanımlanan Aralık (örnekler: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
 - `current(indexName)`
-    - Yalnızca [Count ifadelerinde](#count)kullanılabilecek özel işlev.
+  - Yalnızca [Count ifadelerinde](#count)kullanılabilecek özel işlev.
 
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
@@ -884,7 +881,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
   > ```
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -904,21 +901,21 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örneğin:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örneğin:
+**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örnek:
 
 | Diğer ad | Seçili değerler |
 |:---|:---|
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `ipRules`Dizinin öğeleri. |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `action`Dizinin her öğesinden özelliğin değerleri `ipRules` . |
 
-Bir [alan](#fields) koşulunda kullanıldığında, dizi diğer adları her bir dizi öğesini bir hedef değerle karşılaştırmaya olanak sağlar. [Count](#count) ifadesiyle birlikte kullanıldığında, şunları yapmak mümkündür:
+Bir [alan](#fields) koşulunda kullanıldığında, dizi diğer adları her bir dizi öğesini bir hedef değerle karşılaştırmak mümkün kılar. [Count](#count) ifadesiyle kullanıldığında şunları yapmak mümkündür:
 
 - Bir dizinin boyutunu denetleme
 - Dizi öğelerinden birinin karmaşık bir koşulu karşılayıp karşılamadığını denetle

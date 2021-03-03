@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379123"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738744"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -195,7 +195,7 @@ NFSv 4.1, `.snapshot` dizini ( `ls -la` ) göstermiyor. Ancak, anlık görüntü
 
 1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
 
-    Örneğin:
+    Örnek:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -210,7 +210,7 @@ NFSv 4.1, `.snapshot` dizini ( `ls -la` ) göstermiyor. Ancak, anlık görüntü
 
 2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
 
-    Örneğin: 
+    Örnek: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -257,6 +257,9 @@ Birimin anlık görüntüler menüsünde birimi çevir seçeneğini bulabilirsin
 ## <a name="delete-snapshots"></a>Anlık görüntüleri Sil  
 
 Artık saklamak zorunda kalmayacak anlık görüntüleri silebilirsiniz. 
+
+> [!IMPORTANT]
+> Anlık görüntü silme işlemi geri alınamaz. Silinen bir anlık görüntü kurtarılamaz. 
 
 1. Bir birimin **anlık görüntüler** menüsüne gidin. Silmek istediğiniz anlık görüntüye sağ tıklayın. **Sil**’i seçin.
 

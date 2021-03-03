@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10aa5d96722b414d7384ceb81f393575d57e2a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858408"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688782"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB 10 GB sınırından kurtarma
 Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede kurtarma adımları sağlanmaktadır.
@@ -72,9 +72,9 @@ Azure AD Connect için oluşturulan veritabanının adı **ADSync**. Bir küçü
 
 3. Klasöre gidin `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` .
 
-4. **sqlcmd** `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` Bir sysadmin KIMLIK bilgisini veya dbo veritabanını kullanarak sqlcmd yardımcı programını çalıştırın.
+4.  `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` Bir sysadmin KIMLIK bilgisini veya dbo veritabanını kullanarak sqlcmd yardımcı programını çalıştırın.
 
-5. Veritabanını küçültmek için, sqlcmd isteminde (1>), `DBCC Shrinkdatabase(ADSync,1);` ardından bir `GO` sonraki satırda öğesini yazın.
+5. Veritabanını küçültmek için, sqlcmd isteminde ( `1>` ), `DBCC Shrinkdatabase(ADSync,1);` ardından bir `GO` sonraki satıra yazın.
 
 6. İşlem başarılı olursa, eşitleme hizmetini yeniden başlatmayı deneyin. Eşitleme hizmetini başlatabiliyorsanız, [çalışma geçmişi verilerini sil](#delete-run-history-data) adımına gidin. Aksi takdirde, desteğe başvurun.
 

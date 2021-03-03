@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711697"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP isteği ve yanıt üst bilgilerini Azure Application Gateway yeniden yazma-Azure PowerShell
 
@@ -31,23 +31,23 @@ HTTP üstbilgisini yeniden yazmayı yapılandırmak için, bu adımları gerçek
 
 1. HTTP üstbilgisi yeniden yazma için gereken nesneleri oluşturun:
 
-   - **Requestheaderconfiguration** : yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
+   - **Requestheaderconfiguration**: yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
 
-   - **Responseheaderconfiguration** : yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
+   - **Responseheaderconfiguration**: yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
 
-   - **Actionset** : daha önce belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir.
+   - **Actionset**: daha önce belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir.
 
-   - **Koşul** : isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
+   - **Koşul**: isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
 
      Birden fazla koşulu bir eylemle ilişkilendirirseniz, eylem yalnızca tüm koşullar karşılandığında oluşur. Diğer bir deyişle, işlem mantıksal ve işlemdir.
 
-   - **RewriteRule** : birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
+   - **RewriteRule**: birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
 
-   - **Rulesequence** : yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olan isteğe bağlı bir yapılandırma. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırası değerini iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
+   - **Rulesequence**: yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olan isteğe bağlı bir yapılandırma. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırası değerini iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
 
      RuleSequence öğesini açıkça belirtmezseniz, varsayılan 100 değeri ayarlanır.
 
-   - **Rewriterutaset** : istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
+   - **Rewriterutaset**: istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
 
 2. Rewriterulet kümesini bir yönlendirme kuralına ekleyin. Yeniden yazma yapılandırması, kaynak dinleyicisine yönlendirme kuralı aracılığıyla eklenir. Temel bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması bir kaynak dinleyicisi ile ilişkilendirilir ve genel üst bilgi yeniden yazma işlemi olur. Yol tabanlı bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması URL yol eşlemesinde tanımlanmıştır. Bu durumda, yalnızca bir sitenin belirli yol alanı için geçerlidir.
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>HTTP üstbilgisi yeniden yazma kuralı yapılandırmasını belirtin
 
-Bu örnekte, konum üstbilgisi azurewebsites.net öğesine bir başvuru içerdiğinde HTTP yanıtında konum üstbilgisini yeniden yazarak bir yeniden yönlendirme URL 'sini değiştireceksiniz. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerip içermediğini değerlendirmek için bir koşul ekleyeceğiz. Bu kalıbı kullanacağız `(https?):\/\/.*azurewebsites\.net(.*)$` . `{http_resp_Location_1}://contoso.com{http_resp_Location_2}`Üst bilgi değeri olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
+Bu örnekte, konum üstbilgisi azurewebsites.net öğesine bir başvuru içerdiğinde HTTP yanıtında konum üstbilgisini yeniden yazarak bir yeniden yönlendirme URL 'sini değiştireceksiniz. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerip içermediğini değerlendirmek için bir koşul ekleyeceğiz. Bu kalıbı kullanacağız `(https?)://.*azurewebsites.net(.*)$` . `{http_resp_Location_1}://contoso.com{http_resp_Location_2}`Üst bilgi değeri olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

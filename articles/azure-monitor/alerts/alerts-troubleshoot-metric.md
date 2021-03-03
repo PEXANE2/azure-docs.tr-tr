@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737265"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
 Bu makalede, Azure Izleyici [ölçüm uyarılarında](alerts-metric-overview.md) sık karşılaşılan sorunlar ve bunların nasıl giderileceği anlatılmaktadır.
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarı hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md).
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarı hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](./alerts-overview.md).
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>Ölçüm uyarısı tetiklendi ancak yoktu 
 
 Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatmadıysanız ve bulunamadığını düşünüyorsanız, aşağıdaki adımları deneyin:
 
 1. **Yapılandırma** -uygun şekilde yapılandırıldığından emin olmak için ölçüm uyarı kuralı yapılandırmasını gözden geçirin:
-    - **Toplama türü** ve **toplama ayrıntı düzeyi (Period)** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin. **Toplama türü** , ölçüm değerlerinin nasıl toplandığını belirler [(daha fazla](../platform/metrics-aggregation-explained.md#aggregation-types)bilgi edinin) ve **toplama ayrıntı düzeyi (süre)** , uyarı kuralının her çalıştırılışında değerlendirmenin ölçüm değerlerini toplamasının ne kadar geri alınacağını denetler.
+    - **Toplama türü** ve **toplama ayrıntı düzeyi (Period)** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin. **Toplama türü** , ölçüm değerlerinin nasıl toplandığını belirler [(daha fazla](../essentials/metrics-aggregation-explained.md#aggregation-types)bilgi edinin) ve **toplama ayrıntı düzeyi (süre)** , uyarı kuralının her çalıştırılışında değerlendirmenin ölçüm değerlerini toplamasının ne kadar geri alınacağını denetler.
     -  **Eşik değerinin** veya **Duyarlığın** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin.
     - Dinamik eşikleri kullanan bir uyarı kuralı için, gelişmiş ayarların yapılandırılıp yapılandırılmadığını denetleyin, **Ihlallerin sayısı** uyarıları filtreleyip daha sonra **verileri yok sayarak** eşiklerin nasıl hesaplanacağını etkilemez.
 
@@ -69,10 +69,10 @@ Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatm
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Sanal makinelerin Konuk ölçümlerini uyarmak için ölçüm bulunamıyor
 
 Sanal makinelerin Konuk işletim sistemi ölçümleri hakkında uyarı almak için (örneğin, bellek, disk alanı), bu verileri Azure Izleyici ölçümlerine toplamak için gerekli aracıyı yüklediğinizden emin olun:
-- [Windows VM'leri için](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Linux VM'leri için](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Windows VM'leri için](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Linux VM'leri için](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla bilgi için [buraya](../insights/monitor-vm-azure.md#guest-operating-system)bakın.
+Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla bilgi için [buraya](../vm/monitor-vm-azure.md#guest-operating-system)bakın.
 
 > [!NOTE] 
 > Konuk ölçümlerini bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdıysanız, ölçümler Log Analytics çalışma alanı kaynağı altında görünür ve **yalnızca** bunları izleyen bir uyarı kuralı oluşturduktan sonra verileri göstermeye başlayacaktır. Bunu yapmak için, [günlükler için ölçüm uyarısı yapılandırma](./alerts-metric-logs.md#configuring-metric-alert-for-logs) adımlarını izleyin.
@@ -84,8 +84,8 @@ Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla
 
 Uyarı kuralı oluştururken belirli bir ölçümle ilgili uyarıyı arıyorsanız ama göremiyorsanız, aşağıdakileri denetleyin:
 - Kaynağın ölçümlerini göremiyorsanız [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
-- Kaynağın bazı ölçümlerini görebiliyorsanız ama belirli bir ölçümü bulamıyorsanız [ölçümün kullanılabilir olup olmadığını denetleyin](../platform/metrics-supported.md) ve kullanılabiliyorsa, ölçüm açıklamasına bakarak yalnızca kaynağın belirli sürüm veya yayınlarda kullanılabilir olup olmadığını gözden geçirin.
-- Kaynak için ölçüm kullanılabilir değilse, kaynak günlüklerinde bulunabilir ve günlük uyarıları kullanılarak izlenebilir. [Azure kaynağından kaynak günlüklerini toplama ve analiz etme](../learn/tutorial-resource-logs.md) hakkında daha fazla bilgi için buraya bakın.
+- Kaynağın bazı ölçümlerini görebiliyorsanız ama belirli bir ölçümü bulamıyorsanız [ölçümün kullanılabilir olup olmadığını denetleyin](../essentials/metrics-supported.md) ve kullanılabiliyorsa, ölçüm açıklamasına bakarak yalnızca kaynağın belirli sürüm veya yayınlarda kullanılabilir olup olmadığını gözden geçirin.
+- Kaynak için ölçüm kullanılabilir değilse, kaynak günlüklerinde bulunabilir ve günlük uyarıları kullanılarak izlenebilir. [Azure kaynağından kaynak günlüklerini toplama ve analiz etme](../essentials/tutorial-resource-logs.md) hakkında daha fazla bilgi için buraya bakın.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Uyarı almak için ölçüm boyutu bulunamıyor
 
@@ -199,7 +199,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -211,7 +211,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 
 - Bir `Metric not found` hata alıyorsanız:
 
-   - Platform ölçümü için: ölçüm **görünen adı** değil, [Azure izleyici tarafından desteklenen ölçümler sayfasından](../platform/metrics-supported.md) **ölçüm** adını kullandığınızdan emin olun
+   - Platform ölçümü için: ölçüm **görünen adı** değil, [Azure izleyici tarafından desteklenen ölçümler sayfasından](../essentials/metrics-supported.md) **ölçüm** adını kullandığınızdan emin olun
 
    - Özel bir ölçüm için: ölçümün zaten yayıldığından (henüz mevcut olmayan bir özel ölçüm üzerinde bir uyarı kuralı oluşturamazsınız) ve özel ölçümün ad alanını sağladığınızdan emin olun ( [burada](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)bir kaynak yöneticisi şablon örneğine bakın)
 
@@ -253,7 +253,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örneğin:
+Örnek:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

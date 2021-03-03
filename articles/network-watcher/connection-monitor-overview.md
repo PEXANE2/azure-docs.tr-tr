@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712326"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
 
@@ -89,7 +89,7 @@ Linux makinelerinde kullanılacak bağlantı noktası numaralarının el ile de�
 
  Kullanılmakta olan bağlantı noktası numaralarının, bir çalışma alanında kullanılan tüm aracılarda aynı olması gerektiğini unutmayın. 
 
-Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarların değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. Log Analytics aracıları için ağ gereksinimleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
+Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarların değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. Log Analytics aracıları için ağ gereksinimleri hakkında [daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#network-requirements)
 
 Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Bir ağ güvenlik duvarınız varsa, Ağ Performansı İzleyicisi tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiğinden emin olun.
 
@@ -287,7 +287,7 @@ Bağlantı Izleyicisi deneyiminden önce oluşturulan bağlantı izleyicilerinde
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Metric | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
+| Metric | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasik) | % Yoklama başarısız oldu (klasik) | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
 | AverageRoundtripMs (klasik) | Ort. gidiş dönüş süresi (MS) (klasik) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |

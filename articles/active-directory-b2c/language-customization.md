@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686419"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -226,7 +226,7 @@ Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. K
 İçerik tanımı ve desteklemek istediğiniz herhangi bir dil için yerelleştirilmiş kaynaklar öğelerini yapılandırırsınız. Ingilizce ve Ispanyolca Birleşik kaydolma veya oturum açma sayfalarını özelleştirmek için, `LocalizedResources` öğenin kapandıktan sonra aşağıdaki öğeleri eklersiniz `</SupportedLanguages>` .
 
 > [!NOTE]
-> Aşağıdaki örnekte `#` , her satırın başlangıcında kare simgesini ekledik, böylece, ekranda yerelleştirilmiş Etiketler bulabilirsiniz.
+> Aşağıdaki örnekte, `#` her satırın başlangıcında kare simgesini ekledik ve bu sayede yerelleştirilmiş etiketleri ekranda kolayca bulabilirsiniz.
 
 ```xml
 <!--Local account sign-up or sign-in page English-->

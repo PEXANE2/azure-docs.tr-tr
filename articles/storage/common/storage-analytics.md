@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737690"
 ---
 # <a name="storage-analytics"></a>Depolama Analizi
 
 Azure Depolama Analizi günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızla ilgili sorunları tanılayabilirsiniz.
 
-Depolama Analizi kullanmak için, izlemek istediğiniz her hizmet için tek tek etkinleştirmeniz gerekir. [Azure Portal](https://portal.azure.com)etkinleştirebilirsiniz. Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](storage-monitor-storage-account.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. [BLOB hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-blob-service-properties), [kuyruk hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-queue-service-properties), [Tablo hizmeti özelliklerini](/rest/api/storageservices/set-table-service-properties)ayarlama ve [dosya hizmeti özellikleri](/rest/api/storageservices/Get-File-Service-Properties) işlemlerini her hizmet için depolama Analizi etkinleştirecek şekilde ayarlama.
+Depolama Analizi kullanmak için, izlemek istediğiniz her hizmet için tek tek etkinleştirmeniz gerekir. [Azure Portal](https://portal.azure.com)etkinleştirebilirsiniz. Ayrıntılar için bkz. [Azure Portal bir depolama hesabını izleme](./manage-storage-analytics-logs.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. [BLOB hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-blob-service-properties), [kuyruk hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-queue-service-properties), [Tablo hizmeti özelliklerini](/rest/api/storageservices/set-table-service-properties)ayarlama ve [dosya hizmeti özellikleri](/rest/api/storageservices/Get-File-Service-Properties) işlemlerini her hizmet için depolama Analizi etkinleştirecek şekilde ayarlama.
 
 Toplanan veriler, blob hizmeti ve tablo hizmeti API 'Leri kullanılarak erişilebilen, iyi bilinen bir blob 'da (günlük için) ve iyi bilinen tablolarda (ölçümler için) depolanır.
 
@@ -46,6 +46,6 @@ Bir hesabın depolama hizmetine yapılan her istek faturalandırılabilir veya f
 Depolama Analizi verilere baktığınızda, hangi isteklerin faturalandırılabilir olduğunu belirlemek için [depolama Analizi günlüğe kaydedilen işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) konusundaki tabloları kullanabilirsiniz. Ardından, belirli bir istek için ücretlendirildiğini görmek üzere günlüklerinizi ve ölçüm verilerinizi durum iletileriyle karşılaştırabilirsiniz. Bir depolama hizmeti veya tek bir API işlemi için kullanılabilirliği araştırmak üzere önceki konudaki tabloları da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure portalında depolama hesabını izleme](storage-monitor-storage-account.md)
+* [Azure portalında depolama hesabını izleme](./manage-storage-analytics-logs.md)
 * [Depolama Analizi ölçümleri](storage-analytics-metrics.md)
 * [Depolama Analizi Günlüğü](storage-analytics-logging.md)

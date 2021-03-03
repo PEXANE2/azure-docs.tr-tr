@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706048"
 ---
 Data Box cihaz için desteklenen depolama hesaplarının ve depolama türlerinin listesi aşağıda verilmiştir. Tüm depolama hesabı türlerinde tüm yeteneklerin tümünün listesi için bkz. [depolama hesabı türleri](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
@@ -45,6 +45,7 @@ Dışarı aktarma siparişlerinde, aşağıdaki tabloda desteklenen depolama hes
 > [!IMPORTANT]
 > - Genel amaçlı hesaplar için Data Box içeri aktarma siparişleri için sırayı, tabloyu ve disk depolama türlerini desteklemez. Data Box, genel amaçlı hesaplar için kuyruk, tablo, disk ve Azure Data Lake Gen 2 depolama türlerini desteklemez.
 > - Data Box BLOB depolama ve blok BLOB depolama hesapları için ekleme bloblarını desteklemez.
+> - Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği Data Box desteklenmez.
 > - Sayfa bloblarına yüklenen veriler, VHD 'ler gibi 512 bayt hizalı olmalıdır.
 > - En fazla 80 TB aktarılabilir.
 > - Dosya Geçmişi ve BLOB anlık görüntüleri dışarıya aktarılmaz.

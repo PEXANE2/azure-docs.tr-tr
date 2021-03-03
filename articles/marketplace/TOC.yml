@@ -47,12 +47,19 @@
       items:
         - name: Market avantajlarınız
           href: gtm-your-marketplace-benefits.md
-        - name: Ortak satış iş ortağı etkileşimi
-          href: marketplace-co-sell.md
-        - name: İş Ortağı Merkezi’nde ortak satış seçeneği
-          href: commercial-marketplace-co-sell.md
-        - name: OCP GTM’den ortak satış çözümlerini geçirme
-          href: co-sell-solution-migration.md
+          items: null
+        - name: Microsoft ile ortak satış yapma
+          items:
+            - name: Ortak satış genel bakış
+              href: marketplace-co-sell.md
+            - name: Ortak satış gereksinimleri
+              href: co-sell-requirements.md
+            - name: Ortak satışı yapılandırma
+              href: commercial-marketplace-co-sell.md
+            - name: Ortak satışın durumunu doğrulama
+              href: co-sell-status.md
+            - name: OCP GTM’den ortak satış çözümlerini geçirme
+              href: co-sell-solution-migration.md
         - name: CSP İş Ortakları aracılığıyla perakende satış
           href: cloud-solution-providers.md
         - name: Program ekleme kılavuzunu bağlama
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: IoT Edge modülü teknik varlıklarını hazırlama
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: Sertifika öncesi denetim listesi
+          href: iot-edge-checklist.md
     - name: Yönetilen Hizmet teklifleri
       items:
         - name: Yönetilen Hizmet teklifi planlama
@@ -395,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Ortak satış eyalet kodları
       href: commercial-marketplace-co-sell-states.md
+    - name: Başvuru mimarisi diyagramı
+      href: reference-architecture-diagram.md
     - name: Kategoriler ve alt kategoriler
       href: categories.md
     - name: Desteklenen HTML etiketleri

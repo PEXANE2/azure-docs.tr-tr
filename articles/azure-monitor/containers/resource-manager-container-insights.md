@@ -1,26 +1,26 @@
 ---
-title: Kapsayıcılar için Azure Izleyici Kaynak Yöneticisi şablon örnekleri
-description: Kapsayıcılar için Reazure Izleyicisini dağıtmak ve sağlamak üzere örnek Azure Resource Manager şablonları.
+title: Kapsayıcı öngörüleri için Kaynak Yöneticisi şablon örnekleri
+description: Kapsayıcı öngörülerini dağıtmak ve vermek için örnek Azure Resource Manager şablonları.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723342"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici Kaynak Yöneticisi şablon örnekleri
+# <a name="resource-manager-template-samples-for-container-insights"></a>Kapsayıcı öngörüleri için Kaynak Yöneticisi şablon örnekleri
 Bu makalede, Azure Izleyici 'de sanal makineler için Log Analytics aracısını dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>AKS kümesi için etkinleştir
-Aşağıdaki örnek bir AKS kümesindeki kapsayıcılar için Azure Izleyicisini sunar.
+Aşağıdaki örnek bir AKS kümesinde kapsayıcı öngörüleri sunar.
 
 
 ### <a name="template-file"></a>Şablon dosyası
@@ -357,4 +357,4 @@ Aşağıdaki örnek bir AKS kümesindeki kapsayıcılar için Azure Izleyicisini
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
-* [Kapsayıcılar Için Azure izleyici hakkında daha fazla bilgi edinin](../containers/container-insights-overview.md).
+* [Kapsayıcı öngörüleri hakkında daha fazla bilgi edinin](../containers/container-insights-overview.md).

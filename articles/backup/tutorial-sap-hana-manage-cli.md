@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713295"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir Azure VM 'de SAP HANA veritabanlarını yönetme
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="create-incremental-backup-policy"></a>Artımlı yedekleme ilkesi oluşturma
 
-Artımlı yedekleme ilkesi oluşturmak için [az Backup Policy Create](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_create) komutunu aşağıdaki parametrelerle yürütün:
+Artımlı yedekleme ilkesi oluşturmak için [az Backup Policy Create](/cli/azure/backup/policy#az_backup_policy_create) komutunu aşağıdaki parametrelerle yürütün:
 
 * **--Backup-Management-Type** – Azure iş yükü
 * **--iş yükü-türü** -saphana
@@ -231,11 +231,12 @@ az backup policy create --resource-group saphanaResourceGroup --vault-name sapha
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+
 İlke başarıyla oluşturulduktan sonra komutun çıktısı, komutu yürütürken bir parametre olarak geçirilmiş ilke JSON 'sini görüntüler.
 
 Bu ilkenin aşağıdaki bölümünü değiştirerek, artımlı yedeklemeler için istenen yedekleme sıklığını ve bekletmesini belirtebilirsiniz.
 
-Örneğin:
+Örnek:
 
 ```json
 {

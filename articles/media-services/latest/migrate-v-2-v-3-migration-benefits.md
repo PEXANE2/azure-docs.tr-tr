@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698850"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Adım 1-Media Services API v3 'e geçiş avantajlarından yararlanın
 
@@ -38,7 +38,7 @@ V3 ile Media Services yönelik önemli iyileştirmeler yapılmıştır.
 | Azure portal güncelleştirmeleri | Azure portal, v3 API varlıklarının yönetimini içerecek şekilde güncelleştirilmiştir. Müşterilerin, canlı akış başlatmak, v3 dönüşüm işleri göndermesi, içerik koruma ilkelerini yönetmesi, akış uç noktaları, API erişimi alması, bağlantılı depolama hesaplarını yönetmesi ve izleme görevlerini gerçekleştirmek için portalı kullanmasına izin verir. |
 | **Hesaplar ve depolama** | |
 | Azure rol tabanlı erişim denetimi (RBAC) | Müşteriler artık kendi rollerini tanımlayabilir ve Media Services ARM API 'sindeki her bir varlığa erişimi denetleyebilir. Bu, AAD hesaplarına göre kaynaklara erişimi denetlemeye yardımcı olur. |
-| Yönetilen kimlikler | Yönetilen kimlikler, Azure AD 'de Azure kaynağı için bir kimlik sağlayarak geliştiricilerin kimlik bilgilerini yönetme ihtiyacını ortadan kaldırır. [Burada](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)Yönetilen kimlikler hakkındaki ayrıntılara bakın. |
+| Yönetilen kimlikler | Yönetilen kimlikler, Azure AD 'de Azure kaynağı için bir kimlik sağlayarak geliştiricilerin kimlik bilgilerini yönetme ihtiyacını ortadan kaldırır. [Burada](../../active-directory/managed-identities-azure-resources/overview.md)Yönetilen kimlikler hakkındaki ayrıntılara bakın. |
 | Özel bağlantı desteği | Müşteriler, anahtar teslimi, LiveEvents ve Streammingendpoints için Media Services uç noktalarına, VNet 'teki bir PrivateEndpoint aracılığıyla erişir. |
 | [Müşteri tarafından yönetilen anahtarlar](concept-use-customer-managed-keys-byok.md) veya kendi anahtarınızı getır (bYok) desteği | Müşteriler, Media Services hesabındaki verileri Azure Key Vault bir anahtar kullanarak şifreleyebilir. |
 | **Varlıklar** | |

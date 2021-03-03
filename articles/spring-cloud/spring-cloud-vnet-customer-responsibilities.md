@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986862"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698221"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET 'te Azure Spring Cloud çalıştırmaya yönelik müşteri sorumlulukları
 Bu belge, bir sanal ağda Azure Spring Cloud 'ın kullanımına yönelik belirtimleri içerir.
@@ -34,13 +34,13 @@ Aşağıda, Azure yay bulut hizmetleri için kaynak gereksinimlerinin bir listes
 
   | Hedef uç nokta | Bağlantı noktası | Kullanın | Not |
   |------|------|------|
-  | *: 1194 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -azurecyüksek: 1194 | UDP: 1194 | Temel Kubernetes küme yönetimi. | |
-  | *: 443 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -azurecyüksek: 443 | TCP: 443 | Azure yay bulut hizmeti yönetimi. | "RequiredTraffics" hizmet örneğinin bilgileri, kaynak yükünde "networkProfile" bölümünde bilinirdi. |
-  | *: 9000 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -azurecyüksek: 9000 | TCP: 9000 | Temel Kubernetes küme yönetimi. |
+  | *: 1194 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -azurecyüksek: 1194 | UDP: 1194 | Temel Kubernetes küme yönetimi. | |
+  | *: 443 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -azurecyüksek: 443 | TCP: 443 | Azure yay bulut hizmeti yönetimi. | "RequiredTraffics" hizmet örneğinin bilgileri, kaynak yükünde "networkProfile" bölümünde bilinirdi. |
+  | *: 9000 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -azurecyüksek: 9000 | TCP: 9000 | Temel Kubernetes küme yönetimi. |
   | *: 123 *veya* NTP.Ubuntu.com:123 | UDP: 123 | Linux düğümlerinde NTP zaman eşitlemesi. | |
-  | *. azure.io:443 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | ,  [Sanal ağda Azure Container Registry hizmet uç noktası](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)etkinleştirilerek değiştirilebilir. |
-  | *. core.windows.net:443 ve *. core.windows.net:445 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -Storage: 443 ve Storage: 445 | TCP: 443, TCP: 445 | Azure Dosya Depolama | , Sanal ağda *Azure Storage* [hizmet uç noktası](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)etkinleştirilerek değiştirilebilir. |
-  | *. servicebus.windows.net:443 *veya* [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Olay Hub 'ı. | , Sanal ağda *Azure Event Hubs* [hizmet uç noktası](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)etkinleştirilerek değiştirilebilir. |
+  | *. azure.io:443 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | ,  [Sanal ağda Azure Container Registry hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md)etkinleştirilerek değiştirilebilir. |
+  | *. core.windows.net:443 ve *. core.windows.net:445 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -Storage: 443 ve Storage: 445 | TCP: 443, TCP: 445 | Azure Dosya Depolama | , Sanal ağda *Azure Storage* [hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md)etkinleştirilerek değiştirilebilir. |
+  | *. servicebus.windows.net:443 *veya* [servicetag](../virtual-network/service-tags-overview.md#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Olay Hub 'ı. | , Sanal ağda *Azure Event Hubs* [hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md)etkinleştirilerek değiştirilebilir. |
   
 
 ## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure yay bulutu FQDN gereksinimleri/uygulama kuralları
@@ -63,4 +63,4 @@ Azure Güvenlik Duvarı, aşağıdaki yapılandırmaların basitleşmesi için *
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Uygulamanıza özel bir ağda erişin](spring-cloud-access-app-virtual-network.md)
-* [Application Gateway ve Azure Güvenlik Duvarı kullanarak uygulamaları kullanıma sunma](spring-cloud-expose-apps-gateway-azure-firewall.md) 
+* [Application Gateway ve Azure Güvenlik Duvarı kullanarak uygulamaları kullanıma sunma](spring-cloud-expose-apps-gateway-azure-firewall.md)

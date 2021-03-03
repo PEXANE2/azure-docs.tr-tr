@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: aeb84fca47dbf2922f17a3e8931e3158f9ee2cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790910"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706784"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS portalında oturum açma
 
@@ -48,7 +48,7 @@ LUO portalını kullanmaya başlamak ve bir yazma kaynağı oluşturmak için bu
     * **Azure Kaynak grubu adı** -aboneliğinizde seçtiğiniz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır. Şu anda aboneliğinizde bir kaynak grubunuz yoksa, LUı portalında bir tane oluşturmanıza izin verilmez. Bir tane oluşturmak için [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) gidin ve oturum açma işlemine devam etmek için lusıs 'e gidin.
     * **Azure Kaynak adı** -seçtiğiniz özel bir ad, yazma IŞLEMLERINIZ için URL 'nin bir parçası olarak kullanılır. Kaynak adınız yalnızca alfasayısal karakterler içerebilir, `-` ile başlayamaz veya bitemez `-` . Adda başka semboller varsa, kaynak oluşturma işlemi başarısız olur.
     * **Konum** -Şu anda lubu tarafından desteklenen [üç yazma](./luis-reference-regions.md) konumundan birinde uygulamalarınızı yazmak Için seçin: Batı ABD, Batı Avrupa ve Doğu Avustralya
-    * **Fiyatlandırma katmanı** varsayılan olarak, F0 Authoring fiyatlandırma katmanı, önerilen şekilde seçilir. Ek bir güvenlik katmanı arıyorsanız Azure portal [müşterinin yönettiği bir anahtar](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) oluşturun.
+    * **Fiyatlandırma katmanı** varsayılan olarak, F0 Authoring fiyatlandırma katmanı, önerilen şekilde seçilir. Ek bir güvenlik katmanı arıyorsanız Azure portal [müşterinin yönettiği bir anahtar](./encrypt-data-at-rest.md#customer-managed-keys-for-language-understanding) oluşturun.
 8. Artık LUO 'da oturumunuz başarıyla açıldı. Artık uygulama oluşturmaya başlayabilirsiniz.
 
 ## <a name="troubleshooting"></a>Sorun giderme

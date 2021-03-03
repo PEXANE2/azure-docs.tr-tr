@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736652"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -31,7 +31,7 @@ Bilişsel hizmetler 'in bilişsel olarak anlaşılmasına yönelik Katalog, beş
 * Konuşma
 * Dil
 * Karar
-* Arama
+* Arayın
 
 Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının parçası olan hizmetlerin bir listesi yer almaktadır.
 
@@ -43,7 +43,7 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 |[Özel Görüntü İşleme Hizmeti](./custom-vision-service/overview.md "Özel Görüntü İşleme Hizmeti")|Özel Görüntü İşleme Hizmeti özel görüntü sınıflandırıcıları oluşturmanıza olanak sağlar.|
 |[Yüz Tanıma](./face/index.yml "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
 |[Form Tanıma](./form-recognizer/index.yml "Form Tanıma")|Form tanıyıcı, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlar ve ayıklar; ardından, özgün dosyadaki ilişkiler dahil olmak üzere yapılandırılmış verilerin çıktısını verir.|
-|[Mürekkep tanıyıcı](./ink-recognizer/index.yml "Mürekkep Tanıma") (devre dışı bırakma)|Mürekkep tanıyıcı, dijital mürekkep konturu verilerini, şekilleri ve el yazısı içeriğini tanımanıza ve analiz etmenize ve tüm tanınan varlıklarla bir belge yapısını çıkışlamaya olanak tanır.|
+|[Mürekkep tanıyıcı](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Mürekkep Tanıma") (devre dışı bırakma)|Mürekkep tanıyıcı, dijital mürekkep konturu verilerini, şekilleri ve el yazısı içeriğini tanımanıza ve analiz etmenize ve tüm tanınan varlıklarla bir belge yapısını çıkışlamaya olanak tanır.|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer, videonuzun öngörülerini ayıklamanızı sağlar.|
 
 ## <a name="speech-apis"></a>Konuşma API 'Leri
@@ -63,7 +63,7 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 |[LUSıS Language Understanding](./luis/index.yml "Language Understanding")|Language Understanding (LUIS), bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar.|
 |[Soru-Cevap Oluşturma](./qnamaker/index.yml "Soru-Cevap Oluşturucu")|Soru-Cevap Oluşturma yarı yapılandırılmış içeriklerden bir soru ve yanıt hizmeti oluşturmanızı sağlar.|
 |[Metin Analizi](./text-analytics/index.yml "Metin Analizi")| Metin Analizi, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
-|[Çevirmen](./translator/index.yml "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
+|[Translator](./translator/index.yml "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
 | [Tam Ekran Okuyucu](./immersive-reader/index.yml "Tam Ekran Okuyucu") | Modern okuyucu, uygulamalarınıza ekran okuma ve kavrama özellikleri ekler. |
 
 ## <a name="decision-apis"></a>Karar API 'Leri
@@ -108,7 +108,7 @@ Daha fazla bilgi için bkz. bilişsel [Hizmetler geliştirme seçenekleri](./cog
 
 Aşağıdaki yöntemleri kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturarak başlayın:
 
-* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
+* [Azure portalı](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
 * [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK istemci kitaplıkları](cognitive-services-apis-create-account-cli.md?tabs=windows "bilişsel hizmetler-API 'ler-oluşturma-hesap-istemci-kitaplığı? özetleme = programlama-dil-CSharp")
 * [Azure Resource Manager (ARM) şablonları](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) şablonları")

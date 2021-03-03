@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ed58bc9e2bf8757cad79c1043459ceb5b845be40
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710677"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -115,6 +115,7 @@ Ağ kısıtlı depolama hesaplarından dosyaları geri yükleme | Desteklenmez.
 Windows depolama alanları 'nı kullanarak sanal makinelere dosya geri yükleme | Geri yükleme aynı VM 'de desteklenmiyor.<br/><br/> Bunun yerine, uyumlu bir sanal makinenin dosyalarını geri yükleyin.
 LVM/RAID dizilerini kullanarak Linux sanal makinesinde dosyaları geri yükleme | Geri yükleme aynı VM 'de desteklenmiyor.<br/><br/> Uyumlu bir sanal makineye geri yükleme.
 Dosyaları özel ağ ayarlarıyla geri yükleme | Geri yükleme aynı VM 'de desteklenmiyor. <br/><br/> Uyumlu bir sanal makineye geri yükleme.
+Yazma Hızlandırıcısı etkinken paylaşılan disk, geçici sürücü, yinelenenleri kaldırılmış disk, Ultra disk ve diskten dosya geri yükleme | Geri yükleme desteklenmiyor, <br/><br/>bkz. [Azure VM depolama desteği](#vm-storage-support).
 
 ## <a name="support-for-vm-management"></a>VM yönetimi desteği
 
@@ -149,7 +150,7 @@ Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den so
 Gen2 VM 'Leri | Desteklenir <br> Azure Backup, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)'lerinin yedeklenmesini ve geri yüklenmesini destekler. Bu VM 'Ler kurtarma noktasından geri yüklendiğinde, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)olarak geri yüklenir.
 Kilitleri olan Azure VM 'lerinin yedeklenmesi | Yönetilmeyen VM 'Ler için desteklenmez. <br><br> Yönetilen VM 'Ler için desteklenir.
 [Spot VM'ler](../virtual-machines/spot-vms.md) | Desteklenmez. Azure Backup, normal Azure VM 'Leri olarak spot VM 'Leri geri yükler.
-[Azure adanmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Desteklenir
+[Azure adanmış ana bilgisayar](../virtual-machines/dedicated-hosts.md) | Desteklenir
 Tek başına Azure VM 'lerinin Windows depolama alanları yapılandırması | Desteklenir
 
 ## <a name="vm-storage-support"></a>VM depolama desteği
@@ -168,7 +169,7 @@ Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya Scale-Out dosya sunucusu kullanarak VM 'Leri yedekleme desteklenmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
 [Paylaşılan diskler](../virtual-machines/disks-shared-enable.md) | Desteklenmez.
 Ultra SSD diskler | Desteklenmez. Daha fazla bilgi için, bkz. bu [sınırlamalar](selective-disk-backup-restore.md#limitations).
-[Geçici diskler](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Geçici diskler Azure Backup tarafından yedeklenmez.
+[Geçici diskler](../virtual-machines/managed-disks-overview.md#temporary-disk) | Geçici diskler Azure Backup tarafından yedeklenmez.
 
 ## <a name="vm-network-support"></a>VM ağı desteği
 

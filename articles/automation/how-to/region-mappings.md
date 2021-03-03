@@ -1,20 +1,24 @@
 ---
 title: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 description: Bu makalede, bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki desteklenen bölge eşlemeleri, Azure Otomasyonu 'nun belirli özellikleriyle ilişkili olarak açıklanmaktadır.
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720180"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
 Azure Otomasyonu 'nda sunucularınız ve sanal makineleriniz için Güncelleştirme Yönetimi, Değişiklik İzleme ve envanteri ve VM'leri çalışma saatleri dışında başlat/durdur özelliklerini etkinleştirebilirsiniz. Bu özelliklerin bir Log Analytics çalışma alanına bağımlılığı vardır ve bu nedenle çalışma alanını bir Otomasyon hesabıyla bağlamayı gerektirir. Ancak, bunları birbirine bağlamak için yalnızca belirli bölgeler desteklenir. Genellikle, bir Otomasyon hesabını bu özellikleri etkin olmayacak bir çalışma alanına bağlamayı planlıyorsanız eşleme geçerli *değildir* .
+
+Burada açıklanan eşlemeler yalnızca Log Analytics çalışma alanını bir Otomasyon hesabına bağlamak için geçerlidir. Otomasyon hesabına bağlı olan çalışma alanına bağlı sanal makineler (VM) için uygulanamazlar. VM 'Ler, belirli bir Log Analytics çalışma alanı tarafından desteklenen bölgelerle sınırlı değildir. Bunlar herhangi bir bölgede olabilir. Farklı bir bölgedeki sanal makinelerin durum, yerel ve ülke mevzuatı gereksinimlerini veya şirketinizin uyumluluk gereksinimlerini etkileyebileceğini aklınızda bulundurun. VM 'Lerin farklı bir bölgede olması, veri bant genişliği ücretleri de getirebilir.
+
+VM 'Leri farklı bir bölgedeki bir çalışma alanına bağlamadan önce, yasal ve maliyet etkilerini doğrulamak ve anlamak için gereksinimleri ve potansiyel maliyetleri gözden geçirmeniz gerekir.
 
 Bu makalede, Otomasyon hesabınızda bu özellikleri başarılı bir şekilde etkinleştirmek ve kullanmak için desteklenen eşlemeler sağlanmaktadır.
 

@@ -4,15 +4,15 @@ description: Bu makalede, Azure Spring Cloud 'da yapılandırılmış uygulama g
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/05/2021
 ms.author: brendanm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701952"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure yay bulutu için yapılandırılmış uygulama günlüğü
 
@@ -23,7 +23,7 @@ Günlük sorgu deneyimini geliştirmek için, bir uygulama günlüğünün JSON 
 
 **JSON şema gereksinimleri:**
 
-| JSON anahtarı      | JSON değer türü|  Gerekli | Log Analytics sütun| Description |
+| JSON anahtarı      | JSON değer türü|  Gerekli | Log Analytics sütun| Açıklama |
 | --------------| ------------|-----------|-----------------|--------------------------|
 | timestamp     | string      |     Yes   | AppTimestamp    | UTC biçiminde zaman damgası  |
 | Medi        | dize      |     No    | Medi          | Medi                   |
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Günlük sorgusu hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* Günlük sorgusu hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularına başlama](../azure-monitor/logs/get-started-queries.md)

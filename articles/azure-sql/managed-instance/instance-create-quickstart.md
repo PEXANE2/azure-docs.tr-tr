@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089811"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691221"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL yönetilen örneği oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
 ### <a name="tags"></a>Etiketler
 
-- Azure Resource Manager şablonunuzda kaynaklara Etiketler ekleyin (ARM şablonu). [Etiketler](/azure/azure-resource-manager/management/tag-resources) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir ve diğer yönetim etkinliklerinin etikete göre kullanılmasına izin verir. 
+- Azure Resource Manager şablonunuzda kaynaklara Etiketler ekleyin (ARM şablonu). [Etiketler](../../azure-resource-manager/management/tag-resources.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir ve diğer yönetim etkinliklerinin etikete göre kullanılmasına izin verir. 
 
 - Kimin oluşturduğunu belirlemek için yeni SQL yönetilen örneğinizi sahip etiketiyle etiketleyerek ve bu sistemin üretim, geliştirme vb. olduğunu belirlemek için ortam etiketinin olduğunu göz önünde bulundurun. Daha fazla bilgi için bkz. [Azure kaynakları için adlandırma ve etiketleme stratejinizi geliştirme](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  

@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de izleme çözümlerini hedefleme | Microsoft Docs
 description: İzleme çözümlerini hedefleme, izleme çözümlerini belirli bir aracı kümesiyle sınırlamanıza olanak tanır.  Bu makalede, bir kapsam yapılandırmasının nasıl oluşturulacağı ve bir çözüme nasıl uygulanacağı açıklanır.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cb030456eb3b9e3c81fadd8451b5b0526920ba33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587244"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728578"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Izleyici 'de izleme çözümlerini hedefleme (Önizleme)
 Aboneliğinize bir izleme çözümü eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır.  Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz.  Bu makalede, çözümlerinize bir kapsam uygulamanıza olanak tanıyan bir özellik olan **çözüm hedeflemesi** 'nin nasıl kullanılacağı açıklanır.

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727337"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtreler ve dinamik bildirimler
 
@@ -29,7 +29,7 @@ ms.locfileid: "89266927"
 > * [Sürüm 2](media-services-dynamic-manifest-overview.md)
 > * [Sürüm 3](../latest/filters-dynamic-manifest-overview.md)
 
-2,17 sürümünden itibaren, Media Services varlıklarınız için filtreler tanımlamanızı sağlar. Bu filtreler, müşterilerinizin şu şekilde işlem yapmasına izin veren sunucu tarafı kurallarıdır: videonun yalnızca bir bölümünü kayıttan yürütme (videonun tamamını çalmak yerine) veya yalnızca müşterinizin cihazının işleyebileceği ses ve video çevirilerinin bir alt kümesini (varlıkla ilişkili tüm yorumlamalar yerine) belirtin. Varlıklarınızın bu şekilde filtrelenmesi, müşterinizin, belirtilen filtreye göre video akışı isteği üzerine oluşturulan **dinamik bildirimle**gerçekleştirilir.
+2,17 sürümünden itibaren, Media Services varlıklarınız için filtreler tanımlamanızı sağlar. Bu filtreler, müşterilerinizin şu şekilde işlem yapmasına izin veren sunucu tarafı kurallarıdır: videonun yalnızca bir bölümünü kayıttan yürütme (videonun tamamını çalmak yerine) veya yalnızca müşterinizin cihazının işleyebileceği ses ve video çevirilerinin bir alt kümesini (varlıkla ilişkili tüm yorumlamalar yerine) belirtin. Varlıklarınızın bu şekilde filtrelenmesi, müşterinizin, belirtilen filtreye göre video akışı isteği üzerine oluşturulan **dinamik bildirimle** gerçekleştirilir.
 
 Bu konu, filtre kullanmanın müşterilerinizin faydalı olabileceği yaygın senaryoları ve program aracılığıyla filtrelerin nasıl oluşturulduğunu gösteren konuların bağlantılarını anlatmaktadır.
 
@@ -77,22 +77,22 @@ Bildirim dosyasına bir örnek aşağıda verilmiştir:
 ```
 
 ### <a name="dynamic-manifests"></a>Dinamik bildirimler
-İstemcinizin varsayılan varlığın bildirim dosyasında açıklanmasının daha fazla esneklik ihtiyacı olduğunda [senaryolar](media-services-dynamic-manifest-overview.md#scenarios) vardır. Örneğin:
+İstemcinizin varsayılan varlığın bildirim dosyasında açıklanmasının daha fazla esneklik ihtiyacı olduğunda [senaryolar](media-services-dynamic-manifest-overview.md#scenarios) vardır. Örnek:
 
 * Cihaza özgü: içeriği kayıttan yürütmek için kullanılan cihaz tarafından desteklenen yalnızca belirtilen çevirileri ve/veya belirtilen dil izlerini sunun ("yorumlama filtrelemesi"). 
 * Canlı bir etkinliğin alt klibini ("alt klip filtrelemesi") göstermek için bildirimi küçültün.
 * Videonun başlangıcını kırpın ("video kırpma").
 * Player 'da ("sunum penceresini ayarlama"), DVR penceresinde sınırlı bir uzunluk sağlamak için sunum penceresini (DVR) ayarlayın.
 
-Bu esnekliği sağlamak için Media Services, önceden tanımlanmış [filtreleri](media-services-dynamic-manifest-overview.md#filters)temel alarak **dinamik bildirimler** sunmaktadır.  Filtreleri tanımladıktan sonra istemcileriniz, videonuzun belirli bir işlemesini veya alt kliplerini akışa almak için bunları kullanabilir. Akış URL 'sinde filtre (ler) belirler. Filtreler, [dinamik paketleme](media-services-dynamic-packaging-overview.md)tarafından desteklenen Uyarlamalı bit hızı akış protokollerine uygulanabilir: HLS, MPEG-DASH ve kesintisiz akış. Örneğin:
+Bu esnekliği sağlamak için Media Services, önceden tanımlanmış [filtreleri](media-services-dynamic-manifest-overview.md#filters)temel alarak **dinamik bildirimler** sunmaktadır.  Filtreleri tanımladıktan sonra istemcileriniz, videonuzun belirli bir işlemesini veya alt kliplerini akışa almak için bunları kullanabilir. Akış URL 'sinde filtre (ler) belirler. Filtreler, [dinamik paketleme](media-services-dynamic-packaging-overview.md)tarafından desteklenen Uyarlamalı bit hızı akış protokollerine uygulanabilir: HLS, MPEG-DASH ve kesintisiz akış. Örnek:
 
 Filtre içeren MPEG DASH URL 'SI
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 Filtre içeren Kesintisiz Akış URL 'SI
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 İçeriğinizi teslim etme ve akış URL 'Leri oluşturma hakkında daha fazla bilgi için bkz. [Içerik teslimi genel bakış](media-services-deliver-content-overview.md).
@@ -111,7 +111,7 @@ Filtre içeren Kesintisiz Akış URL 'SI
 Genel ve yerel filtre türleri tam olarak aynı özelliklere sahiptir. İkisi arasındaki temel fark, ne tür bir filme türü daha uygun olan senaryolara yöneliktir. Genel filtreler genellikle, yerel filtrelerin belirli bir varlığı kırpmak için kullanılabileceği cihaz profilleri (işleme filtrelemesi) için uygundur.
 
 ## <a name="common-scenarios"></a><a id="scenarios"></a>Genel senaryolar
-Daha önce belirtildiği gibi, İçeriğinizi müşterilere sunarken (canlı etkinlik veya isteğe bağlı video akışı), amacınız, farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli bir video sunmaktır. Ayrıca, varlıklarınızı filtrelemeyi ve **dinamik bildirimlerin**kullanımını içeren başka gereksinimleriniz de olabilir. Aşağıdaki bölümler, farklı filtreleme senaryolarına kısa bir genel bakış sunar.
+Daha önce belirtildiği gibi, İçeriğinizi müşterilere sunarken (canlı etkinlik veya isteğe bağlı video akışı), amacınız, farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli bir video sunmaktır. Ayrıca, varlıklarınızı filtrelemeyi ve **dinamik bildirimlerin** kullanımını içeren başka gereksinimleriniz de olabilir. Aşağıdaki bölümler, farklı filtreleme senaryolarına kısa bir genel bakış sunar.
 
 * Belirli cihazların işleyebileceği ses ve video yorumlamaları (varlıkla ilişkili tüm yorumlamalar yerine) yalnızca bir alt kümesini belirtin. 
 * Videonun yalnızca bir bölümünü kayıttan oynatma (videonun tamamını çalmak yerine).
@@ -196,7 +196,7 @@ Daha fazla bilgi için [Bu](https://azure.microsoft.com/blog/azure-media-service
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

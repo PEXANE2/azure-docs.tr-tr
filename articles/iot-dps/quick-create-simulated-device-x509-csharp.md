@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705552"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için C# cihaz SDK 'sını kullanarak bir X. 509.440 cihazı oluşturma ve sağlama
 
@@ -22,7 +22,9 @@ ms.locfileid: "99493863"
 
 Bu adımlarda, bir X. 509.440 cihazını sağlamak için [C# için Azure IoT örneklerinden](https://github.com/Azure-Samples/azure-iot-samples-csharp) cihaz kodunun nasıl kullanılacağı gösterilmektedir. Bu makalede, cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub bağlanmak için geliştirme makinenizde cihaz örnek kodunu çalıştıracaksınız.
 
-Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+## <a name="prerequisites"></a>Önkoşullar
+
+Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun.
 
 Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 - [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
@@ -48,8 +50,6 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Otomatik olarak imzalanan X.509 sertifikası oluşturma
 

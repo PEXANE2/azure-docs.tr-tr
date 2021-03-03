@@ -6,18 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: e3a9810aef356b7acf5ae2522645c14ee445812b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bf55d66f7099717079190a538bad8bf777581825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723563"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
-Azure Izleyici 'de ölçüm uyarıları, ölçümlerinizin bir eşiğin kesiştiği durumlarda bildirim almanın bir yolunu sağlar. Ölçüm uyarıları bir dizi çok boyutlu platform ölçümleri, özel ölçümler, Application Insights standart ve özel ölçümleri üzerinde çalışır. Bu makalede, Azure portal ve Azure CLı aracılığıyla ölçüm uyarı kuralları oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz. Ayrıca, [ayrı bir makalede](../platform/alerts-metric-create-templates.md)açıklanan Azure Resource Manager şablonlarını kullanarak da ölçüm uyarı kuralları oluşturabilirsiniz.
+Azure Izleyici 'de ölçüm uyarıları, ölçümlerinizin bir eşiğin kesiştiği durumlarda bildirim almanın bir yolunu sağlar. Ölçüm uyarıları bir dizi çok boyutlu platform ölçümleri, özel ölçümler, Application Insights standart ve özel ölçümleri üzerinde çalışır. Bu makalede, Azure portal ve Azure CLı aracılığıyla ölçüm uyarı kuralları oluşturma, görüntüleme ve yönetme hakkında açıklama göndereceğiz. Ayrıca, [ayrı bir makalede](./alerts-metric-create-templates.md)açıklanan Azure Resource Manager şablonlarını kullanarak da ölçüm uyarı kuralları oluşturabilirsiniz.
 
-Ölçüm uyarılarının [ölçüm uyarılarından genel bakışta](../platform/alerts-metric-overview.md)nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz.
+Ölçüm uyarılarının [ölçüm uyarılarından genel bakışta](./alerts-metric-overview.md)nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="create-with-azure-portal"></a>Azure portalı ile oluşturma
 
@@ -32,7 +32,7 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 
 3. **Hedef Seç**' e tıklayın, yüklenen bağlam bölmesinde, uyarmak istediğiniz hedef kaynağı seçin. İzlemek istediğiniz kaynağı bulmak için **abonelik** ve **kaynak türü** açılan listelerini kullanın. Kaynağı bulmak için arama çubuğunu da kullanabilirsiniz.
 
-4. Seçili kaynakta, uyarı oluşturabileceğiniz ölçümler varsa, en alt sağ tarafta **bulunan kullanılabilir sinyaller** ölçümler dahil edilir. Bu [makaledeki](../platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)ölçüm uyarıları için desteklenen kaynak türlerinin tam listesini görebilirsiniz.
+4. Seçili kaynakta, uyarı oluşturabileceğiniz ölçümler varsa, en alt sağ tarafta **bulunan kullanılabilir sinyaller** ölçümler dahil edilir. Bu [makaledeki](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)ölçüm uyarıları için desteklenen kaynak türlerinin tam listesini görebilirsiniz.
 
 5. Bir hedef kaynak seçtikten sonra **Koşul Ekle**' ye tıklayın.
 
@@ -45,7 +45,7 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
     - Aradığınız boyut değeri görüntülenmiyorsa, özel bir boyut değeri eklemek için "özel değer Ekle" ye tıklayın.
     - Boyutların herhangi biri için **geçerli ve gelecekteki tüm değerleri de seçebilirsiniz** . Bu, seçimi dinamik olarak bir boyut için geçerli ve gelecekteki tüm değerlerle ölçeklendirecektir.
 
-    Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](../platform/alerts-metric-overview.md).
+    Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](./alerts-metric-overview.md).
 
 9. **Eşik** türü, **işleç** ve **toplama türünü** seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
     - **Statik** eşik kullanıyorsanız, bir **eşik değeri** tanımlamaya devam edin. Ölçüm grafiği ne kadar makul bir eşik olabileceğini belirlemenize yardımcı olabilir.
@@ -154,8 +154,8 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Resource Manager şablonları kullanarak ölçüm uyarıları oluşturma](../platform/alerts-metric-create-templates.md)
-- [Ölçüm uyarılarının nasıl çalıştığını anlama](../platform/alerts-metric-overview.md)
+- [Azure Resource Manager şablonları kullanarak ölçüm uyarıları oluşturma](./alerts-metric-create-templates.md)
+- [Ölçüm uyarılarının nasıl çalıştığını anlama](./alerts-metric-overview.md)
 - [Ölçüm durumunun dinamik eşiklerle nasıl çalıştığını anlayın](../alerts/alerts-dynamic-thresholds.md)
-- [Ölçüm uyarıları için Web kancası şemasını anlayın](../platform/alerts-metric-near-real-time.md#payload-schema)
-- [Ölçüm uyarılarında sorun giderme sorunları](../platform/alerts-troubleshoot-metric.md)
+- [Ölçüm uyarıları için Web kancası şemasını anlayın](./alerts-metric-near-real-time.md#payload-schema)
+- [Ölçüm uyarılarında sorun giderme sorunları](./alerts-troubleshoot-metric.md)

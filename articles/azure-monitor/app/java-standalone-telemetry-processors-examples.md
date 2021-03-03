@@ -1,35 +1,36 @@
 ---
-title: Telemetri işlemcileri örnekleri-Java için Azure Izleyici Application Insights
-description: Java için Azure Izleyici Application Insights telemetri işlemcilerini gösteren örnekler
+title: Telemetri işlemcisi örnekleri-Java için Azure Izleyici Application Insights
+description: Java için Azure Izleyici Application Insights telemetri işlemcilerini gösteren örnekleri inceleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734596"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri örnekleri-Java için Azure Izleyici Application Insights
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Telemetri işlemcisi örnekleri-Java için Azure Izleyici Application Insights
 
-## <a name="includeexclude-samples"></a>Örnek Ekle/Dışla
+Bu makalede, Java için Application Insights telemetri işlemcisi örnekleri sunulmaktadır. Ekleme ve dışlama yapılandırmalarına yönelik örnekler bulacaksınız. Ayrıca öznitelik işlemcileri ve yayma işlemcileri için örnekler bulacaksınız.
+## <a name="include-and-exclude-samples"></a>Örnekleri dahil etme ve hariç tutma
 
-### <a name="1-include-spans"></a>1. yayılmaları dahil et
+Bu bölümde, yayılmaları dahil etme ve hariç tutma hakkında bilgi edineceksiniz. Ayrıca, birden çok yayılmaları nasıl dışarıda bırakacağınızı ve seçmeli işleme nasıl uygulanacağını da göreceksiniz.
+### <a name="include-spans"></a>Yayılmaları dahil et
 
-Aşağıda, bu öznitelikler işlemcisinin yayılmaları dahil gösterilmektedir. Özelliklerle eşleşen tüm diğer yayılmalar bu işlemci tarafından işlenmez.
+Bu bölüm, bir öznitelik işlemcisi için yayılmaları nasıl dahil edileceğini gösterir. Özelliklerle eşleşmeyen yayılmalar işlemci tarafından işlenmez.
 
-Bir eşleşme için karşılanması gereken koşullar aşağıda verilmiştir:
-* Yayılma adı "spanA" veya "spanB" değerine eşit olmalıdır 
+Bir eşleşme, yayılma adının veya değerine eşit olmasını gerektirir `spanA` `spanB` . 
 
-Aşağıdakiler, içerme özellikleriyle eşleşen yayılmalar ve işlemci eylemleri uygulanır.
+Bu yayılmalar içerme özellikleriyle eşleşir ve işlemci eylemleri uygulanır:
 * Span1 adı: ' spanA ' öznitelikleri: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 adı: ' spanB ' öznitelikleri: {env: dev, test_request: false}
 * Span3 adı: ' spanA ' öznitelikleri: {env: 1, test_request: dev, credit_card: 1234}
 
-Aşağıdaki yayılma, içerme özellikleriyle eşleşmez ve işlemci eylemleri uygulanmaz.
+Bu yayılma, içerme özellikleriyle eşleşmez ve işlemci eylemleri uygulanmaz:
 * Span4 adı: ' spanC ' öznitelikleri: {env: dev, test_request: false}
 
 ```json
@@ -58,19 +59,18 @@ Aşağıdaki yayılma, içerme özellikleriyle eşleşmez ve işlemci eylemleri 
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. yayılmaları hariç tut
+### <a name="exclude-spans"></a>Yayılmaları hariç tut
 
-Aşağıda, bu öznitelik işlemcisi için yayılmalar dışlanıyor gösterilmektedir. Özelliklerle eşleşen tüm yayılmalar bu işlemci tarafından işlenmez.
+Bu bölümde, bir öznitelik işlemcisi için yayılmalar nasıl hariç tutulacak gösterilmektedir. Özelliklerle eşleşen yayılmalar bu işlemci tarafından işlenmemektedir.
 
-Bir eşleşme için karşılanması gereken koşullar aşağıda verilmiştir:
-* Yayılma adı "spanA" veya "spanB" değerine eşit olmalıdır 
+Bir eşleşme, yayılma adının veya değerine eşit olmasını gerektirir `spanA` `spanB` .
 
-Aşağıdakiler dışlama özellikleriyle eşleşen yayılmalar ve işlemci eylemleri uygulanmaz.
+Aşağıdaki yayılmalar dışlama özellikleriyle eşleşir ve işlemci eylemleri uygulanmaz:
 * Span1 adı: ' spanA ' öznitelikleri: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 adı: ' spanB ' öznitelikleri: {env: dev, test_request: false}
 * Span3 adı: ' spanA ' öznitelikleri: {env: 1, test_request: dev, credit_card: 1234}
 
-Aşağıdaki Aralık dışlama özellikleriyle eşleşmez ve işlemci eylemleri uygulanır.
+Bu yayılma dışlama özellikleriyle eşleşmez ve işlemci eylemleri uygulanır:
 * Span4 adı: ' spanC ' öznitelikleri: {env: dev, test_request: false}
 
 ```json
@@ -99,19 +99,19 @@ Aşağıdaki Aralık dışlama özellikleriyle eşleşmez ve işlemci eylemleri 
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. ExcludeMulti yayılmaları
+### <a name="exclude-spans-by-using-multiple-criteria"></a>Birden çok ölçüt kullanarak yayılmaları hariç tut
 
-Aşağıda, bu öznitelik işlemcisi için yayılmalar dışlanıyor gösterilmektedir. Özelliklerle eşleşen tüm yayılmalar bu işlemci tarafından işlenmez.
+Bu bölümde, bir öznitelik işlemcisi için yayılmalar nasıl hariç tutulacak gösterilmektedir. Özelliklerle eşleşen yayılmalar bu işlemci tarafından işlenmemektedir.
 
-Bir eşleşme için karşılanması gereken koşullar aşağıda verilmiştir:
-* Bir öznitelik (' env ', ' dev '), bir eşleşme için yayılma içinde bulunmalıdır.
-* Yayılma alanında ' test_request ' anahtarına sahip bir öznitelik olduğu sürece eşleşme vardır.
+Bir eşleşme aşağıdaki koşulların karşılanmasını gerektirir:
+* Yayılmakta bir öznitelik (örneğin, `env` veya `dev` ) bulunmalıdır.
+* Span anahtarı olan bir özniteliğe sahip olmalıdır `test_request` .
 
-Aşağıdakiler dışlama özellikleriyle eşleşen yayılmalar ve işlemci eylemleri uygulanmaz.
+Aşağıdaki yayılmalar dışlama özellikleriyle eşleşir ve işlemci eylemleri uygulanmaz.
 * Span1 adı: ' spanB ' öznitelikleri: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 adı: ' spanA ' öznitelikleri: {env: dev, test_request: false}
 
-Aşağıdaki Aralık dışlama özellikleriyle eşleşmez ve işlemci eylemleri uygulanır.
+Aşağıdaki yayılma dışlama özellikleriyle eşleşmez ve işlemci eylemleri uygulanır:
 * Span3 adı: ' spanB ' öznitelikleri: {env: 1, test_request: dev, credit_card: 1234}
 * Span4 adı: ' spanC ' öznitelikleri: {env: dev, dev_request: false}
 
@@ -151,16 +151,16 @@ Aşağıdaki Aralık dışlama özellikleriyle eşleşmez ve işlemci eylemleri 
 }
 ```
 
-### <a name="4-selective-processing"></a>4. Seçmeli işleme
+### <a name="selective-processing"></a>Seçmeli işleme
 
-Aşağıda, bu işlemcinin hangi yayılmaları gerektiğini göstermek için span özellikleri kümesinin belirtilmesi gösterilmektedir. Özellikleri, hangilerinin `include` dahil edileceğini ve `exclude` özellikleri işlenmemelidir.
+Bu bölümde, bu işlemcinin hangi yayılmaları gerektiğini belirten span özelliklerinin nasıl ayarlanacağı gösterilmektedir. İçerme özellikleri hangi yayılmaları işleneceğini belirtir. Hariç tutma özellikleri, işlenmemelidir.
 
-Aşağıdaki yapılandırmayla, aşağıdaki yayılmalar özelliklerle eşleşir ve işlemci eylemleri uygulanır:
+Aşağıdaki yapılandırmada, bu yayılmalar özelliklerle eşleşir ve işlemci eylemleri uygulanır:
 
 * Span1 adı: ' spanB ' öznitelikleri: {env: Production, test_request: 123, credit_card: 1234, redact_trace: "false"}
 * Span2 adı: ' spanA ' öznitelikleri: {env: hazırlama, test_request: false, redact_trace: true}
 
-Aşağıdaki yayılmalar içerme özellikleriyle eşleşmez ve işlemci eylemleri uygulanmaz:
+Bu yayılmalar içerme özellikleriyle eşleşmez ve işlemci eylemleri uygulanmaz:
 * Span3 adı: ' spanB ' öznitelikleri: {env: Production, test_request: true, credit_card: 1234, redact_trace: false}
 * Span4 adı: ' spanC ' öznitelikleri: {env: dev, test_request: false}
 
@@ -202,11 +202,11 @@ Aşağıdaki yayılmalar içerme özellikleriyle eşleşmez ve işlemci eylemler
   }
 }
 ```
-## <a name="attribute-processor-samples"></a>Öznitelik Işlemcisi örnekleri
+## <a name="attribute-processor-samples"></a>Öznitelik işlemcisi örnekleri
 
 ### <a name="insert"></a>Ekle
 
-Aşağıda, "Attribute1" anahtarının bulunmadığı yere yayıldığında {"Attribute1": "attributeValue1"} yeni bir özniteliği eklenir.
+Aşağıdaki örnek, `{"attribute1": "attributeValue1"}` anahtar mevcut olmayan yayılmalar içine yeni özniteliğini ekler `attribute1` .
 
 ```json
 {
@@ -230,7 +230,7 @@ Aşağıda, "Attribute1" anahtarının bulunmadığı yere yayıldığında {"At
 
 ### <a name="insert-from-another-key"></a>Başka bir anahtardan Ekle
 
-Aşağıdaki, "anotherkey" özniteliği "anotherkey" özniteliği, "newKey" anahtarındaki "NewKey": "değerini kapsayacak şekilde yeni bir öznitelik eklemek için öznitelikten değeri kullanır. ' Anotherkey ' özniteliği yoksa, yayılmalar için yeni bir öznitelik eklenmez.
+Aşağıdaki örnek, `anotherkey` `{"newKey": "<value from attribute anotherkey>"}` anahtar mevcut olmayan yayılmalar içine yeni özniteliği eklemek için özniteliğinden değeri kullanır `newKey` . Özniteliği `anotherkey` yoksa, yayılmalar içine yeni bir öznitelik eklenmez.
 
 ```json
 {
@@ -254,7 +254,7 @@ Aşağıdaki, "anotherkey" özniteliği "anotherkey" özniteliği, "newKey" anah
 
 ### <a name="update"></a>Güncelleştir
 
-Şu özniteliği {"DB. Secret": "redaksiyonu"} olarak güncelleştirir ve ' foo ' özniteliğinden değeri kullanarak ' Boo ' özniteliğini güncelleştirir. ' Boo ' özniteliği olmayan yayılma alanları değişmez.
+Aşağıdaki örnek, özniteliğini olarak güncelleştirir `{"db.secret": "redacted"}` . Özniteliği, `boo` özniteliğinden değeri kullanarak güncelleştirir `foo` . Özniteliği olmayan yayılmalar `boo` .
 
 ```json
 {
@@ -283,7 +283,7 @@ Aşağıdaki, "anotherkey" özniteliği "anotherkey" özniteliği, "newKey" anah
 
 ### <a name="delete"></a>Sil
 
-' Credit_card ' anahtarına sahip özniteliği silme aşağıda gösterilmiştir.
+Aşağıdaki örnek, anahtarına sahip bir özniteliğin nasıl silineceğini gösterir `credit_card` .
 
 ```json
 {
@@ -306,7 +306,7 @@ Aşağıdaki, "anotherkey" özniteliği "anotherkey" özniteliği, "newKey" anah
 
 ### <a name="hash"></a>Karma
 
-Aşağıdaki karma var olan öznitelik değerlerini gösterir.
+Aşağıdaki örnek, var olan öznitelik değerlerinin nasıl karma olduğunu gösterir.
 
 ```json
 {
@@ -329,13 +329,13 @@ Aşağıdaki karma var olan öznitelik değerlerini gösterir.
 
 ### <a name="extract"></a>Ayıkla
 
-Aşağıdaki örnekte, başka bir özniteliğin değerine göre yeni öznitelikler oluşturmak için Regex kullanılarak gösterilmiştir.
-Örneğin, verilen http. URL = ' http://example.com/path?queryParam1=value1 , queryParam2 = değer2 ' için aşağıdaki öznitelikler eklenecektir:
-* httpProtocol: http
-* httpDomain: example.com
-* httpPath: yol
-* httpQueryParams: queryParam1 = değer1, queryParam2 = değer2
-* http. URL değeri değişmez.
+Aşağıdaki örnek, başka bir özniteliğin değerine göre yeni öznitelikler oluşturmak için bir normal ifadenin (Regex) nasıl kullanılacağını gösterir.
+Örneğin, verilen `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` Aşağıdaki öznitelikler eklenir:
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* httpPath: `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http. URL: değişiklik *yok*
 
 ```json
 {
@@ -357,8 +357,8 @@ Aşağıdaki örnekte, başka bir özniteliğin değerine göre yeni öznitelikl
 }
 ```
 
-Aşağıdaki örnek, RegExp desenleriyle eşleşen bir yayma adına sahip olan yayılmaları nasıl işleyeceğini gösterir.
-Bu işlemci "belirteç" özniteliğini kaldıracak ve "parola" özniteliğini, yayılma alanındaki "Auth" ile eşleşen yayılmalar halinde \* kaldırır. ve yayılma adı "Login" ile eşleşmez \* .
+Aşağıdaki örnek, Regex desenleriyle eşleşen bir yayma adına sahip olan yayılmaları nasıl işleyeceğini gösterir.
+Bu işlemci, `token` özniteliğini kaldırır. `password`Yayılma alanındaki, yayılma adının eşleştiği `auth.*` ve yayılma adının eşleşmediğinden özniteliği belirsizleştirecektir `login.*` .
 
 ```json
 {
@@ -397,11 +397,11 @@ Bu işlemci "belirteç" özniteliğini kaldıracak ve "parola" özniteliğini, y
 ```
 
 
-## <a name="span-processor-samples"></a>Yayılma Işlemcisi örnekleri
+## <a name="span-processor-samples"></a>Yayılma işlemcisi örnekleri
 
 ### <a name="name-a-span"></a>Bir yayılımı adlandırın
 
-Aşağıdaki örnek, "DB. svc", "Operation" ve "id" özniteliği değerlerinin "::" değeriyle ayırarak, bu sırada yayılma alanının yeni adını oluşturur.
+Aşağıdaki örnek, ve özniteliklerinin değerlerini belirtir `db.svc` `operation` `id` . Bu öznitelik, bu öznitelikleri kullanarak, bu değerleri değer ile ayırarak, bu şekilde yayılma alanının yeni adını oluşturur `::` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ Aşağıdaki örnek, "DB. svc", "Operation" ve "id" özniteliği değerlerinin "
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Aralık adından öznitelikleri Ayıkla
+### <a name="extract-attributes-from-a-span-name"></a>Bir yayılma adından öznitelikleri Ayıkla
 
-Giriş alanı adının/api/v1/Document/12345678/updateolduğunu varsayalım. Şu sonuçların çıkış yayma adı/api/v1/Document/{documententid}/Update 'e uygulanması, "Documenttıd" = "12345678" adlı yeni bir özniteliği yayılmasına ekleyecek.
+Giriş alanı adının olduğunu varsayalım `/api/v1/document/12345678/update` . Aşağıdaki örnek, çıkış yayılımı adıyla sonuçlanır `/api/v1/document/{documentId}/update` . Yeni özniteliğini `documentId=12345678` span öğesine ekler.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ Giriş alanı adının/api/v1/Document/12345678/updateolduğunu varsayalım. Şu
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>Dahil etme ve hariç bırakma adından öznitelikleri Ayıkla
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>Include ve exclude kullanarak bir span adından öznitelikleri Ayıkla
 
-Yayılma adının "{operation_website}" olarak yeniden adlandırılması ve yayılma aşağıdaki özelliklere sahip olduğunda {Key: operation_website, value: oldSpanName} özniteliği eklenmesi gösterilmektedir:
-- Yayılma adı, dizenin herhangi bir yerini '/' içeriyor.
-- Yayılma adı ' donot/Change ' değil.
+Aşağıdaki örnek, yayılma adının olarak nasıl değiştirileceğini gösterir `{operation_website}` . `operation_website` `{oldSpanName}` Yayılma aşağıdaki özelliklere sahip olduğunda anahtar ve değere sahip bir öznitelik ekler:
+- Yayılma adı, `/` dizenin herhangi bir yerini içerir.
+- Yayılma adı değil `donot/change` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

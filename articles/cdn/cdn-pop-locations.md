@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 46fd9285f550b1a730b9040c46bacd7e34650b1e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7db905af85a6f4c157ee6d019e8e3a3feeeb4b4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722628"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
 > [!div class="op_single_selector"]
@@ -36,9 +36,9 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 > Her Azure CDN ürününde CDN altyapılarını oluşturmanın ayrı bir yolu olduğundan, Microsoft, hangi Azure CDN ürünün kullanılacağına karar vermek için POP konumlarının kullanılmasını önerir. Bunun yerine, özelliklerini ve Son Kullanıcı performansını göz önünde bulundurun. Kullanıcılarınız için doğru ürünü seçmek üzere her bir Azure CDN ürünüyle performansı test edin. 
 > 
 
-| Bölge | Microsoft | Verizon | Akamai |
+| Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Minneapolis, MN, USA<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Meksika<br />USA |
+| Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Minneapolis, MN, USA<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Meksika<br />ABD |
 | Güney Amerika | Kaya, Brezilya<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Santiago, Şili<br />Bogota, Kolombiya<br />Buenos Aonis, Arjantin | Buenos Aonis, Arjantin<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Valparaíso, Şili<br />Bogota, Kolombiya<br />Barranquilla, Kolombiya<br />Medellin, Kolombiya<br />Tito, Ekvador<br />Lima, Peru | Arjantin<br />Brezilya<br />Şili<br />Kolombiya<br />Ekvador<br />Peru<br />Uruguay |
 | Avrupa | Moskova, Rusya<br />Viyana, Avusturya<br />Brüksel, Belçika<br />Sofia, Bulgaristan<br />Zagreb, Hırvatistan<br />Prag, Çek Cumhuriyeti<br />Kopenhag, Danimarka<br /> Helsinki, Finlandiya<br /> Oslo, Norveç<br />Marseille, Fransa<br />Paris, Fransa<br />Berlin, Almanya<br />Frankfurt, Almanya<br />Atina, Yunanistan<br />Budapeşte, Macaristan<br />Dublin, Irlanda<br />MILAN, Italya<br />Roma, Italya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Lizbon, Portekiz<br />Bukreş, Romanya<br />Barcelona, Ispanya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Zurich, Isviçre<br />Geneva, Isviçre<br />Londra, UK<br />Manchester, UK | Viyana, Avusturya<br />Kopenhag, Danimarka<br />Helsinki, Finlandiya<br />Marseille, Fransa<br />Paris, Fransa<br />Frankfurt, Almanya<br />MILAN, Italya<br />Riga, Letonya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Londra, UK <br /> Manchester, UK| Avusturya<br />Bulgaristan<br />Danimarka<br />Finlandiya<br />Fransa<br />Almanya<br />Yunanistan<br />İrlanda<br />İtalya<br />Hollanda<br />Polonya<br />Rusya<br />İspanya<br />İsveç<br />İsviçre<br />Birleşik Krallık |
 | Afrika | Cairo, Mısır<br />Cabo Town, Güney Afrika<br />Johannesburg, Güney Afrika<br />Lagos, Nijerya<br />Nairobi, Kenya | Johannesburg, Güney Afrika <br/> Nairobi, Kenya | Güney Afrika |
@@ -49,4 +49,4 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Allowlist için en son IP adreslerini almak üzere [Azure CDN Edge düğümleri API 'sine](/rest/api/cdn/edgenodes)bakın.
+* Allowlist için en son IP adreslerini almak üzere [Azure CDN Edge düğümleri API 'sine](https://github.com/Azure/azure-docs-rest-apis/blob/master/docs-ref-autogen/cdn/cdn/EdgeNodes/)bakın.

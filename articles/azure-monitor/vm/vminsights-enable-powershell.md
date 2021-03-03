@@ -1,33 +1,33 @@
 ---
-title: PowerShell kullanarak VM'ler için Azure İzleyici etkinleştirme
-description: Azure PowerShell kullanılarak Azure sanal makineler veya sanal makine ölçek kümeleri için VM'ler için Azure İzleyici etkinleştirmeyi açıklar.
+title: PowerShell kullanarak VM öngörülerini etkinleştirme
+description: Azure sanal makineleri veya Azure PowerShell kullanılarak sanal makine ölçek kümeleri için VM öngörülerinin nasıl etkinleştirileceğini açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717086"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>PowerShell kullanarak VM'ler için Azure İzleyici etkinleştirme
-Bu makalede, PowerShell kullanarak Azure sanal makinelerinde VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
+# <a name="enable-vm-insights-using-powershell"></a>PowerShell kullanarak VM öngörülerini etkinleştirme
+Bu makalede, PowerShell kullanarak Azure sanal makinelerinde VM öngörülerinin nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
 
 - Azure sanal makine
 - Azure sanal makine ölçek kümesi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Log Analytics çalışma alanı oluşturun ve yapılandırın](../insights/vminsights-configure-workspace.md).
-- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](../insights/vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
+- [Log Analytics çalışma alanı oluşturun ve yapılandırın](./vminsights-configure-workspace.md).
+- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](./vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 
 
 ## <a name="powershell-script"></a>PowerShell betiği
 
-Birden çok VM veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici etkinleştirmek üzere, Azure PowerShell galerisinde bulunan PowerShell betiği [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)kullanın. Bu betik şu şekilde yinelenir:
+Birden çok VM veya sanal makine ölçek kümesi için VM öngörülerini etkinleştirmek üzere Azure PowerShell galerisinde bulunan PowerShell betiği [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)kullanın. Bu betik şu şekilde yinelenir:
 
 - Aboneliğinizdeki her sanal makine ve sanal makine ölçek kümesi.
 - *ResourceGroup* tarafından belirtilen kapsamlı kaynak grubu.
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Aşağıdaki örnek, VM'ler için Azure İzleyici etkinleştirmek ve beklenen çıktıyı anlamak için klasöründeki PowerShell komutlarının kullanımını gösterir:
+Aşağıdaki örnekte, sanal makine öngörülerini etkinleştirmek ve beklenen çıktıyı anlamak için klasöründeki PowerShell komutlarının kullanımı gösterilmektedir:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını kullanma](vminsights-maps.md) . 
+* Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM Insights haritasını kullanma](vminsights-maps.md) . 
 * Performans sorunlarını, genel kullanımı ve sanal makinenizin performansını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md) .

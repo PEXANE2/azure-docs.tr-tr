@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: a98ab9ea347ba4d9ec53c80626f97b429e083cb1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b6fd5b5f70eb813792be003836790752db1d071f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732828"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda genel ağ erişimini reddetme
 
@@ -21,7 +21,7 @@ Bu makalede, bir MySQL için Azure veritabanı sunucusunu tüm genel yapılandı
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
-* [MySQL Için Azure veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
+* Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanı olan [MySQL Için Azure veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
 
@@ -31,11 +31,11 @@ MySQL Server 'ın ortak ağ erişimini reddetme Iznini ayarlamak için şu adım
 
 1. MySQL sunucusu sayfasında, **Ayarlar** altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
 
-1. **Ortak ağ erişimini engelle** ' de, MySQL sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
+1. **Ortak ağ erişimini engelle**' de, MySQL sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
     :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG" alt-text="MySQL için Azure veritabanı ağ erişimini reddetme":::
 
-1. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 

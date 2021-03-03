@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: e0be5523cb3846760644d0c81b06d5caa5a35378
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722934"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Çalışma kitaplarında JSON verilerini dönüştürmek için JSONPath kullanma
 
@@ -22,7 +22,7 @@ ms.locfileid: "100623317"
 
 JSONPath, XML için XPath 'e benzer bir JSON sorgu dilidir. XPath gibi, JSONPath, JSON yapısının ayıklanmasını ve veri ölçeğini dışarı aktarmanıza olanak tanır.
 
-JSONPath dönüşümünü kullanarak, çalışma kitabı yazarları JSON 'ı tablo yapısına dönüştürebilir. Tablo daha sonra [çalışma kitabı görselleştirmelerini](../platform/workbooks-overview.md#visualizations)çizmek için kullanılabilir.
+JSONPath dönüşümünü kullanarak, çalışma kitabı yazarları JSON 'ı tablo yapısına dönüştürebilir. Tablo daha sonra [çalışma kitabı görselleştirmelerini](./workbooks-overview.md#visualizations)çizmek için kullanılabilir.
 
 ## <a name="using-jsonpath"></a>JSONPath kullanma
 
@@ -84,5 +84,5 @@ Yukarıdaki JSON nesnesi, bir deponun envanterinin temsili olarak verildiğini v
 ![ JSON veri kaynağı ve JSON yolu sonuç biçimiyle sorgu öğesi düzenleniyor](./media/workbooks-jsonpath/query-jsonpath.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Çalışma kitaplarına genel bakış](../platform/workbooks-overview.md)
+- [Çalışma kitaplarına genel bakış](./workbooks-overview.md)
 - [Azure Izleyici çalışma kitaplarında gruplar](workbooks-groups.md)

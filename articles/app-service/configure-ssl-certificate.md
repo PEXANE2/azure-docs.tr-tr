@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711714"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -394,5 +394,5 @@ Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış
 * [Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS'yi zorunlu tutma](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 zorlama](configure-ssl-bindings.md#enforce-tls-versions)
-* [Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service](configure-ssl-certificate-in-code.md)
+* [Azure App Service'te kodunuzda TLS/SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
 * [SSS: sertifikalar App Service](./faq-configuration-and-management.md)

@@ -1,18 +1,18 @@
 ---
-title: Kapsayıcılar için Azure Izleyicisini yapılandırma Prometheus tümleştirmesi | Microsoft Docs
-description: Bu makalede, Kubernetes kümeniz ile Prometheus 'dan bir kapsayıcı için Azure Izleyicisini, Azure Izleyici ölçümleri için nasıl yapılandırabileceğiniz açıklanmaktadır.
+title: Container Insights 'ı yapılandırma Prometheus tümleştirmesi | Microsoft Docs
+description: Bu makalede, Kubernetes kümenizle birlikte Prometheus 'tan kapsayıcı içgörüleri aracısını nasıl yapılandırabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624517"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731740"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılara yönelik Azure İzleyici ile Prometheus Metrics atığını yapılandırma
+# <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Kapsayıcı öngörüleri ile Prometheus ölçümlerinin korumasını yapılandırın
 
-[Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu ayarlamanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
+[Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcı öngörüleri, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu ayarlamanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra kapsayıcı içgörüleri için kapsayıcılı bir aracı sizin yerinize hurdaya çıkarabilirsiniz. 
 
 ![Prometheus için kapsayıcı izleme mimarisi](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -42,20 +42,20 @@ Prometheus ölçülerinin etkin bir şekilde kullanılması, iki perspektiften b
 | Kubernetes hizmeti | Küme genelinde | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | URL/uç nokta | Düğüm başına ve/veya küme genelinde | `http://myurl:9101/metrics` |
 
-Bir URL belirtildiğinde, kapsayıcılar için Azure Izleyici yalnızca uç noktayı Scrapes. Kubernetes hizmeti belirtildiğinde, IP adresini almak için hizmet adı küme DNS sunucusu ile çözümlenir ve sonra çözümlenen hizmet, daha sonra çözülür.
+Bir URL belirtildiğinde, kapsayıcı öngörüleri yalnızca uç noktayı Scrapes. Kubernetes hizmeti belirtildiğinde, IP adresini almak için hizmet adı küme DNS sunucusu ile çözümlenir ve sonra çözümlenen hizmet, daha sonra çözülür.
 
 |Kapsam | Anahtar | Veri türü | Değer | Açıklama |
 |------|-----|-----------|-------|-------------|
 | Küme genelinde | | | | Ölçümler için atık uç noktalarına aşağıdaki üç yöntemden birini belirtin. |
-| | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
+| | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, belirli bir kapsayıcı öngörüleri parametresidir ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
 | | `kubernetes_services` | Dize | Virgülle ayrılmış dizi | Kuin-State-ölçümlerini kullanarak bir Kubernetes hizmeti dizisi. Örneğin `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boole | true veya false | `true`, Küme genelinde ayarlar halinde ayarlandığında, kapsayıcılar Için Azure izleyici Aracı, aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde atık olarak çalışır:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `monitor_kubernetes_pods` | Boole | true veya false | `true`, Küme genelinde ayarlar halinde olarak ayarlandığında, kapsayıcı öngörüleri Aracısı aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde atık olarak çalışır:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boole | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods` olarak ayarlanmalıdır `true` . |
 | | `prometheus.io/scheme` | Dize | http veya https | Varsayılan olarak HTTP üzerinden atık yapılır. Gerekirse, olarak ayarlayın `https` . | 
 | | `prometheus.io/path` | Dize | Virgülle ayrılmış dizi | Ölçümlerinin alınacağı HTTP kaynak yolu. Ölçüm yolu yoksa `/metrics` , bu ek açıklama ile tanımlayın. |
 | | `prometheus.io/port` | Dize | 9102 | Iskartaya çıkış için bir bağlantı noktası belirtin. Bağlantı noktası ayarlanmamışsa, varsayılan olarak 9102 olur. |
 | | `monitor_kubernetes_pods_namespaces` | Dize | Virgülle ayrılmış dizi | Kubernetes pods 'den ıskartaya at ölçümleri için ad alanları listesi.<br> Örneğin, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Düğüm genelinde | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
+| Düğüm genelinde | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, belirli bir kapsayıcı öngörüleri parametresidir ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
 | Düğüm genelinde veya küme genelinde | `interval` | Dize | 60s | Koleksiyon aralığı varsayılan değeri bir dakikadır (60 saniye). Koleksiyonu, *[prometheus_data_collection_settings. Node]* ve/veya *[prometheus_data_collection_settings. Cluster]* için s, m, h gibi zaman birimlerine göre değiştirebilirsiniz. |
 | Düğüm genelinde veya küme genelinde | `fieldpass`<br> `fielddrop`| Dize | Virgülle ayrılmış dizi | İzin ver ( `fieldpass` ) ve Allow () listesini ayarlayarak uç noktada toplanacak veya değil, belirli ölçümleri belirtebilirsiniz `fielddrop` . Önce izin verilenler listesini ayarlamanız gerekir. |
 
@@ -124,7 +124,7 @@ Aşağıdaki kümeler için ConfigMap yapılandırma dosyanızı yapılandırmak
         ```
 
         >[!NOTE]
-        >$NODE _IP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tamamen büyük harf olmalıdır. 
+        >$NODE _IP, belirli bir kapsayıcı öngörüleri parametresidir ve düğüm IP adresi yerine kullanılabilir. Tamamen büyük harf olmalıdır. 
 
     - Bir pod ek açıklaması belirterek Prometheus ölçümlerinin korumasını yapılandırmak için aşağıdaki adımları uygulayın:
 
@@ -241,7 +241,7 @@ Azure Red Hat Openshıft v3. x kümeniz için ConfigMap yapılandırma dosyanız
         ```
 
         >[!NOTE]
-        >$NODE _IP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tamamen büyük harf olmalıdır. 
+        >$NODE _IP, belirli bir kapsayıcı öngörüleri parametresidir ve düğüm IP adresi yerine kullanılabilir. Tamamen büyük harf olmalıdır. 
 
     - Bir pod ek açıklaması belirterek Prometheus ölçümlerinin korumasını yapılandırmak için aşağıdaki adımları uygulayın:
 
@@ -330,7 +330,7 @@ Azure Izleyici tarafından ve aracı tarafından bildirilen yapılandırma/Korum
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>Grafana 'de Prometheus ölçümlerini görüntüleme
 
-Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
+Kapsayıcı öngörüleri, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
 
 ## <a name="review-prometheus-data-usage"></a>Prometheus veri kullanımını gözden geçirin
 
@@ -364,8 +364,8 @@ InsightsMetrics
 
 ![Veri alma biriminin günlük sorgu sonuçları](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-Veri kullanımını izleme ve maliyeti çözümleme hakkında daha fazla bilgi, [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](../platform/manage-cost-storage.md)bölümünde bulunabilir.
+Veri kullanımını izleme ve maliyeti çözümleme hakkında daha fazla bilgi, [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](../logs/manage-cost-storage.md)bölümünde bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Stdout, stderr ve ortam değişkenlerinin aracı koleksiyonu ayarlarını [buradan](container-insights-agent-config.md)kapsayıcı iş yüklerinden yapılandırma hakkında daha fazla bilgi edinin. 
+Stdout, stderr ve ortam değişkenlerinin aracı koleksiyonu ayarlarını [buradan](container-insights-agent-config.md)kapsayıcı iş yüklerinden yapılandırma hakkında daha fazla bilgi edinin.

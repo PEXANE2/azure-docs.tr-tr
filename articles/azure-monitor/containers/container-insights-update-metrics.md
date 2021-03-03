@@ -1,19 +1,19 @@
 ---
-title: Ölçümler için Azure Izleyicisini güncelleştirme | Microsoft Docs
-description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı vermeyi destekleyen özel ölçümler özelliğini etkinleştirmek üzere kapsayıcılar için Azure Izleyicisini nasıl güncelleştireceğinizi açıklanmaktadır.
+title: Ölçümler için kapsayıcı öngörülerini güncelleştirme | Microsoft Docs
+description: Bu makalede, toplanan ölçümler üzerinde araştırmayı ve uyarı oluşturmayı destekleyen özel ölçümler özelliğini etkinleştirmek için kapsayıcı öngörülerini nasıl güncelleştireceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708280"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>Ölçümleri etkinleştirmek için kapsayıcı öngörülerini güncelleştirme
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes Services (AKS) ve Azure Arc etkin Kubernetes kümeleri düğümleri ve yığınlarından ve bunları Azure Izleyici ölçümleri deposuna yazarken ölçüm toplama desteğiyle tanışın. Bu değişiklik, Performans grafiklerinde toplam hesaplamalar (Ort, say, Max, min, Sum) sunarken, performans grafiklerini Azure portal panolara sabitlemeyi destekledikleri ve ölçüm uyarılarını destekledikleri zaman, gelişmiş zaman çizelgesi sunmaya yöneliktir.
+Kapsayıcı öngörüleri, Azure Kubernetes Services (AKS) ve Azure Arc etkin Kubernetes kümeleri düğümleri ve yığınlarından ölçüm toplama ve bunları Azure Izleyici ölçüm deposuna yazma desteği sunuyor. Bu değişiklik, Performans grafiklerinde toplam hesaplamalar (Ort, say, Max, min, Sum) sunarken, performans grafiklerini Azure portal panolara sabitlemeyi destekledikleri ve ölçüm uyarılarını destekledikleri zaman, gelişmiş zaman çizelgesi sunmaya yöneliktir.
 
 >[!NOTE]
 >Bu özellik şu anda Azure Red Hat OpenShift kümelerini desteklemez.
@@ -47,7 +47,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal bir kümeyi yükseltme
 
-Kapsayıcılar için Azure Izleyici tarafından izlenen mevcut AKS kümelerinde, Azure Izleyici 'de birden çok küme görünümündeki veya sol bölmedeki **Öngörüler** ' i seçerek doğrudan kümeden gelen sistem durumunu görüntülemek üzere kümeyi seçtikten sonra portalın en üstünde bir başlık görmeniz gerekir.
+Kapsayıcı öngörüleri tarafından izlenen mevcut AKS kümelerinde, Azure Izleyici 'deki çok küme görünümündeki veya sol bölmedeki **Öngörüler** ' i seçerek doğrudan kümeden gelen sistem durumunu görüntülemek üzere kümeyi seçtikten sonra portalın üst kısmında bir başlık görmeniz gerekir.
 
 ![Azure portal AKS küme başlığını yükselt](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

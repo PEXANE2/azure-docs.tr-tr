@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725518"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -76,6 +76,11 @@ Betik başarıyla indirildikten sonra, bu betiği yürütmek için doğru makine
 ### <a name="virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemeleri
 
 Yedeklenen makinede çok sayıda disk (>16) veya büyük diskler (> 4 TB) varsa, VM üzerinde önemli bir etkisi olacağı için betiği geri yükleme için aynı makinede yürütülmesi önerilmez. Bunun yerine, yalnızca dosya kurtarma (Azure VM D2v3 VM 'Ler) için ayrı bir VM 'nin kullanılması önerilir ve gerekli olmadığında bu sanal makineyi kapatın. 
+
+Büyük disk ile yedeklenen VM 'lerden dosyaları geri yükleme gereksinimlerine bakın:<br>
+[Windows İşletim Sistemi](#for-backed-up-vms-with-large-disks-windows)<br>
+[Linux işletim sistemi](#for-backed-up-vms-with-large-disks-linux)
+
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>3. Adım: betiği başarıyla çalıştırmak için işletim sistemi gereksinimleri
 

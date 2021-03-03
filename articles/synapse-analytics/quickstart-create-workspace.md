@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450655"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693637"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma adımları açıklanmaktadır.
@@ -34,7 +34,8 @@ Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma a
 1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
 > [!NOTE]
-> Azure SYNAPSE çalışma alanınızı oluşturduktan sonra, çalışma alanını başka bir Azure Active Directory kiracıya taşıyameyeceksiniz. Abonelik geçişiyle veya başka eylemlerle bunu yaparsanız, çalışma alanının içindeki yapıtlara erişimi kaybedebilirsiniz.  
+> Azure SYNAPSE çalışma alanınızı oluşturduktan sonra, çalışma alanını başka bir Azure Active Directory kiracıya taşıyameyeceksiniz. Abonelik geçişiyle veya başka eylemlerle bunu yaparsanız, çalışma alanının içindeki yapıtlara erişimi kaybedebilirsiniz.
+> Ayrıca, şu anda bir [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/csp-overview) aboneliğinde bir Synapse Analytics çalışma alanı oluşturamazsınız.
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın
 

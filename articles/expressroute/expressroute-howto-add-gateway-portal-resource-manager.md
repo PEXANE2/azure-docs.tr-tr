@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761842"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740911"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Ağ geçidi alt ağı oluşturun.
 > - Sanal Ağ Geçidi oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değerleri temel alarak bir sanal ağ kullanır. Bu listeyi örnek adımlarımızda kullanırız. Bir başvuru olarak kullanmak için listeyi kopyalayabilir ve değerleri kendi değerlerinizle değiştirin.
 
@@ -50,6 +50,11 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
 
 Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) görüntüleyebilirsiniz.
 
+> [!IMPORTANT]
+> Özel eşleme için IPv6 desteği şu anda **genel önizlemededir**. Sanal ağınızı IPv6 tabanlı özel eşleme ile bir ExpressRoute devresine bağlamak istiyorsanız, lütfen sanal ağınızın ikili bir yığın olduğundan emin olun ve [Azure VNET Için IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)yönergelerini izleyin.
+> 
+> 
+
 ## <a name="create-the-gateway-subnet"></a>Ağ geçidi alt ağını oluşturma
 
 1. [Portalda](https://portal.azure.com), sanal ağ geçidini oluşturmak istediğiniz kaynak yöneticisi sanal ağa gidin.
@@ -58,13 +63,17 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Ağ geçidi alt ağı ekleme":::
 
-1. Alt ağınız için **Ad** alanı otomatik olarak ‘GatewaySubnet’ değeriyle doldurulur. Alt ağın Azure tarafından ağ geçidi alt ağı olarak tanınması için bu değer gereklidir. Yapılandırma gereksinimlerinize uyacak şekilde, oto doldurulmuş **adres aralığı** değerlerini ayarlayın. /27 veya daha büyük (/26,/25 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Ardından, değerleri kaydetmek ve ağ geçidi alt ağını oluşturmak için **Tamam** ' ı seçin.
+1. Alt ağınız için **Ad** alanı otomatik olarak ‘GatewaySubnet’ değeriyle doldurulur. Alt ağın Azure tarafından ağ geçidi alt ağı olarak tanınması için bu değer gereklidir. Yapılandırma gereksinimlerinize uyacak şekilde, oto doldurulmuş **adres aralığı** değerlerini ayarlayın. /27 veya daha büyük (/26,/25 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Alt ağ ekleme":::
+    Çift yığın sanal ağı kullanıyorsanız ve ExpressRoute üzerinden IPv6 tabanlı özel eşleme kullanmayı planlıyorsanız, **IP6 adres alanı Ekle** ve **IPv6 adres aralığı** değerlerini gir ' e tıklayın.
+
+Ardından, değerleri kaydetmek ve ağ geçidi alt ağını oluşturmak için **Tamam** ' ı seçin.
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Sanal ağ geçidini oluşturma
 
-1. Portalda, sol taraftaki **kaynak oluştur** ' u seçin ve arama alanına ' sanal ağ geçidi ' yazın. Arama dönüşindeki **sanal ağ geçidini** bulun ve girişi seçin. **Sanal ağ geçidi** sayfasında **Oluştur** ' u seçin.
+1. Portalda, sol taraftaki **kaynak oluştur**' u seçin ve arama alanına ' sanal ağ geçidi ' yazın. Arama dönüşindeki **sanal ağ geçidini** bulun ve girişi seçin. **Sanal ağ geçidi** sayfasında **Oluştur**' u seçin.
 1. **Sanal ağ geçidi oluştur** sayfasında, girin veya şu ayarları seçin:
 
     | Ayar | Değer |
@@ -75,17 +84,22 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
     | Region | **Bölge** alanını, sanal ağınızın bulunduğu konuma işaret etmek üzere değiştirin. Konum, sanal ağınızın bulunduğu bölgeyi işaret ettikten sonra, sanal ağ ' sanal ağ seçin ' açılır listesinde görünmez. |
     | Ağ geçidi türü | **ExpressRoute** seçin|
     | SKU | Açılan listeden ağ geçidi SKU 'sunu seçin. |
-    | Sanal ağ | *Testvnet* ' i seçin. |
-    | Genel IP adresi | **Yeni oluştur** ’u seçin.|
+    | Sanal ağ | *Testvnet*' i seçin. |
+    | Genel IP adresi | **Yeni oluştur**’u seçin.|
     | Genel IP adresi adı | Genel IP adresi için bir ad girin. |
 
-1. Ağ geçidini oluşturmaya başlamak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Ayarlar doğrulanır ve ağ geçidi dağıtılır. Sanal ağ geçidi oluşturma işleminin tamamlanması 45 dakika sürebilir.
+    > [!IMPORTANT]
+    > ExpressRoute üzerinden IPv6 tabanlı özel eşleme kullanmayı planlıyorsanız, **SKU** IÇIN az SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) seçtiğinizden emin olun.
+    > 
+    > 
+
+1. Ağ geçidini oluşturmaya başlamak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Ayarlar doğrulanır ve ağ geçidi dağıtılır. Sanal ağ geçidi oluşturma işleminin tamamlanması 45 dakika sürebilir.
 
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Sanal ağ geçidi sayfası alanı oluştur":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-ExpressRoute ağ geçidine artık ihtiyacınız yoksa, sanal ağ kaynak grubundaki ağ geçidini bulun ve **Sil** ' i seçin. Ağ geçidinin bir devreye bağlantı içermediğinden emin olun.
+ExpressRoute ağ geçidine artık ihtiyacınız yoksa, sanal ağ kaynak grubundaki ağ geçidini bulun ve **Sil**' i seçin. Ağ geçidinin bir devreye bağlantı içermediğinden emin olun.
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Sanal ağ geçidini Sil":::
 

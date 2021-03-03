@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure WCF Geçişi kullanarak bir şirket içi WCF
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935713"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710796"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma
 
@@ -55,18 +55,18 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
 
 1. Microsoft Visual Studio yönetici olarak başlatın. Bunu yapmak için, Visual Studio program simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 1. Projeyi *yankı hizmetini* adlandırın ve **Oluştur**' u seçin.
 
    ![Konsol uygulaması oluşturma][2]
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, ardından arama yapın ve **windowsazure. ServiceBus**öğesini seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, ardından arama yapın ve **windowsazure. ServiceBus** öğesini seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
 
     ![Service Bus paketi][3]
 
    Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` . [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlamayla erişmenizi sağlayan ad alanıdır. Service Bus, hizmet sözleşmelerini tanımlamak için WCF'nin birçok nesnesini ve özniteliklerini kullanır.
 
-1. Aşağıdaki `using` deyimlerini *program.cs*üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini *program.cs* üst kısmına ekleyin:
 
     ```csharp
     using System.ServiceModel;
@@ -109,7 +109,7 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
 
     Kanal, ana bilgisayar ve istemcinin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra, iki uygulama arasındaki bilgileri yankılanması için kanala karşı kod yazacaksınız.
 
-1. **Build**  >  İşin şu ana kadarki doğruluğunu onaylamak için derleme**oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
+1.   >  İşin şu ana kadarki doğruluğunu onaylamak için derleme **oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
 
 ### <a name="example-of-a-wcf-contract"></a>WCF sözleşmesinin örneği
 
@@ -174,7 +174,7 @@ Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi
     }
     ```
 
-1. Yapı **Build**  >  **oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
+1. Yapı   >  **oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
 
 ### <a name="define-the-configuration-for-the-service-host"></a>Hizmet ana bilgisayarı için yapılandırmayı tanımlayın
 
@@ -185,7 +185,7 @@ Yapılandırma dosyası bir WCF yapılandırma dosyasına benzer. Hizmet adını
 1. `<system.serviceModel>` etiketleri içinde, bir `<services>` öğesi ekleyin. Tek bir yapılandırma dosyasında birden çok geçiş uygulaması tanımlayabilirsiniz. Ancak bu öğreticide yalnızca bir adet tanımlanır.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -210,7 +210,7 @@ Yapılandırma dosyası bir WCF yapılandırma dosyasına benzer. Hizmet adını
 
     Uç nokta, istemcinin ana bilgisayar uygulamasını nerede arayacağını tanımlar. Bu öğretici daha sonra, Azure Relay aracılığıyla konağı tam olarak sunan bir URI oluşturmak için bu adımı kullanır. Bağlama, geçiş hizmeti ile iletişim kurmak için protokol olarak TCP kullandığımızda bildirir.
 
-1. **Build**  >  İşin şu ana kadarki doğruluğunu onaylamak için derleme**oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
+1.   >  İşin şu ana kadarki doğruluğunu onaylamak için derleme **oluşturma çözümünü** seçin veya CTRL + SHIFT + B ' yi seçin.
 
 ### <a name="example-of-implementation-of-a-service-contract"></a>Hizmet sözleşmesinin uygulanmasına örnek
 
@@ -439,7 +439,7 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
 
 1. İstemci için geçerli Visual Studio çözümünde yeni bir proje oluşturun:
 
-   1. **Çözüm Gezgini**, geçerli çözüme (proje değil) sağ tıklayın ve **Add**  >  **Yeni proje**Ekle ' yi seçin.
+   1. **Çözüm Gezgini**, geçerli çözüme (proje değil) sağ tıklayın ve   >  **Yeni proje** Ekle ' yi seçin.
    1. **Yeni Proje Ekle**' de, C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
    1. Projeyi *yankı istemcisini* adlandırın ve **Oluştur**' u seçin.
 
@@ -448,7 +448,7 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
 1. [Service Bus NuGet paketini](https://www.nuget.org/packages/WindowsAzure.ServiceBus)yükler:
 
    1. **Çözüm Gezgini**, **yankı istemcisi** ' ne sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
-   1. **Araştır**' ı seçin, ardından **windowsazure. ServiceBus**öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+   1. **Araştır**' ı seçin, ardından **windowsazure. ServiceBus** öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
 
       ![Service Bus paketini yükler][4]
 
@@ -513,7 +513,7 @@ Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir is
 1. Öğesi içinde `system.serviceModel` , bir öğesi ekleyin `<client>` .
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>
@@ -571,7 +571,7 @@ Bu bölümde, daha önce Bu öğreticide oluşturduğunuz Hizmete erişen temel 
 * Uygulamaya özgü görevleri gerçekleştirir.
 * Bağlantıyı kapatır.
 
-Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak için bir kanal kullanmalarından biridir. Hizmet bir **ServiceHost**çağrısı kullanır. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak için bir kanal kullanmalarından biridir. Hizmet bir **ServiceHost** çağrısı kullanır. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
 ### <a name="implement-a-client-application"></a>Bir istemci uygulaması uygulama
 
@@ -725,16 +725,16 @@ namespace Microsoft.ServiceBus.Samples
 
 1. Çözümü derlemek için CTRL + SHIFT + B ' yi seçin. Bu eylem, önceki adımlarda oluşturduğunuz istemci projesini ve hizmet projesini oluşturur.
 1. İstemci uygulamasını çalıştırmadan önce hizmet uygulamasının çalıştığından emin olmanız gerekir. **Çözüm Gezgini**, **yankı hizmeti** çözümüne sağ tıklayın ve ardından **Özellikler**' i seçin.
-1. **Özellik sayfaları**' nda **ortak özellikler**  >  **Başlangıç projesi**' nde, **birden fazla başlangıç**projesi ' ni seçin. **EchoService** çözümünün liste başında olduğundan emin olun.
+1. **Özellik sayfaları**' nda **ortak özellikler**  >  **Başlangıç projesi**' nde, **birden fazla başlangıç** projesi ' ni seçin. **EchoService** çözümünün liste başında olduğundan emin olun.
 1. **EchoService** ve **EchoClient** projeleri için **Eylem** kutusunu **Başlat** olarak ayarlayın.
 
     ![Proje özellik sayfaları][5]
 
-1. **Proje bağımlılıklarını**seçin. **Projeler**' de, **yankı istemcisi**' ni seçin. **Öğesine bağlı**olarak, **yankı hizmeti** 'nin seçili olduğundan emin olun.
+1. **Proje bağımlılıklarını** seçin. **Projeler**' de, **yankı istemcisi**' ni seçin. **Öğesine bağlı** olarak, **yankı hizmeti** 'nin seçili olduğundan emin olun.
 
     ![Proje bağımlılıkları][6]
 
-1. **Özellik sayfalarını**kapatmak için **Tamam ' ı** seçin.
+1. **Özellik sayfalarını** kapatmak için **Tamam ' ı** seçin.
 1. Her iki projeyi de çalıştırmak için F5 ' i seçin.
 1. Her iki konsol penceresi de açılır ve sizden ad alanı adı ister. Önce hizmetin çalışması gerekir, bu nedenle **yankı hizmeti** konsol penceresinde ad alanını girin ve ardından ENTER ' u seçin.
 1. Ardından, konsolu SAS anahtarınızı ister. SAS anahtarını girin ve ENTER ' u seçin.

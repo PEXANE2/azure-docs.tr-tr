@@ -1,19 +1,19 @@
 ---
-title: VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
-description: VM'ler için Azure İzleyici için önceden tanımlı ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın.
+title: Çalışma kitapları ile etkileşimli raporlar VM öngörüleri oluşturma
+description: VM öngörüleri için önceden tanımlı ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731298"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Çalışma kitapları ile etkileşimli raporlar VM öngörüleri oluşturma
 
 Çalışma kitapları metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
 
@@ -24,9 +24,9 @@ ms.locfileid: "100625015"
 * SANAL makinenizin yeniden boyutlandırma denemenizin sonuçlarını takımınızın diğer üyeleriyle paylaşma. Denemeye ilişkin hedefleri açıklayabileceğiniz için, her bir metriğin hedefin üstünde mi yoksa altında mı olduğunu gösteren açık çağrı durumuyla birlikte denemeyi değerlendirmek için kullanılan her kullanım ölçümünü ve analiz sorgularını gösterebilirsiniz.
 * SANAL makinenizin kullanımıyla ilgili bir kesinti oluşmasını, verileri, metin açıklamasını birleştirerek ve gelecekte kesintiye neden olan kesintileri önlemeye yönelik sonraki adımlara ilişkin bir tartışmayı raporlama.
 
-Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici dahil olan çalışma kitaplarını özetler.
+Aşağıdaki tabloda, sanal makine öngörülerinin, başlamanızı sağlamak için içerdiği çalışma kitapları özetlenmektedir.
 
-| Çalışma Kitabı | Description | Kapsam |
+| Çalışma Kitabı | Açıklama | Kapsam |
 |----------|-------------|-------|
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Ölçekte |
 | Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Ölçekte |
@@ -96,7 +96,7 @@ Sorgu bölümleri son derece esnektir ve şunun gibi soruları yanıtlamak için
 
 Ayrıca, çalışma kitabını başlattığınız sanal makine bağlamından sorgulanmayı da sınırlı değilsiniz. Bu kaynaklara erişim iznine sahip olduğunuz sürece, birden fazla sanal makinede sorgulama yapabilirsiniz ve Log Analytics çalışma alanları.
 
-Diğer Log Analytics çalışma alanlarından veya **çalışma alanı** tanımlayıcısı kullanarak belirli bir Application Insights uygulamadan veri eklemek için. Çapraz kaynak sorguları hakkında daha fazla bilgi edinmek için [resmi kılavuza](../log-query/cross-workspace-query.md)bakın.
+Diğer Log Analytics çalışma alanlarından veya **çalışma alanı** tanımlayıcısı kullanarak belirli bir Application Insights uygulamadan veri eklemek için. Çapraz kaynak sorguları hakkında daha fazla bilgi edinmek için [resmi kılavuza](../logs/cross-workspace-query.md)bakın.
 
 ### <a name="advanced-analytic-query-settings"></a>Gelişmiş analitik sorgu ayarları
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>Ölçüm bölümleri ekleme
 
-Ölçüm bölümleri, Azure Izleyici ölçüm verilerini etkileşimli raporlarınıza katmak için size tam erişim sağlar. VM'ler için Azure İzleyici, önceden oluşturulmuş çalışma kitapları tipik olarak ölçüm verileri yerine analitik sorgu verileri içerir.  Ölçüm verileriyle çalışma kitapları oluşturmayı tercih edebilirsiniz, böylece her iki özellikten en iyi şekilde tek bir yerde yararlanmanızı sağlayabilirsiniz. Ayrıca, erişiminiz olan aboneliklerdeki kaynaklardan ölçüm verilerini çekme olanağınız da vardır.
+Ölçüm bölümleri, Azure Izleyici ölçüm verilerini etkileşimli raporlarınıza katmak için size tam erişim sağlar. VM öngörüleri ' nde, önceden oluşturulmuş çalışma kitapları genellikle ölçüm verileri yerine analitik sorgu verileri içerir.  Ölçüm verileriyle çalışma kitapları oluşturmayı tercih edebilirsiniz, böylece her iki özellikten en iyi şekilde tek bir yerde yararlanmanızı sağlayabilirsiniz. Ayrıca, erişiminiz olan aboneliklerdeki kaynaklardan ölçüm verilerini çekme olanağınız da vardır.
 
 Aşağıda, bir çalışma kitabına eklenen ve CPU performansının kılavuz bir görselleştirmesi sağlayan sanal makine verilerinin bir örneği verilmiştir:
 
@@ -244,4 +244,4 @@ Bir Azure panosuna çalışma kitabına bir bağlantı sabitlemek için:
 
 - Sınırlamaları ve genel VM performansını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).
 
-- Bulunan uygulama bağımlılıkları hakkında bilgi edinmek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
+- Bulunan uygulama bağımlılıkları hakkında bilgi edinmek için bkz. [VM Insights haritasını görüntüleme](vminsights-maps.md).

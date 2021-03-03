@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691170"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium dosya paylaşımıyla bir FCı oluşturma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, [Premium dosya paylaşımının](../../../storage/files/storage-how-to-create-premium-fileshare.md)kullanıldığı Azure sanal makinelerinde (vm) SQL Server yük devretme kümesi örneği (FCI) oluşturma işlemi açıklanmaktadır.
+Bu makalede, [Premium dosya paylaşımının](../../../storage/files/storage-how-to-create-file-share.md)kullanıldığı Azure sanal makinelerinde (vm) SQL Server yük devretme kümesi örneği (FCI) oluşturma işlemi açıklanmaktadır.
 
 Premium dosya paylaşımları, Windows Server 2012 veya sonraki sürümlerde SQL Server 2012 veya sonraki bir sürümü için yük devretme kümesi örnekleriyle birlikte kullanılmak üzere tam olarak desteklenen Depolama Alanları Doğrudan (SSD) destekli, sürekli düşük gecikmeli dosya paylaşımlardır. Premium dosya paylaşımları size daha fazla esneklik sağlar, böylece herhangi bir kesinti olmadan dosya paylaşımını yeniden boyutlandırabilir ve ölçeklendirebilirsiniz.
 
@@ -37,7 +37,7 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 - Azure aboneliği.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
 - Bir [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) veya farklı [kullanılabilirlik bölgelerinde](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) [hazırlanmış Iki veya daha fazla Microsoft Azure sanal makinesi](failover-cluster-instance-prepare-vm.md) .
-- Veri dosyalarınız için veritabanınızın depolama kotasına bağlı olarak, kümelenmiş sürücü olarak kullanılacak bir [Premium dosya paylaşımıdır](../../../storage/files/storage-how-to-create-premium-fileshare.md) .
+- Veri dosyalarınız için veritabanınızın depolama kotasına bağlı olarak, kümelenmiş sürücü olarak kullanılacak bir [Premium dosya paylaşımıdır](../../../storage/files/storage-how-to-create-file-share.md) .
 - En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
 ## <a name="mount-premium-file-share"></a>Premium dosya paylaşma bağlama
@@ -222,6 +222,6 @@ Premium dosya paylaşımları sizin için uygun FCı depolama çözümü değils
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde SQL Server ve [küme yapılandırması en iyi yöntemleri](hadr-cluster-best-practices.md) [ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

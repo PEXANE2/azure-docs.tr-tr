@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: qnamaker-quickstart
-ms.openlocfilehash: de237c1bba699165e63fc0b2e4bfb58d25518bd9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5fd200fcd1d48b533e629fe4429f5bafb5fde817
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731011"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Hızlı başlangıç: Soru-Cevap Oluşturma istemci kitaplığı
 
@@ -56,7 +56,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: bilgi bankaınızı bir toplu iş dosyasıyla test etme](../index.yml)
+>[Öğretici: bilgi bankaınızı bir toplu iş dosyasıyla test etme](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
 * [Bilgi bankası düzenleme](../how-to/edit-knowledge-base.md)

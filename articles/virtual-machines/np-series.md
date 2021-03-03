@@ -7,16 +7,17 @@ ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 8d350e248d09f29496f4461b902eba96d8375732
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4fe6df5a9eabc6e5088618039fdea450ee8314ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693858"
 ---
-# <a name="np-series-preview"></a>NP serisi (Önizleme)
-
+# <a name="np-series-preview"></a>NP serisi (Önizleme) 
 NP serisi sanal makineler, makine öğrenimi çıkarımı, video dönüştürme kodu ve veritabanı arama & analizi dahil olmak üzere iş yüklerini hızlandırma için [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) fpgile desteklenir. NP serisi VM 'Ler, 3,2 GHz 'nin tüm çekirdek Turbo saat hızına sahip Intel Xeon 8171M (ufuk Gölü) CPU 'Ları tarafından da desteklenir.
+
+NP serisi önizleme programının bir parçası olmak için [Önizleme formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu) kullanarak bir istek gönderebilirsiniz.
 
 
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>

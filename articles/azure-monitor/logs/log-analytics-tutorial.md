@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 038663a6b8fe015f36f70b7bf13d25accb470903
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723189"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics öğreticisi
 Log Analytics, Azure Izleyici günlükleri tarafından toplanan verilerden günlük sorgularını düzenlemek ve çalıştırmak ve sonuçları etkileşimli olarak analiz etmek için Azure portal bir araçtır. Belirli ölçütlere uyan kayıtları almak, eğilimleri belirlemek, desenleri analiz etmek ve verilerinize çeşitli Öngörüler sağlamak için Log Analytics sorguları kullanabilirsiniz. 
@@ -33,7 +33,7 @@ Bu öğretici Log Analytics arabiriminde size rehberlik eder, bazı temel sorgul
 Bu öğretici, örnek sorguları destekleyen çok sayıda örnek veri içeren [Log Analytics tanıtım ortamını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)kullanır. Ayrıca kendi Azure aboneliğinizi de kullanabilirsiniz, ancak aynı tablolarda verileriniz olmayabilir.
 
 ## <a name="open-log-analytics"></a>Log Analytics açın
-[Log Analytics demo ortamını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) açın veya aboneliğinizdeki Azure Izleyici menüsünden **Günlükler** ' i seçin. Bu, ilk kapsamı, sorgunuzun bu çalışma alanındaki tüm verilerden seçim olacağı bir Log Analytics çalışma alanına ayarlar. Azure kaynağının menüsünden **Günlükler** ' i seçerseniz, kapsam yalnızca bu kaynaktaki kayıtlar olarak ayarlanır. Kapsam hakkındaki ayrıntılar için bkz. [günlük sorgu kapsamı](../log-query/scope.md) .
+[Log Analytics demo ortamını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) açın veya aboneliğinizdeki Azure Izleyici menüsünden **Günlükler** ' i seçin. Bu, ilk kapsamı, sorgunuzun bu çalışma alanındaki tüm verilerden seçim olacağı bir Log Analytics çalışma alanına ayarlar. Azure kaynağının menüsünden **Günlükler** ' i seçerseniz, kapsam yalnızca bu kaynaktaki kayıtlar olarak ayarlanır. Kapsam hakkındaki ayrıntılar için bkz. [günlük sorgu kapsamı](./scope.md) .
 
 Kapsamı ekranın sol üst köşesinde görüntüleyebilirsiniz. Kendi ortamınızı kullanıyorsanız, farklı bir kapsam seçme seçeneği görürsünüz, ancak bu seçenek tanıtım ortamında kullanılamaz.
 

@@ -1,26 +1,26 @@
 ---
-title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) görüntüleme | Microsoft Docs
-description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
+title: Kapsayıcı öngörüleri ile canlı verileri (Önizleme) görüntüleme | Microsoft Docs
+description: Bu makalede, kapsayıcı öngörülerinde kubectl kullanılmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621848"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711238"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderror), olaylara ve pod ölçümlere doğrudan erişim sağlayan gelişmiş bir tanılama özelliği olan canlı veriler (Önizleme) özelliğini içerir. `kubectl logs -c`, Ve olaylarına doğrudan erişim sunar `kubectl get` `kubectl top pods` . Konsol bölmesi, sorun giderme sorunlarını gerçek zamanlı olarak daha fazla yardımcı olmak için kapsayıcı altyapısı tarafından oluşturulan günlükleri, olayları ve ölçümleri gösterir.
+Kapsayıcı öngörüleri, Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderror), olaylara ve pod ölçümlere doğrudan erişim sağlayan gelişmiş bir tanılama özelliği olan canlı veriler (Önizleme) özelliğini içerir. `kubectl logs -c`, Ve olaylarına doğrudan erişim sunar `kubectl get` `kubectl top pods` . Konsol bölmesi, sorun giderme sorunlarını gerçek zamanlı olarak daha fazla yardımcı olmak için kapsayıcı altyapısı tarafından oluşturulan günlükleri, olayları ve ölçümleri gösterir.
 
 Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur.
 
 Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgili yardım için [Kurulum kılavuzumuzu](container-insights-livedata-setup.md)gözden geçirin. Bu özellik, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz.
 
 ## <a name="view-deployment-live-logs-preview"></a>Dağıtım canlı günlüklerini görüntüleme (Önizleme)
-Kapsayıcılar için Azure Izleyici tarafından izlenmeyen AKS kümelerinin bir parçası olan dağıtımlara yönelik canlı günlükleri görüntülemek için aşağıdaki yordamı kullanın. Kümeniz kapsayıcılar için Azure Izleyici kullanıyorsa düğümler, denetleyiciler, kapsayıcılar ve dağıtımlar için canlı verileri görüntülemek üzere aşağıdaki işlemi kullanın.
+Kapsayıcı öngörüleri tarafından izlenmeyen AKS kümelerinin bir parçası olan dağıtımlara yönelik canlı günlükleri görüntülemek için aşağıdaki yordamı kullanın. Kümeniz kapsayıcı öngörüleri kullanıyorsa düğümler, denetleyiciler, kapsayıcılar ve dağıtımlar için canlı verileri görüntülemek üzere aşağıdaki işlemi kullanın.
 
 1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 

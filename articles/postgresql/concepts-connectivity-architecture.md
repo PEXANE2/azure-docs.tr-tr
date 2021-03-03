@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 97778951777677ce02adec59d906c1246494457a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0c8f55b6eeba4319b0ce9e39085912b8c4829235
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369416"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720809"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -64,7 +64,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritaba
 | Hindistan Orta | 104.211.96.159     | | |
 | Hindistan Güney | 104.211.224.146  | | |
 | Hindistan Batı | 104.211.160.80    | | |
-| Doğu Japonya | 40.79.192.23 | 13.78.61.196 | |
+| Doğu Japonya | 40.79.192.23, 40.79.184.8 | 13.78.61.196 | |
 | Batı Japonya | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
 | Güney Kore - Orta | 52.231.17.13   | 52.231.32.42 | |
 | Güney Kore - Güney | 52.231.145.3     | 52.231.200.86 | |

@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339810"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690660"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Not defterlerini GitHub deposundan Azure Cosmos DB içine aktarma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ Azure Cosmos DB içindeki not defterlerini okumak, yazmak ve paylaşmak için ke
 
 1. **GitHub 'A Bağlan** menü öğesini seçin.
 
-1. Yalnızca **ortak depoya** veya **genel ve özel** depolara bağlanmayı seçebileceğiniz bir sekme açılır.  Gerekli seçeneği belirledikten sonra, **erişimi Yetkilendir** ' i seçin. GitHub hesabınızdaki depolara erişmek için Azure Cosmos DB yetkilendirme gerekir.
+1. Yalnızca **ortak depoya** veya **genel ve özel** depolara bağlanmayı seçebileceğiniz bir sekme açılır.  Gerekli seçeneği belirledikten sonra, **erişimi Yetkilendir**' i seçin. GitHub hesabınızdaki depolara erişmek için Azure Cosmos DB yetkilendirme gerekir.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme":::
 
@@ -45,19 +45,24 @@ Azure Cosmos DB içindeki not defterlerini okumak, yazmak ve paylaşmak için ke
 
 Bir GitHub hesabıyla tümleştirdikten sonra yalnızca Azure Cosmos hesabınızda bulunan depoların ve Not defterlerinin listesini görebilirsiniz. Birden çok Kullanıcı Azure Cosmos DB hesapta oturum açıp kendi hesaplarını ekleyebilse bile bu ifade geçerlidir. Diğer bir deyişle, birden çok Kullanıcı, Not defteri çalışma alanını GitHub 'a bağlamak için aynı Azure Cosmos hesabını kullanabilir. Ancak, her Kullanıcı yalnızca içeri aktardıkları depoların ve Not defterlerinin listesini görür. Başkaları tarafından içeri aktarılan Not defterleri sizin için görünür değildir.
 
-GitHub hesabınızın Not defteri çalışma alanından bağlantısını kesmek için **Veri Gezgini** sekmesini açın, `…` **GitHub depoları** ' nı seçin ve **GitHub ' dan bağlantıyı kes** ' i seçin.
+GitHub hesabınızın Not defteri çalışma alanından bağlantısını kesmek için **Veri Gezgini** sekmesini açın, `…` **GitHub depoları** ' nı seçin ve **GitHub ' dan bağlantıyı kes**' i seçin.
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Bir not defteri düzenleyin ve değişiklikleri GitHub 'a gönderin
 
 Mevcut bir not defterini düzenleyebilir veya depoya yeni bir not defteri ekleyebilir ve değişiklikleri GitHub 'a geri kaydedebilirsiniz.
 
-Mevcut bir not defterini düzenledikten sonra **Kaydet** ' i seçin. Yaptığınız değişiklikler için COMMIT iletisini girebileceğiniz bir iletişim kutusu açılır. **Yürüt** ' ü seçin ve GitHub 'daki Not defteri güncelleştirilir. GitHub hesabınızda oturum açarak ve tamamlama geçmişini doğrulayarak güncelleştirmeleri doğrulayabilirsiniz.
+Mevcut bir not defterini düzenledikten sonra **Kaydet**' i seçin. Yaptığınız değişiklikler için COMMIT iletisini girebileceğiniz bir iletişim kutusu açılır. **Yürüt** ' ü seçin ve GitHub 'daki Not defteri güncelleştirilir. GitHub hesabınızda oturum açarak ve tamamlama geçmişini doğrulayarak güncelleştirmeleri doğrulayabilirsiniz.
 
 Değişiklikleri kaydettikten sonra normal GitHub akışında, genellikle değişiklikleri uzak bir ile gönderirsiniz. Bununla birlikte, bu durumda COMMIT seçeneği, güncelleştirmelerinizi GitHub 'a "hazırlama, yürütme ve gönderme" amacını sunar.
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Not defterlerini Düzenle ve değişiklikleri GitHub 'a Kaydet":::
 
+Not defterini düzenledikten sonra [Not defteri galerisinde yayımlayabilirsiniz](publish-notebook-gallery.md). 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB Jupyıter Not defterlerinin](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin.
-
+* [Not defteri örnekleri galerisini keşfet](https://cosmos.azure.com/gallery.html)
+* [Not defterlerini Azure Cosmos DB Not defteri galerisine yayımlama](publish-notebook-gallery.md)
+* [Python Not defteri özelliklerini ve komutlarını kullanma](use-python-notebook-features-and-commands.md)
+* [C# Not defteri özelliklerini ve komutlarını kullanma](use-csharp-notebook-features-and-commands.md)

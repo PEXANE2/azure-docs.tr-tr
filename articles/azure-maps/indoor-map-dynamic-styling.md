@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726328"
 ---
 # <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Oluşturucu (Önizleme) ınkapılı haritalar için dinamik stil uygulama
 
@@ -54,11 +54,11 @@ map.events.add("click", function(e){
 
     var features = map.layers.getRenderedShapes(e.position, "indoor");
 
-    var result = features.reduce(function (ids, feature) {
-        if (feature.layer.id == "indoor_unit_office") {
+    features.forEach(function (feature) {
+        if (feature.layer.id == 'indoor_unit_office') {
             console.log(feature);
         }
-    }, []);
+    });
 });
 ```
 
@@ -78,7 +78,7 @@ Sonraki bölümde, Office 'in doluluk *durumunu* olarak ayarlayacağız `UNIT26`
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Post** isteğinin **gövdesinde** , özellik güncelleştirmeleriyle aşağıdaki JSON 'u yazın. Güncelleştirme yalnızca, deftere nakledilen zaman damgası, aynı özellik için önceki özellik durumu güncelleştirme isteklerinde kullanılan zaman damgasından sonra kaydedilir `ID` . Değerini güncelleştirmek için "dolu" öğesini geçirin `keyName` .
+3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Post** isteğinin **gövdesinde** , özellik GÜNCELLEŞTIRMELERIYLE birlikte aşağıdaki ham JSON ' ı yazın. Güncelleştirme yalnızca, deftere nakledilen zaman damgası, aynı özellik için önceki özellik durumu güncelleştirme isteklerinde kullanılan zaman damgasından sonra kaydedilir `ID` . Değerini güncelleştirmek için "dolu" öğesini geçirin `keyName` .
 
     ```json
     {
@@ -108,9 +108,11 @@ Sonraki bölümde, Office 'in doluluk *durumunu* olarak ayarlayacağız `UNIT26`
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>Haritada dinamik stilleri görselleştirme
 
-Daha önce bir tarayıcıda açtığınız web uygulaması, artık eşleme özelliklerinin güncelleştirilmiş durumunu yansıtmalıdır. `UNIT27`(151) yeşil ve `UNIT26` (157) kırmızı görünmelidir.
+Daha önce bir tarayıcıda açtığınız web uygulaması, artık eşleme özelliklerinin güncelleştirilmiş durumunu yansıtmalıdır. `UNIT27`(142) yeşil ve `UNIT26` (143) kırmızı görünmelidir.
 
 ![Yeşil ve meşgul odadaki boş oda kırmızı renkte](./media/indoor-map-dynamic-styling/room-state.png)
+
+[Canlı tanıtımı gör](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

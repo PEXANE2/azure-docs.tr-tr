@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721745"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Devre sağlama ve devre durumları için ExpressRoute iş akışları
 
@@ -77,8 +77,12 @@ Yönlendirme etki alanlarını yapılandırın. Bağlantı sağlayıcınız katm
 
 Azure sanal ağı 'nda dağıtılan VM 'lere ve bulut hizmetlerine bağlanmak için özel eşlemeyi etkinleştirin.
 
-* Yol 1 (/30) için eşleme alt ağı
-* Yol 2 (/30) için eşleme alt ağı
+* IPv4 alt ağları:
+    * Yol 1 (/30) için eşleme alt ağı
+    * Yol 2 (/30) için eşleme alt ağı
+* IPv6 alt ağları (isteğe bağlı):
+    * Yol 1 için eşleme alt ağı (/126)
+    * Yol 2 için eşleme alt ağı (/126)
 * Eşleme için VLAN KIMLIĞI
 * Eşleme için ASN
 * ExpressRoute ASN = 12076
@@ -88,8 +92,12 @@ Azure sanal ağı 'nda dağıtılan VM 'lere ve bulut hizmetlerine bağlanmak i�
 
 Microsoft 365 gibi Microsoft çevrimiçi hizmetler erişmek için bunu etkinleştirin. Ayrıca, tüm Azure PaaS hizmetlerine Microsoft eşlemesi üzerinden erişilebilir. Internet için kullandığınızdan Microsoft 'a bağlanmak için ayrı bir proxy/kenar kullandığınızdan emin olmanız gerekir. Hem ExpressRoute hem de Internet için aynı kenarı kullanmak asimetrik yönlendirmeye yol açabilir ve ağınız için bağlantı kesintilerine neden olur.
 
-* Yol 1 (/30) için eşleme alt ağı-genel IP olmalıdır
-* Yol 2 (/30) için eşleme alt ağı-genel IP olmalıdır
+* IPv4 alt ağları:
+    * Yol 1 (/30) için eşleme alt ağı-genel IP olmalıdır
+    * Yol 2 (/30) için eşleme alt ağı-genel IP olmalıdır
+* IPv6 alt ağları (isteğe bağlı):
+    * Yol 1 (/126) için eşleme alt ağı-genel IP olmalıdır
+    * Yol 2 (/126) için eşleme alt ağı-genel IP olmalıdır
 * Eşleme için VLAN KIMLIĞI
 * Eşleme için ASN
 * Tanıtılan ön ekler-genel IP ön ekleri olmalıdır

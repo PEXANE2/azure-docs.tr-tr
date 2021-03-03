@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938719"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714791"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltma yöntemini değiştirme
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
 | <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
-| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 3</sup> |
+| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Dinamik geçiş isteme |
 | <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
 
 <sup>1</sup> bir kerelik çıkış ücreti doğurur.<br />

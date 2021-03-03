@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Kavramlar
       items:
         - name: Sunucular
@@ -572,14 +575,6 @@
         - name: Gerçek zamanlı bir pano tasarlama
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: Örnekler
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Azure İlkesi yerleşik ilkeler
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: Kavramlar
       items:
         - name: Dağıtılmış veriler

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d4cd69a90c4af2f996bd965ffaa145dce761018f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 512316b78a0d6422daf5e268ef30db72ccbcfaeb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688323"
 ---
-# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Azure AD Uygulaması Proxy (Önizleme) ile şirket içi uygulamalar için üst bilgi tabanlı çoklu oturum açma
+# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>Azure AD Uygulaması Proxy ile şirket içi uygulamalar için üst bilgi tabanlı çoklu oturum açma
 
 Azure Active Directory (Azure AD) uygulama proxy 'Si, kimlik doğrulaması için üst bilgileri kullanan uygulamalara çoklu oturum açma erişimini yerel olarak destekler. Azure AD 'de uygulamanız için gereken üst bilgi değerlerini yapılandırabilirsiniz. Üst bilgi değerleri uygulama proxy 'Si aracılığıyla uygulamaya gönderilir. Uygulama proxy 'Si ile üst bilgi tabanlı kimlik doğrulaması için yerel destek kullanmanın avantajları şunlardır:  
 

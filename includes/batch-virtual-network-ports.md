@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750111"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
 * Sanal ağın havuzunuzu oluşturmak için kullandığınız Batch hesabıyla aynı abonelikte ve bölgede olması gerekir.
-
-* Sanal ağı kullanan havuzda en fazla 4096 düğüm bulunabilir.
 
 * Havuz için belirtilen alt ağda havuz için hedeflenen VM sayısına yetecek kadar atanmamış IP adresi bulunması gerekir. Başka bir deyişle bu değerin havuzun `targetDedicatedNodes` ve `targetLowPriorityNodes` özelliklerinin toplamı olması gerekir. Alt ağda yeterli sayıda atanmamış IP adresi yoksa havuz işlem düğümlerini kısmen ayırır ve bir yeniden boyutlandırma hatası oluşur.
 
@@ -67,23 +65,29 @@ Batch kendi NSG 'leri yapılandırdığından (yukarıya bakın), sanal ağ alt 
 
 3389 (Windows) veya 22 (Linux) numaralı bağlantı noktalarına gelen trafiği yalnızca dış kaynaklardaki işlem düğümlerine uzaktan erişim izni vermeniz gerekiyorsa yapılandırın. Belirli MPI çalışma zamanlarıyla çoklu örnek görevleri için destek istiyorsanız Linux’ta 22 numaralı bağlantı noktası kurallarını etkinleştirmeniz gerekir. Havuz işlem düğümlerinin kullanılabilir olması için bu bağlantı noktalarındaki trafiğe kesinlikle izin verilmesi gerekmez.
 
+> [!WARNING]
+> Batch hizmeti IP adresleri zamanla değişebilir. Bu nedenle, `BatchNodeManagement` Aşağıdaki tablolarda gösterilen NSG kuralları için hizmet etiketi (veya bölgesel bir varyant) kullanmanızı kesinlikle öneririz. NSG kurallarını belirli Batch hizmeti IP adresleriyle doldurmaktan kaçının.
+
 **Gelen güvenlik kuralları**
 
 | Kaynak IP adresleri | Kaynak hizmeti etiketi | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- | --- |
-| Yok | `BatchNodeManagement` [Hizmet etiketi](../articles/virtual-network/network-security-groups-overview.md#service-tags) (bölgesel varyant kullanılıyorsa Batch hesabınızla aynı bölgede) | * | Herhangi biri | 29876-29877 | TCP | İzin Ver |
+| Yok | `BatchNodeManagement`[hizmet etiketi](../articles/virtual-network/network-security-groups-overview.md#service-tags) (bölgesel bir varyant kullanılıyorsa, Batch hesabınızla aynı bölgede) | * | Herhangi biri | 29876-29877 | TCP | İzin Ver |
 | Gerekirse Linux çok örnekli görevler için işlem düğümlerine ve/veya işlem düğümü alt ağlarına uzaktan erişim için kullanıcı kaynağı IP’leri. | Yok | * | Herhangi biri | 3389 (Windows), 22 (Linux) | TCP | İzin Ver |
-
-> [!WARNING]
-> Batch hizmeti IP adresleri zamanla değişebilir. Bu nedenle, `BatchNodeManagement` NSG kuralları için hizmet etiketi (veya bölgesel varyant) kullanılması önemle önerilir. NSG kurallarını belirli Batch hizmeti IP adresleriyle doldurmaktan kaçının.
 
 **Giden güvenlik kuralları**
 
 | Kaynak | Kaynak bağlantı noktaları | Hedef | Hedef hizmet etiketi | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- | --- |
 | Herhangi biri | * | [Hizmet etiketi](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (bölgesel varyant kullanılıyorsa Batch hesabınızla aynı bölgede) | 443 | TCP | İzin Ver |
+| Herhangi biri | * | [Hizmet etiketi](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (bölgesel varyant kullanılıyorsa Batch hesabınızla aynı bölgede) | 443 | TCP | İzin Ver |
+
+`BatchNodeManagement`Iş Yöneticisi görevleri gibi işlem düğümlerinde Batch hizmetine iletişim için giden bağlantısı gereklidir.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Bulut Hizmetleri yapılandırmasındaki havuzlar
+
+> [!WARNING]
+> Bulut hizmeti yapılandırma havuzları kullanım dışıdır. Lütfen bunun yerine sanal makine yapılandırma havuzlarını kullanın.
 
 **Desteklenen sanal ağlar** - Yalnızca klasik sanal ağlar
 

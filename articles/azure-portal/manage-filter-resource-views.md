@@ -3,12 +3,12 @@ title: Azure Kaynak bilgilerini görüntüleme ve filtreleme
 description: Azure kaynaklarınızı daha iyi anlamak için bilgileri filtreleyin ve farklı görünümler kullanın.
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738642"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure Kaynak bilgilerini görüntüleme ve filtreleme
 
@@ -49,6 +49,18 @@ Bir görünümü silmek için:
 1. **Yönet görünümü** ' nü seçin ve **tüm görünümlere gözatamazsınız**.
 
 1. **"Tüm kaynaklar" bölmesindeki kaydedilen görünümlerde** görünümü seçin ve **Sil** simgesini ![ görünümü Sil simgesini seçin ](media/manage-filter-resource-views/icon-delete.png) .
+
+## <a name="export-information-from-a-view"></a>Bir görünümden bilgileri dışarı aktarma
+
+Kaynak bilgilerini bir görünümden dışarı aktarabilirsiniz. CSV biçiminde bilgileri dışarı aktarmak için:
+
+1. **CSV 'ye aktar**' ı seçin.
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="CSV biçimine dışa aktarma ekran görüntüsü":::
+
+1. Dosyayı yerel olarak kaydedin, sonra Excel 'de veya CSV biçimini destekleyen başka bir uygulamada açın. 
+
+Portalda gezinirsiniz, tek bir kaynak grubu gibi bilgileri dışarı aktarabileceğiniz diğer bölgeleri görürsünüz.
 
 ## <a name="summarize-resources-with-visuals"></a>Görsellerle kaynakları özetleme
 

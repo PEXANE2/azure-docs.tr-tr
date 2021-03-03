@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687302"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -95,6 +95,7 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azure AD](overview.md#getting-devices-in-azure-ad) Ise, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazın iki durumuna yol açabilir. Bu senaryoyu otomatik olarak çözmek için Windows 10 1803 ' e (KB4489894 uygulanmış olan) veya üstüne yükseltmeniz önerilir. 1803 öncesi sürümlerde, hibrit Azure AD JOIN 'i etkinleştirmeden önce Azure AD kayıtlı durumunu el ile kaldırmanız gerekecektir. 1803 ve üzeri sürümlerde, bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
 
 - Bir kullanıcı için mevcut Azure AD kayıtlı durumu, <i>cihaz karma Azure AD 'ye katılmış olduktan ve aynı kullanıcı oturum açtığında</i>otomatik olarak kaldırılacaktır. Örneğin, Kullanıcı A 'nın cihazda bir Azure AD kayıtlı durumu varsa, Kullanıcı a 'nın çift durumu yalnızca cihazda oturum açan kullanıcı tarafından temizlenir. Aynı cihazda birden fazla kullanıcı varsa, bu kullanıcılar oturum açarken iki durum tek tek temizlenir. Azure AD kayıtlı durumunun kaldırılmasına ek olarak, kayıt, Azure AD kaydının bir parçası olarak otomatik kayıt yoluyla gerçekleştiyse, Windows 10 da cihazın Intune veya diğer MDM 'den kaydını kaldırır.
+- Cihazdaki herhangi bir yerel hesap üzerinde Azure AD kayıtlı durumu bu değişiklikten etkilenmez. Yalnızca etki alanı hesapları için geçerlidir. Bu nedenle, Kullanıcı bir etki alanı kullanıcısı olmadığından, yerel hesaplarda Azure AD kayıtlı durumu, Kullanıcı oturum açmadan sonra da otomatik olarak kaldırılmaz. 
 - Hklm\software\policies\microsoft\windows\workplacejoın: "Blockaadworkplacejoın" = DWORD: 00000001 ' ye aşağıdaki kayıt defteri değerini ekleyerek etki alanına katılmış cihazın Azure AD 'den kaydedilmesini engelleyebilirsiniz.
 - Windows 10 1803 ' de, Iş için Windows Hello yapılandırılmışsa, ikili durum temizleme sonrasında kullanıcının Iş için Windows Hello 'Yu yeniden kurulumu gerekir. Bu sorun KB4512509 ile giderilmiştir
 
@@ -166,7 +167,7 @@ Bazen, şirket içi AD kullanıcılarınızın UPN 'leri Azure AD UPN 'inizden f
 
 Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD UPN 'leri için destek ayrıntıları verilmiştir
 
-| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Description |
+| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
 | ----- | ----- | ----- | ----- |
 | Lemez | Federe | 1703 sürümünden | Genel kullanıma sunuldu |
 | Yönlendirilemeyen | Federe | 1803 sürümünden | Genel kullanıma sunuldu |

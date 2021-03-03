@@ -2,14 +2,14 @@
 title: Azure portal hesap oluşturma
 description: Büyük ölçekli paralel iş yükleri bulutta çalıştırmak için Azure portalda bir Azure Batch hesabı oluşturmayı öğrenin
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368515"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703673"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
@@ -101,7 +101,7 @@ Kullanıcı aboneliği modunda bir [Azure Key Vault](../key-vault/general/overvi
 
 Kullanıcı aboneliği modunda Batch hesabını oluştururken, havuz ayırma modu olarak **Kullanıcı aboneliğini** belirtin, oluşturduğunuz Key Vault seçin ve Key Vault Azure Batch erişim izni vermek için kutuyu işaretleyin.
 
-Key Vault el ile erişim izni vermeyi tercih ediyorsanız, Key Vault **erişim ilkeleri** bölümüne gidin ve **erişim ilkesi Ekle**' yi seçin. **Sorumluyu Seç** ' in yanındaki bağlantıyı seçin ve **Microsoft Azure Batch** için arama yapın (uygulama kimliği **ddbf3205-c6bd-46AE-8127-60eb93363864**). Bu sorumluyu seçin ve ardından açılan menüyü kullanarak **gizli izinleri** yapılandırın. Azure Batch, en az **Get**, **list**, **set** ve **Delete** izinleri olarak verilmelidir.
+Key Vault el ile erişim izni vermeyi tercih ediyorsanız, Key Vault **erişim ilkeleri** bölümüne gidin ve **erişim ilkesi Ekle**' yi seçin. **Sorumluyu Seç** ' in yanındaki bağlantıyı seçin ve **Microsoft Azure Batch** için arama yapın (uygulama kimliği **ddbf3205-c6bd-46AE-8127-60eb93363864**). Bu sorumluyu seçin ve ardından açılan menüyü kullanarak **gizli izinleri** yapılandırın. Azure Batch, en az **Get**, **list**, **set** ve **Delete** izinleri olarak verilmelidir. [Geçici silme etkin olan anahtar kasaları](../key-vault/general/soft-delete-overview.md)için, Azure Batch de **Kurtarma** izni verilmelidir.
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Azure Batch için gizli izinler seçimlerinin ekran görüntüsü":::
 

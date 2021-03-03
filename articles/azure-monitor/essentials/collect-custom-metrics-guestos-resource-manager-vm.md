@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 0ab7d8548494e96b4a7570ef26ccde39456bf690
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731723"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için bir Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
-Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğer [Platform ölçümleri](../insights/monitor-azure-resource.md#monitoring-data)gibi otomatik olarak toplanmaz. Bir REST API neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim de dahil olmak üzere Azure Izleyici ölçümlerinin tüm özellikleriyle kullanılabilmesi için, Azure Izleyici [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) ' nı ölçüm veritabanına toplayın. Bu makalede, bir Windows sanal makinesi için bir Kaynak Yöneticisi şablonu kullanarak ölçüm veritabanına Konuk işletim sistemi performans ölçümleri gönderme işlemi açıklanır. 
+Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğer [Platform ölçümleri](./monitor-azure-resource.md#monitoring-data)gibi otomatik olarak toplanmaz. Bir REST API neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim de dahil olmak üzere Azure Izleyici ölçümlerinin tüm özellikleriyle kullanılabilmesi için, Azure Izleyici [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) ' nı ölçüm veritabanına toplayın. Bu makalede, bir Windows sanal makinesi için bir Kaynak Yöneticisi şablonu kullanarak ölçüm veritabanına Konuk işletim sistemi performans ölçümleri gönderme işlemi açıklanır. 
 
 > [!NOTE]
 > Azure portal kullanarak Konuk işletim sistemi ölçümleri toplamak üzere tanılama uzantısını yapılandırma hakkında ayrıntılı bilgi için, bkz. [Windows Azure tanılama uzantısı 'nı (WAD) yüklemek ve yapılandırmak](../agents/diagnostics-extension-windows-install.md).
@@ -29,7 +29,7 @@ Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımlar�
 
 - [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](../../cloud-shell/overview.md) yüklemiş olmanız gerekir.
 
-- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](../platform/metrics-custom-overview.md#supported-regions)olması gerekir. 
+- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](./metrics-custom-overview.md#supported-regions)olması gerekir. 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Izleyiciyi bir veri havuzu olarak ayarlama
@@ -250,7 +250,7 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > [Özel ölçümler için etkin olan bir Azure bölgesi kullanmayı](../platform/metrics-custom-overview.md)unutmayın.
+   > [Özel ölçümler için etkin olan bir Azure bölgesi kullanmayı](./metrics-custom-overview.md)unutmayın.
 
 1. Kaynak Yöneticisi şablonunu kullanarak VM 'yi dağıtmak için aşağıdaki komutları çalıştırın.
    > [!NOTE]
@@ -285,4 +285,4 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Özel ölçümler](../platform/metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
+- [Özel ölçümler](./metrics-custom-overview.md)hakkında daha fazla bilgi edinin.

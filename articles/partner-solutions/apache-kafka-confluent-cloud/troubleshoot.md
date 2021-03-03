@@ -3,15 +3,15 @@ title: Confluent bulutu için Apache Kafka sorun giderme-Azure iş ortağı çö
 description: Bu makalede, Azure 'da confluent bulutu için sorun giderme ve sık sorulan sorular (SSS) hakkında bilgi verilmektedir.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253608"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709418"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Yapılandırmalı bulut çözümleri için Apache Kafka sorunlarını giderme
 
@@ -28,6 +28,16 @@ Teklifi Azure Marketi 'nde bulmak için aşağıdaki adımları kullanın:
 1. Uygulama kutucuğunu seçin.
 
 Teklif görüntülenmiyorsa, [confluent desteğiyle](https://support.confluent.io)iletişim kurun. Azure Active Directory kiracı KIMLIĞINIZ, izin verilen kiracılar listesinde olmalıdır. Kiracı KIMLIĞINIZI bulma hakkında bilgi edinmek için bkz. [Azure Active Directory KIRACı kimliğinizi bulma](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md).
+
+## <a name="purchase-errors"></a>Satın alma hataları
+
+* Geçerli bir kredi kartı Azure aboneliğine bağlı olmadığından veya bir ödeme yöntemi abonelikle ilişkili olmadığından satın alma başarısız olur.
+
+  Farklı bir Azure aboneliği kullanın. Ya da, abonelik için kredi kartı veya ödeme yöntemi ekleyebilir veya güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [kredi ve ödeme yöntemini güncelleştirme](../../cost-management-billing/manage/change-credit-card.md).
+
+* EA aboneliği Market satın alımlara izin vermez.
+
+  Farklı bir abonelik kullanın. Ya da EA aboneliğinizin Market satın alma için etkinleştirilip etkinleştirilmediğini denetleyin. Daha fazla bilgi için bkz. [Market satın alımlarını etkinleştirme](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Bu seçenekler sorunu çözmezse, bağlantı [desteğiyle](https://support.confluent.io)iletişim kurun.
 
 ## <a name="conflict-error"></a>Çakışma hatası
 

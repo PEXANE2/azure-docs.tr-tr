@@ -1,17 +1,17 @@
 ---
-title: Kapsayıcılar için Azure Izleyici raporları
-description: Kapsayıcılar için Azure Izleyici tarafından toplanan verileri analiz etmek için kullanılabilir raporları açıklar.
+title: Kapsayıcı öngörüleri raporları
+description: Kapsayıcı öngörüleri tarafından toplanan verileri analiz etmek için kullanılabilir raporları açıklar.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704285"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici raporları
-Kapsayıcılar için Azure Izleyici raporlarında, kullanıma hazır [Azure çalışma kitapları](../visualize/workbooks-overview.md)önerilir. Bu makalede, kullanılabilir farklı raporlar ve bunlara nasıl erişebileceğiniz açıklanmıştır.
+# <a name="reports-in-container-insights"></a>Kapsayıcı öngörüleri raporları
+Kapsayıcı öngörülerine yönelik raporlar, kullanıma hazır [Azure çalışma kitapları](../visualize/workbooks-overview.md)için önerilir. Bu makalede, kullanılabilir farklı raporlar ve bunlara nasıl erişebileceğiniz açıklanmıştır.
 
 ## <a name="viewing-reports"></a>Raporları görüntüleme
 Azure portal **Azure izleyici** menüsünde **kapsayıcılar**' ı seçin. **İzleme** bölümünde **Öngörüler** ' i seçin, belirli bir kümeyi seçin ve ardından **raporlar (Önizleme)** sayfasını seçin. 

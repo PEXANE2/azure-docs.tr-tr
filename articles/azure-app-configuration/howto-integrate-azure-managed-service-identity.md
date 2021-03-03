@@ -5,15 +5,15 @@ description: Yönetilen kimlikleri kullanarak Azure Uygulama yapılandırmasınd
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b1de1a24a506c049782443e4d32039c28fece436
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185470"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718259"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -37,7 +37,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -139,6 +139,15 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     ```
     ---
 
+    > [!NOTE]
+    > **Kullanıcı tarafından atanan bir yönetilen kimlik** kullanmak Istiyorsanız, [Managedıdentitycredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)oluştururken ClientID değerini belirttiğinizden emin olun.
+    >```
+    >config.AddAzureAppConfiguration(options =>
+    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >```
+    >[Azure kaynakları Için Yönetilen kimlikler SSS](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)bölümünde açıklandığı gibi, hangi yönetilen kimliğin kullanıldığını çözümlemek için varsayılan bir yol vardır. Bu durumda, Azure kimlik kitaplığı, gelecekte çok fazla çalışma zamanı sorunlarından kaçınmak için (örneğin, yeni bir kullanıcı tarafından atanan yönetilen kimlik eklenirse veya sistem tarafından atanan yönetilen kimlik etkinse) istenen kimliği belirtmenizi zorunlu kılar. Bu nedenle, yalnızca bir kullanıcı tarafından atanan yönetilen kimlik tanımlanmış olsa da, sistem tarafından atanan yönetilen kimlik yoksa, ClientID belirtmeniz gerekecektir.
+
+
 1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod `SetCredential` `ConfigureKeyVault` , yapılandırma sağlayıcısına Key Vault kimlik doğrulaması yapılırken hangi kimlik bilgilerinin kullanılacağını bildirmek için bir parçası olarak çağırır.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
@@ -193,6 +202,8 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
     > [!NOTE]
     > `ManagedIdentityCredential`Yalnızca, yönetilen kimlik kimlik doğrulamasını destekleyen hizmetlerin Azure ortamlarında kullanılabilir. Yerel ortamda çalışmaz. [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential)Yönetilen kimlik gibi birkaç kimlik doğrulama seçeneklerine geri dönecektir, kodun hem yerel hem de Azure ortamlarında çalışması için kullanın.
+    > 
+    > Azure 'a dağıtıldığında, **Kullanıcı tarafından imzalanmış bir yönetilen kimlik** kullanmak Istiyorsanız `DefaultAzureCredential` [ClientID değerini belirtin](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

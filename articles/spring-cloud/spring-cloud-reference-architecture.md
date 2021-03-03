@@ -6,12 +6,12 @@ title: Azure yay bulut başvurusu mimarisi
 ms.author: akaleshian
 ms.service: spring-cloud
 description: Bu başvuru mimarisi, Azure Spring Cloud kullanımı için tipik bir kurumsal hub ve bağlı bileşen tasarımı kullanan bir temelidir.
-ms.openlocfilehash: 7d069e67e5161135b309aee3dc9c6ac921105623
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c87462c8d6ab86299b6202acaa23f93d19240e0e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735497"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure yay bulut başvurusu mimarisi
 
@@ -212,7 +212,7 @@ Aşağıdaki listede, bu başvurudaki ağ güvenliğine yönelik olan CIS deneti
 | 6.5 | Ağ Izleyicisi 'nin ' etkin ' olduğundan emin olun. |
 | 6.6 | UDP kullanan giriş 'nin internet 'ten kısıtlanmasını sağlayın. |
 
-Azure yay bulutu, güvenli bir ortamda dağıtıldığında Azure 'dan çıkış yapmak için yönetim trafiği gerektirir. Bunu gerçekleştirmek için, [VNET 'Te Azure yay bulutu 'nı çalıştırmaya yönelik müşteri sorumlulukları](/azure/spring-cloud/spring-cloud-vnet-customer-responsibilities)bölümünde listelenen ağ ve uygulama kurallarına izin vermeniz gerekir.
+Azure yay bulutu, güvenli bir ortamda dağıtıldığında Azure 'dan çıkış yapmak için yönetim trafiği gerektirir. Bunu gerçekleştirmek için, [VNET 'Te Azure yay bulutu 'nı çalıştırmaya yönelik müşteri sorumlulukları](./spring-cloud-vnet-customer-responsibilities.md)bölümünde listelenen ağ ve uygulama kurallarına izin vermeniz gerekir.
 
 #### <a name="application-security"></a>Uygulama güvenliği
 
@@ -246,23 +246,23 @@ Uygulama güvenliğinin yönleri, Azure 'daki bir yay iş yükünü desteklemek 
 [Azure yay bulutu başvuru mimarisi][10] deposunda bulunan ARM, Terkform ve Azure CLI dağıtımları aracılığıyla bu başvuru mimarisini bulun.
 
 <!-- Reference links in article -->
-[1]: /azure/spring-cloud/
-[2]: /azure/key-vault/
-[3]: /azure/azure-monitor/
-[4]: /azure/security-center/
+[1]: ./index.yml
+[2]: ../key-vault/index.yml
+[3]: ../azure-monitor/index.yml
+[4]: ../security-center/index.yml
 [5]: /azure/devops/pipelines/
-[6]: /azure/application-gateway/
-[7]: /azure/web-application-firewall/
-[8]: /azure/spring-cloud/spring-cloud-tutorial-config-server/
+[6]: ../application-gateway/index.yml
+[7]: ../web-application-firewall/index.yml
+[8]: ./spring-cloud-tutorial-config-server.md
 [9]: https://steeltoe.io/
 [10]: https://github.com/Azure/azure-spring-cloud-reference-architecture
-[11]: /azure/spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network#virtual-network-requirements
-[12]: /azure/spring-cloud/spring-cloud-vnet-customer-responsibilities#azure-spring-cloud-network-requirements
-[13]: /azure/spring-cloud/spring-cloud-vnet-customer-responsibilities#azure-spring-cloud-fqdn-requirements--application-rules
-[14]: /azure/spring-cloud/spring-cloud-howto-staging-environment
+[11]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
+[12]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements
+[13]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirements--application-rules
+[14]: ./spring-cloud-howto-staging-environment.md
 [15]: https://devblogs.microsoft.com/java/monitor-applications-and-dependencies-in-azure-spring-cloud/
 [16]: /azure/architecture/framework/
-[17]: /azure/spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network#virtual-network-requirements
+[17]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
 [18]: https://cloudsecurityalliance.org/
 [19]: https://cloudsecurityalliance.org/research/working-groups/cloud-controls-matrix
 [20]: https://azure.microsoft.com/resources/cis-microsoft-azure-foundations-security-benchmark/

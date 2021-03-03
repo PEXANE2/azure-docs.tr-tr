@@ -4,12 +4,12 @@ description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denet
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737826"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -130,9 +130,9 @@ Bir anahtarın güvenliğinin aşıldığını biliyorsanız veya kuşkulanıyor
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Service Bus ile paylaşılan erişim Imzası kimlik doğrulaması
 
-Aşağıdaki gibi açıklanan senaryolar, yetkilendirme kurallarının yapılandırılması, SAS belirteçlerinin oluşturulması ve istemci yetkilendirmesi içerir.
+Aşağıdaki gibi açıklanan senaryo, yetkilendirme kuralları yapılandırması, SAS belirteçleri oluşturma ve istemci yetkilendirmesi içerir.
 
-Yapılandırmayı gösteren ve SAS yetkilendirmesi kullanan bir Service Bus uygulamasının tam çalışma örneği için, bkz. [Service Bus Ile paylaşılan erişim imzası kimlik doğrulaması](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Ad alanlarında veya konularda güvenli Service Bus aboneliklerde yapılandırılan SAS Yetkilendirme kurallarının kullanımını gösteren ilgili bir örnek buradan kullanılabilir: [Service Bus abonelikleriyle paylaşılan erişim imzası (SAS) kimlik doğrulaması kullanılıyor](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Yapılandırmayı gösteren ve SAS yetkilendirmesi kullanan Service Bus bir uygulama örneği için, bkz. [Service Bus Ile paylaşılan erişim imzası kimlik doğrulaması](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Bir varlıktaki paylaşılan erişim yetkilendirme kurallarına erişme
 

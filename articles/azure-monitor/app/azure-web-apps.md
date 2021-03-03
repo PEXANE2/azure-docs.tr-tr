@@ -4,16 +4,16 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734732"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
-[Azure Uygulama hizmetlerinde](../../app-service/index.yml) çalışan ASP.NET ve ASP.NET Core tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
+[Azure Uygulama hizmetlerinde](../../app-service/index.yml) çalışan ASP.NET, ASP.NET Core ve Node.js tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
 
 > [!NOTE]
 > **Geliştirme araçları** uzantıları aracılığıyla Application Insights bir site uzantısının el ile eklenmesi  >   kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak  [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde bulunur `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
@@ -97,7 +97,7 @@ ASP.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan 
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-App Service Web uygulamanızın içinden **Ayarlar** bölümünden  >  Application Insights etkinleştir '**i seçin**  >  . Node.js aracı tabanlı izleme şu anda önizleme aşamasındadır.
+Windows Agent tabanlı izleme desteklenmez, Linux ile etkinleştirmek için [Node.js App Service belgelerini](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights)ziyaret edin.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ Application Insights ile telemetri toplamayı etkinleştirmek için, yalnızca u
 |XDT_MicrosoftApplicationInsights_Mode |  Yalnızca varsayılan modda, en iyi performansı sağlamak için temel özellikler etkindir. | `default` veya `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | İkili yeniden yazma altyapısının `InstrumentationEngine` açılıp açılmeyeceğini denetler. Bu ayarın performans etkileri vardır ve soğuk başlatma/başlatma süresini etkiler. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | SQL & Azure Tablo metninin bağımlılık çağrılarında birlikte yakalanıp yakalanmayacağını denetler. Performans uyarısı: uygulamanın soğuk başlangıç saati etkilenecektir. Bu ayar için gerekir `InstrumentationEngine` . | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | Yalnızca ASP.NET Core uygulamalar için. Application Insights SDK ile birlikte çalışabilirliği (birlikte çalışabilirlik) etkinleştirilir. Uzantıyı SDK ile yan yana yükler ve telemetri göndermek için kullanır (Application Insights SDK 'Yı devre dışı bırakır). |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure Resource Manager ile uygulama ayarlarını App Service
 

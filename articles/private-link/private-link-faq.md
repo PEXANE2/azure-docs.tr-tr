@@ -1,5 +1,5 @@
 ---
-title: Azure özel bağlantı hakkında sık sorulan sorular (SSS)
+title: Azure Özel Bağlantı hakkında sık sorulan sorular (FAQ)
 description: Azure özel bağlantısı hakkında bilgi edinin.
 services: private-link
 author: malopMSFT
@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582018"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709419"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Özel Bağlantı hakkında sık sorulan sorular (FAQ)
 
 ## <a name="private-link"></a>Özel Bağlantı
 
@@ -65,6 +65,12 @@ Hizmet arka uçları bir sanal ağda ve bir Standart Load Balancer arkasında ol
 - Standart Load Balancer arkasındaki havuza arka uç VM 'Leri ekleyin 
 - Özel bağlantı hizmetine bir IP ekleyin. Özel bağlantı hizmeti başına en fazla 8 IP 'ye izin veririz.  
 - Standart Load Balancer yeni özel bağlantı hizmeti ekleyin. Yük dengeleyici başına en fazla sekiz özel bağlantı hizmetine izin veriyoruz.   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Özel bağlantı hizmetinde NAT (ağ adresi çevirisi) IP yapılandırması kullanılır? Kullanılabilir bağlantı noktaları ve bağlantılar açısından nasıl ölçeklendirebilirim? 
+
+NAT IP yapılandırması, hedef taraftaki (hizmet sağlayıcı tarafı) özel bağlantı trafiğine kaynak NAT sağlayarak kaynak (tüketici tarafı) ve hedef (hizmet sağlayıcı) adres alanı arasında bir IP çakışması olmamasını sağlar. NAT IP adresi, hizmetiniz tarafından gönderilen tüm paketler için hizmetinize ve hedef IP 'niz tarafından alınan tüm paketlerin kaynak IP 'si olarak görünür.  NAT IP 'si, bir hizmet sağlayıcısının sanal ağındaki herhangi bir alt ağdan seçilebilir. 
+
+Her NAT IP, Standart Load Balancer arka plandaki sanal makine başına 64K TCP bağlantısı (64K bağlantı noktası) sağlar. Daha fazla bağlantı ölçeklendirmek ve eklemek için yeni NAT IP 'Leri ekleyebilir veya Standart Load Balancer arkasına daha fazla VM ekleyebilirsiniz. Bunun yapılması, bağlantı noktası kullanılabilirliğini ölçeklendirecektir ve daha fazla bağlantı sağlar. Bağlantı, Standart Load Balancer arkasındaki NAT IP 'Leri ve VM 'Ler arasında dağıtılır.
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Hizmetmi birden çok özel uç noktaya bağlanabilir miyim?
 Evet. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı alabilir. Ancak, bir özel uç nokta yalnızca bir özel bağlantı hizmetine bağlanabilir.  

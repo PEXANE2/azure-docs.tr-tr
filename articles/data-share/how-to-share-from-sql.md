@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964176"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740384"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 
@@ -82,7 +82,7 @@ SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda v
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ### <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
@@ -101,7 +101,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
     | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
     | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
     | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-    | Ad | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
+    | Name | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
     | | |
 
 1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
@@ -224,7 +224,7 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ### <a name="open-invitation"></a>Daveti aç
 
@@ -275,7 +275,7 @@ Verileri almak istediğiniz yeri yapılandırmak için aşağıdaki adımları i
 ### <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
-1. **Ayrıntılar** sekmesini ve ardından **tetikleyici anlık görüntüsünü** seçerek bir anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. SQL kaynakları için yalnızca tam anlık görüntü desteklenir.
+1. **Ayrıntılar** sekmesini ve ardından **tetikleyici anlık görüntüsünü** seçerek bir anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. SQL kaynakları için yalnızca tam anlık görüntü desteklenir. Bir anlık görüntü çalışırken, sonraki anlık görüntüler bir önceki işlem tamamlanana kadar başlatılmaz.
 
    ![Görüntüyü Tetikle](./media/trigger-snapshot.png "Görüntüyü Tetikle") 
 

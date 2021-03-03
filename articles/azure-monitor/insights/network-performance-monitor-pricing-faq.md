@@ -1,22 +1,21 @@
 ---
 title: Azure Ağ Performansı İzleyicisi için fiyatlandırma SSS | Microsoft Docs
 description: Sık sorulan sorular-Azure Ağ Performansı İzleyicisi
-ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56163d3267a69099cbf6a18266168e9198ea04c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832887"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717443"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Ağ Performansı İzleyicisi için fiyatlandırma değişiklikleri
 
 > [!IMPORTANT]
-> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) , 29 Şubat 2024 tarihinden önce geçirin.
 
 Geri bildiriminizi inceleyin ve kısa bir süre önce Azure 'daki çeşitli izleme hizmetleri için [Yeni bir fiyatlandırma deneyimi](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) sunduk. Bu makalede, kolay okunabilir bir soru ve yanıt biçiminde Azure [ağ performansı İzleyicisi](../../networking/network-monitoring-overview.md) (NPM) ile ilgili fiyatlandırma değişiklikleri yer alır.
 

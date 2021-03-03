@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686878"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 ve Azure Active Directory için Federasyon sertifikalarını yenileme
 ## <a name="overview"></a>Genel Bakış
@@ -34,7 +34,7 @@ Bu makalede, aşağıdaki durumlarda belirteç imzalama sertifikalarınızı yö
 * Bir üçüncü taraf kimlik sağlayıcısı kullanıyorsunuz.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Belirteç imzalama sertifikaları için AD FS varsayılan yapılandırması
-Belirteç imzalama ve belirteç şifre çözme sertifikaları genellikle kendinden imzalı sertifikalardır ve bir yıl boyunca iyidir. Varsayılan olarak, AD FS **AutoCertificateRollover**adlı otomatik yenileme işlemini içerir. AD FS 2,0 veya sonraki bir sürümü kullanıyorsanız, Microsoft 365 ve Azure AD süresi dolmadan önce sertifikanızı otomatik olarak güncelleştirir.
+Belirteç imzalama ve belirteç şifre çözme sertifikaları genellikle kendinden imzalı sertifikalardır ve bir yıl boyunca iyidir. Varsayılan olarak, AD FS **AutoCertificateRollover** adlı otomatik yenileme işlemini içerir. AD FS 2,0 veya sonraki bir sürümü kullanıyorsanız, Microsoft 365 ve Azure AD süresi dolmadan önce sertifikanızı otomatik olarak güncelleştirir.
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Microsoft 365 Yönetim merkezinden veya bir e-postadaki yenileme bildirimi
 > [!NOTE]
@@ -106,8 +106,8 @@ Get-MsolFederationProperty veya Get-Adfscercertificate 'ın çıktısında, "son
 
 | AutoCertificateRollover | Azure AD ile eşitlenmiş sertifikalar | Federasyon meta verileri herkese açık bir şekilde erişilebilir | Olacağı | Eylem |
 |:---:|:---:|:---:|:---:|:---:|
-| Evet |Evet |Evet |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
-| Evet |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| Yes |Yes |Yes |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
+| Yes |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
 | Hayır |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
 
 \[-] Önemi yoktur
@@ -140,11 +140,11 @@ Bu senaryolarda, belirteç imzalama sertifikalarını her güncelleştirdiğiniz
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>1. Adım: AD FS yeni belirteç imzalama sertifikaları içerdiğinden emin olun
 **Varsayılan olmayan yapılandırma**
 
-AD FS varsayılan olmayan bir yapılandırma kullanıyorsanız ( **AutoCertificateRollover** **false**olarak ayarlandığında), büyük olasılıkla özel sertifikalar kullanıyorsunuz (otomatik olarak imzalanmamış). AD FS belirteç imzalama sertifikalarının nasıl yenileneceği hakkında daha fazla bilgi için bkz. [Federasyon sunucuları Için sertifika gereksinimleri](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
+AD FS varsayılan olmayan bir yapılandırma kullanıyorsanız ( **AutoCertificateRollover** **false** olarak ayarlandığında), büyük olasılıkla özel sertifikalar kullanıyorsunuz (otomatik olarak imzalanmamış). AD FS belirteç imzalama sertifikalarının nasıl yenileneceği hakkında daha fazla bilgi için bkz. [Federasyon sunucuları Için sertifika gereksinimleri](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
 
 **Federasyon meta verileri herkese açık değil**
 
-Diğer taraftan, **AutoCertificateRollover** **true**olarak ayarlanmışsa, ancak Federasyon meta verileriniz herkese açık olarak erişilemezse, önce yeni belirteç imzalama sertifikalarının AD FS tarafından oluşturulduğundan emin olun. Aşağıdaki adımları uygulayarak yeni belirteç imzalama sertifikalarınızın olduğunu doğrulayın:
+Diğer taraftan, **AutoCertificateRollover** **true** olarak ayarlanmışsa, ancak Federasyon meta verileriniz herkese açık olarak erişilemezse, önce yeni belirteç imzalama sertifikalarının AD FS tarafından oluşturulduğundan emin olun. Aşağıdaki adımları uygulayarak yeni belirteç imzalama sertifikalarınızın olduğunu doğrulayın:
 
 1. Birincil AD FS sunucuda oturum açtığınızdan emin olun.
 2. Bir PowerShell komut penceresi açarak ve aşağıdaki komutu çalıştırarak AD FS içindeki geçerli imzalama sertifikalarını denetleyin:
@@ -155,12 +155,12 @@ Diğer taraftan, **AutoCertificateRollover** **true**olarak ayarlanmışsa, anca
    > AD FS 2,0 kullanıyorsanız, önce Microsoft. ADFS. PowerShell Add-Pssnapin çalıştırmalısınız.
    >
    >
-3. Listelenen tüm sertifikalarda komut çıktısına bakın. AD FS yeni bir sertifika oluşturmışsa, çıktıda iki sertifika görmeniz gerekir: **isprımary** değeri **true** **ve** NotAfter tarihi 5 gün **içinde ve** **NotAfter** **tarihi, gelecekte** bir yıl hakkında.
+3. Listelenen tüm sertifikalarda komut çıktısına bakın. AD FS yeni bir sertifika oluşturmışsa, çıktıda iki sertifika görmeniz gerekir: **isprımary** değeri **true** **ve** NotAfter tarihi 5 gün **içinde ve**  **tarihi, gelecekte** bir yıl hakkında.
 4. Yalnızca bir sertifika görürseniz ve **NotAfter** tarihi 5 gün içindeyse, yeni bir sertifika oluşturmanız gerekir.
-5. Yeni bir sertifika oluşturmak için PowerShell komut isteminde aşağıdaki komutu yürütün: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+5. Yeni bir sertifika oluşturmak için PowerShell komut isteminde aşağıdaki komutu yürütün: `PS C:\Update-ADFSCertificate –CertificateType token-signing` .
 6. Aşağıdaki komutu yeniden çalıştırarak güncelleştirmeyi doğrulayın: PS C: \> Get-Adfscercertificate ate – CertificateType token-signing
 
-Şu anda iki sertifika listelenmelidir, bunlardan biri gelecekte yaklaşık bir yıl **NotAfter** tarih ve **ısprımary** değeri **false**şeklindedir.
+Şu anda iki sertifika listelenmelidir, bunlardan biri gelecekte yaklaşık bir yıl **NotAfter** tarih ve **ısprımary** değeri **false** şeklindedir.
 
 ### <a name="step-2-update-the-new-token-signing-certificates-for-the-microsoft-365-trust"></a>2. Adım: Microsoft 365 güvenin yeni belirteç imzalama sertifikalarını güncelleştirme
 Microsoft 365, güven için kullanılacak yeni belirteç imzalama sertifikaları ile aşağıdaki gibi güncelleştirin.

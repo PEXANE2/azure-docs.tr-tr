@@ -1,17 +1,16 @@
 ---
 title: Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
 description: Azure Izleyici 'de tanılama uzantısı 'nı, Azure 'un dışındaki konumlara iletmek için Azure Olay Hub 'ına veri göndermek üzere yapılandırın.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732046"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
 Azure tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Azure 'un dışındaki konumlara iletmek için Microsoft Azure tanılama uzantısı 'ndan (WAD) [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) veri gönderme işleminin nasıl yapılacağı açıklanır.

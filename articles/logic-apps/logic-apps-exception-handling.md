@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702513"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps'teki hataları ve özel durumları işleme
 
@@ -27,7 +27,7 @@ En temel özel durum ve hata işleme için, desteklenen yerlerde, her türlü ey
 
 Yeniden deneme ilkesi türleri şunlardır:
 
-| Tür | Description |
+| Tür | Açıklama |
 |------|-------------|
 | **Varsayılanını** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . |
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. |
@@ -69,7 +69,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *Gerekli*
 
-| Değer | Tür | Description |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
 | <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default` , `none` , `fixed` veya `exponential` |
 | <*yeniden deneme aralığı*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D` . Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. |
@@ -78,7 +78,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *İsteğe bağlı*
 
-| Değer | Tür | Description |
+| Değer | Tür | Açıklama |
 |-------|------|-------------|
 | <*Minimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık |
 | <*Maksimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık |
@@ -263,13 +263,14 @@ Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-a
 
 ### <a name="get-context-and-results-for-failures"></a>Bağlam ve hatalara ilişkin sonuçları al
 
-Bir kapsamdan hata yakalama yararlı olsa da, bağlamı tam olarak hangi eylemlerin başarısız olduğunu ve döndürülen hataları veya durum kodlarını anlamanıza yardımcı olmak isteyebilirsiniz.
+Bir kapsamdan hata yakalama yararlı olsa da, bağlamı tam olarak hangi eylemlerin başarısız olduğunu ve döndürülen hataları veya durum kodlarını anlamanıza yardımcı olmak isteyebilirsiniz. [ `result()` İşlevi](../logic-apps/workflow-definition-language-functions-reference.md#result) , kapsamdaki en üst düzey eylemlerden sonuçları, kapsamın adı olan tek bir parametre kabul ederek ve bu ilk düzey eylemlerden sonuçları içeren bir dizi döndürerek döndürür. Bu eylem nesneleri, `actions()` işlevin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi işlev tarafından döndürülenlerle aynı öznitelikleri içerir. 
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)İşlevi, bir kapsamdaki tüm eylemlerin sonuçları hakkında bağlam sağlar. `result()`İşlevi, kapsamın adı olan tek bir parametreyi kabul eder ve bu kapsam içindeki tüm eylem sonuçlarını içeren bir dizi döndürür. Bu eylem nesneleri, `actions()` nesnenin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi nesneyle aynı öznitelikleri içerir. Kapsam içinde başarısız olan herhangi bir eylemin bağlamını göndermek için, özelliği ile kolayca bir ifadeyi eşleştirin `@result()` `runAfter` .
+> [!NOTE]
+> `result()`İşlevi, anahtar veya koşul eylemleri gibi daha derin iç içe geçmiş eylemlerden değil, *yalnızca* ilk düzey eylemlerden sonuçları döndürür.
 
-Sonucu olan bir kapsamda her eylem için bir eylem çalıştırmak `Failed` ve sonuçların dizisini başarısız eylemlere göre filtrelemek için, bir `@result()` Ifadeyi bir [**filtre dizisi**](logic-apps-perform-data-operations.md#filter-array-action) eylemiyle ve [**her döngü için**](../logic-apps/logic-apps-control-flow-loops.md) bir ile eşleştirin. Filtrelenmiş sonuç dizisini alabilir ve döngüyü kullanarak her hata için bir eylem yapabilirsiniz `For_each` .
+Kapsamda başarısız olan eylemler hakkında bağlam almak için, `@result()` ifadeyi kapsamın adı ve özelliği ile birlikte kullanabilirsiniz `runAfter` . Döndürülen diziyi durumu olan eylemlere göre filtrelemek için `Failed` , [ **diziyi filtrele** eylemini](logic-apps-perform-data-operations.md#filter-array-action)ekleyebilirsiniz. Döndürülen başarısız bir eylem için bir eylem çalıştırmak için, döndürülen filtrelenmiş diziyi alıp [ **her döngü için**](../logic-apps/logic-apps-control-flow-loops.md)bir kullanın.
 
-Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için yanıt gövdesi ile bir HTTP POST isteği gönderen ayrıntılı bir açıklama tarafından izlenen bir örnek verilmiştir:
+Aşağıda, "My_Scope" adlı kapsam eyleminde başarısız olan herhangi bir eylem için yanıt gövdesi ile bir HTTP POST isteği gönderen ayrıntılı bir açıklama verilmiştir:
 
 ```json
 "Filter_array": {

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738013"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -132,7 +132,7 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
  
 - **İleti**: küme, yürütme sırasında yetersiz bellek sorunuyla karşılaştı, lütfen daha büyük çekirdek sayısı ve/veya bellek için iyileştirilmiş işlem türü ile bir tümleştirme çalışma zamanı kullanmayı deneyin
 - **Nedenler**: kümede bellek tükençalışıyor.
-- **Öneri**: hata ayıklama kümeleri geliştirme amaçlarıyla yöneliktir. Yük çalıştırmak için veri örneklemesi uygun işlem türü ve boyutundan yararlanın. En iyi performans için veri akışlarını ayarlamaya yönelik [veri akışı performans kılavuzuna](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance) bakın.
+- **Öneri**: hata ayıklama kümeleri geliştirme amaçlarıyla yöneliktir. Yük çalıştırmak için veri örneklemesi uygun işlem türü ve boyutundan yararlanın. En iyi performans için veri akışlarını ayarlamaya yönelik [veri akışı performans kılavuzuna](./concepts-data-flow-performance.md) bakın.
 
 ### <a name="error-code-df-executor-illegalargument"></a>Hata kodu: DF-yürütücü-düzeneği Galargument
 - **İleti**: lütfen bağlı hizmetinizdeki erişim anahtarının doğru olduğundan emin olun.
@@ -182,7 +182,7 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 
 - **İleti**: geçersiz Aralık belirtildi.
 - **Nedenler**: belirlenmeyen
-- **Öneri**: lütfen parametre değerini denetleyin ve başvuruya göre geçerli aralığı belirtin: [Excel özellikleri](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Öneri**: lütfen parametre değerini denetleyin ve başvuruya göre geçerli aralığı belirtin: [Excel özellikleri](./format-excel.md#dataset-properties).
 
 - **İleti**: yalnızca. xlsx ve. xls desteklenirken geçersiz Excel dosyası sağlanıyor
 - **Nedenler**: belirlenmeyen
@@ -204,7 +204,7 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 
 ### <a name="error-code-4502"></a>Hata kodu: 4502
 - **İleti**: Integration Runtime altında azaltma nedeniyle hatalara neden olan çok fazla eşzamanlı MappingDataflow yürütmesi vardır.
-- **Nedenler**: çok sayıda veri akışı etkinliği çalışması, Integration Runtime aynı anda çalışmaya devam etmesidir. Lütfen [Azure Data Factory sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits)hakkında daha fazla bilgi edinin.
+- **Nedenler**: çok sayıda veri akışı etkinliği çalışması, Integration Runtime aynı anda çalışmaya devam etmesidir. Lütfen [Azure Data Factory sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)hakkında daha fazla bilgi edinin.
 - **Öneri**: daha fazla veri akışı etkinliğini paralel olarak çalıştırmak istiyorsanız, lütfen bunları birden çok tümleştirme çalışma zamanında dağıtın.
 
 

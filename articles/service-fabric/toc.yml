@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: Yönetilen kümenizi yapılandırma
           href: how-to-managed-cluster-configuration.md
+        - name: NSG kuralları ve diğer yönetilen küme ağ seçeneklerini ekleyin
+          href: how-to-managed-cluster-networking.md
         - name: ARM şablonunu kullanarak yönetilen küme uygulamaları dağıtma
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Yönetilen kimliğe sahip yönetilen bir küme yapılandırma
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Yönetilen küme düğümleri için disk şifrelemeyi etkinleştir
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Yönetilen küme düğümleri için yönetilen kimlik kullan
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Planlama ve hazırlama
       items:
         - name: Küme kapasitesini planlama

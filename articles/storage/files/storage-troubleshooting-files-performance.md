@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393862"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737639"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -50,7 +50,7 @@ Paylaşımınızın kısıtlanıp kısıtlanmadığını doğrulamak için porta
     - Clientshareingresskısıtlar Lingerror
     - Clientshareıopskısıtlar Lingerror
 
-    Her yanıt türü hakkında daha fazla bilgi edinmek için bkz. [ölçüm boyutları](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+    Her yanıt türü hakkında daha fazla bilgi edinmek için bkz. [ölçüm boyutları](./storage-files-monitoring-reference.md#metrics-dimensions).
 
     !["Yanıt türü" özellik filtresini gösteren Premium dosya paylaşımları için ölçüm seçeneklerinin ekran görüntüsü.](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -258,13 +258,12 @@ Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz.
    > [!NOTE]
    > Yanıt türleri **boyut değerleri** açılan listesinde listelenmemişse, kaynağın kısıtlanmayacağı anlamına gelir. Boyut değerlerini eklemek için, **boyut değerleri** açılan listesinin yanındaki **özel değer Ekle**' yi seçin, bir yönlü bir tür girin (örneğin, başarılı bir şekilde **daraltma**), **Tamam**' ı seçin ve ardından dosya paylaşımınız için geçerli tüm yanıt türlerini eklemek üzere bu adımları tekrarlayın.
 
-8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
-9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
-
+8. **Premium dosya paylaşımları** için **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşımı**' nı seçin. **Standart dosya paylaşımları** için **#10 adıma** atlayın.
 
    > [!NOTE]
-   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > Dosya paylaşımı standart bir dosya paylaşımındaysa, paylaşım başına ölçümler standart dosya paylaşımları için kullanılabilir olmadığından **Dosya** paylaşımı boyutu dosya paylaşımlarını listeetmez. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
+9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 
     > [!TIP]

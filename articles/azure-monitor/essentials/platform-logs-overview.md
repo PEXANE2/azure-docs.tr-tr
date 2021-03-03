@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623210"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725858"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure platform günlüklerine genel bakış
 Platform günlükleri, Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bunlar otomatik olarak oluşturulur, ancak korunacak bir veya daha fazla hedefe iletilmek üzere belirli platform günlüklerinin yapılandırılması gerekir. Bu makalede, sağladığı bilgiler ve bunları toplama ve analiz için nasıl yapılandırabileceğiniz dahil olmak üzere platform günlüklerine bir genel bakış sunulmaktadır.
@@ -22,7 +22,7 @@ Aşağıdaki tabloda, Azure 'un farklı katmanlarında kullanılabilen belirli p
 
 | Günlük | Katman | Açıklama |
 |:---|:---|:---|
-| [Kaynak günlükleri](../platform/resource-logs.md) | Azure Kaynakları | Bir Azure kaynağı içinde ( *veri düzlemi*) gerçekleştirilen işlemlere Öngörüler sağlama (örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma). Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir.<br><br>*Kaynak günlüklerine daha önce tanılama günlükleri adı verilir.*  |
+| [Kaynak günlükleri](./resource-logs.md) | Azure Kaynakları | Bir Azure kaynağı içinde ( *veri düzlemi*) gerçekleştirilen işlemlere Öngörüler sağlama (örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma). Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir.<br><br>*Kaynak günlüklerine daha önce tanılama günlükleri adı verilir.*  |
 | [Etkinlik günlüğü](../essentials/activity-log.md) | Azure Aboneliği | Hizmet durumu olaylarında güncelleştirmelere ek olarak, dışarıdaki (*Yönetim düzlemi*) abonelikteki her bir Azure kaynağında bulunan işlemlere ilişkin öngörüler sağlar. Aboneliğinizdeki kaynaklarda _hangi_ yazma IŞLEMLERININ (put, Post _, silme_) alındığını _belirlemek için etkinlik_ günlüğünü kullanın. Her bir Azure aboneliği için tek bir etkinlik günlüğü vardır. |
 | [Azure Active Directory günlükleri](../../active-directory/reports-monitoring/overview-reports.md) | Azure Kiracısı |  Belirli bir kiracının Azure Active Directory yapılan değişikliklerin, oturum açma etkinliğinin ve denetim izinin geçmişini içerir.   |
 
@@ -44,9 +44,9 @@ Farklı Azure platformu günlüklerini görüntülemek ve analiz etmek için far
 ## <a name="destinations"></a>Hedefler
 İzleme gereksinimlerinize bağlı olarak, aşağıdaki tabloda yer alan hedeflere bir veya daha fazlasına platform günlükleri gönderebilirsiniz. [Tanılama ayarı oluşturarak](../essentials/diagnostic-settings.md)platform günlükleri için hedefleri yapılandırın.
 
-| Hedef | Description |
+| Hedef | Açıklama |
 |:---|:---|
-| Log Analytics çalışma alanı | Tüm Azure kaynaklarınızın günlüklerini birlikte çözümleyin ve [günlük sorguları](../log-query/log-query-overview.md) ve [günlük uyarıları](../alerts/alerts-log.md)da dahil olmak üzere [Azure izleyici günlüklerine](../platform/data-platform-logs.md) sunulan tüm özelliklerden yararlanın. Günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin. |  |
+| Log Analytics çalışma alanı | Tüm Azure kaynaklarınızın günlüklerini birlikte çözümleyin ve [günlük sorguları](../logs/log-query-overview.md) ve [günlük uyarıları](../alerts/alerts-log.md)da dahil olmak üzere [Azure izleyici günlüklerine](../logs/data-platform-logs.md) sunulan tüm özelliklerden yararlanın. Günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin. |  |
 | Olay hub'ı | Platform günlüğü verilerini Azure dışında, örneğin bir üçüncü taraf SıEM veya özel telemetri platformuna gönderin.
 | Azure depolama | Denetim veya yedekleme için günlükleri arşivle. |
 
@@ -61,5 +61,4 @@ Farklı Azure platformu günlüklerini görüntülemek ve analiz etmek için far
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Etkinlik günlüğü hakkında daha fazla ayrıntı okuyun](../essentials/activity-log.md)
-* [Kaynak günlükleri hakkında daha fazla bilgi edinin](../platform/resource-logs.md)
-
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](./resource-logs.md)

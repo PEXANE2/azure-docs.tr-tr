@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701714"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Depolama Analizi günlüklerini etkinleştirme ve yönetme (klasik)
 
-[Azure depolama Analizi](storage-analytics.md) Bloblar, kuyruklar ve tablolar için Günlükler sağlar. Hesabınız için günlükleri yapılandırmak üzere [Azure Portal](https://portal.azure.com) kullanabilirsiniz. Bu makalede günlüklerin nasıl etkinleştirileceği ve yönetileceği gösterilmektedir. Ölçümleri nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure depolama Analizi ölçümlerini etkinleştirme ve yönetme (klasik)](storage-monitor-storage-account.md).  Azure portal izleme verilerini İnceleme ve depolama ile ilişkili maliyetler vardır. Daha fazla bilgi için bkz. [Depolama Analizi](storage-analytics.md).
+[Azure depolama Analizi](storage-analytics.md) Bloblar, kuyruklar ve tablolar için Günlükler sağlar. Hesabınız için günlükleri yapılandırmak üzere [Azure Portal](https://portal.azure.com) kullanabilirsiniz. Bu makalede günlüklerin nasıl etkinleştirileceği ve yönetileceği gösterilmektedir. Ölçümleri nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure depolama Analizi ölçümlerini etkinleştirme ve yönetme (klasik)]().  Azure portal izleme verilerini İnceleme ve depolama ile ilişkili maliyetler vardır. Daha fazla bilgi için bkz. [Depolama Analizi](storage-analytics.md).
 
 > [!NOTE]
 > Azure depolama günlüklerini Depolama Analizi günlükleri yerine Azure Izleyici 'de kullanmanızı öneririz. Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Bu önizleme, Bloblar (Azure Data Lake Storage 2.), dosyalar, kuyruklar ve tablolar için Günlükler sunar. Daha fazla bilgi edinmek için aşağıdaki makalelerden birine bakın:
@@ -191,7 +191,7 @@ Günlük verileri, zaman içinde hesabınızda birikir ve bu da depolama maliyet
 
    * `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin. 
 
-6. Geçerli günlük tutma ilkesini görüntülemek için [Get-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) kullanın. Aşağıdaki örnek, konsola blob ve kuyruk depolama hizmetleri için saklama süresini yazdırır.
+6. Geçerli günlük tutma ilkesini görüntülemek için [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) kullanın. Aşağıdaki örnek, konsola blob ve kuyruk depolama hizmetleri için saklama süresini yazdırır.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ Günlük verileri, zaman içinde hesabınızda birikir ve bu da depolama maliyet
    > [!div class="mx-imgBorder"]
    > ![PowerShell çıkışında bekletme ilkesi](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. Saklama süresini değiştirmek için [set-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) kullanın. Aşağıdaki örnek, saklama süresini 4 gün olarak değiştirir.  
+7. Saklama süresini değiştirmek için [set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) kullanın. Aşağıdaki örnek, saklama süresini 4 gün olarak değiştirir.  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ Günlük verilerinizi indirdiyseniz, dosyalardaki günlük girişlerini görünt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Depolama Analizi hakkında daha fazla bilgi edinmek için bkz. Depolama Analizi [depolama Analizi](storage-analytics.md) .
-* [Depolama Analizi ölçümleri yapılandırın](storage-monitor-storage-account.md).
 * Depolama günlüğünü yapılandırmak üzere .NET dili kullanma hakkında daha fazla bilgi için bkz. [depolama Istemci kitaplığı başvurusu](/previous-versions/azure/dn261237(v=azure.100)). 
 * REST API kullanarak depolama günlüğünü yapılandırma hakkında genel bilgi için, bkz. [depolama Analizi etkinleştirme ve yapılandırma](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
 * Depolama Analizi günlüklerinin biçimi hakkında daha fazla bilgi edinin. [Depolama Analizi günlük biçimine](/rest/api/storageservices/storage-analytics-log-format)bakın.

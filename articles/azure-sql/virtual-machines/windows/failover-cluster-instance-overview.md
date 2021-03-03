@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690932"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,13 +47,13 @@ Geleneksel şirket içi kümelenmiş ortamlarda Windows Yük devretme kümesi, p
 
 Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin dağıtımı için paylaşılan depolama çözümü olarak çeşitli seçenekler sunar: 
 
-||[Azure paylaşılan diskleri](../../../virtual-machines/disks-shared.md)|[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Depolama Alanları Doğrudan (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure paylaşılan diskleri](../../../virtual-machines/disks-shared.md)|[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-file-share.md) |[Depolama Alanları Doğrudan (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri (Premium SSD Için) </br> Aynı Kullanılabilirlik bölgesi (Ultra SSD Için) |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
-|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
+|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -96,7 +96,7 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 - , Azure blob önbelleğini destekler, bu nedenle okuma, önbellekten yerel olarak sunulabilir. (Güncelleştirmeler her iki düğüme de aynı anda çoğaltılır.) 
 - FILESTREAM 'i destekler. 
 
-**Algılan**
+**Sınırlamalar:**
 - Yalnızca Windows Server 2016 ve üzeri için kullanılabilir. 
 - Kullanılabilirlik alanları desteklenmiyor.
 - Her iki sanal makineye de aynı disk kapasitesini gerektirir. 
@@ -105,9 +105,9 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 
 Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md). 
 
-### <a name="premium-file-share"></a>Premium dosya paylaşma
+### <a name="premium-file-share"></a>Premium dosya paylaşımı
 
-[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) , [Azure dosyalarının](../../../storage/files/index.yml)bir özelliğidir. Premium dosya paylaşımları SSD olarak desteklenir ve sürekli düşük gecikme süresine sahiptir. Windows Server 2012 veya sonraki sürümlerde SQL Server 2012 veya üzeri yük devretme kümesi örnekleriyle birlikte kullanılmak üzere tam olarak desteklenmektedir. Bir dosya paylaşımını herhangi bir kesinti olmadan yeniden boyutlandırabilir ve ölçeklendirebileceğiniz için Premium dosya paylaşımları size daha fazla esneklik sağlar.
+[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-file-share.md) , [Azure dosyalarının](../../../storage/files/index.yml)bir özelliğidir. Premium dosya paylaşımları SSD olarak desteklenir ve sürekli düşük gecikme süresine sahiptir. Windows Server 2012 veya sonraki sürümlerde SQL Server 2012 veya üzeri yük devretme kümesi örnekleriyle birlikte kullanılmak üzere tam olarak desteklenmektedir. Bir dosya paylaşımını herhangi bir kesinti olmadan yeniden boyutlandırabilir ve ölçeklendirebileceğiniz için Premium dosya paylaşımları size daha fazla esneklik sağlar.
 
 **Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
 **Desteklenen SQL sürümü**: SQL Server 2012 ve üzeri   
@@ -116,7 +116,7 @@ Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanla
 - Yalnızca sanal makineler için paylaşılan depolama çözümü birden çok kullanılabilirlik bölgesine yayılır. 
 - Tek basamaklı gecikme süreleriyle tam olarak yönetilen dosya sistemi ve Burstable g/ç performansı. 
 
-**Algılan**
+**Sınırlamalar:**
 - Yalnızca Windows Server 2012 ve üzeri için kullanılabilir. 
 - FILESTREAM desteklenmiyor. 
 
@@ -173,7 +173,7 @@ Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 201
 
 [Küme yapılandırmalarının en iyi yöntemlerini](hadr-cluster-best-practices.md)gözden geçirin ve ardından [SQL Server VM FCI için hazırlayabilirsiniz](failover-cluster-instance-prepare-vm.md). 
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573089"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699258"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -97,8 +97,8 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - Tüm aboneliklerdeki uyarıları görüntüleme ve yenileme özelliği sayesinde, temsilci olan abonelikler için uyarıları görüntüleme
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
-- [Log Analytics](../../azure-monitor/platform/service-providers.md): birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama (müşteri kiracılarındaki çalışma alanlarından veriye erişmek için kullanılan Otomasyon hesaplarının aynı kiracıda oluşturulması gerektiğini unutmayın)
-- Müşteri kiracılarında [etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md)
+- [Log Analytics](../../azure-monitor/logs/service-providers.md): birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama (müşteri kiracılarındaki çalışma alanlarından veriye erişmek için kullanılan Otomasyon hesaplarının aynı kiracıda oluşturulması gerektiğini unutmayın)
+- Müşteri kiracılarında [etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-activity-log.md)
 - Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında, Web kancaları aracılığıyla kiracıyı yönetme bölümünde uyarı oluşturma
 - Yönetim kiracısındaki çalışma alanlarına kaynak günlükleri göndermek için müşteri kiracılarında [Tanılama ayarları](../..//azure-monitor/essentials/diagnostic-settings.md) oluşturma
 - SAP iş yükleri için, [Müşteri kiracılar genelinde toplu bir görünüm Ile SAP Çözümleri ölçümlerini izleyin](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

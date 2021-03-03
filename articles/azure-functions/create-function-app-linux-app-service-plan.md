@@ -3,18 +3,18 @@ title: Linux üzerinde Azure portal bir işlev uygulaması oluşturma
 description: Azure portal kullanarak Linux üzerinde ilk Azure işlevinizi oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d6787e1dd8312e368964a1f555025beff9a06a23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732267"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service planında Linux üzerinde bir işlev uygulaması oluşturma
 
 Azure İşlevleri, işlevlerinizi Linux’ta varsayılan bir Azure App Service kapsayıcısında barındırmanıza olanak sağlar. Bu makalede, bir [App Service planında](dedicated-plan.md)çalışan Linux ile barındırılan bir işlev uygulaması oluşturmak için [Azure Portal](https://portal.azure.com) nasıl kullanılacağı açıklanmaktadır. Ayrıca [kendi özel kapsayıcınızı getirebilirsiniz](functions-create-function-linux-custom-image.md).
 
-![Azure portalında işlev uygulaması oluşturma](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,7 +26,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında otu
 
 Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun yürütülmesine yönelik bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar. Bu makalede, işlev uygulamanızı oluştururken bir App Service planı oluşturacaksınız.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur** seçeneğini belirleyin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**'u seçin.
 
 1. **Yeni** sayfasında, **işlem**  >  **işlev uygulaması**' yi seçin.
 

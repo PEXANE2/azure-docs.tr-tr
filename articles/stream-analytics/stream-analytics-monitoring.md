@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726776"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -30,6 +30,7 @@ Bu pencere gösterildiği gibi görünür:
 | ---------------------- | ---------------------------------------- |
 | Biriktirme listesindeki giriş olayları       | Biriktirme listesindeki giriş olaylarının sayısı. Bu ölçüm için sıfır olmayan bir değer, işinizin gelen olay sayısıyla devam edemediğinden emin olmak anlamına gelir. Bu değer yavaş bir şekilde artarak veya sürekli olarak sıfır değilse, işinizi ölçeklendirmelisiniz. Daha fazla bilgi edinmek için öğrenme [ve akış birimlerini ayarlayın](stream-analytics-streaming-unit-consumption.md). |
 | Veri dönüştürme hataları | Beklenen çıkış şemasına dönüştürülemeyen çıkış olaylarının sayısı. Hata ilkesi, bu senaryoya ilişkin olayları bırakmak için ' Drop ' olarak değiştirilebilir. |
+| CPU% kullanımı (Önizleme)       | İşiniz için kullanılan CPU yüzdesi. Bu ölçüm %80 ' den tutarlı bir şekilde fazlaysa, işiniz bottlenecked CPU kullanımı üzerine gelir ve büyük olasılıkla giriş olaylarının geri kaydedilmesini sağlar. Bu tür sorunları azaltmak için, işinize ayrılan SUs sayısını artırabilirsiniz. |
 | Erken giriş olayları       | Uygulama zaman damgası, 5 dakikadan uzun bir süre içinde olan olay zaman damgasından daha önce. |
 | Başarısız Işlev Istekleri | Başarısız Azure Machine Learning işlev çağrılarının sayısı (varsa). |
 | İşlev olayları        | Azure Machine Learning işlevine gönderilen olay sayısı (varsa). |
@@ -42,7 +43,7 @@ Bu pencere gösterildiği gibi görünür:
 | Sıra dışı olaylar    | Olay sıralama Ilkesine bağlı olarak, ayarlanmış bir zaman damgasına bırakılan veya verilen zaman damgası dışında alınan olay sayısı. Bu, sipariş dışı tolerans penceresi ayarının yapılandırmasından etkilenebilir. |
 | Çıkış olayları          | Stream Analytics işi tarafından çıktı hedefine, olay sayısında gönderilen veri miktarı. |
 | Çalışma zamanı hataları         | Sorgu işlemeyle ilgili toplam hata sayısı (olayları alırken veya sonuçları yazarken bulunan hatalar hariç) |
-| SU kullanımı yüzdesi       | Kaynak kullanımı düzenli olarak %80 üzerinde ise, eşik gecikmesi gecikmelidir ve biriktirme listesi olaylarının sayısı artmakta olduğundan, akış birimlerini artırmayı düşünün. Yüksek kullanım, işin en fazla ayrılmış kaynağa yakın kullandığını gösterir. |
+| SU kullanımı yüzdesi       | İşiniz tarafından kullanılan bellek yüzdesi. % SU kullanımı sürekli %80 üzerinde ise, eşik gecikmesi gecikmelidir ve biriktirme listesi olaylarının sayısı artmakta olduğundan, akış birimlerini artırmayı düşünün. Yüksek kullanım, işin en fazla ayrılmış kaynağa yakın kullandığını gösterir. |
 | Filigran gecikmesi       | İş içindeki tüm çıkışların tüm bölümlerinde en fazla eşik gecikmesi. |
 
 [Stream Analytics işinizin performansını izlemek](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)için bu ölçümleri kullanabilirsiniz. 

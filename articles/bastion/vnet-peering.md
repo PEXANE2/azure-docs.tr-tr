@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710592"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet eşlemesi ve Azure savunma (Önizleme)
 
@@ -40,9 +40,15 @@ Bu şekilde, bir hub ve bağlı bileşen modelinde bir Azure savunma dağıtım�
 **Olanları**
 
 1. Herhangi bir HTML5 tarayıcısı kullanarak Azure portal bağlayın.
-1. Bağlanılacak sanal makineyi seçin.
-1. Azure savunma, eşlenmiş VNet genelinde sorunsuz bir şekilde algılanır.
-1. Tek bir tıklama ile, RDP/SSH oturumu tarayıcıda açılır. RDP ve SSH eşzamanlı oturum sınırları için bkz. [RDP ve ssh oturumları](bastion-faq.md#limits).
+2. Hedef VM ve eşlenmiş VNet için **okuma** erişiminizin olduğundan emin olun. Ayrıca, aşağıdaki kaynaklara okuma erişiminizin olduğunu ıAM bölümünde da onay işareti yapın:
+   * Sanal makinede okuyucu rolü.
+   * Sanal makinenin özel IP 'si ile NIC 'de okuyucu rolü.
+   * Azure savunma kaynağında okuyucu rolü.
+   * Sanal ağ üzerinde okuyucu rolü (eşlenen sanal ağ yoksa gerekli değildir).
+3. **Bağlan** açılan menüsünde, erişimi görmek Için, **abonelik > genel aboneliği**' nde erişiminizin olduğu alt öğeleri seçmelisiniz.
+4. Bağlanılacak sanal makineyi seçin.
+5. Azure savunma, eşlenmiş VNet genelinde sorunsuz bir şekilde algılanır.
+6. Tek bir tıklama ile, RDP/SSH oturumu tarayıcıda açılır. RDP ve SSH eşzamanlı oturum sınırları için bkz. [RDP ve ssh oturumları](bastion-faq.md#limits).
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Bağlan":::
 

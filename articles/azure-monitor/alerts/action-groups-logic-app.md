@@ -4,14 +4,14 @@ description: Azure Izleyici uyarılarını işlemek için bir mantıksal uygulam
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/19/2021
 ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: adef1f729cbecd08b2cf99231423287bdc4c6ae0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625442"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701187"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Izleyici uyarıları ile karmaşık eylemleri tetikleme
 
@@ -19,7 +19,7 @@ Bu makalede, bir mantıksal uygulamayı bir uyarı tetiklendiğinde Microsoft ek
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir Azure Izleyici uyarısı tetiklendiğinde, bir [eylem grubu](../platform/action-groups.md)çağırır. Eylem grupları bir veya daha fazla eylemi bir uyarı hakkında bilgilendirmek ve ayrıca düzeltmek için tetiklemeniz sağlar.
+Bir Azure Izleyici uyarısı tetiklendiğinde, bir [eylem grubu](./action-groups.md)çağırır. Eylem grupları bir veya daha fazla eylemi bir uyarı hakkında bilgilendirmek ve ayrıca düzeltmek için tetiklemeniz sağlar.
 
 Genel işlem şu şekilde yapılır:
 
@@ -35,29 +35,15 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Etkinlik günlüğü uyarısı oluştur: Yönetim
 
-1.  Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin.
+1. [Mantıksal uygulama oluşturma](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  **Mantıksal uygulama** araması yapın ve seçin ve ardından **Oluştur**' u seçin.
+2.  Tetikleyiciyi seçin: **BIR http isteği alındığında**.
 
-3.  Mantıksal uygulamanıza bir **ad** verin, bir **kaynak grubu** seçin ve bu şekilde devam edin.
+1. **Http isteğinin alındığı zaman** iletişim kutusunda, **şema oluşturmak Için örnek yük kullan**' ı seçin.
 
-    ![Mantıksal uygulama oluşturma](media/action-groups-logic-app/create-logic-app-dialog.png "Mantıksal uygulama oluşturma")
+    ![Bir g/ç isteği oluştur iletişim kutusu ve seçilen şema için örnek yükü Kullan seçili olan ekran görüntüsü. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  Mantıksal uygulamayı oluşturmak için **Oluştur** ' u seçin. Açılan ileti, mantıksal uygulamanın oluşturulduğunu gösterir. **Logic Apps tasarımcısını** açmak Için **kaynağı Başlat** ' ı seçin.
-
-5.  Tetikleyiciyi seçin: **BIR http isteği alındığında**.
-
-    ![Mantıksal uygulama tetikleyicileri](media/action-groups-logic-app/logic-app-triggers.png "Mantıksal uygulama tetikleyicileri")
-
-6.  HTTP istek tetikleyicisini değiştirmek için **Düzenle** ' yi seçin.
-
-    ![HTTP istek Tetikleyicileri](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP istek Tetikleyicileri")
-
-7.  **Şema oluşturmak için örnek yük kullanma** öğesini seçin.
-
-    ![Örnek yük kullanma](media/action-groups-logic-app/use-sample-payload-button.png "Örnek yük kullanma")
-
-8.  Aşağıdaki örnek yükü kopyalayıp iletişim kutusuna yapıştırın:
+3.  Aşağıdaki örnek yükü kopyalayıp iletişim kutusuna yapıştırın:
 
     ```json
         {
@@ -128,7 +114,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
 14. **Logic Apps tasarımcısının** en üstünde, mantıksal uygulamanızı kaydetmek için **Kaydet** ' i seçin.
 
-15. Mevcut eylem grubunuzu açın ve mantıksal uygulamaya başvurmak için bir eylem ekleyin. Mevcut bir eylem grubunuz yoksa, bir tane oluşturmak için [Azure Portal eylem grupları oluşturma ve yönetme](../platform/action-groups.md) bölümüne bakın. Değişikliklerinizi kaydetmeyi unutmayın.
+15. Mevcut eylem grubunuzu açın ve mantıksal uygulamaya başvurmak için bir eylem ekleyin. Mevcut bir eylem grubunuz yoksa, bir tane oluşturmak için [Azure Portal eylem grupları oluşturma ve yönetme](./action-groups.md) bölümüne bakın. Değişikliklerinizi kaydetmeyi unutmayın.
 
     ![Eylem grubunu güncelleştirme](media/action-groups-logic-app/update-action-group.png "Eylem grubunu güncelleştirme")
 
@@ -138,8 +124,8 @@ Bir uyarı bir sonraki sefer eylem grubunuzu çağırdığında mantıksal uygul
 
 Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uyarı oluşturma işlemi, [bir etkinlik günlüğü uyarısı oluşturmaya](#create-an-activity-log-alert-administrative)benzer ancak birkaç değişiklik ile benzerdir:
 
-- 1 ile 7 arasındaki adımlar aynıdır.
-- 8. adım için, HTTP istek tetikleyicisi için aşağıdaki örnek yükü kullanın:
+- 1 ile 3 arasındaki adımlar aynıdır.
+- 4. adım için, HTTP istek tetikleyicisi için aşağıdaki örnek yükü kullanın:
 
     ```json
     {
@@ -183,8 +169,8 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
     }
     ```
 
--  9 ve 10 adımları aynıdır.
--  11 ila 14 arasındaki adımlar için aşağıdaki işlemi kullanın:
+-  5 ve 6. adımlar aynıdır.
+-  7 ila 11 arasındaki adımlar için aşağıdaki işlemi kullanın:
 
    1. **+** **Yeni adım** ' ı ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın.  Metin kutusuna sürüm değeri girerken, bir sayısal tür değil, bir dize olarak değerlendirildiğinden emin olmak için tırnak içine alın ("0.1.1").  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur.   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +212,8 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 
 Ölçüm uyarısı oluşturma işlemi, [etkinlik günlüğü uyarısı oluşturmaya](#create-an-activity-log-alert-administrative)benzer ancak birkaç değişiklik ile benzerdir:
 
-- 1 ile 7 arasındaki adımlar aynıdır.
-- 8. adım için, HTTP istek tetikleyicisi için aşağıdaki örnek yükü kullanın:
+- 1 ile 3 arasındaki adımlar aynıdır.
+- 4. adım için, HTTP istek tetikleyicisi için aşağıdaki örnek yükü kullanın:
 
     ```json
     {
@@ -271,8 +257,8 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
     }
     ```
 
-- 9 ve 10 adımları aynıdır.
-- 11 ila 14 arasındaki adımlar için aşağıdaki işlemi kullanın:
+- 5 ve 6. adımlar aynıdır.
+- 7 ila 11 arasındaki adımlar için aşağıdaki işlemi kullanın:
 
   1. **+** **Yeni adım** ' ı ve ardından **Koşul Ekle**' yi seçin. Aşağıdaki koşulları, mantıksal uygulamanın yalnızca giriş verileri aşağıdaki değerlerle eşleştiğinde yürütülür şekilde ayarlayın. Metin kutusuna sürüm değeri girerken, tırnak içine alın ("2,0") ve sayısal bir tür değil, bir dize olarak değerlendirildiğinden emin olun.  Sayfaya geri dönerseniz, sistem tırnak işaretlerini göstermez, ancak temeldeki kod yine de dize türünü korur. 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +280,6 @@ Azure hizmet durumu girdileri, etkinlik günlüğü 'nün bir parçasıdır. Uya
 Logic Apps, çok sayıda uygulama ve veritabanında eylemleri tetikleyesağlayan farklı bağlayıcılara sahiptir. Bolluk, SQL Server, Oracle, Salesforce yalnızca bazı örneklerdir. Bağlayıcılar hakkında daha fazla bilgi için bkz. [Logic App bağlayıcıları](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure etkinlik günlüğü uyarılarına genel bir bakış](../platform/alerts-overview.md) elde edin ve uyarı alma hakkında bilgi edinin.  
+* [Azure etkinlik günlüğü uyarılarına genel bir bakış](./alerts-overview.md) elde edin ve uyarı alma hakkında bilgi edinin.  
 * [Bir Azure hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../service-health/alerts-activity-log-service-notifications-portal.md)öğrenin.
-* [Eylem grupları](../platform/action-groups.md)hakkında daha fazla bilgi edinin.
-
+* [Eylem grupları](./action-groups.md)hakkında daha fazla bilgi edinin.

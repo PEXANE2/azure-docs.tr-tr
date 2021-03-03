@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705492"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault gizli istemci kitaplığı (sürüm 4)
 
@@ -27,7 +27,7 @@ Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
 - [Gizli dizi genel bakış](about-secrets.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - İşletim sisteminiz için geçerli [Node.js](https://nodejs.org) .
@@ -56,13 +56,13 @@ Ardından, buluta dağıtılabilecek bir Node.js uygulaması oluşturun.
 
 1. Bir komut kabuğunda adlı bir klasör oluşturun `key-vault-node-app` :
 
-```azurecli
+```terminal
 mkdir key-vault-node-app
 ```
 
 1. Yeni oluşturulan *Anahtar Kasası-node-App* dizinine geçin ve düğüm projesini başlatmak için ' init ' komutunu çalıştırın:
 
-```azurecli
+```terminal
 cd key-vault-node-app
 npm init -y
 ```
@@ -71,13 +71,13 @@ npm init -y
 
 Konsol penceresinde, Node.js için Azure Key Vault gizli dizi [kitaplığı](https://www.npmjs.com/package/@azure/keyvault-secrets) ' nı yükler.
 
-```azurecli
+```terminal
 npm install @azure/keyvault-secrets
 ```
 
 Key Vault kimlik doğrulaması yapmak için [Azure. Identity](https://www.npmjs.com/package/@azure/identity) paketini yükler
 
-```azurecli
+```terminal
 npm install @azure/identity
 ```
 
@@ -154,7 +154,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 Bu hızlı başlangıçta oturum açan kullanıcı, yerel geliştirme için tercih edilen yöntem olan Anahtar Kasası kimlik doğrulaması için kullanılır. Azure 'a dağıtılan uygulamalar için, yönetilen kimlik App Service veya sanal makineye atanmalıdır, daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) [' DefaultAzureCredential () '](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) sınıfını kullanarak kimlik sağlamak için farklı seçeneklerle aynı kodu farklı ortamlarda kullanmanıza olanak tanır. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) [' DefaultAzureCredential () '](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) sınıfını kullanarak kimlik sağlamak için farklı seçeneklerle farklı ortamlarda aynı kodu kullanmamızı sağlar. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 Aşağıdaki kodu ' Main () ' işlevine ekleyin
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
+Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
-Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)önceden ayarlanan değeri alabilirsiniz.
+Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_)önceden ayarlanan değeri alabilirsiniz.
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -258,9 +258,9 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 1. Uygulamayı çalıştırmak için aşağıdaki komutları yürütün.
 
-    ```azurecli
+    ```terminal
     npm install
-    npm index.js
+    node index.js
     ```
 
 1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.

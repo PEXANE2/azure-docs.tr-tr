@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 7e01d234b5b94997cbfd275c4b4566ec4fa332a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 136e063f6d272589c609bad93532df025a15a68d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723631"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -92,7 +92,7 @@ Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini 
 | NOT_DEFINED | Gerekli bağımlılıklar yüklü olmadığından auoms auditd eklentisi yüklenmeyecek | Auoms yüklemesi başarısız oldu, paket auditd 'yi yükleme. |
 | 2 | Kabuk paketi için geçersiz seçenek belirtildi. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için Çalıştır |
 | 3 | Kabuk paketine hiçbir seçenek sağlanmaz. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için çalıştırın. |
-| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
+| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
 | 5 | Kabuk paketi kök olarak yürütülmelidir veya ekleme sırasında 403 hatası döndürüldü. Komutunu kullanarak komutunu çalıştırın `sudo` . |
 | 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent-*x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
 | 17 | OMS paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
@@ -116,7 +116,7 @@ Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini 
 | --- | --- |
 | 2 | Omsadmin betiğine geçersiz seçenek belirtildi. `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h`Kullanım için çalıştırın. |
 | 3 | Omsadmin betiğine geçersiz yapılandırma belirtildi. `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h`Kullanım için çalıştırın. |
-| 4 | Omsadmin betiğine geçersiz proxy belirtildi. Proxy 'yi doğrulayın ve [BIR http proxy 'si kullanmaya yönelik belgelerimizi](../platform/log-analytics-agent.md#firewall-requirements)görüntüleyin. |
+| 4 | Omsadmin betiğine geçersiz proxy belirtildi. Proxy 'yi doğrulayın ve [BIR http proxy 'si kullanmaya yönelik belgelerimizi](./log-analytics-agent.md#firewall-requirements)görüntüleyin. |
 | 5 | Azure Izleyici 'den 403 HTTP hatası alındı. Ayrıntılar için omsadmin betiğinin tam çıktısına bakın. |
 | 6 | Azure Izleyici 'den 200 olmayan HTTP hatası alındı. Ayrıntılar için omsadmin betiğinin tam çıktısına bakın. |
 | 7 | Azure Izleyici ile bağlantı kurulamıyor. Ayrıntılar için omsadmin betiğinin tam çıktısına bakın. |
@@ -198,7 +198,7 @@ Log Analytics genel aracı yapılandırma dosyasında `/etc/opt/microsoft/omsage
 
 2. Aracıyı bir ara sunucu üzerinden iletişim kurmak üzere doğru şekilde yapılandırdığınızdan emin olmak için [proxy ayarlarını güncelleştirme](agent-manage.md#update-proxy-settings) bölümüne bakın.    
 
-3. Azure Izleyici [ağ güvenlik duvarı gereksinimleri](../platform/log-analytics-agent.md#firewall-requirements) listesinde özetlenen uç noktaların, bir izin verilenler listesine doğru bir şekilde eklendiğinden emin olun. Azure Otomasyonu kullanıyorsanız, gerekli ağ yapılandırma adımları da yukarıya bağlanır.
+3. Azure Izleyici [ağ güvenlik duvarı gereksinimleri](./log-analytics-agent.md#firewall-requirements) listesinde özetlenen uç noktaların, bir izin verilenler listesine doğru bir şekilde eklendiğinden emin olun. Azure Otomasyonu kullanıyorsanız, gerekli ağ yapılandırma adımları da yukarıya bağlanır.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Sorun: ekleme girişimi sırasında 403 hatası alıyorsunuz
 
@@ -447,7 +447,7 @@ Seçeneğini kullandıktan sonra yeniden eklemeye devam edebilirsiniz `--purge`
 ### <a name="resolution"></a>Çözüm 
 Sorunu gidermek için aşağıdaki adımları gerçekleştirin.
 1. Uzantıyı Azure portal kaldır.
-2. [Yönergeleri](../learn/quick-collect-linux-computer.md)izleyerek aracıyı yükler.
+2. [Yönergeleri](../vm/quick-collect-linux-computer.md)izleyerek aracıyı yükler.
 3. Şu komutu çalıştırarak aracıyı yeniden başlatın: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Birkaç dakika bekleyin ve sağlama durumu, **sağlama başarılı** olarak değişir.
 

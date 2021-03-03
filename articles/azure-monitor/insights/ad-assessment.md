@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici ile Active Directory ortamınızı iyileştirin | Microsoft Docs
 description: Düzenli aralıklarla ortamlarınızın riskini ve sistem durumunu değerlendirmek için Active Directory sistem durumu denetimi çözümünü kullanabilirsiniz.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bff61ec9dfcb985ea0111ca58bfd58273e1fe432
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577550"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723257"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure İzleyici'de Active Directory Sistem Durumu Denetimi çözümüyle Active Directory ortamınızı iyileştirme
 

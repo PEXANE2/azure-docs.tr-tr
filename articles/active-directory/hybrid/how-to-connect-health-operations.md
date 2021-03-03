@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686470"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -46,8 +46,6 @@ Uyarılar kimlik altyapınızın sağlıklı olmadığını gösteriyorsa, Azure
 > Arka uç hizmetimizde eşitleme isteklerini işlerken sorunlar olduğunda, bu hizmet, kiracınızın yönetim iletişim e-posta adresine (es) hata ayrıntılarını içeren bir bildirim e-postası gönderir. Müşterilerin belirli durumlarda bu iletilerin hacminin canlı büyüklükte olduğunu öğrendiğimiz ve bu iletileri gönderme şeklini değiştirdiğimiz için geri bildirimde bulunduk. 
 >
 > Her gerçekleştiğinde her eşitleme hatası için bir ileti göndermek yerine, arka uç hizmetinin döndürdüğü tüm hataların günlük özetini göndereceğiz. Bu, müşterilerin bu hataları daha verimli bir şekilde işlemesini sağlar ve yinelenen hata iletilerinin sayısını azaltır.
->
-> Bu değişikliği 15 Ocak 2020 ' de uygulanacak şekilde planlıyoruz.
 
 ## <a name="delete-a-server-or-service-instance"></a>Sunucu veya hizmet örneğini silme
 
@@ -133,7 +131,7 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. Adım: kullanıcıları ve grupları ekleme ve rol atama
 1. **Yapılandır** bölümünde **Kullanıcılar**' a tıklayın.<br>
    ![Azure AD Connect Health kaynak kenar çubuğu ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
-2. **Ekle**’yi seçin.
+2. **Add (Ekle)** seçeneğini belirleyin.
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
    ![Azure AD Connect Health ve Azure RBAC yapılandırma menüsünün ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**’e tıklayın.

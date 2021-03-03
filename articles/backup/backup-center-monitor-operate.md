@@ -3,20 +3,20 @@ title: Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
 description: Bu makalede yedekleme merkezi kullanılarak yedeklemelerin nasıl izleneceği ve çalıştırılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893787"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719551"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Yedekleme merkezi 'ni kullanarak yedeklemeleri izleme ve çalıştırma (Önizleme)
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Yedekleme Merkezi'ni kullanarak yedeklemeleri izleme ve çalıştırma
 
 Yedekleme Yöneticisi olarak, iş ve yedekleme envanterinizi gün temelinde izlemek için yedekleme merkezini tek bir cam bölmesi olarak kullanabilirsiniz. Ayrıca, isteğe bağlı yedekleme isteklerine yanıt verme, yedeklemeleri geri yükleme, yedekleme ilkeleri oluşturma gibi düzenli işlemleri gerçekleştirmek için yedekleme merkezi 'ni de kullanabilirsiniz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-* Yedekleme merkezi şu anda Azure VM yedeklemesi, Azure SAP HANA 'da SQL VM yedeklemesi, Azure VM yedeklemesi, Azure dosyaları yedeklemesi ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için desteklenmektedir.
+* Yedekleme merkezi şu anda Azure VM yedeklemesi, Azure SAP HANA 'da SQL VM yedeklemesi, Azure VM yedeklemesi, Azure dosya yedekleme, Azure Blobları yedekleme, Azure yönetilen diskler Yedekleme ve PostgreSQL için Azure veritabanı sunucu yedeklemesi için desteklenmektedir.
 * Desteklenen ve desteklenmeyen senaryoların ayrıntılı bir listesi için [destek matrisine](backup-center-support-matrix.md) bakın.
 
 ## <a name="backup-instances"></a>Yedekleme örnekleri

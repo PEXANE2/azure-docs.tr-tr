@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730295"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -69,10 +69,10 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     1. **Ağ arabirimi** -bu, bir Azure sanal makinesinin Internet, Azure ve diğer kaynaklarla iletişim kurmasını sağlar.
     1. Savunma **bağlantısı** -bu, tarayıcınızı ve Azure Portal kullanarak sanal makinenize bağlanmanızı sağlar.
     1. **Genel IP adresi** -bu, Azure kaynaklarının Internet ve genel kullanıma yönelik Azure hizmetleriyle iletişim kurmasını sağlar
-    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)hakkında daha fazla bilgi edinin.
+    1. **Sanal ağ** -bu, sanal makineniz gibi birçok Azure Kaynak türünün, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. [Sanal ağlar](../../virtual-network/virtual-networks-overview.md)hakkında daha fazla bilgi edinin.
     1. **IoT Hub** -bu, IoT uygulamanız, IoT Edge modülleriniz ve yönettiği cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür.
     1. **Medya hizmeti hesabı** -bu, Azure 'da medya içeriğini yönetmeye ve akışa yardımcı olur.
-    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Depolama hesabı** -bir birincil depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç ikincil depolama hesabı olabilir. Daha fazla bilgi için bkz. [Azure Media Services hesapları Ile Azure depolama hesapları](../latest/storage-account-concept.md).
     1. **Kapsayıcı kayıt defteri** -bu, özel Docker kapsayıcı görüntülerinizi ve ilgili yapıtlarınızı depolamaya ve yönetmeye yardımcı olur.
 
 Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun **`Microsoft.Devices/IotHubs`** ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır.  

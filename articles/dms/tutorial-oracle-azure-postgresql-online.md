@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: ab280bbab71926a6ffb70605fdbf463164469623
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742135"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
+
+> [!IMPORTANT]
+> "PostgreSQL için Oracle 'dan Azure veritabanı" geçiş senaryosu (Şu anda önizleme aşamasındadır) 1 Mayıs 2021 ' den sonra kullanılamayacak. Alternatif araç (örneğin, Ora2pg) aracılığıyla destek sağlamaya devam edeceğiz ve Oracle to PostgreSQL geçişleri için en iyi geçiş deneyimini sağlar. En iyi geçiş yöntemleri için bkz. [PostgreSQL için Oracle 'a Azure veritabanı geçiş Kılavuzu] ( https://aka.ms/OracletoPGguide) . 
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içinde veya sanal makinelerde barındırılan Oracle veritabanlarından, en az kapalı kalma süresine sahip [PostgreSQL Için Azure veritabanı](../postgresql/index.yml) 'na geçirebilirsiniz. Diğer bir deyişle, uygulamayı uygulamanın en az kapalı kalma süresiyle tamamlayabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak, Oracle 11g 'nin şirket içi veya sanal makine örneğinden, PostgreSQL için Azure veritabanı 'na **HR** örnek veritabanını geçireceğiniz.
 
@@ -186,7 +189,7 @@ Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, 
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Örneğin:
+Örnek:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -239,7 +242,7 @@ Başlamak için:
 
     Oracle kaynağında şema adı ve PostgreSQL için Azure veritabanı ile eşleşiyorsa, Azure veritabanı geçiş hizmeti, *Hedefteki ile aynı büyük/küçük harf kullanarak tablo şemasını oluşturur*.
 
-    Örneğin:
+    Örnek:
 
     | Kaynak Oracle şeması | Hedef PostgreSQL database. Schema | DMS tarafından oluşturulan Schema. Table. Column |
     | ------------- | ------------- | ------------- |

@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4935037ec0152b089c7c685b6bdd0e605d89f3f2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100655015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702683"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT cihaz SDK 'larına genel bakış
 
@@ -70,7 +70,7 @@ Bu SDK 'lar, sınırlı işlem veya bellek kaynakları olan cihazlarda çalışm
 
 * [GitHub deposu](https://github.com/azure-rtos/threadx)
 * [Başlangıç kılavuzlarından](https://github.com/azure-rtos/getting-started) ve [daha fazla örnek](https://github.com/azure-rtos/samples)
-* [Başvuru Belgeleri](https://docs.microsoft.com/azure/rtos/threadx/)
+* [Başvuru Belgeleri](/azure/rtos/threadx/)
 
 ### <a name="unconstrained-device-sdks"></a>Kısıtlanmış olmayan cihaz SDK 'Ları
 Bu SDK 'lar, daha yüksek sıralı bir dil çalışma zamanını destekleyebilen herhangi bir cihazda çalıştırılabilir. Bu, bilgisayarlar, Raspberry pu ve akıllı telefonlar gibi cihazları içerir. Bunlar öncelikle dile göre farklılaştırırlar, böylece ekibinize ve senaryonuza en uygun kitaplığı seçebilmenizi sağlayabilirsiniz.
@@ -125,7 +125,7 @@ Azure IoT Ayrıca, cihazları yönetmek, Öngörüler elde etmek, verileri görs
 
 IoT Hub hizmeti SDK 'Ları, cihazları ve güvenliği yönetmek için IoT Hub kolayca etkileşimde bulunan uygulamalar oluşturmanıza olanak tanır. Bu SDK 'Ları, buluttan cihaza iletiler göndermek, cihazlarınızdaki doğrudan yöntemleri çağırmak, cihaz özelliklerini güncelleştirmek ve daha fazlasını yapmak için kullanabilirsiniz.
 
-IoT Hub hakkında daha [**fazla bilgi edinin**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Bir cihazı denetlemeyi deneyin**](/azure/iot-hub/quickstart-control-device-python)
+IoT Hub hakkında daha [**fazla bilgi edinin**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Bir cihazı denetlemeyi deneyin**](../iot-hub/quickstart-control-device-python.md)
 
 **C# IoT Hub Service SDK**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)  |  [paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices/)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples)  |  [başvuru belgeleri](/dotnet/api/microsoft.azure.devices)
 
@@ -139,7 +139,7 @@ IoT Hub hakkında daha [**fazla bilgi edinin**](https://azure.microsoft.com/serv
 
 Azure dijital TWINS, tüm ortamların dijital modellerini temel alan bilgi grafiklerinin oluşturulmasına izin veren bir hizmet olarak platform (PaaS) sunumudur. Bu ortamlar binalar, oluşturucular, gruplar, enerji ağları, railler, lekeler ve daha fazlası gibi tüm şehirlerde bile olabilir. Bu dijital modeller, daha iyi ürünler, iyileştirilmiş işlemler, düşük maliyetler ve müşteri deneyimlerini ele alan Öngörüler elde etmek için kullanılabilir. Azure IoT, Azure dijital TWINS 'in gücünü kullanan uygulamalar oluşturmayı kolaylaştıran hizmet SDK 'Ları sunmaktadır.
 
-[**Azure dijital TWINS hakkında daha fazla bilgi edinin**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Bir ADT uygulamasını kodla**](/azure/digital-twins/tutorial-code)
+[**Azure dijital TWINS hakkında daha fazla bilgi edinin**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Bir ADT uygulamasını kodla**](../digital-twins/tutorial-code.md)
 
 **C# ADT hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [paketi](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [başvuru belgeleri](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)
 
@@ -153,7 +153,7 @@ Azure dijital TWINS, tüm ortamların dijital modellerini temel alan bilgi grafi
 
 IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez. DPS hizmet SDK 'Ları, kayıt grupları oluşturup toplu işlemler yaparak cihazlarınızı güvenli bir şekilde yönetebilen uygulamalar oluşturmanıza olanak tanır.
 
-[**Cihaz sağlama hizmeti**](/azure/iot-dps/)  |  hakkında daha fazla bilgi edinin [ **X. 509.440 cihazları için bir grup kaydı oluşturmayı deneyin**](/azure/iot-dps/quick-enroll-device-x509-csharp)
+[**Cihaz sağlama hizmeti**](../iot-dps/index.yml)  |  hakkında daha fazla bilgi edinin [ **X. 509.440 cihazları için bir grup kaydı oluşturmayı deneyin**](../iot-dps/quick-enroll-device-x509-csharp.md)
 
 **C# cihaz sağlama hizmeti SDK 'sı**: [GitHub depo](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [örnekleri](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [başvuru belgeleri](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true)
 

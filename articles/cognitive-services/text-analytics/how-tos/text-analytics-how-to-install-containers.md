@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/10/2021
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, yaklaşım analizi, doğal dil işleme
-ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e815ecafe5d00f92a5430fdb71bcf952bc8984c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862502"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736721"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
 > [!NOTE]
-> * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar ifade ayıklama ve dil algılama kapsayıcıları engelsiz genel önizleme olarak sağlanır.
+> * Yaklaşım Analizi ve dil algılama için kapsayıcı genel kullanıma sunulmuştur. Anahtar tümceciği ayıklama kapsayıcısı, geçişli olmayan genel önizleme olarak kullanılabilir.
 > * Varlık bağlama ve NER Şu anda bir kapsayıcı olarak kullanılamıyor.
 > * Sistem durumu kapsayıcısı için Metin Analizi erişilmesi bir [istek formu](https://aka.ms/csgate)gerektirir. Şu anda kullanım için faturalandırılmaz.
 > * Kapsayıcı görüntüsü konumları yakın zamanda değişmiş olabilir. Bu kapsayıcının güncelleştirilmiş konumunu görmek için bu makaleyi okuyun.
@@ -46,7 +46,7 @@ Metin Analizi kapsayıcıları kullanmadan önce aşağıdaki önkoşulları kar
 |--|--|
 |Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da** Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .| 
-|Metin Analizi kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure [metin analizi kaynağı](../../cognitive-services-apis-create-account.md) . Her iki değer de Azure portal Metin Analizi genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası|
+|Metin Analizi kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Ücretsiz (F0) veya standart (ler) [fiyatlandırma katmanına](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)sahip bir Azure [metin analizi kaynağı](../../cognitive-services-apis-create-account.md) . Azure portal kaynağın **anahtar ve uç** nokta sayfasına gıderek ilişkili API anahtarını ve uç nokta URI 'sini almanız gerekecektir. <br><br>**{API_KEY}**: kullanılabilir iki kaynak anahtardan biri. <br><br>**{ENDPOINT_URI}**: kaynağınız için uç nokta. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda Metin Analizi kapsayıcıları için en düşük ve öneril
 |  | En düşük ana bilgisayar özellikleri | Önerilen konak özellikleri | En az TPS | Maksimum TPS|
 |---|---------|-------------|--|--|
 | **Dil algılama, anahtar tümceciği ayıklama**   | 1 çekirdek, 2GB bellek | 1 çekirdek, 4GB bellek |15 | 30|
-| **Yaklaşım Analizi v3**   | 1 çekirdek, 2GB bellek | 4 çekirdek, 8GB bellek |15 | 30|
+| **Yaklaşım Analizi**   | 1 çekirdek, 2GB bellek | 4 çekirdek, 8GB bellek |15 | 30|
 | **Sağlık-1 belgesi/isteği için Metin Analizi**   |  4 çekirdek, 10 GB bellek | 6 çekirdek, 12GB bellek |15 | 30|
 | **Sistem durumu için Metin Analizi-10 belge/istek**   |  6 çekirdek, 16GB bellek | 8 çekirdek, 20GB bellek |15 | 30|
 
@@ -73,7 +73,7 @@ CPU çekirdeği ve belleği, `--cpus` `--memory` komutunun bir parçası olarak 
 
 Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kullanılabilir.
 
-# <a name="sentiment-analysis-v3"></a>[Yaklaşım Analizi v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi ](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -81,7 +81,7 @@ Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kull
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Dil Algılama (Önizleme)](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
@@ -89,7 +89,7 @@ Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kull
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-**_
+***
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
@@ -103,11 +103,11 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 Kapsayıcıları çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Kapsayıcı siz durduruncaya kadar çalışmaya devam edecektir.
 
 > [!IMPORTANT]
-> _ Aşağıdaki bölümlerdeki Docker komutları, `\` satır devamlılık karakteri olarak ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. 
+> * Aşağıdaki bölümlerdeki Docker komutları, `\` satır devamlılık karakteri olarak ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. 
 > * `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
-> * Yaklaşım Analizi v3 kapsayıcısı, yanıttaki yaklaşım [etiketleri](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) döndüren genel kullanıma sunulmuştur. Anahtar ifade ayıklama ve dil algılama kapsayıcıları API 'nin v2 kullanır ve önizlemededir.
+> * Yaklaşım Analizi ve dil algılama kapsayıcıları genel kullanıma sunulmuştur. Anahtar tümceciği ayıklama kapsayıcısı API 'nin v2 'sini kullanır ve önizlemededir.
 
-# <a name="sentiment-analysis-v3"></a>[Yaklaşım Analizi v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -115,7 +115,7 @@ Kapsayıcıları çalıştırmak için [Docker Run](https://docs.docker.com/engi
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Dil Algılama (Önizleme)](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
@@ -162,7 +162,7 @@ Bu makalede, Metin Analizi kapsayıcıları indirmek, yüklemek ve çalıştırm
 * Metin Analizi, çeşitli özellikleri kapsüllemek üzere Docker için üç Linux kapsayıcısı sağlar:
    * *Yaklaşım Analizi*
    * *Anahtar İfade Ayıklama (Önizleme)* 
-   * *Dil Algılama (Önizleme)*
+   * *Dil Algılama*
    * *Sistem durumu için Metin Analizi (Önizleme)*
 * Kapsayıcı görüntüleri Microsoft Container Registry (MCR) veya önizleme kapsayıcı deposundan indirilir.
 * Kapsayıcı görüntüleri Docker 'da çalışır.

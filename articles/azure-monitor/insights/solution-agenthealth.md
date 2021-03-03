@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de çözüm Aracı Durumu | Microsoft Docs
 description: Bu makale, doğrudan Log Analytics veya System Center Operations Manager ' a rapor veren aracılarınızın sistem durumunu izlemek için bu çözümü nasıl kullanacağınızı anlamanıza yardımcı olmaya yöneliktir.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711068"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Izleyici 'de Aracı Durumu çözümü
 Azure 'daki Aracı Durumu çözümü, doğrudan Azure Izleyici 'de Log Analytics çalışma alanına raporlama veya Azure Izleyicisine bağlı bir System Center Operations Manager yönetim grubu için, yanıt vermeyen ve işletimsel verileri gönderen tüm aracıları anlamanıza yardımcı olur.  Ayrıca, kaç aracının dağıtıldığını, bunların coğrafi olarak nerelere dağıtıldığını da izleyebilir ve Azure’da, diğer bulut ortamlarında ya da şirket içinde dağıtılmış aracıların dağılımından her zaman haberdar olmaya yönelik diğer sorguları gerçekleştirebilirsiniz.    
@@ -38,7 +37,7 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 ### <a name="supported-agents"></a>Desteklenen aracılar
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Desteklenir | Description |
+| Bağlı Kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
 | Windows aracıları | Yes | Sinyal olayları doğrudan Windows aracılarından toplanır.|
 | System Center Operations Manager yönetim grubu | Yes | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
@@ -90,7 +89,7 @@ Bir Operations Manager Management sunucusuna rapor veren her bir aracı iki siny
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda, bu çözüm tarafından toplanan kayıtlara ilişkin örnek günlük aramaları sunulmaktadır.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Toplam aracı sayısı |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Son 24 saat içinde yanıt vermeyen aracı sayısı |

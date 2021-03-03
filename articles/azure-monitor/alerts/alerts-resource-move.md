@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714213"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
-Bu makalede, diğer Azure kaynaklarını bölgeler arasında taşıdığınızda mevcut [uyarı kurallarının](../platform/alerts-overview.md) ve [eylem kurallarının](./alerts-action-rules.md) neden etkilenmiş olabileceği ve bu sorunları nasıl tanımlayacağınız ve giderecağınız açıklanır. Kaynak taşıma hakkında daha fazla bilgi için ana [kaynak taşıma belgelerini](../../azure-resource-manager/management/move-region.md) kontrol edin ve bir taşıma işlemi tasarlama denetim listesi
+Bu makalede, diğer Azure kaynaklarını bölgeler arasında taşıdığınızda mevcut [uyarı kurallarının](./alerts-overview.md) ve [eylem kurallarının](./alerts-action-rules.md) neden etkilenmiş olabileceği ve bu sorunları nasıl tanımlayacağınız ve giderecağınız açıklanır. Kaynak taşıma hakkında daha fazla bilgi için ana [kaynak taşıma belgelerini](../../azure-resource-manager/management/move-region.md) kontrol edin ve bir taşıma işlemi tasarlama denetim listesi
 
 ## <a name="why-the-problem-exists"></a>Sorun neden var?
 
@@ -48,7 +48,6 @@ Sorun bu kural türleri için geçerlidir:
 
 - Etkinlik günlüğü uyarı kuralları
 - Eylem kuralları
-- Klasik uyarılar
 - Ölçüm uyarıları – daha fazla bilgi Için ölçümlere göre sonraki bölüm [uyarısı kuralları](#alert-rules-based-on-metrics)bölümüne bakın.
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Uyarı bildirimleri](alerts-troubleshoot.md), [ölçüm uyarıları](alerts-troubleshoot-metric.md)ve [günlük uyarıları](alerts-troubleshoot-log.md)ile ilgili diğer sorunları düzeltme hakkında bilgi edinin. 
+[Uyarı bildirimleri](alerts-troubleshoot.md), [ölçüm uyarıları](alerts-troubleshoot-metric.md)ve [günlük uyarıları](alerts-troubleshoot-log.md)ile ilgili diğer sorunları düzeltme hakkında bilgi edinin.

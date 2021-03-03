@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721098"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Paketleme ve teslim senaryosu-tabanlı geçiş kılavuzu
 
@@ -55,7 +55,7 @@ Belirli adımlar için bkz. kavramları, öğreticileri ve Aşağıdaki kılavuz
 - [Akış bulucusu ve derleme URL’leri oluşturma](create-streaming-locator-build-url.md)
 - [Bir işin sonuçlarını indir](download-results-howto.md)
 - [Sinyal açıklayıcı ses parçaları](signal-descriptive-audio-howto.md)
-- [Eksiksiz Azure Media Player kurulumu](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Eksiksiz Azure Media Player kurulumu](../azure-media-player/azure-media-player-full-setup.md)
 - [Video.js oynatıcıyı Azure Media Services ile kullanma](how-to-video-js-player.md)
 - [Azure Media Services Shaka oynatıcıyı kullanma](how-to-shaka-player.md)
 

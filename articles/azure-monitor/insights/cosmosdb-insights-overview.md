@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725809"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini keşfet
 
@@ -71,7 +71,7 @@ Sayfanın üst kısmındaki **hataların** yanı sıra çalışma kitabı şablo
 
 ![HTTP istek türüne göre dökümdeki hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod |  Description       | 
+| Kod |  Açıklama       | 
 |-----------|:--------------------|
 | `200 OK`  | Aşağıdaki REST işlemlerinden biri başarılı oldu: </br>-Bir kaynağa ULAŞıN. </br> -Bir kaynağa koyun. </br> -Bir kaynakta GÖNDERIN. </br> -Saklı yordamı yürütmek için bir saklı yordam kaynağını GÖNDERIN.|
 | `201 Created` | Kaynak oluşturmak için bir gönderme işlemi başarılı. |
@@ -87,13 +87,51 @@ Sayfanın üst kısmındaki **kapasiteyi** seçin ve çalışma kitabı şablonu
 
 Genel Bakış çalışma kitabında olduğu gibi, **abonelik** sütunundaki bir Azure Cosmos DB kaynağının yanındaki açılan aşağı seçme, veritabanını oluşturan bağımsız kapsayıcıların bir dökümünü açığa çıkarır.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Operations
 
-Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar. 
+Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar.
 
 Bu nedenle aşağıdaki örnekte, `eastus-billingint` ağırlıklı okuma isteklerinin alınması, ancak az sayıda büyük miktarda ve oluşturma isteği ile ilgili bilgi edinebilirsiniz. `westeurope-billingint`, Bir istek perspektifinden, en az son dört saat içinde, çalışma kitabının zaman aralığı parametresi aracılığıyla şu anda kapsama alınmış olduğu, salt okunurdur.
 
-![İşlemler çalışma kitabı](./media/cosmosdb-insights-overview/operation.png) 
+![İşlemler çalışma kitabı](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Bir Azure Cosmos DB kaynağından görüntüleme
+
+1. Mevcut Azure Cosmos DB hesaplarınızı arayın veya seçin.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Azure Cosmos DB arayın." border="true":::
+
+2. Azure Cosmos DB hesabınıza gittikten sonra, Izleme bölümünde bilgi işlem, istekler, depolama, kullanılabilirlik, gecikme süresi, sistem ve hesap yönetimi konusunda daha fazla analiz yapmak için **Öngörüler (Önizleme)** veya **çalışma kitapları** ' nı seçin.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB öngörülere genel bakış." border="true":::
+
+### <a name="time-range"></a>Zaman aralığı
+
+Varsayılan olarak, **zaman aralığı** alanı **son 24 saatin** verilerini görüntüler. Son 5 dakikadan son yedi güne kadar her yerde verileri göstermek için zaman aralığını değiştirebilirsiniz. Zaman aralığı Seçicisi, seçili hesap için kullanılabilir verilere göre özel bir zaman çerçevesini görüntülemek için başlangıç/bitiş tarihlerini yazmanız sağlayan **özel** bir mod da içerir.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB zaman aralığı." border="true":::
+
+### <a name="insights-overview"></a>Öngörüler genel bakış
+
+**Genel bakış** sekmesi, aşağıdakiler dahil olmak üzere seçili Azure Cosmos DB hesabı için en yaygın ölçümleri sağlar:
+
+* Toplam İstek Sayısı
+* Başarısız Istekler (429s)
+* Normalleştirilmiş RU tüketimi (maks.)
+* Veri & dizin kullanımı
+* Koleksiyona göre hesap ölçümlerini Cosmos DB
+
+**Toplam Istek sayısı:** Bu grafik, durum koduna göre ayrılmış hesabın toplam isteklerinin bir görünümünü sağlar. Grafiğin alt kısmındaki birimler, dönem için toplam isteklerin toplamıdır.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB toplam Istek grafiği." border="true":::
+
+**Başarısız istekler (429s)**: Bu grafik, 429 durum koduna sahip başarısız isteklerin bir görünümünü sağlar. Grafiğin alt kısmındaki birimler, dönem için toplam başarısız isteklerin toplamıdır.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Başarısız Istek Grafını Cosmos DB." border="true":::
+
+**NORMALLEŞTIRILMIŞ ru tüketimi (max)**: Bu grafik, belirtilen dönem IÇIN normalleştirilmiş ru tüketim birimlerinin% 0-100 ' luk en fazla yüzdeyi sağlar.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Normalleştirilmiş RU tüketimini Cosmos DB." border="true":::
 
 ## <a name="pin-export-and-expand"></a>Sabitle, dışarı aktar ve Genişlet
 

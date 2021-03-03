@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628043"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731451"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure Izleyici 'de Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi
 Bu makale, bir Azure kaynağı için Tanılama ayarları oluşturmak üzere örnek [Azure Resource Manager şablonları](../../azure-resource-manager/templates/template-syntax.md) içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -349,7 +349,7 @@ Aşağıdaki örnek, bir Azure SQL veritabanı için bir tür kaynağı ekleyere
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası için tanılama ayarı
-Aşağıdaki örnek, bir Azure kurtarma hizmetleri Kasası için bir tür kaynağı ekleyerek şablona bir tanılama ayarı oluşturur `microsoft.recoveryservices/vaults/providers/diagnosticSettings` . Bu örnek, [Azure Kaynak günlüklerinde](../platform/resource-logs.md#send-to-log-analytics-workspace)açıklandığı şekilde toplama modunu belirtir. `Dedicated` `AzureDiagnostics` Özelliği için veya belirtin `logAnalyticsDestinationType` .
+Aşağıdaki örnek, bir Azure kurtarma hizmetleri Kasası için bir tür kaynağı ekleyerek şablona bir tanılama ayarı oluşturur `microsoft.recoveryservices/vaults/providers/diagnosticSettings` . Bu örnek, [Azure Kaynak günlüklerinde](./resource-logs.md#send-to-log-analytics-workspace)açıklandığı şekilde toplama modunu belirtir. `Dedicated` `AzureDiagnostics` Özelliği için veya belirtin `logAnalyticsDestinationType` .
 
 ### <a name="template-file"></a>Şablon dosyası
 
@@ -812,5 +812,5 @@ Aşağıdaki örnek, depolama hesabında kullanılabilen her bir depolama hizmet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici için diğer örnek şablonları alın](../samples/resource-manager-samples.md).
+* [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
 * [Tanılama ayarları hakkında daha fazla bilgi edinin](../essentials/diagnostic-settings.md).

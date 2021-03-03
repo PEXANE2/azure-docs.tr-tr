@@ -55,7 +55,7 @@
             - name: ARO 4’e (önizleme) yönelik Kapsayıcılar için Azure İzleyici’yi yapılandırma
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: ARO 4’teki (önizleme) Kapsayıcılar için Azure İzleyici’yi devre dışı bırakma
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Uygulamaları geliştirme ve çalıştırma
       items:
         - name: Open Liberty/WebSphere Liberty uygulaması dağıtma
@@ -80,10 +80,10 @@
             - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici (önizleme)
               items:
                 - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici’yi devre dışı bırakma
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Azure Red Hat OpenShift 3.11’de ayrıcalıklı kapsayıcıları çalıştırma
           href: howto-run-privileged-containers.md

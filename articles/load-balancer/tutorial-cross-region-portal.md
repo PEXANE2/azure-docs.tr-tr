@@ -6,19 +6,19 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712524"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir çapraz bölge Azure Load Balancer oluşturma
 
 Çapraz bölge yük dengeleyici, bir hizmetin birden çok Azure bölgesinde küresel olarak kullanılabilmesini sağlar. Bir bölge başarısız olursa, trafik sonraki en iyi sağlıklı bölgesel yük dengeleyiciye yönlendirilir.  
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bölgeler arası yük dengeleyici oluşturun.
@@ -41,28 +41,29 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-Azure Preview Portal [' da oturum açın](https://portal.azure.com) .
+Azure Preview Portal [' da oturum açın](https://preview.portal.azure.com) .
 
 ## <a name="create-cross-region-load-balancer"></a>Çapraz bölge yük dengeleyici oluştur
 
 Bu bölümde, bir çapraz bölge yük dengeleyici ve genel IP adresi oluşturacaksınız.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur > ağ > Load Balancer**' yı seçin veya arama kutusunda **Load Balancer** ' ı arayın.
-
-2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin: 
+1. **Kaynak oluştur**’u seçin. 
+2. Arama kutusuna **yük dengeleyici** girin. Arama sonuçlarında **Yük dengeleyiciyi** seçin.
+3. **Yük dengeleyici** sayfasında **Oluştur**' u seçin.
+4. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin: 
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Createcrlböğreticisi-RG** girin.|
     | Name                   | **Myloadbalancer-CR** girin                                   |
-    | Bölge         | **Batı ABD** seçin.                                        |
+    | Region         | **Batı ABD (ABD)** seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
-    | SKU           | **Standart** seçin |
+    | SKU           | Varsayılan değer olan **Standart**' i bırakın. |
     | Katman           | **Küresel** seçin |
     | Genel IP adresi | **Yeni oluştur**’u seçin.|
     | Genel IP adresi adı | Metin kutusuna **Mypublicıp-CR** yazın.|
-    | Yönlendirme tercihi| **Microsoft ağı** seçin |
+    | Yönlendirme tercihi| **Microsoft ağı**' nı seçin. </br> Yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi (Önizleme) nedir?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
     > Çapraz bölge yük dengeleyici yalnızca şu giriş bölgelerinde dağıtılabilir: **Doğu ABD 2, Batı ABD, Batı Avrupa, Güneydoğu Asya, Orta ABD, Kuzey Avrupa, Doğu Asya**. Daha fazla bilgi için bkz. **https://aka.ms/homeregionforglb**.
@@ -89,7 +90,7 @@ Bölgesel standart yük dengeleyicileri dahil etmek için **Mybackendpool-CR** a
 
 3. **Arka uç Havuzu Ekle** sayfasında, ad Için **mybackendpool-CR** yazın.
 
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 4. **Mybackendpool-CR** öğesini seçin.
 
@@ -101,7 +102,7 @@ Bölgesel standart yük dengeleyicileri dahil etmek için **Mybackendpool-CR** a
 
 7. **Myloadbalancer-R2** eklemek için 4-6 arası adımları tekrarlayın.
 
-8. **Ekle**’yi seçin.
+8. **Add (Ekle)** seçeneğini belirleyin.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Backendpool 'a bölgesel yük dengeleyiciler ekleme" border="true":::
 

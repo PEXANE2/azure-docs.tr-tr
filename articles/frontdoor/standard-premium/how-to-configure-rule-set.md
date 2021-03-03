@@ -7,24 +7,19 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: e2fe475b171a99ec27ed162511db289891066e00
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6863c492059ccee152ecf3d03a09e61793576bcb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715607"
 ---
-# <a name="configure-a-rule-set"></a>Bir kural kümesi yapılandırma
+# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>Azure ön kapı standardı/Premium ile bir kural kümesi yapılandırma (Önizleme)
 
 > [!Note]
 > Bu belge, Azure ön kapısının Standart/Premium (Önizleme) içindir. Azure ön kapısı hakkında bilgi mi arıyorsunuz? [Burada](../front-door-overview.md)görüntüleyin.
 
-Bu öğreticide, Azure portal bir kural kümesi ve ilk kural kümesi oluşturma gösterilmektedir. 
-
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
-> [!div class="checklist"]
-> - Portalı kullanarak kural kümesini yapılandırın.
-> - Portalı kullanarak AFD profilinizden kural kümesini silme
+Bu makalede, Azure portal bir kural kümesinin ve ilk kural kümesinin nasıl oluşturulacağı gösterilmektedir. Daha sonra kural kümesini kural kümesi sayfasından veya Endpoint Manager 'dan bir rota ile ilişkilendirmeyi öğreneceksiniz.
 
 > [!IMPORTANT]
 > Azure ön kapı Standart/Premium (Önizleme) Şu anda genel önizleme aşamasındadır.
@@ -33,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bu öğreticideki adımları tamamlayabilmeniz için önce bir Azure ön kapısı Standart/Premium oluşturmanız gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure ön kapısı Standart/Premium profili oluşturma](create-front-door-portal.md).
+* Bir kural kümesi yapılandırmadan önce, önce bir Azure ön kapısı Standart/Premium oluşturmanız gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure ön kapısı Standart/Premium profili oluşturma](create-front-door-portal.md).
 
 ## <a name="configure-rule-set-in-azure-portal"></a>Azure portal kural kümesini yapılandırma
 
@@ -65,11 +60,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     1. *İlişkilendirilmemiş* bağlantıyı seçin.
      
 
-    1. Ardından, **bir rotayı ilişkilendir** dikey penceresinde, kural kümesiyle ilişkilendirmek istediğiniz uç noktayı ve yolu seçin. 
+    1. Ardından, **bir yolu ilişkilendir** sayfasında, kural kümesiyle ilişkilendirmek istediğiniz uç noktayı ve yolu seçin. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set.png" alt-text="Yol Oluştur sayfasının ekran görüntüsü.":::    
         
-    1. Seçili yol altında birden çok kural kümesi varsa, kural kümesi emirlerini değiştirmek için *İleri* ' ye tıklayın. Kural kümesi yukarıdan aşağı doğru yürütülür. Kural kümesini seçerek siparişleri değiştirebilir ve yukarı veya aşağı taşıyabilirsiniz. Ardından *ilişkilendir*' i seçin.
+    1. Seçili yol altında birden çok kural kümesi varsa, kural kümesi emirlerini değiştirmek için *İleri ' yi* seçin. Kural kümesi yukarıdan aşağı doğru yürütülür. Kural kümesini seçerek siparişleri değiştirebilir ve yukarı veya aşağı taşıyabilirsiniz. Ardından *ilişkilendir*' i seçin.
     
         > [!Note]
         > Bu sayfada yalnızca bir kural kümesini tek bir rota ile ilişkilendirebilirsiniz. Bir kural kümesini birden çok rotasıyla ilişkilendirmek için lütfen Endpoint Manager 'ı kullanın.
@@ -86,15 +81,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="Endpoint Manager 'da uç nokta seçme ekran görüntüsü." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
 
-    1. *Uç noktayı Düzenle* öğesine tıklayın  
+    1. *Uç noktayı Düzenle*' yi seçin.  
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="Uç nokta yöneticisinde düzenleme uç noktası seçme ekran görüntüsü." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
 
-    1. Yola tıklayın. 
+    1. Rotayı seçin. 
     
          :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="Rota seçme ekran görüntüsü.":::
     
-    1. *Yolu Güncelleştir* dikey penceresinde, *kurallar*' da, açılan listeden rota Ile ilişkilendirmek istediğiniz kural kümelerini seçin. Daha sonra kural kümesini yukarı ve aşağı taşıyarak siparişleri değiştirebilirsiniz. 
+    1. *Yolu Güncelleştir* sayfasında, *kurallar*' da, açılan listeden rota Ile ilişkilendirmek istediğiniz kural kümelerini seçin. Daha sonra kural kümesini yukarı ve aşağı taşıyarak siparişleri değiştirebilirsiniz. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-4.png" alt-text="Bir yol güncelleştirme sayfasının ekran görüntüsü.":::
     
@@ -106,7 +101,7 @@ Yukarıdaki adımlarda, bir kural kümesini sizin ve yönlendirmenize göre yap�
 
 1. Kural kümesinin tüm ilişkili rotalardan ilişkisini kaldırmak için **Ayarlar** ' ın altındaki **kural kümesi sayfasına** gidin.
 
-1. Rotayı genişletin, üç noktaya tıklayın *yolu Düzenle*' yi seçin.
+1. Rotayı genişletin, üç noktayı seçin. Ardından *rotayı Düzenle*' yi seçin.
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="Kural kümesinde genişletilen yolun ekran görüntüsü.":::
 
@@ -126,13 +121,4 @@ Yukarıdaki adımlarda, bir kural kümesini sizin ve yönlendirmenize göre yap�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-* Kural kümesi oluşturma
-* Bir kural kümesini AFD yönlendirmenize ilişkilendirin.
-* AFD profilinizdeki bir kural kümesini silme
-
-Kural kümesiyle güvenlik üstbilgileri ekleme hakkında bilgi edinmek için sonraki öğreticiye geçin.
-
-> [!div class="nextstepaction"]
-> [Kurallar ayarlanmış güvenlik üstbilgileri]()
+[Kuralların ayarlandığı güvenlik üstbilgilerini](how-to-add-security-headers.md)nasıl ekleyeceğinizi öğrenin.

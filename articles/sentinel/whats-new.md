@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/22/2021
+ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729717"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -29,6 +29,37 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 >
 > Ayrıca katkıda bulunabilirsiniz! [Azure Sentinel tehdit arayıcılar GitHub Community](https://github.com/Azure/Azure-Sentinel/wiki)' de bize katılarak.
 > 
+
+## <a name="february-2021"></a>Şubat 2021
+
+- [Varlık sayfasında UEBA öngörüleri](#ueba-insights-in-the-entity-page)
+- [Geliştirilmiş olay arama](#improved-incident-search)
+
+### <a name="ueba-insights-in-the-entity-page"></a>Varlık sayfasında UEBA öngörüleri
+
+Azure Sentinel varlık ayrıntıları sayfaları, varlığa ilişkin davranış öngörülerini görüntüleyen ve anomali ve güvenlik tehditlerini hızlı bir şekilde belirlemek için yardım veren bir [Öngörüler bölmesi](identify-threats-with-entity-behavior-analytics.md#entity-insights)sağlar.
+
+[Ueba etkinse](ueba-enrichments.md)ve en az dört gün bir zaman dilimi seçtiyseniz bu Öngörüler bölmesi artık, ueba öngörüleri için aşağıdaki yeni bölümleri de içerir:
+
+|Section  |Açıklama  |
+|---------|---------|
+|**UEBA öngörüleri**     | Anormal Kullanıcı etkinliklerini özetler: <br>-Coğrafi konumlar, cihazlar ve ortamlar arasında<br>-Kullanıcının kendi geçmişiyle karşılaştırıldığında zaman ve sıklık Horizons <br>-Eşler davranışına kıyasla <br>-Kuruluşun davranışına kıyasla     |
+|**Güvenlik grubu üyeliğine göre Kullanıcı eşleri**     |   Azure AD güvenlik grupları üyeliğine göre kullanıcının eşlerini listeler ve güvenlik işlemleri ekiplerine benzer izinleri paylaşan diğer kullanıcıların listesini sağlar.  |
+|**Azure aboneliğine yönelik kullanıcı erişim Izinleri**     |     Kullanıcının Azure aboneliklerine doğrudan erişilebilen veya Azure AD grupları/hizmet sorumluları aracılığıyla erişim izinlerini gösterir.   |
+|**Kullanıcıyla Ilgili tehdit göstergeleri**     |  Kullanıcının etkinliklerinde temsil edilen IP adresleriyle ilgili bilinen tehditler koleksiyonunu listeler. Tehditler tehdit türü ve ailesine göre listelenmiştir ve Microsoft 'un tehdit bilgileri hizmeti tarafından zenginleştirilebilir.       |
+|     |         |
+
+### <a name="improved-incident-search"></a>Geliştirilmiş olay arama
+
+Azure Sentinel olay arama deneyimini geliştirdik ve belirli bir tehdidi araştırırken olaylar aracılığıyla daha hızlı gezinmelerini sağlar.
+
+Azure Sentinel 'de olayları ararken, artık aşağıdaki olay ayrıntılarına göre arama yapabileceksiniz:
+
+- ID
+- Başlık
+- Ürün
+- Sahip
+- Etiket
 
 ## <a name="january-2021"></a>Ocak 2021
 
@@ -47,7 +78,7 @@ Azure Sentinel zamanlanmış analiz Kuralı Sihirbazı artık sorguları yazma v
 
 -   Sorgunuzu görüntülemek için daha fazla ekran alanı sağlayan genişletilebilir bir düzen penceresi.
 -   Sorgu kodunuzda anahtar sözcük vurgulama.
--   Genişletilmiş otomatik tam destek.
+-   Genişletilmiş otomatik tamamlama desteği.
 -   Gerçek zamanlı sorgu doğrulamaları. Sorguınızdaki hatalar artık kaydırma çubuğunda kırmızı bir blok olarak ve **kural mantığını ayarla** sekmesi adında kırmızı bir nokta olarak gösterilir. Ayrıca, hatalı bir sorgu kaydedilemez.
 
 Daha fazla bilgi için bkz. [öğretici: tehditleri algılayın](tutorial-detect-threats-built-in.md).
@@ -57,7 +88,7 @@ Azure Sentinel artık yeni [az. Securityınsights](https://www.powershellgallery
 
 **Az. Securityınsights** modülü, vs es, önem derecesi, sahip vb. değişiklik yapmak, olaylara yorum ve Etiketler eklemek ve yer işaretleri oluşturmak için olaylarla etkileşme gibi yaygın Azure Sentinel kullanım durumlarını destekler.
 
-CI/CD işlem hattınız için [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) şablonları kullanmanızı öneririz ancak, **az. securityınsights** modülü dağıtım sonrası görevler için yararlıdır ve SOC otomasyonu için hedeflenmelidir.  Örneğin, SOC otomasyonunda veri bağlayıcıları yapılandırma, analiz kuralları oluşturma veya analiz kurallarına Otomasyon eylemleri ekleme adımları bulunabilir.
+CI/CD işlem hattınız için [Azure Resource Manager (ARM)](../azure-resource-manager/templates/index.yml) şablonları kullanmanızı öneririz ancak, **az. securityınsights** modülü dağıtım sonrası görevler için yararlıdır ve SOC otomasyonu için hedeflenmelidir.  Örneğin, SOC otomasyonunda veri bağlayıcıları yapılandırma, analiz kuralları oluşturma veya analiz kurallarına Otomasyon eylemleri ekleme adımları bulunabilir.
 
 Kullanılabilir cmdlet 'ler, parametre açıklamaları ve örneklerin tam listesi ve açıklaması dahil olmak üzere daha fazla bilgi için, [az. Securityınsights PowerShell belgelerine](/powershell/module/az.securityinsights/)bakın.
 
@@ -85,7 +116,7 @@ Azure Sentinel artık dağıtım seçeneği olarak adanmış Log Analytics küme
 
 Adanmış kümeler, aynı kümede birden fazla çalışma alanınız olduğunda, müşteri tarafından yönetilen anahtarlar, kasa, Çift şifreleme ve daha hızlı çalışma alanı sorguları gibi özellikleri kullanmanıza olanak sağlar.
 
-Daha fazla bilgi için bkz. [Azure izleyici günlükleri adanmış kümeler](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters).
+Daha fazla bilgi için bkz. [Azure izleyici günlükleri adanmış kümeler](../azure-monitor/logs/logs-dedicated-clusters.md).
 
 ### <a name="logic-apps-managed-identities"></a>Logic Apps tarafından yönetilen kimlikler
 
@@ -97,7 +128,7 @@ Azure Sentinel, artık Azure Sentinel Logic Apps Bağlayıcısı için yönetile
 
 Daha fazla bilgi için bkz.
 
-- [Azure Logic Apps yönetilen kimlikle kimlik doğrulaması](/azure/logic-apps/create-managed-service-identity)
+- [Azure Logic Apps yönetilen kimlikle kimlik doğrulaması](../logic-apps/create-managed-service-identity.md)
 - [Azure Sentinel Logic Apps bağlayıcı belgeleri](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Analiz kuralı önizleme grafikleriyle geliştirilmiş kural ayarlama (Genel Önizleme)
@@ -151,18 +182,18 @@ Azure Sentinel, Windows güvenlik olayları, syslog olayları, CEF günlükleri 
 > Log Analytics Aracısı bazen OMS Aracısı veya Microsoft Monitoring Agent (MMA) olarak adlandırılır. 
 > 
 
-Daha fazla bilgi için [Log Analytics belgelerine](/azure/azure-monitor/platform/log-analytics-agent) ve [Log Analytics Aracısı sürüm notlarına](https://github.com/microsoft/OMS-Agent-for-Linux/releases)bakın.
+Daha fazla bilgi için [Log Analytics belgelerine](../azure-monitor/agents/log-analytics-agent.md) ve [Log Analytics Aracısı sürüm notlarına](https://github.com/microsoft/OMS-Agent-for-Linux/releases)bakın.
 ## <a name="november-2020"></a>Kasım 2020
 
 - [Azure Sentinel 'de Logic Apps PlayBook 'larınızı izleme](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
 - [Microsoft 365 Defender Bağlayıcısı (Genel Önizleme)](#microsoft-365-defender-connector-public-preview)
 ### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Azure Sentinel 'de Logic Apps PlayBook 'larınızı izleme
 
-Azure Sentinel, görevleri, iş süreçlerini ve iş akışlarını zamanlamanıza, otomatikleştirmenize ve ayarlamanıza yardımcı olan bir bulut hizmeti olan [Azure günlük uygulamalarıyla](/azure/logic-apps/)tümleştirilir.
+Azure Sentinel, görevleri, iş süreçlerini ve iş akışlarını zamanlamanıza, otomatikleştirmenize ve ayarlamanıza yardımcı olan bir bulut hizmeti olan [Azure günlük uygulamalarıyla](../logic-apps/index.yml)tümleştirilir.
 
 Bir olay oluşturulduğunda otomatik olarak çağrılabilen veya olaylar ile çalışırken otomatik olarak çağrılabilecek bir PlayBook olarak Azure 'da Azure mantıksal uygulaması kullanın. 
 
-Azure Logic Apps ile eklediğiniz gibi, PlayBook 'larınızın sistem durumu, performansı ve kullanımı hakkında Öngörüler sağlamak için **PlayBook sistem durumu izleme** adlı bir [Azure çalışma kitabı](/azure/azure-monitor/platform/workbooks-overview) ekledik. 
+Azure Logic Apps ile eklediğiniz gibi, PlayBook 'larınızın sistem durumu, performansı ve kullanımı hakkında Öngörüler sağlamak için **PlayBook sistem durumu izleme** adlı bir [Azure çalışma kitabı](../azure-monitor/visualize/workbooks-overview.md) ekledik. 
 
 Playbooks **sistem durumu izleme** çalışma kitabını kullanarak PlayBook 'larınızın sistem durumunu izleyin veya başarılı veya başarısız çalıştırmalar için bozukluklar olup olmadığına bakın. 
 
@@ -172,9 +203,9 @@ Playbooks **sistem durumu izleme** çalışma kitabını kullanarak PlayBook 'la
 
 Daha fazla bilgi için bkz.
 
-- [Logic Apps belgeleri](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [Logic Apps belgeleri](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Azure İzleyici belgeleri](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Azure İzleyici belgeleri](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender Bağlayıcısı (Genel Önizleme)
  

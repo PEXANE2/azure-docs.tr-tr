@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b65191e97402f2fb352c56664dad085c448242c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Öğretici: TalentLMS ile tümleştirme Azure Active Directory
 
@@ -170,11 +170,11 @@ Azure AD kullanıcılarının TalentLMS 'de oturum açmasını sağlamak için, 
 
     ![Kullanıcı Ekle](./media/talentlms-tutorial/IC777299.png "Kullanıcı Ekleme")  
 
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
+    a. **İlk ad** metin kutusuna, gibi kullanıcının adını girin `Britta` .
 
-    b. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını girin.
+    b. **Son ad** metin kutusuna, gibi kullanıcının soyadını girin `Simon` .
  
-    c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-postasını girin `brittasimon\@contoso.com` .
+    c. **E-posta adresi** metin kutusuna, gibi kullanıcının e-postasını girin `brittasimon@contoso.com` .
 
     d. **Kullanıcı Ekle**'ye tıklayın.
 

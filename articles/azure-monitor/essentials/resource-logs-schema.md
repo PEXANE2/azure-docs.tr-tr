@@ -4,12 +4,12 @@ description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: b37535b67ed1873c5a492e28e6bf4da8c67c7e5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c426074bbeb2792f152063d938e867b86dc1f6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717545"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -23,7 +23,7 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 
 ## <a name="top-level-common-schema"></a>Üst düzey ortak şema
 
-| Name | Gerekli/İsteğe Bağlı | Description |
+| Name | Gerekli/İsteğe Bağlı | Açıklama |
 |---|---|---|
 | time | Gerekli | Olayın zaman damgası (UTC). |
 | resourceId | Gerekli | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
@@ -73,7 +73,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | Front Door | [Ön kapı için günlüğe kaydetme](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub Işlemler](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Günlüğe kaydetme Azure Key Vault](../../key-vault/general/logging.md) |
-| Kubernetes Hizmeti |[Azure Kubernetes günlüğü](../../aks/view-master-logs.md#log-event-schema) |
+| Kubernetes Hizmeti |[Azure Kubernetes günlüğü](../../aks/view-control-plane-logs.md#log-event-schema) |
 | Load Balancer |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B özel izleme şeması](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Ağ Güvenlik Grupları |[Ağ güvenlik grupları (NSG’ler) için Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |

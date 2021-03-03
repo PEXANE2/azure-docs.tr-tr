@@ -1,275 +1,129 @@
 ---
-title: SQL veritabanı yük devretmesi için Azure-SSIS tümleştirme çalışma zamanını yapılandırma
-description: Bu makalede, SSıSDB veritabanı için Azure SQL veritabanı coğrafi çoğaltma ve yük devretme ile Azure-SSIS tümleştirme çalışma zamanının nasıl yapılandırılacağı açıklanır.
+title: İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure-SSIS tümleştirme çalışma zamanını yapılandırma
+description: Bu makalede, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek yük devretme grubu ile Azure Data Factory Azure-SSIS tümleştirme çalışma zamanının nasıl yapılandırılacağı açıklanır.
+services: data-factory
 ms.service: data-factory
+ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
 ms.author: sawinark
+manager: mflasko
+ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/06/2020
-ms.openlocfilehash: e12939d1003ce708889ca0b3dbc710096f9ee955
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 73c27204ee8730c95d1cbeecf8777767173e73d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364452"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710274"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Azure-SSIS tümleştirme çalışma zamanını SQL veritabanı coğrafi çoğaltma ve yük devretme ile yapılandırma
+# <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure-SSIS tümleştirme çalışma zamanını yapılandırma 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, SSıSDB veritabanı için Azure SQL veritabanı coğrafi çoğaltma ile Azure-SSIS tümleştirme çalışma zamanının (IR) nasıl yapılandırılacağı açıklanır. Yük devretme gerçekleştiğinde, Azure-SSIS IR ikincil veritabanıyla çalışmayı sürdürdüğünden emin olabilirsiniz.
+Azure Data Factory (ADF) içindeki Azure SQL veritabanı/yönetilen örnek ve SQL Server Integration Services (SSIS), SQL Server geçiş için önerilen tüm hizmet olarak platform (PaaS) çözümü olarak birleştirilebilir. SSIS projelerinizi Azure SQL veritabanı/yönetilen örnek tarafından barındırılan SSIS Katalog veritabanına (SSSıSDB) dağıtabilir ve ADF 'de Azure SSIS Integration Runtime (IR) üzerinde SSIS paketlerinizi çalıştırabilirsiniz.
 
-SQL veritabanı için coğrafi çoğaltma ve yük devretme hakkında daha fazla bilgi için bkz. [genel bakış: etkin coğrafi çoğaltma ve otomatik yük devretme grupları](../azure-sql/database/auto-failover-group-overview.md).
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek, [coğrafi çoğaltma/yük devretme grubuyla](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)yapılandırılabilir. burada, okuma/yazma erişimi olan birincil bir Azure bölgesindeki SSISDB, salt okuma erişimi (ikincil rol) ile bir ikincil bölgeye sürekli olarak çoğaltılır. Birincil bölgede bir olağanüstü durum oluştuğunda, birincil ve ikincil Ssisdb rolleri değiştirdikleri için bir yük devretme tetiklenecektir.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+BCDR için, Azure SQL veritabanı/yönetilen örnek yük devretme grubuyla eşitlenmiş bir Azure SSIS IR çifti de yapılandırabilirsiniz. Bu, belirli bir zamanda Azure-SSIS IRS çalıştıran bir çiftiyle, paket yürütme günlükleri (birincil rol) yazmak ve yürütmek için birincil SSSıSDB 'ye erişebilir, diğeri ise yalnızca başka bir yerde dağıtılan paketler için (ikincil rol) aynı anda uygulanabilir. SSıSDB yük devretmesi gerçekleştiğinde, birincil ve ikincil Azure-SSIS IRS de rolleri takas eder ve her ikisi de çalışıyorsa neredeyse sıfır kapalı kalma süresi olacaktır.
 
-## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>SQL yönetilen örneği ile yük devretmeyi Azure-SSIS IR
+Bu makalede, BCDR için Azure SQL veritabanı/yönetilen örnek yük devretme grubu ile Azure-SSIS IR nasıl yapılandırılacağı açıklanır.
 
-### <a name="prerequisites"></a>Önkoşullar
+## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-database-failover-group"></a>Azure SQL veritabanı yük devretme grubu ile çift bekleme Azure-SSIS IR çifti yapılandırma
 
-Azure SQL yönetilen örneği, veri, kimlik bilgileri ve bir veritabanında depolanan bağlantı bilgilerinin güvenliğinin sağlanmasına yardımcı olmak için bir *veritabanı ana anahtarı (DMK)* kullanır. DMK otomatik şifre çözmeyi etkinleştirmek için, anahtarın bir kopyası *sunucu ana anahtarı (SMK)* ile şifrelenir. 
+Azure SQL veritabanı yük devretme grubuyla eşitlenmiş bir çift bekleme Azure-SSIS IR çifti yapılandırmak için aşağıdaki adımları izleyin.
 
-SMK bir yük devretme grubunda çoğaltılmaz. Yük devretmenin ardından DMK şifre çözme için hem birincil hem de ikincil örneklere bir parola eklemeniz gerekir.
+1. Azure portal/ADF Kullanıcı arabirimini kullanarak, birincil bölgede SSıSDB barındırmak için birincil Azure SQL veritabanı sunucunuz ile yeni bir Azure-SSIS IR oluşturabilirsiniz. Birincil Azure SQL veritabanı sunucunuz tarafından barındırılan SSıDB 'ye zaten bağlı olan bir Azure-SSIS IR varsa ve hala çalışıyorsa, yeniden yapılandırmak için önce durdurmanız gerekir. Bu, birincil Azure-SSIS IR olacaktır. **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında [SSISDB kullanmayı seçerken](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) , **sssısdb yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullan** onay kutusunu da seçin. **Çift bekleme çifti adı** için, birincil ve ikincil Azure-SSIS IRS çiftini tanımlayacak bir ad girin. Birincil Azure-SSIS IR oluşturma işlemi tamamlandığında, başlatılır ve okuma/yazma erişimiyle sizin adınıza oluşturulacak birincil bir SSıSDB 'ye eklenir. Yalnızca yeniden yapılandırdıysanız, yeniden başlatmanız gerekir.
 
-1. Birincil örnekte SSıSDB için aşağıdaki komutu çalıştırın. Bu adım yeni bir şifreleme parolası ekler.
+1. Azure portal kullanarak, birincil SSSıSDB 'nin birincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında oluşturulup oluşturulmayacağını kontrol edebilirsiniz. Oluşturulduktan sonra, [birincil ve Ikincil Azure SQL veritabanı sunucularınız için bir yük devretme grubu oluşturabilir ve bu gruba](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) , **Yük devretme grupları** sayfasında SSISDB ekleyebilirsiniz. Yük devretme grubunuz oluşturulduktan sonra, birincil SSSıSDB 'nin ikincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında salt okuma erişimiyle ikincil bir sunucuya çoğaltılıp çoğaltılmadığını kontrol edebilirsiniz.
+
+1. Azure portal/ADF Kullanıcı arabirimini kullanarak, ikincil bölgede SSıSDB barındırmak için ikincil Azure SQL veritabanı sunucunuz ile başka bir Azure-SSIS IR oluşturabilirsiniz. Bu, ikincil Azure-SSIS IR olacaktır. Tüm BCDR için, bağımlı olduğu tüm kaynakların ikincil bölgede da oluşturulduğundan emin olun. Örneğin, özel kurulum betiği/dosyaları depolamak için Azure depolama, düzenleme/zamanlama paketi yürütmeleri için ADF, vb. **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında [SSISDB kullanmayı seçerken](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) , **sssısdb yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullan** onay kutusunu da seçin. **Çift bekleme çifti adı** için, birincil ve ikincil Azure-SSIS IRS çiftini tanımlamak üzere aynı adı girin. İkincil Azure-SSIS IR oluşturma işlemi tamamlandığında, başlatılır ve ikincil SSSıSDB 'ye eklenir.
+
+1. SSıSDB yük devretmesi gerçekleştiğinde neredeyse sıfır kapalı kalma süresine sahip olmak istiyorsanız, her ikisini de Azure-SSIS IRS 'nin çalışır durumda tutun. Yalnızca birincil Azure-SSIS IR, paket yürütme günlükleri yazmak ve yürütmek için birincil SSSıSDB 'ye erişebilir, ancak ikincil Azure-SSIS IR, örneğin Azure dosyalarında yalnızca başka bir yerde dağıtılan paketler için de aynı işlemi yapabilir. Çalışan maliyetinizi en aza indirmek isterseniz, ikincil Azure-SSIS IR oluşturulduktan sonra durdurabilirsiniz. SSıSDB yük devretmesi gerçekleştiğinde, birincil ve ikincil Azure-SSIS IRS, rolleri takas eder. Birincil Azure-SSIS IR durdurulmuşsa, yeniden başlatmanız gerekir. Bir sanal ağa ve ekleme yöntemine eklenmiş olmasına bağlı olarak, çalışması için 5 dakika veya yaklaşık 20-30 dakika içinde sürer.
+
+1. [Düzenleme/zamanlama paket yürütmesi IÇIN ADF kullanıyorsanız](./how-to-invoke-ssis-package-ssis-activity.md), WSIS paketi etkinliklerini ve ilişkili TETIKLEYICILERLE ılgılı ADF işlem hatlarının tümünün, başlangıçta devre dışı bırakılan tetikleyicilerle ikincil ADF 'nize kopyalandığından emin olun. SSıSDB yük devretmesi gerçekleştiğinde, bunları etkinleştirmeniz gerekir.
+
+1. Birincil ve ikincil Azure-SSIS IRS 'nın rolleri takas etmeksizin [Azure SQL veritabanı yük devretme grubunuzu test](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) edebılır ve [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) kontrol edebilirsiniz. 
+
+## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Azure SQL yönetilen örnek yük devretme grubu ile çift bekleme Azure-SSIS IR çifti yapılandırma
+
+Azure SQL yönetilen örnek yük devretme grubuyla eşitlenmiş bir çift bekleme Azure-SSIS IR çifti yapılandırmak için aşağıdaki adımları izleyin.
+
+1. Azure portal kullanarak birincil [ve Ikincil Azure SQL yönetilen örneklerinizin](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) BIRINCIL Azure SQL yönetilen örneğinizin **Yük devretme grupları** sayfasında bir yük devretme grubu oluşturabilirsiniz.
+
+1. Azure portal/ADF Kullanıcı arabirimini kullanarak, birincil bölgede SSıSDB barındırmak üzere birincil Azure SQL yönetilen örneğiniz ile yeni bir Azure-SSIS IR oluşturabilirsiniz. Birincil Azure SQL yönetilen örneğiniz tarafından barındırılan SSıDB 'ye zaten çalışmakta olan bir Azure-SSIS IR varsa ve hala çalışıyorsa, yeniden yapılandırmak için önce durdurmanız gerekir. Bu, birincil Azure-SSIS IR olacaktır. **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında [SSISDB kullanmayı seçerken](./create-azure-ssis-integration-runtime.md#creating-ssisdb) , **sssısdb yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullan** onay kutusunu da seçin. **Çift bekleme çifti adı** için, birincil ve ikincil Azure-SSIS IRS çiftini tanımlayacak bir ad girin. Birincil Azure-SSIS IR oluşturma işlemi tamamlandığında, başlatılır ve okuma/yazma erişimiyle sizin adınıza oluşturulacak birincil bir SSıSDB 'ye eklenir. Yalnızca yeniden yapılandırdıysanız, yeniden başlatmanız gerekir. Birincil SSSıSDB 'nin ikincil Azure SQL yönetilen örneğinizin **genel bakış** sayfasında salt okuma erişimi olan ikincil bir sunucuyla çoğaltılıp çoğaltılmadığını da denetleyebilirsiniz.
+
+1. Azure portal/ADF Kullanıcı arabirimini kullanarak, ikincil bölgede SSıSDB barındırmak için ikincil Azure SQL yönetilen örneğiniz ile başka bir Azure-SSIS IR oluşturabilirsiniz. Bu, ikincil Azure-SSIS IR olacaktır. Tüm BCDR için, bağımlı olduğu tüm kaynakların ikincil bölgede da oluşturulduğundan emin olun. Örneğin, özel kurulum betiği/dosyaları depolamak için Azure depolama, düzenleme/zamanlama paketi yürütmeleri için ADF, vb. **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında [SSISDB kullanmayı seçerken](./create-azure-ssis-integration-runtime.md#creating-ssisdb) , **sssısdb yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullan** onay kutusunu da seçin. **Çift bekleme çifti adı** için, birincil ve ikincil Azure-SSIS IRS çiftini tanımlamak üzere aynı adı girin. İkincil Azure-SSIS IR oluşturma işlemi tamamlandığında, başlatılır ve ikincil SSSıSDB 'ye eklenir.
+
+1. Azure SQL yönetilen örneği, veritabanı ana anahtarını (DMK) kullanarak şifreleyerek SSSıSDB gibi veritabanlarındaki hassas verileri güvenli hale getirebilirsiniz. DMK, varsayılan olarak hizmet ana anahtarı (SMK) kullanılarak şifrelenir. Yazma sırasında, Azure SQL yönetilen örnek yük devretme grubu, SMK 'yi birincil Azure SQL yönetilen örneğinden çoğaltmaz, bu nedenle DMK ve içindeki SSSıSDB, yük devretme gerçekleştikten sonra ikincil Azure SQL yönetilen örneği üzerinde çözülemez. Bu sorunu geçici olarak çözmek için, DMK için ikincil Azure SQL yönetilen örneğinde Şifresi çözülecek bir parola şifrelemesi ekleyebilirsiniz. SSMS 'yi kullanarak aşağıdaki adımları izleyin.
+
+   1. DMK şifrelemek için bir parola eklemek üzere birincil Azure SQL yönetilen Örneğinizde SSSıSDB için aşağıdaki komutu çalıştırın.
+
+      ```sql
+      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
+      ```
+   
+   1. DMK şifresini çözmek için yeni parolayı eklemek üzere hem birincil hem de ikincil Azure SQL yönetilen örneklerinizin SSSıSDB için aşağıdaki komutu çalıştırın.
+
+      ```sql
+      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
+      ```
+
+1. SSıSDB yük devretmesi gerçekleştiğinde neredeyse sıfır kapalı kalma süresine sahip olmak istiyorsanız, her ikisini de Azure-SSIS IRS 'nin çalışır durumda tutun. Yalnızca birincil Azure-SSIS IR, paket yürütme günlükleri yazmak ve yürütmek için birincil SSSıSDB 'ye erişebilir, ancak ikincil Azure-SSIS IR, örneğin Azure dosyalarında yalnızca başka bir yerde dağıtılan paketler için de aynı işlemi yapabilir. Çalışan maliyetinizi en aza indirmek isterseniz, ikincil Azure-SSIS IR oluşturulduktan sonra durdurabilirsiniz. SSıSDB yük devretmesi gerçekleştiğinde, birincil ve ikincil Azure-SSIS IRS, rolleri takas eder. Birincil Azure-SSIS IR durdurulmuşsa, yeniden başlatmanız gerekir. Bir sanal ağa ve ekleme yöntemine eklenmiş olmasına bağlı olarak, çalışması için 5 dakika veya yaklaşık 20-30 dakika içinde sürer.
+
+1. [Düzenleme/zamanlama paket yürütmeleri Için Azure SQL yönetilen örnek Aracısı kullanırsanız](./how-to-invoke-ssis-package-managed-instance-agent.md), iş adımlarıyla ılgılı tüm SSIS işlerinin ve ilişkili zamanlamaların, başlangıçta devre dışı bırakılan zamanlamalarla IKINCIL Azure SQL yönetilen örneğine kopyalandığından emin olun. SSMS 'yi kullanarak aşağıdaki adımları izleyin.
+
+   1. Her bir SSIS işi için, komut dosyasını oluşturmak üzere **komut dosyası işini**, **Oluştur**' a ve **Yeni sorgu Düzenleyicisi penceresi** açılır menü öğelerini seçin.
+
+      ![SSIS iş betiği oluştur](media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png)
+
+   1. Oluşturulan her bir SSIS iş betiği için, saklı yordamı yürütme komutunu bulun `sp_add_job` ve değer atamasını `@owner_login_name` gerektiği gibi bağımsız değişkene değiştirin/kaldırın.
+
+   1. Her güncelleştirilmiş SSIS iş betiği için, işi iş adımları ve ilişkili zamanlamalarla kopyalamak üzere ikincil Azure SQL yönetilen Örneğinizde çalıştırın.
+
+   1. Aşağıdaki betiği kullanarak, birincil/ikincil SSıSDB rolüne bağlı olarak SSIS iş zamanlamalarını etkinleştirmek/devre dışı bırakmak için yeni bir T-SQL işi oluşturun ve hem birincil hem de ikincil Azure SQL yönetilen örneklerinde düzenli olarak çalıştırın. SSıSDB yük devretmesi gerçekleştiğinde, devre dışı bırakılmış SSIS iş zamanlamaları etkinleştirilir ve tam tersi de geçerlidir.
+
+      ```sql
+      IF (SELECT Top 1 role_desc FROM SSISDB.sys.dm_geo_replication_link_status WHERE partner_database = 'SSISDB') = 'PRIMARY'
+         BEGIN
+            IF (SELECT enabled FROM msdb.dbo.sysschedules WHERE schedule_id = <ScheduleID>) = 0
+               EXEC msdb.dbo.sp_update_schedule @schedule_id = <ScheduleID >, @enabled = 1
+         END
+      ELSE
+         BEGIN
+            IF (SELECT enabled FROM msdb.dbo.sysschedules WHERE schedule_id = <ScheduleID>) = 1
+               EXEC msdb.dbo.sp_update_schedule @schedule_id = <ScheduleID >, @enabled = 0
+         END
+      ```
+
+1. [Düzenleme/zamanlama paket yürütmesi IÇIN ADF kullanıyorsanız](./how-to-invoke-ssis-package-ssis-activity.md), WSIS paketi etkinliklerini ve ilişkili TETIKLEYICILERLE ılgılı ADF işlem hatlarının tümünün, başlangıçta devre dışı bırakılan tetikleyicilerle ikincil ADF 'nize kopyalandığından emin olun. SSıSDB yük devretmesi gerçekleştiğinde, bunları etkinleştirmeniz gerekir.
+
+1. [Azure SQL yönetilen örnek yük devretme grubunuzu test](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) edebilir ve birincil ve ikincil Azure-SSIS IRS 'nin rolleri takas ETMEKSIZIN [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) gözden geçirin. 
+
+## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Azure SQL veritabanı/yönetilen örnek tarafından barındırılan var olan SSSıSDB 'ye yeni Azure-SSIS IR iliştirme
+
+Bir olağanüstü durum oluşursa ve mevcut Azure-SSIS IR, ancak aynı bölgedeki Azure SQL veritabanı/yönetilen örneğini etkileiyorsa, bunu başka bir bölgedeki yeni bir bölgede değiştirebilirsiniz. Azure SQL veritabanı/yönetilen örneği tarafından barındırılan mevcut SSSıSDB 'nizi yeni bir Azure-SSIS IR eklemek için aşağıdaki adımları izleyin.
+
+1. Mevcut Azure-SSIS IR hala çalışıyorsa, önce Azure portal/ADF Kullanıcı arabirimi veya Azure PowerShell kullanarak durdurmanız gerekir. Olağanüstü durum ADF 'yi aynı bölgede da etkirse, bu adımı atlayabilirsiniz.
+
+1. SSMS 'yi kullanarak, yeni ADF/Azure-SSIS IR bağlantılarına izin verecek meta verileri güncelleştirmek için Azure SQL veritabanı/yönetilen örnekte SSSıSDB için aşağıdaki komutu çalıştırın.
 
    ```sql
-   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name = 'YourNewADF', @integration_runtime_name = 'YourNewAzureSSISIR'
    ```
 
-2. SQL yönetilen örneği üzerinde bir yük devretme grubu oluşturun.
-
-3. Yeni şifreleme parolasını kullanarak ikincil örnekte **sp_control_dbmasterkey_password** çalıştırın.
-
-   ```sql
-   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
-   GO
-   ```
-
-### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Senaryo 1: Azure-SSIS IR okuma/yazma dinleyicisi uç noktasını işaret ediyor
-
-Azure-SSIS IR bir okuma/yazma dinleyicisi uç noktasına işaret etmek istiyorsanız, öncelikle birincil sunucu uç noktasını işaret etmeniz gerekir. SSıSDB 'yi bir yük devretme grubuna geçirdikten sonra, Azure-SSIS IR Azure PowerShell kullanarak okuma/yazma dinleyicisi uç noktasına işaret etmek üzere değiştirebilir ve yeniden başlatabilirsiniz.
-
-```powershell
-Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
-```
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. İkincil örnekteki özel kurulum için yeni bölge, sanal ağ ve paylaşılan erişim imzası (SAS) URI bilgileriyle Azure-SSIS IR düzenleyin. Azure-SSIS IR bir okuma/yazma dinleyicisine işaret ettiğinden ve uç nokta Azure-SSIS IR saydam olduğundan, uç noktayı düzenlemeniz gerekmez.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Azure-SSIS IR yeniden başlatın.
-
-### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>Senaryo 2: Azure-SSIS IR birincil sunucu uç noktasını işaret ediyor
-
-Bu senaryo, Azure-SSIS IR birincil sunucu uç noktasını işaret ettiğinden uygundur.
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. İkincil örnek için yeni bölge, uç nokta ve sanal ağ bilgileriyle Azure-SSIS IR düzenleyin.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database endpoint" `
-      -CatalogAdminCredential "Azure SQL Database admin credentials" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Azure-SSIS IR yeniden başlatın.
-
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>Senaryo 3: Azure-SSIS IR SQL yönetilen örneğinin genel uç noktasını işaret ediyor
-
-Bu senaryo, Azure-SSIS IR bir Azure SQL yönetilen örneğinin genel uç noktasını işaret ettiğinden ve sanal ağa katılamazsa uygundur. Senaryo 2 ' den tek fark, yük devretmeden sonra Azure-SSIS IR için sanal ağ bilgilerini düzenlemenize gerek kalmaz.
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. Azure-SSIS IR ikincil örnek için yeni bölge ve uç nokta bilgileriyle düzenleyin.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Azure-SSIS IR yeniden başlatın.
-
-### <a name="scenario-4-attach-an-existing-ssisdb-instance-ssis-catalog-to-a-new-azure-ssis-ir"></a>Senaryo 4: var olan bir SSıSDB örneğini (SSIS Kataloğu) yeni bir Azure-SSIS IR Iliştirme
-
-Bu senaryo, geçerli bölgede Azure Data Factory veya Azure-SSIS IR olağanüstü bir durum oluştuğunda SSSıSDB 'nin yeni bir bölgede yeni bir Azure-SSIS IR çalışmasını istiyorsanız uygundur.
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
-
-> [!NOTE]
-> 4. adım (IR oluşturma) için PowerShell 'i kullanın. Bunu yapmazsanız, Azure portal SSıSDB zaten var olduğunu belirten bir hata rapor eder.
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. Ve ' den gelen bağlantıları kabul etmek için SSSıSDB içindeki meta verileri güncelleştirmek için bir saklı yordam çalıştırın **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
-   
-   ```sql
-   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-   ```
-
-3. Yeni bölgede adlı yeni bir veri fabrikası oluşturun **\<new_data_factory_name\>** .
-
-   ```powershell
-   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-      -Location "new region"`
-      -Name "<new_data_factory_name>"
-   ```
-   
-   Bu PowerShell komutu hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
-
-4. Azure PowerShell kullanarak yeni bölgede adlı yeni bir Azure-SSIS IR oluşturun **\<new_integration_runtime_name\>** .
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-      -DataFactoryName "new data factory name" `
-      -Name "<new_integration_runtime_name>" `
-      -Description $AzureSSISDescription `
-      -Type Managed `
-      -Location $AzureSSISLocation `
-      -NodeSize $AzureSSISNodeSize `
-      -NodeCount $AzureSSISNodeNumber `
-      -Edition $AzureSSISEdition `
-      -LicenseType $AzureSSISLicenseType `
-      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-      -VnetId "new vnet" `
-      -Subnet "new subnet" `
-      -CatalogServerEndpoint $SSISDBServerEndpoint `
-      -CatalogPricingTier $SSISDBPricingTier
-   ```
-   
-   Bu PowerShell komutu hakkında daha fazla bilgi için, bkz. [Azure Data Factory Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md).
-
-## <a name="azure-ssis-ir-failover-with-sql-database"></a>SQL veritabanı ile yük devretmeyi Azure-SSIS IR
-
-### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Senaryo 1: Azure-SSIS IR okuma/yazma dinleyicisi uç noktasını işaret ediyor
-
-Bu senaryo şu durumlarda uygundur:
-
-- Azure-SSIS IR, yük devretme grubunun okuma/yazma dinleyicisi uç noktasını işaret eder.
-- SQL veritabanı sunucusu, sanal ağ hizmeti uç noktası *kuralıyla yapılandırılmadı.*
-
-Azure-SSIS IR bir okuma/yazma dinleyicisi uç noktasına işaret etmek istiyorsanız, öncelikle birincil sunucu uç noktasını işaret etmeniz gerekir. SSıSDB 'yi bir yük devretme grubuna geçirdikten sonra, Azure-SSIS IR Azure PowerShell kullanarak okuma/yazma dinleyicisi uç noktasına işaret etmek üzere değiştirebilir ve yeniden başlatabilirsiniz.
-
-```powershell
-Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
-```
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, Azure-SSIS IR saydam olur. Azure-SSIS IR, yük devretme grubunun yeni birincili otomatik olarak bağlanır. 
-
-Azure-SSIS IR bölgeyi veya diğer bilgileri güncelleştirmek istiyorsanız, bunu durdurabilir, düzenleyebilir ve yeniden başlatabilirsiniz.
-
-
-### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>Senaryo 2: Azure-SSIS IR birincil sunucu uç noktasını işaret ediyor
-
-Bu senaryo, Azure-SSIS IR birincil sunucu uç noktasını işaret ettiğinden uygundur.
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın:
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. İkincil örnek için yeni bölge, uç nokta ve sanal ağ bilgileriyle Azure-SSIS IR düzenleyin.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database endpoint" `
-      -CatalogAdminCredential "Azure SQL Database admin credentials" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Azure-SSIS IR yeniden başlatın.
-
-### <a name="scenario-3-attach-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Senaryo 3: var olan bir SSıSDB (SSIS Kataloğu) yeni bir Azure-SSIS IR Iliştirme
-
-Bu senaryo, ikincil bölgede yeni bir Azure-SSIS IR sağlamak istiyorsanız uygundur. Ayrıca, geçerli bölgede bir Azure Data Factory veya Azure-SSIS IR olağanüstü durum oluştuğunda SSıSDB 'nizin yeni bir bölgede yeni bir Azure-SSIS IR çalışmaya devam etmesini istiyorsanız de uygundur.
-
-#### <a name="solution"></a>Çözüm
-
-Yük devretme gerçekleştiğinde, aşağıdaki adımları uygulayın.
-
-> [!NOTE]
-> 4. adım (IR oluşturma) için PowerShell 'i kullanın. Bunu yapmazsanız, Azure portal SSıSDB zaten var olduğunu belirten bir hata rapor eder.
-
-1. Birincil bölgedeki Azure-SSIS IR durdurun.
-
-2. Ve ' den gelen bağlantıları kabul etmek için SSSıSDB içindeki meta verileri güncelleştirmek için bir saklı yordam çalıştırın **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
-   
-   ```sql
-   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-   ```
-
-3. Yeni bölgede adlı yeni bir veri fabrikası oluşturun **\<new_data_factory_name\>** .
-
-   ```powershell
-   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-      -Location "new region"`
-      -Name "<new_data_factory_name>"
-   ```
-   
-   Bu PowerShell komutu hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
-
-4. Azure PowerShell kullanarak yeni bölgede adlı yeni bir Azure-SSIS IR oluşturun **\<new_integration_runtime_name\>** .
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-      -DataFactoryName "new data factory name" `
-      -Name "<new_integration_runtime_name>" `
-      -Description $AzureSSISDescription `
-      -Type Managed `
-      -Location $AzureSSISLocation `
-      -NodeSize $AzureSSISNodeSize `
-      -NodeCount $AzureSSISNodeNumber `
-      -Edition $AzureSSISEdition `
-      -LicenseType $AzureSSISLicenseType `
-      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-      -VnetId "new vnet" `
-      -Subnet "new subnet" `
-      -CatalogServerEndpoint $SSISDBServerEndpoint `
-      -CatalogPricingTier $SSISDBPricingTier
-   ```
-
-   Bu PowerShell komutu hakkında daha fazla bilgi için, bkz. [Azure Data Factory Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md).
+1. [Azure Portal/ADF Kullanıcı arabirimi](./create-azure-ssis-integration-runtime.md#use-the-azure-portal-to-create-an-integration-runtime) veya [Azure PowerShell](./create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime)kullanarak, başka bir bölgede sırasıyla, yeni ADF/Azure-SSIS IR *yournewadf* / *yournewazuressisar* adlı yeni ADF 'yi oluşturun. Azure portal/ADF Kullanıcı arabirimini kullanıyorsanız **Integration Runtime kurulum** bölmesinin **dağıtım ayarları** sayfasında bağlantı hatası ' nı yoksayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure-SSIS IR için diğer yapılandırma seçeneklerini göz önünde bulundurun:
+Azure-SSIS IR için bu diğer yapılandırma seçeneklerini göz önünde bulundurun:
 
-- [Azure-SSIS tümleştirme çalışma zamanını yüksek performans için yapılandırın](configure-azure-ssis-integration-runtime-performance.md)
+- [Azure-SSIS IR için paket depolarını yapılandırma](./create-azure-ssis-integration-runtime.md#creating-azure-ssis-ir-package-stores)
 
-- [Azure-SSIS Integration Runtime için kurulumu özelleştirme](how-to-configure-azure-ssis-ir-custom-setup.md)
+- [Azure-SSIS IR için özel kurulumları yapılandırma](./how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [Azure-SSIS tümleştirme çalışma zamanı için Enterprise Edition sağlama](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Azure-SSIS IR için sanal ağ ekleme 'yi yapılandırma](./join-azure-ssis-integration-runtime-virtual-network.md)
+
+- [Azure-SSIS IR için şirket içinde barındırılan IR 'yi bir ara sunucu olarak yapılandırma](./self-hosted-integration-runtime-proxy-ssis.md)

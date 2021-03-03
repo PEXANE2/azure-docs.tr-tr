@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics kümesinde özel uç noktalar oluşturma ve silme
+title: Azure Stream Analytics kümesinde yönetilen özel uç noktaları oluşturma ve silme
 description: Azure Stream Analytics kümesinde yönetilen özel uç noktaları hakkında bilgi edinin.
 author: sidramadoss
 ms.author: sidram
@@ -7,28 +7,28 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019423"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718412"
 ---
-# <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde özel uç noktalar oluşturma ve silme
+# <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde yönetilen özel uç noktaları oluşturma ve silme
 
-Kümede çalıştırılan Azure Stream Analytics işlerinizi bir güvenlik duvarının veya Azure Sanal Ağ'ın (VNet) ardındaki giriş ve çıkış kaynaklarına bağlayabilirsiniz. İlk olarak, Stream Analytics kümenizde Azure Event Hub veya Azure SQL Veritabanı gibi bir kaynak için özel uç nokta oluşturursunuz. Ardından girişinizden veya çıkışınızdan özel uç nokta bağlantısını onaylayın.
+Kümede çalıştırılan Azure Stream Analytics işlerinizi bir güvenlik duvarının veya Azure Sanal Ağ'ın (VNet) ardındaki giriş ve çıkış kaynaklarına bağlayabilirsiniz. İlk olarak, Stream Analytics kümenizdeki Azure Event hub veya Azure SQL veritabanı gibi bir kaynak için yönetilen özel bir uç nokta oluşturursunuz. Ardından girişinizden veya çıkışınızdan özel uç nokta bağlantısını onaylayın.
 
 Bağlantıyı onayladıktan sonra, Stream Analytics kümenizde çalışan tüm işler kaynağa özel uç nokta aracılığıyla erişebilir. Bu makalede Stream Analytics kümesinde özel uç noktaların nasıl oluşturulduğu ve silindiği gösterilir. Azure SQL veritabanı, Azure depolama, Azure Data Lake Storage 2., Azure Olay Hub 'ı ve Azure Service Bus için özel uç noktalar oluşturabilirsiniz. Diğer hizmetler için özel uç noktalar yakında eklenecektir. 
 
-## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Stream Analytics kümesinde özel uç nokta oluşturma
+## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>Stream Analytics kümesinde yönetilen özel uç nokta oluşturma
 
 Bu bölümde, Stream Analytics kümesinde özel bir uç nokta oluşturmayı öğreneceksiniz.
 
 1. Azure portal Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar** altında **Özel uç noktalar**' ı seçin.
+1. **Ayarlar** altında **yönetilen özel uç noktalar**' ı seçin.
 
-1. Özel uç nokta **Ekle** ' yi seçin ve özel bir uç nokta aracılığıyla güvenli bir şekilde erişmek istediğiniz kaynağı seçmek için aşağıdaki bilgileri girin.
+1. **Yeni** ' yi seçin ve özel bir uç nokta aracılığıyla güvenli bir şekilde erişmek istediğiniz kaynağı seçmek için aşağıdaki bilgileri girin.
 
    |Ayar|Değer|
    |---|---|
@@ -47,11 +47,11 @@ Bu bölümde, Stream Analytics kümesinde özel bir uç nokta oluşturmayı öğ
 
 1. **Bekleyen müşteri onayına** ait durum değişikliğini, birkaç dakika içinde **tamamlanmış olarak ayarlamak** üzere **bekleyen DNS kurulumuna** görmek için Stream Analytics kümenize geri dönebilirsiniz.
 
-## <a name="delete-a-private-endpoint-in-a-stream-analytics-cluster"></a>Stream Analytics kümesinde özel uç noktayı silme
+## <a name="delete-a-managed-private-endpoint-in-a-stream-analytics-cluster"></a>Stream Analytics kümesinde yönetilen özel uç noktayı silme
 
 1. Azure portal Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar** altında **Özel uç noktalar**' ı seçin.
+1. **Ayarlar** altında **yönetilen özel uç noktalar**' ı seçin.
 
 1. Silmek istediğiniz özel uç noktayı seçin ve **Sil**' i seçin.
 

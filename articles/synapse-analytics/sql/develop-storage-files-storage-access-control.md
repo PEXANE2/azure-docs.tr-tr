@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 116fb10956b02b5f6fe578565b9049d9fad54837
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693909"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -122,7 +122,7 @@ Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alan
     Connect-AzAccount
     ```
 4. PowerShell 'de değişkenleri tanımlama: 
-    - Kaynak grubu adı-bu Azure portal, SYNAPSE çalışma alanına genel bakış bölümünde bulabilirsiniz.
+    - Kaynak grubu adı-bu Azure portal, depolama hesabına genel bakış halinde bulabilirsiniz.
     - Hesap adı-güvenlik duvarı kuralları tarafından korunan depolama hesabının adı.
     - Kiracı KIMLIĞI-bunu, kiracı bilgilerinde Azure Active Directory Azure portal bulabilirsiniz.
     - Çalışma alanı adı-SYNAPSE çalışma alanının adı.

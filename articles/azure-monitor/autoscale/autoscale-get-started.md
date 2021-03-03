@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6ac3ebb4cf007141967786f51243c741a6045c83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726062"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -128,7 +128,7 @@ Bu bölümde, Azure otomatik ölçeklendirmeyi aynı abonelik ve kaynak grubu al
 ### <a name="move"></a>Taşı
 Yeni ortamda bir otomatik ölçeklendirme ayarı oluşturmak için [REST API](/rest/api/monitor/autoscalesettings/createorupdate) kullanın. Hedef bölgede oluşturulan otomatik ölçeklendirme ayarı, kaynak bölgedeki otomatik ölçeklendirme ayarının bir kopyası olacaktır.
 
-Kaynak bölgedeki otomatik ölçeklendirme ayarıyla ilişkilendirmede oluşturulan [Tanılama ayarları](../platform/diagnostic-settings.md) taşınamaz. Tekrar satış ayarları oluşturulduktan sonra, hedef bölgede tanılama ayarlarını yeniden oluşturmanız gerekir. 
+Kaynak bölgedeki otomatik ölçeklendirme ayarıyla ilişkilendirmede oluşturulan [Tanılama ayarları](../essentials/diagnostic-settings.md) taşınamaz. Tekrar satış ayarları oluşturulduktan sonra, hedef bölgede tanılama ayarlarını yeniden oluşturmanız gerekir. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure bölgelerindeki kaynakları taşıma hakkında daha fazla bilgi edinin
 Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)

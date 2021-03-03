@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea87f23bcd9dc21ab9f594d6cb0d6008ef98f13
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca6ef57db062ff22b20a8e968eaac39388b9551f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661690"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750707"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
-- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler
+- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler 
 - Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../../create-communication-resource.md). Bu hızlı başlangıç için kaynak **uç** noktanızı kaydetmeniz gerekir.
 - Bir [Kullanıcı erişim belirteci](../../access-tokens.md). Kapsamı "sohbet" olarak ayarladığınızdan emin olun ve belirteç dizesinin yanı sıra Kullanıcı kimliği dizesini de unutmayın.
 
@@ -47,7 +47,7 @@ dotnet build
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-```
+``` 
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -60,7 +60,7 @@ Aşağıdaki sınıflar, C# için Azure Iletişim Hizmetleri sohbeti istemci kit
 
 ## <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
-Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient`Kullanıcı oluşturmak ve sohbet istemcinize geçiş yapmak için bir belirteç vermek üzere kimlik istemci kitaplığındaki sınıfını kullanmanız gerekir.
+Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient` `Administration` Kullanıcı oluşturmak ve sohbet istemcinize geçirilecek bir belirteç vermek için istemci kitaplığındaki sınıfını kullanmanız gerekir.
 
 [Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
 
@@ -69,6 +69,8 @@ Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzer
 ```csharp
 using Azure.Communication.Identity;
 using Azure.Communication.Chat;
+using Azure;
+using Azure.Communication
 
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
@@ -83,7 +85,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 - `topic`Bu sohbete bir konu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateTopic` .
 - `participants` `ChatParticipant` Sohbet iş parçacığına eklenecek nesne listesini geçirmek için özelliğini kullanın. `ChatParticipant`Nesne bir nesne ile başlatılır `CommunicationIdentifier` . `CommunicationIdentifier` , veya türünde olabilir `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` `PhoneNumberIdentifier` . Örneğin, bir nesneyi almak için `CommunicationIdentifier` , bir [Kullanıcı oluşturmak](../../access-tokens.md#create-an-identity) için aşağıdaki yönergeyi uygulayarak oluşturduğunuz bir erişim kimliği geçirmeniz gerekir
 
-Yönteminden yanıt nesnesi `createChatThread` `chatThread` ayrıntıları içerir. Katılımcı ekleme, ileti gönderme, ileti silme, vb. gibi sohbet iş parçacığı işlemleriyle etkileşimde bulunmak için istemci `chatThreadClient` örneğinin, `GetChatThreadClient` istemci üzerindeki yöntemi kullanılarak örneği oluşturulması gerekir `ChatClient` .
+CreateChatThread yönteminden Response nesnesi chatThread ayrıntılarını içerir. Katılımcı ekleme, ileti gönderme, ileti silme, vb. gibi sohbet iş parçacığı işlemleriyle etkileşimde bulunmak için, ChatClient istemcisinde GetChatThreadClient yöntemi kullanılarak bir chatThreadClient istemci örneğinin örneği oluşturulması gerekir. 
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
@@ -112,7 +114,7 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 - `senderDisplayName`Gönderenin görünen adını belirtmek için kullanın. Belirtilmemişse boş dize ayarlanır.
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
 ```
 ## <a name="get-a-message"></a>İleti Al
 
@@ -133,7 +135,7 @@ Sohbet `GetMessages` iş parçacığı istemcisinde belirtilen aralıklarda yön
 AsyncPageable<ChatMessage> allMessages = chatThreadClient.GetMessagesAsync();
 await foreach (ChatMessage message in allMessages)
 {
-    Console.WriteLine($"{message.Id}:{message.Sender.Id}:{message.Content}");
+    Console.WriteLine($"{message.Id}:{message.Id}:{message.Content}");
 }
 ```
 

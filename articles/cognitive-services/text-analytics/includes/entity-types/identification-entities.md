@@ -7,26 +7,94 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/29/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750314"
 ---
-Bu varlık kategorisi, mali bilgileri ve resmi tanımlama biçimlerini içerir. Model sürümünden itibaren kullanılabilir `2019-10-01` . Alt türler aşağıda listelenmiştir. 
-
 ### <a name="financial-account-identification"></a>Finansal hesap kimliği
 
-| Alt tür adı               | Açıklama                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| ABA Yönlendirme Numarası        | American banker Association (ABA) transit yönlendirme numaraları.                  |
-| SWIFT Kodu                 | Ödeme yönergesi bilgileri için SWIFT kodları.                           |
-| Kredi Kartı                | Kredi kartı numaraları.                                                       |
-| Uluslararası Bankacılık Hesap Numarası (IBAN)                  | Ödeme yönergesi bilgileri için ıBAN kodları.                            |
+Bu varlık kategorisi, mali bilgileri ve resmi tanımlama biçimlerini içerir.
 
+#### <a name="category-aba-routing-number"></a>Kategori: ABA Yönlendirme numarası
+
+Bu kategori aşağıdaki varlığı içerir:
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        ABA Yönlendirme numarası
+
+    :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        American banker Association (ABA) transit yönlendirme numaraları.
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-swift-code"></a>Kategori: SWIFT kodu
+
+Bu kategori aşağıdaki varlığı içerir:
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        SWIFT kodu
+
+    :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Ödeme yönergesi bilgileri için SWIFT kodları.
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-credit-card"></a>Kategori: kredi kartı
+
+Bu kategori aşağıdaki varlığı içerir:
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Kredi kartı
+
+    :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Kredi kartı numaraları. 
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-international-banking-account-number-iban"></a>Kategori: uluslararası bankacılık hesap numarası (IBAN) 
+
+Bu kategori aşağıdaki varlığı içerir:
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Kredi kartı
+
+    :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Ödeme yönergesi bilgileri için ıBAN kodları.
+      
+    :::column-end:::
+:::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>Kamu ve ülkeye/bölgeye özgü kimlik
 
@@ -37,249 +105,851 @@ Bu varlık kategorisi, mali bilgileri ve resmi tanımlama biçimlerini içerir. 
 
 Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
 
-Arjantin
-* Arjantin Ulusal kimlik (DNı) numarası
+#### <a name="argentina"></a>Arjantin
 
-Avusturya
-* Avusturya kimlik kartı
-* Avusturya vergi kimlik numarası
-* Avusturya değeri eklenen vergi (KDV) numarası
+:::row:::
+    :::column span="":::
+        **Varlık**
 
-Avustralya
-* Avustralya banka hesap numarası
-* Avustralya Iş numarası
-* Avustralya şirket numarası
-* Avustralya sürücüsünün lisans numarası
-* Avustralya tıbbi hesap numarası
-* Avustralya Passport numarası
-* Avustralya Vergi dosya numarası
+        Arjantin Ulusal kimlik (DNı) numarası
 
-Belçika
-* Belçika Ulusal numarası
-* Belçika katma değer vergi numarası
+    :::column-end:::
+:::row-end:::
 
-Brezilya 
-* Brezilya legal varlık numarası (CNPJ)
-* Brezilya CPF numarası
-* Brezilya Ulusal KIMLIK kartı (RG)
 
-Bulgaristan
-* Bulgaristan uniform kamu numarası
+#### <a name="austria"></a>Avusturya
 
-Kanada
-* Kanada banka hesap numarası
-* Kanada sürücüsünün lisans numarası
-* Kanada Sistem Sağlığı Hizmeti numarası
-* Kanada Passport numarası
-* Kanada Kişisel sağlık kimlik numarası (PHIN)
-* Kanada Sosyal sigorta numarası
+:::row:::
+    :::column span="":::
+        **Varlık**
 
-Şili
-* Kimlik kartı numarası 
+        Avusturya kimlik kartı
 
-Çin
-* Çin yerleşik kimlik kartı (ÇHC) numarası
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Hırvatistan
-* Hırvatistan kimlik kartı numarası
-* Hırvatistan Ulusal KIMLIK kartı numarası
-* Hırvatistan kişisel kimlik (OıB) numarası
+        Avusturya vergi kimlik numarası
 
-Kıbrıs
-* Kıbrıs kimlik kartı numarası
-* Kıbrıs vergi kimlik numarası
+    :::column-end:::
 
-Çek Cumhuriyeti
-* Çek kişisel kimlik numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Danimarka
-* Danimarka kişisel kimlik numarası
+        Avusturya değeri eklenen vergi (KDV) numarası
 
-Estonya
-* Estonya kişisel kimlik kodu
+    :::column-end:::
+:::row-end:::
 
-Avrupa Birliği (AB)
-* AB banka kartı numarası
-* AB sürücüsünün lisans numarası
-* AB Ulusal kimlik numarası
-* AB Passport numarası
-* AB sosyal güvenlik numarası (SSN) veya eşdeğer KIMLIK
-* AB vergi kimlik numarası (TIN)
 
-Finlandiya
-* Finlandiya Avrupa sağlık sigortası numarası
-* Finlandiya Ulusal KIMLIĞI
-* Finlandiya Passport numarası
 
-Fransa
-* Fransa sürücüsünün lisans numarası
-* Fransa sağlık sigortası numarası
-* Fransa Ulusal KIMLIK kartı (CNı)
-* Fransa Passport numarası
-* Fransa sosyal güvenlik numarası (ıNSEE)
-* Fransa vergi kimlik numarası (Numéro SPI)
-* Fransa değeri eklenen vergi numarası
+#### <a name="australia"></a>Avustralya
 
-Almanya
-* Almanya sürücüsünün lisans numarası
-* Almanya kimlik kartı numarası
-* Almanya Passport numarası
-* Almanya vergi kimlik numarası
-* Almanya katma değer vergi numarası
+:::row:::
+    :::column span="":::
+        **Varlık**
 
-Yunanistan 
-* Yunanistan Ulusal KIMLIK kartı numarası
-* Yunanistan vergi kimlik numarası
+        Avustralya banka hesap numarası
 
-Hong Kong
-* Hong Kong kimlik kartı (HKıD) numarası
+    :::column-end:::
 
-Macaristan
-* Macaristan Ulusal kimlik numarası
-* Macaristan vergi kimlik numarası
-* Macaristan değeri eklenen vergi numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Hindistan
-* Hindistan kalıcı hesap numarası (PAN)
-* Hindistan benzersiz tanımlama (aadhaar) numarası
+        Avustralya iş numarası
 
-Endonezya
-* Endonezya kimlik kartı (KTP) numarası
+    :::column-end:::
 
-İrlanda
-* İrlanda Personal kamu hizmeti (PPS) numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-İsrail
-* İsrail Ulusal KIMLIĞI
-* İsrail banka hesap numarası
+        Avustralya şirket numarası
 
-İtalya
-* İtalya sürücüsünün lisans KIMLIĞI
-* İtalya mali kodu
-* İtalya değeri eklenen vergi numarası
+    :::column-end:::
 
-Japonya
-* Japon banka hesap numarası
-* Japon sürücüsünün lisans numarası
-* Japon kişisel numarası
-* Japon numarası kurumsal
-* Japonya yerleşik kayıt numarası
-* Japon konut kartı numarası
-* Japonya sosyal sigorta numarası (SIN)
-* Japonya Passport numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Letonya
-* Letonya kişisel kodu
+        Avustralya sürücüsünün lisansı  
 
-Litvanya
-* Litvanya kişisel kodu
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Luxemburg
-* Luxemburg ulusal kimlik numarası (doğal kişiler)
-* Luxemburg ulusal kimlik numarası (doğal olmayan kişiler)
+        Avustralya tıbbi hesap numarası
 
-Malezya
-* Malezya kimlik kartı numarası
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Malta
-* Malta kimlik kartı numarası
-* Malta vergi kimlik numarası
+        Avustralya Passport numarası
 
-Hollanda
-* Hollanda vatandaşlık hizmeti (BSN) numarası
-* Hollanda vergi kimlik numarası
-* Hollanda katma değer vergi numarası
+    :::column-end:::
 
-Yeni Zelanda
-* Yeni Zelanda banka hesap numarası
-* Yeni Zelanda sürücüsünün lisans numarası
-* Yeni Zelanda Inland gelir numarası
-* Yeni Zelanda sağlık numarası Bakanlığı
-* Yeni Zelanda sosyal Welfare numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Norveç
-* Norveç kimlik numarası
+        Avustralya Passport numarası
 
-Filipinler
-* Filipinler Birleşik çok amaçlı KIMLIK numarası
+    :::column-end:::
 
-Polonya
-* Polonya kimlik kartı
-* Polonya Ulusal KIMLIĞI (PESEL)
-* Polonya Passport numarası
-* Polonya REGON numarası
-* Polonya vergi kimlik numarası
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Portekiz 
-* Portekiz vatandaşlık kart numarası
-* Portekiz vergi kimlik numarası
+        Avustralya Vergi dosya numarası
 
-Romanya
-* Romanya kişisel sayısal kodu (CNP)
+    :::column-end:::
 
-Rusya
-* Rusça Passport numarası (Yurtiçi)
-* Rusça Passport numarası (Uluslararası)
+:::row-end:::
 
-Suudi Arabistan
-* Suudi Arabistan Ulusal KIMLIĞI
 
-Singapur
-* Singapur Ulusal kayıt KIMLIĞI kartı (NRIC) numarası
+#### <a name="belgium"></a>Belçika
 
-Slovakya 
-* Slovakya kişisel numarası
+:::row:::
+    :::column span="":::
+        **Varlık**
 
-Slovenya
-* Slovenya vergi kimlik numarası
-* Slovenya benzersiz ana Vatandaşlık numarası
+        Belçika Ulusal numarası
 
-Güney Afrika
-* Güney Afrika kimlik numarası
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Güney Kore
-* Güney Kore yerleşik kayıt numarası
+        Belçika değer katma vergisi (KDV) numarası
 
-İspanya 
-* İspanya DNı dili
-* İspanya sosyal güvenlik numarası (SSN)
-* İspanya vergi kimlik numarası
+    :::column-end:::
 
-İsveç
-* İsveç Ulusal KIMLIĞI
-* İsveç Passport numarası
-* İsveç vergi kimlik numarası
+:::row-end:::
 
-İsviçre
-* İsviçre sosyal güvenlik numarası AHV
 
-Tayvan 
-* Tayvan Ulusal KIMLIĞI
-* Tayvan yerleşik sertifikası (yay/TARC)
-* Tayvan Passport numarası
+#### <a name="brazil"></a>Brezilya 
 
-Tayland
-* Tay dili popülasyon kimlik kodu
+:::row:::
+    :::column span="":::
+        **Varlık**
 
-Türkiye
-* Türkçe Ulusal kimlik numarası
+        Brezilya legal varlık numarası (CNPJ)
 
-Ukrayna
-* Ukrayna Passport numarası (Yurtiçi)
-* Ukrayna Passport numarası (Uluslararası)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Birleşik Krallık
-* Krallık Sürücünün lisans numarası
-* Krallık Elektrotoral toplama numarası
-* Krallık Ulusal Sistem Sağlığı Hizmeti (NHS) numarası
-* Krallık Ulusal sigorta numarası (NINO)
-* Krallık Passport numarası
-* Krallık Benzersiz vergi mükellefi başvuru numarası
+        Brezilya CPF numarası
 
-Birleşik Devletler
-* ABD sosyal güvenlik numarası (SSN)
-* ABD sürücüsünün lisans numarası
-* ABD Passport numarası
-* ABD bireysel vergi mükellefi kimlik numarası (ITIN)
-* ABD Ilaç zorlama Kurumu (DEA) numarası
-* ABD banka hesap numarası
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Brezilya Ulusal KIMLIK kartı (RG)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="canada"></a>Kanada
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Kanada banka hesap numarası
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada sağlık hizmeti numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada Passport numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada Kişisel sağlık kimlik numarası (PHIN)
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada Sosyal sigorta numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="chile"></a>Şili 
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Şili kimlik kartı numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="china"></a>Çin
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Çin yerleşik kimlik kartı (ÇHC) numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="european-union-eu"></a>Avrupa Birliği (AB)
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        AB banka kartı numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB Ulusal kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB Passport numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB sosyal güvenlik numarası (SSN) veya eşdeğer KIMLIK
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB vergi kimlik numarası (TIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB GPS koordinatları
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="france"></a>Fransa
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Fransa sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa sağlık sigortası numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa Ulusal KIMLIK kartı (CNı)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa Passport numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa sosyal güvenlik numarası (ıNSEE)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa vergi kimlik numarası (Numéro SPI)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fransa değeri eklenen vergi (KDV) numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="germany"></a>Almanya
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Almanya sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Almanya kimlik kartı numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Almanya Passport numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Almanya vergi kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Almanya katma değer vergi numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hong-kong"></a>Hong Kong
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Hong Kong kimlik kartı (HKıD) numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hungary"></a>Macaristan
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Macaristan kişisel kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Macaristan vergi kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Macaristan değeri eklenen vergi numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="india"></a>Hindistan
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Hindistan kalıcı hesap numarası (PAN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Hindistan benzersiz tanımlama (aadhaar) numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="indonesia"></a>Endonezya
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Endonezya kimlik kartı (KTP) numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="ireland"></a>İrlanda
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        İrlanda Personal kamu hizmeti (PPS) numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="israel"></a>İsrail
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        İsrail Ulusal KIMLIĞI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        İsrail banka hesap numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="italy"></a>İtalya
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        İtalya sürücüsünün lisans KIMLIĞI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        İtalya mali kodu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        İtalya değeri eklenen vergi numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="japan"></a>Japonya
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Japon banka hesap numarası
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japon sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonya "benim numaranız" (kişisel)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonya "My Number" (Kurumsal)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonya yerleşik kayıt numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japon konut kartı numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonya sosyal sigorta numarası (SIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonya Passport numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="luxembourg"></a>Lüksemburg
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Lüksemburg ulusal kimlik numarası (doğal kişiler)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Lüksemburg ulusal kimlik numarası (doğal olmayan kişiler)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="malta"></a>Malta
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Malta kimlik kartı numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Malta vergi kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="new-zealand"></a>Yeni Zelanda
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Yeni Zelanda banka hesap numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Yeni Zelanda sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Yeni Zelanda Inland gelir numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Yeni Zelanda sağlık numarası Bakanlığı
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Yeni Zelanda sosyal Welfare numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="philippines"></a>Filipinler
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Filipinler Birleşik çok amaçlı KIMLIK numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="portugal"></a>Portekiz 
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Portekiz vatandaşlık kart numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Portekiz vergi kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="singapore"></a>Singapur
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Singapur Ulusal kayıt KIMLIĞI kartı (NRIC) numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-africa"></a>Güney Afrika
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Güney Afrika kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-korea"></a>Güney Kore
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Güney Kore yerleşik kayıt numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="spain"></a>İspanya
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        İspanya DNı dili
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        İspanya sosyal güvenlik numarası (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        İspanya vergi kimlik numarası
+
+    :::column-end:::
+:::row-end:::
+ 
+#### <a name="switzerland"></a>İsviçre
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        İsviçre sosyal güvenlik numarası AHV
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="taiwan"></a>Tayvan 
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Tayvan Ulusal KIMLIĞI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Tayvan yerleşik sertifikası (yay/TARC)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Tayvan Passport numarası
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="united-kingdom"></a>Birleşik Krallık
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        Krallık Sürücünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Krallık Elektrotoral toplama numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Krallık Ulusal Sistem Sağlığı Hizmeti (NHS) numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Krallık Ulusal sigorta numarası (NINO)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Krallık veya ABD Passport numarası
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Krallık Benzersiz vergi mükellefi başvuru numarası
+
+    :::column-end:::
+
+:::row-end:::
+
+
+#### <a name="united-states"></a>Birleşik Devletler
+
+:::row:::
+    :::column span="":::
+        **Varlık**
+
+        ABD sosyal güvenlik numarası (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       ABD sürücüsünün lisans numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       ABD veya Birleşik Krallık Passport numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       ABD bireysel vergi mükellefi kimlik numarası (ITIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       ABD Ilaç zorlama Kurumu (DEA) numarası
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       ABD banka hesap numarası
+
+    :::column-end:::
+:::row-end:::

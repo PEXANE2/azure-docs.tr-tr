@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711510"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -30,9 +30,6 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 
 > [!NOTE]
 > ASP.NET Core 3,1 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
-
-> [!IMPORTANT]
-> Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1 ve 3,1. 2,0, 2,2 ve 3,0 sürümleri devre dışı bırakıldı ve artık desteklenmiyor.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -113,7 +110,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örneğin:
+    Örnek:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 

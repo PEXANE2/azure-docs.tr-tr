@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 6c5d758f94a4ad4e70a8b02a02c7c61097725f63
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742118"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Öğretici: DMS kullanarak SQL Server'ı çevrimdışı Azure SQL Veritabanına geçirme
 
@@ -33,10 +33,6 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir SQL Serve
 > - Azure veritabanı geçiş hizmeti 'ni kullanarak bir geçiş projesi oluşturun.
 > - Geçişi çalıştırma.
 > - Geçişi izleme.
-
-[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
-
-Bu makalede, Azure SQL veritabanı 'ndaki bir veritabanına SQL Server çevrimdışı geçiş açıklanmaktadır. Çevrimiçi geçiş için bkz. [DMS kullanarak çevrimiçi biçimde SQL Server'ı Azure SQL Veritabanı’na geçirme](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -275,7 +271,5 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 ### <a name="additional-resources"></a>Ek kaynaklar
 
-- [Azure Data Migration hizmeti uygulamalı Laboratuvarı kullanan SQL geçişi](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) .
-- Azure SQL veritabanı 'na çevrimiçi geçişler gerçekleştirirken oluşan bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi için [Azure SQL veritabanı çevrimiçi geçişleri ile Ilgili bilinen sorunlar ve geçici çözümler](known-issues-azure-sql-online.md)makalesine bakın.
 - Azure veritabanı geçiş hizmeti hakkında daha fazla bilgi için [Azure veritabanı geçiş hizmeti nedir?](./dms-overview.md)makalesine bakın.
 - Azure SQL veritabanı hakkında daha fazla bilgi için [Azure SQL veritabanı hizmeti nedir?](../azure-sql/database/sql-database-paas-overview.md)makalesine bakın.

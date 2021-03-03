@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591766"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718752"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>MySQL için Azure veritabanı esnek sunucusu 'nda denetim günlükleriyle veritabanı etkinliğini izleme
 
@@ -46,7 +46,7 @@ Denetim günlüğü davranışlarını denetlemek için ayarlayabileceğiniz di�
 | `DCL` | "Izın ver" gibi sorgular |
 | `ADMIN` | "Durumu göster" gibi sorgular |
 | `GENERAL` | DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve ADMIN içinde tümü |
-| `TABLE_ACCESS` | -Yalnızca MySQL 5,7 için kullanılabilir <br> -SELECT veya INSERT gibi tablo okuma deyimleri... SEÇIN <br> -DELETE veya TRUNCATE TABLE gibi tablo silme deyimleri <br> -INSERT veya REPLACE gibi tablo ekleme deyimleri <br> -UPDATE gibi tablo güncelleştirme deyimleri |
+| `TABLE_ACCESS` | -SELECT veya INSERT gibi tablo okuma deyimleri... SEÇIN <br> -DELETE veya TRUNCATE TABLE gibi tablo silme deyimleri <br> -INSERT veya REPLACE gibi tablo ekleme deyimleri <br> -UPDATE gibi tablo güncelleştirme deyimleri |
 
 ## <a name="access-audit-logs"></a>Denetim günlüklerine erişme
 
@@ -72,7 +72,7 @@ Aşağıdaki bölümlerde, olay türüne göre MySQL denetim günlüklerinin ç�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (yalnızca MySQL 5,7 için kullanılabilir) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | MySQL tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `host_s` | Boş |
 | `ip_s` | MySQL 'e bağlanan istemcinin IP adresi |
@@ -116,7 +116,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 ### <a name="table-access"></a>Tablo erişimi
 
 > [!NOTE]
-> Tablo erişim günlükleri yalnızca MySQL 5,7 için çıkışlardır.<br>İçin `sql_text_s` , 2048 karakteri aşarsa günlük kesilecek.
+> İçin `sql_text_s` , 2048 karakteri aşarsa günlük kesilecek.
 
 | **Özellik** | **Açıklama** |
 |---|---|

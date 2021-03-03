@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720571"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -53,7 +53,7 @@ Aşağıdaki özellikler, Azure platformunun güvenli bir şekilde yönetilme g�
 | [Zorunlu güvenlik eğitimi, arka plan denetimleri](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Veri konumunda denetim](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Ortak denetimler Merkezi](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Azure hizmetlerinde Microsoft 'un veri konumunu yönetme](https://azuredatacentermap.azurewebsites.net/)|
 | [Sızma testi](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [yetkisiz giriş algılama, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [denetimleri günlüğe kaydetme &](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Koşullarınızda veri erişimi sağlayın](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services nedeni Dildenetim listesi](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 'un kim tarafından verilerinize hangi koşullarda erişebileceği](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Sanat veri merkezi](https://www.microsoft.com/cloud-platform/global-datacenters), fiziksel güvenlik, [güvenli ağ](network-overview.md) durumu | [Yasalar zorlamasına yanıt verme](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Hizmete göre uyumluluk, konum & sektör](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Microsoft, Azure hizmetlerindeki müşteri verilerini nasıl korur?](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [Güvenlik olay yanıtı](https://aka.ms/SecurityResponsepaper), [paylaşılan sorumluluk](./shared-responsibility.md) |[Sıkı gizlilik standartları](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure Hizmetleri, saydamlık Merkezi için sertifikayı gözden geçirme](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [Güvenlik olay yanıtı](/samples/browse/?redirectedfrom=TechNet-Gallery), [paylaşılan sorumluluk](./shared-responsibility.md) |[Sıkı gizlilik standartları](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure Hizmetleri, saydamlık Merkezi için sertifikayı gözden geçirme](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>Verilerin ve uygulamanın güvenliğini sağlamaya yönelik özellikler
 Bulut hizmeti modeline bağlı olarak, uygulamanın veya hizmetin güvenliğini yönetmekten sorumlu olan değişken sorumluluğu vardır. Azure platformunda sunulan ve yerleşik özellikler aracılığıyla bu sorumlulukları ve bir Azure aboneliğine dağıtılabilecek iş ortağı çözümlerini kullanarak bu sorumlulukları karşılamakta yardımcı olacak özellikler vardır.

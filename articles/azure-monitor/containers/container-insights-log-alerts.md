@@ -1,18 +1,18 @@
 ---
-title: Kapsayıcılar için Azure Izleyici 'deki uyarıları günlüğe kaydet | Microsoft Docs
-description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
+title: Kapsayıcı öngörülerinin günlük uyarıları | Microsoft Docs
+description: Bu makalede, kapsayıcı öngörülerine bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711204"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'den günlük uyarıları oluşturma
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Kapsayıcı öngörülerine ait günlük uyarılarını oluşturma
 
-Kapsayıcılar için Azure Izleyici, yönetilen veya otomatik olarak yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izler. Bu makalede önemli şeyler hakkında uyarı almak için, AKS kümelerinde aşağıdaki durumlar için günlük tabanlı uyarıların nasıl oluşturulacağı açıklanmaktadır:
+Kapsayıcı öngörüleri, yönetilen veya otomatik olarak yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinin performansını izler. Bu makalede önemli şeyler hakkında uyarı almak için, AKS kümelerinde aşağıdaki durumlar için günlük tabanlı uyarıların nasıl oluşturulacağı açıklanmaktadır:
 
 - Küme düğümlerinde CPU veya bellek kullanımı bir eşiği aştığında
 - Bir denetleyici içindeki herhangi bir kapsayıcıdaki CPU veya bellek kullanımı, karşılık gelen kaynak üzerinde ayarlanan sınıra kıyasla bir eşiği aşarsa
@@ -20,9 +20,9 @@ Kapsayıcılar için Azure Izleyici, yönetilen veya otomatik olarak yönetilen 
 - *Başarısız*, *bekleyen*, *Bilinmeyen*, *çalışan* veya *başarılı* Pod-aşama sayıları
 - Küme düğümlerindeki boş disk alanı bir eşiği aştığında
 
-Yüksek CPU veya bellek kullanımı veya küme düğümlerinde düşük boş disk alanı için uyarı vermek üzere, bir ölçüm uyarısı veya ölçüm ölçüm uyarısı oluşturmak için belirtilen sorguları kullanın. Ölçüm uyarıları günlük uyarılarından daha düşük gecikme süresine sahip olsa da, günlük uyarıları gelişmiş sorgulama ve daha büyük gelişmiş algoritmaların mümkündür sağlar. Günlük uyarı sorguları, *Now* işlecini kullanarak ve bir saat geri dönerek bir tarih saatini mevcut ile karşılaştırır. (Kapsayıcılar için Azure Izleyici tüm tarihleri Eşgüdümlü Evrensel Saat (UTC) biçiminde depolar.)
+Yüksek CPU veya bellek kullanımı veya küme düğümlerinde düşük boş disk alanı için uyarı vermek üzere, bir ölçüm uyarısı veya ölçüm ölçüm uyarısı oluşturmak için belirtilen sorguları kullanın. Ölçüm uyarıları günlük uyarılarından daha düşük gecikme süresine sahip olsa da, günlük uyarıları gelişmiş sorgulama ve daha büyük gelişmiş algoritmaların mümkündür sağlar. Günlük uyarı sorguları, *Now* işlecini kullanarak ve bir saat geri dönerek bir tarih saatini mevcut ile karşılaştırır. (Kapsayıcı öngörüleri Eşgüdümlü Evrensel Saat (UTC) biçiminde tüm tarihleri depolar.)
 
-Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md) . Günlük sorgularını kullanan uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük uyarıları](../alerts/alerts-unified-log.md). Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de ölçüm uyarıları](../alerts/alerts-metric-overview.md).
+Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../alerts/alerts-overview.md) . Günlük sorgularını kullanan uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük uyarıları](../alerts/alerts-unified-log.md). Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de ölçüm uyarıları](../alerts/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Kaynak kullanım günlüğü arama sorguları
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
 
-Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kullanan bir ölçüm ölçümü uyarı kuralının oluşturulması gösterilmektedir. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz. Kullanmaya başlamak için daha önce sağlanmış olan günlük arama sorgularından birini kullanın. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak günlük uyarısı oluşturma örnekleri](../alerts/alerts-log-create-templates.md).
+Bu bölümde, kapsayıcı öngörülerine ait performans verilerini kullanan ölçüm ölçümü uyarı kuralının oluşturulması gösterilmektedir. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz. Kullanmaya başlamak için daha önce sağlanmış olan günlük arama sorgularından birini kullanın. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak günlük uyarısı oluşturma örnekleri](../alerts/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../alerts/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
@@ -283,7 +283,7 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure portal, **Log Analytics çalışma alanlarını** arayıp seçin.
-3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
+3. Log Analytics çalışma alanları listenizde, kapsayıcı öngörülerini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure günlük sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
 5. **Günlükler** sayfasında, daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın ve sonra sonuçları doğrulamak için **Çalıştır** ' ı seçin. Bu adımı gerçekleştirmeyin ve **+ Yeni uyarı** seçeneği seçilecek şekilde kullanılamaz.
 6. Günlük uyarısı oluşturmak için **+ Yeni uyarı** ' yı seçin.

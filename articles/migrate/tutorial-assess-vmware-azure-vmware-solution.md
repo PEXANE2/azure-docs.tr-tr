@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c1c56edacbc777b5e8b53da588bc763201379964
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718837"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Öğretici: AVS 'ye geçiş için VMware VM 'lerini değerlendirin
 
@@ -20,7 +20,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölç
 
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure VMware çözümüne (AVS) geçiş için keşfedilen VMware sanal makinelerini (VM 'Ler) nasıl değerlendireceğiniz gösterilmektedir. AVS, Azure 'da VMware platformunu çalıştırmanıza olanak tanıyan bir yönetilen hizmettir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 - Makine meta verileri ve yapılandırma bilgilerine göre bir değerlendirme çalıştırın.
 - Performans verilerine göre bir değerlendirme çalıştırın.
@@ -50,6 +50,9 @@ Makinelerinizi AVS 'ye geçiş için değerlendirmek üzere bu öğreticiyi izle
 **Şirket içinde olduğu gibi** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | AVS 'de önerilen düğüm boyutu, düğüm türü, depolama türü ve başarısızlık-Tolerans ayarı için değerlendirmede belirlediğiniz ayarlarla birlikte Şirket içi VM boyutunu temel alır.
 **Performans tabanlı** | Toplanan dinamik performans verilerine göre değerlendirin. | AVS 'de önerilen düğüm boyutu, CPU ve bellek kullanım verilerine, düğüm türü, depolama türü ve başarısızlık-Tolerans ayarı için değerlendirmede belirlediğiniz ayarlarla birlikte dayanır.
 
+> [!NOTE]
+> Azure VMware çözümü (AVS) değerlendirmesi yalnızca VMware VM 'Leri için oluşturulabilir.
+
 ## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
 
 Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
@@ -60,7 +63,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
 
-1. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VMware çözümü (AVS) (Önizleme)** seçeneğini belirleyin.
+1. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VMware çözümü (AVS)** seçeneğini belirleyin.
 
 1. **Bulma kaynağında**:
 
@@ -76,14 +79,14 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     - **Hedef konum**' da, geçirmek istediğiniz Azure bölgesini belirtin.
        - Boyut ve maliyet önerileri belirttiğiniz konuma göre hesaplanır.
-       - Şu anda dört bölge için değerlendirme yapabilirsiniz (Avustralya Doğu, Doğu ABD, Batı Avrupa, Batı ABD)
    - **Depolama türü** varsayılan olarak **vSAN** olarak ayarlanır. Bu, bir AVS özel bulutu için varsayılan depolama türüdür.
    - **Ayrılmış örnekler** Şu anda AVS düğümleri için desteklenmiyor.
 1. **VM boyutu**:
     - **Düğüm türü** varsayılan olarak **AV36**' dir. Azure geçişi, VM 'Leri AVS 'ye geçirmek için gereken düğüm düğümünü önerir.
     - **FTT ayarında, RAID düzeyinde**, tolerans ve RAID birleşimine yönelik hata seçin.  Seçili FTT seçeneği, şirket içi VM disk gereksinimiyle birlikte kullanıldığında, AVS 'de gereken toplam vSAN depolama alanını belirler.
     - **CPU fazla aboneliği**' nde, AVS düğümündeki bir fiziksel çekirdekle ilişkili sanal çekirdekleri oranını belirtin. 4:1 'den büyük abonelik, performans düşüşüne neden olabilir, ancak Web sunucusu türü iş yükleri için de kullanılabilir.
-
+    - **Bellek fazla tamamlama faktöründe**, küme üzerinde işlemeye göre bellek oranını belirtin. 1 değeri %100 bellek kullanımını temsil eder, 0,5 Örneğin %50 ve 2 kullanılabilir belleğin %200 ' i kullanıyor. Yalnızca 0,5 ' den 10 ' a kadar ondalık bir yere değer ekleyebilirsiniz.
+    - **Yinelenenleri kaldırma ve Compression faktöründe**, iş yükleriniz için beklenen yinelenenleri kaldırma ve sıkıştırma faktörünü belirtin. Gerçek değer Şirket içi vSAN veya depolama yapılandırmadan alınabilir ve bu, iş yüküne göre farklılık gösterebilir. 3 değeri, 300 GB disk için yalnızca 100 GB depolama alanı için 3x anlamına gelir. 1 değeri, hiç dupe veya Compression anlamına gelir. Yalnızca 1 ' den 10 ' a kadar ondalık bir yere değerler ekleyebilirsiniz.
 1. **Düğüm boyutu**: 
     - **Boyutlandırma ölçütünde**, değerlendirmeyi statik meta verilerde veya performans tabanlı verilerde temel almak istiyorsanız seçin. Performans verileri kullanıyorsanız:
         - **Performans geçmişi**' nde, değerlendirmeye dayandırmak istediğiniz veri süresini belirtin
@@ -127,7 +130,6 @@ Bir AVS değerlendirmesi şunları açıklar:
 - AVS düğüm sayısı: VM 'Leri çalıştırmak için gereken, tahmini AVS düğüm sayısı.
 - AVS düğümleri genelinde kullanım: tüm düğümlerde öngörülen CPU, bellek ve depolama kullanımı.
     - Kullanım vCenter Server, NSX Yöneticisi (büyük), NSX Edge gibi aşağıdaki küme yönetimi üst kısmında UPX 'in yanı sıra, HCX, sıkıştırma ve yinelenenleri kaldırma işleminden önce yaklaşık 44vCPU (11 CPU), 75GB RAM ve 722GB depolama alanı kullanan düzenleme. 
-    - Bellek, yinelenenleri kaldırma ve Compression Şu anda bellek ve 1,5 yinelenenleri kaldırma için %100 kullanımı ve sıkıştırma için Kullanıcı tanımlı bir giriş olacak şekilde, kullanıcının gerekli boyutlandırmasına ince ayar yapılmasına izin verir.
 - Aylık maliyet tahmini: şirket içi VM 'Leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
 ## <a name="view-an-assessment"></a>Değerlendirmeyi görüntüleme
@@ -155,7 +157,7 @@ Bir değerlendirmeyi görüntülemek için:
 
 3. Önerilen aracı inceleyin.
 
-    - VMware HCX veya Enterprise: VMware makineleri Için VMWare karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. Daha fazla bilgi edinin.
+    - VMware HCX veya Enterprise: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. Daha fazla bilgi edinin.
     - Bilinmiyor: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 4. AVS hazırlığı durumuna tıklayın. VM hazırlığı ayrıntılarını görüntüleyebilir ve işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
@@ -167,7 +169,7 @@ Değerlendirme özeti, Azure 'da çalışan VM 'lerin tahmini işlem ve depolama
 
     - Maliyet tahminleri, toplam tüm VM 'lerin kaynak gereksinimlerini dikkate alarak gereken AVS düğüm sayısına bağlıdır.
     - AVS 'nin fiyatı düğüm başına olduğunda, toplam maliyet işlem maliyeti ve depolama maliyeti dağıtımına sahip değildir.
-    - Maliyet tahmini, AVS 'de şirket içi VM 'Leri çalıştırmak içindir. Azure geçişi sunucu değerlendirmesi PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
+    - Maliyet tahmini, AVS 'de şirket içi VM 'Leri çalıştırmak içindir. AVS değerlendirmesi PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
 
 2. Aylık depolama tahminlerini gözden geçirin. Görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerdeki depolama disklerinin üzerine bölünür. 
 3. Belirli VM 'Ler için maliyet ayrıntılarını görmek için ayrıntıya gidebilirsiniz.

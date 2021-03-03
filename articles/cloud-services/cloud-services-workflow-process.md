@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700142"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Klasik Microsoft Azure VM mimarisi iş akışı 
 
@@ -80,7 +80,7 @@ Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 5. WindowsAzureGuestAgent Konuk işletim sistemini (güvenlik duvarı, ACL 'Ler, LocalStorage vb.) ayarlar, yeni bir XML yapılandırma dosyasını c:\Config dosyasına kopyalar ve ardından WaHostBootstrapper işlemini başlatır.
 6. Tam IIS Web rolleri için, WaHostBootstrapper IISConfigurator 'ı başlatır ve web rolü için mevcut tüm uygulama havuzlarını IIS 'den silmesini söyler.
 7. WaHostBootstrapper E:\RoleModel.xml **Başlangıç** görevlerini okur ve başlangıç görevlerini yürütmeye başlar. WaHostBootstrapper, tüm basit başlangıç görevlerinin bitmesini bekler ve bir "başarılı" iletisi döndürene kadar bekler.
-8. Tam IIS Web rolleri için WaHostBootstrapper, IISConfigurator 'ın IIS AppPool 'ı yapılandırmasını ve siteyi ' a işaret ettiğini `E:\Sitesroot\<index>` , `<index>` `<Sites>` hizmet için tanımlanan öğe sayısına 0 tabanlı bir dizin olduğunu söyler.
+8. Tam IIS Web rolleri için, WaHostBootstrapper, IISConfigurator 'ın IIS AppPool 'ı yapılandırmasını ve siteyi işaret ettiğini `E:\Sitesroot\<index>` , burada, `<index>` `<Sites>` hizmet için tanımlanan öğe sayısına sıfır tabanlı bir dizin olduğunu söyler.
 9. WaHostBootstrapper, rol türüne göre ana bilgisayar işlemini başlatacak:
     1. **Çalışan rolü**: WaWorkerHost.exe başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Başlatıldıktan sonra, WaHostBootstrapper Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar (ınputendpoints tanımlanmışsa). Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
     2. **Tam IIS Web rolü**: aiishost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.

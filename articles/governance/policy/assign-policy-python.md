@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: Python ile yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Python 'u kullanırsınız.
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742356"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Hızlı başlangıç: Python kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
@@ -17,7 +17,7 @@ Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belir
 
 Python kitaplığı, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır. Bu kılavuzda, bir ilke ataması oluşturmak için Python kitaplığı 'nın nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -40,7 +40,7 @@ Python 'un Azure Ilkesiyle çalışmasını sağlamak için, kitaplığın eklen
    az login
    ```
 
-1. Tercih ettiğiniz Python ortamınızda, Azure Kaynak Grafiği için gerekli kitaplıkları yükler:
+1. Tercih ettiğiniz Python ortamınızda Azure Ilkesi için gerekli kitaplıkları yükler:
 
    ```bash
    # Add the Python library for Python
@@ -96,7 +96,7 @@ Atama ayrıntıları:
 - **policy_definition_id** : atamayı oluşturmak için kullandığınız ilke tanımı yolu. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir. Bu örnekte, ilke tanımı yerleşik bir örnektir ve yol yönetim grubu veya abonelik bilgileri içermez.
 - **kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
   - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Aboneliğiniz `/subscriptions/{subscriptionId}`
+  - Abonelik: `/subscriptions/{subscriptionId}`
   - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **Açıklama** -ilkenin ne yaptığını veya neden bu kapsama atandığını daha derin bir açıklama.

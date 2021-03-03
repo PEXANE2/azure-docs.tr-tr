@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d9aaa00527462f5bbb999ddb76e125d1dfbee7a4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702003"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Sunucular için Azure Defender 'a giriş
 
@@ -27,7 +27,7 @@ Linux için Azure Defender, en yaygın Linux denetim çerçevelerinden biri olan
 
 Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma özellikleri şunlardır:
 
-- **Uç nokta Için Microsoft Defender Için tümleşik lisans (yalnızca Windows)** -sunucular Için Azure Defender,  [uç nokta için Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)içerir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar. [Daha fazla bilgi edinin](security-center-wdatp.md).
+- **Uç nokta Için Microsoft Defender Için tümleşik lisans (yalnızca Windows)** -sunucular Için Azure Defender,  [uç nokta için Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)içerir. Birlikte, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar. Daha fazla bilgi için bkz. [uç noktalarınızı koruma](security-center-wdatp.md).
 
     Endpoint için Defender bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi 'nde gösterilir. Güvenlik Merkezi 'nden Ayrıca, uç nokta konsolu için Defender ' ı Özet olarak da kullanabilirsiniz ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Uç nokta için Microsoft Defender hakkında daha fazla bilgi edinin.
 
@@ -36,25 +36,25 @@ Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma �
 
 - **VM 'ler Için güvenlik açığı değerlendirmesi taraması** -Azure Güvenlik Merkezi 'ne dahil edilen güvenlik açığı tarayıcısı Qualys tarafından desteklenmektedir. 
 
-    Qualys ' tarayıcısı, Azure sanal makinelerinizdeki güvenlik açıklarının gerçek zamanlı olarak tanımlanması için önde gelen araçlardan biridir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir. [Daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md).
+    Qualys ' tarayıcısı, Azure ve karma sanal makinelerinizdeki güvenlik açıklarının gerçek zamanlı olarak tanımlanması için önde gelen araçlardan biridir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir. Daha fazla bilgi için bkz. Azure [Defender 'ın tümleşik güvenlik açığı değerlendirme çözümü, Azure ve karma makineler](deploy-vulnerability-assessment-vm.md).
 
 - **Tam zamanında (JIT) sanal makine (VM) erişimi** -tehdit AKTÖRLERI, RDP veya SSH gibi açık yönetim bağlantı noktalarına sahip erişilebilir makineleri etkin bir şekilde araytırabilirler. Tüm sanal makineleriniz bir saldırı için olası hedeflerdir. Bir VM başarıyla tehlikede olduğunda, ortamınızda daha fazla kaynağa saldırmak için giriş noktası olarak kullanılır.
 
-    Sunucular için Azure Defender 'ı etkinleştirdiğinizde, sanal makinelerinize gelen trafiği kilitlemek için tam zamanında VM erişimi 'ni kullanabilir ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz. [Daha fazla bilgi edinin](just-in-time-explained.md).
+    Sunucular için Azure Defender 'ı etkinleştirdiğinizde, sanal makinelerinize gelen trafiği kilitlemek için tam zamanında VM erişimi 'ni kullanabilir ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz. Daha fazla bilgi için bkz. [JıT VM erişimini anlama](just-in-time-explained.md).
 
 - **Dosya bütünlüğü izleme (FIM)** -değişiklik izleme olarak da bilinen dosya bütünlüğü Izleme (FIM), işletim sisteminin dosyalarını ve kayıt defterlerini, uygulama yazılımını ve diğer değişiklikleri bir saldırının göstergesi olabilecek değişiklikler açısından inceler. Bir karşılaştırma yöntemi, dosyanın geçerli durumunun dosyanın son taramasından farklı olup olmadığını belirlemede kullanılır. Dosyalarınızda geçerli veya şüpheli değişiklikler yapıldığını öğrenmek için bu karşılaştırmayı kullanabilirsiniz.
 
-    Sunucular için Azure Defender 'ı etkinleştirdiğinizde, Windows dosyalarının, Windows kayıt defterlerinin ve Linux dosyalarınızın bütünlüğünü doğrulamak için FIM 'yi kullanabilirsiniz. [Daha fazla bilgi edinin](security-center-file-integrity-monitoring.md).
+    Sunucular için Azure Defender 'ı etkinleştirdiğinizde, Windows dosyalarının, Windows kayıt defterlerinin ve Linux dosyalarınızın bütünlüğünü doğrulamak için FIM 'yi kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde dosya bütünlüğü izleme](security-center-file-integrity-monitoring.md).
 
 - **Uyarlamalı uygulama denetimleri (AAC)** -Uyarlamalı uygulama denetimleri, makineleriniz için bilinen güvenli uygulamalar listesine izin vermeyi tanımlamaya yönelik akıllı ve otomatikleştirilmiş bir çözümdür.
 
-    Uyarlamalı uygulama denetimlerini etkinleştirdikten ve yapılandırdıktan sonra, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları alırsınız. [Daha fazla bilgi edinin](security-center-adaptive-application.md).
+    Uyarlamalı uygulama denetimlerini etkinleştirdikten ve yapılandırdıktan sonra, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları alırsınız. Daha fazla bilgi için bkz. [makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma](security-center-adaptive-application.md).
 
 - **Uyarlamalı ağ sağlamlaştırma (ANH)** -kaynaklara ve kaynaklardan gelen trafiği filtrelemek için ağ güvenlik grupları (NSG) uygulanıyor, ağ güvenliği durgunuzu geliştirir. Ancak, NSG üzerinden akan gerçek trafiğin, tanımlanan NSG kurallarının bir alt kümesi olduğu bazı durumlar da olabilir. Bu durumlarda, güvenlik duruşunu artırmak, gerçek trafik desenlerine bağlı olarak NSG kurallarını sağlamlaştırma yoluyla elde edilebilir.
 
-    Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak için öneriler sağlar. Gerçek trafik, bilinen güvenilen yapılandırma, tehdit bilgileri ve diğer güvenlik açığı göstergelerini gösteren bir makine öğrenimi algoritması kullanır ve yalnızca belirli IP/bağlantı noktası tanımlama bilgilerine giden trafiğe izin vermek için öneriler sağlar. [Daha fazla bilgi edinin](security-center-adaptive-network-hardening.md).
+    Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak için öneriler sağlar. Gerçek trafik, bilinen güvenilen yapılandırma, tehdit bilgileri ve diğer güvenlik açığı göstergelerini gösteren bir makine öğrenimi algoritması kullanır ve yalnızca belirli IP/bağlantı noktası tanımlama bilgilerine giden trafiğe izin vermek için öneriler sağlar. Daha fazla bilgi için bkz. [Uyarlamalı ağ sağlamlaştırma ile ağ güvenlik durunuzu geliştirme](security-center-adaptive-network-hardening.md).
 
-- **Docker ana bilgisayar sağlamlaştırma** -Azure Güvenlik Merkezi, IaaS Linux VM 'lerinde barındırılan yönetilmeyen kapsayıcıları veya Docker Kapsayıcıları çalıştıran diğer Linux makinelerini belirler. Güvenlik Merkezi, bu kapsayıcıların yapılandırmalarının sürekli değerlendirir. Daha sonra bunları Internet güvenliği (CIS) Docker kıyaslaması için merkezi ile karşılaştırır. Güvenlik Merkezi, CIS Docker kıyaslaması 'nın kural kümesinin tamamını içerir ve kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. [Daha fazla bilgi edinin](harden-docker-hosts.md).
+- **Docker ana bilgisayar sağlamlaştırma** -Azure Güvenlik Merkezi, IaaS Linux VM 'lerinde barındırılan yönetilmeyen kapsayıcıları veya Docker Kapsayıcıları çalıştıran diğer Linux makinelerini belirler. Güvenlik Merkezi, bu kapsayıcıların yapılandırmalarının sürekli değerlendirir. Daha sonra bunları Internet güvenliği (CIS) Docker kıyaslaması için merkezi ile karşılaştırır. Güvenlik Merkezi, CIS Docker kıyaslaması 'nın kural kümesinin tamamını içerir ve kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. Daha fazla bilgi için bkz. [Docker konaklarınızı sağlamlaştırın](harden-docker-hosts.md).
 
 - **Dosya daha az saldırı algılama (yalnızca Windows)** -Fileless saldırıları, disk tabanlı tarama teknikleri için algılamayı önlemek üzere kötü amaçlı yükleri belleğe ekler. Saldırganın yükü, daha fazla riskli işlem belleği içinde devam ettirir ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 

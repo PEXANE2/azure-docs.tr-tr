@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 02/17/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 93cbc693e340174cf92aa2515d5e09f1ff3c1b31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0c5ff52e5d3769124cd101b2483f18aea6963d25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750145"
 ---
 ## <a name="joining-the-meeting-chat"></a>Toplantı sohbetine katılma 
 
@@ -304,6 +304,7 @@ Tarayıcınızı açın ve adresine gidin http://localhost:8080/ . Şunları gö
 
 :::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Tamamlanan JavaScript uygulamasının ekran görüntüsü.":::
 
-Ekip bağlantısını ve iş parçacığı KIMLIĞINI toplantı bağlantısı ve metin kutularına ekleyin. Iletişim Hizmetleri uygulamanızın içinden takımlar toplantısı ve sohbet 'e katılması için *takımlar toplantısına katılın* düğmesine basın. Sohbet başlatmak için sayfanın en altına gidin.
+Ekip bağlantısını ve iş parçacığı KIMLIĞINI toplantı bağlantısı ve metin kutularına ekleyin. Takımlar toplantısına katılması için *takımlar toplantısına katılarak* düğmesine basın. ACS kullanıcısı toplantıya alındıktan sonra Iletişim Hizmetleri uygulamanızın içinden sohbet edebilirsiniz. Sohbet başlatmak için sayfanın alt kısmındaki kutuya gidin.
 
-**Note** -Şu anda, ekiplerle birlikte çalışabilirlik senaryolarında yalnızca ileti gönderme, alma ve düzenlemeleriyle desteklenmektedir. Takım toplantılarından diğer kullanıcıları eklemek veya kaldırmak için Kullanıcı ekleme ve yazma göstergeleri ve Iletişim Hizmetleri gibi diğer özellikler henüz desteklenmemektedir.  
+> [!NOTE] 
+> Yalnızca, takımlarla birlikte çalışabilirlik senaryolarında ileti gönderme, alma ve düzenlemeyle ilgili senaryolar desteklenir. Takım toplantılarından diğer kullanıcıları eklemek veya kaldırmak için Kullanıcı ekleme ve yazma göstergeleri ve Iletişim Hizmetleri gibi diğer özellikler henüz desteklenmemektedir.  

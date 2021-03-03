@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78eed4086c04ceca677a96f03875481e56206e0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724029"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -231,6 +231,70 @@ Azure portal Azure Active Directory gidin, *Kurumsal uygulamalar* ' ı seçin, a
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Koşullu erişim ilkesi nedeniyle oturum açma girişi başarısız oldu":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Azure AD ve AKS ile tam zamanında küme erişimi yapılandırma
+
+Küme erişim denetimi için başka bir seçenek de tam zamanında istekler için Privileged Identity Management (PıM) kullanmaktır.
+
+>[!NOTE]
+> PıM, Premium P2 SKU 'SU gerektiren Azure AD Premium bir özelliktir. Azure AD SKU 'Ları hakkında daha fazla bilgi için bkz. [fiyatlandırma Kılavuzu][aad-pricing].
+
+AKS tarafından yönetilen Azure AD tümleştirmesini kullanarak bir AKS kümesiyle tam zamanında erişim isteklerini tümleştirmek için aşağıdaki adımları izleyin:
+
+1. Azure portal en üstünde Azure Active Directory ' i arayıp seçin.
+1. Bir Web tarayıcısında olduğu gibi bu yönergelerin geri kalanı için başvurulan kiracı KIMLIĞINI, `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="Azure Active Directory için Azure Portal ekranının, kiracının kimliği vurgulanmış olarak gösterildiğini.":::
+1. Sol taraftaki Azure Active Directory menüsünde, *Yönet* *grupları* ' nın altında, *Yeni Grup*' u seçin.
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="' Yeni Grup ' seçeneğinin vurgulandığı Azure portal Active Directory grupları ekranını gösterir.":::
+1. Bir grup *güvenlik* türünün seçili olduğundan emin olun ve bir grup adı girin (örneğin, *myjgroup*). *Azure AD rolleri altında bu gruba (Önizleme) atanabilir*, *Evet*' i seçin. Son olarak *Oluştur*' u seçin.
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Azure portal yeni Grup oluşturma ekranını gösterir.":::
+1. *Gruplar* sayfasına geri getirilecektir. Yeni oluşturduğunuz grubunuzu seçin ve bu yönergelerin geri kalanı için olarak adlandırılan nesne KIMLIĞINI aklınızda yapın `<object-id>` .
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Yeni oluşturulan grubun Azure portal ekranını gösterir, nesne kimliğini vurgular":::
+1. `<tenant-id>`Daha önce ve değerlerini kullanarak aks tarafından yönetilen Azure AD tümleştirmesiyle BIR aks kümesi dağıtın `<object-id>` :
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. Azure portal geri döndüğünüzde, sol taraftaki *etkinlik* menüsünde *ayrıcalıklı erişim (Önizleme)* öğesini seçin ve *ayrıcalıklı erişimi etkinleştir*' i seçin.
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Azure portal ayrıcalıklı erişim (Önizleme) sayfası, ' ayrıcalıklı erişimi etkinleştir ' vurgulanmış şekilde gösteriliyor":::
+1. Erişim vermeye başlamak için *atama Ekle* ' yi seçin.
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Azure portal ayrıcalıklı erişim (Önizleme) ekranı etkinleştirildikten sonra görüntülenir. ' Atama Ekle ' seçeneği vurgulanır.":::
+1. *Üyenin* bir rolünü seçin ve küme erişimi vermek istediğiniz kullanıcıları ve grupları seçin. Bu atamalar, bir grup yöneticisi tarafından herhangi bir zamanda değiştirilebilir. ' I taşımaya hazırsanız *İleri*' yi seçin.
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Azure portal atamaları Ekle üyelik ekranı, bir üye olarak eklenmek üzere bir örnek Kullanıcı seçiliyken görüntülenir. ' Ileri ' seçeneği vurgulanır.":::
+1. *Etkin*, istenen süre ve bir atama türü seçin ve bir gerekçe belirtin. Devam etmeye hazırsanız *ata*' yı seçin. Atama türleri hakkında daha fazla bilgi için bkz. [Privileged Identity Management bir ayrıcalıklı erişim grubu (Önizleme) için uygunluk atama][aad-assignments].
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Azure portal atamaları ekleme ayarı ekranı görüntülenir. ' Active ' atama türü seçildi ve örnek bir gerekçe verildi. ' Assign ' seçeneği vurgulanır.":::
+
+Atamalar yapıldıktan sonra, kümeye erişerek tam zamanında erişimin çalıştığını doğrulayın. Örnek:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Oturum açmak için adımları izleyin.
+
+`kubectl get nodes`Kümedeki düğümleri görüntülemek için komutunu kullanın:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Kimlik doğrulama gereksinimini aklınızda ve kimlik doğrulaması için adımları izleyin. Başarılı olursa aşağıdakine benzer bir çıktı görmeniz gerekir:
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>Sorun giderme
+
+`kubectl get nodes`Şuna benzer bir hata döndürürse:
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+Güvenlik grubunun yöneticisinin hesabınıza *etkin* bir atama vermiş olduğundan emin olun.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kubernetes yetkilendirmesi Için Azure RBAC tümleştirmesi][azure-rbac-integration] hakkında bilgi edinin
@@ -243,6 +307,7 @@ Azure portal Azure Active Directory gidin, *Kurumsal uygulamalar* ' ı seçin, a
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
@@ -260,3 +325,4 @@ Azure portal Azure Active Directory gidin, *Kurumsal uygulamalar* ' ı seçin, a
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

@@ -3,19 +3,19 @@ title: Azure hızlı başlangıç-Azure portal kullanarak bir olay hub 'ı oluş
 description: Bu hızlı başlangıçta Azure portal kullanarak bir Azure Olay Hub 'ı oluşturmayı öğreneceksiniz.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435510"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742050"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak olay hub'ı oluşturma
 Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
 
 Bu hızlı başlangıçta [Azure portalı](https://portal.azure.com) kullanarak olay hub'ı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -33,7 +33,7 @@ Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynakl
 1. **Abonelik** için, kaynak grubunu oluşturmak istediğiniz Azure aboneliğinin adını seçin.
 1. **Kaynak grubu için** benzersiz bir ad yazın. Sistem, adın seçili Azure aboneliğinde var olup olmadığını kontrol eder.
 1. Kaynak grubu için bir **bölge** seçin.
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Gözden geçir + Oluştur**’u seçin.
 
    ![Kaynak grubu - oluştur](./media/event-hubs-quickstart-portal/resource-groups2.png)
 1. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin. 
@@ -87,7 +87,7 @@ Ad alanında bir olay hub'ı oluşturmak için aşağıdaki eylemleri gerçekle�
 
     **Bölüm sayısı** ayarı, birçok tüketici genelinde tüketim paralel hale getirmek sağlar. Daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions).
 
-    **İleti bekletme** ayarı, Event Hubs hizmetinin verileri ne kadar süreyle tutacağını belirtir. Bu ayar için en fazla sınır için bkz. [Kotalar ve sınırlar](event-hubs-quotas.md).
+    **İleti bekletme** ayarı, Event Hubs hizmetinin verileri ne kadar süreyle tutacağını belirtir. Daha fazla bilgi için bkz. [olay saklama](event-hubs-features.md#event-retention).
 1. Uyarı ' da Olay Hub 'ı oluşturma durumunu kontrol edebilirsiniz. Olay Hub 'ı oluşturulduktan sonra, bunu Olay Hub 'ları listesinde görürsünüz.
 
     ![Olay Hub 'ı oluşturuldu](./media/event-hubs-quickstart-portal/event-hub-created.png)

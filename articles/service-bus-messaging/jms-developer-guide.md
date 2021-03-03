@@ -3,12 +3,12 @@ title: Azure Service Bus JMS 2,0 Geliştirici Kılavuzu
 description: Azure Service Bus ile iletişim kurmak için Java Ileti hizmeti (JMS) 2,0 API 'sini kullanma
 ms.topic: article
 ms.date: 01/17/2021
-ms.openlocfilehash: 6c535b12906b6d9385029896dc5d0caf85d3399a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 492da46a5ce4f5955a72972d91a8c56d54c385bb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726963"
 ---
 # <a name="azure-service-bus-jms-20-developer-guide"></a>Azure Service Bus JMS 2,0 Geliştirici Kılavuzu
 
@@ -33,11 +33,11 @@ Java Ileti hizmeti API programlama modeli aşağıda gösterildiği gibidir.
 
 # <a name="jms-20-programming-model"></a>[JMS 2,0 programlama modeli](#tab/JMS-20)
 
-:::image type="content" source="./media/jms-developer-guide/java-message-service-20-programming-model.png"alt-text="JMS 2,0 programlama modelini gösteren diyagram."border="false":::
+:::image type="content" source="./media/jms-developer-guide/java-message-service-20-programming-model.png "alt-text="JMS 2,0 programlama modelini gösteren diyagram." border="false":::
 
 # <a name="jms-11-programming-model"></a>[JMS 1,1 programlama modeli](#tab/JMS-11)
 
-:::image type="content" source="./media/jms-developer-guide/java-message-service-11-programming-model.png"alt-text="JMS 1,1 programlama modelini gösteren diyagram."border="false":::
+:::image type="content" source="./media/jms-developer-guide/java-message-service-11-programming-model.png "alt-text="JMS 1,1 programlama modelini gösteren diyagram." border="false":::
 
 ---
 

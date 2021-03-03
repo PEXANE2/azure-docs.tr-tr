@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689020"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,12 +26,29 @@ Bu öğreticide, Amazon Web Services (AWS) Azure Active Directory (Azure AD) ile
 * Kullanıcılarınızın Azure AD hesaplarıyla Amazon Web Services (AWS) için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-> [!Note]
-> Azure AD, AWS SSO 'SU ile çoklu oturum açma tümleştirmesini desteklemez, AWS 'den farklı bir üründür. AWS 'nin [buraya](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)bahsetmesine rağmen, Azure AD, müşterilerin tek tek hesaplarda koşullu erişim ilkelerini kullanarak daha iyi güvenlik denetimleri elde etmenizi ve bu uygulamaları daha iyi idare etmelerini sağlamak için AWS IAM tümleştirmesini kullanmasını önerir.
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Azure AD uygulama galerisinde farklı AWS uygulamalarını anlama
+Azure AD uygulama galerisinde AWS tek Sign-On ve AWS Single-Account erişim uygulamalarının kullanımı arasında bir karar vermek için aşağıdaki bilgileri kullanın.
 
+**AWS çoklu oturum açma**
+
+[AWS çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) , Şubat 2021 ' DEKI Azure AD uygulama galerisine eklenmiştir. Microsoft Azure AD aracılığıyla oturum açma işlemiyle, birden fazla AWS hesabına ve AWS uygulamalarına merkezi olarak erişimi yönetmeyi kolaylaştırır. AWS SSO ile bir kez Microsoft Azure AD ve AWS SSO 'yu kullanarak AWS hesaplarınızın tamamında izinleri tek bir yerden yönetin. AWS SSO, izinleri otomatik olarak sağlar ve ilkeleri güncelleştirmiş ve atamalara erişim sağlarken bunları güncel tutar. Son kullanıcılar AWS konsoluna, komut satırı arabirimine ve AWS SSO tümleşik uygulamalarına erişmek için Azure AD kimlik bilgileriyle kimlik doğrulaması yapabilir.
+
+**AWS Single-Account erişimi**
+
+[Aws Single-Account erişimi](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) , son birkaç yıl içinde müşteriler tarafından kullanılmış ve Azure AD 'yi tek BIR AWS hesabına federasyona ekleyerek Azure AD 'yi kullanarak AWS IAM rollerine erişimi yönetmenizi sağlar. AWS ıAM yöneticileri, her bir AWS hesabında rol ve ilke tanımlar. Her bir AWS hesabı için, Azure AD yöneticileri AWS ıAM 'e Federasyon yapar, hesaba Kullanıcı veya grup atayabilir ve rol erişimine yetki veren onayları göndermek için Azure AD 'yi yapılandırır.  
+
+| Özellik | AWS tek Sign-On | AWS Single-Account erişimi |
+|:--- |:---:|:---:|
+|Koşullu erişim| Tüm AWS hesapları için tek bir koşullu erişim ilkesini destekler. | Hesap başına tüm hesaplar veya özel ilkeler için tek bir koşullu erişim ilkesini destekler|
+| CLı erişimi | Desteklenir | Desteklenir|
+| Privileged Identity Management | Henüz desteklenmiyor | Henüz desteklenmiyor |
+| Hesap yönetimini merkezileştirme | AWS 'de hesap yönetimini merkezileştirme. | Hesap yönetimini Azure AD 'de merkezileştirin (hesap başına bir Azure AD kurumsal uygulaması gerekecektir). |
+| SAML sertifikası| Tek sertifika| Uygulama/hesap başına ayrı sertifikalar | 
+
+## <a name="aws-single-account-access-architecture"></a>AWS Single-Account erişim mimarisi
 ![Azure AD ve AWS ilişkisi diyagramı](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örneğin:
+Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örnek:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -50,7 +67,7 @@ Bu yaklaşım aşağıdaki nedenlerle önerilir:
 > [!Note]
 > Yalnızca bir galeri uygulaması kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

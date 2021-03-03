@@ -197,6 +197,8 @@
               href: high-availability-guide-rhel.md
             - name: Azure NetApp Files ile (A)SCS Örneği için Red Hat Enterprise Linux üzerinde HA
               href: high-availability-guide-rhel-netapp-files.md
+            - name: RHEL üzerinde SAP için büyük örnekler HA
+              href: large-instance-high-availability-rhel.md
         - name: Azure Altyapı Hazırlığı
           items:
             - name: (A)SCS Örneği için Paylaşılan Diskle Windows
@@ -311,7 +313,7 @@
       href: azure-monitor-faq.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/sap-hana/hanainstance
     - name: Azure PowerShell
       href: /powershell/module/az.hanaonazure/#sap-hana-on-azure

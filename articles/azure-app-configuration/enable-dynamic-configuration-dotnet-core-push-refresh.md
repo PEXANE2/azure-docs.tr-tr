@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701527"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında anında yenileme kullanarak dinamik yapılandırma kullanma
 
@@ -27,7 +27,7 @@ Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeni
 
 1. Yoklama modeli: Bu, yapılandırmadaki değişiklikleri algılamak için yoklama kullanan varsayılan davranıştır. Bir ayarın önbelleğe alınmış değeri süre dolduktan sonra, bir sonraki çağrısı `TryRefreshAsync` veya `RefreshAsync` sunucuya bir istek gönderir ve yapılandırmanın değişip değişmediğini kontrol edin ve gerekirse güncelleştirilmiş yapılandırmayı çeker.
 
-1. Gönderim modeli: Bu, yapılandırmadaki değişiklikleri algılamak için [uygulama yapılandırma olaylarını](./concept-app-configuration-event.md) kullanır. Uygulama yapılandırması, anahtar değer değişikliği olaylarını Azure Event Grid gönderecek şekilde ayarlandıktan sonra, uygulama, yapılandırmanın güncelleştirilmesini sağlamak için gereken toplam istek sayısını iyileştirmek üzere bu olayları kullanabilir. Uygulamalar, doğrudan Event Grid veya bir Web kancası, Azure işlevi veya bir Service Bus konu başlığı gibi [desteklenen olay işleyicilerinden](https://docs.microsoft.com/azure/event-grid/event-handlers) birini ya da bunlara abone olmayı tercih edebilir.
+1. Gönderim modeli: Bu, yapılandırmadaki değişiklikleri algılamak için [uygulama yapılandırma olaylarını](./concept-app-configuration-event.md) kullanır. Uygulama yapılandırması, anahtar değer değişikliği olaylarını Azure Event Grid gönderecek şekilde ayarlandıktan sonra, uygulama, yapılandırmanın güncelleştirilmesini sağlamak için gereken toplam istek sayısını iyileştirmek üzere bu olayları kullanabilir. Uygulamalar, doğrudan Event Grid veya bir Web kancası, Azure işlevi veya bir Service Bus konu başlığı gibi [desteklenen olay işleyicilerinden](../event-grid/event-handlers.md) birini ya da bunlara abone olmayı tercih edebilir.
 
 Uygulamalar, doğrudan Event Grid veya bir Web Kancası aracılığıyla ya da olayları Azure Service Bus ileterek bu olaylara abone olmayı seçebilirler. Azure Service Bus SDK, bir HTTP uç noktası olmayan veya değişiklik için olay kılavuzunu sürekli olarak yoklamayı istemeyen uygulamalar için bu işlemi basitleştiren bir ileti işleyicisini kaydetmek için bir API sağlar.
 
@@ -50,7 +50,7 @@ Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/downlo
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>Azure Service Bus konu ve abonelik ayarlama
 
-Bu öğretici, değişiklikler için uygulama yapılandırmasını sürekli olarak yoklamayı istemeyen uygulamalar için yapılandırma değişikliklerinin algılanmasını basitleştirmek amacıyla Event Grid için Service Bus tümleştirmesini kullanır. Azure Service Bus SDK 'sı, uygulama yapılandırmasında değişiklikler algılandığında yapılandırmayı güncelleştirmek için kullanılabilecek bir ileti işleyicisini kaydetmek için bir API sağlar. Hızlı Başlangıç bölümündeki adımları uygulayın: bir hizmet veri yolu ad alanı, konu ve abonelik oluşturmak için [Service Bus konu ve abonelik oluşturmak için Azure Portal kullanın](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal) .
+Bu öğretici, değişiklikler için uygulama yapılandırmasını sürekli olarak yoklamayı istemeyen uygulamalar için yapılandırma değişikliklerinin algılanmasını basitleştirmek amacıyla Event Grid için Service Bus tümleştirmesini kullanır. Azure Service Bus SDK 'sı, uygulama yapılandırmasında değişiklikler algılandığında yapılandırmayı güncelleştirmek için kullanılabilecek bir ileti işleyicisini kaydetmek için bir API sağlar. Hızlı Başlangıç bölümündeki adımları uygulayın: bir hizmet veri yolu ad alanı, konu ve abonelik oluşturmak için [Service Bus konu ve abonelik oluşturmak için Azure Portal kullanın](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) .
 
 Kaynaklar oluşturulduktan sonra, aşağıdaki ortam değişkenlerini ekleyin. Bunlar, uygulama kodundaki yapılandırma değişiklikleri için bir olay işleyicisini kaydetmek üzere kullanılacaktır.
 
@@ -81,7 +81,7 @@ Kaynaklar oluşturulduktan sonra, aşağıdaki ortam değişkenlerini ekleyin. B
     ![Uygulama yapılandırma olay abonelikleri](./media/event-subscription-view.png)
 
 > [!NOTE]
-> Yapılandırma değişiklikleri için abone olurken, uygulamanıza gönderilen olay sayısını azaltmak için bir veya daha fazla filtre kullanılabilir. Bunlar, [Event Grid abonelik filtreleri](https://docs.microsoft.com/azure/event-grid/event-filtering) veya [Service Bus abonelik filtreleri](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters)olarak yapılandırılabilir. Örneğin, bir abonelik filtresi yalnızca belirli bir dizeyle başlayan bir anahtardaki değişikliklere yönelik olaylara abone olmak için kullanılabilir.
+> Yapılandırma değişiklikleri için abone olurken, uygulamanıza gönderilen olay sayısını azaltmak için bir veya daha fazla filtre kullanılabilir. Bunlar, [Event Grid abonelik filtreleri](../event-grid/event-filtering.md) veya [Service Bus abonelik filtreleri](../service-bus-messaging/topic-filters.md)olarak yapılandırılabilir. Örneğin, bir abonelik filtresi yalnızca belirli bir dizeyle başlayan bir anahtardaki değişikliklere yönelik olaylara abone olmak için kullanılabilir.
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yüklemek için olay işleyicisini Kaydet
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-[SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) yöntemi, yenileme için kaydedilmiş anahtar değerleri için, kirli olarak kaydedilen önbelleğe alınan değeri ayarlamak için kullanılır. Bu, sonraki çağrının `RefreshAsync` `TryRefreshAsync` önbelleğe alınmış değerleri uygulama yapılandırmasıyla yeniden doğrulamasını ve gerekirse bunları güncelleştirmesini sağlar.
+[SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) yöntemi, yenileme için kaydedilmiş anahtar değerleri için, kirli olarak kaydedilen önbelleğe alınan değeri ayarlamak için kullanılır. Bu, sonraki çağrının `RefreshAsync` `TryRefreshAsync` önbelleğe alınmış değerleri uygulama yapılandırmasıyla yeniden doğrulamasını ve gerekirse bunları güncelleştirmesini sağlar.
 
 Aynı anda birden çok örneğin yenilenmesi durumunda, olası azaltmayı azaltmak için, önbelleğe alınan değer kirli olarak işaretlenmeden önce rastgele bir gecikme eklenir. Önbelleğe alınan değer kirli olarak işaretlenmeden önce varsayılan en fazla gecikme 30 saniyedir, ancak yöntemine isteğe bağlı bir parametre geçirerek geçersiz kılınabilir `TimeSpan` `SetDirty` .
 

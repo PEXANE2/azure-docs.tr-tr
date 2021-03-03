@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS koruması standardına genel bakış
+title: Azure DDoS Koruması Standart'a Genel Bakış
 description: Azure DDoS Koruması Standart'ın, uygulama tasarımı en iyi yöntemleriyle birleştirildiğinde DDoS saldırılarına karşı nasıl savunma sağladığını öğrenin.
 services: virtual-network
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703125"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Koruması Standardı’na genel bakış
+# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS koruması standardına genel bakış
 
 Dağıtılmış hizmet engelleme (DDoS) saldırıları, uygulamalarını buluta taşıyan müşterilerin karşılaştığı en büyük kullanılabilirlik ve güvenlik sorunlarından biridir. DDoS saldırısı, uygulamanın kaynaklarını tüketmeye çalışır ve uygulamayı meşru kullanıcılar için kullanılamaz hale getirir. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir.
 
@@ -54,7 +54,7 @@ Azure DDoS koruması standart fiyatlandırması hakkında bilgi edinmek için bk
 
 ## <a name="reference-architectures"></a>Başvuru mimarileri
 
-DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)için tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Desteklenen mimariler hakkında daha fazla bilgi edinmek için bkz. [DDoS koruması başvuru mimarileri](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
+DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler](../virtual-network/virtual-network-for-azure-services.md)için tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Desteklenen mimariler hakkında daha fazla bilgi edinmek için bkz. [DDoS koruması başvuru mimarileri](./ddos-protection-reference-architectures.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

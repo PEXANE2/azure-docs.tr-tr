@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686997"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal sanal makineler için Azure oto yönetimini etkinleştirin
 
@@ -43,11 +43,11 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 3. **Kullanmaya** başlayın ' ı seçin.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="Tek VM 'yi kullanmaya başlayın.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="Tek VM 'yi kullanmaya başlayın.":::
 
 4. Oto Yönet ayarlarınızı (ortam, Tercihler, oto Yönet hesabı) seçin ve **Etkinleştir**' i tıklayın.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="Tek bir VM 'de etkinleştirin.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="Tek bir VM 'de etkinleştirin.":::
 
 ## <a name="enable-automanage-for-multiple-vms"></a>Birden çok VM için oto yönetimini etkinleştir
 
@@ -64,42 +64,39 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 
-4. **Yapılandırma profili** altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin**.
+4. **Ortam** altında ortam türünü seçin: **geliştirme/test** veya **Üretim**. 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Profiller ve Tercihler 'e gözatıp değiştirin.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Ortamları seçin.":::
 
-5. **Yapılandırma profilini seç + Tercihler** dikey penceresinde:
-    1. Sol taraftaki bir profil seçin: test için *geliştirme/test* *, üretim için üretim.*
-    1. **Seç** düğmesine tıklayın.
+   Ortamlar arasındaki farkları görmek için **ortam ayrıntılarını Karşılaştır** ' a tıklayın.
+    1. Açılan menüde bir ortam seçin: test için *geliştirme/test* , üretim için *Üretim* .
+    1. **Tamam** düğmesine tıklayın.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Üretim yapılandırma profiline gözatın.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Üretim ortamına gözatın.":::
+
+5. Varsayılan olarak, Yapılandırma tercihleri için **En Iyi Azure uygulamaları** tercihi seçilidir. Bunu değiştirmek için yeni bir tercih oluşturun veya var olan bir tercihi seçin. 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Tercih oluştur.":::
 
 6. **Etkinleştir** düğmesine tıklayın.
 
 
 ## <a name="enable-automanage-for-a-new-vm"></a>Yeni bir VM için oto yönetimini etkinleştir
 
-Yeni bir sanal makine oluşturmak ve oto yönetimi etkinleştirmek için [burada](https://aka.ms/AutomanagePortal-Ignite21) Azure Portal oturum açın.
+Yeni bir sanal makine oluşturmak ve oto yönetimi etkinleştirmek için [burada](https://aka.ms/AzureAutomanagePreview) Azure Portal oturum açın.
 
-1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-
-2. Azure Marketi kaynakları listesinin üzerindeki arama kutusunda, kullanmak istediğiniz görüntüyü arayıp seçin ve ardından **Oluştur**' u seçin.
+1. VM ayrıntılarınız ile **Ilgili temel bilgiler** sekmesini doldurun.
 
 > [!NOTE]
-> Desteklenen [Linux Distro 'lara](automanage-linux.md#supported-linux-distributions-and-versions) ve [Windows Server sürümlerini](automanage-windows-server.md#supported-windows-server-versions)oto Yönet ' i inceleyin.
+> [Desteklenen bölgeleri](automanage-virtual-machines#supported-regions) ve desteklenen [Linux Distro 'lara](automanage-linux.md#supported-linux-distributions-and-versions) ve [Windows Server sürümlerini](automanage-windows-server.md#supported-windows-server-versions)oto Yönet ' i kontrol edin.
 
-3. VM ayrıntılarınız ile **Ilgili temel bilgiler** sekmesini doldurun.
+2. **Yönetim** sekmesine gidin ve **oto Yönet ortamınızı** seçin.
 
-> [!NOTE]
-> [Desteklenen bölgeleri](automanage-virtual-machines#supported-regions)oto Yönet ' i kontrol edin.
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="Yönetim sekmesinde, oto Yönet 'i etkinleştirin.":::
 
-4. **Yönetim** sekmesine gidin ve **oto Yönet ortamınızı** seçin.
+3. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="Yönetim sekmesinde, oto Yönet 'i etkinleştirin.":::
-
-5. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
-
-6. Doğrulamanın geçtiğini belirten iletiyi gördüğünüzde **Oluştur**' u seçin.
+4. Doğrulamanın geçtiğini belirten iletiyi gördüğünüzde **Oluştur**' u seçin.
 
 ## <a name="disable-automanage-for-vms"></a>VM 'Ler için oto yönetimini devre dışı bırak
 
@@ -131,4 +128,4 @@ Bu hızlı başlangıçta VM 'Ler için Azure oto yönetimi 'ni etkinleştirdini
 Sanal makinenizde oto yönetimi etkinleştirirken özelleştirilmiş tercihleri nasıl oluşturup uygulayabileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [VM 'Ler için Azure oto yönetimi-özel yapılandırma profili](virtual-machines-custom-preferences.md)
+> [VM 'Ler için Azure oto yönetimi-özel yapılandırma tercihleri](virtual-machines-custom-preferences.md)

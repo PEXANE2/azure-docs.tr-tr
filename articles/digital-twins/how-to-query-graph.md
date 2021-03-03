@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737979"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -21,7 +21,7 @@ Bu makalede, **Azure Digital TWINS sorgu dili** hakkında bilgi için [ikizi gra
 
 Bu makale, dijital TWINS için sorgu dili yapısını ve ortak sorgu işlemlerini gösteren örnek sorgularla başlar. Daha sonra, Azure Digital TWINS [sorgu API](/rest/api/digital-twins/dataplane/query) 'sini veya bir [SDK 'yı](how-to-use-apis-sdks.md#overview-data-plane-apis)kullanarak, yazdıktan sonra sorgularınızı nasıl çalıştıracağınızı açıklar.
 
-> [!TIP]
+> [!NOTE]
 > Örnek sorguları bir API veya SDK çağrısıyla birlikte çalıştırıyorsanız, sorgu metnini tek bir satıra sıkıştırmak gerekir.
 
 ## <a name="show-all-digital-twins"></a>Tüm dijital TWINS 'i göster
@@ -36,8 +36,8 @@ Bu makale, dijital TWINS için sorgu dili yapısını ve ortak sorgu işlemlerin
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
-> Dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
+> [!NOTE]
+> Dijital ikizin kimliği, `$dtId` meta veri alanı kullanılarak sorgulanır.
 
 Ayrıca, **belirli bir özelliğin tanımlanıp tanımlanmadığına** göre TWINS de alabilirsiniz. Tanımlı bir *konum* özelliği olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 
@@ -50,6 +50,10 @@ Bu, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında aç
 Ayrıca, **bir özelliğin türüne** göre TWINS de edinebilirsiniz. *Sıcaklık* özelliği bir sayı olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> Bir özellik türünde ise `Map` , eşleme anahtarlarını ve değerlerini doğrudan sorguda, şöyle kullanabilirsiniz:
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>Modele göre sorgu
 
@@ -88,10 +92,10 @@ Aşağıda, üç parametre için bir değer belirten bir sorgu örneği verilmi�
 
 Dijital TWINS ' **ilişkilerine** göre sorgulama yaparken Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
 
-İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` .
+İlişkiler, `FROM` yan tümcesinde sorgu kapsamına çekilir. "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` .
 
-Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
-Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır.
+Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Dolayısıyla Azure Digital Twins sorgu dilinin `JOIN` işleci, genel SQL `JOIN` işlecinden biraz farklıdır. Burada ilişkiler bağımsız olarak sorgulanamaz, bir ikize bağlı olmaları gerekir.
+Bu farklı karşılamak için `RELATED` anahtar sözcüğü `JOIN` yan tümcesinde kullanılarak ikizin ilişki kümesine başvuru yapılır.
 
 Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek verilmiştir.
 
@@ -107,11 +111,11 @@ Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek veri
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
-> Geliştiricinin `JOIN` yan tümcesindeki anahtar değeriyle ilişkilendirilmesi gerekmez `WHERE` (veya tanımıyla birlikte satır içi bir anahtar değeri belirtebilirsiniz `JOIN` ). İlişki özelliklerinin kendisi hedef varlığı tanımlarında, bu bağıntı sistem tarafından otomatik olarak hesaplanır.
+> Geliştiricinin `JOIN` yan tümcesindeki anahtar değeriyle ilişkilendirilmesi gerekmez `WHERE` (veya tanımıyla birlikte satır içi bir anahtar değeri belirtebilirsiniz `JOIN` ). İlişki özellikleri hedef varlığı tanımladığından bu bağıntı sistem tarafından otomatik olarak hesaplanır.
 
 ### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
 
-Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. , **İlişkilerinin özelliklerine göre** TWINS 'i sorgulayabilirsiniz.
+Dijital ikizlerde DTDL aracılığıyla tanımlanan özelliklere benzer şekilde ilişkiler de özelliklere sahip olabilir. , **İlişkilerinin özelliklerine göre** TWINS 'i sorgulayabilirsiniz.
 Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` .
 
 Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
@@ -220,7 +224,12 @@ Aşağıdaki kod parçacığı, bir istemci uygulamasından [.net (C#) SDK](/dot
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Bu çağrı sorgu sonuçlarını bir [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) nesnesi biçiminde döndürür.
+Bu çağrıda kullanılan sorgu, yukarıdaki örnek [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) nesneleriyle temsil eden dijital TWINS listesini döndürür. Her sorgu için verilerinizin dönüş türü, ifadesiyle belirttiğiniz koşullara bağlıdır `SELECT` :
+* İle başlayan sorgular `SELECT * FROM ...` , dijital TWINS 'in bir listesini döndürür (nesneler olarak seri hale getirilebilir `BasicDigitalTwin` veya oluşturmuş olduğunuz diğer özel dijital ikizi türleri).
+* Biçimde başlayan sorgular `SELECT <A>, <B>, <C> FROM ...` , ve anahtarlarına sahip bir sözlük döndürür `<A>` `<B>` `<C>` .
+* Diğer deyim biçimleri `SELECT` özel verileri döndürmek için oluşturulabilir. Çok özelleştirilmiş sonuç kümelerini işlemek için kendi sınıflarınızı oluşturmayı düşünebilirsiniz. 
+
+### <a name="query-with-paging"></a>Sayfalama ile sorgulama
 
 Sorgu çağrıları sayfalama destekler. İşte `BasicDigitalTwin` hata işleme ve sayfalama içeren sorgu sonuç türü olarak kullanılan bir örnek:
 

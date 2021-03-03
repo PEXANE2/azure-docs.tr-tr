@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b042049c803ad04b54bb6c2a242ca1008bc17dd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734528"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure Ölçüm Gezgini 'nin gelişmiş özellikleri
 
 > [!NOTE]
-> Bu makalede, Azure Izleyici 'nin Azure ölçümleri gezgin özelliğinin temel özellikleriyle ilgili bilgi sahibi olduğunuz varsayılır. Yeni bir Kullanıcı kullanıyorsanız ve ilk ölçüm grafiğinizi oluşturmayı öğrenmek istiyorsanız, bkz. [Ölçüm Gezgini ile çalışmaya başlama](../platform/metrics-getting-started.md).
+> Bu makalede, Azure Izleyici 'nin Azure ölçümleri gezgin özelliğinin temel özellikleriyle ilgili bilgi sahibi olduğunuz varsayılır. Yeni bir Kullanıcı kullanıyorsanız ve ilk ölçüm grafiğinizi oluşturmayı öğrenmek istiyorsanız, bkz. [Ölçüm Gezgini ile çalışmaya başlama](./metrics-getting-started.md).
 
 Azure Izleyici 'de [ölçümler](data-platform-metrics.md) , zaman içinde toplanan ve depolanan ölçülen değer ve sayı serisidir. Ölçümler standart ("Platform" olarak da adlandırılır) veya özel olabilir. 
 
@@ -49,11 +49,11 @@ Seçiminizden memnun kaldığınızda **Uygula**' yı seçin.
 ### <a name="view-metrics-across-multiple-resources"></a>Birden çok kaynak arasında ölçümleri görüntüleme
 Bazı kaynak türleri, birden fazla kaynak üzerinde ölçümleri sorgulayabilir. Kaynaklar aynı abonelik ve konum dahilinde olmalıdır. **Kaynak türleri** menüsünün en üstünde bu kaynak türlerini bulun. 
 
-Daha fazla bilgi için bkz. [birden fazla kaynak seçme](../platform/metrics-dynamic-scope.md#select-multiple-resources).
+Daha fazla bilgi için bkz. [birden fazla kaynak seçme](./metrics-dynamic-scope.md#select-multiple-resources).
 
 ![Çapraz kaynak türlerini gösteren ekran görüntüsü.](./media/metrics-charts/multi-resource-scope.png)
 
-Birden çok kaynakla uyumlu olan türler için bir abonelik veya birden çok kaynak grubu genelinde ölçümleri sorgulayabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubu veya abonelik seçme](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
+Birden çok kaynakla uyumlu olan türler için bir abonelik veya birden çok kaynak grubu genelinde ölçümleri sorgulayabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubu veya abonelik seçme](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
 ## <a name="multiple-metric-lines-and-charts"></a>Birden çok ölçüm çizgisi ve grafik
 
@@ -67,7 +67,7 @@ Azure ölçümleri Gezgininde, birden çok ölçüm satırını çizdirme veya a
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Aynı grafikte birden çok ölçüm
 
-Aynı grafikte birden çok ölçümü görüntülemek için önce [Yeni bir grafik oluşturun](../platform/metrics-getting-started.md#create-your-first-metric-chart). Ardından **ölçüm Ekle**' yi seçin. Aynı grafiğe başka bir ölçüm eklemek için bu adımı tekrarlayın.
+Aynı grafikte birden çok ölçümü görüntülemek için önce [Yeni bir grafik oluşturun](./metrics-getting-started.md#create-your-first-metric-chart). Ardından **ölçüm Ekle**' yi seçin. Aynı grafiğe başka bir ölçüm eklemek için bu adımı tekrarlayın.
 
 > [!NOTE]
 > Genellikle, grafikleriniz farklı ölçü birimleri kullanan ölçümleri karıştırmamalıdır. Örneğin, kilobayt kullanan diğeri ile milisaniyelik kullanan bir ölçümü karıştırmaktan kaçının. Ayrıca, ölçeklendirmeden farklı olan ölçümleri karıştırmaktan kaçının. 
@@ -86,7 +86,7 @@ Bir grafiğe ölçüm eklediğinizde, Ölçüm Gezgini otomatik olarak varsayıl
 
 Bir grafikte farklı toplamalar kullanmadan önce, Ölçüm Gezgini 'nin bunları nasıl işlediğini anlamanız gerekir. Ölçümler, bir zaman dilimi boyunca yakalanan bir dizi ölçümdür (veya "ölçüm değerleri"). Bir grafiği çizerseniz, seçili ölçüm değerleri *zaman dilimi* içinde ayrı olarak toplanır. 
 
-Ölçüm Gezgini 'nin [zaman Seçicisi panelini](../platform/metrics-getting-started.md#select-a-time-range)kullanarak zaman çizgisi boyutunu seçersiniz. Zaman aralığını açık bir şekilde seçmezseniz, şu anda seçili olan zaman aralığı varsayılan olarak kullanılır. Zaman dilimi saptandıktan sonra, her zaman grede yakalanan ölçüm değerleri grafikte toplanır ve zaman çizgisi başına bir veri noktasıdır.
+Ölçüm Gezgini 'nin [zaman Seçicisi panelini](./metrics-getting-started.md#select-a-time-range)kullanarak zaman çizgisi boyutunu seçersiniz. Zaman aralığını açık bir şekilde seçmezseniz, şu anda seçili olan zaman aralığı varsayılan olarak kullanılır. Zaman dilimi saptandıktan sonra, her zaman grede yakalanan ölçüm değerleri grafikte toplanır ve zaman çizgisi başına bir veri noktasıdır.
 
 Örneğin, bir grafikte *sunucu yanıt süresi* ölçümünü gösteren bir grafik olduğunu varsayalım. *Son 24 saatin* zaman dilimi boyunca *Ortalama* toplamayı kullanır. Bu örnekte:
 
@@ -230,6 +230,42 @@ Uyarı kuralı oluşturma bölmesi açılır. Bölmesinde, grafiğin ölçüm bo
 
 Daha fazla bilgi için bkz. [ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../alerts/alerts-metric.md).
 
+## <a name="correlate-metrics-to-logs"></a>Ölçümleri günlüklere ilişkilendirme
+Müşterilerin ölçüm grafiğinde oluşan kök nedenini tanılamasına yardımcı olmak için günlüklere detaya gitme oluşturduk. Günlüklerde detaya gitme, müşterilerin ölçüm grafiğindeki ani artışları Günlükler ve sorgular ile ilişkilendirmelerini sağlar. 
+
+Deneyimle karşılaşmadan önce, belirtilen farklı türlerde günlükleri ve sorguları tanıtmak istiyoruz. 
+
+| Süre             | Tanım  | 
+|------------------|-------------|
+| Etkinlik günlükleri    | Hizmet durumu olaylarında güncelleştirmelere ek olarak, dışarıdaki (Yönetim düzlemi) abonelikteki her bir Azure kaynağında bulunan işlemlere ilişkin öngörüler sağlar. Aboneliğinizdeki kaynaklarda hangi yazma işlemlerinin (PUT, POST, SILME) alındığını belirlemek için etkinlik günlüğünü kullanın. Her bir Azure aboneliği için tek bir etkinlik günlüğü vardır.  |   
+| Tanılama günlüğü   | Bir Azure kaynağı içinde (veri düzlemi) gerçekleştirilen işlemlere Öngörüler sağlama (örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma). Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. **Note:** Hizmet tarafından sağlanması ve müşteri tarafından etkinleştirilmesi gerekir  | 
+| Önerilen günlük | Müşterilerin Ölçüm Gezgini 'ndeki anormallikleri araştırmak için yararlanabilen senaryo tabanlı sorgular.  |
+
+Şu anda, seçilmiş kaynak sağlayıcıları için günlüklere detaya gitme seçeneği mevcuttur. Tüm günlüklere gitme deneyimine sahip kaynak sağlayıcıları şunlardır: 
+
+* Application Insights 
+* Otomatik Ölçeklendirme 
+* Uygulama Hizmetleri  
+* Depolama  
+
+Aşağıda Application Insights kaynak sağlayıcısı için örnek deneyimler verilmiştir.
+
+![App Insights ölçümleri dikey penceresinde hatalarda ani artış](./media/metrics-charts/drill-into-log-ai.png)
+
+Başarısız isteklerde ani artış tanılamak için "günlüklere git" e tıklayın.
+
+![Günlüklerde detaya gitme açılan ekranının ekran görüntüsü](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+Hata seçeneğine tıkladığınızda, başarısız işlem işlemleri, en çok özel durum türleri ve bağımlılıklar sağlayan özel bir hata dikey penceresine da yol gösterilir. 
+
+![Uygulama öngörüleri hata dikey penceresinin ekran görüntüsü](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>Günlüklerde detaya gitme ile ilgili yaygın sorunlar
+
+* Günlük ve sorgular devre dışı-önerilen günlükleri ve sorguları görüntülemek Için tanılama günlüklerinizi Log Analytics yönlendirmelidir. Bunu nasıl yapacağınızı öğrenmek için [Bu belgeyi](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) okuyun. 
+* Etkinlik günlükleri yalnızca belirli kaynak sağlayıcıları için kullanılabilir-günlüklere gitme özelliği yalnızca kullanılabilir. Varsayılan olarak, etkinlik günlükleri sağlanır. 
+
+ 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Grafiğinizde herhangi bir veri görmüyorsanız, aşağıdaki sorun giderme bilgilerini gözden geçirin:
@@ -242,6 +278,5 @@ Grafiğinizde herhangi bir veri görmüyorsanız, aşağıdaki sorun giderme bil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ölçümleri kullanarak işlem yapılabilir panolar oluşturmak için bkz. [özel KPI panoları oluşturma](../learn/tutorial-app-dashboards.md).
+Ölçümleri kullanarak işlem yapılabilir panolar oluşturmak için bkz. [özel KPI panoları oluşturma](../app/tutorial-app-dashboards.md).
 
- 

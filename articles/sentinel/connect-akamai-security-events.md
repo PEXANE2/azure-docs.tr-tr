@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c833d87b8d85c75c4f050f0130ddfd74342f4c52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566937"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711969"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>Akamai güvenlik olayları toplayıcılarınızı Azure Sentinel 'e bağlama
 
@@ -35,7 +35,7 @@ Bu makalede, Akamai güvenlik olayları toplayıcılarınızı Azure Sentinel 'e
 
 - Azure Sentinel çalışma alanınızda okuma ve yazma izinlerine sahip olmanız gerekir.
 
-- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-akamai-security-events-logs-to-azure-sentinel"></a>Akamai güvenlik olayları günlüklerini Azure Sentinel 'e gönder
 

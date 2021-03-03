@@ -1,14 +1,14 @@
 ---
 title: Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma | Microsoft Docs
-description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
+description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcı öngörüleri ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625981"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731825"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma
 
@@ -21,7 +21,7 @@ ms.locfileid: "100625981"
 > [Azure Red Hat OpenShift 4 kümesi oluşturmak](../../openshift/tutorial-create-cluster.md)için bu kılavuzu izleyin.
 > Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:aro-feedback@microsoft.com).
 
-Azure Red Hat OpenShift sürüm 3. x kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz, kapsayıcıyı kapsayıcılar için Azure Izleyici ile izlemeyi durdurabilirsiniz. Bu makalede, belirtilen Azure Resource Manager şablonu kullanılarak bunun nasıl yapılacağı gösterilmektedir.  
+Azure Red Hat OpenShift sürüm 3. x kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istememeye karar verirseniz, kümeyi kapsayıcı öngörüleri ile izlemeyi durdurabilirsiniz. Bu makalede, belirtilen Azure Resource Manager şablonu kullanılarak bunun nasıl yapılacağı gösterilmektedir.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
@@ -137,4 +137,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../platform/delete-workspace.md).
+Çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz bkz. [Azure Log Analytics çalışma alanını silme](../logs/delete-workspace.md).

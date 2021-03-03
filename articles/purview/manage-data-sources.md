@@ -7,27 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 8714c3c3794186d6c21a0513bd7700764c000b6d
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694470"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Azure purview 'da veri kaynaklarını yönetme (Önizleme)
 
-Bu makalede, yeni veri kaynaklarını kaydetme, veri kaynakları koleksiyonlarını yönetme ve kaynakları Azure purview (Önizleme) içinde görüntüleme hakkında bilgi edineceksiniz. Azure takip görünümü aşağıdaki veri kaynaklarını destekler:
-
-* Şirket içi SQL Server
-* Azure Data Lake Storage Gen1 
-* Azure Data Lake Storage Gen2
-* Azure Blob Depolama
-* Azure Veri Gezgini
-* Azure SQL DB
-* Azure SQL VERITABANı yönetilen örneği
-* Azure Synapse Analytics (eski adı SQL DW)
-* Azure Cosmos DB
-* Power BI
+Bu makalede, yeni veri kaynaklarını kaydetme, veri kaynakları koleksiyonlarını yönetme ve kaynakları Azure purview (Önizleme) içinde görüntüleme hakkında bilgi edineceksiniz.
 
 ## <a name="register-a-new-source"></a>Yeni bir kaynak Kaydet
 

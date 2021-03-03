@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379582"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699661"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -108,11 +108,13 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF tarafından yönetilen sanal ağdan gelen genel uç nokta aracılığıyla giden iletişimler
 - Giden iletişimler için yalnızca bağlantı noktası 443 açılır.
-- Azure depolama ve Azure Data Lake Gen2, ADF tarafından yönetilen sanal ağdan gelen genel uç nokta ile bağlantı için desteklenmez.
+- Azure Depolama ve Azure Data Lake 2. Nesil, ADF Yönetilen Sanal Ağı'ndan genel uç nokta aracılığıyla bağlantı için desteklenmez.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Bağlı hizmet oluşturma Azure Key Vault 
 - Azure Key Vault için Bağlı Hizmet oluşturduğunuzda Azure Integration Runtime başvurusu yoktur. Bu nedenle Azure Key Vault bağlı hizmet oluşturma sırasında özel uç nokta oluşturamazsınız. Ancak, Azure Key Vault bağlı hizmete başvuran ve bu bağlı hizmet, yönetilen sanal ağ ile Azure Integration Runtime başvuran veri depoları için bağlı hizmet oluşturduğunuzda, oluşturma sırasında Azure Key Vault bağlı hizmeti için özel bir uç nokta oluşturabilirsiniz. 
 - Azure Key Vault bağlı hizmeti için **test bağlantısı** IŞLEMI yalnızca URL biçimini doğrular, ancak herhangi bir ağ işlemi yapmaz.
+- Özel uç nokta **kullanan** sütun, Azure Key Vault Için özel uç nokta oluştursanız bile her zaman boş olarak gösterilir.
+![AKV için özel uç nokta](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728017"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
@@ -41,7 +41,7 @@ Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir öze
 | Hizmet | Özellik | Açıklama |
 |---------|---------|-------------|
 | Translator | [Dilleri al](./reference/v3-0-languages.md) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
-| Translator | [Çevir](./reference/v3-0-translate.md) | Metni 70 ' den fazla dile çevirin. |
+| Translator | [Çevir](./reference/v3-0-translate.md) | Metni 90 dile ve diatlarına çevirin. |
 | Translator | [Acağı](./reference/v3-0-detect.md) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
 | Bing Yazım Denetimi | [Yazım Denetimi](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
 
@@ -115,7 +115,7 @@ Biz oluşturduğumuzun bir bakalım.
 
 Kullanıcı arabirimi şu bileşenleri içerir:
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
 | `ToLanguageComboBox` | ComboBox | Aynı dil listesini ile görüntüler `FromComboBox` , ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
@@ -251,7 +251,7 @@ Tüm projemiz sınıfında kapsüllenir `MainWindow : Window` . Abonelik anahtar
 
 Bu kod bloğunda, çeviri için kullanılabilir diller hakkında bilgi içeren iki üye değişkeni bildirdik:
 
-| Değişken | Tür | Description |
+| Değişken | Tür | Açıklama |
 |----------|------|-------------|
 |`languageCodes` | Dizeler dizisi |Dil kodlarını önbelleğe alır. Translator hizmeti dilleri belirlemek için kısa kodlar kullanır (örneğin İngilizce için `en`). |
 |`languageCodesAndTitles` | Sıralanmış sözlük | Kullanıcı arabirimindeki "kolay anlaşılır" adları, API’de kullanılan kısa kodlarla eşleştirir. Büyük küçük harf kullanımından bağımsız olarak alfabetik sırayla tutulur. |
@@ -264,7 +264,7 @@ Son olarak, çeviri dillerini almak ve uygulamanın kullanıcı arabirimimizin a
 
 ## <a name="get-supported-languages"></a>Desteklenen dilleri alma
 
-Çevirmen Şu anda 70 'den fazla dili destekliyor. Yeni dil desteği zamana göre eklenebileceğinden, uygulamanızdaki dil listesini kodlamak yerine, çevirmen tarafından sunulan diller kaynağını çağırmayı öneririz.
+Çevirmen Şu anda 90 dili ve dialet 'i destekliyor. Yeni dil desteği zamana göre eklenebileceğinden, uygulamanızdaki dil listesini kodlamak yerine, çevirmen tarafından sunulan diller kaynağını çağırmayı öneririz.
 
 Bu bölümde, `GET` çeviri için kullanılabilen dillerin bir listesini istediğimizden sonra diller kaynağına bir istek oluşturacağız.
 

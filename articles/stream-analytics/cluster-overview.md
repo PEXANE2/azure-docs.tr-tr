@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics kümelerine genel bakış (Önizleme)
+title: Azure Stream Analytics kümelerine genel bakış
 description: Stream Analytics kümesinin tek kiracılı adanmış teklifi hakkında bilgi edinin.
 author: sidramadoss
 ms.author: sidram
@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e5157a02f97370b20db85bf5e3e8aae98a2d8668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709300"
 ---
-# <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics kümesine genel bakış (Önizleme)
+# <a name="overview-of-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesine genel bakış
 
 Azure Stream Analytics küme, karmaşık ve zorlu akış senaryoları için tek kiracılı bir dağıtım sunar. Tam ölçekte Stream Analytics kümeler gerçek zamanlı 200 MB 'tan daha fazla bir saniye işlem yapabilir. Adanmış kümeler üzerinde çalışan Stream Analytics işleri standart teklifteki tüm özelliklerden yararlanabilir ve girişlerinize ve çıkışlarınız için özel bağlantı desteği içerir.
 

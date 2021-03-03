@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733440"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -18,7 +18,7 @@ ms.locfileid: "100104527"
 
 ## <a name="extraction"></a>Ayıklama
 
-Soru-Cevap Oluşturma hizmet, içerikten QnAs çıkaran ve desteklenen dosya ve HTML biçimlerinin listesini genişlettirecek algoritmaları sürekli olarak geliştirir. Belge türüne göre veri ayıklama [yönergelerini](../index.yml) izleyin.
+Soru-Cevap Oluşturma hizmet, içerikten QnAs çıkaran ve desteklenen dosya ve HTML biçimlerinin listesini genişlettirecek algoritmaları sürekli olarak geliştirir. Belge türüne göre veri ayıklama [yönergelerini](../Concepts/data-sources-and-content.md) izleyin.
 
 Genel olarak, SSS sayfaları tek başına olmalıdır ve diğer bilgilerle birleştirilmemelidir. Ürün kılavuzları, açık başlıklar ve tercihen bir dizin sayfası içermelidir.
 

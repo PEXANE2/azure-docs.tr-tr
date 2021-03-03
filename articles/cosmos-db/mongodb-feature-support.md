@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 652be939136139620f6ec024fe98463113c6fb4a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 61c034d6365909ca6255adcdc0c75e5a8ddd6cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692258"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB’nin API’si (sürüm 3.2): desteklenen özellikler ve söz dizimi
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB 'nin avantajlarından yararlanarak, Cosmos DB sağladığı tüm kurumsal yetenekler şunlardır: [küresel dağıtım](distribute-data-globally.md), [Otomatik](partitioning-overview.md)parçalama, kullanılabilirlik ve gecikme garantisi, her alanın otomatik dizin oluşturma, Rest, yedeklemeler ve çok daha fazlası.
 
 > [!NOTE]
-> Bu makale, Azure Cosmos DB MongoDB 3,2 için API 'sidir. MongoDB 3,6 ve 4,0 sürümleri için bkz. [mongodb 3,6 desteklenen özellikler ve sözdizimi](mongodb-feature-support-36.md) ve [mongodb 4,0 desteklenen özellikler ve sözdizimi](mongodb-feature-support-40.md) makaleleri.
+> MongoDB için Cosmos DB API 'sinin 3,2 sürümü, yaşam sonu (EOL) için geçerli bir plan içermiyor. Gelecek EOL için en düşük bildirim üç yıldır.
 
 ## <a name="protocol-support"></a>Protokol desteği
 

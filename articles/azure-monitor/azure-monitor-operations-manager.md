@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: b1262533c3398a774b85e4143289a9b7c342aeab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728969"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Mevcut Operations Manager müşterileri için Azure Izleyici
 Bu makalede, şu anda [System Center Operations Manager](/system-center/scom/welcome) kullananlar ve iş uygulamalarını ve diğer kaynakları Azure 'A geçirirken [Azure izleyici](overview.md) 'ye geçiş planlıyor olan müşteriler için rehberlik sunulmaktadır. Son hedefiniz, Azure Izleyici ile mümkün olduğunca çok Operations Manager işlevselliği, işletmenizin ve BT operasyonel gereksinimlerinizle ödün vermeden değiştirerek buluta tam geçiş olduğunu varsayar. 
@@ -56,7 +56,7 @@ Herhangi bir bileşeni Azure 'a taşımadan önce ortamınız, şirket içinde v
 
 Azure 'a geçişiniz IaaS ile başlar ve iş uygulamalarını destekleyen sanal makineler Azure 'a taşınır. Bu uygulamalar ve bunlara bağlı oldukları sunucu yazılımı için izleme gereksinimleri değişmez ve mevcut yönetim paketlerinizdeki bu sunucular üzerinde Operations Manager kullanmaya devam edersiniz. 
 
-Azure Izleyici, Azure hizmeti için Azure aboneliği oluşturandan hemen sonra etkinleştirilir. Platform ölçümlerini ve etkinlik günlüğünü otomatik olarak toplar ve günlük sorgularını kullanarak tüm kullanılabilir Telemetriyi etkileşimli bir şekilde analiz edebilmeniz için kaynak günlüklerini toplanacak şekilde yapılandırırsınız. Sanal makinelerinizde VM'ler için Azure İzleyici etkinleştirerek, tüm ortamınızda izleme verilerini analiz edebilir ve makineler ve süreçler arasındaki ilişkileri keşfedebilirsiniz. Azure Izleyici 'nin etkin olduğu sunucuları etkinleştirerek şirket içi fiziksel ve sanal makinelerinize Azure Izleyici kullanımını genişletebilirsiniz. 
+Azure Izleyici, Azure hizmeti için Azure aboneliği oluşturandan hemen sonra etkinleştirilir. Platform ölçümlerini ve etkinlik günlüğünü otomatik olarak toplar ve günlük sorgularını kullanarak tüm kullanılabilir Telemetriyi etkileşimli bir şekilde analiz edebilmeniz için kaynak günlüklerini toplanacak şekilde yapılandırırsınız. Sanal makinelerinizde VM öngörülerini, tüm ortamınızda izleme verilerini analiz etmek ve makineler ile süreçler arasındaki ilişkileri bulmanız için etkinleştirirsiniz. Azure Izleyici 'nin etkin olduğu sunucuları etkinleştirerek şirket içi fiziksel ve sanal makinelerinize Azure Izleyici kullanımını genişletebilirsiniz. 
 
 İş uygulamalarınızın her biri için Application Insights etkinleştirirsiniz. Her uygulamanın farklı bileşenlerini tanımlar, kullanım ve performans verilerini toplamaya başlar ve kodda oluşan tüm hataları tanımlar. Dış uygulamalarınızı önceden test etmek ve performans veya kullanılabilirlik sorunları için sizi uyarmak üzere kullanılabilirlik testleri oluşturursunuz. Application Insights, Operations Manager sahip olmadığınız güçlü özellikler sunurken, henüz Azure Izleyici kapsamında olmayan izleme senaryolarını içerdiğinden, iş uygulamalarınız için geliştirdiğiniz özel yönetim paketlerine güvenmeye devam edersiniz. 
 
@@ -89,21 +89,21 @@ Azure Izleyici 'deki [Öngörüler](monitor-reference.md) , belirli bir Azure hi
 ## <a name="monitor-server-software-and-local-infrastructure"></a>Sunucu yazılımını ve yerel altyapıyı izleme
 Makineleri buluta taşıdığınızda, yazılım için izleme gereksinimleri değişmez. Artık sanallaştırılan fiziksel bileşenlerini izlemeniz gerekmez, ancak Konuk işletim sistemi ve iş yükleri ortamlarından bağımsız olarak aynı gereksinimlere sahiptir.
 
-[VM'ler için Azure izleyici](vm/vminsights-overview.md) , sanal makineleri ve bunların Konuk işletim sistemlerini ve iş yüklerini Izlemek Için Azure izleyici 'deki birincil özelliktir. Operations Manager benzer şekilde, VM'ler için Azure İzleyici sanal makinelerin Konuk işletim sisteminden veri toplamak için bir aracı kullanır. Bu, genellikle yönetim paketleri tarafından analiz ve uyarı için kullanılan performans ve olay verilerinin aynısını kullanır. Bu makinelerde çalışan iş uygulamaları ve sunucu yazılımlarıyla ilgili sorunları tespit etmek ve uyarmak için önceden mevcut kurallar yoktur. Algılanan sorunlar hakkında önceden bildirimde bulunulması için kendi uyarı kurallarınızı oluşturmanız gerekir.
+[VM öngörüleri](vm/vminsights-overview.md) , sanal makineleri ve bunların Konuk işletim sistemlerini ve iş yüklerini Izlemek Için Azure izleyici 'deki birincil özelliktir. Operations Manager benzer şekilde, VM öngörüleri, sanal makinelerin Konuk işletim sisteminden veri toplamak için bir aracı kullanır. Bu, genellikle yönetim paketleri tarafından analiz ve uyarı için kullanılan performans ve olay verilerinin aynısını kullanır. Bu makinelerde çalışan iş uygulamaları ve sunucu yazılımlarıyla ilgili sorunları tespit etmek ve uyarmak için önceden mevcut kurallar yoktur. Algılanan sorunlar hakkında önceden bildirimde bulunulması için kendi uyarı kurallarınızı oluşturmanız gerekir.
 
-[![VM'ler için Azure İzleyici performans](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![VM öngörüleri performansı](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Izleyici, bir sanal makinede çalışan farklı uygulama ve hizmetlerin sistem durumunu da ölçmez. Ölçüm uyarıları bir değer eşiğin altına düştüğünde otomatik olarak çözümleyebilir, ancak Azure Izleyici Şu anda makinede çalışan uygulamalar ve hizmetler için sistem durumu ölçütlerini tanımlama özelliğine sahip değilse veya ilgili bileşenlerin sistem durumunu gruplamak için sistem durumu toplaması sağlar.
 
 > [!NOTE]
-> [VM'ler için Azure izleyici için yeni bir konuk sistem durumu özelliği](vm/vminsights-health-overview.md) artık genel önizlemeye sunuldu ve bir dizi performans ölçümlerinin sistem durumunu temel alarak uyarır. Bu, başlangıçta, Konuk işletim sistemiyle ilgili, sanal makinede çalışan uygulamalar veya diğer iş yükleri gibi belirli bir performans sayacı kümesiyle sınırlıdır.
+> [VM öngörüleri için yeni bir konuk sistem durumu özelliği](vm/vminsights-health-overview.md) artık genel önizlemeye sunuldu ve bir dizi performans ölçümlerinin sistem durumunu temel alarak uyarır. Bu, başlangıçta, Konuk işletim sistemiyle ilgili, sanal makinede çalışan uygulamalar veya diğer iş yükleri gibi belirli bir performans sayacı kümesiyle sınırlıdır.
 > 
-> [![VM'ler için Azure İzleyici Konuk sistem durumu](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![VM öngörüleri Konuk durumu](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-Bir karma ortamda makinelerinizdeki yazılımı izlemek, her makinenin gereksinimlerine ve Azure Izleyici 'de Azure Izleyici 'de oluşan işletimsel işlemler geliştirmeye bağlı olarak VM'ler için Azure İzleyici ve Operations Manager birleşimini kullanır. Microsoft Yönetim Aracısı (Azure Izleyici 'de Log Analytics aracı olarak adlandırılır) her iki platformda de kullanılır, böylece tek bir makine her ikisi tarafından aynı anda izlenebilir.
+Bir karma ortamda makinelerinizdeki yazılımı izlemek, her bir makinenin gereksinimlerine ve Azure Izleyici 'de Azure Izleyici 'de oluşan işletimsel işlem süreçlerinize bağlı olarak, genellikle bir VM öngörüleri ve Operations Manager birleşimini kullanır. Microsoft Yönetim Aracısı (Azure Izleyici 'de Log Analytics aracı olarak adlandırılır) her iki platformda de kullanılır, böylece tek bir makine her ikisi tarafından aynı anda izlenebilir.
 
 > [!NOTE]
-> Daha sonra, VM'ler için Azure İzleyici Şu anda genel önizlemede olan [Azure izleyici aracısına](agents/azure-monitor-agent-overview.md)geçiş yapılır. Aynı sanal makinenin her iki platformda de izlenmeye devam edebilmesi için Microsoft Monitoring Agent ile uyumlu olacaktır.
+> Gelecekte VM öngörüleri, şu anda genel önizleme aşamasında olan [Azure izleyici aracısına](agents/azure-monitor-agent-overview.md)geçiş yapacaktır. Aynı sanal makinenin her iki platformda de izlenmeye devam edebilmesi için Microsoft Monitoring Agent ile uyumlu olacaktır.
 
 Henüz Azure Izleyici tarafından sağlansağlanmayan işlevsellik için Operations Manager kullanmaya devam edin. Bu, IIS, SQL Server veya Exchange gibi kritik sunucu yazılımları için yönetim paketleri içerir. Ayrıca, Azure Izleyici ile erişilemeyen şirket içi altyapı için geliştirilmiş özel yönetim paketlermiş olabilirsiniz. Ayrıca, Azure Izleyici ve diğer Azure hizmetlerinin daha fazla veya farklı olduğu hizmet işlemlerinizi modernize geçirebilmeniz için Operations Manager kullanmaya devam edin. 
 
@@ -114,9 +114,9 @@ Operations Manager hemen yerini almasa bile geçerli izlemeyi geliştirmek için
 - Diğer Azure kaynaklarınızdaki verilerle sanal makinelerinizdeki Telemetriyi etkileşimli olarak analiz etmek için [günlük sorgularını](logs/log-query-overview.md) kullanın.
 - Birden çok sanal makine genelinde karmaşık mantık tabanlı [günlük uyarı kuralları](alerts/alerts-log-query.md) oluşturun.
 
-[![VM'ler için Azure İzleyici eşleme](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![VM öngörüleri Haritası](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Azure sanal makinelerinin yanı sıra VM'ler için Azure İzleyici, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak şirket içi ve diğer bulutlardaki makineleri izleyebilir. Yay özellikli sunucular, Azure dışında, kurumsal ağınızda barındırılan Windows ve Linux makinelerinizi veya yerel Azure sanal makinelerini yönetme ile tutarlı diğer bulut sağlayıcınızı yönetmenizi sağlar.
+VM öngörüleri, Azure sanal makinelerinin yanı sıra Şirket içindeki ve diğer bulutlardaki makineleri [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak izleyebilir. Yay özellikli sunucular, Azure dışında, kurumsal ağınızda barındırılan Windows ve Linux makinelerinizi veya yerel Azure sanal makinelerini yönetme ile tutarlı diğer bulut sağlayıcınızı yönetmenizi sağlar.
 
 
 
@@ -131,7 +131,7 @@ Bir iş uygulamasını izlemenin, Operations Manager [.NET uygulama performansı
 - Özel durumları tespit edin ve yığın izlemenin ve ilgili isteklerin detayına gidin.
 - [Dağıtılmış izleme](app/distributed-tracing.md) ve [akıllı algılama](app/proactive-diagnostics.md)gibi özellikleri kullanarak gelişmiş analiz gerçekleştirin.
 - Performans verilerini etkileşimli olarak çözümlemek için [Ölçüm Gezgini](essentials/metrics-getting-started.md) 'ni kullanın.
-- Toplanan Telemetriyi Azure hizmetleri ve VM'ler için Azure İzleyici için toplanan verilerle birlikte etkileşimli olarak analiz etmek için [günlük sorgularını](logs/log-query-overview.md) kullanın.
+- Toplanan telemetrileri Azure hizmetleri ve VM öngörüleri için toplanan verilerle birlikte etkileşimli olarak analiz etmek için [günlük sorgularını](logs/log-query-overview.md) kullanın.
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -150,5 +150,5 @@ Bu kılavuzun diğer bölümlerindeki temel stratejiyi izleyerek iş uygulamalar
 - Azure Izleyici ve System Center Operations Manager ayrıntılı bir karşılaştırması için [bulut Izleme kılavuzuna](/azure/cloud-adoption-framework/manage/monitor/) ve karma izleme ortamı tasarlama ve uygulama hakkında daha ayrıntılı bilgi için bkz..
 - Azure [izleyici 'de Azure kaynaklarını izleme](essentials/monitor-azure-resource.md)hakkında daha fazla bilgi edinin.
 - Azure [izleyici 'de Azure sanal makinelerini izleme](vm/monitor-vm-azure.md)hakkında daha fazla bilgi edinin.
-- [VM'ler için Azure izleyici](vm/vminsights-overview.md)hakkında daha fazla bilgi edinin.
+- [VM öngörüleri](vm/vminsights-overview.md)hakkında daha fazla bilgi edinin.
 - [Application Insights](app/app-insights-overview.md)hakkında daha fazla bilgi edinin.

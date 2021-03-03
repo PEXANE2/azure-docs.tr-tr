@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: 540ca293afdd7514793b8eec390b4751885859df
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710990"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için Microsoft uç nokta Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
@@ -44,7 +44,7 @@ Aşağıdaki adımlarda, Azure Izleyici ile Configuration Manager Tümleştirmes
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Log Analytics izinlere sahip Configuration Manager verme
 
-Aşağıdaki yordamda, Log Analytics çalışma alanınızdaki *katkıda* bulunan rolünü Configuration Manager daha önce oluşturduğunuz ad uygulaması ve hizmet sorumlusuna verirsiniz. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](../learn/quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager kimliğinin doğrulanmasını ve Log Analytics çalışma alanınıza bağlanmasını sağlar.  
+Aşağıdaki yordamda, Log Analytics çalışma alanınızdaki *katkıda* bulunan rolünü Configuration Manager daha önce oluşturduğunuz ad uygulaması ve hizmet sorumlusuna verirsiniz. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](./quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager kimliğinin doğrulanmasını ve Log Analytics çalışma alanınıza bağlanmasını sağlar.  
 
 > [!NOTE]
 > Configuration Manager için Log Analytics çalışma alanında izinleri belirtmeniz gerekir. Aksi takdirde, Configuration Manager 'de Yapılandırma Sihirbazı 'nı kullandığınızda bir hata iletisi alırsınız.
@@ -148,9 +148,8 @@ Koleksiyonlar alındıktan sonra, koleksiyon üyeliğine sahip kaç bilgisayar a
 
 ![Bilgisayar grupları için Gelişmiş ayarlar Configuration Manager koleksiyon üyelerinin Içeri aktarma seçeneği seçili olan S C C M.](./media/collect-sccm/sccm-computer-groups02.png)
 
-Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](../log-query/log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
+Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](./log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Configuration Manager verileriniz hakkında ayrıntılı bilgileri görüntülemek için [günlük aramasını](../log-query/log-query-overview.md) kullanın.
-
+Configuration Manager verileriniz hakkında ayrıntılı bilgileri görüntülemek için [günlük aramasını](./log-query-overview.md) kullanın.

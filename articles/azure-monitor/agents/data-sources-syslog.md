@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2d7406c1e801a07f10342c47e7334e6a12bfd449
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729207"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Syslog veri kaynaklarını toplama
 Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](../platform/log-analytics-agent.md) Syslog olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](./log-analytics-agent.md) Syslog olaylarının toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
 
 > [!NOTE]
 > Azure Izleyici, rsyslog veya Syslog-ng tarafından gönderilen iletilerin toplanmasını destekler; burada rsyslog varsayılan Daemon olur. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümünün (sysklog) sürüm 5 ' te bulunan varsayılan Syslog Daemon, Syslog olay koleksiyonu için desteklenmez. Bu dağıtımların bu sürümünden Syslog verileri toplamak için [rsyslog arka plan programı](http://rsyslog.com) yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
@@ -57,7 +57,7 @@ Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünde
 Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir. Syslog 'yi her bir Linux aracısında el ile yapılandırmak istiyorsanız, *aşağıdaki yapılandırmayı Makinelerime Uygula* onay kutusunun işaretini kaldırın.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux aracısında Syslog yapılandırma
-[Log Analytics Aracısı bir Linux istemcisine yüklendiğinde](../learn/quick-collect-linux-computer.md), toplanan iletilerin tesis ve önem derecesini tanımlayan bir varsayılan Syslog yapılandırma dosyası yüklenir. Bu dosyayı, yapılandırmayı değiştirmek için değiştirebilirsiniz. Yapılandırma dosyası, istemcinin yüklediği Syslog Daemon öğesine bağlı olarak farklılık gösteren bir yapılandırmadır.
+[Log Analytics Aracısı bir Linux istemcisine yüklendiğinde](../vm/quick-collect-linux-computer.md), toplanan iletilerin tesis ve önem derecesini tanımlayan bir varsayılan Syslog yapılandırma dosyası yüklenir. Bu dosyayı, yapılandırmayı değiştirmek için değiştirebilirsiniz. Yapılandırma dosyası, istemcinin yüklediği Syslog Daemon öğesine bağlı olarak farklılık gösteren bir yapılandırmadır.
 
 > [!NOTE]
 > Syslog yapılandırmasını düzenlerseniz değişikliklerin etkili olması için Syslog Daemon programını yeniden başlatmanız gerekir.
@@ -222,7 +222,7 @@ Syslog kayıtları bir **Syslog** türüne sahiptir ve aşağıdaki tabloda bulu
 ## <a name="log-queries-with-syslog-records"></a>Syslog kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, syslog kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | Syslog |Tüm syslogs 'lar. |
 | Syslog &#124; WHERE ıitylevel = = "Error" |Tüm Syslog kayıtları hata önem derecesine sahip. |
@@ -230,7 +230,6 @@ Aşağıdaki tabloda, syslog kayıtlarını alan günlük sorgularının farklı
 | Syslog &#124;, tesis tarafından Aggreg, value = Count () özetleme |Tesis tarafından Syslog kaydı sayısı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
-* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](./../platform/custom-fields.md) kullanın.
-* [Linux aracılarını](../learn/quick-collect-linux-computer.md) diğer veri türlerini toplayacak şekilde yapılandırın.
-
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.
+* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](../logs/custom-fields.md) kullanın.
+* [Linux aracılarını](../vm/quick-collect-linux-computer.md) diğer veri türlerini toplayacak şekilde yapılandırın.

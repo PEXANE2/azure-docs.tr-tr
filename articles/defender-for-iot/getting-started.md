@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/26/2020
+ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712775"
 ---
 # <a name="get-started-with-defender-for-iot"></a>IoT için Defender 'ı kullanmaya başlama
 
@@ -69,6 +69,8 @@ Kaydolmak için:
 1. **Yerleşik abonelik**' ı seçin.
 1. **Fiyatlandırma** sayfasında bir abonelik seçin ya da yeni bir tane oluşturun ve kaydedilmiş cihazların sayısını ekleyin.
 1. **Şirket içi yönetim konsolunu indirin** sekmesini seçin ve indirilen etkinleştirme dosyasını kaydedin. Bu dosya, tanımladığınız toplam kaydedilmiş cihazları içerir. Bu dosya, ilk oturum açma işleminden sonra yönetim konsoluna yüklenir.
+
+Aboneliği boşaltma hakkında daha fazla bilgi için bkz. [aboneliği](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription)kaldırma.
 
 ## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. Şirket içi yönetim konsolunu yükleyip kurun
 
@@ -126,8 +128,9 @@ Daha fazla bilgi için bkz. [Şirket içi yönetim konsoluna sensörlerden bağl
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Azure Sentinel 'i uyarı bilgileriyle doldur (isteğe bağlı)
 
 Azure Sentinel 'i yapılandırarak Azure Sentinel 'e uyarı bilgileri gönderin. Bkz. [IoT Için Defender 'daki verilerinizi Azure Sentinel 'e bağlama](how-to-configure-with-sentinel.md).
-## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT için Azure Defender 'a hoş geldiniz](overview.md)
+## <a name="see-also"></a>Ayrıca bkz.
 
-[IoT mimarisi için Azure Defender](architecture.md)
+- [IoT için Azure Defender 'a hoş geldiniz](overview.md)
+
+- [IoT mimarisi için Azure Defender](architecture.md)

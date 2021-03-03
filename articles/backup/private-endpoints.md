@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728221"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -170,9 +170,9 @@ Yukarıda listelenen **her özel DNS** bölgesi Için (yedekleme, Bloblar ve kuy
     > Yukarıdaki metinde, `<geo>` bölge kodunu (örneğin, *eus* ve Doğu ABD için *ne* Kuzey Avrupa sırasıyla) ifade eder. Aşağıdaki bölge kodları listelerine başvurun:
     >
     > - [Tüm genel bulutlar](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
-    > - [Çin](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-    > - [Almanya](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-    > - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+    > - [Çin](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [Almanya](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 1. Ardından, gerekli DNS kayıtlarını eklememiz gerekiyor. Yedekleme DNS bölgesine eklenmesi gereken kayıtları görüntülemek için, yukarıda oluşturduğunuz özel uç noktaya gidin ve sol gezinti çubuğunun altındaki **DNS yapılandırması** seçeneğine gidin.
 

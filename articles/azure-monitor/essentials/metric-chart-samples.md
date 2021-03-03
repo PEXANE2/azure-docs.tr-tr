@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700754"
 ---
 # <a name="metric-chart-examples"></a>Ölçüm grafiği örnekleri 
 
-Azure platformu, çoğu boyut içeren, binlerce [ölçüm üzerinde](../platform/metrics-supported.md)sunulur. [Boyut filtrelerini](./metrics-charts.md)kullanarak, [bölme](./metrics-charts.md), grafik türünü denetleme ve grafik ayarlarını ayarlama yoluyla, altyapınızın ve uygulamalarınızın sistem durumuna ilişkin Öngörüler sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçüm Gezgini](./metrics-charts.md) kullanarak oluşturabileceğiniz grafiklerin bazı örnekleri gösterilmektedir ve bu grafiklerin her birini yapılandırmak için gereken adımları açıklar.
+Azure platformu, çoğu boyut içeren, binlerce [ölçüm üzerinde](./metrics-supported.md)sunulur. [Boyut filtrelerini](./metrics-charts.md)kullanarak, [bölme](./metrics-charts.md), grafik türünü denetleme ve grafik ayarlarını ayarlama yoluyla, altyapınızın ve uygulamalarınızın sistem durumuna ilişkin Öngörüler sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçüm Gezgini](./metrics-charts.md) kullanarak oluşturabileceğiniz grafiklerin bazı örnekleri gösterilmektedir ve bu grafiklerin her birini yapılandırmak için gereken adımları açıklar.
 
 Harika grafik örneklerinizi dünya ile paylaşmak ister misiniz? GitHub 'da bu sayfaya katkıda bulunun ve kendi grafik örneklerinizi burada paylaşabilirsiniz!
 
@@ -54,4 +54,3 @@ Depolama hesabı kaynağınız, başarısız olan fazla işlem hacmi yaşıyor. 
 
 * Azure Izleyici [çalışma kitapları](../visualize/workbooks-overview.md) hakkında bilgi edinin
 * [Ölçüm Gezgini](metrics-charts.md) hakkında daha fazla bilgi edinin
-

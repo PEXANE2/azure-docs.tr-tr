@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007063"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714961"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -345,7 +345,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
 
 * İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
 * İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir. **3 AZ ' de yayılmış ölçek kümesi, "singlePlacementGroup = true" ile birlikte 300 VM 'ye ölçeklendirebilir.**
-* Üçüncü değer "bölge bakiyesi" olup, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. VM 'lerin bölgeler arasında dengesiz şekilde dağıtılmasını önlemek için bunu true olarak ayarlamayı öneririz. [Bölge Dengeleme](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)hakkında bilgi edinin.
+* Üçüncü değer "bölge bakiyesi" olur ve bu da katı bölge dengelemesi sağlar. Bu, sanal makinelerin bölgeler arasında dengesiz dağıtımını önlemek için "true" olmalıdır. Bölgelerde, bölge genelinde dengesiz VM dağıtımı olan bir küme, bölgenin esininin altına düşmesine daha düşüktür. [Bölge Dengeleme](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)hakkında bilgi edinin.
 * FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
 
 ```json
@@ -409,7 +409,7 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 > * Genel IP ve Load Balancer kaynakları, makalenin önceki kısımlarında açıklandığı gibi standart SKU 'YU kullanmalıdır.
 > * nodeType üzerinde "Çoğulkullanılabilirliği Bilityzones" özelliği yalnızca nodeType oluşturma sırasında tanımlanabilir ve daha sonra değiştirilemez. Bu nedenle, mevcut nodeTypes bu özellikle yapılandırılamaz.
 > * "SfZonalUpgradeMode" atlandığında veya "sıradüzenli" olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir.
-> * Kümenin bir bölge alt senaryosunu kullandığından emin olmak için küme güvenilirlik düzeyini Platinum olarak ayarlamanız önerilir.
+> * Kümenin bir bölge alt senaryosunu kullandığından emin olmak için, küme **Rahatlılılevel = Platinum** değerini ayarlayın.
 
 >[!NOTE]
 > En iyi uygulama için sfZonalUpgradeMode sıradüzensel olarak ayarlanmalıdır veya atlanacaktır. Dağıtım, daha küçük bir çoğaltmalar ve/veya örneklerin daha güvenli hale getirilmesi için, VM 'lerin ZGen dağılımını takip edecektir.

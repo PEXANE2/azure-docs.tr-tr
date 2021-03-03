@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623395"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732063"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
-Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](../platform/data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
+Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](../data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics ARACıSıYLA](../platform/log-analytics-agent.md) IIS günlüklerinin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics ARACıSıYLA](./log-analytics-agent.md) IIS günlüklerinin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
 
 ![IIS günlükleri](media/data-sources-iis-logs/overview.png)
 
@@ -65,7 +65,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 ## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
 Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scStatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |
@@ -75,4 +75,4 @@ Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının f
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Izleyici 'yi analize yönelik diğer [veri kaynaklarını](../agents/agent-data-sources.md) toplayacak şekilde yapılandırın.
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.

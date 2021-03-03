@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715012"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Kimlik için Microsoft Defender 'daki verileri bağlama (eski adıyla Azure Gelişmiş tehdit koruması)
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656080"
 > Azure Sentinel 'de Identity Data Connector için Microsoft Defender Şu anda genel önizleme aşamasındadır.
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Kimlik Için Microsoft Defender](/azure-advanced-threat-protection/what-is-atp) 'Daki günlükleri Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz.
+Bu makalede, [kimlik Için Microsoft Defender](/azure-advanced-threat-protection/what-is-atp) 'daki güvenlik uyarılarının Azure Sentinel 'e nasıl akışının yapılacağı açıklanır. 
+
+Güvenlik uyarılarına ek olarak sistem durumu uyarılarını iletmek için, Microsoft Defender 'ı bir Syslog sunucusu ile kimlik için tümleştirin. Daha fazla bilgi için bkz. [Microsoft Defender for Identity belgeleri](/defender-for-identity/setting-syslog). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 

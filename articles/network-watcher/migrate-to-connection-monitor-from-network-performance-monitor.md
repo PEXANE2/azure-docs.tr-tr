@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 0bb46c17ece9a38d9f1e10c79a4b026efa0ece4c
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698697"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
@@ -31,16 +31,17 @@ Ağ Performansı İzleyicisi (NPM) ' den yeni, iyileştirilmiş bağlantı Izley
 
 Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
 
-* Şirket içi aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. Azure sanal makinelerinde yüklü Log Analytics aracıların ağ Izleyicisi uzantısıyla değiştirilmeleri gerekir.
+* Şirket içi aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. Azure sanal makinelerinde yüklü Log Analytics aracıların [Ağ İzleyicisi uzantısıyla](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)değiştirilmeleri gerekir.
 * Mevcut testler, > test grubu > test biçimiyle bağlantı Izleyicisine eşlenir. **Düzenle**' yi seçerek yeni bağlantı izleyicisinin özelliklerini görüntüleyip değiştirebilir, değişiklikler yapmak için bir şablon indirebilir ve Azure Resource Manager aracılığıyla şablonu gönderebilirsiniz.
 * Aracılar Log Analytics çalışma alanına ve ölçümlere veri gönderir.
 * Veri izleme:
-   * **Log Analytics verileri**: geçişten önce, veriler NPM 'Nin networkmonitoring tablosunda yapılandırıldığı çalışma alanında kalır. Geçişten sonra, veriler NetworkMonitoring tablosuna ve aynı çalışma alanındaki ConnectionMonitor_CL tablosuna gider. Test NPM 'de devre dışı bırakıldıktan sonra, veriler yalnızca ConnectionMonitor_CL tablosunda depolanır.
-   * **Günlük tabanlı uyarılar, panolar ve tümleştirmeler**: yeni ConnectionMonitor_CL tablosuna göre sorguları el ile düzenlemeniz gerekir. Uyarıları ölçümlerde yeniden oluşturmak için, bkz. [Bağlantı İzleyicisi Ile ağ bağlantısı izleme](./connection-monitor-overview.md#metrics-in-azure-monitor).
+   * **Log Analytics verileri**: geçişten önce, veriler NPM 'Nin networkmonitoring tablosunda yapılandırıldığı çalışma alanında kalır. Geçişten sonra, veriler NetworkMonitoring tablosuna gider. aynı çalışma alanındaki NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosu. Test NPM 'de devre dışı bırakıldıktan sonra, veriler yalnızca NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosunda depolanır.
+   * **Günlük tabanlı uyarılar, panolar ve tümleştirmeler**: yeni NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosuna göre sorguları el ile düzenlemeniz gerekir. Uyarıları ölçümlerde yeniden oluşturmak için, bkz. [Bağlantı İzleyicisi Ile ağ bağlantısı izleme](./connection-monitor-overview.md#metrics-in-azure-monitor).
     
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Aboneliğinizde ve Log Analytics çalışma alanının bölgesinde ağ izleyicisinin etkinleştirildiğinden emin olun.
+* Aboneliğinizde ve Log Analytics çalışma alanının bölgesinde ağ izleyicisinin etkinleştirildiğinden emin olun. 
+* Bu durumda, Log Analytics çalışma alanından farklı bir bölgeye/aboneliğe ait olan Azure VM, bu abonelik ve bölge için ağ izleyicisinin etkinleştirildiğinden emin olun.   
 * Log Analytics aracıları yüklü Azure sanal makineleri, ağ Izleyicisi uzantısıyla etkinleştirilmelidir.
 
 ## <a name="migrate-the-tests"></a>Testleri geçirme
@@ -56,18 +57,19 @@ Testleri Ağ Performansı İzleyicisi bağlantı Izleyicisine geçirmek için a�
 
 Geçiş başladıktan sonra aşağıdaki değişiklikler gerçekleşir: 
 * Yeni bir bağlantı İzleyicisi kaynağı oluşturulur.
-   * Her bölge ve abonelik için bir bağlantı İzleyicisi oluşturulur. Şirket içi aracılarla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_"on-premises"` . Azure aracılarıyla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_<Azure_region_name>` .
-   * İzleme verileri artık NPM 'nin etkinleştirildiği Log Analytics çalışma alanında saklanır, Connectionmonitor_CL adlı yeni bir tabloda. 
+   * Her bölge ve abonelik için bir bağlantı İzleyicisi oluşturulur. Şirket içi aracılarla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_"workspace_region_name"` . Azure aracılarıyla testler için yeni bağlantı izleyici adı olarak biçimlendirilir `<workspaceName>_<Azure_region_name>` .
+   * İzleme verileri artık NPM 'nin etkinleştirildiği Log Analytics çalışma alanında, NWConnectionMonitorTestResult tablosu ve NWConnectionMonitorPathResult tablosu adlı yeni tablolarda depolanır. 
    * Test adı, test grubu adı olarak ileri taşınır. Test açıklaması geçirilmez.
-   * Kaynak ve hedef uç noktaları yeni test grubunda oluşturulur ve kullanılır. Şirket içi aracılar için uç noktalar olarak biçimlendirilir `<workspaceName>_"endpoint"_<FQDN of on-premises machine>` . Azure için, geçiş testleri çalıştırmayan aracıları içeriyorsa, aracıları etkinleştirmeniz ve yeniden geçirmeniz gerekir.
-   * Hedef bağlantı noktası ve yoklama aralığı, *TC_ \<testname>* ve *TC_ \<testname> _AppThresholds* adlı bir test yapılandırmasına taşınır. Protokol, bağlantı noktası değerlerine göre ayarlanır. Başarı eşikleri ve diğer isteğe bağlı özellikler boş bırakılır.
-* NPM devre dışı bırakılmazsa, geçirilen testler NetworkMonitoring ve ConnectionMonitor_CL tablolarına veri gönderilmeye devam edebilir. Bu yaklaşım, mevcut günlük tabanlı uyarıların ve tümleştirmelerin etkilenmemesini sağlar.
+   * Kaynak ve hedef uç noktaları yeni test grubunda oluşturulur ve kullanılır. Şirket içi aracılar için uç noktalar olarak biçimlendirilir `<workspaceName>_<FQDN of on-premises machine>` .
+   * Hedef bağlantı noktası ve yoklama aralığı, ve adlı bir test yapılandırmasına `TC_<protocol>_<port>` taşınır `TC_<protocol>_<port>_AppThresholds` . Protokol, bağlantı noktası değerlerine göre ayarlanır. ICMP için, test yapılandırması ve olarak adlandırılır `TC_<protocol>` `TC_<protocol>_AppThresholds` . Küme geçirilirse başarı eşikleri ve diğer isteğe bağlı özellikler, aksi takdirde boş bırakılır.
+   * Geçiş testleri çalıştırmayan aracıları içeriyorsa, aracıları etkinleştirmeniz ve yeniden geçirmeniz gerekir.
+* NPM devre dışı bırakılmazsa, geçirilen testler NetworkMonitoring tablosuna, NWConnectionMonitorTestResult Table ve NWConnectionMonitorPathResult tablosuna veri gönderilmeye devam edebilir. Bu yaklaşım, mevcut günlük tabanlı uyarıların ve tümleştirmelerin etkilenmemesini sağlar.
 * Yeni oluşturulan Bağlantı İzleyicisi, bağlantı Izleyicisi 'nde görünür.
 
 Geçişten sonra şunları yaptığınızdan emin olun:
 * NPM 'deki testleri el ile devre dışı bırakın. Bunu yapana kadar ücretlendirilmeye devam edersiniz. 
-* NPM 'yi devre dışı bırakırken, ConnectionMonitor_CL tablosunda uyarılarınızı yeniden oluşturun veya ölçümleri kullanın. 
-* Tüm dış tümleştirmeleri ConnectionMonitor_CL tablosuna geçirin. Dış tümleştirmelere örnek olarak Power BI ve Grafana ' deki panolar ve güvenlik bilgileri ve olay yönetimi (SıEM) sistemleriyle tümleştirmeler verilebilir.
+* NPM 'yi devre dışı bırakırken, uyarılarınızı NWConnectionMonitorTestResult ve NWConnectionMonitorPathResult tablolarında yeniden oluşturun veya ölçümleri kullanın. 
+* Tüm dış tümleştirmeleri NWConnectionMonitorTestResult ve NWConnectionMonitorPathResult tablolarına geçirin. Dış tümleştirmelere örnek olarak Power BI ve Grafana ' deki panolar ve güvenlik bilgileri ve olay yönetimi (SıEM) sistemleriyle tümleştirmeler verilebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

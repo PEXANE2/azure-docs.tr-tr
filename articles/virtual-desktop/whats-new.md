@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575322"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737503"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -39,6 +39,26 @@ Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik 
 ## <a name="fslogix-updates"></a>FSLogix güncelleştirmeleri
 
 FSLogix için en son güncelleştirmeler mi merak ediyorsunuz? [FSLogix](/fslogix/whats-new)'teki yenilikleri inceleyin.
+
+## <a name="february-2021"></a>Şubat 2021
+
+Şubat 2021 ' de değiştirilen özellikler aşağıda verilmiştir.
+
+### <a name="portal-experience"></a>Portal deneyimi
+
+Azure portal deneyimini aşağıdaki yollarla geliştirdik:
+
+- Oturum Ana bilgisayar Kılavuzu sekmesindeki konaklarda toplu boşaltma modu. 
+- MSIX uygulaması iliştirme artık genel önizlemeye sunuldu.
+- Koyu mod için sabit konak havuzuna genel bakış bilgileri.
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>AB meta veri depolaması artık genel önizlemeye sunuldu
+
+Windows sanal masaüstündeki hizmet meta verileri için bir depolama seçeneği olarak Avrupa (AB) Coğrafya genel önizlemesini barındırıyoruz. Müşteriler, hizmet nesnelerini oluştururken Batı veya Kuzey Avrupa arasında seçim yapabilir. Konak havuzlarının hizmet nesneleri ve meta verileri her bölge ile ilişkili Azure Coğrafya 'da depolanır. Daha fazla bilgi edinmek için [genel önizlemeyi duyuran blog gönderimizi](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939)okuyun.
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Windows sanal masaüstü eklentisi güncelleştirmelerinde takımlar
+
+Ekranın aniden karanlık veya video ve ses eşitlenme gibi en sık bildirilen sorunları ele alarak Windows sanal masaüstü eklentisindeki video arama kalitesini geliştirdik. Bu geliştirmeler, etkin konuşmacı değiştirme ile tek video görünümünün performansını artırmalıdır. Ayrıca, özel karakterleri olan donanım cihazlarının ekiplerde kullanılamadığı bir sorunu düzelttik.
 
 ## <a name="january-2021"></a>Ocak 2021
 

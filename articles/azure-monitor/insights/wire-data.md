@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de tel veri çözümü | Microsoft Docs
 description: Kablo verileri, Log Analytics aracıları olan bilgisayarlardan birleştirilmiş ağ ve performans verileri. Verilerin bağıntısını sağlamanıza yardımcı olmak için ağ verileri günlük verilerinizle birleştirilir.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572338"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713635"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Izleyici 'de Wire Data 2.0 (Önizleme) çözümü
 
@@ -26,7 +25,7 @@ Log Analytics aracısına ek olarak, kablo verileri çözümü BT altyapınızda
 > 
 >Tel veri çözümünü kullanan mevcut müşteriler bu uygulamayı kullanmaya devam edebilir. Hizmet Eşlemesi taşımak için bir geçiş zaman çizelgesine yönelik rehberlik yayımlayacağız.
 >
->Yeni müşteriler [hizmet eşlemesi çözümünü](../vm/service-map.md) veya [VM'ler için Azure izleyici](../vm/vminsights-overview.md)yüklemelidir.  Hizmet Eşlemesi veri kümesi, Tel verilerle karşılaştırılabilir.  VM'ler için Azure İzleyici, analiz için ek performans verileri ve özellikleriyle Hizmet Eşlemesi veri kümesini içerir. 
+>Yeni müşteriler [hizmet eşlemesi çözümünü](../vm/service-map.md) veya [VM öngörülerini](../vm/vminsights-overview.md)yüklemelidir.  Hizmet Eşlemesi veri kümesi, Tel verilerle karşılaştırılabilir.  VM öngörüleri, analiz için ek performans verileri ve özellikleriyle Hizmet Eşlemesi veri kümesini içerir. 
 
 
 Azure Izleyici, varsayılan olarak, Windows ve Linux 'ta yerleşik sayaçların yanı sıra, belirtebileceğiniz diğer performans sayaçlarından CPU, bellek, disk ve ağ performansı verileri için verileri günlüğe kaydeder. Her aracı için, alt ağlar ve bilgisayar tarafından kullanılmakta olan uygulama düzeyi protokoller de dahil olmak üzere, ağ ve diğer verileri toplama işlemi gerçek zamanlı olarak yapılır.  Wire Data, alttaki TCP aktarım katmanında değil uygulama düzeyindeki ağ verilerine bakar.  Çözüm tek tek ACK'lere ve SYN'lere bakmaz.  Karşılıklı anlaşma tamamlandıktan sonra, bu canlı bir bağlantı olarak kabul edilir ve Bağlandı olarak işaretlenir. Söz konusu bağlantı, her iki taraf da yuvanın açık olduğunu ve verilerin ileri ve geri geçiş yapabildiğini kabul ettiği sürece canlı kalır.  Her iki taraf da bağlantıyı kapattığında, bağlantısı kesik olarak işaretlenir.  Bu nedenle, yalnızca başarıyla tamamlanan paketlerin bant genişliğini sayar; yeniden göndermeleri veya başarısız paketleri raporlamaz.
@@ -59,7 +58,7 @@ Wire Data verilerini Microsoft Bağımlılık Aracısı'ndan alır. Dependency A
 | Windows aracıları | Yes | Wire Data, Windows aracı bilgisayarlarından gelen verileri analiz eder ve toplar. <br><br> Windows Agents, [Windows için Log Analytics aracısına](../agents/agent-windows.md)ek olarak Microsoft bağımlılık Aracısı 'nı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](../vm/vminsights-enable-overview.md#supported-operating-systems). |
 | Linux aracıları | Yes | Wire Data, Linux aracı bilgisayarlarından gelen verileri analiz eder ve toplar.<br><br> Linux [için Log Analytics aracısına](../vm/quick-collect-linux-computer.md)ek olarak, Linux aracıları Microsoft bağımlılık Aracısı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](../vm/vminsights-enable-overview.md#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Yes | Wire Data, bağlantılı bir [System Center Operations Manager yönetim grubunda](../agents/om-agents.md) Windows ve Linux aracılarından gelen verileri analiz eder ve toplar. <br><br> System Center Operations Manager Aracısı bilgisayarından Azure Izleyici 'ye doğrudan bağlantı gereklidir. |
-| Azure depolama hesabı | No | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
+| Azure depolama hesabı | Hayır | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
 
 Windows 'da Microsoft Monitoring Agent (MMA), veri toplamak ve göndermek için hem System Center Operations Manager hem de Azure Izleyici tarafından kullanılır. Bağlama bağlı olarak, aracıya System Center Operations Manager Aracı, Log Analytics Aracısı, MMA veya doğrudan Aracı denir. System Center Operations Manager ve Azure Izleyici, MMA 'nın biraz farklı sürümlerini sağlar. Bu sürümler her rapor System Center Operations Manager, Azure Izleyici 'ye veya her ikisine de bağlanabilir.
 

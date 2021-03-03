@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955550"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733423"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'unuzda işlem yönetme
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955550"
 
 Bu makalede, Azure Stack Edge Pro GPU cihazınızda IoT Edge hizmeti aracılığıyla işlem yönetimi açıklanmaktadır. Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla işlem yönetebilirsiniz. Modül, Tetikleyiciler ve IoT Edge yapılandırmayı yönetmek için Azure portal kullanın ve işlem ağ ayarlarını yönetmek için yerel Web Kullanıcı arabirimini kullanın.
 
-Bu makalede şunları öğreneceksiniz:
-
-> [!div class="checklist"]
-> * Tetikleyicileri yönetme
-> * IoT Edge yapılandırmasını yönetme
 
 
 ## <a name="manage-triggers"></a>Tetikleyicileri yönetme
@@ -130,6 +125,22 @@ Cihazınızın erişim anahtarlarını eşitlemek için Azure portal aşağıdak
     ![İstendiğinde Evet ' i seçin](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. Eşitleme tamamlandıktan sonra iletişim kutusunu kapatın.
+
+## <a name="change-external-service-ips-for-containers"></a>Kapsayıcılar için dış hizmet IP 'lerini değiştirme
+
+Kubernetes dış hizmet IP 'Leri, Kubernetes kümesi dışında kullanıma sunulan hizmetlere ulaşmak için kullanılır. Cihazınız etkinleştirildikten sonra, yerel kullanıcı arabirimine erişerek cihazınızın Kapsayıcılı iş yükleri için dış hizmet IP 'lerini ayarlayabilir veya değiştirebilirsiniz.
+
+
+1. Cihazın yerel kullanıcı arabiriminde, **işlem**' a gidin.
+1. Ağı işlem için yapılandırılmış olan bağlantı noktasını seçin. Açılan dikey pencerede, Kubernetes dış hizmet IP 'lerini belirtin (yeni) veya değiştirin (varsa). Bu IP 'Ler, Kubernetes kümesi dışında açığa çıkarılması gereken hizmetler için kullanılır. 
+    - Cihazınızda çalışan hizmet için en az 1 hizmet IP 'si gerekir `edgehub` ve IoT Edge modüller tarafından kullanılır. 
+    - Dağıtımı planladığınız her ek IoT Edge modülü veya kapsayıcısı için bir IP gerekir. 
+    - Bunlar statik, bitişik IP 'lardır.
+
+    ![Kubernetes hizmet IP 'lerini değiştirme](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. **Uygula**’yı seçin. IP 'Ler uygulandıktan sonra, cihazınızın yeniden başlatma veya yeniden başlatma gerekmez. Yeni IP 'Ler hemen devreye girer.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

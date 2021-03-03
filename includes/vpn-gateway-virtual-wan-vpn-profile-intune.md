@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750916"
 ---
 Microsoft Intune kullanarak, Azure VPN istemcileri (Windows 10) için profilleri dağıtabilirsiniz. Bu makale, özel ayarları kullanarak bir Intune profili oluşturmanıza yardımcı olur.
 
@@ -30,7 +30,7 @@ Aşağıdaki adımlarda, Intune için özel bir OMA-URI profili için aşağıda
 * Otomatik bağlan
 * Güvenilen ağ algılama etkin.
 
-Desteklenen diğer seçenekler için [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) makalesine bakın.
+Desteklenen diğer seçenekler için [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) makalesine bakın.
 
 1. Azure portal VPN profilini indirin ve *azurevpnconfig.xml* dosyasını paketten ayıklayın.
 1. Aşağıdaki metni kopyalayıp yeni bir metin düzenleyici dosyasına yapıştırın.
@@ -82,4 +82,4 @@ Bu bölümde, özel ayarlarla bir Microsoft Intune profili oluşturursunuz.
 1. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Profil oluştur":::
-1. Özel profiliniz artık oluşturuldu. Bu profili dağıtmaya yönelik Microsoft Intune adımlar için bkz. [Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+1. Özel profiliniz artık oluşturuldu. Bu profili dağıtmaya yönelik Microsoft Intune adımlar için bkz. [Kullanıcı ve cihaz profilleri atama](/mem/intune/configuration/device-profile-assign).

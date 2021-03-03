@@ -3,12 +3,12 @@ title: Yinelenen ileti algılamayı Azure Service Bus | Microsoft Docs
 description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Algılayabileceğiniz açıklanır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711935"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
 
@@ -48,7 +48,7 @@ Portalda, özellik varsayılan olarak kapalı olan **yinelenen saptamayı etkinl
 
 Programlama yoluyla, bayrağı Full Framework .NET API 'sindeki [Queuedescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) özelliği ile ayarlarsınız. Azure Resource Manager API 'SI ile, değeri [Queueproperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
 
-Yinelenen algılama zaman geçmişi, kuyruklar ve konular için en fazla yedi gün olacak şekilde 30 saniye olur. Bu ayarı, Azure portal sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
+Yinelenen algılama süresi geçmişi, kuyruklar ve konular için varsayılan değer olan en fazla 7 günlük değere sahip en az 20 saniyelik bir değere sahip, kuyruklar ve konular için 10 dakika olarak Bu ayarı, Azure portal sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
 
 ![Özellikler ayarı vurgulanmış Service Bus özelliğinin ekran görüntüsü ve kırmızı renkle yinelenen algılama geçmişi seçeneği.][2]
 

@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 02dd9aa74da42f0a5d70de4513b88756a97bea1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fa0f73d06bda02d784628823ee70bc538b375e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695813"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Azure yol sunucusu sorunlarını giderme
 
@@ -21,11 +21,15 @@ ms.locfileid: "101680399"
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="bgp-connectivity-issues"></a>BGP bağlantısı sorunları
+## <a name="connectivity-issues"></a>Bağlantı sorunları
 
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>NVA ve Azure Route sunucusu arasında BGP eşlemesi neden ("flaştır").
+### <a name="why-does-my-nva-lose-internet-connectivity-after-it-advertises-the-default-route-00000-to-azure-route-server"></a>Neden NVA, varsayılan yolu (0.0.0.0/0) Azure yol sunucusuna duyurduktan sonra Internet bağlantısını kaybeder mi?
+NVA 'niz varsayılan yolu duyurduğu zaman, Azure Route sunucusu, sanal ağ içindeki tüm VM 'Ler için NVA dahil olmak üzere bunu programkılar. Bu varsayılan yol, NVA 'yı Internet 'e yönelik tüm trafik için sonraki atlama olarak ayarlar. NVA 'niz Internet bağlantısına ihtiyaç duyuyorsa, bu varsayılan yolu NVA 'dan geçersiz kılmak için [Kullanıcı tanımlı bir yol](../virtual-network/virtual-networks-udr-overview.md) yapılandırmanız ve UDR 'YI NVA 'nın barındırıldığı alt ağa eklemeniz gerekir (aşağıdaki örneğe bakın). Aksi takdirde, NVA ana makinesi, NVA tarafından gönderilen biri dahil olmak üzere Internet 'e ait trafiği NVA 'ya göndermeye devam eder.
 
-Flama nedeni BGP Zamanlayıcı ayarından dolayı olabilir. Varsayılan olarak, Azure yol sunucusundaki canlı tut süreölçeri 60 saniyeye ayarlanır ve bekletme süreölçeri 180 saniyedir.
+| Yol | Sonraki atlama |
+|-------|----------|
+| 0.0.0.0/0 | İnternet |
+
 
 ### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-goes-down"></a>Azure yol sunucusunda NVA 'dan BGP eşi IP 'ye neden ping yapabilirim, ancak aralarında BGP eşlemesini ayarladıktan sonra aynı IP 'yi artık ping yapamıyorum? BGP eşlemesi neden geçer?
 
@@ -37,11 +41,18 @@ Bazı NVA 'da, Azure Route sunucusu alt ağı için bir statik yol eklemeniz ger
 
 10.0.1.1, alt ağdaki, NVA (veya daha fazla, NIC 'lerden biri) barındırıldığı varsayılan ağ geçidi IP 'si.
 
-## <a name="bgp-route-issues"></a>BGP yolu sorunları
+### <a name="why-do-i-lose-connectivity-to-my-on-premises-network-over-expressroute-andor-azure-vpn-when-im-deploying-azure-route-server-to-a-virtual-network-that-already-has-expressroute-gateway-andor-azure-vpn-gateway"></a>Azure yol sunucusunu ExpressRoute ağ geçidi ve/veya Azure VPN ağ geçidi zaten bulunan bir sanal ağa dağıtmazken ExpressRoute ve/veya Azure VPN üzerinden şirket içi ağmın bağlantısını neden yitim?
+Azure Route Server 'ı bir sanal ağa dağıttığınızda, ağ geçitleri ve sanal ağ arasındaki denetim düzlemini güncelleştirmemiz gerekir. Bu güncelleştirme sırasında, sanal ağdaki VM 'Lerin şirket içi ağla bağlantısını kaybedecek bir süre vardır. Azure Route Server 'ı üretim ortamınıza dağıtmak için bir bakım zamanlamanızı kesinlikle öneririz.  
+
+## <a name="control-plane-issues"></a>Denetim düzlemi sorunları
+
+### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>NVA ve Azure Route sunucusu arasında BGP eşlemesi neden ("flaştır").
+
+Flama nedeni BGP Zamanlayıcı ayarından dolayı olabilir. Varsayılan olarak, Azure yol sunucusundaki canlı tut süreölçeri 60 saniyeye ayarlanır ve bekletme süreölçeri 180 saniyedir.
 
 ### <a name="why-does-my-nva-not-receive-routes-from-azure-route-server-even-though-the-bgp-peering-is-up"></a>BGP eşlemesi çalışıyor olsa da, NVA neden Azure yol sunucusundan yollar almıyor?
 
-Azure Route sunucusu 'nun kullandığı ASN 65515 ' dir. NVA ve Azure Route sunucunuz arasında "eBGP" oturumunun kurulabilmesi için, yol yayılımını otomatik olarak gerçekleşebilmesi için NVA için farklı bir ASN 'yi ayarladığınızdan emin olun.
+Azure Route sunucusu 'nun kullandığı ASN 65515 ' dir. NVA ve Azure Route sunucunuz arasında "eBGP" oturumunun kurulabilmesi için, yol yayılımını otomatik olarak gerçekleşebilmesi için NVA için farklı bir ASN 'yi ayarladığınızdan emin olun. NVA ve Azure Route sunucunuz sanal ağdaki farklı alt ağlarda yer aldığı için BGP yapılandırmanızda "çoklu atlama" özelliğini etkinleştirdiğinizden emin olun.
 
 ### <a name="the-bgp-peering-between-my-nva-and-azure-route-server-is-up-i-can-see-routes-exchanged-correctly-between-them-why-arent-the-nva-routes-in-the-effective-routing-table-of-my-vm"></a>NVA ve Azure Route sunucusu arasındaki BGP eşlemesi çalışır. Aralarında doğru değiş tokuş edilen yolları görebiliyorum. Sanal makinem etkin yönlendirme tablosunda NVA yolları neden değil? 
 

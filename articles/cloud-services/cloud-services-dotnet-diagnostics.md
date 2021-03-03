@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703516"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services Azure Tanılama etkinleştirme (klasik)
 
 > [!IMPORTANT]
 > [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
-Azure Tanılama bir arka plana [Azure tanılama genel bakış](../azure-diagnostics.md) konusuna bakın.
+Azure Tanılama bir arka plana [Azure tanılama genel bakış](../azure-monitor/agents/diagnostics-extension-overview.md) konusuna bakın.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Çalışan rolünde tanılamayı etkinleştirme
 Bu izlenecek yol, .NET EventSource sınıfını kullanarak telemetri verileri veren bir Azure Worker rolünün nasıl uygulanacağını açıklar. Azure Tanılama telemetri verilerini toplamak ve bir Azure depolama hesabında depolamak için kullanılır. Bir çalışan rolü oluştururken, Visual Studio, .NET 2,4 ve önceki sürümleri için Azure SDK 'larında çözümün parçası olarak tanılama 1,0 ' i otomatik olarak sunar. Aşağıdaki yönergeler, çalışan rolünü oluşturma, çözümünden tanılama 1,0 'yi devre dışı bırakma ve çalışan rolünüzde tanılama 1,2 ya da 1,3 dağıtma sürecini anlatmaktadır.

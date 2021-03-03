@@ -4,18 +4,18 @@ ms.date: 12/13/2019
 ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
-ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7aee201b0419b65c7ea8ddcb6f2d42ffaff4711e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75437011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751143"
 ---
-|  | **Özel Eşleme** | **Microsoft eşlemesi** |  **Ortak eşleme** (yeni devreler için kullanım dışı) |
+|  | **Özel Eşleme** | **Microsoft Eşlemesi** |  **Ortak eşleme** (yeni devreler için kullanım dışı) |
 | --- | --- | --- | --- |
 | **Maksimum. # eşleme başına desteklenen ön ekler** |4000 varsayılan olarak, ExpressRoute Premium ile 10.000 |200 |200 |
 | **Desteklenen IP adresi aralıkları** |WAN 'ağınız içindeki geçerli herhangi bir IP adresi. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |
 | **Sayı gereksinimleri olarak** |Özel ve ortak AS numaraları. Birini kullanmayı seçerseniz ortak AS numarasına sahip olmanız gerekir. |Özel ve ortak AS numaraları. Ancak, genel IP adreslerinin sahipliğini kanıtlamanız gerekir. |Özel ve ortak AS numaraları. Ancak, genel IP adreslerinin sahipliğini kanıtlamanız gerekir. |
-| **Desteklenen IP protokolleri**| IPv4 |  IPv4, IPv6 | IPv4 |
+| **Desteklenen IP protokolleri**| IPv4, IPv6 (Önizleme) |  IPv4, IPv6 | IPv4 |
 | **Yönlendirme arabirimi IP adresleri** |RFC1918 ve genel IP adresleri |Yönlendirme kayıt defterlerinde size kayıtlı genel IP adresleri. |Yönlendirme kayıt defterlerinde size kayıtlı genel IP adresleri. |
-| **MD5 karma desteği** |Evet |Evet |Evet |
+| **MD5 karma desteği** |Yes |Yes |Yes |

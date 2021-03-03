@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 634deb655620f99c7b7b2b55819c58308eaa5a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f85f2770b98507618d5cbfdec1b55f397c7f514
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749923"
 ---
-Azure 'da, hem sanal makinelere hem de disklere patlama olarak adlandırılan disk depolama ıOPS ve MB/s performansını artırma olanağı sunuyoruz. Buralma, beklenmeyen disk trafiğini işleme veya toplu işleri işleme gibi birçok senaryoda faydalıdır. Hem VM 'niz hem de diskiniz üzerinde harika bir taban ve performans elde etmek için VM ve disk düzeyi patlaması etkin bir şekilde yararlanabilir. Bu şekilde, hem VM 'niz hem de diskiniz üzerinde harika temel performans ve performans elde edebilirsiniz. 
+Azure, disk depolama ıOPS ve MB/sn performansını artırma olanağı sunarak, bu, hem sanal makineler (VM) hem de diskler için buralma olarak adlandırılır. Sanal makinelerinizde ve diskinizde daha iyi bir performans elde etmek için VM ve disk patlaması etkin bir şekilde yararlanabilir.
 
-Lütfen disklere ve VM 'Lere gömülmüş bir diğerinden bağımsız olduğunu unutmayın. Bir disk diski aldıysanız, diskinizin aşırı çalışmasına izin vermek için bir patlama sanal makinesine ihtiyacınız yoktur. Bir patlama VM 'niz varsa, sanal makinenizin veri bloğu için bir patlama diskine sahip olmanız gerekmez. 
+Azure VM 'Leri ve disk kaynakları için burdıya bağlı değildir. Veri bloğu için bağlı bir veri bloğu özellikli disk için veri bloğu özellikli bir VM 'ye sahip olmanız gerekmez. Benzer şekilde, VM 'nin veri bloğu için veri bloğu özellikli sanal makinenize bağlı bir veri bloğu özellikli diske sahip olmanız gerekmez.

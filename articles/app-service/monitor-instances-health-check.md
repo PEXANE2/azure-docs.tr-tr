@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575237"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714485"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Sistem durumu denetimini kullanarak App Service örnekleri izleme
 
 ![Sistem durumu denetimi hatası][2]
 
-Bu makale, App Service örnekleri izlemek için Azure portal sistem durumu denetimini kullanır. Sistem durumu denetimi, sağlıksız örnekleri kaldırarak uygulamanızın kullanılabilirliğini artırır. [App Service planınız](/azure/app-service/overview-hosting-plans) , sistem durumu denetimini kullanmak için iki veya daha fazla örneğe ölçeklendirmelidir. Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
+Bu makale, App Service örnekleri izlemek için Azure portal sistem durumu denetimini kullanır. Sistem durumu denetimi, sağlıksız örnekleri kaldırarak uygulamanızın kullanılabilirliğini artırır. [App Service planınız](./overview-hosting-plans.md) , sistem durumu denetimini kullanmak için iki veya daha fazla örneğe ölçeklendirmelidir. Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
 
 ## <a name="what-app-service-does-with-health-checks"></a>Durum denetimleri ile ne App Service
 
@@ -48,7 +48,7 @@ Bu makale, App Service örnekleri izlemek için Azure portal sistem durumu denet
 
 Sistem durumu denetimi seçeneklerini yapılandırmanın yanı sıra, aşağıdaki [uygulama ayarlarını](configure-common.md)da yapılandırabilirsiniz:
 
-| Uygulama ayarı adı | İzin verilen değerler | Description |
+| Uygulama ayarı adı | İzin verilen değerler | Açıklama |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | En fazla ping başarısızlığı sayısı. Örneğin, olarak ayarlandığında `2` , örneklerinizin başarısız ping işlemleri sonrasında kaldırılacak `2` . Ayrıca, ölçeği büyütme veya küçültme sırasında, yeni örneklerin hazır olmasını sağlamak için sistem durumu denetim yoluna ping App Service. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Sağlıklı olmayan örneklere engel olmak için örneklerin yarısını hariç tutulamayacak. Örneğin, bir App Service planı dört örneğe ölçeklenirse ve üçü uygun değilse, en fazla iki durum hariç tutulur. Diğer iki örnek (bir sağlıklı ve bir sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak için, uygulama ayarını ve arasında bir değere `0` ayarlayın `100` . Daha yüksek bir değer, daha sağlıksız örneklerin kaldırılabileceği anlamına gelir (varsayılan değer 50 ' dir). |

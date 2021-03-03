@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Apache Cassandra belgeleri için Azure yönetilen örneği
+summary: Apache Cassandra için Azure yönetilen örneği, yönetilen açık kaynaklı Apache Cassandra veri merkezleri için otomatik dağıtım ve ölçeklendirme işlemleri sağlar. Karma senaryoları hızlandırır ve devam eden Bakımı azaltır.
+metadata:
+  title: Apache Cassandra için Azure yönetilen örneği
+  description: Apache Cassandra için Azure yönetilen örneği, yönetilen açık kaynaklı Apache Cassandra veri merkezleri için otomatik dağıtım ve ölçeklendirme işlemleri sağlar. Karma senaryoları hızlandırır ve devam eden Bakımı azaltır.
+  services: service
+  ms.service: managed-instance-apache-cassandra
+  ms.topic: landing-page
+  ms.collection: collection
+  author: TheovanKraay
+  ms.author: thvankra
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749158"
+landingContent:
+- title: Apache Cassandra için Azure yönetilen örneği hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Apache Cassandra için Azure yönetilen örneği nedir?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Apache Cassandra vs Azure Cosmos DB Cassandra API için Azure yönetilen örneği
+      url: compare-cosmosdb-managed-instance.md
+  - linkListType: quickstart
+    links:
+    - text: Küme oluşturma-Portal
+      url: create-cluster-portal.md
+    - text: Küme oluşturma-CLı
+      url: create-cluster-cli.md
+    - text: Azure Databricks ile Spark kümesi dağıtma
+      url: deploy-cluster-databricks.md
+  - linkListType: concept
+    links:
+    - text: Sık sorulan sorular
+      url: faq.md
+- title: Küme kaynaklarını yapılandırma ve yönetme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Karma küme yapılandırma
+      url: configure-hybrid-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLı ile kaynakları yönetme
+      url: manage-resources-cli.md
+    - text: Grafana ile Prometheus içindeki ölçümleri görselleştirin
+      url: visualize-prometheus-grafana.md

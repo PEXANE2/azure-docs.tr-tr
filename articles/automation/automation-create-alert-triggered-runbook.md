@@ -3,18 +3,18 @@ title: Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 description: Bu makalede, bir Azure uyarısı başlatıldığında runbook 'un çalışması için nasıl tetiklenecek açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2019
+ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732301"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
-Azure [izleyici](../azure-monitor/overview.md) 'Yi, Azure 'daki birçok hizmetin temel düzey ölçümlerini ve günlüklerini izlemek için kullanabilirsiniz. [Eylem gruplarını](../azure-monitor/alerts/action-groups.md) kullanarak veya uyarıları temel alarak görevleri otomatikleştirmek için klasik uyarıları kullanarak Azure Otomasyonu runbook 'larını çağırabilirsiniz. Bu makalede, uyarıları kullanarak bir runbook 'un nasıl yapılandırılacağı ve çalıştırılacağı gösterilmektedir.
+Azure [izleyici](../azure-monitor/overview.md) 'Yi, Azure 'daki birçok hizmetin temel düzey ölçümlerini ve günlüklerini izlemek için kullanabilirsiniz. Uyarıları temel alarak görevleri otomatikleştirmek için [eylem gruplarını](../azure-monitor/platform/action-groups.md) kullanarak Azure Otomasyonu runbook 'larını çağırabilirsiniz. Bu makalede, uyarıları kullanarak bir runbook 'un nasıl yapılandırılacağı ve çalıştırılacağı gösterilmektedir.
 
 ## <a name="alert-types"></a>Uyarı türleri
 
@@ -29,7 +29,7 @@ Otomasyon Runbook 'larını üç uyarı türüyle kullanabilirsiniz:
 
 Bir uyarı runbook 'u çağırdığında, gerçek çağrı Web kancasına yönelik bir HTTP POST isteğidir. POST isteğinin gövdesi, uyarıyla ilgili yararlı özelliklere sahip olan JSON biçimli bir nesne içerir. Aşağıdaki tabloda her uyarı türü için yük şemasının bağlantıları listelenmektedir:
 
-|Uyarı  |Description|Yük şeması  |
+|Uyarı  |Açıklama|Yük şeması  |
 |---------|---------|---------|
 |[Ortak uyarı](../azure-monitor/alerts/alerts-common-schema.md)|Bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştıran ortak uyarı şeması.|Ortak uyarı yük şeması|
 |[Etkinlik günlüğü uyarısı](../azure-monitor/alerts/activity-log-alerts.md)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, bir `Delete VM` Işlem **Myüretim resourcegroup** içinde veya etkin duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde oluşur.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |

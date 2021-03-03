@@ -3,16 +3,18 @@ title: Kayıt defteri eylemlerine yanıt vermek için Web kancaları
 description: Kayıt defteri depolarınızda gönderme veya çekme eylemleri gerçekleştiğinde olayları tetiklemek için Web kancalarını nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004492"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722254"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry Web kancalarını kullanma
 
 Azure kapsayıcısı kayıt defteri, Docker Hub’ın genel Docker görüntülerini depolama yöntemine benzer şekilde özel Docker kapsayıcı görüntülerini depolar ve yönetir. Ayrıca, Kubernetes 'e uygulama dağıtmak için bir paketleme biçimi olan [hele grafikleri](container-registry-helm-repos.md) (Önizleme) için depolar da barındırabilir. Kayıt defteri depolarınızdan birinde belirli işlemler gerçekleşirken olayları tetiklemek için Web kancalarını kullanabilirsiniz. Web kancaları, kayıt defteri düzeyindeki olaylara yanıt verebilir veya belirli bir depo etiketine göre kapsam yapılabilir. Coğrafi olarak  [çoğaltılan](container-registry-geo-replication.md) bir kayıt defteriyle, her Web kancasını belirli bir bölgesel çoğaltmada olaylara yanıt verecek şekilde yapılandırırsınız.
+
+Bir Web kancası için uç nokta, kayıt defterinden herkese açık bir şekilde erişilebilir olmalıdır. Kayıt defteri Web kancası isteklerini, güvenli bir uç noktada kimlik doğrulaması yapacak şekilde yapılandırabilirsiniz.
 
 Web kancası istekleri hakkında daha fazla bilgi için bkz. [Azure Container Registry Web kancası şeması başvurusu](container-registry-webhook-reference.md).
 
@@ -53,7 +55,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ## <a name="test-webhook"></a>Web kancasını test et
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Web kancasını kullanmadan önce **ping** düğmesini kullanarak test edebilirsiniz. Ping, belirtilen uç noktaya genel bir POST isteği gönderir ve yanıtı günlüğe kaydeder. Ping özelliğinin kullanılması, Web kancasını doğru şekilde yapılandırdığınızdan emin olmanıza yardımcı olabilir.
 
@@ -63,7 +65,7 @@ Web kancasını kullanmadan önce **ping** düğmesini kullanarak test edebilirs
 
 ![Azure portal ACR Web kancası oluşturma kullanıcı arabirimi](./media/container-registry-webhook/webhook-02.png)
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Bir ACR Web kancasını Azure CLı ile test etmek için [az ACR Web kancası ping](/cli/azure/acr/webhook#az-acr-webhook-ping) komutunu kullanın.
 
@@ -79,11 +81,11 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 ## <a name="delete-webhook"></a>Web kancasını Sil
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Her Web kancası, Web kancası ve ardından Azure portal **Sil** düğmesi seçilerek silinebilir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953708"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705407"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services V2 ve v3 arasındaki terminoloji ve varlık değişiklikleri
 
@@ -73,7 +73,7 @@ Media Services v3 kaynaklarına uygulanan adlandırma kurallarını gözden geç
 | **Kodlama** <!--new row --> |||
 | Kodlama bit hızları <!--new row --> | kbps EX cinsinden ölçülen bit hızları: 128 (Kbps)| saniyedeki bit/sn: 128000 (bit/saniye)|
 | DRM FairPlay kodlaması <!--new row --> | Media Services V2 'de, başlatma vektörü (IV) belirtilebilir. | Media Services v3 'de, FairPlay IV belirtilemez.|
-| Premium kodlayıcı <!--new row --> | Premium Kodlayıcısı ve eski Dizin Oluşturucu| [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset) ve eski [Medya analizi Işlemcileri](https://docs.microsoft.com/azure/media-services/previous/legacy-components) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez. Standart kodlayıcıya ses kanalı eşleme desteği ekledik.  [Media Services kodlaması Swagger belgelerindeki ses '](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)i inceleyin.  | Bkz. [senaryo tabanlı kodlamada](migrate-v-2-v-3-migration-scenario-based-encoding.md) kodlama konuları |
+| Premium kodlayıcı <!--new row --> | Premium Kodlayıcısı ve eski Dizin Oluşturucu| [Premium kodlayıcı](../previous/media-services-encode-asset.md) ve eski [Medya analizi Işlemcileri](../previous/legacy-components.md) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez. Standart kodlayıcıya ses kanalı eşleme desteği ekledik.  [Media Services kodlaması Swagger belgelerindeki ses '](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)i inceleyin.  | Bkz. [senaryo tabanlı kodlamada](migrate-v-2-v-3-migration-scenario-based-encoding.md) kodlama konuları |
 | **Dönüşümler ve işler** <!--new row -->|||
 | İş tabanlı işlem HTTPS <!--new row --> |<!-- empty -->| Dosya tabanlı Iş işleme için, giriş olarak bir HTTPS URL 'SI kullanabilirsiniz. Azure 'da zaten depolanmış içeriklere sahip olmanız veya varlık oluşturmanız gerekmez. |
 | İşler için ARM şablonları <!--new row --> | V2 'de ARM şablonları yoktu. | Bir dönüşüm yeniden kullanılabilir yapılandırma oluşturmak, Azure Resource Manager şablonları oluşturmak ve birden çok müşteri veya kiracı arasında işlem ayarlarını yalıtmak için kullanılabilir. |

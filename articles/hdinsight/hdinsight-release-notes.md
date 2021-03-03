@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699360"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -28,10 +28,10 @@ Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight y
 
 ## <a name="new-features"></a>Yeni özellikler
 ### <a name="dav4-series-support"></a>Dav4 serisi desteği
-HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)hakkında daha fazla bilgi edinin.
+HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](/azure/virtual-machines/dav4-dasv4-series)hakkında daha fazla bilgi edinin.
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](https://docs.microsoft.com/azure/hdinsight/kafka/rest-proxy)hakkında daha fazla bilgi edinin.
+Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](/azure/hdinsight/kafka/rest-proxy)hakkında daha fazla bilgi edinin.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
 HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Hizmet giderek [Azure sanal makine ölçek kümelerine geçiş yapar](../virtual-machine-scale-sets/overview.md). İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
@@ -49,14 +49,14 @@ HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal m
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
-HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
+HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
 
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
-2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md)' deki yenilikler hakkında daha fazla bilgi edinin.
+2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md). [Hdınsight 4,0](./hdinsight-version-release.md)' deki yenilikler hakkında daha fazla bilgi edinin.
 
 ### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
 HDInsight, işletim sistemi sürümünü Ubuntu 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, 2021 Nisan 'dan önce tamamlanır.

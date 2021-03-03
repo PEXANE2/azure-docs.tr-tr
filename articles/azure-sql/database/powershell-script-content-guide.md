@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690983"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure PowerShell örnekleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Aşağıdaki tabloda, Azure SQL yönetilen örneği için örnek Azure PowerShel
 |---|---|
 |**Yönetilen örnekleri oluşturma ve yapılandırma**||
 | [Yönetilen örnek oluşturma ve yönetme](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Bu PowerShell betiği, Azure PowerShell kullanarak yönetilen bir örnek oluşturmayı ve yönetmeyi gösterir. |
-| [Azure Resource Manager şablonunu kullanarak yönetilen bir örnek oluşturma ve yönetme](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak yönetilen bir örnek oluşturmayı ve yönetmeyi gösterir.|
+| [Azure Resource Manager şablonunu kullanarak yönetilen bir örnek oluşturma ve yönetme](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak yönetilen bir örnek oluşturmayı ve yönetmeyi gösterir.|
 | [Veritabanını başka bir coğrafi bölgede yönetilen bir örneğe geri yükleme](../managed-instance/scripts/restore-geo-backup.md) | Bu PowerShell betiği bir veritabanının yedeğini alır ve başka bir bölgeye geri yükler. Bu, coğrafi geri yükleme olağanüstü durum kurtarma senaryosu olarak bilinir. |
 | **Saydam veri şifrelemesini yapılandırma**||
 | [Azure Key Vault, kendi anahtarınızı kullanarak yönetilen bir örnekteki saydam veri şifrelemesini yönetin](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için Kendi Anahtarını Getir senaryosunda saydam veri şifrelemesini yapılandırır.|

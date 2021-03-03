@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706818"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Nasıl yapılır: yüz hizmetini kullanırken gecikme süresini azaltma
 
@@ -34,7 +34,7 @@ Bu konu, Azure bilişsel hizmetler 'i kullanmaya özgü gecikme süresinin olas�
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Bilişsel hizmet ile uzak URL arasındaki yavaş bağlantı
 
-Bazı Azure bilişsel hizmetler, sağladığınız uzak bir URL 'den veri elde eden yöntemler sağlar. Örneğin, yüz hizmetinin [DetectWithUrlAsync yöntemini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) çağırdığınızda, hizmetin yüzleri algılamaya çalıştığı bir görüntünün URL 'sini belirtebilirsiniz.
+Bazı Azure bilişsel hizmetler, sağladığınız uzak bir URL 'den veri elde eden yöntemler sağlar. Örneğin, yüz hizmetinin [DetectWithUrlAsync yöntemini](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) çağırdığınızda, hizmetin yüzleri algılamaya çalıştığı bir görüntünün URL 'sini belirtebilirsiniz.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Yüz hizmeti 'nin görüntüyü uzak sunucudan indirmesi gerekir. Yüz hizmetten uzak sunucuya bağlantı yavaşsa, algılama yönteminin yanıt süresini etkiler.
 
-Bunu azaltmak için [görüntüyü Azure Premium BLOB depolama alanında depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun. Örneğin:
+Bunu azaltmak için [görüntüyü Azure Premium BLOB depolama alanında depolamayı](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)göz önünde bulundurun. Örnek:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>Büyük karşıya yükleme boyutu
 
-Bazı Azure bilişsel hizmetler, karşıya yüklediğiniz bir dosyadan veri elde eden yöntemler sağlar. Örneğin, yüz hizmetinin [Detectwithstreamasync yöntemini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) çağırdığınızda, hizmetin yüzeyleri algılamaya çalıştığı bir görüntüyü karşıya yükleyebilirsiniz.
+Bazı Azure bilişsel hizmetler, karşıya yüklediğiniz bir dosyadan veri elde eden yöntemler sağlar. Örneğin, yüz hizmetinin [Detectwithstreamasync yöntemini](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) çağırdığınızda, hizmetin yüzeyleri algılamaya çalıştığı bir görüntüyü karşıya yükleyebilirsiniz.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -62,12 +62,12 @@ Karşıya yüklenecek dosya büyükse, `DetectWithStreamAsync` aşağıdaki nede
 - Dosyayı dosya boyutuna göre işlemek için hizmeti daha uzun sürer.
 
 Karşı
-- [Görüntüyü Azure Premium blob depolamada depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun. Örneğin:
+- [Görüntüyü Azure Premium blob depolamada depolamayı](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)göz önünde bulundurun. Örnek:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
 - Daha küçük bir dosyayı karşıya yüklemeyi düşünün.
-    - Yüz tanıma için [giriş verileriyle](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) ilgili yönergeleri ve yüz [tanıma için giriş verilerini](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)görüntüleyin.
+    - Yüz tanıma için [giriş verileriyle](../concepts/face-detection.md#input-data) ilgili yönergeleri ve yüz [tanıma için giriş verilerini](../concepts/face-recognition.md#input-data)görüntüleyin.
     - Yüz algılama için, algılama modeli kullanılırken `DetectionModel.Detection01` , görüntü dosyası boyutunu azaltmak işleme hızını artırır. Algılama modeli kullanılırken, görüntü dosyası `DetectionModel.Detection02` boyutunu azaltmak yalnızca görüntü dosyası 1920x1080 ' den küçük olduğunda işleme hızını artırır.
     - Yüz tanıma için, yüz boyutunu 200x200 piksel olarak düşürmek, tanınma modelinin doğruluğunu etkilemez.
     - Ve yöntemlerinin performansı, `DetectWithUrlAsync` `DetectWithStreamAsync` görüntüde kaç yüzün olduğuna de bağlıdır. Yüz tanıma hizmeti bir görüntü için 100 yüz alabilir. Yüzler, büyük ve küçük olan yüz dikdörtgen boyutuna göre sıralanır.

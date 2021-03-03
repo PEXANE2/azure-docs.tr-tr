@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618119"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687507"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services dayanıklılık veya coğrafi konum için çoğaltma kümeleri oluşturma ve kullanma (Önizleme)
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>Öğretici: Azure Active Directory Domain Services dayanıklılık veya coğrafi konum için çoğaltma kümeleri oluşturma ve kullanma
 
 Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanının esnekliğini artırmak veya uygulamalarınıza yakın ek coğrafi konumlara dağıtım yapmak için *çoğaltma kümelerini* kullanabilirsiniz. *Aaddscontoso.com* gibi her Azure AD DS yönetilen etki alanı ad alanı bir ilk çoğaltma kümesi içerir. Diğer Azure bölgelerinde ek çoğaltma kümeleri oluşturma özelliği, yönetilen bir etki alanı için coğrafi dayanıklılık sağlar.
 
 Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi bir sanal ağa bir çoğaltma kümesi ekleyebilirsiniz.
-
-Çoğaltma kümeleri, Azure AD Domain Services ortak bir önizleme özelliğidir. Lütfen hala önizlemede olan özellikler için mevcut olan destek farklarını unutmayın. Önizlemeler hakkında daha fazla bilgi için, [ÖNIZLEME SLA Azure Active Directory](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -78,7 +76,7 @@ Ek bir çoğaltma kümesi oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin.
 1. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
-1. Sol taraftaki **çoğaltma kümeleri (Önizleme)** öğesini seçin. Her bir yönetilen etki alanı, aşağıdaki örnekte gösterildiği gibi seçili bölgede bir ilk çoğaltma kümesi içerir:
+1. Sol taraftaki **çoğaltma kümeleri**' ni seçin. Her bir yönetilen etki alanı, aşağıdaki örnekte gösterildiği gibi seçili bölgede bir ilk çoğaltma kümesi içerir:
 
     ![Azure portal bir çoğaltma kümesini görüntüleme ve ekleme için örnek ekran görüntüsü](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ Bir çoğaltma kümesini silmek için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin.
 1. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
-1. Sol taraftaki **çoğaltma kümeleri (Önizleme)** öğesini seçin. Çoğaltma kümeleri listesinden, silmek istediğiniz çoğaltma kümesinin yanındaki **...** bağlam menüsünü seçin.
+1. Sol taraftaki **çoğaltma kümeleri**' ni seçin. Çoğaltma kümeleri listesinden, silmek istediğiniz çoğaltma kümesinin yanındaki **...** bağlam menüsünü seçin.
 1. Bağlam menüsünden **Sil** ' i seçin ve ardından çoğaltma kümesini silmek istediğinizi onaylayın.
 
 > [!NOTE]

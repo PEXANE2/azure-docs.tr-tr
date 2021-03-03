@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702156"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>MySQL için Azure veritabanı tek sunucu 'da ana sürüm yükseltmesi
 
@@ -59,7 +59,7 @@ Azure CLı kullanarak MySQL 5,6 Server Azure veritabanınız için ana sürüm y
  
    Bu yükseltme, Azure CLı 'nin sürüm 2.16.0 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür. Yüklü sürümü ve bağımlı kitaplıkları bulmak için az version komutunu çalıştırın. En son sürüme yükseltmek için az upgrade komutunu çalıştırın.
 
-2. Oturum açtıktan sonra [az MySQL Server Upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) komutunu çalıştırın:
+2. Oturum açtıktan sonra [az MySQL Server Upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) komutunu çalıştırın:
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ MySQL 5,6 ' den MySQL 5,7 ' den, okuma Çoğaltmalarından yararlanarak en düş
 
 1. [Azure Portal](https://portal.azure.com/), MySQL Için mevcut Azure veritabanı 5,6 ' i seçin.
 
-2. Birincil sunucudan bir [okuma çoğaltması](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) oluşturun.
+2. Birincil sunucudan bir [okuma çoğaltması](./concepts-read-replicas.md#create-a-replica) oluşturun.
 
 3. [Okuma çoğaltmalarınızı](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) 5,7 sürümüne yükseltin.
 
@@ -105,7 +105,7 @@ MySQL 5,6 ' den MySQL 5,7 ' den, okuma Çoğaltmalarından yararlanarak en düş
 
    `Slave_IO_Running`Ve durumu `Slave_SQL_Running` "Yes" ise ve değeri `Seconds_Behind_Master` "0" ise, çoğaltma iyi çalışır. `Seconds_Behind_Master` çoğaltmanın ne kadar geç olduğunu gösterir. Değer "0" değilse, çoğaltmanın güncelleştirmeleri işlemesi anlamına gelir. `Seconds_Behind_Master`"0" olarak onaylandıktan sonra çoğaltmayı durdurmak güvenlidir.
 
-6. [Çoğaltmayı durdurarak](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server)okuma çoğaltmanıza birincili yükseltin.
+6. [Çoğaltmayı durdurarak](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)okuma çoğaltmanıza birincili yükseltin.
 
 7. Uygulamanızı Server 5,7 çalıştıran yeni birincil (Eski çoğaltma) olarak işaretleyin. Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı kaynak yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
 

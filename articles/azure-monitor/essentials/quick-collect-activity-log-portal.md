@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734290"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure portal kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
-Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir platform günlüğüdür. Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi diğer özellikleri etkinleştirerek, etkinlik günlüğünü Azure izleyici günlüklerine göndermek için Azure Portal bir Log Analytics çalışma alanı ve bir tanılama ayarı oluşturmak üzere nasıl kullanılacağı gösterilmektedir. 
+Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir platform günlüğüdür. Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorgularını](../logs/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi diğer özellikleri etkinleştirerek, etkinlik günlüğünü Azure izleyici günlüklerine göndermek için Azure Portal bir Log Analytics çalışma alanı ve bir tanılama ayarı oluşturmak üzere nasıl kullanılacağı gösterilmektedir. 
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
@@ -73,7 +73,7 @@ Ayrıntılı özelliklerini görüntülemek için kayıtlardan birini genişleti
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../essentials/resource-logs.md) toplamanız gerekir.
+Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../logs/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../essentials/resource-logs.md) toplamanız gerekir.
 
 
 > [!div class="nextstepaction"]

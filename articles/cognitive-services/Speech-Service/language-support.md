@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4e626cb5cac29a0e5133eb77cbaff3f4131b8456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722356"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -62,25 +62,32 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Felemenkçe (Hollanda)                | `nl-NL` | Ses (20201015)<br>Metin                                   |    Yes                       |
 | İngilizce (Avustralya)                | `en-AU` | Ses (20201019)<br>Metin                 | Yes                          |
 | İngilizce (Kanada)                   | `en-CA` | Ses (20201019)<br>Metin                 | Yes                          |
+| İngilizce (Gana)                    | `en-GH` | Metin                                   |                           |
 | İngilizce (Hong Kong)                | `en-HK` | Metin                                   |                           |
 | İngilizce (Hindistan)                    | `en-IN` | Ses (20200923)<br>Metin                 | Yes                          |
 | İngilizce (İrlanda)                  | `en-IE` | Metin                                   |                           |
+| İngilizce (Kenya)                    | `en-KE` | Metin                                   |                           |
 | İngilizce (Yeni Zelanda)              | `en-NZ` | Ses (20201019)<br>Metin                 |  Yes                         |
 | İngilizce (Nijerya)                  | `en-NG` | Metin                                   |                           |
 | İngilizce (Filipinler)              | `en-PH` | Metin                                   |                           |
 | İngilizce (Singapur)                | `en-SG` | Metin                                   |                           |
 | İngilizce (Güney Afrika)             | `en-ZA` | Metin                                   |                           |
+| İngilizce (Tanzanya)                 | `en-TZ` | Metin                                   |                           |
 | İngilizce (İngiltere)           | `en-GB` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
 | İngilizce (ABD)            | `en-US` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
 | Estonya dili (Estonya)                  | `et-EE` | Metin                                   |                           |
+| Filipin Dili (Filipinler)             | `fil-PH`| Metin                                   |                           |
 | Fince (Finlandiya)                  | `fi-FI` | Metin                                   |     Yes                      |
 | Fransızca (Kanada)                    | `fr-CA` | Ses (20201015)<br>Metin                 |     Yes                      |
 | Fransızca (Fransa)                    | `fr-FR` | Ses (20201015)<br>Metin<br>İşi|      Yes                     |
+| Fransızca (İsviçre)               | `fr-CH` | Metin                                   |                           |
+| Almanca (Avusturya)                   | `de-AT` | Metin                                   |                           |
 | Almanca (Almanya)                   | `de-DE` | Ses (20190701, 20200619, 20201127)<br>Metin<br>İşi|  Yes                         |
 | Yunanca (Yunanistan)                     | `el-GR` | Metin                                   |                           |
 | Gucerat dili (Hindistan)                  | `gu-IN` | Metin                                   |                           |
 | Hintçe (Hindistan)                      | `hi-IN` | Ses (20200701)<br>Metin                 |     Yes                      |
 | Macarca (Macaristan)                | `hu-HU` | Metin                                   |                           |
+| Endonezce (Endonezya)             | `id-ID` | Metin                                   |                           |
 | İrlanda dili (Irlanda)                     | `ga-IE` | Metin                                   |                           |
 | İtalyanca (İtalya)                    | `it-IT` | Ses (20201016)<br>Metin<br>İşi|      Yes                     |
 | Japonca (Japonya)                   | `ja-JP` | Metin                                   |      Yes                     |
@@ -124,6 +131,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Telugu dili (Hindistan)                     | `te-IN` | Metin                                   |                           |
 | Tayca (Tayland)                    | `th-TH` | Metin                                   |      Yes                     |
 | Türkçe (Türkiye)                   | `tr-TR` | Metin                                   |                           |
+| Vietnamca (Vietnam)               | `vi-VN` | Metin                                   |                           |
 
 ## <a name="text-to-speech"></a>Metin okuma
 

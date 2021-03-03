@@ -2,17 +2,14 @@
 title: Azure Data Lake Analytics’te kotaları ve limitleri ayarlama
 description: Azure Data Lake Analytics (ADLA) hesaplarında kotaları ve limitleri ayarlama ve artırma hakkında bilgi edinin.
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220848"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710184"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te kotaları ve limitleri ayarlama
 
@@ -53,7 +50,7 @@ Bu, hesabınızda eşzamanlı olarak çalışabilecek en fazla iş sayısıdır.
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Mevcut bir ADLA hesabı seçin.
 3. **Özellikler**'e tıklayın.
-4. **Maksimum Avustralya**, **en fazla çalışan Iş sayısı**ve **iş gönderme limitlerinin** değerlerini gereksinimlerinize uyacak şekilde ayarlayın.
+4. **Maksimum Avustralya**, **en fazla çalışan Iş sayısı** ve **iş gönderme limitlerinin** değerlerini gereksinimlerinize uyacak şekilde ayarlayın.
 
 ## <a name="increase-maximum-quota-limits"></a>Maksimum kota sınırlarını artır
 
@@ -65,11 +62,11 @@ Azure limitleriyle ilgili daha fazla bilgiyi [Azure hizmeti 'ne özgü sınırla
 
    ![Azure Data Lake Analytics Portal yeni destek isteği](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 
-2. Sorun türü **kotasını**seçin.
+2. Sorun türü **kotasını** seçin.
 
 3. **Aboneliğinizi** seçin (bir "deneme" aboneliği olmadığından emin olun).
 
-4. Kota türü **Data Lake Analytics**seçin.
+4. Kota türü **Data Lake Analytics** seçin.
 
    ![Azure Data Lake Analytics destek isteği kota türü](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 

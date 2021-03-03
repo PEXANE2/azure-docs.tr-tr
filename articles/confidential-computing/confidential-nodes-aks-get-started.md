@@ -4,14 +4,14 @@ description: Gizli düğümlere sahip bir AKS kümesi oluşturmayı ve Azure CL�
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 2/8/2020
+ms.date: 2/25/2020
 ms.author: amgowda
-ms.openlocfilehash: 866c8340cf9c16d768f4035326aa2ec52dbf1401
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 51b0813849236d9335d1482019f740fc8b23749f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703295"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak gizli bilgi işlem düğümleri (DCsv2) ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (A
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Gizli bilgi işlem düğümü özellikleri (DC <x> s-v2)
 
-1. Yalnızca Linux kapsayıcılarını destekleyen Linux çalışan düğümleri
+1. Linux kapsayıcılarını destekleyen Linux çalışan düğümleri
 1. Ubuntu 18,04 sanal makineler düğümleri ile 2. nesil VM
 1. Şifrelenmiş sayfa önbelleği (EPC) ile Intel SGX tabanlı CPU. [Daha fazla bilgi edinin](./faq.md)
 1. Kubernetes sürüm 1.16 + desteği
@@ -37,41 +37,8 @@ Dağıtım öğreticisi şunları gerektirir:
 
 1. Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 1. Dağıtım makinenizde Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](../container-registry/container-registry-get-started-azure-cli.md)
-1. Azure [aks-önizleme uzantısı](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) en düşük sürüm 0.5.0
 1. Aboneliğinizdeki kullanım için en az altı **DC <x> s-v2** çekirdeği mevcuttur. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](../azure-portal/supportability/per-vm-quota-requests.md) yönergeleri izleyin
 
-## <a name="cli-based-preparation-steps-required-for-add-on-in-preview---optional-but-recommended"></a>CLı tabanlı hazırlık adımları (eklenti için Önizleme-isteğe bağlı ancak önerilir)
-AKS 'de gizli bilgi işlem eklentisini etkinleştirmek için aşağıdaki yönergeleri izleyin.
-
-### <a name="step-1-installing-the-cli-prerequisites"></a>1. Adım: CLı önkoşullarını yükleme
-
-Aks-Preview 0.5.0 uzantısını veya üstünü yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli-interactive
-az extension update --name aks-preview
-```
-### <a name="step-2-azure-confidential-computing-addon-feature-registration-on-azure"></a>2. Adım: Azure 'da Azure gizli bilgi Işlem eklentisi özelliği kaydı
-AKS-ConfidentialComputingAddon Azure aboneliğine kaydediliyor. Bu özellik, [aşağıda](./confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks)AÇıKLANDıĞı gibi SGX cihaz eklentisi daemonset ekler:
-1. SGX cihaz sürücüsü eklentisi
-```azurecli-interactive
-az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
-```
-Durumun kayıtlı olarak gösterilmesi birkaç dakika sürebilir. ' Az Feature List ' komutunu kullanarak kayıt durumunu kontrol edebilirsiniz. Bu özellik kaydı, her abonelik için yalnızca bir kez yapılır. Daha önce kaydedilmişse yukarıdaki adımı atlayabilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
-```
-Durum kayıtlı olarak görünüyorsa, ' az Provider Register ' komutunu kullanarak Microsoft. ContainerService kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 ## <a name="creating-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Gizli bilgi işlem düğümleri ve eklentisi ile yeni AKS kümesi oluşturma
 Eklenti ile gizli bilgi işlem özellikli düğümler eklemek için aşağıdaki yönergeleri izleyin.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693841"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -151,7 +151,7 @@ NVMe disklerinde şifrelemeyi etkinleştirmek için:
 
 Şifreleme, aşağıdaki senaryolarda NVMe disklerinde kalır:
 - VM yeniden başlatma
-- VMSS ReImage
+- Sanal makine ölçek kümesi yeniden görüntüsü
 - İşletim sistemini takas et
 
 NVMe diskleri aşağıdaki senaryolar için başlatılmamış olur:
@@ -260,9 +260,8 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 - Her kapsayıcı için dinamik birimler oluşturan Windows Server kapsayıcıları.
 - Kısa ömürlü işletim sistemi diskleri.
 - DFS, GFS, DRDB ve CephFS gibi paylaşılan/dağıtılmış dosya sistemlerinin şifrelenmesi (ancak bunlarla sınırlı olmamak üzere).
-- Şifrelenmiş bir sanal makineyi başka bir aboneliğe veya bölgeye taşıma.
+- Şifrelenmiş bir VM 'yi başka bir aboneliğe veya bölgeye taşıma.
 - Şifrelenmiş bir sanal makinenin görüntüsünü veya anlık görüntüsünü oluşturma ve ek VM 'Leri dağıtmak için kullanma.
-- Gen2 VM 'Ler (bkz. [Azure 'da 2. nesil VM 'ler Için destek](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
 - Müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](../disk-encryption.md) şifrelenmiş diskler IÇEREN bir VM 'ye Ade uygulama. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - ADE ile şifrelenen veya **herhangi** bır zaman Ade ile ŞIFRELENEN bir VM 'yi, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeye](../disk-encryption.md)geçirme.

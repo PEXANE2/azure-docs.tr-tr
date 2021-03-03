@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 643645eb3b361cd68def1177ba7e8af89f1963bc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734630"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Uygulama değişikliği analizi için görselleştirmeler (Önizleme)
 
@@ -80,13 +80,13 @@ Bir sanal makine için sorunları tanılama ve çözme aracını ziyaret edin.  
 
 ## <a name="activity-log-change-history"></a>Etkinlik günlüğü değişiklik geçmişi
 
-Etkinlik günlüğündeki değişiklik [geçmişini görüntüle](../platform/activity-log.md#view-change-history) özelliği, bir işlemle ilişkili değişiklikleri almak Için uygulama değişiklik Analizi hizmeti arka ucunu çağırır. [Azure Kaynak grafiğini](../../governance/resource-graph/overview.md) doğrudan çağırmak Için kullanılan **değişiklik geçmişi** , ancak döndürülen değişiklikler, [Azure Kaynak grafiğinden](../../governance/resource-graph/overview.md)kaynak düzeyindeki değişiklikleri, [Azure Resource Manager](../../azure-resource-manager/management/overview.md)kaynak özelliklerini ve uygulama Hizmetleri Web uygulaması gibi PaaS hizmetlerinden gelen Konuk değişiklikleri içerir. Uygulama değişikliği çözümleme hizmeti 'nin Kullanıcı aboneliklerinde değişiklik taraması yapabilmesi için, bir kaynak sağlayıcısının kaydedilmesi gerekir. **Değişiklik geçmişi** sekmesine ilk kez girerken araç otomatik olarak **Microsoft. changeanalysis** kaynak sağlayıcısını kaydetmeye başlayacaktır. Kaydolduktan sonra **Azure Kaynak grafındaki** değişiklikler hemen kullanılabilir ve son 14 güne ait olur. Abonelik eklendikten sonra diğer kaynaklardaki değişiklikler ~ 4 saat sonra kullanılabilir olacaktır.
+Etkinlik günlüğündeki değişiklik [geçmişini görüntüle](../essentials/activity-log.md#view-change-history) özelliği, bir işlemle ilişkili değişiklikleri almak Için uygulama değişiklik Analizi hizmeti arka ucunu çağırır. [Azure Kaynak grafiğini](../../governance/resource-graph/overview.md) doğrudan çağırmak Için kullanılan **değişiklik geçmişi** , ancak döndürülen değişiklikler, [Azure Kaynak grafiğinden](../../governance/resource-graph/overview.md)kaynak düzeyindeki değişiklikleri, [Azure Resource Manager](../../azure-resource-manager/management/overview.md)kaynak özelliklerini ve uygulama Hizmetleri Web uygulaması gibi PaaS hizmetlerinden gelen Konuk değişiklikleri içerir. Uygulama değişikliği çözümleme hizmeti 'nin Kullanıcı aboneliklerinde değişiklik taraması yapabilmesi için, bir kaynak sağlayıcısının kaydedilmesi gerekir. **Değişiklik geçmişi** sekmesine ilk kez girerken araç otomatik olarak **Microsoft. changeanalysis** kaynak sağlayıcısını kaydetmeye başlayacaktır. Kaydolduktan sonra **Azure Kaynak grafındaki** değişiklikler hemen kullanılabilir ve son 14 güne ait olur. Abonelik eklendikten sonra diğer kaynaklardaki değişiklikler ~ 4 saat sonra kullanılabilir olacaktır.
 
 ![Etkinlik günlüğü değişiklik geçmişi tümleştirmesi](./media/change-analysis/activity-log-change-history.png)
 
 ## <a name="vm-insights-integration"></a>VM öngörüleri tümleştirmesi
 
-[VM](../insights/vminsights-overview.md) içgörüleri etkin olan kullanıcılar, sanal MAKINELERINIZDE, CPU veya bellek gibi bir ölçüm grafiğinde ani artışlar oluşmasına neden olabilecek değişiklikleri görüntüleyebilir. Değişiklik verileri, VM öngörüleri tarafında gezinme çubuğunda tümleştirilir. Kullanıcı, VM 'de herhangi bir değişiklik olup olmadığını görüntüleyebilir ve uygulama değişiklik Analizi tek başına Kullanıcı arabirimindeki değişiklik ayrıntılarını görüntülemek için **değişiklikleri araştır** ' ı seçin.
+[VM](../vm/vminsights-overview.md) içgörüleri etkin olan kullanıcılar, sanal MAKINELERINIZDE, CPU veya bellek gibi bir ölçüm grafiğinde ani artışlar oluşmasına neden olabilecek değişiklikleri görüntüleyebilir. Değişiklik verileri, VM öngörüleri tarafında gezinme çubuğunda tümleştirilir. Kullanıcı, VM 'de herhangi bir değişiklik olup olmadığını görüntüleyebilir ve uygulama değişiklik Analizi tek başına Kullanıcı arabirimindeki değişiklik ayrıntılarını görüntülemek için **değişiklikleri araştır** ' ı seçin.
 
 [![VM öngörüleri tümleştirmesi](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 

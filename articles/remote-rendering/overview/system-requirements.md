@@ -6,18 +6,14 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722700"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705169"
 ---
 # <a name="system-requirements"></a>Sistem Gereksinimleri
-
-> [!IMPORTANT]
-> **Azure uzaktan işleme** Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu bölümde, *Azure uzaktan işleme* (ARR) ile çalışmak için en düşük sistem gereksinimleri listelenir.
 
@@ -71,7 +67,7 @@ Ağ sorunlarını gidermek için [sorun giderme kılavuzuna](../resources/troubl
 
 Uzaktan Işleme sanal makineleri aşağıdaki IP aralıklarından Paylaşılan IP adreslerini kullanır:
 
-| Ad             | Bölge         | IP öneki         |
+| Name             | Region         | IP öneki         |
 |------------------|:---------------|:------------------|
 | Doğu Avustralya   | australiaeast  | 20.53.44.240/28   |
 | Doğu ABD          | eastus         | 20.62.129.224/28  |

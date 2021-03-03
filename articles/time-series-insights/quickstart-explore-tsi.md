@@ -9,15 +9,15 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 01/11/2021
-ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698119"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Gen2 demo ortamını keşfet
+# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Hızlı Başlangıç: Azure Time Series Insights 2. Nesil tanıtım ortamını keşfedin
 
 Bu hızlı başlangıç, bir Azure Time Series Insights Gen2 ortamıyla başlamanızı ister. Ücretsiz gösteride, Azure Time Series Insights Gen2 'e eklenmiş olan önemli özellikler turuna katılın.
 
@@ -129,13 +129,6 @@ Azure Time Series Insights Gen2 ve algılayıcı telemetrisi kullanarak, geçmi�
     * Görüntüyü aynı grafik ölçeğinde tüm **Oluşturucu sistem** algılayıcılarının kaplaması için değiştirin.
 
       [![Görüntüyü her şeyi içerecek şekilde değiştirin](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Hızlı başlangıcı tamamladığınıza göre, oluşturduğunuz kaynakları temizleyin:
-
-1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin ve Azure Time Series Insights Gen2 kaynak grubunuzu bulun.
-1. Her kaynağı ayrı ayrı **Sil** veya Kaldır ' a tıklayarak kaynak grubunun tamamını (ve içinde yer alan tüm kaynakları) silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

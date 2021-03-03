@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721029"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
@@ -29,7 +29,7 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 
 ## <a name="storage-engines"></a>Depolama motorları
 
-MySQL birçok depolama altyapısını destekler. MySQL için Azure veritabanı esnek sunucusu 'nda aşağıdaki depolama motorları desteklenir ve desteklenmez:
+MySQL birçok depolama altyapısını destekler. MySQL için Azure veritabanı 'nda aşağıdaki depolama motorları desteklenir ve desteklenmez:
 
 ### <a name="supported"></a>Desteklenir
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

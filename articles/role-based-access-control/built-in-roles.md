@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/15/2021
+ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724515"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -116,7 +116,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Azure Event Hubs veri alıcısı](#azure-event-hubs-data-receiver) | Azure Event Hubs kaynaklarına erişim izni verir. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure Event Hubs veri gönderici](#azure-event-hubs-data-sender) | Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. | 2b629674-e913-4C01-ae53-ef4638d8f975 |
 > | [Katkıda bulunan Data Factory](#data-factory-contributor) | Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. | 673868aa-7521-48A0-acc6-0f60742d39f5 |
-> | [Veri Takiger](#data-purger) | Analiz verilerini temizedebilir | 150f5e0c-0603-4f03-8C7F-cf70034c4e90 |
+> | [Veri Takiger](#data-purger) | Log Analytics çalışma alanından özel verileri silin. | 150f5e0c-0603-4f03-8C7F-cf70034c4e90 |
 > | [HDInsight küme operatörü](#hdinsight-cluster-operator) | HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir. | 61ed4efc-fab3-44fd-B111-e24485cc132a |
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
@@ -3944,6 +3944,10 @@ Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere e
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/RegenerateKey/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/ListKeys/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/sqlroledefinitions/Write | SQL rol tanımı oluşturma veya güncelleştirme |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/sqlroledefinitions/Delete | SQL rol tanımını silme |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/sqlroleatamas/Write | SQL rol ataması oluşturma veya güncelleştirme |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/sqlroleatamas/Delete | SQL rolü atamasını silme |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -3973,7 +3977,11 @@ Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere e
         "Microsoft.DocumentDB/databaseAccounts/readonlyKeys/*",
         "Microsoft.DocumentDB/databaseAccounts/regenerateKey/*",
         "Microsoft.DocumentDB/databaseAccounts/listKeys/*",
-        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*"
+        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/delete",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/delete"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4774,7 +4782,7 @@ Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun
 
 ### <a name="data-purger"></a>Veri Takiger
 
-Analiz verilerini temizedebilir [daha fazla bilgi edinin](../azure-monitor/logs/personal-data-mgmt.md)
+Log Analytics çalışma alanından özel verileri silin. [Daha fazla bilgi edinin](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |

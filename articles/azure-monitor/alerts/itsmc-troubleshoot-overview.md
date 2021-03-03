@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 991d37b097587e8e4a524c4fc8bc21e9b6af20b5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737214"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı sorunları giderme
 
@@ -55,7 +55,7 @@ Aşağıdaki bölümler, yaygın belirtileri, olası nedenleri ve çözümleri b
 
 * Kimlik bilgileri yanlış.
 * Ayrıcalıklar yetersiz.
-* Web uygulaması yanlış dağıtıldı.
+* Service Manager bağlantıları için: Web uygulaması yanlış dağıtıldı.
 
 **Çözüm**:
 
@@ -95,3 +95,12 @@ Aşağıdaki bölümler, yaygın belirtileri, olası nedenleri ve çözümleri b
 **Neden**: yeni oluşturulan bir ısmc örneği, ilk eşitlemeyi henüz bitiremedi.
 
 **Çözüm**: [ortak hataları ve bunların çözümlerini](itsmc-dashboard-errors.md)gözden geçirin.
+
+### <a name="sync-connection"></a>Bağlantıyı Eşitle 
+
+**Neden**: bu belirtinin çeşitli nedenleri olabilir:
+
+* Şablonlar, eylem tanımının bir parçası olarak gösterilmez.
+* Incedents/olayları ServiceNow içinde oluşturulmaz.
+
+**Çözüm**: [bağlayıcıyı eşitleyin](itsmc-resync-servicenow.md).

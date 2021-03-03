@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 günlüğe kaydetme ve tehdit alg�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576811"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720690"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
-Günlüğe kaydetme ve tehdit algılama, Azure 'da tehditleri algılama ve Azure hizmetleri için Denetim günlüklerini etkinleştirme, toplama ve depolama denetimlerini ele alır. Bu, Azure hizmetlerinde yerel tehdit algılama ile yüksek kaliteli uyarılar oluşturmaya yönelik denetimlerle algılama, araştırma ve düzeltme süreçlerini etkinleştirmeyi içerir; Ayrıca Azure Izleyici ile günlüklerin toplanmasını, Azure Sentinel ile güvenlik analizini, zaman eşitlemesini ve günlük tutmayı de kapsar. 
+Günlüğe kaydetme ve tehdit algılama, Azure 'da tehditleri algılama ve Azure hizmetleri için Denetim günlüklerini etkinleştirme, toplama ve depolama denetimlerini ele alır. Bu, Azure hizmetlerinde yerel tehdit algılama ile yüksek kaliteli uyarılar oluşturmaya yönelik denetimlerle algılama, araştırma ve düzeltme süreçlerini etkinleştirmeyi içerir; Ayrıca Azure Izleyici ile günlüklerin toplanmasını, Azure Sentinel ile güvenlik analizini, zaman eşitlemesini ve günlük tutmayı de kapsar.
+
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: günlük kaydı ve tehdit algılama](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Azure kaynakları için tehdit algılamayı etkinleştirme
 
@@ -28,7 +30,7 @@ Olası tehditler ve bozukluklar için farklı türlerde Azure varlıklarını iz
 
 Azure hizmet telemetrisini izlemeyi ve hizmet günlüklerini çözümlemeyi temel alan Azure Güvenlik Merkezi 'nin yerleşik tehdit algılama özelliğini kullanın. Veriler, sistemden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. 
 
-Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi kuralları oluşturmak için Azure Sentinel kullanın. Kurallar, her olayı araştırmak için ölçütler eşleştiğinde olaylar oluşturur. Azure Sentinel, tehdit algılama özelliğini geliştirmek için üçüncü taraf tehdit bilgilerini de içeri aktarabilir. 
+Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi kuralları oluşturmak için Azure Sentinel kullanın. Kurallar, her olayı araştırmak için ölçütler eşleştiğinde olaylar oluşturur. Azure Sentinel, tehdit algılama yeteneklerini geliştirmek için üçüncü taraf tehdit bilgilerini de içeri aktarabilir. 
 
 - [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/azure-defender.md)
 
@@ -46,7 +48,7 @@ Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi 
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -83,9 +85,9 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -95,7 +97,9 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
-Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı desteklemek üzere güvenlik çözümlemesi için ağ güvenlik grubu (NSG) kaynak günlüklerini, NSG akış günlüklerini, Azure Güvenlik Duvarı günlüklerini ve Web uygulaması güvenlik duvarı (WAF) günlüklerini etkinleştirin ve toplayın. Akış günlüklerini bir Azure Izleyici Log Analytics çalışma alanına gönderebilir ve sonra öngörüleri sağlamak için Trafik Analizi kullanabilirsiniz. Diğer ağ verilerinin bağıntılandırmasına yardımcı olmak için DNS sorgu günlükleri toplatığınızdan emin olun.
+Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı desteklemek üzere güvenlik çözümlemesi için ağ güvenlik grubu (NSG) kaynak günlüklerini, NSG akış günlüklerini, Azure Güvenlik Duvarı günlüklerini ve Web uygulaması güvenlik duvarı (WAF) günlüklerini etkinleştirin ve toplayın. Akış günlüklerini bir Azure Izleyici Log Analytics çalışma alanına gönderebilir ve sonra öngörüleri sağlamak için Trafik Analizi kullanabilirsiniz.
+
+Diğer ağ verilerinin bağıntılandırmasına yardımcı olmak için DNS sorgu günlükleri toplatığınızdan emin olun.
 
 - [Ağ güvenlik grubu akış günlüklerini etkinleştirme](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -117,7 +121,7 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -131,7 +135,7 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 Uyumluluk, tehdit algılama, araştırma ve olay araştırması gereksinimlerini karşılamak için Azure kaynakları için günlük kaydını etkinleştirin. 
 
-Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak günlüklerine erişim için Azure kaynaklarında kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek üzere kullanabilirsiniz. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. 
+Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak günlüklerine erişim için Azure kaynaklarında kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek üzere kullanabilirsiniz. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir.
 
 - [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -145,7 +149,7 @@ Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak gün
 
 Altyapı ve uç nokta güvenliği 
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -155,13 +159,13 @@ Altyapı ve uç nokta güvenliği
 |--|--|--|--|
 | LT-5 | 6,5, 6,6 | AU-3, SI-4 |
 
-Bağıntıyı etkinleştirmek için günlük depolamayı ve çözümlemeyi merkezileştirin. Her günlük kaynağı için bir veri sahibi, erişim Kılavuzu, depolama konumu, verileri işlemek ve erişmek için kullanılan araçları ve veri saklama gereksinimlerini atadığınızdan emin olun.
+Bağıntıyı etkinleştirmek için günlük depolamayı ve çözümlemeyi merkezileştirin. Her günlük kaynağı için bir veri sahibi, erişim Kılavuzu, depolama konumu, verileri işlemek ve erişmek için kullanılan araçları ve veri saklama gereksinimlerini atamış olduğunuzdan emin olun.
 
-Azure etkinlik günlüklerini merkezi günlüklerinizi tümleştirdiğinizden emin olun. Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından oluşturulan güvenlik verilerini toplamak için Azure Izleyici aracılığıyla günlük alma. Azure Izleyici 'de analiz sorgulamak ve gerçekleştirmek için Log Analytics çalışma alanlarını kullanın ve uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın.
+Azure etkinlik günlüklerini merkezi günlükliğinizdeki tümleştirdiğinizden emin olun. Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından oluşturulan güvenlik verilerini toplamak için Azure Izleyici aracılığıyla günlük alma. Azure Izleyici 'de analiz sorgulamak ve gerçekleştirmek için Log Analytics çalışma alanlarını kullanın ve uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın.
 
 Ayrıca, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'e verileri etkinleştirin ve ekleyin.
 
-Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer. 
+Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer.
 
 - [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md)
 
@@ -189,7 +193,7 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 
 - [Log Analytics veri saklama süresini değiştirme](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure Güvenlik Merkezi uyarıları ve önerileri dışarı aktarma](../../security-center/continuous-export.md)
 
@@ -199,9 +203,9 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Güvenlik uyumluluğu yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -211,7 +215,7 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
-Microsoft, çoğu Azure PaaS ve SaaS hizmeti için zaman kaynaklarını korur. Sanal makineleriniz için, belirli bir gereksinimin olmadığı durumlar dışında, zaman eşitleme için Microsoft varsayılan NTP sunucusu ' nu kullanın.  Kendi ağ zaman Protokolü (NTP) sunucunuzu oluşturmanız gerekiyorsa, UDP hizmet bağlantı noktası 123 ' ı güvence altına aldığınızdan emin olun.
+Microsoft, çoğu Azure PaaS ve SaaS hizmeti için zaman kaynaklarını korur. Sanal makineleriniz için, belirli bir gereksinimin olmadığı durumlar dışında, zaman eşitleme için Microsoft varsayılan NTP sunucusu ' nu kullanın. Kendi ağ zaman Protokolü (NTP) sunucunuzu oluşturmanız gerekiyorsa, UDP hizmet bağlantı noktası 123 ' ı güvence altına aldığınızdan emin olun.
 
 Azure içindeki kaynaklar tarafından oluşturulan tüm Günlükler varsayılan olarak belirtilen saat dilimiyle birlikte zaman damgaları sağlar.
 

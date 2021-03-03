@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147275"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739377"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -39,8 +39,6 @@ Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki
 
 **Arama koşulları:** Hangi sütunların eşleşeceğini seçin. Eşitlik koşulu karşılanıyorsa, satırlar eşleşme olarak kabul edilir. [Veri akışı ifade dilini](data-flow-expression-functions.md)kullanarak bir değer ayıklamak için üzerine gelin ve ' hesaplanan sütun ' seçeneğini belirleyin.
 
-Arama dönüştürmesi yalnızca eşitlik eşleşmelerini destekler. Arama ifadesini, büyüktür gibi diğer işleçleri içerecek şekilde özelleştirmek için, [JOIN dönüşümünde bir çapraz birleştirmenin](data-flow-join.md#custom-cross-join)kullanılması önerilir. Çapraz bir birleşime yürütme sırasında olası bir Kartezyen ürün hatalarından kaçınılmasını sağlar.
-
 Her iki akıştaki tüm sütunlar çıktı verilerine dahil edilir. Yinelenen veya istenmeyen sütunları bırakmak için, arama dönüşümünüze sonra bir [seçme dönüşümü](data-flow-select.md) ekleyin. Ayrıca, bir havuz dönüşümünde sütunlar bırakılabilir veya yeniden adlandırılabilir.
 
 ### <a name="non-equi-joins"></a>Eşit olmayan birleşimler
@@ -65,7 +63,7 @@ Hata ayıklama modundaki arama dönüşümünü veri önizleme ile sınarken, k�
 
 ![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
-Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit** ' i seçin.
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 

@@ -3,14 +3,14 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710626"
 ---
-# <a name="configure-azure-backup-reports-preview"></a>Azure Backup raporlarını yapılandırma (Önizleme)
+# <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
 Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan verilere göre yedeklemeler hakkında öngörüler elde etmek içindir. Böyle bir çözüm için kullanım örnekleri şunları içerir:
 
@@ -139,6 +139,20 @@ Bu görünümü kullanarak günlük tam yedekleme için yapılandırılmış ver
 Kılavuzun veritabanı iş yüklerini beklendiği gibi görüntüleyebilmesi için, sekmenin en üstündeki **yedekleme yönetimi türü** filtresinin Azure VM 'de **SQL** ve **Azure VM 'de SAP HANA** , seçili olması gerekir.
 
 ![Sekmeyi en iyi duruma getirme-yedekleme zamanlaması Iyileştirmeleri](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>İlke bağlılığı
+
+Bu sekmeyi kullanarak tüm yedekleme örneklerinizin her gün en az bir başarılı yedeklemeye sahip olup olmadığını belirleyebilirsiniz. İlke uygunluğunu zaman dilimine veya yedekleme örneğine göre görüntüleyebilirsiniz.
+
+###### <a name="email-azure-backup-reports"></a>E-posta Azure Backup raporları
+
+Yedekleme raporlarında kullanılabilen **e-posta raporu** özelliğini kullanarak, e-posta yoluyla düzenli raporlar almak için otomatikleştirilmiş görevler oluşturabilirsiniz. Bu özellik, Azure ortamınızda, sağladığınız girişlere göre seçtiğiniz Log Analytics (LA) çalışma alanlarından verileri sorgulayan bir mantıksal uygulama dağıtarak işe yarar.
+
+Mantıksal uygulama oluşturulduktan sonra Azure Izleyici günlüklerine ve Office 365 ' e bağlantı yetkilendirmeniz gerekir. Bunu yapmak için Azure portal **Logic Apps** gidin ve oluşturduğunuz görevin adını arayın. **API bağlantıları** menü öğesini seçmek, YETKILENDIRMENIZ gereken API bağlantılarının listesini açar.
+
+###### <a name="customize-azure-backup-reports"></a>Azure Backup raporlarını özelleştirme
+
+Yedekleme raporları Azure Izleyici günlüklerinde işlevleri kullanır. Bu işlevler, LA 'daki ham Azure Backup tablolarındaki veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür.
 
 ## <a name="export-to-excel"></a>Excel'e aktar
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 46d8fe6427b2a3e7811719792ac4bf67ddbcc3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732777"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
 
@@ -27,13 +27,20 @@ Bu makalede, Azure portal kullanarak **özel erişim (VNET tümleştirmesi)** Il
 
 Sunucu oluşturma işlemi sırasında esnek sunucunuzu bir sanal ağa ve alt ağa dağıtabilirsiniz. Esnek sunucu dağıtıldıktan sonra başka bir sanal ağa, alt ağa veya *Genel erişime (izin verilen IP adresleri)* taşıyamazsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir sanal ağda esnek sunucu oluşturmak için şunlar gerekir:
 - Bir [sanal ağ](../../virtual-network/quick-create-portal.md#create-a-virtual-network)
     > [!Note]
     > Sanal ağ ve alt ağ, esnek sunucunuz ile aynı bölgede ve abonelikte olmalıdır.
 
 -  [Bir alt ağı](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service) **Microsoft. DBforPostgreSQL/Flexıtaservers**'a devretmek. Bu temsili, yalnızca PostgreSQL için Azure veritabanı 'nın esnek sunucularının bu alt ağı kullanabileceği anlamına gelir. Temsilci alt ağında diğer türdeki Azure kaynakları bulunamaz.
+-  `Microsoft.Storage`Esnek sunuculara temsilci atanmış alt ağ için hizmet uç noktasına ekleyin. Bu işlem aşağıdaki adımları gerçekleştirerek yapılır:
+     1. Sanal ağ sayfanıza gidin.
+     2. Esnek sunucunuzu dağıtmayı planladığınız sanal ağı seçin.
+     3. Esnek sunucu için temsilci atanmış alt ağı seçin.
+     4. Kullanıma alma ekranında, **hizmet uç noktası**' nın altında, `Microsoft.storage` açılır listeden seçim yapın.
+     5. Değişiklikleri kaydedin.
+
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Zaten var olan bir sanal ağda, PostgreSQL için Azure veritabanı-esnek sunucu oluşturma
 

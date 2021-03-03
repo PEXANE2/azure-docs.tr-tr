@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686725"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
 Bu makalede, yayımlanan Azure Active Directory (Azure AD) uygulama proxy 'sinin sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, uygulama ara sunucusunu düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama proxy bağlayıcıları, yeni bir sürüm yayınlandığında otomatik olarak güncelleştirilir. 
 
-En son özelliklere ve hata düzeltmelerine sahip olduğunuzdan emin olmak için otomatik güncelleştirmelerin bağlayıcılarınız için etkinleştirildiğinden emin olmanızı öneririz. Microsoft, önceki sürüm bağlayıcı sürümü ve bir sürümü için doğrudan destek sağlar.
+En son özelliklere ve hata düzeltmelerine sahip olduğunuzdan emin olmak için otomatik güncelleştirmelerin bağlayıcılarınız için etkinleştirildiğinden emin olmanızı öneririz. Microsoft, en son bağlayıcı sürümü ve bir sürümü için doğrudan destek sağlar.
 
 İlgili kaynakların listesi aşağıda verilmiştir:
 
@@ -44,7 +44,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 - Küçük harfli dizeler zorlayan bir WebSocket sorunu düzeltildi.
-- Bağlayıcıların bazen yanıt vermemesine neden olan bir sorun düzeltildi.
+- Bağlayıcıların zaman zaman yanıt vermemesine neden olan bir sorun düzeltildi.
 
 ## <a name="1516260"></a>1.5.1626.0
 
@@ -60,7 +60,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 
 ### <a name="release-status"></a>Yayın durumu
 
-07 Nisan 2020: indirilmek üzere yayımlandı
+07 Nisan 2020: bu sürümü indirmek için yayımlandı yalnızca indirme sayfası aracılığıyla yüklenebilir. Bu sürümün otomatik yükseltme sürümü daha sonra yayımlanacak.
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 -   Bağlayıcılar yalnızca tüm bağlantılar için TLS 1,2 kullanır. Daha fazla ayrıntı için bkz. [bağlayıcı önkoşulları](application-proxy-add-on-premises-application.md#prerequisites) .

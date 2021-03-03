@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357802"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694317"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi
 
-Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un [BitLocker](https://en.wikipedia.org/wiki/BitLocker) özelliğini kullanır ve disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleşiktir. 
+Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un [BitLocker](https://en.wikipedia.org/wiki/BitLocker) özelliğini kullanır ve disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleşiktir.
+
+Azure disk şifrelemesi, sanal makinelerle aynı şekilde bölge esnektir. Ayrıntılar için bkz. [kullanılabilirlik alanları destekleyen Azure hizmetleri](../../availability-zones/az-region.md).
 
 [Azure Güvenlik Merkezi](../../security-center/index.yml)'ni kullanırsanız, şifrelenmeyen VM 'ler varsa uyarılırsınız. Uyarılar yüksek önem derecesine sahiptir ve bu VM 'Leri şifrelemeniz önerilir.
 
@@ -27,19 +29,15 @@ Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk t
 > - Bir VM 'yi şifrelemek için Azure AD ile Azure disk şifrelemesi 'ni daha önce kullandıysanız, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Ayrıntılar için bkz. [Azure AD ile Azure disk şifrelemesi (önceki sürüm)](disk-encryption-overview-aad.md) . 
 > - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
 
-Windows için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç Ile WINDOWS VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) Ile Windows [VM oluşturma](disk-encryption-powershell-quickstart.md)ve şifreleme hızlı başlangıcı ile öğrenin.
+Windows için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç](disk-encryption-cli-quickstart.md) veya Windows [VM oluşturma ve şifreleme Azure PowerShell hızlı](disk-encryption-powershell-quickstart.md)başlangıç ile öğrenin.
 
 ## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM 'Ler ve işletim sistemleri
 
 ### <a name="supported-vms"></a>Desteklenen VM 'Ler
 
-Windows VM 'Leri [çeşitli boyutlarda](../sizes-general.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya 2 GB 'den az belleğe sahip sanal makinelerde kullanılamaz.
+Windows VM 'Leri [çeşitli boyutlarda](../sizes-general.md)kullanılabilir. Azure disk şifrelemesi, 1. nesil ve 2. nesil VM 'lerde desteklenir. Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
-Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
-
-Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities)'lerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
-
-Azure disk şifrelemesi, geçici diskler olmadan VM görüntülerinde kullanılamaz (dv4, Dsv4, Ev4 ve Esv4).  Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).
+Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya 2 GB 'den az belleğe sahip sanal makinelerde kullanılamaz.  Azure disk şifrelemesi, geçici diskler olmadan VM görüntülerinde da kullanılamaz (dv4, Dsv4, Ev4 ve Esv4).  Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).  Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -85,12 +83,11 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 | Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı bir anahtar veya yazılımla korunan anahtar sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
 | PowerShell cmdlet'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/). |
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç-Azure CLı ile Windows VM oluşturma ve şifreleme ](disk-encryption-cli-quickstart.md)
-- [Hızlı başlangıç-Azure PowerShell ile Windows VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
+- [Hızlı başlangıç-Azure PowerShell bir Windows sanal makinesi oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
 - [Windows VM'lerinde Azure Disk Şifrelemesi senaryoları](disk-encryption-windows.md)
-- [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started) 
 - [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md)

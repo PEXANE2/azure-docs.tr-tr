@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981124"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704846"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -56,8 +56,8 @@ Aşağıdaki adımları uygulayın:
 
 Uygulamanızın sol gezinti bölmesinde, **TLS/SSL bağlama** iletişim kutusunu şu şekilde başlatın:
 
-- **Özel etki alanlarını**seçme  >  **bağlama ekleme**
-- TLS/ **SSL ayarlarını**seçme  >  **TLS/SSL bağlaması Ekle**
+- **Özel etki alanlarını** seçme  >  **bağlama ekleme**
+- TLS/ **SSL ayarlarını** seçme  >  **TLS/SSL bağlaması Ekle**
 
 ![Etki alanına bağlama ekleme](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -85,7 +85,7 @@ TLS **/SSL bağlama** ILETIŞIM kutusunda TLS bağlamasını yapılandırmanıza
 | Özel sertifika parmak Izi | Bağlanacak sertifika. |
 | TLS/SSL türü | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** -çoklu SNI SSL bağlamaları eklenebilir. Bu seçenek, birden fazla TLS/SSL sertifikasının aynı IP adresindeki birden fazla etki alanının güvenliğini sağlar. En modern tarayıcıların (Internet Explorer, Chrome, Firefox ve Opera dahil) SNı desteği (daha fazla bilgi için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** -yalnızca bir IP SSL bağlama eklenebilir. Bu seçenek, yalnızca bir TLS/SSL sertifikasının ayrılmış bir genel IP adresinin güvenliğini sağlamasına izin verir. Bağlamayı yapılandırdıktan sonra [IP SSL kayıtları](#remap-records-for-ip-ssl)yeniden eşleme bölümündeki adımları uygulayın.<br/>IP SSL yalnızca **Standart** katmanda veya yukarıda desteklenir. </li></ul> |
 
-İşlem tamamlandıktan sonra, özel etki alanının TLS/SSL durumu **güvenli**olarak değiştirilir.
+İşlem tamamlandıktan sonra, özel etki alanının TLS/SSL durumu **güvenli** olarak değiştirilir.
 
 ![TLS/SSL bağlama başarılı](./media/configure-ssl-bindings/secure-domain-finished.png)
 
@@ -108,9 +108,9 @@ Yapmanız gereken iki değişiklik olabilir:
 
 Çeşitli tarayıcılarda, `https://<your.custom.domain>` uygulamanızı hizmet ettiğini doğrulamak için öğesine gidin.
 
-:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Contoso.com URL 'SI vurgulanmış şekilde özel etki alanına gözatmaya yönelik bir örnek gösteren ekran görüntüsü.&quot;:::
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Contoso.com URL 'SI vurgulanmış şekilde özel etki alanına gözatmaya yönelik bir örnek gösteren ekran görüntüsü.":::
 
-Uygulama kodunuz, &quot;x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
+Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
 
 > [!NOTE]
 > Uygulamanız size sertifika doğrulama hataları veriyorsa, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir.
@@ -133,7 +133,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 ![HTTPS'yi zorunlu tutma](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -159,13 +159,13 @@ App Service, ağ yükü dengeleyicilerde [TLS sonlandırması](https://wikipedia
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service](configure-ssl-certificate-in-code.md)
+* [Azure App Service'te kodunuzda TLS/SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
 * [SSS: sertifikalar App Service](./faq-configuration-and-management.md)

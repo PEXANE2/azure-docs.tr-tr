@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686742"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
 
@@ -29,9 +29,15 @@ Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Genel
 
 *Microsoft. Identity. Web* kullandığınızda, üç kullanım senaryosundan yararlanabilirsiniz:
 
-- [Seçenek 1: Microsoft Graph SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
-- [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Web API 'Leri çağıran bir Web API 'si: API çağırma](#a-web-api-that-calls-web-apis-call-an-api)
+  - [Denetleyici kodu](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [Seçenek 1: SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
+      - [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - [Sonraki adımlar](#next-steps)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Seçenek 1: SDK ile Microsoft Graph çağırma
 
@@ -159,7 +165,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+Bu akışı MSAL Python ile gösteren bir örnek, [MS-Identity-Python-on-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of)-The
 
 ---
 

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694385"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM'leri için Azure Disk Şifrelemesi 
 
-Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır ve disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleşiktir. 
+Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır ve disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleşiktir.
+
+Azure disk şifrelemesi, sanal makinelerle aynı şekilde bölge esnektir. Ayrıntılar için bkz. [kullanılabilirlik alanları destekleyen Azure hizmetleri](../../availability-zones/az-region.md).
 
 [Azure Güvenlik Merkezi](../../security-center/index.yml)'ni kullanırsanız, şifrelenmeyen VM 'ler varsa uyarılırsınız. Uyarılar yüksek önem derecesine sahiptir ve bu VM 'Leri şifrelemeniz önerilir.
 
@@ -26,7 +28,6 @@ Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk t
 > [!WARNING]
 > - Bir VM 'yi şifrelemek için Azure AD ile Azure disk şifrelemesi 'ni daha önce kullandıysanız, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Ayrıntılar için bkz. [Azure AD ile Azure disk şifrelemesi (önceki sürüm)](disk-encryption-overview-aad.md) . 
 > - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
-> - 2. nesil VM 'Ler Azure disk şifrelemesini desteklemez. Ayrıntılar için bkz. [Azure 'da 2. nesil sanal makineler Için destek](../generation-2.md) .
 
 Linux için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç Ile LINUX VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) veya [Azure PowerShell hızlı başlangıç Ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)hakkında bilgi edinebilirsiniz.
 
@@ -34,7 +35,11 @@ Linux için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde
 
 ### <a name="supported-vms"></a>Desteklenen VM 'Ler
 
-Linux VM 'Leri [çeşitli boyutlarda](../sizes.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya bu minimum bellek gereksinimlerini karşılamayan sanal makinelerde kullanılamaz:
+Linux VM 'Leri [çeşitli boyutlarda](../sizes.md)kullanılabilir. Azure disk şifrelemesi, 1. nesil ve 2. nesil VM 'lerde desteklenir. Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
+
+Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).
+
+Azure disk şifrelemesi Ayrıca [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya bu minimum bellek gereksinimlerini karşılamayan sanal makinelerde kullanılamaz:
 
 | Sanal makine | Minimum bellek gereksinimi |
 |--|--|
@@ -42,13 +47,9 @@ Linux VM 'Leri [çeşitli boyutlarda](../sizes.md)kullanılabilir. Azure disk ş
 | Hem veri hem de işletim sistemi birimlerini şifrelerken Linux VM 'Leri ve kök (/) dosya sistemi kullanımının 4 GB veya daha az olduğu durumlar | 8 GB |
 | Hem veri hem de işletim sistemi birimlerini şifrelerken Linux VM 'Leri ve kök (/) dosya sistemi kullanımının 4GB'A kadar büyük olması | Kök dosya sistemi kullanımı * 2. Örneğin, 16 GB 'lik bir kök dosya sistemi kullanımı, en az 32 GB RAM gerektirir |
 
-Linux sanal makinelerde işletim sistemi disk şifreleme işlemi tamamlandıktan sonra, VM daha az bellekle çalışacak şekilde yapılandırılabilir. 
+Linux sanal makinelerde işletim sistemi disk şifreleme işlemi tamamlandıktan sonra, VM daha az bellekle çalışacak şekilde yapılandırılabilir.
 
-Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
-
-Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities) 'Lerde ve [Lsv2 serisi sanal](../lsv2-series.md)makinelerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-linux.md#unsupported-scenarios).
-
-Azure disk şifrelemesi, geçici diskler olmadan VM görüntülerinde kullanılamaz (dv4, Dsv4, Ev4 ve Esv4).  Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).
+Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -58,6 +59,7 @@ Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](en
 
 Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemesini desteklemez; onaylama işlemleri için, yalnızca aşağıdaki dağıtımlar ve sürümler Azure disk şifrelemesini destekler:
 
+
 | Publisher | Sunduğu | SKU | URN | Şifreleme için desteklenen birim türü |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04-LTS | Kurallı: UbuntuServer: 18.04-LTS: latest | İşletim sistemi ve veri diski |
@@ -65,9 +67,12 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 | Canonical | Ubuntu 16.04 | 16,04-GÜNLÜK-LTS | Kurallı: UbuntuServer: 16.04-DAILY-LTS: latest | İşletim sistemi ve veri diski |
 | Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kurallı: UbuntuServer: 14.04.5-LTS: latest | İşletim sistemi ve veri diski |
 | Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-GÜNLÜK-LTS | Kurallı: UbuntuServer: 14.04.5-DAILY-LTS: latest | İşletim sistemi ve veri diski |
+| RedHat | RHEL 8-LVM | 8-LVM | RedHat: RHEL: 8-LVM: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 8,2 | 8.2 | RedHat: RHEL: 8.2: en son | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 8.1 | 8.1 | RedHat: RHEL: 8.1: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.8.2020111201 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,8 | 7.8 | RedHat: RHEL: 7,8: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7.7: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RedHat | RHEL 7-LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.8.2020111201 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7.6: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: en son | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
@@ -75,9 +80,12 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: latest | Veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: latest | Veri diski (aşağıdaki nota bakın) |
+| OpenLogic | CentOS 8-LVM | 8-LVM | OpenLogic: CentOS-LVM: 8-LVM: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 8,2 | 8_2 | OpenLogic: CentOS: 8_2: latest | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 8,1 | 8_1 | OpenLogic: CentOS: 8_1: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | İşletim sistemi ve veri diski |
 | OpenLogic | CentOS 7,8 | 7.8 | OpenLogic: CentOS: 7_8: en son | İşletim sistemi ve veri diski |
 | OpenLogic | CentOS 7,7 | 7,7 | OpenLogic: CentOS: 7.7: latest | İşletim sistemi ve veri diski |
-| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | İşletim sistemi ve veri diski |
 | OpenLogic | CentOS 7,6 | 7,6 | OpenLogic: CentOS: 7.6: latest | İşletim sistemi ve veri diski |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: en son | İşletim sistemi ve veri diski |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic: CentOS: 7.4: latest | İşletim sistemi ve veri diski |
@@ -148,7 +156,7 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç-Azure CLı ile Linux VM oluşturma ve şifreleme ](disk-encryption-cli-quickstart.md)
-- [Hızlı başlangıç-Azure PowerShell ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
+- [Hızlı başlangıç-Azure PowerShell bir Linux sanal makinesi oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md) 
 - [Linux VM’lerde Azure Disk Şifrelemesi senaryoları](disk-encryption-linux.md)
 - [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

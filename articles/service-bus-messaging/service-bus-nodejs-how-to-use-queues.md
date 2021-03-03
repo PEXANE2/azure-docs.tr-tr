@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739721"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (JavaScript)
 Bu öğreticide, [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir JavaScript programında paketin nasıl kullanılacağını öğrenirsiniz.
@@ -206,6 +206,6 @@ Azure portal Service Bus ad alanının **genel bakış** sayfasında **gelen** v
 Aşağıdaki belgelere ve örneklere bakın: 
 
 - [JavaScript için Azure Service Bus istemci kitaplığı](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript örnekleri](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript örnekleri](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript örnekleri](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript örnekleri](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [API başvuru belgeleri](/javascript/api/overview/azure/service-bus)

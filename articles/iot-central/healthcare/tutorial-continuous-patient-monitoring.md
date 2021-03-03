@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56ff43980aafc75d5936b86c6ba2cd400311c5fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719109"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
@@ -134,4 +134,4 @@ Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim > uygulama ayarların
 IoT Central uygulamanıza bağlanan bir sağlayıcı panosunun nasıl oluşturulacağını öğrenmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Sağlayıcı panosu oluşturma](howto-health-data-triage.md)
+> [Sağlayıcı panosu oluşturma](tutorial-health-data-triage.md)

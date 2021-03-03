@@ -3,12 +3,12 @@ title: Azure VM dosya kurtarma sorunlarını giderme
 description: Azure VM yedeklemesinden dosya ve klasörleri kurtarırken karşılaşılan sorunları giderin.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700312"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Azure VM yedeklemesinin dosya kurtarma sorunlarını giderme
 
@@ -36,7 +36,7 @@ Bu bölüm, görebileceğiniz hata iletilerinin sorunlarını gidermek için ger
 
 **Önerilen eylem**: betiği indirdikten 12 saat sonra geçersiz hale gelir ve çalıştırılamaz. Portala gidin ve dosya kurtarmaya devam etmek için yeni bir betik indirin.
 
-### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>iscsi_tcp modül yüklenemiyor (veya) iscsi_tcp_module bulunamadı
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>iscsi_tcp modülü yüklenemiyor (veya) iscsi_tcp_module bulunamadı
 
 **Önerilen eylem**: Bu sorunu çözmek için, [komut dosyası indirmelerinde](#the-script-downloads-successfully-but-fails-to-run)bulunan adımları başarıyla izleyin, ancak çalıştırılamaz.
 
@@ -88,7 +88,7 @@ SUSE Linux Enterprise Server 12 SP4 üzerinde öğe düzeyinde kurtarma (ıLR) i
 Windows Server 2012 R2 ve Windows Server 2016 (depolama havuzları ile) üzerinde ilk kez betiği çalıştırdığınızda, depolama havuzu sanal makineye salt okunurdur.
 
 >[!Tip]
-> [Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
+> [Betiği çalıştırmak için doğru makineye](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
 Bu sorunu çözmek için, depolama havuzuna el ile okuma/yazma erişimi atayın ve sanal diskleri ekleyin:
 
@@ -108,7 +108,7 @@ Bu sorunu çözmek için, depolama havuzuna el ile okuma/yazma erişimi atayın 
 
 Dosya kurtarma gerçekleştirilirken, yedekleme hizmeti birimleri algılar ve otomatik olarak takar. Ancak, yedeklenen disklerin ham bölümleri varsa, bu diskler otomatik olarak bağlanmaz ve kurtarma için veri diski göremezsiniz.
 
-Bu sorunu çözmek için [Azure sanal makine yedeklemesinden dosyaları kurtar](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)' a gidin.
+Bu sorunu çözmek için [Azure sanal makine yedeklemesinden dosyaları kurtar](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms)' a gidin.
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>İşletim sistemi dosya sistemini tanımlamadığından, Linux dosya kurtarması başarısız oluyor
 
@@ -122,7 +122,7 @@ Bu sorunu çözmek için birimin bir üçüncü taraf uygulamayla şifrelenip ş
 
    ![Blok cihazları listelemek için komut sonuçlarının gösterildiği ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. Dosya sistemini ve şifrelemeyi doğrulayın. Birim şifrelendiyse, dosya kurtarma desteklenmez. [Azure VM yedeklemesi Için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore)hakkında daha fazla bilgi edinin.
+1. Dosya sistemini ve şifrelemeyi doğrulayın. Birim şifrelendiyse, dosya kurtarma desteklenmez. [Azure VM yedeklemesi Için destek matrisi](./backup-support-matrix-iaas.md#support-for-file-level-restore)hakkında daha fazla bilgi edinin.
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Diskler bağlı, ancak birimler bağlı değil
 
@@ -139,7 +139,7 @@ Windows için dosya kurtarma komut dosyasını çalıştırdığınızda, "0 kur
 Bu sorunu tanımlamak ve çözmek için aşağıdaki adımları gerçekleştirin:
 
 >[!Tip]
->[Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
+>[Betiği çalıştırmak için doğru makineye](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
 1. **Cmd** penceresinde, **disk yönetimi**'ni açmak için **diskmgmt** ' ı çalıştırın.
 1. Ek diskler arayın. Aşağıdaki örnekte **Disk 2** ek bir disktir.
@@ -159,9 +159,9 @@ Bu sorunu tanımlamak ve çözmek için aşağıdaki adımları gerçekleştirin
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->[Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
+>[Betiği çalıştırmak için doğru makineye](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
-Korunan Linux sanal makinesi LVM veya RAID dizileri kullanıyorsa, [Azure sanal makine yedeklemesinden dosyaları kurtarma](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)bölümündeki adımları izleyin.
+Korunan Linux sanal makinesi LVM veya RAID dizileri kullanıyorsa, [Azure sanal makine yedeklemesinden dosyaları kurtarma](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms)bölümündeki adımları izleyin.
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Dosyaları bağlı birimlerden kopyalayamazsınız
 

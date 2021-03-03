@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388660"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716576"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -45,7 +45,9 @@ Bu diyagram, [konuşma Studio 'nun özel konuşma tanıma alanını](https://aka
 Özel bir model oluşturmak için [konuşma Studio 'yu](https://speech.microsoft.com/customspeech) kullanabilmeniz için önce bir Azure hesabı ve konuşma hizmeti aboneliğine sahip olmanız gerekir. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> **Ses verileri** içeren özel bir modeli eğitemeniz planlandıysanız, uygun donanıma sahip olan, eğitim için kullanılabilir olan aşağıdaki bölgelerden birini seçin. Bu, bir modeli eğitmek için geçen süreyi azaltır.
+> Lütfen standart (S0) bir abonelik oluşturmayı unutmayın. Ücretsiz (F0) abonelikler desteklenmez.
+
+**Ses verileri** içeren özel bir modeli eğitemeniz planlandıysanız, uygun donanıma sahip olan, eğitim için kullanılabilir olan aşağıdaki bölgelerden birini seçin. Bu, bir modeli eğitmek için geçen süreyi azaltır ve eğitim için daha fazla ses kullanmanıza olanak sağlar. Bu bölgelerde, konuşma hizmeti eğitim için 20 saate kadar ses kullanacaktır; diğer bölgelerde, yalnızca 8 saate kadar kullanacaktır.
 
 * Doğu Avustralya
 * Orta Kanada
@@ -61,9 +63,6 @@ Bu diyagram, [konuşma Studio 'nun özel konuşma tanıma alanını](https://aka
 * US Gov Virginia
 * West Europe
 * Batı ABD 2
-
-> [!NOTE]
-> Lütfen standart (S0) bir abonelik oluşturmayı unutmayın. Ücretsiz (F0) abonelikler desteklenmez.
 
 Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, [konuşma Studio](https://speech.microsoft.com/customspeech) 'da oturum açmanız ve aboneliğinizi bağlamanız gerekir.
 

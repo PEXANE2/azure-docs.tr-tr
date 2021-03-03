@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716746"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 
@@ -235,11 +235,11 @@ InfrastructureEncryptionState : Disabled
 >[!NOTE]
 > Bu işlem, şifreleme anahtarını güncelleştirmek veya değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan birinden farklı) bir anahtar güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:
 >
-> - Key Vault, kurtarma hizmetleri kasasıyla aynı bölgede bulunur
+> - Anahtar Kasası, kurtarma hizmetleri kasasıyla aynı bölgede bulunur
 >
 > - Anahtar kasasında geçici silme ve Temizleme koruması etkin
 >
-> - Kurtarma Hizmetleri Kasası, Key Vault erişmek için gerekli izinlere sahiptir.
+> - Kurtarma Hizmetleri Kasası, anahtar kasasına erişmek için gerekli izinlere sahiptir.
 
 ## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla şifrelenen bir kasaya yedekleme
 

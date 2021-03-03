@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 4d4e868a181c216c29eeb5772b3e4c6108f514b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cd216e277a64d6e3edc87dc4027550bc8c7c5bfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623389"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726249"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Özel JSON veri kaynakları, Linux için Log Analytics Aracısı kullanılarak [Azure izleyici](../platform/data-platform.md) 'ye toplanabilir.  Bu özel veri kaynakları, bir dizi gibi JSON döndüren basit betikler [veya](https://curl.haxx.se/) [floentıd 'nin 300 + eklentilerinden](https://www.fluentd.org/plugins/all)biridir. Bu makalede, bu veri koleksiyonu için gereken yapılandırma açıklanmaktadır.
+Özel JSON veri kaynakları, Linux için Log Analytics Aracısı kullanılarak [Azure izleyici](../data-platform.md) 'ye toplanabilir.  Bu özel veri kaynakları, bir dizi gibi JSON döndüren basit betikler [veya](https://curl.haxx.se/) [floentıd 'nin 300 + eklentilerinden](https://www.fluentd.org/plugins/all)biridir. Bu makalede, bu veri koleksiyonu için gereken yapılandırma açıklanmaktadır.
 
 
 > [!NOTE]
@@ -104,4 +104,4 @@ Type=tomcat_CL
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.

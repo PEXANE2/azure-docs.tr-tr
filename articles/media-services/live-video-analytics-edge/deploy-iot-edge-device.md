@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491799"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718939"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -23,7 +23,7 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 * [Desteklenen Linux işletim sistemlerinden](../../iot-edge/support.md#operating-systems) birini çalıştıran bir x86-64 veya bir ARM64 cihazı
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
 * [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge cihazı kaydetme](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge.md)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ Media Service API 'Lerine erişmek için kimlik bilgilerini almak üzere bu maka
 IoT Edge modülünde canlı video analizlerini çalıştırmak için, olabildiğince az ayrıcalığa sahip bir yerel kullanıcı hesabı oluşturun. Örnek olarak, Linux makinenizde aşağıdaki komutları çalıştırın:
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>Cihaz depolamaya izinler veriliyor
@@ -72,15 +72,15 @@ Artık yerel bir kullanıcı hesabı oluşturduğunuza göre,
 * Uygulama yapılandırma verilerini depolamak için yerel bir klasöre ihtiyacınız olacak. Aşağıdaki komutları kullanarak bir klasör oluşturun ve YerelKullanıcı hesabına bu klasöre yazma izinleri verin:
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * Ayrıca, [yerel bir dosyaya video kaydetmek](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)için bir klasör gerekir. Aynı şekilde yerel bir klasör oluşturmak için aşağıdaki komutları kullanın:
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Canlı video analizi kenar modülünü dağıtma

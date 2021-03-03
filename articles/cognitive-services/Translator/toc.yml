@@ -101,7 +101,7 @@
     - name: Başvuru
       items:
         - name: Belge çevirisi API 'SI başvurusu
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Özel Çevirmen
   items:
     - name: Genel Bakış

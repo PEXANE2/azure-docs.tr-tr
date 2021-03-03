@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737333"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure Izleyici 'de veri toplama kuralları için Kaynak Yöneticisi şablonu örnekleri
-Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](../platform/log-analytics-agent.md) ve [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
+Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](./log-analytics-agent.md) ve [Tanılama uzantısını](./diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ Aşağıdaki örnek, Azure Arc etkin sunucusu ve bir veri toplama kuralı arası
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici için diğer örnek şablonları alın](../samples/resource-manager-samples.md).
-* [Log Analytics Aracısı hakkında daha fazla bilgi edinin](../platform/log-analytics-agent.md).
-* [Tanılama uzantısı hakkında daha fazla bilgi edinin](../platform/diagnostics-extension-overview.md).
+* [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
+* [Log Analytics Aracısı hakkında daha fazla bilgi edinin](./log-analytics-agent.md).
+* [Tanılama uzantısı hakkında daha fazla bilgi edinin](./diagnostics-extension-overview.md).

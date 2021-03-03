@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 05/29/2019
+ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928981"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733491"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose özniteliğini kullanma
 
@@ -29,7 +29,7 @@ Bilişsel [Hizmetler yüz WPF](https://github.com/Azure-Samples/cognitive-servic
 
 ### <a name="explore-the-sample-code"></a>Örnek kodu keşfet
 
-Baş dikdörtgeni, Headpoz özniteliğini kullanarak programlı bir şekilde döndürebilirsiniz. Yüzeyleri algılamadığında bu özniteliği belirtirseniz (bkz. [yüzleri algılama](HowtoDetectFacesinImage.md)), daha sonra sorgulayabilirsiniz. Bilişsel [Hizmetler yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasının aşağıdaki yöntemi, **algılayıcısı geçen yüz** nesnelerinin bir listesini alır ve **[yüz](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** nesnelerinin bir listesini döndürür. Buradaki **yüz** , güncelleştirilmiş dikdörtgen koordinatları dahil yüz verileri depolayan özel bir sınıftır. Yeni değerler üst, **sol**, **Genişlik**ve **Yükseklik**için hesaplanır ve yeni bir alan olan **çok** **yönlü açı** döndürme işlemini belirtir.
+Baş dikdörtgeni, Headpoz özniteliğini kullanarak programlı bir şekilde döndürebilirsiniz. Yüzeyleri algılamadığında bu özniteliği belirtirseniz (bkz. [yüzleri algılama](HowtoDetectFacesinImage.md)), daha sonra sorgulayabilirsiniz. Bilişsel [Hizmetler yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasının aşağıdaki yöntemi, **algılayıcısı geçen yüz** nesnelerinin bir listesini alır ve **[yüz](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** nesnelerinin bir listesini döndürür. Buradaki **yüz** , güncelleştirilmiş dikdörtgen koordinatları dahil yüz verileri depolayan özel bir sınıftır. Yeni değerler üst, **sol**, **Genişlik** ve **Yükseklik** için hesaplanır ve yeni bir alan olan **çok** **yönlü açı** döndürme işlemini belirtir.
 
 ```csharp
 /// <summary>

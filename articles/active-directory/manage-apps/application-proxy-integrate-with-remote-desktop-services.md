@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687677"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama
 
@@ -57,7 +57,7 @@ Ortamınız için RDS ve Azure AD Uygulama Ara Sunucusu ayarladıktan sonra, iki
 ### <a name="publish-the-rd-host-endpoint"></a>RD konak uç noktasını yayımlama
 
 1. Aşağıdaki değerlerle [Yeni bir uygulama proxy uygulaması yayımlayın](application-proxy-add-on-premises-application.md) :
-   - İç URL: `https://\<rdhost\>.com/` , burada `\<rdhost\>` RD Web ve RD Ağ Geçidi paylaşımının ortak köküdür.
+   - İç URL: `https://<rdhost>.com/` , burada `<rdhost>` RD Web ve RD Ağ Geçidi paylaşımının ortak köküdür.
    - Dış URL: Bu alan, uygulamanın adına göre otomatik olarak doldurulur, ancak bunu değiştirebilirsiniz. Kullanıcılarınız, RDS 'ye erişirken bu URL 'ye gider.
    - Ön kimlik doğrulama yöntemi: Azure Active Directory
    - URL üst bilgilerini çevir: Hayır
@@ -69,7 +69,7 @@ Ortamınız için RDS ve Azure AD Uygulama Ara Sunucusu ayarladıktan sonra, iki
 
 4. **Azure Active Directory** ve ardından **uygulama kayıtları**' nı seçin. Listeden uygulamanızı seçin.
 5. **Yönet** altında **marka**' i seçin.
-6. **Ana sayfa URL 'si** alanını RD Web uç noktanıza işaret etmek için (gibi `https://\<rdhost\>.com/RDWeb` ) güncelleştirin.
+6. **Ana sayfa URL 'si** alanını RD Web uç noktanıza işaret etmek için (gibi `https://<rdhost>.com/RDWeb` ) güncelleştirin.
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS trafiğini uygulama proxy 'sine doğrudan
 
@@ -91,7 +91,7 @@ RDS dağıtımına yönetici olarak bağlanın ve dağıtım için RD Ağ Geçid
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Örneğin:**
+   **Örnek:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```

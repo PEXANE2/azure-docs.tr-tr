@@ -8,14 +8,16 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd535227b421f4fb56dac3afb37033e3d77f75f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658072"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691544"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Öğretici: Azure Iletişim Hizmetleri için bir Web uygulaması hazırlama (Node.js)
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Iletişim Hizmetleri, uygulamalarınıza gerçek zamanlı iletişimler eklemenize olanak tanır. Bu öğreticide, Azure Iletişim hizmetlerini destekleyen bir Web uygulamasını ayarlamayı öğreneceksiniz. Bu, gerçek zamanlı iletişimlerle çalışmaya başlamak isteyen yeni geliştiricilere yönelik tanıtım amaçlı bir öğreticidir.
 
@@ -55,7 +57,7 @@ Yerel geliştirme ortamınız şu şekilde yapılandırılır:
 
 İstemci tarafı uygulamamız için gereken çeşitli bağımlılıkları indirmek ve yüklemek üzere Node.js kullanacağız. Daha sonra Azure 'da barındırdığımız statik dosyalar oluşturmak için bu uygulamayı kullanacağız, bu sayede sunucunuzda yapılandırma konusunda endişelenmenize gerek kalmaz.
 
-Windows geliştiricileri, düğüm, NVM ve NPM 'yi yapılandırmak için [Bu NodeJS öğreticisini](/windows/nodejs/setup-on-windows) izleyebilir.
+Windows geliştiricileri, düğüm, NVM ve NPM 'yi yapılandırmak için [Bu NodeJS öğreticisini](/windows/nodejs/setup-on-windows) izleyebilir. 
 
 Bu öğreticiyi, LTS 12.20.0 sürümünü kullanarak test ettik. NVM 'yi yükledikten sonra, kullanmak istediğiniz sürümü dağıtmak için aşağıdaki PowerShell komutunu kullanın:
 
@@ -159,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }
+    }     
 }
 ```
 
@@ -216,7 +218,7 @@ Dosyanız şu şekilde görünmelidir:
 }
 ```
 
-NPM 'den kullanılabilecek komutu eklediniz.
+NPM 'den kullanılabilecek komutu eklediniz. 
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="package.jsdeğiştirme":::
 
@@ -277,13 +279,13 @@ npm run build:dev
 Konsol, sunucunun nerede çalıştığını gösterir. Varsayılan olarak, bu `http://localhost:8080` . Build: dev komutu, daha önce eklediğimiz komuttur `package.json` .
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Geliştirme sunucusu başlatma":::
-
+ 
  Tarayıcınızdaki adrese gidin ve önceki adımlarda yapılandırılan sayfayı ve uyarıyı görmeniz gerekir.
-
+ 
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="HTML sayfası":::
-
-
-Sunucu çalışırken, kodu değiştirebilirsiniz ve sunucu ve HTML sayfası otomatik olarak yeniden yüklenir.
+  
+ 
+Sunucu çalışırken, kodu değiştirebilirsiniz ve sunucu ve HTML sayfası otomatik olarak yeniden yüklenir. 
 
 Sonra, `app.js` Visual Studio Code dosyasına gidin ve silin `alert('Hello world alert!');` . Dosyanızı kaydedin ve uyarının tarayıcıdan kaybolduğunu doğrulayın.
 
@@ -321,11 +323,11 @@ const { merge } = require('webpack-merge');
  ```
 
 Bu yapılandırma, webpack.common.js (giriş dosyasını belirttiğimiz ve sonuçların depolanacağı konum) ile birleştirilecek ve modu "üretim" olarak ayarlayacaktır.
-
+ 
 İçinde `package.json` , aşağıdaki kodu ekleyin:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js"
+"build:prod": "webpack --config webpack.prod.js" 
 ```
 
 Dosyanız şu şekilde görünmelidir:
@@ -339,14 +341,14 @@ Dosyanız şu şekilde görünmelidir:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:prod": "webpack --config webpack.prod.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.6",
-    "@azure/communication-common": "^1.0.0"
+    "@azure/communication-calling": "^1.0.0-beta.3",
+    "@azure/communication-common": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -366,13 +368,13 @@ Terminal çalıştırmasında:
 npm run build:prod
 ```
 
-Komut `dist` içinde bir klasör ve üretime Ready `app.js` statik dosya oluşturur.
+Komut `dist` içinde bir klasör ve üretime Ready `app.js` statik dosya oluşturur. 
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="Üretim derlemesi":::
-
-
+ 
+ 
 ### <a name="deploy-your-app-to-azure-storage"></a>Uygulamanızı Azure Storage 'a dağıtma
-
+ 
 `index.html`Klasörünü ve `app.css` klasörüne kopyalayın `dist` .
 
 `dist`Klasöründe yeni bir dosya oluşturun ve bu dosyayı adlandırın `404.html` . Aşağıdaki biçimlendirmeyi bu dosyaya kopyalayın:
@@ -397,45 +399,45 @@ Dosyayı kaydedin (CTRL + S).
 Sağ tıklayın ve Azure depolama aracılığıyla statik Web sitesine Dağıt ' ı seçin.
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Azure 'a dağıtmaya başlayın":::
-
+ 
 `Select subscription`Alanında, daha önce bir abonelik oluşturmadıysanız, "Azure 'Da oturum aç (veya" ücretsiz bir Azure hesabı oluşturun ") seçeneğini belirleyin.
-
+ 
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Azure'da oturum açma":::
-
+ 
 Şunu seçin `Create new Storage Account`  >  `Advanced` :
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="Depolama hesabı grubu oluşturuluyor":::
-
+ 
  Depolama grubunun adını belirtin:
-
+ 
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="Hesap için bir ad ekleniyor":::
-
+ 
 Gerekirse yeni bir kaynak grubu oluşturun:
-
+ 
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="Yeni grup oluşturuluyor":::
-
+  
   "Yes" yanıtını, statik Web sitesi barındırmayı etkinleştirmek istiyor musunuz? "
-
+  
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="Statik Web sitesi barındırmayı etkinleştirme seçeneği seçiliyor":::
-
+  
 Dosyayı oluşturduğumuz, "Dizin belge adını girin" bölümünde varsayılan dosya adını kabul edin `index.html` .
 
-`404.html`"404 hata belge yolunu girin" yazın.
-
-Uygulamanın konumunu seçin. Seçtiğiniz konum, daha sonra Grup çağrılarında uygulamanızı çağırmak için hangi medya işlemcisinin kullanılacağını tanımlayacaktır.
+`404.html`"404 hata belge yolunu girin" yazın.  
+  
+Uygulamanın konumunu seçin. Seçtiğiniz konum, daha sonra Grup çağrılarında uygulamanızı çağırmak için hangi medya işlemcisinin kullanılacağını tanımlayacaktır. 
 
 Azure Iletişim Hizmetleri, uygulama konumuna göre medya Işlemcisini seçer.
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="Konum seçin":::
-
-Kaynak ve Web siteniz oluşturuluncaya kadar bekleyin.
-
+  
+Kaynak ve Web siteniz oluşturuluncaya kadar bekleyin. 
+ 
 "Web sitesine gidin" seçeneğine tıklayın:
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="Dağıtım tamamlandı":::
-
+ 
 Tarayıcınızın geliştirme araçlarından, kaynağı inceleyebilir ve üretime hazırlanan, bizim dosyanızı görebilirsiniz.
-
+ 
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Web Sitesi":::
 
 [Azure Portal](https://portal.azure.com/#home)gidin, kaynak grubunuzu seçin, oluşturduğunuz uygulamayı seçin ve adresine gidin `Settings`  >  `Static website` . Statik web sitelerinin etkinleştirildiğini görebilir ve birincil uç noktayı, Dizin belgesini ve hata yolu belge dosyalarını unutmayın.
@@ -446,7 +448,7 @@ Tarayıcınızın geliştirme araçlarından, kaynağı inceleyebilir ve üretim
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="Kapsayıcı yapılandırması":::
 
-' A giderseniz, `$web` Visual Studio 'da oluşturduğunuz ve Azure 'a dağıttığınız dosyaları görürsünüz.
+' A giderseniz, `$web` Visual Studio 'da oluşturduğunuz ve Azure 'a dağıttığınız dosyaları görürsünüz. 
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="Dağıtım":::
 

@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737656"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
@@ -55,7 +55,7 @@ Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak �
 
 - **Diskler:** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
 - **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/soft-delete-blob-overview.md) özelliğini açın veya [azcopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](storage-use-data-movement-library.md)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
-- **Dosyalar:** Dosya paylaşımlarınızı yedeklemek için [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) kullanın. Yanlışlıkla dosya paylaşımının silinmesine karşı koruma sağlamak için de [geçici silme](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) özelliğini etkinleştirin. GRS kullanılabilir olmadığında coğrafi artıklık için [AzCopy](./storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanarak dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
+- **Dosyalar:** Dosya paylaşımlarınızı yedeklemek için [Azure Backup](../../backup/azure-file-share-backup-overview.md) kullanın. Yanlışlıkla dosya paylaşımının silinmesine karşı koruma sağlamak için de [geçici silme](../files/storage-files-prevent-file-share-deletion.md) özelliğini etkinleştirin. GRS kullanılabilir olmadığında coğrafi artıklık için [AzCopy](./storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanarak dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
 - **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](./storage-use-azcopy-v10.md) kullanın.
 
 ## <a name="track-outages"></a>Kesintileri izleme

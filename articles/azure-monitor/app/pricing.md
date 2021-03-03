@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726193"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -294,7 +294,7 @@ Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights 
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Eski Kurumsal (düğüm başına) katmanda faturalandırılan kullanımı anlama 
 
-Aşağıda açıklandığı gibi, daha ayrıntılı olarak, eski Kurumsal (düğüm başına) katmanı, düğümlerin sayısını ve veri fazla kullanım miktarını hesaplamak için bir abonelikteki tüm Application Insights kaynakları genelinde kullanımı birleştirir. Bu Birleşik işlem nedeniyle, **bir abonelikteki tüm Application Insights kaynakların kullanımı, kaynaklardan yalnızca birine göre raporlanır**.  Bu, [Faturalanan kullanımlarınızın](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) her bir Application Insights kaynakları için gözlemlediğiniz kullanımla mutabık hale gelmesini sağlar. 
+Aşağıda açıklandığı gibi, daha ayrıntılı olarak, eski Kurumsal (düğüm başına) katmanı, düğümlerin sayısını ve veri fazla kullanım miktarını hesaplamak için bir abonelikteki tüm Application Insights kaynakları genelinde kullanımı birleştirir. Bu Birleşik işlem nedeniyle, **bir abonelikteki tüm Application Insights kaynakların kullanımı, kaynaklardan yalnızca birine göre raporlanır**.  Bu, [Faturalanan kullanımlarınızın](#viewing-application-insights-usage-on-your-azure-bill) her bir Application Insights kaynakları için gözlemlediğiniz kullanımla mutabık hale gelmesini sağlar. 
 
 > [!WARNING]
 > Eski Kurumsal (düğüm başına) katmanda Application Insights kaynaklarının kullanımını izleme ve anlama karmaşıklığı nedeniyle, geçerli Kullandıkça Öde fiyatlandırma katmanını kullanmanız önemle önerilir. 

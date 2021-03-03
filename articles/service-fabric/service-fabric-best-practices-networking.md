@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732573"
 ---
 # <a name="networking"></a>Ağ
 
@@ -39,7 +39,7 @@ Kaynak Yöneticisi şablonunuzda *Enableivme ağ* özelliğini bildirerek sanal 
 ```
 Service Fabric küme, [hızlandırılmış ağ Ile Linux](../virtual-network/create-vm-accelerated-networking-cli.md)üzerinde sağlanabilir ve [hızlandırılmış ağ ile Windows](../virtual-network/create-vm-accelerated-networking-powershell.md)'u kullanabilir.
 
-Hızlandırılmış ağ, Azure sanal makine serisi SKU 'Ları için desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, Service Fabric bir Windows kümesi için 01/23/2019 Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor.
+Hızlandırılmış ağ, Azure sanal makine serisi SKU 'Ları için desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, Service Fabric bir Windows kümesi için 01/23/2019 Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor. Hızlandırılmış ağın en az 4 vCPU gerektirdiğini lütfen unutmayın. 
 
 Mevcut bir Service Fabric kümesinde hızlandırılmış ağı etkinleştirmek için, önce aşağıdakileri gerçekleştirmek üzere bir [sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmelisiniz](./virtual-machine-scale-set-scale-node-type-scale-out.md):
 1. Hızlandırılmış ağ etkinken bir NodeType sağlama
@@ -61,8 +61,8 @@ Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme al
 
 Aşağıdaki temel kurallar, Azure yönetilen Service Fabric kümesinin güvenlik kilidi için en düşük gerekliliktir. Aşağıdaki bağlantı noktalarını açma veya IP/URL 'YI onaylama işlemi, kümenin düzgün çalışmasını engeller ve desteklenmiyor olabilir. Bu kural sayesinde, [Otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)kullanmak için kesinlikle gerekli değildir, aksi takdirde ek bağlantı noktalarının açılması gerekir.
 
-### <a name="inbound"></a>Inbound 
-|Öncelik   |Adı               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+### <a name="inbound"></a>Gelen 
+|Öncelik   |Name               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
 |3910       |İstemci             |19000       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
@@ -95,9 +95,9 @@ Gelen güvenlik kuralları hakkında daha fazla bilgi:
 
 * **Özel uç nokta**. Uygulamanıza internet erişimi olan bir uç noktayı etkinleştirme örneği.
 
-### <a name="outbound"></a>Outbound
+### <a name="outbound"></a>Giden
 
-|Öncelik   |Adı               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+|Öncelik   |Name               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Ağ            |Herhangi biri         |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
 |3910       |Kaynak sağlayıcısı  |443         |TCP       |VirtualNetwork     |ServiceFabric     |İzin Ver

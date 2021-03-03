@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703414"
 ---
 # <a name="precise-answering"></a>Hassas yanıtlama
 
@@ -32,7 +32,7 @@ Hizmet Ayrıca, sınama bölmesindeki sorgunun hemen **altında bulunan denetle 
 
 ## <a name="publishing-a-qna-maker-bot"></a>Soru-Cevap Oluşturma bot yayımlama
 
-Bir bot yayımladığınızda, uygulamanızda varsayılan olarak kesin yanıt özelliği, yanıt bestecisiyle birlikte kısa bir cevap görürsünüz. Yanıtta kesin yanıtın (AnswerSpan olarak adlandırılır) nasıl kullanılacağını görmek için [Yanıt oluştur](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) için API başvurusuna bakın. Kullanıcı, bu şablonu botu App Service aracılığıyla güncelleştirerek diğer deneyimleri seçme esnekliğine sahiptir. 
+Bir bot yayımladığınızda, uygulamanızda varsayılan olarak kesin yanıt özelliği, yanıt bestecisiyle birlikte kısa bir cevap görürsünüz. Yanıtta kesin yanıtın (AnswerSpan olarak adlandırılır) nasıl kullanılacağını görmek için [Yanıt oluştur](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) için API başvurusuna bakın. Kullanıcı, bu şablonu botu App Service aracılığıyla güncelleştirerek diğer deneyimleri seçme esnekliğine sahiptir. 
 
 ## <a name="language-support"></a>Dil desteği
 

@@ -66,6 +66,8 @@
           href: create-profile-container-adds.md
         - name: Azure Dosyalar’ı ve AD DS’yi kullanma
           href: create-file-share.md
+        - name: FSLogix uygulama kapsayıcılarıyla Office 'i yükler
+          href: fslogix-office-app-rule-editor.md
     - name: Konak havuzu ayarlarını yapılandırma
       items:
         - name: RDP özellikleri
@@ -104,6 +106,8 @@
           href: app-attach-image-prep.md
         - name: Dosya paylaşımını ayarlama
           href: app-attach-file-share.md
+        - name: MSıXMGR aracını ayarlama
+          href: app-attach-msixmgr.md
     - name: Microsoft Teams’i kullanma
       href: teams-on-wvd.md
     - name: Azure AD Multi-Factor Authentication’ı ayarlama

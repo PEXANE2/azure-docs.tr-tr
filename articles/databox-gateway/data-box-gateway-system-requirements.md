@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739220"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway sistem gereksinimleri
 
@@ -32,7 +32,7 @@ Data Box Gateway için temel ana bilgisayar sistemi, sanal cihazınızı sağlam
 | Belirtimler                                          | Açıklama              |
 |---------------------------------------------------------|--------------------------|
 | Sanal işlemciler (çekirdekler)   | En az 4 |
-| Bellek  | En az 8 GB|
+| Bellek  | En az 8 GB. En az 16 GB önerilir. |
 | Kullanılabilirlik|Tek düğüm|
 | Diskler| İşletim sistemi diski: 250 GB <br> Veri diski: En az 2 TB, ölçülü kaynak sağlamalı ve SSD destekli olmalıdır|
 | Ağ arabirimleri|1 veya daha çok sanal ağ arabirimi|

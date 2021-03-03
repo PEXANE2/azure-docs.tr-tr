@@ -68,6 +68,8 @@
           href: azure-file-share-support-matrix.md
         - name: Azure Disk Yedekleme destek matrisi
           href: disk-backup-support-matrix.md
+        - name: Azure Blob 'Ları yedekleme destek matrisi
+          href: blob-backup-support-matrix.md
         - name: Active Directory etki alanı denetleyicileri
           href: active-directory-backup-restore.md
         - name: Azure İlkesi için desteklenen VM SKU’ları
@@ -132,6 +134,8 @@
           href: backup-center-govern-environment.md
         - name: Eylem gerçekleştirme
           href: backup-center-actions.md
+        - name: Topluluk kaynakları
+          href: backup-center-community.md
     - name: Azure VM yedeklemesi
       items:
         - name: Genel Bakış
@@ -224,6 +228,14 @@
           href: backup-managed-disks.md
         - name: Geri Yükleme
           href: restore-managed-disks.md
+    - name: Azure Blob 'Ları yedeklemesi
+      items:
+        - name: Genel Bakış
+          href: blob-backup-overview.md
+        - name: Yapılandırma ve yönetme
+          href: blob-backup-configure-manage.md
+        - name: Geri Yükleme
+          href: blob-restore.md
     - name: Azure Dosya paylaşımı yedekleme
       items:
         - name: Genel Bakış
@@ -437,6 +449,10 @@
           href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
+    - name: Erişim katmanı
+      items:
+        - name: Arşiv katmanı
+          href: archive-tier-support.md
     - name: Sorun giderme
       items:
         - name: Azure VM

@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de çözüm Kapasite ve Performans | Microsoft Docs
 description: Hyper-V sunucularınızın kapasitesini anlamanıza yardımcı olması için Izleyici 'deki Kapasite ve Performans çözümünü kullanın.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704302"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Hyper-V sanal makine kapasitesini Kapasite ve Performans çözümüyle planlayın (kullanım dışı)
 
@@ -39,12 +38,12 @@ Hyper-V sunucularınızın kapasitesini anlamanıza yardımcı olması için Izl
 
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Description |
+| Bağlı Kaynak | Destek | Açıklama |
 |---|---|---|
 | [Windows aracıları](../agents/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
-| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | Hayır    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
 | [SCOM yönetim grubu](../agents/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
-| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, kapasite ve performans verilerini içermez.|
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, kapasite ve performans verilerini içermez.|
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -117,7 +116,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve performans verilerine yönelik örnek günlük aramaları sunulmaktadır.
 
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | Tüm konak belleği yapılandırması | &#124;, ObjectName = = "Kapasite ve Performans" ve CounterName = = "ana bilgisayar atanmış bellek MB" &#124; özetleme MB = AVG (CounterValue) InstanceName 'e göre |
 | Tüm VM belleği yapılandırması | Performans &#124;; ObjectName = = "Kapasite ve Performans" ve CounterName = = "VM atanan bellek MB" &#124;, InstanceName 'e göre MB = AVG (CounterValue) öğesini özetler |

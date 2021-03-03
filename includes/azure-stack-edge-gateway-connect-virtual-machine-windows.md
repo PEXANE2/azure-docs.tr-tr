@@ -4,18 +4,22 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: e781e3c29a6a22648c6d0596f9fe0a3e425427d7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6e42fef2aa4415373ed0bac39284f36ba330a4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99500227"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730668"
 ---
 VM oluşturma sırasında geçirilen IP aracılığıyla Uzak Masaüstü Protokolü (RDP) kullanarak Windows sanal makinenize bağlanın.
 
-1. İstemcisinde RDP 'yi başlatın. **Başlat** ' a gidin ve **mstsc** yazın.
-1. VM 'nin IP adresini ve VM şablonu parametreleri dosyasında kullandığınız erişim kimlik bilgilerini girin.
+1. İstemcisinde RDP 'yi açın. 
+1. **Başlat**' a gidin ve ardından **mstsc** yazın.
+1. **Uzak Masaüstü bağlantısı** bölmesinde, VM 'nin IP ADRESINI ve VM şablonu parametreleri dosyasında kullandığınız erişim kimlik bilgilerini girin ve **Bağlan**' ı seçin.
 
-    ![Windows sanal makinenize RDP aracılığıyla bağlanmayı gösteren ekran görüntüsü.](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
-1. Güvenilmeyen bir makineye bağlanmayı onaylamanız gerekebilir. 
-1. Artık gereç üzerinde çalışan sanal makinenizde oturumunuz açıldı. 
+   ![Windows sanal makinenize RDP aracılığıyla bağlanmak için Uzak Masaüstü Bağlantısı bölmesinin ekran görüntüsü.](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
+
+   > [!NOTE]
+   > Güvenilmeyen bir makineye bağlanmayı onaylamanız gerekebilir. 
+
+Artık gereç üzerinde çalışan sanal makinenizde oturum açtınız. 

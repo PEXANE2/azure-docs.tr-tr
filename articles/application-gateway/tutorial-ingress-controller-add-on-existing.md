@@ -5,18 +5,18 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 1daf5fef1383272f728ff3dac7557e55398f7d50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720231"
 ---
-# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)
+# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini mevcut bir Application Gateway etkinleştirin
 
-Azure CLı 'yi [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümeniz için şu anda önizleme aşamasında olan [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) eklentisini etkinleştirmek için kullanabilirsiniz. Bu öğreticide, ayrı sanal ağlarda dağıtılan mevcut bir Application Gateway ile Kubernetes uygulamanızı mevcut bir AKS kümesinde ortaya çıkarmak için AGIC eklentisini nasıl kullanacağınızı öğreneceksiniz. Mevcut kaynakların benzetimini yapmak için bir sanal ağda AKS kümesi ve ayrı bir sanal ağda Application Gateway oluşturmaya başlayacaksınız. Ardından, AGIC eklentisini etkinleştireceksiniz, iki sanal ağı birlikte eşleyebilir ve AGIC eklentisi kullanılarak Application Gateway üzerinden kullanıma sunulacak bir örnek uygulama dağıtırsınız. Aynı sanal ağdaki mevcut bir Application Gateway ve mevcut AKS kümesi için AGIC eklentisini etkinleştirirseniz, aşağıdaki eşleme adımını atlayabilirsiniz. Eklenti, AKS kümeniz için AGC 'yi [daha önce Held üzerinden](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) dağıtmanın çok daha hızlı bir yolunu sağlar ve ayrıca tam olarak yönetilen bir deneyim sunar.  
+Mevcut bir [Azure Kubernetes hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümesi için [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) EKLENTISINI etkinleştirmek üzere Azure CLI veya Portal kullanabilirsiniz. Bu öğreticide, ayrı sanal ağlarda dağıtılan mevcut bir Application Gateway ile Kubernetes uygulamanızı mevcut bir AKS kümesinde ortaya çıkarmak için AGIC eklentisini nasıl kullanacağınızı öğreneceksiniz. Mevcut kaynakların benzetimini yapmak için bir sanal ağda AKS kümesi ve ayrı bir sanal ağda Application Gateway oluşturmaya başlayacaksınız. Ardından, AGIC eklentisini etkinleştireceksiniz, iki sanal ağı birlikte eşleyebilir ve AGIC eklentisi kullanılarak Application Gateway üzerinden sunulacak bir örnek uygulama dağıtırsınız. Aynı sanal ağdaki mevcut bir Application Gateway ve mevcut AKS kümesi için AGIC eklentisini etkinleştirirseniz, aşağıdaki eşleme adımını atlayabilirsiniz. Eklenti, AKS kümeniz için AGC 'yi [daha önce Held üzerinden](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) dağıtmanın çok daha hızlı bir yolunu sağlar ve ayrıca tam olarak yönetilen bir deneyim sunar.  
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -24,7 +24,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kaynak grubu oluşturma 
 > * Yeni bir AKS kümesi oluşturma 
 > * Yeni bir Application Gateway oluştur 
-> * Mevcut AKS kümesindeki AGIC eklentisini mevcut Application Gateway kullanarak etkinleştirin 
+> * Azure CLı aracılığıyla mevcut AKS kümesindeki AGIC eklentisini etkinleştirin 
+> * Portal aracılığıyla mevcut AKS kümesindeki AGIC eklentisini etkinleştirin 
 > * AKS kümesi sanal ağıyla Application Gateway sanal ağı eşler
 > * AKS kümesindeki Infer için AGIC kullanarak örnek bir uygulama dağıtma
 > * Application Gateway aracılığıyla uygulamanın erişilebilir olup olmadığını denetleyin
@@ -32,22 +33,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - Bu öğretici, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
-
- - Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Özellik bayrağını kaydedin; Bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir, eklenti hala önizlemededir:
-     ```azurecli-interactive
-     az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
-     ```
-    Durumun kaydı gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
-     ```azurecli-interactive
-     az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-     ```
-
- - Hazırlandığınızda, [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -61,7 +46,7 @@ az group create --name myResourceGroup --location canadacentral
 
 Şimdi yeni bir AKS kümesi dağıtarak, için AGIC eklentisini etkinleştirmek istediğiniz mevcut bir AKS kümesine sahip olma benzetimi yapabilirsiniz.  
 
-Aşağıdaki örnekte, *Myresourcegroup* adlı kaynak grubundaki [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) ve [yönetilen kimlikleri](../aks/use-managed-identity.md) kullanarak *MyCluster* adlı yeni bir aks kümesi dağıtacaksınız.    
+Aşağıdaki örnekte, *Myresourcegroup* adlı kaynak grubundaki [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) ve [yönetilen kimlikleri](../aks/use-managed-identity.md) kullanarak *MyCluster* adlı yeni bir aks kümesi dağıtacaksınız.
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
@@ -84,18 +69,24 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 > [!NOTE]
 > Application Gateway giriş denetleyicisi (AGIC) eklentisi, Application Gateway v1 SKU 'Larını **değil** , **yalnızca** Application Gateway v2 SKU 'larını (Standart ve WAF) destekler. 
 
-## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>Mevcut AKS kümesindeki AGIC eklentisini mevcut Application Gateway etkinleştirme 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-azure-cli"></a>Azure CLı aracılığıyla mevcut AKS kümesindeki AGIC eklentisini etkinleştirme 
 
-Şimdi oluşturduğunuz AKS kümesindeki AGIC eklentisini, *MyCluster*' ı etkinleştirip, *myApplicationGateway* oluşturduğunuz mevcut Application Gateway kullanmak için agic eklentisini belirtmeniz gerekir. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden/güncelleştirdiğinizden emin olun. 
+Azure CLı 'yı kullanmaya devam etmek istiyorsanız, oluşturduğunuz AKS kümesindeki AGIC eklentisini etkinleştirebilir, *MyCluster* ve oluşturduğunuz var olan Application Gateway ( *myApplicationGateway*) kullanmak üzere agic eklentisini belirtebilirsiniz.
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 
 az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id $appgwId
 ```
 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-portal"></a>Portal aracılığıyla mevcut AKS kümesindeki AGIC eklentisini etkinleştirin 
+
+Agic eklentisini etkinleştirmek için Azure Portal kullanmak istiyorsanız, [( https://aka.ms/azure/portal/aks/agic) ](https://aka.ms/azure/portal/aks/agic) ve Portal bağlantısı aracılığıyla aks kümenize gidin) bölümüne gidin. Buradan, AKS kümenizin içindeki Ağ sekmesine gidin. Portal Kullanıcı arabirimini kullanarak giriş denetleyicisi eklentisini etkinleştirmenize/devre dışı bırakmanıza olanak sağlayan bir Application Gateway giriş denetleyicisi bölümü görürsünüz. "Giriş denetleyicisini etkinleştir" öğesinin yanındaki kutuyu işaretleyin ve açılan menüden *myApplicationGateway* , oluşturduğunuz Application Gateway seçin. 
+
+![Application Gateway giriş denetleyicisi portalı](./media/tutorial-ingress-controller-add-on-existing/portal_ingress_controller_addon.png)
+
 ## <a name="peer-the-two-virtual-networks-together"></a>İki sanal ağı birbirine eşler
 
-AKS kümesini kendi sanal ağında ve başka bir sanal ağdaki Application Gateway dağıttığımız için, trafiğin Application Gateway akışın kümedeki yığınlara akmasını sağlamak üzere iki sanal ağı birbirine eşleyebileceksiniz. İki sanal ağ arasındaki eşleme, bağlantının çift yönlü olduğundan emin olmak için Azure CLı komutunu iki ayrı kez çalıştırmayı gerektirir. İlk komut Application Gateway sanal ağından AKS sanal ağına bir eşleme bağlantısı oluşturacaktır; İkinci komut diğer yönde bir eşleme bağlantısı oluşturacaktır. 
+AKS kümesini kendi sanal ağında ve başka bir sanal ağdaki Application Gateway dağıttığımız için, trafiğin Application Gateway akışın kümedeki yığınlara akmasını sağlamak üzere iki sanal ağı birbirine eşleyebileceksiniz. İki sanal ağ arasındaki eşleme, bağlantının çift yönlü olduğundan emin olmak için Azure CLı komutunu iki ayrı kez çalıştırmayı gerektirir. İlk komut Application Gateway sanal ağından AKS sanal ağına bir eşleme bağlantısı oluşturacaktır; İkinci komut diğer yönde bir eşleme bağlantısı oluşturacaktır.
 
 ```azurecli-interactive
 nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
@@ -107,6 +98,7 @@ az network vnet peering create -n AppGWtoAKSVnetPeering -g myResourceGroup --vne
 appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "id")
 az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --vnet-name $aksVnetName --remote-vnet $appGWVnetId --allow-vnet-access
 ```
+
 ## <a name="deploy-a-sample-application-using-agic"></a>AGIC kullanarak örnek uygulama dağıtma 
 
 Şimdi, giriş için AGIC eklentisini kullanacak ve Application Gateway AKS kümesine bağlayacaktır, oluşturduğunuz AKS kümesine örnek bir uygulama dağıtırsınız. İlk olarak, komutunu çalıştırarak dağıttığınız AKS kümesi için kimlik bilgilerini alacaksınız `az aks get-credentials` . 

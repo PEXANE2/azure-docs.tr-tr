@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 482e6c9f2e25b867574090a1f34e95f466916ba9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916516"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711850"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
@@ -26,6 +26,7 @@ Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yö
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Önerilen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
 |[Kullanılabilir katmanlar](storage-files-planning.md#storage-tiers)     |Premium depolama         |Premium Depolama, işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli         |
+|Faturalandırma modeli         |[Sağlanan kapasite için ödeme](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)         |[Premium katman için sağlanan kapasite Için ödeme](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)yapın ve [Standart katman için Kullandıkça Öde](https://docs.microsoft.com/azure/storage/files/understanding-billing#pay-as-you-go-model)         |
 |[Yedeklilik](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Kimlik Doğrulaması     |Yalnızca ana bilgisayar tabanlı kimlik doğrulaması        |Kimlik tabanlı kimlik doğrulaması, Kullanıcı tabanlı kimlik doğrulaması         |
 |İzinler     |UNIX stili izinler         |NTFS stili izinleri         |

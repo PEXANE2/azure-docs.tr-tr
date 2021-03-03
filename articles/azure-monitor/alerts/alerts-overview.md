@@ -1,15 +1,15 @@
 ---
 title: Azure 'da uyarı ve bildirim izlemeye genel bakış
-description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarılar ve uyarılar arabirimi.
+description: Azure Izleyici 'de uyarı konusuna genel bakış
 ms.subservice: alerts
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: e2d447b7407ed874d9c183c5cd2009882f1d6b3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723597"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
 
@@ -94,7 +94,7 @@ Bunun yerine, [REST API 'lerini kullanarak aboneliklerinizde oluşturulan uyarı
 > [!NOTE]
    >  Yalnızca son 30 gün içinde oluşturulan uyarılara erişebilirsiniz.
 
-Klasik uyarıları göstermez veya izlemez. Sayfayı güncelleştirmek için abonelikleri veya filtre parametrelerini değiştirebilirsiniz. 
+Sayfayı güncelleştirmek için abonelikleri veya filtre parametrelerini değiştirebilirsiniz.
 
 ![Uyarı sayfasının ekran görüntüsü](media/alerts-overview/alerts-page.png)
 
@@ -167,7 +167,7 @@ Bir uyarı seçtiğinizde, Bu sayfa uyarının ayrıntılarını sağlar ve duru
 
 Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
-| Section | Description |
+| Section | Açıklama |
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |

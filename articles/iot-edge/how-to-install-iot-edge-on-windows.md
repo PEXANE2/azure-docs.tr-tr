@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736517"
 ---
-# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazında Linux için Azure IoT Edge yükleyip sağlama (Önizleme)
+# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
 Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, bılgısayar sınıfındaki cihazlara endüstriyel sunuculara dağıtılabilir. Bir cihaz IoT Edge çalışma zamanıyla yapılandırıldığında, buluttan cihaza iş mantığını dağıtmaya başlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
@@ -85,7 +85,7 @@ Windows üzerinde Linux için Azure IoT Edge aşağıdaki sağlama yöntemlerini
 
 El ile sağlama, birkaç cihaz kullanmaya başlamak daha kolay. Cihaz sağlama hizmeti, birçok cihaz sağlamak için yararlıdır.
 
-Cihazınızı veya cihazlarınızı sağlamak için DPS yöntemlerinden birini kullanmayı planlıyorsanız, bir DPS örneği oluşturmak, DPS örneğinizi IoT Hub bağlamak ve bir DPS kaydı oluşturmak için yukarıda bağlanılan ilgili makaledeki adımları izleyin. Tek bir cihaz için tek bir *kayıt* veya bir cihaz grubu için bir *Grup kaydı* oluşturabilirsiniz. Kayıt türleri hakkında daha fazla bilgi için [Azure IoT Hub cihaz sağlama hizmeti kavramlarını](https://docs.microsoft.com/azure/iot-dps/concepts-service#enrollment)ziyaret edin.
+Cihazınızı veya cihazlarınızı sağlamak için DPS yöntemlerinden birini kullanmayı planlıyorsanız, bir DPS örneği oluşturmak, DPS örneğinizi IoT Hub bağlamak ve bir DPS kaydı oluşturmak için yukarıda bağlanılan ilgili makaledeki adımları izleyin. Tek bir cihaz için tek bir *kayıt* veya bir cihaz grubu için bir *Grup kaydı* oluşturabilirsiniz. Kayıt türleri hakkında daha fazla bilgi için [Azure IoT Hub cihaz sağlama hizmeti kavramlarını](../iot-dps/concepts-service.md#enrollment)ziyaret edin.
 
 ## <a name="create-a-new-deployment"></a>Yeni bir dağıtım oluşturun
 
@@ -97,7 +97,7 @@ Windows Yönetim Merkezi Başlangıç sayfasında, bağlantı listesi altında, 
 
 Windows Yönetim Merkezi 'ni kullanarak yerel cihazınızdaki veya uzaktan yönetilen cihazlarınızda Windows üzerinde Linux için Azure IoT Edge yüklemek ve yönetmek üzere kullanabilirsiniz. Bu kılavuzda, yerel ana bilgisayar bağlantısı Windows üzerinde Linux için Azure IoT Edge dağıtımı için hedef cihaz olarak görev yapar.
 
-Yerel cihazınız yerine uzak bir hedef cihaza dağıtmak istiyorsanız ve listede istediğiniz hedef cihazınızı görmüyorsanız, [cihazınızı eklemek için yönergeleri izleyin.](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters)
+Yerel cihazınız yerine uzak bir hedef cihaza dağıtmak istiyorsanız ve listede istediğiniz hedef cihazınızı görmüyorsanız, [cihazınızı eklemek için yönergeleri izleyin.](/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters)
 
    ![Hedef cihaz listelenen ilk Windows Yönetim Merkezi panosu](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
@@ -136,7 +136,7 @@ Dağıtımınız tamamlandıktan sonra cihazınızı sağlamaya hazırlanın. **
 Henüz yoksa, Windows üzerinde Linux için IoT Edge 'i hedef cihazınıza yükleyebilirsiniz.
 
 > [!NOTE]
-> Aşağıdaki PowerShell işlemi, Windows 'da Linux için Azure IoT Edge Yerel bir konak dağıtımını oluşturmayı özetler. PowerShell kullanarak uzak hedef cihaza bir dağıtım oluşturmak için uzak bir cihazla bağlantı kurmak ve bu komutları bu cihazda uzaktan çalıştırmak için [uzak PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote) 'i kullanabilirsiniz.
+> Aşağıdaki PowerShell işlemi, Windows 'da Linux için Azure IoT Edge Yerel bir konak dağıtımını oluşturmayı özetler. PowerShell kullanarak uzak hedef cihaza bir dağıtım oluşturmak için uzak bir cihazla bağlantı kurmak ve bu komutları bu cihazda uzaktan çalıştırmak için [uzak PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) 'i kullanabilirsiniz.
 
 1. Yükseltilmiş bir PowerShell oturumunda, Windows 'da Linux için IoT Edge indirmek üzere aşağıdaki komutlardan her birini çalıştırın.
 
@@ -173,9 +173,8 @@ Henüz yoksa, Windows üzerinde Linux için IoT Edge 'i hedef cihazınıza yükl
    Deploy-Eflow
    ```
 
-   <!-- Most likely temporary until cmdlet is fully documented -->
    > [!NOTE]
-   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Parametreleri ve bunların anlamını görmek için AzureEFLOW. psm1 PowerShell modülünü inceleyin (bkz. C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW).
+   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Anlamlarını görmek için [Windows PowerShell betik başvurusunda Linux için IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) başvurabilirsiniz.
 
 1. Lisans koşullarını kabul etmek için ' Y ' girin.
 
@@ -319,7 +318,10 @@ Bu bölümde, DPS ve X. 509.440 sertifikaları kullanılarak cihazınızın otom
 
 Windows üzerinde Linux için IoT Edge IoT Edge cihazınıza başarıyla yüklenip yapılandırıldığını doğrulayın.
 
+# <a name="windows-admin-center"></a>[Windows Yönetim Merkezi](#tab/windowsadmincenter)
+
 1. Bağlanmak için Windows Yönetim Merkezi 'ndeki bağlı cihazlar listesinden IoT Edge cihazınızı seçin.
+
 1. Cihaza Genel Bakış sayfasında cihazla ilgili bazı bilgiler görüntülenir:
 
     1. **IoT Edge modül listesi** bölümünde, cihazdaki çalışan modüller gösterilmektedir. IoT Edge hizmeti ilk kez başladığında yalnızca **Edgeagent** modülünü çalışır duruma gelmelidir. EdgeAgent modülü varsayılan olarak çalışır ve cihazınıza dağıttığınız ek modüllerin yüklenmesini ve başlamasını sağlar.
@@ -338,6 +340,38 @@ Windows üzerinde Linux için IoT Edge IoT Edge cihazınıza başarıyla yüklen
        ```bash
        sudo iotedge check
        ```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+1. PowerShell oturumunuzda aşağıdaki komutu kullanarak Windows sanal makinesinde Linux için IoT Edge oturum açın:
+
+   ```azurepowershell-interactive
+   Ssh-EflowVm
+   ```
+
+1. Oturum açtıktan sonra, aşağıdaki Linux komutunu kullanarak çalışan IoT Edge modülleri listesini denetleyebilirsiniz:
+
+   ```bash
+   iotedge list
+   ```
+
+1. IoT Edge hizmetinde sorun gidermeniz gerekiyorsa aşağıdaki Linux komutlarını kullanın.
+
+    1. Hizmetle ilgili sorunları gidermeniz gerekirse hizmet günlüklerini alın.
+
+       ```bash
+       journalctl -u iotedge
+       ```
+
+    2. `check`Aygıtın yapılandırma ve bağlantı durumunu doğrulamak için aracını kullanın.
+
+       ```bash
+       sudo iotedge check
+       ```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

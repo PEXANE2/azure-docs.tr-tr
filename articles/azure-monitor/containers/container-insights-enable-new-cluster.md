@@ -1,23 +1,23 @@
 ---
 title: Yeni bir Azure Kubernetes hizmeti (AKS) kümesini izleme | Microsoft Docs
-description: Kapsayıcılar için Azure Izleyici aboneliğine sahip yeni bir Azure Kubernetes hizmeti (AKS) kümesi için izlemeyi nasıl etkinleştireceğinizi öğrenin.
+description: Yeni bir Azure Kubernetes hizmeti (AKS) kümesi için kapsayıcı öngörüleri aboneliğiyle izlemeyi nasıl etkinleştireceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717579"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Yeni bir Azure Kubernetes hizmeti (AKS) kümesini izlemeyi etkinleştir
 
-Bu makalede, aboneliğinizden dağıtmaya hazırlanmakta olduğunuz [Azure Kubernetes hizmetinde](../../aks/index.yml) barındırılan yönetilen Kubernetes kümesini izlemek için kapsayıcılar Için Azure izleyici 'nin nasıl ayarlanacağı açıklanır.
+Bu makalede, aboneliğinizde dağıtmaya hazırlanmakta olduğunuz [Azure Kubernetes hizmetinde](../../aks/index.yml) barındırılan yönetilen Kubernetes kümesini Izlemek için kapsayıcı öngörülerinin nasıl ayarlanacağı açıklanır.
 
 Desteklenen yöntemlerden birini kullanarak bir AKS kümesinin izlenmesini etkinleştirebilirsiniz:
 
-* Azure CLI’si
+* Azure CLI
 * Terraform
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI’yı kullanarak etkinleştirme
@@ -34,14 +34,14 @@ Azure CLı ile oluşturulan yeni bir AKS kümesinin izlenmesini etkinleştirmek 
 >[!NOTE]
 >Terrayform kullanmayı seçerseniz, Teraform Azure RM Provider sürüm 1.17.0 veya üstünü çalıştırıyor olmanız gerekir.
 
-Çalışma alanına kapsayıcılar için Azure Izleyici eklemek için, [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) dahil ederek [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) ve **oms_agent** belirterek profili doldurun. 
+Çalışma alanına kapsayıcı öngörüleri eklemek için, [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) dahil ederek [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) ve **oms_agent** belirterek profili doldurun. 
 
 İzlemeyi etkinleştirdikten ve tüm yapılandırma görevleri başarıyla tamamlandıktan sonra, kümenizin performansını iki şekilde izleyebilirsiniz:
 
 * Sol bölmedeki **sistem durumu** ' nu seçerek doğrudan aks kümesinde.
 * Seçili küme için AKS kümesi sayfasında bulunan **kapsayıcı öngörülerini izle** kutucuğunu seçin. Azure Izleyici 'de, sol bölmede **sistem durumu**' nu seçin. 
 
-  ![AKS 'teki kapsayıcılar için Azure Izleyicisini seçme seçenekleri](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![AKS 'de kapsayıcı öngörülerini seçme seçenekleri](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir. 
 
@@ -117,5 +117,5 @@ Birkaç dakika sonra komut tamamlanır ve çözüm hakkında JSON biçimli bilgi
 
 * Çözümü oluşturmaya çalışırken sorunlarla karşılaşırsanız, [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin
 
-* İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
+* İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcı öngörülerini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
 

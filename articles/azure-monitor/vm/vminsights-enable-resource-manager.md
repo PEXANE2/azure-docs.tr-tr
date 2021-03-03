@@ -1,20 +1,20 @@
 ---
-title: Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici etkinleştirme
-description: Bu makalede, Azure PowerShell veya Azure Resource Manager şablonları kullanarak bir veya daha fazla Azure sanal makinesi veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
+title: Kaynak Yöneticisi şablonları kullanarak VM öngörülerini etkinleştirme
+description: Bu makalede, Azure PowerShell veya Azure Resource Manager şablonlarını kullanarak bir veya daha fazla Azure sanal makinesi veya sanal makine ölçek kümesi için VM öngörülerini nasıl etkinleştireceğinizi açıklanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a719be730c76d8e334195fdc9b35bbcad0d06b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625124"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707498"
 ---
-# <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici etkinleştirme
-Bu makalede, Kaynak Yöneticisi şablonları kullanarak bir sanal makine veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
+# <a name="enable-vm-insights-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak VM öngörülerini etkinleştirme
+Bu makalede, Kaynak Yöneticisi şablonları kullanarak bir sanal makine veya sanal makine ölçek kümesi için VM öngörülerinin nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
 
 - Azure sanal makine
 - Azure sanal makine ölçek kümesi
@@ -22,8 +22,8 @@ Bu makalede, Kaynak Yöneticisi şablonları kullanarak bir sanal makine veya sa
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Log Analytics çalışma alanı oluşturun ve yapılandırın](../insights/vminsights-configure-workspace.md). 
-- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](../insights/vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
+- [Log Analytics çalışma alanı oluşturun ve yapılandırın](./vminsights-configure-workspace.md). 
+- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](./vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
@@ -37,14 +37,14 @@ Azure Resource Manager şablonları, GitHub deponuzdan [indirebileceğiniz](http
 
 İndirme dosyası farklı senaryolar için aşağıdaki şablonları içerir:
 
-- **Existingvmontaslak** şablonu, sanal makine zaten varsa VM'ler için Azure izleyici etkinleştirilir.
-- **Newvmontaslak** şablonu, bir sanal makine oluşturur ve VM'ler için Azure izleyici bunu izlemesini sağlar.
-- **ExistingVmssOnboarding** şablonu, sanal makine ölçek kümesi zaten varsa VM'ler için Azure izleyici etkinleştirilir.
-- **NewVmssOnboarding** şablonu, sanal makine ölçek kümeleri oluşturur ve VM'ler için Azure İzleyici bunları izlemesini sağlar.
-- **Configureworkspace** şablonu, Linux ve Windows işletim sistemi performans sayaçlarının çözümlerini ve toplanmasını etkinleştirerek Log Analytics çalışma alanınızı VM'ler için Azure izleyici destekleyecek şekilde yapılandırır.
+- **Existingvmontaslak** şablonu, sanal makine zaten mevcutsa VM öngörülerini sunar.
+- **Newvmontaslak** şablonu, bir sanal makine oluşturur ve VM öngörülerini izlemek için sağlar.
+- **ExistingVmssOnboarding** şablonu, sanal makine ölçek kümesi zaten varsa VM öngörülerini mümkün bir şekilde sunar.
+- **NewVmssOnboarding** şablonu, sanal makine ölçek kümeleri oluşturur ve VM öngörülerini bunları izlemeye olanak sağlar.
+- **Configureworkspace** şablonu, Linux ve Windows işletim sistemi performans sayaçlarının çözümlerini ve toplanmasını etkinleştirerek, sanal makine öngörülerini desteklemek için Log Analytics çalışma alanınızı yapılandırır.
 
 >[!NOTE]
->Sanal Makine Ölçek Kümeleri zaten varsa ve yükseltme ilkesi **el ile** olarak ayarlandıysa, **ExistingVmssOnboarding** Azure Resource Manager şablonu çalıştırıldıktan sonra örnekler için VM'ler için Azure izleyici varsayılan olarak etkinleştirilmez. Örnekleri el ile yükseltmeniz gerekir.
+>Sanal Makine Ölçek Kümeleri zaten varsa ve yükseltme ilkesi **el ile** olarak ayarlandıysa, **ExistingVmssOnboarding** Azure Resource Manager şablonu çalıştırıldıktan sonra varsayılan olarak VM öngörüleri varsayılan olarak etkinleştirilmez. Örnekleri el ile yükseltmeniz gerekir.
 
 ## <a name="deploy-templates"></a>Şablon dağıtma
 Şablonlar, PowerShell ve CLı kullanarak aşağıdaki örnekleri içeren [Kaynak Yöneticisi şablonları için herhangi bir dağıtım yöntemi](../../azure-resource-manager/templates/deploy-powershell.md) kullanılarak dağıtılabilir.
@@ -62,8 +62,8 @@ az deployment group create --resource-group <ResourceGroupName> --template-file 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir.
+Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM öngörüleri ile analiz edilmek üzere kullanılabilir.
 
-- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM Insights haritasını görüntüleme](vminsights-maps.md).
 
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).

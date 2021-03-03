@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 72e00306563e8cccdd476cf0ae5bfb4ddaa63ecf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751101"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -66,7 +66,7 @@ Kimlik doğrulaması için, istemcinizin pakete başvurması gerekir `azure-comm
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -141,11 +141,11 @@ Yanıt, `chatThreadClient` oluşturulan sohbet iş parçacığı üzerinde işle
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -207,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` tarafından tanımlanabilecek farklı ileti türlerini döndürür `chatMessage.getType()` . Bu türler şunlardır:
 
-- `Text`: Bir iş parçacığı katılımcısı tarafından gönderilen düzenli sohbet iletisi.
+- `text`: Bir iş parçacığı katılımcısı tarafından gönderilen düzenli sohbet iletisi.
 
-- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi.
+- `html`: Bir iş parçacığı katılımcısı tarafından gönderilen HTML sohbet iletisi.
 
-- `ThreadActivity/AddMember`: Sohbet iş parçacığına bir veya daha fazla üye eklendiğini belirten sistem iletisi.
+- `topicUpdated`: Konunun güncelleştirildiğini belirten sistem iletisi.
 
-- `ThreadActivity/DeleteMember`: Bir üyenin sohbet iş parçacığından kaldırıldığını belirten sistem iletisi.
+- `participantAdded`: Sohbet iş parçacığına bir veya daha fazla katılımcı eklendiğini belirten sistem iletisi.
+
+- `participantRemoved`: Bir katılımcının sohbet iş parçacığından kaldırıldığını belirten sistem iletisi.
 
 Daha ayrıntılı bilgi için bkz. [Ileti türleri](../../../concepts/chat/concepts.md#message-types).
 
@@ -224,7 +226,7 @@ Sohbet iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleye
 `addParticipants`ThreadID tarafından tanımlanan iş parçacığına katılımcılar eklemek için yöntemini kullanın.
 
 - `listParticipants`Sohbet iş parçacığına eklenecek katılımcıları listelemek için kullanın.
-- `user`, gerekli, [Kullanıcı erişim belirteci](../../access-tokens.md) hızlı başlangıç bölümünde Communicationıdentityclient tarafından oluşturduğunuz Communicationuserıdentifier ' dır.
+- `communicationIdentifier`, gerekli, [Kullanıcı erişim belirteci](../../access-tokens.md) hızlı başlangıç bölümünde Communicationıdentityclient tarafından oluşturduğunuz Communicationıdentifier.
 - `display_name`, isteğe bağlı, iş parçacığı katılımcısı için görünen addır.
 - `share_history_time`, isteğe bağlı, sohbet geçmişinin katılımcının paylaştığı süredir. Sohbet iş parçacığının başlatılmasından bu yana geçmişi paylaşmak için, bu özelliği, iş parçacığı oluşturma zamanından daha küçük veya ona eşit bir tarih olarak ayarlayın. Katılımcının eklendiği tarihten önce geçmiş paylaşmak için, geçerli tarih olarak ayarlayın. Kısmi geçmişi paylaşmak için, bunu gerekli tarihe ayarlayın.
 
@@ -232,11 +234,11 @@ Sohbet iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleye
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -247,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>Kullanıcı sohbet iş parçacığından kaldır
+## <a name="remove-participant-from-a-chat-thread"></a>Bir sohbet iş parçacığından katılımcı kaldırma
 
-Bir iş parçacığına kullanıcı eklemeye benzer şekilde, bir sohbet iş parçacığından kullanıcıları kaldırabilirsiniz. Bunu yapmak için, eklediğiniz katılımcıların Kullanıcı kimliklerini izlemeniz gerekir.
+Bir iş parçacığına katılımcı eklemeye benzer şekilde, katılımcıları bir sohbet iş parçacığından kaldırabilirsiniz. Bunu yapmak için, eklediğiniz katılımcıların kimliklerini izlemeniz gerekir.
 
-`removeParticipant`Öğesini kullanın, burada `user` oluşturduğunuz Communicationuserıdentifier ' dır.
+`removeParticipant`Öğesini kullanın, burada `identifier` oluşturduğunuz Communicationıdentifier ' dır.
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>Kodu çalıştırma

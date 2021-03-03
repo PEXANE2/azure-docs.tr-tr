@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c091241a4928b3f498be7944559aa5b91c6fecf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705067"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Öğretici: Azure Spring Cloud uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -22,7 +22,7 @@ Bu makalede, Azure yay bulutu uygulaması için yönetilen kimlik oluşturma ve 
 
 Azure Key Vault, uygulamanızın belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve güvenle denetlemek için kullanılabilir. Azure Active Directory (AAD) ' de yönetilen bir kimlik oluşturabilir ve kodunuzda kimlik bilgilerini görüntülemeye gerek kalmadan Key Vault dahil AAD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
 * [Azure CLı sürüm 2.0.67 veya üstünü yükler](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
@@ -69,7 +69,7 @@ az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup
 export SERVICE_IDENTITY=$(az spring-cloud app show --name "springapp" -s "myspringcloud" -g "myResourceGroup" | jq -r '.identity.principalId')
 ```
 
-Döndürülen `url` "https://<-app-name>. azuremicroservices.io" biçiminde olacak döndürülen bir örneği oluşturun. Bu işlem, aşağıdaki adımda kullanılacaktır.
+Döndürülen, biçiminde olacak şekilde bir değişiklik yapın `url` `https://<your-app-name>.azuremicroservices.io` . Bu işlem, aşağıdaki adımda kullanılacaktır.
 
 
 ## <a name="grant-your-app-access-to-key-vault"></a>Uygulamanıza Key Vault erişim izni verin

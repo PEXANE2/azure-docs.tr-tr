@@ -2,13 +2,13 @@
 title: Şablon işlevleri-dize
 description: Dizelerle çalışmak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731128"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM şablonları için dize işlevleri
 
@@ -39,7 +39,7 @@ Kaynak Yöneticisi, Azure Resource Manager şablonunuzda dizeler (ARM şablonu) 
 * [startsWith](#startswith)
 * [string](#string)
 * [dizeden](#substring)
-* [take](#take)
+* [almanız](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [kırpma](#trim)
@@ -60,7 +60,7 @@ Giriş dizesinin Base64 gösterimini döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| InputString |Evet |string |Base64 temsili olarak döndürülecek değer. |
+| InputString |Yes |string |Base64 temsili olarak döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -143,7 +143,7 @@ Base64 gösterimini JSON nesnesine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Base64value değeri |Evet |string |JSON nesnesine dönüştürülecek Base64 temsili. |
+| Base64value değeri |Yes |string |JSON nesnesine dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -227,7 +227,7 @@ Base64 gösterimini dizeye dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Base64value değeri |Evet |string |Dizeye dönüştürülecek Base64 temsili. |
+| Base64value değeri |Yes |string |Dizeye dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -306,11 +306,13 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür ya da birden çok diziyi birleştirir ve birleştirilmiş diziyi döndürür.
 
+Dize birleştirmesini basitleştirmek için Bıcep [dize ilişkilendirme](https://en.wikipedia.org/wiki/String_interpolation#) söz dizimini destekler.
+
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya dizi |Birleştirme için ilk dize veya dizi. |
+| arg1 |Yes |dize veya dizi |Birleştirme için ilk dize veya dizi. |
 | ek bağımsız değişkenler |Hayır |dize veya dizi |Birleştirme için sıralı sırada ek dizeler veya diziler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir. Ancak, parametreleri için hem diziler hem de dizeler sağlayamıyoruz. Dizeler yalnızca diğer dizelerle birleştirilir.
@@ -351,6 +353,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+veya
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -423,7 +433,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | ---- | ---- | ----- |
 | return | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>şunu içerir
+## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
@@ -433,8 +443,8 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -545,7 +555,7 @@ Bir değeri veri URI 'sine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Evet |string |Bir veri URI 'sine dönüştürülecek değer. |
+| stringToConvert |Yes |string |Bir veri URI 'sine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -614,7 +624,7 @@ Veri URI 'SI biçimli değeri bir dizeye dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Evet |string |Dönüştürülecek veri URI değeri. |
+| dataUriToConvert |Yes |string |Dönüştürülecek veri URI değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -683,7 +693,7 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -764,8 +774,8 @@ Bir dizenin bir değer ile bitip bitmeyeceğini belirler. Karşılaştırma büy
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Evet |string |Bulunacak değer. |
+| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Yes |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -845,7 +855,7 @@ Dizenin ilk karakterini veya dizideki ilk öğeyi döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -914,8 +924,8 @@ Giriş değerlerinden biçimli bir dize oluşturur.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| formatString | Evet | string | Bileşik biçim dizesi. |
-| arg1 | Evet | dize, tamsayı veya Boole | Biçimlendirilen dizeye dahil edilecek değer. |
+| formatString | Yes | string | Bileşik biçim dizesi. |
+| arg1 | Yes | dize, tamsayı veya Boole | Biçimlendirilen dizeye dahil edilecek değer. |
 | ek bağımsız değişkenler | Hayır | dize, tamsayı veya Boole | Biçimlendirilen dizeye eklenecek ek değerler. |
 
 ### <a name="remarks"></a>Açıklamalar
@@ -985,7 +995,7 @@ Parametre olarak belirtilen değerlere göre genel benzersiz tanımlayıcı biç
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseString |Evet |string |GUID oluşturmak için karma işlevde kullanılan değer. |
+| baseString |Yes |string |GUID oluşturmak için karma işlevde kullanılan değer. |
 | gerektiğinde ek parametreler |Hayır |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
 
 ### <a name="remarks"></a>Açıklamalar
@@ -1098,8 +1108,8 @@ Bir dize içindeki bir değerin ilk konumunu döndürür. Karşılaştırma büy
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Evet |string |Bulunacak değer. |
+| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Yes |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1181,7 +1191,7 @@ Dizenin son karakterini veya dizideki son öğeyi döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1250,8 +1260,8 @@ Bir dize içindeki bir değerin son konumunu döndürür. Karşılaştırma büy
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Evet |string |Bulunacak değer. |
+| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Yes |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1325,7 +1335,7 @@ Bir dizedeki karakter sayısını, dizideki öğeleri veya bir nesnedeki kök d�
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1530,7 +1540,7 @@ Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad oluşturmak üz
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -1563,8 +1573,8 @@ Belirtilen toplam uzunluğa ulaşana kadar sola karakter ekleyerek sağa hizalan
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Evet |dize veya tamsayı |Sağa hizalamak için değer. |
-| Toplam uzunluğu |Evet |int |Döndürülen dizedeki toplam karakter sayısı. |
+| valueToPad |Yes |dize veya tamsayı |Sağa hizalamak için değer. |
+| Toplam uzunluğu |Yes |int |Döndürülen dizedeki toplam karakter sayısı. |
 | Doldurma Ingcharacter |Hayır |tek karakter |Toplam uzunluğa ulaşılana kadar sol doldurma için kullanılacak karakter. Varsayılan değer bir alandır. |
 
 Özgün dize, doldurma karakteri sayısından uzunsa, hiçbir karakter eklenmez.
@@ -1625,9 +1635,9 @@ Başka bir dize tarafından değiştirilmiş bir dizenin tüm örneklerine sahip
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalString |Evet |string |Bir dizenin tüm örneklerine sahip olan değer başka bir dize tarafından değiştirildi. |
-| Eskidize |Evet |string |Özgün dizeden kaldırılacak dize. |
-| Yenidize |Evet |string |Kaldırılan dizenin yerine eklenecek dize. |
+| originalString |Yes |string |Bir dizenin tüm örneklerine sahip olan değer başka bir dize tarafından değiştirildi. |
+| Eskidize |Yes |string |Özgün dizeden kaldırılacak dize. |
+| Yenidize |Yes |string |Kaldırılan dizenin yerine eklenecek dize. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1691,8 +1701,8 @@ Belirtilen sayıda karakterden sonraki tüm karakterleri içeren bir dize veya b
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1779,8 +1789,8 @@ Belirtilen sınırlayıcılar tarafından ayrılan giriş dizesinin alt dizeleri
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| InputString |Evet |string |Bölünecek dize. |
-| sınırlayıcı |Evet |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
+| InputString |Yes |string |Bölünecek dize. |
+| sınırlayıcı |Yes |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1857,8 +1867,8 @@ Bir dizenin bir değerle başlatılıp başlatılmayacağını belirler. Karşı
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Evet |string |Bulunacak öğeyi içeren değer. |
-| stringToFind |Evet |string |Bulunacak değer. |
+| stringToSearch |Yes |string |Bulunacak öğeyi içeren değer. |
+| stringToFind |Yes |string |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1938,7 +1948,7 @@ Belirtilen değeri bir dizeye dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Evet | Herhangi bir |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
+| valueToConvert |Yes | Herhangi biri |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2032,7 +2042,7 @@ Belirtilen karakter konumunda başlayan ve belirtilen sayıda karakteri içeren 
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Evet |string |Alt dizenin ayıklandığı özgün dize. |
+| stringToParse |Yes |string |Alt dizenin ayıklandığı özgün dize. |
 | startIndex |Hayır |int |Alt dize için sıfır tabanlı başlangıç karakter konumu. |
 | length |Hayır |int |Alt dize için karakter sayısı. Dize içindeki bir konuma başvurmalıdır. Sıfır veya daha büyük olmalıdır. |
 
@@ -2118,8 +2128,8 @@ Dizenin başından itibaren belirtilen sayıda karaktere sahip bir dize veya diz
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2206,7 +2216,7 @@ Belirtilen dizeyi küçük harfe dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Evet |string |Küçük harfe dönüştürülecek değer. |
+| stringToChange |Yes |string |Küçük harfe dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2270,7 +2280,7 @@ Belirtilen dizeyi büyük harfe dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Evet |string |Büyük harfe dönüştürülecek değer. |
+| stringToChange |Yes |string |Büyük harfe dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2334,7 +2344,7 @@ Belirtilen dizeden tüm öndeki ve sondaki boşluk karakterlerini kaldırır.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Evet |string |Kırpılacak değer. |
+| stringToTrim |Yes |string |Kırpılacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2392,7 +2402,7 @@ Parametre olarak belirtilen değerlere göre belirleyici bir karma dize oluştur
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseString |Evet |string |Benzersiz bir dize oluşturmak için karma işlevde kullanılan değer. |
+| baseString |Yes |string |Benzersiz bir dize oluşturmak için karma işlevde kullanılan değer. |
 | gerektiğinde ek parametreler |Hayır |string |Benzersizlik düzeyini belirten değeri oluşturmak için gereken sayıda dize ekleyebilirsiniz. |
 
 ### <a name="remarks"></a>Açıklamalar
@@ -2468,7 +2478,7 @@ Aşağıdaki örnek, kaynak grubunuza göre bir depolama hesabı için benzersiz
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```
@@ -2524,8 +2534,8 @@ BaseUri ve relativeUri dizesini birleştirerek mutlak bir URI oluşturur.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseUri |Evet |string |Taban URI dizesi. Bu tabloda açıklandığı gibi sondaki eğik çizginin ('/') işlenmesiyle ilgili davranışı gözlemlemeye özen gösterin.  |
-| relativeUri |Evet |string |Taban URI dizesine eklenecek göreli URI dizesi. |
+| baseUri |Yes |string |Taban URI dizesi. Bu tabloda açıklandığı gibi sondaki eğik çizginin ('/') işlenmesiyle ilgili davranışı gözlemlemeye özen gösterin.  |
+| relativeUri |Yes |string |Taban URI dizesine eklenecek göreli URI dizesi. |
 
 * **BaseUri** bir sondaki eğik çizgiyle sonlanıyorsa, sonuç yalnızca **BaseUri** URI ve ardından **relativeUri** olur.
 
@@ -2629,7 +2639,7 @@ Bir URI 'yi kodlar.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Evet |string |Kodlanacak değer. |
+| stringToEncode |Yes |string |Kodlanacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2699,7 +2709,7 @@ URI kodlamalı bir değer String döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Evet |string |Dizeye dönüştürülecek URI kodlamalı değer. |
+| uriEncodedString |Yes |string |Dizeye dönüştürülecek URI kodlamalı değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

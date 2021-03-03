@@ -1,22 +1,22 @@
 ---
-title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft Docs
-description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
+title: Günlükleri kapsayıcı öngörülerine sorgulama | Microsoft Docs
+description: Kapsayıcı öngörüleri, ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711119"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
+# <a name="how-to-query-logs-from-container-insights"></a>Kapsayıcı öngörülerine ait günlükleri sorgulama
 
-Kapsayıcılar için Azure Izleyici, kapsayıcı konakları ve kapsayıcılarından performans ölçümleri, envanter verileri ve sistem durumu bilgilerini toplar. Veriler her üç dakikada bir toplanır ve Azure Izleyici 'de Log Analytics çalışma alanına iletilir. Bu veriler Azure Izleyici 'de [sorgu](../log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+Kapsayıcı öngörüleri, kapsayıcı konakları ve kapsayıcılarından performans ölçümlerini, envanter verilerini ve sistem durumu bilgilerini toplar. Veriler her üç dakikada bir toplanır ve Azure Izleyici 'de Log Analytics çalışma alanına iletilir. Bu veriler Azure Izleyici 'de [sorgu](../logs/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 ## <a name="container-records"></a>Kapsayıcı kayıtları
 
-Aşağıdaki tabloda, kapsayıcılar için Azure Izleyici tarafından toplanan kayıtların ayrıntıları verilmiştir. Sütun açıklamalarının bir listesi için bkz. [Containerınventory](/azure/azure-monitor/reference/tables/containerinventory) ve [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) tabloları için başvuru.
+Aşağıdaki tabloda, kapsayıcı öngörüleri tarafından toplanan kayıtların ayrıntıları verilmiştir. Sütun açıklamalarının bir listesi için bkz. [Containerınventory](/azure/azure-monitor/reference/tables/containerinventory) ve [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) tabloları için başvuru.
 
 | Veriler | Veri kaynağı | Veri türü | Alanlar |
 |------|-------------|-----------|--------|
@@ -47,7 +47,7 @@ Azure Izleyici günlükleri, geçerli küme yapılandırmasının en iyi şekild
 
 Genellikle bir örnekle başlayan sorgular oluşturmak ve sonra gereksinimlerinize uyacak şekilde değiştirmek yararlıdır. Daha gelişmiş sorgular oluşturmaya yardımcı olmak için aşağıdaki örnek sorgularla denemeler yapabilirsiniz:
 
-| Sorgu | Description | 
+| Sorgu | Açıklama | 
 |-------|-------------|
 | Containerınventory<br> &#124; proje bilgisayar, ad, resim, ImageTag, ContainerState, CreatedTime, StartedTime, Sonlandırhedtime<br> &#124; oluşturma tablosu | Kapsayıcının yaşam döngüsü bilgilerinin tümünü listeleme| 
 | KubeEvents_CL<br> Not &#124; (IsEmpty (Namespace_s))<br> TimeGenerated DESC 'e göre sıralama &#124;<br> &#124; oluşturma tablosu | Kubernetes olayları|
@@ -110,4 +110,4 @@ KubeMonAgentEvents | where Level != "Info"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kapsayıcılar için Azure Izleyici, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için önerilen uyarılar oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarılarını oluşturma](./container-insights-log-alerts.md) ' yı gözden geçirin.
+Kapsayıcı öngörüleri, önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya işletimsel işlemlerinizi ve yordamlarını desteklemek üzere yüksek CPU ve bellek kullanımı için önerilen uyarılar oluşturmayı öğrenmek için [kapsayıcı öngörüleriyle performans uyarılarını oluşturma](./container-insights-log-alerts.md) ' yı gözden geçirin.

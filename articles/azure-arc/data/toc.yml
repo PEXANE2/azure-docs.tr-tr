@@ -6,6 +6,8 @@
       href: overview.md
     - name: Sürüm notları
       href: release-notes.md
+    - name: Bilinen sorunlar
+      href: known-issues.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Veri denetleyicisi oluşturma
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 'İzleme, günlük analizi, faturalama bilgileri, Azure portal'
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Yüksek kullanılabilirlik
+              href: managed-instance-high-availability.md
             - name: Sil
               href: delete-managed-instance.md
         - name: Geçiş

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719024"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
@@ -33,7 +33,18 @@ Gerekli olmasa da, bu özellikle en iyi şekilde uyumluluk için önerilen günl
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}`[Syslog önem düzeyi biçimini](https://wikipedia.org/wiki/Syslog#Severity_level) izlemelidir ve `{Timestamp}` olarak biçimlendirilmelidir `yyyy-MM-dd hh:mm:ss.fff zzz` .
+`{Timestamp}` olarak biçimlendirilmelidir `yyyy-MM-dd hh:mm:ss.fff zzz` ve `{Log Level}` aşağıdaki tabloyu izlemelidir ve bu, önem derecelerini [Syslog standardında önem derecesi kodundan](https://wikipedia.org/wiki/Syslog#Severity_level)türetir.
+
+| Değer | Önem |
+|-|-|
+| 0 | Durumlar |
+| 1 | Uyarı |
+| 2 | Kritik |
+| 3 | Hata |
+| 4 | Uyarı |
+| 5 | Değiştirilebileceğini |
+| 6 | Bilgilendirici |
+| 7 | Hata ayıklama |
 
 [IoT Edge Içindeki günlükçü sınıfı](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) , kurallı bir uygulama işlevi görür.
 
@@ -82,7 +93,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 Günlüklerin başarılı bir şekilde alınması bir **"Status": 200** ve ardından, isteğiniz içinde belirttiğiniz ayarlara göre filtrelenmiş, modülünden alınan günlükleri içeren bir yük izler.
 
-Örneğin:
+Örnek:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +134,7 @@ Azure portal Yöntem adı `GetModuleLogs` ve AŞAĞıDAKI JSON yüküyle yöntem
 
 ![Azure portal ' GetModuleLogs ' doğrudan metodunu çağır](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örneğin:
+Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örnek:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -192,7 +203,7 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örneğin:
+Örnek:
 
 Aşağıdaki çağrı, sıkıştırılmış JSON biçiminde tüm modüllerden son 100 günlük satırını karşıya yükler:
 
@@ -316,7 +327,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örneğin:
+Örnek:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -374,7 +385,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örneğin:
+Örnek:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

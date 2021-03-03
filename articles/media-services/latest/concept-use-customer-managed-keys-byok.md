@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 27d357279a54d7abc351370e7afda3a7961bac33
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698867"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services ile kendi anahtarınızı getirin (müşteri tarafından yönetilen anahtarlar)
 
@@ -42,7 +42,7 @@ Anahtar adı ve anahtar sürümü ya da yalnızca anahtar adı belirtebilirsiniz
 Media Services otomatik olarak çift şifrelemeyi destekler. Bekleyen veriler için, ilk şifreleme katmanı, hesaptaki ayara bağlı olarak bir müşteri tarafından yönetilen anahtar veya Microsoft tarafından yönetilen anahtar kullanır `AccountEncryption` .  Bekleyen veriler için ikinci şifreleme katmanı, ayrı bir Microsoft tarafından yönetilen anahtar kullanılarak otomatik olarak sağlanır. Çift şifreleme hakkında daha fazla bilgi edinmek için bkz. [Azure Çift şifreleme](../../security/fundamentals/double-encryption.md).
 
 > [!NOTE]
-> Media Services hesapta Çift şifreleme otomatik olarak etkinleştirilir. Ancak, müşteri tarafından yönetilen anahtarı ve depolama hesabınızda çift şifrelemeyi ayrı olarak yapılandırmanız gerekir. Bkz., [storege şifreleme](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+> Media Services hesapta Çift şifreleme otomatik olarak etkinleştirilir. Ancak, müşteri tarafından yönetilen anahtarı ve depolama hesabınızda çift şifrelemeyi ayrı olarak yapılandırmanız gerekir. Bkz., [storege şifreleme](../../storage/common/storage-service-encryption.md).
 
 ## <a name="tutorials"></a>Öğreticiler
 

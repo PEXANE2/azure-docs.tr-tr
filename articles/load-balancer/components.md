@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739840"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
@@ -54,7 +54,7 @@ Yük dengeleyici, örnekleri yukarı veya aşağı ölçeklendirirseniz otomatik
 
 Arka uç havuzunuzu nasıl tasarlayacağınızı düşünürken, yönetim işlemlerinin uzunluğunu iyileştirmek için en az sayıda ayrı arka uç havuzu kaynağı tasarlayın. Veri düzlemi performansı veya ölçeği üzerinde farklılık yoktur.
 
-## <a name="health-probes"></a>Durum yoklamaları
+## <a name="health-probes"></a>Durum araştırmaları
 
 Bir sistem durumu araştırması, arka uç havuzundaki örneklerin sistem durumunu tespit etmek için kullanılır. Yük dengeleyici oluşturma sırasında, yük dengeleyicinin kullanması için bir sistem durumu araştırması yapılandırın.  Bu sistem durumu araştırması, bir örneğin sağlıklı olup olmadığını ve trafik alıp alamayacağını tespit eder.
 
@@ -133,6 +133,7 @@ Temel yük dengeleyici giden kuralları desteklemez.
 - Bir arka uç VM 'den bir iç Load Balancer ön uca giden akış başarısız olur.
 - Yük dengeleyici kuralı iki sanal ağı yayılamaz.  Ön uçların ve arka uç örneklerinin aynı sanal ağda bulunması gerekir.  
 - IP parçalarını iletme, Yük Dengeleme kurallarında desteklenmez. UDP ve TCP paketlerinin IP parçalanması, Yük Dengeleme kurallarında desteklenmez. HA bağlantı noktaları Yük Dengeleme kuralları, var olan IP parçalarını iletmek için kullanılabilir. Daha fazla bilgi için bkz. [yüksek kullanılabilirlik bağlantı noktalarına genel bakış](load-balancer-ha-ports-overview.md).
+- Kullanılabilirlik kümesi başına yalnızca 1 ortak Load Balancer ve 1 iç Load Balancer olabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

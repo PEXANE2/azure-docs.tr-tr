@@ -1,17 +1,16 @@
 ---
 title: Azure Tanılama verileri Application Insights gönderin
 description: Application Insights verileri göndermek için Azure Tanılama genel yapılandırmayı güncelleştirin.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b9e9d6b1b5939804b24fd523bf8b7444ed41178f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623653"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708603"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
 Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.
@@ -172,10 +171,11 @@ Ortak yapılandırma dosyasının bir örneği aşağıda verilmiştir
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure tanılama tarafından toplanan tüm verileri gönder
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights",
@@ -184,10 +184,11 @@ Ortak yapılandırma dosyasının bir örneği aşağıda verilmiştir
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Application Insights havuzuna yalnızca hata günlükleri Gönder
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights.MyTopDiagData",

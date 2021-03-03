@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094333"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735735"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure yöntemleri
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
@@ -206,7 +206,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 - **Küresel erişim**: diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Tüketicinin sanal ağı A bölgesinde olabilir ve B bölgesindeki hizmetlere bağlanabilir.
 - **Kolay bir şekilde ayarlanır ve yönetin**: Azure kaynaklarını bir IP güvenlik duvarı aracılığıyla güvenli hale getirmek için sanal ağlarınızda artık ayrılmış, genel IP adresleri gerekmez. Özel uç noktaları ayarlamak için herhangi bir NAT veya ağ geçidi cihazı gerekmez. Özel uç noktalar basit bir iş akışı aracılığıyla yapılandırılır. Hizmet tarafında Ayrıca, Azure hizmet kaynağınızın bağlantı isteklerini kolayca yönetebilirsiniz. Azure özel bağlantısı, farklı Azure Active Directory kiracılarına ait tüketiciler ve hizmetler için de geçerlidir. 
     
-Özel uç noktalar ve özel uç noktaların kullanılabildiği Azure hizmetleri ve bölgeleri hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantısı](https://docs.microsoft.com/azure/private-link/private-link-overview).
+Özel uç noktalar ve özel uç noktaların kullanılabildiği Azure hizmetleri ve bölgeleri hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantısı](../../private-link/private-link-overview.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

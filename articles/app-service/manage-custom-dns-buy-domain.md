@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704863"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
 
@@ -211,7 +211,7 @@ Azure, süresi dolan veya süresi dolan App Service etki alanları ile aşağıd
 * Otomatik yenileme devre dışıysa: etki alanı süre sonundan 90 gün önce, bir yenileme bildirimi e-postası gönderilir ve portalda **etki alanını Yenile** düğmesi etkinleştirilir.
 * Otomatik yenileme etkinse: etki alanı sona erme tarihi dolduktan sonra Azure, etki alanı adı yenileme için sizi faturalandırma girişiminde bulunur.
 * Otomatik yenileme sırasında bir hata oluşursa (örneğin, dosyanızdaki kartın süresi dolmuşsa) veya otomatik yenileme devre dışıysa ve etki alanının süresinin dolmasına izin verirseniz Azure, etki alanı süre sonunu ve etki alanı adınızı park süresini size bildirir. Etki alanınızı [el ile yenileyebilirsiniz](#renew-the-domain) .
-* 4 ve 12. günün süresi dolduktan sonra Azure size ek bildirim e-postaları gönderir. Etki alanınızı [el ile yenileyebilirsiniz](#renew-the-domain) .
+* 4 ve 12. günün süresi dolduktan sonra Azure size ek bildirim e-postaları gönderir. Etki alanınızı [el ile yenileyebilirsiniz](#renew-the-domain) . Süre dolduktan sonra 5 gün sonra DNS çözümlemesi, süresi doldu etki alanı için durduruluyor.
 * Süre dolduktan sonra 19. günde, etki alanınız tutuluyor kalır, ancak bir teminat ücretine tabi olur. Uygun yenileme ve kullanım ücretlerine tabi olmak üzere etki alanı adınızı yenilemek için müşteri desteğini çağırabilirsiniz.
 * Süre dolduktan sonra 25. günde Azure, etki alanı adı endüstri açık servisi olan bir etki alanını açık eksiltmeye geçirir. Uygun yenileme ve kullanım ücretlerine tabi olmak üzere etki alanı adınızı yenilemek için müşteri desteğini çağırabilirsiniz.
 * Süresi dolduktan sonra 30 gün sonra, etki alanınızı artık kullanamayacak.

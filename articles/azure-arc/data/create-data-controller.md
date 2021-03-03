@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384971"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688374"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -37,7 +37,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 
 > [!IMPORTANT]
 > * Kubernetes 'in desteklenen en düşük sürümü v 1.17. Daha fazla bilgi için [bilinen sorunlara](./release-notes.md#known-issues) bakın. 
-> * OCP 'nin desteklenen en düşük sürümü 4,3 ' dir.
+> * OCP 'nin desteklenen en düşük sürümü 4,5 ' dir.
 > * Ortamınız ve Azure arasında hangi bağlantının gerekli olduğunu anlamak için [bağlantı gereksinimlerine](connectivity.md) bakın.
 > * Kalıcı depolama alanınızı yapılandırmaya ilişkin ayrıntıları öğrenmek için [depolama yapılandırma kılavuzu](storage-configuration.md) ' na bakın.
 > * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** Küme birden çok kullanılabilirlik bölgesini kapsamamalıdır. 

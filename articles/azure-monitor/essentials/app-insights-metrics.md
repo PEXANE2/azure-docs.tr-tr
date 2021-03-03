@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731689"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -21,13 +21,13 @@ Application Insights günlük tabanlı ölçümler, izlenen uygulamalarınızın
 * Sahnenin arkasındaki [günlük tabanlı ölçümler](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](/azure/kusto/query/) çevrilir.
 * [Standart ölçümler](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) önceden toplanmış zaman serisi olarak depolanır.
 
-Koleksiyon sırasında *Standart ölçümler* önceden toplanmış olduğundan, sorgu zamanında daha iyi performansa sahip olurlar. Bu, dinamik olarak ve gerçek zamanlı uyarı oluşturma için daha iyi bir seçenek sunar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir. Bu, veri analizi ve geçici Tanılamalar için üst seçenek sağlar. [Ölçüm Gezgini](../platform/metrics-getting-started.md)'nde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçiciyi](../platform/metrics-getting-started.md#create-your-first-metric-chart) kullanın.
+Koleksiyon sırasında *Standart ölçümler* önceden toplanmış olduğundan, sorgu zamanında daha iyi performansa sahip olurlar. Bu, dinamik olarak ve gerçek zamanlı uyarı oluşturma için daha iyi bir seçenek sunar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir. Bu, veri analizi ve geçici Tanılamalar için üst seçenek sağlar. [Ölçüm Gezgini](./metrics-getting-started.md)'nde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçiciyi](./metrics-getting-started.md#create-your-first-metric-chart) kullanın.
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>Bu makaledeki sorguları yorumlama ve kullanma
 
 Bu makalede, desteklenen toplamalar ve boyutlarla ölçümler listelenir. Günlük tabanlı ölçümler hakkındaki ayrıntılar, temeldeki kusto sorgu deyimlerini içerir. Kolaylık olması için, her sorgu zaman ayrıntı düzeyi, grafik türü için varsayılan değerleri kullanır ve bazı durumlarda Log Analytics sorgu kullanımını kolaylaştıran boyutları böyor.
 
-Ölçüm [Gezgini](../platform/metrics-getting-started.md)'nde aynı ölçümü çizerseniz varsayılan yoktur; sorgu, grafik ayarlarınıza göre dinamik olarak ayarlanır:
+Ölçüm [Gezgini](./metrics-getting-started.md)'nde aynı ölçümü çizerseniz varsayılan yoktur; sorgu, grafik ayarlarınıza göre dinamik olarak ayarlanır:
 
 - Seçilen **zaman aralığı** , yalnızca seçilen zaman aralığından olayları seçmek için ek bir *WHERE timestamp...* yan tümcesine çevrilir. Örneğin, en son 24 saat için verileri gösteren bir grafik, sorgu *| WHERE zaman damgası > önce (24 h)*' i içerir.
 
@@ -38,7 +38,7 @@ Bu makalede, desteklenen toplamalar ve boyutlarla ölçümler listelenir. Günl�
 - Seçili **bölünmüş grafik** boyutu fazladan bir özetleme özelliğine çevrilir. Örneğin, grafiğinizi *konuma* göre bölüerseniz ve 5 dakikalık bir zaman ayrıntı düzeyi kullanarak çizim yaparsanız, *özetleme* yan tümcesi özetlenir *... bin (zaman damgası, 5 milyon), konum*.
 
 > [!NOTE]
-> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../log-query/log-analytics-tutorial.md) ve [Azure izleyici](../overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
+> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../logs/log-analytics-tutorial.md) ve [Azure izleyici](../overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
 
 ## <a name="availability-metrics"></a>Kullanılabilirlik ölçümleri
 

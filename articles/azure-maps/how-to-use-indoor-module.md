@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905290"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708688"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 Kutucukların ınkapaklı tilesets ve Map stilini yüklemek için, *ınkapılı yöneticinin* örneğini oluşturmanız gerekir. *Map nesnesini* ve karşılık gelen öğesini sağlayarak *ınkapısı yöneticisinin* örneğini oluşturun `tilesetId` . [Dinamik harita](indoor-map-dynamic-styling.md)stilini desteklemek istiyorsanız, öğesini geçirmeniz gerekir `statesetId` . `statesetId`Değişken adı büyük/küçük harfe duyarlıdır. Kodunuzun aşağıdaki JavaScript gibi olması gerekir.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların* durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği (*durum*) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ Dosyanız artık aşağıdaki HTML 'ye benzer şekilde görünmelidir.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ Dosyanız artık aşağıdaki HTML 'ye benzer şekilde görünmelidir.
 Inkapısı eşlemenizi görmek için bir Web tarayıcısına yükleyin. Aşağıdaki görüntüde olduğu gibi görünmelidir. Staırwell özelliğine tıklarsanız, *düzey seçici* sağ üst köşede görünür.
 
   ![ınkapısı eşleme resmi](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[Canlı tanıtımı gör](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

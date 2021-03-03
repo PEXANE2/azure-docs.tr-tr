@@ -3,22 +3,21 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719806"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
+
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
 
 Bu örnekte, Application Insights veri alan bir bağdaştırıcı oluşturacağız, bazı alanları yeniden adlandırdığından ve işleyerek ve Power BI yönelttireceğiz.
 
 > [!WARNING]
 > [Power BI Application Insights verileri görüntülemenin](./export-power-bi.md)çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
-> 
-> 
 
 ![SA 'dan PBı 'a dışarı aktarma için blok diyagramı](./media/export-stream-analytics/020.png)
 
@@ -38,6 +37,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
     ![Depolama alanında ayarlar, anahtarlar ' ı açın ve birincil erişim anahtarının bir kopyasını alın](./media/export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Azure depolama 'ya sürekli dışarı aktarmayı Başlat
+
 [Sürekli dışarı aktarma](export-telemetry.md) , verileri Application Insights 'den Azure Storage 'a taşılar.
 
 1. Azure portal, uygulamanız için oluşturduğunuz Application Insights kaynağına gidin.
@@ -55,18 +55,19 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 
     ![Olay türlerini seçin](./media/export-stream-analytics/080.png)
 
-1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../essentials/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz. 
+1. Bazı verilerin birikmesini sağlar. Geri gelin ve başkalarının uygulamanızı bir süre içinde kullanmasına izin verin. Telemetri ' de gelir ve [Ölçüm Gezgini](../essentials/metrics-charts.md) 'nde istatistiksel grafikler ve [Tanılama aramasında](./diagnostic-search.md)tek tek olaylar görürsünüz.
    
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. Aktarılmış verileri inceleyin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
    
     ![Görmek istediğiniz olay türlerinin nasıl ayarlanacağını gösteren ekran görüntüsü.](./media/export-stream-analytics/04-data.png)
    
-    Yol adının, uygulama adı ve izleme anahtarından türetilen ortak bölümünü bir yere göz önünde bir şekilde oluşturun. 
+    Yol adının, uygulama adı ve izleme anahtarından türetilen ortak bölümünü bir yere göz önünde bir şekilde oluşturun.
 
 Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha fazla olay içerebilir. Bu nedenle, olay verilerini okumak ve istediğimiz alanları filtrelemek istiyoruz. Verilerle yaptığımız her türlü şey vardır, ancak şu anda planımız, verileri Power BI için boru yapmak üzere Stream Analytics kullanmaktır.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics örneği oluşturma
+
 [Azure Portal](https://portal.azure.com/), Azure Stream Analytics hizmetini seçin ve yeni bir Stream Analytics işi oluşturun:
 
 ![Azure portal Stream Analytics işi oluşturmak için ana sayfayı gösteren ekran görüntüsü.](./media/export-stream-analytics/SA001.png)
@@ -104,9 +105,9 @@ Bu örnekte:
 
 > [!NOTE]
 > Yolu doğru aldığınızdan emin olmak için depolamayı inceleyin.
-> 
 
 ## <a name="add-new-output"></a>Yeni çıkış Ekle
+
 Şimdi işle > **çıkışlarını**  >  **Ekle**' yi seçin.
 
 ![Yeni bir çıkış eklemek için Stream Analytics işinizi seçmeyi gösteren ekran görüntüsü.](./media/export-stream-analytics/SA006.png)
@@ -117,11 +118,13 @@ Bu örnekte:
 Power BI kaynağına erişmek üzere Stream Analytics yetkilendirmek için **iş veya okul hesabınızı** girin. Ardından, çıkış için bir ad ve hedef Power BI veri kümesi ve tablo için bir ad koyun.
 
 ## <a name="set-the-query"></a>Sorguyu ayarlama
+
 Sorgu, girişten çıkışa çeviriyi yönetir.
 
-Doğru çıktıyı almanızı denetlemek için test işlevini kullanın. Giriş sayfasından aldığınız örnek verileri verin. 
+Doğru çıktıyı almanızı denetlemek için test işlevini kullanın. Giriş sayfasından aldığınız örnek verileri verin.
 
 ### <a name="query-to-display-counts-of-events"></a>Olay sayılarını görüntüleme sorgusu
+
 Bu sorguyu Yapıştır:
 
 ```SQL
@@ -154,7 +157,7 @@ OUTER APPLY GetElements(A.context.custom.metrics) as flat
 GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
 ```
 
-* Bu sorgu, olay zamanını ve ölçüm değerini almak için ölçüm telemetrisine gider. Ölçüm değerleri bir dizi içindedir, bu nedenle, satırları ayıklamak için DıŞTAKI al Gements düzenlerini kullanırız. "myMetric", bu durumda ölçüm adıdır. 
+* Bu sorgu, olay zamanını ve ölçüm değerini almak için ölçüm telemetrisine gider. Ölçüm değerleri bir dizi içindedir, bu nedenle, satırları ayıklamak için DıŞTAKI al Gements düzenlerini kullanırız. "myMetric", bu durumda ölçüm adıdır.
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Boyut özelliklerinin değerlerini dahil etmek için sorgu
 
@@ -178,17 +181,18 @@ FROM flat
 * Bu sorgu, boyut dizisindeki sabit bir dizinde bulunan belirli bir boyuta bağlı kalmadan boyut özelliklerinin değerlerini içerir.
 
 ## <a name="run-the-job"></a>İşi çalıştırma
-İşten başlamak için geçmişte bir tarih seçebilirsiniz. 
+
+İşten başlamak için geçmişte bir tarih seçebilirsiniz.
 
 ![İşi seçin ve sorgu ' ya tıklayın. Aşağıdaki örneği yapıştırın.](./media/export-stream-analytics/SA008.png)
 
 İş çalışmaya başlamadan bekleyin.
 
 ## <a name="see-results-in-power-bi"></a>Sonuçlara bakın Power BI
+
 > [!WARNING]
 > [Power BI Application Insights verileri görüntülemenin](./export-power-bi.md)çok daha iyi ve kolay bir yolu vardır. Burada gösterilen yol, yalnızca bir örnek olarak, aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
-> 
-> 
+
 
 İş veya okul hesabınızla Power BI açın ve Stream Analytics işinin çıktısı olarak tanımladığınız veri kümesini ve tabloyu seçin.
 
@@ -199,17 +203,10 @@ Artık bu veri kümesini, [Power BI](https://powerbi.microsoft.com)raporlarında
 ![Ekran görüntüsünde, Power BI bir veri kümesinden yapılan rapor örneği gösterilmektedir.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Veri yok mu?
+
 * Tarih biçimini YYYY-AA-GG olarak (tireler ile) doğru olarak [ayarlayıp ayarlayamadığını](#set-path-prefix-pattern) kontrol edin.
-
-## <a name="video"></a>Video
-Nohar ben Zeev, Stream Analytics kullanarak dışarıya aktarılmış verilerin nasıl işlenmesi gerektiğini gösterir.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Sürekli dışarı aktarma](export-telemetry.md)
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 * [Uygulama Bilgileri](./app-insights-overview.md)
-

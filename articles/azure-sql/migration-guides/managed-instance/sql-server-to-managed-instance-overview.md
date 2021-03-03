@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656287"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690422"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ Aşağıdaki tabloda önerilen geçiş seçenekleri karşılaştırılmaktadır:
 
 |Geçiş seçeneği  |Kullanılması gereken durumlar  |Dikkat edilmesi gerekenler  |
 |---------|---------|---------|
-|[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | -Tek veritabanlarını veya birden çok veritabanını ölçeklendirmeye geçirin. </br> -Geçiş işlemi sırasında kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM |  -Ölçekte geçişler, [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)aracılığıyla otomatikleştirilebilir. </br> -Geçişin tamamlanma süresi veritabanı boyutuna bağımlıdır ve yedekleme ve geri yükleme zamanından etkilenir. </br> -Yeterli kapalı kalma süresi gerekebilir. |
+|[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | -Tek veritabanlarını veya birden çok veritabanını ölçeklendirmeye geçirin. </br> -Geçiş işlemi sırasında kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM |  -Ölçekte geçişler, [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)aracılığıyla otomatikleştirilebilir. </br> -Geçişin tamamlanma süresi veritabanı boyutuna bağımlıdır ve yedekleme ve geri yükleme zamanından etkilenir. </br> -Yeterli kapalı kalma süresi gerekebilir. |
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | -Bireysel iş kolu uygulama veritabanlarını geçirin.  </br> -Ayrı bir geçiş hizmeti veya aracı olmadan hızlı ve kolay geçiş.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM | -Veritabanı yedeklemesi, Azure Blob depolama alanına veri aktarımını iyileştirmek için birden çok iş parçacığı kullanır, ancak ISV bant genişliği ve veritabanı boyutu aktarım hızını etkileyebilir. </br> -Kapalı kalma süresi, tam yedekleme ve geri yükleme (veri boyutu) için gereken süreyi içermelidir.| 
 |[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | -Bireysel iş kolu uygulama veritabanlarını geçirin.  </br> -Veritabanı geçişleri için daha fazla denetim gereklidir.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2008-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM | -Geçiş, SQL Server üzerinde tam veritabanı yedeklemeleri yapmayı ve yedekleme dosyalarını Azure Blob depolamaya kopyalamayı gerektirir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır. </br> -Geçiş işlemi sırasında geri yüklenen veritabanları geri yükleme modunda olur ve işlem tamamlanana kadar okumak veya yazmak için kullanılamaz.| 
 | | | |
@@ -163,7 +163,7 @@ SQL yönetilen örneği 'ne dahil olan yüksek oranda kullanılabilir mimarinin 
 
 #### <a name="sql-agent-jobs"></a>SQL Aracısı işleri
 
-[SQL Agent işlerini](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)geçirmek Için çevrimdışı Azure veritabanı geçiş HIZMETI (DMS) seçeneğini kullanın. Aksi takdirde, SQL Server Management Studio kullanarak Transact-SQL (T-SQL) içindeki işleri betikten sonra hedef SQL yönetilen örneği üzerinde el ile yeniden oluşturun. 
+[SQL Agent işlerini](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)geçirmek Için çevrimdışı Azure veritabanı geçiş HIZMETI (DMS) seçeneğini kullanın. Aksi takdirde, SQL Server Management Studio kullanarak Transact-SQL (T-SQL) içindeki işleri betikten sonra hedef SQL yönetilen örneği üzerinde el ile yeniden oluşturun. 
 
 > [!IMPORTANT]
 > Şu anda Azure DMS yalnızca T-SQL alt sistemi adımlarıyla işleri destekliyor. SSIS paketi adımlarının bulunduğu işlerin el ile geçirilmesi gerekecektir. 

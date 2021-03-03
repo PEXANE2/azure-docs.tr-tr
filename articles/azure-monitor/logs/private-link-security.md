@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 55a3cd6b02b9eeb774a084552c086acbfb9966cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9431aac203b831a0ffe22b835acf4677061780c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622676"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707854"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -157,9 +157,53 @@ Azure Izleyici kaynaklarını (Log Analytics çalışma alanları ve Application
  
    e.    **Oluştur**’u seçin. 
 
-    ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
+    ![Özel uç nokta Ayrıntıları Seç ekran görüntüsü.](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
 Şimdi bu AMPLS 'e bağlı yeni bir özel uç nokta oluşturdunuz.
+
+## <a name="review-and-validate-your-private-link-setup"></a>Özel bağlantı kurulumunuzu gözden geçirin ve doğrulayın
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>Uç noktanızın DNS ayarlarını gözden geçirme
+Oluşturduğunuz özel uç noktasının artık dört DNS bölgesi yapılandırılmış olmalıdır:
+
+[![Özel uç nokta DNS bölgelerinin ekran görüntüsü.](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+
+* Privatelink-izleme-Azure-com
+* Privatelink-OMS-OpInsights-Azure-com
+* Privatelink-ODS-OpInsights-Azure-com
+* Privatelink-Agentsvc-Azure-Automation-net
+
+Bu bölgelerin her biri, belirli Azure Izleyici uç noktalarını özel uç noktanın sanal ağ havuzundan özel IP 'lere eşler.
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-izleme-Azure-com
+Bu bölge, Azure Izleyici tarafından kullanılan küresel uç noktaları kapsadığından, bu uç noktaların belirli bir kaynağı değil tüm kaynakları dikkate alır. Bu bölgede, için eşlenmiş uç noktalar olmalıdır:
+* `in.ai` -(Application Insights alma uç noktası, genel ve bölgesel bir giriş görürsünüz
+* `api` -Application Insights ve Log Analytics API uç noktası
+* `live` -Application Insights canlı ölçüm uç noktası
+* `profiler` -Application Insights Profiler uç noktası
+* `snapshot`-Application Insights Snapshot Endpoint [ ![ ekran görüntüsü özel DNS bölge izleyicisinin-Azure-com.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>Privatelink-OMS-OpInsights-Azure-com
+Bu bölge, OMS uç noktalarına çalışma alanına özgü eşlemeyi içerir. Bu özel uç noktayla bağlantılı olan AMPLS 'e bağlı her çalışma alanı için bir giriş görmeniz gerekir.
+[![Özel DNS Zone OMS-OpInsights-Azure-com ekran görüntüsü.](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>Privatelink-ODS-OpInsights-Azure-com
+Bu bölge, ODS uç noktalarına çalışma alanına özgü eşlemeyi içerir. Log Analytics alma uç noktasıdır. Bu özel uç noktayla bağlantılı olan AMPLS 'e bağlı her çalışma alanı için bir giriş görmeniz gerekir.
+[![Özel DNS Zone ODS-OpInsights-Azure-com ekran görüntüsü.](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>Privatelink-Agentsvc-Azure-Automation-net
+Bu bölge, aracı hizmeti Otomasyon uç noktalarına çalışma alanına özgü eşlemeyi içerir. Bu özel uç noktayla bağlantılı olan AMPLS 'e bağlı her çalışma alanı için bir giriş görmeniz gerekir.
+[![Özel DNS bölge Aracısı svc-Azure-Automation-net ekran görüntüsü.](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>Özel bir bağlantı üzerinden iletişim kurduğunuz doğrulanıyor
+* İsteklerinizin özel uç nokta ve özel IP eşlenmiş uç noktalara gönderilmesini sağlamak için, bunları bir ağ izleme ile, hatta tarayıcınızda inceleyebilirsiniz. Örneğin, çalışma alanınızı veya uygulamanızı sorgulamaya çalışırken, isteğin API uç noktasına eşlenmiş özel IP 'ye gönderildiğinden emin olun, bu örnekte *172.17.0.9*.
+
+    Note: bazı tarayıcılarda diğer DNS ayarları (bkz. [tarayıcı DNS ayarları](#browser-dns-settings)) kullanılabilir. DNS ayarlarınızın uygulanmasını sağlayın.
+
+* Çalışma alanınızın veya bileşeninizin ortak ağlardan (AMPLS ile bağlantılı olmayan) istek aldığından emin olmak için kaynağın ortak alma ve sorgu bayraklarını [özel bağlantı kapsamları dışında erişimi yönetme](#manage-access-from-outside-of-private-links-scopes)bölümünde açıklanan şekilde *Hayır* olarak ayarlayın.
+
+* Korumalı ağınızdaki bir istemciden, `nslookup` DNS bölgelerinde listelenen uç noktalara kadar kullanın. DNS sunucunuz, varsayılan olarak kullanılan genel IP 'Ler yerine, eşlenmiş özel IP 'Ler ile çözümlenmelidir.
+
 
 ## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandırma
 
@@ -170,7 +214,7 @@ Azure portala gidin. Log Analytics çalışma alanı kaynak menüsünde, sol tar
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Bağlı Azure Izleyici özel bağlantı kapsamları
 Çalışma alanına bağlı tüm kapsamlar Bu ekranda görünür. Kapsamlara bağlanma (AMPLSs), her bir AMPLS 'e bağlanan sanal ağdan gelen ağ trafiğinin bu çalışma alanına ulaşmasını sağlar. Buradan bir bağlantı oluşturmak, [Azure izleyici kaynaklarını bağlarken](#connect-azure-monitor-resources)olduğu gibi kapsamda ayarlama ile aynı etkiye sahiptir. Yeni bir bağlantı eklemek için **Ekle** ' yi seçin ve Azure Izleyici özel bağlantı kapsamını seçin. Bu uygulamayı bağlamak için **Uygula** ' yı seçin. Çalışma alanının, [sınırlamalar ve sınırlamalar](#restrictions-and-limitations)bölümünde belirtildiği gıbı 5 ampls nesnesine bağlanabildiğini unutmayın. 
 
-### <a name="access-from-outside-of-private-links-scopes"></a>Özel bağlantı kapsamları dışından erişim
+### <a name="manage-access-from-outside-of-private-links-scopes"></a>Özel bağlantı kapsamları dışından erişimi yönetme
 Bu sayfanın alt kısmındaki ayarlar, genel ağlardan erişimi denetler, yani yukarıda listelenen kapsamlar aracılığıyla bağlı olmayan ağlar. Giriş **için genel ağ erişimine Izin ver** ayarı, bağlı kapsamlar dışındaki makinelerden gelen günlüklerin biriktirme listesini **içermez** . **Sorgular için ortak ağ erişimine Izin ver** ayarı, kapsamların dışındaki makinelerden gelen **hiçbir** blok sorgusu vermez. Bu, çalışma kitapları, panolar, API tabanlı istemci deneyimleri, Azure portal içgörüler ve daha fazlası aracılığıyla çalıştırılan sorgular içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
 
 ### <a name="exceptions"></a>Özel durumlar
@@ -207,7 +251,7 @@ Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, 
 
 İzlenen iş yüklerini barındıran kaynakları özel bağlantıya eklemeniz gerekir. Bu, uygulama [Hizmetleri için bunu](../../app-service/networking/private-endpoint.md) nasıl yapaöğreneceksiniz.
 
-Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki veriler için geçerlidir. Bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Bunun yerine, uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](../roles-permissions-security.md).
+Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki veriler için geçerlidir. Ancak, bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Bu nedenle, uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimini kısıtlamalısınız. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](../roles-permissions-security.md).
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights tamamen güvenli hale getirmek için, Application Insights kaynağa erişimin yanı sıra temel Log Analytics çalışma alanını da kapatmanız gerekir.
@@ -218,14 +262,14 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 [Özel bağlantı kurulumunuzu planlama](#planning-your-private-link-setup)bölümünde açıklandığı gibi, tek bir kaynak Için bile özel bir bağlantı kurmak, bu ağlardaki tüm Azure izleyici kaynaklarını ve aynı DNS 'yi paylaşan diğer ağları etkiler. Bu, ekleme sürecinizi zorlu hale getirir. Aşağıdaki seçenekleri göz önünde bulundurun:
 
 * Tüm en basit ve en güvenli yaklaşım, tüm Application Insights bileşenlerinizi AMPLS 'a eklemektir. Diğer ağlardan hala erişmeye devam etmek istediğiniz bileşenler için "alma/sorgu için genel internet erişimine Izin ver" bayrakları Evet (varsayılan) olarak ayarlayın.
-* Ağları ayır-bağlı olan VNET 'leri kullanarak (veya ile hizaladıysanız), [Azure 'Da Merkez-uç ağ topolojisi](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)içindeki yönergeleri izleyin. Ardından, ilgili bağlı olan sanal ağlarda ayrı özel bağlantı ayarları kurun. DNS bölgelerini diğer bağlı ağlar ile paylaşmak [DNS geçersiz kılmalara](#the-issue-of-dns-overrides)neden OLACAĞı için DNS bölgelerini de ayırdığınızdan emin olun.
+* Ağları ayır-bağlı olan VNET 'leri kullanarak (veya ile hizaladıysanız), [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)içindeki yönergeleri izleyin. Ardından, ilgili bağlı olan sanal ağlarda ayrı özel bağlantı ayarları kurun. DNS bölgelerini diğer bağlı ağlar ile paylaşmak [DNS geçersiz kılmalara](#the-issue-of-dns-overrides)neden OLACAĞı için DNS bölgelerini de ayırdığınızdan emin olun.
 * Belirli uygulamalar için özel DNS bölgelerini kullanın-Bu çözüm, özel bir bağlantı üzerinden seçme Application Insights bileşenlerine erişmenize izin verir ve diğer tüm trafiği ortak yollarla tutarken bu şekilde çalışır.
-    - [Özel bir özel DNS bölgesi](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)ayarlayın ve internal.Monitor.Azure.com gibi benzersiz bir ad verin.
+    - [Özel bir özel DNS bölgesi](../../private-link/private-endpoint-dns.md)ayarlayın ve internal.Monitor.Azure.com gibi benzersiz bir ad verin.
     - Bir AMPLS ve özel uç nokta oluşturun ve özel DNS ile otomatik tümleştirme **seçeneğini belirleyin**
-    - Özel uç nokta-> DNS yapılandırması ' na gidin ve şuna benzer FQDN 'lerin önerilen eşlemesini gözden geçirin: ![ ÖNERILEN DNS bölge yapılandırması ekran görüntüsü](./media/private-link-security/private-endpoint-fqdns.png)
+    - Özel uç nokta-> DNS yapılandırması ' na gidin ve FQDN 'lerin önerilen eşlemesini gözden geçirin.
     - Yapılandırma eklemeyi seçin ve yeni oluşturduğunuz internal.monitor.azure.com bölgesini seçin
     - ![YAPıLANDıRıLMıŞ DNS bölgesinin yukarıdaki ekran görüntüsüne ait kayıtları ekleyin](./media/private-link-security/private-endpoint-global-dns-zone.png)
-    - Application Insights bileşenine gidin ve [bağlantı dizesini](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string)kopyalayın.
+    - Application Insights bileşenine gidin ve [bağlantı dizesini](../app/sdk-connection-string.md)kopyalayın.
     - Özel bir bağlantı üzerinden bu bileşeni çağırmak isteyen uygulamalar veya betikler, bağlantı dizesini EndpointSuffix = Internal. Monitor. Azure. com ile kullanmalıdır
 * Uç noktaları DNS yerine Hosts dosyaları aracılığıyla eşle-yalnızca ağınızdaki belirli bir makineden/VM 'den özel bir bağlantı erişimine sahip olmak için:
     - Bir AMPLS ve özel uç nokta ayarlayın ve özel DNS ile otomatik tümleştirme **seçeneğini belirleyin** 
@@ -280,7 +324,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi** ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="querying-data"></a>Veri sorgulama
-[ `externaldata` İşleci](https://docs.microsoft.com/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) , depolama hesaplarından veri okuduğu ancak depolamaya özel olarak erişildiğine dair özel bir bağlantı üzerinden desteklenmez.
+[ `externaldata` İşleci](/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) , depolama hesaplarından veri okuduğu ancak depolamaya özel olarak erişildiğine dair özel bir bağlantı üzerinden desteklenmez.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 

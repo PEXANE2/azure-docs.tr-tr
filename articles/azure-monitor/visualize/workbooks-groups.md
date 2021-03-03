@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 2614117d153b1db50d4487bf4045a63af430f3ac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731366"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Çalışma kitaplarında grupları kullanma
 
@@ -143,5 +143,5 @@ Daha büyük bir şablonu birden çok alt şablon olarak açmak için:
 6. Daha sonra Grup adımını Şablondan Yükle olarak değiştirebilir ve şablon KIMLIĞI alanını 5. adımda oluşturduğunuz çalışma kitabına/şablona ayarlayabilirsiniz. Çalışma kitapları kimlikleriyle çalışmak için kaynağın paylaşılan bir çalışma kitabı kaynak KIMLIĞI olması gerekir. *Yükle* ' ye basın ve bu grubun içeriği artık bu dış çalışma kitabının içine kaydedilmesi yerine bu alt şablondan yüklenecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Çalışma kitaplarına genel bakış](../platform/workbooks-overview.md)
+- [Çalışma kitaplarına genel bakış](./workbooks-overview.md)
 - [Çalışma kitaplarında JSONPath kullanma](workbooks-jsonpath.md)

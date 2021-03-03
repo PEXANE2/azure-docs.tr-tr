@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736687"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
@@ -55,7 +55,7 @@ Aç iletişim kutusu görünür. İndirmeler klasörünüze veya `FabrikamCommen
 
 ![[CSV İçeri Aktarımı iletişim kutusu]](../media/tutorials/power-bi/csv-import.png)
 
-CSV içeri aktarımı iletişim kutusu, Power BI Desktop'ın karakter kümesini, sınırlayıcıyı, üst bilgi satırlarını ve sütun türlerini doğru bir şekilde algıladığını doğrulamanıza olanak sağlar. Bu bilgilerin tümü doğru olduğuna göre **Yükle** ’ye tıklayın.
+CSV içeri aktarımı iletişim kutusu, Power BI Desktop'ın karakter kümesini, sınırlayıcıyı, üst bilgi satırlarını ve sütun türlerini doğru bir şekilde algıladığını doğrulamanıza olanak sağlar. Bu bilgilerin tümü doğru olduğuna göre **Yükle**’ye tıklayın.
 
 Yüklenen verileri görmek için, Power BI çalışma alanının sol kenarındaki **Veri Görünümü** düğmesine tıklayın. Microsoft Excel’de olduğu gibi verileri içeren bir tablo açılır.
 
@@ -68,7 +68,7 @@ Metin Analizi hizmetinin Anahtar İfadeler API’si tarafından işlenmeye hazı
 
 Örnek veriler bir `subject` sütunu ve `comment` sütunu içerir. Power BI Desktop’ta Sütunları Birleştirme işleviyle, yalnızca `comment` sütunundaki değil, her iki sütundaki verilerden anahtar ifadeleri ayıklayabilirsiniz.
 
-Power BI Desktop’ta **Ana Sayfa** şeridini seçin. **Dış veri** grubunda **Sorguları Düzenle** ’ye tıklayın.
+Power BI Desktop’ta **Ana Sayfa** şeridini seçin. **Dış veri** grubunda **Sorguları Düzenle**’ye tıklayın.
 
 ![[Giriş şeridindeki Dış Veri grubu]](../media/tutorials/power-bi/edit-queries.png)
 
@@ -82,14 +82,14 @@ Power BI Desktop’ta **Ana Sayfa** şeridini seçin. **Dış veri** grubunda **
 
 ![[Sütunları Birleştir iletişim kutusunu kullanarak alanları birleştirme]](../media/tutorials/power-bi/merge-columns.png)
 
-Sütunları Birleştir iletişim kutusunda, ayırıcı olarak `Tab` seçeneğini belirleyip **Tamam** ’a tıklayın.
+Sütunları Birleştir iletişim kutusunda, ayırıcı olarak `Tab` seçeneğini belirleyip **Tamam**’a tıklayın.
 
 Boş Olanı Kaldır filtresinden yararlanarak veya yazdırılamayan karakterleri Temizle dönüşümü ile kaldırarak boş iletileri de filtreleyebilirsiniz. Verileriniz, örnek dosyadaki `spamscore` sütunu gibi bir sütun içeriyorsa Sayı Filtresi kullanarak "istenmeyen" yorumları atlayabilirsiniz.
 
 ## <a name="understand-the-api"></a>API’yi anlama
 <a name="UnderstandingAPI"></a>
 
-Metin Analizi hizmetinin [Anahtar İfadeler API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)’si, HTTP isteği başına bine kadar metin belgesini işleyebilir. Power BI, kayıtları tek tek işler. Bu nedenle, API’ye yönelik çağrılarınızın her biri yalnızca tek bir belge içerir. Anahtar İfadeler API’si, işlenen her belge için aşağıdaki alanları gerektirir.
+Metin Analizi hizmetinin [Anahtar İfadeler API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases)’si, HTTP isteği başına bine kadar metin belgesini işleyebilir. Power BI, kayıtları tek tek işler. Bu nedenle, API’ye yönelik çağrılarınızın her biri yalnızca tek bir belge içerir. Anahtar İfadeler API’si, işlenen her belge için aşağıdaki alanları gerektirir.
 
 | Alan | Açıklama |
 | - | - |
@@ -105,13 +105,13 @@ Artık Power BI ve Metin Analizi’ni tümleştirecek özel işlevi oluşturmaya
 > [!NOTE]
 > Power BI Desktop özel işlevleri [Power Query M formül dilinde](/powerquery-m/power-query-m-reference) (veya kısaca "M") yazılır. M, [F#](/dotnet/fsharp/) temelindeki işlevsel bir programlama dilidir. Bu öğreticiyi tamamlamanız için programcı olmanız gerekmese de gerekli kod aşağıda verilmiştir.
 
-Power BI Desktop’ta, halen Sorgu Düzenleyicisi penceresinde bulunduğunuzdan emin olun. Aksi takdirde, **Ana Sayfa** şeridini seçin ve **Dış veri** grubunda **Sorguları Düzenle** ’ye tıklayın.
+Power BI Desktop’ta, halen Sorgu Düzenleyicisi penceresinde bulunduğunuzdan emin olun. Aksi takdirde, **Ana Sayfa** şeridini seçin ve **Dış veri** grubunda **Sorguları Düzenle**’ye tıklayın.
 
-Şimdi **Ana Sayfa** şeridindeki **Yeni Sorgu** grubunda **Yeni Kaynak** açılır menüsünü açın ve **Boş Sorgu** ’yu seçin. 
+Şimdi **Ana Sayfa** şeridindeki **Yeni Sorgu** grubunda **Yeni Kaynak** açılır menüsünü açın ve **Boş Sorgu**’yu seçin. 
 
 Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorgu görüntülenir. Söz konusu girişe çift tıklayın ve girişi `KeyPhrases` olarak adlandırın.
 
-Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici** ’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
+Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici**’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
 
 > [!NOTE]
 > Aşağıdaki örnek uç noktayı, `<your-custom-subdomain>` metin analizi kaynağınız için oluşturulan uç noktayla değiştirin (içeren). [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip seçerek bu uç noktayı bulabilirsiniz `Quick start` .
@@ -139,7 +139,7 @@ in  keyphrases
 
 Artık her bir müşteri yorumundan anahtar ifadeleri ayıklamak ve tablodaki yeni bir sütunda depolamak için özel işlevi kullanabiliriz. 
 
-Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgusuna geri dönün. **Sütun Ekle** şeridini seçin. **Genel** grubunda **Özel İşlev Çağır** ’a tıklayın.
+Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgusuna geri dönün. **Sütun Ekle** şeridini seçin. **Genel** grubunda **Özel İşlev Çağır**’a tıklayın.
 
 ![[Özel İşlev Çağır düğmesi]](../media/tutorials/power-bi/invoke-custom-function-button.png)<br><br>
 
@@ -149,7 +149,7 @@ Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgu
 
 ![[Özel işlev çağırma]](../media/tutorials/power-bi/invoke-custom-function.png)
 
-Son olarak, **Tamam** 'a tıklayın.
+Son olarak, **Tamam**'a tıklayın.
 
 Her şey hazırsa Power BI, tablodaki her bir satır için bir kez özel işlevinizi çağırır. Anahtar İfadeler API’sine sorgular gönderir ve sonuçları depolamak için tabloya yeni bir sütun ekler. Ancak bundan önce kimlik doğrulaması ve gizlilik ayarlarını belirtmeniz gerekebilir.
 
@@ -160,7 +160,7 @@ Her şey hazırsa Power BI, tablodaki her bir satır için bir kez özel işlevi
 
 ![[kimlik bilgileri bandı]](../media/tutorials/power-bi/credentials-banner.png)
 
-**Kimlik Bilgilerini Düzenle** ’ye tıklayın, iletişim kutusunda `Anonymous` seçeneğinin belirlendiğinden emin olun ve sonra **Bağlan** ’a tıklayın. 
+**Kimlik Bilgilerini Düzenle**’ye tıklayın, iletişim kutusunda `Anonymous` seçeneğinin belirlendiğinden emin olun ve sonra **Bağlan**’a tıklayın. 
 
 > [!NOTE]
 > Metin Analizi hizmeti, erişim anahtarınızı kullanarak kimliğinizi doğruladığından `Anonymous` seçeneğini belirlersiniz, bu nedenle Power BI’ın HTTP isteği için kimlik bilgileri sağlaması gerekmez.
@@ -174,7 +174,7 @@ Ardından, veri kaynaklarınızın gizliliği hakkında bilgiler sunmanızın is
 
 ![[gizlilik bandı]](../media/tutorials/power-bi/privacy-banner.png)
 
-**Devam Et** ’e tıklayın ve iletişim kutusundaki her bir veri kaynağı için `Public` seçeneğini belirleyin. Ardından Kaydet ' e tıklayın **.**
+**Devam Et**’e tıklayın ve iletişim kutusundaki her bir veri kaynağı için `Public` seçeneğini belirleyin. Ardından Kaydet ' e tıklayın **.**
 
 ![[veri kaynağı gizliliğini ayarlama]](../media/tutorials/power-bi/privacy-dialog.png)
 
@@ -190,7 +190,7 @@ Power BI Desktop kısa bir süre içinde gerekli HTTP isteklerini yapar. Tabloda
 > [!NOTE]
 > Kelime bulutu oluşturmak için her bir yorumun tam metni yerine neden ayıklanan anahtar ifadeleri kullanmalı? Anahtar ifadeler bize yalnızca müşteri yorumlarında yer alan *en sık kullanılan* sözcükleri değil, *önemli* sözcükleri de sunar. Ayrıca sonuçta elde edilen buluttaki sözcük boyutlandırması, bir kelimenin nispeten az sayıda yorumda sık olarak kullanılmasına göre şekillenmez.
 
-Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağ tarafındaki Görsel Öğeler bölmesinde, üç nokta ( **...** ) simgesine tıklayın ve **Marketten içe aktarın** seçeneğini belirleyin. Ardından, "cloud" araması yapın ve Word Cloud görselinin yanındaki **Ekle** düğmesine tıklayın. Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
+Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağ tarafındaki Görsel Öğeler bölmesinde, üç nokta (**...**) simgesine tıklayın ve **Marketten içe aktarın** seçeneğini belirleyin. Ardından, "cloud" araması yapın ve Word Cloud görselinin yanındaki **Ekle** düğmesine tıklayın. Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
 
 ![[özel görsel ekleme]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,11 +200,11 @@ Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanı
 
 Çalışma alanında yeni bir rapor görünür. Alanlar bölmesindeki `keyphrases` alanını Görsel Öğeler bölmesindeki Kategori alanına sürükleyin. Kelime bulutu raporda görünür.
 
-Şimdi de Görsel Öğeler bölmesinin Biçim sayfasına geçin. Durdurma Sözcükleri kategorisinde, "of" gibi kısa ve sık kullanılan sözcükleri buluttan kaldırmak için **Varsayılan Durdurma Sözcükleri** 'ni etkinleştirin. 
+Şimdi de Görsel Öğeler bölmesinin Biçim sayfasına geçin. Durdurma Sözcükleri kategorisinde, "of" gibi kısa ve sık kullanılan sözcükleri buluttan kaldırmak için **Varsayılan Durdurma Sözcükleri**'ni etkinleştirin. 
 
 ![[varsayılan durdurma sözcüklerini etkinleştirme]](../media/tutorials/power-bi/default-stop-words.png)
 
-Bu bölmenin biraz daha alt kısmında, **Metni Döndür** ve **Başlık** 'ı kapatın.
+Bu bölmenin biraz daha alt kısmında, **Metni Döndür** ve **Başlık**'ı kapatın.
 
 ![[odak modunu etkinleştirme]](../media/tutorials/power-bi/word-cloud-focus-mode.png)
 

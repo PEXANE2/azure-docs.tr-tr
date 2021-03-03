@@ -1,26 +1,26 @@
 ---
-title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Docs
-description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
+title: Kapsayıcı öngörüleri ile Kubernetes izleme | Microsoft Docs
+description: Bu makalede, bir Kubernetes kümesinin kapsayıcı öngörüleri ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625376"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711357"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Kubernetes küme performansınızı kapsayıcı öngörüleri ile izleyin
 
-Kapsayıcılar için Azure Izleyici ile, Azure Kubernetes Service (AKS), Azure Stack veya iki perspektiften başka bir ortamda barındırılan Kubernetes kümelerinin iş yükünü izlemek için performans grafiklerini ve sistem durumu ' nu kullanabilirsiniz. Doğrudan kümeden izleyebilirsiniz veya Azure Izleyici 'deki bir abonelikteki tüm kümeleri görüntüleyebilirsiniz. Belirli bir AKS kümesini izlerken Azure Container Instances görüntüleme de mümkündür.
+Kapsayıcı öngörüleri sayesinde, Azure Kubernetes Service (AKS), Azure Stack veya iki perspektiften başka bir ortamda barındırılan Kubernetes kümelerinin iş yükünü izlemek için performans grafiklerini ve sistem durumu ' nu kullanabilirsiniz. Doğrudan kümeden izleyebilirsiniz veya Azure Izleyici 'deki bir abonelikteki tüm kümeleri görüntüleyebilirsiniz. Belirli bir AKS kümesini izlerken Azure Container Instances görüntüleme de mümkündür.
 
 Bu makale, iki perspektifi anlamanıza ve Azure Izleyici 'nin algılanan sorunları hızlı bir şekilde değerlendirmenize, araştırmanıza ve çözmenize nasıl yardımcı olduğunu anlamanıza yardımcı olur.
 
-Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyicisini](container-insights-onboard.md)ekleme.
+Kapsayıcı öngörülerini etkinleştirme hakkında daha fazla bilgi için bkz. [kapsayıcı öngörüleri](container-insights-onboard.md)ekleme.
 
 Azure Izleyici, Windows Server 2019 ' i çalıştıran tüm izlenen Kubernetes kümelerinin sistem durumunu ve aboneliklerinizde kaynak grupları arasında dağıtılan Windows Server ' i gösteren bir çoklu küme görünümü sağlar. Çözüm tarafından izlenmeyen tüm ortamlarda bulunan kümeleri gösterir. Küme durumunu hemen anlayabilir ve buradan düğüm ve denetleyici performans sayfasına gidebilir veya kümenin performans grafiklerini görmek için gidebilirsiniz. Algılanan ve izlenmeyen olarak tanımlanan AKS kümelerinde, her zaman için izlemeyi etkinleştirebilirsiniz.
 
-Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcılar için Azure Izleyici ile izlemenin başlıca farkları, [burada](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) genel bakış makalesinde açıklanmıştır.
+Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcı öngörüleri ile izlemenin başlıca farkları [burada](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) genel bakış makalesinde açıklanmıştır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -37,7 +37,7 @@ Kılavuzda gösterilen sonuçların kapsamını şu şekilde tanımlayabilirsini
 * **Azure-** aks ve AKS-Engine kümeleri Azure Kubernetes hizmetinde barındırılıyor
 * **Azure Stack (Önizleme)** -Azure Stack barındırılan AKS-Engine kümeler
 * **Azure dışı (Önizleme)** -şirket içinde barındırılan Kubernetes kümeleri
-* **Tümü** -Azure 'da barındırılan tüm Kubernetes kümelerini, Azure Stack ve kapsayıcılar Için Azure izleyicisine eklendi şirket içi ortamları görüntüleyin
+* **Tümü** -Azure 'da barındırılan tüm Kubernetes kümelerini, Azure Stack ve kapsayıcı öngörülerine eklendi şirket içi ortamları görüntüleyin
 
 Belirli bir ortamdaki kümeleri görüntülemek için, sayfanın sol üst köşesinde bulunan **ortamlar** listesinden seçin.
 
@@ -59,7 +59,7 @@ Dahil edilen sistem durumu durumları şunlardır:
 * **Bulunamadı**: Bu çözüm için çalışma alanı, kaynak grubu ya da çalışma alanını içeren abonelik silindi.
 * **Yetkisiz**: Kullanıcı çalışma alanındaki verileri okumak için gerekli izinlere sahip değil.
 * **Hata**: çalışma alanından veri okunmaya çalışılırken bir hata oluştu.
-* **Yanlış yapılandırılmış**: kapsayıcı Için Azure izleyici, belirtilen çalışma alanında doğru şekilde yapılandırılmadı.
+* **Yanlış yapılandırılmış**: kapsayıcı öngörüleri, belirtilen çalışma alanında doğru şekilde yapılandırılmadı.
 * **Veri yok**: son 30 dakika boyunca veriler çalışma alanına bildirilmemiştir.
 
 Sistem durumu, genel küme durumunu üç durumun *en kötü* durumu olarak bir özel durum olarak hesaplar. Üç durumdan biri bilinmiyorsa, genel küme durumu **bilinmiyor** olarak görünür.
@@ -88,7 +88,7 @@ Küme listesinden, kümenin adını seçerek **küme** sayfasına ayrıntıya gi
 
 ## <a name="view-performance-directly-from-a-cluster"></a>Performansı doğrudan bir kümeden görüntüleme
 
-Kapsayıcılar için Azure izleyici 'ye erişim   >  , sol bölmeden Öngörüler **kümesi** ' ni seçerek veya çok küme görünümündeki bir kümeyi seçtiğinizde doğrudan bir aks kümesinden bulunabilir. Kümeniz hakkında bilgiler dört perspektifle düzenlenmiştir:
+Kapsayıcı öngörülerine erişim   >  , sol bölmeden Öngörüler **kümesi** ' ni seçerek veya çok küme görünümündeki bir kümeyi seçtiğinizde doğrudan bir aks kümesinden erişilebilir. Kümeniz hakkında bilgiler dört perspektifle düzenlenmiştir:
 
 - Küme
 - Düğümler
@@ -109,13 +109,13 @@ Performans grafiklerinde dört performans ölçümü görüntülenir:
 - **Düğüm sayısı**: Kubernetes 'in düğüm sayısı ve durumu. Temsil edilen küme düğümlerinin durumları toplam, Ready ve Ready. Bunlar tek tek filtrelenebilir veya grafiğin üstündeki seçiciyle birleştirilebilir.
 - **Etkin Pod sayısı**: Kubernetes 'in Pod sayısı ve durumu. Temsil edilen durumların durumları toplam, bekleyen, çalışıyor, bilinmiyor, başarılı veya başarısız. Bunlar tek tek filtrelenebilir veya grafiğin üstündeki seçiciyle birleştirilebilir.
 
-Grafikteki her bir veri noktasında geçiş yapmak için sol ve sağ ok tuşlarını kullanın. Yüzdelik çizgiler arasında geçiş yapmak için yukarı ve aşağı ok tuşlarını kullanın. Seçili grafiği, görüntülediğiniz son Azure panosuna sabitlemek için, grafiklerden birinin sağ üst köşesindeki sabitleme simgesini seçin. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi sizi kapsayıcılar için Azure Izleyicisine yönlendirir ve doğru kapsamı ve görünümü yükler.
+Grafikteki her bir veri noktasında geçiş yapmak için sol ve sağ ok tuşlarını kullanın. Yüzdelik çizgiler arasında geçiş yapmak için yukarı ve aşağı ok tuşlarını kullanın. Seçili grafiği, görüntülediğiniz son Azure panosuna sabitlemek için, grafiklerden birinin sağ üst köşesindeki sabitleme simgesini seçin. Panodan grafiği yeniden boyutlandırabilir ve yeniden konumlandırabilirsiniz. Panodaki grafiğin seçilmesi sizi kapsayıcı öngörülerine yönlendirir ve doğru kapsamı ve görünümü yükler.
 
-Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluşturabileceğiniz, eğilimleri araştırabileceğiniz ve araştırıp panolara sabitlerken Azure Izleyici [ölçümleri Gezginini](../essentials/metrics-getting-started.md)da destekler. Ölçüm Gezgini ' nden, ölçümlerinizi [ölçüm tabanlı bir uyarı kuralının](../alerts/alerts-metric.md)temeli olarak görselleştirmek için ayarladığınız ölçütleri de kullanabilirsiniz.
+Kapsayıcı öngörüleri Ayrıca, kendi çizim grafiklerinizi oluşturabileceğiniz, eğilimleri araştırabileceğiniz ve araştırıp panolara sabitlerken Azure Izleyici [ölçümleri Gezginini](../essentials/metrics-getting-started.md)da destekler. Ölçüm Gezgini ' nden, ölçümlerinizi [ölçüm tabanlı bir uyarı kuralının](../alerts/alerts-metric.md)temeli olarak görselleştirmek için ayarladığınız ölçütleri de kullanabilirsiniz.
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Ölçüm Gezgininde kapsayıcı ölçümlerini görüntüleme
 
-Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
+Ölçüm Gezgini ' nde, kapsayıcı öngörülerinden toplanan düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
 |Ad Alanı | Metric | Açıklama |
 |----------|--------|-------------|
@@ -297,12 +297,12 @@ Azure ağ Ilkesi Yöneticisi, ağ yapılandırmalarınızı izlemenize ve daha i
 
 ## <a name="workbooks"></a>Çalışma Kitapları
 
-Çalışma kitapları, metni, günlük sorgularını, ölçümleri ve parametreleri, küme performansını çözümlemenize olanak sağlayan zengin etkileşimli raporlara birleştirir. Kapsayıcılar için Azure Izleyici 'de kullanılabilen çalışma kitaplarının bir açıklaması için bkz. [kapsayıcılar Için Azure izleyici 'Deki çalışma kitapları](../insights/container-insights-reports.md) .
+Çalışma kitapları, metni, günlük sorgularını, ölçümleri ve parametreleri, küme performansını çözümlemenize olanak sağlayan zengin etkileşimli raporlara birleştirir. Kapsayıcı öngörüleri için kullanılabilen çalışma kitaplarının bir açıklaması için bkz. kapsayıcı içgörüleri [Içindeki çalışma kitapları](../insights/container-insights-reports.md) .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarıları oluşturma](./container-insights-log-alerts.md) konusunu inceleyin.
+- DevOps veya işletimsel işlemlerinizi ve yordamlarını desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcı öngörüleriyle performans uyarıları oluşturma](./container-insights-log-alerts.md) konusunu inceleyin.
 
 - Önceden tanımlanmış sorguları ve kümelerinizi uyarmak, görselleştirmek veya analiz etmek üzere değerlendirilecek veya özelleştirecek örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlar
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739585"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 'deki Windows Server düğüm havuzları hakkında sık sorulan sorular
 
@@ -54,6 +54,8 @@ Windows düğümlerine yönelik en son düzeltme eklerini almak için [düğüm 
 
 Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini kullanması gerekir. Kubenet (temel) ağı desteklenmez. Ağ modellerindeki farklılıklar hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][azure-network-models]. Azure CNı ağ modeli, IP adresi yönetimi için ek planlama ve dikkat edilecek noktalar gerektirir. Azure CNı 'nin nasıl planlanacağı ve uygulanacağı hakkında daha fazla bilgi için bkz. [AKS 'de Azure CNI ağını yapılandırma][configure-azure-cni].
 
+AKS kümelerindeki Windows düğümlerinde, Calıco etkinleştirildiğinde varsayılan olarak [doğrudan sunucu dönüşü (DSR)][dsr] de etkindir.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>İstemci kaynak IP 'si destekleniyor mu?
 
 Şu anda, [istemci kaynak IP koruması][client-source-ip] Windows düğümlerinde desteklenmez.
@@ -91,7 +93,7 @@ Adı en fazla 6 (altı) karaktere saklamanız gerekir. Bu, AKS 'in geçerli bir 
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Tüm özellikler Windows düğümleriyle destekleniyor mu?
 
-Ağ ilkeleri ve Kubernetes kullanan Şu anda Windows düğümleri ile desteklenmemektedir.
+Kubenet Şu anda Windows düğümleri ile desteklenmiyor.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Giriş denetleyicilerini Windows düğümlerinde çalıştırabilir miyim?
 
@@ -197,3 +199,4 @@ AKS 'de Windows Server kapsayıcıları kullanmaya başlamak için [AKS 'de Wind
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

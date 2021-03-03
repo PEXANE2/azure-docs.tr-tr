@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d8935c10ce17ad5d3747468d55b2fe6daa21
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694368"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama
 
@@ -22,10 +22,7 @@ Sunucusuz bir SQL havuzu, işlem iş yüklerinizin performansını etkilemeden n
 
 Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğunu içeren [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob Azure Data Lake Storage depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını, Select (Cetas) [olarak dış tablo oluştur](develop-tables-cetas.md#cetas-in-serverless-sql-pool) ' u kullanarak da saklayabilirsiniz. Şu anda, CETAS kullanarak Azure Cosmos DB sunucusuz SQL havuzu sorgu sonuçlarını depolayamaz.
 
-Bu makalede, Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılardan veri sorgulayan sunucusuz bir SQL havuzuyla bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu öğreticideki](./tutorial-data-analyst.md)Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz.
-
-> [!IMPORTANT]
-> Bu öğretici, [Azure Cosmos DB iyi tanımlanmış bir şemaya](../../cosmos-db/analytical-store-introduction.md#schema-representation)sahip bir kapsayıcı kullanır.  `OPENROWSET` `WITH` Sorgu deneyimi ile hizalanabileceğinden ve iyi tanımlanmış şemaya göre değişiklik yaptığından, bir kapsayıcıdan tam uygunluk şeması olan bir kapsayıcıdan veri okuyan yan tümce olmadan işlevin sonuç kümesi şemasına güvenmeyin. Görüşlerinizi [Azure SYNAPSE Analytics geri bildirim forumuna](https://feedback.azure.com/forums/307516-azure-synapse-analytics)gönderebilirsiniz. Ayrıca, geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) de başvurabilirsiniz.
+Bu makalede, Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılardan veri sorgulayan sunucusuz bir SQL havuzuyla bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu öğreticideki](./tutorial-data-analyst.md)Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz. Bu öğretici, [Azure Cosmos DB iyi tanımlanmış bir şemaya](../../cosmos-db/analytical-store-introduction.md#schema-representation)sahip bir kapsayıcı kullanır.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -377,7 +374,7 @@ Mongo DB API türünün Azure Cosmos DB hesaplarını sorgulamanızı istiyorsan
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Tam uygunluk şeması olan öğeleri sorgula
 
-Tam uygunluk şeması sorgulanırken, yan tümcesinde SQL türünü ve beklenen Azure Cosmos DB Özellik türünü açıkça belirtmeniz gerekir `WITH` . `OPENROWSET` `WITH` Raporda yan tümce olmadan kullanmayın çünkü sonuç kümesinin biçimi geri bildirimde bulunarak değiştirilebilir.
+Tam uygunluk şeması sorgulanırken, yan tümcesinde SQL türünü ve beklenen Azure Cosmos DB Özellik türünü açıkça belirtmeniz gerekir `WITH` .
 
 Aşağıdaki örnekte, `string` özelliği için doğru tür olduğunu `geo_id` ve `int32` özelliği için doğru tür olduğunu varsayacağız `cases` :
 
@@ -415,7 +412,6 @@ Bu örnekte, servis talebi sayısı, ya da değerleri olarak depolanır `int32` 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-- `OPENROWSET`İşlev yan tümcesi olmadan işlevin, `WITH` sorgu deneyimi müşteri geri bildirimlerine göre iyi tanımlanmış şemayla hizalanabileceğinden, bu şemaya güvenmeyin. Geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com)başvurun.
 - `OPENROWSET`Sütun harmanlamasının UTF-8 kodlaması yoksa sunucusuz BIR SQL havuzu bir derleme zamanı uyarısı döndürür. `OPENROWSET`T-SQL ifadesini kullanarak geçerli veritabanında çalışan tüm işlevler için Varsayılan harmanlamayı kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir.

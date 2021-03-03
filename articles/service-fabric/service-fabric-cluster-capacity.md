@@ -4,12 +4,12 @@ description: Service Fabric kümenizi planlarken dikkate alınması gereken dü�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790707"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714944"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -39,21 +39,21 @@ Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonu
 
 İlk düğüm türü sayısı, kümenizin amacına ve üzerinde çalışan uygulama ve hizmetlere bağlıdır. Aşağıdaki soruları göz önünde bulundurun:
 
-* ***Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu?** _
+* ***Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu?***
 
     Tipik uygulamalar, bir istemciden girdi alan bir ön uç ağ geçidi hizmeti ve ön uç ve arka uç hizmetleri arasında ayrı bir ağla, ön uç hizmetleriyle iletişim kuran bir veya daha fazla arka uç hizmet içerir. Bu durumlar genellikle üç düğüm türü gerektirir: bir birincil düğüm türü ve birincil olmayan iki düğüm türü (her biri ön ve arka uç hizmeti için).
 
-_ ***Uygulamanızı oluşturan hizmetlerden daha fazla RAM veya daha yüksek CPU döngüsü gibi farklı altyapı ihtiyaçları var mı?** _
+* ***Uygulamanızı oluşturan hizmetler, daha fazla RAM veya daha yüksek CPU döngüleri gibi farklı altyapı ihtiyaçlarına sahip mi?***
 
-    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
+    Genellikle, ön uç hizmeti, internet 'e açık bağlantı noktaları olan daha küçük VM 'lerde (D2 gibi VM boyutları) çalıştırılabilir.  Yoğun şekilde yoğun arka uç hizmetlerinin, internet 'e yönelik olmayan daha büyük VM 'lerde (D4, D6, D15 gibi) çalışması gerekebilir. Bu hizmetler için farklı düğüm türlerini tanımlamak, temel Service Fabric VM 'lerin daha verimli ve güvenli bir şekilde kullanılabilmesini sağlar ve bunları bağımsız olarak ölçeklendirmelerini sağlar. İhtiyaç duyacağınız kaynak miktarını tahmin etme hakkında daha fazla bilgi için bkz. [Service Fabric uygulamalar Için kapasite planlama](service-fabric-capacity-planning.md)
 
-_ ***Uygulama hizmetlerinizin 100 düğümden daha fazla ölçeklendirme yapması gerekir mi?** _
+* ***Uygulama hizmetlerinizin 100 düğümden daha fazla ölçeklendirme yapması gerekir mi?***
 
-    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
+    Tek düğümlü bir tür, Service Fabric uygulamalar için sanal makine ölçek kümesi başına 100 düğümden daha fazla güvenilir bir şekilde ölçeklendirilemedi. 100 'den fazla düğüm çalıştırmak için ek sanal makine ölçek kümeleri (ve bu nedenle ek düğüm türleri) gerekir.
 
-_ ***Kümeniz kullanılabilirlik alanları arasında yayılacaktır mi?** _
+* ***Kümeniz Kullanılabilirlik Alanları arasında yayılacaktır mi?***
 
-    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak, uygulamalarınızın yüksek kullanılabilirliğe sahip olduğundan [kullanılabilirlik alanları](../availability-zones/az-overview.md) yayılmış kümeleri destekler. Kullanılabilirlik Alanları ek düğüm türü planlaması ve minimum gereksinimleri gerektirir. Ayrıntılar için bkz. [kullanılabilirlik alanları arasında yayılan Service Fabric kümelerinin birincil düğüm türü Için önerilen topoloji](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 Kümenizin ilk oluşturması için düğüm türlerinin sayısını ve özelliklerini belirlerken, kümeniz dağıtıldıktan sonra her zaman, birincil olmayan düğüm türlerini ekleyebileceğiniz, değiştirebileceğinizi veya kaldıracağınızı unutmayın. [Birincil düğüm türleri, çalışan kümelerde de değiştirilebilir](service-fabric-scale-up-primary-node-type.md) (ancak, bu işlemler üretim ortamlarında büyük bir planlama ve uyarı gerektirir).
 
@@ -61,7 +61,7 @@ Düğüm türü özelliklerinizi daha iyi bir şekilde dikkate almanız, düğü
 
 ## <a name="durability-characteristics-of-the-cluster"></a>Kümenin dayanıklılık özellikleri
 
-_Durability Level *, Service Fabric sanal makinelerinizin temel alınan Azure altyapısına sahip olduğu ayrıcalıkları belirler. Bu ayrıcalık Service Fabric, Service Fabric sistemi hizmetleri ve durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (yeniden başlatma, yeniden görüntü veya geçiş gibi) duraklatmasını sağlar.
+*Dayanıklılık düzeyi* , Service Fabric sanal makinelerinizin temel alınan Azure altyapısına sahip olduğu ayrıcalıkları belirler. Bu ayrıcalık Service Fabric, Service Fabric sistemi hizmetleri ve durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (yeniden başlatma, yeniden görüntü veya geçiş gibi) duraklatmasını sağlar.
 
 > [!IMPORTANT]
 > Dayanıklılık düzeyi, düğüm türü başına ayarlanır. Hiçbiri belirtilmemişse, *bronz* katman kullanılacaktır, ancak otomatik işletim sistemi yükseltmeleri sağlamaz. Üretim iş yükleri için *gümüş* veya *altın* dayanıklılık önerilir.
@@ -73,6 +73,9 @@ Aşağıdaki tabloda Service Fabric dayanıklılık katmanları, gereksinimleri 
 | Gold             | 5                              | Tek bir müşteriye adanmış tam düğümlü Boyutlar (örneğin, L32s, GS5, G5, DS15_v2, D15_v2) | Service Fabric kümesi tarafından onaylanana kadar ertelenebilir | Kopyaların daha önceki hatalardan kurtarılmasına olanak tanımak için yükseltme etki alanı başına 2 saat boyunca duraklatılabilir |
 | Silver           | 5                              | En az 50 GB yerel SSD ile tek çekirdekli veya yukarıdaki VM 'Ler                      | Service Fabric kümesi tarafından onaylanana kadar ertelenebilir | Herhangi bir önemli süre geciktirelemez                                                    |
 | Bronz          | 1                              | En az 50 GB yerel SSD içeren VM 'Ler                                              | Service Fabric kümesi tarafından gecikmeyecek           | Herhangi bir önemli süre geciktirelemez                                                    |
+
+> [!NOTE]
+> Yukarıda belirtilen en düşük VM sayısı, her dayanıklılık düzeyi için gerekli bir gereksinimdir. Yerinde, bu gereksinimleri karşılamayan var olan sanal makine ölçek kümelerinin oluşturulmasını veya değiştirilmesini önleyen doğrulamalar sunuyoruz.
 
 > [!WARNING]
 > Bronz dayanıklılık sayesinde, otomatik işletim sistemi görüntüsü yükseltmesi kullanılamaz. [Düzeltme Eki düzenleme uygulaması](service-fabric-patch-orchestration-application.md) (yalnızca Azure 'da barındırılan kümeler için tasarlanan) gümüş veya daha fazla dayanıklılık düzeyi için *önerilmemekle* birlikte, Windows güncelleştirmelerini Service Fabric yükseltme etki alanlarına göre otomatik hale getirmek için tek seçeneğiniz vardır.

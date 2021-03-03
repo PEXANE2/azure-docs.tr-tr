@@ -1,18 +1,16 @@
 ---
 title: Linux tabanlı Azure HDInsight 'ta Hadoop Oozie iş akışlarını kullanma
 description: Linux tabanlı HDInsight 'ta Hadoop Oozie kullanın. Oozie iş akışını tanımlama ve Oozie işi gönderme hakkında bilgi edinin.
-author: omidm1
-ms.author: omidm
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 41c42009252169c141bec5d3dc2ea5c6308d6812
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702785"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
 
@@ -490,7 +488,7 @@ Oozie REST API ile, Oozie ile çalışan kendi araçlarınızı oluşturabilirsi
 
 * **URI**: REST API ' de kümenin dışından erişebilirsiniz `https://CLUSTERNAME.azurehdinsight.net/oozie` .
 
-* **Kimlik doğrulama**: kimlik doğrulaması IÇIN, API 'yi, küme http hesabı (yönetici) ve parolasını kullanın. Örneğin:
+* **Kimlik doğrulama**: kimlik doğrulaması IÇIN, API 'yi, küme http hesabı (yönetici) ve parolasını kullanın. Örnek:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions

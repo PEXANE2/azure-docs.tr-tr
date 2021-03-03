@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: dfb18281ad558832e4b06d1c0d24654d351ed01d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4209e609420e610b9f3456da26b0afe0bf839d43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Öğretici: Corptax ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Corptax 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Corptax ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Corptax 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, galerideki C
 
     ![Yeni uygulama düğmesi](common/add_new_app.png)
 
-4. Arama kutusuna **corptax**yazın, sonuç panelinden **corptax** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **corptax** yazın, sonuç panelinden **corptax** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesindeki corptax](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre corptax ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre corptax ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve şirket vergisiyle ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Corptax ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -127,10 +127,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user_properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
 
-    b. **Kullanıcı adı** alanına şunu yazın`brittasimon\@yourcompanydomain.extension`  
-    Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına, yazın `brittasimon@<yourcompanydomain.extension>` . Örneğin: `brittasimon@contoso.com`.
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
@@ -144,7 +143,7 @@ Bu bölümde, şirket içi vergi erişimi vererek Azure çoklu oturum açma öze
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise_applications.png)
 
-2. Uygulamalar listesinde, **Corptax**yazın ve seçin.
+2. Uygulamalar listesinde, **Corptax** yazın ve seçin.
 
     ![Uygulamalar listesindeki Corptax bağlantısı](common/all_applications.png)
 

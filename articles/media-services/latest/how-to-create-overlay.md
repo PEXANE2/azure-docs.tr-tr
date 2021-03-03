@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 743fe146042c7b52394cc4ee8ced49a0f540e79c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844293"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721132"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Media Encoder Standard birlikte bir kaplama oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "94844293"
 Media Encoder Standard resim, ses dosyası veya başka bir videonun başka bir video üzerinde yer kaplamasını sağlar. Girişin tam olarak bir dosya belirtmesi gerekir. JPG, PNG, GIF veya BMP biçiminde bir görüntü dosyası veya bir ses dosyası (örneğin, bir WAV, MP3, WMA veya M4A dosyası) veya bir video dosyası belirtebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Örnekteki dosya *appsettings.js* yapılandırmak için ihtiyacınız olan hesap bilgilerini toplayın. Bunu nasıl yapadığınıza emin değilseniz, bkz. [hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](../../active-directory/develop/quickstart-register-app.md). Dosyasında *appsettings.js* aşağıdaki değerler beklenmektedir.
 
@@ -53,4 +53,4 @@ Yer paylaşımlarını kullanmaya başlamak için [Media-Services-kaplama örne�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Media Services .NET ile kodlarken bir videoyu alt kırpın](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

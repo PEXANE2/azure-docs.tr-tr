@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de çözüm DNS Analizi | Microsoft Docs
 description: Güvenlik, performans ve işlemlerde DNS altyapısına Öngörüler toplamak için Azure Izleyici 'de DNS Analizi çözümünü ayarlayın ve kullanın.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708110"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS Analizi Preview çözümüyle DNS altyapınız hakkında Öngörüler toplayın
 
@@ -36,9 +35,9 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
 | [Windows aracıları](../agents/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
-| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
 | [System Center Operations Manager yönetim grubu](../agents/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
-| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, çözüm tarafından kullanılmıyor. |
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
 

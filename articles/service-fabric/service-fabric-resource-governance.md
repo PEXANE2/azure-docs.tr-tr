@@ -3,12 +3,12 @@ title: Kapsayıcılar ve hizmetler için kaynak idaresi
 description: Azure Service Fabric, işlem veya kapsayıcı olarak çalışan hizmetler için kaynak isteklerini ve sınırlarını belirtmenize olanak tanır.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 889fce77c1a3a743e9805ec482a9c87b9bf8da65
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172874"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735667"
 ---
 # <a name="resource-governance"></a>Kaynak idaresi
 
@@ -95,12 +95,12 @@ Aşağıda, kullanılabilir CPU 'nun %50 ' i ve kullanılabilir belleğin %70 ' 
 Çoğu müşteri ve senaryo için, CPU ve bellek için düğüm kapasitelerinin otomatik algılanması önerilen yapılandırmadır (otomatik algılama varsayılan olarak açıktır). Ancak, düğüm kapasitelerinin tam el ile kurulumunu yapmanız gerekiyorsa, kümedeki düğümleri açıklama mekanizmasını kullanarak düğüm türü başına yapılandırabilirsiniz. Düğüm türünü dört çekirdekli ve 2 GB bellek ile ayarlamaya yönelik bir örnek aşağıda verilmiştir:
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 Kullanılabilir kaynakların otomatik algılanması etkin olduğunda ve düğüm kapasiteleri küme bildiriminde el ile tanımlandığında Service Fabric, düğümün kullanıcının tanımladığı kapasiteyi desteklemek için yeterli kaynağa sahip olup olmadığını denetler:
@@ -120,8 +120,8 @@ Gerekli değilse, kullanılabilir kaynakların otomatik algılanması kapatılab
 En iyi performans için, küme bildiriminde aşağıdaki ayar de açılmalıdır:
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" />
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -156,11 +156,11 @@ Kaynak idare istekleri ve limitleri uygulama bildiriminde (Servicemanifestımpor
   </ServiceManifestImport>
 ```
 
-Bu örnekte, `CpuCores` özniteliği **servicepackagea**için 1 CPU çekirdekli bir istek belirtmek için kullanılır. CPU sınırı ( `CpuCoresLimit` özniteliği) belirtilmediğinden Service Fabric, hizmet PAKETININ CPU sınırı olarak belirtilen 1 çekirdekli istek değerini de kullanır.
+Bu örnekte, `CpuCores` özniteliği **servicepackagea** için 1 CPU çekirdekli bir istek belirtmek için kullanılır. CPU sınırı ( `CpuCoresLimit` özniteliği) belirtilmediğinden Service Fabric, hizmet PAKETININ CPU sınırı olarak belirtilen 1 çekirdekli istek değerini de kullanır.
 
 **Servicepackagea** yalnızca, **bu düğüme yerleştirilmiş tüm hizmet paketlerinin CPU isteklerinin toplamı** çıkarıldıktan sonra kalan CPU kapasitesinin, 1 çekirdekden büyük veya ona eşit olduğu bir düğüme yerleştirilir. Düğümde, hizmet paketi bir çekirdekle sınırlı olacaktır. Hizmet paketi iki kod paketi (**CodeA1** ve **CodeA2**) içerir ve her ikisi de özniteliğini belirtir `CpuShares` . CpuShares 512:256 oranı, bireysel kod paketlerinin CPU sınırlarını hesaplamak için kullanılır. Bu nedenle CodeA1, bir çekirdekli iki buçuk ile sınırlandırılır ve CodeA2, bir çekirdeğin bir üçte biri ile sınırlanır. Tüm kod paketleri için CpuShares belirtilmemişse, Service Fabric CPU limitini aralarında eşit olarak böler.
 
-Kod paketleri için belirtilen CpuShares, hizmet paketinin genel CPU sınırının göreli oranını temsil ettiğinden, kod paketlerinin bellek değerleri mutlak koşullarda belirtilir. Bu örnekte, `MemoryInMB` özniteliği hem CodeA1 hem de CodeA2 için 1024 MB bellek isteklerini belirtmek için kullanılır. Bellek sınırı ( `MemoryInMBLimit` öznitelik) belirtilmediğinden Service Fabric Ayrıca, belirtilen istek değerlerini kod paketlerinin sınırları olarak kullanır. Hizmet paketi için bellek isteği (ve sınırı), kendi bileşen kod paketlerinin bellek isteği (ve sınırı) değerlerinin toplamı olarak hesaplanır. Bu nedenle, **Servicepackagea**için bellek isteği ve SıNıRı 2048 MB olarak hesaplanır.
+Kod paketleri için belirtilen CpuShares, hizmet paketinin genel CPU sınırının göreli oranını temsil ettiğinden, kod paketlerinin bellek değerleri mutlak koşullarda belirtilir. Bu örnekte, `MemoryInMB` özniteliği hem CodeA1 hem de CodeA2 için 1024 MB bellek isteklerini belirtmek için kullanılır. Bellek sınırı ( `MemoryInMBLimit` öznitelik) belirtilmediğinden Service Fabric Ayrıca, belirtilen istek değerlerini kod paketlerinin sınırları olarak kullanır. Hizmet paketi için bellek isteği (ve sınırı), kendi bileşen kod paketlerinin bellek isteği (ve sınırı) değerlerinin toplamı olarak hesaplanır. Bu nedenle, **Servicepackagea** için bellek isteği ve SıNıRı 2048 MB olarak hesaplanır.
 
 **Servicepackagea** yalnızca, **bu düğüme yerleştirilmiş tüm hizmet paketlerinin bellek isteklerinin toplamı** çıkarıldıktan sonra kalan bellek kapasitesinin, 2048 MB 'den büyük veya buna eşit olduğu bir düğüme yerleştirilir. Düğümde, her iki kod paketi de 1024 MB bellek ile sınırlandırılır. Kod paketleri (kapsayıcılar veya süreçler) Bu sınırdan daha fazla bellek ayıramayacak ve bunun denenmemesi, bellek dışı özel durumlara neden olur.
 
@@ -177,7 +177,7 @@ Kod paketleri için belirtilen CpuShares, hizmet paketinin genel CPU sınırın�
     </Policies>
   </ServiceManifestImport>
 ```
-Bu örnek `CpuCoresLimit` , ve `MemoryInMBLimit` özniteliklerini kullanır ve yalnızca SF sürümleri 7,2 ve üzeri sürümlerde kullanılabilir. **Service packagea**için 1 çekirdekli CPU sınırı belirtmek Için CpuCoresLimit özniteliği kullanılır. CPU isteği ( `CpuCores` özniteliği) belirtilmediği için 0 olarak kabul edilir. `MemoryInMBLimit` özniteliği, CodeA1 ve CodeA2 için 1024 MB bellek sınırlarını belirtmek için kullanılır ve istekler ( `MemoryInMB` Attribute) belirtilmediği için 0 olarak değerlendirilir. Bu nedenle, **Servicepackagea** için bellek isteği ve sınırı sırasıyla 0 ve 2048 olarak hesaplanır. **Servicepackagea** IÇIN hem CPU hem de bellek istekleri 0 olduğundan, ve ölçümleri Için, bir CRM 'nin yerleştirme için göz önünde bulundurulması gereken bir yük yoktur `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` . Bu nedenle, bir kaynak idare perspektifinden, **Servicepackagea** , **kalan kapasiteden bağımsız**olarak herhangi bir düğüme yerleştirilebilir. Örnek 1 ' e benzer şekilde, düğüm üzerinde CodeA1, çekirdek ve 1024 MB 'lık belleğin iki ikisi ile sınırlandırılır ve CodeA2, çekirdek ve 1024 MB 'lık bir bellekle sınırlı olur.
+Bu örnek `CpuCoresLimit` , ve `MemoryInMBLimit` özniteliklerini kullanır ve yalnızca SF sürümleri 7,2 ve üzeri sürümlerde kullanılabilir. **Service packagea** için 1 çekirdekli CPU sınırı belirtmek Için CpuCoresLimit özniteliği kullanılır. CPU isteği ( `CpuCores` özniteliği) belirtilmediği için 0 olarak kabul edilir. `MemoryInMBLimit` özniteliği, CodeA1 ve CodeA2 için 1024 MB bellek sınırlarını belirtmek için kullanılır ve istekler ( `MemoryInMB` Attribute) belirtilmediği için 0 olarak değerlendirilir. Bu nedenle, **Servicepackagea** için bellek isteği ve sınırı sırasıyla 0 ve 2048 olarak hesaplanır. **Servicepackagea** IÇIN hem CPU hem de bellek istekleri 0 olduğundan, ve ölçümleri Için, bir CRM 'nin yerleştirme için göz önünde bulundurulması gereken bir yük yoktur `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` . Bu nedenle, bir kaynak idare perspektifinden, **Servicepackagea** , **kalan kapasiteden bağımsız** olarak herhangi bir düğüme yerleştirilebilir. Örnek 1 ' e benzer şekilde, düğüm üzerinde CodeA1, çekirdek ve 1024 MB 'lık belleğin iki ikisi ile sınırlandırılır ve CodeA2, çekirdek ve 1024 MB 'lık bir bellekle sınırlı olur.
 
 **Örnek 3: Requestsandlimit belirtimi**
 ```xml
@@ -249,7 +249,7 @@ Kaynak İdaresi Service Fabric hizmetlerinize uygulanırken kaynak tarafından y
 * Uygun olmayan bir durumda biten düğümler
 * Service Fabric küme yönetimi API 'Leri yanıt vermiyor
 
-Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde çalışan tüm Service Fabric Kullanıcı Hizmetleri (yönetilen ve yönetilmeyen) için kaynak sınırlarını zorunlu kılabilir* . bu sayede, Kullanıcı hizmetlerinin belirtilen kaynak miktarından daha fazla kullanmayacağı garanti altına alınır. Bu, ClusterManifest 'in Placementandloaddengeleme bölümündeki Enforceuserservicemetrickapasiteler yapılandırmasının değeri true olarak ayarlanarak elde edilir. Bu ayar varsayılan olarak kapalıdır.
+Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde çalışan tüm Service Fabric Kullanıcı Hizmetleri (yönetilen ve yönetilmeyen) için kaynak sınırlarını zorunlu kılabilir* . bu sayede, Kullanıcı hizmetlerinin belirtilen kaynak miktarından daha fazla kullanmayacağı garanti altına alınır. Bu, ClusterManifest 'in Placementandloaddengeleme bölümündeki Enforceuserservicemetrickapasiteler yapılandırmasının değeri true olarak ayarlanarak elde edilir. Bu ayar varsayılan olarak kapalıdır.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -260,7 +260,7 @@ Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde
 Ek açıklamalar:
 
 * Kaynak sınırı zorlaması yalnızca `servicefabric:/_CpuCores` ve `servicefabric:/_MemoryInMB` kaynak ölçümleri için geçerlidir
-* Kaynak sınırı zorlaması yalnızca, kaynak ölçümlerinin düğüm kapasiteleri Service Fabric, otomatik algılama mekanizmasıyla veya Kullanıcı aracılığıyla düğüm kapasitelerinin el ile ( [kaynak yönetimini etkinleştirme](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) bölümünde açıklandığı gibi) tarafından kullanılabilir olduğunda geçerlidir.Düğüm kapasiteleri yapılandırılmamışsa, Kullanıcı Hizmetleri için ne kadar kaynak ayrılacağını bilemediğinden Service Fabric kaynak sınırı zorlama özelliği kullanılamaz.Service Fabric, "Enforceuserservicemetrickapasiteler" true ise ancak düğüm kapasiteleri yapılandırılmamışsa bir sistem durumu uyarısı verir.
+* Kaynak sınırı zorlaması yalnızca, kaynak ölçümlerinin düğüm kapasiteleri Service Fabric, otomatik algılama mekanizmasıyla veya Kullanıcı aracılığıyla düğüm kapasitelerinin el ile ( [kaynak yönetimini etkinleştirme](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) bölümünde açıklandığı gibi) tarafından kullanılabilir olduğunda geçerlidir. Düğüm kapasiteleri yapılandırılmamışsa, Kullanıcı Hizmetleri için ne kadar kaynak ayrılacağını bilemediğinden Service Fabric kaynak sınırı zorlama özelliği kullanılamaz. Service Fabric, "Enforceuserservicemetrickapasiteler" true ise ancak düğüm kapasiteleri yapılandırılmamışsa bir sistem durumu uyarısı verir.
 
 ## <a name="other-resources-for-containers"></a>Kapsayıcılar için diğer kaynaklar
 

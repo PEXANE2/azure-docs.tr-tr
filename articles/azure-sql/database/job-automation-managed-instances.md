@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418085"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691901"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde SQL Agent işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SQL Aracısı Işlerinde birkaç temel kavram vardır:
 
 SQL Aracısı Iş adımları SQL aracısının yürütmesi gereken eylem dizileridir. Her adımda, adım başarılı veya başarısız olursa yürütülmesi gereken adım, hata durumunda yeniden deneme sayısı.
 
-SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi çalıştıran Transact-SQL iş adımları veya özel işletim sistemi betiği yürütebilen IS komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar. bu [sayede,](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) SSIS çalışma zamanı 'nı kullanarak veri [yükleyebilir veya değişiklikleri](../managed-instance/replication-transactional-overview.md) veritabanınızdaki diğer veritabanlarına yayımlayabilirsiniz.
+SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi çalıştıran Transact-SQL iş adımları veya özel işletim sistemi betiği yürütebilen IS komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar. bu [sayede,](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) SSIS çalışma zamanı 'nı kullanarak veri [yükleyebilir veya değişiklikleri](../managed-instance/replication-transactional-overview.md) veritabanınızdaki diğer veritabanlarına yayımlayabilirsiniz.
 
 > [!Note]
 > Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure SSIS Integration Runtime kullanımı hakkında daha fazla bilgi için, bkz. [Azure Data Factory 'Da Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) kullanma](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).

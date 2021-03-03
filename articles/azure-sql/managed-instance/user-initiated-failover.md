@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/23/2021
-ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691153"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Yönetilen Örneği'nde kullanıcı tarafından başlatılan el ile yük devretme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -151,6 +151,7 @@ Yük devretme sırasında istemcinizden kısa bir süre içinde bağlantı kayb�
 > - BC örnekleri için, yük devretme isteğinin kabul edilmesi için mevcut çoğaltmaların çekirdeği olması gerekir.
 > - BC örnekleri için, hangi okunabilir ikincil çoğaltmanın üzerinde yük devretmeyi başlatacağını belirtmek mümkün değildir.
 > - Yeni bir veritabanı için ilk tam yedekleme otomatik yedekleme sistemleri tarafından tamamlanana kadar yük devretmeye izin verilmez.
+> - Devam eden bir veritabanı geri yükleme varsa, yük devretmeye izin verilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [SQL yönetilen örnek video alma Ile yük devretme dayanıklılığı için uygulamalarınızı test](https://youtu.be/FACWYLgYDL8) etmeye yönelik test etme ile ilgili daha fazla bilgi edinin.

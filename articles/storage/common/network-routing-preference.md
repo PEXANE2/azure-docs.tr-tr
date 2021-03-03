@@ -1,26 +1,26 @@
 ---
-title: Ağ yönlendirmesi tercihini yapılandırma (Önizleme)
+title: Ağ yönlendirme tercihi
 titleSuffix: Azure Storage
-description: Ağ trafiğinin Internet üzerinden kendi hesabınıza nasıl yönlendirildiğini belirtmek için, Azure depolama hesabınız için ağ yönlendirme tercihini (Önizleme) yapılandırın.
+description: Ağ yönlendirme tercihi, ağ trafiğinin Internet üzerinden istemcilerden hesabınıza nasıl yönlendirildiğini belirtmenizi sağlar.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362752"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726946"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure depolama için ağ yönlendirme tercihini yapılandırma (Önizleme)
+# <a name="network-routing-preference-for-azure-storage"></a>Azure depolama için ağ yönlendirme tercihi
 
-Ağ trafiğinin Internet üzerinden kendi hesabınıza nasıl yönlendirildiğini belirtmek için, Azure depolama hesabınız için ağ [yönlendirme tercihi](../../virtual-network/routing-preference-overview.md) 'ni (Önizleme) yapılandırabilirsiniz. Varsayılan olarak, Internet 'ten gelen trafik, [Microsoft Global ağı](../../networking/microsoft-global-network.md)üzerinden depolama hesabınızın genel uç noktasına yönlendirilir. Azure depolama, trafiğin depolama hesabınıza nasıl yönlendirildiğini yapılandırmak için ek seçenekler sağlar.
+Ağ trafiğinin internet üzerinden kendi hesabınıza nasıl yönlendirildiğini belirtmek için, Azure depolama hesabınız için ağ [yönlendirme tercihini](../../virtual-network/routing-preference-overview.md) yapılandırabilirsiniz. Varsayılan olarak, internet 'ten gelen trafik, [Microsoft Global ağı](../../networking/microsoft-global-network.md)üzerinden depolama hesabınızın genel uç noktasına yönlendirilir. Azure depolama, trafiğin depolama hesabınıza nasıl yönlendirildiğini yapılandırmak için ek seçenekler sağlar.
 
 Yönlendirme tercihini yapılandırmak, Premium ağ performansı veya maliyeti için trafiğinizi iyileştirmek için esneklik sağlar. Bir yönlendirme tercihi yapılandırdığınızda, trafiğin varsayılan olarak depolama hesabınız için genel uç noktaya nasıl yönlendirilmeyeceğini belirtirsiniz. Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz.
 
@@ -37,15 +37,17 @@ Aşağıdaki diyagramda, her yönlendirme tercihi için istemci ve depolama hesa
 
 ![Azure depolama için yönlendirme seçeneklerine genel bakış](media/network-routing-preference/routing-options-diagram.png)
 
-Azure 'da yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi (Önizleme) nedir?](../../virtual-network/routing-preference-overview.md).
+Azure 'da yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi nedir?](../../virtual-network/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Yönlendirme yapılandırması
 
-Depolama hesabınızın genel uç noktası için varsayılan yönlendirme tercihi olarak Microsoft küresel ağ ve Internet yönlendirmesi arasında seçim yapabilirsiniz. Varsayılan yönlendirme tercihi, Azure dışındaki istemcilerden gelen tüm trafiğe uygulanır ve Azure Data Lake Storage 2., BLOB depolama, Azure dosyaları ve statik Web siteleri için uç noktaları etkiler. Yönlendirme tercihini yapılandırma, Azure kuyrukları veya Azure tabloları için desteklenmez.
+Yönlendirme tercihi ve rotaya özgü uç noktaların nasıl yapılandırılacağını gösteren adım adım yönergeler için bkz. [Azure Storage için ağ yönlendirmeyi yapılandırma tercihi](configure-network-routing-preference.md).
+
+Depolama hesabınızın genel uç noktası için varsayılan yönlendirme tercihi olarak Microsoft küresel ağ ve internet yönlendirmesi arasında seçim yapabilirsiniz. Varsayılan yönlendirme tercihi, Azure dışındaki istemcilerden gelen tüm trafiğe uygulanır ve Azure Data Lake Storage 2., BLOB depolama, Azure dosyaları ve statik Web siteleri için uç noktaları etkiler. Yönlendirme tercihini yapılandırma, Azure kuyrukları veya Azure tabloları için desteklenmez.
 
 Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz. Rotaya özgü uç noktaları yayımladığınızda, Azure Storage, depolama hesabınız için trafiği istenen yol üzerinden yönlendiren yeni genel uç noktalar oluşturur. Bu esneklik, varsayılan yönlendirme tercihinizi değiştirmeden, trafiği belirli bir rota üzerinden depolama hesabınıza yönlendirmenizi sağlar.
 
-Örneğin, ' StorageAccountA ' için Internet 'e özgü bir uç nokta yayımlama, depolama hesabınız için aşağıdaki uç noktaları yayımlayacak:
+Örneğin, ' StorageAccountA ' için internet 'e özgü bir uç nokta yayımlama, depolama hesabınız için aşağıdaki uç noktaları yayımlayacak:
 
 | Depolama hizmeti        | Rotaya özgü uç nokta                                  |
 | :--------------------- | :------------------------------------------------------- |
@@ -65,7 +67,7 @@ Bir Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişim
 
 Yayımlanan rotaya özgü uç noktalara yönelik bağlantı dizeleri [Azure Portal](https://portal.azure.com)aracılığıyla kopyalanabilir. Bu bağlantı dizeleri, paylaşılan anahtar yetkilendirmesi için mevcut tüm Azure depolama SDK 'ları ve API 'Leri ile kullanılabilir.
 
-## <a name="about-the-preview"></a>Önizleme hakkında
+## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
 Azure depolama için yönlendirme tercihi aşağıdaki bölgelerde kullanılabilir:
 
@@ -100,16 +102,17 @@ Azure depolama için yönlendirme tercihi aşağıdaki bölgelerde kullanılabil
 - Doğu Avustralya 
 - Güneydoğu Avustralya 
 
-Aşağıdaki bilinen sorunlar Azure Storage için yönlendirme tercih önizlemeyi etkiler:
+Aşağıdaki bilinen sorunlar, Azure depolama için yönlendirme tercihini etkiler:
 
 - Microsoft Global Network 'e yönelik rotaya özgü uç noktaya yönelik erişim istekleri HTTP hatası 404 veya eşdeğeri ile başarısız olur. Microsoft Global ağı üzerinden yönlendirme, genel uç nokta için varsayılan yönlendirme tercihi olarak ayarlandığında beklendiği gibi çalışmaktadır.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Fiyatlandırma ve faturalandırma ayrıntıları için, [yönlendirme tercihi (Önizleme)](../../virtual-network/routing-preference-overview.md#pricing)konusundaki **fiyatlandırma** bölümüne bakın.
+Fiyatlandırma ve faturalandırma ayrıntıları için, [yönlendirme tercihi nedir?](../../virtual-network/routing-preference-overview.md#pricing)bölümündeki **fiyatlandırma** bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönlendirme tercihi nedir (Önizleme)?](../../virtual-network/routing-preference-overview.md)
+- [Yönlendirme tercihi nedir?](../../virtual-network/routing-preference-overview.md)
+- [Ağ yönlendirme tercihini yapılandırma](configure-network-routing-preference.md)
 - [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](storage-network-security.md)
 - [BLOB depolama için güvenlik önerileri](../blobs/security-recommendations.md)

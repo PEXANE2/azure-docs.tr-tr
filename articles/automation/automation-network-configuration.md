@@ -4,12 +4,12 @@ description: Bu makalede, Azure Otomasyonu durum yapılandırması, Azure Otomas
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 0add7eed6abbe6c137d423ee4a7ef5f0f60072e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708892"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Otomasyonu ağ yapılandırması ayrıntıları
 
@@ -26,7 +26,7 @@ Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklid
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>Karma Runbook Worker için ağ planlaması
 
-Azure Otomasyonu 'na bağlanıp kaydolmak üzere bir sistem veya Kullanıcı karma Runbook Worker için, bu bölümde açıklanan bağlantı noktası numarasına ve URL 'Lere erişimi olmalıdır. Çalışan Ayrıca Log Analytics aracısının Azure Izleyici Log Analytics çalışma alanına bağlanması için [gereken bağlantı noktalarına ve URL 'lere](../azure-monitor/platform/agent-windows.md) erişebilmelidir.
+Azure Otomasyonu 'na bağlanıp kaydolmak üzere bir sistem veya Kullanıcı karma Runbook Worker için, bu bölümde açıklanan bağlantı noktası numarasına ve URL 'Lere erişimi olmalıdır. Çalışan Ayrıca Log Analytics aracısının Azure Izleyici Log Analytics çalışma alanına bağlanması için [gereken bağlantı noktalarına ve URL 'lere](../azure-monitor/agents/agent-windows.md) erişebilmelidir.
 
 Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, karma Runbook Worker iletişimini ilgili bölge veri merkezi ile kısıtlayabilirsiniz. Azure Otomasyonu tarafından gerekli DNS kayıtları için [kullanılan DNS kayıtlarını](how-to/automation-region-dns-records.md) gözden geçirin.
 

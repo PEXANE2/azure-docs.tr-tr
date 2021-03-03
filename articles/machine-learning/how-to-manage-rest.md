@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692462"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
@@ -79,7 +79,7 @@ Yanıt bir saat için iyi bir erişim belirteci sağlamalıdır:
 Sonraki tüm yönetim isteklerinin kimliğini doğrulamak için kullandığınız gibi belirteci unutmayın. Tüm isteklerde bir yetkilendirme üst bilgisi ayarlayarak bunu yapabilirsiniz:
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 Değeri, belirteci eklemeden önce tek bir boşluk dahil olmak üzere, "taşıyıcı" dizesi ile başlayacağını unutmayın.

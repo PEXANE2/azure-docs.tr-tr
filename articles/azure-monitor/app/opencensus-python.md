@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704421"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -221,6 +221,15 @@ Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha faz
 
 ### <a name="metrics"></a>Ölçümler
 
+OpenCensus. stats 4 toplama yöntemini destekler, ancak Azure Izleyici için kısmi destek sağlar:
+
+- **Sayı:** Ölçüm noktası sayısı. Değer birikimlidir, yeniden başlatma sırasında yalnızca 0 ' a artırabilir ve sıfırlanır. 
+- **Toplam:** Ölçüm noktalarının toplamı. Değer birikimlidir, yeniden başlatma sırasında yalnızca 0 ' a artırabilir ve sıfırlanır. 
+- **LastValue:** Son kaydedilen değeri korur, diğer her şeyi bırakır.
+- **Dağıtım:** Ölçüm noktalarının histogram dağılımı. Bu yöntem **, Azure Dışarı Aktarıcı tarafından desteklenmez**.
+
+### <a name="count-aggregation-example"></a>Count toplama örneği
+
 1. İlk olarak, bazı yerel ölçüm verileri oluşturalım. Kullanıcının **ENTER** tuşunu kaç kez seçtireceğini izlemek için basit bir ölçüm oluşturacağız.
 
     ```python
@@ -320,7 +329,7 @@ Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha faz
         main()
     ```
 
-1. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında bulabilirsiniz `customMetrics` .
+1. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Değer birikimlidir, yeniden başlatma sırasında yalnızca 0 ' a artırabilir ve sıfırlanır. Verilerin altında bulabilirsiniz `customMetrics` , ancak `customMetrics` ValueCount, Valuesum, ValueMin, ValueMax ve valueStdDev özellikleri etkin bir şekilde kullanılmaz.
 
 #### <a name="performance-counters"></a>Performans sayaçları
 

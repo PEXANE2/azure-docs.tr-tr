@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 7dfb9e34daeb92d57a61c570055695867c4a8107
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5a0e907ef27f125a9903b3d9e6079e3c8a288a97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714536"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -248,7 +248,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`Ve ayarlamak Için initContainers içinde `GID` kullanın `UID` . Örneğin:
+* `chown`Ve ayarlamak Için initContainers içinde `GID` kullanın `UID` . Örnek:
 
 ```yaml
 initContainers:
@@ -407,13 +407,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -452,5 +452,5 @@ AKS, bu hafifletme kalitesini artırmak için düğüm havuzundaki etkin etiketl
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md

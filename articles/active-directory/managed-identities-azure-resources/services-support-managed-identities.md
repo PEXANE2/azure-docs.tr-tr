@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650082"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688578"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -234,6 +234,14 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 Daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma](../../aks/use-managed-identity.md).
 
+### <a name="azure-log-analytics-cluster"></a>Azure Log Analytics kümesi
+
+Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabileceğini][check] |
+| Kullanıcı tarafından atanan | ![Kullanılabileceğini][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabileceğini][check] |
+
+Daha fazla bilgi için bkz. [Azure izleyici 'de kimliğin nasıl çalıştığı](../../azure-monitor/logs/customer-managed-keys.md)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 

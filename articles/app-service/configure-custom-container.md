@@ -2,14 +2,14 @@
 title: Özel kapsayıcı yapılandırma
 description: Azure App Service bir özel kapsayıcıyı yapılandırmayı öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704880"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service için özel kapsayıcıyı yapılandırma
 
@@ -111,7 +111,7 @@ PowerShell'de:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-Uygulamanız çalıştırıldığında, App Service uygulama ayarları işleme otomatik olarak ortam değişkenleri olarak eklenir. 
+Uygulamanız çalıştırıldığında, App Service uygulama ayarları işleme otomatik olarak ortam değişkenleri olarak eklenir. Kapsayıcı ortam değişkenlerini URL ile doğrulayabilirsiniz `https://<app-name>.scm.azurewebsites.net/Env)` .
 
 ::: zone pivot="container-windows"
 IIS veya .NET Framework (4,0 veya üzeri) tabanlı kapsayıcılar için, `System.ConfigurationManager` App Service tarafından otomatik olarak .NET uygulama ayarları ve bağlantı dizeleri olarak eklenir. Diğer tüm diller veya Framework için, aşağıdaki ilgili öneklerden biriyle işlem için ortam değişkenleri olarak sunulur:
@@ -292,44 +292,55 @@ Grup yönetilen hizmet hesapları (gMSAs) Şu anda App Service Windows kapsayıc
 
 ## <a name="enable-ssh"></a>SSH 'yi etkinleştirme
 
-SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Özel bir kapsayıcının SSH 'yi desteklemesi için onu Dockerfile öğesine eklemeniz gerekir.
+SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Özel bir kapsayıcının SSH 'yi desteklemesi için onu Docker yansımanıza eklemeniz gerekir.
 
 > [!TIP]
-> Tüm yerleşik Linux kapsayıcıları, görüntü depolarında SSH yönergelerini ekledi. Nasıl etkinleştirildiğini görmek için [Node.js 10,14 deposu](https://github.com/Azure-App-Service/node/blob/master/10.14) ile aşağıdaki yönergeleri izleyebilirsiniz.
+> App Service içindeki tüm yerleşik Linux kapsayıcıları, SSH yönergelerini görüntü depolarında ekledi. Nasıl etkinleştirildiğini görmek için [Node.js 10,14 deposu](https://github.com/Azure-App-Service/node/blob/master/10.14) ile aşağıdaki yönergeleri izleyebilirsiniz. Node.js yerleşik görüntüsündeki yapılandırma biraz farklıdır, ancak prensibi.
 
-- SSH sunucusunu yüklemek ve kök hesabın parolasını olarak ayarlamak için [Çalıştır](https://docs.docker.com/engine/reference/builder/#run) yönergesini kullanın `"Docker!"` . Örneğin, [alp Linux](https://hub.docker.com/_/alpine)tabanlı bir görüntü için aşağıdaki komutlara ihtiyacınız vardır:
+- Aşağıdaki örnekte olduğu gibi, deponuza [bir sshd_config dosyası](https://man.openbsd.org/sshd_config) ekleyin.
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    Bu yapılandırma kapsayıcıya dış bağlantılara izin vermiyor. SSH yalnızca `https://<app-name>.scm.azurewebsites.net` Yayımlama kimlik bilgileriyle kullanılabilir ve kimlik doğrulaması yapılabilir.
-
-- [Bu sshd_config dosyasını](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) görüntü deponuza ekleyin ve [Copy](https://docs.docker.com/engine/reference/builder/#copy) yönergesini kullanarak dosyayı */etc/ssh/* dizinine kopyalayın. *Sshd_config* dosyaları hakkında daha fazla bilgi için bkz. [OpenBSD belgeleri](https://man.openbsd.org/sshd_config).
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > *Sshd_config* dosyası şu öğeleri içermelidir:
+    > Bu dosya, OpenSSH 'yi yapılandırır ve aşağıdaki öğeleri içermelidir:
+    > - `Port` 2222 olarak ayarlanmalıdır.
     > - `Ciphers`, bu listedeki en az bir öğeyi içermelidir: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`, bu listedeki en az bir öğeyi içermelidir: `hmac-sha1,hmac-sha1-96`.
 
-- Kapsayıcıda 2222 numaralı bağlantı noktasını açmak için [sergileme](https://docs.docker.com/engine/reference/builder/#expose) yönergesini kullanın. Kök parola bilinse de, 2222 numaralı bağlantı noktasına internet 'ten erişilemez. Yalnızca özel bir sanal ağın köprü ağı içindeki kapsayıcılar tarafından erişilebilir.
+- Dockerfile dosyanızda aşağıdaki komutları ekleyin:
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    Bu yapılandırma kapsayıcıya dış bağlantılara izin vermiyor. Kapsayıcının 2222 numaralı bağlantı noktasına yalnızca özel bir sanal ağın köprü ağı içinde erişilebilir ve Internet 'teki bir saldırgan tarafından erişilebilir değildir.
 
 - Kapsayıcının başlangıç komut dosyasında SSH sunucusunu başlatın.
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    Örneğin, varsayılan [Node.js 10,14 KAPSAYıCıSıNıN](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SSH sunucusunu nasıl başlatadığına bakın.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
@@ -353,7 +364,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 *Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile eşleyin `${WEBAPP_STORAGE_HOME}` . 
 
-`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örneğin:
+`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örnek:
 
 ```yaml
 wordpress:

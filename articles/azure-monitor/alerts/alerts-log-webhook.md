@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623293"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704404"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarı kuralları için web kancası eylemleri
 
-[Günlük uyarısı](alerts-log.md) , [Web kancası eylem gruplarını yapılandırmayı](../platform/action-groups.md#webhook)destekler. Bu makalede, hangi özelliklerin kullanılabildiğini ve özel bir JSON Web kancasının nasıl yapılandırılacağını açıklayacağız.
+[Günlük uyarısı](alerts-log.md) , [Web kancası eylem gruplarını yapılandırmayı](./action-groups.md#webhook)destekler. Bu makalede, hangi özelliklerin kullanılabildiğini ve özel bir JSON Web kancasının nasıl yapılandırılacağını açıklayacağız.
 
 > [!NOTE]
 > Özel JSON tabanlı Web kancası API sürümünde şu anda desteklenmiyor `2020-05-01-preview`
@@ -47,7 +47,7 @@ Varsayılan Web kancası eylem özellikleri ve özel JSON parametresi adları:
 | *SearchQuery* |#searchquery |Uyarı kuralı tarafından kullanılan günlük arama sorgusu. |
 | *SearchResults* |"Includesearchresults": true|Sorgu tarafından JSON tablosu olarak döndürülen kayıtlar, ilk 1.000 kayıtla sınırlıdır. "Includesearchresults": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenir. |
 | *Boyutlarına* |"Includedimensions": true|Bu uyarıyı JSON bölümü olarak tetikleyen boyut değer birleşimleri. "Includedimensions": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenir. |
-| *Uyarı türü*| #alerttype | [Ölçüm ölçümü veya sonuç sayısı](../platform/alerts-unified-log.md#measure)olarak yapılandırılan günlük uyarısı kuralının türü.|
+| *Uyarı türü*| #alerttype | [Ölçüm ölçümü veya sonuç sayısı](./alerts-unified-log.md#measure)olarak yapılandırılan günlük uyarısı kuralının türü.|
 | *Workspaceıd* |#workspaceid |Log Analytics çalışma alanınızın KIMLIĞI. |
 | *Uygulama Kimliği* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
 | *Abonelik kimliği* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. |
@@ -84,7 +84,7 @@ Bu bölümde, günlük uyarıları için Web kancaları için örnek yükleri g�
 Aşağıdaki örnek yük, Log Analytics dayalı uyarılar için kullanılan standart bir Web kancası eylemi içindir:
 
 > [!NOTE]
-> [Eski Log Analytics uyarı API](../platform/api-alerts.md)'Sindeki [geçerli scheduledqueryrules API 'sine geçiş](../alerts/alerts-log-api-switch.md) yaptıysanız, "önem derecesi" alan değeri değişir.
+> [Eski Log Analytics uyarı API](./api-alerts.md)'Sindeki [geçerli scheduledqueryrules API 'sine geçiş](../alerts/alerts-log-api-switch.md) yaptıysanız, "önem derecesi" alan değeri değişir.
 
 ```json
 {
@@ -318,8 +318,8 @@ Aşağıdaki örnek yük, herhangi bir günlük uyarısı için özel bir Web ka
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure uyarılarında günlük uyarıları](../platform/alerts-unified-log.md)hakkında bilgi edinin.
+- [Azure uyarılarında günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
 - [Azure 'da günlük uyarılarını yönetmeyi](alerts-log.md)anlayın.
-- [Azure 'da eylem grupları](../platform/action-groups.md)oluşturun ve yönetin.
-- [Application Insights](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-- [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin. 
+- [Azure 'da eylem grupları](./action-groups.md)oluşturun ve yönetin.
+- [Application Insights](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Günlük sorguları](../logs/log-query-overview.md)hakkında daha fazla bilgi edinin.

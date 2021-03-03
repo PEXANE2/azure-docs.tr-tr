@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 02/18/2021
+ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104510"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702564"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -349,9 +349,9 @@ Mantıksal uygulamanızın gelen IP adreslerini kısıtlamak için Azure portal 
 
 ARM şablonunuzda, bölümünü kullanarak mantıksal uygulamanızın kaynak tanımında izin verilen gelen IP adresi aralıklarını belirtin `accessControl` . Bu bölümde, `triggers` `actions` `contents` özelliği ile bölümü dahil ederek,, ve isteğe bağlı bölümleri uygun şekilde kullanın `allowedCallerIpAddresses` `addressRange` ve özellik değerini *x. x. x. x/x* veya *x. x. x. x-x* . x. x. x biçimindeki izin verilen IP aralığı olarak ayarlayın.
 
-* İç içe mantıksal uygulamanız yalnızca Azure Logic Apps eylemini kullanan diğer mantıksal uygulamalardan gelen çağrılara izin veren **diğer Logic Apps** seçeneğini kullanıyorsa, `addressRange` özelliği boş bir diziye (**[]**) ayarlayın.
+* İç içe mantıksal uygulamanız yalnızca yerleşik Azure Logic Apps eylemini kullanan diğer mantıksal uygulamalardan gelen çağrılara izin veren **yalnızca diğer Logic Apps** seçeneğini kullanıyorsa, `allowedCallerIpAddresses` özelliği boş bir diziye (**[]**) ayarlayın ve özelliği *atlayın* `addressRange` .
 
-* İç içe mantıksal uygulamanız, HTTP eylemini kullanan diğer mantıksal uygulamalar gibi diğer gelen çağrılar için **belırlı IP aralıkları** seçeneğini kullanıyorsa, `addressRange` ÖZELLIĞI izin verilen IP aralığı olarak ayarlayın.
+* İç içe mantıksal uygulamanız, HTTP eylemini kullanan diğer mantıksal uygulamalar gibi diğer gelen çağrılar için **belırlı IP aralıkları** seçeneğini kullanıyorsa, bölümünü dahil eder `allowedCallerIpAddresses` ve `addressRange` özelliği izin verilen IP aralığı olarak ayarlayın.
 
 Bu örnekte, yalnızca yerleşik Azure Logic Apps eylemini kullanan Logic Apps 'ten gelen çağrılara izin veren iç içe mantıksal uygulama için bir kaynak tanımı gösterilmektedir:
 
@@ -378,18 +378,14 @@ Bu örnekte, yalnızca yerleşik Azure Logic Apps eylemini kullanan Logic Apps '
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}

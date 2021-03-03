@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: b607cdd462becdcb37f88d35d934a10efd0bfe9b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d4a6d04f88544b3a4f9f9c0c0b290d17f5ef148d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725586"
 ---
 # <a name="workbook-resource-parameters"></a>Çalışma kitabı kaynak parametreleri
 
@@ -111,5 +111,5 @@ Kaynak seçicileri değerleri, çalışma kitabı bağlamından, statik listeden
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](../platform/workbooks-overview.md#visualizations) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](../platform/workbooks-access-control.md) ve paylaşma.
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](./workbooks-overview.md#visualizations) .
+* Çalışma kitabı kaynaklarınıza erişimi [denetleme](./workbooks-access-control.md) ve paylaşma.

@@ -4,12 +4,12 @@ description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718157"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -105,7 +105,7 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 * Name
 * Kaydedildiği kaynak grubu
-* Description
+* Açıklama
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -209,7 +209,7 @@ Contoso, **Contososub** 'da **bilgisayar-01** için oluşturulan tüm günlük u
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Senaryo 3: bir kaynak grubunda tanımlanan eylem grubu
 
-Contoso, [abonelik düzeyinde bir ölçüm uyarısı](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)tanımladı. Ancak, **ContosoRG** kaynak grubundan oluşturulan uyarılar için özel olarak tetiklenecek eylemleri tanımlamak istemektedir.
+Contoso, [abonelik düzeyinde bir ölçüm uyarısı](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)tanımladı. Ancak, **ContosoRG** kaynak grubundan oluşturulan uyarılar için özel olarak tetiklenecek eylemleri tanımlamak istemektedir.
 
 **Çözüm:** İle bir eylem kuralı oluşturun:
 * Kapsam = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-[Sonuç sayısı](../platform/alerts-unified-log.md) seçeneği ile oluşturduğunuz günlük uyarıları, tüm arama sonucunu (birden çok bilgisayara yayılabilen) kullanarak tek bir uyarı örneği oluşturur. Bu senaryoda, bir eylem kuralı **Uyarı bağlamı (yük)** filtresini kullanıyorsa, eşleşme olduğu sürece uyarı örneği üzerinde işlem yapar. Daha önce açıklanan senaryo 2 ' de, oluşturulan günlük uyarısıyla ilgili arama sonuçları hem **bilgisayar-01** hem de **Bilgisayar-02** içeriyorsa, tüm bildirim bastırılır. **Bilgisayar-02** için hiçbir bildirim üretilmez.
+[Sonuç sayısı](./alerts-unified-log.md) seçeneği ile oluşturduğunuz günlük uyarıları, tüm arama sonucunu (birden çok bilgisayara yayılabilen) kullanarak tek bir uyarı örneği oluşturur. Bu senaryoda, bir eylem kuralı **Uyarı bağlamı (yük)** filtresini kullanıyorsa, eşleşme olduğu sürece uyarı örneği üzerinde işlem yapar. Daha önce açıklanan senaryo 2 ' de, oluşturulan günlük uyarısıyla ilgili arama sonuçları hem **bilgisayar-01** hem de **Bilgisayar-02** içeriyorsa, tüm bildirim bastırılır. **Bilgisayar-02** için hiçbir bildirim üretilmez.
 
 ![Diyagramda, tek bir uyarı örneğiyle vurgulanan eylem kuralları ve günlük uyarıları gösterilmektedir.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Günlük uyarılarını eylem kuralları ile en iyi şekilde kullanmak için, [ölçüm ölçümü](../platform/alerts-unified-log.md) seçeneğiyle günlük uyarıları oluşturun. Ayrı uyarı örnekleri, tanımlı grup alanı temel alınarak bu seçenek tarafından oluşturulur. Ardından, Senaryo 2 ' de, **bilgisayar-01** ve **Bilgisayar-02** için ayrı uyarı örnekleri oluşturulur. Senaryoda açıklanan eylem kuralı nedeniyle yalnızca **bilgisayar-01** için bildirim bastırılır. **Bilgisayar-02** ' e yönelik bildirim normal olarak çalışmaya devam eder.
+Günlük uyarılarını eylem kuralları ile en iyi şekilde kullanmak için, [ölçüm ölçümü](./alerts-unified-log.md) seçeneğiyle günlük uyarıları oluşturun. Ayrı uyarı örnekleri, tanımlı grup alanı temel alınarak bu seçenek tarafından oluşturulur. Ardından, Senaryo 2 ' de, **bilgisayar-01** ve **Bilgisayar-02** için ayrı uyarı örnekleri oluşturulur. Senaryoda açıklanan eylem kuralı nedeniyle yalnızca **bilgisayar-01** için bildirim bastırılır. **Bilgisayar-02** ' e yönelik bildirim normal olarak çalışmaya devam eder.
 
 ![Eylem kuralları ve günlük uyarıları (sonuç sayısı)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ Uyarı kuralınız için hedef kaynağı tanımladıktan sonra, **Eylemler** bö
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Eylem kuralı tarafından gizlenen uyarıları görebilir miyim?
 
-[Uyarılar listesi sayfasında](../platform/alerts-managing-alert-instances.md), **gizleme durumu** adlı ek bir sütun seçebilirsiniz. Bir uyarı örneği için bildirim gizlenemedi, listede bu durum gösterilir.
+[Uyarılar listesi sayfasında](./alerts-managing-alert-instances.md), **gizleme durumu** adlı ek bir sütun seçebilirsiniz. Bir uyarı örneği için bildirim gizlenemedi, listede bu durum gösterilir.
 
 ![Gizlenen uyarı örnekleri](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. "Rule1" uy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da uyarılar hakkında daha fazla bilgi edinin](../platform/alerts-overview.md)
+- [Azure 'da uyarılar hakkında daha fazla bilgi edinin](./alerts-overview.md)

@@ -1,28 +1,28 @@
 ---
 title: Karma ortam için Azure Izleyicisini etkinleştirme
-description: Bu makalede, bir veya daha fazla sanal makine içeren karma bulut ortamı için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
+description: Bu makalede, bir veya daha fazla sanal makine içeren karma bulut ortamı için VM öngörülerinin nasıl etkinleştirileceği açıklanır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731281"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Karma sanal makine için VM'ler için Azure İzleyici etkinleştirme
-Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure dışındaki bir sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Karma sanal makine için VM öngörülerini etkinleştirme
+Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure dışındaki bir sanal makine için VM öngörülerinin nasıl etkinleştirileceği açıklanır.
 
 > [!IMPORTANT]
-> Karma VM 'Leri etkinleştirmenin önerilen yöntemi, VM 'Lerin Azure sanal makinelerine benzer süreçler kullanılarak VM'ler için Azure İzleyici için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı 'yi](../../azure-arc/servers/overview.md) etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
+> Karma VM 'Leri etkinleştirmenin önerilen yöntemi, sanal makinelerin Azure sanal makinelerine benzer süreçler kullanılarak VM öngörüleri için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı](../../azure-arc/servers/overview.md) 'yi etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Log Analytics çalışma alanı oluşturun ve yapılandırın](../insights/vminsights-configure-workspace.md).
-- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](../insights/vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
+- [Log Analytics çalışma alanı oluşturun ve yapılandırın](./vminsights-configure-workspace.md).
+- Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](./vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -31,13 +31,13 @@ Azure dışındaki sanal makineler, Azure VM 'Leri için kullanılan aynı Log A
 Log Analytics aracısını dağıtma hakkında ayrıntılı bilgi için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../agents/agent-windows.md) veya [Linux bilgisayarlarını Azure izleyici 'ye bağlama](../agents/agent-linux.md) . Bu makalede bağımlılık aracısının ayrıntıları verilmiştir. 
 
 ## <a name="firewall-requirements"></a>Güvenlik duvarı gereksinimleri
-Log Analytics aracısına yönelik güvenlik duvarı gereksinimleri [Log Analytics aracıya genel bakış](../agents/log-analytics-agent.md#network-requirements)bölümünde verilmiştir. VM'ler için Azure İzleyici Map bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../../azure-monitor/agents/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
+Log Analytics aracısına yönelik güvenlik duvarı gereksinimleri [Log Analytics aracıya genel bakış](../agents/log-analytics-agent.md#network-requirements)bölümünde verilmiştir. VM öngörüleri eşleme bağımlılık Aracısı herhangi bir veri iletmez ve güvenlik duvarları veya bağlantı noktalarında değişiklik gerektirmez. Harita verileri her zaman doğrudan veya [Operations Management Suite ağ geçidi](../../azure-monitor/agents/gateway.md) aracılığıyla Log Analytics ARACıSıDıR ve BT güvenlik ilkeleriniz ağdaki bilgisayarların internet 'e bağlanmasına izin vermez.
 
 
 ## <a name="dependency-agent"></a>Bağımlılık aracısı
 
 >[!NOTE]
->Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](../insights/service-map.md)için de geçerlidir.  
+>Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](./service-map.md)için de geçerlidir.  
 
 Bağımlılık aracısını şu konumlardan indirebilirsiniz:
 
@@ -177,8 +177,8 @@ C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log dosyasını (Window
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir.
+Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM öngörüleri ile analiz edilmek üzere kullanılabilir.
 
-- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md).
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM Insights haritasını görüntüleme](vminsights-maps.md).
 
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).

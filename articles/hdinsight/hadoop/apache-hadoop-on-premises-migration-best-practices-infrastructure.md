@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740673"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -36,7 +36,7 @@ Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](../
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Küme için önerilen sanal makine türünü kullan
 
-Her HDInsight kümesi türü için önerilen sanal makine türlerine yönelik [kümeler için bkz. varsayılan düğüm yapılandırması ve sanal makine boyutları](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) .
+Her HDInsight kümesi türü için önerilen sanal makine türlerine yönelik [kümeler için bkz. varsayılan düğüm yapılandırması ve sanal makine boyutları](../hdinsight-supported-node-configuration.md) .
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>HDInsight 'ta Hadoop bileşenleri kullanılabilirliğini denetleme
 
@@ -73,7 +73,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 |Palanyapıştır|IaaS 
 |Sailpoint|IaaS 
 
-Daha fazla bilgi için, [farklı HDInsight sürümleriyle kullanılabilen bileşenler Apache Hadoop](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) makalesine bakın
+Daha fazla bilgi için, [farklı HDInsight sürümleriyle kullanılabilen bileşenler Apache Hadoop](../hdinsight-component-versioning.md) makalesine bakın
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Betik eylemlerini kullanarak HDInsight kümelerini özelleştirme
 

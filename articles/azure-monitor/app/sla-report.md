@@ -3,12 +3,12 @@ title: Kapalı kalma süresi, SLA ve kesinti çalışma kitabı-Application Insi
 description: Application Insights kaynaklarınız ve Azure aboneliklerinizde tek bir cam bölmeden Web testi için SLA 'yı hesaplayın ve rapor edin.
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714060"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Kapalı kalma süresi, SLA ve kesintiler çalışma kitabı
 
@@ -51,13 +51,13 @@ Bazı testler daha fazla araştırma için Application Insights kaynaklarına g�
 
 ## <a name="edit-the-report"></a>Raporu düzenleme
 
-Raporu diğer [Azure Izleyici çalışma kitapları](../platform/workbooks-overview.md)gibi düzenleyebilirsiniz. Ekibinizin ihtiyaçlarına bağlı olarak sorguları veya görselleştirmeleri özelleştirebilirsiniz.
+Raporu diğer [Azure Izleyici çalışma kitapları](../visualize/workbooks-overview.md)gibi düzenleyebilirsiniz. Ekibinizin ihtiyaçlarına bağlı olarak sorguları veya görselleştirmeleri özelleştirebilirsiniz.
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" Görselleştirmeyi bir pasta grafiğine dönüştürmek için Düzenle düğmesini seçen GIF." lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Sorgular [Log Analytics](../log-query/log-analytics-overview.md) ' de çalıştırılabilir ve diğer raporlarda veya panolarda kullanılıyor olabilir. Parametre kısıtlamasını kaldırın ve çekirdek sorguyu yeniden kullanın.
+Sorgular [Log Analytics](../logs/log-analytics-overview.md) ' de çalıştırılabilir ve diğer raporlarda veya panolarda kullanılıyor olabilir. Parametre kısıtlamasını kaldırın ve çekirdek sorguyu yeniden kullanın.
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" Günlük sorgusunun GIF 'i." lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ Rapor, ekipleriniz, liderle paylaşılabilir veya daha fazla kullanım için bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu iyileştirme ipuçları Log Analytics](../log-query/query-optimization.md).
-- [Çalışma kitaplarında grafik oluşturmayı](../platform/workbooks-chart-visualizations.md)öğrenin.
+- [Sorgu iyileştirme ipuçları Log Analytics](../logs/query-optimization.md).
+- [Çalışma kitaplarında grafik oluşturmayı](../visualize/workbooks-chart-visualizations.md)öğrenin.
 - [Kullanılabilirlik testleriyle](monitor-web-app-availability.md)Web sitenizi nasıl izleyeceğinizi öğrenin.

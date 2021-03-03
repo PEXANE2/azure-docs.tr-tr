@@ -4,15 +4,15 @@ description: Azure Güvenlik kıyaslaması v2 Idare ve strateji
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369064"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727031"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Güvenlik denetimi v2: Idare ve strateji
 
@@ -24,15 +24,15 @@ ms.locfileid: "97369064"
 |--|--|--|--|
 | GS-1 | 2, 13 | SC, AC |
 
-Sistemleri ve verileri sürekli izleme ve koruma için açık bir strateji belgelemenizi ve iletdiğinizden emin olun. İş açısından kritik verilerin ve sistemlerin bulma, değerlendirme, koruma ve izleme süreçleri için öncelik belirleyin. 
+Sistemleri ve verileri sürekli izleme ve koruma için açık bir strateji belgelemenizi ve iletdiğinizden emin olun. İş açısından kritik verilerin ve sistemlerin bulma, değerlendirme, koruma ve izleme süreçleri için öncelik belirleyin.
 
 Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standartlar belgelenmiş olmalıdır: 
 
 - İş risklerine göre veri sınıflandırma standardı
 
-- Riskler ve varlık envanteriyle ilgili güvenlik kuruluşu görünürlüğü 
+- Riskler ve varlık envanteriyle ilgili güvenlik kuruluşu görünürlüğü
 
-- Güvenlik kuruluşunun kullanılmasını onayladığı Azure hizmetleri 
+- Güvenlik kuruluşunun kullanılmasını onayladığı Azure hizmetleri
 
 - Varlıkların yaşam döngüsü boyunca güvenliği
 
@@ -127,9 +127,9 @@ Güvenlik kuruluşunuzdaki roller ve sorumlulukların açık bir stratejisini be
 |--|--|--|--|
 | GS-5 | 9 | CA, SC |
 
-Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak bir Azure ağ güvenlik yaklaşımı oluşturun.  
+Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak bir Azure ağ güvenlik yaklaşımı oluşturun.
 
-Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standartlar belgelenmiş olmalıdır: 
+Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standartlar belgelenmiş olmalıdır:
 
 - Merkezi ağ yönetimi ve güvenlik sorumluluğu
 
@@ -141,7 +141,7 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 
 - Hibrit bulut ve şirket içi bağlantı stratejisi
 
-- Güncel ağ güvenliği yapıtları (ağ diyagramları, başvuru amaçlı ağ mimarisi vb.)
+- Güncel ağ güvenlik yapıtları (ağ diyagramları, başvuru ağ mimarisi gibi)
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
@@ -165,9 +165,9 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 |--|--|--|--|
 | GS-6 | 16, 4 | AC, AU, SC |
 
-Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak bir Azure kimliği ve ayrıcalıklı erişim yaklaşımları oluşturun.  
+Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak bir Azure kimliği ve ayrıcalıklı erişim yaklaşımları oluşturun.
 
-Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standartlar belgelenmiş olmalıdır: 
+Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standartlar belgelenmiş olmalıdır:
 
 - Merkezi bir kimlik ve kimlik doğrulaması sistemi ile diğer iç ve dış kimlik sistemleriyle olan bağlantısı
 
@@ -175,7 +175,7 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 
 - Yüksek ayrıcalıklı kullanıcıların korunması
 
-- Kullanıcı etkinlikleri için anomali izleme ve işleme  
+- Kullanıcı etkinlikleri için anomali izleme ve işleme
 
 - Kullanıcı kimliği ve erişim gözden geçirmesi ile uzlaştırma süreci
 
@@ -205,7 +205,7 @@ Uyumluluk gereksinimlerini karşılaırken tehditleri hızlı bir şekilde tespi
 
 Bu strateji aşağıdaki öğelerle ilgili olarak belgelenmiş rehberlik, ilke ve standartlar içermelidir: 
 
-- Güvenlik operasyonları (SecOps) organizasyonunun rolü ve sorumlulukları 
+- Güvenlik işlemleri (SecOps) kuruluşun rolü ve sorumlulukları 
 
 - NIST veya diğer sektör çerçeveleriyle uyumlu iyi tanımlanmış bir olay yanıt süreci 
 

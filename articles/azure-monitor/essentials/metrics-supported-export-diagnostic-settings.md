@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734392"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Tanılama Ayarları yoluyla dışarı aktarılabilir Azure İzleyici platform ölçümleri
 
-Azure Izleyici, varsayılan olarak hiçbir yapılandırma olmadan [Platform ölçümleri](../essentials/data-platform-metrics.md) sağlar. Bu, portalda grafik oluşturma, REST API aracılığıyla erişme veya PowerShell veya CLı kullanarak sorgulama dahil olmak üzere platform ölçümleriyle etkileşimde bulunmak için çeşitli yollar sağlar. Bkz. [ölçümler-](../platform/metrics-supported.md) Azure izleyicisinin birleştirilmiş ölçüm işlem hattı ile Şu anda kullanılabilir olan platform ölçümlerinin tam listesi için desteklenir. Bu ölçümleri sorgulamak ve bunlara erişmek için lütfen [2018-01-01 api sürümünü](/rest/api/monitor/metricdefinitions)kullanın. Diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir.
+Azure Izleyici, varsayılan olarak hiçbir yapılandırma olmadan [Platform ölçümleri](../essentials/data-platform-metrics.md) sağlar. Bu, portalda grafik oluşturma, REST API aracılığıyla erişme veya PowerShell veya CLı kullanarak sorgulama dahil olmak üzere platform ölçümleriyle etkileşimde bulunmak için çeşitli yollar sağlar. Bkz. [ölçümler-](./metrics-supported.md) Azure izleyicisinin birleştirilmiş ölçüm işlem hattı ile Şu anda kullanılabilir olan platform ölçümlerinin tam listesi için desteklenir. Bu ölçümleri sorgulamak ve bunlara erişmek için lütfen [2018-01-01 api sürümünü](/rest/api/monitor/metricdefinitions)kullanın. Diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir.
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>Ölçümler, Tanılama ayarları aracılığıyla dışarı aktarılabilir değil
 
-Bu konumda olması için kullanılan içerik [Azure Izleyici ölçümlerinin desteklenen listesine](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations)taşındı.
+Bu konumda olması için kullanılan içerik [Azure Izleyici ölçümlerinin desteklenen listesine](./metrics-supported.md#exporting-platform-metrics-to-other-locations)taşındı.
 
 Tanılama ayarları aracılığıyla ölçümleri dışarı aktarırken sınırlamalar vardır. Tüm ölçümler REST API kullanılarak dışarı aktarılabilir. 
 
@@ -548,5 +548,4 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. SQL/Servers/Elaun havuzları | xtp_storage_percent | In-Memory OLTP depolama alanı yüzdesi | 
 | Microsoft. SQL/sunucuları | dtu_consumption_percent | DTU yüzdesi | 
 | Microsoft. SQL/sunucuları | dtu_used | Kullanılan DTU | 
-| Microsoft. SQL/ManagedInstances | avg_cpu_percent | Ortalama CPU yüzdesi | 
-
+| Microsoft. SQL/ManagedInstances | avg_cpu_percent | Ortalama CPU yüzdesi |

@@ -3,12 +3,12 @@ title: Azure VMware çözümünde NSX ağ bileşenlerini yapılandırma
 description: NSX-T ağ kesimlerini yapılandırmak için Azure VMware Çözüm konsolu 'nu nasıl kullanacağınızı öğrenin.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418150"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716998"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Azure VMware çözümünde NSX ağ bileşenlerini yapılandırma
 
@@ -36,13 +36,9 @@ Azure portal Azure VMware Çözüm konsolundan bir NSX-T segmenti oluşturup yap
 >[!NOTE]
 >DHCP kullanmayı planlıyorsanız, bir NSX-T segmenti oluşturup yapılandırmadan önce [BIR DHCP sunucusu veya DHCP geçişi yapılandırmanız](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal) gerekir.
 
-1. Azure VMware Çözüm özel bulutunuzda **iş yükü ağı** altında, **segmentler**  >  **Ekle**' yi seçin.
+1. Azure VMware Çözüm özel bulutunuzda **iş yükü ağı** altında, **segmentler**  >  **Ekle**' yi seçin. Yeni mantıksal segmentin ayrıntılarını girip **Tamam**' ı seçin.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="Yeni bir segmentin nasıl ekleneceğini gösteren ekran görüntüsü.":::
-
-1. Yeni mantıksal segmentin ayrıntılarını sağlayın.
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="Yeni segmentin ayrıntılarını gösteren ekran görüntüsü.":::
    
    - **Segment adı** -vCenter 'da görünür olan mantıksal anahtarın adı.
    - Alt ağ **geçidi** -alt ağ maskesi ile mantıksal anahtarın alt ağı için ağ geçidi IP adresi. VM 'Ler bir mantıksal anahtara iliştirilir ve bu anahtara bağlanan tüm VM 'Ler aynı alt ağa aittir.  Ayrıca, bu mantıksal kesime eklenmiş tüm VM 'Lerin aynı kesimden bir IP adresi taşıması gerekir.
@@ -50,8 +46,6 @@ Azure portal Azure VMware Çözüm konsolundan bir NSX-T segmenti oluşturup yap
    - **Bağlı ağ geçidi**  -  *Varsayılan olarak seçilidir ve salt okunurdur.*  Katman 1 ağ geçidi ve kesim bilgileri türü. 
       - **T1** -NSX-T Manager 'daki katman 1 ağ geçidinin adı. Azure VMware çözümü özel bulutu, etkin/etkin modda NSX-T katmanı 0 ağ geçidi ve etkin/bekleme modunda varsayılan NSX-T katman 1 ağ geçidi ile gelir.  Azure VMware Çözüm konsolu aracılığıyla oluşturulan segmentler yalnızca varsayılan katman 1 ağ geçidine bağlanır ve bu parçaların iş yükleri East-West ve North-South bağlantı alır. NSX-T Manager aracılığıyla yalnızca daha fazla katman-1 ağ geçidi oluşturabilirsiniz. NSX-T Manager konsolundan oluşturulan katman 1 ağ geçitleri, Azure VMware Çözüm konsolu 'nda görünmez. 
       - Azure VMware çözümü tarafından desteklenen **tür** -kaplama segmenti.
-
-1. Segmenti oluşturmak ve Katman-1 ağ geçidine eklemek için **Tamam ' ı** seçin. 
 
    Segment artık Azure VMware Çözüm konsolu, NSX-T Yöneticisi ve vCenter 'da görünür.
 
@@ -157,24 +151,12 @@ Yukarı akış sunucusuna DNS sorguları göndermek için varsayılan bir DNS b�
 
 ### <a name="step-2-configure-dns-service"></a>Adım 2. DNS hizmetini yapılandır
 
-1. **DNS hizmeti** sekmesini seçin, **Ekle**' yi seçin ve ardından şunu girin:
+1. **DNS hizmeti** sekmesini seçin, **Ekle**' yi seçin. Ayrıntıları sağlayın ve **Tamam**' ı seçin.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="DNS hizmeti için gereken bilgileri gösteren ekran görüntüsü.":::
 
-   1. DNS hizmeti için bir ad.
-
-   1. DNS hizmetinin IP adresini girin.
-
-   1. DNS bölgeleri sekmesinde oluşturduğunuz varsayılan DNS bölgesini seçin.
-
-   1. DNS bölgeleri sekmesi altına eklediğiniz FQDN bölgelerini seçin.
-
-   1. **Günlük düzeyini** seçin.
-
    >[!TIP]
    >**Katman 1 ağ geçidi** varsayılan olarak seçilidir ve Azure VMware çözümü dağıtıldığında oluşturulan ağ geçidini yansıtır.
-
-1. **Tamam**’ı seçin. 
 
    DNS hizmeti başarıyla eklendi.
 

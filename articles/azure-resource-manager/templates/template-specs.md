@@ -2,15 +2,15 @@
 title: Şablon belirtimlerini oluşturma ve dağıtma
 description: Şablon özelliklerinin nasıl oluşturulduğunu ve kuruluşunuzdaki diğer kullanıcılarla nasıl paylaşılacağını açıklar.
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734924"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700397"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>Sürüm Oluşturma
+
+Bir şablon belirtimi oluşturduğunuzda, bunun için bir sürüm adı sağlarsınız. Şablon kodu üzerinde yineleme yaparken, var olan bir sürümü güncelleştirebilir (düzeltmeler için) veya yeni bir sürüm yayımlayabilirsiniz. Sürüm bir metin dizesidir. Anlamsal sürüm oluşturma da dahil olmak üzere tüm sürüm oluşturma sistemini izlemeyi tercih edebilirsiniz. Şablon belirtiminin kullanıcıları, dağıtma sırasında kullanmak istedikleri sürüm adını sağlayabilir.
+
+## <a name="use-tags"></a>Etiketleri kullanma
+
+[Etiketler](../management/tag-resources.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Azure PowerShell ve Azure CLı kullanarak şablon özelliklerine Etiketler ekleyebilirsiniz:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+Bir şablon belirtimini oluşturma veya değiştirme sırasında, belirtilen sürüm parametresiyle, ancak Tag/Tags parametresi olmadan:
+
+- Şablon belirtimi varsa ve etiketler içeriyorsa, ancak sürüm yoksa, yeni sürüm mevcut şablon belirtimi ile aynı etiketleri devralır.
+
+Hem Tag/Tags parametresi hem de belirtilen sürüm parametresi ile bir şablon belirtimini oluştururken veya değiştirirken:
+
+- Şablon belirtiminin ve sürümü yoksa, Etiketler hem yeni şablon belirtimine hem de yeni sürüme eklenir.
+- Şablon belirtimi varsa, ancak sürüm yoksa, Etiketler yalnızca yeni sürüme eklenir.
+- Hem şablon belirtimi hem de sürüm varsa, Etiketler yalnızca sürüm için geçerlidir.
+
+Etiket/etiket parametresi belirtilmiş ancak belirtilen sürüm parametresi olmadan bir şablonu değiştirirken, Etiketler yalnızca şablon belirtimine eklenir.
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>Bağlantılı şablonlarla şablon belirtimi oluşturma
 
 Şablon belirtiminin ana şablonu bağlantılı şablonlara başvuruyorsa, PowerShell ve CLı komutları, bağlantılı şablonları yerel sürücünüzden otomatik olarak bulabilir ve paketleyebilir. Şablon özelliklerini barındırmak için depolama hesaplarını veya depoları el ile yapılandırmanız gerekmez; şablon belirtimi kaynağında her şey kendi kendine dahil edilir.
@@ -331,10 +403,6 @@ Aşağıdaki örnek, önceki örneğe benzerdir, ancak `id` özelliğini kullana
 ```
 
 Şablon özelliklerinin bağlanması hakkında daha fazla bilgi için bkz. [öğretici: şablon belirtimini bağlantılı şablon olarak dağıtma](template-specs-deploy-linked-template.md).
-
-## <a name="versioning"></a>Sürüm Oluşturma
-
-Bir şablon belirtimi oluşturduğunuzda, bunun için bir sürüm adı sağlarsınız. Şablon kodu üzerinde yineleme yaparken, var olan bir sürümü güncelleştirebilir (düzeltmeler için) veya yeni bir sürüm yayımlayabilirsiniz. Sürüm bir metin dizesidir. Anlamsal sürüm oluşturma da dahil olmak üzere tüm sürüm oluşturma sistemini izlemeyi tercih edebilirsiniz. Şablon belirtiminin kullanıcıları, dağıtma sırasında kullanmak istedikleri sürüm adını sağlayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

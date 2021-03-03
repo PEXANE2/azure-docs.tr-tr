@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368772"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736857"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure bilişsel Hizmetler desteği ve yardım seçenekleri
 
@@ -27,7 +27,7 @@ Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Belki 
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A 'da soru gönderin
@@ -52,7 +52,7 @@ Arama kullanarak sorununuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yen
 * [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
 * [Soru-Cevap Oluşturma](/answers/topics/azure-qna-maker.html)
 * [Metin Analizi](/answers/topics/azure-text-analytics.html)
-* [Çevirmen](/answers/topics/azure-translator.html)
+* [Translator](/answers/topics/azure-translator.html)
 
 **Konuşma**
 
@@ -63,7 +63,7 @@ Arama kullanarak sorununuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yen
 
 * [Anomali Algılayıcısı](/answers/topics/azure-anomaly-detector.html) 
 * [Content Moderator](/answers/topics/azure-content-moderator.html)
-* [Ölçüm Danışmanı (önizleme)]()
+* [Ölçüm Danışmanı (Önizleme)]()
 * [Kişiselleştirme](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin
@@ -92,7 +92,7 @@ Stack Overflow için yeni bir soru gönderirseniz, soruyu oluştururken lütfen 
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [Soru-Cevap Oluşturma](https://stackoverflow.com/search?q=azure+qna+maker)
 * [Metin Analizi](https://stackoverflow.com/search?q=azure+text+analytics)
-* [Çevirmen](https://stackoverflow.com/search?q=azure+translator+text)
+* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Konuşma**
 
@@ -102,7 +102,7 @@ Stack Overflow için yeni bir soru gönderirseniz, soruyu oluştururken lütfen 
 
 * [Anomali Algılayıcısı](https://stackoverflow.com/search?q=azure+anomaly+detector) 
 * [Content Moderator](https://stackoverflow.com/search?q=azure+content+moderator)
-* [Ölçüm Danışmanı (önizleme)](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [Ölçüm Danışmanı (Önizleme)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Kişiselleştirme](https://stackoverflow.com/search?q=azure+personalizer)
 
 ## <a name="submit-feedback-on-user-voice"></a>Kullanıcı seslerine geri bildirim gönder
@@ -113,23 +113,34 @@ Stack Overflow için yeni bir soru gönderirseniz, soruyu oluştururken lütfen 
 
 Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler ve API 'Leri geliştirdiğiniz uygulamalar için daha iyi çalışır hale getirmek için fikirlerinizi paylaşın. 
 
-| Hizmet                       | Bilişsel hizmetler UserVoice URL 'SI |
-|-------------------------------|---------------|
-| Anomali Algılayıcısı              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Görüntü İşleme               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Özel Görüntü                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Yüz                          | https://cognitive.uservoice.com/forums/430315-face |
-| Form Tanıma               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Mürekkep Tanıma                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
-| Kişiselleştirme                  | https://cognitive.uservoice.com/forums/921562-personalizer |
-| Soru-Cevap Oluşturucu                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Konuşma Hizmetleri               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Özel Konuşma Tanıma                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Metin Analizi                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Çevirmen               | https://cognitive.uservoice.com/forums/558796-translator |
-| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+* [Bilişsel Hizmetler](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
+
+**Görsel**
+
+* [Görüntü İşleme](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Özel Görüntü İşleme](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Yüz Tanıma](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Form Tanıma](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Video Indexer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+
+**Dil**
+
+* [Tam Ekran Okuyucu](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Language Understanding (LUIS)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Soru-Cevap Oluşturma](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Metin Analizi](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Translator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+
+**Konuşma**
+
+* [Konuşma hizmeti](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395740)
+
+**Karar**
+
+* [Anomali Algılayıcısı](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
+* [Content Moderator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Ölçüm Danışmanı (Önizleme)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Kişiselleştirme](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 
 ## <a name="stay-informed"></a>Düzenli olarak bilgi alın
 

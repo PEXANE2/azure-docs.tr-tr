@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "96780221"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695779"
 ---
 # <a name="supported-data-stores"></a>Desteklenen veri depoları
 
@@ -28,10 +28,14 @@ Takip görünümü aşağıdaki veri depolarını destekler. Desteklenen özelli
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|Yes| Yes| Yes| Yes| Yes| Yes|
 ||[Azure Data Lake Storage 2. Nesil](register-scan-adls-gen2.md)|Yes| Yes| Yes| Yes| Yes| Yes|
 ||[Azure SQL Veritabanı](register-scan-azure-sql-database.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
-||[Azure SQL Veritabanı Yönetilen Örneği](register-scan-azure-sql-database-managed-instance.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
+||[Azure SQL veritabanı yönetilen örneği](register-scan-azure-sql-database-managed-instance.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
 ||[Azure Synapse Analytics (eski adı SQL DW)](register-scan-azure-synapse-analytics.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
-|Veritabanı|[SQL Server](register-scan-on-premises-sql-server.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Yes| Yes| Hayır| Hayır| Hayır| Evet|
+|Veritabanı|[Oracle DB](register-scan-oracle-source.md)|Yes| Yes| Hayır| Hayır| Hayır| Yes|
+||[SQL Server](register-scan-on-premises-sql-server.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
+||[Teradata](register-scan-teradata-source.md)|Yes| Yes| Hayır| Hayır| Hayır| Yes|
+|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Yes| Yes| Hayır| Hayır| Hayır| Yes|
+|Hizmetler ve uygulamalar|[SAP ECC](register-scan-sapecc-source.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
+||[SAP S4HANA](register-scan-saps4hana-source.md)|Yes| Yes| Hayır| Yes| Yes| Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

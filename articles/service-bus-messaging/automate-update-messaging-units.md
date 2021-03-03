@@ -3,12 +3,12 @@ title: Azure Service Bus-mesajlaşma birimlerini otomatik olarak güncelleştir
 description: Bu makalede bir Service Bus ad alanının mesajlaşma birimlerini otomatik olarak güncelleştirme ' nin nasıl kullanılacağı gösterilir.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581632"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720605"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus bir ad alanının mesajlaşma birimlerini otomatik olarak güncelleştir 
 Otomatik ölçeklendirme, uygulamanızdaki yükü işlemek için çalışan kaynakların doğru miktarına sahip olmasını sağlar. Yük arttıkça idare edilecek kaynakları eklemenize ve ayrıca boştaki kaynakları kaldırarak paradan tasarruf etmenize olanak tanır. Azure Izleyici 'nin otomatik ölçeklendirme özelliği hakkında daha fazla bilgi edinmek için [Microsoft Azure otomatik ölçeklendirmeyi genel bakış](../azure-monitor/autoscale/autoscale-overview.md) bölümüne bakın. 
@@ -57,7 +57,7 @@ Koşulları kullanarak, mesajlaşma birimlerinin otomatik olarak ölçeklendiril
 Varsayılan bir koşul için belirli bir gün veya tarih aralığında otomatik ölçeklendirme yapmak için bir zamanlama ayarlayamazsınız. Bu ölçek koşulu, zamanlamalarla diğer ölçek koşullarının hiçbiri eşleşmediğinden yürütülür. 
 
 ### <a name="scale-based-on-a-metric"></a>Bir ölçüme göre ölçeklendirin
-Aşağıdaki yordamda, CPU kullanımı %75 ' den fazla olduğunda (ölçeği genişletme) ve CPU kullanımı %25 ' ten az olduğunda mesajlaşma birimlerini (ölçeği genişletme) otomatik olarak artırmak için bir koşul ekleme işlemi gösterilmektedir. Artımlar 1 ile 2 arasında, 2 ile 4 arasında ve 4 ile 8 arasında yapılır. Benzer şekilde, 8-4, 4 ile 2 arasında ve 2 ile 1 arasında bir azaltır. 
+Aşağıdaki yordamda, CPU kullanımı %75 ' den fazla olduğunda (ölçeği genişletme) ve CPU kullanımı %25 ' ten az olduğunda mesajlaşma birimlerini (ölçeği genişletme) otomatik olarak artırmak için bir koşul ekleme işlemi gösterilmektedir. Artımlar 1 ile 2 arasında, 2-4, 4-8 ve 8 ile 16 arasında yapılır. Benzer şekilde, 16 ' dan 8 ' e kadar, 4 ' e kadar 2 ' ye ve 2 ' ye kadar azaltır. 
 
 1. **Otomatik ölçeklendirme ayarı** sayfasında, **kaynağı nasıl ölçeklendireöğrenin seçeneğini belirleyin** için **özel otomatik ölçek** ' i seçin. 
 1. Sayfanın **varsayılan** bölümünde varsayılan koşul için bir **ad** belirtin. Metni düzenlemek için **kalem** simgesini seçin. 
@@ -74,7 +74,7 @@ Aşağıdaki yordamda, CPU kullanımı %75 ' den fazla olduğunda (ölçeği gen
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Varsayılan-CPU kullanımı %75 ' den büyükse ölçeği genişletme":::       
 
         > [!NOTE]
-        > Bu örnekte, genel CPU kullanımı %75 üzerinde olursa otomatik ölçeklendirme özelliği ad alanı için mesajlaşma birimlerini arttırır. Artımlar 1 ile 2 arasında, 2 ile 4 arasında ve 4 ile 8 arasında yapılır. 
+        > Bu örnekte, genel CPU kullanımı %75 üzerinde olursa otomatik ölçeklendirme özelliği ad alanı için mesajlaşma birimlerini arttırır. Artımlar 1 ile 2 arasında, 2-4, 4-8 ve 8 ile 16 arasında yapılır. 
 1. **+ Kural Ekle** ' yi seçin ve **Ölçek kuralı** sayfasında aşağıdaki adımları izleyin:
     1. **Ölçüm adı** açılır listesinden bir ölçüm seçin. Bu örnekte **CPU** olur. 
     1. İşleç ve eşik değerlerini seçin. Bu örnekte, **Ölçek eyleminin tetiklenmesi Için ölçüm eşiği**' ne **küçüktür** ve **25 ' tir** . 
@@ -84,7 +84,7 @@ Aşağıdaki yordamda, CPU kullanımı %75 ' den fazla olduğunda (ölçeği gen
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="CPU kullanımı %25 ' ten az ise varsayılan ölçek":::       
 
         > [!NOTE]
-        > Bu örnekte, genel CPU kullanımı %25 ' in altında olursa otomatik ölçeklendirme özelliği ad alanı için mesajlaşma birimlerini azaltır. Bu, 8-4, 4 ve 2 ' ye kadar azaltır ve 2 ile 1 arasında yapılır. 
+        > Bu örnekte, genel CPU kullanımı %25 ' in altında olursa otomatik ölçeklendirme özelliği ad alanı için mesajlaşma birimlerini azaltır. 16 ile 8 arasında, 8-4, 4-2 arası ve 2 ' ye kadar azaltır. 
 1. **En düşük** ve **en yüksek** ve **varsayılan** mesajlaşma birimi sayısını ayarlayın.
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Ölçüm temelinde varsayılan kural":::

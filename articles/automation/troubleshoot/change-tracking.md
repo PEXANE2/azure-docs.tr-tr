@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723835"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Değişiklik İzleme ve Stok özelliği sorunlarını giderme
 
@@ -34,7 +34,7 @@ Makine Değişiklik İzleme için zaten başka bir çalışma alanına dağıtı
 
 ### <a name="resolution"></a>Çözüm
 
-1. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bunun nasıl doğrulanbileceğine ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
+1. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bunun nasıl doğrulanbileceğine ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
 1. Makinelerin Otomasyon hesabınıza bağlı Log Analytics çalışma alanında göründüğünden emin olun. Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
 

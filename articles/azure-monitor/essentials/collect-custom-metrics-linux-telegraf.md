@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fbed48dda3d6b022d30bb9fb0507c3f9f203771d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4274f976a04a9694c0429a2a4794d645304a9e97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728816"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -25,7 +25,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
  ![Telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Özel ölçümler tüm bölgelerde desteklenmez. Desteklenen bölgeler [burada](../platform/metrics-custom-overview.md#supported-regions) listelenmiştir
+> Özel ölçümler tüm bölgelerde desteklenmez. Desteklenen bölgeler [burada](./metrics-custom-overview.md#supported-regions) listelenmiştir
 
 ## <a name="send-custom-metrics"></a>Özel ölçümleri gönder 
 
@@ -136,4 +136,4 @@ Ayrıca, bu kılavuzda, aracının dağıtıldığı VM hakkında ölçümleri g
 Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Ardından, silinecek kaynak grubunun adını onaylayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Özel ölçümler](../platform/metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
+- [Özel ölçümler](./metrics-custom-overview.md)hakkında daha fazla bilgi edinin.

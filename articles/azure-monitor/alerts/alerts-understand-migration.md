@@ -2,43 +2,43 @@
 title: Azure Izleyici uyarıları için geçişi anlama
 description: Uyarı geçişinin nasıl çalıştığını anlayın ve sorunları giderin.
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 02/14/2021
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 0c4c36c61b73e5c5625d02ae581d186e7dc2c9de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fdac8015cf87ffa0a25a8558668329a8cd82327f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621932"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737197"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Geçiş seçeneklerini daha yeni uyarılara anlayın
 
-Klasik uyarılar, genel bulut kullanıcıları için [devre](../platform/monitoring-classic-retirement.md) dışı bırakılsa da, henüz yeni uyarıları desteklemeyen kaynaklar için sınırlı kullanımda olabilir. Kalan uyarılar geçişi, [Azure Kamu Bulutu](../../azure-government/documentation-government-welcome.md)ve [Azure Çin 21Vianet](https://docs.azure.cn/)için yakında yeni bir tarih duyurulacaktır.
+Klasik uyarılar, genel bulut kullanıcıları için [devre](./monitoring-classic-retirement.md) dışı bırakılsa da hala **31 Mayıs 2021** tarihine kadar sınırlı kullanımda. Azure Kamu bulutu ve Azure Çin 21Vianet için klasik uyarılar, **29 şubat 2024** tarihinde devre dışı bırakılacak.
 
-Bu makalede, el ile geçiş ve gönüllü geçiş aracının nasıl çalıştığı ve kalan uyarı kurallarının geçirilmesi için kullanılacağı açıklanmaktadır. Ayrıca, bazı yaygın sorunlara yönelik düzeltmeler de açıklanmaktadır.
+Bu makalede, el ile geçiş ve gönüllü geçiş aracının nasıl çalıştığı ve kalan uyarı kurallarının geçirilmesi için kullanılacağı açıklanmaktadır. Ayrıca bazı yaygın sorunlara yönelik çözümleri açıklar.
 
 > [!IMPORTANT]
-> Etkinlik günlüğü uyarıları (hizmet durumu uyarıları dahil) ve günlük uyarıları geçişten etkilenmez. Geçiş yalnızca [burada](../platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)açıklanan klasik uyarı kuralları için geçerlidir.
+> Etkinlik günlüğü uyarıları (hizmet durumu uyarıları dahil) ve günlük uyarıları geçişten etkilenmez. Geçiş yalnızca [burada](./monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)açıklanan klasik uyarı kuralları için geçerlidir.
 
 > [!NOTE]
 > Klasik uyarı kurallarınız geçersiz ise, bunlar [kullanım dışı ölçümlerde](#classic-alert-rules-on-deprecated-metrics) veya silinmiş kaynaklardır ve hizmet devre dışı bırakıldıktan sonra kullanılamaz olur.
 
 ## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Klasik uyarıları daha yeni uyarılara el ile geçirme
 
-Kalan uyarılarını el ile geçirmeye ilgilenen müşteriler, aşağıdaki bölümleri kullanarak zaten bu işlemleri yapabilir. Bu bölümler, kaynak sağlayıcısı tarafından kullanımdan kaldırılan ölçümleri de tanımlar ve şu anda doğrudan geçirilemez.
+Kalan uyarılarını el ile geçirmeye ilgilenen müşteriler, aşağıdaki bölümleri kullanarak zaten bu işlemleri yapabilir. Ayrıca, kullanımdan kaldırılan ölçümleri de içerir, bu nedenle doğrudan geçirilemez.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Sanal makinelerde Konuk ölçümleri
 
-Konuk ölçümlerinde yeni ölçüm uyarıları oluşturabilmeniz için, Konuk ölçümlerinin Azure Izleyici özel ölçüm deposuna gönderilmesi gerekir. Tanılama ayarları 'nda Azure Izleyici havuzunu etkinleştirmek için şu yönergeleri izleyin:
+Konuk ölçümlerinde yeni ölçüm uyarıları oluşturabilmeniz için, Konuk ölçümlerinin Azure Izleyici günlükleri deposuna gönderilmesi gerekir. Uyarı oluşturmak için aşağıdaki yönergeleri izleyin:
 
-- [Windows VM 'Leri için konuk ölçümleri etkinleştiriliyor](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Linux sanal makineleri için konuk ölçümlerini etkinleştirme](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Günlük Analizi için konuk ölçümleri toplamayı etkinleştirme](../agents/agent-data-sources.md)
+- [Azure Izleyici 'de günlük uyarıları oluşturma](./alerts-log.md)
 
-Bu adımlar yapıldıktan sonra, Konuk ölçümlerinde yeni ölçüm uyarıları oluşturabilirsiniz. Yeni ölçüm uyarıları oluşturduktan sonra klasik uyarıları silebilirsiniz.
+Konuk ölçümleri toplamak ve üzerinde uyarı almak için daha fazla seçenek mevcuttur, [daha fazla bilgi edinin](../agents/agents-overview.md).
 
-### <a name="storage-account-metrics"></a>Depolama hesabı ölçümleri
+### <a name="storage-and-classic-storage-account-metrics"></a>Depolama ve klasik depolama hesabı ölçümleri
 
 Depolama hesaplarında bulunan tüm klasik uyarılar, bu ölçümlerde uyarılar dışında geçirilebilir:
 
@@ -55,7 +55,7 @@ Depolama hesaplarında bulunan tüm klasik uyarılar, bu ölçümlerde uyarılar
 
 Yüzde ölçümlerinde klasik uyarı kurallarının [, eski ve yeni depolama ölçümleri arasındaki eşlemeye](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)göre geçirilmesi gerekir. Kullanılabilir yeni ölçüm mutlak bir değer olduğundan eşiklerin uygun şekilde değiştirilmesi gerekir.
 
-Aynı işlevselliği sağlayan bir birleştirilmiş ölçüm olmadığından, Anonymouskısıtlar Lingerror 'da klasik uyarı kuralları, Saskısıtlar Lingerror ve kısıtlar Lingerror iki yeni uyarıya bölünmelidir. Eşiklerin uygun şekilde uyarlanması gerekir.
+Aynı işlevselliği sağlayan bir birleştirilmiş ölçüm olmadığından, Anonymouskısıtlar Lingerror, Saskısıtlar Lingerror ve kısıtlar Lingerror üzerinde klasik uyarı kuralları iki yeni uyarıya bölünmelidir. Eşiklerin uygun şekilde uyarlanması gerekir.
 
 ### <a name="cosmos-db-metrics"></a>Cosmos DB ölçümleri
 
@@ -65,39 +65,22 @@ Cosmos DB ölçümlerinde bulunan tüm klasik uyarılar, bu ölçümlerde uyarı
 - Tutarlılık Düzeyi
 - Http 2xx
 - Http 3xx
-- Http 400
-- Http 401
-- İç sunucu hatası
 - Dakikada tüketilen maksimum RUPD
 - Saniyede en fazla ru
-- Mongo sayısı başarısız Istekler
-- Mongo silme başarısız Istekleri
-- Mongo ekleme başarısız Istekleri
-- Diğer başarısız Istekleri Mongo
 - Mongo diğer Istek ücreti
 - Mongo diğer Istek hızı
-- Mongo sorgu başarısız Istekleri
-- Mongo güncelleştirme başarısız Istekleri
 - Gözlemlenen okuma gecikmesi
 - Gözlemlenen yazma gecikmesi
 - Hizmet kullanılabilirliği
 - Depolama Kapasitesi
-- Kısıtlanmış Istekler
-- Toplam İstek Sayısı
 
-Saniyede ortalama Istek sayısı, tutarlılık düzeyi, dakikada tüketilen maksimum RUPISI, saniyede maksimum ru, gözlemlenen okuma gecikmesi, gözlemlenen yazma gecikmesi, depolama kapasitesi Şu anda [Yeni sistemde](../platform/metrics-supported.md#microsoftdocumentdbdatabaseaccounts)kullanılamıyor.
+Saniyede ortalama Istek sayısı, tutarlılık düzeyi, dakikada tüketilen maksimum RUPISI, saniyede maksimum ru, gözlemlenen okuma gecikmesi, gözlemlenen yazma gecikmesi ve depolama kapasitesi Şu anda [Yeni sistemde](../essentials/metrics-supported.md#microsoftdocumentdbdatabaseaccounts)kullanılamıyor.
 
-Http 2xx, http 3xx, HTTP 400, http 401, Iç sunucu hatası, hizmet kullanılabilirliği, kısıtlanmış Istekler ve toplam Istekler gibi istek ölçümlerine ilişkin uyarılar, bu sayede istekler, klasik ölçümler ve yeni ölçümler arasında farklılık fark ettiğinden geçirilmez. Bu uyarılarla ilgili uyarıların ayarlandığı eşiklerle el ile yeniden oluşturulması gerekir.
-
-Aynı işlevselliği sağlayan birleştirilmiş bir ölçüm olmadığından, Mongo başarısız olan Isteklerin ölçümleri birden çok uyarılara bölünmelidir. Eşiklerin uygun şekilde uyarlanması gerekir.
-
-### <a name="classic-compute-metrics"></a>Klasik işlem ölçümleri
-
-Klasik işlem kaynakları henüz yeni uyarılarla desteklenmediğinden, klasik işlem ölçümlerine ilişkin tüm uyarılar geçiş aracı kullanılarak geçirilmez. Bu kaynak türlerinde yeni uyarılar için destek şu anda genel önizlemededir ve müşteriler, klasik uyarı kurallarına göre yeni eşdeğer uyarı kuralları yeniden oluşturabilir.
+Http 2xx, http 3xx ve hizmet kullanılabilirliği gibi istek ölçümlerinde uyarılar, klasik ölçümler ve yeni ölçümler arasında farklı olduğu için isteklerin sayılmadığı için geçirilmez. Bu ölçümlerde uyarıların ayarlandığı eşiklerle el ile yeniden oluşturulması gerekir.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Kullanım dışı ölçümler üzerinde klasik uyarı kuralları
 
-Bunlar, daha önce desteklenen ancak sonunda kullanım dışı olan ölçümler üzerinde klasik uyarı kurallarıdır. Müşterilerin küçük bir yüzdesi, bu tür ölçümler üzerinde geçersiz klasik uyarı kurallarına sahip olabilir. Bu uyarı kuralları geçersiz olduğundan, geçirilmez.
+Aşağıda, daha önce desteklenen ancak sonunda kullanım dışı olan ölçümler üzerinde klasik uyarı kuralları verilmiştir. Müşterilerin küçük bir yüzdesi, bu tür ölçümler üzerinde geçersiz klasik uyarı kurallarına sahip olabilir. Bu uyarı kuralları geçersiz olduğundan, geçirilmez.
 
 | Kaynak türü| Kullanım dışı olan metriler |
 |-------------|----------------- |
@@ -112,14 +95,14 @@ Bunlar, daha önce desteklenen ancak sonunda kullanım dışı olan ölçümler 
 
 Geçiş Aracı, klasik uyarı kurallarınızı eşdeğer yeni uyarı kurallarına ve eylem gruplarına dönüştürür. Çoğu klasik uyarı kuralları için, eşdeğer yeni uyarı kuralları, ve gibi aynı özelliklerle aynı ölçümdedir `windowSize` `aggregationType` . Ancak bazı klasik uyarı kuralları, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümlerde bulunur. Aşağıdaki ilkeler aşağıdaki bölümde belirtilmedikçe klasik uyarıların geçirilmesi için geçerlidir:
 
-- **Sıklık**: klasik veya yeni bir uyarı kuralının koşulu ne sıklıkta denetleyeceğini tanımlar. `frequency`Klasik uyarı kuralları Kullanıcı tarafından yapılandırılamaz ve 1 dak Application Insights bileşenleri hariç tüm kaynak türleri için her zaman 5 dakikadır. Bu nedenle denk kuralların sıklığı sırasıyla 5 dk ve 1 dk olarak ayarlanmıştır.
+- **Sıklık**: klasik veya yeni bir uyarı kuralının koşulu ne sıklıkta denetleyeceğini tanımlar. `frequency`Klasik uyarı kuralları Kullanıcı tarafından yapılandırılamaz ve tüm kaynak türleri için her zaman 5 dakikadır. Denk kuralların sıklığı da 5 dk olarak ayarlanır.
 - **Toplama türü**: ölçümün ilgilendiğiniz pencere üzerinden nasıl toplandığını tanımlar. `aggregationType`Ayrıca, klasik uyarılar ve çoğu ölçüm için yeni uyarılar arasında de aynıdır. Bazı durumlarda, ölçüm klasik uyarılar ve yeni uyarılar arasında farklılık gösterdiğinden, eşdeğer `aggregationType` veya `primary Aggregation Type` ölçüm için tanımlanan değer kullanılır.
 - **Units**: uyarının oluşturulduğu ölçümün özelliği. Bazı eşdeğer ölçümler farklı birimlere sahiptir. Eşik gerektiği şekilde uygun şekilde ayarlanır. Örneğin, özgün ölçüm, birim olarak saniyeler içeriyorsa, ancak eşdeğer yeni ölçüm, birim olarak milisaniyeye sahipse, aynı davranışı sağlamak için özgün eşik 1000 ile çarpılır.
-- **Pencere boyutu**: eşiğe göre Karşılaştırılacak ölçüm verilerinin üzerine toplanan pencereyi tanımlar. `windowSize`5 dakika, 15 dakika, 30 dakika, 1saat, 3saat, 6 saat, 12 saat, 1 gün gibi standart değerler için, denk yeni uyarı kuralı için değişiklik yapılmaz. Diğer değerler için en yakın `windowSize` kullanım için seçilir. Çoğu müşteri için, bu değişikliğe göre hiçbir etkisi yoktur. Müşterilerin küçük bir yüzdesi için, tam olarak aynı davranışı almak üzere eşiğin ince ayar bir olması gerekebilir.
+- **Pencere boyutu**: eşiğe göre Karşılaştırılacak ölçüm verilerinin üzerine toplanan pencereyi tanımlar. `windowSize`5 dakika, 15 dakika, 30 dakika, 1 saat, 3 saat, 6 saat, 12 saat, 1 gün gibi standart değerler için, eşdeğer yeni uyarı kuralı için değişiklik yapılmaz. Diğer değerler için en yakın `windowSize` kullanılır. Çoğu müşteri için, bu değişikliğe göre hiçbir etkisi yoktur. Müşterilerin küçük bir yüzdesi için, tam olarak aynı davranışı almak üzere eşiğin ince ayar bir olması gerekebilir.
 
-Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümleri ayrıntılandırıyoruz. Klasik ve yeni uyarı kuralları için aynı kalan her türlü ölçüm listelenmez. [Burada](../platform/metrics-supported.md)yeni sistemde desteklenen ölçümlerin listesini bulabilirsiniz.
+Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip olan ölçümleri ayrıntılandırıyoruz. Klasik ve yeni uyarı kuralları için aynı kalan her türlü ölçüm listelenmez. [Burada](../essentials/metrics-supported.md)yeni sistemde desteklenen ölçümlerin listesini bulabilirsiniz.
 
-### <a name="microsoftstorageaccountsservices"></a>Microsoft. StorageAccounts/Services
+### <a name="microsoftstoragestorageaccounts-and-microsoftclassicstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts ve Microsoft. ClassicStorage/storageAccounts
 
 Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki ölçümler aşağıda gösterildiği gibi eşdeğer ölçümlere eşlenir:
 
@@ -156,46 +139,23 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 | TotalIngress | Giriş | |
 | TotalRequests | İşlemler | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/bileşenler
-
-Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
-
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
-|--------------------------|---------------------------------|---------|
-| kullanılabilirlik. Kullanılabilirbilitymetric. değer | Kullanılabilirlik sonuçları/kullanılabilirliği yüzdesi|   |
-| AVAILABILITY. durationMetric. Value | Kullanılabilirlik sonuçları/süresi| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| basicExceptionBrowser. Count | özel durumlar/tarayıcı|  ' `aggregationType` Sum ' yerine ' Count ' kullanın. |
-| basicExceptionServer. Count | özel durumlar/sunucu| ' `aggregationType` Sum ' yerine ' Count ' kullanın.  |
-| clientPerformance. clientProcess. Value | Browserzamanlamalar/processingDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| clientPerformance. networkConnection. Value | Browserzamanlamalar/networkDuration|  Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın. |
-| clientPerformance. receiveRequest. Value | Browserzamanlamalar/receiveDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| clientPerformance. sendRequest. Value | Browserzamanlamalar/sendDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| clientPerformance. Total. Value | Browserzamanlamalar/totalDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| performanceCounter.available_bytes. değer | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter.io_data_bytes_per_sec. değer | performanceCounters/Processıobitespersecond|   |
-| performanceCounter.number_of_exceps_thrown_per_sec. değer | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter.percentage_processor_time_normalized. değer | performanceCounters/processCpuPercentage|   |
-| performanceCounter.percentage_processor_time. değer | performanceCounters/processCpuPercentage| Özgün ölçüm tüm çekirdekler genelinde olduğundan ve yeni ölçüm bir çekirdeğe normalleştirildikleri için eşiğin uygun şekilde değiştirilmesi gerekir. Geçiş Aracı eşikleri değiştirmez.  |
-| performanceCounter.percentage_processor_total. değer | performanceCounters/Processorcpuyüzdesi|   |
-| performanceCounter.process_private_bytes. değer | performanceCounters/processPrivateBytes|   |
-| performanceCounter.request_execution_time. değer | performanceCounters/requestExecutionTime|   |
-| performanceCounter.requests_in_application_queue. değer | performanceCounters/Requestsınqueue|   |
-| performanceCounter.requests_per_sec. değer | performanceCounters/requestsPerSecond|   |
-| istek. Duration | istek/süre| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| istek. oran | istek/hız|   |
-| requestFailed. Count | istek/başarısız| ' `aggregationType` Sum ' yerine ' Count ' kullanın.   |
-| View. Count | pageViews/Count| ' `aggregationType` Sum ' yerine ' Count ' kullanın.   |
-
 ### <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
 Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
 | Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
-| AvailableStorage     |AvailableStorage|   |
+| AvailableStorage | AvailableStorage||
 | Veri Boyutu | Veri kullanımı| |
 | Belge sayısı | DocumentCount||
 | Dizin boyutu | Indexusage||
+| Hizmet kullanılamıyor | ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
+| Kısıtlanmış Istekler | "StatusCode" boyutundaki TotalRequests = "429"| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| İç Sunucu Hataları | "StatusCode" ve "500"} boyutundaki TotalRequests| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Http 401 | "StatusCode" boyutundaki TotalRequests = "401"| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Http 400 | "StatusCode" boyutundaki TotalRequests = "400"| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Toplam İstek Sayısı | TotalRequests| ' Max ' toplama türü ' Count ' olarak düzeltildi|
 | Mongo sayımı Istek ücreti| "CommandName" = "Count" boyutuyla Mongorequestücret||
 | Mongo sayımı Istek hızı | Dimension "CommandName" = "Count" olan MongoRequestsCount||
 | Mongo silme Isteği ücreti | Dimension "CommandName" = "Sil" olacak mongorequestücret||
@@ -205,12 +165,16 @@ Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 | Mongo sorgu Isteği ücreti | "CommandName" = "Find" boyutuyla Mongorequestücretle||
 | Mongo sorgu Isteği hızı | Dimension ile MongoRequestsCount "CommandName" = "Find"||
 | Mongo güncelleştirme Isteği ücreti | Dimension "CommandName" = "Update" ile mongorequestücret||
-| Hizmet kullanılamıyor| ServiceAvailability||
-| TotalRequestUnits | TotalRequestUnits||
+| Mongo ekleme başarısız Istekleri | "CommandName" = "INSERT" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Mongo sorgu başarısız Istekleri | "CommandName" = "Query" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Mongo sayısı başarısız Istekler | "CommandName" = "Count" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Mongo güncelleştirme başarısız Istekleri | "CommandName" = "Update" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Diğer başarısız Istekleri Mongo | "CommandName" = "Other" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
+| Mongo silme başarısız Istekleri | "CommandName" = "Delete" ve "Status" = "Failed" boyutlarıyla MongoRequestCount| ' Average ' toplama türü ' Count ' olarak düzeltildi|
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Denk eylem grupları oluşturma
 
-Klasik uyarı kurallarında, uyarı kuralına bağlı e-posta, Web kancası, mantıksal uygulama ve Runbook eylemleri vardır. Yeni uyarı kuralları, birden fazla uyarı kuralı arasında yeniden kullanılabilen eylem gruplarını kullanır. Geçiş Aracı, eylemi kaç tane uyarı kuralı kullandığını bağımsız olarak aynı eylemler için tek bir eylem grubu oluşturur. Geçiş Aracı tarafından oluşturulan eylem grupları ' Migrated_AG * ' adlandırma biçimini kullanır.
+Klasik uyarı kurallarında e-posta, Web kancası, mantıksal uygulama ve uyarı kuralına bağlı runbook eylemleri vardı. Yeni uyarı kuralları, birden fazla uyarı kuralı arasında yeniden kullanılabilen eylem gruplarını kullanır. Geçiş Aracı, eylemi kaç tane uyarı kuralı kullandıklarından bağımsız olarak aynı eylemler için tek bir eylem grubu oluşturur. Geçiş Aracı tarafından oluşturulan eylem grupları ' Migrated_AG * ' adlandırma biçimini kullanır.
 
 > [!NOTE]
 > Klasik uyarılar, klasik yönetici rollerini bilgilendirmek için kullanıldığında klasik yöneticinin yerel ayarlarına bağlı olarak yerelleştirilmiş e-postalar gönderdi. Yeni uyarı e-postaları eylem grupları aracılığıyla gönderilir ve yalnızca Ingilizce olarak gösterilir.
@@ -250,13 +214,13 @@ Aboneliğinizdeki klasik uyarı kurallarında yapılan bazı son değişiklikler
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Kapsam kilidi kurallarınızı geçirmemizi önler
 
-Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, bir kapsam kilidi, kaynak oluşturmamızı veya silmenizi önleyebilir. Kapsam kilidine bağlı olarak, bazı veya tüm kurallar geçirilemez. [Geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenen abonelik, kaynak grubu veya kaynak için kapsam kilidini kaldırarak ve geçişi yeniden tetikleyerek bu sorunu çözebilirsiniz. Kapsam kilidi devre dışı bırakılamaz ve geçiş işlemi süresince kaldırılması gerekir. [Kapsam kilitlerini yönetme hakkında daha fazla bilgi edinin](../../azure-resource-manager/management/lock-resources.md#portal).
+Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, bir kapsam kilidi, kaynak oluşturmamızı veya silmenizi önleyebilir. Kapsam kilidine bağlı olarak, bazı veya tüm kurallar geçirilemez. [Geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenen abonelik, kaynak grubu veya kaynak için kapsam kilidini kaldırarak ve geçişi yeniden tetikleyerek bu sorunu çözebilirsiniz. Kapsam kilidi devre dışı bırakılamaz ve geçiş işlemi sırasında kaldırılması gerekir. [Kapsam kilitlerini yönetme hakkında daha fazla bilgi edinin](../../azure-resource-manager/management/lock-resources.md#portal).
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Kurallarınızı geçirmemizi engelleyen ' Reddet ' efektli ilke
 
 Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, bir [Azure ilke](../../governance/policy/index.yml) ataması, kaynak oluşturmamızı önleyebilir. İlke atamaya bağlı olarak, bazı veya tüm kurallar geçirilemez. İşlemi engelleyen ilke atamaları [geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenir. Bu sorunu aşağıdakilerden birini yaparak çözün:
 
-- İlke atamasından geçiş işlemi süresince abonelikler, kaynak grupları veya tek tek kaynaklar hariç tutulur. [İlke dışlama kapsamlarını yönetme hakkında daha fazla bilgi edinin](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- İlke atamasından geçiş işlemi sırasında abonelikleri, kaynak gruplarını veya tek tek kaynakları hariç tutma. [İlke dışlama kapsamlarını yönetme hakkında daha fazla bilgi edinin](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
 - ' Zorlama modu ' nu ilke atamasında **devre dışı** olarak ayarlayın. [İlke atamasının enforcementMode özelliği hakkında daha fazla bilgi edinin](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
 - Abonelikler, kaynak grupları veya tek kaynaklarda ilke atamasına bir Azure Ilke muafiyeti (Önizleme) ayarlayın. [Azure ilke muafiyeti yapısı hakkında daha fazla bilgi edinin](../../governance/policy/concepts/exemption-structure.md).
 - ' DISABLED ', ' Audit ', ' append ' veya ' Modify ' gibi etkileri kaldırma veya değiştirme (örneğin, eksik etiketlerle ilgili sorunları çözebilen). [İlke efektlerini yönetme hakkında daha fazla bilgi edinin](../../governance/policy/concepts/definition-structure.md#policy-rule).

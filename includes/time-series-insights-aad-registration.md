@@ -9,69 +9,36 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554968"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724186"
 ---
-1. [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin.
+* [Platform ayarlarını yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) adım 4 ' te uygun platformu seçtikten sonra, arka planda **yeniden yönlendirme URI 'Leri** ve **erişim belirteçlerinizi** Kullanıcı arabiriminin sağına doğru yapılandırın.
 
-   [![Azure Active Directory yeni uygulama kaydı](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-    Uygulamanız kaydedildikten sonra burada listelenecektir.
-
-1. Uygulamaya bir ad verin ve yalnızca API 'ye erişebilen **Desteklenen hesap türlerini** belirtmek için **bu kuruluş dizinindeki hesapları** seçin. [Ortak bir istemci uygulaması](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri)oluşturuyorsanız, geçerli bir yeniden yönlendirme URI 'si ekleyin ve ardından **kaydolun**.
-
-   [![Uygulamayı Azure Active Directory oluşturma](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
-
-1. Önemli Azure Active Directory uygulama bilgileri, listelenen uygulamanızın **genel bakış** dikey penceresinde görüntülenir. **Sahip olunan uygulamalar** altında uygulamanızı seçin ve **genel bakış**' a tıklayın.
-
-   [![Uygulama KIMLIĞINI kopyalama](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
-
-   İstemci uygulamanızda kullanmak için **uygulamanızın (istemci) kimliğini** kopyalayın.
-
-1. **Kimlik doğrulama** dikey penceresi, önemli kimlik doğrulama yapılandırma ayarlarını belirtir.
-
-    1. **+ Platform Ekle**' ye tıklayarak **yeniden yönlendirme URI 'Leri** ekleyin ve **erişim belirteçlerini** yapılandırın.
-
-    1. Uygulamanın **ortak bir istemci** olup olmadığını ve **Evet** veya **Hayır**' a tıklayarak olmadığını saptayın.
-
-    1. Hangi hesapların ve kiracıların desteklendiğini doğrulayın.
-
-    [![Örtük izni Yapılandır](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
-
-1. Uygun platformu seçtikten sonra, **yeniden yönlendirme URI** 'larınızı ve yan paneldeki **erişim belirteçlerinizi** Kullanıcı arabiriminin sağına yapılandırın.
-
-    1. **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
+    * **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
 
         * Yerel bir geliştirme ortamında barındırılan uygulamalar için **ortak istemci (mobil & Masaüstü)** öğesini seçin. **Ortak Istemciyi** **Evet** olarak ayarladığınızdan emin olun.
         * Azure App Service barındırılan Single-Page uygulamalar için **Web**' i seçin.
 
-    1. **Oturum kapatma URL 'sinin** uygun olup olmadığını belirleme.
+    * **Oturum kapatma URL 'sinin** uygun olup olmadığını belirleme.
 
-    1. **Erişim belirteçlerini** veya **kimlik belirteçlerini** denetleyerek örtük izin akışını etkinleştirin.
+    * **Erişim belirteçlerini** veya **kimlik belirteçlerini** denetleyerek örtük izin akışını etkinleştirin.
 
     [![Yeniden yönlendirme URI 'Leri oluşturma](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
     **Yapılandır**' a ve ardından **Kaydet**' e tıklayın.
 
-1. İstemci uygulamanızın kimliğini kanıtlamak için kullanabileceği bir uygulama parolası oluşturmak için **sertifikalar & gizlilikler** ' ı ve ardından **yeni istemci gizli** anahtarını seçin.
-
-   [![Yeni bir istemci parolası oluştur](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
-
-   Daha sonra, istemci gizli parolanız görüntülenir. Anahtarı en sevdiğiniz metin düzenleyiciye kopyalayın.
-
-   > [!NOTE]
-   > Bunun yerine bir sertifikayı içeri aktarma olanağınız vardır. Gelişmiş güvenlik için bir sertifika önerilir. Bir sertifika kullanmak için **sertifikayı karşıya yükle**' yi seçin.
-
-1. Azure Active Directory uygulamanızın Azure Time Series Insights ilişkilendirin. **API izinlerini** seçin  >  **Add a permission**  >  **Kuruluşumun kullandığı izin API 'leri** ekleyin.
+* Azure Active Directory uygulamanızın Azure Time Series Insights ilişkilendirin. **API izinlerini** seçin  >    >  **Kuruluşumun kullandığı izin API 'leri** ekleyin.
 
     [![Azure Active Directory uygulamanızla bir API 'YI ilişkilendirme](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
    `Azure Time Series Insights`Arama çubuğuna yazın ve ardından öğesini seçin `Azure Time Series Insights` .
 
-1. Ardından, uygulamanızın gerektirdiği tür API iznini belirtin. Varsayılan olarak, **temsilci izinleri** vurgulanacaktır. Bir izin türü seçin, sonra **Izin Ekle**' yi seçin.
+* Ardından, uygulamanızın gerektirdiği tür API iznini belirtin. Varsayılan olarak, **temsilci izinleri** vurgulanacaktır. Bir izin türü seçin, sonra **Izin Ekle**' yi seçin.
 
     [![Uygulamanızın gerektirdiği API izninin türünü belirtin](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+
+* Uygulama ortamınızın API 'lerinizi kendisi olarak çağırmak için [kimlik bilgilerini ekleyin](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials) . Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar.

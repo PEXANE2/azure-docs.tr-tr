@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706002"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
@@ -78,13 +78,32 @@ Azure Data Factory tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendiri
 1. İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
 1. İşlem hatlarını [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
 Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 dakika söylemeniz gerekebilir. Uç noktasını kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
 
-[Fabrika tarafından sorgulama](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, tüm başarısız işlem hatlarını 5 dakikada bir sorgulamak Için bir Azure mantıksal uygulaması ayarlayın. Daha sonra, olayları, anahtar oluşturma sistemimize rapor edebilirsiniz.
+**Çözüm** Bir Azure mantıksal uygulamasını, [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, 5 dakikada bir tüm başarısız işlem hatlarını sorgulamak için ayarlayabilirsiniz. Daha sonra, olayları bilet sistemine bildirebilirsiniz.
 
 Daha fazla bilgi için [Data Factory, Bölüm 2 ' den bildirim gönder '](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)e gidin.
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Paralellik artışının derecesi daha yüksek verimlilik elde etmez
+
+**Neden** 
+
+*Foreach* cinsinden paralellik derecesi, gerçekte paralellik derecesini belirtir. Aynı anda belirli sayıda yürütme garantisi vermeyiz, ancak bu parametre ayarlanmış olan değerin üzerine hiçbir zaman geçeceğimizi garanti eder. Kaynaklarınızın ve havuzlar için eşzamanlı erişimi denetlerken yararlanılabilir olması için bunu bir sınır olarak görmeniz gerekir.
+
+*Foreach* hakkında bilinen olgular
+ * Foreach, varsayılan değer 20 ve Max 50 olan Batch Count (n) adlı bir özelliğe sahiptir.
+ * Toplu iş sayısı n, n kuyruk oluşturmak için kullanılır. Daha sonra bu sıraların nasıl oluşturulduğu hakkında bazı ayrıntılar ele alınacaktır.
+ * Her sıra sırayla çalışır, ancak paralel olarak çalışan birkaç kuyruğa sahip olabilirsiniz.
+ * Kuyruklar önceden oluşturulur. Bu, çalışma zamanı sırasında kuyrukların yeniden dengelenmesi gerekmediği anlamına gelir.
+ * Her zaman, kuyruk başına en çok bir öğe işlem yapmış olursunuz. Bu, belirli bir zamanda en fazla n öğe işlenen anlamına gelir.
+ * Foreach toplam işlem süresi, en uzun kuyruğun işleme zamanına eşittir. Bu, Foreach etkinliğinin kuyrukların nasıl oluşturulduğuna bağlı olduğu anlamına gelir.
+ 
+**Çözünürlük**
+
+ * *Her biri* paralel olarak çalıştırılan her bir Için *SetVariable* etkinliğini kullanmamalısınız.
+ * Kuyrukların *oluşturulduğu şekilde* göz önünde bulundurarak, müşteri, her bir foreach 'in benzer işleme süresine sahip olduğu birden çok dikkatli ayarlayarak foreach performansını iyileştirebilirler. Bu, uzun çalıştırmanın ardışık olarak değil paralel olarak işlenmesini güvence altına alacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2947f1c484f013c2d0bef9899b849f7ea761d89e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621448"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720027"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynaklarını Log Analytics
-Azure Izleyicisinin [Log Analytics](../platform/log-analytics-agent.md) aracısına sahip sanal makinelerden topladığı veriler, [Log Analytics çalışma alanında](../platform/data-platform-logs.md)yapılandırdığınız veri kaynakları tarafından tanımlanır.   Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
+Azure Izleyicisinin [Log Analytics](./log-analytics-agent.md) aracısına sahip sanal makinelerden topladığı veriler, [Log Analytics çalışma alanında](../logs/data-platform-logs.md)yapılandırdığınız veri kaynakları tarafından tanımlanır.   Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısına](../platform/log-analytics-agent.md) ait veri kaynakları ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısına](./log-analytics-agent.md) ait veri kaynakları ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
 
 ![Günlük verileri toplama](media/agent-data-sources/overview.png)
 
@@ -51,7 +51,7 @@ Herhangi bir yapılandırma bu çalışma alanına bağlı tüm aracılara dağ�
 ## <a name="data-collection"></a>Veri toplama
 Veri kaynağı konfigürasyonları, birkaç dakika içinde Azure Izleyici 'ye doğrudan bağlı aracılara dağıtılır.  Belirtilen veriler aracıdan toplanır ve her bir veri kaynağına özel aralıklarla doğrudan Azure Izleyici 'ye dağıtılır.  Bu bilgiler için her bir veri kaynağına yönelik belgelere bakın.
 
-Bağlı bir yönetim grubundaki System Center Operations Manager aracıları için, veri kaynağı konfigürasyonları yönetim paketlerine çevrilir ve varsayılan olarak her 5 dakikada bir yönetim grubuna dağıtılır.  Aracı yönetim paketini diğer gibi indirir ve belirtilen verileri toplar. Veri kaynağına bağlı olarak, veriler, verileri Azure Izleyicisine ileten bir yönetim sunucusuna gönderilir veya aracı, yönetim sunucusundan geçmeden verileri Azure Izleyici 'ye gönderir. Ayrıntılar için bkz. [Azure 'da çözümleri izlemek Için veri toplama ayrıntıları](../monitor-reference.md) .  Operations Manager ve Azure Izleyicisini bağlama hakkında bilgi edinebilir ve yapılandırmanın yapılandırma [System Center Operations Manager Ile tümleştirilmesine](../platform/om-agents.md)göre değişiklik sıklığını değiştirebilirsiniz.
+Bağlı bir yönetim grubundaki System Center Operations Manager aracıları için, veri kaynağı konfigürasyonları yönetim paketlerine çevrilir ve varsayılan olarak her 5 dakikada bir yönetim grubuna dağıtılır.  Aracı yönetim paketini diğer gibi indirir ve belirtilen verileri toplar. Veri kaynağına bağlı olarak, veriler, verileri Azure Izleyicisine ileten bir yönetim sunucusuna gönderilir veya aracı, yönetim sunucusundan geçmeden verileri Azure Izleyici 'ye gönderir. Ayrıntılar için bkz. [Azure 'da çözümleri izlemek Için veri toplama ayrıntıları](../monitor-reference.md) .  Operations Manager ve Azure Izleyicisini bağlama hakkında bilgi edinebilir ve yapılandırmanın yapılandırma [System Center Operations Manager Ile tümleştirilmesine](./om-agents.md)göre değişiklik sıklığını değiştirebilirsiniz.
 
 Aracı Azure Izleyici 'ye veya Operations Manager bağlanamazsa, bir bağlantı kurduğunda teslim edileceği verileri toplamaya devam edecektir.  Veri miktarı, istemcinin en büyük önbellek boyutuna ulaşırsa veya aracı 24 saat içinde bir bağlantı kuramazsa, veriler kaybolabilir.
 
@@ -60,5 +60,5 @@ Azure Izleyici tarafından toplanan tüm günlük verileri çalışma alanında 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Izleyici 'ye işlevsellik ekleyen ve ayrıca çalışma alanına veri toplayacağınız [çözümleri izleme](../insights/solutions.md) hakkında bilgi edinin.
-* Veri kaynaklarından ve izleme çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
-* Veri kaynaklarından ve izleme çözümlerinden toplanan kritik verileri proaktif olarak bildirmek için [uyarıları](../platform/alerts-overview.md) yapılandırın.
+* Veri kaynaklarından ve izleme çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.  
+* Veri kaynaklarından ve izleme çözümlerinden toplanan kritik verileri proaktif olarak bildirmek için [uyarıları](../alerts/alerts-overview.md) yapılandırın.

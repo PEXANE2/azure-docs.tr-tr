@@ -2,13 +2,13 @@
 title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733678"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -31,7 +31,7 @@ Azure VMware çözümünü dağıtmak için kullanmayı planladığınız abonel
 
 Azure VMware çözümünüz için kullanmak istediğiniz kaynak grubunu belirler.  Genellikle, Azure VMware çözümü için bir kaynak grubu oluşturulur, ancak var olan bir kaynak grubunu kullanabilirsiniz.
 
-## <a name="region"></a>Bölge
+## <a name="region"></a>Region
 
 Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  Daha fazla bilgi için bkz. [bölgeye göre kullanılabilir Azure ürünleri kılavuzu](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -51,12 +51,6 @@ Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut kon
 Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En az sayıda ana bilgisayar vardır ve en yüksek değer, küme başına 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
 
 İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
-
-## <a name="vcenter-admin-password"></a>vCenter yönetici parolası
-VCenter yönetici parolasını tanımlayın.  Dağıtım sırasında bir vCenter yönetici parolası oluşturacaksınız. Parola, cloudadmin@vsphere.local vCenter derlemesi sırasında yönetici hesabıdır. VCenter 'da oturum açmak için kullanacaksınız.
-
-## <a name="nsx-t-admin-password"></a>NSX-T yönetici parolası
-NSX-T yönetici parolasını tanımlayın.  Dağıtım sırasında bir NSX-T yönetici parolası oluşturacaksınız. Parola NSX derlemesi sırasında NSX hesabındaki yönetici kullanıcısına atanır. NSX-T Manager 'da oturum açmak için kullanacaksınız.
 
 ## <a name="ip-address-segment"></a>IP adresi segmenti
 

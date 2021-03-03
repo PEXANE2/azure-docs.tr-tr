@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/21/2021
+ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690873"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729411"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Otomasyonu 'ndaki yenilikler nelerdir?
 
@@ -24,7 +24,55 @@ Azure Otomasyonu, iyileştirmeleri sürekli olarak alır. En son gelişmelerden 
 
 Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret edin.
 
+## <a name="february-2021"></a>Şubat 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>Japonya Batı 'de GA tarafından tanımlanan Otomasyon ve durum yapılandırması desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Japonya Batı bölgesindeki Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/)okuyun.
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>Karma çalışanında runbook yürütmeyi zorlamak için özel Azure Ilke uyumluluğu sunuldu
+
+**Şunu yazın:** Yeni Özellik
+
+Yeni Azure Ilkesi uyumluluk kuralını kullanarak, iş, Web kancaları ve iş zamanlamalarının yalnızca karma çalışan gruplarında çalıştırılmasını sağlayabilirsiniz.
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>Doğu ABD, Fransa Orta ve Kuzey Avrupa bölgelerinde kullanılabilirlik Güncelleştirme Yönetimi
+
+**Şunu yazın:** Yeni Özellik
+
+Otomasyon Güncelleştirme Yönetimi özelliği Doğu ABD, Fransa Orta ve Kuzey Avrupa bölgelerinde kullanılabilir. Bu değişikliği yansıtan belgelerde güncelleştirmeler için bkz. [desteklenen bölge eşlemesi](how-to/region-mappings.md) .
+
 ## <a name="january-2021"></a>Ocak 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>İsviçre Batı 'de GA tarafından tanımlanan Otomasyon ve durum yapılandırması desteği
+
+**Şunu yazın:** Yeni Özellik
+
+İsviçre Batı bölgesindeki Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-switzerland-west-region/)okuyun.
+
+### <a name="added-python-3-script-to-import-module-with-multiple-dependencies"></a>Birden çok bağımlılığı olan modülün içeri aktarılması için Python 3 betiği eklendi
+
+**Şunu yazın:** Yeni Özellik
+
+Betik, [GitHub deponuzdan](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py)indirilebilir. 
+ 
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>CentOS 8. x/RHEL 8. x/SLES 15 için karma Runbook Worker rolü desteği
+
+**Türüyle.** Yeni Özellik
+
+Karma Runbook Worker özelliği, karma runbook çalışanları üzerinde yalnızca işlem otomasyonu için CentOS 8. x, REHL 8. x ve SLES 15 dağıtımlarını destekler.  Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için [desteklenen işletim sistemleri](automation-linux-hrw-install.md#supported-linux-operating-systems) bölümüne bakın.
+
+### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>Avustralya Doğu, Doğu Asya, Batı ABD & Orta ABD bölgelerinde Güncelleştirme Yönetimi & Değişiklik İzleme kullanılabilirliği
+
+**Şunu yazın:** Yeni Özellik
+
+Otomasyon hesabı, Değişiklik İzleme ve stok ve Güncelleştirme Yönetimi Avustralya Doğu, Doğu Asya, Batı ABD & bölgelerinde kullanılabilir. 
+
+### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>ABD kamu bulutunda Python 3 runbook 'larının genel önizlemesi kullanıma sunuldu
+
+**Şunu yazın:** Yeni özellik Azure Otomasyonu, ABD kamu bulut bölgelerinde Python 3 bulutu ve hibrit runbook yürütmesi için genel önizleme desteği sunuyor.  Daha fazla bilgi için [duyurusuna](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)bakın.
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Otomasyonu runbook 'ları TechNet Betik merkezinden GitHub 'a taşındı
 

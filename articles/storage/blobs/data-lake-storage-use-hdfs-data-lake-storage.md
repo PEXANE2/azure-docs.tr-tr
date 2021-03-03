@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: f1f2ea8bd51b7eeda9afdd6a94d5de1d58acef57
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520655"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735378"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -118,6 +118,6 @@ Komutların tüm listesini [Apache Hadoop 2.4.1 dosya sistemi kabuğu Kılavuzu]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Databricks Azure Data Lake Storage 2. özellikli bir hesap kullanın](./data-lake-storage-quickstart-create-databricks-account.md)
+* [Azure Databricks Azure Data Lake Storage 2. özellikli bir hesap kullanın](./data-lake-storage-use-databricks-spark.md)
 
 * [Dosya ve dizinlerdeki erişim denetim listeleri hakkında bilgi edinin](./data-lake-storage-access-control.md)

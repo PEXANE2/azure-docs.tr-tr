@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2564fd38056241fd48f58f5f6039bf64f92b6741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397357"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714417"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi nedir?
 Application Gateway giriş denetleyicisi (AGIC), [Azure Kubernetes hizmeti (AKS](https://azure.microsoft.com/services/kubernetes-service/) ) müşterilerinin, bulut yazılımlarını Internet 'e sunmak için Azure 'un yerel [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 yük dengeleyicisinden yararlanmasını sağlayan bir Kubernetes uygulamasıdır. AGIC, üzerinde barındırdığı Kubernetes kümesini izler ve bir Application Gateway sürekli olarak güncelleştirir, böylece seçili hizmetler Internet 'e sunulur.
@@ -37,7 +37,7 @@ AGIC, hizmet ve dağıtımlar/pods ile birlikte Kubernetes giriş [kaynağı](ht
   - Tümleşik Web uygulaması güvenlik duvarı
 
 ## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Helk dağıtım ve AKS Add-On arasındaki fark
-AKS kümeniz için AGIC dağıtmanın iki yolu vardır. İlk yöntem Held ile aynıdır; İkincisi, bir eklenti olarak AKS aracılığıyla yapılır. AGIC 'in bir AKS eklentisi olarak dağıtılmasının birincil avantajı, Held aracılığıyla dağıtmanın çok daha kolay olması. Yeni bir kurulum için, Azure CLı 'de tek bir satırda eklenti olarak etkinleştirilen yeni bir Application Gateway ve yeni bir AKS kümesi dağıtabilirsiniz. Eklenti Ayrıca, otomatik güncelleştirmeler ve artırılmış destek gibi ek avantajlar sağlayan, tam olarak yönetilen bir hizmettir. Held aracılığıyla dağıtılan AGC 'ler AKS tarafından desteklenmez, ancak aks eklentisi olarak dağıtılan AGIC 'ler AKS tarafından desteklenir. 
+AKS kümeniz için AGIC dağıtmanın iki yolu vardır. İlk yöntem Held ile aynıdır; İkincisi, bir eklenti olarak AKS aracılığıyla yapılır. AGIC 'in bir AKS eklentisi olarak dağıtılmasının birincil avantajı, Held aracılığıyla dağıtmanın çok daha kolay olması. Yeni bir kurulum için, Azure CLı 'de tek bir satırda eklenti olarak etkinleştirilen yeni bir Application Gateway ve yeni bir AKS kümesi dağıtabilirsiniz. Eklenti Ayrıca, otomatik güncelleştirmeler ve artırılmış destek gibi ek avantajlar sağlayan, tam olarak yönetilen bir hizmettir. AGIC (Helm ve AKS eklentisi) dağıtmanın her iki yolu da Microsoft tarafından tam olarak desteklenmektedir. Ek olarak, eklenti, ilk sınıf eklentisi olarak AKS ile daha iyi tümleştirme sağlar.
 
 AGIC eklentisi, müşterinin AKS kümesinde bir pod olarak dağıtılır, ancak helk dağıtım sürümü ve AGIC 'nin eklenti sürümü arasında birkaç farklılık vardır. İki sürüm arasındaki farklılıkların bir listesi aşağıda verilmiştir: 
   - Helk dağıtım değerleri AKS eklentisi üzerinde değiştirilemez:
@@ -50,27 +50,7 @@ AGIC eklentisi, müşterinin AKS kümesinde bir pod olarak dağıtılır, ancak 
   - AGIC eklentisi yönetilen bir hizmet olduğundan, müşteriler agic eklentisinin en son sürümüne otomatik olarak güncelleştirilecek, bu da müşteri 'nin AGC 'yi el ile güncelleştirmesi gereken helk 'ın aksine. 
 
 > [!NOTE]
-> Dağıtımın AGIC AKS eklenti yöntemi şu anda önizleme aşamasındadır. Hala önizleme aşamasında olan özellikler üzerinde üretim iş yüklerinin çalıştırılmasını önermeyiz, bu yüzden denemek istiyorsanız, ile test etmek için yeni bir küme ayarlamayı öneririz. 
-
-Aşağıdaki tablolar, helk dağıtım sürümü ve AGIC 'nin AKS eklenti sürümü ile hangi senaryoların desteklendiğini sıralar. 
-
-### <a name="aks-add-on-agic-single-aks-cluster"></a>AKS eklentisi AGIC (tek AKS kümesi)
-|                  |1 Application Gateway |2 + uygulama ağ geçitleri |
-|------------------|---------|--------|
-|**1 AGC**|Evet, bu desteklenir |Hayır, bu kapsamımızda |
-|**2 + Agcs**|Hayır, yalnızca 1 AGC destekleniyor/Cluster |Hayır, yalnızca 1 AGC destekleniyor/Cluster |
-
-### <a name="helm-deployed-agic-single-aks-cluster"></a>Helk dağıtılan AGIC (tek AKS kümesi)
-|                  |1 Application Gateway |2 + uygulama ağ geçitleri |
-|------------------|---------|--------|
-|**1 AGC**|Evet, bu desteklenir |Hayır, bu kapsamımızda |
-|**2 + Agcs**|Paylaşılan ProhibitedTarget işlevselliği kullanılmalıdır ve ayrı ad alanlarını izleyin |Evet, bu desteklenir |
-
-### <a name="helm-deployed-agic-2-aks-clusters"></a>Helk dağıtılan AGIC (2 + AKS kümeleri)
-|                  |1 Application Gateway |2 + uygulama ağ geçitleri |
-|------------------|---------|--------|
-|**1 AGC**|Yok |Yok |
-|**2 + Agcs**|Paylaşılan ProhibitedTarget işlevselliği kullanılmalıdır |Yok |
+> Müşteriler, AKS kümesi başına yalnızca bir adet AGIC eklentisi dağıtabilir ve her bir AGIC eklentisi şu anda yalnızca bir Application Gateway hedefleyebilir. Küme başına birden fazla AGIC veya bir Application Gateway hedefleyen birden çok AGI gerektiren dağıtımlar için lütfen Helm aracılığıyla dağıtılan AGIC kullanmaya devam edin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [**Aks Add-On doğa alanı dağıtımı**](tutorial-ingress-controller-add-on-new.md): boş tablet ALTYAPıSıNDAN agic eklenti, aks ve Application Gateway yükleme yönergeleri.

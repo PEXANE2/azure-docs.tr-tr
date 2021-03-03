@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669632"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693535"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Verilerinizi Azure purview 'da otomatik olarak etiketleme
 
@@ -102,7 +102,10 @@ Kuruluşlar, MıP 'nin duyarlılık etiketlerini Azure purview ile genişleterek
 
 **Duyarlılık etiketlerini takip görünümüne genişletmek için:**
 
-Microsoft 365 **Information Protection** sayfasına gidin. **Azure purview 'daki varlıklara etiketlemeyi Genişlet**' de, **Aç** düğmesini seçin ve açılan onay iletişim kutusunda **Evet** ' i seçin.
+Aşağıdaki adımlar, duyarlılık etiketlerinizi SQL sütunları, Azure Blob depolama 'daki dosyalar ve daha fazlası gibi varlıklara uygulayabileceğiniz Azure purview 'da kullanılabilir olmasını sağlar.
+
+1. Microsoft 365 **Information Protection** sayfasına gidin. 
+1. **Azure purview 'daki varlıklara etiketlemeyi Genişlet**' de, **Aç** düğmesini seçin ve açılan onay iletişim kutusunda **Evet** ' i seçin.
 
 Örnek:
 

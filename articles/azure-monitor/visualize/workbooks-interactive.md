@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: a70f2cff1df5d0f5d1d4a36bbc2a440518ce5ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723019"
 ---
 # <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
 
@@ -188,5 +188,5 @@ Varsayılan davranış bir parametreyi metin olarak dışarı aktarmak olsa da, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](../platform/workbooks-overview.md#visualizations) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](../platform/workbooks-access-control.md) ve paylaşma.
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](./workbooks-overview.md#visualizations) .
+* Çalışma kitabı kaynaklarınıza erişimi [denetleme](./workbooks-access-control.md) ve paylaşma.

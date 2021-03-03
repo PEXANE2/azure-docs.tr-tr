@@ -1,18 +1,18 @@
 ---
-title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
-description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
+title: Kapsayıcı öngörülerini etkinleştir | Microsoft Docs
+description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunların tanımlandığını anlayabilmeniz için kapsayıcı öngörülerinin nasıl etkinleştirileceği ve yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624529"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708365"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
+# <a name="enable-container-insights"></a>Kapsayıcı öngörülerini etkinleştir
 
-Bu makalede, Kubernetes ortamlarına dağıtılan ve üzerinde barındırılan iş yüklerinin performansını izlemek üzere kapsayıcılar için Azure Izleyicisini ayarlamaya yönelik seçeneklere genel bir bakış sunulmaktadır:
+Bu makalede, Kubernetes ortamlarına dağıtılan ve üzerinde barındırılan iş yüklerinin performansını izlemek üzere kapsayıcı öngörülerini ayarlamaya yönelik seçeneklere genel bir bakış sunulmaktadır:
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürümleri 3. x ve 4. x  
@@ -23,7 +23,7 @@ Ayrıca, üzerinde barındırılan kendi kendine yönetilen Kubernetes kümeleri
 - Azure, [aks altyapısını](https://github.com/Azure/aks-engine) kullanarak
 - AKS altyapısını kullanarak [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) veya şirket içinde.
 
-Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım veya bir veya daha fazla mevcut Kubernetes dağıtımı için Azure Izleyicisini etkinleştirebilirsiniz:
+Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım veya bir veya daha fazla mevcut Kubernetes dağıtımı için kapsayıcı öngörülerini etkinleştirebilirsiniz:
 
 - Azure portal
 - Azure PowerShell
@@ -44,37 +44,37 @@ Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun
 
 - Log Analytics bir çalışma alanınız var.
 
-   Kapsayıcılar için Azure Izleyici, [bölgeye göre kullanılabilir ürünlerde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde Log Analytics çalışma alanını destekler.
+   Kapsayıcı öngörüleri [bölge tarafından kullanılabilen ürünlerde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler.
 
    Yeni AKS kümeniz için izlemeyi etkinleştirdiğinizde bir çalışma alanı oluşturabilir veya ekleme deneyiminin AKS kümesi aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturmasına izin verebilirsiniz. 
    
    Çalışma alanını kendiniz oluşturmayı seçerseniz, şunu kullanarak oluşturabilirsiniz: 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Azure portal](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Azure portal](../logs/quick-create-workspace.md) 
    
-   Varsayılan çalışma alanı için kullanılmak üzere desteklenen eşleme çiftlerinin bir listesi için bkz. [kapsayıcılar Için Azure izleyici Için bölge eşleme](container-insights-region-mapping.md).
+   Varsayılan çalışma alanı için kullanılmak üzere desteklenen eşleme çiftlerinin bir listesi için bkz. [kapsayıcı öngörüleri Için bölge eşleme](container-insights-region-mapping.md).
 
-- Kapsayıcı izlemeyi etkinleştirmek için *Log Analytics katkıda* bulunan grubunun bir üyesisiniz. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../platform/manage-access.md).
+- Kapsayıcı izlemeyi etkinleştirmek için *Log Analytics katkıda* bulunan grubunun bir üyesisiniz. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../logs/manage-access.md).
 
 - AKS küme kaynağında [ *sahip* grubunun](../../role-based-access-control/built-in-roles.md#owner) bir üyesisiniz.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
+- İzleme verilerini görüntülemek için, kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../logs/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
 
 - Prometheus ölçümleri varsayılan olarak toplanmaz. Bir aracıyı ölçümleri toplayacak şekilde [yapılandırmadan](container-insights-prometheus-integration.md) önce, hangi verilerin hangi verileri desteklebileceğini ve hangi yöntemlerin desteklendiğini anlamak Için [Prometheus belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
-Kapsayıcılar için Azure Izleyici, resmi olarak aşağıdaki konfigürasyonları destekler:
+Kapsayıcı öngörüleri resmi olarak aşağıdaki konfigürasyonları destekler:
 
 - Ortamlar: Azure Red Hat OpenShift, Kubernetes, şirket içi ve Azure 'da AKS motoru ve Azure Stack. Daha fazla bilgi için [Azure Stack üzerindeki AKS altyapısına](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)bakın.
 - Kubernetes ve destek ilkesi sürümleri, [Azure Kubernetes hizmeti (AKS) ' de desteklenenlerle](../../aks/supported-kubernetes-versions.md)aynıdır. 
 
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
 
-Aşağıdaki tabloda Kapsayıcılı aracının kapsayıcılar için Azure Izleyici ile iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir. Aracıdan gelen tüm ağ trafiği Azure Izleyici 'ye giden.
+Aşağıdaki tabloda kapsayıcı öngörüleri ile iletişim kurmak üzere Kapsayıcılı aracının gerektirdiği proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir. Aracıdan gelen tüm ağ trafiği Azure Izleyici 'ye giden.
 
 |Aracı kaynağı|Bağlantı noktası |
 |--------------|------|
@@ -86,7 +86,7 @@ Aşağıdaki tabloda Kapsayıcılı aracının kapsayıcılar için Azure Izleyi
 
 Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Description | 
+|Aracı kaynağı|Bağlantı noktası |Açıklama | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapı
 
 Aşağıdaki tabloda, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Description | 
+|Aracı kaynağı|Bağlantı noktası |Açıklama | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.us` | 443 | OMS ekleme |
@@ -102,7 +102,7 @@ Aşağıdaki tabloda, Azure ABD kamu için proxy ve güvenlik duvarı yapıland�
 
 ## <a name="components"></a>Bileşenler
 
-Performansı izleme özelliği, özellikle kapsayıcılar için Azure Izleyici için geliştirilmiş, Linux için kapsayıcılı bir Log Analytics aracısına dayanır. Bu özelleştirilmiş aracı kümedeki tüm düğümlerden performans ve olay verilerini toplar ve Aracı, dağıtım sırasında belirtilen Log Analytics çalışma alanıyla otomatik olarak dağıtılır ve kaydedilir. 
+Performansı izleme özelliği, özellikle kapsayıcı öngörüleri için geliştirilen, Linux için kapsayıcılı bir Log Analytics aracısına dayanır. Bu özelleştirilmiş aracı kümedeki tüm düğümlerden performans ve olay verilerini toplar ve Aracı, dağıtım sırasında belirtilen Log Analytics çalışma alanıyla otomatik olarak dağıtılır ve kaydedilir. 
 
 Aracı sürümü Microsoft/OMS: ciprod04202018 veya üzeri ve aşağıdaki biçimde bir tarih ile temsil edilir: *mmddyyyy*.
 
@@ -116,7 +116,7 @@ Aracının yeni bir sürümü yayınlandığında, Azure Kubernetes Service (AKS
 >
 > Şablonun, kümeyle aynı kaynak grubunda dağıtılması gerekir.
 
-Kapsayıcılar için Azure Izleyicisini etkinleştirmek üzere aşağıdaki tabloda açıklanan yöntemlerden birini kullanın:
+Kapsayıcı öngörülerini etkinleştirmek için aşağıdaki tabloda açıklanan yöntemlerden birini kullanın:
 
 | Dağıtım durumu | Yöntem | Açıklama |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirmek üzere aşağıdaki tabl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İzlemeyi etkinleştirmiş olduğunuza göre, Azure Kubernetes Service (AKS), Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerinin performansını çözümlemeye başlayabilirsiniz. Kapsayıcılar için Azure Izleyici 'yi nasıl kullanacağınızı öğrenmek için bkz. [Kubernetes küme performansını görüntüleme](container-insights-analyze.md).
+İzlemeyi etkinleştirmiş olduğunuza göre, Azure Kubernetes Service (AKS), Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerinin performansını çözümlemeye başlayabilirsiniz. Kapsayıcı öngörülerini nasıl kullanacağınızı öğrenmek için bkz. [Kubernetes kümesi performansını görüntüleme](container-insights-analyze.md).

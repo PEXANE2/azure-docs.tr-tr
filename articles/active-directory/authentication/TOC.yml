@@ -176,7 +176,7 @@
     - name: Raporlama
       items:
         - name: Kimlik doğrulama yöntemleri etkinliği
-          href: howto-authentication-methods-usage-insights.md
+          href: howto-authentication-methods-activity.md
         - name: SSPR Raporları
           href: howto-sspr-reporting.md
         - name: MFA Raporları

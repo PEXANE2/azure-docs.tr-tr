@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791686"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695133"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
@@ -49,17 +49,21 @@ Yalnızca bir çağrı dizini sorgular ve sonuçları döndürür.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, istek için bir sorgu dizesi toplayan ve sonuçları döndüren bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir örnek dizin kullanılmaktadır. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
+Bu öğretici, [veri alma hızlı](search-get-started-portal.md)başlangıcı aracılığıyla kendi arama hizmetinize hızlı bir şekilde oluşturabileceğiniz oteller-Sample-Index ' i kullanır. Dizin, her arama hizmetinde yerleşik bir veri kaynağı olarak bulunan kurgusal otel verileri içeriyor.
 
-Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunabilir:
+Bu öğreticideki ilk derste, sonraki derslerde sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere geliştirecek olan temel bir sorgu yapısı ve arama sayfası oluşturulur.
+
+Kodun tamamlanmış bir sürümü aşağıdaki projede bulunabilir:
 
 * [1-temel-arama sayfası (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
 Bu öğretici, Azure.Search.Documstalar (sürüm 11) paketini kullanacak şekilde güncelleştirilmiştir. .NET SDK 'sının önceki bir sürümü için bkz. [Microsoft. Azure. Search (sürüm 10) kod örneği](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Microsoft tarafından barındırılan ortak bir örnek arama dizini kullandığınızdan, bu öğretici için bir arama hizmetine veya bir Azure hesabına ihtiyacınız yoktur.
+* [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun.
+
+* [Hızlı başlangıç: arama dizini oluşturma](search-get-started-portal.md)bölümündeki yönergeleri kullanarak oteller-Sample-Index oluşturun.
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Bu projeyi sıfırdan oluşturmak ve bu nedenle Azure Bilişsel Arama kavramlar�
 
 Bu örnekte, genel kullanıma açık otel verileri kullanıyorsunuz. Bu veriler, yalnızca tanıtım verileri sağlamak amacıyla oluşturulan, 50 kurgusal otel adı ve açıklamalarının rastgele bir koleksiyonudur. Bu verilere erişmek için bir ad ve API anahtarı belirtin.
 
-1. **appsettings.js** açın ve varsayılan satırları aşağıdaki ad ve anahtarla değiştirin. Burada gösterilen API anahtarı bir anahtara örnek değildir, *yalnızca* otel verilerine erişmeniz gereken anahtardır. Dosyanız şu şekilde görünmelidir.
+1. **appsettings.js** açın ve varsayılan satırları arama hizmeti URL 'si (biçimde) ile değiştirin ve `https://<service-name>.search.windows.net` arama hizmetinizin [yönetici veya sorgu API anahtarını](search-security-api-keys.md) değiştirin. Bir dizin oluşturmanız veya güncelleştirmeniz gerekmiyorsa, bu öğreticide sorgu anahtarını kullanabilirsiniz.
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

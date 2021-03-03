@@ -1,19 +1,15 @@
 ---
 title: Kurumsal Güvenlik Paketi kümelerini yönetme-Azure HDInsight
 description: Azure HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetmeyi öğrenin.
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541018"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742220"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 
@@ -51,7 +47,7 @@ Güvenlik ve Kullanıcı yalıtımı, Kurumsal Güvenlik Paketi bir HDInsight k�
 
 |İş Yükü|Senaryo|Erişim yöntemi|
 |--------|--------|-------------|
-|Apache Hadoop|Hive – etkileşimli Işler/sorgular  |<ul><li>[Beeline](#beeline)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Hadoop|Hive – etkileşimli Işler/sorgular    |<ul><li>[Beeline](#beeline)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Etkileşimli Işler/sorgular, PySpark etkileşimli|<ul><li>[Beeline](#beeline)</li><li>[Livy ile Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Batch senaryoları – Spark gönderme, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Etkileşimli sorgu (LLAP)|Etkileşimli|<ul><li>[Beeline](#beeline)</li><li>[Hive Görünümü](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Araçları](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
@@ -87,13 +83,13 @@ Bir headnode 'un tam etki alanı adını bulmak için, ambarı REST API belgeler
 
 ESP olmayan bir HDInsight kümesi, küme oluşturma sırasında oluşturulan iki kullanıcı hesabına sahiptir:
 
-- **Ambarı Yöneticisi** : Bu hesap *Hadoop kullanıcısı* veya *http kullanıcısı* olarak da bilinir. Bu hesap, tarihinde ambarı 'nda oturum açmak için kullanılabilir `https://CLUSTERNAME.azurehdinsight.net` . Ayrıca, ambarı görünümlerinde sorguları çalıştırmak, dış araçlarla (örneğin, PowerShell, Temptaton, Visual Studio) işleri yürütmek ve Hive ODBC sürücüsü ve BI araçları (örneğin, Excel, Power BI veya Tableau) ile kimlik doğrulaması yapmak için de kullanılabilir.
+- **Ambarı Yöneticisi**: Bu hesap *Hadoop kullanıcısı* veya *http kullanıcısı* olarak da bilinir. Bu hesap, tarihinde ambarı 'nda oturum açmak için kullanılabilir `https://CLUSTERNAME.azurehdinsight.net` . Ayrıca, ambarı görünümlerinde sorguları çalıştırmak, dış araçlarla (örneğin, PowerShell, Temptaton, Visual Studio) işleri yürütmek ve Hive ODBC sürücüsü ve BI araçları (örneğin, Excel, Power BI veya Tableau) ile kimlik doğrulaması yapmak için de kullanılabilir.
 
 ESP içeren bir HDInsight kümesinde, ambarı yöneticisine ek olarak üç yeni kullanıcı vardır.
 
-- **Ranger Yöneticisi** : Bu hesap, yerel Apache Ranger yönetici hesabıdır. Active Directory etki alanı kullanıcısı değildir. Bu hesap, ilkeleri kurmak ve diğer kullanıcılar için yönetici veya yönetici temsilcisi (bu kullanıcıların ilkeleri yönetebilmeleri için) oluşturmak için kullanılabilir. Varsayılan olarak, Kullanıcı adı *admin* ' dir ve parola, ambarı yönetici parolasıyla aynıdır. Parola, Ranger içindeki ayarlar sayfasından güncelleştirilir.
+- **Ranger Yöneticisi**: Bu hesap, yerel Apache Ranger yönetici hesabıdır. Active Directory etki alanı kullanıcısı değildir. Bu hesap, ilkeleri kurmak ve diğer kullanıcılar için yönetici veya yönetici temsilcisi (bu kullanıcıların ilkeleri yönetebilmeleri için) oluşturmak için kullanılabilir. Varsayılan olarak, Kullanıcı adı *admin* ' dir ve parola, ambarı yönetici parolasıyla aynıdır. Parola, Ranger içindeki ayarlar sayfasından güncelleştirilir.
 
-- **Küme Yöneticisi etki alanı kullanıcısı** : Bu hesap, ambarı ve Ranger dahil olmak üzere Hadoop kümesi Yöneticisi olarak atanan bir Active Directory etki alanı kullanıcısı. Küme oluşturma sırasında bu kullanıcının kimlik bilgilerini sağlamanız gerekir. Bu Kullanıcı aşağıdaki ayrıcalıklara sahiptir:
+- **Küme Yöneticisi etki alanı kullanıcısı**: Bu hesap, ambarı ve Ranger dahil olmak üzere Hadoop kümesi Yöneticisi olarak atanan bir Active Directory etki alanı kullanıcısı. Küme oluşturma sırasında bu kullanıcının kimlik bilgilerini sağlamanız gerekir. Bu Kullanıcı aşağıdaki ayrıcalıklara sahiptir:
     - Makineleri etki alanına ekleyin ve küme oluşturma sırasında belirttiğiniz OU içine yerleştirin.
     - Küme oluşturma sırasında belirttiğiniz OU içinde hizmet sorumluları oluşturun.
     - Ters DNS girişleri oluşturun.
@@ -102,7 +98,7 @@ ESP içeren bir HDInsight kümesinde, ambarı yöneticisine ek olarak üç yeni 
 
     Küme içindeki (örneğin, Temptaton), Ranger tarafından yönetilmeyen bazı uç noktaları vardır ve bu nedenle güvenli değildir. Bu uç noktaları, Küme Yöneticisi etki alanı kullanıcısı hariç tüm kullanıcılar için kilitlenir.
 
-- **Normal** : küme oluşturma sırasında, birden çok Active Directory grubu sağlayabilirsiniz. Bu gruplardaki kullanıcılar Ranger ve ambarı ile eşitlenir. Bu kullanıcılar etki alanı kullanıcılardır ve yalnızca Ranger tarafından yönetilen uç noktalara erişime sahiptir (örneğin, Hiveserver2). Tüm RBAC ilkeleri ve denetimleri bu kullanıcılar için geçerli olacaktır.
+- **Normal**: küme oluşturma sırasında, birden çok Active Directory grubu sağlayabilirsiniz. Bu gruplardaki kullanıcılar Ranger ve ambarı ile eşitlenir. Bu kullanıcılar etki alanı kullanıcılardır ve yalnızca Ranger tarafından yönetilen uç noktalara erişime sahiptir (örneğin, Hiveserver2). Tüm RBAC ilkeleri ve denetimleri bu kullanıcılar için geçerli olacaktır.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>ESP ile HDInsight kümelerinin rolleri
 
@@ -117,7 +113,7 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 **Bu rollerin izinlerini görmek için**
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
-2. Sol menüden **Roller** ' i seçin.
+2. Sol menüden **Roller**' i seçin.
 3. İzinleri görmek için mavi soru işaretini seçin:
 
     ![ESP HDInsight rol izinleri](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
@@ -126,7 +122,7 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 
 1. `https://CLUSTERNAME.azurehdinsight.net/`Clustername öğesinin Kümenizin adı olduğu yere gidin.
 1. Küme Yöneticisi etki alanı Kullanıcı adı ve parolasını kullanarak, ambarı 'nda oturum açın.
-1. Sağ üst köşedeki **yönetici** açılan menüsünü seçin ve ardından **ambarı Yönet** ' i seçin.
+1. Sağ üst köşedeki **yönetici** açılan menüsünü seçin ve ardından **ambarı Yönet**' i seçin.
 
     ![ESP HDInsight Apache ambarı 'nı yönetme](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
@@ -137,21 +133,21 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Active Directory eşitlenen etki alanı kullanıcılarını listeleyin
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
-2. Sol menüden **Kullanıcılar** ' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm kullanıcıları görürsünüz.
+2. Sol menüden **Kullanıcılar**' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm kullanıcıları görürsünüz.
 
     ![ESP HDInsight ambarı yönetimi Kullanıcı arabirimi listesi kullanıcıları](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Active Directory eşitlenen etki alanı gruplarını listeleyin
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
-2. Sol menüden **gruplar** ' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm grupları görürsünüz.
+2. Sol menüden **gruplar**' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm grupları görürsünüz.
 
     ![ESP HDInsight ambarı yönetimi Kullanıcı arabirimi liste grupları](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Hive görünümlerini yapılandırma izinleri
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
-2. Sol menüden **Görünümler** ' i seçin.
+2. Sol menüden **Görünümler**' i seçin.
 3. Ayrıntıları göstermek için **HIVE** ' ı seçin.
 
     ![ESP HDInsight ambarı yönetimi UI Hive görünümleri](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
@@ -161,14 +157,14 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 
     ![ESP HDInsight ambarı yönetimi UI Hive görünümleri izinleri yapılandırma](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 
-6. **Kullanıcı Ekle** veya **Grup Ekle** ' yi seçin ve Hive görünümlerini kullanabileceği kullanıcıları veya grupları belirtin.
+6. **Kullanıcı Ekle** veya **Grup Ekle**' yi seçin ve Hive görünümlerini kullanabileceği kullanıcıları veya grupları belirtin.
 
 ## <a name="configure-users-for-the-roles"></a>Rolleri için kullanıcıları yapılandırma
 
  Rollerin ve izinlerinin listesini görmek için bkz. ESP ile HDInsight kümelerinin rolleri.
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
-2. Sol menüden **Roller** ' i seçin.
+2. Sol menüden **Roller**' i seçin.
 3. Kullanıcıları ve grupları farklı rollere atamak için **Kullanıcı Ekle** veya **Grup Ekle** ' yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

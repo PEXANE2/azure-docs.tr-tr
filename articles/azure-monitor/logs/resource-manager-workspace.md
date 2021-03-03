@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f57ff130fcf61ae8f831cda33c9510b37a5880e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a908709e49bed1e07a5fdfecd165c45f8792987c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725603"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanları için şablon örnekleri Kaynak Yöneticisi
 Bu makalede, Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -824,6 +824,6 @@ Aşağıdaki örnek, [IIS günlüklerinin](../agents/data-sources-iis-logs.md) k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure izleyici için diğer örnek şablonları alın](../samples/resource-manager-samples.md).
-* [Log Analytics çalışma alanları hakkında daha fazla bilgi edinin](../learn/quick-create-workspace.md).
+* [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
+* [Log Analytics çalışma alanları hakkında daha fazla bilgi edinin](./quick-create-workspace.md).
 * [Aracı veri kaynakları hakkında daha fazla bilgi edinin](../agents/agent-data-sources.md).

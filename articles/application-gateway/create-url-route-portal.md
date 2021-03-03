@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: 407bd5679c6afebf26c2e6b768e0f8513ac39123
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708960"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak yol tabanlı yönlendirme kuralları ile uygulama ağ geçidi oluşturma
 
@@ -29,27 +29,28 @@ Bu makalede şunları öğreneceksiniz:
 
 ![URL yönlendirme örneği](./media/application-gateway-create-url-route-portal/scenario.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
 Bu örnekte, uygulama ağ geçidi için arka uç sunucular olarak kullanılacak üç sanal makine oluşturursunuz. Ayrıca, uygulama ağ geçidinin beklendiği gibi çalıştığını doğrulamak için sanal makinelere IIS yüklersiniz.
 
-1. Azure portal **kaynak oluştur** ' u seçin.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+1. Azure portal **kaynak oluştur**' u seçin.
 2. Popüler listede **Windows Server 2016 Datacenter** ' ı seçin.
 3. Sanal makine için şu değerleri girin:
 
-    - **Kaynak grubu** ' nu seçin, **Yeni oluştur** ' u ve ardından *myResourceGroupAG* yazın.
-    - **Sanal makine adı** : *myVM1*
-    - **Bölge** : *(US) Doğu ABD*
-    - **Kullanıcı adı** : *azureuser*
-    - **Parola** : *Azure123456!*
+    - **Abonelik** -aboneliğinizi seçin.
+    - **Kaynak grubu**' nu seçin, **Yeni oluştur**' u ve ardından *myResourceGroupAG* yazın.
+    - **Sanal makine adı**: *myVM1*
+    - **Bölge**: *(US) Doğu ABD*
+    - **Kullanıcı adı: bir** Kullanıcı adı yazın
+    - **Parola**: bir parola yazın
 
 
 4. **İleri ' yi seçin: diskler**.
@@ -62,16 +63,16 @@ Bu örnekte, uygulama ağ geçidi için arka uç sunucular olarak kullanılacak 
    - *10.0.1.0/24* -alt ağ adres alanı için.
    - *Myagsubnet* -ikinci alt ağ adı için.
    - *10.0.0.0/24* - Alt ağın adres alanı.
-7. **Tamam** ’ı seçin.
+7. **Tamam**’ı seçin.
 
-8. **Ağ arabirimi** altında **mybackendsubnet** alt ağ için seçili olduğundan emin olun ve ardından **İleri: yönetim** ' i seçin.
-9. Önyükleme tanılamayı devre dışı bırakmak için **Kapat** ' ı seçin.
-10. **Gözden geçir + oluştur** ' a tıklayın, Özet sayfasındaki ayarları gözden geçirin ve ardından **Oluştur** ' u seçin.
+8. Alt ağ için **mybackendsubnet** **alt** Ağı ' nın altında olduğundan emin olun ve ardından **İleri: yönetim**' i seçin.
+9. Önyükleme tanılamayı devre dışı bırakmak için **devre dışı bırak** seçeneğini belirleyin
+10. **Gözden geçir + oluştur**' u seçin, Özet sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 11. *MyVM2* ve *myVM3* adlı iki sanal makine oluşturun ve bunları *Myvnet* sanal ağına ve *mybackendsubnet* alt ağına yerleştirin.
 
 ### <a name="install-iis"></a>IIS yükleme
 
-1. Etkileşimli kabuğu açın ve **PowerShell** 'e ayarlandığından emin olun.
+1. Etkileşimli kabuğu açın ve **PowerShell**'e ayarlandığından emin olun.
 
     ![Özel uzantıyı yükleme](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
 
@@ -91,7 +92,7 @@ Bu örnekte, uygulama ağ geçidi için arka uç sunucular olarak kullanılacak 
          -Settings $publicSettings
     ```
 
-3. İki sanal makine oluşturun ve az önce bitirdiğiniz adımları kullanarak IIS 'yi yükleyebilirsiniz. Adlar için *myVM2* ve *MyVM3* adlarını ve set-azvmexgerin içindeki VMName değerlerini girin.
+3. Az önce bitirdiğiniz adımları kullanarak diğer sanal makinelere IIS 'i yükleyebilirsiniz. Set-Azvmexgerin içindeki VMName değerleri için *myVM2* ve *myVM3* kullanın.
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
@@ -103,15 +104,16 @@ Bu örnekte, uygulama ağ geçidi için arka uç sunucular olarak kullanılacak 
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki uygulama ağ geçidi ayarları için şu değerleri girin:
 
-   - **Kaynak grubu** : kaynak grubu için **myResourceGroupAG** öğesini seçin.
-   - **Uygulama ağ geçidi adı** : uygulama ağ geçidinin adı Için *myappgateway* girin.
+   - **Abonelik**: Aboneliğinizi seçin.
+   - **Kaynak grubu**: kaynak grubu için **myResourceGroupAG** öğesini seçin.
+   - **Uygulama ağ geçidi adı**: uygulama ağ geçidinin adı Için *myappgateway* yazın.
    - **Bölge** -Seç **(US) Doğu ABD**.
 
         ![Yeni uygulama ağ geçidi oluşturma: temel bilgiler](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  **Sanal ağı Yapılandır** altında sanal ağın adı Için **myvnet** ' i seçin.
 3. Alt ağ için **Myagsubnet** öğesini seçin.
-3. Diğer ayarlar için varsayılan değerleri kabul edin ve ardından **İleri: ön uçlar** ' ı seçin.
+3. Diğer ayarlar için varsayılan değerleri kabul edin ve ardından **İleri: ön uçlar**' ı seçin.
 
 ### <a name="frontends-tab"></a>Ön uçlar sekmesi
 
@@ -120,53 +122,53 @@ Bu örnekte, uygulama ağ geçidi için arka uç sunucular olarak kullanılacak 
    > [!NOTE]
    > Application Gateway v2 SKU 'SU için yalnızca **genel** ön uç IP yapılandırması ' nı seçebilirsiniz. Özel ön uç IP yapılandırması şu anda bu v2 SKU 'SU için etkin değil.
 
-2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam** ' ı seçin. 
+2. **Genel IP adresi** Için **Yeni Ekle** ' yı seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 3. **İleri ' yi seçin: Backenler**.
 
 ### <a name="backends-tab"></a>Backends sekmesi
 
 Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek için kullanılır. Arka uç havuzları, NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir.
 
-1. **Backends** sekmesinde **+ arka uç Havuzu Ekle** ' yi seçin.
+1. **Arka uç Havuzu Ekle**' yi seçin. 
 
 2. Açılan **bir arka uç havuzu ekleyin** penceresinde, boş bir arka uç havuzu oluşturmak için aşağıdaki değerleri girin:
 
-    - **Ad** : arka uç havuzunun adı Için *mybackendpool* girin.
-3. **Arka uç hedefleri** altında **hedef tür** ' i aşağı açılan listeden **sanal makine** ' yi seçin.
+    - **Ad**: arka uç havuzunun adı Için *mybackendpool* girin.
+3. **Hedef türü** altında, açılan listeden **sanal makine** ' yi seçin.
 
 5. **Hedef** altında **myVM1** için ağ arabirimini seçin.
-6. **Ekle** ’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 7. Hedef olarak *myVM2* ile *bir görüntü arka uç* havuzu ve hedef olarak *myVM3* ile bir *video* arka uç havuzu eklemek için tekrarlayın.
 8. Arka uç havuzu yapılandırmasını kaydetmek ve **backends** sekmesine dönmek için **Ekle** ' yi seçin.
 
-4. **Backends** sekmesinde **İleri: yapılandırma** ' yı seçin.
+4. **Backends** sekmesinde **İleri: yapılandırma**' yı seçin.
 
 ### <a name="configuration-tab"></a>Yapılandırma sekmesi
 
 **Yapılandırma** sekmesinde, bir yönlendirme kuralı kullanarak oluşturduğunuz ön uç ve arka uç havuzunu bağlayacaksınız.
 
-1. **Yönlendirme kuralları** sütununda **Kural Ekle** ' yi seçin.
+1. **Yönlendirme kuralları** sütununda **bir yönlendirme kuralı ekle** ' yi seçin.
 
 2. Açılan **yönlendirme kuralı ekle** penceresinde, **kural adı** için *myroutingrule* yazın.
 
-3. Yönlendirme kuralı bir dinleyici gerektirir. **Yönlendirme kuralı ekle** penceresinin içindeki **dinleyici** sekmesinde, dinleyici için aşağıdaki değerleri girin:
+3. Yönlendirme kuralı bir dinleyici gerektirir. **Yönlendirme kuralı ekle** penceresinin içindeki **dinleyici** sekmesinde, dinleyici için aşağıdaki değerleri yazın:
 
-    - **Dinleyici adı** : dinleyicinin adı Için *MyListener* girin.
-    - **Ön uç IP** : ön uç için oluşturduğunuz ortak IP 'yi seçmek için **genel** ' i seçin.
-    - **Bağlantı noktası** : *8080* yazın
+    - **Dinleyici adı**: dinleyicinin adı Için *MyListener* girin.
+    - **Ön uç IP**: ön uç için oluşturduğunuz ortak IP 'yi seçmek için **genel** ' i seçin.
+    - **Bağlantı noktası**: *8080* yazın
   
         **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
 
 4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi** Için **mybackendpool** ' u seçin.
 
-5. **Http ayarı** Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. 
+5. **Http ayarı** Için yeni **Ekle** ' yı seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. 
 
 6. Açılan **http ayarı Ekle** penceresinde **http ayar adı** için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün.
-7. **Yol tabanlı yönlendirme** altında, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle** ' yi seçin.
+7. **Yol tabanlı yönlendirme** altında, **yol tabanlı bir kural oluşturmak için birden çok hedef Ekle**' yi seçin.
 8. **Yol** için */images/* yazın \* .
-9. **Yol kuralı adı** için *görüntüler* yazın.
+9. **Hedef adı** için *görüntüler* yazın.
 10. **Http ayarı** Için **myhttpsetting** ' i seçin.
-11. **Arka uç hedefi** için **görüntüler** ' i seçin.
+11. **Arka uç hedefi** için **görüntüler**' i seçin.
 12. Yol kuralını kaydetmek ve **yönlendirme kuralı ekle** sekmesine dönmek için **Ekle** ' yi seçin.
 13. Video için başka bir kural eklemek üzere tekrarlayın.
 14. Yönlendirme kuralını eklemek ve **yapılandırma** sekmesine dönmek için **Ekle** ' yi seçin.
@@ -182,7 +184,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-1. **Tüm kaynaklar** ' ı ve ardından **myappgateway** ' i seçin.
+1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
 
     ![Uygulama ağ geçidi genel IP adresini kaydetme](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
@@ -206,7 +208,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için kaynak grubunu seçin ve **kaynak grubunu sil** ' i seçin.
+Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

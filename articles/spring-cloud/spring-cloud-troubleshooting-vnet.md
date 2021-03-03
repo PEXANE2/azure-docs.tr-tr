@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935260"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698238"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Sanal ağlarda Azure Spring Cloud sorunlarını giderme
 
@@ -24,20 +24,20 @@ Azure Spring Cloud 'ın bir örneğini oluşturmak için, örneği sanal ağa da
 
 Azure yay bulut hizmeti örneğini kurmak için Azure portal kullanıyorsanız, Azure portal izinleri doğrular.
 
-Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)'Yı kullanarak Azure yay bulut hizmeti örneğini ayarlamak için şunları doğrulayın:
+Azure [CLI](/cli/azure/get-started-with-azure-cli)'Yı kullanarak Azure yay bulut hizmeti örneğini ayarlamak için şunları doğrulayın:
 
 - Abonelik etkin.
 - Konum, Azure Spring Cloud tarafından desteklenir.
 - Örnek için kaynak grubu zaten oluşturulmuş.
 - Kaynak adı adlandırma kuralına uyar. Yalnızca küçük harf, sayı ve kısa çizgi içermelidir. İlk karakter harf olmalıdır. Son karakter harf veya sayı olmalıdır. Değer, 2 ile 32 karakter arasında olmalıdır.
 
-Azure Spring Cloud Service örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak için, [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)bölümüne bakın.
+Azure Spring Cloud Service örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak için, [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlama](../azure-resource-manager/templates/template-syntax.md)bölümüne bakın.
 
 ### <a name="common-creation-issues"></a>Yaygın oluşturma sorunları
 
 | Hata İletisi | Nasıl düzeltilir |
 |------|------|
-| Azure Spring Cloud tarafından oluşturulan kaynaklara ilke tarafından izin verilmedi. | Ağ kaynakları, Azure Spring Cloud 'ı kendi sanal ağınıza dağıtırken oluşturulacaktır. Lütfen bu oluşturmayı engellemek için [Azure ilkesinin](https://docs.microsoft.com/azure/governance/policy/overview) tanımlanıp tanımlanmadığını denetleyin. Oluşturulacak kaynaklar hata iletisinde bulunabilir. |
+| Azure Spring Cloud tarafından oluşturulan kaynaklara ilke tarafından izin verilmedi. | Ağ kaynakları, Azure Spring Cloud 'ı kendi sanal ağınıza dağıtırken oluşturulacaktır. Lütfen bu oluşturmayı engellemek için [Azure ilkesinin](../governance/policy/overview.md) tanımlanıp tanımlanmadığını denetleyin. Oluşturulacak kaynaklar hata iletisinde bulunabilir. |
 | Belirtilen alt ağlar rota tablolarıyla ilişkili, lütfen bunların ilişkisini kaldırın. | Şu anda, mevcut yol tablolarıyla ilişkili olan alt ağda Azure Spring Cloud dağıtmak için desteklenmiyor, lütfen bunların ilişkilendirmesini kaldırın ve yeniden deneyin. |
 | Gerekli trafik allowlistelenmedi. | Gerekli trafiğin allowlistelendiğinden emin olmak için lütfen [VNET 'Te Azure Spring Cloud 'ı çalıştırmaya yönelik müşteri sorumluluklarına](spring-cloud-vnet-customer-responsibilities.md) bakın. |
 
@@ -47,4 +47,4 @@ Bu sorun, sanal ağınız özel DNS ayarlarıyla yapılandırılmışsa oluşur.
 
 ## <a name="other-issues"></a>Diğer sorunlar
 
-[Yaygın Azure yay bulutu sorunlarını giderin](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-troubleshoot).
+[Yaygın Azure yay bulutu sorunlarını giderin](./spring-cloud-troubleshoot.md).

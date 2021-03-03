@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739445"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>Belge çevirisi için SAS belirteçleri oluştur
 
@@ -21,8 +21,8 @@ Bu makalede, Azure Depolama Gezgini veya Azure portal kullanarak paylaşılan er
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-* Windows, macOS veya Linux geliştirme ortamınızda yüklü bir [**Azure Depolama Gezgini**](/azure/vs-azure-tools-storage-manage-with-storage-explorer) uygulamasına ihtiyacınız olacaktır. Azure Depolama Gezgini, Azure bulut depolama kaynaklarınızı kolayca yönetmenizi sağlayan ücretsiz bir araçtır.
-* Azure Depolama Gezgini uygulaması yüklendikten sonra, belge çevirisi için kullandığınız [depolama hesabına bağlanın](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#connect-to-a-storage-account-or-service) .
+* Windows, macOS veya Linux geliştirme ortamınızda yüklü bir [**Azure Depolama Gezgini**](../../../vs-azure-tools-storage-manage-with-storage-explorer.md) uygulamasına ihtiyacınız olacaktır. Azure Depolama Gezgini, Azure bulut depolama kaynaklarınızı kolayca yönetmenizi sağlayan ücretsiz bir araçtır.
+* Azure Depolama Gezgini uygulaması yüklendikten sonra, belge çevirisi için kullandığınız [depolama hesabına bağlanın](../../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#connect-to-a-storage-account-or-service) .
 
 ### <a name="create-your-tokens"></a>Belirteçlerinizi oluşturma
 
@@ -65,7 +65,7 @@ Bu makalede, Azure Depolama Gezgini veya Azure portal kullanarak paylaşılan er
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Azure portal blob 'lar için SAS belirteçleri oluşturun
 
 > [!NOTE]
-> Doğrudan Azure portal içindeki kapsayıcılar için SAS belirteçleri oluşturma şu anda desteklenmiyor. Ancak, [**Azure Depolama Gezgini**](#create-sas-tokens-with-azure-storage-explorer) bir SAS belirteci oluşturabilir veya görevi [programlı](/azure/storage/blobs/sas-service-create)bir şekilde tamamlayabilirsiniz.
+> Doğrudan Azure portal içindeki kapsayıcılar için SAS belirteçleri oluşturma şu anda desteklenmiyor. Ancak, [**Azure Depolama Gezgini**](#create-sas-tokens-with-azure-storage-explorer) bir SAS belirteci oluşturabilir veya görevi [programlı](../../../storage/blobs/sas-service-create.md)bir şekilde tamamlayabilirsiniz.
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Önkoşullar
@@ -104,7 +104,7 @@ Başlamak için şunlar gerekir:
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Program aracılığıyla Bloblar veya kapsayıcılar için SAS belirteçleri oluşturma](/azure/storage/blobs/sas-service-create)
+* [Program aracılığıyla Bloblar veya kapsayıcılar için SAS belirteçleri oluşturma](../../../storage/blobs/sas-service-create.md)
 * [Dizin, kapsayıcı veya blob izinleri](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)
 
 ## <a name="next-steps"></a>Sonraki adımlar

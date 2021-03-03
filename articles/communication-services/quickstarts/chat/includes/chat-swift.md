@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d006168de89a2709ed607568f36cacf5f924efcb
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653555"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750148"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 Bağımlılıkları yükledikten sonra da bir Xcode çalışma alanı oluşturulur: `pod install`
 
+**Pod Install çalıştırıldıktan sonra, yeni oluşturulan öğesini seçerek projeyi Xcode 'da yeniden açın `.xcworkspace` .**
+
 ### <a name="setup-the-placeholders"></a>Yer tutucuları ayarlama
 
-Çalışma alanı dosyasını `ChatQuickstart.xcworkspace` Xcode 'da açın ve açın `ViewController.swift` .
+Çalışma alanını `ChatQuickstart.xcworkspace` Xcode 'da açın ve sonra açın `ViewController.swift` .
 
 Bu hızlı başlangıçta, kodumuzu ' a ekleyecek `viewController` ve Xcode konsolundaki çıktıyı görüntüleyecağız. Bu hızlı başlangıç, iOS 'ta bir kullanıcı arabirimi oluşturmayı gidermez. 
 

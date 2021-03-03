@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687575"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Windows Server Azure Edition için hotpatch (Önizleme)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>Yeni sanal makineler için hotpatch (Önizleme)
 
 Anında yükleme, yüklemeden sonra yeniden başlatma gerektirmeyen yeni Windows Server Azure sürüm sanal makinelerine (VM 'Ler) Güncelleştirme yüklemenin yeni bir yoludur. Bu makalede, aşağıdaki avantajları içeren Windows Server Azure sürüm VM 'Leri için hotpatch hakkında bilgiler ele alınmaktadır:
 * Daha az yeniden başlatmalar ile alt iş yükü etkisi
@@ -26,7 +26,7 @@ Anında yükleme, yüklemeden sonra yeniden başlatma gerektirmeyen yeni Windows
 
 Hotpatch, ilk olarak en son birikimli güncelleştirme Windows Update bir temel kurarak çalışmaktadır. Hotpatches, bu taban çizgisinde oluşturulan düzenli aralıklarla (örneğin, ayın ikinci Salı günü) yayımlanır. Hotpatches, yeniden başlatma gerektirmeyen güncelleştirmeleri içerir. Düzenli olarak (üç ayda bir başlayarak) taban çizgisi yeni bir en son toplu güncelleştirmeyle yenilenir.
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch örnek zamanlaması.":::
 
 İki tür taban çizgisi vardır: **Planlanan temeller** ve **planlanmamış taban çizgileri**.
 *  **Planlı taban çizgileri** , arasında hotpatch sürümleriyle birlikte düzenli bir temposunda yayımlanır.  Planlı taban çizgileri, söz konusu ay için karşılaştırılabilir bir _en son toplu güncelleştirmede_ bulunan tüm güncelleştirmeleri içerir ve yeniden başlatma gerektirir.
@@ -154,7 +154,7 @@ SANAL makinenizin düzeltme eki durumunu görüntülemek için, Azure portal san
 Bu ekranda, sanal makinenizin hotpatch durumunu görürsünüz. Ayrıca, VM 'niz için yüklü olmayan herhangi bir düzeltme eki olup olmadığını da inceleyebilirsiniz. Yukarıdaki ' düzeltme eki yükleme ' bölümünde açıklandığı gibi, tüm güvenlik ve kritik güncelleştirmeler [OTOMATIK VM Konuk düzeltme eki uygulama](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) ve ek eylem gereklı olmadan sanal makinenize otomatik olarak yüklenir. Diğer güncelleştirme sınıflandırmalarına sahip düzeltme ekleri otomatik olarak yüklenmez. Bunun yerine, ' güncelleştirme uyumluluğu ' sekmesi altındaki kullanılabilir düzeltme ekleri listesinde görüntülenebilir. Ayrıca, ' güncelleştirme geçmişi ' aracılığıyla sanal makinenizde güncelleştirme dağıtımlarının geçmişini görüntüleyebilirsiniz. Son 30 günden itibaren güncelleştirme geçmişi, düzeltme eki yükleme ayrıntılarıyla birlikte görüntülenir.
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch yönetimi.":::
 
 Otomatik VM Konuk düzeltme eki uygulama ile, VM 'niz düzenli aralıklarla ve kullanılabilir güncelleştirmeler için otomatik olarak değerlendirilir. Bu düzenli değerlendirmeler, kullanılabilir düzeltme eklerinin algılanarak emin olmanızı sağlamaktır. En son değerlendirme saati de dahil olmak üzere, yukarıdaki güncelleştirmeler ekranında değerlendirmenin sonuçlarını görüntüleyebilirsiniz. Ayrıca, ' Şimdi değerlendir ' seçeneğini kullanarak istediğiniz zaman VM 'niz için isteğe bağlı bir yama değerlendirmesi tetiklemeyi seçebilirsiniz ve değerlendirme tamamlandıktan sonra sonuçları gözden geçirin.
 
@@ -197,7 +197,7 @@ Hotpatch etkin bir Windows Server Azure sürüm VM 'si çalıştırmanın bazı 
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>Hotpatch 'e kayıtlı bir VM için yeniden başlatmalar hala gerekir mi?
 
-* Hotpatch programına dahil olmayan güncelleştirmeleri yüklemek için yeniden başlatmalar gerekir ve bir taban çizgisi (Windows Update en son toplu güncelleştirme) yüklendikten sonra düzenli olarak gereklidir. Bu yeniden başlatma, toplu güncelleştirmede bulunan tüm düzeltme ekleriyle VM 'nizi eşitlenmiş olarak tutacaktır. Taban çizgileri (yeniden başlatma gerektiren) üç aylık bir temposunda başlayacaktır ve zaman içinde 6 + ay boyunca artar.
+* Hotpatch programına dahil olmayan güncelleştirmeleri yüklemek için yeniden başlatmalar gerekir ve bir taban çizgisi (Windows Update en son toplu güncelleştirme) yüklendikten sonra düzenli olarak gereklidir. Bu yeniden başlatma, toplu güncelleştirmede bulunan tüm düzeltme ekleriyle VM 'nizi eşitlenmiş olarak tutacaktır. Taban çizgileri (yeniden başlatma gerektiren), üç aylık bir temposunda başlayıp zaman içinde artar.
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Hotpatch güncelleştirmesi yüklendiğinde uygulamalarım etkileniyor mu?
 

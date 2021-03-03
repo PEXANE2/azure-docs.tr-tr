@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 9a38a14033fe295c36cf8ac17239b0b8e53f75dc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727507"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Sürekli hasta izleme mimarisi
 
@@ -45,7 +45,7 @@ Bakım ekibinize yönelik Öngörüler ve destek kararı oluşturmak için FHıR
 
 ### <a name="provider-dashboard"></a>Sağlayıcı panosu
 
-FHıR verileri için Azure API 'sini kullanarak bir hasta içgörüler panosu oluşturun veya bunu, ekip tarafından kullanılan bir elektronik tıbbi kayıtla doğrudan tümleştirin. Ekipler, hastalara yardımcı olmak ve daha erken uyarı işaretlerini belirlemek için panoyu kullanabilir. Daha fazla bilgi edinmek için [Power BI sağlayıcı oluşturma panosu](howto-health-data-triage.md) öğreticisine bakın.
+FHıR verileri için Azure API 'sini kullanarak bir hasta içgörüler panosu oluşturun veya bunu, ekip tarafından kullanılan bir elektronik tıbbi kayıtla doğrudan tümleştirin. Ekipler, hastalara yardımcı olmak ve daha erken uyarı işaretlerini belirlemek için panoyu kullanabilir. Daha fazla bilgi edinmek için [Power BI sağlayıcı oluşturma panosu](tutorial-health-data-triage.md) öğreticisine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

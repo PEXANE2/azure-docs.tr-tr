@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600481"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691510"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -112,17 +112,7 @@ Aşağıdaki öğeler gerekir:
         > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) ..
     
         Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Tasarımcıda bir işlem hattı çalıştırması göndermeye başlamak için aşağıdaki adımları kullanın:
-    
-    1. İşlem hatlarınız için varsayılan bir işlem hedefi ayarlayın.
-    
-    1. İşlem hattı tuvalinin en üstünde **Çalıştır** ' ı seçin.
-    
-    1. İşlem hattı çalıştırmalarını gruplamak için bir deneme seçin.
-    
+
     ---
 
 * Bir çalıştırmanın durumunu izleme
@@ -183,24 +173,128 @@ Aşağıdaki öğeler gerekir:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Studio 'da denemenizin etkin çalıştırmaların sayısını görüntülemek için.
+    Çalışma Studio 'da çalıştırmalarını görüntülemek için: 
     
-    1. **Denemeleri** bölümüne gidin.
+    1. **Denemeleri** sekmesine gidin.
     
-    1. Bir deneme seçin.
+    1. **Tüm denemeleri** seçin ya da çalışma alanında gönderilen tüm çalıştırmaları görüntülemek için tüm çalıştırmalar ' **ı seçin.**
     
-        Deneme sayfasında, etkin işlem hedeflerinin sayısını ve her çalıştırma için süreyi görebilirsiniz. 
+        **Tüm çalıştırmalar '** sayfasında, çalışma listenizi etiketlere, denemeleri, işlem hedefine ve daha fazlasını düzenleyerek işlerinizi daha iyi düzenleme ve kapsama göre filtreleyebilirsiniz.  
     
-    1. Karşılaştırmak, grafikler eklemek veya filtre uygulamak için çalıştırmalar ' ı seçerek denemelere özelleştirmeler yapın. Bu değişiklikler, kolayca çalışmanıza geri dönebilmeniz için **özel bir görünüm** olarak kaydedilebilir. Çalışma alanı izinlerine sahip kullanıcılar özel görünümü düzenleyebilir veya görüntüleyebilir. Ayrıca, URL 'YI kopyalayıp tarayıcıya yapıştırarak özel görünümü başkalarıyla paylaşabilirsiniz.  
+    1. Karşılaştırmak, grafikler eklemek veya filtre uygulamak için çalıştırmalar ' ı seçerek sayfada özelleştirmeler yapın. Bu değişiklikler, kolayca çalışmanıza geri dönebilmeniz için **özel bir görünüm** olarak kaydedilebilir. Çalışma alanı izinlerine sahip kullanıcılar özel görünümü düzenleyebilir veya görüntüleyebilir. Ayrıca, **görünümü paylaşma**' yı seçerek özel görünümü gelişmiş işbirliği için ekip üyeleriyle paylaşabilirsiniz.   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Ekran görüntüsü: özel görünüm oluşturma":::
     
-    1. Belirli bir çalıştırma numarası seçin.
-    
-    1. **Günlükler** sekmesinde, işlem hattı çalıştırınızla ilgili tanılama ve hata günlüklerini bulabilirsiniz.
+    1. Çalıştırma günlüklerini görüntülemek için belirli bir çalıştırma seçin ve **çıktılar + Günlükler** sekmesinde, çalıştıralım için tanılama ve hata günlüklerini bulabilirsiniz.
     
     ---
+
+## <a name="run-description"></a>Çalıştırma açıklaması 
+
+Çalıştırmaya daha fazla bağlam ve bilgi sağlamak için çalıştırma açıklaması bir çalıştırmaya eklenebilir. Ayrıca, çalıştırmalar listesinde bu açıklamaları arayabilir ve çalıştırma açıklamasını çalıştırmalar listesinde bir sütun olarak ekleyebilirsiniz. 
+
+Çalıştırmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalıştırmanıza yönelik açıklamaları eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Çalışma listesindeki değişiklikleri kalıcı hale getirmek için, değişiklikleri var olan özel görünüminizdeki veya yeni bir özel görünümdeki kaydedin. Aşağıda gösterildiği gibi görüntülerin gömülmesini ve derin bağlamayı sağlayan çalışma açıklamaları için markas biçimi desteklenir.
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Ekran görüntüsü: çalıştırma açıklaması oluşturma"::: 
     
+
+## <a name="tag-and-find-runs"></a>Etiket ve bulma çalıştırmaları
+
+Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı düzenlemeye ve sorgulamaya yardımcı olması için özellikleri ve etiketleri kullanabilirsiniz.
+
+* Özellikler ve etiketler ekleme
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    Çalışmalarınızın aranabilir meta verilerini eklemek için [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) yöntemini kullanın. Örneğin, aşağıdaki kod, `"author"` çalıştırmaya özelliği ekler:
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    Özellikler sabittir, bu nedenle denetim amaçlarıyla kalıcı bir kayıt oluşturur. Aşağıdaki kod örneği, `"azureml-user"` `"author"` Önceki kodda Özellik değeri olarak zaten eklendiğimiz için bir hatayla sonuçlanır:
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    Özelliklerden farklı olarak Etiketler değişebilir. Denemenizin tüketicilere yönelik aranabilir ve anlamlı bilgiler eklemek için [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) yöntemini kullanın.
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    Basit dize etiketleri de ekleyebilirsiniz. Bu Etiketler etiket sözlüğünde anahtar olarak görüntülendiğinde, bir değeri vardır `None` .
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > CLı 'yi kullanarak yalnızca etiketleri ekleyebilir veya güncelleştirebilirsiniz.
+    
+    Bir etiketi eklemek veya güncelleştirmek için aşağıdaki komutu kullanın:
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    Çalışma etiketlerini Studio 'dan ekleyebilir, düzenleyebilir veya silebilirsiniz. Çalışmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalışmalarınız için Etiketler eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Ayrıca, çalışma listesi sayfasından bu etiketlerin üzerinde arama ve filtreleme yapabilirsiniz.
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Ekran görüntüsü: çalıştırma etiketlerini ekleme, düzenleme veya silme":::
+    
+    ---
+
+* Sorgu özellikleri ve Etiketler
+
+    Belirli özellikler ve etiketlerle eşleşen çalıştırmaların bir listesini döndürmek için bir deneydeki çalıştırmaları sorgulayabilirsiniz.
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Azure CLı, özellikleri ve etiketleri temel alarak çalıştırmaları filtrelemek için kullanılabilen [Jmespath](http://jmespath.org) sorgularını destekler. Azure CLı ile JMESPath sorgusu kullanmak için, `--query` parametresini parametresiyle belirtin. Aşağıdaki örneklerde Özellikler ve Etiketler kullanılarak bazı sorgular gösterilmektedir:
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    1. **Tüm çalıştırmalar** listesine gidin.
+    
+    1. Etiketler, açıklamalar, deneme adları ve gönderenin adı gibi çalıştırma meta verilerini filtrelemek için arama çubuğunu kullanın. Etiketler filtresi, etiketleri filtrelemek için de kullanılabilir. 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>İptal veya başarısız çalıştırmalar
 
 Bir hata fark ederseniz veya çalıştırmanın tamamlanmasının çok uzun sürmesi durumunda, çalıştırmayı iptal edebilirsiniz.
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>Etiket ve bulma çalıştırmaları
-
-Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı düzenlemeye ve sorgulamaya yardımcı olması için özellikleri ve etiketleri kullanabilirsiniz.
-
-* Özellikler ve etiketler ekleme
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    Çalışmalarınızın aranabilir meta verilerini eklemek için [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) yöntemini kullanın. Örneğin, aşağıdaki kod, `"author"` çalıştırmaya özelliği ekler:
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    Özellikler sabittir, bu nedenle denetim amaçlarıyla kalıcı bir kayıt oluşturur. Aşağıdaki kod örneği, `"azureml-user"` `"author"` Önceki kodda Özellik değeri olarak zaten eklendiğimiz için bir hatayla sonuçlanır:
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    Özelliklerden farklı olarak Etiketler değişebilir. Denemenizin tüketicilere yönelik aranabilir ve anlamlı bilgiler eklemek için [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) yöntemini kullanın.
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    Basit dize etiketleri de ekleyebilirsiniz. Bu Etiketler etiket sözlüğünde anahtar olarak görüntülendiğinde, bir değeri vardır `None` .
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > CLı 'yi kullanarak yalnızca etiketleri ekleyebilir veya güncelleştirebilirsiniz.
-    
-    Bir etiketi eklemek veya güncelleştirmek için aşağıdaki komutu kullanın:
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Özellikleri ve etiketleri Studio 'da görüntüleyebilir, ancak orada değiştiremezsiniz.
-    
-    ---
-
-* Sorgu özellikleri ve Etiketler
-
-    Belirli özellikler ve etiketlerle eşleşen çalıştırmaların bir listesini döndürmek için bir deneydeki çalıştırmaları sorgulayabilirsiniz.
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Azure CLı, özellikleri ve etiketleri temel alarak çalıştırmaları filtrelemek için kullanılabilen [Jmespath](http://jmespath.org) sorgularını destekler. Azure CLı ile JMESPath sorgusu kullanmak için, `--query` parametresini parametresiyle belirtin. Aşağıdaki örneklerde Özellikler ve Etiketler kullanılarak bazı sorgular gösterilmektedir:
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    1. İşlem **hatları** bölümüne gidin.
-    
-    1. Etiketleri, açıklamaları, deneme adlarını ve gönderenin adını kullanarak işlem hatlarını filtrelemek için arama çubuğunu kullanın.
-    
-    ---
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
 

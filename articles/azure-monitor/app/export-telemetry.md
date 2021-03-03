@@ -2,16 +2,20 @@
 title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft Docs
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584244"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737044"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
+
+> [!IMPORTANT]
+> Sürekli dışarı aktarma kullanım dışı bırakıldı. Telemetri dışarı aktarmak için [tanılama ayarlarını](#diagnostic-settings-based-export) kullanmak üzere [çalışma alanı tabanlı bir Application Insights kaynağına geçiş yapın](convert-classic-resource.md) .
 
 > [!NOTE]
 > Sürekli dışarı aktarma yalnızca klasik Application Insights kaynakları için desteklenir. [Çalışma alanı tabanlı Application Insights kaynakları](./create-workspace-resource.md) [tanılama ayarlarını](./create-workspace-resource.md#export-telemetry) kullanmalıdır.
@@ -27,6 +31,44 @@ Sürekli dışarı aktarmayı ayarlamadan önce şunları göz önünde bulundur
 * Ayrıca, [PowerShell aracılığıyla sürekli dışarı aktarmayı](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)ayarla ' da erişebilirsiniz.
 
 Sürekli dışa aktarma Işlemi, verilerinizi depolama alanına kopyaladıktan sonra (istediğiniz kadar uzun sürebileceği), her zamanki [Bekletme dönemi](./data-retention-privacy.md)için Application Insights de kullanılabilir.
+
+## <a name="supported-regions"></a>Desteklenen bölgeler
+
+Sürekli dışarı aktarma aşağıdaki bölgelerde desteklenir:
+
+* Güneydoğu Asya
+* Orta Kanada
+* Orta Hindistan
+* Kuzey Avrupa
+* Güney Birleşik Krallık
+* Doğu Avustralya
+* Doğu Japonya
+* Güney Kore - Orta
+* Orta Fransa
+* Doğu Asya
+* Batı ABD
+* Orta ABD
+* Doğu ABD 2
+* Orta Güney ABD
+* Batı ABD 2
+* Güney Afrika - Kuzey
+* Orta Kuzey ABD
+* Güney Brezilya
+* İsviçre Kuzey
+* Güneydoğu Avustralya
+* Batı Birleşik Krallık
+* Almanya Orta Batı
+* İsviçre Batı
+* Orta Avustralya 2
+* BAE Orta
+* Brezilya Güneydoğu
+* Orta Avustralya
+* BAE Kuzey
+* Norveç Doğu
+* Batı Japonya
+
+> [!NOTE]
+> **Batı Avrupa** ve **Doğu ABD** ' de zaten yapılandırılmış olan uygulamalar desteklenir, ancak bu bölgelerde yeni uygulamalar ekleme desteklenmez.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Sürekli dışa aktarma Gelişmiş depolama yapılandırması
 
@@ -138,7 +180,7 @@ Zaman süreleri, 10 000 ticks = 1 MS olduğunda yer işaretleri içinde bulunur.
 [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verileri işleme
-Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örneğin:
+Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örnek:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)

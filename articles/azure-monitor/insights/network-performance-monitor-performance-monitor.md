@@ -1,22 +1,21 @@
 ---
 title: Ağ Performansı İzleyicisi performans Izleyicisi
 description: Ağ Performansı İzleyicisi performans Izleyicisi özelliği, ağınızdaki çeşitli noktalarda ağ bağlantısını izlemenize yardımcı olur. Bulut dağıtımlarını ve şirket içi konumları, birden çok veri merkezini ve şubelerin yanı sıra görev açısından kritik çok katmanlı uygulamaları veya mikro hizmetleri izleyebilirsiniz.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573519"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728633"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Ağ Performansı İzleyicisi çözümü: performans izleme
 
 > [!IMPORTANT]
-> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) , 29 Şubat 2024 tarihinden önce geçirin.
+> 1 Temmuz 2021 ' den itibaren, mevcut bir çalışma alanına yeni testler ekleyemez veya Ağ Performansı İzleyicisi yeni bir çalışma alanı etkinleştiremeyeceksiniz. 1 Temmuz 2021 ' den önce oluşturulan testleri kullanmaya devam edebilirsiniz. Geçerli iş yüklerinizde hizmet kesintisini en aza indirmek için, testlerinizi Ağ Performansı İzleyicisi 'den Azure ağ Izleyicisi 'ndeki [Yeni bağlantı izleyicisinden](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) , 29 Şubat 2024 tarihinden önce geçirin.
 
 [Ağ performansı İzleyicisi](network-performance-monitor.md) performans izleyicisi özelliği, ağınızdaki çeşitli noktalarda ağ bağlantısını izlemenize yardımcı olur. Bulut dağıtımlarını ve şirket içi konumları, birden çok veri merkezini ve şubelerin yanı sıra görev açısından kritik çok katmanlı uygulamaları veya mikro hizmetleri izleyebilirsiniz. Performans Izleyicisinde, kullanıcılarınız şikayet etmeden önce ağ sorunlarını tespit edebilirsiniz. Önemli avantajlar şunları yapabilirsiniz: 
 
@@ -132,4 +131,3 @@ Aşağıdaki görüntüde, ağın belirli bir bölümünde sorunlu alanların as
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../logs/log-query-overview.md) yapın.
-

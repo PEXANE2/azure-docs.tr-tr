@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699904"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
 
 Metin Analizi API'si sürüm 2,1 kullanıyorsanız, bu makale uygulamanızı 3. x sürümünü kullanacak şekilde yükseltmenize yardımcı olur. Sürüm 3,0 genel kullanıma sunulmuştur ve genişletilmiş [adlandırılmış varlık tanıma (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) ve [model sürümü oluşturma](concepts/model-versioning.md)gibi yeni özellikler sunar. Bir v 3.1 (v 3.1-Preview. x) önizleme sürümü de bulunur ve bu da, [fikrinizi araştırma](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)gibi özellikler ekler. V2 'de kullanılan modeller gelecekteki güncelleştirmeleri almaz. 
 
-## <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment-analysis)
+## <a name="sentiment-analysis"></a>[Yaklaşım analizi](#tab/sentiment-analysis)
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri 
 
@@ -104,7 +104,7 @@ Aşağıdaki tabloda, NER v 2.1 için döndürülen varlık kategorileri listele
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri 
 
-Dil algılama özelliği, uç nokta sürümünün dışında v3 'de değişmemiştir, ancak JSON yanıtı `ConfidenceScore` yerine içerir `score` . V3 Ayrıca çıktıda yalnızca tek bir dili döndürür. 
+Dil algılama özelliği çıkışı v3 'de değiştirilmiştir. JSON yanıtı `ConfidenceScore` yerine içerecektir `score` . V3 Ayrıca  `detectedLanguage` her belge için bir öznitelikte bir dil döndürür.
 
 ### <a name="steps-to-migrate"></a>Geçiş adımları
 

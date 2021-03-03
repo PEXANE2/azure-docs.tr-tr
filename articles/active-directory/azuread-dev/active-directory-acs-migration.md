@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197430"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687405"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -113,7 +113,7 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 Access Control bileşenleri kullanımdan kaldırmaya yönelik zamanlama aşağıda verilmiştir:
 
 - **Kasım 2017**: klasik Azure PORTALıNDA Azure AD yönetici deneyimi [kullanımdan kaldırıldı](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Bu noktada, Access Control için ad alanı yönetimi yeni ve adanmış bir URL 'de kullanılabilir: `https://manage.windowsazure.com?restoreClassic=true` . Bu URl 'yi kullanarak mevcut ad alanlarınızı görüntüleyin, ad alanlarını etkinleştirin ve devre dışı bırakın ve seçeneğini belirlerseniz ad alanlarını silin.
-- **2 nisan 2018**: klasik Azure portalı tamamen devre dışı bırakıldı, anlamı Access Control ad alanı yönetimi artık HERHANGI bir URL aracılığıyla kullanılamıyor. Bu noktada, Access Control ad alanlarınızı devre dışı bırakıp etkinleştiremez, silemez veya numaralandırabilirsiniz. Ancak, Access Control yönetim portalı tam olarak çalışır ve konumunda bulunur `https://\<namespace\>.accesscontrol.windows.net` . Tüm Access Control diğer bileşenleri normal şekilde çalışmaya devam eder.
+- **2 nisan 2018**: klasik Azure portalı tamamen devre dışı bırakıldı, anlamı Access Control ad alanı yönetimi artık HERHANGI bir URL aracılığıyla kullanılamıyor. Bu noktada, Access Control ad alanlarınızı devre dışı bırakıp etkinleştiremez, silemez veya numaralandırabilirsiniz. Ancak, Access Control yönetim portalı tam olarak çalışır ve konumunda bulunur `https://<namespace>.accesscontrol.windows.net` . Tüm Access Control diğer bileşenleri normal şekilde çalışmaya devam eder.
 - **7 kasım 2018**: tüm Access Control bileşenleri kalıcı olarak kapatılır. Buna Access Control yönetim portalı, yönetim hizmeti, STS ve Token dönüşüm kuralı altyapısı dahildir. Bu noktada, Access Control gönderilen tüm istekler (. accesscontrol.windows.net konumunda bulunur \<namespace\> ) başarısız olur. Var olan tüm uygulamaları ve Hizmetleri, bu süreden daha önce geçen diğer teknolojilere geçirmelisiniz.
 
 > [!NOTE]
@@ -148,7 +148,7 @@ Access Control tarafından verilen belirteçleri kabul eden her bir Microsoft bu
 
 SharePoint 2013, 2016 ve SharePoint Online müşterileri, bulutta, şirket içinde ve hibrit senaryolarında kimlik doğrulama amacıyla ACS 'yi uzun süredir kullandı. Bazı SharePoint özellikleri ve kullanım durumları, ACS kullanımdan kaldırılırken etkilenir, diğerleri bu durumdan etkilenmez. Aşağıdaki tabloda, ACS 'den yararlanan en popüler SharePoint özelliklerinden bazıları için geçiş kılavuzu özetlenmektedir:
 
-| Öne çıkan özelliği | Rehber |
+| Özellik | Rehber |
 | ------- | -------- |
 | Azure AD 'de kullanıcıların kimliğini doğrulama | Daha önce Azure AD, kimlik doğrulaması için SharePoint için gereken SAML 1,1 belirteçlerini desteklemediğinden ACS, SharePoint 'in Azure AD belirteç biçimleriyle uyumlu hale getirilen bir aracı olarak kullanılmıştı. Artık [SharePoint 'i şirket içi uygulama Azure AD uygulaması Galeri kullanarak doğrudan Azure AD 'ye bağlayabilirsiniz](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Şirket içi SharePoint 'te sunucudan sunucuya kimlik doğrulaması & uygulama kimlik doğrulaması](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS emekliliğinizi etkilemez; değişiklik gerekmiyor. | 

@@ -2,13 +2,13 @@
 title: Öğretici-özel buluta erişin
 description: Azure VMware çözümüne özel buluta erişmeyi öğrenin
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b7f21dbba5256712607241bb1258962fc22418fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/22/2021
+ms.openlocfilehash: 81296223ab941633a4b0f1316e359a0eb2ff73ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578436"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738489"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümüne özel buluta erişme
 
@@ -30,9 +30,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. Geçiş kutusundan, bir bulut Yöneticisi Kullanıcı adı ve Kullanıcı arabiriminin başarıyla gösterdiği bir ifade kullanarak VMware vCenter SSO ile vSphere Istemcisinde oturum açın.
 
-1. Azure portal özel bulutunuzu seçip **genel bakış** görünümünde, **kimlik > varsayılan**' ı seçin. 
+1. Azure Portal, özel bulutunuzu seçin ve ardından   >  **kimliği** yönetin. 
 
    Özel bulut vCenter ve NSX-T Manager için URL 'Ler ve Kullanıcı kimlik bilgileri görüntülenir.
+
+   >[!TIP]
+   >Yeni vCenter ve NSX-T parolaları oluşturmak için **Yeni bir parola oluştur** ' u seçin.
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
 
@@ -44,13 +47,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. VCenter sekmesinde, `cloudadmin@vmcp.local` önceki adımdan Kullanıcı kimlik bilgilerini girin.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Özel bulut vCenter ' da oturum açın." border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter portalı." border="true":::
 
 1. Tarayıcının ikinci sekmesinde NSX-T Yöneticisi ' nde oturum açın.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Özel bulut vCenter ve NSX Yöneticisi URL 'Leri ve kimlik bilgilerini görüntüleyin." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Tarayıcının ikinci sekmesinde NSX-T Yöneticisi ' nde oturum açın." border="true":::
 
 
 

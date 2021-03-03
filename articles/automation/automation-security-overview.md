@@ -4,14 +4,14 @@ description: Bu makalede, Azure Otomasyonu hesabı kimlik doğrulamasına genel 
 keywords: otomasyon güvenliği, güvenli otomasyon; otomasyon kimlik doğrulaması
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708909"
 ---
 # <a name="automation-account-authentication-overview"></a>Otomasyon hesabı kimlik doğrulamasına genel bakış
 
@@ -44,6 +44,8 @@ Azure Resource Manager ve klasik dağıtım modelleri hakkında daha fazla bilgi
 >Azure bulut çözümü sağlayıcısı (CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. CSP aboneliği kullanırken, Azure klasik farklı çalıştır hesabı oluşturulmaz, ancak Azure farklı çalıştır hesabı oluşturulur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 Bir Otomasyon hesabı oluşturduğunuzda, farklı çalıştır hesabı varsayılan olarak aynı anda oluşturulur. Otomasyon hesabı ile birlikte oluşturmamayı tercih ederseniz, daha sonra tek tek oluşturulabilir. Azure klasik farklı çalıştır hesabı isteğe bağlıdır ve klasik kaynakları yönetmeniz gerekiyorsa ayrı olarak oluşturulur.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Farklı Çalıştır hesabı
 

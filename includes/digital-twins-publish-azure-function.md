@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 63b393f519ad29baa05fef046ee1e8ba9e5330d8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750572"
 ---
 Projeyi Azure 'da bir işlev uygulamasına yayımlamak için *Çözüm Gezgini* ' de projeyi sağ seçin ve **Yayımla**' yı seçin.
 
@@ -19,15 +19,13 @@ Projeyi Azure 'da bir işlev uygulamasına yayımlamak için *Çözüm Gezgini* 
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Sağ seçme çözüm menüsünü gösteren Visual Studio ekran görüntüsü. Yayımla menüsünde vurgulanır.":::
 
-Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri*' yi ziyaret edin. 
+Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri*' yi seçin. 
 
-Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri*' yi tıklayın.
+Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri*' yi seçin.
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Azure işlevi Yayımla iletişim kutusunda Visual Studio ekran görüntüsü. Azure İşlev Uygulaması (Windows) belirli hedef sayfada seçilir.":::
 
-*İşlevler örneği* sayfasında, aboneliğinizi seçin. Bu, aboneliğinizdeki *kaynak gruplarıyla* bir kutu doldurmalıdır.
-
-Örneğinizin kaynak grubunu seçin ve *+* Yeni bir Azure işlevi oluşturmak için isabet edin.
+*İşlevler örneği* sayfasında, aboneliğinizi seçin. Ardından *+* Yeni bir Azure işlevi oluşturmak için simgeyi seçin.
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Azure işlevi Yayımla iletişim kutusunda Visual Studio ekran görüntüsü. Yeni bir işlev oluşturmak için + düğmesi Işlevler örneği sayfasında vurgulanır.":::
 
@@ -37,13 +35,13 @@ Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin 
 * **Kaynak** grubunun kullanmak istediğiniz kaynak grubuna emin olun
 * **Plan türünü** *Tüketim* olarak bırakın
 * Kaynak grubunuzun konumuyla eşleşen **konumu** seçin
-* *Yeni...* bağlantısını kullanarak yeni bir **Azure depolama** kaynağı oluşturun. Konumu kaynak grubunuza uyacak şekilde ayarlayın, diğer varsayılan değerleri kullanın ve "Tamam" düğmesine basın.
+* *Yeni...* bağlantısını kullanarak yeni bir **Azure depolama** kaynağı oluşturun. Konumu kaynak grubunuza uyacak şekilde ayarlayın, diğer varsayılan değerleri kullanın ve "Tamam" ı seçin.
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure işlevi Yayımla iletişim kutusunda Visual Studio ekran görüntüsü. Yeni bir işlev uygulamasının ayrıntıları, ad, abonelik, kaynak grubu, plan türü, konum ve Azure depolama dahil olmak üzere doldurulmuştur.":::
 
 Ardından **Oluştur**’u seçin.
 
-Bu, yeni işlev uygulamanızın artık kaynak grubunuzun altında göründüğünden, bunu *işlevler örneği* sayfasına geri getirmelidir. İsabet *sonu*.
+Uygulama hizmeti oluşturulurken kısa bir bekleme sonrasında iletişim kutusu, yeni işlev uygulamanız kaynak grubunuzun altına yerleştirilmiş **Işlev uygulamaları** alanında görünirken *işlevler örneği* sayfasına döndürmelidir. *Son*'u seçin.
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından sonra)":::
 
@@ -59,4 +57,6 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 >
 > En son Azure Işlevleri çalışma zamanı sürümüne yükseltmek için istemleri izleyin. Visual Studio 'nun eski bir sürümünü kullanıyorsanız bu sorun oluşabilir.
 
-İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için sistem tarafından yönetilen bir kimliğe sahip olması ve Azure dijital TWINS örneğinize erişmek için gereken izinlere sahip olması gerekir. Bunu daha sonra ayarlayacaksınız.
+İşlev uygulamanız artık Azure 'da yayımlandı. 
+
+İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için, Azure dijital TWINS örneğinizi erişim izinleri olan sistem tarafından yönetilen bir kimliğe sahip olması gerekir. Bunu daha sonra ayarlayacaksınız.

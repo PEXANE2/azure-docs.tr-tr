@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 26c99beb95d60b476fff255321d85c0db8aa7363
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692207"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitik depo için özel uç noktaları yapılandırma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ Bu makalede, Azure Cosmos DB analitik depo için yönetilen özel uç noktaları
 
 ### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Yönetilen bir sanal ağla Azure SYNAPSE Analytics çalışma alanı ayarlama
 
-[Azure SYNAPSE Analytics 'te veri uzantısı etkin olan bir çalışma alanı oluşturun.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) [Veri alma koruması](../synapse-analytics/security/workspace-data-exfiltration-protection.md)sayesinde, kötü niyetli kullanıcıların Azure kaynaklarınızdan kuruluşunuzun kapsamı dışındaki konumlara veri kopyalayamıyor veya bu verileri aktarabilmesi için emin olabilirsiniz.
+[Azure SYNAPSE Analytics 'te Data-exfiltration özelliği etkinken bir çalışma alanı oluşturun.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) [Veri alma koruması](../synapse-analytics/security/workspace-data-exfiltration-protection.md)sayesinde, kötü niyetli kullanıcıların Azure kaynaklarınızdan kuruluşunuzun kapsamı dışındaki konumlara veri kopyalayamıyor veya bu verileri aktarabilmesi için emin olabilirsiniz.
 
 Aşağıdaki erişim kısıtlamaları, bir Azure SYNAPSE Analytics çalışma alanı için veri-değişim koruması açık olduğunda geçerlidir:
 

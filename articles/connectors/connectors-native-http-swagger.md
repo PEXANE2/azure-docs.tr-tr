@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730890"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
 
@@ -44,13 +44,13 @@ ms.locfileid: "92790602"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
    ![HTTP + Swagger tetikleyicisi seçin](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. **Swagger uç nokta URL 'si** kutusuna Swagger dosyasının URL 'sini girin ve **İleri** ' yi seçin.
+1. **Swagger uç nokta URL 'si** kutusuna Swagger dosyasının URL 'sini girin ve **İleri**' yi seçin.
 
    Bu örnek bilişsel hizmetler için Batı ABD bölgesinde bulunan Swagger URL 'sini kullanır [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
@@ -74,23 +74,23 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 1. Tetikleyici tetiklendiğinde çalıştırılan eylemlerle mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
+1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 ## <a name="add-an-http--swagger-action"></a>HTTP + Swagger eylemi ekleme
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım** ' ı seçin.
+1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle** ' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Eylemler** listesinden **http + Swagger** eylemini seçin.
 
     ![HTTP + Swagger eylemini seç](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. **Swagger uç nokta URL 'si** kutusuna Swagger dosyasının URL 'sini girin ve **İleri** ' yi seçin.
+1. **Swagger uç nokta URL 'si** kutusuna Swagger dosyasının URL 'sini girin ve **İleri**' yi seçin.
 
    Bu örnek bilişsel hizmetler için Batı ABD bölgesinde bulunan Swagger URL 'sini kullanır [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
@@ -112,7 +112,7 @@ Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren
 
    HTTP + Swagger için kullanılabilir kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
+1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 <a name="host-swagger"></a>
 
@@ -122,7 +122,7 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
 1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).
 
-1. Şimdi blob için CORS 'yi etkinleştirin. Depolama hesabınızın menüsünde **CORS** ' yi seçin. **BLOB hizmeti** sekmesinde, bu değerleri belirtin ve ardından **Kaydet** ' i seçin.
+1. Şimdi blob için CORS 'yi etkinleştirin. Depolama hesabınızın menüsünde **CORS**' yi seçin. **BLOB hizmeti** sekmesinde, bu değerleri belirtin ve ardından **Kaydet**' i seçin.
 
    | Özellik | Değer |
    |----------|-------|
@@ -135,7 +135,7 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
    Bu örnek [Azure Portal](https://portal.azure.com)kullansa da [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bir araç kullanabilir veya bu örnek [PowerShell betiğini](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)kullanarak bu ayarı otomatik olarak yapılandırabilirsiniz.
 
-1. [BLOB kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md). Kapsayıcının **genel bakış** bölmesinde **erişim düzeyini Değiştir** ' i seçin. **Genel erişim düzeyi** listesinden blob ' u seçin **(yalnızca blob 'lar için anonim okuma erişimi)** ve **Tamam** ' ı seçin.
+1. [BLOB kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md). Kapsayıcının **genel bakış** bölmesinde **erişim düzeyini Değiştir**' i seçin. **Genel erişim düzeyi** listesinden blob ' u seçin **(yalnızca blob 'lar için anonim okuma erişimi)** ve **Tamam**' ı seçin.
 
 1. Swagger dosyasını [Azure Portal](https://portal.azure.com) ya da [Azure Depolama Gezgini](https://storageexplorer.com/)aracılığıyla [BLOB kapsayıcısına yükleyin](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob).
 

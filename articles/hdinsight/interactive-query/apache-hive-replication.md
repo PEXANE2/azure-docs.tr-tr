@@ -4,12 +4,12 @@ description: Hive meta veri deposu ve Azure Data Lake Storage Gen 2 Data Lake ' 
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941328"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733066"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Azure HDInsight kümelerinde Apache Hive çoğaltma kullanma
 
@@ -19,7 +19,7 @@ Hive çoğaltma, daha iyi işlevsellik sağlayan ve daha hızlı ve daha az kayn
 
 ## <a name="advantages-of-replv2"></a>Replv2 avantajları
 
-Hive [ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) veya (Replv2), Hive çoğaltmasını [kullanan Hive çoğaltmasının](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)ilk sürümü için aşağıdaki avantajlara sahiptir:
+[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (Replv2 olarak da bilinir), Hive çoğaltmasının, Hive [içeri aktarma](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)kullanan ilk sürümü için aşağıdaki avantajlara sahiptir:
 
 - Olay tabanlı artımlı çoğaltma
 - Noktadan noktaya çoğaltma  

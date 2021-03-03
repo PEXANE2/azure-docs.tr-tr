@@ -1,17 +1,16 @@
 ---
 title: Azure 'da Office 365 yönetim çözümü
 description: Bu makalede, Azure 'da Office 365 çözümünün yapılandırması ve kullanımıyla ilgili ayrıntılar sağlanmaktadır.  Azure Izleyici 'de oluşturulan Office 365 kayıtlarının ayrıntılı açıklamasını içerir.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728646"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -462,7 +461,7 @@ Bu kayıtlar, SharePoint 'teki dosya işlemlerine yanıt olarak oluşturulur.
 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; Işleme göre Count () özetleme |
 |SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () değerini \||

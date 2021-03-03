@@ -1,0 +1,46 @@
+- name: Nesne tutturucular belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Nesne bağlayıcıları hakkında
+      href: overview.md
+    - name: En İyi Uygulamalar
+      href: best-practices.md
+- name: Kavramlar
+  items:
+    - name: Çalışma zamanı SDK 'sına genel bakış
+      href: concepts/sdk-overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Bir model oluşturma
+      href: quickstarts/get-started-model-ingestion.md
+    - name: Unity uygulaması oluşturma
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: MRTK ile HoloLens
+          href: quickstarts/get-started-unity-hololens-mrtk.md
+    - name: HoloLens DirectX uygulaması oluşturma
+      href: quickstarts/get-started-hololens-directx.md
+- name: Örnekler
+  items:
+    - name: Azure nesne bağlantıları örnekleri (GitHub)
+      href: 'https://github.com/Azure/azure-object-anchors'
+- name: Başvurular
+  items:
+    - name: Unity için çalışma zamanı SDK 'Sı
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+    - name: HoloLens C++/Wınrt için çalışma zamanı SDK 'Sı
+      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+- name: Kaynaklar
+  items:
+    - name: Sürüm notları
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
+    - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+    - name: SSS
+      href: faq.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'

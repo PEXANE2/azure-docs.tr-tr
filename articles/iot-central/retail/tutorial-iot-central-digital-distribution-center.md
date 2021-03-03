@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 40b0d7eeb77f165c50c5470e1b5869e240d36534
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702700"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -21,7 +21,8 @@ Bu öğreticide, bir IoT Central **Digital Distribution Center** uygulama şablo
 Bu öğreticide, 
 
 > [!div class="checklist"]
-> Uygulama aracılığıyla dijital dağıtım merkezi uygulaması oluşturma 
+> * Dijital dağıtım merkezi uygulaması oluştur 
+> * Uygulamayı gözden geçir 
 
 ## <a name="prerequisites"></a>Önkoşullar
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez

@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: c3b44c7b8761010deeecba1f8ed80727fe635f2b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6fb4954ff616bccd9b237aedb3001b0a8d592dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717205"
 ---
 # <a name="workbook-drop-down-parameters"></a>Çalışma kitabı açılan parametreleri
 
@@ -154,5 +154,5 @@ dependencies
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](../platform/workbooks-overview.md#visualizations) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](../platform/workbooks-access-control.md) ve paylaşma.
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](./workbooks-overview.md#visualizations) .
+* Çalışma kitabı kaynaklarınıza erişimi [denetleme](./workbooks-access-control.md) ve paylaşma.

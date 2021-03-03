@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ec8fc4473669b0c056d0b22ff44e5818b87ba3fa
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721795"
 ---
 # <a name="deploy-and-configure-azure-firewall-premium-preview"></a>Azure Güvenlik Duvarı Premium önizlemesini dağıtma ve yapılandırma
 
@@ -34,7 +34,7 @@ Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Premium özellikleri](premi
 - bir Azure savunma alt ağı (10.0.20.0/24)
 - bir güvenlik duvarı alt ağı (10.0.100.0/24)
 
-Bu test ortamında kolaylık sağlaması için tek bir merkezi sanal ağ kullanılır. Üretim amacıyla, eşlenmiş VNET 'ler içeren bir [hub ve bağlı bileşen topolojisi](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) daha yaygındır.
+Bu test ortamında kolaylık sağlaması için tek bir merkezi sanal ağ kullanılır. Üretim amacıyla, eşlenmiş VNET 'ler içeren bir [hub ve bağlı bileşen topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) daha yaygındır.
 
 :::image type="content" source="media/premium-deploy/premium-topology.png" alt-text="Merkezi VNet topolojisi":::
 
@@ -121,7 +121,7 @@ IDPS 'yi test etmek için, kendi iç Web sunucunuzu uygun bir sunucu sertifikas�
 
 #### <a name="to-test-idps-for-https-traffic"></a>IDPS 'yi HTTPS trafiği için test etmek için
 
-Bu kıvrımlı testleri HTTP yerine HTTPS kullanarak tekrarlayın. Örneğin:
+Bu kıvrımlı testleri HTTP yerine HTTPS kullanarak tekrarlayın. Örnek:
 
 `curl --ssl-no-revoke -A "BlackSun" <your web server address>`
 
@@ -143,7 +143,7 @@ Bazı HTML sayfaları, reddedilen diğer URL 'Lere başvurdıklarından tamamlan
 - HTML sayfası diğer etki alanlarına bağlantılar içeriyorsa, bu etki alanlarını bu FQDN 'lere erişime izin ver ile yeni bir uygulama kuralına ekleyebilirsiniz.
 - HTML sayfası alt URL bağlantıları içeriyorsa, kuralı değiştirebilir ve URL 'ye bir yıldız işareti ekleyebilirsiniz. Örnek: `targetURLs=www.nytimes.com/section/world*`
 
-   Alternatif olarak, kurala yeni bir URL ekleyebilirsiniz. Örneğin: 
+   Alternatif olarak, kurala yeni bir URL ekleyebilirsiniz. Örnek: 
 
    `www.nytimes.com/section/world, www.nytimes.com/section/world/*`
 

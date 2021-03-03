@@ -4,12 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713380"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -119,6 +119,18 @@ Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı 
 Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesini seçebilirsiniz. Bu, en üstteki **devre dışı bırak** düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğme seçildiğinde, uyarının durumu **etkin değil** olarak değiştirilir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp **devre dışı bırak**' ı seçerek bir uyarıyı devre dışı bırakabilirsiniz.
 
 ![RS Kasası uyarısı intivasyonu](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Backup için Azure Izleyici uyarıları (Önizleme)
+
+Azure Backup Ayrıca, Azure Izleyici aracılığıyla, kullanıcıların yedekleme dahil farklı Azure hizmetlerinde uyarı yönetimi için tutarlı bir deneyim sahibi olmasını sağlamak üzere uyarılar sağlar. Azure Izleyici uyarıları sayesinde, uyarıları e-posta, ıTSM, Web kancası, mantıksal uygulama gibi Azure Backup tarafından desteklenen herhangi bir bildirim kanalına yönlendirebilirsiniz.
+
+Şu anda bu özellik PostgreSQL için Azure veritabanları sunucu, Azure Blobları ve Azure yönetilen diskler için kullanılabilir. Uyarılar aşağıdaki senaryolar için oluşturulur ve bir yedekleme kasasına gidip **Uyarılar** menü öğesine tıklanarak erişilebilir:
+
+- Yedekleme verilerini sil
+- Yedekleme hatası (yedekleme hatası için uyarı almak için, **EnableAzureBackupJobFailureAlertsToAzureMonitor** adlı afec bayrağını önizleme portalı aracılığıyla kaydetmeniz gerekir)
+- Geri yükleme hatası (geri yükleme hatası için uyarı almak için, **EnableAzureBackupJobFailureAlertsToAzureMonitor** adlı afec bayrağını önizleme portalı aracılığıyla kaydetmeniz gerekir)
+
+Azure Izleyici uyarıları hakkında daha fazla bilgi için bkz. [Azure 'da uyarılara genel bakış](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

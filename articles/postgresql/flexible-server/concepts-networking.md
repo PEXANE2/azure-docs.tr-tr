@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567725"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732811"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Ağa genel bakış-PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -61,6 +61,8 @@ PostgreSQL esnek sunucularıyla sanal ağları kullanırken bilmeniz için bazı
 * **Temsilci alt ağ** -sanal ağ alt ağlar (alt ağlar) içerir. Alt ağlar, Sanal ağınızı daha küçük adres alanlarına segmentlerinizi sağlar. Azure kaynakları bir sanal ağ içindeki belirli alt ağlara dağıtılır. 
 
    PostgreSQL esnek sunucunuzun, PostgreSQL için yalnızca esnek sunucu kullanımı için **temsilci atanmış** bir alt ağda olması gerekir. Bu temsili, yalnızca PostgreSQL için Azure veritabanı 'nın esnek sunucularının bu alt ağı kullanabileceği anlamına gelir. Temsilci alt ağında diğer türdeki Azure kaynakları bulunamaz. Temsilci özelliğini Microsoft. DBforPostgreSQL/Flexibtaservers olarak atayarak bir alt ağ temsilcissiniz.
+
+   `Microsoft.Storage`Esnek sunuculara temsilci atanmış alt ağ için hizmet uç noktasına ekleyin. 
 
 * **Ağ güvenlik grupları (NSG)** Ağ güvenlik gruplarındaki güvenlik kuralları, sanal ağ alt ağları ve ağ arabirimlerini akacak ve dışı bir ağ trafiği türünü filtrelemenizi sağlar. Daha fazla bilgi için [ağ güvenlik grubuna genel bakış](../../virtual-network/network-security-groups-overview.md) konusunu gözden geçirin.
 

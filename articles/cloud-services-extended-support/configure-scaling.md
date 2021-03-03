@@ -8,20 +8,20 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 482c11395ff5dbbf2dd5bb8100451c3442f2f333
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744761"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728170"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Azure Cloud Services ölçeklendirme seçeneklerini yapılandırma (genişletilmiş destek) 
 
 Koşullar, ölçeklendirmek ve kapatmak için Cloud Services (genişletilmiş destek) dağıtımlarını etkinleştirmek üzere yapılandırılabilir. Bu koşullar CPU kullanımı, disk yükü ve ağ yüküne bağlı olabilir. 
 
 Bulut hizmeti dağıtımlarınızın ölçeğini yapılandırırken aşağıdaki bilgileri göz önünde bulundurun:
-- Ölçeklendirme, temel kullanımı etkiler. Daha büyük rol örnekleri daha fazla çekirdek tüketir ve yalnızca aboneliğinizin çekirdek limiti dahilinde ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-- Sıra mesajlaşma eşiğini temel alan ölçekleme desteklenir. Daha fazla bilgi için bkz. [Azure kuyruk depolamayı kullanmaya başlama](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues).
+- Ölçeklendirme, temel kullanımı etkiler. Daha büyük rol örnekleri daha fazla çekirdek tüketir ve yalnızca aboneliğinizin çekirdek limiti dahilinde ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Sıra mesajlaşma eşiğini temel alan ölçekleme desteklenir. Daha fazla bilgi için bkz. [Azure kuyruk depolamayı kullanmaya başlama](../storage/queues/storage-dotnet-how-to-use-queues.md).
 - Bulut hizmetinizin (genişletilmiş destek) uygulamalarınızın yüksek oranda kullanılabilir olmasını sağlamak için iki veya daha fazla rol örneğiyle dağıtım yapıldığından emin olun.
 - Özel otomatik ölçeklendirme yalnızca tüm roller **kullanılabilir durumda olduğunda** gerçekleşebilir.
 

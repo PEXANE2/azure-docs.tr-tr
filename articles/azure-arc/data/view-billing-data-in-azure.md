@@ -7,19 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687541"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Faturalama verilerini Azure 'a yükleyin ve Azure portal görüntüleyin
 
 > [!IMPORTANT] 
->  Önizleme döneminde Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur. Faturalandırma sistemi uçtan uca çalışsa da faturalandırma ölçümü $0 olarak ayarlanır.  Bu senaryoyu izlerseniz, şu anda **karma veri Hizmetleri** olarak adlandırılan bir hizmet için faturanızı ve Microsoft adlı bir türdeki kaynakları görürsünüz **. AzureData/ `<resource type>` **. Oluşturduğunuz her bir veri hizmeti için bir kayıt görebileceksiniz, ancak her kayıt $0 için faturalandırılacaktır.
+>  Önizleme döneminde Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur. Faturalandırma sistemi uçtan uca çalışsa da faturalandırma ölçümü $0 olarak ayarlanır.  Bu senaryoyu izlerseniz, şu anda **karma veri Hizmetleri** olarak adlandırılan bir hizmet için faturanızı ve Microsoft adlı bir türdeki kaynakları görürsünüz **. AzureData/ `<resource type>`**. Oluşturduğunuz her bir veri hizmeti için bir kayıt görebileceksiniz, ancak her kayıt $0 için faturalandırılacaktır.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -111,14 +111,15 @@ azdata arc dc upload -p usage.json
 
 Azure portal faturalama verilerini görüntülemek için aşağıdaki adımları izleyin:
 
-1. Özel URL 'YI kullanarak Azure portal açın:  [https://aka.ms/arcdata](https://aka.ms/arcdata) .
+1. [Azure portalını](https://portal.azure.com) açın.
 1. Ekranın üst kısmındaki arama kutusuna **maliyet yönetimi** ' nde ve maliyet yönetimi hizmeti ' ne tıklayın.
+1. **Maliyet yönetimine genel bakış** altında **maliyet yönetimi** sekmesine tıklayın.
 1. Soldaki **Maliyet Analizi** sekmesine tıklayın.
 1. Görünümün en üstündeki **kaynağa göre maliyet** düğmesine tıklayın.
 1. Kapsamınız, veri hizmeti kaynaklarınızın oluşturulduğu aboneliğe ayarlandığından emin olun.
 1. Görünümün üst kısmındaki kapsam seçicisinin yanındaki Görünüm açılan listesinden **kaynağa göre maliyet** ' i seçin.
 1. Tarih filtresinin **Bu aya** veya veri hizmeti kaynaklarınızı oluştururken zamanlamalı bir zaman aralığına ayarlandığından emin olun.
-1. **Add filter** **Resource type**  =  `microsoft.azuredata/<data service type>` Yalnızca bir Azure yay etkin veri hizmeti türüne filtre uygulamak istiyorsanız, kaynak türüne göre filtre eklemek için Filtre Ekle ' ye tıklayın.
+1.    =  `microsoft.azuredata/<data service type>` Yalnızca bir Azure yay etkin veri hizmeti türüne filtre uygulamak istiyorsanız, kaynak türüne göre filtre eklemek için Filtre Ekle ' ye tıklayın.
 1. Şimdi oluşturulmuş ve Azure 'a yüklenen tüm kaynakların bir listesini görürsünüz. Faturalandırma ölçümü $0 olduğundan, maliyetin her zaman $0 olduğunu görürsünüz.
 
 ## <a name="download-billing-data"></a>Faturalandırma verilerini indir
@@ -158,5 +159,5 @@ Azure portal faturalandırma verileri dosyalarını doğrulayabilirsiniz.
 7. Oluşturulan klasörler ve dosyaların detayına gidin ve oluşturulan. csv dosyalarından birine tıklayın.
 8. Dosyayı yerel Indirilenler klasörünüze kaydedecek **İndir** düğmesine tıklayın.
 9. Excel gibi bir. csv dosya görüntüleyicisini kullanarak dosyayı açın.
-10. Sonuçları yalnızca **kaynak türü**olan satırları gösterecek şekilde filtreleyin  =  `Microsoft.AzureData/<data service resource type` .
+10. Sonuçları yalnızca **kaynak türü** olan satırları gösterecek şekilde filtreleyin  =  `Microsoft.AzureData/<data service resource type` .
 11. Örneğin, UsageQuantity sütunundaki geçerli 24 saat döneminde kullanılan saat sayısını görürsünüz.

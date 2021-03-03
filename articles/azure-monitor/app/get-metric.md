@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719789"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET ve .NET Core 'da özel ölçüm koleksiyonu
 
@@ -33,7 +33,7 @@ Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşu
 Özet içinde, `GetMetric()` ön toplama işlemi yaptığı için önerilen yaklaşım, tüm iz () çağrılarındaki değerleri toplar ve her dakikada bir Özet/toplama gönderir. Bu, daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltabilir, ancak yine de tüm ilgili bilgileri toplarken.
 
 > [!NOTE]
-> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](./micrometer-java.md) veya kullanabilirsiniz `TrackMetric()` . Python için, [Opencensus. stats](./opencensus-python.md#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz. JavaScript ve Node.js için kullanmaya devam edersiniz `TrackMetric()` , ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun.
+> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](./micrometer-java.md) veya kullanabilirsiniz `TrackMetric()` . JavaScript ve Node.js için kullanmaya devam edersiniz `TrackMetric()` , ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun. Python için, [Opencensus. stats](./opencensus-python.md#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz ancak ölçüm uygulamasının farklı olması gerekir.
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric ile çalışmaya başlama
 
@@ -69,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -89,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -101,6 +101,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ```
 
 Bu tek telemetri öğesi, 41 farklı ölçüm ölçümlerinin toplamını temsil eder. Aynı değeri tekrar tekrar gönderdiğimiz için, aynı *maksimum (max)* ve *Minimum (min)* değerler içeren *Standart bir sapma (stDev)* 0 ' dır. *Value* özelliği, toplanan tüm değerlerin toplamını temsil eder.
+
+> [!NOTE]
+> GetMetric, son değerin (yani "ölçer") veya izleme histogramları/dağıtımlarını izlemeyi desteklemez.
 
 Günlükler (Analiz) deneyiminde Application Insights kaynağını inceliyoruz, bu tek bir telemetri öğesi şöyle görünür:
 
@@ -283,7 +286,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` bir ölçümün içerebileceği maksimum veri süresi serisi sayısıdır. Bu sınıra ulaşıldığında, ' a çağrı yapılır `TrackValue()` .
+* `seriesCountLimit` bir ölçümün içerebileceği maksimum veri süresi serisi sayısıdır. Bu sınıra ulaşıldığında, çağrısı `TrackValue()` izlenmeyecektir.
 * `valuesPerDimensionLimit` Boyut başına farklı değer sayısını benzer şekilde sınırlandırır.
 * `restrictToUInt32Values` Yalnızca negatif olmayan tamsayı değerlerinin izlenmesi gerekip gerekmediğini belirler.
 

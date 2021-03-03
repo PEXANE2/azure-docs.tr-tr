@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708722"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -154,7 +154,7 @@ Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın t
 
 Örneğin, JavaScript işlev uygulaması Node.js varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `languageWorkers:node:arguments` bir değeri olan uygulama ayarını ekleyin `--max-old-space-size=<max memory in MB>` .
 
-Ve 4 GB 'den fazla bellek içeren planlar için, bit genişliği platformu ayarının `64 Bit` [Genel ayarlar](/azure/app-service/configure-common#configure-general-settings)altında olarak ayarlandığından emin olun.
+Ve 4 GB 'den fazla bellek içeren planlar için, bit genişliği platformu ayarının `64 Bit` [Genel ayarlar](../app-service/configure-common.md#configure-general-settings)altında olarak ayarlandığından emin olun.
 
 ## <a name="region-max-scale-out"></a>Bölge maksimum ölçeği genişletme
 
@@ -162,13 +162,13 @@ Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bi
 
 [Azure Web sitesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=functions)işlevlerin tüm bölgesel kullanılabilirliğine bakın.
 
-|Bölge| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
 |Orta Avustralya| 100 | Kullanılamaz |
 |Orta Avustralya 2| 100 | Kullanılamaz |
 |Doğu Avustralya| 100 | 20 |
-|Avustralya Güneydoğu | 100 | 20 |
-|Brezilya Güney| 100 | 20 |
+|Güneydoğu Avustralya | 100 | 20 |
+|Güney Brezilya| 100 | 20 |
 |Orta Kanada| 100 | 20 |
 |Central US| 100 | 20 |
 |Çin Doğu 2| 100 | 20 |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1cd90bc1906140e6e559c1557234458035e54042
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722373"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için verileri hazırlama
 
@@ -27,9 +27,9 @@ Kendi metinden konuşmaya ses modelinizi eğmeden önce, ses kayıtları ve ili�
 > Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Kayıt betiğinizi hazırlarken aşağıdaki tümceyi eklediğinizden emin olun. 
 
 > "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
-Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](https://aka.ms/CNV-data-privacy) hakkında daha fazla bilgi edinmek için buraya bakın.
+Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) hakkında daha fazla bilgi edinmek için buraya bakın.
 
-> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
+> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
 
 ## <a name="data-types"></a>Veri türleri
 

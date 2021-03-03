@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Kavramlar
       items:
-        - name: HDInsight üzerindeki Apache bileşenleri
-          href: ./hdinsight-component-versioning.md
+        - name: Sürüm Oluşturma
+          items:
+            - name: Sürüm oluşturma tanıtımı
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight sürümleri
+              href: ./hdinsight-component-versioning.md
+            - name: 'HDInsight sürüm 4,0'
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight sürümü 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: Kullanımdan kaldırılan HDInsight sürümleri
+              href: ./hdinsight-retired-versions.md
         - name: Kurumsal Güvenlik Paketi
           href: ./enterprise-security-package.md
         - name: Hortonworks sürüm notları
@@ -650,7 +660,7 @@
             - name: IoT Hub ile Apache Kafka kullanma
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Confluent Şema Kayıt Defteri
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: Akış işlem hatları oluşturma
               items:
                 - name: 'Apache Spark, Apache Kafka ve Azure Cosmos DB'
@@ -817,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Yönetme
           items:
+            - name: Depolama hesapları arasında Hive tablolarını kopyalama
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Azure HDInsight 'ta varsayılan Hive meta veri deposu dış meta yüklemeye geçirme
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Hive iş yüklerini HDInsight 4.0 sürümüne geçirme
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive sorgularını iyileştirme

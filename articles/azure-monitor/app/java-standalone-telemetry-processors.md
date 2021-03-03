@@ -1,70 +1,62 @@
 ---
 title: Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
-description: Java için Azure Izleyici Application Insights telemetri işlemcileri yapılandırma
+description: Java için Azure Izleyici Application Insights telemetri işlemcilerini yapılandırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632589"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734579"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
 
 > [!NOTE]
-> Bu özellik hala önizleme aşamasındadır.
+> Telemetri işlemcileri özelliği önizleme aşamasındadır.
 
-Application Insights için Java 3,0 Aracısı artık veriler verilene kadar telemetri verilerini işleme yeteneğine sahiptir.
+Application Insights için Java 3,0 Aracısı, veriler verilene kadar telemetri verilerini işleyebilir.
 
-Telemetri işlemcilerin bazı kullanım durumları aşağıda verilmiştir:
- * Hassas verileri maskeleme
- * Koşullu özel boyutlar ekleyin
- * Toplama için kullanılan adı güncelleştirme Azure portal ve görüntüleme
- * Alım maliyetini denetlemek için span özniteliklerini bırakın
+Telemetri işlemcilerin bazı kullanım örnekleri aşağıda verilmiştir:
+ * Hassas verileri oluşturun.
+ * Özel boyutları koşullu olarak ekleyin.
+ * Azure portal benzer Telemetriyi toplamak için kullanılan span adını güncelleştirin.
+ * Alım maliyetlerini denetlemek için span özniteliklerini bırakın.
 
 ## <a name="terminology"></a>Terminoloji
 
-Telemetri işlemcilere atlamadan önce, dönemin ne olduğunu anlamak önemlidir.
+Telemetri işlemcileri hakkında bilgi vermeden önce, terim *aralığını* anlamalısınız. Yayılma, için genel bir terimdir:
 
-Bir yayılma, bu üç şeyin herhangi biri için genel bir terimdir:
+* Gelen istek.
+* Giden bağımlılığı (örneğin, başka bir hizmete uzak çağrı).
+* İşlem içi bağımlılık (örneğin, hizmetin alt bileşenleri tarafından gerçekleştirilen iş).
 
-* Gelen istek
-* Giden bağımlılığı (örn. başka bir hizmete uzaktan çağrı)
-* İşlem içi bağımlılık (örneğin, hizmetin alt bileşenleri tarafından gerçekleştirilen iş)
-
-Telemetri işlemcilerin amacı doğrultusunda bir yayılma alanının önemli bileşenleri şunlardır:
+Telemetri işlemcileri için bu yayılmış bileşenler önemlidir:
 
 * Name
 * Öznitelikler
 
-Yayılma adı, Azure portal istekler ve Bağımlılıklar için kullanılan birincil görüntüdir.
-
-Span öznitelikleri, belirli bir isteğin veya bağımlılığın hem standart hem de özel özelliklerini temsil eder.
+Yayılma adı, Azure portal istekler ve Bağımlılıklar için birincil görüntüdir. Span öznitelikleri, belirli bir isteğin veya bağımlılığın hem standart hem de özel özelliklerini temsil eder.
 
 ## <a name="telemetry-processor-types"></a>Telemetri işlemcisi türleri
 
-Şu anda iki tür telemetri işlemcisi vardır.
+Şu anda iki tür telemetri işlemcisi, öznitelik işlemcileri ve yayılma işlemcidir.
 
-#### <a name="attribute-processor"></a>Öznitelik işlemcisi
-
-Öznitelik işlemcisi, öznitelikleri ekleme, güncelleştirme, silme veya sağlama yeteneğine sahiptir.
-Ayrıca, varolan bir öznitelikten bir veya daha fazla yeni öznitelik çıkarabilir (normal bir ifade aracılığıyla).
-
-#### <a name="span-processor"></a>Yayılma işlemcisi
+Öznitelik işlemcisi özniteliği ekleyebilir, güncelleştirebilir, silebilir veya karma öznitelikleri içerebilir.
+Ayrıca, varolan bir öznitelikten bir veya daha fazla yeni özniteliği ayıklamak için normal bir ifade kullanabilir.
 
 Bir yayılma işlemcisi telemetri adını güncelleştirebilir.
-Ayrıca, yayılma adından bir veya daha fazla yeni öznitelik çıkarabilir (normal bir ifade aracılığıyla).
+Ayrıca, Aralık adından bir veya daha fazla yeni özniteliği ayıklamak için normal bir ifade kullanabilir.
 
 > [!NOTE]
-> Şu anda telemetri işlemcilerin yalnızca dize türündeki öznitelikleri işleyeceğini ve Boole veya sayı türündeki öznitelikleri işlemediğini unutmayın.
+> Şu anda telemetri işlemcileri yalnızca dize türündeki öznitelikleri işler. Boole veya sayı türündeki öznitelikleri işlemez.
 
 ## <a name="getting-started"></a>Başlarken
 
-Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `applicationinsights-agent-*.jar` aşağıdaki şablonla ile aynı dizine yerleştirin.
+Başlamak için, *üzerindeapplicationinsights.js* adlı bir yapılandırma dosyası oluşturun. *ApplicationInsights-Agent- \* . jar* ile aynı dizine kaydedin. Aşağıdaki şablonu kullanın.
 
 ```json
 {
@@ -88,29 +80,27 @@ Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `appl
 }
 ```
 
-## <a name="includeexclude-criteria"></a>Dahil etme/hariç tutma ölçütleri
+## <a name="include-criteria-and-exclude-criteria"></a>Ölçütleri ve dışlama ölçütlerini dahil et
 
 Her iki öznitelik işlemcisi ve span işlemcisi isteğe bağlı `include` ve `exclude` ölçütleri destekler.
-Bir işlemci yalnızca ölçütleriyle eşleşen (sağlanmışsa) bu yayılanlara uygulanır `include` _ve_ `exclude` (sağlanmışsa) ölçütleriyle eşleşmez.
+Bir işlemci yalnızca ölçütleriyle eşleşen yayılmalar için uygulanır `include` (sağlanmışsa) _ve_ `exclude` ölçütleriyle eşleşmez (sağlanmışsa).
 
-Bu seçeneği, `include` ve/veya `exclude` en az bir ile, ya da ' nin altında yapılandırmak için `matchType` `spanNames` `attributes` gereklidir.
-Dahil etme/hariç tutma yapılandırması, belirtilen birden fazla koşula sahip olmak için desteklenir.
-Bir eşleşmenin gerçekleşmesi için belirtilen koşulların tümü doğru olarak değerlendirilmelidir. 
+Bu seçeneği `include` veya `exclude` (veya her ikisi) altında yapılandırmak için, en az bir `matchType` ve ya da `spanNames` belirtin `attributes` .
+Include-exclude yapılandırması, belirtilen birden fazla koşula izin verir.
+Belirtilen koşulların tümü, eşleşme ile sonuçlanmaları için true olarak değerlendirilmelidir. 
 
-**Gerekli alan**: 
-* `matchType` içindeki öğelerin `spanNames` ve dizilerin nasıl `attributes` yorumlandığını denetler. Olası değerler: `regexp` veya `strict`. 
+* **Gerekli alan**: `matchType` `spanNames` dizilerdeki ve `attributes` dizilerdeki öğelerin nasıl yorumlandığını denetler. Olası değerler şunlardır `regexp` `strict` . 
 
-**Isteğe bağlı alanlar**: 
-* `spanNames` öğelerin en az biriyle eşleşmesi gerekir. 
-* `attributes` eşleştirilecek özniteliklerin listesini belirtir. Bir eşleşmenin gerçekleşmesi için bu özniteliklerin tümünün tam olarak eşleşmesi gerekir.
-
+* **Isteğe bağlı alanlar**: 
+    * `spanNames` öğelerin en az biriyle eşleşmesi gerekir. 
+    * `attributes` eşleştirilecek özniteliklerin listesini belirtir. Bu özniteliklerin hepsi, eşleşme sonucu ile tam olarak eşleşmelidir.
+    
 > [!NOTE]
-> `include`Ve belirtilirse özellikler, `exclude` `include` özelliklerden önce denetlenir `exclude` .
+> Her ikisi `include` de `exclude` belirtilirse, Özellikler `include` denetlenme öncesinde Özellikler denetlenir `exclude` .
 
-#### <a name="sample-usage"></a>Örnek Kullanım
+### <a name="sample-usage"></a>Örnek kullanım
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Bir eşleşmenin gerçekleşmesi için belirtilen koşulların tümü doğru ola
   }
 ]
 ```
-Daha fazla bilgi edinmek için [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md) belgelerini inceleyin.
+Daha fazla bilgi için bkz. [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="attribute-processor"></a>Öznitelik işlemcisi
 
-Öznitelikler işlemcisi bir yayılımın özniteliklerini değiştirir. Bu, isteğe bağlı olarak yayılmaları dahil etme/hariç tutma özelliğini destekler. Yapılandırma dosyasında belirtilen sırada gerçekleştirilen eylemlerin bir listesini alır. Desteklenen eylemler şunlardır:
+Öznitelik işlemcisi bir yayılımın özniteliklerini değiştirir. Yayılmaları ekleme veya hariç tutma özelliğini destekleyebilir. Yapılandırma dosyasının belirttiği sırada gerçekleştirilen eylemlerin bir listesini alır. İşlemci şu eylemleri destekler:
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-Yayılmalar içinde, anahtarın zaten mevcut olmadığı yeni bir öznitelik ekler.   
+Bu `insert` eylem, anahtar bulunmayan yayılmalar içine yeni bir öznitelik ekler.   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Yayılmalar içinde, anahtarın zaten mevcut olmadığı yeni bir öznitelik ekl
   }
 ]
 ```
-Eylem için `insert` aşağıdakiler gereklidir
-  * `key`
-  * biri `value` veya `fromAttribute`
-  * `action`:`insert`
+`insert`Eylem aşağıdaki ayarları gerektirir:
+* `key`
+* `value`Ya da`fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-Anahtar var olduğunda yayılmakta olan bir özniteliği güncelleştirir
+`update`Eylem, anahtarın zaten bulunduğu yayılmalar içindeki bir özniteliği güncelleştirir.
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Anahtar var olduğunda yayılmakta olan bir özniteliği güncelleştirir
   }
 ]
 ```
-Eylem için `update` aşağıdakiler gereklidir
-  * `key`
-  * biri `value` veya `fromAttribute`
-  * `action`:`update`
+`update`Eylem aşağıdaki ayarları gerektirir:
+* `key`
+* `value`Ya da`fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-Yayılma alanından bir özniteliği siler
+`delete`Eylem bir özniteliği bir yayılma alanından siler.
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Yayılma alanından bir özniteliği siler
   }
 ]
 ```
-Eylem için `delete` aşağıdakiler gereklidir
-  * `key`
-  * `action`: `delete`
+`delete`Eylem aşağıdaki ayarları gerektirir:
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-Karmalar (SHA1) var olan bir öznitelik değeri
+`hash`Eylem karmaları (SHA1) var olan bir öznitelik değeri.
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Karmalar (SHA1) var olan bir öznitelik değeri
   }
 ]
 ```
-Eylem için `hash` aşağıdakiler gereklidir
+`hash`Eylem aşağıdaki ayarları gerektirir:
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.2 ve üzeri sürümlerde
+> `extract`Özelliği yalnızca Version 3.0.2 ve üzeri sürümlerde kullanılabilir.
 
-Kural içinde belirtilen hedef anahtarlara giriş anahtarından bir normal ifade kuralı kullanarak değerleri ayıklar. Bir hedef anahtar zaten varsa, geçersiz kılınır. Kaynak olarak var olan özniteliğiyle [span işlemci](#extract-attributes-from-span-name) ayarına benzer şekilde davranır `toAttributes` .
+`extract`Eylem, giriş anahtarından, kuralın belirttiği anahtarları hedeflemek için bir normal ifade kuralı kullanarak değerleri ayıklar. Bir hedef anahtar zaten varsa, geçersiz kılınır. Bu eylem [](#extract-attributes-from-the-span-name) `toAttributes` , var olan özniteliğin kaynak olduğu yayılma işlemcisi ayarı gibi davranır.
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Kural içinde belirtilen hedef anahtarlara giriş anahtarından bir normal ifade
   }
 ]
 ```
-Eylem için `extract` aşağıdakiler gereklidir
+`extract`Eylem aşağıdaki ayarları gerektirir:
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-Daha fazla bilgi edinmek için [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md) belgelerini inceleyin.
+Daha fazla bilgi için bkz. [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="span-processor"></a>Yayılma işlemcisi
 
-Yayılma işlemcisi, span adına göre bir yayılma alanının yayılma adını veya özniteliklerini değiştirir. Bu, isteğe bağlı olarak yayılmaları dahil etme/hariç tutma özelliğini destekler.
+Yayılma işlemcisi, span adına göre bir yayılma alanının yayılma adını veya özniteliklerini değiştirir. Yayılmaları ekleme veya hariç tutma özelliğini destekleyebilir.
 
 ### <a name="name-a-span"></a>Bir yayılımı adlandırın
 
-Ad bölümünün bir parçası olarak aşağıdaki ayar gereklidir:
+`name`Bölüm, ayarı gerektirir `fromAttributes` . Bu özniteliklerden değerler, yapılandırmanın belirttiği sırada birleştirilmiş yeni bir ad oluşturmak için kullanılır. İşlemci, yalnızca bu özniteliklerin hepsi yayılma üzerinde mevcutsa, span adını değiştirecek.
 
-* `fromAttributes`: Anahtarların öznitelik değeri, yapılandırmada belirtilen sırada yeni bir ad oluşturmak için kullanılır. İşlemcinin yeniden adlandırmak için tüm öznitelik anahtarlarının yayılma alanında belirtilmesi gerekir.
-
-Aşağıdaki ayar isteğe bağlı olarak yapılandırılabilir:
-
-* `separator`: Belirtilen bir dize değerleri ayırmak için kullanılır
+Bu `separator` ayar isteğe bağlıdır. Bu ayar bir dizedir. Değerleri ayırmak için belirtilir.
 > [!NOTE]
-> Yeniden adlandırma, öznitelikler işlemcisi tarafından değiştirilmekte olan özniteliklere bağımlıysa, işlem hattı belirtiminde özniteliklerin işlemcisinden sonra yayılma işlemcisinin belirtildiğinden emin olun.
+> Yeniden adlandırma öznitelikleri değiştirmek için öznitelikler işlemcisini temel alıyorsa, işlem hattı belirtiminde özniteliklerin işlemcisinden sonra yayılma işlemcisinin belirtildiğinden emin olun.
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ Aşağıdaki ayar isteğe bağlı olarak yapılandırılabilir:
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Aralık adından öznitelikleri Ayıkla
+### <a name="extract-attributes-from-the-span-name"></a>Aralık adından öznitelikleri Ayıkla
 
-Yayılma adı ile eşleşen normal ifadelerin bir listesini alır ve alt deyimlere göre bunların özniteliklerini ayıklar. Bölümünün altında belirtilmelidir `toAttributes` .
+`toAttributes`Bölüm, yayılma adıyla eşleşecek normal ifadeleri listeler. Öznitelikleri alt ifadelere göre ayıklar.
 
-Aşağıdaki ayarlar gereklidir:
+`rules`Ayar gereklidir. Bu ayar, Aralık adından öznitelik değerlerini ayıklamak için kullanılan kuralları listeler. 
 
-`rules` : Aralık adından öznitelik değerlerini Ayıklanacak kuralların listesi. Yayılma adındaki değerler ayıklanan öznitelik adlarıyla değiştirilmiştir. Listedeki her bir kural, Regex model dizesidir. Yayılma adı, Regex ile denetlenir. Regex eşleşiyorsa, Regex 'nin adlandırılmış tüm alt ifadeleri öznitelik olarak ayıklanır ve yayılmasına eklenir. Her alt ifade adı bir öznitelik adı olur ve alt ifade ile eşleşen bölüm öznitelik değeri olur. Yayılma adındaki eşleşen bölüm ayıklanan öznitelik adı ile değiştirilmiştir. Öznitelikler zaten yayılmakta mevcutsa, üzerine yazılır. İşlem, tüm kurallar belirtildikleri sırada yinelenir. Sonraki her kural, önceki kural işlendikten sonra çıkış olan yayılma adı üzerinde çalışmaktadır.
+Yayılma adındaki değerler ayıklanan öznitelik adlarıyla değiştirilmiştir. Listedeki her kural bir normal ifade (Regex) model dizesidir. 
+
+Değerlerin ayıklanan öznitelik adlarıyla nasıl değiştirildiği aşağıda verilmiştir:
+
+1. Yayılma adı, Regex ile denetlenir. 
+1. Regex eşleşiyorsa, Regex 'nin adlandırılmış tüm alt ifadeleri öznitelik olarak ayıklanır. 
+1. Ayıklanan öznitelikler, yayılmasına eklenir. 
+1. Her alt ifade adı bir öznitelik adı olur. 
+1. Eşleşen alt ifade, öznitelik değeri haline gelir. 
+1. Yayılma adındaki eşleşen bölüm ayıklanan öznitelik adı ile değiştirilmiştir. Öznitelikler zaten yayılmakta mevcutsa, üzerine yazılır. 
+ 
+Bu işlem, tüm kurallar belirtildikleri sırada yinelenir. Sonraki her kural, önceki kuralın çıktısı olan yayılma adı üzerinde kullanılır.
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ Aşağıdaki ayarlar gereklidir:
 
 ```
 
-## <a name="list-of-attributes"></a>Özniteliklerin listesi
+## <a name="common-span-attributes"></a>Ortak span öznitelikleri
 
-Aşağıda telemetri işlemcilerde kullanılabilen bazı ortak span özniteliklerinin listesidir.
+Bu bölümde, telemetri işlemcilerin kullanabileceği bazı ortak Aralık öznitelikleri listelenmektedir.
 
 ### <a name="http-spans"></a>HTTP yayılmaları
 
 | Öznitelik  | Tür | Description | 
 |---|---|---|
 | `http.method` | dize | HTTP istek yöntemi.|
-| `http.url` | string | Formdaki tam HTTP isteği URL 'SI `scheme://host[:port]/path?query[#fragment]` . Genellikle parça HTTP üzerinden aktarılmaz, ancak biliniyorsa, bununla birlikte dahil edilmelidir.|
+| `http.url` | string | Formdaki tam HTTP isteği URL 'SI `scheme://host[:port]/path?query[#fragment]` . Parça genellikle HTTP üzerinden aktarılmaz. Ancak parça biliniyorsa, dahil edilmelidir.|
 | `http.status_code` | sayı | [Http yanıtı durum kodu](https://tools.ietf.org/html/rfc7231#section-6).|
-| `http.flavor` | string | Kullanılan HTTP protokolü türü |
+| `http.flavor` | string | HTTP protokolünün türü. |
 | `http.user_agent` | string | İstemci tarafından gönderilen [http Kullanıcı Aracısı](https://tools.ietf.org/html/rfc7231#section-5.5.3) üstbilgisinin değeri. |
 
 ### <a name="jdbc-spans"></a>JDBC yaymalar
 
 | Öznitelik  | Tür | Description  |
 |---|---|---|
-| `db.system` | dize | Kullanılan veritabanı yönetim sistemi (DBMS) ürünü için bir tanımlayıcı. |
+| `db.system` | dize | Kullanılan veritabanı yönetim sistemi (DBMS) ürünü için tanımlayıcı. |
 | `db.connection_string` | string | Veritabanına bağlanmak için kullanılan bağlantı dizesi. Katıştırılmış kimlik bilgilerini kaldırmanız önerilir.|
 | `db.user` | string | Veritabanına erişmek için Kullanıcı adı. |
-| `db.name` | string | Bu öznitelik, erişilmekte olan veritabanının adını raporlamak için kullanılır. Veritabanına geçiş yapan komutlar için, bu, hedef veritabanına ayarlanmalıdır (komut başarısız olsa bile).|
-| `db.statement` | string | Yürütülen veritabanı açıklaması.|
+| `db.name` | string | Erişilmekte olan veritabanının adını raporlamak için kullanılan dize. Veritabanına geçiş yapan komutlar için, komut başarısız olsa bile, bu dize hedef veritabanına ayarlanmalıdır.|
+| `db.statement` | string | Çalıştırılan veritabanı ekstresi.|

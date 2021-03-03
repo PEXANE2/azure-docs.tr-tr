@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448646"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699581"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes
 
@@ -107,6 +107,16 @@ IoT Edge aracılığıyla Kubernetes kümenizdeki uygulamaları dağıtma hakkı
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes ve Azure yay
 
 Azure Arc, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyici kullanmanıza da olanak tanır. Daha fazla bilgi için, [Kubernetes Azure-Arc etkinleştirilmiş olduğuna](../azure-arc/kubernetes/overview.md)bakın. Azure Arc fiyatlandırması hakkında bilgi için [Azure Arc fiyatlandırması](https://azure.microsoft.com/services/azure-arc/#pricing)' na gidin.
+
+2021 Mart 'tan itibaren, Azure Arc etkin Kubernetes, kullanıcılar ve standart kullanım ücretleri için genel kullanıma sunulacaktır. Değerli bir önizleme müşterisi olarak, Azure Arc etkin Kubernetes Azure Stack Edge cihazları için ücretsiz olarak kullanılabilir. Önizleme teklifini Kulln etmek için bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturun:
+
+1. **Sorun türü** altında **Faturalandırma**’yı seçin.
+2. **Abonelik** bölümünde aboneliğinizi seçin.
+3. **Hizmet** altında **Hizmetlerim**' i seçin ve ardından **Azure Stack Edge**' i seçin.
+4. **Kaynak** altında, kaynağınızı seçin.
+5. **Özet** altında, sorununuzun açıklamasını yazın.
+6. **Sorun türü** altında **beklenmeyen ücretler**' i seçin.
+7. **Sorun alt türü**' nün altında **ücretsiz denememe ilişkin ücretleri anladım**' ı seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

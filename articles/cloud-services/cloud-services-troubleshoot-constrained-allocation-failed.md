@@ -1,30 +1,24 @@
 ---
-title: Azure 'a bir bulut hizmeti dağıtma sırasında ConstrainedAllocationFailed sorunlarını giderme | Microsoft Docs
-description: Bu makalede, Azure 'a bir bulut hizmeti dağıtıldığında bir ConstrainedAllocationFailed özel durumunun nasıl çözümleneceği gösterilmektedir.
+title: Azure 'a bir bulut hizmeti (klasik) dağıtımı sırasında ConstrainedAllocationFailed sorunlarını giderme | Microsoft Docs
+description: Bu makalede, Azure 'a bir bulut hizmeti (klasik) dağıtımında bir ConstrainedAllocationFailed özel durumunun nasıl çözümleneceği gösterilmektedir.
 services: cloud-services
 author: mibufo
 ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: de344bbcd89158676bacf2a8aa1743d282700b9d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/22/2021
+ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738301"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-to-azure"></a>Azure 'a bulut hizmeti dağıtma sırasında ConstrainedAllocationFailed sorunlarını giderme
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Azure 'a bir bulut hizmeti (klasik) dağıtımı sırasında ConstrainedAllocationFailed sorunlarını giderme
 
-Bu makalede, Azure Cloud Services kısıtlamalar nedeniyle dağıtabeceği ayırma hataları giderilir.
+Bu makalede, Azure bulut hizmetleri 'nin (klasik) ayırma kısıtlamaları nedeniyle dağıtabeceği ayırma hatalarıyla ilgili sorunları giderebilirsiniz.
 
-Şunları yaptığınızda Microsoft Azure ayırır:
-
-- Cloud Services örnekleri yükseltiliyor
-
-- Yeni Web veya çalışan rolü örnekleri ekleme
-
-- Bir bulut hizmetine örnek dağıtma
+Bir bulut hizmetine (klasik) örnekler dağıtırken veya yeni Web veya çalışan rolü örnekleri eklediğinizde Microsoft Azure işlem kaynaklarını ayırır.
 
 Azure abonelik sınırına ulaşmadan bile bu işlemler sırasında zaman zaman bir hata alabilirsiniz.
 
@@ -33,9 +27,11 @@ Azure abonelik sınırına ulaşmadan bile bu işlemler sırasında zaman zaman 
 
 ## <a name="symptom"></a>Belirti
 
-Azure portal, bulut hizmetinize gidin ve kenar çubuğu 'nda günlükleri görüntülemek için *işlem günlükleri (klasik)* seçeneğini belirleyin.
+Azure portal, bulut hizmetinize (klasik) gidin ve kenar çubuğu 'nda günlükleri görüntülemek için *işlem günlüğü (klasik)* seçeneğini belirleyin.
 
-Bulut hizmetinizin günlüklerini incelerken aşağıdaki özel durumu görürsünüz:
+![Görüntü, Işlem günlüğü (klasik) dikey penceresini gösterir.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+
+Bulut hizmetinizin (klasik) günlüklerini incelerken aşağıdaki özel durumu görürsünüz:
 
 |Özel durum türü  |Hata İletisi  |
 |---------|---------|
@@ -43,99 +39,42 @@ Bulut hizmetinizin günlüklerini incelerken aşağıdaki özel durumu görürs�
 
 ## <a name="cause"></a>Nedeni
 
-Dağıttığınız bölge veya kümeyle ilgili bir kapasite sorunu vardır. Seçtiğiniz kaynak SKU 'SU belirtilen konum için kullanılabilir olmadığında gerçekleşir.
+İlk örnek bir bulut hizmetine dağıtıldığında (herhangi bir hazırlama veya üretimde), bu bulut hizmeti bir kümeye sabitlenir.
 
-> [!NOTE]
-> Bir bulut hizmetinin ilk düğümü dağıtıldığında, bir kaynak havuzuna *sabitlenmiştir* . Kaynak havuzu tek bir küme veya bir grup küme olabilir.
->
-> Zaman içinde, bu kaynak havuzundaki kaynaklar tam olarak kullanılabilir hale gelebilir. Bir bulut hizmeti, sabitlenmiş kaynak havuzunda yeterli kaynak olmadığında ek kaynaklar için bir ayırma isteği yapıyorsa, istek bir [ayırma hatasına](cloud-services-allocation-failures.md)neden olur.
+Zaman içinde, bu kümedeki kaynaklar tam olarak kullanılabilir hale gelebilir. Bir bulut hizmeti (klasik), sabitlenmiş kümede yeterli kaynak olmadığında daha fazla kaynak için bir ayırma isteği yapıyorsa, istek bir ayırma hatasına neden olur. Daha fazla bilgi için bkz. [ayırma hatası yaygın sorunları](cloud-services-allocation-failures.md#common-issues).
 
 ## <a name="solution"></a>Çözüm
 
-Bu senaryoda, bulut hizmetinizi dağıtmak için farklı bir bölge veya SKU seçmeniz gerekir. Bulut hizmetinizi dağıtmak veya yükseltmeden önce, bir bölgede veya kullanılabilirlik alanında hangi SKU 'Ların kullanılabildiğini belirleyebilirsiniz. Aşağıdaki [Azure CLI](#list-skus-in-region-using-azure-cli), [PowerShell](#list-skus-in-region-using-powershell)veya [REST API](#list-skus-in-region-using-rest-api) süreçlerini izleyin.
+Mevcut bulut hizmetleri bir kümeye *sabitlenmiştir* . Bulut hizmeti (klasik) için başka dağıtımlar da aynı kümede olur.
 
-### <a name="list-skus-in-region-using-azure-cli"></a>Azure CLı kullanarak bölgedeki SKU 'Ları listeleme
+Bu senaryoda bir ayırma hatası yaşarsanız, önerilen eylem kursu yeni bir bulut hizmetine (klasik) yeniden dağıtmanız (ve *CNAME*'i güncelleştirmeniz).
 
-[Az VM List-SKU](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) komutunu kullanabilirsiniz.
+> [!TIP]
+> Platformun o bölgedeki tüm kümelerden seçmesine olanak tanıdığı için büyük ihtimalle en başarılı çözüm bu olacaktır.
 
-- Kullanmakta olduğunuz `--location` konuma çıktıyı filtrelemek için parametresini kullanın.
-- `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.
-- Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) .
+> [!NOTE]
+> Bu çözümün sıfır kapalı kalma süresi olması gerekir.
 
-    **Örneğin:**
+1. İş yükünü yeni bir bulut hizmetine (klasik) dağıtın.
+    - Daha fazla yönerge için bkz. [bulut hizmeti oluşturma ve dağıtma (klasik)](cloud-services-how-to-create-deploy-portal.md) Kılavuzu.
 
-    ```azurecli
-    az vm list-skus --location southcentralus --size Standard_F --output table
-    ```
+    > [!WARNING]
+    > Bu dağıtım yuvasıyla ilişkili IP adresini kaybetmek istemiyorsanız, çözüm 3 ' ü kullanabilirsiniz [-IP adresini saklayın](cloud-services-allocation-failures.md#solutions).
 
-    **Örnek sonuçlar:** ![ ' Az VM List-SKU--location Güneydoğu ABD--boyut Standard_F--çıkış tablosu ' komutunun çalıştırıldığı Azure CLı çıkışı kullanılabilir SKU 'Ları gösterir.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+1. *CNAME* veya *bir* kaydı, trafiği yeni bulut hizmetine (klasik) işaret etmek üzere güncelleştirin.
+    - Daha fazla yönerge için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma (klasik)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) Kılavuzu.
 
-#### <a name="list-skus-in-region-using-powershell"></a>PowerShell kullanarak bölgedeki SKU 'Ları listeleme
+1. Sıfır trafik eski siteye gittikten sonra eski bulut hizmetini (klasik) silebilirsiniz.
+    - Daha fazla yönerge için [dağıtımları silme ve bulut hizmeti (klasik)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) kılavuzuna bakın.
+    - Bulut hizmetinizdeki (klasik) ağ trafiğini görmek için bkz. [bulut hizmeti 'Ne giriş (klasik) izleme](cloud-services-how-to-monitor.md).
 
-[Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanabilirsiniz.
-
-- Sonuçları konuma göre filtreleyin.
-- Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
-- Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) .
-
-**Örneğin:**
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
-```
-
-**Diğer bazı yararlı komutlar:**
-
-Boyut (Standard_DS14_v2) içeren konumları filtreleyin:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-```
-
-Boyut (v3) içeren tüm konumları filtreleyin:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
-
-#### <a name="list-skus-in-region-using-rest-api"></a>REST API kullanarak bölgede SKU 'Ları listeleme
-
-[Kaynak SKU 'ları-listeleme](https://docs.microsoft.com/rest/api/compute/resourceskus/list) işlemini kullanabilirsiniz. Kullanılabilir SKU 'Ları ve bölgeleri aşağıdaki biçimde döndürür:
-
-```json
-{
-  "value": [
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A0",
-      "tier": "Standard",
-      "size": "A0",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A1",
-      "tier": "Standard",
-      "size": "A1",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    <Rest_of_your_file_is_located_here...>
-  ]
-}
-    
-```
+Bkz. [bulut hizmeti (klasik) ayırma hatalarında sorun giderme | ](cloud-services-allocation-failures.md#common-issues) Daha fazla düzeltme adımları için Microsoft docs.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla ayırma hatası çözümü ve bunların nasıl oluşturulduğunu daha iyi anlamak için:
+Daha fazla ayırma hatası çözümü ve arka plan bilgileri için:
 
 > [!div class="nextstepaction"]
-> [Ayırma arızaları (bulut Hizmetleri)](cloud-services-allocation-failures.md)
+> [Ayırma arızaları-bulut hizmeti (klasik)](cloud-services-allocation-failures.md)
 
 Azure sorununuz bu makalede giderilmemişse [MSDN ve Stack Overflow](https://azure.microsoft.com/support/forums/)Azure forumlarını ziyaret edin. Sorununuzu bu forumlara gönderebilir veya [ @AzureSupport Twitter 'da](https://twitter.com/AzureSupport)ilan edebilirsiniz. Ayrıca, bir Azure destek isteği gönderebilirsiniz. Destek isteği göndermek için [Azure desteği](https://azure.microsoft.com/support/options/) sayfasında *Destek Al*' ı seçin.

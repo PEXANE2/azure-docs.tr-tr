@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 73496e350a5e40a3945343271b76c6d883991b62
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719942"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure İzleyici'de Log Analytics aracısıyla özel günlükleri toplama
 
 Azure Izleyici 'de Log Analytics aracısına yönelik özel günlük veri kaynağı, hem Windows hem de Linux bilgisayarlarındaki metin dosyalarından olayları toplamanıza olanak tanır. Birçok uygulama, Windows olay günlüğü veya Syslog gibi standart günlüğe kaydetme hizmetleri yerine metin dosyalarına bilgi kaydeder. Toplandıktan sonra, sorgulardaki tek tek alanlara verileri ayrıştırıp verileri toplama sırasında tek tek alanlara ayıklayabilirsiniz.
 
 > [!IMPORTANT]
-> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](../platform/log-analytics-agent.md) özel günlüklerin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
+> Bu makalede, Azure Izleyici tarafından kullanılan aracılardan biri olan [Log Analytics aracısıyla](./log-analytics-agent.md) özel günlüklerin toplanması ele alınmaktadır. Diğer aracılar farklı veriler toplar ve farklı şekilde yapılandırılır. Kullanılabilir aracıların ve toplayabilecekleri verilerin bir listesi için bkz. [Azure izleyici aracılarına genel bakış](../agents/agents-overview.md) .
 
 ![Özel günlük koleksiyonu](media/data-sources-custom-logs/overview.png)
 
@@ -78,7 +78,7 @@ Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalı
 
 Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenlerin örnekleri verilmiştir.
 
-| Description | Yol |
+| Açıklama | Yol |
 |:--- |:--- |
 | *C:\logs* içindeki tüm dosyalar Windows aracısında. txt uzantısıyla |C:\Logs \\ \* . txt |
 | *C:\logs* içindeki tüm dosyalar, Windows aracısında log ve. txt uzantısıyla başlayan bir ada sahip. |C:\Logs\log \* . txt |
@@ -105,7 +105,7 @@ Azure Izleyici özel günlüğünden toplamaya başladıktan sonra, kayıtları 
 > Sorgudaki RawData özelliği eksikse, tarayıcınızı kapatıp yeniden açmanız gerekebilir.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>6. Adım. Özel günlük girdilerini ayrıştırma
-Tüm günlük girdisi **rawData** adlı tek bir özellikte depolanacak.  Büyük olasılıkla her bir girişteki farklı bilgi parçalarını her kayıt için ayrı ayrı özelliklere ayırmak isteyeceksiniz. **RawData** 'ı birden çok özelliğe ayrıştırma seçenekleri Için [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md) bölümüne bakın.
+Tüm günlük girdisi **rawData** adlı tek bir özellikte depolanacak.  Büyük olasılıkla her bir girişteki farklı bilgi parçalarını her kayıt için ayrı ayrı özelliklere ayırmak isteyeceksiniz. **RawData** 'ı birden çok özelliğe ayrıştırma seçenekleri Için [Azure izleyici 'de metin verileri ayrıştırma](../logs/parse-text.md) bölümüne bakın.
 
 ## <a name="removing-a-custom-log"></a>Özel günlüğü kaldırma
 Daha önce tanımladığınız özel bir günlüğü kaldırmak için Azure portal aşağıdaki işlemi kullanın.
@@ -116,7 +116,7 @@ Daha önce tanımladığınız özel bir günlüğü kaldırmak için Azure port
 ## <a name="data-collection"></a>Veri toplama
 Azure Izleyici, her bir özel günlüğün her 5 dakikada bir yeni girişler toplar.  Aracı, topladığı her günlük dosyasında yerini kaydeder.  Aracı bir süre çevrimdışı kalırsa, bu girdiler aracı çevrimdışıyken oluşturulsa bile, Azure Izleyici son kaldığınız yerden girişler toplar.
 
-Günlük girişinin tüm içeriği **rawData** adlı tek bir özelliğe yazılır.  İçeri aktarılan her günlük girişini birden çok özelliğe ayrıştırmaya yönelik yöntemler için bkz. [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md) .
+Günlük girişinin tüm içeriği **rawData** adlı tek bir özelliğe yazılır.  İçeri aktarılan her günlük girişini birden çok özelliğe ayrıştırmaya yönelik yöntemler için bkz. [Azure izleyici 'de metin verileri ayrıştırma](../logs/parse-text.md) .
 
 ## <a name="custom-log-record-properties"></a>Özel günlük kaydı özellikleri
 Özel günlük kayıtları, sağladığınız günlük adı ve aşağıdaki tablodaki özellikler içeren bir tür vardır.
@@ -125,7 +125,7 @@ Günlük girişinin tüm içeriği **rawData** adlı tek bir özelliğe yazılı
 |:--- |:--- |
 | TimeGenerated |Kaydın Azure Izleyici tarafından toplandığı tarih ve saat.  Günlük zaman tabanlı bir sınırlayıcı kullanıyorsa, bu, girdiden toplanan süredir. |
 | SourceSystem |Kaydın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlantı veya System Center Operations Manager <br> Linux – tüm Linux aracıları |
-| RawData |Toplanan girişin tam metni. Büyük olasılıkla, [Bu verileri tek tek özelliklerde ayrıştırmaya](../log-query/parse-text.md)isteyeceksiniz. |
+| RawData |Toplanan girişin tam metni. Büyük olasılıkla, [Bu verileri tek tek özelliklerde ayrıştırmaya](../logs/parse-text.md)isteyeceksiniz. |
 | ManagementGroupName |System Center Işlemleri için yönetim grubunun adı aracıları yönetme.  Diğer aracılar için, bu AOI 'dir\<workspace ID\> |
 
 
@@ -171,8 +171,8 @@ Verileriniz yukarıda listelenen ölçütlere sığıyorsa özel Günlükler yar
 Verilerinizin özel günlüklerle toplanamadığı durumlarda, aşağıdaki alternatif stratejileri göz önünde bulundurun:
 
 - Azure Izleyici tarafından toplanan [Windows olaylarına](data-sources-windows-events.md) veya [Syslog](data-sources-syslog.md) 'a veri yazmak için özel bir komut dosyası veya başka bir yöntem kullanın. 
-- [Http veri toplayıcı API 'sini](../platform/data-collector-api.md)kullanarak verileri doğrudan Azure izleyici 'ye gönderin. 
+- [Http veri toplayıcı API 'sini](../logs/data-collector-api.md)kullanarak verileri doğrudan Azure izleyici 'ye gönderin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* İçeri aktarılan her günlük girişini birden çok özelliğe ayrıştırmaya yönelik yöntemler için bkz. [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md) .
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* İçeri aktarılan her günlük girişini birden çok özelliğe ayrıştırmaya yönelik yöntemler için bkz. [Azure izleyici 'de metin verileri ayrıştırma](../logs/parse-text.md) .
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.

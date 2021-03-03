@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 43b118b8f3f7444cd3c4d0cfa31b72a3522d6d84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392587"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710218"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
 
@@ -22,7 +22,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 - [Azure SQL yönetilen örneği tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile bir Azure-SSIS IR sağlama](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS paketlerini Azure SQL yönetilen örnek Aracısı işine göre yürütme](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSSıSDB günlüklerini Azure SQL yönetilen örnek Aracısı işine göre temizle](#clean-up-ssisdb-logs)
-- [Azure SQL yönetilen örneği ile yük devretmeyi Azure-SSIS IR](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Azure SQL yönetilen örneği ile yük devretmeyi Azure-SSIS IR](configure-bcdr-azure-ssis-integration-runtime.md)
 - [Şirket içi SSIS iş yüklerini, veritabanı iş yükü hedefi olarak Azure SQL yönetilen örneği ile ADF 'de SSIS 'ye geçirme](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama

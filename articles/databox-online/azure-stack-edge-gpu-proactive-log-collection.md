@@ -1,53 +1,57 @@
 ---
 title: Azure Stack Edge Pro cihazında öngörülü günlük toplamayı anlama
-description: Azure Stack Edge Pro cihazında öngörülü günlük toplamanın nasıl yapılacağını açıklar.
+description: Azure Stack Edge Pro cihazında öngörülü günlük toplamanın nasıl yapıldığını ve devre dışı bırakılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 02/23/2021
 ms.author: alkohli
-ms.openlocfilehash: f79de47ec0ffad11f650054b581dbbaae030edbf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 064af116112f0b530ac0cc9b5755dcec2cf0bd07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466964"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722079"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda öngörülü günlük toplama
 
-Cihaz sorunlarını verimli bir şekilde gidermeye yardımcı olması için, Azure Stack Edge cihazınızda, sistem durumu göstergelerine göre öngörülü günlük toplamayı etkinleştirebilirsiniz. Bu makalede öngörülü günlük toplama, nasıl etkinleştirileceği ve öngörülü günlük toplama etkinleştirildiğinde verilerin nasıl işlendiği açıklanır.
-   
+Öngörülü günlük toplama, cihaz sorunlarını verimli bir şekilde gidermenize yardımcı olması için Azure Stack Edge cihazınızda sistem durumu göstergelerini toplar. Öngörülü günlük toplama varsayılan olarak etkindir. Bu makalede nelerin günlüğe kaydedildiği, Microsoft 'un verileri nasıl işlediği ve öngörülü günlük toplamanın nasıl devre dışı bırakılacağı veya etkinleştirileceği açıklanmaktadır. 
+
 Bu makaledeki bilgiler Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazları için geçerlidir.
 
 ## <a name="about-proactive-log-collection"></a>Öngörülü günlük toplama hakkında
 
-Microsoft müşteri desteği ve Mühendisliği ekipleri, işlem sırasında ortaya çıkan sorunları verimli bir şekilde tanımlamak ve gidermek için Azure Stack Edge cihazınızdan sistem günlüklerini kullanır. Öngörülü günlük toplama, Microsoft 'un bir sorun/olay (izlenmekte olan olaylar için öngörülü günlük toplama göstergeleri bölümüne bakın), müşterinin Azure Stack Edge gereci tarafından algılandığına yönelik bir yöntemdir. Sorunla ilgili destek günlükleri, Microsoft tarafından yönetilen ve denetlenen bir Azure depolama hesabına otomatik olarak yüklenir. Microsoft Desteği ve Microsoft mühendisleri, müşteriyle ilgili sorunu çözmeye yönelik en iyi eylemi öğrenmek için bu destek günlüklerini gözden geçirir.    
+Microsoft müşteri desteği ve Mühendisliği ekipleri, işlem sırasında ortaya çıkan sorunları verimli bir şekilde tanımlamak ve gidermek için Azure Stack Edge cihazınızdan sistem günlüklerini kullanır. Öngörülü günlük toplama, Microsoft 'un müşterinin Azure Stack Edge gereci tarafından bir sorun/olay algıladığını belirten bir yöntemdir. İzlenen olaylar için bkz. [proaktif günlük toplama göstergeleri](#proactive-log-collection-indicators) . Sorunla ilgili destek günlükleri, Microsoft tarafından yönetilen ve denetleyen bir Azure depolama hesabına otomatik olarak yüklenir. Microsoft Desteği ve Microsoft mühendisleri, müşteriyle ilgili sorunu çözmeye yönelik en iyi eylemi öğrenmek için bu destek günlüklerini gözden geçirir.
 
 > [!NOTE]
-> Bu günlükler yalnızca hata ayıklama amacıyla kullanılır ve sorunlar söz konusu olduğunda müşterilere destek sağlar. 
+> Bu günlükler yalnızca hata ayıklama amacıyla ve sorunlar durumunda müşterilere destek sağlamak için kullanılır.
 
 
 ## <a name="enabling-proactive-log-collection"></a>Öngörülü günlük toplamayı etkinleştirme
 
-Cihazı, yerel kullanıcı arabirimi aracılığıyla etkinleştirmeye çalışırken öngörülü günlük toplamayı etkinleştirebilirsiniz. 
+Öngörülü günlük toplama varsayılan olarak etkindir. Cihazı yerel kullanıcı arabirimi aracılığıyla etkinleştirmeye çalışırken öngörülü günlük toplamayı devre dışı bırakabilirsiniz. 
 
-1. Cihazın yerel Web Kullanıcı arabiriminde, **Başlarken** sayfasına gidin.
+1. Cihazın yerel Web Kullanıcı arabiriminde **Başlarken** sayfasına gidin.
+
 2. **Etkinleştirme** kutucuğunda **Etkinleştir**' i seçin. 
 
     ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 1](./media/azure-stack-edge-pro-r-deploy-activate/activate-1.png)
-    
+
 3. **Etkinleştir** bölmesinde:
-    1. [Azure Stack Edge Pro R için etkinleştirme anahtarını al](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key)bölümünde aldığınız **etkinleştirme anahtarını** girin.
 
-    1. Microsoft 'un günlükleri cihazın sistem durumunu temel alarak toplamasını sağlamak için öngörülü günlük toplamayı etkinleştirebilirsiniz. Bu şekilde toplanan Günlükler bir Azure depolama hesabına yüklenir.
-    
-    1. **Uygula**’yı seçin.
+   1. [Azure Stack Edge Pro R için etkinleştirme anahtarını al](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key)bölümünde aldığınız **etkinleştirme anahtarını** girin.
 
-    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 2](./media/azure-stack-edge-pro-r-deploy-activate/activate-2.png)
+      Etkin olduktan sonra, öngörülü günlük toplama varsayılan olarak etkindir ve Microsoft 'un, cihazın sistem durumunu temel alarak günlükleri toplamasına izin verir. Bu günlükler bir Azure depolama hesabına yüklenir. 
 
+      Microsoft 'un günlükleri toplamasını durdurmak için öngörülü günlük toplamayı devre dışı bırakabilirsiniz.
 
+   1. Cihazda öngörülü günlük toplamayı devre dışı bırakmak istiyorsanız, **devre dışı bırak**' ı seçin.
+
+   1. **Etkinleştir**' i seçin.
+
+   ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 2](./media/azure-stack-edge-pro-r-deploy-activate/activate-2.png)
 
 ## <a name="proactive-log-collection-indicators"></a>Öngörülü günlük toplama göstergeleri
 
@@ -66,11 +70,11 @@ Microsoft, önceki listeye yeni olaylar eklemeye devam edecektir. Yeni olaylar i
 
 ## <a name="other-log-collection-methods"></a>Diğer günlük toplama yöntemleri
 
-Algılanan belirli bir sorunla ilgili belirli günlükleri toplayan öngörülü günlük toplamanın yanı sıra sistem durumu ve davranışının çok daha ayrıntılı olarak anlaşılmasına neden olabilecek başka günlük koleksiyonları vardır. Genellikle bu diğer günlük koleksiyonları bir destek isteği sırasında Yürütülebilirler veya Microsoft tarafından cihazın sağladığı telemetri verilerine göre tetiklenir.  
+Algılanan belirli bir sorunla ilgili belirli günlükleri toplayan öngörülü günlük toplamanın yanı sıra, diğer günlük koleksiyonları sistem durumu ve davranışını daha ayrıntılı bir şekilde anlayabilirler. Genellikle, bu diğer Günlükler destek isteği sırasında toplanabilir veya Microsoft tarafından cihazdaki telemetri verilerine bağlı olarak tetiklenebilir.
 
 ## <a name="handling-data"></a>Verileri işleme
 
-Bir müşteri öngörülü günlük toplamayı etkinleştiriyorlarsa, burada açıklandığı gibi, Microsoft 'un günlükleri Azure Stack Edge cihazından toplamasını kabul etmiş olursunuz. Müşteri Ayrıca, Microsoft tarafından yönetilen ve denetlenen bir Azure depolama hesabında bu günlüklerin karşıya yüklenmesini ve saklanmasını de onaylar ve onaylar.
+Öngörülü günlük toplama etkinleştirildiğinde, müşteri, burada açıklandığı gibi Azure Stack Edge cihazında Microsoft 'un günlükleri toplamasını kabul eder. Müşteri Ayrıca, Microsoft tarafından yönetilen ve denetlenen bir Azure depolama hesabında bu günlüklerin karşıya yüklenmesini ve saklanmasını de onaylar ve onaylar.
 
 Microsoft, yalnızca sistem durumu ve sorunlarını gidermek için verileri kullanır. Veriler pazarlama, reklam veya müşteri izni olmadan herhangi bir ticari amaçla kullanılmaz. 
 

@@ -1,22 +1,22 @@
 ---
-title: VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme
-description: Map bir VM'ler için Azure İzleyici özelliğidir. Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, farklı senaryolarda harita özelliğinin nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
+title: VM öngörüleri ile uygulama bağımlılıklarını görüntüleme
+description: Map, VM öngörülerinin bir özelliğidir. Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, farklı senaryolarda harita özelliğinin nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625105"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719653"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici Map özelliğini kullanın
-VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM öngörülerinin eşleme özelliğini kullanın
+VM öngörüleri ' nde, bulunan uygulama bileşenlerini Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM) görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
 
-VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici etkinleştirme](../insights/vminsights-enable-overview.md).
+VM öngörülerini yapılandırma hakkında daha fazla bilgi için bkz. [VM öngörülerini etkinleştirme](./vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 [Azure portalında](https://portal.azure.com) oturum açın.
@@ -49,7 +49,7 @@ Harita özelliğinin ilgili uyarıları görüntülemesini sağlamak için, beli
 - Uyarıları bilgisayara (örneğin, **bilgisayar aralığı 1 dakikaya göre**) gruplandırmak için bir yan tümce ekleyin.
 - Uyarının bir ölçümde temelini oluşturma.
 
-Azure uyarıları ve uyarı kuralları oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de birleştirilmiş uyarılar](../platform/alerts-overview.md).
+Azure uyarıları ve uyarı kuralları oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de birleştirilmiş uyarılar](../alerts/alerts-overview.md).
 
 Sağ üst köşede, **gösterge** seçeneği haritadaki sembolleri ve rolleri tanımlar. Haritalarınızı daha yakından gözden geçirin ve etrafında hareket ettirmek için sağ alt köşedeki yakınlaştırma denetimlerini kullanın. Yakınlaştırma düzeyini ayarlayabilir ve haritanın boyutunu sayfanın boyutuna uydurtırabilirsiniz.  
 
@@ -85,7 +85,7 @@ Grup izlenen ve izlenmeyen sunucuları içeriyorsa, sunucuları filtrelemek içi
 
 ## <a name="view-a-map-from-a-vm"></a>Bir VM 'den harita görüntüleme 
 
-VM'ler için Azure İzleyici doğrudan bir VM 'den erişmek için:
+VM öngörülerini doğrudan bir VM 'den erişmek için:
 
 1. Azure portal **sanal makineler**' i seçin. 
 2. Listeden bir VM seçin. **İzleme** bölümünde **Öngörüler**' i seçin.  
@@ -99,7 +99,7 @@ Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların ge�
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesinden Haritayı görüntüle
 
-Bir sanal makine ölçek kümesinden VM'ler için Azure İzleyici doğrudan erişmek için:
+VM öngörülerini doğrudan bir sanal makine ölçek kümesinden erişmek için:
 
 1. Azure portal, **Sanal Makine Ölçek Kümeleri**' ni seçin.
 2. Listeden bir VM seçin. Sonra **izleme** bölümünde **Öngörüler**' i seçin.  
@@ -128,11 +128,10 @@ Azure Izleyici 'de, eşleme özelliği sanal makinelerinizin ve bağımlılıkla
 
 Sayfanın üst kısmındaki **çalışma alanı** seçicisini kullanarak bir çalışma alanı seçin. Birden fazla Log Analytics çalışma alanınız varsa, Çözümle etkinleştirilmiş ve VM 'Leri raporlayan çalışma alanını seçin. 
 
-**Grup** Seçicisi, seçili çalışma alanıyla ilgili olan abonelikleri, kaynak gruplarını, [bilgisayar gruplarını](../platform/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca eşleme özelliği için geçerlidir ve performans ya da sistem durumunu etkilemez.
+**Grup** Seçicisi, seçili çalışma alanıyla ilgili olan abonelikleri, kaynak gruplarını, [bilgisayar gruplarını](../logs/computer-groups.md)ve sanal makine ölçek kümelerini döndürür. Seçiminiz yalnızca eşleme özelliği için geçerlidir ve performans ya da sistem durumunu etkilemez.
 
 Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların geçmişte nasıl arandığı hakkında daha fazla bilgi almak istiyorsanız, geçmiş zaman aralıklarını bir saate kadar sorgulayabilirsiniz. Sorguyu çalıştırmak için **Timerange** seçiciyi kullanın. Örneğin, bir olay sırasında veya bir değişiklikten önceki durumu görmek için bir sorgu çalıştırabilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Performans sorunlarını belirlemek, performansı denetlemek ve sanal makinelerinizin genel kullanımını anlamak için bkz. [VM'ler için Azure izleyici için performans durumunu görüntüleme](vminsights-performance.md). 
-
+Performans sorunlarını belirlemek, performansı denetlemek ve sanal makinelerinizin genel kullanımını anlamak için bkz. [VM öngörüleri için performans durumunu görüntüleme](vminsights-performance.md).

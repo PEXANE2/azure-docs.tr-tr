@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621412"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719959"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Azure Izleyici aracısını (Önizleme) yükler
 Bu makalede, Azure [izleyici aracısını](azure-monitor-agent-overview.md) hem Azure sanal makinelerine hem de Azure Arc özellikli sunuculara yüklemek için şu anda kullanılabilen farklı seçenekler ve ayrıca aracının hangi verileri toplayacağını tanımlayan [veri toplama kurallarıyla ilişkiler](data-collection-rule-azure-monitor-agent.md) oluşturma seçenekleri sunulmaktadır.
@@ -42,7 +42,7 @@ Azure Izleyici aracısını Azure sanal makinelerine ve Azure Arc etkin sunucula
 Aracıyı yüklemek ve aşağıdaki ilişkiyi oluşturmak için örnek Şablonlar alın: 
 
 - [Azure Izleyici Aracısı 'nı yüklemek için şablon (Azure ve Azure ARC)](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [Veri toplama kuralıyla ilişki oluşturmak için şablon](../samples/resource-manager-data-collection-rules.md)
+- [Veri toplama kuralıyla ilişki oluşturmak için şablon](./resource-manager-data-collection-rules.md)
 
 Aşağıdaki komutlar gibi [Kaynak Yöneticisi şablonlar için herhangi bir dağıtım yöntemi](../../azure-resource-manager/templates/deploy-powershell.md) kullanarak şablonları yükler.
 
@@ -82,7 +82,7 @@ New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWind
 New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 Azure Izleyici aracısını Azure sanal makinelerine ve Azure Arc etkin sunucularına, sanal makine uzantısı eklemek için Azure CLı komutunu kullanarak yükleyebilirsiniz. 
 
 ### <a name="azure-virtual-machines"></a>Azure sanal makineleri

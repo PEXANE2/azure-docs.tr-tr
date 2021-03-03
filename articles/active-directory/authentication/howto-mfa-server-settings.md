@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742706"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689054"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA sunucu ayarlarını yapılandırma
 
@@ -42,10 +42,10 @@ Bir kerelik geçiş oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
 1. **Azure Active Directory** arayıp seçin, sonra **güvenlik**  >  **MFA**  >  **bir kerelik geçişe** gidin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Gerekirse, atlama için çoğaltma grubunu seçin.
-1. Kullanıcı adını olarak girin `username\@domain.com` . Atlamamasının son olması gereken saniye sayısını ve atlama nedenini girin.
-1. **Ekle**’yi seçin. Zaman sınırı hemen yürürlüğe girer. Kullanıcının bir kerelik atlama süresi dolmadan önce oturum açması gerekir.
+1. Kullanıcı adını olarak girin `username@domain.com` . Atlamamasının son olması gereken saniye sayısını ve atlama nedenini girin.
+1. **Add (Ekle)** seçeneğini belirleyin. Zaman sınırı hemen yürürlüğe girer. Kullanıcının bir kerelik atlama süresi dolmadan önce oturum açması gerekir.
 
 Aynı pencereden tek seferlik atlama raporunu da görüntüleyebilirsiniz.
 
@@ -61,10 +61,10 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 Önbelleğe almayı ayarlamak için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **önbelleğe alma kurallarını** inceleyin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Açılan listeden **önbellek türünü** seçin. En fazla **önbellek saniyesi** sayısını girin.
 1. Gerekirse, bir kimlik doğrulama türü seçin ve bir uygulama belirtin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

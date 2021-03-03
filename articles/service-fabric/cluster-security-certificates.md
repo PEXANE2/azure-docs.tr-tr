@@ -3,12 +3,12 @@ title: Service Fabric kümesinde X. 509.440 sertifika tabanlı kimlik doğrulama
 description: Service Fabric kümelerinde sertifika tabanlı kimlik doğrulaması ve sertifikayla ilgili sorunları algılama, azaltma ve çözme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729700"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric kümelerinde X. 509.440 sertifika tabanlı kimlik doğrulaması
 
@@ -182,7 +182,7 @@ Daha önce, bir Service Fabric kümesinin güvenlik ayarlarının, kimlik doğru
 
 Belirtildiği gibi, sertifika doğrulama her zaman sertifikanın zincirini oluşturmayı ve değerlendirmeyi gerektirir. CA tarafından verilen sertifikalar için bu görünüşe göre basit işletim sistemi API çağrısı genellikle veren PKI 'nın çeşitli uç noktalarına giden çok sayıda giden çağrı ve yanıtları önbelleğe alma gibi işlemleri kapsar. Bir Service Fabric kümesinde sertifika doğrulama çağrılarının ön sürümü verildiğinde, PKI 'nın uç noktalarında herhangi bir sorun, kümenin veya sağ bir dökümdeki kullanılabilirliğinin düşmesine neden olabilir. Giden çağrılar gizlenemez (bunun hakkında daha fazla bilgi için bkz. SSS bölümünde aşağıda verilmiştir), başarısız olan CRL çağrılarının neden olduğu doğrulama hatalarını maskelemek için aşağıdaki ayarlar kullanılabilir.
 
-  * CrlCheckingFlag-' Güvenlik ' bölümünün altında, dize UINT öğesine dönüştürüldü. Bu ayarın değeri, zincir oluşturma davranışını değiştirerek sertifika zinciri durum hatalarını maskelemek için Service Fabric tarafından kullanılır; ' dwFlags ' parametresi olarak Win32 CryptoAPI [Certgetcertificatezincirine](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) çağrı ' ya geçirilir ve işlev tarafından kabul edilen herhangi bir geçerli bayrak birleşimine ayarlanabilir. 0 değeri, Service Fabric çalışma zamanını herhangi bir güven durumu hatasını yoksayacak şekilde zorlar. Bu, kullanımı önemli bir güvenlik pozlaması oluşturduğundan önerilmez. Varsayılan değer 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) ' dir.
+  * CrlCheckingFlag-"güvenlik" bölümünün altında, dize UINT öğesine dönüştürüldü. Bu ayarın değeri, zincir oluşturma davranışını değiştirerek sertifika zinciri durum hatalarını maskelemek için Service Fabric tarafından kullanılır; ' dwFlags ' parametresi olarak Win32 CryptoAPI [Certgetcertificatezincirine](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) çağrı ' ya geçirilir ve işlev tarafından kabul edilen herhangi bir geçerli bayrak birleşimine ayarlanabilir. 0 değeri, Service Fabric çalışma zamanını herhangi bir güven durumu hatasını yoksayacak şekilde zorlar. Bu, kullanımı önemli bir güvenlik pozlaması oluşturduğundan önerilmez. Varsayılan değer 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) ' dir.
 
   Ne zaman kullanılır: Yerel test için, otomatik olarak imzalanan sertifikalar veya sertifikaları desteklemek için uygun bir ortak anahtar altyapısına sahip olmayan geliştirici sertifikaları. Ayrıca, PKI 'lar arasında geçiş sırasında, AIR-gapped ortamlarında azaltma olarak da kullanılabilir.
 
@@ -197,7 +197,7 @@ Belirtildiği gibi, sertifika doğrulama her zaman sertifikanın zincirini oluş
     </Section>
   ```
 
-  * IgnoreCrlOfflineError-' Security ' bölümü altında, varsayılan değeri ' false ' olan Boolean. ' İptal çevrimdışı ' zinciri oluşturma hatası durumunu (veya sonraki bir zincir ilkesi doğrulama hatası durumunu) gizleme kısayolunu temsil eder.
+  * IgnoreCrlOfflineError-"güvenlik" bölümünün altında, varsayılan değeri ' false ' olan Boolean. ' İptal çevrimdışı ' zinciri oluşturma hatası durumunu (veya sonraki bir zincir ilkesi doğrulama hatası durumunu) gizleme kısayolunu temsil eder.
 
   Ne zaman kullanılır: Yerel test veya uygun bir PKI tarafından desteklenmeyen geliştirici sertifikaları. AIR-gapped ortamlarında veya PKI 'nın erişilemeyen bilindiğinde risk azaltma olarak kullanın.
 
@@ -208,7 +208,7 @@ Belirtildiği gibi, sertifika doğrulama her zaman sertifikanın zincirini oluş
     </Section>
   ```
 
-  Diğer önemli ayarları (' Güvenlik ' bölümünün altında):
+  Diğer önemli ayarları ("güvenlik" bölümünün altında):
   * AcceptExpiredPinnedClusterCertificate-parmak izi tabanlı sertifika doğrulamasına adanmış bölümde açıklanmıştır; süre sonu otomatik olarak imzalanan küme sertifikalarının kabul edilmesini sağlar. 
   * Sertifika NotAfter zaman damgasından önce dakika olarak ifade edilen ve sertifikanın süre sonu için risk altında kabul edildiği zaman aralığı. Service Fabric, küme sertifikalarını izler ve sistem durumu raporlarını kalan kullanılabilirliğine göre düzenli olarak yayar. ' Güvenlik ' aralığının içinde, bu durum raporları ' uyarı ' durumunda yükseltilir. Varsayılan değer 30 gündür.
   * Certificatehealthreportingınterval-küme sertifikalarının kalan zaman geçerliliği ile ilgili sistem durumu raporlarının sıklığını denetler. Raporlar, bu aralığa göre yalnızca bir kez yayınlanır. Değer, varsayılan olarak 8 saat olacak şekilde saniye cinsinden ifade edilir.

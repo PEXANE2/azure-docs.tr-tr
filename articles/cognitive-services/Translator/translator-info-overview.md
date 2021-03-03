@@ -12,16 +12,16 @@ ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, metin çevirisi, makine çevirisi, çeviri hizmeti
-ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727983"
 ---
 # <a name="what-is-the-translator-service"></a>Çevirmen hizmeti nedir?
 
-Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](../../index.yml?panel=ai&pivot=products) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [70 ' den fazla dilde](./language-support.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır. Ve bu, herhangi bir donanım platformunda metin çevirisi için herhangi bir işletim sistemiyle kullanılabilir.
+Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](../../index.yml?panel=ai&pivot=products) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [90 dilde ve diatadaki](./language-support.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır. Ve bu, herhangi bir donanım platformunda metin çevirisi için herhangi bir işletim sistemiyle kullanılabilir.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator Hakkında
 

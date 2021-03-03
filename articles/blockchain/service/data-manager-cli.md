@@ -4,12 +4,12 @@ description: Azure CLı kullanarak Azure blok zinciri hizmeti için bir blok zin
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722645"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -23,7 +23,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 * Blok zinciri uygulaması ekleme
 * Örnek başlatma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip kullanarak oturum açın `az login` .
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Blok zinciri Veri Yöneticisi kullanılırken Azure blok zinciri hizmeti *Standart* katmanı önerilir.
@@ -73,9 +73,9 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-    }
+    "location": "eastus",
+    "properties": {
+    }
 }
 ```
 
@@ -137,11 +137,11 @@ az resource create \
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "inputType": "Ethereum",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
         }
     }
 }
@@ -198,7 +198,7 @@ az resource create \
 | resource-group | Çıkış kaynağının oluşturulacağı kaynak grubu adı. |
 | name | Çıkışın adı. |
 | ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
-| Kaynak türü | Bir blok zinciri için kaynak türü Veri Yöneticisi çıkışı **çıktılar**olur. |
+| Kaynak türü | Bir blok zinciri için kaynak türü Veri Yöneticisi çıkışı **çıktılar** olur. |
 | üst | Çıktının ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
 | -Full-Object | Özellikler, çıkış kaynağı için seçenekler içerir. |
 | properties | Çıkış kaynağı için özellikler içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir. |
@@ -209,11 +209,11 @@ Adlı bir olay kılavuzu konusuna bağlı *Doğu ABD* bölgesinde bir çıkış 
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "outputType": "EventGrid",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
         }
     }
 }
@@ -286,9 +286,9 @@ Configuration JSON örneği, sözleşme ABı ve bytecode tarafından tanımlanan
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "artifactType": "EthereumSmartContract",
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
         "content": {
             "abiFileUrl": "<ABI URL>",
             "bytecodeFileUrl": "<Bytecode URL>",
@@ -352,7 +352,7 @@ az resource invoke-action \
 
 ### <a name="start-instance-example"></a>Örnek örneğini Başlat
 
-*Myizleyici*adlı bir blok zinciri veri Yöneticisi örneğini başlatın.
+*Myizleyici* adlı bir blok zinciri veri Yöneticisi örneğini başlatın.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -377,7 +377,7 @@ az resource invoke-action \
 
 ### <a name="stop-watcher-example"></a>İzleyici örneğini durdur
 
-*Myizleyici*adlı bir örneği durdurun.
+*Myizleyici* adlı bir örneği durdurun.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -404,7 +404,7 @@ az resource delete \
 
 ### <a name="delete-instance-example"></a>Örnek örneğini Sil
 
-Myrg kaynak grubundaki *myizleyici* adlı bir *myRG* örneği silin.
+Myrg kaynak grubundaki *myizleyici* adlı bir  örneği silin.
 
 ``` azurecli-interactive
 az resource delete \

@@ -1,24 +1,24 @@
 ---
 title: Azure Kubernetes hizmet kümenizi Izlemeyi durdurma | Microsoft Docs
-description: Bu makalede, Azure AKS kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl sonlandırabileceğiniz açıklanır.
+description: Bu makalede, Azure AKS kümenizi kapsayıcı öngörüleri ile izlemeyi nasıl sonlandırabileceğiniz açıklanır.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723546"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Azure Kubernetes Service (AKS) ortamınızı izlemeyi durdurma
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Azure Kubernetes Service (AKS) ' i kapsayıcı öngörüleri ile izlemeyi durdurma
 
 AKS kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, Azure CLı kullanılarak veya belirtilen Azure Resource Manager şablonlarıyla nasıl yapılacağı gösterilmektedir.  
 
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
-Kapsayıcılar için Azure Izleyicisini devre dışı bırakmak için [az aks Disable-addons](/cli/azure/aks#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
+Container Insights 'ı devre dışı bırakmak için [az aks Disable-addons](/cli/azure/aks#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -165,4 +165,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz, bkz. [Azure Portal bir Azure Log Analytics çalışma alanını silme](../platform/delete-workspace.md). 4. adımda daha önce kopyalanmış **çalışma alanı kaynak kimliği** hakkında unutmayın, bunun için gerekli olacaktır.
+Çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz, bkz. [Azure Portal bir Azure Log Analytics çalışma alanını silme](../logs/delete-workspace.md). 4. adımda daha önce kopyalanmış **çalışma alanı kaynak kimliği** hakkında unutmayın, bunun için gerekli olacaktır.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 474bad4c3d7250d93b3e926f6e71da6734d7a4d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702054"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -120,7 +120,7 @@ FIM yalnızca Azure portal Güvenlik Merkezi sayfalarından kullanılabilir. Şu
 
     - Her bir çalışma alanının durumunu ve ayarlarını erişin ve görüntüleyin
 
-    - ![Yükseltme planı simgesi ][4] çalışma alanını Azure Defender 'ı kullanacak şekilde yükseltin. Bu simge, çalışma alanının veya aboneliğin Azure Defender tarafından korunmadığını gösterir. FIM özelliklerini kullanmak için aboneliğinizin Azure Defender tarafından korunması gerekir. [Daha fazla bilgi edinin](security-center-pricing.md).
+    - ![Yükseltme planı simgesi ][4] çalışma alanını Azure Defender 'ı kullanacak şekilde yükseltin. Bu simge, çalışma alanının veya aboneliğin Azure Defender tarafından korunmadığını gösterir. FIM özelliklerini kullanmak için aboneliğinizin Azure Defender tarafından korunması gerekir. Daha fazla bilgi için bkz. [Security Center Ücretsiz vs Azure Defender etkin](security-center-pricing.md#security-center-free-vs-azure-defender-enabled).
 
     - ![Simgeyi etkinleştir][3] Çalışma alanındaki tüm makinelerde FIM 'yi etkinleştirin ve FIM seçeneklerini yapılandırın. Bu simge, FIM 'in çalışma alanı için etkinleştirilmediğini belirtir.
 
@@ -212,7 +212,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![İzlenecek yeni bir öğe ekleyin][14]
 
-3. **Ekle**’yi seçin. **Değişiklik izleme Için Ekle** açılır.
+3. **Add (Ekle)** seçeneğini belirleyin. **Değişiklik izleme Için Ekle** açılır.
 
    ![İstenen bilgileri girin][15]
 

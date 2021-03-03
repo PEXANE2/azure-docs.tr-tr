@@ -3,12 +3,12 @@ title: Azure VMware çözümü için sanal Işlemleri ayarlama
 description: Azure VMware çözümünüz özel bulutunuz için sanal Işlemleri ayarlamayı öğrenin.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880700"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738438"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware çözümü için sanal Işlemleri ayarlama
 
@@ -37,7 +37,7 @@ Vfarkında Operations Manager, VMware altyapı yöneticilerinin sistem kaynaklar
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler
 Çoğu müşterinin bir veya daha fazla şirket içi vCenter etki alanını yönetmek için mevcut bir şirket içi sanal dağıtım dağıtımı vardır. Azure VMware çözümü özel bulutu sağladıklarında, bir Azure ExpressRoute veya katman 3 VPN çözümü kullanarak şirket içi ortamlarını kendi özel bulutlarıyla birbirine bağlayabilirler.  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware çözüm dağıtımını yöneten şirket içi sanal Işlemler" border="false":::
 
 Sanal Işlem yeteneklerini Azure VMware Çözüm özel bulutuna genişletmek için [özel bulut kaynakları için](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html)bir bağdaştırıcı örneği oluşturursunuz. Azure VMware çözümü özel bulutundaki verileri toplar ve şirket içi sanal Işlemler 'e getirir. Şirket içi sanal Operations Manager örneği, Azure VMware çözümünde vCenter ve NSX-T yöneticisine doğrudan bağlanabilir. İsteğe bağlı olarak, Azure VMware Çözüm özel bulutu 'nda bir sanal Işlemler uzak toplayıcısı dağıtabilirsiniz. Toplayıcı şirket içinde çalışan Operations Manager ExpressRoute veya VPN ağı üzerinden gönderilmeden önce özel buluttan toplanan verileri sıkıştırır ve şifreler. 
 

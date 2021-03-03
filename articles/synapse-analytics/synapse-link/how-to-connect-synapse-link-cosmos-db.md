@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a8626174e157e79d0250824e0a3cfa97141d50dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695048"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link’e bağlanma
 
@@ -67,5 +67,5 @@ Bir kapsayıcıya sağ tıklayarak Spark veya SQL çalışma zamanını tetikley
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure SYNAPSE ve Azure Cosmos DB arasında nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
-* [Azure Cosmos DB analitik depo için özel uç noktaları yapılandırma](../cosmos-db/analytical-store-private-endpoints.md)
+* [Azure Cosmos DB analitik depo için özel uç noktaları yapılandırma](../../cosmos-db/analytical-store-private-endpoints.md)
 * [Spark ile analitik depoyu sorgulama hakkında bilgi edinin](./how-to-query-analytical-store-spark.md)

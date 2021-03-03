@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f924bcdce0937c74c3deeab96f3d4b2a85e3944d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704455"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
 
@@ -70,7 +70,7 @@ MySQL OMı sağlayıcısı 'nın yüklenmesiyle birlikte, MySQL OMI kimlik doğr
 
 Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrıntılı bilgi verilmektedir.
 
-| İşlem | Örnek | Description
+| İşlem | Örnek | Açıklama
 |:--|:--|:--|
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
@@ -167,4 +167,4 @@ Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Linux aracılarından [performans sayaçlarını toplayın](data-sources-performance-counters.md) .
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../logs/log-query-overview.md) hakkında bilgi edinin.

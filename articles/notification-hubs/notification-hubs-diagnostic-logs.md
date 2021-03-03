@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736245"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Notification Hubs için tanılama günlüklerini etkinleştirme
 
@@ -141,8 +141,7 @@ Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tanılama ayarlarını yapılandırma hakkında daha fazla bilgi edinmek için bkz.:
-* [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+* [Azure tanılama günlüklerine genel bakış](../azure-monitor/essentials/platform-logs-overview.md).
 
 Azure Notification Hubs hakkında daha fazla bilgi edinmek için bkz.:
 * [Azure Notification Hubs nedir?](notification-hubs-push-notification-overview.md)
-

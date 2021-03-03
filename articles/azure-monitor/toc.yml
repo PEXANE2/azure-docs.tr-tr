@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: Çalışma Kitapları
           href: visualize/resource-manager-workbooks.md
-        - name: Kapsayıcılar için Azure İzleyici
+        - name: Kapsayıcı öngörüleri
           href: containers/resource-manager-container-insights.md
-        - name: VM'ler için Azure İzleyici
+        - name: VM öngörüleri
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: Genel Bakış
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: Kullanıcı bağlamı gönderme
-              href: app/usage-send-user-context.md
             - name: 'Kullanıcılar, Oturumlar, Etkinlikler'
               href: app/usage-segmentation.md
             - name: Huniler
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: Sorun giderme
           href: app/change-analysis-troubleshoot.md
-    - name: VM'ler için Azure İzleyici
+    - name: VM öngörüleri
       items:
         - name: Genel Bakış
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: İzlemeyi devre dışı bırakma
           href: vm/vminsights-optout.md
-    - name: Kapsayıcılar için Azure İzleyici
+    - name: Kapsayıcı öngörüleri
       items:
         - name: Genel Bakış
           href: containers/container-insights-overview.md

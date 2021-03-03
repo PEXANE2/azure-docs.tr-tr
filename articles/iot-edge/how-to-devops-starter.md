@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721523"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter ile IoT Edge için bir CI/CD işlem hattı oluşturma
 
@@ -29,6 +29,16 @@ DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Az
 1. Sol bölmede, **kaynak oluştur**' u seçin ve ardından **DevOps Starter** için arama yapın.  
 
 1. **Oluştur**’u seçin.
+
+1. Varsayılan olarak, DevOps Starter, GitHub ile ayarlanır. Bu nasıl yapılır içindeki özelliklerden yararlanmak için DevOps Starter 'ı Azure DevOps kullanarak ayarlanacak şekilde değiştirin. **Ayarları burada Değiştir** bağlantısını izleyin.
+
+   ![GitHub 'dan Azure DevOps 'a geçmek için ayarları değiştir ' i seçin](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. Sağ bölmede **Azure DevOps** kutucuğunu seçin ve **bitti**' yi seçin.
+
+   ![DevOps başlangıç kodunuzu ayarlamak için Azure DevOps ' ı seçin](./media/how-to-devops-starter/select-azure-devops.png)
+
+   Şimdi DevOps Starter 'ın Azure DevOps ile ayarlanmış olduğunu görmeniz gerekir.
 
 ## <a name="create-a-new-application-pipeline"></a>Yeni bir uygulama işlem hattı oluşturun
 

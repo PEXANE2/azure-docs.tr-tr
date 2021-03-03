@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731400"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -268,7 +268,7 @@ Başlamanıza başlamak için, işlevi kullanarak tabloyu sorgulayan uyarının 
 - Uyarı kuralı adı: günlük veri sınırına ulaşıldı
 - Önem derecesi: uyarı (sev 1)
 
-Uyarı tanımlandıktan ve sınıra ulaşıldığında, bir uyarı tetiklenir ve eylem grubunda tanımlanan yanıtı gerçekleştirir. E-posta ve SMS iletileri aracılığıyla ekibinize bildirimde bulunabilir veya Web kancaları, Otomasyon Runbook 'ları veya [bir dış ıSM çözümüyle tümleştirme](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)kullanarak eylemleri otomatikleştirebilir. 
+Uyarı tanımlandıktan ve sınıra ulaşıldığında, bir uyarı tetiklenir ve eylem grubunda tanımlanan yanıtı gerçekleştirir. E-posta ve SMS iletileri aracılığıyla ekibinize bildirimde bulunabilir veya Web kancaları, Otomasyon Runbook 'ları veya [bir dış ıSM çözümüyle tümleştirme](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)kullanarak eylemleri otomatikleştirebilir. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımın neden beklenenden daha yüksek olduğuyla ilgili sorunları giderme
 
@@ -488,8 +488,8 @@ Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 | AzureDiagnostics           | [Kaynak günlük koleksiyonunu](../essentials/diagnostic-settings.md#create-in-azure-portal) Değiştir: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
 | Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
 | Application Insights | İçin seçenekleri gözden geçirin [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Denetim ayarlarını ayarlamak için [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) komutunu kullanın. |
-| Azure Sentinel | Daha önce ek veri hacmi kaynakları olarak etkinleştirdiğiniz [Sentinel veri kaynaklarını](https://docs.microsoft.com/azure/sentinel/connect-data-sources) gözden geçirin. |
+| [SQL Analytics](../insights/azure-sql.md) | Denetim ayarlarını ayarlamak için [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) komutunu kullanın. |
+| Azure Sentinel | Daha önce ek veri hacmi kaynakları olarak etkinleştirdiğiniz [Sentinel veri kaynaklarını](../../sentinel/connect-data-sources.md) gözden geçirin. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Düğüm başına fiyatlandırma katmanında düğümleri faturalandırılan alma
 

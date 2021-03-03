@@ -51,6 +51,9 @@
         - name: HTTP uzantısı aracılığıyla OVMS ile
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: GRPC uzantısı aracılığıyla OV DL Streamer ile
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
         - name: Özel Görüntü İşleme’yi kullanma
           href: custom-vision-tutorial.md
         - name: Uzamsal Analiz’i kullanma
@@ -90,6 +93,8 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: IoT Edge cihazına dağıtma
       href: deploy-iot-edge-device.md
+    - name: Windows 'da Linux için bir IoT Edge dağıtma
+      href: deploy-iot-edge-linux-on-windows.md
     - name: İzleme ve günlüğe kaydetme
       href: monitoring-logging.md
     - name: Kayıt yürütme

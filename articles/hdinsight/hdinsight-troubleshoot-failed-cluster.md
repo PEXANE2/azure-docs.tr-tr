@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: de5fa6c881f808bcd580f6fae3329d579573d876
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eae5b5e1430f4e9bf1db62a4413e3b7abe3744cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931523"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699326"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
 
-HDInsight kümesindeki bir uygulama işlem verileri yavaş çalışıyorsa veya hata kodu ile başarısız olursa, birkaç sorun giderme seçeneğiniz vardır. İşlerinizin beklenenden daha uzun sürmesi veya genel olarak yavaş yanıt süreleri gördüğünüzü, kümenizle ilgili olarak kümenin çalıştırıldığı hizmetler gibi hatalardan oluşan bir akış olabilir. Ancak, bu yavaşlamalara ilişkin en yaygın neden, ölçeklendirmenin yetersizdir. Yeni bir HDInsight kümesi oluşturduğunuzda, uygun [sanal makine boyutlarını](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)seçin.
+HDInsight kümesindeki bir uygulama işlem verileri yavaş çalışıyorsa veya hata kodu ile başarısız olursa, birkaç sorun giderme seçeneğiniz vardır. İşlerinizin beklenenden daha uzun sürmesi veya genel olarak yavaş yanıt süreleri gördüğünüzü, kümenizle ilgili olarak kümenin çalıştırıldığı hizmetler gibi hatalardan oluşan bir akış olabilir. Ancak, bu yavaşlamalara ilişkin en yaygın neden, ölçeklendirmenin yetersizdir. Yeni bir HDInsight kümesi oluşturduğunuzda, uygun [sanal makine boyutlarını](hdinsight-supported-node-configuration.md)seçin.
 
 Yavaş veya başarısız bir kümeyi tanılamak için, ortamın ilişkili Azure Hizmetleri, küme yapılandırması ve iş yürütme bilgileri gibi tüm yönleri hakkında bilgi toplayın. Yararlı bir tanılama, hata durumunu başka bir kümede yeniden oluşturmaya çalışır.
 

@@ -3,12 +3,12 @@ title: Azure Stack Edge üzerinde canlı video analizi dağıtma
 description: Bu makalede, Azure Stack Kenarunuzda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730278"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Azure Stack Edge üzerinde canlı video analizi dağıtma
 
@@ -42,7 +42,7 @@ Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak don
 * [Azure Stack Edge/Data Box Gateway kaynak oluşturma](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Yükleme ve kurulum](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Bağlantı ve etkinleştirme](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [Azure Stack Edge 'e IoT Hub iliştirme](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [Azure Stack Edge 'e IoT Hub iliştirme](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge Yerel Kullanıcı arabiriminde Işlem önkoşullarını etkinleştirme
 
 Devam etmeden önce şunları yaptığınızdan emin olun:
@@ -234,17 +234,22 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
     
 ## <a name="troubleshooting"></a>Sorun giderme
 
-* Kubernetes API erişimi (kubectl).
+* **Kubernetes API erişimi (kubectl)**
 
-    * Makinenizi [Kubernetes kümesine erişmek](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues)üzere yapılandırmak için belgeleri izleyin.
-    * Dağıtılan tüm IoT Edge modülleri `iotedge` ad alanını kullanır. Kubectl kullanırken bunu eklediğinizden emin olun.
-* Modül günlükleri
+    * Makinenizi [Kubernetes kümesine erişmek](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)üzere yapılandırmak için belgeleri izleyin.
+    * Dağıtılan tüm IoT Edge modülleri `iotedge` ad alanını kullanır. Kubectl kullanırken bunu eklediğinizden emin olun.  
 
-    Bu `iotedge` araca günlükleri almak için erişilemiyor. Bir dosyaya yönelik günlükleri veya kanalı görüntülemek için [kubectl günlüklerini](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  kullanmanız gerekir. Örnek: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Pod ve düğüm ölçümleri
+* **Modül günlükleri**
 
-    Pod ve Node ölçümlerini görmek için [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  kullanın. (Bu işlev sonraki Azure Stack Edge sürümünde kullanılabilir. >v2007)<br/>`kubectl top pods -n iotedge`
-* Azure Stack Edge 'de modül bulma Için modül ağı, modülün ana bilgisayar bağlantı noktası bağlamaya createOptions içinde sahip olması gerekir. Modül daha sonra adreslendirilecektir `moduleName:hostport` .
+    Bu `iotedge` araca günlükleri almak için erişilemiyor. Bir dosyaya yönelik günlükleri veya kanalı görüntülemek için [kubectl günlüklerini](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  kullanmanız gerekir. Örnek: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Pod ve düğüm ölçümleri**
+
+    Pod ve Node ölçümlerini görmek için [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  kullanın.
+    <br/>`kubectl top pods -n iotedge` 
+
+* **Modül ağı**   
+Azure Stack Edge 'de modül keşfi için, modülün konak bağlantı noktası bağlamasının createOptions içinde olması gerekir. Modül daha sonra adreslendirilecektir `moduleName:hostport` .
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
     }
     ```
     
-* Birim bağlama
+* **Birim bağlama**
 
     Kapsayıcı, bir birimi var olan ve boş olmayan bir dizine bağlamaya çalışıyorsa bir modül başlatılamaz.
-* Paylaşılan bellek
+
+* **GRPC kullanılırken paylaşılan bellek**
 
     Azure Stack Edge kaynaklarında paylaşılan bellek, konak IPC kullanılarak herhangi bir ad alanında yer alan bir ad alanı genelinde desteklenir.
     IoT Hub aracılığıyla dağıtım için bir uç modülünde paylaşılan bellek yapılandırma.
@@ -272,7 +278,7 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
         ...
     ```
     
-* Ileri Pod ortak konumu
+* **Ileri Pod ortak konumu**
 
     K8s kullanarak, gRPC aracılığıyla canlı video analizi ile iletişim kuran özel çıkarım çözümlerini dağıtmak için, yığınların canlı video analizi modülleriyle aynı düğümlere dağıtıldığından emin olmanız gerekir.
 
-    * Seçenek 1-ortak konum için Düğüm benzeşimini ve yerleşik düğüm etiketlerini kullanın.
+    * **Seçenek 1** -ortak konum Için Düğüm benzeşimini ve yerleşik düğüm etiketlerini kullanın.
 
     Şu anda NodeSelector özel yapılandırması, kullanıcıların düğümlerde etiket ayarlamak için erişimi olmadığı bir seçenek olarak görünmüyor. Bununla birlikte, müşterinin topolojisine ve adlandırma kurallarına bağlı olarak, [yerleşik düğüm etiketlerini](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)kullanabiliyor olabilirler. Canlı video analiziyle Azure Stack Edge kaynaklarına başvuran bir Nodebenzeşim bölümü, birlikte bulundurmaya ulaşmak için çıkarım Pod bildirimine eklenebilir.
-    * Seçenek 2-ortak konum için pod benzeşimini kullanın (önerilir).
+    * **Seçenek 2** -ortak konum Için Pod benzeşimini kullanın (önerilir).
 Kubernetes, aynı düğümde Pod 'yi zamanlayabilir bir [Pod benzeşimi](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)  desteğine sahiptir. Canlı video analizi modülüne başvuran bir Podadinity bölümü, birlikte bulundurmaya ulaşmak için çıkarım Pod bildirimine eklenebilir.
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes, aynı düğümde Pod 'yi zamanlayabilir bir [Pod benzeşimi](https:/
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **Modül kullanılırken 404 hata kodu `rtspsim`**  
+Kapsayıcı, bir kapsayıcı içinde tam olarak bir klasörden videoları okur. Bir dış klasörü kapsayıcı görüntüde zaten var olan bir klasöre eşler/bağlarsanız, Docker kapsayıcı görüntüsünde bulunan dosyaları gizler.  
+ 
+    Örneğin, hiçbir bağlama olmadan kapsayıcıda bu dosyalar olabilir:  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    Ve ana bilgisayarınız şu dosyalara sahip olabilir:
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    Ancak, dağıtım bildirim dosyasına aşağıdaki bağlama eklendiğinde Docker, ana bilgisayar üzerindeki ile eşleşecek şekilde/live/mediaServer/media içeriğinin üzerine yazar.
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

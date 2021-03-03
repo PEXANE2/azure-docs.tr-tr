@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713414"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -110,7 +110,7 @@ Azure NetApp Files, birim performans ölçümleri sağlar. Azure Izleyici 'yi, A
 
 ### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>NFSv 4.1 üzerinde Kerberos 'un performans etkisi nedir?
 
-NFSv 4.1 için güvenlik seçenekleri, test edilen performans vektörleri ve beklenen performans etkisi hakkında bilgi için bkz. [NFSv 4.1 üzerinde Kerberos 'un performans etkisi](configure-kerberos-encryption.md#kerberos_performance) . 
+NFSv 4.1 için güvenlik seçenekleri, test edilen performans vektörleri ve beklenen performans etkisi hakkında bilgi için bkz. [NFSv 4.1 birimlerinde Kerberos 'un performans etkisi](performance-impact-kerberos.md) . 
 
 ## <a name="nfs-faqs"></a>NFS hakkında SSS
 

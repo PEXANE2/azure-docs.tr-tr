@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714741"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Depolama Analizi ölçümleri (klasik)
 
@@ -25,7 +25,7 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
 - Depolama hizmetinde yapılan isteklerle ilgili sorunları tanılayın.
 - Hizmet kullanan uygulamaların performansını geliştirir.
 
- Depolama Analizi ölçümler, varsayılan olarak yeni depolama hesapları için etkinleştirilmiştir. [Azure Portal](https://portal.azure.com/)ölçümleri PowerShell kullanarak veya Azure CLI kullanarak yapılandırabilirsiniz. Adım adım yönergeler için bkz. [Azure Storage analitik ölçümlerini etkinleştirme ve yönetme (klasik)](./storage-monitor-storage-account.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere hizmet özelliklerini ayarlama işlemlerini kullanın.  
+ Depolama Analizi ölçümler, varsayılan olarak yeni depolama hesapları için etkinleştirilmiştir. [Azure Portal](https://portal.azure.com/)ölçümleri PowerShell kullanarak veya Azure CLI kullanarak yapılandırabilirsiniz. Adım adım yönergeler için bkz. [Azure Storage analitik ölçümlerini etkinleştirme ve yönetme (klasik)](./manage-storage-analytics-logs.md). Ayrıca, REST API veya istemci kitaplığı aracılığıyla Depolama Analizi programlı bir şekilde etkinleştirebilirsiniz. Her hizmet için Depolama Analizi etkinleştirmek üzere hizmet özelliklerini ayarlama işlemlerini kullanın.  
 
 > [!NOTE]
 > Depolama Analizi ölçümler Azure Blob depolama, Azure kuyruk depolama, Azure Tablo depolama ve Azure dosyaları için kullanılabilir.
@@ -69,7 +69,7 @@ Azure depolama, bir depolama hizmetine yapılan isteklerle ilgili toplanan işle
  Bu tablolar, bir depolama hizmeti uç noktası için Depolama Analizi etkinleştirildiğinde otomatik olarak oluşturulur. Bunlar, depolama hesabının ad alanı aracılığıyla erişilir. Örneğin, `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")` . Ölçüm tabloları bir listeleme işleminde görünmez ve doğrudan tablo adı ile erişilmelidir.
 
 ## <a name="metrics-alerts"></a>Ölçüm uyarıları
-[Azure Portal](https://portal.azure.com) uyarı ayarlamayı düşünün, böylece depolama hizmetlerinizin davranışındaki önemli değişiklikler konusunda otomatik olarak bilgilendirilirsiniz. Adım adım yönergeler için bkz. [ölçüm uyarıları oluşturma](storage-monitor-storage-account.md#create-metric-alerts).
+[Azure Portal](https://portal.azure.com) uyarı ayarlamayı düşünün, böylece depolama hizmetlerinizin davranışındaki önemli değişiklikler konusunda otomatik olarak bilgilendirilirsiniz. Adım adım yönergeler için bkz. [ölçüm uyarıları oluşturma](./manage-storage-analytics-logs.md).
 
 Bu ölçüm verilerini ayrılmış bir biçimde indirmek için bir Depolama Gezgini aracı kullanırsanız, verileri çözümlemek için Microsoft Excel 'i kullanabilirsiniz. Kullanılabilir Depolama Gezgini araçlarının bir listesi için bkz. [Azure Storage istemci araçları](./storage-explorers.md).
 

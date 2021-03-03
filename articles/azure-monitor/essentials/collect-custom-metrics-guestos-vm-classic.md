@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 48c7323a630f5c79c7ecb16e26c9ec79ec2014a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0c97d128837e77325e68ae28161a98938510ff8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723291"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows sanal makinesi için Azure Izleyici ölçümleri veritabanına Konuk işletim sistemi ölçümleri gönderme (klasik)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) ("wad" veya "Diagnostics" olarak bilinir), bir sanal makinenin, bulut hizmetinin veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplamanıza olanak tanır. Uzantı [birçok farklı konuma](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
+Azure Izleyici [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) ("wad" veya "Diagnostics" olarak bilinir), bir sanal makinenin, bulut hizmetinin veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplamanıza olanak tanır. Uzantı [birçok farklı konuma](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json) telemetri gönderebilir.
 
 Bu makalede, Azure Izleyici ölçüm veritabanına bir Windows sanal makinesi (klasik) için konuk işletim sistemi performans ölçümlerini gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır. 
 
@@ -34,7 +34,7 @@ Bu makalede özetlenen işlem yalnızca Windows işletim sistemini çalıştıra
 
 - [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](../../cloud-shell/overview.md) yüklemiş olmanız gerekir.
 
-- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](../platform/metrics-custom-overview.md#supported-regions)olması gerekir.
+- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](./metrics-custom-overview.md#supported-regions)olması gerekir.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Klasik sanal makine ve depolama hesabı oluşturma
 
@@ -203,4 +203,4 @@ Bu uygulamaya, ölçümleri sunmak istediğiniz kaynak için "Izleme ölçümler
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Özel ölçümler](../platform/metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
+- [Özel ölçümler](./metrics-custom-overview.md)hakkında daha fazla bilgi edinin.

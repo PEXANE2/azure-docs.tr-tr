@@ -1,5 +1,5 @@
 ---
-title: Depolama için Azure Defender 'ı yapılandırma
+title: Depolama için Azure Defender'ı yapılandırma
 titleSuffix: Azure Storage
 description: Hesap etkinliğindeki anormallikleri algılamak ve hesabınıza erişmek için olası zararlı girişimler hakkında bildirim almak için Azure Defender 'ı depolama için yapılandırın.
 services: storage
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789021"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698153"
 ---
-# <a name="configure-azure-defender-for-storage"></a>Depolama için Azure Defender 'ı yapılandırma
+# <a name="configure-azure-defender-for-storage"></a>Depolama için Azure Defender'ı yapılandırma
 
-Depolama için Azure Defender, depolama hesaplarına yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmadan veya güvenlik izleme sistemlerini yönetmeden tehditleri ele almanıza olanak sağlar.
+Depolama için Azure Defender, depolama hesaplarına erişmeye ve güvenliğini ihlal etmeye yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmadan veya güvenlik izleme sistemlerinizi yönetmeden tehditleri ele almanıza olanak tanır.
 
-Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
+Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
-Hizmet, blob depolamaya ve tehdit algılama için Azure dosyalarına okuma, yazma ve silme isteklerinin kaynak günlüklerini günlüğe kaydeder. Azure Defender 'daki uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](storage-monitor-storage-account.md#configure-logging)için bkz. **oturum açma yapılandırma** .
+Hizmet, blob depolamaya ve tehdit algılama için Azure dosyalarına okuma, yazma ve silme isteklerinin kaynak günlüklerini günlüğe kaydeder. Azure Defender 'daki uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](./manage-storage-analytics-logs.md#configure-logging)için bkz. **oturum açma yapılandırma** .
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Depolama için Azure Defender Şu anda BLOB depolama, Azure dosyaları ve Azure Data Lake Storage 2. için kullanılabilir. Azure Defender 'ı destekleyen hesap türleri genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları içerir. Depolama için Azure Defender, tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak diğer sogeign veya Azure Kamu bulut bölgelerinde yer vermez.
+Depolama için Azure Defender şu anda Blob depolama, Azure Dosyalar ve Azure Data Lake Storage 2. Nesil için kullanılabilir. Azure Defender’ı destekleyen hesap türleri arasında genel amaçlı v2, blok blobu ve Blob depolama hesapları yer alır. Tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilen Depolama için Azure Defender diğer bağımsız ve Azure Kamu bulut bölgelerinde kullanılamaz.
 
-Azure Blob depolama API 'Leri ve Data Lake Storage API 'Lerini kullanarak işlemleri Data Lake Storage için etkinleştirilmiş hiyerarşik ad alanları içeren hesaplar. Azure dosya paylaşımları SMB üzerinden işlemleri destekler.
+Data Lake Storage için etkinleştirilen hiyerarşik ad alanlarına sahip hesaplar, hem Azure Blob depolama API’leri hem de Data Lake Storage API’leri kullanılarak gerçekleştirilen işlemleri destekler. Azure dosya paylaşımları, SMB üzerinden gerçekleştirilen işlemleri destekler.
 
 Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -52,11 +52,11 @@ Azure Defender 'ı depolama için aşağıdaki bölümlerde açıklanan çeşitl
 
 Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, Azure Defender tüm depolama hesaplarınızda otomatik olarak ayarlanır. Belirli bir abonelik kapsamındaki depolama hesaplarınız için Azure Defender 'ı aşağıdaki gibi etkinleştirebilir veya devre dışı bırakabilirsiniz:
 
-1. Azure portal **Azure Güvenlik Merkezi 'ni** başlatın [Azure portal](https://portal.azure.com).
-1. Ana menüden **Yönetim** altında, **fiyatlandırma & ayarları** ' nı seçin.
+1. Azure portal **Azure Güvenlik Merkezi 'ni** başlatın [](https://portal.azure.com).
+1. Ana menüden **Yönetim** altında, **fiyatlandırma & ayarları**' nı seçin.
 1. Azure Defender 'ı etkinleştirmek veya devre dışı bırakmak istediğiniz aboneliği seçin.
 1. Abonelik için Azure Defender 'ı etkinleştirmek üzere **Azure Defender '** ı seçin.
-1. **Kaynak türüne göre Azure Defender planı seç** ' in altında, **depolama** satırını bulun ve **plan** sütununda **etkin** ' i seçin.
+1. **Kaynak türüne göre Azure Defender planı seç**' in altında, **depolama** satırını bulun ve **plan** sütununda **etkin** ' i seçin.
 1. Yaptığınız değişiklikleri kaydedin.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
@@ -66,10 +66,10 @@ Azure Defender artık bu abonelikteki tüm depolama hesapları için etkinleşti
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)başlatın.
-1. Depolama hesabınıza gidin. **Ayarlar** altında **Gelişmiş güvenlik** ' i seçin.
-1. **Depolama Için Azure Defender 'ı etkinleştir** ' i seçin.
+1. Depolama hesabınıza gidin. **Ayarlar** bölümünden **Gelişmiş güvenlik**’i seçin.
+1. **Depolama için Azure Defender’ı etkinleştir** seçeneğini belirleyin.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Azure depolama hesabı için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
 
 Azure Defender artık bu depolama hesabı için etkinleştirilmiştir.
 
@@ -84,15 +84,15 @@ Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde 
 1. Azure **Ilke tanımları** sayfasını başlatın.
 1. **Depolama hesapları üzerinde Azure Defender 'ı dağıtma** ilkesini arayın.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Depolama hesapları için Azure Defender 'ı etkinleştirmek üzere ilke uygulama":::
 
 1. Bir Azure aboneliği veya kaynak grubu seçin.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="İlke kapsamı için abonelik veya kaynak grubu seçin ":::
 
 1. İlkeyi atayın.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Depolama için Azure Defender 'ı etkinleştirmek üzere ilke atama":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -111,25 +111,25 @@ Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
 ---
 
-## <a name="explore-security-anomalies"></a>Güvenlik anormalilerini keşfet
+## <a name="explore-security-anomalies"></a>Güvenlik anomalilerini araştırma
 
-Depolama etkinliği bozuklukları gerçekleştiğinde, şüpheli güvenlik olayı hakkında bilgi içeren bir e-posta bildirimi alırsınız. Etkinliğin ayrıntıları şunları içerir:
+Depolama etkinliğinde anomaliler oluştuğunda güvenlik olayı hakkında bilgi içeren bir e-posta bildirimi alırsınız. Olayın ayrıntılarında şunlar yer alır:
 
-- Anomali 'in doğası
+- Anomalinin yapısı
 - Depolama hesabı adı
-- Olay saati
+- Olayın zamanı
 - Depolama türü
 - Olası nedenler
-- Araştırma adımları
+- İnceleme adımları
 - Düzeltme adımları
 
-Bu e-posta, olası nedenlerdeki ayrıntıları ve olası tehdidi araştırmak ve azaltmak için önerilen eylemleri de içerir.
+Bu e-posta, olası nedenlere ilişkin ayrıntıların yanı sıra olası tehdidi inceleyip ortadan kaldırmaya yönelik önerilen eylemleri de içerir.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Depolama için Azure Defender uyarı e-postası":::
 
-Azure Güvenlik Merkezi 'nin [güvenlik uyarıları kutucuğunda](../../security-center/security-center-managing-and-responding-alerts.md)geçerli güvenlik uyarılarınızı gözden geçirebilir ve yönetebilirsiniz. Belirli bir uyarıyı tıklatmak, geçerli tehdidi araştırmak ve gelecekteki tehditleri ele almak için ayrıntıları ve eylemleri sağlar.
+Azure Güvenlik Merkezi 'nin [güvenlik uyarıları kutucuğunda](../../security-center/security-center-managing-and-responding-alerts.md)geçerli güvenlik uyarılarınızı gözden geçirebilir ve yönetebilirsiniz. Belirli bir uyarıya tıkladığınızda, mevcut tehdidin incelenmesine ve ileride ortaya çıkabilecek tehditleri ele almaya yönelik ayrıntılar ve eylemler sunulur.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Güvenlik Merkezi 'nde depolama için Azure Defender 'ı nasıl etkinleştireceğinizi gösteren ekran görüntüsü":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Depolama için Azure Defender uyarısı":::
 
 ## <a name="security-alerts"></a>Güvenlik uyarıları
 

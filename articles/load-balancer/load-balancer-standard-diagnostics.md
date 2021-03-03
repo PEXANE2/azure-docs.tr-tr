@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699088"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -34,7 +34,7 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 
 Çeşitli Standart Load Balancer yapılandırmalarında aşağıdaki ölçümler sağlanır:
 
-| Metric | Kaynak türü | Description | Önerilen toplama |
+| Metric | Kaynak türü | Açıklama | Önerilen toplama |
 | --- | --- | --- | --- |
 | Veri yolu kullanılabilirliği | Genel ve iç yük dengeleyici | Standart Load Balancer bir bölgedeki veri yolunu sürekli olarak yük dengeleyicinin ön ucuna (VM’nizi destekleyen SDN yığınına kadar) aktarır. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçümler uygulamanızda görünmez ve diğer işlemleri engellemez.| Ortalama |
 | Sistem durumu yoklama durumu | Genel ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her örnek uç noktası için toplu veya uç noktası başına filtrelenmiş bir görünüm sunar. Durum yoklaması yapılandırmanızın belirttiği gibi Load Balancer’ın uygulamanızın durumunu nasıl görüntülediğini görebilirsiniz. |  Ortalama |
@@ -72,18 +72,7 @@ Standart Load Balancer kaynaklarınızın ölçümlerini görüntülemek için:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API 'Ler aracılığıyla çok boyutlu ölçümleri program aracılığıyla alma
 
-Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler, ' tüm ölçümler ' kategorisi için bir [Tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) eklenerek bir depolama hesabına yazılabilir. 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Çok boyutlu ölçümler için uyarıları yapılandırma ###
-
-Azure Standart Load Balancer, çok boyutlu ölçümler için kolayca yapılandırılabilir uyarıları destekler. Bir Touchless kaynak izleme deneyimini güçlendiren şekilde değişen önem düzeyleri ile uyarıları tetiklemek için belirli ölçümler için özel eşikler yapılandırın.
-
-Uyarıları yapılandırmak için:
-1. Yük Dengeleyici için uyarı alt dikey penceresine git
-1. Yeni uyarı kuralı oluşturma
-    1.  Uyarı koşulunu yapılandırma
-    1.  Seçim Otomatik onarım için eylem grubu Ekle
-    1.  Sezgisel yeniden eyleme izin veren uyarı önem derecesi, ad ve açıklama atayın
+Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler, ' tüm ölçümler ' kategorisi için bir [Tanılama ayarı](../azure-monitor/essentials/diagnostic-settings.md) eklenerek bir depolama hesabına yazılabilir. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 
@@ -228,15 +217,41 @@ Grafik aşağıdaki bilgileri görüntüler:
 Grafik, müşterilerin, diğer sorunların oluşup oluşmadığını tahmin etmek veya destek istemek zorunda kalmadan, kendi üzerinde dağıtım sorunlarını gidermelerini sağlar. Yanlış yapılandırma veya hatalı uygulama nedeniyle sistem durumu araştırmaları başarısız olduğu için hizmet kullanılamıyor.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Çok boyutlu ölçümler için uyarıları yapılandırma ###
+
+Azure Standart Load Balancer, çok boyutlu ölçümler için kolayca yapılandırılabilir uyarıları destekler. Bir Touchless kaynak izleme deneyimini güçlendiren şekilde değişen önem düzeyleri ile uyarıları tetiklemek için belirli ölçümler için özel eşikler yapılandırın.
+
+Uyarıları yapılandırmak için:
+1. Yük Dengeleyici için uyarı alt dikey penceresine git
+1. Yeni uyarı kuralı oluşturma
+    1.  Uyarı koşulunu yapılandırma
+    1.  Seçim Otomatik onarım için eylem grubu Ekle
+    1.  Sezgisel yeniden eyleme izin veren uyarı önem derecesi, ad ve açıklama atayın
+
+### <a name="inbound-availability-alerting"></a>Gelen kullanılabilirlik uyarısı
+Gelen kullanılabilirliği uyarmak için, veri yolu kullanılabilirliği ve sistem durumu araştırma durumu ölçümlerini kullanarak iki ayrı uyarı oluşturabilirsiniz. Müşteriler belirli uyarı mantığını gerektiren farklı senaryolara sahip olabilir, ancak aşağıdaki örnekler çoğu yapılandırmada yararlı olacaktır.
+
+Veri yolu kullanılabilirliğini kullanarak, belirli bir yük dengeleme kuralı kullanılamaz hale geldiğinde uyarılar başlatabilirsiniz. Bu uyarıyı, veri yolu kullanılabilirliği için bir uyarı koşulu ayarlayarak ve hem ön uç bağlantı noktası hem de ön uç IP adresi için tüm geçerli değerleri ve gelecekteki değerleri ayırarak yapılandırabilirsiniz. Uyarı mantığının 0 ' dan küçük veya buna eşit olarak ayarlanması, herhangi bir yük dengeleme kuralı yanıt vermediğinde bu uyarının başlatılmasına neden olur. İstenen değerlendirmenize göre toplama ayrıntı düzeyini ve değerlendirme sıklığını ayarlayın. 
+
+Durum araştırma durumu ile, belirli bir arka uç örneği sistem durumu araştırmasına önemli bir süre yanıt veremediğinde uyarı verebilirsiniz. Durum araştırma durumu ölçümünü kullanmak ve arka uç IP adresine ve arka uç bağlantı noktasına göre ayırmak için uyarı koşulunuzu ayarlayın. Bu, her bir arka uç örneğinin belirli bir bağlantı noktasında trafiği sunma yeteneği için ayrı olarak uyarı verebilmenizi sağlar. **Ortalama** toplama türünü kullanın ve eşik değerini, arka uç örneğinizin ne sıklıkta denendiklerine ve sağlıklı eşikinizi belirlemek için göz önüne alarak ayarlayın. 
+
+Ayrıca, herhangi bir boyuta göre bölmez ve **Ortalama** toplama türünü kullanarak bir arka uç havuzu düzeyinde uyarı verebilirsiniz. Bu, arka uç havuzu Üyelerimin %50 ' un sağlıksız olduğu durumlarda uyarı gibi uyarı kuralları ayarlamanıza olanak sağlar.
+
+### <a name="outbound-availability-alerting"></a>Giden kullanılabilirlik uyarısı
+Giden kullanılabilirliği yapılandırmak için, SNAT bağlantı sayısını kullanarak iki ayrı uyarı yapılandırabilir ve SNAT bağlantı noktası ölçümlerini kullanabilirsiniz.
+
+Giden bağlantı başarısızlıklarını algılamak için, SNAT bağlantı sayısını kullanarak bir uyarı yapılandırın ve bağlantı durumuna filtre uygulama = başarısız oldu. **Toplam** toplamayı kullanın. Bu durumda, başarısız bağlantılardaki her bir arka uç örneği için ayrı olarak uyarı vermek üzere arka uç IP adresi kümesine, tüm geçerli ve gelecekteki değerlere göre de ayırabilirsiniz. Bazı giden bağlantı başarısızlıklarını görmeyi düşünüyorsanız eşik değerini sıfırdan büyük veya daha yüksek bir sayı olarak ayarlayın.
+
+Kullanılan SNAT bağlantı noktalarından daha yüksek bir risk ile karşı, SNAT tükenmesi ve giden bağlantı hatası hakkında uyarı alabilirsiniz. Bu uyarıyı kullanırken arka uç IP adresi ve protokolüne göre böldiğinizden emin olun ve **Ortalama** toplamayı kullanın. Eşiği, güvenli olmayan bir örnek için ayrılan bağlantı noktası sayısının yüzdesinden büyük olacak şekilde ayarlayın. Örneğin, bir arka uç örneği ayrılan bağlantı noktalarının %75 ' ünü kullandığında düşük bir önem derecesi ve ayrılan bağlantı noktalarının %90 veya %100 ' i kullandığında yüksek önem derecesine sahip bir uyarı yapılandırabilirsiniz.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Kaynak sistem durumu
 
 Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu** altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir. Ön uç Yük Dengeleme uç noktalarınızın kullanılabilir olup olmadığını belirleyen veri yolu kullanılabilirliğini ölçerek her **iki dakikada** bir değerlendirilir.
 
-| Kaynak sistem durumu | Description |
+| Kaynak sistem durumu | Açıklama |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
-| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. Kullanılabilirliğinin etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) .
-| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. Kullanılabilirliği etkileyen Kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) . |
+| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. Kullanılabilirliğinin etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](./troubleshoot-rhc.md) .
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. Kullanılabilirliği etkileyen Kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](./troubleshoot-rhc.md) . |
 | Bilinmiyor | Standart yük dengeleyici kaynağınızın kaynak sistem durumu henüz güncelleştirilmemiş veya son 10 dakika boyunca veri yolu kullanılabilirliği bilgilerini almamış. Bu durum geçici olacak ve veriler alınınca hemen doğru durum yansıtılacaktır. |
 
 Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
@@ -263,7 +278,7 @@ Genel kaynak sistem durumu açıklaması [RHC belgelerinde](../service-health/re
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Load Balancer için önceden yapılandırılmış olan bu ölçümleri görüntülemek için [öngörüleri](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) kullanma hakkında bilgi edinin
+- Load Balancer için önceden yapılandırılmış olan bu ölçümleri görüntülemek için [öngörüleri](./load-balancer-insights.md) kullanma hakkında bilgi edinin
 - [Standart Yük Dengeleyici](./load-balancer-overview.md) hakkında daha fazla bilgi edinin.
 - [Yük dengeleyici giden bağlantınız](./load-balancer-outbound-connections.md)hakkında daha fazla bilgi edinin.
 - [Azure izleyici](../azure-monitor/overview.md)hakkında bilgi edinin.

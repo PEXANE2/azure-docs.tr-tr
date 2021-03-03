@@ -42,7 +42,7 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 
 ## <a name="storage-account-double-encryption"></a>Depolama hesabı çift şifreleme
 
-Depolama hesapları çift şifrelemeyi destekler, ancak ikinci katmanın açık olarak etkinleştirilmesi gerekir. [Bekleyen veriler için bkz. Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption).  
+Depolama hesapları çift şifrelemeyi destekler, ancak ikinci katmanın açık olarak etkinleştirilmesi gerekir. [Bekleyen veriler için bkz. Azure depolama şifrelemesi](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).  
 
 ## <a name="storage-account-errors"></a>Depolama hesabı hataları
 

@@ -1,14 +1,14 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741829"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -19,7 +19,7 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [Ekle](#append)
 - [Denetle](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Reddet](#deny)
+- [Reddetme](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
 - [Değiştir](#modify)
@@ -266,8 +266,7 @@ Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tan�
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists değerlendirmesi
 
-DeployIfNotExists, kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynağı isteği tamamladıktan ve başarı durum kodu döndürdüğünden yaklaşık 15 dakika çalışır. İlişkili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa, şablon dağıtımı oluşur.
-Dağıtımın süresi, şablona dahil edilen kaynakların karmaşıklığına bağlıdır.
+DeployIfNotExists, bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme aboneliği ya da kaynak isteği tamamladıktan sonra bir başarı durum kodu döndürdüğünden 15 dakika sonra çalışır. İlişkili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa, şablon dağıtımı oluşur. Dağıtımın süresi, şablona dahil edilen kaynakların karmaşıklığına bağlıdır.
 
 Bir değerlendirme çevrimi sırasında, kaynaklarla eşleşen bir DeployIfNotExists etkisi olan ilke tanımları uyumlu değil olarak işaretlenir, ancak bu kaynakta hiçbir işlem yapılmaz. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir.
 
@@ -482,8 +481,7 @@ EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetim
 
 ## <a name="modify"></a>Değiştir
 
-Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa özellikler veya Etiketler eklemek, güncelleştirmek veya kaldırmak için kullanılır.
-Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+Değişiklik, oluşturma veya güncelleştirme sırasında bir abonelik veya kaynağa özellikler veya Etiketler eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
 
 Aşağıdaki işlemler değiştirme tarafından desteklenir:
 
@@ -571,7 +569,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|Çalışma |Description |
+|İşlem |Açıklama |
 |-|-|
 |addOrReplace |Özellik veya etiket farklı bir değerle zaten var olsa bile, tanımlı özelliği veya etiketi ve değeri kaynağa ekler. |
 |Ekle |Kaynağa tanımlı özelliği veya etiketi ve değeri ekler. |

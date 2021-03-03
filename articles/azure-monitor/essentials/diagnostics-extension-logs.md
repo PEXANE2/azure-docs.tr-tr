@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 703a5f145aee93fe7ec4ad2f8ec102f98bdd4174
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2b7648155c28ec9b6cf2048246c17805b5f22404
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700737"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Azure tanılama uzantılarından Azure Izleyici günlüklerine veri toplama
 Azure tanılama uzantısı, Azure [izleyici 'de](../agents/agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, Azure depolama 'dan Azure Izleyici günlüklerine tanılama uzantısı tarafından toplanan verilerin nasıl toplanacağı açıklanır.
@@ -63,7 +63,6 @@ Yaklaşık 30 dakika içinde, Log Analytics çalışma alanındaki depolama hesa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Desteklenen Azure hizmetleri için [Azure hizmetleri için günlükleri ve ölçümleri toplayın](../platform/resource-logs.md#send-to-log-analytics-workspace) .
+* Desteklenen Azure hizmetleri için [Azure hizmetleri için günlükleri ve ölçümleri toplayın](./resource-logs.md#send-to-log-analytics-workspace) .
 * Verilerle ilgili Öngörüler sağlamak için [çözümleri etkinleştirin](../insights/solutions.md) .
-* Verileri çözümlemek için [arama sorguları](../log-query/log-query-overview.md) ' nı kullanın.
-
+* Verileri çözümlemek için [arama sorguları](../logs/log-query-overview.md) ' nı kullanın.

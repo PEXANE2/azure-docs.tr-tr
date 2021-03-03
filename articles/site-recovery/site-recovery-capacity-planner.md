@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87490583"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737724"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM olağanüstü durum kurtarma işlemi için kapasiteyi planlama 
 
@@ -43,7 +43,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
 
 ## <a name="run-the-quick-planner"></a>Hızlı planlayıcısı çalıştırın
-1. [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel)indirin ve açın. Makrolar çalıştırmanız gerekir. İstendiğinde, düzenlemenin ve içeriğin etkinleştirilmesi için seçimler yapın.
+1. [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery)indirin ve açın. Makrolar çalıştırmanız gerekir. İstendiğinde, düzenlemenin ve içeriğin etkinleştirilmesi için seçimler yapın.
 
 2. **Planner türü seç** liste kutusunda **hızlı planlayıcısı**' nı seçin.
 
@@ -51,15 +51,15 @@ Aracı iki modda çalıştırabilirsiniz:
 
 3. **Capacity Planner** çalışma sayfasında, gerekli bilgileri girin. Aşağıdaki ekran görüntüsünde, tüm alanları kırmızı renkte daire içine girin:
 
-   a. **Senaryonuzu seçin**bölümünde **Azure 'A Hyper-V** veya Azure için **VMware/fiziksel**' i seçin.
+   a. **Senaryonuzu seçin** bölümünde **Azure 'A Hyper-V** veya Azure için **VMware/fiziksel**' i seçin.
 
    b. **Günlük ortalama veri değişim oranı (%)** Içinde, [Hyper-V kapasite planlama aracı](./hyper-v-deployment-planner-overview.md) 'nı veya [Site Recovery dağıtım planlayıcısı](./site-recovery-deployment-planner.md)kullanarak topladığınız bilgileri girin.
 
    c. **Sıkıştırma** ayarı, Hyper-V VM 'lerini Azure 'a çoğalttığınızda kullanılmaz. Sıkıştırma için, bir üçüncü taraf gereç kullanın, örneğin, Riveryatak.
 
-   d. **Gün cinsinden bekletme**bölümünde, çoğaltmaların ne kadar süreyle tutulacağını belirtin.
+   d. **Gün cinsinden bekletme** bölümünde, çoğaltmaların ne kadar süreyle tutulacağını belirtin.
 
-   e. Her **bir sanal makine için ilk çoğaltmanın,** **ilk çoğaltma toplu işi başına sanal makine sayısını ve sayısını**tamamlaması gereken saat sayısı, ilk çoğaltma gereksinimlerini hesaplamak için kullanılan ayarları girin. Site Recovery dağıtıldığında, ilk veri kümesinin tamamı karşıya yüklenir.
+   e. Her **bir sanal makine için ilk çoğaltmanın,** **ilk çoğaltma toplu işi başına sanal makine sayısını ve sayısını** tamamlaması gereken saat sayısı, ilk çoğaltma gereksinimlerini hesaplamak için kullanılan ayarları girin. Site Recovery dağıtıldığında, ilk veri kümesinin tamamı karşıya yüklenir.
 
    ![Gerekli giriş bilgilerini gösteren Capacity Planner çalışma sayfasının ekran görüntüsü.](./media/site-recovery-capacity-planner/inputs.png)
 
@@ -81,7 +81,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
 ## <a name="run-the-detailed-planner"></a>Ayrıntılı planlayıcısı çalıştırın
 
-1. [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel)indirin ve açın. Makrolar çalıştırmanız gerekir. İstendiğinde, düzenlemenin ve içeriğin etkinleştirilmesi için seçimler yapın.
+1. [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery)indirin ve açın. Makrolar çalıştırmanız gerekir. İstendiğinde, düzenlemenin ve içeriğin etkinleştirilmesi için seçimler yapın.
 
 2. **Planner türü seç**' te, liste kutusundan **ayrıntılı Planner** ' ı seçin.
 
@@ -97,17 +97,17 @@ Aracı iki modda çalıştırabilirsiniz:
 
    d. **Toplam depolama alanı (GB cinsinden)**, VM depolamanın toplam boyutunu belirtin. Örneğin, kaynak sunucuda her biri 500 GB olan üç disk varsa, toplam depolama boyutu 1.500 GB 'dir.
 
-   e. **Bağlı disk sayısı**bölümünde, kaynak sunucunun toplam disk sayısını belirtin.
+   e. **Bağlı disk sayısı** bölümünde, kaynak sunucunun toplam disk sayısını belirtin.
 
    f. **Disk kapasitesi kullanımı (%)** bölümünde ortalama kullanımı belirtin.
 
    örneğin: **Günlük veri değişim oranı (%)** içinde, bir kaynak sunucunun günlük veri değişim hızını belirtin.
 
-   h. **Azure VM boyutunu eşleme**' de, eşlemek ISTEDIĞINIZ Azure VM boyutunu girin. Bunu el ile yapmak istemiyorsanız, **Işlem IaaS VM**'lerini seçin. El ile bir ayar girin ve ardından **IaaS VM 'leri**seçerseniz, el ile ayarının üzerine yazılabilir. İşlem işlemi, Azure VM boyutuyla en iyi eşleşmeyi otomatik olarak tanımlar.
+   h. **Azure VM boyutunu eşleme**' de, eşlemek ISTEDIĞINIZ Azure VM boyutunu girin. Bunu el ile yapmak istemiyorsanız, **Işlem IaaS VM**'lerini seçin. El ile bir ayar girin ve ardından **IaaS VM 'leri** seçerseniz, el ile ayarının üzerine yazılabilir. İşlem işlemi, Azure VM boyutuyla en iyi eşleşmeyi otomatik olarak tanımlar.
 
    ![Gerekli giriş bilgilerini gösteren Iş yükü niteliği çalışma sayfasının ekran görüntüsü.](./media/site-recovery-capacity-planner/workload-qualification.png)
 
-4. **Işlem IaaS VM 'leri**seçerseniz şunları yapın:
+4. **Işlem IaaS VM 'leri** seçerseniz şunları yapın:
 
    * Zorunlu girişleri doğrular.
    * IOPS 'yi hesaplar ve Azure 'a çoğaltmaya uygun olan her VM için en iyi Azure VM boyutu eşleşmesini önerir. Uygun büyüklükte bir Azure VM 'si algılanmıyorsa bir hata görüntülenir. Örneğin, eklenen disk sayısı 65 ise bir Azure VM için en yüksek boyut 64 olduğundan bir hata görüntülenir.

@@ -3,12 +3,12 @@ title: Azure Service Fabric küme sürümünüzü yükseltme
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 7cb9a739572c667e0821a7a60f5c5d8cceb97957
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652063"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698391"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Azure Service Fabric küme sürümünüzü yükseltme
 
@@ -63,9 +63,9 @@ Güvenliği ve kullanılabilirliği artırmak için, Azure altyapısı Service F
   
   - **6,3 ' den büyük bir Service Fabric çalıştıran kümeler Için açık ağ ÖZELLIĞI kullanmayın**, küme çalışır durumda kalır.
 
- - **6,3 ' den büyük Service Fabric bir sürümünü çalıştıran kümeler ve [kapsayıcılar Için açık ağ özelliğini](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) kullanmak için** , küme kullanılamaz hale gelebilir ve iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
+ - **6,3 ' den büyük Service Fabric bir sürümünü çalıştıran kümeler ve [kapsayıcılar Için açık ağ özelliğini](./service-fabric-networking-modes.md#set-up-open-networking-mode) kullanmak için** , küme kullanılamaz hale gelebilir ve iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
  
- -   **Windows sürümlerini çalıştıran kümeler için [7.0.457 ve 7.0.466 (her iki sürüm dahil)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) ve Windows Işletim sisteminin Windows kapsayıcıları özelliği etkinleştirilmiştir. Not: Linux sürümleri 7.0.457, 7.0.464 ve 7.0.465 etkilenmez**.
+ -   **Windows sürümlerini çalıştıran kümeler için [7.0.457 ve 7.0.466 (her iki sürüm dahil)](#supported-version-names) ve Windows Işletim sisteminin Windows kapsayıcıları özelliği etkinleştirilmiştir. Not: Linux sürümleri 7.0.457, 7.0.464 ve 7.0.465 etkilenmez**.
     - **Etki**: küme, iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
     
 #### <a name="required-action"></a>Gerekli eylem

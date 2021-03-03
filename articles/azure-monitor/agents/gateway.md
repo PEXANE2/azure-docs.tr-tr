@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732029"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -89,7 +89,7 @@ Log Analytics ağ geçidi şu dillerde kullanılabilir:
 
 Log Analytics ağ geçidi yalnızca Aktarım katmanı güvenliğini destekler (TLS) 1,0, 1,1 ve 1,2.  Güvenli Yuva Katmanı (SSL) desteklemez.  Log Analytics yoldaki verilerin güvenliğini sağlamak için, ağ geçidini en az TLS 1,2 kullanacak şekilde yapılandırın. TLS veya SSL 'nin eski sürümleri savunmasızdır. Bunlar şu anda geriye dönük uyumlulukla izin verse de kullanmaktan kaçının.  
 
-Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../platform/data-security.md#sending-data-securely-using-tls-12)inceleyin. 
+Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../logs/data-security.md#sending-data-securely-using-tls-12)inceleyin. 
 
 ### <a name="supported-number-of-agent-connections"></a>Desteklenen aracı bağlantısı sayısı
 

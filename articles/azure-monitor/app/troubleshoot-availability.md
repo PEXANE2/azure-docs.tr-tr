@@ -4,14 +4,14 @@ description: Azure Application Insights 'de Web testlerinde sorun giderme. Web s
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728935"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -58,7 +58,7 @@ Sorun giderme raporu, **ping testlerinizin** başarısız olmasına neden olan y
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Uyarı tetiklendiğinde veya her ikisini de bir e-posta almadı mi?
 
-E-postanızı doğrudan listelendiğini doğrulamak için klasik uyarılar yapılandırmasını denetleyin veya açık olduğunuz bir dağıtım listesi bildirimleri alacak şekilde yapılandırılır. Bu durumda, dağıtım listesi yapılandırmasını denetleyerek dış e-posta alabileceğinden emin olun. Ayrıca, e-posta yöneticinizin bu soruna neden olabilecek bir ilke yapılandırılıp yapılandırılmadığını denetleyin.
+E-postanızı doğrudan listelendiğini doğrulamak için uyarıların eylem grubu yapılandırmasını denetleyin veya açık olduğunuz bir dağıtım listesi bildirimleri alacak şekilde yapılandırılır. Bu durumda, dağıtım listesi yapılandırmasını denetleyerek dış e-posta alabileceğinden emin olun. Ayrıca, e-posta yöneticinizin bu soruna neden olabilecek bir ilke yapılandırılıp yapılandırılmadığını denetleyin.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Web kancası bildirimi aldım mı?
 
@@ -110,21 +110,6 @@ Test başına 100 istek sınırı var. Ayrıca, iki dakikadan uzun süre çalı�
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>İstemci sertifikasıyla testi nasıl çalıştırırım?
 
 Bu şu anda desteklenmiyor.
-
-## <a name="who-receives-the-classic-alert-notifications"></a>(Klasik) uyarı bildirimlerini kim alıyor?
-
-Bu bölüm yalnızca, klasik uyarılar için geçerlidir ve yalnızca istediğiniz alıcıların bildirimleri almasını sağlamak için uyarı bildirimlerinizi iyileştirmenize yardımcı olur. [Klasik uyarılar](../alerts/alerts-classic.overview.md)arasındaki fark hakkında daha fazla bilgi edinmek ve yeni uyarılar deneyimi hakkında daha fazla bilgi edinmek için [uyarılara genel bakış makalesine](../alerts/alerts-overview.md)bakın. Yeni uyarılar deneyiminde uyarı bildirimini denetlemek için [eylem gruplarını](../alerts/action-groups.md)kullanın.
-
-* Klasik uyarı bildirimleri için belirli alıcıların kullanılmasını öneririz.
-
-* X-Y konumlarından oluşan hatalarda oluşan uyarılarda, **toplu/grup** onay kutusu seçeneği etkinleştirildiyse, yönetici/ortak yönetici rollerine sahip kullanıcılara gönderir.  Esas olarak, _aboneliğin_ _Tüm_ yöneticileri bildirim alır.
-
-* Kullanılabilirlik ölçümlerinde uyarılar için **toplu/grup** onay kutusu seçeneği etkinleştirilirse, abonelikte sahip, katkıda bulunan veya okuyucu rollerine sahip kullanıcılara gönderir. Aslında, aboneliğe erişimi olan _Tüm_ kullanıcılar Application Insights kaynak kapsamdadır ve bildirimler alacaktır. 
-
-> [!NOTE]
-> Şu anda **toplu/grup** onay kutusu seçeneğini kullanırsanız ve devre dışı bıraktığınızda, değişikliği döndüremezsiniz.
-
-Kullanıcılara rollerine göre bildirimde bulunan yeni uyarı deneyimini veya neredeyse gerçek zamanlı uyarıları kullanın. [Eylem gruplarıyla](../alerts/action-groups.md), katkıda bulunan/sahip/okuyucu rollerinin herhangi birine sahip kullanıcılar için e-posta bildirimleri yapılandırabilirsiniz (tek bir seçenek olarak birlikte birleştirilemez).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689037"
 ---
 # <a name="two-way-sms-unsupported"></a>İki yönlü SMS desteklenmez
 
@@ -27,7 +27,7 @@ E-posta bildirimleri ve Azure portal Service Health bildirimleri (portal Toler),
 ## <a name="required-actions"></a>Gerekli eylemler
 
 1. Daha önce yapmadıysanız, kullanıcılarınız için mobil uygulamayı etkinleştirin. Daha fazla bilgi için bkz. [MFA sunucusu ile mobil uygulama kimlik doğrulamasını etkinleştirme](howto-mfaserver-deploy-mobileapp.md).
-1. Mobil uygulamayı etkinleştirmek için son kullanıcılarınıza MFA sunucusu [Kullanıcı portalınızı](howto-mfaserver-deploy-userportal.md) ziyaret etmeyi bildirin. [Microsoft Authenticator uygulaması](https://www.microsoft.com/account/authenticator) , ıkı yönlü SMS 'den daha güvenli olduğundan önerilen doğrulama seçeneğidir. Daha fazla bilgi için lütfen bkz. [kimlik doğrulaması Için telefon aktarımlarında asılı kalma süresi](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
+1. Mobil uygulamayı etkinleştirmek için son kullanıcılarınıza MFA sunucusu [Kullanıcı portalınızı](howto-mfaserver-deploy-userportal.md) ziyaret etmeyi bildirin. [Microsoft Authenticator uygulaması](https://www.microsoft.com/en-us/account/authenticator) , ıkı yönlü SMS 'den daha güvenli olduğundan önerilen doğrulama seçeneğidir. Daha fazla bilgi için lütfen bkz. [kimlik doğrulaması Için telefon aktarımlarında asılı kalma süresi](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
 1. İki yönlü metin iletisinden Kullanıcı ayarlarını, varsayılan yöntem olarak mobil uygulama olarak değiştirin.
 
 ## <a name="faq"></a>SSS

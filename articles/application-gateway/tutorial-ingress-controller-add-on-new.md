@@ -1,58 +1,38 @@
 ---
-title: 'Öğretici: yeni bir Azure Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin'
-description: Yeni bir Application Gateway örneğiyle yeni AKS kümeniz için giriş denetleyicisi eklentisini etkinleştirmek üzere Azure CLı 'yı nasıl kullanacağınızı öğrenmek için bu öğreticiyi kullanın.
+title: 'Öğretici: yeni bir Azure Application Gateway yeni bir AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin'
+description: Yeni bir Application Gateway örneğiyle yeni AKS kümeniz için giriş denetleyicisi eklentisini nasıl etkinleştireceğinizi öğrenmek için bu öğreticiyi kullanın.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: c37168c5165f5402dd4f57c8557bc2b7b3603533
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720197"
 ---
-# <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Öğretici: yeni bir Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini (Önizleme) etkinleştirme
+# <a name="tutorial-enable-the-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Öğretici: yeni bir Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin
 
-Azure CLı 'yi bir [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümesi için [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) eklentisini etkinleştirmek üzere kullanabilirsiniz. Eklenti şu anda önizleme aşamasındadır.
+Yeni bir [Azure Kubernetes hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümesi için [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) EKLENTISINI etkinleştirmek üzere Azure CLI 'yı kullanabilirsiniz.
 
 Bu öğreticide, AGIC eklentisi etkinken bir AKS kümesi oluşturacaksınız. Kümenin oluşturulması, otomatik olarak kullanılacak bir Azure Application Gateway örneği oluşturur. Ardından, uygulamayı Application Gateway aracılığıyla kullanıma sunmak için eklentiyi kullanacak bir örnek uygulama dağıtırsınız. 
 
-Eklenti, AKS kümeniz için [AGP 'yi daha önce helk aracılığıyla](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)dağıtmanın çok daha hızlı bir yolunu sağlar. Ayrıca, tam olarak yönetilen bir deneyim sunar.    
+Eklenti, AKS kümeniz için [AGP 'yi daha önce helk aracılığıyla](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)dağıtmanın çok daha hızlı bir yolunu sağlar. Ayrıca, tam olarak yönetilen bir deneyim sunar.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir kaynak grubu oluşturun. 
-> * AGIC eklentisi etkinken yeni bir AKS kümesi oluşturun. 
+> * AGIC eklentisi etkinken yeni bir AKS kümesi oluşturun.
 > * AKS kümesindeki Infer için AGIC kullanarak örnek bir uygulama dağıtın.
 > * Application Gateway aracılığıyla uygulamanın erişilebilir olup olmadığını denetleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - Bu öğretici, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür. Azure CLı kullanıyorsanız, henüz yoksa aşağıdaki komutu kullanarak önizleme uzantısını CLı 'ye yüklemelisiniz:
-    ```azurecli-interactive
-    az extension add --name aks-preview
-    ```
-
- - Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Feature bayrağını kaydedin. Eklenti hala önizleme aşamasında olduğunda bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir.
-    ```azurecli-interactive
-    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-    ```
-
-   Durumun gösterilmesi birkaç dakika sürebilir `Registered` . [Az Feature List](/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-    ```azurecli-interactive
-    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-    ```
-
- - Hazırsanız, [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -74,10 +54,10 @@ Artık AGIC eklentisi etkinken yeni bir AKS kümesi dağıtacaksınız. Bu işle
 
 Aşağıdaki örnekte, [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) ve [yönetilen kimlikleri](../aks/use-managed-identity.md)kullanarak *MYCLUSTER* adlı yeni bir aks kümesi dağıtırsınız. AGIC eklentisi, oluşturduğunuz kaynak grubunda, *Myresourcegroup*' de etkinleştirilir. 
 
-Yeni bir AKS kümesini, mevcut bir Application Gateway örneği belirtilmeden etkin bir şekilde dağıtmak, Standard_v2 SKU Application Gateway örneğinin otomatik olarak oluşturulmasını ifade eder. Bu nedenle, Application Gateway örneğinin adını ve alt ağ adres alanını da belirtirsiniz. Application Gateway örneğinin adı *myApplicationGateway* olur ve kullandığımız alt ağ adres alanı 10.2.0.0/16 ' dır. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden veya güncelleştirdiğinizden emin olun. 
+Yeni bir AKS kümesini, mevcut bir Application Gateway örneği belirtilmeden etkin bir şekilde dağıtmak, Standard_v2 SKU Application Gateway örneğinin otomatik olarak oluşturulmasını ifade eder. Bu nedenle, Application Gateway örneğinin adını ve alt ağ adres alanını da belirtirsiniz. Application Gateway örneğinin adı *myApplicationGateway* olur ve kullandığımız alt ağ adres alanı 10.2.0.0/16 ' dır.
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
 ```
 
 Komuta ek parametreler yapılandırmak için `az aks create` , [Bu başvurulara](/cli/azure/aks#az-aks-create)bakın. 

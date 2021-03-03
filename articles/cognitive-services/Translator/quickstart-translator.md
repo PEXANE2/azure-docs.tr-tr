@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
-ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f0397921b4ab29a16ee5259ce19502cad092eb83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713040"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, REST aracılığıyla Translator hizmetini kullanmay�
 * [Tümce uzunluğunu hesapla](#get-sentence-length)
 * Bir tümcede [alternatif çeviriler](#dictionary-lookup-alternate-translations) ve [sözcük kullanımının örneklerini](#dictionary-examples-translations-in-context) alın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduğunda, anahtarınızı ve uç noktanızı almak için Azure portal [bir çevirmen kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) . Dağıtıldıktan sonra **Kaynağa Git**' i seçin.
@@ -277,7 +277,7 @@ public class Translate {
                 "[{\"Text\": \"Hello World!\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -556,7 +556,7 @@ public class Translate {
                 "[{\"Text\": \"Hello World!\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -830,7 +830,7 @@ public class Detect {
                 "[{\"Text\": \"Ich würde wirklich gern Ihr Auto um den Block fahren ein paar Mal.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1116,7 +1116,7 @@ public class Translate {
                 "[{\"Text\": \"Hello\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1399,7 +1399,7 @@ public class Transliterate {
                 "[{\"Text\": \"สวัสดี\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1672,7 +1672,7 @@ public class Translate {
                 "[{\"Text\": \"Can you tell me how to get to Penn Station? Oh, you aren\'t sure? That\'s fine.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1954,7 +1954,7 @@ public class BreakSentence {
                 "[{\"Text\": \"Can you tell me how to get to Penn Station? Oh, you aren\'t sure? That\'s fine.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -2223,7 +2223,7 @@ public class DictionaryLookup {
                 "[{\"Text\": \"Shark\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -2522,7 +2522,9 @@ public class DictionaryExamples {
         RequestBody body = RequestBody.create(mediaType,
                 "[{\"Text\": \"Shark\", \"Translation\": \"tiburón\"}]");
         Request request = new Request.Builder().url(url).post(body)
-                .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).addHeader("Content-type", "application/json")
+                .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
+                .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
         return response.body().string();

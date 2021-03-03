@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624481"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725365"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -26,6 +26,7 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 - **Azure VM**  -   'lerinde SQL Server [Azure VM 'lerinde çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)
 - **Azure VM**  -  'lerinde SAP HANA veritabanları [Azure VM 'lerinde çalışan SAP HANA veritabanları yedekleme](backup-azure-sap-hana-database.md)
 - **PostgreSQL sunucuları Için Azure veritabanı (Önizleme)**  -   [Azure PostgreSQL veritabanlarını yedekleyin ve 10 yıla kadar yedeklemeleri koruyun](backup-azure-database-postgresql.md)
+- **Azure Blob 'lar (Önizleme)**  -  [Azure Blobları için işlemsel yedeklemeye genel bakış (önizlemede)](blob-backup-overview.md)
 
 ![Azure Backup genel bakış](./media/backup-overview/azure-backup-overview.png)
 

@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: a319dbce2502f35272cf9b70da2022f581d64275
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694079"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure purview Veri Kataloğu kökenini Kullanıcı Kılavuzu
 
 Bu makalede, Azure purview Veri Kataloğu 'ndaki Data kökenini özelliklerine genel bir bakış sunulmaktadır.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Azure purview 'ın platform özelliklerinden biri, veri işleme tarafından oluşturulan veri kümeleri arasında kökenini gösterme imkanına sahiptir. Data Factory, veri paylaşma ve Power BI gibi sistemler, taşırken verilerin kökenini yakalar. Özel kökenini raporlama, Atlas kancaları ve REST API aracılığıyla da desteklenir.
 
@@ -74,39 +74,47 @@ Azure purview, veri kümeleri ve süreçler için varlık düzeyi kökenini dest
 
    :::image type="content" source="./media/catalog-lineage-user-guide/view-columns-from-lineage.png" alt-text="Kökenini sayfasında sütunların görünüm seçme şeklini gösteren ekran görüntüsü" border="true":::
 
-## <a name="column-level-lineage"></a>Sütun düzeyi kökenini
+## <a name="dataset-column-lineage"></a>Veri kümesi sütunu kökenini
 
-Azure purview, veri kümeleri için sütun düzeyi kökenini destekler. Sütun düzeyi kökenini görmek için, katalogdaki geçerli varlığın **kökenini** sekmesine gidin ve aşağıdaki adımları izleyin:
+Bir veri kümesinin sütun düzeyi kökenini görmek için, katalogdaki geçerli varlığın **kökenini** sekmesine gidin ve aşağıdaki adımları izleyin:
 
 1. Kökenini sekmesindeki sol bölmede, Data kökenini içinde görüntülenmesini istediğiniz her sütunun yanındaki onay kutusunu işaretleyin.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png" alt-text="Kökenini sayfasında görüntülenecek sütunların nasıl seçileceğini gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png":::
 
-1. Sütun eşlemeyi görmek için sol bölmedeki veya kökenini tuvalinin veri kümesindeki seçili bir sütunun üzerine gelin. Tüm sütun örnekleri vurgulanır.
+2. Sütun eşlemeyi görmek için sol bölmedeki veya kökenini tuvalinin veri kümesindeki seçili bir sütunun üzerine gelin. Tüm sütun örnekleri vurgulanır.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png" alt-text="Bir veri kökenini yolundaki sütun akışını vurgulamak için bir sütun adının üzerine gelme şeklini gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png":::
 
-1. Sütun sayısı sol bölmede görüntülenebilenden daha büyükse, filtre seçeneğini kullanarak belirli bir sütunu ada göre seçin. Alternatif olarak, farenizi kullanarak listede kaydırma yapabilirsiniz.
+3. Sütun sayısı sol bölmede görüntülenebilenden daha büyükse, filtre seçeneğini kullanarak belirli bir sütunu ada göre seçin. Alternatif olarak, farenizi kullanarak listede kaydırma yapabilirsiniz.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-columns-by-name.png" alt-text="Kökenini sayfasında sütunların sütun adına göre filtreleneceğini gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/filter-columns-by-name.png":::
 
-1. Kökenini tuvali daha fazla düğüm ve kenar içeriyorsa, veri varlığını seçmek veya düğümleri ada göre işlemek için filtreyi kullanın. Alternatif olarak, kökenini penceresini kaydırmak için farenizi de kullanabilirsiniz.
+4. Kökenini tuvali daha fazla düğüm ve kenar içeriyorsa, veri varlığını seçmek veya düğümleri ada göre işlemek için filtreyi kullanın. Alternatif olarak, kökenini penceresini kaydırmak için farenizi de kullanabilirsiniz.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-assets-by-name.png" alt-text="Kökenini sayfasında veri varlık düğümlerini ada göre gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/filter-assets-by-name.png":::
 
-1. Kökenini tuvalindeki veri kümelerinin listesini vurgulamak için sol bölmedeki geçişi kullanın. Geçişi kapatırsanız, seçilen sütunlardan en az birini içeren herhangi bir varlık görüntülenir. Geçişi açarsanız, yalnızca tüm sütunları içeren veri kümeleri görüntülenir.
+5. Kökenini tuvalindeki veri kümelerinin listesini vurgulamak için sol bölmedeki geçişi kullanın. Geçişi kapatırsanız, seçilen sütunlardan en az birini içeren herhangi bir varlık görüntülenir. Geçişi açarsanız, yalnızca tüm sütunları içeren veri kümeleri görüntülenir.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png" alt-text="Kökenini sayfasındaki düğümlerin listesini filtrelemek için geçiş 'nin nasıl kullanılacağını gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png":::
 
+## <a name="process-column-lineage"></a>İşlem sütunu kökenini
+Veri işlemi bir veya daha fazla çıkış üretmek için bir veya daha fazla giriş veri kümesi alabilir. Purview 'da, sütun düzeyi kökenini işlem düğümleri için kullanılabilir. 
+1. Sütunlar panelindeki açılan listeden giriş ve çıkış veri kümeleri arasında geçiş yapın.
+2. Giriş veri kümesinden ilgili çıkış veri kümesine kökenini akışını görmek için bir veya daha fazla tablodan sütun seçin.
+
+   :::image type="content" source="./media/catalog-lineage-user-guide/process-column-lineage.png" alt-text="İşlem düğümünün kökenini sütunlarını gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/process-column-lineage.png":::
+
+## <a name="browse-assets-in-lineage"></a>Kökenini içindeki varlıklara gözatamıyorum
 1. Kökenini görünümünden ilgili meta verilerini görüntülemek için herhangi bir varlık üzerinde **varlığa geç** ' i seçin. Bunun yapılması, kökenini görünümünden katalogdaki başka bir varlığa gözatmaya yönelik etkili bir yoldur.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="Bir kökenini veri varlığı içinde varlık geçişi seçme ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-1. Kökenini tuvali, popüler veri kümeleri için karmaşık hale gelebilir. Dağınıklığı önlemek için varsayılan görünüm yalnızca odak alanındaki varlık için beş düzey kökenini gösterir. Kökenini 'ın geri kalanı kökenini tuvalindeki kabarcıklara tıklanarak genişletilebilir. Veri tüketicileri, tuvaldeki hiçbir ilgisi olmayan varlıkları da gizleyebilir. Dağınıklığı daha fazla azaltmak için, kökenini tuvalinin en üstünde yer değiştirme **kökenini daha fazlasını** devre dışı bırakın. Bu eylem, kökenini tuvalindeki tüm kabarcıkları gizleyecek.
+2. Kökenini tuvali, popüler veri kümeleri için karmaşık hale gelebilir. Dağınıklığı önlemek için varsayılan görünüm yalnızca odak alanındaki varlık için beş düzey kökenini gösterir. Kökenini 'ın geri kalanı kökenini tuvalindeki kabarcıklara tıklanarak genişletilebilir. Veri tüketicileri, tuvaldeki hiçbir ilgisi olmayan varlıkları da gizleyebilir. Dağınıklığı daha fazla azaltmak için, kökenini tuvalinin en üstünde yer değiştirme **kökenini daha fazlasını** devre dışı bırakın. Bu eylem, kökenini tuvalindeki tüm kabarcıkları gizleyecek.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="Nasıl daha fazla kökenini geçiş yapılacağını gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 
-1. Kökenini için en uygun görünümü elde etmek için kökenini tuvalindeki akıllı düğmeleri kullanın. Otomatik düzen, sığacak kadar Yakınlaştır, Yakınlaştır/kapat, tam ekran ve gezinti Haritası, katalogdaki bir modern kökenini deneyimi için kullanılabilir.
+3. Kökenini için en uygun görünümü elde etmek için kökenini tuvalindeki akıllı düğmeleri kullanın. Otomatik düzen, sığacak kadar Yakınlaştır, Yakınlaştır/kapat, tam ekran ve gezinti Haritası, katalogdaki bir modern kökenini deneyimi için kullanılabilir.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png" alt-text="Kökenini Smart düğmelerinin nasıl seçileceğini gösteren ekran görüntüsü." lightbox="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png":::
 

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure İşlevleri belgeleri
-summary: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder. Web API'leri oluşturmak, veritabanı değişikliklerine yanıt vermek, IoT akışlarını işlemek, ileti kuyruklarını yönetmek gibi birçok işlem için Azure İşlevleri’ni kullanabilirsiniz.
+summary: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Sizin için en fazla kod parçasına odaklanırsınız ve Işlevler Rest 'i işler. İşlevler, Azure için sunucusuz işlem sağlar. Işlevleri kullanarak Web API 'Leri oluşturabilir, veritabanı değişikliklerine yanıt verebilir, IoT akışlarını işleyebilir, ileti kuyruklarını yönetebilir ve daha fazlasını yapabilirsiniz.
 metadata:
   title: Azure İşlevleri belgeleri
-  description: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder. Web API'leri oluşturmak, veritabanı değişikliklerine yanıt vermek, IoT akışlarını işlemek, ileti kuyruklarını yönetmek gibi birçok işlem için Azure İşlevleri’ni kullanabilirsiniz.
+  description: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder. İşlevler, Azure için sunucusuz işlem sağlar. Web API'leri oluşturmak, veritabanı değişikliklerine yanıt vermek, IoT akışlarını işlemek, ileti kuyruklarını yönetmek gibi birçok işlem için Azure İşlevleri’ni kullanabilirsiniz.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100363041"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729173"
 landingContent:
 - title: Azure İşlevleri hakkında
   linkLists:

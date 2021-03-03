@@ -1,39 +1,37 @@
 ---
 title: Azure portal arama dizini oluşturma
 titleSuffix: Azure Cognitive Search
-description: Bu Azure portal hızlı başlangıçta, Azure Bilişsel Arama 'de ilk arama dizininizi oluşturmak, yüklemek ve sorgulamak için veri alma Sihirbazı 'nı kullanın.
+description: Azure portal veri alma sihirbazını kullanarak ilk arama dizininizi oluşturun, yükleyin ve sorgulayın. Bu hızlı başlangıç, örnek veriler için kurgusal bir otel veri kümesi kullanır.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/12/2020
-ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368639"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694844"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 
-**Veri alma** Sihirbazı 'nı ve kurgusal otel verilerinden oluşan yerleşik bir örnek veri kaynağını kullanarak ilk dizininizi oluşturun. Sihirbaz bir arama dizini (oteller-örnek-dizin) oluşturma sürecinde size kılavuzluk eder. böylece, dakikalar içinde ilginç sorgular yazabilirsiniz. 
+**Veri alma** Sihirbazı 'nı ve kurgusal otel verilerinden oluşan yerleşik bir örnek veri kaynağını kullanarak ilk arama dizininizi oluşturun. Sihirbaz bir arama dizini (oteller-örnek-dizin) oluşturma sürecinde size kılavuzluk eder. böylece, dakikalar içinde ilginç sorgular yazabilirsiniz. 
 
 Bu hızlı başlangıçta seçenekleri kullanamazsınız, ancak görüntü dosyalarından metin ve yapıyı ayıklayabilmeniz için, sihirbaz AI zenginleştirme için bir sayfa içerir. AI zenginleştirme içeren benzer bir anlatım için bkz. [hızlı başlangıç:](cognitive-search-quickstart-blob.md)Bilişsel Beceri oluşturma.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce aşağıdakilere sahip olmanız gerekir:
-
 + Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
-+ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
++ Bir Azure Bilişsel Arama hizmeti (herhangi bir katman, herhangi bir bölge). Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
 ### <a name="check-for-space"></a>Alan denetleme
 
-Birçok müşteri ücretsiz hizmetle başlar. Bu sürüm üç dizin, üç veri kaynağı ve üç dizin oluşturucu ile sınırlıdır. Başlamadan önce ek öğeler için yeriniz olduğundan emin olun. Bu öğreticide her nesneden birer tane oluşturulur.
+Birçok müşteri ücretsiz hizmetle başlar. Ücretsiz katman üç Dizin, üç veri kaynağı ve üç Dizin Oluşturucu ile sınırlıdır. Başlamadan önce ek öğeler için yeriniz olduğundan emin olun. Bu öğreticide her nesneden birer tane oluşturulur.
 
-Hizmet panosundaki bölümler, kaç Dizin, Dizin Oluşturucu ve veri kaynağı olduğunu gösterir. 
+Kaç tane Dizin, Dizin Oluşturucu ve veri kaynağı olduğunu öğrenmek için hizmete genel bakış sayfasını kontrol edin. 
 
 :::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
@@ -70,14 +68,18 @@ Bu adımı şimdilik atlayacağız ve **hedef dizini özelleştirmek** için do�
 
 ### <a name="step-3---configure-index"></a>3. adım-dizini yapılandırma
 
-Genellikle, dizin oluşturma, veri yüklenmeden önce tamamlanan kod tabanlı bir uygulamadır. Ancak, Bu öğreticinin gösterdiği gibi, sihirbaz gezinebileceği herhangi bir veri kaynağı için temel bir dizin oluşturabilir. Dizin için en azından bir ad ve alan koleksiyonu gerekir ve her belgenin benzersiz olarak tanımlanabilmesi için bir alanın belge anahtarı olarak işaretlenmiş olması gerekir. Ayrıca, otomatik tamamlama veya önerilen sorguları isterseniz dil Çözümleyicileri veya öneri araçları belirtebilirsiniz.
+Yerleşik oteller örnek dizini için, varsayılan bir dizin şeması sizin için tanımlanır. Bazı gelişmiş filtre örnekleri dışında, belgelerde ve otel-Samples dizinini hedefleyen örneklerde bulunan sorgular bu dizin tanımında çalıştırılır:
+
+:::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Oluşturulan oteller dizini":::
+
+Genellikle, kod tabanlı bir alıştırmada, veriler yüklenmeden önce dizin oluşturma işlemi tamamlanır. Veri Içeri aktarma Sihirbazı, gezinebileceği herhangi bir veri kaynağı için temel bir dizin oluşturarak bu adımları daraltabilir. Dizin için en azından bir ad ve alan koleksiyonu gerekir ve her belgenin benzersiz olarak tanımlanabilmesi için bir alanın belge anahtarı olarak işaretlenmiş olması gerekir. Ayrıca, otomatik tamamlama veya önerilen sorguları isterseniz dil Çözümleyicileri veya öneri araçları belirtebilirsiniz.
 
 Alanların veri türleri ve öznitelikleri vardır. Üstteki onay kutuları, alanın nasıl kullanılacağını denetleyen *dizin öznitelikleridir*.
 
-* **Alınabilir**, arama sonuçları listesinde çıktığı anlamına gelir. Bu onay kutusunu temizleyerek, örneğin yalnızca filtre ifadelerinde kullanılan alanlar için, bu onay kutusunu temizleyerek, tek tek alanları, arama sonuçları için sınırlı olarak işaretleyebilirsiniz.
-* **Anahtar** , benzersiz belge tanımlayıcısıdır. Her zaman bir dizedir ve gereklidir.
-* **Filtrelenebilir**, **sıralanabilir** ve çok **yönlü tablo** , alanların bir filtre, sıralama veya çok yönlü gezinti yapısında kullanılıp kullanılmadığını belirtir.
-* **Aranabilir**, bir alanın tam metin aramasına dahil olduğu anlamına gelir. Dizelerde arama yapılabilir. Sayısal alanlar ve Boolean alanları genellikle aranamaz olarak işaretlenir.
++ **Alınabilir**, arama sonuçları listesinde çıktığı anlamına gelir. Bu onay kutusunu temizleyerek, örneğin yalnızca filtre ifadelerinde kullanılan alanlar için, bu onay kutusunu temizleyerek, tek tek alanları, arama sonuçları için sınırlı olarak işaretleyebilirsiniz.
++ **Anahtar** , benzersiz belge tanımlayıcısıdır. Her zaman bir dizedir ve gereklidir.
++ **Filtrelenebilir**, **sıralanabilir** ve çok **yönlü tablo** , alanların bir filtre, sıralama veya çok yönlü gezinti yapısında kullanılıp kullanılmadığını belirtir.
++ **Aranabilir**, bir alanın tam metin aramasına dahil olduğu anlamına gelir. Dizelerde arama yapılabilir. Sayısal alanlar ve Boolean alanları genellikle aranamaz olarak işaretlenir.
 
 Depolama gereksinimleri, seçiminizin sonucu olarak farklılık gösterir. Örneğin, birden çok alanda **alınabilir** özniteliğini ayarlarsanız, depolama gereksinimleri güncel değildir.
 
@@ -87,10 +89,7 @@ Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzers
 
    Sihirbazı ikinci kez mevcut bir oteller veri kaynağını kullanarak yeniden çalıştırırsanız, dizin varsayılan özniteliklerle yapılandırılmaz. Gelecekteki içeri aktarmalardan öznitelikleri el ile seçmeniz gerekir. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Oluşturulan oteller dizini":::
-
-2. Sonraki sayfaya devam edin.
-
+1. Sonraki sayfaya devam edin.
 
 ### <a name="step-4---configure-indexer"></a>4. adım-Dizin oluşturucuyu yapılandırma
 
@@ -104,7 +103,7 @@ Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** 
 
 ## <a name="monitor-progress"></a>İlerlemeyi izleme
 
-Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine götürebilmelidir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
+Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine götürebilmelidir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular** sekmesine tıklayın.
 
 Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ediyor" veya Success, "sürüyor" veya Success (Dizin oluşturulmuş belge sayısıyla birlikte) durumuyla yeni oluşturulan dizin oluşturucuyu görmeniz gerekir.
 
@@ -112,7 +111,7 @@ Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ed
 
 ## <a name="view-the-index"></a>Dizini görüntüleme
 
-Ana hizmet sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara bağlantılar sağlar.  Yeni oluşturduğunuz dizini görüntülemek için bağlantılar listesinden **dizinler** ' e tıklayın. 
+Hizmete genel bakış sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara bağlantılar sağlar.  Yeni oluşturduğunuz dizini görüntülemek için bağlantılar listesinden **dizinler** ' e tıklayın. 
 
 Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir belge sayısı ve depolama boyutuyla görmeniz gerekir.
 
@@ -120,7 +119,9 @@ Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir bel
 
 Bu listeden, yeni oluşturduğunuz *oteller-örnek* dizinine tıklayabilirsiniz, Dizin şemasını görüntüleyebilirsiniz. ve isteğe bağlı olarak yeni alanlar ekleyin. 
 
-**Alanlar** sekmesi Dizin şemasını gösterir. Yeni bir alan girmek için listenin en altına gidin. Çoğu durumda, mevcut alanları değiştiremezsiniz. Mevcut alanlar Azure Bilişsel Arama bir fiziksel gösterimine sahiptir ve bu nedenle kodda bile değil, değiştirilemeyen değildir. Var olan bir alanı temel olarak değiştirmek için yeni bir dizin oluşturun ve özgün olanı bırakarak.
+**Alanlar** sekmesi Dizin şemasını gösterir. Sorgu yazıyorsanız ve bir alanın filtrelenebilir mi yoksa sıralanabilir mi olduğunu denetlemeniz gerekiyorsa, bu sekme size öznitelikleri gösterir.
+
+Yeni bir alan girmek için listenin en altına gidin. Her zaman yeni bir alan oluşturabilirsiniz, ancak çoğu durumda mevcut alanları değiştiremezsiniz. Mevcut alanlar, arama hizmetinizde fiziksel bir gösterimine sahiptir ve bu nedenle kodda bile değil, değiştirilemeyen değildir. Var olan bir alanı temel olarak değiştirmek için yeni bir dizin oluşturun ve özgün olanı bırakarak.
 
    :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Örnek dizin tanımı":::
 
@@ -142,11 +143,11 @@ Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kulla
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Search gezgini komutu":::
 
-2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2020-06-30) kullanın.
+1. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2020-06-30) kullanın.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Dizin ve API komutları":::
 
-3. Arama çubuğunda, aşağıdaki sorgu dizelerini yapıştırın ve **Ara**' ya tıklayın.
+1. Arama çubuğunda, aşağıdaki sorgu dizelerini yapıştırın ve **Ara**' ya tıklayın.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Sorgu dizesi ve arama düğmesi":::
 
@@ -158,19 +159,19 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 #### <a name="example-string-query-searchspa"></a>Örnek (dize sorgusu): `search=spa`
 
-* **Arama** parametresi, tam metin araması için bir anahtar sözcük arama girişi yapmak için kullanılır, bu durumda, belgedeki aranabilir herhangi bir alanda *Spa* 'yı içeren kişiler için otel verileri döndürür.
++ **Arama** parametresi, tam metin araması için bir anahtar sözcük arama girişi yapmak için kullanılır, bu durumda, belgedeki aranabilir herhangi bir alanda *Spa* 'yı içeren kişiler için otel verileri döndürür.
 
-* **Search gezgini** sonuçları JSON biçiminde döndürülür. Bu biçim ayrıntılı olmakla birlikte, belgelerin yoğun bir yapısı varsa okunması zordur. Bu bilerek yapılır; belgenin tamamına ilişkin görünürlük, özellikle test sırasında geliştirme amaçlarıyla önemlidir. Daha iyi bir kullanıcı deneyimi sunmak için [arama sonuçlarını işleyerek](search-pagination-page-layout.md) önemli öğeleri öne çıkaran bir kod yazmanız gerekir.
++ **Search gezgini** sonuçları JSON biçiminde döndürülür. Bu biçim ayrıntılı olmakla birlikte, belgelerin yoğun bir yapısı varsa okunması zordur. Bu bilerek yapılır; belgenin tamamına ilişkin görünürlük, özellikle test sırasında geliştirme amaçlarıyla önemlidir. Daha iyi bir kullanıcı deneyimi sunmak için [arama sonuçlarını işleyerek](search-pagination-page-layout.md) önemli öğeleri öne çıkaran bir kod yazmanız gerekir.
 
-* Belgeler, dizinde "alınabilir" olarak işaretlenmiş tüm alanlardan oluşur. Portalda Dizin özniteliklerini görüntülemek için, **dizinler** listesinde *oteller-Sample* ' a tıklayın.
++ Belgeler, dizinde "alınabilir" olarak işaretlenmiş tüm alanlardan oluşur. Portalda Dizin özniteliklerini görüntülemek için, **dizinler** listesinde *oteller-Sample* ' a tıklayın.
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>Örnek (parametreli sorgu): `search=spa&$count=true&$top=10`
 
-* **&** Simge, herhangi bir sırada belirtilebilen arama parametrelerini eklemek için kullanılır.
++ **&** Simge, herhangi bir sırada belirtilebilen arama parametrelerini eklemek için kullanılır.
 
-* **$Count = true** parametresi, döndürülen tüm belgelerin toplam sayısını döndürür. Bu değer arama sonuçlarının en üstüne yakın bir konumda görünür. **$count=true** tarafından bildirilen değişiklikleri izleyerek filtre sorgularını doğrulayabilirsiniz. Daha küçük sayılar filtrenizin çalıştığını gösterir.
++ **$Count = true** parametresi, döndürülen tüm belgelerin toplam sayısını döndürür. Bu değer arama sonuçlarının en üstüne yakın bir konumda görünür. **$count=true** tarafından bildirilen değişiklikleri izleyerek filtre sorgularını doğrulayabilirsiniz. Daha küçük sayılar filtrenizin çalıştığını gösterir.
 
-* **$Top = 10** , toplamda en yüksek dereceli 10 belgeyi döndürür. Varsayılan olarak, Azure Bilişsel Arama en iyi 50 eşleşme döndürür. **$top** ile bu miktarı artırabilir veya azaltabilirsiniz.
++ **$Top = 10** , toplamda en yüksek dereceli 10 belgeyi döndürür. Varsayılan olarak, Azure Bilişsel Arama en iyi 50 eşleşme döndürür. **$top** ile bu miktarı artırabilir veya azaltabilirsiniz.
 
 ### <a name="filter-the-query"></a><a name="filter-query"></a> Sorguyu filtreleme
 
@@ -178,9 +179,9 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Örnek (filtrelenmiş): `search=beach&$filter=Rating gt 4`
 
-* **$filter** parametresi, sağladığınız ölçütlerle eşleşen sonuçları döndürür. Bu durumda, 4 ' ten büyük derecelendirmeler.
++ **$filter** parametresi, sağladığınız ölçütlerle eşleşen sonuçları döndürür. Bu durumda, 4 ' ten büyük derecelendirmeler.
 
-* Filtre söz dizimi bir OData yapısıdır. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
++ Filtre söz dizimi bir OData yapısıdır. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> Sorguyu modelleme
 
@@ -188,19 +189,18 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Örnek (kapsamı azaltılarak modellenmiş): `search=*&facet=Category&$top=2`
 
-* **Search =** _ boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
-_ **modeli** , bir UI denetimine geçirebilmeniz için bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori* olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet` , her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
++ **search=*** boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
++ **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori* olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet` , her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
 
-* **$top=2** iki belge getirir ve sonuçları azaltmak veya artırmak için `top` kullanabileceğinizi gösterir.
++ **$top=2** iki belge getirir ve sonuçları azaltmak veya artırmak için `top` kullanabileceğinizi gösterir.
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Örnek (sayısal değerlerle modelleme): `search=spa&facet=Rating`
 
-* Bu sorgu, *Spa*'nın metin aramasında derecelendirme için bir model. Alan, dizinde alınabilir, *filtrelenebilir ve* çok yönlü tablo olarak işaretlendiğinden ve içerdiği değerler (sayısal, 1 ' den 5 ' e kadar), listelerin gruplar halinde kategorilere ayrılması için uygundur.
++ Bu sorgu, *Spa*'nın metin aramasında derecelendirme için bir model. Alan, dizinde alınabilir, *filtrelenebilir ve* çok yönlü tablo olarak işaretlendiğinden ve içerdiği değerler (sayısal, 1 ' den 5 ' e kadar), listelerin gruplar halinde kategorilere ayrılması için uygundur.
 
-* Yalnızca filtrelenebilir alanlardan görünüm oluşturulabilir. Yalnızca getirilebilir alanlar sonuçlarda döndürülebilir.
++ Yalnızca filtrelenebilir alanlardan görünüm oluşturulabilir. Yalnızca getirilebilir alanlar sonuçlarda döndürülebilir.
 
-* *Derecelendirme* alanı çift duyarlıklı kayan nokta ve gruplama kesin değere göre yapılır. Aralığa göre gruplandırma hakkında daha fazla bilgi için (örneğin, "3 yıldız derecelendirmesi," "4 yıldız derecelendirmesi" vb.), bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](./search-faceted-navigation.md#filter-based-on-a-range).
-
++ *Derecelendirme* alanı çift duyarlıklı kayan nokta ve gruplama kesin değere göre yapılır. Aralığa göre gruplandırma hakkında daha fazla bilgi için (örneğin, "3 yıldız derecelendirmesi," "4 yıldız derecelendirmesi" vb.), bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](./search-faceted-navigation.md#filter-based-on-a-range).
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Arama sonuçlarını vurgulama
 
@@ -208,13 +208,13 @@ _ **modeli** , bir UI denetimine geçirebilmeniz için bir gezinti yapısı dön
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Örnek (vurgulama): `search=beach&highlight=Description`
 
-* Bu örnekte, biçimlendirilen sözcük *plaj* , açıklama alanında daha kolay olacak.
++ Bu örnekte, biçimlendirilen sözcük *plaj* , açıklama alanında daha kolay olacak.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Örnek (dilbilimsel analiz): `search=beaches&highlight=Description`
 
-* Tam metin araması, Word formlarında temel çeşitlemeleri tanır. Bu durumda, arama sonuçları "plaj" için vurgulanmış metni, bu sözcüğü "Güzeller" üzerinde bir anahtar sözcük aramasına yanıt olarak, bu sözcüğe sahip olan oteller için "plaj" için vurgulanmış metni içerir. Dilbilimsel analiz nedeniyle sonuçlarda aynı kelimenin farklı biçimleri görüntülenebilir. 
++ Tam metin araması, Word formlarında temel çeşitlemeleri tanır. Bu durumda, arama sonuçları "plaj" için vurgulanmış metni, bu sözcüğü "Güzeller" üzerinde bir anahtar sözcük aramasına yanıt olarak, bu sözcüğe sahip olan oteller için "plaj" için vurgulanmış metni içerir. Dilbilimsel analiz nedeniyle sonuçlarda aynı kelimenin farklı biçimleri görüntülenebilir. 
 
-* Azure Bilişsel Arama, Lucene ve Microsoft 'tan 56 Çözümleyicileri destekler. Azure Bilişsel Arama tarafından kullanılan varsayılan değer standart Lucene çözümleyicisidir.
++ Azure Bilişsel Arama, Lucene ve Microsoft 'tan 56 Çözümleyicileri destekler. Azure Bilişsel Arama tarafından kullanılan varsayılan değer standart Lucene çözümleyicisidir.
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Belirsiz aramayı deneme
 

@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3b6928b759d2349051dbb69258952f2f1ee10a31
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694351"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
-
 
 Linux sanal makineleri (VM 'Ler) için Azure disk şifrelemesi, işletim sistemi diski ve veri disklerinin tam disk şifrelemesini sağlamak için Linux 'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliği kullanılırken geçici disk şifrelemesi de sağlar.
 
@@ -40,7 +39,7 @@ Her durumda, [bir anlık görüntü](snapshot-copy-managed-disk.md) almalısın�
 
 Azure disk şifrelemesi, [Azure CLI](/cli/azure) ve [Azure PowerShell](/powershell/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için, araçları yerel olarak yüklemeli ve Azure aboneliğinize bağlamanız gerekir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 [Azure clı 2,0](/cli/azure) , Azure kaynaklarını yönetmeye yönelik bir komut satırı aracıdır. CLı, verileri esnek bir şekilde sorgulamak, engelleyici olmayan işlemler olarak uzun süreli işlemleri desteklemek ve komut dosyasını kolay hale getirmek için tasarlanmıştır. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli)ilişkin adımları izleyerek yerel olarak yükleyebilirsiniz.
 
@@ -408,7 +407,6 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Şifrelenmiş bir sanal makinenin görüntüsünü veya anlık görüntüsünü oluşturma ve ek VM 'Leri dağıtmak için kullanma.
 - Çekirdek kilitlenme dökümü (kdump).
 - Oracle ACFS (ASM küme dosyası sistemi).
-- Gen2 VM 'Ler (bkz: [Azure 'da 2. nesil VM 'ler Için destek](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Lsv2 serisi VM 'lerinin NVMe diskleri (bkz: [Lsv2-Series](../lsv2-series.md)).
 - "İç içe bağlama noktaları" olan bir VM. diğer bir deyişle, tek bir yolda birden çok bağlama noktası ("/1stmountpoint/Data/2stbağlamanoktası" gibi).
 - Bir işletim sistemi klasörünün üzerine bağlanmış bir veri sürücüsüne sahip bir VM.
@@ -416,7 +414,6 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
 - Müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](../disk-encryption.md) şifrelenmiş diskler IÇEREN bir VM 'ye Ade uygulama. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - ADE ile şifrelenen veya **herhangi** bır zaman Ade ile ŞIFRELENEN bir VM 'yi, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeye](../disk-encryption.md)geçirme.
-- [Yerel geçici disk Içermeyen Azure VM boyutları](../azure-vms-no-temp-disk.md); Özellikle, dv4, Dsv4, Ev4 ve Esv4.
 - Yük devretme kümelerinde VM 'Leri şifreleme.
 
 ## <a name="next-steps"></a>Sonraki adımlar

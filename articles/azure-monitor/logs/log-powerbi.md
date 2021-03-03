@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: 80a508aeb7eff9567bea67cb84350fc2e77551da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1db5f5e4164d971dff3ec6b042fa4b0a969e508
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704251"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Power BI ile tümleştirme Log Analytics
 
@@ -19,7 +19,7 @@ Bu makalede, daha görsel açıdan çekici raporlar ve panolar oluşturmak için
 
 ## <a name="background"></a>Arka Plan 
 
-Azure Izleyici günlükleri, günlükleri almak için uçtan uca bir çözüm sağlayan bir platformdur. [Azure izleyici Log Analytics](../platform/data-platform.md#) , bu günlükleri sorgulayan arabirimdir. Log Analytics dahil olmak üzere tüm Azure Izleyici veri platformu hakkında daha fazla bilgi için bkz. [Azure izleyici veri platformu](../platform/data-platform.md). 
+Azure Izleyici günlükleri, günlükleri almak için uçtan uca bir çözüm sağlayan bir platformdur. [Azure izleyici Log Analytics](../platform/data-platform.md#) , bu günlükleri sorgulayan arabirimdir. Log Analytics dahil olmak üzere tüm Azure Izleyici veri platformu hakkında daha fazla bilgi için bkz. [Azure izleyici veri platformu](../data-platform.md). 
 
 Microsoft Power BI, Microsoft 'un veri görselleştirme platformudur. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [Power BI giriş sayfası](https://powerbi.microsoft.com/). 
 
@@ -82,4 +82,4 @@ Ek bilgiler, [tümleştirme Log Analytics ve Excel](log-excel.md) 'de bulunabili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Log Analytics sorguları](../log-query/log-query-overview.md)ile çalışmaya başlayın.
+[Log Analytics sorguları](./log-query-overview.md)ile çalışmaya başlayın.

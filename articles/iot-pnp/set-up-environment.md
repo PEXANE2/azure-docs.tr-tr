@@ -7,14 +7,14 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831918"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742662"
 ---
-# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Hızlı başlangıç-ortamınızı IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için ayarlama
+# <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Hızlı başlangıç: IoT Tak ve Kullan hızlı başlangıç ve öğreticiler için ortamınızı ayarlama
 
 IoT Tak ve Kullan hızlı başlangıçların ve öğreticilerinin hiçbirini tamamlamadan önce Azure aboneliğinizde bir IoT Hub 'ı ve cihaz sağlama hizmeti 'ni (DPS) yapılandırmanız gerekir. Ayrıca, örnek uygulamalar ve Azure IoT gezgin aracı tarafından kullanılan model dosyalarının yerel kopyalarına de ihtiyacınız olacaktır.
 

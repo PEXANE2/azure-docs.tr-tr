@@ -2,13 +2,13 @@
 title: Tanılama günlüklerini ayarlama-Azure Olay Hub 'ı | Microsoft Docs
 description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılama günlüklerini ayarlamayı öğrenin.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742543"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
@@ -207,7 +207,7 @@ Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelen
 | `Count` | Verilen eylem için oluşum sayısı |
 | `ResourceId` | Azure Resource Manager kaynak KIMLIĞI. |
 
-Sanal ağ günlükleri yalnızca ad alanı **Seçili ağlardan** veya **belirli IP adreslerinden** (IP filtre kuralları) erişime izin veriyorsa oluşturulur. Bu özellikleri kullanarak ad alanınızı erişimi kısıtlamak ve yine de Event Hubs ad alanına bağlanan istemcilerin IP adreslerini izlemek için sanal ağ günlükleri almak istiyorsanız, aşağıdaki geçici çözümü kullanabilirsiniz. IP filtrelemeyi etkinleştirin ve toplam adreslenebilir IPv4 aralığını (1.0.0.0/1-255.0.0.0/1) ekleyin. Event Hubs IPv6 aralıklarını desteklemez. 
+Sanal ağ günlükleri yalnızca ad alanı **Seçili ağlardan** veya **belirli IP adreslerinden** (IP filtre kuralları) erişime izin veriyorsa oluşturulur. Bu özellikleri kullanarak ad alanınızı erişimi kısıtlamak ve yine de Event Hubs ad alanına bağlanan istemcilerin IP adreslerini izlemek için sanal ağ günlükleri almak istiyorsanız, aşağıdaki geçici çözümü kullanabilirsiniz. [IP filtrelemeyi etkinleştirin](event-hubs-ip-filtering.md)ve toplam adreslenebilir IPv4 aralığını (1.0.0.0/1-255.0.0.0/1) ekleyin. Event Hubs IP filtrelemesi IPv6 aralıklarını desteklemez. Günlükteki IPv6 biçiminde özel uç nokta adresleri görebileceğinizi unutmayın. 
 
 ### <a name="example"></a>Örnek
 

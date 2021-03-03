@@ -1,14 +1,14 @@
 ---
 title: Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Azure Security kıyaslama Foundation şeması örneği için adımları dağıtın.
-ms.date: 02/17/2020
+ms.date: 02/18/2020
 ms.topic: sample
-ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: e48f3da383bdb6d5c9960595f3c0fdcabc27dc75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740690"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure Güvenlik kıyaslama Foundation şema örneğini dağıtma
 
@@ -136,7 +136,7 @@ Aşağıdaki tabloda, şema parametrelerinin bir listesi verilmiştir:
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Alt ağ adresi önekleri (isteğe bağlı)|Bağlı bileşen sanal ağı için isteğe bağlı alt ağların IP adresi önekleri dizisi; Örneğin, "10.0.7.0/24", "10.0.8.0/24"|
 |Azure sanal ağ bağlı bileşen şablonu|Resource Manager şablonu|Bağlı bileşen dağıt|Atamanın mimarinin bağlı bileşen bileşenlerini dağıtmasının gerekip gerekmediğini belirtmek için ' true ' veya ' false ' girin|
 |Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi konumu|Ağ Izleyicisi kaynağı konumu|
-|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi kaynak grubu konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **adıyla eşleşmelidir.**|
+|Azure ağ Izleyicisi şablonu|Resource Manager şablonu|Ağ Izleyicisi kaynak grubu konumu|Ağ Izleyicisi zaten etkinse, bu parametre değeri var olan ağ Izleyicisi kaynak grubunun **konumuyla eşleşmelidir.**|
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623797"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717749"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Ölçek Kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması
 Performans ölçümü eşiklerine, yinelenen bir zamanlamaya göre veya belirli bir tarihe göre sanal makine ölçek kümelerinde ölçeklendirebilir ve genişleme yapabilirsiniz. Ayrıca, ölçek eylemleri için e-posta ve Web kancası bildirimleri de yapılandırabilirsiniz. Bu izlenecek yol, bir VM Ölçek kümesindeki bir Kaynak Yöneticisi şablonu kullanarak tüm bu nesneleri yapılandırmaya ilişkin bir örnek gösterir.
@@ -36,7 +36,7 @@ Bu kılavuzda, bir ölçek kümesi için otomatik ölçeklendirme ayarını yap�
 
 3. Artık zamanlamaya veya belirli gereksinimlere göre daha fazla profil ve kural ekleyebilirsiniz. Üç profille bir otomatik ölçeklendirme ayarı oluşturacağız. Otomatik ölçeklendirme profilleri ve kurallarını anlamak için [Otomatik ölçek En Iyi yöntemlerini](autoscale-best-practices.md)gözden geçirin.  
 
-    | Profiller & kuralları | Description |
+    | Profiller & kuralları | Açıklama |
     |--- | --- |
     | **Profil** |**Performans/ölçüm tabanlı** |
     | Kural |Service Bus kuyruk Iletisi sayısı > x |
@@ -243,9 +243,9 @@ Otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için bu bağlantıl
 
 [Azure otomatik ölçeklendirme için en iyi uygulamalar](autoscale-best-practices.md)
 
-[PowerShell kullanarak otomatik ölçeklendirmeyi yönetme](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[PowerShell kullanarak otomatik ölçeklendirmeyi yönetme](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[CLı kullanarak otomatik ölçeklendirmeyi yönetme](../samples/cli-samples.md#autoscale)
+[CLı kullanarak otomatik ölçeklendirmeyi yönetme](../cli-samples.md#autoscale)
 
 [Otomatik ölçeklendirme için Web kancası & e-posta bildirimlerini yapılandırma](autoscale-webhook-email.md)
 

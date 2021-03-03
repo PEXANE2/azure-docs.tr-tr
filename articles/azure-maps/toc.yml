@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: Sembol katmanı ekleme
               href: map-add-pin.md
-            - name: Açılır pencere ekleme
-              href: map-add-popup.md
             - name: Baloncuk katmanı ekleme
               href: map-add-bubble-layer.md
+            - name: Açılır pencere ekleme
+              href: map-add-popup.md
             - name: HTML işaretçileri ekleme
               href: map-add-custom-html.md
             - name: Çizgi katmanı ekleme
@@ -250,14 +250,14 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Baloncuk katmanı ekleme
           href: map-add-bubble-layer-android.md
-        - name: Şekil ekleme
+        - name: Özellik bilgilerini görüntüleme
+          href: display-feature-information-android.md
+        - name: Çizgi katmanı ekleme
+          href: android-map-add-line-layer.md
+        - name: Çokgen katmanı ekleme
           href: how-to-add-shapes-to-android-map.md
         - name: Isı haritası katmanı ekleme
           href: map-add-heat-map-layer-android.md
-        - name: Çizgi katmanı ekleme
-          href: android-map-add-line-layer.md
-        - name: Özellik bilgilerini görüntüleme
-          href: display-feature-information-android.md
         - name: Kutucuk katmanı ekleme
           href: how-to-add-tile-layer-android-map.md
         - name: Trafik verilerini gösterme

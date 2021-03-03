@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e224faca3c384ee5b3df02b015199ac5eab403bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 03d83d96bb58ddaf9be4e46c4b62f10e2476e549
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750081"
 ---
 Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izleme anahtarı başına bazı sınırlar vardır. Limitler seçtiğiniz [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/application-insights/) bağlıdır.
 
@@ -21,7 +21,7 @@ Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izlem
 | --- | --- | --- |
 | Günlük toplam veri | 100 GB | Bir uç ayarlayarak verileri azaltabilirsiniz. Daha fazla veri gerekiyorsa, portalda 1.000 GB 'a kadar olan limiti artırabilirsiniz. 1.000 GB 'tan büyük kapasiteler için adresine e-posta gönderin AIDataCap@microsoft.com .
 | Azaltma | 32.000 olay/saniye | Sınır bir dakika içinde ölçülür.
-| Veri saklama | [30-730 gün](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/log-query/log-query-overview.md) ve [Ölçüm Gezgini](../articles/azure-monitor/platform/metrics-charts.md) içindir.
+| Veri saklama | [30-730 gün](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/logs/log-query-overview.md) ve [Ölçüm Gezgini](../articles/azure-monitor/essentials/metrics-charts.md) içindir.
 | [Çok adımlı kullanılabilirlik testi](../articles/azure-monitor/app/availability-multistep.md) ayrıntılı sonuçlarını saklama | 90 gün | Bu kaynak her adımın ayrıntılı sonuçlarını verir.
 | En fazla olay boyutu | 64.000 bayt |
 | Özellik ve ölçüm adı uzunluğu | 150 | Bkz. [tür şemaları](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).

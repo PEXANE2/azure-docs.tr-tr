@@ -5,43 +5,66 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3704d1a418baeec18c3303b8203a0185790cbcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564298"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720837"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Unity için Remote Rendering paketini yükleme
 
 Azure uzaktan Işleme, tümleştirmeyi Unity 'ye kapsüllemek için bir Unity paketi kullanır.
-
-## <a name="manage-the-remote-rendering-packages-in-unity"></a>Unity 'de uzaktan işleme paketlerini yönetme
-
-Unity paketleri, Unity 'nin [Paket Yöneticisi](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)aracılığıyla yönetilebilen kapsayıcılardır.
 Bu paket tüm C# API 'SININ yanı sıra Unity ile Azure uzaktan Işlemeyi kullanmak için gereken tüm eklenti ikililerini içerir.
-Aşağıdaki Unity 'nin paketlere yönelik adlandırma şeması, pakete **com. Microsoft. Azure. Remote-Rendering**olarak adlandırılır.
+Aşağıdaki Unity 'nin paketlere yönelik adlandırma şeması, pakete **com. Microsoft. Azure. Remote-Rendering** olarak adlandırılır.
 
-Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz. Projeyi bir projeye eklemek için, aşağıdakileri eklemek üzere projenin dosyasını el ile düzenlemeniz gerekir `manifest.md` :
+Unity paketini yüklemek için aşağıdaki seçeneklerden birini belirleyebilirsiniz.
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "Azure Mixed Reality Services",
-      "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-      "scopes": ["com.microsoft.azure"]
-    }
-   ],
-  "dependencies": {
-    "com.microsoft.azure.remote-rendering": "0.1.31",
-    ...existing dependencies...
-  }
-}
-```
+## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Karma Gerçeklik Özellik aracını kullanarak uzaktan Işleme paketini yükler
 
-Bu eklendikten sonra Unity paket yöneticisini kullanarak en son sürüme sahip olduğunuzdan emin olabilirsiniz.
-Öğreticide daha kapsamlı yönergeler verilmiştir [: uzak modelleri görüntüleme](../../tutorials/unity/view-remote-models/view-remote-models.md).
+[Karma gerçeklik özelliği aracı](https://aka.ms/MRFeatureToolDocs) ([Indirme](https://aka.ms/mrfeaturetool)), karma gerçeklik özellik paketlerini Unity projelerine bütünleştirmek için kullanılan bir araçtır. Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz.
+
+Paketi bir projeye eklemek için şunları yapmanız gerekir:
+1. [Karma Gerçeklik Özellik aracını indirin](https://aka.ms/mrfeaturetool)
+1. Aracının nasıl kullanılacağına ilişkin [tüm yönergeleri](https://aka.ms/MRFeatureToolDocs) izleyin.
+1. **Özellikleri bul** sayfasında, **uzaktan işleme paketinin Microsoft Azure** onay kutusunu işaretleyin ve projenize eklemek istediğiniz paketin sürümünü seçin
+
+![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)
+
+Yerel paketinizi güncelleştirmek için karma gerçeklik Özellik aracından daha yeni bir sürümü seçip yüklemesi yeterlidir. Paketin güncelleştirilmesi, bazen konsol hatalarına neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
+
+## <a name="install-remote-rendering-package-manually"></a>Uzaktan Işleme paketini el ile yükler
+
+Uzaktan Işleme paketini el ile yüklemek için şunları yapmanız gerekir:
+
+1. Paketi konumundaki karma gerçeklik paketleri NPM akışından indirin `https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry` .
+    * Paketi geçerli klasöre indirmek için [NPM](https://www.npmjs.com/get-npm) 'yi kullanabilir ve aşağıdaki komutu çalıştırabilirsiniz.
+      ```
+      npm pack com.microsoft.azure.remote-rendering --registry https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry
+      ```
+
+    * Ya da `Scripts/DownloadUnityPackages.ps1` [Azure-Remote-Rendering GitHub deposundan](https://github.com/Azure/azure-remote-rendering)konumundaki PowerShell betiğini kullanabilirsiniz.
+        * `Scripts/unity_sample_dependencies.json`İçeriğini düzenleyin
+          ```json
+          {
+            "packages": [
+              {
+                "name": "com.microsoft.azure.remote-rendering", 
+                "version": "latest", 
+                "registry": "https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry"
+              }
+            ]
+          }
+          ```
+
+        * Paketi belirtilen hedef dizine indirmek için PowerShell 'de aşağıdaki komutu çalıştırın.
+          ```
+          DownloadUnityPackages.ps1 -DownloadDestDir <destination directory>
+          ```
+
+1. [İndirilen paketi](https://docs.unity3d.com/Manual/upm-ui-tarball.html) Unity 'Nin Paket Yöneticisi Ile birlikte yükler.
+
+Yerel paketinizi güncelleştirmek için yalnızca kullandığınız ilgili komutu yeniden çalıştırın ve paketi yeniden içeri aktarın. Paketin güncelleştirilmesi, bazen konsol hatalarına neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
 
 ## <a name="unity-render-pipelines"></a>Unity işleme işlem hatları
 

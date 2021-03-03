@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687633"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -141,14 +141,15 @@ Bir kullanıcının grup üyeliklerini denetlemek için şu adımları izleyin:
 7.  Kullanıcının üyesi olduğu grupları görmek için **grupları** seçin.
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Kullanıcının 999 'den fazla uygulama rolü ataması olup olmadığını denetleyin
-Bir kullanıcıya, kendilerine atanan 999 taneden fazla uygulama rolü ataması varsa uygulamalarım üzerinde tüm uygulamalarını görmeyebilir.
+Bir kullanıcının 999 'den fazla uygulama rolü ataması varsa uygulamalarım üzerinde tüm uygulamalarını görmeyebilir.
 
 Bunun nedeni uygulamalarımın, kullanıcıların atandığı uygulamaları belirlemede en fazla 999 uygulama rolü atamasını okumasıdır. Bir Kullanıcı 999 ' den fazla uygulamaya atanmışsa, bu uygulamalardan hangisinin uygulama portalında gösterileceğini denetlemek mümkün değildir.
 
-Bir kullanıcıya verilen uygulama rolü atamalarının sayısını denetlemek için şu adımları izleyin:
+Bir kullanıcının 999 taneden fazla uygulama rolü ataması olup olmadığını denetlemek için şu adımları izleyin:
 1. [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell modülünü yükler.
-2. `Connect-MgGraph -Scopes "Directory.Read.All"`' İ bir **genel yönetici** olarak çalıştırın ve doğrulayın.
-3. `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count`Kullanıcının şu anda verdiği uygulama rolü atamalarının sayısını öğrenmek için öğesini çalıştırın.
+2. Şu komutu çalıştırın: `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"`.
+3. `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count`Kullanıcının şu anda verdiği uygulama rolü atamalarının sayısını öğrenmek için öğesini çalıştırın.
+4. Sonuç 999 ise Kullanıcı büyük olasılıkla 999 ' den fazla uygulama rolü atamadır.
 
 ### <a name="check-a-users-assigned-licenses"></a>Kullanıcının atanan lisanslarını denetleme
 Bir kullanıcının atanmış lisanslarını denetlemek için şu adımları izleyin:

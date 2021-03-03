@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379905"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740452"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 
@@ -30,7 +30,7 @@ Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini d
 
 ## <a name="pipeline-run-information"></a>İşlem hattı çalıştırma bilgileri
 
-İşlem hattı çalıştırma özellikleri için ardışık düzen [EYLEMSIZLIK API başvurusuna](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)bakın. İşlem hattı çalıştırmasının yaşam döngüsü sırasında farklı durumları varsa, çalışma durumunun olası değerleri aşağıda listelenmiştir:
+İşlem hattı çalıştırma özellikleri için ardışık düzen [EYLEMSIZLIK API başvurusuna](/rest/api/datafactory/pipelineruns/get#pipelinerun)bakın. İşlem hattı çalıştırmasının yaşam döngüsü sırasında farklı durumları varsa, çalışma durumunun olası değerleri aşağıda listelenmiştir:
 
 * Kuyruğa alındı
 * Ediyor
@@ -163,5 +163,4 @@ PowerShell kullanarak bir işlem hattı oluşturma ve izleme hakkında tam bir a
 PowerShell cmdlet 'leri hakkında tüm belgeler için bkz. [PowerShell cmdlet başvurusu Data Factory](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory işlem hatlarını izlemek üzere Azure Izleyici 'yi kullanmayı öğrenmek için bkz. Azure izleyici 'yi [kullanarak işlem hatlarını izleme](monitor-using-azure-monitor.md) . 
-
+Data Factory işlem hatlarını izlemek üzere Azure Izleyici 'yi kullanmayı öğrenmek için bkz. Azure izleyici 'yi [kullanarak işlem hatlarını izleme](monitor-using-azure-monitor.md) .

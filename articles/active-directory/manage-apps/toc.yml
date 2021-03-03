@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: Self servis uygulama atamasını yapılandırma
           href: manage-self-service-access.md
-        - name: Giriş Bölgesi Bulma
+        - name: Giriş bölgesi bulma ilkesi aracılığıyla otomatik hızlandırmayı zorla
           href: configure-authentication-for-federated-users-portal.md
+        - name: Giriş bölgesi bulma ilkesini kullanarak oturum açma otomatik hızlandırmasını engelle
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Kimlik yönetimini Azure AD’ye geçirme
       items:
         - name: Geçiş kaynakları

@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 1/14/2020
-ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 2/24/2021
+ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691442"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL veritabanı engelleme sorunlarını anlama ve çözme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Makale, Azure SQL veritabanlarında engellemeyi açıklar ve engellemeyi nasıl 
 Bu makalede, bağlantı terimi, veritabanının tek bir oturum açma oturumu anlamına gelir. Her bağlantı, bir oturum KIMLIĞI (SPID) veya birçok DMVs session_id olarak görüntülenir. Bu SPID 'lerin her biri genellikle işlem olarak adlandırılır, ancak her zamanki anlamda ayrı bir işlem bağlamı değildir. Bunun yerine, her SPID belirli bir istemciden tek bir bağlantının isteklerine hizmet vermek için gereken sunucu kaynaklarından ve veri yapılarından oluşur. Tek bir istemci uygulamasının bir veya daha fazla bağlantısı olabilir. Azure SQL veritabanı perspektifinden, tek bir istemci bilgisayardaki tek bir istemci uygulamasından gelen birden çok bağlantı ve birden çok istemci uygulamasından veya birden çok istemci bilgisayardan birden çok bağlantı arasında bir fark yoktur; Bunlar atomik. Bir bağlantı, kaynak istemciden bağımsız olarak başka bir bağlantıyı engelleyebilirler.
 
 > [!NOTE]
-> **Bu içerik Azure SQL veritabanı 'na özeldir.** Azure SQL veritabanı, Microsoft SQL Server veritabanı altyapısının en son kararlı sürümünü temel alır. bu nedenle, sorun giderme seçenekleri ve araçları farklı olabilir. SQL Server engelleme hakkında daha fazla bilgi için bkz. [SQL Server engelleyen sorunları anlama ve çözme](/troubleshoot/sql/performance/understand-resolve-blocking).
+> **Bu içerik Azure SQL veritabanı ' na odaklanılmıştır.** Azure SQL veritabanı, Microsoft SQL Server veritabanı altyapısının en son kararlı sürümünü temel alır. bu nedenle, sorun giderme seçenekleri ve araçları farklı olabilir. SQL Server engelleme hakkında daha fazla bilgi için bkz. [SQL Server engelleyen sorunları anlama ve çözme](/troubleshoot/sql/performance/understand-resolve-blocking).
 
 ## <a name="understand-blocking"></a>Engellemeyi anlama 
  
@@ -105,7 +105,7 @@ SELECT * FROM sys.dm_exec_input_buffer (66,0);
 
 * Sys.dm_exec_requests başvurun ve blocking_session_id sütununa başvurun. Blocking_session_id = 0 olduğunda bir oturum engellenmiyor. Sys.dm_exec_requests yalnızca şu anda yürütülmekte olan istekleri listelerken, herhangi bir bağlantı (etkin veya değil) sys.dm_exec_sessions listelenir. Sonraki sorgudaki sys.dm_exec_requests ve sys.dm_exec_sessions arasında bu ortak birleşime derleyin.
 
-* [Sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) veya [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMVs kullanarak, etkin şekilde yürütülen sorguları ve geçerli SQL toplu iş metnini veya giriş arabelleği metnini bulmak için bu örnek sorguyu çalıştırın. Sys.dm_exec_sql_text alanı tarafından döndürülen veriler `text` null ise, sorgu şu anda yürütülmüyor. Bu durumda, `event_info` sys.dm_exec_input_buffer alanı SQL altyapısına geçirilen son komut dizesini içerir. 
+* [Sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) veya [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMVs kullanarak, etkin şekilde yürütülen sorguları ve geçerli SQL toplu iş metnini veya giriş arabelleği metnini bulmak için bu örnek sorguyu çalıştırın. Sys.dm_exec_sql_text alanı tarafından döndürülen veriler `text` null ise, sorgu şu anda yürütülmüyor. Bu durumda, `event_info` sys.dm_exec_input_buffer alanı SQL altyapısına geçirilen son komut dizesini içerir. Bu sorgu, session_id başına engellenen session_ids listesi de dahil olmak üzere diğer oturumları engelleyen oturumları belirlemek için de kullanılabilir. 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -125,6 +125,49 @@ OUTER APPLY sys.dm_exec_sql_text (r.sql_handle) t
 OUTER APPLY sys.dm_exec_input_buffer(s.session_id, NULL) AS ib
 WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
+```
+
+* Bir engelleme zincirinde yer alan oturumların sorgu metni de dahil olmak üzere birden çok oturum engelleme zincirinin başını belirlemek için, Microsoft Desteği tarafından sunulan bu daha ayrıntılı örnek sorguyu çalıştırın.
+
+```sql
+WITH cteHead ( session_id,request_id,wait_type,wait_resource,last_wait_type,is_user_process,request_cpu_time
+,request_logical_reads,request_reads,request_writes,wait_time,blocking_session_id,memory_usage
+,session_cpu_time,session_reads,session_writes,session_logical_reads
+,percent_complete,est_completion_time,request_start_time,request_status,command
+,plan_handle,sql_handle,statement_start_offset,statement_end_offset,most_recent_sql_handle
+,session_status,group_id,query_hash,query_plan_hash) 
+AS ( SELECT sess.session_id, req.request_id, LEFT (ISNULL (req.wait_type, ''), 50) AS 'wait_type'
+    , LEFT (ISNULL (req.wait_resource, ''), 40) AS 'wait_resource', LEFT (req.last_wait_type, 50) AS 'last_wait_type'
+    , sess.is_user_process, req.cpu_time AS 'request_cpu_time', req.logical_reads AS 'request_logical_reads'
+    , req.reads AS 'request_reads', req.writes AS 'request_writes', req.wait_time, req.blocking_session_id,sess.memory_usage
+    , sess.cpu_time AS 'session_cpu_time', sess.reads AS 'session_reads', sess.writes AS 'session_writes', sess.logical_reads AS 'session_logical_reads'
+    , CONVERT (decimal(5,2), req.percent_complete) AS 'percent_complete', req.estimated_completion_time AS 'est_completion_time'
+    , req.start_time AS 'request_start_time', LEFT (req.status, 15) AS 'request_status', req.command
+    , req.plan_handle, req.[sql_handle], req.statement_start_offset, req.statement_end_offset, conn.most_recent_sql_handle
+    , LEFT (sess.status, 15) AS 'session_status', sess.group_id, req.query_hash, req.query_plan_hash
+    FROM sys.dm_exec_sessions AS sess
+    LEFT OUTER JOIN sys.dm_exec_requests AS req ON sess.session_id = req.session_id
+    LEFT OUTER JOIN sys.dm_exec_connections AS conn on conn.session_id = sess.session_id 
+    )
+, cteBlockingHierarchy (head_blocker_session_id, session_id, blocking_session_id, wait_type, wait_duration_ms,
+wait_resource, statement_start_offset, statement_end_offset, plan_handle, sql_handle, most_recent_sql_handle, [Level])
+AS ( SELECT head.session_id AS head_blocker_session_id, head.session_id AS session_id, head.blocking_session_id
+    , head.wait_type, head.wait_time, head.wait_resource, head.statement_start_offset, head.statement_end_offset
+    , head.plan_handle, head.sql_handle, head.most_recent_sql_handle, 0 AS [Level]
+    FROM cteHead AS head
+    WHERE (head.blocking_session_id IS NULL OR head.blocking_session_id = 0)
+    AND head.session_id IN (SELECT DISTINCT blocking_session_id FROM cteHead WHERE blocking_session_id != 0)
+    UNION ALL
+    SELECT h.head_blocker_session_id, blocked.session_id, blocked.blocking_session_id, blocked.wait_type,
+    blocked.wait_time, blocked.wait_resource, h.statement_start_offset, h.statement_end_offset,
+    h.plan_handle, h.sql_handle, h.most_recent_sql_handle, [Level] + 1
+    FROM cteHead AS blocked
+    INNER JOIN cteBlockingHierarchy AS h ON h.session_id = blocked.blocking_session_id and h.session_id!=blocked.session_id --avoid infinite recursion for latch type of blocking
+    WHERE h.wait_type COLLATE Latin1_General_BIN NOT IN ('EXCHANGE', 'CXPACKET') or h.wait_type is null
+    )
+SELECT bh.*, txt.text AS blocker_query_or_most_recent_query 
+FROM cteBlockingHierarchy AS bh 
+OUTER APPLY sys.dm_exec_sql_text (ISNULL ([sql_handle], most_recent_sql_handle)) AS txt;
 ```
 
 * Uzun süre çalışan veya işlenmemiş işlemleri yakalamak için, [sys.dm_tran_database_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql), [sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql), [sys.dm_exec_connections](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-connections-transact-sql)ve sys.dm_exec_sql_text dahil olmak üzere geçerli açık işlemleri görüntülemek için başka bir DMV kümesi kullanın. İzleme işlemleri ile ilişkili çeşitli DMVs 'ler vardır. buradaki işlemlere daha fazla [DMVs](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql) . 
@@ -371,14 +414,14 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği'nde izleme ve performansı ayarlama](/azure/azure-sql/database/monitor-tune-overview)
+* [Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği'nde izleme ve performansı ayarlama](./monitor-tune-overview.md)
 * [Sorgu deposunu kullanarak performansı izleme](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [İşlem Kilitleme ve Satır Sürümü Oluşturma Kılavuzu](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [IŞLEM YALıTıM DÜZEYINI AYARLA](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)
 * [Hızlı Başlangıç: SQL Server’da genişletilmiş olaylar](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 * [Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler](intelligent-insights-overview.md)
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Azure SQL veritabanı: otomatik ayarlama ile performansı ayarlamayı artırma](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
 * [Otomatik ayarlama ile Azure SQL veritabanı performansını iyileştirme](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)

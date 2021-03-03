@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 17d89414a762dd6bf68176b5044787179eb80250
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 501e395cf91630789824cc111614e7150dddaa7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621697"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700618"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -57,7 +57,7 @@ Bazı çözümler, verileri bir aracıdan toplamaz ve ek gecikme sunan bir kolek
 Koleksiyon sıklığını belirlemede her çözüm için belgelere bakın.
 
 ### <a name="pipeline-process-time"></a>Ardışık düzen-işlem süresi
-Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](../platform/log-standard-columns.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
+Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](./log-standard-columns.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
 
 ### <a name="new-custom-data-types-provisioning"></a>Yeni özel veri türleri sağlama
 [Özel bir günlük](../agents/data-sources-custom-logs.md) veya [Veri Toplayıcı API](../logs/data-collector-api.md)'sinden yeni bir tür özel veri oluşturulduğunda, sistem ayrılmış bir depolama kapsayıcısı oluşturur. Ek süre gerektiren bu tek seferlik işlem yalnızca bu veri türüyle ilk kez karşılaşıldığında gerçekleştirilir.
@@ -77,8 +77,8 @@ Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebi
 
 | Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
-| Veri kaynağında oluşturulan kayıt | [TimeGenerated](../platform/log-standard-columns.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
-| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](../platform/log-standard-columns.md#_timereceived) | |
+| Veri kaynağında oluşturulan kayıt | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
+| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri

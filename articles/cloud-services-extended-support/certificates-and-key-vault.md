@@ -8,16 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9e69b4e9279f9147c2ee13d42a42aec0c5a15d96
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722662"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Sertifikaları Azure Cloud Services kullanma (genişletilmiş destek)
 
-Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Anahtar kasaları [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) ve [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)aracılığıyla oluşturulabilir. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir.  
+Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Anahtar kasaları [Azure Portal](../key-vault/general/quick-create-portal.md) ve [PowerShell](../key-vault/general/quick-create-powershell.md)aracılığıyla oluşturulabilir. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir.  
 
 ## <a name="upload-a-certificate-to-key-vault"></a>Key Vault bir sertifika yükleyin 
 

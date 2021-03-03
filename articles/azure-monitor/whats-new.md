@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: 45cbd0fc2a3a6a059274f33e25b577fde1f4a4ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585530"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713448"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -22,15 +22,15 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 ### <a name="general"></a>Genel 
 - [Azure IZLEYICI SSS](faq.md) -Application Insights için cihaz bilgilerine giriş eklendi.
 ### <a name="agents"></a>Aracılar  
-- [Analiz Azure Izleyici günlükleri Için olay izleme (ETW) olayları toplanıyor](platform/data-sources-event-tracing-windows.md) -yeni makale.
-- [Azure izleyici 'de (Önizleme) veri toplama kuralları](platform/data-collection-rule-overview.md) -POWERSHELL ve CLI örneklerine bağlantılar eklendi.
+- [Analiz Azure Izleyici günlükleri Için olay izleme (ETW) olayları toplanıyor](./agents/data-sources-event-tracing-windows.md) -yeni makale.
+- [Azure izleyici 'de (Önizleme) veri toplama kuralları](./agents/data-collection-rule-overview.md) -POWERSHELL ve CLI örneklerine bağlantılar eklendi.
 
 ### <a name="alerts"></a>Uyarılar  
-- [Güvenli dışarı aktarma Ile ITSM araçlarına bağlanmak Için Azure 'ı yapılandırın](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) -yeni makale.
-- [ISMC panosundaki bağlayıcı durumu hataları](platform/itsmc-dashboard-errors.md) -yeni makale.
-- [ISMC panosunu kullanarak hataları araştırın](platform/itsmc-dashboard.md) -yeni makale.
-- [Azure ölçüm uyarılarında sorun giderme](platform/alerts-troubleshoot-metric.md) -dinamik eşiklere eklenen bölümler.
-- BT Hizmet Yönetimi Bağlayıcısı-yeni makaledeki [sorunları giderin](platform/itsmc-troubleshoot-overview.md) .
+- [Güvenli dışarı aktarma Ile ITSM araçlarına bağlanmak Için Azure 'ı yapılandırın](./alerts/itsm-connector-secure-webhook-connections-azure-configuration.md) -yeni makale.
+- [ISMC panosundaki bağlayıcı durumu hataları](./alerts/itsmc-dashboard-errors.md) -yeni makale.
+- [ISMC panosunu kullanarak hataları araştırın](./alerts/itsmc-dashboard.md) -yeni makale.
+- [Azure ölçüm uyarılarında sorun giderme](./alerts/alerts-troubleshoot-metric.md) -dinamik eşiklere eklenen bölümler.
+- BT Hizmet Yönetimi Bağlayıcısı-yeni makaledeki [sorunları giderin](./alerts/itsmc-troubleshoot-overview.md) .
 
 ### <a name="application-insights"></a>Application Insights
 - [Azure Application Insights telemetri bağıntısı](app/correlation.md) , bir modül bir modül başka bir modül tarafından OpenCensus Python 'da çağırdığında izleme bağıntısı
@@ -47,25 +47,25 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Için Azure izleyici Veri Gezgini (Önizleme)](insights/data-explorer.md) -yeni makale.
 
 ### <a name="logs"></a>Günlükler    
-- [Azure izleyici müşteri tarafından yönetilen anahtar](platform/customer-managed-keys.md) -Kullanıcı tarafından atanan yönetilen kimliği tanıtın.
-- [Azure izleyici, ayrılmış kümeleri günlüğe kaydeder](log-query/logs-dedicated-clusters.md) -yanıt kodu güncelleştirildi.
-- [Çapraz hizmet sorgusu-Azure izleyici ve azure Veri Gezgini (Önizleme)](platform/azure-monitor-troubleshooting-logs.md) -yeni makale.
+- [Azure izleyici müşteri tarafından yönetilen anahtar](./logs/customer-managed-keys.md) -Kullanıcı tarafından atanan yönetilen kimliği tanıtın.
+- [Azure izleyici, ayrılmış kümeleri günlüğe kaydeder](./logs/logs-dedicated-clusters.md) -yanıt kodu güncelleştirildi.
+- [Çapraz hizmet sorgusu-Azure izleyici ve azure Veri Gezgini (Önizleme)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) -yeni makale.
 
 ### <a name="metrics"></a>Ölçümler
-- [Azure Izleyici ölçüm ölçümleri toplama ve açıklanacak](platform/metrics-aggregation-explained.md) yeni makale.
+- [Azure Izleyici ölçüm ölçümleri toplama ve açıklanacak](./essentials/metrics-aggregation-explained.md) yeni makale.
 
 ### <a name="platform-logs"></a>Platform günlükleri
-- [Azure Izleyici kaynak günlüğü desteklenen hizmetler ve Kategoriler](platform/resource-logs-categories.md) -yeni makale.
+- [Azure Izleyici kaynak günlüğü desteklenen hizmetler ve Kategoriler](./essentials/resource-logs-categories.md) -yeni makale.
 
 ### <a name="visualizations"></a>Görsel öğeler
-- [Azure izleyici çalışma kitapları veri kaynakları](platform/workbooks-data-sources.md) -birleştirme ve değişiklik Analizi eklendi.
+- [Azure izleyici çalışma kitapları veri kaynakları](./visualize/workbooks-data-sources.md) -birleştirme ve değişiklik Analizi eklendi.
 
 
 ## <a name="december-2020"></a>Aralık 2020
 
 ### <a name="general"></a>Genel
 - [Azure izleyici müşterinin yönettiği anahtar tarafından yönetilen](logs/customer-managed-keys.md) hata iletileri.
-- [Azure izleyici ile tümleştirilen Iş ortakları](/partners.md) Olay Hub 'ı tümleştirmede eklendi bölümü.
+- [Azure izleyici ile tümleştirilen Iş ortakları](partners.md) Olay Hub 'ı tümleştirmede eklendi bölümü.
 
 ### <a name="agents"></a>Aracılar
 - [Azure izleyici kullanarak azure Veri Gezgini çapraz kaynak sorgulama](logs/azure-monitor-data-explorer-proxy.md) -yeni makale.
@@ -96,7 +96,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Java Için Azure izleyici Application Insights sorunlarını giderme](app/java-standalone-troubleshoot.md) -yeni makale.
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Kapsayıcılar Için Azure izleyici 'de raporlar](insights/container-insights-reports.md) -yeni makale.
+- [Kapsayıcı öngörülerine Ilişkin raporlar](insights/container-insights-reports.md) -yeni makale.
 
 ### <a name="logs"></a>Günlükler
 - [Azure Izleyici adanmış kümeleri günlüğe kaydeder](logs/logs-dedicated-clusters.md) -otomatik komutlar, bağlantısı kesme ve kaldırma yöntemleri ve sorun giderme için yöntemler eklenmiştir.
@@ -168,16 +168,16 @@ Günlük sorgusu içeriğini yeniden yapılandırmak için yeni ve güncelleşti
 
 ### <a name="virtual-machines"></a>Sanal makineler
 
-- [VM'ler için Azure izleyici genel bakışı etkinleştir](vm/vminsights-enable-overview.md) -desteklenen bölgeler eklendi.
+- [VM Insights 'a genel bakış 'ı etkinleştirin](vm/vminsights-enable-overview.md) -desteklenen bölgeler eklendi.
 
-VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme)
+VM öngörüleri Konuk durumu (Önizleme) için yeni makaleler
 
-- [VM'ler için Azure İzleyici Konuk sistem durumu (Önizleme)](vm/vminsights-health-overview.md)
-- [VM'ler için Azure İzleyici Konuk sistem durumu uyarıları (Önizleme)](vm/vminsights-health-alerts.md)
-- [VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)](vm/vminsights-health-configure.md)
-- [Veri toplama kurallarını kullanarak VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)](vm/vminsights-health-configure-dcr.md)
-- [Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)](vm/vminsights-health-enable.md)
-- [VM'ler için Azure İzleyici Konuk sistem durumu sorunlarını giderme (Önizleme)](vm/vminsights-health-troubleshoot.md)
+- [VM öngörüleri Konuk durumu (Önizleme)](vm/vminsights-health-overview.md)
+- [VM öngörüleri Konuk sistem durumu uyarıları (Önizleme)](vm/vminsights-health-alerts.md)
+- [VM öngörüleri Konuk sistem durumu 'nda izlemeyi yapılandırma (Önizleme)](vm/vminsights-health-configure.md)
+- [Veri toplama kurallarını kullanarak VM öngörüleri Konuk durumunda izlemeyi yapılandırma (Önizleme)](vm/vminsights-health-configure-dcr.md)
+- [VM öngörüleri Konuk durumunu etkinleştirme (Önizleme)](vm/vminsights-health-enable.md)
+- [VM Insights Konuk durumu sorunlarını giderme (Önizleme)](vm/vminsights-health-troubleshoot.md)
 
 
 
@@ -210,9 +210,9 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 - Otomatik ölçeklendirmeyi farklı bir bölgeye taşımaya yönelik [Azure 'da otomatik ölçeklendirme ile çalışmaya](autoscale/autoscale-get-started.md) başlayın.
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Kapsayıcılar Için Azure izleyici Ile BD Izlemesini yapılandırma](containers/container-insights-persistent-volumes.md) -yeni makale.
-- [Kapsayıcılar Için Azure izleyici aracısını yönetme](containers/container-insights-manage-agent.md) -Azure Arc etkinleştirilmiş Kubernetes kümesi için destek eklendi.
-- [Kapsayıcılar Için Azure izleyici 'Den ölçüm uyarıları](containers/container-insights-metric-alerts.md) -Azure Arc etkinleştirilmiş Kubernetes kümesi için destek eklendi.
+- [Container Insights Ile BD Izlemesini yapılandırma](containers/container-insights-persistent-volumes.md) -yeni makale.
+- [Kapsayıcı öngörüleri aracısını yönetme](containers/container-insights-manage-agent.md) -Azure Arc etkin Kubernetes kümesi için destek eklendi.
+- [Kapsayıcı öngörülerine yönelik ölçüm uyarıları](containers/container-insights-metric-alerts.md) -Azure Arc etkinleştirilmiş Kubernetes kümesi için destek eklendi.
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 - [BT hizmet yönetimi Bağlayıcısı-Azure izleyici 'de güvenli dışarı aktarma](alerts/it-service-management-connector-secure-webhook-connections.md) bölümünde ServiceNow üzerinde bölüm eklendi.
@@ -234,7 +234,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 ### <a name="virtual-machines"></a>Sanal makineler
 - [VM'ler için Azure izleyici analiz değişikliği](vm/vminsights-change-analysis.md) -yeni makale.
 - [VM'ler için Azure izleyici genel bakışı etkinleştir](vm/vminsights-enable-overview.md) -desteklenen bölgeler eklendi.
-- Azure Arc etkinleştirilmiş Kubernetes kümesi için [ölçümler Için Azure izleyicisini güncelleştirme](containers/container-insights-update-metrics.md) .
+- [Ölçümler Için kapsayıcı öngörülerini güncelleştirme](containers/container-insights-update-metrics.md) Azure Arc etkinleştirilmiş Kubernetes kümesi için destek eklendi.
 
 
 
@@ -265,8 +265,8 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Azure Arc etkin Kubernetes kümesini, kapsayıcılar Için Azure izleyici ile,](containers/container-insights-enable-arc-enabled-clusters.md) hizmet sorumlusu kullanılarak izlemeyi etkinleştirmeye yönelik rehberlik için yapılandırın.
-- [Kapsayıcılar Için Azure izleyici ile & HPA ölçümleri dağıtımı](containers/container-insights-deployment-hpa-metrics.md) -yeni makale.
+- [Azure Arc etkin Kubernetes kümesini kapsayıcı öngörüleri Ile yapılandırma](containers/container-insights-enable-arc-enabled-clusters.md) -hizmet sorumlusu kullanılarak izlemeyi etkinleştirme Kılavuzu eklendi.
+- [Dağıtım & kapsayıcı öngörüleri Ile HPA ölçümleri](containers/container-insights-deployment-hpa-metrics.md) -yeni makale.
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 - Reda tarafından kaldırılan önizleme ataması [için Azure önbelleği Için Azure izleyici](insights/redis-cache-insights-overview.md) .
@@ -319,7 +319,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Aracı içeriğini yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler
-- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](vm/vminsights-enable-overview.md)
+- [VM öngörülerini etkinleştir genel bakış](vm/vminsights-enable-overview.md)
 - [Linux bilgisayarlarına Log Analytics aracısını yükleme](agents/agent-linux.md)
 - [Windows bilgisayarlarına Log Analytics aracısını yükleme](agents/agent-windows.md)
 - [Log Analytics aracısına genel bakış](agents/log-analytics-agent.md)
@@ -344,7 +344,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Kapsayıcılar Için Azure izleyici ile & HPA ölçümleri dağıtımı](containers/container-insights-deployment-hpa-metrics.md) -yeni makale.
+- [Dağıtım & kapsayıcı öngörüleri Ile HPA ölçümleri](containers/container-insights-deployment-hpa-metrics.md) -yeni makale.
 
 ### <a name="insights"></a>Insights
 - [Azure izleyici 'de çözümleri izleme](insights/solutions.md) -yeni kullanıcı arabirimi için güncelleştirildi.
@@ -372,7 +372,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 ## <a name="july-2020"></a>Temmuz 2020
 
 ### <a name="general"></a>Genel
-- [Azure izleyici 'Yi dağıtma](deploy-scale.md) -VM'ler için Azure izleyici içerik ekleme yeniden yapılandırabilir.
+- [Azure Izleyicisini dağıtma](deploy-scale.md) -VM öngörüleri ekleme içeriğini yeniden yapılandırabilir.
 - [Azure özel bağlantısı 'Nı kullanarak ağları sınırlı Azure izleyici 'ye güvenli](logs/private-link-security.md) bir şekilde bağlayın.
 
 ### <a name="alerts"></a>Uyarılar
@@ -389,8 +389,8 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 - Azure App Service ASP.NET Core uygulamalar için Profil Oluşturucu çalıştıran hata hakkında [Azure Application Insights Profiler ile ilgili sorunları giderin](app/profiler-troubleshooting.md) . 
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Kapsayıcılar Için Azure izleyici 'deki uyarıları günlüğe kaydet](containers/container-insights-log-alerts.md) -yeni makale.
-- [Kapsayıcılar Için Azure izleyici 'Den ölçüm uyarıları](containers/container-insights-metric-alerts.md) -yeni makale.
+- [Kapsayıcı öngörülerinin günlük uyarıları](containers/container-insights-log-alerts.md) -yeni makale.
+- [Kapsayıcı öngörülerinin ölçüm uyarıları](containers/container-insights-metric-alerts.md) -yeni makale.
 
 ### <a name="logs"></a>Günlükler
 - [Azure izleyici müşterinin yönettiği anahtar tarafından yönetilen](logs/customer-managed-keys.md) hata iletisi ve bölüm CMK yapılandırması.
@@ -408,18 +408,18 @@ VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme
 
 ### <a name="virtual-machines"></a>Sanal makineler
 
-VM'ler için Azure İzleyici içeriği yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler
+VM Insights içeriğini yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler
 
-- [VM'ler için Azure İzleyici nedir?](vm/vminsights-overview.md)
-- [VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma](vm/vminsights-configure-workspace.md)
+- [VM öngörüleri nedir?](vm/vminsights-overview.md)
+- [VM öngörüleri için Log Analytics çalışma alanını yapılandırma](vm/vminsights-configure-workspace.md)
 - [Linux bilgisayarlarını Azure Izleyici 'ye bağlama](agents/agent-linux.md)
 - [Karma ortam için Azure Izleyicisini etkinleştirme](vm/vminsights-enable-hybrid.md)
 - [Azure portal tek bir sanal makine veya sanal makine ölçek kümesi için Azure Izleyicisini etkinleştirin](vm/vminsights-enable-portal.md)
-- [Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme](./vm/vminsights-enable-policy.md)
-- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](vm/vminsights-enable-overview.md)
-- [PowerShell kullanarak VM'ler için Azure İzleyici etkinleştirme](vm/vminsights-enable-powershell.md)
-- [Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici etkinleştirme](vm/vminsights-enable-resource-manager.md)
-- [PowerShell veya şablonlarla VM'ler için Azure İzleyici etkinleştirme](./vm/vminsights-enable-powershell.md)
+- [Azure Ilkesini kullanarak VM öngörülerini etkinleştirme](./vm/vminsights-enable-policy.md)
+- [VM öngörülerini etkinleştir genel bakış](vm/vminsights-enable-overview.md)
+- [PowerShell kullanarak VM öngörülerini etkinleştirme](vm/vminsights-enable-powershell.md)
+- [Kaynak Yöneticisi şablonları kullanarak VM öngörülerini etkinleştirme](vm/vminsights-enable-resource-manager.md)
+- [PowerShell veya şablonlar ile VM öngörülerini etkinleştirme](./vm/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>Görsel öğeler
@@ -453,9 +453,9 @@ VM'ler için Azure İzleyici içeriği yeniden yapılandırmak için yeni ve gü
 
 ### <a name="containers"></a>Kapsayıcılar
 - Yay etkin Kubernetes için [karma Kubernetes kümesi](containers/container-insights-optout-hybrid.md) ile eklenen bölümü izlemeyi durdurma.
-- [Azure Arc etkin Kubernetes kümesini kapsayıcılar Için Azure izleyici Ile yapılandırma](containers/container-insights-enable-arc-enabled-clusters.md) -yeni makale.
-- [Azure Red Hat OpenShift v4. x ' i kapsayıcılar Için Azure izleyici Ile yapılandırın](containers/container-insights-azure-redhat4-setup.md) -güncelleştirilmiş önkoşulları.
-- [Kapsayıcılar Için Azure Izleyicisini ayarlama Canlı veriler (Önizleme)](containers/container-insights-livedata-setup.md) -kaldırılan özellik hakkında Azure ABD kamu 'da kullanılamayan Not.
+- [Azure Arc etkin Kubernetes kümesini kapsayıcı öngörüleri Ile yapılandırma](containers/container-insights-enable-arc-enabled-clusters.md) -yeni makale.
+- [Kapsayıcı öngörüleri Ile Azure Red Hat OpenShift v4. x yapılandırma](containers/container-insights-azure-redhat4-setup.md) önkoşulları güncelleştirildi.
+- [Container Insights canlı verilerini ayarlama (Önizleme)](containers/container-insights-livedata-setup.md) -Azure ABD kamu 'da kullanılamayan özellik hakkında not kaldırıldı.
 
 ### <a name="insights"></a>Insights
 - [SSS-Azure 'da ağ performansı İzleyicisi çözüm](insights/network-performance-monitor-faq.md) -ExpressRoute IZLEYICISI için SSS eklendi.
@@ -495,9 +495,9 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](./essentials/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Sanal makineler
-- [Azure portal VM'ler için Azure izleyici,](./vm/vminsights-enable-portal.md) Azure Arc 'ı içerecek şekilde güncelleştirildi.
-- [VM'ler için Azure izleyici genel bakışı etkinleştirin](vm/vminsights-enable-overview.md) -Azure Arc 'ı içerecek şekilde güncelleştirildi.
-- [VM'ler için Azure İzleyici nedir?](vm/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
+- [Azure Portal 'de VM öngörülerini etkinleştirin](./vm/vminsights-enable-portal.md) -Azure Arc 'ı içerecek şekilde güncelleştirildi.
+- [VM öngörülerini etkinleştirin](vm/vminsights-enable-overview.md) -Azure yay içerecek şekilde güncelleştirildi.
+- [VM öngörüleri nedir?](vm/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
 
 
 ### <a name="visualizations"></a>Görsel öğeler
@@ -523,8 +523,8 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [Azure Izleyici için Kaynak Yöneticisi şablonu örnekleri](/resource-manager-samples.md)
 - [Eylem grupları için şablon örnekleri Kaynak Yöneticisi](alerts/resource-manager-action-groups.md)
 - [Aracılar için Kaynak Yöneticisi şablonu örnekleri](agents/resource-manager-agent.md)
-- [Kapsayıcılar için Azure Izleyici Kaynak Yöneticisi şablon örnekleri](containers/resource-manager-container-insights.md)
-- [VM'ler için Azure İzleyici için Kaynak Yöneticisi şablonu örnekleri](vm/resource-manager-vminsights.md)
+- [Kapsayıcı öngörüleri için Kaynak Yöneticisi şablon örnekleri](containers/resource-manager-container-insights.md)
+- [VM öngörüleri için şablon örnekleri Kaynak Yöneticisi](vm/resource-manager-vminsights.md)
 - [Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi](essentials/resource-manager-diagnostic-settings.md)
 - [Log Analytics çalışma alanları için şablon örnekleri Kaynak Yöneticisi](logs/resource-manager-workspace.md)
 - [Günlük sorguları için şablon örnekleri Kaynak Yöneticisi](logs/resource-manager-log-queries.md)
@@ -559,10 +559,10 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 
 ### <a name="containers"></a>Kapsayıcılar
-- [Kapsayıcılar Için Azure izleyici](containers/container-insights-onboard.md) -güncelleştirilmiş güvenlik duvarı yapılandırma tablosu nasıl etkinleştirilir.
-- [Ölçüm kapsayıcıları Için Azure izleyicisini güncelleştirme](containers/container-insights-update-metrics.md) -ölçümleri toplamak için yönetilen kimlikleri kullanmaya yönelik güncelleştirme.
-- [Kapsayıcılar Için Azure izleyici Için izleme maliyeti](containers/container-insights-cost.md) -yeni makale.
-- [Kapsayıcılar Için Azure izleyici 'Yi ayarlama Canlı veriler (Önizleme)](containers/container-insights-livedata-setup.md) -yeni küme rolü bağlama desteği.
+- [Kapsayıcı öngörülerini etkinleştirme](containers/container-insights-onboard.md) -güvenlik duvarı yapılandırma tablosu güncelleştirildi.
+- [Ölçümler Için kapsayıcı öngörülerini güncelleştirme](containers/container-insights-update-metrics.md) -ölçümleri toplamak için yönetilen kimlikleri kullanmaya yönelik güncelleştirme.
+- [Kapsayıcı öngörüleri Için izleme maliyeti](containers/container-insights-cost.md) -yeni makale.
+- [Container Insights canlı verilerini ayarlama (Önizleme)](containers/container-insights-livedata-setup.md) -yeni küme rolü bağlama desteği.
 
 ### <a name="insights"></a>Insights
 - [Redsıs için Azure önbelleği Için Azure izleyici (Önizleme)](insights/redis-cache-insights-overview.md) -yeni makale.
@@ -588,12 +588,12 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 
 ### <a name="virtual-machines"></a>Sanal makineler
-- [VM'ler için Azure izleyici genel bakışı etkinleştirin](vm/vminsights-enable-overview.md) -Ubuntu Server 'ın desteklenen sürümlerine eklenir. Log Analytics çalışma alanı için desteklenen bölgeler eklendi.
-- Kullanılabilir ölçümler için VM'ler için Azure İzleyici eklenen sınırlamalar bölümü [ile performansı grafik olarak belirleme](vm/vminsights-performance.md) .
+- [VM Insights 'a genel bakış 'ı etkinleştirin](vm/vminsights-enable-overview.md) -Ubuntu Server 'ın desteklenen sürümlerine eklenir. Log Analytics çalışma alanı için desteklenen bölgeler eklendi.
+- Kullanılabilir ölçümler için VM Öngörüler 'e eklenen sınırlamalar bölümü [ile performansı grafik olarak belirleme](vm/vminsights-performance.md) .
 
 ### <a name="visualizations"></a>Görsel öğeler
 - [Azure izleyici çalışma kitapları ve Azure Resource Manager şablonları](visualize/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi Güncelleştirmesi eklendi.
-- [Azure Izleyici çalışma kitapları grupları](platform/workbooks-groups.md) -yeni makale.
+- [Azure Izleyici çalışma kitapları grupları](./visualize/workbooks-groups.md) -yeni makale.
 - [Azure Izleyici çalışma kitapları-JSON verilerini JSONPath Ile Dönüştür](visualize/workbooks-jsonpath.md) -yeni makale.
 
 
@@ -623,7 +623,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 ### <a name="containers"></a>Kapsayıcılar
 
-- [Kapsayıcılar Için Azure izleyici Ile Azure Red Hat OpenShift v4. x 'ı yapılandırma](containers/container-insights-azure-redhat4-setup.md) -yeni makale.
+- [Azure Red Hat OpenShift v4. x 'ı Container Insights Ile yapılandırma](containers/container-insights-azure-redhat4-setup.md) -yeni makale.
 - [ServiceNow eşitleme sorunlarını el ile çözme](alerts/itsmc-resync-servicenow.md) -yeni makale.
 - [Azure ve Red Hat OpenShift v4 kümenizi izlemeyi durdurma](containers/container-insights-optout-openshift-v4.md) -yeni makale.
 - [Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma](containers/container-insights-optout-openshift-v3.md) -yeni makale.
@@ -671,8 +671,8 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 ### <a name="containers"></a>Kapsayıcılar
 
-- [Azure IZLEYICI SSS](faq.md) -kapsayıcılar Için Azure izleyici 'yi güncelleştirme.
-- [Kapsayıcılar Için Azure izleyici Ile GPU Izlemeyi yapılandırma](containers/container-insights-gpu-monitoring.md) -yeni makale.
+- [Azure IZLEYICI SSS](faq.md) -kapsayıcı öngörüleri için güncelleştirme.
+- [Kapsayıcı öngörüleri Ile GPU Izlemesini yapılandırma](containers/container-insights-gpu-monitoring.md) -yeni makale.
 
 ### <a name="insights"></a>Insights
 
@@ -696,18 +696,18 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 ### <a name="virtual-machines"></a>Sanal makineler
 
 - Azure [izleyici Ile Azure sanal makinelerini izleme](vm/monitor-vm-azure.md) -yeni makale.
-- [Hızlı başlangıç: Azure izleyici Ile Azure sanal makinelerini izleme](vm/quick-monitor-azure-vm.md) -VM'ler için Azure izleyici eklemek için güncelleştirildi.
-- [VM'ler için Azure izleyici](vm/vminsights-alerts.md) -yeni makale uyarıları.
-- [VM'ler için Azure izleyici genel bakış ' ı etkinleştirin](vm/vminsights-enable-overview.md) . aracı indirme bağlantıları güncelleştirildi.
+- [Hızlı başlangıç: Azure izleyici Ile Azure sanal makinelerini izleme](vm/quick-monitor-azure-vm.md) -VM öngörüleri eklemek için güncelleştirildi.
+- [VM öngörülerinin uyarıları](vm/vminsights-alerts.md) -yeni makale.
+- [VM öngörülerini etkinleştirin](vm/vminsights-enable-overview.md) -aracı indirme bağlantıları güncelleştirildi.
 
-VM'ler için Azure İzleyici genel kullanıma yönelik genel güncelleştirmeler
+VM öngörülerinin genel kullanılabilirliği için genel güncelleştirmeler
 
-- [VM'ler için Azure İzleyici nedir?](vm/vminsights-overview.md)
-- [VM'ler için Azure İzleyici (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) 
-- [Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme](./vm/vminsights-enable-policy.md) 
-- [VM'ler için Azure İzleyici ile performansı grafik oluşturma](vm/vminsights-performance.md)
-- [VM'ler için Azure İzleyici günlüklerini sorgulama](vm/vminsights-log-search.md)
-- [VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme](vm/vminsights-maps.md) 
+- [VM öngörüleri nedir?](vm/vminsights-overview.md)
+- [VM öngörüleri (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) 
+- [Azure Ilkesini kullanarak VM öngörülerini etkinleştirme](./vm/vminsights-enable-policy.md) 
+- [VM öngörüleri ile performansı grafikle](vm/vminsights-performance.md)
+- [VM öngörülerine ait günlükleri sorgulama](vm/vminsights-log-search.md)
+- [VM öngörüleri ile uygulama bağımlılıklarını görüntüleme](vm/vminsights-maps.md) 
 
 ### <a name="visualizations"></a>Görsel öğeler
 
@@ -735,13 +735,13 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 
-#### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
+#### <a name="container-insights"></a>Kapsayıcı öngörüleri
 
-- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration-cli.md) ve KUBERNETES RBAC özellikli kümeyi desteklemek üzere bir istemci uygulaması oluşturmak Için Azure izleyicisini, kapsayıcılar Için Azure izleyicisini destekleyecek şekilde tümleştirin.
+- [Azure Kubernetes hizmeti 'nin,](../aks/azure-ad-integration-cli.md) kapsayıcı öngörülerini desteklemek Için KUBERNETES RBAC özellikli kümeyi desteklemesi için bir istemci uygulaması oluşturmak üzere bir istemci uygulaması oluşturmaya yönelik olarak Azure Active Directory tümleştirin.
 
-#### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
+#### <a name="vm-insights"></a>VM öngörüleri
 
-- [VM'ler için Azure izleyici (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) -performans verilerinin nasıl depolandığını değiştirin.
+- [VM öngörüleri (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) -performans verilerinin nasıl depolandığını değiştirin.
 
 #### <a name="office-365"></a>Office 365
 
@@ -796,20 +796,20 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 
-#### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
+#### <a name="container-insights"></a>Kapsayıcı öngörüleri
 
-- [Kapsayıcılar Için Azure Izleyicisini yapılandırma veri toplama](containers/container-insights-agent-config.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme ayrıntıları ve aracı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklendi.
-- [Kapsayıcılar Için Azure izleyici için performans uyarıları oluşturma](./containers/container-insights-log-alerts.md) -çalışma alanı-bağlam uyarılarını kullanarak çalışma alanında depolanan performans verilerinde uyarı oluşturmaya yönelik düzeltme bilgileri ve güncelleştirilmiş adımlar.
-- [Kapsayıcılar Için Azure izleyici Ile Kubernetes izleme](containers/container-insights-analyze.md) -hem genel bakış makalesi hem de Windows Kubernetes kümelerinin desteğiyle ilgili çözümleme makalesi güncelleştirildi.
-- Azure Red hat [OpenShift kümelerini kapsayıcı için Azure izleyici Ile yapılandırın](containers/container-insights-azure-redhat-setup.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme için ek ayrıntılar ve aracıyı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklenmiştir.
-- [Karma Kubernetes kümelerini kapsayıcılar Için Azure izleyici Ile yapılandırma](containers/container-insights-hybrid-setup.md) -, Kubelet 'In Cadvizörü ile 10250 güvenli bağlantı noktası için eklenen desteği yansıtacak şekilde güncelleştirildi.
-- [Kapsayıcılar Için Azure izleyicisini yönetme](containers/container-insights-manage-agent.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili, diğer Kubernetes kümelerine kıyasla, ölçüm koruması ile ilgili güncelleştirilmiş ayrıntılar.
-- [Kapsayıcılar Için Azure Izleyicisini yapılandırın Prometheus tümleştirmesi](containers/container-insights-prometheus-integration.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili güncelleştirilmiş ayrıntıları, diğer Kubernetes kümeleri ile karşılaştırılır.
-- Azure Red Hat OpenShift ile ölçüm koruması ile ilgili ölçüm ve yapılandırma ile ilgili ölçüm için [Azure izleyicisini güncelleştirme](containers/container-insights-update-metrics.md) , diğer Kubernetes kümelerine kıyasla.
+- Kapsayıcı içgörüler [Aracısı veri toplamayı yapılandırma](containers/container-insights-agent-config.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme ayrıntıları eklendi ve aracıyı yükseltme yöntemlerini ayırt etmek için ek bilgiler eklendi.
+- [Kapsayıcı öngörüleri için performans uyarıları oluşturun](./containers/container-insights-log-alerts.md) -çalışma alanı bağlamı uyarılarını kullanarak çalışma alanında depolanan performans verilerinde uyarı oluşturmaya yönelik bilgiler ve güncelleştirilmiş adımlar.
+- [Container Insights Ile Kubernetes izleme](containers/container-insights-analyze.md) -hem genel bakış makalesi hem de Windows Kubernetes kümelerinin desteğiyle ilgili çözümleme makalesi güncelleştirildi.
+- Azure [Red Hat OpenShift kümelerini kapsayıcı öngörüleri Ile yapılandırın](containers/container-insights-azure-redhat-setup.md) -Azure Red Hat OpenShift üzerinde aracı yükseltme ayrıntıları eklendi ve aracı yükseltme yöntemlerini ayırmak için ek bilgiler eklendi.
+- [Karma Kubernetes kümelerini kapsayıcı](containers/container-insights-hybrid-setup.md) Içgörüler ile yapılandırın-, Kubelet 'In Cadvizörü ile 10250 güvenli bağlantı noktası için ek desteği yansıtacak şekilde güncelleştirildi.
+- [Container Insights Aracısı 'nı yönetme](containers/container-insights-manage-agent.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili güncelleştirilmiş ayrıntılar, diğer Kubernetes kümeleriyle karşılaştırılır.
+- [Kapsayıcı öngörülerini yapılandırma](containers/container-insights-prometheus-integration.md) -Azure Red Hat OpenShift ile ölçüm ve yapılandırma ile ilgili güncelleştirilmiş ayrıntılar, diğer Kubernetes kümelerine kıyasla güncelleştirildi.
+- Ölçüm [öngörülerini güncelleştirme](containers/container-insights-update-metrics.md) , Azure Red Hat OpenShift ile ölçüm koruması ile ilgili ölçüm ve yapılandırma ile ilgili, diğer Kubernetes kümelerinin türlerine kıyasla güncelleştirilmiş ayrıntılar.
 
-#### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
+#### <a name="vm-insights"></a>VM öngörüleri
 
-- [VM'ler için Azure izleyici (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) -çalışma alanı ve aracıları yeni sürüme yükseltme hakkında bilgiler eklendi.
+- [VM öngörüleri (GA) sık sorulan sorular](vm/vminsights-ga-release-faq.md) -çalışma alanı ve aracıları yeni sürüme yükseltme hakkında bilgiler eklendi.
 
 #### <a name="office-365"></a>Office 365
 
@@ -860,10 +860,10 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 
-- [Kapsayıcılar Için Azure Izleyici sık sorulan sorular](./faq.md) -görüntü ve ad alanlarına soru eklendi.
+- [Kapsayıcı öngörüleri hakkında sık sorulan sorular](./faq.md) -görüntü ve ad alanlarına soru eklendi.
 - [Azure izleyici 'de Azure SQL Analytics çözümü](insights/azure-sql.md) -güncelleştirilmiş veritabanı yönetilen örnek desteğini bekler.
-- [Kapsayıcılar Için Azure Izleyicisini yapılandırın aracı verileri toplama](containers/container-insights-agent-config.md) -enrich_container_logs için ayar eklendi.
-- [Kapsayıcılar Için Azure izleyici Ile karma Kubernetes kümelerini yapılandırma](containers/container-insights-hybrid-setup.md) sorun giderme bölümü.
+- Kapsayıcı içgörüler [Aracısı veri toplamayı yapılandır](containers/container-insights-agent-config.md) -enrich_container_logs ayarı eklendi.
+- [Kapsayıcı öngörüleri Ile karma Kubernetes kümelerini yapılandırma](containers/container-insights-hybrid-setup.md) sorun giderme bölümü.
 - [Azure izleyici ile Active Directory çoğaltma durumunu izleme](insights/ad-replication-status.md) .NET Framework önkoşul güncelleştirildi.
 - [Azure 'da ağ performansı İzleyicisi çözüm,](insights/network-performance-monitor.md) desteklenen bölgelerde eklendi.
 - [Active Directory ortamınızı Azure izleyici Ile iyileştirin](insights/ad-assessment.md) .NET Framework önkoşul güncelleştirildi.

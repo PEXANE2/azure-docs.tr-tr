@@ -4,15 +4,15 @@ description: App Service Ortamı genel bakış
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663944"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735106"
 ---
 # <a name="app-service-environment-overview"></a>App Service Ortamı genel bakış 
 
@@ -53,7 +53,7 @@ App Service Ortamı, aşağıdakiler dahil olmak üzere birçok kullanım durumu
 Çok kiracılı App Service uygulamaların ağdan yalıtılmış kaynaklara ulaşmasını veya ağdan yalıtılmış hale gelmesini sağlayan çeşitli ağ özellikleri vardır. Bu özellikler uygulama düzeyinde etkindir.  Bir ASE ile, uygulamalarda VNet 'te olması için ek yapılandırma yoktur. Uygulamalar, zaten VNet içinde olan bir ağ yalıtılmış ortamına dağıtılır. Ağ yalıtılmış uygulamalarının barındırıldığı en üstünde tek kiracılı bir sistem de vardır. Ao 'yu kullanan başka müşteri yok. Gerçekten de tamamen bir yalıtım öyküsünün olması gerekiyorsa, Ao 'nizi adanmış donanıma de dağıtabilirsiniz. Ağ yalıtılmış uygulama barındırma, tek kiralama ve özellik arasında 
 
 ## <a name="dedicated-environment"></a>Ayrılmış ortam
-Ao, özel olarak tek bir aboneliğe ayrılmıştır ve 200 App Service plan örneklerini barındırabilirler. Aralık tek bir App Service planında 100 örnek ile 100 tek örnekli App Service planı arasındaki bir değer ve bunların arasındaki her değer olabilir.
+Ao, özel olarak tek bir aboneliğe ayrılmıştır ve birden çok App Service planı üzerinde 200 toplam App Service plan örneğini barındırabilirler. "Örnek" sözcüğü App Service planı yatay ölçeklendirmeyi ifade eder. Her örnek, bir çalışan rolünün eşdeğeridir. ATıCı, 200 toplam örneğe sahip olsa da, tek bir yalıtılmış v2 App Service planı 100 örnekleri tutabilir. ATıCı, her biri, 200 tek örnekli App Service planlarında veya arasındaki her şey için 100 örnek içeren iki App Service planını tutabilir.
 
 ASE, ön uçlar ve çalışanlardan oluşur. Ön uçlar HTTP/HTTPS sonlandırmadan ve bir ASE içindeki uygulama isteklerinin otomatik yük dengelemesinden sorumludur. ASE içindeki App Service planlarının ölçeği artırıldıkça ön uçlar otomatik olarak eklenir.
 
@@ -77,7 +77,7 @@ Uygulamalar, iç veritabanları ve web hizmetleri gibi şirket kaynaklarına da 
 ## <a name="preview"></a>Önizleme
 App Service Ortamı v3 genel önizlemede.  Önizleme ilerleme durumu sırasında bazı özellikler ekleniyor. ASEv3 'in geçerli sınırlamaları şunlardır:
 
-- App Service planını beş örnek dışında ölçeklendirmeme
+- 50 örneklerinin ötesinde App Service planını ölçeklendirmeme
 - Özel bir kayıt defterinden kapsayıcı alınamaz
 - Şu anda desteklenmeyen App Service özellikleri müşteri VNet üzerinden gidemiyor
 - İnternet erişimi olan bir uç noktaya sahip dış dağıtım modeli yok

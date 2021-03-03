@@ -5,13 +5,14 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 10/30/2020
-ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 3a7c73e4a5ba00155ab905f28edbcb0eb42c0539
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724872"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Veri Paylaşımı nedir?
 
@@ -19,7 +20,7 @@ Bugünün dünyasında, veriler birçok kuruluşun müşterileri ve iş ortaklar
 
 Birçok kuruluşun paylaşıldıkları veriler için sorumlu olması gerekir. Birçok kuruluş, sorumluluğuna ek olarak, tüm veri paylaımlarını basit bir şekilde denetleyebilmek, yönetebilmek ve izlemek istiyor. Bugünün dünyasında, verilerin üstel bir hızda büyümeye devam etmesi beklendiğinde, kuruluşların büyük verileri paylaşmanın basit bir yolu olması gerekir. Müşteriler zamanında Öngörüler elde edebilmeleri için en güncel verileri talep ettebilirler.
 
-Azure veri paylaşma, kuruluşların birden çok müşteriyle ve iş ortaklarıyla basit ve güvenli bir şekilde veri paylaşmasını sağlar. Yalnızca birkaç tıklamayla yeni bir veri paylaşma hesabı temin edebilir, veri kümeleri ekleyebilir ve müşterilerinizi ve iş ortaklarınızı veri paylaşımınıza davet edebilirsiniz. Veri sağlayıcıları her zaman paylaşıldıkları verilerin denetimidir. Azure veri paylaşımında, ne zaman ve kim tarafından paylaşılan verilerin yönetilmesi ve izlenmesi kolay hale gelir. 
+Azure veri paylaşma, kuruluşların birden çok müşteriyle ve iş ortaklarıyla basit ve güvenli bir şekilde veri paylaşmasını sağlar. Yalnızca birkaç tıklamayla yeni bir veri paylaşımı hesabı sağlayabilir, veri kümesi ekleyebilir, müşterilerinizi ve iş ortaklarınızı veri paylaşımınıza davet edebilirsiniz. Veri sağlayıcılar, paylaştıkları verilerin kontrolünü her zaman elde tutar. Azure Veri Paylaşımı, hangi verilerin, ne zaman ve kim tarafından paylaşıldığını yönetmeyi ve izlemeyi kolaylaştırır. 
 
 Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtilerek verilerinin nasıl ele alındığını kontrol ediyor olabilir. Veri tüketicisinin verileri alabilmek için önce bu koşulları kabul etmesi gerekir. Veri sağlayıcıları, veri tüketicilerinin güncelleştirmeleri ne sıklıkta alacağını belirtebilir. Veri sağlayıcıları istedikleri zaman yeni güncelleştirmelere erişimi iptal edebilir. 
 
@@ -47,7 +48,7 @@ Veri sağlayıcıları, veri tüketicilerini bir anlık görüntü zamanlaması 
 
 Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir veri deposunda alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. Benzer şekilde, veri sağlayıcısı bir Azure SYNAPSE analizinden veri paylaşıyorsa veri tüketicisi, verileri bir Azure Data Lake Store, Azure SQL veritabanı veya Azure SYNAPSE analiziyle almak isteyip istemediğinizi seçebilirler. SQL tabanlı kaynaklardan paylaşım durumunda veri tüketicisi Ayrıca, Parquet veya CSV 'de veri alıp almamasını da seçebilir. 
 
-Yerinde paylaşım sayesinde veri sağlayıcıları verileri kopyalamadan verileri paylaşabilir. İlişki paylaşımı, davet akışı aracılığıyla kurulduktan sonra, veri sağlayıcının kaynak veri deposu ve veri tüketicisinin hedef veri deposu arasında bir sembolik bağlantı oluşturulur. Veri tüketicisi, kendi veri deposunu kullanarak verileri gerçek zamanlı olarak okuyup sorgulayabilir. Kaynak veri deposunda yapılan değişiklikler veri TÜKETİCİSİNDE hemen kullanılabilir. Yerinde paylaşım Şu anda Azure Veri Gezgini için önizleme aşamasındadır.
+Yerinde paylaşım sayesinde veri sağlayıcıları verileri kopyalamadan verileri paylaşabilir. İlişki paylaşımı, davet akışı aracılığıyla kurulduktan sonra, veri sağlayıcının kaynak veri deposu ve veri tüketicisinin hedef veri deposu arasında bir sembolik bağlantı oluşturulur. Veri tüketicisi, kendi veri deposunu kullanarak verileri gerçek zamanlı olarak okuyup sorgulayabilir. Kaynak veri deposunda yapılan değişiklikler veri TÜKETİCİSİNDE hemen kullanılabilir. Yerinde paylaşım Şu anda Azure Veri Gezgini için kullanılabilir.
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
@@ -81,7 +82,7 @@ Yukarıda listelenen tüm temel yetenekler Azure portal veya REST API 'Leri arac
 
 Azure veri paylaşımının kullanılabilmesini sağlayan Azure bölgelerinin bir listesi için lütfen [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) sayfasına bakın ve Azure veri paylaşımında arama yapın. 
 
-Azure veri paylaşımında verilerin bir kopyası depolamaz. Veriler paylaşılmakta olan temel alınan veri deposunda depolanır. Örneğin, bir veri üreticisi verilerini Batı ABD bulunan Azure Data Lake Store bir hesapta (verilerin depolandığı yer) depolar. Anlık görüntü aracılığıyla Batı Avrupa ' de bulunan bir Azure depolama hesabıyla veri paylaştıklarında, genellikle veriler doğrudan Batı Avrupa konumundaki Azure depolama hesabına aktarılır.
+Azure veri paylaşımında depolanan meta veriler için Güneydoğu Asya 'da (Singapur), bölge içinde depolanır ve desteklenen diğer tüm bölgeler için coğrafi bölgede depolanır. Azure veri paylaşım, paylaşılan verilerin bir kopyasını depolamaz. Veriler paylaşılmakta olan temel alınan veri deposunda depolanır. Örneğin, bir veri sağlayıcısı verilerini Batı ABD bulunan Azure Data Lake Storage bir hesapta (verilerin depolandığı yer) depolar. Anlık görüntü aracılığıyla Batı Avrupa ' de bulunan bir Azure depolama hesabıyla veri paylaştıklarında, genellikle veriler doğrudan Batı Avrupa konumundaki Azure depolama hesabına aktarılır. 
 
 Azure veri paylaşımının hizmeti 'nin hizmetten yararlanmak için bölgenizde kullanılabilir olması gerekmez. Örneğin, Azure veri paylaşımının henüz kullanılamadığı bir bölgede bulunan bir Azure depolama hesabında depolanan verileriniz varsa, verilerinizi paylaşmak için hizmetten yararlanmaya devam edebilirsiniz. 
 

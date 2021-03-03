@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4ba5f50f5c66b404ec76128a828a1060328f81c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691000"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ Yeni bir örnek için parametreler girdiğinizde, desteklenen saat dilimleri lis
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](./scripts/create-powershell-azure-resource-manager-template.md) TimeZoneId özelliğini belirtin.
+Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](./create-template-quickstart.md) TimeZoneId özelliğini belirtin.
 
 ```json
 "properties": {

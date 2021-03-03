@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621668"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700652"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Logic App kullanarak Log Analytics çalışma alanındaki verileri Azure depolama 'ya arşivleme
 Bu makalede, Azure Izleyici 'deki bir Log Analytics çalışma alanındaki verileri sorgulamak ve Azure Storage 'a göndermek için [Azure Logic Apps](../../logic-apps/index.yml) kullanma yöntemi açıklanır. Denetim ve uyumluluk senaryolarında Azure Izleyici günlük verilerinizi dışarı aktarmanız veya başka bir hizmetin bu verileri almasına izin vermek istediğinizde bu işlemi kullanın.  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-**Zaman aralığı** , **TimeGenerated** sütununa göre sorguya dahil edilecek kayıtları belirtir. Bu, sorguda seçilen zaman aralığına eşit veya daha yüksek bir değere ayarlanmalıdır. Bu sorgu **TimeGenerated** sütununu kullanmıyor, sonra **sorgu seçeneğinde ayarla** seçeneği kullanılamaz. Zaman aralığı hakkında daha fazla ayrıntı için bkz. [sorgu kapsamı](../log-query/scope.md) . 
+**Zaman aralığı** , **TimeGenerated** sütununa göre sorguya dahil edilecek kayıtları belirtir. Bu, sorguda seçilen zaman aralığına eşit veya daha yüksek bir değere ayarlanmalıdır. Bu sorgu **TimeGenerated** sütununu kullanmıyor, sonra **sorgu seçeneğinde ayarla** seçeneği kullanılamaz. Zaman aralığı hakkında daha fazla ayrıntı için bkz. [sorgu kapsamı](./scope.md) . 
 
 **Zaman aralığı** için **son 4 saati** seçin. Bu, zaman **üretilmeden** daha büyük bir alım süresi içeren tüm kayıtların sonuçlara dahil edilmesini sağlayacaktır.
    
@@ -210,6 +210,6 @@ Azure portal **depolama hesapları** menüsüne gidin ve depolama hesabınızı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure izleyici 'de günlük sorguları](./log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Logic Apps](../../logic-apps/index.yml) hakkında daha fazla bilgi edinin
 - [Güç otomatikleştirme](https://flow.microsoft.com)hakkında daha fazla bilgi edinin.

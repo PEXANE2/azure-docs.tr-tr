@@ -1,28 +1,28 @@
 ---
-title: Azure Arc etkin Kubernetes kümesini kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
-description: Bu makalede, Azure Arc etkin Kubernetes kümelerinde kapsayıcılar için Azure Izleyici ile izlemenin nasıl yapılandırılacağı açıklanır.
+title: Azure Arc etkin Kubernetes kümesini kapsayıcı öngörüleri ile yapılandırma | Microsoft Docs
+description: Bu makalede, Azure Arc etkin Kubernetes kümelerinde kapsayıcı öngörüleri ile izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711306"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc özellikli Kubernetes kümesinin izlenmesini etkinleştirme
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, Azure 'un dışında barındırılan Kubernetes kümelerinin, benzer bir izleme deneyimi elde etmek için Azure Arc ile etkinleştirilen izlemenin nasıl etkinleştirileceği açıklanır.
+Kapsayıcı öngörüleri, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, Azure 'un dışında barındırılan Kubernetes kümelerinin, benzer bir izleme deneyimi elde etmek için Azure Arc ile etkinleştirilen izlemenin nasıl etkinleştirileceği açıklanır.
 
-Bir PowerShell veya bash betiği kullanan bir veya daha fazla mevcut Kubernetes dağıtımı için kapsayıcılar için Azure Izleyici etkinleştirilebilir.
+Bir PowerShell veya bash betiği kullanan bir veya daha fazla Kubernetes dağıtımı için kapsayıcı öngörüleri etkinleştirilebilir.
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
-Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview.md) makalesinde açıklandığı gibi, Azure Arc 'ın etkinleştirilmiş Kubernetes 'in (Önizleme), aşağıdaki özellikler haricinde izlenmesini destekler:
+Kapsayıcı öngörüleri, aşağıdaki özellikler hariç olmak üzere [genel bakış](container-insights-overview.md) makalesinde açıklandığı gibi, Azure Arc etkinleştirilmiş Kubernetes 'in (Önizleme) izlenmesini destekler:
 
 - Canlı veriler (Önizleme)
 
-Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir:
+Kapsayıcı öngörüleri ile resmi olarak desteklenen aşağıdakiler aşağıda verilmiştir:
 
 - Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
 
@@ -36,15 +36,15 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 - Log Analytics çalışma alanı.
 
-    Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../samples/resource-manager-workspace.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla oluşturulabilir.
+    Kapsayıcı öngörüleri [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../logs/resource-manager-workspace.md), [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../logs/quick-create-workspace.md)aracılığıyla oluşturulabilir.
 
-- Kapsayıcılar için Azure Izleyici 'deki özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğindeki Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcılar Için Azure izleyici ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../platform/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
+- Kapsayıcı öngörülerine yönelik özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğinde Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../logs/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
 
 - Azure Arc küme kaynağında [katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolünün bir üyesidir.
 
-- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanına [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolü izninin bir üyesi olursunuz.
+- İzleme verilerini görüntülemek için, kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanına sahip [*Log Analytics okuyucu*](../logs/manage-access.md#manage-access-using-azure-permissions) rolü izninin bir üyesidir.
 
-- Belirtilen Kubernetes kümesine yönelik kapsayıcılar için Azure Izleyici grafiğini eklemek için [Helm istemcisi](https://helm.sh/docs/using_helm/) .
+- Belirtilen Kubernetes kümesi için kapsayıcı öngörüleri grafiğini eklemek için [helk istemcisi](https://helm.sh/docs/using_helm/) .
 
 - Linux için Log Analytics aracısının Kapsayıcılı sürümünün Azure Izleyici ile iletişim kurması için aşağıdaki proxy ve güvenlik duvarı yapılandırma bilgileri gereklidir:
 
@@ -154,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Örneğin:
+Örnek:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -239,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Örneğin:
+Örnek:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>Proxy uç noktasını yapılandırma
 
-Kapsayıcılar için Azure Izleyici Kapsayıcılı aracı ile proxy sunucusu üzerinden iletişim kurmasına izin vermek için bir proxy uç noktası yapılandırabilirsiniz. Kapsayıcılı aracı ve Azure Izleyici arasındaki iletişim bir HTTP veya HTTPS proxy sunucusu olabilir ve hem anonim hem de temel kimlik doğrulaması (Kullanıcı adı/parola) desteklenir.
+Kapsayıcı içgörüleri için Kapsayıcılı aracı sayesinde, proxy sunucusu üzerinden iletişim kurmasına izin vermek için bir proxy uç noktası yapılandırabilirsiniz. Kapsayıcılı aracı ve Azure Izleyici arasındaki iletişim bir HTTP veya HTTPS proxy sunucusu olabilir ve hem anonim hem de temel kimlik doğrulaması (Kullanıcı adı/parola) desteklenir.
 
 Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -268,7 +268,7 @@ Protokolü **http** olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağla
 
 ### <a name="configure-using-powershell"></a>PowerShell’i kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Bash kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İzleme etkinken, Arc etkin Kubernetes kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplamaya yönelik olarak, kapsayıcılar için Azure Izleyicisini [nasıl](container-insights-analyze.md) kullanacağınızı öğrenin.
+- İzleme etkinken, Arc etkin Kubernetes kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplamak için, kapsayıcı öngörülerini [nasıl](container-insights-analyze.md) kullanacağınızı öğrenin.
 
 - Varsayılan olarak, Kapsayıcılı Aracı, Kuto-System hariç tüm ad alanlarında çalışan tüm kapsayıcıların stdout/stderr kapsayıcı günlüklerini toplar. Belirli bir ad alanı veya ad alanına özgü kapsayıcı günlüğü koleksiyonunu yapılandırmak için, istenen veri koleksiyonu ayarlarını ConfigMap yapılandırmaları dosyanıza yapılandırmak üzere [kapsayıcı öngörüleri aracı yapılandırmasını](container-insights-agent-config.md) gözden geçirin.
 
 - Kümelediğiniz Prometheus ölçümlerini hurdaya almak ve analiz etmek için bkz. [Prometheus ölçümleri koruması](container-insights-prometheus-integration.md) 'nı inceleyin
 
-- Kapsayıcılar için Azure Izleyici ile yay etkin Kubernetes kümenizi izlemeyi durdurmayı öğrenmek için bkz. [karma kümenizi izlemeyi durdurma](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).
+- Arc etkin Kubernetes kümenizi kapsayıcı öngörüleri ile izlemeyi durdurmayı öğrenmek için bkz. [karma kümenizi izlemeyi durdurma](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).

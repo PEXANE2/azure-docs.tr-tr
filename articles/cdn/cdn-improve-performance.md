@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728204"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosya aktarım hızını artırmak için basit ve etkili bir yöntemdir ve bir dosyanın boyutunu sunucudan gönderilmeden önce azaltarak sayfa yükleme performansını artırır. Dosya sıkıştırma, bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha fazla yanıt veren bir deneyim sağlayabilir.
@@ -153,10 +153,10 @@ Aşağıdaki tablolar her senaryo için Azure CDN sıkıştırma davranışını
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Sıkıştırma etkin ve dosya sıkıştırma için uygun
 | İstemci tarafından istenen biçim (Accept-Encoding üst bilgi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye CDN yanıtı | Notlar |
 | --- | --- | --- | --- |
-| Sıkıştırılmış |Sıkıştırılmış |Sıkıştırılmış |Desteklenen biçimler arasında CDN dönüştürme kodları. |
+| Sıkıştırılmış |Sıkıştırılmış |Sıkıştırılmış |Desteklenen biçimler arasında CDN dönüştürme kodları. <br/>**Microsoft 'tan Azure CDN** , biçimler arasında dönüştürme ve bunun yerine verileri kaynaktan getirir, biçim için ayrı ayrı sıkıştırır ve önbelleğe alır. |
 | Sıkıştırılmış |Sıkıştırılmamış |Sıkıştırılmış |CDN bir sıkıştırma gerçekleştirir. |
 | Sıkıştırılmış |Önbelleğe alınmamış |Sıkıştırılmış |Kaynak sıkıştırılmamış bir dosya döndürürse CDN bir sıkıştırma gerçekleştirir. <br/>**Verizon öğesinden Azure CDN** , ilk istekteki sıkıştırılmamış dosyayı geçirir ve ardından sonraki istekler için dosyayı sıkıştırır ve önbelleğe alır. <br/>`Cache-Control: no-cache`Üst bilgisine sahip dosyalar hiçbir şekilde sıkıştırılmaz. |
-| Sıkıştırılmamış |Sıkıştırılmış |Sıkıştırılmamış |CDN bir açma işlemi gerçekleştirir. |
+| Sıkıştırılmamış |Sıkıştırılmış |Sıkıştırılmamış |CDN bir açma işlemi gerçekleştirir. <br/>**Microsoft Azure CDN** , sıkıştırmayı desteklemez ve bunun yerine sıkıştırılmamış istemciler için kaynak ve önbelleklerden veri getirir. |
 | Sıkıştırılmamış |Sıkıştırılmamış |Sıkıştırılmamış | |
 | Sıkıştırılmamış |Önbelleğe alınmamış |Sıkıştırılmamış | |
 

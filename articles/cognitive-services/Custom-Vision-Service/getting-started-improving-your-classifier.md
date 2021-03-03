@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731094"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Özel Görüntü İşleme modelinizi geliştirme
 
-Bu kılavuzda, Özel Görüntü İşleme Hizmeti modelinizin kalitesini geliştirmeyi öğreneceksiniz. [Sınıflandırıcınız](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) veya [nesne algılayıcısının](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) kalitesi, sağladığınız etiketli verilere ve genel veri kümesinin ne kadar dengeli olduğuna bağlıdır. İyi bir modelde, kendisine nelerin gönderilebileceklerini temsil eden bir dengeli eğitim veri kümesi vardır. Böyle bir modeli oluşturma işlemi yinelemeli bir işlemdir; eğitimin beklenen sonuçlara ulaşabilmesi için birkaç kez bir kez daha yaygın hale gelir.
+Bu kılavuzda, Özel Görüntü İşleme Hizmeti modelinizin kalitesini geliştirmeyi öğreneceksiniz. [Sınıflandırıcınız](./getting-started-build-a-classifier.md) veya [nesne algılayıcısının](./get-started-build-detector.md) kalitesi, sağladığınız etiketli verilere ve genel veri kümesinin ne kadar dengeli olduğuna bağlıdır. İyi bir modelde, kendisine nelerin gönderilebileceklerini temsil eden bir dengeli eğitim veri kümesi vardır. Böyle bir modeli oluşturma işlemi yinelemeli bir işlemdir; eğitimin beklenen sonuçlara ulaşabilmesi için birkaç kez bir kez daha yaygın hale gelir.
 
 Aşağıda, daha doğru bir modeli eğmenize yardımcı olacak genel bir örüntü verilmiştir:
 

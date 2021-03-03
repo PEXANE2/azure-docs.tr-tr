@@ -4,14 +4,14 @@ description: Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/02/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690915"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ Rol tanımı oluştururken şunları sağlamanız gerekir:
     - `/` (hesap düzeyi),
     - `/dbs/<database-name>` (veritabanı düzeyi),
     - `/dbs/<database-name>/colls/<container-name>` (kapsayıcı düzeyi).
+
+> [!NOTE]
+> Aşağıda açıklanan işlemler şu anda ' de kullanılabilir:
+> - Azure PowerShell: [az. CosmosDB sürüm 2.0.1-Önizleme](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLı: [' cosmosdb-Preview ' uzantı sürümü 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
@@ -279,6 +284,11 @@ Rol tanımlarınızı oluşturduktan sonra bunları AAD kimlikleriniz ile ilişk
 > [!NOTE]
 > Bir hizmet sorumlusu için rol ataması oluşturmak istiyorsanız, **nesne kimliğini** **Azure Active Directory** portalı dikey penceresinin **Kurumsal uygulamalar** bölümünde bulunan olarak kullandığınızdan emin olun.
 
+> [!NOTE]
+> Aşağıda açıklanan işlemler şu anda ' de kullanılabilir:
+> - Azure PowerShell: [az. CosmosDB sürüm 2.0.1-Önizleme](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLı: [' cosmosdb-Preview ' uzantı sürümü 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
 Bir kimliğe rol atama:
@@ -354,6 +364,12 @@ Bu ek bilgiler **Dataplanerequests** günlük kategorisinde akar ve iki ek sütu
 
 - `aadPrincipalId_g` isteğin kimliğini doğrulamak için kullanılan AAD kimliğinin asıl KIMLIĞINI gösterir.
 - `aadAppliedRoleAssignmentId_g` istek yetkilendirirken kabul edilen [rol atamasını](#role-assignments) gösterir.
+
+## <a name="limits"></a>Sınırlar
+
+- Azure Cosmos DB hesap başına en çok 100 rol tanımı ve 2.000 rol ataması oluşturabilirsiniz.
+- Azure AD grup çözümlemesi, 200 taneden fazla gruba ait olan kimlikler için şu anda desteklenmiyor.
+- Azure AD belirteci Şu anda her bir tek istekle birlikte Azure Cosmos DB hizmetine gönderilen bir üst bilgi olarak geçirilir ve toplam yük boyutunu artırır.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

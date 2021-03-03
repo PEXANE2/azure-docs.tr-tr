@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: dfbc63ccbdf6f0a8abe1e955b43240d799d6783d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727626"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: Azure Data Box Gateway'i VMware'de sağlama
 
@@ -55,7 +55,7 @@ Sanal cihazı dağıtmadan önce şunlardan emin olun:
 * Ana bilgisayar sistemi sanal cihazınızı sağlamak için aşağıdaki kaynakları ayırabiliyor:
 
   * En az 4 çekirdek.
-  * En az 8 GB RAM.
+  * En az 8 GB RAM. En az 16 GB RAM kullanmanızı öneririz.
   * Bir ağ arabirimi.
   * 250 GB işletim sistemi diski.
   * Sistem verileri için 2 TB sanal disk.
@@ -120,7 +120,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
     ![Karşıya yüklenecek dosyayı seçin](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
-10. **Aç**'a tıklayın. VMDK dosyası belirtilen veri deposuna yüklenmeye başlar. Dosyanın karşıya yüklenmesi birkaç dakika sürebilir.
+10. **Aç**’a tıklayın. VMDK dosyası belirtilen veri deposuna yüklenmeye başlar. Dosyanın karşıya yüklenmesi birkaç dakika sürebilir.
 11. Karşıya yükleme işlemi tamamlandıktan sonra dosyayı oluşturduğunuz veri deposunda görebilirsiniz. Şimdi ikinci VMDK dosyasını da aynı ver deposuna yükleyin. İki dosya da yüklendikten sonra tek bir dosya olacak şekilde birleştirilir. Bu işlemin ardından dizinde tek bir dosya görürsünüz.
 
     ![İki VMDK dosyası tek bir dosyada birleştirilir](./media/data-box-gateway-deploy-provision-vmware/image8.png)

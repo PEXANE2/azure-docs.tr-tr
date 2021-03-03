@@ -1,19 +1,19 @@
 ---
-title: Kapsayıcılar için Azure Izleyicisini ayarlama Canlı veriler (Önizleme) | Microsoft Docs
-description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünün nasıl ayarlanacağı açıklanır.
+title: Container Insights canlı verilerini ayarlama (Önizleme) | Microsoft Docs
+description: Bu makalede, kapsayıcı öngörüleri ile kubectl kullanılmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünü ayarlama açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713788"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
-Azure Kubernetes Service (AKS) kümelerinden kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) görüntülemek için, Kubernetes verilerinize erişim izni vermek üzere kimlik doğrulamasını yapılandırmanız gerekir. Bu güvenlik yapılandırması, doğrudan Azure portal, Kubernetes API 'SI aracılığıyla verilerinize gerçek zamanlı erişim sağlar.
+Azure Kubernetes Service (AKS) kümelerinden gelen kapsayıcı öngörüleri ile canlı verileri (Önizleme) görüntülemek için, Kubernetes verilerinize erişim izni vermek üzere kimlik doğrulamasını yapılandırmanız gerekir. Bu güvenlik yapılandırması, doğrudan Azure portal, Kubernetes API 'SI aracılığıyla verilerinize gerçek zamanlı erişim sağlar.
 
 Bu özellik günlüklere, olaylara ve ölçümlere erişimi denetlemek için aşağıdaki yöntemleri destekler:
 
@@ -46,7 +46,7 @@ Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgi
 
 Kubernetes [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra Kubernetes Kullanıcı rolünün **Kümekullanıcısına** canlı veriler (Önizleme) özelliğine bağlanmasına izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser** adlı yeni bir Kubernetes kümesi rol bağlaması eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur.
 
-Bu yeni kullanıcıyla canlı veri (Önizleme) özelliğini kullanabilmeniz için AKS küme kaynağında [Azure Kubernetes hizmet kümesi kullanıcısı](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Devre dışı bırakıldığında, kapsayıcı için Azure Izleyici varsayılan olarak clusterMonitoringUser kullanarak kimlik doğrulaması yapacak şekilde yapılandırılmıştır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır. Katkıda bulunan, clusterMonitoringUser 'a (varsa) erişmenizi sağlar ve Azure Kuberenetes hizmet kümesi kullanıcısı, Kümekullanıcısına erişmenizi sağlar. Bu iki rolden herhangi biri, bu özelliği kullanmak için yeterli erişim sağlar.
+Bu yeni kullanıcıyla canlı veri (Önizleme) özelliğini kullanabilmeniz için AKS küme kaynağında [Azure Kubernetes hizmet kümesi kullanıcısı](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Kapsayıcı öngörüleri etkinleştirildiğinde, varsayılan olarak clusterMonitoringUser kullanılarak kimlik doğrulaması yapacak şekilde yapılandırılır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır. Katkıda bulunan, clusterMonitoringUser 'a (varsa) erişmenizi sağlar ve Azure Kuberenetes hizmet kümesi kullanıcısı, Kümekullanıcısına erişmenizi sağlar. Bu iki rolden herhangi biri, bu özelliği kullanmak için yeterli erişim sağlar.
 
 AKS, bu yeni rol bağlamasını Ocak 2020 ' de yayımlamıştır, bu yüzden Ocak 2020 ' den önce oluşturulan kümeler buna sahip değildir. Ocak 2020 tarihinden önce oluşturulmuş bir kümeniz varsa, yeni **Clustermonitoringuser** , küme ÜZERINDE bir put işlemi gerçekleştirerek veya kümede, küme sürümünü güncelleştirme gıbı bir put işlemi gerçekleştiren başka bir işlem gerçekleştirerek mevcut bir kümeye eklenebilir.
 
@@ -106,7 +106,7 @@ Azure AD istemci kaydı, Azure portal yetkilendirme sayfalarını güvenilir bir
 Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [Kubernetes belgelerini](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)gözden geçirin.
 
 >[!NOTE]
->Yeni bir Kubernetes RBAC özellikli küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration-cli.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, bu bölümdeki bir notta, aşağıdaki 3. adımda belirtilenler için Azure Izleyici için oluşturmanız gereken iki yeniden yönlendirme URL 'Si vurgulanmaktadır.
+>Yeni bir Kubernetes RBAC özellikli küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration-cli.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, aşağıdaki adım 3 ' te belirtilenlerle eşleşen kapsayıcı öngörüleri için oluşturmanız gereken iki yeniden yönlendirme URL 'sini vurgular.
 
 ### <a name="client-registration-reconfiguration"></a>İstemci kaydı yeniden yapılandırması
 

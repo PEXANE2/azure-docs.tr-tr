@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689343"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Öğretici: örnek SCıM uç noktası geliştirme
 
@@ -57,6 +57,8 @@ Buradaki adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/downl
     ![Yeni bir App Service oluşturmayı gösteren ekran görüntüsü.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
 1. Kullanılacak kaynak grubunu seçin ve **Yayımla**' yı seçin.
+
+    ![Yeni bir App Service yayımlamayı gösteren ekran görüntüsü.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-4.png)
 
 1. Azure App Service yapılandırma bölümünde uygulamaya gidin   >   ve **Yeni uygulama ayarı** ' nı seçerek *Token__TokenIssuer* ayarını değere ekleyin `https://sts.windows.net/<tenant_id>/` . `<tenant_id>`Azure AD KIRACı Kimliğinizle değiştirin. [Postman](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)kullanarak SCIM uç noktasını test etmek istiyorsanız, değerine sahip bir *ASPNETCORE_ENVIRONMENT* ayarı ekleyin `Development` .
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724158"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure ön kapıda Azure Web uygulaması güvenlik duvarı
 
@@ -23,6 +23,8 @@ Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF), Web uygula
 WAF, Sanal ağınızı girmeden önce saldırı kaynaklarına yakın kötü amaçlı saldırıları önler. Performans performansınızı etkilemeden genel koruma kazanın. Bir WAF ilkesi, aboneliğinizdeki herhangi bir ön kapılı profile kolayca bağlanır. Yeni kurallar dakikalar içinde dağıtılabilir ve bu sayede tehdit desenlerini değiştirmek için hızlıca yanıt verebilirsiniz.
 
 ![Azure web uygulaması güvenlik duvarı](../media/overview/wafoverview.png)
+
+Azure ön kapı [Önizleme sürümünde iki yeni SKU](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview)tanıtır: ön kapı standardı ve ön kapı Premium SKU 'su. WAF, ön kapı Premium SKU 'SU ile tam yetenekler ile yerel olarak tümleşiktir. Ön kapı standart SKU 'SU için yalnızca [özel kurallar](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) desteklenir.
 
 ## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 

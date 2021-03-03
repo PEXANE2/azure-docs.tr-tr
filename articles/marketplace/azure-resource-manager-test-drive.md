@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730380"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -75,7 +75,7 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 
 | Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
-| **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https://<..>.blob.core.windows.net/<..>` |
 | **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
 | **parola**    | güvenli dize    | Yeni rastgele parola | LP! ACS \^ 2kh     |
 | **oturum kimliği**   | string          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |

@@ -1,25 +1,25 @@
 ---
-title: VM'ler için Azure İzleyici Konuk sistem durumu uyarıları (Önizleme)
-description: VM'ler için Azure İzleyici Konuk sistem durumu tarafından, bunların nasıl etkinleştirileceği ve bildirimlerin nasıl yapılandırılacağı dahil olmak üzere oluşturulan uyarıları açıklar.
+title: VM öngörüleri Konuk sistem durumu uyarıları (Önizleme)
+description: VM öngörüleri Konuk sistem durumu tarafından, bunların nasıl etkinleştirileceği ve bildirimlerin nasıl yapılandırılacağı dahil olmak üzere oluşturulan uyarıları açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625633"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707515"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>VM'ler için Azure İzleyici Konuk sistem durumu uyarıları (Önizleme)
-VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bir sanal makine veya izleyici uygun olmayan bir durumda değiştiğinde bir uyarı oluşturulabilir. Bu uyarıları [Azure izleyici 'de uyarı kuralları tarafından oluşturulanlar](../platform/alerts-overview.md) ile görüntüleyebilir ve yönetebilir ve yeni bir uyarı oluşturulduğunda, önceden bildirim gönderilmesini seçebilirsiniz.
+# <a name="vm-insights-guest-health-alerts-preview"></a>VM öngörüleri Konuk sistem durumu uyarıları (Önizleme)
+VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bir sanal makine veya izleyici uygun olmayan bir durumda değiştiğinde bir uyarı oluşturulabilir. Bu uyarıları [Azure izleyici 'de uyarı kuralları tarafından oluşturulanlar](../alerts/alerts-overview.md) ile görüntüleyebilir ve yönetebilir ve yeni bir uyarı oluşturulduğunda, önceden bildirim gönderilmesini seçebilirsiniz.
 
 ## <a name="configure-alerts"></a>Uyarı yapılandırma
-Bu özellik önizlemedeyken VM'ler için Azure İzleyici Konuk sistem durumu için açık bir uyarı kuralı oluşturamazsınız. Varsayılan olarak, her bir sanal makine için uyarılar oluşturulur, ancak her izleyici için değildir.  Yani, bir izleyici sanal makinenin geçerli durumunu etkilemeyen bir duruma değişirse, sanal makine durumu değişmediği için hiçbir uyarı oluşturulmaz. 
+Bu özellik önizlemedeyken VM öngörüleri Konuk durumu için açık bir uyarı kuralı oluşturamazsınız. Varsayılan olarak, her bir sanal makine için uyarılar oluşturulur, ancak her izleyici için değildir.  Yani, bir izleyici sanal makinenin geçerli durumunu etkilemeyen bir duruma değişirse, sanal makine durumu değişmediği için hiçbir uyarı oluşturulmaz. 
 
-Belirli bir sanal makine veya bir sanal makinedeki belirli bir izleyici için uyarıları, Azure portal sanal makinenin yapılandırmasındaki **uyarı durumu** ayarından devre dışı bırakabilirsiniz. Azure portal izleyicileri yapılandırma hakkında ayrıntılı bilgi için bkz. [VM'ler için Azure izleyici Konuk sistem durumunda Izlemeyi yapılandırma (Önizleme)](vminsights-health-configure.md) . Bir sanal makine kümesi üzerinde izleyicileri yapılandırma hakkında ayrıntılı bilgi için [veri toplama kuralları (Önizleme) kullanarak VM'ler için Azure izleyici Konuk durumunda Izlemeyi yapılandırma](vminsights-health-configure-dcr.md) konusuna bakın.
+Belirli bir sanal makine veya bir sanal makinedeki belirli bir izleyici için uyarıları, Azure portal sanal makinenin yapılandırmasındaki **uyarı durumu** ayarından devre dışı bırakabilirsiniz. Azure portal izleyicileri yapılandırma hakkında ayrıntılı bilgi için bkz. [VM öngörüleri Konuk sistem durumu 'nda Izlemeyi yapılandırma (Önizleme)](vminsights-health-configure.md) . Bir sanal makine kümesi genelinde izleyicileri yapılandırma hakkında ayrıntılı bilgi için bkz. [veri toplama kuralları (Önizleme) kullanarak VM öngörüleri Konuk durumunda Izlemeyi yapılandırma](vminsights-health-configure-dcr.md) .
 
 ## <a name="alert-severity"></a>Uyarı önem derecesi
 Konuk sistem durumu tarafından oluşturulan uyarının önem derecesi doğrudan sanal makinenin önem derecesine veya uyarıyı tetikleyen monitöre eşlenir.
@@ -31,12 +31,12 @@ Konuk sistem durumu tarafından oluşturulan uyarının önem derecesi doğrudan
 | Sağlam  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>Uyarı yaşam döngüsü
-Her sanal makine için bir **Uyarı** veya **kritik** duruma her değişiklik yaptığı zaman bir [Azure uyarısı](../platform/alerts-overview.md) oluşturulacaktır. **Uyarıları** **Azure izleyici** menüsünde veya sanal makinenin menüsündeki Azure Portal görüntüleyin.
+Her sanal makine için bir **Uyarı** veya **kritik** duruma her değişiklik yaptığı zaman bir [Azure uyarısı](../alerts/alerts-overview.md) oluşturulacaktır. **Uyarıları** **Azure izleyici** menüsünde veya sanal makinenin menüsündeki Azure Portal görüntüleyin.
 
 Sanal makine durumu değiştiğinde bir uyarı zaten **başlatılmış durumdaysa,** ikinci bir uyarı oluşturulmaz, ancak aynı uyarının önem derecesi, sanal makinenin durumuyla eşleşecek şekilde değiştirilir. Örneğin, bir **Uyarı** uyarısı zaten **tetiklenme** durumunda sanal makine **kritik** duruma değişirse, bu uyarının önem derecesi **Sev1** olarak değiştirilir. Bir **Sev1** uyarısı zaten **tetiklendiğinde** sanal makine bir **Uyarı** durumuna değişirse, bu uyarının önem derecesi **Sev2** olarak değiştirilir. Sanal makine **sağlıklı** bir duruma geri taşınırsa, uyarı **Sev4** olarak değiştirilen önem derecesine sahip olacak şekilde çözümlenir.
 
 ## <a name="viewing-alerts"></a>Uyarıları görüntüleme
-VM'ler için Azure İzleyici Konuk sistem durumu tarafından oluşturulan uyarıları Azure portal diğer [uyarılarla](../platform/alerts-overview.md#alerts-experience)görüntüleyin. Tüm izlenen kaynakların uyarılarını görüntülemek için **Azure izleyici** menüsünden **Uyarılar** ' ı seçebilir veya yalnızca o sanal makine için uyarıları görüntülemek üzere bir sanal makinenin menüsündeki **uyarıları** seçebilirsiniz.
+VM öngörüleri Konuk durumu tarafından oluşturulan uyarıları Azure portal diğer [uyarılarla](../platform/alerts-overview.md#alerts-experience)görüntüleyin. Tüm izlenen kaynakların uyarılarını görüntülemek için **Azure izleyici** menüsünden **Uyarılar** ' ı seçebilir veya yalnızca o sanal makine için uyarıları görüntülemek üzere bir sanal makinenin menüsündeki **uyarıları** seçebilirsiniz.
 
 ## <a name="alert-properties"></a>Uyarı Özellikleri
 
@@ -106,6 +106,6 @@ Yeni bir kural oluşturmak için **yeni eylem kuralı** ' na tıklayın. Kapsam 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VM'ler için Azure İzleyici ve aracılarda Konuk sistem durumunu etkinleştirin.](vminsights-health-enable.md)
+- [VM öngörüleri ve aracı ekleme aracılarında Konuk sistem durumunu etkinleştirin.](vminsights-health-enable.md)
 - [Azure portal kullanarak izleyicileri yapılandırın.](vminsights-health-configure.md)
 - [Veri toplama kurallarını kullanarak izleyicileri yapılandırın.](vminsights-health-configure-dcr.md)

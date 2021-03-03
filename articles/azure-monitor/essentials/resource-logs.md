@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3560152ce5e3185e79c7a7ff34e5360f10236980
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623131"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731468"
 ---
 # <a name="azure-resource-logs"></a>Azure kaynak günlükleri
-Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](../essentials/platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](../platform/data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
+Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](../essentials/platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](../logs/data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
 
 Oluşturduğunuz her Azure kaynağı için otomatik olarak bir tanılama ayarı oluşturmak üzere [Azure ilkesi 'ni](../deploy-scale.md) kullanma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için Tanılama ayarları](../essentials/diagnostic-settings.md) oluşturma.
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics çalışma alanına gönderme
- Aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerinin](../platform/data-platform-logs.md) özelliklerini etkinleştirmek için kaynak günlüklerini bir Log Analytics çalışma alanına gönderin:
+ Aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerinin](../logs/data-platform-logs.md) özelliklerini etkinleştirmek için kaynak günlüklerini bir Log Analytics çalışma alanına gönderin:
 
 - Kaynak günlük verilerinin Azure Izleyici tarafından toplanan diğer izleme verileriyle ilişkilendirilmesi.
 - Birden çok Azure kaynağından, aboneliklerden ve kiracılardan günlük girişlerini analiz için tek bir konuma birleştirin.
 - Günlük sorgularını kullanarak karmaşık analizler gerçekleştirin ve günlük verileri hakkında ayrıntılı Öngörüler elde edin.
 - Karmaşık uyarı mantığı ile günlük uyarılarını kullanın.
 
-Kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](../essentials/diagnostic-settings.md) . Bu veriler, [Azure Izleyici günlüklerinin yapısı](../platform/data-platform-logs.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
+Kaynak günlüklerini bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](../essentials/diagnostic-settings.md) . Bu veriler, [Azure Izleyici günlüklerinin yapısı](../logs/data-platform-logs.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
 
 - Azure tanılama-yazılan tüm veriler _AzureDiagnostics_ tablosuna gönderilir.
 - Kaynağa özgü veriler, kaynağın her kategorisi için ayrı ayrı tabloya yazılır.
@@ -90,7 +90,7 @@ Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** v
    ![Tanılama ayarları mod seçicisi](media/resource-logs/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> Bir Resource Manager şablonu kullanarak koleksiyon modunu ayarlama örneği için bkz. [Azure izleyici 'de Tanılama ayarları için Kaynak Yöneticisi şablonu örnekleri](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
+> Bir Resource Manager şablonu kullanarak koleksiyon modunu ayarlama örneği için bkz. [Azure izleyici 'de Tanılama ayarları için Kaynak Yöneticisi şablonu örnekleri](./resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
 
 Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Adanmış tabloda yeni veriler toplanacak. Her iki tablo genelinde verileri sorgulamak için [UNION](/azure/kusto/query/unionoperator) işlecini kullanın.

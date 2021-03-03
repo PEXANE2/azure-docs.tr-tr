@@ -7,16 +7,16 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734358"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
 
-Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir platform günlüğüdür. Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorguları](../log-query/log-query-overview.md) ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi diğer özellikleri etkinleştirmek üzere bir Log Analytics çalışma alanı ve etkinlik günlüğünü Azure izleyici GÜNLÜKLERINE göndermek için Azure Resource Manager şablonlarının (ARM şablonları) nasıl kullanılacağı gösterilmektedir.
+Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir platform günlüğüdür. Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorguları](../logs/log-query-overview.md) ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi diğer özellikleri etkinleştirmek üzere bir Log Analytics çalışma alanı ve etkinlik günlüğünü Azure izleyici GÜNLÜKLERINE göndermek için Azure Resource Manager şablonlarının (ARM şablonları) nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../essentials/resource-logs.md) toplamanız gerekir.
+Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../logs/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../alerts/alerts-log-query.md) ve [çalışma kitapları](../visualize/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../essentials/resource-logs.md) toplamanız gerekir.
 
 > [!div class="nextstepaction"]
 > [Azure Izleyici ile kaynak günlüklerini toplayın ve çözümleyin](../essentials/tutorial-resource-logs.md)

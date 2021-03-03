@@ -4,14 +4,14 @@ description: Azure 'da iş ortakları tarafından sunulan çözümler hakkında 
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/19/2021
+ms.date: 02/12/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6779596efdebf8220af99f4e86c1fe6cc0ec90d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cab246cf19e8a2e3f9e7b08019cd836e3d085266
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598777"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736058"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>Azure 'ı iş ortaklarının çözümleriyle genişletme
 
@@ -22,3 +22,4 @@ ms.locfileid: "98598777"
 | İş ortağı çözümü | Açıklama |
 | :--- | :--- |
 | [Konluent bulutu için Apache Kafka](./apache-kafka-confluent-cloud/overview.md) | Apache Kafka tarafından desteklenen tam olarak yönetilen olay akışı platformu |
+| [Datadog](./datadog/overview.md) | Sunucularınızı, bulutlarınızı, ölçümleri ve uygulamalarınızı tek bir yerde izleyin. |

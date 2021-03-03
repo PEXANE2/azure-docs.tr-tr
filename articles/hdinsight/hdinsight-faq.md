@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946027"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699309"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -61,7 +61,7 @@ Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek i
 
 - Uygulamaları yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
-Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
+Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](./hdinsight-component-versioning.md)
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kümede önceden yüklenmiş olan bileşenleri yükseltebilir miyim?
 
@@ -234,7 +234,7 @@ Aşağıdaki eylemlerden birini yapın:
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>BLOB depolama hesabımın denetimini nasıl ayarlayabilirim?
 
-BLOB depolama hesaplarını denetlemek için, [Azure Portal bir depolama hesabını izleme](../storage/common/storage-monitor-storage-account.md)konumundaki yordamı kullanarak izlemeyi yapılandırın. Bir bir bir bir bir bir bir bir bir denetim günlüğü yalnızca yerel bir bu dosya sistemi için denetim bilgilerini sağlar  Bu, uzak depolama üzerinde gerçekleştirilen işlemleri içermez.
+BLOB depolama hesaplarını denetlemek için, [Azure Portal bir depolama hesabını izleme](../storage/common/manage-storage-analytics-logs.md)konumundaki yordamı kullanarak izlemeyi yapılandırın. Bir bir bir bir bir bir bir bir bir denetim günlüğü yalnızca yerel bir bu dosya sistemi için denetim bilgilerini sağlar  Bu, uzak depolama üzerinde gerçekleştirilen işlemleri içermez.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Blob kapsayıcısı ve HDInsight baş düğümü arasında dosyaları nasıl aktarabilirim?
 

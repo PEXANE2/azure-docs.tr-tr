@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944436"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702870"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -65,7 +65,7 @@ Bir Express Route veya kendi özel DNS sunucunuz kullanıyorsanız bkz. [Azure H
 
 ## <a name="unsupported-component-versions"></a>Desteklenmeyen bileşen sürümleri
 
-Çözümünüzde [desteklenen bir Azure HDInsight sürümü](../hdinsight-component-versioning.md) ve [Apache Hadoop bileşenleri](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) kullandığınızdan emin olun.  
+Çözümünüzde [Azure HDInsight ve Apache Hadoop bileşeni 'nin desteklenen bir sürümünü](../hdinsight-component-versioning.md) kullandığınızdan emin olun.  
 
 ## <a name="storage-account-name-restrictions"></a>Depolama hesabı adı kısıtlamaları
 

@@ -1,25 +1,25 @@
 ---
-title: VM'ler için Azure İzleyici günlüklerini sorgulama
-description: VM'ler için Azure İzleyici çözümü ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
+title: VM öngörülerine ait günlükleri sorgulama
+description: VM öngörüleri çözümü, ' ye ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbecb15173c929aee46e7d1eeb5e83aab86430f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625123"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713533"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
+# <a name="how-to-query-logs-from-vm-insights"></a>VM öngörülerine ait günlükleri sorgulama
 
-VM'ler için Azure İzleyici performans ve bağlantı ölçümlerini, bilgisayar ve işlem envanter verilerini ve sistem durumu bilgilerini toplayıp Azure Izleyici 'de Log Analytics çalışma alanına iletir.  Bu veriler Azure Izleyici 'de [sorgu](../log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+VM öngörüleri, performans ve bağlantı ölçümlerini, bilgisayar ve işlem envanter verilerini ve sistem durumu bilgilerini toplayıp Azure Izleyici 'de Log Analytics çalışma alanına iletir.  Bu veriler Azure Izleyici 'de [sorgu](../logs/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 ## <a name="map-records"></a>Kayıtları eşleme
 
-Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; bir işlem veya bilgisayar başladığında oluşturulan kayıtlara ek olarak, VM'ler için Azure İzleyici eşleme özelliği de eklenmediyse. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
+Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur. bir işlem veya bilgisayar başlatıldığında veya on-eklenmediyse-VM Insights eşleme özelliğine olduğunda oluşturulan kayıtlara ek olarak. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
 
 Benzersiz işlem ve bilgisayarları tanımlamak için kullanabileceğiniz, dahili olarak oluşturulan özellikler vardır:
 
@@ -112,7 +112,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
 |Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem* değerlerinden biridir.   |
-|Description |Gözlemlenen tehdit açıklaması. |
+|Açıklama |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
 |Önem derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
@@ -233,7 +233,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Description | İşlem açıklaması |
+|Açıklama | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
@@ -473,6 +473,6 @@ Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan per
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../log-query/log-analytics-tutorial.md) inceleyin.
+* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../logs/log-analytics-tutorial.md) inceleyin.
 
-* [Arama sorguları yazma](../log-query/get-started-queries.md)hakkında bilgi edinin.
+* [Arama sorguları yazma](../logs/get-started-queries.md)hakkında bilgi edinin.

@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728187"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -18,6 +18,8 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
+- Şubat 2021
+  - [Azure Blobları için yedekleme (önizlemede)](#backup-for-azure-blobs-in-preview)
 - Ocak 2021
   - [Azure disk yedekleme (önizlemede)](#azure-disk-backup-in-preview)
   - [Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme (genel kullanılabilirlik)](#encryption-at-rest-using-customer-managed-keys)
@@ -34,6 +36,14 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
   - [RHEL Azure sanal makinelerinde yedekleme SAP HANA (önizlemede)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Yedekleme verileri için bölge yedekli depolama (ZRS) (önizlemede)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Azure Blobları için yedekleme (önizlemede)
+
+Blob 'lar için işlemsel yedekleme, blok bloblarınızı bozulmalar, blob silme işlemleri ve yanlışlıkla depolama hesabı silme gibi çeşitli veri kaybı senaryolarından korumanıza imkan tanıyan yönetilen, yerel bir veri koruma çözümüdür. Veriler yerel olarak kaynak depolama hesabının içinde depolanır ve gerektiğinde seçilen bir zaman noktasına kurtarılabilir. Bu nedenle, bloblarınızı korumak için basit, güvenli ve uygun maliyetli bir yol sağlar.
+
+Blob 'Lar için işletimsel yedekleme, yedekleme merkezi ile tümleşir, diğer yedekleme yönetim özellikleri arasında, yedeklemeleri ölçekteki yönetmenize, izlemenize, çalıştırmanıza ve çözümlemenize yardımcı olabilecek tek bir cam bölmesi sağlamak için yedekleme merkezi ile tümleştirilir.
+
+Daha fazla bilgi için bkz. [Azure Blobları için işlemsel yedeklemeye genel bakış (önizlemede)](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure disk yedekleme (önizlemede)
 

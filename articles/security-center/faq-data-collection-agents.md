@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705147"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -29,9 +29,9 @@ Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure sa
 
 Hayır. Güvenlik Merkezi tarafından oluşturulan ve düğüm başına Azure Izleyici günlükleri için yapılandırılmış çalışma alanları Azure Izleyici günlükleri ücretlerine tabi değildir. Güvenlik Merkezi 'nin faturalandırması her zaman Güvenlik Merkezi güvenlik ilkenize ve bir çalışma alanına yüklenmiş çözümlere göre belirlenir:
 
-- **Azure Defender kapalı** – Güvenlik Merkezi, varsayılan çalışma alanındaki ' SecurityCenterFree ' çözümünü sunar. Azure Defender kapalıysa faturalandırılmaz.
+- **Azure Defender kapalı** – Güvenlik Merkezi, varsayılan çalışma alanında "SecurityCenterFree" çözümüne izin vermez. Azure Defender kapalıysa faturalandırılmaz.
 
-- **Azure Defender on** -Security Center, varsayılan çalışma alanındaki ' Güvenlik ' çözümünü sunar.
+- **Azure Defender on** -Security Center, varsayılan çalışma alanındaki "güvenlik" çözümüne izin vermez.
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -146,7 +146,7 @@ Log Analytics Aracısı doğrudan VM 'ye (Azure uzantısı olarak değil) yükle
 
 Yüklü aracı zaten yapılandırılmış çalışma alanına (ler) raporlama yapmaya devam edecektir ve ayrıca, güvenlik merkezi 'nde yapılandırılan çalışma alanına rapor eder (Windows makinelerde çoklu barındırma desteklenir).
 
-Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (Güvenlik Merkezi 'nin varsayılan çalışma alanı değil), bu çalışma alanına raporlama yapan VM 'Ler ve bilgisayarlardan gelen olayları işlemeye başlamak için Güvenlik Merkezi 'nin "Security/" SecurityCenterFree "çözümünü yüklemeniz gerekir.
+Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (Güvenlik Merkezi 'nin varsayılan çalışma alanı değil), bu çalışma alanına raporlama yapan VM 'Ler ve bilgisayarlardan gelen olayları işlemeye başlamak için Güvenlik Merkezi 'nin "güvenlik" veya "SecurityCenterFree" çözümünü yüklemeniz gerekir.
 
 Linux makineler için, aracı çoklu barındırma henüz desteklenmiyor. bu nedenle, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama gerçekleşmez ve makinenin yapılandırması değiştirilmez.
 
@@ -207,7 +207,7 @@ Geçiş tamamlandığında, güvenlik merkezi VM 'den güvenlik verileri toplaya
 
 Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmesi ve öneriler ve uyarılar sağlaması için Log Analytics Aracısı uzantısını el ile yükleyebilirsiniz. Yükleme ile ilgili yönergeler için bkz. [WINDOWS VM için aracı yükleme](../virtual-machines/extensions/oms-windows.md) veya [Linux sanal makinesi için aracı yükleme](../virtual-machines/extensions/oms-linux.md) .
 
-Aracıyı var olan herhangi bir özel çalışma alanına veya Güvenlik Merkezi tarafından oluşturulan çalışma alanına bağlayabilirsiniz. Özel bir çalışma alanında ' Security ' veya ' SecurityCenterFree ' çözümleri etkinleştirilmemişse, bir çözüm uygulamanız gerekir. Uygulamak için, özel çalışma alanı veya aboneliği seçin ve **güvenlik ilkesi – fiyatlandırma katmanı** sayfası aracılığıyla bir fiyatlandırma katmanı uygulayın.
+Aracıyı var olan herhangi bir özel çalışma alanına veya Güvenlik Merkezi tarafından oluşturulan çalışma alanına bağlayabilirsiniz. Özel bir çalışma alanında "güvenlik" veya "SecurityCenterFree" çözümleri etkinleştirilmemişse, bir çözüm uygulamanız gerekir. Uygulamak için, özel çalışma alanı veya aboneliği seçin ve **güvenlik ilkesi – fiyatlandırma katmanı** sayfası aracılığıyla bir fiyatlandırma katmanı uygulayın.
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender 'ı etkinleştirme veya devre dışı bırakma":::
 

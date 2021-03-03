@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/10/2021
-ms.openlocfilehash: b1a249bac4a1a46e52bf52eccd56649153eefe8e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88e400cea764be84521c003a681aa74885dc29ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721353"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak bir çapraz bölge Azure Load Balancer oluşturma
 
@@ -195,7 +195,7 @@ Set-AzLoadBalancerBackendAddressPool @bepoolcr
 
 Bu bölümde, bölgeler arası yük dengeleyiciyi test edersiniz. Genel IP adresine bir Web tarayıcısında bağlanırsınız.  Bölgesel yük dengeleyici arka uç havuzlarından birindeki sanal makineleri durdurarak yük devretmeyi gözlemleyeceksiniz.
 
-1. Yük dengeleyicinin genel IP adresini almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) kullanın:
+1. Yük dengeleyicinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) kullanın:
 
 ```azurepowershell-interactive
 $ip = @{

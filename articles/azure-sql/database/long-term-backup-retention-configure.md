@@ -11,35 +11,39 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 983fc2cd7e9863361776d5a9d5bc02359fccd510
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690574"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı 'nda, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak saklamak için [uzun süreli bir yedekleme bekletme](long-term-retention-overview.md) IlkesI (LTR) içeren bir veritabanı yapılandırabilirsiniz. Daha sonra Azure portal veya PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanını kurtarabilirsiniz. [Azure SQL yönetilen örneği](../managed-instance/long-term-backup-retention-configure.md) için uzun süreli saklama 'yı da yapılandırabilirsiniz, ancak şu anda sınırlı genel önizleme aşamasındadır.
+Azure SQL veritabanı ile, yedeklemeleri 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak saklamak için [uzun süreli bir yedekleme bekletme](long-term-retention-overview.md) IlkesI (LTR) ayarlayabilirsiniz. Daha sonra Azure portal veya PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanını kurtarabilirsiniz. [Azure SQL yönetilen örneği](../managed-instance/long-term-backup-retention-configure.md)için uzun süreli saklama ilkeleri de desteklenir.
 
 ## <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun süreli bekletmede yedeklemeleri görüntülemek ve uzun süreli bekletmede yedeklemeyi geri yüklemek için Azure portal nasıl kullanılacağı gösterilmektedir.
+Aşağıdaki bölümlerde, uzun süreli saklama ilkeleri ayarlamak, kullanılabilir uzun süreli bekletme yedeklemelerini yönetmek ve kullanılabilir bir yedekten geri yüklemek için Azure portal nasıl kullanılacağı gösterilmektedir.
 
 ### <a name="configure-long-term-retention-policies"></a>Uzun süreli saklama ilkelerini yapılandırma
 
 SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hizmet katmanınızın saklama süresinden daha uzun bir süre koruyacak şekilde yapılandırabilirsiniz.
 
-1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
+1. Azure portal sunucunuza gidin ve **yedeklemeler**' i seçin. Yedekleme bekletme ayarlarınızı değiştirmek için **bekletme ilkeleri** sekmesini seçin.
 
-   ![Yedeklemeleri Yönet bağlantısı](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+   ![bekletme ilkeleri deneyimi](./media/long-term-backup-retention-configure/ltr-policies-tab.png)
 
-2. **Ilkeleri Yapılandır** bölmesinde haftalık, aylık veya yıllık yedeklemeleri sürdürmek ve her biri için bekletme dönemini belirtmek istediğinizi seçin.
+2. Bekletme ilkeleri sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanlarını seçin. Seçilmemiş veritabanları etkilenmeyecektir.
 
-   ![ilkeleri yapılandırma](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+   ![Yedekleme bekletme ilkelerini yapılandırmak için veritabanını seçin](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. Tamamlandığında, **Uygula**' ya tıklayın.
+3. **Ilkeleri Yapılandır** bölmesinde, haftalık, aylık veya yıllık yedeklemeler için istediğiniz saklama süresini belirtin. Uzun süreli yedek saklama alanının ayarlanması gerektiğini belirtmek için ' 0 ' bekletme dönemini seçin.
+
+   ![ilkeleri Yapılandır bölmesi](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+4. Seçilen bekletme ayarlarını seçili tüm veritabanlarına uygulamak için **Uygula** ' yı seçin.
 
 > [!IMPORTANT]
 > Uzun süreli yedek saklama ilkesini etkinleştirdiğinizde, ilk yedeklemenin görünür olması ve geri yükleme için kullanılabilir olması 7 güne kadar sürebilir. LTR yedekleme cadans ayrıntıları için bkz. [uzun süreli yedek saklama](long-term-retention-overview.md).
@@ -48,21 +52,23 @@ SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hi
 
 Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntüleyin ve bu yedeklerden geri yükleyin.
 
-1. Azure portal, sunucunuzu seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
+1. Azure portal sunucunuza gidin ve **yedeklemeler**' i seçin. Belirli bir veritabanı için kullanılabilir LTR yedeklemeleri görüntülemek için, kullanılabilir LTR yedeklemeler sütununun altında **Yönet** ' i seçin. Seçili veritabanı için kullanılabilir LTR yedeklemelerin listesini içeren bir bölme görüntülenir.
 
-   ![Veritabanı Seç](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+   ![kullanılabilir yedeklemeler deneyimi](./media/long-term-backup-retention-configure/ltr-available-backups-tab.png)
 
-1. **Kullanılabilir yedeklemeler** bölmesinde, kullanılabilir yedeklemeleri gözden geçirin.
+1. Görüntülenen **KULLANILABILIR LTR yedeklemeler** bölmesinde, kullanılabilir yedeklemeler ' i gözden geçirin. Geri yüklenecek veya silinecek bir yedekleme seçebilirsiniz.
 
-   ![yedeklemeleri görüntüle](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+   ![kullanılabilir LTR yedeklemeleri görüntüle](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
 
-1. Geri yüklemek istediğiniz yedeği seçin ve ardından yeni veritabanı adını belirtin.
+1. Kullanılabilir bir LTR yedeklemesinden geri yüklemek için, geri yüklemek istediğiniz yedeği seçin ve ardından **geri yükle**' yi seçin.
 
-   ![geri yükleme](./media/long-term-backup-retention-configure/ltr-restore.png)
+   ![kullanılabilir LTR yedeğinden geri yükle](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
 
-1. Veritabanınızı Azure Storage 'daki yedekten yeni veritabanına geri yüklemek için **Tamam** ' a tıklayın.
+1. Yeni veritabanınız için bir ad seçin ve geri yükleme 'nizin ayrıntılarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Veritabanınızı seçili yedekten geri yüklemek için **Oluştur** ' u seçin.
 
-1. Geri yükleme işinin durumunu görüntülemek için araç çubuğundaki bildirim simgesine tıklayın.
+   ![geri yükleme ayrıntılarını yapılandırma](./media/long-term-backup-retention-configure/restore-ltr.png)
+
+1. Araç çubuğunda, geri yükleme işinin durumunu görüntülemek için bildirim simgesini seçin.
 
    ![geri yükleme işi ilerleme durumu](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 

@@ -6,16 +6,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
-ms.openlocfilehash: 58e12862cf00b500bced105d67fede8599c2a257
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99180546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709640"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Azure Logic Apps maliyetlerini planlayın ve yönetin
 
-Bu makale, Azure Logic Apps maliyetlerini planlayıp yönetmenize yardımcı olur. Bu hizmeti kullanarak herhangi bir kaynak oluşturmadan veya eklemeden önce, Azure fiyatlandırma hesaplayıcısını kullanarak maliyetlerinizi tahmin edin. Logic Apps kaynaklarını kullanmaya başladıktan sonra, [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)'ni kullanarak bütçeleri ayarlayabilir ve maliyetleri izleyebilirsiniz. Çalışmak isteyebileceğiniz yerleri belirlemek için tahmin edilen maliyetleri gözden geçirebilir ve harcama eğilimlerini izleyebilirsiniz.
+Bu makale, Azure Logic Apps maliyetlerini planlayıp yönetmenize yardımcı olur. Bu hizmeti kullanarak herhangi bir kaynak oluşturmadan veya eklemeden önce, Azure fiyatlandırma hesaplayıcısını kullanarak maliyetlerinizi tahmin edin. Logic Apps kaynaklarını kullanmaya başladıktan sonra, [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)'ni kullanarak bütçeleri ayarlayabilir ve maliyetleri izleyebilirsiniz. Çalışmak isteyebileceğiniz yerleri belirlemek için tahmin edilen maliyetleri gözden geçirebilir ve harcama eğilimlerini izleyebilirsiniz.
 
 Logic Apps maliyetlerinin yalnızca Azure faturanızda bulunan Aylık maliyetlerin bir parçası olduğunu aklınızda bulundurun. Bu makalede Logic Apps maliyetlerinin nasıl tahmin edilmesi ve yönetileceği açıklanmakta olsa da, tüm üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız. Logic Apps maliyetlerini yönetme hakkında bilgi sahibi olduktan sonra, aboneliğinizde kullanılan tüm Azure hizmetlerinin maliyetlerini yönetmek için benzer yöntemler uygulayabilirsiniz.
 
@@ -23,9 +23,9 @@ Logic Apps maliyetlerinin yalnızca Azure faturanızda bulunan Aylık maliyetler
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 
-[Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) , çoğu Azure hesap türünü destekler. Desteklenen tüm hesap türlerini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Maliyet verilerini görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
+[Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) , çoğu Azure hesap türünü destekler. Desteklenen tüm hesap türlerini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Maliyet verilerini görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
 
-Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](https://docs.microsoft.com/azure/cost-management/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, add them here -->
 
@@ -101,9 +101,9 @@ Azure Logic Apps olan kaynakları oluşturmadan önce [Azure fiyatlandırma hesa
 
 ## <a name="create-budgets-and-alerts"></a>Bütçeler ve uyarılar oluşturma
 
-Azure hesabınız veya aboneliğiniz için maliyetleri proaktif bir şekilde yönetmenize yardımcı olması için [Azure maliyet yönetimi ve faturalandırma](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hizmeti ve yeteneklerini kullanarak [bütçeler](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ve [Uyarılar](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz.  Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır.
+Azure hesabınız veya aboneliğiniz için maliyetleri proaktif bir şekilde yönetmenize yardımcı olması için [Azure maliyet yönetimi ve faturalandırma](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hizmeti ve yeteneklerini kullanarak [bütçeler](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ve [Uyarılar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz.  Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır.
 
-Bütçe ve maliyet eşiklerine kıyasla, uyarılar, harcama ve fazla harcama riskleri konusunda otomatik olarak katılımcıları bilgilendirir. İzlemekte daha fazla ayrıntı düzeyi istiyorsanız, Azure 'da belirli kaynaklar veya hizmetler için filtre kullanan bütçeler da oluşturabilirsiniz. Filtreler, yanlışlıkla daha fazla ücret ödediğinizden emin olmanıza yardımcı olur. Filtre seçenekleri hakkında daha fazla bilgi için bkz. [Grup ve filtre seçenekleri](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Bütçe ve maliyet eşiklerine kıyasla, uyarılar, harcama ve fazla harcama riskleri konusunda otomatik olarak katılımcıları bilgilendirir. İzlemekte daha fazla ayrıntı düzeyi istiyorsanız, Azure 'da belirli kaynaklar veya hizmetler için filtre kullanan bütçeler da oluşturabilirsiniz. Filtreler, yanlışlıkla daha fazla ücret ödediğinizden emin olmanıza yardımcı olur. Filtre seçenekleri hakkında daha fazla bilgi için bkz. [Grup ve filtre seçenekleri](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <a name="monitor-costs"></a>
 
@@ -115,7 +115,7 @@ Azure 'da kullanarak oluşturan veya başlatılan kaynakların maliyetlerini ba�
 
 * Azure Izleyici ['yi kullanarak mantıksal uygulama yürütmelerini ve depolama tüketimini izleme](#monitor-billing-metrics)
 
-* [Azure maliyet yönetimi ve faturalandırma](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) kullanarak [maliyet analizini](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) çalıştırma
+* [Azure maliyet yönetimi ve faturalandırma](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) kullanarak [maliyet analizini](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) çalıştırma
 
 <a name="monitor-billing-metrics"></a>
 
@@ -170,7 +170,7 @@ Azure Izleyici 'yi kullanarak, belirli bir mantıksal uygulama için bu ölçüm
 
 ### <a name="run-cost-analysis-by-using-azure-cost-management-and-billing"></a>Azure maliyet yönetimi ve faturalandırma kullanarak maliyet analizini çalıştırma
 
-Azure aboneliği gibi belirli bir kapsama dayalı Logic Apps hizmetinin maliyetlerini gözden geçirmek için [Azure maliyet yönetimi ve faturalandırma](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)' de [Maliyet Analizi](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) özelliklerini kullanabilirsiniz.
+Azure aboneliği gibi belirli bir kapsama dayalı Logic Apps hizmetinin maliyetlerini gözden geçirmek için [Azure maliyet yönetimi ve faturalandırma](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)' de [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) özelliklerini kullanabilirsiniz.
 
 1. Azure portal, Azure aboneliğiniz gibi istediğiniz kapsamı açın. Sol taraftaki menüden **maliyet yönetimi** altında **Maliyet Analizi**' ni seçin.
 
@@ -197,7 +197,7 @@ Azure aboneliği gibi belirli bir kapsama dayalı Logic Apps hizmetinin maliyetl
 
 ### <a name="export-cost-data"></a>Maliyet verilerini dışarı aktarma
 
-Maliyetlerde daha fazla veri analizi yapmanız gerektiğinde, maliyet verilerini bir depolama hesabına [dışarı aktarabilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Örneğin, bir Finans ekibi Excel veya Power BI kullanarak bu verileri çözümleyebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
+Maliyetlerde daha fazla veri analizi yapmanız gerektiğinde, maliyet verilerini bir depolama hesabına [dışarı aktarabilirsiniz](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Örneğin, bir Finans ekibi Excel veya Power BI kullanarak bu verileri çözümleyebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
 
 ## <a name="other-ways-to-manage-and-reduce-costs"></a>Maliyetleri yönetmenin ve azaltmanın diğer yolları
 
@@ -228,9 +228,7 @@ Logic APS ve ilgili kaynaklarınızın maliyetlerini düşürmenize yardımcı o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Maliyet analizini kullanarak maliyetleri yönetme](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Beklenmeyen maliyetleri engelleme](https://docs.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Maliyet yönetimi](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın
-
-
+* [Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Maliyet analizini kullanarak maliyetleri yönetme](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Beklenmeyen maliyetleri engelleme](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Maliyet yönetimi](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın

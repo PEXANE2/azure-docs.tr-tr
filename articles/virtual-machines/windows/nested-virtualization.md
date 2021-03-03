@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091355"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693756"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM 'de iç içe sanallaştırmayı etkinleştirme
 
@@ -22,11 +22,9 @@ Bu makalede, bir Azure VM üzerinde Hyper-V ' i etkinleştirme ve bu konuk sanal
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>İç içe özellikli bir Azure VM oluşturma
 
-Yeni bir Windows Server 2016 Azure sanal makinesi oluşturun. İç içe geçme desteği olan sanal makine boyutlarının tüm listesi için [Azure Işlem birimi makalesine](../acu.md)göz atın.
+Ana bilgisayarınız için yeni bir Windows Server 2016 veya Windows Server 2019 Azure VM oluşturun. VM 'niz için iç içe geçirmeyi destekleyen bir boyut seçtiğinizden ve konuk VM 'lerin taleplerini karşılayacak kadar büyük olduğundan emin olun. İç içe geçme desteği olan sanal makine boyutlarının listesi için bkz. [Azure Işlem birimi](../acu.md) makalesi.
 
-Konuk sanal makine taleplerini desteklemeye yetecek büyüklükte bir VM boyutu seçip seçeceğini unutmayın. Bu örnekte, bir Azure VM D4_v3 boyutu kullanıyoruz. 
-
-Dv3 veya Ev3 serisi sanal makinelerin bölgesel kullanılabilirliğini [burada](https://azure.microsoft.com/regions/services/)görebilirsiniz.
+VM boyutlarının bölgesel kullanılabilirliğini [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/) sayfasında görebilirsiniz.
 
 >[!NOTE]
 >
@@ -94,7 +92,7 @@ Konuk sanal makine için yeni bir sanal ağ bağdaştırıcısı oluşturun ve I
 4. NAT ağ geçidi için bir IP adresi oluşturun.
     
 Ağ geçidini yapılandırmak için ağınız hakkında bazı bilgilere ihtiyacınız vardır:    
-  * IPAddress-NAT ağ geçidi IP 'si, sanal ağ alt ağı için varsayılan ağ geçidi adresi olarak kullanılacak IPv4 veya IPv6 adresini belirtir. Genel form a. b. c. 1 ' dir (örneğin, "192.168.0.1"). Son konumun 1 olması gerekmez, genellikle (ön ek uzunluğuna dayalıdır) olur. Genellikle, bir RFC 1918 özel ağ adresi alanı kullanmanız gerekir. 
+  * IP adresi-NAT ağ geçidi IP 'si, sanal ağ alt ağı için varsayılan ağ geçidi adresi olarak kullanılacak IPv4 veya IPv6 adresini belirtir. Genel form a. b. c. 1 ' dir (örneğin, "192.168.0.1"). Son konumun 1 olması gerekmez, genellikle (ön ek uzunluğuna dayalıdır) olur. Genellikle, bir RFC 1918 özel ağ adresi alanı kullanmanız gerekir. 
   * PrefixLength-alt ağ ön ek uzunluğu yerel alt ağ boyutunu (alt ağ maskesi) tanımlar. Alt ağ ön eki uzunluğu 0 ile 32 arasında bir tamsayı değeri olacaktır. 0 tüm internet 'i eşleyebilir, 32 yalnızca bir eşlenmiş IP 'ye izin verir. Ortak değerler, NAT 'a kaç tane IP iliştirildiğine bağlı olarak 24 ile 12 arasında değişir. Ortak bir Önekuzunluğu 24 ' dir; bu, 255.255.255.0 alt ağ maskesidir.
   * InterfaceIndex- **Ifındex** , önceki adımda oluşturulan sanal anahtarın arabirim dizinidir. 
 

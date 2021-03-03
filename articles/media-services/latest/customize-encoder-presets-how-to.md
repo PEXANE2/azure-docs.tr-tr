@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: ba17346d5f064b57f98e7ad8745d9f80bdde5116
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: c60aac675a76d8cb25463f8b0ca1b2dc563d1179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730329"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Özel bir dönüşümle kodlama-.NET
 
@@ -41,10 +41,10 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-wi
 Aşağıdaki komutu kullanarak makinenize tam .NET Core örneği içeren bir GitHub deposunu kopyalayın:  
 
  ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
+ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
  ```
  
-Özel önceden ayarlanmış örnek, [Encodecustomtransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) klasöründe bulunur.
+Özel önceden ayarlanmış örnek, [.NET klasörü kullanan özel bir önayar Ile Encoding](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset) içinde bulunur.
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Özel önayar olan bir dönüşüm oluşturma
 
@@ -56,7 +56,7 @@ Bir [Dönüşüm](/rest/api/media/transforms) oluştururken ilk olarak aşağıd
 
 Aşağıdaki örnek, bu dönüşüm kullanıldığında oluşturulmasını istediğimiz bir çıktı kümesi tanımlar. İlk olarak, video kodlaması için ses kodlaması ve iki H264Video katmanı için bir AacAudio katmanı ekleyeceğiz. Video katmanlarında, çıkış dosyası adlarında kullanılabilmesi için Etiketler atacağız. Ardından, çıktının küçük resimleri de içermesini istiyoruz. Aşağıdaki örnekte, resimleri, giriş videosunun çözümlenmesinden %50 ' de ve üç zaman damgalarına (giriş videonun uzunluğunun %25%, 50%, 75%}) oluşturulan PNG biçiminde belirttik. Son olarak, çıkış dosyalarının biçimini, video + ses için, diğeri ise küçük resimler için belirttik. Birden çok H264Layers olduğundan, her katman için benzersiz adlar üreten makrolar kullandık. Bir `{Label}` veya `{Bitrate}` makrosunu kullanabilir, örnek eski ' yi gösterir.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/VideoEncoding/EncodingWithMESCustomPreset/Program.cs#EnsureTransformExists)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

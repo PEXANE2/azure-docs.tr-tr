@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223491"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694963"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler ve Azure Active Directory kiracılar
 
@@ -55,7 +55,7 @@ Aşağıdaki adımlarda her abonelik için farklı hesaplar kullanılır. Her ik
     - **Abonelik**: abonelik A ' yı seçin.
     - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve *myresourcegroupa* girin
     - **Konum**: *Doğu ABD*
-4. Portalın üst kısmındaki **kaynakları ara** kutusuna *Myvneta* yazın. Arama sonuçlarında göründüğünde **Myvneta** öğesini seçin. 
+4. Portalın üst kısmındaki **kaynakları ara** kutusuna *Myvneta* yazın. Arama sonuçlarında göründüğünde **Myvneta** öğesini seçin.
 5. Sol taraftaki seçenekler dikey listesinden **erişim denetimi (IAM)** seçeneğini belirleyin.
 6. **Myvneta-Access Control (IAM)** altında **+ rol ataması Ekle**' yi seçin.
 7. **Rol** kutusunda **ağ katılımcısı** ' nı seçin.
@@ -99,7 +99,7 @@ Aşağıdaki adımlarda her abonelik için farklı hesaplar kullanılır. Her ik
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>Eşleme oluşturma-Azure CLı
 
-Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik için izinleri olan bir hesap kullanıyorsanız, tüm adımlar için aynı hesabı kullanabilir, Azure oturumunu kapatmak için gereken adımları atlayabilir ve Kullanıcı rolü atamaları oluşturan komut dosyası satırlarını kaldırabilirsiniz. UserA@azure.com UserB@azure.com Aşağıdaki betiklerin tümünde ve KullanıcıA ve KullanıcıB için kullandığınız kullanıcı adlarıyla değiştirin. 
+Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik için izinleri olan bir hesap kullanıyorsanız, tüm adımlar için aynı hesabı kullanabilir, Azure oturumunu kapatmak için gereken adımları atlayabilir ve Kullanıcı rolü atamaları oluşturan komut dosyası satırlarını kaldırabilirsiniz. UserA@azure.com UserB@azure.com Aşağıdaki betiklerin tümünde ve KullanıcıA ve KullanıcıB için kullandığınız kullanıcı adlarıyla değiştirin.
 
 Aşağıdaki betikler:
 
@@ -165,7 +165,7 @@ CLı ve bağımlılıklarını yüklemek yerine Azure Cloud Shell kullanabilirsi
 
 8. Azure 'dan oturum açın ve Azure 'da UserB olarak oturum açın.
 9. MyVnetB öğesinden myVnetA öğesine eşleme oluşturun. Adım 6 ' da betik içeriğini BILGISAYARıNıZDAKI bir metin düzenleyicisine kopyalayın. `<SubscriptionB-Id>`, SubscriptionA 'NıN kimliğiyle değiştirin ve tümünü B olarak ve tüm BS ' A değiştirin. Değişiklikleri yaptıktan sonra, değiştirilen betiği kopyalayın, CLı oturumunuza yapıştırın ve ' a basın `Enter` .
-10. MyVnetB öğesinin eşleme durumunu görüntüleyin. Adım 7 ' de betik içeriğini BILGISAYARıNıZDAKI bir metin düzenleyicisine kopyalayın. Kaynak grubu ve sanal ağ adları için A 'yı B olarak değiştirin, betiği kopyalayın, değiştirilen betiği CLı oturumunuza yapıştırın ve ardından ' A basın `Enter` . Eşleme durumu **bağlı**. MyVnetB 'den myVnetA eşlemesini oluşturduktan sonra myVnetA ' ın eşleme durumu **bağlı** olarak değişir. KullanıcıA 'yı Azure 'a kaydedebilir ve myVnetA eşleme durumunu doğrulamak için 7. adımı tekrar tamamlayabilirsiniz. 
+10. MyVnetB öğesinin eşleme durumunu görüntüleyin. Adım 7 ' de betik içeriğini BILGISAYARıNıZDAKI bir metin düzenleyicisine kopyalayın. Kaynak grubu ve sanal ağ adları için A 'yı B olarak değiştirin, betiği kopyalayın, değiştirilen betiği CLı oturumunuza yapıştırın ve ardından ' A basın `Enter` . Eşleme durumu **bağlı**. MyVnetB 'den myVnetA eşlemesini oluşturduktan sonra myVnetA ' ın eşleme durumu **bağlı** olarak değişir. KullanıcıA 'yı Azure 'a kaydedebilir ve myVnetA eşleme durumunu doğrulamak için 7. adımı tekrar tamamlayabilirsiniz.
 
     > [!NOTE]
     > Eşleme durumu her iki sanal ağ için de **bağlanana** kadar eşleme kurulmaz.
@@ -181,7 +181,7 @@ Her iki sanal ağda oluşturduğunuz tüm Azure kaynakları, IP adresleri aracı
 
 Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik için izinleri olan bir hesap kullanıyorsanız, tüm adımlar için aynı hesabı kullanabilir, Azure oturumunu kapatmak için gereken adımları atlayabilir ve Kullanıcı rolü atamaları oluşturan komut dosyası satırlarını kaldırabilirsiniz. UserA@azure.com UserB@azure.com Aşağıdaki betiklerin tümünde ve KullanıcıA ve KullanıcıB için kullandığınız kullanıcı adlarıyla değiştirin.
 
-1. Sürüm 1.0.0 veya daha yüksek Azure PowerShell olduğunu doğrulayın. Bunu çalıştırarak bunu yaparak `Get-Module -Name Az` PowerShell [az modülünün](/powershell/azure/install-az-ps)en son sürümünü yüklemenizi öneririz. Azure PowerShell'i kullanmaya yeni başladıysanız [Azure PowerShell'e genel bakış](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) sayfasını inceleyin. 
+1. Sürüm 1.0.0 veya daha yüksek Azure PowerShell olduğunu doğrulayın. Bunu çalıştırarak bunu yaparak `Get-Module -Name Az` PowerShell [az modülünün](/powershell/azure/install-az-ps)en son sürümünü yüklemenizi öneririz. Azure PowerShell'i kullanmaya yeni başladıysanız [Azure PowerShell'e genel bakış](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) sayfasını inceleyin.
 2. Bir PowerShell oturumu başlatın.
 3. PowerShell 'de komutunu girerek KullanıcıA olarak Azure 'da oturum açın `Connect-AzAccount` . Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#permissions).
 4. A kaynak grubu ve sanal ağ oluşturun. aşağıdaki betiği bilgisayarınızdaki bir metin düzenleyicisine kopyalayın. `<SubscriptionA-Id>`, SubscriptionA 'NıN kimliğiyle değiştirin. Abonelik kimliğinizi bilmiyorsanız, `Get-AzSubscription` görüntülemek için komutunu girin. Döndürülen çıktıda **kimliği** için olan değer abonelik kimliğiniz olur. Betiği yürütmek için, değiştirilmiş betiği kopyalayın, PowerShell 'e yapıştırın ve ardından ' a basın `Enter` .
@@ -276,7 +276,7 @@ Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik i�
    }
    ```
 
-3. Azure 'da UserA olarak oturum açın ve [portalı](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)veya [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)kullanarak şablonu dağıtın. 2. adımda örnek JSON metnini kaydettiğiniz dosya adını belirtin.
+3. Azure 'da UserA olarak oturum açın ve [portalı](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)veya [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)kullanarak şablonu dağıtın. 2. adımda örnek JSON metnini kaydettiğiniz dosya adını belirtin.
 4. 2. adımdaki örnek json dosyasını bilgisayarınızdaki bir dosyaya kopyalayın ve Şununla başlayan satırlarda değişiklik yapın:
    - **ad**: *Myvneta/Myvmakinetomyvnetb* ' i *Myvnetb/myVnetBToMyVnetA* olarak değiştirin.
    - **kimlik**: `<subscription ID>` UserB 'nin abonelik kimliğiyle değiştirin ve *Myvnetb* öğesini *myvneta* ile değiştirin.

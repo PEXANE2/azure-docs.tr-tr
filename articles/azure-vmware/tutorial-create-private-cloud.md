@@ -2,13 +2,13 @@
 title: Öğretici-Azure VMware çözümü özel bulutu oluşturma ve dağıtma
 description: Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğrenin
 ms.topic: tutorial
-ms.date: 11/19/2020
-ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/22/2021
+ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725433"
 ---
 # <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu oluşturma
 
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 

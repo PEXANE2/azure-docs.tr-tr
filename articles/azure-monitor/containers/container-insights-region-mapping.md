@@ -1,19 +1,19 @@
 ---
-title: Kapsayıcılar için Azure Izleyici bölge eşlemeleri
-description: Kapsayıcılar için Azure Izleyici, Log Analytics çalışma alanı ve özel ölçümler arasında desteklenen bölge eşlemelerini açıklar.
+title: Kapsayıcı öngörüleri bölge eşlemeleri
+description: Kapsayıcı öngörüleri, Log Analytics çalışma alanı ve özel ölçümler arasında desteklenen bölge eşlemelerini açıklar.
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624907"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728884"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici tarafından desteklenen bölge eşlemeleri
+# <a name="region-mappings-supported-by-container-insights"></a>Kapsayıcı öngörüleri tarafından desteklenen bölge eşlemeleri
 
- Kapsayıcılar için Azure Izleyicisini etkinleştirirken, Log Analytics çalışma alanını ve AKS kümesini bağlamak ve Azure Izleyici 'ye gönderilen özel ölçümleri toplamak için yalnızca belirli bölgeler desteklenir.
+ Kapsayıcı öngörülerini etkinleştirirken, bir Log Analytics çalışma alanını ve bir AKS kümesini bağlamak ve Azure Izleyici 'ye gönderilen özel ölçümleri toplamak için yalnızca belirli bölgeler desteklenir.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics çalışma alanı desteklenen eşlemeler
 
@@ -53,4 +53,4 @@ Azure Kubernetes Services (AKS) kümeleri düğümlerinden ve yığınlarından 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AKS kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcılar Için Azure Izleyicisini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin.  
+AKS kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcı öngörülerini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin.  

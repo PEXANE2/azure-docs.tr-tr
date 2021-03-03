@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708501"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Otomatik izleme veya kodsuz kullanacaksınız Attach-Azure izleyici Application Insights nedir?
 
@@ -45,27 +45,27 @@ Ek tümleştirmeler eklediğimiz için, otomatik izleme özelliği matrisi karma
 Windows üzerinde Azure App Service uygulama izleme, [.NET uygulamaları](./azure-web-apps.md?tabs=net) .NET için kullanılabilir ve varsayılan olarak etkindir.
 
 #### <a name="netcore"></a>. NETCore
-İçin izleme [. NETCore uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) tek bir tıklama ile etkinleştirilebilir.
+İçin izleme [. NETCore uygulamaları](./azure-web-apps.md?tabs=netcore) tek bir tıklama ile etkinleştirilebilir.
 
 #### <a name="java"></a>Java
-Java uygulamalarını Windows üzerinde App Service izlemeye yönelik portal tümleştirmesi Şu anda kullanılamıyor, ancak uygulamaları App Service dağıtım yapmadan önce herhangi bir kod değişikliği yapmadan uygulamanıza Application Insights [java 3,0 tek başına Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ekleyebilirsiniz. Application Insights Java 3,0 Aracısı genel kullanıma sunulmuştur.
+Java uygulamalarını Windows üzerinde App Service izlemeye yönelik portal tümleştirmesi Şu anda kullanılamıyor, ancak uygulamaları App Service dağıtım yapmadan önce herhangi bir kod değişikliği yapmadan uygulamanıza Application Insights [java 3,0 tek başına Aracısı](./java-in-process-agent.md) ekleyebilirsiniz. Application Insights Java 3,0 Aracısı genel kullanıma sunulmuştur.
 
 #### <a name="nodejs"></a>Node.js
-Windows üzerinde Node.js uygulamalar için izleme şu anda portaldan etkinleştirilemez. Node.js uygulamalarını izlemek için [SDK 'yı](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)kullanın.
+Windows üzerinde Node.js uygulamalar için izleme şu anda portaldan etkinleştirilemez. Node.js uygulamalarını izlemek için [SDK 'yı](./nodejs.md)kullanın.
 
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>. NETCore
-İzleyin. Linux üzerinde çalışan NETCore uygulamaları [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)'yı kullanın.
+İzleyin. Linux üzerinde çalışan NETCore uygulamaları [SDK](./asp-net-core.md)'yı kullanın.
 
 #### <a name="java"></a>Java 
-Portaldan Linux üzerinde App Service için Java uygulama izlemeyi etkinleştirmek kullanılamaz, ancak uygulamaları App Service dağıtım yapmadan önce uygulamanıza [Application Insights java 3,0 aracısını](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ekleyebilirsiniz. Application Insights Java 3,0 Aracısı genel kullanıma sunulmuştur.
+Portaldan Linux üzerinde App Service için Java uygulama izlemeyi etkinleştirmek kullanılamaz, ancak uygulamaları App Service dağıtım yapmadan önce uygulamanıza [Application Insights java 3,0 aracısını](./java-in-process-agent.md) ekleyebilirsiniz. Application Insights Java 3,0 Aracısı genel kullanıma sunulmuştur.
 
 #### <a name="nodejs"></a>Node.js
-[Linux üzerinde App Service Node.js uygulamalar](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs) , genel önizlemede ve tüm bölgelerde kullanılabilen Azure Portal etkinleştirilebilir. 
+[Linux üzerinde App Service Node.js uygulamalar](./azure-web-apps.md?tabs=nodejs) , genel önizlemede ve tüm bölgelerde kullanılabilen Azure Portal etkinleştirilebilir. 
 
 #### <a name="python"></a>Python
-[Python uygulamanızı izlemek](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) için SDK 'yı kullanma 
+[Python uygulamanızı izlemek](./opencensus-python.md) için SDK 'yı kullanma 
 
 ## <a name="azure-functions"></a>Azure İşlevleri
 
@@ -77,7 +77,7 @@ Azure Kubernetes hizmetinin ortak olmayan araçları, [tek başına aracı](./ja
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM 'Leri ve sanal makine ölçek kümesi
 
-Azure VM 'Leri ve sanal makine ölçek kümesi için otomatik izleme, [.net](./azure-vm-vmss-apps.md) ve [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için kullanılabilir.  
+Azure VM 'Leri ve sanal makine ölçek kümesi için otomatik izleme, [.net](./azure-vm-vmss-apps.md) ve [Java](./java-in-process-agent.md)için kullanılabilir.  
 
 ## <a name="on-premises-servers"></a>Şirket içi sunucular
 .NET uygulamaları ve [Java uygulamaları](./java-in-process-agent.md)için şirket [içi Windows sunucularınız](./status-monitor-v2-overview.md) için izlemeyi kolayca etkinleştirebilirsiniz.
@@ -90,4 +90,3 @@ Azure VM 'Leri ve sanal makine ölçek kümesi için otomatik izleme, [.net](./a
 * [Application Insights genel bakış](./app-insights-overview.md)
 * [Uygulama eşlemesi](./app-map.md)
 * [Uçtan uca performans izleme](../app/tutorial-performance.md)
-

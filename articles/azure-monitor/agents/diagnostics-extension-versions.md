@@ -1,17 +1,16 @@
 ---
 title: Windows Azure Tanılama uzantısı (WAD) yapılandırma şema sürümü geçmişi
 description: Azure sanal makineler, VM Ölçek Kümeleri, Service Fabric ve Cloud Services performans sayaçlarını toplamaya uygun.
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 3b6dc0e19c181ebf4df2778633f981258023e046
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57ba1c760fe8919fff95493c5c81da4368894f73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623647"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719823"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Tanılama uzantısı (WAD) yapılandırma şeması sürümleri ve geçmişi
 Bu makalede, Microsoft Azure SDK 'sının bir parçası olarak gönderilen [Windows (WAD) şema sürümlerinin Azure tanılama uzantısının](diagnostics-extension-overview.md) sürüm geçmişi sağlanmaktadır.  
@@ -47,7 +46,7 @@ Farklı Azure tanılama sürümleri farklı yapılandırma şemaları kullanır.
 ### <a name="diagnostics-extension-111"></a>Tanılama uzantısı 1,11
 Azure Izleyici havuzu için destek eklendi. Bu havuz yalnızca performans sayaçları için geçerlidir. VM, VMSS veya bulut hizmetinizde toplanan performans sayaçlarının özel ölçümler olarak Azure Izleyicisine gönderilmesini sağlar. Azure Izleyici havuzu şunları destekler:
 * Azure izleyici [ölçümleri API 'leri](/rest/api/monitor/metrics/list) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarını alma.
-* Azure izleyici 'de yeni [birleşik uyarılar deneyimi](../platform/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
+* Azure izleyici 'de yeni [birleşik uyarılar deneyimi](../alerts/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
 * Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor. Örneğin, "MantıksalDisk ( \* )/Diskwrites/SEC" sayacını topladıysanız, her mantıksal disk için (C:, D:, vb.) disk yazma/sn üzerinde çizim yapmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
 
 Azure Izleyici 'yi tanılama uzantısı yapılandırmanızda yeni bir havuz olarak tanımlama
@@ -190,4 +189,3 @@ Projenizi Azure SDK 2,5 2,4 veya sonraki bir sürüme yükseltiyorsanız, aşağ
 * **Bulut hizmeti uygulamalarına yönelik Tanılamalar, örnek düzeyinde değil yalnızca rol düzeyinde yapılandırılabilir.**
 * **Uygulamanızı her dağıttığınızda tanılama yapılandırması güncelleştirilir** . Bu, tanılama yapılandırmanızı Sunucu Gezgini değiştirirseniz ve sonra uygulamanızı yeniden dağıtmanız durumunda eşlik sorunlarına neden olabilir.
 * **Azure sdk 2,5 ve sonraki sürümlerinde kilitlenme dökümleri tanılama yapılandırma dosyasında, kodda değil, yapılandırılır** . kodda yapılandırılmış kilitlenme dökümlerinin varsa, azure SDK 2,6 ' e geçiş sırasında kilitlenme dökümleri aktarılmadığı için yapılandırmayı koddan yapılandırma dosyasına el ile aktarmanız gerekir.
-

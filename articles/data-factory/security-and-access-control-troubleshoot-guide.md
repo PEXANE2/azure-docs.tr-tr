@@ -4,14 +4,14 @@ description: Azure Data Factory güvenlik ve erişim denetimi sorunlarını gide
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375179"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706190"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory güvenlik ve erişim denetimi sorunlarını giderme
 
@@ -107,7 +107,7 @@ Sorunu gidermek için şunları yapın:
 
 Özel bağlantı etkinleştirildiğinden, kendi kendine barındırılan sanal makineye IR kimlik doğrulama anahtarını kaydedemedik. Aşağıdaki hata iletisini alırsınız:
 
-"Anahtara * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 0,1250079 saniye, hata kodu: ınvalidgatewaykey, ActivityId: XXXXXXX ve ayrıntılı hata iletisi, Istemci IP adresi geçerli bir özel IP değil, Data Factory 'nin genel ağa erişimi başarısız oldu, bu nedenle, bağlantının başarılı olması için buluta ulaşamayacak."
+"Anahtara * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 0,1250079 İkincisi, hata kodu: ınvalidgatewaykey, ActivityId: XXXXXXX ve ayrıntılı hata iletisi, Istemci IP adresi geçerli bir özel IP değil, veri fabrikasının ortak ağa erişimi başarısız olmasına neden olur."
 
 #### <a name="cause"></a>Nedeni
 
@@ -142,7 +142,6 @@ Sorunu gidermek için şunları yapın:
 
 1. IR kimlik doğrulama anahtarını tümleştirme çalışma zamanına yeniden ekleyin.
 
-
 **Çözüm 2**
 
 Sorunu çözmek için [Azure Data Factory Için Azure özel bağlantısı](./data-factory-private-link.md)' na gidin.
@@ -150,6 +149,45 @@ Sorunu çözmek için [Azure Data Factory Için Azure özel bağlantısı](./dat
 Aşağıdaki ekran görüntüsünde gösterildiği gibi, Kullanıcı arabiriminde ortak ağ erişimini etkinleştirmeyi deneyin:
 
 ![Ağ bölmesinde "ortak ağ erişimine Izin ver" için "etkin" denetimin ekran görüntüsü.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>ADF özel DNS bölgesi Azure Resource Manager geçersiz kılmaları DNS çözümlemesi ' bulunamadı ' hatasına neden oluyor
+
+#### <a name="cause"></a>Nedeni
+Hem Azure Resource Manager hem de ADF, müşterinin özel DNS 'sinde, Azure Resource Manager kayıtlarının bulunamadığı bir senaryoya karşı olası bir çakışma oluşturan aynı özel bölgeyi kullanıyor.
+
+#### <a name="solution"></a>Çözüm
+1. Azure portal **özel DNS bölgelerini bulun** .
+![Özel DNS bölgelerini bulma ekran görüntüsü.](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. **ADF** kaydında bir kayıt olup olmadığını kontrol edin.
+![Kaydın ekran görüntüsü.](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  **Sanal ağ bağlantıları**' na gidin, tüm kayıtları silin.
+![Sanal ağ bağlantısının ekran görüntüsü.](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  Azure portal veri fabrikanıza gidin ve Azure Data Factory Portal için özel uç noktasını yeniden oluşturun.
+![Özel uç nokta yeniden oluşturma ekran görüntüsü.](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  Özel DNS bölgelere geri dönün ve yeni bir özel DNS bölgesi **Privatelink.adf.Azure.com** olup olmadığını kontrol edin.
+![Yeni DNS kaydının ekran görüntüsü.](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>Genel uç noktada bağlantı hatası
+
+#### <a name="symptoms"></a>Belirtiler
+
+Azure Blob depolama hesabı genel erişimi ile veri kopyalarken işlem hattı çalıştırmaları aşağıdaki hata ile rastgele başarısız olur.
+
+Örneğin: Azure Blob depolama havuzu Azure IR (genel, yönetilmeyen VNet değil) kullanıyor ve Azure SQL veritabanı kaynağı yönetilen VNet IR 'yi kullanıyor. Ya da kaynak/havuz yalnızca depolama genel erişimiyle yönetilen VNet IR kullanır.
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>Nedeni
+
+ADF hala yönetilen VNet IR kullanabilir, ancak yönetilen VNet 'teki Azure Blob depolama alanına genel uç nokta, test sonucuna göre güvenilir olmadığından ve Azure Blob depolama ve Azure Data Lake Gen2 ' nin, [yönetilen sanal ağ & yönetilen özel uç noktalarına](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)göre ADF tarafından yönetilen sanal ağdan ortak uç nokta ile bağlı olması desteklenmediği için bu hatayla karşılaşabilirsiniz.
+
+#### <a name="solution"></a>Çözüm
+
+- Yönetilen VNet IR kullanılırken kaynak üzerinde özel uç nokta ve ayrıca havuz tarafında etkin olma.
+- Hala genel uç noktasını kullanmak istiyorsanız, kaynak ve havuz için yönetilen VNet IR kullanmak yerine yalnızca ortak IR 'ye geçebilirsiniz. Ortak IR 'ye geri döndüğünüzde, ADF, yönetilen VNet IR hala orada ise, yönetilen VNet IR 'yi kullanmaya devam edebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

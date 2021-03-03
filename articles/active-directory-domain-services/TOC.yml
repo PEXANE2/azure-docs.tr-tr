@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: Parola karması eşitlemeyi yapılandırma
       href: tutorial-configure-password-hash-sync.md
-    - name: Çoğaltma kümesi oluşturma (önizleme)
+    - name: Çoğaltma kümesi oluşturma
       href: tutorial-create-replica-set.md
     - name: Özelleştirilmiş yönetilen etki alanı oluşturma
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: Yaygın dağıtım senaryoları
       href: scenarios.md
-    - name: Çoğaltma kümeleri (önizleme)
+    - name: Çoğaltma kümeleri
       href: concepts-replica-sets.md
     - name: Ormanlar ve güvenler
       items:

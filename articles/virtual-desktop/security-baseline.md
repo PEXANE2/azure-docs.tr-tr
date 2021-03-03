@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 393495dabb77a5d177c97d37313433bb00ce5a36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726759"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Güvenlik temeli
 
@@ -24,7 +24,7 @@ Windows sanal masaüstü 'Nün Azure Güvenlik kıyaslaması ile tamamen nasıl 
 
 ## <a name="network-security"></a>Ağ Güvenliği
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Ağ Güvenliği](/azure/security/benchmarks/security-controls-v2-network-security).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Ağ Güvenliği](../security/benchmarks/security-controls-v2-network-security.md).*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: iç trafik için güvenlik uygulama
 
@@ -64,7 +64,7 @@ Azure 'da iki veya daha fazla sanal ağı birbirine bağlamak için sanal ağ e�
 
 - [Azure VPN 'ye Genel Bakış](../vpn-gateway/vpn-gateway-about-vpngateways.md) 
 
-- [Sanal ağ eşleme](/azure/virtual-network/virtual-network-peering-overview)
+- [Sanal ağ eşleme](../virtual-network/virtual-network-peering-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -76,9 +76,9 @@ Azure 'da iki veya daha fazla sanal ağı birbirine bağlamak için sanal ağ e�
 
 Windows sanal masaüstü, Web uygulamalarını çalıştırmak üzere tasarlanmamıştır ve Web uygulamalarını hedefleyen dış ağ saldırılarına karşı korumak için ek herhangi bir ağ hizmeti yapılandırmanız veya ek ağ hizmetleri dağıtmanız gerekmez.
 
-- [Azure Güvenlik Duvarı belgeleri](/azure/firewall)
+- [Azure Güvenlik Duvarı belgeleri](../firewall/index.yml)
 
-- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](/azure/virtual-network/manage-ddos-protection) 
+- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](../ddos-protection/manage-ddos-protection.md) 
 
 - [Azure Güvenlik Merkezi önerileri](../security-center/recommendations-reference.md#networking-recommendations)
 
@@ -116,7 +116,7 @@ Windows sanal masaüstü, Web uygulamalarını çalıştırmak üzere tasarlanma
 
 ## <a name="identity-management"></a>Kimlik Yönetimi
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Kimlik Yönetimi](/azure/security/benchmarks/security-controls-v2-identity-management).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Kimlik Yönetimi](../security/benchmarks/security-controls-v2-identity-management.md).*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Azure Active Directory'yi standart merkezi kimlik ve kimlik doğrulaması sistemi haline getirin
 
@@ -132,7 +132,7 @@ Azure AD, Microsoft hesabı olmayan kullanıcıların kendi uygulamalarına ve k
 
 - [Azure AD’de kiracılık](../active-directory/develop/single-and-multi-tenant-apps.md)
 
-- [Uygulama için dış kimlik sağlayıcılarını kullanma](/azure/active-directory/b2b/identity-providers)
+- [Uygulama için dış kimlik sağlayıcılarını kullanma](../active-directory/external-identities/identity-providers.md)
 
 - [Azure AD'de kimlik güvenliği puanı nedir?](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -210,7 +210,7 @@ Bu veri kaynakları Azure Izleyici, Azure Sentinel veya üçüncü taraf güvenl
 
 - [Azure AD 'de denetim etkinlik raporları](../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi’nin tehdit analizi koruma modülündeki uyarılar](../security-center/alerts-reference.md)
 
@@ -240,7 +240,7 @@ Ayrıca, ayrıntılı kimlik doğrulama oturumu yönetimi ilkesi, farklı kullan
 
 ## <a name="privileged-access"></a>Ayrıcalıklı Erişim
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Ayrıcalıklı Erişim](/azure/security/benchmarks/security-controls-v2-privileged-access).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Ayrıcalıklı Erişim](../security/benchmarks/security-controls-v2-privileged-access.md).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: İş açısından kritik sistemlere yönetici erişimini kısıtlayın
 
@@ -286,7 +286,7 @@ Bazı Azure Hizmetleri, Azure AD aracılığıyla yönetilmeyen yerel kullanıc�
 
 Acil durum erişim hesaplarının kimlik bilgilerinin (parola, sertifika veya akıllı kart) güvenli bir şekilde saklandığından ve yalnızca acil bir durumda bunları kullanma yetkisine sahip olan kullanıcılar tarafından bilindiğinden emin olmanız gerekir.
 
-- [Azure AD'deki acil durum erişim hesaplarını yönetme](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Azure AD'deki acil durum erişim hesaplarını yönetme](../active-directory/roles/security-emergency-access.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -312,7 +312,7 @@ Yönetim görevleri için güvenli ve yönetilen bir kullanıcı iş istasyonu d
 
 - [Ayrıcalıklı erişim iş istasyonlarını anlama](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [Ayrıcalıklı erişim iş istasyonu dağıtma](/azure/active-directory/devices/howto-azure-managed-workstation)
+- [Ayrıcalıklı erişim iş istasyonu dağıtma](/security/compass/privileged-access-deployment)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -350,7 +350,7 @@ Ayrıca, izinleri ayırmak için yerleşik rolleri kullanın ve gerektiğinde ya
 
 ## <a name="data-protection"></a>Veri Koruma
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Veri Koruma](/azure/security/benchmarks/security-controls-v2-data-protection).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Veri Koruma](../security/benchmarks/security-controls-v2-data-protection.md).*
 
 ### <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Hassas verileri bulun, sınıflandırın ve etiketleyin
 
@@ -362,7 +362,7 @@ Azure SQL Information Protection’ı kullanarak Azure SQL Veritabanlarında dep
 
 - [Azure Information Protection kullanarak hassas bilgileri etiketleme](/azure/information-protection/what-is-information-protection) 
 
-- [Azure SQL Veri Bulma’yı uygulama](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL Veri Bulma’yı uygulama](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -396,7 +396,7 @@ Veri kaybını önlemek için algılama ve/veya önleyici denetimleri zorlamak �
 
 - [Azure SQL ATP’yi Etkinleştirme](../azure-sql/database/threat-detection-overview.md) 
 
-- [Azure Depolama ATP’yi Etkinleştirme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-security-center)
+- [Azure Depolama ATP’yi Etkinleştirme](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -404,7 +404,7 @@ Veri kaybını önlemek için algılama ve/veya önleyici denetimleri zorlamak �
 
 ## <a name="asset-management"></a>Varlık Yönetimi
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Varlık Yönetimi](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Varlık Yönetimi](../security/benchmarks/security-controls-v2-asset-management.md).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>VY-1: Güvenlik ekibinin varlıklara yönelik risklerde görünürlük elde etmesini sağlama
 
@@ -434,7 +434,7 @@ Sanal makinelerde yazılım hakkında bilgi toplamayı otomatik hale getirmek i�
 
 - [Azure Güvenlik Merkezi varlık envanteri yönetimi](../security-center/asset-inventory.md) 
 
-- [Kaynak adlandırma ve etiketleme kararı kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [Kaynak adlandırma ve etiketleme kararı kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 - [Azure sanal makine envanterini etkinleştirme](../automation/automation-tutorial-installed-software.md)
 
@@ -488,7 +488,7 @@ Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak,
 
 ## <a name="logging-and-threat-detection"></a>Günlüğe Kaydetme ve Tehdit Algılama
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Günlüğe Kaydetme ve Tehdit Algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Günlüğe Kaydetme ve Tehdit Algılama](../security/benchmarks/security-controls-v2-logging-threat-detection.md).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Azure kaynakları için tehdit algılamayı etkinleştirme
 
@@ -496,7 +496,7 @@ Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak,
 
 Windows sanal masaüstündeki tüm günlükleri, özel tehdit algılamalarını ayarlamak için kullanılabilecek güvenlik bilgileri olay yönetimi (SıEM) çözümünüze iletin. Olası tehditler ve bozukluklar için farklı türlerde Azure varlıklarını izlemediğinizden emin olun. Analistlerin sıralama için yanlış pozitif durumları azaltmaya yönelik yüksek kaliteli uyarılar almaya odaklanın. Uyarılar, günlük verilerinden, aracılardan veya diğer verilerden kaynaklıdır.
 
-- [Azure Güvenlik Merkezi’nde tehdit koruması](/azure/security-center/threat-protection) 
+- [Azure Güvenlik Merkezi’nde tehdit koruması](../security-center/azure-defender.md) 
 
 - [Azure Güvenlik Merkezi güvenlik uyarıları başvuru kılavuzu](../security-center/alerts-reference.md)
 
@@ -526,7 +526,7 @@ Azure Güvenlik Merkezi, abonelikte çok fazla sayıda başarısız kimlik doğr
 
 - [Azure Kimlik Koruması’nı etkinleştirme](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Azure Güvenlik Merkezi’nde tehdit koruması](/azure/security-center/threat-protection)
+- [Azure Güvenlik Merkezi’nde tehdit koruması](../security-center/azure-defender.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -540,7 +540,7 @@ Olay araştırmaları, tehdit güvenliği ve güvenlik uyarısı oluşturmayı d
 
 - [Ağ güvenlik grubu akış günlüklerini etkinleştirme](../network-watcher/network-watcher-nsg-flow-logging-portal.md) 
 
-- [Azure Güvenlik Duvarı günlükleri ve ölçümleri](/azure/firewall/logs-and-metrics) 
+- [Azure Güvenlik Duvarı günlükleri ve ölçümleri](../firewall/logs-and-metrics.md) 
 
 - [Trafik Analizi etkinleştirme ve kullanma](../network-watcher/traffic-analytics.md) 
 
@@ -554,9 +554,9 @@ Olay araştırmaları, tehdit güvenliği ve güvenlik uyarısı oluşturmayı d
 
 **Kılavuz**: otomatik olarak etkinleştirilen etkinlik günlükleri, okuma IŞLEMLERI (Get) haricinde Windows sanal masaüstü kaynaklarınız için tüm yazma IŞLEMLERINI (put, Post, Delete) içerir. Etkinlik günlükleri, sorun giderirken bir hata bulmak veya kuruluşunuzdaki bir kullanıcının bir kaynağı nasıl değiştirdiğinizi izlemek için kullanılabilir.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -570,7 +570,7 @@ Azure etkinlik günlüklerini merkezi günlüklerinizi tümleştirdiğinizden em
 
 Ayrıca, verileri Azure Sentinel 'e veya bir üçüncü taraf güvenlik bilgileri olay yönetimine (SıEM) etkinleştirin ve ekleyin. Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık kullanılan ve Azure depolama için Azure Sentinel ' i "etkin" veriler için kullanmayı seçer.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -580,7 +580,7 @@ Ayrıca, verileri Azure Sentinel 'e veya bir üçüncü taraf güvenlik bilgiler
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Olay Yanıtı](/azure/security/benchmarks/security-controls-v2-incident-response).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Olay Yanıtı](../security/benchmarks/security-controls-v2-incident-response.md).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Hazırlık: Azure için olay yanıtı sürecini güncelleştirin
 
@@ -662,7 +662,7 @@ Buna ek olarak Azure kaynaklarını, özellikle hassas verileri işleyen kaynakl
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -684,7 +684,7 @@ Buna ek olarak Azure kaynaklarını, özellikle hassas verileri işleyen kaynakl
 
 ## <a name="posture-and-vulnerability-management"></a>Duruş ve Güvenlik Açığı Yönetimi
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Duruş ve Güvenlik Açığı Yönetimi](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Duruş ve Güvenlik Açığı Yönetimi](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>BD-3: işlem kaynakları için güvenli yapılandırma oluşturma
 
@@ -710,7 +710,7 @@ Microsoft tarafından yayınlanan Azure Market sanal makine görüntüleri Micro
 
 Azure Güvenlik Merkezi ayrıca kapsayıcı görüntüsündeki güvenlik açıklarını tarayabilir ve Merkezi Internet güvenliği 'nin Docker kıyaslaması için kapsayıcılarda Docker yapılandırmanızın sürekli olarak izlenmesini gerçekleştirebilir. Önerileri görüntülemek ve sorunları düzeltmek için Azure Güvenlik Merkezi öneriler sayfasını kullanabilirsiniz.
 
-- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](/azure/security-center/security-center-vulnerability-assessment-recommendations) 
+- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md) 
 
 - [ARM şablonundan Azure sanal makinesi oluşturma](../virtual-machines/windows/ps-template.md) 
 
@@ -730,7 +730,7 @@ Azure Güvenlik Merkezi ayrıca kapsayıcı görüntüsündeki güvenlik açıkl
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md) 
 
-- [Paylaşılan görüntü galerisine genel bakış](/azure/virtual-machines/windows/shared-image-galleries)
+- [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/shared-image-galleries.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -748,9 +748,9 @@ Azure sanal makinelerinizde (ve SQL Server 'lar) güvenlik açığı değerlendi
 
 Gerektiğinde, güvenlik açıklarının düzeltildiğini doğrulamak için tarama sonuçlarını tutarlı aralıklarla dışarı aktarın ve sonuçları önceki taramalarla karşılaştırın. Azure Güvenlik Merkezi tarafından önerilen güvenlik açığı yönetimi önerilerini kullanırken, geçmiş tarama verilerini görüntülemek için seçili çözümün portalına de Pivot ekleyebilirsiniz.
 
-- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](/azure/security-center/security-center-vulnerability-assessment-recommendations) 
+- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md) 
 
-- [Sanal makineler için tümleşik güvenlik açığı tarayıcısı](/azure/security-center/built-in-vulnerability-assessment) 
+- [Sanal makineler için tümleşik güvenlik açığı tarayıcısı](../security-center/deploy-vulnerability-assessment-vm.md) 
 - [SQL güvenlik açığı değerlendirmesi](../azure-sql/database/sql-vulnerability-assessment.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
@@ -765,9 +765,9 @@ Windows Server sanal makinelerinizde en son güvenlik güncelleştirmelerinin y�
 
 Üçüncü taraf yazılım için bir üçüncü taraf düzeltme eki yönetimi çözümü veya Configuration Manager için System Center Updates Publisher kullanın.
 
-- [Azure 'da sanal makineler için Güncelleştirme Yönetimi Yapılandırma](/azure/automation/update-management/overview) 
+- [Azure 'da sanal makineler için Güncelleştirme Yönetimi Yapılandırma](../automation/update-management/overview.md) 
 
-- [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](/azure/automation/update-management/manage-updates-for-vm)
+- [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/manage-updates-for-vm.md)
 
 - [Windows sanal masaüstü için Microsoft uç nokta Configuration Manager yapılandırma](configure-automatic-updates.md)
 
@@ -785,7 +785,7 @@ Windows Server sanal makinelerinizde en son güvenlik güncelleştirmelerinin y�
 
 ## <a name="endpoint-security"></a>Uç nokta güvenliği
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: uç nokta güvenliği](/azure/security/benchmarks/security-controls-v2-endpoint-security).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: uç nokta güvenliği](../security/benchmarks/security-controls-v2-endpoint-security.md).*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: uç nokta algılamayı ve yanıtını kullanın (EDR)
 
@@ -817,7 +817,7 @@ Azure için Microsoft kötü amaçlı yazılımdan koruma Cloud Services, Window
 
 - [Cloud Services ve sanal makineler için Microsoft Antimalware 'i yapılandırma](../security/fundamentals/antimalware.md) 
 
-- [Desteklenen Endpoint Protection çözümleri](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions)
+- [Desteklenen Endpoint Protection çözümleri](../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -841,7 +841,7 @@ Microsoft kötü amaçlı yazılımdan koruma, varsayılan olarak en son imzalar
 
 ## <a name="backup-and-recovery"></a>Yedekleme ve Kurtarma
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Yedekleme ve Kurtarma](/azure/security/benchmarks/security-controls-v2-backup-recovery).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Yedekleme ve Kurtarma](../security/benchmarks/security-controls-v2-backup-recovery.md).*
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: düzenli otomatik yedeklemeler sağlayın
 
@@ -853,9 +853,9 @@ Daha yüksek düzeyde artıklık için, coğrafi olarak yedekli depolama seçene
 
 - [Kurumsal ölçekli iş sürekliliği ve olağanüstü durum kurtarma](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery) 
 
-- [Azure Backup etkinleştirme](/azure/backup/) 
+- [Azure Backup etkinleştirme](../backup/index.yml) 
 
-- [Bölgeler arası geri yükleme nasıl etkinleştirilir?](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore) 
+- [Bölgeler arası geri yükleme nasıl etkinleştirilir?](../backup/backup-azure-arm-restore-vms.md#cross-region-restore) 
 
 - [Windows sanal masaüstü 'nde iş sürekliliği ve olağanüstü durum kurtarma planı ayarlama](disaster-recovery.md)
 
@@ -873,11 +873,11 @@ Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azu
 
 Azure Backup/Azure/Backup/Security-Overview ' deki güvenlik özelliklerine genel bakış 
 
-- [Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme](/azure/backup/encryption-at-rest-with-cmk) 
+- [Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme](../backup/encryption-at-rest-with-cmk.md) 
 
-- [Azure 'da Key Vault anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&amp;preserve-view=true)
+- [Azure 'da Key Vault anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
-- [Karma yedeklemelerin saldırılara karşı korunmasına yardımcı olacak güvenlik özellikleri](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [Karma yedeklemelerin saldırılara karşı korunmasına yardımcı olacak güvenlik özellikleri](../backup/backup-azure-security-feature.md#prevent-attacks)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -887,9 +887,9 @@ Azure Backup/Azure/Backup/Security-Overview ' deki güvenlik özelliklerine gene
 
 **Rehberlik**: yedeklemenin düzgün çalıştığından emin olmak için bir veri geri yükleme işlemi gerçekleştirerek, yedekleme medyasındaki veri bütünlüğünü düzenli aralıklarla doğrulamanız önerilir.
 
-- [Azure sanal makine yedeklemesinden dosyaları kurtarma](/azure/backup/backup-azure-restore-files-from-vm)
+- [Azure sanal makine yedeklemesinden dosyaları kurtarma](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Güvenlik uygulamaları](/azure/backup/backup-azure-restore-files-from-vm#security-implementations)
+- [Güvenlik uygulamaları](../backup/backup-azure-restore-files-from-vm.md#security-implementations)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -897,7 +897,7 @@ Azure Backup/Azure/Backup/Security-Overview ' deki güvenlik özelliklerine gene
 
 ## <a name="governance-and-strategy"></a>İdare ve Strateji
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: İdare ve Strateji](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: İdare ve Strateji](../security/benchmarks/security-controls-v2-governance-strategy.md).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Varlık yönetimi ve veri koruma stratejisi tanımlayın 
 
@@ -922,15 +922,15 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 -   Uygun şifreleme standartları
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
-- [Azure Güvenlik Mimarisi Önerileri: Depolama, veri ve şifreleme](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure Güvenlik Mimarisi Önerileri: Depolama, veri ve şifreleme](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure Güvenliği Temelleri: Azure'da veri güvenliği, şifreleme ve depolama](../security/fundamentals/encryption-overview.md)
 
-- [Bulut Benimseme Çerçevesi: Azure'da veri güvenliği ve şifreleme için en iyi deneyimler](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Bulut Benimseme Çerçevesi: Azure'da veri güvenliği ve şifreleme için en iyi deneyimler](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure Güvenlik Karşılaştırması: Varlık yönetimi](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Güvenlik Karşılaştırması: Varlık yönetimi](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure Güvenlik Karşılaştırması: Veri koruma](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Güvenlik Karşılaştırması: Veri koruma](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -958,7 +958,7 @@ Segmentasyon stratejisinin ağ güvenliği, kimlik ve erişim modelleri, uygulam
 
 **Rehberlik**: Varlıklarınız ve içinde bulundukları ortamla ilgili riskleri sürekli olarak ölçün ve ortadan kaldırın. Yayımlanmış uygulamalar, ağ giriş ve çıkış noktaları, kullanıcı ve yönetici uç noktaları gibi değeri yüksek varlıkları ve kullanıma açık olan saldırı yüzeylerini önceliklendirin.
 
-- [Azure Güvenlik Karşılaştırması: Duruş ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Güvenlik Karşılaştırması: Duruş ve güvenlik açığı yönetimi](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -999,7 +999,7 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 - [Azure Güvenliği En İyi Deneyimi 11 - Mimari. Tek ve birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Güvenlik Karşılaştırması: Ağ Güvenliği](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure Güvenlik Karşılaştırması: Ağ Güvenliği](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure ile ağ güvenliğine genel bakış](../security/fundamentals/network-overview.md)
 
@@ -1027,9 +1027,9 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
-- [Azure Güvenlik Karşılaştırması: Kimlik yönetimi](/azure/automation/update-management/overview)
+- [Azure Güvenlik Karşılaştırması: Kimlik yönetimi](../automation/update-management/overview.md)
 
-- [Azure Güvenlik Karşılaştırması: Ayrıcalıklı erişim](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Güvenlik Karşılaştırması: Ayrıcalıklı erişim](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure Güvenliği En İyi Deneyimi 11 - Mimari. Tek ve birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -1061,9 +1061,9 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
-- [Azure Güvenlik Karşılaştırması: Günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Güvenlik Karşılaştırması: Günlüğe kaydetme ve tehdit algılama](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure Güvenlik Karşılaştırması: Olay yanıtı](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Güvenlik Karşılaştırması: Olay yanıtı](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure Güvenliği En İyi Deneyimi 4 - Süreç. Bulut için Olay Yanıt Sürecini Güncelleştirme](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -1077,5 +1077,5 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

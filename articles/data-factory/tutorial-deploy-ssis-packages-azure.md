@@ -4,15 +4,15 @@ description: Azure'da SSIS paketleri dağıtıp çalıştırabilmek için Azure 
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740418"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanını sağlama
 
@@ -149,6 +149,12 @@ Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağım
    1. **Yönetici Kullanıcı adı** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulaması Kullanıcı adı ' nı girin. 
 
    1. **Yönetici parolası** IÇIN, SSISDB barındırmak üzere VERITABANı sunucunuzun SQL kimlik doğrulama parolasını girin. 
+
+   1. İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek yük devretme grubuyla eşitlenmiş olarak çalıştırılan bir çift hazır bekleyen Azure SSIS IR çifti yapılandırmak için **SSSıSDB yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullanın** onay kutusunu seçin.
+   
+      Onay kutusunu seçerseniz, **çift bekleme çifti adı** metin kutusunda birincil ve ikincil Azure-SSIS IRS çiftini tanımlayacak bir ad girin. Birincil ve ikincil Azure-SSIS IRS 'nizi oluştururken aynı çift adı girmeniz gerekir.
+
+      Daha fazla bilgi için bkz. [BCDR için Azure-SSIS IR yapılandırma](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. **Katalog veritabanı hizmet katmanı** IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin.
 

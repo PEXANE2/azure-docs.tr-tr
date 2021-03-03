@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5487275b7bb99bae16dbef80842819647bccb08c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c712c488240926f07309bce8bdc7fdee4c0f8b76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750897"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
 
@@ -25,11 +25,11 @@ ms.locfileid: "99569670"
 1. Dosyadaki *operations.js* düzenleyin:
  
     * Grafik topolojisine olan bağlantıyı değiştirin:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * Graphınstanceset altında, grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * GraphTopologyDelete altında adı düzenleyin:
-    * `"name"` : `"InferencingWithGrpcExtension"`
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
 
 > [!NOTE]
 > <p>
@@ -50,7 +50,7 @@ ms.locfileid: "99569670"
 >   },
 >   "dataTransfer": {
 >       "mode": "sharedMemory",
->       "SharedMemorySizeMiB": "5"
+>       "SharedMemorySizeMiB": "256"
 >   },
 >   "image": {
 >       "scale": {
@@ -107,10 +107,10 @@ ms.locfileid: "99569670"
         > Yukarıdaki adımlar, kurulum betiği tarafından oluşturulan sanal makineyi kullandığınızı kabul ediyor. Bunun yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için Edge cihazınıza gidin ve **yönetici haklarıyla** aşağıdaki komutları çalıştırın:  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * GRPC 'yi iletişim yöntemi olarak kullanan YOLOv3 nesne algılama modeli olan **Lvaextension** modülü, görüntülere görüntü görüntüsü uygular ve nesne türlerinin birden çok sınıfını döndürür.
     
@@ -167,7 +167,7 @@ ms.locfileid: "99569670"
       "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

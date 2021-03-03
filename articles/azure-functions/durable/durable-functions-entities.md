@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85341570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723682"
 ---
 # <a name="entity-functions"></a>Varlık işlevleri
 
-Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü olan işlevlerdir, *varlık tetikleyicisi*. Orchestrator işlevlerinin aksine, varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine bir varlığın durumunu açıkça yönetir.
+Varlık işlevleri, *dayanıklı varlıklar* olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü olan işlevlerdir, *varlık tetikleyicisi*. Orchestrator işlevlerinin aksine, varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine bir varlığın durumunu açıkça yönetir.
 Varlıklar, her biri modestly boyutlu bir duruma sahip birçok varlık genelinde iş dağıtarak uygulamaları ölçeklendirmek için bir yol sağlar.
 
 > [!NOTE]
@@ -24,10 +24,13 @@ Varlıklar, her biri modestly boyutlu bir duruma sahip birçok varlık genelinde
 
 Varlıklar, iletiler üzerinden iletişim kuran çok küçük hizmetler gibi davranır. Her varlığın benzersiz bir kimliği ve bir iç durumu vardır (varsa). Hizmetler veya nesneler gibi varlıklar, istendiğinde işlemler gerçekleştirir. Bir işlem yürütüldüğünde, varlığın iç durumunu güncelleştirebilir. Ayrıca, dış Hizmetleri çağırıp bir yanıt bekler. Varlıklar, güvenilir kuyruklar aracılığıyla örtük olarak gönderilen iletileri kullanarak diğer varlıklar, düzenlemeler ve istemcilerle iletişim kurar. 
 
-Çakışmaları engellemek için, tek bir varlıktaki tüm işlemlerin, diğer bir deyişle, diğer bir deyişle, bir diğeri de yürütülmesi garanti edilir. 
+Çakışmaları engellemek için, tek bir varlıktaki tüm işlemlerin, diğer bir deyişle, diğer bir deyişle, bir diğeri de yürütülmesi garanti edilir.
+
+> [!NOTE]
+> Bir varlık çağrıldığında, yük yükünü tamamlama olarak işler ve gelecekteki girişler geldiğinde etkinleştirmek üzere yeni bir yürütme zamanlar. Sonuç olarak, varlık yürütme günlüklerinizin her bir varlık çağrısından sonra fazladan bir yürütme gösterebilir; Bu beklenen bir değer.
 
 ### <a name="entity-id"></a>Varlık KIMLIĞI
-Varlıklara benzersiz bir tanımlayıcı, *VARLıK kimliği*üzerinden erişilir. Bir varlık KIMLIĞI, bir varlık örneğini benzersiz bir şekilde tanımlayan dizelerin bir çiftidir. Aşağıdakilerden oluşur:
+Varlıklara benzersiz bir tanımlayıcı, *VARLıK kimliği* üzerinden erişilir. Bir varlık KIMLIĞI, bir varlık örneğini benzersiz bir şekilde tanımlayan dizelerin bir çiftidir. Aşağıdakilerden oluşur:
 
 * Varlığın türünü tanımlayan bir ad olan **varlık adı**. Örnek olarak "Counter" bir örnektir. Bu ad, varlığı uygulayan varlık işlevinin adı ile aynı olmalıdır. Büyük/küçük harfe duyarlı değildir.
 * Aynı ada sahip diğer tüm varlıklar arasında varlığı benzersiz bir şekilde tanımlayan bir dize olan **varlık anahtarı**. Bir GUID örneğidir.
@@ -149,7 +152,48 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>Örnek: Python varlığı
+
+Aşağıdaki kod, `Counter` Python 'da yazılmış dayanıklı bir işlev olarak uygulanan varlıktır.
+
+**Üzerinde sayaç/function.js**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Counter/__init__. Kopyala**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>Erişim varlıkları
@@ -201,6 +245,19 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
+```
+
 ---
 
 *Sinyal* terimi, varlık API çağrısı tek yönlü ve zaman uyumsuz olduğu anlamına gelir. Bir istemci işlevinin, varlığın işlemi ne zaman işlediğini bilmesi mümkün değildir. Ayrıca, istemci işlevi sonuç değerlerini veya özel durumları gözlemleyemiyorum. 
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python şu anda bir istemciden varlık durumlarını okumayı desteklemiyor. Bunun yerine Orchestrator 'ı kullanın `callEntity` .
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript Şu anda bir Orchestrator 'dan varlık sinyali verme desteği sağlamaz. Bunun yerine `callEntity` kullanın.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel durum olabilen bir yanıt alma yeteneğine sahiptir. [İstemci bağlamasını](durable-functions-bindings.md#entity-client) kullanan istemci işlevleri yalnızca varlıkları işaret edebilir.
@@ -318,6 +395,11 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta ken
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python henüz varlık arası sinyalleri desteklemez. Lütfen bunun yerine sinyal varlıkları için bir Orchestrator kullanın.
 
 ---
 
@@ -394,7 +476,7 @@ Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem ger
 
 ### <a name="critical-section-rules"></a>Kritik bölüm kuralları
 
-Çoğu programlama dilinde alt düzey kilitleme temel elemanlarından farklı olarak, kritik bölümler *kilitlenmeyen garanti*edilir. Kilitlenmeleri engellemek için aşağıdaki kısıtlamaları uyguladık: 
+Çoğu programlama dilinde alt düzey kilitleme temel elemanlarından farklı olarak, kritik bölümler *kilitlenmeyen garanti* edilir. Kilitlenmeleri engellemek için aşağıdaki kısıtlamaları uyguladık: 
 
 * Kritik bölümler iç içe olamaz.
 * Kritik bölümler, alt düzenlemeler oluşturamaz.
@@ -421,7 +503,6 @@ Dikkat edilmesi gereken bazı önemli farklılıklar vardır:
 * Varlıklarda istek-yanıt desenleri, düzenleme ile sınırlıdır. Varlıkların içinden, özgün aktör modelinde olduğu gibi yalnızca tek yönlü mesajlaşmaya (sinyal olarak da bilinir) izin verilir. 
 * Dayanıklı varlıklar kilitlenmeyin. Orleans 'da, kilitlenmeler meydana gelebilir ve iletiler zaman aşımına gelene kadar çözümlenmeyebilir.
 * Dayanıklı varlıklar, dayanıklı düzenlemeler ile birlikte kullanılabilir ve dağıtılmış kilitleme mekanizmalarını destekler. 
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

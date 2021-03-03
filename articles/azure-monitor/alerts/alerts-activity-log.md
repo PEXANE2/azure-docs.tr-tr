@@ -4,12 +4,12 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704472"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -26,7 +26,9 @@ Uyarı kuralları oluştururken, aşağıdakilerden emin olun:
 
 - Kapsamdaki abonelik, uyarının oluşturulduğu abonelikten farklı değildir.
 - Ölçütler, uyarının yapılandırıldığı düzey, durum, arayan, kaynak grubu, kaynak KIMLIĞI veya kaynak türü olay kategorisi olmalıdır.
-- Uyarı yapılandırması JSON öğesinde "anyOf" koşulu veya iç içe geçmiş koşullar yoktur. Temel olarak, daha fazla "allOf" veya "anyOf" koşulları olmadan yalnızca bir "allOf" koşuluna izin verilir.
+- Yalnızca bir "allOf" koşuluna izin verilir.
+- Birden çok alan üzerinde birden fazla koşula izin vermek için ' AnyOf ' kullanılabilir (örneğin, "durum" ya da "alt durumlar" alanları belirli bir değere eşitse). ' AnyOf ' öğesinin kullanımı, bir ARM şablon dağıtımı kullanarak uyarı kuralının oluşturulmasıyla sınırlı olduğunu unutmayın.
+- ' ContainsAny ' aynı alanın birden fazla değerine izin vermek için kullanılabilir (örneğin, "işlem" ' DELETE ' veya ' Değiştir ' değerine eşitse). ' ContainsAny ' kullanılması, bir ARM şablon dağıtımı kullanarak uyarı kuralının oluşturulmasıyla sınırlı olduğunu unutmayın.
 - Kategori "Yönetici" olduğunda, uyarısında yukarıdaki ölçütlerden en az birini belirtmeniz gerekir. Etkinlik günlüklerinde her olay oluşturulduğunda etkinleştiren bir uyarı oluşturmeyebilirsiniz.
 - Etkinlik günlüğü uyarı kategorisinde olaylar için uyarılar oluşturulamıyor.
 
@@ -92,7 +94,7 @@ Aşağıdaki yordamı kullanın.
     - **Açıklama**: yeni uyarı kuralının açıklaması.
     - **Uyarıyı kaynak grubuna kaydet**: Bu yeni kuralı kaydetmek istediğiniz kaynak grubunu seçin.
 
-5. **Eylem grubu** altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](../platform/action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için **+ Yeni Grup**' u seçin.
+5. **Eylem grubu** altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](./action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için **+ Yeni Grup**' u seçin.
 
 6. Kuralları oluşturduktan sonra etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir** **seçeneğini belirleyin.**
 7. **Uyarı kuralı oluşturma**’yı seçin.
@@ -219,7 +221,7 @@ Aşağıdaki alanlar, koşullar alanları için Azure Resource Manager şablonun
 9. alt durum: genellikle karşılık gelen REST çağrısının HTTP durum kodudur, ancak alt durumu tanımlayan diğer dizeleri de içerebilir.   Örneğin: Tamam (HTTP durum kodu: 200), oluşturulan (HTTP durum kodu: 201), kabul edildi (HTTP durum kodu: 202), Içerik yok (HTTP durum kodu: 204), hatalı Istek (http durum kodu: 400), bulunamadı (http durum kodu: 404), çakışma (HTTP durum kodu: 409), Iç sunucu hatası (http durum kodu: 500), hizmet kullanılamıyor (http durum kodu: 503), ağ geçidi zaman aşımı (http durum kodu: 504).
 10. resourceType: olaydan etkilenen kaynağın türü. Örneğin: Microsoft. resources/dağıtımlar
 
-Örneğin:
+Örnek:
 
 ```json
 "condition": {
@@ -269,7 +271,7 @@ Etkinlik günlüğü uyarıları için kullanılabilir adanmış PowerShell cmdl
 - [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
 - [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert): bir etkinlik günlüğü uyarısını kaldırır.
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Ayarla [az Monitor Activity-Log Alert](/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
 
@@ -287,6 +289,5 @@ Etkinlik günlüğü uyarı kuralı kaynakları Azure CLı komutu kullanılarak 
 
 - [Etkinlik günlükleri için Web kancası şeması](./activity-log-alerts-webhook.md)hakkında bilgi edinin.
 - [Etkinlik günlüklerine genel bakış](./activity-log-alerts.md)konusunu okuyun.
-- [Eylem grupları](../platform/action-groups.md)hakkında daha fazla bilgi edinin.  
+- [Eylem grupları](./action-groups.md)hakkında daha fazla bilgi edinin.  
 - [Hizmet durumu bildirimleri](../../service-health/service-notifications.md)hakkında bilgi edinin.
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717426"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -25,11 +25,11 @@ Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#lim
 
 Azure Izleyici, tüm veri ve kaydedilmiş sorguların Microsoft tarafından yönetilen anahtarlar (MMK) kullanılarak Rest 'te şifrelenmesini sağlar. Azure Izleyici Ayrıca, [Azure Key Vault](../../key-vault/general/overview.md)depolanan kendi anahtarınızı kullanarak şifreleme için bir seçenek sunar. Bu, size istediğiniz zaman verilerinize erişimi iptal etmeye yönelik bir denetim sağlar. Azure Izleyici şifreleme kullanımı, [Azure depolama şifrelemesiyle](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) aynı şekilde çalışır.
 
-Müşteri tarafından yönetilen anahtar, daha yüksek koruma düzeyi ve denetimi sağlayan [adanmış kümeler](../log-query/logs-dedicated-clusters.md) üzerine dağıtılır. Adanmış kümelere alınan veriler iki kez şifrelenir: Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar kullanılarak hizmet düzeyinde bir kez ve altyapı düzeyinde iki farklı şifreleme algoritması ve iki farklı anahtar kullanan bir kez. [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder. Adanmış küme ayrıca verilerinizi [kasa](#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar.
+Müşteri tarafından yönetilen anahtar, daha yüksek koruma düzeyi ve denetimi sağlayan [adanmış kümeler](./logs-dedicated-clusters.md) üzerine dağıtılır. Adanmış kümelere alınan veriler iki kez şifrelenir: Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar kullanılarak hizmet düzeyinde bir kez ve altyapı düzeyinde iki farklı şifreleme algoritması ve iki farklı anahtar kullanan bir kez. [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder. Adanmış küme ayrıca verilerinizi [kasa](#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar.
 
 Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler, müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz [anahtar iptalinde](#key-revocation)kalır. 2021 ilk yarısında, SSD verilerinin müşteri tarafından yönetilen anahtarla şifrelenmesini sağlamak için çalışıyoruz.
 
-Log Analytics adanmış kümeler 1000 GB/gün üzerinden başlayan bir kapasite ayırma [fiyatlandırma modeli](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) kullanır.
+Log Analytics adanmış kümeler 1000 GB/gün üzerinden başlayan bir kapasite ayırma [fiyatlandırma modeli](./logs-dedicated-clusters.md#cluster-pricing-model) kullanır.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Izleyici 'de müşteri tarafından yönetilen anahtarın nasıl çalıştığı
 
@@ -145,7 +145,7 @@ Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identi
 > [!IMPORTANT]
 > Key Vault Private-Link (vNet) ise, Kullanıcı tarafından atanan yönetilen kimliği kullanamazsınız. Bu senaryoda, sistem tarafından atanan yönetilen kimliği kullanabilirsiniz.
 
-[Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
+[Adanmış kümeler](./logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault izinleri verme
 
@@ -253,7 +253,7 @@ Anahtar güncelleştirmesi tamamlandığında GET isteğinin yanıtı şuna benz
 
 Ve dahil olmak üzere bu işlemi gerçekleştirmek için hem çalışma alanınız hem de kümeniz için ' Write ' izinlerinizin olması gerekir `Microsoft.OperationalInsights/workspaces/write` `Microsoft.OperationalInsights/clusters/write` .
 
-[Adanmış kümeler](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)makalesinde gösterilen yordamı izleyin.
+[Adanmış kümeler](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)makalesinde gösterilen yordamı izleyin.
 
 ## <a name="key-revocation"></a>Anahtar iptali
 
@@ -387,7 +387,7 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed anahtar işlemleri
 
-Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanmış küme makalesinde](../log-query/logs-dedicated-clusters.md#change-cluster-properties) başvurulur
+Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanmış küme makalesinde](./logs-dedicated-clusters.md#change-cluster-properties) başvurulur
 
 - Kaynak grubundaki tüm kümeleri al  
 - Abonelikteki tüm kümeleri al
@@ -470,8 +470,8 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
   **Küme güncelleştirmesi**
   -  400--küme silme durumunda. Zaman uyumsuz işlem devam ediyor. Herhangi bir güncelleştirme işlemi gerçekleştirilmeden önce kümenin işlemini tamamlaması gerekir.
-  -  400--KeyVaultProperties boş değil, ancak biçimi hatalı. Bkz. [anahtar tanımlayıcısı güncelleştirmesi](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
-  -  400--Key Vault anahtarı doğrulanamadı. İzin eksikliği veya anahtar bulunmadığı için olabilir. Key Vault ' de [anahtar ve erişim ilkesini ayarlamış](../platform/customer-managed-keys.md#grant-key-vault-permissions) olduğunuzdan emin olun.
+  -  400--KeyVaultProperties boş değil, ancak biçimi hatalı. Bkz. [anahtar tanımlayıcısı güncelleştirmesi](#update-cluster-with-key-identifier-details).
+  -  400--Key Vault anahtarı doğrulanamadı. İzin eksikliği veya anahtar bulunmadığı için olabilir. Key Vault ' de [anahtar ve erişim ilkesini ayarlamış](#grant-key-vault-permissions) olduğunuzdan emin olun.
   -  400--anahtar kurtarılabilir değil. Key Vault, geçici-silme ve Temizleme koruması olarak ayarlanmalıdır. [Key Vault belgelerine](../../key-vault/general/soft-delete-overview.md) bakın
   -  400--işlem şu anda yürütülemiyor. Zaman uyumsuz işlemin tamamlanmasını bekleyin ve yeniden deneyin.
   -  400--küme silme durumunda. Zaman uyumsuz işlemin tamamlanmasını bekleyin ve yeniden deneyin.
@@ -492,5 +492,5 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
   -  409--işlemdeki çalışma alanı bağlantısı veya bağlantıyı kaldırma işlemi.
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics adanmış küme faturalaması](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) hakkında bilgi edinin
-- [Log Analytics çalışma alanlarının doğru tasarımı](../platform/design-logs-deployment.md) hakkında bilgi edinin
+- [Log Analytics adanmış küme faturalaması](./manage-cost-storage.md#log-analytics-dedicated-clusters) hakkında bilgi edinin
+- [Log Analytics çalışma alanlarının doğru tasarımı](./design-logs-deployment.md) hakkında bilgi edinin

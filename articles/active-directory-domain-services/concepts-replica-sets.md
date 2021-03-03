@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689071"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Çoğaltma, Azure Active Directory Domain Services için kavramları ve özellikleri belirler (Önizleme)
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Çoğaltma, Azure Active Directory Domain Services için kavramları ve özellikleri ayarlar
 
 Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com* gibi etki alanı adıdır ve iki etki alanı denetleyicisi (DC) seçili Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir.
 
 Yönetilen bir etki alanını, Azure AD kiracısı başına birden fazla çoğaltma kümesine sahip olacak şekilde genişletebilirsiniz. Çoğaltma kümeleri, Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi bir sanal ağa eklenebilir. Farklı Azure bölgelerindeki ek çoğaltma kümeleri, bir Azure bölgesi çevrimdışı kalırsa eski uygulamalar için coğrafi olağanüstü durum kurtarma sağlar.
-
-Çoğaltma kümeleri Şu anda önizleme aşamasındadır.
 
 > [!NOTE]
 > Çoğaltma kümeleri, tek bir Azure kiracısında birden çok benzersiz yönetilen etki alanı dağıtmanıza izin vermez. Her çoğaltma kümesi aynı verileri içerir.
@@ -56,15 +54,11 @@ Aşağıdaki örnek, esneklik sağlamak ve kimlik doğrulama hizmetlerinin kulla
 
 Yönetilen bir etki alanı için varsayılan SKU, birden çok çoğaltma kümesini destekleyen *Kurumsal* SKU 'dır. *Standart* SKU 'ya değiştirdiyseniz ek çoğaltma kümeleri oluşturmak için, [yönetilen etki alanını](change-sku.md) *Enterprise* veya *Premium*'a yükseltin.
 
-Önizleme süresince desteklenen en fazla çoğaltma kümesi sayısı, yönetilen etki alanını oluştururken oluşturulan ilk çoğaltma dahil olmak üzere dördü.
+Yönetilen etki alanını oluştururken oluşturulan ilk çoğaltma dahil olmak üzere, desteklenen en fazla çoğaltma kümesi sayısı dördü.
 
 Her bir çoğaltma kümesi için faturalandırma, etki alanı yapılandırma SKU 'sunu temel alır. Örneğin, *Kurumsal* SKU 'yu kullanan bir yönetilen etki alanınız varsa ve üç çoğaltma kümesi varsa, aboneliğiniz her üç çoğaltma kümesi için saat başına faturalandırılır.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Bu önizleme ile üretim tarafından yönetilen etki alanını kullanabilir miyim?
-
-Çoğaltma kümeleri, Azure AD Domain Services ortak bir önizleme özelliğidir. Üretim tarafından yönetilen bir etki alanını kullanabilirsiniz, ancak lütfen önizleme aşamasında özellikler için mevcut olan destek farklarını unutmayın. Önizlemeler hakkında daha fazla bilgi için, [ÖNIZLEME SLA Azure Active Directory](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Abonelikte, yönetilen etki alanım 'dan farklı bir çoğaltma kümesi oluşturabilir miyim?
 
@@ -72,7 +66,7 @@ Hayır. Çoğaltma kümelerinin, yönetilen etki alanıyla aynı abonelikte olma
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Kaç tane çoğaltma kümesi oluşturabilirim?
 
-Önizleme, en fazla dört çoğaltma kümesiyle sınırlıdır; yönetilen etki alanı için ilk çoğaltma kümesi ve üç ek çoğaltma kümesi vardır.
+En fazla dört çoğaltma kümesi (yönetilen etki alanı için ilk çoğaltma kümesi ve üç ek çoğaltma kümesi) oluşturabilirsiniz.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Kullanıcı ve grup bilgileri, çoğaltma kümelerim ile nasıl eşitlenir?
 

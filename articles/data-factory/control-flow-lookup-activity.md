@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385481"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712921"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Arama etkinliği, Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Aşağıdaki senaryoda kullanın:
-- Nesne adını sabit kodlamak yerine, sonraki bir etkinlikte hangi nesnelerin üzerinde çalışacağını dinamik olarak belirleme. Bazı nesne örnekleri dosya ve tablolardır.
+Arama etkinliği, Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Bu uygulamayı, nesne adının sabit bir şekilde kodlanması yerine, sonraki bir etkinlikte hangi nesnelerin üzerinde çalışacağı üzerinde dinamik olarak belirleyebilmeniz için kullanabilirsiniz. Bazı nesne örnekleri dosya ve tablolardır.
 
-Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini okur ve döndürür. Ayrıca, bir sorgu veya saklı yordam yürütmenin sonucunu döndürür. Arama etkinliğinin çıktısı, tek bir değer ise sonraki bir kopya veya dönüştürme etkinliğinde kullanılabilir. Çıktı bir öznitelik dizisi ise, ForEach etkinliğinde kullanılabilir.
+Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini okur ve döndürür. Ayrıca, bir sorgu veya saklı yordam yürütmenin sonucunu döndürür. Çıktı bir tek değer veya bir öznitelik dizisi olabilir. Bu, sonraki bir kopyalama, dönüşüm veya ForEach etkinliği gibi denetim akışı etkinliklerinde tüketilebilir.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Aşağıdaki veri kaynakları arama etkinliği için desteklenir. 
+Şunlara dikkat edin:
 
-Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı 4 MB 'lık büyüklüğü destekler, boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önceki arama etkinliğinin en uzun süresi 24 saattir.
+- Arama etkinliği **5000 satıra** kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür.
+- Arama etkinliği çıkışı en fazla **4 MB** destekler, boyut sınırı aşarsa etkinlik başarısız olur. 
+- Zaman aşımından önce arama etkinliğinin en uzun süresi **24 saattir**.
+- Verileri aramak için sorgu veya saklı yordam kullandığınızda bir sonuç kümesi döndürdiğinizden emin olun. Aksi takdirde, arama etkinliği başarısız olur.
+
+Aşağıdaki veri kaynakları arama etkinliği için desteklenir. 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -381,7 +385,7 @@ Arama etkinliğinin ve önerilen geçici çözümlerin bazı sınırlamaları a�
 
 | Sınırlama | Geçici çözüm |
 |---|---|
-| Arama etkinliğinin en fazla 5.000 satırı ve en fazla 2 MB boyutu vardır. | Dış işlem hattının, en fazla satır veya boyutu aşmayacak verileri alan bir iç işlem hattı üzerinden yineleyen iki düzeyli bir işlem hattı tasarlayın. |
+| Arama etkinliğinin en fazla 5.000 satırı ve en fazla 4 MB boyutunda olması gerekir. | Dış işlem hattının, en fazla satır veya boyutu aşmayacak verileri alan bir iç işlem hattı üzerinden yineleyen iki düzeyli bir işlem hattı tasarlayın. |
 | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 9eb1bb87792dbc61e7c85dbc20c136499f23f67c
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530221"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712173"
 ---
 # <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
@@ -18,7 +18,7 @@ Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum* oluşturman�
 
 ## <a name="rest-api-reference"></a>REST API başvurusu
 
-REST API başvurusu [burada ve Swagger](https://docs.microsoft.com/rest/api/mixedreality/2021-01-01preview/remoterendering) [tanımlarında bulunabilir](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality).
+REST API başvurusu [burada ve Swagger](/rest/api/mixedreality/2021-01-01preview/remoterendering) [tanımlarında bulunabilir](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality).
 *RenderingSession.ps1* adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md).
 Ayrıca, [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), Java ve Python için SDK 'lar sunuyoruz.
 
@@ -26,7 +26,7 @@ Ayrıca, [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixed
 > Gecikme, uzaktan işleme kullanılırken önemli bir faktördür. En iyi deneyim için, size en yakın bölgede oturum oluşturun. [Azure gecikme testi](https://www.azurespeed.com/Azure/Latency) , size en yakın bölgeyi tespit etmek için kullanılabilir.
 
 > [!IMPORTANT]
-> İstemci cihazının bir işleme oturumuna bağlanması için bir ARR çalışma zamanı SDK 'Sı gerekir. Bu SDK 'lar [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) ve [C++](https://docs.microsoft.com/cpp/api/remote-rendering/)' da kullanılabilir. Hizmete bağlandıktan sonra, bu SDK 'lar oturumları başlatmak ve durdurmak için de kullanılabilir.
+> İstemci cihazının bir işleme oturumuna bağlanması için bir ARR çalışma zamanı SDK 'Sı gerekir. Bu SDK 'lar [.net](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) ve [C++](/cpp/api/remote-rendering/)' da kullanılabilir. Hizmete bağlandıktan sonra, bu SDK 'lar oturumları başlatmak ve durdurmak için de kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

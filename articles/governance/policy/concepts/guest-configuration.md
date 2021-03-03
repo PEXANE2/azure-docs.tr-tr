@@ -3,14 +3,15 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma istemcisini nasıl kullandığını öğrenin.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702887"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
+
 
 Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azure-arc/servers/overview.md)çalışan makineler için bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
 
@@ -20,13 +21,15 @@ Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](../../../azur
 
 Şu anda, çoğu Azure Ilkesi Konuk yapılandırma ilkesi tanımı yalnızca makinenin içindeki ayarları denetler. Yapılandırma uygulamamaktadır. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
 
+[Bu belgenin üzerinde bir video izlenecek yol var](https://youtu.be/Y6ryD3gTHOs).
+
 ## <a name="enable-guest-configuration"></a>Konuk yapılandırmasını etkinleştir
 
 Azure 'daki makineler ve yay bağlantılı makineler dahil ortamınızdaki makinelerin durumunu denetlemek için aşağıdaki ayrıntıları gözden geçirin.
 
 ## <a name="resource-provider"></a>Kaynak sağlayıcısı
 
-Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısını kaydetmeniz gerekir. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapıldığında kaynak sağlayıcı otomatik olarak kaydedilir. [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure POWERSHELL](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)aracılığıyla el ile kayıt yapabilirsiniz.
+Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısını kaydetmeniz gerekir. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapılır veya abonelik Azure Güvenlik Merkezi 'ne kaydedildiyse, kaynak sağlayıcısı otomatik olarak kaydedilir. [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure POWERSHELL](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)aracılığıyla el ile kayıt yapabilirsiniz.
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure sanal makineleri için gereksinimleri dağıtma
 
@@ -62,13 +65,13 @@ Konuk yapılandırma ilkesi tanımları yeni sürümlere dahildir. Konuk yapıla
 
 |Publisher|Name|Sürümler|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04-18,04|
-|Credavtiv|Debian|8 ve üzeri|
-|Microsoft|Windows Server|2012 ve üzeri|
+|Canonical|Ubuntu Server|14,04-20,04|
+|Credavtiv|Debian|8 - 10|
+|Microsoft|Windows Server|2012-2019|
 |Microsoft|Windows İstemcisi|Windows 10|
-|OpenLogic|CentOS|7,3 ve üzeri|
-|Red Hat|Red Hat Enterprise Linux|7,4-7,8|
-|SUSE|SLES|12 SP3-SP5|
+|OpenLogic|CentOS|7,3-8|
+|Red Hat|Red Hat Enterprise Linux|7,4-8|
+|SUSE|SLES|12 SP3-SP5, 15|
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkesi tanımları tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
 
@@ -114,9 +117,26 @@ Konuk yapılandırma ilkesi tanımları, **Auditınotexists** efektini kullanır
 **Auditınotexists** ilke tanımları, makinede tüm gereksinimler karşılanana kadar uyumluluk sonuçları döndürmez. Gereksinimler, [Azure sanal makineler için bölüm dağıtma gereksinimleri](#deploy-requirements-for-azure-virtual-machines) bölümünde açıklanmaktadır.
 
 > [!IMPORTANT]
-> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir. Bilgi için blog gönderisine bakın: [Konuk yapılandırma denetim ilkeleri Için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve girişimler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir. Bilgi için blog gönderisine bakın: [Konuk yapılandırma denetim ilkeleri Için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcısı **karmaşıkancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
+### <a name="what-is-a-guest-assignment"></a>Konuk atama nedir?
+
+Bir Azure Ilkesi atandığında, bu kategori "Konuk yapılandırması" ise, bir konuk atamasını açıklamaya eklenen meta veriler vardır.
+Konuk atamasını, bir makine ve Azure Ilkesi senaryosu arasında bağlantı olarak düşünebilirsiniz.
+Örneğin, aşağıdaki kod parçacığı Azure Windows taban çizgisi yapılandırmasını ilke kapsamındaki makinelere en düşük sürümle ilişkilendirir `1.0.0` . Varsayılan olarak, Konuk ataması yalnızca makinenin bir denetimini yapar.
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+Konuk atamaları, Konuk yapılandırma hizmeti tarafından makine başına otomatik olarak oluşturulur. Kaynak türü `Microsoft.GuestConfiguration/guestConfigurationAssignments` şeklindedir.
+Azure Ilkesi, uyumluluk durumunu raporlamak için konuk atama kaynağının **Karmaşıkstatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
 
@@ -201,6 +221,12 @@ Konuk yapılandırması yerleşik ilke örnekleri aşağıdaki konumlarda bulunu
 - [Yerleşik ilke tanımları-Konuk yapılandırma](../samples/built-in-policies.md#guest-configuration)
 - [Yerleşik girişimler-Konuk yapılandırma](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Ilke örnekleri GitHub deposu](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>Genel bakış videosu
+
+Azure Ilkesi Konuk yapılandırması 'na aşağıdaki genel bakış, ıüsttalks 2021 ' den biridir.
+
+[Azure Ilke Konuk yapılandırması kullanılarak hibrit sunucu ortamlarında temelleri yöneten](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

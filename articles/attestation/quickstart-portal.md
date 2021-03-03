@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593612"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729410"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure kanıtlama ayarlama
 
@@ -90,7 +90,7 @@ Kanıtlama sağlayıcısını silmenin iki yolu vardır. Seçenekleriniz şunlar
 1. Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
 1. Filtre kutusuna kanıtlama sağlayıcısı adını girin.
 1. Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
-1. Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke imzalayan sertifikalar** ' ı seçin.
+1. Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke imzalayan sertifikalar** ' ı seçin. Kimlik doğrulaması için sertifika seçmek üzere bir istem görürsünüz. Lütfen devam etmek için uygun seçeneği belirleyin.
 1. **İlke imzalayan sertifikalarını indir**' i seçin. Düğme, ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için devre dışı bırakılır.
 1. İndirilen metin dosyası bir JWS biçimindeki tüm sertifikalara sahip olacaktır.
 1. Sertifika sayısını ve indirilen sertifikaları doğrulayın.
@@ -122,7 +122,7 @@ Bu bölümde, bir kanıtlama ilkesinin nasıl görüntüleneceği ve ilke imzala
 1.  Azure portal menüsüne veya giriş sayfasına gidin ve **tüm kaynaklar**' ı seçin.
 1.  Filtre kutusuna kanıtlama sağlayıcısı adını girin.
 1.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin.
-1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke** ' yi seçin.
+1.  Pencerenin sol tarafındaki kaynak menüsünde veya alt bölmede **ilke** ' yi seçin. Kimlik doğrulaması için sertifika seçmek üzere bir istem görürsünüz. Lütfen devam etmek için uygun seçeneği belirleyin.
 1.  Tercih edilen **kanıtlama türünü** seçin ve **geçerli ilkeyi** görüntüleyin.
 
 ### <a name="configure-an-attestation-policy"></a>Kanıtlama ilkesi yapılandırma
@@ -144,6 +144,7 @@ Kanıtlama sağlayıcısı bir ilke imzalama gereksinimi olmadan oluşturulduysa
    Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve düzenlenemez.
 
 1. Yapılandırılan ilkeyi görüntülemek için üstteki menüden **Yenile** ' yi seçin.
+
 
 Kanıtlama sağlayıcısı bir ilke imzalama gereksinimi ile oluşturulduysa, bir ilkeyi JWT biçiminde karşıya yüklemek için aşağıdaki adımları izleyin.
 

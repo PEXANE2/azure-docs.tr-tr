@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713601"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -40,9 +40,11 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 - Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur ancak tablo desteklenene kadar bu tablo için hiçbir veri aktarılmaz. 
 - Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace``` .
 - Log Analytics çalışma alanınız aşağıdakiler dışında herhangi bir bölgede olabilir:
-  - İsviçre Kuzey
-  - İsviçre Batı
   - Azure Kamu bölgeleri
+  - Batı Japonya
+  - Güney Brezilya Doğu
+  - Norveç Doğu
+  - BAE Kuzey
 - Bir çalışma alanında iki dışarı aktarma kuralı oluşturabilirsiniz; içindeki bir olay hub 'ı ve depolama hesabına yönelik bir kural olabilir.
 - Hedef depolama hesabı veya Olay Hub 'ı Log Analytics çalışma alanıyla aynı bölgede olmalıdır.
 - Aktarılacak tabloların adları, bir depolama hesabı için 60 karakterden uzun ve bir olay hub 'ına en fazla 47 karakterden oluşabilir. Daha uzun adlara sahip tablolar verilmeyecektir.
@@ -72,6 +74,9 @@ Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowPro
 
 ### <a name="event-hub"></a>Olay hub'ı
 Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.
+
+> [!IMPORTANT]
+> [Ad alanı başına desteklenen Olay Hub 'ları sayısı 10 ' dur](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). 10 ' dan fazla tablo dışa aktardığınızda, tüm tablolarınızı bu olay hub 'ına aktarmak için kendi olay hub 'ınızın adını sağlayın. 
 
 Dikkat edilmesi gerekenler:
 1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.

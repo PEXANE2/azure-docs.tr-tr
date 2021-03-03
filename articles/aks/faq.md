@@ -3,12 +3,13 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739636"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -134,7 +135,7 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 AKS, [çalışma süresi SLA 'sı][uptime-sla]ile isteğe bağlı bir eklenti ÖZELLIĞI olarak SLA garantisi sağlar. 
 
-Varsayılan olarak sunulan ücretsiz SLA, yüksek oranda kullanılabilir bir API sunucusu uç noktası garantisi vermez (hizmet düzeyi hedefiniz% 99,5 ' dir. Geçici bağlantı sorunlarının, yükseltmeler, sağlıksız örnek düzenleme düğümleri, platform bakımı, vb. gibi gözlemlendiği bir durum olabilir. İş yükünüz Apıver yeniden başlatmalarının kabul etmezse, çalışma süresi SLA 'sını kullanmayı öneririz.
+Varsayılan olarak sunulan ücretsiz SKU, ilişkili bir hizmet düzeyi *anlaşmasına* sahip değildir, ancak% 99,5 hizmet düzeyi *amacını* içerir. Geçici bağlantı sorunlarının, yükseltmeler, sağlıksız olmayan düğümler, platform bakımı, uygulama API sunucusunu isteklerle, vb. olarak ortaya çıkmasına neden olabilir. İş yükünüz API sunucusu yeniden başlatmalarının kabul etmezse, çalışma süresi SLA 'sını kullanmayı öneririz.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerine Azure rezervasyon indirimleri uygulayabilir miyim?
 
@@ -202,7 +203,7 @@ Log Analytics Aracısı Microsoft tarafından yönetilen bir uzantı olduğundan
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS, tüm müşteri verilerini kümenin bölgesi dışında depolıyor mu?
 
-Müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği şu anda yalnızca Asya Pasifik coğrafi bölgenin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır.
+Müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği şu anda yalnızca Asya Pasifik coğrafi ve Brezilya Güney (Sao Paulo Eyaleti) Brezilya coğrafi bölge bölgesinin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır.
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>AKS görüntüleri kök olarak çalıştırmak için gerekli mi?
 

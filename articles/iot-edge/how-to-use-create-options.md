@@ -9,12 +9,12 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 055b89858fde901ab014e409fbe30c3438efce12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732998"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge modülleri için kapsayıcı oluşturma seçeneklerini yapılandırma
 
@@ -52,15 +52,15 @@ IoT Edge dağıtım bildirimi JSON olarak biçimlendirilen oluşturma seçenekle
 
 Bu edgeHub örneği, kapsayıcıda gösterilen bağlantı noktalarını konak cihazdaki bir bağlantı noktasına eşlemek için **Hostconfig. PortBindings** parametresini kullanır.
 
-Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, oluşturma seçeneklerini **deployment.template.js** dosyadaki JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örneğin:
+Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, oluşturma seçeneklerini **deployment.template.js** dosyadaki JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örnek:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak modülü yerel olarak çalıştırın `docker run <container name>` . Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>` . Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örneğin:
+Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak modülü yerel olarak çalıştırın `docker run <container name>` . Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>` . Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örnek:
 
-[![Docker Inceleme edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Docker İnceleme edgeHub sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
@@ -131,5 +131,5 @@ Son dağıtım bildirimi için, bu değerler aşağıdaki örnekteki gibi görü
 
 Eylemde oluşturma seçenekleri hakkında daha fazla örnek için aşağıdaki IoT Edge örneklere bakın:
 
-* [Raspberry Pi 3 üzerinde Özel Görüntü İşleme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Raspberry Pi 3 üzerinde Özel Görüntü İşleme ve Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi)
 * [Azure IoT Edge BLOB depolama örneği](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

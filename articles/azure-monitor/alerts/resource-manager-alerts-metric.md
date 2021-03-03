@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9a6c62e91a2d3c600326730b3e6345f97bf6f5f9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0e928f3890e0d86aff7e4615d6d12e1b53c3b6f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734698"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarısı kuralları için Kaynak Yöneticisi şablonu örnekleri
 
@@ -3303,6 +3303,5 @@ Bu örnek, bir abonelikte bulunan bir Azure bölgesindeki sanal makinelerin bir 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure izleyici için diğer örnek şablonları alın](../resource-manager-samples.md).
-- [Uyarılar hakkında daha fazla bilgi edinin](../platform/alerts-overview.md).
+- [Uyarılar hakkında daha fazla bilgi edinin](./alerts-overview.md).
 - [Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturmak için bir örnek alın](resource-manager-action-groups.md)
-

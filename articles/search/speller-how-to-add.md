@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694810"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Bilişsel Arama sorgulara yazım denetimi ekleme
 
@@ -36,7 +36,7 @@ Arama altyapısına ulaşmadan önce tek tek arama sorgu koşullarını yazım i
   Yazım denetleyicisi için queryLanguage gereklidir ve şu anda "en-US" geçerli değerdir.
 
 > [!Note]
-> Yazım denetleyicisi parametresi, semantik arama sağlayan aynı bölgelerdeki tüm katmanlarda kullanılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Yazım denetleyicisi parametresi, semantik arama sağlayan aynı bölgelerdeki tüm katmanlarda kullanılabilir. Bu Önizleme özelliğine erişim için kaydolmanız gerekmez. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
 ## <a name="spell-correction-with-simple-search"></a>Basit aramayla yazım denetimi yapma
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>Dil konuları
 
-Yazım denetleyicisi için gereken queryLanguage parametresi, dizin şemasında alan tanımlarına atanan [dil Çözümleyicileri](index-add-language-analyzers.md) ile tutarlı olmalıdır. Sorgu isteğinde belirtilen queryLanguage, yazım denetimi için hangi nacons kullanıldığını belirler ve ayrıca kullanıyorsanız [anlamsal derecelendirme algoritmasına](semantic-how-to-query-response.md) giriş olarak da kullanılır. Dil Çözümleyicileri dizin oluşturma sırasında ve arama dizininde eşleşen belgeler alınırken kullanılır. QueryLanguage "en-US" ise tutarlı olması için, tüm dil Çözümleyicileri de Ingilizce bir varyant ("en. Microsoft" veya "en. Lucene") olmalıdır. 
+Yazım denetleyicisi için gereken queryLanguage parametresi, dizin şemasında alan tanımlarına atanan [dil Çözümleyicileri](index-add-language-analyzers.md) ile tutarlı olmalıdır. 
+
++ queryLanguage, yazım denetimi için hangi nacons kullanıldığını belirler ve "queryType = anlam" kullanıyorsanız [anlamsal derecelendirme algoritmasına](semantic-how-to-query-response.md) giriş olarak da kullanılır.
+
++ Dil Çözümleyicileri, arama dizininde eşleşen belgeleri bulmak için dizin oluşturma ve sorgu yürütme sırasında kullanılır. Dil Çözümleyicisi kullanan alan tanımına bir örnek `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` .
+
+Yazım denetleyicisi kullanırken en iyi sonuçlar için, queryLanguage "en-US" ise, herhangi bir dil Çözümleyicileri de Ingilizce bir varyant ("en. Microsoft" veya "en. Lucene") olmalıdır.
 
 > [!NOTE]
 > Dilden bağımsız çözümleyiciler (anahtar sözcük, basit, standart, durdurma, boşluk veya `standardasciifolding.lucene` ) QueryLanguage ayarları ile çakışmaz.

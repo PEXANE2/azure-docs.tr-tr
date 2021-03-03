@@ -1,30 +1,30 @@
 ---
 title: Azure IoT Central özel Analize genişletin | Microsoft Docs
 description: Çözüm geliştiricisi olarak, bir IoT Central uygulamasını özel analiz ve görselleştirmeler yapmak üzere yapılandırın. Bu çözüm Azure Databricks kullanır.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/18/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741774"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
-Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızın özel analizler ve görselleştirmeler ile nasıl genişletileceği gösterilmektedir. Örnek, IoT Central telemetri akışını analiz etmek ve [kutu çizimleri](https://wikipedia.org/wiki/Box_plot)gibi görselleştirmeler oluşturmak için bir [Azure Databricks](/azure/azure-databricks/) çalışma alanı kullanır.
+Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızın özel analizler ve görselleştirmeler ile nasıl genişletileceği gösterilmektedir. Örnek, IoT Central telemetri akışını analiz etmek ve [kutu çizimleri](https://wikipedia.org/wiki/Box_plot)gibi görselleştirmeler oluşturmak için bir [Azure Databricks](/azure/azure-databricks/) çalışma alanı kullanır.  
 
 Bu nasıl yapılır Kılavuzu, [yerleşik analiz araçlarıyla](./howto-create-custom-analytics.md)daha önce yapabilecekleri IoT Central nasıl uzatılamayacak hakkında sizi gösterir.
 
 Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 
-* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* *Sürekli veri dışa aktarma* kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
 * Cihaz telemetrisini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
-| Bölge | En yakın bölgeniz |
+| Region | En yakın bölgeniz |
 
 Bu makaledeki örnekler ve ekran görüntüleri **Birleşik Devletler** bölgesini kullanır. Size yakın bir konum seçin ve tüm kaynaklarınızı aynı bölgede oluşturduğunuzdan emin olun.
 
@@ -88,8 +88,8 @@ Gerekli kaynakları oluşturduğunuzda, **IoTCentralAnalysis** kaynak grubunuz a
 
 Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dışarı aktarmak için yapılandırabilirsiniz. Bu bölümde, IoT Central uygulamanızdan telemetri almak için bir olay hub 'ı oluşturursunuz. Olay Hub 'ı işleme için Stream Analytics işinize telemetri sunar.
 
-1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı**seçin.
-1. Olay Hub 'ınızı **centralexport**olarak adlandırın ve **Oluştur**' u seçin.
+1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı** seçin.
+1. Olay Hub 'ınızı **centralexport** olarak adlandırın ve **Oluştur**' u seçin.
 1. Ad uzayındaki Olay Hub 'ları listesinde **centralexport**' yi seçin. Ardından **paylaşılan erişim ilkeleri**' ni seçin.
 1. **+ Ekle**'yi seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
 1. İlke hazır olduğunda, listeden seçin ve ardından **bağlantı dizesinin birincil anahtar** değerini kopyalayın.
@@ -103,7 +103,7 @@ Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde gör
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. **Veri dışa aktarma** sayfasına gidin, **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
+1. **Veri dışa aktarma (eski)** sayfasına gidin, **+ Yeni**' yi seçin ve ardından **Azure Event Hubs**.
 1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
 
     | Ayar | Değer |
@@ -134,7 +134,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | ------- | ----- |
 | Küme Adı | centralanalysis |
 | Küme modu | Standart |
-| Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python sürümü | 3 |
 | Otomatik ölçeklendirmeyi etkinleştir | Hayır |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
@@ -146,11 +146,11 @@ Bir küme oluşturmak birkaç dakika sürebilir, devam etmeden önce küme oluş
 
 ### <a name="install-libraries"></a>Kitaplıkları yükler
 
-**Kümeler** sayfasında, küme durumu **çalışmaya**kadar bekleyin.
+**Kümeler** sayfasında, küme durumu **çalışmaya** kadar bekleyin.
 
 Aşağıdaki adımlarda, örnek ihtiyaçlarınızı kümeye aktarma işlemi gösterilmektedir:
 
-1. **Kümeler** sayfasında, **centralanalysis** etkileşimli kümesinin durumunun **çalışıp çalışmadığını**bekleyin.
+1. **Kümeler** sayfasında, **centralanalysis** etkileşimli kümesinin durumunun **çalışıp çalışmadığını** bekleyin.
 
 1. Kümeyi seçin ve ardından **Kitaplıklar** sekmesini seçin.
 
@@ -228,7 +228,7 @@ Uygulama içindeki **Yönetim** sayfasından IoT Central uygulamasını silebili
 
 Bu nasıl yapılır kılavuzunda şunları öğrenirsiniz:
 
-* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* *Sürekli veri dışa aktarma* kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
 * Telemetri verilerini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
 Artık özel analizler oluşturmayı bildiğinize göre, önerilen sonraki adım [Azure IoT Central verilerinizi Power BI panosunda görselleştirmeyi ve çözümlemeyi](howto-connect-powerbi.md)öğrenmektir.

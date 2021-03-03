@@ -4,12 +4,12 @@ description: Cloud Services, sanal makinelerinizi ve Web Apps otomatik ölçekle
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717783"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
 
@@ -33,8 +33,8 @@ Yukarıdaki Case değeri true ise, Azure VM tanılama uzantınızı yapılandır
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Kaynak Yöneticisi tabanlı Windows ve Linux VM 'Leri için konak ölçümleri
 Aşağıdaki konak düzeyi ölçümleri, hem Windows hem de Linux örneklerinde Azure VM ve VMSS için varsayılan olarak dağıtılır. Bu ölçümler, Azure VM 'nizi anlatmaktadır, ancak Konuk VM 'de yüklü aracı aracılığıyla değil, Azure VM konağından toplanır. Bu ölçümleri otomatik ölçeklendirme kurallarında kullanabilirsiniz.
 
-- [Kaynak Yöneticisi tabanlı Windows ve Linux VM 'Leri için konak ölçümleri](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Kaynak Yöneticisi tabanlı Windows ve Linux VM Ölçek Kümeleri için konak ölçümleri](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Kaynak Yöneticisi tabanlı Windows ve Linux VM 'Leri için konak ölçümleri](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Kaynak Yöneticisi tabanlı Windows ve Linux VM Ölçek Kümeleri için konak ölçümleri](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Kaynak Yöneticisi tabanlı Windows VM 'Leri için konuk işletim sistemi ölçümleri
 Azure 'da bir VM oluşturduğunuzda, Tanılamalar tanılama uzantısı kullanılarak etkinleştirilir. Tanılama uzantısı, VM 'nin içinden alınan bir dizi ölçümü yayar. Bu, varsayılan olarak yayılmayan ölçümlerin sırasını otomatik olarak kapatabilmeniz anlamına gelir.
@@ -186,4 +186,3 @@ VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklen
 > Service Bus için kaynak grubu kavramı yok, Azure Resource Manager her bölge için varsayılan bir kaynak grubu oluşturur. Kaynak grubu genellikle ' default-ServiceBus-[Region] ' biçiminde olur. Örneğin, ' default-ServiceBus-EastUS ', ' default-ServiceBus-WestUS ', ' default-ServiceBus-AustraliaEast ' vb.
 >
 >
-

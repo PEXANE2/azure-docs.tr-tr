@@ -4,19 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 olay yanıtı
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 002/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 043e365bfe27db516a42386a91bc0433e27e2068
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 40a88349040482b3325e63d7035dea35df444cdb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368843"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698595"
 ---
 # <a name="security-control-v2-incident-response"></a>Güvenlik denetimi v2: olay yanıtı
 
 Olay yanıtı, olay yanıtı yaşam döngüsü hazırlama, algılama ve analiz, kapsama ve olay sonrası etkinliklerdeki denetimleri ele alır. Bu, olay yanıtı sürecini otomatikleştirmek için Azure Güvenlik Merkezi ve Sentinel gibi Azure hizmetlerinin kullanılmasını içerir.
+
+Geçerli yerleşik Azure Ilkesini görmek için, bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: olay yanıtı](../../governance/policy/samples/azure-security-benchmark#incident-response)
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Hazırlık: Azure için olay yanıtı sürecini güncelleştirin
 
@@ -64,7 +66,7 @@ Azure Güvenlik Merkezi 'nde güvenlik olayı iletişim bilgilerini ayarlayın. 
 |--|--|--|--|
 | IR-3 | 19,6 | IR-4, ıR-5 |
 
-Yüksek kaliteli uyarılar oluşturmaya ve uyarı kalitesini ölçmeye yönelik bir işleminiz olduğundan emin olun. Bu sayede geçmiş olaylardan ders çıkarabilir ve analistler için uyarıların önceliğini belirleyerek yanlış pozitif sonuçlarla zaman kaybetmelerini önleyebilirsiniz. 
+Yüksek kaliteli uyarılar oluşturmaya ve uyarı kalitesini ölçmeye yönelik bir işleminiz olduğundan emin olun. Bu, geçmiş olaylardan dersler öğrenmenize ve analistlere yönelik olarak bu uyarıların önceliklendirmesine izin verir, böylelikle hatalı pozitif sonuçlar üzerinde zaman harcanmazlar. 
 
 Yüksek kaliteli uyarılar geçmiş olaylardan edinilen deneyime, doğrulanmış topluluk kaynaklarına ve çeşitli sinyal kaynaklarını birleştirerek ve aralarında bağıntı kurarak uyarılar oluşturmak ve temizlemek için tasarlanmış araçlara dayalı olarak oluşturulabilir. 
 
@@ -92,7 +94,7 @@ Azure kaynaklarına yönelik riskleri tanımlamaya yardımcı olmak için, dış
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Analistlerin, olası olayları araştırarak, ne olduğunu bir tam görünüm oluşturmak için farklı veri kaynaklarını sorgulayabileceği ve kullanabilmesi için analist emin olun. Sonlandırma zinciri boyunca olası saldırganın etkinliklerinin izlenebilmesi için çeşitli günlükler toplanmalı, kör noktaların olması önlenmelidir.  Ayrıca diğer analistler için ve gelecekte başvurmak üzere içgörülerin ve çıkarılan derslerin yakalandığından da emin olmalısınız.  
+Analistlerin, olası olayları araştırarak, ne olduğunu bir tam görünüm oluşturmak için farklı veri kaynaklarını sorgulayabileceği ve kullanabilmesi için analist emin olun. Sonlandırma zinciri boyunca olası saldırganın etkinliklerinin izlenebilmesi için çeşitli günlükler toplanmalı, kör noktaların olması önlenmelidir. Ayrıca diğer analistler için ve gelecekte başvurmak üzere içgörülerin ve çıkarılan derslerin yakalandığından da emin olmalısınız.
 
 Araştırmaya yönelik veri kaynakları kapsam içindeki hizmetlerden ve çalışan sistemlerden zaten toplanmakta olan merkezi günlük kaynaklarının yanı sıra şunları da içerebilir:
 
@@ -130,13 +132,13 @@ Azure Sentinel hemen her veri kaynağı üzerinde kapsamlı veri analizi gerçek
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
-| IR-5 | 19,8 | CA-2, ıR-4 |
+| IR-5 | 19.8 | CA-2, ıR-4 |
 
 Uyarı önem derecesine ve varlık duyarlığına göre ilk olarak odaklanabilecek olayların analistlerine bağlamını sağlayın. 
 
 Azure Güvenlik Merkezi önce hangi uyarıların araştırılması gerektiğini belirlemenize yardımcı olmak için her uyarıya bir önem derecesi atar. Önem derecesinde, Güvenlik Merkezi’nin bulguya ne kadar güvendiği veya uyarıyı verirken kullanılan analiz kadar, uyarıya yol açan etkinliğin ardında kötü bir amaç olduğuna ilişkin güvenilirlik düzeyi de temel alınır.
 
-Buna ek olarak Azure kaynaklarını, özellikle hassas verileri işleyen kaynakları belirlemek ve kategorilere ayırmak için etiketleri kullanarak kaynakları işaretleyin ve bir adlandırma sistemi oluşturun.  Azure kaynaklarının önem düzeyine ve olayın oluştuğu ortama bağlı olarak uyarıların çözümünde önceliği belirlemek sizin sorumluluğunuzdadır.
+Buna ek olarak Azure kaynaklarını, özellikle hassas verileri işleyen kaynakları belirlemek ve kategorilere ayırmak için etiketleri kullanarak kaynakları işaretleyin ve bir adlandırma sistemi oluşturun. Azure kaynaklarının önem düzeyine ve olayın oluştuğu ortama bağlı olarak uyarıların çözümünde önceliği belirlemek sizin sorumluluğunuzdadır.
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../../security-center/security-center-alerts-overview.md)
 

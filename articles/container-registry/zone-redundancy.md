@@ -2,13 +2,14 @@
 title: Yüksek kullanılabilirlik için bölge yedekli kayıt defteri
 description: Azure Container Registry bölgede yedekliliği etkinleştirme hakkında bilgi edinin. Bir Azure kullanılabilirlik bölgesinde kapsayıcı kayıt defteri veya çoğaltma oluşturun. Bölge artıklığı Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696287"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738115"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Dayanıklılık ve yüksek kullanılabilirlik için Azure Container Registry bölgede yedekliliği etkinleştirin
 
@@ -20,7 +21,7 @@ Bölge artıklığı, Premium kapsayıcı kayıt defteri hizmet katmanının bir
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Şu anda şu bölgelerde destekleniyor: Doğu ABD, Doğu ABD 2 ve Batı ABD 2.
+* Şu anda şu bölgelerde destekleniyor: Doğu ABD, Doğu ABD 2, Batı ABD 2, Kuzey Avrupa, Batı Avrupa, Japonya Doğu.
 * Kullanılabilirlik bölgelerine bölge dönüştürmeleri Şu anda desteklenmemektedir. Bir bölgede kullanılabilirlik alanı desteğini etkinleştirmek için, kayıt defterinin istenen bölgede oluşturulması gerekir, kullanılabilirlik alanı desteği etkinleştirilmiştir veya bir çoğaltılan bölge, kullanılabilirlik alanı desteğinin etkin olması gerekir.
 * Bölge artıklığı bir bölgede devre dışı bırakılamaz.
 * [ACR görevleri](container-registry-tasks-overview.md) henüz kullanılabilirlik bölgelerini desteklemez.

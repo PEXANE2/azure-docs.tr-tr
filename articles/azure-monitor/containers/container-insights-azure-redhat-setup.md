@@ -1,16 +1,16 @@
 ---
-title: Azure Red Hat OpenShift v3. x ' i kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
+title: Azure Red Hat OpenShift v3. x ' i kapsayıcı öngörüleri ile yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift sürüm 3 ve üzerinde barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708382"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift v3 'i kapsayıcılar için Azure Izleyici ile yapılandırma
+# <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Azure Red Hat OpenShift v3 'i kapsayıcı öngörüleri ile yapılandırma
 
 >[!IMPORTANT]
 > Azure Red Hat OpenShift 3,11, 2022 Haziran tarihinde kullanımdan kaldırılacaktır.
@@ -21,33 +21,33 @@ ms.locfileid: "100625327"
 > [Azure Red Hat OpenShift 4 kümesi oluşturmak](../../openshift/tutorial-create-cluster.md)için bu kılavuzu izleyin.
 > Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:aro-feedback@microsoft.com).
 
-Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürüm 3 ve sürüm 3 ' ün en son desteklenen sürümünde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklanmaktadır.
+Kapsayıcı öngörüleri, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürüm 3 ve sürüm 3 ' ün en son desteklenen sürümünde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklanmaktadır.
 
 >[!NOTE]
 >Azure Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
 >
 
-Kapsayıcılar için Azure Izleyici, yeni bir veya daha fazla Azure Red Hat OpenShift dağıtımı için aşağıdaki desteklenen yöntemleri kullanarak etkinleştirilebilir:
+Azure Red Hat Openshıft 'in yeni veya bir veya daha fazla dağıtımı için, aşağıdaki desteklenen yöntemler kullanılarak kapsayıcı öngörüleri etkinleştirilebilir:
 
 - Azure portal veya Azure Resource Manager şablonu kullanarak var olan bir küme için.
 - Azure Resource Manager şablonu kullanan yeni bir küme için veya [Azure CLI](/cli/azure/openshift#az-openshift-create)kullanarak yeni bir küme oluştururken.
 
 ## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 
-Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview.md) makalesinde açıklandığı şekilde Azure Red Hat OpenShift 'i izlemeyi destekler, ancak aşağıdaki özellikler hariç:
+Kapsayıcı öngörüleri, [genel bakış](container-insights-overview.md) makalesinde açıklandığı gibi Azure Red Hat OpenShift 'in izlenmesini destekler, ancak aşağıdaki özellikler hariç:
 
 - Canlı veriler (Önizleme)
 - Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
+- Bir [Log Analytics çalışma alanı](../logs/design-logs-deployment.md).
 
-    Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../samples/resource-manager-workspace.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla oluşturulabilir.
+    Kapsayıcı öngörüleri [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../logs/resource-manager-workspace.md), [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../logs/quick-create-workspace.md)aracılığıyla oluşturulabilir.
 
-- Kapsayıcılar için Azure Izleyici 'deki özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğindeki Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcılar Için Azure izleyici ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../platform/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
+- Kapsayıcı öngörülerine yönelik özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğinde Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../logs/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
 
-- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanına [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolü izninin bir üyesi olursunuz.
+- İzleme verilerini görüntülemek için, kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanına sahip [*Log Analytics okuyucu*](../logs/manage-access.md#manage-access-using-azure-permissions) rolü izninin bir üyesidir.
 
 ## <a name="identify-your-log-analytics-workspace-id"></a>Log Analytics çalışma alanı KIMLIĞINIZI tanımla
 
@@ -176,13 +176,13 @@ Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinl
 
 4. İzlenmeyen kümeler listesinden, listeden kümeyi bulun ve **Etkinleştir**' e tıklayın. Sütun **KÜMESI türü** altında, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz.
 
-5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.  
+5. Kapsayıcı içgörüleri **ekleme** sayfasında, kümeyle aynı abonelikte bulunan bir Log Analytics çalışma alanınız varsa, bunu aşağı açılan listeden seçin.  
     Liste, varsayılan çalışma alanını ve kümenin abonelikte dağıtıldığı konumu önceden seçer.
 
     ![İzlenmeyen kümeler için izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../logs/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
@@ -246,10 +246,10 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- RedHat OpenShift kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplamaya yönelik izleme özelliği, kapsayıcılar için Azure Izleyicisini [nasıl](container-insights-analyze.md) kullanacağınızı öğrenin.
+- RedHat OpenShift kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplamaya yönelik izleme özelliği, kapsayıcı öngörülerini [nasıl](container-insights-analyze.md) kullanacağınızı öğrenin.
 
 - Varsayılan olarak, Kapsayıcılı Aracı, Kuto-System hariç tüm ad alanlarında çalışan tüm kapsayıcıların stdout/stderr kapsayıcı günlüklerini toplar. Belirli bir ad alanı veya ad alanına özgü kapsayıcı günlüğü koleksiyonunu yapılandırmak için, istenen veri koleksiyonu ayarlarını ConfigMap yapılandırmaları dosyanıza yapılandırmak üzere [kapsayıcı öngörüleri aracı yapılandırmasını](container-insights-agent-config.md) gözden geçirin.
 
 - Kümelediğiniz Prometheus ölçümlerini hurdaya almak ve analiz etmek için bkz. [Prometheus ölçümleri koruması](container-insights-prometheus-integration.md) 'nı inceleyin
 
-- Azure Izleyici kapsayıcılar ile kümenizi izlemeyi durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi Izlemeyi durdurma](./container-insights-optout-openshift-v3.md).
+- Kümenizin kapsayıcı öngörüleri ile izlenmesini durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi Izlemeyi durdurma](./container-insights-optout-openshift-v3.md).

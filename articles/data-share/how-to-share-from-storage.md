@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739271"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Depolama ve Azure Data Lake Storage'dan verileri paylaşma ve alma
 
@@ -24,6 +24,7 @@ Azure veri paylaşımı, Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den dosy
 Dosya sistemleri, kapsayıcılar veya klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicileri, paylaşım verilerinin tam bir kopyasını yapmayı seçebilirler. Ya da yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğini kullanabilirler. Artımlı anlık görüntü özelliği, dosyaların son değiştirilme zamanına göre belirlenir. 
 
 Bir anlık görüntü sırasında aynı ada sahip varolan dosyaların üzerine yazılır. Kaynaktan silinen bir dosya hedefte silinmez. Kaynaktaki boş alt klasörler hedefe kopyalanmaz. 
+
 ## <a name="share-data"></a>Veri paylaşımı
 
 Azure veri paylaşımından verileri paylaşmak için aşağıdaki bölümlerde bulunan bilgileri kullanın. 
@@ -41,7 +42,7 @@ Azure veri paylaşımından verileri paylaşmak için aşağıdaki bölümlerde 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ### <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
@@ -60,7 +61,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
     | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için bir Azure aboneliği seçin.|
     | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya bir kaynak grubu oluşturun. |
     | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-    | Ad | *datashareaccount* | Veri paylaşma hesabınızı adlandırın. |
+    | Name | *datashareaccount* | Veri paylaşma hesabınızı adlandırın. |
     | | |
 
 1. Veri paylaşma hesabınızı sağlamak için **gözden geçir +**  >  **Oluştur** oluştur ' u seçin. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika sürer. 
@@ -133,7 +134,7 @@ Bir veri paylaşma davetini kabul etmeden önce, aşağıdaki önkoşullara sahi
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ### <a name="open-an-invitation"></a>Bir davet açın
 
@@ -184,7 +185,7 @@ Veri alacak bir konum yapılandırmak için bu bölümdeki adımları izleyin.
 ### <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 Bu bölümdeki adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
-1. **Ayrıntılar** sekmesinden bir anlık görüntü tetikleyebilirsiniz. Sekmesinde **tetikleyici anlık görüntüsünü** seçin. Verilerinizin tam anlık görüntüsünü veya artımlı anlık görüntüsünü tetiklemeyi seçebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız **Tam kopya**' ı seçin. 
+1. **Ayrıntılar** sekmesinden bir anlık görüntü tetikleyebilirsiniz. Sekmesinde **tetikleyici anlık görüntüsünü** seçin. Verilerinizin tam anlık görüntüsünü veya artımlı anlık görüntüsünü tetiklemeyi seçebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız **Tam kopya**' ı seçin. Bir anlık görüntü çalışırken, sonraki anlık görüntüler bir önceki işlem tamamlanana kadar başlatılmaz.
 
    ![Tetikleyici anlık görüntü seçimini gösteren ekran görüntüsü.](./media/trigger-snapshot.png "Görüntüyü tetikle.") 
 
@@ -194,6 +195,14 @@ Bu bölümdeki adımlar yalnızca anlık görüntü tabanlı paylaşım için ge
 
 ### <a name="view-history"></a>Geçmişi görüntüleme
 Anlık görüntülerinizin geçmişini yalnızca anlık görüntü tabanlı paylaşımda görüntüleyebilirsiniz. Geçmişi görüntülemek için **Geçmiş** sekmesini açın. Burada, son 30 gün içinde oluşturulan tüm anlık görüntülerin geçmişini görürsünüz. 
+
+## <a name="storage-snapshot-performance"></a>Depolama anlık görüntüsü performansı
+Depolama anlık görüntüsü performansı, dosya sayısına ve paylaşılan verilerin boyutuna ek olarak bir dizi faktörden etkilenir. Her zaman kendi performans testinizi uygulamanız önerilir. Aşağıda, performansı etkileyen bazı örnek faktörler verilmiştir.
+
+* Kaynak ve hedef veri depolarına eşzamanlı erişim.  
+* Kaynak ve hedef veri depolarının konumu. 
+* Artımlı anlık görüntü için, paylaşılan veri kümesindeki dosya sayısı, son başarılı anlık görüntüden sonraki son değiştirilme zamanına sahip dosyaların listesini bulmak için geçen süreyi etkileyebilir. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure veri paylaşma hizmetini kullanarak bir depolama hesabından nasıl veri alacağınızı ve alacağınız hakkında daha fazla öğrendiniz. Diğer veri kaynaklarından paylaşma hakkında bilgi edinmek için bkz. [desteklenen veri depoları](supported-data-stores.md).

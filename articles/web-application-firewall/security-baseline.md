@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581241"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737418"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için Azure Güvenlik temeli
 
@@ -164,7 +164,7 @@ Azure Sentinel 'de, Azure WAF 'deki güvenlik olaylarına genel bakış sağlaya
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
 
 **Kılavuz**: Azure Web uygulaması güvenlik duvarı (WAF) günlüklerini özel bir depolama hesabına gönderin ve bekletme ilkesini tanımlayın. Kuruluşunuzun uyumluluk gereksinimlerine göre Log Analytics çalışma alanı saklama süresini ayarlamak için Azure Izleyici 'yi kullanın.
-- [Depolama hesabı için izlemeyi yapılandırma](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Depolama hesabı için izlemeyi yapılandırma](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

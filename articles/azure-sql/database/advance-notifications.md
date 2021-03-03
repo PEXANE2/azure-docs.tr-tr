@@ -1,6 +1,6 @@
 ---
 title: Planlı bakım olayları için bildirimleri (Önizleme) Ön Izleme
-description: Azure SQL veritabanı veya Azure SQL yönetilen örneği için planlı bakımın önüne bildirim alın.
+description: Azure SQL veritabanı için planlı bakımın önüne bildirim alın.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690898"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Planlı bakım olayları için bildirimleri ilerlet (Önizleme)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Gelişmiş bildirimler (Önizleme), bakım penceresi için yapılandırılmış veritabanları için kullanılabilir [(Önizleme)](maintenance-window.md). Ön bildirimler müşterilerin, planlı herhangi bir olay için 24 saate kadar gönderilmek üzere bildirimleri yapılandırmasına olanak sağlar.
 
 Bildirimler, planlı bakımın sonraki 24 saatte başlaması nedeniyle metinler, e-postalar, Azure anında iletme bildirimleri ve voicepostalarını alabilmeniz için yapılandırılabilir. Bakım başladığında ve bakım sona erdiğinde ek bildirimler gönderilir.
 
+> [!Note]
+> Azure SQL yönetilen örnekleri için bir bakım penceresi seçme özelliği kullanılabilir olsa da, gelişmiş bildirimler Şu anda Azure SQL yönetilen örnekleri için kullanılamaz.
 
 ## <a name="create-an-advance-notification"></a>Ön bildirim oluştur
 
-Gelişmiş bildirimler Azure SQL veritabanları ve bakım penceresi yapılandırılmış yönetilen örnekler için kullanılabilir. 
+Gelişmiş bildirimler, bakım penceresi yapılandırılmış Azure SQL veritabanları için kullanılabilir. 
 
 Bir bildirimi etkinleştirmek için aşağıdaki adımları izleyin.  
 

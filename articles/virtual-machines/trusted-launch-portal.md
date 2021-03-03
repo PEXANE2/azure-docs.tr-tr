@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 02/26/2021
+ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: cd39ec9653efba9adabb9ae2076e5a042c69abe2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680270"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694130"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -31,7 +31,7 @@ ms.locfileid: "101680270"
 
 Güvenilir başlatma etkin olan bir sanal makine oluşturun.
 
-1. Azure [portalında](https://portal.azure.com)oturum açın.
+1. Azure [portalında](https://aka.ms/TL_preview)oturum açın.
 1. **Sanal makineler** için arama yapın.
 1. **Hizmetler** altında **sanal makineler**' i seçin.
 1. **Sanal makineler** sayfasında, **Ekle**' yi ve ardından **sanal makine**' yi seçin.

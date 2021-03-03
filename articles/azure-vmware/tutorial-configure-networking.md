@@ -2,13 +2,13 @@
 title: Öğretici-Azure 'da VMware özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/23/2021
+ms.openlocfilehash: b3afdffa127c23a3be3d247f12acc31604370ef6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738455"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMware özel bulutunuz için ağı yapılandırma
 
@@ -27,24 +27,24 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. [Özel bulut oluşturma öğreticisinde](tutorial-create-private-cloud.md) oluşturduğunuz kaynak grubuna gidin ve yeni bir kaynak tanımlamak Için **+ Ekle** ' yi seçin. 
 
-1. Market 'te **Ara** metin kutusuna **sanal ağ**yazın. Sanal ağ kaynağını bulup seçin.
+1. Market 'te **Ara** metin kutusuna **sanal ağ** yazın. Sanal ağ kaynağını bulup seçin.
 
 1. **Sanal ağ sayfasında,** özel bulutunuz için Sanal ağınızı kurmak üzere **Oluştur** ' u seçin.
 
 1. **Sanal ağ oluştur** sayfasında, sanal ağınızın ayrıntılarını girin.
 
-1. **Temel bilgiler** sekmesinde, sanal ağ için bir ad girin ve uygun bölgeyi seçip **İleri ' yı seçin: IP adresleri**.
+1. **Temel bilgiler** sekmesinde, sanal ağ için bir ad girin, uygun bölgeyi seçin ve **Ileri: IP adresleri**' ni seçin.
 
-1. **IP adresleri** sekmesinde, **IPv4 adres alanı**altında, önceki öğreticide oluşturduğunuz adres alanını girin.
+1. **IP adresleri** sekmesinde, **IPv4 adres alanı** altında, önceki öğreticide oluşturduğunuz adres alanını girin.
 
    > [!IMPORTANT]
    > Önceki öğreticide özel bulutunuzu oluştururken kullandığınız adres alanı **ile örtüşmeyen bir** adres alanı kullanmanız gerekir.
 
-1. **+ Alt ağ**Ekle ' yi seçin ve **alt ağ ekle** sayfasında, alt ağa bir ad ve uygun adres aralığı verin. Bittiğinde **Ekle**’yi seçin.
+1. **+ Alt ağ** Ekle ' yi seçin ve **alt ağ ekle** sayfasında, alt ağa bir ad ve uygun adres aralığı verin. Bittiğinde **Ekle**’yi seçin.
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
@@ -58,7 +58,7 @@ Artık bir sanal ağ oluşturduğunuza göre, bir sanal ağ geçidi oluşturacak
 
 1. Kaynak grubunuzda, yeni bir kaynak eklemek için **+ Ekle** ' yi seçin.
 
-1. **Market** metin kutusunda, **sanal ağ geçidi**yazın. Sanal ağ kaynağını bulup seçin.
+1. **Market** metin kutusunda, **sanal ağ geçidi** yazın. Sanal ağ kaynağını bulup seçin.
 
 1. **Sanal ağ geçidi** sayfasında **Oluştur**' u seçin.
 
@@ -76,7 +76,7 @@ Artık bir sanal ağ oluşturduğunuza göre, bir sanal ağ geçidi oluşturacak
    | **Ağ geçidi alt ağ adres aralığı** | Bu değer, sanal ağı seçtiğinizde doldurulur. Varsayılan değeri değiştirmeyin. |
    | **Genel IP adresi** | **Yeni oluştur**’u seçin. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Gözden geçir + oluştur ' u seçin." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Alanlar için değerler sağlayın ve ardından gözden geçir + oluştur ' u seçin." border="true":::
 
 1. Ayrıntıların doğru olduğundan emin olun ve sanal ağ geçidinizin dağıtımını başlatmak için **Oluştur** ' u seçin. 
 1. Dağıtım tamamlandıktan sonra, ExpressRoute bağlantınızı Azure VMware Çözüm özel bulutunuzu içeren sanal ağ geçidine bağlamak için sonraki bölüme geçin.
@@ -92,9 +92,9 @@ Artık bir sanal ağ geçidi dağıttığınıza göre, Azure VMware çözümün
 
 VCenter ve NSX Manager 'da oturum açmak için vCenter web istemcisinin ve NSX-T Manager sitesinin URL 'Lerine ihtiyacınız vardır. 
 
-Azure VMware çözümünüz özel buluta gidin, **Yönet**bölümünde **kimlik**' i seçin, burada gereken bilgileri bulabilirsiniz.
+Azure VMware çözümünüz özel buluta gidin, **Yönet** bölümünde **kimlik**' i seçin, burada gereken bilgileri bulabilirsiniz.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Gözden geçir + oluştur ' u seçin." border="true":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="VCenter ve NSX-T kimlik bilgileri ve Web istemcisi URL 'Lerinin ekran görüntüsü." border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

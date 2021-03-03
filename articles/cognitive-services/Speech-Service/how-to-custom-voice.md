@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733525"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
@@ -39,10 +39,10 @@ Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kulla
 
 ## <a name="custom-neural-voices"></a>Özel sinir sesleri
 
-Özel ses Şu anda hem standart hem de sinir katmanlarını desteklemektedir. Özel sinir ses, kullanıcıların daha az veri gerektirmesi sırasında daha yüksek kaliteli ses modelleri oluşturmasını ve yapay zeka dağıtmanıza yardımcı olan ölçüler sağladığını sağlar. Daha doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmek ve müşterilerinizin ve son kullanıcılarınızın, en son metin okuma teknolojisinden sorumlu bir şekilde faydalanmasını sağlamak için özel sinir Voice kullanmanız önerilir. [Özel sinir sesi hakkında daha fazla bilgi edinin](https://aka.ms/CNV-Transparency-Note). 
+Özel ses Şu anda hem standart hem de sinir katmanlarını desteklemektedir. Özel sinir ses, kullanıcıların daha az veri gerektirmesi sırasında daha yüksek kaliteli ses modelleri oluşturmasını ve yapay zeka dağıtmanıza yardımcı olan ölçüler sağladığını sağlar. Daha doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmek ve müşterilerinizin ve son kullanıcılarınızın, en son metin okuma teknolojisinden sorumlu bir şekilde faydalanmasını sağlamak için özel sinir Voice kullanmanız önerilir. [Özel sinir sesi hakkında daha fazla bilgi edinin](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 > [!NOTE]
-> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak özel sinir Voice kullanımını sınırlandırdık. Teknolojiye yalnızca uygulamalarınız incelendikten ve sorumlu AI ilkelerimize göre hizalama olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Erişim sınırı](https://aka.ms/gating-overview) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sesin standart ve sinir sürümü için desteklenen [Diller](language-support.md#customization) ve [bölgeler](regions.md#custom-voices) farklıdır. Başlamadan önce ayrıntıları denetleyin.  
+> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak özel sinir Voice kullanımını sınırlandırdık. Teknolojiye yalnızca uygulamalarınız incelendikten ve sorumlu AI ilkelerimize göre hizalama olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Erişim sınırı](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sesin standart ve sinir sürümü için desteklenen [Diller](language-support.md#customization) ve [bölgeler](regions.md#custom-voices) farklıdır. Başlamadan önce ayrıntıları denetleyin.  
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
@@ -71,7 +71,7 @@ Veriler, modeller, testler ve uç noktalar gibi içerikler, özel ses portalınd
 
 Sinir olmayan (veya standart) özel bir ses kullanıyorsanız aşağıdaki adımları izleyerek hemen özel sinir sesinize geçiş yapmayı düşünün. Özel sinir sesine taşınmanız, daha fazla doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmenize ve müşterilerinizin ve son kullanıcılarınızın en son metin okuma teknolojisinden sorumlu bir şekilde yararlanmasını sağlamanıza yardımcı olur. 
 
-1. [Erişim sınırı](https://aka.ms/gating-overview) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sinir Voice hizmetine erişimin, Microsoft 'un, uygunluk ölçütlerimize göre tek bir kararına tabi olduğunu unutmayın. Müşteriler, yalnızca uygulaması incelendikten sonra teknolojiye erişim elde edebilir ve [sorumlu AI](https://microsoft.com/ai/responsible-ai) ilkelerimizi ve [kullanım kuralları](https://aka.ms/custom-neural-code-of-conduct)ile ilgili olarak bu BT 'yi kullanarak bu teknolojiyi kullanmaya kararlıdır. 
+1. [Erişim sınırı](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sinir Voice hizmetine erişimin, Microsoft 'un, uygunluk ölçütlerimize göre tek bir kararına tabi olduğunu unutmayın. Müşteriler, yalnızca uygulaması incelendikten sonra teknolojiye erişim elde edebilir ve [sorumlu AI](https://microsoft.com/ai/responsible-ai) ilkelerimizi ve [kullanım kuralları](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)ile ilgili olarak bu BT 'yi kullanarak bu teknolojiyi kullanmaya kararlıdır. 
 2. Uygulamanız onaylandıktan sonra, "sinir" eğitim özelliğine erişim izni verilir. Uygulamanızda sağladığınız aynı Azure aboneliğini kullanarak [özel bir ses portalında](https://speech.microsoft.com/customvoice) oturum olduğunuzdan emin olun. 
     > [!IMPORTANT]
     > Sesli tatatyi korumak ve ses modellerini izinsiz kayıtla veya sesli taçmadan onay olmadan eğitmek için müşterinin izin verilen ses taçının kayıtlı bir bildirimini yüklemesi gerekir. Kayıt betiğinizi hazırlarken, bu tümceyi eklediğinizden emin olun. "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."

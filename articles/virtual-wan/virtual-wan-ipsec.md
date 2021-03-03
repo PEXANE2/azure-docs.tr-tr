@@ -1,20 +1,21 @@
 ---
-title: Azure sanal WAN varsayılan IPSec ilkeleri | Microsoft Docs
+title: Sanal WAN siteden siteye IPSec ilkeleri
+titleSuffix: Azure Virtual WAN
 description: Varsayılan Başlatıcı ve Yanıtlayıcı ilkeleri ve özel ilke birleşimleri dahil olmak üzere Azure sanal WAN IPSec bağlantı ilkeleri hakkında bilgi edinin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/24/2021
 ms.author: cherylmc
-ms.openlocfilehash: 30c58a26a326370a2566bc9ebbec33bfbd4b3173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726691"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>IPSec bağlantısı için sanal WAN varsayılan ilkeleri
+# <a name="site-to-site-ipsec-policies"></a>Siteden siteye IPSec ilkeleri
 
 Bu makalede desteklenen IPSec ilkesi birleşimleri gösterilmektedir.
 
@@ -29,4 +30,5 @@ Bu makalede desteklenen IPSec ilkesi birleşimleri gösterilmektedir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Özel bir IPSec ilkesi yapılandırma adımları için bkz. [sanal WAN için özel IPSec Ilkesi yapılandırma](virtual-wan-custom-ipsec-portal.md).
+
 Sanal WAN hakkında daha fazla bilgi için bkz. [Azure sanal WAN](virtual-wan-about.md) ve [Azure sanal WAN hakkında SSS](virtual-wan-faq.md).

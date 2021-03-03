@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712207"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
@@ -40,7 +40,7 @@ Ayrıca, Azure Arc etkin sunucular, makinede konuk yapılandırma ilkelerini etk
 
 **Azure yayı dağıtmak için:**
 
-- Bir makine için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri izleyin.
+- Bir makine için [hızlı başlangıç: Azure Arc etkin sunucularla karma makineleri bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri izleyin.
 - Birden çok makineyi ölçekteki yay etkin sunuculara bağlamak için bkz. [ölçekli karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md)
 
 > [!TIP]

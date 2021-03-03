@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: e8ad1cda8f80b1dbbdd56fb47bbf6c22aff82729
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 128a82fdc9b5a37258b5ca245a63bf52c050db26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622273"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713618"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -183,12 +183,12 @@ Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığını
 ## <a name="additional-security-features"></a>Ek güvenlik özellikleri
 Azure Izleyici/Log Analytics ortamınızı daha da güvenli hale getirmek için bu ek güvenlik özelliklerini kullanabilirsiniz. Bu özellikler daha fazla yönetici yönetimi gerektirir. 
 - [Müşteri tarafından yönetilen (güvenlik) anahtarlar](../logs/customer-managed-keys.md) -Log Analytics çalışma alanlarınıza gönderilen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Azure Key Vault kullanımını gerektirir. 
-- [Özel/müşteri tarafından yönetilen depolama](../platform/private-storage.md) -kişisel şifreli depolama hesabınızı yönetin ve izleme verilerini depolamak için Log Analytics söyleyin 
-- [Özel bağlantı ağı](../platform/private-link-security.md) -Azure özel bağlantısı, Azure PaaS hizmetlerini (Azure izleyici dahil) özel uç noktaları kullanarak sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. 
+- [Özel/müşteri tarafından yönetilen depolama](./private-storage.md) -kişisel şifreli depolama hesabınızı yönetin ve izleme verilerini depolamak için Log Analytics söyleyin 
+- [Özel bağlantı ağı](./private-link-security.md) -Azure özel bağlantısı, Azure PaaS hizmetlerini (Azure izleyici dahil) özel uç noktaları kullanarak sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. 
 - [Azure müşteri kasası](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -müşteri kasası Microsoft Azure, müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure [VM hızlı başlangıç](../learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
+* Azure [VM hızlı başlangıç](../vm/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
 
-*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../vm/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../learn/quick-collect-windows-computer.md)
+*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../vm/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../vm/quick-collect-windows-computer.md)

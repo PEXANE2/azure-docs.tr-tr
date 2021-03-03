@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 685c54131e4a82950ea64e5374d9e1d260ffabc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713686"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma (Önizleme)
 
 > [!NOTE]
-> Bu makalede, Log Analytics çalışma alanındaki metin verilerinin toplanarak nasıl ayrıştırılacağını açıklanmaktadır. Bir sorgu filtresinde, [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md)bölümünde açıklanan yönergelerin toplanmasından sonra metin verilerini ayrıştırmayı öneririz. Özel alanları kullanarak çeşitli avantajlar sağlar.
+> Bu makalede, Log Analytics çalışma alanındaki metin verilerinin toplanarak nasıl ayrıştırılacağını açıklanmaktadır. Bir sorgu filtresinde, [Azure izleyici 'de metin verileri ayrıştırma](./parse-text.md)bölümünde açıklanan yönergelerin toplanmasından sonra metin verilerini ayrıştırmayı öneririz. Özel alanları kullanarak çeşitli avantajlar sağlar.
 
 > [!IMPORTANT]
-> Özel alanlar, Log Analytics çalışma alanında toplanan veri miktarını artırır ve bu da maliyetinizi artırabilir. Ayrıntılar için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](../platform/manage-cost-storage.md#pricing-model) .
+> Özel alanlar, Log Analytics çalışma alanında toplanan veri miktarını artırır ve bu da maliyetinizi artırabilir. Ayrıntılar için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](./manage-cost-storage.md#pricing-model) .
 
 Azure Izleyici 'nin **özel alanlar** özelliği, kendi aranabilir alanlarınızı ekleyerek Log Analytics çalışma alanınızdaki mevcut kayıtları genişletmenizi sağlar.  Özel alanlar, aynı kayıttaki diğer özelliklerden ayıklanan verilerden otomatik olarak doldurulur.
 
@@ -42,9 +42,9 @@ Aşağıdaki bölümlerde özel alan oluşturma yordamı sağlanmaktadır.  Bu m
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1. adım – özel alana sahip olacak kayıtları tanımla
-İlk adım, özel alanı alacak kayıtları tanımlamaktır.  [Standart bir günlük sorgusuyla](../log-query/log-query-overview.md) başlayıp Azure izleyicisinin öğrenolacağı model olarak davranacak bir kayıt seçersiniz.  Verileri özel bir alana çıkaracağınızı belirttiğinizde, **alan ayıklama Sihirbazı** , ölçütleri doğruladığınızda ve iyileştirmeniz durumunda açılır.
+İlk adım, özel alanı alacak kayıtları tanımlamaktır.  [Standart bir günlük sorgusuyla](./log-query-overview.md) başlayıp Azure izleyicisinin öğrenolacağı model olarak davranacak bir kayıt seçersiniz.  Verileri özel bir alana çıkaracağınızı belirttiğinizde, **alan ayıklama Sihirbazı** , ölçütleri doğruladığınızda ve iyileştirmeniz durumunda açılır.
 
-1. Özel alana sahip olacak [kayıtları almak Için](../log-query/log-query-overview.md) **günlüklere** gidin ve bir sorgu kullanın.
+1. Özel alana sahip olacak [kayıtları almak Için](./log-query-overview.md) **günlüklere** gidin ve bir sorgu kullanın.
 2. Log Analytics, özel alanı doldurmak için veri ayıklama modeli olarak görev yapmak üzere kullanacağı bir kayıt seçin.  Bu kayıttan ayıklamak istediğiniz verileri tanımlayacaksınız ve Log Analytics tüm benzer kayıtlar için özel alanı doldurma mantığını belirlemek için bu bilgileri kullanır.
 3. Kayıt özelliklerini genişletin, kaydın üstteki özelliğinin solundaki elipsi tıklatın ve **alanları Ayıkla**' yı seçin.
 4. **Alan ayıklama Sihirbazı** açılır ve seçtiğiniz kayıt **ana örnek** sütununda görüntülenir.  Özel alan, seçilen özelliklerde aynı değerlere sahip olan kayıtlar için tanımlanır.  
@@ -128,6 +128,5 @@ Artık özel alanı başka bir kayıt özelliği gibi kullanabiliriz.  Bunu gös
 ![Sorguya göre Gruplandır](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ölçütler için özel alanlar kullanarak sorgular oluşturmaya yönelik [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Ölçütler için özel alanlar kullanarak sorgular oluşturmaya yönelik [günlük sorguları](./log-query-overview.md) hakkında bilgi edinin.
 * Özel alanlar kullanarak ayrıştırdığınızda [özel günlük dosyalarını](../agents/data-sources-custom-logs.md) izleyin.
-
