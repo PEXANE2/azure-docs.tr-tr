@@ -10,18 +10,18 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871511"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659690"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Makine öğrenimi modellerinde unfairness azaltma (Önizleme)
 
 Machine Learning 'de eşitliği hakkında bilgi edinin ve [Fairlearn](https://fairlearn.github.io/) açık kaynaklı Python paketinin makine öğrenimi modelleriyle ilgili unfairness sorunları azaltmanıza nasıl yardımcı olabileceğini öğrenin. Eşitliği sorunlarını anlamak ve makine öğrenimi modellerini oluştururken eşitliği değerlendirmek için çaba harcadıysanız, dengeli olmayan sonuçlar üreten modeller oluşturabilirsiniz.
 
-Fairlearn açık kaynak paketine yönelik [Kullanıcı kılavuzunun](https://fairlearn.github.io/master/user_guide/index.html) aşağıdaki Özeti, oluşturduğunuz AI sistemlerinin eşitliği ' i değerlendirmek için nasıl kullanılacağını açıklar.  Fairlearn açık kaynak paketi ayrıca, gözlemlediğiniz eşitliği sorunlarını azaltmaya veya azaltmanıza yardımcı olmaya yönelik seçenekler de sunabilir.  Azure Machine Learning eğitim sırasında AI sistemlerinin eşitliği değerlendirmesini etkinleştirmek için [nasıl yapılır](how-to-machine-learning-fairness-aml.md) ve [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) bakın.
+Fairlearn açık kaynak paketine yönelik [Kullanıcı kılavuzunun](https://fairlearn.github.io/main/user_guide/index.html) aşağıdaki Özeti, oluşturduğunuz AI sistemlerinin eşitliği ' i değerlendirmek için nasıl kullanılacağını açıklar.  Fairlearn açık kaynak paketi ayrıca, gözlemlediğiniz eşitliği sorunlarını azaltmaya veya azaltmanıza yardımcı olmaya yönelik seçenekler de sunabilir.  Azure Machine Learning eğitim sırasında AI sistemlerinin eşitliği değerlendirmesini etkinleştirmek için [nasıl yapılır](how-to-machine-learning-fairness-aml.md) ve [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) bakın.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Machine Learning modellerinde eşitliği nedir?
@@ -100,7 +100,7 @@ Fairlearn açık kaynak paketi, karşı işlem ve azaltma unfairness azaltma alg
 - Azaltma: Bu algoritmalar standart bir siyah kutu Machine Learning tahmin aracı (örn. bir lightgbm modeli) alır ve yeniden ağırlıklı eğitim veri kümeleri dizisi kullanarak bir dizi geri çekme modeli oluşturur. Örneğin, belirli bir cinsiyet olan başvuranlar, modellerin yeniden eğitilmesi ve farklı cinsiyet gruplarının genelinde farklılıkları azaltmak için yukarı ağırlıklı veya aşağı ağırlıklı olabilir. Kullanıcılar daha sonra doğruluk (veya diğer performans ölçümü) arasında en iyi ticareti sağlayan bir model seçebilir ve genellikle iş kurallarını ve maliyet hesaplamalarını temel alan olması gerekir.  
 - İşlem sonrası: Bu algoritmalar mevcut bir sınıflandırıcının yanı sıra hassas özelliği giriş olarak alır. Ardından, belirtilen eşitliği kısıtlamalarını zorlamak için sınıflandırıcının tahminiyle bir dönüşüm türetirsiniz. Eşik iyileştirmesinin en büyük avantajı, modeli yeniden eğitmesinin gerekli olmadığı için kolaylık ve esneklik sağlar. 
 
-| Algoritma | Description | Machine Learning görevi | Hassas Özellikler | Desteklenen eşlik kısıtlamaları | Algoritma türü |
+| Algoritma | Açıklama | Machine Learning görevi | Hassas Özellikler | Desteklenen eşlik kısıtlamaları | Algoritma türü |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | [Bir indirimde bir Indirimleri yaklaşımında](https://arxiv.org/abs/1803.02453) açıklanan, dengeli sınıflandırmada siyah kutu yaklaşımı | İkili sınıflandırma | Kategorik | [Demografik eşliği](#parity-constraints), [eşitlenmiş gürültü](#parity-constraints) | Azaltma |
 | `GridSearch` | [Bir indirimde bir azaltmada](https://arxiv.org/abs/1803.02453) tanımlanan siyah kutu yaklaşımı| İkili sınıflandırma | İkili | [Demografik eşliği](#parity-constraints), [eşitlenmiş gürültü](#parity-constraints) | Azaltma |
@@ -109,6 +109,6 @@ Fairlearn açık kaynak paketi, karşı işlem ve azaltma unfairness azaltma alg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Fairlearn 'in [GitHub](https://github.com/fairlearn/fairlearn/), [Kullanıcı Kılavuzu](https://fairlearn.github.io/master/user_guide/index.html), [örnekler](https://fairlearn.github.io/master/auto_examples/)ve [örnek not defterlerini](https://github.com/fairlearn/fairlearn/tree/master/notebooks)kullanıma alarak farklı bileşenleri nasıl kullanacağınızı öğrenin.
+- Fairlearn 'in [GitHub](https://github.com/fairlearn/fairlearn/), [Kullanıcı Kılavuzu](https://fairlearn.github.io/main/user_guide/index.html), [örnekler](https://fairlearn.github.io/main/auto_examples/index.html)ve [örnek not defterlerini](https://github.com/fairlearn/fairlearn/tree/master/notebooks)kullanıma alarak farklı bileşenleri nasıl kullanacağınızı öğrenin.
 - Azure Machine Learning makine öğrenimi modellerinin eşitliği değerlendirmesini [nasıl](how-to-machine-learning-fairness-aml.md) etkinleştirebileceğinizi öğrenin.
 - Azure Machine Learning ek eşitliği değerlendirmesi senaryoları için [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) bakın. 

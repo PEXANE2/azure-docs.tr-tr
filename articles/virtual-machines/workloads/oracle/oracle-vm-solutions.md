@@ -2,18 +2,18 @@
 title: Azure sanal makinelerinde Oracle çözümleri | Microsoft Docs
 description: Microsoft Azure 'de Oracle sanal makine görüntülerinin desteklenen yapılandırma ve sınırlamaları hakkında bilgi edinin.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 093d3c0da0b40f2a287b1cb451a419f71ce4b8d7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957597"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669065"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -156,7 +156,7 @@ Oracle ve Microsoft, Web Logic Server 'ı Azure Uygulama tekliflerine yönelik b
    -Dweblogic.rjvm.enableprotocolswitch=true
 ```
 
-İlgili bilgiler için, bkz. KB **860340.1** makalesi 860340,1 <https://support.oracle.com> .
+İlgili bilgiler için, bkz. KB  makalesi 860340,1 <https://support.oracle.com> .
 
 - **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server 'da dinamik bir küme kullanmak istediğinizi ve Azure 'da tek ve genel yük dengeli bir uç nokta ile kullanıma sunduğunuzu varsayalım. Bu işlem, yönetilen sunucuların her biri için (bir aralıktan dinamik olarak atanmayan) sabit bir bağlantı noktası numarası kullandığınız ve yöneticinin izlemediği makinelerden daha fazla yönetilen sunucu başlatmadığı sürece yapılabilir. Diğer bir deyişle, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden (birden çok Oracle WebLogic Server örneği aynı sanal makineyi paylaştıkları) daha fazla Oracle WebLogic Servers 'ın başlatılmasına neden olursa, belirli bir bağlantı noktası numarasına bağlamak için bu Oracle WebLogic Servers örneklerinden birden fazla olması mümkün değildir. Bu sanal makinedeki diğerleri başarısız olur.
 

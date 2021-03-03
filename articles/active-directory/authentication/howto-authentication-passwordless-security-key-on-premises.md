@@ -1,29 +1,26 @@
 ---
-title: Passwordless güvenlik anahtarı şirket içi kaynaklarda oturum açma (Önizleme)-Azure Active Directory
-description: Azure Active Directory (Önizleme) kullanarak şirket içi kaynaklarda passwordless güvenlik anahtarı oturumunu nasıl etkinleştirebileceğinizi öğrenin
+title: Passwordless güvenlik anahtarı şirket içi kaynaklarda oturum açma-Azure Active Directory
+description: Azure Active Directory kullanarak şirket içi kaynaklarda passwordless güvenlik anahtarı oturumu açmayı nasıl etkinleştirebileceğinizi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743488"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647481"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin 
 
 Bu belge, **Azure AD 'ye katılmış** ve **hibrit Azure AD 'ye katılmış** Windows 10 cihazlarındaki ortamlar için, şirket içi kaynaklarda parolasız kimlik doğrulamanın etkinleştirilmesinde odaklanır. Bu işlevsellik, Microsoft uyumlu güvenlik anahtarlarını kullanarak şirket içi kaynaklara sorunsuz çoklu oturum açma (SSO) sağlar.
-
-> [!NOTE]
-> FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 anahtarlarını kullanarak şirket içi kaynaklara SSO
 
@@ -42,7 +39,7 @@ Azure Active Directory (AD) bir veya daha fazla Active Directory etki alanı iç
 
 ## <a name="requirements"></a>Gereksinimler
 
-Kuruluşlar, bu makaledeki adımları tamamlamadan önce [Windows 10 cihazlarında (Önizleme) passwordless güvenlik anahtarı Işaretini etkinleştirme](howto-authentication-passwordless-security-key.md) adımlarını tamamlamalıdır.
+Kuruluşlar, bu makaledeki adımları tamamlamadan önce [Windows 10 cihazlarında passwordless güvenlik anahtarı Işaretini etkinleştirme](howto-authentication-passwordless-security-key.md) adımlarını tamamlamalıdır.
 
 Kuruluşların Ayrıca aşağıdaki yazılım gereksinimlerini karşılaması gerekir.
 
@@ -156,13 +153,13 @@ Parolanızın süresi dolmuşsa FIDO ile oturum açma engellenmiştir. Beklentis
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
+Geri bildirim paylaşmak veya bu özellikle ilgili sorunlarla karşılaşırsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
 
 1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
 1. Aşağıdaki kategoriye göre geri bildirim gönderin:
    - Kategori: güvenlik ve Gizlilik
    - Alt Kategori: FıDO
-1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın
+1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

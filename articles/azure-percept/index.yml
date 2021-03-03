@@ -1,0 +1,117 @@
+### YamlMime:Landing
+title: Azure Percept belgeleri
+summary: Azure Percept, uçta Perception tabanlı AI oluşturmaya ve dağıtmaya yönelik uçtan uca bir çözümdür.
+metadata:
+  title: Azure Percept belgeleri
+  description: Azure Percept, uçtan uca bir Edge AI platformudur.
+  services: azure-percept
+  ms.service: azure-percept
+  ms.topic: landing-page
+  author: elqu20
+  ms.author: v-elqu
+  ms.date: 02/11/2021
+  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665800"
+landingContent:
+- title: Azure Percept nedir?
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Percept genel bakış
+      url: overview-azure-percept.md
+    - text: Azure Percept DK genel bakış
+      url: overview-azure-percept-dk.md
+    - text: Azure Percept sese genel bakış
+      url: overview-azure-percept-audio.md
+    - text: Azure Percept Studio 'ya genel bakış
+      url: overview-azure-percept-studio.md
+    - text: Azure Percept güvenliğine genel bakış
+      url: overview-percept-security.md
+- title: Azure Percept DK ile çalışmaya başlama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Percept DK 'yi kutudan kaldırma ve birleştirme
+      url: quickstart-percept-dk-unboxing.md
+    - text: Azure Percept DK 'yi Azure 'a bağlama ve bir Vision AI modeli dağıtma
+      url: quickstart-percept-dk-set-up.md
+  - linkListType: reference
+    links:
+    - text: Azure Percept DK veri sayfası
+      url: azure-percept-dk-datasheet.md
+    - text: Azure Percept Vision veri sayfası
+      url: azure-percept-vision-datasheet.md
+    - text: Azure Percept ses veri sayfası
+      url: azure-percept-audio-datasheet.md
+- title: Kod içermeyen bir Vision AI prototipi oluşturun
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kod içermeyen bir Vision çözümü oluşturun
+      url: tutorial-nocode-vision.md
+  - linkListType: how-to-guide
+    links:
+    - text: Devkit 'in video akışını görüntüleyin
+      url: how-to-view-video-stream.md
+    - text: Devkit 'e bir AI modeli dağıtma
+      url: how-to-deploy-model.md
+    - text: Bir Vision projesi için görüntüleri yakalama
+      url: how-to-capture-images.md
+    - text: Devkit 'in telemetrinizi görüntüleme
+      url: how-to-view-telemetry.md
+- title: Azure Percept Audio ile çalışmaya başlama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Percept ses kurma
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
+    - text: Azure Percept ses veri sayfası
+      url: azure-percept-audio-datasheet.md
+    - text: Azure Percept ses sorunlarını giderme
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Azure Percept ses ışığı ve düğmesi
+      url: audio-button-led-behavior.md
+- title: Kod içermeyen sesli yardım çözümü oluşturma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kod içermeyen bir ses Yardımcısı oluşturun
+      url: tutorial-no-code-speech.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sesli yardımcınızı yapılandırma
+      url: how-to-configure-voice-assistant.md
+    - text: Sesli yardımcınızı yönetin
+      url: how-to-manage-voice-assistant.md
+- title: Azure Percept ile gelişmiş geliştirme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Gelişmiş geliştirmeye genel bakış
+      url: overview-advanced-code.md
+  - linkListType: tutorial
+    links:
+    - text: Cloud Services kullanarak gelişmiş geliştirme
+      url: advanced-development-cloud.md
+    - text: Yerel araçları kullanarak gelişmiş geliştirme
+      url: advanced-development-local.md
+- title: Azure Percept DK güncel tutun
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Percept DK güncelleştirme deneyimine genel bakış
+      url: overview-update-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güncelleştirmeleri ayarla
+      url: how-to-set-up-over-the-air-updates.md
+    - text: Kablosuz güncelleştirmeler
+      url: how-to-update-over-the-air.md
+    - text: USB üzerinden güncelleştirme
+      url: how-to-update-via-usb.md

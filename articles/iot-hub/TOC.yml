@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: Event Grid’den cihaz bağlantı durumu olaylarını isteme
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: Güncelleştirmeleri dağıt
+      items:
+        - name: Cihaz güncelleştirme hesabı oluştur
+          href: /iot-hub-device-update/create-device-update-account.md
+        - name: Bir güncelleştirmeyi içeri aktar
+          href: /iot-hub-device-update/import-update.md
+        - name: Güncelleştirme grubu oluşturma
+          href: /iot-hub-device-update/create-update-group.md
+        - name: Güncelleştirme dağıtma
+          href: /iot-hub-device-update/deploy-update.md
     - name: Gerçek cihaz kullanma
       items:
         - name: Çevrimiçi simülatör kullanma
@@ -432,7 +442,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

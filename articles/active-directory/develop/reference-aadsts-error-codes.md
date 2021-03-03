@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428040"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649232"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -95,7 +95,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS50000 | Tokenıssuanceerror-oturum açma hizmetiyle ilgili bir sorun var. Bu sorunu çözmek için bir [destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS50001 | Invalidresource-kaynak devre dışı veya yok. Erişmeye çalıştığınız kaynağın tam kaynak URL 'sini belirttiğinizden emin olmak için uygulamanızın kodunu kontrol edin.  |
 | AADSTS50002 | NotAllowedTenant-kiracı üzerinde kısıtlanmış bir ara sunucu erişimi nedeniyle oturum açma başarısız oldu. Bu sizin kendi kiracı ilkenizse kısıtlanmış kiracı ayarlarınızı değiştirerek bu sorunu çözebilirsiniz. |
-| AADSTS500021 | ' {Tenant} ' kiracısına erişim reddedildi. AADSTS500021, kiracı kısıtlama özelliğinin yapılandırıldığını ve kullanıcının üst bilgide belirtilen izin verilen kiracılar listesinde olmayan bir kiracıya erişmeye çalıştığı anlamına gelir `Restrict-Access-To-Tenant` . Daha fazla bilgi için bkz. [SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanma](/azure/active-directory/manage-apps/tenant-restrictions).|
+| AADSTS500021 | ' {Tenant} ' kiracısına erişim reddedildi. AADSTS500021, kiracı kısıtlama özelliğinin yapılandırıldığını ve kullanıcının üst bilgide belirtilen izin verilen kiracılar listesinde olmayan bir kiracıya erişmeye çalıştığı anlamına gelir `Restrict-Access-To-Tenant` . Daha fazla bilgi için bkz. [SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanma](../manage-apps/tenant-restrictions.md).|
 | AADSTS50003 | Eksik bir imzalama anahtarı veya sertifikası nedeniyle MissingSigningKey-oturum açma başarısız oldu. Bu, uygulamada bir imzalama anahtarı yapılandırılmadığı için olabilir. Bölümünde özetlenen çözünürlüğe göz atın [. /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Galler.exe # Certificate-veya-Key-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Sorun yaşamaya devam ederseniz uygulama sahibine veya bir uygulama yöneticisine başvurun. |
 | AADSTS50005 | DevicePolicyError-Kullanıcı, şu anda koşullu erişim ilkesi aracılığıyla desteklenmeyen bir platformdan cihazda oturum açmaya çalıştı. |
 | AADSTS50006 | Invalidsignature-geçersiz bir imza nedeniyle Imza doğrulaması başarısız oldu. |
@@ -168,6 +168,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired-istemci, Windows 10 hesapları uzantısı aracılığıyla bir SSO belirteci elde etme yeteneğine sahip, ancak istekte belirteç bulunamadı veya sağlanan belirtecin geçerliliği bitti. |
 | AADSTS50169 | Invalidrequestbadrealm-bölge, geçerli hizmet ad alanının yapılandırılmış bir bölgesi değil. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping-dış denetimler eşlemesi eksik. |
+| AADSTS50173 | Yeni Simgeletokengerekliyse-belirtilen izin, iptal edildiğinden ve yeni bir kimlik doğrulama belirteci gerektirdiğinden süresi doldu. Yönetici veya Kullanıcı bu kullanıcı için belirteçleri iptal etti, sonraki belirteç yenilemelerinin başarısız olmasına ve yeniden kimlik doğrulaması gerektirmesine neden olur. Kullanıcının yeniden oturum açmasını sağlayabilirsiniz. |
 | AADSTS50177 | External, Genotsupportedforpassthroughusers-dış sınama, geçiş kullanıcıları için desteklenmez. |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers-oturum denetimi, geçiş kullanıcıları için desteklenmez. |
 | AADSTS50180 | WindowsIntegratedAuthMissing-tümleşik Windows kimlik doğrulaması gerekiyor. Sorunsuz SSO için kiracıyı etkinleştirin. |

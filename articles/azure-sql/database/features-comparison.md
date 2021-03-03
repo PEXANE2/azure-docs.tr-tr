@@ -8,16 +8,16 @@ ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 12/25/2020
-ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/21/2021
+ms.openlocfilehash: 7acb891cc887fb118a338cc837c5c5c4c98a63d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809522"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655947"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Özellikler karşılaştırması: Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Evet-bkz. [sertifika deposu](always-encrypted-certificate-store-configure.md) ve [Anahtar Kasası](always-encrypted-azure-key-vault-configure.md) | Evet-bkz. [sertifika deposu](always-encrypted-certificate-store-configure.md) ve [Anahtar Kasası](always-encrypted-azure-key-vault-configure.md) |
 | [AlwaysOn Kullanılabilirlik Grupları](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99,99-99.995% kullanılabilirliği](high-availability-sla.md) her veritabanı için garanti edilir. Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış konusunda](business-continuity-high-availability-disaster-recover-hadr-overview.md) ele alınmıştır | [99,99.](high-availability-sla.md) tüm veritabanları için kullanılabilirlik garanti edilir ve [Kullanıcı tarafından yönetilemez](../managed-instance/transact-sql-tsql-differences-sql-server.md#availability). Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği konusunda genel bakış konusunda](business-continuity-high-availability-disaster-recover-hadr-overview.md)ele alınmıştır. Başka bir bölgedeki ikincil bir SQL yönetilen örneği yapılandırmak için [otomatik yük devretme gruplarını](auto-failover-group-overview.md) kullanın. SQL Server örnekleri ve SQL veritabanı SQL yönetilen örneği için ikincil olarak kullanılamaz. |
 | [Veritabanı ekleme](/sql/relational-databases/databases/attach-a-database) | Hayır | Hayır |
-| [Denetim](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Evet](auditing-overview.md)| [Evet](../managed-instance/auditing-configure.md), bazı [farklılıklar](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing) |
+| [Girdilerini](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Evet](auditing-overview.md)| [Evet](../managed-instance/auditing-configure.md), bazı [farklılıklar](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing) |
 | [Azure Active Directory (Azure AD) kimlik doğrulaması](authentication-aad-overview.md) | Evet. Yalnızca Azure AD kullanıcıları. | Evet. Sunucu düzeyinde Azure AD oturum açmaları dahil. |
 | [YEDEKLEME komutu](/sql/t-sql/statements/backup-transact-sql) | Hayır, yalnızca sistem tarafından başlatılan otomatik yedeklemeler-Bkz. [otomatik yedeklemeler](automated-backups-overview.md) | Evet, Kullanıcı salt kopya yedeklemesini Azure Blob depolamaya başlattı (otomatik sistem yedeklemeleri Kullanıcı tarafından başlatılamaz)-bkz. [yedekleme farklılıkları](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup) |
 | [Yerleşik işlevler](/sql/t-sql/functions/functions) | Çoğu-bkz. ayrı işlevler | Evet-bkz. [saklı yordamlar, işlevler, Tetikleyiciler farklılıkları](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
@@ -77,7 +77,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Dil öğeleri](/sql/t-sql/language-elements/language-elements-transact-sql) | Çoğu-bkz. ayrı öğeler |  Evet-bkz. [T-SQL farklılıkları](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Bağlı sunucular](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Hayır- [elastik sorgu](elastic-query-horizontal-partitioning.md) | Evet. Yalnızca dağıtılmış işlemler olmadan [SQL Server ve SQL veritabanı](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) . |
 | Dosyalardan okuyan [bağlı sunucular](/sql/relational-databases/linked-servers/linked-servers-database-engine) (CSV, Excel)| Hayır. CSV biçimi için bir alternatif olarak [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) veya [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) kullanın. | Hayır. CSV biçimi için bir alternatif olarak [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) veya [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) kullanın. [SQL yönetilen örnek geri bildirim öğesinde](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources) bu istekleri izle|
-| [Günlük aktarma](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Yüksek kullanılabilirlik](high-availability-sla.md) , her veritabanına dahildir. Olağanüstü durum kurtarma, [iş sürekliliği konusuna genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)konusunda ele alınmıştır. | Azure Data Migration hizmeti geçiş işleminin bir parçası olarak yerel olarak yerleşik olarak oluşturulmuştur. Yüksek kullanılabilirlik çözümü olarak kullanılamaz, çünkü diğer [yüksek kullanılabilirlik](high-availability-sla.md) yöntemleri her veritabanına dahil edilmiştir ve günlük dağıtımını ha alternatifi olarak kullanmanız önerilmez. Olağanüstü durum kurtarma, [iş sürekliliği konusuna genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)konusunda ele alınmıştır. Veritabanları arasında çoğaltma mekanizması olarak kullanılamaz; alternatifler olarak [iş açısından kritik katmanında](service-tier-business-critical.md)ikincil çoğaltmalar, [otomatik yük devretme grupları](auto-failover-group-overview.md)veya [işlem çoğaltması](../managed-instance/replication-transactional-overview.md) kullanın. |
+| [Günlük aktarma](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Yüksek kullanılabilirlik](high-availability-sla.md) , her veritabanına dahildir. Olağanüstü durum kurtarma, [iş sürekliliği konusuna genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)konusunda ele alınmıştır. | [Azure Data Migration hizmeti (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md) geçiş işleminin bir parçası olarak yerel olarak yerleşik olarak oluşturulmuştur. Özel veri geçiş projeleri için dış [günlük yeniden yürütme hizmeti (LRS)](../managed-instance/log-replay-service-migrate.md)olarak yerel olarak oluşturulmuştur.<br /> Yüksek kullanılabilirlik çözümü olarak kullanılamaz, çünkü diğer [yüksek kullanılabilirlik](high-availability-sla.md) yöntemleri her veritabanına dahil edilmiştir ve günlük dağıtımını ha alternatifi olarak kullanmanız önerilmez. Olağanüstü durum kurtarma, [iş sürekliliği konusuna genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)konusunda ele alınmıştır. Veritabanları arasında çoğaltma mekanizması olarak kullanılamaz; alternatifler olarak [iş açısından kritik katmanında](service-tier-business-critical.md)ikincil çoğaltmalar, [otomatik yük devretme grupları](auto-failover-group-overview.md)veya [işlem çoğaltması](../managed-instance/replication-transactional-overview.md) kullanın. |
 | [Oturum açma bilgileri ve kullanıcılar](/sql/relational-databases/security/authentication-access/principals-database-engine) | Evet, ancak `CREATE` `ALTER` oturum açma deyimleri tüm seçenekleri sunmaz (Windows ve sunucu düzeyi Azure Active Directory oturum açma). `EXECUTE AS LOGIN` desteklenmez- `EXECUTE AS USER` bunun yerine kullanın.  | Evet, bazı [farklılıklar](../managed-instance/transact-sql-tsql-differences-sql-server.md#logins-and-users)vardır. Windows oturum açma işlemleri desteklenmez ve Azure Active Directory oturum açmaları ile değiştirilmelidir. |
 | [Toplu olarak içeri aktarmada en az günlük](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Hayır, yalnızca tam kurtarma modeli desteklenir. | Hayır, yalnızca tam kurtarma modeli desteklenir. |
 | [Sistem verilerini değiştirme](/sql/relational-databases/databases/system-databases) | Hayır | Yes |
@@ -146,7 +146,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [SQL Server Integration Services (SSIS)](/sql/integration-services/sql-server-integration-services) | Evet, paketlerin Azure SQL veritabanı tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>SQL veritabanı ve SQL yönetilen örneğindeki SSIS özelliklerini karşılaştırmak için bkz. [SQL veritabanı ile SQL yönetilen örneği karşılaştırması](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). | Evet, paketlerin SQL yönetilen örneği tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>SQL veritabanı ve SQL yönetilen örneğindeki SSIS özelliklerini karşılaştırmak için bkz. [SQL veritabanı ile SQL yönetilen örneği karşılaştırması](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Hayır- [Power BI](/power-bi/) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
 | [Sorgu performansı öngörüleri (QPı)](query-performance-insight-use.md) | Evet | Hayır. SQL Server Management Studio ve Azure Data Studio yerleşik raporlarını kullanın. |
-| [Sanal Ağ](../../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, SQL yönetilen örneği müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) ve [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
+| [Adlı](../../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, SQL yönetilen örneği müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) ve [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | Sanal ağ hizmet uç noktası | [Evet](vnet-service-endpoint-rule-overview.md) | Hayır |
 | VNet genel eşleme | Evet, [özel IP ve hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md) kullanma | Evet, [sanal ağ eşlemesi](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)kullanılıyor. |
 
@@ -156,7 +156,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği, verilerinizi yönetmeniz
 
 | **Araç** | **Azure SQL Veritabanı** | **Azure SQL Yönetilen Örnek** |
 | --- | --- | --- |
-| Azure portal | Yes | Yes |
+| Azure portalı | Yes | Yes |
 | Azure CLI | Yes | Yes|
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes | Yes |
 | Azure PowerShell | Yes | Yes |
@@ -169,7 +169,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği, verilerinizi yönetmeniz
 | [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Evet [sürüm 18,0 ve üzeri](/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](xevent-db-diff-from-svr.md) bakın | Yes |
-| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Evet, [önizlemede](https://www.microsoft.com/download/details.aspx?id=38829) |
+| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | [Evet](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>Geçiş yöntemleri
 

@@ -6,23 +6,23 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202632"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668578"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin dosya uzantısı öngörüleri 
 
 Bu nasıl yapılır kılavuzunda, verilerinizde bulunan dosya uzantıları veya dosya türleri hakkında öngörülere erişme, bunları görüntüleme ve bunlara filtre uygulama açıklanmaktadır.
 
-Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2
+Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Amazon S3 demetleri
 
 Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 > [!div class="checklist"]
-> * Azure 'dan purview hesabınızı başlatın. 
+> * Azure 'dan purview hesabınızı başlatın 
 > - Verileriniz üzerinde dosya uzantısı öngörülerini görüntüleme
 > - Verilerinize ilişkin daha fazla dosya uzantısı ayrıntısı için detaya gidin
 
@@ -32,7 +32,7 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - Azure kaynaklarınızı ayarlayın ve test verileriyle ilgili hesapları doldurulmuştur
 
-- Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
+- Her veri kaynağındaki test verileri üzerinde bir tarama ayarlayın ve işlemi tamamlanmıştır. Daha fazla bilgi için bkz. [Azure 'da veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md) ve [tarama kuralı kümesi oluşturma](create-a-scan-rule-set.md).
 
 - Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
 
@@ -70,7 +70,7 @@ Varlıklarınızı tararken Azure purview, verilerinizde bulunan dosya türlerin
 
 Verilerinizde bulunan dosya türleriyle ilgili üst düzey bilgileri görüntüledikten sonra, bulundukları konum hakkında daha fazla ayrıntı ve gizli veriler için taranıp taranamayacağını öğrenmek için detaya gidin.
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/file-extension-insights/file-extension-drilldown-small.png" alt-text="Dosya Uzantısı raporu-ayrıntıya git" lightbox="media/file-extension-insights/file-extension-drilldown.png":::
 

@@ -1,6 +1,6 @@
 ---
 title: Sqlcmd ile bağlanma
-description: SYNAPSE SQL havuzuna bağlanmak ve sorgulamak için sqlcmd komut satırı yardımcı programını kullanın.
+description: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna bağlanmak ve sorgu yapmak için sqlcmd komut satırı yardımcı programını kullanın.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676246"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675728"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Sqlcmd ile Azure SYNAPSE Analytics 'te SQL havuzuna bağlanma
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Sqlcmd ile Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna bağlanma
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676246"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Bir SQL havuzuna bağlanmak ve sorgu eklemek için [sqlcmd] [sqlcmd] komut satırı yardımcı programını kullanın.  
+Adanmış bir SQL havuzuna bağlanmak ve sorgu eklemek için [sqlcmd] [sqlcmd] komut satırı yardımcı programını kullanın.  
 
 ## <a name="1-connect"></a>1. Bağlan
 
-[Sqlcmd] [sqlcmd] ile çalışmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** yazıp SQL havuzunuzun bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
+[Sqlcmd] [sqlcmd] kullanmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** öğesini ve ardından adanmış SQL havuzunuzun bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
 
 * **Server (-S):**`<`Sunucu Adı`>`.database.windows.net biçiminde belirtilmiş sunucu
-* **Veritabanı (-d):** SQL havuzu adı.
-* **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Bir SQL havuzu örneğine bağlanmak için tırnak işareti tanımlayıcıları etkinleştirilmelidir.
+* **Veritabanı (-d):** adanmış SQL havuzu adı.
+* **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Adanmış tanımlayıcıların ayrılmış bir SQL havuzu örneğine bağlanması için etkinleştirilmesi gerekir.
 
 SQL Server Kimlik Doğrulamasını kullanmak için kullanıcı adı/parola parametrelerini eklemeniz gerekir:
 

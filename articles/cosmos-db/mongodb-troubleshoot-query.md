@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340898"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659911"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API kullanırken sorgu sorunlarını giderme
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Bir sorgunun RU ücreti düşürüyoruz, genellikle gecikmeyi de azaltabilirsini
 Bu makalede, [beslenme veri kümesini](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)kullanarak yeniden oluşturabileceğiniz örnekler sağlanmaktadır.
 
 > [!NOTE] 
-> Bu makalede, MongoDB için Azure Cosmos DB "s API 'sinin 3,6 sürümünü kullandığınızı varsaymaktadır. Sürüm 3,2 ' de düzgün şekilde gerçekleştiren bazı sorgular, sürüm 3,6 ' de önemli geliştirmelere sahiptir. Bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
+> Bu makale, sürüm 3,6 ve üzeri olan MongoDB hesapları için Azure Cosmos DB API kullandığınızı varsayar. Sürüm 3,2 ' de düzgün şekilde gerçekleştiren bazı sorgular, 3.6 + sürümlerinde önemli geliştirmelere sahiptir. Bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
 
 ## <a name="use-explain-command-to-get-metrics"></a>Ölçümleri almak için $explain komutunu kullanın
 
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 `$explain`Komut çıktısı uzun olur ve sorgu yürütme hakkında ayrıntılı bilgi içerir. Genellikle, sorgu performansını en iyi duruma getirirken odaklanmanız gereken birkaç bölüm vardır:
 
-| Ölçüm | Açıklama | 
+| Metric | Açıklama | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Arka uç sorgu gecikmesi |
 | `pathsIndexed` | Sorgunun kullandığı dizinleri gösterir | 
@@ -264,7 +264,7 @@ Herhangi bir zamanda yazma veya okuma kullanılabilirliği üzerinde hiçbir etk
 
 Çoğu durumda, MongoDB için Azure Cosmos DB API 'sindeki toplama işlemleri kısmi olarak dizinleri kullanacaktır. Genellikle, sorgu altyapısı önce eşitlik ve Aralık filtrelerini uygular ve dizinleri kullanır. Bu filtreleri uyguladıktan sonra sorgu altyapısı, ek filtreleri değerlendirebilir ve gerekirse toplamı hesaplamak için kalan belgeleri yüklemeyi çare olarak gerçekleştirebilir. 
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```
 db.coll.aggregate( [
@@ -348,4 +348,4 @@ Değer, `estimatedDelayFromRateLimitingInMilliseconds` aktarım hızını arttı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sorgu performansı sorunlarını giderme (SQL API)](troubleshoot-query-performance.md)
-* [MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme](mongodb-indexing.md)
+* [MongoDB için Azure Cosmos DB API’sinde dizin oluşturmayı yönetme](mongodb-indexing.md)

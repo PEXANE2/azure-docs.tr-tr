@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 493f479a09fc7b21bb857ebd98c35824c548b5d0
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1abdf7ae15753d78ac8728f57e9b0cd5dcd9165e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539797"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672597"
 ---
 # <a name="create-and-manage-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma ve yönetme
 
@@ -66,7 +66,7 @@ az disk update --resource-group MyResourceGroup --name myDataDisk --size-gb 200
 az vmss restart --resource-group MyResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-Genişletilmiş diski kullanmak için, temel alınan bölümü genişletin. Daha fazla bilgi için bkz. [disk bölümünü ve dosya sistemini genişletme](/azure/virtual-machines/linux/expand-disks#expand-a-disk-partition-and-filesystem).
+Genişletilmiş diski kullanmak için, temel alınan bölümü genişletin. Daha fazla bilgi için bkz. [disk bölümünü ve dosya sistemini genişletme](../../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem).
 
 Bu örnek bir veri diski yeniden boyutlandırıldı. Bu yordamı, bir işletim sistemi diskini güncelleştirmek için kullanabilirsiniz. Bir Windows sanal makinesi hakkında daha fazla bilgi için bkz. [bir sanal makinenin işletim sistemi sürücüsünü genişletme](../../virtual-machines/windows/expand-os-disk.md). Linux sanal makineleri hakkında daha fazla bilgi için bkz. [Azure CLI Ile LINUX VM 'de sanal sabit diskleri genişletme](../../virtual-machines/linux/expand-disks.md).
 

@@ -2,18 +2,20 @@
 title: Azure 'da Linux sanal makineleri için Zamanlanan Olaylar
 description: Linux sanal makineleriniz için Azure Metadata Service kullanarak olayları zamanlayın.
 author: EricRadzikowskiMSFT
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: scheduled-events
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1029790cbcfa86f988c2249d67640a642e529229
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104748"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674855"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM'ler için Zamanlanan Olaylar
 
@@ -73,7 +75,7 @@ VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
 Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-08-01` .
 
-| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
+| Sürüm | Yayın türü | Bölgeler | Release Notes (Sürüm Notları) | 
 | - | - | - | - | 
 | 2019-08-01 | Genel kullanılabilirlik | Tümü | <li> EventSource için destek eklendi |
 | 2019-04-01 | Genel kullanılabilirlik | Tümü | <li> Olay açıklaması için destek eklendi |
@@ -138,7 +140,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](../manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay platform tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması

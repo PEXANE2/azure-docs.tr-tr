@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Azure Route sunucusu belgeleri
+summary: Ağ sanal gereçler ve sanal ağınız arasında dinamik yönlendirmeyi basitleştirmek için Azure yol sunucusu 'nun nasıl kullanılacağını öğrenin.
+metadata:
+  title: Azure Route sunucusu belgeleri
+  description: Azure rota sunucusu hakkında bilgi edinin
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101680694"
+landingContent:
+- title: Azure Route sunucusu hakkında (Önizleme)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Route Server (Önizleme) nedir?
+      url: overview.md
+- title: başlarken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Rota sunucusu oluşturma ve yapılandırma-PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: Rota sunucusu oluşturma ve yapılandırma-CLı
+      url: quickstart-configure-route-server-cli.md
+- title: Planlama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ExpressRoute ve VPN Gateway desteği
+      url: expressroute-vpn-support.md
+    - text: Yönlendirme sunucusu hakkında SSS
+      url: route-server-faq.md

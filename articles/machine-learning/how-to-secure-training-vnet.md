@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515997"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655964"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -74,7 +74,7 @@ Bir sanal ağda [yönetilen Azure Machine Learning __işlem hedefi__](concept-co
 > * Bir yük dengeleyici
 > 
 > Kümeler söz konusu olduğunda, küme 0 düğümlere her ölçeklendirilirken bu kaynaklar silinir (ve yeniden oluşturulur), ancak örnek için kaynaklar tamamen silinene kadar (durduruluyor, kaynakları kaldırmaz). 
-> Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Sanal ağ kaynak grubu kilitliyse, işlem kümesini/örneğini silme işlemi başarısız olur. İşlem kümesi/örnek silinene kadar yük dengeleyici silinemez.
+> Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Sanal ağ kaynak grubu kilitliyse, işlem kümesini/örneğini silme işlemi başarısız olur. İşlem kümesi/örnek silinene kadar yük dengeleyici silinemez. Ayrıca, ağ güvenlik gruplarının oluşturulmasını engelleyen bir Azure ilkesi olmadığından emin olun.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Gerekli bağlantı noktaları
@@ -83,7 +83,7 @@ Ağ trafiğini genel İnternet ile kısıtlayarak sanal ağın güvenliğini sa�
 
 Batch hizmeti, sanal makinelere bağlı ağ arabirimi (NIC) düzeyinde ağ güvenlik grupları (NSG 'Ler) ekler. Bu NSG'ler şu trafiğe izin vermek için gelen ve giden bağlantı kurallarını otomatik olarak yapılandırır:
 
-- __Batchnodemanagement__ __hizmet etiketinden__ 29876 ve 29877 bağlantı noktalarında gelen TCP trafiği.
+- __Batchnodemanagement__ __hizmet etiketinden__ 29876 ve 29877 bağlantı noktalarında gelen TCP trafiği. Bu bağlantı noktaları üzerinden gelen trafik şifrelenir ve Zamanlayıcı/düğüm iletişimi için Azure Batch tarafından kullanılır.
 
     ![BatchNodeManagement hizmet etiketini kullanan bir gelen kuralı](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ Batch hizmeti, sanal makinelere bağlı ağ arabirimi (NIC) düzeyinde ağ güve
 
 - İnternete giden herhangi bir bağlantı noktasında giden trafik.
 
-- 44224 numaralı bağlantı noktasında işlem örneği gelen TCP trafiği için __AzureMachineLearning__ bir __hizmet etiketinden__ .
+- 44224 numaralı bağlantı noktasında işlem örneği gelen TCP trafiği için __AzureMachineLearning__ bir __hizmet etiketinden__ . Bu bağlantı noktası üzerinden gelen trafik şifrelenir ve Işlem örneklerinde çalışan uygulamalarla iletişim için Azure Machine Learning tarafından kullanılır.
 
 > [!IMPORTANT]
 > Batch tarafından yapılandırılmış olan NSG'lerdeki gelen veya giden kurallarını değiştirirken veya yenilerini eklerken dikkatli olun. Bir NSG, işlem düğümleriyle iletişimi engelliyorsa, işlem hizmeti işlem düğümlerinin durumunu kullanılamıyor olarak ayarlar.

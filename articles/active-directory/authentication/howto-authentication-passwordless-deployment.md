@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530357"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651136"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -96,7 +96,7 @@ Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özet
 | Alan | Açıklama |
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, şirket ağı içindeki veya dışındaki bir kurumsal veya kişisel cihazdan kullanılabilir. |
-| **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
+| **Girdilerini** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
 | **İdare** | Uygun kimlik doğrulama yöntemine ve ilişkili gruplara yönelik Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | **Güvenlik** | Uygun kimlik doğrulama yöntemine erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. <br> Yalnızca yetkili kullanıcılar, passwordless oturum açma kullanabilir. |
 | **Performans** | Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. <br> Oturum açma süreleri kullanım kolaylığı açısından ölçülür. |
@@ -149,7 +149,7 @@ Güvenlik anahtarları ile kullanılabilen üç tür passwordless oturum açma d
 
 -    Desteklenen bir tarayıcıda Web Apps Azure Active Directory
 -    Azure Active Directory Birleştirilmiş Windows 10 cihazları
--    Karma Azure Active Directory katılmış Windows 10 cihazları (Önizleme)
+-    Karma Azure Active Directory katılmış Windows 10 cihazları
      -    Hem bulut tabanlı hem de şirket içi kaynaklara erişim sağlar. Şirket içi kaynaklara erişim hakkında daha fazla bilgi için bkz. [FIDO2 anahtarlarını kullanarak şirket içi kaynaklara yönelik SSO](./howto-authentication-passwordless-security-key-on-premises.md)
 
 **Uyumlu FIDO2 güvenlik anahtarlarını** etkinleştirmeniz gerekir. Microsoft [, FIDO2 anahtar satıcıları ile temel ortaklıklar](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)duyurmuştur.
@@ -193,7 +193,7 @@ FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin
 
 #### <a name="enable-on-premises-integration"></a>Şirket içi tümleştirmeyi etkinleştir
 
-Şirket içi kaynaklara erişimi etkinleştirmek için, Şirket [içi kaynaklarda (Önizleme) passwordless güvenlik anahtarı oturum açma 'Yı etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md)adımlarını izleyin.
+Şirket içi kaynaklara erişimi etkinleştirmek için, Şirket [içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirmek](howto-authentication-passwordless-security-key-on-premises.md)için adımları izleyin.
 
 > [!IMPORTANT]
 > Bu adımların, karma Azure AD 'ye katılmış cihazların Windows 10 oturum açma için FIDO2 güvenlik anahtarlarını kullanmasını sağlamak için de tamamlanması gerekir.

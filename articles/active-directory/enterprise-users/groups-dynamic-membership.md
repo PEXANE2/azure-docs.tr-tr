@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8ca000e105f70f1a4940e7fc9a0292061e94b5ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860822"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648654"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -277,6 +277,14 @@ Aşağıdaki ifade, Intune hizmetiyle ilişkili herhangi bir hizmet planına sah
 
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+#### <a name="example-3"></a>Örnek 3
+
+Aşağıdaki ifade, hiç imzalanmış hizmet planına sahip olmayan tüm kullanıcıları seçer:
+
+```
+user.assignedPlans -all (assignedPlan.servicePlanId -eq "")
 ```
 
 ### <a name="using-the-underscore-_-syntax"></a>Alt çizgi ( \_ ) sözdizimini kullanma

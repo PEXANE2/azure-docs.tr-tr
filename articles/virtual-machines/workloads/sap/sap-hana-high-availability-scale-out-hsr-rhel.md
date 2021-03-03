@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 6ce169eee4f931d02071a326c65ba94cfe723ae1
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dd000ca36bb0ad586b973b2bcdc638d8992b1a73
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259042"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668648"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
 
@@ -91,7 +90,7 @@ Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
   * [SAP HANA Scale-Out ve sistem çoğaltması için Red Hat Enterprise Linux çözümü](https://access.redhat.com/solutions/4386601)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 * [Azure NetApp Files belgeleri][anf-azure-doc] 
-* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -201,7 +200,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
       1. **Sanal makine Ekle**' yi seçin.
       1. **Sanal makine**'yi seçin.
       1. SAP HANA kümesinin sanal makinelerini ve alt ağın IP adreslerini seçin `client` .
-      1. **Ekle**’yi seçin.
+      1. **Add (Ekle)** seçeneğini belirleyin.
 
    1. Sonra, bir sistem durumu araştırması oluşturun:
 
@@ -1172,5 +1171,5 @@ SAP HANA küme yapılandırmasını kapsamlı olarak test etmenizi öneririz. Ay
 * [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
-* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](./hana-vm-operations-netapp.md)
 * Azure VM 'lerinde SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan oluşturma hakkında bilgi edinmek için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha].

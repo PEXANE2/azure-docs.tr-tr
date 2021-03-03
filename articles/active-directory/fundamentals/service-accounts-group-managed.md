@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c73bcd8fb4c6b594633abd1ac268bd8dfd78202
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417967"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644836"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Grup tarafından yönetilen hizmet hesaplarının güvenliğini sağlama
 
@@ -41,7 +41,7 @@ gMSAs, yönetim yükünü azaltarak daha fazla güvenlik sunarak tek bir kimlik 
 Yük Devretme Kümelemesi gibi bir hizmet bu hizmeti desteklemiyorsa, şirket içi hizmetler için gMSA 'Ları tercih edilen hesap türü olarak kullanın.
 
 > [!IMPORTANT]
-> Üretime dağıtım yapmadan önce hizmeti gMSAs ile test etmeniz gerekir. Bunu yapmak için, bir test ortamı ayarlayın ve uygulamanın gMSA 'yı kullanabilmesi ve erişmesi gereken kaynaklara erişebilmesi gerekir. Daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları Için destek](https://docs.microsoft.com/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> Üretime dağıtım yapmadan önce hizmeti gMSAs ile test etmeniz gerekir. Bunu yapmak için, bir test ortamı ayarlayın ve uygulamanın gMSA 'yı kullanabilmesi ve erişmesi gereken kaynaklara erişebilmesi gerekir. Daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları Için destek](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
 
 
 Bir hizmet gMSAs kullanımını desteklemiyorsa, bir sonraki en iyi seçeneğiniz tek başına yönetilen hizmet hesabı (sMSA) kullanmaktır. sMSAs, gMSA ile aynı işlevselliği sağlar, ancak yalnızca tek bir sunucuda dağıtıma yöneliktir.
@@ -108,18 +108,18 @@ GMSAs 'yi yönetmek için aşağıdaki Active Directory PowerShell cmdlet 'lerin
 `Uninstall-ADServiceAccount`
 
 > [!NOTE]
-> Windows Server 2012 ile başlayarak, *-ADServiceAccount cmdlet 'leri varsayılan olarak gMSAs ile çalışır. Yukarıdaki cmdlet 'lerin kullanımı hakkında daha fazla bilgi için bkz. [**Grup tarafından yönetilen hizmet hesapları Ile çalışmaya**](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)başlama.
+> Windows Server 2012 ile başlayarak, *-ADServiceAccount cmdlet 'leri varsayılan olarak gMSAs ile çalışır. Yukarıdaki cmdlet 'lerin kullanımı hakkında daha fazla bilgi için bkz. [**Grup tarafından yönetilen hizmet hesapları Ile çalışmaya**](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)başlama.
 
 ## <a name="move-to-a-gmsa"></a>GMSA 'ya taşı
 gMSAs, şirket içi gereksinimler için en güvenli hizmet hesabı türüdür. Bir öğesine taşıyabiliyorsanız, yapmanız gerekir. Ayrıca, hizmetlerinizi Azure 'a ve hizmet hesaplarınıza Azure Active Directory 'ye taşımayı düşünün.
 
-1.  [KDS kök anahtarının ormanda dağıtıldığından](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key)emin olun. Bu bir seferlik bir işlemdir.
+1.  [KDS kök anahtarının ormanda dağıtıldığından](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key)emin olun. Bu bir seferlik bir işlemdir.
 
-2. [Yeni bir gMSA oluşturun](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
+2. [Yeni bir gMSA oluşturun](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
 
 3. Hizmeti çalıştıran her konağa yeni gMSA 'yı yükler.
    > [!NOTE] 
-   > Bir konakta gMSA oluşturma ve yükleme hakkında daha fazla bilgi için, hizmetinizi gMSA kullanacak şekilde yapılandırmadan önce bkz. [Grup yönetilen hizmet hesaplarıyla çalışmaya başlama](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
+   > Bir konakta gMSA oluşturma ve yükleme hakkında daha fazla bilgi için, hizmetinizi gMSA kullanacak şekilde yapılandırmadan önce bkz. [Grup yönetilen hizmet hesaplarıyla çalışmaya başlama](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
 
  
 4. Hizmet kimliğinizi gMSA olarak değiştirin ve boş bir parola belirtin.

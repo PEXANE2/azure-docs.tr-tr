@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 507dd224ddeb935cc8b3718bb2e2628be36066f4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879638"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676025"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure 'da paylaşılan görüntü galerilerine sorun giderme
 
@@ -52,9 +52,13 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: var olan en az bir görüntü tanımı içeren bir galeriyi silmeye çalıştınız. Bir galeri silinmeden önce boş olmalıdır.  
 **Geçici çözüm**: galerinin içindeki tüm görüntü tanımlarını silin ve sonra galeriyi silmeye devam edin. Görüntü tanımı görüntü sürümlerini içeriyorsa, görüntü tanımlarını silmeden önce görüntü sürümlerini silmeniz gerekir.
 
+*' <Gallername ' Galeri adı \> ' ' aboneliği içinde benzersiz değil <subscriptionId> . Lütfen başka bir galeri adı seçin.*  
+**Neden**: aynı adlı bir galeriniz var ve aynı ada sahip başka bir galeri oluşturmaya çalıştınız.  
+**Geçici çözüm**: Galeri için farklı bir ad seçin.
+
 *<Gallername kaynağı \> kaynak grubundaki <bölge 1 konumunda zaten \_ mevcut \> <resourceGroup \> . <bölge 2 konumunda aynı ada sahip bir kaynak oluşturulamıyor \_ \> . Lütfen yeni bir kaynak adı seçin.*  
-**Neden**: kaynak grubunda aynı ada sahip bir galeri var ve aynı ada ancak farklı bir bölgede başka bir galeri oluşturmaya çalıştınız.  
-**Geçici çözüm**: farklı bir Galeri kullanın veya farklı bir kaynak grubu kullanın.
+**Neden**: aynı adlı bir galeriniz var ve aynı ada sahip başka bir galeri oluşturmaya çalıştınız.  
+**Geçici çözüm**: Galeri için farklı bir ad seçin.
 
 ## <a name="creating-or-modifying-image-definitions"></a>Görüntü tanımları oluşturma veya değiştirme ##
 

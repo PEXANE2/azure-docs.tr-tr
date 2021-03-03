@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216640"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661010"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -26,7 +26,7 @@ Bu makaledeki örnek betikler,, PyTorch 'ın aktarım öğrenimi [öğreticisini
 
 Derin bir öğrenme PyTorch modelini baştan sona eğiyor veya mevcut bir modeli buluta çıkarksanız, elastik bulut işlem kaynakları kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -285,35 +285,90 @@ Azure ML 'de Horovod ile dağıtılmış PyTorch çalıştırmaya ilişkin tam b
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Eğitim kodunuzda **Torch. Distributed** Package kullanılarak oluşturulan pytorch 'ın yerleşik [distributeddataparallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) modülünü kullanıyorsanız, dağıtılmış işi Azure ML aracılığıyla da başlatabilirsiniz.
 
-Bir dağıtılmış PyTorch işini DistributedDataParallel ile çalıştırmak için, ScriptRunConfig oluşturucusunun parametresine bir [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) belirtin `distributed_job_config` . Torch. Distributed için NCCL arka ucunu kullanmak istiyorsanız, `communication_backend='Nccl'` PyTorchConfiguration içinde belirtin. Aşağıdaki kod 2 düğümlü dağıtılmış bir işi yapılandıracak. NCP CL arka ucu, PyTorch dağıtılmış GPU eğitimi için önerilen arka uçta bulunur.
+Azure ML 'de dağıtılmış bir PyTorch işini başlatmak için iki seçeneğiniz vardır:
+1. İşlem başına başlatma: çalıştırmak istediğiniz toplam çalışan işlem sayısını belirtin ve Azure ML her bir işlemi başlatmayı işleymeyecektir.
+2. Düğüm başına başlatma `torch.distributed.launch` : `torch.distributed.launch` her düğümde çalıştırmak istediğiniz komutu belirtin. Torch başlatma yardımcı programı her bir düğümdeki çalışan işlemlerinin başlatılmasını işleyecek.
 
-PyTorchConfiguration aracılığıyla yapılandırılan dağıtılmış PyTorch işleri için Azure ML, işlem hedefinin düğümlerinde aşağıdaki ortam değişkenlerini ayarlar:
+Bu başlatma seçenekleri arasında temel farklılık yoktur; Bu, büyük ölçüde kullanıcının tercihine veya Vanilla PyTorch üzerinde oluşturulmuş olan çerçevelerin/kitaplıkların kurallarına bağlıdır (şimşek ya da Caksel yüz gibi).
 
-* `AZ_BATCHAI_PYTORCH_INIT_METHOD`: İşlem grubunun paylaşılan dosya sistemi başlatması URL 'SI
-* `AZ_BATCHAI_TASK_INDEX`: çalışan işlemin küresel sıralaması
+#### <a name="per-process-launch"></a>İşlem başına başlatma
+Dağıtılmış bir PyTorch işini çalıştırmak için bu seçeneği kullanmak üzere şunları yapın:
+1. Eğitim betiğini ve bağımsız değişkenleri belirtin
+2. [Pytorchconfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) oluşturun ve öğesini ve öğesini belirtin `process_count` `node_count` . , `process_count` İşiniz için çalıştırmak istediğiniz toplam işlem sayısına karşılık gelir. Bu, genellikle düğüm başına GPU sayısını düğüm sayısıyla çarparak eşit olmalıdır. `process_count`Belirtilmezse, Azure ML varsayılan olarak düğüm başına bir işlem başlatır.
 
-Bu ortam değişkenlerini, ScriptRunConfig parametresi aracılığıyla eğitim betiğinin karşılık gelen bağımsız değişkenlerine belirtebilirsiniz `arguments` .
+Azure ML aşağıdaki ortam değişkenlerini ayarlar:
+* `MASTER_ADDR` -İşlemi 0 sırasıyla barındıracak olan makinenin IP adresi.
+* `MASTER_PORT` -Makinede 0 derecesine sahip olan işlemi barındıracak ücretsiz bir bağlantı noktası.
+* `NODE_RANK` -Çok düğümlü eğitim için düğümün derecesi. Olası değerler 0 ' dır (Toplam düğüm sayısı-1).
+* `WORLD_SIZE` -Toplam işlem sayısı. Bu, dağıtılmış eğitim için kullanılan toplam cihaz sayısına (GPU) eşit olmalıdır.
+* `RANK` -Geçerli işlemin (genel) derecesi. Olası değerler 0 ile (Dünya boyutu-1).
+* `LOCAL_RANK` -Düğüm içindeki işlemin yerel (göreli) sıralaması. Olası değerler 0 ' dır (düğüm üzerindeki işlem sayısı-1).
+
+Gerekli ortam değişkenleri Azure ML tarafından sizin için ayarlanmayacak olduğundan, eğitim kodunuzda işlem grubunu başlatmak için [varsayılan ortam değişkeni başlatma yöntemini](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) kullanabilirsiniz.
+
+Aşağıdaki kod parçacığı bir 2 düğümlü, 2-işlem-düğüm PyTorch işini yapılandırır:
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import PyTorchConfiguration
+
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(process_count=4, node_count=2)
+
+src = ScriptRunConfig(
+  source_directory='./src',
+  script='train.py',
+  arguments=['--epochs', 25],
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
+```
+
+> [!WARNING]
+> Bu seçeneği, düğüm başına çoklu işlem eğitimi için kullanmak üzere, 1.22.0 ' de sunulmuş olduğu gibi Azure ML Python SDK >= 1.22.0 kullanmanız gerekir `process_count` .
+
+> [!TIP]
+> Eğitim betiğiniz yerel derece veya derece gibi bilgileri betik bağımsız değişkenleri olarak geçerse, bağımsız değişkenlerde ortam değişkenlerine başvurabilirsiniz: `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` .
+
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>İle düğüm başına başlatma `torch.distributed.launch`
+PyTorch, her düğüm için birden çok işlem başlatmak üzere kullanıcıların kullanabileceği bir başlatma yardımcı programı [sağlar.](https://pytorch.org/docs/stable/distributed.html#launch-utility) `torch.distributed.launch`Modül, düğümlerin her birinde birden çok eğitim işlemi oluşturacak.
+
+Aşağıdaki adımlarda, aşağıdaki komutu çalıştırmaya eşdeğer bir şekilde, Azure ML 'de düğüm başına başlatıcısı ile bir PyTorch işinin nasıl yapılandırılacağı gösterilir:
+
+```shell
+python -m torch.distributed.launch --nproc_per_node <num processes per node> \
+  --nnodes <num nodes> --node_rank $NODE_RANK --master_addr $MASTER_ADDR \
+  --master_port $MASTER_PORT --use_env \
+  <your training script> <your script arguments>
+```
+
+1. `torch.distributed.launch` `command` Oluşturucunun parametresine komutunu girin `ScriptRunConfig` . Azure ML, eğitim kümenizin her bir düğümünde bu komutu çalıştırır. `--nproc_per_node` her düğümde kullanılabilir GPU sayısına eşit veya ondan küçük olmalıdır. `MASTER_ADDR`, `MASTER_PORT` , ve `NODE_RANK` hepsı Azure ML tarafından ayarlanmıştır, bu nedenle yalnızca komutta ortam değişkenlerine başvurabilirsiniz. Azure ML `MASTER_PORT` 6105 olarak ayarlanır, ancak isterseniz `--master_port` komutun bağımsız değişkenine farklı bir değer geçirebilirsiniz `torch.distributed.launch` . (Başlatma yardımcı programı ortam değişkenlerini sıfırlayacaktır.)
+2. Oluşturun `PyTorchConfiguration` ve öğesini belirtin `node_count` . `process_count`Azure ML 'nin düğüm başına bir işlem başlatmasını varsayılan olarak ayarlamanız gerekmez, bu da belirttiğiniz başlatma komutunu çalıştırır.
 
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
 
-args = ['--dist-backend', 'nccl',
-        '--dist-url', '$AZ_BATCHAI_PYTORCH_INIT_METHOD',
-        '--rank', '$AZ_BATCHAI_TASK_INDEX',
-        '--world-size', 2]
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(node_count=2)
+launch_cmd = "python -m torch.distributed.launch --nproc_per_node 2 --nnodes 2 --node_rank $NODE_RANK --master_addr $MASTER_ADDR --master_port $MASTER_PORT --use_env train.py --epochs 50".split()
 
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='pytorch_mnist.py',
-                      arguments=args,
-                      compute_target=compute_target,
-                      environment=pytorch_env,
-                      distributed_job_config=PyTorchConfiguration(communication_backend='Nccl', node_count=2))
+src = ScriptRunConfig(
+  source_directory='./src',
+  command=launch_cmd,
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
-Bunun yerine, dağıtılmış eğitim için gloo arka ucunu kullanmak istiyorsanız, `communication_backend='Gloo'` bunun yerine belirtin. Dağıtılmış CPU eğitimi için gloo arka ucu önerilir.
-
-Azure ML 'de dağıtılmış PyTorch çalıştırmaya ilişkin tam bir öğretici için bkz. [DistributedDataParallel Ile dağıtılmış pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo).
+Azure ML 'de dağıtılmış PyTorch çalıştırmaya ilişkin tam bir öğretici için bkz. [DistributedDataParallel Ile dağıtılmış pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel).
 
 ### <a name="troubleshooting"></a>Sorun giderme
 

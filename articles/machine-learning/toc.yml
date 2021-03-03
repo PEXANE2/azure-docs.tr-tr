@@ -321,11 +321,14 @@
             - name: Etiketlerle veri kümeleri oluşturma
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Verileri alma
+        - name: Veri hazırlama & edinme
           items:
             - name: Azure Data Factory ile veri alımı
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Azure SYNAPSE ile veri hazırlama
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: Veri alımı için DevOps
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -337,6 +340,9 @@
             - name: Azure Storage’a bağlanma (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
+            - name: Depolamaya kimlik tabanlı veri erişimi
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
             - name: Bir veri deposundan veri alma (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
@@ -385,8 +391,8 @@
             - name: Günlükleri etkinleştirme
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Günlükleri görüntüleme
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: Çalıştırmalar için günlükleri ve ölçümleri görüntüleme
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: TensorBoard ile çalıştırmaları görselleştirme
               displayName: 'log, monitor, metrics'
@@ -531,6 +537,8 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML işlem hattı dağıtma (Python)
           href: how-to-deploy-pipelines.md
+        - name: ML ardışık düzeninde Azure SYNAPSE Apache Spark havuzlarını kullanma (Python)
+          href: how-to-use-synapsesparkstep.md
         - name: İşlem hattını tetikleme
           href: how-to-trigger-published-pipeline.md
         - name: Tasarımcı (sürükle ve bırak)

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550793"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643531"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -28,27 +28,47 @@ Bu makalede, aşağıdaki avantajları içeren sanal makineler için Azure oto y
 
 ## <a name="overview"></a>Genel Bakış
 
-Sanal makineler için Azure oto yönetimi, Azure 'da sanal makinenize faydalanabilir belirli hizmetlerin nasıl ekleneceğini ve nasıl yapılandırılacağını öğrenmenizi sağlayan bir hizmettir. Bu hizmetler, sanal makineler için güvenilirlik, güvenlik ve yönetimin geliştirilmesine yardımcı olur ve Azure [güncelleştirme yönetimi](../automation/update-management/overview.md) ve [Azure Backup](../backup/backup-overview.md) gibi Azure en iyi yöntem hizmetleri gibi kabul edilir.
+Sanal makineler için Azure oto yönetimi, Azure 'da sanal makinenize faydalanabilir belirli hizmetlerin nasıl ekleneceğini ve nasıl yapılandırılacağını öğrenmenizi sağlayan bir hizmettir. Bu hizmetler, Azure 'un en iyi yöntem Hizmetleri olduğu kabul edilir ve sanal makineler için güvenilirliği, güvenliği ve yönetimi geliştirmeye yardımcı olur. Örnek Hizmetler [Azure güncelleştirme yönetimi](../automation/update-management/overview.md) ve [Azure Backup](../backup/backup-overview.md)içerir.
 
-Sanal makinelerinizi Azure otomatik Yönet 'e ekledikten sonra, her bir en iyi uygulama hizmetini önerilen ayarlarına otomatik olarak yapılandırır. En iyi uygulamalar, hizmetlerin her biri için farklıdır. En iyi uygulama, her gün bir kez sanal makineyi yedeklemek ve altı aylık bir bekletme dönemi varsa, bu örnek Azure Backup olabilir.
+Sanal makinelerinizi Azure otomatik Yönet 'e ekledikten sonra, her bir en iyi yöntem hizmeti önerilen ayarlara göre yapılandırılmıştır. En iyi uygulamalar, hizmetlerin her biri için farklıdır. En iyi uygulama, her gün bir kez sanal makineyi yedeklemek ve altı aylık bir bekletme dönemi varsa, bu örnek Azure Backup olabilir.
 
-Ayrıca, Azure otomatik yönetimi de DRFT için otomatik olarak izler ve algılandığında düzeltme için düzeltir. Bunun anlamı, sanal makineniz Azure 'u yeniden yönetmek için eklendi, bunu yalnızca Azure 'un en iyi yöntemleri uyarınca yapılandıracağız, ancak kendi yaşam döngüsünün tamamında bu en iyi uygulamalarla uyumlu olmaya devam ettiğinden emin olmak için makinenizi izliyoruz. Sanal makineniz bu uygulamalardan daha fazla veya daha sapmaya uygunsa, bunu düzeltecektir ve makinenizi istenen duruma geri çekeceğiz.
-
-Son olarak, deneyim inanılmaz basittir.
-
+Ayrıca, Azure otomatik yönetimi de DRFT için otomatik olarak izler ve algılandığında düzeltme için düzeltir. Bunun anlamı, sanal makineniz Azure 'u yeniden yönetmek için eklendi, bunu yalnızca Azure 'un en iyi yöntemleri uyarınca yapılandıracağız, ancak kendi yaşam döngüsünün tamamında bu en iyi uygulamalarla uyumlu olmaya devam ettiğinden emin olmak için makinenizi izliyoruz. Sanal makineniz bu uygulamalardan daha fazla veya daha fazla olursa (örneğin, bir hizmet offboarded ise) bunu düzeltecektir ve makinenizi istenen duruma geri çekeceğiz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce göz önünde bulundurmanız gereken birkaç önkoşul vardır.
 
-- Yalnızca Windows Server VM 'Leri
-- VM 'Ler desteklenen bir bölgede olmalıdır (aşağıdaki paragrafı görüntüleyin)
-- Kullanıcının doğru izinleri olması gerekir (aşağıdaki paragrafa bakın)
+- Desteklenen [Windows Server sürümleri](automanage-windows-server.md#supported-windows-server-versions) ve [Linux kaldırmalar](automanage-linux.md#supported-linux-distributions-and-versions)
+- VM 'Ler desteklenen bir bölgede olmalıdır (aşağıya bakın)
+- Kullanıcı doğru izinlere sahip olmalıdır (aşağıya bakın)
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
-Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri desteklediğini unutmayın: Batı Avrupa, Doğu ABD, Batı ABD 2, Kanada Orta, Orta Batı ABD, Japonya Doğu.
+### <a name="supported-regions"></a>Desteklenen bölgeler
+Oto yönetimi yalnızca aşağıdaki bölgelerde bulunan VM 'Leri destekler:
+* West Europe
+* Kuzey Avrupa
+* Central US
+* Doğu ABD
+* Doğu ABD 2
+* Batı ABD
+* Batı ABD 2
+* Orta Kanada
+* Orta Batı ABD
+* Orta Güney ABD
+* Doğu Japonya
+* Güney Birleşik Krallık
+* AU Doğu
+* AU Güneydoğu
 
-Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+### <a name="required-rbac-permissions"></a>Gerekli RBAC izinleri
+Hesabınız, yeni bir oto Yönet hesabıyla, oto yönetimi etkinleştirip etkinleştirdiğinize bağlı olarak biraz farklı RBAC rolü gerektirir.
+
+Yeni bir oto Yönet hesabıyla, oto Yönet 'i etkinleştirirseniz:
+* VM 'lerinizi içeren abonelikler üzerinde **sahip** rolü _**veya**_
+* VM 'lerinizi içeren **abonelikler ve** **Kullanıcı erişimi yönetici** rolleri
+
+Var olan bir oto Yönet hesabıyla, oto Yönet 'i etkinleştirirseniz:
+* VM 'lerinizi içeren kaynak grubundaki **katkıda bulunan** rolü
 
 > [!NOTE]
 > Farklı bir abonelikte bulunan bir çalışma alanına bağlı bir sanal makinede, oto yönetimi 'ni kullanmak istiyorsanız, her bir abonelikte yukarıda açıklanan izinlere sahip olmanız gerekir.
@@ -57,11 +77,13 @@ Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleşti
 
 :::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Hizmetleri akıllıca ekleyin.":::
 
-Katılan Azure hizmetlerinin yanı sıra bunların desteklenen yapılandırma profillerinin eksiksiz listesi için bkz. [sanal makinelerin En Iyi uygulamaları için bkz. Azure oto yönetimi](virtual-machines-best-practices.md) .
+Katılımcı Azure hizmetlerinin yanı sıra desteklenen ortamları ve bunların tüm listesi için aşağıdakilere bakın:
+- [Linux için oto Yönet](automanage-linux.md)
+- [Windows Server için oto Yönet](automanage-windows-server.md)
 
  Sizi bu katılım hizmetlerine otomatik olarak ekleyeceğiz. Bunlar, [bulut benimseme çerçevesinden](/azure/cloud-adoption-framework/manage/azure-server-management)bulabileceğiniz en iyi yöntemler teknik incelemesi için önemlidir.
 
-Bu hizmetlerin tümü için otomatik olarak, otomatik yapılandırma, izleme için izleyici ve drara algılanırsa aracılık.
+Bu hizmetlerin tümü için otomatik olarak kullanılacak, otomatik olarak yapılandıracağız, aracılık for drfor, ve değişikliklerini algılanırsa.
 
 
 ## <a name="enabling-automanage-for-vms-in-azure-portal"></a>Azure portal VM 'Ler için oto yönetimi etkinleştiriliyor
@@ -70,33 +92,37 @@ Azure portal, var olan bir sanal makinede ya da yeni bir sanal makine oluşturur
 
 SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage: Azure sanal makine en iyi yöntemleri** için Azure Portal araması yapabilirsiniz. **Mevcut VM 'de etkinleştir**' e tıklayın, eklemek Istediğiniz VM 'leri seçin, **Seç**' e tıklayın, **Etkinleştir**' e tıklayın ve işiniz bitti demektir.
 
-Bu hizmetleri yönetmek için bu VM ile etkileşimde bulunabilmeniz gereken tek zaman, sanal makinenizin düzeltilmesi için denediğimiz olaydır, ancak bunu yapamadı. VM 'nizi başarılı bir şekilde düzeltmemiz durumunda sizi uyarmadan yine de uyumluluğa geri getirilecektir.
+Bu hizmetleri yönetmek için bu VM ile etkileşimde bulunabilmeniz gereken tek zaman, sanal makinenizin düzeltilmesi için denediğimiz olaydır, ancak bunu yapamadı. VM 'nizi başarılı bir şekilde düzeltmemiz durumunda sizi uyarmadan yine de uyumluluğa geri getirilecektir. Daha fazla ayrıntı için bkz. [VM 'Lerin durumu](#status-of-vms).
 
 
-## <a name="configuration-profiles"></a>Yapılandırma profilleri
+## <a name="environment-configuration"></a>Ortam yapılandırması
 
-Sanal makineniz için oto yönetimi etkinleştirirken bir yapılandırma profili gerekir. Yapılandırma profilleri bu hizmetin temelidir. Bu hizmetler, makinelerinizi hangi hizmetlere eklediğimiz ve bir ölçüde bu hizmetlerin yapılandırmasının ne olacağını tanımlar.
+Sanal makineniz için oto yönetimi etkinleştirirken bir ortam gerekir. Ortamlar bu hizmetin temelidir. Bunlar, makinelerinizi hangi hizmetlere sunduğumuz, bu hizmetlerin yapılandırmasının ne olacağı hakkında bir ölçüde tanımlar.
 
-### <a name="default-configuration-profiles"></a>Varsayılan yapılandırma profilleri
+### <a name="default-environments"></a>Varsayılan ortamlar
 
-Şu anda iki yapılandırma profili bulunur.
+Şu anda kullanılabilen iki ortam vardır.
 
-- **Azure sanal makine en iyi yöntemleri-geliştirme ve test** yapılandırma profili geliştirme ve test makineleri için tasarlanmıştır.
-- **Azure sanal makine en iyi uygulamaları-üretim** yapılandırma profili üretime yöneliktir.
+- **Geliştirme** ve test ortamı geliştirme ve test makineleri için tasarlanmıştır.
+- **Üretim ortamı üretime** yöneliktir.
 
 Bu farklıın nedeni, çalışan iş yüküne bağlı olarak belirli hizmetlerin önerilmeidir. Örneğin, bir üretim makinesinde sizi Azure Backup için otomatik olarak ekleyeceğiz. Ancak, geliştirme/test makineleri genellikle daha düşük iş etkisi olduğundan, bir geliştirme ve test makinesi için bir yedekleme hizmeti gereksiz bir maliyet olacaktır.
 
-### <a name="customizing-a-configuration-profile-using-preferences"></a>Tercihleri kullanarak yapılandırma profilini özelleştirme
+### <a name="customizing-an-environment-using-preferences"></a>Tercihleri kullanarak bir ortamı özelleştirme
 
-Size eklediğimiz standart hizmetlere ek olarak, belirli bir tercih alt kümesini yapılandırmanıza izin veririz. En iyi yöntemlerimizi ihlal eden bir dizi yapılandırma seçeneği içinde bu tercihlere izin verilir. Örneğin, Azure Backup olması durumunda yedeklemenin sıklığını ve haftanın hangi gününde olduğunu tanımlamanızı sağlayacak. Ancak, Azure Backup tamamen devre dışı geçiş *yapmanıza izin vermeyecektir.*
-
-> [!NOTE]
-> Geliştirme/test yapılandırma profilinde VM 'yi hiç yedekliyoruz.
-
-Varsayılan yapılandırma profilinin ayarlarını Tercihler aracılığıyla ayarlayabilirsiniz. [Burada](virtual-machines-custom-preferences.md)bir tercih oluşturma hakkında bilgi edinin.
+Size eklediğimiz standart hizmetlere ek olarak, belirli bir tercih alt kümesini yapılandırmanıza izin veririz. Bu tercihlere bir dizi yapılandırma seçeneği içinde izin verilir. Örneğin, Azure Backup olması durumunda yedeklemenin sıklığını ve haftanın hangi gününde olduğunu tanımlamanızı sağlayacak.
 
 > [!NOTE]
-> Oto yönetimi etkinken VM 'nizin yapılandırma profilini değiştiremezsiniz. Bu VM için, bu sanal makine için yeniden yönetme 'yi devre dışı bırakmanız ve ardından, istenen yapılandırma profili ve tercihleriyle tekrar yönetmeyi yeniden etkinleştirmeniz gerekir.
+> Geliştirme/test ortamında VM 'yi hiç yedekleyemeyecektir.
+
+Tercihler aracılığıyla varsayılan bir ortamın ayarlarını yapabilirsiniz. [Burada](virtual-machines-custom-preferences.md)bir tercih oluşturma hakkında bilgi edinin.
+
+> [!NOTE]
+> Oto yönetimi etkinken sanal makinenizin enivonrment yapılandırmasını değiştiremezsiniz. Bu VM için, bu sanal makine için yeniden yönetme 'yi devre dışı bırakmanız ve ardından, istenen ortam ve tercihlerle tekrar yönetmeyi yeniden etkinleştirmeniz gerekir.
+
+Katılan Azure hizmetlerinin tüm listesi ve tercihleri destekliyorsa, buraya bakın:
+- [Linux için oto Yönet](automanage-windows-server.md)
+- [Windows Server için oto Yönet](automanage-windows-server.md)
 
 
 ## <a name="automanage-account"></a>Hesabı oto Yönet
@@ -123,7 +149,7 @@ Azure portal, otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen 
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Yapılandırılmış sanal makinelerin listesi.":::
 
-Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma profili, yapılandırma tercihi, durum, hesap, abonelik ve kaynak grubu.
+Listelenen her VM için şu ayrıntılar görüntülenir: ad, ortam, yapılandırma tercihi, durum, Işletim sistemi, hesap, abonelik ve kaynak grubu.
 
 **Durum** sütununda aşağıdaki durumlar görüntülenebilir:
 - *Devam eden* -VM yeni etkinleştirildi ve yapılandırılıyor
@@ -156,7 +182,7 @@ Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, sanal makineler için oto yönetimi 'nin, en iyi uygulama Azure hizmetlerini bilmeniz, bu makaleye ekleme ve yapılandırma ihtiyacını ortadan kaldırabildiğiniz bir yol sağladığını öğrendiniz. Ayrıca, eklendi sanal makineler için otomatik olarak yönetmeye yönelik bir makine, ayarlanan yapılandırma profillerinden Drifts, otomatik olarak yeniden uyumluluğa geri alınacaktır.
+Bu makalede, sanal makineler için oto yönetimi 'nin, en iyi uygulama Azure hizmetlerini bilmeniz, bu makaleye ekleme ve yapılandırma ihtiyacını ortadan kaldırabildiğiniz bir yol sağladığını öğrendiniz. Ayrıca, ortam kurulumundan Drifts sanal makineler için otomatik olarak yönetmek üzere eklendi bir makineniz varsa, otomatik olarak uyumluluk 'e geri getirilecektir.
 
 Azure portal sanal makineler için oto yönetimini etkinleştirmeyi deneyin.
 

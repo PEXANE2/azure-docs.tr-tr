@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1e40ad90910f7b2244401386fb01a4e4fefe03ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547483"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647413"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -42,7 +42,7 @@ Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilg
 
 ## <a name="activity-based-automatic-renewal"></a>Etkinlik tabanlı otomatik yenileme
 
-Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint veya takımlar gibi Microsoft 365 hizmetler genelinde gruplar içindeki kullanıcı etkinliklerini temel aldığı için, Grup sahiplerine göre el ile işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
+Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint veya takımlar gibi Microsoft 365 hizmetler genelinde gruplar içindeki kullanıcı etkinliklerini temel aldığı için, Grup sahiplerine göre el ile işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderirseniz, Grup süresi dolmadan ve sahip herhangi bir yenileme bildirimi almadan, Grup otomatik olarak 35 gün içinde yenilenir.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Grup süre sonunu otomatik olarak yenileme etkinlikleri
 
@@ -62,10 +62,10 @@ Yöneticiler, Azure AD 'de etkinlik denetim günlüklerinden otomatik olarak yen
 
 Aşağıda, Azure AD 'de Microsoft 365 grupları için süre sonu yapılandırıp kullanabileceğiniz roller verilmiştir.
 
-Role | İzinler
+Rol | İzinler
 -------- | --------
 Genel yönetici, Grup Yöneticisi veya Kullanıcı Yöneticisi | Microsoft 365 grupları için süre sonu ilke ayarlarını oluşturabilir, okuyabilir, güncelleştirebilir veya silebilir<br>Herhangi bir Microsoft 365 grubunu yenileyebilirler
-User | Sahip oldukları bir Microsoft 365 grubunu yenileyebilirler<br>Sahip oldukları bir Microsoft 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
+Kullanıcı | Sahip oldukları bir Microsoft 365 grubunu yenileyebilirler<br>Sahip oldukları bir Microsoft 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
 
 Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azure Active Directory içindeki silinen Microsoft 365 grubunu geri yükleme](groups-restore-deleted.md)bölümüne bakın.
 

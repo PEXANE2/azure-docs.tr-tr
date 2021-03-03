@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: cf1e71d67424258ccae6794f28d37399cd68996e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503631"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654338"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Öğretici: VMware ufku Birleşik erişim ağ geçidi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -39,7 +39,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * VMware ufku-Birleşik erişim ağ geçidi **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-vmware-horizon---unified-access-gateway-from-the-gallery"></a>Galeriden VMware ufuk ve Birleşik erişim ağ geçidi ekleme
+## <a name="add-vmware-horizon---unified-access-gateway-from-the-gallery"></a>Galeriden VMware ufuk ve Birleşik erişim ağ geçidi ekleme
 
 VMware ufku Birleşik erişim ağ geçidinin tümleştirmesini Azure AD 'ye yapılandırmak için, Galeriden VMware ufuk ve Birleşik erişim ağ geçidi ' ni yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
@@ -53,7 +53,7 @@ VMware ufku Birleşik erişim ağ geçidinin tümleştirmesini Azure AD 'ye yap�
 
 ## <a name="configure-and-test-azure-ad-sso-for-vmware-horizon---unified-access-gateway"></a>VMware ufku Birleşik erişim ağ geçidi için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak VMware ufku Birleşik erişim ağ geçidi Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, VMware ufku Birleşik erişim ağ geçidinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak VMware ufku Birleşik erişim ağ geçidi Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, VMware ufku Birleşik erişim ağ geçidinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu VMware ufuk Birleşik erişim ağ geçidi ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -70,7 +70,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **VMware ufuk-Birleşik erişim ağ geçidi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -145,4 +145,4 @@ Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de ku
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-VMware ufku Birleşik erişim ağ geçidini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+VMware ufku Birleşik erişim ağ geçidini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

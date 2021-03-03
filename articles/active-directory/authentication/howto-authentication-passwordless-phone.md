@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator App-Azure Active Directory ile passwordless oturum açma
-description: Microsoft Authenticator uygulamasını kullanarak Azure AD 'de passwordless oturum açmayı etkinleştirme (Önizleme)
+description: Microsoft Authenticator uygulamasını kullanarak Azure AD 'de parolasız oturum açmayı etkinleştirme
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626164"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653482"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla passwordless oturum açmayı etkinleştirme 
 
 Microsoft Authenticator uygulaması, herhangi bir Azure AD hesabında parola kullanılmadan oturum açmak için kullanılabilir. Microsoft Authenticator, cihazın PIN veya biyometri kullandığı bir cihaza bağlı bir kullanıcı kimlik bilgisini etkinleştirmek için anahtar tabanlı kimlik doğrulaması kullanır. [İş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification) , benzer bir teknoloji kullanır.
 
@@ -40,7 +40,7 @@ Microsoft Authenticator uygulamasıyla passwordless telefon oturum açma 'yı ku
 - İOS 8,0 veya üzerini çalıştıran cihazlarda yüklü Microsoft Authenticator en son sürümü veya Android 6,0 veya üzeri.
 
 > [!NOTE]
-> Azure AD PowerShell kullanarak parolasız oturum açma önizlemesini Microsoft Authenticator etkinleştirdiyseniz, bu, tüm dizininiz için etkinleştirilmiştir. Bu yeni yöntemi kullanmayı etkinleştirirseniz, PowerShell ilkesinin yerini almaz. Yeni *kimlik doğrulama yöntemleri* menüsü aracılığıyla kiracınızdaki tüm kullanıcılar için etkinleştirmenizi öneririz, aksi halde yeni ilkede olmayan kullanıcılar artık parolasız oturum açamaz.
+> Azure AD PowerShell kullanarak parolasız Microsoft Authenticator oturum açma 'yı etkinleştirdiyseniz, bu, tüm dizininiz için etkinleştirilmiştir. Bu yeni yöntemi kullanmayı etkinleştirirseniz, PowerShell ilkesinin yerini almaz. Yeni *kimlik doğrulama yöntemleri* menüsü aracılığıyla kiracınızdaki tüm kullanıcılar için etkinleştirmenizi öneririz, aksi halde yeni ilkede olmayan kullanıcılar artık parolasız oturum açamaz.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Passwordless kimlik doğrulama yöntemlerini etkinleştir
 
@@ -58,7 +58,7 @@ Parolasız telefon oturumu açma kimlik doğrulama yöntemini etkinleştirmek i�
 
 1. [Azure Portal](https://portal.azure.com) bir *genel yönetici* hesabıyla oturum açın.
 1. *Azure Active Directory* arayıp seçin, sonra **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **ilkelerine** gidin.
-1. **Microsoft Authenticator (Önizleme)** altında aşağıdaki seçenekleri belirleyin:
+1. **Microsoft Authenticator** altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
 1. Her eklenen grup veya Kullanıcı varsayılan olarak, hem passwordless hem de anında bildirim modlarında ("Any" modunda) Microsoft Authenticator kullanılmak üzere etkinleştirilir. Bunu değiştirmek için her satır için:
@@ -104,7 +104,7 @@ Kullanıcı parolasız telefonla oturum açmayı kullandıktan sonra, uygulama b
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
-Geçerli önizleme deneyiminde aşağıdaki bilinen sorunlar mevcuttur.
+Aşağıdaki bilinen sorunlar var.
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Parolasız telefon oturumu açma seçeneği görünmüyor
 

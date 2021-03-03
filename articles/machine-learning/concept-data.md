@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872018"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659724"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
-Azure Machine Learning buluttaki verilerinize bağlanmanızı kolaylaştırır.  Bu, temel alınan depolama hizmeti üzerinde bir Özet katman sağlar, böylece depolama türüne özel kod yazmak zorunda kalmadan verilerinize güvenli bir şekilde erişebilir ve bunlarla çalışabilirsiniz. Azure Machine Learning Ayrıca aşağıdaki veri yeteneklerini de sağlar:
+Azure Machine Learning buluttaki verilerinize bağlanmanızı kolaylaştırır. Bu, temel alınan depolama hizmeti üzerinde bir Özet katman sağlar, böylece depolama türüne özel kod yazmak zorunda kalmadan verilerinize güvenli bir şekilde erişebilir ve bunlarla çalışabilirsiniz. Azure Machine Learning Ayrıca aşağıdaki veri yeteneklerini de sağlar:
 
 *    Pandas ve Spark veri çerçeveleri ile birlikte çalışabilirlik
 *    Veri kökenini sürümü oluşturma ve izleme
@@ -53,7 +53,7 @@ Aşağıdaki diyagramda, önerilen bu iş akışının görsel bir gösterimi su
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>Veri depolarıyla depolama 'ya bağlanma
 
-Azure Machine Learning veri depoları, bağlantı bilgilerini Azure depolama verilerinize güvenli bir şekilde saklayın, bu sayede betiklerinizde kod yazmanız gerekmez. Depolama hesabınıza kolayca bağlanmak ve temel Azure depolama hizmetindeki verilere erişmek için [bir veri deposu kaydedin ve oluşturun](how-to-access-data.md) . 
+Azure Machine Learning veri depoları, bağlantı bilgilerini Azure 'daki veri depolama verilerinize güvenli bir şekilde saklayın, bu nedenle betiklerinizde kod yazmanız gerekmez. Depolama hesabınıza kolayca bağlanmak ve temel depolama hizmetinizdeki verilere erişmek için [bir veri deposu kaydedin ve oluşturun](how-to-access-data.md) . 
 
 Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı depolama hizmetleri:
 
@@ -65,6 +65,9 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 + PostgreSQL için Azure Veritabanı
 + Databricks Dosya Sistemi
 + MySQL için Azure Veritabanı
+
+>[!TIP]
+> Veri depoları oluşturmak için genel kullanıma sunulan işlevsellik, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi depolama hizmetlerine erişmek için kimlik bilgisi tabanlı kimlik doğrulaması gerektirir. Bu kimlik bilgilerine, çalışma alanına *okuyucu* erişimi olan kullanıcılar erişebilir. <br><br>Bu sorun varsa,  [Depolama Hizmetleri 'ne (Önizleme) kimlik tabanlı veri erişimi kullanan bir veri deposu oluşturun](how-to-identity-based-data-access.md). Bu özellik, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Veri kümeleriyle depolamadaki başvuru verileri
@@ -100,7 +103,7 @@ Veri kümeleri ile Azure Machine Learning özellikleriyle sorunsuz tümleştirme
 + Makine öğrenimi modellerini eğitme:
      + [otomatikleştirilen ML denemeleri](how-to-use-automated-ml-for-ml-models.md)
      + [Tasarımcı](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [bilgisayarların](how-to-train-with-datasets.md)
+     + [not defterleri](how-to-train-with-datasets.md)
      + [Azure Machine Learning işlem hatları](./how-to-create-machine-learning-pipelines.md)
 + [Makine öğrenimi ardışık düzenleri](./how-to-create-machine-learning-pipelines.md)'nde [Batch çıkarımı](./tutorial-pipeline-batch-scoring-classification.md) ile Puanlama için veri kümelerine erişin.
 + [Veri kayması](#drift) algılaması için bir veri kümesi İzleyicisi ayarlayın.

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418222"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674326"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>SYNAPSE çalışma alanınızdan güvenli bir Azure depolama hesabına bağlanma
 
@@ -21,7 +21,7 @@ Bu makale, Azure SYNAPSE çalışma alanınızdan güvenli bir Azure depolama he
 
 
 ## <a name="secured-azure-storage-accounts"></a>Güvenli Azure depolama hesapları
-Azure depolama, depolama hesaplarınıza erişimi sağlamanıza ve denetlemenize olanak tanıyan katmanlı bir güvenlik modeli sağlar. IP güvenlik duvarı kurallarını, seçili genel IP adresi aralıklarından depolama hesabınıza erişimi sağlamak için yapılandırabilirsiniz. Ayrıca, seçili sanal ağlardan gelen trafiğin depolama hesabınıza erişimine izin vermek için ağ kurallarını yapılandırabilirsiniz. Seçilen IP adresi aralıklarından ve aynı depolama hesabındaki seçili sanal ağlardan erişim sağlayan ağ kurallarından erişime izin veren IP güvenlik duvarı kurallarını birleştirebilirsiniz. Bu kurallar, bir depolama hesabının genel uç noktası için geçerlidir. Çalışma alanınızda oluşturulan yönetilen özel uç noktalardan bir depolama hesabına giden trafiğe izin vermek için herhangi bir erişim kuralına gerek yoktur. Depolama güvenlik duvarı kuralları, mevcut depolama hesaplarına veya bunları oluştururken yeni depolama hesaplarına uygulanabilir. Depolama [hesabınızın güvenliğini](https://docs.microsoft.com/azure/storage/common/storage-network-security)sağlama hakkında daha fazla bilgi edinebilirsiniz.
+Azure depolama, depolama hesaplarınıza erişimi sağlamanıza ve denetlemenize olanak tanıyan katmanlı bir güvenlik modeli sağlar. IP güvenlik duvarı kurallarını, seçili genel IP adresi aralıklarından depolama hesabınıza erişimi sağlamak için yapılandırabilirsiniz. Ayrıca, seçili sanal ağlardan gelen trafiğin depolama hesabınıza erişimine izin vermek için ağ kurallarını yapılandırabilirsiniz. Seçilen IP adresi aralıklarından ve aynı depolama hesabındaki seçili sanal ağlardan erişim sağlayan ağ kurallarından erişime izin veren IP güvenlik duvarı kurallarını birleştirebilirsiniz. Bu kurallar, bir depolama hesabının genel uç noktası için geçerlidir. Çalışma alanınızda oluşturulan yönetilen özel uç noktalardan bir depolama hesabına giden trafiğe izin vermek için herhangi bir erişim kuralına gerek yoktur. Depolama güvenlik duvarı kuralları, mevcut depolama hesaplarına veya bunları oluştururken yeni depolama hesaplarına uygulanabilir. Depolama [hesabınızın güvenliğini](../../storage/common/storage-network-security.md)sağlama hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>SYNAPSE çalışma alanları ve sanal ağlar
 Bir Synapse çalışma alanı oluşturduğunuzda, yönetilen bir sanal ağın kendisiyle ilişkilendirilmesi için etkinleştirmeyi seçebilirsiniz. Oluşturduğunuz çalışma alanınız için yönetilen sanal ağı etkinleştirmezseniz, çalışma alanınız paylaşılan bir sanal ağ ve onunla ilişkili bir yönetilen sanal ağı olmayan diğer SYNAPSE çalışma alanlarıyla birlikte bulunur. Çalışma alanını oluştururken yönetilen sanal ağı etkinleştirdiyseniz, çalışma alanınız Azure SYNAPSE tarafından yönetilen ayrılmış bir sanal ağla ilişkilendirilir. Bu sanal ağlar, müşteri aboneliğinizde oluşturulmaz. Bu nedenle, yukarıda açıklanan ağ kurallarını kullanarak bu sanal ağlardan gelen trafiğin güvenli depolama hesabınıza erişimine izin vermeniz mümkün olmayacaktır.  

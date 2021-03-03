@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101374"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651000"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Esnekliği için uygulama oturum açma durumunu izleme
 
@@ -51,7 +51,7 @@ Bu makalede, kullanıcılarınızın oturum açma işlemlerinde kesintiler izlem
 
 * Azure Izleyici günlüklerine Günlükler göndermek için Azure aboneliğinizdeki bir Log Analytics çalışma alanı. 
 
-   * [Log Analytics çalışma alanı oluşturmayı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) öğrenin
+   * [Log Analytics çalışma alanı oluşturmayı](../../azure-monitor/logs/quick-create-workspace.md) öğrenin
 
 * Azure Izleyici günlükleri ile tümleştirilmiş Azure AD günlükleri
 
@@ -94,7 +94,7 @@ Grafiklerde yansıtılan sorgulara göre e-posta uyarıları oluşturmak için a
 
  Temel alınan sorguyu yapılandırmak ve uyarıları ayarlamak için aşağıdaki adımları izleyin. Yapılandırma için temel olarak örnek sorgu kullanacaksınız. Bu bölümün sonunda sorgu yapısının bir açıklaması görüntülenir.
 
-Azure Izleyici kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme hakkında daha fazla bilgi için bkz. [günlük uyarılarını yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Azure Izleyici kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme hakkında daha fazla bilgi için bkz. [günlük uyarılarını yönetme](../../azure-monitor/alerts/alerts-log.md).
 
  
 1. Çalışma kitabında **Düzenle**' yi seçin, sonra grafiğin sağ tarafındaki **Sorgu simgesini** seçin.   
@@ -280,10 +280,9 @@ Sorgu ve uyarıları ayarladıktan sonra, uyarıları yönetmek için iş süre�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Çalışma kitapları hakkında daha fazla bilgi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[Çalışma kitapları hakkında daha fazla bilgi](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

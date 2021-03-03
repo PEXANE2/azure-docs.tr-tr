@@ -2,18 +2,18 @@
 title: Azure Arc etkin Kubernetes aracı mimarisi
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes aracılarına yönelik mimari bir genel bakış sunulmaktadır
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652573"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650541"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc etkin Kubernetes aracı mimarisi
 
@@ -42,7 +42,7 @@ ms.locfileid: "100652573"
 
         | Aracı | Açıklama |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Azure Arc etkin Kubernetes Şu anda yalnızca [sistem tarafından atanan kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)desteklemektedir. `clusteridentityoperator` ilk giden iletişimi başlatır. Bu ilk iletişim, diğer aracıların Azure ile iletişim kurmak için kullandığı Yönetilen Hizmet Kimliği (MSI) sertifikasını getirir. |
+        | `deployment.apps/clusteridentityoperator` | Azure Arc etkin Kubernetes Şu anda yalnızca [sistem tarafından atanan kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)desteklemektedir. `clusteridentityoperator` ilk giden iletişimi başlatır. Bu ilk iletişim, diğer aracıların Azure ile iletişim kurmak için kullandığı Yönetilen Hizmet Kimliği (MSI) sertifikasını getirir. |
         | `deployment.apps/config-agent` | Kümeye uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler. Uyumluluk durumunu güncelleştirir. |
         | `deployment.apps/controller-manager` | Azure Arc bileşenleri arasındaki etkileşimleri düzenleyen bir işleç operatörü. |    
         | `deployment.apps/metrics-agent` | En iyi performansı doğrulamak için diğer yay aracılarının ölçümlerini toplar. |
@@ -85,7 +85,7 @@ ms.locfileid: "100652573"
 
 ## <a name="understand-connectivity-modes"></a>Bağlantı modlarını anlama
 
-| Bağlantı modu | Description |
+| Bağlantı modu | Açıklama |
 | ----------------- | ----------- |
 | Tam bağlantı | Aracılar, Gilar yapılandırmalarının yaymasına, Azure Ilke ve Gatekeeper ilkelerine zorlamaya ve Azure Izleyici 'de iş yükü ölçümlerinin ve günlüklerinin toplanmasını çok kısa bir gecikmeyle Azure ile sürekli olarak iletişim kurabilir. |
 | Yarı bağlı | Tarafından çekilecek MSI sertifikası, `clusteridentityoperator` sertifikanın süresi dolmadan 90 gün önce geçerlidir. Süre dolduktan sonra, Azure Arc etkin Kubernetes kaynağı çalışmayı durduruyor. Kümedeki tüm Azure Arc özelliklerini yeniden etkinleştirmek için, Azure Arc etkin Kubernetes kaynak ve aracılarını silin ve yeniden oluşturun. 90 gün boyunca, kümeyi en az 30 günde bir bağlayın. |
@@ -93,5 +93,5 @@ ms.locfileid: "100652573"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./connect-cluster.md)
+* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
 * [Yapılandırmalara kavramsal genel bakış](./conceptual-configurations.md)

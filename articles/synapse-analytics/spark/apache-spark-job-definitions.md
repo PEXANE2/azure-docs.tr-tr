@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307186"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677624"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Öğretici: SYNAPSE Studio 'da Apache Spark iş tanımı oluşturma
 
@@ -32,7 +32,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 
-* Azure SYNAPSE Analytics çalışma alanı. Yönergeler için bkz. [Azure SYNAPSE Analytics çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* Azure SYNAPSE Analytics çalışma alanı. Yönergeler için bkz. [Azure SYNAPSE Analytics çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md).
 * Sunucusuz Apache Spark Havuzu.
 * ADLS 2. depolama hesabı. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri sahibi** olmanız gerekir. Aksi takdirde, izni el ile eklemeniz gerekir.
 * Çalışma alanı varsayılan depolama alanını kullanmak istemiyorsanız, SYNAPSE Studio 'daki gerekli ADLS 2. Depolama hesabını bağlayın. 
@@ -47,7 +47,7 @@ Bu bölümde, PySpark (Python) için Apache Spark iş tanımı oluşturursunuz.
 
      ![örnek dosyalar](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  **Azure Data Lake Storage Gen2** ' nı seçin ve ADLS 2. dosya sisteminize **WORDCOUNT.py** ve **shakespeare.txt** yükleyin. 
+3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  ' nı seçin ve ADLS 2. dosya sisteminize **WORDCOUNT.py** ve **shakespeare.txt** yükleyin. 
 
      ![Python dosyasını karşıya yükle](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -129,7 +129,7 @@ Bu bölümde, .NET Spark (C#/F #) için Apache Spark iş tanımı oluşturursunu
 
      ![örnek DotNet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  **Azure Data Lake Storage Gen2** ' nı seçin ve **wordcount.zip** ve **shakespeare.txt** ADLS 2. dosya sisteminize yükleyin.
+ 3. Azure Data Lake Storage 2. **veri**  ->  **bağlantısı**  ->  ' nı seçin ve **wordcount.zip** ve **shakespeare.txt** ADLS 2. dosya sisteminize yükleyin.
  
      ![DotNet yapısını hazırlama](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
@@ -177,7 +177,7 @@ Apache Spark iş tanımı oluşturduktan sonra, bir Apache Spark havuzuna gönde
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Senaryo 2: Apache Spark işi çalışma ilerlemesini görüntüleme
 
- 1. **İzleme** ' yi seçin, ardından **Apache Spark uygulamalar** seçeneğini belirleyin. Gönderilen Apache Spark uygulamasını bulabilirsiniz.
+ 1. **İzleme**' yi seçin, ardından **Apache Spark uygulamalar** seçeneğini belirleyin. Gönderilen Apache Spark uygulamasını bulabilirsiniz.
 
      ![Spark uygulamasını görüntüle](./media/apache-spark-job-definitions/view-spark-application.png)
 
@@ -197,7 +197,7 @@ Bu bölümde, işlem hattına bir Apache Spark iş tanımı eklersiniz.
 
  1. Mevcut bir Apache Spark iş tanımını açın.
 
- 2. Apache Spark iş tanımının sağ üst köşesindeki simgeyi seçin, **mevcut ardışık düzen** veya **Yeni işlem hattı** ' nı seçin. Daha fazla bilgi için, işlem hattı sayfasına başvurabilirsiniz.
+ 2. Apache Spark iş tanımının sağ üst köşesindeki simgeyi seçin, **mevcut ardışık düzen** veya **Yeni işlem hattı**' nı seçin. Daha fazla bilgi için, işlem hattı sayfasına başvurabilirsiniz.
 
      ![pipeline1 'e Ekle](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 

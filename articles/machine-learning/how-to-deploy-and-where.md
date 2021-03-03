@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f8865c9e6726a19e5e215886f92507734ebf0662
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652233"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657324"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Makine öğrenimi modellerini Azure 'a dağıtma
 
@@ -315,11 +315,11 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Description | Son durum?
+| Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
@@ -327,10 +327,10 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 > Dağıtım sırasında, işlem hedefleri için Docker görüntüleri Azure Container Registry (ACR) ile oluşturulur ve yüklenir. Varsayılan olarak, Azure Machine Learning *temel* hizmet katmanını kullanan bir ACR oluşturur. Çalışma alanınızın ACR 'sini standart veya Premium katmana değiştirmek, görüntü oluşturma ve işlem hedeflerinize dağıtmak için geçen süreyi azaltabilir. Daha fazla bilgi için bkz. [Azure Container Registry hizmet katmanları](../container-registry/container-registry-skus.md).
 
 > [!NOTE]
-> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
+> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](../azure-monitor/containers/container-insights-enable-existing-clusters.md) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
 >
-> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Azure Kubernetes hizmet tanılaması](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](../aks/aks-resource-health.md)
+> * [Azure Kubernetes hizmet tanılaması](../aks/concepts-diagnostics.md)
 >
 > Bir modeli sağlıksız veya aşırı yüklenmiş bir kümeye dağıtmaya çalışıyorsanız, sorun yaşanması beklenmektedir. AKS kümesi sorunlarını gidermek için yardıma ihtiyacınız varsa lütfen AKS desteğiyle iletişime geçin.
 

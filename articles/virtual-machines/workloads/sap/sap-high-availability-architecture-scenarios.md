@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b409254abbde1c1f6156052c49a07e6cc09a4dfd
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d689db4916758e13311ad181fb3b5d7ca9a85260
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958787"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675328"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -234,7 +233,7 @@ ms.locfileid: "94958787"
 
 **Yüksek kullanılabilirlik**: *aynı* veri merkezinde yer alan yedekli, hataya dayanıklı veya yük devretme korumalı bileşenler aracılığıyla BT Hizmetleri IÇIN iş sürekliliği sağlayarak BT kesintilerini en aza indirecek bir teknoloji kümesini ifade eder. Bu durumda, veri merkezi bir Azure bölgesi içinde bulunur.
 
-**Olağanüstü durum kurtarma**: aynı zamanda, BT Hizmetleri kesintisini ve bunların kurtarmasının en aza indirmesine, ancak bir diğerinden yüzlerce mil olabilir. *various* Bu durumda, veri merkezleri aynı geopolitik bölgede veya bir müşteri olarak sizin tarafınızdan belirlenen konumlarda yer alan çeşitli Azure bölgelerinde yer alabilir.
+**Olağanüstü durum kurtarma**: aynı zamanda, BT Hizmetleri kesintisini ve bunların kurtarmasının en aza indirmesine, ancak bir diğerinden yüzlerce mil olabilir.  Bu durumda, veri merkezleri aynı geopolitik bölgede veya bir müşteri olarak sizin tarafınızdan belirlenen konumlarda yer alan çeşitli Azure bölgelerinde yer alabilir.
 
 
 ## <a name="overview-of-high-availability"></a>Yüksek kullanılabilirliğe genel bakış

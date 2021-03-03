@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Arc özellikli Kubernetes (önizleme)
+title: Azure Arc özellikli Kubernetes
 summary: Azure Arc ile Kubernetes kümelerini yönetmeyi öğrenin
 metadata:
   title: Azure Arc özellikli Kubernetes
@@ -7,14 +7,14 @@ metadata:
   author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 02/15/2021
+  ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: 97343e8c23e202e70ec30bb0a522105889ea08b3
-  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.openlocfilehash: f97b1560e062d1849f726baff8cd66d8e75f8b7f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100560244"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101647855"
 landingContent:
 - title: Azure Arc kullanarak Kubernetes kümelerini Azure’a bağlama
   linkLists:
@@ -22,6 +22,8 @@ landingContent:
     links:
     - text: Azure Arc özellikli Kubernetes nedir?
       url: overview.md
+    - text: Azure Arc doğrulama programı
+      url: validation-program.md
   - linkListType: concept
     links:
     - text: Aracı Mimarisi
@@ -34,14 +36,18 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Kümeye bağlanma
-      url: connect-cluster.md
+    - text: Bir kümeyi Azure yaya bağlama
+      url: quickstart-connect-cluster.md
+- title: GitOps kullanarak yapılandırmaları dağıtma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: GitOps kullanarak yapılandırmaları dağıtma
+      url: tutorial-use-gitops-connected-cluster.md
 - title: Kümeleri yapılandırma, yönetme ve izleme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: GitOps kullanarak yapılandırmaları dağıtma
-      url: use-gitops-connected-cluster.md
     - text: GitOps kullanarak Helm chart’ları dağıtma
       url: use-gitops-with-helm.md
     - text: Azure İlkesi’ni kullanarak GitOps uygulama

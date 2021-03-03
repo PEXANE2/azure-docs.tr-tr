@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092151"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652394"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management geçici silme (Önizleme)
 
 API Management geçici silme (Önizleme) ile, son silinen API Management (APıM) örneklerini kurtarabilir ve geri yükleyebilirsiniz.
 
 > [!IMPORTANT]
-> Yalnızca `2020-01-01-preview` ve sonrakı API sürümleri kullanılarak silinen API Management örnekleri, bu makalede açıklanan adımlar kullanılarak geçici olarak silinir ve kurtarılabilir. Önceki API sürümleri kullanılarak silinen APıM örnekleri, sabit olarak silinmeye devam edecektir. Azure PowerShell ve Azure CLı Şu anda `2020-06-01-preview` sürümü kullanmıyor ve ayrıca sabit silme davranışına neden olacak.
+> Yalnızca `2020-06-01-preview` ve sonrakı API sürümleri kullanılarak silinen API Management örnekleri, bu makalede açıklanan adımlar kullanılarak geçici olarak silinir ve kurtarılabilir. Önceki API sürümleri kullanılarak silinen APıM örnekleri, sabit olarak silinmeye devam edecektir. Azure PowerShell ve Azure CLı Şu anda `2020-06-01-preview` sürümü kullanmıyor ve ayrıca sabit silme davranışına neden olacak.
 
 ## <a name="supporting-interfaces"></a>Destekleyici arabirimler
 
@@ -27,18 +27,18 @@ Geçici silme özelliği [REST API](/rest/api/apimanagement/2020-06-01-preview/a
 > [!TIP]
 > Azure REST API 'Leri çağırmaya yönelik ipuçları ve araçlar için [azure REST API başvurusu](/rest/api/azure/) ' na bakın.
 
-| İşlem | Description | API Management ad alanı | En düşük API sürümü |
+| İşlem | Açıklama | API Management ad alanı | En düşük API sürümü |
 |--|--|--|--|
-| [Oluştur veya güncelleştir](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Bir API Management hizmeti oluşturur veya güncelleştirir.  | API Management hizmeti | Herhangi bir |
+| [Oluştur veya güncelleştir](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Bir API Management hizmeti oluşturur veya güncelleştirir.  | API Management hizmeti | Herhangi biri |
 | [](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` Özelliği **true** olarak ayarlanmış şekilde oluştur veya güncelleştir | Daha önce geçici olarak siliniyorsa API Management hizmeti siler. `restore`Belirtilmişse ve `true` diğer tüm özelliklere ayarlanırsa, yok sayılır.  | API Management hizmeti |  2020-06-01-Önizleme |
-| [Silme](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Mevcut bir API Management hizmetini siler. | API Management hizmeti | 2020-01-01-Önizleme|
+| [Silme](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Mevcut bir API Management hizmetini siler. | API Management hizmeti | 2020-06-01-Önizleme|
 | [Ada göre al](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Adına göre geçici olarak silinen API Yönetimi hizmetini alın. | Silinen hizmetler | 2020-06-01-Önizleme |
 | [Aboneliğe göre Listele](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | Verilen abonelik için geri alma için kullanılabilen tüm geçici silinen hizmetleri listeler. | Silinen hizmetler | 2020-06-01-Önizleme
 | [Meye](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | API Management hizmeti temizler (silmeyi geri alma seçeneği olmadan siler). | Silinen hizmetler | 2020-06-01-Önizleme
 
 ## <a name="soft-delete-behavior"></a>Geçici silme davranışı
 
-API Management örneğinizi oluşturmak için herhangi bir API sürümünü kullanabilirsiniz, ancak `2020-01-01-preview` daha sonra, APıM örneğinizi geçici olarak silmek için veya sonraki sürümleri kullanmanız gerekir (ve bunu kurtarma seçeneğine sahip olursunuz).
+API Management örneğinizi oluşturmak için herhangi bir API sürümünü kullanabilirsiniz, ancak `2020-06-01-preview` daha sonra, APıM örneğinizi geçici olarak silmek için veya sonraki sürümleri kullanmanız gerekir (ve bunu kurtarma seçeneğine sahip olursunuz).
 
 API Management bir örneği sildikten sonra, hizmet silinmiş bir durumda olacak ve herhangi bir APIM işlemi için erişilemez hale gelir. Bu durumda, APıM örneği yalnızca listelenebilir, kurtarılabilir veya temizlenmiş (kalıcı olarak silinir).
 

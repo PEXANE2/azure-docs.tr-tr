@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322265"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661095"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı nedir? 
+# <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı nedir? 
 
 
 Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak için etkileşimli bir tuvalde [veri kümelerini](#datasets) ve [modülleri](#module) görsel olarak bağlamanıza olanak tanır. Tasarımcı ile çalışmaya başlama hakkında bilgi edinmek için bkz [. Öğretici: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md) etme
@@ -81,7 +81,7 @@ Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarı
 
 Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıda bireysel modüller için işlem kaynaklarını ayarlayabilirsiniz. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Modül özellikleri":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Modül özellikleri":::
 
 
 Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gezinerek bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md). Algoritma seçme konusunda yardım için [Azure Machine Learning algoritması oluşturma sayfasına](algorithm-cheat-sheet.md)bakın.

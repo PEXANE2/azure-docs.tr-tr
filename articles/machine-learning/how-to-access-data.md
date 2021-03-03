@@ -11,31 +11,33 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032856"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659673"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure 'da Storage Services 'a bağlanma
 
-Bu makalede, **Azure 'da Azure Machine Learning veri depoları aracılığıyla depolama hizmetlerine nasıl bağlanacağınızı** öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](how-to-connect-data-ui.md) kullanabilirsiniz.
+Bu makalede, Azure 'daki veri depolama hizmetlerine Azure Machine Learning veri depoları ve [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile nasıl bağlanacağınızı öğrenin.
 
-Azure Machine Learning VS Code uzantısını kullanarak veri depoları oluşturup yönetmeyi tercih ediyorsanız daha fazla bilgi edinmek için [vs Code kaynak yönetimi nasıl yapılır kılavuzunu](how-to-manage-resources-vscode.md#datastores) ziyaret edin.
-
-[Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) .  
+Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure 'da depolama hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. [Bu Azure depolama çözümlerine](#matrix)bağlanan veri depoları oluşturabilirsiniz.
 
 Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
+Düşük bir kod deneyimi için bkz. [Azure Machine Learning Studio 'yu kullanarak veri depoları oluşturma ve kaydetme](how-to-connect-data-ui.md#create-datastores).
+
+>[!TIP]
+> Bu makalede, hizmet sorumlusu veya paylaşılan erişim imzası (SAS) belirteci gibi kimlik bilgisi tabanlı kimlik doğrulama kimlik bilgileri ile depolama hizmetinize bağlanmak istediğiniz varsayılır. Kimlik bilgileri veri depolarıyla kayıtlıysa, çalışma alanı *okuyucusu* rolüne sahip tüm kullanıcıların bu kimlik bilgilerini alabilmesi için göz önünde bulundurun. [Çalışma alanı *okuyucu* rolü hakkında daha fazla bilgi edinin.](how-to-assign-roles.md#default-roles) <br><br>Bu sorun varsa, [kimlik tabanlı erişim ile depolama hizmetlerine nasıl bağlanacağınızı](how-to-identity-based-data-access.md)öğrenin. <br><br>Bu özellik, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir. 
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-Şunlara ihtiyacınız var:
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 - [Desteklenen depolama türü](#matrix)olan bir Azure depolama hesabı.
 
-- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
+- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 - Azure Machine Learning çalışma alanı.
   
@@ -59,7 +61,10 @@ Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygu
 
 ## <a name="supported-data-storage-service-types"></a>Desteklenen veri depolama hizmeti türleri
 
-Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerine bağlantı bilgilerini depolamayı desteklemektedir.
+Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerine bağlantı bilgilerini depolamayı desteklemektedir. 
+
+> [!TIP]
+> **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) . 
 
 | Depolama &nbsp; türü | Kimlik doğrulama &nbsp; türü | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; Python SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; Learning CLI](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; REST API 'si](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
@@ -88,7 +93,16 @@ Azure depolama hizmetinize güvenli bir şekilde bağlanabildiğinizden emin olm
 
 ### <a name="virtual-network"></a>Sanal ağ 
 
-Veri depolama hesabınız bir **Sanal ağda** ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. Veri deposundan kayıt oluşturup kaydettiğinizde uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md) .  
+Azure Machine Learning, varsayılan olarak, güvenlik duvarının arkasındaki veya bir sanal ağ içindeki bir depolama hesabıyla iletişim kuramaz. Veri depolama hesabınız bir **Sanal ağda** ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. 
+
+> [!NOTE]
+> Bu kılavuz [, kimlik tabanlı veri erişimi (Önizleme) ile oluşturulan veri depoları](how-to-identity-based-data-access.md)için de geçerlidir. 
+
+**Python SDK kullanıcıları için**, bir işlem hedefinde eğitim betiğinizi kullanarak verilerinize erişmek için, işlem hedefinin depolama alanının aynı sanal ağ ve alt ağı içinde olması gerekir.  
+
+**Azure Machine Learning Studio kullanıcıları için**, çeşitli özellikler bir veri kümesinden veri okuma özelliğine dayanır; veri kümesi önizlemeleri, profiller ve otomatik makine öğrenimi. Bu özelliklerin sanal ağların arkasındaki depolamayla çalışması için, Azure Machine Learning, sanal ağ dışından depolama hesabına erişmesine izin vermek üzere [Studio 'da bir çalışma alanı yönetilen kimliği](how-to-enable-studio-virtual-network.md) kullanın. 
+
+Azure Machine Learning, sanal ağ dışındaki istemcilerden gelen istekleri alabilir. Hizmetten veri talep eden varlığın güvenli olduğundan emin olmak için, [çalışma alanınız Için Azure özel bağlantısı](how-to-configure-private-link.md)' nı ayarlayın.
 
 ### <a name="access-validation"></a>Erişim doğrulaması
 
@@ -204,18 +218,27 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
-<a name="arm"></a>
 
-## <a name="create-datastores-using-azure-resource-manager"></a>Azure Resource Manager kullanarak veri depoları oluşturma
+
+## <a name="create-datastores-with-other-azure-tools"></a>Diğer Azure araçlarıyla veri depoları oluşturma
+Python SDK ve Studio ile veri depoları oluşturmaya ek olarak, Azure Resource Manager şablonlarını veya Azure Machine Learning VS Code uzantısını da kullanabilirsiniz. 
+
+<a name="arm"></a>
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 Konumunda [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) veri depoları oluşturmak için kullanılabilecek çeşitli şablonlar vardır.
 
 Bu şablonları kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md).
 
+### <a name="vs-code-extension"></a>VS Code uzantısı
+
+Azure Machine Learning VS Code uzantısını kullanarak veri depoları oluşturup yönetmeyi tercih ediyorsanız, daha fazla bilgi edinmek için [vs Code kaynak yönetimi nasıl yapılır kılavuzunu](how-to-manage-resources-vscode.md#datastores) ziyaret edin.
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Veri Mağazalarınız içindeki verileri kullanma
 
-Bir veri deposu oluşturduktan sonra verilerinizle etkileşimde bulunmak için [bir Azure Machine Learning veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri kümeleri, eğitim gibi makine öğrenimi görevleri için verilerinizi geç tarafından değerlendirilen bir tüketilebilir nesneye paketleyin. Ayrıca, Azure Blob depolama ve ADLS Gen 2 gibi Azure depolama hizmetlerinden herhangi bir biçimdeki dosyaları [indirme veya bağlama](how-to-train-with-datasets.md#mount-vs-download) olanağı da sağlar. Bunları bir Pandas veya Spark DataFrame 'e tablo verileri yüklemek için de kullanabilirsiniz.
+Bir veri deposu oluşturduktan sonra verilerinizle etkileşimde bulunmak için [bir Azure Machine Learning veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri kümeleri, eğitim gibi makine öğrenimi görevleri için verilerinizi geç tarafından değerlendirilen bir tüketilebilir nesneye paketleyin. 
+
+Veri kümeleri ile, bir işlem hedefinde model eğitimi için Azure depolama hizmetlerinden herhangi bir biçimin dosyalarını [indirebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-vs-download) . [Veri KÜMELERIYLE ml modellerini eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md).
 
 <a name="get"></a>
 
@@ -251,7 +274,7 @@ Varsayılan veri deposunu aşağıdaki kodla da değiştirebilirsiniz. Bu özell
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Description |
+| Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

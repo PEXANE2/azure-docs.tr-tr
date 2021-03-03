@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361256"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667664"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Dizin oluşturucular, yetenekler veya belgeler çalıştırma veya sıfırlama
 
@@ -101,7 +101,7 @@ Herhangi bir yetenek belirtilmemişse, tüm beceri yürütülür ve önbelleğe 
 > [!IMPORTANT] 
 > [Belge sıfırlama](/rest/api/searchservice/preview-api/reset-documents) , yalnızca önizleme REST API aracılığıyla kullanılabilen genel önizlemededir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur.
 
-Belge [sıfırlama API 'si](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) belge anahtarlarının bir listesini kabul eder, böylece belirli belgeleri yenileyebilmenizi sağlayabilirsiniz. Belirtilmişse, sıfırlama parametreleri, temel verilerdeki diğer değişikliklerden bağımsız olarak işlendiklerin tek bir determinantı olur. Örneğin, son Dizin Oluşturucu çalıştırılmasından bu yana 20 blob eklendiyse veya güncelleştirilirse, ancak yalnızca bir belge sıfırladıysanız yalnızca bir belge işlenir.
+Belge [sıfırlama API 'si](/rest/api/searchservice/preview-api/reset-documents) belge anahtarlarının bir listesini kabul eder, böylece belirli belgeleri yenileyebilmenizi sağlayabilirsiniz. Belirtilmişse, sıfırlama parametreleri, temel verilerdeki diğer değişikliklerden bağımsız olarak işlendiklerin tek bir determinantı olur. Örneğin, son Dizin Oluşturucu çalıştırılmasından bu yana 20 blob eklendiyse veya güncelleştirilirse, ancak yalnızca bir belge sıfırladıysanız yalnızca bir belge işlenir.
 
 Belge başına temelinde, bu arama belgesindeki tüm alanlar veri kaynağındaki değerlerle yenilenir. Yenilenecek alanları seçip seçemezsiniz. 
 

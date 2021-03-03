@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3d4211acbf6b65ef8f04d00b3936d70bb930ed9e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562158"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645798"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>Öğretici: Node.js konsol uygulamasında Microsoft Graph API 'sini çağırma
 
@@ -125,9 +125,9 @@ NodeConsoleApp/
 const msal = require('@azure/msal-node');
 
 /**
- * Configuration object to be passed to MSAL instance on creation. 
+ * Configuration object to be passed to MSAL instance on creation.
  * For a full list of MSAL Node configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md 
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md
  */
 const msalConfig = {
     auth: {
@@ -139,8 +139,8 @@ const msalConfig = {
 
 /**
  * With client credentials flows permissions need to be granted in the portal by a tenant administrator.
- * The scope is always in the format '<resource>/.default'. For more, visit: 
- * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow 
+ * The scope is always in the format '<resource>/.default'. For more, visit:
+ * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
     scopes: [process.env.GRAPH_ENDPOINT + '.default'],
@@ -158,7 +158,7 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 
 /**
  * Acquires token with client credentials.
- * @param {object} tokenRequest 
+ * @param {object} tokenRequest
  */
 async function getToken(tokenRequest) {
     return await cca.acquireTokenByClientCredential(tokenRequest);
@@ -212,8 +212,8 @@ const axios = require('axios');
 
 /**
  * Calls the endpoint with authorization bearer token.
- * @param {string} endpoint 
- * @param {string} accessToken 
+ * @param {string} endpoint
+ * @param {string} accessToken
  */
 async function callApi(endpoint, accessToken) {
 
@@ -239,7 +239,7 @@ module.exports = {
 };
 ```
 
-Burada, `callApi` yöntemi, `GET` erişim belirteci gerektiren korumalı bir kaynağa karşı http isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine* ekler. Burada korunan kaynak, bu uygulamanın kaydedildiği Kiracıdaki kullanıcıları görüntüleyen Microsoft Graph API [kullanıcıları uç noktasıdır](https://docs.microsoft.com/graph/api/user-list) .
+Burada, `callApi` yöntemi, `GET` erişim belirteci gerektiren korumalı bir kaynağa karşı http isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine* ekler. Burada korunan kaynak, bu uygulamanın kaydedildiği Kiracıdaki kullanıcıları görüntüleyen Microsoft Graph API [kullanıcıları uç noktasıdır](/graph/api/user-list) .
 
 ## <a name="test-the-app"></a>Uygulamayı test etme
 
@@ -278,7 +278,7 @@ request made to web API at: Fri Jan 22 2021 09:31:52 GMT-0800 (Pacific Standard 
 
 ## <a name="how-the-application-works"></a>Uygulamanın nasıl çalıştığı
 
-Bu uygulama, [OAuth 2,0 istemci kimlik bilgileri verme](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)kullanır. Kullanıcının anında etkileşime geçmesi gerekmeyen ve arka planda çalışması gereken sunucular arası etkileşimler için genellikle bu izin türü kullanılır. Kimlik bilgileri verme akışı, bir Web hizmetinin (gizli istemci), bir kullanıcının kimliğine bürünmek yerine, başka bir Web hizmetini çağırırken kimlik doğrulaması yerine kendi kimlik bilgilerini kullanmasına izin verir. Bu kimlik doğrulama modeliyle desteklenen uygulamaların türü genellikle **Daemon 'ları** veya **hizmet hesaplarıdır**.
+Bu uygulama, [OAuth 2,0 istemci kimlik bilgileri verme](./v2-oauth2-client-creds-grant-flow.md)kullanır. Kullanıcının anında etkileşime geçmesi gerekmeyen ve arka planda çalışması gereken sunucular arası etkileşimler için genellikle bu izin türü kullanılır. Kimlik bilgileri verme akışı, bir Web hizmetinin (gizli istemci), bir kullanıcının kimliğine bürünmek yerine, başka bir Web hizmetini çağırırken kimlik doğrulaması yerine kendi kimlik bilgilerini kullanmasına izin verir. Bu kimlik doğrulama modeliyle desteklenen uygulamaların türü genellikle **Daemon 'ları** veya **hizmet hesaplarıdır**.
 
 İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın ve sonrasında gelen addır `/.default` . Bu gösterim Azure Active Directory (Azure AD) uygulama kaydı sırasında statik olarak belirtilen uygulama düzeyi izinleri kullanmasını söyler. Ayrıca, bu API izinlerinin bir **Kiracı Yöneticisi** tarafından verilmesi gerekir.
 

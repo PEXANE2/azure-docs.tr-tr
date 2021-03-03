@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 61ac4c979445ef48b5986ec3793a9880cedc837a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650261"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643499"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
@@ -65,11 +65,11 @@ Hizmet sorumlusu, kullanım ve ölçüm verilerini karşıya yüklemek için kul
 > [!NOTE]
 > Hizmet sorumlusu oluşturmak için [Azure 'da belirli izinler](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)gerekir.
 
-Hizmet sorumlusu oluşturmak için aşağıdaki örneği güncelleştirin. `<ServicePrincipalName>`Hizmet sorumlunuzu adıyla değiştirin ve komutunu çalıştırın:
+Hizmet sorumlusu oluşturmak için aşağıdaki örneği güncelleştirin. `<ServicePrincipalName>`, `SubscriptionId` Ve `resourcegroup` değerlerini ile değiştirin ve komutunu çalıştırın:
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+```
 
 Daha önce hizmet sorumlusu oluşturduysanız ve yalnızca geçerli kimlik bilgilerini almanız gerekiyorsa, kimlik bilgisini sıfırlamak için aşağıdaki komutu çalıştırın.
 
@@ -79,8 +79,8 @@ az ad sp credential reset --name <ServicePrincipalName>
 
 Örneğin, adlı bir hizmet sorumlusu oluşturmak için `azure-arc-metrics` aşağıdaki komutu çalıştırın
 
-```
-az ad sp create-for-rbac --name azure-arc-metrics
+```azurecli
+az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /subscriptions/a345c178a-845a-6a5g-56a9-ff1b456123z2/resourceGroups/myresourcegroup
 ```
 
 Örnek çıktı:
@@ -137,16 +137,15 @@ Hizmet sorumlusunu, `Monitoring Metrics Publisher` veritabanı örneği kaynakla
 > Windows ortamından çalışırken rol adları için çift tırnak kullanmanız gerekir.
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+
 ```
 ::: zone-end
 
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -154,8 +153,7 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end

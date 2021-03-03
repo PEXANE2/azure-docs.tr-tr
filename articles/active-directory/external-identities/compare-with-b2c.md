@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 03/02/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173082"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644074"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory dış kimlikler nelerdir?
 
@@ -27,7 +27,7 @@ Azure AD 'de dış kimliklerle, kuruluşunuzun dışındaki kişilerin uygulamal
 
 Azure AD dış kimlikleri, kullanıcının kuruluşunuzla olan ilişkisine ve Kullanıcı uygulamalarınızda ve kaynaklarda oturum açmak istediğinde daha az odaklanır. Bu çerçevede, Azure AD, işletmeden işletmeye (B2B) işbirliğiyle tüketici/müşteri veya vatandaşlık 'e yönelik uygulamalar (işletmeler arası veya B2C) için erişim yönetimine kadar çeşitli senaryolar destekler.
 
-- **Uygulamalarınızı ve kaynaklarınızı dış kullanıcılarla (B2B işbirliği) paylaşabilirsiniz**. Dış kullanıcıları kendi kiracınıza (yetkilendirme için), mevcut kimlik bilgilerini (kimlik doğrulama için) kullanmalarına izin vermek için izin atayabilmenizi sağlayan "Konuk" kullanıcılar olarak kendi kiracınıza davet edebilirsiniz. Kullanıcılar, iş, okul veya diğer e-posta hesapları ile basit bir davet ve kullanım süreci kullanarak paylaşılan kaynaklarda oturum açabilirler. Ayrıca, [dış kullanıcılara erişimi yöneten](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) de kullanabilirsiniz. Artık [self servis kaydolma Kullanıcı akışlarının (Önizleme)](self-service-sign-up-overview.md)kullanılabilirliğiyle, dış kullanıcıların uygulamalara kaydolmalarına izin verebilirsiniz. Deneyim, bir iş, okul veya sosyal kimlik (Google veya Facebook gibi) ile kaydolma izni verecek şekilde özelleştirilebilir. Kaydolma işlemi sırasında kullanıcı hakkındaki bilgileri de toplayabilirsiniz. Daha fazla bilgi için bkz. [Azure AD B2B belgeleri](index.yml).
+- **Uygulamalarınızı ve kaynaklarınızı dış kullanıcılarla (B2B işbirliği) paylaşabilirsiniz**. Dış kullanıcıları kendi kiracınıza (yetkilendirme için), mevcut kimlik bilgilerini (kimlik doğrulama için) kullanmalarına izin vermek için izin atayabilmenizi sağlayan "Konuk" kullanıcılar olarak kendi kiracınıza davet edebilirsiniz. Kullanıcılar, iş, okul veya diğer e-posta hesapları ile basit bir davet ve kullanım süreci kullanarak paylaşılan kaynaklarda oturum açabilirler. Ayrıca, [dış kullanıcılara erişimi yöneten](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) de kullanabilirsiniz. Artık [self servis kaydolma Kullanıcı akışlarının](self-service-sign-up-overview.md)kullanılabilirliğiyle, dış kullanıcıların uygulamalara kaydolmalarına izin verebilirsiniz. Deneyim, bir iş, okul veya sosyal kimlik (Google veya Facebook gibi) ile kaydolma izni verecek şekilde özelleştirilebilir. Kaydolma işlemi sırasında kullanıcı hakkındaki bilgileri de toplayabilirsiniz. Daha fazla bilgi için bkz. [Azure AD B2B belgeleri](index.yml).
 
 - **Tüketici ve müşterilere yönelik uygulamalar için bir beyaz etiketli kimlik yönetimi çözümüyle Kullanıcı yolculukları oluşturun (Azure AD B2C)**. Müşterilere yönelik uygulamalar oluşturan bir iş veya geliştiricisiyseniz Azure AD B2C kullanarak milyonlarca tüketiciye, müşteriye veya vatandaşları ölçeklendirebilirsiniz. Geliştiriciler, Azure AD 'yi uygulamalarına yönelik tam özellikli müşteri kimliği ve erişim yönetimi (CıHAR) sistemi olarak kullanabilir. Müşteriler, zaten oluşturmuş oldukları bir kimlikle (Facebook veya Gmail gibi) oturum açabilir. Azure AD B2C sayesinde, uygulamalarınızı kullanırken müşterilerin nasıl kaydolup oturum açdığını ve profillerini nasıl yönetebileceğinizi denetleyebilir. Daha fazla bilgi için [Azure AD B2C belgelerine](../../active-directory-b2c/index.yml)bakın.
 

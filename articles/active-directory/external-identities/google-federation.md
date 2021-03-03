@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355605"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653331"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
-Google ile Federasyonu ayarlayarak, davet edilen kullanıcıların Microsoft hesapları oluşturmaya gerek kalmadan kendi Gmail hesaplarıyla paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin verebilirsiniz. 
+Google ile Federasyonu ayarlayarak, davet edilen kullanıcıların Microsoft hesapları oluşturmaya gerek kalmadan kendi Gmail hesaplarıyla paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin verebilirsiniz.
+
+Uygulamanızı uygulamanızın oturum açma seçeneklerinden biri olarak ekledikten sonra, **oturum açma** sayfasında, Kullanıcı yalnızca Google 'da oturum açmak için kullandıkları e-postayı girebilir veya **oturum açma seçeneklerini** seçip **Google ile oturum aç** seçeneğini belirleyebilir. Her iki durumda da, kimlik doğrulaması için Google oturum açma sayfasına yönlendirilir.
+
+![Google kullanıcıları için oturum açma seçenekleri](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Google Federasyonu, Gmail kullanıcıları için özel olarak tasarlanmıştır. G Suite etki alanlarıyla federasyona eklemek için [doğrudan Federasyon](direct-federation.md)' ı kullanın.
@@ -30,13 +34,33 @@ Google ile Federasyonu ayarlayarak, davet edilen kullanıcıların Microsoft hes
 > **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google kullanıcısına yönelik deneyim nedir?
-Google Gmail kullanıcılarına davetiye gönderdiğinizde, Konuk kullanıcılar, kiracı bağlamını içeren bir bağlantıyı kullanarak paylaşılan uygulamalarınıza veya kaynaklarınıza erişmelidir. Bu deneyimler, Google 'da zaten oturum açmış olmasına bağlı olarak farklılık gösterir:
-  - Google 'da oturum açmamış Konuk kullanıcılardan bunu yapması istenir.
-  - Google 'da zaten oturum açmış Konuk kullanıcılardan kullanmak istedikleri hesabı seçmeleri istenir. Bunları davet etmek için kullandığınız hesabı seçmesi gerekir.
+
+Bir Google kullanıcısı davetinizi bir daha hazırlarsa, bu deneyim, Google 'da zaten oturum açmış olmasına bağlı olarak farklılık gösterir:
+
+- Google 'da oturum açmamış Konuk kullanıcılardan bunu yapması istenir.
+- Google 'da zaten oturum açmış Konuk kullanıcılardan kullanmak istedikleri hesabı seçmeleri istenir. Bunları davet etmek için kullandığınız hesabı seçmesi gerekir.
 
 "Üst bilgi çok uzun" hatası görebilen Konuk kullanıcılar kendi tanımlama bilgilerini temizleyebilir veya özel veya bilito penceresini açabilir ve yeniden oturum açmayı deneyebilir.
 
 ![Google oturum açma sayfasını gösteren ekran görüntüsü.](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>Oturum açma uç noktaları
+
+Google Guest kullanıcıları artık [ortak bir uç nokta](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (diğer bir deyişle, kiracı bağlamınızı içermeyen genel bir uygulama URL 'si) kullanarak çok kiracılı veya Microsoft ilk taraf uygulamalarınızda oturum açabilir. Aşağıda, yaygın uç noktaların örnekleri verilmiştir:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Oturum açma işlemi sırasında, Konuk Kullanıcı **oturum açma seçeneklerini** seçer ve ardından **bir kuruluşta oturum açmayı** seçer. Ardından Kullanıcı kuruluşunuzun adını yazıp Google kimlik bilgilerini kullanarak oturum açmaya devam eder.
+
+Google Guest kullanıcıları, kiracı bilgilerinizi içeren uygulama uç noktalarını da kullanabilir, örneğin:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Ayrıca, Google Konuk kullanıcılarına kiracı bilgilerinizi ekleyerek bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>WebView oturum açma desteğinin kullanımdan kaldırılması
 
@@ -66,23 +90,13 @@ Bu değişiklik etkilenmez:
    - Windows uygulamanız Windows 'un eski bir sürümünde ekli WebView veya WebAccountManager (WAM) kullanıyorsa, Windows 'un en son sürümüne güncelleştirin.
    - Uygulamalarınızı, oturum açma için sistem tarayıcısını kullanacak şekilde değiştirin. Ayrıntılar için MSAL.NET belgelerindeki [ekli vs System Web Kullanıcı arabirimi](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui) ' ne bakın.  
 
-## <a name="sign-in-endpoints"></a>Oturum açma uç noktaları
 
-Takımlar tüm cihazlarda Google Konuk kullanıcılarını tamamen destekler. Google kullanıcıları gibi ortak bir uç noktadan ekiplerde oturum açabilirler `https://teams.microsoft.com` .
-
-Diğer uygulamaların ortak uç noktaları Google kullanıcılarını desteklemeyebilir. Google Konuk kullanıcıları kiracı bilgilerinizi içeren bir bağlantıyı kullanarak oturum açmalısınız. Örnekler aşağıda verilmiştir:
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   Google Guest kullanıcıları veya gibi bir bağlantı kullanmayı denlerse `https://myapps.microsoft.com` `https://portal.azure.com` bir hata alırlar.
-
-Ayrıca, bağlantı kiracı bilgilerinizi içerdiği sürece, Google Konuk kullanıcılarına bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz. Örneğin, `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
 ## <a name="step-1-configure-a-google-developer-project"></a>1. Adım: Google Geliştirici projesini yapılandırma
 İlk olarak, daha sonra Azure Active Directory (Azure AD) ekleyebileceğiniz istemci KIMLIĞINI ve bir istemci gizli anahtarını almak için Google geliştiricileri konsolunda yeni bir proje oluşturun. 
 1. Adresindeki Google API 'Lerine gidin https://console.developers.google.com ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
 2. İstenirse hizmet koşullarını kabul edin.
-3. Yeni bir proje oluşturun: panoda **proje oluştur**' u seçin, projeye bir ad verin (örneğin, **Azure AD B2B**) ve ardından **Oluştur**' u seçin: 
+3. Yeni bir proje oluşturun: sayfanın sol üst köşesinde proje listesini seçin ve ardından **proje seçin** sayfasında **Yeni proje**' yi seçin.
+4. **Yeni proje** sayfasında, projeye bir ad verin (örneğin, **Azure AD B2B**) ve ardından **Oluştur**' u seçin: 
    
    ![Yeni bir proje sayfasını gösteren ekran görüntüsü.](media/google-federation/google-new-project.png)
 
@@ -123,7 +137,7 @@ Ayrıca, bağlantı kiracı bilgilerinizi içerdiği sürece, Google Konuk kulla
 Şimdi Google istemci KIMLIĞINI ve istemci gizli anahtarını ayarlayacaksınız. Azure portal veya PowerShell 'i kullanarak bunu yapabilirsiniz. Google Federation yapılandırmanızı kendinize davet ederek test ettiğinizden emin olun. Bir Gmail adresi kullanın ve daveti davet edilen Google hesabınızla kullanmaya çalışın. 
 
 **Azure portal Google Federation 'ı yapılandırmak için** 
-1. [Azure portalına](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**' yi seçin. 
+1. [Azure Portal](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**' yi seçin. 
 2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesini seçin.
 4. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**' i seçin: 
@@ -145,7 +159,7 @@ Ayrıca, bağlantı kiracı bilgilerinizi içerdiği sürece, Google Konuk kulla
 Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten kullanan Google Konuk kullanıcılar oturum açamaz. Ancak onları dizinden silerek ve yeniden davet ederek kaynaklarınıza erişim izni verebilirsiniz. 
  
 **Azure AD portalında Google Federasyonu 'ni silmek için**
-1. [Azure portalına](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**' yi seçin. 
+1. [Azure Portal](https://portal.azure.com) gidin. Sol bölmede **Azure Active Directory**' yi seçin. 
 2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcılarını** seçin.
 4. **Google** satırında üç nokta düğmesini (**...**) seçin ve **Sil**' i seçin. 

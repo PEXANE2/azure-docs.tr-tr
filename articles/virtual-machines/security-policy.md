@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291b9a210bf5f8cc18ccf8a523e282d3fc85aa28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500351"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673349"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure'daki sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
@@ -73,4 +73,4 @@ Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizm
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Linux](../security/fundamentals/overview.md) veya [Windows](./tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.
+- [Linux](../security/fundamentals/overview.md) veya [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.

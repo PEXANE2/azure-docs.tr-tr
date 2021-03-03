@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365455"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649327"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği davetini sıfırlama
 
@@ -28,21 +28,19 @@ Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının b
    > - **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
    > - Microsoft, **2021 Ekim 'Den itibaren**, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
-## <a name="redemption-through-the-invitation-email"></a>Davet e-postası üzerinden ödeme
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Ortak bir uç nokta ile yeniden satın alma ve oturum açma
 
-[Azure Portal kullanarak](./b2b-quickstart-add-guest-users-portal.md)dizininize bir Konuk kullanıcı eklediğinizde, işlemde konuğa bir davet e-postası gönderilir. Ayrıca, [PowerShell kullanırken](./b2b-quickstart-invite-powershell.md) , dizininize Konuk kullanıcıları eklemek için davet e-postaları gönderilmesini de tercih edebilirsiniz. İşte e-postadaki bağlantıyı kullandıklarında konuğun deneyiminden oluşan bir açıklama.
+Konuk kullanıcılar artık ortak bir uç nokta (URL) aracılığıyla çok kiracılı veya Microsoft ilk taraf uygulamalarınızda oturum açabilir `https://myapps.microsoft.com` . Daha önce, ortak bir URL, Konuk kullanıcıyı kimlik doğrulaması için kaynak kiracınız yerine kendi ana kiracısına yönlendirebilir, bu nedenle kiracıya özgü bir bağlantı gerekiyordu (örneğin `https://myapps.microsoft.com/?tenantid=<tenant id>` ). Artık Konuk kullanıcı uygulamanın ortak URL 'sine gidebilir, **oturum açma seçeneklerini** belirleyebilir ve sonra **bir kuruluşta oturum aç**' ı seçebilir. Kullanıcı daha sonra kuruluşunuzun adını yazdığında.
 
-1. Konuk, **Microsoft davetlerden** gönderilen bir [davet e-postası](./invitation-email-elements.md) alır.
-2. Konuk, e-postadaki **daveti kabul et** ' i seçer.
-3. Konuk, dizininizde oturum açmak için kendi kimlik bilgilerini kullanır. Konukta dizininizden federe olabilecek bir hesap yoksa, [e-posta bir kerelik geçiş kodu (OTP)](./one-time-passcode.md) özelliği etkin değildir; konuğa bir kişisel [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) veya BIR [Azure AD Self Servis hesabı](../enterprise-users/directory-self-service-signup.md)oluşturması istenir. Ayrıntılar için [davet kullanım akışına](#invitation-redemption-flow) bakın.
-4. Konuk, aşağıda açıklanan [onay deneyimine](#consent-experience-for-the-guest) göre yapılır.
+![Ortak uç nokta oturum açma](media/redemption-experience/common-endpoint-flow-small.png)
 
+Daha sonra Kullanıcı, e-posta adresiyle oturum açabilecekleri veya yapılandırdığınız bir kimlik sağlayıcısını seçebileceğiniz kiracı uç noktanıza yönlendirilir.
 ## <a name="redemption-through-a-direct-link"></a>Doğrudan bir bağlantı üzerinden ödeme
 
-Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) veya [PowerShell](./b2b-quickstart-invite-powershell.md)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](../manage-apps/end-user-experiences.md)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
+Davet e-postasına veya uygulamanın ortak URL 'sine alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) veya [PowerShell](./b2b-quickstart-invite-powershell.md)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](../manage-apps/end-user-experiences.md)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
 
-> [!IMPORTANT]
-> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.comKimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, benzer ortak BIR URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
+> [!NOTE]
+> Doğrudan bağlantı kiracıya özgüdür. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içerir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
  > - Uygulamalar erişim paneli: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - Doğrulanmış bir etki alanı için uygulamalar erişim paneli: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure portal: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar var
  - Bazen davet eden Kullanıcı nesnesinin bir e-posta adresi olmayabilir (örneğin, bir Outlook ilgili kişisi nesnesi). Bu durumda, Kullanıcı davet e-postasında kullanım URL 'sini tıklamalıdır.
  - Kullanıcı, davet edilen e-posta adresinin diğer adıyla oturum açabilir. (Diğer ad, bir e-posta hesabıyla ilişkili ek bir e-posta adresidir.) Bu durumda, Kullanıcı davet e-postasında kullanım URL 'sini tıklamalıdır.
 
+## <a name="redemption-through-the-invitation-email"></a>Davet e-postası üzerinden ödeme
+
+[Azure Portal kullanarak](./b2b-quickstart-add-guest-users-portal.md)dizininize bir Konuk kullanıcı eklediğinizde, işlemde konuğa bir davet e-postası gönderilir. Ayrıca, [PowerShell kullanırken](./b2b-quickstart-invite-powershell.md) , dizininize Konuk kullanıcıları eklemek için davet e-postaları gönderilmesini de tercih edebilirsiniz. İşte e-postadaki bağlantıyı kullandıklarında konuğun deneyiminden oluşan bir açıklama.
+
+1. Konuk, **Microsoft davetlerden** gönderilen bir [davet e-postası](./invitation-email-elements.md) alır.
+2. Konuk, e-postadaki **daveti kabul et** ' i seçer.
+3. Konuk, dizininizde oturum açmak için kendi kimlik bilgilerini kullanır. Konukta dizininizden federe olabilecek bir hesap yoksa, [e-posta bir kerelik geçiş kodu (OTP)](./one-time-passcode.md) özelliği etkin değildir; konuğa bir kişisel [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) veya BIR [Azure AD Self Servis hesabı](../enterprise-users/directory-self-service-signup.md)oluşturması istenir. Ayrıntılar için [davet kullanım akışına](#invitation-redemption-flow) bakın.
+4. Konuk, aşağıda açıklanan [onay deneyimine](#consent-experience-for-the-guest) göre yapılır.
 ## <a name="invitation-redemption-flow"></a>Davet teminat akışı
 
 Bir Kullanıcı [davet e-postasında](invitation-email-elements.md) **daveti kabul et** BAĞLANTıSıNA tıkladığında, Azure AD aşağıda gösterildiği gibi kullanım akışına göre daveti otomatik olarak alır:

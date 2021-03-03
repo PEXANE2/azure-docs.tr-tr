@@ -1,36 +1,33 @@
 ---
 title: Passwordless güvenlik anahtarı oturum açma pencereleri-Azure Active Directory
-description: FIDO2 güvenlik anahtarlarını (Önizleme) kullanarak Azure Active Directory için passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme hakkında bilgi edinin
+description: FIDO2 güvenlik anahtarlarını kullanarak Azure Active Directory için passwordless güvenlik anahtarı oturumu açmayı nasıl etkinleştirebileceğinizi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743471"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653516"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Azure Active Directory ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme 
 
 Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkinleştirmeye odaklanır. Bu makalenin sonunda, bir FIDO2 güvenlik anahtarı kullanarak Azure AD ve hibrit Azure AD 'ye katılmış Windows 10 cihazlarında Azure AD hesabınızla oturum açabilirsiniz.
-
-> [!NOTE]
-> FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Gereksinimler
 
 | Cihaz Türü | Azure AD'ye katılanlar | Hibrit Azure AD'ye katılmış |
 | --- | --- | --- |
 | [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md) | X | X |
+| [Birleşik güvenlik bilgileri kaydı](concept-registration-mfa-sspr-combined.md) | X | X |
 | Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir | X | X |
 | [Azure AD 'ye katılmış cihazlar](../devices/concept-azure-ad-join.md) için Windows 10 sürüm 1909 veya üzeri gerekir | X |   |
@@ -54,9 +51,9 @@ Aşağıdaki senaryolar desteklenmez:
 - Birden çok Azure AD hesabı içeren bir güvenlik anahtarıyla Windows 10 cihazının oturum açması veya kilidini açma. Bu senaryo, güvenlik anahtarına eklenen son hesabı kullanır. WebAuthN, kullanıcıların kullanmak istedikleri hesabı seçmesine olanak sağlar.
 - Windows 10 sürüm 1809 çalıştıran bir cihazın kilidini açın. En iyi deneyim için Windows 10 sürüm 1903 veya üstünü kullanın.
 
-## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
+## <a name="prepare-devices"></a>Cihazları hazırlama
 
-Özellik önizlemesi sırasında daha önce kullandığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1909 veya üstünü çalıştırması gerekir.
+Azure AD 'ye katılmış cihazların Windows 10 sürüm 1909 veya üstünü çalıştırması gerekir.
 
 Karma Azure AD 'ye katılmış cihazların Windows 10 sürüm 2004 veya daha yeni bir sürümü çalıştırması gerekir.
 
@@ -79,7 +76,7 @@ Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma
 Intune kullanarak güvenlik anahtarlarının kullanımını etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Microsoft Intune**  >  **Cihaz kaydı**  >  **Windows kaydı**  >  **iş için Windows Hello**  >  **özelliklerini** Microsoft Intune gidin.
+1.   >  **Cihaz kaydı**  >  **Windows kaydı**  >  **iş için Windows Hello**  >  **özelliklerini** Microsoft Intune gidin.
 1. **Ayarlar**' ın altında, **oturum açma Için güvenlik anahtarlarını kullan** ' ı **etkin** olarak ayarlayın.
 
 Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
@@ -116,7 +113,7 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 1. **Son**'u seçin.
 1. Yeni oluşturduğunuz projenizde, **çalışma zamanı ayarları**  >  **windowshelloforbusiness**  >  **SecurityKeys**  >  **usesecuritykeyforsign'** e gidin.
 1. **Usesecuritykeyforsignın** öğesini *etkin* olarak ayarlayın.
-1. **Export**  >  **Sağlama paketini** dışarı aktar 'ı seçin
+1.   >  **Sağlama paketini** dışarı aktar 'ı seçin
 1. **Sağlama paketini açıkla** altında **derleme** penceresinde varsayılan değerleri bırakın ve ardından **İleri**' yi seçin.
 1. **Sağlama paketinin güvenlik ayrıntılarını Seç** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi** seçin.
 1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi** seçin.
@@ -145,18 +142,18 @@ Aşağıdaki örnekte, Bala Sandhu adlı bir Kullanıcı önceki makaledeki adı
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Güvenlik anahtarını biyometrik, PIN veya sıfırlama güvenlik anahtarını yönetme
 
 * Windows 10 sürüm 1903 veya üzeri
-   * Kullanıcılar, cihaz > **hesapları** güvenlik anahtarı 'nda **Windows ayarlarını** açabilir  >  **Security Key**
+   * Kullanıcılar, cihaz > **hesapları** güvenlik anahtarı 'nda **Windows ayarlarını** açabilir  >  
    * Kullanıcılar PIN kodlarını değiştirebilir, Biyometri güncelleştirebilir veya güvenlik anahtarını sıfırlayabilir
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
+Geri bildirim paylaşmak veya bu özellikle ilgili sorunlarla karşılaşırsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
 
 1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
 1. Aşağıdaki kategoriye göre geri bildirim gönderin:
    - Kategori: güvenlik ve Gizlilik
    - Alt Kategori: FıDO
-1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın
+1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

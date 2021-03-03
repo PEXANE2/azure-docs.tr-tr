@@ -3,16 +3,17 @@ title: Azure 'da VM 'Ler ve ölçek kümeleri için otomatik uzantı yükseltmes
 description: Azure 'daki sanal makineleriniz ve sanal makine ölçek kümeleriniz için otomatik uzantı yükseltmesini nasıl etkinleştireceğinizi öğrenin.
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrades
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418009"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668342"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Önizleme: Azure 'da VM 'Ler ve ölçek kümeleri için otomatik uzantı yükseltmesi
 
@@ -21,7 +22,7 @@ Otomatik uzantı yükseltmesi, Azure VM 'Leri ve Azure sanal makine ölçek küm
  Otomatik uzantı yükseltme aşağıdaki özelliklere sahiptir:
 - Azure VM 'Leri ve Azure sanal makine ölçek kümeleri için desteklenir. Service Fabric sanal makine ölçek kümeleri Şu anda desteklenmiyor.
 - Yükseltmeler, bir kullanılabilirlik-ilk dağıtım modelinde (aşağıda ayrıntılı olarak) uygulanır.
-- Bir sanal makine ölçek kümelerine uygulandığında, sanal makine ölçek kümelerinin %20 ' inden fazlası sanal makineler tek bir toplu işte yükseltilir (toplu iş başına en az bir sanal makineye tabi olur).
+- Bir sanal makine ölçek kümesi için, ölçek kümesi sanal makinelerinin %20 ' inden fazlası tek bir toplu işte yükseltilmeyecektir. En küçük toplu iş boyutu bir sanal makinedir.
 - Tüm VM boyutları ve hem Windows hem de Linux uzantıları için geçerlidir.
 - Dilediğiniz zaman Otomatik yükseltmeleri devre dışı bırakabilirsiniz.
 - Otomatik uzantı yükseltmesi, her boyuttaki bir sanal makine ölçek kümesinde etkinleştirilebilir.
@@ -36,24 +37,9 @@ Otomatik uzantı yükseltmesi, Azure VM 'Leri ve Azure sanal makine ölçek küm
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Otomatik uzantı yükseltmesi nasıl çalışır?
-Uzantı yükseltme işlemi, bir VM 'deki mevcut uzantı sürümünün uzantı yayımcısı tarafından yayımlanan yeni uzantı sürümü ile değiştirilerek işe yarar. Yeni uzantı yüklendikten sonra sanal makinenin sistem durumu izlenir. VM yükseltme tamamlandığında 5 dakika içinde sağlıklı bir durumda değilse, yeni uzantı sürümü önceki sürüme geri döndürülür.
+Uzantı yükseltme işlemi, bir VM 'deki mevcut uzantı sürümünün uzantısını uzantı yayımcısı tarafından yayımlandığında aynı uzantının yeni bir sürümüyle değiştirir. Yeni uzantı yüklendikten sonra sanal makinenin sistem durumu izlenir. VM yükseltme tamamlandığında 5 dakika içinde sağlıklı bir durumda değilse, uzantı sürümü önceki sürüme geri döndürülür.
 
 Başarısız bir uzantı güncelleştirmesi otomatik olarak yeniden denenir. Yeniden deneme, her gün Kullanıcı müdahalesi olmadan otomatik olarak denenir.
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için yükseltme işlemi
-1. Yükseltme işlemine başlamadan önce Orchestrator, tüm ölçek kümesindeki VM 'lerin %20 ' inden daha fazla olmadığından emin olur (herhangi bir nedenle).
-
-2. Yükseltme Orchestrator, bir sanal makinenin en düşük toplu iş boyutuna tabi olmak üzere toplam VM sayısının en fazla %20 ' sini içeren bir toplu işlem ile Yükseltilecek sanal makine örneklerinin toplu işini tanımlar.
-
-3. Yapılandırılmış uygulama durumu araştırmaları veya uygulama sistem durumu uzantısı olan ölçek kümeleri için, yükseltme, sonraki toplu işi yükseltmek üzere geçmeden önce, VM 'nin sağlıklı olması için 5 dakikaya (veya tanımlı sistem durumu araştırması yapılandırmasına) kadar bekler. Bir VM bir yükseltmeden sonra durumunu kurtarmaz, varsayılan olarak VM 'nin önceki uzantı sürümü yeniden yüklenir.
-
-4. Yükseltme Orchestrator Ayrıca, bir yükseltmeden sonra sağlıksız hale gelen VM 'lerin yüzdesini de izler. Yükseltme işlemi sırasında yükseltilen örneklerin %20 ' den fazlası sağlıksız hale gelirse yükseltme durdurulur.
-
-Yukarıdaki işlem, ölçek kümesindeki tüm örnekler yükseltilene kadar devam eder.
-
-Ölçek kümesi yükseltme Orchestrator, her toplu işi yükseltmeden önce genel ölçek kümesi sistem durumunu denetler. Bir toplu işi yükseltirken, ölçek kümesi sanal makinelerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin %20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
-
 
 ### <a name="availability-first-updates"></a>Kullanılabilirlik-ilk güncelleştirmeler
 Platform tarafından düzenlenen güncelleştirmeler için kullanılabilirlik-ilk model, Azure 'daki kullanılabilirlik yapılandırmalarının birden çok kullanılabilirlik düzeyi arasında olmasını sağlar.
@@ -62,9 +48,9 @@ Güncelleştirme yapılmakta olan bir sanal makine grubu için, Azure platformu 
 
 **Bölgeler arasında:**
 - Azure genelinde dağıtım başarısızlıklarını engellemek için bir güncelleştirme, Azure üzerinden küresel bir şekilde hareket edecektir.
-- Bir ' aşama ' bir veya daha fazla bölge oluşturabilir ve bir güncelleştirme yalnızca bir aşamadaki uygun VM 'Ler başarıyla güncelleştirilirse aşamalar arasında gider.
+- Bir ' aşama ' bir veya daha fazla bölgeye sahip olabilir ve bir güncelleştirme yalnızca önceki aşamadaki uygun VM 'Ler başarıyla güncellediğinde aşamalar arasında gider.
 - Coğrafi eşleştirilmiş bölgeler eşzamanlı olarak güncelleştirilmeyecek ve aynı bölgesel aşamada olamaz.
-- Bir güncelleştirmenin başarısı, bir VM Post güncelleştirmesi durumunun izlenmesi ile ölçülür. VM sistem durumu, VM için platform sistem durumu göstergeleri aracılığıyla izlenir. Sanal Makine Ölçek Kümeleri söz konusu olduğunda, VM sistem durumu, ölçek kümesine uygulandığında uygulama durumu araştırmaları veya uygulama sistem durumu uzantısı aracılığıyla izlenir.
+- Bir güncelleştirmenin başarısı, bir VM Post güncelleştirmesi durumunun izlenmesi ile ölçülür. VM sistem durumu, VM için platform sistem durumu göstergeleri aracılığıyla izlenir. Sanal Makine Ölçek Kümeleri için, VM sistem durumu, ölçek kümesine uygulandığında uygulama durumu araştırmaları veya uygulama sistem durumu uzantısı aracılığıyla izlenir.
 
 **Bir bölge içinde:**
 - Farklı Kullanılabilirlik Alanları sanal makineler eşzamanlı olarak güncellenmez.
@@ -75,6 +61,18 @@ Güncelleştirme yapılmakta olan bir sanal makine grubu için, Azure platformu 
 - Ortak bir kullanılabilirlik kümesindeki VM 'Ler güncelleştirme etki alanı sınırları içinde güncelleştirilir ve birden çok güncelleştirme etki alanındaki VM 'Ler eşzamanlı olarak güncellenmez.  
 - Ortak bir sanal makine ölçek kümesindeki sanal makineler toplu olarak gruplandırılır ve güncelleştirme etki alanı sınırları içinde güncelleştirilir.
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için yükseltme işlemi
+1. Yükseltme işlemine başlamadan önce Orchestrator, tüm ölçek kümesindeki VM 'lerin %20 ' inden daha fazla olmadığından emin olur (herhangi bir nedenle).
+
+2. Yükseltme Orchestrator, Yükseltilecek sanal makine örneklerinin toplu işini tanımlar. Bir yükseltme toplu işi, bir sanal makinenin en düşük toplu iş boyutuna bağlı olarak toplam VM sayısının en fazla %20 ' si olabilir.
+
+3. Yapılandırılmış uygulama durumu araştırmaları veya uygulama sistem durumu uzantısı olan ölçek kümeleri için, yükseltme, sonraki toplu işi yükseltmeden önce VM 'nin sağlıklı olması için 5 dakikaya (veya tanımlı sistem durumu araştırması yapılandırmasına) kadar bekler. Bir VM bir yükseltmeden sonra durumunu kurtarmaz, varsayılan olarak VM 'deki önceki uzantı sürümü yeniden yüklenir.
+
+4. Yükseltme Orchestrator Ayrıca, bir yükseltmeden sonra sağlıksız hale gelen VM 'lerin yüzdesini de izler. Yükseltme işlemi sırasında yükseltilen örneklerin %20 ' den fazlası sağlıksız hale gelirse yükseltme durdurulur.
+
+Yukarıdaki işlem, ölçek kümesindeki tüm örnekler yükseltilene kadar devam eder.
+
+Ölçek kümesi yükseltme Orchestrator, her toplu işi yükseltmeden önce genel ölçek kümesi sistem durumunu denetler. Bir toplu işi yükseltirken, ölçek kümesi sanal makinelerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin %20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
 
 ## <a name="supported-extensions"></a>Desteklenen uzantılar
 Otomatik uzantı yükseltmesinin önizlemesi aşağıdaki uzantıları destekler (ve daha fazla düzenli olarak eklenir):
@@ -123,7 +121,7 @@ Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak 
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [az Feature Register](/cli/azure/feature#az-feature-register) kullanın.
 
 ```azurecli-interactive
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>Birden çok uzantıya sahip uzantı yükseltmeleri
 
-Otomatik uzantı yükseltmeleri olmayan diğer uzantılara ek olarak, bir VM veya sanal makine ölçek kümesi, otomatik uzantı yükseltmesine sahip birden fazla uzantıya sahip olabilir.  
+Bir VM veya sanal makine ölçek kümesi, otomatik uzantı yükseltmesi etkin olan birden çok uzantıya sahip olabilir. Aynı VM veya ölçek kümesi, otomatik genişletme yükseltmesi olmayan diğer uzantılara de sahip olabilir.  
 
-Bir sanal makine için birden çok uzantı yükseltmesi varsa, yükseltmeler birlikte toplu olarak oluşturulabilir. Ancak, her uzantı yükseltmesi bir sanal makinede ayrı ayrı uygulanır. Bir uzantıdaki hata, yükseltilemeyebilir olan diğer uzantıları etkilemez. Örneğin, iki uzantı bir yükseltme için zamanlanırsa ve ilk uzantı yükseltmesi başarısız olursa ikinci uzantı yine de yükseltilmeye devam edecektir.
+Bir sanal makine için birden çok uzantı yükseltmesi varsa, yükseltmeler birlikte toplanmış olabilir, ancak her uzantı yükseltmesi bir sanal makinede ayrı ayrı uygulanır. Bir uzantıdaki hata, yükseltilemeyebilir olan diğer uzantıları etkilemez. Örneğin, iki uzantı bir yükseltme için zamanlanırsa ve ilk uzantı yükseltmesi başarısız olursa ikinci uzantı yine de yükseltilmeye devam edecektir.
 
-Otomatik uzantı yükseltmeleri, bir VM veya sanal makine ölçek kümesinde [uzantı sıralaması](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)ile yapılandırılmış birden çok uzantı olduğunda da uygulanabilir. Uzantı sıralaması, sanal makinenin ilk kez dağıtılması için geçerlidir ve bir uzantıdaki sonraki tüm uzantı yükseltmeleri bağımsız olarak uygulanır.
+Otomatik uzantı yükseltmeleri, bir VM veya sanal makine ölçek kümesinde [uzantı sıralaması](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)ile yapılandırılmış birden çok uzantı olduğunda da uygulanabilir. Uzantı sıralaması, sanal makinenin ilk kez dağıtılması için geçerlidir ve bir uzantıdaki gelecek uzantı yükseltmeleri bağımsız olarak uygulanır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Uygulama sistem durumu uzantısı hakkında bilgi edinin](./windows/automatic-vm-guest-patching.md)
+> [Uygulama sistem durumu uzantısı hakkında bilgi edinin](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

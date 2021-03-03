@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258176"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643805"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama Ara Sunucusu ve PingAccess ile çoklu oturum açmak için üst bilgi tabanlı kimlik doğrulaması
 
@@ -91,7 +91,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
    > [!NOTE]
    > İlk uygulamanız bu ise, bağlantı noktası 3000 ' u kullanarak başlangıç yapın ve PingAccess yapılandırmanızı değiştirirseniz bu ayarı güncelleştirmek için geri dönün. Sonraki uygulamalarda, bağlantı noktasının PingAccess 'te yapılandırdığınız dinleyiciyle eşleşmesi gerekir. [PingAccess 'teki dinleyiciler](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)hakkında daha fazla bilgi edinin.
 
-1. **Ekle**’yi seçin. Yeni uygulama için genel bakış sayfası görüntülenir.
+1. **Add (Ekle)** seçeneğini belirleyin. Yeni uygulama için genel bakış sayfası görüntülenir.
 
 Şimdi uygulama testi için bir Kullanıcı atayın ve üst bilgi tabanlı çoklu oturum açma seçeneğini belirleyin:
 
@@ -158,7 +158,7 @@ Bu bilgileri toplamak için:
 
 1. **Açıklama**' da yazın `PingAccess key` .
 1. **Süre sonu** altında, pingaccess tuşunun nasıl ayarlanacağını seçin: **1 yılda**, **2 yıl içinde** veya **hiçbir zaman**.
-1. **Ekle**’yi seçin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
+1. **Add (Ekle)** seçeneğini belirleyin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
 1. PingAccess tuşunun **değer** alanının yanındaki **Panoya Kopyala** simgesini seçin, sonra kopyalayıp kaydedin. Bu değeri daha sonra PingAccess 'in istemci gizli anahtarı olarak belirtirsiniz.
 
 **Alanı güncelleştirin `acceptMappedClaims` :**
@@ -175,7 +175,8 @@ Bu bilgileri toplamak için:
 İsteğe bağlı talepler, her kullanıcı ve kiracının sahip olduğu standart, ancak dahil olmayan talepler eklemenize olanak tanır. Uygulama bildirimini değiştirerek uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz [. Azure AD uygulama bildirimini anlama makalesi](../develop/reference-app-manifest.md)
 
 PingAccess 'in kullanacağı access_token e-posta adresini eklemek için örnek:
-```
+
+```json
     "optionalClaims": {
         "idToken": [],
         "accessToken": [

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666234"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Cloud-init ile VM sağlama sorunlarını giderme
 
@@ -58,7 +58,7 @@ VM çalışırken, sağlanmasının neden başarısız olduğunu anlamak için V
 
 - [Seri Konsol](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](./tutorial-monitor.md#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](./tutorial-monitor.md#view-boot-diagnostics) .
+- VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) .
 
 - İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) , bu da bu günlükleri toplamanıza olanak tanır:
 ```bash
@@ -89,7 +89,7 @@ Tüm günlüklerde "başarısız", "uyarı", "uyar", "Err", "Error", "ERROR" iç
 
 Varsayılan olarak, hata ayıklama veya daha yüksek önceliğe sahip tüm Cloud-init olayları öğesine yazılır `/var/log/cloud-init.log` . Bu, Cloud-init başlatma sırasında oluşan her olayın ayrıntılı günlüklerini sağlar. 
 
-Örneğin:
+Örnek:
 
 ```console
 2019-10-10 04:51:25,321 - util.py[DEBUG]: Failed mount of '/dev/sr0' as 'auto': Unexpected error while running command.
@@ -124,7 +124,7 @@ Hala Cloud-init 'in sağlayamamasının nedenini yalıtadıysanız, hangi Cloud-
 
 
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. Adım: yapılandırmanın neden uygulanamadığını araştırın
-Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örneğin, `runcmd` modülünü bir Cloud-init yapılandırmasında kullanıyorsanız, çalıştığı komuttan sıfır olmayan bir çıkış kodu, VM sağlamasının başarısız olmasına neden olur. Bunun nedeni, Cloud-init ' in ilk 3 aşamasında gerçekleşen çekirdek sağlama işlevlerinden sonra çalışır. Yapılandırmanın neden uygulanmadığından ilgili sorunları gidermek için, adım 3 ' teki günlükleri ve Cloud-init modüllerini el ile inceleyin. Örneğin:
+Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örneğin, `runcmd` modülünü bir Cloud-init yapılandırmasında kullanıyorsanız, çalıştığı komuttan sıfır olmayan bir çıkış kodu, VM sağlamasının başarısız olmasına neden olur. Bunun nedeni, Cloud-init ' in ilk 3 aşamasında gerçekleşen çekirdek sağlama işlevlerinden sonra çalışır. Yapılandırmanın neden uygulanmadığından ilgili sorunları gidermek için, adım 3 ' teki günlükleri ve Cloud-init modüllerini el ile inceleyin. Örnek:
 
 - `runcmd` -betikler hatasız çalışıyor mu? Yapılandırmayı, beklendiği gibi çalıştırıldıklarından emin olmak için terminalden el ile çalıştırın.
 - Paket yükleme-VM 'nin paket depolarına erişimi var mı?
@@ -133,4 +133,4 @@ Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örne
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](./cloud-init-deep-dive.md) . 
+Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](./cloud-init-deep-dive.md) .

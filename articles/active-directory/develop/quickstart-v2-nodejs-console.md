@@ -1,21 +1,21 @@
 ---
 title: 'Hızlı başlangıç: Node.js konsol uygulamasından Microsoft Graph çağırma | Mavisi'
 titleSuffix: Microsoft identity platform
-description: Bu hızlı başlangıçta, bir Node.js konsol uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve uygulamanın kendi kimliğini kullanarak bir Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenirsiniz.
+description: Bu hızlı başlangıçta, bir Node.js konsol uygulamasının bir erişim belirtecini nasıl alabilirim ve uygulamanın kendi kimliğini kullanarak bir Microsoft Identity platform uç noktası tarafından korunan bir API 'yi nasıl çağıracağınızı gösteren bir kod örneği indirir ve çalıştırırsınız
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: c550cc8009f0138b9f1803399fbc592b34efbfab
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4360810d460c5fc8598ce302ad8b82f65d2d819e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562225"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653754"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulamanın kimliğini kullanarak bir Node.js konsol uygulamasından belirteç alma ve Microsoft Graph API 'SI çağırma
 
@@ -29,12 +29,12 @@ Bu hızlı başlangıçta, [istemci kimlik bilgileri izni](v2-oauth2-client-cred
 * [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>Hızlı başlangıç uygulamanızı kaydedin ve indirin
+> ## <a name="register-and-download-the-sample-application"></a>Örnek uygulamayı kaydedin ve indirin
 >
 > Başlamak için aşağıdaki adımları izleyin.
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
+> #### <a name="step-1-register-the-application"></a>1. Adım: uygulamayı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
@@ -50,9 +50,9 @@ Bu hızlı başlangıçta, [istemci kimlik bilgileri izni](v2-oauth2-client-cred
 > 1. **Kullanıcı** düğümü altında **User. Read. All**' ı seçin ve ardından **izin Ekle**' yi seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
+> ### <a name="download-and-configure-the-sample-app"></a>Örnek uygulamayı indirme ve yapılandırma
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. Adım: uygulamayı Azure portal yapılandırma
 > Bu hızlı başlangıçta çalışması için kod örneği için, bir istemci parolası oluşturmanız ve Graph API **Kullanıcı. Read. All** uygulama iznini eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
@@ -60,7 +60,7 @@ Bu hızlı başlangıçta, [istemci kimlik bilgileri izni](v2-oauth2-client-cred
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-netcore-daemon/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
-#### <a name="step-2-download-your-nodejs-project"></a>2. Adım: Node.js projenizi Indirin
+#### <a name="step-2-download-the-nodejs-sample-project"></a>2. Adım: Node.js örnek projeyi Indirme
 
 > [!div renderon="docs"]
 > [Kod örneğini indirin](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ Bu hızlı başlangıçta, [istemci kimlik bilgileri izni](v2-oauth2-client-cred
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>3. Adım: Node.js projenizi yapılandırma
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>3. Adım: Node.js örnek projeyi yapılandırma
 >
 > 1. ZIP dosyasını, diskin köküne yakın bir yerel klasöre ayıklayın, örneğin, *C:/Azure-Samples*.
 > 1. *. Env* 'yi düzenleyin ve alanları `TENANT_ID` , `CLIENT_ID` , ve değerlerini `CLIENT_SECRET` Aşağıdaki kod parçacığıyla değiştirin:
@@ -172,7 +172,7 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```

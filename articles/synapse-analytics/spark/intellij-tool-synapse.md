@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935447"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675814"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulaması oluşturma
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [IntelliJ fikir topluluk sürümü](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
-- Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Install
+- Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation) Install
 - [JDK (sürüm 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - Scala eklentisi – [IntelliJ eklenti deposundan](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)Install.
 - Aşağıdaki önkoşul yalnızca Windows kullanıcılarına yöneliktir:
@@ -145,7 +145,7 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
     |Ana sınıf adı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç nokta (**...**) simgesini seçip başka bir sınıf seçerek sınıfı değiştirebilirsiniz.|
     |İş yapılandırması|Varsayılan anahtar ve değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Komut satırı bağımsız değişkenleri|Gerekirse ana sınıf için boşlukla ayrılmış bağımsız değişkenler girebilirsiniz.|
-    |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Yalnızca ADLS 2. kümesini destekleyen Azure sanal dosya sistemindeki dosyalara da gidebilirsiniz. Daha fazla bilgi için: [Apache Spark Configuration] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Yalnızca ADLS 2. kümesini destekleyen Azure sanal dosya sistemindeki dosyalara da gidebilirsiniz. Daha fazla bilgi için: [Apache Spark Configuration] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md).|
     |İş yükleme depolaması|Ek seçenekleri açığa çıkarmak için genişletin.|
     |Depolama Türü|Karşıya yüklemek için **Azure Blob 'U kullan** ' ı seçin veya açılan listeden **karşıya yüklemek üzere küme varsayılan depolama hesabını kullanın** .|
     |Depolama Hesabı|Depolama hesabınızı girin.|

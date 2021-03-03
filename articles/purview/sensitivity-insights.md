@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199385"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676565"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure purview 'daki verileriniz hakkında duyarlılık etiketi öngörüleri
 
 Bu nasıl yapılır kılavuzunda verilerinize uygulanan duyarlılık etiketleri tarafından sunulan güvenlik öngörülerinin nasıl erişebileceği, görüntüleneceği ve filtreleneceği açıklanmaktadır.
 
-Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL veritabanı, Azure SQL yönetilen örneği
+Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL veritabanı, Azure SQL yönetilen örneği, Amazon S3 demetleri
 
 Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 
@@ -40,7 +40,7 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - [Azure purview 'daki varlıklara genişletilmiş Microsoft 365 duyarlılık etiketleri](create-sensitivity-label.md)ve verilerinize uygulamak istediğiniz etiketleri oluşturma veya seçme.
 
-- Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
+- Her veri kaynağındaki test verileri üzerinde bir tarama ayarlayın ve işlemi tamamlanmıştır. Daha fazla bilgi için bkz. [Azure 'da veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md) ve [tarama kuralı kümesi oluşturma](create-a-scan-rule-set.md).
 
 - Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
 
@@ -78,7 +78,7 @@ Takip, Microsoft 365 olarak [gizli bilgi türleri](/microsoft-365/compliance/sen
 
    Ana **duyarlılık etiketleme öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Description  |
+   |Alan  |Açıklama  |
    |---------|---------|
    |**Duyarlılık etiketleriyle kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı. <br>-Verilerinize uygulanan benzersiz duyarlılık etiketi sayısı <br>-Duyarlılık etiketleri uygulanmış kaynak sayısı <br>-Duyarlılık etiketleri uygulanmış olarak bulunan dosya ve tablo sayısı|
    |**Etiketli verileri olan en popüler kaynaklar (son 30 gün)**     | Duyarlılık etiketi uygulanmış kaynak sayısının son 30 günü boyunca eğilimi gösterir.       |
@@ -97,7 +97,7 @@ Aşağıdaki **duyarlık grafiklerini etiketleyerek** , daha fazla ayrıntı iç
 - **Tablolara uygulanan üst Etiketler**
 - **Etiketlendirilmiş verileri > etiketleme**
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Duyarlılık etiketi detaya gitme" lightbox="media/insights/sensitivity-label-drilldown.png":::
 

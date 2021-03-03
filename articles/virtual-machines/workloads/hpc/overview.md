@@ -4,16 +4,16 @@ description: ", HPC için iyileştirilmiş, InfiniBand etkin H serisi ve N seris
 author: vermagit
 ms.author: amverma
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: overview
 ms.date: 07/29/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 5950e9ab6ec979938a2318c4d25f53db4f5e1064
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951392"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666882"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand etkin H serisi ve N serisi VM 'lerde yüksek performanslı bilgi işlem
 
@@ -35,7 +35,7 @@ InfiniBand özellikli VM 'lerde InfiniBand ayarlama hakkında daha fazla bilgi e
 SR-ıOV etkin H serisi ve N serisi, neredeyse tüm MPı kitaplıklarını ve sürümlerini destekler. En yaygın, desteklenen MPı kitaplıklarının bazıları şunlardır: Intel MPI, OpenMPI, MPICH, MVAPICH2, platform MPı ve tüm uzak doğrudan bellek erişimi (RDMA) fiilleri.
 Desteklenen çeşitli MPı kitaplıklarını ve en iyi yapılandırmalarını yükleme hakkında daha fazla bilgi edinmek için bkz. [MPI ayarlama](setup-mpi.md) .
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 İlk adım, VM belirtimleri ve [RDMA özelliğine](../../sizes-hpc.md#rdma-capable-instances)göre iş yükü için en uygun [h serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) sanal makine türünü seçmemize yöneliktir.
 İkinci olarak, InfiniBand 'yi etkinleştirerek sanal makineyi yapılandırın. Bu işlemi gerçekleştirmek için, sürücülerle birlikte iyileştirilmiş VM görüntülerini kullanma gibi çeşitli yöntemler vardır; bkz. [Linux iyileştirmesi](configure.md) ve Ayrıntılar için [InfiniBand 'ı etkinleştirin](enable-infiniband.md) .

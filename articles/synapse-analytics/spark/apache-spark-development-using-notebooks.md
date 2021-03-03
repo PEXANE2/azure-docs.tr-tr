@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898503"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671596"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -33,7 +33,7 @@ Bu makalede, Azure SYNAPSE Studio 'da Not defterlerinin nasıl kullanılacağı 
 ## <a name="preview-of-the-new-notebook-experience"></a>Yeni Not defteri deneyiminin önizlemesi
 SYNAPSE ekibi, Microsoft müşterileri için tutarlı Not defteri deneyimi sağlamak ve bulunabilirliği, verimliliği, paylaşımı ve işbirliğini en üst düzeye çıkarmak için yeni not defterleri bileşenini SYNAPSE Studio 'ya getirdi. Yeni Not defteri deneyimi önizleme için hazırlanıyor. Açmak için Not defteri araç çubuğundaki **Önizleme özellikleri** düğmesine bakın. Aşağıdaki tablo, mevcut not defteri (yani "klasik Not defteri" olarak adlandırılır) arasındaki özelliği karşılaştırmayı yeni önizleme ile yakalar.  
 
-|Öne çıkan özelliği|Klasik Not defteri|İnceleme Not defteri|
+|Özellik|Klasik Not defteri|İnceleme Not defteri|
 |--|--|--|
 |çalıştırma yüzdesi| Desteklenmez | &#9745;|
 |geçmiş yüzdesi| Desteklenmez |&#9745;
@@ -104,7 +104,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Description |  
+|Magic komutu |Dil | Açıklama |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
@@ -554,5 +554,5 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 - [Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma](../quickstart-apache-spark-notebook.md)
 - [Azure SYNAPSE Analytics 'te Apache Spark nedir?](apache-spark-overview.md)
 - [Azure Synapse Analytics ile Apache Spark için .NET’i kullanma](spark-dotnet.md)
-- [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Apache Spark belgeleri için .NET](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

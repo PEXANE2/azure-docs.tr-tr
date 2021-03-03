@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247582"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646053"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Cofense Recipient eşitlemesini yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cofens
 > * Artık erişim gerektirmeyen kullanıcıları Cofense alıcı eşitlemesine kaldır
 > * Kullanıcı özniteliklerinin Azure AD ile Cofense alıcı eşitlemesi arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -117,11 +117,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
    |name.givenName|Dize|
    |name.familyName|Dize|
    |Name. Manificsuffix|Dize|
-   |phoneNumbers [tür EQ "iş"]. değer|Dize|
+   |phoneNumbers[type eq "work"].value|Dize|
    |phoneNumbers [tür EQ "ana"]. değer|Dize|
    |phoneNumbers [tür EQ "Other"]. değer|Dize|
    |phoneNumbers [tür EQ "sayfalayıcı"]. değer|Dize|
-   |phoneNumbers [tür EQ "mobil"]. değer|Dize|
+   |phoneNumbers[type eq "mobile"].value|Dize|
    |phoneNumbers [tür EQ "Faks"]. değer|Dize|
    |adresler [tür EQ "Other"]. biçimlendirildi|Dize|
    |adresler [tür EQ "iş"]. biçimlendirildi|Dize|

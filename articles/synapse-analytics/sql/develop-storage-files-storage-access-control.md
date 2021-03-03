@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9a5be358c40c3411115d8c2ee3f9471c68771b8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 116fb10956b02b5f6fe578565b9049d9fad54837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576219"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674193"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -49,7 +49,7 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -192,16 +192,14 @@ Kimlik bilgisini kullanmak için, bir kullanıcının `REFERENCES` belirli bir k
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Sorunsuz bir Azure AD geçiş deneyimi sağlamak için, tüm kullanıcıların varsayılan olarak kimlik bilgisini kullanma hakkı olur `UserIdentity` .
-
 ## <a name="server-scoped-credential"></a>Sunucu kapsamlı kimlik bilgisi
 
-Sunucu kapsamlı kimlik bilgileri, SQL oturum açma `OPENROWSET` işlevi `DATA_SOURCE` bir depolama hesabındaki dosyaları okumak zorunda kalmadan çalıştırıldığında kullanılır. Sunucu kapsamlı kimlik bilgisinin adı, Azure depolama 'nın URL 'siyle aynı **olmalıdır** . Kimlik bilgisi [Oluştur](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)çalıştırılarak bir kimlik bilgisi eklenir. KIMLIK BILGISI adı bağımsız değişkeni sağlamanız gerekir. Bu, yolun bir bölümüyle veya depolama alanındaki verilerin tamamına uymalıdır (aşağıya bakın).
+Sunucu kapsamlı kimlik bilgileri, SQL oturum açma `OPENROWSET` işlevi `DATA_SOURCE` bir depolama hesabındaki dosyaları okumak zorunda kalmadan çalıştırıldığında kullanılır. Sunucu kapsamlı kimlik bilgisinin adı, Azure depolama 'nın temel URL **'siyle eşleşmelidir (** isteğe bağlı olarak bir kapsayıcı adı gelir). Kimlik bilgisi [Oluştur](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true)çalıştırılarak bir kimlik bilgisi eklenir. KIMLIK BILGISI adı bağımsız değişkeni sağlamanız gerekir.
 
 > [!NOTE]
 > `FOR CRYPTOGRAPHIC PROVIDER`Bağımsız değişken desteklenmiyor.
 
-Sunucu düzeyi KIMLIK BILGISI adı, depolama hesabının (ve isteğe bağlı olarak kapsayıcı) tam yoluyla aşağıdaki biçimde olmalıdır: `<prefix>://<storage_account_path>/<storage_path>` . Depolama hesabı yolları aşağıdaki tabloda açıklanmıştır:
+Sunucu düzeyi KIMLIK BILGISI adı, depolama hesabının (ve isteğe bağlı olarak kapsayıcı) tam yoluyla aşağıdaki biçimde olmalıdır: `<prefix>://<storage_account_path>[/<container_name>]` . Depolama hesabı yolları aşağıdaki tabloda açıklanmıştır:
 
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                |
 | -------------------------- | ------ | --------------------------------------------------- |
@@ -224,11 +222,13 @@ Aşağıdaki betik, `OPENROWSET` SAS belirtecini kullanarak Azure Storage 'daki 
 Gerçek depolama hesabı adınızla birlikte Exchange <*mystorageaccountname*> ve *mystorageaccountcontainername*> gerçek kapsayıcı adıyla <:
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
+
+İsteğe bağlı olarak, depolama hesabının yalnızca temel URL 'sini kapsayıcı adı olmadan kullanabilirsiniz.
 
 ### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
@@ -238,6 +238,8 @@ Aşağıdaki betik, `OPENROWSET` çalışma alanı tarafından yönetilen kimlik
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
+
+İsteğe bağlı olarak, depolama hesabının yalnızca temel URL 'sini kapsayıcı adı olmadan kullanabilirsiniz.
 
 ### <a name="public-access"></a>[Genel erişim](#tab/public-access)
 

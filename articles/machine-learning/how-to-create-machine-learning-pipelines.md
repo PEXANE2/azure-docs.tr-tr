@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 168e5340842dca3c26e4fa48d2f14b8ade529cd9
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505756"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659656"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -92,6 +92,7 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
+
 Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData` adımlar arasında bir veri bağımlılığı sunar ve ardışık düzende bir örtük yürütme sırası oluşturur. Bu nesne daha sonra işlem hattı adımları oluşturulurken kullanılacaktır.
 
 ```python
@@ -108,7 +109,7 @@ output_data1 = PipelineData(
 > Genel Önizleme sınıfı ile ardışık düzen adımları arasında kalıcı ara verileri de mümkündür [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Sınıfını kullanan bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 > [!TIP]
-> Yalnızca işle ilgili olan dosyaları karşıya yükleyin. Veri dizinindeki dosyalardaki herhangi bir değişiklik, yeniden kullanım sırasında işlem hattının bir sonraki çalıştırılışında bu adımı yeniden çalıştırma nedeni olarak görülür. 
+> Yalnızca elinizde işe uygun dosyaları karşıya yükleyin. Veri dizinindeki dosyalardaki herhangi bir değişiklik, yeniden kullanım sırasında işlem hattının bir sonraki çalıştırılışında bu adımı yeniden çalıştırma nedeni olarak görülür. 
 
 ## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
@@ -116,7 +117,7 @@ output_data1 = PipelineData(
 Azure Machine Learning, __işlem__ (veya __işlem hedefi__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](concept-compute-target.md#train) ve bunları oluşturma ve çalışma alanınıza iliştirme için [işlem hedefleri oluşturma](how-to-create-attach-compute-studio.md) .   Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak için aynıdır. İşlem hedefini oluşturup iliştirdikten sonra işlem `ComputeTarget` [hattı adımınızda](#steps)nesnesini kullanın.
 
 > [!IMPORTANT]
-> İşlem hedeflerinde yönetim işlemleri gerçekleştirmek uzak işlerin içinden desteklenmez. Makine öğrenimi ardışık düzenleri uzak bir iş olarak gönderildiğinden, işlem hedefleri üzerinde yönetim işlemlerini işlem hattı içinden kullanmayın.
+> Uzak işlerin içinden işlem hedeflerinde yönetim işlemleri gerçekleştirme desteklenmez. Makine öğrenmesi işlem hatları uzak iş olarak gönderildiğinden işlem hattının içinden işlem hedeflerinde yönetim işlemlerini kullanmayın.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
 

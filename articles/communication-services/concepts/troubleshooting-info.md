@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: f0bcc4b4c900ba53ecd780530ce61487bcc998a4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937551"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658206"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde sorun giderme
 
@@ -30,7 +30,7 @@ Azure abonelik [destek planınıza](https://azure.microsoft.com/support/plans/) 
 
 Belirli sorun türleriyle ilgili sorunları gidermenize yardımcı olması için aşağıdaki bilgi parçalarından herhangi biri istenebilir:
 
-* **MS-CV kimliği**: Bu kimlik, çağrı ve iletilerle ilgili sorunları gidermek için kullanılır. 
+* **MS-CV kimliği**: Bu kimlik, çağrı ve iletilerle ilgili sorunları gidermek için kullanılır.
 * **Çağrı kimliği**: Bu kimlik, iletişim hizmetleri çağrılarını belirlemek için kullanılır.
 * **SMS ILETI kimliği**: bu KIMLIK, SMS iletilerini tanımlamak için kullanılır.
 * **Çağrı günlükleri**: Bu Günlükler, çağrı ve ağ sorunlarını gidermek için kullanılabilecek ayrıntılı bilgiler içerir.
@@ -38,14 +38,14 @@ Belirli sorun türleriyle ilgili sorunları gidermenize yardımcı olması için
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV KIMLIĞINIZE erişin
 
-MS-CV KIMLIĞI, `clientOptions` istemci kitaplıklarınızı başlatırken nesne örneğinde tanılama yapılandırılarak erişilebilir. Tanılama; sohbet, yönetim ve VoIP çağrısı dahil olmak üzere Azure istemci kitaplıklarının herhangi biri için yapılandırılabilir.
+MS-CV KIMLIĞI, `clientOptions` istemci kitaplıklarınızı başlatırken nesne örneğinde tanılama yapılandırılarak erişilebilir. Tanılama, kimlik ve VoIP çağrısı dahil olmak üzere Azure istemci kitaplıklarının herhangi birine yönelik olarak yapılandırılabilir.
 
 ### <a name="client-options-example"></a>İstemci seçenekleri örneği
 
 Aşağıdaki kod parçacıkları tanılama yapılandırmasını gösterir. İstemci kitaplıkları tanılama etkinken kullanıldığında, tanılama ayrıntıları yapılandırılan olay dinleyicisine yayılır:
 
 # <a name="c"></a>[C#](#tab/csharp)
-``` 
+```
 // 1. Import Azure.Core.Diagnostics
 using Azure.Core.Diagnostics;
 
@@ -66,13 +66,13 @@ var clientOptions = new ChatClientOptions()
     }
 };
 
-// 4. Initialize the ChatClient instance with the clientOptions 
+// 4. Initialize the ChatClient instance with the clientOptions
 ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential, clientOptions);
 ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync("Thread Topic", new[] { new ChatThreadMember(communicationUser) });
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-``` 
+```
 from azure.communication.chat import ChatClient, CommunicationUserCredential
 endpoint = "https://communication-services-sdk-live-tests-for-python.communication.azure.com"
 chat_client = ChatClient(
@@ -88,22 +88,22 @@ chat_client = ChatClient(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods 
+// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
 console.log(call.id)
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 ```objc
-// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends 
+// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
 // todo: the code snippet suggests it's a property while the comment suggests it's a method call
-print(call.callId) 
+print(call.callId)
 ```
 
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods 
-Log.d(call.getCallId()) 
+// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+Log.d(call.getCallId())
 ```
 ---
 
@@ -139,21 +139,21 @@ console.log(result); // your message ID will be in the result
 Aşağıdaki kod, `AzureLogger` JavaScript istemci kitaplığı kullanılarak günlükleri konsola çıkarmak için yapılandırmak üzere kullanılabilir:
 
 ```javascript
-import { AzureLogger } from '@azure/logger'; 
+import { AzureLogger } from '@azure/logger';
 
-AzureLogger.verbose = (...args) => { console.info(...args); } 
-AzureLogger.info = (...args) => { console.info(...args); } 
-AzureLogger.warning = (...args) => { console.info(...args); } 
-AzureLogger.error = (...args) => { console.info(...args); } 
+AzureLogger.verbose = (...args) => { console.info(...args); }
+AzureLogger.info = (...args) => { console.info(...args); }
+AzureLogger.warning = (...args) => { console.info(...args); }
+AzureLogger.error = (...args) => { console.info(...args); }
 
-callClient = new CallClient({logger: AzureLogger}); 
+callClient = new CallClient({logger: AzureLogger});
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 
 İOS için geliştirme yaparken günlüklerinizin dosyalarında saklanması gerekir `.blog` . Şifrelenmiş olduklarından günlükleri doğrudan görüntüleyemediğini unutmayın.
 
-Bunlar, Xcode açılarak erişilebilir. Windows > cihazlarına ve > simülatörleri cihazlarına gidin. Cihazınızı seçin. Yüklü uygulamalar altında uygulamanızı seçin ve "kapsayıcıyı Indir" e tıklayın. 
+Bunlar, Xcode açılarak erişilebilir. Windows > cihazlarına ve > simülatörleri cihazlarına gidin. Cihazınızı seçin. Yüklü uygulamalar altında uygulamanızı seçin ve "kapsayıcıyı Indir" e tıklayın.
 
 Bu size bir dosya verecektir `xcappdata` . Bu dosyaya sağ tıklayın ve "paket içeriğini göster" i seçin. Daha sonra `.blog` Azure destek isteğinize iliştirebilmeniz için dosyaları görürsünüz.
 
@@ -161,8 +161,8 @@ Bu size bir dosya verecektir `xcappdata` . Bu dosyaya sağ tıklayın ve "paket 
 
 Android için geliştirme yaparken günlüklerinizin dosyalarında saklanması gerekir `.blog` . Şifrelenmiş olduklarından günlükleri doğrudan görüntüleyemediğini unutmayın.
 
-Android Studio, hem Benzetici hem de cihazdan cihaz dosya Gezgini > > araç pencerelerini görüntüle ' yi seçerek cihaz dosya Gezgini 'ne gidin. `.blog`Dosya uygulamanızın dizininde bulunur, bu da benzer bir şekilde görünmelidir `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Bu dosyayı destek isteğinize ekleyebilirsiniz. 
-   
+Android Studio, hem Benzetici hem de cihazdan cihaz dosya Gezgini > > araç pencerelerini görüntüle ' yi seçerek cihaz dosya Gezgini 'ne gidin. `.blog`Dosya uygulamanızın dizininde bulunur, bu da benzer bir şekilde görünmelidir `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Bu dosyayı destek isteğinize ekleyebilirsiniz.
+
 
 ---
 

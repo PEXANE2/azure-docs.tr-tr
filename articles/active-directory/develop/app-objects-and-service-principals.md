@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f0a9298b6d8ee011052a20dc34d314adbc5a0b1e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557835"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646410"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
@@ -65,10 +65,9 @@ Uygulama nesnesi, buna karşılık gelen hizmet sorumlusu nesnelerini oluşturur
 
 Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracı uygulamasının (ana kiracısında) uygulama kaydı sırasında kullanılmak için oluşturulan ve onaylanan tek bir hizmet sorumlusu vardır. Çok kiracılı bir Web uygulaması/API 'SI, bu kiracıdan gelen bir kullanıcının kendi kullanımına neden olan her bir kiracıda oluşturulmuş bir hizmet sorumlusu de vardır.
 
-> [!NOTE]
-> Uygulama nesneniz üzerinde yaptığınız tüm değişiklikler Ayrıca uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.
->
-> Ayrıca yerel uygulamaların varsayılan olarak çok kiracılı olarak kaydedildiğini unutmayın.
+Silme de dahil olmak üzere uygulama nesneniz üzerinde yaptığınız tüm değişiklikler, uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.
+
+Yerel uygulamalar, varsayılan olarak çok kiracılı olarak kaydedilir.
 
 ## <a name="example"></a>Örnek
 

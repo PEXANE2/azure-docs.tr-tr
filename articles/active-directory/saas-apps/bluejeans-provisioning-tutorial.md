@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053864"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646138"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için BlueJeans yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem BlueJe
 > * Şema içinde Kullanıcı oluşturma
 > * Kullanıcıları artık erişim gerektirdiklerinde BlueJeans 'ta kaldır
 > * Azure AD ve şema arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
-> * Şeması ['Nda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) (önerilir)
+> * Şeması ['Nda çoklu oturum açma](./bluejeans-tutorial.md) (önerilir)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -141,7 +141,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
-2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) bakın
+2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları

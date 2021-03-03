@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645511"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661344"
 ---
 ## <a name="download-code"></a>Kodu indir
 
@@ -23,8 +23,8 @@ Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communic
 
 - Etkin aboneliği olan bir Azure hesabı. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde çalışan [Visual Studio Code](https://code.visualstudio.com/).
-- [Node.js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). `node --version`Sürümünüzü denetlemek için komutunu kullanın. 
-- Visual Studio Code için [Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). 
+- [Node.js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
+- Visual Studio Code için [Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 - Etkin bir Iletişim Hizmetleri kaynağı ve bağlantı dizesi. [Iletişim Hizmetleri kaynağı oluşturun](../../quickstarts/create-communication-resource.md).
 
 ## <a name="overview"></a>Genel Bakış
@@ -76,7 +76,7 @@ module.exports = async function (context, req) {
 
 `Identity`Oluşturmak için kitaplığı kullanacağız `User Access Tokens` .
 
-`npm install`JavaScript Için Azure Communication Services yönetim istemcisi kitaplığını yüklemek için komutunu kullanın.
+`npm install`JavaScript Için Azure Iletişim Hizmetleri kimlik istemci kitaplığını yüklemek için komutunu kullanın.
 
 ```console
 
@@ -102,7 +102,7 @@ Bağlantı dizenizi alma hakkında daha fazla bilgi için [kaynak sağlama hızl
 const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 ```
 
-Sonra, oluşturmak için özgün işlevimizi değiştireceksiniz `User Access Tokens` . 
+Sonra, oluşturmak için özgün işlevimizi değiştireceksiniz `User Access Tokens` .
 
 `User Access Tokens` , yönteminden bir Kullanıcı oluşturularak oluşturulur `createUser` . Kullanıcı oluşturulduktan sonra, `issueToken` Azure işlevinin döndürdüğü bu kullanıcı için bir belirteç oluşturmak üzere yöntemini kullanabiliriz.
 

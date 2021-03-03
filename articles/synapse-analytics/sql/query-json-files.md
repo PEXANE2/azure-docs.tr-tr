@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8dc07a3aa954a74ba594eb99da1ea3ee59610c9b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56d9c621579e19cf2c32562560e40fe42ff3989b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678330"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677519"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunu kullanarak JSON dosyalarını sorgulama
 
@@ -126,7 +126,7 @@ Sorgu örnekleri aşağıdaki yapıyla belge içeren *JSON* dosyalarını okur:
 
 ### <a name="query-json-files-using-json_value"></a>JSON_VALUE kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu, bir JSON belgelerinden skaler değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nasıl kullanacağınızı gösterir:
+Aşağıdaki sorgu, bir JSON belgelerinden skaler değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) nasıl kullanacağınızı gösterir:
 
 ```sql
 select
@@ -146,7 +146,7 @@ order by JSON_VALUE(doc, '$.geo_id') desc
 
 ### <a name="query-json-files-using-openjson"></a>OPENJSON kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu [Openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanır. Sırbistan tarafından bildirilen COVıD istatistiklerini alır:
+Aşağıdaki sorgu [Openjson](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest&preserve-view=true)kullanır. Sırbistan tarafından bildirilen COVıD istatistiklerini alır:
 
 ```sql
 select

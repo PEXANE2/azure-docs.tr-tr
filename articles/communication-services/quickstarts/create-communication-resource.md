@@ -10,21 +10,19 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 036df8d4c65ebd6288a526b3af7201e6f2131cd4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820017"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656586"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Hızlı başlangıç: Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme
- 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, Azure portal veya .NET Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı, [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azure 'un dağıtım ve yönetim hizmeti ile kaynak ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir. 
+İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .net Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir.
 
 > [!WARNING]
-> Iletişim Hizmetleri kullanılabilirliğinin genel önizleme sırasında ABD coğrafya ile sınırlı olduğunu unutmayın. Ayrıca, genel önizleme sırasında iletişim kaynaklarının farklı bir aboneliğe aktarılamayacağını unutmayın.
+> Iletişim Hizmetleri birden çok coğrafi konumda kullanıma sunulurken, bir telefon numarası alabilmek için kaynağın bir veri konumunun ' US ' olarak ayarlanmış olması gerekir. Ayrıca, genel önizleme sırasında iletişim kaynaklarının farklı bir aboneliğe aktarılamayacağını unutmayın.
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
@@ -40,7 +38,7 @@ ms.locfileid: "99820017"
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Bağlantı Dizeleriniz ve hizmet uç noktalarınıza erişin
 
-Bağlantı dizeleri Iletişim Hizmetleri istemci kitaplıklarının Azure 'a bağlanmasına ve kimlik doğrulamasından geçmesini sağlar. Iletişim Hizmetleri bağlantı Dizeleriniz ve hizmet uç noktalarınıza Azure portal veya program aracılığıyla Azure Resource Manager API 'lerle erişebilirsiniz. 
+Bağlantı dizeleri Iletişim Hizmetleri istemci kitaplıklarının Azure 'a bağlanmasına ve kimlik doğrulamasından geçmesini sağlar. Iletişim Hizmetleri bağlantı Dizeleriniz ve hizmet uç noktalarınıza Azure portal veya program aracılığıyla Azure Resource Manager API 'lerle erişebilirsiniz.
 
 Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsünden **anahtarlar** ' ı seçin ve iletişim hizmeti istemci kitaplıklarının kullanımı için **bağlantı dizesini** veya **uç nokta** değerlerini kopyalayın. Birincil ve ikincil anahtarlara erişiminizin olduğunu unutmayın. Bu, Iletişim Hizmetleri kaynaklarınıza üçüncü tarafa veya hazırlama ortamına geçici erişim sağlamak istediğiniz senaryolarda yararlı olabilir.
 
@@ -49,7 +47,7 @@ Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsü
 Ayrıca, Azure CLı kullanarak önemli bilgilere erişebilirsiniz:
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +101,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
-Kaynak silme işleminin ardından kaynağınız için atanan telefon numaranız varsa, telefon numaraları otomatik olarak kaynağından aynı anda serbest bırakılır. 
+Kaynak silme işleminin ardından kaynağınız için atanan telefon numaranız varsa, telefon numaraları otomatik olarak kaynağından aynı anda serbest bırakılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

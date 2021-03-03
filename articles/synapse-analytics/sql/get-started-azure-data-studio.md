@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258906"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667601"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma
 
@@ -26,7 +26,7 @@ ms.locfileid: "99258906"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. 
 
 ## <a name="connect"></a>Bağlan
 
@@ -73,7 +73,7 @@ Başarılı oturum açma işleminden sonra şu şekilde bir pano görmeniz gerek
 
 ## <a name="query"></a>Sorgu
 
-Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyimlerini kullanarak SYNAPSE SQL 'i sorgulama yapabilirsiniz. Başlamak için Pano görünümünden **Yeni sorgu** ' yı seçin.
+Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) deyimlerini kullanarak SYNAPSE SQL 'i sorgulama yapabilirsiniz. Başlamak için Pano görünümünden **Yeni sorgu** ' yı seçin.
 
 ![Yeni Sorgu](./media/get-started-azure-data-studio/5-new-query.png)
 

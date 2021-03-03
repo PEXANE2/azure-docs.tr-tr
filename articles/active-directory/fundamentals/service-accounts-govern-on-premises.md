@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417972"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649215"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Şirket içi hizmet hesaplarını yöneten
 
@@ -60,11 +60,11 @@ Yeni bir hizmet hesabı oluştururken aşağıdaki ölçütleri kullanın.
 
 Hizmet hesapları olarak kullanılan kullanıcı hesaplarıyla aşağıdaki ayarları kullanın:
 
-* [**Hesap süre sonu**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): hizmet hesabını, gözden geçirme süresi dolduktan sonra, devam etmesi gerektiğini belirlenmediği takdirde otomatik olarak süre sonu olarak ayarlayın
+* [**Hesap süre sonu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): hizmet hesabını, gözden geçirme süresi dolduktan sonra, devam etmesi gerektiğini belirlenmediği takdirde otomatik olarak süre sonu olarak ayarlayın
 
 *  **Logonistasyonlarının**: hizmet hesabının oturum açabildiği konum için izinleri kısıtla. Bir makinede yerel olarak çalışır ve yalnızca o makinedeki kaynaklara erişirse, başka her yerde oturum açmasını kısıtlayın.
 
-* [**Parola değiştirilemiyor**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): parametresini false olarak ayarlayarak hizmet hesabının kendi parolasını değiştirmesini engelleyin.
+* [**Parola değiştirilemiyor**](/powershell/module/addsadministration/set-aduser?view=win10-ps): parametresini false olarak ayarlayarak hizmet hesabının kendi parolasını değiştirmesini engelleyin.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Yaşam döngüsü yönetimi işlemi oluşturma
@@ -149,17 +149,17 @@ Ve belgelendikten sonra risk değerlendirmesi şu şekilde etkiye sahip olabilir
 
 Yalnızca ilgili bilgiler CMDB 'de belgelendikten ve risk değerlendirmesi gerçekleştirdikten sonra hizmet hesabı oluşturun. Hesap kısıtlamaları risk değerlendirmesine hizalanmalıdır. Değerlendirmeyle ilgili olarak aşağıdaki kısıtlamaları göz önünde bulundurun.:
 
-* [Hesap süre sonu](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Hesap süre sonu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * Hizmet hesabı olarak kullanılan tüm Kullanıcı hesapları için, kullanım için gerçekçi ve kesin bir bitiş tarihi tanımlayın. Bunu "Account Expires" bayrağını kullanarak ayarlayın. Daha fazla ayrıntı için bkz.[ set-Adaccountexpiasyon](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
+   * Hizmet hesabı olarak kullanılan tüm Kullanıcı hesapları için, kullanım için gerçekçi ve kesin bir bitiş tarihi tanımlayın. Bunu "Account Expires" bayrağını kullanarak ayarlayın. Daha fazla ayrıntı için bkz.[ set-Adaccountexpiasyon](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
 
-* Oturum açma ([Logonworkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Oturum açma ([Logonworkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* [Parola ilkesi](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy) gereksinimleri
+* [Parola ilkesi](../../active-directory-domain-services/password-policy.md) gereksinimleri
 
-* Yalnızca ayrıcalıklı kullanıcılar için yönetimi sağlayan bir [OU konumunda](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) oluşturma
+* Yalnızca ayrıcalıklı kullanıcılar için yönetimi sağlayan bir [OU konumunda](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) oluşturma
 
-* Hizmet hesabında ve [hizmet hesabı kullanımıyla](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html) [ilgili değişiklikleri algılayan](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) denetimi ayarlayın ve toplayın.
+* Hizmet hesabında ve [hizmet hesabı kullanımıyla](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html) [ilgili değişiklikleri algılayan](/windows/security/threat-protection/auditing/audit-directory-service-changes) denetimi ayarlayın ve toplayın.
 
 Üretime geçmeye hazırsanız, hizmet hesabına güvenli bir şekilde erişim izni verin. 
 
@@ -193,7 +193,7 @@ Tüm izinleri kaldırdıktan sonra, hesabı kaldırmak için bu işlemi kullanı
 
 3. Devre dışı bırakılan ilke karşılandıktan sonra hizmet hesabını silin. 
 
-   * MSAs için, PowerShell 'i kullanarak [kaldırabilir](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) veya yönetilen hizmet hesabı kapsayıcısından el ile silebilirsiniz.
+   * MSAs için, PowerShell 'i kullanarak [kaldırabilir](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) veya yönetilen hizmet hesabı kapsayıcısından el ile silebilirsiniz.
 
    * Bilgisayar veya Kullanıcı hesapları için Active Directory ' den hesabı el ile silebilirsiniz.
 

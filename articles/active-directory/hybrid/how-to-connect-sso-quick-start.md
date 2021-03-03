@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762251"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644791"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -161,10 +161,10 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
     !["Kayıt defteri" ve "kayıt defteri öğesi" öğesinin seçili olduğunu gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Uygun alanlara aşağıdaki değerleri girin ve **Tamam**' a tıklayın.
-   - **Anahtar yolu**: **_Software\microsoft\windows\currentversion\ınternet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
-   - _* Değer adı * *: **_https_*_
-   - _* Değer türü * *: **_REG_DWORD_*_
-   - _* Değer verisi * *: **_00000001_*_
+   - **Anahtar yolu**: **_SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_**
+   - **Değer adı**: **_https_**
+   - **Değer türü**: **_REG_DWORD_**
+   - **Değer verisi**: **_00000001_**
  
      !["Yeni kayıt defteri özellikleri" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Her kullanıcının aşağıdaki adımları kullanarak, Azure AD URL 'sini Firefox ayarlarına el ile eklemesi gerekir:
 1. Firefox 'u çalıştırın ve `about:config` Adres çubuğuna girin. Gördüğünüz tüm bildirimleri kapatın.
-2. _ *Network. Negotiate-Auth. Trusted-uris** tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir.
+2. **Network. Negotiate-Auth. Trusted-uris** tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir.
 3. Sağ tıklayın ve **Değiştir**' i seçin.
 4. `https://autologon.microsoftazuread-sso.com`Alana girin.
 5. **Tamam** ' ı seçin ve ardından tarayıcıyı yeniden açın.
@@ -205,7 +205,7 @@ Mac kullanıcıları için Azure AD URL 'sini Firefox ve Google Chrome 'a aktarm
 
 #### <a name="known-browser-limitations"></a>Bilinen tarayıcı sınırlamaları
 
-Sorunsuz SSO, Firefox ve Microsoft Edge tarayıcılarında özel göz atma modunda çalışmaz. Tarayıcı Gelişmiş korumalı modda çalışıyorsa Internet Explorer 'da da çalışmaz. Kmıum temelinde Microsoft Edge 'in sonraki sürümü için, tasarım tarafından InPrivate ve konuk modunda çalışmaz.
+Sorunsuz SSO, Firefox ve Microsoft Edge (eski) tarayıcılarında özel göz atma modunda çalışmaz. Tarayıcı Gelişmiş korumalı modda çalışıyorsa Internet Explorer 'da da çalışmaz. Sorunsuz SSO, Microsoft Edge 'in bir sonraki sürümünü, Kmıum 'a göre destekler ve tasarım tarafından InPrivate ve konuk modunda çalışmaktadır.
 
 ## <a name="step-4-test-the-feature"></a>4. Adım: özelliği test etme
 
@@ -216,10 +216,10 @@ Belirli bir kullanıcı için özelliği test etmek için aşağıdaki koşullar
   - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](#step-3-roll-out-the-feature) sunulaştınız.
 
 Kullanıcının yalnızca Kullanıcı adını girdiği ancak parolayı değil, senaryoyu test etmek için:
-   - `https://myapps.microsoft.com/`Yeni bir özel tarayıcı oturumunda oturum açın.
+   - ' Üzerinde oturum açın https://myapps.microsoft.com/ . Tarayıcı önbelleğini temizlediğinizden ya da desteklenen tarayıcıların herhangi biriyle özel modda yeni bir özel tarayıcı oturumu kullandığınızdan emin olun.
 
 Kullanıcının Kullanıcı adı veya parola girmesi gereken senaryoyu test etmek için şu adımlardan birini kullanın: 
-   - `https://myapps.microsoft.com/contoso.onmicrosoft.com`Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso* değerini kiracınızın adıyla değiştirin.
+   - `https://myapps.microsoft.com/contoso.onmicrosoft.com`Tarayıcı önbelleğini temizlediğinizden emin olmak için oturum açın ya da desteklenen tarayıcıların herhangi biriyle özel modda yeni bir özel tarayıcı oturumu kullanın. *Contoso* değerini kiracınızın adıyla değiştirin.
    - `https://myapps.microsoft.com/contoso.com`Yeni bir özel tarayıcı oturumunda oturum açın. *Contoso.com* değerini, kiracınızda doğrulanmış bir etki alanıyla (Federasyon etki alanı değil) değiştirin.
 
 ## <a name="step-5-roll-over-keys"></a>5. Adım: anahtarları atla

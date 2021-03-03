@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9564727cfe59f243fd1096c93d7eadf1d830be9e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9c6272901600886958d4339d067ca75bb9a73793
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052558"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649130"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Yeni bir çok kiracılı uygulama yapılandırma
 
@@ -29,4 +29,4 @@ ms.locfileid: "99052558"
 - Daha ayrıntılı bilgi için, [çok kiracılı bir uygulamanın nasıl yapılandırıldığını ve](./howto-convert-app-to-be-multi-tenant.md)nasıl kullanılacağını, "ortak" uç noktasını nasıl kullanacağınızı, "Kullanıcı" ve "Yönetici" onayını nasıl uygulayacağınızı ve daha gelişmiş çok katmanlı senaryolar uygulamayı öğrenin
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

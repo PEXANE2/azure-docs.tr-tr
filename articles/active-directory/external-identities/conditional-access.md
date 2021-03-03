@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797276"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646291"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için koşullu erişim
 
@@ -28,7 +28,7 @@ Bu makalede, kuruluşların, B2B Konuk kullanıcılarına kaynaklarına erişmes
 
 Aşağıdaki diyagramda akış gösterilmektedir: görüntü, ![ B2B Konuk kullanıcıları için bir dış dizinden kimlik doğrulama akışını gösterir](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Adım | Description |
+| Adım | Açıklama |
 |--------------|-----------------------|
 | 1. | B2B Konuk Kullanıcı, bir kaynağa erişim ister. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
 | 2. | Kaynak kiracı kullanıcıyı dış olarak tanımlar ve kullanıcıyı B2B Konuk kullanıcısının IDP 'ye yönlendirir. Kullanıcı IDP 'de birincil kimlik doğrulaması gerçekleştirir.
@@ -39,10 +39,10 @@ Aşağıdaki diyagramda akış gösterilmektedir: görüntü, ![ B2B Konuk kulla
 
 Aşağıdaki diyagramda akış gösterilmektedir: ![ görüntüde bir kerelik geçiş kodu bulunan B2B Konuk kullanıcıları Için kimlik doğrulama akışı gösterilmektedir](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Adım | Description |
+| Adım | Açıklama |
 |--------------|-----------------------|
 | 1. |Kullanıcı başka bir Kiracıdaki bir kaynağa erişim istiyor. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
-| 2. | Kaynak kiracısı, kullanıcıyı [dış e-posta bir kerelik geçiş kodu (OTP) kullanıcısı](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) olarak tanımlar ve kullanıcıya OTP ile bir e-posta gönderir.|
+| 2. | Kaynak kiracısı, kullanıcıyı [dış e-posta bir kerelik geçiş kodu (OTP) kullanıcısı](./one-time-passcode.md) olarak tanımlar ve kullanıcıya OTP ile bir e-posta gönderir.|
 | 3. | Kullanıcı OTP 'yi alır ve kodu gönderir. Kaynak kiracısı, kullanıcıyı CA ilkelerine göre değerlendirir.
 | 4. | Tüm CA ilkeleri karşılandıktan sonra, kaynak kiracı bir belirteç yayınlar ve kullanıcıyı kaynağına yönlendirir. |
 
@@ -64,7 +64,7 @@ Konuk kullanıcının kuruluşunda Multi-Factor Authentication özellikleri olsa
 
 5. Bu senaryo her türlü kimlik için (Azure AD veya kişisel Microsoft hesabı (MSA) geçerlidir. Örneğin, contoso 'daki Kullanıcı sosyal KIMLIK kullanarak kimlik doğrulaması gerçekleştiriyorsa.
 
-6. Fabrikam, Azure AD Multi-Factor Authentication destekleyen, yeterli Premium Azure AD lisanslarına sahip olmalıdır. Contoso kullanıcısı bundan sonra Fabrikam ' dan bu lisansı kullanır. B2B lisanslaması hakkında bilgi için bkz. [Azure AD dış kimlikleri için faturalandırma modeli](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) .
+6. Fabrikam, Azure AD Multi-Factor Authentication destekleyen, yeterli Premium Azure AD lisanslarına sahip olmalıdır. Contoso kullanıcısı bundan sonra Fabrikam ' dan bu lisansı kullanır. B2B lisanslaması hakkında bilgi için bkz. [Azure AD dış kimlikleri için faturalandırma modeli](./external-identities-pricing.md) .
 
 >[!NOTE]
 >Azure AD Multi-Factor Authentication, öngörülebilirlik sağlamak için kaynak kiralamanın üzerinde yapılır.
@@ -115,44 +115,43 @@ B2B Konuk kullanıcıları için CA ilkelerini etkileyen çeşitli faktörler va
 
 ### <a name="device-based-conditional-access"></a>Cihaz tabanlı Koşullu Erişim
 
-CA 'da, kullanıcının [cihazının uyumlu olmasını veya karma Azure AD 'ye katılmış](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview)olmasını gerektirme seçeneği vardır. B2B Konuk kullanıcıları yalnızca kaynak kiracının cihazlarını yönetebilmesi durumunda uyumluluk sağlayabilir. Cihazlar aynı anda birden fazla kuruluş tarafından yönetilemez. B2B Konuk kullanıcıları, şirket içi bir AD hesabı olmadığından karma Azure AD JOIN 'i karşılayamaz. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilir veya kaydedebilir ve sonra cihazı uyumlu hale getirebilirsiniz. Kullanıcı daha sonra izin denetimini karşılayamaz.
+CA 'da, kullanıcının [cihazının uyumlu olmasını veya karma Azure AD 'ye katılmış](../conditional-access/concept-conditional-access-conditions.md#device-state-preview)olmasını gerektirme seçeneği vardır. B2B Konuk kullanıcıları yalnızca kaynak kiracının cihazlarını yönetebilmesi durumunda uyumluluk sağlayabilir. Cihazlar aynı anda birden fazla kuruluş tarafından yönetilemez. B2B Konuk kullanıcıları, şirket içi bir AD hesabı olmadığından karma Azure AD JOIN 'i karşılayamaz. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilir veya kaydedebilir ve sonra cihazı uyumlu hale getirebilirsiniz. Kullanıcı daha sonra izin denetimini karşılayamaz.
 
 >[!Note]
 >Dış kullanıcılar için yönetilen bir cihazın kullanılması önerilmez.
 
 ### <a name="mobile-application-management-policies"></a>Mobil uygulama yönetim ilkeleri
 
-CA, **onaylanan istemci uygulamaları iste** gibi denetimler verir ve **Uygulama koruma ilkelerinin** cihazın kiracıya kaydedilmesini gerektirir. Bu denetimler yalnızca [iOS ve Android cihazlarına](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)uygulanabilir. Ancak, kullanıcının cihazı zaten başka bir kuruluş tarafından yönetilmiyorsa, bu denetimlerden hiçbiri B2B Konuk kullanıcılarına uygulanamaz. Bir mobil cihaz, bir seferde birden fazla kiracıya kaydedilemez. Mobil cihaz başka bir kuruluş tarafından yönetilmiyorsa, Kullanıcı engellenecektir. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilirler. Kullanıcı daha sonra izin denetimini karşılayamaz.  
+CA, **onaylanan istemci uygulamaları iste** gibi denetimler verir ve **Uygulama koruma ilkelerinin** cihazın kiracıya kaydedilmesini gerektirir. Bu denetimler yalnızca [iOS ve Android cihazlarına](../conditional-access/concept-conditional-access-conditions.md#device-platforms)uygulanabilir. Ancak, kullanıcının cihazı zaten başka bir kuruluş tarafından yönetilmiyorsa, bu denetimlerden hiçbiri B2B Konuk kullanıcılarına uygulanamaz. Bir mobil cihaz, bir seferde birden fazla kiracıya kaydedilemez. Mobil cihaz başka bir kuruluş tarafından yönetilmiyorsa, Kullanıcı engellenecektir. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilirler. Kullanıcı daha sonra izin denetimini karşılayamaz.  
 
 >[!NOTE]
 >Dış kullanıcılar için bir uygulama koruma ilkesi kullanılması önerilmez.
 
 ### <a name="location-based-conditional-access"></a>Konum tabanlı koşullu erişim
 
-Davet edilen kuruluş, iş ortağı kuruluşlarını tanımlayan güvenilir bir IP adresi aralığı oluşturabileceğini IP aralıklarına dayalı [konum tabanlı ilke](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) uygulanabilir.
+Davet edilen kuruluş, iş ortağı kuruluşlarını tanımlayan güvenilir bir IP adresi aralığı oluşturabileceğini IP aralıklarına dayalı [konum tabanlı ilke](../conditional-access/concept-conditional-access-conditions.md#locations) uygulanabilir.
 
 İlkeler, **coğrafi konumlara** göre de zorlanabilir.
 
 ### <a name="risk-based-conditional-access"></a>Risk tabanlı Koşullu Erişim
 
-B2B Konuk Kullanıcı izin denetimini karşılıyorsa, [oturum açma risk ilkesi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) zorlanır. Örneğin, bir kuruluş, orta veya yüksek oturum açma riski için Azure AD Multi-Factor Authentication gerektirebilir. Ancak, bir Kullanıcı, kaynak kiracısında daha önce Azure AD Multi-Factor Authentication kaydolmamışsa, Kullanıcı engellenecektir. Bu, kötü amaçlı kullanıcıların, meşru bir kullanıcının parolasının güvenliğini tehlikeye adıkları olayda kendi Azure AD Multi-Factor Authentication kimlik bilgilerini kaydetmesini engellemek için yapılır.
+B2B Konuk Kullanıcı izin denetimini karşılıyorsa, [oturum açma risk ilkesi](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) zorlanır. Örneğin, bir kuruluş, orta veya yüksek oturum açma riski için Azure AD Multi-Factor Authentication gerektirebilir. Ancak, bir Kullanıcı, kaynak kiracısında daha önce Azure AD Multi-Factor Authentication kaydolmamışsa, Kullanıcı engellenecektir. Bu, kötü amaçlı kullanıcıların, meşru bir kullanıcının parolasının güvenliğini tehlikeye adıkları olayda kendi Azure AD Multi-Factor Authentication kimlik bilgilerini kaydetmesini engellemek için yapılır.
 
-Ancak, [Kullanıcı risk ilkesi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) , kaynak kiracısında çözümlenemez. Örneğin, yüksek riskli Konuk kullanıcılar için parola değişikliği yapmanız gerekiyorsa, kaynak dizinindeki parolaları sıfırlayamamasından dolayı bunlar engellenir.
+Ancak, [Kullanıcı risk ilkesi](../conditional-access/concept-conditional-access-conditions.md#user-risk) , kaynak kiracısında çözümlenemez. Örneğin, yüksek riskli Konuk kullanıcılar için parola değişikliği yapmanız gerekiyorsa, kaynak dizinindeki parolaları sıfırlayamamasından dolayı bunlar engellenir.
 
 ### <a name="conditional-access-client-apps-condition"></a>Koşullu erişim istemci uygulamaları koşulu
 
-[İstemci uygulamaları koşulları](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) , diğer kullanıcı türleri için YAPTıKLARı gibi B2B Konuk kullanıcıları için de aynı şekilde davranır. Örneğin, konuk kullanıcıların eski kimlik doğrulama protokollerini kullanmasını engelleyebilirsiniz.
+[İstemci uygulamaları koşulları](../conditional-access/concept-conditional-access-conditions.md#client-apps) , diğer kullanıcı türleri için YAPTıKLARı gibi B2B Konuk kullanıcıları için de aynı şekilde davranır. Örneğin, konuk kullanıcıların eski kimlik doğrulama protokollerini kullanmasını engelleyebilirsiniz.
 
 ### <a name="conditional-access-session-controls"></a>Koşullu erişim oturum denetimleri
 
-[Oturum denetimleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) , B2B Konuk kullanıcıları için diğer kullanıcı türleri için aynı şekilde davranır.
+[Oturum denetimleri](../conditional-access/concept-conditional-access-session.md) , B2B Konuk kullanıcıları için diğer kullanıcı türleri için aynı şekilde davranır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
-- [Azure AD B2B işbirliği nedir?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
-- [Kimlik Koruması ve B2B kullanıcıları](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Azure AD B2B işbirliği nedir?](./what-is-b2b.md)
+- [Kimlik Koruması ve B2B kullanıcıları](../identity-protection/concept-identity-protection-b2b.md)
 - [Dış Kimlikler fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)
-- [Sık sorulan sorular (SSS)](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
-
+- [Sık sorulan sorular (SSS)](./faq.md)

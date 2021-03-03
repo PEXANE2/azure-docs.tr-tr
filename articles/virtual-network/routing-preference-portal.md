@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217575"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672906"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi için yönlendirme tercihini yapılandırın
 
@@ -32,20 +32,26 @@ Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracı
 
 Varsayılan olarak, genel IP adresi için yönlendirme tercihi tüm Azure hizmetleri için Microsoft Global Network 'e ayarlanır ve herhangi bir Azure hizmetiyle ilişkilendirilebilir.
 
-> [!IMPORTANT]
-> Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Yönlendirme tercihi ile genel IP adresi oluşturma
-1. [Azure portalında](https://preview.portal.azure.com/) oturum açın.
-2. **Kaynak oluştur**’u seçin. 
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+2. **Kaynak oluştur**’u seçin.
 3. Arama kutusuna *genel IP adresi* yazın.
 3. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
-3. **Yönlendirme tercihi** seçeneklerinde **Internet**' i seçin.
+1. SKU için **Standart**' ı seçin.
+1. **Yönlendirme tercihi** için **Internet**' i seçin.
 
-      ![Genel IP adresi oluşturma](./media/routing-preference-portal/pip-new.png)
+      ![Genel IP adresi oluşturma](./media/routing-preference-portal/public-ip-new.png)
+1. **IPV4 IP adresi yapılandırması** bölümünde, bu bilgileri girin veya seçin:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Abonelik | Aboneliğinizi seçin.|
+    | Kaynak grubu | **Yeni oluştur**' u seçin, *RoutingPreferenceResourceGroup* girin ve **Tamam**' ı seçin. |
+    | Konum | **Doğu ABD**’yi seçin.|
+    | Kullanılabilirlik alanı | Varsayılan değer olan- **bölge-yedekli** değerini koruyun. |
+1. **Oluştur**’u seçin.
 
     > [!NOTE]
     > Genel IP adresleri IPv4 veya IPv6 adresiyle oluşturulur. Ancak, yönlendirme tercihi şu anda yalnızca ıPV4 'Ü destekler.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: b62095a3dc48480d8b1d33328d2d0dc25470d763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 78971a92f1815236bd4b360e8df01b02b4c40626
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461099"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677226"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -31,7 +31,13 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU 
 
 | İşletim Sistemi | Sürücü |
 | -------- |------------- |
-| Windows 10 Enterprise çoklu oturum-derleme 1903 <br/><br/>Windows 10-derleme 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.17](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) (. exe) |
+| Windows 10 Enterprise çoklu oturum-derleme 1909 <br/><br/>Windows 10-derleme 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. S4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exee) (. exe) |
+
+ > [!NOTE]
+   >  Build 1903/1909 kullanıyorsanız, en iyi performans için aşağıdaki Grup ilkesini güncelleştirmeniz gerekebilir. Bu değişiklikler diğer Windows derlemeleri için gerekli değildir.
+   >  
+   >  [Bilgisayar yapılandırma->Ilkeleri-Windows ayarlarını >->Yönetim Şablonları->Windows bileşenleri->Uzak Masaüstü Hizmetleri->Uzak Masaüstü Oturumu Ana Bilgisayarı->uzak oturum ortamı], Ilkeyi [Uzak Masaüstü bağlantıları için WDDM grafik görüntü sürücüsünü kullanın] devre dışı olarak ayarlayın.
+   >  
 
 
 ## <a name="driver-installation"></a>Sürücü yükleme
@@ -46,7 +52,7 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU 
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 
-Aygıt Yöneticisi ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnekte, bir Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının başarıyla yapılandırılması gösterilmektedir.
+Device Manager ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnekte, bir Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının başarıyla yapılandırılması gösterilmektedir.
 <br />
 
 ![Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının başarıyla yapılandırılmasını gösteren ekran görüntüsü.](./media/n-series-amd-driver-setup/device-manager.png)

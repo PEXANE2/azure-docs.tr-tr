@@ -2,18 +2,18 @@
 title: Azure Arc etkin sunucularına genel bakış
 description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gibi yönetmek için Azure Arc etkin sunucularını nasıl kullanacağınızı öğrenin.
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 11/12/2020
+ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: be5955e9bf02e591fdbba3f080d034c126379c2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584785"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651119"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
-Azure Arc etkin sunucuları, Azure dışında barındırılan Windows ve Linux makinelerinizi, kurumsal ağınızda veya yerel Azure sanal makinelerini yönetme ile tutarlı diğer bulut sağlayıcılarından yönetmenize olanak sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir kaynak grubuna dahildir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır. Bir müşterinin Şirket içi altyapısını yöneten hizmet sağlayıcıları, Azure Arc ile [Azure Hithouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) ' ı kullanarak, yerel Azure kaynaklarıyla, aynı anda birden çok müşteri ortamında olduğu gibi karma makinelerini yönetebilir.
+Azure Arc etkin sunucuları, Windows ve Linux fiziksel sunucularınızı ve Azure *dışında* barındırılan sanal makinelerinizi şirket ağınızda veya diğer bulut sağlayıcınızdan yönetmenizi sağlar. Bu yönetim deneyimi, yerel Azure sanal makinelerini nasıl yöneteceğiniz ile tutarlı olacak şekilde tasarlanmıştır. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir kaynak grubuna dahildir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır. Bir müşterinin Şirket içi altyapısını yöneten hizmet sağlayıcıları, Azure Arc ile [Azure Hithouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) ' ı kullanarak, yerel Azure kaynaklarıyla, aynı anda birden çok müşteri ortamında olduğu gibi karma makinelerini yönetebilir.
 
 Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunmak için Azure 'a bağlanmayı planladığınız her makinede Azure bağlı makine aracısının yüklü olması gerekir. Bu aracı başka bir işlevsellik sunmaz ve Azure [Log Analytics aracısının](../../azure-monitor/agents/log-analytics-agent.md)yerini almaz. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
 
@@ -44,7 +44,7 @@ Karma makineden bir Log Analytics çalışma alanında toplanan ve depolanan gü
 
 Azure Arc etkin sunucularıyla desteklenen bölgelerin kesin bir listesi için bkz. [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) sayfası.
 
-Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti durumunda, coğrafi olarak yedekli bir hizmeti destekleyen birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
+Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti varsa ve coğrafi olarak yedekli bir hizmeti destekleyen birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
 
 Bağlı makineyle ilgili aşağıdaki meta veri bilgileri, Azure Arc makine kaynağının yapılandırıldığı bölgede toplanır ve depolanır:
 
@@ -54,6 +54,13 @@ Bağlı makineyle ilgili aşağıdaki meta veri bilgileri, Azure Arc makine kayn
 - Bağlı makine Aracısı sürümü
 
 Örneğin, makine Doğu ABD bölgesinde Azure Arc ile kayıtlıysa, bu veriler ABD bölgesinde saklanır.
+
+### <a name="supported-environments"></a>Desteklenen ortamlar
+
+Yay özellikli sunucular, Azure *dışında* barındırılan fiziksel sunucuların ve sanal makinelerin yönetimini destekler. VM 'Leri barındıran karma bulut ortamlarının desteklendiği belirli Ayrıntılar için bkz. [Agent-Overview. MD # Supported-ortamlar].
+
+> [!NOTE]
+> Yay özellikli sunucular, Azure 'da çalışan sanal makinelerin yönetimini etkinleştirmek için tasarlanmamıştır veya desteklenmez.
 
 ### <a name="agent-status"></a>Aracı durumu
 

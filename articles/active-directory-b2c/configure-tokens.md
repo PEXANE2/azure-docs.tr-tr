@@ -12,20 +12,20 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585216"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654383"
 ---
-# <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
+# <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de belirteçleri yapılandırma
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [bir belirtecin yaşam süresini ve uyumluluğunu](tokens-overview.md) yapılandırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -43,7 +43,8 @@ Aşağıdaki diyagramda, belirteç kayan pencere ömrü davranışının yenilen
 ![Belirteç ömrünü Yenile](./media/configure-tokens/refresh-token-lifetime.png)
 
 > [!NOTE]
-> PKI CE ile yetkilendirme kodu akışını kullanan tek sayfalı uygulamalarda, her zaman 24 saat için yenileme belirteci ömrü vardır. [Tarayıcıda belirteçleri yenileme güvenlik etkileri hakkında daha fazla bilgi edinin](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+> >PKI CE ile yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar, mobil uygulamalar, masaüstü uygulamaları ve Web uygulamaları bu kısıtlamayla karşılaşmadığından, her zaman 24 saat yenileme belirteci süresi vardır. [Tarayıcıda belirteçleri yenileme güvenlik etkileri hakkında daha fazla bilgi edinin](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
 
 ## <a name="configure-token-lifetime"></a>Belirteç ömrünü yapılandırma
 

@@ -5,15 +5,16 @@ author: danielsollondon
 ms.author: danis
 ms.date: 08/10/2020
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0b2f5f7881ab9c07320eba323e690de109eab8c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437346"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673403"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Mevcut bir Azure sanal ağına erişime izin veren Linux VM 'Leri için Azure Image Builder 'ı kullanma
 
@@ -75,7 +76,7 @@ Kaynak grubunu oluşturun.
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="configure-networking"></a>Ağ yapılandırması
+## <a name="configure-networking"></a>Ağı yapılandırma
 
 Mevcut bir VNET\Subnet\NSG yoksa, bir tane oluşturmak için aşağıdaki betiği kullanın.
 
@@ -316,4 +317,4 @@ Bu hızlı başlangıç için bir VNET oluşturduysanız, artık kullanılmıyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.
+[Azure Paylaşılan görüntü galerileri](../shared-image-galleries.md)hakkında daha fazla bilgi edinin.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 31bcf1592178ebe3290403c3d3abb3f7a3a7cd27
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 73f378bb0f71df4df3731a3ef2a1fdb7f8abb4aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429972"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Öğretici: MoveIt aktarımı ile Azure Active Directory tümleştirme-Azure AD tümleştirmesi
 
@@ -186,8 +186,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * MoveIt transfer-Azure AD tümleştirme oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım 'daki MoveIt transfer-Azure AD tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MoveIt aktarımı-Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım 'daki MoveIt transfer-Azure AD tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MoveIt aktarımı-Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MoveIt aktarımını yapılandırdıktan sonra Azure AD tümleştirmesi, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve içeri aktarılmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+MoveIt aktarımını yapılandırdıktan sonra Azure AD tümleştirmesi, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve içeri aktarılmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

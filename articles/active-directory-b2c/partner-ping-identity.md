@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900272"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650235"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Öğretici: güvenli karma erişim için Azure Active Directory B2C ile ping kimliğini yapılandırma
 
@@ -80,7 +80,7 @@ Başlamak için şunlar gerekir:
 
 - Azure aboneliği. Bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free/)alın.
 
-- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 - PingAccess ve PingFederate, Docker kapsayıcılarında veya doğrudan Azure VM 'lerinde dağıtılır.
 
@@ -107,7 +107,7 @@ Bu kuralı izlemek için, Kullanıcı akışlarında ilke özelliklerini kullana
 
 ![görüntü, belirteç ayarlarını gösterir](./media/partner-ping/token-setting.png)
 
-Gelişmiş ilkelerde, bu, [JWT belirteci verenin teknik profilindeki](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile) **ıssuwithtfp** değeri Ile **ıssuanceclaımpattern** meta veri öğesi kullanılarak yapılandırılabilir.
+Gelişmiş ilkelerde, bu, [JWT belirteci verenin teknik profilindeki](./jwt-issuer-technical-profile.md) **ıssuwithtfp** değeri Ile **ıssuanceclaımpattern** meta veri öğesi kullanılarak yapılandırılabilir.
 
 ## <a name="configure-pingaccesspingfederate"></a>PingAccess/PingFederate yapılandırma
 
@@ -160,7 +160,7 @@ Bir Web oturumu oluşturmak için aşağıdaki adımları izleyin:
 
 7. **Istemci parolası** alanına, Azure AD 'de uygulama Için oluşturduğunuz **anahtarı** girin.
 
-8. İsteğe bağlı-Microsoft Graph API ile özel talepler oluşturup kullanabilirsiniz. Bunu seçerseniz, **Gelişmiş** ' i seçin ve **Istek profili** ve **Kullanıcı özniteliklerini Yenile** seçeneklerini kaldırın. Özel talepler kullanma hakkında daha fazla bilgi için bkz. [özel talep kullanma](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim).
+8. İsteğe bağlı-Microsoft Graph API ile özel talepler oluşturup kullanabilirsiniz. Bunu seçerseniz, **Gelişmiş** ' i seçin ve **Istek profili** ve **Kullanıcı özniteliklerini Yenile** seçeneklerini kaldırın. Özel talepler kullanma hakkında daha fazla bilgi için bkz. [özel talep kullanma](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. **Kaydet**’i seçin
 
@@ -265,6 +265,6 @@ PingFederate kimlik doğrulama ilkesini, Azure AD B2C kiracılar tarafından bel
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

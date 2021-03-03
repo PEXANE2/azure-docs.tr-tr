@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096424"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670708"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
 
@@ -91,7 +91,7 @@ Bunun hakkında daha fazla bilgi için lütfen [Azure Bilişsel Arama hizmet dü
 
 ### <a name="availability-zones"></a>Kullanılabilirlik Alanları
 
-[Kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) , aynı bölgede yüksek kullanılabilirlik sağlamak için bir bölgenin veri merkezlerini ayrı fiziksel konum gruplarına bölün. Bilişsel Arama için, bireysel çoğaltmalar bölge atamasının birimleridir. Bir arama hizmeti tek bir bölgede çalışır; çoğaltmaları farklı bölgelerde çalışır.
+[Kullanılabilirlik alanları](../availability-zones/az-overview.md) , aynı bölgede yüksek kullanılabilirlik sağlamak için bir bölgenin veri merkezlerini ayrı fiziksel konum gruplarına bölün. Bilişsel Arama için, bireysel çoğaltmalar bölge atamasının birimleridir. Bir arama hizmeti tek bir bölgede çalışır; çoğaltmaları farklı bölgelerde çalışır.
 
 Arama hizmetinize iki veya daha fazla çoğaltma ekleyerek Azure Bilişsel Arama ile Kullanılabilirlik Alanları kullanabilirsiniz. Her çoğaltma, bölge içinde farklı bir kullanılabilirlik bölgesine yerleştirilir. Kullanılabilirlik Alanları daha fazla çoğaltmadıysanız çoğaltmalar, olabildiğince eşit Kullanılabilirlik Alanları dağıtılır.
 

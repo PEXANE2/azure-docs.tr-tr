@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594777"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659316"
 ---
 # <a name="call-flow-topologies"></a>Çağrı akışı topolojileri
 Bu makalede, Azure Communication Services çağrı akışı topolojileri açıklanır. Bu, yönettiğiniz bir ağ içinde Iletişim hizmetlerini tümleştirerek kurumsal bir müşteri olduğunuzu gözden geçirmek için harika bir makaledir. Iletişim Hizmetleri çağrı akışlarına giriş için, [çağrı akışları kavramsal belgelerini](./call-flows.md)ziyaret edin.
@@ -26,7 +26,7 @@ Bu makalede, Azure Communication Services çağrı akışı topolojileri açıkl
 
 Bir **müşteri ağı** yönettiğiniz tüm ağ kesimlerini içerir. Bu, ofisinizdeki kablolu ve kablosuz ağları ya da ofisler, veri merkezleri ve internet hizmet sağlayıcıları arasında bulunabilir.
 
-Bir müşteri ağı genellikle güvenlik duvarları ve/veya kuruluşunuzun güvenlik ilkelerini zorlayan proxy sunucularıyla birkaç ağ perimetrelerini içerir. İletişim çözümünüzün en iyi performansını ve kalitesini sağlamak için [kapsamlı bir ağ değerlendirmesi](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment) gerçekleştirmenizi öneririz.
+Bir müşteri ağı genellikle güvenlik duvarları ve/veya kuruluşunuzun güvenlik ilkelerini zorlayan proxy sunucularıyla birkaç ağ perimetrelerini içerir. İletişim çözümünüzün en iyi performansını ve kalitesini sağlamak için [kapsamlı bir ağ değerlendirmesi](/microsoftteams/3-envision-evaluate-my-environment) gerçekleştirmenizi öneririz.
 
 **Iletişim Hizmetleri ağı** , Azure iletişim hizmetlerini destekleyen ağ kesimidir. Bu ağ Microsoft tarafından yönetiliyor ve çoğu müşteri ağına yakın kenarlarla birlikte dünya genelinde dağıtılır. Bu ağ aktarım geçişinden, grup çağrıları için medya işlemeden ve zengin gerçek zamanlı medya iletişimini destekleyen diğer bileşenlere sorumludur.
 
@@ -199,4 +199,3 @@ Aşağıdaki belgeler sizin için ilginç olabilir:
 
 - [Çağrı türleri](../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 - [İstemci-sunucu mimarisi](./client-and-server-architecture.md) hakkında bilgi edinin
-

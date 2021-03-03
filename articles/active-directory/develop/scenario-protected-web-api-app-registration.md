@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: dcfedf2cceddb59d456d421c4846f3cd252a65b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584389"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651873"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
@@ -112,7 +112,7 @@ Aşağıdaki örnek öğesinin içeriğini gösterir `appRoles` ; burada öğesi
 
 ```json
 "appRoles": [
-    {
+  {
     "allowedMemberTypes": [ "Application" ],
     "description": "Accesses the TodoListService-Cert as an application.",
     "displayName": "access_as_application",
@@ -121,7 +121,7 @@ Aşağıdaki örnek öğesinin içeriğini gösterir `appRoles` ; burada öğesi
     "lang": null,
     "origin": "Application",
     "value": "access_as_application"
-    }
+  }
 ],
 ```
 

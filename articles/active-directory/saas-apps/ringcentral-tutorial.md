@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a64abfbdb33a30b41853023af14f54bb88e42c8f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 20e59f134c51662f9530862790d5a47b8bb21d6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520720"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650779"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile halka merkezi tümleştirme
 
@@ -25,8 +25,6 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile halka merkezi tümleştir
 * Azure AD 'de, halka merkezine erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesapları ile RingCentral 'da otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,24 +40,24 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* RingCentral, **IDP** tarafından başlatılan SSO 'yu destekler
+* RingCentral, **IDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-ringcentral-from-the-gallery"></a>Galeriden halka merkezi ekleme
+## <a name="add-ringcentral-from-the-gallery"></a>Galeriden halka merkezi ekleme
 
 RingCentral 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden halka merkezi 'ni yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **RingCentral** yazın.
 1. Sonuçlar panelinden **RingCentral** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-ringcentral"></a>Azure AD SSO 'yu halka Merkezi için yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak halka merkezi ile yapılandırın ve test edin. SSO 'nun çalışması için, halka merkezi 'nde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak halka merkezi ile yapılandırın ve test edin. SSO 'nun çalışması için, halka merkezi 'nde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu RingCentral ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu RingCentral ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -68,17 +66,17 @@ Azure AD SSO 'yu RingCentral ile yapılandırmak ve test etmek için aşağıdak
     * Kullanıcının Azure AD gösterimine bağlı olan halka merkezi 'nde B. Simon 'a sahip olmak için, **[halka merkezi test kullanıcısı oluşturun](#create-ringcentral-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **halka merkezi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **halka merkezi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
 
     1. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
     1. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
@@ -87,16 +85,16 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!Note]
     > **Hizmet sağlayıcı meta veri dosyasını** , öğreticide daha sonra açıklanan halka merkezi SSO yapılandırma sayfasında alırsınız.
 
-1. **Hizmet sağlayıcısı meta verileri dosyanız**yoksa, aşağıdaki alanlar için değerleri girin:
+1. **Hizmet sağlayıcısı meta verileri dosyanız** yoksa, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna bir URL yazın:
+    a. **Tanımlayıcı** metin kutusuna URL 'lerden birini yazın:
   
     | Tanımlayıcı |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
-    b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna URL 'lerden birini yazın:
 
     | Yanıt URL'si |
     |--|
@@ -121,25 +119,19 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
+Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **RingCentral**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
-1. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-ringcentral-sso"></a>Halka merkezi SSO 'yu yapılandırma
 
-1. RemoteApp Central 'daki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. RemoteApp Central 'daki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -151,19 +143,19 @@ Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma öz
 
 1. Üstteki **Araçlar**' a tıklayın.
 
-    ![Ekran görüntüsü, halka Merkezi şirket sitesinden seçilen araçları gösterir.](./media/ringcentral-tutorial/ringcentral1.png)
+    ![Ekran görüntüsü, halka Merkezi şirket sitesinden seçilen araçları gösterir.](./media/ringcentral-tutorial/ringcentral-1.png)
 
 1. **Çoklu oturum açma '** ya gidin.
 
-    ![Ekran görüntüsü Araçlar menüsünden tek Sign-On seçili olduğunu gösterir.](./media/ringcentral-tutorial/ringcentral2.png)
+    ![Ekran görüntüsü Araçlar menüsünden tek Sign-On seçili olduğunu gösterir.](./media/ringcentral-tutorial/ringcentral-2.png)
 
 1. **Çoklu oturum açma** sayfasında, **SSO yapılandırma** bölümünde, **1. adım** ' da **Düzenle** ' ye tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Ekran görüntüsü, Düzenle ' yi seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral3.png)
+    ![Ekran görüntüsü, Düzenle ' yi seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral-3.png)
 
 1. **Çoklu oturum açma ayarlama** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsü, ı D P meta verilerini karşıya yükleyebileceğiniz tek Sign-On ayarlama sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral4.png)
+    ![Ekran görüntüsü, ı D P meta verilerini karşıya yükleyebileceğiniz tek Sign-On ayarlama sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral-4.png)
 
     a. Azure portal indirdiğiniz meta veri dosyasını karşıya yüklemek için, **Araştır** ' a tıklayın.
 
@@ -175,11 +167,11 @@ Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma öz
 
     e. **2. adımda** , **hizmet sağlayıcısı meta veri dosyasını** indirmek için **indir** ' e tıklayın ve Azure Portal **tanımlayıcı** ve **yanıt URL 'si** değerlerini otomatik olarak doldurmak için **temel SAML yapılandırması** bölümüne yükleyin.
 
-    ![Ekran görüntüsü, Indir ' i seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![Ekran görüntüsü, Indir ' i seçebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/ringcentral-tutorial/ringcentral-6.png) 
 
     f. Aynı sayfada, **SSO 'Yu etkinleştir** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Ekran görüntüsü, yapılandırmayı bitirebileceğiniz S S O bölümünü etkinleştirir.](./media/ringcentral-tutorial/ringcentral5.png)
+    ![Ekran görüntüsü, yapılandırmayı bitirebileceğiniz S S O bölümünü etkinleştirir.](./media/ringcentral-tutorial/ringcentral-5.png)
 
     * **SSO hizmetini etkinleştir**' i seçin.
 
@@ -191,16 +183,14 @@ Bu bölümde, halka merkezine erişim izni vererek Azure çoklu oturum açma öz
 
 Bu bölümde, halka merkezi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. RingCentral platformunda kullanıcıları eklemek için [RingCentral istemci destek ekibi](https://success.ringcentral.com/RCContactSupp) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
-Erişim panelinde RingCentral kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız halka merkezinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız halka merkezinde otomatik olarak oturum açmış olmanız gerekir.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarımın halka merkezi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız halka merkezinde otomatik olarak oturum açmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile RingCentral 'ı deneyin](https://aad.portal.azure.com/)
+RingCentral 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

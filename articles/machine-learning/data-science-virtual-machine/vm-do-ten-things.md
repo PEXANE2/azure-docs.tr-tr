@@ -3,19 +3,18 @@ title: Windows 'da verileri ve modeli keşfet
 titleSuffix: Azure Data Science Virtual Machine
 description: Windows Veri Bilimi Sanal Makinesi veri keşif ve modelleme görevleri gerçekleştirin.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575016"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657409"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi ile veri bilimi
 
@@ -58,7 +57,7 @@ Jupyıter 'ı başlattıktan sonra, `/notebooks` DSVM 'ye önceden paketlenmiş 
 
 * Kodu görmek için Not defterini seçin.
 * Her hücreyi SHIFT + enter ' i seçerek çalıştırın.
-* **Hücre** Çalıştır ' i seçerek tüm not defterini çalıştırın  >  **Run**.
+* **Hücre** Çalıştır ' i seçerek tüm not defterini çalıştırın  >  .
 * Jupyter simgesini (sol üst köşedeki) seçerek yeni bir not defteri oluşturun, sağdaki **Yeni** düğmesini seçin ve sonra da Not defteri dilini (kernels olarak da bilinir) seçin.   
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98989a38a0c1a7f57fc8eba70e064e5d6f2cce8f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012092"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671533"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma
 
@@ -43,9 +43,9 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | Doğu ABD 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 192.168.0.0 \ 24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -68,7 +68,7 @@ Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye 
 3. **Ağ** sekmesinde aşağıdakilerin seçili olduğundan emin olun:
    - **Sanal ağ**: **myvnet**
    - **Alt ağ**: **mysubnet**
-   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU** için **Standart** ' ı seçin.  **Tamam** düğmesine tıklayın.
+   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU** için **Standart** ' ı seçin.  **Tamam**'a tıklayın.
    - **NIC ağ güvenlik grubu**: **temel** öğesini seçin.
    - **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver** öğesini seçin.
    - **Gelen bağlantı noktalarını seçin**: **SSH** 'yi Onayla seçili.

@@ -11,12 +11,12 @@ ms.date: 07/28/2020
 ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d960b64d71861044aa1b0344ccbfdaf5e6328e6a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120334"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676310"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Gölü genel bakış
 
@@ -996,5 +996,5 @@ Daha fazla bilgi için bkz. [Delta Lake projesi](https://github.com/delta-io/del
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* [Apache Spark belgeleri için .NET](/dotnet/spark)
 * [Azure Synapse Analytics](../index.yml)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365557"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645832"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme
 
@@ -78,11 +78,11 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
    >
    >![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. **Konuk self servis kaydolma özelliğini Kullanıcı akışları (Önizleme) Ile etkinleştir** altında, kullanıcıların uygulamalara kaydolmasına izin veren Kullanıcı akışları oluşturabilmenizi istiyorsanız **Evet** ' i seçin. Bu ayar hakkında daha fazla bilgi için bkz. [bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)](self-service-sign-up-user-flow.md).
+7. **Konuk self servis kaydolma özelliğini Kullanıcı akışları aracılığıyla etkinleştir** altında, kullanıcıların uygulamalara kaydolmasına izin veren Kullanıcı akışları oluşturabilmenizi istiyorsanız **Evet** ' i seçin. Bu ayar hakkında daha fazla bilgi için bkz. [bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme](self-service-sign-up-user-flow.md).
 
     ![Kullanıcı akışları ile Self Servis kaydolma ayarı](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. **İşbirliği kısıtlamaları**' nın altında, belirttiğiniz etki alanlarına davetleri izin vermeyi veya reddetmeyi seçin. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](allow-deny-list.md).
+7. **İşbirliği kısıtlamaları**' nın altında, belirttiğiniz etki alanlarına davetleri izin vermeyi veya reddetmeyi seçebilirsiniz ve metin kutularına belirli etki alanı adlarını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](allow-deny-list.md).
 
     ![İşbirliği kısıtlamaları ayarları](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama

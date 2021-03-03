@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: Bölge yedekliliğine olanak verme
           href: cache-how-to-zone-redundancy.md
-        - name: Coğrafi çoğaltmayı ayarla
+        - name: OSS coğrafi çoğaltma ayarlama
           href: cache-how-to-geo-replication.md
+        - name: Kurumsal etkin Coğrafi çoğaltmayı ayarlama
+          href: cache-how-to-active-geo-replication.md
         - name: Ayrılmış kapasite ile kaydetme
           href: cache-reserved-pricing.md
         - name: Redis için Azure Cache’e geçiş

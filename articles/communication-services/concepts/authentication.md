@@ -9,188 +9,31 @@ ms.author: jken
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e20c822c2e792c67ed655080385a3c90794d53fd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1267fc53bd6dcbae504b01610267059545353dc5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545148"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655913"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Iletişim hizmetlerinde kimlik doğrulama
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir. Tipik bir mimaride, Kullanıcı ve sorun belirteçleri oluşturmak için, güvenilir Kullanıcı erişimi hizmetinde [istemci ve sunucu mimarisi](./client-and-server-architecture.md), *erişim anahtarları* veya *yönetilen kimlik* ' e bakın. Ve Güvenilen Kullanıcı erişimi hizmeti tarafından verilen *Kullanıcı erişim belirteci* , istemci uygulamalarının diğer iletişim hizmetlerine erişmesi için kullanılır, örneğin sohbet veya arama hizmeti.
 
-Bu makalede, *erişim anahtarları* ve *Kullanıcı erişimi belirteçleri* kullanılarak Azure iletişim hizmetleri ile istemcilerin kimlik doğrulaması hakkında bilgi sağlanır. Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir.
-
-Aşağıdaki tabloda, Azure Iletişim Hizmetleri istemci kitaplıkları tarafından desteklenen kimlik doğrulama seçenekleri açıklanmaktadır:
-
-| İstemci kitaplığı | Erişim anahtarı    | Kullanıcı erişim belirteçleri |
-| -------------- | ------------- | ------------------ |
-| Yönetim | Desteklenir     | Desteklenmiyor      |
-| SMS            | Desteklenir     | Desteklenmiyor      |
-| Sohbet           | Desteklenmiyor | Desteklenir          |
-| Events        | Desteklenmiyor | Desteklenir          |
+Azure Iletişim Hizmetleri SMS hizmeti, kimlik doğrulaması için *erişim anahtarlarını* veya *yönetilen kimliği* de kabul eder. Bu genellikle güvenilen bir hizmet ortamında çalışan bir hizmet uygulamasında gerçekleşir.
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
-- SMS ve yönetim işlemleri için anahtar kimlik doğrulamasına **erişin** . Erişim anahtarı kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan uygulamalar için uygundur. Bir erişim anahtarı ile kimlik doğrulamak için, bir istemci, [karma tabanlı bir ileti kimlik doğrulama kodu (HMAC)](https://en.wikipedia.org/wiki/HMAC) oluşturur ve `Authorization` her http isteğinin üst bilgisine dahil eder. Daha fazla bilgi için bkz. [erişim anahtarı Ile kimlik doğrulama](#authenticate-with-an-access-key).
-- Sohbet için **Kullanıcı erişim belirteci** kimlik doğrulaması ve çağırma. Kullanıcı erişim belirteçleri, istemci uygulamalarınızın doğrudan Azure Iletişim hizmetlerinde kimlik doğrulamasını sağlar. Bu belirteçler, oluşturduğunuz sunucu tarafı belirteç sağlama hizmetinde oluşturulur. Daha sonra, sohbeti başlatmak ve istemci kitaplıklarını çağırmak için belirteci kullanan istemci cihazlara sağlanırlar. Daha fazla bilgi için bkz. [Kullanıcı erişim belirteci Ile kimlik doğrulama](#authenticate-with-a-user-access-token).
-
-## <a name="authenticate-with-an-access-key"></a>Erişim anahtarı ile kimlik doğrulama
-
-Erişim anahtarı kimlik doğrulaması, SHA256 algoritması kullanılarak hesaplanan her HTTP isteği için HMAC oluşturmak üzere paylaşılan bir gizli anahtar kullanır ve `Authorization` düzeni kullanarak üst bilgiye gönderir `HMAC-SHA256` .
-
-```
-Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
-```
-
-Erişim anahtarı kimlik doğrulaması kullanan Azure Iletişim Hizmetleri istemci kitaplıkları, kaynağınızın bağlantı dizesiyle başlatılmalıdır. İstemci kitaplığı kullanmıyorsanız, kaynak erişim anahtarınızı kullanarak program aracılığıyla HMAC 'ler oluşturabilirsiniz. Bağlantı dizeleri hakkında daha fazla bilgi edinmek için [kaynak sağlama hızlı](../quickstarts/create-communication-resource.md)başlangıcı ' nı ziyaret edin.
-
-### <a name="sign-an-http-request"></a>HTTP isteğini imzala
-
-Azure Iletişim Hizmetleri REST API 'Lerine HTTP istekleri yapmak için bir istemci kitaplığı kullanmıyorsanız, her HTTP isteği için programlı olarak HMAC 'ler oluşturmanız gerekir. Aşağıdaki adımlarda yetkilendirme üst bilgisinin nasıl oluşturulacağı açıklanır:
-
-1. İstek için Eşgüdümlü Evrensel Saat (UTC) zaman damgasını ya da `x-ms-date` Standart HTTP `Date` üst bilgisinde belirtin. Hizmet, yeniden yürütme saldırıları dahil olmak üzere belirli güvenlik saldırılarına karşı koruma sağlamak için bunu doğrular.
-1. SHA256 algoritmasını kullanarak HTTP istek gövdesini karma hale gelir ve sonra, istek ile, üst bilgisi aracılığıyla geçirin `x-ms-content-sha256` .
-1. HTTP fiilini (ör. `GET` veya `PUT` ), http istek yolunu ve `Date` `Host` ve `x-ms-content-sha256` http üst bilgilerinin değerlerini aşağıdaki biçimde birleştirerek imzalanacak dizeyi oluşturun:
-    ```
-    VERB + "\n"
-    URLPathAndQuery + "\n"
-    DateHeaderValue + ";" + HostHeaderValue + ";" + ContentHashHeaderValue
-    ```
-1. Önceki adımda oluşturduğunuz UTF-8 kodlu dize için HMAC-256 imzası oluşturun. Sonra, sonuçlarınızı Base64 olarak kodlayın. Ayrıca, erişim anahtarınızın Base64 kodunu çözmelisiniz. Aşağıdaki biçimi kullanın (sözde kod olarak gösterilir):
-    ```
-    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_access_key>)))
-    ```
-1. Yetkilendirme üstbilgisini aşağıdaki gibi belirtin:
-    ```
-    Authorization="HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"  
-    ```
-    Bu, `<hmac-sha256-signature>` önceki ADıMDA HMAC 'nin hesaplandığı yerdir.
-
-## <a name="authenticate-with-a-user-access-token"></a>Kullanıcı erişim belirteciyle kimlik doğrulama
-
-Kullanıcı erişim belirteçleri, istemci uygulamalarınızın doğrudan Azure Iletişim hizmetlerinde kimlik doğrulamasını sağlar. Bunu başarmak için, uygulama kullanıcılarınızın kimliğini doğrulayan ve yönetim istemci kitaplığı ile Kullanıcı erişim belirteçleri veren bir güvenilen hizmet ayarlamanız gerekir. Mimari önemli konuları hakkında daha fazla bilgi edinmek için [istemci ve sunucu mimarisi](./client-and-server-architecture.md) kavramsal belgelerini ziyaret edin.
-
-`CommunicationTokenCredential`Sınıfı, istemci kitaplıklarına Kullanıcı erişim belirteci kimlik bilgileri sağlamaya ve yaşam döngüsünü yönetmeye yönelik mantığı içerir.
-
-### <a name="initialize-the-client-libraries"></a>İstemci kitaplıklarını başlatma
-
-Kullanıcı erişim belirteci kimlik doğrulaması gerektiren Azure Iletişim Hizmetleri istemci kitaplıklarını başlatmak için önce sınıfın bir örneğini oluşturun `CommunicationTokenCredential` ve ardından API istemcisini başlatmak için bunu kullanın.
-
-Aşağıdaki kod parçacıkları, bir Kullanıcı erişim belirteci ile sohbet istemci kitaplığını nasıl başlatakullanacağınızı gösterir:
-
-#### <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-// user access tokens should be created by a trusted service using the Administration client library
-var token = "<valid-user-access-token>";
-
-// create a CommunicationTokenCredential instance
-var userCredential = new CommunicationTokenCredential(token);
-
-// initialize the chat client library with the credential
-var chatClient = new ChatClient(ENDPOINT_URL, userCredential);
-```
-
-#### <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-// user access tokens should be created by a trusted service using the Administration client library
-const token = "<valid-user-access-token>";
-
-// create a CommunicationTokenCredential instance with the AzureCommunicationTokenCredential class
-const userCredential = new AzureCommunicationTokenCredential(token);
-
-// initialize the chat client library with the credential
-let chatClient = new ChatClient(ENDPOINT_URL, userCredential);
-```
-
-#### <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
-// user access tokens should be created by a trusted service using the Administration client library
-let token = "<valid-user-access-token>";
-
-// create a CommunicationTokenCredential instance
-let userCredential = try CommunicationTokenCredential(token: token)
-
-// initialize the chat client library with the credential
-let chatClient = try CommunicationChatClient(credential: userCredential, endpoint: ENDPOINT_URL)
-```
-
-#### <a name="java"></a>[Java](#tab/java)
-
-```java
-// user access tokens should be created by a trusted service using the Administration client library
-String token = "<valid-user-access-token>";
-
-// create a CommunicationTokenCredential instance
-CommunicationTokenCredential userCredential = new CommunicationTokenCredential(token);
-
-// Initialize the chat client
-final ChatClientBuilder builder = new ChatClientBuilder();
-builder.endpoint(ENDPOINT_URL)
-    .credential(userCredential)
-    .httpClient(HTTP_CLIENT);
-ChatClient chatClient = builder.buildClient();
-```
-
----
-
-### <a name="refreshing-user-access-tokens"></a>Kullanıcı erişim belirteçleri yenileniyor
-
-Kullanıcı erişim belirteçleri, kullanıcılarınızın hizmet kesintilerini yaşmasını engellemek için yeniden kullanılması gereken kısa ömürlü kimlik bilgileridir. `CommunicationTokenCredential`Oluşturucu, Kullanıcı erişim belirteçlerini kullanım süreleri dolmadan önce güncelleştirmenizi sağlayan bir yenileme geri çağırma işlevini kabul eder. Güvenilen hizmetinizden yeni bir Kullanıcı erişim belirteci getirmek için bu geri aramayı kullanmanız gerekir.
-
-#### <a name="c"></a>[C#](#tab/csharp)
-
-```csharp
-var userCredential = new CommunicationTokenCredential(
-    initialToken: token,
-    refreshProactively: true,
-    tokenRefresher: cancellationToken => fetchNewTokenForCurrentUser(cancellationToken)
-);
-```
-
-#### <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-const userCredential = new AzureCommunicationTokenCredential({
-  tokenRefresher: async () => fetchNewTokenForCurrentUser(),
-  refreshProactively: true,
-  initialToken: token
-});
-```
-
-#### <a name="swift"></a>[Swift](#tab/swift)
-
-```swift
- let userCredential = try CommunicationTokenCredential(initialToken: token, refreshProactively: true) { |completionHandler|
-   let updatedToken = fetchTokenForCurrentUser()
-   completionHandler(updatedToken, nil)
- }
-```
-
-#### <a name="java"></a>[Java](#tab/java)
-
-```java
-TokenRefresher tokenRefresher = new TokenRefresher() {
-    @Override
-    Future<String> getFetchTokenFuture() {
-        return fetchNewTokenForCurrentUser();
-    }
-}
-
-CommunicationTokenCredential credential = new CommunicationTokenCredential(tokenRefresher, token, true);
-```
----
-
-`refreshProactively`Seçeneği, belirteç yaşam döngüsünü nasıl yöneteceğine karar vermenizi sağlar. Varsayılan olarak, bir belirteç eski olduğunda, geri çağırma API isteklerini engeller ve yenileme girişiminde bulunur. `refreshProactively`, Geri çağırma için ayarlandığında, `true` belirtecin süresi dolmadan önce zaman uyumsuz olarak yürütülür.
+- SMS ve kimlik işlemlerine yönelik anahtar kimlik doğrulamasına **erişin** . Erişim anahtarı kimlik doğrulaması, güvenilir bir hizmet ortamında çalışan hizmet uygulamaları için uygundur. Erişim anahtarı, Azure Iletişim Hizmetleri portalında bulunabilir. Bir hizmet uygulaması, erişim anahtarı ile kimlik doğrulamak için, ilgili SMS veya kimlik istemci kitaplıklarını başlatmak üzere erişim anahtarını kimlik bilgisi olarak kullanır, bkz. [erişim belirteçleri oluşturma ve yönetme](../quickstarts/access-tokens.md). Erişim anahtarı, kaynağınızın bağlantı dizesinin bir parçası olduğundan, bkz. [Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme](../quickstarts/create-communication-resource.md), bağlantı dizesiyle kimlik doğrulama, erişim anahtarı ile kimlik doğrulamaya eşdeğerdir.
+- SMS ve kimlik işlemleri için **yönetilen kimlik** kimlik doğrulaması. Yönetilen kimlik, bkz. [yönetilen kimlik](../quickstarts/managed-identity.md), güvenilir bir hizmet ortamında çalışan hizmet uygulamaları için uygundur. Bir hizmet uygulaması yönetilen bir kimlikle kimlik doğrulaması yapmak için, yönetilen kimliğin kimliği ve gizli anahtarı ile bir kimlik bilgisi oluşturur, ardından karşılık gelen SMS veya Identity istemci kitaplıklarını başlatır, bkz. [erişim belirteçleri oluşturma ve yönetme](../quickstarts/access-tokens.md).
+- Sohbet için **Kullanıcı erişim belirteci** kimlik doğrulaması ve çağırma. Kullanıcı erişimi belirteçleri, istemci uygulamalarınızın Azure Iletişim sohbeti ve çağrı Hizmetleri ile kimlik doğrulamasını sağlar. Bu belirteçler, oluşturduğunuz bir "Güvenilen Kullanıcı erişimi hizmeti" içinde oluşturulur. Daha sonra, sohbeti başlatmak ve istemci kitaplıklarını çağırmak için belirteci kullanan istemci cihazlara sağlanırlar. Daha fazla bilgi için bkz. [uygulamanıza sohbet ekleme](../quickstarts/chat/get-started.md) örneğin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Kullanıcı erişim belirteçleri oluşturma](../quickstarts/access-tokens.md)
+> [Iletişim Hizmetleri kaynaklarını](../quickstarts/create-communication-resource.md) 
+>  oluşturma ve yönetme [Azure CLI](../quickstarts/managed-identity-from-cli.md) 
+>  'dan Azure Active Directory yönetilen bir kimlik uygulaması oluşturma [Kullanıcı erişim belirteçleri oluşturma](../quickstarts/access-tokens.md)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [İstemci ve sunucu mimarisi hakkında bilgi edinin](../concepts/client-and-server-architecture.md)

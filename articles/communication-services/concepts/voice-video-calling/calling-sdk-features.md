@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ed56d0cf69710173d41c5262e7a3121a0cad1304
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650947"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660149"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 İstemci kitaplıkları, *istemciler* ve hizmetler için iki ayrı iki farklı aileleri vardır *.* Şu anda kullanılabilir olan istemci kitaplıkları son kullanıcı deneyimleri için tasarlanmıştır: Web siteleri ve yerel uygulamalar.
 
@@ -28,35 +26,35 @@ Hizmet istemci kitaplıkları henüz kullanılabilir değildir ve botların ve d
 
 Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişim hizmetlerinde bulunan özellik kümesini gösterir.
 
-| Özellik grubu | Özellik                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Özellik grubu | Özellik                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Temel yetenekler | İki kullanıcı arasında bire bir çağrı yerleştir                                                                           | ✔️   | ✔️            | ✔️  
-|                   | İkiden fazla kullanıcısı olan bir grup çağrısı Yerleştir (en fazla 350 Kullanıcı)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | İki kullanıcıyla daha fazla kullanıcı içeren bir grup çağrısında bir tek-bir çağrıyı yükseltin                                 | ✔️   | ✔️            | ✔️ 
-|                   | Başlatıldıktan sonra bir grup çağrısına katılır                                                                              | ✔️   | ✔️            | ✔️ 
+| Temel yetenekler | İki kullanıcı arasında bire bir çağrı yerleştir                                                                           | ✔️   | ✔️            | ✔️
+|                   | İkiden fazla kullanıcısı olan bir grup çağrısı Yerleştir (en fazla 350 Kullanıcı)                                                       | ✔️   | ✔️            | ✔️
+|                   | İki kullanıcıyla daha fazla kullanıcı içeren bir grup çağrısında bir tek-bir çağrıyı yükseltin                                 | ✔️   | ✔️            | ✔️
+|                   | Başlatıldıktan sonra bir grup çağrısına katılır                                                                              | ✔️   | ✔️            | ✔️
 |                   | Başka bir VoIP katılımcısını devam eden bir grup çağrısına katılmaya davet etme                                                       | ✔️   | ✔️            | ✔️
-|                   | Videonuzu açma/kapatma                                                         | ✔️   | ✔️            | ✔️ 
-|                   | Mikrofonu sustur/aç                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Kameralar arasında geçiş yapma                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Yerel saklama/tutma                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Etkin konuşmacı                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Çağrılar için konuşmacı seçin                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Çağrılar için mikrofon seçin                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Katılımcının durumunu göster<br/>*Boşta, erken medya, bağlanma, bağlı, bekleme süresi, giriş, bağlantısız*         | ✔️   | ✔️            | ✔️           
-|                   | Bir çağrının durumunu göster<br/>*Erken medya, gelen, bağlantı, çalma, bağlı, bekletme, bağlantısı kesiliyor, bağlantısı kesildi* | ✔️   | ✔️            | ✔️           
-|                   | Bir katılımcının kapalı olup olmadığını göster                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Katılımcının bir çağrı bıraktı nedenini göster                                                                       | ✔️   | ✔️            | ✔️     
-| Ekran paylaşımı    | Uygulamanın içinden ekranın tamamını paylaşma                                                                 | ✔️   | ❌            | ❌           
-|                   | Belirli bir uygulamayı paylaşma (çalışan uygulamalar listesinden)                                                | ✔️   | ❌            | ❌           
-|                   | Açık sekmeler listesinden bir Web tarayıcısı sekmesi paylaşma                                                                  | ✔️   | ❌            | ❌           
-|                   | Katılımcı, uzak ekran paylaşımından görüntüleyebilir                                                                            | ✔️   | ✔️            | ✔️         
-| Listesi            | Katılımcıları Listele                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Katılımcıyı kaldırma                                                                                                | ✔️   | ✔️            | ✔️         
-| PSTN              | PSTN katılımcısı ile bire bir çağrı yerleştirme                                                                     | ✔️   | ✔️            | ✔️   
+|                   | Videonuzu açma/kapatma                                                         | ✔️   | ✔️            | ✔️
+|                   | Mikrofonu sustur/aç                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Kameralar arasında geçiş yapma                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Yerel saklama/tutma                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Etkin konuşmacı                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Çağrılar için konuşmacı seçin                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Çağrılar için mikrofon seçin                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Katılımcının durumunu göster<br/>*Boşta, erken medya, bağlanma, bağlı, bekleme süresi, giriş, bağlantısız*         | ✔️   | ✔️            | ✔️
+|                   | Bir çağrının durumunu göster<br/>*Erken medya, gelen, bağlantı, çalma, bağlı, bekletme, bağlantısı kesiliyor, bağlantısı kesildi* | ✔️   | ✔️            | ✔️
+|                   | Bir katılımcının kapalı olup olmadığını göster                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Katılımcının bir çağrı bıraktı nedenini göster                                                                       | ✔️   | ✔️            | ✔️
+| Ekran paylaşımı    | Uygulamanın içinden ekranın tamamını paylaşma                                                                 | ✔️   | ❌            | ❌
+|                   | Belirli bir uygulamayı paylaşma (çalışan uygulamalar listesinden)                                                | ✔️   | ❌            | ❌
+|                   | Açık sekmeler listesinden bir Web tarayıcısı sekmesi paylaşma                                                                  | ✔️   | ❌            | ❌
+|                   | Katılımcı, uzak ekran paylaşımından görüntüleyebilir                                                                            | ✔️   | ✔️            | ✔️
+| Listesi            | Katılımcıları Listele                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Katılımcıyı kaldırma                                                                                                | ✔️   | ✔️            | ✔️
+| PSTN              | PSTN katılımcısı ile bire bir çağrı yerleştirme                                                                     | ✔️   | ✔️            | ✔️
 |                   | PSTN katılımcıları ile bir grup çağrısı yerleştirme                                                                           | ✔️   | ✔️            | ✔️
 |                   | Bir PSTN katılımcısı ile bire bir çağrıyı bir grup çağrısına yükseltme                                                 | ✔️   | ✔️            | ✔️
-|                   | Bir grup çağrısından PSTN katılımcısı olarak dışarıyı arama                                                                    | ✔️   | ✔️            | ✔️   
-| Genel           | Mikrofon, konuşmacı ve kameranızı bir ses sınama hizmeti (8 ' i çağırarak kullanılabilir: echo123) ile test edin                   |  ✔️  | ✔️            | ✔️   
+|                   | Bir grup çağrısından PSTN katılımcısı olarak dışarıyı arama                                                                    | ✔️   | ✔️            | ✔️
+| Genel           | Mikrofon, konuşmacı ve kameranızı bir ses sınama hizmeti (8 ' i çağırarak kullanılabilir: echo123) ile test edin                   |  ✔️  | ✔️            | ✔️
 
 ## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından istemci kitaplığı desteğini çağıran JavaScript
 
@@ -96,7 +94,7 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**aynı anda gönderilebilecek giden akış sayısı** |1 ses/video veya 1 ses/ekran paylaşımı | 1 ses/video | 
+|**aynı anda gönderilebilecek giden akış sayısı** |1 ses/video veya 1 ses/ekran paylaşımı | 1 ses/video |
 |**aynı anda işlenebilen gelen akış sayısı** |1 ses/video veya 1 ses/ekran paylaşımı| 6 ses/video veya 1 ekran paylaşımı |
 
 Grup senaryolarında, tüm ses katılımcılarını desteklemek için bir karma ses akışı kullanıldığını unutmayın.
@@ -107,6 +105,6 @@ Grup senaryolarında, tüm ses katılımcılarını desteklemek için bir karma 
 > [Çağırma ile çalışmaya başlayın](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-- Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin 
+- Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin
 - [Çağrı türleri](../voice-video-calling/about-call-types.md) hakkında bilgi edinin
 - [Telefon numarası türleri](../telephony-sms/plan-solution.md) hakkında bilgi edinin

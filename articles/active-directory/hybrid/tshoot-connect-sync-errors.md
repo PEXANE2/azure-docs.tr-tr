@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092659"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643873"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Eşitleme sırasında karşılaşılan Hataları giderme
 Kimlik verileri, Windows Server Active Directory (AD DS) Azure Active Directory (Azure AD) ile eşitlendiğinde hatalar oluşabilir. Bu makalede, farklı eşitleme hatası türlerine genel bir bakış sağlanır. bu hatalara neden olan olası senaryoların bazıları ve hataları gidermeye yönelik olası yollar sunulmaktadır. Bu makale, ortak hata türlerini içerir ve olası tüm hataları kapsamayabilir.
@@ -41,7 +41,7 @@ Azure AD 'ye dışarı aktarma sırasında oluşan hatalar, \( \) \( Azure Activ
 
 ## <a name="data-mismatch-errors"></a>Veri uyumsuzluğu hataları
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 * Azure AD Connect \( Sync Engine \) , nesneleri eklemek veya güncelleştirmek için Azure Active Directory bildirir; Azure AD, Azure AD 'Deki nesnelerin **ImmutableID** özniteliğiyle **sourcetutturucu** özniteliğini kullanarak gelen nesneyle eşleşir. Bu eşleştirmeye **sabit eşleşme** denir.
 * Azure AD, **ImmutableID** **özniteliğiyle eşleşen** herhangi bir nesne **bulmazsa** , yeni bir nesne sağlamadan önce, bir eşleşme bulmak için proxyAddresses ve userPrincipalName özniteliklerini kullanmaya geri döner. Bu eşleştirmeye, **yumuşak eşleşme** denir. Hafif eşleşme, şirket içinde aynı varlığı (kullanıcılar, gruplar) temsil eden eşitleme sırasında eklenen/güncellenen yeni nesneler ile Azure AD 'de zaten mevcut olan (Azure AD 'de bulunan) nesneleri eşleştirmek için tasarlanmıştır.
 * Sabit eşleşme eşleşen bir nesne bulamazsa **ve** yumuşak eşleşme eşleşen bir nesne bulduğunda **InvalidSoftMatch** hatası oluşur, ancak bu nesnenin gelen nesnenin *Sourcetutturucu* öğesinden farklı bir *ImmutableID* değeri varsa, eşleşen nesnenin şirket içi Active Directory başka bir nesneyle eşitlenmiş olması önerilir.
@@ -109,7 +109,7 @@ Eşitleme için Azure AD Connect Health içindeki eşitleme hata raporları her 
 * [Yinelenen veya geçersiz öznitelikler Microsoft 365 dizin eşitlemesini engelliyor](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>Objecttypeuyuşmazlık
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 Azure AD, iki nesneyle hafif bir şekilde eşleşmek istediğinde, farklı "nesne türü" (örneğin, Kullanıcı, Grup, kişi vb.) iki nesnesinin, yumuşak eşleşme gerçekleştirmek için kullanılan öznitelikler için aynı değerlere sahip olması mümkündür. Azure AD 'de bu özniteliklerin çoğaltılmasına izin verilmemesine neden olarak, işlem "Objecttypeuyuşmazlıkla" eşitleme hatasına neden olabilir.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Objecttypeuyuşmazlık hatası için örnek senaryolar
@@ -130,7 +130,7 @@ Objecttypeuyuşmazlık hatasının en yaygın nedeni, farklı türde (Kullanıc�
 
 ## <a name="duplicate-attributes"></a>Yinelenen öznitelikler
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 Azure Active Directory şeması iki veya daha fazla nesnenin aşağıdaki özniteliklerle aynı değere sahip olmasını sağlamıyor. Bu, Azure AD 'deki her bir nesne belirli bir örnekte bu özniteliklerin benzersiz bir değerine sahip olmaya zorlanır.
 
 * ProxyAddresses
@@ -168,7 +168,7 @@ AttributeValueMustBeUnique hatasının en yaygın nedeni, farklı Sourcebağlay�
 
 ## <a name="data-validation-failures"></a>Veri doğrulama sorunları
 ### <a name="identitydatavalidationfailed"></a>Identitydatavalidationfailed
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 Azure Active Directory, verilerin dizine yazılmasına izin vermeden önce verilerin kendisinde çeşitli kısıtlamalar uygular. Bu kısıtlamalar, son kullanıcıların bu verilere bağlı uygulamaları kullanırken olası en iyi deneyimleri almasını sağlamaktır.
 
 #### <a name="scenarios"></a>Senaryolar
@@ -182,7 +182,7 @@ a. UserPrincipalName özniteliğinde desteklenen karakterlerin ve gerekli biçim
 * [Microsoft 365 için Dizin eşitleme yoluyla Kullanıcı sağlamaya hazırlanma](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 Bu durum, bir kullanıcının UserPrincipalName öğesinin soneki bir Federasyon etki alanından başka bir Federasyon etki alanına değiştirildiğinde **"Federateddomainchangeerror"** eşitleme hatası ile sonuçlanır.
 
 #### <a name="scenarios"></a>Senaryolar
@@ -201,10 +201,10 @@ Bir kullanıcının UserPrincipalName soneki bob@**contoso.com** 'den Bob \@ **f
 2. Eşitlemeyi denemek için bir sonraki eşitleme döngüsüne izin verin. Bu zaman eşitleme başarılı olur ve Bob 'un UserPrincipalName değerini bob@fabrikam.com beklenen şekilde güncelleştirir.
 
 #### <a name="related-articles"></a>İlgili Makaleler
-* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
+* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 Bir öznitelik izin verilen boyut sınırını, uzunluk sınırını veya Azure Active Directory şeması tarafından ayarlanan sayı sınırını aştığında, eşitleme işlemi **LargeObject** veya **Exceededallodilimlength** eşitleme hatası ile sonuçlanır. Bu hata, genellikle aşağıdaki öznitelikler için oluşur
 
 * userCertificate
@@ -223,7 +223,7 @@ Bir öznitelik izin verilen boyut sınırını, uzunluk sınırını veya Azure 
 
 ## <a name="existing-admin-role-conflict"></a>Var olan yönetici rolü çakışması
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 Kullanıcı nesnesi şu olduğunda, eşitleme sırasında bir kullanıcı nesnesi üzerinde **var olan bir yönetici rolü çakışması** oluşur:
 
 - yönetim izinleri ve

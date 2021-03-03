@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094018"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656287"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 |---------|---------|
 |[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Geçiş işlemi sırasında kesinti süresini karşılayabilen uygulamalar için çevrimdışı modda geçişi destekleyen ilk taraf Azure hizmeti. Çevrimiçi modda sürekli geçişin aksine, çevrimdışı mod geçişi kaynaktan hedefe tam bir veritabanı yedeklemesi için tek seferlik bir geri yükleme çalıştırır. | 
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | SQL yönetilen örneği, yerel SQL Server veritabanı yedeklerinin (. bak dosyaları) geri yüklenmesini destekler, böylece Azure depolama 'ya tam veritabanı yedeklemeleri sağlayabilen müşteriler için en kolay geçiş seçeneği sağlanır. Tam ve fark yedeklemeleri, bu makalenin ilerleyen bölümlerinde yer alarak [geçiş varlıkları bölümünde](#migration-assets) de desteklenir ve belgelenmiştir.| 
+|[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | Bu, Azure depolama 'ya tam, fark ve günlük veritabanı yedeklemeleri sağlayabilen müşteriler için bir geçiş seçeneği sunarak, SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilmiş bir bulut hizmetidir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternatif araçlar
@@ -116,6 +117,7 @@ Aşağıdaki tabloda önerilen geçiş seçenekleri karşılaştırılmaktadır:
 |---------|---------|---------|
 |[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | -Tek veritabanlarını veya birden çok veritabanını ölçeklendirmeye geçirin. </br> -Geçiş işlemi sırasında kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM |  -Ölçekte geçişler, [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)aracılığıyla otomatikleştirilebilir. </br> -Geçişin tamamlanma süresi veritabanı boyutuna bağımlıdır ve yedekleme ve geri yükleme zamanından etkilenir. </br> -Yeterli kapalı kalma süresi gerekebilir. |
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | -Bireysel iş kolu uygulama veritabanlarını geçirin.  </br> -Ayrı bir geçiş hizmeti veya aracı olmadan hızlı ve kolay geçiş.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM | -Veritabanı yedeklemesi, Azure Blob depolama alanına veri aktarımını iyileştirmek için birden çok iş parçacığı kullanır, ancak ISV bant genişliği ve veritabanı boyutu aktarım hızını etkileyebilir. </br> -Kapalı kalma süresi, tam yedekleme ve geri yükleme (veri boyutu) için gereken süreyi içermelidir.| 
+|[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | -Bireysel iş kolu uygulama veritabanlarını geçirin.  </br> -Veritabanı geçişleri için daha fazla denetim gereklidir.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2008-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM | -Geçiş, SQL Server üzerinde tam veritabanı yedeklemeleri yapmayı ve yedekleme dosyalarını Azure Blob depolamaya kopyalamayı gerektirir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır. </br> -Geçiş işlemi sırasında geri yüklenen veritabanları geri yükleme modunda olur ve işlem tamamlanana kadar okumak veya yazmak için kullanılamaz.| 
 | | | |
 
 ### <a name="alternative-options"></a>Alternatif seçenekler
@@ -203,7 +205,7 @@ Bazı özellikler yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-data
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL MI dahil olmak üzere tüm SQL Server sürümlerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|

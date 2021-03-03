@@ -12,32 +12,28 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a6317b0cb59d656cdb2e402c5ade1b78ed60aa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258329"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643567"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
-Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini nasıl basitleştireceğinizi öğrenin. Bu makale, bunu başarmanın farklı yollarını sağlar. Yöntemler, Azure Active Directory (Azure AD) kiracınızdaki tüm son kullanıcılar için geçerlidir.
+  Bir uygulamaya kiracı genelinde yönetici onayı verme hakkında bilgi edinin. Bu makale, bunu başarmanın farklı yollarını sağlar.
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Kiracı genelinde yönetici onayı verme, [genel yönetici](../roles/permissions-reference.md#global-administrator), [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator)veya [bulut uygulama Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator)olarak oturum açmanızı gerektirir.
-
-> [!IMPORTANT]
-> Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](./assign-user-or-group-access-portal.md).
->
-> Microsoft Graph API 'sine uygulama izinleri için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
+Kiracı genelinde yönetici onayı verilmesi, kuruluş adına onay yetkisi veren bir kullanıcı olarak oturum açmanızı gerektirir. Bu, [genel yönetici](../roles/permissions-reference.md#global-administrator) ve [ayrıcalıklı rol yöneticisini](../roles/permissions-reference.md#privileged-role-administrator)ve bazı uygulamalar, [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator) ve [bulut uygulaması Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator)için içerir. Kullanıcılara, [uygulamalara izin verme iznini](../roles/custom-consent-permissions.md)içeren [özel bir dizin rolü](../roles/custom-create.md) atanırsa, kiracı genelinde izin verme yetkisi de verebilir.
 
 > [!WARNING]
 > Bir uygulamaya kiracı genelinde yönetici onayı verilmesi, uygulamanın ve uygulamanın yayımcısının kuruluşunuzun verilerine erişmesini sağlar. İzin vermeden önce uygulamanın istediği izinleri dikkatle gözden geçirin.
->
-> Microsoft Graph API 'sine uygulama izinleri için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
+
+> [!IMPORTANT]
+> Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](./assign-user-or-group-access-portal.md).
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal yönetici onayı verme
 
@@ -101,4 +97,4 @@ Her zaman olduğu gibi, izin vermeden önce uygulama isteklerinin izinlerini dik
 
 [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
-[Microsoft Q&A 'da Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Microsoft Q&A 'da Azure AD](/answers/topics/azure-active-directory.html)

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88b1cd2a5bf33d6401f0d2e15237400e27c72e54
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 990274f34dac0234c2c2d521ca6a260f999671bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967661"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674526"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux için SMT Server 'ı ayarlama
 Büyük SAP HANA örneklerinin internet 'e doğrudan bağlantısı yoktur. Bu tür bir birimi işletim sistemi sağlayıcısına kaydetmek ve güncelleştirmeleri indirmek ve uygulamak için kolay bir işlem değildir. SUSE Linux çözümü, bir Azure sanal makinesinde bir SMT sunucusu ayarlamaya yöneliktir. Sanal makineyi, HANA büyük örneğine bağlı bir Azure sanal ağında barındırın. Bu tür bir SMT sunucusu sayesinde, HANA büyük örnek birimi güncelleştirmeleri kaydedebilir ve indirebilir. 

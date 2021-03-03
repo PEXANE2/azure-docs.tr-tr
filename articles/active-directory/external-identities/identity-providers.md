@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 42ed42a1fc9a2750cc928b5fd03eb4b32f770276
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355520"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644094"
 ---
 # <a name="identity-providers-for-external-identities"></a>Dış kimlikler için kimlik sağlayıcıları
 
@@ -27,9 +27,6 @@ Bununla birlikte, kullanıcıların çeşitli kimlik sağlayıcılarıyla oturum
 - **Google**: Google Federasyonu, dış kullanıcıların kendi Gmail hesaplarıyla uygulamalarınızda oturum açarak davetlerini sizin tarafınızdan kullanmasına izin verir. Google Federation, self servis kaydolma Kullanıcı akışlarınızda da kullanılabilir.
    > [!IMPORTANT]
    > **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
-
-   > [!NOTE]
-   > Geçerli self servis kaydolma önizlemesinde, bir Kullanıcı akışı bir uygulamayla ilişkiliyse ve bu uygulamaya bir Kullanıcı daveti gönderirseniz, Kullanıcı daveti kullanmak için bir Gmail hesabı kullanamaz. Geçici bir çözüm olarak, Kullanıcı self servis kaydolma işlemini gerçekleştirebilir. Ya da, farklı bir uygulamaya erişerek veya ' de My Apps Portal ' ı kullanarak daveti kullanabilirler https://myapps.microsoft.com .
 
 - **Facebook**: bir uygulama oluştururken, self servis kaydolma 'yı yapılandırabilir ve Facebook Federasyonu 'ni etkinleştirerek kullanıcıların kendi Facebook hesaplarını kullanarak uygulamanıza kaydolmasını sağlayabilirsiniz. Facebook yalnızca self servis kaydolma Kullanıcı akışları için kullanılabilir ve kullanıcılar sizi davet etmek için bir oturum açma seçeneği olarak kullanılamaz.
 

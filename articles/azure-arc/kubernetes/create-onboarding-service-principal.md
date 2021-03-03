@@ -1,5 +1,5 @@
 ---
-title: Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
+title: Azure Arc etkin Kubernetes için bir ekleme hizmeti sorumlusu oluşturma
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure Arc etkin ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390496"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650355"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için bir ekleme hizmeti sorumlusu oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
-Kubernetes kümelerini, sınırlı ayrıcalıklı rol atamaları olan hizmet sorumlularını kullanarak Azure yaya ekleyebilirsiniz. Bu özellik, Azure Pipelines ve GitHub eylemleri gibi sürekli tümleştirme ve sürekli dağıtım (CI/CD) Işlem hatları için yararlıdır.
+Kubernetes kümelerini, sınırlı ayrıcalıklı rol atamaları olan hizmet sorumlularını kullanarak Azure yaya bağlayabilirsiniz. Bu özellik, Azure Pipelines ve GitHub eylemleri gibi sürekli tümleştirme ve sürekli dağıtım (CI/CD) Işlem hatları için yararlıdır.
 
-Azure yaya Kubernetes kümelerini ekleme için hizmet sorumlularını nasıl kullanacağınızı öğrenmek için aşağıdaki adımları izleyin.
+Kubernetes kümelerini Azure yaya bağlamak için hizmet sorumlularını nasıl kullanacağınızı öğrenmek için aşağıdaki adımları izleyin.
 
 ## <a name="create-a-new-service-principal"></a>Yeni bir hizmet sorumlusu oluşturun
 
@@ -49,11 +49,11 @@ Yeni oluşturulan hizmet sorumlusuna "Kubernetes kümesi-Azure Arc ekleme" rolü
 
 Müşteriler, sınırlı yetenekler verildiğinde, bu sorumluyu birden çok küme eklemek için kolayca yeniden kullanabilir.
 
-Rolü atarken uygun bağımsız değişkeni geçirerek, izinleri daha fazla sınırlandırabilirsiniz `--scope` . Bu, müşterilerin küme kaydını kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
+Rolü atarken uygun bağımsız değişkeni geçirerek, izinleri daha fazla sınırlandırabilirsiniz `--scope` . Bu, yöneticilerin küme kaydını abonelik veya kaynak grubu kapsamıyla kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
 
 | Kaynak  | `scope` bağımsız değişkeni| Etki |
 | ------------- | ------------- | ------------- |
-| Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir. |
+| Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, kümeyi bu abonelik kapsamındaki herhangi bir kaynak grubuna kaydedebilir. |
 | Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir `myGroup` . |
 
 ```console

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545884"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654502"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -27,8 +27,8 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Swift’te, Azure AD B2C kullanıcılarının kimliğini doğrulayan ve OAuth 2.0 kullanarak bir API’yi çağıran iOS örneği |
 | [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Azure Active Directory B2C ile kullanıcıların kimliklerinin nasıl doğrulanacağını ve sonuç belirteçleriyle bir Web API’sine nasıl erişileceğini gösteren basit bir Android uygulaması. |
-| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Objective C'de, Azure AD B2C kimlik hizmetimiz için Microsoft Identity kullanıcılarının kimliğini doğrulayan bir iOS uygulaması oluşturmak amacıyla üçüncü taraf bir kitaplığı nasıl kullanabileceğinizi gösteren bir örnek. |
-| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | B2C kimlik hizmetimiz için Microsoft Identity kullanıcılarının kimliğini doğrulayan ve OAuth 2.0 erişim belirteçlerini kullanarak web API’si çağıran bir Android uygulaması oluşturmak amacıyla üçüncü- taraf kitaplığı nasıl kullanabileceğinizi gösteren bir örnek. |
+| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Bir üçüncü taraf kitaplığını kullanarak, Microsoft Identity Users 'ın Azure AD B2C Identity Service sitemizdeki kimlik doğrulaması yapan bir iOS uygulamasını nasıl kullanabileceğinizi gösteren bir örnek. |
+| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Bir üçüncü taraf kitaplığını kullanarak, B2C kimlik hizmetimizde Microsoft kimlik kullanıcılarının kimliğini doğrulayan ve OAuth 2,0 erişim belirteçleri kullanarak bir Web API 'SI çağıran bir Android uygulaması oluşturma hakkında bir örnek. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Windows Masaüstü .NET (WPF) uygulamasının Azure AD B2C’yi kullanarak bir kullanıcının oturumunu nasıl açabildiğini, MSAL.NET kullanarak bir erişim belirtecini nasıl alabildiğini ve bir API’yi nasıl çağırabildiğini gösteren bir örnek. |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Azure Active Directory B2C aracılığıyla kullanıcıların kimlik doğrulaması için MSAL’nin nasıl kullanılacağını ve sonuç belirteçleriyle bir Web API’sine nasıl erişilebileceğini gösteren basit bir Xamarin Forms uygulaması. |
 
@@ -47,8 +47,16 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 
 | Örnek | Açıklama |
 |--------| ----------- |
-| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır. |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnekler örtük akışı kullanır.|
+| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API 'sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır. |
+| [JavaScript-NodeJS-yönetim](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C dizinindeki kullanıcıları yönetmek için Microsoft Graph çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek, PKI CE ile yetkilendirme kodu akışını kullanır.|
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API 'sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. Bu örnek örtük akışı kullanır.|
+
+## <a name="consoledaemon-apps"></a>Konsol/Daemon uygulamaları
+
+| Örnek | Açıklama |
+|--------| ----------- |
+| [JavaScript-NodeJS-yönetim](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter2) | Bir B2C dizinindeki kullanıcıları yönetmek için kendi kimliğiyle Microsoft Graph çağıran bir Node.js ve Express konsol Daemon uygulaması. MSAL node kullanılarak Azure AD B2C kimlik doğrulaması gerçekleştirilir. Bu örnek, yetkilendirme kodu akışını kullanır.|
+| [dotnetcore-B2C-Account-Management](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) | B2C dizinindeki kullanıcıları yönetmek için kendi kimliğiyle Microsoft Graph çağıran bir .NET Core konsol uygulaması. Kimlik doğrulaması, MSAL.NET kullanarak Azure AD B2C ile yapılır. Bu örnek, yetkilendirme kodu akışını kullanır.|
 
 ## <a name="saml-test-application"></a>SAML test uygulaması
 

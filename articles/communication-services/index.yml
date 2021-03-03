@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure İletişim Hizmetleri
-summary: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir. Azure İletişim Hizmetleri’nin şu anda genel önizleme aşamasında olduğunu unutmayın.
+summary: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir.
 metadata:
   title: Azure İletişim Hizmetleri
-  description: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir. Azure İletişim Hizmetleri’nin şu anda genel önizleme aşamasında olduğunu unutmayın.
+  description: Azure İletişim Hizmetleri, uygulamalarınıza ses, video, sohbet ve telefon özellikleri eklemenize olanak tanıyan bulut tabanlı bir iletişim hizmetidir.
   ms.service: azure-communication-services
   ms.topic: landing-page
   author: mikben
   ms.author: mikben
   ms.date: 08/10/2020
-  ms.openlocfilehash: a39493fd0a1487602fd9cd2ad81fa81900f860d2
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: dd6e3a7685ded2d7f5b292d9436694eddc95163c
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100652709"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101657596"
 landingContent:
 - title: Azure İletişim Hizmetleri hakkında
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: İstemci kitaplığı seçenekleri
       url: concepts/sdk-options.md
+    - text: Takımlar birlikte çalışma
+      url: concepts/teams-interop.md
 - title: başlarken
   linkLists:
   - linkListType: quickstart

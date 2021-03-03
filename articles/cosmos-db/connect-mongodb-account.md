@@ -6,18 +6,18 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 03/02/2021
 ms.reviewer: sngun
 adobe-target: true
 adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./connect-mongodb-account-experimental
-ms.openlocfilehash: 702c2d896da2316a2e75c4dbbe4f16249537832b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b3e10931307914f1471b8a6fbffd38953ee4717b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093463"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659486"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB’ye MongoDB uygulaması bağlama
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -74,6 +74,12 @@ Bu dizenin değerleri, daha önce gösterilen **bağlantı dizesi** dikey pencer
 Örneğin, **bağlantı dizesi** dikey penceresinde gösterilen hesabı göz önünde bulundurun. Geçerli bir bağlantı dizesi:
 
 `mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
+
+## <a name="driver-requirements"></a>Sürücü gereksinimleri
+
+Tel Protokolü sürüm 3,4 veya üstünü destekleyen tüm sürücüler MongoDB için Azure Cosmos DB API 'YI destekleyecektir.
+
+Özellikle, istemci sürücüleri hizmet adı tanımlama (SNı) TLS uzantısını ve/veya appName bağlantı dizesi seçeneğini desteklemelidir. `appName`Parametresi sağlanmışsa, Azure Portal bağlantı dizesi değerinde bulunan ' de bulunması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,18 +2,18 @@
 title: Azure 'da kullanılabilen görüntüleri Red Hat Enterprise Linux
 description: Microsoft Azure Red Hat Enterprise Linux görüntüleri hakkında bilgi edinin
 author: asinn826
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: ea0e8c148a847ecc23bab5e87a1dc60a626cf0c1
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 0a4d2ef5b7f367130151fabda3f1d97b65605931
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411623"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676037"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
 Azure, farklı kullanım durumları için çeşitli RHEL görüntüleri sunmaktadır.
@@ -49,7 +49,7 @@ RHEL          | 6.7      | Madde    | Linux Aracısı | 1 Aralık 'tan itibaren 
 |             | 77-Gen2  | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 7.8      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 78-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
-|             | 7,9      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,9 için kullanılamaz)
+|             | 7.9      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,9 için kullanılamaz)
 |             | 79-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,9 için kullanılamaz)
 |             | 8-LVM    | LVM    | Linux Aracısı | RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
 |             | 8-LVM-Gen2| LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.

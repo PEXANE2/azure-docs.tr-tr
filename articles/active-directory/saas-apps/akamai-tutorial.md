@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937391"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655159"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,13 +26,11 @@ Bu öğreticide, Akamai 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla Akamai otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
 Azure Active Directory ve Akamai kurumsal uygulama erişimi tümleştirmesi, bulutta veya şirket içinde barındırılan eski uygulamalara sorunsuz erişim sağlar. Tümleşik çözüm, [Azure AD koşullu erişim](../conditional-access/overview.md), [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md) ve [Azure AD Identity Governance](../governance/identity-governance-overview.md) uygulama değişiklikleri veya aracı yüklemesi olmadan eski uygulama erişimi için Azure Active Directory tüm modern olanaklarından faydalanmasıdır.
 
-Aşağıdaki görüntüde, Akamai EAA 'nın daha geniş karma güvenli erişim senaryosuna uygun olduğu açıklanmaktadır
+Aşağıdaki görüntüde, Akamai EAA 'nın daha geniş karma güvenli erişim senaryosuna uygun olduğu açıklanmaktadır.
 
-![Akamai EAA, daha geniş karma güvenli erişim senaryosuna uyar](./media/header-akamai-tutorial/introduction01.png)
+![Akamai EAA, daha geniş karma güvenli erişim senaryosuna uyar](./media/header-akamai-tutorial/introduction-1.png)
 
 ### <a name="key-authentication-scenarios"></a>Anahtar kimlik doğrulama senaryoları
 
@@ -57,15 +55,15 @@ Akamai EAA, Azure AD 'de tek bir uygulama olarak yapılandırılır. Yönetici, 
 
 **Uzmanları**:
 
-* IDP 'yi yalnızca bir kez yapılandırmanız gerekiyor
+* IDP 'yi yalnızca bir kez yapılandırmanız gerekir.
 
 **Dezavantajlarını**:
 
-* Kullanıcılar iki uygulama portalı ile sona erdir
+* Kullanıcıların iki uygulama portalı vardır.
 
 * Tüm uygulamalar için tek bir genel koşullu erişim ilkesi kapsamı.
 
-![Tümleştirme senaryosu 1](./media/header-akamai-tutorial/scenario1.png)
+![Tümleştirme senaryosu 1](./media/header-akamai-tutorial/scenario-1.png)
 
 #### <a name="integration-scenario-2"></a>Tümleştirme senaryosu 2
 
@@ -73,7 +71,7 @@ Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, 
 
 **Uzmanları**:
 
-* Ayrı CA Ilkelerini tanımlayabilirsiniz
+* Ayrı CA Ilkeleri tanımlayabilirsiniz.
 
 * Tüm uygulamalar 0365 waffle ve myApps.microsoft.com panelinde temsil edilir.
 
@@ -82,9 +80,9 @@ Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, 
 
 * Birden çok ıDP 'yi yapılandırmanız gerekir.
 
-![Tümleştirme senaryosu 2](./media/header-akamai-tutorial/scenario2.png)
+![Tümleştirme senaryosu 2](./media/header-akamai-tutorial/scenario-2.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -95,7 +93,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-- Akamai, ıDP tarafından başlatılan SSO 'yu destekler
+- Akamai, ıDP tarafından başlatılan SSO 'yu destekler.
 
 #### <a name="important"></a>Önemli
 
@@ -103,22 +101,22 @@ Aşağıda listelenen tüm kurulum, **tümleştirme senaryosu 1** ve **Senaryo 2
 
 ![Akamai Enterprise Application Access 'te AZURESSO-SP için Genel sekmesinin ekran görüntüsü. Kimlik doğrulama yapılandırma URL 'SI alanı vurgulanır.](./media/header-akamai-tutorial/important.png)
 
-## <a name="adding-akamai-from-the-gallery"></a>Galeriden Akamai ekleme
+## <a name="add-akamai-from-the-gallery"></a>Galeriden Akamai ekleme
 
 Akamai tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Akamai yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Akamai** yazın.
 1. Sonuçlar panelinden **Akamai** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Akamai için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-akamai"></a>Akamai için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Akamai ile yapılandırın ve test edin. SSO 'nun çalışması için, Akamai içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -136,9 +134,9 @@ Azure AD SSO 'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki yap
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Akamai** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Akamai** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -178,15 +176,9 @@ Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini k
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Akamai**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-akamai-sso"></a>Akamai SSO 'yu yapılandırma
@@ -198,11 +190,11 @@ Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini k
 1. **Akamai kurumsal uygulama erişim** konsolunda oturum açın.
 1. **Akamai EAA konsolunda** **kimlik**  >  **kimlik sağlayıcıları** ' nı seçin ve **kimlik sağlayıcısı ekle**' ye tıklayın.
 
-    ![Akamai EAA konsolu kimlik sağlayıcıları penceresinin ekran görüntüsü. Kimlik menüsünde kimlik sağlayıcıları ' nı seçin ve kimlik sağlayıcısı ekle ' yi seçin.](./media/header-akamai-tutorial/configure01.png)
+    ![Akamai EAA konsolu kimlik sağlayıcıları penceresinin ekran görüntüsü. Kimlik menüsünde kimlik sağlayıcıları ' nı seçin ve kimlik sağlayıcısı ekle ' yi seçin.](./media/header-akamai-tutorial/configure-1.png)
 
 1. **Yeni kimlik sağlayıcısı oluştur** sayfasında aşağıdaki adımları uygulayın:
 
-    ![Akamai EAA konsolundaki yeni kimlik sağlayıcıları oluştur iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure02.png)
+    ![Akamai EAA konsolundaki yeni kimlik sağlayıcıları oluştur iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-2.png)
 
     a. **Benzersiz adı** belirtin.
 
@@ -210,15 +202,15 @@ Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 ### <a name="general-settings"></a>Genel ayarlar
 
-1. **Kimlik kesme noktası** -(SP temel URL 'Si – Azure AD yapılandırması için kullanılacak) adını belirtin
+1. **Kimlik kesme noktası** -(SP temel URL 'Si – Azure AD yapılandırması için kullanılacak) adını belirtin.
 
     > [!NOTE]
     > Kendi özel etki alanınızı (bir DNS girişi ve bir sertifika gerektirir) seçebilirsiniz. Bu örnekte Akamai etki alanını kullanacağız.
 
 1. **Akamai bulut bölgesi** -uygun bulut bölgesini seçin.
-1. **Sertifika doğrulama** -Akamai belgelerini denetle (isteğe bağlı)
+1. **Sertifika doğrulama** -Akamai belgelerini denetleyin (isteğe bağlı).
 
-    ![Kimlik kesme, Akamai bulut bölgesi ve sertifika doğrulama ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure03.png)
+    ![Kimlik kesme, Akamai bulut bölgesi ve sertifika doğrulama ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-3.png)
 
 ### <a name="authentication-configuration"></a>Kimlik doğrulama yapılandırması
 
@@ -227,13 +219,13 @@ Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini k
 3. SAML Isteği imzala: varsayılan seçilmemiş.
 4. IDP meta veri dosyası için, uygulamayı Azure AD konsoluna ekleyin.
 
-    ![URL, oturum kapatma URL 'si, Imza SAML Isteği ve ıDP meta veri dosyası için ayarları gösteren Akamai EAA konsolu kimlik doğrulama yapılandırması ekran görüntüsü.](./media/header-akamai-tutorial/configure04.png)
+    ![URL, oturum kapatma URL 'si, Imza SAML Isteği ve ıDP meta veri dosyası için ayarları gösteren Akamai EAA konsolu kimlik doğrulama yapılandırması ekran görüntüsü.](./media/header-akamai-tutorial/configure-4.png)
 
 ### <a name="session-settings"></a>Oturum ayarları
 
 Ayarları varsayılan olarak bırakın.
 
-![Akamai EAA Konsolu oturum ayarları iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/sessionsettings.png)
+![Akamai EAA Konsolu oturum ayarları iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/session-settings.png)
 
 ### <a name="directories"></a>Dizinler
 
@@ -245,13 +237,13 @@ Dizin yapılandırmasını atlayın.
 
 IDP 'ye özelleştirme ekleyebilirsiniz.
 
-![Kullanıcı arabirimi, dil ayarları ve temalara yönelik ayarları gösteren Akamai EAA konsolu özelleştirme sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/customizationui.png)
+![Kullanıcı arabirimi, dil ayarları ve temalara yönelik ayarları gösteren Akamai EAA konsolu özelleştirme sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/customization.png)
 
 ### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
 Daha fazla bilgi için Gelişmiş ayarları atlayın/Akamai belgelerine başvurun.
 
-![EAA Istemcisi, gelişmiş ve OıDC 'in SAML köprülemesi için ayarları gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/advancesettings.png)
+![EAA Istemcisi, gelişmiş ve OıDC 'in SAML köprülemesi için ayarları gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/advance-settings.png)
 
 ### <a name="deployment"></a>Dağıtım
 
@@ -259,7 +251,7 @@ Daha fazla bilgi için Gelişmiş ayarları atlayın/Akamai belgelerine başvuru
 
     ![Identity sağlayıcısını dağıt düğmesini gösteren Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/deployment.png)
 
-2. Dağıtımın başarılı olduğunu doğrulayın
+2. Dağıtımın başarılı olduğunu doğrulayın.
 
 ### <a name="header-based-authentication"></a>Üst bilgi tabanlı kimlik doğrulaması
 
@@ -267,115 +259,115 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
 1. **Özel http** formunu uygulama ekleme Sihirbazı ' nı seçin.
 
-    ![Access Apps bölümünde listelenen CustomHTTP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure05.png)
+    ![Access Apps bölümünde listelenen CustomHTTP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure-5.png)
 
 2. **Uygulama adı** ve **açıklamasını** girin.
 
-    ![Uygulama adı ve açıklama ayarlarını gösteren özel bir HTTP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure06.png)
+    ![Uygulama adı ve açıklama ayarlarını gösteren özel bir HTTP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-6.png)
 
-    ![MYHEADERAPP için genel ayarları gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure07.png)
+    ![MYHEADERAPP için genel ayarları gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-7.png)
 
-    ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure08.png)
+    ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-8.png)
 
-#### <a name="authentication"></a>Kimlik doğrulama
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 1. **Kimlik doğrulama** sekmesini seçin.
 
-    ![Kimlik doğrulaması sekmesi seçili Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure09.png)
+    ![Kimlik doğrulaması sekmesi seçili Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-9.png)
 
-2. **Kimlik sağlayıcısını** ata
+2. **Kimlik sağlayıcısını** atayın.
 
-    ![Azure AD SSO 'ya ayarlanmış kimlik sağlayıcısını gösteren MYHEADERAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure10.png)
+    ![Azure AD SSO 'ya ayarlanmış kimlik sağlayıcısını gösteren MYHEADERAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-10.png)
 
 #### <a name="services"></a>Hizmetler
 
 Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
-![Sağ alt köşedeki escedsettings 'e Kaydet ve git 'e Git düğmesinin gösterildiği MYHEADERAPP için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure11.png)
+![Sağ alt köşedeki escedsettings 'e Kaydet ve git 'e Git düğmesinin gösterildiği MYHEADERAPP için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-11.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
 1. **MÜŞTERI http üstbilgileri** altında **Customerheader** ve **SAML özniteliğini** belirtin.
 
-    ![Kimlik doğrulaması altında vurgulanan SSO kayıtlı URL alanını gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure12.png)
+    ![Kimlik doğrulaması altında vurgulanan SSO kayıtlı URL alanını gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-12.png)
 
 1. **Kaydet ve dağıtıma git** düğmesine tıklayın.
 
-    ![Sağ alt köşedeki kaydet ve dağıtıma Git düğmesine gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure13.png)
+    ![Sağ alt köşedeki kaydet ve dağıtıma Git düğmesine gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-13.png)
 
 #### <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
 1. **Uygulamayı dağıt** düğmesine tıklayın.
 
-    ![Uygulamayı dağıt düğmesini gösteren Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure14.png)
+    ![Uygulamayı dağıt düğmesini gösteren Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-14.png)
 
 1. Uygulamanın başarıyla dağıtıldığını doğrulayın.
 
-    ![Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü: "uygulama başarıyla dağıtıldı".](./media/header-akamai-tutorial/configure15.png)
+    ![Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü: "uygulama başarıyla dağıtıldı".](./media/header-akamai-tutorial/configure-15.png)
 
 1. End-User deneyimi.
 
-    ![Arka plan görüntüsü ve oturum açma iletişim kutusuyla myapps.microsoft.com için açılış ekranının ekran görüntüsü.](./media/header-akamai-tutorial/enduser01.png)
+    ![Arka plan görüntüsü ve oturum açma iletişim kutusuyla myapps.microsoft.com için açılış ekranının ekran görüntüsü.](./media/header-akamai-tutorial/end-user-1.png)
 
-    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri simgeleri içeren bir uygulamalar penceresinin parçasını gösteren ekran görüntüsü. ](./media/header-akamai-tutorial/enduser02.png)
+    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri simgeleri içeren bir uygulamalar penceresinin parçasını gösteren ekran görüntüsü. ](./media/header-akamai-tutorial/end-user-2.png)
 
 1. Koşullu erişim.
 
-    ![İleti ekran görüntüsü: oturum açma isteğini onaylama. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditionalaccess01.png)
+    ![İleti ekran görüntüsü: oturum açma isteğini onaylama. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditional-access-1.png)
 
-    ![MyHeaderApp simgesini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![MyHeaderApp simgesini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-2.png)
 
 #### <a name="remote-desktop"></a>Uzak Masaüstü
 
 1. Uygulama ekleme sihirbazından **RDP** ' yi seçin.
 
-    ![Erişim uygulamaları bölümündeki uygulamalar arasında listelenen RDP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure16.png)
+    ![Erişim uygulamaları bölümündeki uygulamalar arasında listelenen RDP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure-16.png)
 
 1. **Uygulama adı** ve **açıklamasını** girin.
 
-    ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir RDP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure17.png)
+    ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir RDP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-17.png)
 
-    ![SECRETRDPAPP için uygulama kimliği ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure18.png)
+    ![SECRETRDPAPP için uygulama kimliği ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-18.png)
 
 1. Buna hizmet edecek bağlayıcıyı belirtin.
 
-    ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü. İlişkili bağlayıcılar USWST-CON1 olarak ayarlanmıştır.](./media/header-akamai-tutorial/configure19.png)
+    ![Sertifika ve konum ayarlarını gösteren Akamai EAA konsolunun ekran görüntüsü. İlişkili bağlayıcılar USWST-CON1 olarak ayarlanmıştır.](./media/header-akamai-tutorial/configure-19.png)
 
-#### <a name="authentication"></a>Kimlik doğrulama
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 **Kaydet ' e tıklayın ve hizmetler 'e gidin**.
 
-![SECRETRDPAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü, Kaydet ve hizmetlere Git düğmesinin sağ alt köşesinde olduğunu gösterir.](./media/header-akamai-tutorial/configure20.png)
+![SECRETRDPAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü, Kaydet ve hizmetlere Git düğmesinin sağ alt köşesinde olduğunu gösterir.](./media/header-akamai-tutorial/configure-20.png)
 
 #### <a name="services"></a>Hizmetler
 
 **Kaydet ' e tıklayın ve Gelişmiş ayarlar**' a gidin.
 
-![Sağ alt köşedeki go Cedpapp için Kaydet ve git ' i gösteren Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure21.png)
+![Sağ alt köşedeki go Cedpapp için Kaydet ve git ' i gösteren Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-21.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
 1. **Kaydet ' e tıklayın ve dağıtıma gidin**.
 
-    ![Uzak Masaüstü yapılandırması ayarlarını gösteren SECRETRDPAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure22.png)
+    ![Uzak Masaüstü yapılandırması ayarlarını gösteren SECRETRDPAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-22.png)
 
-    ![SECRETRDPAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü, kimlik doğrulama ve sistem durumu denetimi yapılandırması ayarlarını gösterir.](./media/header-akamai-tutorial/configure23.png)
+    ![SECRETRDPAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü, kimlik doğrulama ve sistem durumu denetimi yapılandırması ayarlarını gösterir.](./media/header-akamai-tutorial/configure-23.png)
 
-    ![Sağ alt köşedeki ve dağıtıma Git düğmesine sahip SECRETRDPAPP için özel HTTP üstbilgileri ayarlarının Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure24.png)
+    ![Sağ alt köşedeki ve dağıtıma Git düğmesine sahip SECRETRDPAPP için özel HTTP üstbilgileri ayarlarının Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-24.png)
 
 1. End-User deneyim
 
-    ![Arka plan resmi ve oturum açma iletişim kutusuyla myapps.microsoft.com penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/enduser03.png)
+    ![Arka plan resmi ve oturum açma iletişim kutusuyla myapps.microsoft.com penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri simgeleri içeren myapps.microsoft.com apps penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/enduser02.png)
+    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri simgeleri içeren myapps.microsoft.com apps penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/end-user-2.png)
 
 1. Koşullu Erişim
 
-    ![Koşullu erişim iletisinin ekran görüntüsü: oturum açma isteğini onaylayın. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Koşullu erişim iletisinin ekran görüntüsü: oturum açma isteğini onaylayın. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![MyHeaderApp ve SecretRDPApp simgelerini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![MyHeaderApp ve SecretRDPApp simgelerini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-5.png)
 
-    ![Genel Kullanıcı simgelerini gösteren Windows Server 2012 RS ekranının ekran görüntüsü. Yönetici, user0 ve Kullanıcı1 simgeleri oturum açmış olduklarını gösterir.](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Genel Kullanıcı simgelerini gösteren Windows Server 2012 RS ekranının ekran görüntüsü. Yönetici, user0 ve Kullanıcı1 simgeleri oturum açmış olduklarını gösterir.](./media/header-akamai-tutorial/conditional-access-6.png)
 
 1. Alternatif olarak, RDP uygulama URL 'sini de doğrudan yazabilirsiniz.
 
@@ -383,15 +375,15 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
 1. Uygulama Ekle ' ye gidin, **SSH**' ı seçin.
 
-    ![Akamai EAA konsolunun uygulama ekleme Sihirbazı 'nın, erişim uygulamaları bölümündeki uygulamalar arasında listelenen SSH 'yi gösteren ekran görüntüsü.](./media/header-akamai-tutorial/configure25.png)
+    ![Akamai EAA konsolunun uygulama ekleme Sihirbazı 'nın, erişim uygulamaları bölümündeki uygulamalar arasında listelenen SSH 'yi gösteren ekran görüntüsü.](./media/header-akamai-tutorial/configure-25.png)
 
 1. **Uygulama adı** ve **açıklamasını** girin.
 
-    ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir SSH uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure26.png)
+    ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir SSH uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure-26.png)
 
 1. Uygulama kimliğini yapılandırın.
 
-    ![SSH-SECURE için uygulama kimliği ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure27.png)
+    ![SSH-SECURE için uygulama kimliği ayarlarını gösteren Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-27.png)
 
     a. Ad/açıklama belirtin.
 
@@ -403,94 +395,94 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik doğrulama
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kaydet ' **e tıklayın ve hizmetlere gidin**.
 
-![SSH-SECURE için Akamai EAA konsol kimlik doğrulama sekmesinin ekran görüntüsü, Kaydet ve hizmetlere Git düğmesinin sağ alt köşesinde olduğunu gösterir.](./media/header-akamai-tutorial/configure28.png)
+![SSH-SECURE için Akamai EAA konsol kimlik doğrulama sekmesinin ekran görüntüsü, Kaydet ve hizmetlere Git düğmesinin sağ alt köşesinde olduğunu gösterir.](./media/header-akamai-tutorial/configure-28.png)
 
 #### <a name="services"></a>Hizmetler
 
 **Kaydet ' e tıklayın ve Gelişmiş ayarlar**' a gidin.
 
-![SSH-SECURE için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü-sağ alt köşedeki kaydet ve gelişmiş git Cedsettings düğmesine bakın.](./media/header-akamai-tutorial/configure29.png)
+![SSH-SECURE için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü-sağ alt köşedeki kaydet ve gelişmiş git Cedsettings düğmesine bakın.](./media/header-akamai-tutorial/configure-29.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-Kaydet ve dağıtıma git 'e tıklayın
+Kaydet ve dağıtıma git ' e tıklayın.
 
-![SSH-SECURE için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü, kimlik doğrulama ve sistem durumu denetimi yapılandırması ayarlarını gösterir.](./media/header-akamai-tutorial/configure30.png)
+![SSH-SECURE için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü, kimlik doğrulama ve sistem durumu denetimi yapılandırması ayarlarını gösterir.](./media/header-akamai-tutorial/configure-30.png)
 
-![Sağ alt köşedeki kaydet ve dağıtıma Git düğmesi ile SSH ile GÜVENLI için Akamai EAA konsolunun özel HTTP üstbilgileri ayarlarının ekran görüntüsü.](./media/header-akamai-tutorial/configure31.png)
+![Sağ alt köşedeki kaydet ve dağıtıma Git düğmesi ile SSH ile GÜVENLI için Akamai EAA konsolunun özel HTTP üstbilgileri ayarlarının ekran görüntüsü.](./media/header-akamai-tutorial/configure-31.png)
 
 #### <a name="deployment"></a>Dağıtım
 
 1. **Uygulamayı dağıt**' a tıklayın.
 
-    ![Uygulama dağıt düğmesini gösteren SSH-SECURE için Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure32.png)
+    ![Uygulama dağıt düğmesini gösteren SSH-SECURE için Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-32.png)
 
 1. End-User deneyim
 
-    ![Myapps.microsoft.com penceresi oturum açma iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/enduser03.png)
+    ![Myapps.microsoft.com penceresi oturum açma iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri için simgeler gösteren myapps.microsoft.com için uygulamalar penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/enduser04.png)
+    ![Eklenti, HRWEB, Akamai-CorpApps, harcama, Grup ve erişim gözden geçirmeleri için simgeler gösteren myapps.microsoft.com için uygulamalar penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/end-user-4.png)
 
 1. Koşullu Erişim
 
-    ![İletiyi gösteren ekran görüntüsü: oturum açma isteğini onaylama. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![İletiyi gösteren ekran görüntüsü: oturum açma isteğini onaylama. Mobil cihazınıza bir bildirim gönderdik. Lütfen devam etmek için yanıtlayın.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![MyHeaderApp, SSH Secure ve SecretRDPApp simgelerini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![MyHeaderApp, SSH Secure ve SecretRDPApp simgelerini gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-7.png)
 
-    ![Parola istemi gösteren ssh-secure-go.akamai-access.com için bir komut penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![Parola istemi gösteren ssh-secure-go.akamai-access.com için bir komut penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-8.png)
 
-    ![Uygulama hakkındaki bilgileri gösteren ve komut istemi görüntüleyen ssh-secure-go.akamai-access.com için bir komut penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![Uygulama hakkındaki bilgileri gösteren ve komut istemi görüntüleyen ssh-secure-go.akamai-access.com için bir komut penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-9.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos Kimlik Doğrulaması
 
-Aşağıdaki örnekte, bir Iç Web sunucusu yayımlayacağız <code>http://frp-app1.superdemo.live</code> ve KCD kullanarak SSO 'yu etkinleştireceğiz
+Aşağıdaki örnekte, bir Iç Web sunucusu yayımlayacağız <code>http://frp-app1.superdemo.live</code> ve KCD kullanarak SSO 'yu etkinleştireceğiz.
 
 #### <a name="general-tab"></a>Genel Sekmesi
 
-![MYKERBOROSAPP için Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/generaltab.png)
+![MYKERBOROSAPP için Akamai EAA konsolunun Genel sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/general-tab.png)
 
 #### <a name="authentication-tab"></a>Kimlik doğrulama sekmesi
 
-Kimlik sağlayıcısını ata
+Kimlik sağlayıcısını atayın.
 
-![Azure AD SSO 'ya ayarlanmış kimlik sağlayıcısını gösteren MYKERBOROSAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/authenticationtab.png)
+![Azure AD SSO 'ya ayarlanmış kimlik sağlayıcısını gösteren MYKERBOROSAPP için Akamai EAA konsolunun kimlik doğrulama sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/authentication-tab.png)
 
 #### <a name="services-tab"></a>Hizmetler sekmesi
 
-![MYKERBOROSAPP için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/servicestab.png)
+![MYKERBOROSAPP için Akamai EAA konsol Hizmetleri sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/services-tab.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-![Ilgili uygulamalar ve kimlik doğrulaması için ayarları gösteren MYKERBOROSAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/advancesettings02.png)
+![Ilgili uygulamalar ve kimlik doğrulaması için ayarları gösteren MYKERBOROSAPP için Akamai EAA konsolunun Gelişmiş ayarlar sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/advance-settings-2.png)
 
 > [!NOTE]
 > Web sunucusu için SPN, SPN@Domain `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE` Bu tanıtım için: EX biçimindedir. Ayarların geri kalanını varsayılan olarak bırakın.
 
 #### <a name="deployment-tab"></a>Dağıtım sekmesi
 
-![Uygulamayı dağıt düğmesini gösteren MYKERBOROSAPP için Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/deploymenttab.png)
+![Uygulamayı dağıt düğmesini gösteren MYKERBOROSAPP için Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/deployment-tab.png)
 
 #### <a name="adding-directory"></a>Dizin ekleniyor
 
 1. Açılan listeden **ad** ' ı seçin.
 
-    ![Dizin türünün açılan kutusunda AD seçiliyken yeni dizin oluştur iletişim kutusunu gösteren Akamai EAA konsol dizinleri penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/configure33.png)
+    ![Dizin türünün açılan kutusunda AD seçiliyken yeni dizin oluştur iletişim kutusunu gösteren Akamai EAA konsol dizinleri penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-33.png)
 
 1. Gerekli verileri sağlayın.
 
-    ![DirectoryName, dizin hizmeti, bağlayıcı ve öznitelik eşleme ayarlarına sahip Akamai EAA konsol üst DEMOETKIN penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/configure34.png)
+    ![DirectoryName, dizin hizmeti, bağlayıcı ve öznitelik eşleme ayarlarına sahip Akamai EAA konsol üst DEMOETKIN penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/configure-34.png)
 
 1. Dizin oluşturmayı doğrulayın.
 
-    ![Akamai EAA konsol dizinleri penceresinin, superdemo. Live dizininin eklendiğini gösteren ekran görüntüsü.](./media/header-akamai-tutorial/directorydomain.png)
+    ![Akamai EAA konsol dizinleri penceresinin, superdemo. Live dizininin eklendiğini gösteren ekran görüntüsü.](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Erişim gerektirecek grupları/OU 'Ları ekleyin.
 
-    ![Dizin superdemo. Live için ayarların ekran görüntüsü. Grup veya OU eklemek için seçtiğiniz simge vurgulanır.](./media/header-akamai-tutorial/addgroup.png)
+    ![Dizin superdemo. Live için ayarların ekran görüntüsü. Grup veya OU eklemek için seçtiğiniz simge vurgulanır.](./media/header-akamai-tutorial/add-group.png)
 
 1. Aşağıdaki grupta EAAGroup adı verilir ve 1 üyesi vardır.
 
@@ -498,7 +490,7 @@ Kimlik sağlayıcısını ata
 
 1. **Kimlik**  >  **kimlik sağlayıcıları** ' na tıklayıp **dizinler** sekmesine tıklayın ve **Dizin ata**' ya tıklayın.
 
-    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü, şu anda atanmış olan dizinler listesinde superdemo. canlı ' i gösterir.](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü, şu anda atanmış olan dizinler listesinde superdemo. canlı ' i gösterir.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>HER adım için KCD temsilcisini yapılandırma
 
@@ -506,7 +498,7 @@ Kimlik sağlayıcısını ata
 
 1. Örnekte **Eaatemsili** adlı bir hesap kullanacağız. Bunu, **Kullanıcı ve bilgisayar** Snappin Active Directory kullanarak yapabilirsiniz.
 
-    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü. Superdemo. Live dizini şu anda atanmış olan dizinler altında listelenir.](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü. Superdemo. Live dizini şu anda atanmış olan dizinler altında listelenir.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > Kullanıcı adının **kimlik kesme adına** göre belirli bir biçimde olması gerekebilir. Şekil 1 ' den **corpapps.Login.go.Akamai-Access.com** olduğunu görtik
@@ -529,7 +521,7 @@ Kimlik sağlayıcısını ata
 
     ![SPN 'YI yapılandırma komutunu gösteren yönetici komut Isteminin ekran görüntüsü.](./media/header-akamai-tutorial/spn.png)
 
-    * Herhangi bir kimlik doğrulama protokolünü kullan belirtin
+    * Herhangi bir kimlik doğrulama protokolünü kullan öğesini belirtin.
     * Ekle ' ye tıklayın ve Kerberos Web sitesi için uygulama havuzu hesabını ekleyin. Doğru yapılandırılmışsa doğru SPN 'ye otomatik olarak çözümlenmelidir.
 
 #### <a name="step-4-create-a-keytab-file-for-akamai-eaa"></a>4. Adım: AKAMAI EAA için bir keytab dosyası oluşturma
@@ -561,25 +553,25 @@ Kimlik sağlayıcısını ata
 
 1. Keytab türünde **Kerberos temsili**' ni seçin.
 
-    ![Keytab ayarlarını gösteren Akamai EAA konsolunun EAAKEYTAB ekranının ekran görüntüsü. Keytab türü, Kerberos temsili olarak ayarlanır.](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Keytab ayarlarını gösteren Akamai EAA konsolunun EAAKEYTAB ekranının ekran görüntüsü. Keytab türü, Kerberos temsili olarak ayarlanır.](./media/header-akamai-tutorial/keytab-delegation.png)
 
 1. Keytab 'ın dağıtıldığından ve doğrulandığından emin olun.
 
-    ![Akamai EAA konsolunun anahtar sekmeleri ekranının ekran görüntüsü, "keytab dağıtıldı ve doğrulandı" olarak EAA keytab.](./media/header-akamai-tutorial/keytabs02.png)
+    ![Akamai EAA konsolunun anahtar sekmeleri ekranının ekran görüntüsü, "keytab dağıtıldı ve doğrulandı" olarak EAA keytab.](./media/header-akamai-tutorial/keytabs-2.png)
 
 1. Kullanıcı Deneyimi
 
-    ![Myapps.microsoft.com adresindeki oturum açma iletişim kutusunun ekran görüntüsü. ](./media/header-akamai-tutorial/enduser03.png)
+    ![Myapps.microsoft.com adresindeki oturum açma iletişim kutusunun ekran görüntüsü. ](./media/header-akamai-tutorial/end-user-3.png)
 
-    ![Uygulama simgelerini gösteren myapps.microsoft.com için uygulamalar penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/enduser04.png)
+    ![Uygulama simgelerini gösteren myapps.microsoft.com için uygulamalar penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/end-user-4.png)
 
 1. Koşullu Erişim
 
-    ![Bir onaylama oturum açma isteği iletisini gösteren ekran görüntüsü. ileti.](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Bir onaylama oturum açma isteği iletisini gösteren ekran görüntüsü. ileti.](./media/header-akamai-tutorial/conditional-access-4.png)
 
-    ![MyHeaderApp, SSH Secure, SecretRDPApp ve myKerberosApp için simgeler gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![MyHeaderApp, SSH Secure, SecretRDPApp ve myKerberosApp için simgeler gösteren bir uygulamalar ekranının ekran görüntüsü.](./media/header-akamai-tutorial/conditional-access-10.png)
 
-    ![MyKerberosApp için giriş ekranının ekran görüntüsü. "Hoş geldiniz superdemo\user1" iletisi bir arka plan görüntüsü üzerinde görüntülenir.](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![MyKerberosApp için giriş ekranının ekran görüntüsü. "Hoş geldiniz superdemo\user1" iletisi bir arka plan görüntüsü üzerinde görüntülenir.](./media/header-akamai-tutorial/conditional-access-11.png)
 
 ### <a name="create-akamai-test-user"></a>Akamai test kullanıcısı oluştur
 
@@ -587,16 +579,12 @@ Bu bölümde, Akamai içinde B. Simon adlı bir Kullanıcı oluşturacaksınız.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Akamai otomatik olarak oturum açmış olmanız gerekir.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile Akamai deneyin](https://aad.portal.azure.com/)
+Akamai yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

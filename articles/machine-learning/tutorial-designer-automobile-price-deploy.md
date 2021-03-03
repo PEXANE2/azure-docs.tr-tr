@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576066"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659518"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
@@ -42,7 +42,7 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
 1. İşlem hattı tuvalinin üzerinde, **çıkarım ardışık düzen**  >  **gerçek zamanlı çıkarım işlem hattı**' nı seçin.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü":::
 
     İşlem hatlarınız şu şekilde görünmelidir: 
 
@@ -97,13 +97,13 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 
 1. Oluşturduğunuz AKS kümesini seçin.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü":::
 
     Ayrıca, gerçek zamanlı uç noktanıza yönelik **Gelişmiş** ayarları değiştirebilirsiniz.
     
-    |Gelişmiş ayar|Description|
+    |Gelişmiş ayar|Açıklama|
     |---|---|
-    |Application Insights tanılamayı ve veri toplamayı etkinleştir| Azure uygulamalarının dağıtılan uç noktalardan veri toplamasına izin verilip verilmeyeceğini belirtir. </br> Varsayılan olarak: false |
+    |Application Insights tanılamayı ve veri toplamayı etkinleştir| Azure Application Insights dağıtılan uç noktalardan veri toplamak üzere etkinleştirilip etkinleştirilmeyeceğini belirtir. </br> Varsayılan olarak: false |
     |Puanlama zaman aşımı| Web hizmetine yönelik Puanlama çağrılarına zorlamak için milisaniye cinsinden zaman aşımı.</br>Varsayılan olarak: 60000|
     |Otomatik ölçeklendirme etkin|   Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.</br>Varsayılan olarak: true|
     |Minimum çoğaltmalar| Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı alt sınırı.</br>Varsayılan olarak: 1|
@@ -137,6 +137,22 @@ Dağıtım bittikten sonra, **uç noktalar** sayfasına giderek gerçek zamanlı
 1. Uç noktanızı test etmek için **Test** sekmesine gidin. Buradan, test verileri girebilir ve **Test** bitiş noktanıza ait çıktıyı Doğrula ' yı seçebilirsiniz.
 
 Web hizmetinizi kullanma hakkında daha fazla bilgi için bkz. Web hizmeti [olarak dağıtılan bir modeli](how-to-consume-web-service.md) kullanma
+
+## <a name="limitations"></a>Sınırlamalar
+
+Eğitim işlem hattınızda bazı değişiklikler yaparsanız, eğitim işlem hattını yeniden göndermeniz, çıkarım işlem hattını **güncelleştirmeniz** ve çıkarım ardışık düzenini tekrar çalıştırmanız gerekir.
+
+Yalnızca eğitilen modellerin, çıkarım işlem hattında güncelleştirileceğini, ancak veri dönüştürme güncellenmediğini unutmayın.
+
+Güncel dönüştürmeyi çıkarım ardışık düzeninde kullanmak için, dönüştürme modülünün dönüştürme çıkışını DataSet olarak kaydetmeniz gerekir.
+
+![Dönüştürme veri kümesinin nasıl kaydedileceği gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Ardından, çıkarım işlem hattındaki **TD** modülünü kayıtlı veri kümesiyle el ile değiştirin.
+
+![Dönüştürme modülünün nasıl değiştirileceğini gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Ardından, çıkarım işlem hattını güncelleştirilmiş model ve dönüşümle gönderebilir ve dağıtabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

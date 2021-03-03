@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 09/03/2020
-ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.date: 01/27/2021
+ms.openlocfilehash: c0e86cad252da1b5484944c12351d4ee1e39edbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740955"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656315"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma
 
@@ -70,6 +70,8 @@ Azure portal tek bir veritabanı oluşturmak için bu hızlı başlangıç Azure
   
 
 1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan** için **örnek**' i seçin. Bu, boş bir boş veritabanı aksine, sorgu yapmak ve denemek üzere bazı tablolar ve veriler için bir AdventureWorksLT örnek veritabanı oluşturur.
+1. İsteğe bağlı olarak, [SQL Için Azure Defender 'ı](../database/azure-defender-for-sql.md)etkinleştirin.
+1. İsteğe bağlı olarak, [Bakım penceresini](../database/maintenance-window.md) , planlı bakımın veritabanınızın en iyi saatinde gerçekleştirilmesi için ayarlayın.
 1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin:
 
    ![Ek ayarlar sekmesi](./media/single-database-create-quickstart/additional-settings.png)

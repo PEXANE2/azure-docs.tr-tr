@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936289"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660132"
 ---
 # <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Iletişim Hizmetleri SMS olaylarını işlemek için Azure Event Grid kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. 
+Iletişim Hizmetleri SMS olaylarını işlemek için Azure Event Grid kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
 ## <a name="about-azure-event-grid"></a>Azure Event Grid hakkında
 
 [Azure Event Grid](../../../event-grid/overview.md) , bulut tabanlı bir olay hizmetidir. Bu makalede, [iletişim hizmeti olaylarına](../../concepts/event-handling.md)yönelik olaylara abone olmayı ve sonucu görüntülemek için bir olay tetiklemeyi öğreneceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, iletileri toplayan ve görüntüleyen bir Web uygulamasına olay göndereceğiz.
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Bir Azure Iletişim hizmeti kaynağı. Daha ayrıntılı bilgi için [Azure Iletişim kaynağı oluşturma](../create-communication-resource.md) hızlı başlangıç bölümünde bulabilirsiniz.
 - SMS etkin telefon numarası. [Telefon numarası alın](./get-phone-number.md).
 
@@ -44,13 +43,13 @@ Azure portalında:
 2. Event Grid için kullandığınız aboneliği seçin.
 3. Sol taraftaki menüde, **Ayarlar**' ın altında **kaynak sağlayıcıları**' nı seçin.
 4. **Microsoft.EventGrid** öğesini bulun.
-5. Kayıtlı değilse **Kaydol**'u seçin. 
+5. Kayıtlı değilse **Kaydol**'u seçin.
 
 Kayıt işleminin tamamlanması biraz sürebilir. Durumu güncelleştirmek için **Yenile**’yi seçin. **Durum****Kayıtlı** olduğunda, devam etmeye hazırsınız demektir.
 
 ### <a name="event-grid-viewer-deployment"></a>Event Grid Viewer dağıtımı
 
-Bu hızlı başlangıçta, olaylarını neredeyse gerçek zamanlı olarak görüntülemek için [Azure Event Grid Görüntüleyici örneğini](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) kullanacağız. Bu, kullanıcıya gerçek zamanlı bir akış deneyimi sağlar. Ayrıca, her bir olayın yükü de inceleme için kullanılabilir olmalıdır.  
+Bu hızlı başlangıçta, olaylarını neredeyse gerçek zamanlı olarak görüntülemek için [Azure Event Grid Görüntüleyici örneğini](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) kullanacağız. Bu, kullanıcıya gerçek zamanlı bir akış deneyimi sağlar. Ayrıca, her bir olayın yükü de inceleme için kullanılabilir olmalıdır.
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Web kancalarını kullanarak SMS olaylarına abone olma
 
@@ -62,7 +61,7 @@ Oluşturma Sihirbazı 'nı girmek için **olay aboneliği Ekle** ' ye basın.
 
 **Olay aboneliği oluştur** sayfasında, olay aboneliği için bir **ad** girin.
 
-İzlemek istediğiniz SMS olaylarını ve olayların nereye gönderileceğini Event Grid söylemek için belirli olaylara abone olabilirsiniz. Açılan menüden abone olmak istediğiniz olayları seçin. SMS için ve seçeneğini belirleyin `SMS Received` `SMS Delivery Report Received` . 
+İzlemek istediğiniz SMS olaylarını ve olayların nereye gönderileceğini Event Grid söylemek için belirli olaylara abone olabilirsiniz. Açılan menüden abone olmak istediğiniz olayları seçin. SMS için ve seçeneğini belirleyin `SMS Received` `SMS Delivery Report Received` .
 
 Bir **Sistem konu adı** sağlamanız istenirse, benzersiz bir dize sağlamanız yeterli. Bu alan, deneyiminizi etkilemez ve iç telemetri amaçlarıyla kullanılır.
 
@@ -70,7 +69,7 @@ Bir **Sistem konu adı** sağlamanız istenirse, benzersiz bir dize sağlamanız
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Alınan SMS ve SMS teslim raporu tarafından seçili olan olay türlerinin alındığını gösteren ekran görüntüsü.":::
 
-**Uç nokta türü** Için **Web kancası** seçin. 
+**Uç nokta türü** Için **Web kancası** seçin.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Web kancası olarak ayarlanan uç nokta türü alanını gösteren ekran görüntüsü.":::
 
@@ -111,7 +110,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 Bu hızlı başlangıçta SMS olaylarını nasıl kullanacağınızı öğrendiniz. Event Grid aboneliği oluşturarak SMS iletileri alabilirsiniz.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SMS gönder](../telephony-sms/send.md)
 
 Ayrıca şunları yapmak isteyebilirsiniz:

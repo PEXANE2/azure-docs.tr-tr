@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95557453"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656660"
 ---
 Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
+
+> [!NOTE]
+> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,20 +44,20 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
-     pod 'AzureCommunication', '~> 1.0.0-beta.5'
-     pod 'AzureCore', '~> 1.0.0-beta.5'
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.8'
+     pod 'AzureCommunication', '~> 1.0.0-beta.8'
+     pod 'AzureCore', '~> 1.0.0-beta.8'
    end
    ```
 
-2. `pod install` öğesini çalıştırın.
+2. Şu komutu çalıştırın: `pod install`.
 3. Öğesini `.xcworkspace` Xcode ile açın.
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
 Cihazın mikrofonuna erişmek için uygulamanızın bilgi Özellik listesini bir ile güncelleştirmeniz gerekir `NSMicrophoneUsageDescription` . İlişkili değeri, `string` sistemin kullanıcıdan erişim istemek için kullandığı iletişim kutusuna dahil edilecek bir öğesine ayarlarsınız.
 
-`Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  **Source Code**. Aşağıdaki satırları en üst düzey bölümüne ekleyin `<dict>` ve dosyayı kaydedin.
+`Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  . Aşağıdaki satırları en üst düzey bölümüne ekleyin `<dict>` ve dosyayı kaydedin.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -119,19 +122,19 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| ACSCallClient | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
-| ACSCallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
-| CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.| 
-| Communicationıdentifier | Communicationıdentifier, aşağıdakilerin biri olabilecek Kullanıcı kimliğini göstermek için kullanılır: CommunicationUser/PhoneNumber/Callinguygulaması. |
+| CallClient | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
+| CommunicationTokenCredential | CommunicationTokenCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.| 
+| Communicationuserıdentifier | Communicationuserıdentifier, aşağıdakilerin biri olabilecek Kullanıcı kimliğini temsil etmek için kullanılır: Communicationuserıdentifier/Phonenumberıdentifier/CallingApplication. |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 Bir `CallAgent` Kullanıcı erişim belirtecine sahip bir örnek başlatın, bu da çağrı yapıp almamızı sağlar. Aşağıdaki kodu `onAppear` **ContentView. Swift** içindeki geri aramaya ekleyin:
 
 ```swift
-var userCredential: CommunicationUserCredential?
+var userCredential: CommunicationTokenCredential?
 do {
-    userCredential = try CommunicationUserCredential(token: "<USER ACCESS TOKEN>")
+    userCredential = try CommunicationTokenCredential(token: "<USER ACCESS TOKEN>")
 } catch {
     print("ERROR: It was not possible to create user credential.")
     return
@@ -140,9 +143,10 @@ do {
 self.callClient = CallClient()
 
 // Creates the call agent
-self.callClient?.createCallAgent(userCredential) { (agent, error) in
+self.callClient?.createCallAgent(userCredential: userCredential) { (agent, error) in
     if error != nil {
         print("ERROR: It was not possible to create a call agent.")
+        return
     }
 
     if let agent = agent {
@@ -165,8 +169,8 @@ func startCall()
     AVAudioSession.sharedInstance().requestRecordPermission { (granted) in
         if granted {
             // start call logic
-            let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: StartCallOptions())
+            let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
+            self.call = self.callAgent?.call(participants: callees, options: StartCallOptions())
         }
     }
 }

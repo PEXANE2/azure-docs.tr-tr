@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092675"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644740"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -201,7 +201,7 @@ Ortamın boyutuna bağlı olarak, işlem birkaç saat sürebilir. Yükseltme dev
 **S: otomatik yükseltmem artık çalışmadığını söyleyen bir e-posta aldım ve yeni bir sürüm yüklemem gerekiyor. Neden bunu yapmam gerekir?**  
 Son yıl, belirli koşullar altında, sunucunuzdaki otomatik yükseltme özelliğini devre dışı bırakmış olabilecek bir Azure AD Connect sürümü yayımladık. Azure AD Connect Version 1.1.750.0 'daki sorunu düzelttik. Sorundan etkileniyorsanız, bunu onarmak için bir PowerShell betiği çalıştırarak veya Azure AD Connect en son sürümüne el ile yükselterek sorunu azaltabilirsiniz. 
 
-PowerShell betiğini çalıştırmak için [betiği indirip](https://aka.ms/repairaadconnect) Azure AD Connect sunucunuzda bir yönetim PowerShell penceresinde çalıştırın. Betiği çalıştırmayı öğrenmek için [Bu kısa videoyu görüntüleyin](https://aka.ms/repairaadcau).
+PowerShell betiğini çalıştırmak için [betiği indirip](/samples/browse/?redirectedfrom=TechNet-Gallery) Azure AD Connect sunucunuzda bir yönetim PowerShell penceresinde çalıştırın. Betiği çalıştırmayı öğrenmek için [Bu kısa videoyu görüntüleyin](https://aka.ms/repairaadcau).
 
 El ile yükseltmek için AADConnect.msi dosyasının en son sürümünü indirmeniz ve çalıştırmanız gerekir.
  

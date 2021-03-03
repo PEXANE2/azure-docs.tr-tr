@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588333"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667740"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure purview ölçümleri
 
@@ -62,7 +62,7 @@ Azure portal ölçüm bölümünün nasıl kullanılacağına ilişkin familiari
 
 Aşağıdaki tablo, Azure portal araştırmak için kullanılabilen ölçümlerin listesini içerir:
 
-| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Description |
+| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Açıklama |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Tarama Iptal edildi | Otomatik tarama | Sum <br> Count | Zaman aralığı için iptal edilen veri kaynağı taramalarının toplamı |
 | Tarama tamamlandı | Otomatik tarama | Sum <br> Count | Zaman aralığı boyunca tamamlanan veri kaynağı taramalarının toplamı |
@@ -83,7 +83,7 @@ Azure purview hesabınız için bir tanılama ayarı oluşturma adımlarını iz
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Tanılama günlüğü için depolama hesabı atamayı gösteren ekran görüntüsü." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Yeni oluşturulan depolama hesabında günlük almaya başlamak için 15 dakikaya kadar izin verin. [Bkz. Azure Storage hesabındaki kaynak günlüklerinin veri saklama ve şema](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Tanılama günlükleri yapılandırıldıktan sonra olaylar depolama hesabına akar.
+Yeni oluşturulan depolama hesabında günlük almaya başlamak için 15 dakikaya kadar izin verin. [Bkz. Azure Storage hesabındaki kaynak günlüklerinin veri saklama ve şema](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Tanılama günlükleri yapılandırıldıktan sonra olaylar depolama hesabına akar.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

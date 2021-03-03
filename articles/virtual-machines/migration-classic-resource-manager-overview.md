@@ -4,16 +4,17 @@ description: Klasik kaynaklardan Azure Resource Manager ' e kadar olan platform 
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 44b89aae2f446a13207c8e3b586892ad085bd790
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 69eae2bd2e2db27c6cc9d0a0c1eb29576e96179a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879419"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669321"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 'ta IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 
@@ -116,7 +117,7 @@ Bazı özellikler ve Konfigürasyonlar Şu anda desteklenmiyor; Aşağıdaki bö
 ### <a name="unsupported-features"></a>Desteklenmeyen özellikler
 Aşağıdaki özellikler Şu anda desteklenmemektedir. İsteğe bağlı olarak bu ayarları kaldırabilir, VM 'Leri geçirebilir ve sonra Kaynak Yöneticisi dağıtım modelindeki ayarları yeniden etkinleştirebilirsiniz.
 
-| Kaynak sağlayıcısı | Öne çıkan özelliği | Öneri |
+| Kaynak sağlayıcısı | Özellik | Öneri |
 | --- | --- | --- |
 | İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
 | İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |

@@ -2,18 +2,18 @@
 title: Konfigürasyonlar ve Gilar-Azure yay etkin Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes 'in Gilar ve yapılandırma özelliklerine kavramsal bir genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar, yapılandırma, Gilar
-ms.openlocfilehash: f8fe1522eee4cc855ae1f396d9c98323114a25ce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652556"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650382"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes ile yapılandırma ve Gilar
 
@@ -27,20 +27,20 @@ Bir git deposundan bir Kubernetes kümesine yapılandırmaların akışını kol
 
 [![Yapılandırma mimarisi ](./media/conceptual-configurations.png)](./media/conceptual-configurations.png#lightbox)
 
-Kümeniz ve git deposu arasındaki bağlantı, `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure Arc etkin Kubernetes kaynağı (tarafından temsil edilen) üzerinde Azure Resource Manager içinde bir uzantı kaynağı olarak oluşturulur `Microsoft.Kubernetes/connectedClusters` . 
+Kümeniz ve git deposu arasındaki bağlantı, `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure Arc etkin Kubernetes kaynağı (tarafından temsil edilen) üzerinde Azure Resource Manager içinde bir yapılandırma kaynağı () olarak oluşturulur `Microsoft.Kubernetes/connectedClusters` . 
 
-Kaynak özellikleri, bildirim almak için gereken `sourceControlConfiguration` Git deposu ve bunların alınacağı yoklama aralığı gibi uygun parametrelerle küme üzerinde Flox operatörü dağıtmak için kullanılır. Veriler, `sourceControlConfiguration` verilerin gizliliğini sağlamak için şifrelenmiş ve geri kalan bir Azure Cosmos DB veritabanında depolanır.
+Yapılandırma kaynağı özellikleri, küme üzerinde, bildirim almak için gereken git deposunda ve bunların alınacağı yoklama aralığında yer alan uygun parametrelerle birlikte akıcı x operatörü dağıtmak için kullanılır. Yapılandırma kaynak verileri, veri gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
 
 `config-agent`Kümenizde çalışan şu şekilde sorumludur:
-* `sourceControlConfiguration`Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş uzantı kaynaklarını izleme.
-* Her biri için Git deposunu izlemek üzere Flox işleci dağıtma `sourceControlConfiguration` . '
-* Herhangi bir güncelleştirme uygulanıyor `sourceControlConfiguration` . 
+* Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş yapılandırma kaynakları izleniyor.
+* Her yapılandırma kaynağı için Git deposunu izlemek üzere Flox operatörü dağıtma.
+* Herhangi bir yapılandırma kaynağına yapılan herhangi bir güncelleştirme uygulanıyor. 
 
-`sourceControlConfiguration`Çoklu kiracı elde etmek için aynı Azure Arc etkin Kubernetes kümesinde birden çok ad alanı kapsamlı kaynak oluşturabilirsiniz.
+Çoklu kiracı elde etmek için aynı Azure Arc etkin Kubernetes kümesinde birden çok ad alanı kapsamlı yapılandırma kaynağı oluşturabilirsiniz.
 
 > [!NOTE]
-> * `config-agent``sourceControlConfiguration`Azure Arc etkin Kubernetes kaynağında bulunan yeni veya güncelleştirilmiş uzantı kaynaklarını sürekli olarak izler. Bu nedenle, aracıların istenen durum özelliklerini kümeye çekmek için tutarlı bir bağlantı gerekir. Aracılar Azure 'a bağlanamazsa, istenen durum kümede uygulanmaz.
-> * Özel anahtar, bilinen ana bilgisayar içeriği, HTTPS Kullanıcı adı ve belirteç veya parola gibi hassas müşteri girişleri, Azure Arc etkinleştirilmiş Kubernetes hizmetlerinde 48 saate kadar saklanır. Yapılandırma için hassas girişler kullanıyorsanız, kümeleri mümkün olduğunca düzenli olarak çevrimiçi duruma getirin.
+> * `config-agent` Yeni veya güncelleştirilmiş yapılandırma kaynaklarını yay etkin Kubernetes kaynağında kullanılabilir olacak şekilde izler. Bu nedenle, aracıların kümeye çekilmesi için istenen durumun bağlantısı olması gerekir. Aracılar Azure 'a bağlanamazsa, istenen durumu kümeye yayılırken bir gecikme vardır.
+> * Özel anahtar, bilinen ana bilgisayar içeriği, HTTPS Kullanıcı adı ve belirteç/parola gibi hassas müşteri girişleri, Azure Arc etkin Kubernetes hizmetlerinde 48 ' den fazla saat boyunca depolanmaz. Yapılandırma için hassas girişler kullanıyorsanız, kümeleri mümkün olduğunca düzenli olarak çevrimiçi duruma getirin.
 
 ## <a name="apply-configurations-at-scale"></a>Yapılandırma ölçeğini ölçekli uygulama
 
@@ -50,6 +50,6 @@ Bu ölçekli uygulama, ortak bir temel yapılandırma (ClusterRoleBindings, Role
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./connect-cluster.md)
+* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
 * [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md)
 * [Uygun ölçekte yapılandırma uygulamak için Azure Ilkesini kullanma](./use-azure-policy.md)

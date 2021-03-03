@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 72e89a67f2d767c8a104982dbe9eb9e47aec015a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656967"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -80,7 +80,7 @@ Benzer şekilde bölümlendirme özelliği, kapasiteyi otomatik olarak ekler ve 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Verilerinizin dizinini oluşturma
 
-Azure Cosmos DB MongoDB Server sürüm 3,6 API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu alan bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . Ek alanları dizinlemek için MongoDB dizin yönetimi komutlarını uygularsınız. Bu varsayılan dizinleme ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API’sinden farklıdır.
+Azure Cosmos DB MongoDB sunucu sürümleri 3,6 ve üzeri için API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu alan bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . Ek alanlara dizin eklemek için [MongoDB Dizin Yönetimi komutlarını](mongodb-indexing.md)uygularsınız. Bu varsayılan dizinleme ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API’sinden farklıdır.
 
 Azure Cosmos DB tarafından sunulan dizin oluşturma özellikleri, bileşik dizinler, benzersiz dizinler ve yaşam süresi (TTL) dizinlerinin eklenmesini içerir. Dizin yönetimi arabirimi, `createIndex()` komuta eşlenir. [Azure Cosmos DB MongoDB için API 'Sindeki dizin oluşturma](mongodb-indexing.md)hakkında daha fazla bilgi edinin.
 

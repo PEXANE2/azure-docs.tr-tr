@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3244cbca3df717d3432670a366147408cf2b2c0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006328"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669109"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>HANA büyük örneklerde SAP HANA yedekleme ve geri yükleme
 
@@ -581,7 +580,7 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
 
    :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Parmak izini Onayla ve Gönder":::
 
-1. Hana düğümünde, sistem veritabanı altında **güvenlik** kullanıcıları ek bileşenleri ' ni seçerek  >  **Users**  >  **SNAPCENTER** snapcenter kullanıcısını oluşturun.
+1. Hana düğümünde, sistem veritabanı altında **güvenlik** kullanıcıları ek bileşenleri ' ni seçerek  >    >   snapcenter kullanıcısını oluşturun.
 
    :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="HANA 'da (sistem DB) Snapın kullanıcısı oluşturma":::
 

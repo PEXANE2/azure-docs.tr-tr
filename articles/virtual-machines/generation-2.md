@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: dcc599daaa8d124c7188165ff5e024767a5e3cd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672629"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure'da 2. nesil VM'ler için destek
 
@@ -79,11 +79,13 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 | 2. nesil özelliği                | Şirket içi Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| Güvenli önyükleme                         | :heavy_check_mark:  | sayı   |
+| Güvenli önyükleme                         | :heavy_check_mark:  | Güvenilir başlatma ile (Önizleme)   |
 | Korumalı VM                         | :heavy_check_mark:  | sayı   |
-| vTPM                                | :heavy_check_mark:  | sayı   |
-| Sanallaştırma tabanlı güvenlik (VBS) | :heavy_check_mark:  | sayı   |
+| vTPM                                | :heavy_check_mark:  | Güvenilir başlatma ile (Önizleme)  |
+| Sanallaştırma tabanlı güvenlik (VBS) | :heavy_check_mark:  | Güvenilir başlatma ile (Önizleme)   |
 | VHDX biçimi                         | :heavy_check_mark:  | sayı   |
+
+Daha fazla bilgi için bkz. [güvenilir başlatma (Önizleme)](trusted-launch.md).
 
 ## <a name="features-and-capabilities"></a>Özellikler ve yetenekler
 
@@ -105,7 +107,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Yedekleme/geri yükleme                    | :heavy_check_mark: | :heavy_check_mark: |
 | Paylaşılan görüntü Galerisi              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | sayı                |
+| [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Sunucu tarafı şifrelemesi](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>2. nesil VM oluşturma
@@ -114,7 +116,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmiştir.
 
@@ -122,7 +124,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. **Kaynak oluştur**’u seçin.
 1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
 1. Gen2 destekleyen bir görüntü seçin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
 1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları** altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
@@ -206,7 +208,7 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
     Evet. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile VM oluşturma](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 * **2. nesil VM 'Ler Azure 'da güvenli önyükleme veya vTPM 'yi destekliyor mu?**
-    Azure 'da hem 1. kuşak hem de 2. nesil VM 'Ler güvenli önyükleme veya vTPM 'yi desteklemez. 
+    Hem vTPM hem de güvenli önyükleme, 2. nesil VM 'Ler için güvenilir başlatma (Önizleme) özellikleridir. Daha fazla bilgi için bkz. [güvenilir başlatma](trusted-launch.md).
     
 * **VHDX 2. nesil üzerinde destekleniyor mu?**  
     Hayır, 2. nesil VM 'Ler yalnızca VHD 'YI destekler.
@@ -225,5 +227,7 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
     1. [Gen2 VM 'leri destekleyen bir VM boyutu](#generation-2-vm-sizes)arıyor olduğunuzdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Genel 2 VM 'lerle [güvenilir başlatma (Önizleme)](trusted-launch-portal.md) hakkında daha fazla bilgi edinin.
 
 [Hyper-V ' d a 2. nesil sanal makineler](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.

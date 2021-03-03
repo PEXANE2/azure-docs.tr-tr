@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591183"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644655"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz tek Sign-On sorunlarını giderme
 
@@ -32,6 +32,7 @@ Bu makale Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO) 
 - 16.0.8730. xxxx ve üzeri sürümleriyle birlikte Microsoft 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. Diğer sürümler desteklenmez; Bu sürümlerde, kullanıcılar, oturum açmak için Kullanıcı adlarını girer, ancak parolalarını girmeyecektir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
 - Sorunsuz SSO, Firefox 'ta özel göz atma modunda çalışmaz.
 - Gelişmiş Korumalı Mod açıkken sorunsuz SSO Internet Explorer 'da çalışmaz.
+- Sorunsuz SSO, Microsoft Edge 'de (eski) özel göz atma modunda çalışmaz.
 - Sorunsuz SSO, iOS ve Android 'de mobil tarayıcılarda çalışmaz.
 - Kullanıcı Active Directory çok sayıda grubun parçasıysa, kullanıcının Kerberos bileti çok büyük olabilir ve bu işlem sorunsuz SSO 'nun başarısız olmasına neden olur. Azure AD HTTPS isteklerinde en fazla 50 KB boyutunda üst bilgi bulunabilir. Kerberos anahtarlarının, tanımlama bilgileri gibi diğer Azure AD yapılarına (genellikle, 2-5 KB) uyum sağlaması için bu sınırdan daha küçük olması gerekir. Önerimiz, kullanıcının grup üyeliklerini azaltmaktır ve yeniden deneyin.
 - 30 veya daha fazla Active Directory ormanı eşitliyorsanız, Azure AD Connect aracılığıyla sorunsuz SSO etkinleştirilemez. Geçici bir çözüm olarak, kiracınızda özelliği [el ile etkinleştirebilirsiniz](#manual-reset-of-the-feature) .

@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724551"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648526"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>İzleme ve analiz aracılığıyla esnekliği
 
@@ -49,7 +49,7 @@ Benzer şekilde, hataları veya performans kesintilerini algılamak, iyi bir tab
 
    - **Önceki dönem**: Toplam Isteklerindeki ve başarı oranlarındaki değişiklikleri göstermek için zamana bağlı grafikler oluşturma (%) önceki bir dönem boyunca başvuru amaçlıdır. Örneğin, geçen hafta.
 
-- **Uyarı**: Log Analytics 'in kullanılması, anahtar göstergelerinde ani değişiklikler olduğunda tetiklenen [uyarıları](../../azure-monitor/platform/alerts-log.md) tanımlar. Bu değişiklikler, SLOs 'yi olumsuz etkileyebilir. Uyarılar, e-posta, SMS ve Web kancaları gibi çeşitli bildirim yöntemleri biçimlerini kullanır. Uyarı tetiklenecek eşik olarak davranan bir ölçüt tanımlayarak başlayın. Örneğin:
+- **Uyarı**: Log Analytics 'in kullanılması, anahtar göstergelerinde ani değişiklikler olduğunda tetiklenen [uyarıları](../../azure-monitor/alerts/alerts-log.md) tanımlar. Bu değişiklikler, SLOs 'yi olumsuz etkileyebilir. Uyarılar, e-posta, SMS ve Web kancaları gibi çeşitli bildirim yöntemleri biçimlerini kullanır. Uyarı tetiklenecek eşik olarak davranan bir ölçüt tanımlayarak başlayın. Örnek:
   - Toplam isteklerin ani olarak düşürülme uyarısı: toplam istek sayısı aniden başlatıldığında bir uyarı tetikleyin. Örneğin, bir önceki döneme kıyasla toplam istek sayısı %25 ' i olduğunda bir uyarı yükseltir.  
   - Başarı oranına göre uyarı (%): seçili ilkenin başarı oranı önemli ölçüde düşerse bir uyarı tetikleyin.
   - Uyarı aldıktan sonra, Azure AD B2C için [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)ve [vs Code uzantısını](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) kullanarak sorunu giderin. Sorunu çözdükten ve güncelleştirilmiş bir uygulamayı veya ilkeyi dağıttıktan sonra, normal aralığa geri dönene kadar anahtar göstergelerini izlemeye devam eder.
@@ -57,7 +57,7 @@ Benzer şekilde, hataları veya performans kesintilerini algılamak, iyi bir tab
 - **Hizmet uyarıları**: hizmet sorunları, planlı bakım, sağlık danışmanlığı ve güvenlik danışmanlığı hakkında bildirim almak için [Azure AD B2C hizmet düzeyi uyarılarını](../../service-health/service-health-overview.md) kullanın.
 
 - **Raporlama**: [Log Analytics 'i kullanarak](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), Kullanıcı öngörüleri, teknik sorunlar ve büyüme fırsatları hakkında bilgi sahibi olmanıza yardımcı olan raporlar oluşturun.
-  - **Sistem durumu panosu**: Log Analytics sorguları kullanarak grafik eklemeyi destekleyen [Azure Panosu özelliğini kullanarak özel panolar](../../azure-monitor/learn/tutorial-app-dashboards.md) oluşturun. Örneğin, başarılı ve başarısız oturum açma düzenlerini, istekleri yapmak için kullanılan cihazlarla ilgili hata nedenlerini ve telemetrileri öğrenin.
+  - **Sistem durumu panosu**: Log Analytics sorguları kullanarak grafik eklemeyi destekleyen [Azure Panosu özelliğini kullanarak özel panolar](../../azure-monitor/app/tutorial-app-dashboards.md) oluşturun. Örneğin, başarılı ve başarısız oturum açma düzenlerini, istekleri yapmak için kullanılan cihazlarla ilgili hata nedenlerini ve telemetrileri öğrenin.
   - **Abandon Azure AD B2C It neys**: kullanıcının oturum açma veya kaydolma yolculuğuna başladığı ancak hiç bitmediğini terk edilmiş Azure AD B2C It neys listesini izlemek için [çalışma kitabını](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys) kullanın. Bu, bir yolculuğa geçmeden önce Kullanıcı tarafından gerçekleştirilen adımların ilke KIMLIĞI ve dökümü hakkındaki ayrıntıları sağlar.
   - **Azure AD B2C izleme çalışma kitapları**: Azure AD B2C ortamınızın sağlık durumu hakkında daha iyi öngörüler elde etmek için Azure AD B2C Pano, Multi-Factor AUTHENTICATION (MFA) Işlemleri, koşullu erişim raporu ve Bağıntıkimliği ile arama günlükleri içeren [izleme çalışma kitaplarını](https://github.com/azure-ad-b2c/siem)kullanın.
   

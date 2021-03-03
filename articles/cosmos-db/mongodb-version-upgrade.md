@@ -4,25 +4,35 @@ description: MongoDB için mevcut Azure Cosmos DB API 'SI için MongoDB tel prot
 author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: guide
-ms.date: 09/22/2020
+ms.topic: how-to
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 9ce444e41d19ece984071d0f62e705a09d5f23c9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356476"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661180"
 ---
-# <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>MongoDB hesabı için Azure Cosmos DB API 'nizin MongoDB kablo protokol sürümünü yükseltin
+# <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>MongoDB hesabı için Azure Cosmos DB API 'nizin API sürümünü yükseltme
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Bu makalede, MongoDB hesabı için Azure Cosmos DB API 'sinin tel Protokolü sürümünün nasıl yükseltileceği açıklanır. Kablo protokol sürümünü yükselttikten sonra, MongoDB için Azure Cosmos DB API 'sindeki en son işlevselliği kullanabilirsiniz. Yükseltme işlemi, hesabınızın kullanılabilirliğini kesintiye uğramaz ve herhangi bir noktada, her zaman veritabanı kapasitesini azaltır. Bu işlemden, mevcut veri veya dizinlerin hiçbiri etkilenmeyecektir.
+Bu makalede, MongoDB hesabı için Azure Cosmos DB API 'sinin API sürümünün nasıl yükseltileceği açıklanır. Yükseltmeden sonra, MongoDB için Azure Cosmos DB API 'sindeki en son işlevselliği kullanabilirsiniz. Yükseltme işlemi, hesabınızın kullanılabilirliğini kesintiye uğramaz ve herhangi bir noktada, her zaman veritabanı kapasitesini azaltır. Bu işlemden, mevcut veri veya dizinlerin hiçbiri etkilenmeyecektir. 
+
+Yeni bir API sürümüne yükseltirken, üretim iş yüklerini yükseltmeden önce geliştirme ve test iş yükleri ile başlayın. MongoDB hesabı için Azure Cosmos DB API 'nizi yükseltmeden önce istemcilerinizi, yükseltmekte olduğunuz API sürümüyle uyumlu bir sürüme yükseltmeniz önemlidir.
 
 >[!Note]
-> Şu anda yalnızca sunucu sürümü 3,2 ' i kullanan hesaplar 3,6 sürümüne yükseltilebilir. Hesabınız yükseltme seçeneğini göstermezse lütfen [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)yapın.
+> Şu anda yalnızca sunucu sürümü 3,2 ' i kullanan hesaplar 3,6 veya 4,0 sürümüne yükseltilebilir. Hesabınız yükseltme seçeneğini göstermezse lütfen [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)yapın.
 
-## <a name="upgrading-from-version-32-to-36"></a>3,2 sürümünden 3,6 sürümüne yükseltme
+## <a name="upgrading-to-40-or-36"></a>4,0 veya 3,6 sürümüne yükseltme
+
+### <a name="benefits-of-upgrading-to-version-40"></a>4,0 sürümüne yükseltmenin avantajları
+
+Sürüm 4,0 ' de bulunan yeni özellikler aşağıda verilmiştir:
+- Parçalara ayrılmamış koleksiyonlar içinde çok belgeli işlemler için destek.
+- Yeni toplama işleçleri
+- Gelişmiş tarama performansı
+- Daha hızlı, daha verimli depolama
 
 ### <a name="benefits-of-upgrading-to-version-36"></a>3\.6 sürümüne yükseltmenin avantajları
 
@@ -30,34 +40,34 @@ Sürüm 3,6 ' de bulunan yeni özellikler aşağıda verilmiştir:
 - Gelişmiş performans ve kararlılık
 - Yeni veritabanı komutları desteği
 - Varsayılan ve yeni toplama aşamalarına göre toplama işlem hattı desteği
-- Değişiklik akışları için destek
-- Bileşik dizinler için destek
-- Şu işlemler için çapraz bölüm desteği: güncelleştirme, silme, sayma ve sıralama
-- Aşağıdaki toplama işlemleri için gelişmiş performans: $count, $skip, $limit ve $group
-- Joker karakter oluşturma artık destekleniyor
+- Değişiklik Akışları Desteği
+- Bileşik Dizin desteği
+- Şu işlemler için bölümler arası destek: güncelleştirme, silme, sayma ve sıralama
+- Şu toplama işlemleri için gelişmiş performans: $count, $skip, $limit ve $group
+- Joker karakter dizinleme artık destekleniyor
 
 ### <a name="changes-from-version-32"></a>Sürüm 3,2 ' den değişiklikler
 
-- **RequestRateIsLarge hatalar kaldırılmıştır**. İstemci uygulamasından gelen istekler artık 16500 hata döndürmeyecektir. Bunun yerine istekler, zaman aşımını tamamlayana veya yerine getirene kadar sürdürülecek.
-- İstek başına zaman aşımı 60 saniyeye ayarlanır.
-- Yeni hat Protokolü sürümünde oluşturulan MongoDB koleksiyonları yalnızca `_id` Varsayılan olarak dizinli özelliğe sahip olur.
+- Varsayılan olarak, [sunucu tarafı yeniden deneme (SSR)](prevent-rate-limiting-errors.md) özelliği etkinleştirilir, böylece istemci uygulamasından gelen istekler 16500 hata döndürmeyecektir. Bunun yerine, istekler tamamlanana kadar ya da ikinci zaman aşımı 60 ' i tıklatana kadar sürdürülecek.
+- İstek başına zaman aşımı 60 saniye olarak ayarlanmıştır.
+- Yeni kablo protokol sürümünde oluşturulan MongoDB koleksiyonlarında, varsayılan olarak yalnızca `_id` özelliği dizine alınır.
 
-### <a name="action-required"></a>Eylem gerekiyor
+### <a name="action-required-when-upgrading-from-32"></a>3,2 'den yükseltirken gereken eylem
 
-Sürüm 3,6 ' e yükseltme için veritabanı hesabı uç noktası son eki şu biçime güncelleştirilir:
+3,2 sürümünden yükseltirken, veritabanı hesabı uç noktası son eki şu biçime güncelleştirilir:
 
 ```
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **MongoDB sürüm 3,6 ' deki özelliklere yalnızca yeni uç noktayı kullanan bağlantılar erişebilir**. Önceki uç nokta sonekine sahip olmalıdır `.documents.azure.com` .
+Sürüm 3,2 ' den yükseltiyorsanız, bu veritabanı hesabıyla bağlanan uygulamalarınızda ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **Yalnızca yeni uç noktayı kullanan bağlantılar yenı API sürümündeki özelliklere erişebilir**. Önceki 3,2 uç noktasının soneki olmalıdır `.documents.azure.com` .
 
 >[!Note]
 > Hesabınız bir Sogeign, kamu veya sınırlı Azure bulutu 'nda oluşturulduysa, bu uç nokta hafif farklılıklara sahip olabilir.
 
-### <a name="how-to-upgrade"></a>Yükseltme
+## <a name="how-to-upgrade"></a>Yükseltme
 
-1. İlk olarak, Azure portal gidin ve MongoDB hesabına genel bakış dikey penceresi için Azure Cosmos DB API 'sine gidin. Sunucu sürümünüzün olduğunu doğrulayın `3.2` . 
+1. Azure portal gidin ve MongoDB hesabına genel bakış dikey penceresinde Azure Cosmos DB API 'sine gidin. Geçerli sunucu sürümünüzün beklediğinizi doğrulayın.
 
     :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
@@ -65,11 +75,11 @@ Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevc
 
     :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Özellikler dikey penceresinde MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
-3. `Upgrade to Mongo server version 3.6`Satıra tıklayın. Bu seçeneği görmüyorsanız, hesabınız bu yükseltme için uygun olmayabilir. Bu durumda, lütfen [bir destek bileti](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) dosyası sağlayın.
+3. `Upgrade Mongo server version`Satıra tıklayın. Bu seçeneği görmüyorsanız, hesabınız bu yükseltme için uygun olmayabilir. Bu durumda, lütfen [bir destek bileti](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) dosyası sağlayın.
 
     :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Seçeneklerle Özellikler dikey penceresi." border="false":::
 
-4. Bu belirli yükseltmeyle ilgili olarak görünen bilgileri gözden geçirin. Yükseltmenin, bu bölümde vurgulanan şekilde, yalnızca uygulamalarınız güncelleştirilmiş uç noktası kullanana kadar tamamlanacağını unutmayın. `Enable`İşlemi başlatmak için hazırsanız açık ' a tıklayın.
+4. Yükseltme hakkında bilgi için görünen bilgileri gözden geçirin. `Enable`İşlemi başlatmak için hazırsanız açık ' a tıklayın.
 
     :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Genişletilmiş Yükseltme Kılavuzu." border="false":::
 
@@ -81,11 +91,21 @@ Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevc
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Yükseltilen hesap durumu." border="false":::
 
-7. **Veritabanı hesabınızın yükseltilen sürümünü kullanmaya başlamak için** dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. Uygulamalar, yeni uç noktaya bağlandıklarında yükseltilen sürümü kullanmaya başlar. Mevcut bağlantılar kesintiye uğramayacak ve bu işlem sizin için uygun şekilde güncelleştirilemeyebilir. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
+7. 
+    1. 3,2 ' den yükselttiyseniz, dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. 3,2 çalıştıran eski bağlantı dizesi kesintiye uğramayacak. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
+    2. 3,6 ' den yükselttiyseniz, var olan bağlantı dizeniz belirtilen sürüme yükseltilecektir ve kullanmaya devam edilmelidir.
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Yeni genel bakış dikey penceresi." border="false":::
 
+
+## <a name="how-to-downgrade"></a>Düşürme
+Ayrıca, ' yükseltme yöntemi ' bölümündeki adımlar aracılığıyla hesabınızı 4,0 ' den 3,6 ' e indirgeyede indirebilirsiniz. 
+
+3,2 'den (4,0 veya 3,6) sürümüne yükselttiyseniz ve 3,2 sürümüne geri dönmek istiyorsanız, önceki (3,2) Bağlantı dizenizi kullanarak `accountname.documents.azure.com` Etkin yükseltme sonrası sürümü olan ana bilgisayar ile yeniden geçmeniz yeterlidir.
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [MongoDB sürüm 4,0 ' in](mongodb-feature-support-40.md)desteklenen ve desteklenmeyen özellikleri hakkında bilgi edinin.
 - [MongoDB sürüm 3,6 ' in](mongodb-feature-support-36.md)desteklenen ve desteklenmeyen özellikleri hakkında bilgi edinin.
 - Daha fazla bilgi için [Mongo 3,6 sürüm özelliklerini](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/) inceleyin

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116798"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674132"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanarak tablo tasarlama
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda adanmış SQL havuzu ve sunucusuz SQL havuzu ile ilgili kon
 | [Çoğaltılmış tablolar](#replicated-tables)                      | Yes                | Hayır                      |
 | [Hepsini bir kez deneme tabloları](#round-robin-tables)                    | Yes                | Hayır                      |
 | [Tablolar için ortak dağıtım yöntemleri](#common-distribution-methods-for-tables) | Yes                | Hayır                      |
-| [Bölümler](#partitions)                                    | Yes                | Yes                     |
+| [Bölüme](#partitions)                                    | Yes                | Yes                     |
 | [Columnstore dizinleri](#columnstore-indexes)                  | Yes                | Hayır                      |
 | [İstatistikler](#statistics)                                    | Yes                | Yes                     |
 | [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Yes                | Hayır                      |
@@ -61,7 +61,7 @@ Bir [yıldız şeması](https://en.wikipedia.org/wiki/Star_schema) , verileri ol
 
 ## <a name="schema-names"></a>Şema adları
 
-Şemalar, benzer bir biçimde kullanılan nesneleri gruplamak için iyi bir yoldur. Aşağıdaki kod, wwi adlı [Kullanıcı tanımlı bir şema](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oluşturur.
+Şemalar, benzer bir biçimde kullanılan nesneleri gruplamak için iyi bir yoldur. Aşağıdaki kod, wwi adlı [Kullanıcı tanımlı bir şema](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) oluşturur.
 
 ```sql
 CREATE SCHEMA wwi;
@@ -69,13 +69,13 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-names"></a>Tablo adları
 
-Şirket içi bir çözümden birden çok veritabanını adanmış SQL havuzuna geçiriyorsanız, en iyi yöntem olgu, boyut ve tümleştirme tablolarının tümünü bir SQL havuzu şemasına geçirmesidir. Örneğin, tüm tabloları, wwi adlı bir şema içindeki [Wideworldimportersdw](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) örnek veri ambarında saklayabilirsiniz.
+Şirket içi bir çözümden birden çok veritabanını adanmış SQL havuzuna geçiriyorsanız, en iyi yöntem olgu, boyut ve tümleştirme tablolarının tümünü bir SQL havuzu şemasına geçirmesidir. Örneğin, tüm tabloları, wwi adlı bir şema içindeki [Wideworldimportersdw](/sql/samples/wide-world-importers-dw-database-catalog?view=azure-sqldw-latest&preserve-view=true) örnek veri ambarında saklayabilirsiniz.
 
 Özel SQL havuzundaki tabloların organizasyonunu göstermek için, tablo adlarına önek olarak olgu, Dim ve Int kullanabilirsiniz. Aşağıdaki tabloda, WideWorldImportersDW için şema ve tablo adlarından bazıları gösterilmektedir.  
 
 | WideWorldImportersDW tablosu  | Tablo türü | adanmış SQL havuzu |
 |:-----|:-----|:------|:-----|
-| City | Boyut | wwi. DimCity |
+| Şehir | Boyut | wwi. DimCity |
 | Sipariş | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
@@ -108,7 +108,7 @@ Sunucusuz SQL havuzu için, [Cetas](develop-tables-cetas.md) kullanarak sorgu so
 
 ## <a name="data-types"></a>Veri türleri
 
-Adanmış SQL havuzu en yaygın olarak kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, CREATE TABLE deyimindeki [Create Table başvuru içindeki veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes&preserve-view=true) bölümüne bakın. Veri türlerini kullanma hakkında daha fazla bilgi için bkz. [veri türleri](../sql/develop-tables-data-types.md).
+Adanmış SQL havuzu en yaygın olarak kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, CREATE TABLE deyimindeki [Create Table başvuru içindeki veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest#DataTypes&preserve-view=true) bölümüne bakın. Veri türlerini kullanma hakkında daha fazla bilgi için bkz. [veri türleri](../sql/develop-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Dağıtılmış tablolar
 
@@ -153,7 +153,7 @@ Adanmış SQL havuzlarında, bölümlenmiş bir tablo, veri aralıklarına göre
 Ayrıca, verileri bölüm değiştirme aracılığıyla da koruyabilirsiniz. Adanmış bir SQL havuzundaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için bkz. [bölümleme kılavuzu](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  
 
 > [!TIP]
-> Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyiminizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün.
+> Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) deyiminizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün.
 
 Aşağıdaki kod, dönüştürülmüş günlük verileri bir Salesolgu bölümüne geçirir ve mevcut verilerin üzerine yazar.
 
@@ -190,7 +190,7 @@ Adanmış SQL havuzu, varsayılan olarak bir tabloyu kümelenmiş bir columnstor
 > [!TIP]
 > Yığın tablosu, son tabloya dönüştürülen hazırlama tablosu gibi geçici verileri yüklemek için özellikle kullanışlı olabilir.
 
-Columnstore özelliklerinin bir listesi için bkz. [columnstore dizinleri yenilikleri](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Columnstore dizin performansını geliştirmek için bkz. [columnstore dizinleri için satır grubu kalitesini en üst düzeye çıkarma](../sql/data-load-columnstore-compression.md).
+Columnstore özelliklerinin bir listesi için bkz. [columnstore dizinleri yenilikleri](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?view=azure-sqldw-latest&preserve-view=true). Columnstore dizin performansını geliştirmek için bkz. [columnstore dizinleri için satır grubu kalitesini en üst düzeye çıkarma](../sql/data-load-columnstore-compression.md).
 
 ## <a name="statistics"></a>İstatistikler
 
@@ -206,12 +206,12 @@ Adanmış SQL havuzunda, BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve ZORLANMAZ 
 
 Adanmış SQL havuzu için yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Description |
+| T-SQL ekstresi | Açıklama |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
-| [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Dış tablo oluşturur. Tablonun tanımı adanmış SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Bir SELECT ifadesinin sonuçlarıyla yeni bir tablo doldurur. Tablo sütunları ve veri türleri SELECT ifadesinin sonuçlarını temel alır. Bu ifade, verileri içeri aktarmak için bir dış tablodan seçim yapabilir. |
-| [DıŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Storage. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
+| [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Dış tablo oluşturur. Tablonun tanımı adanmış SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Bir SELECT ifadesinin sonuçlarıyla yeni bir tablo doldurur. Tablo sütunları ve veri türleri SELECT ifadesinin sonuçlarını temel alır. Bu ifade, verileri içeri aktarmak için bir dış tablodan seçim yapabilir. |
+| [DıŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Storage. |
 
 ## <a name="align-source-data-with-the-data-warehouse"></a>Kaynak verileri veri ambarına hizalayın
 
@@ -226,20 +226,20 @@ Veriler birden fazla veri deposundan geliyorsa, verilerin veri ambarına bağlan
 
 Adanmış SQL havuzu, diğer veritabanları tarafından sunulan tablo özelliklerinin çoğunu destekler, ancak tümünü desteklememektedir.  Aşağıdaki listede, adanmış SQL havuzunda desteklenmeyen bazı tablo özellikleri gösterilmektedir.
 
-- Yabancı anahtar, Denetim [tablosu kısıtlamaları](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Hesaplanan Sütunlar](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Dizinli görünümler](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Seyrek sütunlar](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- Yabancı anahtar, Denetim [tablosu kısıtlamaları](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Hesaplanan Sütunlar](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Dizinli görünümler](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Seyrek sütunlar](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
 - Vekil anahtarlar, [kimlik](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile uygulama
-- [Eş anlamlılar](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Tetikleyiciler](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Benzersiz dizinler](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Kullanıcı tanımlı türler](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [Eş anlamlılar](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Tetikleyiciler](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Benzersiz dizinler](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Kullanıcı tanımlı türler](/sql/relational-databases/native-client/features/using-user-defined-types?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="table-size-queries"></a>Tablo boyutu sorguları
 
-Adanmış SQL havuzunda, 60 dağıtımların her birindeki bir tablo tarafından tüketilen alanı ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanmaktır.
+Adanmış SQL havuzunda, 60 dağıtımların her birindeki bir tablo tarafından tüketilen alanı ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?view=azure-sqldw-latest&preserve-view=true)kullanmaktır.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988873"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650133"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -181,7 +181,7 @@ Daha fazla bilgi için bkz. [Azure AD 'de otomatik SaaS uygulaması Kullanıcı 
 
 Ocak 2021 ' de, federasyon desteğiyle uygulama galerimize aşağıdaki 29 yeni uygulamayı ekledik:
 
-[Myscview](https://dev.myscview.com/), [talentech](https://talentech.com/contact/), [bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [IO](https://app.m.io/auth/install/microsoft?scopetype=hub), [sovelto Easy](https://login.soveltoeasy.fi/), [SUPPORTBENCH](https://account.supportbench.net/agent/login/),[biensin](https://formation.bienvenue.pro/login)işleme, [Aida sağlık SSO](https://aidaforparents.com/login/organizations), [Uluslararası SOS yardım ürünleri](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [lablog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [ePhoto Dam](../saas-apps/ephoto-dam-tutorial.md), [kavram](../saas-apps/notion-tutorial.md), [syndio](../saas-apps/syndio-tutorial.md), [sarılo Enterprise](../saas-apps/yello-enterprise-tutorial.md), [TimeClock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [NALCO E-Data](https://www.ecolab.com/), [boş konum filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerıse AI büyüme ekosistemi](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [zva Data Security](../saas-apps/imperva-data-security-tutorial.md), [Illusive Networks](../saas-apps/illusive-networks-tutorial.md), [proware](../saas-apps/proware-tutorial.md), [splan ziyaretçisi](../saas-apps/splan-visitor-tutorial.md), [Aruba Kullanıcı deneyimi öngörüleri](../saas-apps/aruba-user-experience-insight-tutorial.md), [contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md), [çevre 81](../saas-apps/perimeter-81-tutorial.md), [Burp Suite Enterprise Edition](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)
+[Myscview](https://dev.myscview.com/), [talentech](https://talentech.com/contact/), [bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [IO](https://app.m.io/auth/install/microsoft?scopetype=hub), [sovelto Easy](https://login.soveltoeasy.fi/), [SUPPORTBENCH](https://account.supportbench.net/agent/login/),[biensin](https://formation.bienvenue.pro/login)işleme, [Aida sağlık SSO](https://aidaforparents.com/login/organizations), [Uluslararası SOS yardım ürünleri](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [lablog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [ePhoto Dam](../saas-apps/ephoto-dam-tutorial.md), [kavram](../saas-apps/notion-tutorial.md), [syndio](../saas-apps/syndio-tutorial.md), [sarılo Enterprise](../saas-apps/yello-enterprise-tutorial.md), [TimeClock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [NALCO E-Data](https://www.ecolab.com/), [boş konum filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerıse AI büyüme ekosistemi](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [zva Data Security](../saas-apps/imperva-data-security-tutorial.md), [Illusive Networks](../saas-apps/illusive-networks-tutorial.md), [proware](../saas-apps/proware-tutorial.md), [splan ziyaretçisi](../saas-apps/splan-visitor-tutorial.md), [Aruba Kullanıcı deneyimi öngörüleri](../saas-apps/aruba-user-experience-insight-tutorial.md), [contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md), [çevre 81](../saas-apps/perimeter-81-tutorial.md), [Burp Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
 
 Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
 
@@ -806,11 +806,11 @@ Azure AD Connect bulut sağlama genel önizleme yenileme özellikleri müşteri 
 
 - Azure portal aracılığıyla öznitelik eşleme deneyimi
 
-    Bu özellikle, BT yöneticileri Kullanıcı, Grup veya iletişim özniteliklerini AD 'den Azure AD 'ye eşleyerek bugün mevcut çeşitli eşleme türlerini kullanarak eşleyebilirsiniz. Öznitelik eşleme, Active Directory ' den Azure Active Directory akan özniteliklerin değerlerini standartlaştırarak kullanılan bir özelliktir. Bunlardan biri, AD 'den Azure AD 'ye ait olan öznitelik değerinin doğrudan eşlenip eşlenmeyeceğini belirleyebilir veya kullanıcıları sağlarken öznitelik değerlerini dönüştürmek için ifadeler kullanın. [Daha fazla bilgi edinin](../cloud-provisioning/how-to-attribute-mapping.md)
+    Bu özellikle, BT yöneticileri Kullanıcı, Grup veya iletişim özniteliklerini AD 'den Azure AD 'ye eşleyerek bugün mevcut çeşitli eşleme türlerini kullanarak eşleyebilirsiniz. Öznitelik eşleme, Active Directory ' den Azure Active Directory akan özniteliklerin değerlerini standartlaştırarak kullanılan bir özelliktir. Bunlardan biri, AD 'den Azure AD 'ye ait olan öznitelik değerinin doğrudan eşlenip eşlenmeyeceğini belirleyebilir veya kullanıcıları sağlarken öznitelik değerlerini dönüştürmek için ifadeler kullanın. [Daha fazla bilgi edinin](../cloud-sync/how-to-attribute-mapping.md)
 
 - İsteğe bağlı sağlama veya test Kullanıcı deneyimi
 
-    Yapılandırmanızı ayarladıktan sonra, Kullanıcı dönüşümünün kapsamdaki tüm kullanıcılarınıza uygulamadan önce beklendiği gibi çalışıp çalışmadığını görmek için test etmek isteyebilirsiniz. İsteğe bağlı sağlama sayesinde, BT yöneticileri bir AD kullanıcısının ayırt edici adını (DN) girebilir ve beklenen şekilde eşitlenip eşitlenmediğini görebilirler. İsteğe bağlı sağlama, daha önce beklenen şekilde çalışan öznitelik eşleştirmelerinin sağlanması için harika bir yol sağlar. [Daha Fazla Bilgi](../cloud-provisioning/how-to-on-demand-provision.md)
+    Yapılandırmanızı ayarladıktan sonra, Kullanıcı dönüşümünün kapsamdaki tüm kullanıcılarınıza uygulamadan önce beklendiği gibi çalışıp çalışmadığını görmek için test etmek isteyebilirsiniz. İsteğe bağlı sağlama sayesinde, BT yöneticileri bir AD kullanıcısının ayırt edici adını (DN) girebilir ve beklenen şekilde eşitlenip eşitlenmediğini görebilirler. İsteğe bağlı sağlama, daha önce beklenen şekilde çalışan öznitelik eşleştirmelerinin sağlanması için harika bir yol sağlar. [Daha Fazla Bilgi](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ Daha önce, [uzantı özelliğini](/graph/api/application-post-extensionproperty
 Microsoft Identity Manager (MıM) 2016 Service Pack 2 (SP2) için bir [düzeltme paketi paketi (Build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) kullanılabilir. Bu toplu paket MIM CM, MıM Eşitleme Yöneticisi ve PAM bileşenleri için güncelleştirmeleri içerir. Ayrıca, MıM genel bağlayıcıları derleme 1.1.1301.0, Graph Bağlayıcısı için güncelleştirmeleri içerir.
 
 ---
- 
-
-

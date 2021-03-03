@@ -41,7 +41,7 @@
           href: b2b-fundamentals.md
         - name: B2B ve Office 365 dış paylaşım
           href: o365-external-user.md
-        - name: Davet kullanma
+        - name: Davet teminat ve oturum açma
           href: redemption-experience.md
         - name: Davet e-postası
           href: invitation-email-elements.md
@@ -57,9 +57,9 @@
           href: hybrid-organizations.md
         - name: Dış Kimlikler için kimlik sağlayıcıları
           href: identity-providers.md
-        - name: Self servis kaydolma için kullanıcı akışları (Önizleme)
+        - name: Self Servis kaydolma Kullanıcı akışları
           href: self-service-sign-up-overview.md
-        - name: Self servis kaydolma için API bağlayıcıları (Önizleme)
+        - name: Self Servis kaydolma API bağlayıcıları
           href: api-connectors-overview.md
         - name: Azure AD yetkilendirme yönetimi
           href: self-service-portal.md
@@ -68,23 +68,25 @@
     - name: Nasıl yapılır kılavuzları
       expanded: true
       items:
-        - name: Dış işbirliği ayarlarını yapılandırma
-          href: delegate-invitations.md
+        - name: B2B işbirliğini ayarlama
+          items:
+            - name: Dış işbirliği ayarlarını yapılandırma
+              href: delegate-invitations.md
+            - name: Etki alanlarına izin ver veya engelle
+              href: allow-deny-list.md
         - name: Konuk kullanıcı davet etme
           items:
-            - name: B2B kullanıcıları ekleyen yöneticiler
+            - name: Konuk kullanıcıları ekleme ve davet etme (Yöneticiler için)
               href: add-users-administrator.md
-            - name: B2B kullanıcıları ekleyen bilgi çalışanları
+            - name: Konuk kullanıcıları bir uygulamaya davet etme (uygulama sahipleri için)
               href: add-users-information-worker.md
             - name: İç kullanıcıları B2B’ye davet etme
               href: invite-internal-users.md
-            - name: Davetlere izin verme veya davetleri engelleme
-              href: allow-deny-list.md
             - name: Davetiye olmadan B2B kullanıcıları ekleme
               href: add-user-without-invite.md
-            - name: Davet API’si ve özelleştirme
+            - name: API kullanarak davetleri özelleştirme
               href: customize-invitation-api.md
-        - name: Kimlik sağlayıcıları ile federasyon
+        - name: Dış kimlik sağlayıcılarıyla federasyona ekleme
           items:
             - name: Google federasyonu
               href: google-federation.md
@@ -94,9 +96,9 @@
               href: direct-federation.md
             - name: AD FS ile doğrudan federasyon örneği
               href: direct-federation-adfs.md
-        - name: Bir kerelik geçiş kodu kimlik doğrulaması
+        - name: Tek seferlik geçiş kodlarını etkinleştir (OTP)
           href: one-time-passcode.md
-        - name: Konuk kullanıcılar için self servis kaydolma (Önizleme)
+        - name: Konuk kullanıcılar için self servis kaydolma ekleme
           items:
             - name: Self servis kaydolma için kullanıcı akışı ekleme
               href: self-service-sign-up-user-flow.md

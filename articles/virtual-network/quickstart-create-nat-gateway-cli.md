@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8d14b8b83fd784956091e738a38d6851d5edacd9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1d505c8f363e908a43c751c6253ed0f3a14b3b51
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927140"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671551"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>Azure CLı kullanarak bir NAT ağ geçidi oluşturma
 
@@ -59,7 +59,7 @@ Genel Internet 'e erişmek için NAT ağ geçidi için bir veya daha fazla genel
 
 ### <a name="create-a-public-ip-prefix"></a>Genel IP öneki oluşturma
 
-NAT ağ geçidiyle bir veya daha fazla genel IP adresi kaynağı, genel IP ön ekleri veya her ikisini birden kullanabilirsiniz. Bu senaryoya göstermek için genel bir IP öneki kaynağı ekleyeceğiz.   **Myresourcegroupnat** Içinde **Mypublicipprefix** adlı bir genel IP ön eki kaynağı oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) komutunu kullanın.
+NAT ağ geçidiyle bir veya daha fazla genel IP adresi kaynağı, genel IP ön ekleri veya her ikisini birden kullanabilirsiniz. Bu senaryoya göstermek için genel bir IP ön eki kaynağı ekleyeceğiz. **Myresourcegroupnat** Içinde **Mypublicipprefix** adlı bir genel IP ön eki kaynağı oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) komutunu kullanın.
 
 ```azurecli-interactive
   az network public-ip prefix create \

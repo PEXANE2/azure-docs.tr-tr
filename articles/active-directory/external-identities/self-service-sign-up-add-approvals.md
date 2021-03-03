@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355248"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644876"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Self Servis kaydolma 'ya özel bir onay iş akışı ekleme
 
@@ -81,7 +81,7 @@ Bu bağlayıcıları oluşturmak için [API Bağlayıcısı oluşturma](self-ser
 1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
 2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
-4. **Kullanıcı akışları ' nı (Önizleme)** seçin ve ardından API bağlayıcısını etkinleştirmek istediğiniz kullanıcı akışını seçin.
+4. **Kullanıcı akışları**' nı seçin ve ardından API bağlayıcısını etkinleştirmek istediğiniz kullanıcı akışını seçin.
 5. **API bağlayıcıları**' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
 
    - **Bir kimlik sağlayıcısı ile oturum açtıktan sonra**: onay durumu API bağlayıcısını seçin, örneğin onay _durumunu kontrol edin_.
@@ -323,11 +323,11 @@ Content-type: application/json
 
 | Parametre                                           | Gerekli | Açıklama                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Evet      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Evet      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
-| posta                                                | Evet      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
-| userType                                            | Evet      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
-| lerinizde                                          | Evet      | Federal kimlik bilgileri.                                                                                                                                    |
+| userPrincipalName                                   | Yes      | , `email` API 'ye gönderilen talep alınarak, `@` karakteri ile değiştirerek ve ile önceden bekleyerek oluşturulabilir `_` `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Olarak ayarlanmalıdır `true` .                                                                                                                                                 |
+| posta                                                | Yes      | `email`API 'ye gönderilen talebe denktir.                                                                                                               |
+| userType                                            | Yes      | Olmalıdır `Guest` . Bu kullanıcıyı Konuk Kullanıcı olarak belirler.                                                                                                                 |
+| lerinizde                                          | Yes      | Federal kimlik bilgileri.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | Hayır       | , Ve gibi diğer yerleşik öznitelikler `displayName` `city` . Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | Hayır       | Kullanıcı hakkındaki özel öznitelikler. Parametre adları, API Bağlayıcısı tarafından gönderilen parametrelerle aynıdır.                                                            |
 
@@ -357,8 +357,8 @@ POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
-    "inviteRedirectUrl" : "https://myapp.com"
+    "invitedUserEmailAddress": "johnsmith@fabrikam.onmicrosoft.com",
+    "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
 
@@ -370,9 +370,9 @@ Content-type: application/json
 
 {
     ...
-    "invitedUser": {
-        "id": "<generated-user-guid>"
-    }
+    "invitedUser": {
+        "id": "<generated-user-guid>"
+    }
 }
 ```
 

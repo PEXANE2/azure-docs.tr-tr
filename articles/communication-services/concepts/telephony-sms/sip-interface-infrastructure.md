@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100422488"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659265"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP arabirimi altyapı gereksinimleri 
 
@@ -31,7 +31,7 @@ SIP arabirimini dağıtmak için desteklenen SBCs, etki alanları ve diğer ağ 
 |Oturum sınır denetleyicisi (SBC)|Desteklenen bir SBC. Daha fazla bilgi için bkz. [desteklenen SBCS](#supported-session-border-controllers-sbcs).|
 |SBC 'ye bağlı telefon Trunks|Bir veya daha fazla telefon Trunks, SBC 'ye bağlandı. Bir uçta, SBC, SIP arabirimi aracılığıyla Azure Iletişim hizmetine bağlanır. SBC, PBXs, analog telefon bağdaştırıcıları vb. gibi üçüncü taraf telefon varlıklarına da bağlanabilir. SBC 'ye bağlı herhangi bir PSTN bağlantı seçeneği çalışacaktır. (PSTN Trunks 'in SBC 'ye yapılandırması için lütfen SBC satıcılarına veya santral sağlayıcısına bakın.)|
 |Azure aboneliği|ACS kaynağı oluşturmak için kullandığınız bir Azure aboneliği ve SBC ile yapılandırma ve bağlantı.|
-|İletişim Hizmetleri erişim belirteci|Çağrı yapmak için kapsama sahip geçerli bir erişim belirtecine ihtiyacınız vardır `voip` . Bkz. [erişim belirteçleri](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)|
+|İletişim Hizmetleri erişim belirteci|Çağrı yapmak için kapsama sahip geçerli bir erişim belirtecine ihtiyacınız vardır `voip` . Bkz. [erişim belirteçleri](../identity-model.md#access-tokens)|
 |SBC için genel IP adresi|SBC 'ye bağlanmak için kullanılabilen genel bir IP adresi. SBC 'nin türüne bağlı olarak, SBC NAT kullanabilir.|
 |SBC için tam etki alanı adı (FQDN)|, FQDN 'nin etki alanı bölümünün Microsoft 365 veya Office 365 kuruluşunuzdaki kayıtlı etki alanlarıyla eşleşmediği, SBC için bir FQDN. Daha fazla bilgi için bkz. [SBC etki alanı adları](#sbc-domain-names).|
 |SBC için genel DNS girişi |SBC FQDN 'sini genel IP adresine eşleyen ortak bir DNS girişi. |
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, ad, kiracı için kayıtlı DNS adları örnekleri ve bu a
 |DNS adı|SBC FQDN için kullanılabilir|FQDN adı örnekleri|
 |:--- |:--- |:--- |
 contoso.com|Yes|**Geçerli adlar:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|No|SBC adlarında *. onmicrosoft.com etki alanlarının kullanılması desteklenmez
+|contoso.onmicrosoft.com|Hayır|SBC adlarında *. onmicrosoft.com etki alanlarının kullanılması desteklenmez
 
 Office 365 müşterisiyseniz, SBC etki alanı adının Office 365 kiracının etki alanlarında kayıtlı olması gerekir. Office 365 ve Azure Iletişim hizmeti 'nin birlikte bulunma örneği aşağıda verilmiştir:
 
@@ -187,7 +187,7 @@ Bulut medyası Işlemcisi ve ACS SDK uygulaması arasındaki Bata SILK veya G. 7
 
 ## <a name="supported-session-border-controllers-sbcs"></a>Desteklenen oturum kenarlığı denetleyicileri (SBCs)
 
-Sertifika devam ediyor. Bu arada, müşteriler [ekip sertifikalı oturum kenarlığı denetleyicileri](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers)kullanabilir. 
+Sertifika devam ediyor. Bu arada, müşteriler [ekip sertifikalı oturum kenarlığı denetleyicileri](/MicrosoftTeams/direct-routing-border-controllers)kullanabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

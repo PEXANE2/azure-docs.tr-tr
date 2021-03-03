@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593104"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647447"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -30,20 +30,20 @@ Microsoft Identity platformu, yalnızca kayıtlı uygulamalar için kimlik ve er
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Kiracı hızlı başlangıcı [ayarlama](quickstart-create-new-tenant.md) işleminin tamamlanması.
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, bunun diğer bir yolu değildir.
 
 Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure portalında</a> oturum açın.
 1. Birden çok kiracıya erişiminiz varsa, en üstteki menüde, bir uygulamayı kaydetmek istediğiniz kiracıyı seçmek için **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir. Daha sonra değiştirebilirsiniz.
 1. Bazen *oturum açma kiti* olarak adlandırılan, uygulamayı ne şekilde kullanacağınızı belirtin.
 
-    | Desteklenen hesap türleri | Description |
+    | Desteklenen hesap türleri | Açıklama |
     |-------------------------|-------------|
     | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu uygulama, Microsoft Identity platformunda *tek kiracılı* bir uygulamadır. |
     | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure Active Directory (Azure AD) kiracısındaki kullanıcıların uygulamanızı kullanabilbilmesini istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu tür bir uygulama, Microsoft Identity platformunda *çok kiracılı* bir uygulama olarak bilinir. |
@@ -110,7 +110,7 @@ Bazen *ortak anahtar* olarak da bilinen bir sertifika, önerilen kimlik bilgisi 
 1. Azure portal, **uygulama kayıtları**' de Uygulamanızı seçin.
 1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası**' nı seçin.
 1. Karşıya yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: *. cer*, *. pek*, *. CRT*.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="add-a-client-secret"></a>İstemci parolası ekleme
 
@@ -122,7 +122,7 @@ Uygulama güvenliği önerileri hakkında daha fazla bilgi için bkz. [Microsoft
 1. **Sertifikalar & parolaları** seçin  >   **yeni istemci gizli anahtarı**.
 1. İstemci gizli diziniz için bir açıklama ekleyin.
 1. Bir süre seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. *Gizli dizi değerini* istemci uygulama kodunuzda kullanmak üzere kaydedin. Bu gizli değer bu sayfadan ayrıldıktan sonra *hiçbir şekilde hiçbir şekilde gösterilmez* .
 
 

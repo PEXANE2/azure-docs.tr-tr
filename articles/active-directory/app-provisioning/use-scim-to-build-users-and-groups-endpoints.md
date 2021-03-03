@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652046"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650167"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Öğretici: örnek SCıM uç noktası geliştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>SCıM uç noktanızı Azure 'da dağıtma
 
-Buradaki adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) ve [Azure App Service](https://docs.microsoft.com/azure/app-service/)kullanarak SCIM uç noktasını bir hizmete dağıtır. SCıM başvuru kodu, şirket içi bir sunucu tarafından barındırılan veya başka bir dış hizmete dağıtılan yerel olarak da çalıştırılabilir.
+Buradaki adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) ve [Azure App Service](../../app-service/index.yml)kullanarak SCIM uç noktasını bir hizmete dağıtır. SCıM başvuru kodu, şirket içi bir sunucu tarafından barındırılan veya başka bir dış hizmete dağıtılan yerel olarak da çalıştırılabilir.
 
 1. GitHub 'dan [başvuru koduna](https://github.com/AzureAD/SCIMReferenceCode) gidin ve **Kopyala ya da indir**' i seçin.
 

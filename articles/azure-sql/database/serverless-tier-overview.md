@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393250"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658597"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,9 +103,9 @@ CPU kullanımı düşük olduğunda, etkin önbellek kullanımının kullanım d
 
 Veriler diskten aynı şekilde ve sağlanan veritabanları için aynı hızda getirilirken, SQL önbelleği artar. Veritabanı meşgulse, önbelleğin en yüksek bellek sınırına kadar kısıtlı olarak büyümesine izin verilir.
 
-## <a name="auto-pause-and-auto-resume"></a>Otomatik duraklatma ve otomatik olarak devam etmeyi bırak
+## <a name="auto-pausing-and-auto-resuming"></a>Otomatik duraklatma ve otomatik sürdürme
 
-### <a name="auto-pause"></a>Otomatik duraklatma
+### <a name="auto-pausing"></a>Otomatik duraklatma
 
 Otomatik duraklatma gecikmesi süresi için aşağıdaki koşulların tümü doğru olursa otomatik duraklatma tetiklenir:
 

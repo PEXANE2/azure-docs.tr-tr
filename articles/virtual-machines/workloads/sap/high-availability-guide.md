@@ -8,20 +8,19 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b506ada0bc072a4174de6f884d1814a63f1f93ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6aedaf829df941a225cd0684318f28bb06ba89d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012519"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674600"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -658,7 +657,7 @@ _**Şekil 9:** SAP yüksek kullanılabilirliğe sahip mimari Şablon 2, yoks/SCS
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Mimari şablonu kullanarak dağıtım senaryosu 3
 
-Şekil 10 ' da, **two** &lt; SID1 &gt; ve SID2 ile Iki SAP SISTEMI Için Azure 'da SAP NetWeaver yüksek kullanılabilirlik mimarisine bir örnek gösterilmektedir &lt; &gt; . Bu senaryo aşağıdaki şekilde ayarlanır:
+Şekil 10 ' da,  &lt; SID1 &gt; ve SID2 ile Iki SAP SISTEMI Için Azure 'da SAP NetWeaver yüksek kullanılabilirlik mimarisine bir örnek gösterilmektedir &lt; &gt; . Bu senaryo aşağıdaki şekilde ayarlanır:
 
 - SAP ASCS/SCS SID1 örneği *ve* SAP ascs/SCS SID2 örneği (bir küme **) için ayrılmış** bir küme kullanılır.
 - DBMS SID1 için bir adanmış küme kullanılır ve DBMS SID2 (iki küme) için başka bir adanmış küme kullanılır.

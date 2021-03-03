@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ef547bea9ba84665ec7187a5adf2f7a7d87e0a4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681086"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666325"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet ve JSON dosyalarındaki iç içe türleri sorgulama
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Aşağıdaki sorgu, yatsimplearray. Parquet dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden skaler bir öğe almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanır:
+Aşağıdaki sorgu, yatsimplearray. Parquet dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden skaler bir öğe almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanır:
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ Sonuç şu şekildedir:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Karmaşık sütunlardan alt nesnelere erişme
 
-Aşağıdaki sorgu, mapExample. Parquet dosyasını okur ve bir dizi veya eşleme gibi yinelenen bir sütunun içinden skalar olmayan bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanır:
+Aşağıdaki sorgu, mapExample. Parquet dosyasını okur ve bir dizi veya eşleme gibi yinelenen bir sütunun içinden skalar olmayan bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanır:
 
 ```sql
 SELECT

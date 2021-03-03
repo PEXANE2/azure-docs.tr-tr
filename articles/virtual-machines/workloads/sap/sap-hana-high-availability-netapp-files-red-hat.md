@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259211"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671558"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
 
@@ -91,7 +90,7 @@ Bu belgedeki adımlar aşağıdaki öneklerle işaretlendiğinde, anlamı aşağ
     - [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi.](https://access.redhat.com/solutions/3193782)
     - [HANA dosya sistemleri NFS paylaşımlarındaytığında, genişleme sistem çoğaltmasını yukarı Paceoluşturucu kümesi SAP HANA yapılandırma](https://access.redhat.com/solutions/5156571)
 - [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları](https://www.netapp.com/us/media/tr-4746.pdf)
-- [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -249,7 +248,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](../..
         1.  **Sanal makine Ekle**' yi seçin.
         1.  * * Sanal makine * * öğesini seçin.
         1.  SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-        1.  **Ekle**’yi seçin.
+        1.  **Add (Ekle)** seçeneğini belirleyin.
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
@@ -701,4 +700,4 @@ Bu bölüm, kurulumunuzu nasıl test kullanabileceğinizi açıklar.
 * [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
-* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri](./hana-vm-operations-netapp.md)

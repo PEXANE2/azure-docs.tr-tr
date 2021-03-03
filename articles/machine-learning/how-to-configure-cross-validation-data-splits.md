@@ -10,13 +10,13 @@ ms.custom: how-to, automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 06/16/2020
-ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/23/2021
+ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599060"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661044"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
@@ -26,12 +26,12 @@ Azure Machine Learning ' de, otomatik ML 'yi birden çok ML modeli oluşturmak i
 
 Otomatik ML denemeleri otomatik olarak model doğrulaması gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
 
-Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)makalesine bakın. 
+Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)makalesine bakın. 
 
 > [!NOTE]
 > Studio şu anda eğitim ve doğrulama verileri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede,
 
@@ -73,6 +73,9 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 
 Bu durumda, tek bir veri dosyası ile başlayabilir ve bunu eğitim verilerine ve doğrulama veri kümelerine bölebilir ya da doğrulama kümesi için ayrı bir veri dosyası sağlayabilirsiniz. Her iki durumda da, `validation_data` nesnenizin parametresi `AutoMLConfig` doğrulama kümesi olarak hangi verileri kullanacağınızı atar. Bu parametre yalnızca bir [Azure Machine Learning DataSet](how-to-create-register-datasets.md) veya Pandas dataframe biçimindeki veri kümelerini kabul eder.   
 
+> [!NOTE]
+> `validation_size`Tahmin senaryolarında parametre desteklenmez.
+
 Aşağıdaki kod örneği, içinde sunulan verilerin hangi kısmını `dataset` eğitim ve doğrulama için kullanmak üzere açıkça tanımlar.
 
 ```python
@@ -93,7 +96,12 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Doğrulama kümesi boyutu sağla
 
-Bu durumda, deneme için yalnızca tek bir veri kümesi sağlanır. Diğer bir deyişle, `validation_data` parametresi belirtilmez  ve belirtilen veri kümesi `training_data` parametreye atanır.  `AutoMLConfig`Nesneniz `validation_size` için, parametresini, doğrulama için eğitim verilerinin bir kısmını tutacak şekilde ayarlayabilirsiniz. Bu, doğrulama kümesinin başlangıçtaki ilk olarak, oto ml tarafından bölüneceği anlamına gelir `training_data` . Bu değer 0,0 ile 1,0 arasında olmalıdır (örneğin, 0,2 doğrulama verileri için verilerin %20 ' si tutulur).
+Bu durumda, deneme için yalnızca tek bir veri kümesi sağlanır. Diğer bir deyişle, `validation_data` parametresi belirtilmez  ve belirtilen veri kümesi `training_data` parametreye atanır.  
+
+`AutoMLConfig`Nesneniz `validation_size` için, parametresini, doğrulama için eğitim verilerinin bir kısmını tutacak şekilde ayarlayabilirsiniz. Bu, doğrulama kümesinin otomatik ML tarafından belirtilen ilk tarafından bölüneceği anlamına gelir `training_data` . Bu değer 0,0 ile 1,0 arasında olmalıdır (örneğin, 0,2 doğrulama verileri için verilerin %20 ' si tutulur).
+
+> [!NOTE]
+> `validation_size`Tahmin senaryolarında parametre desteklenmez. 
 
 Aşağıdaki kod örneğine bakın:
 
@@ -111,10 +119,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-## <a name="set-the-number-of-cross-validations"></a>Çapraz doğrulama sayısını ayarlama
+## <a name="k-fold-cross-validation"></a>Çapraz doğrulamayı yana kesme
 
-Çapraz doğrulama gerçekleştirmek için `n_cross_validations` parametresini ekleyin ve bir değere ayarlayın. Bu parametre, kaç tane çapraz doğrulamayı, aynı sayıda katlara göre gerçekleştirileceğini ayarlar.
+K katlama çapraz doğrulama gerçekleştirmek için `n_cross_validations` parametresini ekleyin ve bir değere ayarlayın. Bu parametre, kaç tane çapraz doğrulamayı, aynı sayıda katlara göre gerçekleştirileceğini ayarlar.
 
+> [!NOTE]
+> `n_cross_validations`Derin sinir ağlarını kullanan sınıflandırma senaryolarında parametre desteklenmez.
+ 
 Aşağıdaki kodda, çapraz doğrulama için beş katların tanımlanması gerekir. Bu nedenle, beş farklı seyahat, veri 4/5 kullanan her eğitim ve her bir doğrulama, her seferinde farklı bir gizleme katlamalı şekilde verilerin 1/5 ' i kullanıyor.
 
 Sonuç olarak, ölçümler, beş doğrulama ölçümlerinin ortalaması ile hesaplanır.
@@ -129,6 +140,31 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                              primary_metric = 'AUC_weighted',
                              training_data = dataset,
                              n_cross_validations = 5
+                             label_column_name = 'Class'
+                            )
+```
+## <a name="monte-carlo-cross-validation"></a>Monte Carlo çapraz doğrulama
+
+Monte Carlo çapraz doğrulama gerçekleştirmek için, nesnenizin hem hem `validation_size` de `n_cross_validations` parametreleri ekleyin `AutoMLConfig` . 
+
+Monte Carlo çapraz doğrulaması için otomatik ML, doğrulama için parametresi tarafından belirtilen eğitim verilerinin bölümünü bir kenara koyar `validation_size` ve daha sonra eğitim için verilerin geri kalanını atar. Bu işlem daha sonra parametresinde belirtilen değere göre tekrarlanır `n_cross_validations` ; her seferinde rastgele olan yeni eğitim ve doğrulama bölmelerini oluşturur.
+
+> [!NOTE]
+> Tahmin senaryolarında Monte Carlo çapraz doğrulaması desteklenmez.
+
+Takip kodu tanımlar, çapraz doğrulama için 7 katds ve eğitim verilerinin %20 ' si doğrulama için kullanılmalıdır. Bu nedenle, 7 farklı seyahat, her eğitim verilerin %80 ' sini kullanır ve her doğrulama her seferinde farklı bir gizleme katlamalı verilerin %20 ' sini kullanır.
+
+```python
+data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
+
+dataset = Dataset.Tabular.from_delimited_files(data)
+
+automl_config = AutoMLConfig(compute_target = aml_remote_compute,
+                             task = 'classification',
+                             primary_metric = 'AUC_weighted',
+                             training_data = dataset,
+                             n_cross_validations = 7
+                             validation_size = 0.2,
                              label_column_name = 'Class'
                             )
 ```

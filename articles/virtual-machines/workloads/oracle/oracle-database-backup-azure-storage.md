@@ -2,18 +2,19 @@
 title: RMAN ve Azure Storage ile Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme
 description: Oracle Database 19c veritabanını Azure bulut depolama alanına nasıl yedekleyeceğinizi öğrenin.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806282"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670023"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Azure Storage kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 
@@ -405,4 +406,4 @@ az group delete --name rg-oracle
 
 [Öğretici: yüksek oranda kullanılabilir VM 'Ler oluşturma](../../linux/create-cli-complete.md)
 
-[VM dağıtımı Azure CLı örneklerini keşfet](../../linux/cli-samples.md)
+[VM dağıtımı Azure CLı örneklerini keşfet](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

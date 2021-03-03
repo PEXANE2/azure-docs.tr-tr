@@ -4,16 +4,16 @@ description: Azure PowerShell modülünü veya Azure CLı kullanarak mevcut yön
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f67113b2e2afa16456321b0ee2a94ce80fab4d81
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900969"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674930"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell modülünü veya Azure CLı 'yi kullanarak performans katmanınızı değiştirin
 
@@ -114,6 +114,36 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
+
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Kesinti olmadan bir diskin performans katmanını değiştirme (Önizleme)
+
+Performans katmanınızı kesinti olmadan da değiştirebilirsiniz, bu sayede sanal makineyi serbest bırakmak veya katmanı değiştirmek için diskinizi ayırmanız gerekmez. Önizleme için daha fazla bilgi ve bağlantı kaydolma bağlantısı için [kapalı kalma süresi olmadan performans katmanını değiştirme (Önizleme)](#changing-performance-tier-without-downtime-preview) bölümüne bakın.
+
+
+Aşağıdaki betik, [ üzerindeCreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)örnek şablon kullanarak temel katmandan daha yüksek bir diskin katmanını güncelleştirecek. ,,, `<yourSubScriptionID>` `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` Ve `<yourDesiredPerformanceTier>` sonra betiği çalıştırın:
+
+ ```cli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+diskName=<yourDiskName>
+diskSize=<yourDiskSize>
+performanceTier=<yourDesiredPerformanceTier>
+region=EastUS2EUAP
+
+ az login
+
+ az account set --subscription $subscriptionId
+
+ az group deployment create -g $resourceGroupName \
+--template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
+--parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
+```
+
+Performans katmanı değişikliğinin tamamlanması 15 dakika kadar sürebilir. Diskinizin katmanları değiştirdiğini onaylamak için aşağıdaki komutu kullanın:
+
+```cli
+az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806163"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671915"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
 
@@ -37,7 +36,7 @@ Bu örnekte, ürün sürümü ve dosya sistemi düzeninin altında kullanılır
 - MySQL için Azure veritabanı (sürüm: 8.0.15)
 - MySQL C API Bağlayıcısı-libmysqlclient (sürüm: 6.1.11)
 
-| Dosya Sistemi        | Description                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
+| Dosya Sistemi        | Açıklama                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/SAP           | SAP BOBI örneği, varsayılan Tomcat Web uygulaması ve veritabanı sürücüleri (gerekliyse) yüklemek için dosya sistemi | SAP boyutlandırma yönergeleri | bl1adm | sapsys | Yönetilen Premium disk-SSD |
 | /usr/SAP/frsinput  | Bağlama dizini, giriş dosyası deposu dizini olarak kullanılacak tüm BOBI konaklarındaki paylaşılan dosyalara yöneliktir  | İşletme gereksinimi         | bl1adm | sapsys | Azure NetApp Files         |

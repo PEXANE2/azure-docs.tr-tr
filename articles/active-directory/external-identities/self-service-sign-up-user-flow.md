@@ -5,22 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586032"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647345"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
-> [!NOTE]
-> Self Servis kaydolma, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme
 
 Kuruluşunuz tarafından oluşturulan uygulamalar için Kullanıcı akışları oluşturabilirsiniz. Kullanıcı akışınızı bir uygulamayla ilişkilendirmek, bu uygulamanın kaydolmasına olanak tanır. Kullanıcı akışıyla ilişkilendirmek için birden fazla uygulama seçebilirsiniz. Kullanıcı akışını bir veya daha fazla uygulamayla ilişkilendirdikten sonra, uygulamayı ziyaret eden kullanıcılar, Kullanıcı akışında yapılandırılan seçenekleri kullanarak bir Konuk hesabı elde edebilir.
 
@@ -36,9 +34,6 @@ Azure AD, self servis kaydolma için varsayılan kimlik sağlayıcıdır. Bu, ku
 - [Sosyal kimlik sağlayıcıları listenize Facebook ekleyin](facebook-federation.md)
 - [Sosyal kimlik sağlayıcıları listenize Google ekleyin](google-federation.md)
 
-> [!NOTE]
-> Geçerli önizlemede, bir self servis kaydolma Kullanıcı akışı bir uygulamayla ilişkiliyse ve bu uygulamaya bir Kullanıcı daveti gönderirseniz, Kullanıcı daveti kullanmak için bir Gmail hesabı kullanamaz. Geçici bir çözüm olarak, Kullanıcı self servis kaydolma işlemini gerçekleştirebilir. Ya da, farklı bir uygulamaya erişerek veya ' de My Apps Portal ' ı kullanarak daveti kullanabilirler https://myapps.microsoft.com .
-
 ### <a name="define-custom-attributes-optional"></a>Özel öznitelikleri tanımla (isteğe bağlı)
 
 Kullanıcı öznitelikleri, self servis kaydolma sırasında kullanıcıdan toplanan değerlerdir. Azure AD, yerleşik bir öznitelikler kümesiyle birlikte gelir, ancak Kullanıcı akışınızda kullanılmak üzere özel öznitelikler de oluşturabilirsiniz. Ayrıca, Microsoft Graph API 'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Bkz. [Kullanıcı akışları için özel öznitelikler tanımlama](user-flow-add-custom-attributes.md).
@@ -50,7 +45,7 @@ Uygulamalarınıza self servis kaydolma Kullanıcı akışı ekleyebilmeniz içi
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
 2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. **Kullanıcı ayarları**' nı seçin ve ardından **dış kullanıcılar** altında **dış işbirliği ayarlarını yönet**' i seçin.
-4. **Konuk self servis kaydolma özelliğini Kullanıcı akışları aracılığıyla (Önizleme) etkinleştir** **Evet** olarak ayarlayın.
+4. **Kullanıcı akışları aracılığıyla konuk self servis kaydolmayı etkinleştir** ' i **Evet** olarak ayarlayın.
 
    ![Konuk self servis kaydolma özelliğini etkinleştirme](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. **Kaydet**’i seçin.
@@ -61,7 +56,7 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
 2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
-4. **Kullanıcı akışları ' nı (Önizleme)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+4. **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 
    ![Yeni Kullanıcı akışı düğmesi ekleme](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -75,14 +70,14 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 > Öznitelikleri yalnızca bir Kullanıcı ilk kez kaydolduğunda toplayabilirsiniz. Kullanıcı kaydolduktan sonra, kullanıcı akışını değiştirseniz bile, bu kullanıcılara artık öznitelik bilgilerini toplaması istenmez.
 
 8. **Oluştur**’u seçin.
-9. Yeni Kullanıcı akışı, **Kullanıcı akışları (Önizleme)** listesinde görünür. Gerekirse, sayfayı yenileyin.
+9. Yeni Kullanıcı akışı, **Kullanıcı akışları** listesinde görünür. Gerekirse, sayfayı yenileyin.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Öznitelik koleksiyonu formunun yerleşimini seçin
 
 Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz. 
 
 1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
-2. **Dış kimlikler**' i seçin, **Kullanıcı akışları ' nı (Önizleme)** seçin.
+2. **Dış kimlikler**' i seçin, **Kullanıcı akışları**' nı seçin.
 3. Listeden self servis kaydolma Kullanıcı akışını seçin.
 4. **Özelleştir** altında **sayfa düzenleri**' ni seçin.
 5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı** taşı, **aşağı taşı**, **üste** taşı veya **en alta taşı**' yı seçin.
@@ -95,7 +90,7 @@ Artık uygulamaları Kullanıcı akışıyla ilişkilendirebilirsiniz.
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
 2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
-4. **Self servis kaydolma** altında Kullanıcı akışları ' nı **(Önizleme)** seçin.
+4. **Self servis kaydolma** altında **Kullanıcı akışları**' nı seçin.
 5. Listeden self servis kaydolma Kullanıcı akışını seçin.
 6. Sol taraftaki menüde, **kullan** altında, **uygulamalar**' ı seçin.
 7. **Uygulama Ekle**' yi seçin.

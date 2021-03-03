@@ -2,18 +2,18 @@
 title: Azure sanal makinelerinde Oracle WebLogic Server çalıştırmaya yönelik çözümler nelerdir?
 description: Microsoft Azure Sanal Makineler 'da Oracle WebLogic Server çalıştırmayı öğrenin.
 author: rezar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
-ms.reviewer: cynthn
-ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e2d9ef1d864d18122e7718c9be99eba8b7cf3973
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486700"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672125"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
 
@@ -33,7 +33,7 @@ _Bu teklifler, kendi lisansını getir_. Bunlar, Oracle ile ilgili lisansların�
 
 Teklifler, temel görüntüler (Oracle Linux 7,6 ' de WebLogic Server 14 ve JDK 11 gibi) aracılığıyla bir dizi işletim sistemi, Java ve WLS sürümü destekler. Bu temel görüntüler, Azure 'da kendi kendine de kullanılabilir. Temel görüntüler, karmaşık ve özelleştirilmiş Azure dağıtımları gerektiren müşteriler için uygundur. Geçerli temel görüntü kümesine [buradan](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)ulaşabilirsiniz.
 
-_Bu teklifleri geliştirirken mühendislik ekibinin geçiş senaryolarınız üzerinde yakından çalışmaya ilgileniyorsanız [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ [Market TEKLIFININ Genel Bakış sayfasında](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)benimle iletişim kurun düğmesini seçin. Program yöneticileri, mimarlar ve mühendisler, kısa bir süre sonra tekrar çalışmaya başlar ve işbirliğini kapatın. Bir geçiş senaryosunda işbirliği yapma fırsatı, teklifler etkin ilk geliştirme altındayken ücretsizdir.
+_Bu teklifleri geliştirirken mühendislik ekibinin geçiş senaryolarınız üzerinde yakından çalışmaya ilgileniyorsanız [](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ [Market TEKLIFININ Genel Bakış sayfasında](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)benimle iletişim kurun düğmesini seçin. Program yöneticileri, mimarlar ve mühendisler, kısa bir süre sonra tekrar çalışmaya başlar ve işbirliğini kapatın. Bir geçiş senaryosunda işbirliği yapma fırsatı, teklifler etkin ilk geliştirme altındayken ücretsizdir.
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server tek düğüm
 

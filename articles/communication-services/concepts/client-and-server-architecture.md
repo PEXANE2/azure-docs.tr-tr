@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653824"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656236"
 ---
 # <a name="client-and-server-architecture"></a>İstemci ve sunucu mimarisi
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,7 +54,7 @@ Birçok senaryo, yerel uygulamalarla en iyi şekilde sunulur. Azure Iletişim Hi
 Telefon sistemi üzerinden iletişim kurmak, uygulamanızın erişim düzeyini önemli ölçüde artırabilir. Azure Iletişim Hizmetleri, PSTN ses ve SMS senaryolarını desteklemek için doğrudan Azure portal veya REST API 'Leri ile istemci kitaplıklarını kullanarak [telefon numaralarını elde](../quickstarts/telephony-sms/get-phone-number.md) etmenize yardımcı olur. Telefon numaraları alındıktan sonra, hem gelen hem de giden senaryolarda hem PSTN çağırma hem de SMS kullanarak müşterilere ulaşmak için kullanılabilirler. Örnek mimari akışı aşağıda bulunabilir:
 
 > [!Note]
-> Genel Önizleme sırasında ABD telefon numaralarının sağlanması ABD ve Kanada 'da fatura adresi bulunan müşteriler tarafından kullanılabilir. 
+> Genel Önizleme sırasında ABD telefon numaralarının sağlanması ABD ve Kanada 'da fatura adresi bulunan müşteriler tarafından kullanılabilir.
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Iletişim Hizmetleri PSTN mimarisini gösteren diyagram.":::
 

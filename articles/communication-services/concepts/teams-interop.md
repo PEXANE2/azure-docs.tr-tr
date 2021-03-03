@@ -9,20 +9,21 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 34d2a18d2e556b7eb9916d058c4d80fe0956ba55
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d369e976ab1ba4e33f5eb21edb92054678f9040f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554739"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655743"
 ---
 # <a name="teams-interoperability"></a>Teams ile birlikte çalışabilirlik
 
-[!INCLUDE [Private Preview Notice](../includes/private-preview-include.md)]
+> [!IMPORTANT]
+> [Ekipte kiracı birlikte çalışabilirliğini](../concepts/teams-interop.md)etkinleştirmek/devre dışı bırakmak için [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)doldurun.
 
 Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video, sohbet ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.
 
-Takımlar birlikte çalışabilirliği, kullanıcıları takımlar toplantılarına bağlayan özel uygulamalar oluşturmanıza olanak tanır. Özel uygulamalarınızın kullanıcılarının, bu özelliği denemek için Azure Active Directory kimlikleri veya takımlar lisanslarına sahip olması gerekmez. Bu, çalışanları (ekiplere tanıdık gelebilir) ve harici kullanıcıları (özel bir uygulama deneyimi kullanarak) sorunsuz bir toplantı deneyimiyle birlikte getirmek için idealdir. Örneğin:
+Takımlar birlikte çalışabilirliği, kullanıcıları takımlar toplantılarına bağlayan özel uygulamalar oluşturmanıza olanak tanır. Özel uygulamalarınızın kullanıcılarının, bu özelliği denemek için Azure Active Directory kimlikleri veya takımlar lisanslarına sahip olması gerekmez. Bu, çalışanları (ekiplere tanıdık gelebilir) ve harici kullanıcıları (özel bir uygulama deneyimi kullanarak) sorunsuz bir toplantı deneyimiyle birlikte getirmek için idealdir. Örnek:
 
 1. Çalışanlar bir toplantıyı zamanlamak için takımlar kullanır 
 1. Toplantı ayrıntıları, özel uygulamanız aracılığıyla dış kullanıcılarla paylaşılır.
@@ -34,11 +35,11 @@ Bu kullanım örneği için üst düzey mimari şöyle görünür:
 
 ![Takımlar için mimari birlikte çalışma](./media/call-flows/teams-interop.png)
 
-Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi özellikler de yalnızca takımlar kullanıcıları tarafından kullanılabilir olacaktır, ancak özel uygulamanız toplantının çekirdek ses, video, sohbet ve ekran paylaşım özelliklerine erişebilir.
+Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi özellikler de yalnızca takımlar kullanıcıları tarafından kullanılabilir olacaktır, ancak özel uygulamanız toplantının çekirdek ses, video, sohbet ve ekran paylaşım özelliklerine erişebilir. Toplantı sohbeti, çağrıdayken özel uygulama kullanıcılarınız tarafından erişilebilecektir. Çağrıdan çıkmadan veya çağrıdan önce iletileri gönderemezler veya alamaz. 
 
 Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran istemci kitaplığı aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır.  Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
 
-İletişim hizmetleri ekiplerinin birlikte çalışması şu anda özel önizlemededir. Genel olarak kullanılabilir olduğunda, Iletişim Hizmetleri kullanıcıları "dış erişim kullanıcıları" gibi kabul edilir. [Microsoft ekiplerinde kuruluşunuzun dışındaki kişilerle çağrı, sohbet ve işbirliği yapma](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations)hakkında daha fazla bilgi edinin.
+İletişim hizmetleri ekiplerinin birlikte çalışması şu anda özel önizlemededir. Genel olarak kullanılabilir olduğunda, Iletişim Hizmetleri kullanıcıları "dış erişim kullanıcıları" gibi kabul edilir. [Microsoft ekiplerinde kuruluşunuzun dışındaki kişilerle çağrı, sohbet ve işbirliği yapma](/microsoftteams/communicate-with-users-from-other-organizations)hakkında daha fazla bilgi edinin.
 
 İletişim Hizmetleri kullanıcıları, [Toplantı ayarlarında](/microsoftteams/meeting-settings-in-teams)anonim birleşimler etkinleştirildiği sürece zamanlanan takımlar toplantılarına katılabilir.
 

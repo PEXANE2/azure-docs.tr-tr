@@ -1,0 +1,110 @@
+- name: Azure Percept belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Percept platformu
+      href: overview-azure-percept.md
+    - name: Azure Percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure Percept DK
+      href: overview-azure-percept-dk.md
+    - name: Azure Percept sesi
+      href: overview-azure-percept-audio.md
+    - name: Azure Percept AI modelleri
+      href: overview-ai-models.md
+    - name: Gelişmiş geliştirme
+      href: overview-advanced-code.md
+    - name: Azure Percept güvenliği
+      href: overview-percept-security.md
+    - name: 80/20 tümleştirmesi
+      href: overview-8020-integration.md
+    - name: Percept cihazlarınızı güncelleştirme
+      href: overview-update-experience.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Azure Percept cihazlarınızı ayarlama
+      items:
+        - name: Azure Percept DK 'yi kutudan kaldırma ve birleştirme
+          href: quickstart-percept-dk-unboxing.md
+        - name: Azure Percept DK kurulum deneyimini doldurun
+          href: quickstart-percept-dk-set-up.md
+        - name: Azure Percept ses kurulumu
+          href: quickstart-percept-audio-setup.md
+- name: Öğreticiler
+  items:
+    - name: Azure Percept ile prototipsiz başlatma
+      items:
+        - name: Kod içermeyen bir Vision çözümü oluşturun ve dağıtın
+          href: tutorial-nocode-vision.md
+        - name: Kod içermeyen bir konuşma çözümü oluşturun ve dağıtın
+          href: tutorial-no-code-speech.md
+    - name: Gelişmiş geliştirme
+      items:
+        - name: Gelişmiş geliştirme öğreticisi (bulut)
+          href: advanced-development-cloud.md
+        - name: Gelişmiş geliştirme öğreticisi (yerel)
+          href: advanced-development-local.md
+- name: Kavramlar
+  items:
+    - name: Azure Percept sesi
+      items:
+        - name: LED ve Button davranışı
+          href: audio-button-led-behavior.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Azure Percept DK ile Vision çözüm geliştirme
+      items:
+        - name: Devkit 'in video akışını görüntüleyin
+          href: how-to-view-video-stream.md
+        - name: Devkit 'e bir AI modeli dağıtma
+          href: how-to-deploy-model.md
+        - name: Bir Vision projesi için görüntüleri yakalama
+          href: how-to-capture-images.md
+        - name: Devkit 'in telemetrinizi görüntüleme
+          href: how-to-view-telemetry.md
+    - name: Azure Percept DK ile konuşma çözümü geliştirme
+      items:
+        - name: Azure Percept Studio 'da sesli yardımcınızı yapılandırma
+          href: how-to-configure-voice-assistant.md
+        - name: IoT Hub 'de sesli yardımcınızı yapılandırın
+          href: how-to-manage-voice-assistant.md
+    - name: Azure Percept cihazlarınızı güncelleştirme
+      items:
+        - name: Kablosuz güncelleştirmeleri ayarlama
+          href: how-to-set-up-over-the-air-updates.md
+        - name: Azure Percept DK-kablosuz bilgisayarınızı güncelleştirme
+          href: how-to-update-over-the-air.md
+        - name: Azure Percept DK 'yi USB üzerinden güncelleştirme
+          href: how-to-update-via-usb.md
+    - name: Azure Percept DK 'nize bağlanma
+      items:
+        - name: SSH üzerinden Bağlan
+          href: how-to-ssh-into-percept-dk.md
+        - name: Seri üzerinden Bağlan
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: Araçlar
+      items:
+        - name: Devtools paketi yükleyicisi
+          href: dev-tools-installer.md
+    - name: Sorun giderme
+      items:
+        - name: Kurulum deneyimi sorunlarını giderme
+          href: how-to-troubleshoot-setup.md
+        - name: Genel Azure Percept DK sorunlarını giderme
+          href: troubleshoot-dev-kit.md
+        - name: Vision çözüm sorunlarını giderme
+          href: vision-solution-troubleshooting.md
+        - name: Azure Percept ses sorunlarını giderme
+          href: troubleshoot-audio-accessory-speech-module.md
+- name: Başvuru
+  items:
+    - name: Azure Percept cihaz veri sayfaları
+      items:
+        - name: Azure Percept DK veri sayfası
+          href: azure-percept-dk-datasheet.md
+        - name: Azure Percept Vision veri sayfası
+          href: azure-percept-vision-datasheet.md
+        - name: Azure Percept ses veri sayfası
+          href: azure-percept-audio-datasheet.md
+- name: Kaynaklar
+  items: null

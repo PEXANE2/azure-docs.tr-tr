@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558462"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657766"
 ---
 # <a name="pricing-scenarios"></a>Fiyatlandırma senaryoları
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Azure Iletişim Hizmetleri için fiyatlara genellikle Kullandıkça Öde modeli temel alınır. Aşağıdaki örneklerde bulunan fiyatlar tanım amaçlıdır ve en son Azure fiyatlandırmasını yansıtmayabilir.
 
@@ -50,7 +47,7 @@ Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için
 
 ### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Fiyatlandırma örneği: Iletişim Hizmetleri JS istemci kitaplığı 'nın bir kullanıcısı, zamanlanmış bir Microsoft ekipleri toplantısı 'nı birleştirir
 
-Çiğdem, hasta, Bob ile bir doktor toplantısı. Çiğdem, takımlar masaüstü uygulamasından ziyaret eden öğesine katılacaktır. Bob, Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak toplantıya bağlanan sağlık sağlayıcısı Web sitesini kullanarak katılması için bir bağlantı gönderilir. Bob, bir Web tarayıcısı (Safari ile iPhone) kullanarak toplantıyı girmek için cep telefonuyla birlikte kullanır. Sohbet, sanal ziyaret sırasında kullanılabilir olacaktır. 
+Çiğdem, hasta, Bob ile bir doktor toplantısı. Çiğdem, takımlar masaüstü uygulamasından ziyaret eden öğesine katılacaktır. Bob, Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak toplantıya bağlanan sağlık sağlayıcısı Web sitesini kullanarak katılması için bir bağlantı gönderilir. Bob, bir Web tarayıcısı (Safari ile iPhone) kullanarak toplantıyı girmek için cep telefonuyla birlikte kullanır. Sohbet, sanal ziyaret sırasında kullanılabilir olacaktır.
 
 - Çağrı toplam 30 dakika sürer.
 - Çiğdem ve Bob tüm çağrıya katılın. Çiğdem, çağrı başladıktan beş dakika sonra videoyu etkinleştirir ve ekranı 13 dakika boyunca paylaşır. Bob 'un tüm çağrı için videosunu sunun.
@@ -60,15 +57,15 @@ Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için
 **Maliyet hesaplamaları**
 
 - 1 katılımcı (Bob) x 30 dakika başına katılımcı başına x $0,004 = $0,12 [video ve ses aynı hızda ücretlendirilir]
-- 1 katılımcı (çiğdem) x 30 dakikalık x $0,000/dakikada katılımcılar/$0,0 *. 
+- 1 katılımcı (çiğdem) x 30 dakikalık x $0,000/dakikada katılımcılar/$0,0 *.
 - 1 katılımcı (Bob) x 3 Sohbet iletisi x $0,0008 = $0,0024.
-- 1 katılımcı (çiğdem) x 5 sohbet iletisi x $0,000 = $0,0 *. 
+- 1 katılımcı (çiğdem) x 5 sohbet iletisi x $0,000 = $0,0 *.
 
 * Çiğdem 'in katılımı takımlar lisanslarından alınmıştır. Azure faturanızda, ekip kullanıcılarının Iletişim Hizmetleri kullanıcılarına sahip olduğu dakika ve sohbet iletileri, ancak takımlar istemcisinden kaynaklanan bu dakikalar ve mesajlar ücretlendirilecektir.
 
-**Ziyaret Için toplam maliyet**: 
+**Ziyaret Için toplam maliyet**:
 - Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak katılan Kullanıcı: $0,12 + $0,0024 = $0,1224
-- Ekipler için Kullanıcı katılım masaüstü uygulaması: $0 (takımlar lisansı kapsamında) 
+- Ekipler için Kullanıcı katılım masaüstü uygulaması: $0 (takımlar lisansı kapsamında)
 
 
 ## <a name="chat"></a>Sohbet
@@ -79,27 +76,27 @@ Iletişim hizmetleriyle, iki veya daha fazla kullanıcı arasında sohbet iletil
 
 Gönderilen her sohbet iletisi için $0,0008 ücretlendirilirsiniz.
 
-### <a name="pricing-example-chat-between-two-users"></a>Fiyatlandırma örneği: iki kullanıcı arasında sohbet 
+### <a name="pricing-example-chat-between-two-users"></a>Fiyatlandırma örneği: iki kullanıcı arasında sohbet
 
 Geeta, bir güncelleştirmeyi paylaşmak ve 5 ileti göndermesi için bir sohbet iş parçacığı başlatır. Sohbet 10 dakika sürer. Geeta, her biri başka 15 ileti gönderiyor.
 
-**Maliyet hesaplamaları** 
+**Maliyet hesaplamaları**
 - Gönderilen ileti sayısı (5 + 15 + 15) x $0,0008 = $0,028
 
-### <a name="pricing-example-group-chat-with-multiple-users"></a>Fiyatlandırma örneği: birden çok kullanıcı ile sohbeti gruplayın 
+### <a name="pricing-example-group-chat-with-multiple-users"></a>Fiyatlandırma örneği: birden çok kullanıcı ile sohbeti gruplayın
 
-Charlie, arkadaşlarını bir tatil planı için & Jasmine ile bir sohbet iş parçacığı başlatır. Bu kişiler, Charlie 'de, Casey & Jasmine 'nın sırasıyla 20, 30 ve 18 ileti gönderdikleri sırada bir sohbet edebilir. Bu kişilerin, arkadaşınızın yolculuğa katılması, sohbet iş parçacığına eklemesi ve tüm ileti geçmişini kendi ile paylaşması hakkında fark ederler. 
+Charlie, arkadaşlarını bir tatil planı için & Jasmine ile bir sohbet iş parçacığı başlatır. Bu kişiler, Charlie 'de, Casey & Jasmine 'nın sırasıyla 20, 30 ve 18 ileti gönderdikleri sırada bir sohbet edebilir. Bu kişilerin, arkadaşınızın yolculuğa katılması, sohbet iş parçacığına eklemesi ve tüm ileti geçmişini kendi ile paylaşması hakkında fark ederler.
 
 Gül iletileri görür ve sohbet başlatır. Bu arada, Casey bir çağrı alır ve konuşmayı daha sonra yakalamak üzere karar verir. Charlie, Jasmine & gül, seyahat tarihlerine karar verir ve sırasıyla bir 30, 25, 35 ileti gönderir.
 
-**Maliyet hesaplamaları** 
+**Maliyet hesaplamaları**
 
 - Gönderilen ileti sayısı (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
 
 
 ## <a name="telephony-and-sms"></a>Telefon ve SMS
 
-## <a name="price"></a>Fiyat 
+## <a name="price"></a>Fiyat
 
 Telefon hizmetleri dakika başına fiyatlandırılır, ancak SMS ileti başına ücretlendirilir. Fiyatlandırma, kullandığınız sayının türü ve konumu ile çağrılarınızın ve SMS iletilerinizin hedefinin yerini belirler.
 

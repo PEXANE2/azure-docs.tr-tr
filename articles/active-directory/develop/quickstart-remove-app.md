@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103898"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645900"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
@@ -36,6 +36,9 @@ Aşağıdaki bölümlerde, aşağıdakilerin nasıl yapılacağını öğrenecek
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 
 Kendiniz veya kuruluşunuz tarafından kaydedilmiş uygulamalar gerek bir uygulama nesnesi, gerekse kiracınızdaki bir hizmet sorumlusu nesnesi tarafından temsil edilir. Daha fazla bilgi için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](./app-objects-and-service-principals.md).
+
+> [!NOTE]
+> Bir uygulamayı silmek, uygulamanın giriş dizinindeki hizmet sorumlusu nesnesini de siler. Çok kiracılı uygulamalar için, diğer dizinlerdeki hizmet sorumlusu nesneleri silinmez.
 
 Bir uygulamayı silmek için, uygulamanın sahibi olarak listelenmiş veya yönetici ayrıcalıklarına sahip olmanız gerekir.
 

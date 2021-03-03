@@ -11,18 +11,37 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd9b07f1f7aed479e94e77a5641130cb784dd69e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741975"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648789"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD parola koruma Aracısı sürümü geçmişi
 
+## <a name="121720"></a>1.2.172.0
+
+Yayın tarihi: 22 2021
+
+Şirket içi Azure AD parola koruma aracılarının GA sürümlerinin yayımlanmasından bu yana neredeyse iki yıl sonra. Yeni bir güncelleştirme kullanıma sunuldu-aşağıdaki açıklamaları değiştirin bölümüne bakın. Ürün hakkında bize geri bildirim vermiş herkes için teşekkür ederiz. 
+
+* DC Aracısı ve proxy aracısı yazılımı artık .NET 4.7.2 'in yüklenmesini gerektirir.
+  * .NET 4.7.2 henüz yüklenmemişse, [Windows için .NET Framework 4.7.2 çevrimdışı yükleyicisi](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)' nde bulunan yükleyiciyi indirip çalıştırın.
+* AzureADPasswordProtection PowerShell modülü artık DC Aracısı yazılımı tarafından da yüklenir.
+* İki yeni sistem durumu ile ilgili PowerShell cmdlet 'leri eklendi: Test-AzureADPasswordProtectionDCAgent ve test-AzureADPasswordProtectionProxy.
+* AzureADPasswordProtection DC aracısı parola filtresi dll 'si artık lsass.exe PPL modunda çalışacak şekilde yapılandırıldığı makinelerde yüklenir ve çalıştırılır.
+* Parola algoritmasına, en fazla beş karakterden kısa bir süre sonra yanlış kabul edilmesine izin veren hata onarımı.
+  * Bu hata yalnızca şirket içi AD en az parola uzunluğu ilkeniz ilk yerde beşten az karakter parolaya izin verecek şekilde yapılandırıldıysa geçerlidir.
+* Diğer küçük hata düzeltmeleri.
+
+Yeni yükleyiciler yazılımın eski sürümlerini otomatik olarak yükseltir. Hem DC aracısını hem de ara sunucu yazılımını tek bir makineye yüklediyseniz (yalnızca test ortamları için önerilir), her ikisini de aynı anda yükseltmeniz gerekir.
+
+Bir etki alanı veya orman içinde DC aracısının ve proxy yazılımının eski ve daha yeni sürümlerini çalıştırmak, ancak tüm aracıların en iyi yöntem olarak en son sürüme yükseltilmesini öneririz. Aracı yükseltmelerinden herhangi bir sıralama desteklenir-yeni DC aracıları eski proxy aracılarıyla iletişim kurabilir ve eski DC aracıları daha yeni proxy aracılarıyla iletişim kurabilir.
+
 ## <a name="121250"></a>1.2.125.0
 
-Yayın tarihi: 3/22/2019
+Yayın tarihi: Mart 22 2019
 
 * Olay günlüğü iletilerinde küçük yazım hatası hatalarını çözme
 * EULA anlaşmasını son genel kullanılabilirlik sürümüne Güncelleştir
@@ -38,7 +57,7 @@ Yayın tarihi: 3/13/2019
   * Yazılım sürümü ve Azure kiracı verileri yalnızca, sürüm 1.2.116.0 veya üstünü çalıştıran DC aracıları ve proxy 'lerde kullanılabilir.
   * Proxy veya ormanın bir yeniden kaydı (veya yenilemesi) gerçekleşene kadar Azure kiracı verileri raporlanmayabilir.
 * Proxy hizmeti artık .NET 4,7 'in yüklü olmasını gerektirir.
-  * .NET 4,7, tam olarak güncelleştirilmiş bir Windows Server 'a zaten yüklenmiş olmalıdır. Böyle bir durum söz konusu değilse, [Windows için .NET Framework 4,7 çevrimdışı yükleyicisinde](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)bulunan yükleyiciyi indirip çalıştırın.
+  * .NET 4,7 zaten yüklü değilse, [Windows için .NET Framework 4,7 çevrimdışı yükleyicisinde](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)bulunan yükleyiciyi indirip çalıştırın.
   * Sunucu Çekirdeği sistemlerinde, başarılı olması için/q bayrağını .NET 4,7 yükleyicisine geçirmek gerekebilir.
 * Proxy hizmeti artık otomatik yükseltmeyi destekliyor. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak açık.
 * Set-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak otomatik yükseltme etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar Get-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak sorgulanabilir.
@@ -50,14 +69,14 @@ Yayın tarihi: 3/13/2019
 
 ## <a name="12650"></a>1.2.65.0
 
-Yayın tarihi: 2/1/2019
+Yayın tarihi: 1 Şubat 2019
 
 Değişikliklerine
 
 * DC Aracısı ve proxy hizmeti artık sunucu çekirdeğinde destekleniyor. En düşük işletim sistemi gereksinimleri, daha önce değiştirilmeden önce: DC aracıları için Windows Server 2012 ve proxy 'ler için Windows Server 2012 R2.
 * Register-AzureADPasswordProtectionProxy ve Register-AzureADPasswordProtectionForest cmdlet 'leri artık cihaz kodu tabanlı Azure kimlik doğrulama modlarını desteklemektedir.
-* Get-AzureADPasswordProtectionDCAgent cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
-* Get-AzureADPasswordProtectionSummaryReport cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
+* Get-AzureADPasswordProtectionDCAgent cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu değişiklik, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
+* Get-AzureADPasswordProtectionSummaryReport cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu değişiklik, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
 * Proxy PowerShell modülü artık%ProgramFiles%\WindowsPowerShell\Modules. adresinden kaydedilir Makinenin PSModulePath ortam değişkeni artık değiştirilmez.
 * Bir ormanda veya etki alanında kayıtlı proxy 'leri bulmaya yardımcı olmak için yeni bir Get-AzureADPasswordProtectionProxy cmdlet 'i eklenmiştir.
 * DC Aracısı, parola ilkelerini ve diğer dosyaları çoğaltmak için SYSVOL paylaşımında yeni bir klasör kullanır.
@@ -79,7 +98,7 @@ Değişikliklerine
 * Her DC Aracısı, etki alanındaki hem DC Aracısı hem de proxy hizmeti bağlantı noktaları için karışık ve eski hizmet bağlantı noktalarını düzenli aralıklarla siler. Hem DC Aracısı hem de proxy hizmeti bağlantı noktaları, sinyal zaman damgası yedi günden daha eskiyse eski olarak değerlendirilir.
 * DC Aracısı artık gerektiğinde orman sertifikasını yeniler.
 * Proxy hizmeti artık gerektiği şekilde proxy sertifikasını yenileyecek.
-* Parola Doğrulama algoritmasına yönelik güncelleştirmeler: genel yasaklanmış parola listesi ve müşteriye özgü yasaklanmış parola listesi (yapılandırıldıysa), parola doğrulamaları öncesinde birleştirilir. Yalnızca genel ve müşteriye özgü listeden belirteçler içeriyorsa, belirli bir parola artık reddedilebilir (başarısız veya yalnızca denetim). Olay günlüğü belgeleri bunu yansıtacak şekilde güncelleştirilmiştir; lütfen bkz. [Azure AD parola korumasını izleme](howto-password-ban-bad-on-premises-monitor.md).
+* Parola Doğrulama algoritmasına yönelik güncelleştirmeler: genel yasaklanmış parola listesi ve müşteriye özgü yasaklanmış parola listesi (yapılandırıldıysa), parola doğrulamaları öncesinde birleştirilir. Yalnızca genel ve müşteriye özgü listeden belirteçler içeriyorsa, belirli bir parola artık reddedilebilir (başarısız veya yalnızca denetim). Olay günlüğü belgeleri bunu yansıtacak şekilde güncelleştirilmiştir; bkz. [Azure AD parola korumasını izleme](howto-password-ban-bad-on-premises-monitor.md).
 * Performans ve sağlamlık düzeltmeleri
 * İyileştirilmiş günlük kaydı
 
@@ -88,12 +107,12 @@ Değişikliklerine
 
 ## <a name="12250"></a>1.2.25.0
 
-Yayın tarihi: 11/01/2018
+Yayın tarihi: 1 Kasım 2018
 
 Düzeltilen
 
 * DC Aracısı ve proxy hizmeti, sertifika güven hatalarından dolayı artık başarısız olmamalıdır.
-* DC Aracısı ve proxy hizmeti, FIPS uyumlu makineler için ek düzeltmeler de vardır.
+* DC Aracısı ve proxy hizmeti, FIPS uyumlu makineler için düzeltmeler de vardır.
 * Proxy hizmeti artık yalnızca TLS 1,2-ağ ortamında düzgün çalışacaktır.
 * Düşük performans ve sağlamlık düzeltmeleri
 * İyileştirilmiş günlük kaydı
@@ -102,11 +121,11 @@ Değişikliklerine
 
 * Proxy hizmeti için gereken en düşük işletim sistemi düzeyi artık Windows Server 2012 R2 'dir. DC Aracısı hizmeti için gerekli en düşük işletim sistemi düzeyi Windows Server 2012 ' de kalır.
 * Proxy hizmeti artık .NET sürüm 4.6.2 gerektirir.
-* Parola doğrulama algoritması genişletilmiş bir karakter normalleştirme tablosu kullanır. Bu, önceki sürümlerde kabul edilen parolaların reddedilme oluşmasına neden olabilir.
+* Parola doğrulama algoritması genişletilmiş bir karakter normalleştirme tablosu kullanır. Bu değişiklik, önceki sürümlerde kabul edilen parolaların reddedilme oluşmasına neden olabilir.
 
 ## <a name="12100"></a>1.2.10.0
 
-Yayın tarihi: 8/17/2018
+Yayın tarihi: 17 Ağustos 2018
 
 Düzeltilen
 
@@ -130,7 +149,7 @@ Düzeltilen
 
 ## <a name="11103"></a>1.1.10.3
 
-Yayın tarihi: 6/15/2018
+Yayın tarihi: 15 Haziran 2018
 
 İlk genel önizleme sürümü
 

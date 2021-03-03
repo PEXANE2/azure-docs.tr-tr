@@ -7,18 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ed909cf3feb17930b045dee1031ed5a6209b63d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 1b8c0c5bf533765e589e022233af14855b26d29c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029024"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656950"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı için SYNAPSE sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı, Azure Cosmos DB ' de işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanıza olanak tanıyan, bulut tabanlı bir karma işlem ve analitik işleme (HTAP) özelliğidir. Azure SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir şekilde sorunsuz bir tümleştirme oluşturur.
 
@@ -101,11 +98,25 @@ Bu tümleştirme, farklı kullanıcılar için aşağıdaki HTAP senaryolarına 
 
 Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics for Cosmos DB support](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
+## <a name="security"></a>Güvenlik
+
+SYNAPSE bağlantısı, Azure Cosmos DB görev açısından kritik verileriniz üzerinde neredeyse gerçek zamanlı analiz çalıştırmanızı sağlar. Kritik iş verilerinin hem işlem hem de analitik depolarda güvenli bir şekilde depolandığından emin olmak önemlidir. Azure Cosmos DB için Azure SYNAPSE bağlantısı, aşağıdaki özelliklerle bu güvenlik gereksinimlerini karşılamaya yardımcı olmak için tasarlanmıştır:
+
+* **Özel uç noktalar kullanarak ağ yalıtımı** -işlem ve analitik mağazalardaki verilere yönelik olarak ağ erişimini denetleyebilirsiniz. Ağ yalıtımı, Azure SYNAPSE çalışma alanlarındaki yönetilen sanal ağlarda bulunan her bir mağaza için ayrı yönetilen özel uç noktalar kullanılarak yapılır. Daha fazla bilgi için bkz. [analitik depo için özel uç noktaları yapılandırma](analytical-store-private-endpoints.md) makalesi.
+
+* **Müşteri tarafından yönetilen anahtarlarla veri şifreleme** -aynı müşteri tarafından yönetilen anahtarları otomatik ve şeffaf bir şekilde kullanarak işlem ve analitik mağazalardaki verileri sorunsuzca şifreleyebilirsiniz. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarları yapılandırma](how-to-setup-cmk.md) makalesi.
+
+* **Güvenli anahtar yönetimi** -SYNAPSE Spark ve SYNAPSE SUNUCUSUZ SQL havuzlarından analitik depodaki verilere erişmek, SYNAPSE Analytics çalışma alanlarında Azure Cosmos DB anahtarlarının yönetilmesini gerektirir. Spark işlerinde veya SQL betiklerinizde Azure Cosmos DB hesap anahtarlarını satır içi olarak kullanmak yerine, Azure SYNAPSE link daha güvenli yetenekler sağlar.
+
+  * SYNAPSE sunucusuz SQL havuzları kullanırken, hesap anahtarlarını depolayarak SQL kimlik bilgilerini önceden oluşturarak ve bu işleve başvurarak Azure Cosmos DB analitik depoyu sorgulayabilirsiniz `OPENROWSET` . Daha fazla bilgi edinmek için bkz. [Azure 'da sunucusuz SQL havuzu Ile sorgulama SYNAPSE bağlantısı](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) makalesi.
+
+  * SYNAPSE Spark kullanırken, hesap anahtarlarını bir Azure Cosmos DB veritabanına işaret eden bağlı hizmet nesnelerinde saklayabilir ve çalışma zamanında Spark yapılandırmasına başvurabilirsiniz. Daha fazla bilgi edinmek için bkz. [Apache Spark makalesini kullanarak adanmış BIR SQL havuzuna veri kopyalama](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) .
+
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı ne zaman kullanılır?
 
 SYNAPSE bağlantısı aşağıdaki durumlarda önerilir:
 
-* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örneğin:
+* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örnek:
 
   * Azure Cosmos DB işletimsel verilerinize doğrudan ayrı bağlayıcılar kullanarak analiz veya bı çalıştırıyorsanız veya
 
@@ -117,15 +128,13 @@ Yüksek eşzamanlılık, iş yükü yönetimi ve birden çok veri kaynağında t
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Azure Cosmos DB için Azure SYNAPSE bağlantısı, MongoDB için SQL API ve Azure Cosmos DB API 'SI için desteklenir. Gremlin API, Cassandra API ve Tablo API'si desteklenmez. 
+* Azure Cosmos DB için Azure Synapse Link, SQL API ve MongoDB için Azure Cosmos DB API'de desteklenir. Gremlin API, Cassandra API ve Tablo API'si desteklenmez.
 
 * Analitik depo yalnızca yeni kapsayıcılar için etkinleştirilebilir. Mevcut kapsayıcılar için analitik depolama kullanmak için, [Azure Cosmos DB geçiş araçlarını](cosmosdb-migrationchoices.md)kullanarak mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirin. Yeni ve mevcut Azure Cosmos DB hesaplarında SYNAPSE bağlantısı sağlayabilirsiniz.
 
-* Analitik depoyu açık olan kapsayıcılar için, analitik depodaki verilerinizin otomatik yedeklemesi ve geri yüklenmesi Şu anda desteklenmez. Bir veritabanı hesabında SYNAPSE bağlantısı etkinleştirildiğinde Azure Cosmos DB, her zaman olarak zamanlanan yedekleme aralığındaki kapsayıcıların işlem deposunda (yalnızca) otomatik olarak [yedekleme işlemlerine](./online-backup-and-restore.md) devam eder. Analitik depo açık olan bir kapsayıcı yeni bir hesaba geri yüklendiğinde, kapsayıcının yalnızca işlem deposu ile geri yükleneceği ve analitik depo etkinleştirilmediği unutulmamalıdır. 
+* Analitik depoyu açık olan kapsayıcılar için, analitik depodaki verilerinizin otomatik yedeklemesi ve geri yüklenmesi Şu anda desteklenmez. Bir veritabanı hesabında SYNAPSE bağlantısı etkinleştirildiğinde Azure Cosmos DB, her zaman olarak zamanlanan yedekleme aralığındaki kapsayıcıların işlem deposunda (yalnızca) otomatik olarak [yedekleme işlemlerine](./online-backup-and-restore.md) devam eder. Analitik depo açık olan bir kapsayıcı yeni bir hesaba geri yüklendiğinde, kapsayıcının yalnızca işlem deposu ile geri yükleneceği ve analitik depo etkinleştirilmediği unutulmamalıdır.
 
 * Sağlanan SYNAPSE SQL ile Azure Cosmos DB Analytics deposuna erişim şu anda kullanılamıyor.
-
-* Azure SYNAPSE Analytics 'te yönetilen özel uç noktaları kullanılarak Azure Cosmso DB analitik deposu için ağ yalıtımı Şu anda desteklenmiyor.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -135,7 +144,7 @@ Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Azure Cosmos DB analiz deposuna genel bakış](analytical-store-introduction.md)
+* [Azure Cosmos DB analitik depoya genel bakış](analytical-store-introduction.md)
 
 * [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
  

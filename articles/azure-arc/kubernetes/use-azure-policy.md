@@ -1,36 +1,34 @@
 ---
-title: Büyük ölçekte küme yapılandırmaları uygulamak için Azure İlkesi'ni kullanma (Önizleme)
+title: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587791"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652156"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Büyük ölçekte küme yapılandırmaları uygulamak için Azure İlkesi'ni kullanma (Önizleme)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-Belirli bir uygulamaya uygulanmasını sağlamak için aşağıdaki kaynaklardan birini zorlamak üzere Azure Ilkesini kullanabilirsiniz `Microsoft.KubernetesConfiguration/sourceControlConfigurations` :
-*  `Microsoft.Kubernetes/connectedclusters` Kaynak.
-* Gilar özellikli `Microsoft.ContainerService/managedClusters` kaynak. 
+Azure `Microsoft.KubernetesConfiguration/sourceControlConfigurations` yay etkinleştirilmiş Kubernetes kümeleri () üzerinde ölçekli yapılandırma (kaynak türü) uygulamak Için Azure ilkesini kullanabilirsiniz `Microsoft.Kubernetes/connectedclusters` .
 
 Azure Ilkesini kullanmak için, var olan bir ilke tanımı seçin ve bir ilke ataması oluşturun. İlke atamasını oluştururken:
 1. Atama için kapsamı ayarlayın.
     * Kapsam bir Azure Kaynak grubu veya aboneliği olacaktır. 
-2. Oluşturulacak için parametrelerini ayarlayın `sourceControlConfiguration` . 
+2. Oluşturulacak yapılandırmanın parametrelerini ayarlayın. 
 
-Atama oluşturulduktan sonra, Azure Ilke altyapısı `connectedCluster` `managedCluster` kapsam içinde bulunan tüm veya kaynakları tanımlar ve `sourceControlConfiguration` her birine uygular.
+Atama oluşturulduktan sonra, Azure Ilke altyapısı kapsamda bulunan tüm Azure Arc etkin Kubernetes kümelerini tanımlar ve her kümeye yapılandırmayı uygular.
 
-Birden çok Git deposunu, birden çok ilke ataması kullanarak her küme için doğru kaynaklar olarak etkinleştirebilirsiniz. Her ilke ataması, farklı bir git deposu kullanacak şekilde yapılandırılır; Örneğin, merkezi BT/küme operatörü ve uygulama ekiplerine yönelik diğer depolar için bir depo.
+Birden çok ilke ataması kullanarak, her biri farklı bir git deposuna işaret eden birden çok yapılandırma oluşturabilirsiniz. Örneğin, merkezi BT/küme operatörü ve uygulama ekiplerine yönelik diğer depolar için bir depo.
 
 ## <a name="prerequisite"></a>Önkoşul
 
@@ -54,23 +52,20 @@ Birden çok Git deposunu, birden çok ilke ataması kullanarak her küme için d
     * Daha fazla bilgi için bkz. [ilke ataması oluşturma hızlı](../../governance/policy/assign-policy-portal.md) başlangıcı ve [uyumlu olmayan kaynakları Azure ilkesiyle](../../governance/policy/how-to/remediate-resources.md)düzeltme.
 1. **Gözden geçir ve oluştur**’u seçin.
 
-İlke atamasını oluşturduktan sonra, `sourceControlConfiguration` atama kapsamı içinde yer alan aşağıdaki kaynaklardan herhangi biri için uygulanır:
-* Yeni `connectedCluster` kaynaklar.
-* `managedCluster`Gile aracıları yüklü yeni kaynaklar. 
+İlke atamasını oluşturduktan sonra yapılandırma, ilke atamasının kapsamında oluşturulan yeni Azure Arc etkin Kubernetes kümelerine uygulanır.
 
 Mevcut kümeler için bir düzeltme görevini el ile çalıştırmanız gerekir. Bu görev, ilke atamasının etkili olması için genellikle 10 ila 20 dakika sürer.
 
 ## <a name="verify-a-policy-assignment"></a>İlke atamasını doğrulama
 
-1. Azure portal `connectedCluster` kaynaklarınızdan birine gidin.
+1. Azure portal, Azure Arc etkin Kubernetes kümelerinden birine gidin.
 1. Kenar çubuğunun **Ayarlar** bölümünde **ilkeler**' i seçin. 
-    * AKS kümesi UX henüz uygulanmadı.
     * İlkeler listesinde, daha önce oluşturduğunuz ilke atamasını **uyumluluk durumu** ile *uyumlu* olarak ayarlanmış olarak görmeniz gerekir.
 1. Kenar çubuğunun **Ayarlar** bölümünde, **Konfigürasyonlar**' ı seçin.
-    * Konfigürasyonlar listesinde, `sourceControlConfiguration` ilke atamasının oluşturulduğunu görmeniz gerekir.
+    * Yapılandırmalar listesinde, ilke ataması tarafından oluşturulan yapılandırmayı görmeniz gerekir.
 1. `kubectl`Kümeyi sorgulanamıyor için kullanın. 
-    * Tarafından oluşturulan ad alanını ve yapıtları görmeniz gerekir `sourceControlConfiguration` .
-    * 5 dakika içinde, yapılandırılan git deposundaki bildirimlerde açıklanan yapıtları kümede görmeniz gerekir.
+    * Yapılandırma kaynakları tarafından oluşturulan ad alanını ve yapıtları görmeniz gerekir.
+    * 5 dakika içinde (kümenin Azure ile ağ bağlantısı olduğunu varsayarsak), git deposunda bildirimler tarafından tanımlanan nesneleri küme üzerinde oluşturulmuş olarak görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

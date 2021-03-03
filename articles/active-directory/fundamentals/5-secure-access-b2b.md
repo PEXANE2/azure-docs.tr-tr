@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725401"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648596"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B işbirliğiyle yönetilen işbirliğine geçiş 
 
@@ -100,7 +100,7 @@ Konuk kullanıcıları kaynaklara erişmek için kimler davet edebilen kişileri
 
 Azure AD Yetkilendirme Yönetimi kullanıyorsanız, dış kullanıcıların yanıt vermesi için soruları yapılandırabilirsiniz. Daha sonra bu sorular bir karar vermek için onaylayanlara gösterilir. Her bir [erişim paketi ilkesi](../governance/entitlement-management-access-package-approval-policy.md) için farklı soru kümelerini, onaylayanlara onaylarımız erişim için ilgili bilgileri kullanabilmesi için yapılandırabilirsiniz. Örneğin, bir erişim paketinin satıcı erişimine yönelik olması amaçlanıyorsa, istek sahibine satıcı sözleşmesi numarası istenebilir. Tedarikçilere yönelik olarak tasarlanmış farklı bir erişim paketi, kaynak ülkesini isteyebilir.
 
-Self Servis Portalı kullanıyorsanız, kullanıcıların kaydoldukları kullanıcılar hakkında ek öznitelikler toplamak için [API bağlayıcılarını](../external-identities/api-connectors-overview.md) kullanabilirsiniz. Daha sonra bu öznitelikleri, erişim atamak için kullanabilirsiniz. Örneğin, kaydolma işlemi sırasında kendi üretici KIMLIKLERINI topladığınızda, bu özniteliği, söz konusu tedarikçinin bir gruba veya erişim paketine dinamik olarak atamak için kullanabilirsiniz. Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. 
+Self Servis Portalı kullanıyorsanız, kullanıcıların kaydoldukları kullanıcılar hakkında ek öznitelikler toplamak için [API bağlayıcılarını](../external-identities/api-connectors-overview.md) kullanabilirsiniz. Daha sonra bu öznitelikleri, erişim atamak için kullanabilirsiniz. Örneğin, kaydolma işlemi sırasında kendi üretici KIMLIKLERINI topladığınızda, bu özniteliği, söz konusu tedarikçinin bir gruba veya erişim paketine dinamik olarak atamak için kullanabilirsiniz. Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](../../active-directory-b2c/microsoft-graph-operations.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Azure AD kullanıcılarına yönelik davet yeniden satın alma sorunlarını giderme
 

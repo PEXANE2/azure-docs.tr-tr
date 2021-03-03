@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory parolasız oturum açma (Önizleme)
+title: Azure Active Directory parolasız oturum açma
 description: FIDO2 güvenlik anahtarlarını veya Microsoft Authenticator uygulamasını kullanarak Azure Active Directory için parolasız oturum açma seçenekleri hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013014"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647566"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -62,8 +62,6 @@ Ayrıca, çalışanın telefonunun parolasız bir kimlik doğrulama yöntemi olm
 
 Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için [Microsoft Authenticator uygulamayı indirip](../user-help/user-help-auth-app-download-install.md) yükleme bölümüne bakın.
 
-Azure AD 'ye Microsoft Authenticator App ile passwordless oturum açma Şu anda önizleme aşamasındadır. Azure AD Multi-Factor Authentication için ikincil kimlik doğrulaması için Microsoft Authenticator uygulamasının kullanımı, self servis parola sıfırlama (SSPR) veya OATH yazılım belirteçleri GA 'dir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Kimlik doğrulayıcı uygulamasını kullanan passwordless kimlik doğrulaması, Iş için Windows Hello ile aynı temel kalıbı izler. Azure AD 'nin kullanılan Microsoft Authenticator uygulama sürümünü bulabilmesi için, kullanıcının tanımlanması gerektiğinden çok daha karmaşıktır:
 
 ![Microsoft Authenticator uygulamayla Kullanıcı oturumu açma ile ilgili adımları özetleyen diyagram](./media/concept-authentication-passwordless/authenticator-app-flow.png)
@@ -91,8 +89,6 @@ FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishabl
 Kullanıcılar, kimlik doğrulama yöntemi olarak oturum açma arabiriminde bir FIDO2 güvenlik anahtarı kaydedebilir ve seçebilir. Bu FIDO2 güvenlik anahtarları genellikle USB cihazlarıdır, ancak Bluetooth veya NFC de kullanabilir. Kimlik doğrulamasını işleyen bir donanım aygıtıyla, açığa çıkarılan veya tahmin edilecek bir parola olmadığından hesabın güvenliği artar.
 
 FIDO2 güvenlik anahtarları, Azure AD 'de veya hibrit Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açma sağlamak için kullanılabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
-
-Azure AD 'de FIDO2 güvenlik anahtarları ile oturum açma Şu anda önizlemededir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -152,15 +148,15 @@ FIDO2 güvenlik anahtarlarını kullanmaya başlamak için aşağıdaki nasıl y
 > [!div class="nextstepaction"]
 > [FIDO2 güvenlik anahtarlarını kullanarak passwordless imzalamayı etkinleştir](howto-authentication-passwordless-security-key.md)
 
-## <a name="what-scenarios-work-with-the-preview"></a>Önizlemele hangi senaryolar çalışıyor?
+## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Azure AD parolasız oturum açma özellikleri şu anda önizleme aşamasındadır. Aşağıdaki noktalara dikkat edilmelidir:
+Aşağıdaki noktalara dikkat edilmelidir:
 
 - Yöneticiler, kiracı için passwordless kimlik doğrulama yöntemlerini etkinleştirebilir
 - Yöneticiler tüm kullanıcıları hedefleyebilir veya kiracının her bir yöntemi için kullanıcıları/grupları seçebilir
 - Son kullanıcılar, bu passwordless kimlik doğrulama yöntemlerini hesap portalında kaydedebilir ve yönetebilir
-- Son kullanıcılar bu passwordless kimlik doğrulama yöntemleriyle oturum açabilirler
-   - Microsoft Authenticator uygulaması: tüm tarayıcılarda, Windows 10 kutudan çıkar (OOBE) kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışmaktadır.
+- Son kullanıcılar, bu passwordless kimlik doğrulama yöntemleriyle oturum açabilirler:
+   - Microsoft Authenticator uygulaması: tüm tarayıcılarda, Windows 10 kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışmaktadır.
    - Güvenlik anahtarları: Microsoft Edge (hem eski hem de yeni kenar) gibi desteklenen tarayıcılarda Windows 10 ve Web için kilit ekranında çalışın.
 
 ## <a name="choose-a-passwordless-method"></a>Passwordless yöntemi seçin

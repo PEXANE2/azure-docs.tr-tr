@@ -2,18 +2,19 @@
 title: Azure Kubernetes hizmetinde Oracle WebLogic Server çalıştırmaya yönelik çözümler nelerdir?
 description: Oracle WebLogic Server 'ı Azure Kubernetes hizmetinde çalıştırmayı öğrenin.
 author: rezar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 02/23/2021
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: cf44ad8d81656248329d993d86e9922dc4985258
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ac9f81fbde33bdd10bc8374a566a4f2ba83fc253
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669017"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Oracle WebLogic Server çalıştırmaya yönelik çözümler nelerdir?
 
@@ -24,16 +25,18 @@ Web Logic Server 'ı Azure sanal makinelerinde çalıştırmak da mümkündür. 
 WebLogic Server, dünyanın dört bir yanında en çok görev açısından kritik kurumsal Java uygulamalarından bazılarını çalıştıran önde gelen bir Java uygulama sunucusudur. Web Logic Server, Oracle yazılım paketi için ara yazılım temelini oluşturur. Oracle ve Microsoft, Azure 'da iş yüklerini önde gelen bulut platformu olarak çalıştırmak için Web Logic Server müşterilerinin tercih ve esnekliğe sahip olmasını sağlar.
 
 ## <a name="wls-on-aks-certified-and-supported"></a>AKS sertifikalı ve desteklenen WLS 'ler
-Web Logic Server, Oracle ve Microsoft tarafından AKS 'de iyi çalışacak şekilde sertifikalandırilmiştir. AKS çözümlerinde WebLogic Server, kapsayıcınızı çalıştırmak ve Docker ve Kubernetes altyapısında bulunan Java EE uygulamalarını yönetmek için mümkün olduğunca kolay hale getirmeye yönelik olarak tasarlanmıştır. Çözümler güvenilirlik, ölçeklenebilirlik, yönetilebilirlik ve kurumsal desteğe odaklanılmıştır.
+Web Logic Server, Oracle ve Microsoft tarafından AKS 'de iyi çalışacak şekilde sertifikalandırilmiştir. AKS çözümlerinde WebLogic Server, kapsayıcılarınızın ve Kubernetes altyapısında kapsayıcı ve genişletilmiş Java uygulamalarını çalıştırmak için mümkün olduğunca kolay hale getirmeye yönelik olarak tasarlanmıştır. Çözümler güvenilirlik, ölçeklenebilirlik, yönetilebilirlik ve kurumsal desteğe odaklanılmıştır.
 
-WebLogic Server kümeleri, WebLogic Kubernetes Işleci aracılığıyla Kubernetes üzerinde çalışmak üzere tamamen etkinleştirilmiştir (burada ' operator ', burada ' operator ' olarak adlandırılır). Işleci standart Kubernetes işleç düzenlerini izler. Alternatif olarak el ile görevleri otomatikleştirerek ve ek işlemsel güvenilirlik özellikleri ekleyerek Kubernetes üzerindeki WebLogic etki alanlarının ve dağıtımlarının yönetimini ve çalışmasını basitleştirir. Işleci, Oracle WebLogic Server 12c, Oracle Fusion ara yazılım altyapısını 12c ve sonrasını destekler. WebLogic Server 12.2.1.3 ve 12.2.1.4 için resmi Docker görüntülerini Işleçle test ettik. Işleci hakkında daha fazla bilgi için [Oracle 'daki resmi belgelere](https://oracle.github.io/weblogic-kubernetes-operator/)bakın.
+WebLogic Server kümeleri, WebLogic Kubernetes Işleci aracılığıyla Kubernetes üzerinde çalışmak üzere tamamen etkinleştirilmiştir (burada ' operator ', burada ' operator ' olarak adlandırılır). Işleci standart Kubernetes Işleç düzenlerini izler. Başka türlü el ile görevleri otomatikleştirerek ve ek işlemsel güvenilirlik özellikleri ekleyerek Kubernetes üzerindeki WebLogic etki alanları ve dağıtımların yönetimini ve çalışmasını basitleştirir. Işleci, Oracle WebLogic Server 12c, Oracle Fusion ara yazılım altyapısını 12c ve sonrasını destekler. WebLogic Server 12.2.1.3 ve 12.2.1.4 için resmi Docker görüntülerini Işleçle test ettik. Işleci hakkında daha fazla bilgi için [Oracle 'daki resmi belgelere](https://oracle.github.io/weblogic-kubernetes-operator/)bakın.
 
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>AKS üzerinde WLS için rehberlik, betikler ve örnekler
-Web Logic Server 'ı AKS üzerinde sertifikalandırın ötesinde Oracle ve Microsoft, AKS üzerinde WebLogic Server çalıştırmaya yönelik ayrıntılı yönergeler, betikler ve örnekler sağlar. Bu kılavuz, [operatör belgelerinin](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)Azure Kubernetes hizmeti örnek bölümüne eklenmiştir. Bu kılavuz, AKS dağıtımlarında üretim Web Logic Server 'ı mümkün olduğunca kolay hale getirmeyi hedefler. Rehberlik, Oracle tarafından sunulan resmi WebLogic Server Docker görüntülerini kullanır. Yük devretme işlemi, Kubernetes kalıcı birim talepleri aracılığıyla erişilen Azure dosyaları aracılığıyla gerçekleştirilir. Azure yük dengeleyiciler, ' LoadBalancer ' türünde bir Kubernetes hizmeti kullanılarak sağlandığında desteklenir. Rehberlik, yüksek ölçüde yapılandırma ve özelleştirmeye izin verir.
+Web Logic Server 'ı AKS üzerinde sertifikalandırın ötesinde Oracle ve Microsoft, AKS üzerinde WebLogic Server çalıştırmaya yönelik ayrıntılı yönergeler, betikler ve örnekler sağlar. Bu kılavuz, [operatör belgelerinin](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)Azure Kubernetes hizmeti örnek bölümüne eklenmiştir. Bu kılavuz, AKS dağıtımlarında üretim Web Logic Server 'ı mümkün olduğunca kolay hale getirmeyi hedefler. Rehberlik, Oracle tarafından sunulan resmi WebLogic Server Docker görüntülerini kullanır. Yük devretme işlemi, Kubernetes kalıcı birim talepleri aracılığıyla erişilen Azure dosyaları aracılığıyla gerçekleştirilir. Azure yük dengeleyiciler, ' LoadBalancer ' türünde bir Kubernetes hizmeti kullanılarak sağlandığında desteklenir. Azure Container Registry (ACR), WLS etki alanlarını özel Docker görüntüleri içinde dağıtmak için desteklenir. Rehberlik, yüksek ölçüde yapılandırma ve özelleştirmeye izin verir.
 
 :::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="AKS üzerinde WebLogic Server dağıtmak için örnek betikleri kullanabilirsiniz":::
 
-Kılavuz Şu anda, etki alanını Docker görüntüsünün dışında ve Oracle 'daki standart Docker görüntülerini kullanarak dağıtmaktadır. Bir Docker görüntüsü içinde etki alanı ile özel görüntüleri etkinleştirmeye yönelik rehberlik ekleyeceğiz. Daha iyi kullanım kolaylığı ve Azure hizmet tümleştirmeleri, Azure sanal makineler çözümlerinde Oracle WebLogic Server 'ın Market sunumlarını yansıtarak daha da olasıdır.
+Çözümler, WLS etki alanlarını AKS 'e dağıtmanın iki yolunu içerir. Etki alanları, Kubernetes kalıcı birimlerine doğrudan dağıtılabilir. Bu dağıtım seçeneği, AKS 'e geçiş yapmak istiyorsanız ancak yine de, yönetim konsolunu veya WebLogic Scripting aracını (WLST) kullanarak WLS 'yi yönetmek istiyorsanız iyidir. Bu seçenek ayrıca Docker geliştirmeyi benimsemeden AKS 'e taşımanızı sağlar. WLS etki alanlarını AKS 'e dağıtmanın daha fazla Kubernetes yerel yolu, Oracle Container Registry resmi WLS görüntülerini temel alan özel Docker görüntüleri oluşturmak, özel görüntüleri ACR 'ye yayımlamak ve Işlecini kullanarak etki alanını AKS 'e dağıtmaktır. Çözümdeki Bu seçenek, dağıtım yapıldıktan sonra, Kubernetes ConfigMaps 'ler aracılığıyla etki alanını güncelleştirmenize olanak tanır.
+
+Daha iyi kullanım kolaylığı ve Azure hizmet tümleştirmeleri, Azure sanal makineler çözümlerinde Oracle WebLogic Server 'ın Market sunumlarını yansıtarak daha da olasıdır.
 
 _Bu çözümler kendi lisansını getir_. Bunlar, Oracle ile ilgili lisanslarınızın zaten bulunduğunu varsayar ve Azure 'da teklifleri çalıştırmak için doğru lisanslanır.
 

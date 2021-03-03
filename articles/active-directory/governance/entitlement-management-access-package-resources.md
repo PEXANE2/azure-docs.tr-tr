@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223291"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644189"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
@@ -144,13 +144,9 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
 1. **Pakete erişmek için kaynak rolleri ekle** sayfasında **SharePoint siteleri** ' ne tıklayarak SharePoint Online siteleri Seç bölmesini açın.
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Erişim paketi-kaynak rolleri ekleme-SharePoint sitelerini seçin-Portal görünümü":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="Erişim paketi-kaynak rolleri ekleme-SharePoint sitelerini seçin-Portal görünümü":::
 
-1. SharePoint için [Çoklu coğrafi bölge](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) özelliği etkinleştirilmişse, siteleri seçmek istediğiniz ortamı seçin.
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Erişim paketi-kaynak rolleri ekleme-SharePoint Çoklu coğrafi siteleri seçme":::
-
-1. Çoklu coğrafi bölge etkinleştirilmemişse, bir ortam seçmeniz gerekmez. Erişim paketine eklemek istediğiniz SharePoint Online sitelerini seçin.
+1. Erişim paketine eklemek istediğiniz SharePoint Online sitelerini seçin.
 
     ![Erişim paketi-kaynak rolleri ekleme-SharePoint Online siteleri seçin](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

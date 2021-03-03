@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 22c7a70379649876de4af88080543438e58998a6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 553a0fb1f7eb578bcd5c89c1aec45c38a1d2305e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746654"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672526"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -143,6 +143,9 @@ Skip this step if you are not using the Kernel versions listed above.
    ```bash
    sudo yum install cuda
    ```
+   > [!NOTE]
+   >  Vulkan-FileSystem gibi eksik paketlerle ilgili bir hata iletisi görürseniz,/etc/yum.Repos.d/rh-Cloud ' yi düzenlemeniz, isteğe bağlı-RPMS ' i aramanız ve etkin olarak 1 ' e ayarlamanız gerekebilir.
+   >  
 
 5. VM 'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
 

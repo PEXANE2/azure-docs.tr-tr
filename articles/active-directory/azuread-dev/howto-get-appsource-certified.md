@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15a4dd56b509571094ef202fbce781104bda9188
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052253"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649354"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alma
 
@@ -113,9 +113,9 @@ AppSource deneme deneyimi hakkında daha fazla bilgi için [Bu videoya](https://
 
 ## <a name="get-support"></a>Destek alın
 
-Azure AD tümleştirmesi için, destek sağlamak üzere topluluk ile [Microsoft Q&bir](https://docs.microsoft.com/answers/products/) kullanırız.
+Azure AD tümleştirmesi için, destek sağlamak üzere topluluk ile [Microsoft Q&bir](/answers/products/) kullanırız.
 
-Sizden önce Microsoft Q&sorularınızı sormanızı ve mevcut sorunlara gözatmanızı öneririz. Sorularınıza veya yorumlarınızın ile etiketlendiğinden emin olun [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
+Sizden önce Microsoft Q&sorularınızı sormanızı ve mevcut sorunlara gözatmanızı öneririz. Sorularınıza veya yorumlarınızın ile etiketlendiğinden emin olun [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 Geri bildirim sağlamak ve içeriğimizi iyileştirmemizi ve şekillendirmemize yardımcı olmak için aşağıdaki açıklamalar bölümünü kullanın.
 

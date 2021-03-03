@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 08/25/2020
-ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333044"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664126"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde Azure bakım olaylarını planlayın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Her veritabanı için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, b
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Planlı bir bakım olayı sırasında beklenmeniz gerekenler
 
-Bakım olayı, bakım olayının başlangıcında birincil ve ikincil çoğaltmaların yarışmasına bağlı olarak tek veya birden fazla yük devretme üretebilir. Ortalama olarak, 1,7 yük devretme planlı bakım olayı başına gerçekleşir. Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır. Ortalama 8 saniyedir. Zaten bağlantı varsa, uygulamanızın veritabanınızın yeni birincil çoğaltmasına yeniden bağlanması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): *"' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. "* Veritabanınızda uzun süreli bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
+Bakım olayı, bakım olayının başlangıcında birincil ve ikincil çoğaltmaların yarışmasına bağlı olarak tek veya birden fazla yük devretme üretebilir. Ortalama olarak, 1,7 yük devretme planlı bakım olayı başına gerçekleşir. Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır. Ortalama sekiz saniyedir. Zaten bağlantı varsa, uygulamanızın veritabanınızın yeni birincil çoğaltmasına yeniden bağlanması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): *"' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. "* Veritabanınızda uzun süreli bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Planlı bakım olayının benzetimini yapma
 
@@ -45,7 +45,12 @@ Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sa�
 
 Veritabanınız oturum açma hatalarıyla karşılaşıyorsa, geçerli durum için [Azure portal](https://portal.azure.com) [kaynak durumu](../../service-health/resource-health-overview.md#get-started) penceresine bakın. Sistem durumu geçmişi bölümü her bir olayın kesinti süresini (kullanılabilir olduğunda) içerir.
 
+## <a name="maintenance-window-feature"></a>Bakım penceresi özelliği
+
+Bakım penceresi özelliği, uygun Azure SQL veritabanları ve SQL yönetilen örnekleri için öngörülebilir bakım penceresi zamanlamalarının yapılandırılmasını sağlar. Daha fazla bilgi için [bakım penceresine](maintenance-window.md) bakın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure SQL veritabanı ve Azure SQL yönetilen örneği için [kaynak durumu](resource-health-to-troubleshoot-connectivity.md) hakkında daha fazla bilgi edinin.
 - Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [geçici hatalar Için yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
+- [Bakım penceresi özelliğiyle bakım](maintenance-window.md) penceresi zamanlamalarını yapılandırın.

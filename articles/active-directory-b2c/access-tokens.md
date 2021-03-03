@@ -11,16 +11,16 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631402"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654485"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de erişim belirteci isteme
 
-*Erişim belirteci* , API'lerinize verilen izinleri tanımlamak için Azure Active Directory B2C'de (Azure AD B2C) kullanabileceğiniz beyanlar içerir. Kaynak sunucusunu çağırırken HTTP isteğinde erişim belirteci bulunmalıdır. Erişim belirteci Azure AD B2C'den gelen yanıtlarda **access_token** olarak gösterilir.
+*Erişim belirteci*, API'lerinize verilen izinleri tanımlamak için Azure Active Directory B2C'de (Azure AD B2C) kullanabileceğiniz beyanlar içerir. Kaynak sunucusunu çağırırken HTTP isteğinde erişim belirteci bulunmalıdır. Erişim belirteci Azure AD B2C'den gelen yanıtlarda **access_token** olarak gösterilir.
 
 Bu makalede web uygulaması ve web API'si için nasıl erişim belirteci isteyebileceğiniz gösterilir. Azure AD B2C'deki belirteçler hakkında daha fazla bilgi için [Azure Active Directory B2C'de belirteçlere genel bakış](tokens-overview.md) konusuna bakın.
 
@@ -71,7 +71,7 @@ Aşağıdaki örnekte, şu değerleri değiştirirsiniz:
 - `<tenant-name>` - Azure AD B2C kiracınızın adı.
 - `<policy-name>` - Özel ilkenizin veya kullanıcı akışınızın adı.
 - `<application-ID>` - Kullanıcı akışını desteklemek için kaydettiğiniz web uygulamasının uygulama tanımlayıcısı.
-- `<redirect-uri>` - İstemci uygulamayı kaydederken girdiğiniz **Yeniden Yönlendirme URI'si** .
+- `<redirect-uri>` - İstemci uygulamayı kaydederken girdiğiniz **Yeniden Yönlendirme URI'si**.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Yetkilendirme kodunu başarıyla aldıktan sonra bu kodu kullanarak erişim belirteci isteyebilirsiniz:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

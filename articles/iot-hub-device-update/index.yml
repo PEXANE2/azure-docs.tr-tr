@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: IoT Hub belgeleri için cihaz güncelleştirmesi
+summary: IoT Hub için cihaz güncelleştirmesi, IoT cihazlarınıza kablosuz güncelleştirmeleri (OTA) dağıtmanıza olanak sağlayan bir hizmettir.
+metadata:
+  title: IoT Hub belgeleri için cihaz güncelleştirmesi
+  description: IoT Hub için cihaz güncelleştirmesi, IoT cihazlarınıza kablosuz güncelleştirmeleri (OTA) dağıtmanıza olanak sağlayan bir hizmettir.
+  services: iot-hub
+  ms.service: iot-hub
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  manager: philmea
+  ms.date: 2/17/2021
+  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665804"
+landingContent:
+- title: Cihaz güncelleştirme hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: IoT Hub için cihaz güncelleştirmesi nedir?
+      url: understand-device-update.md
+  - linkListType: concept
+    links:
+    - text: Cihaz güncelleştirmesinin kullanımı Tak ve Kullan
+      url: device-update-plug-and-play.md
+    - text: Cihaz güncelleştirme kimlik doğrulamasını ve yetkilendirmeyi anlayın
+      url: device-update-control-access.md
+    - text: Cihaz güncelleştirme aracısını anlama
+      url: device-update-agent-overview.md
+    - text: Cihaz güncelleştirme içeri aktarmayı anlama
+      url: import-concepts.md
+    - text: Cihaz güncelleştirme gruplarını anlama
+      url: device-update-groups.md
+- title: Öğreticilerle keşfet
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Raspberry PI üzerinde cihaz güncelleştirmesi
+      url: device-update-raspberry-pi.md
+  - linkListType: tutorial
+    links:
+    - text: Simülatör üzerinde cihaz güncelleştirme
+      url: device-update-simulator.md
+  - linkListType: tutorial
+    links:
+    - text: Ubuntu Server 18,04 x64 paket aracısında cihaz güncelleştirmesi
+      url: device-update-ubuntu-agent.md
+- title: Cihazları güncelleştirme hakkında bilgi edinin
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Cihaz güncelleştirme hesabı oluştur
+      url: create-device-update-account.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bir güncelleştirmeyi içeri aktar
+      url: import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güncelleştirme grubu oluşturma
+      url: create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: Güncelleştirme dağıtma
+      url: deploy-update.md
+- title: Geliştirici kılavuzu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Cihaz Güncelleştirme Aracısı oluşturma, çalıştırma ve değiştirme
+      url: device-update-agent-provisioning.md

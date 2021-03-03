@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 9b1176f579754d714490297e9ff960d7808bd834
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383169"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652189"
 ---
 # <a name="about-azure-cache-for-redis"></a>Redis için Azure Önbelleği hakkında
 Redsıs için Azure önbelleği, [redin](https://redis.io/) yazılımını temel alan bellek içi veri deposu sağlar. Redsıs, arka uç veri depolarında yoğun bir şekilde kullanılan bir uygulamanın performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen verileri hızlı bir şekilde yazılabilen ve hızla okunabilen sunucu belleğinde tutarak, büyük hacimde uygulama isteğini işleyebilir. Redin, modern uygulamalara kritik düşük gecikmeli ve yüksek performanslı veri depolama çözümü getirir.
@@ -23,7 +23,7 @@ Redsıs için Azure önbelleği, dağıtılmış bir veri veya içerik önbelle�
 ## <a name="key-scenarios"></a>Önemli senaryolar
 Redis için Azure önbelleği, genel uygulama mimarisi desenlerini destekleyerek uygulama performansını geliştirir. En yaygın olanlarından bazıları şunlardır:
 
-| Desen      | Description                                        |
+| Desen      | Açıklama                                        |
 | ------------ | -------------------------------------------------- |
 | [Veri önbelleği](cache-web-app-cache-aside-leaderboard.md) | Veritabanları genellikle bir önbelleğe doğrudan yüklenemeyecek kadar büyük olur. Yalnızca gerektiğinde önbelleğe veri yüklemek için [önbelleğe alma](/azure/architecture/patterns/cache-aside) deseninin kullanılması yaygındır. Sistem verilerde değişiklik yaptığında sistem, daha sonra diğer istemcilere dağıtılan önbelleği de güncelleştirebilir. Ayrıca, sistem veri üzerinde bir süre sonu ayarlayabilir veya veri güncelleştirmelerini önbelleğe tetikleyebilmesi için bir çıkarma ilkesi kullanabilir.|
 | [İçerik önbelleği](cache-aspnet-output-cache-provider.md) | Üst bilgiler, alt bilgiler ve başlık gibi statik içerik kullanan şablonlardan birçok Web sayfası oluşturulur. Bu statik öğeler sık değişmemelidir. Bellek içi önbellek kullanmak, arka uç veri depolarına kıyasla statik içeriğe hızlı erişim sağlar. Bu model, işlem süresini ve sunucu yükünü azaltarak Web sunucularının daha hızlı yanıt vermesine olanak tanır. Yükü işlemek için gereken sunucu sayısını azaltmanıza izin verebilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemek için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
@@ -39,13 +39,13 @@ Redsıs için Azure Cache, OSS redin sürüm 4. x ve önizleme olarak 6,0 ' i de
 ## <a name="service-tiers"></a>Hizmet katmanları
 Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 
-| Katman | Description |
+| Katman | Açıklama |
 |---|---|
 | Temel | Tek bir VM üzerinde çalışan bir OSS Redsıs önbelleği. Bu katmanda hizmet düzeyi sözleşmesi (SLA) yoktur ve geliştirme/test ve kritik olmayan iş yükleri için idealdir. |
 | Standart | Çoğaltılan bir yapılandırmadaki iki VM üzerinde çalışan bir OSS Redsıs önbelleği. |
 | Premium | Yüksek performanslı OSS Redsıs önbellekler. Bu katman daha yüksek aktarım hızı, daha düşük gecikme süresi, daha iyi kullanılabilirlik ve daha fazla özellik sunar. Premium önbellekler, temel veya standart önbellekler ile karşılaştırıldığında daha güçlü sanal makinelere dağıtılır. |
-| Kurumsal (Önizleme) | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen yüksek performanslı önbellekler. Bu katman RediSearch, RedisBloom ve RedisTimeSeries gibi Redsıs modüllerini destekler. Ayrıca, Premium katmandan daha yüksek kullanılabilirlik sağlar. |
-| Enterprise Flash (Önizleme) | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen uygun maliyetli büyük önbellekler. Bu katman Redsıs veri depolamayı bir VM 'de DRAM 'dan farklı olan geçici olmayan belleğe genişletir. Toplam GB başına bellek maliyetini azaltır. |
+| Kurumsal | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen yüksek performanslı önbellekler. Bu katman RediSearch, RedisBloom ve RedisTimeSeries gibi Redsıs modüllerini destekler. Ayrıca, Premium katmandan daha yüksek kullanılabilirlik sağlar. |
+| Enterprise Flash | Redsıs Labs ' Redsıs Enterprise Software tarafından desteklenen uygun maliyetli büyük önbellekler. Bu katman Redsıs veri depolamayı bir VM 'de DRAM 'dan farklı olan geçici olmayan belleğe genişletir. Toplam GB başına bellek maliyetini azaltır. |
 
 ### <a name="feature-comparison"></a>Özellik karşılaştırması
 [Redin fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/) , her katman için ayrıntılı bir karşılaştırma sağlar. Aşağıdaki tablo, katmana göre desteklenen özelliklerden bazılarını açıklamaya yardımcı olur:
@@ -55,11 +55,11 @@ Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 | [Hizmet Düzeyi Sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|✔|✔|✔|✔|
 | Veri şifrelemesi |✔|✔|✔|✔|✔|
 | [Ağ yalıtımı](cache-how-to-premium-vnet.md) |✔|✔|✔|✔|✔|
-| [Ölçeklendirme](cache-how-to-scale.md) |✔|✔|✔|-|-|
+| [Ölçeklendirme](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [OSS kümesi](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
-| [Veri kalıcılığı](cache-how-to-premium-persistence.md) |-|-|✔|-|-|
-| [Bölge yedekliliği](cache-how-to-zone-redundancy.md) |-|-|Önizleme|Önizleme|Önizleme|
-| [Coğrafi çoğaltma](cache-how-to-geo-replication.md) |-|-|✔|-|-|
+| [Veri kalıcılığı](cache-how-to-premium-persistence.md) |-|-|✔|Önizleme|Önizleme|
+| [Bölge yedekliliği](cache-how-to-zone-redundancy.md) |-|-|Önizleme|✔|✔|
+| [Coğrafi çoğaltma](cache-how-to-geo-replication.md) |-|-|✔|Önizleme|Önizleme|
 | [Modül](https://redis.io/modules) |-|-|-|✔|✔|
 | [İçeri/Dışarı Aktarma](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|
 | [Zamanlanan güncelleştirmeler](cache-administration.md#schedule-updates) |✔|✔|✔|-|-|
@@ -73,19 +73,25 @@ Redsıs katmanı için bir Azure önbelleği seçerken aşağıdakileri göz ön
 * **Ağ performansı**: yüksek aktarım hızı gerektiren bir iş yükünüz varsa, Premium veya Enterprise katmanı temel veya standart ile karşılaştırıldığında daha fazla bant genişliği sunar. Ayrıca, her katmanda daha büyük boyutlu önbellekler, önbelleği barındıran temel VM nedeniyle daha fazla bant genişliğine sahiptir. Daha fazla bilgi için bkz. [redsıs performansı Için Azure önbelleği](cache-planning-faq.md#azure-cache-for-redis-performance).
 * **İstemci bağlantısı sayısı üst sınırı**: Premium katmanı, daha büyük boyutlu önbellekler için daha fazla bağlantı ile redo 'ya bağlanabilecek maksimum istemci sayısını sağlar. Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
 * **Yüksek kullanılabilirlik**: Reda Için Azure önbelleği birden çok [yüksek kullanılabilirlik](cache-high-availability.md) seçeneği sağlar. Standart, Premium veya kurumsal önbelleğin [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)'imize göre kullanılabilir olmasını güvence altına alır. SLA yalnızca önbellek uç noktalarına olan bağlantıyı içerir. SLA, veri kaybından korumayı kapsamaz. Veri kaybına karşı dayanıklılığı artırmak için Premium ve Enterprise katmanlarında Redsıs veri kalıcılığı özelliğinin kullanılması önerilir.
-* **Veri kalıcılığı**: Premium ve kurumsal katmanlar, önbellek verilerini sırasıyla bir Azure depolama hesabına ve yönetilen diske kalıcı hale getirebilmeniz için izin verir. Temel altyapı sorunları, olası veri kaybına neden olabilir. Veri kaybına karşı dayanıklılığı artırmak için bu katmanlardaki Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz. Redin için Azure önbelleği hem RDB hem de AOF (Önizleme) seçeneklerini sunar. Kuruluş katmanlarında veri kalıcılığı varsayılan olarak etkinleştirilmiştir. Premium katmanı için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
+* **Veri kalıcılığı**: Premium ve kurumsal katmanlar, önbellek verilerini sırasıyla bir Azure depolama hesabına ve yönetilen diske kalıcı hale getirebilmeniz için izin verir. Temel altyapı sorunları, olası veri kaybına neden olabilir. Veri kaybına karşı dayanıklılığı artırmak için bu katmanlardaki Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz. Redin için Azure önbelleği hem RDB hem de AOF (Önizleme) seçeneklerini sunar. Veri kalıcılığı Azure portal ve CLı aracılığıyla etkinleştirilebilir. Premium katmanı için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
 * **Ağ yalıtımı**: Azure özel bağlantısı ve sanal ağ (VNet) dağıtımları, Reda Için Azure önbelleğiniz için gelişmiş güvenlik ve trafik yalıtımı sağlar. VNET, ağ erişim denetimi ilkeleriyle erişimi daha fazla kısıtlayabilmeniz için izin verir. Daha fazla bilgi için bkz. [Azure özel bağlantısı Ile redsıs Için Azure önbelleği](cache-private-link.md) ve [Redsıs Için Premium bir Azure önbelleği için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md).
 * **Genişletilebilirlik**: Kurumsal Katmanlar destek [RediSearch](https://docs.redislabs.com/latest/modules/redisearch/), [Redisbloom](https://docs.redislabs.com/latest/modules/redisbloom/) ve [redistimeseries](https://docs.redislabs.com/latest/modules/redistimeseries/). Bu modüller Redsıs 'e yeni veri türleri ve işlevler ekler.
 
 Oluşturulduktan sonra, temel katmandaki önbelleğinizi Premium 'a ölçeklendirebilirsiniz. Daha düşük bir katmana ölçek azaltma Şu anda desteklenmiyor. Adım adım ölçeklendirme yönergeleri için bkz. [Azure önbelleğini redsıs Için ölçeklendirme](cache-how-to-scale.md) ve [bir ölçeklendirme işlemini otomatikleştirme](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="enterprise-and-enterprise-flash-tier-requirements"></a>Enterprise ve Enterprise Flash katman gereksinimleri
+### <a name="special-considerations-for-enterprise-tiers"></a>Kurumsal katmanlara yönelik özel konular
 
 Kurumsal katmanlar redin Labs 'e ait ticari bir çeşit olan redsıs Enterprise 'ı kullanır. Müşteriler bir Azure Market teklifi aracılığıyla bu yazılıma yönelik bir lisans edinecektir ve ödeyebilir. Redsıs için Azure önbelleği, lisans alımı kolaylaştırmaya yardımcı olur, böylece ayrı olarak bunu yapmanız gerekmez. Azure Marketi 'nde satın almak için aşağıdaki önkoşullara sahip olmanız gerekir:
 * Azure aboneliğinizin geçerli bir ödeme aracı vardır. Azure kredileri veya ücretsiz MSDN Abonelikleri desteklenmez.
-* Aboneliğin sahibi veya katılımcısı olursunuz.
 * Kuruluşunuz [Azure Marketi satın alımlara](../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)izin veriyor.
 * Özel bir market kullanıyorsanız, redin Labs kurumsal teklifini içermesi gerekir.
+
+> [!IMPORTANT]
+> Redsıs Enterprise Cache için Azure önbelleği, önbellek örneklerinden ayrı olarak ücretlendirilen Standart Ağ Yük dengeleyicileri gerektirir. Daha fazla ayrıntı için [Load Balancer fiyatlandırmasına](https://azure.microsoft.com/pricing/details/load-balancer/) bakın. Bir kuruluş önbelleği birden çok Kullanılabilirlik Alanları için yapılandırılmışsa, veri aktarımı 1 Temmuz 2021 ' den başlayarak [Standart ağ bant genişliği ücretlerine](https://azure.microsoft.com/pricing/details/bandwidth/) göre faturalandırılır.
+>
+> Ayrıca, veri kalıcılığı yönetilen diskler ekler. Bu kaynakların kullanımı, kurumsal veri kalıcılığının genel önizlemesi sırasında ücretsiz olacaktır. Bu özellik genel kullanıma sunulduğunda değişebilir.
+>
+>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Açık kaynaklı Redsıs önbelleği oluşturma](quickstart-create-redis.md)

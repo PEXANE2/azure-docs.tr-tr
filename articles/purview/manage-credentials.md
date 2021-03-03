@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526706"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673520"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure purview 'da kaynak kimlik doğrulaması için kimlik bilgileri
 
@@ -85,8 +85,9 @@ Bu kimlik bilgisi türleri purview 'da desteklenir:
 - Hizmet sorumlusu: **hizmet sorumlusu anahtarını** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
 - SQL kimlik doğrulaması: **parolayı** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
 - Hesap anahtarı: **hesap anahtarını** Anahtar Kasası 'nda gizli dizi olarak eklersiniz.
+- Rol ARN: bir Amazon S3 veri kaynağı Için, AWS 'de **rolünüzü** ekleyin. 
 
-Daha fazla bilgi için bkz. [Key Vault için gizli dizi ekleme](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+Daha fazla bilgi için bkz. [Key Vault bir gizli dizi ekleme](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) ve [purview için yeni bir AWS rolü oluşturma](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
 Gizli dizileri anahtar kasasında sakladıktan sonra:
 

@@ -1,7 +1,7 @@
 ---
 title: Hızlı başlangıç-erişim belirteçleri oluşturma ve yönetme
 titleSuffix: An Azure Communication Services quickstart
-description: Azure Iletişim Hizmetleri yönetim istemci kitaplığı 'nı kullanarak kimlikleri ve erişim belirteçlerini yönetme hakkında bilgi edinin.
+description: Azure Iletişim Hizmetleri kimlik istemci kitaplığını kullanarak kimlikleri ve erişim belirteçlerini yönetme hakkında bilgi edinin.
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325323"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657102"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>Hızlı başlangıç: erişim belirteçleri oluşturma ve yönetme
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Iletişim Hizmetleri Yönetimi istemci kitaplığını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. Kimlik oluşturmanızı ve erişim belirteçlerinizi yönetmenizi sağlar. Kimlik, Azure Iletişim hizmetindeki (örneğin, Kullanıcı veya cihaz) uygulamanızın varlığını temsil eder. Erişim belirteçleri, sohbet ve arama istemci kitaplıklarının doğrudan Azure Iletişim hizmetlerine karşı kimlik doğrulamasını sağlar. Sunucu tarafı hizmetinde erişim belirteçleri oluşturmanızı öneririz. Daha sonra erişim belirteçleri istemci cihazlarındaki Iletişim Hizmetleri istemci kitaplıklarını başlatmak için kullanılır.
+Iletişim Hizmetleri kimlik istemci kitaplığını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. Kimlik oluşturmanızı ve erişim belirteçlerinizi yönetmenizi sağlar. Kimlik, Azure Iletişim hizmetindeki (örneğin, Kullanıcı veya cihaz) uygulamanızın varlığını temsil eder. Erişim belirteçleri, sohbet ve arama istemci kitaplıklarının doğrudan Azure Iletişim hizmetlerine karşı kimlik doğrulamasını sağlar. Sunucu tarafı hizmetinde erişim belirteçleri oluşturmanızı öneririz. Daha sonra erişim belirteçleri istemci cihazlarındaki Iletişim Hizmetleri istemci kitaplıklarını başlatmak için kullanılır.
 
 Bu öğretici boyunca görüntülerde görülen tüm fiyatlar yalnızca tanıtım amaçlıdır.
 
@@ -69,7 +67,7 @@ Bu hızlı başlangıçta şunları öğrendiniz:
 > [!div class="checklist"]
 > * Kimlikleri yönetme
 > * Erişim belirteçleri verme
-> * Iletişim Hizmetleri Yönetimi istemci kitaplığını kullanma
+> * Iletişim Hizmetleri kimlik istemci kitaplığını kullanma
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ Ayrıca şunları yapmak isteyebilirsiniz:
  - [Kimlik doğrulaması hakkında bilgi edinin](../concepts/authentication.md)
  - [Uygulamanıza sohbet ekleme](./chat/get-started.md)
  - [İstemci ve sunucu mimarisi hakkında bilgi edinin](../concepts/client-and-server-architecture.md)
- 

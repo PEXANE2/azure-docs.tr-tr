@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a89fa72db3deaec12a9073233f861aa6835288a5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 18a2cf0de94641c955ed72a48f28352d13115ef0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678364"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667570"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
@@ -50,7 +50,7 @@ Kaynak sisteminizden veri alma, depolama konumuna bağlıdır.  Amaç, verileri 
 
 PolyBase UTF-8 ve UTF-16 kodlamalı sınırlandırılmış metin dosyalarından veri yükler. Sınırlandırılmış metin dosyalarına ek olarak, bu dosya, RC dosyası, ORC ve Parquet Hadoop dosya biçimlerini yükler. PolyBase, gzip ve Snappy sıkıştırılmış dosyalarındaki verileri de yükleyebilir. PolyBase Şu anda genişletilmiş ASCII, sabit genişlikli biçim ve WinZip, JSON ve XML gibi iç içe geçmiş biçimleri desteklemez.
 
-SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. Parquet, Azure SYNAPSE Analytics veri türü eşlemesine aşağıdaki gibidir:
+SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. Parquet, Azure SYNAPSE Analytics veri türü eşlemesine aşağıdaki gibidir:
 
 | **Parquet veri türü** |                      **SQL veri türü**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -79,12 +79,12 @@ SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dos
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. verileri Azure Blob depolama alanına veya Azure Data Lake Store ekleyin
 
-Verileri Azure depolama 'ya taşımak için [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) alanına veya [Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)taşıyabilirsiniz. Her iki konumda da veriler metin dosyalarında depolanmalıdır. PolyBase her iki konumdan de yüklenebilir.
+Verileri Azure depolama 'ya taşımak için [Azure Blob depolama](../../storage/blobs/storage-blobs-introduction.md) alanına veya [Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)taşıyabilirsiniz. Her iki konumda da veriler metin dosyalarında depolanmalıdır. PolyBase her iki konumdan de yüklenebilir.
 
 Verileri Azure depolama 'ya taşımak için kullanabileceğiniz araçlar ve hizmetler:
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) hizmeti ağ aktarım hızını, performansı ve öngörülebilirlik geliştirir. ExpressRoute, verilerinizi Azure 'a adanmış bir özel bağlantıyla yönlendiren bir hizmettir. ExpressRoute bağlantıları, verileri genel İnternet üzerinden yönlendirmez. Bağlantılar, genel İnternet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, daha düşük gecikme süreleri ve daha yüksek güvenlik sunar.
-- [AZCopy yardımcı programı](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , verileri genel Internet üzerinden Azure depolama 'ya taşıtabilecek. Bu, veri boyutlarınızın 10 TB 'den küçük olması durumunda geçerlidir. AZCopy ile düzenli olarak yükleme gerçekleştirmek için, kabul edilebilir olup olmadığını görmek için ağ hızını test edin.
+- [AZCopy yardımcı programı](../../storage/common/storage-use-azcopy-v10.md) , verileri genel Internet üzerinden Azure depolama 'ya taşıtabilecek. Bu, veri boyutlarınızın 10 TB 'den küçük olması durumunda geçerlidir. AZCopy ile düzenli olarak yükleme gerçekleştirmek için, kabul edilebilir olup olmadığını görmek için ağ hızını test edin.
 - [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , yerel sunucunuza yükleyebileceğiniz bir ağ geçidine sahip olabilir. Daha sonra, yerel sunucunuzdaki verileri Azure depolama 'ya taşımak için bir işlem hattı oluşturabilirsiniz. Adanmış SQL havuzu ile Data Factory kullanmak için bkz. [verileri ADANMıŞ SQL havuzuna yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. verileri yükleme için hazırlama
@@ -97,9 +97,9 @@ Veri yükleyebilmeniz için önce veri Ambarınızda dış tablolar tanımlaman�
 
 Dış tabloları tanımlama, veri kaynağını, metin dosyalarının biçimini ve tablo tanımlarını belirtmeyi içerir. Aşağıdakiler, gereken T-SQL sözdizimi konularından aşağıda verilmiştir:
 
-- [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="format-text-files"></a>Metin dosyalarını biçimlendirme
 
@@ -108,7 +108,7 @@ Metin dosyalarını biçimlendirmek için:
 
 - Verileriniz ilişkisel olmayan bir kaynaktan geliyorsa, onu satırlara ve sütunlara dönüştürmeniz gerekir. Verilerin ilişkisel veya ilişkisel olmayan bir kaynaktan olup olmadığı, verileri yüklemeyi planladığınız tablonun sütun tanımlarına göre hizalanacak şekilde dönüştürülmesi gerekir.
 - SQL havuzu hedef tablosundaki sütunlar ve veri türleriyle hizalamak için metin dosyasındaki verileri biçimlendirin. Dış metin dosyalarındaki veri türleri arasındaki hatalı hizalanmış ve veri ambarı tablosu, yük sırasında satırların reddedilmesine neden olur.
-- Metin dosyasındaki alanları Sonlandırıcı ile ayırın.  Kaynak verilerinizde bulunmayan bir karakter veya karakter dizisi kullandığınızdan emin olun. [Dış dosya biçimi oluştur](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ile belirttiğiniz sonlandırıcıyı kullanın.
+- Metin dosyasındaki alanları Sonlandırıcı ile ayırın.  Kaynak verilerinizde bulunmayan bir karakter veya karakter dizisi kullandığınızdan emin olun. [Dış dosya biçimi oluştur](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)ile belirttiğiniz sonlandırıcıyı kullanın.
 
 ## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. PolyBase kullanarak verileri adanmış SQL havuzu hazırlama tablolarına yükleme
 
@@ -119,13 +119,13 @@ Hazırlama tablosuna veri yüklemek en iyi uygulamadır. Hazırlama tabloları, 
 PolyBase ile veri yüklemek için, bu yükleme seçeneklerinden herhangi birini kullanabilirsiniz:
 
 - [T-SQL Ile PolyBase](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) , verileriniz Azure Blob depolama veya Azure Data Lake Store olduğunda iyi bir şekilde çalışabilir. Bu, yükleme işlemi üzerinde en fazla denetim sağlar, ancak dış veri nesneleri tanımlamanızı da gerektirir. Diğer yöntemler, kaynak tablolarını hedef tablolarla eşleştirdiğinizde arka planda bu nesneleri tanımlar.  T-SQL yüklemelerini düzenlemek için Azure Data Factory, SSIS veya Azure işlevlerini kullanabilirsiniz.
-- [SSIS Ile PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , kaynak verileriniz SQL Server olduğunda iyi sonuç verir. SSIS, kaynağı hedef tablo eşlemelerine tanımlar ve ayrıca yükü düzenler. SSIS paketleriniz zaten varsa, yeni veri ambarı hedefle çalışacak şekilde paketleri değiştirebilirsiniz.
+- [SSIS Ile PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) , kaynak verileriniz SQL Server olduğunda iyi sonuç verir. SSIS, kaynağı hedef tablo eşlemelerine tanımlar ve ayrıca yükü düzenler. SSIS paketleriniz zaten varsa, yeni veri ambarı hedefle çalışacak şekilde paketleri değiştirebilirsiniz.
 - [Azure Data Factory (ADF) Ile PolyBase](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) başka bir düzenleme aracıdır.  İşlem hattını tanımlar ve işleri zamanlar.
 - [Azure Databricks Ile PolyBase,](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) verileri bir Azure SYNAPSE Analytics tablosundan Databricks veri çerçevesine aktarır ve/veya databricks veri çerçevesindeki verileri PolyBase kullanarak bir Azure SYNAPSE Analytics tablosuna yazar.
 
 ### <a name="non-polybase-loading-options"></a>PolyBase yükleme seçenekleri
 
-Verileriniz PolyBase ile uyumlu değilse [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) veya [SqlBulkCopy API 'sini](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)kullanabilirsiniz. BCP, Azure Blob depolama alanına geçmeden doğrudan adanmış SQL havuzuna yükler ve yalnızca küçük yüklemeler için tasarlanmıştır. Bu seçeneklerin yük performansı, PolyBase 'den önemli ölçüde daha yavaştır.
+Verileriniz PolyBase ile uyumlu değilse [bcp](/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true) veya [SqlBulkCopy API 'sini](/dotnet/api/system.data.sqlclient.sqlbulkcopy)kullanabilirsiniz. BCP, Azure Blob depolama alanına geçmeden doğrudan adanmış SQL havuzuna yükler ve yalnızca küçük yüklemeler için tasarlanmıştır. Bu seçeneklerin yük performansı, PolyBase 'den önemli ölçüde daha yavaştır.
 
 ## <a name="5-transform-the-data"></a>5. verileri dönüştürme
 

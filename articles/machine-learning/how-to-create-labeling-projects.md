@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097548"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656831"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -107,12 +107,9 @@ Veri kümenize yeni görüntüler eklemeyi planlıyorsanız, bu yeni görüntül
 
 Projenize daha fazla görüntü eklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanarak blob depolamada uygun klasöre yükleyin. 
 
-Projenizin veri deposundaki yeni verileri sürekli olarak izlemesini istediğinizde **artımlı yenilemeyi etkinleştir** kutusunu işaretleyin. Bu veriler, etkinleştirildiğinde günde bir kez projenize çekilir.
+Projenizin veri deposundaki yeni verileri sürekli olarak izlemesini istediğinizde **artımlı yenilemeyi etkinleştir** kutusunu işaretleyin. Bu veriler, etkinleştirildikten sonra projenizde bir kez çekilir, bu nedenle projenizde görüntülemeden önce veri deposuna yeni veriler ekledikten sonra beklemeniz gerekecektir.  Projenizin **Ayrıntılar** sekmesinin **artımlı yenileme** bölümünde verilerin son yenilenme sırasında zaman damgası görebilirsiniz.
 
 Veri deposunda görüntülenen yeni görüntülerin projenize eklenmesini istemiyorsanız bu kutunun işaretini kaldırın.
-
-Projenizin **Ayrıntılar** sekmesinin **artımlı yenileme** bölümünde en son yenileme için zaman damgasını bulabilirsiniz.
-
 
 ## <a name="specify-label-classes"></a>Etiket sınıfları belirtme
 

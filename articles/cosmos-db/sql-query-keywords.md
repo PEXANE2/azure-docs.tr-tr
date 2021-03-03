@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599349"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659843"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 Belirli bir karakter dizesinin belirtilen bir Düzenle eşleşip eşleşmediğini bağlı olarak bir Boole değeri döndürür. Bir desenler, düzenli karakter ve joker karakterler içerebilir. `LIKE`Anahtar sözcüğü ya da [Regexmatch](sql-query-regexmatch.md) sistem işlevini kullanarak mantıksal olarak eşdeğer sorgular yazabilirsiniz. Seçtiğiniz dizinden bağımsız olarak aynı dizin kullanımını gözlemleyeceksiniz. Bu nedenle, `LIKE` söz dizimini normal ifadelerden daha fazla tercih ediyorsanız kullanmanız gerekir.
 
 > [!NOTE]
-> `LIKE`Bir dizini kullanabileceğinden, karşılaştırmak istediğiniz özellikler için [bir Aralık dizini oluşturmanız](indexing-policy.md) gerekir `LIKE` .
+> `LIKE`Bir dizini kullanabileceğinden, karşılaştırmak istediğiniz özellikler için [bir Aralık dizini oluşturmanız](./index-policy.md) gerekir `LIKE` .
 
 Aşağıdaki joker karakterleri şu şekılde kullanabilirsiniz:
 

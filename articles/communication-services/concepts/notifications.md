@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577388"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660166"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Iletişim Hizmetleri sohbeti ve arama istemci kitaplıkları, sinyal iletilerinin bağlı istemcilere verimli ve güvenilir bir şekilde gönderilmesine izin veren gerçek zamanlı bir mesajlaşma kanalı oluşturur. Bu, karmaşık HTTP yoklama mantığını uygulamaya gerek kalmadan uygulamalarınıza zengin ve gerçek zamanlı iletişim işlevleri oluşturmanıza olanak sağlar. Ancak, mobil uygulamalarda, bu sinyal kanalı yalnızca uygulamanız ön planda etkin olduğunda bağlı kalır. Uygulamanız arka planda olduğunda kullanıcılarınızın gelen çağrıları veya sohbet iletilerini almasını istiyorsanız anında iletme bildirimleri kullanmanız gerekir.
 
@@ -34,7 +32,7 @@ Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, öl
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Azure Notification Hubs aracılığıyla anında iletme bildirimleri sunun
 
-Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir çağrı aldıklarında otomatik olarak anında iletme bildirimleri göndermek için Iletişim Hizmetleri kaynağına bağlayabilirsiniz. Bu anında iletme bildirimlerini kullanarak uygulamanızı arka planda uyandırır ve kullanıcının çağrıyı kabul etmesini veya reddetmesine imkan tanıyan Kullanıcı ARABIRIMINI görüntüleyebilirsiniz. 
+Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir çağrı aldıklarında otomatik olarak anında iletme bildirimleri göndermek için Iletişim Hizmetleri kaynağına bağlayabilirsiniz. Bu anında iletme bildirimlerini kullanarak uygulamanızı arka planda uyandırır ve kullanıcının çağrıyı kabul etmesini veya reddetmesine imkan tanıyan Kullanıcı ARABIRIMINI görüntüleyebilirsiniz.
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="İletişim hizmetlerinin Azure Notification Hubs ile nasıl tümleştirildiğini gösteren diyagram.":::
 
@@ -43,13 +41,13 @@ Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir
 > [!NOTE]
 > Şu anda yalnızca çağırma anında iletme bildirimleri destekleniyor.
 
-### <a name="notification-hub-provisioning"></a>Notification Hub 'ı sağlama 
+### <a name="notification-hub-provisioning"></a>Notification Hub 'ı sağlama
 
 İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](../../notification-hubs/create-notification-hub-portal.md) . Kullanmak istediğiniz Platform Bildirim Sistemi için Azure Notification Hub 'ı yapılandırmanız gerekir. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
 
 > [!NOTE]
-> APNs ve FCM platformları şu anda desteklenmektedir.  
-APNs platformunun belirteç kimlik doğrulama moduyla yapılandırılması gerekir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor. 
+> APNs ve FCM platformları şu anda desteklenmektedir.
+APNs platformunun belirteç kimlik doğrulama moduyla yapılandırılması gerekir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor.
 
 Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi `Send` izinleri içermelidir. `Send`Yalnızca Hub 'ınız için özel izinlere sahip başka bir erişim ilkesi oluşturmanız önerilir. [Notification Hubs güvenlik ve erişim ilkeleri](../../notification-hubs/notification-hubs-push-notification-security.md) hakkında daha fazla bilgi edinin
 
@@ -74,10 +72,10 @@ Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmet
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal içinde anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
-> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.  
+> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.
 Hub 'ın bağlantılı olduğu herhangi bir değişiklik, veri düzlemine (bir bildirim gönderilirken) en uzun süre içinde yansıtılır ``10`` . Bu, daha önce gönderilen bildirimler **varsa** hub ilk kez bağlandığında da geçerlidir.
 
-### <a name="device-registration"></a>Cihaz kaydı 
+### <a name="device-registration"></a>Cihaz kaydı
 
 Cihaz işleyicinizi Iletişim hizmetleriyle nasıl kaydedeceğinizi öğrenmek için [sesli arama hızlı başlangıç](../quickstarts/voice-video-calling/getting-started-with-calling.md) bölümüne bakın.
 

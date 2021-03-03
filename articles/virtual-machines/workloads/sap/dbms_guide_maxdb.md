@@ -8,20 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e15b592aaa780ea80b6931c6d44fbf99e2f3a730
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673060"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
 
@@ -349,7 +348,7 @@ Kısa bir süre içinde şunları yapmanız gerekir:
 ![SAP MaxDB DBMS için Azure IaaS VM 'sinin başvuru yapılandırması](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Yedekleme ve geri yükleme
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Yedekleme ve Geri Yükleme
 SAP MaxDB 'yi Azure 'a dağıttığınızda, yedekleme yöntemlerinizi gözden geçirmeniz gerekir. Sistem, bir üretken sistem olmasa bile SAP MaxDB tarafından barındırılan SAP veritabanının düzenli aralıklarla yedeklenmesi gerekir. Azure depolama üç görüntü koruduğundan, artık sisteminizi depolama hatalarına karşı korumak ve daha önemli işlemler veya yönetim hataları bakımından bir yedekleme daha az önemlidir. Doğru bir yedekleme ve geri yükleme planının korunmasının birincil nedeni, bir noktadan noktaya kurtarma özelliği sağlayarak mantıksal veya el ile hatalar için telafi sağlayabilmenizi sağlamaktır. Böylece hedef, veritabanını belirli bir noktaya geri yüklemek ya da mevcut veritabanını kopyalayarak başka bir sistemi temel almak için Azure 'daki yedeklemeleri kullanmak üzere yedeklemeleri kullanmaktır. 
 
 Azure 'da bir veritabanını yedekleme ve geri yükleme, şirket içi sistemler için yaptığı gibi çalışır. böylece, SAP Note [767598]' de listelenen SAP MaxDB belge belgelerinden birinde AÇıKLANAN standart sap MaxDB yedekleme/geri yükleme araçları kullanabilirsiniz. 

@@ -1,34 +1,31 @@
 ---
-title: Azure Cosmos DB için Azure SYNAPSE bağlantısına (Önizleme) bağlanma
+title: Azure Cosmos DB için Azure Synapse Link’e bağlanma
 description: Azure SYNAPSE bağlantısıyla bir Azure Cosmos DB veritabanını Azure SYNAPSE çalışma alanına bağlamayı öğrenin.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119841"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667545"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link’e bağlanma
 
 Bu makalede Azure SYNAPSE bağlantısıyla Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Cosmos DB bir veritabanını çalışma alanınıza bağlanmadan önce şunları yapmanız gerekir:
 
 * Mevcut Azure Cosmos DB veritabanı veya [hızlı başlangıç: bir Azure Cosmos DB hesabını yönetme](../../cosmos-db/how-to-manage-database-account.md)bölümündeki adımları izleyerek yeni bir hesap oluşturun.
 * Mevcut Azure SYNAPSE çalışma alanı veya [hızlı başlangıç: SYNAPSE çalışma alanı oluşturma](../quickstart-create-workspace.md)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
-
-> [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen bir sanal ağı etkinleştirilmemiş olan çalışma alanlarında destekleniyor.
 
 ## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Azure Cosmos DB veritabanı hesabında SYNAPSE bağlantısını etkinleştir
 
@@ -70,4 +67,5 @@ Bir kapsayıcıya sağ tıklayarak Spark veya SQL çalışma zamanını tetikley
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure SYNAPSE ve Azure Cosmos DB arasında nelerin desteklendiğini öğrenin](./concept-synapse-link-cosmos-db-support.md)
+* [Azure Cosmos DB analitik depo için özel uç noktaları yapılandırma](../cosmos-db/analytical-store-private-endpoints.md)
 * [Spark ile analitik depoyu sorgulama hakkında bilgi edinin](./how-to-query-analytical-store-spark.md)

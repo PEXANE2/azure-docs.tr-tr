@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584519"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646590"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de oturum davranışını yapılandırma
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de oturum davranışını yapılandırma
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "97584519"
 
 Kullanıcı başlangıçta bir uygulamaya oturum açtığında, Azure AD B2C tanımlama bilgisi tabanlı bir oturumu devam ettirir. Sonraki kimlik doğrulama istekleri üzerine Azure AD B2C, tanımlama bilgisi tabanlı oturumu okuyup doğrular ve kullanıcıdan tekrar oturum açmasını istemeden bir erişim belirteci yayınlar. Tanımlama bilgisi tabanlı oturumun süresi dolarsa veya geçersiz olursa kullanıcıdan tekrar oturum açması istenir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -71,9 +71,9 @@ Uygulama oturumu, uygulama etki alanı adı altında depolanan tanımlama bilgis
 
 Azure AD B2C oturum davranışını aşağıdakiler dahil olmak üzere yapılandırabilirsiniz:
 
-- **Web uygulaması oturumu yaşam süresi (dakika)** -başarılı bir kimlik doğrulamasından sonra Azure AD B2C oturum tanımlama bilgisinin kullanıcının tarayıcısına depolanacağı zaman miktarı. Oturum yaşam süresini 15 ile 720 dakika arasında bir değere ayarlayabilirsiniz.
+- **Web uygulaması oturumu yaşam süresi (dakika)** -başarılı bir kimlik doğrulamasından sonra Azure AD B2C oturum tanımlama bilgisinin kullanıcının tarayıcısına depolanacağı zaman miktarı. Oturum ömrünü 15 ila 720 dakikaya bir değere ayarlayabilirsiniz.
 
-- **Web uygulaması oturumu zaman aşımı** -bir oturumun oturum yaşam süresi ayarı veya Oturumumu Açık tut ayarıyla nasıl uzatıldığını gösterir.
+- **Web uygulaması oturumu zaman aşımı** -bir oturumun, oturum yaşam süresi ayarı veya Oturumumu Açık tut (KMSI) ayarıyla nasıl uzatıldığını gösterir.
   - Sıralı **-kullanıcının** tanımlama bilgisi tabanlı kimlik doğrulaması (varsayılan) her gerçekleştirdiğinde oturumun genişletildiğini gösterir.
   - **Mutlak** -kullanıcının belirtilen süre sonunda yeniden kimlik doğrulamasına zorlandığını gösterir.
 
@@ -82,9 +82,7 @@ Azure AD B2C oturum davranışını aşağıdakiler dahil olmak üzere yapıland
   - **Uygulama** -Bu ayar, başka uygulamalardan bağımsız olarak bir uygulama için Kullanıcı oturumunu korumanıza olanak sağlar. Örneğin, kullanıcının contoso Market 'te zaten oturum açmış olup olmamasına bakılmaksızın kullanıcının contoso Ilaç 'da oturum açmasını istiyorsanız bu ayarı kullanabilirsiniz.
   - **İlke** -Bu ayar, bir kullanıcı oturumunun, kendisini kullanan uygulamalardan bağımsız olarak bir Kullanıcı akışı için bakımını yapmanıza olanak sağlar. Örneğin, Kullanıcı zaten oturum açmışsa ve bir Multi-Factor Authentication (MFA) adımını tamamlamışsa, Kullanıcı akışına bağlı olan oturumun süresi dolana kadar, kullanıcıya birden çok uygulamanın daha yüksek güvenlik bölümlerine erişim verilebilir.
   - **Devre dışı** -Bu ayar, kullanıcıyı ilkenin her yürütülmesinden sonra Kullanıcı akışının tamamı boyunca çalışmaya zorlar.
-::: zone pivot="b2c-custom-policy"
-- **Oturumumu Açık bırak** -sürekli bir tanımlama bilgisinin kullanımıyla oturum ömrünü genişletiyor. Kullanıcı tarayıcıyı kapatıp yeniden açtıktan sonra oturum etkin kalır. Oturum yalnızca Kullanıcı oturumunu kapattığında iptal edilir. Oturumumu Açık tut özelliği yalnızca yerel hesaplarla oturum açmak için geçerlidir. Oturumumu Açık tut özelliği, oturum kullanım zamanına göre önceliklidir. Oturumumu Açık bırak özelliği etkinse ve Kullanıcı onu seçerse, bu özellik oturumun ne zaman sona ereceğini belirler. 
-::: zone-end
+- **Oturumumu Açık bırak (KMSı)** -sürekli bir tanımlama bilgisinin kullanımıyla oturum ömrünü genişletir. Bu özellik etkinleştirilirse ve Kullanıcı onu seçerse, kullanıcı tarayıcıyı kapatıp yeniden açtıktan sonra bile oturum etkin kalır. Oturum yalnızca Kullanıcı oturumunu kapattığında iptal edilir. KMSI özelliği yalnızca yerel hesaplarla oturum açmak için geçerlidir. KMSI özelliği oturum ömrünün üzerine gelir.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ Oturum davranışlarını ve SSO yapılandırmasını değiştirmek için [Relyi
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Oturumumu açık tutmayı etkinleştir (KMSI)
 
-Web kullanıcılarınızın kullanıcıları ve Azure Active Directory B2C (Azure AD B2C) dizininizde yerel hesaplara sahip yerel uygulamalarınız için Oturumumu Açık tut ' i etkinleştirebilirsiniz. Bu özellik, Kullanıcı adını ve parolasını yeniden girmesi istenmeden, uygulamanıza geri dönen kullanıcılara erişim izni verir. Kullanıcı oturumu kapattığında bu erişim iptal edilir.
+Web kullanıcılarınızın kullanıcıları ve Azure AD B2C dizininizde yerel hesaplara sahip yerel uygulamalarınız için KMSı özelliğini etkinleştirebilirsiniz. Özelliği etkinleştirdiğinizde, kullanıcılar, tarayıcıyı kapattıktan sonra oturumun etkin kalması için oturum açmış olmaya devam edebilir. Ardından, Kullanıcı adını ve parolasını yeniden girmesi istenmeden tarayıcıyı yeniden açabilirsiniz. Kullanıcı oturumu kapattığında bu erişim iptal edilir.
 
 ![Oturumumu Açık tut onay kutusunun gösterildiği örnek kaydolma, oturum açma sayfası](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+KMSı, bireysel Kullanıcı akış düzeyinde yapılandırılabilir. Kullanıcı akışlarınız için KMSı 'yi etkinleştirmeden önce aşağıdakileri göz önünde bulundurun:
+
+- KMSı yalnızca, kaydolma ve oturum açma (SUSı) için **Önerilen** sürümler, oturum açma ve profil düzenlemesi Kullanıcı akışları için desteklenir. Şu anda bu kullanıcı akışlarının **Standart** veya **eski Preview-v2** sürümüne sahipseniz ve KMSI 'yi etkinleştirmek istiyorsanız, bu kullanıcı akışlarının yeni, **Önerilen** sürümlerini oluşturmanız gerekir.
+- KMSı, parola sıfırlama veya kaydolma Kullanıcı akışlarla desteklenmez.
+- Kiracınızdaki tüm uygulamalarda KMSı 'yi etkinleştirmek istiyorsanız, kiracınızdaki tüm Kullanıcı akışları için KMSı 'yi etkinleştirmenizi öneririz. Bir Kullanıcı bir oturum sırasında birden çok ilke sunabileceğinden, KMSı 'nin etkin olmadığı bir sorunla karşılaşabileceğinden, KMSI tanımlama bilgisini oturumdan kaldırabiliriz.
+- Genel bilgisayarlarda KMSı etkinleştirilmemelidir.
+
+### <a name="configure-kmsi-for-a-user-flow"></a>Bir Kullanıcı akışı için KMSı 'yi yapılandırma
+
+Kullanıcı akışınız için KMSı 'yi etkinleştirmek için:
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik**   filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
+3.  ****   Azure Portal sol üst köşesindeki tüm hizmetler ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+4.  **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
+5. Daha önce oluşturduğunuz kullanıcı akışını açın.
+6.  **Özellikler**' i seçin.
+
+7.  **Oturum davranışı** altında **Oturumumu Açık tut oturumunu etkinleştir**' i seçin. Oturumumu Açık **tut (gün)** seçeneğinin yanında, bir oturumun açık kalabileceğini belirten gün sayısını belirtmek için 1 ile 90 arasında bir değer girin.
+
+
+   ![Oturumumu Açık tut oturumunu etkinleştir](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Kullanıcılar bu seçeneği genel bilgisayarlarda etkinleştirmemelidir.
 

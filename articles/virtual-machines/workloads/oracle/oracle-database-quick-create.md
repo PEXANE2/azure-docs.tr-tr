@@ -2,18 +2,18 @@
 title: Azure VM 'de Oracle veritabanı oluşturma | Microsoft Docs
 description: Oracle Database 12c veritabanını hızlıca Azure ortamınızda çalışır duruma alın.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ec6a8382e2c0ce2cb359a62dd3f80fc977c4b1c2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063071"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674657"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM 'de Oracle Database oluşturma
 
@@ -188,16 +188,16 @@ Bu görevde, VM 'yi koruyan Azure ağ güvenlik grubunu ayarlayarak veritabanı 
    echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
    ```
    
-10. ***/Etc/hosts** _ dosyasını genel IP ve ana bilgisayar adı ile güncelleştirin.
+10. ***/Etc/hosts*** dosyasını genel IP ve ana bilgisayar adı ile güncelleştirin.
 
-    _*_Genel IP ve VMname_*_ değerlerini gerçek değerlerinizi yansıtacak şekilde değiştirin:
+    ***Genel IP ve VMname*** değerlerini gerçek değerlerinizi yansıtacak şekilde değiştirin:
   
     ```bash
     echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
     ```
 11. Konak adı dosyasını güncelleştirme
     
-    VM 'nin etki alanı adını _ */etc/hostname** dosyasına eklemek için aşağıdaki komutu kullanın. Bu, **eastus** bölgesinde kaynak grubunuzu ve sanal makineyi oluşturduğunuzu varsayar:
+    Sanal makinenin etki alanı adını **/etc/hostname** dosyasına eklemek için aşağıdaki komutu kullanın. Bu, **eastus** bölgesinde kaynak grubunuzu ve sanal makineyi oluşturduğunuzu varsayar:
     
     ```bash
     sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname

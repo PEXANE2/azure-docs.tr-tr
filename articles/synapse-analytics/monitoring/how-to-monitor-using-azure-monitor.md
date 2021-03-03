@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574301"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672762"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Izleyici 'yi Azure SYNAPSE Analytics çalışma alanınız ile birlikte kullanma
 
@@ -103,7 +103,7 @@ Azure Portal oturum açın ve   >  uyarı oluşturmak için **uyarıları** İzl
 
 Azure SYNAPSE Analytics çalışma alanları tarafından yayılan Günlükler şunlardır:
 
-| Log Analytics tablo adı | Günlük kategorisi adı                 | Description |
+| Log Analytics tablo adı | Günlük kategorisi adı                 | Açıklama |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure SYNAPSE ağ geçidi API istekleri. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure SYNAPSE rol tabanlı erişim denetimi (SRTZB) işlemleri. |
@@ -112,7 +112,7 @@ Azure SYNAPSE Analytics çalışma alanları tarafından yayılan Günlükler ş
 
 Adanmış SQL havuzları tarafından yayılan Günlükler şunlardır:
 
-| Log Analytics tablo adı        | Günlük kategorisi adı             | Description |
+| Log Analytics tablo adı        | Günlük kategorisi adı             | Açıklama |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Azure SYNAPSE adanmış bir SQL havuzundaki SQL istekleri/sorguları hakkında bilgi.
 | SynapseSqlPoolDmsWorkers    | Dmsçalışanları   | Azure SYNAPSE adanmış bir SQL havuzunda DMS adımlarını tamamlayan çalışanlar hakkında bilgiler.
@@ -121,17 +121,17 @@ Adanmış SQL havuzları tarafından yayılan Günlükler şunlardır:
 | SynapseSqlPoolWaits         | Bekler        | Bir SQL isteği/sorgusunun bir Azure SYNAPSE adanmış SQL havuzunda yürütülmesi sırasında, kilitler ve iletim kuyruklarındaki bekleme durumları hakkında bilgi ile karşılaşıldı.
 
 Bu Günlükler hakkında daha fazla bilgi için aşağıdaki bilgilere bakın:
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Apache Spark havuz günlüğü
 
 Apache Spark havuzları tarafından yayılan günlük aşağıda verilmiştir:
 
-| Log Analytics tablo adı               | Günlük kategorisi adı              | Description                 |
+| Log Analytics tablo adı               | Günlük kategorisi adı              | Açıklama                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Sonlandırılan Apache Spark uygulamalar hakkında bilgi |
 

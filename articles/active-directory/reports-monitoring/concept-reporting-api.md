@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631970"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653244"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API 'SI ile çalışmaya başlama
 
@@ -39,7 +39,7 @@ Sorunlarla karşılaşırsanız, bkz. [Azure Active Directory için destek alma]
 Raporlama API 'sine erişmek için veya Kullanıcı müdahalesi olmadan, şunları yapmanız gerekir:
 
 1. Rol atama (güvenlik okuyucusu, Güvenlik Yöneticisi, genel yönetici)
-2. Uygulamaları kaydetme
+2. Bir uygulamayı kaydetme
 3. İzinleri verme
 4. Yapılandırma ayarlarını topla
 
@@ -51,7 +51,7 @@ Denetim günlükleri için Microsoft Graph API uç noktası `https://graph.micro
 
 Microsoft Graph kullanarak güvenlik algılamalarından programlı erişim kazanmak için [kimlik koruması risk ALGıLAMA API](/graph/api/resources/identityriskevent?view=graph-rest-beta) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması ve Microsoft Graph ile çalışmaya başlama](../identity-protection/howto-identity-protection-graph-api.md). 
   
-Kiracınızdaki sağlama olaylarına programlı erişim sağlamak için [sağlama GÜNLÜKLERI API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 'sini de kullanabilirsiniz. 
+Kiracınızdaki sağlama olaylarına programlı erişim sağlamak için [sağlama GÜNLÜKLERI API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 'sini de kullanabilirsiniz. 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer ile API 'Ler
 

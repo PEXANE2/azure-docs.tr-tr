@@ -1,0 +1,94 @@
+- name: IoT Hub belgeleri için cihaz güncelleştirmesi
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: IoT Hub için cihaz güncelleştirmesi nedir?
+      href: understand-device-update.md
+- name: Öğreticiler
+  items:
+    - name: Raspberry PI üzerinde görüntü güncelleştirme
+      href: device-update-raspberry-pi.md
+    - name: Simülatör üzerinde cihaz güncelleştirme kullanma
+      href: device-update-simulator.md
+    - name: 'Ubuntu Server 18,04 x64 üzerinde paket güncelleştirmesi'
+      href: device-update-ubuntu-agent.md
+- name: Kavramlar
+  items:
+    - name: Cihaz güncelleştirme hesabı ve örneği
+      href: device-update-resources.md
+    - name: Cihaz güncelleştirme Kullanıcı rolleri ve erişimi
+      href: device-update-control-access.md
+    - name: Cihaz güncelleştirme apt bildirimi
+      href: device-update-apt-manifest.md
+    - name: Cihaz Güncelleştirme uyumluluğu
+      href: device-update-compliance.md
+    - name: Cihaz güncelleştirme grupları
+      href: device-update-groups.md
+    - name: Cihaz güncelleştirmesinin kullanımı Tak ve Kullan
+      href: device-update-plug-and-play.md
+    - name: Cihaz Güncelleştirme ağ gereksinimleri
+      href: device-update-networking.md
+    - name: Cihaz Güncelleştirme Aracısı
+      href: device-update-agent-overview.md
+    - name: Cihaz güncelleştirme yapılandırma dosyası
+      href: device-update-configuration-file.md
+    - name: Cihaz güncelleştirme bildirimi
+      href: update-manifest.md
+    - name: Cihaz güncelleştirmesinin güvenliği nasıl sağlanır
+      href: device-update-security.md
+    - name: Bağlantısı kesilen cihazlar için destek
+      href: connected-cache-disconnected-device-update.md
+    - name: IoT Hub cihaz güncelleştirmesi için Microsoft bağlı önbelleğini yapılandırma
+      href: connected-cache-configure.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Cihaz güncelleştirme hesabı oluştur
+      href: create-device-update-account.md
+    - name: Cihaz güncelleştirme aracısını sağlama
+      href: device-update-agent-provisioning.md
+    - name: Bir güncelleştirmeyi içeri aktar
+      href: import-update.md
+    - name: Cihaz güncelleştirme grubu oluştur
+      href: create-update-group.md
+    - name: Cihaz güncelleştirmesi dağıtma
+      href: deploy-update.md
+    - name: Cihaz güncelleştirmesi dağıtma
+      href: deploy-update.md
+    - name: Tek düzey Microsoft bağlı önbelleği
+      href: connected-cache-single-level.md
+    - name: İç içe geçmiş düzey Microsoft bağlı önbelleği
+      href: connected-cache-nested-level.md
+    - name: Endüstriyel IoT (ııOT) için Microsoft bağlı önbelleği
+      href: connected-cache-industrial-iot-nested.md
+    - name: Sorun giderme
+      items:
+        - name: Cihaz güncelleştirmelerinin sorunlarını giderme
+          href: troubleshoot-device-update.md
+- name: Başvuru
+  items:
+    - name: Cihaz güncelleştirme istemcisi hata kodları
+      href: device-update-error-codes.md
+- name: Kaynaklar
+  items:
+    - name: Destek ve yardım seçenekleri
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT hizmetleri
+      items:
+        - name: IoT Hub
+          href: ./index.yml
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT çözüm hızlandırıcıları
+          href: ../iot-accelerators/index.yml
+        - name: IoT Tak Çalıştır
+          href: ../iot-pnp/index.yml
+        - name: Azure Haritalar
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Teslim Iyileştirme
+      href: 'https://github.com/microsoft/do-client'

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634305"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661163"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>Klasik IP filtresi IoT Hub ve yükseltme 
 
@@ -88,7 +88,7 @@ Güvenlik, Azure IoT Hub tabanlı tüm IoT çözümlerinin önemli bir yönüdü
 
 Belirli IP adresleri için IoT Hub uç noktalarını engellemek faydalı olduğunda iki özel kullanım durumu vardır:
 
-* IoT Hub 'ınız yalnızca belirli bir IP adresi aralığından trafik almalıdır ve diğer her şeyi reddedebilir. Örneğin, IoT Hub 'ı ve şirket içi altyapınız arasında özel bağlantılar oluşturmak için IoT Hub 'ınızı [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) ile birlikte kullanıyorsunuz.
+* IoT Hub 'ınız yalnızca belirli bir IP adresi aralığından trafik almalıdır ve diğer her şeyi reddedebilir. Örneğin, IoT Hub 'ı ve şirket içi altyapınız arasında özel bağlantılar oluşturmak için IoT Hub 'ınızı [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) ile birlikte kullanıyorsunuz.
 
 * IoT Hub Yöneticisi tarafından şüpheli olarak tanımlanmış IP adreslerinden gelen trafiği reddetmeniz gerekir.
 
@@ -141,7 +141,7 @@ IP filtresi kuralını silmek için, söz konusu satırdaki çöp kutusu simgesi
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLı kullanarak IP filtrelerini alma ve güncelleştirme
 
-IoT Hub IP filtreleri, [Azure CLI](https://docs.microsoft.com/cli/azure/)aracılığıyla alınabilir ve güncelleştirilir.
+IoT Hub IP filtreleri, [Azure CLI](/cli/azure/)aracılığıyla alınabilir ve güncelleştirilir.
 
 IoT Hub geçerli IP filtrelerini almak için şunu çalıştırın:
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>REST kullanarak IP filtresi kurallarını güncelleştirme
 
-Ayrıca, Azure Kaynak sağlayıcısı 'nın REST uç noktasını kullanarak IoT Hub IP filtresini alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate) altında `properties.ipFilterRules` bölümüne bakın.
+Ayrıca, Azure Kaynak sağlayıcısı 'nın REST uç noktasını kullanarak IoT Hub IP filtresini alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](/rest/api/iothub/iothubresource/createorupdate) altında `properties.ipFilterRules` bölümüne bakın.
 
 ### <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirmesi
 

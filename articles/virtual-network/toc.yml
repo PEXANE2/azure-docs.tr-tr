@@ -99,6 +99,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Yönlendirme tercihi
           href: routing-preference-overview.md
+        - name: Yönlendirme tercihi tarifeli değil
+          href: routing-preference-unmetered.md
         - name: Genel IP güvenlik temeli
           href: public-ip-security-baseline.md
     - name: Güvenlik
@@ -274,6 +276,10 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
+                - name: VM için karma yönlendirme tercihini yapılandırma
+                  href: routing-preference-mixed-network-adapter-portal.md
+                - name: AKS kümesi için yönlendirme tercihini yapılandırma
+                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: Güvenlik
       items:
         - name: Ağ trafiğini filtreleme

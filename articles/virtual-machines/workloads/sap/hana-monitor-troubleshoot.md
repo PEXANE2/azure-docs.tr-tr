@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83743a6985bef8ce6c03e01ed8d10aa740852106
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967729"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668813"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA tarafından izleme ve sorun giderme
 
@@ -67,7 +66,7 @@ Yüksek CPU kullanımı nedeniyle tetiklenen bir uyarı olabilir, ancak bunlarla
 
 Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: CPU Ile Ilgili nedenler ve çözümler](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) sitesine bakın.
 
-## <a name="operating-system"></a>İşletim Sistemi
+## <a name="operating-system"></a>Operating System
 
 Linux üzerinde SAP HANA en önemli denetimlerinden biri, saydam büyük sayfaların devre dışı bırakıldığından emin olmak için, [SAP HANA sunucularında SAP Note #2131662 – saydam büyük sayfalar (THP)](https://launchpad.support.sap.com/#/notes/2131662)konusuna bakın.
 

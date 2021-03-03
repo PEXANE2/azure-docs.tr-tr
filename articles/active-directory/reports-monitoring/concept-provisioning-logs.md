@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091941"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651946"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure portal sağlama günlüklerine genel bakış (Önizleme)
 
@@ -60,8 +60,8 @@ Sağlama etkinliği raporunu görüntülemeniz için kiracınızın ilişkili bi
 Müşteriler, sağlama günlükleriyle dört şekilde etkileşim kurabilir:
 
 - Sonraki bölümde açıklandığı gibi Azure portal günlüklere erişim.
-- Sağlama günlüklerinin [Azure izleyici](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)'ye akışı. Bu yöntem, genişletilmiş veri saklama ve özel panolar, uyarılar ve sorgular oluşturmak için izin verir.
-- Sağlama günlükleri için [MICROSOFT Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) sorgulanıyor.
+- Sağlama günlüklerinin [Azure izleyici](../app-provisioning/application-provisioning-log-analytics.md)'ye akışı. Bu yöntem, genişletilmiş veri saklama ve özel panolar, uyarılar ve sorgular oluşturmak için izin verir.
+- Sağlama günlükleri için [MICROSOFT Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) sorgulanıyor.
 - Sağlama günlükleri bir CSV veya JSON dosyası olarak indiriliyor.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal günlüklere erişin
@@ -207,7 +207,7 @@ Yükleme boyutunu azaltmak için JSON dosyası küçültülmüş biçimde indiri
 
 PowerShell kullanarak JSON dosyasıyla çalışmak için bazı örnek komutlar aşağıda verilmiştir. Rahat olduğunuz herhangi bir programlama dilini kullanabilirsiniz.  
 
-İlk olarak, şu komutu çalıştırarak [json dosyasını okuyun](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) :
+İlk olarak, şu komutu çalıştırarak [json dosyasını okuyun](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) :
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -243,7 +243,7 @@ Raporları sağlamaya yönelik bazı ipuçları ve konular aşağıda verilmişt
 
 Sağlama günlüklerinde bulduğunuz hataların nasıl çözümleneceğini daha iyi anlamak için aşağıdaki tabloyu kullanın. Eksik olan herhangi bir hata kodu için, bu sayfanın en altındaki bağlantıyı kullanarak geri bildirim sağlayın. 
 
-|Hata kodu|Description|
+|Hata kodu|Açıklama|
 |---|---|
 |Çakışma, EntryConflict|Çakışan öznitelik değerlerini Azure AD 'de veya uygulamada düzeltin. Ya da çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için [belgeleri](../app-provisioning/customize-application-attributes.md) gözden geçirin.|
 |TooManyRequests|Hedef uygulama, aşırı yüklenmiş ve çok fazla istek aldığından kullanıcıyı güncelleştirme girişimini reddetti. Yapılacak bir şey yok. Bu deneme otomatik olarak kullanımdan kaldırılacak. Microsoft bu sorunla aynı zamanda bilgilendirildi.|

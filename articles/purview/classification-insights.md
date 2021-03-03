@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196546"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666514"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin öngörüleri sınıflandırma
 
 Bu nasıl yapılır kılavuzunda verilerinize yönelik olarak nasıl erişim, görüntüleme ve filtreleme öngörüleri raporlarının nasıl yapılacağı açıklanmaktadır.
 
-Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure SYNAPSE Analytics (eski adıyla SQL DW), Azure SQL veritabanı, Azure SQL yönetilen örneği, SQL Server
+Desteklenen veri kaynakları şunlardır: Azure Blob depolama, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure SYNAPSE Analytics (eski adıyla SQL DW), Azure SQL veritabanı, Azure SQL yönetilen örneği, SQL Server, Amazon S3 demetleri
 
 Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 
@@ -33,7 +33,7 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - Azure kaynaklarınızı ayarlayın ve test verileriyle ilgili hesapları doldurulmuştur
 
-- Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
+- Her veri kaynağındaki test verileri üzerinde bir tarama ayarlayın ve işlemi tamamlanmıştır. Daha fazla bilgi için bkz. [Azure 'da veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md) ve [tarama kuralı kümesi oluşturma](create-a-scan-rule-set.md).
 
 - Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
 
@@ -62,7 +62,7 @@ Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut
 
    Ana **Sınıflandırma öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Description  |
+   |Alan  |Açıklama  |
    |---------|---------|
    |**Sınıflandırmalarla kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı <br>-Verilerinizde bulunan benzersiz sınıflandırmaların sayısı <br>-Bulunan sınıflandırılmış kaynakların sayısı <br>-Bulunan sınıflandırılmış dosya sayısı <br>-Bulunan sınıflandırılmış tablo sayısı         |
    |**Sınıflandırılmış verileri olan en popüler kaynaklar (son 30 gün)**     |Sınıflandırılmış verilerle bulunan kaynak sayısının son 30 günü boyunca eğilimi gösterir.            |
@@ -81,7 +81,7 @@ Aşağıdaki **Sınıflandırma öngörülerinin** hiçbirinde daha fazla ayrın
 - **Tablolar için üst sınıflandırmalar**
 - **Sınıflandırma verileri > sınıflandırma etkinliği**
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/insights/view-classifications-small.png" alt-text="Tüm sınıflandırmaları görüntüle" lightbox="media/insights/view-classifications.png":::
 

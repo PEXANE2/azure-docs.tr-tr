@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 3b2fb1c4e7a08619a0321e188b54bb581f97fd6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628913"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661569"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -21,6 +21,9 @@ ms.locfileid: "99628913"
 ## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="install-the-package"></a>Paketi yükler
+
+> [!NOTE]
+> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
 Proje seviyesi Build. Gradle ' i bulun ve `mavenCentral()` altındaki depolar listesine eklediğinizden emin olun. `buildscript``allprojects`
@@ -48,7 +51,7 @@ Ardından, modül düzeyi derlemeniz. Gradle, bağımlılıklar bölümüne aşa
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 
@@ -62,7 +65,8 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
-| CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
+| CommunicationTokenCredential | CommunicationTokenCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
+| Communicationıdentifier | Communicationıdentifier, bir çağrının parçası olabilecek farklı katılımcı türü olarak kullanılır.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>CallClient 'ı başlatın, bir CallAgent oluşturun ve DeviceManager 'a erişin
 
@@ -73,28 +77,28 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 Çağıranın görünen adını ayarlamak için şu alternatif yöntemi kullanın:
 
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Bir giden çağrı yerleştirip bir grup çağrısına katın
 
-Bir çağrı oluşturmak ve başlatmak için, `CallAgent.call()` yöntemini çağırmanız ve `Identifier` Aranan (ler) i sağlamanız gerekir.
+Bir çağrı oluşturmak ve başlatmak için, `CallAgent.startCall()` yöntemini çağırmanız ve `Identifier` Aranan (ler) i sağlamanız gerekir.
 Bir grup çağrısına katılabilmek için, `CallAgent.join()` yöntemini çağırmanız ve GroupID sağlamalısınız. Grup kimlikleri GUID veya UUID biçiminde olmalıdır.
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrısındaki tüm olaylara abone olmanızı sağlar.
@@ -104,9 +108,9 @@ Başka bir Iletişim Hizmetleri kullanıcısına çağrı yerleştirmek için, `
 ```java
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-CommunicationUser acsUserId = new CommunicationUser(<USER_ID>);
-CommunicationUser participants[] = new CommunicationUser[]{ acsUserId };
-call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
+CommunicationUserIdentifier acsUserId = new CommunicationUserIdentifier(<USER_ID>);
+CommunicationUserIdentifier participants[] = new CommunicationUserIdentifier[]{ acsUserId };
+call oneToOneCall = callAgent.startCall(appContext, participants, startCallOptions);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Kullanıcılar ve PSTN ile 1: n çağrısı yerleştir
@@ -116,17 +120,17 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 Bir kullanıcıya 1: n çağrısı ve bir PSTN numarası eklemek için, Aranan telefon numarasını belirtmeniz gerekir.
 Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır:
 ```java
-CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
-PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
+CommunicationUserIdentifier acsUser1 = new CommunicationUserIdentifier(<USER_ID>);
+PhoneNumberIdentifier acsUser2 = new PhoneNumberIdentifier("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callAgent.call(participants, startCallOptions);
+Call groupCall = callAgent.startCall(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
 > [!WARNING]
-> Şu anda yalnızca bir giden yerel video akışı, bir video ile çağrı yerleştirmek Için desteklenir ve API 'yi kullanarak yerel kameraları listeleyebilirsiniz `deviceManager` `getCameraList` .
+> Şu anda yalnızca bir giden yerel video akışı, bir video ile çağrı yerleştirmek Için desteklenir ve API 'yi kullanarak yerel kameraları listeleyebilirsiniz `deviceManager` `getCameras` .
 İstenen bir kamerayı seçtikten sonra bir `LocalVideoStream` örnek oluşturmak ve dizideki bir öğe olarak bir yönteme geçirmek için onu kullanın `videoOptions` `localVideoStream` `call` .
 Çağrı bağlandıktan sonra, seçili kameradan diğer katılımcılara otomatik olarak bir video akışı göndermeye başlar.
 
@@ -135,7 +139,7 @@ Call groupCall = callAgent.call(participants, startCallOptions);
 Daha fazla bilgi için bkz. [yerel kamera önizlemesi](#local-camera-preview) .
 ```java
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameras().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
 
@@ -145,20 +149,20 @@ View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
-CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
+CommunicationUserIdentifier[] participants = new CommunicationUserIdentifier[]{ new CommunicationUserIdentifier("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
 startCallOptions.setVideoOptions(videoOptions);
-Call call = callAgent.call(context, participants, startCallOptions);
+Call call = callAgent.startCall(context, participants, startCallOptions);
 ```
 
 ### <a name="join-a-group-call"></a>Grup çağrısına katılır
 Yeni bir grup çağrısı başlatmak veya devam eden bir grup çağrısına katmak için, ' JOIN ' metodunu çağırmanız ve bir özelliği olan bir nesne geçirmeniz gerekir `groupId` . Değer bir GUID olmalıdır.
 ```java
 Context appContext = this.getApplicationContext();
-GroupCallContext groupCallContext = new groupCallContext("<GUID>");
+GroupCallLocator groupCallLocator = new GroupCallLocator("<GUID>");
 JoinCallOptions joinCallOptions = new JoinCallOptions();
 
-call = callAgent.join(context, groupCallContext, joinCallOptions);
+call = callAgent.join(context, groupCallLocator, joinCallOptions);
 ```
 
 ### <a name="accept-a-call"></a>Çağrıyı kabul et
@@ -166,37 +170,31 @@ Bir çağrıyı kabul etmek için, çağırma nesnesinde ' Accept ' metodunu ça
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
-incomingCall.accept(context).get();
+IncomingCall incomingCall = retrieveIncomingCall();
+Call call = incomingCall.accept(context).get();
 ```
 
 Üzerinde video kamera çağrısını kabul etmek için:
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
+IncomingCall incomingCall = retrieveIncomingCall();
 AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 acceptCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream(desiredCamera, appContext)));
-incomingCall.accept(context, acceptCallOptions).get();
+Call call = incomingCall.accept(context, acceptCallOptions).get();
 ```
 
-Gelen çağrı, `CallsUpdated` nesne üzerindeki olaya abone olunarak `callAgent` ve eklenen çağrılar aracılığıyla döngüden elde edilebilir:
+Gelen çağrı, nesnedeki olaya abone olunarak elde edilebilir `onIncomingCall` `callAgent` :
 
 ```java
 // Assuming "callAgent" is an instance property obtained by calling the 'createCallAgent' method on CallClient instance 
 public Call retrieveIncomingCall() {
-    Call incomingCall;
-    callAgent.addOnCallsUpdatedListener(new CallsUpdatedListener() {
-        void onCallsUpdated(CallsUpdatedEvent callsUpdatedEvent) {
+    IncomingCall incomingCall;
+    callAgent.addOnIncomingCallListener(new IncomingCallListener() {
+        void onIncomingCall(IncomingCall inboundCall) {
             // Look for incoming call
-            List<Call> calls = callsUpdatedEvent.getAddedCalls();
-            for (Call call : calls) {
-                if (call.getState() == CallState.Incoming) {
-                    incomingCall = call;
-                    break;
-                }
-            }
+            incomingCall = inboundCall;
         }
     });
     return incomingCall;
@@ -320,11 +318,12 @@ Dosyasına aşağıdaki hizmet tanımını ekleyin `AndroidManifest.xml` <applic
         </service>
 ```
 
-- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak işlenecek *iletişim hizmetleri* istemci kitaplığına geçirilebilir. `CallAgent`Sınıfında yöntemi çağırarak bir örnek oluşturulur `createCallAgent(...)` `CallClient` .
+- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak Işlenecek bir Iç *ıncomingcallınformation* nesnesine ayrıştırılabilmesi için *iletişim hizmetleri* istemci kitaplığına geçirilebilir. `CallAgent`Sınıfında yöntemi çağırarak bir örnek oluşturulur `createCallAgent(...)` `CallClient` .
 
 ```java
 try {
-    callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
+    IncomingCallInformation notification = IncomingCallInformation.fromMap(pushNotificationMessageDataFromFCM);
+    Future handlePushNotificationFuture = callAgent.handlePushNotification(notification).get();
 }
 catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
@@ -354,7 +353,7 @@ Arama özelliklerine erişebilir ve video ve sesle ilgili ayarları yönetme ça
 Bu çağrının benzersiz KIMLIĞINI al:
 
 ```java
-String callId = call.getCallId();
+String callId = call.getId();
 ```
 
 Örnekteki çağrı İnceleme koleksiyonundaki diğer katılımcılar hakkında bilgi edinmek için `remoteParticipant` `call` :
@@ -377,12 +376,12 @@ CallState callState = call.getState();
 
 Çağrının geçerli durumunu temsil eden bir dize döndürür:
 * ' None '-ilk çağrı durumu
-* ' Gelen '-çağrının gelen olduğunu, kabul edildiğini veya reddedildiğini belirtir
 * ' Bağlanıyor '-çağrı yerleştirildiğinde veya kabul edildiğinde ilk geçiş durumu
-* ' Çalıyor '-giden bir çağrı için-uzak katılımcılar için bir çağrının çaldırdığını belirtir; Bu, ' gelen ' tarafı
+* ' Çalıyor '-giden bir çağrı için-uzak katılımcılar için çağrı çalıyor olduğunu belirtir
 * ' EarlyMedia '-çağrı bağlanmadan önce bir duyurunun yürütüldüğü durumu belirtir
 * ' Connected '-çağrı bağlı
-* ' Hold '-çağrı beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
+* ' LocalHold '-çağrı yerel katılımcı tarafından beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
+* ' RemoteHold '-çağrı uzak bir katılımcı tarafından beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
 * Çağrının ' bağlantısı kesildi ' durumuna geçmeden önce ' bağlantısı kesiliyor '-geçiş durumu
 * ' Bağlantısı kesildi '-son çağrı durumu
 
@@ -395,16 +394,24 @@ int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-Geçerli çağrının gelen bir çağrı olup olmadığını görmek için, özelliği araştırın `isIncoming` :
+Geçerli çağrının gelen veya giden bir çağrı olup olmadığını görmek için, `callDirection` Özelliği araştırın:
 
 ```java
-boolean isIncoming = call.getIsIncoming();
+CallDirection callDirection = call.getCallDirection(); 
+// callDirection == CallDirection.Incoming for incoming call
+// callDirection == CallDirection.Outgoing for outgoing call
 ```
 
 Geçerli mikrofonun kapalı olup olmadığını görmek için `muted` özelliği inceleyin:
 
 ```java
 boolean muted = call.getIsMicrophoneMuted();
+```
+
+Geçerli çağrının kaydedilip kaydedilmediğini görmek için, `isRecordingActive` özelliği inceleyin:
+
+```java
+boolean recordinggActive = call.getIsRecordingActive();
 ```
 
 Etkin video akışlarını denetlemek için, koleksiyonu kontrol edin `localVideoStreams` :
@@ -429,27 +436,27 @@ Bir videoyu başlatmak için nesne üzerindeki API 'yi kullanarak kameraları nu
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
-currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
-videoOptions = new VideoOptions(currentVideoStream);
-Future startVideoFuture = call.startVideo(currentVideoStream);
+LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
+VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
+Future startVideoFuture = call.startVideo(currentLocalVideoStream);
 startVideoFuture.get();
 ```
 
 Videoyu göndermeye başarıyla başladıktan sonra, `LocalVideoStream` `localVideoStreams` çağrı örneğindeki koleksiyona bir örnek eklenecektir.
 
 ```java
-currentVideoStream == call.getLocalVideoStreams().get(0);
+currentLocalVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
-Yerel videoyu durdurmak için, `localVideoStream` örneği koleksiyonda kullanılabilir olarak geçirin `localVideoStreams` :
+Yerel videoyu durdurmak için, `LocalVideoStream` örneği koleksiyonda kullanılabilir olarak geçirin `localVideoStreams` :
 
 ```java
-call.stopVideo(localVideoStream).get();
+call.stopVideo(currentLocalVideoStream).get();
 ```
 
-Bir örneği çağırarak video gönderilirken farklı bir kamera cihazına geçiş yapabilirsiniz `switchSource` `localVideoStream` :
+Bir örneği çağırarak video gönderilirken farklı bir kamera cihazına geçiş yapabilirsiniz `switchSource` `LocalVideoStream` :
 ```java
-localVideoStream.switchSource(source).get();
+currentLocalVideoStream.switchSource(source).get();
 ```
 
 ## <a name="remote-participants-management"></a>Uzak katılımcılar yönetimi
@@ -468,7 +475,7 @@ Verilen herhangi bir uzak katılımcının, kendisiyle ilişkili bir özellikler
 * Bu uzak katılımcının tanımlayıcısını alın.
 Kimlik, ' Identifier ' türlerinden biridir
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
+CommunicationIdentifier participantIdentifier = remoteParticipant.getIdentifier();
 ```
 
 * Bu uzak katılımcının durumunu alın.
@@ -477,10 +484,12 @@ ParticipantState state = remoteParticipant.getState();
 ```
 Durum aşağıdakilerden biri olabilir
 * ' Boşta '-ilk durum
+* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
+* ' Çalıyor '-katılımcı çağrısı çalıyor
 * Katılımcı çağrıya bağlanırken ' bağlanıyor '-geçiş durumu
 * ' Connected '-katılımcı çağrıya bağlı
 * ' Hold '-katılımcı beklemeye açık
-* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
+* ' Inlob'-katılımcı lobide kabul bekleniyor. Şu anda yalnızca takımlar birlikte çalışma senaryosunda kullanılır
 * ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
 
 
@@ -510,10 +519,11 @@ List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [
 Çağrıya (bir kullanıcı veya telefon numarası) bir katılımcı eklemek için, çağırabilirsiniz `addParticipant` . Bu, uzak katılımcı örneğini zaman uyumlu olarak döndürür.
 
 ```java
-const acsUser = new CommunicationUser("<acs user id>");
-const acsPhone = new PhoneNumber("<phone number>");
+const acsUser = new CommunicationUserIdentifier("<acs user id>");
+const acsPhone = new PhoneNumberIdentifier("<phone number>");
 RemoteParticipant remoteParticipant1 = call.addParticipant(acsUser);
-RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone);
+AddPhoneNumberOptions addPhoneNumberOptions = new AddPhoneNumberOptions(new PhoneNumberIdentifier("<alternate phone number>"));
+RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone, addPhoneNumberOptions);
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Katılımcıyı bir çağrıdan kaldır
@@ -521,9 +531,10 @@ Bir katılımcıyı bir çağrıdan (Kullanıcı veya telefon numarası) kaldır
 Katılımcı çağrıdan kaldırıldıktan sonra bu işlem zaman uyumsuz olarak çözümlenir.
 Katılımcı de `remoteParticipants` Koleksiyondan kaldırılacak.
 ```java
-RemoteParticipant remoteParticipant = call.getParticipants().get(0);
-call.removeParticipant(acsUser).get();
-call.removeParticipant(acsPhone).get();
+RemoteParticipant acsUserRemoteParticipant = call.getParticipants().get(0);
+RemoteParticipant acsPhoneRemoteParticipant = call.getParticipants().get(1);
+call.removeParticipant(acsUserRemoteParticipant).get();
+call.removeParticipant(acsPhoneRemoteParticipant).get();
 ```
 
 ## <a name="render-remote-participant-video-streams"></a>Uzak katılımcı video akışlarını işle
@@ -635,13 +646,13 @@ Yerel cihazlara erişmek için Device Manager numaralandırma yöntemlerini kull
 
 ```java
 //  Get a list of available video devices for use.
-List<VideoDeviceInfo> localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 ```
 
 ### <a name="set-default-microphonespeaker"></a>Varsayılan mikrofonu/konuşmacıyı ayarla
@@ -652,13 +663,13 @@ Aygıt Yöneticisi, bir çağrı başlatılırken kullanılacak varsayılan bir 
 ```java
 
 // Get the microphone device that is being used.
-AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophoneList().get(0);
+AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophones().get(0);
 
 // Set the microphone device to use.
 deviceManager.setMicrophone(defaultMicrophone);
 
 // Get the speaker device that is being used.
-AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakerList().get(0);
+AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakers().get(0);
 
 // Set the speaker device to use.
 deviceManager.setSpeaker(defaultSpeaker);
@@ -697,10 +708,10 @@ PropertyChangedListener callStateChangeListener = new PropertyChangedListener()
         Log.d("The call state has changed.");
     }
 }
-call.addOnCallStateChangedListener(callStateChangeListener);
+call.addOnStateChangedListener(callStateChangeListener);
 
 //unsubscribe
-call.removeOnCallStateChangedListener(callStateChangeListener);
+call.removeOnStateChangedListener(callStateChangeListener);
 ```
 
 ### <a name="collections"></a>Koleksiyonlar

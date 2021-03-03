@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168517"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643855"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>Dizinler arası sağlama nedir?
 
@@ -33,7 +33,7 @@ Azure AD, dizin içi sağlama işlemini gerçekleştirmeye yönelik üç yöntem
 
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) -ACTIVE DIRECTORY Azure AD 'ye yönelik siteler arası sağlama de dahil olmak üzere karma kimliğinizi karşılamak ve gerçekleştirmek Için tasarlanan Microsoft aracı.
 
-- [Azure AD Connect bulut sağlama](../cloud-provisioning/what-is-cloud-provisioning.md) -karma kimlik hedeflerinizi karşılamak ve başarmak için tasarlanan yeni bir Microsoft Aracısı.  Active Directory ile Azure AD arasında bir hafif Dizin sağlama deneyimi sağlar.
+- [Azure AD Connect bulut sağlama](../cloud-sync/what-is-cloud-sync.md) -karma kimlik hedeflerinizi karşılamak ve başarmak için tasarlanan yeni bir Microsoft Aracısı.  Active Directory ile Azure AD arasında bir hafif Dizin sağlama deneyimi sağlar.
 
 - [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) -Microsoft 'un Şirket içi kimlik ve erişim yönetimi çözümü, kuruluşunuzdaki kullanıcıları, kimlik bilgilerini, ilkeleri ve erişimi yönetmenize yardımcı olur. Ayrıca, MıM Active Directory, Azure AD ve diğer dizinlere yönelik karma kimlik ortamları elde etmek için Gelişmiş dizin içi sağlama sağlar.
 

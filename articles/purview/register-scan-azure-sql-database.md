@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879739"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677754"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -149,9 +149,7 @@ Veri kataloğunuza yeni bir Azure SQL veritabanı kaydetmek için aşağıdakile
 **Kaynakları Kaydet (Azure SQL veritabanı)** ekranında, şunları yapın:
 
 1. Veri kaynağının katalogda listelenecek bir **ad** girin.
-1. İstediğiniz depolama hesabınıza nasıl işaret etmek istediğinizi seçin:
-   1. **Azure aboneliği ' nden** seçim yapın, **Azure aboneliği** açılan kutusundan ilgili aboneliği ve **sunucu adı** açılır kutusundan uygun sunucuyu seçin.
-   1. Veya **El Ile gir** ' i seçip **sunucu adı** girebilirsiniz.
+1. **Azure aboneliği ' nden** seçim yapın, **Azure aboneliği** açılan kutusundan ilgili aboneliği ve **sunucu adı** açılır kutusundan uygun sunucuyu seçin.
 1. Veri kaynağını kaydetmek için **son** ' a gidin.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="kaynakları kaydetme seçenekleri" border="true":::

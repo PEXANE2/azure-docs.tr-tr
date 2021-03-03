@@ -3,18 +3,18 @@ title: 'Başvuru: Ubuntu Veri Bilimi Sanal Makinesi'
 titleSuffix: Azure Data Science Virtual Machine
 description: Ubuntu Veri Bilimi Sanal Makinesi bulunan araçlarla ilgili ayrıntılar
 author: gvashishtha
-ms.service: machine-learning
-ms.subservice: data-science-vm
+services: machine-learning
+ms.service: data-science-vm
 ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e9a55f72718d6ed5991f3d0f16323409bb0f699f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013862"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661078"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -253,7 +253,7 @@ Ayrıca, modellerinizi VM 'de R veya Python 'da oluşturabilir ve ardından bunl
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bunlar:
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu modüller şunlardır:
 
 * **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
 * **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
@@ -316,7 +316,7 @@ Xgboost hakkında daha fazla bilgi için, bkz. [xgboost belgeleri sayfası](http
 
 ### <a name="rattle"></a>Rattle
 
-Rattle ( **R** **A** Nalitik **T** OOL **T** o **L**), **E** GUI tabanlı veri araştırması ve modelleme kullanır. Verilerin istatistiksel ve görsel özetlerini sunar, kolayca modellenebilir verileri dönüştürür, verilerden denetlenen ve denetimli modelleri oluşturur, modellerin performansını grafiksel olarak sunar ve yeni veri kümelerine puan koyar. Ayrıca, doğrudan R 'de çalıştırılabilen veya daha fazla analiz için bir başlangıç noktası olarak kullanılan Kullanıcı arabirimindeki işlemleri çoğaltan R kodu oluşturur.
+Rattle ( **R** **A** Nalitik **T** OOL **T** o **L**), GUI tabanlı veri araştırması ve modelleme kullanır. Verilerin istatistiksel ve görsel özetlerini sunar, kolayca modellenebilir verileri dönüştürür, verilerden denetlenen ve denetimli modelleri oluşturur, modellerin performansını grafiksel olarak sunar ve yeni veri kümelerine puan koyar. Ayrıca, doğrudan R 'de çalıştırılabilen veya daha fazla analiz için bir başlangıç noktası olarak kullanılan Kullanıcı arabirimindeki işlemleri çoğaltan R kodu oluşturur.
 
 Rattle çalıştırmak için bir grafik masaüstü oturum açma oturumunda olmanız gerekir. Terminal **üzerinde r ' yi girerek r** ortamını açın. R isteminde aşağıdaki komutları girin:
 

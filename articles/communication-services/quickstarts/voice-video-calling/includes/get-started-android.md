@@ -6,16 +6,19 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b4719fcf046ce7ef5d74ccf1863b0400c2c52845
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438787"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656659"
 ---
 Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!NOTE]
+> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Android uygulamanızı oluşturmak için [Android Studio](https://developer.android.com/studio).
@@ -28,17 +31,15 @@ Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Az
 
 Android Studio yeni bir Android Studio projesi Başlat ' ı seçin.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.":::
 
-&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik" proje şablonunu seçin.
+"Telefon ve Tablet" altında "boş etkinlik" proje şablonunu seçin.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Proje şablonu ekranında ' boş etkinlik ' seçeneğinin seçili olduğunu gösteren ekran görüntüsü.":::
 
-&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik" veya daha büyük bir değer seçin.
+En düşük istemci kitaplığı "API 26: Android 8,0 (Oreo)" veya daha büyük bir değer seçin.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
-
-&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Proje şablonu ekranı 2 ' de seçili ' boş etkinlik ' seçeneğinin gösterildiği ekran görüntüsü.":::
 
 
 ### <a name="install-the-package"></a>Paketi yükler
@@ -80,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -182,8 +183,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.communication.calling.CallAgent;
 import com.azure.communication.calling.CallClient;
 import com.azure.communication.calling.StartCallOptions;
@@ -266,6 +267,7 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 | CallClient| CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
+| Communicationıdentifier | Communicationıdentifier, bir çağrının parçası olabilecek farklı katılımcı türü olarak kullanılır.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Kullanıcı erişim belirtecinden bir aracı oluşturma
 
@@ -280,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -305,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -315,9 +317,7 @@ private void startCall() {
 
 Uygulama artık araç çubuğunda "uygulama Çalıştır" düğmesi kullanılarak başlatılabilir (SHIFT + F10). Çağırarak çağrı yerleştirebildiğinizi doğrulayın `8:echo123` . Önceden kaydedilmiş bir ileti oynatılır ve sonra iletinizi size geri tekrarlayacak.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
-
-&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Tamamlanmış uygulamayı gösteren ekran görüntüsü.":::
 
 ## <a name="sample-code"></a>Örnek Kod
 

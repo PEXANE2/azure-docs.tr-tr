@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348730"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647430"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
 
@@ -35,7 +35,28 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 
-Şu anda zamanlanmadı.  Lütfen ' de bulunan veya üretime yönelik olan değişiklikler için aşağıya bakın.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Koşullu erişim yalnızca açıkça istenen kapsamlar için tetiklenecek
+
+**Geçerlilik tarihi**: Mart 2021
+
+**Etkilenen uç noktalar**: v 2.0
+
+**Etkilenen protokol**: [dinamik onay](v2-permissions-and-consent.md#requesting-individual-user-consent) kullanan tüm akışlar
+
+Bugün dinamik izin kullanan uygulamalara,, parametre adına göre istenmese de, izin verilen tüm izinler verilir `scope` .  Bu, bir uygulamanın yalnızca bir `user.read` için istekte bulunmasına neden olabilir, ancak onayı ile `files.read` Izin atanmış koşullu erişimi geçirmeye zorlanır `files.read` . 
+
+Gereksiz koşullu erişim istemlerinin sayısını azaltmak için, Azure AD, istenmeyen kapsamların uygulamalara nasıl sağlandığını, böylece yalnızca açıkça istenen kapsamların koşullu erişimi tetiklemesine olanak sağlar. Bu değişiklik, talep ettikleri belirteçlerin eksik olması nedeniyle, Azure AD 'nin önceki davranışına bağlı olan uygulamaların (istenmeseler bile, tüm izinlerin kesilmesine izin veriyor) kesintiye neden olabilir.
+
+Uygulamalar artık bu istek içinde bir izin karışımına sahip olan erişim belirteçlerini ve bu istekler için koşullu erişim istemleri gerektirmeyen onay sahibi olduklarını alacak.  Erişim belirtecinin kapsamları belirteç yanıtının `scope` parametresine yansıtılır. 
+
+**Örnekler**
+
+Bir uygulama,, ve için onay içerir `user.read` `files.readwrite` `tasks.read` . `files.readwrite` Koşullu erişim ilkelerinin uygulanmış olması, diğer ikisi de değildir. Bir uygulama için bir belirteç isteği yapıyorsa `scope=user.read` ve şu anda oturum açmış olan Kullanıcı herhangi bir koşullu erişim ilkesi geçirmemişse, elde edilen belirteç `user.read` ve izinleri için olur `tasks.read` . `tasks.read` , uygulamanın kendisine izin vermiş olması ve bir koşullu erişim ilkesinin zorlanmasını gerektirmediği için dahil edilmiştir. 
+
+Uygulama daha sonra istediğinde `scope=files.readwrite` , kiracı tarafından gereken koşullu erişim tetiklenecek ve uygulamayı koşullu erişim ilkesinin karşılanbileceği etkileşimli bir kimlik doğrulama istemi göstermeye zorluyor.  Döndürülen belirtecin içinde üç kapsam olacaktır. 
+
+Daha sonra uygulama üç kapsamın herhangi biri için son bir istek yapıyorsa (deyin `scope=tasks.read` ), Azure AD kullanıcının için gereken koşullu erişim ilkelerini zaten tamamladığını `files.readwrite` ve bu durumda üç izinle daha sonra bir belirteç vermesini görür. 
+
 
 ## <a name="may-2020"></a>Mayıs 2020
 

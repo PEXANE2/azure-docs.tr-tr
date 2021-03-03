@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493234"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658580"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API genel sorunları giderme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Bazı popüler nedenler ve çözümler aşağıdaki gibidir:
 Şu hatayı görebilirsiniz: `Cannot connect to any host, scheduling retry in 600000 milliseconds` . 
 
 ### <a name="solution"></a>Çözüm
-Bu, istemci tarafında SNAT tükenmesi olabilir. Bu sorunu denemek için lütfen [giden bağlantılar Için SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) konumundaki adımları izleyin. Bu Ayrıca, Azure Yük dengeleyicinin varsayılan olarak 4 dakikalık boş zaman aşımı olduğu bir boşta kalma zaman aşımı sorunu olabilir. Bkz. [yük dengeleyici boşta zaman aşımı](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Sürücü ayarlarından ( [aşağıya](#enable-keep-alive-for-java-driver)bakın) TCP-canlı tutmayı etkinleştirin ve `keepAlive` işletim sistemindeki aralığı 4 dakikadan daha kısa bir süre ayarlayın.
+Bu, istemci tarafında SNAT tükenmesi olabilir. Bu sorunu denemek için lütfen [giden bağlantılar Için SNAT](../load-balancer/load-balancer-outbound-connections.md) konumundaki adımları izleyin. Bu Ayrıca, Azure Yük dengeleyicinin varsayılan olarak 4 dakikalık boş zaman aşımı olduğu bir boşta kalma zaman aşımı sorunu olabilir. Bkz. [yük dengeleyici boşta zaman aşımı](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Sürücü ayarlarından ( [aşağıya](#enable-keep-alive-for-java-driver)bakın) TCP-canlı tutmayı etkinleştirin ve `keepAlive` işletim sistemindeki aralığı 4 dakikadan daha kısa bir süre ayarlayın.
 
  
 

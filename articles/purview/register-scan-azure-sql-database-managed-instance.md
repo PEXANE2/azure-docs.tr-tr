@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491731"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677846"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğini kaydetme ve tarama
 
@@ -117,7 +117,7 @@ Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="SQL veri kaynağını ayarlama":::
 
-1. **El Ile gir** ' i seçin
+1. **Azure aboneliği ' nden** seçim yapın, **Azure aboneliği** açılan kutusundan ilgili aboneliği ve **sunucu adı** açılır kutusundan uygun sunucuyu seçin.
 
 1. **Genel uç nokta tam etki alanı adını** ve **bağlantı noktası numarasını** belirtin. Ardından veri kaynağını kaydetmek için **son** ' u seçin.
 

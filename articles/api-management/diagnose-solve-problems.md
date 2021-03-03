@@ -6,16 +6,16 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d41dcb939f981ce9cb6d3eae328cb2eb9adc20c2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654504"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652411"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API Management tanılamalarına genel bakış
 
-Azure API Management 'de bir API oluşturup yönetilmiyorsa, 404 ' den hatalı ağ geçidi hatası 502 nedeniyle oluşabilecek sorunlar için hazırlıklı olmak istersiniz. API Management tanılama, APıM 'de yayınlanan API 'nizin yapılandırması gerekmeden sorun gidermenize yardımcı olan akıllı ve etkileşimli bir deneyimdir. Yayımlanan API 'lerinizle ilgili sorunlar yaşıyorsanız API Management tanılama, nelerin yanlış olduğunu gösterir ve sorunu hızla gidermek ve çözmek için sizi doğru bilgilere yönlendirir.
+Azure API Management 'de bir API oluşturup yönetbaşladığınızda, 404 ' den hatalı ağ geçidi hatası 502 olarak ' den kaynaklanan sorunlar için hazırlıklı olmak istersiniz. API Management tanılama, APıM 'de yayınlanan API 'nizin yapılandırması gerekmeden sorun gidermenize yardımcı olan akıllı ve etkileşimli bir deneyimdir. Yayımlanan API 'lerinizle ilgili sorunlar yaşıyorsanız API Management tanılama, nelerin yanlış olduğunu gösterir ve sorunu hızla gidermek ve çözmek için sizi doğru bilgilere yönlendirir.
 
 Son 24 saat içinde API 'niz ile ilgili sorun yaşadığınızda bu deneyim en çok yararlı olsa da, tüm tanılama grafikleri her zaman analiz etmeniz için kullanılabilir.
 

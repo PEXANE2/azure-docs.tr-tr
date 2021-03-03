@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837272"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644944"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
@@ -60,7 +60,7 @@ PRT, bir Windows 10 cihazında Kullanıcı kimlik doğrulaması sırasında iki 
 * **Azure AD 'ye katılmış** veya **karma Azure AD 'ye katılmış**: bir Kullanıcı, kuruluş kimlik bilgileriyle oturum açtığında Windows oturum açma sırasında bir prt verilir. Windows 10 tarafından desteklenen tüm kimlik bilgileriyle (örneğin, parola ve Iş için Windows Hello) bir PRT verilir. Bu senaryoda, PRT için birincil yetkiliniz olan Azure AD CloudAP eklentisi.
 * **Azure AD kayıtlı cihazı**: bir Kullanıcı Windows 10 cihazına ikincil iş hesabı eklediğinde bir prt verilir. Kullanıcılar, Windows 10 ' a bir hesabı iki farklı şekilde ekleyebilir.  
    * Bir uygulamada oturum açtıktan sonra bu **cihaz isteminde bu hesabı her yerde kullan** hesabı ekleme (örneğin, Outlook)
-   * Ayarlar hesaplarından hesap ekleme **Settings**  >  **Accounts**  >  **iş veya okul**  >  **Connect 'e** erişin
+   * Ayarlar hesaplarından hesap ekleme   >    >  **iş veya okul**  >  **Connect 'e** erişin
 
 Azure AD kayıtlı cihaz senaryolarında, Azure AD WAM eklentisi, bu Azure AD hesabında Windows oturum açma işlemi gerçekleşmediği için PRT 'in birincil yetkilisindir.
 
@@ -103,7 +103,7 @@ Bir PRT, kullanıcının oturum açladığı cihaza bağlayarak korunur. Azure A
 * **İlk oturum açma sırasında**: ilk oturum açma sırasında, istekler cihaz kaydı sırasında oluşturulan şifreleme cihaz anahtarı kullanılarak imzalanarak BIR prt verilir. Geçerli ve çalışır bir TPM 'ye sahip bir cihazda, cihaz anahtarı, herhangi bir kötü amaçlı erişimi öngören TPM tarafından korunur. Karşılık gelen cihaz anahtarı imzası onaylanamamışsa, bir PRT verilmez.
 * **Belirteç istekleri ve yenileme sırasında**: BIR prt verildiğinde, Azure AD Ayrıca cihaza şifreli bir oturum anahtarı da yayınlar. Oluşturulan ve Azure AD 'ye gönderilen ortak Aktarım anahtarı (tkpub) ile birlikte, cihaz kaydının bir parçası olarak şifrelenir. Bu oturum anahtarı yalnızca TPM tarafından güvenli hale getirilmiş özel Aktarım anahtarı (tkprprıv) tarafından şifresi çözülür. Oturum anahtarı, Azure AD 'ye gönderilen tüm istekler için sahip olma (POP) anahtarıdır.  Oturum anahtarı da TPM tarafından korunur ve başka bir işletim sistemi bileşeni erişemez. Belirteç istekleri veya PRT yenileme istekleri bu oturum anahtarı tarafından TPM aracılığıyla güvenli bir şekilde imzalanır ve bu nedenle üzerinde değişiklik yapılamaz. Azure AD, cihazdaki tüm istekleri, karşılık gelen oturum anahtarı tarafından imzalanmamış olan cihazdan geçersiz kılar.
 
-Bu anahtarların TPM ile güvenli hale getirilmesi sayesinde kötü amaçlı aktörler, bir saldırganın cihaza fiziksel olarak sahip olması durumunda bile TPM 'nin erişilemez olması durumunda anahtarları oynamaz veya başka bir yere yeniden çalabilir.  Bu nedenle, TPM kullanmak Azure AD 'ye katılmış, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazların kimlik bilgileri hırsızlığına karşı güvenliğini büyük ölçüde geliştirir. Performans ve güvenilirlik için TPM 2,0, Windows 10 ' da tüm Azure AD cihaz kaydı senaryoları için önerilen sürümdür.
+Bu anahtarların TPM ile güvenli hale getirilmesi sayesinde, anahtarları çalmaya çalışan kötü amaçlı aktörlerden PRT güvenliğini geliştirdik ve PRT 'yi yeniden oynadık.  Bu nedenle, TPM kullanmak Azure AD 'ye katılmış, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazların kimlik bilgileri hırsızlığına karşı güvenliğini büyük ölçüde geliştirir. Performans ve güvenilirlik için TPM 2,0, Windows 10 ' da tüm Azure AD cihaz kaydı senaryoları için önerilen sürümdür. Windows 10, 1903 güncelleştirmesi başlatılıyor, Azure AD, güvenilirlik sorunları nedeniyle yukarıdaki anahtarların herhangi biri için TPM 1,2 kullanmaz. 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Uygulama belirteçleri ve tarayıcı tanımlama bilgileri nasıl korunur?
 
@@ -111,7 +111,7 @@ Bu anahtarların TPM ile güvenli hale getirilmesi sayesinde kötü amaçlı akt
 
 **Tarayıcı tanımlama bilgileri**: Windows 10 ' da, Azure AD, Internet Explorer ve Microsoft Edge 'de tarayıcı SSO 'Yu, Windows 10 hesapları uzantısı aracılığıyla yerel olarak veya Google Chrome 'da destekler. Güvenlik yalnızca tanımlama bilgilerini korumak için değil, tanımlama bilgilerinin gönderildiği uç noktalar için de tasarlanmıştır. Tarayıcı tanımlama bilgileri, tanımlama bilgilerini imzalamak ve korumak için oturum anahtarından yararlanarak bir PRT ile aynı şekilde korunur.
 
-Bir Kullanıcı bir tarayıcı etkileşimi başlattığında, tarayıcı (veya uzantısı) bir COM Native istemci konağını çağırır. Yerel istemci Konağı, sayfanın izin verilen etki alanlarından birinden olmasını sağlar. Tarayıcı, bir nonce dahil olmak üzere yerel istemci ana bilgisayarına başka parametreler gönderebilir, ancak yerel istemci ana bilgisayarı ana bilgisayar adının doğrulanmasını garanti eder. Yerel istemci ana bilgisayarı, CloudAP eklentisi 'nden bir PRT tanımlama bilgisi ister ve bunu TPM korumalı oturum anahtarı ile oluşturur ve imzalar. PRT tanımlama bilgisi oturum anahtarı tarafından imzalandığından, ile oynanmış olamaz. Bu PRT tanımlama bilgisi, kaynak olduğunu doğrulamak üzere Azure AD 'nin istek başlığına dahildir. Chrome tarayıcısını kullanıyorsanız, yalnızca yerel istemci ana bilgisayarının bildiriminde açıkça tanımlanmış olan uzantı, bu istekleri yapmak için rastgele uzantıların yapılmasını engellemeyi çağırabilir. Azure AD, PRT tanımlama bilgisini doğruladıktan sonra tarayıcıya bir oturum tanımlama bilgisi yayınlar. Bu oturum tanımlama bilgisi Ayrıca, bir PRT ile verilen aynı oturum anahtarını içerir. Sonraki istekler sırasında oturum anahtarı, tanımlama bilgisini cihaza etkin bir şekilde bağlamaya ve başka bir yerden yeniden çalınmalarına izin vermez.
+Bir Kullanıcı bir tarayıcı etkileşimi başlattığında, tarayıcı (veya uzantısı) bir COM Native istemci konağını çağırır. Yerel istemci Konağı, sayfanın izin verilen etki alanlarından birinden olmasını sağlar. Tarayıcı, bir nonce dahil olmak üzere yerel istemci ana bilgisayarına başka parametreler gönderebilir, ancak yerel istemci ana bilgisayarı ana bilgisayar adının doğrulanmasını garanti eder. Yerel istemci ana bilgisayarı, CloudAP eklentisi 'nden bir PRT tanımlama bilgisi ister ve bunu TPM korumalı oturum anahtarı ile oluşturur ve imzalar. PRT-Cookie, oturum anahtarı tarafından imzalandığından, ' yi ile çalışmak çok zordur. Bu PRT tanımlama bilgisi, kaynak olduğunu doğrulamak üzere Azure AD 'nin istek başlığına dahildir. Chrome tarayıcısını kullanıyorsanız, yalnızca yerel istemci ana bilgisayarının bildiriminde açıkça tanımlanmış olan uzantı, bu istekleri yapmak için rastgele uzantıların yapılmasını engellemeyi çağırabilir. Azure AD, PRT tanımlama bilgisini doğruladıktan sonra tarayıcıya bir oturum tanımlama bilgisi yayınlar. Bu oturum tanımlama bilgisi Ayrıca, bir PRT ile verilen aynı oturum anahtarını içerir. Sonraki istekler sırasında oturum anahtarı, tanımlama bilgisini cihaza etkin bir şekilde bağlamaya ve başka bir yerden yeniden çalınmalarına izin vermez.
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>Bir dut bir MFA talebi alır mi?
 
@@ -196,7 +196,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 | A | Kullanıcı, bir PRT almak için kimlik bilgileriyle Windows 'da oturum açar. Kullanıcı tarayıcıyı açtıktan sonra tarayıcı (veya uzantısı), URL 'Leri kayıt defterinden yükler. |
 | B | Bir Kullanıcı Azure AD oturum açma URL 'sini açtığında tarayıcı veya uzantı, kayıt defterinden elde edilen URL 'YI doğrular. Eşleşiyorsa tarayıcı, belirteç almak için yerel istemci konağını çağırır. |
 | C | Yerel istemci Konağı, URL 'Lerin Microsoft Identity Providers 'a (Microsoft hesabı veya Azure AD) ait olduğunu doğrular, URL 'den gönderilen bir nonce ayıklar ve bir PRT tanımlama bilgisi almak için CloudAP eklentisine bir çağrı yapar. |
-| D | CloudAP eklentisi PRT tanımlama bilgisini oluşturacak, TPM ile bağlantılı oturum anahtarıyla oturum açıp yerel istemci konağına geri göndermeyecektir. Tanımlama bilgisi oturum anahtarı tarafından imzalandığından üzerinde değişiklik yapılamaz. |
+| D | CloudAP eklentisi PRT tanımlama bilgisini oluşturacak, TPM ile bağlantılı oturum anahtarıyla oturum açıp yerel istemci konağına geri göndermeyecektir. |
 | E | Yerel istemci ana bilgisayarı, bu PRT tanımlama bilgisini tarayıcıya döndürecek ve bu, Azure AD 'den x-MS-RefreshTokenCredential ve istek belirteçleri olarak adlandırılan istek üst bilgisinin bir parçası olarak ekleyecek. |
 | F | Azure AD, PRT tanımlama bilgisinde oturum anahtarı imzasını doğrular, nonce 'yi doğrular, cihazın kiracıda geçerli olduğunu doğrular ve Web sayfası için bir KIMLIK belirteci ve tarayıcının şifreli bir oturum tanımlama bilgisini yayınlar. |
 

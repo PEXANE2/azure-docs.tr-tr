@@ -3,17 +3,18 @@ title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 02/18/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670427"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -308,11 +309,28 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
 - **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
     * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için: `sha256sum <fileName>`
 
-
-Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip olmaları gerekir `sudo` .
-
 > [!NOTE]
 > Satır içi komutlar görüntü şablonu tanımının bir parçası olarak depolanır, görüntü tanımını dökümünü alırken bunları görebilirsiniz ve bunlar ayrıca sorun giderme amacıyla bir destek durumu olayında Microsoft Desteği görünür. Gizli komutlarınız veya değerleriniz varsa, bunların betiklerin içine taşınması ve Azure depolama 'da kimlik doğrulaması için bir kullanıcı kimliği kullanılması önemle önerilir.
+
+#### <a name="super-user-privileges"></a>Süper kullanıcı ayrıcalıkları
+Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, bunların ön ekine sahip olmaları gerekir `sudo` , bunları betiklerine ekleyebilir veya örnek satır içi komutları kullanabilirsiniz, örneğin:
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+ScriptUri kullanarak başvurkabilmeniz için sudo kullanan bir betik örneği:
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Windows yeniden başlatma Özelleştirici 
 Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatmanızı ve yeniden çevrimiçi hale gelmesini bekleyebilir, bu sayede yeniden başlatma gerektiren yazılımları yükleyebilirsiniz.  
@@ -397,6 +415,10 @@ Dosya Özelleştirici, görüntü oluşturucunun bir GitHub veya Azure depolamad
 Dosya Özelleştirici özellikleri:
 
 - **sourceURI** -erişilebilir bir depolama uç noktası, GitHub veya Azure depolama olabilir. Bir dizinin tamamını değil yalnızca bir dosyayı indirebilirsiniz. Bir dizin indirmeniz gerekiyorsa, sıkıştırılmış bir dosya kullanın, ardından Shell veya PowerShell özelleştiricileri kullanarak bu dosyayı açın. 
+
+> [!NOTE]
+> SourceURI bir Azure depolama hesabı ise, blob ortak olarak işaretlenmiş ise, blob üzerinde okuma erişimi için yönetilen Kullanıcı kimliği izinleri vermeniz gerekir. Depolama izinlerini ayarlamak için lütfen bu [örneğe](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) bakın.
+
 - **hedef** : Bu, tam hedef yolu ve dosya adıdır. Başvurulan tüm yol ve alt dizinler var olmalıdır, bunu önceden ayarlamak için Shell veya PowerShell özelleştiricileri kullanın. Yolu oluşturmak için özelleştiriciler ' i kullanabilirsiniz. 
 
 Bu, Windows dizinleri ve Linux yolları tarafından desteklenir, ancak bazı farklılıklar vardır: 
@@ -408,8 +430,6 @@ Dosyayı indirmeye çalışırken bir hata varsa veya belirtilen bir dizine yerl
 
 > [!NOTE]
 > Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux veya Windows gibi dosyaları indirmek için kullanılan kodu kullanın `wget` `curl` `Invoke-WebRequest` .
-
-Dosya Özelleştirici içindeki dosyalar, [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanılarak Azure Storage 'dan indirilebilir.
 
 ### <a name="windows-update-customizer"></a>Windows Update Özelleştirici
 Bu Özelleştirici, Packer topluluğu tarafından tutulan açık kaynaklı bir proje olan Packer için [topluluk Windows Update hazırlayıcı](https://packer.io/docs/provisioners/community-supported.html) üzerine kurulmuştur. Microsoft, görüntü Oluşturucu hizmeti ile birlikte hizmeti sınar ve doğrular ve bunlarla ilgili sorunları araştırarak sorunları gidermeye çalışır, ancak açık kaynak proje Microsoft tarafından resmi olarak desteklenmez. Hakkında ayrıntılı belgeler ve Windows Update hazırlayıcı ile ilgili yardım için lütfen proje deposuna bakın.

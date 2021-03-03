@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548515"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656657"
 ---
 Bu hızlı başlangıçta, JavaScript için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
+Bu belge, çağıran kitaplığın 1.0.0-Beta. 5 sürümündeki türlere başvuru yapabilir.
+
+> [!NOTE]
+> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 6 sürümünü kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -102,7 +106,7 @@ Tıklandığında bir çağrı başlatmak için bir olay işleyicisi ekleyin `ca
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

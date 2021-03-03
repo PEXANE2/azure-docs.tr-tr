@@ -96,6 +96,8 @@
   items:
     - name: Tam metin arama
       href: search-lucene-query-architecture.md
+    - name: Anlamsal arama
+      href: semantic-search-overview.md
     - name: İlgi puanlaması
       href: index-similarity-and-scoring.md
     - name: Dizin Oluşturucular
@@ -218,6 +220,8 @@
           href: search-howto-schedule-indexers.md
         - name: Alan eşlemelerini tanımlama
           href: search-indexer-field-mappings.md
+        - name: İçerik meta verileri özellikleri
+          href: search-blob-metadata-properties.md
         - name: Yönetilen kimliklerle bağlanma
           items:
             - name: Yönetilen kimliklere genel bakış
@@ -228,6 +232,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Veritabanı
               href: search-howto-managed-identities-sql.md
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
         - name: Azure Blobları
           items:
             - name: Bloblarda arama
@@ -248,8 +254,6 @@
               href: search-howto-index-json-blobs.md
             - name: Şifrelenmiş blobları dizine ekleme
               href: search-howto-index-encrypted-blobs.md
-            - name: Blob içeriği için meta veri özellikleri
-              href: search-blob-metadata-properties.md
         - name: Azure Tabloları
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -306,6 +310,10 @@
       items:
         - name: Temel bir sorgu oluşturma
           href: search-query-create.md
+        - name: Anlamsal sorgu oluşturma
+          href: semantic-how-to-query-request.md
+        - name: Sorgulara yazım denetimi ekleme
+          href: speller-how-to-add.md
         - name: Sorgu türleri ve oluşturma
           href: search-query-overview.md
         - name: Basit söz dizimi kullanma (örnekler)
@@ -348,6 +356,8 @@
       items:
         - name: Sonuçlar üzerinde çalışma
           href: search-pagination-page-layout.md
+        - name: Anlam yanıtı yapısı
+          href: semantic-how-to-query-response.md
         - name: Puanlama modelleri
           href: index-add-scoring-profiles.md
         - name: Benzerlik algoritması
@@ -388,6 +398,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: Hizmeti bölgeler arasında taşıma
           href: search-howto-move-across-regions.md
         - name: Rol tabanlı yönetici erişimi

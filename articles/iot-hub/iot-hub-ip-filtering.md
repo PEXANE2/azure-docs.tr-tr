@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632420"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656372"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
 
@@ -20,7 +20,7 @@ Güvenlik, Azure IoT Hub tabanlı tüm IoT çözümlerinin önemli bir yönüdü
 
 ## <a name="when-to-use"></a>Kullanılması gereken durumlar
 
-Yalnızca belirli bir IP adresi aralığından trafik almak ve diğer her şeyi reddetmek için IP filtresini kullanın. Örneğin, IoT Hub 'ı ve şirket içi altyapınız arasında özel bağlantılar oluşturmak için IoT Hub 'ınızı [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) ile birlikte kullanıyorsunuz.
+Yalnızca belirli bir IP adresi aralığından trafik almak ve diğer her şeyi reddetmek için IP filtresini kullanın. Örneğin, IoT Hub 'ı ve şirket içi altyapınız arasında özel bağlantılar oluşturmak için IoT Hub 'ınızı [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) ile birlikte kullanıyorsunuz.
 
 ## <a name="default-setting"></a>Varsayılan ayar
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>REST kullanarak IP filtresi kurallarını güncelleştirme
 
 
-Ayrıca, Azure Kaynak sağlayıcısı 'nın REST uç noktasını kullanarak IoT Hub IP filtresini alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate) altında `properties.networkRuleSets` bölümüne bakın.
+Ayrıca, Azure Kaynak sağlayıcısı 'nın REST uç noktasını kullanarak IoT Hub IP filtresini alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](/rest/api/iothub/iothubresource/createorupdate) altında `properties.networkRuleSets` bölümüne bakın.
 
 ## <a name="ip-filter-classic-retirement"></a>IP Filtresi (klasik) emeklilik
 
@@ -174,7 +174,7 @@ Klasik IP filtresi kullanımdan kaldırıldı. Daha fazla bilgi için bkz. [klas
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [IoT Hub ölçümleri](iot-hub-metrics.md)
+* [IoT Hub ölçümleri](./monitor-iot-hub.md)
 * [Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği](virtual-network-support.md)
 * [IoT Hub 'ınız için ortak ağ erişimini yönetme](iot-hub-public-network-access.md)
 * [IoT Hub’ı izleme](monitor-iot-hub.md)

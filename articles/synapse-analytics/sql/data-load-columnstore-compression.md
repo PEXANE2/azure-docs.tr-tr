@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 18350dc39fceaf6f4c50f8e1053a2972bbce7f44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120946"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676630"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Columnstore dizini performansı için satır grubu kalitesini en üst düzeye çıkarın
 
@@ -26,7 +26,7 @@ Rowgroup kalitesi bir rowgroup 'taki satır sayısına göre belirlenir. Kullan�
 
 Bir columnstore dizini, tek tek grupların sütun segmentlerini tarayarak bir tabloyu taradığından, her satır grubu 'taki satır sayısının en üst düzeye çıkarmak sorgu performansını geliştirir. RowGroups çok sayıda satıra sahip olduğunda veri sıkıştırma, diskten okunmaları daha az veri olduğu anlamına gelir.
 
-RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>RowGroups için hedef boyut
 
@@ -38,11 +38,11 @@ Toplu yükleme veya columnstore dizini yeniden oluşturma sırasında, her bir r
 
 Her rowgroup 'ta en az 10.000 satırı sıkıştırmak için yeterli bellek olmadığında bir hata oluşturulur.
 
-Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true ).
+Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?view=azure-sqldw-latest#bulk&preserve-view=true).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Satır grubu kalitesini izleme
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.DM_DB_COLUMN_STORE_ROW_GROUP_PHYSICAL_STATS](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) SQL DB ile eşleşen görünüm tanımını içerir) RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı bilgiler sunan. Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.DM_DB_COLUMN_STORE_ROW_GROUP_PHYSICAL_STATS](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) SQL DB ile eşleşen görünüm tanımını içerir) RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı bilgiler sunan. Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -142,5 +142,5 @@ DWU boyutu ve Kullanıcı kaynak sınıfı, bir Kullanıcı sorgusu için kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SYNAPSE SQL 'de performansı artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
+SYNAPSE SQL 'de performansı artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](../overview-terminology.md).
 

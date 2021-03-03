@@ -6,15 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 813bb99be0d072ebc9b21dba07ed85671a925910
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526950"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659452"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 'de Azure rol tabanlı erişim denetimi
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Bu makale Azure Cosmos DB içindeki yönetim düzlemi işlemleri için rol tabanlı erişim denetimi ile ilgilidir. Veri düzlemi işlemleri kullanıyorsanız, bkz. veri düzlemi işlemlerine uygulanan rol tabanlı erişim denetimi için [Azure Cosmos DB RBAC](how-to-setup-rbac.md) .
 
 Azure Cosmos DB, Azure Cosmos DB genel yönetim senaryoları için yerleşik Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar. Azure Active Directory bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir. Rol atamaları yalnızca, Azure Cosmos hesaplarına, veritabanlarına, kapsayıcılarına ve tekliflere (verimlilik) erişimi de içeren denetim düzlemi erişimini kapsar.
 
@@ -69,7 +72,7 @@ Bu ayar herhangi bir Cosmos kaynağında herhangi bir Cosmos DB SDK, hesap anaht
 
 - Saklı yordamları, Tetikleyicileri veya Kullanıcı tanımlı işlevleri değiştirme.
 
-Uygulamalarınız (veya Azure portal aracılığıyla) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](./manage-with-templates.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), REST veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](/azure/?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
+Uygulamalarınız (veya Azure portal aracılığıyla) bu eylemlerden herhangi birini gerçekleştirdiyse, bu eylemlerin [ARM şablonları](./manage-with-templates.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), REST veya [Azure Yönetim Kitaplığı](https://github.com/Azure-Samples/cosmos-management-net)aracılığıyla yürütülmesi için geçirilmesi gerekir. Azure yönetiminin [birden çok dilde](../index.yml?product=featured#languages-and-tools)kullanılabilir olduğunu unutmayın.
 
 ### <a name="set-via-arm-template"></a>ARM şablonu aracılığıyla ayarla
 

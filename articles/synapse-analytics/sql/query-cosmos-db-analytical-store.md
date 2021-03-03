@@ -1,35 +1,31 @@
 ---
-title: Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu kullanarak verileri Azure Cosmos DB sorgulama
-description: Bu makalede, Azure SYNAPSE link Preview 'da sunucusuz bir SQL havuzu kullanarak Azure Cosmos DB sorgulama hakkında bilgi edineceksiniz.
+title: Azure SYNAPSE link 'te sunucusuz SQL havuzu kullanarak verileri Azure Cosmos DB sorgulama
+description: Bu makalede, Azure SYNAPSE link 'te sunucusuz bir SQL havuzu kullanarak Azure Cosmos DB sorgulama hakkında bilgi edineceksiniz.
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 12/04/2020
+ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4337d8935c10ce17ad5d3747468d55b2fe6daa21
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735442"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677534"
 ---
-# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama
 
-> [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı için sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
-Sunucusuz bir SQL havuzu, işlem iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenize olanak tanır. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verileri sorgulamak ve t-SQL arabirimi aracılığıyla çok çeşitli iş ZEKASı (BI) ve geçici sorgulama araçlarıyla tümleşik bağlantıyı sorgulamak için tanıdık bir T-SQL söz dizimi sunar.
+Sunucusuz bir SQL havuzu, işlem iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenize olanak tanır. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md) verileri sorgulamak ve t-SQL arabirimi aracılığıyla çok çeşitli iş ZEKASı (BI) ve geçici sorgulama araçlarıyla tümleşik bağlantıyı sorgulamak için tanıdık bir T-SQL söz dizimi sunar.
 
 Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğunu içeren [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob Azure Data Lake Storage depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını, Select (Cetas) [olarak dış tablo oluştur](develop-tables-cetas.md#cetas-in-serverless-sql-pool) ' u kullanarak da saklayabilirsiniz. Şu anda, CETAS kullanarak Azure Cosmos DB sunucusuz SQL havuzu sorgu sonuçlarını depolayamaz.
 
 Bu makalede, Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılardan veri sorgulayan sunucusuz bir SQL havuzuyla bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu öğreticideki](./tutorial-data-analyst.md)Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!IMPORTANT]
-> Bu öğretici, [Azure Cosmos DB iyi tanımlanmış bir şemaya](../../cosmos-db/analytical-store-introduction.md#schema-representation)sahip bir kapsayıcı kullanır. Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. `OPENROWSET` `WITH` Sorgu deneyimi ile hizalanabileceğinden ve iyi tanımlanmış şemaya göre değişiklik yaptığından, bir kapsayıcıdan tam uygunluk şeması olan bir kapsayıcıdan veri okuyan yan tümce olmadan işlevin sonuç kümesi şemasına güvenmeyin. Görüşlerinizi [Azure SYNAPSE Analytics geri bildirim forumuna](https://feedback.azure.com/forums/307516-azure-synapse-analytics)gönderebilirsiniz. Ayrıca, geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) de başvurabilirsiniz.
+> Bu öğretici, [Azure Cosmos DB iyi tanımlanmış bir şemaya](../../cosmos-db/analytical-store-introduction.md#schema-representation)sahip bir kapsayıcı kullanır.  `OPENROWSET` `WITH` Sorgu deneyimi ile hizalanabileceğinden ve iyi tanımlanmış şemaya göre değişiklik yaptığından, bir kapsayıcıdan tam uygunluk şeması olan bir kapsayıcıdan veri okuyan yan tümce olmadan işlevin sonuç kümesi şemasına güvenmeyin. Görüşlerinizi [Azure SYNAPSE Analytics geri bildirim forumuna](https://feedback.azure.com/forums/307516-azure-synapse-analytics)gönderebilirsiniz. Ayrıca, geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) de başvurabilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -377,11 +373,11 @@ Durum sayısı, bir değer olarak depolanan bilgiler `int32` , ancak ondalık sa
 > [!IMPORTANT]
 > `OPENROWSET`Yan tümcesi olmayan işlev `WITH` hem beklenen türlerle hem de hatalı olarak girilen türlere sahip değerleri gösterir. Bu işlev, raporlama için değil veri araştırması için tasarlanmıştır. Raporları derlemek için bu işlevden döndürülen JSON değerlerini ayrıştırmayın. Raporlarınızı oluşturmak için açık bir [WITH yan tümcesi](#query-items-with-full-fidelity-schema) kullanın. Tam uygunluk analitik deposunda düzeltmeleri uygulamak için Azure Cosmos DB kapsayıcısında yanlış türlere sahip değerleri temizlemeniz gerekir.
 
-Mongo DB API türünün Azure Cosmos DB hesaplarını sorgulemeniz gerekiyorsa, analitik depoda tam uygunluk şeması gösterimi ve [Azure Cosmos DB analitik depo (Önizleme)](../../cosmos-db/analytical-store-introduction.md#analytical-schema)olarak kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinebilirsiniz.
+Mongo DB API türünün Azure Cosmos DB hesaplarını sorgulamanızı istiyorsanız, analitik depoda tam uygunluk şeması gösterimi ve [Azure Cosmos DB analitik deposunda](../../cosmos-db/analytical-store-introduction.md#analytical-schema)kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Tam uygunluk şeması olan öğeleri sorgula
 
-Tam uygunluk şeması sorgulanırken, yan tümcesinde SQL türünü ve beklenen Azure Cosmos DB Özellik türünü açıkça belirtmeniz gerekir `WITH` . `OPENROWSET` `WITH` Raporlarda bir yan tümce olmadan kullanmayın çünkü sonuç kümesinin biçimi, geri bildirime bağlı olarak önizlemede değiştirilebilir.
+Tam uygunluk şeması sorgulanırken, yan tümcesinde SQL türünü ve beklenen Azure Cosmos DB Özellik türünü açıkça belirtmeniz gerekir `WITH` . `OPENROWSET` `WITH` Raporda yan tümce olmadan kullanmayın çünkü sonuç kümesinin biçimi geri bildirimde bulunarak değiştirilebilir.
 
 Aşağıdaki örnekte, `string` özelliği için doğru tür olduğunu `geo_id` ve `int32` özelliği için doğru tür olduğunu varsayacağız `cases` :
 
@@ -419,7 +415,7 @@ Bu örnekte, servis talebi sayısı, ya da değerleri olarak depolanır `int32` 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-- Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. `OPENROWSET` `WITH` Sorgu deneyimi müşteri geri bildirimlerine göre iyi tanımlanmış şemayla hizalanabileceğinden, yan tümcesi olmadan işlevin genel önizleme sırasında sağladığı şemaya güvenmeyin. Geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com)başvurun.
+- `OPENROWSET`İşlev yan tümcesi olmadan işlevin, `WITH` sorgu deneyimi müşteri geri bildirimlerine göre iyi tanımlanmış şemayla hizalanabileceğinden, bu şemaya güvenmeyin. Geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com)başvurun.
 - `OPENROWSET`Sütun harmanlamasının UTF-8 kodlaması yoksa sunucusuz BIR SQL havuzu bir derleme zamanı uyarısı döndürür. `OPENROWSET`T-SQL ifadesini kullanarak geçerli veritabanında çalışan tüm işlevler için Varsayılan harmanlamayı kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir.

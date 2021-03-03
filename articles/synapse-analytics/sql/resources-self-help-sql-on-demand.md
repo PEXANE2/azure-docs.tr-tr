@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c67b0bab554f363b8389c5557eadeac6e4c577a2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f94134b2a06155b1b1f390175578e501a840038b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625240"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669422"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için kendi kendine yardım
 
@@ -30,7 +30,7 @@ SYNAPSE Studio sunucusuz SQL havuzuyla bağlantı kuramazsa, sunucusuz SQL havuz
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
 
 Sorgunuz mevcut olmadığı veya başka bir işlem tarafından kullanıldığı için ' dosya açılamıyor ' hatası ile başarısız olursa ve her iki dosyanın de bulunduğundan ve başka bir işlem tarafından kullanılmadığından, sunucusuz SQL havuzunun dosyaya erişemeyeceği anlamına gelir. Bu sorun genellikle Azure Active Directory kimliğiniz dosyaya erişim haklarına sahip olmadığı için oluşur. Varsayılan olarak, sunucusuz SQL havuzu Azure Active Directory kimliğinizi kullanarak dosyaya erişmeye çalışıyor. Bu sorunu çözmek için, dosyaya erişmek için uygun haklara sahip olmanız gerekir. En kolay yol sorgulamaya çalıştığınız depolama hesabı üzerinde kendinize 'Depolama Blob Verilerine Katkıda Bulunan' rolü vermektir. 
-- [Depolama için Azure Active Directory erişim denetimiyle ilgili tam kılavuzu ziyaret ederek daha fazla bilgi edinebilirsiniz](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+- [Depolama için Azure Active Directory erişim denetimiyle ilgili tam kılavuzu ziyaret ederek daha fazla bilgi edinebilirsiniz](../../storage/common/storage-auth-aad-rbac-portal.md). 
 - [Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için denetim depolama hesabı erişimini ziyaret edin](develop-storage-files-storage-access-control.md)
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Geçerli kaynak kısıtlamaları nedeniyle yürütülemediğinden sorgu başarısız oldu 

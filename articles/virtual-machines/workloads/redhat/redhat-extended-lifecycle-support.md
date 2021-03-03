@@ -2,18 +2,18 @@
 title: Red Hat Enterprise Linux Genişletilmiş Yaşam Döngüsü Desteği
 description: Red Hat kurumsal genişletilmiş yaşam döngüsü desteği ekleme hakkında bilgi edinin
 author: mathapli
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
-ms.reviewer: cynthn
-ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 703732725ae7215d3ff59ad92a4c171a86251c20
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861383"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677194"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) genişletilmiş yaşam döngüsü desteği
 Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döngüsü desteği hakkında bilgi sağlar:
@@ -30,7 +30,7 @@ Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döng�
 > [!Note]
 > Kuruluşunuzun dışındaki kişilerle RHEL ile birlikte ekleme ile ilgili adımları paylaşmayın. AzureRedHatELS@microsoft.comDestek almak veya diğer sorular için uygulamasına ulaşın.
 
-## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 #### <a name="im-running-red-hat-enterprise-linux-6-and-cant-migrate-to-a-later-version-at-this-time-what-options-do-i-have"></a>Red Hat Enterprise Linux 6 kullanıyorum ve şu anda sonraki bir sürüme geçirilemez. Hangi seçeneklere sahip mıyım?
 * Red Hat Enterprise Linux 6 ' yı çalıştırmaya devam edin ve sınırlı yazılım bakımı ve teknik destek almaya devam etmek için Uzatılmış yaşam döngüsü desteği (PIKSEL) Add-On depoları satın alın (bkz. yükseltmeye yönelik işlem ve fiyatlandırma ayrıntıları).

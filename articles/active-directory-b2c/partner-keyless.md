@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090375"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644264"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Keyless yapılandırma
 
@@ -30,7 +30,7 @@ Başlamak için şunlar gerekir:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Kiracının Azure aboneliğinize bağlı olması gerekir.
+- [Azure AD B2C kiracısı](./tutorial-create-tenant.md). Kiracının Azure aboneliğinize bağlı olması gerekir.
 
 - Keyless bir bulut kiracısı, ücretsiz bir [deneme hesabı](https://keyless.io/go)alın.
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntüde Keyless mimari diyagramı gösteriliyor](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcılar oturum açma/kaydolma seçer ve Kullanıcı adını girer
 | 2. | Uygulama, kimlik doğrulaması için Kullanıcı özniteliklerini Azure AD B2C gönderir.
@@ -74,7 +74,7 @@ Yeni bir kimlik sağlayıcısı eklemek için aşağıdaki adımları izleyin:
 
 5. **Kimlik sağlayıcıları**' nı seçin.
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="configure-an-identity-provider"></a>Kimlik sağlayıcısı yapılandırma
 
@@ -157,6 +157,6 @@ Artık B2C kimlik sağlayıcılarınızda listelenen yeni bir OıDC kimlik sağl
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

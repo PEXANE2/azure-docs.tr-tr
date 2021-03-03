@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094518"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649249"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 passwordless kimlik doğrulamasının tarayıcı desteği
 
-Azure Active Directory, [FIDO2 güvenlik anahtarlarının](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys) parolasız bir cihaz olarak kullanılmasına izin verir. Microsoft hesapları için FIDO2 kimlik doğrulamasının kullanılabilirliği [2018 ' de duyurulmuştur](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). Duyuruda anlatıldığı gibi, Microsoft ve Azure Active Directory hesaplarıyla güvenli kimlik doğrulamayı desteklemek için FIDO2 CTAP belirtimine yönelik bazı isteğe bağlı özellikler ve uzantılar uygulanmalıdır. Aşağıdaki diyagramda, Azure Active Directory ile FIDO2 kimlik doğrulama anahtarlarını kullanarak parolasız kimlik doğrulamasını destekleyen tarayıcıların ve işletim sistemi birleşimleri gösterilmektedir.
+Azure Active Directory, [FIDO2 güvenlik anahtarlarının](./concept-authentication-passwordless.md#fido2-security-keys) parolasız bir cihaz olarak kullanılmasına izin verir. Microsoft hesapları için FIDO2 kimlik doğrulamasının kullanılabilirliği [2018 ' de duyurulmuştur](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). Duyuruda anlatıldığı gibi, Microsoft ve Azure Active Directory hesaplarıyla güvenli kimlik doğrulamayı desteklemek için, FIDO2 CTAP belirtimine yönelik bazı isteğe bağlı özellikler ve uzantılar uygulanmalıdır. Aşağıdaki diyagramda, Azure Active Directory ile FIDO2 kimlik doğrulama anahtarlarını kullanarak parolasız kimlik doğrulamasını destekleyen tarayıcıların ve işletim sistemi birleşimleri gösterilmektedir.
 
 ## <a name="supported-browsers"></a>Desteklenen tarayıcılar
 
@@ -35,7 +35,7 @@ Bu tabloda Azure Active Directory (Azure AD) ve Microsoft hesaplarının (MSA) k
 
 ## <a name="unsupported-browsers"></a>Desteklenmeyen tarayıcılar
 
-Aşağıdaki işletim sistemi ve tarayıcı birleşimleri desteklenmez, ancak gelecekteki destek ve test araştırılmakta. Ek işletim sistemi ve tarayıcı desteği görmek isterseniz lütfen sayfanın altındaki ürün geri bildirim aracını kullanarak geri bildirimde bulunun.
+Aşağıdaki işletim sistemi ve tarayıcı birleşimleri desteklenmez, ancak gelecekteki destek ve test araştırılmakta. Diğer işletim sistemi ve tarayıcı desteğini görmek isterseniz, lütfen sayfanın altındaki ürün geri bildirim aracını kullanarak geri bildirimde bulunun.
 
 | İşletim sistemi | Tarayıcı |
 | ---- | ---- |
@@ -44,18 +44,21 @@ Aşağıdaki işletim sistemi ve tarayıcı birleşimleri desteklenmez, ancak ge
 | Android | Chrome |
 | Kmeos | Chrome |
 
-## <a name="operating-system-versions-tested"></a>Test edilen işletim sistemi sürümleri
+## <a name="minimum-browser-version"></a>En düşük tarayıcı sürümü
 
-Yukarıdaki tablodaki bilgiler, aşağıdaki işletim sistemi sürümleri için test edilmiştir.
+En düşük tarayıcı sürümü gereksinimleri aşağıda verilmiştir. 
 
-| İşletim sistemi | En son sınanan sürüm |
-| --- | --- |
-| Windows | Windows 10 20H2 |
-| Mac OS | OS X 11 Big Sur |
-| Linux | Fedora 32 Iş Istasyonu |
+| Tarayıcı | En düşük sürüm |
+| ---- | ---- |
+| Chrome | 76 |
+| Edge | Windows 10 sürüm 1903<sup>1</sup> |
+| Firefox | Chrome |
+| Kmeos | 66 |
+
+<sup>1</sup> Yeni Kmıum tabanlı Microsoft Edge support Fido2 'ın tüm sürümleri. Microsoft Edge için eski destek 1903 ' ye eklenmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)
+[Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

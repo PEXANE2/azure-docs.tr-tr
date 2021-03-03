@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625456"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Öğretici: MobileIron ile tümleştirme Azure Active Directory
 
@@ -28,16 +28,16 @@ ms.locfileid: "98625456"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini MobileIron ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* MobileIron çoklu oturum açma etkin abonelik
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* MobileIron çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* MobileIron **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* MobileIron **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
 
 ## <a name="add-mobileiron-from-the-gallery"></a>Galeriden MobileIron ekleme
 
@@ -131,7 +131,7 @@ Bu bölümde, MobileIron 'e erişim vererek Azure çoklu oturum açma özelliği
     ![Tek Sign-On yönetici meta verilerini Yapılandır düğmesi](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>MobileIron test kullanıcısı oluşturma
+### <a name="create-mobileiron-test-user"></a>MobileIron test kullanıcısı oluşturma
 
 Azure AD kullanıcılarının, MobileIron 'de oturum açmasını sağlamak için bunların MobileIron 'e sağlanması gerekir.  
 MobileIron söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
@@ -157,15 +157,16 @@ MobileIron söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görev
     d. **Bitti**’ye tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU
+
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-## <a name="sp-initiated"></a>SP başlatıldı:
+### <a name="sp-initiated"></a>SP başlatıldı:
 
 * Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz MobileIron oturum açma URL 'sine yeniden yönlendirilir.  
 
 * Doğrudan MobileIron oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-##  <a name="idp-initiated"></a>IDP başlatıldı:
+### <a name="idp-initiated"></a>IDP başlatıldı:
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız MobileIron 'te otomatik olarak oturum açmış olmanız gerekir.
 

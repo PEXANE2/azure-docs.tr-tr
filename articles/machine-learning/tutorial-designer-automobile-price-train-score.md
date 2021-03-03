@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879805"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660993"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: Tasarımcıyla otomobil fiyatını tahmin etme
 
@@ -176,7 +176,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
     İşlem hatlarınız şuna benzer şekilde görünmelidir:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-Column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png" alt-text="Select-Column":::
 
 ## <a name="train-a-machine-learning-model"></a>Makine öğrenmesi modeli eğitme
 
@@ -224,7 +224,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
     > [!IMPORTANT]
     > **Bölünmüş verilerin** sol çıkış bağlantı noktalarının **modeli eğmek** için bağlandığından emin olun. Sol bağlantı noktası eğitim kümesini içerir. Sağ bağlantı noktası, test kümesini içerir.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır.":::
 
 1. **Model eğitme** modülünü seçin.
 
@@ -239,7 +239,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 
     İşlem hatlarınız şöyle görünmelidir:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
 
 ### <a name="add-the-score-model-module"></a>Puan modeli modülünü ekleme
 
@@ -259,7 +259,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
     Son işlem hattı şuna benzer görünmelidir:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png" alt-text="İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
 
 ## <a name="submit-the-pipeline"></a>İşlem hattını gönderme
 
@@ -288,7 +288,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Puanlanmış etiket sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png" alt-text="Puanlanmış etiket sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü":::
 
 ### <a name="evaluate-models"></a>Modelleri değerlendir
 

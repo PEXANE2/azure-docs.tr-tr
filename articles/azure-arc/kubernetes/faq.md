@@ -2,18 +2,18 @@
 title: Azure Arc etkin Kubernetes sık sorulan sorular
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Bu makale, Azure Arc etkin Kubernetes ile ilgili sık sorulan soruların bir listesini içerir
 keywords: Kubernetes, yay, Azure, kapsayıcılar, yapılandırma, Gilar, SSS
-ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652505"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647872"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Sık sorulan sorular-Azure Arc etkin Kubernetes
 
@@ -32,6 +32,8 @@ Hayır. Azure Izleyici ve Azure Ilkesi (Gatekeeper) dahil olmak üzere tüm Azur
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>AKS-HI kümesi ve Kubernetes kümelerimi Azure Stack hub 'a ve Azure Stack kenarından Azure yaya bağlamanız gerekir mi?
 
 Evet, AKS-HI kümenizi veya Kubernetes kümelerinizi Azure Stack Edge veya Azure Stack hub 'a bağlamak Azure Resource Manager ' de kaynak gösterimine sahip kümeler sağlar. Bu kaynak temsili, küme yapılandırması, Azure Izleyici ve Azure Ilkesi (Gatekeeper) gibi özellikleri, bağlı Kubernetes kümelerine genişletir.
+
+Azure Arc etkinleştirilmiş Kubernetes kümesi Azure Stack Edge, Azure Stack HI (>= Nisan 2021 güncelleştirmesi) veya Windows Server 2019 Datacenter (>= Nisan 2021 güncelleştirmesi) üzerinde aks ise, Kubernetes yapılandırması ücretsiz olarak dahil edilir.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Kullanım dışı Azure Arc etkin Kubernetes kaynakları nasıl ele alınacağını?
 
@@ -70,6 +72,6 @@ Bu özellik, uyumluluk ve idare gereksinimlerini karşılamak üzere tüm Kubern
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi Azure yaya bağlama](./connect-cluster.md)
+* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)
 * [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md)
 * [Uygun ölçekte yapılandırma uygulamak için Azure Ilkesini kullanma](./use-azure-policy.md)

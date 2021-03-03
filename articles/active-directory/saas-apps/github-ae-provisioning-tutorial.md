@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651595"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub AE 'yi yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için GitHub AE 
 > * Kullanıcı özniteliklerinin Azure AD ile GitHub AE arasında eşitlenmiş olmasını sağlama
 > * [GITHUB AE](./github-ae-tutorial.md) 'de çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -111,17 +111,27 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |ad. biçimlendirildi|Dize|
    |displayName|Dize|
 
-10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+10. **Eşlemeler** bölümünde **Azure ACTIVE DIRECTORY gruplarını GitHub AE olarak eşitler**' ı seçin.
 
-11. GitHub AE için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'den GitHub AE 'ye eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri IÇIN GitHub AE 'deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+
+      |Öznitelik|Tür|
+      |---|---|
+      |displayName|Dize|
+      |externalId|Dize|
+      |üyeler|Başvuru|
+
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+
+13. GitHub AE için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek GitHub AE 'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek GitHub AE 'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -133,6 +143,10 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
 2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 02/18/2021-gruplar sağlama desteği eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

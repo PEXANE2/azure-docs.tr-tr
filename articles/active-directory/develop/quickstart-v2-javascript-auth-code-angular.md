@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 0a4421ed548e6066338977260ed062e6ab14893f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 27064ecfce0114f7d80e464e2a51928a24919856
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103711"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653414"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak bir angular SPA 'da oturum açma ve erişim belirteci edinme
 
@@ -139,7 +139,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 >
 > Aynı dosyayı aşağı kaydırın ve güncelleştirin `graphMeEndpoint` . 
 > - Dizeyi ile değiştirin `Enter_the_Graph_Endpoint_Herev1.0/me``https://graph.microsoft.com/v1.0/me`
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` , API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Daha fazla bilgi için [belgelere](https://docs.microsoft.com/graph/deployments) bakın.
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` , API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Daha fazla bilgi için [belgelere](/graph/deployments) bakın.
 >
 >
 > ```javascript

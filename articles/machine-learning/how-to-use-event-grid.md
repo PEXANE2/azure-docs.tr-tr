@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319316"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655726"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
@@ -29,9 +29,6 @@ Olay odaklı eylemler için Event Grid ne zaman kullanılır:
 * Model kaydedildikten sonra bir Azure işlevi kullanma
 * Azure Machine Learning ile çeşitli uç noktalara olay akışı
 * Değişikliklerini algılandığında ml işlem hattı tetikleyin
-
-> [!NOTE] 
-> Şu anda runStatusChanged olayları yalnızca çalıştırma durumu **başarısız** olduğunda tetiklenir
 
 ## <a name="prerequisites"></a>Önkoşullar
 Event Grid kullanmak için, olaylarını oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya Owner erişiminizin olması gerekir.
@@ -84,7 +81,7 @@ Azure Machine Learning olaylar için abonelikler Azure rol tabanlı erişim dene
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **Gelişmiş filtreleme** : Azure Event Grid yayımlanan olay şemasına göre gelişmiş filtrelemeyi de destekler. Azure Machine Learning olay şeması ayrıntıları, [Azure Machine Learning için Azure Event Grid olay şeması](../event-grid/event-schema-machine-learning.md)' nda bulunabilir.  Gerçekleştirebileceğiniz bazı örnek Gelişmiş Filtreler şunları içerir:
++ **Gelişmiş filtreleme**: Azure Event Grid yayımlanan olay şemasına göre gelişmiş filtrelemeyi de destekler. Azure Machine Learning olay şeması ayrıntıları, [Azure Machine Learning için Azure Event Grid olay şeması](../event-grid/event-schema-machine-learning.md)' nda bulunabilir.  Gerçekleştirebileceğiniz bazı örnek Gelişmiş Filtreler şunları içerir:
 
   For `Microsoft.MachineLearningServices.ModelRegistered` olayı, modelin etiket değerini filtrelemek için:
 
@@ -116,11 +113,11 @@ Azure Event Grid, müşterilerin Azure Machine Learning olayları tetiklenebilec
 
 1. [Azure Portal](https://portal.azure.com) açın ve Azure Machine Learning çalışma alanınıza gidin.
 
-1. Sol çubuktan __Olaylar__ ' ı seçin ve **olay abonelikleri** ' ni seçin. 
+1. Sol çubuktan __Olaylar__ ' ı seçin ve **olay abonelikleri**' ni seçin. 
 
     ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
-1. Kullanmak istediğiniz olay türünü seçin. Örneğin, aşağıdaki ekran görüntüsünde __kayıtlı model__ , __dağıtılan model__ , __Tamamlanan çalıştırma__ ve __veri kümesi DRI algılandı__ :
+1. Kullanmak istediğiniz olay türünü seçin. Örneğin, aşağıdaki ekran görüntüsünde __kayıtlı model__, __dağıtılan model__, __Tamamlanan çalıştırma__ ve __veri kümesi DRI algılandı__:
 
     ![Add-Event-Type](./media/how-to-use-event-grid/add-event-type-updated.png)
 
@@ -128,7 +125,7 @@ Azure Event Grid, müşterilerin Azure Machine Learning olayları tetiklenebilec
 
     ![Ekran görüntüsü, select Event hub açık olan olay aboneliği oluştur bölmesini gösterir.](./media/how-to-use-event-grid/select-event-handler.png)
 
-Seçiminizi onayladıktan sonra __Oluştur__ ' a tıklayın. Yapılandırma sonrasında bu olaylar uç noktanıza gönderilir.
+Seçiminizi onayladıktan sonra __Oluştur__' a tıklayın. Yapılandırma sonrasında bu olaylar uç noktanıza gönderilir.
 
 
 ### <a name="set-up-with-the-cli"></a>CLı ile ayarlama
@@ -162,7 +159,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 Tüm olaylarınızın e-postalarını yapılandırmak için [Azure Logic Apps](../logic-apps/index.yml) kullanın. Koşullarla özelleştirin ve birlikte çalışan takımlar genelinde işbirliğini ve tanımayı etkinleştirmek için alıcıları belirtin.
 
-1. Azure portal, Azure Machine Learning çalışma alanınıza gidin ve sol çubukta olaylar sekmesini seçin. Buradan __Logic Apps__ ' i seçin. 
+1. Azure portal, Azure Machine Learning çalışma alanınıza gidin ve sol çubukta olaylar sekmesini seçin. Buradan __Logic Apps__' i seçin. 
 
     ![Ekran görüntüsünde Logic Apps bir Machine Learning çalışma alanı olayları sayfası gösterilir.](./media/how-to-use-event-grid/select-logic-ap.png)
 
@@ -222,7 +219,7 @@ Bu örnekte, bir blob deposuna dosya kopyalamak ve yayımlanmış bir Machine Le
 
     ![Ekran görüntüsünde, bir olay türü öğesi seçiliyken bir kaynak olayının ne zaman gerçekleştiği gösterilir.](./media/how-to-use-event-grid/login-and-add-event.png)
 
-1. Yeni bir adım ekleyin ve __Azure Data Factory__ arayın. İşlem __hattı çalıştırması oluştur__ ' u seçin. 
+1. Yeni bir adım ekleyin ve __Azure Data Factory__ arayın. İşlem __hattı çalıştırması oluştur__' u seçin. 
 
     ![Ekran görüntüsü, işlem hattı oluştur çalıştırması seçiliyken Eylem Seç bölmesini gösterir.](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
@@ -230,7 +227,7 @@ Bu örnekte, bir blob deposuna dosya kopyalamak ve yayımlanmış bir Machine Le
 
     ![Ekran görüntüsü çeşitli değerlerle işlem hattı çalıştırması oluştur bölmesini gösterir.](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. Sayfanın sol üst kısmındaki **Kaydet** düğmesini kullanarak mantıksal uygulamayı kaydedin ve oluşturun. Uygulamanızı görüntülemek için [Azure Portal](https://portal.azure.com) çalışma alanınıza gidin ve **Olaylar** ' a tıklayın.
+1. Sayfanın sol üst kısmındaki **Kaydet** düğmesini kullanarak mantıksal uygulamayı kaydedin ve oluşturun. Uygulamanızı görüntülemek için [Azure Portal](https://portal.azure.com) çalışma alanınıza gidin ve **Olaylar**' a tıklayın.
 
     ![Ekran görüntüsü mantıksal uygulamanın vurgulandığı olayları gösterir.](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 

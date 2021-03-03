@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553955"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657373"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](./tutorial-pipeline-batch-scoring-classification.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
@@ -51,9 +51,9 @@ Bir ınsele sınırlama işlem hattı oluşturabilmek için eğitim işlem hatt�
 
 Artık eğitim işlem hattı çalıştırıldığına göre, bir toplu çıkarım ardışık düzeni oluşturabilirsiniz.
 
-1. **Gönder** ' in yanındaki yeni açılan menü **oluşturma çıkarım** işlem hattını seçin.
+1. **Gönder**' in yanındaki yeni açılan menü **oluşturma çıkarım** işlem hattını seçin.
 
-1. **Toplu çıkarım ardışık düzeni** ' ni seçin.
+1. **Toplu çıkarım ardışık düzeni**' ni seçin.
 
     ![Toplu çıkarım ardışık düzeni oluşturma](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
@@ -67,7 +67,7 @@ Bu bölümde, tahminleri yapmak için farklı bir veri kümesi belirtmek üzere 
 
 1. Veri kümesi modülünü seçin.
 
-1. Tuvalin sağında bir bölme belirir. Bölmenin en altında, **ardışık düzen parametresi olarak ayarla** ' yı seçin.
+1. Tuvalin sağında bir bölme belirir. Bölmenin en altında, **ardışık düzen parametresi olarak ayarla**' yı seçin.
    
     Parametre için bir ad girin veya varsayılan değeri kabul edin.
 
@@ -80,13 +80,13 @@ Artık, çıkarım işlem hattını dağıtmaya hazırsınız demektir. Bu işle
 
 1. **Yayımla** düğmesini seçin.
 
-1. Görüntülenen iletişim kutusunda, **pipelineendpoint** için açılan liste ' yi genişletin ve **Yeni bir pipelineendpoint** ' i seçin.
+1. Görüntülenen iletişim kutusunda, **pipelineendpoint** için açılan liste ' yi genişletin ve **Yeni bir pipelineendpoint**' i seçin.
 
 1. Bir uç nokta adı ve isteğe bağlı bir açıklama sağlayın.
 
     İletişim kutusunun alt kısmında, eğitim sırasında kullanılan veri kümesi KIMLIĞI için varsayılan bir değerle yapılandırdığınız parametreyi görebilirsiniz.
 
-1. **Yayımla** ’yı seçin.
+1. **Yayımla**’yı seçin.
 
 ![İşlem hattı yayımlama](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
@@ -144,6 +144,22 @@ Bir işlem hattını yayımladığınızda, bu uç nokta için yeni varsayılan 
 Ayrıca, uç noktanızın **yayınlanan ardışık düzen** sekmesinde yeni bir varsayılan işlem hattı da ayarlayabilirsiniz.
 
 ![Yayımlanan ardışık düzen sayfasında varsayılan işlem hattını ayarla](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>Sınırlamalar
+
+Eğitim işlem hattınızda bazı değişiklikler yaparsanız, eğitim işlem hattını yeniden göndermeniz, çıkarım işlem hattını **güncelleştirmeniz**  ve çıkarım ardışık düzenini yeniden çalıştırmanız gerekir.
+
+Yalnızca, çıkarım ardışık düzeninde yalnızca modellerin güncelleştirileceğini, ancak veri dönüştürme güncellenmeyecektir.
+
+Güncel dönüştürmeyi çıkarım ardışık düzeninde kullanmak için, dönüştürme modülünün dönüştürme çıkışını DataSet olarak kaydetmeniz gerekir.
+
+![Dönüştürme veri kümesinin nasıl kaydedileceği gösteren ekran görüntüsü](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+Ardından, çıkarım işlem hattındaki **TD** modülünü kayıtlı veri kümesiyle el ile değiştirin.
+
+![Dönüştürme modülünün nasıl değiştirileceğini gösteren ekran görüntüsü](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+Ardından, çıkarım işlem hattını güncelleştirilmiş model ve dönüşümle gönderebilir ve yayımlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

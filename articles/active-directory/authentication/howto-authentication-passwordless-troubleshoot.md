@@ -1,24 +1,24 @@
 ---
 title: Karma FIDO2 güvenlik anahtarlarına yönelik bilinen sorunlar ve sorun giderme-Azure Active Directory
-description: Azure Active Directory kullanarak, passwordless karma FIDO2 güvenlik anahtarı oturum açma sorunlarını gidermeye yönelik bazı bilinen sorunlar ve yolları hakkında bilgi edinin (Önizleme)
+description: Azure Active Directory kullanarak, passwordless karma FIDO2 güvenlik anahtarı oturum açma sorunlarını gidermeye yönelik bazı bilinen sorunlar ve yolları hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea034974e85febcffeb2494d87b666a39e524eb1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743284"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648790"
 ---
-# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de FIDO2 güvenlik anahtarlarının karma dağıtımları için sorun giderme (Önizleme)
+# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Azure AD 'de FIDO2 güvenlik anahtarlarının karma dağıtımları için sorun giderme 
 
 Bu makalede, karma Azure AD 'ye katılmış cihazlar için sık sorulan sorular ve şirket içi kaynaklarda daha az oturum açma izni yer almaktadır. Bu passwordless özelliği sayesinde, FIDO2 güvenlik anahtarlarını kullanarak karma Azure AD 'ye katılmış cihazlar için Windows 10 cihazlarında Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Kullanıcılar, FIDO2 anahtarları gibi modern kimlik bilgileriyle Windows 'da oturum açabilir ve şirket içi kaynaklara sorunsuz bir çoklu oturum açma (SSO) deneyimi ile geleneksel Active Directory Domain Services (AD DS) tabanlı kaynaklara erişebilir.
 
@@ -29,12 +29,9 @@ Karma ortamdaki kullanıcılar için aşağıdaki senaryolar desteklenir:
 
 FIDO2 güvenlik anahtarlarını ve şirket içi kaynaklara karma erişimi kullanmaya başlamak için aşağıdaki makalelere bakın:
 
-* [Passwordless güvenlik anahtarları](howto-authentication-passwordless-security-key.md)
+* [Parolasız güvenlik anahtarları](howto-authentication-passwordless-security-key.md)
 * [Parolasız Windows 10](howto-authentication-passwordless-security-key-windows.md)
-* [Passwordless şirket içi](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* [Parolasız şirket içi](howto-authentication-passwordless-security-key-on-premises.md)
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

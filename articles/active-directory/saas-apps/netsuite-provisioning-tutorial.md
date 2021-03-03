@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696498"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648093"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için NetSuite yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den NetSuite 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için NetSuite OneWorld ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
 > [!WARNING]
-> Bu sağlama tümleştirmesi, Microsoft tarafından NetSuite 'e Kullanıcı sağlamak için kullanılan NetSuite API 'Lerinde yapılan bir değişiklik nedeniyle Şubat 2020 ' de çalışmayı durdurur. Bunun sonucunda, Azure Active Directory Kurumsal uygulama galerisinde NetSuite uygulamasının sağlama işlevselliği yakında kaldırılacaktır. Uygulamanın SSO işlevselliği değişmeden kalır. Microsoft, NetSuite ile birlikte çalışarak yeni bir modernlanmış sağlama tümleştirmesi oluşturur, ancak bu işlem tamamlandığında Şu anda hiçbir ETA yoktur.
+> Bu sağlama tümleştirmesi, Microsoft tarafından NetSuite 'e Kullanıcı sağlamak için kullanılan NetSuite API 'Lerinde yapılan bir değişiklik nedeniyle, NetSuite 'in Spring 2021 güncelleştirme sürümü ile çalışmayı durdurur.  Bu güncelleştirme,-2021 Şubat ve Nisan arasında NetSuite müşterilerine ulaşacaktır. Bunun sonucunda, Azure Active Directory Kurumsal uygulama galerisinde NetSuite uygulamasının sağlama işlevselliği yakında kaldırılacaktır. Uygulamanın SSO işlevselliği değişmeden kalır. Microsoft, NetSuite ile birlikte çalışarak yeni bir modernlanmış sağlama tümleştirmesi oluşturur, ancak bu işlem tamamlandığında Şu anda hiçbir ETA yoktur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

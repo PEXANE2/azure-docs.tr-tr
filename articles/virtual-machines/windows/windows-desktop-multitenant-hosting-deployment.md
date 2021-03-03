@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625127"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670052"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Çoklu kiracı barındırma hakları yalnızca Windows 10 (sürüm 1703 veya üzeri) için kullanılabilir.
@@ -26,7 +26,7 @@ Daha fazla bilgi için bkz. [Windows 10 Için çok kiracılı barındırma](http
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Çok kiracılı barındırma hakları için uygun olan abonelik lisansları
 
-[Microsoft Yönetim merkezini](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)kullanarak, bir kullanıcıya Windows 10 tarafından desteklenen bir lisans atanıp atanmadığını doğrulayabilirsiniz.
+[Microsoft Yönetim merkezini](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)kullanarak, bir kullanıcıya Windows 10 tarafından desteklenen bir lisans atanıp atanmadığını doğrulayabilirsiniz.
 
 > [!IMPORTANT]
 > Kullanıcıların Azure 'da Windows 10 görüntülerini kullanabilmesi için aşağıdaki abonelik lisanslarından birine sahip olmaları gerekir. Bu abonelik lisanslarından birine sahip değilseniz, [bulut hizmeti Iş ortağınız](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) aracılığıyla veya doğrudan [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1)aracılığıyla satın alınabilir.

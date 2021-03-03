@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 842c56ef1fb6f68c3d8b82e2633d9a604db9fde2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871324"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671640"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
 Ayrıca, Azure kullanılabilirlik kümelerinde farklı SAP mimari katmanlarının dağıtımına ek olarak, daha önce sunulan [Azure KULLANıLABILIRLIK ALANLARı](../../../availability-zones/az-overview.md) SAP iş yükü dağıtımları için de kullanılabilir. Bir Azure kullanılabilirlik bölgesi: "bir bölge içinde benzersiz fiziksel konumlar olarak tanımlanır. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Azure Kullanılabilirlik Alanları tüm bölgelerde kullanılamaz. Kullanılabilirlik Alanları sağlayan Azure bölgeleri için [Azure bölge haritasını](https://azure.microsoft.com/global-infrastructure/geographies/)denetleyin. Bu harita, Kullanılabilirlik Alanları sağlamak için hangi bölgelerin sunduğunu veya duyurduğunu gösterir. 

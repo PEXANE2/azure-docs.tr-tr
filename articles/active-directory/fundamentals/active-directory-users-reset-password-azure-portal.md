@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370908"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651896"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının parolasını sıfırlama
 
@@ -35,7 +35,7 @@ Yönetici olarak, parola unutursa Kullanıcı bir cihazdan kilitlenirse veya Kul
 
 1. [Azure Portal](https://portal.azure.com/) Kullanıcı Yöneticisi veya parola Yöneticisi olarak oturum açın. Kullanılabilir roller hakkında daha fazla bilgi için bkz. [Azure Active Directory yönetici rolleri atama](../roles/permissions-reference.md#available-roles)
 
-2. **Azure Active Directory**seçin, **Kullanıcılar**' ı seçin, sıfırlanması gereken kullanıcıyı arayıp seçin ve **Parolayı Sıfırla**' yı seçin.
+2. **Azure Active Directory** seçin, **Kullanıcılar**' ı seçin, sıfırlanması gereken kullanıcıyı arayıp seçin ve **Parolayı Sıfırla**' yı seçin.
 
     **Alain Charon profili** sayfası, **Parolayı Sıfırla** seçeneğiyle birlikte görüntülenir.
 
@@ -50,6 +50,10 @@ Yönetici olarak, parola unutursa Kullanıcı bir cihazdan kilitlenirse veya Kul
 
     >[!Note]
     >Geçici parolanın süresi hiçbir zaman dolmaz. Kullanıcı bir sonraki sefer oturum açtığında, geçici parolanın oluşturulmasından bu yana geçen süre ne olursa olsun parola çalışmaya devam edecektir.
+
+> [!IMPORTANT]
+> Bir yönetici kullanıcının parolasını sıfırlayamaz ve Azure AD Connect sunucusundaki uygulama olay günlüklerinde, HR = 80231367 aşağıdaki hata kodu görülür. kullanıcının özniteliklerini Active Directory inceleyin.  **AdminCount** özniteliği 1 olarak ayarlandıysa, bu, yöneticinin kullanıcının parolasını sıfırlamasını engeller.  Yönetici Kullanıcı parolasını sıfırlayabilmesi için **adminCount** özniteliğinin 0 olarak ayarlanması gerekir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

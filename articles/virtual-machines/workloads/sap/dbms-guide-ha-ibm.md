@@ -2,18 +2,17 @@
 title: Azure sanal makinelerinde (VM) IBM DB2 HADR 'yi ayarlama | Microsoft Docs
 description: Azure sanal makinelerinde (VM) IBM DB2 LUW ile yüksek kullanılabilirlik sağlayın.
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621391"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671893"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
 
@@ -171,7 +170,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler** **System copy**  >  **Dağıtılmış**  >  **veritabanı örneği**> sistem kopyalama seçeneğini belirleyin.
+1. **Hedef sistemler**   >  **Dağıtılmış**  >  **veritabanı örneği**> sistem kopyalama seçeneğini belirleyin.
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 1. IBM DB2 için HADR 'yi ayarlayın.
@@ -483,7 +482,7 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
 1. Sağ çerçevede, anahtar JDBC/havuz//URL ' yi seçin \<SAPSID> .
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1. Yapılandırma aracını kapatın.
 1. Java örneğini yeniden başlatın.
@@ -495,7 +494,7 @@ Günlük arşivleme yalnızca birincil veritabanı tarafından gerçekleştirili
 
 Günlüklerin her iki düğümden de yazıldığı ortak bir NFS paylaşımının yapılandırılmasını öneririz. NFS paylaşımının yüksek oranda kullanılabilir olması vardır. 
 
-Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz:
+Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz.
 
 - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik][nfs-ha] 
 - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)

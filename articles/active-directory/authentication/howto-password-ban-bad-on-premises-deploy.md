@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091049"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653822"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -102,7 +102,8 @@ Azure AD parola koruması DC Aracısı için aşağıdaki gereksinimler geçerli
 
 * Azure AD parola koruması DC Aracısı yazılımının yükleneceği tüm makineler Windows Server Core sürümleri dahil olmak üzere Windows Server 2012 veya üstünü çalıştırmalıdır.
     * Active Directory etki alanı veya ormanın Windows Server 2012 etki alanı işlev düzeyinde (DFL) veya orman işlev düzeyinde (FFL) olması gerekmez. [Tasarım ilkeleri](concept-password-ban-bad-on-premises.md#design-principles)bölümünde belirtildiği gıbı, DC Aracısı veya proxy yazılımının çalışması için gereken en az DFL veya FFL yoktur.
-* Azure AD parola koruması DC Aracısı 'nı çalıştıran tüm makinelerin .NET 4,5 yüklü olması gerekir.
+* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makinelerin .NET 4.7.2 yüklü olması gerekir.
+    * .NET 4.7.2 henüz yüklenmemişse, [Windows için .NET Framework 4.7.2 çevrimdışı yükleyicisi](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)' nde bulunan yükleyiciyi indirip çalıştırın.
 * Azure AD parola koruması DC Aracısı hizmetini çalıştıran tüm Active Directory etki alanı, SYSVOL çoğaltması için Dağıtılmış Dosya Sistemi Çoğaltma (DFSR) kullanmalıdır.
    * Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce geçişi yapmanız gerekir. Daha fazla bilgi için bkz [. SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Azure AD parola koruması proxy hizmeti için aşağıdaki gereksinimler geçerl
     > [!NOTE]
     > Azure AD parola koruma proxy hizmeti dağıtımı, etki alanı denetleyicisinin giden doğrudan internet bağlantısına sahip olmasına rağmen Azure AD parola koruması 'nı dağıtmaya yönelik zorunlu bir gereksinimdir.
 
-* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makinelerin .NET 4,7 yüklü olması gerekir.
-    * .NET 4,7, tam olarak güncelleştirilmiş bir Windows Server 'a zaten yüklenmiş olmalıdır. Gerekirse, [Windows için .NET Framework 4,7 çevrimdışı yükleyicisinde](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)bulunan yükleyiciyi indirip çalıştırın.
+* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makinelerin .NET 4.7.2 yüklü olması gerekir.
+    * .NET 4.7.2 henüz yüklenmemişse, [Windows için .NET Framework 4.7.2 çevrimdışı yükleyicisi](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)' nde bulunan yükleyiciyi indirip çalıştırın.
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, etki alanı denetleyicilerinin proxy hizmetinde oturum açabilme izni verecek şekilde yapılandırılmalıdır. Bu özellik "Bu bilgisayara ağ üzerinden eriş" ayrıcalık ataması aracılığıyla denetlenir.
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, giden TLS 1,2 HTTP trafiğine izin verecek şekilde yapılandırılmalıdır.
 * Azure AD parola koruma proxy hizmetini ve ormanını Azure AD 'ye kaydetmek için bir *genel yönetici* veya *Güvenlik Yöneticisi* hesabı.
@@ -157,7 +158,7 @@ Sonraki bölümde, Azure AD parola koruma DC aracılarını şirket içi AD DS o
 Azure AD parola koruma proxy hizmetini barındırmak için bir veya daha fazla sunucu seçin. Sunucu (ler) için aşağıdaki noktalar geçerlidir:
 
 * Bu tür bir hizmet yalnızca tek bir orman için parola ilkeleri sağlayabilir. Konak makinenin bu ormandaki herhangi bir etki alanına katılması gerekir.
-* Proxy 'nin hizmeti kök veya alt etki alanında veya bunların bir birleşimini yüklemek için desteklenir.
+* Proxy hizmetini kök veya alt etki alanına ya da bunların bir birleşimini yükleyebilirsiniz.
 * Ormanın her etki alanında en az bir DC ve bir parola koruma proxy sunucusu arasında ağ bağlantısı gerekir.
 * Test için bir etki alanı denetleyicisinde Azure AD parola koruma proxy hizmetini çalıştırabilirsiniz, ancak bu etki alanı denetleyicisi daha sonra internet bağlantısı gerektirir. Bu bağlantı bir güvenlik sorunu olabilir. Bu yapılandırmayı yalnızca test için öneririz.
 * [Yüksek kullanılabilirlik konuları](#high-availability-considerations)hakkında önceki bölümde belirtildiği gibi, her orman için ormanlar için en az ıkı Azure AD parola koruma proxy sunucusu önerilir.
@@ -200,7 +201,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
 
     Bu cmdlet Azure kiracınız için *genel yönetici* veya *Güvenlik Yöneticisi* kimlik bilgileri gerektirir. Bu cmdlet 'in Ayrıca yerel yönetici ayrıcalıklarına sahip bir hesap kullanılarak çalıştırılması gerekir.
 
-    Bu komut bir Azure AD parola koruma proxy hizmeti için bir kez başarılı olduktan sonra, ek olarak başarısız olur, ancak gereksizdir.
+    Bu komut bir kez başarılı olduktan sonra, ek çağırmaları da başarılı olur ancak gereksizdir.
 
     `Register-AzureADPasswordProtectionProxy`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure AD Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
 

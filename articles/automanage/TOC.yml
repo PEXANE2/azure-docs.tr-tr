@@ -8,10 +8,13 @@
 - name: Kavramlar
   expanded: true
   items:
-    - name: Sanal makineler
-      href: automanage-virtual-machines.md
-    - name: VM’ler için en iyi deneyimler
-      href: virtual-machines-best-practices.md
+    - name: Linux için oto Yönet
+      href: automanage-linux.md
+    - name: Windows Server için oto Yönet
+      href: automanage-windows-server.md
+      items:
+        - name: Yeni sanal makineler için hotpatch
+          href: automanage-hotpatch.md
 - name: Nasıl yapılır
   expanded: true
   items:

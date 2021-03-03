@@ -3,19 +3,20 @@ title: Azure 'da OpenShift kapsayıcı platformu 3,11 Self-Managed Market Teklif
 description: Azure 'da OpenShift kapsayıcı platformu 3,11 Self-Managed Market Teklifini dağıtın.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374108"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670442"
 ---
 # <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 
@@ -38,7 +39,7 @@ Bu seçenek en basit seçenektir, ancak aynı zamanda sınırlı özelleştirme 
 - **Günlüğe kaydetme**: EFK günlüğü etkinleştirilebilir.
 - **Azure bulut sağlayıcısı**: varsayılan olarak etkindir, devre dışı bırakılabilir.
 
-Azure portal sol üst tarafında, **kaynak oluştur ' a**tıklayın, arama kutusuna ' openshıft kapsayıcı platformu ' yazın ve ENTER tuşuna basın.
+Azure portal sol üst tarafında, **kaynak oluştur ' a** tıklayın, arama kutusuna ' openshıft kapsayıcı platformu ' yazın ve ENTER tuşuna basın.
 
    ![Yeni kaynak arama](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
@@ -93,7 +94,7 @@ Giriş parametrelerinin değerlerini girin ve **Tamam**' a tıklayın.
 
 **Değişiklik boyutu**
 
-Farklı bir VM boyutu seçmek için ***boyutu Değiştir***' e tıklayın.  VM seçim penceresi açılır.  İstediğiniz VM boyutunu seçin ve **Seç**' e tıklayın.
+Farklı bir VM boyutu seçmek için ***boyutu Değiştir** _ ' e tıklayın.  VM seçim penceresi açılır.  İstediğiniz VM boyutunu seçin ve _ * seç * * öğesine tıklayın.
 
    ![VM boyutunu seçin](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>

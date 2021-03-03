@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625406"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Öğretici: OverDrive ile tümleştirme Azure Active Directory
 
@@ -37,9 +37,9 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Overdrive **SP** tarafından başlatılan SSO 'yu destekler
+* Overdrive, **SP** tarafından başlatılan SSO 'yu destekler.
 
-* Overdrive **yalnızca zaman** Kullanıcı sağlamasını destekler
+* Overdrive **, tam zamanında** Kullanıcı sağlamayı destekler.
 
 ## <a name="add-overdrive-from-the-gallery"></a>Galeriden fazla sürücü ekleme
 
@@ -65,7 +65,7 @@ Azure AD SSO 'yu OverDrive ile yapılandırmak ve test etmek için aşağıdaki 
     1. Kullanıcının Azure AD gösterimine bağlı olan OverDrive 'da B. Simon 'a sahip olmak için **[fazla sürücü test kullanıcısı oluşturun](#create-overdrive-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
@@ -121,7 +121,7 @@ Bu bölümde, fazla sürücü erişimi vererek Azure çoklu oturum açma özelli
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="configure-overdrive-sso"></a>Fazla sürücü SSO 'yu yapılandırma
+## <a name="configure-overdrive-sso"></a>Fazla sürücü SSO 'yu yapılandırma
 
 **Fazla sürücü** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal 'ten [fazla sürücü destek ekibine](https://help.overdrive.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
@@ -133,7 +133,7 @@ Bu bölümde, Overtta Simon adlı bir Kullanıcı fazla sürücüde oluşturulur
 >Azure AD Kullanıcı hesapları sağlamak için OverDrive tarafından sunulan başka bir fazla sürücü Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 >
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
@@ -141,8 +141,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan fazla sürücü oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerindeki fazla sürücü kutucuğuna tıkladığınızda, bu işlem aşırı sürücü oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerindeki fazla sürücü kutucuğuna tıkladığınızda, bu işlem aşırı sürücü oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Overdrive 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Overdrive 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

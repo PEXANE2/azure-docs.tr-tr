@@ -10,22 +10,22 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3839dd27d4ae380b268694a93e5910b323411847
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651689"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657290"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Uzak model dağıtımı sorunlarını giderme 
 
 Azure Machine Learning kullanarak bir modeli Azure Container Instances (ACI) ve Azure Kubernetes hizmeti 'ne (AKS) dağıttığınızda karşılaşabileceğiniz yaygın hataları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 
 > [!NOTE]
-> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
+> Azure Kubernetes Service 'e (AKS) bir model dağıtıyorsanız, bu küme için [Azure izleyicisini](../azure-monitor/containers/container-insights-enable-existing-clusters.md) etkinleştirmenizi öneririz. Bu, genel küme durumunu ve kaynak kullanımını anlamanıza yardımcı olur. Aşağıdaki kaynakların yararlı olduğunu da görebilirsiniz:
 >
-> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Azure Kubernetes hizmet tanılaması](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [AKS kümenizi etkileyen Kaynak Durumu olaylarını denetleme](../aks/aks-resource-health.md)
+> * [Azure Kubernetes hizmet tanılaması](../aks/concepts-diagnostics.md)
 >
 > Bir modeli sağlıksız veya aşırı yüklenmiş bir kümeye dağıtmaya çalışıyorsanız, sorun yaşanması beklenmektedir. AKS kümesi sorunlarını gidermek için yardıma ihtiyacınız varsa lütfen AKS desteğiyle iletişime geçin.
 
@@ -114,7 +114,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlev başarısız: çalıştırma (input_data)
 
-Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
+Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örnek:
 
 ```python
 def run(input_data):

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418002"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653261"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Geliştirdiğiniz uygulamalarda FIDO2 anahtarlarıyla passwordless kimlik doğrulamasını destekleme
 
@@ -47,7 +47,7 @@ Requestedaduthncontext öğesi isteğe bağlıdır, bu nedenle bunu çözmek iç
 Kimlik doğrulaması uygulamak için önerilen seçenekler sırasıyla:
 
 - Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanan .NET masaüstü uygulamaları, Windows kimlik doğrulama Yöneticisi 'Ni (WAM) kullanmalıdır. Bu tümleştirme ve avantajları [GitHub üzerinde belgelenmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam).
-- Katıştırılmış bir tarayıcıda FIDO2 desteklemek için [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) kullanın.
+- Katıştırılmış bir tarayıcıda FIDO2 desteklemek için [WebView2](/microsoft-edge/webview2/) kullanın.
 - Sistem tarayıcısını kullanın. Masaüstü platformları için MSAL kitaplıkları varsayılan olarak bu yöntemi kullanır. Kullandığınız tarayıcının FIDO2 kimlik doğrulamasını desteklediğinden emin olmak için FIDO2 tarayıcı uyumluluğu sayfasında sayfamıza başvurabilirsiniz.
 
 ### <a name="mobile"></a>Mobil

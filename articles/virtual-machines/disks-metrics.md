@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8f5b7f8b5cd563f8b265d7051a57b0ac22598d1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674981"
 ---
 # <a name="disk-performance-metrics"></a>Disk performans ölçümleri
 Azure, sanal makinelerinizin (VM) ve disklerinin nasıl gerçekleştirdiği hakkında öngörü sağlayan Azure portal ölçümler sunar. Ölçümler Ayrıca bir API çağrısıyla alınabilir. Bu makale 3 alt bölümlere ayrılmıştır:
@@ -129,6 +129,6 @@ Bu ölçüm, 1. LUN 'a eklenen veri disklerini ve 2 ' nin sağlanan ıOPS 'nin %
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici ölçümlerine genel bakış](../azure-monitor/platform/data-platform-metrics.md)
-- [Ölçüm toplama açıklanıyor](../azure-monitor/platform/metrics-aggregation-explained.md)
-- [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-metric.md)
+- [Azure Izleyici ölçümlerine genel bakış](../azure-monitor/essentials/data-platform-metrics.md)
+- [Ölçüm toplama açıklanıyor](../azure-monitor/essentials/metrics-aggregation-explained.md)
+- [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-metric.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure Arc'a genel bakış
 description: Azure Arc 'ın ne olduğu ve müşterilerin karma kaynaklarını diğer Azure hizmetleri ve özellikleriyle yönetimi ve idare etmesine nasıl yardımcı olduğunu öğrenin.
-ms.date: 09/23/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672695"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650201"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc'a genel bakış
 
-Günümüzde, şirketler daha fazla ve daha karmaşık hale gelen bir ortamı kontrol etmek ve yönetmek için kullanılabilir. Bu ortamlar veri merkezleri, birden çok bulut ve kenar genelinde genişletilir. Her ortam ve bulutun, öğrenmesini ve işlemesini gerektiren, kendi ayrık yönetim araçları kümesi vardır.
+Günümüzde, şirketler giderek daha fazla karmaşık ortamları kontrol etmek ve yönetmek için zorluk duymaktadır. Bu ortamlar veri merkezleri, birden çok bulut ve kenar genelinde genişletilir. Her ortam ve bulut, öğrenmek ve çalıştırmak için ihtiyacınız olan ayrık yönetim araçları kümesine sahip olur.
 
 Paralel olarak, mevcut araçlar yeni bulut Yerel desenleri için destek sağlayamayacağı için, yeni DevOps ve Ila operasyonel modeller uygulamak zordur.
 
@@ -36,11 +36,11 @@ Azure Arc 'ın temel özellikleri şunlardır:
 
 * Kubernetes kümelerini ölçekte yönetin ve yönetir.
 
-* GitHub gibi kaynak denetiminden doğrudan bir veya daha fazla küme arasında uygulama ve yapılandırma dağıtmak için, Gilar tabanlı yapılandırmayı kod yönetimi olarak kullanın.
+* Git depolarındaki bir veya daha fazla kümede yapılandırma dağıtmak için Gilar 'ı kullanın.
 
-* Azure Ilkesini kullanarak Kubernetes kümeleriniz için sıfır dokunma uyumluluğu ve yapılandırması.
+*  Azure Ilkesini kullanarak Kubernetes kümeleriniz için sıfır dokunma uyumluluğu ve yapılandırması.
 
-* Azure Data Services 'ı tüm Kubernetes ortamında, özellikle Azure SQL yönetilen örneği ve PostgreSQL için Azure veritabanı, Azure 'da çalıştığı gibi yükseltmeler/güncelleştirmeler, güvenlik ve izleme gibi avantajlarla çalıştırın. Sürekli Azure bağlantısı olmasa bile, uygulama kapalı kalma süresi olmadan esnek ölçeklendirmeden yararlanın, güncelleştirmeleri uygulayın.
+* Azure Data Services 'ı Azure 'da (özellikle Azure SQL yönetilen örneği ve PostgreSQL için Azure veritabanı), yükseltme, güncelleştirmeler, güvenlik ve izleme gibi avantajlarla çalışan bir Kubernetes ortamında çalıştırın. Esnek ölçek kullanın ve Azure 'a sürekli bağlantı olmadan bile uygulama kapalı kalma süresi olmadan güncelleştirmeleri uygulayın
 
 * Azure portal, Azure CLı, Azure PowerShell veya Azure REST API kullanıp kullanmayacağınızı, Azure Arc etkin kaynaklarınızı görüntüleyen birleştirilmiş bir deneyim.
 
@@ -50,7 +50,7 @@ Aşağıda, Azure Arc ile sunulan özelliklerin fiyatlandırma ayrıntıları ve
 
 ### <a name="arc-enabled-servers"></a>Arc özellikli sunucular
 
-Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır. Şunları içerir:
+Aşağıdaki Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır:
 
 * Azure Yönetim grupları ve Etiketler aracılığıyla kaynak organizasyonu.
 
@@ -66,11 +66,11 @@ Azure Güvenlik Merkezi veya Azure Izleyici gibi Arc etkin sunucularda kullanıl
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc özellikli Kubernetes
 
-Geçerli önizleme aşamasında, Azure Arc etkin Kubernetes ek bir ücret ödemeden sunulmaktadır.
+Arc etkin Kubernetes (örneğin, Azure Güvenlik Merkezi veya Azure Izleyici) üzerinde kullanılan herhangi bir Azure hizmeti, söz konusu hizmet için fiyatlandırmaya göre ücretlendirilecektir. Azure Arc etkin Kubernetes 'in üzerine gelen yapılandırmaların fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure fiyatlandırma sayfası](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-data-services"></a>Azure Arc özellikli veri hizmetleri
 
-Geçerli önizleme aşamasında, Azure Arc etkin veri Hizmetleri ek bir ücret ödemeden sunulmaktadır.
+Geçerli önizleme aşamasında, Azure Arc etkin veri Hizmetleri ek bir maliyet olmaksızın sunulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

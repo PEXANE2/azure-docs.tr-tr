@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439523"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649555"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Öğretici: API 'Leri içeri ve yönetmek için Visual Studio Code API Management uzantısını kullanma
 
-Bu öğreticide, API Management ortak işlemler için Visual Studio Code için API Management uzantısı önizlemesini nasıl kullanacağınızı öğreneceksiniz. API 'Leri içeri aktarmak, güncelleştirmek, test etmek ve yönetmek için tanıdık Visual Studio Code ortamını kullanın.
+Bu öğreticide, API Management ortak işlemler için Visual Studio Code API Management uzantısının nasıl kullanılacağını öğrenirsiniz. API 'Leri içeri aktarmak, güncelleştirmek, test etmek ve yönetmek için tanıdık Visual Studio Code ortamını kullanın.
 
 Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -32,7 +32,7 @@ Ek API Management özelliklerine giriş için [Azure Portal](import-and-publish.
 
 ## <a name="prerequisites"></a>Önkoşullar
 - [Azure API Management terminolojisini](api-management-terminology.md) anlama
-- Visual Studio Code için [Visual Studio Code](https://code.visualstudio.com/) ve en son [Azure API Management uzantısını (Önizleme)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) yüklediğinizden emin olun
+- Visual Studio Code için [Visual Studio Code](https://code.visualstudio.com/) ve en son [Azure API Management uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) yüklediğinizden emin olun
 - [API Management örneği oluşturma](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>Bir API’yi içeri aktarma

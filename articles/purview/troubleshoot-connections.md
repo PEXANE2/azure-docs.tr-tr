@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c176fcafe13749ba89c04b34854f036aa5aea516
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526889"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677651"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure purview 'da bağlantılarınızın sorunlarını giderme
 
@@ -34,7 +34,7 @@ Her kaynak türü için belirli yönergeler vardır:
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 - [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
 - [Power BI](register-scan-power-bi-tenant.md)
-
+- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-bucket-scan)
 ## <a name="storing-your-credential-in-your-key-vault-and-using-the-right-secret-name-and-version"></a>Kimlik bilgilerinizi Anahtar Kasanızda depolama ve doğru gizli adı ve sürümü kullanma
 
 Ayrıca, kimlik bilgilerinizi Azure Key Vault Örneğinizde depolamanız ve doğru gizli adı ve sürümü kullanmanız gerekir.

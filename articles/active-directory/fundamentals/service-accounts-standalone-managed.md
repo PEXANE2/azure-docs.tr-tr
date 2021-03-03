@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417960"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650966"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>Tek başına yönetilen hizmet hesaplarının güvenliğini sağlama
 
@@ -44,7 +44,7 @@ sMSAs, hizmet hesapları olarak kullanılan kullanıcı hesaplarından daha fazl
 
    * Ana bilgisayarın DNS adı değiştirildi.
 
-   * [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) kullanarak ek bir Sam-AccountName veya DNS-hostname parametreleri ekleme veya kaldırma
+   * [PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) kullanarak ek bir Sam-AccountName veya DNS-hostname parametreleri ekleme veya kaldırma
 
 ## <a name="when-to-use-smsas"></a>SMSAs ne zaman kullanılır?
 
@@ -53,7 +53,7 @@ sMSAs, yönetim ve güvenlik görevlerini kolaylaştırabilir. Tek bir sunucuya 
 > [!NOTE] 
 > Birden fazla hizmet için sMSAs kullanabilirsiniz, ancak her bir hizmetin denetim amacıyla kendi kimliğine sahip olması önerilir. 
 
-Yazılım Oluşturucusu bir MSA kullanıp kullanbil, bunu söyleyebilir, uygulamanızı test etmeniz gerekir. Bunu yapmak için, bir test ortamı oluşturun ve gerekli tüm kaynaklara erişebildiğinden emin olun. Bkz. adım adım yönergeler için [sMSA oluşturma ve yüklemeyi](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) öğrenin.
+Yazılım Oluşturucusu bir MSA kullanıp kullanbil, bunu söyleyebilir, uygulamanızı test etmeniz gerekir. Bunu yapmak için, bir test ortamı oluşturun ve gerekli tüm kaynaklara erişebildiğinden emin olun. Bkz. adım adım yönergeler için [sMSA oluşturma ve yüklemeyi](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) öğrenin.
 
 ### <a name="assess-security-posture-of-smsas"></a>SMSAs güvenlik duruşunu değerlendir
 
@@ -112,7 +112,7 @@ SMSAs 'yi yönetmek için aşağıdaki Active Directory PowerShell cmdlet 'lerin
 
 ## <a name="move-to-smsas"></a>SMSAs 'ye taşı
 
-Bir uygulama hizmeti, sMSA 'yı destekler, ancak şu anda güvenlik bağlamı için bir kullanıcı hesabı ya da bilgisayar hesabı kullanıyorsa, sunucuda [bir SMSA oluşturun ve](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) bu işlemi yapın. 
+Bir uygulama hizmeti, sMSA 'yı destekler, ancak şu anda güvenlik bağlamı için bir kullanıcı hesabı ya da bilgisayar hesabı kullanıyorsa, sunucuda [bir SMSA oluşturun ve](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) bu işlemi yapın. 
 
 İdeal olarak, kaynakları Azure 'a taşıyın ve Azure yönetilen kimliklerini veya hizmet sorumlularını kullanın.
 
@@ -133,4 +133,3 @@ Hizmet hesaplarını güvenli hale getirmek için aşağıdaki makalelere bakın
 
 * [Şirket içi hizmet hesaplarını yönetir](service-accounts-govern-on-premises.md)
 
- 

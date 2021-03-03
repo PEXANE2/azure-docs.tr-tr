@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 02/19/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d45119fa86ab47e6a625c628d8cb9763db83bd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b0f49f39e6bc291c3242fe739866a015ac154a8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521112"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651170"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Azure AD 'de geçici erişim geçişini, passwordless kimlik doğrulama yöntemlerini (Önizleme) kaydetmek için yapılandırma
 
@@ -75,6 +75,9 @@ Bir dokunma oluşturmak için:
 1. Aşağıdaki **yöntemi seçin**, **geçici erişim geçişi (Önizleme)** seçeneğine tıklayın.
 1. Özel bir etkinleştirme saati veya süresi tanımlayın ve **Ekle**' ye tıklayın.
 
+   >[!NOTE]
+   >Kiracıda oturum açanlar (KMSı) etkin olduğunda, tek seferlik dokunma kullanımı zorlanmaz. Tek seferlik bir dokunma oluşturuyorsanız, KMSı 'yi devre dışı bıraktığınızdan emin olun.
+
    ![DOKUNMA oluşturma ekranının ekran görüntüsü](./media/how-to-authentication-temporary-access-pass/create.png)
 
 1. Eklendikten sonra, dokunma ayrıntıları gösterilir. Gerçek dokunma değerini bir yere getirin. Bu değeri kullanıcıya sağlarsınız. **Tamam**' a tıkladıktan sonra bu değeri görüntüleyemezsiniz.
@@ -125,6 +128,7 @@ Bu sınırlamaları aklınızda bulundurun:
 - Konuk kullanıcılar bir dokunarak oturum açamaz.
 - Self servis parola sıfırlama (SSPR) kayıt ilkesi kapsamındaki kullanıcıların, dokunarak oturum açtıktan sonra SSPR yöntemlerinden birini kaydetmesi gerekecektir. Kullanıcı yalnızca FIDO2 anahtarını kullanacaksanız, SSPR ilkesinden hariç tutun veya SSPR kayıt ilkesini devre dışı bırakın. 
 - TAP, ağ Ilkesi sunucusu (NPS) uzantısı ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağdaştırıcısıyla birlikte kullanılamaz.
+- Kiracıda KMSı etkinleştirildiğinde tek seferlik dokunma kullanımı zorlanmaz.
 - Kiracıya sorunsuz SSO etkinleştirildiğinde, kullanıcılardan bir parola girmesi istenir. **Bunun yerine geçici erişim geçişinizi kullanın** bağlantısı, kullanıcının dokunarak oturum açması için kullanılabilir olacaktır.
 
 ![Bunun yerine dokunma kullan ekran görüntüsü](./media/how-to-authentication-temporary-access-pass/alternative.png)

@@ -3,16 +3,17 @@ title: Yakın yerleştirilen grupları kullanma
 description: Azure 'da sanal makineler için yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: a264996c3a2d907e58746c0fcf3eb8b2aefe43ba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21f657af60fa0012c517e4788a5d087b3924823f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878876"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666251"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI'yı kullanarak sanal makineleri yakın yerleştirilen gruplara dağıtma
 

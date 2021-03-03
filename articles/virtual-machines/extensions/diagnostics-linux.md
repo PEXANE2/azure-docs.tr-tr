@@ -10,19 +10,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580273"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667321"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 4,0 kullanın
 
 Bu belgede Linux Tanılama uzantısının sürüm 4,0 ve daha yeni bir sürümü açıklanmaktadır.
 
 > [!IMPORTANT]
-> Sürüm 3. * hakkında daha fazla bilgi için  [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3)bakın. Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)bakın.
+> Sürüm 3. * hakkında daha fazla bilgi için  [Bu belgeye](./diagnostics-linux-v3.md)bakın. Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)bakın.
 
 ## <a name="introduction"></a>Giriş
 
@@ -108,7 +108,7 @@ Python2 yürütülebilir dosyası *Python*'un diğer adı olmalıdır. Aşağıd
 Bu örneklerde indirilen örnek yapılandırma bir dizi standart veri toplar ve bunları tablo depolamaya gönderir. Örnek yapılandırma ve içeriği için URL, değişikliğe tabidir. Çoğu durumda, portal ayarları JSON dosyasının bir kopyasını indirmeniz ve gereksinimlerinize göre özelleştirmeniz gerekir, ardından oluşturduğunuz herhangi bir şablon veya Otomasyon, bu URL 'YI her seferinde indirmek yerine yapılandırma dosyası sürümünüzü kullanır.
 
 > [!NOTE]
-> Yeni Azure Izleyici havuzunu etkinleştirmek için, VM 'Lerin MSI kimlik doğrulama belirteci oluşturma için sistem tarafından atanan kimliğin etkinleştirilmiş olması gerekir. Bu, VM oluşturma sırasında veya VM oluşturulduktan sonra yapılabilir. Portal, CLı, PowerShell ve Resource Manager aracılığıyla sistem tarafından atanan kimliği etkinleştirme adımları.  [burada](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)ayrıntılı olarak listelenmiştir. 
+> Yeni Azure Izleyici havuzunu etkinleştirmek için, VM 'Lerin MSI kimlik doğrulama belirteci oluşturma için sistem tarafından atanan kimliğin etkinleştirilmiş olması gerekir. Bu, VM oluşturma sırasında veya VM oluşturulduktan sonra yapılabilir. Portal, CLı, PowerShell ve Resource Manager aracılığıyla sistem tarafından atanan kimliği etkinleştirme adımları.  [burada](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)ayrıntılı olarak listelenmiştir. 
 
 #### <a name="azure-cli-sample"></a>Azure CLı örneği
 
@@ -490,7 +490,7 @@ Belirttiğinizde `syslogEvents` , Lad verileri her zaman Azure Storage 'daki bir
 Bu isteğe bağlı bölüm, depolama hesabı ve varsayılan Konuk ölçümleri dikey penceresine ek olarak Azure Izleyici havuzuna ölçüm göndermeyi etkinleştirmeyi sağlar.
 
 > [!NOTE]
-> Bu, sistem tarafından atanan kimliğin VM 'Lerde/VMSS 'de etkinleştirilmesini gerektirir. Bu, Portal, CLı, PowerShell ve Resource Manager aracılığıyla yapılabilir. Adımlar [burada](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)ayrıntılı olarak listelenmiştir. Bunu etkinleştirme adımları, yukarıdaki AZ CLı, PowerShell vb. yükleme örneklerinde de listelenmiştir. 
+> Bu, sistem tarafından atanan kimliğin VM 'Lerde/VMSS 'de etkinleştirilmesini gerektirir. Bu, Portal, CLı, PowerShell ve Resource Manager aracılığıyla yapılabilir. Adımlar [burada](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)ayrıntılı olarak listelenmiştir. Bunu etkinleştirme adımları, yukarıdaki AZ CLı, PowerShell vb. yükleme örneklerinde de listelenmiştir. 
 
 ```json
   "sinksConfig": {
@@ -632,7 +632,7 @@ BytesPerSecond | Saniye başına okunan veya yazılan bayt sayısı
 
 ## <a name="installing-and-configuring-lad-40"></a>LAD 4,0 yükleme ve yapılandırma
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 

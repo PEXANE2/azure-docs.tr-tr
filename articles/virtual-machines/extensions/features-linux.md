@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966080"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672620"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -33,12 +33,12 @@ Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önk
 Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile kullanılabilir. Bazı örnekler:
 
 - Linux için DSC uzantısına sahip bir VM 'ye PowerShell Istenen durum yapılandırmasını uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- VM 'yi Microsoft Monitoring Agent VM uzantısıyla izlemeyi yapılandırın. Daha fazla bilgi için bkz. [LINUX VM izleme](../linux/tutorial-monitor.md).
+- VM 'yi Microsoft Monitoring Agent VM uzantısıyla izlemeyi yapılandırın. Daha fazla bilgi için bkz. [LINUX VM izleme](/previous-versions/azure/virtual-machines/linux/tutorial-monitor).
 - Chef veya Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için [Chef docs](https://docs.chef.io/azure_portal.html) veya [dataköpek bloguna](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)bakın.
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Linux için özel Betik uzantısı, bir sanal makine üzerinde herhangi bir bash komut dosyasının çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [LINUX VM özel Betik uzantısı](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Linux aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -50,12 +50,12 @@ Desteklenen işletim sistemleri ve yükleme yönergeleri hakkında daha fazla bi
 
 #### <a name="supported-agent-versions"></a>Desteklenen Aracı sürümleri
 
-Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)bakın.
+Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) bakın.
 
 #### <a name="supported-oses"></a>Desteklenen Işletim sistemleri
 
-Linux Aracısı birden çok OSE üzerinde çalışır, ancak uzantı çerçevesinin bu uzantılara yönelik bir sınırı vardır. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
-)bakın.
+Linux Aracısı birden çok OSE üzerinde çalışır, ancak uzantı çerçevesinin bu uzantılara yönelik bir sınırı vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+) bakın.
 
 Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' desteklenmeyen işletim sistemi '* verilebilir. Desteklenebilirliği için bağımsız uzantı belgelerini denetleyin.
 
@@ -106,7 +106,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -222,7 +222,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantılar
+- Uzantıları
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu
@@ -404,7 +404,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 ## <a name="common-vm-extension-reference"></a>Ortak VM Uzantısı başvurusu
 
-| Uzantı adı | Description | Daha fazla bilgi |
+| Uzantı adı | Açıklama | Daha fazla bilgi |
 | --- | --- | --- |
 | Linux için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Linux için özel Betik uzantısı](custom-script-linux.md) |
 | VM Erişimi uzantısı |Bir Azure sanal makinesine yeniden erişim elde edin |[VM Erişimi uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

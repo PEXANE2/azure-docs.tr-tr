@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592798"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658106"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
 
-Web çağıran örnek, Iletişim Hizmetleri Web 'i çağıran istemci kitaplığı tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır. 
+Web çağıran örnek, Iletişim Hizmetleri Web 'i çağıran istemci kitaplığı tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır.
 
 Bu örnek, geliştiriciler için oluşturulmuştur ve Iletişim Hizmetleri 'ni kullanmaya başlamanıza çok daha kolay hale gelir. Kullanıcı arabirimi, her biri bir "kodu göster" düğmesine sahip olan birden fazla bölüme ayrılmıştır ve bu, kodu doğrudan tarayıcınızdan kendi Iletişim Hizmetleri uygulamanıza kopyalamanızı sağlar.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Bu örnek GitHub ' da kullanılabilir.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
@@ -36,7 +34,7 @@ Projeyi ayarlamak ve makinenizde yerel olarak çalıştırmak için/Project/Read
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Web çağırma öğreticisi 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>Kullanıcı hazırlama ve SDK başlatması 
+## <a name="user-provisioning-and-sdk-initialization"></a>Kullanıcı hazırlama ve SDK başlatması
 
 SDK 'nizi arka uç belirteç sağlama hizmeti tarafından sağlanan bir belirteç kullanarak başlatmak için "Kullanıcı sağlama ve SDK 'Yı başlatma" seçeneğine tıklayın. Bu arka uç hizmeti içinde `/project/webpack.config.js` .
 
@@ -52,7 +50,7 @@ Artık Iletişim Hizmetleri kaynağınızı kullanarak çağrı yapmaya başlama
 
 Iletişim Hizmetleri Web 'i çağıran SDK, **1:1**, **1: N** ve **Grup** çağırma için izin verir.
 
-1:1 veya 1: N giden çağrılar için, virgülle ayrılmış değerler kullanarak çağırmak üzere birden fazla Iletişim hizmeti kullanıcı kimliği belirtebilirsiniz. Ayrıca, virgülle ayrılmış değerler kullanarak çağırmak için geleneksel (PSTN) telefon numaralarını da belirtebilirsiniz. 
+1:1 veya 1: N giden çağrılar için, virgülle ayrılmış değerler kullanarak çağırmak üzere birden fazla Iletişim hizmeti kullanıcı kimliği belirtebilirsiniz. Ayrıca, virgülle ayrılmış değerler kullanarak çağırmak için geleneksel (PSTN) telefon numaralarını da belirtebilirsiniz.
 
 PSTN telefon numaralarını çağırırken alternatif arayan KIMLIĞINIZI belirtin. Giden bir çağrı yerleştirmek için "Çağrı Yerleştir" düğmesine tıklayın:
 
@@ -80,7 +78,7 @@ Bu örnek, aşağıdaki yetenekler için de kod parçacıkları sağlar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:

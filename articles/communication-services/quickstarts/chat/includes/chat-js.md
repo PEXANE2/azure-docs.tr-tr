@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653580"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661673"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
 
-- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/) etkin LTS ve bakım LTS sürümlerini (8.11.1 ve 10.14.1 önerilir) yükler.
 - Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../../create-communication-resource.md). Bu hızlı başlangıç için **Kaynak uç noktanızı kaydetmeniz** gerekir.
 - *Üç* ACS kullanıcısı oluşturun ve bu kullanıcılara bir Kullanıcı erişim belirteci [Kullanıcı erişim belirteci](../../access-tokens.md)verin. Kapsamı **sohbet** olarak ayarladığınızdan emin olun ve **belirteç dizesinin yanı sıra Kullanıcı kimliği dizesini de unutmayın**. Tam demo, iki ilk katılımcı içeren bir iş parçacığı oluşturur ve sonra iş parçacığına üçüncü bir katılımcı ekler.
@@ -34,7 +34,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 `npm init -y`Dosya **üzerinde** varsayılan ayarlarla birpackage.jsoluşturmak için öğesini çalıştırın.
 
 ```console
@@ -48,7 +48,7 @@ npm init -y
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,7 +86,7 @@ Bu hızlı başlangıç için uygulama mantığını içeren **client.js** adlı
 
 ### <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
-Web uygulamanızda bir sohbet istemcisi oluşturmak için, Iletişim hizmeti **uç noktasını** ve önkoşul adımlarının bir parçası olarak oluşturulan **erişim belirtecini** kullanacaksınız. 
+Web uygulamanızda bir sohbet istemcisi oluşturmak için, Iletişim hizmeti **uç noktasını** ve önkoşul adımlarının bir parçası olarak oluşturulan **erişim belirtecini** kullanacaksınız.
 
 Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz. Sohbet mimarisi ve erişim belirteçleri hakkında daha fazla bilgi için [Kullanıcı erişim belirteçleri](../../access-tokens.md) hakkında daha fazla bilgi için [sohbet kavramlarına](../../../concepts/chat/concepts.md) bakın.
 
@@ -122,7 +122,7 @@ Tarayıcınızın içindeki geliştirici araçları konsolunda aşağıdakileri 
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>Nesne modeli 
+## <a name="object-model"></a>Nesne modeli
 Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Iletişim Hizmetleri sohbet istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
 
 | Ad                                   | Açıklama                                                                                                                                                                           |
@@ -137,7 +137,7 @@ Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Iletişim Hizmetl
 
 `createThreadRequest` iş parçacığı isteğini anlatmak için kullanılır:
 
-- `topic`Bu sohbete bir konu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateThread` . 
+- `topic`Bu sohbete bir konu vermek için kullanın. Konular, sohbet iş parçacığı işlevi kullanılarak oluşturulduktan sonra güncelleştirilir `UpdateThread` .
 - `participants`Sohbet iş parçacığına eklenecek katılımcıları listelemek için kullanın.
 
 Çözümlendiğinde, `createChatThread` Yöntem bir döndürür `CreateChatThreadResponse` . Bu model `chatThread` , `id` Yeni oluşturulan iş parçacığının öğesine erişebileceğiniz bir özelliği içerir. Daha sonra ' `id` a bir örneğini almak için kullanabilirsiniz `ChatThreadClient` . `ChatThreadClient`Daha sonra, ileti gönderme veya katılımcıları listeleme gibi iş parçacığı içinde işlem yapmak için kullanılabilir.
@@ -203,7 +203,7 @@ Chat Thread client for threadId: <threadId>
 
 `sendMessageOptions` Sohbet iletisi isteğinin isteğe bağlı alanlarını açıklar:
 
-- `priority`' Normal ' veya ' yüksek ' gibi sohbet iletisi öncelik düzeyini belirtmek için kullanın; Bu özellik, uygulamanızdaki alıcı kullanıcısına ileti üzerinde ilgilenmeniz veya özel iş mantığını yürütmek için Kullanıcı arabirimi göstergesinin olması için kullanılabilir.   
+- `priority`' Normal ' veya ' yüksek ' gibi sohbet iletisi öncelik düzeyini belirtmek için kullanın. Bu özellik, iletiye dikkat çekmek veya özel iş mantığını yürütmek üzere uygulamanızdaki alıcı kullanıcısına ait bir kullanıcı ARABIRIMI göstergesi görüntülemek için kullanılabilir.
 - `senderDisplayName`Gönderenin görünen adını belirtmek için kullanın;
 
 Yanıt, `sendChatMessageResult` Bu iletinin BENZERSIZ kimliği olan BIR kimlik içerir.
@@ -246,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 Bu kodu `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` **client.js** yorum yerine ekleyin.
 Tarayıcı sekmesini yenileyin, konsolda bir ileti görürsünüz `Notification chatMessageReceived` ;
 
-Alternatif olarak, belirtilen aralıklarda yöntemi yoklayarak sohbet iletileri alabilirsiniz `listMessages` . 
+Alternatif olarak, belirtilen aralıklarda yöntemi yoklayarak sohbet iletileri alabilirsiniz `listMessages` .
 
 ```JavaScript
 

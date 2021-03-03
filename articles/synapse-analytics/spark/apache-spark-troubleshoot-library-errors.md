@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417949"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670622"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Kitaplık yükleme hatalarını giderme 
 Üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, bir kitaplığı sunucusuz Apache Spark havuzlarınızdan birine yükleyebilirsiniz. requirements.txt dosyasında listelenen paketler, havuz başlatma sırasında PyPi 'den indirilir. Bu gereksinimler dosyası, bu Spark havuzundan bir Spark örneği oluşturulduğu her seferinde kullanılır. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
@@ -54,7 +54,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-Bir hata alırsanız gerekli izinleriniz muhtemelen eksik olabilir. Gerekli izinleri alma hakkında bilgi edinmek için şu belgeyi ziyaret edin: [Depolama Blobu veri katılımcısı veya Depolama Blobu veri sahibi Izinleri atama](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role).
+Bir hata alırsanız gerekli izinleriniz muhtemelen eksik olabilir. Gerekli izinleri alma hakkında bilgi edinmek için şu belgeyi ziyaret edin: [Depolama Blobu veri katılımcısı veya Depolama Blobu veri sahibi Izinleri atama](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role).
 
 Ayrıca, bir işlem hattı çalıştırıyorsanız, çalışma alanı MSI, Depolama Blobu veri sahibine veya Depolama Blobu veri katılımcısı izinlerine de sahip olmalıdır. Çalışma alanı kimliğinizi bu izin olarak verme hakkında bilgi edinmek için, bkz. [çalışma alanı yönetilen kimliği için Izin verme](../security/how-to-grant-workspace-managed-identity-permissions.md).
 
@@ -98,4 +98,3 @@ Ortamı yeniden oluşturmak ve güncelleştirmelerinizi doğrulamak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Varsayılan kitaplıkları görüntüleme: [Apache Spark sürüm desteği](apache-spark-version-support.md)
-

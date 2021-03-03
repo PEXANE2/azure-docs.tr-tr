@@ -6,7 +6,7 @@
   items:
     - name: Veri Bilimi Sanal Makinesi (DSVM) nedir?
       href: overview.md
-    - name: Veri Bilimi Sanal Makinesine Eklenen Araçlar
+    - name: Veri Bilimi Sanal Makinesi Araçlar
       href: tools-included.md
 - name: Hızlı Başlangıçlar
   expanded: true

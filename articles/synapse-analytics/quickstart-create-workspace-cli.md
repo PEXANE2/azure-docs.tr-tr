@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676453"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure SYNAPSE çalışma alanı oluşturma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Hafif ve esnek bir komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/download/)'yi indirin ve yükleyin
-- [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Bunlara ek olarak, birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için depolama hesabı [oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) bölümünde açıklandığı gibi depolama hesabı oluşturulurken **hiyerarşik ad alanını** etkinleştirmiş olmanız gerekir. 
@@ -38,13 +38,13 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-    | Ortam Değişkeni Adı | Description |
+    | Ortam Değişkeni Adı | Açıklama |
     |---|---|---|
     |StorageAccountName| Mevcut ADLS 2. depolama hesabınızın adı.|
     |StorageAccountResourceGroup| Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı. |
     |FileShareName| Mevcut depolama dosya sisteminizin adı.|
     |SynapseResourceGroup| Azure SYNAPSE kaynak grubunuz için yeni bir ad seçin. |
-    |Bölge| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
+    |Region| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
     |SynapseWorkspaceName| Yeni Azure SYNAPSE çalışma alanınız için benzersiz bir ad seçin. |
     |SqlUser| Yeni Kullanıcı adı için bir değer seçin.|
     |SQLPassword de belirtilmelidir| Güvenli bir parola seçin.|

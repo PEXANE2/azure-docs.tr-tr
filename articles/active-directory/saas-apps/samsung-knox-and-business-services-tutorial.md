@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: e1cf12d676de84bc18a123fbdf05b1170725eda8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072901"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Öğretici: Samsung KNOX ve Business Services ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,7 +31,7 @@ Bu öğreticide, Samsung KNOX ve Iş hizmetlerini Azure Active Directory (Azure 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Samsung KNOX ve Business Services çoklu oturum açma (SSO) etkin aboneliği.
+* Bir Samsung KNOX hesabı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -55,7 +55,7 @@ Samsung KNOX ve Business Services 'in Azure AD ile tümleştirilmesini yapıland
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsung-knox-and-business-services"></a>Samsung KNOX ve Iş Hizmetleri için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon** adlı bir test kullanıcısı kullanarak Samsung KNOX ve Business Services Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Samsung KNOX ve Iş hizmetlerindeki bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Samsung KNOX ve Business Services Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, [SamsungKnox.com](https://samsungknox.com/)Içinde BIR Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Samsung KNOX ve Business Services ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -78,7 +78,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://www.samsungknox.com`
+    * **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://www.samsungknox.com`
+    * **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** metin kutusuna URL 'yi yazın:`https://central.samsungknox.com/ams/ad/saml/acs`
+    
+    ![Temel SAML yapılandırma değerleri](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -110,7 +113,7 @@ Bu bölümde, Samsung KNOX ve Business Services erişimi vererek Azure çoklu ot
 
 ## <a name="configure-samsung-knox-and-business-services-sso"></a>Samsung KNOX ve Business Services SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, Samsung KNOX ve Business Services şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak [SamsungKnox.com](https://samsungknox.com/) 'de oturum açın.
 
 1. Sağ üst köşedeki **avatar** öğesine tıklayın.
 
@@ -118,31 +121,28 @@ Bu bölümde, Samsung KNOX ve Business Services erişimi vererek Azure çoklu ot
 
 1. Sol kenar çubuğunda **ACTIVE DIRECTORY ayarları** ' na tıklayın ve aşağıdaki adımları gerçekleştirin.
 
-    ![ACTIVE DIRECTORY AYARLARı](./media/samsung-knox-and-business-services-tutorial/sso-settings.png)
+    ![ACTIVE DIRECTORY AYARLARı](https://docs.samsungknox.com/assets/merge/ad-sso/ad-5.png)
 
     a. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, Azure Portal girdiğiniz **tanımlayıcı** değeri yapıştırın.
 
     b. **Uygulama Federasyon meta veri URL 'si** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
-    c. **ad SSO 'Ya Bağlan**' a tıklayın.
+    c. **Ad SSO 'Ya Bağlan**' a tıklayın.
 
 ### <a name="create-samsung-knox-and-business-services-test-user"></a>Samsung KNOX ve Business Services test kullanıcısı oluşturma
 
-Bu bölümde, Samsung KNOX ve Iş hizmetlerinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Samsung KNOX ve Business Services platformunda kullanıcıları eklemek için [Samsung KNOX ve Business Services Destek ekibi](mailto:noreplyk.sec@samsung.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Samsung KNOX ve Iş hizmetlerinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Samsung KNOX kuruluşunuza bir alt yönetici veya test kullanıcısı davet etme yönergeleri için [Knox configure](https://docs.samsungknox.com/admin/knox-configure/Administrators.htm) veya [Knox Mobile kayıt](https://docs.samsungknox.com/admin/knox-mobile-enrollment/kme-add-an-admin.htm) Yöneticisi kılavuzlarını inceleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Samsung KNOX ve Iş Hizmetleri oturum açma URL 'sine yeniden yönlendirilir. 
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz [SamsungKnox.com](https://samsungknox.com/)'a yönlendirilir. 
 
-* Samsung KNOX ve Iş Hizmetleri oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
+* Doğrudan [SamsungKnox.com](https://samsungknox.com/) adresine gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarımın Samsung KNOX ve Business Services kutucuğuna tıkladığınızda, bu, Samsung KNOX ve Iş Hizmetleri oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım bölümünde Samsung KNOX ve Iş Hizmetleri kutucuğuna tıkladığınızda, bu [SamsungKnox.com](https://samsungknox.com/)'e yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Samsung KNOX ve Business Services 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Samsung KNOX ve Business Services 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

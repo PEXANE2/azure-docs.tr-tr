@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 517b07eecdbc63754f46fcf1051bf5b987dbc20e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654611"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668444"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Kapsamlı kaynak kümesi yapılandırma kuralları oluşturma
 
@@ -43,7 +43,7 @@ Yeni bir kapsamlı kaynak kümesi yapılandırması oluşturmak için aşağıda
 
 Kapsamlı kaynak kümesi kuralları oluştururken, hangi varlık kurallarının uygulanacağını belirtmek için aşağıdaki sözdizimini kullanın.
 
-### <a name="static-replacers-single-brackets"></a>Static replacers (tek ayraçlar)
+### <a name="dynamic-replacers-single-brackets"></a>Dinamik replacers (tek köşeli ayraç)
 
 Tek ayraçlar, kapsamlı bir kaynak kümesi kuralında **dinamik replacers** olarak kullanılır. Biçim kullanarak tam adda dinamik bir değiştirici belirtin `{<replacerName:<replacerType>}` . Eşleşirse, dinamik replacers, varlıkların kaynak kümesi olarak temsil etmesi gerektiğini belirten bir gruplandırma koşulu olarak kullanılır. Varlıklar bir kaynak kümesi halinde gruplandırılmışsa, kaynak kümesi nitelikli yolu, yeniden `{replacerName}` cer 'nin belirtildiği yeri içerecektir.
 
@@ -92,7 +92,7 @@ Kapsamı belirlenmiş kaynak kümesi kurallarını uygulamak için işlemlerin s
 
 Tam ve Delta yüklere SAP veri ayıklama
 
-*Girişler*
+#### <a name="inputs"></a>Girişler
 
 Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
@@ -102,7 +102,7 @@ Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
 
-*Kapsamlı kaynak kümesi kuralı*
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
 
 **Kapsam:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -112,7 +112,7 @@ Dosyalarý
 
 **Kaynak kümesi:** doğru
 
-*Çıktı*
+#### <a name="output"></a>Çıktı 
 
 Bir kaynak kümesi varlığı
 
@@ -124,7 +124,7 @@ Bir kaynak kümesi varlığı
 
 Avro biçiminde IoT verileri
 
-*Girişler*
+#### <a name="inputs"></a>Girişler 
 
 Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -132,7 +132,7 @@ Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Kapsamlı kaynak kümesi kuralları*
+#### <a name="scoped-resource-set-rules"></a>Kapsamlı kaynak kümesi kuralları 
 
 **Kapsam:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -150,9 +150,9 @@ Kural 2
 
 **Tam ad:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-**Kaynak kümesi: doğru**
+#### <a name="resource-set-true"></a>*Kaynak kümesi: doğru* 
 
-*Çıkışlar*
+#### <a name="outputs"></a>Çıkışlar 
 
 2 kaynak kümesi 
 
@@ -172,7 +172,7 @@ Kaynak kümesi 2
 
 Avro biçiminde IoT verileri
 
-*Girişler*
+#### <a name="inputs"></a>Girişler 
 
 Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -180,7 +180,7 @@ Dosyalarý
 -   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Kapsamlı kaynak kümesi kuralı*
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
 
 **Kapsam:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -190,7 +190,7 @@ Dosyalarý
 
 **Kaynak kümesi:** doğru
 
-*Çıkışlar*
+#### <a name="outputs"></a>Çıkışlar 
 
 Kaynak kümesi 1
 
@@ -208,7 +208,7 @@ Kaynak kümesi 2
 
 Kaynak kümelerine gruplandırma
 
-*Girişler*
+#### <a name="inputs"></a>Girişler 
 
 Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -216,7 +216,7 @@ Dosyalarý
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Kapsamlı kaynak kümesi kuralı*
+#### <a name="scoped-resource-set-rule"></a>Kapsamlı kaynak kümesi kuralı 
 
 **Kapsam:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -226,7 +226,7 @@ Dosyalarý
 
 **Kaynak kümesi:** false
 
-*Çıkışlar*
+#### <a name="outputs"></a>Çıkışlar 
 
 4 bireysel varlık
 

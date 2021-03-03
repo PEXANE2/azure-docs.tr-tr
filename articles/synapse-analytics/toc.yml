@@ -419,7 +419,7 @@
           items:
             - name: Geri yükleme noktası oluşturma
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: Synapse SQL havuzunu geri yükleme
+            - name: Adanmış bir SQL havuzunu geri yükleme
               href: ./backuprestore/restore-sql-pool.md
         - name: Yönetme ve izleme
           items:

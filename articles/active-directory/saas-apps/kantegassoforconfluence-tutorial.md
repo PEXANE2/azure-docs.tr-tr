@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ff2d7f45626055cdbc98ca944eecaa01f9bd052b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: be86e04359c29696d208994d85d36b7740b60cc3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459212"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Öğretici: Confluence için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile, Kantega SSO 'yu Confluence için tümleştirmek aşağıdaki avant
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Confluence için Azure AD tümleştirmesini Kantega SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Kantega SSO 'SU için Azure AD 'ye yönelik tümleştirmeyi yapılandırmak içi
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Confluence Için KANTEGA SSO**yazın, sonuç panelinden **KANTEGA SSO** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **Confluence Için KANTEGA SSO** yazın, sonuç panelinden **KANTEGA SSO** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde Confluence için Kantega SSO 'SU](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak, Confluence Için Kantega SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına dayalı olarak, Confluence Için Kantega SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Kantega SSO 'SU ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
@@ -132,7 +132,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak **Confluence yönetici portalınızda** oturum açın.
 
-1. Dişli üzerine gelin ve **eklentilere**tıklayın.
+1. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     !["COG" menü simgesini ve "Eklentiler" seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon1.png)
 
@@ -168,7 +168,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
     !["Kimlik sağlayıcısı ekle" ve "Azure Active Directory (Azure AD)" seçiliyken "S A M L" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon4.png)
 
-1. Abonelik düzeyini **temel**olarak seçin.
+1. Abonelik düzeyini **temel** olarak seçin.
 
     !["Temel" seçiliyken "Azure AD 'yi hazırlama" sayfasını gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon5.png)
 
@@ -184,7 +184,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
     !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon7.png)
 
-    a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
+    a. Bilgisayarımdaki **meta veri dosyasını** seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
     b. **İleri**’ye tıklayın.
 
@@ -238,7 +238,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
@@ -281,7 +281,7 @@ Azure AD kullanıcılarının, Confluence 'de oturum açmasını sağlamak için
 
 1. Yönetici olarak Confluence Şirket sitesi için Kantega SSO 'ınız üzerinde oturum açın.
 
-1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
+1. Dişli 'ye gelin ve **Kullanıcı yönetimine** tıklayın.
 
     !["COG" simgesini ve "Kullanıcı Yönetimi" ' nin seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/user1.png)
 

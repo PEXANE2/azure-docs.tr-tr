@@ -4,17 +4,20 @@ description: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338291"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656525"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Azure Cosmos DB [analitik depo](analytical-store-introduction.md) ile müşteri tarafından yönetilen anahtarların kullanılması şu anda hesabınızda ek yapılandırma gerektirir. Ayrıntılar için lütfen iletişim kurun [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) .
 
 Azure Cosmos hesabınızda depolanan veriler, Microsoft tarafından yönetilen anahtarlarla otomatik olarak ve sorunsuz bir şekilde şifrelenir (**hizmet tarafından yönetilen anahtarlar**). İsteğe bağlı olarak, yönettiğiniz anahtarlarla ikinci bir şifreleme katmanı eklemeyi tercih edebilirsiniz (**müşteri tarafından yönetilen anahtarlar**).
 
@@ -291,6 +294,10 @@ Azure Cosmos hesabınızda depolanan tüm veriler, aşağıdaki meta veriler dı
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Mevcut Azure Cosmos hesapları için müşteri tarafından yönetilen anahtarlar destekleniyor mu?
 
 Bu özellik şu anda yalnızca yeni hesaplar için kullanılabilir.
+
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB [analitik deposuyla](analytical-store-introduction.md)birlikte müşteri tarafından yönetilen anahtarların kullanılması mümkün mü?
+
+Evet, ancak şu anda hesabınızda ek yapılandırma gerekiyor. Ayrıntılar için lütfen iletişim kurun [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) .
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Hesap düzeyi anahtarlardan daha ince ayrıntı düzeyi desteklemeye yönelik bir plan var mı?
 

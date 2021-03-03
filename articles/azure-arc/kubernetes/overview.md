@@ -2,26 +2,25 @@
 title: Azure Arc etkin Kubernetes 'e genel bakış
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Bu makalede, Azure Arc etkin Kubernetes 'e genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 3d96c8c8764db89501da6fb9c498f0a3d20461af
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652539"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652277"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc özellikli Kubernetes nedir?
 
-Azure Arc etkin Kubernetes sayesinde, Azure 'un içinde veya dışında bulunan Kubernetes kümelerini iliştirebilir ve yapılandırabilirsiniz. Bir Kubernetes kümesini Azure yaya bağladığınızda, şu şekilde olur:
+Azure Arc etkin Kubernetes sayesinde, Azure içinde veya dışında bulunan Kubernetes kümelerini iliştirebilir ve yapılandırabilirsiniz. Bir Kubernetes kümesini Azure yaya bağladığınızda, şu şekilde olur:
 * Azure Resource Manager KIMLIĞI ve yönetilen kimlik ile Azure portal görüntülenir. 
-* Standart Azure aboneliklerine eklenmelidir.
-* Bir kaynak grubuna yerleştirilmelidir.
+* , Bir Azure aboneliğine ve kaynak grubuna yerleştirilir.
 * Diğer tüm Azure kaynakları gibi etiketleri alın. 
 
 Bir Kubernetes kümesini Azure 'a bağlamak için, küme yöneticisinin aracıları dağıtması gerekir. Bu aracılar:
@@ -30,25 +29,11 @@ Bir Kubernetes kümesini Azure 'a bağlamak için, küme yöneticisinin aracıla
 * Azure Arc günlüklerini ve ölçümlerini toplayın.
 * Yapılandırma isteklerini izleyin. 
 
-Azure Arc etkin Kubernetes, transit verileri güvenli hale getirmek için sektör standardı SSL 'yi destekler. Veri gizliliği sağlamak için bu veriler şifreli ve geri kalan bir Azure Cosmos DB veritabanında depolanır.
- 
+Azure Arc etkin Kubernetes, transit verileri güvenli hale getirmek için sektör standardı SSL 'yi destekler. Ayrıca veriler, verilerin gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
+
 ## <a name="supported-kubernetes-distributions"></a>Desteklenen Kubernetes dağıtımları
 
-Azure Arc etkin Kubernetes, tüm bulut Yerel Bilgi Işlem altyapısı (CNCF) sertifikalı Kubernetes kümesi ile birlikte çalışarak:
-* Azure 'da AKS-Engine
-* Azure Stack hub 'da AKS-Engine
-* GKE
-* EKS
-* VMware vSphere
-
-Azure Arc etkin Kubernetes özellikleri, aşağıdaki dağıtımların yay ekibi tarafından test edilmiştir:
-* RedHat OpenShift 4,3
-* Ranhi RKE 1.0.8
-* Kurallı Charmed Kubernetes 1,18
-* AKS Engine
-* Azure Stack hub 'da AKS altyapısı
-* Azure Stack HIN üzerinde AKS
-* Küme API sağlayıcısı Azure
+Azure Arc etkin Kubernetes, tüm bulut Yerel Bilgi Işlem altyapısı (CNCF) sertifikalı Kubernetes kümeleriyle birlikte çalışmaktadır. Azure Arc ekibi, Azure Arc etkinleştirilmiş Kubernetes ile Kubernetes dağıtımlarının uyumlu olduğunu [doğrulamak için temel sektör ortaklarıyla](./validation-program.md) çalıştık.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar 
 
@@ -68,9 +53,17 @@ Azure Arc etkin Kubernetes aşağıdaki senaryoları destekler:
 
 Şu bölgelerde Azure Arc etkin Kubernetes Şu anda destekleniyor: 
 
-* Doğu ABD 
+* Doğu ABD
 * West Europe
+* Orta Batı ABD
+* Orta Güney ABD
+* Güneydoğu Asya
+* Güney Birleşik Krallık
+* Batı ABD 2
+* Doğu Avustralya
+* Doğu ABD 2
+* Kuzey Avrupa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir kümeyi bağlama](./connect-cluster.md)
+* [Bir kümeyi Azure yaya bağlama](./quickstart-connect-cluster.md)

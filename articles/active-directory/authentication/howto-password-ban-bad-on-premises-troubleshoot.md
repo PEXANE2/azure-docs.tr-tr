@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741754"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648735"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Sorun giderme: şirket içi Azure AD parola koruması
 
@@ -259,6 +259,146 @@ Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
    SYSVOL paylaşımının varsayılan olmayan bir konumda yapılandırılmış olması durumunda bu yol farklıdır.
+
+## <a name="health-testing-with-powershell-cmdlets"></a>PowerShell cmdlet 'leri ile durum testi
+
+AzureADPasswordProtection PowerShell modülü, yazılımın yüklü ve çalışır olduğu temel doğrulamayı gerçekleştiren, sistem durumu ile ilgili iki cmdlet içerir. Bu cmdlet 'leri yeni bir dağıtım kurulduktan sonra, düzenli aralıklarla ve bir sorun araştırıldıktan sonra çalıştırmak iyi bir fikirdir.
+
+Her bir tek sistem durumu testi, temel bir başarılı veya başarısız sonucu döndürür ve hata durumunda isteğe bağlı bir ileti döndürür. Hatanın nedeninin açık olmaması durumunda, hatayı açıklayan hata olay günlüğü iletileri olup olmadığına bakın. Metin günlüğü iletilerinin etkinleştirilmesi da yararlı olabilir. Daha fazla ayrıntı için lütfen bkz. [Azure AD parola korumasını izleme](howto-password-ban-bad-on-premises-monitor.md).
+
+## <a name="proxy-health-testing"></a>Proxy sistem durumu testi
+
+Test-AzureADPasswordProtectionProxyHealth cmdlet 'i tek tek çalıştırılabilen iki sistem durumu testini destekler. Üçüncü bir mod, herhangi bir parametre girişi gerektirmeyen tüm testlerin çalışmasına izin verir.
+
+### <a name="proxy-registration-verification"></a>Proxy kayıt doğrulaması
+
+Bu test, proxy aracısının Azure 'a doğru şekilde kaydedildiğini ve Azure 'da kimlik doğrulaması yapabildiğini doğrular. Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+Bir hata algılanırsa, test başarısız bir sonuç ve isteğe bağlı bir hata mesajı döndürür. Olası bir hata örneğidir:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>Uçtan uca Azure bağlantısının proxy doğrulaması
+
+Bu test,-VerifyProxyRegistration testinin bir üst kümesidir. Proxy aracısının Azure 'a doğru şekilde kaydedilmesini, Azure 'da kimlik doğrulaması yapabilmesini ve son olarak Azure 'a bir iletinin başarıyla gönderilebileceği bir denetim eklerse, tam uçtan uca iletişimin çalıştığını doğrulayabilirsiniz.
+
+Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>Tüm testlerin proxy doğrulaması
+
+Bu mod, parametre girişi gerektirmeyen cmdlet tarafından desteklenen tüm testlerin toplu çalışmasına izin verir. Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>DC Aracısı sistem durumu testi
+
+Test-AzureADPasswordProtectionDCAgentHealth cmdlet 'i, tek tek çalıştırılabilen çeşitli sistem durumu testlerini destekler. Üçüncü bir mod, herhangi bir parametre girişi gerektirmeyen tüm testlerin çalışmasına izin verir.
+
+### <a name="basic-dc-agent-health-tests"></a>Temel DC Aracısı sistem durumu testleri
+
+Aşağıdaki testlerin hepsi tek tek çalıştırılabilir ve kabul edilmez. Kısa bir açıklama
+
+|DC Aracısı sistem durumu sınaması|Açıklama|
+| --- | :---: |
+|-VerifyPasswordFilterDll|Parola filtresi dll 'sinin Şu anda yüklü olduğunu ve DC Aracısı hizmetini çağırabildiğini doğrular|
+|-VerifyForestRegistration|Ormanın Şu anda kayıtlı olduğunu doğrular|
+|-Doğrulamaları Yencryptionşifre çözme|Temel şifrelemenin ve şifre şifresinin Microsoft KDS hizmeti kullanılarak çalıştığını doğrular|
+|-VerifyDomainIsUsingDFSR|Geçerli etki alanının SYSVOL çoğaltması için DFSR kullandığını doğrular|
+|-Doğrulama Yazureconnectivity|Azure ile uçtan uca iletişimi doğrular tüm kullanılabilir proxy kullanarak çalışır|
+
+-VerifyPasswordFilterDll test geçirmenin bir örneği aşağıda verilmiştir; diğer testler başarı durumunda şuna benzer görünecektir:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>Tüm testlerin DC Aracısı doğrulaması
+
+Bu mod, parametre girişi gerektirmeyen cmdlet tarafından desteklenen tüm testlerin toplu çalışmasına izin verir. Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>Belirli proxy sunucularını kullanarak bağlantı testi
+
+Birçok sorun giderme durumu, DC aracıları ve proxy 'ler arasındaki ağ bağlantısını araştırmakta içerir. Özellikle bu tür sorunlara odaklanmak için kullanabileceğiniz iki sistem durumu testi vardır. Bu sınamalar belirli bir proxy sunucusunun belirtilmesini gerektirir.
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>DC Aracısı ve belirli bir ara sunucu arasındaki bağlantıyı doğrulama
+
+Bu test, DC aracısındaki ilk iletişim üzerinden proxy 'ye bağlantıyı doğrular. Proxy 'nin çağrıyı aldığını doğrular, ancak Azure ile hiçbir iletişim dahil değildir. Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+Hedef sunucuda çalışan Proxy hizmetinin durdurulduğu bir hata koşulu aşağıda verilmiştir:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>DC Aracısı ve Azure arasındaki bağlantıyı doğrulama (belirli bir proxy kullanarak)
+
+Bu test, belirli bir proxy kullanarak bir DC Aracısı ve Azure arasındaki uçtan uca tam bağlantıyı doğrular. Başarılı bir çalıştırma şöyle görünür:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

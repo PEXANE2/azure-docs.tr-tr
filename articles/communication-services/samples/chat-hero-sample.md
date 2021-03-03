@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760793"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657035"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan �
 
 ## <a name="overview"></a>Genel Bakış
 
-Örnekte hem istemci tarafı uygulaması hem de sunucu tarafı uygulaması vardır. **İstemci tarafı uygulama** , Microsoft 'un akıcı Kullanıcı arabirimi çerçevesini kullanan bir yanıt veren/Redux Web uygulamasıdır. Bu uygulama, istemci tarafı uygulamanın Azure 'a bağlanmasına yardımcı olan bir ASP.NET Core **sunucu tarafı uygulamasına** istek gönderir. 
+Örnekte hem istemci tarafı uygulaması hem de sunucu tarafı uygulaması vardır. **İstemci tarafı uygulama** , Microsoft 'un akıcı Kullanıcı arabirimi çerçevesini kullanan bir yanıt veren/Redux Web uygulamasıdır. Bu uygulama, istemci tarafı uygulamanın Azure 'a bağlanmasına yardımcı olan bir ASP.NET Core **sunucu tarafı uygulamasına** istek gönderir.
 
 Örnek şöyle görünür:
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.":::
 
-"Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir. 
+"Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir.
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="Uygulamanın sohbet öncesi ekranını gösteren ekran görüntüsü.":::
 
@@ -54,11 +52,11 @@ Ana sohbet ekranının bileşenleri:
 
 - **Ana sohbet alanı**: Bu, kullanıcıların ileti gönderebildiği ve aldığı temel sohbet deneyimidir. İleti göndermek için, giriş alanını kullanabilir ve ENTER tuşuna basabilir (ya da Gönder düğmesini kullanabilirsiniz). Alınan sohbet iletileri, doğru ad ve Emoji ile gönderici tarafından kategorilere ayrılmıştır. Sohbet alanında iki tür bildirim görürsünüz: 1) bir Kullanıcı yazarken ve 2) iletiler için gönderme ve okuma bildirimleri yazma.
 - **Üst bilgi**: Bu, kullanıcının sohbet iş parçacığının başlığını ve katılımcı ve ayarlar yan çubuklarının konumunu değiştirmeye yönelik denetimleri ve sohbet oturumundan çıkmak için bir Bırak düğmesini göremeyeceği yerdir.
-- **Yan çubuk**: burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır. 
+- **Yan çubuk**: burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır.
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 ve üzeri)](https://nodejs.org/en/download/)
@@ -104,7 +102,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:

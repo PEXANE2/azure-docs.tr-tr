@@ -8,17 +8,48 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 09/10/2020
-ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375570"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661112"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
+
+__RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-16"></a>2021-02-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Python v 1.23.0 için SDK Azure Machine Learning
++ **Yeni özellikler**
+  + **azureml-core**
+    + [Deneysel özellik] SYNAPSE çalışma alanını bir bağlı hizmet olarak AML 'ye bağlama desteği ekleme
+    + [Deneysel özellik] SYNAPSE Spark havuzunu bir işlem olarak AML 'ye eklemek için destek ekleme
+    + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Daha fazla bilgi edinin](https://aka.ms/data-access).
+  + **azureml-pipeline-steps**
+    + [Deneysel özellik] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py) için destek ekleme
+  + **azureml-synapse**
+    + [Deneysel özellik] SYNAPSE Spark havuzunda etkileşimli oturum çalıştırmak için Spark Magic desteği ekleyin.
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-runtime**
+    + Bu güncelleştirmede, oto ml SDK 'sının tahmin araç kutusu 'na Holt ile üstel yumuşatma ekledik. Bir zaman serisi verildiğinde, en iyi model [AICC (düzeltilen Akaike 'ın bilgi ölçütü)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) tarafından seçilir ve döndürülür.
+    + Artık, oto yerine iki günlük dosyası oluşturacak. Log deyimleri, log bildiriminin oluşturulduğu işleme bağlı olarak bir veya diğerine gider.
+    + Çapraz doğrulamaları olan model eğitimi sırasında gereksiz örnek tahminini kaldırın. Bu durum, özellikle zaman serisi tahmin modelleri için bazı durumlarda model eğitimi süresini azaltabilir.
+  + **azureml-contrib-fairness**
+    + DashboardDictionary karşıya yüklemeler için bir JSON şeması ekleyin.
+  + **azureml-contrib-interpret**
+    + azureml-contrib-yorumlanan BENIOKU, paketin, Ekim 'den beri kullanım dışı olduktan sonra sonraki güncelleştirmede kaldırılacağını yansıtacak şekilde güncelleştirildi
+  + **azureml-core**
+    + Daha önce, en düşük düğüm sayısı en fazla düğüm sayısından az olan bir sağlama yapılandırması oluşturmak mümkün oldu. Bu artık düzeltildi. Artık SDK ile bir sağlama yapılandırması oluşturmayı denerseniz, `min_nodes < max_nodes` bir sağlar `ComputeTargetException` .
+    +  AmlCompute içindeki wait_for_completion, işlevin işlem gerçekten tamamlanmadan önce denetim akışını döndürmesine neden olan hatayı düzeltir
+    + Run. Fail () artık kullanım dışıdır, Run. Tag () kullanarak Run as Failed olarak işaretleyin veya Run. Cancel () kullanın. çalıştırmayı iptal edildi olarak işaretleyin.
+    + Belirtilen ortam adı bir dize olmadığında hata iletisinin ' ortam adı beklenen Str, {} Found ' iletisini göster.
+  + **azureml-train-automl-client**
+    + Azure Databricks kümelerinde gerçekleştirilen, oto ml denemeleri 'nin iptal edilme durumundan engellenmediğini engelleyen bir hata düzeltildi.
 
 
 ## <a name="2021-02-09"></a>2021-02-09
@@ -54,11 +85,11 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Ocak güncelleştirmesi)
 + **Yeni özellikler**
   + AzureML 'da yerel Markaşağı düzenleyici. Kullanıcılar artık, AzureML ' de markın dosyalarını yerel olarak işleyebilir ve düzenleyebilir.
-  + [Betikler Için Çalıştır düğmesi (. Kopyala,. R ve. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). Kullanıcılar artık AzureML 'da Python, R ve Bash betiğini kolayca çalıştırabilirler
-  + [Değişken Gezgini](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Bir açılır paneldeki değişkenlerin ve veri çerçevelerinin içeriğini araştırma. Kullanıcılar veri türünü, boyutunu ve içeriğini kolayca denetleyebilir.
-  + [Içerik tablosu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc). Not defterinizin, Markaşağı üst bilgileriyle belirtilen bölümlerine gidin.
+  + [Betikler Için Çalıştır düğmesi (. Kopyala,. R ve. sh)](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script). Kullanıcılar artık AzureML 'da Python, R ve Bash betiğini kolayca çalıştırabilirler
+  + [Değişken Gezgini](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook). Bir açılır paneldeki değişkenlerin ve veri çerçevelerinin içeriğini araştırma. Kullanıcılar veri türünü, boyutunu ve içeriğini kolayca denetleyebilir.
+  + [Içerik tablosu](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc). Not defterinizin, Markaşağı üst bilgileriyle belirtilen bölümlerine gidin.
   + Not defterinizi Latex/HTML/Kopyala olarak dışarı aktarın. LaTex, HTML veya. ter 'a aktararak kolay paylaşılan not defteri dosyaları oluşturun
-  + Intellicode. ML destekli sonuçlar, gelişmiş bir [Akıllı otomatik tamamlama deneyimi](https://docs.microsoft.com/visualstudio/intellicode/overview)sağlar.
+  + Intellicode. ML destekli sonuçlar, gelişmiş bir [Akıllı otomatik tamamlama deneyimi](/visualstudio/intellicode/overview)sağlar.
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Geliştirilmiş sayfa yükleme süreleri
@@ -971,7 +1002,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Description  |
+| Web tabanlı araç  |     Açıklama  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1483,7 +1514,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Description | 
+| Web tabanlı araç | Açıklama | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 629daa968d548c06d176e6349382ad51349a37a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417924"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646563"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
 
-Bu örnek öğreticide, [Microsoft Dynamics 365 sahtekarlık korumasını](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (dfp) Azure ACTIVE DIRECTORY (ad) B2C ile tümleştirme hakkında rehberlik sağlıyoruz.
+Bu örnek öğreticide, [Microsoft Dynamics 365 sahtekarlık korumasını](/dynamics365/fraud-protection/overview) (dfp) Azure ACTIVE DIRECTORY (ad) B2C ile tümleştirme hakkında rehberlik sağlıyoruz.
 
 Microsoft DFP istemcilere yeni hesap oluşturma ve istemcinin ekosisteminde oturum açma girişimleri için deneme riski olup olmadığını değerlendirme yeteneği sağlar. Yeni sahte hesaplar oluşturmaya veya var olan hesapların güvenliğinin aşılmasına yönelik şüpheli girişimleri engellemek veya zorluk yapmak için Microsoft DFP değerlendirmesi, müşteri tarafından kullanılabilir. Hesap koruması, yapay zeka uyumlu cihaz parmak izlerini, gerçek zamanlı risk değerlendirmesi, kural ve liste deneyimi için API 'Leri, istemci iş gereksinimlerine göre risk stratejisini iyileştirmek için kural ve liste deneyimini ve istemci ekosistemindeki sahtekarlık koruma verimliliğini ve eğilimlerini izlemek için bir karneyi içerir.
 
@@ -32,7 +32,7 @@ Başlamak için şunlar gerekir:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Kiracı, Azure aboneliğinize bağlı.
+- [Azure AD B2C kiracısı](./tutorial-create-tenant.md). Kiracı, Azure aboneliğinize bağlı.
 
 - Microsoft DFP [aboneliği](https://dynamics.microsoft.com/pricing/#Sales)alın. [Deneme sürümü istemci sürümünü](https://dynamics.microsoft.com/ai/fraud-protection/signin/?RU=https%3A%2F%2Fdfp.microsoft.com%2Fsignin) de ayarlayabilirsiniz.
 
@@ -56,7 +56,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntüde Microsoft dynamics365 sahtekarlık koruma mimarisi diyagramı gösterilmektedir](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaşır. Kullanıcılar yeni bir hesap oluşturmak ve sayfaya bilgi girmek için kaydol ' u seçer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -67,36 +67,36 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ## <a name="set-up-the-solution"></a>Çözümü ayarlama
 
-1. Federasyonun Azure AD B2C izin verecek şekilde yapılandırılmış [bir Facebook uygulaması oluşturun](https://docs.microsoft.com/azure/active-directory-b2c/identity-provider-facebook#create-a-facebook-application) .
-2. Oluşturduğunuz [Facebook gizli](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#create-the-facebook-key) anahtarını bir kimlik deneyimi çerçevesi ilke anahtarı olarak ekleyin.
+1. Federasyonun Azure AD B2C izin verecek şekilde yapılandırılmış [bir Facebook uygulaması oluşturun](./identity-provider-facebook.md#create-a-facebook-application) .
+2. Oluşturduğunuz [Facebook gizli](./custom-policy-get-started.md#create-the-facebook-key) anahtarını bir kimlik deneyimi çerçevesi ilke anahtarı olarak ekleyin.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Uygulamanızı Microsoft DFP altında yapılandırma
 
-[Azure AD kiracınızı](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-real-time-api) Microsoft DFP 'yi kullanacak şekilde ayarlayın.
+[Azure AD kiracınızı](/dynamics365/fraud-protection/integrate-real-time-api) Microsoft DFP 'yi kullanacak şekilde ayarlayın.
 
 ## <a name="deploy-to-the-web-application"></a>Web uygulamasına dağıtma
 
 ### <a name="implement-microsoft-dfp-service-fingerprinting"></a>Microsoft DFP hizmeti parmak izi uygulama
 
-[Microsoft DFP cihaz parmak izi](https://docs.microsoft.com/dynamics365/fraud-protection/device-fingerprinting) , Microsoft DFP hesap koruması için bir gereksinimdir.
+[Microsoft DFP cihaz parmak izi](/dynamics365/fraud-protection/device-fingerprinting) , Microsoft DFP hesap koruması için bir gereksinimdir.
 
 >[!NOTE]
 >Kullanıcı Azure AD B2C UI sayfalarına ek olarak, daha kapsamlı cihaz profili oluşturma için uygulama kodu içinde parmak izi hizmetini de uygulayabilir. Uygulama kodundaki parmak izi hizmeti bu örneğe dahil değildir.
 
 ### <a name="deploy-the-azure-ad-b2c-api-code"></a>Azure AD B2C API kodunu dağıtma
 
-[BELIRTILEN API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) bir Azure hizmetine dağıtın. Kod, [Visual Studio 'dan yayımlanabilir](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+[BELIRTILEN API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) bir Azure hizmetine dağıtın. Kod, [Visual Studio 'dan yayımlanabilir](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 Kurulum CORS, **Izin verilen kaynağı** Ekle `https://{your_tenant_name}.b2clogin.com`
 
 >[!NOTE]
 >Daha sonra, Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız olacaktır.
 
-Daha fazla bilgi için bkz. [App Service belgeleri](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api) .
+Daha fazla bilgi için bkz. [App Service belgeleri](../app-service/app-service-web-tutorial-rest-api.md) .
 
 ### <a name="add-context-dependent-configuration-settings"></a>Bağlama bağımlı yapılandırma ayarları ekleme
 
-[Azure 'Daki App Service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)'te uygulama ayarlarını yapılandırın. Bu, ayarların bir depoya denetlenmeden güvenli bir şekilde yapılandırılmasını sağlar. REST API 'SI için aşağıdaki ayarlar gereklidir:
+[Azure 'Daki App Service](../app-service/configure-common.md#configure-app-settings)'te uygulama ayarlarını yapılandırın. Bu, ayarların bir depoya denetlenmeden güvenli bir şekilde yapılandırılmasını sağlar. REST API 'SI için aşağıdaki ayarlar gereklidir:
 
 | Uygulama ayarları | Kaynak | Notlar |
 | :-------- | :------------| :-----------|
@@ -135,7 +135,7 @@ Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integration
 
 ### <a name="call-microsoft-dfp-label-api"></a>Microsoft DFP Label API 'YI çağır
 
-Müşterilerin [etiket API 'si uygulaması](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-ap-api)gerekir. Daha fazla bilgi için bkz. [Microsoft DFP API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
+Müşterilerin [etiket API 'si uygulaması](/dynamics365/fraud-protection/integrate-ap-api)gerekir. Daha fazla bilgi için bkz. [Microsoft DFP API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
 
 `URI: < API Endpoint >/v1.0/label/account/create/<userId>`
 
@@ -148,7 +148,7 @@ Kullanıcı Kimliği değerinin, karşılık gelen Azure AD B2C yapılandırma d
 
 1. Ilkeler klasöründeki [Azure AD B2C ilkesine](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) gidin.
 
-2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek için bu [belgeyi](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) izleyin
+2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek için bu [belgeyi](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) izleyin
 
 3. Azure AD B2C kiracı için ilkeyi yapılandırın.
 
@@ -174,7 +174,7 @@ Kullanıcı Kimliği değerinin, karşılık gelen Azure AD B2C yapılandırma d
 5. Kullanıcı özniteliği oluşturulduktan sonra, akış sırasında Microsoft DFP hizmeti çağrılır. Akış tamamlanmamışsa, kullanıcının dizine kaydedilip kaydedilmediğini kontrol edin.
 
 >[!NOTE]
->[MICROSOFT DFP kural altyapısını](https://docs.microsoft.com/dynamics365/fraud-protection/rules)kullanıyorsanız, kuralları doğrudan Microsoft DFP portalındaki güncelleştirme.
+>[MICROSOFT DFP kural altyapısını](/dynamics365/fraud-protection/rules)kullanıyorsanız, kuralları doğrudan Microsoft DFP portalındaki güncelleştirme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -182,6 +182,6 @@ Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
 - [Microsoft DFP örnekleri](https://github.com/Microsoft/Dynamics-365-Fraud-Protection-Samples)
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

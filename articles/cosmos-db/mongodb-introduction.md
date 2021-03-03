@@ -4,15 +4,15 @@ description: MongoDB için Azure Cosmos DB API 'sini kullanarak çok büyük mik
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861061"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658004"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'si
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "97861061"
 
 ## <a name="wire-protocol-compatibility"></a>Kablo protokol uyumluluğu
 
-Azure Cosmos DB MongoDB için kablo protokolünü uygular. Bu uygulama yerel MongoDB istemci SDK 'Ları, sürücüleri ve araçları ile şeffaf uyumluluk sağlar. Azure Cosmos DB MongoDB veritabanı altyapısını barındırmıyor. MongoDB tarafından desteklenen özelliklerin ayrıntıları şurada bulunabilir: 
-- [Mongo DB Engine sürüm 3,6 için Azure Cosmos DB API 'SI](mongodb-feature-support-36.md)
-- [Mongo DB Engine sürüm 3,2 için Azure Cosmos DB API 'SI](mongodb-feature-support.md)
+Azure Cosmos DB MongoDB için kablo protokolünü uygular. Bu uygulama yerel MongoDB istemci SDK 'Ları, sürücüleri ve araçları ile şeffaf uyumluluk sağlar. Azure Cosmos DB MongoDB veritabanı altyapısını barındırır. MongoDB tarafından desteklenen özelliklerin ayrıntıları şurada bulunabilir: 
+- [Mongo DB sürüm 4,0 için Azure Cosmos DB API 'SI](mongodb-feature-support-40.md)
+- [Mongo DB sürüm 3,6 için Azure Cosmos DB API 'SI](mongodb-feature-support-36.md)
 
 Varsayılan olarak, MongoDB için Azure Cosmos DB API 'SI kullanılarak oluşturulan yeni hesaplar MongoDB tel protokolünün 3,6 sürümü ile uyumludur. Bu protokol sürümünü anlayan tüm MongoDB istemci sürücüleri Cosmos DB yerel olarak bağlanabiliyor olmalıdır.
 

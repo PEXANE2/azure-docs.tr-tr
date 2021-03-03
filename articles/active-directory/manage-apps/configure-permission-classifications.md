@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: b2d851f0f4476cd4b24b6ba30c237f9a42252726
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 12a4ffb311e01ebb78b1ae392d1243c5d67eff6b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644573"
 ---
 # <a name="configure-permission-classifications"></a>İzin sınıflandırmalarını yapılandırma
 
@@ -126,4 +126,4 @@ Daha fazlasını öğrenin:
 * [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 Yardım almak veya sorularınıza yanıt bulmak için:
-* [Microsoft Q&A 'da Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Q&A 'da Azure AD](/answers/topics/azure-active-directory.html)

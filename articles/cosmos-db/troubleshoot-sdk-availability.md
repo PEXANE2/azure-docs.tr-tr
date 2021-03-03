@@ -3,17 +3,17 @@ title: Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirli
 description: Çoklu bölgesel ortamlarda çalışırken Azure Cosmos SDK kullanılabilirlik davranışı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650992"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661435"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,13 +47,13 @@ Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiğ
 > Bölgesel tercih olarak belirtilen değerler mevcut Azure bölgeleriyle eşleşmezse, bunlar yok sayılır. Mevcut bir bölgeyle eşleşiyorsa ancak hesap bu sunucuya çoğaltılmamışsa, istemci, veya birincil bölge ile eşleşen bir sonraki tercih edilen bölgeye bağlanır.
 
 > [!WARNING]
-> İstemci yapılandırmasında uç nokta yeniden bulmayı devre dışı bırakmak (false olarak ayarlandığında), bu belgede açıklanan tüm yük devretme ve kullanılabilirlik mantığını devre dışı bırakır.
-> Bu yapılandırmaya, her Azure Cosmos SDK 'sında aşağıdaki parametreler tarafından erişilebilir:
+> Bu belgede açıklanan yük devretme ve kullanılabilirlik mantığı, istemci yapılandırmasında devre dışı bırakılabilir ve bu, Kullanıcı uygulaması kullanılabilirlik hatalarının kendisini işleyemediği takdirde önerilmez. Bu, şu şekilde sağlanabilir:
 >
-> * .NET v2 SDK 'daki [Connectionpolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) özelliği.
-> * Java v4 SDK 'sında [Cosmosclientbuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) yöntemi.
-> * Python SDK 'daki [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
-> * JS SDK 'daki [Cosmosclientoptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) parametresi.
+> * .NET v2 SDK 'da [Connectionpolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) özelliği false olarak ayarlanıyor.
+> * .NET v3 SDK 'daki [Cosmosclientoptions. LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) özelliği true olarak ayarlanıyor.
+> * Java v4 SDK 'sında [Cosmosclientbuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) yöntemi false olarak ayarlanıyor.
+> * Python SDK 'da [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi false olarak ayarlanıyor.
+> * JS SDK 'da [Cosmosclientoptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) parametresi false olarak ayarlanıyor.
 
 Normal koşullarda, SDK istemcisi tercih edilen bölgeye (bölgesel bir tercih ayarlandıysa) veya birincil bölgeye (hiçbir tercih ayarlanmamışsa) bağlanır ve aşağıdaki senaryolardan herhangi biri gerçekleşmediği takdirde işlemler bu bölgeyle sınırlandıralınacaktır.
 

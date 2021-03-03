@@ -8,15 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.workload: identity
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 1c11a5ecc2d1a9c2e83e9ebd7cc8aa85caa72b70
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3f1f26acbba0f5830421e760d6a68a11f618fa85
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562120"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648999"
 ---
 # <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Öğretici: Node.js & Express web uygulamasında oturum açma kullanıcıları
 
@@ -65,9 +64,9 @@ Uygulamanızı barındırmak için bir klasör oluşturun, örneğin, *ifade* ed
 ```JavaScript
     const express = require("express");
     const msal = require('@azure/msal-node');
-    
+
     const SERVER_PORT = process.env.PORT || 3000;
-    
+
     // Create Express App and Routes
     const app = express();
 
@@ -95,7 +94,7 @@ Bir terminalde proje dizininizin kökünü bulun ve NPM aracılığıyla MSAL no
 Daha önce oluşturduğunuz *index.js* dosyasında aşağıdaki kodu ekleyin:
 
 ```JavaScript
-    // Before running the sample, you will need to replace the values in the config, 
+    // Before running the sample, you will need to replace the values in the config,
     // including the clientSecret
     const config = {
         auth: {
@@ -138,26 +137,26 @@ Daha önce oluşturduğunuz *index.js* dosyasında aşağıdaki kodu ekleyin:
 ```JavaScript
     // Create msal application object
     const cca = new msal.ConfidentialClientApplication(config);
-    
+
     app.get('/', (req, res) => {
         const authCodeUrlParameters = {
             scopes: ["user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         // get url to sign user in and consent to scopes needed for application
         cca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
             res.redirect(response);
         }).catch((error) => console.log(JSON.stringify(error)));
     });
-    
+
     app.get('/redirect', (req, res) => {
         const tokenRequest = {
             code: req.query.code,
             scopes: ["user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         cca.acquireTokenByCode(tokenRequest).then((response) => {
             console.log("\nResponse: \n:", response);
             res.sendStatus(200);
@@ -188,7 +187,7 @@ Uygulamanın oluşturulmasını tamamladınız ve artık uygulamanın işlevleri
 
 ## <a name="how-the-application-works"></a>Uygulamanın nasıl çalıştığı
 
-Bu öğreticide, Azure portal Azure AD uygulama kaydınızdan elde edilen parametreleri içeren bir yapılandırma nesnesi (*Msalconfig*) GEÇIREREK bir msal node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) nesnesi başlattığını caksınız. Oluşturduğunuz Web uygulaması, oturum açma kullanıcıları için [OAuth 2,0 yetkilendirme kodu verme akışını](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) KULLANıR ve kimlik ve erişim belirteçleri elde eder.
+Bu öğreticide, Azure portal Azure AD uygulama kaydınızdan elde edilen parametreleri içeren bir yapılandırma nesnesi (*Msalconfig*) GEÇIREREK bir msal node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) nesnesi başlattığını caksınız. Oluşturduğunuz Web uygulaması, oturum açma kullanıcıları için [OAuth 2,0 yetkilendirme kodu verme akışını](./v2-oauth2-auth-code-flow.md) KULLANıR ve kimlik ve erişim belirteçleri elde eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

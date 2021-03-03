@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305109"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676590"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak gerçekleştirilmiş görünümlerle performans ayarlama
 
@@ -29,15 +29,15 @@ Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte de
 
 Gerçekleştirilmiş bir görünüm, verileri tıpkı bir tablo gibi ayrılmış SQL havuzunda önceden hesaplar, depolar ve saklar.  Gerçekleştirilmiş bir görünümün kullanıldığı her seferinde yeniden hesaplama gerekli değildir.  Gerçekleştirilmiş görünümlerde verilerin tümünü veya bir alt kümesini kullanan sorguların bazıları daha hızlı performans elde edebilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
 
-Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
-| Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
+| Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Tanımı görüntüleme                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Evet
+|Ek depolama                   | Hayır                                           | Yes
 |Syntax                          | CREATE VIEW                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-materialized-views"></a>Gerçekleştirilmiş görünümlerin avantajları
@@ -55,8 +55,8 @@ Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki av
 Diğer veri ambarı sağlayıcılarına kıyasla, adanmış SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
 - Taban tablolardaki veri değişiklikleriyle otomatik ve zaman uyumlu veri yenileme. Kullanıcı eylemi gerekli değildir.
-- Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
-- Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+- Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Genel senaryolar  
 
@@ -119,7 +119,7 @@ Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri:
 
 - Az kullanım veya artık gerekli olmayan gerçekleştirilmiş görünümleri bırakın.  Devre dışı gerçekleştirilmiş bir görünüm korunmaz, ancak depolama maliyeti hala buna neden olur.  
 
-- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
+- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örnek:
 
 ```sql
 -- Query 1 would benefit from having a materialized view created with this SELECT statement
@@ -147,7 +147,7 @@ Veri ambarı iyileştirici, sorgu performansını artırmak için dağıtılmı�
 
 Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş bir görünümden veri okuma, dizin taramayı ve Delta deposundan değişiklik uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  
 
-Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
+Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest&preserve-view=true) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
 
 **Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830728"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645476"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory Apps yapılandırması 'nı planla
 
@@ -143,7 +143,7 @@ Bu uygulamaları tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıc�
 
 * [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](../user-help/my-apps-portal-end-user-access.md)
 
-* [Internet Explorer için Configuration Manager](https://docs.microsoft.com/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Internet Explorer için Configuration Manager](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 Uzantı, kullanıcıların arama çubuğundan herhangi bir uygulamayı başlatabilir, son kullanılan uygulamalara erişimi bulmasını ve uygulamalarım sayfasına yönelik bir bağlantıya sahip olmasını sağlar.
 
@@ -271,4 +271,3 @@ Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim inceleme
 
 [Uygulama Ara Sunucusu dağıtımını planlama](application-proxy-deployment-plan.md)
 
- 

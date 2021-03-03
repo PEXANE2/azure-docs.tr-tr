@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Çok modelli özellikler
           href: multi-model-features.md
+        - name: Zamanlanan bakım
+          items:
+            - name: Bakım penceresi
+              href: database/maintenance-window.md
+            - name: Bakım penceresini Yapılandır
+              href: database/maintenance-window-configure.md
+            - name: Bakım penceresi hakkında SSS
+              href: database/maintenance-window-faq.yml
+            - name: Bildirimleri ilerlet
+              href: database/advance-notifications.md
         - name: Bellek içi OLTP
           href: in-memory-oltp-overview.md
         - name: Zamana bağlı tablolar
@@ -664,7 +674,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -995,7 +1005,7 @@
           href: managed-instance/log-replay-service-migrate.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

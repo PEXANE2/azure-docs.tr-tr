@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2b35abf7f318d4db6166dd48c4f7bd35aaf4d98a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733249"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644417"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio veri denetleyicisi oluşturma
 
@@ -22,7 +22,7 @@ Dağıtım Sihirbazı ve Not defterleri aracılığıyla Azure Data Studio kulla
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Kubernetes kümesine erişmeniz ve kubeconfig dosyanızı, dağıtmak istediğiniz Kubernetes kümesine işaret etmek üzere yapılandırmış olmanız gerekir.
 - **Azure Arc** ve adlı Azure Data Studio uzantıları **Azure Data Studio** dahil [istemci araçlarını yüklemeniz](install-client-tools.md) gerekir **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
@@ -49,7 +49,7 @@ Dağıtım sihirbazını kullanarak bir Azure Arc veri denetleyicisi oluşturmak
    
    Burada seçilen Azure konumu, veri denetleyicisi ve yönettiği veritabanı örnekleri hakkındaki *meta verilerin* depolanacağı Azure konumudur. Veri denetleyicisi ve veritabanı örnekleri, Kubernetes kümenizde olduğu her yerde fiili olarak sunulacaktır.
 
-10. Uygun bağlantı modunu seçin. [Bağlantı modları](https://docs.microsoft.com/azure/azure-arc/data/connectivity)hakkında daha fazla bilgi edinin. **Ileri ' ye tıklayın**.
+10. Uygun bağlantı modunu seçin. [Bağlantı modları](./connectivity.md)hakkında daha fazla bilgi edinin. **Ileri ' ye tıklayın**.
 
     Doğrudan bağlantı modu ' nu seçerseniz hizmet [sorumlusu oluşturma](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)bölümünde açıklandığı gibi hizmet sorumlusu kimlik bilgileri gereklidir.
 

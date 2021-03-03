@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularını bölgeler arasında geçirme
 description: Azure Arc etkin sunucusunu bir bölgeden diğerine geçirmeyi öğrenin.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418206"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650184"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Azure Arc etkin sunucularını bölgeler arasında geçirme
 
@@ -36,4 +36,4 @@ Azure Arc etkin sunucusunu bir Azure bölgesinden diğerine geçirmek için VM u
 
 * Sorun giderme bilgileri, [bağlı makine Aracısı sorunlarını giderme kılavuzunda](troubleshoot-agent-onboard.md)bulunabilir.
 
-* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'Ler ile Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md) ile izlemeyi etkinleştirme ve çok daha fazlası için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+* VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'Ler ile Azure izleyici](../../azure-monitor/vm/vminsights-enable-policy.md) ile izlemeyi etkinleştirme ve çok daha fazlası için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.

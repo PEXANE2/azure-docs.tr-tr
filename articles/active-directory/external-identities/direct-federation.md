@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257194"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649431"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 
@@ -26,9 +26,7 @@ ms.locfileid: "99257194"
 
 Bu makalede, B2B işbirliği için başka bir kuruluşla doğrudan Federasyonun nasıl ayarlanacağı açıklanır. Kimlik sağlayıcısı (IDP) SAML 2,0 veya WS-Fed protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyon oluşturabilirsiniz.
 Bir iş ortağının IDP 'si ile doğrudan Federasyon ayarladığınızda, bu etki alanındaki yeni Konuk kullanıcılar, Azure AD kiracınızda oturum açmak ve sizinle işbirliği yapmaya başlamak için kendi IDP tarafından yönetilen kurumsal hesaplarını kullanabilir. Konuk kullanıcının ayrı bir Azure AD hesabı oluşturmalarına gerek yoktur.
-> [!NOTE]
-> Doğrudan Federasyon Konuk kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://myapps.microsoft.com` veya kullanarak `https://portal.azure.com` `https://teams.microsoft.com` bir hatayla sonuçlanır.
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Bir Konuk kullanıcının kimliği doğrudan Federasyonla mı?
 Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. İşte bazı örnekler:
  - Konuk kullanıcılar sizinle davetleri zaten kullanıyor ve daha sonra kuruluşlarıyla doğrudan Federasyon ayarladıysanız, bu Konuk kullanıcılar doğrudan Federasyonu ayarlamadan önce kullandıkları kimlik doğrulama yöntemini kullanmaya devam eder.
@@ -42,10 +40,28 @@ Doğrudan Federasyon, contoso.com ve fabrikam.com gibi etki alanı ad alanların
 ## <a name="end-user-experience"></a>Son kullanıcı deneyimi 
 Doğrudan Federasyon sayesinde, Konuk kullanıcılar kendi kurumsal hesaplarını kullanarak Azure AD kiracınızda oturum açabilirler. Paylaşılan kaynaklara erişirken ve oturum açma isteminde bulunulduklarında, doğrudan Federasyon kullanıcıları IDP 'ye yeniden yönlendirilir. Başarılı oturum açma işleminden sonra, kaynaklara erişmek için Azure AD 'ye döndürülür. Doğrudan federasyon kullanıcılarının yenileme belirteçleri, Azure AD 'de [geçiş yenileme belirteci için varsayılan uzunluk](../develop/active-directory-configurable-token-lifetimes.md#exceptions) olan 12 saat için geçerlidir. Federal IDP SSO etkin ise, Kullanıcı SSO ile karşılaşacaktır ve ilk kimlik doğrulamasından sonra herhangi bir oturum açma istemi görmeyecektir.
 
+## <a name="sign-in-endpoints"></a>Oturum açma uç noktaları
+
+Doğrudan Federasyon Konuk kullanıcıları artık [ortak bir uç nokta](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (diğer bir deyişle, kiracı bağlamından dahil olmayan genel bir uygulama URL 'si) kullanarak çok kiracılı veya Microsoft ilk taraf uygulamalarınızda oturum açabilir. Aşağıda, yaygın uç noktaların örnekleri verilmiştir:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Oturum açma işlemi sırasında, Konuk Kullanıcı **oturum açma seçeneklerini** seçer ve ardından **bir kuruluşta oturum açmayı** seçer. Ardından Kullanıcı kuruluşunuzun adını yazıp kendi kimlik bilgilerini kullanarak oturum açmaya devam eder.
+
+Doğrudan Federasyon Konuk kullanıcıları, kiracı bilgilerinizi içeren uygulama uç noktalarını da kullanabilir, örneğin:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Ayrıca, kiracı bilgilerinizi ekleyerek doğrudan Federasyon Konuk kullanıcılarına bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
+
 ## <a name="limitations"></a>Sınırlamalar
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 'de DNS tarafından doğrulanan etki alanları
-Federasyona eklemek istediğiniz etki alanı, Azure AD 'de ***değil** _ ile DNS doğrulanmalıdır. DNS doğrulanmadığı için, yönetilmeyen (e-posta doğrulandı veya "viral") Azure AD kiracılarıyla doğrudan Federasyon ayarlama iznine sahip olursunuz.
+Federasyona eklemek istediğiniz etki alanının Azure AD 'de DNS doğrulanmamış ***olması gerekir.*** DNS doğrulanmadığı için, yönetilmeyen (e-posta doğrulandı veya "viral") Azure AD kiracılarıyla doğrudan Federasyon ayarlama iznine sahip olursunuz.
 
 ### <a name="authentication-url"></a>Kimlik doğrulama URL 'SI
 Doğrudan federasyona yalnızca kimlik doğrulama URL 'sinin hedef etki alanı ile eşleştiği veya kimlik doğrulama URL 'sinin izin verilen kimlik sağlayıcılarından biri olduğu ilkeler için izin verilir (Bu liste değişebilir):
@@ -60,7 +76,7 @@ Doğrudan federasyona yalnızca kimlik doğrulama URL 'sinin hedef etki alanı i
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Örneğin, _ * fabrikam. com * * için doğrudan Federasyonu ayarlarken kimlik doğrulama URL 'SI `https://fabrikam.com/adfs` doğrulamayı geçilecektir. Örneğin, aynı etki alanındaki bir konak da geçirilecek `https://sts.fabrikam.com/adfs` . Ancak, kimlik doğrulama URL 'SI `https://fabrikamconglomerate.com/adfs` veya `https://fabrikam.com.uk/adfs` aynı etki alanı için geçiş gerçekleştirilmez.
+Örneğin, **fabrikam.com** için doğrudan Federasyon ayarlarken, kimlik doğrulama URL 'si `https://fabrikam.com/adfs` doğrulamayı geçilecektir. Örneğin, aynı etki alanındaki bir konak da geçirilecek `https://sts.fabrikam.com/adfs` . Ancak, kimlik doğrulama URL 'SI `https://fabrikamconglomerate.com/adfs` veya `https://fabrikam.com.uk/adfs` aynı etki alanı için geçiş gerçekleştirilmez.
 
 ### <a name="signing-certificate-renewal"></a>İmza sertifikası yenileme
 Kimlik sağlayıcısı ayarlarında meta veri URL 'sini belirtirseniz, Azure AD, oturum sona erdiğinde imza sertifikasını otomatik olarak yenileyecek. Ancak, sertifika, süre sonu zamanından önce herhangi bir nedenle döndürülürse veya bir meta veri URL 'SI sağlamazsanız, Azure AD onu yenileyemeyecektir. Bu durumda, imzalama sertifikasını el ile güncelleştirmeniz gerekir.
@@ -147,7 +163,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 
 1. [Azure Portal](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Dış kimlikler**  >  **tüm kimlik sağlayıcıları**' nı seçin.
-3. Öğesini seçin ve ardından **yenı SAML/WS-Besıop**' ı seçin.
+3. **Yenı SAML/WS-Besıop**' ı seçin.
 
     ![Yeni bir SAML veya WS-Fed IDP ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
 

@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9a50d8402515cb7aafa9a1b02c8b8c18412f6618
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878214"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659401"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Machine Learning Python SDK ile yerel veya uzak denemeleri ve
 
 Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız. Ayrıca, veri kümeleri, iş akışı performans hızına yardımcı olan geç değerlendirilir. Veri mağazalarından, genel URL 'Lerden ve [Azure açık veri](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)kümelerinden veri kümeleri oluşturabilirsiniz.
 
-Düşük kod deneyimi için, [Azure Machine Learning Studio ile Azure Machine Learning veri kümeleri oluşturun.](how-to-connect-data-ui.md#create-datasets)
+Düşük kod deneyimi için [Azure Machine Learning Studio ile Azure Machine Learning veri kümeleri oluşturun.](how-to-connect-data-ui.md#create-datasets)
 
 Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
@@ -82,7 +82,7 @@ Tabulardataset ile, verilerdeki bir sütundan veya bir zaman serisi nitelik sağ
 [Python SDK](#create-a-tabulardataset) veya [Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets)Ile tabulardataset oluşturun.
 
 >[!NOTE]
-> Azure Machine Learning Studio ile oluşturulan oto ml iş akışları Şu anda yalnızca Tabulardataset 'i destekliyor. 
+> Azure Machine Learning Studio ile oluşturulan [OTOMATIK ml](concept-automated-ml.md) iş akışları Şu anda yalnızca Tabulardataset 'i destekliyor. 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Bir sanal ağdaki veri kümelerine erişme
 
@@ -90,15 +90,20 @@ Tabulardataset ile, verilerdeki bir sütundan veya bir zaman serisi nitelik sağ
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturma
+## <a name="create-datasets-from-datastores"></a>Veri depolarından veri kümeleri oluşturma
 
-Azure Machine Learning tarafından erişilebilmesi için, veri kümelerinin [Azure veri depoları](how-to-access-data.md) veya genel Web URL 'lerinde yollardan oluşturulması gerekir. 
+Verilere Azure Machine Learning tarafından erişilebilmeleri için, veri kümelerinin [Azure Machine Learning veri depolarında](how-to-access-data.md) veya Web URL 'lerinde yer almalıdır. 
 
-Python SDK ile bir [Azure veri deposundan](how-to-access-data.md) veri kümeleri oluşturmak için:
+> [!TIP] 
+> Kimlik tabanlı veri erişimi olan depolama URL 'lerinden doğrudan veri kümeleri oluşturabilirsiniz. [Kimlik tabanlı veri erişimi (Önizleme) ile depolama 'Ya bağlanma](how-to-identity-based-data-access.md) hakkında daha fazla bilgi edinin<br><br>
+Bu özellik, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir. 
 
-1. `contributor` `owner` Kayıtlı Azure veri deposuna sahip olduğunuzu veya erişiminiz olduğunu doğrulayın.
+ 
+Bir veri deposundan Python SDK 'Sı ile veri kümeleri oluşturmak için:
 
-2. Veri deposundaki yollara başvurarak veri kümesini oluşturun. Birden çok veri mağazasında birden çok yoldan bir veri kümesi oluşturabilirsiniz. İçinden veri kümesi oluşturabileceğiniz dosya sayısı veya veri boyutu için sabit sınır yoktur. 
+1. `contributor` `owner` Kayıtlı Azure Machine Learning veri deposundaki temeldeki depolama hizmetine sahip olduğunuzu veya bu hizmete erişiminizin olduğunu doğrulayın. [Azure Portal depolama hesabı Izinlerinizi denetleyin](../role-based-access-control/check-access.md).
+
+1. Veri deposundaki yollara başvurarak veri kümesini oluşturun. Birden çok veri mağazasında birden çok yoldan bir veri kümesi oluşturabilirsiniz. İçinden veri kümesi oluşturabileceğiniz dosya sayısı veya veri boyutu için sabit sınır yoktur. 
 
 > [!NOTE]
 > Her veri yolu için, depolama hizmetine bir dosya veya klasöre işaret edilip edilmeyeceğini denetlemek için birkaç istek gönderilir. Bu ek yük, performansın düşmesine veya başarısız olmasına neden olabilir. İçindeki 1000 dosya içeren bir klasöre başvuran bir veri kümesi, bir veri yoluna başvurulur. En iyi performansı elde etmek için veri depolarında 100 ' den az yola başvuruda bulunan veri kümesi oluşturmanızı öneririz.
@@ -261,7 +266,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 Bu şablonları kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md).
 
 
-## <a name="create-datasets-with-azure-open-datasets"></a>Azure açık veri kümeleri ile veri kümeleri oluşturma
+## <a name="create-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde veri kümeleri oluşturma
 
 [Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini eğitmenize yardımcı olan hava durumu, Census, tatiller, genel güvenlik ve konum için genel etki alanı verilerini içerir. Açık veri kümeleri bulutta Microsoft Azure ve hem SDK hem de Studio 'ya dahildir.
 
@@ -269,7 +274,7 @@ Bu şablonları kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Le
 
 ## <a name="train-with-datasets"></a>Veri kümeleriyle eğitme
 
-ML modellerinizi eğitmek için Machine Learning denemeleri 'te veri kümelerinizi kullanın. [Veri kümeleriyle eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md)
+ML modellerinizi eğitmek için Machine Learning denemeleri 'te veri kümelerinizi kullanın. [Veri kümeleriyle eğitme hakkında daha fazla bilgi edinin](how-to-train-with-datasets.md).
 
 ## <a name="version-datasets"></a>Sürüm veri kümeleri
 

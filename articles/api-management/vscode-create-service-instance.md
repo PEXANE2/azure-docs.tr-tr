@@ -7,18 +7,18 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3105b6f34d7ece81e8145fdd9e89568e66360ddb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400412"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649521"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak yeni bir Azure API Management hizmet örneği oluşturma
 
 Azure API Management (APIM), kuruluşların kendi veri ve hizmet potansiyellerini ortaya çıkarmak üzere API’leri dış, iş ortağı ve iç geliştiricilere yayımlamalarına yardımcı olur. API Management; geliştirici katılımı, iş öngörüleri, analizler, güvenlik ve koruma aracılığıyla başarılı bir API programı yürütmeye ilişkin temel uzmanlıklar sağlar. APIM, herhangi bir yerde barındırılan mevcut arka uç hizmetleri için modern API ağ geçitleri oluşturmanıza ve yönetmenize olanak sağlar. Daha fazla bilgi için [Genel Bakış](api-management-key-concepts.md) konusuna bakın.
 
-Bu hızlı başlangıçta, Visual Studio Code için *Azure API Management uzantı önizlemesi* kullanılarak yeni bir API Management örneği oluşturma adımları açıklanmaktadır. Uzantıyı, API Management Örneğinizde ortak yönetim işlemleri gerçekleştirmek için de kullanabilirsiniz.
+Bu hızlı başlangıçta, Visual Studio Code için *Azure API Management uzantısı* kullanılarak yeni bir API Management örneği oluşturma adımları açıklanmaktadır. Uzantıyı, API Management Örneğinizde ortak yönetim işlemleri gerçekleştirmek için de kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -28,7 +28,7 @@ Ayrıca, aşağıdakileri yüklediğinizden emin olun:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Visual Studio Code için Azure API Management uzantısı (Önizleme)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- [Visual Studio Code için Azure API Management uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

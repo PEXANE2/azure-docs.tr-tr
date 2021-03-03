@@ -4,15 +4,15 @@ description: MongoDB (3,6 sürümü) tarafından desteklenen özellikler ve söz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4d053e33b8751095be13a40446914033b31feeed
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028854"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656423"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB API’si (sürüm 3.6): desteklenen özellikler ve söz dizimi
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -20,6 +20,9 @@ ms.locfileid: "98028854"
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. MongoDB için Azure Cosmos DB’nin API’si, MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) bağlı kalarak mevcut istemci sürücülerinin kullanımını etkinleştirir.
 
 MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB avantajlarından yararlanarak, Cosmos DB sağladığı tüm kurumsal yetenekler sayesinde, [genel dağıtım](distribute-data-globally.md), [Otomatik](partitioning-overview.md)parçalar, kullanılabilirlik ve gecikme garantisi, Rest, yedeklemeler ve çok daha fazlası için de kullanabilirsiniz.
+
+> [!NOTE]
+> Bu makale, Azure Cosmos DB MongoDB 3,6 için API 'sidir. MongoDB 4,0 sürümü için bkz. [mongodb 4,0 desteklenen özellikler ve sözdizimi](mongodb-feature-support-40.md).
 
 ## <a name="protocol-support"></a>Protokol desteği
 
@@ -38,77 +41,74 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 ### <a name="query-and-write-operation-commands"></a>Sorgulama ve yazma işlemi komutları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|delete | Evet |
-|find | Evet     |
-|findAndModify | Evet  |
-|getLastError|   Evet |
-|getMore  |  Evet  |
-|getPrevError | Hayır  |
-|insert  |   Evet  |
-|parallelCollectionScan  | Evet   |
-|resetError |    Hayır  |
-|update  |   Evet  |
-|[Akış değiştirme](mongodb-change-streams.md)  |  Evet  |
-|GridFS |   Evet  |
+| [akışları Değiştir](mongodb-change-streams.md) | Yes |
+| delete | Yes |
+| Eval | Hayır |
+| find | Yes |
+| findAndModify | Yes |
+| getLastError | Yes |
+| getMore | Yes |
+| getPrevError | Hayır |
+| insert | Yes |
+| parallelCollectionScan | Hayır |
+| resetError | Hayır |
+| update | Yes |
 
 ### <a name="authentication-commands"></a>Kimlik doğrulama komutları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|authenticate    |   Evet      |
-|logout    |      Evet   |
-|getnonce   |    Evet     |
-
+| authenticate | Yes |
+| getnonce | Yes |
+| logout | Yes |
 
 ### <a name="administration-commands"></a>Yönetim komutları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|Caklanan Koleksiyonlar   |   Hayır      |
-|Clonecollectionascamış     |   Hayır      |
-|collMod     |   Hayır      |
-|collMod: expireAfterSeconds   |   Hayır      |
-|Converttocamış   |  Hayır       |
-|copydb     |  Hayır       |
-|oluşturmaya   |    Evet     |
-|createIndexes     |  Evet       |
-|currentOp     |  Evet       |
-|drop     |   Evet      |
-|dropDatabase     |  Evet       |
-|dropIndexes     |   Evet      |
-|filemd5    |   Evet      |
-|killCursors    |  Evet       |
-|killOp     |   Hayır      |
-|listCollections     |  Evet       |
-|listDatabases     |  Evet       |
-|listIndexes     |  Evet       |
-|reIndex     |    Evet     |
-|renameCollection     |    Hayır     |
-|connectionStatus    |     Hayır    |
+| Clonecollectionascamış | Hayır |
+| collMod | Hayır |
+| connectionStatus | Hayır |
+| Converttocamış | Hayır |
+| copydb | Hayır |
+| oluşturmaya | Yes |
+| createIndexes | Yes |
+| currentOp | Yes |
+| drop | Yes |
+| dropDatabase | Yes |
+| dropIndexes | Yes |
+| filemd5 | Yes |
+| killCursors | Yes |
+| killOp | Hayır |
+| listCollections | Yes |
+| listDatabases | Yes |
+| listIndexes | Yes |
+| reIndex | Yes |
+| renameCollection | Hayır |
+
 
 ### <a name="diagnostics-commands"></a>Tanılama komutları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|buildInfo         |   Evet      |
-|collStats    |  Evet       |
-|connPoolStats     |  Hayır       |
-|connectionStatus     |  Hayır       |
-|dataSize     |   Hayır      |
-|dbHash    |    Hayır     |
-|dbStats     |   Evet      |
-|açıklamak     |   Evet      |
-|açıkla: executionStats     |   Evet      |
-|özellikler     |    Hayır     |
-|hostInfo     |   Hayır      |
-|listDatabases         |   Evet      |
-|listCommands     |  Hayır       |
-|profil     |  Hayır       |
-|serverStatus     |  Hayır       |
-|top     |    Hayır     |
-|whatsmyuri     |   Evet      |
+| buildInfo | Yes |
+| collStats | Yes |
+| connPoolStats | Hayır |
+| connectionStatus | Hayır |
+| dataSize | Hayır |
+| dbHash | Hayır |
+| dbStats | Yes |
+| açıklamak | Yes |
+| özellikler | Hayır |
+| hostInfo | Yes |
+| listDatabases | Yes |
+| listCommands | Hayır |
+| profil | Hayır |
+| serverStatus | Hayır |
+| top | Hayır |
+| whatsmyuri | Yes |
 
 <a name="aggregation-pipeline"></a>
 
@@ -116,429 +116,395 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 ### <a name="aggregation-commands"></a>Toplama komutları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|aggregate |   Evet  |
-|count     |   Evet  |
-|distinct  | Evet |
-|mapReduce | Hayır |
+| aggregate | Yes |
+| count | Yes |
+| distinct | Yes |
+| mapReduce | Hayır |
 
 ### <a name="aggregation-stages"></a>Toplama aşamaları
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$collStats    |Hayır|
-|$project    |Evet|
-|$match    |Evet|
-|$redact|    Evet|
-|$limit    |Evet|
-|$skip    |Evet|
-|$unwind|    Evet|
-|$group    |    Evet|
-|$sample|        Evet|
-|$sort    |Evet|
-|$geoNear|    Hayır|
-|$lookup    |    Evet|
-|$out        |Evet|
-|$indexStats|        Hayır|
-|$facet    |Evet|
-|$bucket|    Hayır|
-|$bucketAuto|    Hayır|
-|$sortByCount|    Evet|
-|$addFields    |Evet|
-|$replaceRoot|    Evet|
-|$count    |Evet|
-|$currentOp|    Hayır|
-|$listLocalSessions    |Hayır|
-|$listSessions    |Hayır|
-|$graphLookup    |Evet|
+| $addFields | Yes |
+| $bucket | Hayır |
+| $bucketAuto | Hayır |
+| $changeStream | Yes |
+| $collStats | Hayır |
+| $count | Yes |
+| $currentOp | Hayır |
+| $facet | Yes |
+| $geoNear | Yes |
+| $graphLookup | Yes |
+| $group | Yes |
+| $indexStats | Hayır |
+| $limit | Yes |
+| $listLocalSessions | Hayır |
+| $listSessions | Hayır |
+| $lookup | Yes |
+| $match | Yes |
+| $out | Yes |
+| $project | Yes |
+| $redact | Yes |
+| $replaceRoot | Yes |
+| $replaceWith | Hayır |
+| $sample | Yes |
+| $skip | Yes |
+| $sort | Yes |
+| $sortByCount | Yes |
+| $unwind | Yes |
 
 ### <a name="boolean-expressions"></a>Mantıksal ifadeler
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$and| Evet|
-|$or|Evet|
-|$not|Evet|
+| $and | Yes |
+| $not | Yes |
+| $or | Yes |
 
 ### <a name="set-expressions"></a>Küme ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $setEquals | Evet|
-|$setIntersection|Evet|
-| $setUnion|Evet|
-| $setDifference|Evet|
-| $setIsSubset|Evet|
-| $anyElementTrue|Evet|
-| $allElementsTrue|Evet|
+| $setEquals | Yes |
+| $setIntersection | Yes |
+| $setUnion | Yes |
+| $setDifference | Yes |
+| $setIsSubset | Yes |
+| $anyElementTrue | Yes |
+| $allElementsTrue | Yes |
 
 ### <a name="comparison-expressions"></a>Karşılaştırma ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$cmp     |  Evet       |
-|$eq|    Evet| 
-|$gt |    Evet| 
-|$gte|    Evet| 
-|$lt    |Evet|
-|$lte|    Evet| 
-|$ne    |    Evet| 
-|$in    |    Evet| 
-|$nin    |    Evet| 
+| $cmp | Yes |
+| $eq | Yes | 
+| $gt | Yes | 
+| $gte | Yes | 
+| $lt | Yes |
+| $lte | Yes | 
+| $ne | Yes | 
+| $in | Yes | 
+| $nin | Yes | 
 
 ### <a name="arithmetic-expressions"></a>Aritmetik ifadeler
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$abs |  Evet       |
-| $add |  Evet       |
-| $ceil |  Evet       |
-| $divide |  Evet       |
-| $exp |  Evet       |
-| $floor |  Evet       |
-| $ln |  Evet       |
-| $log |  Evet       |
-| $log10 |  Evet       |
-| $mod |  Evet       |
-| $multiply |  Evet       |
-| $pow |  Evet       |
-| $sqrt |  Evet       |
-| $subtract |  Evet       |
-| $trunc |  Evet       |
+| $abs | Yes |
+| $add | Yes |
+| $ceil | Yes |
+| $divide | Yes |
+| $exp | Yes |
+| $floor | Yes |
+| $ln | Yes |
+| $log | Yes |
+| $log10 | Yes |
+| $mod | Yes |
+| $multiply | Yes |
+| $pow | Yes |
+| $sqrt | Yes |
+| $subtract | Yes |
+| $trunc | Yes |
 
 ### <a name="string-expressions"></a>Dize ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$concat |  Evet       |
-| $indexOfBytes|  Evet       |
-| $indexOfCP|  Evet       |
-| $split|  Evet       |
-| $strLenBytes|  Evet       |
-| $strLenCP|  Evet       |
-| $strcasecmp|  Evet       |
-| $substr|  Evet       |
-| $substrBytes|  Evet       |
-| $substrCP|  Evet       |
-| $toLower|  Evet       |
-| $toUpper|  Evet       |
+| $concat | Yes |
+| $indexOfBytes | Yes |
+| $indexOfCP | Yes |
+| $split | Yes |
+| $strLenBytes | Yes |
+| $strLenCP | Yes |
+| $strcasecmp | Yes |
+| $substr | Yes |
+| $substrBytes | Yes |
+| $substrCP | Yes |
+| $toLower | Yes |
+| $toUpper | Yes |
 
 ### <a name="text-search-operator"></a>Metin arama işleci
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $meta | Hayır|
+| $meta | Hayır |
 
 ### <a name="array-expressions"></a>Dizi ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$arrayElemAt    |    Evet|
-|$arrayToObject|    Evet|
-|$concatArrays    |    Evet|
-|$filter    |    Evet|
-|$indexOfArray    |Evet|
-|$isArray    |    Evet|
-|$objectToArray    |Evet|
-|$range    |Evet|
-|$reverseArray    |    Evet|
-|$reduce|    Evet|
-|$size    |    Evet|
-|$slice    |    Evet|
-|$zip    |    Evet|
-|$in    |    Evet|
+| $arrayElemAt | Yes |
+| $arrayToObject | Yes |
+| $concatArrays | Yes |
+| $filter | Yes |
+| $indexOfArray | Yes |
+| $isArray | Yes |
+| $objectToArray | Yes |
+| $range | Yes |
+| $reverseArray | Yes |
+| $reduce | Yes |
+| $size | Yes |
+| $slice | Yes |
+| $zip | Yes |
+| $in | Yes |
 
 ### <a name="variable-operators"></a>Değişken işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$map    |Hayır|
-|$let    |Evet|
+| $map | Yes |
+| $let | Yes |
 
 ### <a name="system-variables"></a>Sistem değişkenleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$ $CURRENT|    Evet|
-|$ $DESCEND|        Evet|
-|$ $KEEP        |Evet|
-|$ $PRUNE    |    Evet|
-|$ $REMOVE    |Evet|
-|$ $ROOT        |Evet|
+| $ $CURRENT | Yes |
+| $ $DESCEND | Yes |
+| $ $KEEP | Yes |
+| $ $PRUNE | Yes |
+| $ $REMOVE | Yes |
+| $ $ROOT | Yes |
 
 ### <a name="literal-operator"></a>Sabit değer operatörü
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$literal    |Evet|
+| $literal | Yes |
 
 ### <a name="date-expressions"></a>Tarih ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$dayOfYear    |Evet    |
-|$dayOfMonth|    Evet    |
-|$dayOfWeek    |Evet    |
-|$year    |Evet    |
-|$month    |Evet|    
-|$week    |Evet    |
-|$hour    |Evet    |
-|$minute|    Evet|    
-|$second    |Evet    |
-|$millisecond|    Evet|    
-|$dateToString    |Evet    |
-|$isoDayOfWeek    |Evet    |
-|$isoWeek    |Evet    |
-|$dateFromParts|    Hayır|    
-|$dateToParts    |Hayır    |
-|$dateFromString|    Hayır|
-|$isoWeekYear    |Evet    |
+| $dayOfYear | Yes |
+| $dayOfMonth | Yes |
+| $dayOfWeek | Yes |
+| $year | Yes |
+| $month | Yes | 
+| $week | Yes |
+| $hour | Yes |
+| $minute | Yes | 
+| $second | Yes |
+| $millisecond | Yes | 
+| $dateToString | Yes |
+| $isoDayOfWeek | Yes |
+| $isoWeek | Yes |
+| $dateFromParts | Hayır | 
+| $dateToParts | Hayır |
+| $dateFromString | Hayır |
+| $isoWeekYear | Yes |
 
 ### <a name="conditional-expressions"></a>Koşullu ifadeler
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $cond| Evet|
-| $ifNull| Evet|
-| $switch |Evet|
+| $cond | Yes |
+| $ifNull | Yes |
+| $switch | Yes |
 
 ### <a name="data-type-operator"></a>Veri türü işleci
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $type| Evet|
+| $type | Yes |
 
 ### <a name="accumulator-expressions"></a>Biriktiricidir ifadeleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$sum    |Evet    |
-|$avg    |Evet    |
-|$first|    Evet|
-|$last    |Evet    |
-|$max    |Evet    |
-|$min    |Evet    |
-|$push|    Evet|
-|$addToSet|    Evet|
-|$stdDevPop|    Hayır    |
-|$stdDevSamp|    Hayır|
+| $sum | Yes |
+| $avg | Yes |
+| $first | Yes |
+| $last | Yes |
+| $max | Yes |
+| $min | Yes |
+| $push | Yes |
+| $addToSet | Yes |
+| $stdDevPop | Yes |
+| $stdDevSamp | Yes |
 
 ### <a name="merge-operator"></a>Merge işleci
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $mergeObjects | Evet|
+| $mergeObjects | Yes |
 
 ## <a name="data-types"></a>Veri türleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|Çift    |Evet    |
-|Dize    |Evet    |
-|Nesne    |Evet    |
-|Dizi    |Evet    |
-|İkili veriler    |Evet|    
-|ObjectId    |Evet    |
-|Boole    |Evet    |
-|Tarih    |Evet    |
-|Null    |Evet    |
-|32-bit tamsayı (int)    |Evet    |
-|Timestamp    |Evet    |
-|64 bit tamsayı (uzun)    |Evet    |
-|MinKey    |Evet    |
-|MaxKey    |Evet    |
-|Decimal128    |Evet|    
-|Normal ifade    |Evet|
-|JavaScript    |Evet|
-|JavaScript (kapsama sahip)|    Evet    |
-|Tanımlayan    |Evet    |
+| Çift | Evet |
+| Dize | Yes |
+| Nesne | Yes |
+| Dizi | Yes |
+| İkili veriler | Yes | 
+| ObjectId | Yes |
+| Boole | Yes |
+| Tarih | Yes |
+| Null | Yes |
+| 32-bit tamsayı (int) | Yes |
+| Timestamp | Yes |
+| 64 bit tamsayı (uzun) | Yes |
+| MinKey | Yes |
+| MaxKey | Yes |
+| Decimal128 | Yes | 
+| Normal ifade | Yes |
+| JavaScript | Yes |
+| JavaScript (kapsama sahip)| Yes |
+| Tanımlayan | Yes |
 
 ## <a name="indexes-and-index-properties"></a>Dizinler ve Dizin Özellikleri
 
 ### <a name="indexes"></a>Dizinler
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|Tek alan dizini    |Evet    |
-|Bileşik Dizin    |Evet    |
-|Çok tuşlu Dizin    |Evet    |
-|Metin dizini    |Hayır|
-|2dsphere    |Evet    |
-|2B Dizin    |Hayır    |
-|Karma Dizin    | Evet|
+| Tek alan dizini | Yes |
+| Bileşik Dizin | Yes |
+| Çok tuşlu Dizin | Yes |
+| Metin dizini | Hayır |
+| 2dsphere | Yes |
+| 2B Dizin | Hayır |
+| Karma Dizin | Yes |
 
 ### <a name="index-properties"></a>Dizin Özellikleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|TTL|    Evet    |
-|Benzersiz    |Evet|
-|Kısmi|    Hayır|
-|Büyük/küçük harf duyarsız    |Hayır|
-|Seyrek    |Hayır |
-|Arka Plan|    Evet |
+| TTL | Yes |
+| Benzersiz | Yes |
+| Kısmi | Hayır |
+| Büyük/küçük harf duyarsız | Hayır |
+| Seyrek | Hayır |
+| Arka Plan | Yes |
 
 ## <a name="operators"></a>İşleçler
 
 ### <a name="logical-operators"></a>Mantıksal işleçler
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$or    |    Evet|
-|$and    |    Evet|
-|$not    |    Evet|
-|$nor    |    Evet| 
+| $or | Yes |
+| $and | Yes |
+| $not | Yes |
+| $nor | Yes | 
 
 ### <a name="element-operators"></a>Öğe işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$exists|    Evet|
-|$type    |    Evet|
+| $exists | Yes |
+| $type | Yes |
 
 ### <a name="evaluation-query-operators"></a>Değerlendirme sorgu işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$expr    |    Hayır|
-|$jsonSchema    |    Hayır|
-|$mod    |    Evet|
-|$regex |    Evet|
-|$text    | Hayır (desteklenmiyor. Bunun yerine $regex kullanın.)| 
-|$where    |Hayır| 
+| $expr | Hayır |
+| $jsonSchema | Hayır |
+| $mod | Yes |
+| $regex | Yes |
+| $text | Hayır (desteklenmiyor. Bunun yerine $regex kullanın.)| 
+| $where | Hayır | 
 
 $Regex sorgularda, sola sabitlenmiş ifadeler Dizin aramasına izin verir. Ancak 'i' değiştiricisini (büyük/küçük harf duyarlığı) ve 'm' değiştiricisini (çok satırlılık) kullanmak, tüm ifadelerde koleksiyon taramasına neden olur.
 
 '$' veya '|' karakterinin dahil edilmesinin gerektiği durumlarda iki (veya daha fazla) normal ifade sorgusu oluşturmak en iyisidir. Örneğin, aşağıdaki özgün sorgu verildiğinde ```find({x:{$regex: /^abc$/})``` , şu şekilde değiştirilmesi gerekir:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
 
-İlk kısım aramayı ^abc ile başlayan belgeler ile sınırlamak için dizini kullanır, ikinci kısım ise tam girişler ile eşleşir. Çubuk işleci '|' "veya" işlevini görür - ```find({x:{$regex: /^abc|^def/})``` sorgusu 'x' alanının değerlerinin "abc" ile veya "def" ile başladığı belgelerle eşleşir. Dizinden yararlanmak için sorgunun $or işleci ile birleştirilen iki farklı sorguya bölünmesi gerekir: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+İlk kısım aramayı ^abc ile başlayan belgeler ile sınırlamak için dizini kullanır, ikinci kısım ise tam girişler ile eşleşir. Çubuk işleci '|' "veya" işlevini görür - ```find({x:{$regex: /^abc |^def/})``` sorgusu 'x' alanının değerlerinin "abc" ile veya "def" ile başladığı belgelerle eşleşir. Dizinden yararlanmak için sorgunun $or işleci ile birleştirilen iki farklı sorguya bölünmesi gerekir: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="array-operators"></a>Dizi işleçleri
 
-|Komut  |Desteklenir | 
+| Komut | Desteklenir | 
 |---------|---------|
-| $all | Evet| 
-| $elemMatch | Evet| 
-| $size | Evet | 
+| $all | Yes | 
+| $elemMatch | Yes | 
+| $size | Yes | 
 
 ### <a name="comment-operator"></a>Açıklama işleci
 
-|Komut  |Desteklenir | 
+| Komut | Desteklenir | 
 |---------|---------|
-$comment |Evet| 
+| $comment | Yes | 
 
 ### <a name="projection-operators"></a>Projeksiyon işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$elemMatch    |Evet|
-|$meta|    Hayır|
-|$slice    | Evet|
+| $elemMatch | Yes |
+| $meta | Hayır |
+| $slice | Yes |
 
 ### <a name="update-operators"></a>Güncelleştirme işleçleri
 
 #### <a name="field-update-operators"></a>Alan güncelleştirme işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$inc    |    Evet|
-|$mul    |    Evet|
-|$rename    |    Evet|
-|$setOnInsert|    Evet|
-|$set    |Evet|
-|$unset| Evet|
-|$min    |Evet|
-|$max    |Evet|
-|$currentDate    | Evet|
+| $inc | Yes |
+| $mul | Yes |
+| $rename | Yes |
+| $setOnInsert | Yes |
+| $set | Yes |
+| $unset | Yes |
+| $min | Yes |
+| $max | Yes |
+| $currentDate | Yes |
 
 #### <a name="array-update-operators"></a>Dizi güncelleştirme işleçleri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$    |Evet|
-|$[]|    Evet|
-|$[<identifier>]|    Evet|
-|$addToSet    |Evet|
-|$pop    |Evet|
-|$pullAll|    Evet|
-|$pull    |Evet|
-|$push    |Evet|
-|$pushAll| Evet|
+| $ | Yes |
+| $[]| Yes |
+| $[<identifier>]| Yes |
+| $addToSet | Yes |
+| $pop | Yes |
+| $pullAll | Yes |
+| $pull | Yes |
+| $push | Yes |
+| $pushAll | Yes |
 
 
 #### <a name="update-modifiers"></a>Güncelleştirme değiştiricileri
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-|$each    |    Evet|
-|$slice    |Evet|
-|$sort    |Evet|
-|$position    |Evet|
+| $each | Yes |
+| $slice | Yes |
+| $sort | Yes |
+| $position | Yes |
 
 #### <a name="bitwise-update-operator"></a>Bit düzeyinde güncelleştirme işleci
 
-|Komut  |Desteklenir |
+| Komut | Desteklenir |
 |---------|---------|
-| $bit    |    Evet|    
-|$bitsAllSet    |    Hayır|
-|$bitsAnySet    |    Hayır|
-|$bitsAllClear    |Hayır|
-|$bitsAnyClear    |Hayır|
+| $bit | Yes | 
+| $bitsAllSet | Hayır |
+| $bitsAnySet | Hayır |
+| $bitsAllClear | Hayır |
+| $bitsAnyClear | Hayır |
 
 ### <a name="geospatial-operators"></a>Jeo-uzamsal işleçler
 
-Operatör | Desteklenir| 
+Operatör | Desteklenir | 
 --- | --- |
-$geoWithin | Evet |
-$geoIntersects | Evet | 
-$near |  Evet |
-$nearSphere |  Evet |
-$geometry |  Evet |
-$minDistance | Evet |
-$maxDistance | Evet |
+$geoWithin | Yes |
+$geoIntersects | Yes | 
+$near | Yes |
+$nearSphere | Yes |
+$geometry | Yes |
+$minDistance | Yes |
+$maxDistance | Yes |
 $center | Hayır |
 $centerSphere | Hayır |
 $box | Hayır |
-$polygon |  Hayır |
-
-## <a name="cursor-methods"></a>İmleç yöntemleri
-
-|Komut  |Desteklenir |
-|---------|---------|
-|cursor.batchSize ()    |    Evet|
-|Cursor. Close ()    |Evet|
-|Cursor. IsClosed ()|        Evet|
-|Cursor. harmanlama ()|    Hayır|
-|Cursor. Comment ()    |Evet|
-|Cursor. Count ()    |Evet|
-|Cursor. açıkla ()|    Hayır|
-|Cursor. forEach ()    |Evet|
-|Cursor. hasNext ()    |Evet|
-|Cursor. İpucu ()    |Evet|
-|Cursor. isExhausted ()|    Evet|
-|Cursor. itcount ()    |Evet|
-|Cursor. limit ()    |Evet|
-|Cursor. map ()    |Evet|
-|Cursor. maxScan ()    |Evet|
-|imleç. maxTimeMS ()|    Evet|
-|Cursor. Max ()    |Evet|
-|Cursor. min ()    |Evet|
-|Cursor. Next ()|    Evet|
-|Cursor. noCursorTimeout ()    |Hayır|
-|Cursor. Objsleftınbatch ()    |Evet|
-|imleç. oldukça ()|    Evet|
-|imleç. Readsorun ()|    Evet|
-|Cursor. readPref ()        |Evet|
-|Cursor. returnKey ()    |Hayır|
-|Cursor. Showrecordıd ()|    Hayır|
-|Cursor. size ()    |Evet|
-|Cursor. Skip ()    |Evet|
-|cursor.sort()    |    Evet|
-|imleç. tailable ()|    Hayır|
-|Cursor. toArray ()    |Evet|
+$polygon | Hayır |
 
 ## <a name="sort-operations"></a>Sıralama işlemleri
 
@@ -573,21 +539,21 @@ globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
 }
 ```
 
-## <a name="time-to-live-ttl"></a>Etkin kalma süresi (TTL)
+## <a name="gridfs"></a>GridFS
 
-Cosmos DB, belgenin zaman damgasına göre yaşam süresi (TTL) desteği sağlar. TTL, [Azure Portal](https://portal.azure.com)giderek koleksiyonlar için etkinleştirilebilir.
-
-## <a name="user-and-role-management"></a>Kullanıcı ve rol yönetimi
-
-Cosmos DB henüz kullanıcıları ve rolleri desteklemez. Ancak, Azure rol tabanlı erişim denetimi (Azure RBAC) ve [Azure Portal](https://portal.azure.com) (bağlantı dizesi sayfası) aracılığıyla elde edilebilir salt okuma ve salt okuma parolalarını/anahtarlarını destekler Cosmos DB.
+Azure Cosmos DB, tüm gride DFS uyumlu MongoDB sürücüsü aracılığıyla GridFS 'yi destekler.
 
 ## <a name="replication"></a>Çoğaltma
 
 Cosmos DB, en düşük katmanlarda otomatik, yerel çoğaltmayı destekler. Bu mantık, düşük gecikme süresi ve küresel çoğaltma elde etmek için genişletilir. Cosmos DB el ile çoğaltma komutlarını desteklemez.
 
-## <a name="write-concern"></a>Yazma Sorunu
 
-Bazı uygulamalar, yazma işlemi sırasında gereken yanıt sayısını belirten bir [yazma kaygısını](https://docs.mongodb.com/manual/reference/write-concern/) kullanır. Cosmos DB’nin arka planda çoğaltma işleme şekli nedeniyle varsayılan olarak tüm yazma işlemleri otomatik olarak çekirdektir. İstemci kodu tarafından belirtilen herhangi bir yazma sorunu yok sayılır. Daha fazla bilgi için bkz. [Kullanılabilirlik ve performansı en üst düzeye çıkarmak için tutarlılık düzeylerini kullanma](consistency-levels.md).
+
+
+
+## <a name="retryable-writes"></a>Yeniden denenebilir yazmaları
+
+Azure Cosmos DB yeniden denenebilir yazmaları henüz desteklemiyor. İstemci sürücülerinin `retryWrites=false` bağlantı dizesine eklemesi gerekir.
 
 ## <a name="sharding"></a>Parçalama
 
@@ -597,11 +563,21 @@ Azure Cosmos DB, otomatik, sunucu tarafı parçalamasını destekler. Parça olu
 
 Azure Cosmos DB, sunucu tarafı oturumları komutlarını henüz desteklemiyor.
 
+## <a name="time-to-live-ttl"></a>Etkin kalma süresi (TTL)
+
+Azure Cosmos DB, belgenin zaman damgasına göre yaşam süresi (TTL) desteği sağlar. TTL, [Azure Portal](https://portal.azure.com)koleksiyonlar için etkinleştirilebilir.
+
+## <a name="user-and-role-management"></a>Kullanıcı ve rol yönetimi
+
+Azure Cosmos DB henüz kullanıcıları ve rolleri desteklememektedir. Ancak, Azure rol tabanlı erişim denetimi (Azure RBAC) ve okuma-yazma ve salt okuma parolalarını ya da [Azure Portal](https://portal.azure.com)bağlantı dizesi bölmesi aracılığıyla elde edilebilir olan anahtarları destekler.
+
+## <a name="write-concern"></a>Yazma Sorunu
+
+Bazı uygulamalar, yazma işlemi sırasında gereken yanıt sayısını belirten bir [yazma kaygısını](https://docs.mongodb.com/manual/reference/write-concern/) kullanır. Azure Cosmos DB çoğaltmayı nasıl işleyeceğinden, güçlü tutarlılık kullanılırken tüm yazma işlemleri varsayılan olarak otomatik olarak çekirdeklerdir. İstemci kodu tarafından belirtilen herhangi bir yazma sorunu yok sayılır. Daha fazla bilgi için bkz. [kullanılabilirlik ve performansı en üst düzeye çıkarmak için tutarlılık düzeylerini kullanma](consistency-levels.md) .
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Daha fazla bilgi için [Mongo 3,6 sürüm özelliklerini](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/) inceleyin
 - [Studio 3T](mongodb-mongochef.md) 'ı Azure Cosmos DB MongoDB IÇIN API 'si ile nasıl kullanacağınızı öğrenin.
 - MongoDB için Azure Cosmos DB API 'SI ile [Robo 3T kullanmayı](mongodb-robomongo.md) öğrenin.
 - MongoDB için Azure Cosmos DB API 'siyle MongoDB [örneklerini](mongodb-samples.md) gezin.
-
-<sup>Note: Bu makalede, MongoDB veritabanlarıyla kablo protokol uyumluluğu sağlayan Azure Cosmos DB bir özelliği açıklanmaktadır. Microsoft bu hizmeti sağlamak için MongoDB veritabanlarını çalıştırmaz. Azure Cosmos DB MongoDB, Inc ile bağlantılı değildir.</sup>

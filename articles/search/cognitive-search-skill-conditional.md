@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72792039"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666357"
 ---
 # <a name="conditional-cognitive-skill"></a>Koşullu Bilişsel Beceri
 
@@ -88,8 +88,8 @@ Girişler büyük/küçük harfe duyarlıdır.
 | Giriş   | Açıklama |
 |-------------|-------------|
 | koşul   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Bu giriş, koşul *true*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
-| whenFalse   | Bu giriş, koşul *false*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
+| whenTrue    | Bu giriş, koşul *true* olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
+| whenFalse   | Bu giriş, koşul *false* olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 Yalnızca "çıktı" olarak adlandırılan tek bir çıktı vardır. Koşul false ise *whenfalse* veya koşul true Ise *whentrue* ise value değerini döndürür.
@@ -98,7 +98,7 @@ Yalnızca "çıktı" olarak adlandırılan tek bir çıktı vardır. Koşul fals
 
 ### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Örnek beceri tanımı 1: belgeleri yalnızca Fransızca belge döndürecek şekilde filtreleyin
 
-Aşağıdaki çıktı, belgenin dili Fransızca ise bir dizi cümle ("/Document/frenchcümleler") döndürür. Dil Fransızca değilse, değer *null*olarak ayarlanır.
+Aşağıdaki çıktı, belgenin dili Fransızca ise bir dizi cümle ("/Document/frenchcümleler") döndürür. Dil Fransızca değilse, değer *null* olarak ayarlanır.
 
 ```json
 {
@@ -112,7 +112,7 @@ Aşağıdaki çıktı, belgenin dili Fransızca ise bir dizi cümle ("/Document/
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-"/Document/frenchcümleler" başka bir beceri *bağlamı* olarak kullanılırsa, bu beceri yalnızca "/Document/frenchcümleler" *null*olarak ayarlanmamışsa çalışır.
+"/Document/frenchcümleler" başka bir beceri *bağlamı* olarak kullanılırsa, bu beceri yalnızca "/Document/frenchcümleler" *null* olarak ayarlanmamışsa çalışır.
 
 
 ### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Örnek beceri tanımı 2: var olmayan bir değer için varsayılan değer ayarlayın
@@ -134,7 +134,7 @@ Aşağıdaki çıktı, belgenin diline ayarlanmış bir ek açıklama ("/documen
 
 ### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Örnek beceri tanımı 3: iki alandan bir değer birleştirme
 
-Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsentiment* özelliği null olduğunda, *englisentiment* değerini kullanmak istiyoruz. Çıktıyı, *yaklaşım* ("/Document/Sentiment/*/Sentiment") adlı bir üyeye atacağız.
+Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsentiment* özelliği null olduğunda, *englisentiment* değerini kullanmak istiyoruz. Çıktıyı, *yaklaşım* ("/Document/Sentences/*/Sentiment") adlı bir üyeye atacağız.
 
 ```json
 {
@@ -154,7 +154,7 @@ Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsent
 
 Bu örnekte, 0 ile 1 arasında *bir yaklaşım* alırız. Bunu-1 ile 1 arasında olacak şekilde dönüştürmek istiyoruz. Bu küçük dönüşümü yapmak için koşullu yetenek kullanabiliriz.
 
-Bu örnekte, koşulun her zaman *doğru*olduğu için yeteneğin koşullu yönünü kullanmıyoruz.
+Bu örnekte, koşulun her zaman *doğru* olduğu için yeteneğin koşullu yönünü kullanmıyoruz.
 
 ```json
 {

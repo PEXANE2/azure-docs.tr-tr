@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881644"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657307"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Ortam görüntüsü Derlemeleriyle ilgili sorunları giderme
 
@@ -153,8 +153,8 @@ Olası hizmet tarafı hatalarıyla ilgili sorunları gidermek için aşağıdaki
 
 Olası sorunlar:
 - Kapsayıcı kayıt defterinin yol adı doğru çözümlenmeyebilir. Görüntü adlarının çift eğik çizgi ve Linux üzerinde eğik çizgilerin yönünü ve Windows konaklarına karşı doğru olup olmadığını denetleyin.
-- Bir sanal ağın arkasındaki bir kapsayıcı kayıt defteri [Desteklenmeyen bir bölgede](/azure/private-link/private-link-overview#availability)özel bir uç nokta kullanıyorsa, portaldan hizmet uç noktasını (genel erişim) kullanarak kapsayıcı kayıt defterini yapılandırın ve yeniden deneyin.
-- Kapsayıcı kayıt defterini bir sanal ağın arkasına koyduktan sonra, çalışma alanının kapsayıcı kayıt defteri örneğiyle iletişim kurabilmesi için [Azure Resource Manager şablonunu](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) çalıştırın.
+- Bir sanal ağın arkasındaki bir kapsayıcı kayıt defteri [Desteklenmeyen bir bölgede](../private-link/private-link-overview.md#availability)özel bir uç nokta kullanıyorsa, portaldan hizmet uç noktasını (genel erişim) kullanarak kapsayıcı kayıt defterini yapılandırın ve yeniden deneyin.
+- Kapsayıcı kayıt defterini bir sanal ağın arkasına koyduktan sonra, çalışma alanının kapsayıcı kayıt defteri örneğiyle iletişim kurabilmesi için [Azure Resource Manager şablonunu](./how-to-network-security-overview.md) çalıştırın.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Çalışma alanı kapsayıcısı kayıt defterinden 401 hatası alırsınız
 
@@ -166,7 +166,7 @@ Bir görüntü oluşturma devam ederken, Conda SDK istemcisi tarafından kilitle
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Özel Docker görüntünüz kayıt defterinde değil
 
-[Doğru etiketin](/azure/machine-learning/how-to-use-environments#create-an-environment) kullanıldığını ve olduğunu denetleyin `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` Conda 'yi devre dışı bırakır ve kullanıcının yüklü paketlerini kullanır.
+[Doğru etiketin](./how-to-use-environments.md#create-an-environment) kullanıldığını ve olduğunu denetleyin `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` Conda 'yi devre dışı bırakır ve kullanıcının yüklü paketlerini kullanır.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Aşağıdaki ortak sanal ağ sorunlarından birini alırsınız
 
@@ -184,9 +184,9 @@ Bir görüntü oluşturma devam ederken, Conda SDK istemcisi tarafından kilitle
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Depolamada ağ güvenliği etkinleştirildiğinde denemeleri çalıştıramazsınız
 
-Varsayılan Docker görüntülerini kullanıyorsanız ve Kullanıcı tarafından yönetilen bağımlılıkları etkinleştirirseniz, microsoftcontainerregistry ve azurefrontkapısı. firstparti [hizmeti etiketlerini](/azure/machine-learning/how-to-enable-virtual-network) izin Azure Container Registry ve bağımlılıklarını kullanın.
+Varsayılan Docker görüntülerini kullanıyorsanız ve Kullanıcı tarafından yönetilen bağımlılıkları etkinleştirirseniz, microsoftcontainerregistry ve azurefrontkapısı. firstparti [hizmeti etiketlerini](./how-to-network-security-overview.md) izin Azure Container Registry ve bağımlılıklarını kullanın.
 
- Daha fazla bilgi için bkz. [sanal ağları etkinleştirme](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+ Daha fazla bilgi için bkz. [sanal ağları etkinleştirme](./how-to-network-security-overview.md).
 
 ### <a name="you-need-to-create-an-icm"></a>Bir ICM oluşturmanız gerekir
 

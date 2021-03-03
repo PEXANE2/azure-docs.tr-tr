@@ -2,18 +2,19 @@
 title: Azure Backup kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 description: Azure Backup hizmetini kullanarak Oracle Database 19c veritabanını nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806418"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673900"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup kullanarak bir Azure Linux sanal makinesinde Oracle Database 19c veritabanını yedekleme ve kurtarma
 
@@ -199,13 +200,13 @@ Bu adım, *vmoracle19c* ADLı bir VM üzerinde çalışan bir Oracle örneğine 
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>Azure Backup’ı kullanma
+## <a name="using-azure-backup-preview"></a>Azure Backup kullanma (Önizleme)
 
 Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtarmaya yönelik basit, güvenli ve uygun maliyetli çözümler sunar. Azure Backup, özgün verilerin yanlışlıkla yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedekler, yerleşik kurtarma noktası yönetim özelliklerine sahip Kurtarma Hizmetleri kasasında depolanır. Yapılandırma ve ölçeklenebilirlik basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
 
-Azure Backup hizmeti, Oracle, MySQL, Mongo DB, SAP HANA ve PostGreSQL gibi çeşitli uygulamalar için Windows ve Linux VM 'Leri yedeklemeleri sırasında uygulama tutarlılığı elde etmek için bir [çerçeve](../../../backup/backup-azure-linux-app-consistent.md) sağlar. Bu, disklerin anlık görüntüsünü almadan önce bir ön komut dosyası (uygulamaları sessiz duruma getirmek için) ve anlık görüntü tamamlandıktan sonra, uygulamaları normal moda döndürmek için betik sonrası (uygulamaları çözmek için komutlar) çağırmasını içerir. Örnek ön betikler ve son betikler, GitHub 'da sağlandığında, Bu betiklerin oluşturulması ve bakımı sizin sorumluluğunuzdadır. 
+Azure Backup hizmeti, Oracle, MySQL, Mongo DB ve PostGreSQL gibi çeşitli uygulamalar için Windows ve Linux VM 'Leri yedeklemeleri sırasında uygulama tutarlılığı elde etmek için bir [çerçeve](../../../backup/backup-azure-linux-app-consistent.md) sağlar. Bu, disklerin anlık görüntüsünü almadan önce bir ön komut dosyası (uygulamaları sessiz duruma getirmek için) ve anlık görüntü tamamlandıktan sonra, uygulamaları normal moda döndürmek için betik sonrası (uygulamaları çözmek için komutlar) çağırmasını içerir. Örnek ön betikler ve son betikler, GitHub 'da sağlandığında, Bu betiklerin oluşturulması ve bakımı sizin sorumluluğunuzdadır.
 
-Artık Azure Backup, Azure Backup hizmetin seçili uygulamalar için paketlenmiş betikler ve son betikler sağladığını sağlayan gelişmiş bir ön betik ve son betik çerçevesi sağlıyor. Azure Backup kullanıcıların uygulamayı yalnızca adı olması gerekir ve Azure VM yedeklemesi ilgili ön Post komut dosyalarını otomatik olarak çağırır. Paketlenmiş betikler ve son betikler Azure Backup ekibi tarafından korunur ve böylece kullanıcılar Bu betiklerin destek, sahiplik ve geçerliliğini garanti edebilir. Şu anda, geliştirilmiş Framework için desteklenen uygulamalar *Oracle* ve *MySQL*' dir.
+Artık Azure Backup, Azure Backup hizmetin seçili uygulamalar için paketlenmiş ön betikler ve komut dosyaları sağladığını sağlayan gelişmiş bir ön betik ve (**Şu anda önizleme aşamasında olan**) bir sonrası altyapı sağlar. Azure Backup kullanıcıların uygulamayı yalnızca adı olması gerekir ve Azure VM yedeklemesi ilgili ön Post komut dosyalarını otomatik olarak çağırır. Paketlenmiş betikler ve son betikler Azure Backup ekibi tarafından korunur ve böylece kullanıcılar Bu betiklerin destek, sahiplik ve geçerliliğini garanti edebilir. Şu anda, geliştirilmiş Framework için desteklenen uygulamalar *Oracle* ve *MySQL*' dir.
 
 Bu bölümde, çalışan VM 'niz ve Oracle veritabanınızın uygulamayla tutarlı anlık görüntülerini almak için Azure Backup gelişmiş çatı kullanacaksınız. Veritabanı, Azure Backup VM disklerinin anlık görüntüsünü alırken işlemsel olarak tutarlı çevrimiçi yedeklemenin oluşmasına izin vererek yedekleme moduna alınacaktır. Anlık görüntü, depolama alanının tam bir kopyası olur ve yazma anlık görüntüsüne artımlı veya kopya değil, veritabanınızı geri yüklemek için etkili bir ortamdır. Uygulamayla tutarlı anlık görüntüler Azure Backup kullanmanın avantajı, veritabanınızın ne kadar büyük olduğuna ve geri yükleme işlemleri için bir anlık görüntünün, kurtarma hizmetleri kasasına aktarılmasını beklemek zorunda kalmadan çok daha hızlı bir şekilde kullanılabileceği avantajlardır.
 
@@ -314,7 +315,7 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    sudo su -
    ```
 
-2. Uygulamayla tutarlı yedekleme çalışma dizinini oluşturma:
+2. "Etc/Azure" klasörünü denetleyin. Bu yoksa, uygulamayla tutarlı yedekleme çalışma dizinini oluşturun:
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    fi
    ```
 
-3. *Makinelerdeki/etc/Azure* dizininde, *iş yükü. conf* adlı, ile başlaması gereken aşağıdaki içeriklerle bir dosya oluşturun `[workload]` . Aşağıdaki komut dosyayı oluşturacak ve içeriğini dolduracaktır:
+3. Klasörü içinde "iş yükü. conf" olup olmadığını denetleyin. Bu yoksa, *makinelerdeki/etc/Azure* dizininde *iş yükü. conf* adlı, ile başlaması gereken aşağıdaki içerikleri içeren bir dosya oluşturun `[workload]` . Dosya zaten mevcutsa, alanları aşağıdaki içerikle eşleşecek şekilde düzenlemeniz yeterlidir. Aksi takdirde, aşağıdaki komut dosyayı oluşturur ve içeriği doldurur:
 
    ```bash
    echo "[workload]
@@ -330,14 +331,6 @@ Veritabanını yedeklemek için Azure Backup kullanmak için şu adımları izle
    command_path = /u01/app/oracle/product/19.0.0/dbhome_1/bin/
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
-   ```
-
-4. [GitHub deposundan](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) preoraclemaster. SQL ve postoraclemaster. SQL komut dosyalarını indirin ve *makinelerdeki/etc/Azure* dizinine kopyalayın.
-
-5. Dosya izinlerini değiştirme
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>VM 'nin uygulamayla tutarlı bir yedeklemesini tetikleyin
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [Öğretici: yüksek oranda kullanılabilir VM 'Ler oluşturma](../../linux/create-cli-complete.md)
 
-[VM dağıtımı Azure CLı örneklerini keşfet](../../linux/cli-samples.md)
+[VM dağıtımı Azure CLı örneklerini keşfet](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

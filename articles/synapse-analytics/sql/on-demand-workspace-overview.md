@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682979"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667509"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu 
 
@@ -75,7 +75,7 @@ Sunucusuz SQL havuzu, yarı yapılandırılmış ve yapılandırılmamış veril
 
 Desteklenen T-SQL:
 
-- Tam [seçme](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) yüzeyı alanı SQL işlevlerinin çoğunluğu dahil desteklenir
+- Tam [seçme](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) yüzeyı alanı SQL işlevlerinin çoğunluğu dahil desteklenir
 - CETAS-DıŞ TABLOYU SEÇ OLARAK OLUŞTUR
 - Yalnızca görünümler ve güvenlikle ilgili DDL deyimleri
 
@@ -89,7 +89,7 @@ Sunucusuz SQL havuzunda yerel depolama alanı yoktur, yalnızca meta veri nesnel
 
 ### <a name="extensions"></a>Uzantıları
 
-Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, sunucusuz SQL havuzu aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini genişletir:
+Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, sunucusuz SQL havuzu aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) işlevini genişletir:
 
 [Birden çok dosyayı veya klasörü sorgulama](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ Sunucusuz SQL havuzu verilerinize güvenli bir şekilde erişmek için mekanizma
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 
-Sunucusuz SQL havuzu, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
+Sunucusuz SQL havuzu, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../azure-sql/database/authentication-aad-configure.md)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA) destekler.
 
 #### <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -125,7 +125,7 @@ Sunucusuz SQL havuzu kimlik doğrulaması, kullanıcıların uç noktaya bağlan
 
 - **Azure Active Directory kimlik doğrulaması**:
 
-  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
+  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 
 #### <a name="authorization"></a>Yetkilendirme
 

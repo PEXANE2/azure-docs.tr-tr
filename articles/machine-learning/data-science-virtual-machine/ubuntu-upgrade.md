@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: CentOS ve Ubuntu 16,04 ' dan en son Ubuntu 18,04 Veri Bilimi Sanal Makinesi yükseltmeyi öğrenin.
 keywords: derin öğrenme, AI, veri bilimi araçları, veri bilimi sanal makinesi, ekip veri bilimi işlemi
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320981"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659469"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Veri Bilimi Sanal Makinenizi Ubuntu 18.04’e yükseltme
 
@@ -38,7 +37,7 @@ Azure portal, **anlık görüntüler** işlevini bulmak için arama çubuğunu k
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
 
-1. **Ekle** ' yi seçerek **anlık görüntü oluşturma** sayfasına götürür. Sanal makinenizin aboneliğini ve kaynak grubunu seçin. **Bölge** için, hedef depolamanın bulunduğu bölgeyi seçin. DSVM depolama diskini ve ek yedekleme seçeneklerini belirleyin. **Standart HDD** , bu yedekleme senaryosu için uygun bir depolama türüdür.
+1. **Ekle**' yi seçerek **anlık görüntü oluşturma** sayfasına götürür. Sanal makinenizin aboneliğini ve kaynak grubunu seçin. **Bölge** için, hedef depolamanın bulunduğu bölgeyi seçin. DSVM depolama diskini ve ek yedekleme seçeneklerini belirleyin. **Standart HDD** , bu yedekleme senaryosu için uygun bir depolama türüdür.
 
 :::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="' Anlık görüntü oluşturma ' seçeneklerini gösteren ekran görüntüsü":::
 
@@ -103,11 +102,11 @@ FileSystem 'ın işletim sistemi parçalarını yükseltmeyi ve yerinde olduğu 
 
 Daha önce açıklandığı gibi zaten bir VM anlık görüntüsü oluşturmadıysanız, bunu yapın. 
 
-1. Azure portal **disk** sayfasını açmak için **diskler** ' i arayın ve **Ekle** ' yi seçin.
+1. Azure portal **disk** sayfasını açmak için **diskler** ' i arayın ve **Ekle**' yi seçin.
 
 :::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Diskleri ara sayfasını ve Ekle düğmesini gösteren Azure portal ekran görüntüsü":::
 
-2. **Abonelik** , **kaynak grubu** ve **bölgeyi** VM anlık görüntüsünün değerlerine ayarlayın. Oluşturulacak disk için bir **ad** seçin.
+2. **Abonelik**, **kaynak grubu** ve **bölgeyi** VM anlık görüntüsünün değerlerine ayarlayın. Oluşturulacak disk için bir **ad** seçin.
 
 3. **Kaynak türünü** **anlık görüntü** olarak seçin ve **kaynak anlık** görüntüsü olarak VM anlık görüntüsünü seçin. Diski gözden geçirin ve oluşturun. 
 

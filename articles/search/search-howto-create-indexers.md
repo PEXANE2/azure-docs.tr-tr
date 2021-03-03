@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360967"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676486"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizin oluşturucular oluşturma
 
@@ -155,7 +155,7 @@ Bir dizin oluşturucunun değişiklik algılamayı nasıl desteklediği, veri ka
 
 Büyük dizin oluşturma yükleri için bir Dizin Oluşturucu, iç "yüksek su işareti" ile işlenen son belgeyi de izler. İşaretleyici, API 'de hiçbir yerde gösterilmez, ancak dahili olarak Dizin Oluşturucu durdurulma konumunu izler. Dizin oluşturma devam ederse, zamanlanmış bir çalıştırma veya isteğe bağlı bir çağrı aracılığıyla Dizin Oluşturucu, kaldığı yerden seçim yapabilmesi için yüksek su işaretine başvurur.
 
-Tam olarak yeniden dizin eklemek için yüksek su işaretini temizlemeniz gerekiyorsa, [sıfırlama dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)kullanabilirsiniz. Daha seçmeli yeniden dizin oluşturmak için, [becerileri Sıfırla](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) veya [belgeleri Sıfırla](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)' yı kullanın. API 'Leri sıfırlama ile iç durumu temizleyebilir ve [artımlı zenginleştirme](search-howto-incremental-index.md)seçeneğini etkinleştirdiyseniz önbelleği de temizleyebilirsiniz. Her sıfırlama seçeneğinin daha fazla arka planı ve karşılaştırması için bkz. [Dizinleyicileri, becerileri ve belgeleri çalıştırma veya sıfırlama](search-howto-run-reset-indexers.md).
+Tam olarak yeniden dizin eklemek için yüksek su işaretini temizlemeniz gerekiyorsa, [sıfırlama dizin oluşturucuyu](/rest/api/searchservice/reset-indexer)kullanabilirsiniz. Daha seçmeli yeniden dizin oluşturmak için, [becerileri Sıfırla](/rest/api/searchservice/preview-api/reset-skills) veya [belgeleri Sıfırla](/rest/api/searchservice/preview-api/reset-documents)' yı kullanın. API 'Leri sıfırlama ile iç durumu temizleyebilir ve [artımlı zenginleştirme](search-howto-incremental-index.md)seçeneğini etkinleştirdiyseniz önbelleği de temizleyebilirsiniz. Her sıfırlama seçeneğinin daha fazla arka planı ve karşılaştırması için bkz. [Dizinleyicileri, becerileri ve belgeleri çalıştırma veya sıfırlama](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Verilerinizi öğrenin
 
@@ -165,7 +165,7 @@ Dizin oluşturucular, her satırın dizinde tam veya kısmi arama belgesi haline
 
 Düzleştirilmiş verilere ek olarak, yalnızca aranabilir verileri çekmek önemlidir. Aranabilir veriler alfasayısal. Bilişsel Arama, tüm biçimdeki ikili verileri arayamıyor, ancak aranabilir içerik oluşturmak için görüntü dosyalarının metin açıklamalarını ayıklayabilir ve çıkarsmasına (bkz. [AI zenginleştirme](cognitive-search-concept-intro.md)) izin verebilir. Benzer şekilde, AI zenginleştirme kullanarak büyük metin, yapıyı veya ilgili bilgileri bulmak için doğal dil modelleriyle analiz edilebilir ve bu da bir arama belgesine ekleyebileceğiniz yeni içerik oluşturabilir.
 
-Dizin oluşturucular veri sorunlarını gidermezse, diğer veri temizleme veya işleme gibi diğer biçimler de gerekebilir. Daha fazla bilgi için [Azure veritabanı ürününüzün](/azure/?product=databases)ürün belgelerine başvurmalısınız.
+Dizin oluşturucular veri sorunlarını gidermezse, diğer veri temizleme veya işleme gibi diğer biçimler de gerekebilir. Daha fazla bilgi için [Azure veritabanı ürününüzün](../index.yml?product=databases)ürün belgelerine başvurmalısınız.
 
 ## <a name="know-your-index"></a>Dizininizi öğrenin
 

@@ -3,7 +3,7 @@ title: Yetkilendirme yönetiminde kaynak kataloğu oluşturma & yönetme-Azure A
 description: Azure Active Directory yetkilendirme yönetiminde yeni bir kaynak kapsayıcısı oluşturmayı ve paketlerin nasıl erişebileceğini öğrenin.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: HANKI
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 8ae3ee8cb96453bae1ce581ea92bdb77854c02d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745972"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644155"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -80,6 +80,14 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 1. İşiniz bittiğinde **Ekle**' ye tıklayın.
 
     Bu kaynaklar artık kataloğun içindeki erişim paketlerine dahil edilebilir.
+
+### <a name="add-a-multi-geo-sharepoint-site"></a>Çok coğrafi coğrafi SharePoint sitesi ekleme
+
+1. SharePoint için [Çoklu coğrafi bölge](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) özelliği etkinleştirilmişse, siteleri seçmek istediğiniz ortamı seçin.
+    
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Erişim paketi-kaynak rolleri ekleme-SharePoint Çoklu coğrafi siteleri seçme":::
+
+1. Ardından, kataloğa eklenmesini istediğiniz siteleri seçin. 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Bir kataloğa program aracılığıyla kaynak ekleme
 

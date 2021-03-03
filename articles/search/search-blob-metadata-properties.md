@@ -1,33 +1,33 @@
 ---
 title: İçerik meta verileri özellikleri
 titleSuffix: Azure Cognitive Search
-description: Blobların meta veri özellikleri, bir arama dizinindeki alanlara içerik verebilir veya çalışma zamanında dizin oluşturma davranışını bildiren bilgiler sağlayabilir. Bu makalede, Azure Bilişsel Arama 'de desteklenen meta veri özellikleri listelenmektedir.
+description: Belgelerin meta veri özellikleri, bir arama dizinindeki alanlara içerik veya çalışma zamanında dizin oluşturma davranışını bildiren bilgileri sağlayabilir. Bu makalede, Azure Bilişsel Arama 'de desteklenen meta veri özellikleri listelenmektedir.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668427"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob dizinlemesi için kullanılan içerik meta verileri özellikleri
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de kullanılan içerik meta verileri özellikleri
 
-Blob 'lar çeşitli içerikler içerebilir ve bu içerik türlerinin çoğunun blob dizinlemesi içinde yararlı olabilecek meta veri özellikleri vardır. Gibi standart blob özellikleri için arama alanları oluşturabileceğiniz gibi **`metadata_storage_name`** , bir belge biçimine özgü meta veri özellikleri için alanlar oluşturabilirsiniz.
+SharePoint Online ve Azure Blob depolama çeşitli içerikler içerebilir ve bu içerik türlerinin çoğunun dizin için yararlı olabilecek meta veri özellikleri vardır. Gibi standart blob özellikleri için arama alanları oluşturabileceğiniz gibi **`metadata_storage_name`** , bir belge biçimine özgü meta veri özellikleri için alanlar oluşturabilirsiniz.
 
 ## <a name="supported-document-formats"></a>Desteklenen belge biçimleri
 
-Bilişsel Arama, aşağıdaki belge biçimleri için blob dizinlemeyi destekler:
+Bilişsel Arama, aşağıdaki belge biçimleri için blob dizinlemeyi ve SharePoint Online belge dizin oluşturmayı destekler:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>Belge biçimine göre Özellikler
 
-Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve bir blob Indexer tarafından ayıklanan meta veri özellikleri açıklanmaktadır.
+Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve bir blob Indexer ve SharePoint Online Indexer tarafından ayıklanan meta veri özellikleri açıklanmaktadır.
 
 | Belge biçimi/içerik türü | Ayıklanan meta veriler | İşleme ayrıntıları |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve
 * [Azure Bilişsel Arama'daki Dizin Oluşturucular](search-indexer-overview.md)
 * [AI kullanarak blob 'ları anlama](search-blob-ai-integration.md)
 * [Blob dizinlemeye genel bakış](search-blob-storage-integration.md)
+* [SharePoint Online dizin oluşturma](search-howto-index-sharepoint-online.md)

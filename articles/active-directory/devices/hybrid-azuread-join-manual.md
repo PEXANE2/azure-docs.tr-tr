@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651e7156faf8305edb0a1541e957dd2abf3a71b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365761"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644128"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -75,7 +75,7 @@ Sürüm 1703 veya önceki sürümlerde Windows 10 cihazlarında, kuruluşunuz gi
 
 Windows 10 1803 ile başlayarak, Federasyon etki alanındaki bir cihaz tarafından AD FS aracılığıyla bir karma Azure AD katılımı denemesi başarısız olur ve Azure AD Connect bilgisayar/cihaz nesnelerini Azure AD 'ye eşitlemek üzere yapılandırılmışsa, cihaz, eşitlenen bilgisayarı/cihazı kullanarak karma Azure AD JOIN 'i tamamlamaya çalışır.
 
-Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) betiği ' ni kullanabilirsiniz.
+Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) betiği ' ni kullanabilirsiniz.
 
 ## <a name="verify-configuration-steps"></a>Yapılandırma adımlarını doğrulama
 

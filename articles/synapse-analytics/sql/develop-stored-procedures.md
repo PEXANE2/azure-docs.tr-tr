@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 083077b2b29bc415e83d6f5a76941fa83fa853e3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315555"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674151"
 ---
 # <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanan saklı yordamlar
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 ```
 
 > [!NOTE]
-> SYNAPSE SQL Şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
+> SYNAPSE SQL Şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?view=azure-sqldw-latest&preserve-view=true)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
@@ -193,17 +193,17 @@ SYNAPSE SQL 'de uygulanmayan Transact-SQL saklı yordamlarının bazı yönleri 
 
 | Özellik/seçenek | Sağlanan | Sunucusuz |
 | --- | --- |
-| Geçici saklı yordamlar | Hayır | Evet |
+| Geçici saklı yordamlar | Hayır | Yes |
 | Numaralandırılmış saklı yordamlar | Hayır | Hayır |
 | Genişletilmiş saklı yordamlar | Hayır | Hayır |
 | CLR saklı yordamları | Hayır | Hayır |
-| Şifreleme seçeneği | Hayır | Evet |
+| Şifreleme seçeneği | Hayır | Yes |
 | Çoğaltma seçeneği | Hayır | Hayır |
 | Tablo değerli parametreler | Hayır | Hayır |
 | Salt okuma parametreleri | Hayır | Hayır |
-| Varsayılan parametreler | Hayır | Evet |
+| Varsayılan parametreler | Hayır | Yes |
 | Yürütme bağlamları | Hayır | Hayır |
-| Return ekstresi | Hayır | Evet |
+| Return ekstresi | Hayır | Yes |
 | IÇINE EKLE.. EXEC | Hayır | Evet |
 
 ## <a name="next-steps"></a>Sonraki adımlar

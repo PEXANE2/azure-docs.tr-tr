@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558672"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675015"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot sanal makineleri 
 
@@ -46,19 +46,38 @@ Azure spot sanal makinesi, Microsoft Azure Çin 21Vianet dışında herhangi bir
 -   Kurumsal Anlaşma
 -   Kullandıkça Öde teklifi kodu 003P
 -   Sponsorlu
-- Bulut hizmeti sağlayıcısı (CSP) için iş ortağınızla iletişime geçin
+- Bulut hizmeti sağlayıcısı (CSP) için [Iş Ortağı Merkezi](https://docs.microsoft.com/partner-center/azure-plan-get-started) 'ne bakın veya doğrudan iş ortağınızla iletişim kurun.
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
-Azure spot sanal makine ölçek kümeleri oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
+Azure spot sanal makineleri kullanarak bir ölçek kümesi oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
 
 *Serbest bırakma* ilkesi, çıkarılan örnekleri yeniden dağıtmanıza izin vererek, çıkarılan örneklerinizi durdurulmuş serbest bırakılmış duruma kaydırır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler, ölçek kümesi örneği kotanıza göre sayılır ve temel disklerinizin ücreti alınır. 
 
-Azure spot sanal makine ölçek kümesindeki örneklerinizin çıkarıldıklarında silinmesini istiyorsanız, çıkarma ilkesini *silme* olarak ayarlayabilirsiniz. Çıkarma ilkesi silinmek üzere ayarlandığında, ölçek kümesi örnek sayısı özelliğini artırarak yeni VM 'Ler oluşturabilirsiniz. Çıkarılan VM 'Ler, temel disklerle birlikte silinir ve bu nedenle depolama alanı için ücretlendirilmeyecektir. Ayrıca, çıkarılan VM 'Leri otomatik olarak denemek ve dengelemek için ölçek kümelerinin otomatik ölçeklendirme özelliğini de kullanabilirsiniz; ancak, ayırmanın başarılı olacağını garanti etmez. Disklerinizin maliyetini önlemek ve kota limitlerine ulaşmak üzere çıkarma ilkesini silinmek üzere ayarladığınızda Azure spot sanal makine ölçek kümelerinde yalnızca otomatik ölçeklendirme özelliğini kullanmanız önerilir. 
+Örneklerin çıkarıldıklarında silinmesini isterseniz, çıkarma ilkesini *silinmek* üzere ayarlayabilirsiniz. Çıkarma ilkesi silinmek üzere ayarlandığında, ölçek kümesi örnek sayısı özelliğini artırarak yeni VM 'Ler oluşturabilirsiniz. Çıkarılan VM 'Ler, temel disklerle birlikte silinir ve bu nedenle depolama alanı için ücretlendirilmeyecektir. Ayrıca, çıkarılan VM 'Leri otomatik olarak denemek ve dengelemek için ölçek kümelerinin otomatik ölçeklendirme özelliğini de kullanabilirsiniz; ancak, ayırmanın başarılı olacağını garanti etmez. Disklerinizin maliyetini önlemek ve kota limitlerine ulaşmak üzere çıkarma ilkesini silinmek üzere ayarladığınızda Azure spot sanal makine ölçek kümelerinde yalnızca otomatik ölçeklendirme özelliğini kullanmanız önerilir. 
 
 Kullanıcılar [Azure zamanlanan olaylar](../virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı kabul edebilir. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>& geri yüklemeyi dene (Önizleme)
+
+Bu yeni platform düzeyi özelliği, hedef örnek sayısını korumak için otomatik olarak bir ölçek kümesi içinde çıkarılan Azure spot sanal makine örneklerini geri yüklemeyi denemek üzere AI 'yi kullanacaktır. 
+
+> [!IMPORTANT]
+> & geri yükleme işlemi şu anda genel önizlemede.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+& geri yükleme avantajlarını deneyin:
+- Bir ölçek kümesine Azure spot sanal makinesi dağıtıldığında varsayılan olarak etkindir.
+- Kapasite nedeniyle çıkarılan Azure spot sanal makinelerini geri yükleme girişimleri.
+- Geri yüklenen Azure spot sanal makinelerinin, daha uzun bir süre boyunca bir kapasite tetikleme çıkarmasının daha düşük bir olasılığı olması beklenir.
+- , Bir Azure spot sanal makinesinin kullanım süresini iyileştirir, böylelikle iş yükleri daha uzun bir süre çalışır.
+- , Sanal makine ölçek kümelerinin, Kullandıkça Öde VM 'Leri için zaten mevcut olan hedef sayısı özelliğini koruyun 'e benzer şekilde, Azure spot sanal makinelerinin hedef sayısını korumasına yardımcı olur.
+
+[Otomatik ölçeklendirme](virtual-machine-scale-sets-autoscale-overview.md)kullanan ölçek kümelerinde & geri yükleme işlemi devre dışı bırakıldı. Ölçek kümesindeki sanal makinelerin sayısı otomatik ölçeklendirme kuralları tarafından çalıştırılır.
+
 ## <a name="placement-groups"></a>Yerleştirme grupları
+
 Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile Azure kullanılabilirlik kümesine benzer bir yapıdır. Varsayılan olarak, bir ölçek kümesi en fazla 100 VM boyutuna sahip tek bir yerleştirme grubundan oluşur. Çağrılan ölçek kümesi özelliği `singlePlacementGroup` *false* olarak ayarlandıysa, ölçek kümesi birden çok yerleştirme grubundan oluşabilir ve 0-1000 VM aralığı vardır. 
 
 > [!IMPORTANT]
@@ -77,7 +96,7 @@ Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile A
 Azure spot sanal makineleri kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılı olarak aynıdır. Bir ölçek kümesi dağıttığınızda, nokta bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![ Azure spot sanal makineler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Azure spot sanal makineler ile bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılı olarak aynıdır. '--Priority noktası ' ve Ekle ' yi eklemeniz yeterlidir `--max-price` . Bu örnekte, `-1` Örneğin `--max-price` fiyata göre çıkarılamadığı için kullanırız.
 
@@ -136,6 +155,24 @@ Azure spot sanal makine şablonu dağıtımları için `"apiVersion": "2019-03-0
 ```
 
 Çıkarıldıktan sonra örneği silmek için `evictionPolicy` parametresini olarak değiştirin `Delete` .
+
+
+## <a name="simulate-an-eviction"></a>Çıkargı benzetimi yap
+
+Uygulamanızın ani bir çıkarmasına ne kadar iyi yanıt vereceğini test etmek için bir Azure spot sanal makinesinin [çıkarması benzetimi](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) yapabilirsiniz. 
+
+Aşağıdaki bilgilerinizi ile değiştirin: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` , sanal çıkaralma işleminin başarılı olduğu anlamına gelir. 
 
 ## <a name="faq"></a>SSS
 

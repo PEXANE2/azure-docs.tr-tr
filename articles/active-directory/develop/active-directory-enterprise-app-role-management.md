@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: aab1f99984ed5286692cbf9dae39fb4f7d28599c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652471"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648824"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) kullanarak, bir uygulamayı yetkilendirdikten 
 - Çoklu oturum açma (SSO) etkin olan bir abonelik. SSO 'yu uygulamanızla yapılandırmanız gerekir.
 
 > [!NOTE]
-> Bu makalede, Azure AD 'de API 'Leri kullanarak hizmet sorumlusu üzerinde uygulama rollerinin nasıl oluşturulacağı/silineceği ve silineceği açıklanmaktadır. Uygulama rolleri için yeni kullanıcı arabirimini kullanmak istiyorsanız [lütfen ayrıntılara bakın](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
+> Bu makalede, Azure AD 'de API 'Leri kullanarak hizmet sorumlusu üzerinde uygulama rollerinin nasıl oluşturulacağı/silineceği ve silineceği açıklanmaktadır. Uygulama rolleri için yeni kullanıcı arabirimini kullanmak istiyorsanız [lütfen ayrıntılara bakın](./howto-add-app-roles-in-azure-ad-apps.md).
 
 ## <a name="when-to-use-this-feature"></a>Bu özelliğin ne zaman kullanılacağı
 

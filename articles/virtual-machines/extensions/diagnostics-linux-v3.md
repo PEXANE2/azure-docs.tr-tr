@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 88f8d62a6321deae8a46d32441625c5960547694
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 6b03d4fb51021019da4c7d31fccf28b0ee157f32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982124"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670544"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı 3,0 kullanın
 
@@ -825,6 +825,6 @@ Bir EventHubs uç noktasına yayınlanan iletileri kullanmayı öğrenmek için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Topladığınız ölçümler için [Azure izleyici](../../azure-monitor/platform/alerts-classic-portal.md) 'de ölçüm uyarıları oluşturun.
-* Ölçümleriniz için [izleme grafikleri](../../azure-monitor/platform/data-platform.md) oluşturun.
+* Topladığınız ölçümler için [Azure izleyici](../../azure-monitor/alerts/alerts-classic-portal.md) 'de ölçüm uyarıları oluşturun.
+* Ölçümleriniz için [izleme grafikleri](../../azure-monitor/data-platform.md) oluşturun.
 * Otomatik ölçeklendirmeyi denetlemek için ölçümlerinizi kullanarak [bir sanal makine ölçek kümesi oluşturmayı](../linux/tutorial-create-vmss.md) öğrenin.

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627791"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658478"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Evet, analitik depo otomatik ölçeklendirme sağlanan aktarım hızı ile kapsa
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>Azure Cosmos DB işlemsel depoda sağlanan bir efekt var mı?
 
 Azure Cosmos DB, işlem ve analitik iş yükleri arasında performans yalıtımını garanti eder. Bir kapsayıcıda analitik deponun etkinleştirilmesi, Azure Cosmos DB işlem deposunda sağlanan RU/s 'yi etkilemez. Analitik mağazaya yönelik işlemler (okuma & yazma) ve depolama maliyetleri de ayrı olarak ücretlendirilir. Daha fazla bilgi için bkz. [analitik mağaza Azure Cosmos DB fiyatlandırması](analytical-store-introduction.md#analytical-store-pricing) .
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitik depoya erişimi kısıtlayabilir miyim?
+
+Evet seçeneği, yönetilen bir [Özel uç nokta](analytical-store-private-endpoints.md) yapılandırabilir ve analitik depolama alanının ağ erişimini Azure SYNAPSE yönetilen sanal ağına kısıtlayabilir. Yönetilen özel uç noktalar, analitik deponuza özel bir bağlantı kurar. Bu özel uç nokta Ayrıca diğer Azure veri Hizmetleri arasında işlem deposuna yazma erişimini kısıtlar.
+
+Azure SYNAPSE Analytics çalışma alanındaki aynı Azure Cosmos DB hesabına hem işlem deposu hem de analitik mağaza özel uç noktaları ekleyebilirsiniz. Yalnızca analitik sorgular çalıştırmak istiyorsanız, yalnızca analitik özel uç noktasını eşlemek isteyebilirsiniz.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>, Analitik depoya yansıtılan işlem deposunda silme ve güncelleştirme işlemleri mi var?
 

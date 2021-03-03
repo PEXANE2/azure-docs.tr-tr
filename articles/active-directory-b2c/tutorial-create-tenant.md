@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cb680221447594b4784f61112655d507397b1c00
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725762"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648858"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracısı oluşturma
 
@@ -68,7 +68,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     ![İçinde kiracı formunu örnek değerlerle oluşturun Azure portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. **Gözden geçir ve oluştur**’u seçin.
-1. Dizin ayarlarınızı gözden geçirin. Ardından **Oluştur**’u seçin. [Dağıtım hatalarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)için.
+1. Dizin ayarlarınızı gözden geçirin. Ardından **Oluştur**’u seçin. [Dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)için.
 
 Faturalama amacıyla birden çok Azure AD B2C kiracıyı tek bir Azure aboneliğine bağlayabilirsiniz. Bir kiracıyı bağlamak için Azure AD B2C kiracısında yönetici olmanız ve Azure aboneliği içinde en az bir katkıda bulunan rolü atanması gerekir. Bkz. [Azure AD B2C kiracıyı aboneliğe bağlama](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 

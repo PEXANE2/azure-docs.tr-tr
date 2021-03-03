@@ -4,15 +4,15 @@ description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hes
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 03/02/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: c684bd38f5e82cc53da002278495c2d4a859edc2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629655"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661299"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,11 +22,11 @@ Azure özel bağlantısı ' nı kullanarak bir Azure Cosmos hesabına özel bir 
 > [!NOTE]
 > Özel bağlantı, Azure Cosmos uç noktalarınızın genel DNS tarafından çözülmesini engellemez. Gelen isteklerin filtrelenmesi, aktarım veya ağ düzeyinde değil, uygulama düzeyinde gerçekleşir.
 
-Özel bağlantı, kullanıcıların bir Azure Cosmos hesabına sanal ağ içinden veya eşlenen herhangi bir sanal ağdan erişmesine olanak sağlar. Özel bağlantıyla eşlenen kaynaklara, VPN veya Azure ExpressRoute aracılığıyla özel eşleme üzerinden şirket içinde de erişilebilir. 
+Özel bağlantı, kullanıcıların bir Azure Cosmos hesabına sanal ağ içinden veya eşlenen herhangi bir sanal ağdan erişmesine olanak sağlar. Özel bağlantıyla eşlenen kaynaklara, VPN veya Azure ExpressRoute aracılığıyla özel eşleme üzerinden şirket içinde de erişilebilir.
 
-Otomatik veya el ile onay yöntemini kullanarak, özel bağlantıyla yapılandırılmış bir Azure Cosmos hesabına bağlanabilirsiniz. Daha fazla bilgi edinmek için özel bağlantı belgelerinin [onay iş akışı](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) bölümüne bakın. 
+Otomatik veya el ile onay yöntemini kullanarak, özel bağlantıyla yapılandırılmış bir Azure Cosmos hesabına bağlanabilirsiniz. Daha fazla bilgi edinmek için özel bağlantı belgelerinin [onay iş akışı](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) bölümüne bakın.
 
-Bu makalede özel uç nokta oluşturma adımları açıklanır. Otomatik onay yöntemini kullandığınızı varsayar.
+Bu makalede, Azure Cosmos DB işlemsel depolama için özel uç noktaların nasıl ayarlanacağı açıklanır. Otomatik onay yöntemini kullandığınızı varsayar. Analitik depoyu kullanıyorsanız, bkz. [analitik mağaza Için özel uç noktalar](analytical-store-private-endpoints.md) .
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
 
@@ -47,7 +47,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Kaynak grubu | Kaynak grubunu seçin.|
     | **Örnek ayrıntıları** |  |
     | Name | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
-    |Bölge| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
+    |Region| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
     |||
 1. **Sonraki: kaynak**' ı seçin.
 1. **Özel uç nokta oluştur-kaynak** bölümünde bu bilgileri girin veya seçin:
@@ -671,7 +671,7 @@ Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki s�
 
 * MongoDB hesapları için Azure Cosmos DB API 'sini kullanırken, yalnızca sunucu sürümü 3,6 (yani, o şekilde, o) hesapları için özel bir uç nokta desteklenir `*.mongo.cosmos.azure.com` . Özel bağlantı, sunucu sürümü 3,2 (yani, bu uç noktayı kullanan hesaplar) hesapları için desteklenmez `*.documents.azure.com` . Özel bağlantıyı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
 
-* Özel bağlantısına sahip MongoDB hesabı için bir Azure Cosmos DB API 'SI kullanırken, bazı araçlar ya da kitaplıklar, parametreleri otomatik olarak bağlantı dizesinden bir şekilde kullanıma açtıklarında çalışmayabilir `appName` . Bu parametre, hesaba özel bir uç nokta üzerinden bağlanmak için gereklidir. Visual Studio Code gibi bazı araçlar, bu parametreyi bağlantı dizesinden kaldırmaz ve bu nedenle uyumludur.
+* Özel bağlantısı olan MongoDB hesabı için bir Azure Cosmos DB API 'SI kullanırken, Araçlar/kitaplıklar hizmet adı tanımlamasını (SNı) desteklemelidir veya `appName` bağlantı dizesinden parametreyi doğru bir şekilde bağlanacak şekilde geçirmeye melidir. Bazı eski araçlar/kitaplıklar özel bağlantı özelliğini kullanmak için uyumlu olmayabilir.
 
 * `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action`Otomatik olarak onaylanan özel uç noktalar oluşturmak için, bir ağ yöneticisine en azından Azure Cosmos hesap kapsamında izin verilmelidir.
 

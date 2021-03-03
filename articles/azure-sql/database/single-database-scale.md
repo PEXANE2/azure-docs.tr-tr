@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 09/16/2020
-ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/22/2021
+ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493415"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658563"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
@@ -112,6 +112,7 @@ else {
 - [Coğrafi çoğaltma](active-geo-replication-configure-portal.md) etkinken bir veritabanını indirgemeden, ikincil veritabanını eski sürüme indirgemeden önce, birincil veritabanlarının istenen hizmet katmanına ve işlem boyutuna indirgenmesini sağlar (en iyi performans için genel kılavuz). Farklı bir sürüme düşürme yaparken, öncelikle birincil veritabanının indirgenmesi gereksinimidir.
 - Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürüyorsanız, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](automated-backups-overview.md).
 - Veritabanı için yeni özellikler, değişiklikler tamamlanana kadar uygulanmaz.
+- Bir veritabanını ölçeklendirmek için veri kopyalama gerektiğinde (bkz. [gecikme süresi](#latency)) hizmet katmanını değiştirirken, ölçek işlemine yönelik olarak yüksek kaynak kullanımı eşzamanlı ölçeklendirme sürelerine neden olabilir. [Hızlandırılmış veritabanı kurtarma (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md)sayesinde, uzun süre çalışan işlemlerin geri alınması önemli bir gecikme kaynağı değildir, ancak yüksek eşzamanlı kaynak kullanımı, özellikle daha küçük bilgi işlem boyutları için ölçekleme için daha az işlem, depolama ve ağ bant genişliği kaynakları bırakabilir.
 
 ## <a name="billing"></a>Faturalandırma
 

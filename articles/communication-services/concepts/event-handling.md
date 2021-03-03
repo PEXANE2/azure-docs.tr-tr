@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653790"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657171"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde olay Işleme
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, ölçeklenebilir ve güvenli bir şekilde sunmak için [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) ile tümleşir. Bu makalenin amacı, uygulamalarınızı Iletişim Hizmetleri olaylarını dinleyecek şekilde yapılandırmanıza yardımcı olur. Örneğin, Iletişim Hizmetleri kaynağınız ile ilişkili bir telefon numarası tarafından bir SMS iletisi alındığında bir veritabanını güncelleştirmek, bir iş öğesi oluşturmak ve anında iletme bildirimi sunmak isteyebilirsiniz.
 
@@ -31,7 +29,7 @@ Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir
 
 ## <a name="events-types"></a>Olay türleri
 
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. 
+Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır.
 
 Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 
@@ -207,7 +205,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser olayı 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser olayı
 
 ```json
 [{
@@ -265,7 +263,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser olayı 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser olayı
 
 ```json
 [{

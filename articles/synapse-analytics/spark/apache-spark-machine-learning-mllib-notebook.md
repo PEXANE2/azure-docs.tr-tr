@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935654"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670669"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
@@ -197,7 +197,7 @@ Artık iki veri çerçevesi olduğuna göre, sonraki görev model formülünü o
 > [!Note]
 > Modeli kaydetmek için *Depolama Blobu verileri katılımcısı* Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu veri katılımcısı rolünü Azure SQL veritabanı sunucunuza atayın. Yalnızca sahip ayrıcalıklarına sahip Üyeler bu adımı gerçekleştirebilir. 
 >
->Çeşitli Azure yerleşik rolleri için [bu kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+>Çeşitli Azure yerleşik rolleri için [bu kılavuza](../../role-based-access-control/built-in-roles.md)bakın.
 
 ```python
 ## Create a new logistic regression object for the model
@@ -256,9 +256,9 @@ Uygulamayı çalıştırmayı bitirdikten sonra, sekmeyi kapatarak, kaynakları 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Apache Spark belgeleri için .NET](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)
 - [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> Bazı resmi Apache Spark belgeleri, Azure SYNAPSE Analytics 'te Apache Spark bulunmayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veya [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) deneyimlerini kullanın.
+> Bazı resmi Apache Spark belgeleri, Azure SYNAPSE Analytics 'te Apache Spark bulunmayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](../quickstart-apache-spark-notebook.md) veya [IntelliJ](../spark/intellij-tool-synapse.md) deneyimlerini kullanın.

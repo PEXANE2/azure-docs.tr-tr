@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693343"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677834"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Öğretici: Azure purview (Önizleme) giriş sayfasına gidin ve bir varlık arayın
 
@@ -45,7 +45,7 @@ Aşağıdaki adımlar, Azure purview giriş sayfasında size yol gösterir.
 
 1. Azure portal Azure purview kaynağına gidin ve **purview Studio 'Yu aç**' ı seçin. Otomatik olarak purview Studio 'nun giriş sayfasına yönlendirilirsiniz.
 
-   Giriş sayfasının en üst kısmında, kataloğunuzun adı ve bir katalog Analizi kümesi görüntülenir. Dahil edilen Kullanıcı sayısı, veri varlıkları ve sözlük koşullardır. Özetle, toplam ve 113 sözlük koşullarında 200 ' den fazla varlık olduğunu görebilirsiniz. Bu sayı, kuruluşunuz taradığı şekilde güncelleştirilir ve Azure purview 'a daha fazla terim ekler.
+   Giriş sayfasının en üst kısmında, kataloğunuzun adı ve bir katalog Analizi kümesi görüntülenir. Kaynak, veri varlık ve sözlük terimi sayısıdır. Özetle, toplam ve 113 sözlük koşullarında 200 ' den fazla varlık olduğunu görebilirsiniz. Bu sayı, kuruluşunuz taradığı şekilde güncelleştirilir ve Azure purview 'a daha fazla terim ekler.
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Azure purview giriş sayfasını gösteren ekran görüntüsü.":::
 

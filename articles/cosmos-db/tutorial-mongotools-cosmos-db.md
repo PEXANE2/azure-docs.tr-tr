@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 2b52a9227e8bd487a8929df11047eef4672f7f4a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e9f3c877a5c4650d3e31fa414cac76837f4c9e8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100421981"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655760"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>Öğretici: MongoDB yerel araçlarını kullanarak MongoDB 'yi Azure Cosmos DB MongoDB 'ye geçirme
 
@@ -31,7 +31,7 @@ Bu öğreticide, MongoDB yerel araçlarını kullanarak MongoDB için bir Azure 
 
 MongoDB yerel araçları, verileri yalnızca konak donanımı izin verdiği kadar hızlı taşıyabilir; Yerel araçlar, toplam geçiş zamanının bir sorun olmadığı küçük veri kümeleri için en basit çözümdür. [MongoDB Spark Bağlayıcısı](https://docs.mongodb.com/spark-connector/current/), [Azure veri GEÇIŞ hizmeti (DMS)](../dms/tutorial-mongodb-cosmos-db.md)veya [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db-mongodb-api.md) , ölçeklenebilir bir geçiş işlem hattına ihtiyacınız varsa daha iyi alternatifler olabilir.
 
-Zaten bir MongoDB kaynağınız yoksa, [Azure 'Da WINDOWS VM 'de MongoDB 'Yi kurma ve yapılandırma](../virtual-machines/windows/install-mongodb.md)makalesine bakın.
+Zaten bir MongoDB kaynağınız yoksa, [Azure 'Da WINDOWS VM 'de MongoDB 'Yi kurma ve yapılandırma](/previous-versions/azure/virtual-machines/windows/install-mongodb)makalesine bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

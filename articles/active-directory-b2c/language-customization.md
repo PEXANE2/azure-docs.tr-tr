@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361222"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645917"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -115,6 +115,7 @@ Bir özel kullanıcı özniteliği için dizeyi değiştirmek isterseniz veya bi
       "Value": "<ExtensionAttributeValue>"
     }
     [...]
+  ]
 }
 ```
 
@@ -129,22 +130,24 @@ Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitel
 ```json
 {
   "LocalizedStrings": [...],
-  "LocalizedCollections": [{
+  "LocalizedCollections": [
+    {
       "ElementType":"ClaimType",
       "ElementId":"<UserAttribute>",
       "TargetCollection":"Restriction",
       "Override": true,
       "Items":[
-           {
-                "Name":"<Response1>",
-                "Value":"<Value1>"
-           },
-           {
-                "Name":"<Response2>",
-                "Value":"<Value2>"
-           }
-     ]
-  }]
+        {
+          "Name":"<Response1>",
+          "Value":"<Value1>"
+        },
+        {
+          "Name":"<Response2>",
+          "Value":"<Value2>"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -181,7 +184,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Özel Dil ekle
 
-Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. Kullanıcı akışındaki tüm dizeler için çevirileri sağlamanız gerekir. Dil ve yerel ayar kodları ISO 639-1 standardına göre sınırlandırılmıştır. Yerel ayar kodu biçimi, örneğin: en-GB Için "ISO_639-1_code"-"CountryCode" olmalıdır. Yerel ayar KIMLIĞI biçimleri hakkında daha fazla bilgi için lütfen bkz. https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. Kullanıcı akışındaki tüm dizeler için çevirileri sağlamanız gerekir. Dil ve yerel ayar kodları ISO 639-1 standardına göre sınırlandırılmıştır. Yerel ayar kodu biçimi, örneğin "ISO_639-1_code"-"CountryCode" olmalıdır `en-GB` . Yerel ayar KIMLIĞI biçimleri hakkında daha fazla bilgi için lütfen bkz. https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 2. Özel diller eklemek istediğiniz kullanıcı akışına tıklayın ve sonra **Diller**' e tıklayın.
@@ -429,7 +432,7 @@ Aşağıdaki örnekte, kayıt veya oturum açma sayfasına ve yerel hesap kaydol
 1. Karşıya yüklediğiniz ilkeyi seçin ve **Şimdi Çalıştır**' ı seçin.
 1. Yerelleştirilmiş kaydolma veya oturum açma sayfasını görebilmelisiniz.
 1. Kaydolma bağlantısına tıklayın ve yerelleştirilmiş kaydolma sayfasını görmeniz gerekir.)
-1. Tarayıcınızın varsayılan dilini Ispanyolca olarak değiştirin. Ya da sorgu dizesi parametresini `ui_locales` Yetkilendirme isteğine ekleyebilirsiniz. Örneğin: 
+1. Tarayıcınızın varsayılan dilini Ispanyolca olarak değiştirin. Ya da sorgu dizesi parametresini `ui_locales` Yetkilendirme isteğine ekleyebilirsiniz. Örnek: 
 
 ```http
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es

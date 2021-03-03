@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725680"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652088"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -42,8 +42,8 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemlerine yönelik g
 |--------------------------------|:--------:|:---------:|:------------:|
 | İş İçin Windows Hello     | Yüksek     | Yüksek      | Yüksek         |
 | Microsoft Authenticator uygulaması    | Yüksek     | Yüksek      | Yüksek         |
-| FIDO2 güvenlik anahtarı (Önizleme)   | Yüksek     | Yüksek      | Yüksek         |
-| OATH Donanım belirteçleri (Önizleme) | Orta   | Orta    | Yüksek         |
+| FIDO2 güvenlik anahtarı             | Yüksek     | Yüksek      | Yüksek         |
+| OATH donanım belirteçleri           | Orta   | Orta    | Yüksek         |
 | OATH yazılım belirteçleri           | Orta   | Orta    | Yüksek         |
 | SMS                            | Orta   | Yüksek      | Orta       |
 | Ses                          | Orta   | Orta    | Orta       |
@@ -66,9 +66,9 @@ Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama 
 | Yöntem                         | Birincil kimlik doğrulama | İkincil kimlik doğrulaması  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | İş İçin Windows Hello     | Yes                    | Çok faktörlü kimlik doğrulaması                       |
-| Microsoft Authenticator uygulaması    | Evet (Önizleme)          | MFA ve SSPR              |
-| FIDO2 güvenlik anahtarı (Önizleme)   | Yes                    | Çok faktörlü kimlik doğrulaması                       |
-| OATH Donanım belirteçleri (Önizleme) | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
+| Microsoft Authenticator uygulaması    | Yes                    | MFA ve SSPR              |
+| FIDO2 güvenlik anahtarı             | Yes                    | Çok faktörlü kimlik doğrulaması                       |
+| OATH donanım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
 | OATH yazılım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
 | SMS                            | Yes                    | MFA ve SSPR              |
 | Sesli arama                     | Hayır                     | MFA ve SSPR              |
@@ -80,8 +80,8 @@ Her bir kimlik doğrulama yönteminin nasıl çalıştığı hakkında daha fazl
 
 * [İş İçin Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator uygulaması](concept-authentication-authenticator-app.md)
-* [FIDO2 güvenlik anahtarı (Önizleme)](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH Donanım belirteçleri (Önizleme)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [FIDO2 güvenlik anahtarı](concept-authentication-passwordless.md#fido2-security-keys)
+* [OATH donanım belirteçleri](concept-authentication-oath-tokens.md#oath-hardware-tokens)
 * [OATH yazılım belirteçleri](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS oturum açma](howto-authentication-sms-signin.md) ve [doğrulama](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Sesli arama doğrulaması](concept-authentication-phone-options.md)

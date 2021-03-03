@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359617"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656406"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Bu makalede, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)depolanan verilere erişimin güvenliğini sağlamaya yönelik bir genel bakış sunulmaktadır.
+Bu makalede Azure Cosmos DB içindeki veri erişimi denetimine genel bakış sunulmaktadır.
 
-Azure Cosmos DB, kullanıcıların kimliğini doğrulamak ve veri ve kaynaklarına erişim sağlamak için iki tür anahtar kullanır. 
+Azure Cosmos DB verilerinize erişimi denetlemek için üç yol sağlar.
 
-|Anahtar türü|Kaynaklar|
+| Erişim denetimi türü | Özellikler |
 |---|---|
-|[Birincil anahtarlar](#primary-keys) |Yönetim kaynakları için kullanılır: veritabanı hesapları, veritabanları, kullanıcılar ve izinler|
-|[Kaynak belirteçleri](#resource-tokens)|Uygulama kaynakları için kullanılır: kapsayıcılar, belgeler, ekler, saklı yordamlar, Tetikleyiciler ve UDF 'ler|
+| [Birincil anahtarlar](#primary-keys) | Paylaşılan gizlilik, tüm yönetim veya veri işlemlerini sağlar. Hem okuma-yazma hem de salt okuma çeşitleri halinde gelir. |
+| [Rol tabanlı erişim denetimi](#rbac) (Önizleme) | Kimlik doğrulaması için Azure Active Directory (AAD) kimlikleri kullanan ayrıntılı, rol tabanlı izin modeli. |
+| [Kaynak belirteçleri](#resource-tokens)| Yerel Azure Cosmos DB kullanıcıları ve izinleri temel alan ayrıntılı izin modeli. |
 
-<a id="primary-keys"></a>
+## <a name="primary-keys"></a><a id="primary-keys"></a> Birincil anahtarlar
 
-## <a name="primary-keys"></a>Birincil anahtarlar
+Birincil anahtarlar, veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Her hesap iki birincil anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için yeniden oluşturmanız veya anahtar almanız sağlamaktır. Birincil anahtarlar hakkında daha fazla bilgi için bkz. [veritabanı güvenlik](database-security.md#primary-keys) makalesi.
 
-Birincil anahtarlar, veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Her hesap iki birincil anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır. Birincil anahtarlar hakkında daha fazla bilgi için bkz. [veritabanı güvenlik](database-security.md#primary-keys) makalesi.
-
-### <a name="key-rotation"></a>Anahtar döndürme<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> Anahtar döndürme
 
 Birincil anahtarınızı döndürme işlemi basittir. 
 
@@ -64,7 +63,23 @@ Aşağıdaki kod örneği, bir nesneyi başlatmak için Azure Cosmos DB hesap u�
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>Kaynak belirteçleri <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> Rol tabanlı erişim denetimi (Önizleme)
+
+Azure Cosmos DB, size olanak sağlayan yerleşik bir rol tabanlı erişim denetimi (RBAC) sistemi sunar:
+
+- Azure Active Directory (AAD) kimliğiyle veri isteklerinizin kimliğini doğrulayın.
+- Veri isteklerinizi ayrıntılı, rol tabanlı bir izin modeliyle yetkilendirin.
+
+RBAC Azure Cosmos DB, şu durumlarda ideal erişim denetimi yöntemidir:
+
+- Birincil anahtar gibi bir paylaşılan gizli dizi kullanmak istemezsiniz ve belirteç tabanlı bir kimlik doğrulama mekanizmasına dayalı olarak tercih edersiniz.
+- İsteklerinizin kimliğini doğrulamak için Azure AD kimliklerini kullanmak istiyorsanız,
+- Kimliklerinizin hangi veritabanı işlemlerini gerçekleştirmesine izin verileceğini sıkı bir şekilde kısıtlamak için hassas bir izin modeli gerekir,
+- Erişim denetimi ilkelerinizi birden çok kimliğe atayabilecek "Roller" olarak kullanmak istiyorsunuz.
+
+Azure Cosmos DB RBAC hakkında daha fazla bilgi için bkz. [Azure Cosmos DB hesabınız için rol tabanlı erişim denetimi yapılandırma](how-to-setup-rbac.md) .
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> Kaynak belirteçleri
 
 Kaynak belirteçleri, bir veritabanı içindeki uygulama kaynaklarına erişim sağlar. Kaynak belirteçleri:
 
@@ -97,7 +112,7 @@ Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları
 
 Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Kullanıcılar<a id="users"></a>
+### <a name="users"></a>Kullanıcılar<a id="users"></a>
 
 Azure Cosmos DB kullanıcılar bir Cosmos veritabanıyla ilişkilendirilir.  Her veritabanı sıfır veya daha fazla Kullanıcı Cosmos DB içerebilir. Aşağıdaki kod örneği, [.NET SDK v3 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)kullanarak Cosmos DB bir kullanıcının nasıl oluşturulacağını göstermektedir.
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Her Cosmos DB kullanıcının, kullanıcıyla ilişkili [izin](#permissions) listesini almak için kullanılabilecek bir ReadAsync () yöntemi vardır.
 
-## <a name="permissions"></a>İzinler<a id="permissions"></a>
+### <a name="permissions"></a>İzinler<a id="permissions"></a>
 
 Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı düzeyi olarak kapsayıcıda atanır. Her Kullanıcı sıfır veya daha fazla izin içerebilir. Bir izin kaynağı, belirli bir bölüm anahtarındaki belirli bir kapsayıcıya veya verilere erişmeyi denerken kullanıcının ihtiyacı olan bir güvenlik belirtecine erişim sağlar. Bir izin kaynağı tarafından sağlanarak kullanılabilecek iki erişim düzeyi vardır:
 
@@ -127,7 +142,7 @@ Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı d�
 
 * **Resourcetokenpermissionmode** -bu özellik, kaynak belirtecini oluştururken ayarlamış olduğunuz izin modunu gösterir. İzin modunun "All" veya "Read" gibi değerleri olabilir.
 
-### <a name="code-sample-to-create-permission"></a>İzin oluşturmak için kod örneği
+#### <a name="code-sample-to-create-permission"></a>İzin oluşturmak için kod örneği
 
 Aşağıdaki kod örneği, bir izin kaynağı oluşturmayı, izin kaynağının kaynak belirtecini okumayı ve izinleri yukarıda oluşturulan [kullanıcıyla](#users) ilişkilendirmeyi gösterir.
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Kullanıcı için okuma izni için kod örneği
+#### <a name="code-sample-to-read-permission-for-user"></a>Kullanıcı için okuma izni için kod örneği
 
 Aşağıdaki kod parçacığı, yukarıda oluşturulan kullanıcıyla ilişkili iznin nasıl alınacağını gösterir ve tek bir bölüm anahtarı kapsamındaki Kullanıcı adına yeni bir CosmosClient örneği oluşturur.
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>RBAC ve kaynak belirteçleri arasındaki farklılıklar
+
+| Konu | RBAC | Kaynak belirteçleri |
+|--|--|--|
+| Kimlik Doğrulaması  | Azure Active Directory (Azure AD) ile. | Yerel Azure Cosmos DB kullanıcılara göre<br>Kaynak belirteçlerini Azure AD ile tümleştirmek, Azure AD kimliklerini ve Azure Cosmos DB kullanıcılarını köprülemek için ek iş gerektirir. |
+| Yetkilendirme | Rol tabanlı: rol tanımları eşleme izin verilen eylemler ve birden çok kimliğe atanabilir. | İzin tabanlı: her Azure Cosmos DB Kullanıcı için veri erişim izinleri atamanız gerekir. |
+| Belirteç kapsamı | AAD belirteci, istek sahibinin kimliğini taşır. Bu kimlik, yetkilendirme gerçekleştirmek için atanan tüm rol tanımlarına göre eşleştirilir. | Kaynak belirteci belirli bir Azure Cosmos DB kaynağında belirli bir Azure Cosmos DB kullanıcısına verilen izni taşır. Farklı kaynaklardaki yetkilendirme istekleri farklı belirteçler gerektirebilir. |
+| Belirteç yenileme | AAD belirteci, süresi sona erdiğinde Azure Cosmos DB SDK 'lar tarafından otomatik olarak yenilenir. | Kaynak belirteci yenilemesi desteklenmiyor. Bir kaynak belirtecinin süresi dolarsa, yeni bir tane verilmesi gerekir. |
 
 ## <a name="add-users-and-assign-roles"></a>Kullanıcı ekleme ve rol atama
 

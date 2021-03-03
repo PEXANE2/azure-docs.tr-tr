@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/17/2021
-ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/23/2021
+ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096520"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660806"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Yönetilen Örneği'nde kullanıcı tarafından başlatılan el ile yük devretme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Aşağıdaki nedenlerden bazıları için SQL yönetilen örneği üzerinde [el 
 - Sorgu performansı azalmaları bazı durumlarda, el ile yük devretme, performans sorununu azaltmaya yardımcı olabilir.
 
 > [!NOTE]
-> Üretim ortamına dağıtmadan önce uygulamalarınızın yük devri açısından dayanıklı olmasını sağlamak, üretimde uygulama hatalarının riskini azaltmaya yardımcı olur ve müşterileriniz için uygulama kullanılabilirliğine katkıda bulunur.
+> Üretim ortamına dağıtmadan önce uygulamalarınızın yük devri açısından dayanıklı olmasını sağlamak, üretimde uygulama hatalarının riskini azaltmaya yardımcı olur ve müşterileriniz için uygulama kullanılabilirliğine katkıda bulunur. [SQL yönetilen örnek video alma Ile yük devretme dayanıklılığı için uygulamalarınızı test](https://youtu.be/FACWYLgYDL8) etmeye yönelik test etme ile ilgili daha fazla bilgi edinin.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde el ile yük devretme başlatma
 
@@ -43,7 +43,7 @@ Aşağıdaki nedenlerden bazıları için SQL yönetilen örneği üzerinde [el 
 Yük devretmeyi başlatan kullanıcının aşağıdaki Azure rollerinden birine sahip olması gerekir:
 
 - Abonelik sahibi rolü veya
-- Yönetilen örnek katılımcısı rolü veya
+- [Yönetilen örnek katılımcısı](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) rolü veya
 - Aşağıdaki izne sahip özel rol:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -153,6 +153,6 @@ Yük devretme sırasında istemcinizden kısa bir süre içinde bağlantı kayb�
 > - Yeni bir veritabanı için ilk tam yedekleme otomatik yedekleme sistemleri tarafından tamamlanana kadar yük devretmeye izin verilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
+- [SQL yönetilen örnek video alma Ile yük devretme dayanıklılığı için uygulamalarınızı test](https://youtu.be/FACWYLgYDL8) etmeye yönelik test etme ile ilgili daha fazla bilgi edinin.
 - [Azure SQL yönetilen örneği için](../database/high-availability-sla.md)yüksek oranda yönetilen örnek kullanılabilirliği hakkında daha fazla bilgi edinin.
 - Genel bakış için bkz. [Azure SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md).

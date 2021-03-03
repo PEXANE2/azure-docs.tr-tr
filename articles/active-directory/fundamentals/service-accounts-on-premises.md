@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de24975dadf27293f305611c6ba07522e8aa90
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417966"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645625"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Active Directory hizmet hesaplarına giriş
 
@@ -34,7 +34,7 @@ Kullanım çalışmanıza göre, bir hizmeti çalıştırmak için yönetilen hi
 
 ### <a name="group-msa-accounts"></a>MSA hesaplarını Gruplandır
 
-Şirket içi ortamınızda çalışan hizmetler için mümkün olduğunda [Grup yönetilen hizmet hesaplarını](service-accounts-group-managed.md) (gMSAs) kullanın. gMSAs, bir sunucu grubunda çalışan bir hizmet için veya bir ağ yükü dengeleyicinin arkasında tek bir kimlik çözümü sağlar. Tek bir sunucu üzerinde çalışan bir hizmet için de kullanılabilir. [gMSAs, karşılanması gereken belirli gereksinimlere sahiptir](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+Şirket içi ortamınızda çalışan hizmetler için mümkün olduğunda [Grup yönetilen hizmet hesaplarını](service-accounts-group-managed.md) (gMSAs) kullanın. gMSAs, bir sunucu grubunda çalışan bir hizmet için veya bir ağ yükü dengeleyicinin arkasında tek bir kimlik çözümü sağlar. Tek bir sunucu üzerinde çalışan bir hizmet için de kullanılabilir. [gMSAs, karşılanması gereken belirli gereksinimlere sahiptir](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 ### <a name="standalone-msa-accounts"></a>Tek başına MSA hesapları
 
@@ -138,4 +138,3 @@ Hizmet hesaplarını güvenli hale getirmek için aşağıdaki makalelere bakın
 
 * [Şirket içi hizmet hesaplarını yönetir](service-accounts-govern-on-premises.md)
 
- 

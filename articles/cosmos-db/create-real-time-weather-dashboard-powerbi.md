@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333605"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657545"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB ve Power BI kullanarak gerçek zamanlı pano oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri barındıran b
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Azure Cosmos DB Hava durumu verileri alma
 
-Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) yüklemek için bir giriş işlem hattı ayarlayın. En son hava durumu verilerini, HTTP kaynağı ve Cosmos DB havuzunu kullanarak Azure Cosmos DB düzenli aralıklarla yüklemek için bir [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) işi ayarlayabilirsiniz.
+Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) yüklemek için bir giriş işlem hattı ayarlayın. En son hava durumu verilerini, HTTP kaynağı ve Cosmos DB havuzunu kullanarak Azure Cosmos DB düzenli aralıklarla yüklemek için bir [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) işi ayarlayabilirsiniz.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Power BI Azure Cosmos DB bağlama
@@ -94,7 +94,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Azure Cosmos DB Hava durumu verileri alma 
 
-Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) yüklemek için bir giriş işlem hattı ayarlayın. En son hava durumu verilerini, HTTP kaynağı ve Cosmos DB havuzunu kullanarak Azure Cosmos DB düzenli aralıklarla yüklemek için bir Azure Data Factory (ADF) işi ayarlayabilirsiniz.
+Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) yüklemek için bir giriş işlem hattı ayarlayın. En son hava durumu verilerini, HTTP kaynağı ve Cosmos DB havuzunu kullanarak Azure Cosmos DB düzenli aralıklarla yüklemek için bir Azure Data Factory (ADF) işi ayarlayabilirsiniz.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services Azure Cosmos hesabına bağlama
 
@@ -112,7 +112,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB veri kaynağı Ekle":::
 
-   **Hesap URI 'si** , **veritabanı adı** ve **kapsayıcı adı** sağlayarak Azure Cosmos DB bağlanın. Artık Azure Cosmos kapsayıcısından alınan verileri Power BI olarak görebilirsiniz.
+   **Hesap URI 'si**, **veritabanı adı** ve **kapsayıcı adı** sağlayarak Azure Cosmos DB bağlanın. Artık Azure Cosmos kapsayıcısından alınan verileri Power BI olarak görebilirsiniz.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB verilerini Önizle":::
 
@@ -151,7 +151,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
    * **En son ay** - `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Eskiye** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Modeli Azure Analiz sunucusu dağıtma** -Azure Analysis Services projeye sağ tıklayıp **Dağıt** ' ı seçin. Sunucu adını **dağıtım sunucusu Özellikler** bölmesine ekleyin.
+1. **Modeli Azure Analiz sunucusu dağıtma** -Azure Analysis Services projeye sağ tıklayıp **Dağıt**' ı seçin. Sunucu adını **dağıtım sunucusu Özellikler** bölmesine ekleyin.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Analysis Services modeli dağıt":::
 

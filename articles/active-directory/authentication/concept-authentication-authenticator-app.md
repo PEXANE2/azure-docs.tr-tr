@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7309d9d32eba5cae350bbe8a1df325dfb2ab0c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7fafeae02bce001d473b0ed916624046a559a795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744372"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648807"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory Microsoft Authenticator uygulamasındaki kimlik doğrulama yöntemleri
 
@@ -23,7 +23,7 @@ Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Mic
 
 Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OATH doğrulama kodu oluşturmak için Mobil uygulamayla ilgili bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
 
-Kimlik doğrulayıcı uygulamasını Kullanıcı adı ve parola birleşimi yerine bir oturum açma isteminde kullanmak için bkz. [Microsoft Authenticator App (Önizleme) ile passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md).
+Kimlik doğrulayıcı uygulamasını Kullanıcı adı ve parola birleşimi yerine bir oturum açma isteminde kullanmak için bkz. [Microsoft Authenticator App ile passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md).
 
 > [!NOTE]
 > Kullanıcılar SSPR 'yi etkinleştirdiklerinde mobil uygulamalarını kaydetme seçeneğine sahip değildir. Bunun yerine, kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup) konumundaki Birleşik güvenlik bilgileri kaydının bir parçası olarak veya ' de kaydedebilir [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
@@ -34,7 +34,7 @@ Kullanıcı adı girdikten sonra parola istemi görmek yerine, Microsoft Authent
 
 ![Kullanıcının oturum açma onayını onaylamasını isteyen tarayıcı oturum açma örneği](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Bu kimlik doğrulama yöntemi, yüksek düzeyde güvenlik sağlar ve kullanıcının oturum açma sırasında parola sağlaması gereksinimini ortadan kaldırır. Microsoft Authenticator uygulamasını kullanan parolasız oturum açma işlemi şu anda önizlemededir.
+Bu kimlik doğrulama yöntemi, yüksek düzeyde güvenlik sağlar ve kullanıcının oturum açma sırasında parola sağlaması gereksinimini ortadan kaldırır. 
 
 Parolasız oturum açma 'yı kullanmaya başlamak için bkz. [Microsoft Authenticator App ile parolasız oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md).
 

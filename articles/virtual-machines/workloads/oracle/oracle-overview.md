@@ -1,24 +1,24 @@
 ---
 title: Microsoft Azure Oracle çözümleri | Microsoft Docs
 description: Tamamen Azure altyapısında çalışan veya Oracle bulut altyapısı (OCı) ile platformlar arası bağlantı kullanma dahil olmak üzere Microsoft Azure ' de Oracle uygulamalarını ve çözümlerini dağıtmaya yönelik seçenekler hakkında bilgi edinin.
-services: virtual-machines-linux
 documentationcenter: ''
 author: dbakevlar
 tags: azure-resource-management
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: d9b032bbd89f8b6d300650ac54567b07ae3307b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948400"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677177"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -102,4 +102,4 @@ Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" mo
 
 * [OCI Ile Azure bağlantısı](oracle-oci-overview.md)oluşturma hakkında daha fazla bilgi edinin.
 
-* Ignite 2019 [' den Oracle 'ın Azure 'a genel bakış oturumuna](https://myignite.techcommunity.microsoft.com/sessions/82915) göz atın. 
+* Ignite 2019 [' den Oracle 'ın Azure 'a genel bakış oturumuna](https://www.pluralsight.com/courses/microsoft-ignite-session-57) göz atın. 

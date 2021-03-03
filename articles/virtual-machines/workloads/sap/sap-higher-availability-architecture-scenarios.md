@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d7904b950fa79f9ccbf98ec08f09aa6688f8a99
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a107453e040c1b4e31b833fedca0d2017e983740
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957903"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672998"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>SAP sisteminin "daha yüksek kullanılabilirlik" düzeyine ulaşmak için Azure altyapı VM yeniden başlatma işlemini kullanma
 
@@ -253,7 +252,7 @@ Kritik SAP bileşenleri için şu ana kadar şunu elde edersiniz:
 
 * SAP ASCS/SCS örneklerinin *daha yüksek kullanılabilirliği*
 
-    Bu senaryoda VM 'yi yüklü SAP ASCS/SCS örneğiyle korumak için Azure VM yeniden başlatma 'yı kullanın. Azure sunucularının planlanmış veya planlanmamış kapalı kalma süresi söz konusu olduğunda, VM 'Ler kullanılabilir başka bir sunucuda yeniden başlatılır. Daha önce belirtildiği gibi, Azure VM yeniden başlatması öncelikle VM *not* 'leri korur, bu durumda yoks/SCS örneği. VM yeniden başlatıldığında, SAP Ass/SCS örneğinin "daha yüksek kullanılabilirliğine" sahip olursunuz. 
+    Bu senaryoda VM 'yi yüklü SAP ASCS/SCS örneğiyle korumak için Azure VM yeniden başlatma 'yı kullanın. Azure sunucularının planlanmış veya planlanmamış kapalı kalma süresi söz konusu olduğunda, VM 'Ler kullanılabilir başka bir sunucuda yeniden başlatılır. Daha önce belirtildiği gibi, Azure VM yeniden başlatması öncelikle VM  'leri korur, bu durumda yoks/SCS örneği. VM yeniden başlatıldığında, SAP Ass/SCS örneğinin "daha yüksek kullanılabilirliğine" sahip olursunuz. 
 
     VM yeniden başlatıldıktan sonra Ass/SCS örneğinin otomatik başlamasını sağlamak için, [sap örnekleri Için autostart 'ı kullanma][planning-guide-11.5] bölümünde açıklandığı gıbı, ascs/SCS örnek başlangıç profilinde autostart parametresini ayarlayın. Bu ayar, Ass/SCS örneğinin tek bir VM 'de çalışan tek bir hata noktası (SPOF) olarak tüm SAP yatay kullanılabilirliğini belirleyeceğini gösterir.
 

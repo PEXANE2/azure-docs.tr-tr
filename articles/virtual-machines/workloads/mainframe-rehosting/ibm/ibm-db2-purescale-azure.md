@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221760"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675678"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
 
@@ -96,9 +96,9 @@ Büyük bir DB2 pureScale kümesi, 200 terabayt (TB) veya daha fazla Premium pay
 
 IBM, bir DB2 pureScale kümesindeki tüm Üyeler için InfiniBand ağı önerir. DB2 pureScale Ayrıca, CFs için kullanılabilir yerlerde uzak doğrudan bellek erişimi (RDMA) kullanır.
 
-Kurulum sırasında, tüm sanal makineleri içeren bir Azure [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) oluşturursunuz. Genel olarak, kaynakları kendi yaşam süresine göre gruplayan ve bunları yöneteceksiniz. Bu mimarideki sanal makineler [hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)gerektirir. Tek köklü g/ç Sanallaştırması (SR-ıOV) ile bir sanal makineye tutarlı, ultra düşük ağ gecikmesi sağlayan bir Azure özelliğidir.
+Kurulum sırasında, tüm sanal makineleri içeren bir Azure [kaynak grubu](../../../../azure-resource-manager/management/overview.md) oluşturursunuz. Genel olarak, kaynakları kendi yaşam süresine göre gruplayan ve bunları yöneteceksiniz. Bu mimarideki sanal makineler [hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)gerektirir. Tek köklü g/ç Sanallaştırması (SR-ıOV) ile bir sanal makineye tutarlı, ultra düşük ağ gecikmesi sağlayan bir Azure özelliğidir.
 
-Her Azure sanal makinesi, alt ağları olan bir sanal ağa dağıtılır: Main, Gluster FS ön ucu (gfsfe), Gluster FS arka ucu (bfsin), DB2 pureScale (db2be) ve DB2 pureScale ön ucu (db2fe). Yükleme betiği, ana alt ağdaki sanal makinelerde birincil [NIC 'leri](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) de oluşturur.
+Her Azure sanal makinesi, alt ağları olan bir sanal ağa dağıtılır: Main, Gluster FS ön ucu (gfsfe), Gluster FS arka ucu (bfsin), DB2 pureScale (db2be) ve DB2 pureScale ön ucu (db2fe). Yükleme betiği, ana alt ağdaki sanal makinelerde birincil [NIC 'leri](../../../windows/multiple-nics.md) de oluşturur.
 
 Sanal ağ içindeki ağ trafiğini kısıtlamak ve alt ağları yalıtmak için [ağ güvenlik grupları](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md) 'nı kullanın.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704228"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644706"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Öğretici: splan ziyaretçisi ile Azure Active Directory çoklu oturum açmayı (SSO) tümleştirin
 
@@ -26,7 +26,7 @@ Bu öğreticide, splan ziyaretçisini Azure Active Directory (Azure AD) ile tüm
 * Kullanıcıların Azure AD hesaplarıyla splan ziyaretçisinden otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
@@ -120,8 +120,8 @@ Splan ziyaretçisinden **Britta Simon** adlı bir test kullanıcısı oluşturun
 Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerden biriyle test edin:
 
 * **Azure Portal**: SSO 'Yu ayarladığınız splan ziyaretçisinden otomatik olarak oturum açmak için **Bu uygulamayı test** et ' i seçin.
-* **Microsoft uygulamalarım portalı**: SSO 'Yu ayarladığınız splan ziyaretçisinden otomatik olarak oturum açmak Için **splan ziyaretçi** kutucuğunu seçin. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* **Microsoft uygulamalarım portalı**: SSO 'Yu ayarladığınız splan ziyaretçisinden otomatik olarak oturum açmak Için **splan ziyaretçi** kutucuğunu seçin. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Splan ziyaretçisini yapılandırdıktan sonra, [Microsoft Cloud App Security ' de oturum denetimlerini nasıl zorlayabileceğinizi öğrenebilirsiniz](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app). Oturum denetimleri, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanma ve zaman denetimini korumanıza yardımcı olur. Oturum denetimleri koşullu erişimden genişletilir.
+Splan ziyaretçisini yapılandırdıktan sonra, [Microsoft Cloud App Security ' de oturum denetimlerini nasıl zorlayabileceğinizi öğrenebilirsiniz](/cloud-app-security/proxy-deployment-any-app). Oturum denetimleri, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanma ve zaman denetimini korumanıza yardımcı olur. Oturum denetimleri koşullu erişimden genişletilir.

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389748"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667846"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureActiveDirectory** | Azure Active Directory. | Giden | Hayır | Yes |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
 | **AzureAdvancedThreatProtection** | Azure Gelişmiş tehdit koruması. | Giden | Hayır | Hayır |
+| **AzureAPIForFHIR** | FHıR için Azure API (hızlı sağlık ile birlikte çalışabilirlik kaynakları).<br/><br/> *Not: Bu etiket Şu anda Azure Portal aracılığıyla yapılandırılamaz.*| Giden | Hayır | Hayır |
 | **AzureArcInfrastructure** | Azure Arc etkin sunucuları, Azure Arc etkin Kubernetes ve konuk yapılandırma trafiği.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory**,**AzureTrafficManager** ve **AzureResourceManager** etiketlerine bir bağımlılığı vardır. *Bu etiket Şu anda Azure Portal aracılığıyla yapılandırılamaz*.| Giden | Hayır | Yes |
 | **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Giden | Hayır | Yes |
 | **AzureBotService** | Azure bot hizmeti. | Giden | Hayır | Hayır |
