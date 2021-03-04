@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952248"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033631"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -137,6 +137,14 @@ Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar.
 - [Denetim günlüklerini listeleme](/graph/api/directoryaudit-list)
 
 Azure AD B2C denetim günlüklerine erişme hakkında daha fazla bilgi için bkz. [Azure AD B2C denetim günlüklerine erişme](view-audit-logs.md).
+
+## <a name="conditional-access"></a>Koşullu Erişim
+
+- [Tüm koşullu erişim ilkelerini listeleyin](/graph/api/resources/conditionalaccessroot-list-policies)
+- [Koşullu erişim ilkesinin özelliklerini ve ilişkilerini okuyun](/graph/api/conditionalaccesspolicy-get)
+- [Yeni bir koşullu erişim ilkesi oluşturma](/graph/api/resources/application)
+- [Koşullu erişim ilkesini güncelleştirme](/graph/api/conditionalaccesspolicy-update)
+- [Koşullu erişim ilkesini silme](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod örneği: program aracılığıyla Kullanıcı hesaplarını yönetme
 

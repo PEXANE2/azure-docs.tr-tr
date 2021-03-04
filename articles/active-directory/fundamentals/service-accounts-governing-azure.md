@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693254"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034543"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD hizmet hesaplarını yöneten
 
@@ -51,13 +51,13 @@ Hizmet hesabı ayrıcalıkları için aşağıdaki yöntemleri öneririz.
 
 **İzinler**
 
-* Hizmet hesaplarına yerleşik roller atamayın. Bunun yerine, [Microsoft Graph Için OAuth2 izin verme modelini](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)kullanın,
+* Hizmet hesaplarına yerleşik roller atamayın. Bunun yerine, [Microsoft Graph Için OAuth2 izin verme modelini](/graph/api/resources/oauth2permissiongrant)kullanın,
 
 * Hizmet sorumlusuna ayrıcalıklı bir rol atanması gerekiyorsa, belirli, gerekli ayrıcalıklı olan [özel bir rolü](https://docs.microsoft.com/azure/active-directory/roles/custom-create) zamana bağlıysa bir biçimde atamayı düşünün.
 
 * Hizmet hesaplarını yükseltilmiş izinlere sahip herhangi bir grubun üyeleri olarak eklemeyin. 
 
-* Gibi [ayrıcalıklı rollerin üyelerini numaralandırmak Için PowerShell kullanın](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)   
+* Gibi [ayrıcalıklı rollerin üyelerini numaralandırmak Için PowerShell kullanın](/powershell/module/azuread/get-azureaddirectoryrolemember)   
 `Get-AzureADDirectoryRoleMember`ve ObjectType "hizmet sorumlusu" için filtre uygulayın.
 
    veya kullanın  
@@ -117,7 +117,7 @@ Azure AD oturum açma günlüklerini dışa aktarmanızı ve bunları Azure Sent
 
 , Kaldırılan izinleri ve hizmet hesapları tarafından erişilip düşürülemeyeceğini görmek için düzenli olarak gözden geçirin.
 
-* Bir hizmet hesabına izin verilen kapsamları [denetlemek ve belgelemek üzere otomasyon oluşturmak](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) için [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) 'i kullanın.
+* Bir hizmet hesabına izin verilen kapsamları [denetlemek ve belgelemek üzere otomasyon oluşturmak](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) için [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) 'i kullanın.
 
 * [Mevcut hizmet asıl kimlik bilgilerini gözden geçirmek](https://github.com/AzureAD/AzureADAssessment) ve bunların geçerliliğini denetlemek için PowerShell 'i kullanın.
 
@@ -172,7 +172,7 @@ Hizmet hesaplarının sahipleri ve güvenlik ya da BT ekibi tarafından düzenli
 
 **Sağlama kaldırma işlemleri aşağıdaki görevleri içermelidir.**
 
-1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md) işlemlerini ve kaynak erişimini izleyin.
+1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) işlemlerini ve kaynak erişimini izleyin.
 
    * Hesap hala etkinse, sonraki adımları uygulamadan önce nasıl kullanıldığını saptayın.
  

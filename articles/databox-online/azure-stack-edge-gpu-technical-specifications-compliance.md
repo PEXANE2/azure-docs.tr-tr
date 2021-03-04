@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573335"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034753"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için teknik belirtimler ve uyumluluk 
 
@@ -25,7 +25,7 @@ Azure Stack Edge Pro cihazı, işlem ve bellek için aşağıdaki belirtimlere s
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
-| CPU                     | 2 X Intel Xeon gümüş 4214 (Cascade Lake) CPU            |
+| CPU                     | 2 X Intel Xeon gümüş 4214 (Cascade Lake) CPU<br> 24 fiziksel çekirdek (CPU başına 12)<br>48 mantıksal çekirdek (vCPU) (CPU başına 24)       |
 | Bellek                  | 128 (8x16 GB) GB RAM <br> Dell uyumlu 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC Kayıtlı RDıMM       |
 
 

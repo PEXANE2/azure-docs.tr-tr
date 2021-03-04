@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 description: Performans sayaçları, Windows ve Linux aracılarındaki performansı çözümlemek için Azure Izleyici tarafından toplanır.  Bu makalede, hem Windows hem de Linux aracıları için performans sayaçları koleksiyonunun nasıl yapılandırılacağı, bunların ayrıntılarının çalışma alanında saklandıkları ve Azure portal nasıl çözümleneceği açıklanır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711561"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036796"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerini toplamaya ek olarak neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla Log Analytics aracılarından performans sayaçlarını toplayabilir.
@@ -22,7 +21,7 @@ Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim 
 ![Performans sayaçları](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
-Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](../agents/agent-data-sources.md#configuring-data-sources) performans sayaçlarını yapılandırın.
+Log Analytics çalışma alanı için [aracılar yapılandırma menüsünden](../agents/agent-data-sources.md#configuring-data-sources) performans sayaçlarını yapılandırın.
 
 Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur.  Her birinin yanında bir onay kutusu görüntülenir.  Başlangıçta oluşturulmasını istediğiniz tüm sayaçların işaretli olduğundan emin olun ve ardından **Seçili performans sayaçlarını Ekle**' ye tıklayın.
 
@@ -36,28 +35,28 @@ Windows performans sayaçları için her performans sayacı için belirli bir ö
 
 ### <a name="windows-performance-counters"></a>Windows performans sayaçları
 
-![Windows performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-windows.png)
+[![Windows performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-windows.png)](media/data-sources-performance-counters/configure-windows.png#lightbox)
 
 Toplanacak yeni bir Windows performans sayacı eklemek için bu yordamı izleyin. V2 Windows performans sayaçlarının desteklenmediğini lütfen unutmayın.
 
-1. *Nesne (örnek) \Sayaç* biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  Ayrıca, *object\counter* belirterek belirli bir sayaca ait tüm örnekleri döndürebilirsiniz.  
+1. **Performans sayacı Ekle**' ye tıklayın.
+2. *Nesne (örnek) \Sayaç* biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  Ayrıca, *object\counter* belirterek belirli bir sayaca ait tüm örnekleri döndürebilirsiniz.  
 
     Adlandırılmış örneklerden SQL Server performans sayaçlarını toplarken, tüm adlandırılmış örnek sayaçları *MSSQL $* ile başlar ve ardından örnek adı gelir.  Örneğin, INST2 adlı SQL örneği için veritabanı performans nesnesinden tüm veritabanları için günlük önbelleği Isabet oranı sayacını toplamak için, belirtin `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
-2. **+** Sayacı listeye eklemek  için tıklayın veya ENTER tuşuna basın.
-3. Bir sayaç eklediğinizde, **örnek aralığı** için varsayılan 10 saniye kullanır.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız, bu değeri 1800 saniyeye (30 dakika) daha yüksek bir değere dönüştürebilirsiniz.
-4. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
+4. Bir sayaç eklediğinizde, **örnek aralığı** için varsayılan 10 saniye kullanır.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız, bu değeri 1800 saniyeye (30 dakika) daha yüksek bir değere dönüştürebilirsiniz.
+5. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Uygula** düğmesine tıklayın.
 
 ### <a name="linux-performance-counters"></a>Linux performans sayaçları
 
-![Linux performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-linux-1.png)
+[![Linux performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-linux.png)](media/data-sources-performance-counters/configure-linux.png#lightbox)
 
 Toplanacak yeni bir Linux performans sayacı eklemek için bu yordamı izleyin.
 
+1. **Performans sayacı Ekle**' ye tıklayın.
 1. *Nesne (örnek) \Sayaç* biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
-1. **+** Sayacı, nesne  için diğer sayaçlar listesine eklemek için tıklayın veya ENTER tuşuna basın.
 1. Bir nesne için tüm sayaçlar aynı **örnek aralığı** kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
-1. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
+1. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Uygula** düğmesine tıklayın.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Yapılandırma dosyasında Linux performans sayaçlarını yapılandırma
 Linux performans sayaçlarını Azure portal kullanarak yapılandırmak yerine, Linux aracısında yapılandırma dosyalarını düzenlemeyle ilgili seçeneğiniz vardır.  Toplanacak performans ölçümleri, **/etc/seçenek/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.exe** içindeki yapılandırma tarafından denetlenir.

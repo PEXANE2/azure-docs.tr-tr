@@ -2,15 +2,15 @@
 title: ARM şablonu sık sorulan sorular
 description: Azure Resource Manager şablonları (ARM şablonları) hakkında sık sorulan sorular (SSS).
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561911"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036149"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
@@ -88,7 +88,7 @@ Bu makale Azure Resource Manager şablonları (ARM şablonları) hakkında sık 
 
 * **Yeni bir şablon dili üzerinde çalıştığınızı duydum. Bunun hakkında daha fazla bilgi edinebilirim?**
 
-  Yeni dili önizlemek için bkz. [Proje Bıcep deposu](https://github.com/Azure/bicep). Yeni dil hakkında bilgi sahibi olmak için [bildirimlere kaydolun](https://aka.ms/armLangUpdates).
+  Yeni dil hakkında bilgi edinmek için bkz. [Bıcep nedir? nedir?](bicep-overview.md).
 
 * **YAML 'de şablon oluşturmayı desteklemek için bir plan var mı?**
 
@@ -100,7 +100,7 @@ Bu makale Azure Resource Manager şablonları (ARM şablonları) hakkında sık 
 
 * **JSON şablonlarımı yeni şablon diline dönüştürecek bir araç sunacak misiniz?**
 
-  Evet.
+  Evet. Bkz. [JSON 'ı Bıcep 'ye derlemeyi kaldırma](compare-template-syntax.md#decompile-json-to-bicep).
 
 ## <a name="template-specs"></a>Şablon Belirtimleri
 

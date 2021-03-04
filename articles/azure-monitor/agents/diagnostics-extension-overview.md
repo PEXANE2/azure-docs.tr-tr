@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726232"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036546"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantısına genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](../agents/agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
@@ -78,7 +78,7 @@ Diğer ek hedeflere veri göndermek için bir veya daha fazla *veri havuzları* 
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |
 | Application Insights | Diğer uygulama izlemeyle tümleştirilecek Application Insights için sanal makinenizde çalışan uygulamalardan veri toplayın. Bkz. [Application Insights Tanılama verileri gönderme](diagnostics-extension-to-application-insights.md). |
 
-Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azure Izleyici günlükleri ile analiz yapmak için depolama alanından WAD verileri toplayabilirsiniz Log Analytics bir çalışma alanına toplayabilirsiniz. Doğrudan bir Log Analytics çalışma alanına veri gönderebilir ve ek işlevsellik sağlayan çözümleri ve öngörüleri destekler.  Bkz. [Azure depolama 'Dan Azure tanılama günlüklerini toplama](../essentials/diagnostics-extension-logs.md). 
+Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azure Izleyici günlükleri ile analiz yapmak için depolama alanından WAD verileri toplayabilirsiniz Log Analytics bir çalışma alanına toplayabilirsiniz. Doğrudan bir Log Analytics çalışma alanına veri gönderebilir ve ek işlevsellik sağlayan çözümleri ve öngörüleri destekler.  Bkz. [Azure depolama 'Dan Azure tanılama günlüklerini toplama](../agents/diagnostics-extension-logs.md). 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)

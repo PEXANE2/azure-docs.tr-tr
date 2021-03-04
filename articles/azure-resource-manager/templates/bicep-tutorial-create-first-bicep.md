@@ -2,16 +2,16 @@
 title: Öğretici-& dağıtımı oluşturma Azure Resource Manager bicep dosyaları
 description: Azure kaynaklarını dağıtmak için ilk Bıcep dosyanızı oluşturun. Öğreticide, Bıcep dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a0e4d4e56974e2f5bb44a3a300ce185c18582463
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036358"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Öğretici: ilk Azure Resource Manager Bıcep dosyası oluşturma ve dağıtma
 
@@ -76,7 +76,7 @@ Sorun devam ederseniz, Bıcep hakkında öğrenmeye başlamaya hazırsınız.
     Kaynak bildiriminde dört bileşen vardır:
 
     - **kaynak**: anahtar sözcüğü.
-    - **simgesel ad** (STG): sembolik ad, bıcep dosyanız boyunca kaynağa başvurmak için bir tanıtıcıdır. Bu, kaynağın adı dağıtıldığında ne olur? Kaynağın adı, **Name** özelliği tarafından tanımlanır.  Bu listedeki dördüncü bileşene bakın.
+    - **simgesel ad** (STG): sembolik ad, bıcep dosyanız boyunca kaynağa başvurmak için bir tanıtıcıdır. Bu, kaynağın adı dağıtıldığında ne olur? Kaynağın adı, **Name** özelliği tarafından tanımlanır.  Bu listedeki dördüncü bileşene bakın. Öğreticilerin izlenmesi kolay hale getirmek için, bu öğretici serisinde depolama hesabı kaynağının sembolik adı olarak **STG** kullanılır.
     - **kaynak türü** ( Microsoft.Storage/storageAccounts@2019-06-01 ): kaynak sağlayıcıdan (Microsoft. Storage), kaynak türünden (Storageaccounts) ve apiversion 'dan (2019-06-01) oluşur. Her kaynak sağlayıcı kendi API sürümlerini yayımlar, bu nedenle bu değer türüne özeldir. [ARM şablon başvurusundan](/azure/templates/)çeşitli Azure kaynakları için daha fazla tür ve apiVersions bulabilirsiniz.
     - **Özellikler** (= {...} içindeki her şey): Bunlar, belirtilen kaynak türü için belirtmek istediğiniz özel özelliklerdir. Bunlar, bir ARM şablonunda yalnızca sizin için kullanılabilen özelliklerdir. Her kaynağın bir `name` özelliği vardır. Kaynakların çoğu ayrıca `location` , kaynağın dağıtıldığı bölgeyi ayarlayan bir özelliğine sahiptir. Diğer özellikler kaynak türüne ve API sürümüne göre farklılık gösterir. API sürümü ve kullanılabilir özellikler arasındaki bağlantıyı anlamanız önemlidir. bu nedenle daha fazla ayrıntıya geçelim.
 

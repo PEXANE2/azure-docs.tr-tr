@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "102036188"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -107,7 +107,7 @@ _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri dön
 
 Uygulamayı yayımlamadan önce, tüm dahil edilen paketlerin en son sürümüne sahip olduğunuzdan emin olmak için bağımlılıklarınızın güncel olduğundan emin olmanız iyi bir fikirdir.
 
-*Çözüm Gezgini* bölmesinde *Samplefunctionsapp > bağımlılıklar*' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
+*Çözüm Gezgini* bölmesinde _**samplefunctionsapp** > bağımlılıklar_' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp projesi için NuGet paketlerini yönetme" border="false":::
 
@@ -131,15 +131,17 @@ Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-Çıktı, artık *ADT_SERVICE_URL* adlı bir giriş Içermesi gereken Azure işlevi için ayarların listesidir.
+Çıktı, artık **ADT_SERVICE_URL** adlı bir giriş Içermesi gereken Azure işlevi için ayarların listesidir.
 
-Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda *PrincipalId* alanını bir yere göz atın.
+Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda **PrincipalId** alanını bulun.
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-İşlev uygulamasının kimliğini Azure dijital TWINS örneğiniz için *Azure Digital TWINS veri sahibi* rolüne atamak için aşağıdaki komutta bulunan çıktıdan *PrincipalId* değerini kullanın:
+İşlev uygulamasının kimliğini Azure Digital TWINS örneğiniz için *Azure Digital TWINS veri sahibi* rolüne atamak için aşağıdaki komutta bulunan çıktıdan **PrincipalId** değerini kullanın.
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 Bu komutun çıktısı, oluşturulan IoT Hub 'ı hakkında bilgi olur.
 
-IoT Hub 'ınıza verdiğiniz adı kaydedin. Daha sonra bu adı kullanacaksınız.
+IoT Hub 'ınıza verdiğiniz **adı** kaydedin. Daha sonra bu adı kullanacaksınız.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>IoT Hub 'ını Azure işlevine bağlama
 
@@ -269,7 +271,10 @@ Açılan proje konsolu penceresinde, dijital ikizi *thermostat67* tarafından bi
 ObserveProperties thermostat67 Temperature
 ```
 
-*Azure dijital TWINS örneğinden* , her 10 saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir.
+*Azure dijital TWINS örneğinizin* , her iki saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir.
+
+>[!NOTE]
+> Cihazdaki verilerin ikizi 'e yayılması birkaç saniye sürebilir. İlk birkaç sıcaklık readsler, verilerin gelmesi başlamadan önce 0 olarak gösterilebilir.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Dijital ikizi thermostat67 'ten sıcaklık iletilerinin günlüğünü gösteren konsol çıkışı":::
 
@@ -327,7 +332,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Uç nokta sorgusunun sonucu, bir provisioningState 'in başarılı olduğunu gösteriyor":::
 
-Olay kılavuzunuza verdiğiniz adları ve Azure dijital TWINS 'teki Event Grid uç noktanızı kaydedin. Bunları daha sonra kullanacaksınız.
+**Olay kılavuzunuza** verdiğiniz adları ve Azure dijital TWINS 'teki Event Grid **uç** noktanızı kaydedin. Bunları daha sonra kullanacaksınız.
 
 ### <a name="set-up-route"></a>Rotayı ayarlama
 
@@ -346,7 +351,7 @@ Bu komutun çıktısı, oluşturduğunuz rota hakkında bazı bilgiler.
 
 Daha önce, *Processdtkabteddata* Azure işlevini daha önce oluşturduğunuz olay kılavuzu konusuna abone olmak için telemetri verileri, Azure dijital TWINS 'e geri dönerek ve *room21* ikizi uygun şekilde *thermostat67* ikizi.
 
-Bunu yapmak için, olay kılavuzunuzda, *Processdtkabteddata* Azure işlevinizde bir uç nokta olarak **Event Grid bir abonelik** oluşturacaksınız.
+Bunu yapmak için, daha önce *Processdtkabteddata* Azure işlevinizde oluşturduğunuz **olay Kılavuzu konusundan** veri gönderen **Event Grid bir abonelik** oluşturacaksınız.
 
 [Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak olay kılavuzunuza gidin. *+ Olay Aboneliği*'ni seçin.
 
@@ -381,7 +386,7 @@ Açılan proje konsolu penceresinde, hem dijital ikizi *thermostat67* hem **de**
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-*Azure dijital TWINS örneğinden* , her 10 saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir. *Room21* için sıcaklık güncelleştirildiğinden güncelleştirmeler *thermostat67* ile eşleşecek şekilde güncellendiğine dikkat edin.
+*Azure dijital TWINS örneğinizin* , her iki saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir. *Room21* için sıcaklık güncelleştirildiğinden güncelleştirmeler *thermostat67* ile eşleşecek şekilde güncellendiğine dikkat edin.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Bir termostat ve odadan sıcaklık iletilerinin günlüğünü gösteren konsol çıkışı":::
 

@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics Agent ile Syslog veri kaynaklarını toplama
 description: Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Bu makalede, oluşturdukları kayıtların Log Analytics ve ayrıntılarında Syslog iletilerinin toplanmasını yapılandırma açıklanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729207"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036749"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Syslog veri kaynaklarını toplama
 Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
@@ -48,11 +47,11 @@ Diğer herhangi bir tesis için, Azure Izleyici 'de [özel bir günlük veri kay
 Linux için Log Analytics Aracısı yalnızca kendi yapılandırmasında belirtilen tesisler ve önem derecelerine sahip olayları toplar. Azure portal aracılığıyla Syslog 'yi yapılandırabilir veya Linux aracılarınızda yapılandırma dosyalarını yönetebilirsiniz.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure portal Syslog 'ı yapılandırma
-Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](../agents/agent-data-sources.md#configuring-data-sources) Syslog 'ı yapılandırın. Bu yapılandırma, her bir Linux aracısının yapılandırma dosyasına dağıtılır.
+Log Analytics çalışma alanı için [Aracı yapılandırma menüsünden](../agents/agent-data-sources.md#configuring-data-sources) Syslog 'ı yapılandırın. Bu yapılandırma, her bir Linux aracısının yapılandırma dosyasına dağıtılır.
 
-İlk olarak, **aşağıdaki yapılandırmayı Makinelerime Uygula** seçeneğini belirleyip adını yazıp öğesini tıklayarak yeni bir tesis ekleyebilirsiniz **+** . Her tesis için yalnızca seçili önem derecelerine sahip iletiler toplanacaktır.  Toplamak istediğiniz belirli bir tesis için önem derecelerine göz atın. İletileri filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
+**Özellik Ekle**' ye tıklayarak yeni bir tesis ekleyebilirsiniz. Her tesis için yalnızca seçili önem derecelerine sahip iletiler toplanacaktır.  Toplamak istediğiniz belirli bir tesis için önem derecelerine göz atın. İletileri filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
 
-![Syslog yapılandırma](media/data-sources-syslog/configure.png)
+[![Syslog yapılandırma](media/data-sources-syslog/configure.png)](media/data-sources-syslog/configure.png#lightbox)
 
 Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir. Syslog 'yi her bir Linux aracısında el ile yapılandırmak istiyorsanız, *aşağıdaki yapılandırmayı Makinelerime Uygula* onay kutusunun işaretini kaldırın.
 

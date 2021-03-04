@@ -25,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: Kavramlar
   items:
-    - name: Rolleri kullanarak izin atama
-      href: roles.md
+    - name: Erişimi yönetme
+      items:
+        - name: Azure Sentinel'de izinler
+          href: roles.md
+        - name: Kaynaklara göre erişimi yönetme
+          href: resource-context-rbac.md
     - name: Gelişmiş çok aşamalı saldırı algılama
       href: fusion.md
     - name: Kendi makine öğrenme platformunuzu getirme
@@ -236,7 +240,7 @@
           href: connect-azure-stack.md
         - name: Veri bağlayıcısının sistem durumunu izleme
           href: monitor-data-connector-health.md
-    - name: Kullanıcı ve Varlık Davranışları Analizini etkinleştirme
+    - name: Kullanıcı ve varlık davranışı analizlerini etkinleştir
       href: enable-entity-behavior-analytics.md
     - name: Birden çok kiracıyı yönetme (MSSP)
       href: multiple-tenants-service-providers.md
@@ -248,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: Olay ölçümleriyle SOC’nizi daha iyi yönetme
       href: manage-soc-with-incident-metrics.md
+    - name: Azure Sentinel sorgularını ve etkinliklerini denetleme
+      href: audit-sentinel-data.md
     - name: Avlanma
       href: hunting.md
       items:
@@ -259,6 +265,8 @@
           href: livestream.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
+    - name: Gelişmiş RBAC Uygula
+      items: null
 - name: Başvuru
   items:
     - name: Azure RBAC rolleri
@@ -293,8 +301,8 @@
   items:
     - name: Yararlı kaynaklar
       href: resources.md
-    - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: /archive/blogs/azuresecurity/
+    - name: Azure Sentinel blogu
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Fiyatlandırma

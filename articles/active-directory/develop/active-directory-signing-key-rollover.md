@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090324"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035093"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda anahtar geçişi 'ni imzalama
 Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platformu tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platformunu kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
@@ -297,7 +297,7 @@ WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak 
 
 Yapılandırmanızı güncelleştirmek için FedUtil kullanma yönergeleri:
 
-1. Visual Studio 2008 veya 2010 için geliştirme makinenizde WıF v 1.0 SDK 'nın yüklü olduğunu doğrulayın. Henüz yüklemediyseniz, [buradan indirebilirsiniz](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml) .
+1. Visual Studio 2008 veya 2010 için geliştirme makinenizde WıF v 1.0 SDK 'nın yüklü olduğunu doğrulayın. Henüz yüklemediyseniz, [buradan indirebilirsiniz](https://www.microsoft.com/download/details.aspx?id=17331) .
 2. Visual Studio 'da çözümü açın ve ardından geçerli projeye sağ tıklayıp **Federasyon meta verilerini Güncelleştir**' i seçin. Bu seçenek kullanılamıyorsa, FedUtil ve/veya WıF v 1.0 SDK yüklü değildir.
 3. Komut isteminde, Federasyon meta verilerinizi güncelleştirmeye başlamak için **Güncelleştir** ' i seçin. Uygulamanın barındırıldığı sunucu ortamına erişiminiz varsa, isteğe bağlı olarak FedUtil 'nin [Otomatik meta veri güncelleştirme zamanlayıcısını](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))kullanabilirsiniz.
 4. Güncelleştirme işlemini gerçekleştirmek için **son** ' a tıklayın.

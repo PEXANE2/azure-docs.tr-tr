@@ -2,18 +2,18 @@
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Kendi anahtarlarınız ile şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilir veya yönetilen disklerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarlara güvenebilirsiniz.
 author: roygara
-ms.date: 10/22/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a1fbd536943023d3e6724b9c1638f7a0bd97d847
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677445"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036954"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
 
@@ -66,6 +66,8 @@ Otomatik anahtar döndürme önizlemededir ve yalnızca aşağıdaki bölgelerde
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarlar, Azure Active Directory (Azure AD) bir özelliği olan Azure kaynakları için yönetilen kimliklere bağımlıdır. Müşteri tarafından yönetilen anahtarları yapılandırırken, bir yönetilen kimlik, kapsamakta olan kaynaklara otomatik olarak atanır. Daha sonra aboneliği, kaynak grubunu veya yönetilen diski bir Azure AD dizininden diğerine taşırsanız, yönetilen disklerle ilişkili yönetilen kimlik yeni kiracıya aktarılmaz, bu nedenle müşterinin yönettiği anahtarlar artık çalışmayabilir. Daha fazla bilgi için bkz. [Azure AD dizinleri arasında abonelik aktarma](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
+Yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere, [Azure PowerShell modülü](windows/disks-enable-customer-managed-keys-powershell.md), [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) veya [Azure Portal](disks-enable-customer-managed-keys-portal.md)ile nasıl etkinleştireceğinizi kapsayan makalelerimize bakın. Müşteri tarafından yönetilen anahtarları otomatik anahtar rotasyoniyle nasıl etkinleştireceğinizi öğrenmek için bkz. [otomatik anahtar dönüşüyle bir Azure Key Vault ve DiskEncryptionSet ayarlama (Önizleme)](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview).
+
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>VM verileriniz için ana bilgisayar uçtan uca şifreleme
 
 Konakta şifrelemeyi etkinleştirdiğinizde, bu şifreleme VM 'nizin kendisi üzerinde başlatılır ve sanal makinenizin ayrıldığı Azure sunucusudur. Geçici diskiniz ve işletim sistemi/veri diski önbellekler için veriler bu VM konağında depolanır. Konakta şifrelemeyi etkinleştirdikten sonra, tüm bu veriler Rest 'de şifrelenir ve depolama hizmetine şifrelenmiş akışlar, burada kalıcı hale gelir. Temelde, ana bilgisayar üzerindeki şifreleme, verilerinizi uçtan uca şifreler. Konakta şifreleme, sanal makinenizin CPU 'sunu kullanmaz ve sanal makinenizin performansını etkilemez. 
@@ -84,6 +86,8 @@ Uçtan uca şifrelemeyi etkinleştirdiğinizde, geçici diskler ve kısa ömürl
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
+Konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirmek için, [Azure PowerShell modülü](windows/disks-enable-host-based-encryption-powershell.md), [Azure CLI](linux/disks-enable-host-based-encryption-cli.md)veya [Azure Portal](disks-enable-host-based-encryption-portal.md)nasıl etkinleştireceğinizi kapsayan makalelerimize göz atın.
+
 ## <a name="double-encryption-at-rest"></a>Rest 'te Çift şifreleme
 
 Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten endişe duyan yüksek güvenlikli duyarlı müşteriler artık, platform yönetilen şifreleme anahtarlarını kullanan altyapı katmanında farklı bir şifreleme algoritması/modu kullanarak ek şifreleme katmanını kabul edebilir. Bu yeni katman, kalıcı işletim sistemi ve veri diskleri, anlık görüntüler ve görüntülere, hepsi de çift şifrelemeyle birlikte şifrelenecek şekilde uygulanabilir.
@@ -91,6 +95,8 @@ Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
 İki şifreleme, yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir.
+
+Yönetilen diskler için REST 'te çift şifrelemeyi etkinleştirmek için, [Azure PowerShell modülü](windows/disks-enable-double-encryption-at-rest-powershell.md), [Azure CLI](linux/disks-enable-double-encryption-at-rest-cli.md) veya [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)ile nasıl etkinleştireceğinizi kapsayan makalelerimize bakın.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Sunucu tarafı şifrelemesi ile Azure disk şifrelemesi karşılaştırması
 

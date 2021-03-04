@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036971"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD araçları kullanarak Azure Stream Analytics işin derlemelerini, testlerini ve dağıtımlarını otomatikleştirin
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | Visual Studio projesi için Visual Studio Code projenizin veya **[projeniz adınız]. aşama proj** dosyasının **asaproj.js** yolu. |
 | `-testConfigPath` | Test yapılandırma dosyasının yolu. Belirtilmemişse dosya, dosya **üzerindeasaproj.js** geçerli **Dizin altında,** varsayılan dosya adı **testConfig.js** olacak şekilde aranır. Mevcut değilse yeni bir dosya oluşturulur. |
+
+> [!NOTE]
+> `Script`Oluşturulan **testConfig.js** dosyadaki değeri yalnızca bağlamı sağlamaktır; Sınama mantığındaki kullanılmaz. 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

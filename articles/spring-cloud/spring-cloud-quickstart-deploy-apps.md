@@ -8,19 +8,19 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735599"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035144"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
 ::: zone pivot="programming-language-csharp"
 Bu hızlı başlangıçta, Azure CLı kullanarak mikro hizmet uygulamalarını derleyin ve Azure Spring Cloud 'a dağıtırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu serideki önceki hızlı başlangıçlarını doldurun:
 
@@ -143,7 +143,7 @@ Uygulamayı test etmek için bir tarayıcıdan uygulamaya bir HTTP GET isteği g
 1. Uç noktayı atamak için aşağıdaki komutu çalıştırın.
 
    ```azurecli
-   az spring-cloud app update -n solar-system-weather --is-public true
+   az spring-cloud app update -n solar-system-weather --assign-endpoint true
    ```
 
 1. Uç noktanın URL 'sini almak için aşağıdaki komutu çalıştırın.
@@ -162,7 +162,7 @@ Uygulamayı test etmek için bir tarayıcıdan uygulamaya bir HTTP GET isteği g
 
 ## <a name="test-the-application"></a>Uygulamayı test edin
 
-Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örneğin:
+Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örnek:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -185,7 +185,7 @@ Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spri
 
 Azure CLı veya Maven kullanarak dağıtımdan önce [Azure Spring Cloud 'ın bir örneğini](spring-cloud-quickstart-provision-service-instance.md) sağlayan örnekleri tamamlayın ve [yapılandırma sunucusunu ayarlayın](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
@@ -222,7 +222,7 @@ Projenin derlenmesi yaklaşık 5 dakika sürer. Tamamlandıktan sonra, ilgili kl
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Önceki adımda oluşturulan JAR dosyalarını kullanarak Azure Spring Cloud mikro hizmetleri oluşturun. Üç uygulama oluşturacaksınız: **Gateway** , **AUTH-Service** ve **Account-Service** .
+1. Önceki adımda oluşturulan JAR dosyalarını kullanarak Azure Spring Cloud mikro hizmetleri oluşturun. Üç uygulama oluşturacaksınız: **Gateway**, **AUTH-Service** ve **Account-Service**.
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -245,7 +245,7 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
 1. Aşağıdaki komutu kullanarak bitiş noktasını atayın:
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
 2. Uygulamanın çalıştığını doğrulayabilmeniz için **ağ geçidi** uygulamasını ortak IP 'si için sorgulayın:
@@ -306,23 +306,23 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Ağ Geçidi uygulamasını Azure Spring Cloud 'a dağıtma
 Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir. Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı** ' nı seçin.
+1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
     ![Azure 'a dağıtma 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. **Ad** alanına, var olan ada *: ağ geçidini* ekleyin. **Name**
-1. **Yapıt** metin kutusunda, *com. pınmetriölçümleri: Gateway: 1.0-Snapshot* ' ı seçin.
+1. **Ad** alanına, var olan ada *: ağ geçidini* ekleyin. 
+1. **Yapıt** metin kutusunda, *com. pınmetriölçümleri: Gateway: 1.0-Snapshot*' ı seçin.
 1. **Abonelik** metin kutusunda aboneliğinizi doğrulayın.
 1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](./spring-cloud-quickstart-provision-service-instance.md)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
 1. **Genel uç noktayı** *Etkinleştir* olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
-1. *Ağ geçidini* girin, ardından **Tamam** ' a tıklayın.
+1. *Ağ geçidini* girin, ardından **Tamam**' a tıklayın.
 
     ![Azure 'a dağıtma Tamam](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır* ' a çift tıklayın.
+1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır*' a çift tıklayın.
 1. **Çalışma dizini** metin kutusunda, *Pize ölçümleri/ağ geçidi* klasörüne gidin.
-1. **Komut satırı** metin kutusuna *Package-dskiptests* yazın. **Tamam** ’a tıklayın.
+1. **Komut satırı** metin kutusuna *Package-dskiptests* yazın. **Tamam**'a tıklayın.
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. Eklenti uygulamada komutunu çalıştırır `mvn package` `gateway` ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Azure yay bulutuna auth-Service ve Account-Service uygulamaları dağıtma

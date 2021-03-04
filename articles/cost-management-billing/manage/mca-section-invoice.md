@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: HT
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362789"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036247"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Ödeme hesabınızı özelleştirerek maliyetleri düzenleme
 
 Microsoft Müşteri Sözleşmesi ödeme hesabınız, maliyetlerinizi gereksinimlerinizi dikkate alarak departman, proje veya geliştirme ortamı ölçütlerine göre düzenleme esnekliği sunar.
 
 Bu makalede Azure portalını kullanarak maliyetlerinizi nasıl düzenleyebileceğiniz anlatılmaktadır. Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
+
+Faturalandırma hesabınızın maliyetlerini nasıl düzenleyebileceğinizi öğrenmek için [Microsoft Müşteri Sözleşmesi faturalandırma hesabı videonuzu özelleştirerek düzenleme maliyetlerini](https://www.youtube.com/watch?v=7RxTfShGHwU) izleyin.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>Faturalama profillerini ve fatura bölümlerini kullanılarak hesabınızı yapılandırma
 

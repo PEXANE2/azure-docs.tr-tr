@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034668"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda sunucu kavramları (Önizleme)
 
@@ -38,7 +38,7 @@ MySQL için Azure veritabanı esnek sunucusu:
 - Veritabanı sunucusu erişimi için bir sanal ağ tümleştirmesi sağlar
 - , Kullanımda olmadığında esnek sunucuyu duraklatarak maliyetleri kaydetme yolu sağlar
 - Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar vb.
-- Şu anda MySQL 5,7 sürümü ile desteklenmektedir. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı altyapısı sürümleri](./concepts-supported-versions.md).
+- Ana sürüm MySQL 5,7 ve MySQL 8,0 ' i destekler. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı altyapısı sürümleri](./../concepts-supported-versions.md).
 
 MySQL için Azure veritabanı esnek sunucusunda bir veya daha fazla veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak veya kaynakları paylaşmak için birden çok veritabanı oluşturmak üzere sunucu başına tek bir veritabanı oluşturmayı tercih edebilirsiniz. Fiyatlandırma, işlem katmanının yapılandırması, sanal çekirdekler ve depolama alanı (GB) temelinde sunucu başına yapılandırılır. Daha fazla bilgi için bkz. [işlem ve depolama](./concepts-compute-storage.md).
 

@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226178"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035178"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -242,7 +242,7 @@ Aşağıdaki yordam, daha önce oluşturduğunuz projeyi oluşturur ve dağıtı
 1. Azure Spring Cloud örneğiniz için genel bir uç nokta atanmış olarak bir uygulama oluşturun. *Üzerindeappsettings.js* belirttiğiniz "Hello-World" uygulama adını kullanın.
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --assign-endpoint --runtime-version NetCore_31
    ```
 
 1. *. Zip* dosyasını uygulamaya dağıtın.
@@ -416,7 +416,7 @@ Aşağıdaki yordam, Azure CLı kullanarak uygulamayı oluşturur ve dağıtır.
 1. Atanmış ortak uç nokta ile uygulamayı oluşturun:
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. Uygulama için jar dosyasını dağıtın ( `target\hellospring-0.0.1-SNAPSHOT.jar` Windows üzerinde):

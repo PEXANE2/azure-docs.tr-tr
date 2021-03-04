@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e1ed39edfd3c395fbc3e4d26a4aa358d48a1d5b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663882"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035492"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Azure Percept DK 'nize bir Vision AI modeli dağıtma
 
@@ -40,13 +40,11 @@ Azure Percept Studio içinden Azure Percept DK 'ye bir Vision AI modeli dağıtm
 
 1. Bir sonraki sayfada, önceden eğitilen örnek Vision modellerinden birini dağıtmak istiyorsanız **örnek modeli Dağıt ' a** tıklayın. Var olan bir [özel kod adım adım çözümü](./tutorial-nocode-vision.md)dağıtmak istiyorsanız **özel görüntü işleme projesi Dağıt ' a** tıklayın.
 
-    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Percept cihazlar listesi.":::
+    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Dağıtım için model seçimleri.":::
 
 1. Kod içermeyen bir Vision çözümü dağıtmayı seçtiyseniz, projenizi ve tercih ettiğiniz model yinelemi seçin ve **Dağıt**' a tıklayın.
 
 1. Örnek bir model dağıtmayı tercih ettiyseniz, modeli seçin ve **cihaza dağıt**' a tıklayın.
-
-    :::image type="content" source="./media/how-to-deploy-model/select-sample-model.png" alt-text="Percept cihazlar listesi.":::
 
 1. Model dağıtımınız başarılı olduğunda, ekranınızın sağ üst köşesinde bir durum iletisi alırsınız. Modelinizi bir işlem sırasında görüntülemek için, devkit 'in Vision SoM 'dan RTSP video akışını görmek için durum iletisindeki **akışı görüntüle** bağlantısına tıklayın.
 

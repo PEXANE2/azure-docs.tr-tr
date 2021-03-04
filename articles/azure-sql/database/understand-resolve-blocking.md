@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691442"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034906"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL veritabanı engelleme sorunlarını anlama ve çözme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>Genişletilmiş olaylardan bilgi toplayın
 
-Yukarıdaki bilgilere ek olarak, Azure SQL veritabanı 'nda engelleyici bir sorunu kapsamlı bir şekilde araştırmak için genellikle sunucudaki etkinliklerin izlenmesini yakalamak gereklidir. Örneğin, bir oturum bir işlem içinde birden çok deyim çalıştırırsa, yalnızca gönderilen son deyim temsil edilir. Ancak, önceki deyimlerden biri kilitlerin hala tutulmakta olmasının nedeni olabilir. Bir izleme, geçerli işlem içindeki bir oturum tarafından yürütülen tüm komutları görmenizi sağlar.
+Önceki bilgilere ek olarak, Azure SQL veritabanı 'nda engelleyici bir sorunu ayrıntılı bir şekilde araştırmak için genellikle sunucudaki etkinliklerin izlenmesini yakalamak gereklidir. Örneğin, bir oturum bir işlem içinde birden çok deyim çalıştırırsa, yalnızca gönderilen son deyim temsil edilir. Ancak, önceki deyimlerden biri kilitlerin hala tutulmakta olmasının nedeni olabilir. Bir izleme, geçerli işlem içindeki bir oturum tarafından yürütülen tüm komutları görmenizi sağlar.
 
 SQL Server izlemeleri yakalamaya yönelik iki yol vardır; Genişletilmiş olaylar (XEvents) ve profil oluşturucu Izlemeleri. Ancak, Azure SQL veritabanı için kullanım dışı olan [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) izleme teknolojisi desteklenmez. [Genişletilmiş olaylar](/sql/relational-databases/extended-events/extended-events) , gözlemlenen sisteme daha fazla yönlülük ve daha fazla etki sağlayan yeni izleme teknolojisidir ve arabirimi SQL Server Management Studio (SSMS) ile tümleşiktir. 
 
@@ -238,7 +238,7 @@ SSMS 'de [genişletilmiş olaylar yeni oturum Sihirbazı 'nın](/sql/relational-
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>Yaygın engelleme senaryolarını tanımla ve çözümle
 
-Yukarıdaki bilgileri inceleyerek, çoğu engelleme sorununun nedenini belirleyebilirsiniz. Bu makalenin geri kalanında, bazı yaygın engelleme senaryolarını belirlemek ve çözmek için bu bilgilerin nasıl kullanılacağına ilişkin bir tartışmadır. Bu tartışma, engelleme SPID 'si hakkında bilgi yakalamak ve bir XEvent oturumu kullanarak yakalanan uygulama etkinliğine sahip olan engelleme betiklerini (daha önce başvuruluyor) kullandığınızı varsayar.
+Önceki bilgileri inceleyerek, çoğu engelleme sorununun nedenini belirleyebilirsiniz. Bu makalenin geri kalanında, bazı yaygın engelleme senaryolarını belirlemek ve çözmek için bu bilgilerin nasıl kullanılacağına ilişkin bir tartışmadır. Bu tartışma, engelleme SPID 'si hakkında bilgi yakalamak ve bir XEvent oturumu kullanarak yakalanan uygulama etkinliğine sahip olan engelleme betiklerini (daha önce başvuruluyor) kullandığınızı varsayar.
 
 ## <a name="analyze-blocking-data"></a>Engelleme verilerini çözümle 
 
@@ -334,7 +334,7 @@ Aşağıdaki tabloda, yaygın belirtilerin olası nedenleri eşlenir.
 | 5 | NULL | \>0 | etkin | Evet. | Bu SPID 'nin genişletilmiş olaylar oturumunda bir uyarı sinyali görünebilir. Bu, bir sorgu zaman aşımı veya iptal hatası olduğunu veya yalnızca bir geri alma ifadesinin verildiğini gösterir. |  
 | 6 | NULL | \>0 | uykuya | Sonra. Windows NT oturumu artık etkin olmadığını belirlediğinde, Azure SQL veritabanı bağlantısı bozulur. | `last_request_start_time`Sys.dm_exec_sessions değeri geçerli zamandan çok daha eski. |
 
-Aşağıdaki senaryolar bu senaryolarda genişletilir. 
+## <a name="detailed-blocking-scenarios"></a>Ayrıntılı engelleme senaryoları
 
 1.  Uzun yürütme süresi ile normal çalışan bir sorgunun neden olduğu engelleme
 
@@ -366,7 +366,7 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
 
     İkinci sorgunun çıktısı, işlem iç içe geçme düzeyinin bir olduğunu gösterir. İşlem sırasında elde edilen tüm kilitler, işlem kaydedilene veya geri alınana kadar devam eder. Uygulamalar, işlemleri açık bir şekilde açıp kaydetmedikçe, bir iletişim veya başka bir hata oturum ve işlem açık bir durumda kalabilir. 
 
-    Şu anda kaydedilmemiş işlemleri tanımlamak için sys.dm_tran_active_transactions temel alarak yukarıdaki betiği kullanın.
+    Bu makalenin önceki kısımlarında yer alan betiği, örnek genelinde kaydedilmemiş olan işlemleri tanımlamak için sys.dm_tran_active_transactions temel alır.
 
     **Çözümler**:
 
@@ -377,6 +377,7 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
             *    İstemci uygulamanın hata işleyicisinde, `IF @@TRANCOUNT > 0 ROLLBACK TRAN` istemci uygulaması bir işlem açık olduğuna inanmasa bile, aşağıdaki hataları yürütün. Batch sırasında çağrılan bir saklı yordam, istemci uygulamasının bilgisi olmadan bir işlem başlatabileceğinden açık işlemleri denetlemek gereklidir. Sorguyu iptal etme gibi belirli koşullar, yordamın geçerli deyimin ötesinde yürütülmesini önler, bu nedenle yordamda işlemi denetleme ve durdurma mantığı olsa da `IF @@ERROR <> 0` Bu geri alma kodu böyle durumlarda yürütülmeyecektir.  
             *    Bağlantıyı açan bir uygulamada bağlantı havuzu kullanılıyorsa, bağlantıyı bir Web tabanlı uygulama gibi havuza geri bırakmadan önce az sayıda sorgu çalıştırıyorsa, bağlantı havuzunu geçici olarak devre dışı bırakmak, istemci uygulaması hataları uygun şekilde işleyecek şekilde değiştirilene kadar sorunu gidermenize yardımcı olabilir. Bağlantı havuzunu devre dışı bırakarak, bağlantının bırakılması Azure SQL veritabanı bağlantısının fiziksel bağlantısının kesilmesine neden olur ve bu da sunucunun açık işlemleri geri almasını ister.  
             *    `SET XACT_ABORT ON`Bağlantı için veya işlem başlatma ve bir hata takip eden herhangi bir saklı yordamda kullanın. Çalışma zamanı hatası durumunda, bu ayar tüm açık işlemleri iptal eder ve denetimi istemciye döndürür. Daha fazla bilgi için bkz. [SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql).
+
     > [!NOTE]
     > Bağlantı, bağlantı havuzundan yeniden yükleninceye kadar sıfırlanmaz, bu nedenle bir kullanıcının bir işlemi açıp bağlantı havuzu bağlantısını serbest bırakabilmesi olasıdır, ancak işlem açık kaldığı zaman birkaç saniye boyunca yeniden kullanılamaz. Bağlantı yeniden kullanılmazsa, bağlantı zaman aşımına uğrar ve bağlantı havuzundan kaldırıldığında işlem iptal edilir. Bu nedenle, istemci uygulamanın hata işleyicisindeki işlemleri iptal etmek veya `SET XACT_ABORT ON` Bu olası gecikmeyi önlemek için kullanması idealdir.
 
@@ -385,14 +386,14 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
 
 1.  Karşılık gelen istemci uygulaması, tüm sonuç satırlarını tamamlamaya getirmeyen bir SPID tarafından neden olan engelleme
 
-    Sunucuya bir sorgu gönderdikten sonra, tüm uygulamaların tüm sonuç satırlarını hemen tamamlamaya getirmesi gerekir. Bir uygulama tüm sonuç satırlarını getirmezse, kilitler tablolarda bırakılabilir ve diğer kullanıcıları engelliyor olabilir. Sunucuya saydam olarak SQL deyimleri gönderen bir uygulama kullanıyorsanız, uygulamanın tüm sonuç satırlarını getirmesi gerekir. Değilse (ve bunu yapmak için yapılandırılamıyor), engelleyici sorunu çözemeyebilirsiniz. Sorunu önlemek için, kötü davranmış uygulamaları raporlama veya karar destek veritabanıyla kısıtlayabilirsiniz.
+    Sunucuya bir sorgu gönderdikten sonra, tüm uygulamaların tüm sonuç satırlarını hemen tamamlamaya getirmesi gerekir. Bir uygulama tüm sonuç satırlarını getirmezse, kilitler tablolarda bırakılabilir ve diğer kullanıcıları engelliyor olabilir. Sunucuya saydam olarak SQL deyimleri gönderen bir uygulama kullanıyorsanız, uygulamanın tüm sonuç satırlarını getirmesi gerekir. Değilse (ve bunu yapmak için yapılandırılamıyor), engelleyici sorunu çözemeyebilirsiniz. Sorunu önlemek için, kötü davranmış uygulamaları, ana OLTP veritabanından ayrı bir raporlama veya karar destek veritabanıyla kısıtlayabilirsiniz.
     
     > [!NOTE]
     > Bkz. Azure SQL veritabanı 'na bağlanan uygulamalar için [yeniden deneme mantığı Kılavuzu](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) . 
     
     **Çözüm**: uygulamanın, sonucun tüm satırlarını tamamlamada getirmek için yeniden yazılması gerekir. Bu, sunucu tarafı sayfalama gerçekleştirmek için bir sorgunun [order by yan tümcesinde offset ve Fetch](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) kullanımını denetlemez.
 
-1.  Geri alma durumunda olan SPID 'nın neden olduğu engelleme
+1.  Geri alma durumundaki bir oturumun neden olduğu engelleme
 
     Sonlandırılan veya Kullanıcı tanımlı bir işlemin dışında iptal edilen bir veri değiştirme sorgusu geri alınacaktır. Bu durum, istemci ağ oturumunun bağlantısını kesme işleminin yan etkisi veya kilitlenme kurbanı olarak bir istek seçildiğinde da oluşabilir. Bu, genellikle GERI alma **komutunu** gösterebilen sys.dm_exec_requests çıkışı gözlemleyerek tanımlanabilir ve **Percent_complete sütunu** ilerlemeyi gösterebilir. 
 

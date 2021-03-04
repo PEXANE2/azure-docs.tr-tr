@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897148"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035713"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Bir Linux sanal makinesindeki veri diskini ayırma
 
@@ -108,13 +108,10 @@ Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 
 1. Sol taraftaki menüden **sanal makineler**' i seçin.
 1. Sanal makine dikey penceresinde **diskler**' i seçin.
-1. **Diskler** dikey penceresinin üst kısmında **Düzenle**' yi seçin.
-1. **Diskler** dikey penceresinde, ayırmak istediğiniz veri diskinin en sağında bulunan ![ düğme görüntüsünü ayır ](./media/detach-disk/detach.png) düğmesine tıklayın.
-1. Disk kaldırıldıktan sonra, dikey pencerenin en üstündeki **Kaydet** ' e tıklayın.
+1. **Diskler** dikey penceresinde, ayırmak istediğiniz veri diskinin en sağında, diski ayırmak için **X** düğmesini seçin.
+1. Disk kaldırıldıktan sonra, dikey pencerenin en üstündeki **Kaydet** ' i seçin.
 
-Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
-
-
+Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir. Disk silinmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri diskini yeniden kullanmak istiyorsanız, yalnızca [başka BIR sanal](add-disk.md)makineye ekleyebilirsiniz.

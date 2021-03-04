@@ -4,21 +4,21 @@ description: Azure Güvenlik kıyaslaması v2 olay yanıtı
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 002/22/2021
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 40a88349040482b3325e63d7035dea35df444cdb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9295482c2464eb80bc49fa707744f49a2fbebfd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698595"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035386"
 ---
 # <a name="security-control-v2-incident-response"></a>Güvenlik denetimi v2: olay yanıtı
 
 Olay yanıtı, olay yanıtı yaşam döngüsü hazırlama, algılama ve analiz, kapsama ve olay sonrası etkinliklerdeki denetimleri ele alır. Bu, olay yanıtı sürecini otomatikleştirmek için Azure Güvenlik Merkezi ve Sentinel gibi Azure hizmetlerinin kullanılmasını içerir.
 
-Geçerli yerleşik Azure Ilkesini görmek için, bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: olay yanıtı](../../governance/policy/samples/azure-security-benchmark#incident-response)
+Geçerli yerleşik Azure Ilkesini görmek için, bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: olay yanıtı](../../governance/policy/samples/azure-security-benchmark.md#incident-response)
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Hazırlık: Azure için olay yanıtı sürecini güncelleştirin
 

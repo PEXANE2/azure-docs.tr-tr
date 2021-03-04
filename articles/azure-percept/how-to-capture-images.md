@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK 'nize bir Vision AI modeli dağıtma
-description: Azure Percept Studio 'dan Azure Percept DK 'ye bir Vision AI modeli dağıtmayı öğrenin
+title: Azure Percept Studio 'da kod içermeyen bir Vision çözümü için görüntüleri yakalama
+description: Kod içermeyen bir vizyon çözümü için Azure Percept Studio 'da Azure Percept DK ile görüntüleri yakalama hakkında bilgi edinin
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663793"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035543"
 ---
-# <a name="capture-images-for-a-vision-project"></a>Bir Vision projesi için görüntüleri yakalama
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Azure Percept Studio 'da bir Vision projesi için görüntüleri yakalama
 
 Azure Percept Studio 'daki mevcut bir Vision projesi için Azure Percept DK 'nin vizyonunu kullanarak görüntüleri yakalamak için bu kılavuzu izleyin. Henüz bir Vision projesi oluşturmadıysanız, lütfen [kod yok Vision öğreticisine](./tutorial-nocode-vision.md)bakın.
 
@@ -56,7 +56,7 @@ Azure Percept Studio 'daki mevcut bir Vision projesi için Azure Percept DK 'nin
         1. **Yakalama hızı** altında tercih ettiğiniz görüntüleme hızını seçin.
         1. **Hedef** altında toplamak istediğiniz toplam görüntü sayısını seçin.
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Percept cihazlar sayfası, kullanılabilir eylemleri listelendi.":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Görüntü yakalama ekranı.":::
 
 [Özel görüntü işleme](https://www.customvision.ai/)tüm görüntülere erişilebilecektir.
 

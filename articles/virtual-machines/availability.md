@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668308"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036937"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure'da sanal makineler için kullanılabilirlik seçenekleri
 
@@ -55,7 +55,7 @@ Sanal Makine Ölçek Kümeleri, hata etki alanlarını ve güncelleştirme etki 
 
 **Ölçek Kümeleri için düzenleme modları**
 
-Sanal makine ölçek kümeleri düzenleme modları, sanal makine örneklerinin ölçek kümesi tarafından yönetilme konusunda daha fazla denetime sahip olmasını sağlar. Ölçek kümesinde Tekdüzen veya esnek düzenleme modunu etkinleştirebilirsiniz. Tekdüzen düzenleme, aynı örneklere sahip büyük ölçekli durum bilgisiz iş yükleri için iyileştirilmiştir. Esnek düzenleme (Önizleme), aynı veya birden çok sanal makine türüyle ölçek açısından yüksek kullanılabilirlik için tasarlanmıştır. Bu [düzenleme modları](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) ve bunların nasıl etkinleştirileceği hakkında daha fazla bilgi edinin.
+Sanal makine ölçek kümeleri düzenleme modları, sanal makine örneklerinin ölçek kümesi tarafından yönetilme konusunda daha fazla denetime sahip olmasını sağlar. Ölçek kümesinde Tekdüzen veya esnek düzenleme modunu etkinleştirebilirsiniz. Tekdüzen düzenleme, aynı örneklere sahip büyük ölçekli durum bilgisiz iş yükleri için iyileştirilmiştir. Esnek düzenleme (Önizleme), aynı veya birden çok sanal makine türüyle ölçek açısından yüksek kullanılabilirlik için tasarlanmıştır. Bu [düzenleme modları](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) ve bunların nasıl etkinleştirileceği hakkında daha fazla bilgi edinin.
 
 
 ## <a name="availability-sets"></a>Kullanılabilirlik kümeleri

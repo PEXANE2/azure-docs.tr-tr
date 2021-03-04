@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics Agent ile Windows olay günlüğü veri kaynaklarını toplama
 description: Windows olay günlükleri koleksiyonunun Azure Izleyici tarafından ve oluşturdukları kayıtların ayrıntıları tarafından nasıl yapılandırılacağı açıklanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719874"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036613"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Windows olay günlüğü veri kaynaklarını toplama
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından, Windows sanal makinelerinde Log Analytics aracıları için en yaygın [veri kaynaklarından](../agents/agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
@@ -22,13 +21,13 @@ Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdı�
 ![Windows Olayları](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows olay günlüklerini yapılandırma
-Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](../agents/agent-data-sources.md#configuring-data-sources) Windows olay günlüklerini yapılandırın.
+Log Analytics çalışma alanı için [aracılar yapılandırma menüsünden](../agents/agent-data-sources.md#configuring-data-sources) Windows olay günlüklerini yapılandırın.
 
 Azure Izleyici yalnızca ayarlarda belirtilen Windows olay günlüklerinden olayları toplar.  Günlük adını yazarak ve ' a tıklayarak bir olay günlüğü ekleyebilirsiniz **+** .  Her günlük için yalnızca seçilen önem derecelerine sahip olaylar toplanır.  Toplamak istediğiniz belirli bir günlüğün önem derecesi ' ni denetleyin.  Olayları filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
 
 Bir olay günlüğünün adını yazdığınızda Azure Izleyici, ortak olay günlüğü adları için öneriler sağlar. Eklemek istediğiniz günlük listede görünmezse, yine de günlüğün tam adını yazarak eklemeye devam edebilirsiniz. Olay Görüntüleyicisi 'ni kullanarak günlüğün tam adını bulabilirsiniz. Olay Görüntüleyicisi 'nde, günlük için *Özellikler* sayfasını açın ve dizeyi *tam ad* alanından kopyalayın.
 
-![Windows olaylarını yapılandırma](media/data-sources-windows-events/configure.png)
+[![Windows olaylarını yapılandırma](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > Windows olay günlüğü 'ndeki kritik olaylar, Azure Izleyici günlüklerinde "hata" önem derecesine sahip olur.

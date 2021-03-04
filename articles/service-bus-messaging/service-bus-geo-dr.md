@@ -3,12 +3,12 @@ title: Azure Service Bus coğrafi olağanüstü durum kurtarma | Microsoft Docs
 description: Azure Service Bus içinde yük devretme ve olağanüstü durum kurtarma için coğrafi bölgeleri kullanma
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 86d35465e5b31514f4d215095932b857ce7dcb35
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035403"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
 
@@ -47,11 +47,7 @@ Bu makalede aşağıdaki terimler kullanılmaktadır:
 -  *Diğer ad*: ayarladığınız bir olağanüstü durum kurtarma yapılandırması adı. Diğer ad, tek bir tutarlı tam etki alanı adı (FQDN) bağlantı dizesi sağlar. Uygulamalar, bir ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. Diğer ad kullanılması, yük devretme tetiklendiğinde bağlantı dizesinin değişmeden olmasını sağlar.
 
 -  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (Bu, var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir. 
-
-    > [!IMPORTANT]
-    > Coğrafi olağanüstü durum kurtarma özelliği, aboneliğin ve kaynak grubunun birincil ve ikincil ad alanları için aynı olmasını gerektirir.
 -  *Meta veriler*: kuyruklar, konu başlıkları ve abonelikler gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Yalnızca varlıklar ve ayarları otomatik olarak çoğaltılır. İletiler çoğaltılmaz.
-
 -  *Yük devretme*: ikincil ad alanını etkinleştirme işlemi.
 
 ## <a name="setup"></a>Kurulum
@@ -63,13 +59,13 @@ Aşağıdaki bölüm, ad alanları arasında eşleştirmeyi ayarlamaya yönelik 
 Önce mevcut bir birincil ad alanını ve yeni bir ikincil ad alanını oluşturun veya kullanın, ardından ikisini eşleştirin. Bu eşleştirme size bağlanmak için kullanabileceğiniz bir diğer ad sağlar. Bir diğer ad kullandığınız için bağlantı dizelerini değiştirmeniz gerekmez. Yalnızca yeni ad alanları, yük devretme eşleştirmeye eklenebilir. 
 
 1. Birincil ad alanını oluşturun.
-1. Abonelikte ve birincil ad alanı olan kaynak grubunda, ancak farklı bir bölgede ikincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
+1. İkincil ad alanını farklı bir bölgede oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
 1. Azure portal, birincil ad alanına gidin.
 1. Sol menüde **coğrafi kurtarma** ' yı seçin ve araç çubuğunda **eşleştirmeyi başlat** ' ı seçin. 
 
     :::image type="content" source="./media/service-bus-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Birincil ad alanından eşleştirmeyi Başlat":::    
 1. **Eşleştirmeyi başlat** sayfasında, aşağıdaki adımları izleyin:
-    1. Mevcut bir ikincil ad alanını seçin veya abonelikte ve birincil ad alanına sahip kaynak grubunda bir tane oluşturun. Bu örnekte, var olan bir ad alanı ikincil ad alanı olarak kullanılır.  
+    1. Var olan bir ikincil ad alanını seçin veya farklı bir bölgede oluşturun. Bu örnekte, var olan bir ad alanı ikincil ad alanı olarak kullanılır.  
     1. **Diğer ad** için, coğrafi Dr eşleştirmesi için bir diğer ad girin. 
     1. Ardından **Oluştur**’u seçin. 
 

@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601463"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036002"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
-Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karşılanmasına yardımcı olma esnekliği sağlar. Bir rezervasyonu aynı türdeki başka bir rezervasyonla değiştirebilirsiniz. Örneğin, bir sanal makine rezervasyonunu değiştirerek başka bir sanal makine boyutu veya bölgesi için başka bir rezervasyon satın alabilirsiniz. Benzer şekilde SQL PaaS Veritabanı rezervasyonu, başka bir SQL PaaS Veritabanı türü veya bölgesi için rezervasyon satın almak üzere değiştirilebilir. Ayrıca rezervasyonlar için para iadesi de alabilirsiniz ama faturalama kapsamınızdaki (EA; Microsoft Müşteri Sözleşmesi ve Microsoft İş Ortağı Sözleşmesi gibi) tüm iptal edilen rezervasyon taahhütlerinin toplamı son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz. Azure Databricks ayrılmış kapasitesi, CloudSimple Azure VMware çözümü rezervasyonu, Azure Red Hat Açık Vardiya rezervasyonu, Red Hat planları ve SUSE Linux planları para iadesine uygun değildir.
+Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karşılanmasına yardımcı olma esnekliği sağlar. Aynı türdeki başka bir rezervasyon için ayırmalar alışverişi yapabilirsiniz. Örneğin, Azure adanmış ana bilgisayar, Azure VMware çözümü ve Azure sanal makineleri dahil olmak üzere birden çok işlem ayırmalarını tek seferde döndürebilirsiniz. Diğer bir deyişle, rezervasyon ürünleri aynı rezervasyon türü olmaları durumunda birbirleriyle değiştirilebilir. Diğer bir örnekte, yönetilen örnekler ve birbirleriyle Elastik Havuz dahil olmak üzere birden çok SQL veritabanı ayırma türü değiş tokuş edebilirsiniz.
+
+Ancak, benzer rezervasyonları değiş tokuş edebilirsiniz. Örneğin, SQL veritabanı için Cosmos DB ayırması alışverişi yapamazsınız.
+
+Ayrıca, farklı bir bölgedeki benzer bir tür ayırmanın satın alınması için bir ayırma da değiş tokuş edebilirsiniz. Örneğin, Batı Avrupa bir Batı ABD 2 için bir rezervasyon alışverişi yapabilirsiniz.
+
+Bir rezervasyon alışverişi yaptığınızda, döneminizin bir yıldan üç yıla kadar olan teriminizi değiştirebilirsiniz.
+
+Ayrıca rezervasyonlar için para iadesi de alabilirsiniz ama faturalama kapsamınızdaki (EA; Microsoft Müşteri Sözleşmesi ve Microsoft İş Ortağı Sözleşmesi gibi) tüm iptal edilen rezervasyon taahhütlerinin toplamı son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz.
+
+Azure Databricks ayrılmış kapasitesi, CloudSimple Azure VMware çözümü rezervasyonu, Azure Red Hat Açık Vardiya rezervasyonu, Red Hat planları ve SUSE Linux planları para iadesine uygun değildir.
 
 Self servis değişim ve iptal özelliği US Government Kurumsal Anlaşma müşterileri tarafından kullanılamaz. Kullandıkça Öde ve Bulut Çözümü Sağlayıcısı (CSP) da dahil olmak üzere diğer US Government abonelik türleri desteklenir.
 
@@ -37,9 +47,26 @@ Rezervasyonunu [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azu
 
 Rezervasyon para iadesi almak için **Rezervasyon Ayrıntıları** bölümüne gidip **Para İadesi**’ni seçin.
 
+## <a name="exchange-multiple-reservations"></a>Exchange çoklu ayırmaları
+
+Benzer türlerde ayırmaları tek bir eylemde döndürebilirsiniz.
+
+Rezervasyonları alışverişi yaptığınızda, yeni satın alma para birimi tutarı, para iadesi miktarından büyük olmalıdır. Yeni satın alma tutarınız para iadesi miktarından küçükse bir hata alırsınız. Hatayı görürseniz, döndürmek istediğiniz miktarı azaltın veya satın alma miktarını artırın.
+
+1. Azure portalda oturum açın ve **Rezervasyonlar**’a gidin.
+1. Ayırmalar listesinde, Exchange yapmak istediğiniz her ayırmanın kutusunu seçin.
+1. Sayfanın en üstünde **Exchange**' i seçin.
+1. Gerekirse, her rezervasyon için döndürülecek miktarı gözden geçirin.
+1. Otomatik dolguyu geri dönüş miktarını seçerseniz, listeyi her rezervasyon için sahip olduğunuz tam miktarla dolduracak şekilde veya kullanımı **iyileştirmek (7 günlük)** , son yedi güne göre kullanım için En Iyi duruma getirilmiş bir miktarla listeyi dolduracak şekilde, **Tümünü** geri döndürmeyi tercih edebilirsiniz. **Uygula**' yı seçin.
+1. Sayfanın alt kısmındaki **İleri: satın al**' ı seçin.
+1. Satın alma sekmesinde, için Exchange yapmak istediğiniz kullanılabilir ürünleri seçin. Farklı türlerde birden çok ürün seçebilirsiniz.
+1. Satın almak istediğiniz ürünü seçin bölmesinde, istediğiniz ürünleri seçin ve ardından **Sepete Ekle** ' yi seçin ve ardından **Kapat**' ı seçin.
+1. İşiniz bittiğinde Ileri ' yi seçin **: gözden geçir**.
+1. Rezervasyonlarını geri dönüp satın alma için yeni ayırmaları gözden geçirin ve ardından **Exchange 'ı Onayla**' yı seçin.
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium depolama için premium olmayan depolama değişimi
 
-Premium depolamayı desteklemeyen bir sanal makine boyutu için satın alınan bir rezervasyonu, Premium depolamayı destekleyen ilgili bir sanal makine boyutuyla değiştirebilirsiniz. Örneğin, _F1_ ile _F1s_. Değişim yapmak için Rezervasyon Ayrıntıları’na gidin ve **Değiştir**’i seçin. Değiştir işlemi sonucunda, ayrılmış örneğin süresi sıfırlanmaz veya yeni bir işlem oluşturulmaz. 
+Premium depolamayı desteklemeyen bir sanal makine boyutu için satın alınan bir rezervasyonu, Premium depolamayı destekleyen ilgili bir sanal makine boyutuyla değiştirebilirsiniz. Örneğin, _F1_ ile _F1s_. Değişim yapmak için Rezervasyon Ayrıntıları’na gidin ve **Değiştir**’i seçin. Değiştir işlemi sonucunda, ayrılmış örneğin süresi sıfırlanmaz veya yeni bir işlem oluşturulmaz.
 
 ## <a name="how-transactions-are-processed"></a>İşlemler nasıl işlenir?
 

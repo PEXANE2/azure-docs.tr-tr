@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cab5ac5e6a8fd900a41ff3690763746033b6200e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663681"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034821"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,9 +55,6 @@ IaaS Aracısı uzantısı, Azure portal tümleştirilmesine olanak tanır ve yö
    ```azurecli-interactive
    $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
    ```
-
-
-
    ---
 
 
@@ -101,6 +98,7 @@ SQL Server IaaS aracınızın geçerli modunu Azure PowerShell kullanarak görü
   $sqlvm.SqlManagementType
   ```
 
+
 ## <a name="installation"></a>Yükleme
 
 Aboneliğinizde, sanal makine kaynağından _ayrı_ bir kaynak olan **SQL sanal makine** _kaynağını_ oluşturmak için SQL Server IaaS aracı uzantısına SQL Server VM kaydedin. SQL Server VM uzantıdan kaldırmak **SQL sanal makine** _kaynağını_ kaldırır ancak gerçek sanal makineyi bırakamaz.
@@ -132,7 +130,7 @@ Alternatif olarak, Azure Marketi SQL Server görüntüsü ile adlandırılmış 
 
 Uzantının durumunu denetlemek için Azure portal veya Azure PowerShell kullanın. 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal uzantının yüklü olduğunu doğrulayın. 
 
@@ -166,97 +164,11 @@ SQL IaaS Aracısı uzantısı yalnızca şunları destekler:
 - Genel veya Azure Kamu bulutuna dağıtılan VM 'Ler SQL Server. Diğer özel veya kamu bulutlarına dağıtımlar desteklenmez. 
 
 
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular 
-
-**Azure Marketi 'ndeki bir SQL Server görüntüsünden sağlanan SQL Server VM kaydetmem gerekir mi?**
-
-Hayır. Microsoft, Azure Marketi 'ndeki SQL Server görüntülerden sağlanan VM 'Leri otomatik olarak kaydeder. Uzantıya kaydolmak yalnızca VM 'nin Azure Marketi 'ndeki SQL Server görüntülerden *sağlanmaması* ve SQL Server kendi kendine yüklendiği durumlarda gereklidir.
-
-**SQL IaaS Aracısı uzantısı tüm müşteriler için kullanılabilir mi?** 
-
-Evet. Müşteriler, Azure Marketi 'nden bir SQL Server görüntüsü kullanmayan ve bunun yerine kendi kendine yüklenmiş SQL Server veya özel VHD 'Leri getirdiklerinde SQL Server sanal makinelerini uzantıya kaydetmelidir. Tüm abonelik türlerinin (doğrudan, Kurumsal Anlaşma ve bulut çözümü sağlayıcısı) sahip olduğu VM 'Ler SQL IaaS Aracısı uzantısına kaydoabilir.
-
-**SQL IaaS Aracısı Uzantısı ile kaydolurken varsayılan yönetim modu nedir?**
-
-SQL IaaS Aracısı Uzantısı ile kaydettiğinizde varsayılan yönetim modu *hafif* olur. Uzantıya kayıt yaptırdığınızda SQL Server Management özelliği ayarlanmamışsa, mod hafif olarak ayarlanır ve SQL Server hizmetiniz yeniden başlatılır. Önce basit modda SQL IaaS Aracısı uzantısına kaydolmanız ve sonra bir bakım penceresi sırasında tam olarak yükseltmeniz önerilir. Benzer şekilde, [otomatik kayıt özelliği](sql-agent-extension-automatic-registration-all-vms.md)kullanılırken varsayılan Yönetim de hafif olur.
-
-**SQL IaaS Aracısı uzantısına kaydolma önkoşulları nelerdir?**
-
-VM 'de yüklü SQL Server sahip olmayan SQL IaaS Aracısı uzantısına kaydolmak için herhangi bir önkoşul yoktur. SQL IaaS Aracısı uzantısı tam modda yüklüyse, SQL Server hizmeti yeniden başlatılır, bu nedenle bir bakım penceresi sırasında bunu yapmanız önerilir.
-
-**SQL IaaS Aracısı Uzantısı ile kaydolacaktır, VM 'ime bir aracı yükler mi?**
-
-Evet, SQL IaaS Aracısı uzantısına tam yönetilebilirlik modunda kaydolmak VM 'ye bir aracı yüklenir. Basit veya NoAgent modunda kaydolma, değildir. 
-
-SQL IaaS Aracısı Uzantısı ile hafif modda kaydolmak yalnızca SQL IaaS Aracısı uzantısı *ikililerini* VM 'ye kopyalar, aracıyı yüklemez. Bu ikili dosyalar daha sonra yönetim modu tam olarak yükseltildiğinde aracıyı yüklemek için kullanılır.
-
-
-**VM 'imde SQL IaaS Aracısı uzantısı yeniden başlatması SQL Server kaydedilecek mı?**
-
-Kayıt sırasında belirtilen moda bağlıdır. Basit veya NoAgent modu belirtilmişse SQL Server hizmeti yeniden başlatmaz. Ancak, yönetim modunun tam olarak belirtilmesi SQL Server hizmetinin yeniden başlatılmasına neden olur. Otomatik kayıt özelliği, Windows Server sürümü 2008 değilse SQL Server sanal makinelerinizi hafif modda kaydeder ve bu durumda SQL Server VM NoAgent modunda kaydedilir. 
-
-**SQL IaaS Aracısı Uzantısı ile kaydolurken basit ve NoAgent yönetim modları arasındaki fark nedir?** 
-
-NoAgent yönetim modu, Windows Server 2008 üzerinde SQL Server 2008 ve SQL Server 2008 R2 için kullanılabilen tek yönetim modudur. Windows Server 'ın tüm sonraki sürümlerinde, kullanılabilen iki yönetilebilirlik modu hafif ve tamamludur. 
-
-NoAgent modu, SQL Server sürüm ve sürüm özelliklerinin müşteri tarafından ayarlanmasını gerektirir. Hafif mod, SQL Server örneğinin sürümünü ve sürümünü bulmak için VM 'yi sorgular.
-
-**SQL Server lisans türünü belirtmeden SQL IaaS aracı uzantısına kaydolabilirim?**
-
-Hayır. SQL IaaS Aracısı Uzantısı ile kaydolurken SQL Server lisans türü isteğe bağlı bir özellik değildir. SQL Server lisans türünü, tüm yönetilebilirlik modlarında (NoAgent, hafif ve tam) SQL IaaS Aracısı uzantısı 'na kaydolurken Kullandıkça Öde veya Azure Hibrit Avantajı olarak ayarlamanız gerekir. Geliştirici veya değerlendirme sürümü gibi SQL Server yüklü ücretsiz sürümlerden herhangi birine sahipseniz, Kullandıkça Öde lisanslamayla kaydolmanız gerekir. Azure Hibrit Avantajı yalnızca, kurumsal ve standart sürümler gibi ücretli SQL Server sürümler için kullanılabilir.
-
-**SQL Server IaaS uzantısını NoAgent modundan tam moda yükseltebilir miyim?**
-
-Hayır. Yönetilebilirlik modunu tam veya hafif olarak yükseltmek, NoAgent modu için kullanılamaz. Bu, Windows Server 2008 ' in teknik sınırlamasıdır. Önce işletim sistemini önce Windows Server 2008 R2 veya sonraki bir sürüme yükseltmeniz gerekir, sonra tam yönetim moduna yükseltebilirsiniz. 
-
-**SQL Server IaaS uzantısını hafif moddan tam moda yükseltebilir miyim?**
-
-Evet. Yönetilebilirlik modunu hafif ' den Full ' a yükseltmek Azure PowerShell veya Azure portal aracılığıyla desteklenir. Bu, SQL Server hizmetinin yeniden başlatılmasını tetikler.
-
-**SQL Server IaaS uzantısının tam moddan NoAgent veya hafif yönetim moduna indirgenmesini sağlayabilir miyim?**
-
-Hayır. SQL Server IaaS uzantısının yönetilebilirlik modunu eski sürüme düşürme desteklenmez. Yönetilebilirlik modu tam moddan hafif veya NoAgent moduna düşürülemez ve hafif moddan NoAgent moduna düşürülemez. 
-
-Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için SQL sanal makine _kaynağını_ BıRAKARAK SQL Server VM SQL IaaS Aracısı uzantısı 'ndan [kaydını kaldırın](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) ve SQL IaaS Aracısı Uzantısı ile SQL Server VM farklı bir yönetim modunda yeniden kaydedin.
-
-**Azure portal SQL IaaS Aracısı Uzantısı ile kayıt yapabilir miyim?**
-
-Hayır. SQL IaaS Aracısı uzantısına kaydolma Azure portal kullanılamıyor. SQL IaaS Aracısı uzantısına kaydolmak yalnızca Azure CLı veya Azure PowerShell desteklenir. 
-
-**SQL Server yüklenmeden önce SQL IaaS Aracısı uzantısına sahip bir VM 'yi kaydedebilir miyim?**
-
-Hayır. SQL IaaS Aracısı uzantısına başarıyla kaydolmak için bir VM 'nin en az bir SQL Server (veritabanı altyapısı) örneğine sahip olması gerekir. VM üzerinde SQL Server örneği yoksa, yeni Microsoft. SqlVirtualMachine kaynağı başarısız durumda olur.
-
-**Birden çok SQL Server örneği varsa SQL IaaS Aracısı uzantısına sahip bir VM 'yi kaydedebilir miyim?**
-
-Evet, VM 'de varsayılan bir örnek vardır. SQL IaaS Aracısı uzantısı yalnızca bir SQL Server (veritabanı altyapısı) örneğini kaydeder. SQL IaaS Aracısı uzantısı, birden çok örnek olması durumunda varsayılan SQL Server örneğini kaydeder.
-
-**SQL Server yük devretme kümesi örneğini SQL IaaS Aracısı Uzantısı ile kaydedebilir miyim?**
-
-Evet. Azure VM 'de yük devretme kümesi örnekleri SQL Server, SQL IaaS Aracısı uzantısına hafif modda kaydedilebilir. Ancak, SQL Server yük devretme kümesi örnekleri tam yönetilebilirlik moduna yükseltilemez.
-
-**Her zaman açık kullanılabilirlik grubu yapılandırılmışsa VM 'imi SQL IaaS Aracısı Uzantısı ile kaydedebilir miyim?**
-
-Evet. Her zaman açık kullanılabilirlik grubu yapılandırmasına katılıyorsanız SQL IaaS aracı uzantısına sahip bir Azure VM 'de SQL Server örneğini kaydetme kısıtlaması yoktur.
-
-**SQL IaaS Aracısı uzantısına kaydolma veya tam yönetilebilirlik moduna yükseltme maliyeti nedir?**
-
-Yok. SQL IaaS Aracısı Uzantısı ile veya üç yönetilebilirlik modundan birini kullanarak kayıt ile ilişkili bir ücret yoktur. SQL Server VM uzantı ile yönetme tamamen ücretsizdir. 
-
-**Farklı yönetilebilirlik modlarını kullanmanın performans etkisi nedir?**
-
-*Noagent* ve *hafif* yönetilebilirlik modları kullanılırken hiçbir etkisi yoktur. İşletim sistemine yüklenen iki hizmetten *tam* yönetilebilirlik modunu kullanırken en az etkisi vardır. Bunlar, Görev Yöneticisi ile izlenebilir ve yerleşik Windows Hizmetleri konsolunda görülebilir. 
-
-İki hizmet adı şunlardır:
-- `SqlIaaSExtensionQuery` (Görünen ad- `Microsoft SQL Server IaaS Query Service` )
-- `SQLIaaSExtension` (Görünen ad- `Microsoft SQL Server IaaS Agent` )
-
-**Uzantıyı kaldırmak Nasıl yaparım? mı?**
-
-SQL IaaS Aracısı uzantısından SQL Server VM [kaydını](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) kaldırarak uzantıyı kaldırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 SQL Server IaaS uzantısını Azure VM 'lerine SQL Server yüklemek için, [Otomatik yükleme](sql-agent-extension-automatic-registration-all-vms.md), [tek VM](sql-agent-extension-manually-register-single-vm.md)'ler veya [VM 'ler için toplu olarak](sql-agent-extension-manually-register-vms-bulk.md)makalelere bakın.
 
 Azure sanal makinelerinde SQL Server çalıştırma hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server nedir?](sql-server-on-azure-vm-iaas-what-is-overview.md).
+
+Daha fazla bilgi için bkz. [sık sorulan sorular](frequently-asked-questions-faq.md). 

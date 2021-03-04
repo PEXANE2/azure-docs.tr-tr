@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569762"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035883"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure ön kapı kuralları altyapısı eşleştirme koşulları
 
@@ -39,7 +39,7 @@ Bir mobil cihazdan veya masaüstü cihazdan yapılan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | Mobil, masaüstü
 
@@ -49,7 +49,7 @@ Eşittir, eşit değildir | Mobil, masaüstü
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Bağımsız değişken adı | İşleç | Bağımsız değişken değeri | Örnek dönüştürme
+Bağımsız değişken adı | Operatör | Bağımsız değişken değeri | Örnek dönüştürme
 --------------|----------|----------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -59,7 +59,7 @@ Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Sorgu dizesi | Örnek dönüştürme
+Operatör | Sorgu dizesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -69,7 +69,7 @@ Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|-----------------
 Coğrafi eşleşme | Ülke kodu
 IP eşleşmesi | IP adresi (boşlukla ayrılmış)
@@ -82,7 +82,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 - Birden çok IP adresi ve IP adres bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
   - **IPv4 örneği**: *1.2.3.4 10.20.30.40* , 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* , 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
-- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örnek:
   - **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:/48* , 1:2:3: ffff: ffff: ffff: ffff: ffff arasındaki 1:2:3:0:0:0:0:0 adresten gelen isteklerden eşleşir.
 
@@ -92,7 +92,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek gövdesi | Örnek dönüştürme
+Operatör | İstek gövdesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -102,7 +102,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Üst bilgi adı | İşleç | Üst bilgi değeri | Örnek dönüştürme
+Üst bilgi adı | Operatör | Üst bilgi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -112,7 +112,7 @@ Belirtilen istek yöntemini kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | AL, POSTALA, KOY, SIL, HEAD, SEÇENEKLER, IZLE
 
@@ -126,7 +126,7 @@ Kullanılan belirtilen protokolü kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | HTTP, HTTPS
 
@@ -136,13 +136,13 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek URL’si | Örnek dönüştürme
+Operatör | İstek URL’si | Örnek dönüştürme
 ---------|-------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: * https://www . \<yourdomain\> . com*.
+- Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: `https://www.<yourdomain\>.com`.
 
 ## <a name="request-file-extension"></a>İstek dosyası uzantısı
 
@@ -150,13 +150,13 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dahili numara | Örnek dönüştürme
+Operatör | Dahili numara | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Uzantı için, önde gelen bir nokta eklemeyin; Örneğin, *. html*yerine *HTML* kullanın.
+- Uzantı için, önde gelen bir nokta eklemeyin; Örneğin, *. html* yerine *HTML* kullanın.
 
 ## <a name="request-file-name"></a>İstek dosyası adı
 
@@ -164,7 +164,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dosya adı | Örnek dönüştürme
+Operatör | Dosya adı | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -181,6 +181,10 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 İşleç | Değer | Örnek dönüştürme
 ---------|-------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
+
+#### <a name="key-information"></a>Önemli bilgiler
+
+- Bu kural koşulunu kullandığınızda, eşleşmenin ilk yoldan sonra başlayacağını unutmayın `/` . Örneğin: ile `https://www.<yourdomain>.com/folder/page` eşleşme başlar `folder/page` .
 
 ## <a name="standard-operator-list"></a>Standart işleç listesi
 
@@ -204,7 +208,7 @@ Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki i
 - Şundan büyük değil
 - Büyük veya eşit değil
 
-*Küçüktür ve* *büyüktür*gibi sayısal işleçler için, kullanılan karşılaştırma uzunluğa göre belirlenir. Match koşulunun değeri, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
+*Küçüktür ve* *büyüktür* gibi sayısal işleçler için, kullanılan karşılaştırma uzunluğa göre belirlenir. Match koşulunun değeri, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

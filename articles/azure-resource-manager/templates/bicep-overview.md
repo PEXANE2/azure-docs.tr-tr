@@ -2,21 +2,19 @@
 title: Azure Resource Manager şablonları için bıcep dili
 description: Azure Resource Manager şablonları aracılığıyla Azure 'a altyapı dağıtmak için Bıcep dilini açıklar.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 6a2750dc99e82c9cf8c9b8b97d156d3a9fe30f31
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747193"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036393"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep (Önizleme) nedir?
 
-Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. Kısa sözdizimi sağlayarak yazma deneyimini basitleştirir ve modülerlik ve kod yeniden kullanımı için daha iyi destek sunar. Bıcep, etki alanına özgü bir dildir (DSL), bu, belirli bir senaryo veya etki alanı için tasarlanmasıdır. Bıcep, uygulama yazmak için genel programlama dili olarak tasarlanmamıştır.
+Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. Daha kısa sözdizimi sağlayarak ve kod yeniden kullanımı için daha iyi destek sunarak yazma deneyimini basitleştirir. Bıcep, etki alanına özgü bir dildir (DSL), bu, belirli bir senaryo veya etki alanı için tasarlanmasıdır. Bıcep, uygulama yazmak için genel programlama dili olarak tasarlanmamıştır.
 
-Bıcep, Azure Resource Manager şablonları (ARM şablonları) üzerinde şeffaf bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir.
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+Geçmişte, JSON ile Azure Resource Manager şablonları (ARM şablonları) geliştirmiş olursunuz. Şablon oluşturmak için JSON sözdizimi ayrıntılı olabilir ve karmaşık ifade gerektirebilir. Bıcep, bir JSON şablonunun özelliklerini kaybetmeden bu deneyimi geliştirir. ARM şablonları için JSON üzerinde saydam bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir.
 
 ## <a name="get-started"></a>başlarken
 
@@ -30,7 +28,26 @@ Bıcep 'ye dönüştürmek istediğiniz var olan bir ARM şablonunuz varsa bkz. 
 
 ## <a name="bicep-improvements"></a>Bıcep geliştirmeleri
 
-Bıcep, denk JSON ile karşılaştırıldığında daha kolay ve daha kısa bir sözdizimi sunmaktadır. `[...]`İfadeler kullanmayın. Bunun yerine, doğrudan işlevleri çağırır, parametrelerden ve değişkenlerden değerler alır ve başvuru kaynaklarıdır. Sözdiziminin tam karşılaştırması için bkz. [Şablonlar IÇIN JSON ve Bıcep karşılaştırması](compare-template-syntax.md).
+Bıcep, denk JSON ile karşılaştırıldığında daha kolay ve daha kısa bir sözdizimi sunmaktadır. `[...]`İfadeler kullanmayın. Bunun yerine, doğrudan işlevleri çağırır ve parametrelerden ve değişkenlerden değerler alırsınız. Dağıtılan her kaynağa bir sembolik ad verirsiniz ve bu, şablonunuzda bu kaynağa başvurmayı kolaylaştırır.
+
+Örneğin, aşağıdaki JSON bir kaynak özelliğinden çıkış değeri döndürüyor.
+
+```json
+"outputs": {
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
+}
+```
+
+Bıcep içindeki eşdeğer çıkış ifadesinin yazılması daha kolay. Aşağıdaki örnek, şablon içinde tanımlı bir kaynak için simgesel ad olan **Publicıp** adı kullanılarak aynı özelliği döndürür:
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+Sözdiziminin tam karşılaştırması için bkz. [Şablonlar IÇIN JSON ve Bıcep karşılaştırması](compare-template-syntax.md).
 
 Bıcep, kaynaklar arasındaki bağımlılıkları otomatik olarak yönetir. Bir `dependsOn` kaynağın sembolik adı başka bir kaynak bildiriminde kullanıldığında ayarından kaçınabilirsiniz.
 
