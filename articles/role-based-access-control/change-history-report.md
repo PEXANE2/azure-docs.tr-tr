@@ -1,26 +1,21 @@
 ---
 title: Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
-description: Son 90 gün boyunca Azure kaynakları için Azure rol tabanlı erişim denetimi (Azure RBAC) değişiklikleri için etkinlik günlüklerini görüntüleyin.
+description: Son 90 gün için Azure rol tabanlı erişim denetimi (Azure RBAC) değişiklikleri için etkinlik günlüklerini görüntüleyin.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 03/01/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595834"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042150"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
 
@@ -41,6 +36,10 @@ Başlamanın en kolay yolu Azure portalıyla etkinlik günlüklerini görüntül
 
 ![Portalı kullanan etkinlik günlükleri-ekran görüntüsü](./media/change-history-report/activity-log-portal.png)
 
+Daha fazla bilgi edinmek için bir girişe tıklayarak Özet bölmesini açın. Ayrıntılı günlük almak için **JSON** sekmesine tıklayın.
+
+![Özet bölmesi açık olan portalı kullanan etkinlik günlükleri-ekran görüntüsü](./media/change-history-report/activity-log-summary-portal.png)
+
 Portaldaki etkinlik günlüğünde birkaç filtre vardır. Azure RBAC ile ilgili filtreler şunlardır:
 
 | Filtre | Değer |
@@ -50,9 +49,24 @@ Portaldaki etkinlik günlüğünde birkaç filtre vardır. Azure RBAC ile ilgili
 
 Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+## <a name="interpret-a-log-entry"></a>Günlük girişini yorumlama
+
+JSON sekmesindeki günlük çıktısı, Azure PowerShell veya Azure CLı, çok fazla bilgi içerebilir. Bir günlük girdisini yorumlama denemesi sırasında aranacak bazı anahtar özelliklerden bazıları aşağıda verilmiştir. Azure PowerShell veya Azure CLı kullanarak günlük çıktısını filtrelemeye yönelik yollar için aşağıdaki bölümlere bakın.
+
+> [!div class="mx-tableFixed"]
+> | Özellik | Örnek değerler | Açıklama |
+> | --- | --- | --- |
+> | Yetkilendirme: eylem | Microsoft.Authorization/roleAssignments/write | Rol ataması oluştur |
+> |  | Microsoft. Authorization/Roleatamaları/silme | Rol atamasını Sil |
+> |  | Microsoft. Authorization/roleDefinitions/Write | Rol tanımı oluştur veya güncelleştir |
+> |  | Microsoft. Authorization/roleDefinitions/Delete | Rol tanımını sil |
+> | Yetkilendirme: kapsam | /Subscriptions/{SubscriptionID}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | Eylem kapsamı |
+> | yapana | admin@example.com<br/>Uzantının | Eylemi başlatan |
+> | eventTimestamp | 2021-03-01T22:07:41.126243 Z | Eylemin gerçekleştiği zaman |
+> | durum: değer | Başlarken<br/>Başarılı<br/>Başarısız | Eylemin durumu |
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Etkinlik günlüklerini Azure PowerShell görüntülemek için [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) komutunu kullanın.
 
@@ -68,56 +82,115 @@ Bu komut, son yedi güne ait bir kaynak grubundaki tüm rol tanımı değişikli
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Bu komut, bir abonelikteki son yedi güne ait tüm rol atamasını ve rol tanımı değişikliklerini listeler ve sonuçları bir listede görüntüler:
+### <a name="filter-log-output"></a>Filtre günlüğü çıktısı
+
+Günlük çıktısı çok fazla bilgi içerebilir. Bu komut, son yedi gün için bir abonelikteki tüm rol atamasını ve rol tanımı değişikliklerini listeler ve çıktıyı filtreler:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-```Example
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:07 PM
+Aşağıda, bir rol ataması oluştururken filtrelenen günlük çıkışının bir örneği gösterilmektedir:
+
+```azurepowershell
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:42 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
-                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          serviceRequestId: {serviceRequestId}
                           eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:05 PM
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:41 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
-                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
+                          requestbody    : {"Id":"{roleAssignmentId}","Properties":{"PrincipalId":"{principalId}","PrincipalType":"User","RoleDefinitionId":"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64","Scope":"/subscriptions/
+                          {subscriptionId}/resourceGroups/example-group"}}
+                          eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
 ```
 
-Rol atamaları oluşturmak için bir hizmet sorumlusu kullanıyorsanız, çağıran özelliği bir nesne KIMLIĞI olur. Hizmet sorumlusu hakkında bilgi almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) komutunu kullanabilirsiniz.
+Rol atamaları oluşturmak için bir hizmet sorumlusu kullanıyorsanız, çağıran özelliği bir hizmet sorumlusu nesne KIMLIĞI olur. Hizmet sorumlusu hakkında bilgi almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) komutunu kullanabilirsiniz.
 
 ```Example
-Caller                  : 44444444-4444-4444-4444-444444444444
-EventTimestamp          : 6/4/2020 9:43:08 PM
+Caller                  : {objectId}
+EventTimestamp          : 3/1/2021 9:43:08 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              : 
                           statusCode     : Created
-                          serviceRequestId: 55555555-5555-5555-5555-555555555555
-                          category       : Administrative
+                          serviceRequestId: {serviceRequestId}
+                          eventCategory  : Administrative
 ```
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
-Azure CLı ile etkinlik günlüklerini görüntülemek için [az Monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) komutunu kullanın.
+Azure CLı ile etkinlik günlüklerini görüntülemek için [az Monitor Activity-Log List](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) komutunu kullanın.
 
-Bu komut, 27 Şubat 'tan bir kaynak grubundaki etkinlik günlüklerini listeler ve yedi gün ileri bakıyor:
+Bu komut, 1 Mart 'tan bir kaynak grubundaki etkinlik günlüklerini, ileri yedi gün içinde listeler:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-Bu komut, kimlik doğrulama kaynak sağlayıcısının etkinlik günlüklerini 27 Şubat 'tan, ileri yedi gün içinde listeler:
+Bu komut, 1 Mart 'tan yetkilendirme kaynak sağlayıcısı için etkinlik günlüklerini listeler ve yedi gün ileri doğru arar:
 
 ```azurecli
-az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
+```
+
+### <a name="filter-log-output"></a>Filtre günlüğü çıktısı
+
+Günlük çıktısı çok fazla bilgi içerebilir. Bu komut, bir abonelikte yedi gün ileri doğru arama ve çıktıyı filtreleyerek tüm rol atamasını ve rol tanımı değişikliklerini listeler:
+
+```azurecli
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
+```
+
+Aşağıda, bir rol ataması oluştururken filtrelenen günlük çıkışının bir örneği gösterilmektedir:
+
+```azurecli
+[
+ {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:42.456241+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "serviceRequestId": "{serviceRequestId}",
+      "statusCode": "Created"
+    }
+  },
+  {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:41.126243+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "requestbody": "{\"Id\":\"{roleAssignmentId}\",\"Properties\":{\"PrincipalId\":\"{principalId}\",\"PrincipalType\":\"User\",\"RoleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64\",\"Scope\":\"/subscriptions/{subscriptionId}/resourceGroups/example-group\"}}"
+    }
+  }
+]
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
@@ -139,7 +212,7 @@ Kullanmaya başlamak için temel adımlar aşağıda verilmiştir:
 
    ![Portalda Azure Izleyici günlükleri seçeneği](./media/change-history-report/azure-log-analytics-option.png)
 
-1. İsteğe bağlı olarak, günlükleri sorgulamak ve görüntülemek için [Azure izleyici Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) kullanın. Daha fazla bilgi için bkz. [Azure izleyici günlük sorgularını kullanmaya başlama](../azure-monitor/logs/get-started-queries.md).
+1. İsteğe bağlı olarak, günlükleri sorgulamak ve görüntülemek için [Azure izleyici Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) kullanın. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/logs/get-started-queries.md).
 
 Hedef kaynak sağlayıcısına göre düzenlenmiş yeni rol atamaları döndüren bir sorgu aşağıda verilmiştir:
 
@@ -162,5 +235,5 @@ AzureActivity
 ![Gelişmiş analiz portalını kullanan etkinlik günlükleri-ekran görüntüsü](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Etkinlik günlüğünde olayları görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Azure Etkinlik Günlüğü ile Abonelik Etkinliğini İzleme](../azure-monitor/essentials/platform-logs-overview.md)
+* [Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Azure etkinlik günlüğü ile abonelik etkinliğini izleme](../azure-monitor/essentials/platform-logs-overview.md)

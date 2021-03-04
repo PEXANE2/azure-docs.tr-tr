@@ -113,12 +113,12 @@
             - name: Gerekli gereçlerini tanımlama
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
-            - name: Yazılımı yükleme
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
-              href: how-to-install-software.md
             - name: Ağınızı kurma
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
+            - name: Yazılımı yükleme
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              href: how-to-install-software.md
         - name: Algılayıcılarınızı hazırlama
           items:
             - name: Algılayıcı ekleme
@@ -155,7 +155,7 @@
         - name: Bulutta algılayıcıları yönetme
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Şirket içi yönetim konsolunu yönetme
-          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, software update, backup, restore, proxy, password recovery'
           href: how-to-manage-the-on-premises-management-console.md
         - name: Tehdit analizi paketleriyle çalışma
           href: how-to-work-with-threat-intelligence-packages.md

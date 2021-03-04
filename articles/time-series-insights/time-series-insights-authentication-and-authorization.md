@@ -2,7 +2,6 @@
 title: API kimlik doğrulaması ve yetkilendirme-Azure Time Series Insights | Microsoft Docs
 description: Bu makalede, Azure Time Series Insights API 'sini çağıran özel bir uygulama için kimlik doğrulama ve yetkilendirmeyi yapılandırma açıklanmaktadır.
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724187"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041221"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
-İş gereksinimlerinize bağlı olarak, çözümünüz Azure Time Series Insights ortamınızın [API 'leriyle](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview)etkileşim kurmak için kullandığınız bir veya daha fazla istemci uygulaması içerebilir. Azure Time Series Insights, [OAUTH 2,0 tabanlı Azure AD güvenlik belirteçlerini](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)kullanarak kimlik doğrulaması gerçekleştirir. İstemcilerinizdeki kimlik doğrulaması için doğru izinlere sahip bir taşıyıcı belirteç almanız ve API çağrılarınızla birlikte geçireceğiz. Bu belgede, bir taşıyıcı belirteci almak ve kimlik doğrulamak için kullanabileceğiniz çeşitli kimlik bilgileri alma yöntemleri açıklanmaktadır.
+İş gereksinimlerinize bağlı olarak, çözümünüz Azure Time Series Insights ortamınızın [API 'leriyle](/rest/api/time-series-insights/reference-data-access-overview)etkileşim kurmak için kullandığınız bir veya daha fazla istemci uygulaması içerebilir. Azure Time Series Insights, [OAUTH 2,0 tabanlı Azure AD güvenlik belirteçlerini](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)kullanarak kimlik doğrulaması gerçekleştirir. İstemcilerinizdeki kimlik doğrulaması için doğru izinlere sahip bir taşıyıcı belirteç almanız ve API çağrılarınızla birlikte geçireceğiz. Bu belgede, bir taşıyıcı belirteci almak ve kimlik doğrulamak için kullanabileceğiniz çeşitli kimlik bilgileri alma yöntemleri açıklanmaktadır.
 
 
   yeni Azure Active Directory dikey penceresini kullanarak Azure Active Directory bir uygulamayı kaydetme. Azure Active Directory kayıtlı uygulamalar, kullanıcıların kimlik doğrulaması yapmasını ve bir Azure Time Series Insights ortamıyla ilişkili Azure zaman serisi Insight API 'sini kullanma yetkisine sahip olmasını sağlar.
@@ -34,7 +33,7 @@ Aşağıdaki bölümlerde, Azure Time Series Insights API 'sine erişmek için A
 - Azure Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir Azure hizmetinde kimlik doğrulaması yapmak için Yönetilen kimlikler kullanabilirsiniz.
 - Yönetilen kimlikler herhangi bir ek maliyet olmadan kullanılabilir.
 
-İki tür yönetilen kimlik hakkında daha fazla bilgi edinmek için [Azure kaynakları için yönetilen kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) okuyun.
+İki tür yönetilen kimlik hakkında daha fazla bilgi edinmek için [Azure kaynakları için yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/overview.md) okuyun.
 
 Yönetilen kimlikleri kullanarak şunları yapabilirsiniz:
 
@@ -44,7 +43,7 @@ Yönetilen kimlikleri kullanarak şunları yapabilirsiniz:
 - Azure Container Instances
 - ve daha fazlası...
 
-Listenin tamamı için [Azure kaynakları için yönetilen kimlikleri destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) bölümüne bakın.
+Listenin tamamı için [Azure kaynakları için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) bölümüne bakın.
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory uygulama kaydı
 
@@ -54,9 +53,9 @@ Uygulama kaydını tamamladığınızda, ana kiracınızda veya dizininizde bulu
 
 Bir uygulamayı portala kaydettiğinizde, ana kiracınızda bir uygulama nesnesi ve hizmet sorumlusu nesnesi otomatik olarak oluşturulur. Microsoft Graph API 'Lerini kullanarak bir uygulamayı kaydeder/oluşturursanız, hizmet sorumlusu nesnesini oluşturmak ayrı bir adımdır. Belirteç istemek için bir hizmet sorumlusu nesnesi gerekir.
 
-Uygulamanızın [güvenlik](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security) denetim listesini gözden geçirdiğinizden emin olun. En iyi uygulama olarak, parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)kullanmanız gerekir.
+Uygulamanızın [güvenlik](../active-directory/develop/identity-platform-integration-checklist.md#security) denetim listesini gözden geçirdiğinizden emin olun. En iyi uygulama olarak, parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](../active-directory/develop/active-directory-certificate-credentials.md)kullanmanız gerekir.
 
-Daha fazla bilgi için bkz. [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) .
+Daha fazla bilgi için bkz. [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md) .
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>1. Adım: yönetilen kimliğinizi veya uygulama kaydınızı oluşturun
 
@@ -64,16 +63,16 @@ Yönetilen bir kimlik veya uygulama kaydı kullanıp kullanmayacağınızı tan�
 
 ### <a name="managed-identity"></a>Yönetilen kimlik
 
-Yönetilen bir kimlik oluşturmak için kullanacağınız adımlar, kodunuzun bulunduğu yere ve sistem tarafından atanan veya Kullanıcı tarafından atanan bir kimlik oluşturmadığınıza bağlı olarak değişir. Farkı anlamak için [yönetilen kimlik türlerini](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) okuyun. Kimlik türünü seçtikten sonra, Azure AD tarafından yönetilen kimlikler [belgelerindeki](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)doğru öğreticiyi bulun ve takip edin. İçin yönetilen kimliklerin nasıl yapılandırılacağı hakkında yönergeler bulacaksınız:
+Yönetilen bir kimlik oluşturmak için kullanacağınız adımlar, kodunuzun bulunduğu yere ve sistem tarafından atanan veya Kullanıcı tarafından atanan bir kimlik oluşturmadığınıza bağlı olarak değişir. Farkı anlamak için [yönetilen kimlik türlerini](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) okuyun. Kimlik türünü seçtikten sonra, Azure AD tarafından yönetilen kimlikler [belgelerindeki](../active-directory/managed-identities-azure-resources/index.yml)doğru öğreticiyi bulun ve takip edin. İçin yönetilen kimliklerin nasıl yapılandırılacağı hakkında yönergeler bulacaksınız:
 
-- [Azure VM’leri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [App Service ve Azure Işlevleri](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Azure VM’leri](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [App Service ve Azure Işlevleri](../app-service/overview-managed-identity.md)
+- [Azure Container Instances](../container-instances/container-instances-managed-identity.md)
 - ve daha fazlası...
 
 ### <a name="application-registration"></a>Uygulama kaydı
 
-[Uygulamayı kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application)bölümünde listelenen adımları izleyin.
+[Uygulamayı kaydetme](../active-directory/develop/quickstart-register-app.md#register-an-application)bölümünde listelenen adımları izleyin.
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ Yönetilen bir kimlik oluşturmak için kullanacağınız adımlar, kodunuzun bu
 
 Azure Time Series Insights ortamınız bir istek aldığında, ilk olarak arayanın taşıyıcı belirteci onaylanır. Doğrulama başarılı olursa çağıranın kimliği doğrulanır ve çağıranın istenen eylemi gerçekleştirme yetkisine sahip olduğundan emin olmak için başka bir denetim yapılır. Herhangi bir kullanıcı veya hizmet sorumlusunu yetkilendirmek için, önce bunları okuyucu veya katkıda bulunan rolü atayarak ortama erişim izni vermeniz gerekir.
 
-- [Azure Portal](https://portal.azure.com/) Kullanıcı arabirimi aracılığıyla erişim vermek için, [bir ortamda veri erişimi verme](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies) makalesinde listelenen yönergeleri izleyin. Kullanıcıyı seçerken, yönetilen kimliği veya uygulama kaydını adına veya KIMLIğINE göre arayabilirsiniz.
+- [Azure Portal](https://portal.azure.com/) Kullanıcı arabirimi aracılığıyla erişim vermek için, [bir ortamda veri erişimi verme](concepts-access-policies.md) makalesinde listelenen yönergeleri izleyin. Kullanıcıyı seçerken, yönetilen kimliği veya uygulama kaydını adına veya KIMLIğINE göre arayabilirsiniz.
 
-- Azure CLı kullanarak erişim vermek için aşağıdaki komutu çalıştırın. Erişimi yönetmek için kullanılabilecek komutların tam listesi için [buradaki](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest) belgeleri gözden geçirin.
+- Azure CLı kullanarak erişim vermek için aşağıdaki komutu çalıştırın. Erişimi yönetmek için kullanılabilecek komutların tam listesi için [buradaki](/cli/azure/ext/timeseriesinsights/tsi/access-policy) belgeleri gözden geçirin.
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> Azure CLı için timeseriesınsights uzantısı sürüm 2.11.0 veya üstünü gerektirir. Bu uzantı, az TSİ Access-Policy komutunu ilk kez çalıştırdığınızda otomatik olarak yüklenir. Uzantılar hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) .
+> Azure CLı için timeseriesınsights uzantısı sürüm 2.11.0 veya üstünü gerektirir. Bu uzantı, az TSİ Access-Policy komutunu ilk kez çalıştırdığınızda otomatik olarak yüklenir. Uzantılar hakkında [daha fazla bilgi edinin](/cli/azure/azure-cli-extensions-overview) .
 
 ## <a name="step-3-requesting-tokens"></a>3. Adım: belirteç ISTEME
 
@@ -107,37 +106,37 @@ Yönetilen kimliğiniz veya uygulama kaydınız sağlandıktan ve bir rol atand�
 
 ### <a name="managed-identities"></a>Yönetilen kimlikler
 
-Azure App Service veya Işlevlerden erişirken, [Azure kaynakları için belirteçlerin alınması](https://docs.microsoft.com/azure/app-service/overview-managed-identity)bölümündeki yönergeleri izleyin.
+Azure App Service veya Işlevlerden erişirken, [Azure kaynakları için belirteçlerin alınması](../app-service/overview-managed-identity.md)bölümündeki yönergeleri izleyin.
 
 > [!TIP]
-> .NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, .NET için [Azure Identity Client Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) kullanmaktır. 
+> .NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, .NET için [Azure Identity Client Library](/dotnet/api/overview/azure/identity-readme) kullanmaktır. 
 
-.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu paket, basitliği ve güvenlik avantajları nedeniyle popüler. Geliştiriciler bir kez kod yazabilir ve istemci kitaplığı 'nın, geliştirici hesabı kullanan bir geliştirici iş istasyonunda veya yönetilen hizmet kimliği kullanılarak Azure 'da dağıtılan bir uygulama ortamına göre kimlik doğrulaması yapıp yapmadığını belirlemesine izin verebilir. Öncül AppAuthentication kitaplığındaki geçiş kılavuzu için [Appauthentication ' i Azure 'a okuyun. kimlik geçiş kılavuzu](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet).
+.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu paket, basitliği ve güvenlik avantajları nedeniyle popüler. Geliştiriciler bir kez kod yazabilir ve istemci kitaplığı 'nın, geliştirici hesabı kullanan bir geliştirici iş istasyonunda veya yönetilen hizmet kimliği kullanılarak Azure 'da dağıtılan bir uygulama ortamına göre kimlik doğrulaması yapıp yapmadığını belirlemesine izin verebilir. Öncül AppAuthentication kitaplığındaki geçiş kılavuzu için [Appauthentication ' i Azure 'a okuyun. kimlik geçiş kılavuzu](/dotnet/api/overview/azure/app-auth-migration).
 
 C# kullanarak Azure Time Series Insights için bir belirteç isteyin ve .NET için Azure Identity istemci kitaplığı:
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
-   var accessToken = belirteç. Simgesinde
-    ```
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
+   var accessToken = token.Token;
+   ```
 
 ### <a name="app-registration"></a>Uygulama kaydı
 
-* Geliştiriciler, uygulama kayıtlarına yönelik belirteçleri almak için [Microsoft kimlik doğrulama kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) 'nı (msal) kullanabilir.
+* Geliştiriciler, uygulama kayıtlarına yönelik belirteçleri almak için [Microsoft kimlik doğrulama kitaplığı](../active-directory/develop/msal-overview.md) 'nı (msal) kullanabilir.
 
 MSAL aşağıdakiler dahil olmak üzere birçok uygulama senaryosunda kullanılabilir ancak bunlarla sınırlı değildir:
 
-* [Tek sayfalı uygulamalar (JavaScript)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Web uygulaması oturumu açma ve Kullanıcı adına Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Web API 'SI oturum açmış kullanıcı adına başka bir aşağı akış Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [Oturum açmış kullanıcı adına bir Web API 'SI çağıran masaüstü uygulaması](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* [Etkileşimli olarak oturum açan kullanıcı adına bir Web API 'si çağıran mobil uygulama](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md).
-* [Web API 'sini kendi adına çağıran masaüstü/hizmet Daemon uygulaması](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [Tek sayfalı uygulamalar (JavaScript)](../active-directory/develop/scenario-spa-overview.md)
+* [Web uygulaması oturumu açma ve Kullanıcı adına Web API 'SI çağırma](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Web API 'SI oturum açmış kullanıcı adına başka bir aşağı akış Web API 'SI çağırma](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [Oturum açmış kullanıcı adına bir Web API 'SI çağıran masaüstü uygulaması](../active-directory/develop/scenario-desktop-overview.md)
+* [Etkileşimli olarak oturum açan kullanıcı adına bir Web API 'si çağıran mobil uygulama](../active-directory/develop/scenario-mobile-overview.md).
+* [Web API 'sini kendi adına çağıran masaüstü/hizmet Daemon uygulaması](../active-directory/develop/scenario-daemon-overview.md)
 
 Bir belirtecin uygulama kaydı olarak nasıl alınacağını ve bir Gen2 ortamından sorgu verilerini nasıl edinediğini gösteren örnek C# kodu için [GitHub](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs) 'da örnek uygulamayı görüntüleme
 

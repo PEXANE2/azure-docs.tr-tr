@@ -1,17 +1,17 @@
 ---
 title: IoT Hub içeri aktarmaya yönelik cihaz güncelleştirmesini anlama | Microsoft Docs
 description: IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmaya yönelik temel kavramlar.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c6c6707a74007898c3cd73250709f4df3fabb37d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4cd5e0c016b98a3dc9336237a5c1b14e6b0f5789
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040592"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>IoT Hub için güncelleştirmeleri cihaz güncelleştirmesine aktarma
 IoT Hub cihaz güncelleştirmesinden cihazlara bir güncelleştirme dağıtmak için, önce bu güncelleştirmeyi cihaz güncelleştirme hizmetine _aktarmanız_ gerekir. Güncelleştirmelerin içeri aktarılmasının ne zaman geldiğini anlamak için bazı önemli kavramlara genel bakış sunulmaktadır.

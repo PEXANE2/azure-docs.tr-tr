@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de aracı veri kaynaklarını Log Analytics
 description: Veri kaynakları, Azure Izleyici 'nin aracılardan ve diğer bağlı kaynaklardan topladığı günlük verilerini tanımlar.  Bu makalede, Azure Izleyici 'nin veri kaynaklarını nasıl kullandığı kavramı açıklanmakta, nasıl yapılandırılacağı hakkında ayrıntılı bilgi verilmektedir ve kullanılabilir farklı veri kaynaklarının bir özeti sağlanır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041952"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynaklarını Log Analytics
 Azure Izleyicisinin [Log Analytics](./log-analytics-agent.md) aracısına sahip sanal makinelerden topladığı veriler, [Log Analytics çalışma alanında](../logs/data-platform-logs.md)yapılandırdığınız veri kaynakları tarafından tanımlanır.   Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
@@ -40,11 +39,11 @@ Aşağıdaki tabloda, Log Analytics aracısında Şu anda kullanılabilir olan a
 
 
 ## <a name="configuring-data-sources"></a>Veri kaynaklarını yapılandırma
-Log Analytics aracılarının veri kaynaklarını yapılandırmak için Azure portal **Log Analytics çalışma alanları** menüsüne gidin ve bir çalışma alanı seçin. **Gelişmiş ayarlar** ' a ve ardından **veriler**' e tıklayın. Yapılandırmak istediğiniz veri kaynağını seçin. Yukarıdaki tablodaki bağlantıları, her veri kaynağı ve yapılandırmasındaki ayrıntılar hakkında belgeler için izleyebilirsiniz.
+Log Analytics aracılarının veri kaynaklarını yapılandırmak için Azure portal **Log Analytics çalışma alanları** menüsüne gidin ve bir çalışma alanı seçin. **Aracılar yapılandırması**' na tıklayın. Yapılandırmak istediğiniz veri kaynağı sekmesini seçin. Yukarıdaki tablodaki bağlantıları, her veri kaynağı ve yapılandırmasındaki ayrıntılar hakkında belgeler için izleyebilirsiniz.
 
 Herhangi bir yapılandırma bu çalışma alanına bağlı tüm aracılara dağıtılır.  Bağlı aracıları bu yapılandırmadan dışlayamazsınız.
 
-![Windows olaylarını yapılandırma](media/agent-data-sources/configure-events.png)
+[![Windows olaylarını yapılandırma](media/agent-data-sources/configure-events.png)](media/agent-data-sources/configure-events.png#lightbox)
 
 
 

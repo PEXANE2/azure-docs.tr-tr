@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici görünümlerindeki filtreler | Microsoft Docs
 description: Azure Izleyici görünümündeki bir filtre, kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 988bb1467e7bf2cca31151d85c57677b235cab30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624650"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043312"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Izleyici görünümlerindeki filtreler
 [Azure izleyici görünümündeki](view-designer.md) bir **filtre** , kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Örneğin, görünüminizdeki kullanıcıların görünümü yalnızca belirli bir bilgisayar veya bilgisayar kümesi tarafından filtrelemesine izin verebilirsiniz.  Kullanıcıların birden çok özelliğe göre filtrelemesine olanak tanımak için, tek bir görünümde birden çok filtre oluşturabilirsiniz.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.

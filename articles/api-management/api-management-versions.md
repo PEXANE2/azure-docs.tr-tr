@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547205"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040388"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API Management sürümler
 
@@ -42,7 +42,7 @@ Yol sürüm oluşturma düzeni kullanıldığında, API isteklerinin URL yoluna 
 
 Örneğin, `https://apis.contoso.com/products/v1` ve `https://apis.contoso.com/products/v2` sürümlerini ve sırasıyla aynı API 'ye başvurabilir `products` `v1` `v2` .
 
-Üst bilgi tabanlı sürüm oluşturma kullanılırken bir API isteği URL 'sinin biçimi: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
+Yol tabanlı sürüm oluşturma kullanılırken bir API isteği URL 'sinin biçimi: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
 
 ### <a name="header-based-versioning"></a>Üst bilgi tabanlı sürüm oluşturma
 

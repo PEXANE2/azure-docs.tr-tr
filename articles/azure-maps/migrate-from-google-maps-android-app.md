@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f3d32a782c653b3be8b3d6f6714bc9065a73518
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680484"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042904"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Öğretici: Google Maps 'tan Android uygulaması geçirme
 
@@ -33,7 +33,7 @@ Tüm örnekler Java 'da verilmiştir; Ancak, Azure Maps Android SDK Kotlin kulla
 
 Azure haritalar tarafından Android SDK ile geliştirme hakkında daha fazla bilgi için bkz. [Azure Maps Için nasıl yapılır kılavuzlarıyla Android SDK](how-to-use-android-map-control-library.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure Portal](https://portal.azure.com)oturum açarak bir Azure Maps hesabı oluşturun. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -187,7 +187,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
     3. Bağımlılıklar bloğunu güncelleştirin. En son Azure Maps Android SDK için yeni bir uygulama bağımlılığı satırı ekleyin:
 
         ```Java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
         > [!Note]

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400820"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043033"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
@@ -82,10 +82,10 @@ Filtreler Bilişsel Arama içeren uygulamalarda yaygın olarak kullanılır. Uyg
 
 Ayrıca, aşağıdaki tabloda açıklandığı gibi özelleştirilmiş bir sorgu formunu çağırmak için filtreler de gerekebilir. Belirtilmemiş bir aramayla ( **`search=*`** ) veya terimleri, tümceleri, işleçleri ve desenleri içeren bir sorgu dizesiyle bir filtre kullanabilirsiniz.
 
-| Filtre senaryosu | Description |
+| Filtre senaryosu | Açıklama |
 |-----------------|-------------|
-| Aralık filtreleri | Azure Bilişsel Arama 'de, Aralık sorguları filtre parametresi kullanılarak oluşturulur. Daha fazla bilgi ve örnek için bkz. [Aralık filtresi örneği](search-query-simple-examples.md#example-4-range-filters). |
-| Coğrafi konum arama | Aranabilir bir alan [Edm. Geographyıpoint türünde](/rest/api/searchservice/supported-data-types)ise, "yakın beni bul" veya harita tabanlı arama denetimleri için bir filtre ifadesi oluşturabilirsiniz. Coğrafi arama 'nın bulunduğu alanlar koordinatları içerir. Daha fazla bilgi ve örnek için bkz. [coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search). |
+| Aralık filtreleri | Azure Bilişsel Arama 'de, Aralık sorguları filtre parametresi kullanılarak oluşturulur. Daha fazla bilgi ve örnek için bkz. [Aralık filtresi örneği](search-query-simple-examples.md#example-5-range-filters). |
+| Coğrafi konum arama | Aranabilir bir alan [Edm. Geographyıpoint türünde](/rest/api/searchservice/supported-data-types)ise, "yakın beni bul" veya harita tabanlı arama denetimleri için bir filtre ifadesi oluşturabilirsiniz. Coğrafi arama 'nın bulunduğu alanlar koordinatları içerir. Daha fazla bilgi ve örnek için bkz. [coğrafi arama örneği](search-query-simple-examples.md#example-6-geo-search). |
 | Çok yönlü gezinme | Bir model gezinti yapısı, bir model üzerindeki bir olaya yanıt olarak bir filtre çağırdığınızda Kullanıcı tarafından yönlendirilen gezinmede de alet haline gelir `onclick` . Bu nedenle, modeller ve filtreler el ile devam ediyor. Model gezintisi eklerseniz, deneyimi tamamlamaya yönelik filtrelere ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [model filtresi oluşturma](search-filters-facets.md). |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ Gelişmiş sorgu formu, belirli bir sorgu davranışını tetikleyen tam Lucene 
 
 | Sorgu türü | Kullanım | Örnekler ve daha fazla bilgi |
 |------------|--------|------------------------------|
-| [Parçalı arama](query-lucene-syntax.md#bkmk_fields) | **`search`**  parametresinin **`queryType=full`**  | Tek bir alanı hedefleyen bir bileşik sorgu ifadesi oluşturun. <br/>[Parçalı arama örneği](search-query-lucene-examples.md#example-2-fielded-search) |
-| [benzer arama](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** parametresinin **`queryType=full`** | Benzer bir yapım veya yazım denetimi olan koşullara göre eşleşir. <br/>[Benzer arama örneği](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [yakınlık araması](query-lucene-syntax.md#bkmk_proximity) | **`search`** parametresinin **`queryType=full`** | Belgedeki birbirini yakın terimleri bulur. <br/>[Yakınlık arama örneği](search-query-lucene-examples.md#example-4-proximity-search) |
-| [terim artırma](query-lucene-syntax.md#bkmk_termboost) | **`search`** parametresinin **`queryType=full`** | Bir belgeyi, daha fazla olmayan diğerlerine göre, daha yüksek bir dönem içeriyorsa, daha yüksek bir şekilde derecelendirir. <br/>[Terim artırma örneği](search-query-lucene-examples.md#example-5-term-boosting) |
-| [normal ifade arama](query-lucene-syntax.md#bkmk_regex) | **`search`** parametresinin **`queryType=full`** | Normal bir ifadenin içeriğine göre eşleşir. <br/>[Normal ifade örneği](search-query-lucene-examples.md#example-6-regex) |
-|  [joker karakter veya ön ek arama](query-lucene-syntax.md#bkmk_wildcard) | **`search`*** veya içeren *_`~`_* parametre **`?`****`queryType=full`**| Bir önek ve tilde ( `~` ) veya tek karakter () temelinde eşleşir `?` . <br/>[Joker karakter arama örneği](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Parçalı arama](query-lucene-syntax.md#bkmk_fields) | **`search`**  parametresinin **`queryType=full`**  | Tek bir alanı hedefleyen bir bileşik sorgu ifadesi oluşturun. <br/>[Parçalı arama örneği](search-query-lucene-examples.md#example-1-fielded-search) |
+| [benzer arama](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** parametresinin **`queryType=full`** | Benzer bir yapım veya yazım denetimi olan koşullara göre eşleşir. <br/>[Benzer arama örneği](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [yakınlık araması](query-lucene-syntax.md#bkmk_proximity) | **`search`** parametresinin **`queryType=full`** | Belgedeki birbirini yakın terimleri bulur. <br/>[Yakınlık arama örneği](search-query-lucene-examples.md#example-3-proximity-search) |
+| [terim artırma](query-lucene-syntax.md#bkmk_termboost) | **`search`** parametresinin **`queryType=full`** | Bir belgeyi, daha fazla olmayan diğerlerine göre, daha yüksek bir dönem içeriyorsa, daha yüksek bir şekilde derecelendirir. <br/>[Terim artırma örneği](search-query-lucene-examples.md#example-4-term-boosting) |
+| [normal ifade arama](query-lucene-syntax.md#bkmk_regex) | **`search`** parametresinin **`queryType=full`** | Normal bir ifadenin içeriğine göre eşleşir. <br/>[Normal ifade örneği](search-query-lucene-examples.md#example-5-regex) |
+|  [joker karakter veya ön ek arama](query-lucene-syntax.md#bkmk_wildcard) | **`search`*** veya içeren *_`~`_* parametre **`?`****`queryType=full`**| Bir önek ve tilde ( `~` ) veya tek karakter () temelinde eşleşir `?` . <br/>[Joker karakter arama örneği](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

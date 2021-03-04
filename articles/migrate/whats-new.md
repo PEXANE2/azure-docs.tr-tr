@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834059"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043057"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure geçişi 'ndeki yeni sürümler ve Özellikler özetlenmektedir.
+
+## <a name="update-march-2021"></a>Güncelleştirme (Mart 2021)
+- Yüklü uygulamaları (yazılım envanteri) ve aracısız bağımlılık analizini öğrenmek ve VMware ortamınızda SQL Server örnekleri ve veritabanlarını öğrenmek için Azure geçiş gereci üzerinde birden çok sunucu kimlik bilgisi sağlamaya yönelik destek. [Daha fazla bilgi edinin](tutorial-discover-vmware.md#provide-server-credentials)
+- VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. [Daha Fazla Bilgi](concepts-azure-sql-assessment-calculation.md)<br/>Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [Bu bağlantıyı](https://aka.ms/AzureMigrate/SQL) kullanın. Başlamak için [bulma](tutorial-discover-vmware.md) ve [değerlendirme](tutorial-assess-sql.md) öğreticilerine bakın.
 
 ## <a name="update-january-2021"></a>Güncelleştirme (Ocak 2021)
 -  Azure geçişi: sunucu geçiş aracı artık, VMware sanal makinelerini, fiziksel sunucuları ve sanal makineleri diğer bulutlardan Azure sanal makinelerine, müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifrelemesiyle şifrelenen disklerle Azure sanal makinelerine geçirmenize olanak tanır.

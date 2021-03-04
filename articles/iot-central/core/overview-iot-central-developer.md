@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377814"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043108"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central cihaz geliştirme Kılavuzu
 
@@ -68,7 +68,7 @@ DPS kullanılması şunları sunar:
 - IoT Central cihazları kaydetmek için kendi cihaz kimliklerinizi kullanmanız gerekir. Kendi cihaz kimliklerinizin kullanılması, mevcut arka ofis sistemleriyle tümleştirmeyi basitleştirir.
 - Cihazları IoT Central bağlamak için tek ve tutarlı bir yol.
 
-Daha fazla bilgi edinmek için bkz. [Azure IoT Central 'ye bağlanma](./concepts-get-connected.md).
+Daha fazla bilgi edinmek için bkz. [Azure IoT Central](./concepts-get-connected.md) bağlanma ve [en iyi uygulamalar](concepts-best-practices.md).
 
 ### <a name="security"></a>Güvenlik
 

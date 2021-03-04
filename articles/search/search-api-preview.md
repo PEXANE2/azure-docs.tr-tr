@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670876"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041986"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
@@ -25,7 +25,7 @@ Genel kullanılabilirliğe geçiş yapan Önizleme özellikleri bu listeden kald
 |---------|------------------|-------------|---------------|
 | [**Anlamsal arama**](semantic-search-overview.md) | İlgi (Puanlama) | Anlamsal derecelendirme algoritması, sorgu türü ve sorgu yanıtı. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/) |
 | [**güncelleştirin**](cognitive-search-aml-skill.md) | Sorgu | Basit, tam ve anlam sorgularının Sorgu terimi girişlerinde isteğe bağlı yazım denetimi. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/) |
-| SharePoint Online Dizin Oluşturucu | Dizin Oluşturucu veri kaynağı | SharePoint içeriğinin Dizin Oluşturucu tabanlı dizin oluşturma için yeni veri kaynağı. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/) |
+| [**SharePoint Online Dizin Oluşturucu**](search-howto-index-sharepoint-online.md) | Dizin Oluşturucu veri kaynağı | SharePoint içeriğinin Dizin Oluşturucu tabanlı dizin oluşturma için yeni veri kaynağı. | [Arama REST API 2020-06-30-Önizleme](/rest/api/searchservice/) |
 | [**Azure Machine Learning (AML) yeteneği**](cognitive-search-aml-skill.md) | Yapay zeka zenginleştirme| Azure Machine Learning bir Inde sınırlama uç noktasını bütünleştirmek için yeni bir yetenek türü. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın. | [Arama REST API 2020-06-30-önizleme](/rest/api/searchservice/) veya 2019-05-06-önizleme kullanın. Portal 'da, Beceri tasarımında, Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtıldığı varsayıldığında de mevcuttur. |
 | [**featuresMode parametresi**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | İlgi (Puanlama) | Ayrıntıları dahil etmek için yakınlık puanı genişletmesi: alan başına benzerlik puanı, alan dönemi sıklığı başına ve eşleşen benzersiz belirteçlerin başına alan sayısı. Bu veri noktalarını [özel Puanlama çözümlerinde](https://github.com/Azure-Samples/search-ranking-tutorial)kullanabilirsiniz. | Bu sorgu parametresini, [arama belgeleri (REST)](/rest/api/searchservice/preview-api/search-documents) kullanarak api-Version = 2020-06 -30-preview veya 2019-05-06-Preview ile ekleyin. |
 | [**Hata ayıklama oturumları**](cognitive-search-debug-session.md) | Portal, AI zenginleştirme (beceri) | Bir beceri ile ilgili sorunları araştırmak ve çözmek için kullanılan bir oturum içi beceri Düzenleyicisi. Hata ayıklama oturumu sırasında uygulanan düzeltmeler, hizmette bir beceri kaydedilebilir. | Bir hata ayıklama oturumu açmak için genel bakış sayfasındaki orta sayfalı bağlantıları kullanarak yalnızca Portal. |

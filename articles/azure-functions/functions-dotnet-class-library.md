@@ -1,25 +1,28 @@
 ---
-title: Azure Işlevleri C# Geliştirici Başvurusu
-description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
+title: Azure Işlevleri 'ni kullanarak C# işlevleri geliştirme
+description: Azure Işlevleri çalışma zamanı ile işlem içinde çalışan kodu geliştirmek ve yayımlamak Için C# ' nin nasıl kullanılacağını anlayın.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806319"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041204"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
+# <a name="develop-c-functions-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak C# işlevleri geliştirme
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Bu makale, .NET sınıf kitaplıklarında C# kullanarak Azure Işlevleri geliştirmeye giriş niteliğindedir.
 
+>[!IMPORTANT]
+>Bu makale, çalışma zamanında işlem içinde çalışan .NET sınıf kitaplığı işlevlerini destekler. İşlevler ayrıca, C# işlevlerinizi işlem dışı ve çalışma zamanından yalıtılmış olarak çalıştırarak .NET 5. x ' i destekler. Daha fazla bilgi için bkz. [.net yalıtılmış işlem işlevleri](dotnet-isolated-process-guide.md).
+
 Bir C# geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
-| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme/örnekler |
+| Başlarken | Kavramlar| Kılavuzlu öğrenme/örnekler |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio’yu kullanma](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code’u kullanma](create-first-function-vs-code-csharp.md)</li><li>[Komut satırı araçlarını kullanma](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li><li>[Visual Studio geliştirme](functions-develop-vs.md)</li><li>[Bağımlılık ekleme](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[C# örnekleri](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
@@ -31,9 +34,11 @@ Işlevler çalışma zamanının sürümleri .NET 'in belirli sürümleriyle ça
 
 | İşlevler çalışma zamanı sürümü | En yüksek .NET sürümü |
 | ---- | ---- |
-| İşlevler 3. x | .NET Core 3.1 |
+| İşlevler 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
 | İşlevler 2.x | .NET Core 2.2 |
 | İşlevler 1.x |  .NET Framework 4.7 |
+
+<sup>*</sup>[İşlem dışı](dotnet-isolated-process-guide.md)çalıştırılmalıdır.
 
 Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md)
 
@@ -94,9 +99,11 @@ Yöntem imzası, tetikleyici özniteliğiyle kullanılandan farklı parametreler
 
 İşlev imzasında parametrelerin sırası önemi yoktur. Örneğin, tetikleme parametrelerini diğer bağlamalardan önce veya sonra koyabilirsiniz ve tetikleyici veya bağlama parametrelerinden önce veya sonra günlükçü parametresini yerleştirebilirsiniz.
 
-### <a name="output-binding-example"></a>Çıkış bağlama örneği
+### <a name="output-bindings"></a>Çıkış bağlamaları
 
-Aşağıdaki örnek, bir çıkış sırası bağlaması ekleyerek önceki birini değiştirir. İşlevi, işlevi tetikleyen sıra iletisini farklı bir kuyruktaki yeni bir kuyruk iletisine yazar.
+Bir işlev, çıkış parametreleri kullanılarak tanımlanmış sıfır veya bir çıkış bağlaması olabilir. 
+
+Aşağıdaki örnek, adlı bir çıkış sırası bağlaması ekleyerek önceki bir adı değiştirir `myQueueItemCopy` . İşlevi, işlevi tetikleyen iletinin içeriğini farklı bir kuyruktaki yeni bir iletiye yazar.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +119,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+Çıkış bağlamalarına atanan değerler, işlev çıktığında yazılır. Yalnızca birden çok çıkış parametresine değer atayarak, bir işlevde birden fazla çıkış bağlaması kullanabilirsiniz. 
 
 Bağlama başvuru makaleleri (örneğin,[depolama kuyrukları](functions-bindings-storage-queue.md)) tetikleyici, giriş veya çıkış bağlama öznitelikleri ile hangi parametre türlerini kullanabileceğinizi açıklar.
 
@@ -361,7 +370,7 @@ Aşağıda, verilerin JSON örnek bir gösterimi verilmiştir `customDimensions`
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>C# işlevlerinde özel telemetriyi günlüğe kaydetme
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Özel telemetri günlüğe kaydet
 
 Application Insights SDK 'nın İşlevlerinizden Özel telemetri verilerini Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)'a göndermek Için kullanabileceğiniz işlevlere özgü bir sürümü vardır. Bu paketi yüklemek için komut isteminde aşağıdaki komutu kullanın:
 
@@ -618,7 +627,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örneğin:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

@@ -2,13 +2,13 @@
 title: Apache Kafka istemcileri için önerilen Yapılandırma-Azure Event Hubs
 description: Bu makalede, Azure Event Hubs Apache Kafka için etkileşim kuran istemciler için önerilen Apache Kafka konfigürasyonları sunulmaktadır.
 ms.topic: reference
-ms.date: 01/07/2021
-ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 03/03/2021
+ms.openlocfilehash: be009aae41b2cb26ab02fdbe14bc4e18311ad235
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028837"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042360"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka istemcileri için önerilen yapılandırma
 Apache Kafka istemci uygulamalarından Azure Event Hubs kullanmak için önerilen yapılandırma aşağıda verilmiştir. 
@@ -33,7 +33,6 @@ Apache Kafka istemci uygulamalarından Azure Event Hubs kullanmak için önerile
 `metadata.max.idle.ms` | 180000 | > 5000 | Producer 'ın boşta olan bir konu için meta verileri ne kadar süreyle önbelleğe alınacağını denetler. Bir konunun en son üretilmesinden beri geçen süre meta veri boşta kalma süresini aşarsa, konunun meta verileri unutuldu ve buna bir sonraki erişim, meta veri getirme isteğine zorlayacaktır.
 `linger.ms` | > 0 | | Yüksek aktarım hızı senaryolarında, iş üretimini avantajlarından yararlanmak için, lzil değeri en yüksek toleranyabilecek değere eşit olmalıdır.
 `delivery.timeout.ms` | | | ( `request.timeout.ms`  +  `linger.ms` ) * Formülüne göre ayarlayın `retries` .
-`enable.idempotence` | yanlış | | Idempotan desteklenmiyor.
 `compression.type` | `none` | | Sıkıştırma Şu anda desteklenmiyor..
 
 ### <a name="consumer-configurations-only"></a>Yalnızca tüketici yapılandırması
@@ -62,7 +61,6 @@ Ana `librdkafka` yapılandırma dosyası ([bağlantı](https://github.com/edenhi
 `retries` | > 0 | | Varsayılan değer 2 ' dir. Bu değeri tutmanız önerilir. 
 `request.timeout.ms` | 30000.. 60000 | > 20000| EH, varsayılan olarak en az 20.000 MS için varsayılan değer olarak kullanılır.  `librdkafka` Varsayılan değer, sorunlu olabilecek 5000 ' dir. *Düşük zaman aşımı değerleri olan istekler kabul edilirken, istemci davranışı garanti edilmez.*
 `partitioner` | `consistent_random` | Bkz. librdkafka belgeleri | `consistent_random` Varsayılan ve en iyisidir.  Çoğu durumda boş ve null anahtarlar ideal olarak işlenir.
-`enable.idempotence` | yanlış | | Idempotan desteklenmiyor.
 `compression.codec` | `none` || Sıkıştırma Şu anda desteklenmiyor.
 
 ### <a name="consumer-configurations-only"></a>Yalnızca tüketici yapılandırması

@@ -4,19 +4,19 @@ description: Uygun sertifikalarla cihazlarınızı ayarlama ve gelecekteki kod g
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 65710047d5d5d1cc6b835144f7778392fb20b797
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388779"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042275"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -38,14 +38,19 @@ IoT Edge cihazlar, bir Raspberry Pi 'den dizüstü bilgisayardan bir sunucu üze
 
 ### <a name="install-production-certificates"></a>Üretim sertifikalarını yükleme
 
-Üretimde her IoT Edge cihazda yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası daha sonra config. YAML dosyasındaki IoT Edge çalışma zamanına bildirilmiştir. Geliştirme ve test senaryoları için, config. YAML dosyasında hiçbir sertifika bildirilirse IoT Edge çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikaların son tarihi üç ay sonra sona erer ve üretim senaryolarında güvenli değildir. Üretim senaryolarında, kendi cihaz CA sertifikanızı otomatik olarak imzalanan bir sertifika yetkilisinden sağlamanız veya ticari bir sertifika yetkilisinden satın almanız gerekir.
+Üretimde her IoT Edge cihazda yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası daha sonra yapılandırma dosyasında IoT Edge çalışma zamanına bildirilmiştir. Geliştirme ve test senaryoları için, yapılandırma dosyasında hiçbir sertifika bildirilirse IoT Edge çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikaların son tarihi üç ay sonra sona erer ve üretim senaryolarında güvenli değildir. Üretim senaryolarında, kendi cihaz CA sertifikanızı otomatik olarak imzalanan bir sertifika yetkilisinden sağlamanız veya ticari bir sertifika yetkilisinden satın almanız gerekir.
+
+<!--1.1-->
+:::moniker range="iotedge-2018-06"
 
 > [!NOTE]
 > Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
+:::moniker-end
+
 Cihaz CA sertifikasının rolünü anlamak için bkz. [Azure IoT Edge sertifikaları nasıl kullanır](iot-edge-certs.md).
 
-Sertifikaları IoT Edge bir cihaza yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazında sertifikayı yönetme](how-to-manage-device-certificates.md).
+IoT Edge bir cihaza sertifika yüklemek ve bunları yapılandırma dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazında sertifikayı yönetme](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Bir cihaz yönetimi planına sahip olmanız
 
@@ -54,10 +59,10 @@ Sertifikaları IoT Edge bir cihaza yüklemek ve config. YAML dosyasından başvu
 * Cihaz üretici yazılımı
 * İşletim sistemi kitaplıkları
 * Kapsayıcı altyapısı, Moby gibi
-* IoT Edge Daemon
+* IoT Edge
 * CA sertifikaları
 
-Daha fazla bilgi için bkz. [IoT Edge çalışma zamanını güncelleştirme](how-to-update-iot-edge.md). IoT Edge Daemon ' i güncelleştirmeye yönelik geçerli Yöntemler IoT Edge cihazına fiziksel veya SSH erişimi gerektirir. Güncelleştirilecek çok sayıda cihaz varsa, güncelleştirme adımlarını bir betiğe eklemeyi veya anormal gibi bir Otomasyon aracını kullanmayı düşünün.
+Daha fazla bilgi için bkz. [IoT Edge çalışma zamanını güncelleştirme](how-to-update-iot-edge.md). IoT Edge güncelleştirme için geçerli Yöntemler IoT Edge cihazına fiziksel veya SSH erişimi gerektirir. Güncelleştirilecek çok sayıda cihaz varsa, güncelleştirme adımlarını bir betiğe eklemeyi veya anormal gibi bir Otomasyon aracını kullanmayı düşünün.
 
 ### <a name="use-moby-as-the-container-engine"></a>Kapsayıcı altyapısı olarak Moby kullanma
 
@@ -74,7 +79,7 @@ IoT Edge Aracısı ve IoT Edge hub 'ı için IoT Hub yukarı akış iletişimi i
 * MQTTWS
 * AMQPWS
 
-IoT Edge Aracısı için UpstreamProtocol değişkenini cihazın kendisindeki config. YAML dosyasında yapılandırın. Örneğin, IoT Edge cihazınız AMQP bağlantı noktalarını engelleyen bir proxy sunucusunun arkasındaysa, IoT Hub ilk bağlantıyı kurmak için IoT Edge aracısını WebSocket üzerinden (AMQPWS) AMQP 'yi kullanacak şekilde yapılandırmanız gerekebilir.
+Cihazın kendisindeki yapılandırma dosyasında IoT Edge Aracısı için UpstreamProtocol değişkenini yapılandırın. Örneğin, IoT Edge cihazınız AMQP bağlantı noktalarını engelleyen bir proxy sunucusunun arkasındaysa, IoT Hub ilk bağlantıyı kurmak için IoT Edge aracısını WebSocket üzerinden (AMQPWS) AMQP 'yi kullanacak şekilde yapılandırmanız gerekebilir.
 
 IoT Edge cihazınız bağlandıktan sonra, gelecekteki dağıtımlarda her iki çalışma zamanı modülü için UpstreamProtocol değişkenini yapılandırmaya devam ettiğinizden emin olun. Bir [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazı yapılandırma](how-to-configure-proxy-support.md)bölümünde bu işleme bir örnek verilmiştir.
 
@@ -203,7 +208,7 @@ Ardından, edgeAgent ve edgeHub sistem modülleri için dosyadaki deployment.tem
 
 ### <a name="review-outboundinbound-configuration"></a>Giden/gelen yapılandırmayı gözden geçir
 
-Azure IoT Hub ve IoT Edge arasındaki iletişim kanalları her zaman giden olacak şekilde yapılandırılır. Çoğu IoT Edge senaryo için yalnızca üç bağlantı gereklidir. Kapsayıcı altyapısının modül görüntülerini tutan kapsayıcı kayıt defterine (veya kayıt defterlerine) bağlanması gerekir. IoT Edge çalışma zamanının cihaz yapılandırma bilgilerini almak ve ileti ve telemetri göndermek için IoT Hub ile bağlanması gerekir. Otomatik sağlama kullanıyorsanız, IoT Edge arka plan programının cihaz sağlama hizmetine bağlanması gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
+Azure IoT Hub ve IoT Edge arasındaki iletişim kanalları her zaman giden olacak şekilde yapılandırılır. Çoğu IoT Edge senaryo için yalnızca üç bağlantı gereklidir. Kapsayıcı altyapısının modül görüntülerini tutan kapsayıcı kayıt defterine (veya kayıt defterlerine) bağlanması gerekir. IoT Edge çalışma zamanının cihaz yapılandırma bilgilerini almak ve ileti ve telemetri göndermek için IoT Hub ile bağlanması gerekir. Otomatik sağlamayı kullanıyorsanız, IoT Edge cihaz sağlama hizmetine bağlanması gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge cihazlarından bağlantılara izin ver
 
@@ -211,7 +216,7 @@ Ağ Kurulum, IoT Edge cihazlarından yapılan bağlantılara açıkça izin verm
 
 * **IoT Edge Aracısı** , büyük olasılıkla WebSockets üzerinden IoT Hub için kalıcı bir AMQP/MQTT bağlantısı açar.
 * **IoT Edge hub** , büyük olasılıkla WebSockets üzerinden tek bir kalıcı AMQP bağlantısı veya IoT Hub için birden çok MQTT bağlantısı açar.
-* **IoT Edge Daemon** , IoT Hub için ARALıKLı olarak https çağrıları yapar.
+* **IoT Edge hizmeti** , IoT Hub için ARALıKLı olarak https çağrıları yapar.
 
 Üç durumda da DNS adı, \* . Azure-Devices.NET ile eşleşir.
 
@@ -248,7 +253,28 @@ Cihazlarınız bir ara sunucu kullanan bir ağda dağıtılırsa, IoT Hub ve kap
 
 ### <a name="set-up-logs-and-diagnostics"></a>Günlükleri ve tanılamayı ayarlama
 
-Linux 'ta IoT Edge Daemon, günlükleri varsayılan günlük sürücüsü olarak kullanır. Komut satırı aracını kullanarak `journalctl` Daemon günlüklerini sorgulayın. Windows 'da IoT Edge Daemon, PowerShell tanılamayı kullanır. `Get-IoTEdgeLog`Arka plan programından günlükleri sorgulamak için kullanın. IoT Edge modüller, günlük kaydı için varsayılan olan JSON sürücüsünü kullanır.  
+Linux 'ta IoT Edge Daemon, günlükleri varsayılan günlük sürücüsü olarak kullanır. Komut satırı aracını kullanarak `journalctl` Daemon günlüklerini sorgulayın.
+
+<!--1.2-->
+:::moniker range=">=iotedge-2020-11"
+
+Sürüm 1,2 ' den başlayarak, IoT Edge birden çok Daemon 'ları kullanır. Her bir Daemon günlüğü ile tek tek sorgulanılabilse `journalctl` de `iotedge system` Komutlar Birleşik günlükleri sorgulamak için uygun bir yol sağlar.
+
+* Birleştirilmiş `iotedge` komut:
+
+  ```bash
+  sudo iotedge system logs
+  ```
+
+* Denk `journalctl` komut:
+
+  ```bash
+  journalctl -u aziot-edge -u aziot-identityd -u aziot-keyd -u aziot-certd -u aziot-tpmd
+  ```
+
+:::moniker-end
+
+Windows 'da IoT Edge Daemon, PowerShell tanılamayı kullanır. `Get-IoTEdgeLog`Arka plan programından günlükleri sorgulamak için kullanın. IoT Edge modüller, günlük kaydı için varsayılan olan JSON sürücüsünü kullanır.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -285,7 +311,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ```yml
 "createOptions": {

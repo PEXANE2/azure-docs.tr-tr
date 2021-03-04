@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131908"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042462"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,6 +51,7 @@ Geleneksel bir şirket içi dağıtımda istemciler, sanal ağ adını (VNN) kul
 
 Azure VM 'lerinde SQL Server, trafiği kullanılabilirlik grubu dinleyicinize yönlendirmek için bir [yük dengeleyici](availability-group-vnn-azure-load-balancer-configure.md) yapılandırın veya SQL Server 2019 CU8 ve sonraki bir sürümü kullanıyorsanız, geleneksel vnn kullanılabilirlik grubu dinleyicisinin yerini alacak bir [dağıtılmış ağ adı (DNN) dinleyicisi](availability-group-distributed-network-name-dnn-listener-configure.md) yapılandırabilirsiniz. 
 
+Küme bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server HADR bağlantıları yönlendirme](hadr-cluster-best-practices.md#connectivity). 
 
 ### <a name="vnn-listener"></a>VNN dinleyicisi 
 
@@ -77,7 +78,7 @@ Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu dağıtmaya yön
 
 Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmiştir:
 
-| | Azure portal | Azure CLı/PowerShell | Hızlı başlangıç şablonları | El ile |
+| | Azure portalı | Azure CLı/PowerShell | Hızlı başlangıç şablonları | El ile |
 |---------|---------|---------|---------|---------|
 |**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server yayını** |Kurumsal |Kurumsal |Kurumsal |Kurumsal, standart|

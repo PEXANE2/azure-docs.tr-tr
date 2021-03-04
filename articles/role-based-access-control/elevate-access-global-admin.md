@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557493"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042020"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme
 
@@ -33,7 +33,7 @@ Genel yöneticiyseniz, aşağıdaki işlemleri yapmak istediğiniz zaman olabili
 
 ## <a name="how-does-elevated-access-work"></a>Yükseltilmiş erişim nasıl çalışır?
 
-Azure AD ve Azure kaynakları birbirinden bağımsız olarak güvenli hale getirilir. Diğer bir deyişle, Azure AD rol atamaları Azure kaynaklarına erişim vermez ve Azure rol atamaları Azure AD 'ye erişim vermez. Ancak, Azure AD 'de [genel yöneticiyseniz](../active-directory/roles/permissions-reference.md#global-administrator-permissions) , kendi dizininizdeki tüm Azure aboneliklerine ve yönetim gruplarına erişim izni atayabilirsiniz. Sanal makineler veya depolama hesapları gibi Azure abonelik kaynaklarına erişiminiz yoksa ve bu kaynaklara erişim kazanmak için genel yönetici ayrıcalıklarınızı kullanmak istiyorsanız bu özelliği kullanın.
+Azure AD ve Azure kaynakları birbirinden bağımsız olarak güvenli hale getirilir. Diğer bir deyişle, Azure AD rol atamaları Azure kaynaklarına erişim vermez ve Azure rol atamaları Azure AD 'ye erişim vermez. Ancak, Azure AD 'de [genel yöneticiyseniz](../active-directory/roles/permissions-reference.md#global-administrator) , kendi dizininizdeki tüm Azure aboneliklerine ve yönetim gruplarına erişim izni atayabilirsiniz. Sanal makineler veya depolama hesapları gibi Azure abonelik kaynaklarına erişiminiz yoksa ve bu kaynaklara erişim kazanmak için genel yönetici ayrıcalıklarınızı kullanmak istiyorsanız bu özelliği kullanın.
 
 Erişiminizi yükseltirse, Azure 'da kök kapsamında () [Kullanıcı erişimi yönetici](built-in-roles.md#user-access-administrator) rolü atamış olursunuz `/` .Bu, tüm kaynakları görüntülemenize ve dizindeki herhangi bir aboneliğe veya yönetim grubuna erişim atamanıza olanak tanır. Kullanıcı erişimi yönetici rolü atamaları Azure PowerShell, Azure CLı veya REST API kullanılarak kaldırılabilir.
 
@@ -143,7 +143,7 @@ Kullanıcı erişimi yönetici rolü atamasını kendinize veya kök kapsamdaki 
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Genel yönetici için erişimi yükseltme
 

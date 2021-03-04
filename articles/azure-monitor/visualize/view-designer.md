@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de günlük verilerini çözümlemek için görünümler oluşturun | Microsoft Docs
 description: Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal görüntülenen ve Log Analytics çalışma alanındaki veriler üzerinde çeşitli görselleştirmeler içeren özel görünümler oluşturabilirsiniz. Bu makale, görünüm tasarımcısına genel bir bakış içerir ve özel görünümleri oluşturma ve düzenlemeyle ilgili yordamları sunar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700550"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043278"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.

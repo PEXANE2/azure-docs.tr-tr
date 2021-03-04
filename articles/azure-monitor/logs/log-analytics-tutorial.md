@@ -1,17 +1,16 @@
 ---
 title: Log Analytics öğreticisi
 description: Bu öğreticiden Azure Izleyici 'de Log Analytics özelliklerini kullanarak bir günlük sorgusu çalıştırın ve sonuçlarını Azure portal analiz edin.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723189"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041153"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics öğreticisi
 Log Analytics, Azure Izleyici günlükleri tarafından toplanan verilerden günlük sorgularını düzenlemek ve çalıştırmak ve sonuçları etkileşimli olarak analiz etmek için Azure portal bir araçtır. Belirli ölçütlere uyan kayıtları almak, eğilimleri belirlemek, desenleri analiz etmek ve verilerinize çeşitli Öngörüler sağlamak için Log Analytics sorguları kullanabilirsiniz. 

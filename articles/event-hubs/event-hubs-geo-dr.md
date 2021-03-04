@@ -3,12 +3,12 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390683"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042377"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
@@ -44,11 +44,7 @@ Bu makalede aşağıdaki terimler kullanılmaktadır:
 -  *Diğer ad*: ayarladığınız bir olağanüstü durum kurtarma yapılandırması adı. Diğer ad, tek bir tutarlı tam etki alanı adı (FQDN) bağlantı dizesi sağlar. Uygulamalar, bir ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. 
 
 -  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir.
-
-    > [!IMPORTANT]
-    > Coğrafi olağanüstü durum kurtarma özelliği, aboneliğin ve kaynak grubunun birincil ve ikincil ad alanları için aynı olmasını gerektirir. 
 -  *Meta veri*: Olay Hub 'ları ve tüketici grupları gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Yalnızca varlıklar ve ayarları otomatik olarak çoğaltılır. İletiler ve olaylar çoğaltılmaz. 
-
 -  *Yük devretme*: ikincil ad alanını etkinleştirme işlemi.
 
 ## <a name="supported-namespace-pairs"></a>Desteklenen ad alanı çiftleri
@@ -59,7 +55,7 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 | Standart | Standart | Yes | 
 | Standart | Ayrılmış | Yes | 
 | Ayrılmış | Ayrılmış | Yes | 
-| Ayrılmış | Standart | No | 
+| Ayrılmış | Standart | Hayır | 
 
 > [!NOTE]
 > Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
@@ -75,13 +71,13 @@ Aşağıdaki bölüm, yük devretme işlemine genel bakış ve ilk yük devretme
 Önce mevcut bir birincil ad alanını ve yeni bir ikincil ad alanını oluşturun veya kullanın, ardından ikisini eşleştirin. Bu eşleştirme size bağlanmak için kullanabileceğiniz bir diğer ad sağlar. Bir diğer ad kullandığınız için bağlantı dizelerini değiştirmeniz gerekmez. Yalnızca yeni ad alanları, yük devretme eşleştirmeye eklenebilir. 
 
 1. Birincil ad alanını oluşturun.
-1. Abonelikte ve birincil ad alanı olan kaynak grubunda, ancak farklı bir bölgede ikincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
+1. İkincil ad alanını farklı bir bölgede oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
 1. Azure portal, birincil ad alanına gidin.
 1. Sol menüde **coğrafi kurtarma** ' yı seçin ve araç çubuğunda **eşleştirmeyi başlat** ' ı seçin. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Birincil ad alanından eşleştirmeyi Başlat":::    
 1. **Eşleştirmeyi başlat** sayfasında, aşağıdaki adımları izleyin:
-    1. Mevcut bir ikincil ad alanını seçin veya abonelikte ve birincil ad alanına sahip kaynak grubunda bir tane oluşturun. Bu örnekte, var olan bir ad alanı seçilidir.  
+    1. Var olan bir ikincil ad alanını seçin veya farklı bir bölgede oluşturun. Bu örnekte, var olan bir ad alanı seçilidir.  
     1. **Diğer ad** için, coğrafi Dr eşleştirmesi için bir diğer ad girin. 
     1. Ardından **Oluştur**’u seçin. 
 

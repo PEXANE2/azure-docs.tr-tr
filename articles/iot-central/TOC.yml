@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: IoT Edge cihazlarını bağlama
       href: core/concepts-iot-edge.md
+    - name: En iyi uygulamalar
+      href: core/concepts-best-practices.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Cihazları geliştirme ve bağlama

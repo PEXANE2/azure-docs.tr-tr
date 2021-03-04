@@ -3,12 +3,12 @@ title: Windows-Azure 'da Linux için bir IoT Edge dağıtma
 description: Bu makale, Windows cihazında Linux için bir IoT Edge dağıtma hakkında rehberlik sağlar.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 5cf4184857f12065d808d7b528dbfe8258950cd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746461"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042190"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Windows (EFLOW) cihazında Linux için IoT Edge dağıtma
 
@@ -107,7 +107,7 @@ Aşağıdaki, belgenin genel akışını ve 5 basit adımda, canlı video analiz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bulutta ilgili videoları kaydetme ile birlikte hareket algılamayı deneyin. İzleme [hareketini, video kliplerini Media Services](detect-motion-record-video-clips-media-services-quickstart.md#review-the-sample-video) hızlı başlangıç adımlarını izleyin.
-* [Canlı videoda AI](use-your-model-quickstart#overview) çalıştırın (yukarıda zaten yapıldığı üzere Önkoşul kurulumunu atlayabilirsiniz)
+* [Canlı videoda AI](use-your-model-quickstart.md#overview) çalıştırın (yukarıda zaten yapıldığı üzere Önkoşul kurulumunu atlayabilirsiniz)
 * Ek medya grafiklerini görüntülemek için [vs Code uzantımızı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) kullanın.
 * RTSP simülatörü kullanmak yerine RTSP 'yi destekleyen bir [IP kamera](https://en.wikipedia.org/wiki/IP_camera)  kullanın. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products/) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
 

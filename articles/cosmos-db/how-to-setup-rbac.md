@@ -4,14 +4,14 @@ description: Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: thweiss
-ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: acb82a66c8ef4adcfeef0fcb527c44512ad4feaf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690915"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040881"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -370,6 +370,7 @@ Bu ek bilgiler **Dataplanerequests** günlük kategorisinde akar ve iki ek sütu
 - Azure Cosmos DB hesap başına en çok 100 rol tanımı ve 2.000 rol ataması oluşturabilirsiniz.
 - Azure AD grup çözümlemesi, 200 taneden fazla gruba ait olan kimlikler için şu anda desteklenmiyor.
 - Azure AD belirteci Şu anda her bir tek istekle birlikte Azure Cosmos DB hizmetine gönderilen bir üst bilgi olarak geçirilir ve toplam yük boyutunu artırır.
+- [Azure Cosmos DB Explorer](data-explorer.md) aracılığıyla VERILERINIZE Azure AD ile erişmek henüz desteklenmez. Azure Cosmos DB gezgin 'in kullanılması, kullanıcının şu anda hesabın birincil anahtarına erişmesini gerektirir.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

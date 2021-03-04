@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Azure Data Factory form tanıyıcı kullanarak form verilerini toplu olarak ayıklama'
 titleSuffix: Azure Cognitive Services
-description: Büyük bir belge biriktirme listesini dijital olarak biçimlendirmek için form tanıyıcı modellerinin eğitimini ve çalışmasını tetiklemek üzere Azure Data Factory etkinlikleri ayarlayın.
+description: Form tanıyıcı modellerinin eğitimini ve çalışmasını tetiklemek ve büyük bir belge biriktirme listesini dijital olarak biçimlendirmek için Azure Data Factory etkinlikleri ayarlayın.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,87 +9,89 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700006"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040915"
 ---
-# <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak form verilerini toplu olarak ayıklama
+# <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak form verilerini toplu olarak ayıklayın
 
-Bu öğreticide, Azure hizmetlerini kullanarak büyük bir form toplu işini dijital medyaya alma hakkında bakacağız. Bu öğreticide, bir Azure SQL veritabanı 'na bir belge Azure Data Lake veri alımı otomatik hale getirme işlemi gösterilmektedir. Birkaç tıklama ile modelleri hızlı bir şekilde eğitebilir ve yeni belgeleri işleyebilirsiniz.
+Bu öğreticide, Azure hizmetlerini kullanarak büyük bir form toplu işini dijital medyaya alma hakkında bakacağız. Öğreticide, bir Azure SQL veritabanı 'na ait bir Azure Veri Gölü veri alımını nasıl otomatikleştirebileceğiniz gösterilmektedir. Birkaç tıklama ile modelleri hızlı bir şekilde eğitebilir ve yeni belgeleri işleyebilirsiniz.
 
 ## <a name="business-need"></a>İşletme gereksinimi
 
-Çoğu kuruluş artık değerli verilerin farklı biçimlerde (PDF, resimler, videolar) nasıl olduğunu fark ediyor. Bunlar, en iyi uygulamaları ve bu varlıkları dijital olarak ayırmak için en düşük maliyetli yöntemleri arıyor.
+Çoğu kuruluş artık çeşitli biçimlerde (PDF, resim, video) sahip oldukları verilerin değerini biliyor. Bunlar, en iyi uygulamaları ve bu varlıkları dijital olarak ayırmak için en düşük maliyetli yöntemleri arıyor.
 
-Ayrıca, müşterilerimiz genellikle birçok istemci ve müşterisi tarafından gelen farklı türlerde formlara sahiptir. [Hızlı](./quickstarts/client-library.md)başlangıçlardan farklı olarak, bu öğreticide, meta veri odaklı bir yaklaşım kullanarak bir modeli yeni ve farklı form türleri ile otomatik olarak eğitme konusu gösterilmektedir. Verilen form türü için mevcut bir modeliniz yoksa, sistem sizin için bir tane oluşturur ve size model KIMLIĞI sağlar. 
+Ayrıca, müşterilerimiz çoğu istemci ve müşterinden gelen çeşitli form türlerine sahiptir. [Hızlı](./quickstarts/client-library.md)başlangıçlardan farklı olarak, bu öğreticide, meta veri odaklı bir yaklaşım kullanarak bir modeli yeni ve farklı form türleri ile otomatik olarak eğitme konusu gösterilmektedir. Verilen form türü için mevcut bir modeliniz yoksa, sistem bir tane oluşturur ve size model KIMLIĞI verir. 
 
 İşletmeler, formlardan verileri ayıklayarak ve mevcut işletimsel sistemlerle ve veri ambarlarıyla birleştirerek müşteriler ve iş kullanıcılarına Öngörüler elde edebilir ve değer sunabilir.
 
-Azure form tanıyıcı sayesinde kuruluşların verilerini, işlemleri otomatikleştirmesini (fatura ödemeleri, vergi işleme vb.), paradan ve zamandan tasarruf etmesini ve daha iyi veri doğruluğu tadını çıkardık.
+Azure form tanıyıcı, kuruluşların verilerini kullanmasına, işlemleri otomatikleştirmesine (fatura ödemeleri, vergi işleme vb.), paradan ve zamandan tasarruf etmesine ve daha iyi veri doğruluğu avantajlarından yararlanmasına yardımcı olur.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Formlarınızı depolamak için Azure Data Lake ayarlama
-> * Bir Azure veritabanı kullanarak parametrization tablosu oluşturma
-> * Hassas kimlik bilgilerini depolamak için Azure Key Vault kullanma
-> * Form tanıyıcı modelinizi bir Databricks not defterinde eğitme
-> * Databricks Not defteri kullanarak form verilerinizi ayıklama
-> * Azure Data Factory ile form eğitimini ve ayıklamayı otomatikleştirin
+> * Formlarınızı depolamak için Azure Data Lake ayarlayın.
+> * Bir parametrization tablosu oluşturmak için Azure veritabanı kullanın.
+> * Hassas kimlik bilgilerini depolamak için Azure Key Vault kullanın.
+> * Form tanıyıcı modelinizi bir Azure Databricks not defterinde eğitme.
+> * Bir Databricks Not defteri kullanarak form verilerinizi ayıklayın.
+> * Azure Data Factory kullanarak form eğitimini ve ayıklamayı otomatikleştirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git**' i seçin.
-    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
-    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
-* Aynı türde en az beş form kümesi. İdeal olarak, bu iş akışı büyük belge kümelerini desteklemeye yöneliktir. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu öğreticide, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
+* Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/).
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir form tanıyıcı kaynağı oluşturun. Kaynak dağıtıldıktan sonra **Kaynağa git**'i seçin.
+    * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bu hızlı başlangıçta, anahtarınızı ve uç noktanızı kodunuza yapıştırmanız gerekir.
+    * Hizmeti denemek için ücretsiz fiyatlandırma katmanını (F0) kullanabilirsiniz. Daha sonra üretim için daha sonra ücretli bir katmana yükseltebilirsiniz.
+* Aynı türde en az beş form kümesi. İdeal olarak, bu iş akışı büyük belge kümelerini desteklemeye yöneliktir. Eğitim veri kümenizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim veri kümesi oluşturma](./build-training-data-set.md) . Bu öğreticide, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080)eğitme klasöründeki dosyaları kullanabilirsiniz.
 
 ## <a name="project-architecture"></a>Proje mimarisi 
 
 Bu proje, bir Azure Data Lake depolama hesabındaki belgelerden verileri eğiteleyen, çözümleyen ve ayıklayarak Python not defterlerini tetiklemek için bir dizi Azure Data Factory işlem hattı temsil eder.
 
-Form tanıyıcı REST AP, giriş olarak bazı parametreler gerektirir. Güvenlik nedenleriyle, bu parametrelerden bazıları Azure Key Vault depolanır, ancak Depolama Blobu klasör adı gibi daha az hassas parametreler, bir Azure SQL veritabanında Parametreleştirme tablosunda depolanır.
+Form tanıyıcı REST API giriş olarak bazı parametreler gerektiriyor. Güvenlik nedenleriyle, bu parametrelerden bazıları bir Azure Anahtar Kasası 'nda depolanır. Depolama Blobu klasör adı gibi diğer, daha az hassas parametreler, bir Azure SQL veritabanında Parametreleştirme tablosunda depolanır.
 
-Analiz edilecek form türü için, veri mühendisleri veya veri bilimcileri, parametre tablosunun bir satırını dolduracaktır. Ardından, algılanan form türleri listesini yinelemek ve form tanıyıcı modellerini eğitme veya yeniden eğitebilmeniz için ilgili parametreleri bir Databricks not defterine geçirmek üzere Azure Data Factory kullanırlar. Burada bir Azure işlevi de kullanılabilir.
+Analiz edilecek her form türü için, veri mühendisleri veya veri bilimcileri, parametre tablosunun bir satırını dolduracaktır. Daha sonra, algılanan form türleri listesini yinelemek ve form tanıyıcı modellerini eğitme veya yeniden eğitebilmeniz için ilgili parametreleri bir Databricks not defterine geçirmek üzere Azure Data Factory kullanır. Burada bir Azure işlevi de kullanılabilir.
 
-Azure Databricks Not defteri daha sonra, form verilerini ayıklamak için eğitilen modelleri kullanır ve bu tarihi bir Azure SQL veritabanına aktarır.
+Azure Databricks Not defteri daha sonra, form verilerini ayıklamak için eğitilen modelleri kullanır. Bu verileri bir Azure SQL veritabanına aktarır.
 
-:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="Proje mimarisi":::
+:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="Proje mimarisini gösteren diyagram.":::
 
 
 ## <a name="set-up-azure-data-lake"></a>Azure Data Lake ayarlama
 
-Form kapsamınız şirket içi ortamınızda veya bir FTP sunucusunda olabilir. Bu öğretici Azure Data Lake Gen 2 depolama hesabındaki formları kullanır. Dosyalarınızı Azure Data Factory, Azure Depolama Gezgini veya AzCopy kullanarak aktarabilirsiniz. Eğitim ve Puanlama veri kümeleri farklı kapsayıcılarda olabilir, ancak tüm form türleri için eğitim veri kümelerinin aynı kapsayıcıda olması gerekir (ancak farklı klasörlerde yer alabilir).
+Form kapsamınız şirket içi ortamınızda veya bir FTP sunucusunda olabilir. Bu öğretici bir Azure Data Lake Storage 2. hesabındaki formları kullanır. Dosyalarınızı Azure Data Factory, Azure Depolama Gezgini veya AzCopy kullanarak aktarabilirsiniz. Eğitim ve Puanlama veri kümeleri farklı kapsayıcılarda olabilir, ancak tüm form türleri için eğitim veri kümelerinin aynı kapsayıcıda olması gerekir. (Farklı klasörlerde olabilir.)
 
-Yeni bir Data Lake oluşturmak için, [Azure Data Lake Storage 2. birlikte kullanmak üzere depolama hesabı oluşturma](../../storage/blobs/create-data-lake-storage-account.md)bölümündeki yönergeleri izleyin.
+Yeni bir Data Lake oluşturmak için [Azure Data Lake Storage 2. ile kullanmak üzere depolama hesabı oluşturma](../../storage/blobs/create-data-lake-storage-account.md)bölümündeki yönergeleri izleyin.
 
 ## <a name="create-a-parameterization-table"></a>Parametreleştirme tablosu oluşturma
 
-Daha sonra, bir Azure SQL veritabanında meta veri tablosu oluşturacağız. Bu tablo, REST API, form tanıyıcı tarafından gereken hassas olmayan verileri içerir. Veri kümizdeki yeni bir tür form olduğunda, bu tabloya yeni bir kayıt ekleyeceğiz ve eğitim ve Puanlama işlem hattını tetikleyeceğiz (daha sonra uygulanması için).
+Daha sonra, bir Azure SQL veritabanında meta veri tablosu oluşturacağız. Bu tablo, REST API, form tanıyıcı tarafından gereken hassas olmayan verileri içerir. Veri kümesinde yeni bir tür form olduğunda, bu tabloya yeni bir kayıt ekleyecek ve eğitim ve Puanlama işlem hatlarını tetikleyeceğiz. (Bu işlem hatlarını daha sonra uygulayacağız.)
 
-Tabloda aşağıdaki alanlar kullanılacaktır:
+Bu alanlar tabloda kullanılacaktır:
 
-* **form_description**: Bu alan, eğitimin bir parçası olarak gerekli değildir. Modeli eğititireceğimiz form türünün bir açıklamasını sağlar (örneğin, "istemci A formları," "otel B formları").
-* **training_container_name**: Bu alan, eğitim veri kümesini depoladığınız depolama hesabı kapsayıcısı adıdır. **Scoring_container_name** aynı kapsayıcı olabilir.
-* **training_blob_root_folder**: depolama hesabındaki, modelin eğitimi için dosyaları depolayacağımız klasör.
-* **scoring_container_name**: Bu alan, ' den anahtar değer çiftlerini ayıklamak istediğimiz dosyaları depoladığınız depolama hesabı kapsayıcısı adıdır. **Training_container_name** aynı kapsayıcı olabilir.
-* **scoring_input_blob_folder**: depolama hesabındaki, verileri Ayıklanacak dosyaları depolayacağımız klasör.
-* **model_id**: yeniden eğitebilmemiz ISTEDIĞIMIZ modelin kimliği. İlk çalıştırma için değer-1 ' e ayarlanmalıdır, bu da eğitim Not defterinin eğitebileceği yeni bir özel model oluşturmasına neden olur. Eğitim Not defteri yeni oluşturulan model KIMLIĞINI Azure Data Factory örneğine döndürür ve saklı yordam etkinliğini kullanarak bu değeri Azure SQL veritabanında güncelleştiririz.
+* **form_description**. Eğitimin bir parçası olarak gerekli değildir. Bu alan, modeli eğititireceğimiz form türünün bir açıklamasını sağlar (örneğin, "istemci A formları," "otel B formları").
+* **training_container_name**. Eğitim veri kümesini depoladığınız depolama hesabı kapsayıcısının adı. **Scoring_container_name** aynı kapsayıcı olabilir.
+* **training_blob_root_folder**. Depolama hesabındaki, modelin eğitimi için dosyaları depolayacağımız klasör.
+* **scoring_container_name**. Anahtar/değer çiftlerini ayıklamak istediğimiz dosyaları depoladığınız depolama hesabı kapsayıcısının adı. **Training_container_name** aynı kapsayıcı olabilir.
+* **scoring_input_blob_folder**. Depolama hesabındaki, verileri Ayıklanacak dosyaları depolayacağımız klasör.
+* **model_id**. Yeniden eğitebilmemiz istediğimiz modelin KIMLIĞI. İlk çalıştırma için değer-1 ' e ayarlanmalıdır, bu da eğitim Not defterinin eğitebileceği yeni bir özel model oluşturmasına neden olur. Eğitim Not defteri yeni model KIMLIĞINI Azure Data Factory örneğine döndürür. Saklı yordam etkinliğini kullanarak bu değeri Azure SQL veritabanında güncelleştireceğiz.
 
-  Yeni bir form türünü almak istediğinizde, modeli eğitmek için model KIMLIĞINI-1 ' e el ile sıfırlamanız gerekir.
+  Yeni bir form türünü almak istediğinizde, modeli eğitmadan önce model KIMLIĞINI-1 ' e el ile sıfırlamanız gerekir.
 
-* **file_type**: desteklenen form türleri,, `application/pdf` `image/jpeg` `image/png` ve `image/tif` .
+* **file_type**. Desteklenen form türleri `application/pdf` ,, `image/jpeg` `image/png` ve `image/tif` .
 
-  Farklı dosya türlerine sahip formunuz varsa, yeni bir form türünü eğitmek için bu değeri değiştirmeniz ve **model_id** gerekir.
-* **form_batch_group_id**: zaman içinde, aynı modele göre eğiteettiğiniz birden çok form türüne sahip olabilirsiniz. **Form_batch_group_id** , belirli bir modeli kullanarak eğitime yapılan tüm form türlerini belirtmenizi sağlayacak.
+  Başka dosya türlerinde formunuz varsa, yeni bir form türünü eğitedığınızda bu değeri değiştirmeniz ve **model_id** gerekir.
+* **form_batch_group_id**. Zaman içinde, aynı modele göre eğitmeniz gereken birden çok form türüne sahip olabilirsiniz. **Form_batch_group_id** alanı, belirli bir modelle eğitim verilen tüm form türlerini belirtmenize olanak tanır.
 
 ### <a name="create-the-table"></a>Tabloyu oluşturma
 
-[Bir Azure SQL veritabanı oluşturun](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)ve ardından gerekli tabloyu oluşturmak için [sorgu DÜZENLEYICISI](../../azure-sql/database/connect-query-portal.md) 'nde aşağıdaki SQL betiğini çalıştırın.
+
+[Bir Azure SQL veritabanı oluşturun](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)ve sonra gerekli tabloyu oluşturmak IÇIN bu SQL betiğini [sorgu Düzenleyicisi](../../azure-sql/database/connect-query-portal.md) 'nde çalıştırın:
+
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -105,7 +107,7 @@ CREATE TABLE dbo.ParamFormRecogniser(
 GO
 ```
 
-Eğitilen bir kez **model_id** otomatik olarak güncelleştirme yordamını oluşturmak için aşağıdaki betiği çalıştırın.
+Eğitilen sonrasında **model_id** otomatik olarak güncelleştiren yordamı oluşturmak için bu betiği çalıştırın.
 
 ```SQL
 CREATE PROCEDURE [dbo].[update_model_id] ( @form_batch_group_id  varchar(50),@model_id varchar(50))
@@ -121,16 +123,16 @@ END
 
 Güvenlik nedenleriyle, belirli hassas bilgileri Azure SQL veritabanındaki Parametreleştirme tablosunda depolamak istemiyorum. Gizli parametreleri Azure Key Vault gizli dizi olarak depolayacağız.
 
-### <a name="create-an-azure-key-vault"></a>Azure Key Vault oluşturma
+### <a name="create-an-azure-key-vault"></a>Azure Anahtar Kasası oluşturma
 
-[Key Vault kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.KeyVault). Ardından, oluşturulduktan sonra Key Vault kaynağına gidin ve **Ayarlar** bölümünde, parametreleri eklemek için **gizli** dizileri seçin.
+[Key Vault kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.KeyVault). Sonra, oluşturulduktan sonra Key Vault kaynağına gidin ve **Ayarlar** bölümünde, parametreleri eklemek için **gizli** dizileri seçin.
 
-Yeni bir pencere görünür, **Oluştur/içeri aktar**' ı seçin. Parametrenin adını ve değerini girip oluştur ' a tıklayın. Bunu aşağıdaki parametreler için yapın:
+Yeni bir pencere görüntülenir. **Oluştur/içeri aktar**' ı seçin. Parametrenin adını ve değerini girip **Oluştur**' u seçin. Bu adımları aşağıdaki parametreler için doldurun:
 
-* **Biliveserviceendpoint**: form tanıyıcı API 'nizin uç nokta URL 'si.
-* **Biliveservicesubscriptionkey**: form tanıyıcı hizmetiniz için erişim anahtarı. 
-* **StorageAccountName**: eğitim veri kümesinin ve formların içinden anahtar-değer çiftlerini ayıklamak istediğimiz depolama hesabı. Bunlar farklı hesaplarınızda, hesap adlarının her birini ayrı parolalar olarak girin. Eğitim veri kümelerinin tüm form türleri için aynı kapsayıcıda olması gerektiğini unutmayın, ancak farklı klasörlerde yer alabilir.
-* **Storageaccountsaskey**: depolama hesabının paylaşılan erişim IMZASı (SAS). SAS URL 'sini almak için depolama kaynağına gidin ve **Depolama Gezgini** sekmesini seçin. Kapsayıcınıza gidin, sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Depolama hesabının kendisi için değil, kapsayıcınıza yönelik SAS almak önemlidir. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Biliveserviceendpoint**. Form tanıyıcı API 'nizin uç nokta URL 'SI.
+* **Biliveservicesubscriptionkey**. Form tanıyıcı hizmetiniz için erişim anahtarı. 
+* **StorageAccountName**. Eğitim veri kümesinin ve içindeki anahtar/değer çiftlerini ayıklamak istediğiniz formların depolanacağı depolama hesabı. Bu öğeler farklı hesaplarınızda, her hesap adını ayrı bir gizli dizi olarak girin. Eğitim veri kümelerinin tüm form türleri için aynı kapsayıcıda olması gerektiğini unutmayın. Farklı klasörlerde olabilirler.
+* **Storageaccountsaskey**. Depolama hesabının paylaşılan erişim imzası (SAS). SAS URL 'sini almak için depolama kaynağına gidin. **Depolama Gezgini** sekmesinde, kapsayıcınıza gidin, sağ tıklayın ve **paylaşılan erişim imzasını al**' ı seçin. Depolama hesabının kendisi için değil, kapsayıcınıza yönelik SAS almak önemlidir. **Okuma** ve **Listeleme** izinlerinin seçili olduğundan emin olun ve ardından **Oluştur**' u seçin. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ## <a name="train-your-form-recognizer-model-in-a-databricks-notebook"></a>Form tanıyıcı modelinizi bir Databricks not defterinde eğitme
 
@@ -138,28 +140,29 @@ Form tanıyıcı hizmetiyle etkileşim kuran Python kodunu depolamak ve çalış
 
 ### <a name="create-a-notebook-in-databricks"></a>Databricks 'te Not defteri oluşturma
 
-Azure portal [bir Azure Databricks kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.Databricks) . Oluşturulduktan sonra kaynağa gidin ve çalışma alanını başlatın.
+Azure portal [bir Azure Databricks kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.Databricks) . Oluşturulduktan sonra kaynağa gidin ve çalışma alanını açın.
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault tarafından desteklenen gizli bir kapsam oluşturun
 
-Yukarıda oluşturduğumuz Azure Key Vault sırlara başvurmak için Databricks içinde gizli bir kapsam oluşturmanız gerekir. [Azure Key Vault ile desteklenen gizli dizi kapsamı oluşturma](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)bölümündeki adımları izleyin.
+
+Yukarıda oluşturduğunuz Azure Anahtar Kasası 'nda bulunan gizli dizileri oluşturmak için, Databricks içinde bir gizli dizi kapsamı oluşturmanız gerekir. Buradaki adımları izleyin: [Azure Key Vault ile desteklenen gizli dizi kapsamı oluşturma](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
 
 ### <a name="create-a-databricks-cluster"></a>Databricks kümesi oluşturma
 
 Küme, Databricks hesaplama kaynakları koleksiyonudur. Bir küme oluşturmak için:
 
-1. Yan çubukta **kümeler** düğmesine tıklayın.
-1. **Kümeler** sayfasında, **küme oluştur**' a tıklayın.
-1. **Küme oluştur** sayfasında, bir küme adı belirtin ve Databricks Runtime sürüm açılır penceresinde **7,2 (Scala 2,12, Spark 3.0.0)** seçeneğini belirleyin.
-1. **Create Cluster** (Küme Oluştur) öğesine tıklayın.
+1. Sol bölmede, **kümeler** düğmesini seçin.
+1. **Kümeler** sayfasında **küme oluştur**' u seçin.
+1. **Küme oluştur** sayfasında, bir küme adı belirtin ve **Databricks Runtime sürüm** listesinde **7,2 (Scala 2,12, Spark 3.0.0)** öğesini seçin.
+1. **Küme Oluştur**’u seçin.
 
 ### <a name="write-a-settings-notebook"></a>Bir ayarlar Not defteri yazın
 
-Artık Python Not defterleri eklemeye hazırsınız. İlk olarak, **Ayarlar** adlı bir not defteri oluşturun; Bu not defteri, Parametreleştirme tablonuzdaki değerleri betikteki değişkenlere atayacaktır. Değerler daha sonra Azure Data Factory göre parametre olarak geçirilir. Ayrıca, Key Vault dizilerinizden değişkenlere değerler atayacağız. 
+Artık Python Not defterleri eklemeye hazırsınız. İlk olarak, **Ayarlar** adlı bir not defteri oluşturun. Bu not defteri, Parametreleştirme tablonuzdaki değerleri betikteki değişkenlere atayacaktır. Azure Data Factory, değerleri daha sonra parametreler olarak ' a geçirecek. Ayrıca, anahtar kasasındaki gizli dizilerle değişkenlere değerler atayacağız. 
 
-1. **Ayarlar** Not defterini oluşturmak için, **çalışma alanı** düğmesine tıklayın, yeni sekmesinde, açılan listeye tıklayın ve **Oluştur** ve sonra **Not defteri**' ni seçin.
-1. Açılır pencerede, not defterine vermek istediğiniz adı girin ve varsayılan dil olarak **Python** ' ı seçin. Databricks kümenizi seçip **Oluştur**' u seçin.
-1. İlk not defteri hücresinde, Azure Data Factory tarafından geçirilen parametreleri alıyoruz.
+1. **Ayarlar** Not defterini oluşturmak Için **çalışma alanı** düğmesini seçin. Yeni sekmesinde, açılan listeyi seçin ve ardından **Oluştur** ve sonra **Not defteri**' ni seçin.
+1. Açılır pencerede, Not defteri için bir ad girin ve varsayılan dil olarak **Python** ' ı seçin. Databricks kümenizi seçip **Oluştur**' u seçin.
+1. İlk not defteri hücresinde, Azure Data Factory geçirilen parametreleri alıyoruz:
 
     ```python 
     dbutils.widgets.text("form_batch_group_id", "","")
@@ -196,7 +199,7 @@ Artık Python Not defterleri eklemeye hazırsınız. İlk olarak, **Ayarlar** ad
     file_to_score_name=  getArgument("file_to_score_name")
     ```
 
-1. İkinci hücrede Key Vault parolaları alır ve değişkenlere atar.
+1. İkinci hücrede Key Vault gizli dizileri alır ve bunları değişkenlere atayacağız:
 
     ```python 
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -211,16 +214,16 @@ Artık Python Not defterleri eklemeye hazırsınız. İlk olarak, **Ayarlar** ad
 
 ### <a name="write-a-training-notebook"></a>Eğitim Not defteri yazma
 
-Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeniz için bir not defteri oluşturuyoruz. Yukarıda belirtildiği gibi, Azure Data Lake Gen 2 depolama hesabındaki bir klasörde depolanan dosyaları kullanacağız (**training_blob_root_folder**). Klasör adı bir değişken olarak geçirildi. Her form türü kümesi aynı klasörde olacak ve parametre tablosunda döngü yaptığımız için modeli, tüm form türlerini kullanarak eğtireceğiz. 
+Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeniz için bir not defteri oluşturuyoruz. Yukarıda belirtildiği gibi, bir Azure Data Lake Storage 2. hesabındaki bir klasörde depolanan dosyaları kullanacağız (**training_blob_root_folder**). Klasör adı bir değişken olarak geçirildi. Her form türü kümesi aynı klasörde olacaktır. Parametre tablosunda döngü yaparken, tüm form türlerini kullanarak modeli eğtireceğiz. 
 
-1. **Trainformtanıyıcı** adlı yeni bir not defteri oluşturun. 
-1. İlk hücrede ayarlar Not defterini yürütün:
+1. **Trainformtanıyıcı** adlı bir not defteri oluşturun. 
+1. İlk hücrede **Ayarlar** Not defterini çalıştırın:
 
     ```python
     %run "./Settings"
     ```
 
-1. Sonraki hücrede, **Ayarlar** dosyasından değişkenler atayın ve her form türü için modeli dinamik olarak eğitme, bu kodu [rest hızlı](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)başlangıca uygulayın.
+1. Sonraki hücrede, ayarlar dosyasından değişkenler atayın ve her form türü için modeli dinamik olarak eğitme, bu kodu [rest hızlı](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)başlangıca uygulayın.
 
     ```python
     import json
@@ -234,7 +237,7 @@ Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeni
     includeSubFolders=True
     useLabelFile=False
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -245,7 +248,7 @@ Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeni
             "includeSubFolders": includeSubFolders
        },
     }
-    if model_id=="-1": # if you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key-value pairs
+    if model_id=="-1": # If you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key/value pairs.
       try:
           resp = post(url = post_url, json = body, headers = headers)
           if resp.status_code != 201:
@@ -258,7 +261,7 @@ Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeni
       except Exception as e:
           print("POST model failed:\n%s" % str(e))
           quit()
-    else :# if you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
+    else :# If you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
       try:
         get_url =post_url+r"/"+model_id
           
@@ -267,7 +270,7 @@ Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeni
           quit()
     ```
 
-1. Eğitim sürecinin son adımı, eğitimin bir JSON biçiminde elde edilmesine neden olur.
+1. Eğitim sürecinin son adımı, eğitimin bir JSON biçiminde elde edilmesine neden olur:
 
     ```python
     n_tries = 10
@@ -305,22 +308,22 @@ Artık **Ayarlar** Not defterini tamamladığımıza göre, modeli eğitebilmeni
     print("Train operation did not complete within the allocated time.")
     ```
 
-## <a name="extract-form-data-using-a-notebook"></a>Not defteri kullanarak form verilerini ayıklama
+## <a name="extract-form-data-by-using-a-notebook"></a>Bir not defteri kullanarak form verilerini ayıklama
 
 ### <a name="mount-the-azure-data-lake-storage"></a>Azure Data Lake depolamayı bağlama
 
-Bir sonraki adım, eğitilen modeli kullanmakta olduğumuz farklı formlara puan vereceğiz. Azure Data Lake depolama hesabını Databricks 'e bağlayacağız ve bir işlem sırasında bağlama işleminde başvuracağız.
+Bir sonraki adım, eğitilen modeli kullanarak yaptığımız birçok formu puanlandırıyoruz. Azure Data Lake Storage hesabını Databricks 'e bağlayacağız ve alma işlemi sırasında takmaya başvuracağız.
 
-Eğitim aşamasında olduğu gibi, formlardan anahtar-değer çiftleri ayıklanmasını çağırmak için Azure Data Factory kullanacağız. Parametre tablosunda belirtilen klasörlerdeki formların üzerinde döngü göndereceğiz.
+Eğitim aşamasında yaptığımız gibi, formlardan anahtar/değer çiftleri ayıklanmasını çağırmak için Azure Data Factory kullanacağız. Parametre tablosunda belirtilen klasörlerdeki formların üzerinde döngü göndereceğiz.
 
-1. Depolama hesabını Databricks 'e bağlamak için Not defterini oluşturalım. It **Bağlamaverileri** Gölü için arama yapacağız. 
+1. Depolama hesabını Databricks 'e bağlamak için Not defteri oluşturun. **Mount veri** Gölü çağırın. 
 1. Önce **Ayarlar** Not defterini çağırmanız gerekir:
 
     ```python
     %run "./Settings"
     ```
 
-1. İkinci hücrede, hassas parametrelerin değişkenlerini tanımlayacağız, bu da Key Vault gizli dizilerimizden elde edeceğiz.
+1. İkinci hücrede, hassas parametrelerin değişkenlerini tanımlayın ve bu Key Vault gizli dizilerimizden elde edeceğiz:
 
     ```python
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -335,7 +338,7 @@ Eğitim aşamasında olduğu gibi, formlardan anahtar-değer çiftleri ayıklanm
     
     ```
 
-1. Daha sonra, daha önce bağlanmış olması durumunda depolama hesabını çıkaracağız.
+1. Daha önce bağlanmış olması durumunda depolama hesabını çıkarmasını deneyin:
 
     ```python
     try:
@@ -345,7 +348,7 @@ Eğitim aşamasında olduğu gibi, formlardan anahtar-değer çiftleri ayıklanm
     
     ```
 
-1. Son olarak, depolama hesabını bağlayacağız.
+1. Depolama hesabını bağlama:
 
 
     ```python
@@ -361,21 +364,21 @@ Eğitim aşamasında olduğu gibi, formlardan anahtar-değer çiftleri ayıklanm
     ```
 
     > [!NOTE]
-    > Bu durumda yalnızca eğitim depolama hesabını &mdash; , eğitim dosyalarını ve içindeki anahtar-değer çiftlerini ayıklamak istediğimiz dosyaları aynı depolama hesabında bağladık. Puanlama ve eğitim depolama hesaplarınız farklıysa, her iki depolama hesabını da buraya bağlamanız gerekecektir. 
+    > Yalnızca eğitim depolama hesabını bağladık. Bu durumda, eğitim dosyaları ve içindeki anahtar/değer çiftlerini ayıklamak istediğimiz dosyalar aynı depolama hesabıdır. Puanlama ve eğitim depolama hesaplarınız farklıysa, her iki depolama hesabını da bağlamanız gerekir. 
 
 ### <a name="write-the-scoring-notebook"></a>Puanlama Not defterini yazma
 
-Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterine benzer şekilde, yeni bağlandığımız Azure Data Lake depolama hesabındaki klasörlerde depolanan dosyaları kullanacağız. Klasör adı bir değişken olarak geçirilir. Belirtilen klasördeki tüm formların üzerinde döngü yapılacak ve anahtar-değer çiftlerini onlardan ayıklayacağız. 
+Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterinde yaptığımız gibi bir şey yapacağız: yeni bağlandığımız Azure Data Lake Storage hesaptaki klasörlerde depolanan dosyaları kullanacağız. Klasör adı bir değişken olarak geçirilir. Belirtilen klasördeki tüm formların üzerinde döngü yapılacak ve anahtar/değer çiftlerini onlardan ayıklayacağız. 
 
-1. Yeni bir not defteri oluşturun ve bunu **Scoreformtanıyıcı** olarak çağırın. 
-1. **Ayarları** ve **bağlamadatalake** not defterlerini yürütün.
+1. Bir not defteri oluşturun ve bunu **Scoreformtanıyıcı** olarak çağırın. 
+1. **Ayarları** ve **bağlamadatalake** not defterlerini çalıştırın:
 
     ```python
     %run "./Settings"
     %run "./MountDataLake"
     ```
 
-1. Ardından, [Çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API 'sini çağıran aşağıdaki kodu ekleyin.
+1. [Çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API 'sini çağıran bu kodu ekleyin:
 
     ```python
     ########### Python Form Recognizer Async Analyze #############
@@ -394,7 +397,7 @@ Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterine benzer şe
     }
     
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -414,7 +417,7 @@ Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterine benzer şe
         quit() 
     ```
 
-1. Sonraki hücrede, anahtar-değer çiftinin ayıklanmasına ilişkin sonuçları elde edeceğiz. Bu hücre sonucun çıktısını alacak. JSON biçimindeki sonucun Azure SQL veritabanı veya Cosmos DB üzerinde daha fazla işlem yapacağından, sonucu bir. JSON dosyasına yazacağız. Çıkış dosyası adı, "_output.json" ile birleştirilmiş puanlanmış dosyanın adı olacaktır. Dosya, kaynak dosyayla aynı klasörde depolanır.
+1. Sonraki hücrede, anahtar/değer çiftinin ayıklanmasına ilişkin sonuçları elde edeceğiz. Bu hücre sonucun çıktısını alacak. Azure SQL veritabanı veya Azure Cosmos DB daha fazla işleyebilmemiz için JSON biçiminde sonuç istiyoruz. Bu nedenle, sonucu bir. JSON dosyasına yazacak. Çıkış dosyası adı, "_output.json" ile birleştirilmiş puanlanmış dosyanın adı olacaktır. Dosya, kaynak dosyayla aynı klasörde depolanır.
 
     ```python
     n_tries = 10
@@ -459,52 +462,52 @@ Artık bir Puanlama Not defteri oluşturuyoruz. Eğitim not defterine benzer şe
     file.close()
     ```
 
-## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Eğitim ve Puanlama Azure Data Factory ile otomatikleştirin
+## <a name="automate-training-and-scoring-by-using-azure-data-factory"></a>Azure Data Factory kullanarak eğitimi ve Puanlama otomatikleştirme
 
-Kalan tek adım, eğitim ve Puanlama işlemlerini otomatikleştirmek için Azure Data Factory (ADF) hizmetini ayarlamanıza olanak sağlar. İlk olarak, [Veri Fabrikası oluşturma](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)bölümündeki adımları izleyin. ADF kaynağını oluşturduktan sonra üç işlem hattı oluşturmanız gerekir: bir eğitim için biri ve skor için iki (aşağıda açıklanmıştır).
+Kalan tek adım eğitim ve Puanlama işlemlerini otomatikleştirmek için Azure Data Factory hizmetini ayarlamanıza olanak sağlar. İlk olarak, [Veri Fabrikası oluşturma](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)bölümündeki adımları izleyin. Azure Data Factory kaynağını oluşturduktan sonra üç işlem hattı oluşturmanız gerekir: bir eğitim için biri ve skor için iki. (Daha sonra açıklayacağız.)
 
 ### <a name="training-pipeline"></a>Eğitim işlem hattı
 
-Eğitim işlem hattındaki ilk etkinlik, Azure SQL veritabanındaki Parametreleştirme tablosundaki değerleri okumak ve döndürmek için bir aramadır. Tüm eğitim veri kümeleri aynı depolama hesabında ve kapsayıcıda (ancak muhtemelen farklı klasörlerde) olacağı için, arama etkinlik ayarlarında varsayılan değer **ilk satır yalnızca** özniteliğini saklayacağız. Modeli eğitmek için her form türü için, **training_blob_root_folder** içindeki tüm dosyaları kullanarak modeli eğtireceğiz.
+Eğitim işlem hattındaki ilk etkinlik, Azure SQL veritabanındaki Parametreleştirme tablosundaki değerleri okumak ve döndürmek için bir aramadır. Tüm eğitim veri kümeleri aynı depolama hesabında ve kapsayıcıda (ancak muhtemelen farklı klasörlerde) olacaktır. Bu nedenle, varsayılan öznitelik değeri **ilk satırı yalnızca** arama etkinliği ayarlarında tutulacağız. Modeli eğitmek için her form türü için, **training_blob_root_folder** içindeki tüm dosyaları kullanarak modeli eğtireceğiz.
 
-:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="Data Factory 'de Eğitim işlem hattı":::
+:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="Data Factory bir eğitim işlem hattını gösteren ekran görüntüsü.":::
 
-Saklı yordam iki parametre alır: **model_id** ve **form_batch_group_id**. Databricks Not defterinden model KIMLIĞINI döndüren kod `dbutils.notebook.exit(model_id)` ve Veri Fabrikası içindeki saklı yordam etkinliğinde kodu okuma kodu `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` .
+Saklı yordam iki parametre alır: **model_id** ve **form_batch_group_id**. Databricks Not defterinden model KIMLIĞINI döndürecek kod `dbutils.notebook.exit(model_id)` . Data Factory içindeki saklı yordam etkinliğinde kodu okuma kodu `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` .
 
 ### <a name="scoring-pipelines"></a>Puanlama işlem hatları
 
-Anahtar-değer çiftlerini ayıklamak için, Parametreleştirme tablosundaki tüm klasörleri tarayacağız ve her klasör için içindeki tüm dosyaların anahtar-değer çiftlerini çıkaracağız. Bugün, ADF, iç içe geçmiş ForEach döngülerini desteklemez. Bunun yerine, iki işlem hattı oluşturacağız. İlk işlem hattı, Parametreleştirme tablosundan arama yapılır ve Klasörler listesini ikinci işlem hattına parametre olarak iletmektir.
+Anahtar/değer çiftlerini ayıklamak için, Parametreleştirme tablosundaki tüm klasörleri tarayacağız. Her klasör için, içindeki tüm dosyaların anahtar/değer çiftlerini ayıklayacağız. Azure Data Factory, iç içe geçmiş ForEach döngülerini desteklememektedir. Bunun yerine, iki işlem hattı oluşturacağız. İlk işlem hattı, Parametreleştirme tablosundan arama yapılır ve Klasörler listesini ikinci işlem hattına parametre olarak iletmektir.
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="Data Factory 'de ilk Puanlama işlem hattı":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="Data Factory ilk Puanlama ardışık düzenini gösteren ekran görüntüsü.":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="Data Factory 'de ilk Puanlama ardışık düzeni, Ayrıntılar":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="Data Factory ilk Puanlama ardışık düzenine ilişkin ayrıntıları gösteren ekran görüntüsü.":::
 
 İkinci işlem hattı, klasördeki dosyaların listesini almak ve bu dosyayı Puanlama Databricks not defterine bir parametre olarak geçirmek için GetMeta etkinliğini kullanır.
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="Data Factory 'de ikinci Puanlama işlem hattı":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="Data Factory ikinci Puanlama ardışık düzenini gösteren ekran görüntüsü.":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="Data Factory 'de ikinci Puanlama işlem hattı, Ayrıntılar":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="Data Factory ikinci Puanlama ardışık düzenine ilişkin ayrıntıları gösteren ekran görüntüsü.":::
 
 ### <a name="specify-a-degree-of-parallelism"></a>Paralellik derecesini belirtme
 
-Eğitim ve Puanlama işlem hatları içinde, birden fazla formu aynı anda işlemek için paralellik derecesini belirtebilirsiniz.
+Eğitim ve Puanlama işlem hatlarında, birden fazla formu eşzamanlı olarak işleyebilmeniz için paralellik derecesini belirtebilirsiniz.
 
-ADF ardışık düzeninde paralellik derecesini ayarlamak için:
+Azure Data Factory ardışık düzeninde paralellik derecesini ayarlamak için:
 
-* Foreach etkinliğini seçin.
-* **Sıralı** kutunun işaretini kaldırın.
-* **Yığın sayısı** metin kutusunda paralellik derecesini ayarlayın. Puanlama için en fazla 15 toplu iş sayısı önerilir.
+1. **Foreach** etkinliğini seçin.
+1. **Sıralı** kutuyu temizleyin.
+1. **Yığın sayısı** kutusunda paralellik derecesini ayarlayın. Puanlama için en fazla 15 toplu iş sayısı önerilir.
 
-:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="ADF 'de puanlama etkinliği için paralellik yapılandırması":::
+:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="Azure Data Factory Puanlama etkinliğinin paralellik yapılandırmasını gösteren ekran görüntüsü.":::
 
-## <a name="how-to-use"></a>Nasıl kullanılır?
+## <a name="how-to-use-the-pipeline"></a>İşlem hattını kullanma
 
-Artık, form kapsamınızı dijital olarak ayırmak ve üzerine bazı analizler çalıştırmak için otomatik bir işlem hattınız vardır. Var olan bir depolama klasörüne tanıdık bir türün yeni biçimlerini eklediğinizde, Puanlama işlem hatlarını yeniden çalıştırmanız yeterlidir ve yeni formlar için çıkış dosyaları da dahil olmak üzere tüm çıkış dosyalarınızı güncelleştirirler. 
+Artık, form kapsamınızı dijital olarak ayırmak ve üzerine bazı analizler çalıştırmak için otomatik bir işlem hattınız vardır. Mevcut bir depolama klasörüne tanıdık bir türün yeni biçimlerini eklediğinizde, Puanlama işlem hatlarını yeniden çalıştırmanız yeterlidir. Yeni formlar için çıkış dosyaları da dahil olmak üzere tüm çıkış dosyalarınızı güncelleştirirler. 
 
-Yeni bir türden yeni formlar eklerseniz, uygun kapsayıcıya bir eğitim veri kümesi de yüklemeniz gerekir. Ardından, yeni belgelerin ve eğitim veri kümesinin konumlarını girerek parameterleştirme tablosuna yeni bir satır ekleyin. Yeni bir modelin Bu formlar için eğitilmeli olduğunu belirtmek üzere **model_ID** için-1 değerini girin. Ardından, ADF 'de Eğitim işlem hattını çalıştırın. Tablodan okur, bir modeli eğitme ve tablodaki model KIMLIĞI üzerine yazacak. Ardından, çıkış dosyalarını yazmaya başlamak için Puanlama işlem hatlarını çağırabilirsiniz.
+Yeni bir türden yeni formlar eklerseniz, uygun kapsayıcıya bir eğitim veri kümesi de yüklemeniz gerekir. Daha sonra, yeni belgelerin ve eğitim veri kümesinin konumlarını girerek parameterleştirme tablosuna yeni bir satır ekleyeceksiniz. Form için yeni bir modelin eğitililmesi gerektiğini belirtmek üzere **model_ID** için-1 değerini girin. Ardından Azure Data Factory 'de Eğitim işlem hattını çalıştırın. İşlem hattı tablodan okur, bir modeli eğitme ve tablodaki model KIMLIĞI üzerine yazacak. Daha sonra, çıktı dosyalarını yazmaya başlamak için Puanlama işlem hatlarını çağırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, büyük bir dosya biriktirme listesini dijital olarak biçimlendirmek için form tanıyıcı modellerinin eğitimini ve çalışmasını tetikleyen Azure Data Factory işlem hatlarını ayarlarsınız. Ardından, bununla ne yapabileceğinizi görmek için form tanıyıcı API 'sini inceleyin.
+Bu öğreticide, form tanıyıcı modellerinin eğitimini ve çalışmasını tetikleyip büyük bir dosya biriktirme listesi oluşturmak için Azure Data Factory işlem hatlarını ayarlarsınız. Ardından, bununla ne yapabileceğinizi görmek için form tanıyıcı API 'sini inceleyin.
 
 * [Form tanıyıcı REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de günlük sorguları
 description: Azure Izleyici tarafından kullanılan kusto sorgu dili için başvuru bilgileri. Azure izleyici günlük sorgularında desteklenmeyen Azure Izleyici ve öğelerine özgü ek öğeler içerir.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 7ce73fc69ac0ff88c6048aad39fd07ae802b978d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704234"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041034"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorguları
 Azure Izleyici günlükleri Azure Veri Gezgini tabanlıdır ve günlük sorguları aynı kusto sorgu dili (KQL) kullanılarak yazılır. Bu, okumak ve yazmak için tasarlanan zengin bir dildir. bu nedenle, bazı temel kılavuzlarla sorgu yazmaya başlayabilmeniz gerekir.

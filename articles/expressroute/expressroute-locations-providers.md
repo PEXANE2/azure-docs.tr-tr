@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 53c4f7868b808b5785c1d6d5ac100bb5a6186faa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c4a50645ae1e7b412c5c98bafbd7746c7c435d85
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040762"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -147,7 +147,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Tokyo** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Doğu Japonya | 10G, 100G | Aryaka Networks, AT&T Netbonı, BBIX, Ingiliz telekomünikasyon, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonya Inc.-IIJ, Megaport, NTT Communications, NTT Doğu, turuncu, Softbank, Verizon |
 | **Tokyo2** | [TOKYO 'DA](https://www.attokyo.com/) | 2 | Doğu Japonya | 10G, 100G | TOKYO, Megaport, Tokai Iletişimleri |
 | **Toronto** | [Birlikte bulundurgix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | Orta Kanada | 10G, 100G | &T Netbono, Bell Kanada, CenturyLink Cloud Connect, birlikte bulundurma, Equinx, x Reach Megaport, Telus, Verizon, Zayo |
-| **Toronto2** | [Birlikte bulundurgix TOR2](https://www.cologix.com/data-centers/toronto/tor2/) | 1 | Orta Kanada | 10G, 100G | |
+| **Toronto2** | [Allied REIT](https://www.alliedreit.com/property/905-king-st-w/) | 1 | Orta Kanada | 10G, 100G | |
 | **Vancouver** | [Birlikte bulundurgix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | yok | 'Yi | Birlikte bulundurgix, Megaport, Telus |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | Doğu ABD, Doğu ABD 2 | 10G, 100G | Aryaka Networks,&T Netbonı Ingiliz sev, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinix, Internet2, Intercloud, Iron Sıradağlar, x REACH, düzey 3 Iletişimleri, Megaport, Neutrona Networks |
 | **Washington DC2** | [Coresite Reston](https://www.coresite.com/data-center-locations/northern-virginia-washington-dc) | 1 | Doğu ABD, Doğu ABD 2 | 10G, 100G | CenturyLink Cloud Connect, Coresite, Intelsat, Megaport, Viasat, Zayo | 

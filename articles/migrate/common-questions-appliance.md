@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753884"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043074"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -36,21 +36,20 @@ Gereç hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
 ## <a name="how-can-i-deploy-the-appliance"></a>Gereci nasıl dağıtırım?
 
-Gereç şu şekilde dağıtılabilir:
+Gereç birkaç yöntem kullanılarak dağıtılabilir:
 
-- VMware VM 'lerini bulmak için şablon kullanma (. OVA dosyası) ve Hyper-V VM 'Leri (. VHD dosyası) gereci barındıran yeni bir VM oluşturun.
-- Bir şablon kullanmak istemiyorsanız, bir PowerShell yükleyici betiği kullanarak VMware VM 'leri veya Hyper-V VM 'lerini bulmak için mevcut bir fiziksel veya sanal makineye, portaldan bir ZIP dosyasında indirilebilir.
-- Şirket içi veya herhangi bir buluttan fiziksel veya sanal sunucular için gereci, var olan bir sunucuda bir komut dosyası kullanarak her zaman dağıtırsınız.
-- Azure Kamu için, üç gereçlerin hepsi yalnızca PowerShell yükleyici betiği kullanılarak dağıtılabilir.
+- Gereç, VMware veya Hyper-V ortamında ([VMware Için ova şablonu](how-to-set-up-appliance-vmware.md) veya [Hyper-v için VHD](how-to-set-up-appliance-hyper-v.md)) çalışan sunucular için bir şablon kullanılarak dağıtılabilir.
+- Bir şablon kullanmak istemiyorsanız, bir [PowerShell yükleyici betiği](deploy-appliance-script.md)kullanarak VMware veya Hyper-V ortamı için gereci dağıtabilirsiniz.
+- Azure Kamu 'da, bir PowerShell yükleyici betiği kullanarak gereci dağıtmanız gerekir. [Burada](deploy-appliance-script-government.md)Dağıtım adımlarına bakın.
+- Şirket içinde veya başka bir bulutta bulunan fiziksel veya sanallaştırılmış sunucular için, her zaman gereci bir PowerShell yükleyici betiği kullanarak dağıtırsınız. [Burada](how-to-set-up-appliance-physical.md)Dağıtım adımlarına bakın.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
 
 Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. 
 
 - Gerecin bu [Azure URL 'lerine](./migrate-appliance.md#url-access)bağlanabildiğinizden emin olun. 
-- ExpressRoute 'ı Microsoft eşlemesi ile birlikte kullanabilirsiniz.  Ortak eşleme kullanım dışıdır ve yeni ExpressRoute devreleri için kullanılamaz.
+- ExpressRoute 'ı Microsoft eşlemesi ile birlikte kullanabilirsiniz. Ortak eşleme kullanım dışıdır ve yeni ExpressRoute devreleri için kullanılamaz.
 - Yalnızca özel eşleme desteklenmez.
-
 
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Gereç Analizi performansı etkiler mi?
@@ -109,7 +108,7 @@ Hayır. [Azure geçişi](migrate-appliance.md) gereci ve vCenter Server arasınd
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Bir Azure geçişi projesi birden çok gereçte sahip olabilir mi?
 
-Bir projede birden fazla gereç eklenmiş olabilir. Ancak, bir gereç yalnızca bir projeyle ilişkilendirilebilir. 
+Bir projeye kayıtlı birden fazla gereç bulunabilir. Ancak, bir gereç yalnızca bir projeyle kaydedilebilir.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure geçiş gereci/çoğaltma gereci aynı vCenter 'a bağlanmasına mi?
 
@@ -135,7 +134,7 @@ Ayrıca, yeniden yapılandırılmış bir gereç üzerinde mevcut bir Azure geç
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Gereci bir Azure VM üzerinde ayarlayabilir miyim?
 
-Hayır. Şu anda bu seçenek desteklenmez. 
+Hayır. Şu anda bu seçenek desteklenmez.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>ESXi konağında bulunabilir miyim?
 
@@ -150,6 +149,19 @@ Yalnızca Gereç ve gereç aracıları bu otomatik güncelleştirmeler tarafınd
 ## <a name="can-i-check-agent-health"></a>Aracı sistem durumunu denetleyebilir miyim?
 
 Evet. Portalda Azure geçişi: Sunucu değerlendirmesi veya Azure geçişi: sunucu geçiş aracı için **Aracı sistem durumu** sayfasına gidin. Burada, aracıda Azure ile bulma ve değerlendirme aracıları arasındaki bağlantı durumunu kontrol edebilirsiniz.
+
+## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>VMware gerecine birden çok sunucu kimlik bilgisi ekleyebilir miyim?
+
+Evet, artık yazılım envanterini (yüklü uygulamaların bulunması), aracısız bağımlılık analizini ve SQL Server örneklerinin ve veritabanlarının bulunmasını sağlamak için birden çok sunucu kimlik bilgisini destekliyoruz. Gereç Yapılandırma Yöneticisi 'nde kimlik bilgileri sağlama hakkında [daha fazla bilgi edinin](tutorial-discover-vmware.md#provide-server-credentials) .
+
+## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>VMware gerecine ne tür sunucu kimlik bilgileri ekleyebilirim?
+Gereç Yapılandırma Yöneticisi 'nde etki alanı/Windows (etki alanı olmayan)/Linux (etki alanı olmayan)/SQL Server kimlik doğrulama kimlik bilgileri sağlayabilirsiniz. Kimlik bilgilerini ve bunları nasıl işleyeceğinizi [öğrenmek hakkında daha fazla bilgi edinin](add-server-credentials.md) .
+
+## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>SQL bulma için Azure geçişi tarafından desteklenen SQL Server bağlantı özellikleri türü nedir?
+Azure geçişi, Azure geçişi gereci ve kaynak SQL Server örnekleri (şifreleme bağlantısı özelliği TRUE olarak ayarlanır) arasındaki iletişimi şifreler. Bu bağlantılar [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) ile ŞIFRELENIR (true olarak ayarlanır); Aktarım katmanı, kanalı şifrelemek ve güveni doğrulamak üzere sertifika zincirini atlamak için SSL kullanır. Gereç sunucusunun, [sertifikanın kök yetkilisine güvenecek](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)şekilde ayarlanması gerekir.
+
+Sunucu başlatıldığında sunucuda bir sertifika sağlanmadıysa SQL Server, oturum açma paketlerini şifrelemek için kullanılan kendinden imzalı bir sertifika oluşturur. [Daha fazla bilgi edinin](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

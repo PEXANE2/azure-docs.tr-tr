@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695997"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042104"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 for köprülerine yönelik meta veri ayıklama ABAP işlev modülünü dağıtın 
 Bu makalede, SAP sunucusunda ABAP işlev modülünü dağıtma adımları özetlenmektedir
@@ -74,7 +74,7 @@ Modül oluşturulduğunda, aşağıdaki bilgileri belirtin:
 
 3.  \"Kaynak kodu \" sekmesine gidin. İşlevi için kodu dağıtmanın iki yolu vardır:
 
-    a.  Ana menüden, \_ \_ Utilities = \> diğer yardımcı programlar = \> karşıya yükle/indir = \> karşıya yükle ' yi seçerek Z mitıDOWNLOAD.txt dosyasını karşıya yükleyin.
+    a.  Ana menüden, yardımcı programlar = diğer yardımcı programlar = karşıya yükle/Indir = karşıya yükle ' yi seçerek [Z \_ mitı \_ indirme](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) dosya dosyasını karşıya yükleyin \> \> \> .
 
     b.  Alternatif olarak, dosyayı açın, içeriğini kopyalayın ve \" kaynak kodu \" alanına yapıştırın.
 

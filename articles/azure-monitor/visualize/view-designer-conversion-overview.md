@@ -3,15 +3,14 @@ title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları geçiş k�
 description: Azure Izleyici 'de görünümlerden çalışma kitaplarına geçiş.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 7c43d1e4dda10cca6b868ef814ec8298d6e21fd0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 19de2a3d3f5a998c09db7c4df689b0378e2597fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736976"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043380"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Veri analizi ve Azure portal içinde zengin görsel raporların oluşturulması için esnek bir tuval sağlamak üzere çalışma kitaplarına geçirilir. Bu makale, görünüm tasarımcısından çalışma kitaplarına geçiş yapmanıza yardımcı olur. 

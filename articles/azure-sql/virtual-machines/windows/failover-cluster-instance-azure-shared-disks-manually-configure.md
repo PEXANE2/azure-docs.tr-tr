@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ce77021e74507ead6d225081debc7024cb89a15a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537839"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042411"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -205,7 +205,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız (veya üzeri) ve Windows Server 2016 (veya üzeri) kullanıyorsanız, bunun yerine [dağıtılmış ağ adı](failover-cluster-instance-distributed-network-name-dnn-configure.md) özelliğini kullanabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 CU2 uygulamazsanız (veya üzeri) ve Windows Server 2016 (veya üzeri) kullanıyorsanız, bunun yerine [dağıtılmış ağ adı](failover-cluster-instance-distributed-network-name-dnn-configure.md) özelliğini kullanabilirsiniz.  
+
+Küme bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server HADR bağlantıları yönlendirme](hadr-cluster-best-practices.md#connectivity). 
 
 ## <a name="limitations"></a>Sınırlamalar
 

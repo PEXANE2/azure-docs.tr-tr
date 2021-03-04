@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360008"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042434"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile otomatik kayıt
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ Tam özellik avantajlarından yararlanmak için SQL Server VM [SQL IaaS Aracıs�
 
 Otomatik kayıt etkinleştirildiğinde bir iş, abonelikteki tüm kayıtlı VM 'lerde SQL Server yüklenip yüklenmediğini algılamak için günlük olarak çalıştırılır. Bu işlem SQL IaaS Aracısı uzantısı ikili dosyalarını VM 'ye kopyalayarak ve ardından SQL Server kayıt defteri kovanını denetleyen bir kerelik yardımcı program çalıştırarak yapılır. SQL Server Hive algılanırsa, sanal makine uzantıya basit modda kaydedilir. Kayıt defterinde SQL Server Hive yoksa, ikili dosyalar kaldırılır.
 
-Bir abonelik için otomatik kayıt etkinleştirildikten sonra, SQL Server yüklü olan tüm mevcut ve gelecekteki sanal makineler, SQL IaaS Aracısı uzantısına hafif modda kaydedilir. Tam özellikler kümesinden yararlanmak için yine de [tam yönetilebilirlik moduna el ile yükseltmeniz](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) gerekir. 
+Bir abonelik için otomatik kayıt etkinleştirildikten sonra, SQL Server yüklü olan tüm mevcut ve gelecekteki sanal makineler, **kapalı kalma süresi olmadan ve SQL Server hizmetini yeniden başlatmadan basit modda** SQL IaaS aracı uzantısına kaydedilir. Tam özellikler kümesinden yararlanmak için yine de [tam yönetilebilirlik moduna el ile yükseltmeniz](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) gerekir. 
 
 > [!IMPORTANT]
 > SQL IaaS Aracısı uzantısı, Azure sanal makineler 'de SQL Server kullanırken müşterilere isteğe bağlı avantajlar vermek için veri toplar. Microsoft, bu verileri müşterinin öncelikli onayı olmadan lisanslama denetimleri için kullanmaz. Daha fazla bilgi için [SQL Server Gizlilik Eki](/sql/sql-server/sql-server-privacy#non-personal-data) ' ne bakın.
@@ -47,7 +47,7 @@ SQL Server VM uzantıya kaydetmek için şunlar gerekir:
 
 Azure portal SQL Server sanal makinelerinizin otomatik olarak kaydedilmesini etkinleştirmek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 1. [**SQL sanal makineler**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynak sayfasına gidin. 
 1. Otomatik **kayıt** sayfasını açmak için **Otomatik SQL Server VM kaydı** ' nı seçin. 
 
@@ -93,7 +93,7 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 1. Komut dosyasını yürütün ve abonelik kimliklerini şu şekilde parametreler olarak geçirerek   
    `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
 
-   Örneğin: 
+   Örnek: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb

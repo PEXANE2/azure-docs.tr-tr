@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/20/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042326"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -29,6 +29,9 @@ En son Azure IoT Edge sürümünü bulmak için, bkz. [Azure IoT Edge yayınlar]
 IoT Edge güvenlik arka plan programı, IoT Edge cihazında Paket Yöneticisi kullanılarak güncelleştirilmesi gereken yerel bir bileşendir.
 
 Komutunu kullanarak cihazınızda çalışan güvenlik arka plan programının sürümünü denetleyin `iotedge version` .
+
+>[!IMPORTANT]
+>Bir cihazı 1,0 veya 1,1 sürümü 1,2 sürümüne güncelleştiriyorsanız, yükleme ve yapılandırma işlemlerinde ek adımlar gerektiren farklılıklar vardır. Daha fazla bilgi için bu makalenin devamındaki adımlara bakın: [özel durum: 1,0 veya 1,1 ' den 1,2](#special-case-update-from-10-or-11-to-12)' a güncelleştirin.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -67,6 +70,9 @@ Apt 'yi güncelleştirin.
    sudo apt-get update
    ```
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Hangi IoT Edge sürümlerinin kullanılabilir olduğunu görmek için denetleyin.
 
    ```bash
@@ -91,17 +97,41 @@ Yüklemek istediğiniz sürüm apt-get ile kullanılamıyorsa, [IoT Edge yayıml
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Hangi IoT Edge sürümlerinin kullanılabilir olduğunu görmek için denetleyin.
+
+   ```bash
+   apt list -a aziot-edge
+   ```
+
+En son IoT Edge sürümüne güncelleştirmek istiyorsanız, kimlik hizmetini de en son sürüme güncelleştiren aşağıdaki komutu kullanın:
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+<!-- end 1.2 -->
+:::moniker-end
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
+:::moniker range="iotedge-2018-06"
 Windows üzerinde Linux için IoT Edge, IoT Edge bir Windows cihazında barındırılan bir Linux sanal makinesinde çalışır. Bu sanal makine, IoT Edge ile önceden yüklenir ve bileşenleri güncel tutmak için Microsoft Update ile yönetilir. Şu anda kullanılabilir güncelleştirme yok.
 
-::: moniker-end
-
 Windows için IoT Edge ile, IoT Edge doğrudan Windows cihazında çalışır. PowerShell betiklerini kullanan güncelleştirme yönergeleri için bkz. [Windows için Azure IoT Edge 'ı yükleyip yönetme](how-to-install-iot-edge-windows-on-windows.md).
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Şu anda Windows cihazlarda çalışan 1,2 IoT Edge sürümü için destek yoktur.
+
+:::moniker-end
 
 ---
 
@@ -158,7 +188,79 @@ Dağıtımınızda belirli Etiketler kullanırsanız (örneğin, mcr.microsoft.c
 
 1. **Gözden geçir + oluştur**' u seçin, dağıtımı gözden geçirin ve **Oluştur**' u seçin.
 
-## <a name="update-to-a-release-candidate-version"></a>Sürüm adayı sürümüne güncelleştirme
+## <a name="special-case-update-from-10-or-11-to-12"></a>Özel durum: 1,0 veya 1,1 ' den 1,2 ' ye güncelleştirme
+
+Sürüm 1,2 ' den başlayarak, IoT Edge hizmeti yeni bir paket adı kullanır ve yükleme ve yapılandırma işlemlerinde bazı farklılıklar vardır. 1,0 veya 1,1 sürümünü çalıştıran bir IoT Edge cihazınız varsa, bu yönergeleri kullanarak 1,2 güncelleştirme hakkında bilgi edinin.
+
+>[!NOTE]
+>Şu anda Windows cihazlarda çalışan 1,2 IoT Edge sürümü için destek yoktur.
+
+1,2 ve önceki sürümler arasındaki temel farklılıklar şunlardır:
+
+* Paket adı, **ıotedge** 'den **azıot-Edge** olarak değiştirildi.
+* **Libiothsm-STD** paketi artık kullanılmıyor. IoT Edge sürümünün bir parçası olarak sunulan standart paketi kullandıysanız, yapılandırmanız yeni sürüme aktarılabilir. Libiothsm-STD ' nin farklı bir uygulamasını kullandıysanız, cihaz kimlik sertifikası, cihaz CA ve güven paketi gibi kullanıcı tarafından sağlanmış tüm sertifikaların yeniden yapılandırılması gerekir.
+* Yeni bir kimlik hizmeti olan **azıot-Identity-Service** , 1,2 sürümünün bir parçası olarak sunulmuştur. Bu hizmet, IoT Edge için kimlik sağlamayı ve yönetimini ve Azure IoT Hub cihaz güncelleştirmesi gibi IoT Hub iletişim kurması gereken diğer cihaz bileşenlerini işler. <!--TODO: add link to ADU when available -->
+* Varsayılan yapılandırma dosyası, yeni bir ad ve konuma sahiptir. `/etc/iotedge/config.yaml`Daha önce, cihaz yapılandırma bilgilerinizin artık varsayılan olarak içinde olması bekleniyor `/etc/aziot/congig.toml` . Bu `iotedge config import` komut, yapılandırma bilgilerinin yeni bir konum ve sözdizimini yeni bir konuma geçirmeye yardımcı olması için kullanılabilir.
+* Kalıcı verileri şifrelemek veya şifresini çözmek için IoT Edge iş yükü API 'sini kullanan tüm modüller, güncelleştirmeden sonra çözülemez. IoT Edge, iç kullanım için dinamik olarak ana kimlik anahtarı ve şifreleme anahtarı oluşturur. Bu anahtar yeni hizmete aktarılmaz. IoT Edge v 1.2 yeni bir tane oluşturur.
+
+Herhangi bir güncelleştirme işlemini otomatikleştirmeye başlamadan önce, test makinelerinde çalıştığını doğrulayın.
+
+Hazırsanız, cihazlarınızda IoT Edge güncelleştirmek için aşağıdaki adımları izleyin:
+
+1. Microsoft 'tan en son depo yapılandırmasını alın:
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Raspberry PI OS Esnetme**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+2. Oluşturulan listeyi kopyalayın.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+3. Microsoft GPG ortak anahtarını yükler.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+
+4. Apt 'yi güncelleştirin.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+5. Önceki IoT Edge sürümünü kaldırın ve yapılandırma dosyalarınızı yerinde bırakın.
+
+   ```bash
+   sudo apt-get remove iotedge
+   ```
+
+6. IoT Edge en son sürümünü IoT kimlik hizmeti ile birlikte yükler.
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+7. Eski config. YAML Dosyanızı yeni biçimine aktarın ve yapılandırma bilgilerini uygulayın.
+
+   ```bash
+   sudo iotedge config import
+   ```
+
+Artık cihazlarınızda çalışan IoT Edge hizmeti güncelleştirildiğinden, [çalışma zamanı kapsayıcılarını de güncelleştirmek](#update-the-runtime-containers)için bu makaledeki adımları izleyin.
+
+## <a name="special-case-update-to-a-release-candidate-version"></a>Özel durum: sürüm adayı sürümüne güncelleştirme
 
 Azure IoT Edge, IoT Edge hizmetinin yeni sürümlerini düzenli olarak yayınlar. Her kararlı sürümden önce bir veya daha fazla sürüm adayı (RC) sürümü vardır. RC sürümleri, yayın için tüm planlı özellikleri içerir, ancak yine de test ve doğrulama işlemleri yapılır. Yeni bir özelliği erken test etmek istiyorsanız bir RC sürümü yükleyebilir ve GitHub aracılığıyla geri bildirim sağlayabilirsiniz.
 

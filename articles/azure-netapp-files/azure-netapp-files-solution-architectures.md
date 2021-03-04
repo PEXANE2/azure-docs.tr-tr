@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/03/2021
 ms.author: b-juche
-ms.openlocfilehash: 756cadd42e8cda557a90c39e2412f5d4f3290835
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6041e863f6c887af35aa070f13e1406462ffc5b3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741217"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041578"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -139,6 +139,7 @@ Bu bölümde, yüksek performanslı bilgi Işlem (HPC) çözümleri için başvu
 ### <a name="analytics"></a>Analiz
 
 * [Azure NetApp Files: Microsoft Azure SAS kılavuzuyla kullanılacak paylaşılan bir dosya sistemi](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
+* [Azure NetApp Files: MS Azure 'da SAS kılavuzuyla birlikte kullanılacak paylaşılan bir dosya sistemi – RHEL 8.3/nConnect UPDATE](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
 * [SAS ile Microsoft Azure kullanmak için en iyi uygulamalar®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Azure platform hizmetleri çözümleri

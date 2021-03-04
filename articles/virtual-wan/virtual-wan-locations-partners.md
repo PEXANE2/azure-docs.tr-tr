@@ -5,21 +5,22 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
+ms.custom: references_regions
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 1e8a8aa632d4c91cdfc6753d988a439d2de8938e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621488"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040557"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
 Bu makalede, sanal WAN ile desteklenen bölgeler ve sanal hub 'a bağlantı için iş ortakları hakkında bilgi sağlanır.
 
-Azure Sanal WAN, Azure aracılığıyla şubeden şubeye iyileştirilmiş ve otomatik bağlantı sağlayan bir ağ hizmetidir. Sanal WAN, Azure ile iletişim kurmak için dal cihazlarını bağlamanızı ve yapılandırmanızı sağlar. Bu, el ile veya bir sanal WAN iş ortağı aracılığıyla sağlayıcı cihazları kullanılarak yapılabilir. İş ortağı cihazlarının kullanımı, kullanım kolaylığı, bağlantı basitleştirmesi ve yapılandırma yönetimi sağlar.
+Azure Sanal WAN, Azure aracılığıyla şubeden şubeye iyileştirilmiş ve otomatik bağlantı sağlayan bir ağ hizmetidir. Sanal WAN, Azure ile iletişim kurmak için dal cihazlarını bağlamanızı ve yapılandırmanızı sağlar. Bağlantı ve yapılandırma, el ile veya bir sanal WAN iş ortağı aracılığıyla sağlayıcı cihazları kullanılarak yapılabilir. İş ortağı cihazlarının kullanımı, kullanım kolaylığı, bağlantı basitleştirmesi ve yapılandırma yönetimi sağlar.
 
 Şirket içi cihazdan bağlantı, sanal hub 'a yönelik otomatikleştirilmiş bir şekilde oluşturulur. Bir sanal hub, Microsoft tarafından yönetilen bir sanal ağ. Hub'da, şirket içi ağınızdan (vpnsite) gelen bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları bulunur. Her bölge için yalnızca bir hub olabilir.
 
@@ -43,6 +44,7 @@ Bazı bağlantı ortakları, otomasyonu, Azure sanal hub VNet ve VPN Gateway olu
 Aşağıdaki iş ortakları, iş ortağı cihazı ile Azure sanal WAN VPN ağ geçitleri arasında IPSec bağlantısını otomatik hale getirmek için çalışma kapsamını belirten şirketler arasında imzalanmış bir terim sayfasını temel alır. 128 Technologies, Arista, F5 Networks, Oracle SD-WAN (talar) ve Netlınk.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Tümleşik sanal hub teklifleri olan iş ortakları
+
 Otomatik şube ofis IPSec bağlantısına sahip olmanın yanı sıra, bazı iş ortakları doğrudan Azure sanal WAN hub 'ına tümleştirilen **ağ sanal gereçlerini (NVA 'lar)** sunar.  Bu, müşterilere şube bağlantılarını sanal hub 'daki uyumlu bir üçüncü taraf gerecine sonlandırma seçeneği sağlar.  
 
 Sanal WAN hub 'ında NVA 'yı sunan iş ortakları şunları içermelidir:
@@ -50,9 +52,10 @@ Sanal WAN hub 'ında NVA 'yı sunan iş ortakları şunları içermelidir:
 * , Şube cihazlarından IPSec bağlantı Otomasyonu uyguladık ve Azure sanal WAN hub 'ına ait NVA tekliflerini eklenmediyse.
 * Azure Marketi 'nde mevcut bir ağ sanal gereç teklifinin olması gerekir.
 
-Bir iş ortağıysanız ve sanal hub teklifinde yönetilen NVA hakkında sorularınız varsa, lütfen adresine e-posta göndererek bizimle iletişime geçin vwannvaonboarding@microsoft.com
+Bir iş ortağıysanız ve sanal hub teklifinde yönetilen NVA hakkında sorularınız varsa, adresine e-posta göndererek bizimle iletişim kurun vwannvaonboarding@microsoft.com
 
 ## <a name="integrated-virtual-hub-nva-partners"></a>Tümleşik sanal hub NVA iş ortakları
+
 Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen **yönetilen uygulama** tekliflerine sahiptir.
 
 |İş Ortakları|Yapılandırma/nasıl yapılır/dağıtım kılavuzu|
@@ -62,9 +65,9 @@ Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen *
 
 Şu iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olan aviatrix, Citrix, VeloCloud ve tersi ağlar için alınmıştır.
 
-## <a name="locations"></a><a name="locations"></a>Konumlar
+## <a name="locations"></a><a name="locations"></a>Yerlerini
 
-[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
+[!INCLUDE [Virtual WAN regions file](../../includes/virtual-wan-regions-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

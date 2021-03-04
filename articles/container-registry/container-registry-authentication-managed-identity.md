@@ -3,12 +3,12 @@ title: Yönetilen kimlikle kimlik doğrulaması
 description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041476"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
 
@@ -107,13 +107,13 @@ SSH oturumundan çıkın.
 
 ### <a name="create-an-identity"></a>Kimlik oluşturma
 
-[Az Identity Create](/cli/azure/identit#az-identity-create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Daha önce kapsayıcı kayıt defteri veya sanal makine ya da farklı bir tane oluşturmak için kullandığınız kaynak grubunu kullanabilirsiniz.
+[Az Identity Create](/cli/azure/identity#az_identity_create) komutunu kullanarak aboneliğinizde bir kimlik oluşturun. Daha önce kapsayıcı kayıt defteri veya sanal makine ya da farklı bir tane oluşturmak için kullandığınız kaynak grubunu kullanabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Aşağıdaki adımlarda kimliği yapılandırmak için [az Identity Show][az-identity-show] komutunu kullanarak KIMLIğIN kaynak kimliğini ve hızmet sorumlusu kimliğini değişkenlere depolayın.
+Aşağıdaki adımlarda kimliği yapılandırmak için, kimliğin kaynak KIMLIĞI ve hizmet sorumlusu KIMLIĞINI değişkenlerde depolamak üzere [az Identity Show] [az_identity_show] komutunu kullanın.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
