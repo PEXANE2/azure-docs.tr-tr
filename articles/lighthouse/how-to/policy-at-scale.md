@@ -1,14 +1,14 @@
 ---
 title: Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 description: Azure açık Thouse 'ın, bir ilke tanımı ve ilke atamasını birden çok kiracıya dağıtmanıza nasıl olanak sağladığını öğrenin.
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412077"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049789"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> İlkeleri birden fazla kiracıda dağıtabilmeniz sırasında, şu anda bu kiracılardaki uyumlu olmayan kaynaklar için [uyumluluk ayrıntılarını görüntüleyemezsiniz](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) .
+
 ## <a name="validate-the-policy-deployment"></a>İlke dağıtımını doğrulama
 
 Azure Resource Manager şablonunu dağıttıktan sonra, temsilcili aboneliklerinizden birinde **EnableHttpsTrafficOnly** **olarak ayarlanmış** bir depolama hesabı oluşturmaya çalışırken ilke tanımının başarıyla uygulandığını doğrulayabilirsiniz. İlke ataması nedeniyle, bu depolama hesabını oluşturmamalıdır.  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> İlkeleri birden fazla kiracıda dağıtabilmeniz sırasında, şu anda bu kiracılardaki uyumlu olmayan kaynaklar için [uyumluluk ayrıntılarını görüntüleyemezsiniz](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

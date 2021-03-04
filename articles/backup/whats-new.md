@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728187"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095723"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -18,6 +18,9 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
+- Mart 2021
+  - [Yedekleme merkezi genel kullanıma sunuldu](#backup-center-is-now-generally-available)
+  - [Azure Backup için Arşiv katmanı desteği (önizlemede)](#archive-tier-support-for-azure-backup-in-preview)
 - Şubat 2021
   - [Azure Blobları için yedekleme (önizlemede)](#backup-for-azure-blobs-in-preview)
 - Ocak 2021
@@ -36,6 +39,18 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
   - [RHEL Azure sanal makinelerinde yedekleme SAP HANA (önizlemede)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Yedekleme verileri için bölge yedekli depolama (ZRS) (önizlemede)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>Yedekleme merkezi genel kullanıma sunuldu
+
+Yedekleme merkezi, tek bir merkezi konsoldan yedekleme yönetimini keşfetmenize, yönetmenize, izlemenize, çalıştırmanıza ve iyileştirmenize olanak tanıyarak veri koruma yönetimini ölçeklenebilir şekilde basitleştirir.
+
+Daha fazla bilgi için bkz. [yedekleme merkezine genel bakış](backup-center-overview.md).
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>Azure Backup için Arşiv katmanı desteği (önizlemede)
+
+Azure Backup artık Azure sanal makineleri ve Azure sanal makinelerinde SQL Server için Arşiv katmanının kullanılabilirliği ile uzun süreli bekletme yedeklerinin maliyetini azaltmanıza olanak tanır.
+
+Daha fazla bilgi için bkz. [Arşiv katmanı desteği (Önizleme)](archive-tier-support.md).
 
 ## <a name="backup-for-azure-blobs-in-preview"></a>Azure Blobları için yedekleme (önizlemede)
 

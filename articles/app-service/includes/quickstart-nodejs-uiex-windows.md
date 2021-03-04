@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 302e0dc79d13eedebf810df042dc31f78b173fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 324919c1d085302e675e0bc9a370ce35f52a0f1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748856"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109031"
 ---
 <!-- advanced for windows -->
 
@@ -70,10 +70,14 @@ ms.locfileid: "101748856"
 
 1. Dağıtım tamamlandıktan sonra, yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatamazsınız** ' ı seçin.
 
-<br>
+<br/>
 <details>
-<summary>Sorun giderme</summary>
+<summary><strong>Sorun giderme</strong></summary>
+
+Bu adımları tamamlayamadıysanız aşağıdakileri denetleyin:
+
 * Uygulamanızın bağlantı noktası ortam değişkeni tarafından belirtilen bağlantı noktasında dinleme yaptığını doğrulayın: `process.env.PORT` .
+
 * **"Bu dizini veya sayfayı görüntüleme izniniz yok"** hatasını görürseniz, büyük olasılıkla uygulama düzgün bir şekilde başlatılamadı. Hatayı bulmak ve onarmak için günlük çıkışını gözden geçirin. 
 
 </details>
@@ -83,5 +87,5 @@ ms.locfileid: "101748856"
 [Sorun bildirin](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&prepare-your-environment)
 
 
-<br>
+<br/>
 <hr/>

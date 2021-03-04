@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954673"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094975"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -224,7 +224,7 @@ Senaryo çalışır durumda gözükirken, sistem durumu modeli ve hata modu, bir
 >Bir NAT ağ geçidi kaynağının Zones özelliği değişebilir değildir.  NAT ağ geçidi kaynağını amaçlanan bölge veya bölge tercihi ile yeniden dağıtın.
 
 >[!NOTE] 
->Hiçbir bölge belirtilmemişse, kendilerine göre IP adresleri bölge yedekli değildir.  Belirli bir bölgede bir IP adresi oluşturulmadıysa, bir Standart Load Balancer ön ucu [bölge yedekli olur](../load-balancer/load-balancer-standard-availability-zones.md#frontend) .  Bu, NAT için uygulanmaz.  Yalnızca bölge veya bölge yalıtımı desteklenir.
+>Hiçbir bölge belirtilmemişse, kendilerine göre IP adresleri bölge yedekli değildir.  Belirli bir bölgede bir IP adresi oluşturulmadıysa, bir Standart Load Balancer ön ucu [bölge yedekli olur](../load-balancer/load-balancer-standard-availability-zones.md) .  Bu, NAT için uygulanmaz.  Yalnızca bölge veya bölge yalıtımı desteklenir.
 
 ## <a name="performance"></a>Performans
 
@@ -350,20 +350,3 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. Bir yetenek eksik m
 * [Sanal ağ NAT](nat-overview.md)hakkında bilgi edinin.
 * [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
 * [NAT ağ geçidi kaynakları sorunlarını giderme](troubleshoot-nat.md)hakkında bilgi edinin.
-* NAT ağ geçidini doğrulama öğreticisi
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
-* NAT ağ geçidi kaynağı dağıtmaya yönelik hızlı başlangıç
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Şablon](./quickstart-create-nat-gateway-template.md)
-* NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
-  - [REST API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
-* [Standart yük dengeleyici](../load-balancer/load-balancer-overview.md)hakkında bilgi edinin.
-* [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.
-* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).

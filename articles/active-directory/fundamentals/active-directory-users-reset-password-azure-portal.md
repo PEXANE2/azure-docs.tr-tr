@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651896"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034600"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının parolasını sıfırlama
 
@@ -33,7 +33,7 @@ Yönetici olarak, parola unutursa Kullanıcı bir cihazdan kilitlenirse veya Kul
 
 ## <a name="to-reset-a-password"></a>Parolayı sıfırlamak için
 
-1. [Azure Portal](https://portal.azure.com/) Kullanıcı Yöneticisi veya parola Yöneticisi olarak oturum açın. Kullanılabilir roller hakkında daha fazla bilgi için bkz. [Azure Active Directory yönetici rolleri atama](../roles/permissions-reference.md#available-roles)
+1. [Azure Portal](https://portal.azure.com/) Kullanıcı Yöneticisi veya parola Yöneticisi olarak oturum açın. Kullanılabilir roller hakkında daha fazla bilgi için bkz. [Azure AD yerleşik rolleri](../roles/permissions-reference.md)
 
 2. **Azure Active Directory** seçin, **Kullanıcılar**' ı seçin, sıfırlanması gereken kullanıcıyı arayıp seçin ve **Parolayı Sıfırla**' yı seçin.
 

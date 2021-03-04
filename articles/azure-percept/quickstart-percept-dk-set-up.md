@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3540204d66bb589c567514f92a9a8acb2159e343
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665646"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041697"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK 'yi ayarlama ve ilk AI modelinizi dağıtma
 
@@ -173,7 +173,7 @@ Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](https://docs
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Kurulum deneyimi bağlantı kesme uyarısı."::: 
 
-1. Azure Portal 'a devam edin – Azure Percept Studio 'da özel AI modellerinizi oluşturmaya başlamak için kurulum deneyimi penceresine geri dönün ve **Azure Portal** düğmesine tıklayın.
+1. Azure portal devam et – kurulum deneyimi penceresine geri dönün ve Azure Percept Studio 'da özel AI modellerinizi oluşturmaya başlamak için **Azure Portal devam et** düğmesine tıklayın.
 
     > [!NOTE]
     > Ana bilgisayarınızın artık WiFi ayarlarınızda Dev Kit erişim noktasına bağlı olmadığını ve artık yerel WiFi 'nize yeniden bağlandığından emin olun.
@@ -205,8 +205,6 @@ Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](https://docs
     
 1. Bağlı cihazınıza önceden oluşturulmuş yeni bir örnek dağıtın. Kitaplıktan bir örnek seçin ve "cihaza dağıt" a tıklayın
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-1-select-prebuilt.png" alt-text="Önceden oluşturulmuş ' ı seçin.":::
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Bkz. nesne algılama işlemi sürüyor.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar

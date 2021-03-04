@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 13726009e07172c9038bc8b45001e390c5b7ad70
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709791"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034396"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -67,7 +67,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
     | Genel IP adresi adı | Metin kutusuna **Mypublicıp** yazın.|
     | Kullanılabilirlik alanı | Esnek yük dengeleyici oluşturmak için **bölge yedekli** ' ı seçin. Bir ZGen yük dengeleyici oluşturmak için, 1, 2 veya 3 ' ten belirli bir bölge seçin |
     | Genel IPv6 adresi ekle | **Hayır**'ı seçin. </br> IPv6 adresleri ve yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure sanal ağ Için IPv6 nedir?](../virtual-network/ipv6-overview.md)  |
-    | Yönlendirme tercihi | Varsayılan **Microsoft ağı**' nı bırakın. </br> Yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi (Önizleme) nedir?](./routing-preference-overview.md). |
+    | Yönlendirme tercihi | Varsayılan **Microsoft ağı**' nı bırakın. </br> Yönlendirme tercihi hakkında daha fazla bilgi için bkz. [yönlendirme tercihi (Önizleme) nedir?](../virtual-network/routing-preference-overview.md). |
 
 5. Geri kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
 

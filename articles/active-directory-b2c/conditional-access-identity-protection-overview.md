@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928401"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033835"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C için kimlik koruması ve koşullu erişim
 
@@ -49,21 +49,21 @@ Azure AD B2C ' de kimlik koruması ve koşullu erişim, Azure AD 'de olduğu gib
 
 - Azure AD B2C kiracılarda, kimlik koruması risk algılamaları yalnızca yerel B2C hesapları için kullanılabilir ve Google veya Facebook gibi sosyal kimlikler için kullanılamaz.
 
-- Azure AD B2C kiracılarda, kimlik koruması risk algılamaları için bir alt küme mevcuttur. Bkz. [kimlik koruması ayarlama](conditional-access-identity-protection-setup.md#set-up-identity-protection).
+- Azure AD B2C kiracılarda, kimlik koruması risk algılamaları için bir alt küme mevcuttur. Bkz. [kimlik koruması ile riski araştırın](identity-protection-investigate-risk.md)ve [Kullanıcı akışlarına koşullu erişim ekleyin](conditional-access-user-flow.md).
 
 - Koşullu erişim cihaz uyumluluğu özelliği Azure AD B2C kiracılarda kullanılamaz.
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>Koşullu erişimi Kullanıcı akışları ve özel ilkelerle tümleştirme
 
-Azure AD B2C, yerleşik Kullanıcı akışlarından koşullu erişim koşullarını tetikleyebilirsiniz. Koşullu erişimi özel ilkelerle de ekleyebilirsiniz. B2C Kullanıcı akışının diğer yönlerini de olduğu gibi, son kullanıcı deneyimi mesajlaşma, kuruluşunuzun ses, marka ve risk azaltma alternatiflerine göre özelleştirilebilir. Bkz. [koşullu erişim teknik profili tanımlama](conditional-access-technical-profile.md).
+Azure AD B2C'de Koşullu Erişim koşullarını yerleşik kullanıcı akışlarından tetikleyebilirsiniz. Ayrıca Koşullu Erişimi özel ilkelerle de birleştirebilirsiniz. B2C Kullanıcı akışının diğer yönlerini de olduğu gibi, son kullanıcı deneyimi mesajlaşma, kuruluşunuzun ses, marka ve risk azaltma alternatiflerine göre özelleştirilebilir. Bkz. [Kullanıcı akışlarına koşullu erişim ekleme](conditional-access-user-flow.md).
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph başvurusu](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
+Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph işlemleri](microsoft-graph-operations.md#conditional-access).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD B2C için kimlik koruması ve koşullu erişim ayarlama](conditional-access-identity-protection-setup.md)
+- [Kullanıcı akışlarına koşullu erişim ekleme](conditional-access-user-flow.md)
 - [Azure AD 'de kimlik koruması hakkında bilgi edinin](../active-directory/identity-protection/overview-identity-protection.md)
 - [Koşullu erişim hakkında bilgi edinin](../active-directory/conditional-access/overview.md)

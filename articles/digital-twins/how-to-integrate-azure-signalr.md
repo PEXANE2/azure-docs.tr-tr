@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8828b2dc48a8865e43a176757dc973a5cf85b784
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703022"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041510"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -51,7 +51,7 @@ Azure SignalR hizmetini aşağıdaki yoldan Azure dijital TWINS 'e iliştirirsin
 
     Bu işlem, örnek deponun bir kopyasını **digital-twins-samples-master.zip** olarak makinenize indirir. Klasörün sıkıştırmasını açın.
 * [**SignalR tümleştirmesi Web uygulaması örneği**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Bu, Azure SignalR hizmetinden Azure dijital TWINS telemetri verilerini tüketen örnek bir tepki veren Web uygulamasıdır.
-    -  Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
+    -  Örnek bağlantıya gidin ve örneğin bir kopyasını makinenize indirmek için aynı indirme işlemini kullanın, _**digitaltwins-signalr-webapp-sample-main.zip**_. Klasörün sıkıştırmasını açın.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -139,7 +139,7 @@ Ardından, örnek istemci Web uygulamasını yapılandıracaksınız. *Negotiate
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="' Anlaş ' işlevinin Azure portal görünümü. ' İşlev URL 'sini Al ' düğmesi vurgulanır ve URL 'nin kısmı '/API ' ile başlayarak başlar":::
 
-1. Visual Studio 'Yu veya tercih ettiğiniz herhangi bir kod düzenleyicisini kullanarak, [*örnek uygulamaları indirme*](#download-the-sample-applications) bölümüne indirdiğiniz zip 'lenmiş _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ klasörünü açın.
+1. Visual Studio 'Yu veya tercih ettiğiniz herhangi bir kod düzenleyicisini kullanarak, [*örnek uygulamaları indirin*](#download-the-sample-applications) bölümünde indirdiğiniz unzip olmayan _**digitaltwins-SignalR-WebApp-Sample-Main**_ klasörünü açın.
 
 1. *Src/App.js* dosyasını açın ve IÇINDEKI işlev URL 'sini, `HubConnectionBuilder` önceki adımda KAYDETTIĞINIZ **Negotiate** işlevinin HTTP uç noktası URL 'si ile değiştirin:
 
@@ -148,7 +148,7 @@ Ardından, örnek istemci Web uygulamasını yapılandıracaksınız. *Negotiate
             .withUrl('<Function URL>')
             .build();
     ```
-1. Visual Studio 'nun *Geliştirici komut isteminde* veya makinenizde herhangi bir komut penceresinde, *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* klasörüne gidin. Bağımlı düğüm paketlerini yüklemek için aşağıdaki komutu çalıştırın:
+1. Visual Studio 'nun *Geliştirici komut isteminde* veya makinenizde herhangi bir komut penceresinde *digitaltwins-SignalR-WebApp-Sample-main\src* klasörüne gidin. Bağımlı düğüm paketlerini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd
     npm install
@@ -175,7 +175,7 @@ Bu konsolda başka bir şey yapmanız gerekmez, ancak bir sonraki adımı tamaml
 
 ### <a name="see-the-results"></a>Sonuçları görme
 
-Sonuçları eylem ' e görmek için, **SignalR tümleştirmesi Web uygulaması örneğini** başlatın. Bunu, şu komutu çalıştırarak *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* konumundaki herhangi bir konsol penceresinden yapabilirsiniz:
+Sonuçları eylem ' e görmek için, **SignalR tümleştirmesi Web uygulaması örneğini** başlatın. Bunu, *digitaltwins-SignalR-WebApp-Sample-main\src* konumundaki herhangi bir konsol penceresinden, şu komutu çalıştırarak yapabilirsiniz:
 
 ```cmd
 npm start
@@ -203,7 +203,7 @@ Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure
 az group delete --name <your-resource-group>
 ```
 
-Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*digital-twins-samples-master.zip* ve *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) silin.
+Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*digital-twins-samples-master.zip*, *digitaltwins-signalr-webapp-sample-main.zip* ve bunların daraltılmış karşılıklarına) silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

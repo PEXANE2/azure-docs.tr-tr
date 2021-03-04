@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341694"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095553"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -46,10 +46,10 @@ Azure Güvenlik Merkezi aşağıdaki Azure kaynaklarını izler:
 
 
 
-## <a name="what-is-a-security-policy"></a>Güvenlik ilkesi nedir?
-Bir güvenlik ilkesi, belirtilen abonelikteki kaynaklar için önerilen denetim kümesini tanımlar. Azure Güvenlik Merkezi 'nde, şirketinizin güvenlik gereksinimlerine ve uygulama türüne ve her abonelikteki verilerin duyarlılığına göre Azure abonelikleriniz için ilkeler tanımlarsınız.
+## <a name="what-is-a-security-initiative"></a>Güvenlik girişimi nedir?
+Bir güvenlik girişimi, belirtilen abonelikteki kaynaklar için önerilen denetim kümesini (ilkeler) tanımlar. Azure Güvenlik Merkezi 'nde, şirketinizin güvenlik gereksinimlerine ve uygulama türüne ve her abonelikteki verilerin duyarlılığına göre Azure abonelikleriniz için girişimler atarsınız.
 
-Azure Güvenlik Merkezi 'nde etkinleştirilen güvenlik ilkeleri, güvenlik önerileri ve izleme. Güvenlik ilkeleri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde güvenlik sistem durumu izleme](security-center-monitoring.md).
+Azure Güvenlik Merkezi 'nde etkinleştirilen güvenlik ilkeleri, güvenlik önerileri ve izleme. [Güvenlik ilkeleri, girişimler ve önerilerle](security-policy-concept.md)ilgili daha fazla bilgi edinin.
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Güvenlik ilkesini kim değiştirebilir?

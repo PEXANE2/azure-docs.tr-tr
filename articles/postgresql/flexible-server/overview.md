@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532671"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049517"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -56,7 +56,7 @@ Aşağıdaki resimde VM ve depolama hatası geçişi gösterilmektedir.
 
 Bölgesel olarak yedekli yüksek kullanılabilirlik yapılandırılmışsa, hizmet aynı Azure bölgesindeki kullanılabilirlik bölgesi genelinde etkin bir bekleme sunucusu sağlar ve bakımını yapar. Kaynak sunucudaki veri değişiklikleri, sıfır veri kaybı sağlamak için zaman uyumlu sunucuya eşzamanlı olarak çoğaltılır. Bölgesel olarak yedekli yüksek kullanılabilirlik sayesinde, planlı veya planlanmamış yük devretme olayı tetiklendiğinde, bekleme sunucusu hemen çevrimiçi olur ve gelen işlemleri işleyebilir. Bu, aşağıdaki resimde gösterildiği gibi birden çok kullanılabilirlik bölgesini destekleyen bir Azure bölgesindeki kullanılabilirlik bölgesi arızasından hizmet dayanıklılığı sağlar.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Esnek sunucu-VM ve depolama sorunları":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Bölge yedekli yüksek kullanılabilirlik":::
 
  Daha fazla ayrıntı için bkz. [yüksek kullanılabilirlik belgesi](./concepts-high-availability.md) .
 
@@ -76,7 +76,7 @@ Esnek sunucu hizmeti üç işlem katmanında kullanılabilir: Burstable, Genel A
 
 Esnek sunucu hizmeti, TCO 'nizi düşürmek için isteğe bağlı sunucuyu durdurup başlatabilmenizi sağlar. İşlem Katmanı faturalandırması, sunucu durdurulduğunda hemen durdurulur. Bu, geliştirme, test etme ve zamana göre öngörülebilir üretim iş yükleri için önemli maliyet tasarrufları elde etmenizi sağlar. Sunucu daha önce yeniden başlatılana kadar yedi gün boyunca durdurulmuş durumda kalır.
 
-## <a name="enterprise-grade-security"></a>Kurumsal sınıf güvenliği
+## <a name="enterprise-grade-security"></a>Kurumsal sınıf güvenlik
 
 Esnek sunucu hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler ve sorguları çalıştırırken oluşturulan geçici dosyalar da dahil olmak üzere veriler şifrelenir. Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bit şifrelemeyi kullanır ve anahtarlar sistem tarafından yönetilebilir (varsayılan). Hizmet, varsayılan olarak uygulanan Aktarım Katmanı Güvenliği (SSL/TLS) ile verileri hareket halinde şifreler. Hizmet, yalnızca TLS sürümleri 1,2 ' i zorlar ve destekler.
 
@@ -85,6 +85,24 @@ Esnek sunucular, Azure sanal ağı (VNet tümleştirmesi) kullanan sunuculara ta
 ## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
 
 Esnek sunucu hizmeti yerleşik performans izleme ve uyarı özellikleriyle donatılmıştır. Tüm Azure ölçümlerinin bir dakikalık sıklığı vardır ve her ölçüm 30 gün geçmiş sağlar. Ölçümler üzerinde uyarılar yapılandırabilirsiniz. Hizmet, kaynak kullanımını izlemek için ana bilgisayar sunucusu ölçümleri sunar ve yavaş sorgu günlüklerinin yapılandırılmasına izin verir. Bu araçları kullanarak, iş yüklerinizi hızlıca iyileştirebilmenizi ve sunucunuzu en iyi performansa göre yapılandırmanızı sağlayabilirsiniz.
+
+## <a name="azure-regions"></a>Azure bölgeleri
+
+Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. Esnek sunucu şu Azure bölgelerinde sunulmaktadır:
+
+| Region | Kullanılabilirlik | Bölge yedekli HA | 
+| --- | --- | --- |
+| West Europe | :heavy_check_mark: | :heavy_check_mark: |
+| Kuzey Avrupa | :heavy_check_mark: | :heavy_check_mark: |
+| Güney Birleşik Krallık | :heavy_check_mark: | :heavy_check_mark: | 
+| Doğu ABD 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Batı ABD 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Central US | :heavy_check_mark: | :heavy_check_mark: | 
+| Doğu ABD | :heavy_check_mark: | :heavy_check_mark: | 
+| Güneydoğu Asya | :heavy_check_mark: | :heavy_check_mark: |
+| Doğu Japonya | :heavy_check_mark: | :heavy_check_mark: | 
+
+Yeni bölgeler eklemeye devam ediyoruz. 
 
 ## <a name="migration"></a>Geçiş
 

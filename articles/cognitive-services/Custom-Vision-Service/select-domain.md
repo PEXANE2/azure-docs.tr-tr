@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624850"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095672"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Görüntü İşleme projesi için bir etki alanı seçin
 
@@ -37,7 +37,7 @@ ms.locfileid: "98624850"
 |Etki alanı|Amaç|
 |---|---|
 |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. NUMARASıNı `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__Genel [a1]__| Benzer bir çıkarım süresi genel etki alanı olarak daha iyi doğruluk için iyileştirilmiştir. Daha doğru bölge konumu gereksinimlerine, daha büyük veri kümelerine veya daha zor Kullanıcı senaryolarına önerilir. Bu etki alanı daha fazla eğitim süresi gerektiriyor ve sonuçlar belirleyici değil: belirtilen eğitim verileriyle birlikte bir %1% eşleme farkı bekliyor. NUMARASıNı `9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__Genel [a1]__| Benzer bir çıkarım süresi genel etki alanı olarak daha iyi doğruluk için iyileştirilmiştir. Daha doğru bölge konumu gereksinimlerine, daha büyük veri kümelerine veya daha zor Kullanıcı senaryolarına önerilir. Bu etki alanı daha fazla eğitim süresi gerektiriyor ve sonuçlar belirleyici değil: belirtilen eğitim verileriyle birlikte bir +-1% ortalama duyarlık (eşleme) farkı bekliyor. NUMARASıNı `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi. NUMARASıNı `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Rafların ürünleri__|Rafların ürünlerini algılamak ve sınıflandırmak için iyileştirildi. NUMARASıNı `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Compact etki alanları__| Uç cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için iyileştirilmiştir.|

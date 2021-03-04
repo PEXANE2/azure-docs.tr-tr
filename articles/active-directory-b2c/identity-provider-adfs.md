@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361273"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095740"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak SAML kimlik sağlayıcısı olarak AD FS ekleyin
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361273"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak AD FS Kullanıcı hesabı için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir. Bir [SAML kimlik sağlayıcısı teknik profilini](saml-identity-provider-technical-profile.md) özel ilkeye ekleyerek oturum açmayı etkinleştirebilirsiniz.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak AD FS Kullanıcı hesabı için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir. Özel ilkeye bir [SAML kimlik sağlayıcısı](identity-provider-generic-saml.md) ekleyerek oturum açmayı etkinleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -62,7 +62,7 @@ Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 
 Kullanıcıların bir AD FS hesabı kullanarak oturum açmasını istiyorsanız hesabı, Azure AD B2C bir uç nokta aracılığıyla iletişim kurabildiği bir talep sağlayıcı olarak tanımlamanız gerekir. Uç noktası, belirli bir kullanıcının kimliği doğrulandığını doğrulamak için Azure AD B2C tarafından kullanılan bir talep kümesi sağlar.
 
-Bir AD FS hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz. Daha fazla bilgi için bkz. [SAML kimlik sağlayıcısı teknik profili tanımlama](saml-identity-provider-technical-profile.md).
+Bir AD FS hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz. Daha fazla bilgi için bkz. [SAML kimlik sağlayıcısı tanımlama](identity-provider-generic-saml.md).
 
 1. *TrustFrameworkExtensions.xml* açın.
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
@@ -217,7 +217,7 @@ Bu hata, Azure AD B2C tarafından gönderilen SAML isteğinin AD FS yapılandır
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>Seçenek 1: Azure AD B2C imza algoritmasını ayarlama  
 
-Azure AD B2C SAML isteğinin nasıl imzalanalınacağını yapılandırabilirsiniz. [Xmlsignaturealgorithm](saml-identity-provider-technical-profile.md#metadata) meta VERILERI, `SigAlg` SAML isteğindeki parametrenin (sorgu dizesi veya post parametresi) değerini denetler. Aşağıdaki örnek, Azure AD B2C imza algoritmasını kullanacak şekilde yapılandırır `rsa-sha256` .
+Azure AD B2C SAML isteğinin nasıl imzalanalınacağını yapılandırabilirsiniz. [Xmlsignaturealgorithm](identity-provider-generic-saml.md) meta VERILERI, `SigAlg` SAML isteğindeki parametrenin (sorgu dizesi veya post parametresi) değerini denetler. Aşağıdaki örnek, Azure AD B2C imza algoritmasını kullanacak şekilde yapılandırır `rsa-sha256` .
 
 ```xml
 <Metadata>

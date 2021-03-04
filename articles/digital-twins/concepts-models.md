@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558148"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034770"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins'deki ikiz modellerini anlama
 
@@ -65,7 +65,7 @@ Azure dijital TWINS modelleriyle ilgili özellikler ve telemetri arasındaki far
 
 Sonuç olarak, Azure dijital TWINS 'te bir model tasarlarken, büyük olasılıkla TWINS 'nizi modellemek için çoğu durumda **özellikleri** kullanırsınız. Bu sayede depolama alanı yedekleme ve veri alanlarını okuma ve sorgulama imkanına sahip olursunuz.
 
-Telemetri ve özellikler genellikle cihazlardan veri girişini işlemek için birlikte çalışır. Azure dijital TWINS 'e yönelik tüm giriş [API 'ler](how-to-use-apis-sdks.md)aracılığıyla olduğundan, genellikle giriş işlevinizi kullanarak cihazlardan telemetri veya özellik olaylarını okuyabilir ve yanıt olarak ADT içinde bir özellik ayarlarsınız. 
+Telemetri ve özellikler genellikle cihazlardan veri girişini işlemek için birlikte çalışır. Azure dijital TWINS 'e yönelik tüm giriş [API 'ler](how-to-use-apis-sdks.md)aracılığıyla olduğundan, genellikle giriş işlevinizi kullanarak cihazlardan telemetri veya özellik olaylarını okuyabilir ve yanıt olarak Azure dijital TWINS 'te bir özellik ayarlarsınız. 
 
 Ayrıca Azure dijital TWINS API 'sinden bir telemetri olayı yayımlayabilirsiniz. Diğer telemetride olduğu gibi, işlemek için bir dinleyici gerektiren kısa süreli bir olaydır.
 
@@ -154,7 +154,7 @@ Ancak, karşıya yüklenecek çok modelleriniz varsa veya tek tek karşıya yük
 
 _**Modelleri görselleştirme için**_
 
-Azure dijital TWINS örneğinizdeki modelleri karşıya yükledikten sonra, tüm devralma ve model ilişkileri dahil olmak üzere Azure dijital TWINS örneğinizdeki modelleri [**ADT model görselleştiricisi**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)' nı kullanarak görüntüleyebilirsiniz. Bu örnek şu anda bir taslak durumundadır. Dijital TWINS geliştirme Community 'nin örneğe genişletmesini ve katkıda bulunmasını öneririz. 
+Azure dijital TWINS örneğinizdeki modelleri karşıya yükledikten sonra, Azure Digital TWINS [**model görselleştiricisi**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)' nı kullanarak tüm devralma ve model ilişkileri dahil olmak üzere Azure dijital TWINS örneğiniz içindeki modelleri görüntüleyebilirsiniz. Bu örnek şu anda bir taslak durumundadır. Dijital TWINS geliştirme Community 'nin örneğe genişletmesini ve katkıda bulunmasını öneririz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

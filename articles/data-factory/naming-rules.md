@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: f0d14760ce3e6403c9b6fe8cc7a2100aeb3f39a6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bef8706d9dcef966397dcddc64ffbd567a8431f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372918"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034413"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory adlandırma kuralları
 
@@ -27,6 +27,8 @@ Aşağıdaki tabloda Data Factory yapıtlar için adlandırma kuralları verilmi
 | Tümleştirme Çalışma Zamanı |Bir veri fabrikası içinde benzersizdir. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>Tümleştirme çalışma zamanı adı yalnızca harf, rakam ve tire (-) karakterini içerebilir.</li><li>İlk ve son karakterlerin bir harf veya sayı olması gerekir. Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı gelmelidir.</li><li>Tümleştirme çalışma zamanı adında ardışık kesik çizgilerden izin verilmez. </li></ul> |
 | Veri akışı dönüşümleri | Bir veri akışı içinde benzersiz. Adlar büyük/küçük harfe duyarlıdır | <ul><li>Veri akışı dönüştürme adları yalnızca harf ve sayı içerebilir</li><li>İlk karakter harf olmalıdır. </li></ul> |
 | Kaynak Grubu |Microsoft Azure genelinde benzersiz. Adlar büyük/küçük harfe duyarlıdır. | Daha fazla bilgi için bkz. [Azure adlandırma kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). |
+| İşlem hattı parametreleri & değişkeni  |İşlem hattı içinde benzersiz. Adlar büyük/küçük harfe duyarlıdır. | <ul><li>Geri uyumluluk nedeni nedeniyle, parametre adları ve değişken adları üzerinde doğrulama denetimi benzersizlik ile sınırlıdır.</li><li>Varlık adlarına başvurmak için parametreler veya değişkenler kullandığınızda (örneğin, bağlantılı hizmet), varlık adlandırma kuralları uygulanır.</li><li>İşlem hattı parametrelerinizi ve değişkenlerini adlandırmak için veri akışı dönüştürme adlandırma kurallarını izlemek iyi bir uygulamadır.</li></ul> |
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [Hızlı başlangıç: Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md) makalesinde adım adım yönergeleri izleyerek veri fabrikaları oluşturmayı öğrenin. 

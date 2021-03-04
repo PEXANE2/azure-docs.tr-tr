@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f3331504540e8c23c3a83fe245bae27ca6c49385
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704036"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041289"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -167,6 +167,19 @@ Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç
 
 VM 'Leri silerseniz ve portalda hala görünüyorsa 30 dakika bekleyin. Hala görünüyorsa, yukarıda açıklandığı gibi yenileyin.
 
+## <a name="discovered-applications-and-sql-server-instances-and-databases-not-in-portal"></a>Bulunan uygulamalar ve SQL Server örnekleri ve veritabanları portalda değil
+
+Gereç üzerinde bulmayı başlattıktan sonra, portalda envanter verilerinin gösterilmesi 24 saate kadar sürebilir.
+
+Gereç Yapılandırma Yöneticisi 'nde Windows kimlik doğrulaması veya SQL Server kimlik doğrulama kimlik bilgileri sağlamadıysanız, gerecin ilgili SQL Server örneklerine bağlanmak için onları kullanabilmesi adına kimlik bilgilerini ekleyin.
+
+Bağlantı kurulduktan sonra, Gereç SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans verilerini toplar. SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır. Bu nedenle, SQL Server örneğin özelliklerinde ve veritabanı durumu, uyumluluk düzeyi vb. gibi veritabanlarının her türlü değişikliği portalda güncelleştirmek 24 saate kadar sürebilir.
+
+## <a name="sql-server-instance-is-showing-up-in-not-connected-state-on-portal"></a>SQL Server örnek, portalda "bağlı değil" durumunda gösteriliyor
+SQL Server örnekleri ve veritabanlarının bulunması sırasında karşılaşılan sorunları görüntülemek için, projenizdeki ' bulunan sunucular ' sayfasında bulunan bağlantı durumu sütununda "bağlı değil" durumuna tıklayın.
+
+Tamamen bulunmayan veya bağlı olmayan SQL örnekleri içeren sunucuların üzerinde değerlendirme oluşturmak, hazır olma durumunun "bilinmiyor" olarak işaretlenmesine neden olabilir.
+
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Fiziksel sunucularım üzerinde bazı ağ bağdaştırıcılarının performans verilerini görmüyorum
 
 Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Bir ürün boşluğu nedeniyle, ağ aktarım hızı bulunan sanal ağ bağdaştırıcılarında yakalanır.
@@ -199,9 +212,9 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 
 | **Hata** | **Neden** | **Eylem** |
 |--|--|--|
-| 9000: VMware araç durumu algılanamıyor. | VMWare araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
-| 9001: VMware araçları yüklü değil. | VMWare araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
-| 9002: VMware araçları çalışmıyor. | VMWare araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
+| 9000: VMware araç durumu algılanamıyor. | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
+| 9001: VMware araçları yüklü değil. | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
+| 9002: VMware araçları çalışmıyor. | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun. |
 | 9003: işletim sistemi türü, Konuk VM keşfi için desteklenmiyor. | Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değildir. | Desteklenen işletim sistemi türleri yalnızca Windows ve Linux. Sunucu gerçekten Windows veya Linux ise vCenter Server ' de belirtilen işletim sistemi türünü denetleyin. |
 | 9004: VM çalışmıyor. | VM kapalı. | VM 'nin açık olduğundan emin olun. |
 | 9005: işletim sistemi türü, Konuk VM keşfi için desteklenmiyor. | Konuk VM keşfi için işletim sistemi türü desteklenmiyor. | Desteklenen işletim sistemi türleri yalnızca Windows ve Linux. |

@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749057"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049665"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Hızlı başlangıç: C++/Wınrt ve DirectX 'te Azure nesne bağlayıcıları ile bir HoloLens uygulaması oluşturma
 
@@ -23,7 +23,6 @@ Bu hızlı başlangıçta, C++/Wınrt ve DirectX 'teki [Azure nesne tutturucular
 > [!div class="checklist"]
 > * HoloLens uygulaması oluşturma ve dışarıdan yükleme
 > * Bir nesneyi algılar ve modelini görselleştirin
-> * Çalışma zamanı tanılamayı yakala
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +63,7 @@ Uygulamayı başlatmak ve hatalarını ayıklamak için **hata ayıkla > hata ay
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Nesne modelini alma ve örneğini algılama
 
-Örnek uygulamayı çalıştırmak için bir nesne modeli oluşturmanız gerekir. Alanınızda bir nesnenin zaten bir CAD veya taranmış bir 3B kafes modeli olduğunu varsayalım. [Hızlı başlangıç: model oluşturma hakkında bir 3B modeli](./get-started-model-ingestion.md) alma bölümüne bakın.
+Örnek uygulamayı çalıştırmak için bir nesne modeli oluşturmanız gerekir. Alanınızda bir nesnenin zaten bir CAD veya taranmış bir 3B kafes modeli olduğunu varsayalım. [Hızlı başlangıç: model oluşturma hakkında bir 3B modeli](./get-started-model-conversion.md) alma bölümüne bakın.
 
 Bu modeli, büyük/küçük bir **OU** 'yu bilgisayarınıza indirin. Ardından, HoloLens cihaz portalından **System > dosya Gezgini ' ni seçerek > LocalAppData > AoaSampleApp > LocalState** ' i seçin ve **bul...**' u seçin. Ardından model dosyanızı, **sandalyesi. OU** 'yu seçin ve **karşıya yükle**' yi seçin. Ardından model dosyasını yerel önbellekte görmeniz gerekir.
 
@@ -86,7 +85,7 @@ Uygulama, 3B modeli fiziksel karşılığına yakından hizalar. Bir Kullanıcı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: 3B modeli giriş](./get-started-model-ingestion.md)
+> [Hızlı başlangıç: 3B modeli giriş](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Kavramlar: SDK 'ya genel bakış](../concepts/sdk-overview.md)

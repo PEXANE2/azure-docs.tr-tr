@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095604"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -51,7 +51,7 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
 
 Önerileri yapılandırmak için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. 
 
-- Bu eklentiyi, [uzantıların otomatik sağlanmasını etkinleştir](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)bölümünde açıklandığı gibi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
+- Bu eklentiyi [, Log Analytics Aracısı ve uzantılarının otomatik sağlanmasını etkinleştirme](security-center-enable-data-collection.md#auto-provision-mma)bölümünde açıklandığı gibi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Kubernetes için ilke eklentisini yüklemek üzere güvenlik merkezi 'nin otomatik sağlama aracı 'nı kullanma":::
 
