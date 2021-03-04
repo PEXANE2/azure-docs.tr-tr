@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854623"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051387"
 ---
 # <a name="data-encryption-models"></a>Veri şifreleme modelleri
 
@@ -181,7 +181,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | App Service                      | Yes                | Yes\*\*            | -                  |
 | Otomasyon                       | Yes                | Yes\*\*            | -                  |
 | Azure İşlevleri                  | Yes                | Yes\*\*            | -                  |
-| Azure portal                     | Yes                | Yes\*\*            | -                  |
+| Azure portalı                     | Yes                | Yes\*\*            | -                  |
 | Logic Apps                       | Yes                | Yes                | -                  |
 | Azure tarafından yönetilen uygulamalar       | Yes                | Yes\*\*            | -                  |
 | Service Bus                      | Yes                | Yes                | -                  |
@@ -199,8 +199,8 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Azure Databricks                 | Yes                | Yes                | -                  |
 | Azure Veritabanı Geçiş Hizmeti | Yes                | Yok\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Yes                | -                  | Yes                |
-| Azure Repos                      | Yes                | -                  | Yes                |
+| Azure DevOps Services            | Yes                | -                  | -                  |
+| Azure Repos                      | Yes                | -                  | -                  |
 | **Kimlik**                     |                    |                    |                    |
 | Azure Active Directory           | Yes                | -                  | -                  |
 | Azure Active Directory Domain Services | Yes          | Yes                | -                  |
@@ -211,7 +211,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | **IoT Hizmetleri**                 |                    |                    |                    |
 | IoT Hub                          | Yes                | Yes                | Yes                |
 | Cihaz sağlamayı IoT Hub      | Yes                | Yes                | -                  |
-| **Yönetim ve Idare**    |                    |                    |                    |
+| **Yönetim ve İdare**    |                    |                    |                    |
 | Azure Site Recovery              | Yes                | -                  | -                  |
 | Azure Geçişi                    | Yes                | Yes                | -                  |
 | **Medya**                        |                    |                    |                    |

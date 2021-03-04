@@ -416,7 +416,7 @@
                 - name: Event Hubs’a gönderme
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: Günlükler’e gönderme
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: Application Insights’a gönderme
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: Sürüm geçmişi
@@ -993,7 +993,7 @@
         - name: Genel Kullanılabilirlik Hakkında SSS
           href: vm/vminsights-ga-release-faq.md
         - name: SSS
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: Çalışma alanını yapılandırma
           href: vm/vminsights-configure-workspace.md
         - name: Aracıları yükleme
@@ -1045,7 +1045,7 @@
         - name: Genel Bakış
           href: containers/container-insights-overview.md
         - name: SSS
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: İzlemeyi etkinleştirme
           items:
             - name: İzlemeyi etkinleştirmeye genel bakış

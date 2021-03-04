@@ -242,4 +242,4 @@
     - name: Azure Güvenlik Merkezi
       href: ../../security-center/index.yml
     - name: Azure Güvenlik kıyaslama altyapısı şeması örneği
-      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

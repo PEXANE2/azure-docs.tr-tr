@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 03bfca6fe350612b657ad1b8b39534c43cf38db9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 64e4c05e9439c164329dede5d714bec160bc5ae2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748861"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050384"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -93,7 +93,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
-1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
+1. **Web uygulaması** seçeneği istendiğinde, `<create>` ENTER tuşuna basarak veya mevcut bir uygulamayı seçerek varsayılan seçeneği kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `3` .
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
@@ -125,7 +125,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
-1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
+1. **Web uygulaması** seçeneği istendiğinde, `<create>` ENTER tuşuna basarak veya mevcut bir uygulamayı seçerek varsayılan seçeneği kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `3` .
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
@@ -163,7 +163,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
-1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
+1. **Web uygulaması** seçeneği istendiğinde, `<create>` ENTER tuşuna basarak veya mevcut bir uygulamayı seçerek varsayılan seçeneği kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
@@ -192,7 +192,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
-1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
+1. **Web uygulaması** seçeneği istendiğinde, `<create>` ENTER tuşuna basarak veya mevcut bir uygulamayı seçerek varsayılan seçeneği kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
@@ -228,7 +228,7 @@ Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz
 Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---
 `<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1` , `v2` . | 1.5.2
-`<subscriptionId>` | yanlış | Abonelik kimliğini belirtin. | 0.1.0 +
+`<subscriptionId>` | yanlış | Abonelik KIMLIĞINI belirtin. | 0.1.0 +
 `<resourceGroup>` | true | Azure <abbr title="Birim olarak yönetebileceğiniz ilgili Azure kaynakları için mantıksal bir kapsayıcı.">kaynak grubu</abbr> Web uygulamanız için. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
 `<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=app-service) tüm geçerli bölgeler bölümü. | 0.1.0 +

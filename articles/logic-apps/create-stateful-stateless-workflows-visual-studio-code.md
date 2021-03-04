@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 43dd047738538b0dcc76904e951eccea3a327c19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716081"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050248"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -140,7 +140,8 @@ MacOS veya Linux kullanırken Visual Studio Code mantıksal uygulama projenizi y
 
 * JavaScript çalıştıran [satır Içi kod işlemleri eylemini](../logic-apps/logic-apps-add-run-inline-code.md) kullanmak için [ 10. x. x, 11. x. x veya 12. x. xNode.js sürümlerini](https://nodejs.org/en/download/releases/)yükler.
 
-  > [!TIP] Windows için MSI sürümünü indirin. Bunun yerine ZIP sürümünü kullanırsanız, işletim sisteminiz için bir yol ortam değişkeni kullanarak Node.js el ile kullanılabilir hale getirebilirsiniz.
+  > [!TIP] 
+  > Windows için MSI sürümünü indirin. Bunun yerine ZIP sürümünü kullanırsanız, işletim sisteminiz için bir yol ortam değişkeni kullanarak Node.js el ile kullanılabilir hale getirebilirsiniz.
 
 * [YERLEŞIK http Web kancası tetikleyicisi](../connectors/connectors-native-webhook.md)gibi Web kancası tabanlı Tetikleyicileri ve eylemleri yerel olarak çalıştırmak için, Visual Studio Code, [geri çağırma URL 'si için iletmeyi ayarlamanız](#webhook-setup)gerekir.
 

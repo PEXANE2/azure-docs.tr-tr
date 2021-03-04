@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693773"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049500"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Sözlük koşullarını etiketlemek için varlıkları toplu düzenleme
 
@@ -65,13 +65,13 @@ Bu makalede, birden çok sözlük terimi tek bir eylemde seçili varlıkların l
 
 7. Sınıflandırmalar, sahipler ve uzmanlar için yukarıdaki adımları tekrarlayın.
 
-    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Kaldırma koşullarının ekran görüntüsü.":::
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Sınıflandırmaların ve kişilerin ekran görüntüsü.":::
 
 8. Tamamlandıktan sonra, **Kapat** veya **Tümünü Kaldır ve Kapat 'ı** seçerek toplu düzenleme dikey penceresini kapatın. Kapat Seçili varlıkları kaldırmaz, Tümünü Kaldır ve Kapat Seçili varlıkların tümünü kaldırır.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Kapanın ekran görüntüsü.":::
 
    > [!Important]
-   > Toplu düzenleme için önerilen varlık sayısı 15 ' tir. 25 ' ten fazla seçim yapmak performans sorunlarına neden olabilir.
+   > Toplu düzenleme için önerilen varlık sayısı 25 ' tir. 25 ' ten fazla seçim yapmak performans sorunlarına neden olabilir.
    > **Seçili görünüm** kutusu yalnızca en az bir varlık seçili olduğunda görünür olur.
 
 

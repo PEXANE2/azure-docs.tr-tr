@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 02/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699258"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050401"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -113,9 +113,11 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 [Azure ilkesi](../../governance/policy/index.yml):
 
 - Temsilci abonelikler içinde ilke tanımları oluşturma ve düzenleme
+- Birden çok kiracının tamamında ilke tanımlarını ve ilke atamalarını dağıtma
 - Atanan abonelikler içinde müşteri tanımlı ilke tanımları atama
 - Müşteriler, yazdığı ilkelerin yanı sıra hizmet sağlayıcı tarafından yazılan ilkeleri görür
 - [Dağıtım kiracısındaki deployIfNotExists 'i düzeltebilir veya atamaları değiştirebilir](../how-to/deploy-policy-remediation.md)
+- Müşteri kiracılarında uyumlu olmayan kaynaklar için uyumluluk ayrıntılarını görüntülemenin Şu anda desteklenmediğini unutmayın
 
 [Azure Kaynak Grafiği](../../governance/resource-graph/index.yml):
 

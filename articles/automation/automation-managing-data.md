@@ -3,14 +3,14 @@ title: Azure Otomasyonu veri güvenliği
 description: Bu makale, Azure Otomasyonu 'nun gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağladığını öğrenmenize yardımcı olur.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581106"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050826"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -41,7 +41,7 @@ Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux i
 
 ## <a name="data-retention"></a>Veri saklama
 
-Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amaçları için birkaç gün boyunca tutulur. Bu süre içinde kaynağı göremez veya kullanamazsınız. Bu ilke, silinen bir Otomasyon hesabına ait olan kaynaklar için de geçerlidir.
+Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amaçları için birkaç gün boyunca tutulur. Bu süre içinde kaynağı göremez veya kullanamazsınız. Bu ilke, silinen bir Otomasyon hesabına ait olan kaynaklar için de geçerlidir. Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirilemiyor. Ancak, verileri daha uzun bir süre tutmanız gerekiyorsa [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletebilirsiniz](automation-manage-send-joblogs-log-analytics.md).
 
 Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 
@@ -54,9 +54,9 @@ Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 | Modül |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm konfigürasyonları/MOF dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan sonra, eski bir düğüm yapılandırması 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm raporları |Düğüm raporu, bu düğüm için yeni rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
-| Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynağı tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynak<sup>1</sup>' i tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 
-Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirilemiyor. Ancak, verileri daha uzun bir süre tutmanız gerekiyorsa [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletebilirsiniz](automation-manage-send-joblogs-log-analytics.md).
+<sup>1</sup> Runbook, Microsoft Azure desteğiyle bir Azure destek olayı kaydederek 30 günlük bir pencere içinde kurtarılabilir. [Azure destek sitesine](/support/options) gidin ve **destek isteği gönder**' i seçin.
 
 ## <a name="data-backup"></a>Veri yedekleme
 

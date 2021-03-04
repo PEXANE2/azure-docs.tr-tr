@@ -3,12 +3,12 @@ title: Arşiv katmanı desteği (Önizleme)
 description: Azure Backup için Arşiv katmanı desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: cd9cfc5722dc644dd257738be797f162ac6dc995
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30a7915332d1d7ecab87b0db1ddc6dacc0fa69c9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746913"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050651"
 ---
 # <a name="archive-tier-support-preview"></a>Arşiv katmanı desteği (Önizleme)
 
@@ -35,6 +35,9 @@ Desteklenen istemciler:
 
 - Yetenek, PowerShell kullanılarak sağlanır
 
+>[!NOTE]
+>Azure VM 'lerinde Azure sanal makineleri ve SQL Server için Arşiv katmanı desteği, sınırlı sonuçlarla sınırlı genel önizlemededir. Arşiv desteği için kaydolmak üzere bu [bağlantıyı](https://aka.ms/ArchivePreviewInterestForm)kullanın.
+
 ## <a name="get-started-with-powershell"></a>PowerShell ile çalışmaya başlayın
 
 1. [En son PowerShell modülünü](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (Önizleme) indirin.
@@ -43,12 +46,30 @@ Desteklenen istemciler:
 
    `Set-AzContext -Subscription "SubscriptionName"`
 
+1. Kasayı alın:
+
+    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+
+1. Yedekleme öğelerinin listesini al:
+
+    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+
+1. Yedekleme öğesini al.
+
+    - Azure sanal makineleri için:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
+
+    - Azure sanal makineler 'de SQL Server için:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+
 ## <a name="use-powershell"></a>PowerShell kullanma
 
 ### <a name="check-archivable-recovery-points"></a>Arşivlenemez kurtarma noktalarını denetle
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
 Bu işlem, arşive taşınmaya başlamaya yönelik belirli bir yedekleme öğesiyle ilişkili tüm kurtarma noktalarını listeler.
@@ -56,7 +77,7 @@ Bu işlem, arşive taşınmaya başlamaya yönelik belirli bir yedekleme öğesi
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Kurtarma noktasının neden arşive taşınamayacağını denetleyin
 
 ```azurepowershell
-$rp.RecoveryPointMoveReadinessInfo["ArchivedRP"]
+$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
 Burada `$rp[0]` neden arşivlenemez olmadığını denetlemek istediğiniz kurtarma noktasıdır.
@@ -79,13 +100,13 @@ Azure Backup, birlikte taşınmışsa maliyet tasarruflarıyla sonuçlanabilecek
 >Maliyet tasarrufları çeşitli nedenlerle farklılık gösterir ve iki örnek için aynı olmayabilir.
 
 ```azurepowershell
-$recommendedRPs = SGet-AzRecoveryServicesRecommendedArchivableRPGroup -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID 
+$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
 ```
 
 ### <a name="move-to-archive"></a>Arşive taşı
 
 ```azurepowershell
-Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $RecoveryPoint[10] -SourceTier VaultStandard -DestinationTier VaultArchive 
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
 
 Bu komut bir arşivlenemez kurtarma noktasını arşive gider. Hem Portal 'dan hem de PowerShell ile taşıma işlemini izlemek için kullanılabilecek bir iş döndürür.
@@ -95,7 +116,7 @@ Bu komut bir arşivlenemez kurtarma noktasını arşive gider. Hem Portal 'dan h
 Bu komut, arşivlenmiş tüm kurtarma noktalarını döndürür.
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
 ```
 
 ### <a name="restore-with-powershell"></a>PowerShell ile geri yükleme
@@ -122,7 +143,7 @@ SQL Server geri yüklemek için [aşağıdaki adımları](backup-azure-sql-autom
 Taşıma ve geri yükleme işlerini görüntülemek için aşağıdaki PowerShell cmdlet 'ini kullanın:
 
 ```azurepowershell
-Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
 
 ## <a name="use-the-portal"></a>Portalı kullanma

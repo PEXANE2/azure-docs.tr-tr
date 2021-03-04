@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
 description: Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek günlük dosyalarındaki Kullanıcı etkinliklerini depolar.  Bu makalede, Azure Izleyici 'de oluşturdukları kayıtların IIS günlüklerinin ve ayrıntılarının nasıl yapılandırılacağı açıklanır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732063"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050741"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
 Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](../data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -26,7 +25,7 @@ Azure Izleyici, IIS tarafından oluşturulan günlük dosyalarından girişler t
 
 Azure İzleyici yalnızca W3C biçiminde depolanan IIS günlük dosyalarını destekler ve özel alanları veya IIS Gelişmiş Günlüğünü desteklemez. NCSA veya IIS yerel biçimindeki günlükleri toplamaz.
 
-Log Analytics aracısının [Gelişmiş ayarlar menüsünden](../agents/agent-data-sources.md#configuring-data-sources) Azure IZLEYICI 'de IIS günlüklerini yapılandırın.  **W3C BIÇIM IIS günlük dosyalarını topla** seçeneğinin belirlenmesi dışında bir yapılandırma gerekmez.
+Azure Izleyici 'de Log Analytics Aracısı için [Aracı yapılandırma menüsünden](../agents/agent-data-sources.md#configuring-data-sources) IIS günlüklerini yapılandırın.  **W3C BIÇIM IIS günlük dosyalarını topla** seçeneğinin belirlenmesi dışında bir yapılandırma gerekmez.
 
 
 ## <a name="data-collection"></a>Veri toplama

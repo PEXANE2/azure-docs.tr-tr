@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 02/19/2021
-ms.openlocfilehash: 04fc020b2b08d4d3dc68b62c417eb8e2d2e85b97
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b39b1d33885de46607cd55acee9919473fab7733
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720622"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051438"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
 
@@ -24,7 +24,8 @@ Microsoft Azure için Müşteri Kasası müşterilerin, müşteri verilerine yö
 
 Bu makalede, Müşteri Kasası nasıl etkinleştirileceği ve kasa isteklerinin nasıl başlatıldığı, izlendiği ve daha sonraki incelemeler ve denetimler için nasıl depolandığı ele alınmaktadır.
 
-<a id='supported-services-and-scenarios-in-preview'># # Desteklenen hizmetler ve senaryolar (genel kullanılabilirlik)
+<a name='supported-services-and-scenarios-in-general-availability'><a name='supported-services-and-scenarios-in-preview'>
+## <a name="supported-services-and-scenarios-general-availability"></a>Desteklenen hizmetler ve senaryolar (genel kullanılabilirlik)
 
 Aşağıdaki hizmetler artık Müşteri Kasası için genel kullanıma sunulmuştur:
 

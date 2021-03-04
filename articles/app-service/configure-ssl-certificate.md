@@ -3,15 +3,15 @@ title: TLS/SSL sertifikaları ekleme ve yönetme
 description: Azure App Service 'de ücretsiz bir sertifika oluşturun, App Service sertifikayı içeri aktarın, Key Vault sertifikasını içeri aktarın veya App Service sertifikası satın alın.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711714"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051353"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 
 |Seçenek|Açıklama|
 |-|-|
-| App Service yönetilen ücretsiz sertifika oluşturma (Önizleme) | Yalnızca `www` [özel etki](app-service-web-tutorial-custom-domain.md) alanınızı veya App Service herhangi bir çıplak etki alanını güvenli hale getirmeniz gerekiyorsa kullanımı kolay olan özel bir sertifika. |
+| App Service yönetilen ücretsiz sertifika oluşturma (Önizleme) | Yalnızca App Service [özel etki](app-service-web-tutorial-custom-domain.md) alanınızı güvenli hale getirmeniz gerekiyorsa, ücretsiz ve kullanımı kolay olan özel bir sertifika. |
 | App Service sertifikası satın alma | Azure tarafından yönetilen özel bir sertifika. Otomatik sertifika yönetiminin basitliğini ve yenileme ve dışa aktarma seçeneklerinin esnekliğini birleştirir. |
 | Key Vault bir sertifikayı içeri aktar | [PKCS12 sertifikalarınızı](https://wikipedia.org/wiki/PKCS_12)yönetmek için [Azure Key Vault](../key-vault/index.yml) kullanıyorsanız faydalıdır. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
@@ -34,19 +34,17 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu nasıl yapılır kılavuzunu izlemek için:
-
 - [App Service uygulaması oluşturun](./index.yml).
-- Yalnızca ücretsiz sertifika: bir alt etki alanını (örneğin, `www.contoso.com` ) [CNAME kaydıyla](app-service-web-tutorial-custom-domain.md#map-a-cname-record)App Service eşleştirin.
+- Özel bir sertifika için [App Service tüm gereksinimleri karşıladığından](#private-certificate-requirements)emin olun.
+- **Yalnızca ücretsiz sertifika**:
+    - Sertifika istediğiniz etki alanını App Service için eşleyin. Bilgi için bkz. [öğretici: mevcut bir özel DNS adını Azure App Service eşleme](app-service-web-tutorial-custom-domain.md).
+    - Kök etki alanı (contoso.com gibi) için, uygulamanızın yapılandırılmış [IP kısıtlamalarına](app-service-ip-restrictions.md) sahip olmadığından emin olun. Hem sertifika oluşturma hem de bir kök etki alanı için düzenli yenileme, uygulamanıza internet 'ten erişilebilmesine bağlıdır.
 
 ## <a name="private-certificate-requirements"></a>Özel sertifika gereksinimleri
 
-> [!NOTE]
-> Azure Web Apps, **AES256 desteklemez ve** tüm PFX dosyaları TripleDES ile şifrelenmelidir.
+[Ücretsiz App Service yönetilen sertifika](#create-a-free-managed-certificate-preview) ve [App Service sertifikası](#import-an-app-service-certificate) App Service gereksinimlerini zaten karşılamış. App Service bir özel sertifikayı karşıya yüklemeyi veya aktarmayı seçerseniz, sertifikanızın aşağıdaki gereksinimleri karşılaması gerekir:
 
-[Ücretsiz App Service yönetilen sertifika](#create-a-free-certificate-preview) veya [App Service sertifikası](#import-an-app-service-certificate) App Service gereksinimlerini zaten karşılamış. App Service bir özel sertifikayı karşıya yüklemeyi veya aktarmayı seçerseniz, sertifikanızın aşağıdaki gereksinimleri karşılaması gerekir:
-
-* [Parola KORUMALı pfx dosyası](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions) olarak verildi
+* [Parola KORUMALı pfx dosyası](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)olarak verildiğinde, Üçlü DES kullanılarak şifrelenir.
 * En az 2048 bit uzunluğunda özel anahtar içermesi
 * Sertifika zincirindeki tüm ara sertifikaları içermesi
 
@@ -60,21 +58,21 @@ Bir TLS bağlamasındaki özel bir etki alanının güvenliğini sağlamak için
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Ücretsiz sertifika oluşturma (Önizleme)
+## <a name="create-a-free-managed-certificate-preview"></a>Ücretsiz yönetilen sertifika oluşturma (Önizleme)
+
+> [!NOTE]
+> Ücretsiz bir yönetilen sertifika oluşturmadan önce, uygulamanız için [önkoşulları karşıladığınızdan](#prerequisites) emin olun.
 
 App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı güvenli hale getirmek için bir açılan anahtar çözümüdür. Bu, App Service tarafından yönetilen ve otomatik olarak yenilenen tam işlevli bir TLS/SSL sertifikasıdır. Ücretsiz sertifika aşağıdaki sınırlamalara sahiptir:
 
 - Joker sertifikaları desteklemez.
-- Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
-- App Service Ortamı (Ao) üzerinde desteklenmez
-- Bir kaydı desteklemez. Örneğin, otomatik yenileme bir kayıtla birlikte çalışmaz.
+- App Service Ortamı (Ao) üzerinde desteklenmez.
+- , Traffic Manager ile tümleştirilmiş kök etki alanları ile desteklenmez.
 
 > [!NOTE]
 > Ücretsiz sertifika, DigiCert tarafından verilir. Bazı üst düzey etki alanları için, şu değere sahip bir [CAA etki alanı kaydı](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) oluşturarak bir sertifika veren olarak DigiCert 'e açıkça izin vermeniz gerekir: `0 issue digicert.com` .
 > 
-
-App Service yönetilen ücretsiz bir sertifika oluşturmak için:
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
@@ -82,7 +80,7 @@ Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anaht
 
 ![App Service 'de ücretsiz sertifika oluşturma](./media/configure-ssl-certificate/create-free-cert.png)
 
-Bir CNAME kaydıyla uygulamanızla doğru şekilde eşlenmiş, çıplak olmayan herhangi bir etki alanı iletişim kutusunda listelenir. İçin ücretsiz bir sertifika oluşturmak üzere özel etki alanını seçin ve **Oluştur**' u seçin. Desteklenen her bir özel etki alanı için yalnızca bir sertifika oluşturabilirsiniz.
+İçin ücretsiz bir sertifika oluşturmak üzere özel etki alanını seçin ve **Oluştur**' u seçin. Desteklenen her bir özel etki alanı için yalnızca bir sertifika oluşturabilirsiniz.
 
 İşlem tamamlandığında, sertifikayı **özel anahtar sertifikaları** listesinde görürsünüz.
 

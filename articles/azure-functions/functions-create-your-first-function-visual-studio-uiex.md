@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb3ba4ad49cc78b6082d347521cd87be5409cd34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749036"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050129"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
 
@@ -27,9 +27,10 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 ![Azure geliştirme iş yüküyle Visual Studio 'Yu yükler](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
+<br/>
 <details>
-<summary>Bunun yerine bir Azure Işlevleri projesi kullanın</summary>
-Şunu oluşturmak istiyorsanız <abbr title="Birlikte dağıtılabilecek ve yönetilebilen bir veya daha fazla bağımsız işlev için mantıksal bir kapsayıcı. "> Azure Işlevleri projesi</abbr> Bunun yerine Visual Studio 2017 kullanarak, önce [en son Azure işlevleri araçlarını](functions-develop-vs.md#check-your-tools-version)yüklemeniz gerekir.
+<summary><strong>Bunun yerine bir Azure Işlevleri projesi kullanın</strong></summary>
+Şunu oluşturmak istiyorsanız <abbr title="Birlikte dağıtılabilecek ve yönetilebilen bir veya daha fazla bağımsız işlev için mantıksal bir kapsayıcı.">Azure Işlevleri projesi</abbr> Bunun yerine Visual Studio 2017 kullanarak, önce [en son Azure işlevleri araçlarını](functions-develop-vs.md#check-your-tools-version)yüklemeniz gerekir.
 </details>
 
 ## <a name="2-create-a-function-app-project"></a>2. bir işlev uygulaması projesi oluşturma
@@ -42,13 +43,13 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 1. **Yeni Azure işlevleri uygulama** ayarları için aşağıdaki bilgileri sağlayın:
 
-    + **<abbr title=" Bu değeri seçin, .NET Core 3. x 'ı destekleyen Azure işlevlerinin sürüm 3. x çalışma zamanını kullanan bir işlev projesi oluşturur. Azure işlevleri 1. x .NET Framework destekler. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md). "> Işlevler çalışma zamanı açılan menüsünden Azure Işlevleri </abbr> v3 (.NET Core)**
+    + **<abbr title=" Bu değeri seçin, .NET Core 3. x 'ı destekleyen Azure işlevlerinin sürüm 3. x çalışma zamanını kullanan bir işlev projesi oluşturur. Azure işlevleri 1. x .NET Framework destekler. "> Işlevler çalışma zamanı açılan menüsünden Azure Işlevleri </abbr> v3 (.NET Core)** . (Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md).)
     
     + **<abbr title=" Bu değeri SEÇIN bir http isteği tarafından tetiklenen bir işlev oluşturur. "> İşlev şablonu </abbr> olarak http tetikleyicisi** .
     
-    + **Azure işlevi bir depolama hesabı gerektirdiğinden<abbr = "seçeneğini belirleyin, projenizi Azure 'da yayımladığınızda bir tane atanır veya oluşturulur. HTTP tetikleyicisi, Azure depolama hesabı bağlantı dizesi kullanmaz; diğer tüm tetikleyici türleri için geçerli bir Azure depolama hesabı bağlantı dizesi gerekir. " Depolama hesabı açılır </abbr> listesinden depolama öykünücüsü >** .
+    + Bir **<abbr title=" Azure işlevi için bir depolama hesabı gerektiğinden, projenizi Azure 'da yayımladığınızda bir tane atanması veya oluşturulması gerekir. HTTP tetikleyicisi, Azure depolama hesabı bağlantı dizesi kullanmaz; diğer tüm tetikleyici türleri için geçerli bir Azure depolama hesabı bağlantı dizesi gerekir. "> </abbr>** Depolama hesabı açılır listesinden depolama öykünücüsü.
         
-    + Buradan **anonim** seçin <abbr title="Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır. Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys) ve [http ve Web kancası bağlamaları](functions-bindings-http-webhook.md).">Yetkilendirme düzeyi</abbr> Listenin
+    + Buradan **anonim** seçin <abbr title="Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır.">Yetkilendirme düzeyi</abbr> Listenin. (Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys) ve [http ve Web kancası bağlamaları](functions-bindings-http-webhook.md).)
 
     + **Oluştur**’u seçin
         
@@ -77,8 +78,9 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 1. Hata ayıklamayı durdurmak için, <kbd></kbd> + Visual Studio 'da SHIFT<kbd>F5</kbd> tuşuna basın.
 
+<br/>
 <details>
-<summary>Sorun giderme</summary>
+<summary><strong>Sorun giderme</strong></summary>
  Araçların HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz gerekebilir. Yerel olarak bir işlev çalıştırdığınızda yetkilendirme düzeyleri hiçbir zaman zorlanmaz.
 </details>
 
@@ -102,7 +104,7 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
     
     + Mevcut olanı **seçin** <abbr title="Birim olarak yönetebileceğiniz ilgili Azure kaynakları için mantıksal bir kapsayıcı.">kaynak grubu</abbr> veya yeni bir kaynak grubu oluşturmak için aşağı açılan listeden **Yeni** ' yi seçin.
     
-    + **Seç** <abbr title="Projenizi bir [Tüketim planında](consumption-plan.md)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur.">Tüketim</abbr> Yürütme türü açılır penceresinde
+    + **Seç** <abbr title="Projenizi bir tüketim planında çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur.">Tüketim</abbr> Oynatma türü açılır. (Daha fazla bilgi için bkz. [Tüketim planı](consumption-plan.md).)
     
     + Bir **seçin**  <abbr title="Kaynakların ayrıldığı belirli bir Azure veri merkezine coğrafi başvuru. Kullanılabilir bölgelerin listesi için bkz. [bölgeler](https://azure.microsoft.com/regions/) .">location</abbr> açılır.
     
@@ -116,8 +118,9 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Profil oluşturmayı tamamlama":::
 
+    <br/>
     <details>
-    <summary>Bu ayar ne yapar?</summary>
+    <summary><strong>Bu ayar ne yapar?</strong></summary>
     Paket dosyasından **Çalıştır** kullanılırken, işlev uygulamanız, [paket Çalıştır](run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, daha iyi performans ile sonuçlandığından, işlevler projeniz için önerilen dağıtım yöntemidir.    
     </details>   
 
@@ -127,14 +130,14 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 1. Yayımla sayfasında, işlev uygulamasının kök URL 'sini gözden geçirin.
 
-1. Yayımla sekmesinde, **Cloud Explorer 'Da Yönet ' i seçin <abbr title=" . site içeriğini görüntülemek Için Visual Studio 'yu kullanmanıza, işlev uygulamasını başlatıp durdurmanıza ve Azure 'daki ve Azure Portal doğrudan işlev uygulama kaynaklarına gözatmanıza imkan tanır. "> Bulut Gezgini</>**.
+1. Yayımla sekmesinde, **Cloud Explorer 'Da Yönet ' i seçin <abbr title=" . site içeriğini görüntülemek Için Visual Studio 'yu kullanmanıza, işlev uygulamasını başlatıp durdurmanıza ve Azure 'daki ve Azure Portal doğrudan işlev uygulama kaynaklarına gözatmanıza imkan tanır. "> Bulut Gezgini </abbr>**.
     
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Başarı iletisi yayımlama":::
     
 
 ## <a name="6-test-your-function-in-azure"></a>6. işlevinizi Azure 'da test etme
 
-1. Cloud Explorer 'da yeni işlev uygulamanız seçilmelidir. Aksi takdirde, abonelik > **uygulama hizmetleri**' ni genişletin ve yeni işlev uygulamanızı seçin.
+1. Cloud Explorer 'da yeni işlev uygulamanız seçilmelidir. Aksi takdirde, aboneliğinizi genişletin, **uygulama hizmetleri**' ni genişletin ve yeni işlev uygulamanızı seçin.
 
 1. İşlev uygulamasına sağ tıklayın ve **tarayıcıda aç**' ı seçin. Bu, işlev uygulamanızın kökünü varsayılan Web tarayıcınızda açar ve işlev uygulamanızın çalıştığını gösteren sayfayı görüntüler. 
 
@@ -154,7 +157,7 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 Daha fazla maliyet ödemeden kaçınmak için işlev uygulamasını ve kaynaklarını silin.
 
-1. Cloud Explorer 'da, abonelik > **uygulama hizmetleri**' ni genişletin, işlev uygulamanıza sağ tıklayın ve **portalda aç**' ı seçin. 
+1. Cloud Explorer 'da aboneliğinizi genişletin, **uygulama hizmetleri**' ni genişletin, işlev uygulamanıza sağ tıklayın ve **portalda aç**' ı seçin. 
 
 1. İşlev uygulaması sayfasında **genel bakış** sekmesini seçin ve **kaynak grubu**' nun altındaki bağlantıyı seçin.
 

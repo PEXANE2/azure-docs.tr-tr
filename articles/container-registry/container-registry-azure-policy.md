@@ -2,13 +2,13 @@
 title: Azure Ilkesi kullanılarak uyumluluk
 description: Azure Container kayıt defterlerinden uyumluluğu denetlemek için Azure Ilkesinde yerleşik ilkeler atama
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/01/2021
+ms.openlocfilehash: 3f6809698171950060b54257a365889242f4636e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050588"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Ilkesi kullanarak Azure Container Registry 'nin uyumluluğunu denetleme
 
@@ -22,7 +22,7 @@ Azure Ilkesi kullanımı için herhangi bir ücret alınmaz.
 
 Aşağıdaki yerleşik ilke tanımları Azure Container Registry özgüdür:
 
-[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
 Ayrıca bkz. yerleşik ağ ilkesi tanımı: [Container Registry bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
@@ -43,7 +43,7 @@ Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Nedenini öğrenmek 
 
 ### <a name="policy-compliance-in-the-portal"></a>Portalda ilke uyumluluğu:
 
-1. **Tüm hizmetler**' i seçin ve **ilke**araması yapın.
+1. **Tüm hizmetler**' i seçin ve **ilke** araması yapın.
 1. **Uyumluluk**' i seçin.
 1. Uyumluluk durumlarını sınırlamak veya ilkeleri aramak için filtreleri kullanın.
 
@@ -75,7 +75,7 @@ az policy state list \
   --resource <policyID>
 ```
 
-Veya, *myregistry*gibi belirli bir kayıt DEFTERI kaynağının JSON biçimli uyumluluk durumunu döndürmek için [az Policy State List](/cli/azure/policy/state#az-policy-state-list) ' i çalıştırın:
+Veya, *myregistry* gibi belirli bir kayıt DEFTERI kaynağının JSON biçimli uyumluluk durumunu döndürmek için [az Policy State List](/cli/azure/policy/state#az-policy-state-list) ' i çalıştırın:
 
 ```azurecli
 az policy state list \

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c2daed4a8df89ed176749900dc75eb231c00af87
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544454"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049279"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
 
@@ -90,6 +90,12 @@ App.Config AppSettings 'i ekleyin.
 
 Aşağıdaki yönergeleri ekleyin `using` ve projeye System.Configbir başvuru eklediğinizden emin olun.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
@@ -101,10 +107,17 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Konsol uygulamanıza belirteç almak için bir yöntem ekleyin
 
 Aşağıdaki yöntem, anahtar kasanıza erişim için kimlik doğrulaması yapması gereken Key Vault sınıfları tarafından kullanılır.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -121,10 +134,17 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Programınızdaki Azure depolama ve Key Vault erişin
 
 Main () yönteminde aşağıdaki kodu ekleyin.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -141,6 +161,7 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+---
 
 > [!NOTE]
 > Nesne modellerini Key Vault
@@ -156,6 +177,12 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ## <a name="encrypt-blob-and-upload"></a>Blobu şifreleyin ve karşıya yükleyin
 
 Bir blobu şifrelemek ve Azure depolama hesabınıza yüklemek için aşağıdaki kodu ekleyin. Kullanılan **ResolveKeyAsync** yöntemi bir Ikey döndürür.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -175,9 +202,11 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+---
 
 > [!NOTE]
 > BlobEncryptionPolicy oluşturucusuna bakarsanız, bir anahtarı ve/veya bir çözümleyiciyi kabul edebiliyorsanız görürsünüz. Şu anda varsayılan bir anahtarı desteklemediği için şifreleme için bir çözümleyici kullandığımıza dikkat edin.
+
 
 ## <a name="decrypt-blob-and-download"></a>Blob şifresini çözün ve indirin
 
@@ -186,6 +215,12 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 Bir RSA anahtarının özel anahtarı Key Vault kalır, bu nedenle şifre çözme işleminin gerçekleşmesi için, CEK içeren blob meta verilerinden şifrelenmiş anahtar şifre çözme için Key Vault gönderilir.
 
 Karşıya yüklediğiniz Blobun şifresini çözmek için aşağıdakileri ekleyin.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -196,6 +231,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+---
 
 > [!NOTE]
 > Anahtar yönetimini daha kolay hale getirmek için: AggregateKeyResolver ve CachingKeyResolver gibi birçok farklı tür çözümleyici vardır.
@@ -226,13 +262,18 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 Konsol uygulamanızda, bu parolayı bir SymmetricKey olarak almak için aynı çağrıyı kullanabilirsiniz.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-
-İşte bu kadar. Keyfini çıkarın!
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

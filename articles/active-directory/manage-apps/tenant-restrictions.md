@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687082"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050911"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -29,7 +29,7 @@ Kiracı kısıtlamalarıyla kuruluşlar, kullanıcılarının erişmelerine izin
 
 Bu makale Microsoft 365 Kiracı kısıtlamalarına odaklanır, ancak bu özellik, kullanıcıyı çoklu oturum açma için Azure AD 'ye gönderen tüm uygulamaları korur. Microsoft 365 tarafından kullanılan kiracıdan farklı bir Azure AD kiracısıyla SaaS uygulamaları kullanıyorsanız, gerekli tüm kiracılara izin verildiğinizden emin olun (örneğin, B2B işbirliği senaryolarında). SaaS bulut uygulamaları hakkında daha fazla bilgi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-Ayrıca, kiracı kısıtlamaları özelliği artık OneDrive, hotmail ve Xbox.com gibi [tüm Microsoft tüketici uygulamalarının](#blocking-consumer-applications) (MSA uygulamaları) kullanımını engellemeyi desteklemektedir.  Bu, uç nokta için ayrı bir üst bilgi kullanır `login.live.com` ve belgenin sonunda ayrıntılıdır.
+Ayrıca, kiracı kısıtlamaları özelliği artık OneDrive, hotmail ve Xbox.com gibi [tüm Microsoft tüketici uygulamalarının](#blocking-consumer-applications-public-preview) (MSA uygulamaları) kullanımını engellemeyi desteklemektedir.  Bu, uç nokta için ayrı bir üst bilgi kullanır `login.live.com` ve belgenin sonunda ayrıntılıdır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 

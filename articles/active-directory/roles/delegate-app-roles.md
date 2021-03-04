@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071281"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051200"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -77,7 +77,7 @@ Azure AD 'nin tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme eri
 - Uygulama Yöneticisi: Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu rol Ayrıca, temsilci izinleri onayı iznini ve Microsoft Graph hariç tutulan uygulama izinlerini de verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 - Bulut uygulaması Yöneticisi: Bu roldeki kullanıcılar uygulama proxy 'si rolüyle aynı izinlere sahiptir ve uygulama ara sunucusunu yönetme imkanını dışlar. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 
-Daha fazla bilgi edinmek ve bu rollerin açıklamasını görüntülemek için bkz. [kullanılabilir roller](permissions-reference.md#available-roles).
+Daha fazla bilgi edinmek ve bu rollerin açıklamasını görüntülemek için bkz. [Azure AD yerleşik rolleri](permissions-reference.md).
 
 Uygulama Yöneticisi veya bulut uygulama yöneticisi rollerini atamak için Azure Active Directory nasıl yapılır Kılavuzu [ile kullanıcılara roller atama](../fundamentals/active-directory-users-assign-role-azure-portal.md) bölümündeki yönergeleri izleyin.
 

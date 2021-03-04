@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: dfb7e7c7c93a8af2b59f6d3d7049e2c14b8f382a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0d597f0742cfc43f1c7fb38568b2a2bbda352beb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611058"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049347"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -39,18 +39,30 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 
 Bu öğreticiyi tamamlamak için:
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 * **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' ü yükler.
 
   ![Azure geliştirme (Web ve Bulut altında)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 * [Python](https://www.python.org/downloads/) 'ı yükler
 * [Python Için Azure depolama SDK 'sını](https://github.com/Azure/azure-storage-python) indirme ve yükleme
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 * [Node.js](https://nodejs.org)'i yükler.
 
@@ -73,7 +85,7 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
    | Ayar       | Örnek değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
-   | **adlı yönetilen örnek,** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Ad** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
    | **Konum** | *Doğu ABD* | Konum seçin. |
    | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
@@ -85,7 +97,11 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 [Örnek projeyi indirin](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) ve storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip dosyasını ayıklayın (sıkıştırmasını açın). Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje bir konsol uygulaması içerir.
 
@@ -93,7 +109,11 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 [Örnek projeyi indirin](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) ve storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip dosyasını ayıklayın (sıkıştırmasını açın). Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje temel bir Python uygulaması içerir.
 
@@ -101,7 +121,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 [Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node.js uygulaması içerir.
 
@@ -113,7 +137,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Bu uygulamada, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. Bu bağlantı dizesini uygulamayı çalıştıran yerel makine üzerindeki bir ortam değişkeninde depolayabilirsiniz. Ortam değişkenini oluşturmak için İşletim Sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
@@ -131,7 +159,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 Uygulamada, depolama hesabı kimlik bilgilerinizi sağlamanız gerekir. Bu bilgileri, uygulamayı çalıştıran yerel makinedeki ortam değişkenlerine kaydedebilirsiniz. Ortam değişkenlerini oluşturmak için Işletim sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
@@ -151,7 +183,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Bu örneği çalıştırmak için, depolama hesabı kimlik bilgilerinizi `.env.example` dosyaya eklemeniz ve sonra olarak yeniden adlandırmanız gerekir `.env` .
 
@@ -168,7 +204,11 @@ Gerekli bağımlılıkları yükler. Bunu yapmak için bir komut istemi açın, 
 
 ## <a name="run-the-console-application"></a>Konsol uygulamasını çalıştırma
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Visual Studio 'da **F5** tuşuna basın veya uygulamada hata ayıklamaya başlamak için **Başlat** ' ı seçin. Visual Studio, yapılandırıldıysa eksik NuGet paketlerini otomatik olarak geri yükler, daha fazla bilgi edinmek için [paketleri yükleme ve yeniden yükleme paketini geri yükleyin](/nuget/consume-packages/package-restore#package-restore-overview) .
 
@@ -178,7 +218,11 @@ Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çöz
 
 Örnek kodda, [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak depolama hesabından bir resim indirmek için `Program.cs` dosyasındaki `RunCircuitBreakerAsync` görevi kullanılmaktadır. İndirilmesinden önce, bir [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) tanımlanmıştır. İşlem bağlamı, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitbreaker.py** dizinine gidip `python circuitbreaker.py` komutunu girin. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, görüntünün ikincil RA-GZRS uç noktasına çoğaltıldığından emin olmak için kontrol eder. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S** tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
 
@@ -190,7 +234,11 @@ Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine a
 
 İndirilmadan önce, Service Object [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) ve [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) işlevi tanımlanmıştır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js` .
 
@@ -221,7 +269,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>Yeniden deneme olay işleyicisi
 
@@ -272,7 +324,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ### <a name="retry-event-handler"></a>Yeniden deneme olay işleyicisi
 
@@ -315,7 +371,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js V12](#tab/nodejs)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Node.js Ile v10 arasındaki SDK ile geri çağırma işleyicileri gereksizdir. Bunun yerine, örnek, yeniden deneme seçenekleriyle yapılandırılmış bir işlem hattı ve ikincil bir uç nokta oluşturur. Bu, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına olanak tanır.
 

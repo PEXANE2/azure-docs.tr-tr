@@ -8,25 +8,28 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale-msft
 ms.reviewer: mathoma, sstein
-ms.date: 05/18/2019
-ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/25/2021
+ms.openlocfilehash: cd1ba0516d8cb7fdaf3b8d4786cfe68240231303
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782629"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050979"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Uzun süreli saklama-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
-Birçok uygulamanın, Azure SQL veritabanı ve Azure SQL yönetilen örnek [Otomatik yedeklemeleri](automated-backups-overview.md)tarafından belirtilen 7-35 günden daha fazla veritabanı yedeklerini tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, belirtilen SQL veritabanı ve SQL yönetilen örnek tam yedeklemelerini, en fazla 10 yıla kadar [yapılandırılmış yedeklerle](automated-backups-overview.md#backup-storage-redundancy) Azure Blob depolama alanında saklayabilirsiniz. Daha sonra tüm yedeklemeyi yeni bir veritabanı olarak geri yükleyebilirsiniz.
+Birçok uygulamanın, Azure SQL veritabanı ve Azure SQL yönetilen örnek [Otomatik yedeklemeleri](automated-backups-overview.md)tarafından belirtilen 7-35 günden daha fazla veritabanı yedeklerini tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, belirtilen SQL veritabanı ve SQL yönetilen örnek tam yedeklemelerini, en fazla 10 yıla kadar [yapılandırılmış yedeklerle](automated-backups-overview.md#backup-storage-redundancy) Azure Blob depolama alanında saklayabilirsiniz. Bu durumda, LTR yedeklemeleri yeni bir veritabanı olarak geri yüklenebilir.
 
-Azure SQL veritabanı için uzun süreli saklama etkinleştirilebilir ve Azure SQL yönetilen örneği için sınırlı genel önizlemede bulunabilir. Bu makalede uzun süreli saklama hakkında kavramsal bir genel bakış sunulmaktadır. Uzun süreli saklama yapılandırmak için bkz. [Azure SQL VERITABANı LTR 'Yi yapılandırma](long-term-backup-retention-configure.md) ve [Azure SQL yönetilen örnek LTR 'yi yapılandırma](../managed-instance/long-term-backup-retention-configure.md). 
+Azure SQL veritabanı için uzun süreli saklama etkinleştirilebilir ve Azure SQL yönetilen örneği için genel önizlemede kullanılabilir. Bu makalede uzun süreli saklama hakkında kavramsal bir genel bakış sunulmaktadır. Uzun süreli saklama yapılandırmak için bkz. [Azure SQL VERITABANı LTR 'Yi yapılandırma](long-term-backup-retention-configure.md) ve [Azure SQL yönetilen örnek LTR 'yi yapılandırma](../managed-instance/long-term-backup-retention-configure.md). 
 
 > [!NOTE]
 > [Yalnızca kopya veritabanı yedeklerini](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 35 gün daha fazla LTR 'e alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
+
+> [!IMPORTANT]
+> Yönetilen örnekteki uzun süreli saklama, şu anda yalnızca Azure genel bölgelerinde genel önizlemede kullanılabilir. 
 
 
 ## <a name="how-long-term-retention-works"></a>Uzun vadeli bekletme nasıl kullanılır?
@@ -77,25 +80,20 @@ Yukarıdaki ilkeyi değiştirir ve W = 0 (haftalık yedeklemeler yok) seçeneği
 > [!NOTE]
 > Özgün birincil veritabanı, yük devretmeye neden olan bir kesintiden kurtarıldığında yeni bir ikincil olur. Bu nedenle, yedekleme oluşturma SÜRDÜRÜLMEYECEKTİR ve mevcut LTR ilkesi, birincil olana kadar etkili olmayacaktır. 
 
-## <a name="sql-managed-instance-support"></a>SQL Yönetilen Örneği desteği
-
-Azure SQL yönetilen örneği ile uzun süreli yedek saklama kullanılması aşağıdaki sınırlamalara sahiptir:
-
-- **Sınırlı genel önizleme** -bu ÖNIZLEME yalnızca EA ve CSP aboneliklerinde kullanılabilir ve sınırlı kullanılabilirliğe tabidir.  
-- [**Yalnızca PowerShell**](../managed-instance/long-term-backup-retention-configure.md) -şu anda Azure Portal desteği yok. LTR, PowerShell kullanılarak etkinleştirilmelidir. 
-
-Kayıt istemek için bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL yönetilen örneği seçin ve sorun türü için **yedekleme, geri yükleme ve iş sürekliliği/uzun süreli yedekleme saklama '** yı seçin. İsteğiniz içinde, SQL yönetilen örneği için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğinizi unutmayın.
 
 ## <a name="configure-long-term-backup-retention"></a>Uzun süreli yedek saklama yapılandırma
 
-Azure SQL veritabanı için Azure portal ve PowerShell 'i ve Azure SQL yönetilen örneği için PowerShell 'i kullanarak uzun süreli yedek saklama yapılandırabilirsiniz. Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya veya yönetilen örneğe geri yüklenebilir.
+Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure portal ve PowerShell 'i kullanarak uzun süreli yedek saklama yapılandırabilirsiniz. Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya veya yönetilen örneğe geri yüklenebilir.
 
-Uzun süreli saklama veya Azure portal veya PowerShell kullanarak bir veritabanını SQL veritabanı yedeğinden geri yükleme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](long-term-backup-retention-configure.md)
+Azure portal veya PowerShell 'i kullanarak SQL veritabanı için uzun süreli saklama veya bir veritabanını yedekten geri yükleme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](long-term-backup-retention-configure.md).
 
 Azure SQL yönetilen örneği için PowerShell 'i kullanarak uzun süreli saklama veya bir veritabanını yedekten geri yükleme hakkında bilgi edinmek için bkz. [Azure SQL yönetilen örnek uzun süreli yedekleme saklama](../managed-instance/long-term-backup-retention-configure.md).
 
-Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden nasıl geri yükleyeceğinizi öğrenmek için, Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](long-term-backup-retention-configure.md). İsteğiniz içinde, SQL yönetilen örneği için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.
+Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden nasıl geri yükleyeceğinizi öğrenmek için, Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](long-term-backup-retention-configure.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı yedeklemeleri verileri yanlışlıkla bozulma veya silme işlemlerini koruduğundan, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır. Diğer SQL veritabanı iş sürekliliği çözümleri hakkında bilgi edinmek için bkz. [iş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+Veritabanı yedeklemeleri verileri yanlışlıkla bozulma veya silme işlemlerini koruduğundan, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır. 
+
+- Diğer SQL veritabanı iş sürekliliği çözümleri hakkında bilgi edinmek için bkz. [iş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+- Hizmet tarafından oluşturulan otomatik yedekler hakkında bilgi edinmek için bkz. [otomatik yedekler](../database/automated-backups-overview.md)

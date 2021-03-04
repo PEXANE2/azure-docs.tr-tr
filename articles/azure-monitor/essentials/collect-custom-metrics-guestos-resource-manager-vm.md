@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.subservice: metrics
-ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731723"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049024"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için bir Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğer [Platform ölçümleri](./monitor-azure-resource.md#monitoring-data)gibi otomatik olarak toplanmaz. Bir REST API neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim de dahil olmak üzere Azure Izleyici ölçümlerinin tüm özellikleriyle kullanılabilmesi için, Azure Izleyici [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) ' nı ölçüm veritabanına toplayın. Bu makalede, bir Windows sanal makinesi için bir Kaynak Yöneticisi şablonu kullanarak ölçüm veritabanına Konuk işletim sistemi performans ölçümleri gönderme işlemi açıklanır. 

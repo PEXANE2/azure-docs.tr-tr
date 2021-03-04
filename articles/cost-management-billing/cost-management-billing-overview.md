@@ -4,17 +4,17 @@ description: Azure Maliyet Yönetimi + Faturalama özelliklerini kullanarak fatu
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051102"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050553"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Maliyet Yönetimi + Faturalama nedir?
 
@@ -33,6 +33,8 @@ Azure ürün ve hizmetlerinde sadece kullandığınız kadar ödersiniz. Yalnız
 
 Kuruluş olarak maliyet yönetimine nasıl yaklaşmak gerektiği hakkında daha fazla bilgi edinmek için, [Azure Maliyet Yönetimi en iyi yöntemleri](./costs/cost-mgt-best-practices.md) makalesini gözden geçirin.
 
+![Maliyet yönetimi + faturalandırma iyileştirmesi işleminin diyagramı.](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>Azure Faturalandırma özelliklerini anlama
 
 Azure Faturalandırma özellikleri, faturalandırılan maliyetlerinizi gözden geçirmenizi ve ödeme bilgilerinize kimlerin erişebileceğini yönetmenizi sağlar. Büyük çaplı kuruluşlarda faturalandırma görevleri genellikle tedarik ve finans takımları tarafından yürütülür.
@@ -48,32 +50,6 @@ Azure portalı şu anda aşağıdaki ödeme hesapları türünü destekler:
 - **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir Kurumsal Anlaşma (EA) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur.
 
 - **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden kullandıkça öde fiyatlarına tabi hesaba kaydolan veya [Ücretsiz Azure Hesabını](./manage/create-free-services.md) yükselten, belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir.
-
-### <a name="scopes-for-billing-accounts"></a>Ödeme hesapları için kapsamlar
-Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödeme hesabı içindeki bir düğümdür. Bu kapsam dahilinde faturalama verilerini, ödemeleri, faturaları yönetir ve genel hesap yönetimi gerçekleştirirsiniz.
-
-#### <a name="microsoft-online-services-program"></a>Microsoft Online Services Programı
-
-|Kapsam  |Tanım  |
-|---------|---------|
-|Fatura hesabı     | Bir veya daha fazla Azure aboneliği için tek bir sahibi (Hesap yöneticisi) temsil eder. Hesap Yöneticisi, abonelik oluşturma, faturaları görüntüleme veya aboneliklerin faturalamasını değiştirme gibi çeşitli faturalama görevlerini yerine getirme yetkisine sahiptir.  |
-|Abonelik     |  Bir Azure kaynakları gruplamasını temsil eder. Abonelik kapsamında fatura oluşturulur. Faturasını ödemek için kullanılan kendi ödeme yöntemlerine sahiptir.|
-
-#### <a name="enterprise-agreement"></a>Kurumsal Anlaşma
-
-|Kapsam  |Tanım  |
-|---------|---------|
-|Fatura hesabı    | Bir Kurumsal Anlaşma kaydını temsil eder. Fatura, ödeme hesabı kapsamında oluşturulur. Bölümler ve kayıt hesapları kullanılarak yapılandırılır.  |
-|Bölüm     |  İsteğe bağlı kayıt hesapları gruplaması.      |
-|Kayıt hesabı     |  Tek bir hesap sahibini temsil eder. Azure abonelikleri kayıt hesabı kapsamı altında oluşturulur.  |
-
-#### <a name="microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi
-
-|Kapsam  |Görevler  |
-|---------|---------|
-|Fatura hesabı     |   Birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesini temsil eder. Ödeme hesabı, faturalama profilleri ve fatura bölümleri kullanılarak yapılandırılır.   |
-|Faturalama profili     |  Bir faturayı ve ödeme yöntemlerini temsil eder. Fatura bu kapsamda oluşturulur. Faturalama profili birden çok fatura bölümüne sahip olabilir.      |
-|Fatura bölümü     |   Faturadaki bir maliyet grubunu temsil eder. Abonelikler ve diğer satın alma işlemleri fatura bölümünün kapsamıyla ilişkilidir.    |
 
 ## <a name="understand-azure-cost-management"></a>Azure Maliyet Yönetimi’ni anlama
 

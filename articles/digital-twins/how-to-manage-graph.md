@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530459"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050945"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -30,7 +30,7 @@ Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek d
 
 [!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
-Ayrıca, Azure Digital TWINS (ADT) gezgin örneğini kullanarak grafiğinizde değişiklikler yapabilirsiniz, bu da TWINS ve grafınızı görselleştirmenize ve arka planda SDK 'nın kullanılmasını sağlar. Sonraki bölümde bu örnek ayrıntılı olarak açıklanmaktadır.
+Ayrıca, Azure Digital TWINS Explorer örneğini kullanarak grafiğinizde değişiklikler yapabilirsiniz. Bu, TWINS ve grafınızı görselleştirmenize ve arka planda SDK 'nın kullanılmasını sağlar. Sonraki bölümde bu örnek ayrıntılı olarak açıklanmaktadır.
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 

@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
 description: Özel JSON veri kaynakları, Linux için Log Analytics Aracısı kullanılarak Azure Izleyici 'ye toplanabilir.  Bu özel veri kaynakları, bir dizi gibi JSON döndüren basit betikler veya Floentıd 'nin 300 + eklentilerinden biridir. Bu makalede, bu veri koleksiyonu için gereken yapılandırma açıklanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: cd216e277a64d6e3edc87dc4027550bc8c7c5bfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fe80a5c117e8c94e5df946813a1c025747ff40e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726249"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050707"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

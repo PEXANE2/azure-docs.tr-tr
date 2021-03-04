@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049857"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure dijital TWINS örneğini farklı bir Azure bölgesine taşıma
 
@@ -42,7 +42,7 @@ Dikkate alınacak bazı sorular şunlardır:
 * Örneðimde *grafiğin* genel şekli nedir? Kaç ilişki var?
 * Örneğimde hangi *uç noktalara* sahibim?
 * Örneğimde hangi *yollara* sahibim? Filtreler mi var?
-* Örnek, *diğer Azure hizmetlerine nereden bağlanır* ? Bazı ortak tümleştirme noktaları şunları içerir:
+* Örnek, *diğer Azure hizmetlerine nereden bağlanır*? Bazı ortak tümleştirme noktaları şunları içerir:
 
     - Azure Event Grid, Azure Event Hubs veya Azure Service Bus
     - Azure İşlevleri
@@ -52,18 +52,18 @@ Dikkate alınacak bazı sorular şunlardır:
     - Azure IoT Hub Cihazı Sağlama Hizmeti
 * Örneğime hangi *kişisel veya Şirket uygulamaları* bağlanmalıyım?
 
-Bu bilgileri [Azure Portal](https://portal.azure.com), [Azure dijital TWINS API 'leri ve SDK](how-to-use-apis-sdks.md)'Ları, [Azure dijital TWINS CLI komutları](how-to-use-cli.md)veya [Azure Digital TWINS (ADT) Gezgini](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) örneğini kullanarak toplayabilirsiniz.
+Bu bilgileri [Azure Portal](https://portal.azure.com), [Azure dijital TWINS API 'leri ve SDK](how-to-use-apis-sdks.md)'Ları, [Azure dijital TWINS CLI komutları](how-to-use-cli.md)veya [Azure Digital TWINS Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) örneğini kullanarak toplayabilirsiniz.
 
 ## <a name="prepare"></a>Hazırlama
 
-Bu bölümde, özgün modellerinizi, TWINS 'i ve grafiği özgün örnekten indirerek örneğinizi yeniden oluşturmaya hazırlanabilirsiniz. Bu makale, bu görev için [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) örneğini kullanır.
+Bu bölümde, özgün modellerinizi, TWINS 'i ve grafiği özgün örnekten indirerek örneğinizi yeniden oluşturmaya hazırlanabilirsiniz. Bu makalede, bu görev için [Azure Digital TWINS gezgin](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) örneği kullanılmaktadır.
 
 >[!NOTE]
 >Zaten modellerinizi veya örneğinizin grafiğini içeren dosyalarınız olabilir. Bu durumda, her şeyi yeniden indirmeniz gerekmez; yalnızca eksik olan veya bu dosyaları özgün olarak karşıya yüklediğiniz sırada değişmiş olabilecek şeyler. Örneğin, yeni verilerle güncelleştirilmiş TWINS olabilir.
 
-### <a name="limitations-of-adt-explorer"></a>ADT Explorer sınırlamaları
+### <a name="limitations-of-azure-digital-twins-explorer"></a>Azure Digital TWINS Explorer 'ın sınırlamaları
 
-[ADT Explorer örneği](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) , grafiğinizin görsel gösterimini destekleyen ve örneğiniz ile görsel etkileşim sağlayan bir istemci uygulaması örneğidir. Bu makalede, modellerinizi, TWINS 'leri ve grafiklerinizi indirmek ve daha sonra yeniden yüklemek için nasıl kullanılacağı gösterilmektedir.
+[Azure Digital TWINS Explorer örneği](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) , grafiğinizin görsel gösterimini destekleyen ve örneğiniz ile görsel etkileşim sağlayan bir istemci uygulaması örneğidir. Bu makalede, modellerinizi, TWINS 'leri ve grafiklerinizi indirmek ve daha sonra yeniden yüklemek için nasıl kullanılacağı gösterilmektedir.
 
 Bu örnek, tüm bir araç değildir. Yük testi değil, büyük boyuttaki grafikleri işlemek için derlenmedi. Sonuç olarak, aşağıdaki hazır olmayan örnek sınırlamaları göz önünde bulundurun:
 
@@ -77,27 +77,27 @@ Bu örnek, tüm bir araç değildir. Yük testi değil, büyük boyuttaki grafik
 * [Azure dijital TWINS CLı komutları](how-to-use-cli.md)
 * [Azure dijital TWINS API 'Leri ve SDK 'ları](how-to-use-apis-sdks.md)
 
-### <a name="set-up-the-adt-explorer-application"></a>ADT gezgin uygulamasını ayarlama
+### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Azure Digital TWINS gezgin uygulamasını ayarlama
 
-ADT Gezgini ile devam etmek için, önce örnek uygulama kodunu indirin ve makinenizde çalışacak şekilde ayarlayın.
+Azure dijital TWINS Gezgini ile devam etmek için, önce örnek uygulama kodunu indirin ve makinenizde çalışacak şekilde ayarlayın.
 
-Örneği almak için bkz. [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Bu örnek kodun bir. zip dosyasını **Azure_Digital_Twins__ADT__explorer.zip** olarak makinenize ındırmek Için **ZIP indir** düğmesini seçin. Dosyayı sıkıştırmayı açın.
+Örneği almak için bkz. [Azure Digital TWINS Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Bu örnek kodun bir. zip dosyasını **Azure_Digital_Twins__ADT__explorer.zip** olarak makinenize ındırmek Için **ZIP indir** düğmesini seçin. Dosyanın sıkıştırmasını açın.
 
-Sonra, ADT Explorer için izinleri ayarlayın ve yapılandırın. Azure dijital TWINS hızlı başlangıç konusunun [Azure dijital TWINS ve ADT Gezginini ayarlama](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) bölümündeki yönergeleri izleyin. Bu bölümde aşağıdaki adımlarda izlenecek yol gösterilmektedir:
+Sonra, Azure Digital TWINS Explorer için izinleri ayarlayın ve yapılandırın. Azure dijital TWINS hızlı başlangıç konusunun [Azure dijital TWINS ve Azure Digital TWINS Explorer 'ı ayarlama](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) bölümündeki yönergeleri izleyin. Bu bölümde aşağıdaki adımlarda izlenecek yol gösterilmektedir:
 
 1. Bir Azure dijital TWINS örneği ayarlayın. Zaten bir örneğiniz olduğundan, bu bölümü atlayabilirsiniz.
 1. Örneğinize erişim sağlamak için yerel Azure kimlik bilgilerini ayarlayın.
-1. ADT Gezginini çalıştırın ve örneğinizi örneğine bağlanacak şekilde yapılandırın. Taşıdığınız orijinal Azure dijital TWINS örneğinizin *ana bilgisayar adını* kullanacaksınız.
+1. Azure dijital TWINS Gezginini çalıştırın ve örneğinizi örneğine bağlanacak şekilde yapılandırın. Taşıdığınız orijinal Azure dijital TWINS örneğinizin *ana bilgisayar adını* kullanacaksınız.
 
-Şimdi makinenizde bir tarayıcıda çalışan ADT Gezgini örnek uygulamasına sahip olmanız gerekir. Örnek, özgün Azure dijital TWINS örneğinize bağlanmalıdır.
+Şimdi, makinenizde bir tarayıcıda çalışan Azure Digital TWINS gezgin örnek uygulamasına sahip olmanız gerekir. Örnek, özgün Azure dijital TWINS örneğinize bağlanmalıdır.
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz ekran verisi yok." lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulamaya Azure dijital TWINS Gezgini adı verilir ve sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular bulunur. Henüz ekran verisi yok." lightbox="media/how-to-move-regions/explorer-blank.png":::
 
 Bağlantıyı doğrulamak için, **Graph Explorer** kutusundaki grafikteki tüm TWINS ve ilişkileri görüntüleyen varsayılan sorguyu çalıştırmak üzere **Sorguyu Çalıştır** düğmesini seçin.
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Pencerenin sağ üst köşesinde bir düğme okuma Çalıştır sorgusu vurgulanır." lightbox="media/how-to-move-regions/run-query.png":::
 
-Bu öğeleri hedef bölgede yeni örneğinize yeniden yüklemek için bu makalenin ilerleyen kısımlarında yer alan ADT Gezginini çalışır durumda bırakabilirsiniz.
+Bu öğeleri hedef bölgede yeni örneğinize yeniden yüklemek için bu makalenin ilerleyen kısımlarında yer alan Azure dijital TWINS Gezginini çalışır durumda bırakabilirsiniz.
 
 ### <a name="download-models-twins-and-graph"></a>Model, TWINS ve Graf 'yi indirin
 
@@ -131,21 +131,21 @@ Bu adım tamamlandıktan sonra, verilerinizi verilerle ayarlamaya devam etmek i�
 
 Ardından, yeni örneği, özgün kopyanın bir kopyası olacak şekilde ayarlayacaksınız.
 
-#### <a name="upload-the-original-models-twins-and-graph-by-using-adt-explorer"></a>ADT gezginini kullanarak özgün modelleri, TWINS 'leri ve grafiği karşıya yükleme
+#### <a name="upload-the-original-models-twins-and-graph-by-using-azure-digital-twins-explorer"></a>Azure dijital TWINS gezginini kullanarak özgün modelleri, TWINS 'leri ve grafiği karşıya yükleme
 
 Bu bölümde, modellerinizi, TWINS 'i ve grafiği yeni örneğe yeniden yükleyebilirsiniz. Özgün Örneğinizde herhangi bir model, TWINS veya grafik yoksa veya yeni örneğe taşımak istemiyorsanız, bir [sonraki bölüme](#re-create-endpoints-and-routes)atlayabilirsiniz.
 
-Aksi takdirde, ADT Gezginini çalıştıran tarayıcı penceresine dönün ve bu adımları izleyin.
+Aksi takdirde, Azure Digital TWINS Explorer çalıştıran tarayıcı penceresine dönün ve aşağıdaki adımları izleyin.
 
 ##### <a name="connect-to-the-new-instance"></a>Yeni örneğe Bağlan
 
-Şu anda ADT Gezgini özgün Azure dijital TWINS örneğinizle bağlantılı. Pencerenin sağ üst köşesindeki **oturum aç** düğmesini seçerek bağlantıyı yeni örneğinizi işaret etmek üzere değiştirin.
+Şu anda Azure dijital TWINS Gezgini, özgün Azure dijital TWINS örneğinizi bağlamış. Pencerenin sağ üst köşesindeki **oturum aç** düğmesini seçerek bağlantıyı yeni örneğinizi işaret etmek üzere değiştirin.
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Pencerenin sağ üst köşesinde bulunan oturum aç simgesini vurgulayan ADT Explorer. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Pencerenin sağ üst köşesinde bulunan oturum aç simgesini vurgulayan Azure dijital TWINS Gezgini. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/how-to-move-regions/sign-in.png":::
 
 **ADT URL 'sini** yeni örneğinizi yansıtacak şekilde değiştirin. Bu değeri *https://{yeni örnek ana bilgisayar adı}* olarak okunacak şekilde değiştirin.
 
-**Bağlan** ’ı seçin. Azure kimlik bilgilerinizle yeniden oturum açmanız veya örneğiniz için bu uygulamaya izin vermeniz istenebilir.
+**Bağlan**’ı seçin. Azure kimlik bilgilerinizle yeniden oturum açmanız veya örneğiniz için bu uygulamaya izin vermeniz istenebilir.
 
 ##### <a name="upload-models-twins-and-graph"></a>Model, TWINS ve Graf yükleme
 
@@ -155,9 +155,9 @@ Modellerinizi, TWINS 'i ve Graf 'yi karşıya yüklemek için grafik **görünü
 
 :::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/how-to-move-regions/import-graph.png":::
 
-Dosya Seçicisi kutusunda, indirdiğiniz grafiğinize gidin. Graph **. JSON** dosyasını seçin ve **Aç** ' ı seçin.
+Dosya Seçicisi kutusunda, indirdiğiniz grafiğinize gidin. Graph **. JSON** dosyasını seçin ve **Aç**' ı seçin.
 
-Birkaç saniye sonra ADT Explorer, yüklenecek Grafiğin önizlemesini gösteren bir **Içeri aktarma** görünümü açar.
+Birkaç saniye sonra Azure Digital TWINS Explorer, yüklenecek Grafiğin önizlemesini gösteren bir **Içeri aktarma** görünümü açar.
 
 Grafik karşıya yüklemeyi onaylamak için **GRAFIK görünümü** kutusunun sağ üst köşesindeki **Kaydet** simgesini seçin.
 
@@ -169,7 +169,7 @@ Grafik karşıya yüklemeyi onaylamak için **GRAFIK görünümü** kutusunun sa
     :::column-end:::
 :::row-end:::
 
-ADT Explorer artık modellerinizi ve Graf (TWINS ve ilişkiler dahil) yeni Azure dijital TWINS örneğinizi karşıya yükler. Kaç tane model, TWINS ve ilişki yüklendiğini gösteren bir başarı iletisi görmeniz gerekir.
+Azure dijital TWINS Gezgini artık modellerinizi ve Graf (TWINS ve ilişkiler dahil) yeni Azure dijital TWINS örneğinizi karşıya yükler. Kaç tane model, TWINS ve ilişki yüklendiğini gösteren bir başarı iletisi görmeniz gerekir.
 
 :::row:::
     :::column:::
@@ -187,7 +187,7 @@ Her şeyin başarıyla karşıya yüklendiğini doğrulamak için Graph **Explor
 
 Grafınızı **GRAFIK Gezgini** kutusunda görünen tüm TWINS ve ilişkilerle görmeniz gerekir. **Model görünümü** kutusunda modellerinizi de görmeniz gerekir.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Model görünümü kutusunda vurgulanan iki modeli gösteren ADT Gezgini görünümü ve Graf Explorer kutusunda vurgulanmış bir grafik." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Model görünümü kutusunda vurgulanan iki modeli gösteren Azure dijital TWINS Gezgini görünümü ve grafik Gezgini kutusunda vurgulanmış bir grafik." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Bu görünümler, modellerinizin, TWINS 'in ve grafiğinin hedef bölgedeki yeni örneğe yeniden yüklendiğini onaylayın.
 
@@ -228,7 +228,7 @@ Yeni örneğinizin doğru şekilde ayarlandığını doğrulamak için aşağıd
 
 * [Azure portalı](https://portal.azure.com). Portal, yeni örneğinizin var olduğunu ve doğru hedef bölgede olduğunu doğrulamak için uygundur. Ayrıca, uç noktaların ve yolların ve diğer Azure hizmetlerinin bağlantılarının doğrulanması da iyi bir uygulamadır.
 * [Azure dijital TWINS CLI komutları](how-to-use-cli.md). Bu komutlar, yeni örneğinizin var olduğunu ve doğru hedef bölgede olduğunu doğrulamak için kullanışlıdır. Örnek verileri doğrulamak için de kullanılabilir.
-* [ADT Gezgini](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). ADT Explorer, modeller, TWINS ve grafikler gibi örnek verileri doğrulamak için uygundur.
+* [Azure dijital TWINS Gezgini](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Azure dijital TWINS Gezgini, modeller, TWINS ve grafikler gibi örnek verileri doğrulamak için uygundur.
 * [Azure dijital TWINS API 'leri ve SDK](how-to-use-apis-sdks.md)'ları. Bu kaynaklar modeller, TWINS ve grafikler gibi örnek verileri doğrulamak için uygundur. Bunlar, uç noktaların ve yolların doğrulanması için de uygundur.
 
 Yeni örnekle doğru çalıştıklarından emin olmanıza yardımcı olması için, özgün örneğinizle çalıştırdığınız özel uygulamaları veya uçtan uca akışları çalıştırmayı da deneyebilirsiniz.

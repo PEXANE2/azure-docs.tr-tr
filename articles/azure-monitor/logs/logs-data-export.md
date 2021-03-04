@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 description: Log Analytics veri dışa aktarma, seçili tabloların verilerini Log Analytics çalışma alanınızdan Azure depolama hesabına veya Azure Event Hubs toplandığından sürekli olarak dışarı aktaralmanıza olanak sağlar.
-ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713601"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048820"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -36,9 +35,9 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 
 - Yapılandırma, şu anda CLı veya REST istekleri kullanılarak gerçekleştirilebilir. Azure portal veya PowerShell henüz desteklenmiyor.
 - ```--export-all-tables```CLI ve REST seçenekleri desteklenmez ve kaldırılacak. Dışarı aktarma kurallarında Tablo listesini açıkça sağlamanız gerekir.
-- Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. 
+- Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. Örneğin, özel günlük tabloları Şu anda desteklenmiyor.
 - Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur ancak tablo desteklenene kadar bu tablo için hiçbir veri aktarılmaz. 
-- Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace``` .
+- Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa hata vererek başarısız olur ```Table <tableName> does not exist in the workspace``` .
 - Log Analytics çalışma alanınız aşağıdakiler dışında herhangi bir bölgede olabilir:
   - Azure Kamu bölgeleri
   - Batı Japonya
@@ -76,7 +75,7 @@ Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowPro
 Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.
 
 > [!IMPORTANT]
-> [Ad alanı başına desteklenen Olay Hub 'ları sayısı 10 ' dur](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). 10 ' dan fazla tablo dışa aktardığınızda, tüm tablolarınızı bu olay hub 'ına aktarmak için kendi olay hub 'ınızın adını sağlayın. 
+> [Ad alanı başına desteklenen Olay Hub 'ları sayısı 10 ' dur](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). 10 ' dan fazla tablo dışa aktardığınızda, tüm tablolarınızı bu olay hub 'ına aktarmak için kendi olay hub 'ınızın adını sağlayın. 
 
 Dikkat edilmesi gerekenler:
 1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.

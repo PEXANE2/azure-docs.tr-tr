@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895028"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051370"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -101,12 +101,12 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | tür | KeyVaultForLinux | string |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | Linux üzerinde yok sayılır | string |
 | Linkonyenilemeye | yanlış | boolean |
@@ -235,7 +235,7 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
         az vmss extension set -n "KeyVaultForLinux" `
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
-        --vm-name "<vmName>" `
+        --vmss-name "<vmssName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
@@ -243,7 +243,7 @@ Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
   - Dağıtım sırasında var olmalıdır 
   - Key Vault erişim Ilkesi, yönetilen bir kimlik kullanılarak VM/VMSS kimliği için ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
 
-### <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 * Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
   Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
@@ -273,7 +273,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 Sembolik bağlantılar veya Symbağlantılar temelde gelişmiş kısayollardır. Klasörü izlemeyi önlemek ve en son sertifikayı otomatik olarak almak için bu oluşturmaksızın 'i kullanarak `([VaultName].[CertificateName])` Linux üzerinde sertifikanın en son sürümünü edinebilirsiniz.
 
-### <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 * Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
   Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.
