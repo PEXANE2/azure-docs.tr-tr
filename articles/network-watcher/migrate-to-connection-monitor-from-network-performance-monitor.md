@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698697"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038722"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
@@ -41,7 +41,7 @@ Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Aboneliğinizde ve Log Analytics çalışma alanının bölgesinde ağ izleyicisinin etkinleştirildiğinden emin olun. 
-* Bu durumda, Log Analytics çalışma alanından farklı bir bölgeye/aboneliğe ait olan Azure VM, bu abonelik ve bölge için ağ izleyicisinin etkinleştirildiğinden emin olun.   
+* Azure VM 'nin, Log Analytics çalışma alanı bir uç nokta olarak kullanıldığı farklı bir bölgeye/aboneliğe ait olması durumunda bu abonelik ve bölge için ağ Izleyicisi 'nin etkinleştirildiğinden emin olun.   
 * Log Analytics aracıları yüklü Azure sanal makineleri, ağ Izleyicisi uzantısıyla etkinleştirilmelidir.
 
 ## <a name="migrate-the-tests"></a>Testleri geçirme

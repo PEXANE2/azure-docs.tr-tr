@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861998"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040201"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>LUSıS için Docker Kapsayıcıları yükleyip çalıştırın
 
@@ -281,7 +281,7 @@ Sorgu parametreleri, sorgu yanıtında nasıl ve neyin döndürüleceğini yapı
 |`staging`|boolean|True olarak ayarlanırsa, hazırlama ortamı sonuçlarından sorgu döndürür. |
 |`log`|boolean|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer doğru değeridir.|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>LUSıS uygulamasını sorgulama
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-_ *Hazırlama** ortamına sorgu yapmak için, `production` rotada şunu ile değiştirin `staging` :
+**Hazırlama** ortamına sorgu yapmak için, `production` rotada şunu ile değiştirin `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 Sürüm adı en fazla 10 karakterden oluşur ve yalnızca bir URL 'de izin verilen karakterleri içerir.
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Etkin öğrenme için uç nokta günlüklerini içeri aktarma
 
@@ -346,7 +346,7 @@ Aşağıdaki konum kapsayıcının günlük dosyaları için iç içe dizin yap�
 /output/luis/{INSTANCE_ID}/
 ```
 
-LUU portalından, uygulamanızı seçin ve ardından _ *uç nokta günlüklerini al*' ı seçerek bu günlükleri karşıya yükleyin.
+LUU portalından, uygulamanızı seçin ve ardından bu günlükleri karşıya yüklemek için **uç nokta günlüklerini Içeri aktar** ' ı seçin.
 
 ![Etkin öğrenme için kapsayıcının günlük dosyalarını içeri aktar](./media/luis-container-how-to/upload-endpoint-log-files.png)
 

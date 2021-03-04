@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, özellikler, donanım, DK, yetenekler, derinlik, renk, RGB, IMU, dizi, derinlik, çoklu, eşitleme
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592288"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039964"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Birden çok Azure Kinect DK cihazını eşitler
 
@@ -36,6 +36,9 @@ Aşağıdakiler de dahil olmak üzere birden çok Azure Kinect DK aygıtı kulla
 ## <a name="plan-your-multi-device-configuration"></a>Çoklu cihaz yapılandırmanızı planlayın
 
 Başlamadan önce [Azure Kinect dk donanım belirtimlerini](hardware-specification.md) ve [Azure Kinect dk derinlik kamerasını](depth-camera.md)gözden geçirdiğinizden emin olun.
+
+> [!NOTE]  
+> Dış plastik kapağı kaldırarak eşitleme ve eşitleme jakları kullanıma sunun.
 
 ### <a name="select-a-device-configuration"></a>Bir cihaz yapılandırması seçin
 
@@ -63,6 +66,9 @@ Tetikleyici kaynağı, 3,5-mm ses kablosu kullanarak bağlantı noktasında ana 
 ![Dış tetikleyici sinyali için kablo yapılandırması](./media/resources/camera-trigger-signal.jpg)
 
 Dış ekipmanla çalışma hakkında daha fazla bilgi için bkz. [dış eşitlenmiş cihazlarla Azure Kinect Kaydedicisini kullanma](record-external-synchronized-units.md)
+
+> [!NOTE]  
+> Sync, RGB kameranın VSync. Tüm cihazların zaman damgaları sıfıra ayarlanır ve sayılır. Microsoft, eşitleme Pulse en küçük ve en büyük genişliğini nitelememiş ve bir Azure Kinect DK 'den eşitleme tarafından oluşturulan Pulse bir izleme işlemi yapmanızı öneririz.
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>Kamera ayarlarınızı ve yazılım yapılandırmanızı planlayın
 

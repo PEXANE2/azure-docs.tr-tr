@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693325"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039334"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Not defterlerini Azure Cosmos DB Not defteri galerisine yayımlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB yerleşik jupi Not defterleri, Azure portal Azure Cosmos DB hesaplarınızla doğrudan tümleşiktir. Bu not defterlerini kullanarak, Azure portal verilerinizi çözümleyebilir ve görselleştirebilirsiniz. Azure Cosmos DB için yerleşik Not defterleri Şu anda [29 bölgede](#supported-regions)kullanılabilir. Not defterlerini kullanmak için [Yeni bir Cosmos hesabı oluşturun](#create-a-new-cosmos-account) veya bu bölgelerden birindeki [mevcut bir hesapta not defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) .
+Azure Cosmos DB yerleşik jupi Not defterleri, Azure portal Azure Cosmos DB hesaplarınızla doğrudan tümleşiktir. Bu not defterlerini kullanarak, Azure portal verilerinizi çözümleyebilir ve görselleştirebilirsiniz. Azure Cosmos DB için yerleşik Not defterleri Şu anda [birçok bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)kullanılabilir. Not defterlerini kullanmak için [Yeni bir Cosmos hesabı oluşturun](create-cosmosdb-resources-portal.md) veya bu bölgelerden birindeki [mevcut bir hesapta not defterlerini etkinleştirin](enable-notebooks.md) .
 
 Azure portal Not defteri ortamında Azure Cosmos DB ekibi tarafından yayımlanan bazı örnekler vardır. Ayrıca, kendi not defterlerinizi yayımlayabileceğiniz ve paylaşabileceğiniz genel bir Galerisi de vardır. Bir not defteri galeriye yayımlandıktan sonra, tüm Azure Cosmos DB kullanıcıların görüntülemesi ve kullanması için kullanılabilir. Bu makalede, genel galerideki not defterlerini kullanmayı ve not defterinizi galeride yayımlamayı öğreneceksiniz.
 
@@ -53,7 +53,7 @@ Bir not defteri yayımlamak için aşağıdaki adımları kullanın:
 
    **Galeriye Yayımla** seçeneğini de bulabilirsiniz **.** Not defteri adının yanındaki düğme:
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Galeriye yayımlanacak bir not defteri seçin.":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Galeriye yayımlanacak bir not defteri seçmek için başka bir yaklaşım.":::
 
 1. **Galeriye yayınla** formunu aşağıdaki ayrıntılarla doldur:
 
@@ -61,11 +61,10 @@ Bir not defteri yayımlamak için aşağıdaki adımları kullanın:
    * **Açıklama:**  Not defterinizin ne yaptığını kısa bir açıklama.
    * **Etiketler:** Etiketler isteğe bağlıdır ve bir anahtar sözcük tarafından arandığı zaman sonuçlara filtre uygulamak için kullanılır.
    * **Kapak resmi:** Not defteri yayımlandığında kapak sayfasında kullanılan bir görüntü. Aşağıdaki seçeneklerden birini belirleyebilirsiniz:
-
-     * **Özel görüntü** -bilgisayarınızdan bir resim yükleyebilirsiniz. En boy oranına sahip bir görüntü dosyası seçin 256 x144.
-     * **URL** -görüntünün bulunduğu genel olarak ERIŞILEBILEN bir URL sağlar.
-     * **Ekran görüntüsü al** -açık not defterinizin bir ekran görüntüsü otomatik olarak alınır ve önizlemeye yüklenir.
-     * Görüntü çıkışı olan ilk hücrenin **ilk görüntüleme çıktısını kullan** . Yalnızca markaşağı/metin görüntüleyen hücreler bir görüntüleme çıktısı olarak sayılmaz.
+   * **Özel görüntü** -bilgisayarınızdan bir resim yükleyebilirsiniz. En boy oranına sahip bir görüntü dosyası seçin 256 x144.
+   * **URL** -görüntünün bulunduğu genel olarak ERIŞILEBILEN bir URL sağlar.
+   * **Ekran görüntüsü al** -açık not defterinizin bir ekran görüntüsü otomatik olarak alınır ve önizlemeye yüklenir.
+   * Görüntü çıkışı olan ilk hücrenin **ilk görüntüleme çıktısını kullan** . Yalnızca markaşağı/metin görüntüleyen hücreler bir görüntüleme çıktısı olarak sayılmaz.
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="Galeriye Yayımla formunu doldurun.":::
 

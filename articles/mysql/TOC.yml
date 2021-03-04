@@ -100,7 +100,7 @@
             - name: Azure portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -123,7 +123,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -266,7 +266,7 @@
             - name: Azure portal
               href: howto-create-manage-server-portal.md
               displayName: 'manage, reset password, scale'
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: how-to-manage-single-server-cli.md
               displayName: 'manage, reset password, scale'
         - name: Sunucuyu Başlatma/Durdurma
@@ -413,7 +413,7 @@
         - name: Esnek Sunucu nedir?
           href: flexible-server/overview.md
         - name: Desteklenen sürümler
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: İşlem ve depolama
           href: flexible-server/concepts-compute-storage.md
     - name: Hızlı Başlangıçlar
@@ -447,7 +447,7 @@
             - name: Azure portal
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
         - name: Veritabanları ve kullanıcılar oluşturma
@@ -475,7 +475,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
         - name: Azure portal kullanarak sunucuyu Durdur/Başlat
           href: flexible-server/how-to-stop-start-server-portal.md
@@ -564,7 +564,7 @@
       displayName: 'SUPER privilege, DBA role, Access is denied'
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql

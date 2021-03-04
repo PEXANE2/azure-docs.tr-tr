@@ -1,17 +1,16 @@
 ---
 title: Azure Log Analytics 'de depolanan kişisel veriler için rehberlik | Microsoft Docs
 description: Bu makalede, Azure Log Analytics 'de depolanan kişisel verilerin ve bunları belirleme ve kaldırma yöntemlerinde nasıl yönetileceği açıklanır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 078ff7b48423f0e5327a6d22f3ddd6887dffeb43
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625256"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040269"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights'da depolanan kişisel veriler için kılavuz
 
@@ -105,7 +104,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="log-data"></a>Günlük verileri
 
 * [Temizleme sonrası](/rest/api/loganalytics/workspacepurge/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -117,7 +116,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="application-data"></a>Uygulama verileri
 
 * [Temizleme sonrası](/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

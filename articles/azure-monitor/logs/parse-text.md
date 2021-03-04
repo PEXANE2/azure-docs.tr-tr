@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici günlüklerinde metin verilerini ayrıştırma | Microsoft Docs
 description: Verilerin alındığı ve bir sorguda alındığı zaman, her biri için göreli avantajları karşılaştıran Azure Izleyici kayıtlarında günlük verilerinin ayrıştırılmasına yönelik farklı seçenekler açıklanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e2babd39dc9dadf06c9a3ca3292e021e0c1deaa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733950"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037192"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde metin verilerini ayrıştırma
 Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../agents/data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.

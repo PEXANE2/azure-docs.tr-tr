@@ -2,14 +2,13 @@
 title: Akıllı gruplar
 description: Akıllı gruplar, uyarı gürültüsünü azaltmanıza yardımcı olan uyarıların toplamalarına sahiptir
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8a164fe6e5fd5be58da969d9266329755705ea82
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621967"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037974"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
 
@@ -47,7 +46,7 @@ Akıllı Grup Ayrıntısı sayfası, bir akıllı grup seçtiğinizde görüntü
 
 Akıllı Grup Ayrıntısı sayfası aşağıdaki bölümleri içerir.
 
-| Section | Description |
+| Section | Açıklama |
 |:---|:---|
 | Uyarılar | Akıllı gruba dahil olan bireysel uyarıları listeler. Uyarı ayrıntısı sayfasını açmak için bir uyarı seçin. |
 | Geçmiş | Akıllı grup tarafından gerçekleştirilen her eylemi ve üzerinde yapılan değişiklikleri listeler. Bu, şu anda durum değişiklikleri ve uyarı üyeliği değişiklikleri ile sınırlıdır. |

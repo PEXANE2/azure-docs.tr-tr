@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c56e7318e24b802ae9ad605a0c9ae5f88397ec8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680635"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039793"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak rota sunucusu oluşturma ve yapılandırma
 
@@ -70,7 +70,7 @@ RouteServerSubnet KIMLIĞI aşağıdakine benzer:
 Bu komutla rota sunucusu oluşturun:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
 ```
 
 Konumun, sanal ağınızın konumuyla eşleşmesi gerekir. HostedSubnet, önceki bölümde edindiğiniz RouteServerSubnet KIMLIĞIDIR.
@@ -80,7 +80,7 @@ Konumun, sanal ağınızın konumuyla eşleşmesi gerekir. HostedSubnet, önceki
 Yol sunucusundan NVA 'ya BGP eşlemesi oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_asn” -RouteServerName "myRouteServer -ResourceGroupName ”RouteServerRG”
+Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 "nva_ip", NVA 'ya atanan sanal ağ IP 'dir. "nva_asn", NVA 'da yapılandırılan otonom sistem sayısıdır (ASN). ASN, 65515-65520 aralığından farklı bir 16 bit sayı olabilir. Bu ASNs aralığı Microsoft tarafından ayrılmıştır.
@@ -88,7 +88,7 @@ Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_a
 Artıklığı için farklı NVA veya aynı NVA örneği ile eşleme ayarlamak için şu komutu kullanın:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn “nva2_asn” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 ## <a name="complete-the-configuration-on-the-nva"></a>NVA üzerinde yapılandırmayı doldurun
@@ -96,7 +96,7 @@ Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn �
 NVA üzerindeki yapılandırmayı tamamlayıp BGP oturumlarını etkinleştirmek için, Azure Route sunucusunun IP ve ASN 'sine ihtiyacınız vardır. Şu komutu kullanarak bu bilgileri alabilirsiniz:
 
 ```azurepowershell-interactive 
-Get-AzRouteServer -RouterName “myRouteServer” -ResourceGroupName “RouteServerRG”
+Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 Çıktıda aşağıdaki bilgiler bulunur:
@@ -113,13 +113,13 @@ Aynı VNet 'te bir ExpressRoute Gateway ve bir Azure VPN ağ geçidiniz varsa ve
 1. Azure yol sunucusu ve ağ geçidi (ler) arasında yönlendirme değişimini etkinleştirmek için şu komutu kullanın:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” -AllowBranchToBranchTraffic 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
 ```
 
 2. Azure yol sunucusu ve ağ geçidi (ler) arasında yönlendirme değişimini devre dışı bırakmak için şu komutu kullanın:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -137,13 +137,13 @@ Azure Route sunucusuna artık ihtiyacınız yoksa, BGP eşlemesini kaldırmak i�
 1. Bu komutla Azure Route sunucusu ve NVA arasındaki BGP eşlemesini kaldırın:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Azure yol sunucusunu şu komutla kaldırın:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602050"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039147"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -91,7 +91,8 @@ Daha fazla bilgi için bkz. [Azure Rezervasyonları için self servis değişiml
 - **Ayrılmış Sanal Makine Örneği** - Bir rezervasyon yalnızca sanal makine ve bulut hizmetleri işlem maliyetlerini içerir. Ek yazılım, Windows, ağ veya depolama ücretlerini kapsamaz.
 - **Azure Depolama ayrılmış kapasitesi** - Bir rezervasyon, Blob depolama veya Azure Data Lake 2. Nesil depolama için standart depolama hesaplarının depolama kapasitesini kapsar. Rezervasyon, bant genişliğini veya işlem oranlarını kapsamaz.
 - **Azure Cosmos DB ayrılmış kapasitesi** - Rezervasyon yalnızca kaynaklarınız için sağlanan aktarım hızını kapsar. Depolama ve ağ ücretlerini kapsamaz.
-- **SQL Veritabanı ayrılmış sanal çekirdeği** - Hem SQL Yönetilen Örneğini hem de SQL Veritabanı Elastik Havuzunu/tek veritabanını kapsar. Rezervasyona yalnızca işlem maliyetleri dahildir. SQL lisansı ayrı faturalandırılır. 
+- **Azure Data Factory veri akışları** -bir ayırma, satın aldığınız çekirdek sayısı ve işlem türü için tümleştirme çalışma zamanı maliyetini içerir.
+- **SQL Veritabanı ayrılmış sanal çekirdeği** - Hem SQL Yönetilen Örneğini hem de SQL Veritabanı Elastik Havuzunu/tek veritabanını kapsar. Rezervasyona yalnızca işlem maliyetleri dahildir. SQL lisansı ayrı faturalandırılır.
 - **Azure Synapse Analytics** - Rezervasyon cDWU kullanımını kapsar. Azure Synapse Analytics’in kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
 - **Azure Databricks** - Rezervasyon yalnızca DBU kullanımını kapsar. İşlem, depolama ve ağ iletişimi gibi diğer ücretler ayrı olarak uygulanır.
 - **App Service taban fiyatı** - Rezervasyon, damga pulu kullanımını kapsar. Çalışanlara uygulanmaz, bu nedenle damga puluyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.

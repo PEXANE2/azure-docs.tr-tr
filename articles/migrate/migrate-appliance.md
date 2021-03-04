@@ -6,97 +6,95 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 08cd0e9d33dd88b9bdc418f3d1bbd382b2d80632
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986828"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038773"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
-Bu makale, Azure geçişi gereci için önkoşulları ve destek gereksinimlerini özetler. 
+Bu makale, Azure geçişi gereci için önkoşulları ve destek gereksinimlerini özetler.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
 Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 
-**Senaryo** | **Araç** | **Kullanıldığı yerler** 
+**Senaryo** | **Araç** | **Kullanıldığı yer**
 --- | --- | ---
-**VMware VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware VM’lerini bulma<br/><br/> Makine uygulamalarını ve bağımlılıklarını bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
-**VMware VM aracısız geçişi** | Azure geçişi: sunucu geçişi | VMware VM’lerini bulma <br/><br/> VMware VM 'lerini aracısız geçişle çoğaltın.
-**Hyper-V VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM’lerini bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
-**Fiziksel makine değerlendirmesi** |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucuları (veya fiziksel sunucu olarak kabul ettiğiniz VM 'Leri) bulun.<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
+**VMware ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware ortamınızda çalışan sunucuları bulma<br/><br/> Yüklü uygulamalar bulmayı, aracısız bağımlılık analizini ve SQL Server örnekleri ve veritabanlarını bulmayı gerçekleştirin.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**VMware ortamında çalışan sunucuların aracısız geçişi** | Azure geçişi: sunucu geçişi | VMware ortamınızda çalışan sunucuları bulun. <br/><br/> Herhangi bir aracı yüklemeden sunucuları çoğaltın.
+**Hyper-V ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V ortamınızda çalışan sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**Şirket içi fiziksel veya sanallaştırılmış sunucuların bulunması ve değerlendirmesi** |  Azure geçişi: Sunucu değerlendirmesi |  Şirket içi fiziksel veya sanallaştırılmış sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
 
 ## <a name="deployment-methods"></a>Dağıtım yöntemleri
 
 Gereç birkaç yöntem kullanılarak dağıtılabilir:
 
-- Gereç, VMware VM 'leri ve Hyper-V VM 'Leri (VMware için OVA şablonu veya Hyper-V için VHD) kullanılarak dağıtılabilir.
-- Bir şablon kullanmak istemiyorsanız, bir PowerShell betiği kullanarak VMware veya Hyper-V için gereci dağıtabilirsiniz.
-- Azure Kamu 'da gereci bir komut dosyası kullanarak dağıtmanız gerekir.
-- Fiziksel sunucular için, her zaman gereci bir komut dosyası kullanarak dağıtırsınız.
+- Gereç, VMware veya Hyper-V ortamında ([VMware Için ova şablonu](how-to-set-up-appliance-vmware.md) veya [Hyper-v için VHD](how-to-set-up-appliance-hyper-v.md)) çalışan sunucular için bir şablon kullanılarak dağıtılabilir.
+- Bir şablon kullanmak istemiyorsanız, bir [PowerShell yükleyici betiği](deploy-appliance-script.md)kullanarak VMware veya Hyper-V ortamı için gereci dağıtabilirsiniz.
+- Azure Kamu 'da, bir PowerShell yükleyici betiği kullanarak gereci dağıtmanız gerekir. [Burada](deploy-appliance-script-government.md)Dağıtım adımlarına bakın.
+- Şirket içinde veya başka bir bulutta bulunan fiziksel veya sanallaştırılmış sunucular için, her zaman gereci bir PowerShell yükleyici betiği kullanarak dağıtırsınız. [Burada](how-to-set-up-appliance-physical.md)Dağıtım adımlarına bakın.
 - İndirme bağlantıları aşağıdaki tablolarda bulunur.
 
 
-## <a name="appliance---vmware"></a>Gereç-VMware 
+## <a name="appliance---vmware"></a>Gereç-VMware
 
 Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlenmektedir.
 
+> [!Note]
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+
 **Gereksinim** | **VMware** 
 --- | ---
-**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
-**Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir:<br/><br/> - **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Toplayıcı Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).<br/>- **DRA Aracısı**: VM çoğaltmasını düzenleyin ve çoğaltılan makineler ile Azure arasındaki iletişimi koordine edin. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.<br/>- **Ağ geçidi**: çoğaltılan verileri Azure 'a gönderir. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.
-**Desteklenen Dağıtım** | OVA şablonunu kullanarak VMware VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak VMware VM veya fiziksel makine olarak dağıtın.
-**Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Bulma sınırları** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
-**OVA şablonu** | Portalından veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140333) indirin<br/><br/> İndirme boyutu 11,9 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
-**PowerShell betiği** | Bu [makaleye](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)başvurun.<br/><br/> 
-**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir VMware VM üzerinde çalıştırırsanız, gereksinimleri karşılayan bir VM 'yi ayırmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.
-**VMware gereksinimleri** | Gereci bir VMware VM 'si olarak dağıtırsanız, sürüm 5,5 veya sonraki bir sürümünü çalıştıran bir ESXi konağına dağıtılması gerekir.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
-**VDDK (aracısız geçiş)** | Gereci bir VMware sanal makinesi olarak dağıtırsanız ve aracısız bir geçiş çalıştırıyorsanız, VMware vSphere VDDK 'nin gereç sanal makinesine yüklenmesi gerekir.
-**Karma değeri-OVA** | OVA şablonu karma değerlerini [doğrulayın](tutorial-discover-vmware.md#verify-security) .
-**Karma değeri-PowerShell betiği** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
-
-
-
+**İzinler** | Gereç Yapılandırma yöneticisine yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
+**Gereç Hizmetleri** | Gereç aşağıdaki hizmetlere sahiptir:<br/><br/> - **Gereç Yapılandırma Yöneticisi**: Bu, sunucuların bulunmasını ve değerlendirmesini başlatmak üzere kaynak ayrıntıları ile yapılandırılabilecek bir Web uygulamasıdır.<br/> - **VMware bulma Aracısı**: Aracı, şirket içi değerlendirmeler olarak oluşturmak için kullanılabilecek sunucu yapılandırma meta verilerini toplar.<br/>- **VMware değerlendirme Aracısı**: Aracı, performans tabanlı değerlendirmeler oluşturmak için kullanılabilecek sunucu performansı meta verilerini toplar.<br/>- **Otomatik güncelleştirme hizmeti**: hizmet, Gereç üzerinde çalışan tüm aracıların güncel kalmasını sağlar. Her 24 saatte bir otomatik olarak çalışır.<br/>- **DRA Aracısı**: sunucu çoğaltmasını düzenleyin ve çoğaltılan sunucular ile Azure arasındaki iletişimi koordine edin. Yalnızca Azure 'a aracısız geçiş kullanılarak sunucular çoğaltılırken kullanılır.<br/>- **Ağ geçidi**: çoğaltılan verileri Azure 'a gönderir. Yalnızca Azure 'a aracısız geçiş kullanılarak sunucular çoğaltılırken kullanılır.<br/>- **SQL bulma ve değerlendirme Aracısı**: SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans meta verilerini Azure 'a gönderir.
+**Proje limitleri** |  Bir gereç yalnızca tek bir projeyle kaydedilebilir.<br/> Tek bir projede birden fazla kayıtlı gereç olabilir.
+**Bulma sınırları** | Bir gereç, vCenter Server çalıştıran en fazla 10.000 sunucuyu bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Desteklenen Dağıtım** | OVA şablonunu kullanarak vCenter Server çalıştıran yeni sunucu olarak dağıtın.<br/><br/> PowerShell yükleyici betiği kullanarak Windows Server 2016 çalıştıran var olan bir sunucuda dağıtın.
+**OVA şablonu** | Projeden veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140333) indirin<br/><br/> İndirme boyutu 11,9 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir.<br/>Değerlendirme süresi sona erene kadar yakınsa, OVA şablonunu kullanarak yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sunucusunun işletim sistemi lisansını etkinleştirmeniz önerilir.
+**OVA doğrulaması** | Karma değerleri denetleyerek projeden indirilen OVA şablonunu [doğrulayın](tutorial-discover-vmware.md#verify-security) .
+**PowerShell betiği** | PowerShell yükleyici betiği kullanarak bir gereci dağıtma hakkında bu [makaleye](./deploy-appliance-script.md#set-up-the-appliance-for-vmware) başvurun.<br/><br/> 
+**Donanım ve ağ gereksinimleri** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolama ve dış sanal anahtar ile sunucu üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci OVA şablonu kullanarak dağıtırsanız, donanım gereksinimlerini karşılayan bir sunucu oluşturmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci var olan bir sunucuda çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/>_(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_
+**VMware gereksinimleri** | Gereci vCenter Server bir sunucu olarak dağıtırsanız, 5,5, 6,0, 6,5 veya 6,7 çalıştıran bir vCenter Server ve sürüm 5,5 veya üzerini çalıştıran bir ESXi Konağı dağıtılmalıdır.<br/><br/> 
+**VDDK (aracısız geçiş)** | Sunuculardan aracısız geçiş için gerecden yararlanmak üzere, VMware vSphere VDDK, Gereç sunucusunda yüklü olmalıdır.
 
 ## <a name="appliance---hyper-v"></a>Gereç-Hyper-V
 
 **Gereksinim** | **Hyper-V** 
 --- | ---
-**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
-**Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir:<br/><br/>- **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Toplayıcı Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
-**Desteklenen Dağıtım** | Bir VHD şablonu kullanarak Hyper-V VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak Hyper-V VM veya fiziksel makine olarak dağıtın.
-**Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Bulma sınırları** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
-**VHD şablonu** | VHD dahil olmak üzere daraltılmış klasör. Portalından veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140422)indirin.<br/><br/> İndirme boyutu 8,91 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
-**PowerShell betiği** | Bu [makaleye](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)başvurun.<br/><br/> 
-**Yazılım/donanım** _   |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, donanım gereksinimlerini ayırmak için Hyper-V konağında yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
-_ *Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır. 
-**Karma değeri-VHD** | [Doğrula](tutorial-discover-hyper-v.md#verify-security) VHD şablonu karma değerleri.
-**Karma değeri-PowerShell betiği** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
-
+**İzinler** | Gereç Yapılandırma yöneticisine yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
+**Gereç Hizmetleri** | Gereç aşağıdaki hizmetlere sahiptir:<br/><br/> - **Gereç Yapılandırma Yöneticisi**: Bu, sunucuların bulunmasını ve değerlendirmesini başlatmak üzere kaynak ayrıntıları ile yapılandırılabilecek bir Web uygulamasıdır.<br/> - **Keşif Aracısı**: Aracı, şirket içi değerlendirmeler olarak oluşturmak için kullanılabilecek sunucu yapılandırma meta verilerini toplar.<br/>- **Değerlendirme Aracısı**: Aracı, performans tabanlı değerlendirmeler oluşturmak için kullanılabilecek sunucu performansı meta verilerini toplar.<br/>- **Otomatik güncelleştirme hizmeti**: hizmet, Gereç üzerinde çalışan tüm aracıların güncel kalmasını sağlar. Her 24 saatte bir otomatik olarak çalışır.
+**Proje limitleri** |  Bir gereç yalnızca tek bir projeyle kaydedilebilir.<br/> Tek bir projede birden fazla kayıtlı gereç olabilir.
+**Bulma sınırları** | Bir gereç, Hyper-V ortamında çalışan en fazla 5000 sunucuyu bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Desteklenen Dağıtım** | Bir VHD şablonu kullanarak bir Hyper-V konağında çalışan sunucu olarak dağıtın.<br/><br/> PowerShell yükleyici betiği kullanarak Windows Server 2016 çalıştıran var olan bir sunucuda dağıtın.
+**VHD şablonu** | Bir VHD içeren ZIP dosyası. Projeden veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140422)indirin.<br/><br/> İndirme boyutu 8,91 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir.<br/> Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sunucusunun işletim sistemi lisansını etkinleştirmenizi öneririz.
+**VHD doğrulaması** | Karma değerleri denetleyerek projeden indirilen VHD şablonunu [doğrulayın](tutorial-discover-hyper-v.md#verify-security) .
+**PowerShell betiği** | PowerShell yükleyici betiği kullanarak bir gereci dağıtma hakkında bu [makaleye](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v) başvurun.<br/>
+**Donanım ve ağ gereksinimleri**  |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile sunucu üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V konağında çalışan bir sunucu olarak çalıştırırsanız, donanım gereksinimlerini karşılayan bir sunucu oluşturmak için konakta yeterli sayıda kaynak olması gerekir.<br/><br/> Gereci var olan bir sunucuda çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/>_(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_
+**Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır.
 
 ## <a name="appliance---physical"></a>Gereç-fiziksel
 
 **Gereksinim** | **Fiziksel** 
 --- | ---
-**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
-**Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir: <br/><br/> - **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Toplayıcı Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
-**Desteklenen Dağıtım** | PowerShell yükleme betiği kullanarak adanmış fiziksel makine veya VM olarak dağıtın. Betik, portaldan indirilebilir.
-**Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
+**İzinler** | Gereç Yapılandırma yöneticisine yerel olarak veya uzaktan erişmek için, Gereç sunucusunda yönetici ayrıcalıklarına sahip bir yerel veya etki alanı kullanıcı hesabına sahip olmanız gerekir.
+**Gereç Hizmetleri** | Gereç aşağıdaki hizmetlere sahiptir:<br/><br/> - **Gereç Yapılandırma Yöneticisi**: Bu, sunucuların bulunmasını ve değerlendirmesini başlatmak üzere kaynak ayrıntıları ile yapılandırılabilecek bir Web uygulamasıdır.<br/> - **Keşif Aracısı**: Aracı, şirket içi değerlendirmeler olarak oluşturmak için kullanılabilecek sunucu yapılandırma meta verilerini toplar.<br/>- **Değerlendirme Aracısı**: Aracı, performans tabanlı değerlendirmeler oluşturmak için kullanılabilecek sunucu performansı meta verilerini toplar.<br/>- **Otomatik güncelleştirme hizmeti**: hizmet, Gereç üzerinde çalışan tüm aracıların güncel kalmasını sağlar. Her 24 saatte bir otomatik olarak çalışır.
+**Proje limitleri** |  Bir gereç yalnızca tek bir projeyle kaydedilebilir.<br/> Tek bir projede birden fazla kayıtlı gereç olabilir.<br/> 
 **Bulma sınırları** | Bir gereç, en fazla 1000 fiziksel sunucu bulabilir.
-**PowerShell betiği** | Betiği (AzureMigrateInstaller.ps1) portaldan veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140334)bir daraltılmış klasöre indirin. [Daha fazla bilgi edinin](tutorial-discover-physical.md).<br/><br/> İndirme boyutu 85,8 MB 'tır.
-**Yazılım/donanım** |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU ve yaklaşık 80 GB disk depolaması ile makinede çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/>_(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_
-**Karma değeri** | PowerShell betiği karma değerlerini [doğrulayın](tutorial-discover-physical.md#verify-security) .
+**Desteklenen Dağıtım** | PowerShell yükleyici betiği kullanarak Windows Server 2016 çalıştıran var olan bir sunucuda dağıtın.
+**PowerShell betiği** | Betiği (AzureMigrateInstaller.ps1) projedeki bir ZIP dosyasına veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140334)indirin. [Daha fazla bilgi edinin](tutorial-discover-physical.md).<br/><br/> İndirme boyutu 85,8 MB 'tır.
+**Betik doğrulama** | Karma değerleri denetleyerek projeden indirilen PowerShell yükleyici betiğini [doğrulayın](tutorial-discover-physical.md#verify-security) .
+**Donanım ve ağ gereksinimleri** |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU ile sunucuda çalışmalıdır ve bu da 80 GB disk depolama alanı.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci var olan bir sunucuda çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/>_(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_
+
 
 ## <a name="url-access"></a>URL erişimi
 
 Azure geçişi gereci internet bağlantısı gerektirir.
 
 - Gereci dağıtırken, Azure geçişi gerekli URL 'lere bir bağlantı denetimi yapar.
-- Listedeki tüm URL 'Lere erişim izni vermeniz gerekir. Yalnızca değerlendirme yapıyorsanız, yalnızca VMware aracısız geçişi için gerekli olarak işaretlenen URL 'Leri atlayabilirsiniz.
+- Listedeki tüm URL 'Lere erişim izni vermeniz gerekir. Yalnızca değerlendirme yapıyorsanız, VMware aracısız geçişi için gerekli olarak işaretlenen URL 'Leri atlayabilirsiniz.
 -  İnternet 'e bağlanmak için URL tabanlı bir ara sunucu kullanıyorsanız, proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
 
 ### <a name="public-cloud-urls"></a>Genel bulut URL 'Leri
@@ -106,11 +104,11 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 *.portal.azure.com  | Azure portalına gidin.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
-management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
-*.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
-*.vault.azure.net | Azure Key Vault gizli dizileri yönetin. Note: çoğaltılacak makinelerin buna erişimi olduğundan emin olun.
-aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
-download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
+management.azure.com | Azure geçişi ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
+*.services.visualstudio.com | İç izleme için kullanılan gereç günlüklerini karşıya yükleyin.
+*.vault.azure.net | Azure Key Vault gizli dizileri yönetin.<br/> Note: çoğaltma sunucularının bu sunucuya erişimi olduğundan emin olun.
+aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver; alet Hizmetleri için en son güncelleştirmeleri indirmek ve yüklemek için kullanılır.
+download.microsoft.com/download | Microsoft İndirme Merkezi 'nden indirmelere izin ver.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
 *.hypervrecoverymanager.windowsazure.com | **VMware aracısız geçişi için kullanılır**<br/><br/> Azure geçişi hizmeti URL 'Lerine bağlanın.
@@ -124,35 +122,32 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 graph.windows.net | Azure aboneliğinizde oturum açın.
 login.microsoftonline.us  | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
 management.usgovcloudapi.net | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
-*.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
+*.services.visualstudio.com | İç izleme için kullanılan gereç günlüklerini karşıya yükleyin.
 *. vault.usgovcloudapi.net | Azure Key Vault gizli dizileri yönetin.
-aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
-download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
+aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver; alet Hizmetleri için en son güncelleştirmeleri indirmek ve yüklemek için kullanılır.
+download.microsoft.com/download | Microsoft İndirme Merkezi 'nden indirmelere izin ver.
 *. servicebus.usgovcloudapi.net  | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
 *. discoverysrv.windowsazure.us <br/> *. migration.windowsazure.us | Azure geçişi hizmeti URL 'Lerine bağlanın.
 *. hypervrecoverymanager.windowsazure.us | **VMware aracısız geçişi için kullanılır**<br/><br/> Azure geçişi hizmeti URL 'Lerine bağlanın.
 *. blob.core.usgovcloudapi.net  |  **VMware aracısız geçişi için kullanılır**<br/><br/>Geçiş için verileri depolamaya yükleyin.
-*. applicationinsights.us | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
-
-
-
+*. applicationinsights.us | İç izleme için kullanılan gereç günlüklerini karşıya yükleyin.
 
 
 ## <a name="collected-data---vmware"></a>Toplanan veriler-VMware
 
-Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
+Gereç yapılandırma meta verilerini, performans meta verilerini ve sunucu bağımlılıkları verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
 
 ### <a name="metadata"></a>Meta veri
 
-Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
+Azure geçişi gereci tarafından bulunan meta veriler, sunucuların Azure 'a geçiş için hazır olup olmadığını, doğru boyut sunucularını, planlar maliyetlerini ve uygulama bağımlılıklarını çözümlemeyi sağlamanıza yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
-Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
+Bu, gerecin topladığı ve Azure 'a gönderdiği sunucu meta verilerinin tam listesidir.
 
 **VERILERI** | **SAYAÇ**
 --- | --- 
-**Makine ayrıntıları** | 
-VM Kimliği | vm.Config. Instanceuuıd 
-VM adı | vm.Config. Ada
+**Sunucu ayrıntıları** | 
+Sunucu KIMLIĞI | vm.Config. Instanceuuıd 
+Sunucu adı | vm.Config. Ada
 vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
 VM açıklaması | vm.Summary.Config. Ek açıklama
 Lisans ürün adı | VM. Client. ServiceContent. about. LicenseProductName
@@ -210,13 +205,13 @@ NIC okuma üretilen işi (MB/saniye) | net. alınan. Ortalama | VM boyutu için 
 NIC yazma üretilen işi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesaplama
 
 
-### <a name="installed-apps-metadata"></a>Yüklü uygulamalar meta verileri
+### <a name="installed-applications-data"></a>Yüklü uygulamalar verileri
 
-Uygulama bulma, yüklü uygulamaları ve işletim sistemi verilerini toplar.
+Gereç, sunuculardaki yüklü uygulamalar, roller ve özellikler hakkındaki verileri toplar.
 
-#### <a name="windows-vm-apps-data"></a>Windows VM Apps verileri
+#### <a name="windows-server-application-data"></a>Windows Server uygulama verileri
 
-Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+Bu, uygulamanın VMware ortamınızda bulunan her bir Windows sunucusundan topladığı uygulama verileri.
 
 **Veriler** | **Kayıt Defteri Konumu** | **Key**
 --- | --- | ---
@@ -224,9 +219,9 @@ Uygulama Adı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <
 Sürüm  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
 Sağlayıcı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
-#### <a name="windows-vm-features-data"></a>Windows VM özellikleri verileri
+#### <a name="windows-server-features-data"></a>Windows Server özellikleri verileri
 
-Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı Özellikler verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+İşte, bu gereç, VMware ortamınızda bulunan her bir Windows sunucusundan toplanan özellikler verileri.
 
 **Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
@@ -234,9 +229,9 @@ Name  | Get-WindowsFeature  | Name
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
-#### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server meta verileri
+#### <a name="sql-server-metadata"></a>SQL Server meta veri
 
-Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çalıştıran VM 'lerden topladığı SQL Server meta verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+Bu, gerecin VMware ortamınızda bulunan her bir Windows sunucusundan topladığı SQL Server verileri aşağıda bulabilirsiniz.
 
 **Veriler**  | **Kayıt Defteri Konumu**  | **Key**
 --- | --- | ---
@@ -245,45 +240,118 @@ Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \s
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 
-#### <a name="windows-vm-operating-system-data"></a>Windows VM işletim sistemi verileri
+#### <a name="windows-server-operating-system-data"></a>Windows Server işletim sistemi verileri
 
-Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
+Bu, gerecin VMware ortamınızda bulunan her bir Windows sunucusundan topladığı işletim sistemi verileri.
 
-Veriler  | WMI sınıfı  | WMI sınıfı özelliği
+**Veriler**  | **WMI sınıfı**  | **WMI sınıfı özelliği**
 --- | --- | ---
 Name  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
-#### <a name="linux-vm-apps-data"></a>Linux VM Apps verileri
+#### <a name="linux-server-application-data"></a>Linux Server uygulama verileri
 
-Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. VM 'nin işletim sistemine bağlı olarak, bir veya daha fazla komut çalıştırılır. Bu veriler Azure 'a gönderilir.
+İşte, bu gereç, VMware ortamınızda bulunan her bir Linux sunucusundan toplanan uygulama verileri. Sunucunun işletim sistemine bağlı olarak, bir veya daha fazla komut çalıştırılır.
 
-Veriler  | Komut
+**Veriler**  | **Komutlar**
 --- | --- 
 Name | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
-#### <a name="linux-vm-operating-system-data"></a>Linux VM işletim sistemi verileri
+#### <a name="linux-server-operating-system-data"></a>Linux sunucusu işletim sistemi verileri
 
-Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
+Bu, gerecin VMware ortamınızda bulunan her bir Linux sunucusundan topladığı işletim sistemi verileri.
 
-**Veriler**  | **Komut** 
---- | --- | ---
+**Veriler**  | **Komutlar**
+--- | --- 
 Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
+### <a name="sql-server-instances-and-databases-data"></a>SQL Server örnekleri ve veritabanı verileri
 
-### <a name="app-dependencies-metadata"></a>Uygulama bağımlılıkları meta verileri
+Gereç SQL Server örneklerine ve veritabanlarına veri toplar.
+
+> [!Note]
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+
+#### <a name="sql-database-metadata"></a>SQL veritabanı meta verileri
+
+**Veritabanı meta verileri** | **Görünümler/SQL Server özellikleri**
+--- | ---
+Veritabanının benzersiz tanımlayıcısı | sys.databases
+Sunucu tanımlı veritabanı KIMLIĞI | sys.databases
+Veritabanının adı | sys.databases
+Veritabanının uyumluluk düzeyi | sys.databases
+Veritabanının harmanlama adı | sys.databases
+Veritabanının durumu | sys.databases
+Veritabanının boyutu (MB) | sys.master_files
+Veri dosyalarını içeren konumun sürücü harfi | SERVERPROPERTY ve Software\Microsoft\MSSQLServer\MSSQLServer
+Veritabanı dosyaları listesi | sys. databases, sys.master_files
+Hizmet Aracısı etkin değil veya çalışmıyor | sys.databases
+Veritabanı değişiklik verilerini yakalama için etkinleştirildi | sys.databases
+
+#### <a name="sql-server-metadata"></a>SQL Server meta veri
+
+**Sunucu meta verileri** | **Görünümler/SQL Server özellikleri**
+--- | ---
+Sunucu adı |SERVERPROPERTY 
+FQDN | Yüklü uygulamaların keşfinden türetilmiş bağlantı dizesi
+Yüklemesi KIMLIĞI | sys.dm_server_registry
+Sunucu sürümü | SERVERPROPERTY
+Sunucu sürümü | SERVERPROPERTY
+Sunucu ana bilgisayar platformu (Windows/Linux) | SERVERPROPERTY
+Sunucunun ürün düzeyi (RTM SP CTP) | SERVERPROPERTY 
+Varsayılan yedekleme yolu | SERVERPROPERTY
+Veri dosyalarının varsayılan yolu | SERVERPROPERTY ve Software\Microsoft\MSSQLServer\MSSQLServer
+Günlük dosyalarının varsayılan yolu | SERVERPROPERTY ve Software\Microsoft\MSSQLServer\MSSQLServer
+Hayır. sunucu üzerindeki çekirdekler | sys.dm_os_schedulers, sys.dm_os_sys_info
+Sunucu harmanlama adı | SERVERPROPERTY
+Hayır. GÖRÜNÜR ÇEVRIMIÇI durumu olan sunucudaki çekirdekler | sys.dm_os_schedulers
+Benzersiz sunucu KIMLIĞI | sys.dm_server_registry
+HA etkin veya değil | SERVERPROPERTY
+Arabellek havuzu uzantısı etkin değil veya | sys.dm_os_buffer_pool_extension_configuration
+Yük devretme kümesi yapılandırıldı veya | SERVERPROPERTY
+Yalnızca Windows kimlik doğrulama modu kullanan sunucu | SERVERPROPERTY 
+Sunucu PolyBase 'i yüklüyor | SERVERPROPERTY 
+Hayır. sistemdeki mantıksal CPU 'Lar | sys.dm_server_registry, sys.dm_os_sys_info
+Bir fiziksel işlemci paketi tarafından sunulan mantıksal veya fiziksel çekirdek sayısı oranı | sys.dm_os_schedulers, sys.dm_os_sys_info
+Sistemdeki fiziksel CPU sayısı | sys.dm_os_schedulers, sys.dm_os_sys_info
+Son başlayan tarih ve saat sunucusu | sys.dm_server_registry
+En fazla sunucu belleği kullanımı (MB) | sys.dm_os_process_memory
+Toplam No. tüm veritabanları genelindeki kullanıcılar | sys. databases, sys. Logins
+Tüm kullanıcı veritabanlarının toplam boyutu | sys.databases
+Geçici veritabanı boyutu | sys.master_files, sys.configurışları sys.dm_os_sys_info
+Hayır. oturum açma işlemleri | sys. Logins
+Bağlı sunucuların listesi | sys. Servers
+Aracı işinin listesi | [msdb]. [dbo]. [sysjobs], [sys]. [syslogins], [msdb]. [dbo]. [syscategories]
+
+### <a name="performance-metadata"></a>Performans meta verileri
+
+**Performans** | **Görünümler/SQL Server özellikleri** | **Değerlendirme etkisi**
+--- | --- | ---
+SQL Server CPU kullanımı| sys.dm_os_ring_buffers| Önerilen SKU boyutu (CPU boyutu)
+SQL mantıksal CPU sayısı| sys.dm_os_sys_info| Önerilen SKU boyutu (CPU boyutu)
+Kullanılan SQL fiziksel belleği| sys.dm_os_process_memory| Kullanılmıyor
+SQL bellek kullanım yüzdesi| sys.dm_os_process_memory | Kullanılmıyor
+Veritabanı CPU kullanımı| sys.dm_exec_query_stats, sys.dm_exec_plan_attributes| Önerilen SKU boyutu (CPU boyutu)
+Kullanımdaki veritabanı belleği (arabellek havuzu)| sys.dm_os_buffer_descriptors| Önerilen SKU boyutu (bellek boyutu)
+Dosya okuma/yazma GÇ| sys.dm_io_virtual_file_stats, sys.master_files| Önerilen SKU boyutu (GÇ boyutu)
+Dosya okuma/yazma sayısı| sys.dm_io_virtual_file_stats, sys.master_files| Önerilen SKU boyutu (verimlilik boyutu)
+Dosya GÇ kabini okuma/yazma (MS)| sys.dm_io_virtual_file_stats, sys.master_files| Önerilen SKU boyutu (GÇ gecikme boyutu)
+Dosya boyutu| sys.master_files| Önerilen SKU boyutu (depolama boyutu)
+
+
+### <a name="application-dependency-data"></a>Uygulama bağımlılığı verileri
 
 Aracısız bağımlılık analizi, bağlantı ve işlem verilerini toplar.
 
-#### <a name="windows-vm-app-dependencies-data"></a>Windows VM uygulama bağımlılıkları verileri
+#### <a name="windows-server-dependencies-data"></a>Windows Server bağımlılıklar verileri
 
-Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı bağlantı verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Windows Server 'dan topladığı bağlantı verileri aşağıda verilmiştir.
 
-**Veriler** | **Kullanılan komut** 
+**Veriler** | **Komutlar** 
 --- | --- 
 Yerel bağlantı noktası | Netstat
 Yerel IP adresi | Netstat
@@ -293,8 +361,7 @@ TCP bağlantı durumu | Netstat
 İşlem Kimliği | Netstat
 Etkin bağlantı sayısı | Netstat
 
-
-Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 'den topladığı işlem verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
+Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Windows Server 'dan topladığı bağlantı verileri aşağıda verilmiştir.
 
 **Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
@@ -302,11 +369,11 @@ Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir VM 
 İşlem bağımsız değişkenleri | Win32_Process | CommandLine
 Uygulama adı | Win32_Process | ExecutablePath özelliğinin VersionInfo. ProductName parametresi
 
-#### <a name="linux-vm-app-dependencies-data"></a>Linux VM uygulama bağımlılıkları verileri
+#### <a name="linux-server-dependencies-data"></a>Linux sunucu bağımlılıkları verileri
 
-Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Linux VM 'den topladığı bağlantı ve işleme verilerini aşağıda bulabilirsiniz. Bu veriler Azure 'a gönderilir.
+Bu, gerecin aracısız bağımlılık analizi için etkinleştirilen her bir Linux sunucusundan topladığı bağlantı verileri aşağıda verilmiştir.
 
-**Veriler** | **Kullanılan komut** 
+**Veriler** | **Komutlar** 
 --- | ---
 Yerel bağlantı noktası | Netstat 
 Yerel IP adresi | Netstat 
@@ -320,20 +387,19 @@ Etkin bağlantı sayısı | Netstat
 Uygulama adı | dpkg veya rpm
 
 
-
 ## <a name="collected-data---hyper-v"></a>Toplanan veriler-Hyper-V
 
-Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
+Gereç, Hyper-V ortamında çalışan sunuculardan yapılandırma ve performans meta verilerini toplar.
 
 ### <a name="metadata"></a>Meta veri
-Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
+Azure geçişi gereci tarafından bulunan meta veriler, sunucuların Azure 'a geçiş için hazır olup olmadığını, doğru boyut sunucularını ve planların maliyetlerini bulmanıza yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
-Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
+Bu, gerecin topladığı ve Azure 'a gönderdiği sunucu meta verilerinin tam listesidir.
 
-**VERILERI** | **WMı SıNıFı** | **WMı SıNıFı ÖZELLIĞI**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
-**Makine ayrıntıları** | 
-BIOS _ Msvm_BIOSElement seri numarası | Bıino SerialNumber
+**Sunucu ayrıntıları** | 
+BIOS seri numarası | Msvm_BIOSElement | Bıino SerialNumber
 VM türü (Gen 1 veya 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 VM görünen adı | Msvm_VirtualSystemSettingData | ElementName
 VM sürümü | Msvm_ProcessorSettingData | VirtualQuantity
@@ -357,7 +423,7 @@ NIC MAC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | Ad
 
 ### <a name="performance-data"></a>Performans verileri
 
-Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
+Bu, gerecin topladığı ve Azure 'a gönderdiği sunucu performans verileri aşağıda verilmiştir.
 
 **Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
@@ -375,15 +441,17 @@ Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu iç
 
 ## <a name="collected-data---physical"></a>Toplanan veriler-fiziksel
 
-Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
+Gereç, şirket içinde çalışan fiziksel veya sanal sunuculardan yapılandırma ve performans meta verilerini toplar.
 
-### <a name="windows-metadata"></a>Windows meta verileri
+### <a name="metadata"></a>Meta veri
 
-Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
+Azure geçişi gereci tarafından bulunan meta veriler, sunucuların Azure 'a geçiş için hazır olup olmadığını, doğru boyut sunucularını ve planların maliyetlerini bulmanıza yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
+
+### <a name="windows-server-metadata"></a>Windows Server meta verileri
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Windows Server meta verilerinin tam listesidir.
 
-**VERILERI** | **WMı SıNıFı** | **WMı SıNıFı ÖZELLIĞI**
+**Veriler** | **WMI sınıfı** | **WMI sınıfı özelliği**
 --- | --- | ---
 FQDN | Win32_ComputerSystem | Etki alanı, ad, PartOfDomain
 İşlemci çekirdek sayısı | Win32_PRocessor | Numberofçekirdekler
@@ -400,11 +468,11 @@ NIC listesi | Win32_NetworkAdapterConfiguration | Açıklama, Dizin
 NIC IP adresi | Win32_NetworkAdapterConfiguration | IPAddress
 NIC MAC adresi | Win32_NetworkAdapterConfiguration | MACAddress
 
-### <a name="linux-metadata"></a>Linux meta verileri
+### <a name="linux-server-metadata"></a>Linux sunucusu meta verileri
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu meta verilerinin tam listesidir.
 
-**VERILERI** | **'Un** 
+**Veriler** | **Komutlar** 
 --- | --- 
 FQDN | Cat/proc/sys/kernel/hostname, ana bilgisayar adı-f
 İşlemci çekirdek sayısı |  /proc/cpuinfo \| awk '/^ işlemci/{print $3} ' \| WC-l
@@ -439,7 +507,7 @@ Disk ayrıntıları | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWrites
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu performansı verileri.
 
-**Veriler** | **Linux** 
+**Veriler** | **Komutlar** 
 --- | --- 
 CPU kullanımı | Cat/proc/stat/| grep ' CPU '/proc/stat
 Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} '
@@ -452,11 +520,11 @@ Disk ayrıntıları | Cat/proc/diskstats
 
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 
-Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden, Gereç yükseltilir. Otomatik güncelleştirme, Gereç üzerinde varsayılan olarak etkinleştirildiğinden, bu otomatik olarak gerçekleşir. Bu varsayılan ayarı, Gereç hizmetlerini el ile güncelleştirmek için değiştirebilirsiniz.
+Gereç üzerinde çalışan Azure geçişi Hizmetleri güncelleştirildiğinden gereç yükseltilir. Otomatik güncelleştirme, Gereç üzerinde varsayılan olarak etkinleştirildiğinden, bu otomatik olarak gerçekleşir. Bu varsayılan ayarı, Gereç hizmetlerini el ile güncelleştirmek için değiştirebilirsiniz.
 
 ### <a name="turn-off-auto-update"></a>Otomatik güncelleştirmeyi devre dışı bırakma
 
-1. Gereci çalıştıran makinede, kayıt defteri düzenleyicisini açın.
+1. Gereci çalıştıran sunucuda kayıt defteri düzenleyicisini açın.
 2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** gidin.
 3. Otomatik güncelleştirmeyi devre dışı bırakmak için, DWORD değeri 0 olan bir kayıt defteri anahtarı **Otomatik güncelleştirme** anahtarı oluşturun.
 
@@ -506,11 +574,11 @@ Denetim masasını denetlemek için:
 
 ### <a name="manually-update-an-older-version"></a>Daha eski bir sürümü el ile güncelleştirme
 
-Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız, hizmeti kaldırmanız ve en son sürüme el ile güncelleştirmeniz gerekir.
+Hizmetlerin herhangi biri için daha eski bir sürüm çalıştırıyorsanız, hizmeti kaldırmanız ve en son sürüme el ile güncelleştirmeniz gerekir.
 
 1. En son gereç hizmeti sürümlerini denetlemek için dosyadaki LatestComponents.js[indirin](https://aka.ms/latestapplianceservices) .
 2.    İndirdikten sonra dosyayı Not defteri 'nde LatestComponents.jsaçın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

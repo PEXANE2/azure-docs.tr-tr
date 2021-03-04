@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704438"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040252"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
 
@@ -219,11 +219,24 @@ Yine, bazı uygulamalar için, önceki bağımlılık adları tarafından sağla
 
 Daha önce 2. x SDK 'sında, istek telemetride işlem adı bağımlılık telemetrisi üzerinde de ayarlanmıştır.
 Application Insights Java 3,0, bağımlılık telemetrisi üzerinde işlem adını artık doldurmayacak.
-Bağımlılık telemetrinin üst öğesi olan istek için işlem adını görmek isterseniz, bağımlılık tablosundan istek tablosuna katmak üzere bir günlük (kusto) sorgusu yazabilirsiniz.
+Bağımlılık telemetrinin üst öğesi olan istek için işlem adını görmek isterseniz, bağımlılık tablosundan istek tablosuna katmak üzere bir günlük (kusto) sorgusu yazabilirsiniz, örn.
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2. x SDK günlüğü uygulama
 
-3,0 Aracısı, günlük kaydını yapılandırmaya gerek kalmadan [günlüğü otomatik olarak toplar](./java-standalone-config#auto-collected-logging) .
+3,0 Aracısı, günlük kaydını yapılandırmaya gerek kalmadan [günlüğü otomatik olarak toplar](./java-standalone-config.md#auto-collected-logging) .
 2. x SDK günlük kaydı kullanıyorsanız, bunlar yine de 3,0 Aracısı tarafından bastırılacak şekilde kaldırılabilirler.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK Spring Boot Starter

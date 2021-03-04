@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378307"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040354"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -80,7 +80,7 @@ Bu ayar, `%2F` arka uç URL 'sine eklendiklerinde karakterlerin yol parametreler
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-2. x ve sonraki Işlevler çalışma zamanının sürümlerinde, çalışma zamanı ortamı temelinde uygulama davranışını yapılandırır. Bu değer [başlatma sırasında okundu](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). `AZURE_FUNCTIONS_ENVIRONMENT`Herhangi bir değere ayarlayabilirsiniz, ancak [üç değer](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) desteklenir: [geliştirme](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [hazırlık](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)ve [Üretim](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). `AZURE_FUNCTIONS_ENVIRONMENT`Ayarlanmadıysa, varsayılan olarak `Development` yerel bir ortamda ve `Production` Azure 'da olur. Bu ayar, `ASPNETCORE_ENVIRONMENT` çalışma zamanı ortamını ayarlamak için yerine kullanılmalıdır. 
+2. x ve sonraki Işlevler çalışma zamanının sürümlerinde, çalışma zamanı ortamı temelinde uygulama davranışını yapılandırır. Bu değer başlatma sırasında okunurdur ve herhangi bir değere ayarlanabilir. Yalnızca, ve değerleri `Development` `Staging` `Production` çalışma zamanı tarafından kabul edilir. Azure 'da çalışırken bu uygulama ayarı mevcut olmadığında, ortamın olduğu varsayılır `Production` . `ASPNETCORE_ENVIRONMENT`Azure 'daki çalışma zamanı ortamını dışında bir şekilde değiştirmeniz gerekiyorsa, bu ayarı kullanın `Production` . Azure Functions Core Tools, `AZURE_FUNCTIONS_ENVIRONMENT` `Development` yerel bir bilgisayarda çalışırken olarak ayarlanır ve bu, dosyadaki local.settings.jsgeçersiz kılınamaz. Daha fazla bilgi için bkz. [ortam tabanlı başlangıç sınıfı ve yöntemleri](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods).
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) üzerinde ana bilgisayar tabanlı şifrele
 description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifrelemeyi yapılandırma hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071859"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039742"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -26,6 +26,13 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 ### <a name="prerequisites"></a>Önkoşullar
 
 - `aks-preview`CLI uzantısının v 0.4.73 veya üzeri sürümünün yüklü olduğundan emin olun.
+- `EnableEncryptionAtHostPreview`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.ContainerService` .
+
+VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. **encryptionAtHost@microsoft.com** Abonelikleriniz için etkinleştirilen özelliği almak için abonelik kimliklerinizle e-posta gönderin. 
+
+> [!IMPORTANT]
+> **encryptionAtHost@microsoft.com** İşlem kaynakları için özelliği etkinleştirmek üzere abonelik kimlikleriniz ile e-posta almalısınız. İşlem kaynakları için kendiniz etkinleştiremezsiniz.
+
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 

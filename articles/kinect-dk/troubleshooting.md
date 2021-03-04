@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587290"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038829"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
@@ -98,7 +98,7 @@ Gövde Izleme SDK K4ABT.dll günlüğe kaydetme, kullanıcıların farklı bir o
 
 ## <a name="azure-kinect-viewer-fails-to-open"></a>Azure Kinect Görüntüleyicisi açılamıyor
 
-- Cihazınızın Windows Aygıt Yöneticisi numaralandırdığından önce kontrol edin.
+- Cihazınızın Windows Device Manager numaralandırdığından önce kontrol edin.
 
     ![Windows cihaz yöneticisi 'nde Azure Kinect kameraları](./media/resources/viewer-fails.png)
 
@@ -113,9 +113,9 @@ Gövde Izleme SDK K4ABT.dll günlüğe kaydetme, kullanıcıların farklı bir o
 
 ## <a name="cannot-find-microphone"></a>Mikrofon bulunamıyor
 
-- Aygıt Yöneticisi ' de mikrofon dizisinin numaralandırılmış olduğunu denetleyin.
+- Device Manager ' de mikrofon dizisinin numaralandırılmış olduğunu denetleyin.
 - Bir cihaz numaralandırılmışsa ve Windows 'da doğru şekilde çalışırsa, bu sorun, bellenim güncelleştirme Windows 'un derinlik kamerasına farklı kapsayıcı KIMLIĞI atamasından sonra olabilir.
-- Aygıt Yöneticisi giderek sıfırlamayı deneyebilirsiniz, "Azure Kinect Microphone Array" öğesine sağ tıklayıp "Cihazı kaldır" ı seçebilirsiniz. Bu tamamlandıktan sonra algılayıcıyı ayırın ve yeniden ekleyin.
+- Device Manager giderek sıfırlamayı deneyebilirsiniz, "Azure Kinect Microphone Array" öğesine sağ tıklayıp "Cihazı kaldır" ı seçebilirsiniz. Bu tamamlandıktan sonra algılayıcıyı ayırın ve yeniden ekleyin.
 
     ![Azure Kinect mik dizisi](./media/resources/mic-not-found.png)
 
@@ -148,7 +148,7 @@ Windows üzerinde Azure Kinect DK, **Intel**, **Texas Instruments (TI)** ve **Re
 
 BILGISAYARDA birden çok konak denetleyicisi yüklü olduğunda, USB ana bilgisayar denetleyicilerinin konusu, daha da karmaşıktır. Ana bilgisayar denetleyicileri karma olduğunda, bir Kullanıcı bazı bağlantı noktalarının iyi çalıştığı ve diğer bir yerde çalışmayan sorunlarla karşılaşabilir. Bağlantı noktalarının bu durum için nasıl kablolu olduğuna bağlı olarak, Azure Kinect ile ilgili sorun yaşayan tüm ön bağlantı noktalarını görebilirsiniz
 
-**Windows:** Hangi konak denetleyicisini açbileceğinizi öğrenmek için Aygıt Yöneticisi
+**Windows:** Hangi konak denetleyicisini açbileceğinizi öğrenmek için Device Manager
 
 1. Cihazları türe göre görüntüle-> 
 2. Azure Kinect bağlı kameraları seçin->Azure Kinect 4K kamera
@@ -174,6 +174,10 @@ Linux üzerinde Azure Kinect derinlik altyapısı OpenGL kullanır. OpenGL, bir 
 2. Sistemin gücünü yapın, izleyicinin bağlantısını kesin ve sistemi kapatın. Otomatik oturum açma, bir x-sunucu oturumunun oluşturulmasına zorlar.
 2. SSH ile bağlanma ve ekran env değişkenini ayarlama `export DISPLAY=:0`
 3. Azure Kinect uygulamanızı başlatın.
+
+[Xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) yardımcı programı, otomatik oturum açma işleminden sonra ekranı hemen kilitlemek için kullanılabilir. Başlangıç uygulamasına veya systemd hizmetine aşağıdaki komutu ekleyin:
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>Eksik C# belgeleri
 

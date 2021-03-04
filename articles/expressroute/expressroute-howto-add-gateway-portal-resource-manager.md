@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740911"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038926"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
 > [!div class="op_single_selector"]
@@ -67,9 +67,9 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
 
     Çift yığın sanal ağı kullanıyorsanız ve ExpressRoute üzerinden IPv6 tabanlı özel eşleme kullanmayı planlıyorsanız, **IP6 adres alanı Ekle** ve **IPv6 adres aralığı** değerlerini gir ' e tıklayın.
 
-Ardından, değerleri kaydetmek ve ağ geçidi alt ağını oluşturmak için **Tamam** ' ı seçin.
+    Ardından, değerleri kaydetmek ve ağ geçidi alt ağını oluşturmak için **Tamam** ' ı seçin.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Alt ağ ekleme":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Sanal ağ geçidini oluşturma
 

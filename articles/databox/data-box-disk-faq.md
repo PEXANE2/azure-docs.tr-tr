@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039113"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -55,7 +55,7 @@ A. Her biri 8 TB 'lik kapasiteye (7 TB kullanılabilir kapasite) sahip beş disk
 A.  Data Box disklerinin Şu anda kullanılabilir olduğunu görmek için [bölgenin kullanılabilirliğine](data-box-disk-overview.md#region-availability)gidin.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>S. Data Box Diskleri ile hangi bölgelerde veri depolayabilirim?
-A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve Japonya 'daki tüm bölgeler için desteklenir. Yalnızca Azure genel bulut bölgeleri desteklenir. Azure Kamu veya diğer bağımsız bulutlar desteklenmez.
+A. Data Box Disk ABD, Kanada, AB, UK, Avustralya, Singapur, Hindistan, Çin, Hong Kong, Japonya, Kore ve Güney Afrika içindeki tüm bölgelerde desteklenir. Yalnızca Azure genel bulut bölgeleri desteklenir. Azure Kamu veya diğer bağımsız bulutlar desteklenmez.
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>S. Farklı bir ülkede yer alan bir Azure bölgesine tek bir ülkede/bölgede yer alan mevcut kaynak verilerini nasıl içeri aktarabilirim?
 A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alımı destekler ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), Data Box disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu siparişler içindir.
@@ -199,7 +199,7 @@ A.  Kopyalama işlemini hızlandırmak için:
 - Dosyaları VM 'nin diskine kopyalayın.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>S. Data Box Diskleriyle birden fazla depolama hesabı kullanabilir miyim?
-A.  Hayır. Şu an için Data Box Diskleri ile yalnızca tek bir depolama hesabı (genel veya klasik) kullanılabilir. Hem sık hem de seyrek erişimli bloblar desteklenir. Şu anda yalnızca, Azure genel bulutundaki ABD, Batı Avrupa ve Kuzey Avrupa depolama hesapları desteklenmektedir.
+A.  Hayır. Şu an için Data Box Diskleri ile yalnızca tek bir depolama hesabı (genel veya klasik) kullanılabilir. Hem sık hem de seyrek erişimli bloblar desteklenir.
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>S. Data Box diskleriyle verilerim için araç seti nedir?
 A. Data Box Disk bulunan araç takımı üç araç içerir:

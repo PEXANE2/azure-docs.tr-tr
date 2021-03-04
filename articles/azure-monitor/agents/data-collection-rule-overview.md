@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de veri toplama kuralları (Önizleme)
 description: Azure Izleyici 'de içerik ve yapısını ve bunlarla nasıl oluşturabileceğiniz ve bunlarla nasıl çalışacağınıza ilişkin veri toplama kurallarına (CCR 'ler) genel bakış.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 0bae058804bdb1f199c39497c59e89bda8087424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625489"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039623"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -40,7 +39,7 @@ Aşağıdaki diyagramda bir veri toplama kuralının ve bunların ilişkilerinin
 ### <a name="data-source-types"></a>Veri kaynağı türleri
 Her veri kaynağının bir veri kaynağı türü vardır. Her tür, her veri kaynağı için belirtilmesi gereken benzersiz bir özellikler kümesi tanımlar. Şu anda kullanılabilir veri kaynağı türleri aşağıdaki tabloda gösterilmiştir.
 
-| Veri kaynağı türü | Description | 
+| Veri kaynağı türü | Açıklama | 
 |:---|:---|
 | uzantı | VM Uzantısı tabanlı veri kaynağı |
 | performanceCounters | Hem Windows hem de Linux için performans sayaçları |

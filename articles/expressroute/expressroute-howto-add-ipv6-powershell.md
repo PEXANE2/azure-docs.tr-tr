@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 2/9/2021
+ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 402714b55d7513e41458503b12c68768d0c6ad5e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747014"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038875"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
@@ -60,8 +60,8 @@ IPv6 desteği eklemeden önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak içi
 
 3. Var olan IPv4 özel eşleme yapılandırmanıza IPv6 özel eşlemesi ekleyin. Birincil bağlantınız ve ikincil bağlantılarınız için sahip olduğunuz bir çift/126 IPv6 alt ağı sağlayın. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız.
 
-> [!Note]
-> Eşdüzey ASN ve Vlanıd, IPv4 özel eşleme yapılandırmanızda olanlarla eşleşmelidir.
+    > [!Note]
+    > Eşdüzey ASN ve Vlanıd, IPv4 özel eşleme yapılandırmanızda olanlarla eşleşmelidir.
 
     ```azurepowershell-interactive
     Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "3FFE:FFFF:0:CD30::/126" -SecondaryPeerAddressPrefix "3FFE:FFFF:0:CD30::4/126" -VlanId 200 -PeerAddressType IPv6
@@ -175,6 +175,7 @@ IPv6 desteği, Kullanılabilirlik Alanları bölgelerdeki dağıtımlara bağlan
 * AZ ExpressRoute ağ geçidi SKU 'SU aracılığıyla Azure 'daki dağıtımlara bağlantılar
 * AZ olmayan bölgelerde dağıtımlara bağlantılar
 * ExpressRoute devreleri arasında bağlantı Global Reach
+* VWAN ile ExpressRoute kullanımı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

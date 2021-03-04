@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686997"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038432"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal sanal makineler için Azure oto yönetimini etkinleştirin
 
@@ -88,7 +88,7 @@ Yeni bir sanal makine oluşturmak ve oto yönetimi etkinleştirmek için [burada
 1. VM ayrıntılarınız ile **Ilgili temel bilgiler** sekmesini doldurun.
 
 > [!NOTE]
-> [Desteklenen bölgeleri](automanage-virtual-machines#supported-regions) ve desteklenen [Linux Distro 'lara](automanage-linux.md#supported-linux-distributions-and-versions) ve [Windows Server sürümlerini](automanage-windows-server.md#supported-windows-server-versions)oto Yönet ' i kontrol edin.
+> [Desteklenen bölgeleri](automanage-virtual-machines.md#supported-regions) ve desteklenen [Linux Distro 'lara](automanage-linux.md#supported-linux-distributions-and-versions) ve [Windows Server sürümlerini](automanage-windows-server.md#supported-windows-server-versions)oto Yönet ' i kontrol edin.
 
 2. **Yönetim** sekmesine gidin ve **oto Yönet ortamınızı** seçin.
 

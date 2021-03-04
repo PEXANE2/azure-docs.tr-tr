@@ -1,15 +1,14 @@
 ---
 title: Log Analytics uyarı REST API kullanma
 description: Log Analytics uyarı REST API, Log Analytics bir parçası olan Log Analytics uyarı oluşturmanıza ve yönetmenize olanak sağlar.  Bu makalede API ayrıntıları ve farklı işlemler gerçekleştirmeye yönelik birkaç örnek sağlanmaktadır.
-ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33f5ce86a21a9aad110db162849ff3e3c7bbb2b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717817"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037498"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
 

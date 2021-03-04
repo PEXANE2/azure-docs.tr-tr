@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828083"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037260"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme
 
@@ -32,6 +33,17 @@ Yerleşik yetenekler şu kategorilere ayrılır:
 Azure Bilişsel Arama 'daki yerleşik yetenekler, Bilişsel Hizmetler API'si: [görüntü işleme](../cognitive-services/computer-vision/index.yml) ve [metin analizi](../cognitive-services/text-analytics/overview.md)'de önceden eğitilen makine öğrenimi modellerini temel alır. İçerik işleme sırasında bu kaynaklardan yararlanmak istiyorsanız bilişsel hizmetler kaynağı ekleyebilirsiniz.
 
 Doğal dil ve görüntü işleme, veri alma aşaması sırasında, Azure Bilişsel Arama 'te aranabilir bir dizinde belge kompozisyonunun bir parçası haline gelmesine neden olacak şekilde uygulanır. Verilerin bir Azure veri kümesi olarak kaynağı oluşturulur ve ardından ihtiyacınız olan [yerleşik becerileri](cognitive-search-predefined-skills.md) kullanarak bir dizin oluşturma işlem hattı üzerinden gönderilir.  
+
+## <a name="feature-availability"></a>Özellik kullanılabilirliği
+
+AI zenginleştirme, Azure bilişsel hizmetler 'in de kullanılabildiği bölgelerde kullanılabilir.  [Bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=search) sayfasında, geçerli AI zenginleştirme kullanılabilirliğini kontrol edebilirsiniz.  AI zenginleştirme aşağıdakiler dışında desteklenen tüm bölgelerde kullanılabilir:
+
++ Güneydoğu Avustralya
++ Çin Kuzey 2
++ Norveç Doğu
++ Almanya Orta Batı
+
+Arama hizmetiniz bu bölgelerden birinde bulunuyorsa becerileri oluşturup kullanamazsınız, ancak tüm diğer arama hizmeti işlevleri kullanılabilir ve tamamen desteklenir.
 
 ## <a name="when-to-use-ai-enrichment"></a>AI zenginleştirme ne zaman kullanılır?
 
@@ -73,7 +85,7 @@ Bir zenginleştirme işlem hattı, [*Dizin oluşturucular*](search-indexer-overv
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2. Adım: bilişsel beceriler ve zenginleştirme aşaması
 
-Zenginleştirme, Atomik işlemler gerçekleştirirken bilişsel *yetenekler* ile gerçekleştirilir. Örneğin, bir PDF 'YI kırdıktan sonra, dizinde yerel olarak kullanılamayan yeni alanlar oluşturmak için varlık tanıma, dil algılama veya anahtar tümceciği ayıklama uygulayabilirsiniz. Tamamen, işlem hattınızda kullanılan yeteneklerin koleksiyonuna bir *beceri*denir.  
+Zenginleştirme, Atomik işlemler gerçekleştirirken bilişsel *yetenekler* ile gerçekleştirilir. Örneğin, bir PDF 'YI kırdıktan sonra, dizinde yerel olarak kullanılamayan yeni alanlar oluşturmak için varlık tanıma, dil algılama veya anahtar tümceciği ayıklama uygulayabilirsiniz. Tamamen, işlem hattınızda kullanılan yeteneklerin koleksiyonuna bir *beceri* denir.  
 
 ![Zenginleştirme aşaması](./media/cognitive-search-intro/enrichment-phase-blowup.png "zenginleştirme aşaması")
 
@@ -107,7 +119,7 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 
 1. Veri kaynağına, beceri ve dizine başvuran [Dizin oluşturucuyu](/rest/api/searchservice/create-indexer) tanımlayın.
 
-1. Dizin Oluşturucu içinde *Outputfieldmappings*ekleyin. Bu bölüm, Beceri (adım 3 ' te) çıktısını Dizin şemasındaki (adım 4 ' te) giriş alanlarına eşler.
+1. Dizin Oluşturucu içinde *Outputfieldmappings* ekleyin. Bu bölüm, Beceri (adım 3 ' te) çıktısını Dizin şemasındaki (adım 4 ' te) giriş alanlarına eşler.
 
 1. Azure Bilişsel Arama Dizin oluşturucuyu ifade etmek için az önce oluşturduğunuz (istek gövdesinde bir Dizin Oluşturucu tanımına sahip bir POST isteği) *Create Indexer* isteği gönderin. Bu adım, işlem hattını çağırarak Dizin oluşturucuyu nasıl çalıştıracağınızı açıklamaktadır.
 

@@ -1,17 +1,16 @@
 ---
 title: Mevcut Operations Manager müşterileri için Azure Izleyici
 description: Belirli iş yüklerini buluta geçişin bir parçası olarak Azure Izleyici 'ye geçirmeye yönelik Operations Manager mevcut kullanıcıları için rehberlik.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728969"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039385"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Mevcut Operations Manager müşterileri için Azure Izleyici
 Bu makalede, şu anda [System Center Operations Manager](/system-center/scom/welcome) kullananlar ve iş uygulamalarını ve diğer kaynakları Azure 'A geçirirken [Azure izleyici](overview.md) 'ye geçiş planlıyor olan müşteriler için rehberlik sunulmaktadır. Son hedefiniz, Azure Izleyici ile mümkün olduğunca çok Operations Manager işlevselliği, işletmenizin ve BT operasyonel gereksinimlerinizle ödün vermeden değiştirerek buluta tam geçiş olduğunu varsayar. 

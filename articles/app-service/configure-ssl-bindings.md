@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704846"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039810"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -42,7 +42,7 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 - [Uygulamanıza özel bir sertifika ekleyin](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Özel bir sertifika eklemenin en kolay yolu, [ücretsiz App Service yönetilen bir sertifika oluşturmaktır](configure-ssl-certificate.md#create-a-free-certificate-preview) (Önizleme).
+> Özel bir sertifika eklemenin en kolay yolu, [ücretsiz App Service yönetilen bir sertifika oluşturmaktır](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Önizleme).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ Uygulamanızda seçili özel etki alanı için sertifika yoksa, iki seçeneğini
 - **Içeri aktarma App Service sertifikası** - [App Service sertifikasını içeri aktarma](configure-ssl-certificate.md#import-an-app-service-certificate)sırasında iş akışını izleyin ve burada bu seçeneği belirleyin.
 
 > [!NOTE]
-> Ayrıca, [ücretsiz bir sertifika](configure-ssl-certificate.md#create-a-free-certificate-preview) (Önizleme) oluşturabilir veya [bir Key Vault sertifikasını içeri aktarabilirsiniz](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ancak bunu ayrı olarak yapmanız ve sonra **TLS/SSL bağlama** iletişim kutusuna geri dönmeniz gerekir.
+> Ayrıca, [ücretsiz bir sertifika](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Önizleme) oluşturabilir veya [bir Key Vault sertifikasını içeri aktarabilirsiniz](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ancak bunu ayrı olarak yapmanız ve sonra **TLS/SSL bağlama** iletişim kutusuna geri dönmeniz gerekir.
 
 ### <a name="create-binding"></a>Bağlama oluştur
 

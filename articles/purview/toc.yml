@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Terim şablonlarını yönetme
             href: how-to-manage-term-templates.md
-          - name: Sözlük terimleri atamak için varlıkları toplu olarak düzenleme
-            href: how-to-bulk-edit-assets.md
       - name: Toplu düzenleme
         items:
           - name: Açıklamaları ve kişileri etiketlemek için varlıkları Toplu Düzenle
