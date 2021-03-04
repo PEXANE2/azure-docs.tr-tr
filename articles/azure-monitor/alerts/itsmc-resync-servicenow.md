@@ -1,17 +1,16 @@
 ---
 title: ServiceNow eşitleme sorunlarını el ile çözme
 description: ServiceNow bağlantısını sıfırlayın Microsoft Azure içindeki uyarılar ServiceNow 'ı çağırabilir
-ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 664f1522775d96b813b7cd99bdffdb26630497f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623551"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037447"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>Eşitleme sorunlarını el ile çözme
 

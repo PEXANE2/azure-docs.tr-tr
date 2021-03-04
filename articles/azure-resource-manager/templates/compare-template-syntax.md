@@ -1,14 +1,14 @@
 ---
-title: JSON ile Bıcep arasında Azure Resource Manager şablonları dönüştürme
-description: JSON ve Bıcep ile geliştirilen Azure Resource Manager şablonlarını karşılaştırır.
+title: JSON ve Bıcep 'de Azure Resource Manager şablonlarının sözdizimini karşılaştırın
+description: JSON ve Bıcep ile geliştirilen Azure Resource Manager şablonlarını karşılaştırır ve diller arasında nasıl dönüştürme yapılacağını gösterir.
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 9388ed50f13d6885d0a0668b61a9141dae375244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746132"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036223"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>Şablonlar için JSON ve Bıcep karşılaştırması
 
@@ -18,40 +18,21 @@ Bu makalede, Bıcep sözdizimini Azure Resource Manager şablonları (ARM şablo
 
 ARM şablonları geliştirmek için JSON kullanmaya alışdıysanız, Bıcep için eşdeğer sözdizimi hakkında bilgi edinmek için aşağıdaki tabloyu kullanın.
 
-| Senaryo | ARM şablonu | Bicep |
+| Senaryo | Bicep | JSON |
 | -------- | ------------ | ----- |
-| Bir ifade yazın | `"[func()]"` | `func()` |
-| Parametre değerini Al | `[parameters('exampleParameter'))]` | `exampleParameter` |
-| Değişken değerini Al | `[variables('exampleVar'))]` | `exampleVar` |
-| Dizeleri birleştirme | `[concat(parameters('namePrefix'), '-vm')]` | `'${namePrefix}-vm'` |
-| Kaynak özelliğini ayarla | `"sku": "2016-Datacenter",` | `sku: '2016-Datacenter'` |
-| Mantıksal ve | `[and(parameter('isMonday'), parameter('isNovember'))]` | `isMonday && isNovember` |
-| Şablondaki kaynağın kaynak KIMLIĞINI al | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` | `nic1.id` |
-| Şablondaki kaynaktaki özelliği al | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` | `diagsAccount.properties.primaryEndpoints.blob` |
-| Koşullu bir değer ayarla | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` |
-| Bir çözümü birden çok dosyaya ayırma | Bağlı şablonları kullanma | Modülleri kullanma |
-| Dağıtımın hedef kapsamını ayarlama | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` | `targetScope = 'subscription'` |
-| Bağımlılığı ayarla | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` | Bağımlılıklar için otomatik algılamayı veya el ile bağımlılığı ayarlamayı güvenin `dependsOn: [ stg ]` |
-
-Bir kaynağın türünü ve sürümünü bildirmek için Bıcep içinde şunu kullanın:
-
-```bicep
-resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
-JSON 'daki eşdeğer sözdizimi yerine:
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2020-06-01",
-    ...
-  }
-]
-```
+| Bir ifade yazın | `func()` | `"[func()]"` |
+| Parametre değerini Al | `exampleParameter` | `[parameters('exampleParameter'))]` |
+| Değişken değerini Al | `exampleVar` | `[variables('exampleVar'))]` |
+| Dizeleri birleştirme | `'${namePrefix}-vm'` | `[concat(parameters('namePrefix'), '-vm')]` |
+| Kaynak özelliğini ayarla | `sku: '2016-Datacenter'` | `"sku": "2016-Datacenter",` |
+| Mantıksal ve | `isMonday && isNovember` | `[and(parameter('isMonday'), parameter('isNovember'))]` |
+| Şablondaki kaynağın kaynak KIMLIĞINI al | `nic1.id` | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` |
+| Şablondaki kaynaktaki özelliği al | `diagsAccount.properties.primaryEndpoints.blob` | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` |
+| Koşullu bir değer ayarla | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` |
+| Bir çözümü birden çok dosyaya ayırma | Modülleri kullanma | Bağlı şablonları kullanma |
+| Dağıtımın hedef kapsamını ayarlama | `targetScope = 'subscription'` | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` |
+| Bağımlılığı ayarla | Bağımlılıklar için otomatik algılamayı veya el ile bağımlılığı ayarlamayı güvenin `dependsOn: [ stg ]` | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` |
+| Kaynak bildirimi | `resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {...}` | `"resources": [ { "type": "Microsoft.Compute/virtualMachines", "apiVersion": "2020-06-01", ... } ]` |
 
 ## <a name="recommendations"></a>Öneriler
 
@@ -63,10 +44,7 @@ JSON 'daki eşdeğer sözdizimi yerine:
 
 Bıcep CLı, var olan bir ARM şablonunu bir bicep dosyasına derlemeyi sağlayan bir komut sağlar. Bir JSON dosyasını derlemek için şunu kullanın: `bicep decompile "path/to/file.json"`
 
-Bu komut, Bıcep yazma için bir başlangıç noktası sağlar, ancak komut tüm şablonlar için çalışmaz. Komut başarısız olabilir veya derlemeden sonra sorunları çözmeniz gerekebilir. Şu anda komut aşağıdaki sınırlamalara sahiptir:
-
-* Kopyalama döngüleri kullanan şablonlar derlenemiyor.
-* İç içe geçmiş şablonlar yalnızca ' Inner ' ifade değerlendirme kapsamını kullanıyorsa, parçalanamaz.
+Bu komut, Bıcep yazma için bir başlangıç noktası sağlar, ancak komut tüm şablonlar için çalışmaz. Komut başarısız olabilir veya derlemeden sonra sorunları çözmeniz gerekebilir. Şu anda, iç içe geçmiş şablonlar yalnızca ' Inner ' ifade değerlendirme kapsamını kullandıklarında derlenerek parçalanamaz.
 
 Bir kaynak grubu için şablonu dışa aktarabilir ve ardından doğrudan bıcep assembler diline komutuna geçirebilirsiniz. Aşağıdaki örnek, bir aktarılmış şablonun nasıl derlenmeyeceğini gösterir.
 
@@ -100,4 +78,4 @@ Bıcep CLı, Bıcep 'yi JSON 'a dönüştürmek için bir komut de sağlar. JSON
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bıcep projesi hakkında daha fazla bilgi için bkz. [Proje bıcep](https://github.com/Azure/bicep).
+Bıcep hakkında daha fazla bilgi için bkz. [bıcep öğreticisi](./bicep-tutorial-create-first-bicep.md).

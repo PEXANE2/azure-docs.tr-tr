@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578911"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035437"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Veri kaynaklarını Azure Sentinel 'e bağlamak için Logstash 'i kullanma
 
 > [!IMPORTANT]
 > Logstash çıkış eklentisi kullanılarak veri alımı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-**Logstash veri toplama altyapısı** Için Azure Sentinel 'in yeni çıkış eklentisini kullanarak, artık Azure sentinel 'de Log Analytics çalışma alanınıza doğrudan logstash aracılığıyla istediğiniz her türlü günlüğü gönderebilirsiniz. Günlüklerinizi, çıkış eklentisini kullanarak tanımlayacağınızı belirten özel bir tabloya gönderilir.
+**Logstash veri toplama altyapısı** Için Azure Sentinel 'in çıkış eklentisini kullanarak, Azure sentinel 'deki Log Analytics çalışma alanınıza doğrudan logstash aracılığıyla istediğiniz her türlü günlüğü gönderebilirsiniz. Günlüklerinizi, çıkış eklentisini kullanarak tanımlayacağınızı belirten özel bir tabloya gönderilir.
 
 Logstash veri toplama altyapısıyla çalışma hakkında daha fazla bilgi edinmek için bkz. [Logstash ile çalışmaya başlama](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
@@ -65,7 +65,7 @@ Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
 [Bir yapılandırma dosyası](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) belgesinin Logstash yapısındaki bilgileri kullanın ve aşağıdaki anahtarlar ve değerlerle Azure Sentinel çıktı eklentisini yapılandırmaya ekleyin. (Doğru yapılandırma dosyası söz dizimi tablodan sonra gösterilir.)
 
-| Alan adı | Veri türü | Description |
+| Alan adı | Veri türü | Açıklama |
 |----------------|---------------|-----------------|
 | `workspace_id` | dize | Çalışma alanı KIMLIĞI GUID 'nizi girin. * |
 | `workspace_key` | string | Çalışma alanınızın birincil anahtar GUID 'nizi girin. * |
@@ -76,8 +76,10 @@ Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 | `plugin_flush_interval` | sayı | İsteğe bağlı alan. İleti aktarımları arasındaki en büyük aralığı (saniye olarak) Log Analytics olarak tanımlamak için ayarlayın. Varsayılan değer 5 ' tir. |
     | `amount_resizing` | boolean | True veya false. İleti arabellek boyutunu alınan günlük verisi hacmine göre ayarlayan otomatik ölçeklendirme mekanizmasını etkinleştirin veya devre dışı bırakın. |
 | `max_items` | sayı | İsteğe bağlı alan. Yalnızca `amount_resizing` "false" olarak ayarlandıysa geçerlidir. İleti arabellek boyutunda bir üst sınır ayarlamak için kullanın (kayıtlar). Varsayılan değer 2000’dir.  |
+| `azure_resource_id` | string | İsteğe bağlı alan. Verilerin bulunduğu Azure kaynağının KIMLIĞINI tanımlar. <br>Kaynak KIMLIĞI değeri, özellikle yalnızca belirli verilere erişim sağlamak için [Resource-Context RBAC](resource-context-rbac.md) kullanıyorsanız faydalıdır. |
+| | | |
 
-\* Çalışma alanı KIMLIĞI ve birincil anahtarı, **aracılar yönetimi** altında çalışma alanı kaynağında bulabilirsiniz.
+* Çalışma alanı KIMLIĞI ve birincil anahtarı, **aracılar yönetimi** altında çalışma alanı kaynağında bulabilirsiniz.
 
 #### <a name="sample-configurations"></a>Örnek yapılandırma
 

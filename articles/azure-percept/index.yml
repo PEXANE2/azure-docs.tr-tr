@@ -10,12 +10,12 @@ metadata:
   author: elqu20
   ms.author: v-elqu
   ms.date: 02/11/2021
-  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665800"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102097504"
 landingContent:
 - title: Azure Percept nedir?
   linkLists:
@@ -45,8 +45,22 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Azure Percept Vision veri sayfası
       url: azure-percept-vision-datasheet.md
+    - text: Sorun giderme
+      url: troubleshoot-dev-kit.md
+- title: Azure Percept Audio ile çalışmaya başlama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Percept ses kurma
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
     - text: Azure Percept ses veri sayfası
       url: azure-percept-audio-datasheet.md
+    - text: Azure Percept ses sorunlarını giderme
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Azure Percept ses ışığı ve düğmesi
+      url: audio-button-led-behavior.md
 - title: Kod içermeyen bir Vision AI prototipi oluşturun
   linkLists:
   - linkListType: tutorial
@@ -63,20 +77,10 @@ landingContent:
       url: how-to-capture-images.md
     - text: Devkit 'in telemetrinizi görüntüleme
       url: how-to-view-telemetry.md
-- title: Azure Percept Audio ile çalışmaya başlama
-  linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: Azure Percept ses kurma
-      url: quickstart-percept-audio-setup.md
-  - linkListType: reference
-    links:
-    - text: Azure Percept ses veri sayfası
-      url: azure-percept-audio-datasheet.md
-    - text: Azure Percept ses sorunlarını giderme
-      url: troubleshoot-audio-accessory-speech-module.md
-    - text: Azure Percept ses ışığı ve düğmesi
-      url: audio-button-led-behavior.md
+    - text: AI çözümleriyle çalışma
+      url: overview-ai-models.md
 - title: Kod içermeyen sesli yardım çözümü oluşturma
   linkLists:
   - linkListType: tutorial
@@ -85,22 +89,20 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Sesli yardımcınızı yapılandırma
-      url: how-to-configure-voice-assistant.md
     - text: Sesli yardımcınızı yönetin
       url: how-to-manage-voice-assistant.md
+    - text: IoT Hub kullanarak sesli yardımcınızı yapılandırın
+      url: how-to-configure-voice-assistant.md
 - title: Azure Percept ile gelişmiş geliştirme
   linkLists:
   - linkListType: overview
     links:
     - text: Gelişmiş geliştirmeye genel bakış
       url: overview-advanced-code.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: Cloud Services kullanarak gelişmiş geliştirme
-      url: advanced-development-cloud.md
-    - text: Yerel araçları kullanarak gelişmiş geliştirme
-      url: advanced-development-local.md
+    - text: Geliştirme araçları paketi yükleyicisi
+      url: dev-tools-installer.md
 - title: Azure Percept DK güncel tutun
   linkLists:
   - linkListType: overview
@@ -109,7 +111,7 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Güncelleştirmeleri ayarla
+    - text: Kablosuz güncelleştirmeleri ayarlama
       url: how-to-set-up-over-the-air-updates.md
     - text: Kablosuz güncelleştirmeler
       url: how-to-update-over-the-air.md

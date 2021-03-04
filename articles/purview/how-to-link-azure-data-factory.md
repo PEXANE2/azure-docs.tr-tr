@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/03/2021
+ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807657"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049381"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -73,7 +73,7 @@ Mevcut bir Data Factory hesaplarını purview veri kataloğunuza bağlamak için
 
 Bir purview kullanıcısı, erişimi olan bir Data Factory kaydettiğinde arka uçta aşağıdakiler olur:
 
-1. **Data Factory MSI** , PURVIEW RBAC rolüne eklenmiştir: **purview veri Curator**.
+1. **Data Factory yönetilen kimlik** , PURVIEW RBAC rolüne eklenmiştir: **purview veri seçicisi**.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI gösteren ekran görüntüsü." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,91 @@ Bir Data Factory bağlantısını kaldırmak için aşağıdakileri yapın:
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Bağlantıyı kaldırmak için veri fabrikalarının nasıl seçileceğini gösteren ekran görüntüsü." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Şirket içi SQL 'den kökenini toplamak için kendinden konak IR yapılandırma
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>Kökenini toplamak için şirket içinde barındırılan Integration Runtime yapılandırma
 
-Data Factory kopyalama etkinliği için kökenini, şirket içi SQL veritabanları için kullanılabilir. Azure Data Factory ile veri hareketi için şirket içinde barındırılan tümleştirme çalışma zamanı çalıştırıyorsanız ve Azure purview 'da kökenini yakalamak istiyorsanız, sürümün 4.8.7418.1 veya üzeri olduğundan emin olun. Şirket içinde barındırılan tümleştirme çalışma zamanı hakkında daha fazla bilgi için bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](../data-factory/create-self-hosted-integration-runtime.md).
+Data Factory kopyalama etkinliği için kökenini, SQL veritabanları gibi şirket içi veri depoları için kullanılabilir. Azure Data Factory ile veri hareketi için şirket içinde barındırılan tümleştirme çalışma zamanı çalıştırıyorsanız ve Azure purview 'da kökenini yakalamak istiyorsanız, sürümün 5,0 veya sonraki bir sürümü olduğundan emin olun. Şirket içinde barındırılan tümleştirme çalışma zamanı hakkında daha fazla bilgi için bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](../data-factory/create-self-hosted-integration-runtime.md).
 
 ## <a name="supported-azure-data-factory-activities"></a>Desteklenen Azure Data Factory etkinlikleri
 
 Azure purview, aşağıdaki Azure Data Factory etkinliklerinden çalışma zamanı kökenini yakalar:
 
-- Veri Kopyalama
-- Veri Akışı
-- SSIS paketini Yürüt
+- [Veri Kopyalama](../data-factory/copy-activity-overview.md)
+- [Veri Akışı](../data-factory/concepts-data-flow-overview.md)
+- [SSIS paketini Yürüt](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > Kaynak veya hedef desteklenmeyen bir veri depolama sistemi kullanıyorsa Azure purview kökenini bırakır.
 
 Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki bölümlerde açıklandığı gibi, Data Factory tarafından desteklenen veri sistemlerinin yalnızca bir alt kümesini destekler.
 
-### <a name="data-factory-copy-data-support"></a>Data Factory Veri Kopyalama desteği
+### <a name="data-factory-copy-activity-support"></a>Data Factory kopyalama etkinliği desteği
 
-| Veri depolama sistemi | Kaynak olarak desteklenir | 
+| Veri deposu | Desteklenir | 
 | ------------------- | ------------------- | 
-| ADLS 1. Nesil | Yes | 
-| ADLS 2. Nesil | Yes | 
-| Azure Blob | Yes |
-| Azure Cosmos DB (SQL API) | Yes | 
-| Azure Cosmos DB (Mongo API) | Yes |
+| Azure Blob Depolama Alanı | Evet |
 | Azure Bilişsel Arama | Yes | 
-| Azure Veri Gezgini | Yes | 
+| Azure Cosmos DB (SQL API) \* | Yes | 
+| MongoDB için Azure Cosmos DB API 'SI \* | Yes |
+| Azure Veri Gezgini \* | Evet | 
+| Azure Data Lake Storage 1. Nesil | Evet | 
+| Azure Data Lake Storage Gen2 | Evet | 
 | Maria DB için Azure veritabanı \* | Yes | 
-| MYSQL için Azure veritabanı \* | Yes | 
+| MySQL için Azure veritabanı \* | Yes | 
 | PostgreSQL için Azure veritabanı \* | Yes |
-| Azure Dosya Depolama | Evet | 
-| Azure Tablo Depolama | Evet |
+| Azure Dosya Depolama | Yes | 
 | Azure SQL veritabanı \* | Yes | 
-| Azure SQL MI \* | Yes | 
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes | 
-| Şirket içi SQL Server  \* | Yes | 
-| Amazon S3 | Evet | 
-| Teradata | Evet | 
-| SAP tablo Bağlayıcısı | Yes |
-| SAP ECC | Yes | 
-| Hive | Yes | 
+| Azure SQL yönetilen örneği \* | Yes | 
+| Azure SYNAPSE Analizi \* | Yes | 
+| Azure Tablo depolama \* | Yes |
+| SQL Server \* | Yes | 
+| Amazon S3 | Yes | 
+| Yığını \* | Yes | 
+| SAP ECC \* | Yes |
+| SAP tablosu \* | Yes |
+| Teradata \* | Yes |
+
+*\* Azure purview Şu anda kökenini veya tarama için sorgu veya saklı yordamı desteklemiyor. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
 
 > [!Note]
 > Kökenini özelliği Data Factory kopyalama etkinliğinde belirli performans ek yüküne sahiptir. Veri Fabrikası bağlantıları kuran kullanıcılar için, purview 'da daha uzun süren belirli kopyalama işlerinin gözlemleyebilirsiniz. Genellikle etki, yok edilebilir değildir. Kopyalama işlerinin her zamanki gibi daha uzun sürmesi durumunda lütfen zaman karşılaştırmayla desteğe başvurun.
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>Kopyalama etkinliği kökenini üzerinde bilinen sınırlamalar
+
+Şu anda, aşağıdaki kopyalama etkinliği özelliklerini kullanıyorsanız, kökenini henüz desteklenmemektedir:
+
+- Ikili biçimi kullanarak Azure Data Lake Storage 1. verileri kopyalayın.
+- PolyBase veya COPY deyimlerini kullanarak verileri Azure SYNAPSE Analytics 'e kopyalayın.
+- Ikili, ayrılmış metin, Excel, JSON ve XML dosyaları için sıkıştırma ayarı.
+- Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics, SQL Server ve SAP tablosu için kaynak bölüm seçenekleri.
+- Dosya başına en fazla satır ayarı ile verileri dosya tabanlı havuza kopyalayın.
+- Kopyalama sırasında ek sütunlar ekleyin.
+
 ### <a name="data-factory-data-flow-support"></a>Data Factory veri akışı desteği
 
-| Veri depolama sistemi | Desteklenir |
+| Veri deposu | Desteklenir |
 | ------------------- | ------------------- | 
-| ADLS 1. Nesil | Yes |
-| ADLS 2. Nesil | Yes |
-| Azure Blob | Yes |
+| Azure Blob Depolama Alanı | Evet |
+| Azure Data Lake Storage 1. Nesil | Evet |
+| Azure Data Lake Storage Gen2 | Evet |
 | Azure SQL veritabanı \* | Yes |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
+| Azure SYNAPSE Analizi \* | Yes |
+
+*\* Azure purview Şu anda kökenini veya tarama için sorgu veya saklı yordamı desteklemiyor. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>SSIS paketi desteğini Data Factory Yürüt
 
-| Veri depolama sistemi | Desteklenir |
+| Veri deposu | Desteklenir |
 | ------------------- | ------------------- |
-| Azure Blob | Yes |
-| ADLS 1. Nesil | Yes |
-| ADLS 2. Nesil | Yes |
-| Azure SQL veritabanı \* | Yes |
-| Azure SQL MI \*| Yes |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
-| Şirket içi SQL Server \* | Yes |
+| Azure Blob Depolama Alanı | Evet |
+| Azure Data Lake Storage 1. Nesil | Evet |
+| Azure Data Lake Storage Gen2 | Evet |
 | Azure Dosya Depolama | Yes |
+| Azure SQL veritabanı \* | Yes |
+| Azure SQL yönetilen örneği \*| Yes |
+| Azure SYNAPSE Analizi \* | Yes |
+| SQL Server \* | Yes |
 
-*\* SQL (Azure ve şirket içi) senaryolarında Azure purview, kökenini veya tarama için saklı yordamları veya betikleri desteklemez. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
+*\* Azure purview Şu anda kökenini veya tarama için sorgu veya saklı yordamı desteklemiyor. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
 
 > [!Note]
 > Azure Data Lake Storage 2. Nesil genel kullanıma sunuldu. Bugün kullanmaya başlamanızı öneririz. Daha fazla bilgi için bkz. [ürün sayfası](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
@@ -172,7 +187,7 @@ Kökenini görünümünde bilgi bulmanın bazı ek yolları şunları içerir:
 
 - Araç ipucunda varlık hakkındaki ek bilgileri önizlemek için **kökenini** sekmesinde şekillerin üzerine gelin.
 - Ait olduğu varlık türünü görmek veya varlıkları değiştirmek için düğümü veya kenarı seçin.
-- Bir veri kümesinin sütunları **kökenini** sekmesinin sol tarafında görüntülenir. Sütun düzeyi kökenini hakkında daha fazla bilgi için bkz. [sütun düzeyi kökenini](catalog-lineage-user-guide.md#column-level-lineage).
+- Bir veri kümesinin sütunları **kökenini** sekmesinin sol tarafında görüntülenir. Sütun düzeyi kökenini hakkında daha fazla bilgi için bkz. [DataSet Column kökenini](catalog-lineage-user-guide.md#dataset-column-lineage).
 
 ### <a name="data-lineage-for-11-operations"></a>1:1 işlemleri için veri kökenini
 

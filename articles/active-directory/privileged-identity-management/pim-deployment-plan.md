@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367814"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036835"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -111,7 +111,7 @@ Azure AD rolleri için, çoğu yöneticinin yalnızca bir veya iki özel ve daha
 
 Azure AD rolleriniz için en az ayrıcalık ilkesini uygulamak için aşağıdaki adımları izleyin.
 
-1. [Kullanılabilir Azure AD yönetici rollerini](../roles/permissions-reference.md#available-roles)okuyup anlayarak rollerin ayrıntı düzeyini anlayın. Siz ve takımınız Ayrıca, belirli görevler için en az ayrıcalıklı rolü açıklayan [Azure AD 'de kimlik görevine göre yönetici rollerine](../roles/delegate-by-task.md)başvurmalıdır.
+1. Kullanılabilir [Azure AD yerleşik rollerini](../roles/permissions-reference.md)okuyup anlayarak rollerin ayrıntı düzeyini anlayın. Siz ve takımınız Ayrıca, belirli görevler için en az ayrıcalıklı rolü açıklayan [Azure AD 'de kimlik görevine göre yönetici rollerine](../roles/delegate-by-task.md)başvurmalıdır.
 
 1. Kuruluşunuzda ayrıcalıklı rollere sahip olan liste. Privileged Identity Management [bulma ve öngörüleri (Önizleme)](pim-security-wizard.md) kullanarak pozlandırmayı azaltabilirsiniz.
 
@@ -230,7 +230,7 @@ Privileged Identity Management çözümünüzü uygulamadan önce, kuruluşunuzu
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD rolleri için Privileged Identity Management ayarları
 
-| Rol | MFA gerektirme | Bildirim | Olay bileti | Onay gerektir | Kişi | Etkinleştirme süresi | Kalıcı yönetici |
+| Rol | MFA gerektirme | Bildirim | Olay bileti | Onay gerektir | Onaylayan | Etkinleştirme süresi | Kalıcı yönetici |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Genel Yönetici | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Diğer genel Yöneticiler | 1 Saat | Acil durum erişim hesapları |
 | Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | Yok | 2 saat | Yok |
@@ -238,7 +238,7 @@ Privileged Identity Management çözümünüzü uygulamadan önce, kuruluşunuzu
 
 #### <a name="privileged-identity-management-settings-for-azure-roles"></a>Azure rolleri için Privileged Identity Management ayarları
 
-| Rol | MFA gerektirme | Bildirim | Onay gerektir | Kişi | Etkinleştirme süresi | Etkin yönetici | Etkin süre sonu | Uygun süre sonu |
+| Rol | MFA gerektirme | Bildirim | Onay gerektir | Onaylayan | Etkinleştirme süresi | Etkin yönetici | Etkin süre sonu | Uygun süre sonu |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | Yok | yok | 3 ay |
 | Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | Yok | 1 Saat | Yok | yok | 3 ay |
@@ -253,7 +253,7 @@ Aşağıdaki tabloda ayarların her biri açıklanmaktadır.
 | Bildirim | True olarak ayarlanırsa, genel yönetici, ayrıcalıklı rol yöneticisi ve uygun bir kullanıcı rolü etkinleştirdiğinde kuruluştaki Güvenlik Yöneticisi bir e-posta bildirimi alır.<br/><br/>**Note:** Bazı kuruluşların yönetici hesaplarına bağlı bir e-posta adresi yoksa, bu e-posta bildirimlerini almak için, yöneticilerin bu e-postaları alabilmesi için alternatif bir e-posta adresi ayarlamanız gerekir. |
 | Olay bileti | Uygun kullanıcının rolünü etkinleştirirken bir olay bileti numarası kaydetmesi gerekip gerekmediği. Bu ayar, istenmeyen etkinleştirmeleri azaltmak için bir kuruluşun iç olay numarasıyla her bir etkinleştirmeyi belirlemesine yardımcı olur.<br/><br/> : heavy_check_mark: Microsoft, Privileged Identity Management iç sisteminize bağlamak için olay bilet numaralarının avantajlarından **faydalanmanızı önerir** . Bu yöntem, etkinleştirme için bağlam gerektiren onaylayanlar için yararlı olabilir. |
 | Onay gerektir | Rolü etkinleştirmek için uygun kullanıcının onay alması gerekip gerekmediği.<br/><br/> : heavy_check_mark: **Microsoft** , en fazla izne sahip roller için onay ayarlamanızı önerir. Tüm Privileged Identity Management müşterilerin, genel yöneticinin, Kullanıcı yöneticisinin, Exchange yöneticisinin, güvenlik yöneticisinin ve parola yöneticisinin kullanım düzenlerini temel alan, onay kurulumu ile en yaygın rollerdir. |
-| Kişi | Uygun rolü etkinleştirmek için onay gerekiyorsa, isteği onaylaması gereken kişileri listeleyin. Varsayılan olarak, Privileged Identity Management, onaylayanı kalıcı veya uygun olup olmadıklarında ayrıcalıklı rol yöneticisi olan tüm kullanıcılar olarak ayarlar.<br/><br/>**Note:** Bir kullanıcı hem bir Azure AD rolüne hem de rolün bir onaylayana uygun ise kendilerini onaylayamaz.<br/><br/> : heavy_check_mark: **Microsoft** , bir genel yönetici yerine rol ve sık kullananlar hakkında bilgi sahibi olan kullanıcılar için onaylayanları seçmenizi önerir. |
+| Onaylayan | Uygun rolü etkinleştirmek için onay gerekiyorsa, isteği onaylaması gereken kişileri listeleyin. Varsayılan olarak, Privileged Identity Management, onaylayanı kalıcı veya uygun olup olmadıklarında ayrıcalıklı rol yöneticisi olan tüm kullanıcılar olarak ayarlar.<br/><br/>**Note:** Bir kullanıcı hem bir Azure AD rolüne hem de rolün bir onaylayana uygun ise kendilerini onaylayamaz.<br/><br/> : heavy_check_mark: **Microsoft** , bir genel yönetici yerine rol ve sık kullananlar hakkında bilgi sahibi olan kullanıcılar için onaylayanları seçmenizi önerir. |
 | Etkinleştirme süresi | Kullanıcı, süresi dolmadan önce rolde etkinleştirilecek zaman uzunluğu. |
 | Kalıcı yönetici | Rol için kalıcı yönetici olacak (hiçbir şekilde etkinleştirmesi gerekmez) kullanıcıların listesi.<br/><br/> : heavy_check_mark: **Microsoft** , genel Yöneticiler hariç tüm roller için sıfır sistem yöneticisi olmasını önerir. BT hakkında daha fazla bilgi edinmek isteyen kişiler ve bu planın kalıcı olarak etkin olması gerekir. |
 | Etkin yönetici | Azure kaynakları için etkin yönetici, rolünü kullanmak için hiçbir şekilde etkinleştirmesi gereken kullanıcıların listesidir. Bu liste, kullanıcının bu rolü kaybedeceğinizi için bir sona erme saati ayarlayabildiğinden Azure AD rollerinde olduğu gibi kalıcı yönetici olarak adlandırılmaz. |
@@ -341,7 +341,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 #### <a name="azure-ad-roles"></a>Azure AD rolleri
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 1. **Azure AD rolleri** ' ni seçin ve ardından **Roller**' i seçin.
 1. Yapılandırdığınız her bir rol için uygun bir atamaya sahip tüm kullanıcılar için üç nokta (**...**) simgesini seçin.
 1. Rol atamasını kalıcı hale getirmek için **kalıcı yap** seçeneğini belirleyin.
@@ -349,9 +349,9 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 #### <a name="azure-roles"></a>Azure rolleri
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 1. **Azure kaynakları** ' nı seçin ve ardından geri almak istediğiniz bir abonelik veya kaynak seçin.
-1. **Rolleri**seçin.
+1. **Rolleri** seçin.
 1. Yapılandırdığınız her bir rol için uygun bir atamaya sahip tüm kullanıcılar için üç nokta (**...**) simgesini seçin.
 1. Rol atamasını kalıcı hale getirmek için **kalıcı yap** seçeneğini belirleyin.
 
@@ -364,7 +364,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 Kuruluşunuzun güvenliğini sağlamak için Privileged Identity Management yerleşik uyarı işlevlerini kullanma hakkında daha fazla bilgi için bkz. [güvenlik uyarıları](pim-how-to-configure-security-alerts.md#security-alerts). Bu uyarılar şunları içerir: Yöneticiler ayrıcalıklı roller kullanmıyor, roller Privileged Identity Management dışında atanıyor, roller çok sık ve daha fazla etkinleştiriliyor. Kuruluşunuzu tam olarak korumak için, uyarı listenizde düzenli olarak gidip sorunları düzelmelisiniz. Uyarılarınızı aşağıdaki şekilde görüntüleyebilir ve çözebilirsiniz:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 1. **Azure AD rolleri** ' ni seçin ve ardından **Uyarılar**' ı seçin.
 
 > [!TIP]

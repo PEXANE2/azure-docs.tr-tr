@@ -10,6 +10,8 @@
   items:
     - name: GitOps kullanarak yapılandırmaları dağıtma
       href: tutorial-use-gitops-connected-cluster.md
+    - name: Gilar ile CI/CD 'yi uygulama
+      href: tutorial-gitops-ci-cd.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Bir kümeyi Azure yaya bağlama
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: Konfigürasyonlar ve Gilar
       href: conceptual-configurations.md
+    - name: Gilar kullanarak CI/CD iş akışı
+      href: conceptual-gitops-ci-cd.md
     - name: Sık Sorulan Sorular
       href: faq.md
 - name: Nasıl yapılır kılavuzları

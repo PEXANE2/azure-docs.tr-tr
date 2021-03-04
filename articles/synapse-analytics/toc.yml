@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: Ayrılmış SQL havuzuna (eski adıyla SQL DW) geçme
+- name: Adanmış SQL havuzuna geç (eski adıyla SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Genel Bakış
   items:
@@ -48,17 +48,19 @@
   items:
     - name: Hızlı Başlangıçlar
       items:
-        - name: Azure portalı kullanarak çalışma alanı oluşturma
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Azure CLI’yi kullanarak çalışma alanı oluşturma
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Azure PowerShell’i kullanarak çalışma alanı oluşturma
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: Şablonla dağıtma
-          href: quickstart-deployment-template-workspaces.md
+        - name: Çalışma alanı oluşturma
+          items:
+            - name: Azure portal
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM şablonu
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Power BI çalışma alanına bağlanma
           href: quickstart-power-bi.md
@@ -586,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: Python paketi yükleme hatalarını giderme
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Conda özel kanalı oluşturma
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: Not defterlerini ve IDE araçlarını kullanma
           items:
             - name: Not defterlerini yönetme

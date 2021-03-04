@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ec3e06b2d161785b5e6978cdf4cc6415fc0eb592
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663885"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095791"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Azure IoT Hub kullanarak ses yardımcısı uygulamasını yapılandırma
 
@@ -20,7 +20,7 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
 
 ## <a name="update-your-voice-assistant-configuration"></a>Ses Yardımcısı yapılandırmanızı güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) açın ve arama çubuğuna **IoT Hub** yazın. IoT Hub sayfasını açmak için simgeye tıklayın.
+1. [Azure Portal](https://portal.azure.com) açın ve arama çubuğuna **IoT Hub** yazın. IoT Hub sayfasını açmak için simgeye tıklayın.
 
 1. IoT Hub sayfasında, cihazınızın sağlanacağı IoT Hub seçin.
 
@@ -30,7 +30,7 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
 
 1. **Modülleri ayarla**' ya tıklayın.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Set modülleri vurgulanmış şekilde cihaz sayfasının ekran görüntüsü.":::
 
 1. **Container Registry kimlik bilgileri** bölümünde aşağıdaki girdinin bulunduğunu doğrulayın. Gerekirse kimlik bilgilerini ekleyin.
 
@@ -40,30 +40,17 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
 
 1. **IoT Edge modüller** bölümünde **azureearspeechclientmodule**' yi seçin.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Cihazdaki tüm IoT Edge modüllerinin listesini gösteren ekran görüntüsü.":::
 
 1. **Modül ayarları** sekmesine tıklayın. Aşağıdaki yapılandırmayı doğrulayın:
 
-    |Görüntü URI 'SI|Yeniden başlatma Ilkesi|İstenen durum|
-    |---------|--------------|--------------|
-    |azureedgedevices.azurecr.io/azureearspeechclientmodule:preload-devkit |Her|çalıştıran|
+    Görüntü URI 'SI|Yeniden başlatma Ilkesi|İstenen durum
+    ---------|--------------|--------------
+    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit|Her|çalıştıran
 
     Ayarlarınız eşleşmiyorsa, bunları düzenleyin ve **Güncelleştir**' e tıklayın.
 
 1. **Ortam değişkenleri** sekmesine tıklayın. Tanımlı ortam değişkeni olmadığını doğrulayın.
-
-1. **Kapsayıcı oluşturma seçenekleri** sekmesine tıklayın. **Hostconfig** ayarlarınızın aşağıda gösterilenler ile eşleştiğini doğrulayın. Eşleşmiyorsa, ayarlarınızı güncelleştirin.
-
-    ```
-    {
-        "HostConfig": {
-            "Privileged": true,
-            "Binds": [
-                "/dev:/dev"
-            ]
-        }
-    }
-    ```
 
 1. **Module Ikizi ayarları** sekmesine tıklayın. **SpeechConfigs** bölümünü aşağıdaki şekilde güncelleştirin:
 
@@ -72,7 +59,7 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
         "appId": "<Application id for custom command project>",
         "key": "<Speech Resource key for custom command project>",
         "region": "<Region for the speech service>",
-        "keywordModelUrl": "https://aedspeechscenarios.blob.core.windows.net/keyword-tables/computer.table",
+        "keywordModelUrl": "https://aedsamples.blob.core.windows.net/speech/keyword-tables/computer.table",
         "keyword": "computer"
     }
     ```
@@ -88,16 +75,16 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
 1. **Konuşma Studio** giriş sayfasında, **sesli yardımcılar** altında **özel komutlar** ' a tıklayın.
 1. Hedef projenizi seçin.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Konuşma Studio 'daki proje sayfasının ekran görüntüsü.":::
 
 1. Sol taraftaki menü panelinde **Ayarlar** ' a tıklayın.
 1. **AppID** ve **anahtar** , **genel** ayarlar sekmesinde yer alır.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Konuşma projesi genel ayarlarının ekran görüntüsü.":::
 
 1. **Bölgenizi** bulmak için, ayarlar içindeki **lusıs kaynakları** sekmesini açın. **Yazma kaynağı** seçimi bölge bilgilerini içerir.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Görüntüyle.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Konuşma projesi LUSıS kaynaklarının ekran görüntüsü.":::
 
 1. **SpeechConfigs** bilgilerinizi girdikten sonra **Güncelleştir**' e tıklayın.
 
@@ -113,6 +100,8 @@ Bu makalede IoT Hub kullanarak ses Yardımcısı uygulamanızın nasıl yapılan
 
 1. **Oluştur**’a tıklayın.
 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ses Yardımcısı yapılandırmanızı güncelleştirdikten sonra uygulamayla etkileşim kurmak için Azure Percept Studio 'daki tanıtım 'e dönün.
+

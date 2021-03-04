@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674930"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043686"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell modülünü veya Azure CLı 'yi kullanarak performans katmanınızı değiştirin
 
@@ -117,7 +117,7 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Kesinti olmadan bir diskin performans katmanını değiştirme (Önizleme)
 
-Performans katmanınızı kesinti olmadan da değiştirebilirsiniz, bu sayede sanal makineyi serbest bırakmak veya katmanı değiştirmek için diskinizi ayırmanız gerekmez. Önizleme için daha fazla bilgi ve bağlantı kaydolma bağlantısı için [kapalı kalma süresi olmadan performans katmanını değiştirme (Önizleme)](#changing-performance-tier-without-downtime-preview) bölümüne bakın.
+Performans katmanınızı kesinti olmadan da değiştirebilirsiniz, bu sayede sanal makineyi serbest bırakmak veya katmanı değiştirmek için diskinizi ayırmanız gerekmez. Daha fazla bilgi ve önizlemeye yönelik kaydolma bağlantısı için, [kesinti olmadan performans katmanını Değiştir (Önizleme)](#change-performance-tier-without-downtime-preview) bölümüne bakın.
 
 
 Aşağıdaki betik, [ üzerindeCreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)örnek şablon kullanarak temel katmandan daha yüksek bir diskin katmanını güncelleştirecek. ,,, `<yourSubScriptionID>` `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` Ve `<yourDesiredPerformanceTier>` sonra betiği çalıştırın:

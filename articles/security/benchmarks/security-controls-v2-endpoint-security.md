@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b22ba913370b27cd01319a14a2a627d7589ce4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718650"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051523"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Güvenlik denetimi v2: uç nokta güvenliği
 
 Uç nokta güvenliği, uç nokta algılama ve yanıttaki denetimleri ele alır. Bu, Azure ortamlarındaki uç noktalar için uç nokta algılama ve yanıt (EDR) ve kötü amaçlı yazılımdan koruma hizmeti kullanımını içerir.
 
-Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: uç nokta güvenliği](../../governance/policy/samples/azure-security-benchmark#endpoint-security)
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: uç nokta güvenliği](../../governance/policy/samples/azure-security-benchmark.md#endpoint-security)
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: uç nokta algılamayı ve yanıtını kullanın (EDR)
 

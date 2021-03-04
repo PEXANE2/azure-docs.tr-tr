@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480692"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035110"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın
 
@@ -110,7 +110,7 @@ Birincil depolamayla ilgili bir sorun varsa okuma istekleri ikincil depolamaya y
 
 * **SecondaryThenPrimary**
 
-**Locationmode** öğesini **primarythensecondary**olarak belirlediğinizde, birincil uç noktaya ilk okuma isteği yeniden denenebilecek bir hata vererek başarısız olursa istemci, ikincil uç noktaya otomatik olarak başka bir okuma isteği oluşturur. Hata bir sunucu zaman aşımı ise, istemci, hizmetten yeniden denenebilir bir hata vermeden önce zaman aşımı süresinin dolmasını beklemek zorunda kalır.
+**Locationmode** öğesini **primarythensecondary** olarak belirlediğinizde, birincil uç noktaya ilk okuma isteği yeniden denenebilecek bir hata vererek başarısız olursa istemci, ikincil uç noktaya otomatik olarak başka bir okuma isteği oluşturur. Hata bir sunucu zaman aşımı ise, istemci, hizmetten yeniden denenebilir bir hata vermeden önce zaman aşımı süresinin dolmasını beklemek zorunda kalır.
 
 Yeniden denenebilir bir hataya nasıl yanıt vereceğinize karar verirken dikkate alınması gereken temel olarak iki senaryo vardır:
 
@@ -122,7 +122,7 @@ Yeniden denenebilir bir hataya nasıl yanıt vereceğinize karar verirken dikkat
 
     Bu senaryoda, tüm okuma istekleriniz öncelikle birincil uç noktayı deneyeceğinden, zaman aşımının süresinin dolmasını bekleyip ikincil uç noktaya geçiş yapmak için bir performans cezası vardır.
 
-Bu senaryolarda, birincil uç noktada devam eden bir sorun olduğunu ve tüm okuma isteklerini doğrudan ikincil uç noktaya göndererek **Locationmode** özelliğini **yalnızca secondaryolarak**ayarlayarak belirlemeniz gerekir. Şu anda, uygulamayı salt okuma modunda çalışacak şekilde de değiştirmelisiniz. Bu yaklaşım, [devre kesici stili](/azure/architecture/patterns/circuit-breaker)olarak bilinir.
+Bu senaryolarda, birincil uç noktada devam eden bir sorun olduğunu ve tüm okuma isteklerini doğrudan ikincil uç noktaya göndererek **Locationmode** özelliğini **yalnızca secondaryolarak** ayarlayarak belirlemeniz gerekir. Şu anda, uygulamayı salt okuma modunda çalışacak şekilde de değiştirmelisiniz. Bu yaklaşım, [devre kesici stili](/azure/architecture/patterns/circuit-breaker)olarak bilinir.
 
 ### <a name="update-requests"></a>Güncelleştirme istekleri
 
@@ -148,6 +148,12 @@ Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçene
 
 * Depolama isteklerinizi geçirdiğiniz [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) nesnesinde yeniden [**deneme**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) olayı için bir işleyici ekleyin; Bu yöntem bu makalede görüntülenir ve birlikte gelen örnekte kullanılır. Bu olaylar istemci bir isteği yeniden denediğinde, istemcinin bir birincil uç noktada yeniden denenebilir hata ile karşılaşacağını izlemenize olanak sağlar.
 
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
@@ -156,8 +162,15 @@ Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçene
             ...
     };
     ```
+    ---
 
 * Özel bir yeniden deneme ilkesindeki [**değerlendir**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) yönteminde, her yeniden deneme gerçekleştiğinde özel kod çalıştırabilirsiniz. Bir yeniden deneme gerçekleştiğinde kayda ek olarak, bu da yeniden deneme davranışınızı değiştirme fırsatını sağlar.
+
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçene
         return info;
     }
     ```
+    ---
 
 * Üçüncü yaklaşım, uygulamanızda birincil depolama uç noktanıza (küçük bir blobu okumak gibi) sistem durumunu öğrenmek için sürekli okuma istekleri (örneğin, küçük bir blob okuma) ile sürekli olarak ping bir özel izleme bileşeni uygulamaktır. Bu, bazı kaynakları ele geçirebilir, ancak önemli miktarda değildir. Eşiğine ulaşan bir sorun keşfedildiğinde, anahtarı **yalnızca Secondaryve** salt okunurdur modunda gerçekleştirirsiniz.
 
@@ -193,7 +207,7 @@ Bir noktada, birincil uç noktayı kullanmaya ve güncelleştirmelere izin verme
 
 ## <a name="handling-eventually-consistent-data"></a>Sonuçta tutarlı verileri işleme
 
-Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, İkincil bölgedeki verilerin *sonunda tutarlı*olmasını güvence altına alır. Bu, birincil bölgedeki tüm işlemlerin son olarak ikincil bölgede görüneceği, ancak görünmeden önce bir gecikme olabileceği ve ikincil bölgede ilk olarak birincil bölgede uygulandıkları sırada işlem geldiğini garanti edemeyeceği anlamına gelir. İşlemleriniz ikincil bölgeye sıra dışında geldiğinde, İkincil bölgedeki verilerinizi hizmet bitene kadar tutarsız bir durumda olacak *şekilde düşünebilirsiniz.*
+Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, İkincil bölgedeki verilerin *sonunda tutarlı* olmasını güvence altına alır. Bu, birincil bölgedeki tüm işlemlerin son olarak ikincil bölgede görüneceği, ancak görünmeden önce bir gecikme olabileceği ve ikincil bölgede ilk olarak birincil bölgede uygulandıkları sırada işlem geldiğini garanti edemeyeceği anlamına gelir. İşlemleriniz ikincil bölgeye sıra dışında geldiğinde, İkincil bölgedeki verilerinizi hizmet bitene kadar tutarsız bir durumda olacak *şekilde düşünebilirsiniz.*
 
 Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolünün bir üyesi haline getirmek için güncelleştirdiğinizde neler gerçekleşebileceğini gösteren bir örnek gösterilmektedir. Bu örneğin, bu örnek için **çalışan** varlığını güncelleştirmenizi ve bir **yönetici rolü** varlığını, toplam yönetici sayısı sayısıyla güncelleştirmeniz gerekir. Güncelleştirmelerin ikincil bölgede nasıl uygulandığına dikkat edin.
 
@@ -209,7 +223,7 @@ Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolün�
 
 Bu örnekte, istemci, T5 adresindeki ikincil bölgeden okuma yapmak için anahtar olduğunu varsayalım. Şu anda **yönetici rolü** varlığını başarıyla okuyabilir, ancak varlık, ikincil bölgede şu anda yönetici olarak işaretlenen **çalışan** varlık sayısıyla tutarlı olmayan yönetici sayısı için bir değer içerir. İstemciniz bu değeri, tutarsız bilgiler olması riskiyle tek bir şekilde görüntüleyebilir. Alternatif olarak, istemci, güncelleştirmeler sıralı olmadığından ve kullanıcıyı bu olguyu bilgilendirdiğinden, **yönetici rolünün** potansiyel olarak tutarsız bir durumda olduğunu belirlemeyi deneyebilir.
 
-İstemci potansiyel olarak tutarsız veriler olduğunu tanımak için, bir depolama hizmetini sorgulayarak istediğiniz zaman alabileceğiniz *son eşitleme zamanının* değerini kullanabilir. Bu, İkincil bölgedeki verilerin en son tutarlı olduğu ve hizmetin bu noktadan önce tüm işlemleri uyguladığı zamanı gösterir. Yukarıdaki örnekte, hizmet **çalışan** varlığı ikincil bölgeye eklendikten sonra, son eşitleme zamanı *T1*olarak ayarlanır. Hizmet, *T6*olarak ayarlandığında, İkincil bölgedeki **çalışan** varlığını güncelleştirene kadar *T1* konumunda kalır. İstemci *T5*adresinde varlığı okurken son eşitleme saatini alıyorsa, varlığı varlığındaki zaman damgasıyla karşılaştırabilir. Varlıktaki zaman damgası son eşitleme zamanından daha sonra ise, varlık potansiyel olarak tutarsız bir durumda olur ve uygulamanız için uygun eylemi gerçekleştirebilirsiniz. Bu alanın kullanılması için son birincil güncelleştirmenin ne zaman tamamlandığını bilmeniz gerekir.
+İstemci potansiyel olarak tutarsız veriler olduğunu tanımak için, bir depolama hizmetini sorgulayarak istediğiniz zaman alabileceğiniz *son eşitleme zamanının* değerini kullanabilir. Bu, İkincil bölgedeki verilerin en son tutarlı olduğu ve hizmetin bu noktadan önce tüm işlemleri uyguladığı zamanı gösterir. Yukarıdaki örnekte, hizmet **çalışan** varlığı ikincil bölgeye eklendikten sonra, son eşitleme zamanı *T1* olarak ayarlanır. Hizmet, *T6* olarak ayarlandığında, İkincil bölgedeki **çalışan** varlığını güncelleştirene kadar *T1* konumunda kalır. İstemci *T5* adresinde varlığı okurken son eşitleme saatini alıyorsa, varlığı varlığındaki zaman damgasıyla karşılaştırabilir. Varlıktaki zaman damgası son eşitleme zamanından daha sonra ise, varlık potansiyel olarak tutarsız bir durumda olur ve uygulamanız için uygun eylemi gerçekleştirebilirsiniz. Bu alanın kullanılması için son birincil güncelleştirmenin ne zaman tamamlandığını bilmeniz gerekir.
 
 Son eşitleme zamanını nasıl denetleyeceğinizi öğrenmek için bkz. [depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
 
@@ -218,6 +232,13 @@ Son eşitleme zamanını nasıl denetleyeceğinizi öğrenmek için bkz. [depola
 Yeniden denenebilir hata ile karşılaştığında uygulamanızın beklendiği gibi davrandığını test etmek önemlidir. Örneğin, bir sorun algıladığında uygulamanın ikinciye ve salt okuma moduna geçiş yapması ve birincil bölge yeniden kullanılabilir olduğunda geri geçiş yapmanız gerekir. Bunu yapmak için yeniden denenebilir hata benzetimi yapmak ve ne sıklıkta gerçekleştikleri denetlemek için bir yol gerekir.
 
 Bir betikteki HTTP yanıtlarını kesme ve değiştirme için [Fiddler](https://www.telerik.com/fiddler) kullanabilirsiniz. Bu betik, birincil uç noktanıza gelen yanıtları tanımlayabilir ve HTTP durum kodunu depolama Istemci kitaplığının yeniden denenebilir hatası olarak tanıdığı bir hata olarak değiştirebilir. Bu kod parçacığı, 502 durumunu döndürmek için **employeedata** tablosuna yönelik okuma isteklerine yapılan yanıtları Izleyen bir Fiddler betiğinin basit bir örneğini gösterir:
+
+
+# <a name="java-v12"></a>[Java V12](#tab/current)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v11"></a>[Java v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

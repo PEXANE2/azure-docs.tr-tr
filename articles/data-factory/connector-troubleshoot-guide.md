@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727830"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042445"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -831,7 +831,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
     Özel anahtar içeriği anahtar kasanızdan ise, doğrudan SFTP bağlantılı hizmetine yüklerseniz özgün anahtar dosyası çalışabilir.
 
-    Daha fazla bilgi için bkz. [Azure Data Factory kullanarak SFTP sunucusundan verileri kopyalama](./connector-sftp.md#using-ssh-public-key-authentication). Özel anahtar içeriği Base64 kodlamalı SSH özel anahtar içeridir.
+    Daha fazla bilgi için bkz. [Azure Data Factory kullanarak SFTP sunucusundan verileri kopyalama](./connector-sftp.md#use-ssh-public-key-authentication). Özel anahtar içeriği Base64 kodlamalı SSH özel anahtar içeridir.
 
     *Tüm* özgün özel anahtar dosyasını Base64 kodlaması ile kodlayın ve kodlanmış dizeyi anahtar kasanıza depolayın. Özgün özel anahtar dosyası, dosyadan **karşıya yükle** ' yi seçerseniz SFTP bağlantılı hizmetinde çalışabileceğiniz bir dosyadır.
 

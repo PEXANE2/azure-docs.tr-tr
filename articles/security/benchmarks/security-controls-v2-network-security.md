@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fbe71b0ae7bf711d740cbba38c84b68de553f031
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b47f833a3b47dae145aa18eb6eda0c6bd95f6689
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698561"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042922"
 ---
 # <a name="security-control-v2-network-security"></a>Güvenlik denetimi v2: ağ güvenliği
 
 Ağ güvenliği, Azure ağlarını güvenli hale getirmeye ve korumanıza yönelik denetimleri ele alır. Bu, sanal ağların güvenliğini sağlamayı, özel bağlantılar oluşturmayı, dış saldırıları engellemeyi ve azaltıcı ve DNS güvenliğini içerir.
 
-Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: ağ güvenliği](../../governance/policy/samples/azure-security-benchmark#network-security)
+Geçerli yerleşik Azure Ilkesini görmek için bkz. [Azure Güvenlik kıyaslaması uyumluluğu yerleşik girişiminin ayrıntıları: ağ güvenliği](../../governance/policy/samples/azure-security-benchmark.md#network-security)
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: iç trafik için güvenlik uygulama
 

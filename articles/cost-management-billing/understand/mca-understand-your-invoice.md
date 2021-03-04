@@ -9,18 +9,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 766136731cb92b1bd4f0965d4929b1ac5eda14dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690502"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050452"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft Müşteri Sözleşmesi faturanızdaki koşullar
 
 Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin Azure ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 
 Faturanızda ücretlerinizin özeti ve ödeme yönergeleri yer alır. [Azure portalından](https://portal.azure.com/) Taşınabilir Belge Biçiminde (.pdf) indirilebilir veya e-postayla gönderilebilir. Daha fazla bilgi için bkz. [Microsoft Azure faturanızı görüntüleme ve indirme](download-azure-invoice.md).
+
+Faturanızla ilgili bilgi edinmek ve bu faturadaki ücretleri çözümlemek için [Microsoft müşteri anlaşması faturanızı](https://www.youtube.com/watch?v=e2LGZZ7GubA) öğrenin.
+
+>[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Faturalama dönemi
 
@@ -41,7 +45,7 @@ Aşağıdaki bölümlerde, faturanızda gördüğünüz önemli terimler ve her 
 | Kime Satıldı |Ödeme hesabı özelliklerinde bulunan tüzel kişiliğinizin adresi|
 | Fatura adresi |Faturalama profili özelliklerinde bulunan, faturayı alan faturalama profilinin fatura adresi|
 | Faturalama Profili |Faturayı alan faturalama profilinin adı |
-| P.O. number |İzleme için atadığınız isteğe bağlı bir satınalma siparişi numarası |
+| P.O. sayı |İzleme için atadığınız isteğe bağlı bir satınalma siparişi numarası |
 | Fatura numarası |İzleme amacıyla kullanılan, Microsoft tarafından oluşturulan benzersiz bir fatura numarası |
 | Fatura tarihi |Faturanın oluşturulduğu tarih, genellikle Faturalama döneminin sona erdiği günden beş ila 12 gün sonrasıdır. Faturalama profili özelliklerinden fatura tarihinizi kontrol edebilirsiniz.|
 | Ödeme koşulları |Microsoft faturanız için ödeme şekliniz. *Net 30 gün*, fatura tarihinden sonra 30 gün içinde ödeme yapacağınız anlamına gelir. |

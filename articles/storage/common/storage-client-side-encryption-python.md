@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008947"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043754"
 ---
 # <a name="client-side-encryption-with-python"></a>Python ile istemci tarafı şifreleme
 
@@ -54,7 +54,7 @@ Zarf tekniği aracılığıyla şifre çözme aşağıdaki şekilde çalışmakt
 Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kullanır. Özellikle, AES ile [Şifre blok zincirleme (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) modu. Her bir hizmet biraz farklı çalışır, bu nedenle bunlardan her birini burada ele alınacaktır.
 
 ### <a name="blobs"></a>Bloblar
-İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **Create** _ yöntemlerini kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir ve hem karşıya yükleme hem de indirme için paralelleştirme kullanılabilir.
+İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **Create*** yöntemlerini kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir ve hem karşıya yükleme hem de indirme için paralelleştirme kullanılabilir.
 
 Şifreleme sırasında, istemci kitaplığı, 16 baytlık rastgele bir başlatma vektörü (IV), 32 baytlık bir rastgele içerik şifreleme anahtarı (CEK) ile birlikte oluşturulur ve bu bilgileri kullanarak blob verilerinin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri, hizmet üzerindeki şifreli blob ile birlikte blob meta verileri olarak depolanır.
 
@@ -63,9 +63,9 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir blob 'u indirmek, _*Get* *_ kolaylık yöntemlerini kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Şifrelenmiş bir Blobun indirilmesi, **Get*** kullanışlı yöntemler kullanılarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
-Şifreli Blobun rastgele bir aralığı indirme (Aralık parametreleri geçirilen yöntem _*Al* *_ ), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılara sunulan aralığı ayarlamayı içerir.
+Şifrelenmiş Blobun rastgele bir aralığı indirme (Aralık parametrelerine geçilen bir **Get*** yöntemi), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılar tarafından verilen aralığı ayarlamayı içerir.
 
 Blok Blobları ve sayfa Blobları yalnızca bu şema kullanılarak şifrelenebilir/çözülür. Şu anda, ekleme bloblarını şifrelemek için destek yoktur.
 
@@ -114,7 +114,7 @@ Toplu işin şifreleme ilkesi kullanılarak toplu işe eklenen varlıkların şi
 > [!IMPORTANT]
 > İstemci tarafı şifrelemeyi kullanırken bu önemli noktalara dikkat edin:
 > 
-> _ Şifrelenen bir bloba okurken veya yazarken, tüm blob karşıya yükleme komutlarını ve Aralık/tam blob indirme komutlarını kullanın. Put bloğu, put bloğu listesi, sayfa yazma veya sayfa temizleme gibi protokol işlemlerini kullanarak şifrelenmiş bir blob 'a yazma yapmaktan kaçının; Aksi takdirde, şifreli blobu bozuyor ve okunamaz hale getirebilirsiniz.
+> * Şifrelenmiş bir bloba okurken veya yazarken, tüm blob karşıya yükleme komutlarını ve Aralık/tam blob indirme komutlarını kullanın. Put bloğu, put bloğu listesi, sayfa yazma veya sayfa temizleme gibi protokol işlemlerini kullanarak şifrelenmiş bir blob 'a yazma yapmaktan kaçının; Aksi takdirde, şifreli blobu bozuyor ve okunamaz hale getirebilirsiniz.
 > * Tablolar için, benzer bir kısıtlama vardır. Şifrelenmiş özellikleri, şifreleme meta verilerini güncelleştirmeden güncelleştirmemeye dikkat edin.
 > * Şifrelenmiş blob üzerinde meta verileri ayarlarsanız, verilerin ayarlanmamasından dolayı, şifre çözme için gereken şifrelemeyle ilgili meta verilerin üzerine yazabilirsiniz. Bu, anlık görüntüler için de geçerlidir; şifrelenmiş bir Blobun anlık görüntüsünü oluştururken meta verileri belirtmekten kaçının. Meta verilerin ayarlanması gerekiyorsa, geçerli şifreleme meta verilerini almak için önce **get_blob_metadata** yöntemini çağırdığınızdan emin olun ve meta veriler ayarlanmakta iken eşzamanlı yazmaları önleyin.
 > * Yalnızca şifrelenmiş verilerle çalışması gereken kullanıcılar için hizmet nesnesinde **require_encryption** bayrağını etkinleştirin. Daha fazla bilgi için aşağıya bakın.
@@ -150,6 +150,12 @@ Kullanıcılar isteğe bağlı olarak, tüm karşıya yüklemeler ve indirmeleri
 ### <a name="blob-service-encryption"></a>Blob hizmeti şifrelemesi
 Blockblobservice nesnesindeki şifreleme ilkesi alanlarını ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
@@ -171,9 +177,16 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Kuyruk hizmeti şifreleme
 QueueService nesnesindeki şifreleme ilkesi alanlarını ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -195,11 +208,18 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+---
 
 ### <a name="table-service-encryption"></a>Tablo hizmeti şifrelemesi
 Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **tableservice** üzerinde bir **encryption_resolver_function** belirtmeli ya da EntityProperty üzerinde Encrypt özniteliğini ayarlamalısınız.
 
 ### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -233,13 +253,21 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+---
 
 ### <a name="using-attributes"></a>Öznitelikleri kullanma
 Yukarıda belirtildiği gibi, bir özellik bir EntityProperty nesnesinde depolanarak ve şifreleme alanı ayarlanarak şifreleme için işaretlenebilir.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Şu anda Azure Storage istemci kitaplıklarının 12. x sürümünü yansıtan kod parçacıkları oluşturmak için çalışıyoruz. Daha fazla bilgi için bkz. [Azure Storage V12 Istemci kitaplıklarını duyurusu](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Şifreleme ve performans
 Depolama verilerinizi şifrelerken ek performans yükü ile sonuçlandığına göz önünde unutmayın. İçerik anahtarı ve IV oluşturulmalıdır, içeriğin kendisi şifrelenmeli ve ek meta verilerin biçimlendirilmesi ve karşıya yüklenmesi gerekir. Bu ek yük, Şifrelenmekte olan veri miktarına bağlı olarak farklılık gösterecektir. Müşterilerin geliştirme sırasında uygulamalarının performansını her zaman test etmenizi öneririz.

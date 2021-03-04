@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041697"
+ms.locfileid: "102098257"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK 'yi ayarlama ve ilk AI modelinizi dağıtma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıç herhangi bir sorunla karşılaşırsanız, olası çöz�
 - Azure Percept DK.
 - Wi-Fi özelliğine ve bir Web tarayıcısına sahip bir Windows, Linux veya OS X tabanlı ana bilgisayar.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure hesabının abonelikte "sahip" veya "katkıda bulunan" rolü olmalıdır. Azure rol tanımları hakkında daha fazla bilgi edinin
+- Azure hesabının abonelikte "sahip" veya "katkıda bulunan" rolü olmalıdır. [Azure rol tanımları](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)hakkında daha fazla bilgi edinin.
 
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 

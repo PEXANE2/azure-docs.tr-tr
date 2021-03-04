@@ -3,17 +3,18 @@ title: Android haritalar 'da harita olaylarını işleme | Microsoft Azure harit
 description: Kullanıcılar eşlemelerle etkileşim kurarken hangi olayların tetiklediği hakkında bilgi edinin. Desteklenen tüm harita olaylarının listesini görüntüleyin. Olayları işlemek için Azure Maps Android SDK kullanma konusuna bakın.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 818d33947fa079a130c3009a34dcb9b72ad52f91
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097355"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Eşlemele etkileşim kurma (Android SDK)
 
@@ -28,14 +29,22 @@ Map, tüm olaylarını özelliği aracılığıyla yönetir `events` . Aşağıd
 | `OnCameraIdle`         | `()`                 | <p>Eşleme "boşta" durumuna girmeden önce oluşturulan son çerçeveden sonra harekete geçirilir:<ul><li>Devam eden bir kamera geçişi yok.</li><li>Şu anda istenen tüm kutucuklar yüklendi.</li><li>Tüm belirme/geçiş animasyonları tamamlandı.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Bir görünümden diğerine animasyon eklenmiş bir geçiş sırasında, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak tekrar tekrar tetiklenir. |
 | `OnCameraMoveCanceled` | `()`                 | Kameraya bir taşıma isteği iptal edildiğinde harekete geçirilir. |
-| `OnCameraMoveStarted`  | `(int reason)`       | Eşleme, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak bir görünümden diğerine geçiş yapmaya başlamadan hemen önce tetiklenir. `reason`Olay dinleyicisinin bağımsız değişkeni, kamera hareketinin nasıl başlatılmasının ayrıntılarını sağlayan bir tamsayı değeri döndürür. Olası nedenlerinin listesi aşağıda verilmiştir:<ul><li>1: hareket</li><li>2: Geliştirici animasyonu</li><li>3: API animasyonu</li></ul>   |
+| `OnCameraMoveStarted`  | `(int reason)`       | Eşleme, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak bir görünümden diğerine geçiş yapmaya başlamadan hemen önce tetiklenir. `reason`Olay dinleyicisinin bağımsız değişkeni, kamera hareketinin nasıl başlatılmasının ayrıntılarını sağlayan bir tamsayı değeri döndürür. Aşağıdaki listede olası nedenler özetlenmektedir:<ul><li>1: hareket</li><li>2: Geliştirici animasyonu</li><li>3: API animasyonu</li></ul>   |
 | `OnClick`              | `(double lat, double lon)` | Eşleme basıldığında ve haritada aynı noktada bırakıldığında harekete geçirilir. |
 | `OnFeatureClick`       | `(List<Feature>)`    | Eşleme basıldığında harekete geçirilir ve bir özellikte aynı noktada serbest bırakılır.  |
+| `OnLayerAdded` | `(Layer layer)` | Haritaya bir katman eklendiğinde harekete geçirildi. |
+| `OnLayerRemoved` | `(Layer layer)` | Eşlemden bir katman kaldırıldığında harekete geçirilir. |
+| `OnLoaded` | `()` | Tüm gerekli kaynaklar indirildikten ve haritanın ilk görsel olarak işlenmesi tamamlandıktan hemen sonra harekete geçirilir. |
 | `OnLongClick`          | `(double lat, double lon)` | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra haritada aynı noktada serbest bırakılır. |
 | `OnLongFeatureClick `  | `(List<Feature>)`    | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra bir özellikte aynı noktada serbest bırakılır. |
 | `OnReady`              | `(AzureMap map)`     | Eşleme başlangıçta yüklendiğinde veya uygulama yönü değiştiğinde ve gereken en az sayıda eşleme kaynağı yüklendiğinde ve eşleme, program aracılığıyla ile etkileşim için hazırlanmaya hazırsa tetiklenir. |
+| `OnSourceAdded` | `(Source source)` | `DataSource`Eşlemeye bir veya `VectorTileSource` eklendiğinde tetiklenir. |
+| `OnSourceRemoved` | `(Source source)` | `DataSource`Eşlemden bir veya `VectorTileSource` kaldırıldığında tetiklenir. |
+| `OnStyleChange` | `()` | Haritanın stili yüklenirken veya değiştiğinde harekete geçirilir. |
 
 Aşağıdaki kod,, `OnClick` `OnFeatureClick` ve olaylarının haritaya nasıl ekleneceğini gösterir `OnCameraMove` .
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 map.events.add((OnClick) (lat, lon) -> {
@@ -51,11 +60,33 @@ map.events.add((OnCameraMove) () -> {
 });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.events.add(OnClick { lat: Double, lon: Double -> 
+    //Map clicked.
+})
+
+map.events.add(OnFeatureClick { features: List<Feature?>? -> 
+    //Feature clicked.
+})
+
+map.events.add(OnCameraMove {
+    //Map camera moved.
+})
+```
+
+::: zone-end
+
 Daha fazla bilgi için harita ve tetikleme olaylarıyla nasıl etkileşim kuracağınızı öğrenmek için [harita](how-to-use-android-map-control-library.md#navigating-the-map) belgelerine bakın.
 
 ## <a name="scope-feature-events-to-layer"></a>Katman özelliği olaylarını katmana kapsama
 
-`OnFeatureClick`Veya `OnLongFeatureClick` olaylarını haritaya eklerken, BIR katman kimliği ikinci bir parametre olarak geçirilebilir. Bir katman KIMLIĞI geçirildiğinde, olay yalnızca bu katmanda olay gerçekleşirse harekete geçirilir. Katmanlara kapsamlı olaylar sembol, kabarcık, çizgi ve çokgen katmanları tarafından desteklenir.
+`OnFeatureClick`Veya `OnLongFeatureClick` olaylarını haritaya eklerken, bir katman örneği veya katman kimliği ikinci bir parametre olarak geçirilebilir. Bir katman geçirildiğinde, olay yalnızca bu katmanda olay gerçekleşirse harekete geçirilir. Katmanlara kapsamlı olaylar sembol, kabarcık, çizgi ve çokgen katmanları tarafından desteklenir.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source.
@@ -72,13 +103,48 @@ map.layers.add(layer);
 //Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnFeatureClick) (features) -> {
     //One or more features clicked.
-}, layer.getId());
+}, layer);
 
 //Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnLongFeatureClick) (features) -> {
     //One or more features long clicked.
-}, layer.getId());
+}, layer);
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source.
+val source = DataSource()
+map.sources.add(source)
+
+//Add data to the data source.
+source.add(Point.fromLngLat(0, 0))
+
+//Create a layer and add it to the map.
+val layer = BubbleLayer(source)
+map.layers.add(layer)
+
+//Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
+map.events.add(
+    OnFeatureClick { features: List<Feature?>? -> 
+        //One or more features clicked.
+    },
+    layer
+)
+
+//Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
+map.events.add(
+    OnLongFeatureClick { features: List<Feature?>? -> 
+         //One or more features long clicked.
+    },
+    layer
+)
+```
+
+::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

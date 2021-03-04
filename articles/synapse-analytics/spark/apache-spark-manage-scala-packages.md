@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695970"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098715"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için Scala ve Java paketlerini yönetme
 
@@ -37,13 +37,10 @@ Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil e
 
 Çalışma alanı paketleri eklemek için:
 1.   >  **Çalışma alanı paketlerini** Yönet sekmesine gidin.
-2. Dosya seçiciyi kullanarak tekerlek dosyalarınızı karşıya yükleyin.
-3. Dosyalar Azure SYNAPSE çalışma alanına yüklendikten sonra, bu tekerlek dosyalarını belirli bir Apache Spark havuzuna ekleyebilirsiniz.
+2. Dosya seçiciyi kullanarak jar dosyalarınızı karşıya yükleyin.
+3. Dosyalar Azure SYNAPSE çalışma alanına yüklendikten sonra, bu jar dosyalarını belirli bir Apache Spark havuzuna ekleyebilirsiniz.
 
 ![Çalışma alanı paketlerini vurgulayan ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Çalışma alanı paketlerini görüntüle")
-
-> [!IMPORTANT]
-> Çalışma alanı paketlerinin yüklenmesi Şu anda veri dışlanan korumalı (DEP) çalışma alanları içinde henüz desteklenmiyor.
 
 ## <a name="pool-libraries"></a>Havuz kitaplıkları
 Spark uygulamanız için kullanmak istediğiniz Scala ve Java paketlerini tanımladıktan sonra bunları bir Spark havuzuna yükleyebilirsiniz. Havuz düzeyi kitaplıklar, havuzda çalışan tüm not defterleri ve işler için kullanılabilir.

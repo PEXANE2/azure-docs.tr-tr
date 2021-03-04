@@ -1,17 +1,16 @@
 ---
 title: VM Insights Konuk durumu sorunlarını giderme (Önizleme)
 description: VM öngörüleri sistem durumu ile ilgili sorunlar yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımlarını açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d8b37569ebaa8e75be601a1efd65a23a61aeaa75
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703928"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051948"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM Insights Konuk durumu sorunlarını giderme (Önizleme)
 Bu makalede, VM Insights sistem durumu ile ilgili sorun yaşıyorsanız gerçekleştirebileceğiniz sorun giderme adımları açıklanmaktadır.

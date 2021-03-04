@@ -1,15 +1,14 @@
 ---
 title: Azure Izleyici ile tümleştirilen iş ortakları
 description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: 8b4a30fb26a0b66d31fe16016e0a88fbfb9bbd03
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b971aa70411212e96c39e6bf824fa9e28bd8a1f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711000"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052373"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure İzleyici iş ortağı tümleştirmeleri
 

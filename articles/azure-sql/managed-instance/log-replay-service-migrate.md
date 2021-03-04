@@ -4,17 +4,17 @@ description: Günlük yeniden yürütme hizmeti kullanarak SQL Server veritabanl
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74403b7ec1469ce7cdaadc9931eb5ac95f55f6f5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690796"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096845"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Günlük yeniden yürütme hizmeti 'ni (Önizleme) kullanarak SQL Server veritabanlarını SQL yönetilen örneğine geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ LRS, otomatik tamamlama veya sürekli modda başlatılabilir. Otomatik tamamlama
 
 LRS durdurulduktan sonra otomatik olarak otomatik tamamlama veya cutover üzerinde el ile, SQL yönetilen örneği üzerinde çevrimiçi hale getirilen bir veritabanı için geri yükleme işlemi devam ettirilemez. Geçiş otomatik tamamlama veya cutover üzerinde el ile tamamlandıktan sonra ek yedekleme dosyalarını geri yüklemek için, veritabanının silinmesi ve tüm yedekleme zincirinin, LRS yeniden başlatılarak sıfırdan geri yüklenmesi gerekir.
 
-![SQL yönetilen örneği için açıklanan günlük yeniden yürütme hizmeti düzenleme adımları](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+   :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="SQL yönetilen örneği için açıklanan günlük yeniden yürütme hizmeti düzenleme adımları" border="false":::
     
 | İşlem | Ayrıntılar |
 | :----------------------------- | :------------------------- |
@@ -193,18 +193,30 @@ WITH COMPRESSION, CHECKSUM
 Azure Blob depolama, SQL Server ile SQL yönetilen örneği arasında yedekleme dosyaları için bir ara depolama alanı olarak kullanılır. LRS hizmeti tarafından kullanılmak üzere liste ve salt okuma izinlerinin bulunduğu SAS kimlik doğrulama belirtecinin oluşturulması gerekir. Bu, LRS hizmetinin Azure Blob depolama alanına erişmesini ve yedekleme dosyalarını kullanarak bunları SQL yönetilen örneği 'ne geri yüklemesini sağlayacaktır. LRS kullanımı için SAS kimlik doğrulaması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal Depolama Gezgini erişin
+
 2. Blob kapsayıcılarını Genişlet
-3. Blob kapsayıcısına sağ tıklayın ve paylaşılan erişim Imzası  ![ günlüğü yeniden yürütme hizmeti al SAS kimlik doğrulama belirteci oluştur ' u seçin.](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+
+3. Blob kapsayıcısına sağ tıklayın ve paylaşılan erişim Imzasını Al ' ı seçin.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Günlük yeniden yürütme hizmeti-paylaşılan erişim Imzasını al":::
+
 4. Belirteç süre sonu zaman çerçevesini seçin. Belirtecin geçişinizin süresi için geçerli olduğundan emin olun.
+
 5. Belirtecin UTC için saat dilimini veya yerel saati seçin
-    - Belirtecin saat dilimi ve SQL yönetilen örneğiniz uyuşmayabilir. SAS belirtecinin, saat dilimlerinin dikkate alınması için uygun zaman geçerliliği olduğundan emin olun. Mümkünse, saat dilimini planlı geçiş pencerenizin daha önceki ve sonraki bir zamanına ayarlayın.
+
+   - Belirtecin saat dilimi ve SQL yönetilen örneğiniz uyuşmayabilir. SAS belirtecinin, saat dilimlerinin dikkate alınması için uygun zaman geçerliliği olduğundan emin olun. Mümkünse, saat dilimini planlı geçiş pencerenizin daha önceki ve sonraki bir zamanına ayarlayın.
+
 6. Yalnızca oku ve yalnızca izinleri Listele ' ı seçin
-    - Başka hiçbir izin seçilmelidir, aksi takdirde LRS başlatılamaz. Bu güvenlik gereksinimi tasarıma göre yapılır.
-7. Oluştur düğme günlüğü yeniden  ![ yürütme HIZMETI SAS kimlik doğrulama belirteci oluştur ' a tıklayın](./media/log-replay-service-migrate/lrs-sas-token-02.png)
 
-SAS kimlik doğrulaması, daha önce belirttiğiniz zaman geçerliliği ile oluşturulacaktır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, oluşturulan belirtecin URI sürümüne ihtiyacınız olacaktır.
+   - Başka hiçbir izin seçilmelidir, aksi takdirde LRS başlatılamaz. Bu güvenlik gereksinimi tasarıma göre yapılır.
 
-![Günlük yeniden yürütme hizmeti tarafından üretilen SAS kimlik doğrulama URI örneği](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+7. Oluştur düğmesine tıklayın
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Günlük yeniden yürütme hizmeti-SAS kimlik doğrulama belirteci oluştur":::
+
+   SAS kimlik doğrulaması, daha önce belirttiğiniz zaman geçerliliği ile oluşturulacaktır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, oluşturulan belirtecin URI sürümüne ihtiyacınız olacaktır.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Günlük yeniden yürütme hizmeti-URI paylaşılan erişim imzasını kopyalama":::
 
 ### <a name="copy-parameters-from-sas-token-generated"></a>Oluşturulan SAS belirtecinden parametreleri Kopyala
 
@@ -212,7 +224,7 @@ LRS 'yi başlatmak için SAS belirtecini düzgün bir şekilde kullanabilmek iç
 - StorageContainerUri ve 
 - Aşağıdaki görüntüde gösterildiği gibi, bir soru işareti (?) ile ayrılmış StorageContainerSasToken.
 
-    ![Günlük yeniden yürütme hizmeti tarafından üretilen SAS kimlik doğrulama URI örneği](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Günlük yeniden yürütme hizmeti tarafından üretilen SAS kimlik doğrulama URI örneği" border="false":::
 
 - "Https://" ile başlayan ilk bölüm, soru işareti (?), LRS 'ye girişte olarak beslendiği StorageContainerURI parametresi için kullanılmaz. Bu, veritabanı yedekleme dosyalarının depolandığı klasör hakkında LRS bilgileri verir.
 - İkinci bölüm, soru işaretinden (?) sonra, "SP =" örneğinde ve dizenin sonu StorageContainerSasToken parametresi olana kadar tüm şekilde başlar. Bu, belirtilen süre boyunca geçerli olan gerçek imzalı kimlik doğrulama belirtecidir. Bu bölümün gösterildiği gibi "SP =" ile başlaması gerekmez ve servis talebinizi farklılık gösterebilir.
@@ -221,11 +233,11 @@ Parametreleri şu şekilde kopyalayın:
 
 1. Belirtecin ilk bölümünü, soru işaretine (?) kadar https://' dan başlayarak, aşağıdaki ekran görüntüsünde gösterildiği gibi, PowerShell 'de StorageContainerUri parametresi veya LRS 'yi başlatmak için CLı olarak kullanana kadar kopyalayın.
 
-    ![Günlük yeniden yürütme hizmeti kopya StorageContainerUri parametresi](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="Günlük yeniden yürütme hizmeti kopya StorageContainerUri parametresi":::
 
 2. Belirtecin, soru işareti (?) ile başlayan ikinci bölümünü, dizenin sonuna kadar tüm şekilde kopyalayın ve aşağıdaki ekran görüntüsünde gösterildiği gibi PowerShell ya da LRS 'yi başlatmak için PowerShell veya CLı ' de StorageContainerSasToken parametresi olarak kullanın.
 
-    ![Günlük yeniden yürütme hizmeti kopyalama StorageContainerSasToken parametresi](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="Günlük yeniden yürütme hizmeti kopyalama StorageContainerSasToken parametresi":::
 
 > [!IMPORTANT]
 > - Azure Blob depolama için SAS belirtecinin izinlerinin salt okunmalıdır ve yalnızca liste olması gerekir. SAS kimlik doğrulama belirteci için başka herhangi bir izin verildiyse, LRS hizmetinin başlaması başarısız olur. Bu güvenlik gereksinimleri tasarıma göre yapılır.

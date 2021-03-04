@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890777"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044094"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Haritaya Çokgen kalıp ekleme
 
@@ -30,22 +30,21 @@ Bu makalede, Çokgen katman alanlarının `Polygon` ve `MultiPolygon` özellik g
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Yükseltilmiş Çokgen" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>yükseltilmiş Çokgen</a> 'e bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a></iframe>
-
+Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>yükseltilmiş Çokgen</a> 'e bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a></iframe>
 
 ## <a name="add-data-driven-polygons"></a>Veri odaklı çokgenler ekleme
 
-Bir choroptath eşlemesi, Çokgen katman kullanılarak oluşturulabilir. , `height` `fillColor` `Polygon` Ve özellik geometrileri içindeki istatistiksel değişkenin ölçüsünün ve yer aldığı katman özelliklerini ayarlayın `MultiPolygon` . Aşağıdaki kod örneğinde, durum ile popülasyon yoğunluğu ölçüsünün temelinde U. S ' nin yükseltilmiş bir choroptath Haritası gösterilmektedir.
+Bir choroptath eşlemesi, Çokgen katman kullanılarak oluşturulabilir. , `height` `fillColor` `Polygon` Ve özellik geometrileri içindeki istatistiksel değişkenin ölçüsünün ve yer aldığı katman özelliklerini ayarlayın `MultiPolygon` . Aşağıdaki kod örneği,, popülasyon yoğunluğunun duruma göre ölçümüne göre Birleşik Devletler yükseltilmiş bir choroptath haritasını gösterir.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Yükseltilmiş choroptath Haritası" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () tarafından kullanılan kalem ile <a href='https://codepen.io/azuremaps/pen/eYYYNox'>harita yükseltme</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () tarafından kullanılan kalem ile <a href='https://codepen.io/azuremaps/pen/eYYYNox'>harita yükseltme</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="add-a-circle-to-the-map"></a>Haritaya daire ekleme
 
-Azure Maps, coğrafi [olarak gösterildiği gibi](./extend-geojson.md#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Yükseltilmiş bir daire, özelliği ile bir özellik oluşturularak `point` `subType` ve bir `Circle` `Radius` yarıçapı **Ölçü** cinsinden temsil eden numaralandırılmış bir özellik oluşturarak haritada oluşturulabilir. Örneğin:
+Azure Maps, coğrafi [olarak gösterildiği gibi](./extend-geojson.md#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Yükseltilmiş bir daire, özelliği ile bir özellik oluşturularak `point` `subType` ve bir `Circle` `Radius` yarıçapı **Ölçü** cinsinden temsil eden numaralandırılmış bir özellik oluşturarak haritada oluşturulabilir. Örnek:
 
 ```javascript
 {
@@ -66,7 +65,7 @@ Azure Haritalar Web SDK 'Sı, bu `Point` Özellikleri, yerleşik olarak `Polygon
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Drone hava sahası Çokgen" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>kuruta hava sahası poligonu</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>kuruta hava sahası poligonu</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>Çokgen kalıp katmanını özelleştirme
@@ -75,7 +74,7 @@ Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından oluşan kalemin <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>Poogbrj</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından oluşan kalemin <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>Poogbrj</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

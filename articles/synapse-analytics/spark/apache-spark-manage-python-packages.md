@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695971"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098783"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için Python kitaplıklarını yönetme
 
@@ -42,7 +42,7 @@ Bir kümeye kitaplık yüklemenin iki birincil yolu vardır:
 > [!IMPORTANT]
 > - Yüklemekte olduğunuz Paket büyükse veya yüklemesi uzun sürüyorsa, bu, Spark örneği başlangıç süresini etkiler.
 > - PySpark, Python, Scala/Java, .NET veya Spark sürümünün değiştirilmesi desteklenmez.
-> - Pypı 'den paket yükleme, DEP özellikli çalışma alanları içinde desteklenmez.
+> - PyPI, Conda-Forge gibi dış depolardan paket yükleme veya varsayılan Conda kanalları DEP özellikli çalışma alanları içinde desteklenmez.
 
 ### <a name="install-python-packages"></a>Python paketlerini yükler
 Python paketleri, bir ortam belirtim dosyası sağlayarak PyPI ve Conda-Forge gibi depolardan yüklenebilir. 
@@ -140,9 +140,6 @@ Python tekerlek dosyaları, Python kitaplıklarının paketlenmesi için yaygın
 
 ![Çalışma alanı paketlerini vurgulayan ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Çalışma alanı paketlerini görüntüle")
 
-> [!IMPORTANT]
-> Çalışma alanı paketlerinin yüklenmesi Şu anda veri dışlanan korumalı (DEP) çalışma alanları içinde henüz desteklenmiyor.
-
 ### <a name="storage-account"></a>Depolama hesabı
 Özel yerleşik tekerlek paketleri, tüm tekerlek dosyalarını SYNAPSE çalışma alanıyla bağlantılı Azure Data Lake Storage (Gen2) hesabına yükleyerek Apache Spark havuza yüklenebilir. 
 
@@ -160,8 +157,8 @@ Klasörü ```python``` zaten yoksa klasörü içine eklemeniz gerekebilir ```lib
 >[!WARNING]
 > Özel tekerlek dosyaları sağlarken, kullanıcılar hem depolama hesabında hem de çalışma alanı kitaplığı arabiriminde tekerlek dosyaları sağlayamaz. Her ikisi de sağlanmışsa, yalnızca çalışma alanı paketleri listesinde belirtilen tekerlek dosyaları yüklenir. 
 
-## <a name="session-scoped-libraries-preview"></a>Oturum kapsamlı kitaplıklar (Önizleme)
-Havuz düzeyi kitaplıklarına ek olarak, bir not defteri oturumunun başlangıcında oturum kapsamlı kitaplıklar da belirtebilirsiniz.  Oturum kapsamlı kitaplıklar, bir not defteri oturumunda özel Python ortamlarını belirtmenizi ve kullanmanızı sağlar. 
+## <a name="session-scoped-packages-preview"></a>Oturum kapsamlı paketler (Önizleme)
+Havuz düzeyi paketlerine ek olarak, bir not defteri oturumunun başlangıcında oturum kapsamlı kitaplıklar da belirtebilirsiniz.  Oturum kapsamlı kitaplıklar, bir not defteri oturumunda özel Python ortamlarını belirtmenizi ve kullanmanızı sağlar. 
 
 Oturum kapsamlı kitaplıklar kullanırken aşağıdaki noktaları göz önünde bulundurmanız önemlidir:
    - Oturum kapsamlı kitaplıklar yüklediğinizde, belirtilen kitaplıklara yalnızca geçerli not defteri erişimi vardır. 
@@ -187,3 +184,4 @@ Bazı durumlarda, Conda paket sürümlerini görüntülemek için paket sürüm�
 ## <a name="next-steps"></a>Sonraki adımlar
 - Varsayılan kitaplıkları görüntüleme: [Apache Spark sürüm desteği](apache-spark-version-support.md)
 - Kitaplık yükleme hatalarını giderme: [kitaplık hatalarında sorun giderme](apache-spark-troubleshoot-library-errors.md)
+- Azure Data Lake Storage hesabınızı kullanarak özel bir Conda kanalı oluşturun: [Conda özel kanalları](./spark/../apache-spark-custom-conda-channel.md)

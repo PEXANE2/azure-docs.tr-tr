@@ -3,15 +3,14 @@ title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları dönüşt�
 description: Azure Izleyici 'de görünümlerden çalışma kitaplarına geçiş yaparken ortak görevler.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 4e9d9e65dedae083138f3b29a2a609e124ce0fc8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d479e64620519491ba4847349ea33820747fcea7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624727"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043482"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Tasarımcıyı çalışma kitaplarına göre dönüştürme ortak görevleri
 [Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, görünümler çalışma kitaplarına dönüştürülürken ortak olan görevler ayrıntılı olarak açıklanır.

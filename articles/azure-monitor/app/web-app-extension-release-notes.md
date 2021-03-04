@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539729"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042615"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights için Azure Web App uzantısı sürüm notları
 
@@ -27,6 +27,24 @@ Application Insights için Azure Web App uzantısı hakkında daha fazla [bilgi 
     - Artık desteklenmediğinden özel site uzantılarını kaldırın.
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="2838"></a>2.8.38
+
+- JAVA uzantısı: 2.5.1 'den [Java Agent 3.0.2 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.0.2) sürümüne yükseltildi.
+- Node.js uzantısı: 1.8.7 'den [1.8.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/1.8.8) 'e AI SDK 'sı güncelleştirildi.
+- .NET Core: destek dışı sürümler (2,0, 2,2, 3,0) kaldırıldı. Desteklenen sürümler 2,1 ve 3,1 ' dir.
+
+### <a name="2837"></a>2.8.37
+
+- AppSvc Windows uzantısı: .Net Core System.Diagnostics.DiagnosticSource.dll herhangi bir sürümüyle çalışma yapıldı.
+
+### <a name="2836"></a>2.8.36
+
+- AppSvc Windows uzantısı: .NET Core 'da AI SDK 'Sı ile Işlemler etkinleştirildi.
+
+### <a name="2835"></a>2.8.35
+
+- AppSvc Windows uzantısı: .NET Core 3,1 desteği eklendi.
 
 ### <a name="2833"></a>2.8.33
 
