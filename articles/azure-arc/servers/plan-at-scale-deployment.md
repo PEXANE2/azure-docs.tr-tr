@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularının ölçekli dağıtımını nasıl planlaya
 description: Azure 'da önemli güvenlik, yönetim ve izleme özellikleri yapılandırmasını basitleştirmek için Azure Arc etkin sunucularına çok sayıda makinenin nasıl etkinleştirileceğini öğrenin.
 ms.date: 02/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd02e7c0b4d65efde13fbc428a15d60adab174d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693222"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032237"
 ---
 # <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Azure Arc etkin sunucularının ölçekli dağıtımı için planlama
 
@@ -71,7 +71,7 @@ Daha sonra, dağıtımı hazırlarken ve aracının yüklenmesini gerçekleştir
 
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|
-| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Örnek ölçek ekleme kaynakları:<br><br> * [Temel dağıtım betiği ölçeklendirin](servers/onboard-service-principal.md)<br><br> * [Windows Server VM 'Leri VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)<br><br> * [Linux sanal makinelerini VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)<br><br> * [Anerişilebilir kullanarak, ölçeklendirerek AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)<br><br> * [PowerShell uzaktan iletişimini kullanarak ölçekli dağıtım](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (yalnızca Windows)| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
+| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Örnek ölçek ekleme kaynakları:<br><br> <ul><li> [Temel dağıtım betiği ölçeklendirin](onboard-service-principal.md)</ul></li> <ul><li>[Windows Server VM 'Leri VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Linux sanal makinelerini VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Anerişilebilir kullanarak, ölçeklendirerek AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[PowerShell uzaktan iletişimini kullanarak ölçekli dağıtım](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (yalnızca Windows)</ul></li>| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
 | [Hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Makineleri etkileşimli olmayan Azure PowerShell veya portaldan kullanarak bağlamak için bir hizmet sorumlusu oluşturun.| Bir saat |
 | Bağlı makine aracısını hedef sunucularınız ve makinelerinize dağıtın |Komut dosyalarını sunucularınıza dağıtmak ve Azure 'a bağlamak için Otomasyon aracınızı kullanın.| Yayın planınıza bağlı olarak bir veya daha fazla gün ve aşamalı bir dağıtım takip ediyorsanız. |
 
@@ -83,7 +83,7 @@ Daha sonra, dağıtımı hazırlarken ve aracının yüklenmesini gerçekleştir
 |-----|-------|---------|
 |Kaynak Durumu Uyarısı oluşturma |Bir sunucu, 15 dakikadan daha uzun bir süre boyunca Azure 'a sinyal göndermeyi sonlandırmışsa, bu, çevrimdışı olduğu, ağ bağlantısının engellendiği veya aracının çalışmadığı anlamına gelebilir. Bu olayları nasıl yanıtlayacağınızı ve araştırıp [kaynak durumu uyarıları](../..//service-health/resource-health-alert-monitor-guide.md) kullanarak, ne zaman başladığınızı öğrenmek için bir plan geliştirin.<br><br> Uyarıyı yapılandırırken şunları belirtin:<br> **Kaynak türü**  =  **Azure Arc etkin sunucular**<br> **Geçerli kaynak durumu**  =  **Kullanılamıyor**<br> **Önceki kaynak durumu**  =  **Kullanılabilir** | Bir saat |
 |Azure Advisor uyarısı oluşturma | En iyi deneyim ve en son güvenlik ve hata düzeltmeleri için, Azure Arc etkin sunucu aracısını güncel tutmanız önerilir. Güncel olmayan aracılar bir [Azure Advisor uyarısıyla](../../advisor/advisor-alerts-portal.md)tanımlanacaktır.<br><br> Uyarıyı yapılandırırken şunları belirtin:<br> **Öneri türü**  =  **Azure bağlı makine aracısının en son sürümüne yükseltin** | Bir saat |
-|Aboneliğinize veya kaynak grubu kapsamınızda [Azure Ilkeleri atama](../../governance/policy/assign-policy-portal.md) |Tüm Arc özellikli sunucularınızın VM'ler için Azure İzleyici izlemek üzere otomatik olarak yapılandırıldığından emin olmak için, **etkinleştirme VM'ler için Azure izleyici** ilkesini ve gereksinimlerinizi karşılayan diğer diğerlerini abonelik veya kaynak grubu kapsamına atayın.| Değişir |
+|Aboneliğinize veya kaynak grubu kapsamınızda [Azure Ilkeleri atama](../../governance/policy/assign-policy-portal.md) |**Etkinleştirme VM'ler için Azure izleyici** [ilkesini](../../azure-monitor/vm/vminsights-enable-policy.md) (ve gereksinimlerinizi karşılayan diğerlerini) abonelik veya kaynak grubu kapsamına atayın. Azure Ilkesi, ortamınız genelinde VM'ler için Azure İzleyici için gereken aracıları yükleyen ilke tanımlarını atamanıza olanak tanır.| Değişir |
 |[Yay özellikli sunucularınız için Güncelleştirme Yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) |Windows ve Linux sanal makineleriniz için, Arc etkin sunucularla kayıtlı işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda Güncelleştirme Yönetimi yapılandırın. | 15 dakika |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: yashar
-ms.openlocfilehash: 6b04caec380a481569de4a33ea0159fd641c000f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673962"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030717"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği
 
@@ -48,7 +48,13 @@ Aşağıdaki CSV 'nin örnek boyutu esneklik grupları, ArmSkuName ve oranlar va
 
 [Örnek boyutu esneklik oranları](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-Bu dosyayı programlama yoluyla kullanabilmeniz için dosya URL 'sini ve şemayı sabit tutacağız. Veriler yakında API aracılığıyla da kullanılabilir.
+Dosyayı programlı olarak kullanabilmeniz için Azure bağlantıyı ve şemayı güncelledi.
+
+## <a name="view-vm-size-recommendations"></a>VM boyut önerilerini görüntüle
+
+Azure, satın alma deneyiminde VM boyut önerilerini gösterir. En küçük boyut önerilerini görüntülemek için, **en küçük boyuta göre Gruplandır**' ı seçin.
+
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="Önerilen miktarları gösteren ekran görüntüsü." lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

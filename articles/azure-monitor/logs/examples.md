@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici günlüğü sorgu örnekleri | Microsoft Docs
 description: Azure Izleyici 'de kusto sorgu dilini kullanan günlük sorgularının örnekleri.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 56866d8e255f15a93aaa9133f9cda9de4fdd9fd5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736959"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030809"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
 Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](./log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  

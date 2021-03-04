@@ -1,17 +1,16 @@
 ---
 title: Azure kaynağından kaynak günlüklerini toplayın ve Azure Izleyici ile çözümleyin
 description: Bir Azure kaynağından kaynak günlüklerini, bir günlük sorgusuyla çözümlenebilecekleri bir Log Analytics çalışma alanına toplamak üzere tanılama ayarlarını yapılandırma öğreticisi.
-ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43a9c88bc64b688bfd1171e331232bb254b0eebe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032883"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin
 

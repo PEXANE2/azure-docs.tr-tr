@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721149"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032594"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft satış ekiplerine ve iş ortaklarına genel bakış ile ortak satış
 
@@ -70,7 +70,7 @@ Biz ISV Apps ISV Connect Premium teşvik durumu, bu teklif türlerine uygulanabi
 - PowerApps & müşteri katılımı için Dynamics 365
 - İşlemler için Dynamics 365
 
-_Azure IP ortak satış incentivized_ veya biz uygulamaları elde eden teklifler _ISV Connect Premium 'a_ yönelik bu ticari Market avantajlarına ulaşın:
+_Azure IP ortak satış incentivized_ durumu elde eden teklifler bu ticari Market avantajlarına ulaşın:
 
 - Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan hizmet olarak altyapı (IaaS) çözümü veya hizmet olarak yazılım (SaaS) çözümü için geçerlidir. Daha fazla bilgi için bkz. [ticari Market hizmet ücretleri](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Bulut çözümü sağlayıcısı (CSP) iş ortakları, IaaS çözümünüzü veya SaaS teklifinizi satmaya yönelik %10 bir teşvik alır. CSP programı hakkında daha fazla bilgi edinmek için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).

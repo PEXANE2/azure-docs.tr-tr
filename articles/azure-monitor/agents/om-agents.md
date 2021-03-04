@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'ye Operations Manager bağlanma | Microsoft Docs
 description: System Center Operations Manager'a yaptığınız mevcut yatırımı korumak ve Log Analytics'le sağlanan genişletilmiş özellikleri kullanmak için, Operations Manager'ı çalışma alanınızla tümleştirebilirsiniz.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718140"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031387"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 

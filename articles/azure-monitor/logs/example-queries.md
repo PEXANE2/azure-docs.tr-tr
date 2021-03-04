@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de Log Analytics kendi sorgularınız için kendi kendinize veya bir başlangıç noktası olarak kullanabileceğiniz örnek sorgu kümeleri sunar.
 description: Gereksinimlerinize göre başlayabilmeniz ve değiştirebileceğiniz sorgular
-ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4f20032febe1c4afe9cb0964c1b448eaa018103
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708042"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030860"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de örnek sorgular Log Analytics
 Log Analytics kendi sorgularınız için kendi içinde çalıştırabileceğiniz veya bir başlangıç noktası olarak kullanabileceğiniz örnek sorgu kümesi sunar. Bu makalede örnek sorgular ve bunların nasıl kullanılacağı açıklanmaktadır.

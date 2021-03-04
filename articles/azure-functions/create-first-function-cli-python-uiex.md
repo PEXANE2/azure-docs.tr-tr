@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 76ec99e5f892438aaa637b15bb7382843d90f334
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749041"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031659"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir Python işlevi oluşturma
 
@@ -62,7 +62,7 @@ Azure CLı 'yi mi yoksa Azure kaynakları oluşturmak için Azure PowerShell mı
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Bir Terminal veya komut penceresinde, `func --version` Azure Functions Core Tools sürüm 3. x olduğunu denetlemek için komutunu çalıştırın.
++ Bir Terminal veya komut `func --version` penceresinde, <abbr title="Yerel bilgisayarınızda Azure Işlevleri ile çalışmaya yönelik komut satırı araçları kümesi.">Azure Functions Core Tools</abbr> sürüm 3. x ' dir.
 
 + `(Get-Module -ListAvailable Az).Version`Sürüm 5,0 veya üstünü çalıştırın ve doğrulayın. 
 

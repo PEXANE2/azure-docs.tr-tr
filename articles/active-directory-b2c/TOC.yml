@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (Önizleme)
+          href: identity-provider-apple-id.md
         - name: Azure AD (Tek kiracılı)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (Çok kiracılı)
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: Özel öznitelikleri tanımlama
       href: user-flow-custom-attributes.md
-    - name: Kimlik Koruması ve Koşullu Erişim
+    - name: Risk tabanlı kimlik doğrulaması
       items:
-        - name: Kimlik Koruması ve Koşullu Erişim'i ayarlama
-          href: conditional-access-identity-protection-setup.md
-        - name: Koşullu Erişim ekleme
+        - name: Kimlik koruması ile riski araştırın
+          href: identity-protection-investigate-risk.md
+        - name: Koşullu erişimi yapılandırma
           href: conditional-access-user-flow.md
     - name: Yaş sınırını yapılandırma
       href: basic-age-gating.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: Talepleri dönüştürme
                       href: claims-transformation-technical-profile.md
-                    - name: Koşullu Erişim
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: Kimlik belirteci ipucu
                       href: id-token-hint.md
                     - name: JWT belirtecini veren

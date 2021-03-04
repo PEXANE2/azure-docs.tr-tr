@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691493"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032696"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning olan bir modeli hiper parametre olarak ayarlama
 
@@ -332,7 +332,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
                              max_concurrent_runs=4)
 ```
 
-, `HyperDriveConfig` Öğesine geçirilen parametreleri ayarlar `ScriptRunConfig script_run_config` . `script_run_config`, Sırasıyla, eğitim betiğine parametreler geçirir. Yukarıdaki kod parçacığı, örnek Not defteri [eğimiyle, hiper parametre ayarlanandan alınır ve PyTorch ile dağıtılır](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). Bu örnekte, `learning_rate` ve `momentum` parametreleri ayarlanır. Çalıştırmanın erken durdurulması `BanditPolicy` , birincil ölçümü `slack_factor` (bkz. [banditpolicy sınıfı başvurusu](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)) dışında kalan bir çalıştırmayı durduran bir tarafından belirlenir. 
+, `HyperDriveConfig` Öğesine geçirilen parametreleri ayarlar `ScriptRunConfig script_run_config` . `script_run_config`, Sırasıyla, eğitim betiğine parametreler geçirir. Yukarıdaki kod parçacığı, örnek Not defteri [eğimiyle, hiper parametre ayarlanandan alınır ve PyTorch ile dağıtılır](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). Bu örnekte, `learning_rate` ve `momentum` parametreleri ayarlanır. Çalıştırmanın erken durdurulması `BanditPolicy` , birincil ölçümü `slack_factor` (bkz. [banditpolicy sınıfı başvurusu](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy)) dışında kalan bir çalıştırmayı durduran bir tarafından belirlenir. 
 
 Örnekteki aşağıdaki kod, yapılacak değerlerin nasıl alındığını, ayrıştırılmasını ve eğitim betiğinin işlevine geçtiğini gösterir `fine_tune_model` :
 

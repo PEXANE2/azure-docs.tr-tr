@@ -4,12 +4,12 @@ description: Application Insights 'de sistem ve özel .NET performans sayaçlar�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583895"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031370"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -21,7 +21,7 @@ Windows tarafından CPU doluluğu, bellek, disk ve ağ kullanımı gibi şeylere
 
 ![Application Insights bildirilen performans sayaçları](./media/performance-counters/performance-counters.png)
 
-ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış geçerli varsayılan sayaçlar şunlardır:
+ASP.NET Web uygulamaları için toplanmaya yapılandırılmış geçerli varsayılan sayaçlar şunlardır:
 - İşlem \\ Işlemci zamanı yüzdesi
 - % İşlem \\ Işlemcisi zaman normalleştirmesi
 - \\Kullanılabilir bellek baytları
@@ -31,6 +31,14 @@ ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış ge�
 - İşlem \\ özel baytları
 - İşlem \\ GÇ verisi bayt/sn
 - \\Uygulama sırasındaki ASP.NET uygulama istekleri
+- İşlemci (_Total) \\ % Işlemci zamanı
+
+ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış geçerli varsayılan sayaçlar şunlardır:
+- İşlem \\ Işlemci zamanı yüzdesi
+- % İşlem \\ Işlemcisi zaman normalleştirmesi
+- \\Kullanılabilir bellek baytları
+- İşlem \\ özel baytları
+- İşlem \\ GÇ verisi bayt/sn
 - İşlemci (_Total) \\ % Işlemci zamanı
 
 ## <a name="add-counters"></a>Sayaç ekleme

@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241616"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030622"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Çalışma zamanı değişiklikleri nedeniyle U-SQL çalışma zamanı hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 
@@ -55,7 +55,7 @@ Karşılaşabileceğiniz iki olası çalışma zamanı sürümü sorunu vardır:
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-* Bir USQL betiğine dosya sürüm 12.0.3 veya onende Newtonsoft.Jsbaşvurmak, aşağıdaki derleme hatasına neden olur:
+1. Bir USQL betiğine dosya sürüm 12.0.3 veya onende Newtonsoft.Jsbaşvurmak, aşağıdaki derleme hatasına neden olur:
 
     *"Üzgünüz; Data Lake Analytics hesabınızda çalışan işler muhtemelen daha yavaş çalışacak veya tamamlanmayacak. Beklenmeyen bir sorun, bu işlevselliği Azure Data Lake Analytics hesabınıza otomatik olarak geri yüklememizi engellemektedir. Araştırmak için Azure Data Lake mühendislerle iletişim kuruldu. "*  
 
@@ -65,6 +65,10 @@ Karşılaşabileceğiniz iki olası çalışma zamanı sürümü sorunu vardır:
     `...`
 
     **Çözüm**: lütfen Newtonsoft.Jsv 12.0.2 veya daha düşük bir dosya üzerinde kullanın.
+2. Müşteriler mağazalarına geçici dosya ve klasörler görebilirler. Bunlar normal iş yürütmesinin bir parçası olarak üretilir, ancak genellikle müşteriler onları görüntülemeden önce silinir. Nadir ve rastgele olan belirli koşullarda bir süre görünür kalabilirler. Bunlar sonunda silinir ve Kullanıcı depolamanın bir parçası olarak hiçbir zaman sayılmaz veya herhangi bir ücrete tabi olan herhangi bir ücret oluşturmazlar. Müşterilerin iş mantığına bağlı olarak, sorunlara neden olabilir. Örneğin, iş, klasördeki tüm dosyaları numaralandırır ve sonra dosya listelerini karşılaştırırsa, beklenmeyen geçici dosyalar nedeniyle başarısız olabilir. Benzer şekilde, bir aşağı akış işi daha fazla işleme için belirli bir klasörden tüm dosyaları numaralandıruyorsa, geçici dosyaları da numaralandıramıyor olabilir.  
+
+    **Çözüm**: geçici dosyaların, geçerli çıkış klasöründen hesap düzeyinde Temp klasöründe depolanacağı çalışma zamanında bir düzelme belirlenir. Geçici dosyalar bu yeni Temp klasörüne yazılır ve iş yürütmesinin sonunda silinir.  
+    Bu düzeltilme müşteri verilerini işlediğinden, bu düzeltilmek çok önemli oldukça önemlidir. Bu düzeltmesinin 2021 yılının ortasında Beta çalışma zamanı olarak kullanılabilmesi ve 2021 yılının ikinci yarısında varsayılan çalışma zamanı olması beklenmektedir. 
 
 
 ## <a name="see-also"></a>Ayrıca bkz.

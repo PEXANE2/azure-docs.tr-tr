@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.subservice: logs
-ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731468"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033023"
 ---
 # <a name="azure-resource-logs"></a>Azure kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](../essentials/platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](../logs/data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.

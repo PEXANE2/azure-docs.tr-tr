@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d516bcb224f7a7b5943214f28cffb7da3ea0871f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499331"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031608"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -304,7 +304,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Evet
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,7 +342,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Evet
+Yes
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -382,11 +382,9 @@ Azure disklerinde, Premium veya Standart diskler üzerinde KıRPMA kullanmanın 
 
 **Hangi bölgeler geçerli Premium SSD disk boyutu için ne kadar fazla özelliği destekler?**
 
-Bu özellik şu anda Azure genel bulutundaki tüm bölgelerde desteklenmektedir ve çok yakında olan bağımsız bulutlar desteğiyle birlikte. 
+Azure genel bulutundaki tüm bölgelerde kredi tabanlı patlama Şu anda destekleniyor, bağımsız bulutları şu anda desteklenmiyor.
 
-**Hangi bölgeler 4/8/16 GiB yönetilen disk boyutlarına (P1/P2/P3, E1/E2/E3) destekleniyor?**
-
-Bu yeni disk boyutları şu anda Azure genel bulutundaki tüm bölgelerde desteklenmektedir. Bu, çok yakında olan bağımsız bulutlar desteğiyle birlikte 
+İsteğe bağlı patlama yalnızca Orta Batı ABD kullanılabilir.
 
 **, Yönetilmeyen diskler veya sayfa Blobları için P1/P2/P3 disk boyutları desteklenir mi?**
 

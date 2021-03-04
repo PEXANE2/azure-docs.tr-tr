@@ -1,17 +1,16 @@
 ---
 title: PowerShell kullanarak VM öngörülerini etkinleştirme
 description: Azure sanal makineleri veya Azure PowerShell kullanılarak sanal makine ölçek kümeleri için VM öngörülerinin nasıl etkinleştirileceğini açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b51a49abda76a4d1433336cf73dc9a0dd6e40787
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717086"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031897"
 ---
 # <a name="enable-vm-insights-using-powershell"></a>PowerShell kullanarak VM öngörülerini etkinleştirme
 Bu makalede, PowerShell kullanarak Azure sanal makinelerinde VM öngörülerinin nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:

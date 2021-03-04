@@ -1,15 +1,14 @@
 ---
 title: Azure Izleyici kaynak günlüğü desteklenen Hizmetleri ve kategorileri
 description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şemasını anlayın.
-ms.subservice: logs
 ms.topic: reference
 ms.date: 01/29/2021
-ms.openlocfilehash: 39ff78cd97682096fb284e137868c246dfdd7f14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623149"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033155"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
@@ -38,30 +37,30 @@ Eksik bir sorun olduğunu düşünüyorsanız, bu makalenin alt kısmında bir G
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AccountLogon|AccountLogon|No|
-|Hesap yönetimi|Hesap yönetimi|No|
-|Ayrıntı Izleme|Ayrıntı Izleme|No|
-|DirectoryServiceAccess|DirectoryServiceAccess|No|
-|LogonLogoff|LogonLogoff|No|
-|ObjectAccess|ObjectAccess|No|
-|PolicyChange|PolicyChange|No|
-|Ayrıcalıklı Geuse|Ayrıcalıklı Geuse|No|
-|SystemSecurity|SystemSecurity|No|
+|AccountLogon|AccountLogon|Hayır|
+|Hesap yönetimi|Hesap yönetimi|Hayır|
+|Ayrıntı Izleme|Ayrıntı Izleme|Hayır|
+|DirectoryServiceAccess|DirectoryServiceAccess|Hayır|
+|LogonLogoff|LogonLogoff|Hayır|
+|ObjectAccess|ObjectAccess|Hayır|
+|PolicyChange|PolicyChange|Hayır|
+|Ayrıcalıklı Geuse|Ayrıcalıklı Geuse|Hayır|
+|SystemSecurity|SystemSecurity|Hayır|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/sunucuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Altyapı|Altyapı|No|
-|Hizmet|Hizmet|No|
+|Altyapı|Altyapı|Hayır|
+|Hizmet|Hizmet|Hayır|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|GatewayLogs|Imanagementpackgateway ile ilgili Günlükler|No|
+|GatewayLogs|Imanagementpackgateway ile ilgili Günlükler|Hayır|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/Configurationmağazaları
@@ -75,82 +74,82 @@ Eksik bir sorun olduğunu düşünüyorsanız, bu makalenin alt kısmında bir G
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ApplicationConsole|Uygulama konsolu|No|
-|Sistem günlükleri|Sistem günlükleri|No|
+|ApplicationConsole|Uygulama konsolu|Hayır|
+|Sistem günlükleri|Sistem günlükleri|Hayır|
 
 
 ## <a name="microsoftattestationattestationproviders"></a>Microsoft. kanıtlama/attestationProviders
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AuditEvent|AuditEvent ileti günlüğü kategorisi.|No|
-|HATA|Hata iletisi günlüğü kategorisi.|No|
-|INF|Bilgilendirici ileti günlüğü kategorisi.|No|
-|UYR|Uyarı iletisi günlüğü kategorisi.|No|
+|AuditEvent|AuditEvent ileti günlüğü kategorisi.|Hayır|
+|HATA|Hata iletisi günlüğü kategorisi.|Hayır|
+|INF|Bilgilendirici ileti günlüğü kategorisi.|Hayır|
+|UYR|Uyarı iletisi günlüğü kategorisi.|Hayır|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|DscNodeStatus|DSC düğüm durumu|No|
-|JobLogs|İş günlükleri|No|
-|JobStreams|İş akışları|No|
+|DscNodeStatus|DSC düğüm durumu|Hayır|
+|JobLogs|İş günlükleri|Hayır|
+|JobStreams|İş akışları|Hayır|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ServiceLog|Hizmet günlükleri|No|
+|ServiceLog|Hizmet günlükleri|Hayır|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>ChAI/çalışma alanlarını Microsoft.Bat
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BaiClusterEvent|BaiClusterEvent|No|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|No|
-|BaiJobEvent|BaiJobEvent|No|
+|BaiClusterEvent|BaiClusterEvent|Hayır|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|Hayır|
+|BaiJobEvent|BaiJobEvent|Hayır|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockzincirine/blockchainMembers
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BlockchainApplication|Blok zinciri uygulaması|No|
-|FabricOrderer|Doku sırası|No|
-|FabricPeer|Doku eşi|No|
-|Ara sunucu|Ara sunucu|No|
+|BlockchainApplication|Blok zinciri uygulaması|Hayır|
+|FabricOrderer|Doku sırası|Hayır|
+|FabricPeer|Doku eşi|Hayır|
+|Ara sunucu|Ara sunucu|Hayır|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. Blockzincirine/Cordadmembers
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BlockchainApplication|Blok zinciri uygulaması|No|
+|BlockchainApplication|Blok zinciri uygulaması|Hayır|
 
 
 ## <a name="microsoftbotservicebotservices"></a>Microsoft. botservice/botservices
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BotRequest|Kanallardan bot 'a istek|No|
-|DependencyRequest|Bağımlılıklara yönelik istekler|No|
+|BotRequest|Kanallardan bot 'a istek|Hayır|
+|DependencyRequest|Bağımlılıklara yönelik istekler|Hayır|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|WebApplicationFirewallLogs|Web çıkışının başlatılıp başlatılmayacağını güvenlik duvarı günlükleri|No|
+|WebApplicationFirewallLogs|Web çıkışının başlatılıp başlatılmayacağını güvenlik duvarı günlükleri|Hayır|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profiller
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AzureCdnAccessLog|Azure CDN erişim günlüğü|No|
+|AzureCdnAccessLog|Azure CDN erişim günlüğü|Hayır|
 |FrontDoorAccessLog|Frontkapısı erişim günlüğü|Yes|
 |FrontDoorHealthProbeLog|Frontkapılı sistem durumu araştırma günlüğü|Yes|
 |FrontDoorWebApplicationFirewallLog|Frontkapısı WebApplicationFirewall günlüğü|Yes|
@@ -160,84 +159,84 @@ Eksik bir sorun olduğunu düşünüyorsanız, bu makalenin alt kısmında bir G
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|CoreAnalytics|Uç noktanın ölçümlerini (örn. bant genişliği, çıkış vb.) alır.|No|
+|CoreAnalytics|Uç noktanın ölçümlerini (örn. bant genişliği, çıkış vb.) alır.|Hayır|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Ağ güvenlik grubu kural akışı olayı|Ağ güvenlik grubu kural akışı olayı|No|
+|Ağ güvenlik grubu kural akışı olayı|Ağ güvenlik grubu kural akışı olayı|Hayır|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Biliveservices/hesapları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim Günlükleri|No|
-|RequestResponse|İstek ve yanıt günlükleri|No|
-|İzleme|İzleme günlükleri|No|
+|Denetim|Denetim Günlükleri|Hayır|
+|RequestResponse|İstek ve yanıt günlükleri|Hayır|
+|İzleme|İzleme günlükleri|Hayır|
 
 
 ## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft. Communication/CommunicationServices
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ChatOperational|İşletimsel sohbet günlükleri|No|
-|SMSOperational|İşletimsel SMS günlükleri|No|
-|Kullanım|Kullanım kayıtları|No|
+|ChatOperational|İşletimsel sohbet günlükleri|Hayır|
+|SMSOperational|İşletimsel SMS günlükleri|Hayır|
+|Kullanım|Kullanım kayıtları|Hayır|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/kayıt defterleri
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ContainerRegistryLoginEvents|Oturum açma olayları|No|
-|Containerregistrydepotoryevents|Olay günlüklerini günlüğe kaydeder|No|
+|ContainerRegistryLoginEvents|Oturum açma olayları|Hayır|
+|Containerregistrydepotoryevents|Olay günlüklerini günlüğe kaydeder|Hayır|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/Managedkümeler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|küme-otomatik Scaler|Kubernetes kümesi otomatik Scaler|No|
-|Guard|Guard|No|
-|kuin-apiserver|Kubernetes API sunucusu|No|
-|kuin-denetim|Kubernetes denetimi|No|
-|Kume-denetim-yönetici|Kubernetes denetimi yönetici günlükleri|No|
-|kuin-Controller-Manager|Kubernetes Denetleyici Yöneticisi|No|
-|kuin-Scheduler|Kubernetes Zamanlayıcı|No|
+|küme-otomatik Scaler|Kubernetes kümesi otomatik Scaler|Hayır|
+|Guard|Guard|Hayır|
+|kuin-apiserver|Kubernetes API sunucusu|Hayır|
+|kuin-denetim|Kubernetes denetimi|Hayır|
+|Kume-denetim-yönetici|Kubernetes denetimi yönetici günlükleri|Hayır|
+|kuin-Controller-Manager|Kubernetes Denetleyici Yöneticisi|Hayır|
+|kuin-Scheduler|Kubernetes Zamanlayıcı|Hayır|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AuditLogs|Minırp çağrıları için denetim günlükleri|No|
+|AuditLogs|Minırp çağrıları için denetim günlükleri|Hayır|
 
 
 ## <a name="microsoftd365customerinsightsinstances"></a>Microsoft. D365CustomerInsights/örnekleri
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim olayları|No|
-|Operasyonel|İşletimsel olaylar|No|
+|Denetim|Denetim olayları|Hayır|
+|Operasyonel|İşletimsel olaylar|Hayır|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|accounts|Databricks hesapları|No|
-|leriniz|Databricks kümeleri|No|
-|dBFS|Databricks Dosya Sistemi|No|
-|ınstancepools|Örnek havuzları|No|
-|Çizelge|Databricks Işleri|No|
-|not defteri|Databricks Not Defteri|No|
-|kaynaklanır|Databricks gizli dizileri|No|
-|sqlPermissions|Databricks SQLPermissions|No|
-|SSH|Databricks SSH|No|
-|çalışma alanı|Databricks çalışma alanı|No|
+|accounts|Databricks hesapları|Hayır|
+|leriniz|Databricks kümeleri|Hayır|
+|dBFS|Databricks Dosya Sistemi|Hayır|
+|ınstancepools|Örnek havuzları|Hayır|
+|Çizelge|Databricks Işleri|Hayır|
+|not defteri|Databricks Not Defteri|Hayır|
+|kaynaklanır|Databricks gizli dizileri|Hayır|
+|sqlPermissions|Databricks SQLPermissions|Hayır|
+|SSH|Databricks SSH|Hayır|
+|çalışma alanı|Databricks çalışma alanı|Hayır|
 
 
 ## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft. Dataişbirliği/çalışma alanları
@@ -245,611 +244,611 @@ Eksik bir sorun olduğunu düşünüyorsanız, bu makalenin alt kısmında bir G
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
 |Ortak çalışan Ationaudit|İşbirliği denetimi|Yes|
-|Veri varlıkları|Veri varlıkları|No|
-|Pipelines|Pipelines|No|
-|Tekliflerden|Tekliflerden|No|
-|Betikler|Betikler|No|
+|Veri varlıkları|Veri varlıkları|Hayır|
+|Pipelines|Pipelines|Hayır|
+|Tekliflerden|Tekliflerden|Hayır|
+|Betikler|Betikler|Hayır|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/Factory
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Etkinlik çalıştırmaları|İşlem hattı etkinlik günlüğü çalıştırmaları|No|
-|Ardışık düzen eylemsizlik|İşlem hattı çalıştırmaları günlüğü|No|
-|Ssisıntegrationruntimelogs 'lar|SSIS tümleştirme çalışma zamanı günlükleri|No|
-|SSISPackageEventMessageContext|SSIS paketi olay iletisi bağlamı|No|
-|SSISPackageEventMessages|SSIS paketi olay iletileri|No|
-|Ssispackageyürütülebilirstatıstıcs|SSIS paketi yürütülebilir istatistikleri|No|
-|Ssispackageexecutioncomponentaşamalar|SSIS paketi yürütme bileşeni aşamaları|No|
-|Ssispackageexecutiondatastatıstıcs|SSIS paketi veri istatistikleri istatistikleri|No|
-|Triggerçalıştırmaları|Tetikleyici çalıştırma günlüğü|No|
+|Etkinlik çalıştırmaları|İşlem hattı etkinlik günlüğü çalıştırmaları|Hayır|
+|Ardışık düzen eylemsizlik|İşlem hattı çalıştırmaları günlüğü|Hayır|
+|Ssisıntegrationruntimelogs 'lar|SSIS tümleştirme çalışma zamanı günlükleri|Hayır|
+|SSISPackageEventMessageContext|SSIS paketi olay iletisi bağlamı|Hayır|
+|SSISPackageEventMessages|SSIS paketi olay iletileri|Hayır|
+|Ssispackageyürütülebilirstatıstıcs|SSIS paketi yürütülebilir istatistikleri|Hayır|
+|Ssispackageexecutioncomponentaşamalar|SSIS paketi yürütme bileşeni aşamaları|Hayır|
+|Ssispackageexecutiondatastatıstıcs|SSIS paketi veri istatistikleri istatistikleri|Hayır|
+|Triggerçalıştırmaları|Tetikleyici çalıştırma günlüğü|Hayır|
 
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/hesapları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim Günlükleri|No|
-|İstekler|İstek günlükleri|No|
+|Denetim|Denetim Günlükleri|Hayır|
+|İstekler|İstek günlükleri|Hayır|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/accounts
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim Günlükleri|No|
-|İstekler|İstek günlükleri|No|
+|Denetim|Denetim Günlükleri|Hayır|
+|İstekler|İstek günlükleri|Hayır|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/hesapları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ReceivedShareSnapshots|Alınan paylaşma anlık görüntüleri|No|
-|SentShareSnapshots|Gönderilen paylaşılan anlık görüntüler|No|
-|Paylaşımlar|Paylaşımlar|No|
-|Parça sayısı|Abonelikleri paylaşma|No|
+|ReceivedShareSnapshots|Alınan paylaşma anlık görüntüleri|Hayır|
+|SentShareSnapshots|Gönderilen paylaşılan anlık görüntüler|Hayır|
+|Paylaşımlar|Paylaşımlar|Hayır|
+|Parça sayısı|Abonelikleri paylaşma|Hayır|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. Dbformarıdb/sunucular
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|MySqlAuditLogs|MariaDB denetim günlükleri|No|
-|Mysqlyavaşlatma günlükleri|MariaDB sunucu günlükleri|No|
+|MySqlAuditLogs|MariaDB denetim günlükleri|Hayır|
+|Mysqlyavaşlatma günlükleri|MariaDB sunucu günlükleri|Hayır|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. Dbformyısql/Flexibelservers
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|MySqlAuditLogs|MySQL denetim günlükleri|No|
-|Mysqlyavaşlatma günlükleri|MySQL yavaş Günlükler|No|
+|MySqlAuditLogs|MySQL denetim günlükleri|Hayır|
+|Mysqlyavaşlatma günlükleri|MySQL yavaş Günlükler|Hayır|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. Dbformyısql/sunucuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|MySqlAuditLogs|MySQL denetim günlükleri|No|
-|Mysqlyavaşlatma günlükleri|MySQL Server günlükleri|No|
+|MySqlAuditLogs|MySQL denetim günlükleri|Hayır|
+|Mysqlyavaşlatma günlükleri|MySQL Server günlükleri|Hayır|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/Flexibtaservers
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Postgressqllogs|PostgreSQL sunucu günlükleri|No|
+|Postgressqllogs|PostgreSQL sunucu günlükleri|Hayır|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/sunucuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Postgressqllogs|PostgreSQL sunucu günlükleri|No|
-|QueryStoreRuntimeStatistics|PostgreSQL sorgu deposu çalışma zamanı Istatistikleri|No|
-|QueryStoreWaitStatistics|PostgreSQL sorgu deposu bekleme Istatistikleri|No|
+|Postgressqllogs|PostgreSQL sunucu günlükleri|Hayır|
+|QueryStoreRuntimeStatistics|PostgreSQL sorgu deposu çalışma zamanı Istatistikleri|Hayır|
+|QueryStoreWaitStatistics|PostgreSQL sorgu deposu bekleme Istatistikleri|Hayır|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Postgressqllogs|PostgreSQL sunucu günlükleri|No|
+|Postgressqllogs|PostgreSQL sunucu günlükleri|Hayır|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Checkpoint|Checkpoint|No|
-|Hata|Hata|No|
-|Yönetim|Yönetim|No|
+|Checkpoint|Checkpoint|Hayır|
+|Hata|Hata|Hayır|
+|Yönetim|Yönetim|Hayır|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Yazılım durumu|Yazılım durumu|No|
-|Checkpoint|Checkpoint|No|
-|Bağlantı|Bağlantı|No|
-|Hata|Hata|No|
-|HostRegistration|HostRegistration|No|
-|Yönetim|Yönetim|No|
+|Yazılım durumu|Yazılım durumu|Hayır|
+|Checkpoint|Checkpoint|Hayır|
+|Bağlantı|Bağlantı|Hayır|
+|Hata|Hata|Hayır|
+|HostRegistration|HostRegistration|Hayır|
+|Yönetim|Yönetim|Hayır|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Checkpoint|Checkpoint|No|
-|Hata|Hata|No|
-|Akış|Akış|No|
-|Yönetim|Yönetim|No|
+|Checkpoint|Checkpoint|Hayır|
+|Hata|Hata|Hayır|
+|Akış|Akış|Hayır|
+|Yönetim|Yönetim|Hayır|
 
 
 ## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft. Devices/Elaun havuzları/Iothubkiracılar
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|C2DCommands|C2D komutları|No|
-|C2DTwinOperations|C2D Ikizi Işlemleri|No|
-|Yapılandırmalar|Yapılandırmalar|No|
-|Bağlantılar|Bağlantılar|No|
-|D2CTwinOperations|D2CTwinOperations|No|
-|Deviceıdentityoperations|Cihaz kimliği Işlemleri|No|
-|DeviceStreams|Cihaz akışları (Önizleme)|No|
-|Devicetelemetri|Cihaz Telemetrisi|No|
-|DirectMethods|Doğrudan Yöntemler|No|
-|Distributedizleme|Dağıtılmış Izleme (Önizleme)|No|
-|FileUploadOperations|Karşıya dosya yükleme Işlemleri|No|
-|JobsOperations|İş Işlemleri|No|
-|Yollar|Yollar|No|
-|TwinQueries|İkizi sorguları|No|
+|C2DCommands|C2D komutları|Hayır|
+|C2DTwinOperations|C2D Ikizi Işlemleri|Hayır|
+|Yapılandırmalar|Yapılandırmalar|Hayır|
+|Bağlantılar|Bağlantılar|Hayır|
+|D2CTwinOperations|D2CTwinOperations|Hayır|
+|Deviceıdentityoperations|Cihaz kimliği Işlemleri|Hayır|
+|DeviceStreams|Cihaz akışları (Önizleme)|Hayır|
+|Devicetelemetri|Cihaz Telemetrisi|Hayır|
+|DirectMethods|Doğrudan Yöntemler|Hayır|
+|Distributedizleme|Dağıtılmış Izleme (Önizleme)|Hayır|
+|FileUploadOperations|Karşıya dosya yükleme Işlemleri|Hayır|
+|JobsOperations|İş Işlemleri|Hayır|
+|Yollar|Yollar|Hayır|
+|TwinQueries|İkizi sorguları|Hayır|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|C2DCommands|C2D komutları|No|
-|C2DTwinOperations|C2D Ikizi Işlemleri|No|
-|Yapılandırmalar|Yapılandırmalar|No|
-|Bağlantılar|Bağlantılar|No|
-|D2CTwinOperations|D2CTwinOperations|No|
-|Deviceıdentityoperations|Cihaz kimliği Işlemleri|No|
-|DeviceStreams|Cihaz akışları (Önizleme)|No|
-|Devicetelemetri|Cihaz Telemetrisi|No|
-|DirectMethods|Doğrudan Yöntemler|No|
-|Distributedizleme|Dağıtılmış Izleme (Önizleme)|No|
-|FileUploadOperations|Karşıya dosya yükleme Işlemleri|No|
-|JobsOperations|İş Işlemleri|No|
-|Yollar|Yollar|No|
-|TwinQueries|İkizi sorguları|No|
+|C2DCommands|C2D komutları|Hayır|
+|C2DTwinOperations|C2D Ikizi Işlemleri|Hayır|
+|Yapılandırmalar|Yapılandırmalar|Hayır|
+|Bağlantılar|Bağlantılar|Hayır|
+|D2CTwinOperations|D2CTwinOperations|Hayır|
+|Deviceıdentityoperations|Cihaz kimliği Işlemleri|Hayır|
+|DeviceStreams|Cihaz akışları (Önizleme)|Hayır|
+|Devicetelemetri|Cihaz Telemetrisi|Hayır|
+|DirectMethods|Doğrudan Yöntemler|Hayır|
+|Distributedizleme|Dağıtılmış Izleme (Önizleme)|Hayır|
+|FileUploadOperations|Karşıya dosya yükleme Işlemleri|Hayır|
+|JobsOperations|İş Işlemleri|Hayır|
+|Yollar|Yollar|Hayır|
+|TwinQueries|İkizi sorguları|Hayır|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|DeviceOperations Işlemleri|Cihaz Işlemleri|No|
-|ServiceOperations|Hizmet İşlemleri|No|
+|DeviceOperations Işlemleri|Cihaz Işlemleri|Hayır|
+|ServiceOperations|Hizmet İşlemleri|Hayır|
 
 
 ## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/Digitaltwınsınstances
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|DigitalTwinsOperation|DigitalTwinsOperation|No|
-|EventRoutesOperation|EventRoutesOperation|No|
-|ModelsOperation|ModelsOperation|No|
-|Queryoperation başvurusu destekleniyor|Queryoperation başvurusu destekleniyor|No|
+|DigitalTwinsOperation|DigitalTwinsOperation|Hayır|
+|EventRoutesOperation|EventRoutesOperation|Hayır|
+|ModelsOperation|ModelsOperation|Hayır|
+|Queryoperation başvurusu destekleniyor|Queryoperation başvurusu destekleniyor|Hayır|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|CassandraRequests|CassandraRequests|No|
-|ControlPlaneRequests|ControlPlaneRequests|No|
-|DataPlaneRequests|DataPlaneRequests|No|
-|GremlinRequests|GremlinRequests|No|
-|MongoRequests|MongoRequests|No|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|No|
-|PartitionKeyStatistics|PartitionKeyStatistics|No|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|No|
+|CassandraRequests|CassandraRequests|Hayır|
+|ControlPlaneRequests|ControlPlaneRequests|Hayır|
+|DataPlaneRequests|DataPlaneRequests|Hayır|
+|GremlinRequests|GremlinRequests|Hayır|
+|MongoRequests|MongoRequests|Hayır|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|Hayır|
+|PartitionKeyStatistics|PartitionKeyStatistics|Hayır|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|Hayır|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Deliveryarızaları|Teslim hatası günlükleri|No|
-|Publisharızaları|Hata günlüklerini Yayımla|No|
+|Deliveryarızaları|Teslim hatası günlükleri|Hayır|
+|Publisharızaları|Hata günlüklerini Yayımla|Hayır|
 
 
 ## <a name="microsofteventgridpartnernamespaces"></a>Microsoft. EventGrid/partnerNamespaces
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Deliveryarızaları|Teslim hatası günlükleri|No|
-|Publisharızaları|Hata günlüklerini Yayımla|No|
+|Deliveryarızaları|Teslim hatası günlükleri|Hayır|
+|Publisharızaları|Hata günlüklerini Yayımla|Hayır|
 
 
 ## <a name="microsofteventgridpartnertopics"></a>Microsoft. EventGrid/Partnerkonuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Deliveryarızaları|Teslim hatası günlükleri|No|
+|Deliveryarızaları|Teslim hatası günlükleri|Hayır|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/Systemkonuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Deliveryarızaları|Teslim hatası günlükleri|No|
+|Deliveryarızaları|Teslim hatası günlükleri|Hayır|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/konuları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Deliveryarızaları|Teslim hatası günlükleri|No|
-|Publisharızaları|Hata günlüklerini Yayımla|No|
+|Deliveryarızaları|Teslim hatası günlükleri|Hayır|
+|Publisharızaları|Hata günlüklerini Yayımla|Hayır|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/ad alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ArchiveLogs|Arşiv günlükleri|No|
-|Oto Scalelogs|Günlükleri otomatik ölçeklendir|No|
-|CustomerManagedKeyUserLogs|Müşteri tarafından yönetilen anahtar günlükleri|No|
-|EventHubVNetConnectionEvent|VNet/IP filtreleme bağlantı günlükleri|No|
-|KafkaCoordinatorLogs|Kafka Coordinator günlükleri|No|
-|KafkaUserErrorLogs|Kafka Kullanıcı hatası günlükleri|No|
-|OperationalLogs|İşletimsel Günlükler|No|
+|ArchiveLogs|Arşiv günlükleri|Hayır|
+|Oto Scalelogs|Günlükleri otomatik ölçeklendir|Hayır|
+|CustomerManagedKeyUserLogs|Müşteri tarafından yönetilen anahtar günlükleri|Hayır|
+|EventHubVNetConnectionEvent|VNet/IP filtreleme bağlantı günlükleri|Hayır|
+|KafkaCoordinatorLogs|Kafka Coordinator günlükleri|Hayır|
+|KafkaUserErrorLogs|Kafka Kullanıcı hatası günlükleri|Hayır|
+|OperationalLogs|İşletimsel Günlükler|Hayır|
 
 
 ## <a name="microsoftexperimentationexperimentworkspaces"></a>Microsoft. deneme/experimentWorkspaces
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|İstek|İstek|No|
+|İstek|İstek|Hayır|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. Healthgelişme API 'leri/Hizmetleri
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AuditLogs|Denetim günlükleri|No|
+|AuditLogs|Denetim günlükleri|Hayır|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/oto scalesettings
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Oto Scaledeğerlendirmeleri|Otomatik ölçeklendirme değerlendirmeleri|No|
-|Oto Scalescaleactions|Otomatik ölçeklendirme ölçeklendirme eylemleri|No|
+|Oto Scaledeğerlendirmeleri|Otomatik ölçeklendirme değerlendirmeleri|Hayır|
+|Oto Scalescaleactions|Otomatik ölçeklendirme ölçeklendirme eylemleri|Hayır|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/bileşenler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AppAvailabilityResults|Kullanılabilirlik sonuçları|No|
-|Appbrowserzamanlamalar|Tarayıcı zamanlamaları|No|
-|AppDependencies|Bağımlılıklar|No|
-|AppEvents|Ekinlikler|No|
-|AppExceptions|Özel durumlar|No|
-|Appölçümler|Ölçümler|No|
-|AppPageViews|Sayfa görünümleri|No|
-|AppPerformanceCounters|Performans sayaçları|No|
-|AppRequests|İstekler|No|
-|AppSystemEvents|Sistem olayları|No|
-|Appizlemeler|İzlemeler|No|
+|AppAvailabilityResults|Kullanılabilirlik sonuçları|Hayır|
+|Appbrowserzamanlamalar|Tarayıcı zamanlamaları|Hayır|
+|AppDependencies|Bağımlılıklar|Hayır|
+|AppEvents|Ekinlikler|Hayır|
+|AppExceptions|Özel durumlar|Hayır|
+|Appölçümler|Ölçümler|Hayır|
+|AppPageViews|Sayfa görünümleri|Hayır|
+|AppPerformanceCounters|Performans sayaçları|Hayır|
+|AppRequests|İstekler|Hayır|
+|AppSystemEvents|Sistem olayları|Hayır|
+|Appizlemeler|İzlemeler|Hayır|
 
 
 ## <a name="microsoftiotspacesgraph"></a>Microsoft. ıotspaces/Graph
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim|No|
-|Çıkış|Çıkış|No|
-|Giriş|Giriş|No|
-|Operasyonel|Operasyonel|No|
-|İzleme|İzleme|No|
-|UserDefinedFunction|UserDefinedFunction|No|
+|Denetim|Denetim|Hayır|
+|Çıkış|Çıkış|Hayır|
+|Giriş|Giriş|Hayır|
+|Operasyonel|Operasyonel|Hayır|
+|İzleme|İzleme|Hayır|
+|UserDefinedFunction|UserDefinedFunction|Hayır|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. keykasası/managedhsms
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AuditEvent|Denetim Olayı|No|
+|AuditEvent|Denetim Olayı|Hayır|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. Keykasası/kasa
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AuditEvent|Denetim Günlükleri|No|
+|AuditEvent|Denetim Günlükleri|Hayır|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. kusto/kümeler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Komut|Komut|No|
-|FailedIngestion|Başarısız alma işlemleri|No|
-|İçeri toplu işleme|Alma toplu işlemi|No|
-|Sorgu|Sorgu|No|
-|SucceededIngestion|Başarılı alma işlemleri|No|
-|Tabloayrıntıları|Tablo ayrıntıları|No|
-|Tablousagestatistika|Tablo kullanım istatistikleri|No|
+|Komut|Komut|Hayır|
+|FailedIngestion|Başarısız alma işlemleri|Hayır|
+|İçeri toplu işleme|Alma toplu işlemi|Hayır|
+|Sorgu|Sorgu|Hayır|
+|SucceededIngestion|Başarılı alma işlemleri|Hayır|
+|Tabloayrıntıları|Tablo ayrıntıları|Hayır|
+|Tablousagestatistika|Tablo kullanım istatistikleri|Hayır|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/ıntegrationaccounts
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Integrationaccounttrackingevents|Tümleştirme hesabı izleme olayları|No|
+|Integrationaccounttrackingevents|Tümleştirme hesabı izleme olayları|Hayır|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/iş akışları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Başlatıldıktan|İş akışı çalışma zamanı tanılama olayları|No|
+|Başlatıldıktan|İş akışı çalışma zamanı tanılama olayları|Hayır|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|No|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|No|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|No|
-|AmlComputeJobEvent|AmlComputeJobEvent|No|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|No|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|Hayır|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|Hayır|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|Hayır|
+|AmlComputeJobEvent|AmlComputeJobEvent|Hayır|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|Hayır|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/mediaservices
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|KeyDeliveryRequests|Anahtar teslim Istekleri|No|
+|KeyDeliveryRequests|Anahtar teslim Istekleri|Hayır|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/Applicationgateway 'ler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ApplicationGatewayAccessLog|Application Gateway erişim günlüğü|No|
-|ApplicationGatewayFirewallLog|Application Gateway Güvenlik duvarı günlüğü|No|
-|ApplicationGatewayPerformanceLog|Application Gateway performans günlüğü|No|
+|ApplicationGatewayAccessLog|Application Gateway erişim günlüğü|Hayır|
+|ApplicationGatewayFirewallLog|Application Gateway Güvenlik duvarı günlüğü|Hayır|
+|ApplicationGatewayPerformanceLog|Application Gateway performans günlüğü|Hayır|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AzureFirewallApplicationRule|Azure Güvenlik Duvarı uygulama kuralı|No|
-|AzureFirewallDnsProxy|Azure Güvenlik duvarı DNS proxy 'Si|No|
-|AzureFirewallNetworkRule|Azure Güvenlik Duvarı ağ kuralı|No|
+|AzureFirewallApplicationRule|Azure Güvenlik Duvarı uygulama kuralı|Hayır|
+|AzureFirewallDnsProxy|Azure Güvenlik duvarı DNS proxy 'Si|Hayır|
+|AzureFirewallNetworkRule|Azure Güvenlik Duvarı ağ kuralı|Hayır|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Savunma günlükleri|Savunma denetim günlükleri|No|
+|Savunma günlükleri|Savunma denetim günlükleri|Hayır|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/Expressroutedevreleri
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|PeeringRouteLog|Yol tablosu günlüklerini eşleme|No|
+|PeeringRouteLog|Yol tablosu günlüklerini eşleme|Hayır|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontkapaklı
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|FrontdoorAccessLog|Frontkapısı erişim günlüğü|No|
-|FrontdoorWebApplicationFirewallLog|Frontkapılı Web uygulaması güvenlik duvarı günlüğü|No|
+|FrontdoorAccessLog|Frontkapısı erişim günlüğü|Hayır|
+|FrontdoorWebApplicationFirewallLog|Frontkapılı Web uygulaması güvenlik duvarı günlüğü|Hayır|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|LoadBalancerAlertEvent|Uyarı olaylarını Load Balancer|No|
-|LoadBalancerProbeHealthStatus|Load Balancer araştırma sistem durumu|No|
+|LoadBalancerAlertEvent|Uyarı olaylarını Load Balancer|Hayır|
+|LoadBalancerProbeHealthStatus|Load Balancer araştırma sistem durumu|Hayır|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|NetworkSecurityGroupEvent|Ağ güvenlik grubu olayı|No|
-|NetworkSecurityGroupFlowEvent|Ağ güvenlik grubu kural akışı olayı|No|
-|NetworkSecurityGroupRuleCounter|Ağ güvenlik grubu kuralı sayacı|No|
+|NetworkSecurityGroupEvent|Ağ güvenlik grubu olayı|Hayır|
+|NetworkSecurityGroupFlowEvent|Ağ güvenlik grubu kural akışı olayı|Hayır|
+|NetworkSecurityGroupRuleCounter|Ağ güvenlik grubu kuralı sayacı|Hayır|
 
 
 ## <a name="microsoftnetworkp2svpngateways"></a>Microsoft. Network/p2sVpnGateways
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|No|
-|Ikediagnosticlog|IKE tanılama günlükleri|No|
-|P2SDiagnosticLog|P2S tanılama günlükleri|No|
+|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|Hayır|
+|Ikediagnosticlog|IKE tanılama günlükleri|Hayır|
+|P2SDiagnosticLog|P2S tanılama günlükleri|Hayır|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/Publicıpaddresses
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|DDoSMitigationFlowLogs|DDoS azaltma kararlarının akış günlükleri|No|
-|DDoSMitigationReports|DDoS azaltmaları raporları|No|
-|DDoSProtectionNotifications|DDoS koruması bildirimleri|No|
+|DDoSMitigationFlowLogs|DDoS azaltma kararlarının akış günlükleri|Hayır|
+|DDoSMitigationReports|DDoS azaltmaları raporları|Hayır|
+|DDoSProtectionNotifications|DDoS koruması bildirimleri|Hayır|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Probehealthkara Sevents|Araştırma durumu sonuçları olayını Traffic Manager|No|
+|Probehealthkara Sevents|Araştırma durumu sonuçları olayını Traffic Manager|Hayır|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/Virtualnetworkgateway 'ler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|No|
-|Ikediagnosticlog|IKE tanılama günlükleri|No|
-|P2SDiagnosticLog|P2S tanılama günlükleri|No|
-|RouteDiagnosticLog|Tanılama günlüklerini yönlendirme|No|
-|Tüneldiagnosticlog|Tünel tanılama günlükleri|No|
+|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|Hayır|
+|Ikediagnosticlog|IKE tanılama günlükleri|Hayır|
+|P2SDiagnosticLog|P2S tanılama günlükleri|Hayır|
+|RouteDiagnosticLog|Tanılama günlüklerini yönlendirme|Hayır|
+|Tüneldiagnosticlog|Tünel tanılama günlükleri|Hayır|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|VMProtectionAlerts|VM koruma uyarıları|No|
+|VMProtectionAlerts|VM koruma uyarıları|Hayır|
 
 
 ## <a name="microsoftnetworkvpngateways"></a>Microsoft. Network/Vpngateway 'ler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|No|
-|Ikediagnosticlog|IKE tanılama günlükleri|No|
-|RouteDiagnosticLog|Tanılama günlüklerini yönlendirme|No|
-|Tüneldiagnosticlog|Tünel tanılama günlükleri|No|
+|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|Hayır|
+|Ikediagnosticlog|IKE tanılama günlükleri|Hayır|
+|RouteDiagnosticLog|Tanılama günlüklerini yönlendirme|Hayır|
+|Tüneldiagnosticlog|Tünel tanılama günlükleri|Hayır|
 
 
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft. Notificationhub 'Lar/ad alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|OperationalLogs|İşletimsel Günlükler|No|
+|OperationalLogs|İşletimsel Günlükler|Hayır|
 
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. Operationalınsights/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Denetim|Denetim Günlükleri|No|
+|Denetim|Denetim Günlükleri|Hayır|
 
 
 ## <a name="microsoftpowerbitenants"></a>Microsoft. PowerBI/kiracılar
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Altyapı|Altyapı|No|
+|Altyapı|Altyapı|Hayır|
 
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft. PowerBI/kiracılar/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Altyapı|Altyapı|No|
+|Altyapı|Altyapı|Hayır|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. Powerbiadanmış/kapasiteler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Altyapı|Altyapı|No|
+|Altyapı|Altyapı|Hayır|
 
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/hesaplar
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
+|ScanStatusLogEvent|ScanStatus|Hayır|
 
 
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. purview/hesapları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
+|ScanStatusLogEvent|ScanStatus|Hayır|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/kasa
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AddonAzureBackupAlerts|Eklenti Azure Backup uyarı verisi|No|
-|AddonAzureBackupJobs|Eklenti Azure Backup Iş verileri|No|
-|AddonAzureBackupPolicy|Eklenti Azure Backup Ilkesi verileri|No|
-|AddonAzureBackupProtectedInstance|Eklenti Azure Backup korumalı örnek verileri|No|
-|AddonAzureBackupStorage|Eklenti Azure Backup depolama verileri|No|
-|AzureBackupReport|Raporlama verilerini Azure Backup|No|
-|Azuresterekapak Yevents|Azure Site Recovery olaylar|No|
-|AzureSiteRecoveryJobs|Azure Site Recovery Işleri|No|
-|AzureSiteRecoveryProtectedDiskDataChurn|Korunan disk verileri dalgalanmasını Azure Site Recovery|No|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery kurtarma noktaları|No|
-|AzureSiteRecoveryReplicatedItems|Çoğaltılan öğeleri Azure Site Recovery|No|
-|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery çoğaltma verilerini karşıya yükleme hızı|No|
-|AzureSiteRecoveryReplicationStats|Azure Site Recovery çoğaltma Istatistikleri|No|
-|CoreAzureBackup|Çekirdek Azure Backup verileri|No|
+|AddonAzureBackupAlerts|Eklenti Azure Backup uyarı verisi|Hayır|
+|AddonAzureBackupJobs|Eklenti Azure Backup Iş verileri|Hayır|
+|AddonAzureBackupPolicy|Eklenti Azure Backup Ilkesi verileri|Hayır|
+|AddonAzureBackupProtectedInstance|Eklenti Azure Backup korumalı örnek verileri|Hayır|
+|AddonAzureBackupStorage|Eklenti Azure Backup depolama verileri|Hayır|
+|AzureBackupReport|Raporlama verilerini Azure Backup|Hayır|
+|Azuresterekapak Yevents|Azure Site Recovery olaylar|Hayır|
+|AzureSiteRecoveryJobs|Azure Site Recovery Işleri|Hayır|
+|AzureSiteRecoveryProtectedDiskDataChurn|Korunan disk verileri dalgalanmasını Azure Site Recovery|Hayır|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery kurtarma noktaları|Hayır|
+|AzureSiteRecoveryReplicatedItems|Çoğaltılan öğeleri Azure Site Recovery|Hayır|
+|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery çoğaltma verilerini karşıya yükleme hızı|Hayır|
+|AzureSiteRecoveryReplicationStats|Azure Site Recovery çoğaltma Istatistikleri|Hayır|
+|CoreAzureBackup|Çekirdek Azure Backup verileri|Hayır|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/Namespace
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|HybridConnectionsEvent|HybridConnections olayları|No|
-|HybridConnectionsLogs|HybridConnectionsLogs|No|
+|HybridConnectionsEvent|HybridConnections olayları|Hayır|
+|HybridConnectionsLogs|HybridConnectionsLogs|Hayır|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|OperationLogs|İşlem günlükleri|No|
+|OperationLogs|İşlem günlükleri|Hayır|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/ad alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|OperationalLogs|İşletimsel Günlükler|No|
+|OperationalLogs|İşletimsel Günlükler|Hayır|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/SignalR
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AllLogs|Azure SignalR hizmeti günlükleri.|No|
+|AllLogs|Azure SignalR hizmeti günlükleri.|Hayır|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Devopsoperationsaudıt|DevOps işlemleri denetim günlükleri|No|
-|ResourceUsageStats|Kaynak kullanım Istatistikleri|No|
-|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|No|
+|Devopsoperationsaudıt|DevOps işlemleri denetim günlükleri|Hayır|
+|ResourceUsageStats|Kaynak kullanım Istatistikleri|Hayır|
+|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|Hayır|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/ManagedInstances/veritabanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Hatalar|Hatalar|No|
-|QueryStoreRuntimeStatistics|Sorgu deposu çalışma zamanı Istatistikleri|No|
-|QueryStoreWaitStatistics|Sorgu deposu bekleme Istatistikleri|No|
-|Sqlinsıghts|SQL öngörüleri|No|
+|Hatalar|Hatalar|Hayır|
+|QueryStoreRuntimeStatistics|Sorgu deposu çalışma zamanı Istatistikleri|Hayır|
+|QueryStoreWaitStatistics|Sorgu deposu bekleme Istatistikleri|Hayır|
+|Sqlinsıghts|SQL öngörüleri|Hayır|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/Servers/veritabanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Otomatik olarak ayarlama|Otomatik ayarlama|No|
-|Bloklar|Bloklar|No|
-|DatabaseWaitStatistics|Veritabanı bekleme Istatistikleri|No|
-|Kilitlenmeler|Kilitlenmeler|No|
-|Devopsoperationsaudıt|DevOps işlemleri denetim günlükleri|No|
-|Dmsçalışanları|DMS çalışanları|No|
-|Hatalar|Hatalar|No|
-|ExecRequests|Yürütme Istekleri|No|
-|QueryStoreRuntimeStatistics|Sorgu deposu çalışma zamanı Istatistikleri|No|
-|QueryStoreWaitStatistics|Sorgu deposu bekleme Istatistikleri|No|
-|RequestSteps|İstek adımları|No|
-|Sqlinsıghts|SQL öngörüleri|No|
-|SqlRequests|SQL Istekleri|No|
-|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|No|
-|Zaman aşımları|Zaman aşımları|No|
-|Bekler|Bekler|No|
+|Otomatik olarak ayarlama|Otomatik ayarlama|Hayır|
+|Bloklar|Bloklar|Hayır|
+|DatabaseWaitStatistics|Veritabanı bekleme Istatistikleri|Hayır|
+|Kilitlenmeler|Kilitlenmeler|Hayır|
+|Devopsoperationsaudıt|DevOps işlemleri denetim günlükleri|Hayır|
+|Dmsçalışanları|DMS çalışanları|Hayır|
+|Hatalar|Hatalar|Hayır|
+|ExecRequests|Yürütme Istekleri|Hayır|
+|QueryStoreRuntimeStatistics|Sorgu deposu çalışma zamanı Istatistikleri|Hayır|
+|QueryStoreWaitStatistics|Sorgu deposu bekleme Istatistikleri|Hayır|
+|RequestSteps|İstek adımları|Hayır|
+|Sqlinsıghts|SQL öngörüleri|Hayır|
+|SqlRequests|SQL Istekleri|Hayır|
+|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|Hayır|
+|Zaman aşımları|Zaman aşımları|Hayır|
+|Bekler|Bekler|Hayır|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
@@ -892,90 +891,90 @@ Eksik bir sorun olduğunu düşünüyorsanız, bu makalenin alt kısmında bir G
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Yazma|Yazma|No|
-|Yürütme|Yürütme|No|
+|Yazma|Yazma|Hayır|
+|Yürütme|Yürütme|Hayır|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. SYNAPSE/çalışma alanları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BuiltinSqlReqsEnded|Yerleşik SQL havuzu Istekleri sona erdi|No|
-|GatewayApiRequests|SYNAPSE ağ geçidi API 'Si Istekleri|No|
-|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|No|
-|SynapseRbacOperations|SYNAPSE RBAC Işlemleri|No|
+|BuiltinSqlReqsEnded|Yerleşik SQL havuzu Istekleri sona erdi|Hayır|
+|GatewayApiRequests|SYNAPSE ağ geçidi API 'Si Istekleri|Hayır|
+|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|Hayır|
+|SynapseRbacOperations|SYNAPSE RBAC Işlemleri|Hayır|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. SYNAPSE/Workspaces/bigDataPools
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|BigDataPoolAppsEnded|Büyük veri havuzu uygulamaları sona erdi|No|
+|BigDataPoolAppsEnded|Büyük veri havuzu uygulamaları sona erdi|Hayır|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Dmsçalışanları|DMS çalışanları|No|
-|ExecRequests|Yürütme Istekleri|No|
-|RequestSteps|İstek adımları|No|
-|SqlRequests|SQL Istekleri|No|
-|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|No|
-|Bekler|Bekler|No|
+|Dmsçalışanları|DMS çalışanları|Hayır|
+|ExecRequests|Yürütme Istekleri|Hayır|
+|RequestSteps|İstek adımları|Hayır|
+|SqlRequests|SQL Istekleri|Hayır|
+|SQLSecurityAuditEvents|SQL güvenlik denetim olayı|Hayır|
+|Bekler|Bekler|Hayır|
 
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. Timeseriesınsights/ortamlar
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Giriş|Giriş|No|
-|Yönetim|Yönetim|No|
+|Giriş|Giriş|Hayır|
+|Yönetim|Yönetim|Hayır|
 
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. Timeseriesınsights/ortamlar/EventSources
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|Giriş|Giriş|No|
-|Yönetim|Yönetim|No|
+|Giriş|Giriş|Hayır|
+|Yönetim|Yönetim|Hayır|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AppServiceEnvironmentPlatformLogs|App Service Ortamı platform günlükleri|No|
+|AppServiceEnvironmentPlatformLogs|App Service Ortamı platform günlükleri|Hayır|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/siteler
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AppServiceAntivirusScanAuditLogs|Virüsten koruma denetim günlüklerini raporla|No|
-|AppServiceAppLogs|Uygulama günlüklerini App Service|No|
-|AppServiceAuditLogs|Denetim günlüklerine erişim|No|
-|AppServiceConsoleLogs|Konsol günlüklerini App Service|No|
-|AppServiceFileAuditLogs|Site Içeriği değişikliği denetim günlükleri|No|
-|AppServiceHTTPLogs|HTTP günlükleri|No|
-|AppServiceIPSecAuditLogs|IPSecurity denetim günlükleri|No|
-|AppServicePlatformLogs|App Service platform günlükleri|No|
-|FunctionAppLogs|İşlev uygulama günlükleri|No|
+|AppServiceAntivirusScanAuditLogs|Virüsten koruma denetim günlüklerini raporla|Hayır|
+|AppServiceAppLogs|Uygulama günlüklerini App Service|Hayır|
+|AppServiceAuditLogs|Denetim günlüklerine erişim|Hayır|
+|AppServiceConsoleLogs|Konsol günlüklerini App Service|Hayır|
+|AppServiceFileAuditLogs|Site Içeriği değişikliği denetim günlükleri|Hayır|
+|AppServiceHTTPLogs|HTTP günlükleri|Hayır|
+|AppServiceIPSecAuditLogs|IPSecurity denetim günlükleri|Hayır|
+|AppServicePlatformLogs|App Service platform günlükleri|Hayır|
+|FunctionAppLogs|İşlev uygulama günlükleri|Hayır|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Yuvaları
 
 |Kategori|Kategori görünen adı|Dışarı aktarılacak maliyetler|
 |---|---|---|
-|AppServiceAntivirusScanAuditLogs|Virüsten koruma denetim günlüklerini raporla|No|
-|AppServiceAppLogs|Uygulama günlüklerini App Service|No|
-|AppServiceAuditLogs|Denetim günlüklerine erişim|No|
-|AppServiceConsoleLogs|Konsol günlüklerini App Service|No|
-|AppServiceFileAuditLogs|Site Içeriği değişikliği denetim günlükleri|No|
-|AppServiceHTTPLogs|HTTP günlükleri|No|
-|AppServiceIPSecAuditLogs|IPSecurity denetim günlükleri|No|
-|AppServicePlatformLogs|App Service platform günlükleri|No|
-|FunctionAppLogs|İşlev uygulama günlükleri|No|
+|AppServiceAntivirusScanAuditLogs|Virüsten koruma denetim günlüklerini raporla|Hayır|
+|AppServiceAppLogs|Uygulama günlüklerini App Service|Hayır|
+|AppServiceAuditLogs|Denetim günlüklerine erişim|Hayır|
+|AppServiceConsoleLogs|Konsol günlüklerini App Service|Hayır|
+|AppServiceFileAuditLogs|Site Içeriği değişikliği denetim günlükleri|Hayır|
+|AppServiceHTTPLogs|HTTP günlükleri|Hayır|
+|AppServiceIPSecAuditLogs|IPSecurity denetim günlükleri|Hayır|
+|AppServicePlatformLogs|App Service platform günlükleri|Hayır|
+|FunctionAppLogs|İşlev uygulama günlükleri|Hayır|
 
 
 

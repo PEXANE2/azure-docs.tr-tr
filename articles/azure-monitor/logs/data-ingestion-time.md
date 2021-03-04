@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici 'de günlük verisi alma süresi | Microsoft Docs
 description: Azure Izleyici 'de günlük verilerini toplama gecikmesini etkileyen farklı faktörleri açıklar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 501e395cf91630789824cc111614e7150dddaa7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700618"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030894"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.

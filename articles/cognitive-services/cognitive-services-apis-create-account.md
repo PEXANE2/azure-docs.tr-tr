@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 keywords: bilişsel hizmetler, bilişsel zeka, bilişsel çözümler, AI Hizmetleri
 ms.service: cognitive-services
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0ad2d0a10b20aa049147d61bd4e8168ea956392c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368925"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031931"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -42,7 +42,7 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     - Görüntü İşleme
     - Content Moderator
-    - Yüz
+    - Yüz Tanıma
     - Language Understanding (LUIS)
     - Metin Analizi
     - Çevirmen
@@ -56,17 +56,17 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     Kullanılabilir bilişsel hizmetler için bir kaynak oluşturmak üzere aşağıdaki bağlantıları kullanın:
 
-    | Görsel                      | Konuşma                  | Dil                          | Karar             | Arama                 |
+    | Görsel                      | Konuşma                  | Dil                          | Karar             | Arayın                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Bilgisayar vizyonu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Konuşma Hizmetleri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Modern okuyucu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomali Algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Arama API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Özel Vision hizmeti](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Konuşmacı Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Özel Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [Yüz Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [Soru-Cevap Oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Kişiselleştirme](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Varlık Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Mürekkep Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Metin Analizi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Ölçüm Danışmanı](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing Yazım Denetimi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
-    |           |                         | [Çevirmen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Otomatik Öneri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+    |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Otomatik Öneri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    **_
+    ***
 
-3. _ *Oluştur* * sayfasında, aşağıdaki bilgileri sağlayın:
+3. **Oluştur** sayfasında, aşağıdaki bilgileri sağlayın:
 
     #### <a name="multi-service-resource"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
 
@@ -80,7 +80,7 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     ![Çoklu hizmet kaynak kaynağı oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    **Oluştur** 'a tıklayın.
+    **Oluştur**’a tıklayın.
 
     #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
@@ -94,15 +94,15 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     ![Tek hizmet kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    **Oluştur** 'a tıklayın.
+    **Oluştur**’a tıklayın.
 
-    **_
+    ***
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Kaynağınızın anahtarlarını alın
 
-1. Kaynağınız başarıyla dağıtıldıktan sonra, **sonraki adımlar** altında _ *Kaynağa Git * öğesine* tıklayın.
+1. Kaynağınız başarıyla dağıtıldıktan sonra, **sonraki adımlar** altında **Kaynağa Git ' e** tıklayın.
 
     ![Bilişsel hizmetler için arama](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -116,9 +116,9 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, grupta yer alan diğer tüm kaynakları da siler.
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları** 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları**'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynağı içeren kaynak grubunu bulun
-3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil** 'i seçip onaylayın.
+3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil**'i seçip onaylayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

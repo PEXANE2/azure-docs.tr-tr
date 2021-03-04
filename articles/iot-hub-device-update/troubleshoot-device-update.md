@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680008"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030639"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>IoT Hub sorun giderme kılavuzu için cihaz güncelleştirmesi
 
@@ -46,7 +46,7 @@ _Cihazın uyumluluk durumunun yenilenmesi 5 dakika sürebilir. Lütfen bekleyin,
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>S: cihazımın dağıtım durumu uyumsuz olarak gösteriliyor, ne yapmam gerekir?
 _Hedeflenen bir cihazın üretici ve model özellikleri, cihaz IoT Hub bağlandıktan sonra değiştirilmiş olabilir, böylece cihaz artık geçerli dağıtımın güncelleştirme içeriğiyle uyumsuz olarak değerlendirilir._
 
-_Cihazınızın cihaz güncelleştirme hizmetine rapor ettiği üretici ve modeli görmek için [ADU Core arabirimini](./device-update-plug-and-play) denetleyin ve dağıtılan güncelleştirme içeriğinin [içeri aktarma bildiriminde](./import-concepts.md) belirttiğiniz üretici ve modelle eşleştiğinden emin olun. [Cihaz güncelleştirme yapılandırma dosyasını](./device-update-cofiguration-file.md)kullanarak, belirli bir cihaz için bu özellikleri değiştirebilirsiniz._
+_Cihazınızın cihaz güncelleştirme hizmetine rapor ettiği üretici ve modeli görmek için [ADU Core arabirimini](./device-update-plug-and-play.md) denetleyin ve dağıtılan güncelleştirme içeriğinin [içeri aktarma bildiriminde](./import-concepts.md) belirttiğiniz üretici ve modelle eşleştiğinden emin olun. [Cihaz güncelleştirme yapılandırma dosyasını](./device-update-configuration-file.md)kullanarak, belirli bir cihaz için bu özellikleri değiştirebilirsiniz._
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>S: dağıtımımın "etkin" aşamada olduğunu görmem, ancak cihazımın hiçbiri güncelleştirme ile "devam ediyor". Ne yapmalıyım?
 _Dağıtım başlangıç tarihinin gelecekte ayarlı olmadığından emin olun. Yeni bir dağıtım oluşturduğunuzda, açıkça değiştirmediğiniz sürece dağıtım başlangıç tarihi bir sonraki güne karşı koruma olarak ayarlanır. Dağıtım başlangıç tarihinin gelmesini bekleyebilir ya da devam eden dağıtımı iptal edebilir ve istenen başlangıç tarihiyle yeni bir dağıtım oluşturabilirsiniz._

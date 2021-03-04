@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: bb132baf3e93242c1b228f0ac7f0cfb7f41e1164
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032526"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure CLı ile Azure Bilişsel Arama hizmetinizi yönetme
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Bir hizmette, içerik oluşturma ve Yönetim [Arama Hizmeti REST API](/rest/api/
 
 Bu makaledeki örnekler etkileşimlidir ve yükseltilmiş izinler gerektirir. Azure CLı 'nın yüklü olması gerekir. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
 
-Artık Azure CLı 'yı `az` Windows komut istemi, PowerShell veya [Azure Cloud Shell](../cloud-shell/overview)komutuyla çalıştırabilirsiniz. PowerShell, Windows Komut İstemi’nde kullanılamayan bazı sekme tamamlama özellikleri sunar. 
+Artık Azure CLı 'yı `az` Windows komut istemi, PowerShell veya [Azure Cloud Shell](../cloud-shell/overview.md)komutuyla çalıştırabilirsiniz. PowerShell, Windows Komut İstemi’nde kullanılamayan bazı sekme tamamlama özellikleri sunar. 
 
 ### <a name="check-the-azure-cli-version"></a>Azure CLı sürümünü denetleyin
 
@@ -152,7 +152,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 
 ## <a name="create-or-delete-a-service"></a>Hizmet oluşturma veya silme
 
-[Yeni bir arama hizmeti oluşturmak](search-create-service-portal)için [**az Search Service Create**](/cli/azure/search/service#az_search_service_show) komutunu kullanın.
+[Yeni bir arama hizmeti oluşturmak](search-create-service-portal.md)için [**az Search Service Create**](/cli/azure/search/service#az_search_service_show) komutunu kullanın.
 
 ```azurecli-interactive
 az search service create \

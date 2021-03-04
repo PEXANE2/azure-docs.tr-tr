@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762938"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031710"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltmasını yapılandırma
 
@@ -238,10 +238,10 @@ Kaynak depolama hesabı için izinleriniz yoksa, hedef hesapta nesne çoğaltmas
 
 Aşağıdaki tabloda, her senaryodaki JSON dosyasındaki ilke KIMLIĞI ve kural kimlikleri için hangi değerlerin kullanılacağı özetlenmektedir.
 
-| Bu hesap için JSON dosyasını oluştururken... | İlke KIMLIĞI ve kural kimliklerini bu değere ayarlayın... |
-|-|-|
-| Hedef hesap | *Varsayılan* dize değeri. Azure depolama, ilke KIMLIĞI ve kural kimliklerini sizin için oluşturur. |
-| Kaynak hesap | Hedef hesapta tanımlı ilkeyi JSON dosyası olarak indirdiğinizde döndürülen ilke KIMLIĞI ve kural kimliklerinin değerleri. |
+| Bu hesap için JSON dosyasını oluştururken... | İlke KIMLIĞINI bu değere ayarla | Kural kimliklerini bu değere ayarla |
+|-|-|-|
+| Hedef hesap | *Varsayılan* dize değeri. Azure depolama, sizin için ilke KIMLIĞI değerini oluşturacaktır. | Boş bir dize. Azure depolama, kural KIMLIĞI değerlerini sizin için oluşturur. |
+| Kaynak hesap | Hedef hesapta tanımlı ilkeyi JSON dosyası olarak indirdiğinizde döndürülen ilke KIMLIĞININ değeri. | Hedef hesapta tanımlı ilkeyi bir JSON dosyası olarak indirdiğinizde döndürülen kural kimliklerinin değerleri. |
 
 Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir çoğaltma ilkesi tanımlar ve çoğaltılacak Bloblar için en düşük oluşturma süresini ayarlar. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -253,7 +253,7 @@ Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir �
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir �
 
 Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Hedef hesapta çoğaltma ilkesini tanımlayan yerel bir JSON dosyası oluşturun. Azure Storage 'ın ilke KIMLIĞINI tanımlayabilmesi için **PolicyId** alanını **Default** olarak ayarlayın.
+1. Hedef hesapta çoğaltma ilkesini tanımlayan yerel bir JSON dosyası oluşturun. Azure Storage 'ın ilke KIMLIĞINI tanımlayabilmesi için **PolicyId** alanını *Default* olarak ayarlayın.
 
     Çoğaltma ilkesini tanımlayan bir JSON dosyası oluşturmanın kolay bir yolu, öncelikle Azure portal iki depolama hesabı arasında bir test çoğaltma ilkesi oluşturmaktır. Daha sonra çoğaltma kurallarını indirebilir ve JSON dosyasını gerektiği gibi değiştirebilirsiniz.
 

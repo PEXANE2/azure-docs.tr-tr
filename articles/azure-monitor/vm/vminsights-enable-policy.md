@@ -1,17 +1,16 @@
 ---
 title: Azure Ilkesini kullanarak VM öngörülerini etkinleştirme
 description: Azure Ilkesi kullanarak birden çok Azure sanal makinesi veya sanal makine ölçek kümesi için VM öngörülerini nasıl etkinleştirebileceğinizi açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707549"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031965"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM öngörülerini etkinleştirme
 Bu makalede, Azure Ilkesi kullanılarak Azure sanal makineleri veya Azure Arc (Önizleme) ile bağlantılı karma sanal makine için VM öngörülerinin nasıl etkinleştirileceği açıklanır. Azure Ilkesi, Azure ortamınızda VM öngörüleri için gerekli aracıları yükleyen ve her bir sanal makine oluşturulduğu sürece VM 'Ler için izlemeyi etkinleştiren ilke tanımlarını atamanızı sağlar. VM öngörüleri, ortamınızdaki uyumsuz VM 'Leri keşfetmenizi ve düzeltmenizi sağlayan bir özellik sunar. Doğrudan Azure Ilkesiyle çalışmak yerine bu özelliği kullanın.
@@ -19,7 +18,7 @@ Bu makalede, Azure Ilkesi kullanılarak Azure sanal makineleri veya Azure Arc (�
 Azure Ilkesi hakkında bilgi sahibi değilseniz Azure [ilkesi 'ni kullanarak Azure izleyici 'yi ölçeğe göre dağıtma](../deploy-scale.md)konusuna kısa bir giriş alın.
 
 > [!NOTE]
-> Azure Ilkesini Azure sanal makine ölçek kümeleri ile kullanmak veya Azure sanal makinelerini etkinleştirmek üzere doğrudan Azure Ilkesiyle çalışmak için bkz. Azure [ilkesini kullanarak Azure izleyici 'yi ölçekli olarak dağıtma](../deploy-scale.md#azure-monitor-for-vms).
+> Azure Ilkesini Azure sanal makine ölçek kümeleri ile kullanmak veya Azure sanal makinelerini etkinleştirmek üzere doğrudan Azure Ilkesiyle çalışmak için bkz. Azure [ilkesini kullanarak Azure izleyici 'yi ölçekli olarak dağıtma](../deploy-scale.md#vm-insights).
 
 ## <a name="prerequisites"></a>Önkoşullar
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](./vminsights-configure-workspace.md).

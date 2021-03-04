@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bcbe846d102b0ef821394246e10d2af4d48cacf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692411"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032628"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure, ile yazılmış ara verileri otomatik olarak silmez `OutputFileDatasetConfig` . Çok sayıda gereksiz veri için depolama ücretlerinden kaçınmak için şunlardan birini yapmalısınız:
 
 * İşlem hattı çalıştırmasının sonunda, artık gerekli olmadığında ara verileri program aracılığıyla silme
-* Ara veriler için kısa vadeli depolama ilkesiyle BLOB depolama kullanma (bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Ara veriler için kısa vadeli depolama ilkesiyle BLOB depolama kullanma (bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](../storage/blobs/storage-lifecycle-management-concepts.md)) 
 * Daha uzun süre gerekli olmayan verileri düzenli olarak gözden geçirin ve silin
 
 Daha fazla bilgi için bkz. [Azure Machine Learning için maliyetleri planlayın ve yönetin](concept-plan-manage-cost.md).

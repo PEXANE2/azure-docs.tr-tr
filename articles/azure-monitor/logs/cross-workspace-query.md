@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici ile kaynaklar arasında sorgu | Microsoft Docs
 description: Bu makalede, aboneliğinizdeki birden çok çalışma alanı ve App Insights uygulamasının kaynaklarında nasıl sorgu yapılacağı açıklanır.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: a765525b12431c68aa0bba0c0f49c477defff0f0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723223"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030977"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Azure Izleyici 'de çalışma alanları ve uygulamalar arasında yayılan günlük sorgusu gerçekleştirme
 

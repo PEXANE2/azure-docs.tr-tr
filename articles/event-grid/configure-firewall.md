@@ -2,13 +2,13 @@
 title: Azure Event Grid konuları veya etki alanları için IP güvenlik duvarını yapılandırma
 description: Bu makalede, Event Grid konular veya etki alanları için güvenlik duvarı ayarlarının nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324170"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031846"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için IP güvenlik duvarını yapılandırma 
 Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır. Event Grid tarafından desteklenen ağ güvenliği özellikleri hakkında daha fazla bilgi için bkz. [Event Grid Için ağ güvenliği](network-security.md).
@@ -16,7 +16,7 @@ Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması v
 Bu makalede, Azure Event Grid konular veya etki alanları için IP Güvenlik Duvarı ayarlarının nasıl yapılandırılacağı açıklanır.
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
-Bu bölümde, gelen IP güvenlik duvarı kuralları oluşturmak için Azure portal nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
+Bu bölümde, gelen IP güvenlik duvarı kuralları oluşturmak için Azure portal nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 1. [Azure Portal](https://portal.azure.com), olay Kılavuzu konu başlığına veya etki alanına gidin ve **ağ** sekmesine geçin.
 2. İnternet dahil tüm ağın kaynağa erişmesine izin vermek için **ortak ağları** seçin. 
@@ -32,21 +32,8 @@ Bu bölümde, gelen IP güvenlik duvarı kuralları oluşturmak için Azure port
 
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
-Bu bölümde, gelen IP kuralları ile konular oluşturmak için Azure CLı komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
+Bu bölümde, gelen IP kuralları ile konular oluşturmak için Azure CLı komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
-
-### <a name="prerequisites"></a>Ön koşullar
-Aşağıdaki komutu çalıştırarak CLı için Azure Event Grid uzantısını güncelleştirin: 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-Uzantı yüklü değilse, yüklemek için aşağıdaki komutu çalıştırın: 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>Ortak ağ erişimini etkinleştirme veya devre dışı bırakma
 Varsayılan olarak, genel ağ erişimi konular ve etki alanları için etkinleştirilmiştir. Ayrıca, açıkça etkinleştirebilir veya devre dışı bırakabilirsiniz. Gelen IP güvenlik duvarı kurallarını yapılandırarak trafiği kısıtlayabilirsiniz. 
@@ -160,9 +147,9 @@ az eventgrid topic update \
 
 
 ## <a name="use-powershell"></a>PowerShell kullanma
-Bu bölümde, gelen IP güvenlik duvarı kuralları ile Azure Event Grid konu oluşturmak için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
+Bu bölümde, gelen IP güvenlik duvarı kuralları ile Azure Event Grid konu oluşturmak için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir. Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** IÇIN gelen IP kuralları oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 [Nasıl yapılır: Azure AD uygulaması ve hizmet sorumlusu oluşturmak için, bir Azure Active Directory uygulaması oluşturmak ve aşağıdaki değerleri izlemek üzere kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için bu](../active-directory/develop/howto-create-service-principal-portal.md) yönergeleri izleyin:
 
 - Dizin (kiracı) kimliği

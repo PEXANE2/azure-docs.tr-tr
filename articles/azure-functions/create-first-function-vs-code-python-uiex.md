@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 19a8a73428bef3c29c5bf9e56b45750adf5fb2dd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42f07b76cefed38aad53caba9ba35c74238540fe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748946"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031744"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Python ile bir işlev oluşturma
 
@@ -90,12 +90,12 @@ Yerel Işlevler projesi oluştururken çözülecek en yaygın sorunlar şunlard�
 
 1. **Terminal** panelinde, yerel olarak çalışan IŞLEVINIZIN URL uç noktası ' na bakın.
 
-    ![Yerel işlev VS Code çıkışı](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
+    ![Yerel işlev VS Code çıkışı](../../includes/media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
 
 1. Temel araçlar çalışırken **Azure: Functions** alanına gidin. **İşlevler** altında **Yerel proje**  >  **işlevleri**' ni genişletin. İşlevi sağ tıklatın (Windows) veya <kbd>CTRL</kbd> + tıklatın (MacOS) `HttpExample` ve **Şimdi işlevi Çalıştır...** seçeneğini belirleyin.
 
-    :::image type="content" source="media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="İşlevi şimdi Visual Studio Code Çalıştır":::
+    :::image type="content" source="../../includes/media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="İşlevi şimdi Visual Studio Code Çalıştır":::
 
 1. **İstek gövdesi gir** bölümünde istek iletisi gövdesi değerini görürsünüz `{ "name": "Azure" }` . Bu istek iletisini işlevinizde göndermek için ENTER tuşuna basın.  
 

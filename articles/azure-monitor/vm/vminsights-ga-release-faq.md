@@ -1,17 +1,16 @@
 ---
 title: VM öngörüleri (GA) sık sorulan sorular | Microsoft Docs
 description: VM öngörüleri, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak keşfederek ve aralarındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, GA sürümü hakkında sık sorulan sorular yanıtlanmaktadır.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710762"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031895"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>VM öngörüleri genel kullanıma sunuldu (GA) sık sorulan sorular
 Bu genel kullanılabilirlik SSS, S4 2019 ' de yapılan değişiklikleri ve GA için hazırlandığımız şekilde 2020 ' i içerir.
@@ -20,15 +19,15 @@ Bu genel kullanılabilirlik SSS, S4 2019 ' de yapılan değişiklikleri ve GA i�
 2020 Ocak 'ta yeni VM öngörülerinin yeni bir sürümünü, GA duyurumuzdan önce yayımladık. VM öngörülerini etkinleştiren müşteriler artık GA sürümünü alacak, ancak S4 2019 ve öncesi VM öngörülerinin sürümünü kullanan mevcut müşterilerin yükseltilmesi istenecektir. Bu SSS, birden çok çalışma alanı genelinde büyük dağıtımlarınız varsa, bir yükseltmeyi ölçekte gerçekleştirmeye yönelik rehberlik sunar.
 
 
-Bu yükseltme ile, VM'ler için Azure İzleyici performans verileri [kapsayıcı öngörüleri](../containers/container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
+Bu yükseltme ile, VM öngörüleri performans verileri, [kapsayıcı öngörüleri](../containers/container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
 
 Performans görünümlerimiz artık *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanıyor.  Çalışma alanınızda en son Vminsıghts çözümünü kullanmak için henüz yükseltmemiş olmanız durumunda, grafiklerinizde artık bilgi görüntülenmeyecektir.  Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızı yükseltebilirsiniz.
 
 
 ## <a name="what-is-changing"></a>Ne değişiyor?
-Veri toplamaya yönelik ek yetenekler ve bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum içeren Vminsıghts adlı yeni bir çözüm yayımladık. 
+Veri toplama için daha fazla özellik içeren Vminsıghts adlı yeni bir çözüm yayımladık. bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum ile birlikte. 
 
-Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri kapsayıcı öngörüleri tarafından da kullanılan *ınsightsölçümler* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
+Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri kapsayıcı öngörüleri tarafından da kullanılan *ınsightsölçümler* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan daha fazla ölçüm ve hizmet veri kümesi depolamamızı sağlar.
 
 Performans grafiklerimizi, *ınsightsölçümlerini* tablosunda depoladığınız verileri kullanacak şekilde güncelleştirdik. Aşağıda açıklandığı gibi, **kullanmaya başlama** sayfamızda bulunan *ınsightsölçümlerini* tablosunu kullanmak için yükseltebilirsiniz.
 
@@ -58,7 +57,7 @@ Performans sayaçlarını etkin tutmaya karar verirseniz, toplanan veriler için
 
 Bu SSS 'yi ve belgelerimizi topladığımız veri kümelerine yönelik örnek günlük arama uyarısı kuralları içerecek şekilde güncelleştireceğiz.
 
-## <a name="how-will-this-affect-my-bill"></a>Bu işlem faturanızı nasıl etkiler?
+## <a name="how-will-this-change-affect-my-bill"></a>Bu değişiklik faturanızı nasıl etkiler?
 
 Faturalandırma, Log Analytics çalışma alanınızda alınan ve saklanan verilere göre hala devam etmektedir.
 
@@ -78,19 +77,19 @@ Ve ' dan veri taşıma değişiklikleri `ServiceMapComputer_CL` `ServiceMapProce
 
 Her iki çözüm de kullanırsanız veri kümeleri yinelenmez. Her iki teklif de içinde depolanacak veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL ServiceMapProcess_CL), `VMProcess` `VMConnection` ve `VMBoundPort` topladığımız harita veri kümelerini depolamak için tabloları paylaşır.  
 
-`InsightsMetrics`Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM öngörülerini ve VM Öngörüler çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü tabloda veri toplamaz veya depolamaz `InsightsMetrics` .
+`InsightsMetrics`Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM öngörülerini ve VM Öngörüler çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü tablodaki verileri toplamaz veya depolamaz `InsightsMetrics` .
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Çalışma alanım 'da Hizmet Eşlemesi ve Vminsıghts çözümlerini varsa, Double olarak ücretlendirilecektir mıyım?
 
 Hayır, iki çözüm içinde depoladığımız harita veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` . Çalışma alanınızda her iki çözüm de varsa bu veriler için iki ücret ödemeniz gerekmez.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Hizmet Eşlemesi veya Vminsıghts çözümünü kaldırdığımda verilerimi kaldıracağım mi?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Hizmet Eşlemesi veya Vminsıghts çözümünü kaldırdığımda, verilerimi kaldıracağım mi?
 
 Hayır, iki çözüm içinde depoladığımız harita veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` . Çözümlerden birini kaldırırsanız, bu veri kümeleri, verileri kullanan bir çözüm olduğunu ve Log Analytics çalışma alanında kaldığını fark eder. Verilerin kaldırılmadan kaldırılabilmesi için, her iki çözümü de çalışma alanınızdan kaldırmanız gerekir.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Sistem durumu özelliği sınırlı genel önizlemede
 
-VM sağlık özelliği kümesiyle ilgili olarak müşterilerden çok sayıda geri bildirim aldık. Bu özelliğin bir çok ilgisi vardır ve izleme iş akışlarını destekleme potansiyelini aşmakatın. İşlevselliği eklemek ve aldığımız geri bildirimi gidermek için bir dizi değişiklik yapmayı planlıyoruz. 
+VM sağlık özelliği kümesiyle ilgili olarak müşterilerden çok sayıda geri bildirim aldık. Bu özellikle ilgili önemli ölçüde ilgi çekici ve izleme iş akışlarını destekleme potansiyelini aşmıştır. İşlevselliği eklemek ve aldığımız geri bildirimi gidermek için bir dizi değişiklik yapmayı planlıyoruz. 
 
 Bu değişikliklerin yeni müşterilere etkilerini en aza indirmek için bu özelliği **sınırlı bir genel önizlemeye** taşıdık. Bu güncelleştirme 2019 Ekim 'de gerçekleşti.
 
@@ -108,7 +107,7 @@ Mevcut bir müşteri olarak, sistem sağlığı özelliğini mevcut bir çalış
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>VM sistem durumunu şimdi bir ortamla kullanıyorum ve yeni bir ortama dağıtmak istiyorum
 
-Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve yeni bir dağıtım için kullanmak istiyorsanız, yönergeleri istemek için lütfen adresinden bizimle iletişim kurun vminsights@microsoft.com .
+Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve yeni bir dağıtım için kullanmak istiyorsanız, vminsights@microsoft.com yönergeleri istemek için konusundaki bizimle iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

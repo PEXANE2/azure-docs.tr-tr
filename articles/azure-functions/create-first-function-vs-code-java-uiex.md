@@ -4,12 +4,12 @@ description: Java işlevi oluşturmayı öğrenin ve ardından Visual Studio Cod
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 38ed05d8bf9f7714b9cd58449f565cf94cb481e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748825"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031727"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da Java işlevi oluşturma
 
@@ -140,7 +140,7 @@ Kodunuzun ilk dağıtımı, Azure aboneliğinizde bir Işlev kaynağı oluşturm
 
     + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    + **Azure'daki işlev uygulamasını seçin**: `- Create new Function App` öğesini seçin.
+    + **Azure'daki işlev uygulamasını seçin**: `Create new Function App` öğesini seçin.
 
     + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: bir URL yolunda Azure genelinde benzersiz bir ad yazın. Yazdığınız ad, genel benzersizlik sağlamak için onaylanır.
 

@@ -1,17 +1,17 @@
 ---
 title: Yeni bir güncelleştirmeyi içeri aktarma | Microsoft Docs
 description: Yeni bir güncelleştirmeyi IoT Hub için IoT Hub cihaz güncelleştirmesine aktarma Kılavuzu How-To.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663958"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030741"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin.
@@ -53,7 +53,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Hızlı başvuru için yukarıdaki parametrelere ilişkin bazı örnek değerler aşağıda verilmiştir. Tam belgeler için aşağıdaki tam içeri aktarma bildirimi şemasına bakın.
+    Hızlı başvuru için yukarıdaki parametrelere ilişkin bazı örnek değerler aşağıda verilmiştir. Ayrıca, daha fazla ayrıntı için tüm [içeri aktarma bildirimi şemasını](import-schema.md) görüntüleyebilirsiniz.
 
     | Parametre | Açıklama |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
     | ınstalınstalbu ölçüt | <ul><li>Güncelleştirme türü için SWVersion değerini belirtin `microsoft/swupdate:1`</li><li>Güncelleştirme türü için önerilen değeri belirtin `microsoft/apt:1` .
     | updateFilePath | Bilgisayarınızdaki güncelleştirme dosyalarının yolu
 
-    Tam içeri aktarma bildirimi şeması
-
-    | Ad | Tür | Açıklama | Kısıtlamalar |
-    | --------- | --------- | --------- | --------- |
-    | UpdateID | `UpdateId` nesne | Kimliği güncelleştirin. |
-    | Güncelleştirme türü | string | Güncelleştirme türü: <ul><li>`microsoft/apt:1`Başvuru Aracısı 'nı kullanarak paket tabanlı güncelleştirme gerçekleştirirken belirtin.</li><li>`microsoft/swupdate:1`Başvuru Aracısı 'nı kullanarak görüntü tabanlı bir güncelleştirme gerçekleştirirken belirtin.</li><li>`microsoft/simulator:1`Örnek aracı benzeticisinin ne zaman kullanılması gerektiğini belirtin.</li><li>Özel bir aracı geliştirilirken özel bir tür belirtin.</li></ul> | <ul><li>Formatını `{provider}/{type}:{typeVersion}`</li><li>En fazla 32 karakter toplamı</li></ul> |
-    | Instalınstalbu ölçüt | string | Güncelleştirmenin başarıyla uygulanıp uygulanmadığını belirleme aracı tarafından yorumlanan dize:  <ul><li>Güncelleştirme türü için SWVersion **değerini** belirtin `microsoft/swupdate:1` .</li><li>`{name}-{version}` `microsoft/apt:1` Ad ve sürümün apt dosyasından alındığı güncelleştirme türünü belirtin.</li><li>Güncelleştirme türü için güncelleştirme dosyasının karmasını belirtin `microsoft/simulator:1` .</li><li>Özel bir aracı geliştirilirken özel bir dize belirtin.</li></ul> | En fazla 64 karakter |
-    | Uyumluluk | Nesne dizisi `CompatibilityInfo` | Bu güncelleştirmeyle uyumlu cihaz uyumluluk bilgileri. | En fazla 10 öğe |
-    | CreatedDateTime | Tarih/saat | Güncelleştirmenin oluşturulduğu tarih ve saat. | Sınırlandırılmış ISO 8601 tarih ve saat biçimi, UTC olarak |
-    | ManifestVersion | string | Bildirim şeması sürümünü içeri aktarın. `2.0`Arabirim ve arabirimle uyumlu olacak şekilde belirtin `urn:azureiot:AzureDeviceUpdateCore:1` `urn:azureiot:AzureDeviceUpdateCore:4` .</li></ul> | Olmalıdır `2.0` |
-    | Dosyalar | Nesne dizisi `File` | Yük dosyalarını Güncelleştir | En fazla 5 dosya |
-
-Note: tüm alanlar gereklidir.
 
 ## <a name="review-generated-import-manifest"></a>Oluşturulan Içeri aktarma bildirimini gözden geçirin
 

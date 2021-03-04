@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyici HTTP Veri Toplayıcı API 'SI | Microsoft Docs
 description: Azure Izleyici HTTP Veri Toplayıcı API 'sini, REST API çağırabileceğiniz herhangi bir istemciden bir Log Analytics çalışma alanına JSON verisi gönderme eklemek için kullanabilirsiniz. Bu makalede, API 'nin nasıl kullanılacağı açıklanır ve farklı programlama dilleri kullanılarak verilerin nasıl yayımlanacağı gösterilmektedir.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 446e375cbbfc577dfc5bdff39e151cef5ae9e4c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8c5b4eac17b4c7ae9b4081d0eb9118285dc74bd5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030979"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C# ve Python için örnekler verilmiştir.

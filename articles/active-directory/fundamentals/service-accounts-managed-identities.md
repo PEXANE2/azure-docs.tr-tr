@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ba630d5e2f8e3e581f394af2ee687a971d3a7a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693285"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032367"
 ---
 # <a name="securing-managed-identities"></a>Yönetilen kimliklerin güvenliğini sağlama
 
@@ -100,7 +100,7 @@ Microsoft Graph için aşağıdaki GET isteğiyle kiracınızdaki tüm yönetile
 
 `https://graph.microsoft.com/v1.0/servicePrincipals?$filter=(servicePrincipalType eq 'ManagedIdentity') `
 
-Bu istekleri filtreleyebilirsiniz. Daha fazla bilgi edinmek için bkz. [hizmet sorumlusu](https://docs.microsoft.com/graph/api/serviceprincipal-get?view=graph-rest-1.0&tabs=http)için grafik belgeleri.
+Bu istekleri filtreleyebilirsiniz. Daha fazla bilgi edinmek için bkz. [hizmet sorumlusu](/graph/api/serviceprincipal-get?view=)için grafik belgeleri.
 
 ## <a name="assess-the-security-of-managed-identities"></a>Yönetilen kimliklerin güvenliğini değerlendirin 
 
@@ -140,7 +140,7 @@ Bir hizmet sorumlusu veya bir Azure AD Kullanıcı hesabı kullanıyorsanız, ki
 
 [Azure hizmet hesaplarını yöneten](service-accounts-governing-azure.md)
 
-[Şirket içi hizmet hesaplarına giriş](service-accounts-on-poremises.md)
+[Şirket içi hizmet hesaplarına giriş](service-accounts-on-premises.md)
 
  
 

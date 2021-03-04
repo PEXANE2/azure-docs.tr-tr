@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575797"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032945"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -348,7 +348,7 @@ Konuşmadan metne kapsayıcının v 2.6.0 'den başlayarak, önizleme yerine Tex
 > [!NOTE]
 > Metin Analizi `v3.0` API 'si metin analizi ile geriye dönük olarak uyumlu değildir `v3.0-preview.1` . En son yaklaşım özelliği desteğini almak için, `v2.6.0` konuşmadan metne kapsayıcı görüntüsünü ve metin analizi kullanın `v3.0` .
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -377,7 +377,7 @@ Konuşma-metin kapsayıcısının 2.6.0 ' den başlayarak, kendi tümceciklerini
 
 * "Bu bir cümle, **Bu,** başka bir tümcedir."
 
-Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örneğin:
+Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örnek:
 
 ```python
     phrase="the tall man"
@@ -439,7 +439,7 @@ ApiKey={API_KEY}
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Özel konuşmaya metin kapsayıcısına temel model indirme  
-Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örneğin:
+Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örnek:
 
 ```bash
 docker run --rm -it \
@@ -455,7 +455,7 @@ ApiKey={API_KEY}
 * Kapsayıcı görüntüsünden *özel konuşma tanıma metin* kapsayıcısı çalıştırır.
 * Hedef yerel ayarın kullanılabilir temel modellerini denetleyin ve geri döndürün.
 
-Çıktı, bilgi yerel ayarları, model kimliği ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model kimliğini kullanabilirsiniz. Örneğin:
+Çıktı, bilgi yerel ayarları, model KIMLIĞI ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model KIMLIĞINI kullanabilirsiniz. Örnek:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

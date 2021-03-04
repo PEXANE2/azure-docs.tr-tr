@@ -4,15 +4,14 @@ description: Azure izleyici 'de Azure Veri Gezgini, Log Analytics çalışma ala
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
-ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8bc47eb2a6a22224f4df186136da2c184979ea24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624350"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031132"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
 Azure Izleyici, Azure Veri Gezgini, [Application Insights](../app/app-insights-overview.md)ve [Log Analytics](../logs/data-platform-logs.md)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.

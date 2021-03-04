@@ -40,6 +40,8 @@
       href: connected-cache-disconnected-device-update.md
     - name: IoT Hub cihaz güncelleştirmesi için Microsoft bağlı önbelleğini yapılandırma
       href: connected-cache-configure.md
+    - name: İçeri aktarma ile ilgili şema ve diğer bilgiler
+      href: import-schema.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Cihaz güncelleştirme hesabı oluştur

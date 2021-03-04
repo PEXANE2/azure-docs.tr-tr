@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
-ms.author: dapine
-ms.date: 02/19/2020
+author: aahill
+ms.author: aahi
+ms.date: 03/02/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032944"
 ---
 Kapsayıcıya yönelik sorgular, için kullanılan Azure kaynağının fiyatlandırma katmanında faturalandırılır `ApiKey` .
 
@@ -17,7 +17,7 @@ Azure bilişsel hizmetler kapsayıcıları, ölçüm/faturalandırma uç noktas�
 
 ### <a name="connect-to-azure"></a>Azure'a Bağlanma
 
-Kapsayıcının çalışması için faturalandırma bağımsız değişken değerlerinin olması gerekir. Bu değerler kapsayıcının faturalandırma uç noktasına bağlanmasına izin verir. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar. Kapsayıcı, izin verilen zaman penceresinde Azure 'a bağlanmazsa, kapsayıcı çalışmaya devam eder, ancak faturalandırma uç noktası geri yüklenene kadar sorgu hizmeti vermez. Bağlantı, 10 ila 15 dakika aynı zaman aralığında 10 kez denenir. 10 deneciler içindeki faturalandırma uç noktasına bağlanamıyorsa kapsayıcı, istekleri sunmaya yanıt vermez.
+Kapsayıcının çalışması için faturalandırma bağımsız değişken değerlerinin olması gerekir. Bu değerler kapsayıcının faturalandırma uç noktasına bağlanmasına izin verir. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar. Kapsayıcı, izin verilen zaman penceresinde Azure 'a bağlanmazsa, kapsayıcı çalışmaya devam eder, ancak faturalandırma uç noktası geri yüklenene kadar sorgu hizmeti vermez. Bağlantı, 10 ila 15 dakika aynı zaman aralığında 10 kez denenir. 10 deneciler içindeki faturalandırma uç noktasına bağlanamıyorsa kapsayıcı, istekleri sunmaya yanıt vermez. Faturalandırma için Microsoft 'a gönderilen bilgilerin bir örneği için bilişsel [Hizmetler kapsayıcısı hakkında SSS](../articles/cognitive-services/containers/container-faq.yml#how-does-billing-work) bölümüne bakın.
 
 ### <a name="billing-arguments"></a>Faturalandırma bağımsız değişkenleri
 

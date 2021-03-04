@@ -4,15 +4,15 @@ description: Azure yay bulutu 'nı bir sanal ağda (VNet ekleme) dağıtın.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880614"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031812"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Azure Spring Cloud 'ı bir sanal ağda dağıtma
 
@@ -50,7 +50,7 @@ Azure yay bulutu örneğinizi dağıttığınız sanal ağ, aşağıdaki gereksi
     * Bir tane, Spring Boot mikro hizmet uygulamalarınız için.
     * Bu alt ağlar ve bir Azure yay bulutu örneği arasında bire bir ilişki vardır. Dağıttığınız her hizmet örneği için yeni bir alt ağ kullanın. Her alt ağ yalnızca tek bir hizmet örneği içerebilir.
 * **Adres alanı**: CIDR, hem hizmet çalışma zamanı alt ağı hem de Spring Boot mikro hizmet uygulamaları alt ağı için */28* ' i engeller.
-* **Yol tablosu**: alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
+* **Yol tablosu**: varsayılan olarak alt ağlarda ilişkili mevcut yol tablolarının olması gerekmez. [Kendi yol tablonuzu getirebilirsiniz](#bring-your-own-route-table).
 
 Aşağıdaki yordamlarda, sanal ağın Azure Spring Cloud örneğini içerecek şekilde kurulumu açıklanır.
 
@@ -179,6 +179,26 @@ Bu tabloda, Azure Spring Cloud 'ın daha küçük bir alt ağ aralığı kullan�
 Alt ağlar için, beş IP adresi Azure tarafından ayrılmıştır ve Azure Spring Cloud için en az dört adres gereklidir. En az dokuz IP adresi gereklidir, bu nedenle/29 ve/30 işlem dışı.
 
 Bir hizmet çalışma zamanı alt ağı için en küçük boyut/28 ' dir. Bu boyut, uygulama örneklerinin sayısı üzerinde bir pul içermez.
+
+## <a name="bring-your-own-route-table"></a>Kendi yol tablonuzu getir
+
+Azure yay bulutu, mevcut alt ağların ve yol tablolarının kullanımını destekler.
+
+Özel alt ağlarınız rota tabloları içermiyorsa, Azure yay bulutu bunları her alt ağın her biri için oluşturur ve örnek yaşam döngüsü boyunca bunlara kurallar ekler. Özel alt ağlarınız rota tabloları içeriyorsa, Azure yay bulutu, örnek işlemleri sırasında mevcut yol tablolarını onaylar ve işlemler için uygun olarak/güncelleştirmeleri ve/veya kuralları ekler.
+
+> [!Warning] 
+> Özel kurallar özel yol tablolarına eklenebilir ve güncelleştirilir. Ancak, kurallar Azure Spring Cloud tarafından eklenir ve bunların güncellenmesi veya kaldırılması gerekir. 0.0.0.0/0 gibi kurallar her zaman belirli bir yol tablosunda bulunmalı ve bir NVA veya diğer çıkış ağ geçidi gibi internet ağ geçidinizin hedefine eşlenir. Yalnızca özel kurallarınız değiştirilirken kuralları güncelleştirirken dikkatli olun.
+
+
+### <a name="route-table-requirements"></a>Rota tablosu gereksinimleri
+
+Özel VNET 'nizin ilişkilendirildiği yol tablolarının aşağıdaki gereksinimleri karşılaması gerekir:
+
+* Azure Route tablolarınızı yalnızca yeni bir Azure yay bulut hizmeti örneği oluşturduğunuzda sanal ağınız ile ilişkilendirebilirsiniz. Azure yay bulutu oluşturulduktan sonra başka bir yol tablosu kullanmak için geçiş yapılamaz.
+* Hem mikro hizmet uygulama alt ağı hem de hizmet çalışma zamanı alt ağı farklı rota tabloları ile ilişkilendirmeli veya ikisi de değildir.
+* Örnek oluşturulduktan önce izinler atanmalıdır. Azure *Spring Cloud Owner* iznini yol tablolarınıza verdiğinizden emin olun.
+* İlişkili yol tablosu kaynağı, küme oluşturulduktan sonra güncelleştirilemez. Yol tablosu kaynağı güncelleştirilemediğinden, yönlendirme tablosunda özel kurallar değiştirilebilir.
+* Olası çakışan yönlendirme kuralları nedeniyle birden çok örneğe sahip bir yol tablosunu yeniden kullanamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

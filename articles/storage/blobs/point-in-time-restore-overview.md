@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980527"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031642"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
 Zaman içinde geri yükleme, Blok Blobu verilerini önceki bir duruma geri yüklemenize olanak tanıyarak yanlışlıkla silinmeye veya bozulmaya karşı koruma sağlar. Bir kullanıcının veya uygulamanın yanlışlıkla verileri sildiği veya bir uygulama hatasının verileri bozan senaryolarda, zaman içinde geri yükleme yararlı olur. Ayrıca, bir noktadan sonra geri yükleme, daha fazla testi çalıştırmadan önce bir veri kümesinin bilinen bir duruma geri döndürülmesi gereken test senaryolarına de olanak sağlar.
 
-Tek noktaya geri yükleme yalnızca genel amaçlı v2 depolama hesapları için desteklenir. Yalnızca sık ve Seyrek Erişimli katmanlardaki veriler, zaman içinde geri yükleme ile geri yüklenebilir.
+Yalnızca standart performans katmanındaki genel amaçlı v2 depolama hesapları için noktadan noktaya geri yükleme desteklenir. Yalnızca sık ve Seyrek Erişimli katmanlardaki veriler, zaman içinde geri yükleme ile geri yüklenebilir.
 
 Bir depolama hesabı için noktadan noktaya geri yüklemeyi etkinleştirme hakkında bilgi edinmek için bkz. [Blok Blobu verilerinde bir zaman içindeki bir noktaya geri yükleme gerçekleştirme](point-in-time-restore-manage.md).
 

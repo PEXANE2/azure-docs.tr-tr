@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717409"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030843"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -87,9 +87,9 @@ Kullanıcılara verilere erişim için iki seçenek vardır:
 
     > [!NOTE]
     > Günlükler yalnızca ilgili kaynakla düzgün şekilde ilişkilendirildiklerinde kaynak bağlamı sorguları için kullanılabilir. Şu anda aşağıdaki kaynaklarda sınırlamalar var:
-    > - Azure dışındaki bilgisayarlar
+    > - Azure dışındaki bilgisayarlar-yalnızca [sunucular Için Azure Arc](../../azure-arc/servers/index.yml) aracılığıyla kaynak bağlamı için desteklenir
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights-yalnızca [çalışma alanı tabanlı Application Insights kaynağı](../app/create-workspace-resource.md) kullanılırken kaynak bağlamı için desteklenir
     >
     > Bir sorgu çalıştırıp ilgilendiğiniz kayıtları inceleyerek günlüklerin kaynakları ile düzgün bir şekilde ilişkilendiriliyorsa test edebilirsiniz. Doğru kaynak KIMLIĞI [_ResourceId](./log-standard-columns.md#_resourceid) özellikte ise, veriler kaynak merkezli sorgular tarafından kullanılabilir.
 

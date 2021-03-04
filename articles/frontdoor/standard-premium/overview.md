@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: bcfff1a2c8490a05f4b96a8e2ff68186348f596f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030554"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Azure ön kapısının Standart/Premium nedir (Önizleme)?
 
@@ -51,7 +51,7 @@ Azure ön kapısının Standart/Premium, yerleşik anahtar güvenlik tümleştir
 
 Azure ön kapısı Standart/Premium (Önizleme) ile birlikte gelen temel özellikler:
 
-- **[Bölünmüş TCP tabanlı](../front-door-routing-architecture#splittcp.md)** her noktaya yayın protokolünü kullanarak hızlandırılmış uygulama performansı.
+- **[Bölünmüş TCP tabanlı](../front-door-routing-architecture.md#splittcp)** her noktaya yayın protokolünü kullanarak hızlandırılmış uygulama performansı.
 
 - Kaynaklar **[arasında akıllı](concept-origin.md)** **[durum araştırma](concept-health-probes.md)** izleme ve yük dengeleme.
 

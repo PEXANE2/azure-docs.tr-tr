@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917102"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031625"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
@@ -64,13 +64,13 @@ Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve e
 * Veriler ve kod üzerinde ayrıntılı erişim denetimi
 * SQL ve Spark genelinde kaynakları, kullanımı ve kullanıcıları izlemek için tek bir pano
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>Birleşik deneyim
 
-**SYNAPSE Studio** , her şeyi veri mühendislerine göre ele alan Web-Native deneyimidir ve tek bir konumda, tam bir çözüm oluşturmak için ihtiyaç duydukları her görevi yapmasına izin verir.
+**SYNAPSE Studio** , veri mühendislerine yönelik her şeyi birbirine bağlayan kullanıcı deneyimidir. Tüm analiz çözümü oluşturmak için ihtiyaç duydukları her görevi yapmasına izin verir.
 
-* Tek bir yerde uçtan uca analiz çözümü oluşturun: alma, İnceleme, hazırlama, düzenleme, görselleştirme
-* SQL veya Spark kodu yazan veri mühendislerine yönelik sektör lideri üretkenlik: yazma, hata ayıklama ve performans iyileştirmesi
-* Kurumsal CI/CD işlemleriyle tümleştirin
+* Önemli veri Enger görevleri tek bir yerde: alma, İnceleme, hazırlama, düzenleme, görselleştirme
+* SQL veya Spark kodu yazmak için sektör lideri üretkenlik: yazma, hata ayıklama ve performans iyileştirmesi
+* Kurumsal CI/CD işlemiyle tümleştirin
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>SYNAPSE Mühendislik ekibiyle etkileşim kurun
 
