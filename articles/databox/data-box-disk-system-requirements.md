@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 750ed8f65db04199ea284e69693bced65a1dc8d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703142"
 ---
 ::: zone target="docs"
 
@@ -79,6 +79,9 @@ Data Box Disk için desteklenen depolama türlerinin bir listesi aşağıda veri
 | Klasik | Standart |
 | Genel Amaçlı  |Standart; hem V1 hem de V2 desteklenir. Hem sık hem de seyrek erişim katmanları desteklenir. |
 | Blob depolama hesabı | |
+
+> [!IMPORTANT]
+> Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği Data Box Disk desteklenmez.
 
 ## <a name="supported-storage-types-for-upload"></a>Karşıya yükleme için desteklenen depolama türleri
 
