@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391992"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046355"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -35,7 +35,7 @@ Azure IoT Hub cihaz sağlama hizmeti (DPS) ile otomatik olarak aşağı akış c
 
 X. 509.952 kimlik doğrulaması kullanıyorsanız, aşağı akış cihazınız için sertifikalar oluşturacaksınız. Aynı kök CA sertifikasına ve bir kez daha kullanılabilir saydam ağ geçidi makalesi için kullandığınız betiği üreten sertifikaya sahip olursunuz.
 
-Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu, aşağı akış cihazının bağlantı dizesinde başvurulur. Ağ geçidi ana bilgisayar adının, DNS veya aşağı akış cihazında bir konak dosyası girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
+Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazındaki yapılandırma dosyasının **hostname** parametresinde bildirilmiştir. Bu, aşağı akış cihazının bağlantı dizesinde başvurulur. Ağ geçidi ana bilgisayar adının, DNS veya aşağı akış cihazında bir konak dosyası girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
 
 ## <a name="register-device-with-iot-hub"></a>Cihazı IoT Hub Kaydet
 
@@ -192,7 +192,7 @@ Aşağı akış cihazları için bağlantı dizeleri aşağıdaki bileşenlere g
 * Kimlik doğrulama yöntemi, simetrik anahtar veya X. 509.440 sertifikamı
   * Simetrik anahtar kimlik doğrulaması kullanıyorsanız, birincil veya ikincil anahtar belirtin: `SharedAccessKey={key}`
   * X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız, bir bayrak sağlayın: `x509=true`
-* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **ana bilgisayar adı** değerini girin: `GatewayHostName={gateway hostname}`
+* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının yapılandırma dosyasından **ana bilgisayar adı** değerini girin: `GatewayHostName={gateway hostname}`
 
 Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 
@@ -206,7 +206,7 @@ Veya
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örneğin:
+Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek:
 
 ```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

@@ -1,17 +1,16 @@
 ---
 title: VM öngörülerinin uyarıları
 description: VM öngörüleri tarafından toplanan performans verilerinden uyarı kurallarının nasıl oluşturulacağını açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704064"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046814"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>VM öngörülerine uyarı oluşturma
 [Azure izleyici 'Deki uyarılar](../alerts/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM öngörüleri, önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verileri temel alarak kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.

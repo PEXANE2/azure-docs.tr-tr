@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 37b5ab1c144ed81d995da40b87edeaccdcad7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680002"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047731"
 ---
 # <a name="display-feature-information"></a>Özellik bilgilerini görüntüleme
 
@@ -75,6 +75,81 @@ Mesajların yanı sıra, bir özelliğin meta veri özelliklerini sunmak için b
 - İletişim [kutuları](https://developer.android.com/guide/topics/ui/dialogs) -bir iletişim kutusu, kullanıcıdan karar vermesini veya ek bilgiler girmesini isteyen küçük bir penceredir. Bir iletişim kutusu, ekranı doldurmaz ve normalde, kullanıcıların devam etmeden önce bir eylemde bulunması gereken kalıcı olaylar için kullanılır.
 - Geçerli etkinliğe bir [parça](https://developer.android.com/guide/components/fragments) ekleyin.
 - Başka bir etkinliğe veya görünüme gidin.
+
+## <a name="display-a-popup"></a>Açılan pencere görüntüle
+
+Azure Haritalar Android SDK, `Popup` harita üzerindeki bir konuma SABITLENMIŞ UI ek açıklama öğelerini oluşturmayı kolaylaştıran bir sınıf sağlar. Açılanlar için, açılan pencerede göreli düzen içeren bir görünüm geçirmeniz gerekir `content` . Aşağıda, bir while arka planının üzerine koyu metin görüntüleyen basit bir düzen örneği verilmiştir.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+Yukarıdaki düzenin, bir uygulamanın klasöründe adlı bir dosyada depolandığını varsayarak, `popup_text.xml` `res -> layout` Aşağıdaki kod bir açılan pencere oluşturur ve Haritayı haritaya ekler. Bir özellik tıklandığında, `title` özellik düzen kullanılarak görüntülenir `popup_text.xml` ve düzen alt orta ile haritada belirtilen konuma sabitlenmiş olur.
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText(props.get("title").getAsString());
+
+    //Get the coordinates from the clicked feature and create a position object.
+    List<Double> c = ((Point)(f.geometry())).coordinates();
+    Position pos = new Position(c.get(0), c.get(1));
+
+    //Set the options on the popup.
+    popup.setOptions(
+        //Set the popups position.
+        position(pos),
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),
+
+        //Set the content of the popup.
+        content(customView)
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    );
+
+    //Open the popup.
+    popup.open();
+});
+
+```
+
+Aşağıdaki ekran yakalama, Özellikler tıklandığında açılan pencereleri gösterir ve taşırken haritada belirtilen konumlarına tutturulduğu sırada görünür.
+
+![Görüntülenmekte olan bir açılan pencerenin animasyonu ve eşleme, haritada bir konuma sabitlenmiş bir açılan pencere ile taşındı](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

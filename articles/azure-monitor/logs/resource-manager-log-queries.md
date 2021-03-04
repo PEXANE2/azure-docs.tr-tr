@@ -1,17 +1,16 @@
 ---
 title: Günlük sorguları için şablon örnekleri Kaynak Yöneticisi
 description: Azure Izleyici günlük sorgularını dağıtmaya yönelik örnek Azure Resource Manager şablonları.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: ad8d984f7d363499ed2e85d7d46b95c05460f3eb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b3ac4d693afb8ee2f2dba362e1e2f307e50f78
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628338"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047273"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorguları için Kaynak Yöneticisi şablonu örnekleri
 Bu makale, Azure Izleyici 'de günlük sorguları oluşturmak ve yapılandırmak için örnek [Azure Resource Manager şablonları](../../azure-resource-manager/templates/template-syntax.md) içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.

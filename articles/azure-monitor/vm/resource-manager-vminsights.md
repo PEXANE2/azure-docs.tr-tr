@@ -1,17 +1,16 @@
 ---
 title: VM öngörüleri için şablon örnekleri Kaynak Yöneticisi
 description: VM öngörülerini dağıtmak ve vermek için örnek Azure Resource Manager şablonları.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2ee447b1e5f72ce916808a5832f999eea493994c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733763"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046848"
 ---
 # <a name="resource-manager-template-samples-for-vm-insights"></a>VM öngörüleri için şablon örnekleri Kaynak Yöneticisi
 Bu makale, sanal makinelerde VM öngörülerini etkinleştirmek için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) içerir. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.

@@ -1,86 +1,84 @@
 ---
 title: Azure geçişi ile şirket içi sunuculardaki uygulamaları bulma
 description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
-author: vineetvikram
-ms.author: vivikram
+author: vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: eb589c08122cd47747c005c13d12b336319fd558
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752014"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048089"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
+# <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Yüklü uygulamaları, rolleri ve özellikleri (yazılım envanteri) ve SQL Server örnekleri ve veritabanlarını bulma
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak şirket içi sunuculardaki uygulamaların, rollerin ve özelliklerin nasıl keşfedileceğini açıklanmaktadır.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak yüklenen uygulamalar, roller ve Özellikler (yazılım envanteri) ve SQL Server örnekleri ve veritabanlarının VMware ortamınızda çalışan sunucularda nasıl keşfedileceğini açıklanmaktadır.
 
-Şirket içi makinelerde çalışan uygulamaların, rollerin ve özelliklerin envanterini bulmak, iş yükleriniz için Azure 'a geçiş yolunu belirlemenize ve uyarlamanıza yardımcı olur. App-Discovery, VM Konuk kimlik bilgilerini kullanarak bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Uygulama keşfi aracısız. VM 'Lere hiçbir şey yüklenmez.
+Yazılım envanteri gerçekleştirmek, iş yükleriniz için Azure 'a geçiş yolunu belirlemenize ve uyarlamanıza yardımcı olur. Yazılım envanteri, sunucu kimlik bilgilerini kullanarak bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Tamamen aracısız değildir, bu verileri toplamak için sunuculara hiçbir aracı yüklenmez.
 
 > [!NOTE]
-> Uygulama bulma Şu anda yalnızca VMware VM 'Leri için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz. 
-
+> Yazılım envanteri şu anda yalnızca VMware ortamında çalışan sunucular için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Şu anda uygulama tabanlı değerlendirme sunmuyoruz.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Şunları yapmayı unutmayın:
-    - Bir Azure geçişi projesi [oluşturdu](./create-manage-projects.md) .
-    - Azure geçişi: Sunucu değerlendirmesi aracı bir projeye [eklendi](how-to-assess.md) .
-- [Uygulama bulma desteğini ve gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements)gözden geçirin.
-- Uygulama bulma 'yı çalıştırdığınız VM 'Lerin PowerShell sürüm 2,0 veya üzeri yüklü olduğundan ve VMware araçlarının (10.2.0 ' den sonraki sürümler) yüklü olduğundan emin olun.
-- Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
+- Azure geçişi: Sunucu değerlendirmesi aracı eklenmiş [bir Azure geçişi projesi oluşturduğunuzdan](./create-manage-projects.md) emin olun.
+- Yazılım envanterini gerçekleştirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) gözden geçirin.
+- Gereci ayarlamadan önce [gereç gereksinimlerini](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) gözden geçirin.
+- Sunucularda yazılım envanterini başlatmadan önce [uygulama bulma gereksinimlerini](migrate-support-matrix-vmware.md#application-discovery-requirements) gözden geçirin.
 
-
-## <a name="deploy-the-azure-migrate-appliance"></a>Azure Geçişi aletini dağıtma
+## <a name="deploy-and-configure-the-azure-migrate-appliance"></a>Azure geçişi gereci dağıtma ve yapılandırma
 
 1. Azure geçişi gerecini dağıtmaya yönelik gereksinimleri [gözden geçirin](migrate-appliance.md#appliance---vmware) .
 2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu bulutlarında](migrate-appliance.md#government-cloud-urls)erişmesi gereken Azure URL 'lerini gözden geçirin.
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---vmware) .
 4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access-requirements) erişim gereksinimleri.
-5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
-6. Gereci dağıtırken, sürekli bulmayı başlatmak için aşağıdakileri belirtirsiniz:
-    - Bağlanmak istediğiniz vCenter Server adı.
-    - VCenter Server Bağlanılacak gereç için oluşturduğunuz kimlik bilgileri.
-    - Windows/Linux VM 'lerine bağlanmak için gereç için oluşturduğunuz hesap kimlik bilgileri.
-
-Gereç dağıtıldıktan ve kimlik bilgilerini sağladıysanız, Gereç VM meta verilerinin ve performans verilerinin sürekli olarak keşfedilmesi ve uygulamaların, özelliklerin ve rollerin keşfedilmesi ile birlikte başlatılır.  Uygulama bulmanın süresi, sahip olduğunuz VM sayısına bağlıdır. Genellikle uygulama keşfi 500 VM 'Ler için bir saat sürer.
+5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için, bir OVA şablonunu indirip vCenter Server çalıştıran bir sunucu oluşturmak için VMware 'ye içeri aktarabilirsiniz. Gereci dağıttıktan sonra Azure geçişi projesi ile kaydetmeniz ve bulmayı başlatmak için yapılandırmanız gerekir.
+6. Gereci yapılandırırken, Gereç Yapılandırma Yöneticisi 'nde aşağıdakileri belirtmeniz gerekir:
+    - Bağlanmak istediğiniz vCenter Server ayrıntıları.
+    - VMware ortamınızdaki sunucuları bulmaya yönelik kapsamlı kimlik bilgileri vCenter Server.
+    - Etki alanı/Windows (etki alanı olmayan)/Linux (etki alanı olmayan) kimlik bilgileri olabilen sunucu kimlik bilgileri. Kimlik bilgilerini ve bunları nasıl işleyeceğinizi [öğrenmek hakkında daha fazla bilgi edinin](add-server-credentials.md) .
 
 ## <a name="verify-permissions"></a>İzinleri doğrulama
 
-Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturdunuz](./tutorial-discover-vmware.md#prepare-vmware) . Salt okuma hesabının, **sanal makineler**  >  **Konuk işlemleri** için etkin olması gerekir ve bu, uygulama bulma için VM ile etkileşime geçebilir.
+- Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturmanız](./tutorial-discover-vmware.md#prepare-vmware) gerekir.   >  Yazılım envanterini gerçekleştirmek üzere sunucularla etkileşime geçmek için, salt okuma hesabının, sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıkları olması gerekir.
+- Uygulama bulma için gereç Yapılandırma Yöneticisi 'nde birden çok etki alanı ve etki alanı olmayan (Windows/Linux) kimlik bilgilerini ekleyebilirsiniz. Windows Server için bir Konuk Kullanıcı hesabına ve tüm Linux sunucuları için normal/normal kullanıcı hesabına (sudo erişimi olmayan) ihtiyacınız vardır. Kimlik bilgilerini ve bunları nasıl işleyeceğinizi [öğrenmek hakkında daha fazla bilgi edinin](add-server-credentials.md) .
 
-### <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
+### <a name="add-credentials-and-initiate-discovery"></a>Kimlik bilgileri ekleme ve bulmayı başlatma
 
-Kullanıcı hesabını aşağıdaki şekilde ekleyin:
+1. Gereç yapılandırma yöneticisini açın, gerecin önkoşul denetimlerini ve kaydını doldurun.
+2. **Kimlik bilgilerini ve bulma kaynaklarını yönetme** paneline gidin.
+1.  **1. Adım: vCenter Server kimlik bilgilerini belirtin** bölümünde, gerecin vCenter Server çalıştıran sunucuları keşfetmesi için kullanacağı vCenter Server hesabı için kimlik bilgilerini sağlamak üzere **kimlik bilgileri ekle** ' ye tıklayın.
+1. **2. Adım: vCenter Server ayrıntıları belirtin** bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server Ayrıntılar için gereç Yapılandırma Yöneticisi"::: ' nde vCenter Server örneği panel 3 ' ün **IP adresini/FQDN** 'sini belirtin
+1. **3. Adım: yazılım envanterini gerçekleştirmek için sunucu kimlik bilgilerini sağlama, aracısız bağımlılık Analizi ve SQL Server örnekleri ve veritabanlarının bulunması**, yazılım envanterini başlatmak için birden çok sunucu kimlik bilgisi sağlamak üzere **kimlik bilgileri ekle** ' ye tıklayın.
+1. VCenter Server bulmayı **başlatmak için bulmayı Başlat**' a tıklayın.
 
-1. Gereç Yönetimi uygulamasını açın. 
-2. **VCenter ayrıntıları sağla** paneline gidin.
-3. **VM 'lerde uygulama ve bağımlılıkları keşfet** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini** seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
-6. **Kaydet**’e tıklayın.
-7. **Kaydet ve bulmayı Başlat**' a tıklayın.
-
-    ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
-
+ VCenter Server bulma işlemi tamamlandıktan sonra, Gereç yüklü uygulamalar, roller ve Özellikler (yazılım envanteri) bulmayı başlatır. Süre, bulunan sunucu sayısına bağlıdır. 500 sunucularında, bulunan stokun Azure geçişi portalında görünmesi yaklaşık bir saat sürer.
 
 ## <a name="review-and-export-the-inventory"></a>Envanteri gözden geçirin ve dışa aktarın
 
-Bulma sona erdikten sonra, uygulama bulma için kimlik bilgileri sağladıysanız, Azure portal uygulama envanterini gözden geçirebilir ve dışarı aktarabilirsiniz.
+Yazılım envanteri tamamlandıktan sonra Azure portal envanterini gözden geçirebilir ve dışarı aktarabilirsiniz.
 
 1. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular** sayfasını açmak için, görünen sayıya tıklayın.
 
     > [!NOTE]
-    > Bu aşamada, değerlendirmek istediğiniz makineler arasında bağımlılıkları görselleştirmek için isteğe bağlı olarak, bulunan makineler için bağımlılık analizini de ayarlayabilirsiniz. Bağımlılık analizi hakkında [daha fazla bilgi edinin](concepts-dependency-visualization.md) .
+    > Bu aşamada, değerlendirmek istediğiniz sunucular arasında bağımlılıkları görselleştirmek için, isteğe bağlı olarak bulunan sunucular için bağımlılık analizini de etkinleştirebilirsiniz. Bağımlılık analizi hakkında [daha fazla bilgi edinin](concepts-dependency-visualization.md) .
 
-2. **Bulunan uygulamalarda**, görünen sayıya tıklayın.
-3. **Uygulama envanteri**' nde, bulunan uygulamaları, rolleri ve özellikleri inceleyebilirsiniz.
+2. Bulunan **uygulamalar** sütununda, bulunan uygulamalar, roller ve Özellikler ' i gözden geçirmek için, görünen sayıya tıklayın.
 4. Envanteri dışarı aktarmak için **bulunan sunucularda**, **uygulama envanterini dışarı aktar**' a tıklayın.
 
-Uygulama envanteri, Excel biçiminde verilir ve indirilir. **Uygulama envanteri** sayfasında tüm makinelerde bulunan tüm uygulamalar görüntülenir.
+Uygulamalar envanteri, Excel biçiminde verilir ve indirilir. **Uygulama envanteri** sayfasında tüm sunucularda bulunan tüm uygulamalar görüntülenir.
+
+## <a name="discover-sql-server-instances-and-databases"></a>SQL Server örnekleri ve veritabanlarını bulma
+
+- Uygulama bulma ayrıca VMware ortamınızda çalışan SQL Server örnekleri tanımlar.
+- Gereç Yapılandırma Yöneticisi 'nde Windows kimlik doğrulaması veya SQL Server kimlik doğrulama kimlik bilgileri sağlamadıysanız, gerecin ilgili SQL Server örneklerine bağlanmak için onları kullanabilmesi adına kimlik bilgilerini ekleyin.
+
+Bağlantı kurulduktan sonra, Gereç SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans verilerini toplar. SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır. Bu nedenle, SQL Server örneğin özelliklerinde ve veritabanı durumu, uyumluluk düzeyi vb. gibi veritabanlarının her türlü değişikliği portalda güncelleştirmek 24 saate kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bulunan sunucular için [bir değerlendirme oluşturun](how-to-create-assessment.md) .
-- [Azure geçişi: veritabanı değerlendirmesi](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)kullanarak SQL Server veritabanlarını değerlendirin.
+- [SQL Server](./tutorial-assess-sql.md) 'ı Azure SQL 'e geçiş için değerlendirin.

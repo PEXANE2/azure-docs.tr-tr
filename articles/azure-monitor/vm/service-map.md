@@ -1,17 +1,16 @@
 ---
 title: Azure 'da Hizmet Eşlemesi çözüm kullanma | Microsoft Docs
 description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, ortamınızda Hizmet Eşlemesi dağıtmak ve çeşitli senaryolarda kullanmak için ayrıntılar sağlanmaktadır.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047018"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -26,7 +25,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 * Windows bilgisayara veya Linux sunucusuna yüklenmiş [bağımlılık Aracısı](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine öngörülerine ait haritalarınızı da görüntüleyebilirsiniz. Bu, VM sistem durumunu ve performansını izlemek için ek özellikler içerir. Daha fazla bilgi için bkz. [VM öngörülerine genel bakış](../vm/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM öngörüleri eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms)bölümüne bakın.
+>Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine öngörülerine ait haritalarınızı da görüntüleyebilirsiniz. Bu, VM sistem durumunu ve performansını izlemek için ek özellikler içerir. Daha fazla bilgi için bkz. [VM öngörülerine genel bakış](../vm/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM öngörüleri eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#vm-insights)bölümüne bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

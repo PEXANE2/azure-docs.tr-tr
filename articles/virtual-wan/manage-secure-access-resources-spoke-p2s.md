@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048276"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Kullanıcı VPN istemcileri için bağlı olan sanal ağlarda bulunan kaynaklara güvenli erişimi yönetme
 
@@ -50,8 +50,6 @@ Kimlik doğrulama yöntemini seçerken üç seçeneğiniz vardır. Her yöntemin
 * **RADIUS tabanlı kimlik doğrulaması:** RADIUS sunucusu IP 'sini, RADIUS sunucu gizli anahtarını ve sertifika bilgilerini alın.
 
 * **Azure sertifikaları:** Bu yapılandırma için sertifikalar gereklidir. Sertifika oluşturmanız veya edinmeniz gerekir. Her istemci için bir istemci sertifikası gereklidir. Ayrıca, kök sertifika bilgilerinin (ortak anahtar) yüklenmesi gerekir. Gerekli sertifikalar hakkında daha fazla bilgi için bkz. [sertifikaları oluşturma ve dışarı aktarma](../vpn-gateway/vpn-gateway-certificates-point-to-site.md).
-
-Aşağıdaki örnekte Azure sertifika kimlik doğrulaması gösterilmektedir.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 

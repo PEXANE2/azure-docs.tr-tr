@@ -1,23 +1,22 @@
 ---
 title: VM öngörüleri nedir?
 description: Azure VM 'lerinin sistem durumunu ve performansını izleyen ve uygulama bileşenlerini ve bağımlılıklarını otomatik olarak bulan ve eşleyen VM öngörülerine genel bakış.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707379"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046423"
 ---
 # <a name="overview-of-vm-insights"></a>VM öngörülerine genel bakış
 
 VM öngörüleri, sanal makinelerinizin ve sanal makine ölçek kümelerinin, çalışan işlemleri ve diğer kaynaklardaki bağımlılıklar dahil olmak üzere performansını ve sistem durumunu izler. Performans sorunlarını ve ağ sorunlarını tanımlayarak önemli uygulamaların öngörülebilir performans ve kullanılabilirlik sağlanmasına yardımcı olabilir ve ayrıca bir sorunun diğer bağımlılıklarla ilgili olup olmadığını anlamanıza yardımcı olabilir.
 
-VM öngörüleri aşağıdakiler üzerinde Windows ve Linux işletim sistemlerini destekler:
+VM öngörüleri, aşağıdaki makinelerde Windows ve Linux işletim sistemlerini destekler:
 
 - Azure sanal makineleri
 - Azure sanal makine ölçek kümeleri

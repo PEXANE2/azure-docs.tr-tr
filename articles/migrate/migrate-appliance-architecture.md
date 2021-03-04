@@ -6,90 +6,67 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9a7a3a603944970a5e78a24ca4042f97b1c43fcc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754122"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047868"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
-Bu makalede Azure geçiş gereci mimarisi ve süreçler açıklanmaktadır. Azure geçişi gereci, Azure 'a geçiş için VM 'Leri ve fiziksel sunucuları bulmayı sağlayan, şirket içinde dağıtılan hafif bir gereç. 
+Bu makalede Azure geçiş gereci mimarisi ve süreçler açıklanmaktadır. Azure geçişi gereci, Azure 'a geçiş için VM 'Leri ve fiziksel sunucuları bulmayı sağlayan, şirket içinde dağıtılan hafif bir gereç.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
 Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 
-**Senaryo** | **Araç** | **Kullanıldığı yerler** 
+**Senaryo** | **Araç** | **Kullanıldığı yer** 
 --- | --- | ---
-**VMware VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware VM 'lerini bulun.<br/><br/> Makine uygulamalarını ve bağımlılıklarını bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
-**VMware VM geçişi (aracısız)** | Azure geçişi: sunucu geçişi | VMware VM’lerini bulma<br/><br/>  VMware VM 'lerini [aracısız geçişle](server-migrate-overview.md)çoğaltın.
-**Hyper-V VM değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM 'lerini bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
-**Fiziksel makine** |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucuları bulun.<br/><br/> Makine meta verilerini ve performans meta verilerini toplayın ve Azure 'a gönderin.
+**VMware ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware ortamınızda çalışan sunucuları bulma<br/><br/> Yüklü uygulamalar bulmayı, aracısız bağımlılık analizini ve SQL Server örnekleri ve veritabanlarını bulmayı gerçekleştirin.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**VMware ortamında çalışan sunucuların aracısız geçişi** | Azure geçişi: sunucu geçişi | VMware ortamınızda çalışan sunucuları bulun.<br/><br/> Herhangi bir aracı yüklemeden sunucuları çoğaltın.
+**Hyper-V ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V ortamınızda çalışan sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**Şirket içi fiziksel veya sanallaştırılmış sunucuların bulunması ve değerlendirmesi** |  Azure geçişi: Sunucu değerlendirmesi |  Şirket içi fiziksel veya sanallaştırılmış sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
 
-## <a name="appliance-components"></a>Gereç bileşenleri
+## <a name="deployment-methods"></a>Dağıtım yöntemleri
 
-Gereç çok sayıda bileşene sahiptir.
+Gereç birkaç yöntem kullanılarak dağıtılabilir:
 
-- **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.
-- **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır. 
-- **Toplayıcı Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.
-- **DRA Aracısı**: VM çoğaltmasını düzenleyin ve çoğaltılan makineler ile Azure arasındaki iletişimi koordine edin. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.
-- **Ağ geçidi**: çoğaltılan verileri Azure 'a gönderir. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.
-- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
+- Gereç, VMware veya Hyper-V ortamında ([VMware Için ova şablonu](how-to-set-up-appliance-vmware.md) veya [Hyper-v için VHD](how-to-set-up-appliance-hyper-v.md)) çalışan sunucular için bir şablon kullanılarak dağıtılabilir.
+- Bir şablon kullanmak istemiyorsanız, bir [PowerShell yükleyici betiği](deploy-appliance-script.md)kullanarak VMware veya Hyper-V ortamı için gereci dağıtabilirsiniz.
+- Azure Kamu 'da, bir PowerShell yükleyici betiği kullanarak gereci dağıtmanız gerekir. [Burada](deploy-appliance-script-government.md)Dağıtım adımlarına bakın.
+- Şirket içinde veya başka bir bulutta bulunan fiziksel veya sanallaştırılmış sunucular için, her zaman gereci bir PowerShell yükleyici betiği kullanarak dağıtırsınız. [Burada](how-to-set-up-appliance-physical.md)Dağıtım adımlarına bakın.
+- İndirme bağlantıları aşağıdaki tablolarda bulunur.
 
+## <a name="appliance-services"></a>Gereç Hizmetleri
 
+Gereç aşağıdaki hizmetlere sahiptir:
 
-## <a name="appliance-deployment"></a>Gereç dağıtımı
+- **Gereç Yapılandırma Yöneticisi**: Bu, sunucuların bulunmasını ve değerlendirmesini başlatmak üzere kaynak ayrıntıları ile yapılandırılabilecek bir Web uygulamasıdır. 
+- **Keşif Aracısı**: Aracı, şirket içi değerlendirmeler olarak oluşturmak için kullanılabilecek sunucu yapılandırma meta verilerini toplar.
+- **Değerlendirme Aracısı**: Aracı, performans tabanlı değerlendirmeler oluşturmak için kullanılabilecek sunucu performansı meta verilerini toplar.
+- **Otomatik güncelleştirme hizmeti**: hizmet, Gereç üzerinde çalışan tüm aracıların güncel kalmasını sağlar. Her 24 saatte bir otomatik olarak çalışır.
+- **DRA Aracısı**: sunucu çoğaltmasını düzenleyin ve çoğaltılan sunucular ile Azure arasındaki iletişimi koordine edin. Yalnızca Azure 'a aracısız geçiş kullanılarak sunucular çoğaltılırken kullanılır.
+- **Ağ geçidi**: çoğaltılan verileri Azure 'a gönderir. Yalnızca Azure 'a aracısız geçiş kullanılarak sunucular çoğaltılırken kullanılır.
+- **SQL bulma ve değerlendirme Aracısı**: SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans meta verilerini Azure 'a gönderir.
 
-- Azure geçişi gereci, [Hyper-V](how-to-set-up-appliance-hyper-v.md) veya [VMware](how-to-set-up-appliance-vmware.md) için bir şablon kullanılarak veya [VMware/Hyper-V](deploy-appliance-script.md)için bir PowerShell betiği yükleyicisi kullanılarak veya [fiziksel sunucular](how-to-set-up-appliance-physical.md)için ayarlanabilir. 
-- Gereç desteği gereksinimleri ve dağıtım önkoşulları, [gereç desteği matrisinde](migrate-appliance.md)özetlenir.
+> [!Note]
+> Son 3 hizmet yalnızca VMware ortamınızda çalışan sunucuların bulunması ve değerlendirmesi için kullanılan gereç içinde kullanılabilir.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
-
-## <a name="appliance-registration"></a>Gereç kaydı
-
-Gereç kurulumu sırasında gereci Azure geçişi ile kaydedersiniz ve tabloda özetlenen eylemler oluşur.
-
-**Eylem** | **Ayrıntılar** | **İzinler**
---- | --- | ---
-**Kaynak sağlayıcılarını Kaydet** | Bu kaynak sağlayıcıları, Gereç kurulumu sırasında seçtiğiniz aboneliğe kaydedilir: Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasası.<br/><br/> Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. | Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
-**Azure AD uygulaması oluşturma-iletişim** | Azure geçişi, Gereç üzerinde çalışan aracılar ve Azure üzerinde çalışan ilgili hizmetleri arasında iletişim için bir Azure Active Directory (Azure AD) uygulaması oluşturur.<br/><br/> Bu uygulamanın herhangi bir kaynakta Azure Resource Manager çağrısı yapma ayrıcalıkları veya Azure RBAC erişimi yoktur. | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](./tutorial-discover-vmware.md#prepare-an-azure-user-account) ihtiyacınız vardır.
-**Azure AD uygulamaları oluşturma-Anahtar Kasası** | Bu uygulama yalnızca VMware VM 'lerinin Azure 'a aracısız geçişi için oluşturulmuştur.<br/><br/> Bu, özel olarak, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için kullanılır.<br/><br/> Bu, gerecden bulma başlatıldığında Azure Anahtar Kasası 'nda (müşterinin kiracısında oluşturulan) Azure RBAC erişimine sahiptir. | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](./tutorial-discover-vmware.md#prepare-an-azure-user-account) ihtiyacınız vardır.
-
-
-
-## <a name="collected-data"></a>Toplanan veriler
-
-Tüm dağıtım senaryoları için istemci tarafından toplanan veriler [gereç desteği matrisinde](migrate-appliance.md)özetlenir.
 
 ## <a name="discovery-and-collection-process"></a>Bulma ve toplama işlemi
 
-![Mimari](./media/migrate-appliance-architecture/architecture1.png)
+:::image type="content" source="./media/migrate-appliance-architecture/architecture1.png" alt-text="Gereç mimarisi":::
 
-Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konaklarıyla/kümesiyle iletişim kurar.
+Gereç, aşağıdaki işlemi kullanarak bulma kaynaklarıyla iletişim kurar.
 
-1. **Bulmayı Başlat**:
-    - Hyper-V gereci üzerinde bulmayı başlattığınızda, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar.
-    - VMware gereci üzerinde bulmayı başlattığınızda, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Web uygulamasında yapılandırabilirsiniz.
-2. **Meta verileri ve performans verilerini toplayın**:
-    - Gereç, bağlantı noktası 5985 ' deki Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
-    - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
-3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir. Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
-    - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
-        - Performans verileri her bir performans ölçümü için VMware için 20 saniyede bir ve Hyper-V için her 30 saniyede bir toplanır.
-        - Toplanan veriler 10 dakika boyunca tek bir veri noktası oluşturmak için toplanır.
-        - En yüksek kullanım değeri tüm 20/30 saniyelik veri noktalarından seçilir ve değerlendirme hesaplaması için Azure 'a gönderilir.
-        - Değerlendirme özelliklerinde belirtilen yüzdebirlik değerine (50./90./yüzde/sn) göre, on dakikalık noktaları artan düzende sıralanır ve değerlendirmeyi hesaplamak için uygun yüzdebirlik değeri kullanılır
-    - Sunucu geçişi için, Gereç VM verilerini toplamaya başlar ve bunu Azure 'a çoğaltır.
-4. **Değerlendirin ve geçirin**: artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.
-
-## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
-
-Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden, Gereç yükseltilir. Otomatik güncelleştirme, Gereç üzerinde varsayılan olarak etkinleştirildiğinden bu otomatik olarak gerçekleşir. Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
-
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "otomatik güncelleştirme" anahtarını 0 (DWORD) olarak ayarlayarak, kayıt defterinde otomatik güncelleştirmeyi devre dışı bırakabilirsiniz.
-
+**İşleme** | **VMware gereci** | **Hyper-V gereci** | **Fiziksel Gereç**
+---|---|---|---
+**Bulmayı Başlat**| Gereç, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Yapılandırma Yöneticisi 'nde yapılandırabilirsiniz. | Gereç, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar. | Gereç, 22 (TCP) bağlantı noktası üzerinden Linux sunucularıyla WinRM bağlantı noktası 5985 (HTTP) üzerinden Windows sunucularıyla iletişim kurar.
+**Yapılandırma ve performans meta verilerini toplayın** | Gereç, bağlantı noktası 443 (varsayılan bağlantı noktası) veya başka herhangi bir bağlantı noktası üzerinden vCenter Server, vSphere API 'Leri kullanarak, vCenter Server üzerinde çalışan sunucuların meta verilerini toplar. | Gereç, 5985 numaralı bağlantı noktasında konaklarla Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V konaklarında çalışan sunucuların meta verilerini toplar.| Gereç, 5985 numaralı bağlantı noktasında ve numaralı bağlantı noktasında SSH bağlantısı kullanan Linux sunucularından Genel Bilgi Modeli (CıM) oturumu kullanarak Windows sunucularından meta verileri toplar.
+**Bulgu verileri gönder** | Gereç, toplanan verileri Azure geçişi 'ne gönderir: Sunucu değerlendirmesi ve Azure geçişi: SSL bağlantı noktası 443 üzerinden sunucu geçişi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir). | Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).| Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
+**Veri toplama sıklığı** | Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 20 saniyede bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır. <br/><br/> Yazılım envanteri verileri her 12 saatte bir Azure 'a gönderilir. <br/><br/> Aracısız bağımlılık verileri 5 dakikada bir toplanır ve her 6 saatte bir Azure 'a gönderilir. <br/><br/> SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır.| Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 30 saniyede bir toplanır ve Azure 'a her 10 dakikada bir veri noktası göndermek için toplanır.|  Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 5 dakikada bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır.
+**Değerlendirme ve geçirme** | Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.<br/><br/>Ayrıca, Azure geçişi: sunucu geçiş aracını kullanarak, aracısız sunucu çoğaltmasını organize etmek için VMware ortamınızda çalışan sunucuları geçirmeyi de başlatabilirsiniz.| Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. | Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681735"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047749"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Veri tabanlı stil ifadeleri (Android SDK)
 
@@ -662,7 +662,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 Bir ısı haritasını renklendirmeye yönelik düz bir gradyan kullanmanın yanı sıra, renkler bir ifade kullanılarak bir aralıklar kümesi içinde belirlenebilir `step` . `step`Isı haritasının renklendirilebilmesini için bir ifade kullanılması, yoğunluğu bir dağılım veya radar stil eşlemesine benzer aralıklar halinde ayırır.  
 
-```java 
+```java
 HeatMapLayer layer = new HeatMapLayer(dataSource,
     heatmapColor(
         step(
@@ -679,6 +679,36 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 ```
 
 Daha fazla bilgi için bkz. [ısı haritası katmanı ekleme](map-add-heat-map-layer-android.md) belgeleri.
+
+### <a name="line-progress-expression"></a>Satır ilerleme ifadesi
+
+Bir satır ilerleme ifadesi, ilerleme durumunu çizgi katmanında bir gradyan çizgisi üzerinde alır ve olarak tanımlanır `lineProgress()` . Bu değer 0 ile 1 arasında bir sayıdır. Or ifadesi ile birlikte kullanılır `interpolation` `step` . Bu ifade yalnızca `strokeGradient` çizgi katmanının seçeneğiyle birlikte kullanılabilir.
+
+> [!NOTE]
+> `strokeGradient`Çizgi katmanının seçeneği, `lineMetrics` veri kaynağı seçeneğinin olarak ayarlanmasını gerektirir `true` .
+
+**Örnek**
+
+Bu örnek, `lineProgress()` bir satırın konturuna bir renk gradyanı uygulamak için ifadesini kullanır.
+
+```javascript
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+[Bkz. canlı örnek](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Metin alanı biçim ifadesi
 

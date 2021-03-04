@@ -1,18 +1,17 @@
 ---
 title: VM öngörüleri için Log Analytics çalışma alanını yapılandırma
 description: VM öngörüleri tarafından kullanılan Log Analytics çalışma alanının nasıl oluşturulduğunu ve yapılandırılacağını açıklar.
-ms.subservice: ''
 ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: dc7e6c42837ccaa56c7a211deb646c934ec137a4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717137"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046729"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>VM öngörüleri için Log Analytics çalışma alanını yapılandırma
 VM öngörüleri, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM öngörüleri için yapılandırılacak.

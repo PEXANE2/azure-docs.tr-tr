@@ -2,17 +2,16 @@
 title: Azure Izleyici ile Azure sanal makinelerini izleme
 description: Azure Izleyici kullanarak Azure 'daki sanal makinelerden izleme verilerinin nasıl toplanacağını ve analiz edileceğini açıklar.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731383"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047052"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](../essentials/monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -56,7 +55,7 @@ Azure Izleyici 'nin bir sanal makineyi izlemeye yönelik tüm özelliklerini etk
 | Yapılandırma adımı | Tamamlanan eylemler | Etkinleştirilen özellikler |
 |:---|:---|:---|
 | Yapılandırma yok | -Ölçümlere toplanan konak platformu ölçümleri.<br>-Etkinlik günlüğü toplandı. | -Konak için ölçüm Gezgini.<br>-Konak için ölçüm uyarıları.<br>-Etkinlik günlüğü uyarıları. |
-| [VM öngörülerini etkinleştir](#enable-azure-monitor-for-vms) | -Log Analytics Aracısı yüklendi.<br>-Bağımlılık Aracısı yüklendi.<br>-Günlüklere toplanan konuk performansı verileri.<br>-Günlüklere toplanan işlem ve bağımlılık ayrıntıları. | -Konuk performans verileri için performans grafikleri ve çalışma kitapları.<br>-Konuk performans verileri için sorguları günlüğe kaydedin.<br>-Konuk performans verileri için günlük uyarıları.<br>-Bağımlılık eşlemesi. |
+| [VM öngörülerini etkinleştir](#enable-vm-insights) | -Log Analytics Aracısı yüklendi.<br>-Bağımlılık Aracısı yüklendi.<br>-Günlüklere toplanan konuk performansı verileri.<br>-Günlüklere toplanan işlem ve bağımlılık ayrıntıları. | -Konuk performans verileri için performans grafikleri ve çalışma kitapları.<br>-Konuk performans verileri için sorguları günlüğe kaydedin.<br>-Konuk performans verileri için günlük uyarıları.<br>-Bağımlılık eşlemesi. |
 | [Tanılama uzantısı ve telegraf Aracısı 'nı yükler](#enable-diagnostics-extension-and-telegraf-agent) | -Ölçümlere toplanan konuk performansı verileri. | -Konuk için ölçüm Gezgini.<br>-Konuk için ölçüm uyarıları.  |
 | [Log Analytics çalışma alanını yapılandırma](#configure-log-analytics-workspace) | -Konuktaki toplanan olaylar. | -Konuk olayları için sorguları günlüğe kaydedin.<br>-Konuk olayları için günlük uyarıları. |
 | [Sanal makine için tanılama ayarı oluştur](#collect-platform-metrics-and-activity-log) | -Günlüklere toplanan platform ölçümleri.<br>-Etkinlik günlüğü günlüklere toplandı. | -Konak ölçümleri için günlük sorguları.<br>-Konak ölçümleri için günlük uyarıları.<br>-Etkinlik günlüğü için sorgular günlüğe yazılır.

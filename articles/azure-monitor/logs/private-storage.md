@@ -1,17 +1,16 @@
 ---
 title: Using Azure İzleyici Log Analytics'te müşteri tarafından yönetilen depolama hesaplarını kullanma
 description: Log Analytics senaryolar için kendi depolama hesabınızı kullanın
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723070"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047474"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Using Azure İzleyici Log Analytics'te müşteri tarafından yönetilen depolama hesaplarını kullanma
 
@@ -23,7 +22,7 @@ Log Analytics çeşitli senaryolarda Azure Storage 'ı kullanır. Bu kullanım g
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Tanılama uzantısı günlüklerini geri yükleme (WAD/LAD)
 Azure Tanılama uzantısı aracıları (sırasıyla, Windows ve Linux aracıları için WAD ve LAD olarak da bilinir), çeşitli işletim sistemi günlükleri toplar ve bunları müşteri tarafından yönetilen bir depolama hesabında depolar. Daha sonra bu günlükleri gözden geçirmek ve analiz etmek için Log Analytics kullanabilirsiniz.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Depolama hesabınızdan Azure Tanılama uzantısı günlüklerini toplama
-Depolama hesabını, [Azure Portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights apı](/rest/api/loganalytics/storage%20insights/createorupdate)'sini çağırarak Log Analytics çalışma alanınıza depolama veri kaynağı olarak bağlayın.
+Depolama hesabını, [Azure Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights apı](/rest/api/loganalytics/storage%20insights/createorupdate)'sini çağırarak Log Analytics çalışma alanınıza depolama veri kaynağı olarak bağlayın.
 
 Desteklenen veri türleri:
 * Syslog

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047625"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Haritaya çokgen katmanı ekleme (Android SDK)
 
 Bu makalede, `Polygon` `MultiPolygon` bir çokgen katmanı kullanarak haritada ve özellik geometrileri arasındaki alanların nasıl işleneceğini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: Android uygulama belgesi oluşturma](quick-android-map.md) ' daki adımları tamamladığınızdan emin olun. Bu makaledeki kod blokları haritalar `onReady` olay işleyicisine eklenebilir.
 
@@ -97,6 +97,47 @@ Aşağıdaki ekran görüntüsünde, bir çizgi katmanı kullanılarak oluşturu
 > [!TIP]
 > Bir çizgi katmanıyla bir çokgen ana hattını oluştururken, her bir nokta dizisinin aynı başlangıç ve bitiş noktasına sahip olması gibi çokgenler içindeki tüm halkaları kapatmayı unutmayın. Bu yapılmazsa, çizgi katmanı, çokgenin son noktasını ilk noktaya bağlayamayabilir.
 
+## <a name="fill-a-polygon-with-a-pattern"></a>Çokgeni bir desenli doldur
+
+Çokgeni bir renkle doldurmanın yanı sıra, çokgeni doldurmak için de bir resim kalıbı kullanabilirsiniz. Haritalar görüntüsü Sprite kaynaklarına bir resim kalıbı yükleyin ve ardından bu görüntüye `fillPattern` Çokgen katmanının seçeneğiyle başvurun.
+
+```java
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-50, -20),
+            Point.fromLngLat(0, 40),
+            Point.fromLngLat(50, -20),
+            Point.fromLngLat(-50, -20)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+), "labels");
+```
+
+Bu örnekte, aşağıdaki görüntü uygulamanın çizilebilir klasörüne yüklenmiştir.
+
+| ![Mor ok simgesi resmi](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
+|:-----------------------------------------------------------------------:|
+| fill_checker_red.png                                                    |
+
+Aşağıda, haritada bir Fill desenli bir çokgen işleyen Yukarıdaki kodun ekran görüntüsü verilmiştir.
+
+![Haritada işlenen bir Fill desenli Çokgen](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
@@ -109,3 +150,6 @@ Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makale
 
 > [!div class="nextstepaction"]
 > [Çizgi katmanı ekleme](android-map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Çokgen kalıp katmanı ekleme](map-extruded-polygon-android.md)

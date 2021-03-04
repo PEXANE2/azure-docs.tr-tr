@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674652"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047681"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Veri kaynağı oluşturma (Android SDK)
 
@@ -360,14 +360,17 @@ Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](h
 - Trafik akışı [belgeleri](/rest/api/maps/traffic/gettrafficflowtile)  |  [veri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
 - Azure haritalar Oluşturucusu Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilebilir olmasını sağlar
 
+> [!TIP]
+> Azure haritalar işleme hizmeti 'nden Web SDK 'Sı ile vektör veya raster görüntü kutucukları kullanırken, `atlas.microsoft.com` yer tutucu ile değiştirebilirsiniz `azmapsdomain.invalid` . Bu yer tutucu, eşleme tarafından kullanılan aynı etki alanıyla değiştirilmelidir ve aynı kimlik doğrulama ayrıntılarını da otomatik olarak ekler. Bu, Azure Active Directory kimlik doğrulaması kullanırken işleme hizmeti ile kimlik doğrulamasını büyük ölçüde basitleştirir.
+
 Haritadaki bir vektör kutucuk kaynağından verileri göstermek için, kaynağı veri işleme katmanlarından birine bağlayın. Vektör kaynağı kullanan tüm katmanların seçeneklerde bir değer belirtmesi gerekir `sourceLayer` . Aşağıdaki kod, Azure Maps trafik akışı vektör kutucuk hizmetini bir vektör kutucuk kaynağı olarak yükler ve bir çizgi katmanını kullanarak haritada görüntüler. Bu vektör kutucuk kaynağı kaynak katmanda "trafik akışı" adlı tek bir veri kümesine sahiptir. Bu veri kümesindeki satır verilerinde, `traffic_level` rengi seçmek ve çizgilerin boyutunu ölçeklendirmek için bu kodda kullanılan adlı bir özellik vardır.
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );

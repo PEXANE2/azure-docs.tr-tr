@@ -1,17 +1,16 @@
 ---
 title: Azure Izleyicisine genel bakış | Microsoft Docs
 description: Azure hizmetleriniz ve uygulamalarınız için eksiksiz bir izleme stratejisine katkıda bulunan Microsoft hizmetleri ve işlevlerine genel bakış.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717358"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047171"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyici'ye genel bakış
 
@@ -145,7 +144,7 @@ Oluşturulan uyarılara erişmenin yanı sıra Azure Izleyici 'ye ve bunlara yö
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-* Azure Izleyici tarafından toplanan veriler için [ölçümler ve Günlükler](data-platform.md) .
+* Azure Izleyici tarafından toplanan veriler için [ölçümler ve Günlükler](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) .
 * Uygulamanızın farklı bileşenlerinin telemetri gönderme yöntemi için [veri kaynakları](agents/data-sources.md) .
 * Toplanan verileri çözümlemek için [günlük sorguları](logs/log-query-overview.md) .
 * Bulut uygulamalarını ve hizmetlerini izlemeye yönelik [en iyi uygulamalar](/azure/architecture/best-practices/monitoring) .

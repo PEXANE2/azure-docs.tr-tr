@@ -1,6 +1,6 @@
 - name: Ayrılmış SQL havuzu (eski adıyla SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Azure Synapse’e geçiş
+- name: Azure SYNAPSE > geçin
   href: ../overview-what-is.md
 - name: Genel Bakış
   items:

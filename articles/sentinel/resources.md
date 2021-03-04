@@ -13,81 +13,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570435"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048242"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
-
-
 Bu makalede, Azure Sentinel ile çalışma hakkında daha fazla bilgi almanıza yardımcı olabilecek kaynaklar listelenmektedir.
 
-- **Azure Logic Apps bağlayıcılar**: <https://docs.microsoft.com/connectors/>
+## <a name="learn-more-about-creating-queries"></a>Sorgu oluşturma hakkında daha fazla bilgi edinin
 
+Azure Sentinel, sorguları derlemek için Azure Izleyici Log Analytics 'nin kusto sorgu dilini (KQL) kullanır. Daha fazla bilgi için bkz.
 
-## <a name="auditing-and-reporting"></a>Denetim ve raporlama
-Azure Sentinel 'in denetim günlükleri [Azure etkinlik günlüklerinde](../azure-monitor/essentials/platform-logs-overview.md)tutulur.
+- [KQL kavramları](/azure/data-explorer/kusto/concepts/)
+- [KQL sorguları](/azure/data-explorer/kusto/query/)
+- [KQL hızlı başvuru kılavuzu](/azure/data-explorer/kql-quick-reference).
+- [KQL sorgularını kullanmaya başlama](../azure-monitor/logs/get-started-queries.md)
 
-Aşağıdaki desteklenen işlemler denetlenebilir.
+## <a name="learn-more-about-creating-automation"></a>Otomasyon oluşturma hakkında daha fazla bilgi edinin
 
-|İşlem adı|    Kaynak türü|
-|----|----|
-|Çalışma kitabı oluştur veya güncelleştir  |Microsoft. Insights/çalışma kitapları|
-|Çalışma kitabını Sil    |Microsoft. Insights/çalışma kitapları|
-|Iş akışını ayarla   |Microsoft. Logic/iş akışları|
-|Iş akışını Sil    |Microsoft. Logic/iş akışları|
-|Kayıtlı arama oluştur    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
-|Kayıtlı aramayı Sil    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
-|Uyarı kurallarını Güncelleştir |Microsoft. Securityınsights/alertRules|
-|Uyarı kurallarını Sil |Microsoft. Securityınsights/alertRules|
-|Uyarı kuralı yanıt eylemlerini Güncelleştir |Microsoft. Securityınsights/alertRules/Actions|
-|Uyarı kuralı yanıt eylemlerini Sil |Microsoft. Securityınsights/alertRules/Actions|
-|Yer Imlerini güncelleştirme   |Microsoft. Securityınsights/yer işaretleri|
-|Yer Imlerini Sil   |Microsoft. Securityınsights/yer işaretleri|
-|Güncelleştirme çalışmaları   |Microsoft. Securityınsights/durumlar|
-|Durum araştırmasını Güncelleştir  |Microsoft. Securityınsights/durumlar/araştırmalar|
-|Case açıklamaları oluşturma   |Microsoft. Securityınsights/Cases/Comments|
-|Veri bağlayıcılarını güncelleştirme |Microsoft. Securityınsights/veri bağlayıcıları|
-|Veri bağlayıcıları silme |Microsoft. Securityınsights/veri bağlayıcıları|
-|Ayarları Güncelleştir    |Microsoft. Securityınsights/ayarlar|
+Büyüyen yerleşik PlayBook galerisiyle Azure Logic Apps kullanarak Azure Sentinel 'te Otomasyon oluşturun. 
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel 'de denetim ve raporlama verilerini görüntüleme
+Daha fazla bilgi için bkz. [Azure Logic Apps bağlayıcılar](https://docs.microsoft.com/connectors/).
 
-Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz gerçekleştirebileceğiniz bir Azure Sentinel 'e aktararak görüntüleyebilirsiniz.
+## <a name="comment-on-our-blogs-and-forums"></a>Bloglarımızla ve forumlarımıza yorum
 
-1. [Azure etkinlik](connect-azure-activity.md) veri kaynağını bağlayın. Bunu yaptıktan sonra, denetim olayları AzureActivity adlı **Günlükler** ekranında yeni bir tabloya akışla kaydedilir.
+Kullanıcılarımızın bizim için çok sevdiğimiz bir duyduk.
 
-1. Ardından, diğer tüm tablolar gibi KQL kullanarak verileri sorgulayın.
+Azure Sentinel için TechCommunity alanında:
 
-    Örneğin, belirli bir analiz kuralını kimin düzenleyen Son Kullanıcı olduğunu öğrenmek için aşağıdaki sorguyu kullanın ( `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` denetlemek istediğiniz kuralın kural kimliğiyle değiştirin):
+- [Son blog gönderilerini görüntüleyin ve yorum yapın](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)
+- [Azure Sentinel hakkında kendi sorularınızı gönderin](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)
 
-    ```kusto
-    AzureActivity
-    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
-    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    | project Caller , TimeGenerated , Properties
-    ```
+Ayrıca, [Kullanıcı sesli](https://feedback.azure.com/forums/920458-azure-sentinel) programımız aracılığıyla geliştirmeler için öneriler de gönderebilirsiniz.
 
+## <a name="join-the-azure-sentinel-github-community"></a>Azure Sentinel GitHub topluluğuna katılarak
 
-## <a name="blogs-and-forums"></a>Bloglar ve Forumlar
+[Azure Sentinel GitHub deposu](https://github.com/Azure/Azure-Sentinel) , tehdit algılama ve otomasyonu için güçlü bir kaynaktır. 
 
-Kullanıcılarımızdan aldığımız bir duyuyoruz!
+Microsoft Güvenlik analistlerimiz sürekli olarak yeni çalışma kitapları, PlayBook 'lar oluşturma ve ekleme, sorguları yönetme ve daha fazlası oluşturup, ortamınızda kullanabilmeniz için bunları topluluğa aktarıyoruz. 
 
-- **Sorularınızı** Azure Sentinel Için [Techcommunity alanına](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) gönderin. 
-
-- [Kullanıcı sesli](https://feedback.azure.com/forums/920458-azure-sentinel) programımız aracılığıyla **geliştirmeler için öneriler gönderin** .
-
-- Azure Sentinel blog gönderilerimizi **görüntüleyin ve açıklama ekleyin** :
-
-    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
-    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
+Özel çalışma kitapları oluşturmak, Azure Sentinel için sorguları, not defterlerini ve PlayBook 'ları yakalamak üzere özel topluluk GitHub deposundan örnek içerik indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

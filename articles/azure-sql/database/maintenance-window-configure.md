@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: ae31b329cbea82ac664af24e42ec58d094b3a7ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048632"
 ---
 # <a name="configure-maintenance-window-preview"></a>Bakım penceresini yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -275,7 +275,7 @@ Aşağıdaki adımlar, Azure portal kullanarak mevcut bir veritabanı, elastik h
 1. Bakım penceresini ayarlamak istediğiniz yönetilen örneğe gidin.
 1. **Ayarlar** menüsünde **bakım**' ı seçin ve ardından istenen bakım penceresini seçin.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="SQL veritabanı bakım sayfası":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="SQL yönetilen örnek bakım sayfası":::
 
 
 

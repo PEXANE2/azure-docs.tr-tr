@@ -4,13 +4,15 @@ ms.author: cherylmc
 ms.date: 02/23/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: b5c0bdbb29af7b8894d86233520ff09854faa201
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 567c0bb75c30a1f0ccdcde7ec1b0f04f5d6e54c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732500"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048275"
 ---
+[!INCLUDE [Portal feature rollout](virtual-wan-portal-feature-rollout.md)]
+
 1. **Tüm kaynaklar** ' a gidin ve oluşturduğunuz sanal WAN ' ı seçin, ardından sol taraftaki menüden **Kullanıcı VPN yapılandırması** ' nı seçin.
 1. **Kullanıcı VPN yapılandırmaları** sayfasında, sayfanın üst kısmındaki + **Yeni Kullanıcı VPN yapılandırması oluştur** sayfasını açmak için **+ Kullanıcı VPN yapılandırması oluştur** ' u seçin.
 
@@ -23,7 +25,7 @@ ms.locfileid: "101732500"
    **IKEv2 VPN**
 
    * **Gereksinimler:** **Ikev2** tünel türünü seçtiğinizde, bir kimlik doğrulama yöntemi seçmenizi yönlendiren bir ileti görürsünüz. Ikev2 için yalnızca bir kimlik doğrulama yöntemi belirtebilirsiniz. Azure sertifikası, Azure Active Directory veya RADIUS tabanlı kimlik doğrulaması seçebilirsiniz.
- 
+
    * **IPSec özel parametreleri:** IKE Aşama 1 ve ıKE aşama 2 parametrelerini özelleştirmek için IPsec anahtarını **özel** olarak değiştirin ve parametre değerlerini seçin. Özelleştirilebilir parametreler hakkında daha fazla bilgi için bkz. [Özel IPSec](../articles/virtual-wan/point-to-site-ipsec.md) makalesi.
 
      :::image type="content" source="media/virtual-wan-p2s-configuration/custom.png" alt-text="IPSec 'in özel olarak geçiş ekran görüntüsü.":::

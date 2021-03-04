@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047579"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Sembol katmanı ekleme (Android SDK)
 
@@ -22,7 +22,7 @@ Bu makalede, Azure Maps Android SDK kullanarak bir harita üzerinde sembol katma
 > [!TIP]
 > Sembol katmanları varsayılan olarak, bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özellikleri olacak şekilde sınırlamak için `filter` katmanın seçeneğini olarak ayarlayın `eq(geometryType(), "Point")` . MultiPoint özelliklerini de dahil etmek istiyorsanız `filter` katmanın seçeneğini olarak ayarlayın `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: Android uygulama belgesi oluşturma](quick-android-map.md) ' daki adımları tamamladığınızdan emin olun. Bu makaledeki kod blokları haritalar `onReady` olay işleyicisine eklenebilir.
 
@@ -132,6 +132,52 @@ Aşağıdaki ekran görüntüsünde, bir simge katmanıyla birlikte özel bir si
 
 > [!TIP]
 > Yalnızca bir sembol katmanıyla birlikte metin işlemek istediğinizde, `iconImage` simge seçeneklerinin özelliğini olarak ayarlayarak simgeyi gizleyebilirsiniz `"none"` .
+
+## <a name="modify-symbol-colors"></a>Sembol renklerini değiştir
+
+Azure Haritalar Android SDK, varsayılan işaretleyici simgenin önceden tanımlanmış renk çeşitlemeleri kümesiyle birlikte gelir. Örneğin, `marker-red` `iconImage` Bu katmanda işaret simgesinin kırmızı bir sürümünü işlemek için bir sembol katmanının seçeneğine geçirilebilir. 
+
+```java
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("marker-red")
+);
+```
+
+Aşağıdaki tabloda, kullanılabilir tüm yerleşik simge görüntüsü adları listelenmiştir. Bu işaretçilerin hepsi, renkleri geçersiz kılabileceğiniz renk kaynaklarından çeker. Bu işaretin ana Fill rengini geçersiz kılmanın yanı sıra. Ancak, bu işaretçilerin birinin rengini geçersiz kılma söz konusu simge görüntüsünü kullanan tüm katmanlara uygulanacağını unutmayın.
+
+| Simge resmi adı | Renk kaynağı adı |
+|-----------------|---------------------|
+| `marker-default` | `mapcontrol_marker_default` |
+| `marker-black` | `mapcontrol_marker_black` |
+| `marker-blue` | `mapcontrol_marker_blue` |
+| `marker-darkblue` | `mapcontrol_marker_darkblue` |
+| `marker-red` | `mapcontrol_marker_red` |
+| `marker-yellow` | `mapcontrol_marker_yellow` |
+
+Ayrıca, renk kaynağı adını kullanarak tüm işaretlerin kenarlık rengini geçersiz kılabilirsiniz `mapcontrol_marker_border` . Bu işaretçilerin renkleri, uygulamanızın dosyasında aynı ada sahip bir renk eklenerek geçersiz kılınabilir `colors.xml` . Örneğin, aşağıdaki `colors.xml` dosya varsayılan işaret rengini parlak yeşil hale getirir.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mapcontrol_marker_default">#00FF00</color>
+</resources>
+```
+
+Varsayılan işaretleyici vektör XML 'in, varsayılan işaretin ek özel sürümlerini oluşturmak için değiştirebileceğiniz değiştirilmiş bir sürümü aşağıda verilmiştir. Değiştirilen sürüm, `drawable` uygulamanızın klasörüne eklenebilir ve kullanarak haritalar görüntüsünü Sprite öğesine eklenebilir ve `map.images.add` ardından bir sembol katmanıyla birlikte kullanılır.
+
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24.5dp"
+    android:height="36.5dp"
+    android:viewportWidth="24.5"
+    android:viewportHeight="36.5">
+    <path
+        android:pathData="M12.25,0.25a12.2543,12.2543 0,0 0,-12 12.4937c0,6.4436 6.4879,12.1093 11.059,22.5641 0.5493,1.2563 1.3327,1.2563 1.882,0C17.7621,24.8529 24.25,19.1857 24.25,12.7437A12.2543,12.2543 0,0 0,12.25 0.25Z"
+        android:strokeWidth="0.5"
+        android:fillColor="@color/mapcontrol_marker_default"
+        android:strokeColor="@color/mapcontrol_marker_border"/>
+</vector>
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

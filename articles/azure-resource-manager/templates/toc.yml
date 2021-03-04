@@ -4,6 +4,8 @@
   items:
     - name: ARM şablonları nelerdir?
       href: overview.md
+    - name: Bıcep genel bakış
+      href: bicep-overview.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Şablon oluşturma - portal
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: Genel Bakış
-          href: bicep-overview.md
-        - name: JSON 'dan Bıcep 'ye gitmek
+        - name: JSON ile Bıcep karşılaştırması
           href: compare-template-syntax.md
     - name: Sık sorulan sorular
       href: frequently-asked-questions.md

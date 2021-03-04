@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621848"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046389"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -17,6 +17,8 @@ Buluta geçiş sayesinde, birçok ekip çevik geliştirme yöntemlerini benimsem
 Bu güçlükleri karşılamak için dağıtımları otomatik hale getirebilir ve kod olarak altyapı uygulamasını kullanabilirsiniz. Kodda, dağıtılması gereken altyapıyı tanımlarsınız. Altyapı kodu projenizin bir parçası haline gelir. Uygulama kodu gibi, altyapı kodunu bir kaynak deposunda depolar ve sürümü. Takımınızda herhangi biri kodu çalıştırabilir ve benzer ortamları dağıtabilir.
 
 Altyapıyı Azure çözümleriniz için kod olarak uygulamak üzere Azure Resource Manager şablonları (ARM şablonları) kullanın. Şablon, projeniz için altyapıyı ve yapılandırmayı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon, dağıtmak istediğiniz öğeyi oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan bu öğeyi belirtmenize imkan tanıyan bildirim temelli söz dizimini kullanır. Şablonda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
+
+ARM şablonları geliştirmek için yeni bir dil sunuyoruz. Dil Bıcep olarak adlandırılır ve şu anda önizlemededir. Bıcep ve JSON şablonları aynı yetenekleri sunar. İki dil arasında şablon dönüştürebilirsiniz. Bıcep, şablon oluşturmak için daha kolay bir sözdizimi sağlar. Daha fazla bilgi için bkz. [Bıcep (Önizleme) nedir?](bicep-overview.md).
 
 ## <a name="why-choose-arm-templates"></a>ARM şablonlarını neden seçmelisiniz?
 
@@ -68,7 +70,7 @@ ARM şablonlarını kullanma ve kod hizmetleri olarak diğer altyapılardan biri
 
 * [Kullanıcı tanımlı işlevler](template-user-defined-functions.md) -şablonunuzu basitleştiren özelleştirilmiş işlevler oluşturun.
 
-* [Kaynaklar](template-syntax.md#resources) -dağıtılacak kaynakları belirtin.
+* [Kaynaklar](resource-declaration.md) -dağıtılacak kaynakları belirtin.
 
 * [Çıktılar](template-outputs.md) -dağıtılan kaynaklardan değer döndürür.
 

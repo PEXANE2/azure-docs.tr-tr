@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729717"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048191"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -32,8 +32,44 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 
 ## <a name="february-2021"></a>Şubat 2021
 
+- [Üçüncü taraf veri bağlayıcıları](#third-party-data-connectors)
 - [Varlık sayfasında UEBA öngörüleri](#ueba-insights-in-the-entity-page)
 - [Geliştirilmiş olay arama](#improved-incident-search)
+
+### <a name="third-party-data-connectors"></a>Üçüncü taraf veri bağlayıcıları
+
+Üçüncü taraf tümleştirmelerimiz, son iki aya kadar otuz bağlayıcı eklendikçe büyümeye devam etmektedir. Bir liste aşağıda verilmiştir:
+
+- [Agari savunma ve marka koruması](connect-agari-phishing-defense.md)
+- [Akamai güvenlik olayları](connect-akamai-security-events.md)
+- [Active Directory için alsıd](connect-alsid-active-directory.md)
+- [Apache HTTP sunucusu](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [BlackBerry CylancePROTECT](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco FirePOWER eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [Cisco Birleşik Bilgi Işlem sistemi (UCS)](connect-cisco-ucs.md)
+- [ESET kurumsal Denetçi](connect-data-sources.md)
+- [ESET güvenlik Yönetim Merkezi](connect-data-sources.md)
+- [Google çalışma alanı (eski adıyla G Suite)](connect-google-workspace.md)
+- [Kusurda WAF ağ geçidi](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netüse](connect-data-sources.md)
+- [NXLog DNS günlükleri](connect-nxlog-dns.md)
+- [NXLog Linux denetimi](connect-nxlog-linuxaudit.md)
+- [Onapsıs platformu](connect-data-sources.md)
+- [Düzeltme noktası Isteğe bağlı e-posta güvenliği (POD)](connect-proofpoint-pod.md)
+- [Qualys güvenlik açığı yönetimi Bilgi Bankası](connect-data-sources.md)
+- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
+- [SonicWall güvenlik duvarı](connect-data-sources.md)
+- [Sophos Cloud OPX](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Symantec Endpoint Protection](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Eğilim mikro XDR](connect-data-sources.md)
+- [VMWare ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>Varlık sayfasında UEBA öngörüleri
 
@@ -66,6 +102,7 @@ Azure Sentinel 'de olayları ararken, artık aşağıdaki olay ayrıntılarına 
 - [Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az. Securityınsights PowerShell modülü (Genel Önizleme)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Veritabanı Bağlayıcısı](#sql-database-connector)
+- [Dynamics 365 Bağlayıcısı](#dynamics-365-connector)
 - [Geliştirilmiş olay açıklamaları](#improved-incident-comments)
 - [Adanmış Log Analytics kümeleri](#dedicated-log-analytics-clusters)
 - [Logic Apps tarafından yönetilen kimlikler](#logic-apps-managed-identities)
@@ -81,7 +118,7 @@ Azure Sentinel zamanlanmış analiz Kuralı Sihirbazı artık sorguları yazma v
 -   Genişletilmiş otomatik tamamlama desteği.
 -   Gerçek zamanlı sorgu doğrulamaları. Sorguınızdaki hatalar artık kaydırma çubuğunda kırmızı bir blok olarak ve **kural mantığını ayarla** sekmesi adında kırmızı bir nokta olarak gösterilir. Ayrıca, hatalı bir sorgu kaydedilemez.
 
-Daha fazla bilgi için bkz. [öğretici: tehditleri algılayın](tutorial-detect-threats-built-in.md).
+Daha fazla bilgi için bkz. [öğretici: tehditleri algılamak için özel analiz kuralları oluşturma](tutorial-detect-threats-custom.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az. Securityınsights PowerShell modülü (Genel Önizleme)
 
 Azure Sentinel artık yeni [az. Securityınsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell modülünü desteklemektedir.
@@ -99,6 +136,12 @@ Azure Sentinel artık, veritabanlarının denetim ve tanılama günlüklerini Az
 Azure SQL, Kullanıcı katılımı olmadan yükseltme, düzeltme eki uygulama ve izleme gibi birçok veritabanı yönetim işlevini işleyen, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısıdır.
 
 Daha fazla bilgi için bkz. [Azure SQL veritabanı tanılamayı ve denetim günlüklerini bağlama](connect-azure-sql-logs.md).
+
+### <a name="dynamics-365-connector"></a>Dynamics 365 Bağlayıcısı
+
+Azure Sentinel artık, Microsoft Dynamics 365 için bir bağlayıcı sağlar ve bu, Dynamics 365 uygulamalarınızın Kullanıcı, yönetici ve destek etkinlik günlüklerini Azure Sentinel 'e toplamanıza olanak tanır. Bu verileri, gerçekleşen veri işleme eylemlerinin tamamını denetlemeye ve olası güvenlik ihlallerine yönelik analiz etmenize yardımcı olması için kullanabilirsiniz.
+
+Daha fazla bilgi için bkz. [Dynamics 365 etkinlik günlüklerini Azure Sentinel 'e bağlama](connect-dynamics-365.md).
 
 ### <a name="improved-incident-comments"></a>Geliştirilmiş olay açıklamaları
 
@@ -185,15 +228,14 @@ Azure Sentinel, Windows güvenlik olayları, syslog olayları, CEF günlükleri 
 Daha fazla bilgi için [Log Analytics belgelerine](../azure-monitor/agents/log-analytics-agent.md) ve [Log Analytics Aracısı sürüm notlarına](https://github.com/microsoft/OMS-Agent-for-Linux/releases)bakın.
 ## <a name="november-2020"></a>Kasım 2020
 
-- [Azure Sentinel 'de Logic Apps PlayBook 'larınızı izleme](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [Azure Sentinel 'de PlayBook sistem durumunu izleme](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender Bağlayıcısı (Genel Önizleme)](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Azure Sentinel 'de Logic Apps PlayBook 'larınızı izleme
 
-Azure Sentinel, görevleri, iş süreçlerini ve iş akışlarını zamanlamanıza, otomatikleştirmenize ve ayarlamanıza yardımcı olan bir bulut hizmeti olan [Azure günlük uygulamalarıyla](../logic-apps/index.yml)tümleştirilir.
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>Azure Sentinel 'de PlayBook sistem durumunu izleme
 
-Bir olay oluşturulduğunda otomatik olarak çağrılabilen veya olaylar ile çalışırken otomatik olarak çağrılabilecek bir PlayBook olarak Azure 'da Azure mantıksal uygulaması kullanın. 
+Azure Sentinel PlayBook 'ları, görevleri, iş süreçlerini ve iş akışlarını zamanlamanıza, otomatikleştirmenize ve ayarlamanıza yardımcı olan bir bulut hizmeti olan [Azure günlük uygulamalarında](../logic-apps/index.yml)oluşturulan iş akışlarını temel alır. PlayBook 'lar bir olay oluşturulduğunda ya da önceliklendirme ve olaylar ile çalışırken otomatik olarak çağrılabilir. 
 
-Azure Logic Apps ile eklediğiniz gibi, PlayBook 'larınızın sistem durumu, performansı ve kullanımı hakkında Öngörüler sağlamak için **PlayBook sistem durumu izleme** adlı bir [Azure çalışma kitabı](../azure-monitor/visualize/workbooks-overview.md) ekledik. 
+PlayBook 'larınızın sistem durumu, performansı ve kullanımı hakkında Öngörüler sağlamak için, **playbooks sistem durumu izleme** adında bir [çalışma kitabı](../azure-monitor/visualize/workbooks-overview.md) ekledik. 
 
 Playbooks **sistem durumu izleme** çalışma kitabını kullanarak PlayBook 'larınızın sistem durumunu izleyin veya başarılı veya başarısız çalıştırmalar için bozukluklar olup olmadığına bakın. 
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/28/2021
+ms.date: 03/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e01f44d363d038bd2ea4b985e12c9afc200f2c20
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691527"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046457"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -58,6 +58,11 @@ Bir denetim ilkesi, belirli bir veritabanı için veya Azure 'da varsayılan [su
 
 - *Sunucu denetimi etkinse*, *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
 
+- Denetim ilkesi veritabanı düzeyinde bir Log Analytics çalışma alanına veya bir olay hub hedefine tanımlandığında, aşağıdaki işlemler kaynak veritabanı düzeyinde denetim ilkesini tutamaz:
+    - [Veritabanı kopyalama](database-copy.md)
+    - [Zaman içindeki bir noktaya geri yükleme](recovery-using-backups.md)
+    - [Coğrafi çoğaltma](active-geo-replication-overview.md) (ikincil veritabanı, veritabanı düzeyinde denetime sahip olmaz)
+
 - Veritabanında etkinleştirmenin yanı sıra sunucu üzerinde denetimi etkinleştirmek, sunucu denetiminin ayarlarından *hiçbirini geçersiz kılmaz veya değiştirmez.* Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
 
    > [!NOTE]
@@ -94,7 +99,8 @@ Azure SQL veritabanı ve Azure SYNAPSE Audit, bir denetim kaydındaki karakter a
 Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması açıklanmaktadır.
 
   > [!NOTE]
-  > Duraklatılmış bir adanmış SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için adanmış SQL havuzunun duraklamasını kaldırın. [ADANMıŞ SQL havuzu](../..//synapse-analytics/sql/best-practices-sql-pool.md)hakkında daha fazla bilgi edinin.
+  > - Duraklatılmış bir adanmış SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için adanmış SQL havuzunun duraklamasını kaldırın. [ADANMıŞ SQL havuzu](../..//synapse-analytics/sql/best-practices-sql-pool.md)hakkında daha fazla bilgi edinin.
+  > - Denetim, Azure portal veya PowerShell cmdlet 'i aracılığıyla bir Log Analytics çalışma alanına veya hatta bir hub hedefine yapılandırıldığında, "SQLSecurityAuditEvents" kategorisi etkin bir [Tanılama ayarı](../../azure-monitor/essentials/diagnostic-settings.md) oluşturulur.
 
 1. [Azure Portal](https://portal.azure.com) gidin.
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.
@@ -104,18 +110,18 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
 4. Veritabanı düzeyinde denetlemeyi etkinleştirmeyi tercih ediyorsanız, **denetimi** **Açık** olarak değiştirin. Sunucu denetimi etkinse, veritabanı yapılandırılmış denetim sunucu denetimi ile yan yana bulunur.
 
-5. Denetim günlüklerinin nerede yazıldığını yapılandırmak için birden çok seçeneğiniz vardır. Günlükleri bir Azure depolama hesabına, Azure Izleyici günlükleri (Önizleme) tarafından tüketim için bir Log Analytics çalışma alanına veya Olay Hub 'ı (Önizleme) kullanarak tüketim için Olay Hub 'ına yazabilirsiniz. Bu seçeneklerin herhangi bir birleşimini yapılandırabilirsiniz ve denetim günlükleri her birine yazılır.
+5. Denetim günlüklerinin nerede yazıldığını yapılandırmak için birden çok seçeneğiniz vardır. Günlükleri bir Azure depolama hesabına, Azure Izleyici günlüklerine göre tüketim için bir Log Analytics çalışma alanına veya Olay Hub 'ı kullanarak tüketim için Olay Hub 'ına yazabilirsiniz. Bu seçeneklerin herhangi bir birleşimini yapılandırabilirsiniz ve denetim günlükleri her birine yazılır.
   
    ![depolama seçenekleri](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft Desteği işlemleri (Önizleme) denetimi
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft Desteği işlemlerinin denetlenmesi
 
-Azure SQL Server için Microsoft Desteği işlemleri (Önizleme) denetimi, destek isteği sırasında sunucunuza erişmesi gerektiğinde Microsoft Destek mühendislerinin işlemlerini denetlemenize olanak tanır. Bu özelliğin kullanımı, denetim ile birlikte, iş gücünüze daha fazla saydamlık sağlar ve anomali algılama, eğilim görselleştirme ve veri kaybı önleme için izin verir.
+Azure SQL Server Microsoft Desteği işlemlerinin denetlenmesi, destek isteği sırasında sunucunuza erişmesi gerektiğinde Microsoft Destek mühendislerinin işlemlerini denetlemenize olanak tanır. Bu özelliğin kullanımı, denetim ile birlikte, iş gücünüze daha fazla saydamlık sağlar ve anomali algılama, eğilim görselleştirme ve veri kaybı önleme için izin verir.
 
-Microsoft Desteği işlemlerinin (Önizleme) denetlenmesini etkinleştirmek için **Azure SQL Server** bölmeniz içindeki güvenlik başlığı altında bulunan **denetime** gidin ve **Microsoft destek Işlemlerinin (Önizleme) denetimini** **Açık** olarak değiştirin.
+Microsoft Desteği işlemlerinde denetim sağlamak için **Azure SQL Server** bölmeniz içindeki güvenlik başlığı altında bulunan **Denetim** ' e gidin ve **Microsoft destek işlemlerinin denetimini** **Açık** olarak değiştirin.
 
   > [!IMPORTANT]
-  > Microsoft destek işlemlerinin (Önizleme) denetlenmesi, depolama hesabı hedefini desteklemez. Özelliği etkinleştirmek için, bir Log Analytics çalışma alanı veya bir olay hub 'ı hedefi yapılandırılmalıdır.
+  > Microsoft destek işlemlerinin denetlenmesi, depolama hesabı hedefini desteklemez. Özelliği etkinleştirmek için, bir Log Analytics çalışma alanı veya bir olay hub 'ı hedefi yapılandırılmalıdır.
 
 ![Microsoft Desteği Işlemlerinin ekran görüntüsü](./media/auditing-overview/support-operations.png)
 
@@ -137,7 +143,7 @@ Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **dep
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics hedefe yönelik denetim
   
-Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak için **Log Analytics (Önizleme)** öğesini seçin ve **Log Analytics ayrıntılarını** açın. Günlüklerin yazılacağı Log Analytics çalışma alanını seçin veya oluşturun ve ardından **Tamam**' a tıklayın.
+Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak için **Log Analytics** ' i seçin ve **Log Analytics Ayrıntılar**' ı açın. Günlüklerin yazılacağı Log Analytics çalışma alanını seçin veya oluşturun ve ardından **Tamam**' a tıklayın.
 
    ![Loganalticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -145,7 +151,7 @@ Azure Izleyici Log Analytics çalışma alanı hakkında daha fazla bilgi için 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub 'ı hedefine yönelik denetim
 
-Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını** açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
+Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub** 'ı ve açık **Olay Hub 'ı ayrıntılarını** seçin. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
